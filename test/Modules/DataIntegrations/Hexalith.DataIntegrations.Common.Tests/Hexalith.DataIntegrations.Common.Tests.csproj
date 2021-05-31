@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\src\Modules\Shared\Hexalith.DataIntegrations.Common\Hexalith.DataIntegrations.Common.csproj" />
+  </ItemGroup>
+</Project>

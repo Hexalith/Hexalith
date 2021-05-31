@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<OutputType>Library</OutputType>
+		<RootNamespace>Hexalith.Users</RootNamespace>
+		<ModuleName>Users</ModuleName>
+	</PropertyGroup>
+	<Import Project="..\..\Shared\Hexalith.Users.Shared\Hexalith.Users.Shared.projitems" Label="Shared" />
+</Project>

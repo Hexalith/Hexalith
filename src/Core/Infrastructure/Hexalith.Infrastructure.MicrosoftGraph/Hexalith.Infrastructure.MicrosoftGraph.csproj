@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Identity.Client" Version="$(MicrosoftIdentityClientVersion)" />
+		<PackageReference Include="Microsoft.Graph" Version="$(MicrosoftGraphVersion)" />
+		<PackageReference Include="Microsoft.Graph.Auth" Version="$(MicrosoftGraphAuthVersion)" />
+		<PackageReference Include="Quartz.AspNetCore" Version="$(QuartzAspNetCoreVersion)" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\Domain\Hexalith.Domain.Abstractions\Hexalith.Domain.Abstractions.csproj" />
+	</ItemGroup>
+</Project>

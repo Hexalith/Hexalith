@@ -1,0 +1,12 @@
+﻿@inherits LayoutComponentBase
+<CascadingValue Value="@ThemeName">
+    <div>@ThemeName</div>
+    <Theme>
+        <ThemeSelector />
+    </Theme>
+</CascadingValue>
+
+@code
+{
+    private string ThemeName { get; set; } = "Fast";
+}

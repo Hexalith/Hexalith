@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "OpenIdDict",
+      "suggestion": "true",
+      "ignored": "true"
+    }
+  }
+}

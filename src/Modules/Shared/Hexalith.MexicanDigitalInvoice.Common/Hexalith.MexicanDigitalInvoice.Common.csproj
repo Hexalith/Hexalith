@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<RootNamespace>Hexalith.MexicanDigitalInvoice</RootNamespace>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="ExtendedXmlSerializer" Version="$(ExtendedXmlSerializerVersion)" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Hexalith.MexicanDigitalInvoice.Contracts\Hexalith.MexicanDigitalInvoice.Contracts.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Application\" />
+	</ItemGroup>
+</Project>

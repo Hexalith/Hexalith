@@ -1,0 +1,1 @@
+Get-ChildItem ..\ -Recurse -Filter "*Bistrotic*" | Rename-Item -NewName {$_.name -replace 'Bistrotic','Hexalith' } -Verbose

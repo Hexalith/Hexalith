@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="TestFiles\UBL-Invoice-2.1-Example-Embedded.xml" />
+		<None Remove="TestFiles\UBL-Invoice-2.1-Example-Trivial.xml" />
+		<None Remove="TestFiles\UBL-Invoice-2.1-Example.xml" />
+		<None Remove="TestFiles\UBL-Invoice-2.1-From-Embedded.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="TestFiles\UBL-Invoice-2.1-Example-Embedded.xml">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="TestFiles\UBL-Invoice-2.1-Example-Trivial.xml">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="TestFiles\UBL-Invoice-2.1-Example.xml">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="TestFiles\UBL-Invoice-2.1-From-Embedded.xml">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\..\src\Modules\Shared\Hexalith.UblDocuments.Common\Hexalith.UblDocuments.Common.csproj" />
+	</ItemGroup>
+</Project>

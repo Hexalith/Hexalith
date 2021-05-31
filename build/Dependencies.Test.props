@@ -1,0 +1,10 @@
+<Project>
+	<PropertyGroup>
+		<FluentAssertionsVersion>5.10.3</FluentAssertionsVersion>
+		<MicrosoftNETTestSdkVersion>16.9.4</MicrosoftNETTestSdkVersion>
+		<MoqVersion>4.16.1</MoqVersion>
+		<xunitVersion>2.4.1</xunitVersion>
+		<xunitrunnervisualstudioVersion>2.4.3</xunitrunnervisualstudioVersion>
+		<coverletcollectorVersion>3.0.3</coverletcollectorVersion>
+	</PropertyGroup>
+</Project>

@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<OutputType>Library</OutputType>
+		<RootNamespace>Hexalith.QuartzScheduler</RootNamespace>
+		<ModuleName>QuartzScheduler</ModuleName>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Core\Infrastructure\Hexalith.Infrastructure.QuartzScheduler\Hexalith.Infrastructure.QuartzScheduler.csproj" />
+		<ProjectReference Include="..\..\Shared\Hexalith.QuartzScheduler.Shared\Hexalith.QuartzScheduler.Shared.csproj" />
+	</ItemGroup>
+</Project>

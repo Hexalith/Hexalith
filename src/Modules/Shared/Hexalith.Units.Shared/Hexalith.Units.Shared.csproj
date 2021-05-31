@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<RootNamespace>Hexalith.Units</RootNamespace>
+	</PropertyGroup>
+	<ItemGroup>
+	  <Compile Remove="Infrastructure\**" />
+	  <EmbeddedResource Remove="Infrastructure\**" />
+	  <None Remove="Infrastructure\**" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\Core\Application\Hexalith.Application.Abstractions\Hexalith.Application.Abstractions.csproj" />
+	  <ProjectReference Include="..\..\..\Core\Domain\Hexalith.Domain.Abstractions\Hexalith.Domain.Abstractions.csproj" />
+	</ItemGroup>
+</Project>

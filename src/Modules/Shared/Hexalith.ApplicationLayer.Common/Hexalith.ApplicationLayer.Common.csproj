@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<RootNamespace>Hexalith.ApplicationLayer</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Core\Domain\Hexalith.Domain.Abstractions\Hexalith.Domain.Abstractions.csproj" />
+	</ItemGroup>
+</Project>

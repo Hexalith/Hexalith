@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<RootNamespace>Hexalith.ApplicationLayer</RootNamespace>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Grpc.Tools" Version="$(GrpcToolsVersion)">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="protobuf-net" Version="$(ProtobufNetVersion)" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Core\Application\Hexalith.Application\Hexalith.Application.csproj" />
+		<ProjectReference Include="..\Hexalith.ApplicationLayer.Common\Hexalith.ApplicationLayer.Common.csproj" />
+		<ProjectReference Include="..\Hexalith.ApplicationLayer.Contracts\Hexalith.ApplicationLayer.Contracts.csproj" />
+	</ItemGroup>
+</Project>

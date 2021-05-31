@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+
+		<IsPackable>false</IsPackable>
+		<ModuleName>WebServerTest</ModuleName>
+		<UseNETCoreGenerator>true</UseNETCoreGenerator>
+	</PropertyGroup>
+	<ItemGroup>
+		<CompilerVisibleProperty Include="ModuleName" />
+		<CompilerVisibleProperty Include="RootNamespace" />
+	</ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="$(NuGetPackageRoot)\netstandard.library\2.0.3\build\netstandard2.0\ref\netstandard.dll">
+			<LogicalName>netstandard20.netstandard</LogicalName>
+			<Link>Resources\netstandard20\netstandard.dll</Link>
+		</EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\src\Core\Application\Hexalith.Application.Abstractions\Hexalith.Application.Abstractions.csproj" />
+		<ProjectReference Include="..\..\src\Core\Domain\Hexalith.Domain.Contracts\Hexalith.Domain.Contracts.csproj" />
+		<ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.CodeGeneration.WebServer\Hexalith.Infrastructure.CodeGeneration.WebServer.csproj" />
+		<ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.WebServer\Hexalith.Infrastructure.WebServer.csproj" />
+	</ItemGroup>
+</Project>

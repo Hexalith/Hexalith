@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<RootNamespace>Hexalith.Roles</RootNamespace>
+		<ModuleName>Roles</ModuleName>
+	</PropertyGroup>
+	<Import Project="..\..\Shared\Hexalith.Roles.Shared\Hexalith.Roles.Shared.projitems" Label="Shared" />
+</Project>

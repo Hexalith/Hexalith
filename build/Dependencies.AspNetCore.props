@@ -1,0 +1,21 @@
+<Project>
+	<PropertyGroup>
+		<AspNetCoreVersion>6.0.0-preview.4.21253.5</AspNetCoreVersion>
+		<MicrosoftAspNetCoreComponentsVersion>$(AspNetCoreVersion)</MicrosoftAspNetCoreComponentsVersion>
+		<MicrosoftAspNetCoreComponentsFormsVersion>$(AspNetCoreVersion)</MicrosoftAspNetCoreComponentsFormsVersion>
+		<MicrosoftAspNetCoreComponentsWebAssemblyVersion>$(AspNetCoreVersion)</MicrosoftAspNetCoreComponentsWebAssemblyVersion>
+		<MicrosoftAspNetCoreComponentsWebVersion>$(AspNetCoreVersion)</MicrosoftAspNetCoreComponentsWebVersion>
+		<MicrosoftAspNetCoreComponentsWebAssemblyServerVersion>$(AspNetCoreVersion)</MicrosoftAspNetCoreComponentsWebAssemblyServerVersion>
+		<MicrosoftAspNetCoreComponentsWebAssemblyAuthenticationVersion>$(AspNetCoreVersion)</MicrosoftAspNetCoreComponentsWebAssemblyAuthenticationVersion>
+		<MicrosoftAspNetCoreComponentsWebAssemblyDevServerVersion>$(AspNetCoreVersion)</MicrosoftAspNetCoreComponentsWebAssemblyDevServerVersion>
+		<MicrosoftAspNetCoreDiagnosticsEntityFrameworkCoreVersion>$(AspNetCoreVersion)</MicrosoftAspNetCoreDiagnosticsEntityFrameworkCoreVersion>
+		<MicrosoftAspNetCoreIdentityEntityFrameworkCoreVersion>$(AspNetCoreVersion)</MicrosoftAspNetCoreIdentityEntityFrameworkCoreVersion>
+		<MicrosoftAspNetCoreApiAuthorizationIdentityServerVersion>$(AspNetCoreVersion)</MicrosoftAspNetCoreApiAuthorizationIdentityServerVersion>
+		<MicrosoftAspNetCoreAuthenticationJwtBearerVersion>$(AspNetCoreVersion)</MicrosoftAspNetCoreAuthenticationJwtBearerVersion>
+		<MicrosoftAspNetCoreAuthenticationOpenIdConnectVersion>$(AspNetCoreVersion)</MicrosoftAspNetCoreAuthenticationOpenIdConnectVersion>
+		<MicrosoftAspNetCoreAuthenticationGoogleVersion>$(AspNetCoreVersion)</MicrosoftAspNetCoreAuthenticationGoogleVersion>
+		<MicrosoftAspNetCoreIdentityUIVersion>$(AspNetCoreVersion)</MicrosoftAspNetCoreIdentityUIVersion>
+		<MicrosoftAspNetCoreAppVersion>$(AspNetCoreVersion)</MicrosoftAspNetCoreAppVersion>
+		<MicrosoftAspNetCoreWebUtilitiesVersion>2.2.0</MicrosoftAspNetCoreWebUtilitiesVersion>
+	</PropertyGroup>
+</Project>

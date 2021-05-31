@@ -1,0 +1,41 @@
+﻿.site-provider {
+	isolation: isolate;
+}
+
+.site-provider, body {
+	background-color: var(--background-color);
+}
+
+.site-content {
+	--wrapper-max-width: 100%;
+	--wrapper-gutter: 0;
+	display: grid;
+	grid-auto-rows: minmax(0,auto);
+	grid-template-columns: minmax(var(--wrapper-gutter),1fr) minmax(0,var(--wrapper-max-width)) minmax(var(--wrapper-gutter),1fr);
+	isolation: isolate;
+}
+
+body {
+	color: var(--neutral-foreground-rest);
+	margin: 0;
+	padding: 0;
+}
+
+body, html {
+	overflow-x: hidden;
+	scroll-behavior: smooth;
+	width: 100%;
+}
+
+:root {
+	--background-color: #181818;
+	--navbar-height: 94px;
+	--section-height-spacing: 100px 0px;
+	--section-height-spacing-mobile: 50px 0px;
+}
+
+html {
+	background-color: var(--background-color);
+	box-sizing: border-box;
+	font: 16px aktiv-grotesk,Segoe UI,Arial,Helvetica,sans-serif;
+}

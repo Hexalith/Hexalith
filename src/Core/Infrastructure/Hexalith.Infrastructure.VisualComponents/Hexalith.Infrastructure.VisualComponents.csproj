@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<NoWarn>$(NoWarn);CS3008</NoWarn>
+		<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+		<GenerateMvcApplicationPartsAssemblyAttributes>true</GenerateMvcApplicationPartsAssemblyAttributes>
+		<RazorCompileOnBuild>true</RazorCompileOnBuild>
+		<IncludeRazorContentInPack>false</IncludeRazorContentInPack>
+		<GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+		<EnableDefaultRazorGenerateItems>true</EnableDefaultRazorGenerateItems>
+	</PropertyGroup>
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="$(MicrosoftAspNetCoreComponentsWebVersion)" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Application\Hexalith.Application.Abstractions\Hexalith.Application.Abstractions.csproj" />
+	</ItemGroup>
+</Project>

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>a9fdf1b7-cdab-46e6-8fb5-88ad3cace806</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Bistrotic.Users</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Application\Commands\ChangeUserIdentity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Application\Commands\RegisterNewUser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Application\Commands\RenameUser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Application\ModelViews\UserDetailedInformations.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Application\ModelViews\UserSummaryInformations.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Application\Queries\GetAllUserIds.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Application\Queries\GetUserCount.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Application\Queries\GetUserDetailedInformations.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Application\Queries\GetUserSearchMatching.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Application\Queries\GetUserSummaryInformations.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Application\Queries\GetUserSummaryInformationsList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Application\Queries\UserIdQuery.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Domain\Errors\ChangeUserIdentityAttemptFailed.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Domain\Errors\UserRenameAttemptFailed.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Domain\Events\NewUserRegistered.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Domain\Events\RenamedUser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Domain\Events\UserIdentityChanged.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Domain\Events\UserIdEvent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Domain\User.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Domain\UserConstants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Domain\UserState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Domain\ValueTypes\UserId.cs" />
+  </ItemGroup>
+</Project>

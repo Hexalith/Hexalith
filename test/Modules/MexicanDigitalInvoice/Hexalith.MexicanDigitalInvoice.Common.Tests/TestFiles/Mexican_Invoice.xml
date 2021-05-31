@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd" Version="3.3" Fecha="2021-03-09T11:30:12" Sello="fkv2PInMsxA3WXSQ==" FormaPago="99" NoCertificado="00001000000406479" Certificado="MIIGoDCBIigAwIB5Bz8H8o8+gHik=" SubTotal="8447.85" Moneda="USD" TipoCambio="20.4752" Total="9799.51" TipoDeComprobante="I" MetodoPago="PPD" LugarExpedicion="06500" Folio="2929" xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<cfdi:Emisor Rfc="DIOR02525DXA" Nombre="GLOBAL CONSOLIDATED DIOR MEXICO S DE RL DE CV" RegimenFiscal="601" />
+	<cfdi:Receptor Rfc="CUST00422000" Nombre="GRUPO VENTA INTERNACIONAL, S.A. DE C.V." UsoCFDI="G01" />
+	<cfdi:Conceptos>
+		<cfdi:Concepto ClaveProdServ="42295509" Cantidad="24" ClaveUnidad="H87" Unidad="Unidad" Descripcion="281300 Sphere Gel Cohesivo Suave, Redondo, Liso, Extra Proyectado, 300 cc" ValorUnitario="134.1" Importe="3218.40">
+			<cfdi:Impuestos>
+				<cfdi:Traslados>
+					<cfdi:Traslado Base="3218.40" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="514.944000" />
+				</cfdi:Traslados>
+			</cfdi:Impuestos>
+			<cfdi:InformacionAduanera NumeroPedimento="21  47  3273  1000481" />
+		</cfdi:Concepto>
+		<cfdi:Concepto ClaveProdServ="42295509" Cantidad="2" ClaveUnidad="H87" Unidad="Unidad" Descripcion="281550 Sphere Gel Cohesivo Suave, Redondo, Liso, Extra Proyectado, 550 cc" ValorUnitario="134.1" Importe="268.20">
+			<cfdi:Impuestos>
+				<cfdi:Traslados>
+					<cfdi:Traslado Base="268.20" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="42.912000" />
+				</cfdi:Traslados>
+			</cfdi:Impuestos>
+			<cfdi:InformacionAduanera NumeroPedimento="21  47  3273  1000481" />
+		</cfdi:Concepto>
+		<cfdi:Concepto ClaveProdServ="42295509" Cantidad="2" ClaveUnidad="H87" Unidad="Unidad" Descripcion="805290N Sphere Gel Cohesivo natural, Redondo, microtexturizado, Proyecc. Media Alta 290 cc" ValorUnitario="141.75" Importe="283.50">
+			<cfdi:Impuestos>
+				<cfdi:Traslados>
+					<cfdi:Traslado Base="283.50" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="45.360000" />
+				</cfdi:Traslados>
+			</cfdi:Impuestos>
+			<cfdi:InformacionAduanera NumeroPedimento="21  47  3273  1000481" />
+		</cfdi:Concepto>
+		<cfdi:Concepto ClaveProdServ="42295509" Cantidad="4" ClaveUnidad="H87" Unidad="Unidad" Descripcion="811400 Sphere Gel Responsivo, Redondo, microtexturizado, Extra Proyectado 400 cc" ValorUnitario="141.75" Importe="567.00">
+			<cfdi:Impuestos>
+				<cfdi:Traslados>
+					<cfdi:Traslado Base="567.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="90.720000" />
+				</cfdi:Traslados>
+			</cfdi:Impuestos>
+			<cfdi:InformacionAduanera NumeroPedimento="21  47  3273  1000481" />
+		</cfdi:Concepto>
+		<cfdi:Concepto ClaveProdServ="42295509" Cantidad="24" ClaveUnidad="H87" Unidad="Unidad" Descripcion="812300N Sphere Gel Cohesivo natural, Redondo, microtexturizado, Extra Proyectado 300 cc" ValorUnitario="141.75" Importe="3402.00">
+			<cfdi:Impuestos>
+				<cfdi:Traslados>
+					<cfdi:Traslado Base="3402.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="544.320000" />
+				</cfdi:Traslados>
+			</cfdi:Impuestos>
+			<cfdi:InformacionAduanera NumeroPedimento="21  47  3273  1000481" />
+		</cfdi:Concepto>
+		<cfdi:Concepto ClaveProdServ="42295509" Cantidad="5" ClaveUnidad="H87" Unidad="Unidad" Descripcion="812375N Sphere Gel Cohesivo natural, Redondo, microtexturizado, Extra Proyectado 375 cc" ValorUnitario="141.75" Importe="708.75">
+			<cfdi:Impuestos>
+				<cfdi:Traslados>
+					<cfdi:Traslado Base="708.75" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="113.400000" />
+				</cfdi:Traslados>
+			</cfdi:Impuestos>
+			<cfdi:InformacionAduanera NumeroPedimento="21  47  3273  1000481" />
+		</cfdi:Concepto>
+	</cfdi:Conceptos>
+	<cfdi:Impuestos TotalImpuestosTrasladados="1351.66">
+		<cfdi:Traslados>
+			<cfdi:Traslado Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="1351.66" />
+		</cfdi:Traslados>
+	</cfdi:Impuestos>
+	<cfdi:Complemento>
+		<tfd:TimbreFiscalDigital xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd" Version="1.1" UUID="c29b0db4-0083-4fc4-a962-6246ba10844e" FechaTimbrado="2021-03-09T11:30:14" RfcProvCertif="MSE255205D9A" SelloCFD="+17y8Q==" NoCertificadoSAT="00001000000506109151" SelloSAT="KCvjhn/P7+==" xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" />
+	</cfdi:Complemento>
+	<cfdi:Addenda>
+		<fx:FactDocMX xsi:schemaLocation="http://www.fact.com.mx/schema/fx   http://www.mysuitemex.com/fact/schema/fx_2010_f.xsd" xmlns:fx="http://www.fact.com.mx/schema/fx">
+			<fx:Version>7</fx:Version>
+			<fx:Identificacion>
+				<fx:CdgPaisEmisor>MX</fx:CdgPaisEmisor>
+				<fx:TipoDeComprobante>FACTURA</fx:TipoDeComprobante>
+				<fx:RFCEmisor>DIOR02525DXA</fx:RFCEmisor>
+				<fx:RazonSocialEmisor>GLOBAL CONSOLIDATED DIOR MEXICO S DE RL DE CV</fx:RazonSocialEmisor>
+				<fx:Usuario>DIOR02525DXAUser</fx:Usuario>
+				<fx:LugarExpedicion>06500</fx:LugarExpedicion>
+				<fx:CadenaOriginal>3qe7qlscQY62tlnEM3JMsxA3WXSQ==</fx:CadenaOriginal>
+			</fx:Identificacion>
+			<fx:Procesamiento>
+				<fx:Dictionary name="email">
+					<fx:Entry k="from" v="ACCOUNT_OWNER" />
+					<fx:Entry k="to" v="luis@gvi.com.mx; lupita@gvi.com.mx;eduardoz@esta.com" />
+					<fx:Entry k="cc" v="bernardo@gesta.com" />
+				</fx:Dictionary>
+			</fx:Procesamiento>
+			<fx:Emisor>
+				<fx:DomicilioFiscal>
+					<fx:Calle>AVE DE LA LIBERATION</fx:Calle>
+					<fx:NumeroExterior>31</fx:NumeroExterior>
+					<fx:NumeroInterior>PISO 21</fx:NumeroInterior>
+					<fx:Colonia>CUAUTHEMOC</fx:Colonia>
+					<fx:Municipio>CUAUTHEMOC</fx:Municipio>
+					<fx:Estado>CIUDAD DE MEXICO</fx:Estado>
+					<fx:Pais>MEXICO</fx:Pais>
+					<fx:CodigoPostal>06500</fx:CodigoPostal>
+				</fx:DomicilioFiscal>
+				<fx:RegimenFiscal>
+					<fx:Regimen>601</fx:Regimen>
+				</fx:RegimenFiscal>
+			</fx:Emisor>
+			<fx:Receptor>
+				<fx:CdgPaisReceptor>MX</fx:CdgPaisReceptor>
+				<fx:RFCReceptor>CUST00422000</fx:RFCReceptor>
+				<fx:NombreReceptor>GRUPO VENTA INTERNACIONAL, S.A. DE C.V.</fx:NombreReceptor>
+				<fx:Domicilio>
+					<fx:DomicilioFiscalMexicano>
+						<fx:Calle>CALLE ROBERTO ESTIA 256</fx:Calle>
+						<fx:NumeroInterior>Piso 10</fx:NumeroInterior>
+						<fx:Colonia>COL. PROVIDENCIA 1A 2A Y 3A SECCION</fx:Colonia>
+						<fx:Municipio>GUADALAJARA</fx:Municipio>
+						<fx:Estado>JALISCO</fx:Estado>
+						<fx:Pais>MEXICO</fx:Pais>
+						<fx:CodigoPostal>44630</fx:CodigoPostal>
+					</fx:DomicilioFiscalMexicano>
+				</fx:Domicilio>
+				<fx:UsoCFDI>G01</fx:UsoCFDI>
+			</fx:Receptor>
+			<fx:Conceptos>
+				<fx:Concepto>
+					<fx:Cantidad>24</fx:Cantidad>
+					<fx:ClaveUnidad>H87</fx:ClaveUnidad>
+					<fx:UnidadDeMedida>Unidad</fx:UnidadDeMedida>
+					<fx:ClaveProdServ>42295509</fx:ClaveProdServ>
+					<fx:Descripcion>281300 Sphere Gel Cohesivo Suave, Redondo, Liso, Extra Proyectado, 300 cc</fx:Descripcion>
+					<fx:ValorUnitario>134.1</fx:ValorUnitario>
+					<fx:Importe>3218.40</fx:Importe>
+					<fx:ImpuestosSAT>
+						<fx:Traslados>
+							<fx:Traslado Base="3218.40" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="514.944000" />
+						</fx:Traslados>
+					</fx:ImpuestosSAT>
+					<fx:Opciones>
+						<fx:DatosDeImportacion>
+							<fx:InformacionAduanera>
+								<fx:NumeroDePedimento>21  47  3273  1000481</fx:NumeroDePedimento>
+							</fx:InformacionAduanera>
+						</fx:DatosDeImportacion>
+					</fx:Opciones>
+					<fx:ConceptoEx>
+						<fx:PrecioLista>134.1</fx:PrecioLista>
+						<fx:ImporteLista>3218.40</fx:ImporteLista>
+						<fx:ImporteTotal>3218.40</fx:ImporteTotal>
+					</fx:ConceptoEx>
+				</fx:Concepto>
+				<fx:Concepto>
+					<fx:Cantidad>2</fx:Cantidad>
+					<fx:ClaveUnidad>H87</fx:ClaveUnidad>
+					<fx:UnidadDeMedida>Unidad</fx:UnidadDeMedida>
+					<fx:ClaveProdServ>42295509</fx:ClaveProdServ>
+					<fx:Descripcion>281550 Sphere Gel Cohesivo Suave, Redondo, Liso, Extra Proyectado, 550 cc</fx:Descripcion>
+					<fx:ValorUnitario>134.1</fx:ValorUnitario>
+					<fx:Importe>268.20</fx:Importe>
+					<fx:ImpuestosSAT>
+						<fx:Traslados>
+							<fx:Traslado Base="268.20" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="42.912000" />
+						</fx:Traslados>
+					</fx:ImpuestosSAT>
+					<fx:Opciones>
+						<fx:DatosDeImportacion>
+							<fx:InformacionAduanera>
+								<fx:NumeroDePedimento>21  47  3273  1000481</fx:NumeroDePedimento>
+							</fx:InformacionAduanera>
+						</fx:DatosDeImportacion>
+					</fx:Opciones>
+					<fx:ConceptoEx>
+						<fx:PrecioLista>134.1</fx:PrecioLista>
+						<fx:ImporteLista>268.20</fx:ImporteLista>
+						<fx:ImporteTotal>268.20</fx:ImporteTotal>
+					</fx:ConceptoEx>
+				</fx:Concepto>
+				<fx:Concepto>
+					<fx:Cantidad>2</fx:Cantidad>
+					<fx:ClaveUnidad>H87</fx:ClaveUnidad>
+					<fx:UnidadDeMedida>Unidad</fx:UnidadDeMedida>
+					<fx:ClaveProdServ>42295509</fx:ClaveProdServ>
+					<fx:Descripcion>805290N Sphere Gel Cohesivo natural, Redondo, microtexturizado, Proyecc. Media Alta 290 cc</fx:Descripcion>
+					<fx:ValorUnitario>141.75</fx:ValorUnitario>
+					<fx:Importe>283.50</fx:Importe>
+					<fx:ImpuestosSAT>
+						<fx:Traslados>
+							<fx:Traslado Base="283.50" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="45.360000" />
+						</fx:Traslados>
+					</fx:ImpuestosSAT>
+					<fx:Opciones>
+						<fx:DatosDeImportacion>
+							<fx:InformacionAduanera>
+								<fx:NumeroDePedimento>21  47  3273  1000481</fx:NumeroDePedimento>
+							</fx:InformacionAduanera>
+						</fx:DatosDeImportacion>
+					</fx:Opciones>
+					<fx:ConceptoEx>
+						<fx:PrecioLista>141.75</fx:PrecioLista>
+						<fx:ImporteLista>283.50</fx:ImporteLista>
+						<fx:ImporteTotal>283.50</fx:ImporteTotal>
+					</fx:ConceptoEx>
+				</fx:Concepto>
+				<fx:Concepto>
+					<fx:Cantidad>4</fx:Cantidad>
+					<fx:ClaveUnidad>H87</fx:ClaveUnidad>
+					<fx:UnidadDeMedida>Unidad</fx:UnidadDeMedida>
+					<fx:ClaveProdServ>42295509</fx:ClaveProdServ>
+					<fx:Descripcion>811400 Sphere Gel Responsivo, Redondo, microtexturizado, Extra Proyectado 400 cc</fx:Descripcion>
+					<fx:ValorUnitario>141.75</fx:ValorUnitario>
+					<fx:Importe>567.00</fx:Importe>
+					<fx:ImpuestosSAT>
+						<fx:Traslados>
+							<fx:Traslado Base="567.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="90.720000" />
+						</fx:Traslados>
+					</fx:ImpuestosSAT>
+					<fx:Opciones>
+						<fx:DatosDeImportacion>
+							<fx:InformacionAduanera>
+								<fx:NumeroDePedimento>21  47  3273  1000481</fx:NumeroDePedimento>
+							</fx:InformacionAduanera>
+						</fx:DatosDeImportacion>
+					</fx:Opciones>
+					<fx:ConceptoEx>
+						<fx:PrecioLista>141.75</fx:PrecioLista>
+						<fx:ImporteLista>567.00</fx:ImporteLista>
+						<fx:ImporteTotal>567.00</fx:ImporteTotal>
+					</fx:ConceptoEx>
+				</fx:Concepto>
+				<fx:Concepto>
+					<fx:Cantidad>24</fx:Cantidad>
+					<fx:ClaveUnidad>H87</fx:ClaveUnidad>
+					<fx:UnidadDeMedida>Unidad</fx:UnidadDeMedida>
+					<fx:ClaveProdServ>42295509</fx:ClaveProdServ>
+					<fx:Descripcion>812300N Sphere Gel Cohesivo natural, Redondo, microtexturizado, Extra Proyectado 300 cc</fx:Descripcion>
+					<fx:ValorUnitario>141.75</fx:ValorUnitario>
+					<fx:Importe>3402.00</fx:Importe>
+					<fx:ImpuestosSAT>
+						<fx:Traslados>
+							<fx:Traslado Base="3402.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="544.320000" />
+						</fx:Traslados>
+					</fx:ImpuestosSAT>
+					<fx:Opciones>
+						<fx:DatosDeImportacion>
+							<fx:InformacionAduanera>
+								<fx:NumeroDePedimento>21  47  3273  1000481</fx:NumeroDePedimento>
+							</fx:InformacionAduanera>
+						</fx:DatosDeImportacion>
+					</fx:Opciones>
+					<fx:ConceptoEx>
+						<fx:PrecioLista>141.75</fx:PrecioLista>
+						<fx:ImporteLista>3402.00</fx:ImporteLista>
+						<fx:ImporteTotal>3402.00</fx:ImporteTotal>
+					</fx:ConceptoEx>
+				</fx:Concepto>
+				<fx:Concepto>
+					<fx:Cantidad>5</fx:Cantidad>
+					<fx:ClaveUnidad>H87</fx:ClaveUnidad>
+					<fx:UnidadDeMedida>Unidad</fx:UnidadDeMedida>
+					<fx:ClaveProdServ>42295509</fx:ClaveProdServ>
+					<fx:Descripcion>812375N Sphere Gel Cohesivo natural, Redondo, microtexturizado, Extra Proyectado 375 cc</fx:Descripcion>
+					<fx:ValorUnitario>141.75</fx:ValorUnitario>
+					<fx:Importe>708.75</fx:Importe>
+					<fx:ImpuestosSAT>
+						<fx:Traslados>
+							<fx:Traslado Base="708.75" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="113.400000" />
+						</fx:Traslados>
+					</fx:ImpuestosSAT>
+					<fx:Opciones>
+						<fx:DatosDeImportacion>
+							<fx:InformacionAduanera>
+								<fx:NumeroDePedimento>21  47  3273  1000481</fx:NumeroDePedimento>
+							</fx:InformacionAduanera>
+						</fx:DatosDeImportacion>
+					</fx:Opciones>
+					<fx:ConceptoEx>
+						<fx:PrecioLista>141.75</fx:PrecioLista>
+						<fx:ImporteLista>708.75</fx:ImporteLista>
+						<fx:ImporteTotal>708.75</fx:ImporteTotal>
+					</fx:ConceptoEx>
+				</fx:Concepto>
+			</fx:Conceptos>
+			<fx:ImpuestosSAT TotalImpuestosTrasladados="1351.66">
+				<fx:Traslados>
+					<fx:Traslado Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="1351.66" />
+				</fx:Traslados>
+			</fx:ImpuestosSAT>
+			<fx:Totales>
+				<fx:Moneda>USD</fx:Moneda>
+				<fx:TipoDeCambioVenta>20.4752</fx:TipoDeCambioVenta>
+				<fx:SubTotalBruto>8447.85</fx:SubTotalBruto>
+				<fx:SubTotal>8447.85</fx:SubTotal>
+				<fx:Total>9799.51</fx:Total>
+				<fx:TotalEnLetra>NUEVE MIL SETECIENTOS NOVENTA Y NUEVE USD CON 51/100</fx:TotalEnLetra>
+				<fx:FormaDePago>99</fx:FormaDePago>
+				<fx:ResumenAduanero>21  47  3273  ,21  47  3273  ,21  47  3273  ,21  47  3273  ,21  47  3273  ,21  47  3273  |</fx:ResumenAduanero>
+			</fx:Totales>
+			<fx:ComprobanteEx>
+				<fx:DatosDeNegocio>
+					<fx:Sucursal>FISCALDOM</fx:Sucursal>
+				</fx:DatosDeNegocio>
+				<fx:TerminosDePago>
+					<fx:MetodoDePago>PPD</fx:MetodoDePago>
+				</fx:TerminosDePago>
+				<fx:TextosDeCabecera>
+					<fx:Texto>Factura vs PO 100411457.</fx:Texto>
+				</fx:TextosDeCabecera>
+			</fx:ComprobanteEx>
+		</fx:FactDocMX>
+	</cfdi:Addenda>
+</cfdi:Comprobante>

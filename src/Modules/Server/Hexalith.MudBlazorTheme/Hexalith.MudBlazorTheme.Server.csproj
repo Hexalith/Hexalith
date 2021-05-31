@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<OutputType>Library</OutputType>
+		<RootNamespace>Hexalith.MudBlazorTheme</RootNamespace>
+		<ModuleName>MudBlazorTheme</ModuleName>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\Shared\Hexalith.MudBlazorTheme.Common\Hexalith.MudBlazorTheme.Common.csproj" />
+		<ProjectReference Include="..\..\Shared\Hexalith.MudBlazorTheme.Projections\Hexalith.MudBlazorTheme.Projections.csproj" />
+	</ItemGroup>
+</Project>

@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<RootNamespace>Hexalith.MudBlazorTheme</RootNamespace>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Grpc.Tools" Version="$(GrpcToolsVersion)">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="protobuf-net" Version="$(ProtobufNetVersion)" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Core\Application\Hexalith.Application\Hexalith.Application.csproj" />
+		<ProjectReference Include="..\Hexalith.MudBlazorTheme.Common\Hexalith.MudBlazorTheme.Common.csproj" />
+		<ProjectReference Include="..\Hexalith.MudBlazorTheme.Contracts\Hexalith.MudBlazorTheme.Contracts.csproj" />
+	</ItemGroup>
+</Project>

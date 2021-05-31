@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>a118b8e4-e34f-4140-a4bd-0ef624f2426f</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Bistrotic.SalesHistory</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Application\ModelViews\SalesDetails.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Application\ModelViews\SalesSummary.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Application\Queries\GetSalesTransactionDetails.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Domain\ValueTypes\SalesTransactionId.cs" />
+  </ItemGroup>
+</Project>

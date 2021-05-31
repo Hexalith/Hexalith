@@ -1,0 +1,27 @@
+<Project>
+	<Import Project="../build/Dependencies.props" />
+	<PropertyGroup>
+		<LangVersion>latest</LangVersion>
+		<Nullable>disable</Nullable>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<Deterministic>true</Deterministic>
+		<IsPackable>false</IsPackable>
+		<NoWarn>IDE0058;CA1014;RCS1090;$(NoWarn)</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="FluentAssertions" Version="$(FluentAssertionsVersion)" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="$(MicrosoftNETTestSdkVersion)" />
+		<PackageReference Include="Moq" Version="$(MoqVersion)" />
+		<PackageReference Include="xunit" Version="$(xunitVersion)" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="$(xunitrunnervisualstudioVersion)" />
+		<PackageReference Include="coverlet.collector" Version="$(coverletcollectorVersion)">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="MinVer" Version="$(MinVerVersion)">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+</Project>

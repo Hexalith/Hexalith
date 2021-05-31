@@ -1,0 +1,17 @@
+<Project>
+	<Import Project="..\Directory.build.props" />
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Core\Infrastructure\Hexalith.Infrastructure.WebServer\Hexalith.Infrastructure.WebServer.csproj" />
+		<ProjectReference Include="..\..\..\Core\Domain\Hexalith.Domain.Contracts\Hexalith.Domain.Contracts.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<CompilerVisibleProperty Include="ModuleName" />
+		<CompilerVisibleProperty Include="RootNamespace" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Core\Infrastructure\Hexalith.Infrastructure.CodeGeneration.WebServer\Hexalith.Infrastructure.CodeGeneration.WebServer.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+	</ItemGroup>
+</Project>

@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="ExcelDataReader" Version="$(ExcelDataReaderVersion)" />
+		<PackageReference Include="ExcelDataReader.DataSet" Version="$(ExcelDataReaderDataSetVersion)" />
+		<PackageReference Include="System.Text.Encoding.CodePages" Version="$(SystemTextEncodingCodePagesVersion)" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Hexalith.Infrastructure.Abstractions\Hexalith.Infrastructure.Abstractions.csproj" />
+	</ItemGroup>
+</Project>

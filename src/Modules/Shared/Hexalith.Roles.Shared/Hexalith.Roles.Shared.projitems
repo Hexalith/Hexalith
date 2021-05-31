@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>2b1b4db0-aa14-41cd-9fa4-4b82fcf33d9b</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Bistrotic.Roles</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Application\Commands\AddNewRole.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Application\Commands\ChangeRoleDescription.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Application\Commands\RenameRole.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Application\ModelViews\RoleDetailedInformations.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Application\ModelViews\RoleSummaryInformations.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Application\Queries\GetAllRoleIds.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Application\Queries\GetRoleCount.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Application\Queries\GetRoleDetails.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Application\Queries\GetRoleSearchMatching.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Application\Queries\GetRoleSummaryInformations.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Application\Queries\GetRoleSummaryInformationsList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Application\Queries\RoleIdQuery.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Domain\Events\NewRoleAdded.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Domain\Events\RoleDescriptionChanged.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Domain\Events\RoleIdEvent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Domain\Events\RoleRenamed.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Domain\Role.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Domain\RoleConstants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Domain\RoleState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Domain\ValueTypes\RoleId.cs" />
+  </ItemGroup>
+</Project>

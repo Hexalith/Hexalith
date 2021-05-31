@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="$(MicrosoftAspNetCoreWebUtilitiesVersion)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\src\Core\Application\Hexalith.Application.Abstractions\Hexalith.Application.Abstractions.csproj" />
+		<ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Abstractions\Hexalith.Infrastructure.Abstractions.csproj" />
+	</ItemGroup>
+</Project>

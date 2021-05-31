@@ -1,0 +1,79 @@
+﻿@page "/issues/sla/waitingaction"
+@using Hexalith.Domain.ValueTypes
+@inject IQueryService service
+
+<h1>Issue SLA</h1>
+
+<p>List of all issues with an active SLA.</p>
+
+@if (issues == null)
+{
+	<p><em>Loading...</em></p>
+}
+else
+{
+	<table class="table">
+	 <thead>
+	  <tr>
+	   <th>Id</th>
+	   <th>Title</th>
+	   <th>Assignee</th>
+	   <th>Priority</th>
+	   <th>Created</th>
+	   <th>Acknowledge</th>
+	   <th>Resolution</th>
+	   <th>Suspended</th>
+	   <th>Action</th>
+	   <th>Closed</th>
+	  </tr>
+	 </thead>
+	 <tbody>
+			@foreach (var issue in issues)
+			{
+		  <tr>
+		   <td><a href="@issue.WorkItemUrl">@issue.WorkItemId</a></td>
+		   <td>@issue.Title</td>
+		   <td>@issue.Assignee</td>
+		   <td>@issue.Priority</td>
+		   <td>@issue.CreatedDateTime</td>
+					@if (issue.AcknowledgmentDateTime == null)
+					{
+			   <td>@issue.AcknowledgmentRemainingTimeInSeconds</td>
+					}
+					else
+					{
+			   <td>@issue.AcknowledgmentDateTime</td>
+					}
+					@if (issue.ResolvedDateTime == null)
+					{
+			   <td>@issue.RemainingResolutionTimeInSeconds</td>
+					}
+					else
+					{
+			   <td>@issue.ResolvedDateTime</td>
+					}
+		   <td>@issue.SlaSuspendedTimeInSeconds</td>
+		   <td>@issue.SlaActiveTimeInSeconds</td>
+		   <td>@issue.ClosedDateTime</td>
+		  </tr>
+			}
+	 </tbody>
+	</table>
+}
+
+@code {
+	private List<IssueWithSla>? issues;
+
+	protected override async Task OnInitializedAsync()
+	{
+		try
+		{
+			issues = await service.Ask<GetIssuesWithSla, List<IssueWithSla>>(new GetIssuesWithSla(true, true));
+		}
+		catch (AccessTokenNotAvailableException exception)
+		{
+			exception.Redirect();
+		}
+	}
+
+}

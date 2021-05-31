@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Dapr.AspNetCore" Version="$(DaprAspNetCoreVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="$(MicrosoftExensionsConfigurationUserSecretsVersion)" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="$(MicrosoftAspNetCoreComponentsWebAssemblyServerVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="$(MicrosoftExtensionsConfigurationAbstractionsVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="$(MicrosoftExtensionsLoggingAzureAppServicesVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="$(MicrosoftExtensionsLoggingConsoleVersion)" />
+		<PackageReference Include="Microsoft.Tye.Extensions.Configuration" Version="$(MicrosoftTyeExtensionsConfigurationVersion)" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="$(MicrosoftVisualStudioAzureContainersToolsTargetsVersion)" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Kubernetes.Tools.Targets" Version="$(MicrosoftVisualStudioAzureKubernetesToolsTargetsVersion)" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="$(SwashbuckleAspNetCoreVersion)" />
+		<PackageReference Include="Microsoft.Identity.Web.UI" Version="$(MicrosoftIdentityWebUIVersion)" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\Application\Hexalith.Application\Hexalith.Application.csproj" />
+		<ProjectReference Include="..\..\Application\Hexalith.Application.Abstractions\Hexalith.Application.Abstractions.csproj" />
+		<ProjectReference Include="..\Hexalith.Infrastructure.Abstractions\Hexalith.Infrastructure.Abstractions.csproj" />
+		<ProjectReference Include="..\Hexalith.Infrastructure.Host\Hexalith.Infrastructure.Host.csproj" />
+		<ProjectReference Include="..\Hexalith.Infrastructure.Modules\Hexalith.Infrastructure.Modules.csproj" />
+		<ProjectReference Include="..\Hexalith.Infrastructure.VisualComponents\Hexalith.Infrastructure.VisualComponents.csproj" />
+	</ItemGroup>
+</Project>

@@ -1,0 +1,35 @@
+<Project>
+	<PropertyGroup>
+		<DotNetVersion>6.0.0-preview.4.21253.7</DotNetVersion>
+		<SystemNetHttpJsonVersion>$(DotNetVersion)</SystemNetHttpJsonVersion>
+		<SystemTextJsonVersion>$(DotNetVersion)</SystemTextJsonVersion>
+		<SystemNetHttpVersion>$(DotNetVersion)</SystemNetHttpVersion>
+		<SystemTextEncodingCodePagesVersion>$(DotNetVersion)</SystemTextEncodingCodePagesVersion>
+		<MicrosoftExtensionsHttpVersion>$(DotNetVersion)</MicrosoftExtensionsHttpVersion>
+		<MicrosoftExtensionsHostingVersion>$(DotNetVersion)</MicrosoftExtensionsHostingVersion>
+		<MicrosoftExtensionsHostingAbstractionsVersion>$(DotNetVersion)</MicrosoftExtensionsHostingAbstractionsVersion>
+		<MicrosoftExtensionsDependencyInjectionVersion>5.0.1</MicrosoftExtensionsDependencyInjectionVersion>
+		<MicrosoftExtensionsLoggingAbstractionsVersion>$(DotNetVersion)</MicrosoftExtensionsLoggingAbstractionsVersion>
+		<MicrosoftExtensionsLoggingConsoleVersion>$(DotNetVersion)</MicrosoftExtensionsLoggingConsoleVersion>
+		<MicrosoftExtensionsLoggingConfigurationVersion>$(DotNetVersion)</MicrosoftExtensionsLoggingConfigurationVersion>
+		<MicrosoftExtensionsConfigurationAbstractionsVersion>$(DotNetVersion)</MicrosoftExtensionsConfigurationAbstractionsVersion>
+		<MicrosoftExtensionsConfigurationVersion>$(DotNetVersion)</MicrosoftExtensionsConfigurationVersion>
+		<MicrosoftExtensionsConfigurationJsonVersion>$(DotNetVersion)</MicrosoftExtensionsConfigurationJsonVersion>
+		<MicrosoftExtensionsConfigurationBinderVersion>$(DotNetVersion)</MicrosoftExtensionsConfigurationBinderVersion>
+		<MicrosoftExensionsConfigurationUserSecretsVersion>$(DotNetVersion)</MicrosoftExensionsConfigurationUserSecretsVersion>
+		<MicrosoftExtensionsOptionsVersion>$(DotNetVersion)</MicrosoftExtensionsOptionsVersion>
+		<MicrosoftExtensionsIdentityStoresVersion>$(DotNetVersion)</MicrosoftExtensionsIdentityStoresVersion>
+		<MicrosoftExtensionsPrimitivesVersion>$(DotNetVersion)</MicrosoftExtensionsPrimitivesVersion>
+		<MicrosoftExtensionsOptionsConfigurationExtensionsVersion>$(DotNetVersion)</MicrosoftExtensionsOptionsConfigurationExtensionsVersion>
+		<MicrosoftExtensionsLocalizationVersion>6.0.0-preview.4.21253.5</MicrosoftExtensionsLocalizationVersion>
+		<MicrosoftJSInteropWebAssemblyVersion>$(DotNetVersion)</MicrosoftJSInteropWebAssemblyVersion>
+		<MicrosoftEntityFrameworkCoreVersion>6.0.0-preview.4.21253.1</MicrosoftEntityFrameworkCoreVersion>
+		<MicrosoftEntityFrameworkCoreSqlServerVersion>$(MicrosoftEntityFrameworkCoreVersion)</MicrosoftEntityFrameworkCoreSqlServerVersion>
+		<MicrosoftEntityFrameworkCoreDesignVersion>$(MicrosoftEntityFrameworkCoreVersion)</MicrosoftEntityFrameworkCoreDesignVersion>
+		<MicrosoftEntityFrameworkCoreToolsVersion>$(MicrosoftEntityFrameworkCoreVersion)</MicrosoftEntityFrameworkCoreToolsVersion>
+		<MicrosoftEntityFrameworkCoreSqliteVersion>$(MicrosoftEntityFrameworkCoreVersion)</MicrosoftEntityFrameworkCoreSqliteVersion>
+		<MicrosoftIdentityWebVersion>1.11.0</MicrosoftIdentityWebVersion>
+		<MicrosoftIdentityWebUIVersion>$(MicrosoftIdentityWebVersion)</MicrosoftIdentityWebUIVersion>
+		<MicrosoftIdentityWebMicrosoftGraphVersion>$(MicrosoftIdentityWebVersion)</MicrosoftIdentityWebMicrosoftGraphVersion>
+	</PropertyGroup>
+</Project>

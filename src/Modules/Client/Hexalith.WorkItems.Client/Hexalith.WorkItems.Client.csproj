@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\Core\Application\Hexalith.Application.Abstractions\Hexalith.Application.Abstractions.csproj" />
+	  <ProjectReference Include="..\..\..\Core\Infrastructure\Hexalith.Infrastructure.BlazorClient\Hexalith.Infrastructure.BlazorClient.csproj" />
+	  <ProjectReference Include="..\..\..\Core\Infrastructure\Hexalith.Infrastructure.VisualComponents\Hexalith.Infrastructure.VisualComponents.csproj" />
+	  <ProjectReference Include="..\..\Shared\Hexalith.WorkItems.Shared\Hexalith.WorkItems.Shared.csproj" />
+	</ItemGroup>
+</Project>

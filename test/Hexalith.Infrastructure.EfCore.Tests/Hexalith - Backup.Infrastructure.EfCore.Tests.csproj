@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\src\Core\Application\Bistrotic.Application.Abstractions\Bistrotic.Application.Abstractions.csproj" />
+		<ProjectReference Include="..\..\src\Core\Domain\Bistrotic.Domain.Abstractions\Bistrotic.Domain.Abstractions.csproj" />
+		<ProjectReference Include="..\..\src\Core\Infrastructure\Bistrotic.Infrastructure.EfCore\Bistrotic.Infrastructure.EfCore.csproj" />
+		<ProjectReference Include="..\..\src\Core\Infrastructure\Bistrotic.Infrastructure.EfCore\Bistrotic.Infrastructure.EfCore.csproj" />
+		<ProjectReference Include="..\Bistrotic.Application.Abstractions.Tests\Bistrotic.Application.Abstractions.Tests.csproj" />
+		<ProjectReference Include="..\Bistrotic.Infrastructure.Abstractions.Tests\Bistrotic.Infrastructure.Abstractions.Tests.csproj" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<RootNamespace>Hexalith.MudBlazorTheme</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="MudBlazor" Version="$(MudBlazorVersion)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Core\Domain\Hexalith.Domain.Abstractions\Hexalith.Domain.Abstractions.csproj" />
+		<ProjectReference Include="..\..\..\Core\Infrastructure\Hexalith.Infrastructure.VisualComponents\Hexalith.Infrastructure.VisualComponents.csproj" />
+		<ProjectReference Include="..\Hexalith.ApplicationLayer.Common\Hexalith.ApplicationLayer.Common.csproj" />
+		<ProjectReference Include="..\Hexalith.MudBlazorTheme.Contracts\Hexalith.MudBlazorTheme.Contracts.csproj" />
+	</ItemGroup>
+</Project>

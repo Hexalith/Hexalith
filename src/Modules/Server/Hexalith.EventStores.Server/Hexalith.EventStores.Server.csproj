@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<OutputType>Library</OutputType>
+		<RootNamespace>Hexalith.EventStores</RootNamespace>
+		<ModuleName>EventStores</ModuleName>
+	</PropertyGroup>
+	<Import Project="..\..\Shared\Hexalith.EventStores.Shared\Hexalith.EventStores.Shared.projitems" Label="Shared" />
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="$(MicrosoftAspNetCoreDiagnosticsEntityFrameworkCoreVersion)" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Core\Infrastructure\Hexalith.Infrastructure.EfCore\Hexalith.Infrastructure.EfCore.csproj" />
+		<ProjectReference Include="..\..\Client\Hexalith.EventStores.Client\Hexalith.EventStores.Client.csproj" />
+	</ItemGroup>
+</Project>

@@ -1,0 +1,31 @@
+﻿@if (ThemeName.Equals("Fast"))
+{
+    <fast-option Disabled="@Disabled" Value="@Value" Selected="@Selected" @attributes="AdditionalAttributes">@ChildContent</fast-option>
+    
+}
+else if (ThemeName.Equals("Fluent")) 
+{
+    <fluent-option Disabled="@Disabled" Value="@Value" Selected="@Selected" @attributes="AdditionalAttributes">@ChildContent</fluent-option>
+}
+else
+{
+    <DynamicComponent Type="@typeof(Option)" Disabled="@Disabled" Value="@Value" Selected="@Selected" @attributes="AdditionalAttributes">
+        @ChildContent
+    </DynamicComponent>
+}
+
+@code
+{
+    [CascadingParameter(Name = nameof(ThemeName))] public string ThemeName { get; set; } = "Fast";
+
+    [Parameter] public bool? Disabled { get; set; }
+
+    [Parameter] public string Value { get; set; } = default!;
+
+    [Parameter] public bool? Selected { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)] public IDictionary<string, object> AdditionalAttributes { get; set; } = default!;
+
+    [Parameter] public RenderFragment ChildContent { get; set; } = default!;
+
+}

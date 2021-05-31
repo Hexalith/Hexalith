@@ -1,0 +1,9 @@
+﻿.header {
+	align-items: center;
+	color: var(--neutral-foreground-hint);
+	display: grid;
+	font: 16px aktiv-grotesk,Segoe UI,Arial,Helvetica,sans-serif;
+	grid-column: 1/-1;
+	grid-template-columns: auto 1fr auto;
+	padding: 0 40px;
+}

@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<OutputType>Library</OutputType>
+		<RootNamespace>Hexalith.UblDocuments</RootNamespace>
+		<ModuleName>UblDocuments</ModuleName>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Core\Infrastructure\Hexalith.Infrastructure.EfCore\Hexalith.Infrastructure.EfCore.csproj" />
+		<ProjectReference Include="..\..\Shared\Hexalith.DataIntegrations.Contracts\Hexalith.DataIntegrations.Contracts.csproj" />
+		<ProjectReference Include="..\..\Shared\Hexalith.UblDocuments.Common\Hexalith.UblDocuments.Common.csproj" />
+	</ItemGroup>
+</Project>

@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<RootNamespace>Hexalith.MudBlazorTheme</RootNamespace>
+		<ModuleName>MudBlazorTheme</ModuleName>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\Shared\Hexalith.MudBlazorTheme.Common\Hexalith.MudBlazorTheme.Common.csproj" />
+		<ProjectReference Include="..\..\Shared\Hexalith.MudBlazorTheme.Contracts\Hexalith.MudBlazorTheme.Contracts.csproj" />
+	</ItemGroup>
+</Project>

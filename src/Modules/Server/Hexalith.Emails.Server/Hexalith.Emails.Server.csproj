@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<OutputType>Library</OutputType>
+		<RootNamespace>Hexalith.Emails</RootNamespace>
+		<ModuleName>Emails</ModuleName>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Core\Infrastructure\Hexalith.Infrastructure.EfCore\Hexalith.Infrastructure.EfCore.csproj" />
+		<ProjectReference Include="..\..\..\Core\Infrastructure\Hexalith.Infrastructure.MicrosoftGraph\Hexalith.Infrastructure.MicrosoftGraph.csproj" />
+		<ProjectReference Include="..\..\Client\Hexalith.Emails.Client\Hexalith.Emails.Client.csproj" />
+		<ProjectReference Include="..\..\Shared\Hexalith.Emails.Common\Hexalith.Emails.Common.csproj" />
+		<ProjectReference Include="..\..\Shared\Hexalith.Emails.Contracts\Hexalith.Emails.Contracts.csproj" />
+		<ProjectReference Include="..\..\Shared\Hexalith.Emails.Projections\Hexalith.Emails.Projections.csproj" />
+	</ItemGroup>
+</Project>

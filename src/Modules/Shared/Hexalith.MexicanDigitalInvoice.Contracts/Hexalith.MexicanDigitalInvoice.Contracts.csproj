@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<RootNamespace>Hexalith.MexicanDigitalInvoice</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="protobuf-net" Version="$(ProtobufNetVersion)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Core\Domain\Hexalith.Domain.Contracts\Hexalith.Domain.Contracts.csproj" />
+	</ItemGroup>
+</Project>

@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<RootNamespace>Hexalith.UblDocuments</RootNamespace>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="ExtendedXmlSerializer" Version="$(ExtendedXmlSerializerVersion)" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Hexalith.UblDocuments.Contracts\Hexalith.UblDocuments.Contracts.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Application\" />
+	</ItemGroup>
+</Project>

@@ -1,0 +1,8 @@
+<Project>
+	<Import Project="..\Directory.build.props" />
+	<PropertyGroup>
+		<NoWarn>$(NoWarn);RCS1090</NoWarn>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	</PropertyGroup>
+</Project>

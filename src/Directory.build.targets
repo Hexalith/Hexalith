@@ -1,0 +1,14 @@
+<Project>
+	<Target Name="AssemblyVersionTarget" AfterTargets="MinVer">
+		<PropertyGroup>
+			<BuildVersion Condition="'$(APPVEYOR_BUILD_NUMBER)' != ''">$(APPVEYOR_BUILD_NUMBER)</BuildVersion>
+			<BuildVersion Condition="'$(BUILD_BUILDNUMBER)' != ''">$(BUILD_BUILDNUMBER)</BuildVersion>
+			<BuildVersion Condition="'$(BuildVersion)' == ''">0</BuildVersion>
+			<PackageVersion Condition="'$(Configuration)' == 'Release'">$(MinVerMajor).$(MinVerMinor).$(MinVerPatch)</PackageVersion>
+			<PackageVersion Condition="'$(Configuration)' != 'Release'">$(MinVerMajor).$(MinVerMinor).$(MinVerPatch)-preview$(BuildVersion)</PackageVersion>
+			<Version>$(MinVerMajor).$(MinVerMinor).$(MinVerPatch).$(BuildVersion)</Version>
+			<FileVersion>$(Version)</FileVersion>
+			<AssemblyVersion>$(Version)</AssemblyVersion>
+		</PropertyGroup>
+	</Target>
+</Project>

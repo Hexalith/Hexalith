@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="TestFiles\Mexican_Invoice.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="TestFiles\Mexican_Invoice.xml">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\..\src\Modules\Shared\Hexalith.MexicanDigitalInvoice.Common\Hexalith.MexicanDigitalInvoice.Common.csproj" />
+	</ItemGroup>
+</Project>

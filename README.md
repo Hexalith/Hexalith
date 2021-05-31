@@ -1,1 +1,2 @@
-# Hexalith
+# Bistrotic
+Distributed application framework

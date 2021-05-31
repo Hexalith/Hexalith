@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\..\src\Modules\Server\Hexalith.Emails.Server\Hexalith.Emails.Server.csproj" />
+		<ProjectReference Include="..\..\..\..\src\Modules\Shared\Hexalith.Emails.Common\Hexalith.Emails.Common.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Fixtures\" />
+	</ItemGroup>
+</Project>

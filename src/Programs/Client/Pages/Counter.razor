@@ -1,0 +1,16 @@
+﻿@page "/counter"
+
+<h1>Counter</h1>
+
+<p>Current count: <smart-badge>@currentCount</smart-badge>/></p>
+
+<fast-button appearance="accent" @onclick="IncrementCount">Click Me</fast-button>
+
+@code {
+	private int currentCount = 0;
+
+	private void IncrementCount()
+	{
+		currentCount++;
+	}
+}

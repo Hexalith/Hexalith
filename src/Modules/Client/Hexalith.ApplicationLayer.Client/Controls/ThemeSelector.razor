@@ -1,0 +1,41 @@
+﻿@inject IComponentRendererProvider ThemeProvider
+@if(ThemeNames == null)
+{
+	<div>Initializing...</div>
+}
+else
+{
+	<label id="theme-selector">Theme</label>
+	<br />
+	<Listbox aria-labelledby="theme-selector" name="theme-selector">
+		@foreach(var name in ThemeNames)
+		{
+			<Option Selected="@IsSelectedTheme(name)" Value="@name">@name</Option>
+		}
+	</Listbox>
+}
+@code {
+	IEnumerable<string>? ThemeNames = null;
+
+	[CascadingParameter(Name = nameof(ThemeName))]
+	public string ThemeName { get; set; } = default!;
+
+	protected override void OnInitialized()
+	{
+		if (ThemeNames == null)
+		{
+			HashSet<string> themeNames = new (new string[] {"Fast", "Fluent" });
+			foreach (var theme in ThemeProvider.ThemeNames)
+			{
+				themeNames.Add(theme);
+			}
+			ThemeNames = themeNames;
+		}
+	}
+	private bool OnClick(string name)
+	{
+		ThemeName = name;
+		return true;
+	}
+	private bool IsSelectedTheme(string themeName) => themeName.Equals(ThemeName); 
+}

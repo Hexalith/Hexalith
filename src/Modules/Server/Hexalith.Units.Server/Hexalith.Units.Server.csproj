@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<OutputType>Library</OutputType>
+		<RootNamespace>Hexalith.Units</RootNamespace>
+		<ModuleName>Units</ModuleName>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Shared\Hexalith.Units.Shared\Hexalith.Units.Shared.csproj" />
+	</ItemGroup>
+</Project>

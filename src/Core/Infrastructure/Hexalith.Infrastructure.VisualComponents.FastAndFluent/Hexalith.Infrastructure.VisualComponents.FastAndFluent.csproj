@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<NoWarn>$(NoWarn);CS3008</NoWarn>
+		<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+		<GenerateMvcApplicationPartsAssemblyAttributes>true</GenerateMvcApplicationPartsAssemblyAttributes>
+		<RazorCompileOnBuild>true</RazorCompileOnBuild>
+		<IncludeRazorContentInPack>false</IncludeRazorContentInPack>
+		<GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+		<EnableDefaultRazorGenerateItems>true</EnableDefaultRazorGenerateItems>
+		<RootNamespace>Bistrotic.Infrastructure.VisualComponents</RootNamespace>
+	</PropertyGroup>
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Bistrotic.Infrastructure.VisualComponents\Bistrotic.Infrastructure.VisualComponents.csproj" />
+	</ItemGroup>
+</Project>

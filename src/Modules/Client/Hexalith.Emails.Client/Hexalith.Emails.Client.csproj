@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<RootNamespace>Hexalith.Emails</RootNamespace>
+		<ModuleName>Emails</ModuleName>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Core\Infrastructure\Hexalith.Infrastructure.MicrosoftGraph\Hexalith.Infrastructure.MicrosoftGraph.csproj" />
+		<ProjectReference Include="..\..\Shared\Hexalith.Emails.Common\Hexalith.Emails.Common.csproj" />
+		<ProjectReference Include="..\..\Shared\Hexalith.Emails.Contracts\Hexalith.Emails.Contracts.csproj" />
+		<ProjectReference Include="..\..\Shared\Hexalith.Emails.Projections\Hexalith.Emails.Projections.csproj" />
+	</ItemGroup>
+</Project>

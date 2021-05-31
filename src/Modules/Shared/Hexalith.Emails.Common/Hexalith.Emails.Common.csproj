@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<RootNamespace>Hexalith.Emails</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Core\Application\Hexalith.Application.Abstractions\Hexalith.Application.Abstractions.csproj" />
+		<ProjectReference Include="..\..\..\Core\Domain\Hexalith.Domain.Abstractions\Hexalith.Domain.Abstractions.csproj" />
+		<ProjectReference Include="..\..\..\Core\Infrastructure\Hexalith.Infrastructure.MicrosoftGraph\Hexalith.Infrastructure.MicrosoftGraph.csproj" />
+		<ProjectReference Include="..\Hexalith.Emails.Contracts\Hexalith.Emails.Contracts.csproj" />
+		<ProjectReference Include="..\Hexalith.Emails.Projections\Hexalith.Emails.Projections.csproj" />
+	</ItemGroup>
+</Project>

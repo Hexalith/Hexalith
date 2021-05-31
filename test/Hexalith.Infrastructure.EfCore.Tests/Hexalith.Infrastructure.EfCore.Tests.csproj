@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="EfCore.TestSupport" Version="$(EfCoreTestSupportVersion)" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="$(MicrosoftEntityFrameworkCoreSqliteVersion)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\src\Core\Application\Hexalith.Application.Abstractions\Hexalith.Application.Abstractions.csproj" />
+		<ProjectReference Include="..\..\src\Core\Domain\Hexalith.Domain.Abstractions\Hexalith.Domain.Abstractions.csproj" />
+		<ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.EfCore\Hexalith.Infrastructure.EfCore.csproj" />
+		<ProjectReference Include="..\Hexalith.Application.Abstractions.Tests\Hexalith.Application.Abstractions.Tests.csproj" />
+		<ProjectReference Include="..\Hexalith.Infrastructure.Abstractions.Tests\Hexalith.Infrastructure.Abstractions.Tests.csproj" />
+	</ItemGroup>
+</Project>

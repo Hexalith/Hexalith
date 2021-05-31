@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<UserSecretsId>Hexalith.Server-1FC1BD61-13EC-45BE-BAC1-DDBF55AE4137</UserSecretsId>
+		<NoWarn>1701;1702;$(NoWarn)</NoWarn>
+		<GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<DockerfileContext>..\..\..</DockerfileContext>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.InMemory\Hexalith.Infrastructure.InMemory.csproj" />
+		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.Ioc\Hexalith.Infrastructure.Ioc.csproj" />
+		<ProjectReference Include="..\..\Modules\Server\Hexalith.ApplicationLayer.Server\Hexalith.ApplicationLayer.Server.csproj" />
+		<ProjectReference Include="..\..\Modules\Server\Hexalith.DataIntegrations.Server\Hexalith.DataIntegrations.Server.csproj" />
+		<ProjectReference Include="..\..\Modules\Server\Hexalith.Emails.Server\Hexalith.Emails.Server.csproj" />
+		<ProjectReference Include="..\..\Modules\Server\Hexalith.EventStores.Server\Hexalith.EventStores.Server.csproj" />
+		<ProjectReference Include="..\..\Modules\Server\Hexalith.GoogleIdentity.Server\Hexalith.GoogleIdentity.Server.csproj" />
+		<ProjectReference Include="..\..\Modules\Server\Hexalith.MexicanDigitalInvoice.Server\Hexalith.MexicanDigitalInvoice.Server.csproj" />
+		<ProjectReference Include="..\..\Modules\Server\Hexalith.MudBlazorTheme\Hexalith.MudBlazorTheme.Server.csproj" />
+		<ProjectReference Include="..\..\Modules\Server\Hexalith.QuartzScheduler.Server\Hexalith.QuartzScheduler.Server.csproj" />
+		<ProjectReference Include="..\..\Modules\Server\Hexalith.Roles.Server\Hexalith.Roles.Server.csproj" />
+		<ProjectReference Include="..\..\Modules\Server\Hexalith.MicrosoftIdentity.Server\Hexalith.MicrosoftIdentity.Server.csproj" />
+		<ProjectReference Include="..\..\Modules\Server\Hexalith.SalesHistory.Server\Hexalith.SalesHistory.Server.csproj" />
+		<ProjectReference Include="..\..\Modules\Server\Hexalith.UblDocuments.Server\Hexalith.UblDocuments.Server.csproj" />
+		<ProjectReference Include="..\..\Modules\Server\Hexalith.Units.Server\Hexalith.Units.Server.csproj" />
+		<ProjectReference Include="..\..\Modules\Server\Hexalith.Users.Server\Hexalith.Users.Server.csproj" />
+		<ProjectReference Include="..\..\Modules\Server\Hexalith.WorkItems.Server\Hexalith.WorkItems.Server.csproj" />
+		<ProjectReference Include="..\..\Modules\Server\Hexalith.OpenIdDict.Server\Hexalith.OpenIdDict.Server.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Client\Hexalith.Client.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Grpc.Tools" Version="$(GrpcToolsVersion)">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="$(MicrosoftExtensionsHostingVersion)" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.13" />
+	</ItemGroup>
+</Project>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>0a1be2c0-37c6-428d-8bf5-c2dddf7a0e4a</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Bistrotic.Infrastructure.CodeGeneration.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Diagnostics\DiagnosticMessages.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\ModuleNameNotFoundException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\NamespaceNameNotFoundException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\GeneratorExecutionContextExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Messages\CommandDefinition.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Messages\MessageDefinition.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Messages\PropertyDefinition.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Messages\QueryDefinition.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QueryCommandSyntaxReceiver.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SourceGeneratorBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="$(MSBuildThisFileDirectory)AnalyzerReleases.Shipped.md" />
+    <AdditionalFiles Include="$(MSBuildThisFileDirectory)AnalyzerReleases.Unshipped.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)BCG0001_BistroticCodeGenerationError_Link.md" />
+    <None Include="$(MSBuildThisFileDirectory)BCG0002_BistroticCodeGeneration_Link.md" />
+  </ItemGroup>
+</Project>
