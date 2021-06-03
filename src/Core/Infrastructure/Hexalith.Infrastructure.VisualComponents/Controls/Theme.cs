@@ -10,7 +10,7 @@
         [Parameter] public RenderFragment ChildContent { get; set; } = default!;
 
         [CascadingParameter(Name = nameof(ThemeName))]
-        public string ThemeName { get; set; } = "Fast";
+        public string ThemeName { get; set; } = "Fluent";
 
         protected override void BuildRenderTree(RenderTreeBuilder builder)
         {

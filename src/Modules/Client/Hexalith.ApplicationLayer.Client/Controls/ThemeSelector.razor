@@ -1,41 +1,59 @@
 ﻿@inject IComponentRendererProvider ThemeProvider
-@if(ThemeNames == null)
+@if (ThemeNames == null)
 {
-	<div>Initializing...</div>
+    <div>Initializing...</div>
 }
 else
 {
-	<label id="theme-selector">Theme</label>
-	<br />
-	<Listbox aria-labelledby="theme-selector" name="theme-selector">
-		@foreach(var name in ThemeNames)
-		{
-			<Option Selected="@IsSelectedTheme(name)" Value="@name">@name</Option>
-		}
-	</Listbox>
+   <PopupPanel>
+       <HeaderContent>
+           <Anchor>T</Anchor>
+       </HeaderContent>
+       <ChildContent>
+            <Listbox LabelledBy=@(Id+"-label") Id="@(Id+"-listbox")">
+                @foreach (var name in ThemeNames)
+                {
+                    <Option id="@(Id+"-option-"+name.ToLowerInvariant())" Selected="@(ThemeName == name)" Value="@name" OnSelected=@OnSelected >@name</Option>
+                }
+            </Listbox>          
+       </ChildContent>
+   </PopupPanel>
 }
 @code {
-	IEnumerable<string>? ThemeNames = null;
+    private IEnumerable<string>? ThemeNames = null;
 
-	[CascadingParameter(Name = nameof(ThemeName))]
-	public string ThemeName { get; set; } = default!;
+    [Parameter]
+    public string? Id { get; set; } = "theme-selector";
+    
+    [Parameter]
+    public EventCallback<string> OnThemeChange { get; set; }
 
-	protected override void OnInitialized()
-	{
-		if (ThemeNames == null)
-		{
-			HashSet<string> themeNames = new (new string[] {"Fast", "Fluent" });
-			foreach (var theme in ThemeProvider.ThemeNames)
-			{
-				themeNames.Add(theme);
-			}
-			ThemeNames = themeNames;
-		}
-	}
-	private bool OnClick(string name)
-	{
-		ThemeName = name;
-		return true;
-	}
-	private bool IsSelectedTheme(string themeName) => themeName.Equals(ThemeName); 
+    private string _themeName { get; set; } = "Fluent";
+
+    [CascadingParameter(Name = nameof(ThemeName))]
+    public string ThemeName { get; set; } = default!;
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IDictionary<string, object> AdditionalAttributes { get; set; } = default!;
+
+    protected override void OnInitialized()
+    {
+        if (ThemeNames == null)
+        {
+            HashSet<string> themeNames = new(new string[] { "Fast", "Fluent" });
+            foreach (var theme in ThemeProvider.ThemeNames)
+            {
+                themeNames.Add(theme);
+            }
+            ThemeNames = themeNames;
+        }
+    }
+
+    private async Task OnSelected(string value)
+    {
+        ThemeName = value;
+        await OnThemeChange.InvokeAsync(value);
+    }
+
+    private bool IsSelectedTheme(string themeName) => themeName.Equals(ThemeName);
 }

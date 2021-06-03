@@ -20,8 +20,8 @@
         {
         }
 
-        public EventNotSupportedException(object @event, string? message, Exception? innerException)
-            : base($"Event '{@event?.GetType().Name}' is not supported by state '{typeof(TState).Name}'.{message}", innerException)
+        public EventNotSupportedException(Type eventType, string? message = null, Exception? innerException = null)
+            : base($"Event '{eventType.FullName}' is not supported by state '{typeof(TState).FullName}'.{message}", innerException)
         {
         }
 

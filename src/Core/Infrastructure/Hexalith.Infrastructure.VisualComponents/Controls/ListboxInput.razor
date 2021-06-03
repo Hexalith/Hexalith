@@ -1,0 +1,43 @@
+﻿@using Microsoft.AspNetCore.Components.Forms
+@inherits InputBase<string>
+
+@if (ThemeName.Equals("Fast"))
+{
+    <fast-listbox id="@Id" aria-labelledby="@LabelledBy" name="@Name" @onchange="@OnChange">@ChildContent</fast-listbox>
+}
+else if (ThemeName.Equals("Fluent")) 
+{
+    <fluent-listbox id="@Id" aria-labelledby="@LabelledBy" name="@Name" @onchange="@OnChange">@ChildContent</fluent-listbox>
+}
+else
+{
+    <DynamicComponent Type="@typeof(Option)">
+        @ChildContent
+    </DynamicComponent>
+}
+
+@code
+{
+    [CascadingParameter(Name = nameof(ThemeName))] public string ThemeName { get; set; } = "Fluent";
+
+    [Parameter] public RenderFragment ChildContent { get; set; } = default!;
+
+    [Parameter] public string? Name { get; set; } = default!;
+    [Parameter] public string? LabelledBy { get; set; } = default!;
+    [Parameter] public string? Id { get; set; } = default!;
+
+    private void OnChange (ChangeEventArgs args)
+    {
+        var value = args.Value as string;
+        if (Value != value)
+        {
+            Value = value;
+        }
+    }
+    protected override bool TryParseValueFromString(string? value, out string? result, out string validationErrorMessage)
+    {
+        result = value;
+        validationErrorMessage = string.Empty;
+        return true;
+    }
+}

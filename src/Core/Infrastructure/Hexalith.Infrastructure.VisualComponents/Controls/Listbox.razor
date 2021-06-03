@@ -1,24 +1,27 @@
 ﻿@if (ThemeName.Equals("Fast"))
 {
-    <fast-listbox @attributes="AdditionalAttributes">@ChildContent</fast-listbox>
+    <fast-listbox id="@Id" aria-labelledby="@LabelledBy" name="@Name">@ChildContent</fast-listbox>
 }
 else if (ThemeName.Equals("Fluent")) 
 {
-    <fluent-listbox @attributes="AdditionalAttributes">@ChildContent</fluent-listbox>
+    <fluent-listbox id="@Id" aria-labelledby="@LabelledBy" name="@Name">@ChildContent</fluent-listbox>
 }
 else
 {
-    <DynamicComponent Type="@typeof(Option)" @attributes="AdditionalAttributes">
+    <DynamicComponent Type="@typeof(Option)">
         @ChildContent
     </DynamicComponent>
 }
 
+
 @code
 {
-    [CascadingParameter(Name = nameof(ThemeName))] public string ThemeName { get; set; } = "Fast";
-
-    [Parameter(CaptureUnmatchedValues = true)] public IDictionary<string, object> AdditionalAttributes { get; set; } = default!;
+    [CascadingParameter(Name = nameof(ThemeName))] public string ThemeName { get; set; } = "Fluent";
 
     [Parameter] public RenderFragment ChildContent { get; set; } = default!;
+
+    [Parameter] public string? Name { get; set; } = default!;
+    [Parameter] public string? LabelledBy { get; set; } = default!;
+    [Parameter] public string? Id { get; set; } = default!;
 
 }

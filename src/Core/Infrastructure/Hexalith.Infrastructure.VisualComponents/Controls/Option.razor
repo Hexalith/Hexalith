@@ -1,11 +1,11 @@
 ﻿@if (ThemeName.Equals("Fast"))
 {
-    <fast-option Disabled="@Disabled" Value="@Value" Selected="@Selected" @attributes="AdditionalAttributes">@ChildContent</fast-option>
+    <fast-option Disabled="@Disabled" Value="@Value" Selected="@Selected" @attributes="AdditionalAttributes" @onclick="() => OnSelect()">@ChildContent</fast-option>
     
 }
 else if (ThemeName.Equals("Fluent")) 
 {
-    <fluent-option Disabled="@Disabled" Value="@Value" Selected="@Selected" @attributes="AdditionalAttributes">@ChildContent</fluent-option>
+    <fluent-option Disabled="@Disabled" Value="@Value" Selected="@Selected" @attributes="AdditionalAttributes" @onclick="() => OnSelect()">@ChildContent</fluent-option>
 }
 else
 {
@@ -16,7 +16,7 @@ else
 
 @code
 {
-    [CascadingParameter(Name = nameof(ThemeName))] public string ThemeName { get; set; } = "Fast";
+    [CascadingParameter(Name = nameof(ThemeName))] public string ThemeName { get; set; } = "Fluent";
 
     [Parameter] public bool? Disabled { get; set; }
 
@@ -28,4 +28,14 @@ else
 
     [Parameter] public RenderFragment ChildContent { get; set; } = default!;
 
+    [Parameter]
+    public EventCallback<string> OnSelected { get; set; }
+    
+    private async Task OnSelect()
+    {
+        if (OnSelected.HasDelegate)
+        {
+            await OnSelected.InvokeAsync(Value);
+        }
+    }
 }

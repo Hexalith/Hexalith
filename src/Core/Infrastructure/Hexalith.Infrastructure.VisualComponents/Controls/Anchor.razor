@@ -1,0 +1,22 @@
+﻿@if(ThemeName.Equals("Fluent"))
+{
+    <fluent-anchor href="@Href" appearance="@Appearance.ToAttributeValue()" @attributes="AdditionalAttributes">@ChildContent</fluent-anchor>
+}
+else if (ThemeName.Equals("Fast"))
+{
+    <fast-anchor href="@Href" appearance="@Appearance.ToAttributeValue()" @attributes="AdditionalAttributes">@ChildContent</fast-anchor>
+}
+
+@code
+{
+    [CascadingParameter(Name = nameof(ThemeName))] 
+    public string ThemeName { get; set; } = "Fluent";
+
+    [Parameter] public string Href { get; set; } = default!;
+
+    [Parameter] public Appearance? Appearance { get; set; }
+
+    [Parameter] public RenderFragment ChildContent { get; set; } = default!;
+
+    [Parameter(CaptureUnmatchedValues = true)] public IDictionary<string, object> AdditionalAttributes { get; set; } = default!;
+}

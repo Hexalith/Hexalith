@@ -1,12 +1,24 @@
 ﻿@inherits LayoutComponentBase
-<CascadingValue Value="@ThemeName">
-    <div>@ThemeName</div>
+@inject NavigationManager uriHelper
+@inject ICommandService commandService
+@inject IQueryService queryService
+
+<CascadingValue Name="@nameof(ThemeName)" Value="@ThemeName">
     <Theme>
-        <ThemeSelector />
+        <ThemeSelector OnThemeChange=@OnThemeChange/>
     </Theme>
 </CascadingValue>
 
 @code
 {
-    private string ThemeName { get; set; } = "Fast";
+    private string ThemeName { get; set; } = "Fluent";
+
+    private async Task OnThemeChange(string value)
+    {
+        if (ThemeName != value)
+        {
+            await commandService.Tell(new GetUserThemeSettings())
+        }
+        uriHelper.NavigateTo(uriHelper.Uri, forceLoad: true);
+    }
 }

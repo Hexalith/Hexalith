@@ -9,7 +9,7 @@
     [ProtoContract]
     [DataContract]
     [Query]
-    public sealed class GetApplicationName
+    public class GetThemeSettings
     {
     }
 }
