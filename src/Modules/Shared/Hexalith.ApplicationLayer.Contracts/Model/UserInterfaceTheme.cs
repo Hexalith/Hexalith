@@ -6,7 +6,7 @@
 
     [ProtoContract]
     [DataContract]
-    public class UserInterfaceSettingsDetails
+    public class UserInterfaceTheme
     {
         [ProtoMember(1)]
         [DataMember(Order = 0)]

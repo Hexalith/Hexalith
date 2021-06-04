@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace Hexalith.ApplicationLayer.Domain
+﻿namespace Hexalith.ApplicationLayer.Domain
 {
+    using System.Collections.Generic;
+
     internal interface IUserSettingsState
     {
         string ThemeName { get; set; }

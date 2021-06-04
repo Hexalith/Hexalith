@@ -9,7 +9,10 @@
     [ProtoContract]
     [DataContract]
     [Query]
-    public class GetThemeSettings
+    public class GetUserInterfaceTheme
     {
+        [ProtoMember(1)]
+        [DataMember(Order = 0)]
+        public string UserName { get; set; } = default!;
     }
 }

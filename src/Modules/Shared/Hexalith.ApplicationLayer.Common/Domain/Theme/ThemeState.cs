@@ -2,6 +2,6 @@
 {
     internal class ThemeState
     {
-        public string Name { get; set; } = string.Empty;
+        public string ThemeSystemName { get; set; } = string.Empty;
     }
 }
