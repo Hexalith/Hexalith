@@ -6,6 +6,8 @@
     {
         public Task Add(string key, TState value);
 
+        new public Task<TState?> Find(string key);
+
         new public Task<TState> Get(string key);
     }
 }

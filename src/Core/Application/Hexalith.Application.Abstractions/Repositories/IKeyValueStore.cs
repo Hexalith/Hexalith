@@ -8,6 +8,8 @@
 
         public Task<bool> Exists(string key);
 
+        public Task<object?> Find(string key);
+
         public Task<object> Get(string key);
 
         public Task Remove(string key);
