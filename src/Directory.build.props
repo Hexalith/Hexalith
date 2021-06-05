@@ -13,6 +13,20 @@
 		<MinVerTagPrefix>v</MinVerTagPrefix>
 		<MinVerDefaultPreReleasePhase>preview</MinVerDefaultPreReleasePhase>
 	</PropertyGroup>
+	<PropertyGroup>
+		<!-- Package Information-->
+		<IsPackable>True</IsPackable>
+		<Authors>Jérôme Piquot</Authors>
+		<Company>Fiveforty</Company>
+		<PackageTags>Hexagonal;Cloud;Distributed;Event;Command;Query;CQRS;Microservice</PackageTags>
+		<Description>
+			This library enables creating distributed hexagonal applications.
+		</Description>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageOutputDir>\LocalPackageRepository</PackageOutputDir>
+		<MinVerAutoIncrement>patch</MinVerAutoIncrement>
+	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="$(MicrosoftSourceLinkGitHubVersion)" PrivateAssets="All" />
 		<PackageReference Include="MinVer" Version="$(MinVerVersion)">
