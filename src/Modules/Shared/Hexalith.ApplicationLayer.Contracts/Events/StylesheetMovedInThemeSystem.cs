@@ -9,11 +9,11 @@
     [ProtoContract]
     [DataContract]
     [Command]
-    public class StylesheetRemovedFromThemeSystem
+    public class StylesheetMovedInThemeSystem
     {
         [ProtoMember(3)]
         [DataMember(Order = 2)]
-        public int Position { get; set; }
+        public int FromPosition { get; set; }
 
         [ProtoMember(2)]
         [DataMember(Order = 1)]
@@ -22,5 +22,9 @@
         [ProtoMember(1)]
         [DataMember(Order = 0)]
         public string ThemeSystemName { get; set; } = string.Empty;
+
+        [ProtoMember(4)]
+        [DataMember(Order = 3)]
+        public int ToPosition { get; set; }
     }
 }

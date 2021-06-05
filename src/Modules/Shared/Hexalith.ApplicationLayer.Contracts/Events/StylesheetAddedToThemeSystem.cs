@@ -13,7 +13,7 @@
     {
         [ProtoMember(3)]
         [DataMember(Order = 2)]
-        public int? AfterPosition { get; set; }
+        public int Position { get; set; }
 
         [ProtoMember(2)]
         [DataMember(Order = 1)]

@@ -21,28 +21,16 @@
         }
 
         public Task Add(string key, object value)
-        {
-            return Add(key, (TState)value);
-        }
+            => Add(key, (TState)value);
 
         public Task<bool> Exists(string key)
-        {
-            return Task.FromResult(_states.ContainsKey(key));
-        }
+            => Task.FromResult(_states.ContainsKey(key));
 
         public async Task<TState?> Find(string key)
-        {
-            if (await Exists(key))
-            {
-                return await Get(key);
-            }
-            return default;
-        }
+            => await Exists(key) ? await Get(key) : default;
 
         public Task<TState> Get(string key)
-        {
-            return Task.FromResult(_states[key]);
-        }
+            => Task.FromResult(_states[key]);
 
         public Task Remove(string key)
         {
@@ -51,13 +39,9 @@
         }
 
         async Task<object?> IKeyValueStore.Find(string key)
-        {
-            return await Find(key);
-        }
+            => await Find(key);
 
         async Task<object> IKeyValueStore.Get(string key)
-        {
-            return (await Get(key))!;
-        }
+            => (await Get(key))!;
     }
 }

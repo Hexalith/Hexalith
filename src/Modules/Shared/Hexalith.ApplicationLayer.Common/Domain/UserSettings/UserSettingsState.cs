@@ -5,7 +5,7 @@
     using Hexalith.ApplicationLayer.Application.Events;
     using Hexalith.Domain.Exceptions;
 
-    internal class UserSettingsState : IUserSettingsState
+    public class UserSettingsState : IUserSettingsState
     {
         public string ThemeName { get; set; } = string.Empty;
 
