@@ -36,13 +36,6 @@ jobs:
     - name: Unit Tests
       run: |
         dotnet test -c Release --no-restore --no-build ./test/Hexalith.Tests/Hexalith.Tests.csproj 
-    - name: Functional Tests
-      if: matrix.os == 'ubuntu-latest'
-      run: |
-        cd test/OrchardCore.Tests.Functional
-        npm install
-        npm run cms:test
-        npm run mvc:test
     - name: Deploy preview nuget packages
       if: matrix.os == 'ubuntu-latest'
       run: |
