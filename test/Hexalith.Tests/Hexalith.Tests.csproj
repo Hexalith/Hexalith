@@ -21,4 +21,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Core\Common\Hexalith.Extensions\Hexalith.Extensions.csproj" />
+  </ItemGroup>
+
 </Project>
