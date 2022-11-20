@@ -1,12 +1,5 @@
 <Project>
-	<PropertyGroup>
-		<Authors>Jérôme Piquot</Authors>
-		<Company>Fiveforty</Company>
-		<Product>Hexalith</Product>
-		<Description>Hexalith is a set of libraries to build a microservice architecture.</Description>
-		<RepositoryUrl>https://github.com/Hexalith/Hexalith</RepositoryUrl>
-		<RepositoryType>git</RepositoryType>
-	</PropertyGroup>
+	<Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
 	<PropertyGroup>
 		<MinVerTagPrefix>v</MinVerTagPrefix>
 		<MinVerSkip Condition="'$(Configuration)' == 'Debug'">true</MinVerSkip>

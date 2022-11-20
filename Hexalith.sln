@@ -24,10 +24,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Extensions", "src\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Global", "_Global", "{2A055449-2696-4BE3-B3A6-C206C0E2B43B}"
 	ProjectSection(SolutionItems) = preProject
-		src\Directory.Build.props = src\Directory.Build.props
+		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3BE1D646-272F-4F96-931E-D1BA781583B4}"
+	ProjectSection(SolutionItems) = preProject
+		test\Directory.Build.props = test\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_CICD", "_CICD", "{29DC5CD7-D89B-4981-91E7-59FCD4A4379F}"
 	ProjectSection(SolutionItems) = preProject
@@ -35,6 +38,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_CICD", "_CICD", "{29DC5CD7
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.Tests", "test\Hexalith.Tests\Hexalith.Tests.csproj", "{2C133F65-DFA3-438A-BCAB-C23AAB374EE7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D2DA3040-462E-4E0E-9CFE-3EA95FA3D014}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,10 +63,12 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{45BF37A5-A98F-40C9-A990-79F051A3057B} = {D2DA3040-462E-4E0E-9CFE-3EA95FA3D014}
 		{4BF53A8A-B344-4C1A-AE24-1FC41E2188E9} = {45BF37A5-A98F-40C9-A990-79F051A3057B}
 		{FA933B2A-DC9F-44A0-94C7-C5D2D49C550B} = {45BF37A5-A98F-40C9-A990-79F051A3057B}
 		{AA983AFF-9CBC-4F2A-98E3-3CACA5039C61} = {45BF37A5-A98F-40C9-A990-79F051A3057B}
 		{5A9735A3-CEE9-4E50-B2FD-54F0BF402002} = {45BF37A5-A98F-40C9-A990-79F051A3057B}
+		{2B0C1C79-33D3-47D4-BBCC-B82EF7E1FFEF} = {D2DA3040-462E-4E0E-9CFE-3EA95FA3D014}
 		{17B5063E-AD44-4CB4-A4E2-211AC08F2DEA} = {2B0C1C79-33D3-47D4-BBCC-B82EF7E1FFEF}
 		{1959557F-5EAF-4B1E-BF3F-313AC68EFA49} = {4BF53A8A-B344-4C1A-AE24-1FC41E2188E9}
 		{2C133F65-DFA3-438A-BCAB-C23AAB374EE7} = {3BE1D646-272F-4F96-931E-D1BA781583B4}
