@@ -28,7 +28,7 @@ jobs:
       run: echo "BuildNumber=$(( $GITHUB_RUN_NUMBER + 16368 ))" >> $GITHUB_ENV
     - name: Build
       run: |
-        dotnet build --configuration Release --framework net7.0
+        dotnet build --configuration Release
     - name: Unit Tests
       run: |
         dotnet test -c Release --no-restore --no-build ./test/Hexalith.Tests/Hexalith.Tests.csproj 
