@@ -8,19 +8,36 @@ using Hexalith.Extensions;
 public class UniqueHelperTest
 {
 	[Fact]
-	public void Get_a_thousand_unique_id_without_any_duplicates()
+	public void Get_a_hundred_date_time_id_string_without_any_duplicates()
 	{
 		HashSet<string> ids = new();
-		for (int i = 0; i < 1000; i++)
+		for (int i = 0; i < 100; i++)
 		{
-			_ = ids.Add(UniqueIdHelper.GetUniqueStringId());
+			_ = ids.Add(UniqueIdHelper.GenerateDateTimeId());
 		}
 	}
 
 	[Fact]
-	public void Get_unique_id_returns_22_chars()
+	public void Get_a_thousand_unique_id_string_without_any_duplicates()
 	{
-		string id = UniqueIdHelper.GetUniqueStringId();
+		HashSet<string> ids = new();
+		for (int i = 0; i < 1000; i++)
+		{
+			_ = ids.Add(UniqueIdHelper.GenerateUniqueStringId());
+		}
+	}
+
+	[Fact]
+	public void Get_date_time_id_string_returns_17_chars()
+	{
+		string id = UniqueIdHelper.GenerateDateTimeId();
+		_ = id.Should().HaveLength(17, "Because the id is a millisecond precision date time string");
+	}
+
+	[Fact]
+	public void Get_unique_id_string_returns_22_chars()
+	{
+		string id = UniqueIdHelper.GenerateUniqueStringId();
 		_ = id.Should().HaveLength(22, "Because the id is a base64 string of 16 bytes");
 	}
 }
