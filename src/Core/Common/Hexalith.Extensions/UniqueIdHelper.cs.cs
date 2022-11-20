@@ -3,7 +3,7 @@ namespace Hexalith.Extensions;
 
 public class UniqueIdHelper
 {
-	public static string UniqueStringId()
+	public static string GetUniqueStringId()
 	{
 		return Convert
 				.ToBase64String(Guid.NewGuid().ToByteArray())[..22]

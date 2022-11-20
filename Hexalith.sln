@@ -29,6 +29,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Global", "_Global", "{2A05
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3BE1D646-272F-4F96-931E-D1BA781583B4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_CICD", "_CICD", "{29DC5CD7-D89B-4981-91E7-59FCD4A4379F}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\preview_ci.yml = .github\workflows\preview_ci.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
