@@ -7,4 +7,27 @@
 		<RepositoryUrl>https://github.com/Hexalith/Hexalith</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 	</PropertyGroup>
+	<PropertyGroup>
+		<MinVerTagPrefix>v</MinVerTagPrefix>
+		<MinVerSkip Condition="'$(Configuration)' == 'Debug'">true</MinVerSkip>
+		<Deterministic>true</Deterministic>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="MinVer" Version="4.2.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+	<ItemGroup>
+		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+			<_Parameter1>Hexalith.Tests</_Parameter1>
+		</AssemblyAttribute>
+	</ItemGroup>
+	<Target Name="AssemblyVersionTarget" AfterTargets="MinVer" Condition="'$(MinVerVersion)'!='' AND '$(BuildNumber)' != ''">
+		<PropertyGroup>
+			<FileVersion>$(MinVerMajor).$(MinVerMinor).$(MinVerPatch).$(BuildNumber)</FileVersion>
+			<Version>$(MinVerMajor).$(MinVerMinor).$(MinVerPatch).$(BuildNumber)</Version>
+			<AssemblyVersion>$(MinVerMajor).$(MinVerMinor).$(MinVerPatch).$(BuildNumber)</AssemblyVersion>
+		</PropertyGroup>
+	</Target>
 </Project>
