@@ -18,13 +18,12 @@ public class UniqueIdHelper
 		lock (_lock)
 		{
 			string value = DateTime.Now.ToString("yyyyMMddHHmmssfff");
-			if (value == _previousDateTimeId)
+			while (value == _previousDateTimeId)
 			{
-				Task.Delay(1).Wait();
-				return GenerateDateTimeId();
+				Thread.Sleep(1);
+				value = DateTime.Now.ToString("yyyyMMddHHmmssfff");
 			}
-			_previousDateTimeId = value;
-			return value;
+			return _previousDateTimeId = value;
 		}
 	}
 

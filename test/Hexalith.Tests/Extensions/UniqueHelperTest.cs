@@ -8,6 +8,18 @@ using Hexalith.Extensions;
 public class UniqueHelperTest
 {
 	[Fact]
+	public async Task Get_a_hundred_concurrent_date_time_id_string_without_any_duplicates()
+	{
+		List<Task<string>> ids = new();
+		for (int i = 0; i < 100; i++)
+		{
+			ids.Add(Task<string>.Run(UniqueIdHelper.GenerateDateTimeId));
+		}
+		string[] result = await Task.WhenAll(ids);
+		_ = result.Distinct().Count().Should().Be(100);
+	}
+
+	[Fact]
 	public void Get_a_hundred_date_time_id_string_without_any_duplicates()
 	{
 		HashSet<string> ids = new();
