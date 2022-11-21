@@ -8,7 +8,7 @@ Application blocks based on Dapr
 Stable (release/0.1): 
 
 [![Build status](https://github.com/Hexalith/Hexalith/actions/workflows/release_ci.yml/badge.svg)](https://github.com/Hexalith/Hexalith/actions?query=workflow%3A%22Release+-+CI%22)
-[![NuGet](https://img.shields.io/nuget/v/Hexalith.Extensions.Targets.svg)](https://www.nuget.org/packages/Hexalith.Extensions.Targets)
+[![NuGet](https://img.shields.io/nuget/v/Hexalith.Extensions.svg)](https://www.nuget.org/packages/Hexalith.Extensions)
 
 Nightly (main): 
 
@@ -16,7 +16,7 @@ Nightly (main):
 
 ## Status
 
-### 0.1.0
+### Version 0.1
 
 The software is in preview
 
