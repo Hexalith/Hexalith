@@ -43,4 +43,4 @@ jobs:
       if: matrix.os == 'ubuntu-latest'
       run: |
         dotnet pack -c Release --no-restore --no-build -p:Version=${{ steps.get_version.outputs.VERSION }} -p:TreatWarningsAsErrors=false
-        dotnet nuget push './src/**/*.nupkg' --api-key ${{secrets.NUGET_API_KEY}} -source https://api.nuget.org/v3/index.json --skip-duplicate
+        dotnet nuget push './src/**/*.nupkg' --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
