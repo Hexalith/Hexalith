@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Hexalith.Extensions\Hexalith.Extensions.csproj" />
+    <ProjectReference Include="..\Dynamics\Hexalith.Infrastructure.AzureActiveDirectory\Hexalith.Infrastructure.AzureActiveDirectory.csproj" />
+  </ItemGroup>
+
+</Project>

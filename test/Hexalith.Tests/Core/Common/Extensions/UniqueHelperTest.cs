@@ -1,0 +1,55 @@
+// Fiveforty S.A. Paris France (2022)
+
+namespace Hexalith.Tests.Core.Common.Extensions;
+
+using FluentAssertions;
+using Hexalith.Extensions.Common;
+
+public class UniqueHelperTest
+{
+    [Fact]
+    public async Task Get_a_hundred_concurrent_date_time_id_string_without_any_duplicates()
+    {
+        List<Task<string>> ids = new();
+        for (int i = 0; i < 100; i++)
+        {
+            ids.Add(Task.Run(UniqueIdHelper.GenerateDateTimeId));
+        }
+        string[] result = await Task.WhenAll(ids);
+        _ = result.Distinct().Count().Should().Be(100);
+    }
+
+    [Fact]
+    public void Get_a_hundred_date_time_id_string_without_any_duplicates()
+    {
+        HashSet<string> ids = new();
+        for (int i = 0; i < 100; i++)
+        {
+            _ = ids.Add(UniqueIdHelper.GenerateDateTimeId());
+        }
+    }
+
+    [Fact]
+    public void Get_a_thousand_unique_id_string_without_any_duplicates()
+    {
+        HashSet<string> ids = new();
+        for (int i = 0; i < 1000; i++)
+        {
+            _ = ids.Add(UniqueIdHelper.GenerateUniqueStringId());
+        }
+    }
+
+    [Fact]
+    public void Get_date_time_id_string_returns_17_chars()
+    {
+        string id = UniqueIdHelper.GenerateDateTimeId();
+        _ = id.Should().HaveLength(17, "Because the id is a millisecond precision date time string");
+    }
+
+    [Fact]
+    public void Get_unique_id_string_returns_22_chars()
+    {
+        string id = UniqueIdHelper.GenerateUniqueStringId();
+        _ = id.Should().HaveLength(22, "Because the id is a base64 string of 16 bytes");
+    }
+}
