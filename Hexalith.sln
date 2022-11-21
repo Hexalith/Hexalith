@@ -49,11 +49,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D2DA3040-462
 		src\Directory.Build.props = src\Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.Dynamics365FinanceAndOperations", "src\core\Infrastructure\Hexalith.Infrastructure.Dynamics365FinanceAndOperations\Hexalith.Infrastructure.Dynamics365FinanceAndOperations.csproj", "{7D336592-22DD-45C1-9430-669812D5DC56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.Dynamics365FinanceAndOperations", "src\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365FinanceAndOperations\Hexalith.Infrastructure.Dynamics365FinanceAndOperations.csproj", "{7D336592-22DD-45C1-9430-669812D5DC56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.Infrastructure.AzureActiveDirectory", "src\Core\Infrastructure\Dynamics\Hexalith.Infrastructure.AzureActiveDirectory\Hexalith.Infrastructure.AzureActiveDirectory.csproj", "{D1B1C270-70C1-4495-9626-B366A914E9F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.Security.Abstractions", "src\Core\Infrastructure\Hexalith.Infrastructure.Security.Abstractions\Hexalith.Infrastructure.Security.Abstractions.csproj", "{43CC200E-FEBE-44E0-B278-604872254DAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.Infrastructure.Security.Abstractions", "src\core\infrastructure\Hexalith.Infrastructure.Security.Abstractions\Hexalith.Infrastructure.Security.Abstractions.csproj", "{43CC200E-FEBE-44E0-B278-604872254DAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.AzureActiveDirectory", "src\Core\Infrastructure\Hexalith.Infrastructure.AzureActiveDirectory\Hexalith.Infrastructure.AzureActiveDirectory.csproj", "{E6204AB7-62EC-41C2-9DEC-7727D3B87B08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,14 +73,14 @@ Global
 		{7D336592-22DD-45C1-9430-669812D5DC56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D336592-22DD-45C1-9430-669812D5DC56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D336592-22DD-45C1-9430-669812D5DC56}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D1B1C270-70C1-4495-9626-B366A914E9F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D1B1C270-70C1-4495-9626-B366A914E9F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D1B1C270-70C1-4495-9626-B366A914E9F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D1B1C270-70C1-4495-9626-B366A914E9F4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{43CC200E-FEBE-44E0-B278-604872254DAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{43CC200E-FEBE-44E0-B278-604872254DAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43CC200E-FEBE-44E0-B278-604872254DAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43CC200E-FEBE-44E0-B278-604872254DAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6204AB7-62EC-41C2-9DEC-7727D3B87B08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6204AB7-62EC-41C2-9DEC-7727D3B87B08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6204AB7-62EC-41C2-9DEC-7727D3B87B08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6204AB7-62EC-41C2-9DEC-7727D3B87B08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -96,8 +96,8 @@ Global
 		{1959557F-5EAF-4B1E-BF3F-313AC68EFA49} = {4BF53A8A-B344-4C1A-AE24-1FC41E2188E9}
 		{2C133F65-DFA3-438A-BCAB-C23AAB374EE7} = {3BE1D646-272F-4F96-931E-D1BA781583B4}
 		{7D336592-22DD-45C1-9430-669812D5DC56} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
-		{D1B1C270-70C1-4495-9626-B366A914E9F4} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{43CC200E-FEBE-44E0-B278-604872254DAA} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
+		{E6204AB7-62EC-41C2-9DEC-7727D3B87B08} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09CBB595-8996-4C7F-9C48-4C58AD9293AC}

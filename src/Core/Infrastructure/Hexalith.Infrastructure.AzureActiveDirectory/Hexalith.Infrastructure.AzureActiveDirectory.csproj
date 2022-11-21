@@ -7,7 +7,7 @@
 	  <PackageReference Include="Microsoft.Identity.Client" Version="4.48.1" />
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\Common\Hexalith.Extensions\Hexalith.Extensions.csproj" />
-	  <ProjectReference Include="..\..\Hexalith.Infrastructure.Security.Abstractions\Hexalith.Infrastructure.Security.Abstractions.csproj" />
+	  <ProjectReference Include="..\..\Common\Hexalith.Extensions\Hexalith.Extensions.csproj" />
+	  <ProjectReference Include="..\Hexalith.Infrastructure.Security.Abstractions\Hexalith.Infrastructure.Security.Abstractions.csproj" />
 	</ItemGroup>
 </Project>

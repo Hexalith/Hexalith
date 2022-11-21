@@ -4,6 +4,6 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Core\Common\Hexalith.Extensions\Hexalith.Extensions.csproj" />
-    <ProjectReference Include="..\..\src\core\Infrastructure\Hexalith.Infrastructure.Dynamics365FinanceAndOperations\Hexalith.Infrastructure.Dynamics365FinanceAndOperations.csproj" />
+    <ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365FinanceAndOperations\Hexalith.Infrastructure.Dynamics365FinanceAndOperations.csproj" />
   </ItemGroup>
 </Project>
