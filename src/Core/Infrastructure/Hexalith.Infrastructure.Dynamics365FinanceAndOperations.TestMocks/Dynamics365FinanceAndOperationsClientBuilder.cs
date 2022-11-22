@@ -41,4 +41,18 @@ public class Dynamics365FinanceAndOperationsClientBuilder
 		Mock<IDynamics365FinanceAndOperationsClient> client = new();
 		return client;
 	}
+
+	public Dynamics365FinanceAndOperationsClientBuilder WithSettingsValue(Dynamics365FinanceAndOperationsClientSettings settings)
+	{
+		_ = Settings.WithValue(settings);
+		_ = SecurityContext.Settings.WithValue(settings);
+		return this;
+	}
+
+	public Dynamics365FinanceAndOperationsClientBuilder WithValueFromConfiguration<TProgram>() where TProgram : class
+	{
+		_ = Settings.WithValueFromConfiguration<TProgram>();
+		_ = SecurityContext.Settings.WithValueFromConfiguration<TProgram>();
+		return this;
+	}
 }
