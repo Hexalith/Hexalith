@@ -55,9 +55,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.Sec
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.AzureActiveDirectory", "src\Core\Infrastructure\Hexalith.Infrastructure.AzureActiveDirectory\Hexalith.Infrastructure.AzureActiveDirectory.csproj", "{E6204AB7-62EC-41C2-9DEC-7727D3B87B08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks", "src\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks\Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks.csproj", "{4DB12A45-5789-4597-9E48-1AF61641A579}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks", "src\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks\Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks.csproj", "{4DB12A45-5789-4597-9E48-1AF61641A579}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.TestMocks", "src\Core\Common\Hexalith.TestMocks\Hexalith.TestMocks.csproj", "{BE07B798-CBB1-4DA7-B80D-7628F1E67894}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.TestMocks", "src\Core\Common\Hexalith.TestMocks\Hexalith.TestMocks.csproj", "{BE07B798-CBB1-4DA7-B80D-7628F1E67894}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{CC7DC9FC-8CA1-4145-909F-6702A1D2FB08}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{FC1CDC0D-CB64-4639-AE5B-3944F558AB4E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Docs", "docs\Hexalith.Docs.csproj", "{2F42F417-7296-4791-8582-E824732A803F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +99,10 @@ Global
 		{BE07B798-CBB1-4DA7-B80D-7628F1E67894}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE07B798-CBB1-4DA7-B80D-7628F1E67894}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE07B798-CBB1-4DA7-B80D-7628F1E67894}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F42F417-7296-4791-8582-E824732A803F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F42F417-7296-4791-8582-E824732A803F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F42F417-7296-4791-8582-E824732A803F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F42F417-7296-4791-8582-E824732A803F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -112,6 +122,7 @@ Global
 		{E6204AB7-62EC-41C2-9DEC-7727D3B87B08} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{4DB12A45-5789-4597-9E48-1AF61641A579} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{BE07B798-CBB1-4DA7-B80D-7628F1E67894} = {4BF53A8A-B344-4C1A-AE24-1FC41E2188E9}
+		{2F42F417-7296-4791-8582-E824732A803F} = {CC7DC9FC-8CA1-4145-909F-6702A1D2FB08}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09CBB595-8996-4C7F-9C48-4C58AD9293AC}

@@ -1,4 +1,5 @@
 <Project>
+	<Import Project="$([MSBuild]::GetPathOfFileAbove('Project.Common.props', '$(MSBuildThisFileDirectory)src/Hexalith.Build'))" />
 	<PropertyGroup>
 		<Authors>Jérôme Piquot</Authors>
 		<Company>Fiveforty</Company>
