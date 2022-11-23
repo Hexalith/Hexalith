@@ -1,9 +1,3 @@
-site_name: Hexalith
-site_url: https://https://hexalith.readthedocs.io/
-
-# Options
-docs_dir: docs
-
 nav:
     - About: about.md
     - Getting Started:
@@ -11,7 +5,3 @@ nav:
         - Install preview packages: getting-started/preview-package-source.md
       
 theme: readthedocs
-# Repository
-repo_name: Hexalith/Hexalith
-repo_url: https://github.com/Hexalith/Hexalith
-
