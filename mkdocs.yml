@@ -1,8 +1,8 @@
 site_name: Hexalith
 nav:
-    - About: about.md
+    - About: 'about.md'
     - Getting Started:
-        - Create Hexalith application: getting-started/create-application.md
-        - Install preview packages: getting-started/preview-package-source.md
+        - Create Hexalith application: 'getting-started/create-application.md'
+        - Install preview packages: 'getting-started/preview-package-source.md'
       
 theme: readthedocs
