@@ -6,8 +6,6 @@ docs_dir: docs
 
 nav:
     - About: about.md
-    - Home: 
-        - About Hexalith: home/index.md
     - Getting Started:
         - Create Hexalith application: getting-started/create-application.md
         - Install preview packages: getting-started/preview-package-source.md
