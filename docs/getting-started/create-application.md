@@ -4,7 +4,7 @@ In this article, we are going to see how easy it is to create micro-services app
 
 ## Create an Hexalith service application
 
-In Visual Studio, create a new empty .NET Core web application. Ex: `Cms.Web`. Do not check "Place solution and project in the same directory", because later when you create modules and themes you will want them to live alongside the web application within the solution.
+In Visual Studio, create a new empty .NET Core web application. Ex: `MyBridge.Server`. 
 
 !!! note
     If you want to use the `preview` packages, [configure the Hexalith github preview package source](preview-package-source.md)
