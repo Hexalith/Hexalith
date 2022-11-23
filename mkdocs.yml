@@ -2,11 +2,10 @@ site_name: Hexalith
 site_url: https://https://hexalith.readthedocs.io/
 nav:
     - Home: 
-        - About Hexalith: docs/home/index.md
-        - GitHub: README.md
+        - About Hexalith: home/index.md
     - Getting Started:
-        - Create Hexalith application: docs/getting-started/create-application.md
-        - Install preview packages: docs/getting-started/preview-package-source.md
+        - Create Hexalith application: getting-started/create-application.md
+        - Install preview packages: getting-started/preview-package-source.md
       
 theme: readthedocs
 # Repository
