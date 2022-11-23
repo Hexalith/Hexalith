@@ -2,7 +2,7 @@ site_name: Hexalith
 site_url: https://https://hexalith.readthedocs.io/
 
 # Options
-docs_dir: src
+docs_dir: docs
 
 nav:
     - Home: 
