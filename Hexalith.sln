@@ -25,10 +25,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Global", "_Global", "{2A055449-2696-4BE3-B3A6-C206C0E2B43B}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
-		.readthedocs.yml = .readthedocs.yml
 		CODE-OF-CONDUCT.md = CODE-OF-CONDUCT.md
 		Directory.Build.props = Directory.Build.props
-		mkdocs.yml = mkdocs.yml
+		environment.yaml = environment.yaml
+		mkdocs.yaml = mkdocs.yaml
 		nuget.config = nuget.config
 		README.md = README.md
 	EndProjectSection

@@ -1,8 +1,9 @@
 site_name: Hexalith
 nav:
-    - About: 'about.md'
+    - Home: 'index.md'
     - Getting Started:
         - Create Hexalith application: 'getting-started/create-application.md'
         - Install preview packages: 'getting-started/preview-package-source.md'
       
 theme: readthedocs
+repo_url: https://github.com/Hexalith/Hexalith/
