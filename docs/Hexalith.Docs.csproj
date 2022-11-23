@@ -3,4 +3,10 @@
 		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
 		<IsPackable>false</IsPackable>
 	</PropertyGroup>
+	<ItemGroup>
+	  <None Remove="about.md" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Compile Include="about.md" />
+	</ItemGroup>
 </Project>

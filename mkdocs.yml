@@ -5,6 +5,7 @@ site_url: https://https://hexalith.readthedocs.io/
 docs_dir: docs
 
 nav:
+    - About: about.md
     - Home: 
         - About Hexalith: home/index.md
     - Getting Started:
