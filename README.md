@@ -3,7 +3,7 @@ Application blocks based on Dapr
 
 - __Hexalith Framework__: An application framework for building modular, multi-tenant applications on ASP.NET Core and DAPR.
 
-[![Documentation Status](https://readthedocs.org/projects/hexalith/badge/?version=latest)](https://hexalith.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/hexalith/badge/?version=latest)](https://hexalith.readthedocs.io/en/latest/?)
 
 ## Build Status
 
