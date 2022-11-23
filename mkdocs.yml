@@ -1,0 +1,11 @@
+site_name: Hexalith
+site_url: https://https://hexalith.readthedocs.io/
+nav:
+  - Home: index.md
+theme: readthedocs
+# Repository
+repo_name: Hexalith/Hexalith
+repo_url: https://github.com/Hexalith/Hexalith
+# Options
+docs_dir: docs
+

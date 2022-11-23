@@ -3,10 +3,4 @@
 		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
 		<IsPackable>false</IsPackable>
 	</PropertyGroup>
-	<ItemGroup>
-	  <None Remove="preview-package-source.md" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Compile Include="preview-package-source.md" />
-	</ItemGroup>
 </Project>

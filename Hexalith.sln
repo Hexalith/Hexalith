@@ -27,6 +27,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Global", "_Global", "{2A05
 		.gitignore = .gitignore
 		CODE-OF-CONDUCT.md = CODE-OF-CONDUCT.md
 		Directory.Build.props = Directory.Build.props
+		mkdocs.yml = mkdocs.yml
 		nuget.config = nuget.config
 		README.md = README.md
 	EndProjectSection
