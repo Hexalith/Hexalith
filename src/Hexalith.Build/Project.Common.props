@@ -1,4 +1,5 @@
 <Project>
+	<Import Project="Dependencies.props" />
 
   <!-- Default values to use when building and packaging -->
   <PropertyGroup>

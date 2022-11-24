@@ -19,7 +19,7 @@ public class ArrayHelperTest
 	[Fact]
 	public void String_into_array_should_contain_value() => Into_array_should_contain_value("Hello world!");
 
-	private void Into_array_should_contain_value<T>(T value)
+	private static void Into_array_should_contain_value<T>(T value)
 	{
 		T[] array = value.IntoArray();
 		_ = array.Should().ContainSingle();

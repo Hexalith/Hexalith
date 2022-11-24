@@ -2,4 +2,7 @@
   <PropertyGroup>
 	  <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Application\Hexalith.Application\Hexalith.Application.csproj" />
+  </ItemGroup>
 </Project>

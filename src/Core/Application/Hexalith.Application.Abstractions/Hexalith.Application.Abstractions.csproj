@@ -2,4 +2,7 @@
   <PropertyGroup>
 	  <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Exceptions\" />
+  </ItemGroup>
 </Project>
