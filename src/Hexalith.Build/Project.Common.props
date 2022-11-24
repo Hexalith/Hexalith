@@ -1,25 +1,24 @@
 <Project>
 	<Import Project="Dependencies.props" />
 
-  <!-- Default values to use when building and packaging -->
-  <PropertyGroup>
+	<!-- Default values to use when building and packaging -->
+	<PropertyGroup>
 
-    <!-- Framework version used when coding in Visual Studio and when creating templates -->
-    <DefaultTargetFramework>net7.0</DefaultTargetFramework>
+		<!-- Framework version used when coding in Visual Studio and when creating templates -->
+		<DefaultTargetFramework>net7.0</DefaultTargetFramework>
 
-    <!-- TFMs used to build the abstractions and modules-->
-    <CommonTargetFrameworks Condition="'$(CommonTargetFrameworks)' == ''">net7.0</CommonTargetFrameworks>
-  </PropertyGroup>
+		<!-- TFMs used to build the abstractions and modules-->
+		<CommonTargetFrameworks Condition="'$(CommonTargetFrameworks)' == ''">net7.0</CommonTargetFrameworks>
+	</PropertyGroup>
 
-  <!-- Detect if the solution is opened in VS to limit the versions that are analyzed by Roslyn for performance reasons -->
-  <PropertyGroup Condition="'$(BuildingInsideVisualStudio)' == 'true' or '$(BuildingByReSharper)' == 'true'">
-    <CommonTargetFrameworks>$(DefaultTargetFramework)</CommonTargetFrameworks>
-  </PropertyGroup>
+	<!-- Detect if the solution is opened in VS to limit the versions that are analyzed by Roslyn for performance reasons -->
+	<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' == 'true' or '$(BuildingByReSharper)' == 'true'">
+		<CommonTargetFrameworks>$(DefaultTargetFramework)</CommonTargetFrameworks>
+	</PropertyGroup>
 
-  <!-- These versions are used for the NuGet packages that are dependent on the current .NET version (default = net7.0) -->
-  <PropertyGroup>
-    <AspNetCorePackagesVersion>7.0.0</AspNetCorePackagesVersion>
-    <MicrosoftExtensionsPackagesVersion>7.0.0</MicrosoftExtensionsPackagesVersion>
-  </PropertyGroup>
-
+	<!-- These versions are used for the NuGet packages that are dependent on the current .NET version (default = net7.0) -->
+	<PropertyGroup>
+		<AspNetCorePackagesVersion>7.0.0</AspNetCorePackagesVersion>
+		<MicrosoftExtensionsPackagesVersion>7.0.0</MicrosoftExtensionsPackagesVersion>
+	</PropertyGroup>
 </Project>
