@@ -21,6 +21,5 @@ python:
    - requirements: docs/requirements.txt
    
 # Build PDF & ePub
-formats:
-  - pdf
-  - epub
+formats: all
+  
