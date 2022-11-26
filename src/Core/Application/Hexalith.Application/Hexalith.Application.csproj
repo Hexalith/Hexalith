@@ -5,4 +5,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Hexalith.Application.Abstractions\Hexalith.Application.Abstractions.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Events\" />
+    <Folder Include="Commands\" />
+  </ItemGroup>
 </Project>

@@ -71,11 +71,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{FC1CDC0D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Docs", "docs\Hexalith.Docs.csproj", "{2F42F417-7296-4791-8582-E824732A803F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.Application", "src\Core\Application\Hexalith.Application\Hexalith.Application.csproj", "{735CE2B7-2572-4E3F-8B57-C55F9A69448E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Application", "src\Core\Application\Hexalith.Application\Hexalith.Application.csproj", "{735CE2B7-2572-4E3F-8B57-C55F9A69448E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hehalith.Infrastructure.DaprEventStore", "src\Core\Infrastructure\Hehalith.Infrastructure.DaprEventStore\Hehalith.Infrastructure.DaprEventStore.csproj", "{59D877FF-E36F-4ACE-964B-300A45B34302}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hehalith.Infrastructure.DaprEventStore", "src\Core\Infrastructure\Hehalith.Infrastructure.DaprEventStore\Hehalith.Infrastructure.DaprEventStore.csproj", "{59D877FF-E36F-4ACE-964B-300A45B34302}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Application.Abstractions", "src\Core\Application\Hexalith.Application.Abstractions\Hexalith.Application.Abstractions.csproj", "{155E85F0-978B-4916-AB3C-741266DE7BE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.Domain.Abstractions", "src\Core\Domain\Hexalith.Domain.Abstractions\Hexalith.Domain.Abstractions.csproj", "{8CE66AE1-932A-4E2C-B8E5-4FA627ACA2D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -127,6 +129,10 @@ Global
 		{155E85F0-978B-4916-AB3C-741266DE7BE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{155E85F0-978B-4916-AB3C-741266DE7BE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{155E85F0-978B-4916-AB3C-741266DE7BE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CE66AE1-932A-4E2C-B8E5-4FA627ACA2D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CE66AE1-932A-4E2C-B8E5-4FA627ACA2D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CE66AE1-932A-4E2C-B8E5-4FA627ACA2D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CE66AE1-932A-4E2C-B8E5-4FA627ACA2D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -150,6 +156,7 @@ Global
 		{735CE2B7-2572-4E3F-8B57-C55F9A69448E} = {AA983AFF-9CBC-4F2A-98E3-3CACA5039C61}
 		{59D877FF-E36F-4ACE-964B-300A45B34302} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{155E85F0-978B-4916-AB3C-741266DE7BE3} = {AA983AFF-9CBC-4F2A-98E3-3CACA5039C61}
+		{8CE66AE1-932A-4E2C-B8E5-4FA627ACA2D7} = {5A9735A3-CEE9-4E50-B2FD-54F0BF402002}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09CBB595-8996-4C7F-9C48-4C58AD9293AC}
