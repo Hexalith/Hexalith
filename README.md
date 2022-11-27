@@ -11,7 +11,16 @@ Application blocks based on Dapr
 </a>
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith)
-
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith&metric=bugs)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith)
 
 ## Build Status
 
