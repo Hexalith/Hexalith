@@ -10,18 +10,18 @@ public class ArrayHelperTest
 	[Fact]
 	public void Interger_into_array_should_contain_value()
 	{
-		int[] array = 1254.IntoArray();
+		List<string>[] array = new List<string>() { "Hello once", "Hello again " }.IntoArray();
 		_ = array.Should().ContainSingle();
-		_ = array[0].Should().Be(1254);
+		_ = array[0][0].Should().Be("Hello once");
+		_ = array[0][1].Should().Be("Hello again ");
 	}
 
 	[Fact]
 	public void List_into_array_should_contain_integer_value()
 	{
-		List<string>[] array = new List<string>() { "Hello once", "Hello again " }.IntoArray();
+		int[] array = 1254.IntoArray();
 		_ = array.Should().ContainSingle();
-		_ = array[0][0].Should().Be("Hello once");
-		_ = array[0][0].Should().Be("Hello again ");
+		_ = array[0].Should().Be(1254);
 	}
 
 	[Fact]

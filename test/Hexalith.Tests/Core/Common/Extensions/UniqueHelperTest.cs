@@ -39,7 +39,7 @@ public class UniqueHelperTest
 		{
 			ids.Add(UniqueIdHelper.GenerateUniqueStringId());
 		}
-		_ = ids.Distinct().Count().Should().Be(100);
+		_ = ids.Distinct().Count().Should().Be(1000);
 	}
 
 	[Fact]
