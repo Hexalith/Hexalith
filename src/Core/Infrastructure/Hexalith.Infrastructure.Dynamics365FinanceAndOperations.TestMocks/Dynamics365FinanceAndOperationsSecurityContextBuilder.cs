@@ -20,12 +20,16 @@ public class Dynamics365FinanceAndOperationsSecurityContextBuilder
 
 	public IDynamics365FinanceAndOperationsSecurityContext Build()
 	{
-		return (_settings is null || !_settings.HasValue)
+		if (_settings is null || !_settings.HasValue)
+		{
+			return BuildMock().Object;
+		}
+		var settings = Settings.Build();
+		return (settings.Value.Identity == null)
 			? BuildMock().Object
 			: new Dynamics365FinanceAndOperationsSecurityContext(
 			Settings.Build(),
 		Logger.Build());
-		;
 	}
 
 	public Mock<IDynamics365FinanceAndOperationsSecurityContext> BuildMock()
