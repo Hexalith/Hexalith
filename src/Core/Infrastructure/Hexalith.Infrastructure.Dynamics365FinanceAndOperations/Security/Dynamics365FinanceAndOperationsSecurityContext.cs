@@ -13,7 +13,6 @@ using System.Threading.Tasks;
 public class Dynamics365FinanceAndOperationsSecurityContext : AzureActiveDirectoryApplicationSecurityContext, IDynamics365FinanceAndOperationsSecurityContext
 {
 	private readonly string[] _scopes;
-	private readonly Dynamics365FinanceAndOperationsClientSettings _settings;
 
 	public Dynamics365FinanceAndOperationsSecurityContext(
 		IOptions<Dynamics365FinanceAndOperationsClientSettings> settings,
@@ -22,13 +21,13 @@ public class Dynamics365FinanceAndOperationsSecurityContext : AzureActiveDirecto
 			settings.Value?.Identity ?? throw new ArgumentNullException(nameof(settings)),
 			logger)
 	{
-		_settings = settings.Value ?? throw new ArgumentNullException(nameof(settings));
-		if (string.IsNullOrWhiteSpace(_settings.Instance?.OriginalString))
+		Dynamics365FinanceAndOperationsClientSettings s = settings.Value ?? throw new ArgumentNullException(nameof(settings));
+		if (string.IsNullOrWhiteSpace(s.Instance?.OriginalString))
 		{
-			throw new ArgumentException($"The {nameof(_settings.Instance)} setting is not defined.",
+			throw new ArgumentException($"The {nameof(s.Instance)} setting is not defined.",
 										nameof(settings));
 		}
-		_scopes = new string[] { $"{_settings.Instance.OriginalString}/.default" };
+		_scopes = new string[] { $"{s.Instance.OriginalString}/.default" };
 	}
 
 	public async Task<string> AcquireToken(CancellationToken cancellationToken = default)

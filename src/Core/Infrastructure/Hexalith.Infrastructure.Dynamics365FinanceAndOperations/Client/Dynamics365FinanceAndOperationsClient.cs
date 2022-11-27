@@ -24,13 +24,11 @@ using System.Web;
 public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOperationsClient
 {
 	private const string _dataPath = "data";
-	private const string _domain = "Microsoft.Dynamics.DataEntities";
 	private readonly string _company;
 	private readonly IHttpClientFactory _httpClientFactory;
 	private readonly Uri _instance;
 	private readonly ILogger _logger;
 	private readonly IDynamics365FinanceAndOperationsSecurityContext _securityContext;
-	private readonly Dynamics365FinanceAndOperationsClientSettings _settings;
 	private HttpClient? _client;
 
 	public Dynamics365FinanceAndOperationsClient(
@@ -39,27 +37,27 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 		IOptions<Dynamics365FinanceAndOperationsClientSettings> settings,
 		ILogger<Dynamics365FinanceAndOperationsClient> logger)
 	{
-		_settings = settings.Value ?? throw new ArgumentNullException(nameof(settings));
+		Dynamics365FinanceAndOperationsClientSettings s = settings.Value ?? throw new ArgumentNullException(nameof(settings));
 		_httpClientFactory = httpClientFactory;
 		_securityContext = securityContext;
 		_logger = logger ?? throw new ArgumentNullException(nameof(logger));
-		if (string.IsNullOrWhiteSpace(_settings.Instance?.OriginalString))
+		if (string.IsNullOrWhiteSpace(s.Instance?.OriginalString))
 		{
-			throw new ArgumentException($"The {nameof(_settings.Instance)} setting is not defined.",
+			throw new ArgumentException($"The {nameof(s.Instance)} setting is not defined.",
 										nameof(settings));
 		}
-		if (string.IsNullOrWhiteSpace(_settings.Company))
+		if (string.IsNullOrWhiteSpace(s.Company))
 		{
-			throw new ArgumentException($"The {nameof(_settings.Company)} setting is not defined.",
+			throw new ArgumentException($"The {nameof(s.Company)} setting is not defined.",
 										nameof(settings));
 		}
-		_company = _settings.Company;
-		_instance = _settings.Instance;
+		_company = s.Company;
+		_instance = s.Instance;
 	}
 
 	private HttpClient Client => _client ??= _httpClientFactory.CreateClient();
 
-	public Task DoActionAsync(string headerEntityName, string action, Dictionary<string, object> dictionary, CancellationToken cancellationToken) => throw new NotImplementedException();
+	public Task DoActionAsync(string entityName, string action, Dictionary<string, object> parameters, CancellationToken cancellationToken = default) => throw new NotImplementedException();
 
 	public async Task<IEnumerable<T>> GetAsync<T>(string entityName, Dictionary<string, object> filter, CancellationToken cancellationToken = default)
 	{
@@ -103,11 +101,11 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 		}
 	}
 
-	public async Task<T> GetSingleAsync<T>(string entityName, Dictionary<string, object> keyValues, CancellationToken cancellationToken = default)
+	public async Task<T> GetSingleAsync<T>(string entityName, Dictionary<string, object> keys, CancellationToken cancellationToken = default)
 	{
 		await AddRequestHeaders(cancellationToken);
-		string keys = GetEntityFilter(keyValues);
-		Uri url = new(_instance, $"{_dataPath}/{entityName}({HttpUtility.UrlEncode(keys)})");
+		string keyFilter = GetEntityFilter(keys);
+		Uri url = new(_instance, $"{_dataPath}/{entityName}({HttpUtility.UrlEncode(keyFilter)})");
 		HttpResponseMessage? response = null;
 		try
 		{
@@ -130,7 +128,7 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 				{
 					throw new HttpRequestException($"Empty value response on request to '{url.AbsoluteUri}'.\nMessage:{content.Message}");
 				}
-				_logger.LogDebug("The method call to '{Path}' was succesfull.", url.AbsoluteUri);
+				_logger.LogDebug("The method call to '{Path}' was successful.", url.AbsoluteUri);
 				return content.Value;
 			}
 			throw new HttpRequestException(
@@ -145,18 +143,18 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 				 response == null
 				 ? "No response"
 				 : await response.Content.ReadAsStringAsync(cancellationToken));
-			throw new Exception($"Failed to retreive {typeof(T).Name} with keys {keys}.", ex);
+			throw new Exception($"Failed to retrieve {typeof(T).Name} with keys {keys}.", ex);
 		}
 	}
 
 	public async Task PatchAsync<T>(
 		string entityName,
-		Dictionary<string, object> keyValues,
-		T patchValues,
-		CancellationToken cancellationToken)
+		Dictionary<string, object> key,
+		T value,
+		CancellationToken cancellationToken = default)
 	{
 		await AddRequestHeaders(cancellationToken);
-		Uri url = new(_instance, $"{_dataPath}/{entityName}({HttpUtility.UrlEncode(GetEntityFilter(keyValues))})");
+		Uri url = new(_instance, $"{_dataPath}/{entityName}({HttpUtility.UrlEncode(GetEntityFilter(key))})");
 		HttpResponseMessage? response = null;
 		try
 		{
@@ -165,7 +163,7 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 					url,
 					JsonContent
 						.Create(
-						patchValues,
+						value,
 						null,
 						new JsonSerializerOptions()
 						{
@@ -173,7 +171,7 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 							PropertyNamingPolicy = null
 						}
 					),
-					cancellationToken); ;
+					cancellationToken);
 			if (response.IsSuccessStatusCode)
 			{
 				return;
@@ -202,7 +200,7 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 				PropertyNameCaseInsensitive = true
 			},
 			cancellationToken);
-		return v ?? throw new HttpRequestException($"Empty content resonse on request to '{response.RequestMessage?.RequestUri?.AbsoluteUri}'.");
+		return v ?? throw new HttpRequestException($"Empty content response on request to '{response.RequestMessage?.RequestUri?.AbsoluteUri}'.");
 	}
 
 	public async Task<HttpResponseMessage> PostAsync<T>(string entityName, T value, CancellationToken cancellationToken = default)

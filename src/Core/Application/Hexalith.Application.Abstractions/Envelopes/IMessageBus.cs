@@ -4,7 +4,7 @@ namespace Hexalith.Application.Abstractions.Envelopes;
 /// <summary>
 /// Interface for all message buses.
 /// </summary>
-public interface IMessageBus<TEnvelope> where TEnvelope : IEnvelope
+public interface IMessageBus<in TEnvelope> where TEnvelope : IEnvelope
 {
 	/// <summary>
 	/// Publish a message

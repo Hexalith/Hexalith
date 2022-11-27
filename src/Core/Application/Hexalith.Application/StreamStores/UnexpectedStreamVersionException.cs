@@ -5,7 +5,7 @@ using System;
 using System.Runtime.Serialization;
 
 [Serializable]
-internal class UnexpectedStreamVersionException : Exception
+public class UnexpectedStreamVersionException : Exception
 {
 	public UnexpectedStreamVersionException()
 	{

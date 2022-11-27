@@ -5,7 +5,7 @@ namespace Hexalith.Extensions.Common;
 /// <summary>
 /// Unique Id generators
 /// </summary>
-public class UniqueIdHelper
+public static class UniqueIdHelper
 {
 	private static readonly object _lock = new();
 	private static string? _previousDateTimeId;

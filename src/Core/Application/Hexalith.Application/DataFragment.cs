@@ -1,8 +1,7 @@
 ﻿// Fiveforty S.A. Paris France (2022)
 namespace Hexalith.Application;
 
-using Hexalith.Application.Abstractions;
-
+using Hexalith.Application.Abstractions.StreamStores;
 using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;

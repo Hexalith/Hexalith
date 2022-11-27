@@ -1,9 +1,9 @@
 ﻿// Fiveforty S.A. Paris France (2022)
 
-namespace Hexalith.Application.Abstractions;
+namespace Hexalith.Application.Abstractions.StreamStores;
 
 /// <summary>
-/// Persisted stream item iterface
+/// Persisted stream item interface
 /// </summary>
 public interface IDataFragment
 {
@@ -19,9 +19,9 @@ public interface IDataFragment
 }
 
 /// <summary>
-/// Persisted stream item iterface
+/// Persisted stream item interface
 /// </summary>
-public interface IDataFragment<TData, TMeta> : IDataFragment
+public interface IDataFragment<out TData, out TMeta> : IDataFragment
 {
 	/// <summary>
 	/// Gets the data object

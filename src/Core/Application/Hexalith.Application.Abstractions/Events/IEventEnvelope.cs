@@ -2,6 +2,7 @@
 namespace Hexalith.Application.Abstractions.Events;
 
 using Hexalith.Application.Abstractions.Envelopes;
+using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Domain.Abstractions.Events;
 
 /// <summary>
@@ -19,4 +20,5 @@ public interface IEventEnvelope<TEvent, TMetadata> : IEnvelope<TEvent, TMetadata
 	where TEvent : IEvent
 	where TMetadata : IMetadata
 {
+	new TEvent Message { get; }
 }

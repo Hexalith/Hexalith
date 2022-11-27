@@ -2,6 +2,7 @@
 namespace Hexalith.Application.Abstractions.Commands;
 
 using Hexalith.Application.Abstractions.Envelopes;
+using Hexalith.Application.Abstractions.Metadatas;
 
 /// <summary>
 /// Interface for all command envelopes.
@@ -18,4 +19,5 @@ public interface ICommandEnvelope<TCommand, TMetadata> : IEnvelope<TCommand, TMe
 	where TCommand : ICommand
 	where TMetadata : IMetadata
 {
+	new TCommand Message { get; }
 }

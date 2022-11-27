@@ -1,7 +1,6 @@
 ﻿// Fiveforty S.A. Paris France (2022)
 namespace Hexalith.Application.StreamStores;
 
-using Hexalith.Application.Abstractions;
 using Hexalith.Application.Abstractions.StreamStores;
 
 using System.Collections.Generic;

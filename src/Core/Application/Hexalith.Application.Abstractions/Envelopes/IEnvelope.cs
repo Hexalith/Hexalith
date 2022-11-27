@@ -1,6 +1,7 @@
 ﻿// Fiveforty S.A. Paris France (2022)
 namespace Hexalith.Application.Abstractions.Envelopes;
 
+using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Domain.Abstractions.Messages;
 
 /// <summary>
@@ -24,7 +25,7 @@ public interface IEnvelope
 /// </summary>
 /// <typeparam name="TMessage">The message</typeparam>
 /// <typeparam name="TMetadata">The message metadata</typeparam>
-public interface IEnvelope<TMessage, TMetadata> : IEnvelope
+public interface IEnvelope<out TMessage, out TMetadata> : IEnvelope
 	where TMessage : IMessage
 	where TMetadata : IMetadata
 {

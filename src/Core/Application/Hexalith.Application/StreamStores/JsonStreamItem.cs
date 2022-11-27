@@ -2,7 +2,6 @@
 
 namespace Hexalith.Application.StreamStores;
 
-using Hexalith.Application.Abstractions;
 using Hexalith.Application.Abstractions.StreamStores;
 
 using System;
