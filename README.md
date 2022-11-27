@@ -48,7 +48,7 @@ Here is a more detailed [roadmap](https://github.com/Hexalith/Hexalith/wiki/Road
 
 ### Documentation
 
-The documentation can be accessed here: <[https://docs.hexalith.readthedocs.io](https://hexalith.readthedocs.io/en/latest/)>
+The documentation can be accessed here: [https://docs.hexalith.readthedocs.io](https://hexalith.readthedocs.io/en/latest/)
 
 ## Code of Conduct
 
