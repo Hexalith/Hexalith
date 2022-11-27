@@ -73,11 +73,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Docs", "docs\Hexal
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Application", "src\Core\Application\Hexalith.Application\Hexalith.Application.csproj", "{735CE2B7-2572-4E3F-8B57-C55F9A69448E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hehalith.Infrastructure.DaprEventStore", "src\Core\Infrastructure\Hehalith.Infrastructure.DaprEventStore\Hehalith.Infrastructure.DaprEventStore.csproj", "{59D877FF-E36F-4ACE-964B-300A45B34302}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Application.Abstractions", "src\Core\Application\Hexalith.Application.Abstractions\Hexalith.Application.Abstractions.csproj", "{155E85F0-978B-4916-AB3C-741266DE7BE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.Domain.Abstractions", "src\Core\Domain\Hexalith.Domain.Abstractions\Hexalith.Domain.Abstractions.csproj", "{8CE66AE1-932A-4E2C-B8E5-4FA627ACA2D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Domain.Abstractions", "src\Core\Domain\Hexalith.Domain.Abstractions\Hexalith.Domain.Abstractions.csproj", "{8CE66AE1-932A-4E2C-B8E5-4FA627ACA2D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -121,10 +119,6 @@ Global
 		{735CE2B7-2572-4E3F-8B57-C55F9A69448E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{735CE2B7-2572-4E3F-8B57-C55F9A69448E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{735CE2B7-2572-4E3F-8B57-C55F9A69448E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{59D877FF-E36F-4ACE-964B-300A45B34302}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{59D877FF-E36F-4ACE-964B-300A45B34302}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{59D877FF-E36F-4ACE-964B-300A45B34302}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{59D877FF-E36F-4ACE-964B-300A45B34302}.Release|Any CPU.Build.0 = Release|Any CPU
 		{155E85F0-978B-4916-AB3C-741266DE7BE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{155E85F0-978B-4916-AB3C-741266DE7BE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{155E85F0-978B-4916-AB3C-741266DE7BE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -154,7 +148,6 @@ Global
 		{BE07B798-CBB1-4DA7-B80D-7628F1E67894} = {4BF53A8A-B344-4C1A-AE24-1FC41E2188E9}
 		{2F42F417-7296-4791-8582-E824732A803F} = {CC7DC9FC-8CA1-4145-909F-6702A1D2FB08}
 		{735CE2B7-2572-4E3F-8B57-C55F9A69448E} = {AA983AFF-9CBC-4F2A-98E3-3CACA5039C61}
-		{59D877FF-E36F-4ACE-964B-300A45B34302} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{155E85F0-978B-4916-AB3C-741266DE7BE3} = {AA983AFF-9CBC-4F2A-98E3-3CACA5039C61}
 		{8CE66AE1-932A-4E2C-B8E5-4FA627ACA2D7} = {5A9735A3-CEE9-4E50-B2FD-54F0BF402002}
 	EndGlobalSection
