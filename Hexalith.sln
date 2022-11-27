@@ -42,6 +42,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_CICD", "_CICD", "{29DC5CD7
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\preview_ci.yml = .github\workflows\preview_ci.yml
 		.github\workflows\release_ci.yml = .github\workflows\release_ci.yml
+		.github\workflows\semgrep.yml = .github\workflows\semgrep.yml
+		.github\workflows\sonarqube.yml = .github\workflows\sonarqube.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Tests", "test\Hexalith.Tests\Hexalith.Tests.csproj", "{2C133F65-DFA3-438A-BCAB-C23AAB374EE7}"

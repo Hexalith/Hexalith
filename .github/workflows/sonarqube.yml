@@ -4,9 +4,10 @@ on:
     paths-ignore:
       - '**/*.md'
       - 'mkdocs.yml'
-      - 'src/docs/**/*'
+      - 'docs/**/*'
     tags: 
       - 'v*.*.*'
+    branches: [ main ]
 jobs:
   build:
     name: Build and analyze
