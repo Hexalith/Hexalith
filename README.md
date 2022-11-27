@@ -9,6 +9,7 @@ Application blocks based on Dapr
   <img alt="Coverity Scan Build Status"
        src="https://scan.coverity.com/projects/27051/badge.svg"/>
 </a>
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith)
 
 ## Build Status
 
