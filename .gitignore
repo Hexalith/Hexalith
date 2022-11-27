@@ -354,3 +354,7 @@ secrets.json
 
 # Nuget config file
 nuget.config
+
+#Coverty results
+cov-int.zip
+cov-int/
