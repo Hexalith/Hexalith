@@ -5,6 +5,11 @@ Application blocks based on Dapr
 
 [![Documentation Status](https://readthedocs.org/projects/hexalith/badge/?version=stable)](https://hexalith.readthedocs.io/en/stable/)
 
+<a href="https://scan.coverity.com/projects/hexalith-hexalith">
+  <img alt="Coverity Scan Build Status"
+       src="https://scan.coverity.com/projects/27051/badge.svg"/>
+</a>
+
 ## Build Status
 
 Stable (release/0.1): 
