@@ -10,7 +10,7 @@ public class ArrayHelperTest
 	[Fact]
 	public void Interger_into_array_should_contain_value()
 	{
-		List<string>[] array = new List<string>() { "Hello once", "Hello again " }.IntoArray();
+		List<string>[] array = new List<string> { "Hello once", "Hello again " }.IntoArray();
 		_ = array.Should().ContainSingle();
 		_ = array[0][0].Should().Be("Hello once");
 		_ = array[0][1].Should().Be("Hello again ");

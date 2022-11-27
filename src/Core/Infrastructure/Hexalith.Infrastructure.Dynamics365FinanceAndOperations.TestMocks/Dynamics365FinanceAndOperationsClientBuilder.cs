@@ -25,6 +25,12 @@ public class Dynamics365FinanceAndOperationsClientBuilder
 	public OptionsBuilder<Dynamics365FinanceAndOperationsClientSettings> Settings
 				=> _settings ??= new OptionsBuilder<Dynamics365FinanceAndOperationsClientSettings>();
 
+	public static Mock<IDynamics365FinanceAndOperationsClient> BuildMock()
+	{
+		Mock<IDynamics365FinanceAndOperationsClient> client = new();
+		return client;
+	}
+
 	public IDynamics365FinanceAndOperationsClient Build()
 	{
 		return _settings is null || !_settings.HasValue
@@ -33,13 +39,7 @@ public class Dynamics365FinanceAndOperationsClientBuilder
 				HttpClientfactory.Build(),
 				SecurityContext.Build(),
 				Settings.Build(),
-				Logger.Build()); ;
-	}
-
-	public Mock<IDynamics365FinanceAndOperationsClient> BuildMock()
-	{
-		Mock<IDynamics365FinanceAndOperationsClient> client = new();
-		return client;
+				Logger.Build());
 	}
 
 	public Dynamics365FinanceAndOperationsClientBuilder WithSettingsValue(Dynamics365FinanceAndOperationsClientSettings settings)

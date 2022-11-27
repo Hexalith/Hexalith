@@ -30,6 +30,6 @@ public class Dynamics365FinanceAndOperationsSecurityContext : AzureActiveDirecto
 		_scopes = new string[] { $"{s.Instance.OriginalString}/.default" };
 	}
 
-	public async Task<string> AcquireToken(CancellationToken cancellationToken = default)
+	public async Task<string> AcquireToken(CancellationToken cancellationToken)
 		=> await AcquireToken(_scopes, cancellationToken);
 }

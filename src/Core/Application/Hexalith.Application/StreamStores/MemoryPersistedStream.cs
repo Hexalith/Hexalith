@@ -42,11 +42,18 @@ public class MemoryPersistedStream : IPersistedStream
 	/// <param name="first">Sequence of the top element</param>
 	/// <param name="last">Sequence of the last element</param>
 	/// <returns>The list of items in the slice</returns>
-	public IEnumerable<IStreamItem> GetItems(long first = 0, long last = -1)
+	public IEnumerable<IStreamItem> GetItems(long first, long last)
 	{
 		return _items
 			.Where(p => p.Key >= first && (last == -1 || p.Key <= last))
 			.OrderBy(p => p.Key)
 			.Select(p => p.Value);
 	}
+
+	/// <summary>
+	/// Get all items from stream
+	/// </summary>
+	/// <returns>All the items in the stream</returns>
+	/// <exception cref="NotImplementedException"></exception>
+	public IEnumerable<IStreamItem> GetItems() => GetItems(0, -1);
 }

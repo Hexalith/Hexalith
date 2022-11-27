@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 
 public interface IDynamics365FinanceAndOperationsSecurityContext : IApplicationSecurityContext
 {
-	Task<string> AcquireToken(CancellationToken cancellationToken = default);
+	Task<string> AcquireToken(CancellationToken cancellationToken);
 }

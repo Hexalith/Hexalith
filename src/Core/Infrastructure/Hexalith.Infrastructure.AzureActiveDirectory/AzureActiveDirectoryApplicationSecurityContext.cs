@@ -44,7 +44,7 @@ public abstract class AzureActiveDirectoryApplicationSecurityContext : IApplicat
 			.WithClientSecret(_configuration.ApplicationSecret)
 			.Build();
 
-	public async Task<string> AcquireToken(string[] scopes, CancellationToken cancellationToken = default)
+	public async Task<string> AcquireToken(string[] scopes, CancellationToken cancellationToken)
 	{
 		try
 		{

@@ -13,5 +13,5 @@ public interface IMessageBus<in TEnvelope> where TEnvelope : IEnvelope
 	/// <param name="envelope">The envelope to send</param>
 	/// <param name="cancellationToken"></param>
 	/// <returns></returns>
-	Task PublishAsync<T>(T envelope, CancellationToken cancellationToken = default) where T : TEnvelope;
+	Task PublishAsync<T>(T envelope, CancellationToken cancellationToken) where T : TEnvelope;
 }

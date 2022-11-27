@@ -3,7 +3,7 @@
 namespace Hexalith.Application.Abstractions.StreamStores;
 
 /// <summary>
-/// Persited stream interface
+/// Persisted stream interface
 /// </summary>
 public interface IPersistedStream
 {
@@ -15,10 +15,16 @@ public interface IPersistedStream
 	public long AddItems(IEnumerable<IDataFragment> items);
 
 	/// <summary>
-	/// Gets the stream items
+	/// Gets a stream items slice
 	/// </summary>
-	/// <param name="first">first item to retreive</param>
-	/// <param name="last">last item to retreive</param>
+	/// <param name="first">first item to retrieve</param>
+	/// <param name="last">last item to retrieve</param>
 	/// <returns>The stream data slice</returns>
-	IEnumerable<IStreamItem> GetItems(long first = 0, long last = -1);
+	IEnumerable<IStreamItem> GetItems(long first, long last);
+
+	/// <summary>
+	/// Gets all stream items
+	/// </summary>
+	/// <returns></returns>
+	IEnumerable<IStreamItem> GetItems();
 }

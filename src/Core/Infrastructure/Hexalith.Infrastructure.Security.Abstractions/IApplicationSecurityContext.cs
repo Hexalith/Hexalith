@@ -3,5 +3,5 @@ namespace Hexalith.Infrastructure.Security.Abstractions;
 
 public interface IApplicationSecurityContext
 {
-	Task<string> AcquireToken(string[] scopes, CancellationToken cancellationToken = default);
+	Task<string> AcquireToken(string[] scopes, CancellationToken cancellationToken);
 }

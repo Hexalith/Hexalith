@@ -57,9 +57,9 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 
 	private HttpClient Client => _client ??= _httpClientFactory.CreateClient();
 
-	public Task DoActionAsync(string entityName, string action, Dictionary<string, object> parameters, CancellationToken cancellationToken = default) => throw new NotImplementedException();
+	public Task DoActionAsync(string entityName, string action, Dictionary<string, object> parameters, CancellationToken cancellationToken) => throw new NotImplementedException();
 
-	public async Task<IEnumerable<T>> GetAsync<T>(string entityName, Dictionary<string, object> filter, CancellationToken cancellationToken = default)
+	public async Task<IEnumerable<T>> GetAsync<T>(string entityName, Dictionary<string, object> filter, CancellationToken cancellationToken)
 	{
 		await AddRequestHeaders(cancellationToken);
 
@@ -73,7 +73,7 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 				ODataArrayResponse<T>? content = await response
 					.Content
 					.ReadFromJsonAsync<ODataArrayResponse<T>>
-					(options: new JsonSerializerOptions()
+					(options: new JsonSerializerOptions
 					{
 						PropertyNameCaseInsensitive = true
 					},
@@ -101,7 +101,7 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 		}
 	}
 
-	public async Task<T> GetSingleAsync<T>(string entityName, Dictionary<string, object> keys, CancellationToken cancellationToken = default)
+	public async Task<T> GetSingleAsync<T>(string entityName, Dictionary<string, object> keys, CancellationToken cancellationToken)
 	{
 		await AddRequestHeaders(cancellationToken);
 		string keyFilter = GetEntityFilter(keys);
@@ -115,7 +115,7 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 				ODataResponse<T>? content = await response
 					.Content
 					.ReadFromJsonAsync<ODataResponse<T>>
-					(options: new JsonSerializerOptions()
+					(options: new JsonSerializerOptions
 					{
 						PropertyNameCaseInsensitive = true
 					},
@@ -136,14 +136,15 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 		}
 		catch (Exception ex)
 		{
+			string? responseContent = (response == null) ? null : await response.Content.ReadAsStringAsync(cancellationToken);
 			_logger.LogError("Can't get {EntityName} with keys {Keys}. The method call to '{Path}' failed. response content :\n{ResponseContent}",
 				typeof(T).Name,
 				keys,
 				url.AbsoluteUri,
 				 response == null
 				 ? "No response"
-				 : await response.Content.ReadAsStringAsync(cancellationToken));
-			throw new Exception($"Failed to retrieve {typeof(T).Name} with keys {keys}.", ex);
+				 : responseContent);
+			throw new GetSingleRequestFailedException<T>(entityName, keys, responseContent, ex);
 		}
 	}
 
@@ -151,7 +152,7 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 		string entityName,
 		Dictionary<string, object> key,
 		T value,
-		CancellationToken cancellationToken = default)
+		CancellationToken cancellationToken)
 	{
 		await AddRequestHeaders(cancellationToken);
 		Uri url = new(_instance, $"{_dataPath}/{entityName}({HttpUtility.UrlEncode(GetEntityFilter(key))})");
@@ -165,7 +166,7 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 						.Create(
 						value,
 						null,
-						new JsonSerializerOptions()
+						new JsonSerializerOptions
 						{
 							PropertyNameCaseInsensitive = false,
 							PropertyNamingPolicy = null
@@ -190,12 +191,12 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 		}
 	}
 
-	public async Task<R> PostAsync<T, R>(string entityName, T value, CancellationToken cancellationToken = default)
+	public async Task<R> PostAsync<T, R>(string entityName, T value, CancellationToken cancellationToken)
 	{
 		HttpResponseMessage response = await PostAsync(entityName, value, cancellationToken);
 		R? v = await response
 			.Content
-			.ReadFromJsonAsync<R>(new JsonSerializerOptions()
+			.ReadFromJsonAsync<R>(new JsonSerializerOptions
 			{
 				PropertyNameCaseInsensitive = true
 			},
@@ -203,7 +204,7 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 		return v ?? throw new HttpRequestException($"Empty content response on request to '{response.RequestMessage?.RequestUri?.AbsoluteUri}'.");
 	}
 
-	public async Task<HttpResponseMessage> PostAsync<T>(string entityName, T value, CancellationToken cancellationToken = default)
+	public async Task<HttpResponseMessage> PostAsync<T>(string entityName, T value, CancellationToken cancellationToken)
 	{
 		await AddRequestHeaders(cancellationToken);
 		Uri url = new(_instance, $"{_dataPath}/{entityName}");
@@ -214,7 +215,7 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 				.PostAsJsonAsync(
 					url,
 					value,
-					new JsonSerializerOptions()
+					new JsonSerializerOptions
 					{
 						PropertyNameCaseInsensitive = false,
 						PropertyNamingPolicy = null
@@ -239,7 +240,7 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 		}
 	}
 
-	private async Task AddRequestHeaders(CancellationToken cancellationToken = default)
+	private async Task AddRequestHeaders(CancellationToken cancellationToken)
 	{
 		Client.DefaultRequestHeaders.Clear();
 		Client.DefaultRequestHeaders.Add("OData-MaxVersion", "4.0");

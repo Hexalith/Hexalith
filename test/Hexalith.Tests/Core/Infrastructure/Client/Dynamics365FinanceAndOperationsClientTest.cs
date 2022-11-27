@@ -36,7 +36,7 @@ public class Dynamics365FinanceAndOperationsClientTest
 		Hello result = await client.GetSingleAsync<Hello>(
 			"hello",
 			new Dictionary<string, object>
-				{ { "id", "3525" } });
+				{ { "id", "3525" } }, CancellationToken.None);
 		_ = result.Message.Should().Be(message);
 	}
 
