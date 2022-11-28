@@ -240,6 +240,8 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 		}
 	}
 
+	private static string GetOdataString(object value) => value is string s ? $"'{s}'" : value.ToString() ?? string.Empty;
+
 	private async Task AddRequestHeaders(CancellationToken cancellationToken)
 	{
 		Client.DefaultRequestHeaders.Clear();
@@ -261,8 +263,7 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 		_ = filter.Append($"dataAreaId='{_company}'");
 		foreach (KeyValuePair<string, object> key in keys)
 		{
-			string value = key.Value is string s ? $"'{s}'" : key.Value.ToString() ?? string.Empty;
-			_ = filter.Append($",{key.Key}={value}");
+			_ = filter.Append($",{key.Key}={GetOdataString(key.Value)}");
 		}
 		return filter.ToString();
 	}
@@ -273,12 +274,7 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 		_ = query.Append($"dataAreaId eq '{_company}'");
 		foreach (KeyValuePair<string, object> key in filter)
 		{
-			string value = key.Value switch
-			{
-				string s => $"'{s}'",
-				_ => key.Value.ToString() ?? string.Empty
-			};
-			_ = query.Append($" and {key.Key} eq {value}");
+			_ = query.Append($" and {key.Key} eq {GetOdataString(key.Value)}");
 		}
 		return query.ToString();
 	}
