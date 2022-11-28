@@ -8,13 +8,16 @@ namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 
 using System.Text.Json.Serialization;
 
+/// <summary>
+/// Dynamics 365 Finance and Operations entity base class.
+/// </summary>
 public abstract record ODataElement
 {
 	/// <summary>
 	/// Initializes a new instance of the <see cref="ODataElement"/> class.
 	/// </summary>
-	/// <param name="etag"></param>
-	/// <param name="dataAreaId"></param>
+	/// <param name="etag">The Etag.</param>
+	/// <param name="dataAreaId">The company identifier.</param>
 	[JsonConstructor]
 	protected ODataElement(string etag, string dataAreaId)
 	{
@@ -22,9 +25,16 @@ public abstract record ODataElement
 		DataAreaId = dataAreaId;
 	}
 
+	/// <summary>
+	/// Gets the ETag (or entity tag) HTTP response header is an identifier for a specific version of a resource.
+	/// Etags help to prevent simultaneous updates of a resource from overwriting each other.
+	/// </summary>
 	[JsonPropertyName("@odata.etag")]
 	public string Etag { get; }
 
+	/// <summary>
+	/// Gets the company identifier.
+	/// </summary>
 	[JsonPropertyName("dataAreaId")]
 	public string DataAreaId { get; }
 }

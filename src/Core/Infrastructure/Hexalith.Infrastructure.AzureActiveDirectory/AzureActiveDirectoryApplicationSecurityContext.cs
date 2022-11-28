@@ -12,6 +12,9 @@ using Hexalith.Infrastructure.Security.Abstractions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Identity.Client;
 
+/// <summary>
+/// The Azure Active Directory security context.
+/// </summary>
 public abstract class AzureActiveDirectoryApplicationSecurityContext : IApplicationSecurityContext
 {
 	private readonly AzureActiveDirectoryApplicationSecurityContextConfiguration _configuration;
@@ -21,8 +24,8 @@ public abstract class AzureActiveDirectoryApplicationSecurityContext : IApplicat
 	/// <summary>
 	/// Initializes a new instance of the <see cref="AzureActiveDirectoryApplicationSecurityContext"/> class.
 	/// </summary>
-	/// <param name="configuration"></param>
-	/// <param name="logger"></param>
+	/// <param name="configuration">Active directory configuration.</param>
+	/// <param name="logger">The logger.</param>
 	protected AzureActiveDirectoryApplicationSecurityContext(AzureActiveDirectoryApplicationSecurityContextConfiguration configuration, ILogger<AzureActiveDirectoryApplicationSecurityContext> logger)
 	{
 		_configuration = configuration;
@@ -64,7 +67,8 @@ public abstract class AzureActiveDirectoryApplicationSecurityContext : IApplicat
 		{
 			return (await Application
 				  .AcquireTokenForClient(scopes)
-				  .ExecuteAsync(cancellationToken).ConfigureAwait(false))
+				  .ExecuteAsync(cancellationToken)
+				  .ConfigureAwait(false))
 				  .AccessToken;
 		}
 		catch (Exception e)

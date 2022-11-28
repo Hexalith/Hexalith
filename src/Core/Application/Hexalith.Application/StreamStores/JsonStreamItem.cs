@@ -18,7 +18,7 @@ using System.Text.Json.Serialization;
 [DataContract]
 public class JsonStreamItem : IStreamItem
 {
-	private IDataFragment? message;
+	private IDataFragment? _message;
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="JsonStreamItem" /> class.
@@ -64,7 +64,7 @@ public class JsonStreamItem : IStreamItem
 	/// <summary>
 	/// Gets the message.
 	/// </summary>
-	public IDataFragment Message => message ??= CreateDataFragment();
+	public IDataFragment Message => _message ??= CreateDataFragment();
 
 	/// <summary>
 	/// Gets the serialized meta data object.

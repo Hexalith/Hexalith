@@ -14,14 +14,17 @@ using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Security;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+/// <summary>
+/// Helper class to configure Dynamics 365 Finance and Operations client.
+/// </summary>
 public static class Dynamics365FinanceAndOperationsClientHelper
 {
 	/// <summary>
 	/// Adds a Dynamics 365 Finance and Operations client to the service collection.
 	/// </summary>
 	/// <param name="services">Service collection.</param>
-	/// <param name="configuration">Configuration containing the vlient settings values.</param>
-	/// <returns></returns>
+	/// <param name="configuration">Configuration containing the client settings values.</param>
+	/// <returns>The services collection.</returns>
 	public static IServiceCollection AddDynamics365FinanceAndOperationsClient(this IServiceCollection services, IConfiguration configuration)
 	{
 		return services

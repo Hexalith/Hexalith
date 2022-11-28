@@ -104,7 +104,7 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 					cancellationToken).ConfigureAwait(false);
 				if (content != null && !string.IsNullOrWhiteSpace(content.Context))
 				{
-					_logger.LogTrace("The method call to '{Path}' was succesfull.", url.AbsoluteUri);
+					_logger.LogTrace("The method call to '{Path}' was successful.", url.AbsoluteUri);
 					return content.Values
 						?? Enumerable.Empty<T>();
 				}

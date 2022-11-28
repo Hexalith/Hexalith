@@ -15,12 +15,21 @@ using System.Runtime.Serialization;
 [DataContract]
 public class ODataResponse<T>
 {
+	/// <summary>
+	/// Gets or sets the OData context.
+	/// </summary>
 	[DataMember(Name = "@odata.context")]
 	public string? Context { get; set; }
 
+	/// <summary>
+	/// Gets or sets message when there is an error.
+	/// </summary>
 	[DataMember(Name = "message")]
 	public string? Message { get; set; }
 
+	/// <summary>
+	/// Gets or sets the entity value.
+	/// </summary>
 	[DataMember(Name = "value")]
 	public T? Value { get; set; }
 }

@@ -16,7 +16,7 @@ using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
 public class Dynamics365FinanceAndOperationsClientSettings : ISettings
 {
 	/// <summary>
-	/// Gets or sets microsoft Dynamics 365 for finance and operations company identifier (DataAreaId).
+	/// Gets or sets Microsoft Dynamics 365 for finance and operations company identifier (DataAreaId).
 	/// </summary>
 	public string? Company { get; set; }
 
@@ -26,10 +26,14 @@ public class Dynamics365FinanceAndOperationsClientSettings : ISettings
 	public AzureActiveDirectoryApplicationSecurityContextConfiguration? Identity { get; set; }
 
 	/// <summary>
-	/// Gets or sets microsoft Dynamics 365 for finance and operations instance url (https://xxx-devaos.axcloud.dynamics.com/).
+	/// Gets or sets Microsoft Dynamics 365 for finance and operations instance URL (https://xxx-devaos.axcloud.dynamics.com/).
 	/// </summary>
 	public Uri? Instance { get; set; }
 
+	/// <summary>
+	/// Gets or sets the settings name..
+	/// </summary>
+	/// <returns>The name.</returns>
 	public static string ConfigurationName()
 	{
 		return nameof(Dynamics365FinanceAndOperationsClient);
