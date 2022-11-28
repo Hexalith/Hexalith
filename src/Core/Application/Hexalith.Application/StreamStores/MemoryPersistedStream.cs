@@ -1,24 +1,26 @@
-﻿// Fiveforty S.A. Paris France (2022)
+﻿// <copyright file="MemoryPersistedStream.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+
 namespace Hexalith.Application.StreamStores;
 
 using Hexalith.Application.Abstractions.StreamStores;
 
-using System.Collections.Generic;
-using System.Linq;
-
 /// <summary>
-/// In memory persisted stream
+/// In memory persisted stream.
 /// </summary>
 public class MemoryPersistedStream : IPersistedStream
 {
 	private readonly Dictionary<long, IStreamItem> _items = new();
 
 	/// <summary>
-	/// Add items to the stream
+	/// Add items to the stream.
 	/// </summary>
-	/// <param name="items">List of items to add</param>
+	/// <param name="items">List of items to add.</param>
 	/// <param name="expectedVersion">The stream expected version (Etag) for concurrency checks.</param>
-	/// <returns>The stream version</returns>
+	/// <returns>The stream version.</returns>
 	public long AddItems(IEnumerable<IDataFragment> items, long expectedVersion)
 	{
 		long sequence = _items.Max(p => p.Key);
@@ -26,22 +28,28 @@ public class MemoryPersistedStream : IPersistedStream
 		{
 			throw new UnexpectedStreamVersionException(expectedVersion: expectedVersion, actualVersion: sequence);
 		}
+
 		foreach (IDataFragment item in items)
 		{
 			sequence++;
 			_items.Add(sequence, new StreamItem(sequence, item));
 		}
+
 		return sequence;
 	}
 
-	public long AddItems(IEnumerable<IDataFragment> items) => throw new NotImplementedException();
+	/// <inheritdoc/>
+	public long AddItems(IEnumerable<IDataFragment> items)
+	{
+		throw new NotImplementedException();
+	}
 
 	/// <summary>
-	/// Get item slice from stream
+	/// Get item slice from stream.
 	/// </summary>
-	/// <param name="first">Sequence of the top element</param>
-	/// <param name="last">Sequence of the last element</param>
-	/// <returns>The list of items in the slice</returns>
+	/// <param name="first">Sequence of the top element.</param>
+	/// <param name="last">Sequence of the last element.</param>
+	/// <returns>The list of items in the slice.</returns>
 	public IEnumerable<IStreamItem> GetItems(long first, long last)
 	{
 		return _items
@@ -51,9 +59,12 @@ public class MemoryPersistedStream : IPersistedStream
 	}
 
 	/// <summary>
-	/// Get all items from stream
+	/// Get all items from stream.
 	/// </summary>
-	/// <returns>All the items in the stream</returns>
+	/// <returns>All the items in the stream.</returns>
 	/// <exception cref="NotImplementedException"></exception>
-	public IEnumerable<IStreamItem> GetItems() => GetItems(0, -1);
+	public IEnumerable<IStreamItem> GetItems()
+	{
+		return GetItems(0, -1);
+	}
 }

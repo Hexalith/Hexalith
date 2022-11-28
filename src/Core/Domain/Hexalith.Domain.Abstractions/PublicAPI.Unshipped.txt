@@ -1,0 +1,21 @@
+﻿abstract Hexalith.Domain.Abstractions.Messages.Message.GetAggregateId() -> string!
+abstract Hexalith.Domain.Abstractions.Messages.Message.GetAggregateName() -> string!
+abstract Hexalith.Domain.Abstractions.Messages.Message.GetMessageName() -> string!
+Hexalith.Domain.Abstractions.Events.BaseEvent
+Hexalith.Domain.Abstractions.Events.BaseEvent.BaseEvent() -> void
+Hexalith.Domain.Abstractions.Events.IEvent
+Hexalith.Domain.Abstractions.Messages.IMessage
+Hexalith.Domain.Abstractions.Messages.IMessage.AggregateId.get -> string!
+Hexalith.Domain.Abstractions.Messages.IMessage.AggregateName.get -> string!
+Hexalith.Domain.Abstractions.Messages.IMessage.MajorVersion.get -> int
+Hexalith.Domain.Abstractions.Messages.IMessage.MessageName.get -> string!
+Hexalith.Domain.Abstractions.Messages.IMessage.MinorVersion.get -> int
+Hexalith.Domain.Abstractions.Messages.Message
+Hexalith.Domain.Abstractions.Messages.Message.AggregateId.get -> string!
+Hexalith.Domain.Abstractions.Messages.Message.AggregateName.get -> string!
+Hexalith.Domain.Abstractions.Messages.Message.MajorVersion.get -> int
+Hexalith.Domain.Abstractions.Messages.Message.Message() -> void
+Hexalith.Domain.Abstractions.Messages.Message.MessageName.get -> string!
+Hexalith.Domain.Abstractions.Messages.Message.MinorVersion.get -> int
+virtual Hexalith.Domain.Abstractions.Messages.Message.GetMajorVersion() -> int
+virtual Hexalith.Domain.Abstractions.Messages.Message.GetMinorVersion() -> int

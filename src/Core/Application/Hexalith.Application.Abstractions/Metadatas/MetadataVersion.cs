@@ -1,4 +1,8 @@
-﻿// Fiveforty S.A. Paris France (2022)
+﻿// <copyright file="MetadataVersion.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
 
 namespace Hexalith.Application.Abstractions.Metadatas;
 
@@ -9,14 +13,14 @@ using System.Text.Json.Serialization;
 public class MetadataVersion : IMetadataVersion
 {
 	/// <summary>
-	/// The major version.
+	/// Gets the major version.
 	/// </summary>
 	[DataMember(Order = 1)]
 	[JsonPropertyOrder(1)]
 	public int Major { get; }
 
 	/// <summary>
-	/// The minor version
+	/// Gets the minor version.
 	/// </summary>
 	[DataMember(Order = 2)]
 	[JsonPropertyOrder(2)]

@@ -1,28 +1,33 @@
-﻿// Fiveforty S.A. Paris France (2022)
+﻿// <copyright file="IMessageMetadata.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+
 namespace Hexalith.Application.Abstractions.Metadatas;
 
 /// <summary>
-/// The message metadata
+/// The message metadata.
 /// </summary>
 public interface IMessageMetadata
 {
 	/// <summary>
-	/// Aggregate metadata.
+	/// Gets aggregate metadata.
 	/// </summary>
 	IAggregateMetaData Aggregate { get; }
 
 	/// <summary>
-	/// The aggregate identifier.
+	/// Gets the aggregate identifier.
 	/// </summary>
 	string Id { get; }
 
 	/// <summary>
-	/// The aggregate name.
+	/// Gets the aggregate name.
 	/// </summary>
 	string Name { get; }
 
 	/// <summary>
-	/// The message version
+	/// Gets the message version.
 	/// </summary>
 	IMessageVersion Version { get; }
 }

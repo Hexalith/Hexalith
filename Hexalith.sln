@@ -26,8 +26,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Global", "_Global", "{2A05
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		.readthedocs.yaml = .readthedocs.yaml
+		.stylecop.json = .stylecop.json
+		.stylecop.ruleset = .stylecop.ruleset
 		CODE-OF-CONDUCT.md = CODE-OF-CONDUCT.md
 		Directory.Build.props = Directory.Build.props
+		LICENSE.txt = LICENSE.txt
 		mkdocs.yml = mkdocs.yml
 		nuget.config = nuget.config
 		README.md = README.md
@@ -80,6 +83,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Domain.Abstractions", "src\Core\Domain\Hexalith.Domain.Abstractions\Hexalith.Domain.Abstractions.csproj", "{8CE66AE1-932A-4E2C-B8E5-4FA627ACA2D7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.DaprEventStore", "src\Core\Infrastructure\Hexalith.Infrastructure.DaprEventStore\Hexalith.Infrastructure.DaprEventStore.csproj", "{1042AAE2-35A1-4584-954F-636F22C49206}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{30C988C1-4F6B-44DF-994F-92ADBD42E143}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

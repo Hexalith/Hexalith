@@ -1,4 +1,9 @@
-﻿// Fiveforty S.A. Paris France (2022)
+﻿// <copyright file="Dynamics365FinanceAndOperationsClient.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+
 namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
 
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Configurations;
@@ -8,14 +13,10 @@ using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Security;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-using System.Collections.Generic;
-using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Web;
 
 /// <summary>
@@ -31,6 +32,13 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 	private readonly IDynamics365FinanceAndOperationsSecurityContext _securityContext;
 	private HttpClient? _client;
 
+	/// <summary>
+	/// Initializes a new instance of the <see cref="Dynamics365FinanceAndOperationsClient"/> class.
+	/// </summary>
+	/// <param name="httpClientFactory"></param>
+	/// <param name="securityContext"></param>
+	/// <param name="settings"></param>
+	/// <param name="logger"></param>
 	public Dynamics365FinanceAndOperationsClient(
 		IHttpClientFactory httpClientFactory,
 		IDynamics365FinanceAndOperationsSecurityContext securityContext,
@@ -43,118 +51,136 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 		_logger = logger ?? throw new ArgumentNullException(nameof(logger));
 		if (string.IsNullOrWhiteSpace(s.Instance?.OriginalString))
 		{
-			throw new ArgumentException($"The {nameof(s.Instance)} setting is not defined.",
-										nameof(settings));
+			throw new ArgumentException(
+				$"The {nameof(s.Instance)} setting is not defined.",
+				nameof(settings));
 		}
+
 		if (string.IsNullOrWhiteSpace(s.Company))
 		{
-			throw new ArgumentException($"The {nameof(s.Company)} setting is not defined.",
-										nameof(settings));
+			throw new ArgumentException(
+				$"The {nameof(s.Company)} setting is not defined.",
+				nameof(settings));
 		}
+
 		_company = s.Company;
 		_instance = s.Instance;
 	}
 
 	private HttpClient Client => _client ??= _httpClientFactory.CreateClient();
 
-	public Task DoActionAsync(string entityName, string action, Dictionary<string, object> parameters, CancellationToken cancellationToken) => throw new NotImplementedException();
+	/// <inheritdoc/>
+	public Task DoActionAsync(string entityName, string action, Dictionary<string, object> parameters, CancellationToken cancellationToken)
+	{
+		throw new NotImplementedException();
+	}
 
+	/// <inheritdoc/>
 	public async Task<IEnumerable<T>> GetAsync<T>(string entityName, Dictionary<string, object> filter, CancellationToken cancellationToken)
 	{
-		await AddRequestHeaders(cancellationToken);
+		await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
 
 		Uri url = new(_instance, $"{_dataPath}/{entityName}/?$filter={HttpUtility.UrlEncode(GetQueryFilter(filter))}");
 		HttpResponseMessage? response = null;
 		try
 		{
-			response = await Client.GetAsync(url, cancellationToken);
+			response = await Client.GetAsync(url, cancellationToken).ConfigureAwait(false);
 			if (response.IsSuccessStatusCode)
 			{
 				ODataArrayResponse<T>? content = await response
 					.Content
-					.ReadFromJsonAsync<ODataArrayResponse<T>>
-					(options: new JsonSerializerOptions
+					.ReadFromJsonAsync<ODataArrayResponse<T>>(
+					options: new JsonSerializerOptions
 					{
-						PropertyNameCaseInsensitive = true
+						PropertyNameCaseInsensitive = true,
 					},
-					cancellationToken);
+					cancellationToken).ConfigureAwait(false);
 				if (content != null && !string.IsNullOrWhiteSpace(content.Context))
 				{
 					_logger.LogTrace("The method call to '{Path}' was succesfull.", url.AbsoluteUri);
 					return content.Values
 						?? Enumerable.Empty<T>();
 				}
+
 				throw new HttpRequestException(
-					$"The request to '{url.AbsoluteUri}' failed to deserialize :\n{await response.Content.ReadAsStringAsync(cancellationToken)}");
+					$"The request to '{url.AbsoluteUri}' failed to deserialize :\n{await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false)}");
 			}
+
 			throw new HttpRequestException(
 				$"The request to '{url.AbsoluteUri}' failed with status code '{response.StatusCode}'.");
 		}
 		catch
 		{
-			_logger.LogError("The method call to '{Path}' failed. response content :\n{ResponseContent}",
+			_logger.LogError(
+				"The method call to '{Path}' failed. response content :\n{ResponseContent}",
 				url.AbsoluteUri,
-				 response == null
+				response == null
 				 ? "No response"
-				 : await response.Content.ReadAsStringAsync(cancellationToken));
+				 : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false));
 			throw;
 		}
 	}
 
+	/// <inheritdoc/>
 	public async Task<T> GetSingleAsync<T>(string entityName, Dictionary<string, object> keys, CancellationToken cancellationToken)
 	{
-		await AddRequestHeaders(cancellationToken);
+		await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
 		string keyFilter = GetEntityFilter(keys);
 		Uri url = new(_instance, $"{_dataPath}/{entityName}({HttpUtility.UrlEncode(keyFilter)})");
 		HttpResponseMessage? response = null;
 		try
 		{
-			response = await Client.GetAsync(url, cancellationToken);
+			response = await Client.GetAsync(url, cancellationToken).ConfigureAwait(false);
 			if (response.IsSuccessStatusCode)
 			{
 				ODataResponse<T>? content = await response
 					.Content
-					.ReadFromJsonAsync<ODataResponse<T>>
-					(options: new JsonSerializerOptions
+					.ReadFromJsonAsync<ODataResponse<T>>(
+					options: new JsonSerializerOptions
 					{
-						PropertyNameCaseInsensitive = true
+						PropertyNameCaseInsensitive = true,
 					},
-					cancellationToken);
+					cancellationToken).ConfigureAwait(false);
 				if (content == null)
 				{
 					throw new HttpRequestException($"Empty content response on request to '{url.AbsoluteUri}'.");
 				}
+
 				if (content.Value == null)
 				{
 					throw new HttpRequestException($"Empty value response on request to '{url.AbsoluteUri}'.\nMessage:{content.Message}");
 				}
+
 				_logger.LogDebug("The method call to '{Path}' was successful.", url.AbsoluteUri);
 				return content.Value;
 			}
+
 			throw new HttpRequestException(
 				$"The request to '{url.AbsoluteUri}' failed with status code '{response.StatusCode}'.");
 		}
 		catch (Exception ex)
 		{
-			string? responseContent = (response == null) ? null : await response.Content.ReadAsStringAsync(cancellationToken);
-			_logger.LogError("Can't get {EntityName} with keys {Keys}. The method call to '{Path}' failed. response content :\n{ResponseContent}",
+			string? responseContent = (response == null) ? null : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+			_logger.LogError(
+				"Can't get {EntityName} with keys {Keys}. The method call to '{Path}' failed. response content :\n{ResponseContent}",
 				typeof(T).Name,
 				keys,
 				url.AbsoluteUri,
-				 response == null
+				response == null
 				 ? "No response"
 				 : responseContent);
 			throw new GetSingleRequestFailedException<T>(entityName, keys, responseContent, ex);
 		}
 	}
 
+	/// <inheritdoc/>
 	public async Task PatchAsync<T>(
 		string entityName,
 		Dictionary<string, object> key,
 		T value,
 		CancellationToken cancellationToken)
 	{
-		await AddRequestHeaders(cancellationToken);
+		await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
 		Uri url = new(_instance, $"{_dataPath}/{entityName}({HttpUtility.UrlEncode(GetEntityFilter(key))})");
 		HttpResponseMessage? response = null;
 		try
@@ -165,48 +191,52 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 					JsonContent
 						.Create(
 						value,
-						null,
+						mediaType: null,
 						new JsonSerializerOptions
 						{
 							PropertyNameCaseInsensitive = false,
-							PropertyNamingPolicy = null
-						}
-					),
-					cancellationToken);
+							PropertyNamingPolicy = null,
+						}),
+					cancellationToken).ConfigureAwait(false);
 			if (response.IsSuccessStatusCode)
 			{
 				return;
 			}
+
 			throw new HttpRequestException(
-				$"The patch request '{url.AbsoluteUri}' failed with status code '{response.StatusCode}'. Response:\n{await response.Content.ReadAsStringAsync(cancellationToken)}");
+				$"The patch request '{url.AbsoluteUri}' failed with status code '{response.StatusCode}'. Response:\n{await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false)}");
 		}
 		catch
 		{
-			_logger.LogError("The method call to '{Path}' failed. response content :\n{ResponseContent}",
+			_logger.LogError(
+				"The method call to '{Path}' failed. response content :\n{ResponseContent}",
 				url.AbsoluteUri,
-				 response == null
+				response == null
 				 ? "No response"
-				 : await response.Content.ReadAsStringAsync(cancellationToken));
+				 : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false));
 			throw;
 		}
 	}
 
+	/// <inheritdoc/>
 	public async Task<R> PostAsync<T, R>(string entityName, T value, CancellationToken cancellationToken)
 	{
-		HttpResponseMessage response = await PostAsync(entityName, value, cancellationToken);
+		HttpResponseMessage response = await PostAsync(entityName, value, cancellationToken).ConfigureAwait(false);
 		R? v = await response
 			.Content
-			.ReadFromJsonAsync<R>(new JsonSerializerOptions
-			{
-				PropertyNameCaseInsensitive = true
-			},
-			cancellationToken);
+			.ReadFromJsonAsync<R>(
+				new JsonSerializerOptions
+				{
+					PropertyNameCaseInsensitive = true,
+				},
+				cancellationToken).ConfigureAwait(false);
 		return v ?? throw new HttpRequestException($"Empty content response on request to '{response.RequestMessage?.RequestUri?.AbsoluteUri}'.");
 	}
 
+	/// <inheritdoc/>
 	public async Task<HttpResponseMessage> PostAsync<T>(string entityName, T value, CancellationToken cancellationToken)
 	{
-		await AddRequestHeaders(cancellationToken);
+		await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
 		Uri url = new(_instance, $"{_dataPath}/{entityName}");
 		HttpResponseMessage? response = null;
 		try
@@ -218,43 +248,46 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 					new JsonSerializerOptions
 					{
 						PropertyNameCaseInsensitive = false,
-						PropertyNamingPolicy = null
+						PropertyNamingPolicy = null,
 					},
-					cancellationToken);
+					cancellationToken).ConfigureAwait(false);
 			if (response?.IsSuccessStatusCode == true)
 			{
 				_logger.LogInformation("The method call to '{Post}' succeeded.", url.AbsolutePath);
 				return response;
 			}
+
 			throw new HttpRequestException(
-				$"The patch request '{url.AbsoluteUri}' failed with status code '{response?.StatusCode}'. Response:\n{(response == null ? null : await response.Content.ReadAsStringAsync(cancellationToken))}");
+				$"The patch request '{url.AbsoluteUri}' failed with status code '{response?.StatusCode}'. Response:\n{(response == null ? null : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false))}");
 		}
 		catch
 		{
-			_logger.LogError("The method call to '{Path}' failed. response content :\n{ResponseContent}",
+			_logger.LogError(
+				"The method call to '{Path}' failed. response content :\n{ResponseContent}",
 				url.AbsoluteUri,
-				 response == null
+				response == null
 				 ? "No response"
-				 : await response.Content.ReadAsStringAsync(cancellationToken));
+				 : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false));
 			throw;
 		}
 	}
 
-	private static string GetOdataString(object value) => value is string s ? $"'{s}'" : value.ToString() ?? string.Empty;
+	private static string GetOdataString(object value)
+	{
+		return value is string s ? $"'{s}'" : value.ToString() ?? string.Empty;
+	}
 
-	private async Task AddRequestHeaders(CancellationToken cancellationToken)
+	private async Task AddRequestHeadersAsync(CancellationToken cancellationToken)
 	{
 		Client.DefaultRequestHeaders.Clear();
 		Client.DefaultRequestHeaders.Add("OData-MaxVersion", "4.0");
 		Client.DefaultRequestHeaders.Add("OData-Version", "4.0");
 		Client.DefaultRequestHeaders.Add("Prefer", "odata.include-annotations = *");
 		Client.DefaultRequestHeaders.Accept.Add(
-			new MediaTypeWithQualityHeaderValue("application/json")
-		);
-		Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue
-			("Bearer",
-			await _securityContext.AcquireToken(cancellationToken)
-		);
+			new MediaTypeWithQualityHeaderValue("application/json"));
+		Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
+			"Bearer",
+			await _securityContext.AcquireToken(cancellationToken));
 	}
 
 	private string GetEntityFilter(Dictionary<string, object> keys)
@@ -265,6 +298,7 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 		{
 			_ = filter.Append($",{key.Key}={GetOdataString(key.Value)}");
 		}
+
 		return filter.ToString();
 	}
 
@@ -276,6 +310,7 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 		{
 			_ = query.Append($" and {key.Key} eq {GetOdataString(key.Value)}");
 		}
+
 		return query.ToString();
 	}
 }

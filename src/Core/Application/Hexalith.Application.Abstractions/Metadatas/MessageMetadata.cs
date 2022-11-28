@@ -1,4 +1,8 @@
-﻿// Fiveforty S.A. Paris France (2022)
+﻿// <copyright file="MessageMetadata.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
 
 namespace Hexalith.Application.Abstractions.Metadatas;
 
@@ -24,18 +28,22 @@ public class MessageMetadata : IMessageMetadata
 		Aggregate = aggregate;
 	}
 
+	/// <inheritdoc/>
 	[DataMember(Order = 4)]
 	[JsonPropertyOrder(4)]
 	public IAggregateMetaData Aggregate { get; }
 
+	/// <inheritdoc/>
 	[DataMember(Order = 1)]
 	[JsonPropertyOrder(1)]
 	public string Id { get; }
 
+	/// <inheritdoc/>
 	[DataMember(Order = 2)]
 	[JsonPropertyOrder(2)]
 	public string Name { get; }
 
+	/// <inheritdoc/>
 	[DataMember(Order = 3)]
 	[JsonPropertyOrder(3)]
 	public IMessageVersion Version { get; }

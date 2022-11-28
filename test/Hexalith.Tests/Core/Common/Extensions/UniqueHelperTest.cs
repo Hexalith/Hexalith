@@ -1,4 +1,8 @@
-// Fiveforty S.A. Paris France (2022)
+// <copyright file="UniqueHelperTest.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
 
 namespace Hexalith.Tests.Core.Common.Extensions;
 
@@ -9,15 +13,16 @@ using Hexalith.Extensions.Common;
 public class UniqueHelperTest
 {
 	[Fact]
-	public async Task Get_a_hundred_concurrent_date_time_id_string_without_any_duplicates()
+	public async Task Get_a_hundred_concurrent_date_time_id_string_without_any_duplicatesAsync()
 	{
 		List<Task<string>> ids = new();
 		for (int i = 0; i < 100; i++)
 		{
 			ids.Add(Task.Run(UniqueIdHelper.GenerateDateTimeId));
 		}
+
 		string[] result = await Task.WhenAll(ids);
-		_ = result.Distinct().Count().Should().Be(100);
+		_ = result.Distinct(StringComparer.Ordinal).Count().Should().Be(100);
 	}
 
 	[Fact]
@@ -28,7 +33,8 @@ public class UniqueHelperTest
 		{
 			ids.Add(UniqueIdHelper.GenerateDateTimeId());
 		}
-		_ = ids.Distinct().Count().Should().Be(100);
+
+		_ = ids.Distinct(StringComparer.Ordinal).Count().Should().Be(100);
 	}
 
 	[Fact]
@@ -39,7 +45,8 @@ public class UniqueHelperTest
 		{
 			ids.Add(UniqueIdHelper.GenerateUniqueStringId());
 		}
-		_ = ids.Distinct().Count().Should().Be(1000);
+
+		_ = ids.Distinct(StringComparer.Ordinal).Count().Should().Be(1000);
 	}
 
 	[Fact]

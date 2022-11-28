@@ -1,4 +1,9 @@
-﻿// Fiveforty S.A. Paris France (2022)
+﻿// <copyright file="ODataResponse.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+
 namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 
 using System.Runtime.Serialization;
@@ -6,7 +11,7 @@ using System.Runtime.Serialization;
 /// <summary>
 /// Dynamics 365 Finance and Operations entity response content.
 /// </summary>
-/// <typeparam name="T">Type of the entity object</typeparam>
+/// <typeparam name="T">Type of the entity object.</typeparam>
 [DataContract]
 public class ODataResponse<T>
 {

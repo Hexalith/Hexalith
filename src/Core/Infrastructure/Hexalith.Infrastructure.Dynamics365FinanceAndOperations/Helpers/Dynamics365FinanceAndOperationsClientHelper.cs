@@ -1,4 +1,8 @@
-﻿// Fiveforty S.A. Paris France (2022)
+﻿// <copyright file="Dynamics365FinanceAndOperationsClientHelper.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
 
 namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Helpers;
 
@@ -15,8 +19,8 @@ public static class Dynamics365FinanceAndOperationsClientHelper
 	/// <summary>
 	/// Adds a Dynamics 365 Finance and Operations client to the service collection.
 	/// </summary>
-	/// <param name="services">Service collection</param>
-	/// <param name="configuration">Configuration containing the vlient settings values</param>
+	/// <param name="services">Service collection.</param>
+	/// <param name="configuration">Configuration containing the vlient settings values.</param>
 	/// <returns></returns>
 	public static IServiceCollection AddDynamics365FinanceAndOperationsClient(this IServiceCollection services, IConfiguration configuration)
 	{

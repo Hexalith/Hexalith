@@ -1,16 +1,20 @@
-﻿// Fiveforty S.A. Paris France (2022)
+﻿// <copyright file="IStreamStore.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
 
 namespace Hexalith.Application.Abstractions.StreamStores;
 
 /// <summary>
-/// Event store interface
+/// Event store interface.
 /// </summary>
 public interface IStreamStore
 {
 	/// <summary>
 	/// Gets an event stream. If the stream does not exist, it is created.
 	/// </summary>
-	/// <param name="streamId">The stream identifier</param>
-	/// <returns>The event stream</returns>
+	/// <param name="streamId">The stream identifier.</param>
+	/// <returns>The event stream.</returns>
 	IPersistedStream GetStream(string streamId);
 }

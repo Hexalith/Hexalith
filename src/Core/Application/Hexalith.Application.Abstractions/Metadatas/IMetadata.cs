@@ -1,8 +1,10 @@
-﻿// Fiveforty S.A. Paris France (2022)
+﻿// <copyright file="IMetadata.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
 
 namespace Hexalith.Application.Abstractions.Metadatas;
-
-using System;
 
 /// <summary>
 /// Interface for all message metadatas.
@@ -10,27 +12,27 @@ using System;
 public interface IMetadata
 {
 	/// <summary>
-	/// The message context metadata
+	/// Gets the message context metadata.
 	/// </summary>
 	IContextMetadata Context { get; }
 
 	/// <summary>
-	/// The date the message was created
+	/// Gets the date the message was created.
 	/// </summary>
 	DateTimeOffset Date { get; }
 
 	/// <summary>
-	/// The message metadata
+	/// Gets the message metadata.
 	/// </summary>
 	IMessageMetadata Message { get; }
 
 	/// <summary>
-	/// The message scopes names
+	/// Gets the message scopes names.
 	/// </summary>
 	IEnumerable<string>? Scopes { get; }
 
 	/// <summary>
-	/// The metadata version
+	/// Gets the metadata version.
 	/// </summary>
 	IMetadataVersion Version { get; }
 }

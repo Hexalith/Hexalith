@@ -1,9 +1,15 @@
-﻿// Fiveforty S.A. Paris France (2022)
+﻿// <copyright file="UniqueIdHelper.cs.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
 
 namespace Hexalith.Extensions.Common;
 
+using System.Globalization;
+
 /// <summary>
-/// Unique Id generators
+/// Unique Id generators.
 /// </summary>
 public static class UniqueIdHelper
 {
@@ -13,25 +19,26 @@ public static class UniqueIdHelper
 	/// <summary>
 	/// Generate a new unique id of 17 characters from the current date time (yyyyMMddHHmmssfff). Only one Id per millisecond can be generated.
 	/// </summary>
-	/// <returns>Id string</returns>
+	/// <returns>Id string.</returns>
 	public static string GenerateDateTimeId()
 	{
 		lock (_lock)
 		{
-			string value = DateTime.Now.ToString("yyyyMMddHHmmssfff");
-			while (value == _previousDateTimeId)
+			string value = DateTime.UtcNow.ToString("yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
+			while (string.Equals(value, _previousDateTimeId, StringComparison.Ordinal))
 			{
 				Thread.Sleep(1);
-				value = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+				value = DateTime.UtcNow.ToString("yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
 			}
+
 			return _previousDateTimeId = value;
 		}
 	}
 
 	/// <summary>
-	/// Generate a new unique id of 22 characters
+	/// Generate a new unique id of 22 characters.
 	/// </summary>
-	/// <returns>Id string</returns>
+	/// <returns>Id string.</returns>
 	public static string GenerateUniqueStringId()
 	{
 		return Convert

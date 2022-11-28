@@ -1,30 +1,33 @@
-﻿// Fiveforty S.A. Paris France (2022)
+﻿// <copyright file="JsonStreamItem.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
 
 namespace Hexalith.Application.StreamStores;
 
 using Hexalith.Application.Abstractions.StreamStores;
 
-using System;
 using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
 /// <summary>
-/// Persited stream item
+/// Persited stream item.
 /// </summary>
 [DataContract]
 public class JsonStreamItem : IStreamItem
 {
-	private IDataFragment? _message;
+	private IDataFragment? message;
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="StreamItem" /> class.
+	/// Initializes a new instance of the <see cref="JsonStreamItem" /> class.
 	/// </summary>
-	/// <param name="sequence">The stream sequence number</param>
-	/// <param name="dataType">The data type fully qualified name</param>
-	/// <param name="data">Json serialized data object string</param>
-	/// <param name="metaType">The metadata type fully qualified name</param>
-	/// <param name="metadata">Json serialized metadata object string</param>
+	/// <param name="sequence">The stream sequence number.</param>
+	/// <param name="dataType">The data type fully qualified name.</param>
+	/// <param name="data">Json serialized data object string.</param>
+	/// <param name="metaType">The metadata type fully qualified name.</param>
+	/// <param name="metadata">Json serialized metadata object string.</param>
 	[JsonConstructor]
 	public JsonStreamItem(long sequence, string dataType, string data, string metaType, string metadata)
 	{
@@ -36,46 +39,49 @@ public class JsonStreamItem : IStreamItem
 	}
 
 	/// <summary>
-	/// Initializer for serializers that require a parameterless constructor
+	/// Initializes a new instance of the <see cref="JsonStreamItem" /> class. Initializer for serializers that require a parameterless constructor.
 	/// </summary>
 	[Obsolete("This constructor is only for serialization purposes.", true)]
-	public JsonStreamItem() => Data = Metadata = DataType = MetaType = string.Empty;
+	public JsonStreamItem()
+	{
+		Data = Metadata = DataType = MetaType = string.Empty;
+	}
 
 	/// <summary>
-	/// Gets the serialized data object
+	/// Gets the serialized data object.
 	/// </summary>
 	[DataMember(Order = 10)]
 	[JsonPropertyOrder(10)]
 	public string Data { get; private set; }
 
 	/// <summary>
-	/// Gets the data type fully qualified name
+	/// Gets the data type fully qualified name.
 	/// </summary>
 	[DataMember(Order = 2)]
 	[JsonPropertyOrder(2)]
 	public string DataType { get; private set; }
 
 	/// <summary>
-	/// Gets the message
+	/// Gets the message.
 	/// </summary>
-	public IDataFragment Message => _message ??= CreateDataFragment();
+	public IDataFragment Message => message ??= CreateDataFragment();
 
 	/// <summary>
-	/// Gets the serialized meta data object
+	/// Gets the serialized meta data object.
 	/// </summary>
 	[DataMember(Order = 11)]
 	[JsonPropertyOrder(11)]
 	public string Metadata { get; private set; }
 
 	/// <summary>
-	/// Gets the metadata type fully qualified name
+	/// Gets the metadata type fully qualified name.
 	/// </summary>
 	[DataMember(Order = 3)]
 	[JsonPropertyOrder(3)]
 	public string MetaType { get; private set; }
 
 	/// <summary>
-	/// Gets the stream sequence number
+	/// Gets the stream sequence number.
 	/// </summary>
 	[DataMember(Order = 1)]
 	[JsonPropertyOrder(1)]
@@ -84,11 +90,11 @@ public class JsonStreamItem : IStreamItem
 	/// <summary>
 	/// Create a new stream item from an object instance.
 	/// </summary>
-	/// <param name="sequence">The stream item sequence number</param>
-	/// <param name="data">The data object</param>
-	/// <param name="metadata">The metadata object</param>
-	/// <param name="options">The Json serializer options</param>
-	/// <returns>A new stream item object</returns>
+	/// <param name="sequence">The stream item sequence number.</param>
+	/// <param name="data">The data object.</param>
+	/// <param name="metadata">The metadata object.</param>
+	/// <param name="options">The Json serializer options.</param>
+	/// <returns>A new stream item object.</returns>
 	public static IStreamItem CreateStreamItem(
 		long sequence,
 		IDataFragment data,
@@ -105,10 +111,10 @@ public class JsonStreamItem : IStreamItem
 	/// <summary>
 	/// Create a new stream item from an object instance.
 	/// </summary>
-	/// <param name="sequence">The stream item sequence number</param>
-	/// <param name="data">The data object</param>
-	/// <param name="metadata">The metadata object</param>
-	/// <returns>A new stream item object</returns>
+	/// <param name="sequence">The stream item sequence number.</param>
+	/// <param name="data">The data object.</param>
+	/// <param name="metadata">The metadata object.</param>
+	/// <returns>A new stream item object.</returns>
 	public static IStreamItem CreateStreamItem(
 		long sequence,
 		IDataFragment data)

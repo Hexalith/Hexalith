@@ -1,28 +1,33 @@
-﻿// Fiveforty S.A. Paris France (2022)
+﻿// <copyright file="IContextMetadata.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+
 namespace Hexalith.Application.Abstractions.Metadatas;
 
 /// <summary>
-/// The message context metadata
+/// The message context metadata.
 /// </summary>
 public interface IContextMetadata
 {
 	/// <summary>
-	/// Message correlation id. It's used to group messages that are related to the same business action.
+	/// Gets message correlation id. It's used to group messages that are related to the same business action.
 	/// </summary>
 	string CorrelationId { get; }
 
 	/// <summary>
-	/// The message sequence number
+	/// Gets the message sequence number.
 	/// </summary>
 	public long SequenceNumber { get; }
 
 	/// <summary>
-	/// Session identifier.
+	/// Gets session identifier.
 	/// </summary>
 	string? SessionId { get; }
 
 	/// <summary>
-	/// The user identifier
+	/// Gets the user identifier.
 	/// </summary>
 	string UserId { get; }
 }

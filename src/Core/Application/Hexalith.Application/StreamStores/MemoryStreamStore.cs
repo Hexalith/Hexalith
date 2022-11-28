@@ -1,21 +1,25 @@
-﻿// Fiveforty S.A. Paris France (2022)
+﻿// <copyright file="MemoryStreamStore.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
 
 namespace Hexalith.Application.StreamStores;
 
 using Hexalith.Application.Abstractions.StreamStores;
 
 /// <summary>
-/// Stream store
+/// Stream store.
 /// </summary>
 public abstract class MemoryStreamStore : IStreamStore
 {
-	private readonly Dictionary<string, MemoryPersistedStream> _streams = new();
+	private readonly Dictionary<string, MemoryPersistedStream> _streams = new(StringComparer.Ordinal);
 
 	/// <summary>
 	/// Gets an event stream. If the stream does not exist, it is created.
 	/// </summary>
-	/// <param name="streamId">The stream identifier</param>
-	/// <returns>The event stream</returns>
+	/// <param name="streamId">The stream identifier.</param>
+	/// <returns>The event stream.</returns>
 	public IPersistedStream GetStream(string streamId)
 	{
 		if (!_streams.TryGetValue(streamId, out MemoryPersistedStream? stream))
@@ -23,6 +27,7 @@ public abstract class MemoryStreamStore : IStreamStore
 			stream = new MemoryPersistedStream();
 			_streams.Add(streamId, stream);
 		}
+
 		return stream;
 	}
 }

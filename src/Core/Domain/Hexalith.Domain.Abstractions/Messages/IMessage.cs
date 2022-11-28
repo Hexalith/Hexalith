@@ -1,4 +1,9 @@
-﻿// Fiveforty S.A. Paris France (2022)
+﻿// <copyright file="IMessage.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+
 namespace Hexalith.Domain.Abstractions.Messages;
 
 /// <summary>
@@ -17,17 +22,17 @@ public interface IMessage
 	string AggregateName { get; }
 
 	/// <summary>
-	/// Gets the message major version
+	/// Gets the message major version.
 	/// </summary>
 	int MajorVersion { get; }
 
 	/// <summary>
-	/// Gets the message name
+	/// Gets the message name.
 	/// </summary>
 	string MessageName { get; }
 
 	/// <summary>
-	/// Gets the message minor version
+	/// Gets the message minor version.
 	/// </summary>
 	int MinorVersion { get; }
 }
