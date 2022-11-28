@@ -8,7 +8,15 @@ namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Security;
 
 using Hexalith.Infrastructure.Security.Abstractions;
 
+/// <summary>
+/// The Dynamics 365 Finance and Operations security context.
+/// </summary>
 public interface IDynamics365FinanceAndOperationsSecurityContext : IApplicationSecurityContext
 {
-	Task<string> AcquireToken(CancellationToken cancellationToken);
+	/// <summary>
+	/// Acquire a new token with default Dynamics 365 Finance and Operations scopes.
+	/// </summary>
+	/// <param name="cancellationToken">Cancellation token.</param>
+	/// <returns>The Dynamics 365 security token.</returns>
+	Task<string> AcquireTokenAsync(CancellationToken cancellationToken);
 }

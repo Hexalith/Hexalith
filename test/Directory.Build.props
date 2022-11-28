@@ -3,6 +3,7 @@
 	<PropertyGroup>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<IsPackable>false</IsPackable>
+		<NoWarn>SA1600</NoWarn>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="FluentAssertions" Version="6.8.0" />

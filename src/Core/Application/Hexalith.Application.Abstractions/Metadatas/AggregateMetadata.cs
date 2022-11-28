@@ -9,7 +9,7 @@ namespace Hexalith.Application.Abstractions.Metadatas;
 /// <summary>
 /// The aggregate metadata.
 /// </summary>
-internal class AggregateMetadata : IAggregateMetaData
+public class AggregateMetadata : IAggregateMetaData
 {
 	/// <summary>
 	/// Initializes a new instance of the <see cref="AggregateMetadata" /> class.

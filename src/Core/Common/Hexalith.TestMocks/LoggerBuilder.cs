@@ -14,7 +14,7 @@ using Moq;
 /// Helper class to build a <see cref="ILogger"/> mock.
 /// </summary>
 /// <typeparam name="T">The type of logger (ILogger<typeparamref name="T"/>).</typeparam>
-public class LoggerBuilder<T>
+public class LoggerBuilder<T> : IMockBuilder<ILogger<T>>
 {
 	/// <summary>
 	/// Build a <see cref="ILogger{T}"/>.
@@ -29,8 +29,8 @@ public class LoggerBuilder<T>
 	/// Build a <see cref="Mock{ILogger{T}}"/>.
 	/// </summary>
 	/// <returns>The mock of ILogger.</returns>
-	public Mock<ILogger<T>> BuildMock()
+	public IMock<ILogger<T>> BuildMock()
 	{
-		return new();
+		return new Mock<ILogger<T>>();
 	}
 }

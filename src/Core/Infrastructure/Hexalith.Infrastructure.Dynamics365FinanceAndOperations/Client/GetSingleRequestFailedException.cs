@@ -8,6 +8,10 @@ namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
 
 using System.Runtime.Serialization;
 
+/// <summary>
+/// Exception thrown when a single request failed.
+/// </summary>
+/// <typeparam name="T">Type of the returned entity.</typeparam>
 [Serializable]
 public sealed class GetSingleRequestFailedException<T> : Exception
 {
@@ -21,7 +25,7 @@ public sealed class GetSingleRequestFailedException<T> : Exception
 	/// <summary>
 	/// Initializes a new instance of the <see cref="GetSingleRequestFailedException{T}"/> class.
 	/// </summary>
-	/// <param name="message"></param>
+	/// <param name="message">The error message.</param>
 	public GetSingleRequestFailedException(string? message)
 		: base(message)
 	{
@@ -30,8 +34,8 @@ public sealed class GetSingleRequestFailedException<T> : Exception
 	/// <summary>
 	/// Initializes a new instance of the <see cref="GetSingleRequestFailedException{T}"/> class.
 	/// </summary>
-	/// <param name="message"></param>
-	/// <param name="innerException"></param>
+	/// <param name="message">The error message.</param>
+	/// <param name="innerException">The inner exception.</param>
 	public GetSingleRequestFailedException(string? message, Exception? innerException)
 		: base(message, innerException)
 	{
@@ -40,12 +44,13 @@ public sealed class GetSingleRequestFailedException<T> : Exception
 	/// <summary>
 	/// Initializes a new instance of the <see cref="GetSingleRequestFailedException{T}"/> class.
 	/// </summary>
-	/// <param name="entityName"></param>
-	/// <param name="keys"></param>
-	/// <param name="responseContent"></param>
-	/// <param name="ex"></param>
-	public GetSingleRequestFailedException(string entityName, Dictionary<string, object> keys, string? responseContent, Exception? ex)
-		: base($"Failed to retrieve {typeof(T).Name} with keys {keys} on entity {entityName}.", ex)
+	/// <param name="entityName">The entity name.</param>
+	/// <param name="keys">The keys used to get the entity.</param>
+	/// <param name="responseContent">The returned response.</param>
+	/// <param name="message">The error message.</param>
+	/// <param name="innerException">The inner exception.</param>
+	public GetSingleRequestFailedException(string entityName, IDictionary<string, object> keys, string? responseContent, string? message, Exception? innerException)
+		: base($"Failed to retrieve {typeof(T).Name} with keys {keys} on entity {entityName}. " + message, innerException)
 	{
 		EntityName = entityName;
 		Keys = keys;
@@ -57,10 +62,19 @@ public sealed class GetSingleRequestFailedException<T> : Exception
 	{
 	}
 
+	/// <summary>
+	/// Gets the entity name.
+	/// </summary>
 	public string? EntityName { get; private set; }
 
-	public Dictionary<string, object>? Keys { get; private set; }
+	/// <summary>
+	/// Gets the keys used to get the entity.
+	/// </summary>
+	public IDictionary<string, object>? Keys { get; private set; }
 
+	/// <summary>
+	/// Gets the returned response.
+	/// </summary>
 	public string? ResponseContent { get; private set; }
 
 	/// <inheritdoc/>

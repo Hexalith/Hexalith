@@ -40,7 +40,7 @@ public class Dynamics365FinanceAndOperationsSecurityContextBuilder
 	{
 		Mock<IDynamics365FinanceAndOperationsSecurityContext> security = new();
 		_ = security
-			.Setup(x => x.AcquireToken(It.IsAny<CancellationToken>()))
+			.Setup(x => x.AcquireTokenAsync(It.IsAny<CancellationToken>()))
 			.ReturnsAsync("token");
 		return security;
 	}

@@ -19,7 +19,7 @@ public interface IDynamics365FinanceAndOperationsClient
 	/// <param name="parameters">Action parameters.</param>
 	/// <param name="cancellationToken">Cancellation token.</param>
 	/// <returns>Task.</returns>
-	Task DoActionAsync(string entityName, string action, Dictionary<string, object> parameters, CancellationToken cancellationToken);
+	Task DoActionAsync(string entityName, string action, IDictionary<string, object> parameters, CancellationToken cancellationToken);
 
 	/// <summary>
 	/// Get a filtered entity object list.
@@ -29,7 +29,7 @@ public interface IDynamics365FinanceAndOperationsClient
 	/// <param name="filter">Filter values.</param>
 	/// <param name="cancellationToken">Cancellation token.</param>
 	/// <returns>List of entity objects.</returns>
-	Task<IEnumerable<T>> GetAsync<T>(string entityName, Dictionary<string, object> filter, CancellationToken cancellationToken);
+	Task<IEnumerable<T>> GetAsync<T>(string entityName, IDictionary<string, object> filter, CancellationToken cancellationToken);
 
 	/// <summary>
 	/// Get entity object by it's primary key.
@@ -39,7 +39,7 @@ public interface IDynamics365FinanceAndOperationsClient
 	/// <param name="key">Primary key values.</param>
 	/// <param name="cancellationToken">Cancellation token.</param>
 	/// <returns>Entity object.</returns>
-	Task<T> GetSingleAsync<T>(string entityName, Dictionary<string, object> keys, CancellationToken cancellationToken);
+	Task<T> GetSingleAsync<T>(string entityName, IDictionary<string, object> keys, CancellationToken cancellationToken);
 
 	/// <summary>
 	/// Patch an entity object.
@@ -50,7 +50,7 @@ public interface IDynamics365FinanceAndOperationsClient
 	/// <param name="value">Values to update.</param>
 	/// <param name="cancellationToken">Cancellation token.</param>
 	/// <returns>Task.</returns>
-	Task PatchAsync<T>(string entityName, Dictionary<string, object> key, T value, CancellationToken cancellationToken);
+	Task PatchAsync<T>(string entityName, IDictionary<string, object> key, T value, CancellationToken cancellationToken);
 
 	/// <summary>
 	/// Post a new entity object.
@@ -65,11 +65,11 @@ public interface IDynamics365FinanceAndOperationsClient
 	/// <summary>
 	/// Post a new entity object.
 	/// </summary>
-	/// <typeparam name="T">Type of the create entity model.</typeparam>
-	/// <typeparam name="R">Type of the read entity model.</typeparam>
+	/// <typeparam name="TCreate">Type of the create entity model.</typeparam>
+	/// <typeparam name="TEntity">Type of the read entity model.</typeparam>
 	/// <param name="entityName">Name of the entity.</param>
 	/// <param name="value">New entity value to create.</param>
 	/// <param name="cancellationToken">Cancellation token.</param>
 	/// <returns>Http response to the post request.</returns>
-	Task<R> PostAsync<T, R>(string entityName, T value, CancellationToken cancellationToken);
+	Task<TEntity> PostAsync<TCreate, TEntity>(string entityName, TCreate value, CancellationToken cancellationToken);
 }

@@ -17,7 +17,7 @@ using Moq;
 /// Helper class to build a <see cref="IOptions{TOptions}"/> mock.
 /// </summary>
 /// <typeparam name="T">The settings object type.</typeparam>
-public class OptionsBuilder<T>
+public class OptionsBuilder<T> : IMockBuilder<IOptions<T>>
 	where T : class, ISettings
 {
 	private T? _value;
@@ -40,7 +40,7 @@ public class OptionsBuilder<T>
 	/// Build a <see cref="Mock{IOptions{TOptions}}"/>.
 	/// </summary>
 	/// <returns>The options mock instance.</returns>
-	public Mock<IOptions<T>> BuildMock()
+	public IMock<IOptions<T>> BuildMock()
 	{
 		Mock<IOptions<T>> mock = new();
 		if (_value is not null)

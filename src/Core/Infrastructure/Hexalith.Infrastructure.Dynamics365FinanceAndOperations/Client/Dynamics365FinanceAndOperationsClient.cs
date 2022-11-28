@@ -13,6 +13,7 @@ using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Security;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
+using System.Globalization;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
@@ -35,17 +36,22 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 	/// <summary>
 	/// Initializes a new instance of the <see cref="Dynamics365FinanceAndOperationsClient"/> class.
 	/// </summary>
-	/// <param name="httpClientFactory"></param>
-	/// <param name="securityContext"></param>
-	/// <param name="settings"></param>
-	/// <param name="logger"></param>
+	/// <param name="httpClientFactory">The HTTP client factory.</param>
+	/// <param name="securityContext">The Dynamics 365 security context.</param>
+	/// <param name="settings">The client settings.</param>
+	/// <param name="logger">The client logger.</param>
 	public Dynamics365FinanceAndOperationsClient(
 		IHttpClientFactory httpClientFactory,
 		IDynamics365FinanceAndOperationsSecurityContext securityContext,
 		IOptions<Dynamics365FinanceAndOperationsClientSettings> settings,
 		ILogger<Dynamics365FinanceAndOperationsClient> logger)
 	{
-		Dynamics365FinanceAndOperationsClientSettings s = settings.Value ?? throw new ArgumentNullException(nameof(settings));
+		if (settings == null)
+		{
+			throw new ArgumentNullException(nameof(settings));
+		}
+
+		Dynamics365FinanceAndOperationsClientSettings s = settings.Value;
 		_httpClientFactory = httpClientFactory;
 		_securityContext = securityContext;
 		_logger = logger ?? throw new ArgumentNullException(nameof(logger));
@@ -70,13 +76,14 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 	private HttpClient Client => _client ??= _httpClientFactory.CreateClient();
 
 	/// <inheritdoc/>
-	public Task DoActionAsync(string entityName, string action, Dictionary<string, object> parameters, CancellationToken cancellationToken)
+	public Task DoActionAsync(string entityName, string action, IDictionary<string, object> parameters, CancellationToken cancellationToken)
 	{
+		// TODO Implement action call.
 		throw new NotImplementedException();
 	}
 
 	/// <inheritdoc/>
-	public async Task<IEnumerable<T>> GetAsync<T>(string entityName, Dictionary<string, object> filter, CancellationToken cancellationToken)
+	public async Task<IEnumerable<T>> GetAsync<T>(string entityName, IDictionary<string, object> filter, CancellationToken cancellationToken)
 	{
 		await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
 
@@ -114,18 +121,16 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 			_logger.LogError(
 				"The method call to '{Path}' failed. response content :\n{ResponseContent}",
 				url.AbsoluteUri,
-				response == null
-				 ? "No response"
-				 : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false));
+				response == null ? "No response" : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false));
 			throw;
 		}
 	}
 
 	/// <inheritdoc/>
-	public async Task<T> GetSingleAsync<T>(string entityName, Dictionary<string, object> keys, CancellationToken cancellationToken)
+	public async Task<T> GetSingleAsync<T>(string entityName, IDictionary<string, object> keys, CancellationToken cancellationToken)
 	{
 		await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
-		string keyFilter = GetEntityFilter(keys);
+		string keyFilter = GetEntityFilter((Dictionary<string, object>)keys);
 		Uri url = new(_instance, $"{_dataPath}/{entityName}({HttpUtility.UrlEncode(keyFilter)})");
 		HttpResponseMessage? response = null;
 		try
@@ -166,22 +171,20 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 				typeof(T).Name,
 				keys,
 				url.AbsoluteUri,
-				response == null
-				 ? "No response"
-				 : responseContent);
-			throw new GetSingleRequestFailedException<T>(entityName, keys, responseContent, ex);
+				response == null ? "No response" : responseContent);
+			throw new GetSingleRequestFailedException<T>(entityName, keys, responseContent, message: null, ex);
 		}
 	}
 
 	/// <inheritdoc/>
 	public async Task PatchAsync<T>(
 		string entityName,
-		Dictionary<string, object> key,
+		IDictionary<string, object> key,
 		T value,
 		CancellationToken cancellationToken)
 	{
 		await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
-		Uri url = new(_instance, $"{_dataPath}/{entityName}({HttpUtility.UrlEncode(GetEntityFilter(key))})");
+		Uri url = new(_instance, $"{_dataPath}/{entityName}({HttpUtility.UrlEncode(GetEntityFilter((Dictionary<string, object>)key))})");
 		HttpResponseMessage? response = null;
 		try
 		{
@@ -211,20 +214,18 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 			_logger.LogError(
 				"The method call to '{Path}' failed. response content :\n{ResponseContent}",
 				url.AbsoluteUri,
-				response == null
-				 ? "No response"
-				 : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false));
+				response == null ? "No response" : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false));
 			throw;
 		}
 	}
 
 	/// <inheritdoc/>
-	public async Task<R> PostAsync<T, R>(string entityName, T value, CancellationToken cancellationToken)
+	public async Task<TEntity> PostAsync<TCreate, TEntity>(string entityName, TCreate value, CancellationToken cancellationToken)
 	{
 		HttpResponseMessage response = await PostAsync(entityName, value, cancellationToken).ConfigureAwait(false);
-		R? v = await response
+		TEntity? v = await response
 			.Content
-			.ReadFromJsonAsync<R>(
+			.ReadFromJsonAsync<TEntity>(
 				new JsonSerializerOptions
 				{
 					PropertyNameCaseInsensitive = true,
@@ -265,16 +266,14 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 			_logger.LogError(
 				"The method call to '{Path}' failed. response content :\n{ResponseContent}",
 				url.AbsoluteUri,
-				response == null
-				 ? "No response"
-				 : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false));
+				response == null ? "No response" : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false));
 			throw;
 		}
 	}
 
 	private static string GetOdataString(object value)
 	{
-		return value is string s ? $"'{s}'" : value.ToString() ?? string.Empty;
+		return value is string s ? $"'{s}'" : Convert.ToString(value, CultureInfo.InvariantCulture) ?? string.Empty;
 	}
 
 	private async Task AddRequestHeadersAsync(CancellationToken cancellationToken)
@@ -287,28 +286,28 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 			new MediaTypeWithQualityHeaderValue("application/json"));
 		Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
 			"Bearer",
-			await _securityContext.AcquireToken(cancellationToken));
+			await _securityContext.AcquireTokenAsync(cancellationToken).ConfigureAwait(false));
 	}
 
 	private string GetEntityFilter(Dictionary<string, object> keys)
 	{
 		StringBuilder filter = new();
-		_ = filter.Append($"dataAreaId='{_company}'");
+		_ = filter.Append(CultureInfo.InvariantCulture, $"dataAreaId='{_company}'");
 		foreach (KeyValuePair<string, object> key in keys)
 		{
-			_ = filter.Append($",{key.Key}={GetOdataString(key.Value)}");
+			_ = filter.Append(CultureInfo.InvariantCulture, $",{key.Key}={GetOdataString(key.Value)}");
 		}
 
 		return filter.ToString();
 	}
 
-	private string GetQueryFilter(Dictionary<string, object> filter)
+	private string GetQueryFilter(IDictionary<string, object> filter)
 	{
 		StringBuilder query = new();
-		_ = query.Append($"dataAreaId eq '{_company}'");
+		_ = query.Append(CultureInfo.InvariantCulture, $"dataAreaId eq '{_company}'");
 		foreach (KeyValuePair<string, object> key in filter)
 		{
-			_ = query.Append($" and {key.Key} eq {GetOdataString(key.Value)}");
+			_ = query.Append(CultureInfo.InvariantCulture, $" and {key.Key} eq {GetOdataString(key.Value)}");
 		}
 
 		return query.ToString();

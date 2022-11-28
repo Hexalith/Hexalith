@@ -15,20 +15,19 @@ public class MemoryPersistedStream : IPersistedStream
 {
 	private readonly Dictionary<long, IStreamItem> _items = new();
 
-	/// <summary>
-	/// Add items to the stream.
-	/// </summary>
-	/// <param name="items">List of items to add.</param>
-	/// <param name="expectedVersion">The stream expected version (Etag) for concurrency checks.</param>
-	/// <returns>The stream version.</returns>
+	/// <inheritdoc/>
 	public long AddItems(IEnumerable<IDataFragment> items, long expectedVersion)
 	{
 		long sequence = _items.Max(p => p.Key);
-		if (expectedVersion != sequence)
-		{
-			throw new UnexpectedStreamVersionException(expectedVersion: expectedVersion, actualVersion: sequence);
-		}
+		return expectedVersion != sequence
+			? throw new UnexpectedStreamVersionException(expectedVersion: expectedVersion, actualVersion: sequence)
+			: AddItems(items);
+	}
 
+	/// <inheritdoc/>
+	public long AddItems(IEnumerable<IDataFragment> items)
+	{
+		long sequence = _items.Max(p => p.Key);
 		foreach (IDataFragment item in items)
 		{
 			sequence++;
@@ -39,17 +38,6 @@ public class MemoryPersistedStream : IPersistedStream
 	}
 
 	/// <inheritdoc/>
-	public long AddItems(IEnumerable<IDataFragment> items)
-	{
-		throw new NotImplementedException();
-	}
-
-	/// <summary>
-	/// Get item slice from stream.
-	/// </summary>
-	/// <param name="first">Sequence of the top element.</param>
-	/// <param name="last">Sequence of the last element.</param>
-	/// <returns>The list of items in the slice.</returns>
 	public IEnumerable<IStreamItem> GetItems(long first, long last)
 	{
 		return _items
@@ -58,11 +46,7 @@ public class MemoryPersistedStream : IPersistedStream
 			.Select(p => p.Value);
 	}
 
-	/// <summary>
-	/// Get all items from stream.
-	/// </summary>
-	/// <returns>All the items in the stream.</returns>
-	/// <exception cref="NotImplementedException"></exception>
+	/// <inheritdoc/>
 	public IEnumerable<IStreamItem> GetItems()
 	{
 		return GetItems(0, -1);

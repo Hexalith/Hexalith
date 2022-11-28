@@ -6,6 +6,7 @@
 
 namespace Hexalith.Application.StreamStores;
 
+using System.Globalization;
 using System.Runtime.Serialization;
 
 [Serializable]
@@ -21,7 +22,7 @@ public class UnexpectedStreamVersionException : Exception
 	/// <summary>
 	/// Initializes a new instance of the <see cref="UnexpectedStreamVersionException"/> class.
 	/// </summary>
-	/// <param name="message"></param>
+	/// <param name="message">The exception message.</param>
 	public UnexpectedStreamVersionException(string? message)
 		: base(message)
 	{
@@ -30,16 +31,16 @@ public class UnexpectedStreamVersionException : Exception
 	/// <summary>
 	/// Initializes a new instance of the <see cref="UnexpectedStreamVersionException"/> class.
 	/// </summary>
-	/// <param name="expectedVersion"></param>
-	/// <param name="actualVersion"></param>
-	/// <param name="message"></param>
-	/// <param name="innerException"></param>
+	/// <param name="expectedVersion">The expected version of the stream.</param>
+	/// <param name="actualVersion">The actual version of the stream.</param>
+	/// <param name="message">The exception message.</param>
+	/// <param name="innerException">Inner exception.</param>
 	public UnexpectedStreamVersionException(
 	long expectedVersion,
 	long actualVersion,
 	string? message,
 	Exception? innerException)
-	: base($"Unexpected stream version '{expectedVersion}'. Actual version : '{actualVersion}'. " + message, innerException)
+	: base(string.Create(CultureInfo.InvariantCulture, $"Unexpected stream version '{expectedVersion}'. Actual version : '{actualVersion}'. ") + message, innerException)
 	{
 		ExpectedVersion = expectedVersion;
 		ActualVersion = actualVersion;
@@ -48,8 +49,8 @@ public class UnexpectedStreamVersionException : Exception
 	/// <summary>
 	/// Initializes a new instance of the <see cref="UnexpectedStreamVersionException"/> class.
 	/// </summary>
-	/// <param name="expectedVersion"></param>
-	/// <param name="actualVersion"></param>
+	/// <param name="expectedVersion">The expected version of the stream.</param>
+	/// <param name="actualVersion">The actual version of the stream.</param>
 	public UnexpectedStreamVersionException(
 	long expectedVersion,
 	long actualVersion)
@@ -62,8 +63,8 @@ public class UnexpectedStreamVersionException : Exception
 	/// <summary>
 	/// Initializes a new instance of the <see cref="UnexpectedStreamVersionException"/> class.
 	/// </summary>
-	/// <param name="message"></param>
-	/// <param name="innerException"></param>
+	/// <param name="message">The exception message.</param>
+	/// <param name="innerException">Inner exception.</param>
 	public UnexpectedStreamVersionException(string? message, Exception? innerException)
 		: base(message, innerException)
 	{
@@ -72,14 +73,20 @@ public class UnexpectedStreamVersionException : Exception
 	/// <summary>
 	/// Initializes a new instance of the <see cref="UnexpectedStreamVersionException"/> class.
 	/// </summary>
-	/// <param name="info"></param>
-	/// <param name="context"></param>
+	/// <param name="info">Serialization information.</param>
+	/// <param name="context">Streaming context.</param>
 	protected UnexpectedStreamVersionException(SerializationInfo info, StreamingContext context)
 		: base(info, context)
 	{
 	}
 
+	/// <summary>
+	/// Gets the actual version of the stream.
+	/// </summary>
 	public long ActualVersion { get; private set; }
 
+	/// <summary>
+	/// Gets the expected version of the stream.
+	/// </summary>
 	public long ExpectedVersion { get; private set; }
 }

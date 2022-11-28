@@ -9,6 +9,6 @@ namespace Hexalith.Infrastructure.DaprEventStore;
 /// <summary>
 /// Dapr event store.
 /// </summary>
-public class EventStore
+public static class EventStore
 {
 }
