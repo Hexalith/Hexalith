@@ -9,6 +9,9 @@ namespace Hexalith.Application.Abstractions.Metadatas;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+/// <summary>
+/// The metadata version.
+/// </summary>
 [DataContract]
 public class MetadataVersion : IMetadataVersion
 {

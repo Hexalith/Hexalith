@@ -36,7 +36,7 @@ public interface IDynamics365FinanceAndOperationsClient
 	/// </summary>
 	/// <typeparam name="T">Type of the read entity model.</typeparam>
 	/// <param name="entityName">Name of the entity.</param>
-	/// <param name="key">Primary key values.</param>
+	/// <param name="keys">Primary key values.</param>
 	/// <param name="cancellationToken">Cancellation token.</param>
 	/// <returns>Entity object.</returns>
 	Task<T> GetSingleAsync<T>(string entityName, IDictionary<string, object> keys, CancellationToken cancellationToken);

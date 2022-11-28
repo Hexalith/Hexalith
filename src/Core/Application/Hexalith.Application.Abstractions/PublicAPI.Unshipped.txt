@@ -15,7 +15,7 @@ Hexalith.Application.Abstractions.Envelopes.IEnvelope<TMessage, TMetadata>
 Hexalith.Application.Abstractions.Envelopes.IEnvelope<TMessage, TMetadata>.Message.get -> TMessage
 Hexalith.Application.Abstractions.Envelopes.IEnvelope<TMessage, TMetadata>.Metadata.get -> TMetadata
 Hexalith.Application.Abstractions.Envelopes.IMessageBus<TEnvelope>
-Hexalith.Application.Abstractions.Envelopes.IMessageBus<TEnvelope>.PublishAsync<T>(T envelope, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task!
+Hexalith.Application.Abstractions.Envelopes.IMessageBus<TEnvelope>.PublishAsync(TEnvelope envelope, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task!
 Hexalith.Application.Abstractions.Events.IEventBus
 Hexalith.Application.Abstractions.Events.IEventEnvelope
 Hexalith.Application.Abstractions.Events.IEventEnvelope.Message.get -> Hexalith.Domain.Abstractions.Events.IEvent!
@@ -89,6 +89,7 @@ Hexalith.Application.Abstractions.StreamStores.IDataFragment<TData, TMeta>.Data.
 Hexalith.Application.Abstractions.StreamStores.IDataFragment<TData, TMeta>.Metadata.get -> TMeta
 Hexalith.Application.Abstractions.StreamStores.IPersistedStream
 Hexalith.Application.Abstractions.StreamStores.IPersistedStream.AddItems(System.Collections.Generic.IEnumerable<Hexalith.Application.Abstractions.StreamStores.IDataFragment!>! items) -> long
+Hexalith.Application.Abstractions.StreamStores.IPersistedStream.AddItems(System.Collections.Generic.IEnumerable<Hexalith.Application.Abstractions.StreamStores.IDataFragment!>! items, long expectedVersion) -> long
 Hexalith.Application.Abstractions.StreamStores.IPersistedStream.GetItems() -> System.Collections.Generic.IEnumerable<Hexalith.Application.Abstractions.StreamStores.IStreamItem!>!
 Hexalith.Application.Abstractions.StreamStores.IPersistedStream.GetItems(long first, long last) -> System.Collections.Generic.IEnumerable<Hexalith.Application.Abstractions.StreamStores.IStreamItem!>!
 Hexalith.Application.Abstractions.StreamStores.IStreamItem

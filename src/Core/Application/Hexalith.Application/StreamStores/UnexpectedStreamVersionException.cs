@@ -9,6 +9,9 @@ namespace Hexalith.Application.StreamStores;
 using System.Globalization;
 using System.Runtime.Serialization;
 
+/// <summary>
+/// Exception thrown when a stream version is not the expected one.
+/// </summary>
 [Serializable]
 public class UnexpectedStreamVersionException : Exception
 {

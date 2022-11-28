@@ -1,2 +1,1 @@
 ﻿Hexalith.Infrastructure.DaprEventStore.EventStore
-Hexalith.Infrastructure.DaprEventStore.EventStore.EventStore() -> void

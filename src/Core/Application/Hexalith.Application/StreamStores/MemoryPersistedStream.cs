@@ -27,6 +27,11 @@ public class MemoryPersistedStream : IPersistedStream
 	/// <inheritdoc/>
 	public long AddItems(IEnumerable<IDataFragment> items)
 	{
+		if (items == null)
+		{
+			throw new ArgumentNullException(nameof(items));
+		}
+
 		long sequence = _items.Max(p => p.Key);
 		foreach (IDataFragment item in items)
 		{

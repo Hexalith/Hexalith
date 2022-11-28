@@ -7,18 +7,17 @@
 namespace Hexalith.Application.Abstractions.Envelopes;
 
 /// <summary>
-/// Interface for all message buses.
+/// A message bus is a component that allows to send messages.
 /// </summary>
+/// <typeparam name="TEnvelope">The message type.</typeparam>
 public interface IMessageBus<in TEnvelope>
 	where TEnvelope : IEnvelope
 {
 	/// <summary>
 	/// Publish a message.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
 	/// <param name="envelope">The envelope to send.</param>
-	/// <param name="cancellationToken"></param>
+	/// <param name="cancellationToken">The cancellation token.</param>
 	/// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
-	Task PublishAsync<T>(T envelope, CancellationToken cancellationToken)
-		where T : TEnvelope;
+	Task PublishAsync(TEnvelope envelope, CancellationToken cancellationToken);
 }

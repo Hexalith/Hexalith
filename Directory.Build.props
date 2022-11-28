@@ -16,6 +16,7 @@
 		<AnalysisMode>AllEnabledByDefault</AnalysisMode>
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 		<AnalysisLevel>preview-all</AnalysisLevel>
+		<NoWarn>MA0101</NoWarn>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.4.27">
