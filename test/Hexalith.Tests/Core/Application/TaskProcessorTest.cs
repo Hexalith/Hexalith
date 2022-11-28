@@ -11,6 +11,7 @@ using FluentAssertions;
 using Hexalith.Application.Abstractions.Tasks;
 
 using System;
+using System.Text.Json;
 
 public class TaskProcessorTest
 {
@@ -55,6 +56,24 @@ public class TaskProcessorTest
 	{
 		ITaskProcessor processor = new TaskProcessor();
 		_ = processor.CreatedDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromSeconds(1));
+	}
+
+	[Fact]
+	public void Serialize_and_deserialize_task_should_be_same()
+	{
+		ITaskProcessor processor = new TaskProcessor()
+			.Start()
+			.SuspendUntil(DateTimeOffset.UtcNow.AddDays(1))
+			.Complete();
+		string json = JsonSerializer.Serialize((TaskProcessor)processor);
+		TaskProcessor? fromJson = JsonSerializer.Deserialize<TaskProcessor>(json);
+		_ = fromJson.Should().NotBeNull();
+		_ = fromJson!.Status.Should().Be(processor.Status);
+		_ = fromJson!.CreatedDate.Should().BeCloseTo(processor.CreatedDate, TimeSpan.FromSeconds(1));
+		_ = fromJson!.ProcessingStartDate.Should().Be(processor.ProcessingStartDate);
+		_ = fromJson!.SuspendedUntilDate.Should().Be(processor.SuspendedUntilDate);
+		_ = fromJson!.CompletedDate.Should().Be(processor.CompletedDate);
+		_ = fromJson!.CanceledDate.Should().Be(processor.CanceledDate);
 	}
 
 	[Fact]

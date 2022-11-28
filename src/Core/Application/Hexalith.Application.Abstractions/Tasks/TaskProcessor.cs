@@ -20,7 +20,6 @@ public class TaskProcessor : ITaskProcessor
 	/// Initializes a new instance of the <see cref="TaskProcessor"/> class.
 	/// Initialize the task processor.
 	/// </summary>
-	[JsonConstructor]
 	public TaskProcessor()
 	{
 		CreatedDate = DateTimeOffset.UtcNow;
@@ -29,10 +28,39 @@ public class TaskProcessor : ITaskProcessor
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="TaskProcessor"/> class.
+	/// </summary>
+	/// <param name="status">The task status.</param>
+	/// <param name="createdDate">The created date.</param>
+	/// <param name="processingStartDate">The processing start date.</param>
+	/// <param name="completedDate">The completed date.</param>
+	/// <param name="canceledDate">The canceled date.</param>
+	/// <param name="suspendedDate">The suspended date.</param>
+	/// <param name="suspendedUntilDate">The suspended until date.</param>
+	[JsonConstructor]
+	public TaskProcessor(
+			TaskProcessorStatus status,
+			DateTimeOffset createdDate,
+			DateTimeOffset? processingStartDate,
+			DateTimeOffset? completedDate,
+			DateTimeOffset? canceledDate,
+			DateTimeOffset? suspendedDate,
+			DateTimeOffset? suspendedUntilDate)
+	{
+		Status = status;
+		CreatedDate = createdDate;
+		ProcessingStartDate = processingStartDate;
+		CompletedDate = completedDate;
+		CanceledDate = canceledDate;
+		SuspendedDate = suspendedDate;
+		SuspendedUntilDate = suspendedUntilDate;
+	}
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="TaskProcessor"/> class.
 	/// Initialize a processor copy.
 	/// </summary>
 	/// <param name="processor">The processor to duplicate.</param>
-	public TaskProcessor(ITaskProcessor processor)
+	private TaskProcessor(ITaskProcessor processor)
 	{
 		_ = processor ?? throw new ArgumentNullException(nameof(processor));
 		CanceledDate = processor.CanceledDate;
@@ -45,27 +73,43 @@ public class TaskProcessor : ITaskProcessor
 	}
 
 	/// <inheritdoc/>
+	[DataMember(Order = 5)]
+	[JsonPropertyOrder(5)]
 	public DateTimeOffset? CanceledDate { get; private set; }
 
 	/// <inheritdoc/>
+	[DataMember(Order = 4)]
+	[JsonPropertyOrder(4)]
 	public DateTimeOffset? CompletedDate { get; private set; }
 
 	/// <inheritdoc/>
+	[DataMember(Order = 2)]
+	[JsonPropertyOrder(2)]
 	public DateTimeOffset CreatedDate { get; private set; }
 
 	/// <inheritdoc/>
+	[JsonIgnore]
+	[IgnoreDataMember]
 	public bool IsSuspensionExpired => SuspendedUntilDate == null || SuspendedUntilDate.Value.ToUniversalTime() <= DateTimeOffset.UtcNow;
 
 	/// <inheritdoc/>
+	[DataMember(Order = 3)]
+	[JsonPropertyOrder(3)]
 	public DateTimeOffset? ProcessingStartDate { get; private set; }
 
 	/// <inheritdoc/>
+	[DataMember(Order = 1)]
+	[JsonPropertyOrder(1)]
 	public TaskProcessorStatus Status { get; private set; }
 
 	/// <inheritdoc/>
+	[DataMember(Order = 6)]
+	[JsonPropertyOrder(6)]
 	public DateTimeOffset? SuspendedDate { get; private set; }
 
 	/// <inheritdoc/>
+	[DataMember(Order = 7)]
+	[JsonPropertyOrder(7)]
 	public DateTimeOffset? SuspendedUntilDate { get; private set; }
 
 	/// <inheritdoc/>

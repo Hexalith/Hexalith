@@ -132,7 +132,7 @@ Hexalith.Application.Abstractions.Tasks.TaskProcessor.SuspendedDate.get -> Syste
 Hexalith.Application.Abstractions.Tasks.TaskProcessor.SuspendedUntilDate.get -> System.DateTimeOffset?
 Hexalith.Application.Abstractions.Tasks.TaskProcessor.SuspendUntil(System.DateTimeOffset date) -> Hexalith.Application.Abstractions.Tasks.ITaskProcessor!
 Hexalith.Application.Abstractions.Tasks.TaskProcessor.TaskProcessor() -> void
-Hexalith.Application.Abstractions.Tasks.TaskProcessor.TaskProcessor(Hexalith.Application.Abstractions.Tasks.ITaskProcessor! processor) -> void
+Hexalith.Application.Abstractions.Tasks.TaskProcessor.TaskProcessor(Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus status, System.DateTimeOffset createdDate, System.DateTimeOffset? processingStartDate, System.DateTimeOffset? completedDate, System.DateTimeOffset? canceledDate, System.DateTimeOffset? suspendedDate, System.DateTimeOffset? suspendedUntilDate) -> void
 Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus
 Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus.Canceled = 11 -> Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus
 Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus.Completed = 10 -> Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus
