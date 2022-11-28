@@ -1,0 +1,75 @@
+﻿// <copyright file="InvalidStatusChangeException.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+
+namespace Hexalith.Application.Abstractions.Tasks;
+
+using System;
+using System.Runtime.Serialization;
+
+/// <summary>
+/// The exception that is thrown when a task processor status change is invalid.
+/// </summary>
+[Serializable]
+public sealed class InvalidStatusChangeException : Exception
+{
+	/// <summary>
+	/// Initializes a new instance of the <see cref="InvalidStatusChangeException"/> class.
+	/// </summary>
+	public InvalidStatusChangeException()
+	{
+	}
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="InvalidStatusChangeException"/> class.
+	/// </summary>
+	/// <param name="message">The error message.</param>
+	public InvalidStatusChangeException(string? message)
+		: base(message)
+	{
+	}
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="InvalidStatusChangeException"/> class.
+	/// </summary>
+	/// <param name="currentStatus">The current processor status.</param>
+	/// <param name="newStatus">The expected new status.</param>
+	public InvalidStatusChangeException(TaskProcessorStatus currentStatus, TaskProcessorStatus newStatus)
+		: this($"The processor with current status {currentStatus} cannot be changed to {newStatus}.")
+	{
+		CurrentStatus = currentStatus;
+		NewStatus = newStatus;
+	}
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="InvalidStatusChangeException"/> class.
+	/// </summary>
+	/// <param name="message">The error message.</param>
+	/// <param name="innerException">The inner exception.</param>
+	public InvalidStatusChangeException(string? message, Exception? innerException)
+		: base(message, innerException)
+	{
+	}
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="InvalidStatusChangeException"/> class.
+	/// </summary>
+	/// <param name="info">The serialization information.</param>
+	/// <param name="context">The streaming context.</param>
+	private InvalidStatusChangeException(SerializationInfo info, StreamingContext context)
+		: base(info, context)
+	{
+	}
+
+	/// <summary>
+	/// Gets the current processor status.
+	/// </summary>
+	public TaskProcessorStatus? CurrentStatus { get; }
+
+	/// <summary>
+	/// Gets the expected new status.
+	/// </summary>
+	public TaskProcessorStatus? NewStatus { get; }
+}

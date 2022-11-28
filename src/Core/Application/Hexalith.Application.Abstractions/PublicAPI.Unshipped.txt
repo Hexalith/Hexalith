@@ -4,6 +4,7 @@ Hexalith.Application.Abstractions.Commands.ICommandEnvelope
 Hexalith.Application.Abstractions.Commands.ICommandEnvelope.Message.get -> Hexalith.Application.Abstractions.Commands.ICommand!
 Hexalith.Application.Abstractions.Commands.ICommandEnvelope<TCommand, TMetadata>
 Hexalith.Application.Abstractions.Commands.ICommandEnvelope<TCommand, TMetadata>.Message.get -> TCommand
+Hexalith.Application.Abstractions.Commands.ICommandSaga
 Hexalith.Application.Abstractions.Envelopes.Envelope<TMessage, TMetadata>
 Hexalith.Application.Abstractions.Envelopes.Envelope<TMessage, TMetadata>.Envelope(TMessage message, TMetadata metadata) -> void
 Hexalith.Application.Abstractions.Envelopes.Envelope<TMessage, TMetadata>.Message.get -> TMessage
@@ -97,3 +98,44 @@ Hexalith.Application.Abstractions.StreamStores.IStreamItem.Message.get -> Hexali
 Hexalith.Application.Abstractions.StreamStores.IStreamItem.Sequence.get -> long
 Hexalith.Application.Abstractions.StreamStores.IStreamStore
 Hexalith.Application.Abstractions.StreamStores.IStreamStore.GetStream(string! streamId) -> Hexalith.Application.Abstractions.StreamStores.IPersistedStream!
+Hexalith.Application.Abstractions.Tasks.InvalidStatusChangeException
+Hexalith.Application.Abstractions.Tasks.InvalidStatusChangeException.CurrentStatus.get -> Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus?
+Hexalith.Application.Abstractions.Tasks.InvalidStatusChangeException.InvalidStatusChangeException() -> void
+Hexalith.Application.Abstractions.Tasks.InvalidStatusChangeException.InvalidStatusChangeException(Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus currentStatus, Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus newStatus) -> void
+Hexalith.Application.Abstractions.Tasks.InvalidStatusChangeException.InvalidStatusChangeException(string? message) -> void
+Hexalith.Application.Abstractions.Tasks.InvalidStatusChangeException.InvalidStatusChangeException(string? message, System.Exception? innerException) -> void
+Hexalith.Application.Abstractions.Tasks.InvalidStatusChangeException.NewStatus.get -> Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus?
+Hexalith.Application.Abstractions.Tasks.ITaskProcessor
+Hexalith.Application.Abstractions.Tasks.ITaskProcessor.Cancel() -> Hexalith.Application.Abstractions.Tasks.ITaskProcessor!
+Hexalith.Application.Abstractions.Tasks.ITaskProcessor.CanceledDate.get -> System.DateTimeOffset?
+Hexalith.Application.Abstractions.Tasks.ITaskProcessor.Complete() -> Hexalith.Application.Abstractions.Tasks.ITaskProcessor!
+Hexalith.Application.Abstractions.Tasks.ITaskProcessor.CompletedDate.get -> System.DateTimeOffset?
+Hexalith.Application.Abstractions.Tasks.ITaskProcessor.CreatedDate.get -> System.DateTimeOffset
+Hexalith.Application.Abstractions.Tasks.ITaskProcessor.IsSuspensionExpired.get -> bool
+Hexalith.Application.Abstractions.Tasks.ITaskProcessor.ProcessingStartDate.get -> System.DateTimeOffset?
+Hexalith.Application.Abstractions.Tasks.ITaskProcessor.Start() -> Hexalith.Application.Abstractions.Tasks.ITaskProcessor!
+Hexalith.Application.Abstractions.Tasks.ITaskProcessor.Status.get -> Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus
+Hexalith.Application.Abstractions.Tasks.ITaskProcessor.SuspendedDate.get -> System.DateTimeOffset?
+Hexalith.Application.Abstractions.Tasks.ITaskProcessor.SuspendedUntilDate.get -> System.DateTimeOffset?
+Hexalith.Application.Abstractions.Tasks.ITaskProcessor.SuspendUntil(System.DateTimeOffset date) -> Hexalith.Application.Abstractions.Tasks.ITaskProcessor!
+Hexalith.Application.Abstractions.Tasks.TaskProcessor
+Hexalith.Application.Abstractions.Tasks.TaskProcessor.Cancel() -> Hexalith.Application.Abstractions.Tasks.ITaskProcessor!
+Hexalith.Application.Abstractions.Tasks.TaskProcessor.CanceledDate.get -> System.DateTimeOffset?
+Hexalith.Application.Abstractions.Tasks.TaskProcessor.Complete() -> Hexalith.Application.Abstractions.Tasks.ITaskProcessor!
+Hexalith.Application.Abstractions.Tasks.TaskProcessor.CompletedDate.get -> System.DateTimeOffset?
+Hexalith.Application.Abstractions.Tasks.TaskProcessor.CreatedDate.get -> System.DateTimeOffset
+Hexalith.Application.Abstractions.Tasks.TaskProcessor.IsSuspensionExpired.get -> bool
+Hexalith.Application.Abstractions.Tasks.TaskProcessor.ProcessingStartDate.get -> System.DateTimeOffset?
+Hexalith.Application.Abstractions.Tasks.TaskProcessor.Start() -> Hexalith.Application.Abstractions.Tasks.ITaskProcessor!
+Hexalith.Application.Abstractions.Tasks.TaskProcessor.Status.get -> Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus
+Hexalith.Application.Abstractions.Tasks.TaskProcessor.SuspendedDate.get -> System.DateTimeOffset?
+Hexalith.Application.Abstractions.Tasks.TaskProcessor.SuspendedUntilDate.get -> System.DateTimeOffset?
+Hexalith.Application.Abstractions.Tasks.TaskProcessor.SuspendUntil(System.DateTimeOffset date) -> Hexalith.Application.Abstractions.Tasks.ITaskProcessor!
+Hexalith.Application.Abstractions.Tasks.TaskProcessor.TaskProcessor() -> void
+Hexalith.Application.Abstractions.Tasks.TaskProcessor.TaskProcessor(Hexalith.Application.Abstractions.Tasks.ITaskProcessor! processor) -> void
+Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus
+Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus.Canceled = 11 -> Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus
+Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus.Completed = 10 -> Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus
+Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus.New = 0 -> Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus
+Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus.Processing = 2 -> Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus
+Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus.Suspended = 1 -> Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus
