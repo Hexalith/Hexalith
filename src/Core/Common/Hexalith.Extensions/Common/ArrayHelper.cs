@@ -9,5 +9,5 @@ public static class ArrayHelper
 	/// <typeparam name="T">Type of the object</typeparam>
 	/// <param name="obj">Instance of the object</param>
 	/// <returns>An array containing the object</returns>
-	public static T[] IntoArray<T>(this T obj) => new T[] { obj };
+	public static T[] IntoArray<T>(this T obj) => new[] { obj };
 }

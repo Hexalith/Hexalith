@@ -261,11 +261,7 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 		_ = filter.Append($"dataAreaId='{_company}'");
 		foreach (KeyValuePair<string, object> key in keys)
 		{
-			string value = key.Value switch
-			{
-				string s => $"'{s}'",
-				_ => key.Value.ToString() ?? string.Empty
-			};
+			string value = key.Value is string s ? $"'{s}'" : key.Value.ToString() ?? string.Empty;
 			_ = filter.Append($",{key.Key}={value}");
 		}
 		return filter.ToString();

@@ -92,7 +92,7 @@ public class JsonStreamItem : IStreamItem
 	public static IStreamItem CreateStreamItem(
 		long sequence,
 		IDataFragment data,
-		JsonSerializerOptions? options = null)
+		JsonSerializerOptions? options)
 	{
 		return new JsonStreamItem(
 			sequence,
@@ -100,6 +100,25 @@ public class JsonStreamItem : IStreamItem
 			JsonSerializer.Serialize(data.Data, options),
 			data.Metadata.GetType().AssemblyQualifiedName!,
 			JsonSerializer.Serialize(data.Metadata, options));
+	}
+
+	/// <summary>
+	/// Create a new stream item from an object instance.
+	/// </summary>
+	/// <param name="sequence">The stream item sequence number</param>
+	/// <param name="data">The data object</param>
+	/// <param name="metadata">The metadata object</param>
+	/// <returns>A new stream item object</returns>
+	public static IStreamItem CreateStreamItem(
+		long sequence,
+		IDataFragment data)
+	{
+		return new JsonStreamItem(
+			sequence,
+			data.Data.GetType().AssemblyQualifiedName!,
+			JsonSerializer.Serialize(data.Data),
+			data.Metadata.GetType().AssemblyQualifiedName!,
+			JsonSerializer.Serialize(data.Metadata));
 	}
 
 	private IDataFragment CreateDataFragment()

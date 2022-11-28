@@ -16,11 +16,20 @@ public class UnexpectedStreamVersionException : Exception
 	}
 
 	public UnexpectedStreamVersionException(
-		long expectedVersion,
-		long actualVersion,
-		string? message = null,
-		Exception? innerException = null)
-		: base($"Unexpected stream version '{expectedVersion}'. Actual version : '{actualVersion}'. " + message, innerException)
+	long expectedVersion,
+	long actualVersion,
+	string? message,
+	Exception? innerException)
+	: base($"Unexpected stream version '{expectedVersion}'. Actual version : '{actualVersion}'. " + message, innerException)
+	{
+		ExpectedVersion = expectedVersion;
+		ActualVersion = actualVersion;
+	}
+
+	public UnexpectedStreamVersionException(
+	long expectedVersion,
+	long actualVersion)
+	: this(expectedVersion, actualVersion, null, null)
 	{
 		ExpectedVersion = expectedVersion;
 		ActualVersion = actualVersion;

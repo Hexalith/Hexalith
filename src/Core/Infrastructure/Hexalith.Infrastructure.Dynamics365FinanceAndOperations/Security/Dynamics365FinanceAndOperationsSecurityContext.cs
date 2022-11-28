@@ -27,7 +27,7 @@ public class Dynamics365FinanceAndOperationsSecurityContext : AzureActiveDirecto
 			throw new ArgumentException($"The {nameof(s.Instance)} setting is not defined.",
 										nameof(settings));
 		}
-		_scopes = new string[] { $"{s.Instance.OriginalString}/.default" };
+		_scopes = new[] { $"{s.Instance.OriginalString}/.default" };
 	}
 
 	public async Task<string> AcquireToken(CancellationToken cancellationToken)
