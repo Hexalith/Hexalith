@@ -4,7 +4,9 @@ Hexalith.Extensions.Common.UniqueIdHelper
 Hexalith.Extensions.Configuration.ISettings
 Hexalith.Extensions.Configuration.ISettings.ConfigurationName() -> string!
 Hexalith.Extensions.Configuration.OptionsHelper
+Hexalith.Extensions.Maths.FibonacciSequence
 static Hexalith.Extensions.Common.ArrayHelper.IntoArray<T>(this T obj) -> T[]!
 static Hexalith.Extensions.Common.UniqueIdHelper.GenerateDateTimeId() -> string!
 static Hexalith.Extensions.Common.UniqueIdHelper.GenerateUniqueStringId() -> string!
 static Hexalith.Extensions.Configuration.OptionsHelper.ConfigureSettings<T>(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, Microsoft.Extensions.Configuration.IConfiguration! configuration) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Hexalith.Extensions.Maths.FibonacciSequence.Number(long n) -> long

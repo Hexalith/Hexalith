@@ -22,37 +22,30 @@ public class TaskProcessor : ITaskProcessor
 	/// </summary>
 	public TaskProcessor()
 	{
-		CreatedDate = DateTimeOffset.UtcNow;
 		Status = TaskProcessorStatus.New;
+		History = new TaskProcessingHistory();
+		RetryPolicy = RetryPolicy.None;
 	}
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="TaskProcessor"/> class.
 	/// </summary>
-	/// <param name="status">The task status.</param>
-	/// <param name="createdDate">The created date.</param>
-	/// <param name="processingStartDate">The processing start date.</param>
-	/// <param name="completedDate">The completed date.</param>
-	/// <param name="canceledDate">The canceled date.</param>
-	/// <param name="suspendedDate">The suspended date.</param>
-	/// <param name="suspendedUntilDate">The suspended until date.</param>
+	/// <param name="status">The processing status.</param>
+	/// <param name="history">The processing history.</param>
+	/// <param name="retryPolicy">The retry policy.</param>
+	/// <param name="failure">The processing failure information.</param>
+	///
 	[JsonConstructor]
 	public TaskProcessor(
 			TaskProcessorStatus status,
-			DateTimeOffset createdDate,
-			DateTimeOffset? processingStartDate,
-			DateTimeOffset? completedDate,
-			DateTimeOffset? canceledDate,
-			DateTimeOffset? suspendedDate,
-			DateTimeOffset? suspendedUntilDate)
+			TaskProcessingHistory history,
+			RetryPolicy retryPolicy,
+			TaskProcessingFailure? failure)
 	{
 		Status = status;
-		CreatedDate = createdDate;
-		ProcessingStartDate = processingStartDate;
-		CompletedDate = completedDate;
-		CanceledDate = canceledDate;
-		SuspendedDate = suspendedDate;
-		SuspendedUntilDate = suspendedUntilDate;
+		History = history;
+		Failure = failure;
+		RetryPolicy = retryPolicy;
 	}
 
 	/// <summary>
@@ -63,54 +56,31 @@ public class TaskProcessor : ITaskProcessor
 	private TaskProcessor(ITaskProcessor processor)
 	{
 		_ = processor ?? throw new ArgumentNullException(nameof(processor));
-		CanceledDate = processor.CanceledDate;
-		CompletedDate = processor.CompletedDate;
-		CreatedDate = processor.CreatedDate;
-		ProcessingStartDate = processor.ProcessingStartDate;
 		Status = processor.Status;
-		SuspendedDate = processor.SuspendedDate;
-		SuspendedUntilDate = processor.SuspendedUntilDate;
+		History = processor.History;
+		Failure = processor.Failure;
+		RetryPolicy = processor.RetryPolicy;
 	}
-
-	/// <inheritdoc/>
-	[DataMember(Order = 5)]
-	[JsonPropertyOrder(5)]
-	public DateTimeOffset? CanceledDate { get; private set; }
-
-	/// <inheritdoc/>
-	[DataMember(Order = 4)]
-	[JsonPropertyOrder(4)]
-	public DateTimeOffset? CompletedDate { get; private set; }
-
-	/// <inheritdoc/>
-	[DataMember(Order = 2)]
-	[JsonPropertyOrder(2)]
-	public DateTimeOffset CreatedDate { get; private set; }
-
-	/// <inheritdoc/>
-	[JsonIgnore]
-	[IgnoreDataMember]
-	public bool IsSuspensionExpired => SuspendedUntilDate == null || SuspendedUntilDate.Value.ToUniversalTime() <= DateTimeOffset.UtcNow;
 
 	/// <inheritdoc/>
 	[DataMember(Order = 3)]
 	[JsonPropertyOrder(3)]
-	public DateTimeOffset? ProcessingStartDate { get; private set; }
+	public TaskProcessingFailure? Failure { get; private set; }
+
+	/// <inheritdoc/>
+	[DataMember(Order = 2)]
+	[JsonPropertyOrder(2)]
+	public TaskProcessingHistory History { get; private set; }
+
+	/// <inheritdoc/>
+	[DataMember(Order = 4)]
+	[JsonPropertyOrder(4)]
+	public RetryPolicy RetryPolicy { get; private set; }
 
 	/// <inheritdoc/>
 	[DataMember(Order = 1)]
 	[JsonPropertyOrder(1)]
 	public TaskProcessorStatus Status { get; private set; }
-
-	/// <inheritdoc/>
-	[DataMember(Order = 6)]
-	[JsonPropertyOrder(6)]
-	public DateTimeOffset? SuspendedDate { get; private set; }
-
-	/// <inheritdoc/>
-	[DataMember(Order = 7)]
-	[JsonPropertyOrder(7)]
-	public DateTimeOffset? SuspendedUntilDate { get; private set; }
 
 	/// <inheritdoc/>
 	public ITaskProcessor Cancel()
@@ -119,7 +89,7 @@ public class TaskProcessor : ITaskProcessor
 			? throw new InvalidStatusChangeException(currentStatus: Status, newStatus: TaskProcessorStatus.Canceled)
 			: (ITaskProcessor)new TaskProcessor(this)
 			{
-				CanceledDate = DateTimeOffset.UtcNow,
+				History = History.Canceled(),
 				Status = TaskProcessorStatus.Canceled,
 			};
 	}
@@ -131,33 +101,34 @@ public class TaskProcessor : ITaskProcessor
 			? throw new InvalidStatusChangeException(currentStatus: Status, newStatus: TaskProcessorStatus.Completed)
 			: (ITaskProcessor)new TaskProcessor(this)
 			{
-				CompletedDate = DateTimeOffset.UtcNow,
+				History = History.Completed(),
 				Status = TaskProcessorStatus.Completed,
+			};
+	}
+
+	/// <inheritdoc/>
+	public ITaskProcessor Failed(string message)
+	{
+		TaskProcessingFailure newFailure = Failure == null ? new TaskProcessingFailure(1, DateTimeOffset.UtcNow, message) : Failure.Fail(message);
+		return Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed
+			? throw new InvalidStatusChangeException(currentStatus: Status, newStatus: TaskProcessorStatus.Suspended)
+			: (ITaskProcessor)new TaskProcessor(this)
+			{
+				History = History.Suspended(),
+				Status = TaskProcessorStatus.Suspended,
+				Failure = newFailure,
 			};
 	}
 
 	/// <inheritdoc/>
 	public ITaskProcessor Start()
 	{
-		return Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed or TaskProcessorStatus.Processing
-			? throw new InvalidStatusChangeException(currentStatus: Status, newStatus: TaskProcessorStatus.Processing)
+		return Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed or TaskProcessorStatus.Active
+			? throw new InvalidStatusChangeException(currentStatus: Status, newStatus: TaskProcessorStatus.Active)
 			: (ITaskProcessor)new TaskProcessor(this)
 			{
-				ProcessingStartDate = DateTimeOffset.UtcNow,
-				Status = TaskProcessorStatus.Processing,
-			};
-	}
-
-	/// <inheritdoc/>
-	public ITaskProcessor SuspendUntil(DateTimeOffset date)
-	{
-		return Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed
-			? throw new InvalidStatusChangeException(currentStatus: Status, newStatus: TaskProcessorStatus.Completed)
-			: (ITaskProcessor)new TaskProcessor(this)
-			{
-				SuspendedDate = DateTimeOffset.UtcNow,
-				SuspendedUntilDate = date,
-				Status = TaskProcessorStatus.Suspended,
+				History = History.ProcessingStarted(),
+				Status = TaskProcessorStatus.Active,
 			};
 	}
 }

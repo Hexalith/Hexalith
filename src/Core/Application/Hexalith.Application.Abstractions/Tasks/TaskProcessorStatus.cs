@@ -22,9 +22,9 @@ public enum TaskProcessorStatus
 	Suspended = 1,
 
 	/// <summary>
-	/// The task is processing.
+	/// The task is active.
 	/// </summary>
-	Processing = 2,
+	Active = 2,
 
 	/// <summary>
 	/// The task completed.

@@ -12,45 +12,24 @@ namespace Hexalith.Application.Abstractions.Tasks;
 public interface ITaskProcessor
 {
 	/// <summary>
-	/// Gets the task canceled date.
+	/// Gets the task processing failure.
 	/// </summary>
-	DateTimeOffset? CanceledDate { get; }
+	TaskProcessingFailure? Failure { get; }
 
 	/// <summary>
-	/// Gets the task completed date.
+	/// Gets the task processing history.
 	/// </summary>
-	DateTimeOffset? CompletedDate { get; }
+	TaskProcessingHistory History { get; }
 
 	/// <summary>
-	/// Gets the task created date.
+	/// Gets retry policy.
 	/// </summary>
-	DateTimeOffset CreatedDate { get; }
-
-	/// <summary>
-	/// Gets a value indicating whether gets the suspension expired status.
-	/// </summary>
-	/// <returns>True if the suspension has expired, else false.</returns>
-	bool IsSuspensionExpired { get; }
-
-	/// <summary>
-	/// Gets the task processing start date.
-	/// </summary>
-	DateTimeOffset? ProcessingStartDate { get; }
+	RetryPolicy RetryPolicy { get; }
 
 	/// <summary>
 	/// Gets the task processor status.
 	/// </summary>
 	TaskProcessorStatus Status { get; }
-
-	/// <summary>
-	/// Gets the task suspended date.
-	/// </summary>
-	DateTimeOffset? SuspendedDate { get; }
-
-	/// <summary>
-	/// Gets the task suspended until date.
-	/// </summary>
-	DateTimeOffset? SuspendedUntilDate { get; }
 
 	/// <summary>
 	/// Cancel the task.
@@ -65,15 +44,15 @@ public interface ITaskProcessor
 	ITaskProcessor Complete();
 
 	/// <summary>
+	/// Set failure state and message.
+	/// </summary>
+	/// <param name="message">The error message.</param>
+	/// <returns>New copy of the task processor with status changed.</returns>
+	ITaskProcessor Failed(string message);
+
+	/// <summary>
 	/// Start the task.
 	/// </summary>
 	/// <returns>New copy of the task processor with status changed.</returns>
 	ITaskProcessor Start();
-
-	/// <summary>
-	/// Suspend the task.
-	/// </summary>
-	/// <param name="date">Suspend until date.</param>
-	/// <returns>New copy of the task processor in suspended state.</returns>
-	ITaskProcessor SuspendUntil(DateTimeOffset date);
 }
