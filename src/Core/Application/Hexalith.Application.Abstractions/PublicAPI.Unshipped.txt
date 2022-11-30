@@ -108,7 +108,7 @@ Hexalith.Application.Abstractions.Tasks.InvalidStatusChangeException.NewStatus.g
 Hexalith.Application.Abstractions.Tasks.ITaskProcessor
 Hexalith.Application.Abstractions.Tasks.ITaskProcessor.Cancel() -> Hexalith.Application.Abstractions.Tasks.ITaskProcessor!
 Hexalith.Application.Abstractions.Tasks.ITaskProcessor.Complete() -> Hexalith.Application.Abstractions.Tasks.ITaskProcessor!
-Hexalith.Application.Abstractions.Tasks.ITaskProcessor.Failed(string! message) -> Hexalith.Application.Abstractions.Tasks.ITaskProcessor!
+Hexalith.Application.Abstractions.Tasks.ITaskProcessor.Fail(string! message) -> Hexalith.Application.Abstractions.Tasks.ITaskProcessor!
 Hexalith.Application.Abstractions.Tasks.ITaskProcessor.Failure.get -> Hexalith.Application.Abstractions.Tasks.TaskProcessingFailure?
 Hexalith.Application.Abstractions.Tasks.ITaskProcessor.History.get -> Hexalith.Application.Abstractions.Tasks.TaskProcessingHistory!
 Hexalith.Application.Abstractions.Tasks.ITaskProcessor.RetryPolicy.get -> Hexalith.Application.Abstractions.Tasks.RetryPolicy!
@@ -144,13 +144,13 @@ Hexalith.Application.Abstractions.Tasks.TaskProcessingHistory.SuspendedDate.get 
 Hexalith.Application.Abstractions.Tasks.TaskProcessingHistory.TaskProcessingHistory() -> void
 Hexalith.Application.Abstractions.Tasks.TaskProcessingHistory.TaskProcessingHistory(System.DateTimeOffset createdDate, System.DateTimeOffset? suspendedDate, System.DateTimeOffset? processingStartDate, System.DateTimeOffset? completedDate, System.DateTimeOffset? canceledDate) -> void
 Hexalith.Application.Abstractions.Tasks.TaskProcessor
-Hexalith.Application.Abstractions.Tasks.TaskProcessor.Cancel() -> Hexalith.Application.Abstractions.Tasks.ITaskProcessor!
-Hexalith.Application.Abstractions.Tasks.TaskProcessor.Complete() -> Hexalith.Application.Abstractions.Tasks.ITaskProcessor!
-Hexalith.Application.Abstractions.Tasks.TaskProcessor.Failed(string! message) -> Hexalith.Application.Abstractions.Tasks.ITaskProcessor!
+Hexalith.Application.Abstractions.Tasks.TaskProcessor.Cancel() -> Hexalith.Application.Abstractions.Tasks.TaskProcessor!
+Hexalith.Application.Abstractions.Tasks.TaskProcessor.Complete() -> Hexalith.Application.Abstractions.Tasks.TaskProcessor!
+Hexalith.Application.Abstractions.Tasks.TaskProcessor.Fail(string! message) -> Hexalith.Application.Abstractions.Tasks.TaskProcessor!
 Hexalith.Application.Abstractions.Tasks.TaskProcessor.Failure.get -> Hexalith.Application.Abstractions.Tasks.TaskProcessingFailure?
 Hexalith.Application.Abstractions.Tasks.TaskProcessor.History.get -> Hexalith.Application.Abstractions.Tasks.TaskProcessingHistory!
 Hexalith.Application.Abstractions.Tasks.TaskProcessor.RetryPolicy.get -> Hexalith.Application.Abstractions.Tasks.RetryPolicy!
-Hexalith.Application.Abstractions.Tasks.TaskProcessor.Start() -> Hexalith.Application.Abstractions.Tasks.ITaskProcessor!
+Hexalith.Application.Abstractions.Tasks.TaskProcessor.Start() -> Hexalith.Application.Abstractions.Tasks.TaskProcessor!
 Hexalith.Application.Abstractions.Tasks.TaskProcessor.Status.get -> Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus
 Hexalith.Application.Abstractions.Tasks.TaskProcessor.TaskProcessor() -> void
 Hexalith.Application.Abstractions.Tasks.TaskProcessor.TaskProcessor(Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus status, Hexalith.Application.Abstractions.Tasks.TaskProcessingHistory! history, Hexalith.Application.Abstractions.Tasks.RetryPolicy! retryPolicy, Hexalith.Application.Abstractions.Tasks.TaskProcessingFailure? failure) -> void

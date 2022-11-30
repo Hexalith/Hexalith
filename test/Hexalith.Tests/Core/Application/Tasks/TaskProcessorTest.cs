@@ -37,7 +37,7 @@ public class TaskProcessorTest
 	public void Failed_process_should_be_suspended()
 	{
 		ITaskProcessor processor = new TaskProcessor()
-			.Failed("test");
+			.Fail("test");
 		_ = processor.Status.Should().Be(TaskProcessorStatus.Suspended);
 	}
 
@@ -64,7 +64,7 @@ public class TaskProcessorTest
 				RetryPolicy.CreateEternalRetry(TimeSpan.FromMinutes(1)),
 				failure: null)
 			.Start()
-			.Failed("my test fail message")
+			.Fail("my test fail message")
 			.Complete();
 		string json = JsonSerializer.Serialize((TaskProcessor)processor);
 		TaskProcessor? fromJson = JsonSerializer.Deserialize<TaskProcessor>(json);

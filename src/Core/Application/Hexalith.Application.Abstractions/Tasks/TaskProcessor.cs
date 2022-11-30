@@ -82,53 +82,77 @@ public class TaskProcessor : ITaskProcessor
 	[JsonPropertyOrder(1)]
 	public TaskProcessorStatus Status { get; private set; }
 
-	/// <inheritdoc/>
-	public ITaskProcessor Cancel()
+	/// <inheritdoc cref="ITaskProcessor.Cancel"/>
+	public TaskProcessor Cancel()
 	{
-		return Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed
+		return (TaskProcessor)(Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed
 			? throw new InvalidStatusChangeException(currentStatus: Status, newStatus: TaskProcessorStatus.Canceled)
 			: (ITaskProcessor)new TaskProcessor(this)
 			{
 				History = History.Canceled(),
 				Status = TaskProcessorStatus.Canceled,
-			};
+			});
 	}
 
-	/// <inheritdoc/>
-	public ITaskProcessor Complete()
+	/// <inheritdoc cref="ITaskProcessor.Complete"/>
+	public TaskProcessor Complete()
 	{
-		return Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed
+		return (TaskProcessor)(Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed
 			? throw new InvalidStatusChangeException(currentStatus: Status, newStatus: TaskProcessorStatus.Completed)
 			: (ITaskProcessor)new TaskProcessor(this)
 			{
 				History = History.Completed(),
 				Status = TaskProcessorStatus.Completed,
-			};
+			});
 	}
 
-	/// <inheritdoc/>
-	public ITaskProcessor Failed(string message)
+	/// <inheritdoc cref="ITaskProcessor.Fail"/>
+	public TaskProcessor Fail(string message)
 	{
 		TaskProcessingFailure newFailure = Failure == null ? new TaskProcessingFailure(1, DateTimeOffset.UtcNow, message) : Failure.Fail(message);
-		return Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed
+		return (TaskProcessor)(Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed
 			? throw new InvalidStatusChangeException(currentStatus: Status, newStatus: TaskProcessorStatus.Suspended)
 			: (ITaskProcessor)new TaskProcessor(this)
 			{
 				History = History.Suspended(),
 				Status = TaskProcessorStatus.Suspended,
 				Failure = newFailure,
-			};
+			});
 	}
 
-	/// <inheritdoc/>
-	public ITaskProcessor Start()
+	/// <inheritdoc cref="ITaskProcessor.Start"/>
+	public TaskProcessor Start()
 	{
-		return Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed or TaskProcessorStatus.Active
+		return (TaskProcessor)(Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed or TaskProcessorStatus.Active
 			? throw new InvalidStatusChangeException(currentStatus: Status, newStatus: TaskProcessorStatus.Active)
 			: (ITaskProcessor)new TaskProcessor(this)
 			{
 				History = History.ProcessingStarted(),
 				Status = TaskProcessorStatus.Active,
-			};
+			});
+	}
+
+	/// <inheritdoc/>
+	ITaskProcessor ITaskProcessor.Cancel()
+	{
+		return Cancel();
+	}
+
+	/// <inheritdoc/>
+	ITaskProcessor ITaskProcessor.Complete()
+	{
+		return Complete();
+	}
+
+	/// <inheritdoc/>
+	ITaskProcessor ITaskProcessor.Fail(string message)
+	{
+		return Fail(message);
+	}
+
+	/// <inheritdoc/>
+	ITaskProcessor ITaskProcessor.Start()
+	{
+		return Start();
 	}
 }

@@ -48,7 +48,7 @@ public interface ITaskProcessor
 	/// </summary>
 	/// <param name="message">The error message.</param>
 	/// <returns>New copy of the task processor with status changed.</returns>
-	ITaskProcessor Failed(string message);
+	ITaskProcessor Fail(string message);
 
 	/// <summary>
 	/// Start the task.
