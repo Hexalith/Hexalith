@@ -101,6 +101,27 @@ public class RetryPolicy
 	}
 
 	/// <summary>
+	/// Gets the retry policy status.
+	/// </summary>
+	/// <param name="startedDate">The started date.</param>
+	/// <param name="retryCount">The number of retries.</param>
+	/// <returns>The retry policy status.</returns>
+	public RetryPolicyStatus CanRetry(DateTimeOffset startedDate, int retryCount)
+	{
+		if (retryCount > MaximumRetries)
+		{
+			return RetryPolicyStatus.Stopped;
+		}
+
+		if (startedDate.Add(Timeout) < DateTimeOffset.UtcNow)
+		{
+			return RetryPolicyStatus.Stopped;
+		}
+
+		return NextRetryTime(startedDate, retryCount) < DateTimeOffset.UtcNow ? RetryPolicyStatus.Retryable : RetryPolicyStatus.Suspended;
+	}
+
+	/// <summary>
 	/// Gets next retry time.
 	/// </summary>
 	/// <param name="startedDate">Initial start date and time.</param>

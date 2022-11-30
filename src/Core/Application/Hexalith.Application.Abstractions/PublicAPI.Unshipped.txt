@@ -107,6 +107,7 @@ Hexalith.Application.Abstractions.Tasks.InvalidStatusChangeException.InvalidStat
 Hexalith.Application.Abstractions.Tasks.InvalidStatusChangeException.NewStatus.get -> Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus?
 Hexalith.Application.Abstractions.Tasks.ITaskProcessor
 Hexalith.Application.Abstractions.Tasks.ITaskProcessor.Cancel() -> Hexalith.Application.Abstractions.Tasks.ITaskProcessor!
+Hexalith.Application.Abstractions.Tasks.ITaskProcessor.CanRetry.get -> Hexalith.Application.Abstractions.Tasks.RetryPolicyStatus
 Hexalith.Application.Abstractions.Tasks.ITaskProcessor.Complete() -> Hexalith.Application.Abstractions.Tasks.ITaskProcessor!
 Hexalith.Application.Abstractions.Tasks.ITaskProcessor.Fail(string! message) -> Hexalith.Application.Abstractions.Tasks.ITaskProcessor!
 Hexalith.Application.Abstractions.Tasks.ITaskProcessor.Failure.get -> Hexalith.Application.Abstractions.Tasks.TaskProcessingFailure?
@@ -115,6 +116,7 @@ Hexalith.Application.Abstractions.Tasks.ITaskProcessor.RetryPolicy.get -> Hexali
 Hexalith.Application.Abstractions.Tasks.ITaskProcessor.Start() -> Hexalith.Application.Abstractions.Tasks.ITaskProcessor!
 Hexalith.Application.Abstractions.Tasks.ITaskProcessor.Status.get -> Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus
 Hexalith.Application.Abstractions.Tasks.RetryPolicy
+Hexalith.Application.Abstractions.Tasks.RetryPolicy.CanRetry(System.DateTimeOffset startedDate, int retryCount) -> Hexalith.Application.Abstractions.Tasks.RetryPolicyStatus
 Hexalith.Application.Abstractions.Tasks.RetryPolicy.Exponential.get -> bool
 Hexalith.Application.Abstractions.Tasks.RetryPolicy.InitialPeriod.get -> System.TimeSpan
 Hexalith.Application.Abstractions.Tasks.RetryPolicy.MaximumExponentialPeriod.get -> System.TimeSpan
@@ -124,6 +126,10 @@ Hexalith.Application.Abstractions.Tasks.RetryPolicy.Period.get -> System.TimeSpa
 Hexalith.Application.Abstractions.Tasks.RetryPolicy.RetryPolicy() -> void
 Hexalith.Application.Abstractions.Tasks.RetryPolicy.RetryPolicy(int maximumRetries, System.TimeSpan initialPeriod, System.TimeSpan period, System.TimeSpan maximumExponentialPeriod, System.TimeSpan timeout, bool exponential) -> void
 Hexalith.Application.Abstractions.Tasks.RetryPolicy.Timeout.get -> System.TimeSpan
+Hexalith.Application.Abstractions.Tasks.RetryPolicyStatus
+Hexalith.Application.Abstractions.Tasks.RetryPolicyStatus.Retryable = 0 -> Hexalith.Application.Abstractions.Tasks.RetryPolicyStatus
+Hexalith.Application.Abstractions.Tasks.RetryPolicyStatus.Stopped = 10 -> Hexalith.Application.Abstractions.Tasks.RetryPolicyStatus
+Hexalith.Application.Abstractions.Tasks.RetryPolicyStatus.Suspended = 1 -> Hexalith.Application.Abstractions.Tasks.RetryPolicyStatus
 Hexalith.Application.Abstractions.Tasks.TaskProcessingFailure
 Hexalith.Application.Abstractions.Tasks.TaskProcessingFailure.Count.get -> int
 Hexalith.Application.Abstractions.Tasks.TaskProcessingFailure.Date.get -> System.DateTimeOffset
@@ -145,6 +151,7 @@ Hexalith.Application.Abstractions.Tasks.TaskProcessingHistory.TaskProcessingHist
 Hexalith.Application.Abstractions.Tasks.TaskProcessingHistory.TaskProcessingHistory(System.DateTimeOffset createdDate, System.DateTimeOffset? suspendedDate, System.DateTimeOffset? processingStartDate, System.DateTimeOffset? completedDate, System.DateTimeOffset? canceledDate) -> void
 Hexalith.Application.Abstractions.Tasks.TaskProcessor
 Hexalith.Application.Abstractions.Tasks.TaskProcessor.Cancel() -> Hexalith.Application.Abstractions.Tasks.TaskProcessor!
+Hexalith.Application.Abstractions.Tasks.TaskProcessor.CanRetry.get -> Hexalith.Application.Abstractions.Tasks.RetryPolicyStatus
 Hexalith.Application.Abstractions.Tasks.TaskProcessor.Complete() -> Hexalith.Application.Abstractions.Tasks.TaskProcessor!
 Hexalith.Application.Abstractions.Tasks.TaskProcessor.Fail(string! message) -> Hexalith.Application.Abstractions.Tasks.TaskProcessor!
 Hexalith.Application.Abstractions.Tasks.TaskProcessor.Failure.get -> Hexalith.Application.Abstractions.Tasks.TaskProcessingFailure?

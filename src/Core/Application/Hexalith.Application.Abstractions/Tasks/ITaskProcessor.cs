@@ -12,6 +12,12 @@ namespace Hexalith.Application.Abstractions.Tasks;
 public interface ITaskProcessor
 {
 	/// <summary>
+	/// Gets a value indicating whether we can retry.
+	/// </summary>
+	/// <returns>true if total wait time is expired, else false.</returns>
+	RetryPolicyStatus CanRetry { get; }
+
+	/// <summary>
 	/// Gets the task processing failure.
 	/// </summary>
 	TaskProcessingFailure? Failure { get; }

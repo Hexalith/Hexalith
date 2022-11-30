@@ -63,6 +63,12 @@ public class TaskProcessor : ITaskProcessor
 	}
 
 	/// <inheritdoc/>
+	public RetryPolicyStatus CanRetry =>
+		RetryPolicy.CanRetry(
+			  History.CreatedDate,
+			  Failure == null ? 0 : Failure.Count);
+
+	/// <inheritdoc/>
 	[DataMember(Order = 3)]
 	[JsonPropertyOrder(3)]
 	public TaskProcessingFailure? Failure { get; private set; }
