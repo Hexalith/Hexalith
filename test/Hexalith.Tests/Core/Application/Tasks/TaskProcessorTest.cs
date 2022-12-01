@@ -18,7 +18,7 @@ public class TaskProcessorTest
 	[Fact]
 	public void Complete_processing_task_should_have_complete_date()
 	{
-		ITaskProcessor processor = new TaskProcessor()
+		TaskProcessor processor = new TaskProcessor()
 			.Start()
 			.Complete();
 		_ = processor.History.CompletedDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromSeconds(1));
@@ -27,7 +27,7 @@ public class TaskProcessorTest
 	[Fact]
 	public void Complete_running_process_should_be_completed()
 	{
-		ITaskProcessor processor = new TaskProcessor()
+		TaskProcessor processor = new TaskProcessor()
 			.Start()
 			.Complete();
 		_ = processor.Status.Should().Be(TaskProcessorStatus.Completed);
@@ -36,7 +36,7 @@ public class TaskProcessorTest
 	[Fact]
 	public void Failed_process_should_be_suspended()
 	{
-		ITaskProcessor processor = new TaskProcessor()
+		TaskProcessor processor = new TaskProcessor()
 			.Fail("test");
 		_ = processor.Status.Should().Be(TaskProcessorStatus.Suspended);
 	}
@@ -58,7 +58,7 @@ public class TaskProcessorTest
 	[Fact]
 	public void Serialize_and_deserialize_task_should_be_same()
 	{
-		ITaskProcessor processor = new TaskProcessor(
+		TaskProcessor processor = new TaskProcessor(
 				TaskProcessorStatus.New,
 				new TaskProcessingHistory(),
 				ResiliencyPolicy.CreateEternalRetry(TimeSpan.FromMinutes(1)),
@@ -66,7 +66,7 @@ public class TaskProcessorTest
 			.Start()
 			.Fail("my test fail message")
 			.Complete();
-		string json = JsonSerializer.Serialize((TaskProcessor)processor);
+		string json = JsonSerializer.Serialize(processor);
 		TaskProcessor? fromJson = JsonSerializer.Deserialize<TaskProcessor>(json);
 		_ = fromJson.Should().NotBeNull();
 		_ = fromJson!.Status.Should().Be(processor.Status);
@@ -83,7 +83,7 @@ public class TaskProcessorTest
 	[Fact]
 	public void Start_new_process_should_be_active()
 	{
-		ITaskProcessor processor = new TaskProcessor()
+		TaskProcessor processor = new TaskProcessor()
 			.Start();
 		_ = processor.Status.Should().Be(TaskProcessorStatus.Active);
 	}
@@ -91,7 +91,7 @@ public class TaskProcessorTest
 	[Fact]
 	public void Start_new_process_should_have_current_processing_start_date()
 	{
-		ITaskProcessor processor = new TaskProcessor()
+		TaskProcessor processor = new TaskProcessor()
 			.Start();
 		_ = processor.History.ProcessingStartDate.Should().NotBeNull();
 		_ = processor.History.ProcessingStartDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromSeconds(1));

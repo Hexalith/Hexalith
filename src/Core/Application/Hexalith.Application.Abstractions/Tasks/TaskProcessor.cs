@@ -24,7 +24,7 @@ public class TaskProcessor : ITaskProcessor
 	{
 		Status = TaskProcessorStatus.New;
 		History = new TaskProcessingHistory();
-		RetryPolicy = ResiliencyPolicy.None;
+		ResiliencyPolicy = ResiliencyPolicy.None;
 	}
 
 	/// <summary>
@@ -32,20 +32,20 @@ public class TaskProcessor : ITaskProcessor
 	/// </summary>
 	/// <param name="status">The processing status.</param>
 	/// <param name="history">The processing history.</param>
-	/// <param name="retryPolicy">The retry policy.</param>
+	/// <param name="resiliencyPolicy">The retry policy.</param>
 	/// <param name="failure">The processing failure information.</param>
 	///
 	[JsonConstructor]
 	public TaskProcessor(
 			TaskProcessorStatus status,
 			TaskProcessingHistory history,
-			ResiliencyPolicy retryPolicy,
+			ResiliencyPolicy resiliencyPolicy,
 			TaskProcessingFailure? failure)
 	{
 		Status = status;
 		History = history;
 		Failure = failure;
-		RetryPolicy = retryPolicy;
+		ResiliencyPolicy = resiliencyPolicy;
 	}
 
 	/// <summary>
@@ -59,12 +59,12 @@ public class TaskProcessor : ITaskProcessor
 		Status = processor.Status;
 		History = processor.History;
 		Failure = processor.Failure;
-		RetryPolicy = processor.RetryPolicy;
+		ResiliencyPolicy = processor.ResiliencyPolicy;
 	}
 
 	/// <inheritdoc/>
 	public RetryStatus CanRetry =>
-		RetryPolicy.CanRetry(
+		ResiliencyPolicy.CanRetry(
 			  History.CreatedDate,
 			  Failure == null ? 0 : Failure.Count);
 
@@ -81,7 +81,7 @@ public class TaskProcessor : ITaskProcessor
 	/// <inheritdoc/>
 	[DataMember(Order = 4)]
 	[JsonPropertyOrder(4)]
-	public ResiliencyPolicy RetryPolicy { get; private set; }
+	public ResiliencyPolicy ResiliencyPolicy { get; private set; }
 
 	/// <inheritdoc/>
 	[DataMember(Order = 1)]

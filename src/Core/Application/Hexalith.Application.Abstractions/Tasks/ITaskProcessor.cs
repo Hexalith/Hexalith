@@ -30,7 +30,7 @@ public interface ITaskProcessor
 	/// <summary>
 	/// Gets retry policy.
 	/// </summary>
-	ResiliencyPolicy RetryPolicy { get; }
+	ResiliencyPolicy ResiliencyPolicy { get; }
 
 	/// <summary>
 	/// Gets the task processor status.
