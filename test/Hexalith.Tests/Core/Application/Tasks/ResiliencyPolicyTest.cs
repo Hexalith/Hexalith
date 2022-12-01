@@ -1,4 +1,4 @@
-﻿// <copyright file="RetryPolicyTest.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="ResiliencyPolicyTest.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -10,8 +10,27 @@ using FluentAssertions;
 
 using Hexalith.Application.Abstractions.Tasks;
 
-public class RetryPolicyTest
+using System.Text.Json;
+
+public class ResiliencyPolicyTest
 {
+	[Fact]
+	public void Deserialize_serialized_policy_should_return_same_value()
+	{
+		// Serialize resiliency policy
+		ResiliencyPolicy policy = new(
+			100,
+			TimeSpan.FromMilliseconds(200),
+			TimeSpan.FromMilliseconds(100),
+			TimeSpan.Zero,
+			TimeSpan.FromHours(24),
+			exponential: false);
+		string json = JsonSerializer.Serialize(policy);
+		ResiliencyPolicy? deserialized = JsonSerializer.Deserialize<ResiliencyPolicy>(json);
+		_ = deserialized.Should().NotBeNull();
+		_ = deserialized.Should().BeEquivalentTo(policy);
+	}
+
 	[Theory]
 	[InlineData(0, 5)]
 	[InlineData(1, 10 + 5)]
