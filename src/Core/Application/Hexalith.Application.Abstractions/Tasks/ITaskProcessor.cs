@@ -50,6 +50,12 @@ public interface ITaskProcessor
 	ITaskProcessor Complete();
 
 	/// <summary>
+	/// Changes the status from suspended to active if the retry wait time has expired.
+	/// </summary>
+	/// <returns>New copy of the task processor with status changed.</returns>
+	ITaskProcessor Continue();
+
+	/// <summary>
 	/// Set failure state and message.
 	/// </summary>
 	/// <param name="message">The error message.</param>

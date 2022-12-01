@@ -36,8 +36,9 @@ public sealed class InvalidStatusChangeException : Exception
 	/// </summary>
 	/// <param name="currentStatus">The current processor status.</param>
 	/// <param name="newStatus">The expected new status.</param>
-	public InvalidStatusChangeException(TaskProcessorStatus currentStatus, TaskProcessorStatus newStatus)
-		: this($"The processor with current status {currentStatus} cannot be changed to {newStatus}.")
+	/// <param name="message">The error message.</param>
+	public InvalidStatusChangeException(TaskProcessorStatus currentStatus, TaskProcessorStatus newStatus, string message)
+		: this($"The processor with current status {currentStatus} cannot be changed to {newStatus}. " + message)
 	{
 		CurrentStatus = currentStatus;
 		NewStatus = newStatus;
