@@ -24,7 +24,7 @@ public class TaskProcessor : ITaskProcessor
 	{
 		Status = TaskProcessorStatus.New;
 		History = new TaskProcessingHistory();
-		RetryPolicy = RetryPolicy.None;
+		RetryPolicy = ResiliencyPolicy.None;
 	}
 
 	/// <summary>
@@ -39,7 +39,7 @@ public class TaskProcessor : ITaskProcessor
 	public TaskProcessor(
 			TaskProcessorStatus status,
 			TaskProcessingHistory history,
-			RetryPolicy retryPolicy,
+			ResiliencyPolicy retryPolicy,
 			TaskProcessingFailure? failure)
 	{
 		Status = status;
@@ -63,7 +63,7 @@ public class TaskProcessor : ITaskProcessor
 	}
 
 	/// <inheritdoc/>
-	public RetryPolicyStatus CanRetry =>
+	public RetryStatus CanRetry =>
 		RetryPolicy.CanRetry(
 			  History.CreatedDate,
 			  Failure == null ? 0 : Failure.Count);
@@ -81,7 +81,7 @@ public class TaskProcessor : ITaskProcessor
 	/// <inheritdoc/>
 	[DataMember(Order = 4)]
 	[JsonPropertyOrder(4)]
-	public RetryPolicy RetryPolicy { get; private set; }
+	public ResiliencyPolicy RetryPolicy { get; private set; }
 
 	/// <inheritdoc/>
 	[DataMember(Order = 1)]

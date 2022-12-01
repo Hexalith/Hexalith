@@ -15,7 +15,7 @@ public interface ITaskProcessor
 	/// Gets a value indicating whether we can retry.
 	/// </summary>
 	/// <returns>true if total wait time is expired, else false.</returns>
-	RetryPolicyStatus CanRetry { get; }
+	RetryStatus CanRetry { get; }
 
 	/// <summary>
 	/// Gets the task processing failure.
@@ -30,7 +30,7 @@ public interface ITaskProcessor
 	/// <summary>
 	/// Gets retry policy.
 	/// </summary>
-	RetryPolicy RetryPolicy { get; }
+	ResiliencyPolicy RetryPolicy { get; }
 
 	/// <summary>
 	/// Gets the task processor status.

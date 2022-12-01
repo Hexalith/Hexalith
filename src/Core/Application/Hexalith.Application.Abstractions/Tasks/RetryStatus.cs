@@ -1,4 +1,4 @@
-﻿// <copyright file="RetryPolicyStatus.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="RetryStatus.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -9,12 +9,12 @@ namespace Hexalith.Application.Abstractions.Tasks;
 /// <summary>
 /// The retry policy status.
 /// </summary>
-public enum RetryPolicyStatus
+public enum RetryStatus
 {
 	/// <summary>
 	/// The retry is enabled.
 	/// </summary>
-	Retryable = 0,
+	Enabled = 0,
 
 	/// <summary>
 	/// Waiting for policy retry wait time to end.

@@ -1,4 +1,4 @@
-﻿// <copyright file="RetryPolicy.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="ResiliencyPolicy.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -11,10 +11,10 @@ using Hexalith.Extensions.Maths;
 /// <summary>
 /// Retry policy.
 /// </summary>
-public class RetryPolicy
+public class ResiliencyPolicy
 {
 	/// <summary>
-	/// Initializes a new instance of the <see cref="RetryPolicy"/> class.
+	/// Initializes a new instance of the <see cref="ResiliencyPolicy"/> class.
 	/// </summary>
 	/// <param name="maximumRetries">The maximum number of retries.</param>
 	/// <param name="initialPeriod">The retry initial period in milliseconds.</param>
@@ -22,7 +22,7 @@ public class RetryPolicy
 	/// <param name="maximumExponentialPeriod">The maximum retry period if exponential.</param>
 	/// <param name="timeout">The maximum retry total time.</param>
 	/// <param name="exponential">Use exponential periods.</param>
-	public RetryPolicy(int maximumRetries, TimeSpan initialPeriod, TimeSpan period, TimeSpan maximumExponentialPeriod, TimeSpan timeout, bool exponential)
+	public ResiliencyPolicy(int maximumRetries, TimeSpan initialPeriod, TimeSpan period, TimeSpan maximumExponentialPeriod, TimeSpan timeout, bool exponential)
 	{
 		MaximumRetries = maximumRetries;
 		InitialPeriod = initialPeriod;
@@ -33,10 +33,10 @@ public class RetryPolicy
 	}
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="RetryPolicy"/> class.
+	/// Initializes a new instance of the <see cref="ResiliencyPolicy"/> class.
 	/// </summary>
 	[Obsolete("This constructor is only for serialization purposes.", true)]
-	public RetryPolicy()
+	public ResiliencyPolicy()
 	{
 		MaximumRetries = 0;
 		InitialPeriod = TimeSpan.Zero;
@@ -49,7 +49,7 @@ public class RetryPolicy
 	/// <summary>
 	/// Gets the default no retry policy.
 	/// </summary>
-	public static RetryPolicy None { get; } = new(0, TimeSpan.Zero, TimeSpan.Zero, TimeSpan.Zero, TimeSpan.Zero, exponential: false);
+	public static ResiliencyPolicy None { get; } = new(0, TimeSpan.Zero, TimeSpan.Zero, TimeSpan.Zero, TimeSpan.Zero, exponential: false);
 
 	/// <summary>
 	/// Gets a value indicating whether use exponential periods.
@@ -85,9 +85,9 @@ public class RetryPolicy
 	/// Create an exponential retry, starting from one millisecond without any timeout.
 	/// </summary>
 	/// <returns>The retry policy.</returns>
-	public static RetryPolicy CreateEternalExponentialRetry()
+	public static ResiliencyPolicy CreateEternalExponentialRetry()
 	{
-		return new RetryPolicy(-1, TimeSpan.FromMilliseconds(1), TimeSpan.FromMilliseconds(1), TimeSpan.MaxValue, TimeSpan.MaxValue, exponential: true);
+		return new ResiliencyPolicy(-1, TimeSpan.FromMilliseconds(1), TimeSpan.FromMilliseconds(1), TimeSpan.MaxValue, TimeSpan.MaxValue, exponential: true);
 	}
 
 	/// <summary>
@@ -95,9 +95,9 @@ public class RetryPolicy
 	/// </summary>
 	/// <param name="period">A fix period of time to wait for between each retry.</param>
 	/// <returns>The retry policy.</returns>
-	public static RetryPolicy CreateEternalRetry(TimeSpan period)
+	public static ResiliencyPolicy CreateEternalRetry(TimeSpan period)
 	{
-		return new RetryPolicy(-1, period, period, TimeSpan.Zero, TimeSpan.MaxValue, exponential: false);
+		return new ResiliencyPolicy(-1, period, period, TimeSpan.Zero, TimeSpan.MaxValue, exponential: false);
 	}
 
 	/// <summary>
@@ -106,19 +106,13 @@ public class RetryPolicy
 	/// <param name="startedDate">The started date.</param>
 	/// <param name="retryCount">The number of retries.</param>
 	/// <returns>The retry policy status.</returns>
-	public RetryPolicyStatus CanRetry(DateTimeOffset startedDate, int retryCount)
+	public RetryStatus CanRetry(DateTimeOffset startedDate, int retryCount)
 	{
-		if (retryCount > MaximumRetries)
-		{
-			return RetryPolicyStatus.Stopped;
-		}
-
-		if (startedDate.Add(Timeout) < DateTimeOffset.UtcNow)
-		{
-			return RetryPolicyStatus.Stopped;
-		}
-
-		return NextRetryTime(startedDate, retryCount) < DateTimeOffset.UtcNow ? RetryPolicyStatus.Retryable : RetryPolicyStatus.Suspended;
+		return retryCount > MaximumRetries
+			? RetryStatus.Stopped
+			: startedDate.Add(Timeout) < DateTimeOffset.UtcNow
+			? RetryStatus.Stopped
+			: NextRetryTime(startedDate, retryCount) < DateTimeOffset.UtcNow ? RetryStatus.Enabled : RetryStatus.Suspended;
 	}
 
 	/// <summary>

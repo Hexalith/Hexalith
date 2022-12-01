@@ -28,7 +28,7 @@ public class RetryPolicyTest
 	public void Wait_time_for_each_exponential_retry_should_be_expected_value(int sequence, int value)
 	{
 		DateTimeOffset now = DateTimeOffset.UtcNow;
-		RetryPolicy policy = new(
+		ResiliencyPolicy policy = new(
 			100,
 			TimeSpan.FromMilliseconds(5),
 			TimeSpan.FromMilliseconds(10),
@@ -55,7 +55,7 @@ public class RetryPolicyTest
 	public void Wait_time_for_each_linear_retry_should_be_expected_value(int sequence, int value)
 	{
 		DateTimeOffset now = DateTimeOffset.UtcNow;
-		RetryPolicy policy = new(
+		ResiliencyPolicy policy = new(
 			100,
 			TimeSpan.FromMilliseconds(200),
 			TimeSpan.FromMilliseconds(100),

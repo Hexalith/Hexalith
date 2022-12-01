@@ -61,7 +61,7 @@ public class TaskProcessorTest
 		ITaskProcessor processor = new TaskProcessor(
 				TaskProcessorStatus.New,
 				new TaskProcessingHistory(),
-				RetryPolicy.CreateEternalRetry(TimeSpan.FromMinutes(1)),
+				ResiliencyPolicy.CreateEternalRetry(TimeSpan.FromMinutes(1)),
 				failure: null)
 			.Start()
 			.Fail("my test fail message")
