@@ -1,4 +1,4 @@
-﻿// <copyright file="PolymorphicSerializationAttribute.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="JsonPolymorphicBaseClassAttribute.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -9,6 +9,7 @@ namespace Hexalith.Extensions.Contracts;
 using System;
 
 #pragma warning disable S1104 // Fields should not have public accessibility
+#pragma warning disable SA1401 // Fields should be private
 
 /// <summary>
 /// Attribute to indicate the polymorphic class name and polymorphic property name (default is "$type").
