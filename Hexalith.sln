@@ -89,6 +89,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.Infrastructure.Serialization", "src\Core\Infrastructure\Hexalith.Infrastructure.Serialization\Hexalith.Infrastructure.Serialization.csproj", "{B207766E-3CE0-4DF5-B33B-367C9E8AF4EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -143,6 +145,10 @@ Global
 		{1042AAE2-35A1-4584-954F-636F22C49206}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1042AAE2-35A1-4584-954F-636F22C49206}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1042AAE2-35A1-4584-954F-636F22C49206}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B207766E-3CE0-4DF5-B33B-367C9E8AF4EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B207766E-3CE0-4DF5-B33B-367C9E8AF4EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B207766E-3CE0-4DF5-B33B-367C9E8AF4EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B207766E-3CE0-4DF5-B33B-367C9E8AF4EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -167,6 +173,7 @@ Global
 		{155E85F0-978B-4916-AB3C-741266DE7BE3} = {AA983AFF-9CBC-4F2A-98E3-3CACA5039C61}
 		{8CE66AE1-932A-4E2C-B8E5-4FA627ACA2D7} = {5A9735A3-CEE9-4E50-B2FD-54F0BF402002}
 		{1042AAE2-35A1-4584-954F-636F22C49206} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
+		{B207766E-3CE0-4DF5-B33B-367C9E8AF4EB} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09CBB595-8996-4C7F-9C48-4C58AD9293AC}
