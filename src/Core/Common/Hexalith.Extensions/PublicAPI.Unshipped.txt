@@ -1,9 +1,14 @@
 ﻿#nullable enable
+const Hexalith.Extensions.Contracts.PolymorphicSerializationAttribute.DefaultDiscriminatorName = "$type" -> string!
 Hexalith.Extensions.Common.ArrayHelper
 Hexalith.Extensions.Common.UniqueIdHelper
 Hexalith.Extensions.Configuration.ISettings
 Hexalith.Extensions.Configuration.ISettings.ConfigurationName() -> string!
 Hexalith.Extensions.Configuration.OptionsHelper
+Hexalith.Extensions.Contracts.PolymorphicSerializationAttribute
+Hexalith.Extensions.Contracts.PolymorphicSerializationAttribute.DiscriminatorName -> string?
+Hexalith.Extensions.Contracts.PolymorphicSerializationAttribute.Name -> string?
+Hexalith.Extensions.Contracts.PolymorphicSerializationAttribute.PolymorphicSerializationAttribute() -> void
 Hexalith.Extensions.Exceptions.ExceptionHelper
 Hexalith.Extensions.Maths.FibonacciSequence
 static Hexalith.Extensions.Common.ArrayHelper.IntoArray<T>(this T obj) -> T[]!

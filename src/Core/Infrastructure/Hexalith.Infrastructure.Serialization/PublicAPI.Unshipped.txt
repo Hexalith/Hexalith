@@ -1,3 +1,7 @@
-﻿Hexalith.Infrastructure.Serialization.DataContractAttributeJsonTypeInfoResolver
-Hexalith.Infrastructure.Serialization.DataContractAttributeJsonTypeInfoResolver.DataContractAttributeJsonTypeInfoResolver() -> void
-override Hexalith.Infrastructure.Serialization.DataContractAttributeJsonTypeInfoResolver.GetTypeInfo(System.Type type, System.Text.Json.JsonSerializerOptions options) -> System.Text.Json.Serialization.Metadata.JsonTypeInfo
+﻿Hexalith.Infrastructure.Serialization.PolymorphicTypeResolver
+Hexalith.Infrastructure.Serialization.PolymorphicTypeResolver.PolymorphicTypeResolver() -> void
+Hexalith.Infrastructure.Serialization.TypeNamePolymorphismOptions
+Hexalith.Infrastructure.Serialization.TypeNamePolymorphismOptions.BaseType.get -> System.Type!
+Hexalith.Infrastructure.Serialization.TypeNamePolymorphismOptions.TypeNamePolymorphismOptions(System.Type! baseType) -> void
+override Hexalith.Infrastructure.Serialization.PolymorphicTypeResolver.GetTypeInfo(System.Type! type, System.Text.Json.JsonSerializerOptions! options) -> System.Text.Json.Serialization.Metadata.JsonTypeInfo!
+static Hexalith.Infrastructure.Serialization.TypeNamePolymorphismOptions.Create(System.Type! type) -> Hexalith.Infrastructure.Serialization.TypeNamePolymorphismOptions?

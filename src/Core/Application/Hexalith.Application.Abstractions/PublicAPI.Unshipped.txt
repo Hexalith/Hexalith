@@ -129,7 +129,7 @@ Hexalith.Application.Abstractions.Tasks.ResiliencyPolicy.ResiliencyPolicy(int ma
 Hexalith.Application.Abstractions.Tasks.ResiliencyPolicy.Timeout.get -> System.TimeSpan
 Hexalith.Application.Abstractions.Tasks.RetryStatus
 Hexalith.Application.Abstractions.Tasks.RetryStatus.Enabled = 0 -> Hexalith.Application.Abstractions.Tasks.RetryStatus
-Hexalith.Application.Abstractions.Tasks.RetryStatus.Stopped = 2 -> Hexalith.Application.Abstractions.Tasks.RetryStatus
+Hexalith.Application.Abstractions.Tasks.RetryStatus.Stopped = 10 -> Hexalith.Application.Abstractions.Tasks.RetryStatus
 Hexalith.Application.Abstractions.Tasks.RetryStatus.Suspended = 1 -> Hexalith.Application.Abstractions.Tasks.RetryStatus
 Hexalith.Application.Abstractions.Tasks.TaskProcessingFailure
 Hexalith.Application.Abstractions.Tasks.TaskProcessingFailure.Count.get -> int
