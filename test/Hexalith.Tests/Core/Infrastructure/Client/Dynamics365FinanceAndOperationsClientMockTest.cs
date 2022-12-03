@@ -24,4 +24,12 @@ public class Dynamics365FinanceAndOperationsClientMockTest
 			.Should()
 			.NotThrow();
 	}
+
+	[Fact]
+	public void Client_with_application_json_settings_should_succeed()
+	{
+		Dynamics365FinanceAndOperationsClientBuilder builder = new Dynamics365FinanceAndOperationsClientBuilder()
+			.WithValueFromConfiguration<Dynamics365FinanceAndOperationsClientMockTest>();
+		_ = builder.Build();
+	}
 }

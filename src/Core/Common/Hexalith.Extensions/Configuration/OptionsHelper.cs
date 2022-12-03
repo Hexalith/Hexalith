@@ -20,10 +20,11 @@ public static class OptionsHelper
 	/// <typeparam name="T">The type of the settings object.</typeparam>
 	/// <param name="services">The service collection.</param>
 	/// <param name="configuration">The configuration instance.</param>
-	/// <returns>The service collection.</returns>
+	/// <returns>The configured service collection.</returns>
 	public static IServiceCollection ConfigureSettings<T>(this IServiceCollection services, IConfiguration configuration)
 		where T : class, ISettings
 	{
-		return services.Configure<T>(configuration.GetSection(T.ConfigurationName()));
+		_ = configuration ?? throw new ArgumentNullException(nameof(configuration));
+		return services.Configure<T>(config: configuration.GetSection(T.ConfigurationName()));
 	}
 }
