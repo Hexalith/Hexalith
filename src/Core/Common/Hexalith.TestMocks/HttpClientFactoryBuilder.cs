@@ -30,7 +30,7 @@ public class HttpClientFactoryBuilder
 	/// <exception cref="InvalidOperationException">HttpMessageHandler already set.</exception>
 	public Mock<IHttpClientFactory> BuildMock()
 	{
-		HttpClient httpClient = new(_httpHandler ?? throw new InvalidOperationException("No HttpMessageHandler defined."))
+		HttpClient httpClient = new(_httpHandler ?? new HttpClientHandler())
 		{
 			BaseAddress = new Uri("http://test.hexalith.com/"),
 		};
