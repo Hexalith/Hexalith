@@ -138,9 +138,9 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 			response = await Client.GetAsync(url, cancellationToken).ConfigureAwait(false);
 			if (response.IsSuccessStatusCode)
 			{
-				ODataResponse<T>? content = await response
+				T? content = await response
 					.Content
-					.ReadFromJsonAsync<ODataResponse<T>>(
+					.ReadFromJsonAsync<T>(
 					options: new JsonSerializerOptions
 					{
 						PropertyNameCaseInsensitive = true,
@@ -151,13 +151,8 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 					throw new HttpRequestException($"Empty content response on request to '{url.AbsoluteUri}'.");
 				}
 
-				if (content.Value == null)
-				{
-					throw new HttpRequestException($"Empty value response on request to '{url.AbsoluteUri}'.\nMessage:{content.Message}");
-				}
-
 				_logger.LogDebug("The method call to '{Path}' was successful.", url.AbsoluteUri);
-				return content.Value;
+				return content;
 			}
 
 			throw new HttpRequestException(
@@ -171,7 +166,7 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 				typeof(T).Name,
 				keys,
 				url.AbsoluteUri,
-				response == null ? "No response" : responseContent);
+				responseContent ?? "No response");
 			throw new GetSingleRequestFailedException<T>(entityName, keys, responseContent, message: null, ex);
 		}
 	}

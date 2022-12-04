@@ -23,15 +23,12 @@ public class Dynamics365FinanceAndOperationsClientTest
 			Instance = new Uri("https://test.dynamics.com"),
 		};
 		const string message = "Hello world";
-		string response =
+		const string response =
 			$$"""
 			{
 				"@odata.context":"hello context",
 				"message":"this is a message",
-				"value":
-				{
-					"Message":"{{message}}"
-				}
+				"Message":"{{message}}"
 			}
 			""";
 		Dynamics365FinanceAndOperationsClientBuilder builder = new();

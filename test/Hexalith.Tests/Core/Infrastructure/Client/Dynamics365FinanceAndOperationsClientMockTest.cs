@@ -30,6 +30,7 @@ public class Dynamics365FinanceAndOperationsClientMockTest
 	{
 		Dynamics365FinanceAndOperationsClientBuilder builder = new Dynamics365FinanceAndOperationsClientBuilder()
 			.WithValueFromConfiguration<Dynamics365FinanceAndOperationsClientMockTest>();
-		_ = builder.Build();
+		Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.IDynamics365FinanceAndOperationsClient result = builder.Build();
+		_ = result.Should().NotBeNull();
 	}
 }
