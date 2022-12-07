@@ -29,7 +29,7 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 	private readonly string _company;
 	private readonly IHttpClientFactory _httpClientFactory;
 	private readonly Uri _instance;
-	private readonly ILogger _logger;
+	private readonly ILogger<Dynamics365FinanceAndOperationsClient> _logger;
 	private readonly IDynamics365FinanceAndOperationsSecurityContext _securityContext;
 	private HttpClient? _client;
 
@@ -92,29 +92,29 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 		try
 		{
 			response = await Client.GetAsync(url, cancellationToken).ConfigureAwait(false);
-			if (response.IsSuccessStatusCode)
+			if (!response.IsSuccessStatusCode)
 			{
-				ODataArrayResponse<T>? content = await response
+				throw new HttpRequestException(
+					$"The request to '{url.AbsoluteUri}' failed with status code '{response.StatusCode}'.");
+			}
+
+			ODataArrayResponse<T>? content = await response
 					.Content
 					.ReadFromJsonAsync<ODataArrayResponse<T>>(
 					options: new JsonSerializerOptions
 					{
 						PropertyNameCaseInsensitive = true,
 					},
-					cancellationToken).ConfigureAwait(false);
-				if (content != null && !string.IsNullOrWhiteSpace(content.Context))
-				{
-					_logger.LogTrace("The method call to '{Path}' was successful.", url.AbsoluteUri);
-					return content.Values
-						?? Enumerable.Empty<T>();
-				}
-
-				throw new HttpRequestException(
-					$"The request to '{url.AbsoluteUri}' failed to deserialize :\n{await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false)}");
+					cancellationToken)
+					.ConfigureAwait(false);
+			if (content != null && !string.IsNullOrWhiteSpace(content.Context))
+			{
+				_logger.LogTrace("The method call to '{Path}' was successful.", url.AbsoluteUri);
+				return content.Values ?? Enumerable.Empty<T>();
 			}
 
 			throw new HttpRequestException(
-				$"The request to '{url.AbsoluteUri}' failed with status code '{response.StatusCode}'.");
+					$"The request to '{url.AbsoluteUri}' failed to deserialize :\n{await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false)}");
 		}
 		catch
 		{
@@ -136,9 +136,13 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 		try
 		{
 			response = await Client.GetAsync(url, cancellationToken).ConfigureAwait(false);
-			if (response.IsSuccessStatusCode)
+			if (!response.IsSuccessStatusCode)
 			{
-				T? content = await response
+				throw new HttpRequestException(
+					$"The request to '{url.AbsoluteUri}' failed with status code '{response.StatusCode}'.");
+			}
+
+			T? content = await response
 					.Content
 					.ReadFromJsonAsync<T>(
 					options: new JsonSerializerOptions
@@ -146,17 +150,13 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 						PropertyNameCaseInsensitive = true,
 					},
 					cancellationToken).ConfigureAwait(false);
-				if (content == null)
-				{
-					throw new HttpRequestException($"Empty content response on request to '{url.AbsoluteUri}'.");
-				}
-
-				_logger.LogDebug("The method call to '{Path}' was successful.", url.AbsoluteUri);
-				return content;
+			if (content == null)
+			{
+				throw new HttpRequestException($"Empty content response on request to '{url.AbsoluteUri}'.");
 			}
 
-			throw new HttpRequestException(
-				$"The request to '{url.AbsoluteUri}' failed with status code '{response.StatusCode}'.");
+			_logger.LogDebug("The method call to '{Path}' was successful.", url.AbsoluteUri);
+			return content;
 		}
 		catch (Exception ex)
 		{
@@ -172,7 +172,26 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 	}
 
 	/// <inheritdoc/>
-	public async Task PatchAsync<T>(
+	public async Task<TEntity> PatchAsync<TCreate, TEntity>(
+		string entityName,
+		IDictionary<string, object> key,
+		TCreate value,
+		CancellationToken cancellationToken)
+	{
+		HttpResponseMessage response = await PatchAsync(entityName, key, value, cancellationToken).ConfigureAwait(false);
+		TEntity? v = await response
+			.Content
+			.ReadFromJsonAsync<TEntity>(
+				new JsonSerializerOptions
+				{
+					PropertyNameCaseInsensitive = true,
+				},
+				cancellationToken).ConfigureAwait(false);
+		return v ?? throw new HttpRequestException($"Empty content response on request to '{response.RequestMessage?.RequestUri?.AbsoluteUri}'.");
+	}
+
+	/// <inheritdoc/>
+	public async Task<HttpResponseMessage> PatchAsync<T>(
 		string entityName,
 		IDictionary<string, object> key,
 		T value,
@@ -184,21 +203,20 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 		try
 		{
 			response = await Client
-				.PatchAsync(
+				.PatchAsJsonAsync(
 					url,
-					JsonContent
-						.Create(
-						value,
-						mediaType: null,
-						new JsonSerializerOptions
-						{
-							PropertyNameCaseInsensitive = false,
-							PropertyNamingPolicy = null,
-						}),
-					cancellationToken).ConfigureAwait(false);
+					value,
+					cancellationToken)
+				.ConfigureAwait(false);
+			if (response == null)
+			{
+				throw new HttpRequestException(
+					$"The patch request '{url.AbsoluteUri}' failed. The HTTP response is null.");
+			}
 			if (response.IsSuccessStatusCode)
 			{
-				return;
+				_logger.LogInformation("The patch method call to '{Patch}' succeeded.", url.AbsolutePath);
+				return response;
 			}
 
 			throw new HttpRequestException(

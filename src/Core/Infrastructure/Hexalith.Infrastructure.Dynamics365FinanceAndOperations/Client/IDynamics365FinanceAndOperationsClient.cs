@@ -44,13 +44,25 @@ public interface IDynamics365FinanceAndOperationsClient
 	/// <summary>
 	/// Patch an entity object.
 	/// </summary>
-	/// <typeparam name="T">Type of the update entity model.</typeparam>
+	/// <typeparam name="TUpdate">Type of the update entity model.</typeparam>
 	/// <param name="entityName">Name of the entity.</param>
 	/// <param name="key">Primary key values.</param>
 	/// <param name="value">Values to update.</param>
 	/// <param name="cancellationToken">Cancellation token.</param>
-	/// <returns>Task.</returns>
-	Task PatchAsync<T>(string entityName, IDictionary<string, object> key, T value, CancellationToken cancellationToken);
+	/// <returns>The response message valued task.</returns>
+	Task<HttpResponseMessage> PatchAsync<TUpdate>(string entityName, IDictionary<string, object> key, TUpdate value, CancellationToken cancellationToken);
+
+	/// <summary>
+	/// Patch an entity object.
+	/// </summary>
+	/// <typeparam name="TUpdate">Type of the update entity model.</typeparam>
+	/// <typeparam name="TEntity">Type of the return entity model.</typeparam>
+	/// <param name="entityName">Name of the entity.</param>
+	/// <param name="key">Primary key values.</param>
+	/// <param name="value">Values to update.</param>
+	/// <param name="cancellationToken">Cancellation token.</param>
+	/// <returns>The entity valued task.</returns>
+	Task<TEntity> PatchAsync<TUpdate, TEntity>(string entityName, IDictionary<string, object> key, TUpdate value, CancellationToken cancellationToken);
 
 	/// <summary>
 	/// Post a new entity object.
