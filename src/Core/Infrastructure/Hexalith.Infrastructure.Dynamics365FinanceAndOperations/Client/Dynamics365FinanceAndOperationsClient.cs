@@ -26,6 +26,7 @@ using System.Web;
 public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOperationsClient
 {
 	private const string _dataPath = "data";
+	private const string _crossCompanyQuery = "cross-company=true";
 	private readonly string _company;
 	private readonly IHttpClientFactory _httpClientFactory;
 	private readonly Uri _instance;
@@ -83,11 +84,17 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 	}
 
 	/// <inheritdoc/>
-	public async Task<IEnumerable<T>> GetAsync<T>(string entityName, IDictionary<string, object> filter, CancellationToken cancellationToken)
+	public Task<IEnumerable<T>> GetAsync<T>(string entityName, IDictionary<string, object> filter, CancellationToken cancellationToken)
 	{
-		await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
+		return GetAsync<T>(entityName, _company, filter, cancellationToken);
+	}
 
-		Uri url = new(_instance, $"{_dataPath}/{entityName}/?$filter={HttpUtility.UrlEncode(GetQueryFilter(filter))}");
+	/// <inheritdoc/>
+	public async Task<IEnumerable<T>> GetAsync<T>(string entityName, string company, IDictionary<string, object> filter, CancellationToken cancellationToken)
+	{
+		string crossCompany = string.Equals(_company, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : _crossCompanyQuery + "&";
+		await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
+		Uri url = new(_instance, $"{_dataPath}/{entityName}/?{crossCompany}$filter={HttpUtility.UrlEncode(GetQueryFilter(company, filter))}");
 		HttpResponseMessage? response = null;
 		try
 		{
@@ -127,11 +134,18 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 	}
 
 	/// <inheritdoc/>
-	public async Task<T> GetSingleAsync<T>(string entityName, IDictionary<string, object> keys, CancellationToken cancellationToken)
+	public Task<T> GetSingleAsync<T>(string entityName, IDictionary<string, object> keys, CancellationToken cancellationToken)
 	{
+		return GetSingleAsync<T>(entityName, _company, keys, cancellationToken);
+	}
+
+	/// <inheritdoc/>
+	public async Task<T> GetSingleAsync<T>(string entityName, string company, IDictionary<string, object> keys, CancellationToken cancellationToken)
+	{
+		string crossCompany = string.Equals(_company, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : "?" + _crossCompanyQuery;
 		await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
-		string keyFilter = GetEntityFilter((Dictionary<string, object>)keys);
-		Uri url = new(_instance, $"{_dataPath}/{entityName}({HttpUtility.UrlEncode(keyFilter)})");
+		string keyFilter = GetEntityFilter(company, keys);
+		Uri url = new(_instance, $"{_dataPath}/{entityName}({HttpUtility.UrlEncode(keyFilter)}){crossCompany}");
 		HttpResponseMessage? response = null;
 		try
 		{
@@ -172,8 +186,19 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 	}
 
 	/// <inheritdoc/>
+	public Task<TEntity> PatchAsync<TCreate, TEntity>(
+		string entityName,
+		IDictionary<string, object> key,
+		TCreate value,
+		CancellationToken cancellationToken)
+	{
+		return PatchAsync<TCreate, TEntity>(entityName, _company, key, value, cancellationToken);
+	}
+
+	/// <inheritdoc/>
 	public async Task<TEntity> PatchAsync<TCreate, TEntity>(
 		string entityName,
+		string company,
 		IDictionary<string, object> key,
 		TCreate value,
 		CancellationToken cancellationToken)
@@ -191,14 +216,26 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 	}
 
 	/// <inheritdoc/>
-	public async Task<HttpResponseMessage> PatchAsync<T>(
+	public Task<HttpResponseMessage> PatchAsync<T>(
 		string entityName,
 		IDictionary<string, object> key,
 		T value,
 		CancellationToken cancellationToken)
 	{
+		return PatchAsync<T>(entityName, _company, key, value, cancellationToken);
+	}
+
+	/// <inheritdoc/>
+	public async Task<HttpResponseMessage> PatchAsync<T>(
+		string entityName,
+		string company,
+		IDictionary<string, object> key,
+		T value,
+		CancellationToken cancellationToken)
+	{
+		string crossCompany = string.Equals(_company, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : "?" + _crossCompanyQuery;
 		await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
-		Uri url = new(_instance, $"{_dataPath}/{entityName}({HttpUtility.UrlEncode(GetEntityFilter((Dictionary<string, object>)key))})");
+		Uri url = new(_instance, $"{_dataPath}/{entityName}({HttpUtility.UrlEncode(GetEntityFilter(company, key))}){crossCompany}");
 		HttpResponseMessage? response = null;
 		try
 		{
@@ -213,6 +250,7 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 				throw new HttpRequestException(
 					$"The patch request '{url.AbsoluteUri}' failed. The HTTP response is null.");
 			}
+
 			if (response.IsSuccessStatusCode)
 			{
 				_logger.LogInformation("The patch method call to '{Patch}' succeeded.", url.AbsolutePath);
@@ -233,9 +271,15 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 	}
 
 	/// <inheritdoc/>
-	public async Task<TEntity> PostAsync<TCreate, TEntity>(string entityName, TCreate value, CancellationToken cancellationToken)
+	public Task<TEntity> PostAsync<TCreate, TEntity>(string entityName, TCreate value, CancellationToken cancellationToken)
 	{
-		HttpResponseMessage response = await PostAsync(entityName, value, cancellationToken).ConfigureAwait(false);
+		return PostAsync<TCreate, TEntity>(entityName, _company, value, cancellationToken);
+	}
+
+	/// <inheritdoc/>
+	public async Task<TEntity> PostAsync<TCreate, TEntity>(string entityName, string company, TCreate value, CancellationToken cancellationToken)
+	{
+		HttpResponseMessage response = await PostAsync(entityName, company, value, cancellationToken).ConfigureAwait(false);
 		TEntity? v = await response
 			.Content
 			.ReadFromJsonAsync<TEntity>(
@@ -248,10 +292,17 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 	}
 
 	/// <inheritdoc/>
-	public async Task<HttpResponseMessage> PostAsync<T>(string entityName, T value, CancellationToken cancellationToken)
+	public Task<HttpResponseMessage> PostAsync<T>(string entityName, T value, CancellationToken cancellationToken)
 	{
+		return PostAsync<T>(entityName, _company, value, cancellationToken);
+	}
+
+	/// <inheritdoc/>
+	public async Task<HttpResponseMessage> PostAsync<T>(string entityName, string company, T value, CancellationToken cancellationToken)
+	{
+		string crossCompany = string.Equals(_company, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : "/?" + _crossCompanyQuery;
 		await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
-		Uri url = new(_instance, $"{_dataPath}/{entityName}");
+		Uri url = new(_instance, $"{_dataPath}/{entityName}{crossCompany}");
 		HttpResponseMessage? response = null;
 		try
 		{
@@ -284,6 +335,30 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 		}
 	}
 
+	private static string GetEntityFilter(string company, IDictionary<string, object> keys)
+	{
+		StringBuilder filter = new();
+		_ = filter.Append(CultureInfo.InvariantCulture, $"dataAreaId='{company}'");
+		foreach (KeyValuePair<string, object> key in keys)
+		{
+			_ = filter.Append(CultureInfo.InvariantCulture, $",{key.Key}={GetOdataString(key.Value)}");
+		}
+
+		return filter.ToString();
+	}
+
+	private static string GetQueryFilter(string company, IDictionary<string, object> filter)
+	{
+		StringBuilder query = new();
+		_ = query.Append(CultureInfo.InvariantCulture, $"dataAreaId eq '{company}'");
+		foreach (KeyValuePair<string, object> key in filter)
+		{
+			_ = query.Append(CultureInfo.InvariantCulture, $" and {key.Key} eq {GetOdataString(key.Value)}");
+		}
+
+		return query.ToString();
+	}
+
 	private static string GetOdataString(object value)
 	{
 		return value is string s ? $"'{s}'" : Convert.ToString(value, CultureInfo.InvariantCulture) ?? string.Empty;
@@ -300,29 +375,5 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 		Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
 			"Bearer",
 			await _securityContext.AcquireTokenAsync(cancellationToken).ConfigureAwait(false));
-	}
-
-	private string GetEntityFilter(Dictionary<string, object> keys)
-	{
-		StringBuilder filter = new();
-		_ = filter.Append(CultureInfo.InvariantCulture, $"dataAreaId='{_company}'");
-		foreach (KeyValuePair<string, object> key in keys)
-		{
-			_ = filter.Append(CultureInfo.InvariantCulture, $",{key.Key}={GetOdataString(key.Value)}");
-		}
-
-		return filter.ToString();
-	}
-
-	private string GetQueryFilter(IDictionary<string, object> filter)
-	{
-		StringBuilder query = new();
-		_ = query.Append(CultureInfo.InvariantCulture, $"dataAreaId eq '{_company}'");
-		foreach (KeyValuePair<string, object> key in filter)
-		{
-			_ = query.Append(CultureInfo.InvariantCulture, $" and {key.Key} eq {GetOdataString(key.Value)}");
-		}
-
-		return query.ToString();
 	}
 }
