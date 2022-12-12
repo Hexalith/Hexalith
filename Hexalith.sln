@@ -6,15 +6,25 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{45BF37A5-A98F-40C9-A990-79F051A3057B}"
 	ProjectSection(SolutionItems) = preProject
 		src\Core\Directory.Build.props = src\Core\Directory.Build.props
+		src\Core\README.md = src\Core\README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{4BF53A8A-B344-4C1A-AE24-1FC41E2188E9}"
+	ProjectSection(SolutionItems) = preProject
+		src\Core\Common\README.md = src\Core\Common\README.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{AA983AFF-9CBC-4F2A-98E3-3CACA5039C61}"
+	ProjectSection(SolutionItems) = preProject
+		src\Core\Application\README.md = src\Core\Application\README.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{5A9735A3-CEE9-4E50-B2FD-54F0BF402002}"
+	ProjectSection(SolutionItems) = preProject
+		src\Core\Domain\README.md = src\Core\Domain\README.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sales", "Sales", "{2B0C1C79-33D3-47D4-BBCC-B82EF7E1FFEF}"
 EndProject
@@ -54,6 +64,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D2DA3040-462E-4E0E-9CFE-3EA95FA3D014}"
 	ProjectSection(SolutionItems) = preProject
 		src\Directory.Build.props = src\Directory.Build.props
+		src\README.md = src\README.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.Dynamics365FinanceAndOperations", "src\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365FinanceAndOperations\Hexalith.Infrastructure.Dynamics365FinanceAndOperations.csproj", "{7D336592-22DD-45C1-9430-669812D5DC56}"
@@ -89,7 +100,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.Infrastructure.Serialization", "src\Core\Infrastructure\Hexalith.Infrastructure.Serialization\Hexalith.Infrastructure.Serialization.csproj", "{B207766E-3CE0-4DF5-B33B-367C9E8AF4EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.Serialization", "src\Core\Infrastructure\Hexalith.Infrastructure.Serialization\Hexalith.Infrastructure.Serialization.csproj", "{B207766E-3CE0-4DF5-B33B-367C9E8AF4EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -4,11 +4,11 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Tests.Core.Common.Maths;
+namespace Hexalith.Tests.Core.Common.Extensions;
 
 using FluentAssertions;
 
-using Hexalith.Extensions.Maths;
+using Hexalith.Extensions.Helpers;
 
 public class FibonacciTest
 {

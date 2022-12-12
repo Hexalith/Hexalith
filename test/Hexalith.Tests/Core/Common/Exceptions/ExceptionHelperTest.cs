@@ -7,9 +7,7 @@
 namespace Hexalith.Tests.Core.Common.Exceptions;
 
 using FluentAssertions;
-
-using Hexalith.Extensions.Exceptions;
-
+using Hexalith.Extensions.Helpers;
 using System;
 
 public class ExceptionHelperTest

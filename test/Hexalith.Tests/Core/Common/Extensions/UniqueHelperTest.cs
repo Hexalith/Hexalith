@@ -8,7 +8,7 @@ namespace Hexalith.Tests.Core.Common.Extensions;
 
 using FluentAssertions;
 
-using Hexalith.Extensions.Common;
+using Hexalith.Extensions.Helpers;
 
 public class UniqueHelperTest
 {

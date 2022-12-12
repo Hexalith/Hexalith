@@ -4,7 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Extensions.Contracts;
+namespace Hexalith.Extensions.Serialization;
 
 using System;
 

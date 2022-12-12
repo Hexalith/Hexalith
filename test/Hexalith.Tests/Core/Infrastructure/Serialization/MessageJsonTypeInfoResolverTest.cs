@@ -8,7 +8,7 @@ namespace Hexalith.Tests.Core.Infrastructure.Serialization;
 
 using FluentAssertions;
 
-using Hexalith.Extensions.Contracts;
+using Hexalith.Extensions.Serialization;
 using Hexalith.Infrastructure.Serialization;
 
 using System.Runtime.Serialization;

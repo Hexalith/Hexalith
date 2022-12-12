@@ -6,7 +6,7 @@
 
 namespace Hexalith.Infrastructure.Serialization;
 
-using Hexalith.Extensions.Contracts;
+using Hexalith.Extensions.Serialization;
 
 using System.Collections.Generic;
 using System.Linq;

@@ -1,7 +1,8 @@
 # Hexalith
+
 Application blocks based on Dapr
 
--   __Hexalith Framework__: An application framework for building modular, multi-tenant applications on ASP.NET Core and DAPR.
+- __Hexalith Framework__: An application framework for building modular, multi-tenant applications on ASP.NET Core and DAPR.
 
 [![Documentation Status](https://readthedocs.org/projects/hexalith/badge/?version=latest)](https://hexalith.readthedocs.io/en/latest/)
 
@@ -44,20 +45,20 @@ Here is a more detailed [roadmap](https://github.com/Hexalith/Hexalith/wiki/Road
 
 ## Getting Started
 
--   Clone the repository using the command `git clone https://github.com/Hexalith/Hexalith.git` and checkout the `main` branch.
+- Clone the repository using the command `git clone https://github.com/Hexalith/Hexalith.git` and checkout the `main` branch.
 
 ### Command line
 
--   Install the latest version of the .NET SDK from this page <https://dotnet.microsoft.com/download>
--   Next, navigate to `./Hexalith/src/Hexalith.Server`.
--   Call `dotnet run`.
--   Then open the `http://localhost:5000` URL in your browser.
+- Install the latest version of the .NET SDK from this page <https://dotnet.microsoft.com/download>
+- Next, navigate to `./Hexalith/src/Hexalith.Server`.
+- Call `dotnet run`.
+- Then open the `http://localhost:5000` URL in your browser.
 
 ### Visual Studio
 
--   Download Visual Studio 2022 (any edition) from https://www.visualstudio.com/downloads/
--   Open `Hexalith.sln` and wait for Visual Studio to restore all Nuget packages
--   Ensure `Hexalith.Server` is the startup project and run it
+- Download Visual Studio 2022 (any edition) from https://www.visualstudio.com/downloads/
+- Open `Hexalith.sln` and wait for Visual Studio to restore all Nuget packages
+- Ensure `Hexalith.Server` is the startup project and run it
 
 ### Documentation
 

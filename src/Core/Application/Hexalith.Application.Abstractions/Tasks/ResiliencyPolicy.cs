@@ -6,7 +6,7 @@
 
 namespace Hexalith.Application.Abstractions.Tasks;
 
-using Hexalith.Extensions.Maths;
+using Hexalith.Extensions.Helpers;
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
