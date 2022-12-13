@@ -12,6 +12,11 @@ namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
 public interface IDynamics365FinanceAndOperationsClient
 {
 	/// <summary>
+	/// Gets the connection default company.
+	/// </summary>
+	string DefaultCompany { get; }
+
+	/// <summary>
 	/// Execute an action on a Dynamics 365 Finance and Operations entity.
 	/// </summary>
 	/// <param name="entityName">Name of the entity.</param>
@@ -142,6 +147,7 @@ public interface IDynamics365FinanceAndOperationsClient
 	/// <param name="cancellationToken">Cancellation token.</param>
 	/// <returns>Http response to the post request.</returns>
 	Task<TEntity> PostAsync<TCreate, TEntity>(string entityName, TCreate value, CancellationToken cancellationToken);
+
 	/// <summary>
 	/// Post a new entity object.
 	/// </summary>

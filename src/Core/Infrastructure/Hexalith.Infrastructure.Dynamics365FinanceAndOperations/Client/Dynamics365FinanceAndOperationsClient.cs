@@ -25,9 +25,8 @@ using System.Web;
 /// </summary>
 public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOperationsClient
 {
-	private const string _dataPath = "data";
 	private const string _crossCompanyQuery = "cross-company=true";
-	private readonly string _company;
+	private const string _dataPath = "data";
 	private readonly IHttpClientFactory _httpClientFactory;
 	private readonly Uri _instance;
 	private readonly ILogger<Dynamics365FinanceAndOperationsClient> _logger;
@@ -70,9 +69,15 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 				nameof(settings));
 		}
 
-		_company = s.Company;
+		DefaultCompany = s.Company;
 		_instance = s.Instance;
 	}
+
+	/// <inheritdoc/>
+	public string DefaultCompany { get; }
+
+	/// <inheritdoc/>
+	string IDynamics365FinanceAndOperationsClient.DefaultCompany { get; }
 
 	private HttpClient Client => _client ??= _httpClientFactory.CreateClient();
 
@@ -86,13 +91,13 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 	/// <inheritdoc/>
 	public Task<IEnumerable<T>> GetAsync<T>(string entityName, IDictionary<string, object> filter, CancellationToken cancellationToken)
 	{
-		return GetAsync<T>(entityName, _company, filter, cancellationToken);
+		return GetAsync<T>(entityName, DefaultCompany, filter, cancellationToken);
 	}
 
 	/// <inheritdoc/>
 	public async Task<IEnumerable<T>> GetAsync<T>(string entityName, string company, IDictionary<string, object> filter, CancellationToken cancellationToken)
 	{
-		string crossCompany = string.Equals(_company, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : _crossCompanyQuery + "&";
+		string crossCompany = string.Equals(DefaultCompany, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : _crossCompanyQuery + "&";
 		await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
 		Uri url = new(_instance, $"{_dataPath}/{entityName}/?{crossCompany}$filter={HttpUtility.UrlEncode(GetQueryFilter(company, filter))}");
 		HttpResponseMessage? response = null;
@@ -136,13 +141,13 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 	/// <inheritdoc/>
 	public Task<T> GetSingleAsync<T>(string entityName, IDictionary<string, object> keys, CancellationToken cancellationToken)
 	{
-		return GetSingleAsync<T>(entityName, _company, keys, cancellationToken);
+		return GetSingleAsync<T>(entityName, DefaultCompany, keys, cancellationToken);
 	}
 
 	/// <inheritdoc/>
 	public async Task<T> GetSingleAsync<T>(string entityName, string company, IDictionary<string, object> keys, CancellationToken cancellationToken)
 	{
-		string crossCompany = string.Equals(_company, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : "?" + _crossCompanyQuery;
+		string crossCompany = string.Equals(DefaultCompany, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : "?" + _crossCompanyQuery;
 		await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
 		string keyFilter = GetEntityFilter(company, keys);
 		Uri url = new(_instance, $"{_dataPath}/{entityName}({HttpUtility.UrlEncode(keyFilter)}){crossCompany}");
@@ -192,7 +197,7 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 		TCreate value,
 		CancellationToken cancellationToken)
 	{
-		return PatchAsync<TCreate, TEntity>(entityName, _company, key, value, cancellationToken);
+		return PatchAsync<TCreate, TEntity>(entityName, DefaultCompany, key, value, cancellationToken);
 	}
 
 	/// <inheritdoc/>
@@ -222,7 +227,7 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 		T value,
 		CancellationToken cancellationToken)
 	{
-		return PatchAsync<T>(entityName, _company, key, value, cancellationToken);
+		return PatchAsync<T>(entityName, DefaultCompany, key, value, cancellationToken);
 	}
 
 	/// <inheritdoc/>
@@ -233,7 +238,7 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 		T value,
 		CancellationToken cancellationToken)
 	{
-		string crossCompany = string.Equals(_company, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : "?" + _crossCompanyQuery;
+		string crossCompany = string.Equals(DefaultCompany, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : "?" + _crossCompanyQuery;
 		await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
 		Uri url = new(_instance, $"{_dataPath}/{entityName}({HttpUtility.UrlEncode(GetEntityFilter(company, key))}){crossCompany}");
 		HttpResponseMessage? response = null;
@@ -273,7 +278,7 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 	/// <inheritdoc/>
 	public Task<TEntity> PostAsync<TCreate, TEntity>(string entityName, TCreate value, CancellationToken cancellationToken)
 	{
-		return PostAsync<TCreate, TEntity>(entityName, _company, value, cancellationToken);
+		return PostAsync<TCreate, TEntity>(entityName, DefaultCompany, value, cancellationToken);
 	}
 
 	/// <inheritdoc/>
@@ -294,13 +299,13 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 	/// <inheritdoc/>
 	public Task<HttpResponseMessage> PostAsync<T>(string entityName, T value, CancellationToken cancellationToken)
 	{
-		return PostAsync<T>(entityName, _company, value, cancellationToken);
+		return PostAsync<T>(entityName, DefaultCompany, value, cancellationToken);
 	}
 
 	/// <inheritdoc/>
 	public async Task<HttpResponseMessage> PostAsync<T>(string entityName, string company, T value, CancellationToken cancellationToken)
 	{
-		string crossCompany = string.Equals(_company, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : "/?" + _crossCompanyQuery;
+		string crossCompany = string.Equals(DefaultCompany, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : "/?" + _crossCompanyQuery;
 		await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
 		Uri url = new(_instance, $"{_dataPath}/{entityName}{crossCompany}");
 		HttpResponseMessage? response = null;
@@ -347,6 +352,11 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 		return filter.ToString();
 	}
 
+	private static string GetOdataString(object value)
+	{
+		return value is string s ? $"'{s}'" : Convert.ToString(value, CultureInfo.InvariantCulture) ?? string.Empty;
+	}
+
 	private static string GetQueryFilter(string company, IDictionary<string, object> filter)
 	{
 		StringBuilder query = new();
@@ -357,11 +367,6 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 		}
 
 		return query.ToString();
-	}
-
-	private static string GetOdataString(object value)
-	{
-		return value is string s ? $"'{s}'" : Convert.ToString(value, CultureInfo.InvariantCulture) ?? string.Empty;
 	}
 
 	private async Task AddRequestHeadersAsync(CancellationToken cancellationToken)
