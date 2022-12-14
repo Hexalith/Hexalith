@@ -1,10 +1,4 @@
-﻿// <copyright file="BaseMessage.cs" company="Fiveforty SAS Paris France">
-//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
-// </copyright>
-
-/*
+﻿/*
  * <Your-Product-Name>
  * Copyright (c) <Year-From>-<Year-To> <Your-Company-Name>
  *
@@ -14,15 +8,23 @@
 
 namespace Hexalith.Domain.Abstractions.Messages;
 
+using Hexalith.Extensions.Serialization;
+
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 /// <summary>
 /// Base class for messages.
 /// </summary>
+[JsonPolymorphicBaseClass]
 [DataContract]
 public abstract record BaseMessage : IMessage
 {
+	/// <summary>
+	/// Default string used for separating natural keys to compose the aggragate identifier.
+	/// </summary>
+	protected const string Separator = "-";
+
 	/// <inheritdoc/>
 	[IgnoreDataMember]
 	[JsonIgnore]
