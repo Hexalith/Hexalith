@@ -4,6 +4,14 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
+/*
+ * <Your-Product-Name>
+ * Copyright (c) <Year-From>-<Year-To> <Your-Company-Name>
+ *
+ * Please configure this header in your SonarCloud/SonarQube quality profile.
+ * You can also set it in SonarLint.xml additional file for SonarLint or standalone NuGet analyzer.
+ */
+
 namespace Hexalith.Domain.Abstractions.Events;
 
 using Hexalith.Domain.Abstractions.Messages;
@@ -14,6 +22,6 @@ using System.Runtime.Serialization;
 /// Base class for business events.
 /// </summary>
 [DataContract]
-public abstract class BaseEvent : Message, IEvent
+public abstract record BaseEvent : BaseMessage, IEvent
 {
 }

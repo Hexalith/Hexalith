@@ -1,8 +1,16 @@
-﻿// <copyright file="Message.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="BaseMessage.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
+
+/*
+ * <Your-Product-Name>
+ * Copyright (c) <Year-From>-<Year-To> <Your-Company-Name>
+ *
+ * Please configure this header in your SonarCloud/SonarQube quality profile.
+ * You can also set it in SonarLint.xml additional file for SonarLint or standalone NuGet analyzer.
+ */
 
 namespace Hexalith.Domain.Abstractions.Messages;
 
@@ -13,50 +21,50 @@ using System.Text.Json.Serialization;
 /// Base class for messages.
 /// </summary>
 [DataContract]
-public abstract class Message : IMessage
+public abstract record BaseMessage : IMessage
 {
 	/// <inheritdoc/>
 	[IgnoreDataMember]
 	[JsonIgnore]
-	public string AggregateId => GetAggregateId();
+	public string AggregateId => DefaultAggregateId();
 
 	/// <inheritdoc/>
 	[IgnoreDataMember]
 	[JsonIgnore]
-	public string AggregateName => GetAggregateName();
+	public string AggregateName => DefaultAggregateName();
 
 	/// <inheritdoc/>
 	[IgnoreDataMember]
 	[JsonIgnore]
-	public int MajorVersion => GetMajorVersion();
+	public int MajorVersion => DefaultMajorVersion();
 
 	/// <inheritdoc/>
 	[IgnoreDataMember]
 	[JsonIgnore]
-	public string MessageName => GetMessageName();
+	public string MessageName => DefaultMessageName();
 
 	/// <inheritdoc/>
 	[IgnoreDataMember]
 	[JsonIgnore]
-	public int MinorVersion => GetMinorVersion();
+	public int MinorVersion => DefaultMinorVersion();
 
 	/// <summary>
 	/// Get the aggregate identifier.
 	/// </summary>
 	/// <returns>The identifier.</returns>
-	protected abstract string GetAggregateId();
+	protected abstract string DefaultAggregateId();
 
 	/// <summary>
 	/// Get the aggregate name.
 	/// </summary>
 	/// <returns>The name.</returns>
-	protected abstract string GetAggregateName();
+	protected abstract string DefaultAggregateName();
 
 	/// <summary>
 	/// Get the message major version.
 	/// </summary>
 	/// <returns>The major version.</returns>
-	protected virtual int GetMajorVersion()
+	protected virtual int DefaultMajorVersion()
 	{
 		return 0;
 	}
@@ -65,13 +73,13 @@ public abstract class Message : IMessage
 	/// Get the message name.
 	/// </summary>
 	/// <returns>The name.</returns>
-	protected abstract string GetMessageName();
+	protected abstract string DefaultMessageName();
 
 	/// <summary>
 	/// Gets the message minor version.
 	/// </summary>
 	/// <returns>The minor version.</returns>
-	protected virtual int GetMinorVersion()
+	protected virtual int DefaultMinorVersion()
 	{
 		return 0;
 	}

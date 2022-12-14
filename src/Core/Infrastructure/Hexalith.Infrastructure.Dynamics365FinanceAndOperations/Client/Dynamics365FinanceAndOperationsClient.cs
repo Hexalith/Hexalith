@@ -1,10 +1,14 @@
-﻿// <copyright file="Dynamics365FinanceAndOperationsClient.cs" company="Fiveforty SAS Paris France">
-//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
-// </copyright>
+﻿/*
+ * <Your-Product-Name>
+ * Copyright (c) <Year-From>-<Year-To> <Your-Company-Name>
+ *
+ * Please configure this header in your SonarCloud/SonarQube quality profile.
+ * You can also set it in SonarLint.xml additional file for SonarLint or standalone NuGet analyzer.
+ */
 
 namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
+
+using Ardalis.GuardClauses;
 
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Configurations;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
@@ -46,15 +50,11 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 		IOptions<Dynamics365FinanceAndOperationsClientSettings> settings,
 		ILogger<Dynamics365FinanceAndOperationsClient> logger)
 	{
-		if (settings == null)
-		{
-			throw new ArgumentNullException(nameof(settings));
-		}
+		Dynamics365FinanceAndOperationsClientSettings s = Guard.Against.Null(settings).Value;
 
-		Dynamics365FinanceAndOperationsClientSettings s = settings.Value;
-		_httpClientFactory = httpClientFactory;
-		_securityContext = securityContext;
-		_logger = logger ?? throw new ArgumentNullException(nameof(logger));
+		_httpClientFactory = Guard.Against.Null(httpClientFactory);
+		_securityContext = Guard.Against.Null(securityContext);
+		_logger = Guard.Against.Null(logger);
 		if (string.IsNullOrWhiteSpace(s.Instance?.OriginalString))
 		{
 			throw new ArgumentException(
@@ -169,7 +169,7 @@ public class Dynamics365FinanceAndOperationsClient : IDynamics365FinanceAndOpera
 						PropertyNameCaseInsensitive = true,
 					},
 					cancellationToken).ConfigureAwait(false);
-			if (content == null)
+			if (object.Equals(content, default(T)))
 			{
 				throw new HttpRequestException($"Empty content response on request to '{url.AbsoluteUri}'.");
 			}
