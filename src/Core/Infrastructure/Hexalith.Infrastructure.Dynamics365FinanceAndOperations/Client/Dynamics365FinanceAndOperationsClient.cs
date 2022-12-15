@@ -188,7 +188,7 @@ public class Dynamics365FinanceAndOperationsClient<TODataElement> : IDynamics365
     }
 
     /// <inheritdoc/>
-    public Task<TODataElement> PatchAsync<TUpdate>(
+    public Task PatchAsync<TUpdate>(
         IDictionary<string, object> key,
         TUpdate value,
         CancellationToken cancellationToken)
@@ -197,22 +197,13 @@ public class Dynamics365FinanceAndOperationsClient<TODataElement> : IDynamics365
     }
 
     /// <inheritdoc/>
-    public async Task<TODataElement> PatchAsync<TUpdate>(
+    public async Task PatchAsync<TUpdate>(
         string company,
         IDictionary<string, object> key,
         TUpdate value,
         CancellationToken cancellationToken)
     {
-        HttpResponseMessage response = await SendPatchAsync(key, value, cancellationToken).ConfigureAwait(false);
-        TODataElement? v = await response
-            .Content
-            .ReadFromJsonAsync<TODataElement>(
-                new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true,
-                },
-                cancellationToken).ConfigureAwait(false);
-        return v ?? throw new HttpRequestException($"Empty content response on request to '{response.RequestMessage?.RequestUri?.AbsoluteUri}'.");
+        _ = await SendPatchAsync(key, value, cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -276,14 +267,13 @@ public class Dynamics365FinanceAndOperationsClient<TODataElement> : IDynamics365
                 return response;
             }
 
-            throw new HttpRequestException(
-                $"The patch request '{url.AbsoluteUri}' failed with status code '{response.StatusCode}'. Response:\n"
-                + await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false));
+            throw new HttpRequestException($"The patch request failed with status code '{response.StatusCode}'.");
         }
-        catch
+        catch (Exception e)
         {
             _logger.LogError(
-                "The method call to '{Path}' failed. response content :\n{ResponseContent}",
+                e,
+                "The method call to '{Path}' failed. Response content :\n{ResponseContent}",
                 url.AbsoluteUri,
                 response == null ? "No response" : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false));
             throw;

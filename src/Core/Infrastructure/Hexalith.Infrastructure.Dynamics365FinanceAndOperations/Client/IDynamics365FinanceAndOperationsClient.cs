@@ -77,7 +77,7 @@ public interface IDynamics365FinanceAndOperationsClient<TODataElement>
     /// <param name="value">Values to update.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>The entity valued task.</returns>
-    Task<TODataElement> PatchAsync<TUpdate>(IDictionary<string, object> key, TUpdate value, CancellationToken cancellationToken);
+    Task PatchAsync<TUpdate>(IDictionary<string, object> key, TUpdate value, CancellationToken cancellationToken);
 
     /// <summary>
     /// Patch an entity object.
@@ -88,7 +88,7 @@ public interface IDynamics365FinanceAndOperationsClient<TODataElement>
     /// <param name="value">Values to update.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>The entity valued task.</returns>
-    Task<TODataElement> PatchAsync<TUpdate>(string company, IDictionary<string, object> key, TUpdate value, CancellationToken cancellationToken);
+    Task PatchAsync<TUpdate>(string company, IDictionary<string, object> key, TUpdate value, CancellationToken cancellationToken);
 
     /// <summary>
     /// Post a new entity object.

@@ -12,6 +12,8 @@ using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Configurations;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks;
 
+using System.Text.Json;
+
 public class Dynamics365FinanceAndOperationsClientTest
 {
     [Fact]
@@ -46,5 +48,31 @@ public class Dynamics365FinanceAndOperationsClientTest
         _ = result.Message.Should().Be(message);
         _ = result.DataAreaId.Should().Be(company);
         _ = result.Etag.Should().Be(etag);
+    }
+
+    [Fact]
+    public async Task Patch_should_succeedAsync()
+    {
+        Dynamics365FinanceAndOperationsClientSettings settings = new()
+        {
+            Company = "CIE",
+            Instance = new Uri("https://test.dynamics.com"),
+        };
+        DummyEntity dummy = new("123etag123", "CIE", "Hello world");
+
+        Dynamics365FinanceAndOperationsClientBuilder<DummyEntity> builder = new();
+        _ = builder.Settings.WithValue(settings);
+        _ = builder.HttpClientfactory.SetMockHttpMessageHandler(JsonSerializer.Serialize(dummy));
+        IDynamics365FinanceAndOperationsClient<DummyEntity> client = builder.Build();
+        DummyEntity patched = await client.PatchAsync(
+            new Dictionary<string, object>(
+            StringComparer.Ordinal)
+            { { "id", "3525" } },
+            dummy,
+            CancellationToken.None);
+        _ = patched.Should().NotBeNull();
+        _ = patched.DataAreaId.Should().Be(dummy.DataAreaId);
+        _ = patched.Etag.Should().Be(dummy.Etag);
+        _ = patched.Message.Should().Be(dummy.Message);
     }
 }
