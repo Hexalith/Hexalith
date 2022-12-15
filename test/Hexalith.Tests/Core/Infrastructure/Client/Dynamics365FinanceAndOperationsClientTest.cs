@@ -17,7 +17,7 @@ using System.Text.Json;
 public class Dynamics365FinanceAndOperationsClientTest
 {
     [Fact]
-    public async Task Get_should_return_helloAsync()
+    public async Task Get_should_return_hello()
     {
         Dynamics365FinanceAndOperationsClientSettings settings = new()
         {
@@ -51,7 +51,7 @@ public class Dynamics365FinanceAndOperationsClientTest
     }
 
     [Fact]
-    public async Task Patch_should_succeedAsync()
+    public async Task Patch_should_succeed()
     {
         Dynamics365FinanceAndOperationsClientSettings settings = new()
         {
@@ -64,15 +64,12 @@ public class Dynamics365FinanceAndOperationsClientTest
         _ = builder.Settings.WithValue(settings);
         _ = builder.HttpClientfactory.SetMockHttpMessageHandler(JsonSerializer.Serialize(dummy));
         IDynamics365FinanceAndOperationsClient<DummyEntity> client = builder.Build();
-        DummyEntity patched = await client.PatchAsync(
+        HttpResponseMessage response = await client.SendPatchAsync(
             new Dictionary<string, object>(
             StringComparer.Ordinal)
             { { "id", "3525" } },
             dummy,
             CancellationToken.None);
-        _ = patched.Should().NotBeNull();
-        _ = patched.DataAreaId.Should().Be(dummy.DataAreaId);
-        _ = patched.Etag.Should().Be(dummy.Etag);
-        _ = patched.Message.Should().Be(dummy.Message);
+        _ = response.IsSuccessStatusCode.Should().BeTrue();
     }
 }
