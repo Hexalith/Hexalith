@@ -4,20 +4,16 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-/*
- * <Your-Product-Name>
- * Copyright (c) <Year-From>-<Year-To> <Your-Company-Name>
- *
- * Please configure this header in your SonarCloud/SonarQube quality profile.
- * You can also set it in SonarLint.xml additional file for SonarLint or standalone NuGet analyzer.
- */
-
 namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
+
+using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 
 /// <summary>
 /// Dynamics 365 Finance and Operations client interface.
 /// </summary>
-public interface IDynamics365FinanceAndOperationsClient
+/// <typeparam name="TODataElement">The entity record type.</typeparam>
+public interface IDynamics365FinanceAndOperationsClient<TODataElement>
+    where TODataElement : IODataElement
 {
     /// <summary>
     /// Gets the connection default company.
@@ -30,144 +26,126 @@ public interface IDynamics365FinanceAndOperationsClient
     /// <summary>
     /// Execute an action on a Dynamics 365 Finance and Operations entity.
     /// </summary>
-    /// <param name="entityName">Name of the entity.</param>
     /// <param name="action">Action name.</param>
     /// <param name="parameters">Action parameters.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>Task.</returns>
-    Task DoActionAsync(string entityName, string action, IDictionary<string, object> parameters, CancellationToken cancellationToken);
+    Task DoActionAsync(string action, IDictionary<string, object> parameters, CancellationToken cancellationToken);
 
     /// <summary>
     /// Get a filtered entity object.
     /// </summary>
-    /// <typeparam name="T">Type of the entity model.</typeparam>
-    /// <param name="entityName">Name of the entity.</param>
     /// <param name="company">Company identifier.</param>
     /// <param name="filter">Filter values.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>List of entity objects.</returns>
-    Task<IEnumerable<T>> GetAsync<T>(string entityName, string company, IDictionary<string, object> filter, CancellationToken cancellationToken);
+    Task<IEnumerable<TODataElement>> GetAsync(string company, IDictionary<string, object> filter, CancellationToken cancellationToken);
 
     /// <summary>
     /// Get a filtered entity object list.
     /// </summary>
     /// <typeparam name="T">Type of the entity model.</typeparam>
-    /// <param name="entityName">Name of the entity.</param>
     /// <param name="filter">Filter values.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>List of entity objects.</returns>
-    Task<IEnumerable<T>> GetAsync<T>(string entityName, IDictionary<string, object> filter, CancellationToken cancellationToken);
+    Task<IEnumerable<TODataElement>> GetAsync(IDictionary<string, object> filter, CancellationToken cancellationToken);
 
     /// <summary>
     /// Get entity object by it's primary key.
     /// </summary>
     /// <typeparam name="T">Type of the read entity model.</typeparam>
-    /// <param name="entityName">Name of the entity.</param>
     /// <param name="keys">Primary key values.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>Entity object.</returns>
-    Task<T> GetSingleAsync<T>(string entityName, IDictionary<string, object> keys, CancellationToken cancellationToken);
+    Task<TODataElement> GetSingleAsync(IDictionary<string, object> keys, CancellationToken cancellationToken);
 
     /// <summary>
     /// Get entity object by it's primary key.
     /// </summary>
     /// <typeparam name="T">Type of the read entity model.</typeparam>
-    /// <param name="entityName">Name of the entity.</param>
     /// <param name="company">Company identifier.</param>
     /// <param name="keys">Primary key values.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>Entity object.</returns>
-    Task<T> GetSingleAsync<T>(string entityName, string company, IDictionary<string, object> keys, CancellationToken cancellationToken);
+    Task<TODataElement> GetSingleAsync(string company, IDictionary<string, object> keys, CancellationToken cancellationToken);
 
     /// <summary>
     /// Patch an entity object.
     /// </summary>
     /// <typeparam name="TUpdate">Type of the update entity model.</typeparam>
-    /// <param name="entityName">Name of the entity.</param>
-    /// <param name="company">Company identifier.</param>
-    /// <param name="key">Primary key values.</param>
-    /// <param name="value">Values to update.</param>
-    /// <param name="cancellationToken">Cancellation token.</param>
-    /// <returns>The response message valued task.</returns>
-    Task<HttpResponseMessage> PatchAsync<TUpdate>(string entityName, string company, IDictionary<string, object> key, TUpdate value, CancellationToken cancellationToken);
-
-    /// <summary>
-    /// Patch an entity object.
-    /// </summary>
-    /// <typeparam name="TUpdate">Type of the update entity model.</typeparam>
-    /// <param name="entityName">Name of the entity.</param>
-    /// <param name="key">Primary key values.</param>
-    /// <param name="value">Values to update.</param>
-    /// <param name="cancellationToken">Cancellation token.</param>
-    /// <returns>The response message valued task.</returns>
-    Task<HttpResponseMessage> PatchAsync<TUpdate>(string entityName, IDictionary<string, object> key, TUpdate value, CancellationToken cancellationToken);
-
-    /// <summary>
-    /// Patch an entity object.
-    /// </summary>
-    /// <typeparam name="TUpdate">Type of the update entity model.</typeparam>
-    /// <typeparam name="TEntity">Type of the return entity model.</typeparam>
-    /// <param name="entityName">Name of the entity.</param>
     /// <param name="key">Primary key values.</param>
     /// <param name="value">Values to update.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>The entity valued task.</returns>
-    Task<TEntity> PatchAsync<TUpdate, TEntity>(string entityName, IDictionary<string, object> key, TUpdate value, CancellationToken cancellationToken);
+    Task<TODataElement> PatchAsync<TUpdate>(IDictionary<string, object> key, TUpdate value, CancellationToken cancellationToken);
 
     /// <summary>
     /// Patch an entity object.
     /// </summary>
     /// <typeparam name="TUpdate">Type of the update entity model.</typeparam>
-    /// <typeparam name="TEntity">Type of the return entity model.</typeparam>
-    /// <param name="entityName">Name of the entity.</param>
     /// <param name="company">Company identifier.</param>
     /// <param name="key">Primary key values.</param>
     /// <param name="value">Values to update.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>The entity valued task.</returns>
-    Task<TEntity> PatchAsync<TUpdate, TEntity>(string entityName, string company, IDictionary<string, object> key, TUpdate value, CancellationToken cancellationToken);
-
-    /// <summary>
-    /// Post a new entity object.
-    /// </summary>
-    /// <typeparam name="T">Type of the create entity model.</typeparam>
-    /// <param name="entityName">Name of the entity.</param>
-    /// <param name="value">New entity value to create.</param>
-    /// <param name="cancellationToken">Cancellation token.</param>
-    /// <returns>Http response to the post request.</returns>
-    Task<HttpResponseMessage> PostAsync<T>(string entityName, T value, CancellationToken cancellationToken);
-
-    /// <summary>
-    /// Post a new entity object.
-    /// </summary>
-    /// <typeparam name="T">Type of the create entity model.</typeparam>
-    /// <param name="entityName">Name of the entity.</param>
-    /// <param name="company">Company identifier.</param>
-    /// <param name="value">New entity value to create.</param>
-    /// <param name="cancellationToken">Cancellation token.</param>
-    /// <returns>Http response to the post request.</returns>
-    Task<HttpResponseMessage> PostAsync<T>(string entityName, string company, T value, CancellationToken cancellationToken);
+    Task<TODataElement> PatchAsync<TUpdate>(string company, IDictionary<string, object> key, TUpdate value, CancellationToken cancellationToken);
 
     /// <summary>
     /// Post a new entity object.
     /// </summary>
     /// <typeparam name="TCreate">Type of the create entity model.</typeparam>
-    /// <typeparam name="TEntity">Type of the read entity model.</typeparam>
-    /// <param name="entityName">Name of the entity.</param>
     /// <param name="value">New entity value to create.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>Http response to the post request.</returns>
-    Task<TEntity> PostAsync<TCreate, TEntity>(string entityName, TCreate value, CancellationToken cancellationToken);
+    Task<TODataElement> PostAsync<TCreate>(TCreate value, CancellationToken cancellationToken);
 
     /// <summary>
     /// Post a new entity object.
     /// </summary>
     /// <typeparam name="TCreate">Type of the create entity model.</typeparam>
-    /// <typeparam name="TEntity">Type of the read entity model.</typeparam>
-    /// <param name="entityName">Name of the entity.</param>
     /// <param name="company">Company identifier.</param>
     /// <param name="value">New entity value to create.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>Http response to the post request.</returns>
-    Task<TEntity> PostAsync<TCreate, TEntity>(string entityName, string company, TCreate value, CancellationToken cancellationToken);
+    Task<TODataElement> PostAsync<TCreate>(string company, TCreate value, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Patch an entity object.
+    /// </summary>
+    /// <typeparam name="TUpdate">Type of the update entity model.</typeparam>
+    /// <param name="company">Company identifier.</param>
+    /// <param name="key">Primary key values.</param>
+    /// <param name="value">Values to update.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    /// <returns>The response message valued task.</returns>
+    Task<HttpResponseMessage> SendPatchAsync<TUpdate>(string company, IDictionary<string, object> key, TUpdate value, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Patch an entity object.
+    /// </summary>
+    /// <typeparam name="TUpdate">Type of the update entity model.</typeparam>
+    /// <param name="key">Primary key values.</param>
+    /// <param name="value">Values to update.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    /// <returns>The response message valued task.</returns>
+    Task<HttpResponseMessage> SendPatchAsync<TUpdate>(IDictionary<string, object> key, TUpdate value, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Post a new entity object.
+    /// </summary>
+    /// <typeparam name="TCreate">Type of the create entity model.</typeparam>
+    /// <param name="value">New entity value to create.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    /// <returns>Http response to the post request.</returns>
+    Task<HttpResponseMessage> SendPostAsync<TCreate>(TCreate value, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Post a new entity object.
+    /// </summary>
+    /// <typeparam name="TCreate">Type of the create entity model.</typeparam>
+    /// <param name="company">Company identifier.</param>
+    /// <param name="value">New entity value to create.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    /// <returns>Http response to the post request.</returns>
+    Task<HttpResponseMessage> SendPostAsync<TCreate>(string company, TCreate value, CancellationToken cancellationToken);
 }

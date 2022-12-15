@@ -8,6 +8,7 @@ namespace Hexalith.Tests.Core.Infrastructure.Client;
 
 using FluentAssertions;
 
+using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Configurations;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks;
 
@@ -16,7 +17,7 @@ public class Dynamics365FinanceAndOperationsClientMockTest
     [Fact]
     public void Build_client_with_mocked_response_should_succeed()
     {
-        Dynamics365FinanceAndOperationsClientBuilder builder = new Dynamics365FinanceAndOperationsClientBuilder()
+        Dynamics365FinanceAndOperationsClientBuilder<DummyEntity> builder = new Dynamics365FinanceAndOperationsClientBuilder<DummyEntity>()
             .WithSettingsValue(new Dynamics365FinanceAndOperationsClientSettings { Company = "CIE", Instance = new Uri("https://test.dynamics.com") });
         _ = builder.HttpClientfactory.SetMockHttpMessageHandler("dummy response");
         _ = builder
@@ -28,9 +29,9 @@ public class Dynamics365FinanceAndOperationsClientMockTest
     [Fact]
     public void Client_with_application_json_settings_should_succeed()
     {
-        Dynamics365FinanceAndOperationsClientBuilder builder = new Dynamics365FinanceAndOperationsClientBuilder()
+        Dynamics365FinanceAndOperationsClientBuilder<DummyEntity> builder = new Dynamics365FinanceAndOperationsClientBuilder<DummyEntity>()
             .WithValueFromConfiguration<Dynamics365FinanceAndOperationsClientMockTest>();
-        Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.IDynamics365FinanceAndOperationsClient result = builder.Build();
+        IDynamics365FinanceAndOperationsClient<DummyEntity> result = builder.Build();
         _ = result.Should().NotBeNull();
     }
 }

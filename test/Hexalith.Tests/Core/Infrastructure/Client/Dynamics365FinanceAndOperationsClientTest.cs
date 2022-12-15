@@ -23,29 +23,28 @@ public class Dynamics365FinanceAndOperationsClientTest
             Instance = new Uri("https://test.dynamics.com"),
         };
         const string message = "Hello world";
+        const string etag = "123etag123";
+        const string company = "CIE";
         const string response =
             $$"""
             {
-                "@odata.context":"hello context",
-                "message":"this is a message",
+                "@odata.etag":"{{etag}}",
+                "dataAreaId":"{{company}}",
                 "Message":"{{message}}"
             }
             """;
-        Dynamics365FinanceAndOperationsClientBuilder builder = new();
+        Dynamics365FinanceAndOperationsClientBuilder<DummyEntity> builder = new();
         _ = builder.Settings.WithValue(settings);
         _ = builder.HttpClientfactory.SetMockHttpMessageHandler(response);
-        IDynamics365FinanceAndOperationsClient client = builder.Build();
-        Hello result = await client.GetSingleAsync<Hello>(
-            "hello",
+        IDynamics365FinanceAndOperationsClient<DummyEntity> client = builder.Build();
+        DummyEntity result = await client.GetSingleAsync(
+            company,
             new Dictionary<string, object>(
             StringComparer.Ordinal)
             { { "id", "3525" } },
             CancellationToken.None);
         _ = result.Message.Should().Be(message);
-    }
-
-    public class Hello
-    {
-        public string? Message { get; init; }
+        _ = result.DataAreaId.Should().Be(company);
+        _ = result.Etag.Should().Be(etag);
     }
 }

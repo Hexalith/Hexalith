@@ -8,17 +8,21 @@ namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks;
 
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Configurations;
+using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 using Hexalith.TestMocks;
 
 using Moq;
 
 /// <summary>
-/// A mock builder for <see cref="Dynamics365FinanceAndOperationsClient"/>.
+/// Dynamics 365 for finance and operations mock build.
 /// </summary>
-public class Dynamics365FinanceAndOperationsClientBuilder : IMockBuilder<IDynamics365FinanceAndOperationsClient>
+/// <typeparam name="TEntity">The type of the Dynamics 365 entity.</typeparam>
+public class Dynamics365FinanceAndOperationsClientBuilder<TEntity> :
+    IMockBuilder<IDynamics365FinanceAndOperationsClient<TEntity>>
+    where TEntity : IODataElement
 {
     private HttpClientFactoryBuilder? _httpClientfactory;
-    private LoggerBuilder<Dynamics365FinanceAndOperationsClient>? _logger;
+    private LoggerBuilder<Dynamics365FinanceAndOperationsClient<TEntity>>? _logger;
     private Dynamics365FinanceAndOperationsSecurityContextBuilder? _securityContext;
     private OptionsBuilder<Dynamics365FinanceAndOperationsClientSettings>? _settings;
 
@@ -30,8 +34,8 @@ public class Dynamics365FinanceAndOperationsClientBuilder : IMockBuilder<IDynami
     /// <summary>
     /// Gets the <see cref="ILogger{Dynamics365FinanceAndOperationsClient}"/> builder configuration.
     /// </summary>
-    public LoggerBuilder<Dynamics365FinanceAndOperationsClient> Logger
-            => _logger ??= new LoggerBuilder<Dynamics365FinanceAndOperationsClient>();
+    public LoggerBuilder<Dynamics365FinanceAndOperationsClient<TEntity>> Logger
+            => _logger ??= new LoggerBuilder<Dynamics365FinanceAndOperationsClient<TEntity>>();
 
     /// <summary>
     /// Gets the <see cref="IDynamics365FinanceAndOperationsSecurityContext"/> builder configuration.
@@ -46,11 +50,11 @@ public class Dynamics365FinanceAndOperationsClientBuilder : IMockBuilder<IDynami
                 => _settings ??= new OptionsBuilder<Dynamics365FinanceAndOperationsClientSettings>();
 
     /// <inheritdoc/>
-    public IDynamics365FinanceAndOperationsClient Build()
+    public IDynamics365FinanceAndOperationsClient<TEntity> Build()
     {
         return _settings is null || !_settings.HasValue
             ? BuildMock().Object
-            : new Dynamics365FinanceAndOperationsClient(
+            : new Dynamics365FinanceAndOperationsClient<TEntity>(
                 HttpClientfactory.Build(),
                 SecurityContext.Build(),
                 Settings.Build(),
@@ -58,9 +62,9 @@ public class Dynamics365FinanceAndOperationsClientBuilder : IMockBuilder<IDynami
     }
 
     /// <inheritdoc/>
-    public IMock<IDynamics365FinanceAndOperationsClient> BuildMock()
+    public IMock<IDynamics365FinanceAndOperationsClient<TEntity>> BuildMock()
     {
-        Mock<IDynamics365FinanceAndOperationsClient> client = new();
+        Mock<IDynamics365FinanceAndOperationsClient<TEntity>> client = new();
         return client;
     }
 
@@ -69,7 +73,7 @@ public class Dynamics365FinanceAndOperationsClientBuilder : IMockBuilder<IDynami
     /// </summary>
     /// <param name="settings">The settings value.</param>
     /// <returns>The client builder.</returns>
-    public Dynamics365FinanceAndOperationsClientBuilder WithSettingsValue(Dynamics365FinanceAndOperationsClientSettings settings)
+    public Dynamics365FinanceAndOperationsClientBuilder<TEntity> WithSettingsValue(Dynamics365FinanceAndOperationsClientSettings settings)
     {
         _ = Settings.WithValue(settings);
         _ = SecurityContext.Settings.WithValue(settings);
@@ -81,7 +85,7 @@ public class Dynamics365FinanceAndOperationsClientBuilder : IMockBuilder<IDynami
     /// </summary>
     /// <typeparam name="TProgram">The test class object to define the assembly used for .NET user secrets.</typeparam>
     /// <returns>The client builder.</returns>
-    public Dynamics365FinanceAndOperationsClientBuilder WithValueFromConfiguration<TProgram>()
+    public Dynamics365FinanceAndOperationsClientBuilder<TEntity> WithValueFromConfiguration<TProgram>()
         where TProgram : class
     {
         _ = Settings.WithValueFromConfiguration<TProgram>();

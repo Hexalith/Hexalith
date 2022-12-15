@@ -4,19 +4,10 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-/*
- * <Your-Product-Name>
- * Copyright (c) <Year-From>-<Year-To> <Your-Company-Name>
- *
- * Please configure this header in your SonarCloud/SonarQube quality profile.
- * You can also set it in SonarLint.xml additional file for SonarLint or standalone NuGet analyzer.
- */
-
 namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Configurations;
 
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.AzureActiveDirectory.Configurations;
-using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
 
 /// <summary>
 /// Dynamics 365 Finance and Operations simple ODATA Client.
@@ -53,6 +44,6 @@ public class Dynamics365FinanceAndOperationsClientSettings : ISettings
     /// <returns>The name.</returns>
     public static string ConfigurationName()
     {
-        return nameof(Dynamics365FinanceAndOperationsClient);
+        return nameof(Dynamics365FinanceAndOperations);
     }
 }
