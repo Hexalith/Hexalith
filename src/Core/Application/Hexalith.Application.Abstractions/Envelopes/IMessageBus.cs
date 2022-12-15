@@ -11,13 +11,13 @@ namespace Hexalith.Application.Abstractions.Envelopes;
 /// </summary>
 /// <typeparam name="TEnvelope">The message type.</typeparam>
 public interface IMessageBus<in TEnvelope>
-	where TEnvelope : IEnvelope
+    where TEnvelope : IEnvelope
 {
-	/// <summary>
-	/// Publish a message.
-	/// </summary>
-	/// <param name="envelope">The envelope to send.</param>
-	/// <param name="cancellationToken">The cancellation token.</param>
-	/// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
-	Task PublishAsync(TEnvelope envelope, CancellationToken cancellationToken);
+    /// <summary>
+    /// Publish a message.
+    /// </summary>
+    /// <param name="envelope">The envelope to send.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+    Task PublishAsync(TEnvelope envelope, CancellationToken cancellationToken);
 }

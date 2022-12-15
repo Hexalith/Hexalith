@@ -4,6 +4,14 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
+/*
+ * <Your-Product-Name>
+ * Copyright (c) <Year-From>-<Year-To> <Your-Company-Name>
+ *
+ * Please configure this header in your SonarCloud/SonarQube quality profile.
+ * You can also set it in SonarLint.xml additional file for SonarLint or standalone NuGet analyzer.
+ */
+
 namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Security;
 
 using Hexalith.Infrastructure.Security.Abstractions;
@@ -13,10 +21,10 @@ using Hexalith.Infrastructure.Security.Abstractions;
 /// </summary>
 public interface IDynamics365FinanceAndOperationsSecurityContext : IApplicationSecurityContext
 {
-	/// <summary>
-	/// Acquire a new token with default Dynamics 365 Finance and Operations scopes.
-	/// </summary>
-	/// <param name="cancellationToken">Cancellation token.</param>
-	/// <returns>The Dynamics 365 security token.</returns>
-	Task<string> AcquireTokenAsync(CancellationToken cancellationToken);
+    /// <summary>
+    /// Acquire a new token with default Dynamics 365 Finance and Operations scopes.
+    /// </summary>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    /// <returns>The Dynamics 365 security token.</returns>
+    Task<string> AcquireTokenAsync(CancellationToken cancellationToken);
 }

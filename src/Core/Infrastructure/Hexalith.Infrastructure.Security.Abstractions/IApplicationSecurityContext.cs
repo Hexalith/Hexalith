@@ -11,11 +11,11 @@ namespace Hexalith.Infrastructure.Security.Abstractions;
 /// </summary>
 public interface IApplicationSecurityContext
 {
-	/// <summary>
-	/// Gets the application security token.
-	/// </summary>
-	/// <param name="scopes">Security scopes.</param>
-	/// <param name="cancellationToken">Cancellation token.</param>
-	/// <returns>The access token.</returns>
-	Task<string> AcquireTokenAsync(string[] scopes, CancellationToken cancellationToken);
+    /// <summary>
+    /// Gets the application security token.
+    /// </summary>
+    /// <param name="scopes">Security scopes.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    /// <returns>The access token.</returns>
+    Task<string> AcquireTokenAsync(string[] scopes, CancellationToken cancellationToken);
 }

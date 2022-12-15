@@ -17,50 +17,50 @@ using Moq;
 /// </summary>
 public class Dynamics365FinanceAndOperationsSecurityContextBuilder
 {
-	private LoggerBuilder<Dynamics365FinanceAndOperationsSecurityContext>? _logger = null;
-	private OptionsBuilder<Dynamics365FinanceAndOperationsClientSettings>? _settings = null;
+    private LoggerBuilder<Dynamics365FinanceAndOperationsSecurityContext>? _logger;
+    private OptionsBuilder<Dynamics365FinanceAndOperationsClientSettings>? _settings;
 
-	/// <summary>
-	/// Gets logger to configure.
-	/// </summary>
-	public LoggerBuilder<Dynamics365FinanceAndOperationsSecurityContext> Logger
-		=> _logger ??= new LoggerBuilder<Dynamics365FinanceAndOperationsSecurityContext>();
+    /// <summary>
+    /// Gets logger to configure.
+    /// </summary>
+    public LoggerBuilder<Dynamics365FinanceAndOperationsSecurityContext> Logger
+        => _logger ??= new LoggerBuilder<Dynamics365FinanceAndOperationsSecurityContext>();
 
-	/// <summary>
-	/// Gets the settings to configure.
-	/// </summary>
-	public OptionsBuilder<Dynamics365FinanceAndOperationsClientSettings> Settings
-			=> _settings ??= new OptionsBuilder<Dynamics365FinanceAndOperationsClientSettings>();
+    /// <summary>
+    /// Gets the settings to configure.
+    /// </summary>
+    public OptionsBuilder<Dynamics365FinanceAndOperationsClientSettings> Settings
+            => _settings ??= new OptionsBuilder<Dynamics365FinanceAndOperationsClientSettings>();
 
-	/// <summary>
-	/// Build a Mock object.
-	/// </summary>
-	/// <returns>Security context mock.</returns>
-	public static Mock<IDynamics365FinanceAndOperationsSecurityContext> BuildMock()
-	{
-		Mock<IDynamics365FinanceAndOperationsSecurityContext> security = new();
-		_ = security
-			.Setup(x => x.AcquireTokenAsync(It.IsAny<CancellationToken>()))
-			.ReturnsAsync("token");
-		return security;
-	}
+    /// <summary>
+    /// Build a Mock object.
+    /// </summary>
+    /// <returns>Security context mock.</returns>
+    public static Mock<IDynamics365FinanceAndOperationsSecurityContext> BuildMock()
+    {
+        Mock<IDynamics365FinanceAndOperationsSecurityContext> security = new();
+        _ = security
+            .Setup(x => x.AcquireTokenAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync("token");
+        return security;
+    }
 
-	/// <summary>
-	/// Build the security context with mocked injected dependencies.
-	/// </summary>
-	/// <returns>Security context mock.</returns>
-	public IDynamics365FinanceAndOperationsSecurityContext Build()
-	{
-		if (_settings is null || !_settings.HasValue)
-		{
-			return BuildMock().Object;
-		}
+    /// <summary>
+    /// Build the security context with mocked injected dependencies.
+    /// </summary>
+    /// <returns>Security context mock.</returns>
+    public IDynamics365FinanceAndOperationsSecurityContext Build()
+    {
+        if (_settings is null || !_settings.HasValue)
+        {
+            return BuildMock().Object;
+        }
 
-		Microsoft.Extensions.Options.IOptions<Dynamics365FinanceAndOperationsClientSettings> settings = Settings.Build();
-		return (settings.Value.Identity == null)
-			? BuildMock().Object
-			: new Dynamics365FinanceAndOperationsSecurityContext(
-			Settings.Build(),
-			Logger.Build());
-	}
+        Microsoft.Extensions.Options.IOptions<Dynamics365FinanceAndOperationsClientSettings> settings = Settings.Build();
+        return (settings.Value.Identity == null)
+            ? BuildMock().Object
+            : new Dynamics365FinanceAndOperationsSecurityContext(
+            Settings.Build(),
+            Logger.Build());
+    }
 }

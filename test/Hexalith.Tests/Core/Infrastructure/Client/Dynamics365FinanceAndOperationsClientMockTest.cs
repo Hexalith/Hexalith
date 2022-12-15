@@ -13,24 +13,24 @@ using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks;
 
 public class Dynamics365FinanceAndOperationsClientMockTest
 {
-	[Fact]
-	public void Build_client_with_mocked_response_should_succeed()
-	{
-		Dynamics365FinanceAndOperationsClientBuilder builder = new Dynamics365FinanceAndOperationsClientBuilder()
-			.WithSettingsValue(new Dynamics365FinanceAndOperationsClientSettings { Company = "CIE", Instance = new Uri("https://test.dynamics.com") });
-		_ = builder.HttpClientfactory.SetMockHttpMessageHandler("dummy response");
-		_ = builder
-			.Invoking(y => y.Build())
-			.Should()
-			.NotThrow();
-	}
+    [Fact]
+    public void Build_client_with_mocked_response_should_succeed()
+    {
+        Dynamics365FinanceAndOperationsClientBuilder builder = new Dynamics365FinanceAndOperationsClientBuilder()
+            .WithSettingsValue(new Dynamics365FinanceAndOperationsClientSettings { Company = "CIE", Instance = new Uri("https://test.dynamics.com") });
+        _ = builder.HttpClientfactory.SetMockHttpMessageHandler("dummy response");
+        _ = builder
+            .Invoking(y => y.Build())
+            .Should()
+            .NotThrow();
+    }
 
-	[Fact]
-	public void Client_with_application_json_settings_should_succeed()
-	{
-		Dynamics365FinanceAndOperationsClientBuilder builder = new Dynamics365FinanceAndOperationsClientBuilder()
-			.WithValueFromConfiguration<Dynamics365FinanceAndOperationsClientMockTest>();
-		Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.IDynamics365FinanceAndOperationsClient result = builder.Build();
-		_ = result.Should().NotBeNull();
-	}
+    [Fact]
+    public void Client_with_application_json_settings_should_succeed()
+    {
+        Dynamics365FinanceAndOperationsClientBuilder builder = new Dynamics365FinanceAndOperationsClientBuilder()
+            .WithValueFromConfiguration<Dynamics365FinanceAndOperationsClientMockTest>();
+        Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.IDynamics365FinanceAndOperationsClient result = builder.Build();
+        _ = result.Should().NotBeNull();
+    }
 }

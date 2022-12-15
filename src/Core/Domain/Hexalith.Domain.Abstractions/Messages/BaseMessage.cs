@@ -1,10 +1,8 @@
-﻿/*
- * <Your-Product-Name>
- * Copyright (c) <Year-From>-<Year-To> <Your-Company-Name>
- *
- * Please configure this header in your SonarCloud/SonarQube quality profile.
- * You can also set it in SonarLint.xml additional file for SonarLint or standalone NuGet analyzer.
- */
+﻿// <copyright file="BaseMessage.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
 
 namespace Hexalith.Domain.Abstractions.Messages;
 
@@ -20,69 +18,69 @@ using System.Text.Json.Serialization;
 [DataContract]
 public abstract record BaseMessage : IMessage
 {
-	/// <summary>
-	/// Default string used for separating natural keys to compose the aggragate identifier.
-	/// </summary>
-	protected const string Separator = "-";
+    /// <summary>
+    /// Default string used for separating natural keys to compose the aggragate identifier.
+    /// </summary>
+    protected const string Separator = "-";
 
-	/// <inheritdoc/>
-	[IgnoreDataMember]
-	[JsonIgnore]
-	public string AggregateId => DefaultAggregateId();
+    /// <inheritdoc/>
+    [IgnoreDataMember]
+    [JsonIgnore]
+    public string AggregateId => DefaultAggregateId();
 
-	/// <inheritdoc/>
-	[IgnoreDataMember]
-	[JsonIgnore]
-	public string AggregateName => DefaultAggregateName();
+    /// <inheritdoc/>
+    [IgnoreDataMember]
+    [JsonIgnore]
+    public string AggregateName => DefaultAggregateName();
 
-	/// <inheritdoc/>
-	[IgnoreDataMember]
-	[JsonIgnore]
-	public int MajorVersion => DefaultMajorVersion();
+    /// <inheritdoc/>
+    [IgnoreDataMember]
+    [JsonIgnore]
+    public int MajorVersion => DefaultMajorVersion();
 
-	/// <inheritdoc/>
-	[IgnoreDataMember]
-	[JsonIgnore]
-	public string MessageName => DefaultMessageName();
+    /// <inheritdoc/>
+    [IgnoreDataMember]
+    [JsonIgnore]
+    public string MessageName => DefaultMessageName();
 
-	/// <inheritdoc/>
-	[IgnoreDataMember]
-	[JsonIgnore]
-	public int MinorVersion => DefaultMinorVersion();
+    /// <inheritdoc/>
+    [IgnoreDataMember]
+    [JsonIgnore]
+    public int MinorVersion => DefaultMinorVersion();
 
-	/// <summary>
-	/// Get the aggregate identifier.
-	/// </summary>
-	/// <returns>The identifier.</returns>
-	protected abstract string DefaultAggregateId();
+    /// <summary>
+    /// Get the aggregate identifier.
+    /// </summary>
+    /// <returns>The identifier.</returns>
+    protected abstract string DefaultAggregateId();
 
-	/// <summary>
-	/// Get the aggregate name.
-	/// </summary>
-	/// <returns>The name.</returns>
-	protected abstract string DefaultAggregateName();
+    /// <summary>
+    /// Get the aggregate name.
+    /// </summary>
+    /// <returns>The name.</returns>
+    protected abstract string DefaultAggregateName();
 
-	/// <summary>
-	/// Get the message major version.
-	/// </summary>
-	/// <returns>The major version.</returns>
-	protected virtual int DefaultMajorVersion()
-	{
-		return 0;
-	}
+    /// <summary>
+    /// Get the message major version.
+    /// </summary>
+    /// <returns>The major version.</returns>
+    protected virtual int DefaultMajorVersion()
+    {
+        return 0;
+    }
 
-	/// <summary>
-	/// Get the message name.
-	/// </summary>
-	/// <returns>The name.</returns>
-	protected abstract string DefaultMessageName();
+    /// <summary>
+    /// Get the message name.
+    /// </summary>
+    /// <returns>The name.</returns>
+    protected abstract string DefaultMessageName();
 
-	/// <summary>
-	/// Gets the message minor version.
-	/// </summary>
-	/// <returns>The minor version.</returns>
-	protected virtual int DefaultMinorVersion()
-	{
-		return 0;
-	}
+    /// <summary>
+    /// Gets the message minor version.
+    /// </summary>
+    /// <returns>The minor version.</returns>
+    protected virtual int DefaultMinorVersion()
+    {
+        return 0;
+    }
 }

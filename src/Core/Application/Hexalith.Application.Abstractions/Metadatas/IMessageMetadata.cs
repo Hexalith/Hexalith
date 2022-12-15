@@ -11,23 +11,23 @@ namespace Hexalith.Application.Abstractions.Metadatas;
 /// </summary>
 public interface IMessageMetadata
 {
-	/// <summary>
-	/// Gets aggregate metadata.
-	/// </summary>
-	IAggregateMetaData Aggregate { get; }
+    /// <summary>
+    /// Gets aggregate metadata.
+    /// </summary>
+    IAggregateMetaData Aggregate { get; }
 
-	/// <summary>
-	/// Gets the aggregate identifier.
-	/// </summary>
-	string Id { get; }
+    /// <summary>
+    /// Gets the aggregate identifier.
+    /// </summary>
+    string Id { get; }
 
-	/// <summary>
-	/// Gets the aggregate name.
-	/// </summary>
-	string Name { get; }
+    /// <summary>
+    /// Gets the aggregate name.
+    /// </summary>
+    string Name { get; }
 
-	/// <summary>
-	/// Gets the message version.
-	/// </summary>
-	IMessageVersion Version { get; }
+    /// <summary>
+    /// Gets the message version.
+    /// </summary>
+    IMessageVersion Version { get; }
 }

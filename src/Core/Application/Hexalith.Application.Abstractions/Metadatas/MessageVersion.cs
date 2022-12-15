@@ -14,17 +14,17 @@ using System.Text.Json.Serialization;
 /// </summary>
 public class MessageVersion : IMessageVersion
 {
-	/// <summary>
-	/// Gets the major version.
-	/// </summary>
-	[DataMember(Order = 1)]
-	[JsonPropertyOrder(1)]
-	public int Major { get; }
+    /// <summary>
+    /// Gets the major version.
+    /// </summary>
+    [DataMember(Order = 1)]
+    [JsonPropertyOrder(1)]
+    public int Major { get; }
 
-	/// <summary>
-	/// Gets the minor version.
-	/// </summary>
-	[DataMember(Order = 2)]
-	[JsonPropertyOrder(2)]
-	public int Minor { get; }
+    /// <summary>
+    /// Gets the minor version.
+    /// </summary>
+    [DataMember(Order = 2)]
+    [JsonPropertyOrder(2)]
+    public int Minor { get; }
 }

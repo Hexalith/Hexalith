@@ -14,17 +14,17 @@ using Microsoft.Extensions.DependencyInjection;
 /// </summary>
 public static class OptionsHelper
 {
-	/// <summary>
-	/// Configure settings.
-	/// </summary>
-	/// <typeparam name="T">The type of the settings object.</typeparam>
-	/// <param name="services">The service collection.</param>
-	/// <param name="configuration">The configuration instance.</param>
-	/// <returns>The configured service collection.</returns>
-	public static IServiceCollection ConfigureSettings<T>(this IServiceCollection services, IConfiguration configuration)
-		where T : class, ISettings
-	{
-		_ = configuration ?? throw new ArgumentNullException(nameof(configuration));
-		return services.Configure<T>(config: configuration.GetSection(T.ConfigurationName()));
-	}
+    /// <summary>
+    /// Configure settings.
+    /// </summary>
+    /// <typeparam name="T">The type of the settings object.</typeparam>
+    /// <param name="services">The service collection.</param>
+    /// <param name="configuration">The configuration instance.</param>
+    /// <returns>The configured service collection.</returns>
+    public static IServiceCollection ConfigureSettings<T>(this IServiceCollection services, IConfiguration configuration)
+        where T : class, ISettings
+    {
+        _ = configuration ?? throw new ArgumentNullException(nameof(configuration));
+        return services.Configure<T>(config: configuration.GetSection(T.ConfigurationName()));
+    }
 }

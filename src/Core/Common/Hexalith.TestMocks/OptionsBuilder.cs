@@ -18,69 +18,69 @@ using Moq;
 /// </summary>
 /// <typeparam name="T">The settings object type.</typeparam>
 public class OptionsBuilder<T> : IMockBuilder<IOptions<T>>
-	where T : class, ISettings
+    where T : class, ISettings
 {
-	private T? _value;
+    private T? _value;
 
-	/// <summary>
-	/// Gets a value indicating whether check if the options have been set..
-	/// </summary>
-	public bool HasValue => _value is not null;
+    /// <summary>
+    /// Gets a value indicating whether check if the options have been set..
+    /// </summary>
+    public bool HasValue => _value is not null;
 
-	/// <summary>
-	/// Build a <see cref="IOptions{TOptions}"/>.
-	/// </summary>
-	/// <returns>The mocked options instance.</returns>
-	public IOptions<T> Build()
-	{
-		return BuildMock().Object;
-	}
+    /// <summary>
+    /// Build a <see cref="IOptions{TOptions}"/>.
+    /// </summary>
+    /// <returns>The mocked options instance.</returns>
+    public IOptions<T> Build()
+    {
+        return BuildMock().Object;
+    }
 
-	/// <summary>
-	/// Build a <see cref="Mock{IOptions{TOptions}}"/>.
-	/// </summary>
-	/// <returns>The options mock instance.</returns>
-	public IMock<IOptions<T>> BuildMock()
-	{
-		Mock<IOptions<T>> mock = new();
-		if (_value is not null)
-		{
-			_ = mock
-				.Setup(x => x.Value)
-				.Returns(_value);
-		}
+    /// <summary>
+    /// Build a <see cref="Mock{IOptions{TOptions}}"/>.
+    /// </summary>
+    /// <returns>The options mock instance.</returns>
+    public IMock<IOptions<T>> BuildMock()
+    {
+        Mock<IOptions<T>> mock = new();
+        if (_value is not null)
+        {
+            _ = mock
+                .Setup(x => x.Value)
+                .Returns(_value);
+        }
 
-		return mock;
-	}
+        return mock;
+    }
 
-	/// <summary>
-	/// Define the options value to be used.
-	/// </summary>
-	/// <param name="value">Value to return in the mocked options.</param>
-	/// <returns>The options builder.</returns>
-	public OptionsBuilder<T> WithValue(T value)
-	{
-		_value = value;
-		return this;
-	}
+    /// <summary>
+    /// Define the options value to be used.
+    /// </summary>
+    /// <param name="value">Value to return in the mocked options.</param>
+    /// <returns>The options builder.</returns>
+    public OptionsBuilder<T> WithValue(T value)
+    {
+        _value = value;
+        return this;
+    }
 
-	/// <summary>
-	/// Defines the options value from appsettings.json file or .NET user secrets.
-	/// </summary>
-	/// <typeparam name="TProgram">The test class to define the .NET user secrets assembly.</typeparam>
-	/// <returns>The options builder.</returns>
-	/// <exception cref="Exception">Unable to get settings.</exception>
-	public OptionsBuilder<T> WithValueFromConfiguration<TProgram>()
-		where TProgram : class
-	{
-		IConfigurationBuilder builder = new ConfigurationBuilder()
-			.AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
-			.AddUserSecrets<TProgram>();
+    /// <summary>
+    /// Defines the options value from appsettings.json file or .NET user secrets.
+    /// </summary>
+    /// <typeparam name="TProgram">The test class to define the .NET user secrets assembly.</typeparam>
+    /// <returns>The options builder.</returns>
+    /// <exception cref="Exception">Unable to get settings.</exception>
+    public OptionsBuilder<T> WithValueFromConfiguration<TProgram>()
+        where TProgram : class
+    {
+        IConfigurationBuilder builder = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
+            .AddUserSecrets<TProgram>();
 
-		IConfigurationRoot configuration = builder.Build();
-		_value = configuration
-			.GetSection(T.ConfigurationName())
-			.Get<T>() ?? throw new Exception("Unable to get settings: " + typeof(T).Name);
-		return this;
-	}
+        IConfigurationRoot configuration = builder.Build();
+        _value = configuration
+            .GetSection(T.ConfigurationName())
+            .Get<T>() ?? throw new Exception("Unable to get settings: " + typeof(T).Name);
+        return this;
+    }
 }

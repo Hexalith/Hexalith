@@ -13,17 +13,17 @@ using Moq;
 /// </summary>
 /// <typeparam name="T">The type of the mocked interface.</typeparam>
 public interface IMockBuilder<out T>
-	where T : class
+    where T : class
 {
-	/// <summary>
-	/// Build a mocked instance of <typeparamref name="T"/>.
-	/// </summary>
-	/// <returns>The mocked instance.</returns>
-	T Build();
+    /// <summary>
+    /// Build a mocked instance of <typeparamref name="T"/>.
+    /// </summary>
+    /// <returns>The mocked instance.</returns>
+    T Build();
 
-	/// <summary>
-	/// Build a <see cref="Mock{T}"/> of <typeparamref name="T"/>.
-	/// </summary>
-	/// <returns>The mock of the interface.</returns>
-	IMock<T> BuildMock();
+    /// <summary>
+    /// Build a <see cref="Mock{T}"/> of <typeparamref name="T"/>.
+    /// </summary>
+    /// <returns>The mock of the interface.</returns>
+    IMock<T> BuildMock();
 }

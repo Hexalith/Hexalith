@@ -11,23 +11,23 @@ namespace Hexalith.Application.Abstractions.Metadatas;
 /// </summary>
 public interface IContextMetadata
 {
-	/// <summary>
-	/// Gets message correlation id. It's used to group messages that are related to the same business action.
-	/// </summary>
-	string CorrelationId { get; }
+    /// <summary>
+    /// Gets message correlation id. It's used to group messages that are related to the same business action.
+    /// </summary>
+    string CorrelationId { get; }
 
-	/// <summary>
-	/// Gets the message sequence number.
-	/// </summary>
-	public long SequenceNumber { get; }
+    /// <summary>
+    /// Gets the message sequence number.
+    /// </summary>
+    public long SequenceNumber { get; }
 
-	/// <summary>
-	/// Gets session identifier.
-	/// </summary>
-	string? SessionId { get; }
+    /// <summary>
+    /// Gets session identifier.
+    /// </summary>
+    string? SessionId { get; }
 
-	/// <summary>
-	/// Gets the user identifier.
-	/// </summary>
-	string UserId { get; }
+    /// <summary>
+    /// Gets the user identifier.
+    /// </summary>
+    string UserId { get; }
 }

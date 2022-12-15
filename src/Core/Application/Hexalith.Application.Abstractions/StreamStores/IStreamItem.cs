@@ -11,13 +11,13 @@ namespace Hexalith.Application.Abstractions.StreamStores;
 /// </summary>
 public interface IStreamItem
 {
-	/// <summary>
-	/// Gets the message.
-	/// </summary>
-	public IDataFragment Message { get; }
+    /// <summary>
+    /// Gets the message.
+    /// </summary>
+    public IDataFragment Message { get; }
 
-	/// <summary>
-	/// Gets the stream sequence number.
-	/// </summary>
-	public long Sequence { get; }
+    /// <summary>
+    /// Gets the stream sequence number.
+    /// </summary>
+    public long Sequence { get; }
 }

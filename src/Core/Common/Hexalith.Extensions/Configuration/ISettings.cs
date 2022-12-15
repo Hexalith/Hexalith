@@ -11,9 +11,9 @@ namespace Hexalith.Extensions.Configuration;
 /// </summary>
 public interface ISettings
 {
-	/// <summary>
-	/// The configuration section name of the settings.
-	/// </summary>
-	/// <returns>The name.</returns>
-	static abstract string ConfigurationName();
+    /// <summary>
+    /// The configuration section name of the settings.
+    /// </summary>
+    /// <returns>The name.</returns>
+    static abstract string ConfigurationName();
 }

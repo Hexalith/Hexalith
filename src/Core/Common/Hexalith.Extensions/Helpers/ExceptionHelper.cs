@@ -14,27 +14,27 @@ using System.Text;
 /// </summary>
 public static class ExceptionHelper
 {
-	/// <summary>
-	/// Gets the innermost exception.
-	/// </summary>
-	/// <param name="ex">The exception to get message from.</param>
-	/// <returns>A message containing the exception and it's inner exceptions messages.</returns>
-	public static string FullMessage(this Exception ex)
-	{
-		if (ex == null)
-		{
-			return string.Empty;
-		}
+    /// <summary>
+    /// Gets the innermost exception.
+    /// </summary>
+    /// <param name="ex">The exception to get message from.</param>
+    /// <returns>A message containing the exception and it's inner exceptions messages.</returns>
+    public static string FullMessage(this Exception ex)
+    {
+        if (ex == null)
+        {
+            return string.Empty;
+        }
 
-		StringBuilder message = new(ex.Message);
-		Exception? inner = ex;
-		while ((inner = inner.InnerException) != null)
-		{
-			_ = message
-				.Append('\n')
-				.Append(inner.Message);
-		}
+        StringBuilder message = new(ex.Message);
+        Exception? inner = ex;
+        while ((inner = inner.InnerException) != null)
+        {
+            _ = message
+                .Append('\n')
+                .Append(inner.Message);
+        }
 
-		return message.ToString();
-	}
+        return message.ToString();
+    }
 }

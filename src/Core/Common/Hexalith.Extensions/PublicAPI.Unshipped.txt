@@ -1,33 +1,20 @@
 ﻿#nullable enable
-const Hexalith.Extensions.Contracts.JsonPolymorphicBaseClassAttribute.DefaultDiscriminatorName = "$type" -> string!
 const Hexalith.Extensions.Serialization.JsonPolymorphicBaseClassAttribute.DefaultDiscriminatorName = "$type" -> string!
-Hexalith.Extensions.Common.ArrayHelper
-Hexalith.Extensions.Common.UniqueIdHelper
+Hexalith.Extensions.Common.IDateTimeService
 Hexalith.Extensions.Configuration.ISettings
 Hexalith.Extensions.Configuration.ISettings.ConfigurationName() -> string!
 Hexalith.Extensions.Configuration.OptionsHelper
-Hexalith.Extensions.Contracts.JsonPolymorphicBaseClassAttribute
-Hexalith.Extensions.Contracts.JsonPolymorphicBaseClassAttribute.DiscriminatorName -> string?
-Hexalith.Extensions.Contracts.JsonPolymorphicBaseClassAttribute.JsonPolymorphicBaseClassAttribute() -> void
-Hexalith.Extensions.Contracts.JsonPolymorphicBaseClassAttribute.Name -> string?
-Hexalith.Extensions.Exceptions.ExceptionHelper
 Hexalith.Extensions.Helpers.ArrayHelper
 Hexalith.Extensions.Helpers.ExceptionHelper
 Hexalith.Extensions.Helpers.FibonacciSequence
 Hexalith.Extensions.Helpers.UniqueIdHelper
-Hexalith.Extensions.Maths.FibonacciSequence
 Hexalith.Extensions.Serialization.JsonPolymorphicBaseClassAttribute
 Hexalith.Extensions.Serialization.JsonPolymorphicBaseClassAttribute.DiscriminatorName -> string?
 Hexalith.Extensions.Serialization.JsonPolymorphicBaseClassAttribute.JsonPolymorphicBaseClassAttribute() -> void
 Hexalith.Extensions.Serialization.JsonPolymorphicBaseClassAttribute.Name -> string?
-static Hexalith.Extensions.Common.ArrayHelper.IntoArray<T>(this T obj) -> T[]!
-static Hexalith.Extensions.Common.UniqueIdHelper.GenerateDateTimeId() -> string!
-static Hexalith.Extensions.Common.UniqueIdHelper.GenerateUniqueStringId() -> string!
 static Hexalith.Extensions.Configuration.OptionsHelper.ConfigureSettings<T>(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, Microsoft.Extensions.Configuration.IConfiguration! configuration) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
-static Hexalith.Extensions.Exceptions.ExceptionHelper.FullMessage(this System.Exception! ex) -> string!
 static Hexalith.Extensions.Helpers.ArrayHelper.IntoArray<T>(this T obj) -> T[]!
 static Hexalith.Extensions.Helpers.ExceptionHelper.FullMessage(this System.Exception! ex) -> string!
 static Hexalith.Extensions.Helpers.FibonacciSequence.Number(long n) -> long
 static Hexalith.Extensions.Helpers.UniqueIdHelper.GenerateDateTimeId() -> string!
 static Hexalith.Extensions.Helpers.UniqueIdHelper.GenerateUniqueStringId() -> string!
-static Hexalith.Extensions.Maths.FibonacciSequence.Number(long n) -> long

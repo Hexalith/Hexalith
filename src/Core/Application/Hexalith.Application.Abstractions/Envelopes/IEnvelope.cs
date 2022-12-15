@@ -14,15 +14,15 @@ using Hexalith.Domain.Abstractions.Messages;
 /// </summary>
 public interface IEnvelope
 {
-	/// <summary>
-	/// Gets the envelope message.
-	/// </summary>
-	IMessage Message { get; }
+    /// <summary>
+    /// Gets the envelope message.
+    /// </summary>
+    IMessage Message { get; }
 
-	/// <summary>
-	/// Gets the envelope meta data.
-	/// </summary>
-	IMetadata Metadata { get; }
+    /// <summary>
+    /// Gets the envelope meta data.
+    /// </summary>
+    IMetadata Metadata { get; }
 }
 
 /// <summary>
@@ -31,16 +31,16 @@ public interface IEnvelope
 /// <typeparam name="TMessage">The message.</typeparam>
 /// <typeparam name="TMetadata">The message metadata.</typeparam>
 public interface IEnvelope<out TMessage, out TMetadata> : IEnvelope
-	where TMessage : IMessage
-	where TMetadata : IMetadata
+    where TMessage : IMessage
+    where TMetadata : IMetadata
 {
-	/// <summary>
-	/// Gets the message.
-	/// </summary>
-	new TMessage Message { get; }
+    /// <summary>
+    /// Gets the message.
+    /// </summary>
+    new TMessage Message { get; }
 
-	/// <summary>
-	/// Gets the message metadata.
-	/// </summary>
-	new TMetadata Metadata { get; }
+    /// <summary>
+    /// Gets the message metadata.
+    /// </summary>
+    new TMetadata Metadata { get; }
 }

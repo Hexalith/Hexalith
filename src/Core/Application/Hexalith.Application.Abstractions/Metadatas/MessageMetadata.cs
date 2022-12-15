@@ -12,39 +12,49 @@ using System.Text.Json.Serialization;
 [DataContract]
 public class MessageMetadata : IMessageMetadata
 {
-	[Obsolete("This constructor is only for serialization purposes.", true)]
-	public MessageMetadata()
-	{
-		Id = Name = string.Empty;
-		Version = new MessageVersion();
-		Aggregate = new AggregateMetadata();
-	}
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MessageMetadata"/> class.
+    /// </summary>
+    [Obsolete("This constructor is only for serialization purposes.", true)]
+    public MessageMetadata()
+    {
+        Id = Name = string.Empty;
+        Version = new MessageVersion();
+        Aggregate = new AggregateMetadata();
+    }
 
-	public MessageMetadata(string id, string name, IMessageVersion version, IAggregateMetaData aggregate)
-	{
-		Id = id;
-		Name = name;
-		Version = version;
-		Aggregate = aggregate;
-	}
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MessageMetadata"/> class.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="name"></param>
+    /// <param name="version"></param>
+    /// <param name="aggregate"></param>
+    public MessageMetadata(string id, string name, IMessageVersion version, IAggregateMetaData aggregate)
+    {
+        Id = id;
+        Name = name;
+        Version = version;
+        Aggregate = aggregate;
+    }
 
-	/// <inheritdoc/>
-	[DataMember(Order = 4)]
-	[JsonPropertyOrder(4)]
-	public IAggregateMetaData Aggregate { get; }
+    /// <inheritdoc/>
+    [DataMember(Order = 4)]
+    [JsonPropertyOrder(4)]
+    public IAggregateMetaData Aggregate { get; }
 
-	/// <inheritdoc/>
-	[DataMember(Order = 1)]
-	[JsonPropertyOrder(1)]
-	public string Id { get; }
+    /// <inheritdoc/>
+    [DataMember(Order = 1)]
+    [JsonPropertyOrder(1)]
+    public string Id { get; }
 
-	/// <inheritdoc/>
-	[DataMember(Order = 2)]
-	[JsonPropertyOrder(2)]
-	public string Name { get; }
+    /// <inheritdoc/>
+    [DataMember(Order = 2)]
+    [JsonPropertyOrder(2)]
+    public string Name { get; }
 
-	/// <inheritdoc/>
-	[DataMember(Order = 3)]
-	[JsonPropertyOrder(3)]
-	public IMessageVersion Version { get; }
+    /// <inheritdoc/>
+    [DataMember(Order = 3)]
+    [JsonPropertyOrder(3)]
+    public IMessageVersion Version { get; }
 }

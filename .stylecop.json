@@ -18,7 +18,7 @@
 		"indentation": {
 			"indentationSize": 4,
 			"tabSize": 4,
-			"useTabs": true
+			"useTabs": false
 		}
 	}
 }

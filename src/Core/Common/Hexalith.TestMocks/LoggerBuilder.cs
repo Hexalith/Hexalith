@@ -16,21 +16,21 @@ using Moq;
 /// <typeparam name="T">The type of logger (ILogger<typeparamref name="T"/>).</typeparam>
 public class LoggerBuilder<T> : IMockBuilder<ILogger<T>>
 {
-	/// <summary>
-	/// Build a <see cref="ILogger{T}"/>.
-	/// </summary>
-	/// <returns>The mocked logger.</returns>
-	public ILogger<T> Build()
-	{
-		return BuildMock().Object;
-	}
+    /// <summary>
+    /// Build a <see cref="ILogger{T}"/>.
+    /// </summary>
+    /// <returns>The mocked logger.</returns>
+    public ILogger<T> Build()
+    {
+        return BuildMock().Object;
+    }
 
-	/// <summary>
-	/// Build a <see cref="Mock{ILogger{T}}"/>.
-	/// </summary>
-	/// <returns>The mock of ILogger.</returns>
-	public IMock<ILogger<T>> BuildMock()
-	{
-		return new Mock<ILogger<T>>();
-	}
+    /// <summary>
+    /// Build a <see cref="Mock{ILogger{T}}"/>.
+    /// </summary>
+    /// <returns>The mock of ILogger.</returns>
+    public IMock<ILogger<T>> BuildMock()
+    {
+        return new Mock<ILogger<T>>();
+    }
 }

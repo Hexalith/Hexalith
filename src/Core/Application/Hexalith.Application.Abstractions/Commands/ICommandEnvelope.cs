@@ -14,15 +14,15 @@ using Hexalith.Application.Abstractions.Metadatas;
 /// </summary>
 public interface ICommandEnvelope : IEnvelope
 {
-	new ICommand Message { get; }
+    new ICommand Message { get; }
 }
 
 /// <summary>
 /// Interface for all command envelopes.
 /// </summary>
 public interface ICommandEnvelope<TCommand, TMetadata> : IEnvelope<TCommand, TMetadata>, ICommandEnvelope
-	where TCommand : ICommand
-	where TMetadata : IMetadata
+    where TCommand : ICommand
+    where TMetadata : IMetadata
 {
-	new TCommand Message { get; }
+    new TCommand Message { get; }
 }

@@ -11,28 +11,28 @@ namespace Hexalith.Application.Abstractions.Metadatas;
 /// </summary>
 public interface IMetadata
 {
-	/// <summary>
-	/// Gets the message context metadata.
-	/// </summary>
-	IContextMetadata Context { get; }
+    /// <summary>
+    /// Gets the message context metadata.
+    /// </summary>
+    IContextMetadata Context { get; }
 
-	/// <summary>
-	/// Gets the date the message was created.
-	/// </summary>
-	DateTimeOffset Date { get; }
+    /// <summary>
+    /// Gets the date the message was created.
+    /// </summary>
+    DateTimeOffset Date { get; }
 
-	/// <summary>
-	/// Gets the message metadata.
-	/// </summary>
-	IMessageMetadata Message { get; }
+    /// <summary>
+    /// Gets the message metadata.
+    /// </summary>
+    IMessageMetadata Message { get; }
 
-	/// <summary>
-	/// Gets the message scopes names.
-	/// </summary>
-	IEnumerable<string>? Scopes { get; }
+    /// <summary>
+    /// Gets the message scopes names.
+    /// </summary>
+    IEnumerable<string>? Scopes { get; }
 
-	/// <summary>
-	/// Gets the metadata version.
-	/// </summary>
-	IMetadataVersion Version { get; }
+    /// <summary>
+    /// Gets the metadata version.
+    /// </summary>
+    IMetadataVersion Version { get; }
 }

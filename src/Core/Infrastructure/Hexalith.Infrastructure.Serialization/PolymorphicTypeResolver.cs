@@ -15,20 +15,20 @@ using System.Text.Json.Serialization.Metadata;
 /// <typeparam name="T">Type of the base class or interface.</typeparam>
 public sealed class PolymorphicTypeResolver : DefaultJsonTypeInfoResolver
 {
-	/// <inheritdoc/>
-	public override JsonTypeInfo GetTypeInfo(Type type, JsonSerializerOptions options)
-	{
-		JsonTypeInfo jsonTypeInfo = base.GetTypeInfo(type, options);
+    /// <inheritdoc/>
+    public override JsonTypeInfo GetTypeInfo(Type type, JsonSerializerOptions options)
+    {
+        JsonTypeInfo jsonTypeInfo = base.GetTypeInfo(type, options);
 
-		if (jsonTypeInfo.Kind == JsonTypeInfoKind.Object)
-		{
-			TypeNamePolymorphismOptions? poly = TypeNamePolymorphismOptions.Create(jsonTypeInfo.Type);
-			if (poly != null)
-			{
-				jsonTypeInfo.PolymorphismOptions = poly;
-			}
-		}
+        if (jsonTypeInfo.Kind == JsonTypeInfoKind.Object)
+        {
+            TypeNamePolymorphismOptions? poly = TypeNamePolymorphismOptions.Create(jsonTypeInfo.Type);
+            if (poly != null)
+            {
+                jsonTypeInfo.PolymorphismOptions = poly;
+            }
+        }
 
-		return jsonTypeInfo;
-	}
+        return jsonTypeInfo;
+    }
 }

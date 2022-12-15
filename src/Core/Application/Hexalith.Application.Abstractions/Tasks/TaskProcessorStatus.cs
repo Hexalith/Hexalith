@@ -11,28 +11,28 @@ namespace Hexalith.Application.Abstractions.Tasks;
 /// </summary>
 public enum TaskProcessorStatus
 {
-	/// <summary>
-	/// The task is not started.
-	/// </summary>
-	New = 0,
+    /// <summary>
+    /// The task is not started.
+    /// </summary>
+    New = 0,
 
-	/// <summary>
-	/// The task is suspended.
-	/// </summary>
-	Suspended = 1,
+    /// <summary>
+    /// The task is suspended.
+    /// </summary>
+    Suspended = 1,
 
-	/// <summary>
-	/// The task is active.
-	/// </summary>
-	Active = 2,
+    /// <summary>
+    /// The task is active.
+    /// </summary>
+    Active = 2,
 
-	/// <summary>
-	/// The task completed.
-	/// </summary>
-	Completed = 10,
+    /// <summary>
+    /// The task completed.
+    /// </summary>
+    Completed = 10,
 
-	/// <summary>
-	/// The task is canceled.
-	/// </summary>
-	Canceled = 11,
+    /// <summary>
+    /// The task is canceled.
+    /// </summary>
+    Canceled = 11,
 }

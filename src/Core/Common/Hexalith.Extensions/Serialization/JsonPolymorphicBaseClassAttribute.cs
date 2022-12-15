@@ -17,18 +17,18 @@ using System;
 [AttributeUsage(AttributeTargets.Class)]
 public class JsonPolymorphicBaseClassAttribute : Attribute
 {
-	/// <summary>
-	/// Gets the default polymorphic property name (default is "$type").
-	/// </summary>
-	public const string DefaultDiscriminatorName = "$type";
+    /// <summary>
+    /// Gets the default polymorphic property name (default is "$type").
+    /// </summary>
+    public const string DefaultDiscriminatorName = "$type";
 
-	/// <summary>
-	/// Discriminator property name in the serialized object. If not set, the default polymorphic property name is used ("$type").
-	/// </summary>
-	public string? DiscriminatorName;
+    /// <summary>
+    /// Discriminator property name in the serialized object. If not set, the default polymorphic property name is used ("$type").
+    /// </summary>
+    public string? DiscriminatorName;
 
-	/// <summary>
-	/// The name of the object used to set the property of the discriminator property. If not defined, the class type name will be used.
-	/// </summary>
-	public string? Name;
+    /// <summary>
+    /// The name of the object used to set the property of the discriminator property. If not defined, the class type name will be used.
+    /// </summary>
+    public string? Name;
 }

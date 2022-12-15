@@ -10,29 +10,29 @@ using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Domain.Abstractions.Messages;
 
 public class Envelope<TMessage, TMetadata> : IEnvelope<TMessage, TMetadata>
-	where TMessage : IMessage
-	where TMetadata : IMetadata
+    where TMessage : IMessage
+    where TMetadata : IMetadata
 {
-	/// <summary>
-	/// Initializes a new instance of the <see cref="Envelope{TMessage, TMetadata}"/> class.
-	/// </summary>
-	/// <param name="message"></param>
-	/// <param name="metadata"></param>
-	public Envelope(TMessage message, TMetadata metadata)
-	{
-		Message = message;
-		Metadata = metadata;
-	}
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Envelope{TMessage, TMetadata}"/> class.
+    /// </summary>
+    /// <param name="message"></param>
+    /// <param name="metadata"></param>
+    public Envelope(TMessage message, TMetadata metadata)
+    {
+        Message = message;
+        Metadata = metadata;
+    }
 
-	/// <inheritdoc/>
-	public TMessage Message { get; }
+    /// <inheritdoc/>
+    public TMessage Message { get; }
 
-	/// <inheritdoc/>
-	public TMetadata Metadata { get; }
+    /// <inheritdoc/>
+    public TMetadata Metadata { get; }
 
-	/// <inheritdoc/>
-	IMessage IEnvelope.Message => Message;
+    /// <inheritdoc/>
+    IMessage IEnvelope.Message => Message;
 
-	/// <inheritdoc/>
-	IMetadata IEnvelope.Metadata => Metadata;
+    /// <inheritdoc/>
+    IMetadata IEnvelope.Metadata => Metadata;
 }

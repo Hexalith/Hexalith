@@ -11,18 +11,18 @@ namespace Hexalith.Application.Abstractions.Tasks;
 /// </summary>
 public enum RetryStatus
 {
-	/// <summary>
-	/// The retry is enabled.
-	/// </summary>
-	Enabled = 0,
+    /// <summary>
+    /// The retry is enabled.
+    /// </summary>
+    Enabled = 0,
 
-	/// <summary>
-	/// Waiting for policy retry wait time to end.
-	/// </summary>
-	Suspended = 1,
+    /// <summary>
+    /// Waiting for policy retry wait time to end.
+    /// </summary>
+    Suspended = 1,
 
-	/// <summary>
-	/// The retry policy completed by maximum retry count or timeout.
-	/// </summary>
-	Stopped = 10,
+    /// <summary>
+    /// The retry policy completed by maximum retry count or timeout.
+    /// </summary>
+    Stopped = 10,
 }

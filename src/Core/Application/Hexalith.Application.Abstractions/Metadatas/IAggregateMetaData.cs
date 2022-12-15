@@ -11,13 +11,13 @@ namespace Hexalith.Application.Abstractions.Metadatas;
 /// </summary>
 public interface IAggregateMetaData
 {
-	/// <summary>
-	/// Gets the aggregate identifier.
-	/// </summary>
-	string Id { get; }
+    /// <summary>
+    /// Gets the aggregate identifier.
+    /// </summary>
+    string Id { get; }
 
-	/// <summary>
-	/// Gets the aggregate name.
-	/// </summary>
-	string Name { get; }
+    /// <summary>
+    /// Gets the aggregate name.
+    /// </summary>
+    string Name { get; }
 }

@@ -11,13 +11,13 @@ namespace Hexalith.Application.Abstractions.Metadatas;
 /// </summary>
 public interface IMessageVersion
 {
-	/// <summary>
-	/// Gets the major version.
-	/// </summary>
-	int Major { get; }
+    /// <summary>
+    /// Gets the major version.
+    /// </summary>
+    int Major { get; }
 
-	/// <summary>
-	/// Gets the minor version.
-	/// </summary>
-	int Minor { get; }
+    /// <summary>
+    /// Gets the minor version.
+    /// </summary>
+    int Minor { get; }
 }

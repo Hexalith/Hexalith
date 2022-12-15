@@ -15,15 +15,15 @@ using Hexalith.Domain.Abstractions.Events;
 /// </summary>
 public interface IEventEnvelope : IEnvelope
 {
-	new IEvent Message { get; }
+    new IEvent Message { get; }
 }
 
 /// <summary>
 /// Interface for all event envelopes.
 /// </summary>
 public interface IEventEnvelope<TEvent, TMetadata> : IEnvelope<TEvent, TMetadata>, IEventEnvelope
-	where TEvent : IEvent
-	where TMetadata : IMetadata
+    where TEvent : IEvent
+    where TMetadata : IMetadata
 {
-	new TEvent Message { get; }
+    new TEvent Message { get; }
 }
