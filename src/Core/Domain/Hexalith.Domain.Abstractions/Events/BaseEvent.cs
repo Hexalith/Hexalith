@@ -22,6 +22,6 @@ using System.Runtime.Serialization;
 /// Base class for business events.
 /// </summary>
 [DataContract]
-public abstract record BaseEvent : BaseMessage, IEvent
+public abstract class BaseEvent : BaseMessage, IEvent
 {
 }

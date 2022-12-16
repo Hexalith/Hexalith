@@ -16,7 +16,7 @@ using System.Text.Json.Serialization;
 /// </summary>
 [JsonPolymorphicBaseClass]
 [DataContract]
-public abstract record BaseMessage : IMessage
+public abstract class BaseMessage : IMessage
 {
     /// <summary>
     /// Default string used for separating natural keys to compose the aggragate identifier.
