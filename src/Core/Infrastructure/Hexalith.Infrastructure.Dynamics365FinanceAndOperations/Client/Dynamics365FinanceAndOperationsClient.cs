@@ -271,12 +271,14 @@ public class Dynamics365FinanceAndOperationsClient<TODataElement> : IDynamics365
         }
         catch (Exception e)
         {
-            _logger.LogError(
-                e,
-                "The method call to '{Path}' failed. Response content :\n{ResponseContent}",
-                url.AbsoluteUri,
-                response == null ? "No response" : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false));
-            throw;
+            string? responseContent = response == null ? null : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+            throw new PatchRequestFailedException(
+                TODataElement.EntityName(),
+                url,
+                value,
+                responseContent,
+                message: null,
+                e);
         }
     }
 

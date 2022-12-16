@@ -37,6 +37,17 @@ Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.IDynamics365Finan
 Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.IDynamics365FinanceAndOperationsClient<TODataElement>.SendPatchAsync<TUpdate>(System.Collections.Generic.IDictionary<string!, object!>! key, TUpdate value, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task<System.Net.Http.HttpResponseMessage!>!
 Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.IDynamics365FinanceAndOperationsClient<TODataElement>.SendPostAsync<TCreate>(string! company, TCreate value, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task<System.Net.Http.HttpResponseMessage!>!
 Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.IDynamics365FinanceAndOperationsClient<TODataElement>.SendPostAsync<TCreate>(TCreate value, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task<System.Net.Http.HttpResponseMessage!>!
+Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.PatchRequestFailedException
+Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.PatchRequestFailedException.EntityName.get -> string?
+Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.PatchRequestFailedException.PatchRequestFailedException() -> void
+Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.PatchRequestFailedException.PatchRequestFailedException(string! entityName, System.Uri! url, object? value, string? responseContent, string? message, System.Exception? innerException) -> void
+Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.PatchRequestFailedException.PatchRequestFailedException(string? message) -> void
+Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.PatchRequestFailedException.PatchRequestFailedException(string? message, System.Exception? innerException) -> void
+Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.PatchRequestFailedException.PatchRequestFailedException(System.Runtime.Serialization.SerializationInfo! info, System.Runtime.Serialization.StreamingContext context) -> void
+Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.PatchRequestFailedException.ResponseContent.get -> string?
+Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.PatchRequestFailedException.Url.get -> System.Uri?
+Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.PatchRequestFailedException.Value.get -> string?
+Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.PatchRequestFailedException.ValueType.get -> string?
 Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Configurations.Dynamics365FinanceAndOperationsClientSettings
 Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Configurations.Dynamics365FinanceAndOperationsClientSettings.Company.get -> string?
 Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Configurations.Dynamics365FinanceAndOperationsClientSettings.Company.set -> void
@@ -68,5 +79,6 @@ Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Security.Dynamics365Fina
 Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Security.IDynamics365FinanceAndOperationsSecurityContext
 Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Security.IDynamics365FinanceAndOperationsSecurityContext.AcquireTokenAsync(System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task<string!>!
 override Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.GetSingleRequestFailedException<T>.GetObjectData(System.Runtime.Serialization.SerializationInfo! info, System.Runtime.Serialization.StreamingContext context) -> void
+override Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.PatchRequestFailedException.GetObjectData(System.Runtime.Serialization.SerializationInfo! info, System.Runtime.Serialization.StreamingContext context) -> void
 static Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Configurations.Dynamics365FinanceAndOperationsClientSettings.ConfigurationName() -> string!
 static Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Helpers.Dynamics365FinanceAndOperationsClientHelper.AddDynamics365FinanceAndOperationsClient(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, Microsoft.Extensions.Configuration.IConfiguration! configuration) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
