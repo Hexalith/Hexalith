@@ -34,6 +34,16 @@ public static class StringHelper
     }
 
     /// <summary>
+    /// Convert decimal number to invariant culture string.
+    /// </summary>
+    /// <param name="value">The number.</param>
+    /// <returns>The value as string.</returns>
+    public static string ToInvariantString(this decimal value)
+    {
+        return value.ToString(CultureInfo.InvariantCulture);
+    }
+
+    /// <summary>
     /// Convert number to invariant culture string.
     /// </summary>
     /// <param name="value">The number.</param>
