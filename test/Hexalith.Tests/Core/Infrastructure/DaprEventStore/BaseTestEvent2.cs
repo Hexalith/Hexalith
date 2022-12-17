@@ -14,5 +14,8 @@ public class BaseTestEvent2 : BaseTestEvent
     public BaseTestEvent2(string id, string value2)
         : base(id)
     {
+        Value2 = value2;
     }
+
+    public string Value2 { get; set; }
 }

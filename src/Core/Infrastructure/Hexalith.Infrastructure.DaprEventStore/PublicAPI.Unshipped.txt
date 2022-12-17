@@ -5,6 +5,14 @@ Hexalith.Infrastructure.DaprEventStore.ActorEventStore<TEvent>.GetAsync(long fro
 Hexalith.Infrastructure.DaprEventStore.ActorEventStore<TEvent>.GetAsync(System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task<(System.Collections.Generic.IEnumerable<TEvent!>! Events, long Version)>!
 Hexalith.Infrastructure.DaprEventStore.ActorEventStore<TEvent>.GetVersionAsync(System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task<long>!
 Hexalith.Infrastructure.DaprEventStore.ActorEventStore<TEvent>.StreamName.get -> string!
+Hexalith.Infrastructure.DaprEventStore.EventStoreItemNotFoundException
+Hexalith.Infrastructure.DaprEventStore.EventStoreItemNotFoundException.EventStoreItemNotFoundException() -> void
+Hexalith.Infrastructure.DaprEventStore.EventStoreItemNotFoundException.EventStoreItemNotFoundException(long version, string! streamName, string? message, System.Exception? innerException) -> void
+Hexalith.Infrastructure.DaprEventStore.EventStoreItemNotFoundException.EventStoreItemNotFoundException(string? message) -> void
+Hexalith.Infrastructure.DaprEventStore.EventStoreItemNotFoundException.EventStoreItemNotFoundException(string? message, System.Exception? innerException) -> void
+Hexalith.Infrastructure.DaprEventStore.EventStoreItemNotFoundException.EventStoreItemNotFoundException(System.Runtime.Serialization.SerializationInfo! info, System.Runtime.Serialization.StreamingContext context) -> void
+Hexalith.Infrastructure.DaprEventStore.EventStoreItemNotFoundException.StreamName.get -> string?
+Hexalith.Infrastructure.DaprEventStore.EventStoreItemNotFoundException.Version.get -> long?
 virtual Hexalith.Infrastructure.DaprEventStore.ActorEventStore<TEvent>.Deserialize(string! json) -> TEvent!
 virtual Hexalith.Infrastructure.DaprEventStore.ActorEventStore<TEvent>.GetEventStateName(long version) -> string!
 virtual Hexalith.Infrastructure.DaprEventStore.ActorEventStore<TEvent>.GetStreamStateName() -> string!

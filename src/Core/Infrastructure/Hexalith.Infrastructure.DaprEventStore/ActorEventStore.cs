@@ -119,16 +119,21 @@ public class ActorEventStore<TEvent>
     /// <returns>A <see cref="Task{TResult}"/> representing the result of the asynchronous operation.</returns>
     public async Task<IEnumerable<TEvent>> GetAsync(long fromVersion, long toVersion, CancellationToken cancellationToken)
     {
-        _ = Guard.Against.AgainstExpression(p => p < 1, fromVersion, "From version should be greater than 0.");
-        _ = Guard.Against.AgainstExpression(p => p < fromVersion, toVersion, "To version should be greater or equal than from version.");
+        _ = Guard.Against.AgainstExpression(p => p > 0, fromVersion, "From version should be greater than 0.");
+        _ = Guard.Against.AgainstExpression(p => p >= fromVersion, toVersion, "To version should be greater or equal than from version.");
 
         List<TEvent> events = new();
 
         while (fromVersion <= toVersion)
         {
-            string json = await _stateManager.GetStateAsync<string>(GetEventStateName(fromVersion++), cancellationToken)
+            ConditionalValue<string> result = await _stateManager.TryGetStateAsync<string>(GetEventStateName(fromVersion++), cancellationToken)
                             .ConfigureAwait(false);
-            events.Add(Deserialize(json));
+            if (!result.HasValue)
+            {
+                throw new EventStoreItemNotFoundException(version: fromVersion, StreamName, message: null, innerException: null);
+            }
+
+            events.Add(Deserialize(result.Value));
         }
 
         return events;
@@ -172,9 +177,12 @@ public class ActorEventStore<TEvent>
     /// </summary>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>The actual stream version..</returns>
-    public Task<long> GetVersionAsync(CancellationToken cancellationToken)
+    public async Task<long> GetVersionAsync(CancellationToken cancellationToken)
     {
-        return _stateManager.GetStateAsync<long>(GetStreamStateName(), cancellationToken);
+        ConditionalValue<long> result = await _stateManager
+            .TryGetStateAsync<long>(GetStreamStateName(), cancellationToken)
+            .ConfigureAwait(false);
+        return result.HasValue ? result.Value : 0L;
     }
 
     /// <summary>
