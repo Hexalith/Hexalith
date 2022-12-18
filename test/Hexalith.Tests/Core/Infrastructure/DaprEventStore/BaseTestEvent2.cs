@@ -6,13 +6,16 @@
 
 namespace Hexalith.Tests.Core.Infrastructure.DaprEventStore;
 
+using Newtonsoft.Json;
+
 using System.Runtime.Serialization;
 
 [DataContract]
 public class BaseTestEvent2 : BaseTestEvent
 {
-    public BaseTestEvent2(string id, string value2)
-        : base(id)
+    [JsonConstructor]
+    public BaseTestEvent2(string id, string message, string value2)
+        : base(id, message)
     {
         Value2 = value2;
     }

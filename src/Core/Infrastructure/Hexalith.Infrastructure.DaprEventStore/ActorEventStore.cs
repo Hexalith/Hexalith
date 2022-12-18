@@ -67,8 +67,8 @@ public class ActorEventStore<TEvent>
     {
         _ = Guard.Against.Negative(expectedVersion);
         _ = Guard.Against.Null(events);
-        long version = await _stateManager
-            .GetOrAddStateAsync(GetStreamStateName(), 0L, cancellationToken)
+
+        long version = await GetVersionAsync(cancellationToken)
             .ConfigureAwait(false);
 
         if (expectedVersion != version)
@@ -79,17 +79,28 @@ public class ActorEventStore<TEvent>
 
         foreach (TEvent e in events)
         {
-            await _stateManager.SetStateAsync(
+            await _stateManager.AddStateAsync(
                 GetEventStateName(++version),
                 Serialize(e),
                 cancellationToken)
                 .ConfigureAwait(false);
         }
 
+        if (expectedVersion == 0)
+        {
+            // If version is 0, the stream has not been initialized, we need to add new version header.
+            await _stateManager.AddStateAsync(
+                GetStreamStateName(),
+                version,
+                cancellationToken)
+                .ConfigureAwait(false);
+            return version;
+        }
+
+        // Update the stream header with the new version.
         await _stateManager
             .SetStateAsync(GetStreamStateName(), version, cancellationToken)
             .ConfigureAwait(false);
-
         return version;
     }
 

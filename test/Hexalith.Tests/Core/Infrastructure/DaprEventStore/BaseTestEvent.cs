@@ -17,12 +17,15 @@ using System.Text.Json.Serialization;
 public class BaseTestEvent : BaseEvent, IEvent
 {
     [JsonConstructor]
-    public BaseTestEvent(string id)
+    public BaseTestEvent(string id, string message)
     {
         Id = id;
+        Message = message;
     }
 
     public string Id { get; }
+
+    public string Message { get; }
 
     protected override string DefaultAggregateId()
     {
