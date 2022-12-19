@@ -313,9 +313,7 @@ public class Dynamics365FinanceAndOperationsClient<TODataElement> : IDynamics365
                 return response;
             }
 
-            throw new HttpRequestException(
-                $"The patch request '{url.AbsoluteUri}' failed with status code '{response?.StatusCode}'. Response:\n" +
-                (response == null ? null : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false)));
+            throw new HttpRequestException($"The post request failed with status code '{response?.StatusCode}'.");
         }
         catch
         {
