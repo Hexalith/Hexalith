@@ -9,7 +9,7 @@ namespace Hexalith.Application.Abstractions.Metadatas;
 /// <summary>
 /// Aggregate metadata.
 /// </summary>
-public interface IAggregateMetaData
+public interface IAggregateMetadata
 {
     /// <summary>
     /// Gets the aggregate identifier.

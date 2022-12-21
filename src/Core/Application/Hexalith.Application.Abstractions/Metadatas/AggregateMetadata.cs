@@ -6,10 +6,14 @@
 
 namespace Hexalith.Application.Abstractions.Metadatas;
 
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
+
 /// <summary>
 /// The aggregate metadata.
 /// </summary>
-public class AggregateMetadata : IAggregateMetaData
+[DataContract]
+public class AggregateMetadata : IAggregateMetadata
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="AggregateMetadata" /> class.
@@ -25,6 +29,7 @@ public class AggregateMetadata : IAggregateMetaData
     /// </summary>
     /// <param name="id">The aggregate identifier.</param>
     /// <param name="name">The aggregate name.</param>
+    [JsonConstructor]
     public AggregateMetadata(string id, string name)
     {
         Id = id;

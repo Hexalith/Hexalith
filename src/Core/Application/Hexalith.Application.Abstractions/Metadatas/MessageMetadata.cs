@@ -30,7 +30,8 @@ public class MessageMetadata : IMessageMetadata
     /// <param name="name"></param>
     /// <param name="version"></param>
     /// <param name="aggregate"></param>
-    public MessageMetadata(string id, string name, IMessageVersion version, IAggregateMetaData aggregate)
+    [JsonConstructor]
+    public MessageMetadata(string id, string name, MessageVersion version, AggregateMetadata aggregate)
     {
         Id = id;
         Name = name;
@@ -41,7 +42,7 @@ public class MessageMetadata : IMessageMetadata
     /// <inheritdoc/>
     [DataMember(Order = 4)]
     [JsonPropertyOrder(4)]
-    public IAggregateMetaData Aggregate { get; }
+    public AggregateMetadata Aggregate { get; }
 
     /// <inheritdoc/>
     [DataMember(Order = 1)]
@@ -56,5 +57,11 @@ public class MessageMetadata : IMessageMetadata
     /// <inheritdoc/>
     [DataMember(Order = 3)]
     [JsonPropertyOrder(3)]
-    public IMessageVersion Version { get; }
+    public MessageVersion Version { get; }
+
+    /// <inheritdoc/>
+    IAggregateMetadata IMessageMetadata.Aggregate => Aggregate;
+
+    /// <inheritdoc/>
+    IMessageVersion IMessageMetadata.Version => Version;
 }

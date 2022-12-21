@@ -1,14 +1,18 @@
-﻿Hexalith.Application.Abstractions.Commands.ICommand
+﻿Hexalith.Application.Abstractions.Commands.BaseCommand
+Hexalith.Application.Abstractions.Commands.BaseCommand.BaseCommand() -> void
+Hexalith.Application.Abstractions.Commands.ICommand
 Hexalith.Application.Abstractions.Commands.ICommandBus
 Hexalith.Application.Abstractions.Commands.ICommandEnvelope
 Hexalith.Application.Abstractions.Commands.ICommandEnvelope.Message.get -> Hexalith.Application.Abstractions.Commands.ICommand!
 Hexalith.Application.Abstractions.Commands.ICommandEnvelope<TCommand, TMetadata>
 Hexalith.Application.Abstractions.Commands.ICommandEnvelope<TCommand, TMetadata>.Message.get -> TCommand
 Hexalith.Application.Abstractions.Commands.ICommandSaga
-Hexalith.Application.Abstractions.Envelopes.Envelope<TMessage, TMetadata>
-Hexalith.Application.Abstractions.Envelopes.Envelope<TMessage, TMetadata>.Envelope(TMessage message, TMetadata metadata) -> void
-Hexalith.Application.Abstractions.Envelopes.Envelope<TMessage, TMetadata>.Message.get -> TMessage
-Hexalith.Application.Abstractions.Envelopes.Envelope<TMessage, TMetadata>.Metadata.get -> TMetadata
+Hexalith.Application.Abstractions.Envelopes.BaseEnvelope<TMessage, TMetadata>
+Hexalith.Application.Abstractions.Envelopes.BaseEnvelope<TMessage, TMetadata>.BaseEnvelope(TMessage message, TMetadata metadata) -> void
+Hexalith.Application.Abstractions.Envelopes.BaseEnvelope<TMessage, TMetadata>.Message.get -> TMessage
+Hexalith.Application.Abstractions.Envelopes.BaseEnvelope<TMessage, TMetadata>.Metadata.get -> TMetadata
+Hexalith.Application.Abstractions.Envelopes.Envelope
+Hexalith.Application.Abstractions.Envelopes.Envelope.Envelope(Hexalith.Domain.Abstractions.Messages.BaseMessage! message, Hexalith.Application.Abstractions.Metadatas.Metadata! metadata) -> void
 Hexalith.Application.Abstractions.Envelopes.IEnvelope
 Hexalith.Application.Abstractions.Envelopes.IEnvelope.Message.get -> Hexalith.Domain.Abstractions.Messages.IMessage!
 Hexalith.Application.Abstractions.Envelopes.IEnvelope.Metadata.get -> Hexalith.Application.Abstractions.Metadatas.IMetadata!
@@ -34,16 +38,16 @@ Hexalith.Application.Abstractions.Metadatas.ContextMetadata.CorrelationId.get ->
 Hexalith.Application.Abstractions.Metadatas.ContextMetadata.SequenceNumber.get -> long
 Hexalith.Application.Abstractions.Metadatas.ContextMetadata.SessionId.get -> string?
 Hexalith.Application.Abstractions.Metadatas.ContextMetadata.UserId.get -> string!
-Hexalith.Application.Abstractions.Metadatas.IAggregateMetaData
-Hexalith.Application.Abstractions.Metadatas.IAggregateMetaData.Id.get -> string!
-Hexalith.Application.Abstractions.Metadatas.IAggregateMetaData.Name.get -> string!
+Hexalith.Application.Abstractions.Metadatas.IAggregateMetadata
+Hexalith.Application.Abstractions.Metadatas.IAggregateMetadata.Id.get -> string!
+Hexalith.Application.Abstractions.Metadatas.IAggregateMetadata.Name.get -> string!
 Hexalith.Application.Abstractions.Metadatas.IContextMetadata
 Hexalith.Application.Abstractions.Metadatas.IContextMetadata.CorrelationId.get -> string!
 Hexalith.Application.Abstractions.Metadatas.IContextMetadata.SequenceNumber.get -> long
 Hexalith.Application.Abstractions.Metadatas.IContextMetadata.SessionId.get -> string?
 Hexalith.Application.Abstractions.Metadatas.IContextMetadata.UserId.get -> string!
 Hexalith.Application.Abstractions.Metadatas.IMessageMetadata
-Hexalith.Application.Abstractions.Metadatas.IMessageMetadata.Aggregate.get -> Hexalith.Application.Abstractions.Metadatas.IAggregateMetaData!
+Hexalith.Application.Abstractions.Metadatas.IMessageMetadata.Aggregate.get -> Hexalith.Application.Abstractions.Metadatas.IAggregateMetadata!
 Hexalith.Application.Abstractions.Metadatas.IMessageMetadata.Id.get -> string!
 Hexalith.Application.Abstractions.Metadatas.IMessageMetadata.Name.get -> string!
 Hexalith.Application.Abstractions.Metadatas.IMessageMetadata.Version.get -> Hexalith.Application.Abstractions.Metadatas.IMessageVersion!
@@ -52,36 +56,44 @@ Hexalith.Application.Abstractions.Metadatas.IMessageVersion.Major.get -> int
 Hexalith.Application.Abstractions.Metadatas.IMessageVersion.Minor.get -> int
 Hexalith.Application.Abstractions.Metadatas.IMetadata
 Hexalith.Application.Abstractions.Metadatas.IMetadata.Context.get -> Hexalith.Application.Abstractions.Metadatas.IContextMetadata!
-Hexalith.Application.Abstractions.Metadatas.IMetadata.Date.get -> System.DateTimeOffset
+Hexalith.Application.Abstractions.Metadatas.IMetadata.CorrelationId.get -> string!
+Hexalith.Application.Abstractions.Metadatas.IMetadata.CreatedDate.get -> System.DateTimeOffset
 Hexalith.Application.Abstractions.Metadatas.IMetadata.Message.get -> Hexalith.Application.Abstractions.Metadatas.IMessageMetadata!
+Hexalith.Application.Abstractions.Metadatas.IMetadata.ReceivedDate.get -> System.DateTimeOffset
 Hexalith.Application.Abstractions.Metadatas.IMetadata.Scopes.get -> System.Collections.Generic.IEnumerable<string!>?
 Hexalith.Application.Abstractions.Metadatas.IMetadata.Version.get -> Hexalith.Application.Abstractions.Metadatas.IMetadataVersion!
 Hexalith.Application.Abstractions.Metadatas.IMetadataVersion
 Hexalith.Application.Abstractions.Metadatas.IMetadataVersion.Major.get -> int
 Hexalith.Application.Abstractions.Metadatas.IMetadataVersion.Minor.get -> int
 Hexalith.Application.Abstractions.Metadatas.MessageMetadata
-Hexalith.Application.Abstractions.Metadatas.MessageMetadata.Aggregate.get -> Hexalith.Application.Abstractions.Metadatas.IAggregateMetaData!
+Hexalith.Application.Abstractions.Metadatas.MessageMetadata.Aggregate.get -> Hexalith.Application.Abstractions.Metadatas.AggregateMetadata!
 Hexalith.Application.Abstractions.Metadatas.MessageMetadata.Id.get -> string!
 Hexalith.Application.Abstractions.Metadatas.MessageMetadata.MessageMetadata() -> void
-Hexalith.Application.Abstractions.Metadatas.MessageMetadata.MessageMetadata(string! id, string! name, Hexalith.Application.Abstractions.Metadatas.IMessageVersion! version, Hexalith.Application.Abstractions.Metadatas.IAggregateMetaData! aggregate) -> void
+Hexalith.Application.Abstractions.Metadatas.MessageMetadata.MessageMetadata(string! id, string! name, Hexalith.Application.Abstractions.Metadatas.MessageVersion! version, Hexalith.Application.Abstractions.Metadatas.AggregateMetadata! aggregate) -> void
 Hexalith.Application.Abstractions.Metadatas.MessageMetadata.Name.get -> string!
-Hexalith.Application.Abstractions.Metadatas.MessageMetadata.Version.get -> Hexalith.Application.Abstractions.Metadatas.IMessageVersion!
+Hexalith.Application.Abstractions.Metadatas.MessageMetadata.Version.get -> Hexalith.Application.Abstractions.Metadatas.MessageVersion!
 Hexalith.Application.Abstractions.Metadatas.MessageVersion
 Hexalith.Application.Abstractions.Metadatas.MessageVersion.Major.get -> int
 Hexalith.Application.Abstractions.Metadatas.MessageVersion.MessageVersion() -> void
+Hexalith.Application.Abstractions.Metadatas.MessageVersion.MessageVersion(int major, int minor) -> void
 Hexalith.Application.Abstractions.Metadatas.MessageVersion.Minor.get -> int
+Hexalith.Application.Abstractions.Metadatas.Metadata
+Hexalith.Application.Abstractions.Metadatas.Metadata.Context.get -> Hexalith.Application.Abstractions.Metadatas.ContextMetadata!
+Hexalith.Application.Abstractions.Metadatas.Metadata.CorrelationId.get -> string!
+Hexalith.Application.Abstractions.Metadatas.Metadata.CreatedDate.get -> System.DateTimeOffset
+Hexalith.Application.Abstractions.Metadatas.Metadata.EmittedDate.get -> System.DateTimeOffset
+Hexalith.Application.Abstractions.Metadatas.Metadata.Message.get -> Hexalith.Application.Abstractions.Metadatas.MessageMetadata!
+Hexalith.Application.Abstractions.Metadatas.Metadata.Metadata() -> void
+Hexalith.Application.Abstractions.Metadatas.Metadata.Metadata(Hexalith.Application.Abstractions.Metadatas.MetadataVersion! version, Hexalith.Application.Abstractions.Metadatas.MessageMetadata! message, Hexalith.Application.Abstractions.Metadatas.ContextMetadata! context, System.DateTimeOffset emittedDate, System.DateTimeOffset receivedDate, System.Collections.Generic.IEnumerable<string!>? scopes) -> void
+Hexalith.Application.Abstractions.Metadatas.Metadata.Metadata(Hexalith.Domain.Abstractions.Messages.IMessage! message, Hexalith.Application.Abstractions.Metadatas.ContextMetadata! context, System.Collections.Generic.IEnumerable<string!>? scopes = null) -> void
+Hexalith.Application.Abstractions.Metadatas.Metadata.ReceivedDate.get -> System.DateTimeOffset
+Hexalith.Application.Abstractions.Metadatas.Metadata.Scopes.get -> System.Collections.Generic.IEnumerable<string!>?
+Hexalith.Application.Abstractions.Metadatas.Metadata.Version.get -> Hexalith.Application.Abstractions.Metadatas.MetadataVersion!
 Hexalith.Application.Abstractions.Metadatas.MetadataVersion
 Hexalith.Application.Abstractions.Metadatas.MetadataVersion.Major.get -> int
 Hexalith.Application.Abstractions.Metadatas.MetadataVersion.MetadataVersion() -> void
+Hexalith.Application.Abstractions.Metadatas.MetadataVersion.MetadataVersion(int major, int minor) -> void
 Hexalith.Application.Abstractions.Metadatas.MetadataVersion.Minor.get -> int
-Hexalith.Application.Abstractions.Metadatas.Metatada
-Hexalith.Application.Abstractions.Metadatas.Metatada.Context.get -> Hexalith.Application.Abstractions.Metadatas.IContextMetadata!
-Hexalith.Application.Abstractions.Metadatas.Metatada.Date.get -> System.DateTimeOffset
-Hexalith.Application.Abstractions.Metadatas.Metatada.Message.get -> Hexalith.Application.Abstractions.Metadatas.IMessageMetadata!
-Hexalith.Application.Abstractions.Metadatas.Metatada.Metatada() -> void
-Hexalith.Application.Abstractions.Metadatas.Metatada.Metatada(Hexalith.Application.Abstractions.Metadatas.IMetadataVersion! version, Hexalith.Application.Abstractions.Metadatas.IMessageMetadata! message, Hexalith.Application.Abstractions.Metadatas.IContextMetadata! context, System.DateTimeOffset date, System.Collections.Generic.IEnumerable<string!>? scopes) -> void
-Hexalith.Application.Abstractions.Metadatas.Metatada.Scopes.get -> System.Collections.Generic.IEnumerable<string!>?
-Hexalith.Application.Abstractions.Metadatas.Metatada.Version.get -> Hexalith.Application.Abstractions.Metadatas.IMetadataVersion!
 Hexalith.Application.Abstractions.StreamStores.IDataFragment
 Hexalith.Application.Abstractions.StreamStores.IDataFragment.Data.get -> object!
 Hexalith.Application.Abstractions.StreamStores.IDataFragment.Metadata.get -> object!

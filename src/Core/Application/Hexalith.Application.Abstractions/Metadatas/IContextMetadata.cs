@@ -19,7 +19,7 @@ public interface IContextMetadata
     /// <summary>
     /// Gets the message sequence number.
     /// </summary>
-    public long SequenceNumber { get; }
+    public long? SequenceNumber { get; }
 
     /// <summary>
     /// Gets session identifier.

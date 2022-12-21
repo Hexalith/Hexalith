@@ -6,9 +6,13 @@
 
 namespace Hexalith.Application.Abstractions.Metadatas;
 
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
+
 /// <summary>
 /// The context metadata.
 /// </summary>
+[DataContract]
 public class ContextMetadata : IContextMetadata
 {
     /// <summary>
@@ -27,7 +31,8 @@ public class ContextMetadata : IContextMetadata
     /// <param name="userId">The initiating user identifier.</param>
     /// <param name="sequenceNumber">The message sequence number.</param>
     /// <param name="sessionId">The message session identifier.</param>
-    public ContextMetadata(string correlationId, string userId, long sequenceNumber, string? sessionId)
+    [JsonConstructor]
+    public ContextMetadata(string correlationId, string userId, long? sequenceNumber = null, string? sessionId = null)
     {
         CorrelationId = correlationId;
         UserId = userId;
@@ -43,7 +48,7 @@ public class ContextMetadata : IContextMetadata
     /// <summary>
     /// Gets the message sequence number.
     /// </summary>
-    public long SequenceNumber { get; }
+    public long? SequenceNumber { get; }
 
     /// <summary>
     /// Gets the message session identifier.

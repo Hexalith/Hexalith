@@ -14,7 +14,7 @@ public interface IMessageMetadata
     /// <summary>
     /// Gets aggregate metadata.
     /// </summary>
-    IAggregateMetaData Aggregate { get; }
+    IAggregateMetadata Aggregate { get; }
 
     /// <summary>
     /// Gets the aggregate identifier.

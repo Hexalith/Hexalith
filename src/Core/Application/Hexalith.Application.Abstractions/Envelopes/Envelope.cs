@@ -9,30 +9,20 @@ namespace Hexalith.Application.Abstractions.Envelopes;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Domain.Abstractions.Messages;
 
-public class Envelope<TMessage, TMetadata> : IEnvelope<TMessage, TMetadata>
-    where TMessage : IMessage
-    where TMetadata : IMetadata
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
+
+[DataContract]
+public class Envelope : BaseEnvelope<BaseMessage, Metadata>
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="Envelope{TMessage, TMetadata}"/> class.
+    /// Initializes a new instance of the <see cref="Envelope"/> class.
     /// </summary>
     /// <param name="message"></param>
     /// <param name="metadata"></param>
-    public Envelope(TMessage message, TMetadata metadata)
+    [JsonConstructor]
+    public Envelope(BaseMessage message, Metadata metadata)
+        : base(message, metadata)
     {
-        Message = message;
-        Metadata = metadata;
     }
-
-    /// <inheritdoc/>
-    public TMessage Message { get; }
-
-    /// <inheritdoc/>
-    public TMetadata Metadata { get; }
-
-    /// <inheritdoc/>
-    IMessage IEnvelope.Message => Message;
-
-    /// <inheritdoc/>
-    IMetadata IEnvelope.Metadata => Metadata;
 }

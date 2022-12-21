@@ -16,8 +16,29 @@ using System.Text.Json.Serialization;
 public class MetadataVersion : IMetadataVersion
 {
     /// <summary>
+    /// Initializes a new instance of the <see cref="MetadataVersion"/> class.
+    /// </summary>
+    /// <param name="major">The major.</param>
+    /// <param name="minor">The minor.</param>
+    [JsonConstructor]
+    public MetadataVersion(int major, int minor)
+    {
+        Major = major;
+        Minor = minor;
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MetadataVersion"/> class.
+    /// </summary>
+    [Obsolete("This constructor is only for serialization purposes.", true)]
+    public MetadataVersion()
+    {
+    }
+
+    /// <summary>
     /// Gets the major version.
     /// </summary>
+    /// <value>The major.</value>
     [DataMember(Order = 1)]
     [JsonPropertyOrder(1)]
     public int Major { get; }
@@ -25,6 +46,7 @@ public class MetadataVersion : IMetadataVersion
     /// <summary>
     /// Gets the minor version.
     /// </summary>
+    /// <value>The minor.</value>
     [DataMember(Order = 2)]
     [JsonPropertyOrder(2)]
     public int Minor { get; }
