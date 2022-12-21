@@ -1,6 +1,5 @@
 ﻿abstract Hexalith.Domain.Abstractions.Messages.BaseMessage.DefaultAggregateId() -> string!
 abstract Hexalith.Domain.Abstractions.Messages.BaseMessage.DefaultAggregateName() -> string!
-abstract Hexalith.Domain.Abstractions.Messages.BaseMessage.DefaultMessageName() -> string!
 const Hexalith.Domain.Abstractions.Messages.BaseMessage.Separator = "-" -> string!
 Hexalith.Domain.Abstractions.Events.BaseEvent
 Hexalith.Domain.Abstractions.Events.BaseEvent.BaseEvent() -> void
@@ -19,4 +18,5 @@ Hexalith.Domain.Abstractions.Messages.IMessage.MajorVersion.get -> int
 Hexalith.Domain.Abstractions.Messages.IMessage.MessageName.get -> string!
 Hexalith.Domain.Abstractions.Messages.IMessage.MinorVersion.get -> int
 virtual Hexalith.Domain.Abstractions.Messages.BaseMessage.DefaultMajorVersion() -> int
+virtual Hexalith.Domain.Abstractions.Messages.BaseMessage.DefaultMessageName() -> string!
 virtual Hexalith.Domain.Abstractions.Messages.BaseMessage.DefaultMinorVersion() -> int

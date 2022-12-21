@@ -73,7 +73,10 @@ public abstract class BaseMessage : IMessage
     /// Get the message name.
     /// </summary>
     /// <returns>The name.</returns>
-    protected abstract string DefaultMessageName();
+    protected virtual string DefaultMessageName()
+    {
+        return GetType().Name;
+    }
 
     /// <summary>
     /// Gets the message minor version.
