@@ -17,6 +17,11 @@ public interface IContextMetadata
     string CorrelationId { get; }
 
     /// <summary>
+    /// Gets the date the message was received.
+    /// </summary>
+    DateTimeOffset? ReceivedDate { get; }
+
+    /// <summary>
     /// Gets the message sequence number.
     /// </summary>
     public long? SequenceNumber { get; }

@@ -17,6 +17,11 @@ public interface IMessageMetadata
     IAggregateMetadata Aggregate { get; }
 
     /// <summary>
+    /// Gets the message name.
+    /// </summary>
+    DateTimeOffset Date { get; }
+
+    /// <summary>
     /// Gets the aggregate identifier.
     /// </summary>
     string Id { get; }

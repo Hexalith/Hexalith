@@ -80,7 +80,7 @@ public class OptionsBuilder<T> : IMockBuilder<IOptions<T>>
         IConfigurationRoot configuration = builder.Build();
         _value = configuration
             .GetSection(T.ConfigurationName())
-            .Get<T>() ?? throw new Exception("Unable to get settings: " + typeof(T).Name);
+            .Get<T>() ?? throw new Exception("Unable to get settings: " + T.ConfigurationName());
         return this;
     }
 }

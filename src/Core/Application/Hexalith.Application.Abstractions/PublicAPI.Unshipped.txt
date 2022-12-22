@@ -8,19 +8,26 @@ Hexalith.Application.Abstractions.Commands.ICommandEnvelope<TCommand, TMetadata>
 Hexalith.Application.Abstractions.Commands.ICommandEnvelope<TCommand, TMetadata>.Message.get -> TCommand
 Hexalith.Application.Abstractions.Commands.ICommandSaga
 Hexalith.Application.Abstractions.Envelopes.BaseEnvelope<TMessage, TMetadata>
+Hexalith.Application.Abstractions.Envelopes.BaseEnvelope<TMessage, TMetadata>.BaseEnvelope() -> void
 Hexalith.Application.Abstractions.Envelopes.BaseEnvelope<TMessage, TMetadata>.BaseEnvelope(TMessage message, TMetadata metadata) -> void
 Hexalith.Application.Abstractions.Envelopes.BaseEnvelope<TMessage, TMetadata>.Message.get -> TMessage
 Hexalith.Application.Abstractions.Envelopes.BaseEnvelope<TMessage, TMetadata>.Metadata.get -> TMetadata
 Hexalith.Application.Abstractions.Envelopes.Envelope
 Hexalith.Application.Abstractions.Envelopes.Envelope.Envelope(Hexalith.Domain.Abstractions.Messages.BaseMessage! message, Hexalith.Application.Abstractions.Metadatas.Metadata! metadata) -> void
+Hexalith.Application.Abstractions.Envelopes.EventEnvelope
+Hexalith.Application.Abstractions.Envelopes.EventEnvelope.EventEnvelope() -> void
+Hexalith.Application.Abstractions.Envelopes.EventEnvelope.EventEnvelope(Hexalith.Domain.Abstractions.Events.BaseEvent! message, Hexalith.Application.Abstractions.Metadatas.Metadata! metadata) -> void
 Hexalith.Application.Abstractions.Envelopes.IEnvelope
 Hexalith.Application.Abstractions.Envelopes.IEnvelope.Message.get -> Hexalith.Domain.Abstractions.Messages.IMessage!
 Hexalith.Application.Abstractions.Envelopes.IEnvelope.Metadata.get -> Hexalith.Application.Abstractions.Metadatas.IMetadata!
 Hexalith.Application.Abstractions.Envelopes.IEnvelope<TMessage, TMetadata>
 Hexalith.Application.Abstractions.Envelopes.IEnvelope<TMessage, TMetadata>.Message.get -> TMessage
 Hexalith.Application.Abstractions.Envelopes.IEnvelope<TMessage, TMetadata>.Metadata.get -> TMetadata
-Hexalith.Application.Abstractions.Envelopes.IMessageBus<TEnvelope>
-Hexalith.Application.Abstractions.Envelopes.IMessageBus<TEnvelope>.PublishAsync(TEnvelope envelope, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task!
+Hexalith.Application.Abstractions.Envelopes.IEnvelope<TMessage>
+Hexalith.Application.Abstractions.Envelopes.IEnvelope<TMessage>.Message.get -> TMessage
+Hexalith.Application.Abstractions.Envelopes.IMessageBus<TMessage, TMetadata>
+Hexalith.Application.Abstractions.Envelopes.IMessageBus<TMessage, TMetadata>.PublishAsync(Hexalith.Application.Abstractions.Envelopes.IEnvelope<TMessage, TMetadata>! envelope, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task!
+Hexalith.Application.Abstractions.Envelopes.IMessageBus<TMessage, TMetadata>.PublishAsync(TMessage message, TMetadata metadata, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task!
 Hexalith.Application.Abstractions.Events.IEventBus
 Hexalith.Application.Abstractions.Events.IEventEnvelope
 Hexalith.Application.Abstractions.Events.IEventEnvelope.Message.get -> Hexalith.Domain.Abstractions.Events.IEvent!
@@ -33,9 +40,11 @@ Hexalith.Application.Abstractions.Metadatas.AggregateMetadata.Id.get -> string!
 Hexalith.Application.Abstractions.Metadatas.AggregateMetadata.Name.get -> string!
 Hexalith.Application.Abstractions.Metadatas.ContextMetadata
 Hexalith.Application.Abstractions.Metadatas.ContextMetadata.ContextMetadata() -> void
-Hexalith.Application.Abstractions.Metadatas.ContextMetadata.ContextMetadata(string! correlationId, string! userId, long sequenceNumber, string? sessionId) -> void
+Hexalith.Application.Abstractions.Metadatas.ContextMetadata.ContextMetadata(Hexalith.Application.Abstractions.Metadatas.IContextMetadata! context) -> void
+Hexalith.Application.Abstractions.Metadatas.ContextMetadata.ContextMetadata(string! correlationId, string! userId, System.DateTimeOffset? receivedDate, long? sequenceNumber = null, string? sessionId = null) -> void
 Hexalith.Application.Abstractions.Metadatas.ContextMetadata.CorrelationId.get -> string!
-Hexalith.Application.Abstractions.Metadatas.ContextMetadata.SequenceNumber.get -> long
+Hexalith.Application.Abstractions.Metadatas.ContextMetadata.ReceivedDate.get -> System.DateTimeOffset?
+Hexalith.Application.Abstractions.Metadatas.ContextMetadata.SequenceNumber.get -> long?
 Hexalith.Application.Abstractions.Metadatas.ContextMetadata.SessionId.get -> string?
 Hexalith.Application.Abstractions.Metadatas.ContextMetadata.UserId.get -> string!
 Hexalith.Application.Abstractions.Metadatas.IAggregateMetadata
@@ -43,11 +52,13 @@ Hexalith.Application.Abstractions.Metadatas.IAggregateMetadata.Id.get -> string!
 Hexalith.Application.Abstractions.Metadatas.IAggregateMetadata.Name.get -> string!
 Hexalith.Application.Abstractions.Metadatas.IContextMetadata
 Hexalith.Application.Abstractions.Metadatas.IContextMetadata.CorrelationId.get -> string!
-Hexalith.Application.Abstractions.Metadatas.IContextMetadata.SequenceNumber.get -> long
+Hexalith.Application.Abstractions.Metadatas.IContextMetadata.ReceivedDate.get -> System.DateTimeOffset?
+Hexalith.Application.Abstractions.Metadatas.IContextMetadata.SequenceNumber.get -> long?
 Hexalith.Application.Abstractions.Metadatas.IContextMetadata.SessionId.get -> string?
 Hexalith.Application.Abstractions.Metadatas.IContextMetadata.UserId.get -> string!
 Hexalith.Application.Abstractions.Metadatas.IMessageMetadata
 Hexalith.Application.Abstractions.Metadatas.IMessageMetadata.Aggregate.get -> Hexalith.Application.Abstractions.Metadatas.IAggregateMetadata!
+Hexalith.Application.Abstractions.Metadatas.IMessageMetadata.Date.get -> System.DateTimeOffset
 Hexalith.Application.Abstractions.Metadatas.IMessageMetadata.Id.get -> string!
 Hexalith.Application.Abstractions.Metadatas.IMessageMetadata.Name.get -> string!
 Hexalith.Application.Abstractions.Metadatas.IMessageMetadata.Version.get -> Hexalith.Application.Abstractions.Metadatas.IMessageVersion!
@@ -67,9 +78,10 @@ Hexalith.Application.Abstractions.Metadatas.IMetadataVersion.Major.get -> int
 Hexalith.Application.Abstractions.Metadatas.IMetadataVersion.Minor.get -> int
 Hexalith.Application.Abstractions.Metadatas.MessageMetadata
 Hexalith.Application.Abstractions.Metadatas.MessageMetadata.Aggregate.get -> Hexalith.Application.Abstractions.Metadatas.AggregateMetadata!
+Hexalith.Application.Abstractions.Metadatas.MessageMetadata.Date.get -> System.DateTimeOffset
 Hexalith.Application.Abstractions.Metadatas.MessageMetadata.Id.get -> string!
 Hexalith.Application.Abstractions.Metadatas.MessageMetadata.MessageMetadata() -> void
-Hexalith.Application.Abstractions.Metadatas.MessageMetadata.MessageMetadata(string! id, string! name, Hexalith.Application.Abstractions.Metadatas.MessageVersion! version, Hexalith.Application.Abstractions.Metadatas.AggregateMetadata! aggregate) -> void
+Hexalith.Application.Abstractions.Metadatas.MessageMetadata.MessageMetadata(string! id, string! name, System.DateTimeOffset date, Hexalith.Application.Abstractions.Metadatas.MessageVersion! version, Hexalith.Application.Abstractions.Metadatas.AggregateMetadata! aggregate) -> void
 Hexalith.Application.Abstractions.Metadatas.MessageMetadata.Name.get -> string!
 Hexalith.Application.Abstractions.Metadatas.MessageMetadata.Version.get -> Hexalith.Application.Abstractions.Metadatas.MessageVersion!
 Hexalith.Application.Abstractions.Metadatas.MessageVersion
@@ -79,14 +91,10 @@ Hexalith.Application.Abstractions.Metadatas.MessageVersion.MessageVersion(int ma
 Hexalith.Application.Abstractions.Metadatas.MessageVersion.Minor.get -> int
 Hexalith.Application.Abstractions.Metadatas.Metadata
 Hexalith.Application.Abstractions.Metadatas.Metadata.Context.get -> Hexalith.Application.Abstractions.Metadatas.ContextMetadata!
-Hexalith.Application.Abstractions.Metadatas.Metadata.CorrelationId.get -> string!
-Hexalith.Application.Abstractions.Metadatas.Metadata.CreatedDate.get -> System.DateTimeOffset
-Hexalith.Application.Abstractions.Metadatas.Metadata.EmittedDate.get -> System.DateTimeOffset
 Hexalith.Application.Abstractions.Metadatas.Metadata.Message.get -> Hexalith.Application.Abstractions.Metadatas.MessageMetadata!
 Hexalith.Application.Abstractions.Metadatas.Metadata.Metadata() -> void
-Hexalith.Application.Abstractions.Metadatas.Metadata.Metadata(Hexalith.Application.Abstractions.Metadatas.MetadataVersion! version, Hexalith.Application.Abstractions.Metadatas.MessageMetadata! message, Hexalith.Application.Abstractions.Metadatas.ContextMetadata! context, System.DateTimeOffset emittedDate, System.DateTimeOffset receivedDate, System.Collections.Generic.IEnumerable<string!>? scopes) -> void
-Hexalith.Application.Abstractions.Metadatas.Metadata.Metadata(Hexalith.Domain.Abstractions.Messages.IMessage! message, Hexalith.Application.Abstractions.Metadatas.ContextMetadata! context, System.Collections.Generic.IEnumerable<string!>? scopes = null) -> void
-Hexalith.Application.Abstractions.Metadatas.Metadata.ReceivedDate.get -> System.DateTimeOffset
+Hexalith.Application.Abstractions.Metadatas.Metadata.Metadata(Hexalith.Application.Abstractions.Metadatas.MetadataVersion! version, Hexalith.Application.Abstractions.Metadatas.MessageMetadata! message, Hexalith.Application.Abstractions.Metadatas.ContextMetadata! context, System.Collections.Generic.IEnumerable<string!>? scopes) -> void
+Hexalith.Application.Abstractions.Metadatas.Metadata.Metadata(string! id, Hexalith.Domain.Abstractions.Messages.IMessage! message, System.DateTimeOffset date, Hexalith.Application.Abstractions.Metadatas.ContextMetadata! context, System.Collections.Generic.IEnumerable<string!>? scopes) -> void
 Hexalith.Application.Abstractions.Metadatas.Metadata.Scopes.get -> System.Collections.Generic.IEnumerable<string!>?
 Hexalith.Application.Abstractions.Metadatas.Metadata.Version.get -> Hexalith.Application.Abstractions.Metadatas.MetadataVersion!
 Hexalith.Application.Abstractions.Metadatas.MetadataVersion
@@ -181,6 +189,7 @@ Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus.Canceled = 11 -> Hex
 Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus.Completed = 10 -> Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus
 Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus.New = 0 -> Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus
 Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus.Suspended = 1 -> Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus
+static Hexalith.Application.Abstractions.Metadatas.Metadata.CreateNew(Hexalith.Domain.Abstractions.Messages.IMessage! message, Hexalith.Application.Abstractions.Metadatas.IMetadata! metadata, System.DateTimeOffset date) -> Hexalith.Application.Abstractions.Metadatas.Metadata!
 static Hexalith.Application.Abstractions.Tasks.ResiliencyPolicy.CreateEternalExponentialRetry() -> Hexalith.Application.Abstractions.Tasks.ResiliencyPolicy!
 static Hexalith.Application.Abstractions.Tasks.ResiliencyPolicy.CreateEternalRetry(System.TimeSpan period) -> Hexalith.Application.Abstractions.Tasks.ResiliencyPolicy!
 static Hexalith.Application.Abstractions.Tasks.ResiliencyPolicy.None.get -> Hexalith.Application.Abstractions.Tasks.ResiliencyPolicy!

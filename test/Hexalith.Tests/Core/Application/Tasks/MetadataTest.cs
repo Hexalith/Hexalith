@@ -40,11 +40,10 @@ public class MetadataTest
             new MessageMetadata(
                 "123-456-789",
                 "TestMessage",
+                DateTimeOffset.UtcNow.AddSeconds(-1),
                 new MessageVersion(4, 6),
                 new AggregateMetadata("123-AG", "TestAggregate")),
-            new ContextMetadata("COR-6589", "TestUser", 101, "session-6987"),
-            DateTimeOffset.UtcNow.AddSeconds(-1),
-            DateTimeOffset.UtcNow.AddSeconds(-10),
+            new ContextMetadata("COR-6589", "TestUser", DateTimeOffset.UtcNow, 101, "session-6987"),
             new[] { "scope1", "scope9" });
     }
 }

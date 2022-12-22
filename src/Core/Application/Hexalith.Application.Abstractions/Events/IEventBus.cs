@@ -7,10 +7,12 @@
 namespace Hexalith.Application.Abstractions.Events;
 
 using Hexalith.Application.Abstractions.Envelopes;
+using Hexalith.Application.Abstractions.Metadatas;
+using Hexalith.Domain.Abstractions.Events;
 
 /// <summary>
 /// Interface for all event buses.
 /// </summary>
-public interface IEventBus : IMessageBus<IEventEnvelope>
+public interface IEventBus : IMessageBus<IEvent, IMetadata>
 {
 }

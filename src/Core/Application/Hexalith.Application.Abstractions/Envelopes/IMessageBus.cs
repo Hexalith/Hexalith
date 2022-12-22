@@ -6,18 +6,33 @@
 
 namespace Hexalith.Application.Abstractions.Envelopes;
 
+using Hexalith.Application.Abstractions.Metadatas;
+
+using Hexalith.Domain.Abstractions.Messages;
+
 /// <summary>
 /// A message bus is a component that allows to send messages.
 /// </summary>
-/// <typeparam name="TEnvelope">The message type.</typeparam>
-public interface IMessageBus<in TEnvelope>
-    where TEnvelope : IEnvelope
+/// <typeparam name="TMessage">The type of the t message.</typeparam>
+/// <typeparam name="TMetadata">The type of the t metadata.</typeparam>
+public interface IMessageBus<in TMessage, in TMetadata>
+    where TMessage : IMessage
+    where TMetadata : IMetadata
 {
     /// <summary>
-    /// Publish a message.
+    /// Publishes the asynchronous.
     /// </summary>
-    /// <param name="envelope">The envelope to send.</param>
-    /// <param name="cancellationToken">The cancellation token.</param>
-    /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
-    Task PublishAsync(TEnvelope envelope, CancellationToken cancellationToken);
+    /// <param name="envelope">The envelope.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task.</returns>
+    Task PublishAsync(IEnvelope<TMessage, TMetadata> envelope, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Publishes the asynchronous.
+    /// </summary>
+    /// <param name="message">The message.</param>
+    /// <param name="metadata">The metadata.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task.</returns>
+    Task PublishAsync(TMessage message, TMetadata metadata, CancellationToken cancellationToken);
 }

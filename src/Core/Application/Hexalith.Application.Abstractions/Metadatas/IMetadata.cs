@@ -17,24 +17,9 @@ public interface IMetadata
     IContextMetadata Context { get; }
 
     /// <summary>
-    /// Gets the message correlation identifier.
-    /// </summary>
-    string CorrelationId { get; }
-
-    /// <summary>
-    /// Gets the date the message was created.
-    /// </summary>
-    DateTimeOffset CreatedDate { get; }
-
-    /// <summary>
     /// Gets the message metadata.
     /// </summary>
     IMessageMetadata Message { get; }
-
-    /// <summary>
-    /// Gets the date the message was received.
-    /// </summary>
-    DateTimeOffset ReceivedDate { get; }
 
     /// <summary>
     /// Gets the message scopes names.

@@ -6,6 +6,8 @@
 
 namespace Hexalith.Application.Abstractions.Metadatas;
 
+using Ardalis.GuardClauses;
+
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
@@ -24,26 +26,38 @@ public class ContextMetadata : IContextMetadata
         CorrelationId = UserId = string.Empty;
     }
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ContextMetadata" /> class.
-    /// </summary>
+    /// <summary>Initializes a new instance of the <see cref="ContextMetadata" /> class.</summary>
     /// <param name="correlationId">The message correlation identifier.</param>
     /// <param name="userId">The initiating user identifier.</param>
+    /// <param name="receivedDate">The received date.</param>
     /// <param name="sequenceNumber">The message sequence number.</param>
     /// <param name="sessionId">The message session identifier.</param>
     [JsonConstructor]
-    public ContextMetadata(string correlationId, string userId, long? sequenceNumber = null, string? sessionId = null)
+    public ContextMetadata(string correlationId, string userId, DateTimeOffset? receivedDate, long? sequenceNumber = null, string? sessionId = null)
     {
         CorrelationId = correlationId;
         UserId = userId;
+        ReceivedDate = receivedDate;
         SequenceNumber = sequenceNumber;
         SessionId = sessionId;
+    }
+
+    /// <summary>Initializes a new instance of the <see cref="ContextMetadata" /> class.</summary>
+    /// <param name="context">The context.</param>
+    public ContextMetadata(IContextMetadata context)
+        : this(Guard.Against.Null(context).CorrelationId, context.UserId, context.ReceivedDate, context.SequenceNumber, context.SessionId)
+    {
     }
 
     /// <summary>
     /// Gets the message correlationId.
     /// </summary>
     public string CorrelationId { get; }
+
+    /// <summary>
+    /// Gets the date the message was received.
+    /// </summary>
+    public DateTimeOffset? ReceivedDate { get; }
 
     /// <summary>
     /// Gets the message sequence number.

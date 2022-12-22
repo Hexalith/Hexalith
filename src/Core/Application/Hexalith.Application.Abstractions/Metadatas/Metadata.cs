@@ -6,18 +6,26 @@
 
 namespace Hexalith.Application.Abstractions.Metadatas;
 
+using Ardalis.GuardClauses;
+
 using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Extensions.Helpers;
 using Hexalith.Extensions.Serialization;
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+/// <summary>
+/// Class Metadata.
+/// Implements the <see cref="Hexalith.Application.Abstractions.Metadatas.IMetadata" />.
+/// </summary>
+/// <seealso cref="Hexalith.Application.Abstractions.Metadatas.IMetadata" />
 [DataContract]
 [JsonPolymorphicBaseClass]
 public class Metadata : IMetadata
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="Metadata"/> class.
+    /// Initializes a new instance of the <see cref="Metadata" /> class.
     /// </summary>
     [Obsolete("This constructor is only for serialization purposes.", true)]
     public Metadata()
@@ -25,79 +33,74 @@ public class Metadata : IMetadata
         Message = new MessageMetadata();
         Version = new MetadataVersion();
         Context = new ContextMetadata();
-        ReceivedDate = DateTimeOffset.MinValue;
-        EmittedDate = DateTimeOffset.MinValue;
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Metadata"/> class.
+    /// Initializes a new instance of the <see cref="Metadata" /> class.
     /// </summary>
-    /// <param name="version"></param>
-    /// <param name="message"></param>
-    /// <param name="context"></param>
-    /// <param name="receivedDate"></param>
-    /// <param name="scopes"></param>
+    /// <param name="version">The version.</param>
+    /// <param name="message">The message.</param>
+    /// <param name="context">The context.</param>
+    /// <param name="scopes">The scopes.</param>
     [JsonConstructor]
     public Metadata(
         MetadataVersion version,
         MessageMetadata message,
         ContextMetadata context,
-        DateTimeOffset emittedDate,
-        DateTimeOffset receivedDate,
         IEnumerable<string>? scopes)
     {
         Version = version;
         Message = message;
         Context = context;
-        EmittedDate = emittedDate;
-        ReceivedDate = receivedDate;
         Scopes = scopes;
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Metadata"/> class.
+    /// Initializes a new instance of the <see cref="Metadata" /> class.
     /// </summary>
-    /// <param name="message"></param>
-    /// <param name="context"></param>
-    /// <param name="scopes"></param>
+    /// <param name="id">The identifier.</param>
+    /// <param name="message">The message.</param>
+    /// <param name="date">The date.</param>
+    /// <param name="context">The context.</param>
+    /// <param name="scopes">The scopes.</param>
     public Metadata(
         string id,
         IMessage message,
+        DateTimeOffset date,
         ContextMetadata context,
-        IEnumerable<string>? scopes = null)
+        IEnumerable<string>? scopes)
     {
+        _ = Guard.Against.Null(message);
         Version = new MetadataVersion(0, 0);
         Message = new MessageMetadata(
             id,
             message.MessageName,
+            date,
             new MessageVersion(message.MajorVersion, message.MinorVersion),
             new AggregateMetadata(message.AggregateId, message.AggregateName));
-        CreatedDate = EmittedDate = DateTimeOffset.UtcNow;
         Context = context;
         Scopes = scopes;
     }
 
-    /// <inheritdoc/>
+    /// <summary>
+    /// Gets the message context metadata.
+    /// </summary>
+    /// <value>The context.</value>
     public ContextMetadata Context { get; private set; }
 
-    /// <inheritdoc/>
-    public string CorrelationId { get; }
-
-    /// <inheritdoc/>
-    public DateTimeOffset CreatedDate { get; }
-
-    public DateTimeOffset EmittedDate { get; }
-
-    /// <inheritdoc/>
+    /// <summary>
+    /// Gets the message metadata.
+    /// </summary>
+    /// <value>The message.</value>
     public MessageMetadata Message { get; private set; }
-
-    /// <inheritdoc/>
-    public DateTimeOffset ReceivedDate { get; private set; }
 
     /// <inheritdoc/>
     public IEnumerable<string>? Scopes { get; private set; }
 
-    /// <inheritdoc/>
+    /// <summary>
+    /// Gets the metadata version.
+    /// </summary>
+    /// <value>The version.</value>
     public MetadataVersion Version { get; private set; }
 
     /// <inheritdoc/>
@@ -108,4 +111,21 @@ public class Metadata : IMetadata
 
     /// <inheritdoc/>
     IMetadataVersion IMetadata.Version => Version;
+
+    /// <summary>
+    /// Creates the new.
+    /// </summary>
+    /// <param name="message">The message.</param>
+    /// <param name="metadata">The metadata.</param>
+    /// <param name="date">The date.</param>
+    /// <returns>Metadata.</returns>
+    public static Metadata CreateNew(IMessage message, IMetadata metadata, DateTimeOffset date)
+    {
+        return new Metadata(
+            UniqueIdHelper.GenerateUniqueStringId(),
+            message,
+            date,
+            new(metadata.Context),
+            metadata.Scopes);
+    }
 }

@@ -23,26 +23,31 @@ public class MessageMetadata : IMessageMetadata
         Aggregate = new AggregateMetadata();
     }
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="MessageMetadata"/> class.
-    /// </summary>
-    /// <param name="id"></param>
-    /// <param name="name"></param>
-    /// <param name="version"></param>
-    /// <param name="aggregate"></param>
+    /// <summary>Initializes a new instance of the <see cref="MessageMetadata"/> class.</summary>
+    /// <param name="id">The identifier.</param>
+    /// <param name="name">The name.</param>
+    /// <param name="date">The date.</param>
+    /// <param name="version">The version.</param>
+    /// <param name="aggregate">The aggregate.</param>
     [JsonConstructor]
-    public MessageMetadata(string id, string name, MessageVersion version, AggregateMetadata aggregate)
+    public MessageMetadata(string id, string name, DateTimeOffset date, MessageVersion version, AggregateMetadata aggregate)
     {
         Id = id;
         Name = name;
         Version = version;
         Aggregate = aggregate;
+        Date = date;
     }
 
     /// <inheritdoc/>
     [DataMember(Order = 4)]
     [JsonPropertyOrder(4)]
     public AggregateMetadata Aggregate { get; }
+
+    /// <inheritdoc/>
+    [DataMember(Order = 5)]
+    [JsonPropertyOrder(5)]
+    public DateTimeOffset Date { get; }
 
     /// <inheritdoc/>
     [DataMember(Order = 1)]

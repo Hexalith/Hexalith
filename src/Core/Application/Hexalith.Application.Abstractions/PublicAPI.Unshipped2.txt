@@ -1,0 +1,7 @@
+﻿Hexalith.Application.Abstractions.Envelopes.IEnvelope
+Hexalith.Application.Abstractions.Envelopes.IEnvelope.Message.get -> Hexalith.Domain.Abstractions.Messages.IMessage
+Hexalith.Application.Abstractions.Envelopes.IEnvelope.Metadata.get -> Hexalith.Application.Abstractions.Metadatas.IMetadata
+Hexalith.Application.Abstractions.Envelopes.IEnvelope<TMessage, TMetadata>
+Hexalith.Application.Abstractions.Envelopes.IEnvelope<TMessage, TMetadata>.Metadata.get -> TMetadata
+Hexalith.Application.Abstractions.Envelopes.IEnvelope<TMessage>
+Hexalith.Application.Abstractions.Envelopes.IEnvelope<TMessage>.Message.get -> TMessage

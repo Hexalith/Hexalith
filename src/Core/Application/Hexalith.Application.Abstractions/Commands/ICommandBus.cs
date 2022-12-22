@@ -7,10 +7,11 @@
 namespace Hexalith.Application.Abstractions.Commands;
 
 using Hexalith.Application.Abstractions.Envelopes;
+using Hexalith.Application.Abstractions.Metadatas;
 
 /// <summary>
 /// Interface for all command buses.
 /// </summary>
-public interface ICommandBus : IMessageBus<ICommandEnvelope>
+public interface ICommandBus : IMessageBus<ICommand, IMetadata>
 {
 }
