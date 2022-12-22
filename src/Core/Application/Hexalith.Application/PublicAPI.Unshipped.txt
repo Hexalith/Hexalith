@@ -1,7 +1,4 @@
-﻿Hexalith.Application.Commands.Command
-Hexalith.Application.Commands.Command.Command() -> void
-Hexalith.Application.Commands.ICommand
-Hexalith.Application.DataFragment
+﻿Hexalith.Application.DataFragment
 Hexalith.Application.DataFragment.Data.get -> object!
 Hexalith.Application.DataFragment.DataFragment() -> void
 Hexalith.Application.DataFragment.DataFragment(object! data, object! metadata) -> void
