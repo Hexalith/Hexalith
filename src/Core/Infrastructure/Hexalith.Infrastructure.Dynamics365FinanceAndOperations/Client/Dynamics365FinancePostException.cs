@@ -1,0 +1,93 @@
+﻿// <copyright file="Dynamics365FinancePostException.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+
+namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
+
+using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
+
+using System;
+using System.Runtime.Serialization;
+
+/// <summary>
+/// Class Dynamics365FinancePostException.
+/// Implements the <see cref="Exception" />.
+/// </summary>
+/// <typeparam name="TEntity">The type of the entity.</typeparam>
+/// <typeparam name="TCreate">The type of the create.</typeparam>
+/// <seealso cref="Exception" />
+[Serializable]
+internal class Dynamics365FinancePostException<TEntity, TCreate> : Exception
+    where TEntity : class, IODataElement
+{
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Dynamics365FinancePostException{TEntity, TCreate}"/> class.
+    /// </summary>
+    public Dynamics365FinancePostException()
+    {
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Dynamics365FinancePostException{TEntity, TCreate}"/> class.
+    /// </summary>
+    /// <param name="message">The message that describes the error.</param>
+    public Dynamics365FinancePostException(string? message)
+        : base(message)
+    {
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Dynamics365FinancePostException{TEntity, TCreate}"/> class.
+    /// </summary>
+    /// <param name="message">The error message that explains the reason for the exception.</param>
+    /// <param name="innerException">The exception that is the cause of the current exception, or a null reference (<see langword="Nothing" /> in Visual Basic) if no inner exception is specified.</param>
+    public Dynamics365FinancePostException(string? message, Exception? innerException)
+        : base(message, innerException)
+    {
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Dynamics365FinancePostException{TEntity, TCreate}"/> class.
+    /// </summary>
+    /// <param name="company">The company.</param>
+    /// <param name="value">The value.</param>
+    /// <param name="responseContent">Content of the response.</param>
+    /// <param name="innerException">The inner exception.</param>
+    public Dynamics365FinancePostException(string company, TCreate? value, string? responseContent, Exception innerException)
+        : base($"Error while posting {typeof(TEntity).Name} to company {company}. Response content : {responseContent}", innerException)
+    {
+        Company = company;
+        Value = value;
+        ResponseContent = responseContent;
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Dynamics365FinancePostException{TEntity, TCreate}"/> class.
+    /// </summary>
+    /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
+    /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
+    protected Dynamics365FinancePostException(SerializationInfo info, StreamingContext context)
+        : base(info, context)
+    {
+    }
+
+    /// <summary>
+    /// Gets the company.
+    /// </summary>
+    /// <value>The company.</value>
+    public string? Company { get; }
+
+    /// <summary>
+    /// Gets the content of the response.
+    /// </summary>
+    /// <value>The content of the response.</value>
+    public string? ResponseContent { get; }
+
+    /// <summary>
+    /// Gets the value to create.
+    /// </summary>
+    /// <value>The value.</value>
+    public TCreate? Value { get; }
+}

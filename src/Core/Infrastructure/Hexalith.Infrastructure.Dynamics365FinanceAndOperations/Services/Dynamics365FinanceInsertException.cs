@@ -46,7 +46,7 @@ public class Dynamics365FinanceInsertException<TEntity, TCreate> : Exception
         $"Error while inserting {typeof(TEntity)} in Dynamics 365 for finance dans operations.",
         innerException)
     {
-        Data = JsonSerializer.Serialize(entity);
+        CreateData = JsonSerializer.Serialize(entity);
     }
 
     /// <summary>
@@ -73,5 +73,5 @@ public class Dynamics365FinanceInsertException<TEntity, TCreate> : Exception
     /// Gets a collection of key/value pairs that provide additional user-defined information about the exception.
     /// </summary>
     /// <value>The data.</value>
-    public string? Data { get; }
+    public string? CreateData { get; }
 }

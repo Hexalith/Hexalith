@@ -19,7 +19,7 @@ using Moq;
 /// <typeparam name="TEntity">The type of the Dynamics 365 entity.</typeparam>
 public class Dynamics365FinanceAndOperationsClientBuilder<TEntity> :
     IMockBuilder<IDynamics365FinanceAndOperationsClient<TEntity>>
-    where TEntity : IODataElement
+    where TEntity : class, IODataElement
 {
     private HttpClientFactoryBuilder? _httpClientfactory;
     private LoggerBuilder<Dynamics365FinanceAndOperationsClient<TEntity>>? _logger;

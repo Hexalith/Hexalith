@@ -18,6 +18,7 @@ using Microsoft.Extensions.Options;
 using System.Globalization;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Web;
@@ -25,20 +26,20 @@ using System.Web;
 /// <summary>
 /// Client for Dynamics 365 for finance and operations.
 /// </summary>
-/// <typeparam name="TODataElement">The entity type.</typeparam>
-public class Dynamics365FinanceAndOperationsClient<TODataElement> : IDynamics365FinanceAndOperationsClient<TODataElement>
-    where TODataElement : IODataElement
+/// <typeparam name="TEntity">The entity type.</typeparam>
+public class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics365FinanceAndOperationsClient<TEntity>
+    where TEntity : class, IODataElement
 {
     private const string _crossCompanyQuery = "cross-company=true";
     private const string _dataPath = "data";
     private readonly IHttpClientFactory _httpClientFactory;
     private readonly Uri _instance;
-    private readonly ILogger<Dynamics365FinanceAndOperationsClient<TODataElement>> _logger;
+    private readonly ILogger<Dynamics365FinanceAndOperationsClient<TEntity>> _logger;
     private readonly IDynamics365FinanceAndOperationsSecurityContext _securityContext;
     private HttpClient? _client;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Dynamics365FinanceAndOperationsClient{TODataElement}"/> class.
+    /// Initializes a new instance of the <see cref="Dynamics365FinanceAndOperationsClient{TEntity}"/> class.
     /// </summary>
     /// <param name="httpClientFactory">The HTTP client factory.</param>
     /// <param name="securityContext">The Dynamics 365 security context.</param>
@@ -49,7 +50,7 @@ public class Dynamics365FinanceAndOperationsClient<TODataElement> : IDynamics365
         IHttpClientFactory httpClientFactory,
         IDynamics365FinanceAndOperationsSecurityContext securityContext,
         IOptions<Dynamics365FinanceAndOperationsClientSettings> settings,
-        ILogger<Dynamics365FinanceAndOperationsClient<TODataElement>> logger)
+        ILogger<Dynamics365FinanceAndOperationsClient<TEntity>> logger)
     {
         Dynamics365FinanceAndOperationsClientSettings s = Guard.Against.Null(settings).Value;
 
@@ -86,17 +87,17 @@ public class Dynamics365FinanceAndOperationsClient<TODataElement> : IDynamics365
     }
 
     /// <inheritdoc/>
-    public Task<IEnumerable<TODataElement>> GetAsync(IDictionary<string, object> filter, CancellationToken cancellationToken)
+    public Task<IEnumerable<TEntity>> GetAsync(IDictionary<string, object> filter, CancellationToken cancellationToken)
     {
         return GetAsync(DefaultCompany, filter, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task<IEnumerable<TODataElement>> GetAsync(string company, IDictionary<string, object> filter, CancellationToken cancellationToken)
+    public async Task<IEnumerable<TEntity>> GetAsync(string company, IDictionary<string, object> filter, CancellationToken cancellationToken)
     {
         string crossCompany = string.Equals(DefaultCompany, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : _crossCompanyQuery + "&";
         await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
-        Uri url = new(_instance, $"{_dataPath}/{TODataElement.EntityName()}/?{crossCompany}$filter={HttpUtility.UrlEncode(GetQueryFilter(company, filter))}");
+        Uri url = new(_instance, $"{_dataPath}/{TEntity.EntityName()}/?{crossCompany}$filter={HttpUtility.UrlEncode(GetQueryFilter(company, filter))}");
         HttpResponseMessage? response = null;
         try
         {
@@ -107,9 +108,9 @@ public class Dynamics365FinanceAndOperationsClient<TODataElement> : IDynamics365
                     $"The request to '{url.AbsoluteUri}' failed with status code '{response.StatusCode}'.");
             }
 
-            ODataArrayResponse<TODataElement>? content = await response
+            ODataArrayResponse<TEntity>? content = await response
                     .Content
-                    .ReadFromJsonAsync<ODataArrayResponse<TODataElement>>(
+                    .ReadFromJsonAsync<ODataArrayResponse<TEntity>>(
                     options: new JsonSerializerOptions
                     {
                         PropertyNameCaseInsensitive = true,
@@ -119,7 +120,7 @@ public class Dynamics365FinanceAndOperationsClient<TODataElement> : IDynamics365
             if (content != null && !string.IsNullOrWhiteSpace(content.Context))
             {
                 _logger.LogTrace("The method call to '{Path}' was successful.", url.AbsoluteUri);
-                return content.Values ?? Enumerable.Empty<TODataElement>();
+                return content.Values ?? Enumerable.Empty<TEntity>();
             }
 
             throw new HttpRequestException(
@@ -136,18 +137,18 @@ public class Dynamics365FinanceAndOperationsClient<TODataElement> : IDynamics365
     }
 
     /// <inheritdoc/>
-    public Task<TODataElement> GetSingleAsync(IDictionary<string, object> keys, CancellationToken cancellationToken)
+    public Task<TEntity> GetSingleAsync(IDictionary<string, object> keys, CancellationToken cancellationToken)
     {
         return GetSingleAsync(DefaultCompany, keys, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task<TODataElement> GetSingleAsync(string company, IDictionary<string, object> keys, CancellationToken cancellationToken)
+    public async Task<TEntity> GetSingleAsync(string company, IDictionary<string, object> keys, CancellationToken cancellationToken)
     {
         string crossCompany = string.Equals(DefaultCompany, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : "?" + _crossCompanyQuery;
         await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
         string keyFilter = GetEntityFilter(company, keys);
-        Uri url = new(_instance, $"{_dataPath}/{TODataElement.EntityName()}({HttpUtility.UrlEncode(keyFilter)}){crossCompany}");
+        Uri url = new(_instance, $"{_dataPath}/{TEntity.EntityName()}({HttpUtility.UrlEncode(keyFilter)}){crossCompany}");
         HttpResponseMessage? response = null;
         try
         {
@@ -158,9 +159,9 @@ public class Dynamics365FinanceAndOperationsClient<TODataElement> : IDynamics365
                     $"The request to '{url.AbsoluteUri}' failed with status code '{response.StatusCode}'.");
             }
 
-            TODataElement? content = await response
+            TEntity? content = await response
                     .Content
-                    .ReadFromJsonAsync<TODataElement>(
+                    .ReadFromJsonAsync<TEntity>(
                     options: new JsonSerializerOptions
                     {
                         PropertyNameCaseInsensitive = true,
@@ -179,11 +180,11 @@ public class Dynamics365FinanceAndOperationsClient<TODataElement> : IDynamics365
             string? responseContent = (response == null) ? null : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
             _logger.LogError(
                 "Can't get {EntityName} with keys {Keys}. The method call to '{Path}' failed. response content :\n{ResponseContent}",
-                typeof(TODataElement).Name,
+                typeof(TEntity).Name,
                 keys,
                 url.AbsoluteUri,
                 responseContent ?? "No response");
-            throw new GetSingleRequestFailedException<TODataElement>(TODataElement.EntityName(), keys, responseContent, message: null, ex);
+            throw new GetSingleRequestFailedException<TEntity>(TEntity.EntityName(), keys, responseContent, message: null, ex);
         }
     }
 
@@ -207,24 +208,35 @@ public class Dynamics365FinanceAndOperationsClient<TODataElement> : IDynamics365
     }
 
     /// <inheritdoc/>
-    public Task<TODataElement> PostAsync<TCreate>(TCreate value, CancellationToken cancellationToken)
+    public async Task<TEntity> PostAsync<TCreate>(TCreate value, CancellationToken cancellationToken)
     {
-        return PostAsync(DefaultCompany, value, cancellationToken);
+        TEntity result = await PostAsync(DefaultCompany, value, cancellationToken)
+            .ConfigureAwait(false);
+        return result;
     }
 
     /// <inheritdoc/>
-    public async Task<TODataElement> PostAsync<TCreate>(string company, TCreate value, CancellationToken cancellationToken)
+    public async Task<TEntity> PostAsync<TCreate>(string company, TCreate value, CancellationToken cancellationToken)
     {
-        HttpResponseMessage response = await SendPostAsync(company, value, cancellationToken).ConfigureAwait(false);
-        TODataElement? v = await response
-            .Content
-            .ReadFromJsonAsync<TODataElement>(
-                new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true,
-                },
-                cancellationToken).ConfigureAwait(false);
-        return v ?? throw new HttpRequestException($"Empty content response on request to '{response.RequestMessage?.RequestUri?.AbsoluteUri}'.");
+        HttpResponseMessage? response = null;
+        try
+        {
+            response = await SendPostAsync(company, value, cancellationToken).ConfigureAwait(false);
+            TEntity? v = await response
+                .Content
+                .ReadFromJsonAsync<TEntity>(
+                    new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true,
+                    },
+                    cancellationToken).ConfigureAwait(false);
+            return v ?? throw new SerializationException($"Empty content response on request to '{response.RequestMessage?.RequestUri?.AbsoluteUri}'.");
+        }
+        catch (Exception e)
+        {
+            string? responseContent = response == null ? null : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+            throw new Dynamics365FinancePostException<TEntity, TCreate>(company, value, responseContent, e);
+        }
     }
 
     /// <inheritdoc/>
@@ -245,7 +257,7 @@ public class Dynamics365FinanceAndOperationsClient<TODataElement> : IDynamics365
     {
         string crossCompany = string.Equals(DefaultCompany, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : "?" + _crossCompanyQuery;
         await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
-        Uri url = new(_instance, $"{_dataPath}/{TODataElement.EntityName()}({HttpUtility.UrlEncode(GetEntityFilter(company, key))}){crossCompany}");
+        Uri url = new(_instance, $"{_dataPath}/{TEntity.EntityName()}({HttpUtility.UrlEncode(GetEntityFilter(company, key))}){crossCompany}");
         HttpResponseMessage? response = null;
         try
         {
@@ -273,7 +285,7 @@ public class Dynamics365FinanceAndOperationsClient<TODataElement> : IDynamics365
         {
             string? responseContent = response == null ? null : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
             throw new PatchRequestFailedException(
-                TODataElement.EntityName(),
+                TEntity.EntityName(),
                 url,
                 value,
                 responseContent,
@@ -293,7 +305,7 @@ public class Dynamics365FinanceAndOperationsClient<TODataElement> : IDynamics365
     {
         string crossCompany = string.Equals(DefaultCompany, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : "/?" + _crossCompanyQuery;
         await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
-        Uri url = new(_instance, $"{_dataPath}/{TODataElement.EntityName()}{crossCompany}");
+        Uri url = new(_instance, $"{_dataPath}/{TEntity.EntityName()}{crossCompany}");
         HttpResponseMessage? response = null;
         try
         {
@@ -301,18 +313,9 @@ public class Dynamics365FinanceAndOperationsClient<TODataElement> : IDynamics365
                 .PostAsJsonAsync(
                     url,
                     value,
-                    new JsonSerializerOptions
-                    {
-                        PropertyNameCaseInsensitive = false,
-                        PropertyNamingPolicy = null,
-                    },
                     cancellationToken).ConfigureAwait(false);
-            if (response == null)
-            {
-                throw new HttpRequestException($"The post request failed with a null restponse.");
-            }
 
-            if (response?.IsSuccessStatusCode == true)
+            if (response.IsSuccessStatusCode)
             {
                 _logger.LogInformation("The method call to '{Post}' succeeded.", url.AbsolutePath);
                 return response;
