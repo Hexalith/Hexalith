@@ -307,6 +307,11 @@ public class Dynamics365FinanceAndOperationsClient<TODataElement> : IDynamics365
                         PropertyNamingPolicy = null,
                     },
                     cancellationToken).ConfigureAwait(false);
+            if (response == null)
+            {
+                throw new HttpRequestException($"The post request failed with a null restponse.");
+            }
+
             if (response?.IsSuccessStatusCode == true)
             {
                 _logger.LogInformation("The method call to '{Post}' succeeded.", url.AbsolutePath);
@@ -315,13 +320,20 @@ public class Dynamics365FinanceAndOperationsClient<TODataElement> : IDynamics365
 
             throw new HttpRequestException($"The post request failed with status code '{response?.StatusCode}'.");
         }
-        catch
+        catch (Exception e)
         {
+            string content = "No response";
+            if (response != null)
+            {
+                content = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+            }
+
             _logger.LogError(
+                e,
                 "The method call to '{Path}' failed. response content :\n{ResponseContent}",
                 url.AbsoluteUri,
-                response == null ? "No response" : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false));
-            throw;
+                content);
+            throw new HttpRequestException($"The method call to '{url.AbsoluteUri}' failed. response content :\n{content}", e);
         }
     }
 

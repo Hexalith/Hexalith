@@ -1,2 +1,0 @@
-﻿Hexalith.Infrastructure.Security.Abstractions.IApplicationSecurityContext
-Hexalith.Infrastructure.Security.Abstractions.IApplicationSecurityContext.AcquireTokenAsync(string![]! scopes, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task<string!>!
