@@ -21,6 +21,7 @@ using System.Net.Http.Json;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Web;
 
 /// <summary>
@@ -78,6 +79,16 @@ public class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics365Financ
     /// <inheritdoc/>
     public string DefaultCompany { get; }
 
+    /// <summary>
+    /// Gets the json options.
+    /// </summary>
+    /// <value>The json options.</value>
+    protected JsonSerializerOptions JsonOptions => new()
+    {
+        PropertyNameCaseInsensitive = false,
+        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+    };
+
     private HttpClient Client => _client ??= _httpClientFactory.CreateClient();
 
     /// <inheritdoc/>
@@ -111,10 +122,7 @@ public class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics365Financ
             ODataArrayResponse<TEntity>? content = await response
                     .Content
                     .ReadFromJsonAsync<ODataArrayResponse<TEntity>>(
-                    options: new JsonSerializerOptions
-                    {
-                        PropertyNameCaseInsensitive = true,
-                    },
+                    options: JsonOptions,
                     cancellationToken)
                     .ConfigureAwait(false);
             if (content != null && !string.IsNullOrWhiteSpace(content.Context))
@@ -162,10 +170,7 @@ public class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics365Financ
             TEntity? content = await response
                     .Content
                     .ReadFromJsonAsync<TEntity>(
-                    options: new JsonSerializerOptions
-                    {
-                        PropertyNameCaseInsensitive = true,
-                    },
+                    options: JsonOptions,
                     cancellationToken).ConfigureAwait(false);
             if (content is null)
             {
@@ -225,10 +230,7 @@ public class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics365Financ
             TEntity? v = await response
                 .Content
                 .ReadFromJsonAsync<TEntity>(
-                    new JsonSerializerOptions
-                    {
-                        PropertyNameCaseInsensitive = true,
-                    },
+                    options: JsonOptions,
                     cancellationToken).ConfigureAwait(false);
             return v ?? throw new SerializationException($"Empty content response on request to '{response.RequestMessage?.RequestUri?.AbsoluteUri}'.");
         }
@@ -265,6 +267,7 @@ public class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics365Financ
                 .PatchAsJsonAsync(
                     url,
                     value,
+                    options: JsonOptions,
                     cancellationToken)
                 .ConfigureAwait(false);
             if (response == null)
@@ -313,6 +316,7 @@ public class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics365Financ
                 .PostAsJsonAsync(
                     url,
                     value,
+                    options: JsonOptions,
                     cancellationToken).ConfigureAwait(false);
 
             if (response.IsSuccessStatusCode)

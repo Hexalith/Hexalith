@@ -72,4 +72,27 @@ public class Dynamics365FinanceAndOperationsClientTest
             CancellationToken.None);
         _ = response.IsSuccessStatusCode.Should().BeTrue();
     }
+
+    /*
+    [Fact]
+    public async Task Post_should_succeed()
+    {
+        Dynamics365FinanceAndOperationsClientSettings settings = new()
+        {
+            Company = "CIE",
+            Instance = new Uri("https://test.dynamics.com"),
+        };
+        DummyEntity dummy = new("123etag123", "CIE", "Hello world");
+
+        Dynamics365FinanceAndOperationsClientBuilder<DummyEntity> builder = new();
+        _ = builder.Settings.WithValue(settings);
+        IDynamics365FinanceAndOperationsClient<DummyEntity> client = builder.Build();
+        HttpResponseMessage response = await client.SendPostAsync(
+            dummy,
+            CancellationToken.None);
+        _ = response.IsSuccessStatusCode.Should().BeTrue();
+        string requestBody = await response.RequestMessage.Content.ReadAsStringAsync();
+        requestBody.Should().Contain(nameof(DummyEntity.Message));
+    }
+    */
 }
