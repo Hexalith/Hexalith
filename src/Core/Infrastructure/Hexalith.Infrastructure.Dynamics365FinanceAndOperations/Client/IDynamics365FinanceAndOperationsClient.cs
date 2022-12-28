@@ -70,6 +70,22 @@ public interface IDynamics365FinanceAndOperationsClient<TODataElement>
     Task<TODataElement> GetSingleAsync(string company, IDictionary<string, object> keys, CancellationToken cancellationToken);
 
     /// <summary>
+    /// Get entity object by it's primary key.
+    /// </summary>
+    /// <param name="key">The key.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Entity object.</returns>
+    Task<TODataElement> GetSingleAsync(IPrimaryKey key, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Get per company entity object by it's primary key.
+    /// </summary>
+    /// <param name="key">The per company key.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Entity object.</returns>
+    Task<TODataElement> GetSingleAsync(IPrimaryPerCompanyKey key, CancellationToken cancellationToken);
+
+    /// <summary>
     /// Patch an entity object.
     /// </summary>
     /// <typeparam name="TUpdate">Type of the update entity model.</typeparam>

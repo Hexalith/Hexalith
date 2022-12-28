@@ -17,18 +17,15 @@ using Microsoft.Extensions.Options;
 
 using System.Globalization;
 using System.Net.Http.Headers;
-using System.Net.Http.Json;
-using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Web;
 
 /// <summary>
 /// Client for Dynamics 365 for finance and operations.
 /// </summary>
 /// <typeparam name="TEntity">The entity type.</typeparam>
-public class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics365FinanceAndOperationsClient<TEntity>
+public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics365FinanceAndOperationsClient<TEntity>
     where TEntity : class, IODataElement
 {
     private const string _crossCompanyQuery = "cross-company=true";
@@ -83,7 +80,7 @@ public class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics365Financ
     /// Gets the json options.
     /// </summary>
     /// <value>The json options.</value>
-    protected JsonSerializerOptions JsonOptions => new()
+    protected static JsonSerializerOptions JsonOptions => new()
     {
         PropertyNameCaseInsensitive = false,
         DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
@@ -95,253 +92,6 @@ public class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics365Financ
     public Task DoActionAsync(string action, IDictionary<string, object> parameters, CancellationToken cancellationToken)
     {
         throw new NotSupportedException();
-    }
-
-    /// <inheritdoc/>
-    public Task<IEnumerable<TEntity>> GetAsync(IDictionary<string, object> filter, CancellationToken cancellationToken)
-    {
-        return GetAsync(DefaultCompany, filter, cancellationToken);
-    }
-
-    /// <inheritdoc/>
-    public async Task<IEnumerable<TEntity>> GetAsync(string company, IDictionary<string, object> filter, CancellationToken cancellationToken)
-    {
-        string crossCompany = string.Equals(DefaultCompany, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : _crossCompanyQuery + "&";
-        await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
-        Uri url = new(_instance, $"{_dataPath}/{TEntity.EntityName()}/?{crossCompany}$filter={HttpUtility.UrlEncode(GetQueryFilter(company, filter))}");
-        HttpResponseMessage? response = null;
-        try
-        {
-            response = await Client.GetAsync(url, cancellationToken).ConfigureAwait(false);
-            if (!response.IsSuccessStatusCode)
-            {
-                throw new HttpRequestException(
-                    $"The request to '{url.AbsoluteUri}' failed with status code '{response.StatusCode}'.");
-            }
-
-            ODataArrayResponse<TEntity>? content = await response
-                    .Content
-                    .ReadFromJsonAsync<ODataArrayResponse<TEntity>>(
-                    options: JsonOptions,
-                    cancellationToken)
-                    .ConfigureAwait(false);
-            if (content != null && !string.IsNullOrWhiteSpace(content.Context))
-            {
-                _logger.LogTrace("The method call to '{Path}' was successful.", url.AbsoluteUri);
-                return content.Values ?? Enumerable.Empty<TEntity>();
-            }
-
-            throw new HttpRequestException(
-                    $"The request to '{url.AbsoluteUri}' failed to deserialize :\n{await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false)}");
-        }
-        catch
-        {
-            _logger.LogError(
-                "The method call to '{Path}' failed. response content :\n{ResponseContent}",
-                url.AbsoluteUri,
-                response == null ? "No response" : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false));
-            throw;
-        }
-    }
-
-    /// <inheritdoc/>
-    public Task<TEntity> GetSingleAsync(IDictionary<string, object> keys, CancellationToken cancellationToken)
-    {
-        return GetSingleAsync(DefaultCompany, keys, cancellationToken);
-    }
-
-    /// <inheritdoc/>
-    public async Task<TEntity> GetSingleAsync(string company, IDictionary<string, object> keys, CancellationToken cancellationToken)
-    {
-        string crossCompany = string.Equals(DefaultCompany, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : "?" + _crossCompanyQuery;
-        await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
-        string keyFilter = GetEntityFilter(company, keys);
-        Uri url = new(_instance, $"{_dataPath}/{TEntity.EntityName()}({HttpUtility.UrlEncode(keyFilter)}){crossCompany}");
-        HttpResponseMessage? response = null;
-        try
-        {
-            response = await Client.GetAsync(url, cancellationToken).ConfigureAwait(false);
-            if (!response.IsSuccessStatusCode)
-            {
-                throw new HttpRequestException(
-                    $"The request to '{url.AbsoluteUri}' failed with status code '{response.StatusCode}'.");
-            }
-
-            TEntity? content = await response
-                    .Content
-                    .ReadFromJsonAsync<TEntity>(
-                    options: JsonOptions,
-                    cancellationToken).ConfigureAwait(false);
-            if (content is null)
-            {
-                throw new HttpRequestException($"Empty content response on request to '{url.AbsoluteUri}'.");
-            }
-
-            _logger.LogDebug("The method call to '{Path}' was successful.", url.AbsoluteUri);
-            return content;
-        }
-        catch (Exception ex)
-        {
-            string? responseContent = (response == null) ? null : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-            _logger.LogError(
-                "Can't get {EntityName} with keys {Keys}. The method call to '{Path}' failed. response content :\n{ResponseContent}",
-                typeof(TEntity).Name,
-                keys,
-                url.AbsoluteUri,
-                responseContent ?? "No response");
-            throw new GetSingleRequestFailedException<TEntity>(TEntity.EntityName(), keys, responseContent, message: null, ex);
-        }
-    }
-
-    /// <inheritdoc/>
-    public Task PatchAsync<TUpdate>(
-        IDictionary<string, object> key,
-        TUpdate value,
-        CancellationToken cancellationToken)
-    {
-        return PatchAsync(DefaultCompany, key, value, cancellationToken);
-    }
-
-    /// <inheritdoc/>
-    public async Task PatchAsync<TUpdate>(
-        string company,
-        IDictionary<string, object> key,
-        TUpdate value,
-        CancellationToken cancellationToken)
-    {
-        _ = await SendPatchAsync(key, value, cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
-    public async Task<TEntity> PostAsync<TCreate>(TCreate value, CancellationToken cancellationToken)
-    {
-        TEntity result = await PostAsync(DefaultCompany, value, cancellationToken)
-            .ConfigureAwait(false);
-        return result;
-    }
-
-    /// <inheritdoc/>
-    public async Task<TEntity> PostAsync<TCreate>(string company, TCreate value, CancellationToken cancellationToken)
-    {
-        HttpResponseMessage? response = null;
-        try
-        {
-            response = await SendPostAsync(company, value, cancellationToken).ConfigureAwait(false);
-            TEntity? v = await response
-                .Content
-                .ReadFromJsonAsync<TEntity>(
-                    options: JsonOptions,
-                    cancellationToken).ConfigureAwait(false);
-            return v ?? throw new SerializationException($"Empty content response on request to '{response.RequestMessage?.RequestUri?.AbsoluteUri}'.");
-        }
-        catch (Exception e)
-        {
-            string? responseContent = response == null ? null : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-            throw new Dynamics365FinancePostException<TEntity, TCreate>(company, value, responseContent, e);
-        }
-    }
-
-    /// <inheritdoc/>
-    public Task<HttpResponseMessage> SendPatchAsync<TUpdate>(
-        IDictionary<string, object> key,
-        TUpdate value,
-        CancellationToken cancellationToken)
-    {
-        return SendPatchAsync(DefaultCompany, key, value, cancellationToken);
-    }
-
-    /// <inheritdoc/>
-    public async Task<HttpResponseMessage> SendPatchAsync<TUpdate>(
-        string company,
-        IDictionary<string, object> key,
-        TUpdate value,
-        CancellationToken cancellationToken)
-    {
-        string crossCompany = string.Equals(DefaultCompany, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : "?" + _crossCompanyQuery;
-        await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
-        Uri url = new(_instance, $"{_dataPath}/{TEntity.EntityName()}({HttpUtility.UrlEncode(GetEntityFilter(company, key))}){crossCompany}");
-        HttpResponseMessage? response = null;
-        try
-        {
-            response = await Client
-                .PatchAsJsonAsync(
-                    url,
-                    value,
-                    options: JsonOptions,
-                    cancellationToken)
-                .ConfigureAwait(false);
-            if (response == null)
-            {
-                throw new HttpRequestException(
-                    $"The patch request '{url.AbsoluteUri}' failed. The HTTP response is null.");
-            }
-
-            if (response.IsSuccessStatusCode)
-            {
-                _logger.LogInformation("The patch method call to '{Patch}' succeeded.", url.AbsolutePath);
-                return response;
-            }
-
-            throw new HttpRequestException($"The patch request failed with status code '{response.StatusCode}'.");
-        }
-        catch (Exception e)
-        {
-            string? responseContent = response == null ? null : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-            throw new PatchRequestFailedException(
-                TEntity.EntityName(),
-                url,
-                value,
-                responseContent,
-                message: null,
-                e);
-        }
-    }
-
-    /// <inheritdoc/>
-    public Task<HttpResponseMessage> SendPostAsync<TCreate>(TCreate value, CancellationToken cancellationToken)
-    {
-        return SendPostAsync(DefaultCompany, value, cancellationToken);
-    }
-
-    /// <inheritdoc/>
-    public async Task<HttpResponseMessage> SendPostAsync<TCreate>(string company, TCreate value, CancellationToken cancellationToken)
-    {
-        string crossCompany = string.Equals(DefaultCompany, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : "/?" + _crossCompanyQuery;
-        await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
-        Uri url = new(_instance, $"{_dataPath}/{TEntity.EntityName()}{crossCompany}");
-        HttpResponseMessage? response = null;
-        try
-        {
-            response = await Client
-                .PostAsJsonAsync(
-                    url,
-                    value,
-                    options: JsonOptions,
-                    cancellationToken).ConfigureAwait(false);
-
-            if (response.IsSuccessStatusCode)
-            {
-                _logger.LogInformation("The method call to '{Post}' succeeded.", url.AbsolutePath);
-                return response;
-            }
-
-            throw new HttpRequestException($"The post request failed with status code '{response?.StatusCode}'.");
-        }
-        catch (Exception e)
-        {
-            string content = "No response";
-            if (response != null)
-            {
-                content = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-            }
-
-            _logger.LogError(
-                e,
-                "The method call to '{Path}' failed. response content :\n{ResponseContent}",
-                url.AbsoluteUri,
-                content);
-            throw new HttpRequestException($"The method call to '{url.AbsoluteUri}' failed. response content :\n{content}", e);
-        }
     }
 
     private static string GetEntityFilter(string company, IDictionary<string, object> keys)
@@ -371,6 +121,18 @@ public class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics365Financ
         }
 
         return query.ToString();
+    }
+
+    private static IDictionary<string, object?> ToDictionary<T>(T obj)
+    {
+        _ = Guard.Against.Null(obj);
+        Dictionary<string, object?> dico = new(StringComparer.Ordinal);
+        foreach (System.Reflection.PropertyInfo prop in obj.GetType().GetProperties())
+        {
+            dico.Add(prop.Name, prop.GetValue(obj));
+        }
+
+        return dico;
     }
 
     private async Task AddRequestHeadersAsync(CancellationToken cancellationToken)
