@@ -9,10 +9,9 @@ namespace Hexalith.IntegrationTests.Dynamics365Finance;
 using FluentAssertions;
 
 using Hexalith.Extensions.Helpers;
-using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Services;
+using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Services.CustomerGroups;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks;
-using Hexalith.TestMocks;
 
 using System.Threading.Tasks;
 
@@ -24,9 +23,8 @@ public class CustomerGroupTest
         Dynamics365FinanceAndOperationsClientBuilder<CustomerGroup> builder = new();
         _ = builder.WithValueFromConfiguration<CustomerGroupTest>();
 
-        CustomerGroupService service = new(
-           builder.Build(),
-           new LoggerBuilder<CustomerGroupService>().Build());
+        IDynamics365FinanceAndOperationsClient<CustomerGroup> service = builder.Build();
+
         string? company = builder.Settings.Build().Value.Company;
         _ = company.Should().NotBeNullOrWhiteSpace();
         CustomerGroupCreate newGroup = new(
@@ -41,8 +39,8 @@ public class CustomerGroupTest
             paymentTermId: "BADPAY",
             taxGroupId: "BADTAX",
             "No");
-        Func<Task> act = () => service.InsertAsync(newGroup, CancellationToken.None);
-        return act.Should().ThrowAsync<Dynamics365FinanceInsertException<CustomerGroup, CustomerGroupCreate>>();
+        Func<Task> act = () => service.PostAsync(newGroup, CancellationToken.None);
+        return act.Should().ThrowAsync<Dynamics365FinancePostException<CustomerGroup, CustomerGroupCreate>>();
     }
 
     [Fact]
@@ -51,15 +49,13 @@ public class CustomerGroupTest
         Dynamics365FinanceAndOperationsClientBuilder<CustomerGroup> builder = new();
         _ = builder.WithValueFromConfiguration<CustomerGroupTest>();
 
-        CustomerGroupService service = new(
-           builder.Build(),
-           new LoggerBuilder<CustomerGroupService>().Build());
+        IDynamics365FinanceAndOperationsClient<CustomerGroup> service = builder.Build();
 
         string? company = builder.Settings.Build().Value.Company;
         _ = company.Should().NotBeNullOrWhiteSpace();
         CustomerGroupCreate newGroup = new(
             company!,
-            "TEST991",
+            "TEST992",
             clearingPeriodPaymentTermName: null,
             defaultDimensionDisplayValue: null,
             customerAccountNumberSequence: null,
@@ -69,7 +65,7 @@ public class CustomerGroupTest
             paymentTermId: null,
             taxGroupId: null,
             "No");
-        CustomerGroup group = await service.InsertAsync(newGroup, CancellationToken.None);
+        CustomerGroup group = await service.PostAsync(newGroup, CancellationToken.None);
         _ = group.Should().NotBeNull();
         _ = group.CustomerGroupId.Should().Be(newGroup.CustomerGroupId);
         _ = group.Description.Should().Be(newGroup.Description);
@@ -81,15 +77,14 @@ public class CustomerGroupTest
         Dynamics365FinanceAndOperationsClientBuilder<CustomerGroup> builder = new();
         _ = builder.WithValueFromConfiguration<CustomerGroupTest>();
 
-        CustomerGroupService service = new(
-           builder.Build(),
-           new LoggerBuilder<CustomerGroupService>().Build());
+        IDynamics365FinanceAndOperationsClient<CustomerGroup> service = builder.Build();
 
         string? company = builder.Settings.Build().Value.Company;
         _ = company.Should().NotBeNullOrWhiteSpace();
         const string id = "TST990";
         string description = "HELLO TEST 990 Updated " + UniqueIdHelper.GenerateDateTimeId();
-        if (!await service.ExistsAsync(id, CancellationToken.None))
+        CustomerGroupKey key = new(CustomerGroupId: id);
+        if (!await service.ExistsAsync(key, CancellationToken.None))
         {
             CustomerGroupCreate newGroup = new(
                company!,
@@ -103,11 +98,11 @@ public class CustomerGroupTest
                paymentTermId: null,
                taxGroupId: null,
                "No");
-            _ = await service.InsertAsync(newGroup, CancellationToken.None);
+            _ = await service.PostAsync(newGroup, CancellationToken.None);
         }
 
-        await service.UpdateAsync(id, new CustomerGroupUpdate { Description = description }, CancellationToken.None);
-        CustomerGroup group = await service.GetAsync(id, CancellationToken.None);
+        await service.PatchAsync(key, new CustomerGroupUpdate { Description = description }, CancellationToken.None);
+        CustomerGroup group = await service.GetSingleAsync(key, CancellationToken.None);
         _ = group.Should().NotBeNull();
         _ = group.Description.Should().Be(description);
     }

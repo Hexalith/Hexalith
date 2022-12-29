@@ -6,6 +6,8 @@
 
 namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
 
+using Ardalis.GuardClauses;
+
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 
 using Microsoft.Extensions.Logging;
@@ -23,6 +25,7 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// <inheritdoc/>
     public async Task<TEntity> PostAsync<TCreate>(TCreate value, CancellationToken cancellationToken)
     {
+        _ = Guard.Against.Null(value);
         TEntity result = await PostAsync(DefaultCompany, value, cancellationToken)
             .ConfigureAwait(false);
         return result;
@@ -31,6 +34,7 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// <inheritdoc/>
     public async Task<TEntity> PostAsync<TCreate>(string company, TCreate value, CancellationToken cancellationToken)
     {
+        _ = Guard.Against.Null(value);
         HttpResponseMessage? response = null;
         try
         {
@@ -52,12 +56,15 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// <inheritdoc/>
     public Task<HttpResponseMessage> SendPostAsync<TCreate>(TCreate value, CancellationToken cancellationToken)
     {
+        _ = Guard.Against.Null(value);
         return SendPostAsync(DefaultCompany, value, cancellationToken);
     }
 
     /// <inheritdoc/>
     public async Task<HttpResponseMessage> SendPostAsync<TCreate>(string company, TCreate value, CancellationToken cancellationToken)
     {
+        _ = Guard.Against.NullOrWhiteSpace(company);
+        _ = Guard.Against.Null(value);
         string crossCompany = string.Equals(DefaultCompany, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : "/?" + _crossCompanyQuery;
         await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
         Uri url = new(_instance, $"{_dataPath}/{TEntity.EntityName()}{crossCompany}");

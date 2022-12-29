@@ -6,6 +6,8 @@
 
 namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
 
+using Ardalis.GuardClauses;
+
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 
 using Microsoft.Extensions.Logging;
@@ -21,40 +23,76 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     where TEntity : class, IODataElement
 {
     /// <inheritdoc/>
-    public Task PatchAsync<TUpdate>(
-        IDictionary<string, object> key,
+    public async Task PatchAsync<TUpdate>(IPerCompanyPrimaryKey key, TUpdate value, CancellationToken cancellationToken)
+    {
+        _ = Guard.Against.Null(key);
+        _ = Guard.Against.Null(value);
+        IDictionary<string, object?> dict = ToDictionary(key);
+        _ = Guard.Against.NegativeOrZero(
+            dict.Count - 1,
+            message: "The key must have at least one property other than the DataAreaId.");
+        string dataAreaId = string.IsNullOrWhiteSpace(key.DataAreaId) ? DefaultCompany : key.DataAreaId;
+        _ = dict.Remove(nameof(IPerCompanyPrimaryKey.DataAreaId));
+        await PatchAsync(dataAreaId, dict, value, cancellationToken);
+    }
+
+    /// <inheritdoc/>
+    public async Task PatchAsync<TUpdate>(ICommonPrimaryKey key, TUpdate value, CancellationToken cancellationToken)
+    {
+        _ = Guard.Against.Null(key);
+        _ = Guard.Against.Null(value);
+        IDictionary<string, object?> dict = ToDictionary(key);
+        _ = Guard.Against.NegativeOrZero(
+            dict.Count,
+            message: "The key must have at least one property.");
+        await PatchAsync(DefaultCompany, dict, value, cancellationToken);
+    }
+
+    /// <inheritdoc/>
+    public async Task PatchAsync<TUpdate>(
+        IDictionary<string, object?> key,
         TUpdate value,
         CancellationToken cancellationToken)
     {
-        return PatchAsync(DefaultCompany, key, value, cancellationToken);
+        _ = Guard.Against.Null(key);
+        _ = Guard.Against.Null(value);
+        await PatchAsync(DefaultCompany, key, value, cancellationToken);
     }
 
     /// <inheritdoc/>
     public async Task PatchAsync<TUpdate>(
         string company,
-        IDictionary<string, object> key,
+        IDictionary<string, object?> key,
         TUpdate value,
         CancellationToken cancellationToken)
     {
+        _ = Guard.Against.NullOrWhiteSpace(company);
+        _ = Guard.Against.Null(key);
+        _ = Guard.Against.Null(value);
         _ = await SendPatchAsync(key, value, cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public Task<HttpResponseMessage> SendPatchAsync<TUpdate>(
-        IDictionary<string, object> key,
+    public async Task<HttpResponseMessage> SendPatchAsync<TUpdate>(
+        IDictionary<string, object?> key,
         TUpdate value,
         CancellationToken cancellationToken)
     {
-        return SendPatchAsync(DefaultCompany, key, value, cancellationToken);
+        _ = Guard.Against.Null(key);
+        _ = Guard.Against.Null(value);
+        return await SendPatchAsync(DefaultCompany, key, value, cancellationToken);
     }
 
     /// <inheritdoc/>
     public async Task<HttpResponseMessage> SendPatchAsync<TUpdate>(
         string company,
-        IDictionary<string, object> key,
+        IDictionary<string, object?> key,
         TUpdate value,
         CancellationToken cancellationToken)
     {
+        _ = Guard.Against.NullOrWhiteSpace(company);
+        _ = Guard.Against.Null(key);
+        _ = Guard.Against.Null(value);
         string crossCompany = string.Equals(DefaultCompany, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : "?" + _crossCompanyQuery;
         await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
         Uri url = new(_instance, $"{_dataPath}/{TEntity.EntityName()}({HttpUtility.UrlEncode(GetEntityFilter(company, key))}){crossCompany}");

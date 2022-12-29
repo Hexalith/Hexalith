@@ -30,7 +30,19 @@ public interface IDynamics365FinanceAndOperationsClient<TODataElement>
     /// <param name="parameters">Action parameters.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>Task.</returns>
-    Task DoActionAsync(string action, IDictionary<string, object> parameters, CancellationToken cancellationToken);
+    Task DoActionAsync(string action, IDictionary<string, object?> parameters, CancellationToken cancellationToken);
+
+    /// <summary>Existses the asynchronous.</summary>
+    /// <param name="key">The key.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task&lt;System.Boolean&gt;.</returns>
+    Task<bool> ExistsAsync(ICommonPrimaryKey key, CancellationToken cancellationToken);
+
+    /// <summary>Existses the asynchronous.</summary>
+    /// <param name="key">The key.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task&lt;System.Boolean&gt;.</returns>
+    Task<bool> ExistsAsync(IPerCompanyPrimaryKey key, CancellationToken cancellationToken);
 
     /// <summary>
     /// Get a filtered entity object.
@@ -39,7 +51,7 @@ public interface IDynamics365FinanceAndOperationsClient<TODataElement>
     /// <param name="filter">Filter values.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>List of entity objects.</returns>
-    Task<IEnumerable<TODataElement>> GetAsync(string company, IDictionary<string, object> filter, CancellationToken cancellationToken);
+    Task<IEnumerable<TODataElement>> GetAsync(string company, IDictionary<string, object?> filter, CancellationToken cancellationToken);
 
     /// <summary>
     /// Get a filtered entity object list.
@@ -48,7 +60,7 @@ public interface IDynamics365FinanceAndOperationsClient<TODataElement>
     /// <param name="filter">Filter values.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>List of entity objects.</returns>
-    Task<IEnumerable<TODataElement>> GetAsync(IDictionary<string, object> filter, CancellationToken cancellationToken);
+    Task<IEnumerable<TODataElement>> GetAsync(IDictionary<string, object?> filter, CancellationToken cancellationToken);
 
     /// <summary>
     /// Get entity object by it's primary key.
@@ -57,7 +69,7 @@ public interface IDynamics365FinanceAndOperationsClient<TODataElement>
     /// <param name="keys">Primary key values.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>Entity object.</returns>
-    Task<TODataElement> GetSingleAsync(IDictionary<string, object> keys, CancellationToken cancellationToken);
+    Task<TODataElement> GetSingleAsync(IDictionary<string, object?> keys, CancellationToken cancellationToken);
 
     /// <summary>
     /// Get entity object by it's primary key.
@@ -67,7 +79,7 @@ public interface IDynamics365FinanceAndOperationsClient<TODataElement>
     /// <param name="keys">Primary key values.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>Entity object.</returns>
-    Task<TODataElement> GetSingleAsync(string company, IDictionary<string, object> keys, CancellationToken cancellationToken);
+    Task<TODataElement> GetSingleAsync(string company, IDictionary<string, object?> keys, CancellationToken cancellationToken);
 
     /// <summary>
     /// Get entity object by it's primary key.
@@ -75,7 +87,7 @@ public interface IDynamics365FinanceAndOperationsClient<TODataElement>
     /// <param name="key">The key.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Entity object.</returns>
-    Task<TODataElement> GetSingleAsync(IPrimaryKey key, CancellationToken cancellationToken);
+    Task<TODataElement> GetSingleAsync(ICommonPrimaryKey key, CancellationToken cancellationToken);
 
     /// <summary>
     /// Get per company entity object by it's primary key.
@@ -83,7 +95,7 @@ public interface IDynamics365FinanceAndOperationsClient<TODataElement>
     /// <param name="key">The per company key.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Entity object.</returns>
-    Task<TODataElement> GetSingleAsync(IPrimaryPerCompanyKey key, CancellationToken cancellationToken);
+    Task<TODataElement> GetSingleAsync(IPerCompanyPrimaryKey key, CancellationToken cancellationToken);
 
     /// <summary>
     /// Patch an entity object.
@@ -93,7 +105,7 @@ public interface IDynamics365FinanceAndOperationsClient<TODataElement>
     /// <param name="value">Values to update.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>The entity valued task.</returns>
-    Task PatchAsync<TUpdate>(IDictionary<string, object> key, TUpdate value, CancellationToken cancellationToken);
+    Task PatchAsync<TUpdate>(IDictionary<string, object?> key, TUpdate value, CancellationToken cancellationToken);
 
     /// <summary>
     /// Patch an entity object.
@@ -104,7 +116,27 @@ public interface IDynamics365FinanceAndOperationsClient<TODataElement>
     /// <param name="value">Values to update.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>The entity valued task.</returns>
-    Task PatchAsync<TUpdate>(string company, IDictionary<string, object> key, TUpdate value, CancellationToken cancellationToken);
+    Task PatchAsync<TUpdate>(string company, IDictionary<string, object?> key, TUpdate value, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Patch a per company entity object.
+    /// </summary>
+    /// <typeparam name="TUpdate">The type of the t update.</typeparam>
+    /// <param name="key">The key.</param>
+    /// <param name="value">The value.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task.</returns>
+    Task PatchAsync<TUpdate>(IPerCompanyPrimaryKey key, TUpdate value, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Patch a common entity object.
+    /// </summary>
+    /// <typeparam name="TUpdate">The type of the t update.</typeparam>
+    /// <param name="key">The key.</param>
+    /// <param name="value">The value.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task.</returns>
+    Task PatchAsync<TUpdate>(ICommonPrimaryKey key, TUpdate value, CancellationToken cancellationToken);
 
     /// <summary>
     /// Post a new entity object.
@@ -134,7 +166,7 @@ public interface IDynamics365FinanceAndOperationsClient<TODataElement>
     /// <param name="value">Values to update.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>The response message valued task.</returns>
-    Task<HttpResponseMessage> SendPatchAsync<TUpdate>(string company, IDictionary<string, object> key, TUpdate value, CancellationToken cancellationToken);
+    Task<HttpResponseMessage> SendPatchAsync<TUpdate>(string company, IDictionary<string, object?> key, TUpdate value, CancellationToken cancellationToken);
 
     /// <summary>
     /// Patch an entity object.
@@ -144,7 +176,7 @@ public interface IDynamics365FinanceAndOperationsClient<TODataElement>
     /// <param name="value">Values to update.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>The response message valued task.</returns>
-    Task<HttpResponseMessage> SendPatchAsync<TUpdate>(IDictionary<string, object> key, TUpdate value, CancellationToken cancellationToken);
+    Task<HttpResponseMessage> SendPatchAsync<TUpdate>(IDictionary<string, object?> key, TUpdate value, CancellationToken cancellationToken);
 
     /// <summary>
     /// Post a new entity object.

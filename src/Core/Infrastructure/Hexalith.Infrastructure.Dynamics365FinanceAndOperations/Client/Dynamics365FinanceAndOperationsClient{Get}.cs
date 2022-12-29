@@ -13,6 +13,7 @@ using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 using Microsoft.Extensions.Logging;
 
 using System.Net.Http.Json;
+using System.Text.Json;
 using System.Web;
 
 /// <summary>
@@ -22,6 +23,32 @@ using System.Web;
 public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics365FinanceAndOperationsClient<TEntity>
     where TEntity : class, IODataElement
 {
+    /// <inheritdoc/>
+    public async Task<bool> ExistsAsync(IPerCompanyPrimaryKey key, CancellationToken cancellationToken)
+    {
+        IDictionary<string, object?> dict = ToDictionary(key);
+        _ = Guard.Against.NegativeOrZero(
+            dict.Count - 1,
+            message: "The key must have at least one property other than the DataAreaId.");
+        string dataAreaId = string.IsNullOrWhiteSpace(key.DataAreaId) ? DefaultCompany : key.DataAreaId;
+        _ = dict.Remove(nameof(IPerCompanyPrimaryKey.DataAreaId));
+        IEnumerable<TEntity> result = await GetAsync(dataAreaId, dict, cancellationToken);
+        int count = result.Count();
+        return count == 1 || (count == 0 ? false : throw new InvalidOperationException($"The key {JsonSerializer.Serialize(key)} is not unique."));
+    }
+
+    /// <inheritdoc/>
+    public async Task<bool> ExistsAsync(ICommonPrimaryKey key, CancellationToken cancellationToken)
+    {
+        IDictionary<string, object?> dict = ToDictionary(key);
+        _ = Guard.Against.NegativeOrZero(
+            dict.Count,
+            message: "The key must have at least one property other than the DataAreaId.");
+        IEnumerable<TEntity> result = await GetAsync(DefaultCompany, dict, cancellationToken);
+        int count = result.Count();
+        return count == 1 || (count == 0 ? false : throw new InvalidOperationException($"The key {JsonSerializer.Serialize(key)} is not unique."));
+    }
+
     /// <inheritdoc/>
     public Task<IEnumerable<TEntity>> GetAsync(IDictionary<string, object> filter, CancellationToken cancellationToken)
     {
@@ -70,25 +97,25 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     }
 
     /// <inheritdoc/>
-    public Task<TEntity> GetSingleAsync(IPrimaryPerCompanyKey key, CancellationToken cancellationToken)
+    public Task<TEntity> GetSingleAsync(IPerCompanyPrimaryKey key, CancellationToken cancellationToken)
     {
         IDictionary<string, object?> dict = ToDictionary(key);
         _ = Guard.Against.NegativeOrZero(
             dict.Count - 1,
             message: "The key must have at least one property other than the DataAreaId.");
         string dataAreaId = string.IsNullOrWhiteSpace(key.DataAreaId) ? DefaultCompany : key.DataAreaId;
-        _ = dict.Remove(nameof(IPrimaryPerCompanyKey));
-        return GetSingleAsync(dataAreaId, (IDictionary<string, object>)key, cancellationToken);
+        _ = dict.Remove(nameof(IPerCompanyPrimaryKey.DataAreaId));
+        return GetSingleAsync(dataAreaId, dict, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public Task<TEntity> GetSingleAsync(IPrimaryKey key, CancellationToken cancellationToken)
+    public Task<TEntity> GetSingleAsync(ICommonPrimaryKey key, CancellationToken cancellationToken)
     {
         IDictionary<string, object?> dict = ToDictionary(key);
         _ = Guard.Against.NegativeOrZero(
             dict.Count,
             message: "The key must have at least one property other than the DataAreaId.");
-        return GetSingleAsync(DefaultCompany, (IDictionary<string, object>)key, cancellationToken);
+        return GetSingleAsync(DefaultCompany, dict, cancellationToken);
     }
 
     /// <inheritdoc/>

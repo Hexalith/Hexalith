@@ -19,7 +19,7 @@ using System.Runtime.Serialization;
 /// <typeparam name="TCreate">The type of the create.</typeparam>
 /// <seealso cref="Exception" />
 [Serializable]
-internal class Dynamics365FinancePostException<TEntity, TCreate> : Exception
+public class Dynamics365FinancePostException<TEntity, TCreate> : Exception
     where TEntity : class, IODataElement
 {
     /// <summary>
