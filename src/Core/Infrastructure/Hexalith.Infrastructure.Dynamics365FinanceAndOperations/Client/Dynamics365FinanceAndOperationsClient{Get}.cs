@@ -24,7 +24,7 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// <inheritdoc/>
     public async Task<bool> ExistsAsync(IPerCompanyPrimaryKey key, CancellationToken cancellationToken)
     {
-        (string? dataAreaId, IDictionary<string, object?>? dict) = KeyToDictionary(key);
+        (string dataAreaId, IDictionary<string, object?> dict) = KeyToDictionary(key);
         IEnumerable<TEntity> result = await GetAsync(dataAreaId, dict, cancellationToken);
         int count = result.Count();
         return count == 1 || (count == 0 ? false : throw new InvalidOperationException($"The key {JsonSerializer.Serialize(key)} is not unique."));
@@ -39,13 +39,13 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     }
 
     /// <inheritdoc/>
-    public Task<IEnumerable<TEntity>> GetAsync(IDictionary<string, object> filter, CancellationToken cancellationToken)
+    public Task<IEnumerable<TEntity>> GetAsync(IDictionary<string, object?> filter, CancellationToken cancellationToken)
     {
         return GetAsync(DefaultCompany, filter, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task<IEnumerable<TEntity>> GetAsync(string company, IDictionary<string, object> filter, CancellationToken cancellationToken)
+    public async Task<IEnumerable<TEntity>> GetAsync(string company, IDictionary<string, object?> filter, CancellationToken cancellationToken)
     {
         string crossCompany = string.Equals(DefaultCompany, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : _crossCompanyQuery + "&";
         await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
@@ -88,7 +88,7 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// <inheritdoc/>
     public Task<TEntity> GetSingleAsync(IPerCompanyPrimaryKey key, CancellationToken cancellationToken)
     {
-        (string? dataAreaId, IDictionary<string, object?>? dict) = KeyToDictionary(key);
+        (string dataAreaId, IDictionary<string, object?> dict) = KeyToDictionary(key);
         return GetSingleAsync(dataAreaId, dict, cancellationToken);
     }
 

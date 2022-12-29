@@ -120,7 +120,7 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// Gets the json options.
     /// </summary>
     /// <value>The json options.</value>
-    protected static JsonSerializerOptions JsonOptions => new()
+    protected JsonSerializerOptions JsonOptions => new()
     {
         PropertyNameCaseInsensitive = false,
         DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
@@ -139,7 +139,7 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     private HttpClient Client => _client ??= _httpClientFactory.CreateClient();
 
     /// <inheritdoc/>
-    public Task DoActionAsync(string action, IDictionary<string, object> parameters, CancellationToken cancellationToken)
+    public Task DoActionAsync(string action, IDictionary<string, object?> parameters, CancellationToken cancellationToken)
     {
         throw new NotSupportedException();
     }
@@ -149,7 +149,7 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// </summary>
     /// <param name="key">The key.</param>
     /// <returns>System.ValueTuple&lt;System.String, IDictionary&lt;System.String, System.Nullable&lt;System.Object&gt;&gt;&gt;.</returns>
-    protected virtual (string dataAreaId, IDictionary<string, object?> values) KeyToDictionary(IPerCompanyPrimaryKey key)
+    protected virtual (string DataAreaId, IDictionary<string, object?> Values) KeyToDictionary(IPerCompanyPrimaryKey key)
     {
         _ = Guard.Against.Null(key);
         IDictionary<string, object?> dict = ToDictionary(key);
@@ -183,11 +183,11 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// <param name="company">The company.</param>
     /// <param name="keys">The keys.</param>
     /// <returns>System.String.</returns>
-    private static string GetEntityFilter(string company, IDictionary<string, object> keys)
+    private static string GetEntityFilter(string company, IDictionary<string, object?> keys)
     {
         StringBuilder filter = new();
         _ = filter.Append(CultureInfo.InvariantCulture, $"dataAreaId='{company}'");
-        foreach (KeyValuePair<string, object> key in keys)
+        foreach (KeyValuePair<string, object?> key in keys)
         {
             _ = filter.Append(CultureInfo.InvariantCulture, $",{key.Key}={GetOdataString(key.Value)}");
         }
@@ -200,9 +200,10 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// </summary>
     /// <param name="value">The value.</param>
     /// <returns>System.String.</returns>
-    private static string GetOdataString(object value)
+    private static string GetOdataString(object? value)
     {
-        return value is string s ? $"'{s}'" : Convert.ToString(value, CultureInfo.InvariantCulture) ?? string.Empty;
+        string v = value is string s ? $"'{s}'" : Convert.ToString(value, CultureInfo.InvariantCulture) ?? string.Empty;
+        return value is null ? "null" : v;
     }
 
     /// <summary>
@@ -211,11 +212,11 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// <param name="company">The company.</param>
     /// <param name="filter">The filter.</param>
     /// <returns>System.String.</returns>
-    private static string GetQueryFilter(string company, IDictionary<string, object> filter)
+    private static string GetQueryFilter(string company, IDictionary<string, object?> filter)
     {
         StringBuilder query = new();
         _ = query.Append(CultureInfo.InvariantCulture, $"dataAreaId eq '{company}'");
-        foreach (KeyValuePair<string, object> key in filter)
+        foreach (KeyValuePair<string, object?> key in filter)
         {
             _ = query.Append(CultureInfo.InvariantCulture, $" and {key.Key} eq {GetOdataString(key.Value)}");
         }
@@ -226,7 +227,7 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// <summary>
     /// Converts to dictionary.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">Value type.</typeparam>
     /// <param name="obj">The object.</param>
     /// <returns>IDictionary&lt;System.String, System.Nullable&lt;System.Object&gt;&gt;.</returns>
     private static IDictionary<string, object?> ToDictionary<T>(T obj)
