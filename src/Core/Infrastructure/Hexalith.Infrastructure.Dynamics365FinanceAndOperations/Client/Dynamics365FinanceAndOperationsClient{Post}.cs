@@ -80,7 +80,7 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
 
             if (response.IsSuccessStatusCode)
             {
-                _logger.LogInformation("The method call to '{Post}' succeeded.", url.AbsolutePath);
+                Logger.LogInformation("The method call to '{Post}' succeeded.", url.AbsolutePath);
                 return response;
             }
 
@@ -94,7 +94,7 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
                 content = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
             }
 
-            _logger.LogError(
+            Logger.LogError(
                 e,
                 "The method call to '{Path}' failed. response content :\n{ResponseContent}",
                 url.AbsoluteUri,

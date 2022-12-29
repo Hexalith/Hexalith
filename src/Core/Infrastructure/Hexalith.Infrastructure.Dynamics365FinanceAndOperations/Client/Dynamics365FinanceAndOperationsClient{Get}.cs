@@ -6,8 +6,6 @@
 
 namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
 
-using Ardalis.GuardClauses;
-
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 
 using Microsoft.Extensions.Logging;
@@ -26,12 +24,7 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// <inheritdoc/>
     public async Task<bool> ExistsAsync(IPerCompanyPrimaryKey key, CancellationToken cancellationToken)
     {
-        IDictionary<string, object?> dict = ToDictionary(key);
-        _ = Guard.Against.NegativeOrZero(
-            dict.Count - 1,
-            message: "The key must have at least one property other than the DataAreaId.");
-        string dataAreaId = string.IsNullOrWhiteSpace(key.DataAreaId) ? DefaultCompany : key.DataAreaId;
-        _ = dict.Remove(nameof(IPerCompanyPrimaryKey.DataAreaId));
+        (string? dataAreaId, IDictionary<string, object?>? dict) = KeyToDictionary(key);
         IEnumerable<TEntity> result = await GetAsync(dataAreaId, dict, cancellationToken);
         int count = result.Count();
         return count == 1 || (count == 0 ? false : throw new InvalidOperationException($"The key {JsonSerializer.Serialize(key)} is not unique."));
@@ -40,11 +33,7 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// <inheritdoc/>
     public async Task<bool> ExistsAsync(ICommonPrimaryKey key, CancellationToken cancellationToken)
     {
-        IDictionary<string, object?> dict = ToDictionary(key);
-        _ = Guard.Against.NegativeOrZero(
-            dict.Count,
-            message: "The key must have at least one property other than the DataAreaId.");
-        IEnumerable<TEntity> result = await GetAsync(DefaultCompany, dict, cancellationToken);
+        IEnumerable<TEntity> result = await GetAsync(DefaultCompany, KeyToDictionary(key), cancellationToken);
         int count = result.Count();
         return count == 1 || (count == 0 ? false : throw new InvalidOperationException($"The key {JsonSerializer.Serialize(key)} is not unique."));
     }
@@ -79,7 +68,7 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
                     .ConfigureAwait(false);
             if (content != null && !string.IsNullOrWhiteSpace(content.Context))
             {
-                _logger.LogTrace("The method call to '{Path}' was successful.", url.AbsoluteUri);
+                Logger.LogTrace("The method call to '{Path}' was successful.", url.AbsoluteUri);
                 return content.Values ?? Enumerable.Empty<TEntity>();
             }
 
@@ -88,7 +77,7 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
         }
         catch
         {
-            _logger.LogError(
+            Logger.LogError(
                 "The method call to '{Path}' failed. response content :\n{ResponseContent}",
                 url.AbsoluteUri,
                 response == null ? "No response" : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false));
@@ -99,33 +88,24 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// <inheritdoc/>
     public Task<TEntity> GetSingleAsync(IPerCompanyPrimaryKey key, CancellationToken cancellationToken)
     {
-        IDictionary<string, object?> dict = ToDictionary(key);
-        _ = Guard.Against.NegativeOrZero(
-            dict.Count - 1,
-            message: "The key must have at least one property other than the DataAreaId.");
-        string dataAreaId = string.IsNullOrWhiteSpace(key.DataAreaId) ? DefaultCompany : key.DataAreaId;
-        _ = dict.Remove(nameof(IPerCompanyPrimaryKey.DataAreaId));
+        (string? dataAreaId, IDictionary<string, object?>? dict) = KeyToDictionary(key);
         return GetSingleAsync(dataAreaId, dict, cancellationToken);
     }
 
     /// <inheritdoc/>
     public Task<TEntity> GetSingleAsync(ICommonPrimaryKey key, CancellationToken cancellationToken)
     {
-        IDictionary<string, object?> dict = ToDictionary(key);
-        _ = Guard.Against.NegativeOrZero(
-            dict.Count,
-            message: "The key must have at least one property other than the DataAreaId.");
-        return GetSingleAsync(DefaultCompany, dict, cancellationToken);
+        return GetSingleAsync(DefaultCompany, KeyToDictionary(key), cancellationToken);
     }
 
     /// <inheritdoc/>
-    public Task<TEntity> GetSingleAsync(IDictionary<string, object> keys, CancellationToken cancellationToken)
+    public Task<TEntity> GetSingleAsync(IDictionary<string, object?> keys, CancellationToken cancellationToken)
     {
         return GetSingleAsync(DefaultCompany, keys, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task<TEntity> GetSingleAsync(string company, IDictionary<string, object> keys, CancellationToken cancellationToken)
+    public async Task<TEntity> GetSingleAsync(string company, IDictionary<string, object?> keys, CancellationToken cancellationToken)
     {
         string crossCompany = string.Equals(DefaultCompany, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : "?" + _crossCompanyQuery;
         await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
@@ -151,13 +131,13 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
                 throw new HttpRequestException($"Empty content response on request to '{url.AbsoluteUri}'.");
             }
 
-            _logger.LogDebug("The method call to '{Path}' was successful.", url.AbsoluteUri);
+            Logger.LogDebug("The method call to '{Path}' was successful.", url.AbsoluteUri);
             return content;
         }
         catch (Exception ex)
         {
             string? responseContent = (response == null) ? null : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-            _logger.LogError(
+            Logger.LogError(
                 "Can't get {EntityName} with keys {Keys}. The method call to '{Path}' failed. response content :\n{ResponseContent}",
                 typeof(TEntity).Name,
                 keys,

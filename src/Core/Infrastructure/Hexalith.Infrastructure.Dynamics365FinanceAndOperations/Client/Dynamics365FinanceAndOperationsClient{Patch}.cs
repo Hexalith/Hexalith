@@ -27,12 +27,7 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     {
         _ = Guard.Against.Null(key);
         _ = Guard.Against.Null(value);
-        IDictionary<string, object?> dict = ToDictionary(key);
-        _ = Guard.Against.NegativeOrZero(
-            dict.Count - 1,
-            message: "The key must have at least one property other than the DataAreaId.");
-        string dataAreaId = string.IsNullOrWhiteSpace(key.DataAreaId) ? DefaultCompany : key.DataAreaId;
-        _ = dict.Remove(nameof(IPerCompanyPrimaryKey.DataAreaId));
+        (string? dataAreaId, IDictionary<string, object?>? dict) = KeyToDictionary(key);
         await PatchAsync(dataAreaId, dict, value, cancellationToken);
     }
 
@@ -41,11 +36,7 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     {
         _ = Guard.Against.Null(key);
         _ = Guard.Against.Null(value);
-        IDictionary<string, object?> dict = ToDictionary(key);
-        _ = Guard.Against.NegativeOrZero(
-            dict.Count,
-            message: "The key must have at least one property.");
-        await PatchAsync(DefaultCompany, dict, value, cancellationToken);
+        await PatchAsync(DefaultCompany, KeyToDictionary(key), value, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -114,7 +105,7 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
 
             if (response.IsSuccessStatusCode)
             {
-                _logger.LogInformation("The patch method call to '{Patch}' succeeded.", url.AbsolutePath);
+                Logger.LogInformation("The patch method call to '{Patch}' succeeded.", url.AbsolutePath);
                 return response;
             }
 

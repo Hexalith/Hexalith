@@ -28,16 +28,38 @@ using System.Text.Json.Serialization;
 public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics365FinanceAndOperationsClient<TEntity>
     where TEntity : class, IODataElement
 {
+    /// <summary>
+    /// The cross company query.
+    /// </summary>
     private const string _crossCompanyQuery = "cross-company=true";
+
+    /// <summary>
+    /// The data path.
+    /// </summary>
     private const string _dataPath = "data";
+
+    /// <summary>
+    /// The HTTP client factory.
+    /// </summary>
     private readonly IHttpClientFactory _httpClientFactory;
+
+    /// <summary>
+    /// The instance.
+    /// </summary>
     private readonly Uri _instance;
-    private readonly ILogger<Dynamics365FinanceAndOperationsClient<TEntity>> _logger;
+
+    /// <summary>
+    /// The security context.
+    /// </summary>
     private readonly IDynamics365FinanceAndOperationsSecurityContext _securityContext;
+
+    /// <summary>
+    /// The client.
+    /// </summary>
     private HttpClient? _client;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Dynamics365FinanceAndOperationsClient{TEntity}"/> class.
+    /// Initializes a new instance of the <see cref="Dynamics365FinanceAndOperationsClient{TEntity}" /> class.
     /// </summary>
     /// <param name="httpClientFactory">The HTTP client factory.</param>
     /// <param name="securityContext">The Dynamics 365 security context.</param>
@@ -49,12 +71,30 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
         IDynamics365FinanceAndOperationsSecurityContext securityContext,
         IOptions<Dynamics365FinanceAndOperationsClientSettings> settings,
         ILogger<Dynamics365FinanceAndOperationsClient<TEntity>> logger)
+        : this(httpClientFactory, securityContext, settings, (ILogger)logger)
+    {
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Dynamics365FinanceAndOperationsClient{TEntity}"/> class.
+    /// </summary>
+    /// <param name="httpClientFactory">The HTTP client factory.</param>
+    /// <param name="securityContext">The security context.</param>
+    /// <param name="settings">The settings.</param>
+    /// <param name="logger">The logger.</param>
+    /// <exception cref="System.ArgumentException">The {nameof(s.Instance)} setting is not defined. - settings.</exception>
+    /// <exception cref="System.ArgumentException">The {nameof(s.Company)} setting is not defined. - settings.</exception>
+    protected Dynamics365FinanceAndOperationsClient(
+        IHttpClientFactory httpClientFactory,
+        IDynamics365FinanceAndOperationsSecurityContext securityContext,
+        IOptions<Dynamics365FinanceAndOperationsClientSettings> settings,
+        ILogger logger)
     {
         Dynamics365FinanceAndOperationsClientSettings s = Guard.Against.Null(settings).Value;
 
         _httpClientFactory = Guard.Against.Null(httpClientFactory);
         _securityContext = Guard.Against.Null(securityContext);
-        _logger = Guard.Against.Null(logger);
+        Logger = Guard.Against.Null(logger);
         if (string.IsNullOrWhiteSpace(s.Instance?.OriginalString))
         {
             throw new ArgumentException(
@@ -86,6 +126,16 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
         DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
     };
 
+    /// <summary>
+    /// Gets the logger.
+    /// </summary>
+    /// <value>The logger.</value>
+    protected ILogger Logger { get; }
+
+    /// <summary>
+    /// Gets the client.
+    /// </summary>
+    /// <value>The client.</value>
     private HttpClient Client => _client ??= _httpClientFactory.CreateClient();
 
     /// <inheritdoc/>
@@ -94,6 +144,45 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
         throw new NotSupportedException();
     }
 
+    /// <summary>
+    /// Keys to dictionary.
+    /// </summary>
+    /// <param name="key">The key.</param>
+    /// <returns>System.ValueTuple&lt;System.String, IDictionary&lt;System.String, System.Nullable&lt;System.Object&gt;&gt;&gt;.</returns>
+    protected virtual (string dataAreaId, IDictionary<string, object?> values) KeyToDictionary(IPerCompanyPrimaryKey key)
+    {
+        _ = Guard.Against.Null(key);
+        IDictionary<string, object?> dict = ToDictionary(key);
+        _ = Guard.Against.NegativeOrZero(
+            dict.Count - 1,
+            message: "The key must have at least one property other than the DataAreaId.");
+        string dataAreaId = string.IsNullOrWhiteSpace(key.DataAreaId) ? DefaultCompany : key.DataAreaId;
+        _ = dict.Remove(nameof(IPerCompanyPrimaryKey.DataAreaId));
+        return (dataAreaId, dict);
+    }
+
+    /// <summary>
+    /// Keys to dictionary.
+    /// </summary>
+    /// <param name="key">The key.</param>
+    /// <returns>IDictionary&lt;System.String, System.Nullable&lt;System.Object&gt;&gt;.</returns>
+    protected virtual IDictionary<string, object?> KeyToDictionary(ICommonPrimaryKey key)
+    {
+        _ = Guard.Against.Null(key);
+        IDictionary<string, object?> dict = ToDictionary(key);
+        _ = Guard.Against.NegativeOrZero(
+            dict.Count,
+            message: "The key must have at least one property.");
+        _ = dict.Remove(nameof(IPerCompanyPrimaryKey.DataAreaId));
+        return dict;
+    }
+
+    /// <summary>
+    /// Gets the entity filter.
+    /// </summary>
+    /// <param name="company">The company.</param>
+    /// <param name="keys">The keys.</param>
+    /// <returns>System.String.</returns>
     private static string GetEntityFilter(string company, IDictionary<string, object> keys)
     {
         StringBuilder filter = new();
@@ -106,11 +195,22 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
         return filter.ToString();
     }
 
+    /// <summary>
+    /// Gets the odata string.
+    /// </summary>
+    /// <param name="value">The value.</param>
+    /// <returns>System.String.</returns>
     private static string GetOdataString(object value)
     {
         return value is string s ? $"'{s}'" : Convert.ToString(value, CultureInfo.InvariantCulture) ?? string.Empty;
     }
 
+    /// <summary>
+    /// Gets the query filter.
+    /// </summary>
+    /// <param name="company">The company.</param>
+    /// <param name="filter">The filter.</param>
+    /// <returns>System.String.</returns>
     private static string GetQueryFilter(string company, IDictionary<string, object> filter)
     {
         StringBuilder query = new();
@@ -123,6 +223,12 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
         return query.ToString();
     }
 
+    /// <summary>
+    /// Converts to dictionary.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="obj">The object.</param>
+    /// <returns>IDictionary&lt;System.String, System.Nullable&lt;System.Object&gt;&gt;.</returns>
     private static IDictionary<string, object?> ToDictionary<T>(T obj)
     {
         _ = Guard.Against.Null(obj);
@@ -135,6 +241,11 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
         return dico;
     }
 
+    /// <summary>
+    /// Add request headers as an asynchronous operation.
+    /// </summary>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>A Task representing the asynchronous operation.</returns>
     private async Task AddRequestHeadersAsync(CancellationToken cancellationToken)
     {
         Client.DefaultRequestHeaders.Clear();

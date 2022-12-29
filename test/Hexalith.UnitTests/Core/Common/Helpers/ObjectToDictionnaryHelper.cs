@@ -17,7 +17,7 @@ public class ObjectToDictionnaryHelper
     {
         // convert an object to a dictionnary
         var obj = new { Name = "John", Age = 42 };
-        IDictionary<string, object> dico = ToDictionary(obj);
+        IDictionary<string, object?> dico = ToDictionary(obj);
 
         _ = dico.Should().NotBeNull();
         _ = dico.Should().HaveCount(2);
@@ -27,9 +27,9 @@ public class ObjectToDictionnaryHelper
         _ = dico["Age"].Should().Be(42);
     }
 
-    private IDictionary<string, object>? ToDictionary(object obj)
+    private static IDictionary<string, object?> ToDictionary(object obj)
     {
-        Dictionary<string, object> dico = new(StringComparer.Ordinal);
+        Dictionary<string, object?> dico = new(StringComparer.Ordinal);
         foreach (System.Reflection.PropertyInfo prop in obj.GetType().GetProperties())
         {
             dico.Add(prop.Name, prop.GetValue(obj));
