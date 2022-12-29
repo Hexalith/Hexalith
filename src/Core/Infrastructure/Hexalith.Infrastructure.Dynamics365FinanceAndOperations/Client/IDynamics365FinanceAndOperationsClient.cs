@@ -23,6 +23,18 @@ public interface IDynamics365FinanceAndOperationsClient<TODataElement>
     /// </value>
     string DefaultCompany { get; }
 
+    /// <summary>Counts the number of occurences.</summary>
+    /// <param name="filter">The filter.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task&lt;System.Int32&gt;.</returns>
+    Task<int> CountAsync(IPerCompanyFilter filter, CancellationToken cancellationToken);
+
+    /// <summary>Counts the asynchronous.</summary>
+    /// <param name="filter">The filter.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task&lt;System.Int32&gt;.</returns>
+    Task<int> CountAsync(ICommonFilter filter, CancellationToken cancellationToken);
+
     /// <summary>
     /// Execute an action on a Dynamics 365 Finance and Operations entity.
     /// </summary>
@@ -32,17 +44,41 @@ public interface IDynamics365FinanceAndOperationsClient<TODataElement>
     /// <returns>Task.</returns>
     Task DoActionAsync(string action, IDictionary<string, object?> parameters, CancellationToken cancellationToken);
 
-    /// <summary>Existses the asynchronous.</summary>
+    /// <summary>Check if entity exists.</summary>
+    /// <param name="filter">The filter.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task&lt;System.Boolean&gt;.</returns>
+    Task<bool> ExistsAsync(IPerCompanyFilter filter, CancellationToken cancellationToken);
+
+    /// <summary>Counts the number of occurences.</summary>
+    /// <param name="filter">The filter.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task&lt;System.Boolean&gt;.</returns>
+    Task<bool> ExistsAsync(ICommonFilter filter, CancellationToken cancellationToken);
+
+    /// <summary>Check if entity exists.</summary>
     /// <param name="key">The key.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;System.Boolean&gt;.</returns>
     Task<bool> ExistsAsync(ICommonPrimaryKey key, CancellationToken cancellationToken);
 
-    /// <summary>Existses the asynchronous.</summary>
+    /// <summary>Check if entity exists.</summary>
     /// <param name="key">The key.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;System.Boolean&gt;.</returns>
     Task<bool> ExistsAsync(IPerCompanyPrimaryKey key, CancellationToken cancellationToken);
+
+    /// <summary>Gets the asynchronous.</summary>
+    /// <param name="key">The key.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task&lt;IEnumerable&lt;TODataElement&gt;&gt;.</returns>
+    Task<IEnumerable<TODataElement>> GetAsync(IPerCompanyFilter key, CancellationToken cancellationToken);
+
+    /// <summary>Gets the asynchronous.</summary>
+    /// <param name="key">The key.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task&lt;IEnumerable&lt;TODataElement&gt;&gt;.</returns>
+    Task<IEnumerable<TODataElement>> GetAsync(ICommonFilter key, CancellationToken cancellationToken);
 
     /// <summary>
     /// Get a filtered entity object.
@@ -61,6 +97,18 @@ public interface IDynamics365FinanceAndOperationsClient<TODataElement>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>List of entity objects.</returns>
     Task<IEnumerable<TODataElement>> GetAsync(IDictionary<string, object?> filter, CancellationToken cancellationToken);
+
+    /// <summary>Gets the single asynchronous.</summary>
+    /// <param name="key">The key.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task&lt;TODataElement&gt;.</returns>
+    Task<TODataElement> GetSingleAsync(IPerCompanyFilter key, CancellationToken cancellationToken);
+
+    /// <summary>Gets the single asynchronous.</summary>
+    /// <param name="key">The key.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task&lt;TODataElement&gt;.</returns>
+    Task<TODataElement> GetSingleAsync(ICommonFilter key, CancellationToken cancellationToken);
 
     /// <summary>
     /// Get entity object by it's primary key.

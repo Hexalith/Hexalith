@@ -144,6 +144,34 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
         throw new NotSupportedException();
     }
 
+    /// <summary>Per company filters to dictionary.</summary>
+    /// <param name="filter">The key.</param>
+    /// <returns>System.ValueTuple&lt;System.String, IDictionary&lt;System.String, System.Nullable&lt;System.Object&gt;&gt;&gt;.</returns>
+    protected virtual (string DataAreaId, IDictionary<string, object?> Values) FilterToDictionary(IPerCompanyFilter filter)
+    {
+        _ = Guard.Against.Null(filter);
+        IDictionary<string, object?> dict = ToDictionary(filter);
+        _ = Guard.Against.NegativeOrZero(
+            dict.Count - 1,
+            message: "The filter must have at least one property other than the DataAreaId.");
+        string dataAreaId = string.IsNullOrWhiteSpace(filter.DataAreaId) ? DefaultCompany : filter.DataAreaId;
+        _ = dict.Remove(nameof(IPerCompanyFilter.DataAreaId));
+        return (dataAreaId, dict);
+    }
+
+    /// <summary>Common filters to dictionary.</summary>
+    /// <param name="filter">The filter.</param>
+    /// <returns>IDictionary&lt;System.String, System.Nullable&lt;System.Object&gt;&gt;.</returns>
+    protected virtual IDictionary<string, object?> FilterToDictionary(ICommonFilter filter)
+    {
+        _ = Guard.Against.Null(filter);
+        IDictionary<string, object?> dict = ToDictionary(filter);
+        _ = Guard.Against.NegativeOrZero(
+            dict.Count,
+            message: "The filter must have at least one property.");
+        return dict;
+    }
+
     /// <summary>
     /// Keys to dictionary.
     /// </summary>
@@ -173,7 +201,6 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
         _ = Guard.Against.NegativeOrZero(
             dict.Count,
             message: "The key must have at least one property.");
-        _ = dict.Remove(nameof(IPerCompanyPrimaryKey.DataAreaId));
         return dict;
     }
 

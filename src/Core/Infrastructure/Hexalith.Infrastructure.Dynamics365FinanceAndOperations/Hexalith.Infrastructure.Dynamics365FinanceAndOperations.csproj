@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Application\Hexalith.Application.Abstractions\Hexalith.Application.Abstractions.csproj" />
     <ProjectReference Include="..\..\Common\Hexalith.Extensions\Hexalith.Extensions.csproj" />
     <ProjectReference Include="..\Hexalith.Infrastructure.AzureActiveDirectory\Hexalith.Infrastructure.AzureActiveDirectory.csproj" />
   </ItemGroup>

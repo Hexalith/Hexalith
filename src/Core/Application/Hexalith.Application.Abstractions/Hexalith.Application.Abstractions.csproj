@@ -4,7 +4,6 @@
 	  <NoWarn>$(NoWarn);SA023</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Exceptions\" />
     <Folder Include="ValueObjects\" />
   </ItemGroup>
   <ItemGroup>

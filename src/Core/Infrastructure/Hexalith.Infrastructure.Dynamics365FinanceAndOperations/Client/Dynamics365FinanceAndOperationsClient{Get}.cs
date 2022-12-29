@@ -6,6 +6,7 @@
 
 namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
 
+using Hexalith.Application.Abstractions.Exceptions;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 
 using Microsoft.Extensions.Logging;
@@ -22,6 +23,21 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     where TEntity : class, IODataElement
 {
     /// <inheritdoc/>
+    public async Task<int> CountAsync(IPerCompanyFilter filter, CancellationToken cancellationToken)
+    {
+        (string dataAreaId, IDictionary<string, object?> dict) = FilterToDictionary(filter);
+        IEnumerable<TEntity> result = await GetAsync(dataAreaId, dict, cancellationToken);
+        return result.Count();
+    }
+
+    /// <inheritdoc/>
+    public async Task<int> CountAsync(ICommonFilter filter, CancellationToken cancellationToken)
+    {
+        IEnumerable<TEntity> result = await GetAsync(DefaultCompany, FilterToDictionary(filter), cancellationToken);
+        return result.Count();
+    }
+
+    /// <inheritdoc/>
     public async Task<bool> ExistsAsync(IPerCompanyPrimaryKey key, CancellationToken cancellationToken)
     {
         (string dataAreaId, IDictionary<string, object?> dict) = KeyToDictionary(key);
@@ -36,6 +52,18 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
         IEnumerable<TEntity> result = await GetAsync(DefaultCompany, KeyToDictionary(key), cancellationToken);
         int count = result.Count();
         return count == 1 || (count == 0 ? false : throw new InvalidOperationException($"The key {JsonSerializer.Serialize(key)} is not unique."));
+    }
+
+    /// <inheritdoc/>
+    public async Task<bool> ExistsAsync(IPerCompanyFilter filter, CancellationToken cancellationToken)
+    {
+        return await CountAsync(filter, cancellationToken) > 0;
+    }
+
+    /// <inheritdoc/>
+    public async Task<bool> ExistsAsync(ICommonFilter filter, CancellationToken cancellationToken)
+    {
+        return await CountAsync(filter, cancellationToken) > 0;
     }
 
     /// <inheritdoc/>
@@ -83,6 +111,43 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
                 response == null ? "No response" : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false));
             throw;
         }
+    }
+
+    /// <inheritdoc/>
+    public Task<IEnumerable<TEntity>> GetAsync(IPerCompanyFilter filter, CancellationToken cancellationToken)
+    {
+        (string dataAreaId, IDictionary<string, object?> dict) = FilterToDictionary(filter);
+        return GetAsync(dataAreaId, dict, cancellationToken);
+    }
+
+    /// <inheritdoc/>
+    public Task<IEnumerable<TEntity>> GetAsync(ICommonFilter filter, CancellationToken cancellationToken)
+    {
+        return GetAsync(DefaultCompany, FilterToDictionary(filter), cancellationToken);
+    }
+
+    /// <inheritdoc/>
+    public async Task<TEntity> GetSingleAsync(IPerCompanyFilter key, CancellationToken cancellationToken)
+    {
+        IEnumerable<TEntity> result = await GetAsync(key, cancellationToken);
+        return result.Count() switch
+        {
+            0 => throw new EntityNotFoundException<TEntity>(key),
+            1 => result.First(),
+            _ => throw new DuplicateEntityFoundException<TEntity>(key),
+        };
+    }
+
+    /// <inheritdoc/>
+    public async Task<TEntity> GetSingleAsync(ICommonFilter key, CancellationToken cancellationToken)
+    {
+        IEnumerable<TEntity> result = await GetAsync(key, cancellationToken);
+        return result.Count() switch
+        {
+            0 => throw new EntityNotFoundException<TEntity>(key),
+            1 => result.First(),
+            _ => throw new DuplicateEntityFoundException<TEntity>(key),
+        };
     }
 
     /// <inheritdoc/>
