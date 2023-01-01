@@ -8,6 +8,7 @@ namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents
 
 using Ardalis.GuardClauses;
 
+using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Extensions.Serialization;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Helpers;
@@ -22,7 +23,7 @@ using System.Text.Json.Serialization;
 /// The dynamics365 business event metadata.
 /// </summary>
 [JsonPolymorphicBaseClass]
-public class Dynamics365BusinessEventBase : IMetadata
+public abstract class Dynamics365BusinessEventBase : IMetadata
 {
     /// <summary>
     /// Gets or sets the business event id.
@@ -144,7 +145,7 @@ public class Dynamics365BusinessEventBase : IMetadata
         string? name = json.GetProperty(nameof(Dynamics365BusinessEventBase.BusinessEventId)).GetString();
         if (string.IsNullOrWhiteSpace(name))
         {
-            throw new InvalidOperationException("Unable to deserialize business event. The BusinessEventId property is missing or empty.");
+            throw new SerializationException("Unable to deserialize business event. The BusinessEventId property is missing or empty.");
         }
 
         // Add polymorphic type property value
@@ -180,4 +181,10 @@ public class Dynamics365BusinessEventBase : IMetadata
         _ = Guard.Against.Null(businessEvent);
         return JsonSerializer.Serialize(businessEvent);
     }
+
+    /// <summary>
+    /// Gets the business command.
+    /// </summary>
+    /// <returns>The command.</returns>
+    public abstract BaseCommand ToCommand();
 }

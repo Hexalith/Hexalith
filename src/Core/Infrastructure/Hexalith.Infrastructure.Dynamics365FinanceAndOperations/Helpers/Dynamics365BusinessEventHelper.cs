@@ -31,6 +31,11 @@ public static class Dynamics365BusinessEventHelper
             : global::System.DateTime.UnixEpoch.AddMilliseconds(milliseconds);
     }
 
+    /// <summary>
+    /// Parses the dynamics365 event time offset.
+    /// </summary>
+    /// <param name="d365Time">The D365 time.</param>
+    /// <returns>System.Nullable&lt;DateTimeOffset&gt;.</returns>
     public static DateTimeOffset? ParseDynamics365EventTimeOffset(string? d365Time)
     {
         DateTime? date = ParseDynamics365EventTime(d365Time);

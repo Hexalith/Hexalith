@@ -6,6 +6,7 @@
 
 namespace Hexalith.UnitTests.Core.Infrastructure.Dynamics365Finance.BusinessEvents;
 
+using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents;
 
 using System.Runtime.Serialization;
@@ -14,10 +15,20 @@ using System.Runtime.Serialization;
 public class DummyBusinessEvent1 : Dynamics365BusinessEventBase
 {
     public string? ValueOne { get; set; }
+
+    public override BaseCommand ToCommand()
+    {
+        throw new NotSupportedException();
+    }
 }
 
 [DataContract]
 public class DummyBusinessEvent2 : Dynamics365BusinessEventBase
 {
     public int ValueTwo { get; set; }
+
+    public override BaseCommand ToCommand()
+    {
+        throw new NotSupportedException();
+    }
 }
