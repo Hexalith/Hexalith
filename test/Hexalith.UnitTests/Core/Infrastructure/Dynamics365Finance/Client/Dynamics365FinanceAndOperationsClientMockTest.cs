@@ -4,7 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.UnitTests.Core.Infrastructure.Client;
+namespace Hexalith.UnitTests.Core.Infrastructure.Dynamics365Finance.Client;
 
 using FluentAssertions;
 

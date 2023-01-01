@@ -1,4 +1,4 @@
-﻿// <copyright file="Dynamics365FinancePostException.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="Dynamics365FinancePatchException.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -13,50 +13,50 @@ using System.Runtime.Serialization;
 using System.Text.Json;
 
 /// <summary>
-/// Class Dynamics365FinancePostException.
+/// Class Dynamics365FinancePatchException.
 /// Implements the <see cref="Exception" />.
 /// </summary>
 /// <typeparam name="TEntity">The type of the entity.</typeparam>
-/// <typeparam name="TCreate">The type of the create.</typeparam>
+/// <typeparam name="TUpdate">The type of the create.</typeparam>
 /// <seealso cref="Exception" />
 [Serializable]
-public class Dynamics365FinancePostException<TEntity, TCreate> : Exception
+public class Dynamics365FinancePatchException<TEntity, TUpdate> : Exception
     where TEntity : class, IODataElement
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="Dynamics365FinancePostException{TEntity, TCreate}"/> class.
+    /// Initializes a new instance of the <see cref="Dynamics365FinancePatchException{TEntity, TUpdate}"/> class.
     /// </summary>
-    public Dynamics365FinancePostException()
+    public Dynamics365FinancePatchException()
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Dynamics365FinancePostException{TEntity, TCreate}"/> class.
+    /// Initializes a new instance of the <see cref="Dynamics365FinancePatchException{TEntity, TUpdate}"/> class.
     /// </summary>
     /// <param name="message">The message that describes the error.</param>
-    public Dynamics365FinancePostException(string? message)
+    public Dynamics365FinancePatchException(string? message)
         : base(message)
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Dynamics365FinancePostException{TEntity, TCreate}"/> class.
+    /// Initializes a new instance of the <see cref="Dynamics365FinancePatchException{TEntity, TUpdate}"/> class.
     /// </summary>
     /// <param name="message">The error message that explains the reason for the exception.</param>
     /// <param name="innerException">The exception that is the cause of the current exception, or a null reference (<see langword="Nothing" /> in Visual Basic) if no inner exception is specified.</param>
-    public Dynamics365FinancePostException(string? message, Exception? innerException)
+    public Dynamics365FinancePatchException(string? message, Exception? innerException)
         : base(message, innerException)
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Dynamics365FinancePostException{TEntity, TCreate}"/> class.
+    /// Initializes a new instance of the <see cref="Dynamics365FinancePatchException{TEntity, TUpdate}"/> class.
     /// </summary>
     /// <param name="company">The company.</param>
     /// <param name="value">The value.</param>
     /// <param name="responseContent">Content of the response.</param>
     /// <param name="innerException">The inner exception.</param>
-    public Dynamics365FinancePostException(Uri? url, string company, TCreate? value, ErrorResponse? error, string? message, string? responseContent, Exception? innerException)
+    public Dynamics365FinancePatchException(Uri url, string company, TUpdate? value, ErrorResponse? error, string? message, string? responseContent, Exception? innerException)
         : base(
             CreateMessage(url, company, value, error, message, responseContent),
             innerException)
@@ -69,11 +69,11 @@ public class Dynamics365FinancePostException<TEntity, TCreate> : Exception
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Dynamics365FinancePostException{TEntity, TCreate}"/> class.
+    /// Initializes a new instance of the <see cref="Dynamics365FinancePatchException{TEntity, TUpdate}"/> class.
     /// </summary>
     /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
     /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
-    protected Dynamics365FinancePostException(SerializationInfo info, StreamingContext context)
+    protected Dynamics365FinancePatchException(SerializationInfo info, StreamingContext context)
         : base(info, context)
     {
     }
@@ -104,11 +104,11 @@ public class Dynamics365FinancePostException<TEntity, TCreate> : Exception
     /// Gets the value to create.
     /// </summary>
     /// <value>The value.</value>
-    public TCreate? Value { get; }
+    public TUpdate? Value { get; }
 
-    private static string CreateMessage(Uri url, string company, TCreate? value, ErrorResponse? error, string? message, string? responseContent)
+    private static string CreateMessage(Uri url, string company, TUpdate? value, ErrorResponse? error, string? message, string? responseContent)
     {
-        string msg = $"Error while posting {typeof(TEntity).Name} to company {company}. Url: {url.AbsoluteUri}.";
+        string msg = $"Error while Patching {typeof(TEntity).Name} to company {company}. Url : {url.AbsoluteUri}.";
         if (!string.IsNullOrWhiteSpace(message))
         {
             msg += "\n" + message;
@@ -116,7 +116,7 @@ public class Dynamics365FinancePostException<TEntity, TCreate> : Exception
 
         msg += error != null && error.Error != null && !string.IsNullOrWhiteSpace(error.Error.Message) ? $"\n{error.Error.Message}\n{error.Error.InnerError?.Message}" : $"\nResponse content:\n{responseContent}";
 
-        if (!object.Equals(value, default(TCreate)))
+        if (!object.Equals(value, default(TUpdate)))
         {
             string v = JsonSerializer.Serialize(value, new JsonSerializerOptions { WriteIndented = true });
             if (!string.IsNullOrWhiteSpace(v))

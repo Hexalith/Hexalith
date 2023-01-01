@@ -13,6 +13,7 @@ using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 using Microsoft.Extensions.Logging;
 
 using System.Net.Http.Json;
+using System.Text.Json;
 using System.Web;
 
 /// <summary>
@@ -60,7 +61,7 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
         _ = Guard.Against.NullOrWhiteSpace(company);
         _ = Guard.Against.Null(key);
         _ = Guard.Against.Null(value);
-        _ = await SendPatchAsync(key, value, cancellationToken).ConfigureAwait(false);
+        _ = await SendPatchAsync(company, key, value, cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -111,16 +112,16 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
 
             throw new HttpRequestException($"The patch request failed with status code '{response.StatusCode}'.");
         }
-        catch (Exception e)
+        catch (HttpRequestException e)
         {
             string? responseContent = response == null ? null : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-            throw new PatchRequestFailedException(
-                TEntity.EntityName(),
-                url,
-                value,
-                responseContent,
-                message: null,
-                e);
+            ErrorResponse? error = (responseContent == null) ? null : JsonSerializer.Deserialize<ErrorResponse>(responseContent);
+            Logger.LogError(
+                e,
+                "The method call to '{Path}' failed. response content :\n{ResponseContent}",
+                url.AbsoluteUri,
+                responseContent);
+            throw new Dynamics365FinancePatchException<TEntity, TUpdate>(url, company, value, error, $"The patch failed.", responseContent, e);
         }
     }
 }

@@ -12,8 +12,9 @@ using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 
 using Microsoft.Extensions.Logging;
 
+using System;
 using System.Net.Http.Json;
-using System.Runtime.Serialization;
+using System.Text.Json;
 
 /// <summary>
 /// Client for Dynamics 365 for finance and operations.
@@ -35,22 +36,21 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     public async Task<TEntity> PostAsync<TCreate>(string company, TCreate value, CancellationToken cancellationToken)
     {
         _ = Guard.Against.Null(value);
-        HttpResponseMessage? response = null;
-        try
-        {
-            response = await SendPostAsync(company, value, cancellationToken).ConfigureAwait(false);
-            TEntity? v = await response
-                .Content
-                .ReadFromJsonAsync<TEntity>(
-                    options: JsonOptions,
-                    cancellationToken).ConfigureAwait(false);
-            return v ?? throw new SerializationException($"Empty content response on request to '{response.RequestMessage?.RequestUri?.AbsoluteUri}'.");
-        }
-        catch (Exception e)
-        {
-            string? responseContent = response == null ? null : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-            throw new Dynamics365FinancePostException<TEntity, TCreate>(company, value, responseContent, e);
-        }
+        HttpResponseMessage? response = await SendPostAsync(company, value, cancellationToken).ConfigureAwait(false);
+        TEntity? v = await response
+            .Content
+            .ReadFromJsonAsync<TEntity>(
+                options: JsonOptions,
+                cancellationToken).ConfigureAwait(false);
+        return v ??
+            throw new Dynamics365FinancePostException<TEntity, TCreate>(
+                null,
+                company,
+                value,
+                null,
+                $"Empty content response on request to '{response.RequestMessage?.RequestUri?.AbsoluteUri}'.",
+                await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false),
+                null);
     }
 
     /// <inheritdoc/>
@@ -86,20 +86,16 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
 
             throw new HttpRequestException($"The post request failed with status code '{response?.StatusCode}'.");
         }
-        catch (Exception e)
+        catch (HttpRequestException e)
         {
-            string content = "No response";
-            if (response != null)
-            {
-                content = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-            }
-
+            string? responseContent = response == null ? null : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+            ErrorResponse? error = (responseContent == null) ? null : JsonSerializer.Deserialize<ErrorResponse>(responseContent);
             Logger.LogError(
                 e,
                 "The method call to '{Path}' failed. response content :\n{ResponseContent}",
                 url.AbsoluteUri,
-                content);
-            throw new HttpRequestException($"The method call to '{url.AbsoluteUri}' failed. response content :\n{content}", e);
+                responseContent);
+            throw new Dynamics365FinancePostException<TEntity, TCreate>(url, company, value, error, $"The post failed.", responseContent, e);
         }
     }
 }

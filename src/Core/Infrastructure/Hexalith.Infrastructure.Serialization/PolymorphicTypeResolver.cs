@@ -6,6 +6,9 @@
 
 namespace Hexalith.Infrastructure.Serialization;
 
+using Hexalith.Extensions.Serialization;
+
+using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization.Metadata;
 
@@ -25,6 +28,12 @@ public sealed class PolymorphicTypeResolver : DefaultJsonTypeInfoResolver
             TypeNamePolymorphismOptions? poly = TypeNamePolymorphismOptions.Create(jsonTypeInfo.Type);
             if (poly != null)
             {
+                JsonPolymorphicBaseClassAttribute? attribute = type.GetCustomAttribute<JsonPolymorphicBaseClassAttribute>();
+                if (!string.IsNullOrWhiteSpace(attribute?.DiscriminatorName))
+                {
+                    poly.TypeDiscriminatorPropertyName = attribute.DiscriminatorName;
+                }
+
                 jsonTypeInfo.PolymorphismOptions = poly;
             }
         }
