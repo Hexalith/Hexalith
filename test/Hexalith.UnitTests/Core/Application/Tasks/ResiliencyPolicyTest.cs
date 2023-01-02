@@ -26,7 +26,7 @@ public class ResiliencyPolicyTest
             TimeSpan.FromHours(24),
             exponential: false);
         string json = JsonSerializer.Serialize(policy);
-        ResiliencyPolicy? deserialized = JsonSerializer.Deserialize<ResiliencyPolicy>(json);
+        ResiliencyPolicy deserialized = JsonSerializer.Deserialize<ResiliencyPolicy>(json);
         _ = deserialized.Should().NotBeNull();
         _ = deserialized.Should().BeEquivalentTo(policy);
     }

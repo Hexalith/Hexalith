@@ -14,7 +14,7 @@ using System.Runtime.Serialization;
 [DataContract]
 public class DummyBusinessEvent1 : Dynamics365BusinessEventBase
 {
-    public string? ValueOne { get; set; }
+    public string ValueOne { get; set; }
 
     public override BaseCommand ToCommand()
     {

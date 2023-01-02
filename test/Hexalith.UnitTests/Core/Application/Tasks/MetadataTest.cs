@@ -19,7 +19,7 @@ public class MetadataTest
     {
         Metadata meta = GetMetadata();
         string json = JsonSerializer.Serialize(meta);
-        Metadata? result = JsonSerializer.Deserialize<Metadata>(json);
+        Metadata result = JsonSerializer.Deserialize<Metadata>(json);
         _ = result.Should().NotBeNull();
         _ = result.Should().BeEquivalentTo(result);
     }

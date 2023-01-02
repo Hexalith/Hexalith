@@ -31,7 +31,7 @@ public class ErrorMessageTest
     [Fact]
     public void TestErrorMessage()
     {
-        ErrorResponse? error = JsonSerializer.Deserialize<ErrorResponse>(_errorMessageJson);
+        ErrorResponse error = JsonSerializer.Deserialize<ErrorResponse>(_errorMessageJson);
         _ = error.Should().NotBeNull();
         _ = error!.Error.Should().NotBeNull();
         _ = error!.Error!.Code.Should().Be("0022");

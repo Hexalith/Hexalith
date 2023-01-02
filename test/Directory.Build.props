@@ -3,6 +3,7 @@
 	<PropertyGroup>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<IsPackable>false</IsPackable>
+		<Nullable>disable</Nullable>
 		<NoWarn>$(NoWarn);SA1600;VSTHRD200</NoWarn>
 	</PropertyGroup>
 	<ItemGroup>

@@ -21,7 +21,7 @@ public class DummyMetadata : Metadata
         MetadataVersion version,
         MessageMetadata message,
         ContextMetadata context,
-        IEnumerable<string>? scopes)
+        IEnumerable<string> scopes)
         : base(version, message, context, scopes)
     {
     }

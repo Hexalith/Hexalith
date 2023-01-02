@@ -106,9 +106,9 @@ public class Dynamics365FinancePostException<TEntity, TCreate> : Exception
     /// <value>The value.</value>
     public TCreate? Value { get; }
 
-    private static string CreateMessage(Uri url, string company, TCreate? value, ErrorResponse? error, string? message, string? responseContent)
+    private static string CreateMessage(Uri? url, string company, TCreate? value, ErrorResponse? error, string? message, string? responseContent)
     {
-        string msg = $"Error while posting {typeof(TEntity).Name} to company {company}. Url: {url.AbsoluteUri}.";
+        string msg = $"Error while posting {typeof(TEntity).Name} to company {company}. Url: {url?.AbsoluteUri}.";
         if (!string.IsNullOrWhiteSpace(message))
         {
             msg += "\n" + message;

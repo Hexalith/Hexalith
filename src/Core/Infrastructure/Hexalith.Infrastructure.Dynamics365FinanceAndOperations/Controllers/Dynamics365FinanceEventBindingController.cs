@@ -72,7 +72,7 @@ public abstract class Dynamics365FinanceEventBindingController : ControllerBase
                 "Received business event {BusinessEventId} with Id='{EventId}'.",
                 businessEvent.BusinessEventId,
                 businessEvent.EventId);
-            await _dispatcher.Do(businessEvent.ToCommand(), cancellationToken);
+            await _dispatcher.DoAsync(businessEvent.ToCommand(), cancellationToken);
             return Accepted();
         }
         catch (ValidationException ex)

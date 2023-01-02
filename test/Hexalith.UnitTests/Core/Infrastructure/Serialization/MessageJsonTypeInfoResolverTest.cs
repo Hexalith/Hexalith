@@ -16,45 +16,45 @@ using System.Text.Json;
 
 public interface ITest
 {
-    string? MyProp1 { get; set; }
+    string MyProp1 { get; set; }
 }
 
 [DataContract]
 [JsonPolymorphicBaseClass]
 public class Test1 : ITest
 {
-    public string? MyProp1 { get; set; }
+    public string MyProp1 { get; set; }
 }
 
 [DataContract]
 public class Test2 : Test1
 {
-    public string? MyProp2 { get; set; }
+    public string MyProp2 { get; set; }
 }
 
 [DataContract]
 public class Test3 : Test1
 {
-    public string? MyProp3 { get; set; }
+    public string MyProp3 { get; set; }
 }
 
 [DataContract]
 public class Test4 : Test3
 {
-    public string? MyProp4 { get; set; }
+    public string MyProp4 { get; set; }
 }
 
 [DataContract]
 [JsonPolymorphicBaseClass(DiscriminatorName = "MyDisc")]
 public class TestCustom1 : ITest
 {
-    public string? MyProp1 { get; set; }
+    public string MyProp1 { get; set; }
 }
 
 [DataContract]
 public class TestCustom2 : TestCustom1
 {
-    public string? MyProp2 { get; set; }
+    public string MyProp2 { get; set; }
 }
 
 public class MessageJsonTypeInfoResolverTest
@@ -67,7 +67,7 @@ public class MessageJsonTypeInfoResolverTest
         {
             TypeInfoResolver = new PolymorphicTypeResolver(),
         };
-        TestCustom1? result = JsonSerializer.Deserialize<TestCustom1>(json, options);
+        TestCustom1 result = JsonSerializer.Deserialize<TestCustom1>(json, options);
         _ = result.Should().BeOfType<TestCustom2>();
         TestCustom2 t2 = (TestCustom2)result;
         _ = t2.MyProp1.Should().Be("P1");
@@ -80,7 +80,7 @@ public class MessageJsonTypeInfoResolverTest
         string json = JsonSerializer.Serialize<Test1>(
              new Test2 { MyProp1 = "P1", MyProp2 = "P2" },
              new JsonSerializerOptions { TypeInfoResolver = new PolymorphicTypeResolver() });
-        Test1? result = JsonSerializer.Deserialize<Test1>(json, new JsonSerializerOptions { TypeInfoResolver = new PolymorphicTypeResolver() });
+        Test1 result = JsonSerializer.Deserialize<Test1>(json, new JsonSerializerOptions { TypeInfoResolver = new PolymorphicTypeResolver() });
         _ = result.Should().BeOfType<Test2>();
     }
 
@@ -91,7 +91,7 @@ public class MessageJsonTypeInfoResolverTest
         string json = JsonSerializer.Serialize<TestCustom1>(
              test2,
              new JsonSerializerOptions { TypeInfoResolver = new PolymorphicTypeResolver() });
-        TestCustom1? result = JsonSerializer.Deserialize<TestCustom1>(json, new JsonSerializerOptions { TypeInfoResolver = new PolymorphicTypeResolver() });
+        TestCustom1 result = JsonSerializer.Deserialize<TestCustom1>(json, new JsonSerializerOptions { TypeInfoResolver = new PolymorphicTypeResolver() });
         _ = result.Should().BeOfType<TestCustom2>();
         TestCustom2 t2 = (TestCustom2)result;
         _ = t2.MyProp1.Should().Be(test2.MyProp1);

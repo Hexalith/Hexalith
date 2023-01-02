@@ -25,7 +25,7 @@ public class CustomerGroupTest
 
         IDynamics365FinanceAndOperationsClient<CustomerGroup> service = builder.Build();
 
-        string? company = builder.Settings.Build().Value.Company;
+        string company = builder.Settings.Build().Value.Company;
         _ = company.Should().NotBeNullOrWhiteSpace();
         CustomerGroupCreate newGroup = new(
             company!,
@@ -51,7 +51,7 @@ public class CustomerGroupTest
 
         IDynamics365FinanceAndOperationsClient<CustomerGroup> service = builder.Build();
 
-        string? company = builder.Settings.Build().Value.Company;
+        string company = builder.Settings.Build().Value.Company;
         _ = company.Should().NotBeNullOrWhiteSpace();
         CustomerGroupCreate newGroup = new(
             company!,
@@ -79,7 +79,7 @@ public class CustomerGroupTest
 
         IDynamics365FinanceAndOperationsClient<CustomerGroup> service = builder.Build();
 
-        string? company = builder.Settings.Build().Value.Company;
+        string company = builder.Settings.Build().Value.Company;
         _ = company.Should().NotBeNullOrWhiteSpace();
         const string id = "TST990";
         string description = "HELLO TEST 990 Updated " + UniqueIdHelper.GenerateDateTimeId();

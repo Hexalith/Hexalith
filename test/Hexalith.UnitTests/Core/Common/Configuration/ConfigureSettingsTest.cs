@@ -38,16 +38,16 @@ public class ConfigureSettingsTest
     {
         public long TestLong { get; set; }
 
-        public string? TestString { get; set; }
+        public string TestString { get; set; }
     }
 
     public class TestSettings : ISettings
     {
-        public TestClassValue? TestClass { get; set; }
+        public TestClassValue TestClass { get; set; }
 
         public long TestLong { get; set; }
 
-        public string? TestString { get; set; }
+        public string TestString { get; set; }
 
         public static string ConfigurationName()
         {

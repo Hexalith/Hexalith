@@ -67,7 +67,7 @@ public class TaskProcessorTest
             .Fail("my test fail message")
             .Complete();
         string json = JsonSerializer.Serialize(processor);
-        TaskProcessor? fromJson = JsonSerializer.Deserialize<TaskProcessor>(json);
+        TaskProcessor fromJson = JsonSerializer.Deserialize<TaskProcessor>(json);
         _ = fromJson.Should().NotBeNull();
         _ = fromJson!.Status.Should().Be(processor.Status);
         _ = fromJson!.History.CreatedDate.Should().BeCloseTo(processor.History.CreatedDate, TimeSpan.FromSeconds(1));

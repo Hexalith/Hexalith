@@ -38,7 +38,7 @@ public abstract class ActorsCommandDispatcher : ICommandDispatcher
     }
 
     /// <inheritdoc/>
-    public async Task Do(ICommand command, CancellationToken cancellationToken)
+    public async Task DoAsync(ICommand command, CancellationToken cancellationToken)
     {
         _ = Guard.Against.Null(command);
         _ = Guard.Against.NullOrWhiteSpace(command.AggregateName);

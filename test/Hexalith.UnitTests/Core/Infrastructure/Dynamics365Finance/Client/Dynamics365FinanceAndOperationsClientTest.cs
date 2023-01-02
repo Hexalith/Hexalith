@@ -11,6 +11,7 @@ using FluentAssertions;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Configurations;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks;
+
 using System.Text.Json;
 
 public class Dynamics365FinanceAndOperationsClientTest
@@ -40,7 +41,7 @@ public class Dynamics365FinanceAndOperationsClientTest
         IDynamics365FinanceAndOperationsClient<DummyEntity> client = builder.Build();
         DummyEntity result = await client.GetSingleAsync(
             company,
-            new Dictionary<string, object?>(
+            new Dictionary<string, object>(
             StringComparer.Ordinal)
             { { "id", "3525" } },
             CancellationToken.None);
@@ -64,7 +65,7 @@ public class Dynamics365FinanceAndOperationsClientTest
         _ = builder.HttpClientfactory.SetMockHttpMessageHandler(JsonSerializer.Serialize(dummy));
         IDynamics365FinanceAndOperationsClient<DummyEntity> client = builder.Build();
         HttpResponseMessage response = await client.SendPatchAsync(
-            new Dictionary<string, object?>(
+            new Dictionary<string, object>(
             StringComparer.Ordinal)
             { { "id", "3525" } },
             dummy,

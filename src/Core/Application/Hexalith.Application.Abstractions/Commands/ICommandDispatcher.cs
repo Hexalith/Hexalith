@@ -20,5 +20,5 @@ public interface ICommandDispatcher
     /// <param name="command">The command.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
-    Task Do(ICommand command, CancellationToken cancellationToken);
+    Task DoAsync(ICommand command, CancellationToken cancellationToken);
 }

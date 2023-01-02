@@ -57,7 +57,7 @@ public class BusinessEventTest
     public void Dummy_event_one_deserialization_should_succeed()
     {
         using JsonDocument json = JsonDocument.Parse(_businessEventJson1);
-        Dynamics365BusinessEventBase? be = Dynamics365BusinessEventBase.AddTypeAndDeserialize(json.RootElement);
+        Dynamics365BusinessEventBase be = Dynamics365BusinessEventBase.AddTypeAndDeserialize(json.RootElement);
         _ = be.Should().NotBeNull();
         _ = be.Should().BeOfType<DummyBusinessEvent1>();
         _ = be.BusinessEventId.Should().Be("DummyBusinessEvent1");
@@ -68,7 +68,7 @@ public class BusinessEventTest
     public void Dummy_event_two_deserialization_should_succeed()
     {
         using JsonDocument json = JsonDocument.Parse(_businessEventJson2);
-        Dynamics365BusinessEventBase? be = Dynamics365BusinessEventBase.AddTypeAndDeserialize(json.RootElement);
+        Dynamics365BusinessEventBase be = Dynamics365BusinessEventBase.AddTypeAndDeserialize(json.RootElement);
         _ = be.Should().NotBeNull();
         _ = be.Should().BeOfType<DummyBusinessEvent2>();
         _ = be.BusinessEventId.Should().Be("DummyBusinessEvent2");
