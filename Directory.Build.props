@@ -19,7 +19,7 @@
 		<NoWarn>MA0101;S1451;S4055;S113;SA1609;MA0104;S4018;</NoWarn>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.4.27">
+		<PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.4.33">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
 		</PackageReference>

@@ -8,7 +8,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Core\Application\Hexalith.Application\Hexalith.Application.csproj" />
     <ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.DaprBus\Hexalith.Infrastructure.DaprBus.csproj" />
-    <ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.DaprEventStore\Hexalith.Infrastructure.DaprEventStore.csproj" />
+    <ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.DaprMessageStore\Hexalith.Infrastructure.DaprMessageStore.csproj" />
     <ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks\Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks.csproj" />
     <ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365FinanceAndOperations\Hexalith.Infrastructure.Dynamics365FinanceAndOperations.csproj" />
     <ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Serialization\Hexalith.Infrastructure.Serialization.csproj" />

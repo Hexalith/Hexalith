@@ -11,7 +11,7 @@ using Dapr.Actors.Runtime;
 using FluentAssertions;
 
 using Hexalith.Extensions.Helpers;
-using Hexalith.Infrastructure.DaprEventStore;
+using Hexalith.Infrastructure.DaprMessageStore;
 
 using Moq;
 
@@ -36,7 +36,7 @@ public class ActorEventStoreTest
     [InlineData(142, 123_456_789)]
     public async Task Add_state_should_persist_snapshot(int events, long version)
     {
-        (ActorEventStore<BaseTestEvent> eventStore, Mock<IActorStateManager> mock) = GetEventStoreWithMock(version);
+        (ActorMessageStore<BaseTestEvent> eventStore, Mock<IActorStateManager> mock) = GetEventStoreWithMock(version);
         List<BaseTestEvent> list = GetEventList(events);
         long newVersion = await eventStore.AddAsync(
             list,
@@ -82,7 +82,7 @@ public class ActorEventStoreTest
     [InlineData(142, 123_456_789)]
     public async Task Add_to_stream_returns_version_plus_event_count(int events, long version)
     {
-        ActorEventStore<BaseTestEvent> eventStore = GetEventStore(version);
+        ActorMessageStore<BaseTestEvent> eventStore = GetEventStore(version);
 
         long newVersion = await eventStore.AddAsync(
             GetEventList(events),
@@ -102,7 +102,7 @@ public class ActorEventStoreTest
     [InlineData(142, 123_456_789, 4235)]
     public async Task Add_to_stream_with_wrong_version_throw_dbconcurrencyexception(int events, long version, long badVersion)
     {
-        ActorEventStore<BaseTestEvent> eventStore = GetEventStore(version);
+        ActorMessageStore<BaseTestEvent> eventStore = GetEventStore(version);
 
         async Task<long> Act()
         {
@@ -124,7 +124,7 @@ public class ActorEventStoreTest
         const string id = "123";
         const string json = $$"""{"id":"{{id}}"}""";
         Mock<IActorStateManager> stateManager = new();
-        ActorEventStore<BaseTestEvent> store = new(stateManager.Object, "Test");
+        ActorMessageStore<BaseTestEvent> store = new(stateManager.Object, "Test");
         BaseTestEvent testEvent = store.Deserialize(json);
         _ = testEvent.Id.Should().Be(id);
     }
@@ -136,7 +136,7 @@ public class ActorEventStoreTest
         const string value2 = "456";
         const string json = $$"""{"$type":"{{nameof(BaseTestEvent2)}}","id":"{{id}}","value2":"{{value2}}"}""";
         Mock<IActorStateManager> stateManager = new();
-        ActorEventStore<BaseTestEvent> store = new(stateManager.Object, "Test");
+        ActorMessageStore<BaseTestEvent> store = new(stateManager.Object, "Test");
         BaseTestEvent testEvent = store.Deserialize(json);
         _ = testEvent.Should().BeOfType<BaseTestEvent2>();
         BaseTestEvent2 testEvent2 = (BaseTestEvent2)testEvent;
@@ -149,9 +149,9 @@ public class ActorEventStoreTest
     {
         const string streamName = "Test";
         Mock<IActorStateManager> stateManager = new();
-        ActorEventStore<BaseTestEvent> store = new(stateManager.Object, "Test");
+        ActorMessageStore<BaseTestEvent> store = new(stateManager.Object, "Test");
         _ = store.StreamName.Should().Be(streamName);
-        _ = store.GetEventStateName(101).Should().Be(streamName + "Stream101");
+        _ = store.GetMessageStateName(101).Should().Be(streamName + "Stream101");
     }
 
     [Fact]
@@ -160,7 +160,7 @@ public class ActorEventStoreTest
         const string id = "123";
         BaseTestEvent testEvent = new(id, _fakeMessageStart + id);
         Mock<IActorStateManager> stateManager = new();
-        ActorEventStore<BaseTestEvent> store = new(stateManager.Object, "Test");
+        ActorMessageStore<BaseTestEvent> store = new(stateManager.Object, "Test");
         string json = store.Serialize(testEvent);
         _ = json.Should().Contain($"\"id\":\"{id}\"");
         _ = json.Should().Contain($"\"message\":\"{_fakeMessageStart + id}\"");
@@ -172,7 +172,7 @@ public class ActorEventStoreTest
         const string id = "123";
         BaseTestEvent2 testEvent = new(id, _fakeMessageStart + id, _fakeValue2Start + id);
         Mock<IActorStateManager> stateManager = new();
-        ActorEventStore<BaseTestEvent> store = new(stateManager.Object, "Test");
+        ActorMessageStore<BaseTestEvent> store = new(stateManager.Object, "Test");
         string json = store.Serialize(testEvent);
         _ = json.Should().Contain($"\"$type\":\"{nameof(BaseTestEvent2)}\"");
         _ = json.Should().Contain($"\"id\":\"{id}\"");
@@ -185,7 +185,7 @@ public class ActorEventStoreTest
     {
         const string streamName = "Test";
         Mock<IActorStateManager> stateManager = new();
-        ActorEventStore<BaseTestEvent> store = new(stateManager.Object, streamName);
+        ActorMessageStore<BaseTestEvent> store = new(stateManager.Object, streamName);
         _ = store.StreamName.Should().Be(streamName);
         _ = store.GetStreamStateName().Should().Be(streamName + "Stream");
     }
@@ -199,7 +199,7 @@ public class ActorEventStoreTest
                     It.IsAny<string>(),
                     It.IsAny<CancellationToken>()))
             .ReturnsAsync(new ConditionalValue<long>(hasValue: false, 0L));
-        ActorEventStore<BaseTestEvent> store = new(stateManager.Object, "Test");
+        ActorMessageStore<BaseTestEvent> store = new(stateManager.Object, "Test");
         long version = await store.GetVersionAsync(CancellationToken.None);
         _ = version.Should().Be(0L);
     }
@@ -209,7 +209,7 @@ public class ActorEventStoreTest
     {
         const long version = 100;
 
-        (ActorEventStore<BaseTestEvent> eventStore, Mock<IActorStateManager> mock) = GetEventStoreWithMock(version);
+        (ActorMessageStore<BaseTestEvent> eventStore, Mock<IActorStateManager> mock) = GetEventStoreWithMock(version);
         List<BaseTestEvent> list = GetEventList(2);
         long newVersion = await eventStore.AddAsync(
             list,
@@ -252,7 +252,7 @@ public class ActorEventStoreTest
             .ReturnsAsync(new ConditionalValue<string>(hasValue: true, json))
             .Verifiable();
 
-        ActorEventStore<BaseTestEvent> store = new(stateManager.Object, "Test");
+        ActorMessageStore<BaseTestEvent> store = new(stateManager.Object, "Test");
         IEnumerable<BaseTestEvent> events = await store.GetAsync(123L, 123L, CancellationToken.None);
         stateManager.VerifyAll();
         _ = events.Should().HaveCount(1);
@@ -266,7 +266,7 @@ public class ActorEventStoreTest
     [Fact]
     public async Task Get_stream_version_should_return_correct_value()
     {
-        ActorEventStore<BaseTestEvent> store = GetEventStore(100);
+        ActorMessageStore<BaseTestEvent> store = GetEventStore(100);
         long version = await store.GetVersionAsync(CancellationToken.None);
         _ = version.Should().Be(100L);
     }
@@ -290,13 +290,13 @@ public class ActorEventStoreTest
         return list;
     }
 
-    private static ActorEventStore<BaseTestEvent> GetEventStore(long version)
+    private static ActorMessageStore<BaseTestEvent> GetEventStore(long version)
     {
-        (ActorEventStore<BaseTestEvent> s, Mock<IActorStateManager> _) = GetEventStoreWithMock(version);
+        (ActorMessageStore<BaseTestEvent> s, Mock<IActorStateManager> _) = GetEventStoreWithMock(version);
         return s;
     }
 
-    private static (ActorEventStore<BaseTestEvent> Store, Mock<IActorStateManager> StateManager) GetEventStoreWithMock(long version)
+    private static (ActorMessageStore<BaseTestEvent> Store, Mock<IActorStateManager> StateManager) GetEventStoreWithMock(long version)
     {
         Mock<IActorStateManager> mock = new();
         _ = mock
@@ -312,7 +312,7 @@ public class ActorEventStoreTest
                     It.Is<long>(l => l == 0L),
                     It.IsAny<CancellationToken>()))
             .ReturnsAsync(version);
-        ActorEventStore<BaseTestEvent> eventStore = new(mock.Object, _streamName);
+        ActorMessageStore<BaseTestEvent> eventStore = new(mock.Object, _streamName);
         return (eventStore, mock);
     }
 }

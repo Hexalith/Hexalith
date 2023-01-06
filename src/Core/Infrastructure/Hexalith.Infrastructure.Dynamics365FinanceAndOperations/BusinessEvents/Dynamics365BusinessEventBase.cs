@@ -116,7 +116,7 @@ public abstract class Dynamics365BusinessEventBase : IMetadata
     /// Gets or sets the received date time.
     /// </summary>
     [DataMember]
-    public DateTime? ReceivedDateTime { get; set; }
+    public DateTimeOffset? ReceivedDateTime { get; set; }
 
     /// <summary>
     /// Gets the correlation id.

@@ -1,10 +1,10 @@
-﻿// <copyright file="EventStoreItemNotFoundException.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="MessageStoreItemNotFoundException.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Infrastructure.DaprEventStore;
+namespace Hexalith.Infrastructure.DaprMessageStore;
 
 using Hexalith.Extensions.Helpers;
 
@@ -12,57 +12,57 @@ using System;
 using System.Runtime.Serialization;
 
 /// <summary>
-/// The event store item not found exception.
+/// The message store item not found exception.
 /// </summary>
 [Serializable]
-public class EventStoreItemNotFoundException : Exception
+public class MessageStoreItemNotFoundException : Exception
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="EventStoreItemNotFoundException"/> class.
+    /// Initializes a new instance of the <see cref="MessageStoreItemNotFoundException"/> class.
     /// </summary>
-    public EventStoreItemNotFoundException()
+    public MessageStoreItemNotFoundException()
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="EventStoreItemNotFoundException"/> class.
+    /// Initializes a new instance of the <see cref="MessageStoreItemNotFoundException"/> class.
     /// </summary>
     /// <param name="message">The error message.</param>
-    public EventStoreItemNotFoundException(string? message)
+    public MessageStoreItemNotFoundException(string? message)
         : base(message)
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="EventStoreItemNotFoundException"/> class.
+    /// Initializes a new instance of the <see cref="MessageStoreItemNotFoundException"/> class.
     /// </summary>
     /// <param name="version">The item version.</param>
     /// <param name="streamName">The stream name.</param>
     /// <param name="message">The error message.</param>
     /// <param name="innerException">The inner exception.</param>
-    public EventStoreItemNotFoundException(long version, string streamName, string? message, Exception? innerException)
-        : base($"The item with version {version.ToInvariantString()} not found in event store '{streamName}'. " + message, innerException)
+    public MessageStoreItemNotFoundException(long version, string streamName, string? message, Exception? innerException)
+        : base($"The item with version {version.ToInvariantString()} not found in message store '{streamName}'. " + message, innerException)
     {
         Version = version;
         StreamName = streamName;
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="EventStoreItemNotFoundException"/> class.
+    /// Initializes a new instance of the <see cref="MessageStoreItemNotFoundException"/> class.
     /// </summary>
     /// <param name="message">The error message.</param>
     /// <param name="innerException">The inner exception.</param>
-    public EventStoreItemNotFoundException(string? message, Exception? innerException)
+    public MessageStoreItemNotFoundException(string? message, Exception? innerException)
         : base(message, innerException)
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="EventStoreItemNotFoundException"/> class.
+    /// Initializes a new instance of the <see cref="MessageStoreItemNotFoundException"/> class.
     /// </summary>
     /// <param name="info">The serialization information.</param>
     /// <param name="context">The streaming context.</param>
-    protected EventStoreItemNotFoundException(SerializationInfo info, StreamingContext context)
+    protected MessageStoreItemNotFoundException(SerializationInfo info, StreamingContext context)
         : base(info, context)
     {
     }

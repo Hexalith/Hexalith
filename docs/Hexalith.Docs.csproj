@@ -3,4 +3,7 @@
 		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
 		<IsPackable>false</IsPackable>
 	</PropertyGroup>
+	<ItemGroup>
+	  <Folder Include="visio\" />
+	</ItemGroup>
 </Project>
