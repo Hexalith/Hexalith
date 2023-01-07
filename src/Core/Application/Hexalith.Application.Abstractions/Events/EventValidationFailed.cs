@@ -1,0 +1,45 @@
+﻿// <copyright file="EventValidationFailed.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+
+namespace Hexalith.Application.Abstractions.Events;
+
+using Ardalis.GuardClauses;
+
+using Hexalith.Application.Abstractions.Errors;
+using Hexalith.Extensions.Helpers;
+
+using System.Runtime.Serialization;
+
+/// <summary>
+/// Class EventValidationFailed.
+/// Implements the <see cref="Error" />
+/// Implements the <see cref="System.IEquatable{Hexalith.Application.Abstractions.Errors.Error}" />
+/// Implements the <see cref="System.IEquatable{Hexalith.Application.Abstractions.Events.EventValidationFailed}" />.
+/// </summary>
+/// <seealso cref="Error" />
+/// <seealso cref="System.IEquatable{Hexalith.Application.Abstractions.Errors.Error}" />
+/// <seealso cref="System.IEquatable{Hexalith.Application.Abstractions.Events.EventValidationFailed}" />
+[DataContract]
+public record EventValidationFailed : Error
+{
+    /// <summary>
+    /// Initializes a new instance of the <see cref="EventValidationFailed"/> class.
+    /// </summary>
+    /// <param name="data">The serialization data.</param>
+    /// <param name="exception">The serialization exception.</param>
+    public EventValidationFailed(
+        string data,
+        Exception exception)
+    {
+        _ = Guard.Against.Null(exception);
+        Title = "Event validation failed";
+        Type = nameof(EventValidationFailed);
+        Detail = "Could not validate event : {Message}";
+        Arguments = new object[] { exception.Message };
+        TechnicalDetail = "Event validation failed for data:\n{SerializationData}\n{ErrorMessage}\n{StackTrace}";
+        TechnicalArguments = new object[] { data, exception.FullMessage(), exception.StackTrace ?? string.Empty };
+    }
+}

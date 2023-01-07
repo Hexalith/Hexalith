@@ -10,6 +10,7 @@ using Ardalis.GuardClauses;
 
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
+using Hexalith.Domain.Abstractions.Events;
 using Hexalith.Extensions.Serialization;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Helpers;
 using Hexalith.Infrastructure.Serialization;
@@ -23,8 +24,14 @@ using System.Text.Json.Serialization;
 /// The dynamics365 business event metadata.
 /// </summary>
 [JsonPolymorphicBaseClass]
-public abstract class Dynamics365BusinessEventBase : IMetadata
+public abstract class Dynamics365BusinessEventBase : IMetadata, IEvent
 {
+    /// <inheritdoc/>
+    public abstract string AggregateId { get; }
+
+    /// <inheritdoc/>
+    public abstract string AggregateName { get; }
+
     /// <summary>
     /// Gets or sets the business event id.
     /// </summary>
@@ -105,6 +112,9 @@ public abstract class Dynamics365BusinessEventBase : IMetadata
             MajorVersion,
             MinorVersion),
         new AggregateMetadata(string.Empty, string.Empty));
+
+    /// <inheritdoc/>
+    public string MessageName => BusinessEventId ?? string.Empty;
 
     /// <summary>
     /// Gets or sets the minor version.

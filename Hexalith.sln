@@ -108,6 +108,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.Dap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.DaprMessageStore", "src\Core\Infrastructure\Hexalith.Infrastructure.DaprMessageStore\Hexalith.Infrastructure.DaprMessageStore.csproj", "{CE36A95D-7ACE-4AE7-BABB-35AEF850D898}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.WebApis", "src\Core\Infrastructure\Hexalith.Infrastructure.WebApis\Hexalith.Infrastructure.WebApis.csproj", "{00897BC6-2258-41E6-9246-B9EDB67A225B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -178,6 +180,10 @@ Global
 		{CE36A95D-7ACE-4AE7-BABB-35AEF850D898}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE36A95D-7ACE-4AE7-BABB-35AEF850D898}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE36A95D-7ACE-4AE7-BABB-35AEF850D898}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00897BC6-2258-41E6-9246-B9EDB67A225B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00897BC6-2258-41E6-9246-B9EDB67A225B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00897BC6-2258-41E6-9246-B9EDB67A225B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00897BC6-2258-41E6-9246-B9EDB67A225B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -206,6 +212,7 @@ Global
 		{B6ECE592-7035-4CFD-86A1-152C2ADE0416} = {3BE1D646-272F-4F96-931E-D1BA781583B4}
 		{08E42D07-2D7D-46AE-85C3-EFF58287DB76} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{CE36A95D-7ACE-4AE7-BABB-35AEF850D898} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
+		{00897BC6-2258-41E6-9246-B9EDB67A225B} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09CBB595-8996-4C7F-9C48-4C58AD9293AC}
