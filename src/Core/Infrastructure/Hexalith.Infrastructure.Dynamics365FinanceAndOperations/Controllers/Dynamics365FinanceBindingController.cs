@@ -38,8 +38,9 @@ public abstract class Dynamics365FinanceBindingController : BindingController
     /// <summary>
     /// Initializes a new instance of the <see cref="Dynamics365FinanceBindingController" /> class.
     /// </summary>
-    /// <param name="processor">The processor.</param>
     /// <param name="metadataValidator">The metadata validator.</param>
+    /// <param name="dispatcher">The dispatcher.</param>
+    /// <param name="hostEnvironment">The host environment.</param>
     /// <param name="logger">The logger.</param>
     protected Dynamics365FinanceBindingController(
         IValidator<Dynamics365BusinessEventBase> metadataValidator,

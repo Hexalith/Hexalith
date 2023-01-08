@@ -1,0 +1,55 @@
+﻿// <copyright file="ActorStateStoreProvider.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+
+namespace Hexalith.Infrastructure.DaprAggregateActor;
+
+using Ardalis.GuardClauses;
+
+using Dapr.Actors.Runtime;
+
+using Hexalith.Application.Abstractions.States;
+
+using System.Threading;
+using System.Threading.Tasks;
+
+public class ActorStateStoreProvider : IStateStoreProvider
+{
+    private readonly IActorStateManager _actorStateManager;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ActorStateStoreProvider"/> class.
+    /// </summary>
+    /// <param name="actorStateManager"></param>
+    public ActorStateStoreProvider(IActorStateManager actorStateManager)
+    {
+        _actorStateManager = Guard.Against.Null(actorStateManager);
+    }
+
+    /// <inheritdoc/>
+    public async Task<T> GetStateAsync<T>(string key, CancellationToken cancellationToken)
+    {
+        return await _actorStateManager.GetStateAsync<T>(key, cancellationToken);
+    }
+
+    /// <inheritdoc/>
+    public async Task SaveChangesAsync(CancellationToken cancellationToken)
+    {
+        await _actorStateManager.SaveStateAsync(cancellationToken);
+    }
+
+    /// <inheritdoc/>
+    public async Task SetStateAsync<T>(string key, T value, CancellationToken cancellationToken)
+    {
+        await _actorStateManager.SetStateAsync<T>(key, value, cancellationToken);
+    }
+
+    /// <inheritdoc/>
+    public async Task<Extensions.Common.ConditionalValue<T>> TryGetStateAsync<T>(string key, CancellationToken cancellationToken)
+    {
+        ConditionalValue<T> result = await _actorStateManager.TryGetStateAsync<T>(key, cancellationToken);
+        return result.HasValue ? new Extensions.Common.ConditionalValue<T>(result.Value) : new Extensions.Common.ConditionalValue<T>();
+    }
+}

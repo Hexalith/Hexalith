@@ -4,24 +4,25 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Infrastructure.DaprDispatcher;
+namespace Hexalith.Infrastructure.DaprHandlers;
 
 using Ardalis.GuardClauses;
 
 using Dapr.Actors.Client;
 
 using Hexalith.Application.Abstractions.Commands;
+using Hexalith.Application.Abstractions.Metadatas;
 
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
 /// <summary>
-/// Class ActorsCommandDispatcher.
-/// Implements the <see cref="ICommandDispatcher" />.
+/// Class ActorsCommandProcessor.
+/// Implements the <see cref="ICommandProcessor" />.
 /// </summary>
-/// <seealso cref="ICommandDispatcher" />
-public abstract class ActorsCommandDispatcher : ICommandDispatcher
+/// <seealso cref="ICommandProcessor" />
+public abstract class ActorsCommandProcessor : ICommandProcessor
 {
     /// <summary>
     /// The actor proxy.
@@ -29,16 +30,16 @@ public abstract class ActorsCommandDispatcher : ICommandDispatcher
     private readonly IActorProxyFactory _actorProxy;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ActorsCommandDispatcher" /> class.
+    /// Initializes a new instance of the <see cref="ActorsCommandProcessor" /> class.
     /// </summary>
     /// <param name="actorProxy">The actor proxy.</param>
-    public ActorsCommandDispatcher(IActorProxyFactory actorProxy)
+    public ActorsCommandProcessor(IActorProxyFactory actorProxy)
     {
         _actorProxy = Guard.Against.Null(actorProxy);
     }
 
     /// <inheritdoc/>
-    public async Task DoAsync(ICommand command, CancellationToken cancellationToken)
+    public async Task SubmitAsync(BaseCommand command, Metadata metadata, CancellationToken cancellationToken)
     {
         _ = Guard.Against.Null(command);
         _ = Guard.Against.NullOrWhiteSpace(command.AggregateName);
@@ -54,11 +55,10 @@ public abstract class ActorsCommandDispatcher : ICommandDispatcher
             throw new InvalidOperationException($"The method '{nameof(ActorProxy.InvokeMethodAsync)}' not found on {nameof(ActorProxy)}.");
         }
 
-        Type commandType = command.GetType();
-        MethodInfo generic = mi.MakeGenericMethod(commandType);
+        MethodInfo generic = mi.MakeGenericMethod(typeof(ActorCommandEnvelope));
         if (generic.Invoke(
             actor,
-            new object[] { methodName, command, cancellationToken }) is not Task task)
+            new object[] { methodName, new ActorCommandEnvelope(command, metadata), cancellationToken }) is not Task task)
         {
             throw new InvalidOperationException($"The actor {actorName} method '{methodName}' should have a return value of type Task.");
         }

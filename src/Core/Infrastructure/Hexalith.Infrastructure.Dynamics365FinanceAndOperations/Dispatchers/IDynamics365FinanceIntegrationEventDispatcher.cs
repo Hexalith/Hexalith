@@ -4,9 +4,9 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-using Hexalith.Application.Abstractions.Events;
-
 namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Dispatchers;
+
+using Hexalith.Application.Abstractions.Events;
 
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents;
 

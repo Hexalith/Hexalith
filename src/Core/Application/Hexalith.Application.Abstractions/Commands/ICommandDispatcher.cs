@@ -6,8 +6,7 @@
 
 namespace Hexalith.Application.Abstractions.Commands;
 
-using System.Threading;
-using System.Threading.Tasks;
+using Hexalith.Domain.Abstractions.Events;
 
 /// <summary>
 /// Interface ICommandDispatcher.
@@ -20,5 +19,13 @@ public interface ICommandDispatcher
     /// <param name="command">The command.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
-    Task DoAsync(ICommand command, CancellationToken cancellationToken);
+    Task<IEnumerable<BaseEvent>> DoAsync(ICommand command, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Undo the command execution of the specified command.
+    /// </summary>
+    /// <param name="command">The command.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>IEnumerable&lt;BaseEvent&gt;.</returns>
+    Task<IEnumerable<BaseEvent>> UnDoAsync(ICommand command, CancellationToken cancellationToken);
 }
