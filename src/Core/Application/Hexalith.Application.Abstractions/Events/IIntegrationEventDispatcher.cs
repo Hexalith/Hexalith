@@ -6,20 +6,19 @@
 
 namespace Hexalith.Application.Abstractions.Events;
 
+using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Domain.Abstractions.Events;
 
-using System.Threading.Tasks;
-
 /// <summary>
-/// The integration event handler interface.
+/// Interface IEventDispatcher.
 /// </summary>
 public interface IIntegrationEventDispatcher
 {
     /// <summary>
-    /// Dispatch the event.
+    /// Applies the execution of the specified event.
     /// </summary>
     /// <param name="event">The event.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
-    Task DispatchAsync(IEvent @event, CancellationToken cancellationToken);
+    Task<IEnumerable<IEnumerable<BaseCommand>>> ApplyAsync(IEvent @event, CancellationToken cancellationToken);
 }

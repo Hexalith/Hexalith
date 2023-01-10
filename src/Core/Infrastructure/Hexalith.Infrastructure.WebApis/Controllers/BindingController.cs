@@ -33,7 +33,7 @@ public abstract class BindingController : ControllerBase
     /// <summary>
     /// The processor.
     /// </summary>
-    private readonly IIntegrationEventDispatcher _dispatcher;
+    private readonly IIntegrationEventProcessor _dispatcher;
 
     private readonly IHostEnvironment _hostEnvironment;
 
@@ -44,7 +44,7 @@ public abstract class BindingController : ControllerBase
     /// <param name="metadataValidator">The metadata validator.</param>
     /// <param name="logger">The logger.</param>
     protected BindingController(
-        IIntegrationEventDispatcher dispatcher,
+        IIntegrationEventProcessor dispatcher,
         IHostEnvironment hostEnvironment,
         ILogger logger)
     {
@@ -73,7 +73,7 @@ public abstract class BindingController : ControllerBase
                 @event.MessageName,
                 @event.AggregateName,
                 @event.AggregateId);
-            await _dispatcher.DispatchAsync(@event, cancellationToken);
+            await _dispatcher.SubmitAsync(@event, cancellationToken);
             return Accepted();
         }
         catch (ApplicationErrorException ex)

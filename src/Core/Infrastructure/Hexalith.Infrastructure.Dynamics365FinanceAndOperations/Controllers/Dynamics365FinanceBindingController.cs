@@ -44,7 +44,7 @@ public abstract class Dynamics365FinanceBindingController : BindingController
     /// <param name="logger">The logger.</param>
     protected Dynamics365FinanceBindingController(
         IValidator<Dynamics365BusinessEventBase> metadataValidator,
-        IIntegrationEventDispatcher dispatcher,
+        IIntegrationEventProcessor dispatcher,
         IHostEnvironment hostEnvironment,
         ILogger logger)
         : base(dispatcher, hostEnvironment, logger)
@@ -60,6 +60,7 @@ public abstract class Dynamics365FinanceBindingController : BindingController
             Dynamics365BusinessEventBase businessEvent = Dynamics365BusinessEventBase.AddTypeAndDeserialize(message);
 
             _eventValidator.ValidateAndThrow(businessEvent);
+            ValidateAndThrow(businessEvent);
             return businessEvent;
         }
         catch (ValidationException ex)
@@ -75,4 +76,10 @@ public abstract class Dynamics365FinanceBindingController : BindingController
                 ex);
         }
     }
+
+    /// <summary>
+    /// Validates the message and if not successful throws a validation exception <see cref="ValidationException" /> .
+    /// </summary>
+    /// <param name="message">The message.</param>
+    protected abstract void ValidateAndThrow(Dynamics365BusinessEventBase message);
 }
