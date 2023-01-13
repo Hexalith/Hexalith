@@ -1,4 +1,4 @@
-﻿// <copyright file="Dynamics365FinanceAndOperationsClientHelper.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="Dynamics365FinanceAndOperationsHelper.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -14,9 +14,13 @@
 
 namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Helpers;
 
+using FluentValidation;
+
 using Hexalith.Extensions.Configuration;
+using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Configurations;
+using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Dispatchers;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Security;
 
 using Microsoft.Extensions.Configuration;
@@ -25,8 +29,21 @@ using Microsoft.Extensions.DependencyInjection;
 /// <summary>
 /// Helper class to configure Dynamics 365 Finance and Operations client.
 /// </summary>
-public static class Dynamics365FinanceAndOperationsClientHelper
+public static class Dynamics365FinanceAndOperationsHelper
 {
+    /// <summary>
+    /// Adds the dynamics365 finance and operations business events services.
+    /// </summary>
+    /// <param name="services">The services.</param>
+    /// <param name="configuration">The configuration.</param>
+    /// <returns>IServiceCollection.</returns>
+    public static IServiceCollection AddDynamics365FinanceAndOperationsBusinessEvents(this IServiceCollection services, IConfiguration configuration)
+    {
+        return services
+            .AddSingleton<IDynamics365FinanceIntegrationEventProcessor, Dynamics365FinanceIntegrationEventProcessor>()
+            .AddSingleton<IValidator<Dynamics365BusinessEventBase>, Dynamics365BusinessEventValidator>();
+    }
+
     /// <summary>
     /// Adds a Dynamics 365 Finance and Operations client to the service collection.
     /// </summary>

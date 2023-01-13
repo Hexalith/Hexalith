@@ -22,7 +22,7 @@ public static class DaprHandlersHelper
     /// <param name="services">Service collection.</param>
     /// <param name="configuration">Configuration containing the client settings values.</param>
     /// <returns>The services collection.</returns>
-    public static IServiceCollection AddDaprDispatchers(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddDaprHandlers(this IServiceCollection services, IConfiguration configuration)
     {
         return services
             .AddSingleton<ICommandProcessor, ConventionNamingCommandProcessor>();
