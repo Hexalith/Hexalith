@@ -1,5 +1,5 @@
 <Project>
 	<PropertyGroup>
-		<DaprVersion>1.9.0</DaprVersion>
+		<DaprVersion>1.9.*</DaprVersion>
 	</PropertyGroup>
 </Project>

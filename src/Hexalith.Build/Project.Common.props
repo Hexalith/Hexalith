@@ -19,7 +19,7 @@
 
 	<!-- These versions are used for the NuGet packages that are dependent on the current .NET version (default = net7.0) -->
 	<PropertyGroup>
-		<AspNetCorePackagesVersion>7.0.0</AspNetCorePackagesVersion>
-		<MicrosoftExtensionsPackagesVersion>7.0.0</MicrosoftExtensionsPackagesVersion>
+		<AspNetCorePackagesVersion>7.0.*</AspNetCorePackagesVersion>
+		<MicrosoftExtensionsPackagesVersion>7.0.*</MicrosoftExtensionsPackagesVersion>
 	</PropertyGroup>
 </Project>
