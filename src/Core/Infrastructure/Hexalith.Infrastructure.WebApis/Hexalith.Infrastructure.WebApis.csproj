@@ -14,7 +14,9 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\..\Application\Hexalith.Application.Abstractions\Hexalith.Application.Abstractions.csproj" />
 	  <ProjectReference Include="..\..\Common\Hexalith.Extensions\Hexalith.Extensions.csproj" />
+	  <ProjectReference Include="..\Hexalith.Infrastructure.DaprHandlers\Hexalith.Infrastructure.DaprHandlers.csproj" />
 	  <ProjectReference Include="..\Hexalith.Infrastructure.Security.Abstractions\Hexalith.Infrastructure.Security.Abstractions.csproj" />
+	  <ProjectReference Include="..\Hexalith.Infrastructure.Serialization\Hexalith.Infrastructure.Serialization.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="$(AspNetCorePackagesVersion)" />

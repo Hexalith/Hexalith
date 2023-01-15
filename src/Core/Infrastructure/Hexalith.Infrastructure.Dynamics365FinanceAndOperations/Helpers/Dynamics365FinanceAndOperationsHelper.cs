@@ -56,6 +56,6 @@ public static class Dynamics365FinanceAndOperationsHelper
             .AddHttpClient()
             .ConfigureSettings<Dynamics365FinanceAndOperationsClientSettings>(configuration)
             .AddSingleton<IDynamics365FinanceAndOperationsSecurityContext, Dynamics365FinanceAndOperationsSecurityContext>()
-            .AddScoped(typeof(IDynamics365FinanceAndOperationsClient<>), typeof(Dynamics365FinanceAndOperationsClient<>));
+            .AddSingleton(typeof(IDynamics365FinanceAndOperationsClient<>), typeof(Dynamics365FinanceAndOperationsClient<>));
     }
 }

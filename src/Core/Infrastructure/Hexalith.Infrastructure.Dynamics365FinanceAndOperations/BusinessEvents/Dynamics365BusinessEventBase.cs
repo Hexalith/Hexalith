@@ -84,7 +84,7 @@ public abstract class Dynamics365BusinessEventBase : IMetadata, IEvent
     /// Gets or sets the event time iso8601.
     /// </summary>
     [DataMember]
-    public string? EventTimeIso8601 { get; set; }
+    public DateTimeOffset? EventTimeIso8601 { get; set; }
 
     /// <summary>
     /// Gets or sets the initiating user a a d object id.
@@ -107,7 +107,7 @@ public abstract class Dynamics365BusinessEventBase : IMetadata, IEvent
     public IMessageMetadata Message => new MessageMetadata(
         EventId ?? string.Empty,
         BusinessEventId ?? string.Empty,
-        Dynamics365BusinessEventHelper.ParseDynamics365EventTime(EventTime) ?? DateTimeOffset.MinValue,
+        EventTimeIso8601 ?? DateTimeOffset.MinValue,
         new MessageVersion(
             MajorVersion,
             MinorVersion),

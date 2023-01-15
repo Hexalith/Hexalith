@@ -3,6 +3,11 @@
 	  <TargetFramework>$(DefaultTargetFramework)</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Core\Infrastructure\AzureActiveDirectory\**" />
+    <EmbeddedResource Remove="Core\Infrastructure\AzureActiveDirectory\**" />
+    <None Remove="Core\Infrastructure\AzureActiveDirectory\**" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="..\..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
   <ItemGroup>
@@ -17,9 +22,6 @@
     <None Update="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\Infrastructure\AzureActiveDirectory\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Update="Microsoft.NET.Test.Sdk" Version="17.4.1" />

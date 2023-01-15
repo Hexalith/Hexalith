@@ -14,6 +14,7 @@ using Hexalith.Application.Abstractions.Errors;
 using Hexalith.Application.Abstractions.Events;
 using Hexalith.Domain.Abstractions.Events;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents;
+using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Dispatchers;
 using Hexalith.Infrastructure.WebApis.Controllers;
 
 using Microsoft.AspNetCore.Mvc;
@@ -39,15 +40,15 @@ public abstract class Dynamics365FinanceBindingController : BindingController
     /// Initializes a new instance of the <see cref="Dynamics365FinanceBindingController" /> class.
     /// </summary>
     /// <param name="metadataValidator">The metadata validator.</param>
-    /// <param name="dispatcher">The dispatcher.</param>
+    /// <param name="eventProcessor">The dispatcher.</param>
     /// <param name="hostEnvironment">The host environment.</param>
     /// <param name="logger">The logger.</param>
     protected Dynamics365FinanceBindingController(
         IValidator<Dynamics365BusinessEventBase> metadataValidator,
-        IIntegrationEventProcessor dispatcher,
+        IDynamics365FinanceIntegrationEventProcessor eventProcessor,
         IHostEnvironment hostEnvironment,
         ILogger logger)
-        : base(dispatcher, hostEnvironment, logger)
+        : base(eventProcessor, hostEnvironment, logger)
     {
         _eventValidator = Guard.Against.Null(metadataValidator);
     }

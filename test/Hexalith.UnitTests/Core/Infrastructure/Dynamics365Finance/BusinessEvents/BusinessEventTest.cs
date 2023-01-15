@@ -104,6 +104,26 @@ public class BusinessEventTest
         _ = ((DummyBusinessEvent1)be).ValueOne.Should().Be("The one value");
     }
 
+    // test error message serialization
+    [Fact]
+    public void Base_event_deserialize_should_succeed()
+    {
+        using JsonDocument json = JsonDocument.Parse(_businessEventJson1);
+        Dynamics365BusinessEventBase be = Dynamics365BusinessEventBase.AddTypeAndDeserialize(json.RootElement);
+        _ = be.Should().NotBeNull();
+        _ = be.Should().BeOfType<DummyBusinessEvent1>();
+        _ = be.BusinessEventId.Should().Be("DummyBusinessEvent1");
+        _ = be.BusinessEventLegalEntity.Should().Be("SO01");
+        _ = be.ContextRecordSubject.Should().BeEmpty();
+        _ = be.ControlNumber.Should().Be(5637611083);
+        _ = be.EventId.Should().Be("3C47A4CD-6EDC-4319-B893-3F862EED65FD");
+        _ = be.EventTime.Should().Be("/Date(1672408275000)/");
+        _ = be.InitiatingUserAzureActiveDirectoryObjectId.Should().Be("{410A2690-5EC2-42EE-9F2A-E75B4E324930}");
+        _ = be.MajorVersion.Should().Be(10);
+        _ = be.MinorVersion.Should().Be(11);
+        _ = be.EventTimeIso8601.Should().BeCloseTo(new DateTimeOffset(2022, 12, 30, 13, 51, 15, 294, TimeSpan.Zero), TimeSpan.FromMilliseconds(1));
+    }
+
     [Fact]
     public void Dummy_event_one_deserialization_should_succeed()
     {
