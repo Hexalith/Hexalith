@@ -1,9 +1,18 @@
-﻿// <copyright file="BindingController.cs" company="Fiveforty SAS Paris France">
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Infrastructure.WebApis
+// Author           : JérômePiquot
+// Created          : 01-13-2023
+//
+// Last Modified By : JérômePiquot
+// Last Modified On : 01-15-2023
+// ***********************************************************************
+// <copyright file="BindingController.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
-
+// <summary></summary>
+// ***********************************************************************
 namespace Hexalith.Infrastructure.WebApis.Controllers;
 
 using Ardalis.GuardClauses;
@@ -35,13 +44,16 @@ public abstract class BindingController : ControllerBase
     /// </summary>
     private readonly IIntegrationEventProcessor _eventProcessor;
 
+    /// <summary>
+    /// The host environment.
+    /// </summary>
     private readonly IHostEnvironment _hostEnvironment;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="BindingController"/> class.
+    /// Initializes a new instance of the <see cref="BindingController" /> class.
     /// </summary>
-    /// <param name="processor">The processor.</param>
-    /// <param name="metadataValidator">The metadata validator.</param>
+    /// <param name="eventProcessor">The event processor.</param>
+    /// <param name="hostEnvironment">The host environment.</param>
     /// <param name="logger">The logger.</param>
     protected BindingController(
         IIntegrationEventProcessor eventProcessor,
@@ -53,8 +65,17 @@ public abstract class BindingController : ControllerBase
         _hostEnvironment = Guard.Against.Null(hostEnvironment);
     }
 
+    /// <summary>
+    /// Gets the logger.
+    /// </summary>
+    /// <value>The logger.</value>
     protected ILogger Logger { get; }
 
+    /// <summary>
+    /// Deserializes the and validate.
+    /// </summary>
+    /// <param name="message">The message.</param>
+    /// <returns>IEvent.</returns>
     protected abstract IEvent DeserializeAndValidate(JsonElement message);
 
     /// <summary>
@@ -91,17 +112,30 @@ public abstract class BindingController : ControllerBase
         }
     }
 
+    /// <summary>
+    /// Problems the specified error.
+    /// </summary>
+    /// <param name="error">The error.</param>
+    /// <returns>ObjectResult.</returns>
     protected ObjectResult Problem(Error error)
     {
-        string detail = _hostEnvironment.IsProduction()
-            ? Smart.Format(
-                CultureInfo.InvariantCulture,
-                error.Detail ?? string.Empty,
-                error.Arguments)
-            : Smart.Format(
-                CultureInfo.InvariantCulture,
-                error.TechnicalDetail ?? string.Empty,
-                error.TechnicalArguments);
+        string detail;
+        try
+        {
+            detail = _hostEnvironment.IsProduction()
+                ? Smart.Format(
+                    CultureInfo.InvariantCulture,
+                    error.Detail ?? string.Empty,
+                    error.Arguments)
+                : Smart.Format(
+                    CultureInfo.InvariantCulture,
+                    error.TechnicalDetail ?? string.Empty,
+                    error.TechnicalArguments);
+        }
+        catch (Exception ex)
+        {
+            throw new InvalidOperationException("Could not format the error message:\n" + error.Detail + "\n" + error.TechnicalDetail, ex);
+        }
 
         return Problem(
             detail,

@@ -15,6 +15,8 @@ using Hexalith.Extensions.Serialization;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Helpers;
 using Hexalith.Infrastructure.Serialization;
 
+using Microsoft.AspNetCore.Authentication;
+
 using System;
 using System.Runtime.Serialization;
 using System.Text.Json;
@@ -152,10 +154,19 @@ public abstract class Dynamics365BusinessEventBase : IMetadata, IEvent
     public static Dynamics365BusinessEventBase AddTypeAndDeserialize(JsonElement json)
     {
         _ = Guard.Against.Null(json);
-        string? name = json.GetProperty(nameof(Dynamics365BusinessEventBase.BusinessEventId)).GetString();
+        string? name;
+        try
+        {
+            name = json.GetProperty(nameof(Dynamics365BusinessEventBase.BusinessEventId)).GetString();
+        }
+        catch (Exception e)
+        {
+            throw new SerializationException("Unable to deserialize business event property BusinessEventId.", e);
+        }
+
         if (string.IsNullOrWhiteSpace(name))
         {
-            throw new SerializationException("Unable to deserialize business event. The BusinessEventId property is missing or empty.");
+            throw new SerializationException("The BusinessEventId property is empty.");
         }
 
         // Add polymorphic type property value

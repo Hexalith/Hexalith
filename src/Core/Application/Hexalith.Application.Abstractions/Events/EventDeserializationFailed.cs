@@ -31,7 +31,7 @@ public record EventDeserializationFailed : Error
     /// <param name="data">The serialization data.</param>
     /// <param name="exception">The serialization exception.</param>
     public EventDeserializationFailed(
-        string data,
+        string? data,
         SerializationException exception)
     {
         _ = Guard.Against.Null(exception);
@@ -40,6 +40,6 @@ public record EventDeserializationFailed : Error
         Detail = "Could not deserialize data : {Message}";
         Arguments = new object[] { exception.Message };
         TechnicalDetail = "Event deserialization failed for data:\n{SerializationData}\n{ErrorMessage}\n{StackTrace}";
-        TechnicalArguments = new object[] { data, exception.FullMessage(), exception.StackTrace ?? string.Empty };
+        TechnicalArguments = new object[] { data ?? string.Empty, exception.FullMessage(), exception.StackTrace ?? string.Empty };
     }
 }

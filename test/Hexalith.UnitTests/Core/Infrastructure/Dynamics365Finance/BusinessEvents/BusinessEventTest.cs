@@ -10,6 +10,7 @@ using FluentAssertions;
 
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents;
 
+using System.Runtime.Serialization;
 using System.Text.Json;
 
 public class BusinessEventTest
@@ -143,6 +144,22 @@ public class BusinessEventTest
         _ = be.Should().BeOfType<DummyBusinessEvent2>();
         _ = be.BusinessEventId.Should().Be("DummyBusinessEvent2");
         _ = ((DummyBusinessEvent2)be).ValueTwo.Should().Be(2);
+    }
+
+    [Fact]
+    public void Bad_json_deserialize_should_throw_serialization_exception()
+    {
+        using JsonDocument json = JsonDocument.Parse("\"bad json\"");
+        Action action = () => Dynamics365BusinessEventBase.AddTypeAndDeserialize(json.RootElement);
+        action.Should().Throw<SerializationException>();
+    }
+
+    [Fact]
+    public void Missing_business_event_id_json_deserialization_should_throw_serialization_exception()
+    {
+        using JsonDocument json = JsonDocument.Parse("{\"notBusinessEventId\":\"nothing\"}");
+        Action action = () => Dynamics365BusinessEventBase.AddTypeAndDeserialize(json.RootElement);
+        action.Should().Throw<SerializationException>().Which.Message.Should().Contain("BusinessEventId");
     }
 
     [Fact]
