@@ -1,5 +1,9 @@
 <Project>
 	<PropertyGroup>
 		<DaprVersion>1.9.*</DaprVersion>
+		<HexalithVersion>0.1.*</HexalithVersion>
+		<SwashbuckleAspNetCoreVersion>6.5.*</SwashbuckleAspNetCoreVersion>
+		<ManDaprSidekickVersion>1.2.*</ManDaprSidekickVersion>
+		<FluentAssertionsVersion>6.9.*</FluentAssertionsVersion>
 	</PropertyGroup>
 </Project>

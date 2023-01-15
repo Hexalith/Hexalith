@@ -8,7 +8,10 @@ namespace Hexalith.Infrastructure.WebApis.Helpers;
 
 using Hexalith.Application.Abstractions.Errors;
 
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
+
+using Serilog;
 
 using SmartFormat;
 
@@ -45,5 +48,39 @@ public static class WebApiHelper
             Title = problem.Title,
             Type = problem.Type,
         };
+    }
+
+    /// <summary>Adds the serilog logger.</summary>
+    /// <param name="builder">The builder.</param>
+    /// <returns>ILogger.</returns>
+    public static ILogger AddSerilogLogger(this WebApplicationBuilder builder)
+    {
+        ILogger startupLogger = Log.Logger = new LoggerConfiguration()
+            .Enrich.FromLogContext()
+            .WriteTo.Console()
+            .CreateBootstrapLogger();
+
+        builder.Host.UseSerilog(
+            (context, services, configuration)
+            => configuration
+                .ReadFrom.Configuration(context.Configuration)
+                .Enrich.FromLogContext()
+                .Enrich.WithMachineName()
+                .Enrich.WithProcessId()
+                .Enrich.WithProcessName()
+                .Enrich.WithThreadId()
+                .Enrich.WithThreadName()
+                .Enrich.WithEnvironmentUserName()
+                .WriteTo.Console()
+                .ReadFrom.Services(services));
+        return startupLogger;
+    }
+
+    /// <summary>Uses the serilog logger.</summary>
+    /// <param name="app">The application.</param>
+    /// <returns>IApplicationBuilder.</returns>
+    public static IApplicationBuilder UseSerilogLogger(this IApplicationBuilder app)
+    {
+        return app.UseSerilogRequestLogging();
     }
 }
