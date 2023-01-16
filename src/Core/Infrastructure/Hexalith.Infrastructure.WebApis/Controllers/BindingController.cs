@@ -20,12 +20,11 @@ using Ardalis.GuardClauses;
 using Hexalith.Application.Abstractions.Errors;
 using Hexalith.Application.Abstractions.Events;
 using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Extensions.Helpers;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-
-using SmartFormat;
 
 using System.Globalization;
 using System.Net;
@@ -123,11 +122,11 @@ public abstract class BindingController : ControllerBase
         try
         {
             detail = _hostEnvironment.IsProduction()
-                ? Smart.Format(
+                ? StringHelper.FormatWithNamedPlaceholders(
                     CultureInfo.InvariantCulture,
                     error.Detail ?? string.Empty,
                     error.Arguments)
-                : Smart.Format(
+                : StringHelper.FormatWithNamedPlaceholders(
                     CultureInfo.InvariantCulture,
                     error.TechnicalDetail ?? string.Empty,
                     error.TechnicalArguments);

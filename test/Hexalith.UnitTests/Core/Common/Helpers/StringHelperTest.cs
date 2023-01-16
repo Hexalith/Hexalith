@@ -101,4 +101,23 @@ public class StringHelperTest
     {
         _ = value.ToInvariantString().ToLong().Should().Be(value);
     }
+
+    [Theory]
+    [InlineData("{hello}", "{0}")]
+    [InlineData("{4}", "{0}")]
+    [InlineData("{{double}} {test}", "{{0}} {1}")]
+    [InlineData("hello from {me} and {him}", "hello from {0} and {1}")]
+    public void Replace_named_placeholders_should_return_expected_string_with_indices(string value, string expected)
+    {
+        _ = StringHelper.ReplacePlaceholderNamesByIndex(value).Should().Be(expected);
+    }
+
+    [Fact]
+    public void Format_string_with_named_placeholders_should_return_expected()
+    {
+        _ = StringHelper
+            .FormatWithNamedPlaceholders("Say {Hello} {Number} times", "hello world", 11)
+            .Should()
+            .Be("Say hello world 11 times");
+    }
 }

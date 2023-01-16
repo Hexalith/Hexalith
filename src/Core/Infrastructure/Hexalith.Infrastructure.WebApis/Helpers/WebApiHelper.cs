@@ -7,13 +7,12 @@
 namespace Hexalith.Infrastructure.WebApis.Helpers;
 
 using Hexalith.Application.Abstractions.Errors;
+using Hexalith.Extensions.Helpers;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 
 using Serilog;
-
-using SmartFormat;
 
 using System.Globalization;
 using System.Net;
@@ -23,33 +22,6 @@ using System.Net;
 /// </summary>
 public static class WebApiHelper
 {
-    /// <summary>
-    /// Converts an application error to a Mvc problem details object.
-    /// </summary>
-    /// <param name="problem">The problem.</param>
-    /// <param name="technicalDetail">if set to <c>true</c> [add technical details].</param>
-    /// <returns>ProblemDetails.</returns>
-    public static ProblemDetails ToProblemDetails(this Error problem, bool technicalDetail)
-    {
-        string detail = technicalDetail
-           ? Smart.Format(
-               CultureInfo.InvariantCulture,
-               problem.TechnicalDetail ?? string.Empty,
-               problem.TechnicalArguments)
-            : Smart.Format(
-                CultureInfo.InvariantCulture,
-                problem.Detail ?? string.Empty,
-                problem.Arguments);
-        return new()
-        {
-            Detail = detail,
-            Instance = "https://github.com/Hexalith/Hexalith/issues/",
-            Status = (int)HttpStatusCode.BadRequest,
-            Title = problem.Title,
-            Type = problem.Type,
-        };
-    }
-
     /// <summary>Adds the serilog logger.</summary>
     /// <param name="builder">The builder.</param>
     /// <returns>ILogger.</returns>
