@@ -6,7 +6,7 @@
 
 namespace Hexalith.Application.Abstractions.Events;
 
-using Hexalith.Application.Abstractions.Errors;
+using Hexalith.Extensions.Common;
 
 using System.Runtime.Serialization;
 

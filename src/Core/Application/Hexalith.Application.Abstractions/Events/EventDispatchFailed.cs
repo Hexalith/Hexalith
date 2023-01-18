@@ -8,8 +8,8 @@ namespace Hexalith.Application.Abstractions.Events;
 
 using Ardalis.GuardClauses;
 
-using Hexalith.Application.Abstractions.Errors;
 using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 
 using System;

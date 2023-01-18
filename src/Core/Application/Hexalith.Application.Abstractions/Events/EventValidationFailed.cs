@@ -8,7 +8,7 @@ namespace Hexalith.Application.Abstractions.Events;
 
 using Ardalis.GuardClauses;
 
-using Hexalith.Application.Abstractions.Errors;
+using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 
 using System.Runtime.Serialization;
@@ -16,11 +16,11 @@ using System.Runtime.Serialization;
 /// <summary>
 /// Class EventValidationFailed.
 /// Implements the <see cref="Error" />
-/// Implements the <see cref="System.IEquatable{Hexalith.Application.Abstractions.Errors.Error}" />
+/// Implements the <see cref="System.IEquatable{Error}" />
 /// Implements the <see cref="System.IEquatable{Hexalith.Application.Abstractions.Events.EventValidationFailed}" />.
 /// </summary>
 /// <seealso cref="Error" />
-/// <seealso cref="System.IEquatable{Hexalith.Application.Abstractions.Errors.Error}" />
+/// <seealso cref="System.IEquatable{Error}" />
 /// <seealso cref="System.IEquatable{Hexalith.Application.Abstractions.Events.EventValidationFailed}" />
 [DataContract]
 public record EventValidationFailed : Error

@@ -8,7 +8,7 @@ namespace Hexalith.Application.Abstractions.Helpers;
 
 using Ardalis.GuardClauses;
 
-using Hexalith.Application.Abstractions.Errors;
+using Hexalith.Extensions.Common;
 
 using Microsoft.Extensions.Logging;
 

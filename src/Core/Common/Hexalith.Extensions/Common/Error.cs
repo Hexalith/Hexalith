@@ -4,13 +4,12 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Application.Abstractions.Errors;
-
+namespace Hexalith.Extensions.Common;
 /// <summary>
 /// Event deserialization error.
-/// Implements the <see cref="ErrorType" />.
+/// Implements the <see cref="ErrorCategory" />.
 /// </summary>
-/// <seealso cref="ErrorType" />
+/// <seealso cref="ErrorCategory" />
 public record Error
 {
     /// <summary>
@@ -44,7 +43,12 @@ public record Error
     public string? Type { get; init; }
 
     /// <summary>
-    /// Gets a short, human-readable summary of the error type.
+    /// Gets the error type.
+    /// </summary>
+    public ErrorCategory Category { get; init; }
+
+    /// <summary>
+    /// Gets error type.
     /// </summary>
     /// <value>The title.</value>
     public string? Title { get; init; }

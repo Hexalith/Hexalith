@@ -16,6 +16,8 @@
 
 namespace Hexalith.Application.Abstractions.Errors;
 
+using Hexalith.Extensions.Common;
+
 using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;

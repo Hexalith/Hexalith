@@ -12,10 +12,7 @@ using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Domain.Abstractions.Events;
 using Hexalith.Extensions.Serialization;
-using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Helpers;
 using Hexalith.Infrastructure.Serialization;
-
-using Microsoft.AspNetCore.Authentication;
 
 using System;
 using System.Runtime.Serialization;
@@ -26,13 +23,13 @@ using System.Text.Json.Serialization;
 /// The dynamics365 business event metadata.
 /// </summary>
 [JsonPolymorphicBaseClass]
-public abstract class Dynamics365BusinessEventBase : IMetadata, IEvent
+public class Dynamics365BusinessEventBase : IMetadata, IEvent
 {
     /// <inheritdoc/>
-    public abstract string AggregateId { get; }
+    public virtual string AggregateId { get => string.Empty; }
 
     /// <inheritdoc/>
-    public abstract string AggregateName { get; }
+    public virtual string AggregateName { get => string.Empty; }
 
     /// <summary>
     /// Gets or sets the business event id.
@@ -207,5 +204,5 @@ public abstract class Dynamics365BusinessEventBase : IMetadata, IEvent
     /// Gets the business command.
     /// </summary>
     /// <returns>The command.</returns>
-    public abstract BaseCommand ToCommand();
+    public virtual BaseCommand ToCommand() => throw new NotSupportedException();
 }

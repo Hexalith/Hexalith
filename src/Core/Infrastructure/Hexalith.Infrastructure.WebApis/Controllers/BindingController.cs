@@ -20,6 +20,7 @@ using Ardalis.GuardClauses;
 using Hexalith.Application.Abstractions.Errors;
 using Hexalith.Application.Abstractions.Events;
 using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 
 using Microsoft.AspNetCore.Mvc;
@@ -141,6 +142,6 @@ public abstract class BindingController : ControllerBase
             "https://github.com/Hexalith/Hexalith/issues/",
             (int)HttpStatusCode.BadRequest,
             error.Title,
-            error.Type);
+            error.Type.ToString());
     }
 }
