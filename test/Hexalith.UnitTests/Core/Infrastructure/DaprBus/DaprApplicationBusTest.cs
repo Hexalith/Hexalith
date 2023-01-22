@@ -12,7 +12,7 @@ using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Domain.Abstractions.Events;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.DaprBus;
-using Hexalith.UnitTests.Core.Application.Envelopes;
+using Hexalith.UnitTests.Core.Application.Metadatas;
 using Hexalith.UnitTests.Core.Domain;
 
 using Microsoft.Extensions.Logging;

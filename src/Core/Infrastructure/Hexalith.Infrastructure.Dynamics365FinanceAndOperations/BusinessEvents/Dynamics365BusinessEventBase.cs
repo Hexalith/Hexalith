@@ -12,6 +12,7 @@ using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Domain.Abstractions.Events;
 using Hexalith.Extensions.Serialization;
+using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Helpers;
 using Hexalith.Infrastructure.Serialization;
 
 using System;
@@ -51,7 +52,7 @@ public class Dynamics365BusinessEventBase : IMetadata, IEvent
     public IContextMetadata Context => new ContextMetadata(
         EventId ?? string.Empty,
         InitiatingUserAzureActiveDirectoryObjectId ?? string.Empty,
-        ReceivedDateTime ?? DateTime.MinValue,
+        ReceivedDateTime ?? DateTimeOffset.MinValue,
         sequenceNumber: null,
         sessionId: null);
 
@@ -124,8 +125,9 @@ public class Dynamics365BusinessEventBase : IMetadata, IEvent
     /// <summary>
     /// Gets or sets the received date time.
     /// </summary>
-    [DataMember]
-    public DateTimeOffset? ReceivedDateTime { get; set; }
+    [IgnoreDataMember]
+    [JsonIgnore]
+    public DateTimeOffset? ReceivedDateTime => EventTimeIso8601 ?? Dynamics365BusinessEventHelper.ParseDynamics365EventTimeOffset(EventTime);
 
     /// <summary>
     /// Gets the correlation id.

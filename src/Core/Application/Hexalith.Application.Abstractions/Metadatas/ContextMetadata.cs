@@ -33,7 +33,12 @@ public class ContextMetadata : IContextMetadata
     /// <param name="sequenceNumber">The message sequence number.</param>
     /// <param name="sessionId">The message session identifier.</param>
     [JsonConstructor]
-    public ContextMetadata(string correlationId, string userId, DateTimeOffset? receivedDate, long? sequenceNumber = null, string? sessionId = null)
+    public ContextMetadata(
+        string correlationId,
+        string userId,
+        DateTimeOffset? receivedDate,
+        long? sequenceNumber = null,
+        string? sessionId = null)
     {
         CorrelationId = correlationId;
         UserId = userId;
