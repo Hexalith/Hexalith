@@ -24,8 +24,17 @@ public class Dynamics365BusinessEventValidator : AbstractValidator<Dynamics365Bu
             .NotEmpty();
         _ = RuleFor(x => x.EventId)
             .NotEmpty();
-        _ = RuleFor(x => x.EventTime)
-            .NotEmpty();
+
+        RuleFor(x => x.EventTime)
+            .NotEmpty()
+            .WithMessage($"Message date and time must be defined using fields {nameof(Dynamics365BusinessEventBase.EventTime)} or {nameof(Dynamics365BusinessEventBase.EventTimeIso8601)}.")
+            .When(x => x.EventTimeIso8601 == null);
+
+        RuleFor(x => x.EventTimeIso8601)
+            .NotEmpty()
+            .WithMessage($"Message date and time must be defined using fields {nameof(Dynamics365BusinessEventBase.EventTime)} or {nameof(Dynamics365BusinessEventBase.EventTimeIso8601)}.")
+            .When(x => string.IsNullOrWhiteSpace(x.EventTime));
+
         _ = RuleFor(x => x.BusinessEventLegalEntity)
             .NotEmpty();
     }
