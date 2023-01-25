@@ -109,10 +109,10 @@ public class AggregateActorStateManager : IAggregateStateManager
             new CommandState(
             _dateTimeService.UtcNow,
             metadata.Message.Id,
-            Serialize<BaseCommand>(command),
-            Serialize<Metadata>(metadata),
+            command,
+            metadata,
             null));
-        await stateProvider.SetStateAsync<CommandState[]>(ToDoStateName, ToDo.ToArray(), cancellationToken);
+        await stateProvider.SetStateAsync(ToDoStateName, ToDo.ToArray(), cancellationToken);
     }
 
     /// <summary>
@@ -146,12 +146,10 @@ public class AggregateActorStateManager : IAggregateStateManager
         while (ToDo.Count > 0)
         {
             CommandState command = ToDo.Pop();
-            BaseCommand cmd = Deserialize<BaseCommand>(command.Message);
-            Metadata meta = Deserialize<Metadata>(command.Metadata);
-            await ExecuteCommandAsync(cmd, meta, cancellationToken);
-            _ = stateProvider.SetStateAsync<EventState[]>(ToPublishStateName, ToPublish.ToArray(), cancellationToken);
-            _ = stateProvider.SetStateAsync<CommandState[]>(ToDoStateName, ToDo.ToArray(), cancellationToken);
-            _ = stateProvider.SetStateAsync<CommandState>(GetCommandStateName(meta.Message.Id), new CommandState(command, _dateTimeService.UtcNow), cancellationToken);
+            await ExecuteCommandAsync((BaseCommand)command.Message, command.Metadata, cancellationToken);
+            _ = stateProvider.SetStateAsync(ToPublishStateName, ToPublish.ToArray(), cancellationToken);
+            _ = stateProvider.SetStateAsync(ToDoStateName, ToDo.ToArray(), cancellationToken);
+            _ = stateProvider.SetStateAsync(GetCommandStateName(command.Metadata.Message.Id), new CommandState(command, _dateTimeService.UtcNow), cancellationToken);
             await stateProvider.SaveChangesAsync(cancellationToken);
         }
     }
@@ -209,8 +207,8 @@ public class AggregateActorStateManager : IAggregateStateManager
             ToPublish.Push(new EventState(
                 _dateTimeService.UtcNow,
                 em.Message.Id,
-                Serialize<BaseEvent>(e),
-                Serialize<Metadata>(em),
+                e,
+                em,
                 null));
         }
     }

@@ -6,6 +6,11 @@
 
 namespace Hexalith.Infrastructure.DaprAggregateActor;
 
+using Hexalith.Application.Abstractions.Commands;
+using Hexalith.Application.Abstractions.Metadatas;
+using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Domain.Abstractions.Messages;
+
 using System;
 using System.Text.Json.Serialization;
 
@@ -34,11 +39,15 @@ public class EventState : MessageState
     public EventState(
         DateTimeOffset receivedDate,
         string idempotencyId,
-        string message,
-        string metadata,
+        BaseMessage message,
+        Metadata metadata,
         DateTimeOffset? publishedDate)
         : base(receivedDate, idempotencyId, message, metadata)
     {
+        if (message is not BaseEvent)
+        {
+            throw new ArgumentException("Message must be an event", nameof(message));
+        }
         PublishedDate = publishedDate;
     }
 
@@ -47,7 +56,7 @@ public class EventState : MessageState
     /// </summary>
     /// <param name="message">The message.</param>
     /// <param name="publishedDate">The published date.</param>
-    public EventState(MessageState message, DateTimeOffset publishedDate)
+    public EventState(EventState message, DateTimeOffset publishedDate)
         : this(
               message.ReceivedDate,
               message.IdempotencyId,
@@ -57,6 +66,12 @@ public class EventState : MessageState
     {
         PublishedDate = publishedDate;
     }
+
+    /// <summary>
+    /// Gets the command.
+    /// </summary>
+    /// <value>The command.</value>
+    public new BaseCommand Message { get; }
 
     /// <summary>
     /// Gets the processed date.

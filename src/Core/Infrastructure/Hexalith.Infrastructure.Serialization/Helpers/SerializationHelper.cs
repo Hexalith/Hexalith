@@ -15,9 +15,21 @@ using System.Text.Json.Serialization;
 public static class SerializationHelper
 {
     /// <summary>
+    /// Adds the polymorphism.
+    /// </summary>
+    /// <param name="options">The options.</param>
+    /// <returns>JsonSerializerOptions.</returns>
+    public static JsonSerializerOptions AddPolymorphism(this JsonSerializerOptions options)
+    {
+        options.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+        options.TypeInfoResolver = new PolymorphicTypeResolver();
+        return options;
+    }
+
+    /// <summary>
     /// Converts to polymorphicjson.
     /// </summary>
-    /// <typeparam name="T">The polymorphic type to serialize. The type or one of it's ascendents must have the polimorphic base class attribute <see cref="JsonPolymorphicAttribute"/>.</typeparam>
+    /// <typeparam name="T">The polymorphic type to serialize. The type or one of it's ascendents must have the polimorphic base class attribute <see cref="JsonPolymorphicAttribute" />.</typeparam>
     /// <param name="value">The value.</param>
     /// <returns>The Json string.</returns>
     public static string ToPolymorphicJson<T>(this T value)

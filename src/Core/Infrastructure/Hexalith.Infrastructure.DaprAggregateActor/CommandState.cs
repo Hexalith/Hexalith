@@ -8,12 +8,18 @@ namespace Hexalith.Infrastructure.DaprAggregateActor;
 
 using Ardalis.GuardClauses;
 
+using Hexalith.Application.Abstractions.Commands;
+using Hexalith.Application.Abstractions.Metadatas;
+using Hexalith.Domain.Abstractions.Messages;
+
 using System;
+using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 /// <summary>
 /// Class CommandState.
 /// </summary>
+[DataContract]
 public class CommandState : MessageState
 {
     /// <summary>
@@ -22,6 +28,7 @@ public class CommandState : MessageState
     [Obsolete("For serialization only", true)]
     public CommandState()
     {
+        Message = null!;
     }
 
     /// <summary>
@@ -45,19 +52,26 @@ public class CommandState : MessageState
     /// <param name="receivedDate">The received date.</param>
     /// <param name="processedDate">The processed date.</param>
     /// <param name="idempotencyId">The idempotency identifier.</param>
-    /// <param name="command">The command.</param>
+    /// <param name="message">The command.</param>
     /// <param name="metadata">The metadata.</param>
     [JsonConstructor]
     public CommandState(
         DateTimeOffset receivedDate,
         string idempotencyId,
-        string command,
-        string metadata,
+        BaseCommand message,
+        Metadata metadata,
         DateTimeOffset? processedDate)
-        : base(receivedDate, idempotencyId, command, metadata)
+        : base(receivedDate, idempotencyId, message, metadata)
     {
+        Message = message;
         ProcessedDate = processedDate;
     }
+
+    /// <summary>
+    /// Gets the command.
+    /// </summary>
+    /// <value>The command.</value>
+    public new BaseCommand Message { get; }
 
     /// <summary>
     /// Gets the processed date.

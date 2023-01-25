@@ -6,12 +6,17 @@
 
 namespace Hexalith.Infrastructure.DaprAggregateActor;
 
+using Hexalith.Application.Abstractions.Metadatas;
+using Hexalith.Domain.Abstractions.Messages;
+
 using System;
+using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 /// <summary>
 /// Class MessageState.
 /// </summary>
+[DataContract]
 public class MessageState
 {
     /// <summary>
@@ -21,7 +26,9 @@ public class MessageState
     public MessageState()
     {
         ReceivedDate = DateTimeOffset.MinValue;
-        IdempotencyId = Metadata = Message = string.Empty;
+        IdempotencyId = string.Empty;
+        Metadata = null!;
+        Message = null!;
     }
 
     /// <summary>
@@ -33,7 +40,7 @@ public class MessageState
     /// <param name="message">The message.</param>
     /// <param name="metadata">The metadata.</param>
     [JsonConstructor]
-    public MessageState(DateTimeOffset receivedDate, string idempotencyId, string message, string metadata)
+    public MessageState(DateTimeOffset receivedDate, string idempotencyId, BaseMessage message, Metadata metadata)
     {
         ReceivedDate = receivedDate;
         IdempotencyId = idempotencyId;
@@ -51,13 +58,13 @@ public class MessageState
     /// Gets the message.
     /// </summary>
     /// <value>The message.</value>
-    public string Message { get; }
+    public BaseMessage Message { get; }
 
     /// <summary>
     /// Gets the metadata.
     /// </summary>
     /// <value>The metadata.</value>
-    public string Metadata { get; }
+    public Metadata Metadata { get; }
 
     /// <summary>
     /// Gets the received date.

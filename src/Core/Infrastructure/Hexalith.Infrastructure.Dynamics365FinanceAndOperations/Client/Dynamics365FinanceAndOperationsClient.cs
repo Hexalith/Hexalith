@@ -8,6 +8,7 @@ namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
 
 using Ardalis.GuardClauses;
 
+using Hexalith.Extensions.Serialization;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Configurations;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Security;
@@ -113,18 +114,22 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
         _instance = s.Instance;
     }
 
-    /// <inheritdoc/>
-    public string DefaultCompany { get; }
-
     /// <summary>
     /// Gets the json options.
     /// </summary>
     /// <value>The json options.</value>
-    protected JsonSerializerOptions JsonOptions => new()
+    public static JsonSerializerOptions JsonOptions => new()
     {
         PropertyNameCaseInsensitive = false,
         DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+        Converters =
+        {
+            new IsoUtcDateTimeOffsetConverter(),
+        },
     };
+
+    /// <inheritdoc/>
+    public string DefaultCompany { get; }
 
     /// <summary>
     /// Gets the logger.

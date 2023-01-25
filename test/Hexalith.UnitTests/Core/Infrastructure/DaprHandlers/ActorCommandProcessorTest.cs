@@ -66,7 +66,9 @@ public class ActorCommandProcessorTest
                 null),
             default);
         // The InvokeMethodAsyn on the actor is not virtual and cannot be mocked to return a Task. The mock object returned task will be null.
-        await submit.Should().ThrowAsync<NullReferenceException>();
+        await submit.Should()
+            .ThrowAsync<InvalidOperationException>()
+            .Where(p => p.InnerException is NullReferenceException);
     }
 }
 
