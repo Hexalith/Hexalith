@@ -12,6 +12,7 @@ using Hexalith.Extensions.Serialization;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Configurations;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Security;
+using Hexalith.Infrastructure.Serialization.Serialization;
 
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;

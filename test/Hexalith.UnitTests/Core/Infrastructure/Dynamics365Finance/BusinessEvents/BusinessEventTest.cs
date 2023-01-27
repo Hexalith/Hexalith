@@ -117,14 +117,17 @@ public class BusinessEventTest
         _ = be.ContextRecordSubject.Should().BeEmpty();
         _ = be.ControlNumber.Should().Be(5637611083);
         _ = be.EventId.Should().Be("3C47A4CD-6EDC-4319-B893-3F862EED65FD");
-        _ = be.EventTime.Should().Be("/Date(1672408275000)/");
+        _ = be.EventTime
+                .Should()
+                .Be(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)
+                .AddMilliseconds(1672408275000));
         _ = be.InitiatingUserAzureActiveDirectoryObjectId.Should().Be("{410A2690-5EC2-42EE-9F2A-E75B4E324930}");
         _ = be.MajorVersion.Should().Be(10);
         _ = be.MinorVersion.Should().Be(11);
         _ = be.EventTimeIso8601.Should().BeCloseTo(date, TimeSpan.FromMilliseconds(1));
         _ = be.Context.Should().NotBeNull();
         _ = be.Context.ReceivedDate.Should().NotBeNull();
-        _ = be.Context.ReceivedDate.Should().BeCloseTo(date, TimeSpan.FromMilliseconds(1));
+        _ = be.Context.ReceivedDate.Should().Be(be.EventTime);
     }
 
     // test error message serialization

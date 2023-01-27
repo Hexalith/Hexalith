@@ -14,6 +14,7 @@ using Hexalith.Domain.Abstractions.Events;
 using Hexalith.Extensions.Serialization;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Helpers;
 using Hexalith.Infrastructure.Serialization;
+using Hexalith.Infrastructure.Serialization.Serialization;
 
 using System;
 using System.Runtime.Serialization;
@@ -78,12 +79,14 @@ public class Dynamics365BusinessEventBase : IMetadata, IEvent
     /// Gets or sets the event time.
     /// </summary>
     [DataMember]
-    public string? EventTime { get; set; }
+    [JsonConverter(typeof(UnixEpochDateTimeConverter))]
+    public DateTime? EventTime { get; set; }
 
     /// <summary>
     /// Gets or sets the event time iso8601.
     /// </summary>
     [DataMember]
+    [JsonConverter(typeof(IsoUtcDateTimeOffsetConverter))]
     public DateTimeOffset? EventTimeIso8601 { get; set; }
 
     /// <summary>
@@ -107,7 +110,7 @@ public class Dynamics365BusinessEventBase : IMetadata, IEvent
     public IMessageMetadata Message => new MessageMetadata(
         EventId ?? string.Empty,
         BusinessEventId ?? string.Empty,
-        EventTimeIso8601 ?? DateTimeOffset.MinValue,
+        ReceivedDateTime ?? DateTimeOffset.MinValue,
         new MessageVersion(
             MajorVersion,
             MinorVersion),
@@ -123,11 +126,11 @@ public class Dynamics365BusinessEventBase : IMetadata, IEvent
     public int MinorVersion { get; set; }
 
     /// <summary>
-    /// Gets or sets the received date time.
+    /// Gets the received date time.
     /// </summary>
     [IgnoreDataMember]
     [JsonIgnore]
-    public DateTimeOffset? ReceivedDateTime => EventTimeIso8601 ?? Dynamics365BusinessEventHelper.ParseDynamics365EventTimeOffset(EventTime);
+    public DateTimeOffset? ReceivedDateTime => EventTime ?? EventTimeIso8601;
 
     /// <summary>
     /// Gets the correlation id.

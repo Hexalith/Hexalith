@@ -13,7 +13,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Hexalith.Extensions.Serialization;
+namespace Hexalith.Infrastructure.Serialization.Serialization;
 
 using System;
 using System.Globalization;
@@ -23,15 +23,15 @@ using System.Text.RegularExpressions;
 
 /// <summary>
 /// Class UnixEpochDateTimeConverter. This class cannot be inherited.
-/// Implements the <see cref="JsonConverter{DateTime}" />.
+/// Implements the <see cref="System.Text.Json.Serialization.JsonConverter{System.DateTime}" />
 /// </summary>
-/// <seealso cref="JsonConverter{DateTime}" />
-public sealed partial class UnixEpochDateTimeOffsetConverter : JsonConverter<DateTimeOffset>
+/// <seealso cref="System.Text.Json.Serialization.JsonConverter{System.DateTime}" />
+public sealed partial class UnixEpochDateTimeConverter : JsonConverter<DateTime>
 {
     /// <summary>
     /// The epoch.
     /// </summary>
-    private static readonly DateTimeOffset _epoch = new(1970, 1, 1, 0, 0, 0, TimeSpan.Zero);
+    private static readonly DateTime _epoch = new(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
     /// <summary>
     /// Reads and converts the JSON to type <typeparamref name="T" />.
@@ -40,25 +40,20 @@ public sealed partial class UnixEpochDateTimeOffsetConverter : JsonConverter<Dat
     /// <param name="typeToConvert">The type to convert.</param>
     /// <param name="options">An object that specifies serialization options to use.</param>
     /// <returns>The converted value.</returns>
-    /// <exception cref="JsonException">Could not parse epoch date.</exception>
-    public override DateTimeOffset Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    /// <exception cref="System.Text.Json.JsonException">"Could not parse epoch date"</exception>
+    public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         string formatted = reader.GetString()!;
         Match match = EpochRegex().Match(formatted);
 
         if (
-               !match.Success
-                || !long.TryParse(match.Groups[1].Value, System.Globalization.NumberStyles.Integer, CultureInfo.InvariantCulture, out long unixTime)
-                || !int.TryParse(match.Groups[3].Value, System.Globalization.NumberStyles.Integer, CultureInfo.InvariantCulture, out int hours)
-                || !int.TryParse(match.Groups[4].Value, System.Globalization.NumberStyles.Integer, CultureInfo.InvariantCulture, out int minutes))
+                !match.Success
+                || !long.TryParse(match.Groups[1].Value, NumberStyles.Integer, CultureInfo.InvariantCulture, out long unixTime))
         {
             throw new JsonException("Could not parse epoch date");
         }
 
-        int sign = match.Groups[2].Value[0] == '+' ? 1 : -1;
-        TimeSpan utcOffset = new TimeSpan(hours * sign, minutes * sign, 0);
-
-        return _epoch.AddMilliseconds(unixTime).ToOffset(utcOffset);
+        return _epoch.AddMilliseconds(unixTime);
     }
 
     /// <summary>
@@ -67,16 +62,18 @@ public sealed partial class UnixEpochDateTimeOffsetConverter : JsonConverter<Dat
     /// <param name="writer">The writer to write to.</param>
     /// <param name="value">The value to convert to JSON.</param>
     /// <param name="options">An object that specifies serialization options to use.</param>
-    public override void Write(Utf8JsonWriter writer, DateTimeOffset value, JsonSerializerOptions options)
+    public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
     {
         long unixTime = Convert.ToInt64((value - _epoch).TotalMilliseconds);
 
-        TimeSpan utcOffset = value.Offset;
-
-        string formatted = FormattableString.Invariant($"/Date({unixTime}{(utcOffset >= TimeSpan.Zero ? "+" : "-")}{utcOffset:hhmm})/");
+        string formatted = FormattableString.Invariant($"/Date({unixTime})/");
         writer.WriteStringValue(formatted);
     }
 
+    /// <summary>
+    /// Epoches the regex.
+    /// </summary>
+    /// <returns>Regex.</returns>
     [GeneratedRegex("^/Date\\(([+-]*\\d+)\\)/$", RegexOptions.CultureInvariant)]
     private static partial Regex EpochRegex();
 }
