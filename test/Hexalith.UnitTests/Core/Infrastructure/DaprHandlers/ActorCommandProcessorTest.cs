@@ -28,10 +28,7 @@ using Hexalith.UnitTests.Core.Domain;
 using Moq;
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 
 /// <summary>
@@ -44,12 +41,12 @@ public class ActorCommandProcessorTest
     [Fact]
     public async Task Submitting_a_command_should_succeed()
     {
-        var factory = new Mock<IActorProxyFactory>();
-        var actor = new Mock<ActorProxy>();
-        factory.Setup(x => x.Create(It.IsAny<ActorId>(), It.IsAny<string>(), It.IsAny<ActorProxyOptions>()))
+        Mock<IActorProxyFactory> factory = new();
+        Mock<ActorProxy> actor = new();
+        _ = factory.Setup(x => x.Create(It.IsAny<ActorId>(), It.IsAny<string>(), It.IsAny<ActorProxyOptions>()))
             .Returns(actor.Object);
-        var processor = new DummyActorsCommandProcessor(factory.Object);
-        var command = new DummyCommand1();
+        DummyActorsCommandProcessor processor = new(factory.Object);
+        DummyCommand1 command = new();
 
         Func<Task> submit = async () => await processor.SubmitAsync(
             command,
@@ -65,8 +62,9 @@ public class ActorCommandProcessorTest
                     null),
                 null),
             default);
-        // The InvokeMethodAsyn on the actor is not virtual and cannot be mocked to return a Task. The mock object returned task will be null.
-        await submit.Should()
+
+        // The InvokeMethodAsync on the actor is not virtual and cannot be mocked to return a Task. The mock object returned task will be null.
+        _ = await submit.Should()
             .ThrowAsync<InvalidOperationException>()
             .Where(p => p.InnerException is NullReferenceException);
     }
@@ -93,12 +91,18 @@ public class DummyActorsCommandProcessor : ActorsCommandProcessor
     /// </summary>
     /// <param name="command">The command.</param>
     /// <returns>string.</returns>
-    protected override string GetActorMethodName(ICommand command) => "TotoAsync";
+    protected override string GetActorMethodName(ICommand command)
+    {
+        return "TotoAsync";
+    }
 
     /// <summary>
     /// Gets the name of the actor.
     /// </summary>
     /// <param name="command">The command.</param>
     /// <returns>string.</returns>
-    protected override string GetActorName(ICommand command) => "Titi";
+    protected override string GetActorName(ICommand command)
+    {
+        return "Titi";
+    }
 }

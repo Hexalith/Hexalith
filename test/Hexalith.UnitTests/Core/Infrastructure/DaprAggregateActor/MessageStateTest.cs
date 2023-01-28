@@ -1,4 +1,10 @@
-﻿namespace Hexalith.UnitTests.Core.Infrastructure.DaprAggregateActor;
+﻿// <copyright file="MessageStateTest.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+
+namespace Hexalith.UnitTests.Core.Infrastructure.DaprAggregateActor;
 
 using FluentAssertions;
 
@@ -42,28 +48,28 @@ public class MessageStateTest
     [Fact]
     public void Deserialize_should_succeed()
     {
-        var state = JsonSerializer.Deserialize<MessageState>(_json, new JsonSerializerOptions().AddPolymorphism());
-        state.Should().NotBeNull();
-        state!.Message.Should().BeOfType<DummyCommand1>();
-        state.Message.As<DummyCommand1>().Value1.Should().Be(123456);
-        state.Message.As<DummyCommand1>().BaseValue.Should().Be("Test");
-        state.Metadata.Should().NotBeNull();
-        state.Metadata!.Context.Should().NotBeNull();
-        state.Metadata.Context!.CorrelationId.Should().Be("20230125085001962");
-        state.Metadata.Context.UserId.Should().Be("TestUser");
-        state.Metadata.Message.Should().NotBeNull();
-        state.Metadata.Message.Id.Should().Be("20230125085001962");
-        state.Metadata.Message.Name.Should().Be("DummyCommand1");
-        state.Metadata.Message.Version.Major.Should().Be(0);
-        state.Metadata.Message.Version.Minor.Should().Be(0);
+        MessageState state = JsonSerializer.Deserialize<MessageState>(_json, new JsonSerializerOptions().AddPolymorphism());
+        _ = state.Should().NotBeNull();
+        _ = state!.Message.Should().BeOfType<DummyCommand1>();
+        _ = state.Message.As<DummyCommand1>().Value1.Should().Be(123456);
+        _ = state.Message.As<DummyCommand1>().BaseValue.Should().Be("Test");
+        _ = state.Metadata.Should().NotBeNull();
+        _ = state.Metadata!.Context.Should().NotBeNull();
+        _ = state.Metadata.Context!.CorrelationId.Should().Be("20230125085001962");
+        _ = state.Metadata.Context.UserId.Should().Be("TestUser");
+        _ = state.Metadata.Message.Should().NotBeNull();
+        _ = state.Metadata.Message.Id.Should().Be("20230125085001962");
+        _ = state.Metadata.Message.Name.Should().Be("DummyCommand1");
+        _ = state.Metadata.Message.Version.Major.Should().Be(0);
+        _ = state.Metadata.Message.Version.Minor.Should().Be(0);
     }
 
     [Fact]
     public void Serialize_should_succeed()
     {
-        var messageId = UniqueIdHelper.GenerateDateTimeId();
-        var command = new DummyCommand1("Test", 123456);
-        var messageState = new MessageState(
+        string messageId = UniqueIdHelper.GenerateDateTimeId();
+        DummyCommand1 command = new("Test", 123456);
+        MessageState messageState = new(
             DateTimeOffset.UtcNow,
             messageId,
             command,
@@ -79,11 +85,11 @@ public class MessageStateTest
                         null),
                 null));
         string json = JsonSerializer.Serialize(messageState, new JsonSerializerOptions().AddPolymorphism());
-        json.Should().NotBeEmpty();
-        json.Should().Contain("\"$type\":\"DummyCommand1\"");
-        json.Should().Contain($"\"CorrelationId\":\"{messageId}\"");
-        json.Should().Contain("\"Value1\":123456");
-        json.Should().Contain("\"BaseValue\":\"Test\"");
-        json.Should().Contain($"\"Id\":\"{messageId}\"");
+        _ = json.Should().NotBeEmpty();
+        _ = json.Should().Contain("\"$type\":\"DummyCommand1\"");
+        _ = json.Should().Contain($"\"CorrelationId\":\"{messageId}\"");
+        _ = json.Should().Contain("\"Value1\":123456");
+        _ = json.Should().Contain("\"BaseValue\":\"Test\"");
+        _ = json.Should().Contain($"\"Id\":\"{messageId}\"");
     }
 }
