@@ -19,6 +19,69 @@ using System.Threading.Tasks;
 
 public class AggregateActorStateManagerTest
 {
+    const string _json =
+        $$"""
+        [
+            {
+                "message": {
+                    "establishedDate": "2023-01-25T12:13:28.5020742+00:00",
+                    "paymentAccount": "PayCust",
+                    "paymentMode": {
+                        "id": "PAY",
+                        "bankAccount": {
+                            "iban": "IB123456789"
+                        },
+                        "directDebitMandate": {
+                            "id": "123456789",
+                            "creditorBankAccount": "SGBANK"
+                        },
+                        "paymentTerm": "13M"
+                    },
+                    "companyId": "SOL",
+                    "id": "TEST-5-1",
+                    "$type": "EstablishContract",
+                    "customerAccount": "TesTCust"
+                },
+                "processedDate": null,
+                "idempotencyId": "GIsuKVJmDk6JWAkSG-wy1g",
+                "metadata": {
+                    "context": {
+                        "correlationId": "uldCqDzzCUy_Dg1oCOAmAw",
+                        "receivedDate": "2023-01-25T12:13:28.5020742+00:00",
+                        "sequenceNumber": null,
+                        "sessionId": null,
+                        "userId": "test"
+                    },
+                    "message": {
+                        "id": "GIsuKVJmDk6JWAkSG-wy1g",
+                        "name": "EstablishContract",
+                        "version": {
+                            "major": 0,
+                            "minor": 0
+                        },
+                        "aggregate": {
+                            "id": "SOL-TEST-5-1",
+                            "name": "Contract"
+                        },
+                        "date": "2023-01-28T07:26:14.5542661+00:00"
+                    },
+                    "scopes": [],
+                    "version": {
+                        "major": 0,
+                        "minor": 0
+                    }
+                },
+                "receivedDate": "2023-01-28T07:26:14.7363923+00:00"
+            }
+        ]
+        """;
+    [Fact]
+    public async Task Try_get_state_should_succeed()
+    {
+        var todo = JsonSerializer.Deserialize<List<BaseCommand>>(_json);
+        var command = todo.First();
+        
+    }
     [Fact]
     public async Task Initialize_should_succeed()
     {

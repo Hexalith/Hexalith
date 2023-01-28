@@ -6,8 +6,6 @@
 
 namespace Hexalith.Infrastructure.DaprAggregateActor;
 
-using Ardalis.GuardClauses;
-
 using Hexalith.Application.Abstractions.Aggregates;
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
@@ -42,8 +40,10 @@ public class AggregateActorStateManager : IAggregateStateManager
         ICommandDispatcher dispatcher,
         IDateTimeService dateTimeService)
     {
-        _dateTimeService = Guard.Against.Null(dateTimeService);
-        _dispatcher = Guard.Against.Null(dispatcher);
+        ArgumentNullException.ThrowIfNull(dispatcher);
+        ArgumentNullException.ThrowIfNull(dateTimeService);
+        _dateTimeService =dateTimeService;
+        _dispatcher = dispatcher;
     }
 
     /// <summary>
@@ -72,7 +72,7 @@ public class AggregateActorStateManager : IAggregateStateManager
     public Stack<CommandState> ToDo => _toDo ?? throw new InvalidOperationException("Commands to do state is not initialized.");
 
     /// <summary>
-    /// Gets converts to dostatename.
+    /// Gets to do state name.
     /// </summary>
     /// <value>The name of to do state.</value>
     public virtual string ToDoStateName => nameof(ToDo);
@@ -85,7 +85,7 @@ public class AggregateActorStateManager : IAggregateStateManager
     public Stack<EventState> ToPublish => _toPublish ?? throw new InvalidOperationException("Events to publish state is not initialized.");
 
     /// <summary>
-    /// Gets converts to publishstatename.
+    /// Gets to publish state name.
     /// </summary>
     /// <value>The name of to publish state.</value>
     public virtual string ToPublishStateName => nameof(ToPublish);
@@ -100,11 +100,11 @@ public class AggregateActorStateManager : IAggregateStateManager
     /// <returns>A Task representing the asynchronous operation.</returns>
     public async Task AddCommandAsync(IStateStoreProvider stateProvider, BaseCommand command, Metadata metadata, CancellationToken cancellationToken)
     {
-        _ = Guard.Against.Null(stateProvider);
-        _ = Guard.Against.Null(metadata);
-        _ = Guard.Against.Null(metadata.Message);
-        _ = Guard.Against.NullOrWhiteSpace(metadata.Message.Id);
-        _ = Guard.Against.Null(command);
+        ArgumentNullException.ThrowIfNull(stateProvider);
+        ArgumentNullException.ThrowIfNull(metadata);
+        ArgumentNullException.ThrowIfNull(metadata.Message);
+        ArgumentNullException.ThrowIfNull(command);
+        ArgumentException.ThrowIfNullOrEmpty(metadata.Message.Id);
         ToDo.Push(
             new CommandState(
             _dateTimeService.UtcNow,
@@ -124,7 +124,7 @@ public class AggregateActorStateManager : IAggregateStateManager
     /// <exception cref="System.Runtime.Serialization.SerializationException">Could not deserialize object from json : " + json.</exception>
     public virtual T Deserialize<T>(string json)
     {
-        _ = Guard.Against.NullOrWhiteSpace(json);
+        ArgumentNullException.ThrowIfNull(json);
         T? message = JsonSerializer.Deserialize<T>(json, new JsonSerializerOptions
         {
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
@@ -142,7 +142,7 @@ public class AggregateActorStateManager : IAggregateStateManager
     /// <returns>A Task&lt;System.Boolean&gt; representing the asynchronous operation.</returns>
     public async Task ExecuteCommandsAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken)
     {
-        _ = Guard.Against.Null(stateProvider);
+        ArgumentNullException.ThrowIfNull(stateProvider);
         while (ToDo.Count > 0)
         {
             CommandState command = ToDo.Pop();
@@ -163,7 +163,7 @@ public class AggregateActorStateManager : IAggregateStateManager
     /// <returns>A Task representing the asynchronous operation.</returns>
     public async Task InitializeAsync(IStateStoreProvider stateProvider, Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder, CancellationToken cancellationToken)
     {
-        _ = Guard.Against.Null(stateProvider);
+        ArgumentNullException.ThrowIfNull(stateProvider);
         ConditionalValue<CommandState[]> commands = await stateProvider.TryGetStateAsync<CommandState[]>(ToDoStateName, cancellationToken);
         _toDo = commands.HasValue ? new Stack<CommandState>(commands.Value) : new Stack<CommandState>();
         ConditionalValue<EventState[]> events = await stateProvider.TryGetStateAsync<EventState[]>(ToPublishStateName, cancellationToken);

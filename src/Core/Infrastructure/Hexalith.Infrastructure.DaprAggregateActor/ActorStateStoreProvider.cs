@@ -6,8 +6,6 @@
 
 namespace Hexalith.Infrastructure.DaprAggregateActor;
 
-using Ardalis.GuardClauses;
-
 using Dapr.Actors.Runtime;
 
 using Hexalith.Application.Abstractions.States;
@@ -15,17 +13,26 @@ using Hexalith.Application.Abstractions.States;
 using System.Threading;
 using System.Threading.Tasks;
 
+/// <summary>
+/// Class ActorStateStoreProvider.
+/// Implements the <see cref="IStateStoreProvider" />.
+/// </summary>
+/// <seealso cref="IStateStoreProvider" />
 public class ActorStateStoreProvider : IStateStoreProvider
 {
+    /// <summary>
+    /// The actor state manager.
+    /// </summary>
     private readonly IActorStateManager _actorStateManager;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ActorStateStoreProvider"/> class.
+    /// Initializes a new instance of the <see cref="ActorStateStoreProvider" /> class.
     /// </summary>
-    /// <param name="actorStateManager"></param>
+    /// <param name="actorStateManager">The actor state manager.</param>
     public ActorStateStoreProvider(IActorStateManager actorStateManager)
     {
-        _actorStateManager = Guard.Against.Null(actorStateManager);
+        ArgumentNullException.ThrowIfNull(actorStateManager);
+        _actorStateManager = actorStateManager;
     }
 
     /// <inheritdoc/>
