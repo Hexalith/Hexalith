@@ -4,12 +4,12 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.UnitTests.Core.Domain;
-
-using Hexalith.Domain.Abstractions.Events;
+namespace Hexalith.UnitTests.Core.Domain.Events;
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
+
+using Hexalith.Domain.Abstractions.Events;
 
 [DataContract]
 public abstract class DummyBaseEvent : BaseEvent

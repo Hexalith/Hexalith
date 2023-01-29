@@ -1,34 +1,34 @@
-﻿// <copyright file="DummyEvent2.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="DummyCommand1.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.UnitTests.Core.Domain;
-
-using Hexalith.Extensions.Helpers;
+namespace Hexalith.UnitTests.Core.Domain.Messages;
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Extensions.Helpers;
+
 [DataContract]
-public class DummyEvent2 : DummyBaseEvent
+public class DummyMessage1 : DummyBaseMessage
 {
     [JsonConstructor]
-    public DummyEvent2(string baseValue, int value2)
+    public DummyMessage1(string baseValue, int value1)
         : base(baseValue)
     {
-        Value2 = value2;
+        Value1 = value1;
     }
 
-    public DummyEvent2()
+    public DummyMessage1()
     {
     }
 
-    public int Value2 { get; }
+    public int Value1 { get; }
 
     protected override string DefaultAggregateId()
     {
-        return BaseValue + "-" + Value2.ToInvariantString();
+        return BaseValue + "-" + Value1.ToInvariantString();
     }
 }

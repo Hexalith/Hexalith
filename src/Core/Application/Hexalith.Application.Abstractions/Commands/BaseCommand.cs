@@ -6,9 +6,9 @@
 
 namespace Hexalith.Application.Abstractions.Commands;
 
-using Hexalith.Domain.Abstractions.Messages;
-
 using System.Runtime.Serialization;
+
+using Hexalith.Domain.Abstractions.Messages;
 
 /// <summary>
 /// Class BaseCommand.

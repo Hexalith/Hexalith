@@ -6,10 +6,10 @@
 
 namespace Hexalith.Domain.Abstractions.Messages;
 
-using Hexalith.Extensions.Serialization;
-
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
+
+using Hexalith.Extensions.Serialization;
 
 /// <summary>
 /// Base class for messages.
@@ -19,7 +19,7 @@ using System.Text.Json.Serialization;
 public abstract class BaseMessage : IMessage
 {
     /// <summary>
-    /// Default string used for separating natural keys to compose the aggragate identifier.
+    /// Default string used for separating natural keys to compose the aggregate identifier.
     /// </summary>
     protected const string Separator = "-";
 

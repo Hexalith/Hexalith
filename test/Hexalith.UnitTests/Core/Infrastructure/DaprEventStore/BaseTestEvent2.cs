@@ -6,9 +6,8 @@
 
 namespace Hexalith.UnitTests.Core.Infrastructure.DaprEventStore;
 
-using Newtonsoft.Json;
-
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 [DataContract]
 public class BaseTestEvent2 : BaseTestEvent
