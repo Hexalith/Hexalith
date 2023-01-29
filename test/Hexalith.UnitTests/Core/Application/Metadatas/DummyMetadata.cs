@@ -6,12 +6,12 @@
 
 namespace Hexalith.UnitTests.Core.Application.Metadatas;
 
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
+
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Domain.Abstractions.Messages;
 using Hexalith.Extensions.Helpers;
-
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
 
 [DataContract]
 public class DummyMetadata : Metadata

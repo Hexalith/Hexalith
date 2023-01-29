@@ -6,9 +6,9 @@
 
 namespace Hexalith.UnitTests.Core.Common.Helpers;
 
-using FluentAssertions;
-
 using System.Collections.Generic;
+
+using FluentAssertions;
 
 public class ObjectToDictionnaryHelper
 {

@@ -6,18 +6,19 @@
 
 namespace Hexalith.UnitTests.Core.Infrastructure.DaprAggregateActor;
 
+using System;
+using System.Threading.Tasks;
+
 using Dapr.Actors.Runtime;
 
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
+using Hexalith.Application.Abstractions.States;
 using Hexalith.Extensions.Common;
 using Hexalith.Infrastructure.DaprAggregateActor;
 using Hexalith.UnitTests.Core.Application.Commands;
 
 using Moq;
-
-using System;
-using System.Threading.Tasks;
 
 public class AggregateActorStateManagerTest
 {

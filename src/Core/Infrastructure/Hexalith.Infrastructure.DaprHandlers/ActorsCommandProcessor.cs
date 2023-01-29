@@ -6,16 +6,16 @@
 
 namespace Hexalith.Infrastructure.DaprHandlers;
 
+using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
+
 using Ardalis.GuardClauses;
 
 using Dapr.Actors.Client;
 
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
-
-using System.Reflection;
-using System.Threading;
-using System.Threading.Tasks;
 
 /// <summary>
 /// Class ActorsCommandProcessor.
@@ -52,14 +52,14 @@ public abstract class ActorsCommandProcessor : ICommandProcessor
             new Dapr.Actors.ActorId(command.AggregateId),
             actorName);
 
-        var methods = typeof(ActorProxy)
+        IEnumerable<MethodInfo> methods = typeof(ActorProxy)
             .GetMethods()
             .Where(x =>
                 x.Name == nameof(ActorProxy.InvokeMethodAsync) &&
                 x.GetParameters().Length == 3 &&
                 x.ContainsGenericParameters == true &&
                 x.GetGenericArguments().Length == 1);
-        var mi = methods.SingleOrDefault();
+        MethodInfo? mi = methods.SingleOrDefault();
         if (mi == null)
         {
             if (methods.Count() == 0)
@@ -91,6 +91,7 @@ public abstract class ActorsCommandProcessor : ICommandProcessor
         {
             throw new InvalidOperationException($"The actor {actorName} method '{methodName}' should have a return value of type Task.");
         }
+
         try
         {
             await task;

@@ -6,12 +6,12 @@
 
 namespace Hexalith.Infrastructure.DaprAggregateActor;
 
+using System.Threading;
+using System.Threading.Tasks;
+
 using Dapr.Actors.Runtime;
 
 using Hexalith.Application.Abstractions.States;
-
-using System.Threading;
-using System.Threading.Tasks;
 
 /// <summary>
 /// Class ActorStateStoreProvider.
@@ -33,6 +33,18 @@ public class ActorStateStoreProvider : IStateStoreProvider
     {
         ArgumentNullException.ThrowIfNull(actorStateManager);
         _actorStateManager = actorStateManager;
+    }
+
+    /// <inheritdoc/>
+    public async Task AddStateAsync<T>(string key, T value, CancellationToken cancellationToken)
+    {
+        await _actorStateManager.SetStateAsync(key, value, cancellationToken);
+    }
+
+    /// <inheritdoc/>
+    public async Task<T> GetOrAddStateAsync<T>(string key, T value, CancellationToken cancellationToken)
+    {
+        return await _actorStateManager.GetOrAddStateAsync(key, value, cancellationToken);
     }
 
     /// <inheritdoc/>

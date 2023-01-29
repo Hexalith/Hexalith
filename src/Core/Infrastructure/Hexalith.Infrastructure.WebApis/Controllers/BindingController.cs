@@ -15,6 +15,10 @@
 // ***********************************************************************
 namespace Hexalith.Infrastructure.WebApis.Controllers;
 
+using System.Globalization;
+using System.Net;
+using System.Text.Json;
+
 using Ardalis.GuardClauses;
 
 using Hexalith.Application.Abstractions.Errors;
@@ -26,10 +30,6 @@ using Hexalith.Extensions.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-
-using System.Globalization;
-using System.Net;
-using System.Text.Json;
 
 /// <summary>
 /// Class Dynamics365FinanceEventBindingController.
@@ -142,6 +142,6 @@ public abstract class BindingController : ControllerBase
             "https://github.com/Hexalith/Hexalith/issues/",
             (int)HttpStatusCode.BadRequest,
             error.Title,
-            error.Type.ToString());
+            error.Type?.ToString());
     }
 }

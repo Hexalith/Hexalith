@@ -6,16 +6,16 @@
 
 namespace Hexalith.UnitTests.Core.Infrastructure.DaprAggregateActor;
 
+using System;
+using System.Text.Json;
+
 using FluentAssertions;
 
 using Hexalith.Application.Abstractions.Metadatas;
+using Hexalith.Application.Abstractions.States;
 using Hexalith.Extensions.Helpers;
-using Hexalith.Infrastructure.DaprAggregateActor;
 using Hexalith.Infrastructure.Serialization.Helpers;
 using Hexalith.UnitTests.Core.Application.Commands;
-
-using System;
-using System.Text.Json;
 
 public class CommandStateTest
 {

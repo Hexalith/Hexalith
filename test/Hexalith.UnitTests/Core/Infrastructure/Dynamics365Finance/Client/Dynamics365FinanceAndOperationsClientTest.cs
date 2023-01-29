@@ -6,13 +6,13 @@
 
 namespace Hexalith.UnitTests.Core.Infrastructure.Dynamics365Finance.Client;
 
+using System.Text.Json;
+
 using FluentAssertions;
 
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Configurations;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks;
-
-using System.Text.Json;
 
 public class Dynamics365FinanceAndOperationsClientTest
 {

@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 01-25-2023
 // ***********************************************************************
-// <copyright file="UnixEpochDateTimeConverter.cs" company="Fiveforty SAS Paris France">
+// <copyright file="IsoUtcDateTimeOffsetConverter.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -16,13 +16,10 @@
 
 namespace Hexalith.Infrastructure.Serialization.Serialization;
 
-using Microsoft.VisualBasic;
-
 using System;
 using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Text.RegularExpressions;
 
 /// <summary>
 /// Class UnixEpochDateTimeConverter. This class cannot be inherited.

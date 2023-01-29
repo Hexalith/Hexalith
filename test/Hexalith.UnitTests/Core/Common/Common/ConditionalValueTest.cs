@@ -6,11 +6,11 @@
 
 namespace Hexalith.UnitTests.Core.Common.Common;
 
+using System;
+
 using FluentAssertions;
 
 using Hexalith.Extensions.Common;
-
-using System;
 
 using Xunit;
 

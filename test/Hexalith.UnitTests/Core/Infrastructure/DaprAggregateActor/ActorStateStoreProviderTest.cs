@@ -6,6 +6,8 @@
 
 namespace Hexalith.UnitTests.Core.Infrastructure.DaprAggregateActor;
 
+using System.Threading.Tasks;
+
 using Dapr.Actors.Runtime;
 
 using FluentAssertions;
@@ -15,8 +17,6 @@ using Hexalith.Infrastructure.DaprAggregateActor;
 using Hexalith.UnitTests.Core.Application.Commands;
 
 using Moq;
-
-using System.Threading.Tasks;
 
 public class ActorStateStoreProviderTest
 {

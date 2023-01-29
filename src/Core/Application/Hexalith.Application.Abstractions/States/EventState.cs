@@ -4,15 +4,16 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Infrastructure.DaprAggregateActor;
+namespace Hexalith.Application.Abstractions.States;
 
-using Hexalith.Application.Abstractions.Commands;
+using System;
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
+
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Domain.Abstractions.Events;
 using Hexalith.Domain.Abstractions.Messages;
-
-using System;
-using System.Text.Json.Serialization;
+using Hexalith.Infrastructure.DaprAggregateActor;
 
 /// <summary>
 /// Class EventState.
@@ -40,42 +41,20 @@ public class EventState : MessageState
         DateTimeOffset receivedDate,
         string idempotencyId,
         BaseMessage message,
-        Metadata metadata,
-        DateTimeOffset? publishedDate)
+        Metadata metadata)
         : base(receivedDate, idempotencyId, message, metadata)
     {
         if (message is not BaseEvent)
         {
             throw new ArgumentException("Message must be an event", nameof(message));
         }
-        PublishedDate = publishedDate;
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="EventState"/> class.
+    /// Gets the event.
     /// </summary>
-    /// <param name="message">The message.</param>
-    /// <param name="publishedDate">The published date.</param>
-    public EventState(EventState message, DateTimeOffset publishedDate)
-        : this(
-              message.ReceivedDate,
-              message.IdempotencyId,
-              message.Message,
-              message.Metadata,
-              publishedDate)
-    {
-        PublishedDate = publishedDate;
-    }
-
-    /// <summary>
-    /// Gets the command.
-    /// </summary>
-    /// <value>The command.</value>
-    public new BaseCommand Message { get; }
-
-    /// <summary>
-    /// Gets the processed date.
-    /// </summary>
-    /// <value>The processed date.</value>
-    public DateTimeOffset? PublishedDate { get; }
+    /// <value>The event.</value>
+    [IgnoreDataMember]
+    [JsonIgnore]
+    public BaseEvent Event => (BaseEvent)Message;
 }

@@ -4,7 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.UnitTests.Core.Infrastructure.DaprEventStore;
+namespace Hexalith.UnitTests.Core.Application.MessageStores;
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;

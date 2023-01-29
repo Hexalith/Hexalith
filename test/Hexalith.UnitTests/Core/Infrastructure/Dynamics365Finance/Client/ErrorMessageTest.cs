@@ -6,11 +6,11 @@
 
 namespace Hexalith.UnitTests.Core.Infrastructure.Dynamics365Finance.Client;
 
+using System.Text.Json;
+
 using FluentAssertions;
 
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
-
-using System.Text.Json;
 
 public class ErrorMessageTest
 {

@@ -6,11 +6,11 @@
 
 namespace Hexalith.UnitTests.Core.Common.Helpers;
 
+using System;
+
 using FluentAssertions;
 
 using Hexalith.Extensions.Helpers;
-
-using System;
 
 public class ExceptionHelperTest
 {

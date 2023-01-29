@@ -14,6 +14,7 @@ using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.DaprBus;
 using Hexalith.UnitTests.Core.Application.Metadatas;
 using Hexalith.UnitTests.Core.Domain.Events;
+
 using Microsoft.Extensions.Logging;
 
 using Moq;

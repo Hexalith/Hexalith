@@ -1,0 +1,115 @@
+﻿// <copyright file="MemoryStateProvider.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+
+namespace Hexalith.Application.States;
+
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+
+using Hexalith.Application.Abstractions.States;
+using Hexalith.Extensions.Common;
+
+/// <summary>
+/// Class MemoryStateProvider.
+/// Implements the <see cref="IStateStoreProvider" />.
+/// </summary>
+/// <seealso cref="IStateStoreProvider" />
+public class MemoryStateProvider : IStateStoreProvider
+{
+    /// <summary>
+    /// The state.
+    /// </summary>
+    private readonly Dictionary<string, object?> _state = new();
+
+    /// <summary>
+    /// The uncommitted state.
+    /// </summary>
+    private readonly Dictionary<string, object?> _uncommittedState = new();
+
+    /// <summary>
+    /// Gets the state.
+    /// </summary>
+    /// <value>The state.</value>
+    public IReadOnlyDictionary<string, object?> State => _state;
+
+    /// <summary>
+    /// Gets the state of the uncommitted.
+    /// </summary>
+    /// <value>The state of the uncommitted.</value>
+    public IReadOnlyDictionary<string, object?> UncommittedState => _uncommittedState;
+
+    /// <inheritdoc/>
+    public Task AddStateAsync<T>(string key, T value, CancellationToken cancellationToken)
+    {
+        object? v = value;
+        _uncommittedState.Add(key, v);
+        return Task.CompletedTask;
+    }
+
+    /// <inheritdoc/>
+    public async Task<T> GetOrAddStateAsync<T>(string key, T value, CancellationToken cancellationToken)
+    {
+        ConditionalValue<T> result = await TryGetStateAsync<T>(key, cancellationToken);
+        if (result.HasValue)
+        {
+            return result.Value;
+        }
+
+        await AddStateAsync<T>(key, value, cancellationToken);
+
+        return await GetStateAsync<T>(key, cancellationToken);
+    }
+
+    /// <inheritdoc/>
+    public async Task<T> GetStateAsync<T>(string key, CancellationToken cancellationToken)
+    {
+        ConditionalValue<T> result = await TryGetStateAsync<T>(key, cancellationToken);
+        return result.HasValue
+            ? result.Value
+            : throw new KeyNotFoundException($"The key '{key}' was not found in the state store.");
+    }
+
+    /// <inheritdoc/>
+    public Task SaveChangesAsync(CancellationToken cancellationToken)
+    {
+        foreach (KeyValuePair<string, object?> entry in _uncommittedState.ToList())
+        {
+            if (_state.ContainsKey(entry.Key))
+            {
+                _ = _state.Remove(entry.Key);
+            }
+
+            _state.Add(entry.Key, entry.Value);
+            _ = _uncommittedState.Remove(entry.Key);
+        }
+
+        return Task.CompletedTask;
+    }
+
+    /// <inheritdoc/>
+    public Task SetStateAsync<T>(string key, T value, CancellationToken cancellationToken)
+    {
+        if (_uncommittedState.ContainsKey(key))
+        {
+            _ = _uncommittedState.Remove(key);
+        }
+
+        _uncommittedState.Add(key, value);
+        return Task.CompletedTask;
+    }
+
+    /// <inheritdoc/>
+    public Task<ConditionalValue<T>> TryGetStateAsync<T>(string key, CancellationToken cancellationToken)
+    {
+        object? result = _uncommittedState.TryGetValue(key, out object? uncommitted)
+            ? uncommitted
+            : _state.TryGetValue(key, out object? committed) ? committed : null;
+        return Task.FromResult(result == null
+            ? new ConditionalValue<T>()
+            : new ConditionalValue<T>((T)result));
+    }
+}

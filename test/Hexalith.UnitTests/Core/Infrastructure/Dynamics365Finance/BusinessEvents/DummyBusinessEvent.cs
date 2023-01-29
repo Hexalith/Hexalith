@@ -6,11 +6,11 @@
 
 namespace Hexalith.UnitTests.Core.Infrastructure.Dynamics365Finance.BusinessEvents;
 
+using System.Runtime.Serialization;
+
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents;
-
-using System.Runtime.Serialization;
 
 [DataContract]
 public class DummyBusinessEvent1 : Dynamics365BusinessEventBase

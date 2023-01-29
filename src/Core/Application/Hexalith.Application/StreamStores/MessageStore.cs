@@ -1,55 +1,48 @@
-﻿// <copyright file="ActorMessageStore.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="MessageStore.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Infrastructure.DaprMessageStore;
-
-using Ardalis.GuardClauses;
-
-using Dapr.Actors.Runtime;
-
-using Hexalith.Extensions.Serialization;
-using Hexalith.Infrastructure.Serialization;
+namespace Hexalith.Application.StreamStores;
 
 using System.Data;
 using System.Globalization;
-using System.Runtime.Serialization;
-using System.Text.Json;
+
+using Ardalis.GuardClauses;
+
+using Hexalith.Application.Abstractions.States;
+using Hexalith.Extensions.Common;
+using Hexalith.Extensions.Serialization;
 
 /// <summary>
-/// This class is used to store messages in a Dapr actor state.
+/// This class is used to store messages state.
 /// </summary>
 /// <typeparam name="TMessage">The storage message type.
-/// Must have the JSON polymorphic base class attribute <see cref="JsonPolymorphicBaseClassAttribute"/> or one of it's base classes must have it.
-/// </typeparam>
-public class ActorMessageStore<TMessage>
+/// Must have the JSON polymorphic base class attribute <see cref="JsonPolymorphicBaseClassAttribute" /> or one of it's base classes must have it.</typeparam>
+public class MessageStore<TMessage>
     where TMessage : class
 {
-    private static readonly JsonPolymorphicBaseClassAttribute? _jsonPolymorphic = Attribute
-        .GetCustomAttribute(typeof(TMessage), typeof(JsonPolymorphicBaseClassAttribute))
-            as JsonPolymorphicBaseClassAttribute;
-
-    private readonly IActorStateManager _stateManager;
+    /// <summary>
+    /// The state manager.
+    /// </summary>
+    private readonly IStateStoreProvider _stateManager;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ActorMessageStore{TMessage}"/> class.
+    /// Initializes a new instance of the <see cref="MessageStore{TMessage}" /> class.
     /// </summary>
     /// <param name="stateManager">The actor state manager.</param>
     /// <param name="streamName">The stream name.</param>
-    public ActorMessageStore(IActorStateManager stateManager, string streamName)
+    public MessageStore(IStateStoreProvider stateManager, string streamName)
     {
         _stateManager = Guard.Against.Null(stateManager);
-        _ = Guard.Against.Null(
-            _jsonPolymorphic,
-            message: $"The {nameof(JsonPolymorphicBaseClassAttribute)} must be set on {typeof(TMessage).FullName} class or one of it's base classes.");
         StreamName = streamName;
     }
 
     /// <summary>
     /// Gets the streamName.
     /// </summary>
+    /// <value>The name of the stream.</value>
     public string StreamName { get; }
 
     /// <summary>
@@ -59,7 +52,7 @@ public class ActorMessageStore<TMessage>
     /// <param name="expectedVersion">Expected version for concurrency check.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>The new version of the stream.</returns>
-    /// <exception cref="DBConcurrencyException">Thrown if expected version does not match stream version.</exception>
+    /// <exception cref="System.Data.DBConcurrencyException">Stream version mismatch: Expected version={expectedVersion.ToString(CultureInfo.InvariantCulture)}; Actual version={version.ToString(CultureInfo.InvariantCulture)}.</exception>
     public async Task<long> AddAsync(
         IEnumerable<TMessage> messages,
         long expectedVersion,
@@ -77,11 +70,11 @@ public class ActorMessageStore<TMessage>
                 $"Stream version mismatch: Expected version={expectedVersion.ToString(CultureInfo.InvariantCulture)}; Actual version={version.ToString(CultureInfo.InvariantCulture)}.");
         }
 
-        foreach (TMessage e in messages)
+        foreach (TMessage m in messages)
         {
             await _stateManager.AddStateAsync(
                 GetMessageStateName(++version),
-                Serialize(e),
+                m,
                 cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -105,29 +98,13 @@ public class ActorMessageStore<TMessage>
     }
 
     /// <summary>
-    /// Polymorphic deserialization of the message.
-    /// </summary>
-    /// <param name="json">The JSON serialized message.</param>
-    /// <returns>The message instance.</returns>
-    public virtual TMessage Deserialize(string json)
-    {
-        _ = Guard.Against.NullOrWhiteSpace(json);
-        TMessage? @message = JsonSerializer.Deserialize<TMessage>(json, new JsonSerializerOptions
-        {
-            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-            WriteIndented = false,
-            TypeInfoResolver = new PolymorphicTypeResolver(),
-        });
-        return @message ?? throw new SerializationException("Could not deserialize object from json : " + json);
-    }
-
-    /// <summary>
     /// Get messages from stream.
     /// </summary>
-    /// <param name="fromVersion">First message to retreive.</param>
-    /// <param name="toVersion">Last message to retreive.</param>
+    /// <param name="fromVersion">First message to retrieve.</param>
+    /// <param name="toVersion">Last message to retrieve.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
-    /// <returns>A <see cref="Task{TResult}"/> representing the result of the asynchronous operation.</returns>
+    /// <returns>A <see cref="Task{TResult}" /> representing the result of the asynchronous operation.</returns>
+    /// <exception cref="Hexalith.Application.StreamStores.MessageStoreItemNotFoundException">Item not found.</exception>
     public async Task<IEnumerable<TMessage>> GetAsync(long fromVersion, long toVersion, CancellationToken cancellationToken)
     {
         _ = Guard.Against.AgainstExpression(p => p > 0, fromVersion, "From version should be greater than 0.");
@@ -137,17 +114,37 @@ public class ActorMessageStore<TMessage>
 
         while (fromVersion <= toVersion)
         {
-            ConditionalValue<string> result = await _stateManager.TryGetStateAsync<string>(GetMessageStateName(fromVersion++), cancellationToken)
-                            .ConfigureAwait(false);
+            ConditionalValue<TMessage> result = await _stateManager
+                .TryGetStateAsync<TMessage>(GetMessageStateName(fromVersion++), cancellationToken)
+                .ConfigureAwait(false);
             if (!result.HasValue)
             {
                 throw new MessageStoreItemNotFoundException(version: fromVersion, StreamName, message: null, innerException: null);
             }
 
-            messages.Add(Deserialize(result.Value));
+            messages.Add(result.Value);
         }
 
         return messages;
+    }
+
+    /// <summary>
+    /// Get as an asynchronous operation.
+    /// </summary>
+    /// <param name="version">The version.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>A Task&lt;TMessage&gt; representing the asynchronous operation.</returns>
+    /// <exception cref="Hexalith.Application.StreamStores.MessageStoreItemNotFoundException">Item not found.</exception>
+    public async Task<TMessage> GetAsync(long version, CancellationToken cancellationToken)
+    {
+        _ = Guard.Against.NegativeOrZero(version);
+
+        ConditionalValue<TMessage> result = await _stateManager
+                .TryGetStateAsync<TMessage>(GetMessageStateName(version), cancellationToken)
+                .ConfigureAwait(false);
+        return !result.HasValue
+            ? throw new MessageStoreItemNotFoundException(version: version, StreamName, message: null, innerException: null)
+            : result.Value;
     }
 
     /// <summary>
@@ -194,20 +191,5 @@ public class ActorMessageStore<TMessage>
             .TryGetStateAsync<long>(GetStreamStateName(), cancellationToken)
             .ConfigureAwait(false);
         return result.HasValue ? result.Value : 0L;
-    }
-
-    /// <summary>
-    /// Polymorphic serialization of the message to JSON.
-    /// </summary>
-    /// <param name="message">The message to serialize.</param>
-    /// <returns>The JSON string.</returns>
-    public virtual string Serialize(TMessage @message)
-    {
-        return JsonSerializer.Serialize(@message, new JsonSerializerOptions
-        {
-            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-            WriteIndented = false,
-            TypeInfoResolver = new PolymorphicTypeResolver(),
-        });
     }
 }

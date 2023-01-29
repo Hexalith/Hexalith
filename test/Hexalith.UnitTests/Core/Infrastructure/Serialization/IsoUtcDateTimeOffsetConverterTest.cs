@@ -6,12 +6,12 @@
 
 namespace Hexalith.UnitTests.Core.Infrastructure.Serialization;
 
+using System;
+using System.Text.Json;
+
 using FluentAssertions;
 
 using Hexalith.Infrastructure.Serialization.Serialization;
-
-using System;
-using System.Text.Json;
 
 public class IsoUtcDateTimeOffsetConverterTest
 {

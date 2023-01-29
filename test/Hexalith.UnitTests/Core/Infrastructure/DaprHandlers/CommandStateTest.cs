@@ -5,12 +5,13 @@
 // </copyright>
 
 namespace Hexalith.UnitTests.Core.Infrastructure.DaprHandlers;
+
 using System;
 using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Infrastructure.DaprAggregateActor;
+using Hexalith.Application.Abstractions.States;
 using Hexalith.Infrastructure.Serialization.Helpers;
 using Hexalith.UnitTests.Core.Application.Commands;
 

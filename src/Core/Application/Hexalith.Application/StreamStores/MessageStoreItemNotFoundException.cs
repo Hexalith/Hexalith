@@ -4,12 +4,12 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Infrastructure.DaprMessageStore;
-
-using Hexalith.Extensions.Helpers;
+namespace Hexalith.Application.StreamStores;
 
 using System;
 using System.Runtime.Serialization;
+
+using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// The message store item not found exception.

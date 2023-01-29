@@ -6,12 +6,12 @@
 
 namespace Hexalith.UnitTests.Core.Application.Tasks;
 
+using System;
+using System.Text.Json;
+
 using FluentAssertions;
 
 using Hexalith.Application.Abstractions.Tasks;
-
-using System;
-using System.Text.Json;
 
 public class TaskProcessorTest
 {

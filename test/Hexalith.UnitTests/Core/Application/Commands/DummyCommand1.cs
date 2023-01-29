@@ -11,7 +11,6 @@ using System.Text.Json.Serialization;
 
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Extensions.Helpers;
-using Hexalith.UnitTests.Core.Domain;
 
 [DataContract]
 public class DummyCommand1 : DummyBaseCommand

@@ -4,13 +4,13 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.UnitTests.Core.Infrastructure.DaprEventStore;
-
-using Hexalith.Domain.Abstractions.Events;
-using Hexalith.Extensions.Serialization;
+namespace Hexalith.UnitTests.Core.Application.MessageStores;
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
+
+using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Extensions.Serialization;
 
 [DataContract]
 [JsonPolymorphicBaseClass]

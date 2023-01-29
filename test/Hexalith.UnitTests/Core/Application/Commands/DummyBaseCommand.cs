@@ -4,12 +4,12 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.UnitTests.Core.Domain;
-
-using Hexalith.Application.Abstractions.Commands;
+namespace Hexalith.UnitTests.Core.Application.Commands;
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
+
+using Hexalith.Application.Abstractions.Commands;
 
 [DataContract]
 public abstract class DummyBaseCommand : BaseCommand

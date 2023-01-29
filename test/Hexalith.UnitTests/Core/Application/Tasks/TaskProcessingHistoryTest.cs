@@ -6,11 +6,11 @@
 
 namespace Hexalith.UnitTests.Core.Application.Tasks;
 
+using System;
+
 using FluentAssertions;
 
 using Hexalith.Application.Abstractions.Tasks;
-
-using System;
 
 public class TaskProcessingHistoryTest
 {

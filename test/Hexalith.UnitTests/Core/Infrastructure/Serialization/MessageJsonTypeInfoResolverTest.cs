@@ -6,13 +6,13 @@
 
 namespace Hexalith.UnitTests.Core.Infrastructure.Serialization;
 
+using System.Runtime.Serialization;
+using System.Text.Json;
+
 using FluentAssertions;
 
 using Hexalith.Extensions.Serialization;
 using Hexalith.Infrastructure.Serialization;
-
-using System.Runtime.Serialization;
-using System.Text.Json;
 
 public interface ITest
 {

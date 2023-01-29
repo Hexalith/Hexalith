@@ -6,11 +6,11 @@
 
 namespace Hexalith.UnitTests.Core.Application.Metadatas;
 
+using System.Text.Json;
+
 using FluentAssertions;
 
 using Hexalith.Application.Abstractions.Metadatas;
-
-using System.Text.Json;
 
 public class MetadataTest
 {

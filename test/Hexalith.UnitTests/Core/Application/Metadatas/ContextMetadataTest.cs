@@ -15,16 +15,12 @@
 // ***********************************************************************
 namespace Hexalith.UnitTests.Core.Application.Metadatas;
 
+using System;
+using System.Text.Json;
+
 using FluentAssertions;
 
 using Hexalith.Application.Abstractions.Metadatas;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
 
 /// <summary>
 /// Class ContextMetadataTest.

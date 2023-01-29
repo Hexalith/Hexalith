@@ -52,6 +52,15 @@ public class StringHelperTest
         _ = value.ToInvariantString().ToDouble().Should().Be(value);
     }
 
+    [Fact]
+    public void Format_string_with_named_placeholders_should_return_expected()
+    {
+        _ = StringHelper
+            .FormatWithNamedPlaceholders("Say {Hello} {Number} times", "hello world", 11)
+            .Should()
+            .Be("Say hello world 11 times");
+    }
+
     [Theory]
     [InlineData(0, "0")]
     [InlineData(1, "1")]
@@ -110,14 +119,5 @@ public class StringHelperTest
     public void Replace_named_placeholders_should_return_expected_string_with_indices(string value, string expected)
     {
         _ = StringHelper.ReplacePlaceholderNamesByIndex(value).Should().Be(expected);
-    }
-
-    [Fact]
-    public void Format_string_with_named_placeholders_should_return_expected()
-    {
-        _ = StringHelper
-            .FormatWithNamedPlaceholders("Say {Hello} {Number} times", "hello world", 11)
-            .Should()
-            .Be("Say hello world 11 times");
     }
 }

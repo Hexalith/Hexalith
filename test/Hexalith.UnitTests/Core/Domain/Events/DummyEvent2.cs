@@ -6,10 +6,10 @@
 
 namespace Hexalith.UnitTests.Core.Domain.Events;
 
-using Hexalith.Extensions.Helpers;
-
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
+
+using Hexalith.Extensions.Helpers;
 
 [DataContract]
 public class DummyEvent2 : DummyBaseEvent

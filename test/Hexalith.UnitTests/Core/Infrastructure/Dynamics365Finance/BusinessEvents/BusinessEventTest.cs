@@ -6,14 +6,14 @@
 
 namespace Hexalith.UnitTests.Core.Infrastructure.Dynamics365Finance.BusinessEvents;
 
+using System.Runtime.Serialization;
+using System.Text.Json;
+
 using FluentAssertions;
 
 using FluentValidation;
 
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents;
-
-using System.Runtime.Serialization;
-using System.Text.Json;
 
 public class BusinessEventTest
 {
@@ -100,14 +100,14 @@ public class BusinessEventTest
     {
         using JsonDocument json = JsonDocument.Parse("\"bad json\"");
         Action action = () => Dynamics365BusinessEventBase.AddTypeAndDeserialize(json.RootElement);
-        action.Should().Throw<SerializationException>();
+        _ = action.Should().Throw<SerializationException>();
     }
 
     // test error message serialization
     [Fact]
     public void Base_event_deserialize_should_succeed()
     {
-        var date = new DateTimeOffset(2022, 12, 30, 13, 51, 15, 294, TimeSpan.Zero);
+        DateTimeOffset date = new(2022, 12, 30, 13, 51, 15, 294, TimeSpan.Zero);
         using JsonDocument json = JsonDocument.Parse(_businessEventJson1);
         Dynamics365BusinessEventBase be = Dynamics365BusinessEventBase.AddTypeAndDeserialize(json.RootElement);
         _ = be.Should().NotBeNull();
@@ -176,7 +176,7 @@ public class BusinessEventTest
     [Fact]
     public void Event_validation_should_succeed()
     {
-        var be = new DummyBusinessEvent1()
+        DummyBusinessEvent1 be = new()
         {
             BusinessEventId = "DummyBusinessEvent1",
             EventTimeIso8601 = DateTimeOffset.UtcNow,
@@ -184,7 +184,7 @@ public class BusinessEventTest
             EventId = Guid.NewGuid().ToString(),
             BusinessEventLegalEntity = "SO01",
         };
-        var validator = new Dynamics365BusinessEventValidator();
+        Dynamics365BusinessEventValidator validator = new();
         validator.ValidateAndThrow(be);
     }
 
@@ -192,15 +192,15 @@ public class BusinessEventTest
     public void Event_with_undefined_date_time_validation_should_fail()
     {
         // A business event with an undefined event time should throw an exception
-        var be = new DummyBusinessEvent1
+        DummyBusinessEvent1 be = new()
         {
             EventTime = null,
             EventTimeIso8601 = null,
         };
-        var validator = new Dynamics365BusinessEventValidator();
-        var result = validator.Validate(be);
+        Dynamics365BusinessEventValidator validator = new();
+        FluentValidation.Results.ValidationResult result = validator.Validate(be);
         _ = result.IsValid.Should().BeFalse();
-        result.Errors.Should().ContainSingle(e => e.PropertyName == nameof(Dynamics365BusinessEventBase.EventTime));
+        _ = result.Errors.Should().ContainSingle(e => e.PropertyName == nameof(Dynamics365BusinessEventBase.EventTime));
     }
 
     [Fact]
@@ -208,6 +208,6 @@ public class BusinessEventTest
     {
         using JsonDocument json = JsonDocument.Parse("{\"notBusinessEventId\":\"nothing\"}");
         Action action = () => Dynamics365BusinessEventBase.AddTypeAndDeserialize(json.RootElement);
-        action.Should().Throw<SerializationException>().Which.Message.Should().Contain("BusinessEventId");
+        _ = action.Should().Throw<SerializationException>().Which.Message.Should().Contain("BusinessEventId");
     }
 }

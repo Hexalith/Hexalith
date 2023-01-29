@@ -7,7 +7,7 @@
 namespace Hexalith.Application.Abstractions.StreamStores;
 
 /// <summary>
-/// Persisted stream item iterface.
+/// Persisted stream item interface.
 /// </summary>
 public interface IStreamItem
 {

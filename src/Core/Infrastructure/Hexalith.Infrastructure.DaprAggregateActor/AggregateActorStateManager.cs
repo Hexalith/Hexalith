@@ -6,17 +6,17 @@
 
 namespace Hexalith.Infrastructure.DaprAggregateActor;
 
+using System.Linq;
+using System.Threading;
+
 using Hexalith.Application.Abstractions.Aggregates;
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Application.Abstractions.States;
+using Hexalith.Application.StreamStores;
 using Hexalith.Domain.Abstractions.Events;
 using Hexalith.Extensions.Common;
-using Hexalith.Infrastructure.Serialization;
-
-using System.Runtime.Serialization;
-using System.Text.Json;
-using System.Threading;
+using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class AggregateActorState.
@@ -27,13 +27,14 @@ public class AggregateActorStateManager : IAggregateStateManager
 {
     private readonly IDateTimeService _dateTimeService;
     private readonly ICommandDispatcher _dispatcher;
-    private Stack<CommandState>? _toDo;
-    private Stack<EventState>? _toPublish;
+    private MessageStore<CommandState>? _commands;
+    private MessageStore<EventState>? _events;
+    private AggregateActorState? _state;
+    private IStateStoreProvider? _stateProvider;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AggregateActorStateManager"/> class.
     /// </summary>
-    /// <param name="stateProvider">The state manager.</param>
     /// <param name="dispatcher">The handler.</param>
     /// <param name="dateTimeService">The date time service.</param>
     public AggregateActorStateManager(
@@ -42,15 +43,21 @@ public class AggregateActorStateManager : IAggregateStateManager
     {
         ArgumentNullException.ThrowIfNull(dispatcher);
         ArgumentNullException.ThrowIfNull(dateTimeService);
-        _dateTimeService =dateTimeService;
+        _dateTimeService = dateTimeService;
         _dispatcher = dispatcher;
     }
 
     /// <summary>
-    /// Gets the name of the command state.
+    /// Gets to do state name.
     /// </summary>
-    /// <value>The name of the command state.</value>
-    public virtual string CommandStateName => "Command";
+    /// <value>The name of to do state.</value>
+    public virtual string CommandsStreamName => nameof(Commands);
+
+    /// <summary>
+    /// Gets to do state name.
+    /// </summary>
+    /// <value>The name of to do state.</value>
+    public virtual string EventsStreamName => nameof(Events);
 
     /// <summary>
     /// Gets the separator.
@@ -64,31 +71,13 @@ public class AggregateActorStateManager : IAggregateStateManager
     /// <value>The name of the state.</value>
     public virtual string StateName => "State";
 
-    /// <summary>
-    /// Gets converts to do.
-    /// </summary>
-    /// <value>To do.</value>
-    /// <exception cref="System.InvalidOperationException">Commands to do state is not initialized.</exception>
-    public Stack<CommandState> ToDo => _toDo ?? throw new InvalidOperationException("Commands to do state is not initialized.");
+    private MessageStore<CommandState> Commands => _commands ?? throw new InvalidOperationException("The command state store is not initialized.");
 
-    /// <summary>
-    /// Gets to do state name.
-    /// </summary>
-    /// <value>The name of to do state.</value>
-    public virtual string ToDoStateName => nameof(ToDo);
+    private MessageStore<EventState> Events => _events ?? throw new InvalidOperationException("The event state store is not initialized.");
 
-    /// <summary>
-    /// Gets converts to publish.
-    /// </summary>
-    /// <value>To publish.</value>
-    /// <exception cref="System.InvalidOperationException">Events to publish state is not initialized.</exception>
-    public Stack<EventState> ToPublish => _toPublish ?? throw new InvalidOperationException("Events to publish state is not initialized.");
+    private AggregateActorState State => _state ??= new AggregateActorState(0, 0, 0, 0);
 
-    /// <summary>
-    /// Gets to publish state name.
-    /// </summary>
-    /// <value>The name of to publish state.</value>
-    public virtual string ToPublishStateName => nameof(ToPublish);
+    private IStateStoreProvider StateProvider => _stateProvider ?? throw new InvalidOperationException("The actor state provider is not initialized.");
 
     /// <summary>
     /// Add command as an asynchronous operation.
@@ -105,33 +94,16 @@ public class AggregateActorStateManager : IAggregateStateManager
         ArgumentNullException.ThrowIfNull(metadata.Message);
         ArgumentNullException.ThrowIfNull(command);
         ArgumentException.ThrowIfNullOrEmpty(metadata.Message.Id);
-        ToDo.Push(
+        _ = await Commands.AddAsync(
             new CommandState(
             _dateTimeService.UtcNow,
             metadata.Message.Id,
             command,
             metadata,
-            null));
-        await stateProvider.SetStateAsync(ToDoStateName, ToDo.ToArray(), cancellationToken);
-    }
-
-    /// <summary>
-    /// Polymorphic deserialization of the message.
-    /// </summary>
-    /// <typeparam name="T">Type to deserialize.</typeparam>
-    /// <param name="json">The JSON serialized message.</param>
-    /// <returns>The message instance.</returns>
-    /// <exception cref="System.Runtime.Serialization.SerializationException">Could not deserialize object from json : " + json.</exception>
-    public virtual T Deserialize<T>(string json)
-    {
-        ArgumentNullException.ThrowIfNull(json);
-        T? message = JsonSerializer.Deserialize<T>(json, new JsonSerializerOptions
-        {
-            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-            WriteIndented = false,
-            TypeInfoResolver = new PolymorphicTypeResolver(),
-        });
-        return message ?? throw new SerializationException("Could not deserialize object from json : " + json);
+            null).IntoArray(),
+            State.CommandStreamVersion,
+            cancellationToken);
+        await SetStateAsync(State.IncrementCommandVersion(), cancellationToken);
     }
 
     /// <summary>
@@ -143,14 +115,11 @@ public class AggregateActorStateManager : IAggregateStateManager
     public async Task ExecuteCommandsAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(stateProvider);
-        while (ToDo.Count > 0)
+        while (State.NextEventToPublish != 0 && State.NextCommandToDo <= State.CommandStreamVersion)
         {
-            CommandState command = ToDo.Pop();
-            await ExecuteCommandAsync((BaseCommand)command.Message, command.Metadata, cancellationToken);
-            _ = stateProvider.SetStateAsync(ToPublishStateName, ToPublish.ToArray(), cancellationToken);
-            _ = stateProvider.SetStateAsync(ToDoStateName, ToDo.ToArray(), cancellationToken);
-            _ = stateProvider.SetStateAsync(GetCommandStateName(command.Metadata.Message.Id), new CommandState(command, _dateTimeService.UtcNow), cancellationToken);
-            await stateProvider.SaveChangesAsync(cancellationToken);
+            CommandState command = await Commands.GetAsync(State.NextCommandToDo, cancellationToken);
+            await ExecuteCommandAsync(command.Command, command.Metadata, cancellationToken);
+            await SetStateAsync(State.IncrementNextCommandToDo(), cancellationToken);
         }
     }
 
@@ -164,15 +133,17 @@ public class AggregateActorStateManager : IAggregateStateManager
     public async Task InitializeAsync(IStateStoreProvider stateProvider, Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(stateProvider);
-        ConditionalValue<CommandState[]> commands = await stateProvider.TryGetStateAsync<CommandState[]>(ToDoStateName, cancellationToken);
-        _toDo = commands.HasValue ? new Stack<CommandState>(commands.Value) : new Stack<CommandState>();
-        ConditionalValue<EventState[]> events = await stateProvider.TryGetStateAsync<EventState[]>(ToPublishStateName, cancellationToken);
-        _toPublish = events.HasValue ? new Stack<EventState>(events.Value) : new Stack<EventState>();
+        _stateProvider = stateProvider;
+        _commands = new MessageStore<CommandState>(StateProvider, CommandsStreamName);
+        _events = new MessageStore<EventState>(StateProvider, EventsStreamName);
 
-        // If the command state does not exist, the actor has never been activated. We need to add the actor reminder.
-        if (!commands.HasValue)
+        ConditionalValue<AggregateActorState> state = await StateProvider.TryGetStateAsync<AggregateActorState>(StateName, cancellationToken);
+
+        // If the state does not exist, the actor has never been activated. We need to add the actor reminder.
+        if (state.HasValue)
         {
             await registerReminder("Continue", Array.Empty<byte>(), TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(30));
+            _state = state.Value;
         }
     }
 
@@ -182,44 +153,27 @@ public class AggregateActorStateManager : IAggregateStateManager
         return Task.CompletedTask;
     }
 
-    /// <summary>
-    /// Polymorphic serialization of the message to JSON.
-    /// </summary>
-    /// <typeparam name="T">Type to deserialize.</typeparam>
-    /// <param name="message">The message to serialize.</param>
-    /// <returns>The JSON string.</returns>
-    public virtual string Serialize<T>(T message)
-    {
-        return JsonSerializer.Serialize(message, new JsonSerializerOptions
-        {
-            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-            WriteIndented = false,
-            TypeInfoResolver = new PolymorphicTypeResolver(),
-        });
-    }
-
     private async Task ExecuteCommandAsync(ICommand command, IMetadata metadata, CancellationToken cancellationToken)
     {
         IEnumerable<BaseEvent> events = await _dispatcher.DoAsync(command, cancellationToken);
-        foreach (BaseEvent e in events)
-        {
-            Metadata em = Metadata.CreateNew(e, metadata, _dateTimeService.UtcNow);
-            ToPublish.Push(new EventState(
+        IEnumerable<EventState> eventStates = events.Select(
+            p => new EventState(
                 _dateTimeService.UtcNow,
-                em.Message.Id,
-                e,
-                em,
-                null));
-        }
+                metadata.Message.Id,
+                p,
+                Metadata.CreateNew(p, metadata, _dateTimeService.UtcNow)));
+
+        long version = await Events.AddAsync(
+            eventStates,
+            State.EventStreamVersion,
+            cancellationToken);
+        await SetStateAsync(State.WithEventVersion(version), cancellationToken);
     }
 
-    /// <summary>
-    /// Gets the name of the command state.
-    /// </summary>
-    /// <param name="id">The identifier.</param>
-    /// <returns>System.String.</returns>
-    private string GetCommandStateName(string id)
+    private async Task SetStateAsync(AggregateActorState state, CancellationToken cancellationToken)
     {
-        return CommandStateName + Separator + id;
+        await StateProvider.SetStateAsync(StateName, state, CancellationToken.None);
+        await StateProvider.SaveChangesAsync(cancellationToken);
+        _state = state;
     }
 }
