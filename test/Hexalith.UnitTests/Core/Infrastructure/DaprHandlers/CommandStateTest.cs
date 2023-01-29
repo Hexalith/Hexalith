@@ -1,0 +1,36 @@
+﻿// <copyright file="CommandStateTest.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+
+namespace Hexalith.UnitTests.Core.Infrastructure.DaprHandlers;
+using System;
+using System.Text.Json;
+
+using FluentAssertions;
+
+using Hexalith.Infrastructure.DaprAggregateActor;
+using Hexalith.Infrastructure.Serialization.Helpers;
+using Hexalith.UnitTests.Core.Application.Commands;
+
+public class CommandStateTest
+{
+    [Fact]
+    public void Polymorphic_serialize_and_deserialize_should_return_same_object()
+    {
+        DummyCommand1 command = DummyCommand1.Create();
+        CommandState original = new(
+            DateTimeOffset.Now,
+            "id2423",
+            command,
+            command.CreateMetadata(),
+            DateTimeOffset.Now);
+        JsonSerializerOptions options = new JsonSerializerOptions().AddPolymorphism();
+        string json = JsonSerializer.Serialize(original, options);
+        CommandState result = JsonSerializer.Deserialize<CommandState>(json, options);
+        _ = result.Should().NotBeNull();
+        _ = result.Message.Should().BeOfType<DummyCommand1>();
+        _ = result.Should().BeEquivalentTo(original);
+    }
+}

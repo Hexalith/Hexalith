@@ -15,6 +15,10 @@
 // ***********************************************************************
 namespace Hexalith.UnitTests.Core.Infrastructure.DaprHandlers;
 
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+
 using Dapr.Actors;
 using Dapr.Actors.Client;
 
@@ -23,13 +27,9 @@ using FluentAssertions;
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Infrastructure.DaprHandlers;
-using Hexalith.UnitTests.Core.Domain;
+using Hexalith.UnitTests.Core.Application.Commands;
 
 using Moq;
-
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 
 /// <summary>
 /// Class ActorCommandProcessorTest.

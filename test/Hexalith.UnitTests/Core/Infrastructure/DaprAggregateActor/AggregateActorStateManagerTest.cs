@@ -12,7 +12,7 @@ using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Extensions.Common;
 using Hexalith.Infrastructure.DaprAggregateActor;
-using Hexalith.UnitTests.Core.Domain;
+using Hexalith.UnitTests.Core.Application.Commands;
 
 using Moq;
 

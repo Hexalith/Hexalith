@@ -12,7 +12,7 @@ using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.DaprAggregateActor;
 using Hexalith.Infrastructure.Serialization.Helpers;
-using Hexalith.UnitTests.Core.Domain;
+using Hexalith.UnitTests.Core.Application.Commands;
 
 using System;
 using System.Text.Json;

@@ -12,7 +12,6 @@ using FluentAssertions;
 
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Infrastructure.Serialization.Helpers;
-using Hexalith.UnitTests.Core.Domain;
 
 public class BaseCommandTest
 {
