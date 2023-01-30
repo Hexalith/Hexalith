@@ -121,9 +121,9 @@ public class ResiliencyPolicy
     /// <returns>The retry policy status.</returns>
     public RetryStatus CanRetry(DateTimeOffset startedDate, int retryCount)
     {
-        return retryCount > MaximumRetries
+        return RetryLimitReached(retryCount)
             ? RetryStatus.Stopped
-            : startedDate.Add(Timeout) < DateTimeOffset.UtcNow
+            : TimeoutReached(startedDate)
             ? RetryStatus.Stopped
             : NextRetryTime(startedDate, retryCount) < DateTimeOffset.UtcNow ? RetryStatus.Enabled : RetryStatus.Suspended;
     }
@@ -153,5 +153,15 @@ public class ResiliencyPolicy
         }
 
         return period + EvaluatePeriod(retry - 1);
+    }
+
+    private bool RetryLimitReached(int retryCount)
+    {
+        return retryCount > MaximumRetries && MaximumRetries >= 0;
+    }
+
+    private bool TimeoutReached(DateTimeOffset startedDate)
+    {
+        return Timeout != TimeSpan.MaxValue && startedDate.Add(Timeout) < DateTimeOffset.UtcNow;
     }
 }

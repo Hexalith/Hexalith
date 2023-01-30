@@ -16,6 +16,7 @@ using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Application.Abstractions.States;
 using Hexalith.Application.Abstractions.Tasks;
 using Hexalith.Application.StreamStores;
+using Hexalith.Application.Tasks;
 using Hexalith.Domain.Abstractions.Events;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;

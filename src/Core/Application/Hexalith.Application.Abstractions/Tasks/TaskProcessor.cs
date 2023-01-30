@@ -186,14 +186,23 @@ public class TaskProcessor : ITaskProcessor
     public TaskProcessor Fail(string message)
     {
         TaskProcessingFailure newFailure = Failure == null ? new TaskProcessingFailure(1, DateTimeOffset.UtcNow, message) : Failure.Fail(message);
-        return (TaskProcessor)(Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed
+        bool canRetry = ResiliencyPolicy
+            .CanRetry(History.ProcessingStartDate ?? History.CreatedDate, newFailure.Count) != RetryStatus.Stopped;
+        return Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed
             ? throw new InvalidStatusChangeException(currentStatus: Status, newStatus: TaskProcessorStatus.Suspended, "Cannot fail a terminated task.")
-            : (ITaskProcessor)new TaskProcessor(this)
-            {
-                History = History.Suspended(),
-                Status = TaskProcessorStatus.Suspended,
-                Failure = newFailure,
-            });
+            : canRetry
+                ? new TaskProcessor(this)
+                {
+                    History = History.Suspended(),
+                    Status = TaskProcessorStatus.Suspended,
+                    Failure = newFailure,
+                }
+                : new TaskProcessor(this)
+                {
+                    History = History.Canceled(),
+                    Status = TaskProcessorStatus.Canceled,
+                    Failure = newFailure,
+                };
     }
 
     /// <summary>

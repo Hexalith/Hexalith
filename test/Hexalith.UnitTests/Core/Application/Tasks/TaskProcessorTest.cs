@@ -34,11 +34,28 @@ public class TaskProcessorTest
     }
 
     [Fact]
-    public void Failed_process_should_be_suspended()
+    public void Fail_running_process_with_resiliency_should_be_suspended()
+    {
+        TaskProcessor processor = new TaskProcessor(
+            new ResiliencyPolicy(
+                10,
+                TimeSpan.FromSeconds(10),
+                TimeSpan.FromSeconds(10),
+                TimeSpan.FromSeconds(10),
+                TimeSpan.FromSeconds(10),
+                true))
+            .Start()
+            .Fail("fail");
+        _ = processor.Status.Should().Be(TaskProcessorStatus.Suspended);
+    }
+
+    [Fact]
+    public void Fail_running_process_without_resiliency_should_be_canceled()
     {
         TaskProcessor processor = new TaskProcessor()
-            .Fail("test");
-        _ = processor.Status.Should().Be(TaskProcessorStatus.Suspended);
+            .Start()
+            .Fail("fail");
+        _ = processor.Status.Should().Be(TaskProcessorStatus.Canceled);
     }
 
     [Fact]

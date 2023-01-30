@@ -1,0 +1,127 @@
+﻿// <copyright file="ResilientCommandProcessorTest.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+
+namespace Hexalith.UnitTests.Core.Application.Tasks;
+
+using System.Threading.Tasks;
+
+using FluentAssertions;
+
+using Hexalith.Application.Abstractions.Commands;
+using Hexalith.Application.Abstractions.Tasks;
+using Hexalith.Application.States;
+using Hexalith.Application.Tasks;
+using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Extensions.Helpers;
+using Hexalith.UnitTests.Core.Application.Commands;
+using Hexalith.UnitTests.Core.Domain.Events;
+
+using Moq;
+
+public class ResilientCommandProcessorTest
+{
+    [Fact]
+    public async Task Completed_state_should_be_valid()
+    {
+        Mock<ICommandDispatcher> dispatcher = new();
+        _ = dispatcher
+            .Setup(p => p.DoAsync(It.IsAny<ICommand>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new DummyEvent1("My test response", 123).IntoArray());
+        MemoryStateProvider stateProvider = new();
+        ResilientCommandProcessor processor = new(
+            ResiliencyPolicy.None,
+            dispatcher.Object,
+            stateProvider);
+        const string key = "test1";
+        string stateName = nameof(TaskProcessor) + key;
+        DummyCommand1 command = new("My test 1", 1);
+        (bool completed, IEnumerable<BaseEvent> events) = await processor.ProcessAsync(key, command, CancellationToken.None);
+        _ = completed.Should().BeTrue();
+        _ = events.Should().HaveCount(1);
+        _ = events.First().Should().BeOfType<DummyEvent1>();
+        _ = stateProvider.State.Should().BeEmpty();
+        _ = stateProvider.UncommittedState.Should().NotBeEmpty();
+        _ = stateProvider.UncommittedState.Should().ContainKey(stateName);
+        _ = stateProvider.UncommittedState[stateName].Should().BeOfType<TaskProcessor>();
+        TaskProcessor taskProcessor = stateProvider.UncommittedState[stateName] as TaskProcessor;
+        _ = taskProcessor.Status.Should().Be(TaskProcessorStatus.Completed);
+        _ = taskProcessor.History.CompletedDate.Should().NotBeNull();
+        _ = taskProcessor.History.ProcessingStartDate.Should().NotBeNull();
+        _ = taskProcessor.History.SuspendedDate.Should().BeNull();
+        _ = taskProcessor.History.CanceledDate.Should().BeNull();
+        _ = taskProcessor.Failure.Should().BeNull();
+    }
+
+    [Fact]
+    public async Task Task_status_should_be_cancelled_when_command_dispatcher_fails_without_resiliency()
+    {
+        Mock<ICommandDispatcher> dispatcher = new();
+        _ = dispatcher
+            .Setup(p => p.DoAsync(It.IsAny<ICommand>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.FromException<IEnumerable<BaseEvent>>(new InvalidOperationException("Command execution failed.")));
+        MemoryStateProvider stateProvider = new();
+        ResilientCommandProcessor processor = new(
+            ResiliencyPolicy.None,
+            dispatcher.Object,
+            stateProvider);
+        const string key = "test1";
+        string stateName = nameof(TaskProcessor) + key;
+        DummyCommand1 command = new("My test 1", 1);
+        (bool completed, IEnumerable<BaseEvent> events) = await processor.ProcessAsync(key, command, CancellationToken.None);
+        _ = completed.Should().BeTrue();
+        _ = events.Should().HaveCount(1);
+        _ = events.First().Should().BeOfType<CommandProcessingFailed>();
+        _ = stateProvider.State.Should().BeEmpty();
+        _ = stateProvider.UncommittedState.Should().NotBeEmpty();
+        _ = stateProvider.UncommittedState.Should().ContainKey(stateName);
+        _ = stateProvider.UncommittedState[stateName].Should().BeOfType<TaskProcessor>();
+        TaskProcessor taskProcessor = stateProvider.UncommittedState[stateName] as TaskProcessor;
+        _ = taskProcessor.Status.Should().Be(TaskProcessorStatus.Canceled);
+        _ = taskProcessor.History.CompletedDate.Should().BeNull();
+        _ = taskProcessor.History.ProcessingStartDate.Should().NotBeNull();
+        _ = taskProcessor.History.SuspendedDate.Should().BeNull();
+        _ = taskProcessor.History.CanceledDate.Should().NotBeNull();
+        _ = taskProcessor.Failure.Should().NotBeNull();
+    }
+
+    [Fact]
+    public async Task Task_status_should_be_suspended_when_command_dispatcher_fails_with_resiliency()
+    {
+        Mock<ICommandDispatcher> dispatcher = new();
+        _ = dispatcher
+            .Setup(p => p.DoAsync(It.IsAny<ICommand>(), It.IsAny<CancellationToken>()))
+            .Returns(Task.FromException<IEnumerable<BaseEvent>>(new InvalidOperationException("Command execution failed.")));
+        MemoryStateProvider stateProvider = new();
+        ResilientCommandProcessor processor = new(
+            new(
+                10,
+                TimeSpan.FromMilliseconds(100),
+                TimeSpan.FromMilliseconds(100),
+                TimeSpan.FromMilliseconds(100),
+                TimeSpan.FromDays(100),
+                false),
+            dispatcher.Object,
+            stateProvider);
+        const string key = "test1";
+        string stateName = nameof(TaskProcessor) + key;
+        DummyCommand1 command = new("My test 1", 1);
+        (bool completed, IEnumerable<BaseEvent> events) = await processor.ProcessAsync(key, command, CancellationToken.None);
+        _ = completed.Should().BeFalse();
+        _ = events.Should().HaveCount(1);
+        _ = events.First().Should().BeOfType<CommandProcessingFailed>();
+        _ = stateProvider.State.Should().BeEmpty();
+        _ = stateProvider.UncommittedState.Should().NotBeEmpty();
+        _ = stateProvider.UncommittedState.Should().ContainKey(stateName);
+        _ = stateProvider.UncommittedState[stateName].Should().BeOfType<TaskProcessor>();
+        TaskProcessor taskProcessor = stateProvider.UncommittedState[stateName] as TaskProcessor;
+        _ = taskProcessor.Status.Should().Be(TaskProcessorStatus.Suspended);
+        _ = taskProcessor.History.CompletedDate.Should().BeNull();
+        _ = taskProcessor.History.ProcessingStartDate.Should().NotBeNull();
+        _ = taskProcessor.History.SuspendedDate.Should().NotBeNull();
+        _ = taskProcessor.History.CanceledDate.Should().BeNull();
+        _ = taskProcessor.Failure.Should().NotBeNull();
+    }
+}
