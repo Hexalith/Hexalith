@@ -4,7 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.UnitTests.Core.Common.Extensions;
+namespace Hexalith.UnitTests.Core.Common.Helpers;
 
 using FluentAssertions;
 
@@ -13,7 +13,7 @@ using Hexalith.Extensions.Helpers;
 public class ArrayHelperTest
 {
     [Fact]
-    public void Interger_into_array_should_contain_value()
+    public void Integer_into_array_should_contain_value()
     {
         List<string>[] array = new List<string> { "Hello once", "Hello again " }.IntoArray();
         _ = array.Should().ContainSingle();

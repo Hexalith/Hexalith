@@ -60,7 +60,7 @@ public class TestCustom2 : TestCustom1
 public class MessageJsonTypeInfoResolverTest
 {
     [Fact]
-    public void Deserialize_object_with_custom_discriminator_json_should_succed()
+    public void Deserialize_object_with_custom_discriminator_json_should_succeed()
     {
         string json = $$"""{ "MyDisc":"TestCustom2", "MyProp1":"P1", "MyProp2":"P2" }""";
         JsonSerializerOptions options = new()
@@ -75,7 +75,7 @@ public class MessageJsonTypeInfoResolverTest
     }
 
     [Fact]
-    public void Serialize_and_deserilise_should_return_same_object()
+    public void Serialize_and_deserialize_should_return_same_object()
     {
         string json = JsonSerializer.Serialize<Test1>(
              new Test2 { MyProp1 = "P1", MyProp2 = "P2" },
@@ -85,7 +85,7 @@ public class MessageJsonTypeInfoResolverTest
     }
 
     [Fact]
-    public void Serialize_and_deserilise_with_custom_discriminator_should_return_same_object()
+    public void Serialize_and_deserialize_with_custom_discriminator_should_return_same_object()
     {
         TestCustom2 test2 = new() { MyProp1 = "P1", MyProp2 = "P2" };
         string json = JsonSerializer.Serialize<TestCustom1>(

@@ -17,68 +17,7 @@ using System.Runtime.Serialization;
 public record AggregateActorState(
     long CommandStreamVersion,
     long EventStreamVersion,
-    long NextCommandToDo,
-    long NextEventToPublish)
+    long LastCommandDone,
+    long LastEventPublished)
 {
-    /// <summary>
-    /// Increments the command version.
-    /// </summary>
-    /// <returns>AggregateActorState.</returns>
-    public AggregateActorState IncrementCommandVersion()
-    {
-        return new AggregateActorState(
-                CommandStreamVersion + 1,
-                EventStreamVersion,
-                NextCommandToDo,
-                NextEventToPublish);
-    }
-
-    /// <summary>
-    /// Increments the event version.
-    /// </summary>
-    /// <returns>AggregateActorState.</returns>
-    public AggregateActorState IncrementEventVersion()
-    {
-        return new AggregateActorState(
-                CommandStreamVersion,
-                EventStreamVersion + 1,
-                NextCommandToDo,
-                NextEventToPublish);
-    }
-
-    /// <summary>
-    /// Increments the next command to do.
-    /// </summary>
-    /// <returns>AggregateActorState.</returns>
-    public AggregateActorState IncrementNextCommandToDo()
-    {
-        return new AggregateActorState(
-                CommandStreamVersion,
-                EventStreamVersion,
-                NextCommandToDo + 1,
-                NextEventToPublish);
-    }
-
-    /// <summary>
-    /// Increments the next event to publish.
-    /// </summary>
-    /// <returns>AggregateActorState.</returns>
-    public AggregateActorState IncrementNextEventToPublish()
-    {
-        return new AggregateActorState(
-                CommandStreamVersion,
-                EventStreamVersion,
-                NextCommandToDo,
-                NextEventToPublish + 1);
-    }
-
-    /// <summary>
-    /// Withes the event version.
-    /// </summary>
-    /// <param name="version">The version.</param>
-    /// <returns>AggregateActorState.</returns>
-    public AggregateActorState WithEventVersion(long version)
-    {
-        return new AggregateActorState(this) { CommandStreamVersion = version };
-    }
 }

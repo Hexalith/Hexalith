@@ -14,6 +14,7 @@ using Dapr.Actors.Runtime;
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Application.Abstractions.States;
+using Hexalith.Application.Abstractions.Tasks;
 using Hexalith.Extensions.Common;
 using Hexalith.Infrastructure.DaprAggregateActor;
 using Hexalith.UnitTests.Core.Application.Commands;
@@ -54,6 +55,7 @@ public class AggregateActorStateManagerTest
             new DateTimeService());
         await stateManager.InitializeAsync(
             storeProvider,
+            ResiliencyPolicy.None,
             async (name, data, start, period)
                => await Task.CompletedTask,
             CancellationToken.None);

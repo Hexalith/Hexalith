@@ -6,10 +6,10 @@
 
 namespace Hexalith.Application.Abstractions.Tasks;
 
-using Hexalith.Extensions.Helpers;
-
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
+
+using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Retry policy.
@@ -27,7 +27,13 @@ public class ResiliencyPolicy
     /// <param name="timeout">The maximum retry total time.</param>
     /// <param name="exponential">Use exponential periods.</param>
     [JsonConstructor]
-    public ResiliencyPolicy(int maximumRetries, TimeSpan initialPeriod, TimeSpan period, TimeSpan maximumExponentialPeriod, TimeSpan timeout, bool exponential)
+    public ResiliencyPolicy(
+        int maximumRetries,
+        TimeSpan initialPeriod,
+        TimeSpan period,
+        TimeSpan maximumExponentialPeriod,
+        TimeSpan timeout,
+        bool exponential)
     {
         MaximumRetries = maximumRetries;
         InitialPeriod = initialPeriod;

@@ -17,7 +17,7 @@ using System.Text.Json.Serialization;
 public class TaskProcessor : ITaskProcessor
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="TaskProcessor"/> class.
+    /// Initializes a new instance of the <see cref="TaskProcessor" /> class.
     /// Initialize the task processor.
     /// </summary>
     public TaskProcessor()
@@ -30,11 +30,21 @@ public class TaskProcessor : ITaskProcessor
     /// <summary>
     /// Initializes a new instance of the <see cref="TaskProcessor"/> class.
     /// </summary>
+    /// <param name="policy">The policy.</param>
+    public TaskProcessor(ResiliencyPolicy policy)
+    {
+        Status = TaskProcessorStatus.New;
+        History = new TaskProcessingHistory();
+        ResiliencyPolicy = policy;
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="TaskProcessor" /> class.
+    /// </summary>
     /// <param name="status">The processing status.</param>
     /// <param name="history">The processing history.</param>
     /// <param name="resiliencyPolicy">The retry policy.</param>
     /// <param name="failure">The processing failure information.</param>
-    ///
     [JsonConstructor]
     public TaskProcessor(
             TaskProcessorStatus status,
@@ -49,7 +59,7 @@ public class TaskProcessor : ITaskProcessor
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="TaskProcessor"/> class.
+    /// Initializes a new instance of the <see cref="TaskProcessor" /> class.
     /// Initialize a processor copy.
     /// </summary>
     /// <param name="processor">The processor to duplicate.</param>
@@ -88,7 +98,11 @@ public class TaskProcessor : ITaskProcessor
     [JsonPropertyOrder(1)]
     public TaskProcessorStatus Status { get; private set; }
 
-    /// <inheritdoc cref="ITaskProcessor.Cancel"/>
+    /// <summary>
+    /// Cancels this instance.
+    /// </summary>
+    /// <returns>Hexalith.Application.Abstractions.Tasks.TaskProcessor.</returns>
+    /// <inheritdoc cref="ITaskProcessor.Cancel" />
     public TaskProcessor Cancel()
     {
         return (TaskProcessor)(Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed
@@ -100,7 +114,11 @@ public class TaskProcessor : ITaskProcessor
             });
     }
 
-    /// <inheritdoc cref="ITaskProcessor.Complete"/>
+    /// <summary>
+    /// Completes this instance.
+    /// </summary>
+    /// <returns>Hexalith.Application.Abstractions.Tasks.TaskProcessor.</returns>
+    /// <inheritdoc cref="ITaskProcessor.Complete" />
     public TaskProcessor Complete()
     {
         return (TaskProcessor)(Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed
@@ -112,7 +130,13 @@ public class TaskProcessor : ITaskProcessor
             });
     }
 
-    /// <inheritdoc cref="ITaskProcessor.Continue"/>
+    /// <summary>
+    /// Continues this instance.
+    /// </summary>
+    /// <returns>Hexalith.Application.Abstractions.Tasks.TaskProcessor.</returns>
+    /// <exception cref="InvalidStatusChangeException">currentStatus: Status, newStatus: TaskProcessorStatus.Active, Only suspended tasks can be continued.</exception>
+    /// <exception cref="InvalidStatusChangeException">currentStatus: Status, newStatus: TaskProcessorStatus.Active, Cannot continue a task that has never been started.</exception>
+    /// <inheritdoc cref="ITaskProcessor.Continue" />
     public TaskProcessor Continue()
     {
         if (Status is not TaskProcessorStatus.Suspended)
@@ -153,7 +177,12 @@ public class TaskProcessor : ITaskProcessor
         };
     }
 
-    /// <inheritdoc cref="ITaskProcessor.Fail"/>
+    /// <summary>
+    /// Fails the specified message.
+    /// </summary>
+    /// <param name="message">The message.</param>
+    /// <returns>Hexalith.Application.Abstractions.Tasks.TaskProcessor.</returns>
+    /// <inheritdoc cref="ITaskProcessor.Fail" />
     public TaskProcessor Fail(string message)
     {
         TaskProcessingFailure newFailure = Failure == null ? new TaskProcessingFailure(1, DateTimeOffset.UtcNow, message) : Failure.Fail(message);
@@ -167,7 +196,11 @@ public class TaskProcessor : ITaskProcessor
             });
     }
 
-    /// <inheritdoc cref="ITaskProcessor.Start"/>
+    /// <summary>
+    /// Starts this instance.
+    /// </summary>
+    /// <returns>Hexalith.Application.Abstractions.Tasks.TaskProcessor.</returns>
+    /// <inheritdoc cref="ITaskProcessor.Start" />
     public TaskProcessor Start()
     {
         return Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed or TaskProcessorStatus.Active

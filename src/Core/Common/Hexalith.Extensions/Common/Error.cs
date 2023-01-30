@@ -5,6 +5,7 @@
 // </copyright>
 
 namespace Hexalith.Extensions.Common;
+
 /// <summary>
 /// Event deserialization error.
 /// Implements the <see cref="ErrorCategory" />.
