@@ -15,7 +15,6 @@ using Ardalis.GuardClauses;
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Domain.Abstractions.Messages;
-using Hexalith.Infrastructure.DaprAggregateActor;
 
 /// <summary>
 /// Class CommandState.
@@ -39,7 +38,6 @@ public class CommandState : MessageState
     public CommandState(CommandState command, DateTimeOffset processedDate)
         : this(
               Guard.Against.Null(command).ReceivedDate,
-              command.IdempotencyId,
               command.Message,
               command.Metadata,
               command.ProcessedDate)
@@ -57,11 +55,10 @@ public class CommandState : MessageState
     [JsonConstructor]
     public CommandState(
         DateTimeOffset receivedDate,
-        string idempotencyId,
         BaseMessage message,
         Metadata metadata,
         DateTimeOffset? processedDate)
-        : base(receivedDate, idempotencyId, message, metadata)
+        : base(receivedDate, message, metadata)
     {
         if (message is not BaseCommand)
         {

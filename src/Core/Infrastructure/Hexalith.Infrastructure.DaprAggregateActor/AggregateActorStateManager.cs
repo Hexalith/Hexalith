@@ -105,7 +105,6 @@ public class AggregateActorStateManager : IAggregateStateManager
         long version = await commands.AddAsync(
             new CommandState(
             _dateTimeService.UtcNow,
-            metadata.Message.Id,
             command,
             metadata,
             null).IntoArray(),
@@ -148,7 +147,6 @@ public class AggregateActorStateManager : IAggregateStateManager
                 IEnumerable<EventState> eventStates = events.Select(
                         p => new EventState(
                             _dateTimeService.UtcNow,
-                            UniqueIdHelper.GenerateUniqueStringId(),
                             p,
                             Metadata.CreateNew(p, command.Metadata, _dateTimeService.UtcNow)));
                 eventVersion = await eventStore.AddAsync(

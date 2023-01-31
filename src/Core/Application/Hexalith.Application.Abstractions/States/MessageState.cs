@@ -4,20 +4,21 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Infrastructure.DaprAggregateActor;
-
-using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Domain.Abstractions.Messages;
+namespace Hexalith.Application.Abstractions.States;
 
 using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Application.Abstractions.Metadatas;
+using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Extensions.Common;
+
 /// <summary>
 /// Class MessageState.
 /// </summary>
 [DataContract]
-public class MessageState
+public class MessageState : IIdempotent
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="MessageState" /> class.
@@ -26,7 +27,6 @@ public class MessageState
     public MessageState()
     {
         ReceivedDate = DateTimeOffset.MinValue;
-        IdempotencyId = string.Empty;
         Metadata = null!;
         Message = null!;
     }
@@ -40,10 +40,9 @@ public class MessageState
     /// <param name="message">The message.</param>
     /// <param name="metadata">The metadata.</param>
     [JsonConstructor]
-    public MessageState(DateTimeOffset receivedDate, string idempotencyId, BaseMessage message, Metadata metadata)
+    public MessageState(DateTimeOffset receivedDate, BaseMessage message, Metadata metadata)
     {
         ReceivedDate = receivedDate;
-        IdempotencyId = idempotencyId;
         Message = message;
         Metadata = metadata;
     }
@@ -52,7 +51,9 @@ public class MessageState
     /// Gets the idempotency identifier.
     /// </summary>
     /// <value>The idempotency identifier.</value>
-    public string IdempotencyId { get; }
+    [JsonIgnore]
+    [IgnoreDataMember]
+    public string IdempotencyId => Metadata.Message.Id;
 
     /// <summary>
     /// Gets the message.

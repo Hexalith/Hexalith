@@ -73,7 +73,6 @@ public class CommandStateTest
         DummyCommand1 command = new("Test", 123456);
         CommandState messageState = new(
             DateTimeOffset.UtcNow,
-            messageId,
             command,
             new Metadata(
                 messageId,

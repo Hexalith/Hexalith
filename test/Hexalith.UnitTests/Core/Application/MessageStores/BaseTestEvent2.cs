@@ -13,8 +13,8 @@ using System.Text.Json.Serialization;
 public class BaseTestEvent2 : BaseTestEvent
 {
     [JsonConstructor]
-    public BaseTestEvent2(string id, string message, string value2)
-        : base(id, message)
+    public BaseTestEvent2(string idempotencyId, string id, string message, string value2)
+        : base(idempotencyId, id, message)
     {
         Value2 = value2;
     }

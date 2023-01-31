@@ -11,6 +11,7 @@ namespace Hexalith.UnitTests.Core.Application.MessageStores
     using FluentAssertions;
 
     using Hexalith.Application.Abstractions.States;
+    using Hexalith.Application.States;
     using Hexalith.Application.StreamStores;
     using Hexalith.Extensions.Common;
     using Hexalith.Extensions.Helpers;
@@ -21,8 +22,22 @@ namespace Hexalith.UnitTests.Core.Application.MessageStores
     {
         private const string _fakeMessageStart = "I am fake event ";
         private const string _fakeValue2Start = "Hello world ";
+        private const string _stateName = "TestStream";
+        private const string _streamItemId = "TestStreamId-";
         private const string _streamName = "Test";
-        private const string _streamStateName = "TestStream";
+
+        [Fact]
+        public async Task Add_state_should_be_persisted()
+        {
+            MemoryStateProvider provider = new();
+            MessageStore<DummyState> store = new(provider, _streamName);
+            DummyState state = new("5354323", 123, "one two three");
+            _ = await store.AddAsync(state.IntoArray(), 0, CancellationToken.None);
+            _ = provider.UncommittedState.Should().HaveCount(3);
+            _ = provider.UncommittedState[_stateName].Should().Be(1L);
+            _ = provider.UncommittedState[_stateName + "1"].Should().Be(state.IdempotencyId);
+            _ = provider.UncommittedState[_streamItemId + state.IdempotencyId].Should().Be(state);
+        }
 
         [Theory]
         [InlineData(0, 0)]
@@ -34,40 +49,16 @@ namespace Hexalith.UnitTests.Core.Application.MessageStores
         [InlineData(11, 1025)]
         [InlineData(121, 10)]
         [InlineData(142, 123_456_789)]
-        public async Task Add_state_should_persist_snapshot(int events, long version)
+        public async Task Add_state_should_persist_new_version(int events, long version)
         {
-            (MessageStore<BaseTestEvent> eventStore, Mock<IStateStoreProvider> mock) = GetEventStoreWithMock(version);
+            MemoryStateProvider provider = new(new Dictionary<string, object> { { _stateName, version } });
+            MessageStore<BaseTestEvent> eventStore = new(provider, _streamName);
             List<BaseTestEvent> list = GetEventList(events);
-            long newVersion = await eventStore.AddAsync(
+            _ = await eventStore.AddAsync(
                 list,
                 version,
                 CancellationToken.None);
-            _ = newVersion.Should().Be(version + events);
-            if (version == 0)
-            {
-                mock.Verify(
-                    m => m.AddStateAsync(
-                    It.Is<string>(s => s == _streamStateName),
-                    It.Is<long>(s => s == version + events),
-                    It.IsAny<CancellationToken>()),
-                    Times.Once);
-            }
-            else
-            {
-                mock.Verify(
-                    m => m.SetStateAsync(
-                    It.Is<string>(s => s == _streamStateName),
-                    It.Is<long>(s => s == version + events),
-                    It.IsAny<CancellationToken>()),
-                    Times.Once);
-            }
-
-            mock.Verify(
-                m => m.AddStateAsync(
-                It.Is<string>(s => s.StartsWith(_streamStateName, StringComparison.InvariantCulture)),
-                It.Is<BaseTestEvent>(s => s.Message.Contains("I am fake", StringComparison.InvariantCulture)),
-                It.IsAny<CancellationToken>()),
-                Times.Exactly(events));
+            _ = provider.UncommittedState[_stateName].Should().Be(version + events);
         }
 
         [Theory]
@@ -82,7 +73,8 @@ namespace Hexalith.UnitTests.Core.Application.MessageStores
         [InlineData(142, 123_456_789)]
         public async Task Add_to_stream_returns_version_plus_event_count(int events, long version)
         {
-            MessageStore<BaseTestEvent> eventStore = GetEventStore(version);
+            MemoryStateProvider provider = new(new Dictionary<string, object> { { _stateName, version } });
+            MessageStore<BaseTestEvent> eventStore = new(provider, _streamName);
 
             long newVersion = await eventStore.AddAsync(
                 GetEventList(events),
@@ -102,7 +94,8 @@ namespace Hexalith.UnitTests.Core.Application.MessageStores
         [InlineData(142, 123_456_789, 4235)]
         public async Task Add_to_stream_with_wrong_version_throw_dbConcurrencyException(int events, long version, long badVersion)
         {
-            MessageStore<BaseTestEvent> eventStore = GetEventStore(version);
+            MemoryStateProvider provider = new(new Dictionary<string, object> { { _stateName, version } });
+            MessageStore<BaseTestEvent> eventStore = new(provider, _streamName);
 
             async Task<long> Act()
             {
@@ -121,21 +114,19 @@ namespace Hexalith.UnitTests.Core.Application.MessageStores
         [Fact]
         public void Check_event_state_name()
         {
-            const string streamName = "Test";
             Mock<IStateStoreProvider> stateManager = new();
-            MessageStore<BaseTestEvent> store = new(stateManager.Object, "Test");
-            _ = store.StreamName.Should().Be(streamName);
-            _ = store.GetMessageStateName(101).Should().Be(streamName + "Stream101");
+            MessageStore<BaseTestEvent> store = new(stateManager.Object, _streamName);
+            _ = store.StreamName.Should().Be(_streamName);
+            _ = store.GetStreamItemStateName(101).Should().Be(_stateName + "101");
         }
 
         [Fact]
         public void Check_stream_state_name()
         {
-            const string streamName = "Test";
             Mock<IStateStoreProvider> stateManager = new();
-            MessageStore<BaseTestEvent> store = new(stateManager.Object, streamName);
-            _ = store.StreamName.Should().Be(streamName);
-            _ = store.GetStreamStateName().Should().Be(streamName + "Stream");
+            MessageStore<BaseTestEvent> store = new(stateManager.Object, _streamName);
+            _ = store.StreamName.Should().Be(_streamName);
+            _ = store.GetStreamStateName().Should().Be(_streamName + "Stream");
         }
 
         [Fact]
@@ -147,7 +138,7 @@ namespace Hexalith.UnitTests.Core.Application.MessageStores
                         It.IsAny<string>(),
                         It.IsAny<CancellationToken>()))
                 .ReturnsAsync(new ConditionalValue<long>());
-            MessageStore<BaseTestEvent> store = new(stateManager.Object, "Test");
+            MessageStore<BaseTestEvent> store = new(stateManager.Object, _streamName);
             long version = await store.GetVersionAsync(CancellationToken.None);
             _ = version.Should().Be(0L);
         }
@@ -155,50 +146,32 @@ namespace Hexalith.UnitTests.Core.Application.MessageStores
         [Fact]
         public async Task Events_added_to_stream_should_be_persisted()
         {
-            const long version = 100;
-
-            (MessageStore<BaseTestEvent> eventStore, Mock<IStateStoreProvider> mock) = GetEventStoreWithMock(version);
+            MemoryStateProvider provider = new();
+            MessageStore<BaseTestEvent> eventStore = new(provider, _streamName);
             List<BaseTestEvent> list = GetEventList(2);
-            long newVersion = await eventStore.AddAsync(
+            _ = await eventStore.AddAsync(
                 list,
-                version,
+                0L,
                 CancellationToken.None);
-            _ = newVersion.Should().Be(version + 2L);
-            mock.Verify(
-                m => m.AddStateAsync(
-                It.Is("TestStream101", StringComparer.InvariantCulture),
-                It.Is<BaseTestEvent>(s => s.GetType() == typeof(BaseTestEvent) && s.Id == list[0].Id),
-                It.IsAny<CancellationToken>()),
-                Times.Once);
-            mock.Verify(
-                m => m.AddStateAsync(
-                It.Is("TestStream102", StringComparer.InvariantCulture),
-                It.Is<BaseTestEvent>(s => s.GetType() == typeof(BaseTestEvent2) && s.Id == list[1].Id),
-                It.IsAny<CancellationToken>()),
-                Times.Once);
-            mock.Verify(
-                m => m.SetStateAsync(
-                It.Is<string>(s => s == _streamStateName),
-                It.Is<long>(s => s == version + 2L),
-                It.IsAny<CancellationToken>()),
-                Times.Once);
+            _ = provider.UncommittedState[_stateName + "1"].Should().Be(list[0].IdempotencyId);
+            _ = provider.UncommittedState[_stateName + "2"].Should().Be(list[1].IdempotencyId);
+            _ = provider.UncommittedState[_streamItemId + list[0].IdempotencyId].Should().Be(list[0]);
+            _ = provider.UncommittedState[_streamItemId + list[1].IdempotencyId].Should().Be(list[1]);
         }
 
         [Fact]
         public async Task Get_stream_should_return_event_value()
         {
-            BaseTestEvent2 testEvent = new("myId123", "hello", "463.33");
-            Mock<IStateStoreProvider> stateManager = new();
-            stateManager.Setup(m
-                => m.TryGetStateAsync<BaseTestEvent>(
-                       "TestStream123",
-                       It.IsAny<CancellationToken>()))
-                .ReturnsAsync(new ConditionalValue<BaseTestEvent>(testEvent))
-                .Verifiable();
+            BaseTestEvent2 testEvent = new("554643", "myId123", "hello", "463.33");
+            MemoryStateProvider provider = new(new Dictionary<string, object>
+            {
+                { _stateName, 123L },
+                { _streamItemId + testEvent.IdempotencyId, testEvent },
+                { _stateName + "123", testEvent.IdempotencyId },
+            });
+            MessageStore<BaseTestEvent> eventStore = new(provider, _streamName);
 
-            MessageStore<BaseTestEvent> store = new(stateManager.Object, "Test");
-            BaseTestEvent @event = await store.GetAsync(123L, CancellationToken.None);
-            stateManager.VerifyAll();
+            BaseTestEvent @event = await eventStore.GetAsync(123L, CancellationToken.None);
             _ = @event.Should().NotBeNull();
             _ = @event.Should().BeOfType<BaseTestEvent2>();
             _ = @event.Should().BeEquivalentTo(testEvent);
@@ -207,8 +180,9 @@ namespace Hexalith.UnitTests.Core.Application.MessageStores
         [Fact]
         public async Task Get_stream_version_should_return_correct_value()
         {
-            MessageStore<BaseTestEvent> store = GetEventStore(100);
-            long version = await store.GetVersionAsync(CancellationToken.None);
+            MemoryStateProvider provider = new(new Dictionary<string, object> { { "TestStream", 100L } });
+            MessageStore<BaseTestEvent> eventStore = new(provider, _streamName);
+            long version = await eventStore.GetVersionAsync(CancellationToken.None);
             _ = version.Should().Be(100L);
         }
 
@@ -220,41 +194,19 @@ namespace Hexalith.UnitTests.Core.Application.MessageStores
                 string id = i.ToInvariantString();
                 if (i % 2 == 0)
                 {
-                    list.Add(new BaseTestEvent2(id, _fakeMessageStart + $"two {id}", _fakeValue2Start + id));
+                    list.Add(new BaseTestEvent2(id, id, _fakeMessageStart + $"two {id}", _fakeValue2Start + id));
                 }
                 else
                 {
-                    list.Add(new BaseTestEvent(id, _fakeMessageStart + $"base {id}"));
+                    list.Add(new BaseTestEvent(id, id, _fakeMessageStart + $"base {id}"));
                 }
             }
 
             return list;
         }
 
-        private static MessageStore<BaseTestEvent> GetEventStore(long version)
+        private record DummyState(string IdempotencyId, int Id, string Name) : IIdempotent
         {
-            (MessageStore<BaseTestEvent> s, Mock<IStateStoreProvider> _) = GetEventStoreWithMock(version);
-            return s;
-        }
-
-        private static (MessageStore<BaseTestEvent> Store, Mock<IStateStoreProvider> StateManager) GetEventStoreWithMock(long version)
-        {
-            Mock<IStateStoreProvider> mock = new();
-            _ = mock
-                .Setup(m
-                => m.TryGetStateAsync<long>(
-                        It.Is<string>(s => s == _streamStateName),
-                        It.IsAny<CancellationToken>()))
-                .ReturnsAsync(new ConditionalValue<long>(version));
-            _ = mock
-                .Setup(m
-                => m.GetOrAddStateAsync(
-                        It.Is<string>(s => s == _streamStateName),
-                        It.Is<long>(l => l == 0L),
-                        It.IsAny<CancellationToken>()))
-                .ReturnsAsync(version);
-            MessageStore<BaseTestEvent> eventStore = new(mock.Object, _streamName);
-            return (eventStore, mock);
         }
     }
 }

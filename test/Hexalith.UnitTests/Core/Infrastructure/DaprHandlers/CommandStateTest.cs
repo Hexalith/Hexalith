@@ -23,7 +23,6 @@ public class CommandStateTest
         DummyCommand1 command = DummyCommand1.Create();
         CommandState original = new(
             DateTimeOffset.Now,
-            "id2423",
             command,
             command.CreateMetadata(),
             DateTimeOffset.Now);

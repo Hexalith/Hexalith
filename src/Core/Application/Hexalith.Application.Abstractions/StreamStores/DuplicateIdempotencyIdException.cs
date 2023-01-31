@@ -1,0 +1,88 @@
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Application.Abstractions
+// Author           : Jérôme Piquot
+// Created          : 01-31-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 01-31-2023
+// ***********************************************************************
+// <copyright file="DuplicateIdempotencyIdException.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
+namespace Hexalith.Application.Abstractions.StreamStores;
+
+using System;
+using System.Runtime.Serialization;
+
+/// <summary>
+/// Class DuplicateIdempotencyIdException.
+/// Implements the <see cref="Exception" />.
+/// </summary>
+/// <seealso cref="Exception" />
+[Serializable]
+public class DuplicateIdempotencyIdException : Exception
+{
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DuplicateIdempotencyIdException" /> class.
+    /// </summary>
+    public DuplicateIdempotencyIdException()
+    {
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DuplicateIdempotencyIdException" /> class.
+    /// </summary>
+    /// <param name="message">The message that describes the error.</param>
+    public DuplicateIdempotencyIdException(string? message)
+        : base(message)
+    {
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DuplicateIdempotencyIdException"/> class.
+    /// </summary>
+    /// <param name="idempotencyId">The idempotency identifier.</param>
+    /// <param name="duplicateData">The duplicate data.</param>
+    public DuplicateIdempotencyIdException(string idempotencyId, object duplicateData)
+    {
+        IdempotencyId = idempotencyId;
+        DuplicateData = duplicateData;
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DuplicateIdempotencyIdException" /> class.
+    /// </summary>
+    /// <param name="message">The error message that explains the reason for the exception.</param>
+    /// <param name="innerException">The exception that is the cause of the current exception, or a null reference (<see langword="Nothing" /> in Visual Basic) if no inner exception is specified.</param>
+    public DuplicateIdempotencyIdException(string? message, Exception? innerException)
+        : base(message, innerException)
+    {
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DuplicateIdempotencyIdException" /> class.
+    /// </summary>
+    /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
+    /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
+    protected DuplicateIdempotencyIdException(SerializationInfo info, StreamingContext context)
+        : base(info, context)
+    {
+    }
+
+    /// <summary>
+    /// Gets the duplicate data.
+    /// </summary>
+    /// <value>The duplicate data.</value>
+    public object? DuplicateData { get; }
+
+    /// <summary>
+    /// Gets the idempotency identifier.
+    /// </summary>
+    /// <value>The idempotency identifier.</value>
+    public string? IdempotencyId { get; }
+}

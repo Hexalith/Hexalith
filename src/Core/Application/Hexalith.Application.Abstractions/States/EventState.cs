@@ -13,7 +13,6 @@ using System.Text.Json.Serialization;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Domain.Abstractions.Events;
 using Hexalith.Domain.Abstractions.Messages;
-using Hexalith.Infrastructure.DaprAggregateActor;
 
 /// <summary>
 /// Class EventState.
@@ -39,10 +38,9 @@ public class EventState : MessageState
     [JsonConstructor]
     public EventState(
         DateTimeOffset receivedDate,
-        string idempotencyId,
         BaseMessage message,
         Metadata metadata)
-        : base(receivedDate, idempotencyId, message, metadata)
+        : base(receivedDate, message, metadata)
     {
         if (message is not BaseEvent)
         {

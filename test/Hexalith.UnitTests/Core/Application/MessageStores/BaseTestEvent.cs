@@ -10,21 +10,24 @@ using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Serialization;
 
 [DataContract]
 [JsonPolymorphicBaseClass]
-public class BaseTestEvent : BaseEvent, IEvent
+public class BaseTestEvent : BaseEvent, IEvent, IIdempotent
 {
     [JsonConstructor]
-    public BaseTestEvent(string id, string message)
+    public BaseTestEvent(string idempotencyId, string id, string message)
     {
         Id = id;
         Message = message;
+        IdempotencyId = idempotencyId;
     }
 
     public string Id { get; }
 
+    public string IdempotencyId { get; }
     public string Message { get; }
 
     protected override string DefaultAggregateId()

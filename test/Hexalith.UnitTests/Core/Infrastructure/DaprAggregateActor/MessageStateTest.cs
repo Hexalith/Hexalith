@@ -12,8 +12,8 @@ using System.Text.Json;
 using FluentAssertions;
 
 using Hexalith.Application.Abstractions.Metadatas;
+using Hexalith.Application.Abstractions.States;
 using Hexalith.Extensions.Helpers;
-using Hexalith.Infrastructure.DaprAggregateActor;
 using Hexalith.Infrastructure.Serialization.Helpers;
 using Hexalith.UnitTests.Core.Application.Commands;
 
@@ -71,7 +71,6 @@ public class MessageStateTest
         DummyCommand1 command = new("Test", 123456);
         MessageState messageState = new(
             DateTimeOffset.UtcNow,
-            messageId,
             command,
             new Metadata(
                 messageId,

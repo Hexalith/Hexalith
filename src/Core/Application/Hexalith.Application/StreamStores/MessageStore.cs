@@ -12,7 +12,9 @@ using System.Globalization;
 using Ardalis.GuardClauses;
 
 using Hexalith.Application.Abstractions.States;
+using Hexalith.Application.Abstractions.StreamStores;
 using Hexalith.Extensions.Common;
+using Hexalith.Extensions.Helpers;
 using Hexalith.Extensions.Serialization;
 
 /// <summary>
@@ -21,7 +23,7 @@ using Hexalith.Extensions.Serialization;
 /// <typeparam name="TMessage">The storage message type.
 /// Must have the JSON polymorphic base class attribute <see cref="JsonPolymorphicBaseClassAttribute" /> or one of it's base classes must have it.</typeparam>
 public class MessageStore<TMessage>
-    where TMessage : class
+    where TMessage : IIdempotent
 {
     /// <summary>
     /// The state manager.
@@ -33,9 +35,12 @@ public class MessageStore<TMessage>
     /// </summary>
     /// <param name="stateManager">The actor state manager.</param>
     /// <param name="streamName">The stream name.</param>
+    /// <exception cref="System.ArgumentNullException">Argument is null.</exception>
     public MessageStore(IStateStoreProvider stateManager, string streamName)
     {
-        _stateManager = Guard.Against.Null(stateManager);
+        ArgumentNullException.ThrowIfNull(stateManager);
+        ArgumentException.ThrowIfNullOrEmpty(streamName);
+        _stateManager = stateManager;
         StreamName = streamName;
     }
 
@@ -46,20 +51,22 @@ public class MessageStore<TMessage>
     public string StreamName { get; }
 
     /// <summary>
-    /// Add new messages to the stream.
+    /// Add as an asynchronous operation.
     /// </summary>
-    /// <param name="messages">List of messages.</param>
-    /// <param name="expectedVersion">Expected version for concurrency check.</param>
-    /// <param name="cancellationToken">Cancellation token.</param>
-    /// <returns>The new version of the stream.</returns>
+    /// <param name="messages">The messages.</param>
+    /// <param name="expectedVersion">The expected version.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>A Task&lt;System.Int64&gt; representing the asynchronous operation.</returns>
+    /// <exception cref="System.ArgumentNullException">Argument is null.</exception>
     /// <exception cref="System.Data.DBConcurrencyException">Stream version mismatch: Expected version={expectedVersion.ToString(CultureInfo.InvariantCulture)}; Actual version={version.ToString(CultureInfo.InvariantCulture)}.</exception>
+    /// <exception cref="Hexalith.Application.Abstractions.StreamStores.DuplicateIdempotencyIdException">The idempotent Id already exists in the stream.</exception>
     public async Task<long> AddAsync(
         IEnumerable<TMessage> messages,
         long expectedVersion,
         CancellationToken cancellationToken)
     {
         _ = Guard.Against.Negative(expectedVersion);
-        _ = Guard.Against.Null(messages);
+        ArgumentNullException.ThrowIfNull(expectedVersion);
 
         long version = await GetVersionAsync(cancellationToken)
             .ConfigureAwait(false);
@@ -72,9 +79,23 @@ public class MessageStore<TMessage>
 
         foreach (TMessage m in messages)
         {
+            ConditionalValue<TMessage> result = await _stateManager.TryGetStateAsync<TMessage>(
+                  GetMessageStateName(m.IdempotencyId),
+                  cancellationToken)
+                  .ConfigureAwait(false);
+            if (result.HasValue)
+            {
+                throw new DuplicateIdempotencyIdException(m.IdempotencyId, m);
+            }
+
             await _stateManager.AddStateAsync(
-                GetMessageStateName(++version),
-                m,
+                  GetMessageStateName(m.IdempotencyId),
+                  m,
+                  cancellationToken)
+                  .ConfigureAwait(false);
+            await _stateManager.AddStateAsync(
+                GetStreamItemStateName(++version),
+                m.IdempotencyId,
                 cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -114,15 +135,15 @@ public class MessageStore<TMessage>
 
         while (fromVersion <= toVersion)
         {
-            ConditionalValue<TMessage> result = await _stateManager
-                .TryGetStateAsync<TMessage>(GetMessageStateName(fromVersion++), cancellationToken)
+            ConditionalValue<string> result = await _stateManager
+                .TryGetStateAsync<string>(GetStreamItemStateName(fromVersion++), cancellationToken)
                 .ConfigureAwait(false);
             if (!result.HasValue)
             {
                 throw new MessageStoreItemNotFoundException(version: fromVersion, StreamName, message: null, innerException: null);
             }
 
-            messages.Add(result.Value);
+            messages.Add(await _stateManager.GetStateAsync<TMessage>(GetMessageStateName(result.Value), cancellationToken));
         }
 
         return messages;
@@ -139,12 +160,12 @@ public class MessageStore<TMessage>
     {
         _ = Guard.Against.NegativeOrZero(version);
 
-        ConditionalValue<TMessage> result = await _stateManager
-                .TryGetStateAsync<TMessage>(GetMessageStateName(version), cancellationToken)
+        ConditionalValue<string> result = await _stateManager
+                .TryGetStateAsync<string>(GetStreamItemStateName(version), cancellationToken)
                 .ConfigureAwait(false);
         return !result.HasValue
             ? throw new MessageStoreItemNotFoundException(version: version, StreamName, message: null, innerException: null)
-            : result.Value;
+            : await _stateManager.GetStateAsync<TMessage>(GetMessageStateName(result.Value), cancellationToken);
     }
 
     /// <summary>
@@ -162,13 +183,23 @@ public class MessageStore<TMessage>
     }
 
     /// <summary>
-    /// The message state name. Used to store the message data.
+    /// The message state name. Used to store the message data and id.
+    /// </summary>
+    /// <param name="id">The stream item version number.</param>
+    /// <returns>The message state name. Default is the version number.</returns>
+    public virtual string GetMessageStateName(string id)
+    {
+        return GetStreamStateName() + "Id-" + id;
+    }
+
+    /// <summary>
+    /// The stream item version and identifier.
     /// </summary>
     /// <param name="version">The stream item version number.</param>
     /// <returns>The message state name. Default is the version number.</returns>
-    public virtual string GetMessageStateName(long version)
+    public virtual string GetStreamItemStateName(long version)
     {
-        return GetStreamStateName() + version.ToString(CultureInfo.InvariantCulture);
+        return GetStreamStateName() + version.ToInvariantString();
     }
 
     /// <summary>

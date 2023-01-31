@@ -42,6 +42,12 @@ public class ResiliencyPolicyTest
         _ = settings.TestResiliencyPolicy.Should().NotBeNull();
 
         _ = settings.TestResiliencyPolicy.Exponential.Should().BeTrue();
+        _ = settings.TestResiliencyPolicy.Exponential.Should().BeTrue();
+        _ = settings.TestResiliencyPolicy.InitialPeriod.Should().Be(TimeSpan.FromMilliseconds(500));
+        _ = settings.TestResiliencyPolicy.MaximumExponentialPeriod.Should().Be(TimeSpan.FromDays(2));
+        _ = settings.TestResiliencyPolicy.MaximumRetries.Should().Be(200);
+        _ = settings.TestResiliencyPolicy.Period.Should().Be(TimeSpan.FromSeconds(30));
+        _ = settings.TestResiliencyPolicy.Timeout.Should().Be(TimeSpan.FromDays(60));
     }
 
     [Theory]

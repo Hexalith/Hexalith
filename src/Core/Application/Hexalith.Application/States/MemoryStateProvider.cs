@@ -31,6 +31,22 @@ public class MemoryStateProvider : IStateStoreProvider
     private readonly Dictionary<string, object?> _uncommittedState = new();
 
     /// <summary>
+    /// Initializes a new instance of the <see cref="MemoryStateProvider"/> class.
+    /// </summary>
+    public MemoryStateProvider()
+    {
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MemoryStateProvider"/> class.
+    /// </summary>
+    /// <param name="state">The provider initial state.</param>
+    public MemoryStateProvider(Dictionary<string, object?> state)
+    {
+        _state = state;
+    }
+
+    /// <summary>
     /// Gets the state.
     /// </summary>
     /// <value>The state.</value>
@@ -105,11 +121,13 @@ public class MemoryStateProvider : IStateStoreProvider
     /// <inheritdoc/>
     public Task<ConditionalValue<T>> TryGetStateAsync<T>(string key, CancellationToken cancellationToken)
     {
-        object? result = _uncommittedState.TryGetValue(key, out object? uncommitted)
-            ? uncommitted
-            : _state.TryGetValue(key, out object? committed) ? committed : null;
-        return Task.FromResult(result == null
-            ? new ConditionalValue<T>()
-            : new ConditionalValue<T>((T)result));
+        bool hasValue = _uncommittedState.TryGetValue(key, out object? uncommitted);
+        if (hasValue)
+        {
+            return Task.FromResult(new ConditionalValue<T>((T)uncommitted!));
+        }
+
+        hasValue = _state.TryGetValue(key, out object? committed);
+        return Task.FromResult(hasValue ? new ConditionalValue<T>((T)committed!) : new ConditionalValue<T>());
     }
 }

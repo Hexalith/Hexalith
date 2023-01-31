@@ -39,7 +39,6 @@ public class AggregateActorStateManagerTest
                 null);
         CommandState state = new(
             DateTimeOffset.UtcNow,
-            "TEST123456",
             command,
             meta,
             null);
