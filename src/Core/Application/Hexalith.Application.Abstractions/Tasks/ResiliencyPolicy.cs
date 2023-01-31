@@ -65,34 +65,34 @@ public class ResiliencyPolicy
     public static ResiliencyPolicy None { get; } = new(0, TimeSpan.Zero, TimeSpan.Zero, TimeSpan.Zero, TimeSpan.Zero, exponential: false);
 
     /// <summary>
-    /// Gets a value indicating whether use exponential periods.
+    /// Gets or sets a value indicating whether use exponential periods.
     /// </summary>
-    public bool Exponential { get; private set; }
+    public bool Exponential { get; set; }
 
     /// <summary>
-    /// Gets the initial retry period.
+    /// Gets or sets the initial retry period.
     /// </summary>
-    public TimeSpan InitialPeriod { get; }
+    public TimeSpan InitialPeriod { get; set; }
 
     /// <summary>
-    /// Gets a value the maximum exponential period value in milliseconds.
+    /// Gets or sets a value the maximum exponential period value in milliseconds.
     /// </summary>
-    public TimeSpan MaximumExponentialPeriod { get; private set; }
+    public TimeSpan MaximumExponentialPeriod { get; set; }
 
     /// <summary>
-    /// Gets the maximum number of retries.
+    /// Gets or sets the maximum number of retries.
     /// </summary>
-    public int MaximumRetries { get; private set; }
+    public int MaximumRetries { get; set; }
 
     /// <summary>
-    /// Gets the retry period in milliseconds.
+    /// Gets or sets the retry period in milliseconds.
     /// </summary>
-    public TimeSpan Period { get; private set; }
+    public TimeSpan Period { get; set; }
 
     /// <summary>
-    /// Gets the timeout.
+    /// Gets or sets the timeout.
     /// </summary>
-    public TimeSpan Timeout { get; private set; }
+    public TimeSpan Timeout { get; set; }
 
     /// <summary>
     /// Create an exponential retry, starting from one millisecond without any timeout.

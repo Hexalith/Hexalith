@@ -31,21 +31,20 @@ public interface IAggregateStateManager
     /// Executes the commands asynchronous.
     /// </summary>
     /// <param name="stateProvider">The state provider.</param>
+    /// <param name="resiliencyPolicy">The resiliency policy.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
-    Task ExecuteCommandsAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken);
+    Task ExecuteCommandsAsync(IStateStoreProvider stateProvider, ResiliencyPolicy resiliencyPolicy, CancellationToken cancellationToken);
 
     /// <summary>
     /// Initializes aggregate state manager from the state store.
     /// </summary>
     /// <param name="stateProvider">The state provider.</param>
-    /// <param name="resiliencyPolicy">The resiliency policy.</param>
     /// <param name="registerReminder">The register reminder.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
     Task InitializeAsync(
         IStateStoreProvider stateProvider,
-        ResiliencyPolicy resiliencyPolicy,
         Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder,
         CancellationToken cancellationToken);
 
@@ -53,7 +52,8 @@ public interface IAggregateStateManager
     /// Publishes the events asynchronous.
     /// </summary>
     /// <param name="stateProvider">The state provider.</param>
+    /// <param name="resiliencyPolicy">The resiliency policy.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;System.Boolean&gt;.</returns>
-    Task PublishEventsAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken);
+    Task PublishEventsAsync(IStateStoreProvider stateProvider, ResiliencyPolicy resiliencyPolicy, CancellationToken cancellationToken);
 }

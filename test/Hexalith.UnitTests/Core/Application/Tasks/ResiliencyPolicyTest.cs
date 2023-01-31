@@ -11,6 +11,8 @@ using System.Text.Json;
 using FluentAssertions;
 
 using Hexalith.Application.Abstractions.Tasks;
+using Hexalith.Extensions.Configuration;
+using Hexalith.TestMocks;
 
 public class ResiliencyPolicyTest
 {
@@ -29,6 +31,17 @@ public class ResiliencyPolicyTest
         ResiliencyPolicy deserialized = JsonSerializer.Deserialize<ResiliencyPolicy>(json);
         _ = deserialized.Should().NotBeNull();
         _ = deserialized.Should().BeEquivalentTo(policy);
+    }
+
+    [Fact]
+    public void Loaded_policy_should_be_same_to_settings()
+    {
+        OptionsBuilder<ResiliencyTestSettings> builder = new OptionsBuilder<ResiliencyTestSettings>().WithValueFromConfiguration<ResiliencyPolicyTest>();
+        ResiliencyTestSettings settings = builder.Build().Value;
+        _ = settings.Dummy.Should().Be(100);
+        _ = settings.TestResiliencyPolicy.Should().NotBeNull();
+
+        _ = settings.TestResiliencyPolicy.Exponential.Should().BeTrue();
     }
 
     [Theory]
@@ -83,5 +96,17 @@ public class ResiliencyPolicyTest
             exponential: false);
         long waitMilliseconds = policy.NextRetryTime(now, sequence).ToUnixTimeMilliseconds() - now.ToUnixTimeMilliseconds();
         _ = waitMilliseconds.Should().Be(value);
+    }
+}
+
+public class ResiliencyTestSettings : ISettings
+{
+    public int Dummy { get; set; }
+
+    public ResiliencyPolicy TestResiliencyPolicy { get; set; }
+
+    public static string ConfigurationName()
+    {
+        return "ResiliencyTest";
     }
 }

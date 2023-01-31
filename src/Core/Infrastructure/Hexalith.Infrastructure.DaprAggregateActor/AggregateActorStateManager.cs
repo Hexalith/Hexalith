@@ -123,21 +123,21 @@ public class AggregateActorStateManager : IAggregateStateManager
 
     /// <summary>Do next command as an asynchronous operation.</summary>
     /// <param name="stateProvider">The state store provider.</param>
+    /// <param name="resiliencyPolicy">The resiliency policy.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task&lt;System.Boolean&gt; representing the asynchronous operation.</returns>
     /// <exception cref="System.ArgumentNullException">Null argument.</exception>
-    public async Task ExecuteCommandsAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken)
+    public async Task ExecuteCommandsAsync(IStateStoreProvider stateProvider, ResiliencyPolicy resiliencyPolicy, CancellationToken cancellationToken)
     {
         MessageStore<CommandState> commandStore = new(stateProvider, CommandsStreamName);
         MessageStore<EventState> eventStore = new(stateProvider, EventsStreamName);
         AggregateActorState state = await GetStateAsync(stateProvider, cancellationToken);
-        ResiliencyPolicy policy = await GetResiliencyPolicyAsync(stateProvider, cancellationToken);
         while (state.LastCommandDone < state.CommandStreamVersion)
         {
             long nextCommand = state.LastCommandDone + 1;
             CommandState command = await commandStore.GetAsync(nextCommand, cancellationToken);
             ResilientCommandProcessor processor = new(
-                policy,
+                resiliencyPolicy,
                 _dispatcher,
                 stateProvider);
 
@@ -176,14 +176,12 @@ public class AggregateActorStateManager : IAggregateStateManager
     /// Initialize as an asynchronous operation.
     /// </summary>
     /// <param name="stateProvider">The state provider.</param>
-    /// <param name="resiliencyPolicy">The resiliency policy.</param>
     /// <param name="registerReminder">The register reminder.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task representing the asynchronous operation.</returns>
     /// <exception cref="System.ArgumentNullException">Null argument.</exception>
     public async Task InitializeAsync(
         IStateStoreProvider stateProvider,
-        ResiliencyPolicy resiliencyPolicy,
         Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder,
         CancellationToken cancellationToken)
     {
@@ -197,24 +195,13 @@ public class AggregateActorStateManager : IAggregateStateManager
             await stateProvider.SetStateAsync(StateName, new AggregateActorState(0, 0, 0, 0), cancellationToken);
         }
 
-        ConditionalValue<ResiliencyPolicy> policy = await stateProvider.TryGetStateAsync<ResiliencyPolicy>(ResiliencyPolicyStateName, cancellationToken);
-        if (!policy.HasValue)
-        {
-            await stateProvider.SetStateAsync(ResiliencyPolicyStateName, resiliencyPolicy, cancellationToken);
-        }
-
         await stateProvider.SaveChangesAsync(cancellationToken);
     }
 
     /// <inheritdoc/>
-    public Task PublishEventsAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken)
+    public Task PublishEventsAsync(IStateStoreProvider stateProvider, ResiliencyPolicy resiliencyPolicy, CancellationToken cancellationToken)
     {
         return Task.CompletedTask;
-    }
-
-    private async Task<ResiliencyPolicy> GetResiliencyPolicyAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken)
-    {
-        return await stateProvider.GetStateAsync<ResiliencyPolicy>(ResiliencyPolicyStateName, cancellationToken);
     }
 
     private async Task<AggregateActorState> GetStateAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken)
