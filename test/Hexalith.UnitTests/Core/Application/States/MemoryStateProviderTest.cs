@@ -27,7 +27,7 @@ public class MemoryStateProviderTest
     public async Task Get_state_should_return_content()
     {
         DummyState state = new("5354323", 123, "one two three");
-        MemoryStateProvider provider = new(new Dictionary<string, object?> { { state.IdempotencyId, state } });
+        MemoryStateProvider provider = new(new Dictionary<string, object> { { state.IdempotencyId, state } });
         DummyState result = await provider.GetStateAsync<DummyState>(state.IdempotencyId, CancellationToken.None);
         _ = result.Should().NotBeNull();
         _ = result.Should().BeEquivalentTo(state);

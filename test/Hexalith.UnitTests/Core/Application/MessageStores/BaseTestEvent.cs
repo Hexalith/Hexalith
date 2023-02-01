@@ -28,6 +28,7 @@ public class BaseTestEvent : BaseEvent, IEvent, IIdempotent
     public string Id { get; }
 
     public string IdempotencyId { get; }
+
     public string Message { get; }
 
     protected override string DefaultAggregateId()
