@@ -9,8 +9,6 @@ namespace Hexalith.Infrastructure.DaprBus;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Ardalis.GuardClauses;
-
 using Dapr.Client;
 
 using Hexalith.Application.Abstractions.Envelopes;
@@ -79,15 +77,15 @@ public class DaprApplicationBus<TMessage, TMetadata> : IMessageBus<TMessage, TMe
     /// <inheritdoc/>
     public Task PublishAsync(IEnvelope<TMessage, TMetadata> envelope, CancellationToken cancellationToken)
     {
-        _ = Guard.Against.Null(envelope);
+        ArgumentNullException.ThrowIfNull(envelope);
         return PublishAsync(envelope.Message, envelope.Metadata, cancellationToken);
     }
 
     /// <inheritdoc/>
     public async Task PublishAsync(TMessage message, TMetadata metadata, CancellationToken cancellationToken)
     {
-        _ = Guard.Against.Null(message);
-        _ = Guard.Against.Null(metadata);
+        ArgumentNullException.ThrowIfNull(message);
+        ArgumentNullException.ThrowIfNull(metadata);
         _logger.LogInformation(
             "Sending event : Name={MessageName}; Id='{MessageId}'; Correlation='{CorrelationId}'.",
             metadata.Message.Name,

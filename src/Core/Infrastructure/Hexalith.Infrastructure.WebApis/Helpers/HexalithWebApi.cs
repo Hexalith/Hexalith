@@ -6,16 +6,18 @@
 
 namespace Hexalith.Infrastructure.WebApis.Helpers;
 
+using System.Diagnostics;
+using System.Text.Json;
+
 using Dapr.Actors.Runtime;
 
 using Hexalith.Extensions.Common;
 using Hexalith.Infrastructure.DaprHandlers.Helpers;
 using Hexalith.Infrastructure.Serialization;
+using Hexalith.Infrastructure.Serialization.Helpers;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-
-using System.Diagnostics;
 
 /// <summary>
 /// Class HexalithWebApi.
@@ -39,22 +41,22 @@ public static class HexalithWebApi
         Activity.DefaultIdFormat = ActivityIdFormat.W3C;
 
         WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-        var startupLogger = builder.AddSerilogLogger();
+        Serilog.ILogger startupLogger = builder.AddSerilogLogger();
 
         startupLogger.Information("Configuring {AppName} ...", applicationName);
-        builder.Services.AddEndpointsApiExplorer();
+        _ = builder.Services.AddEndpointsApiExplorer();
 
-        builder.Services.AddSwaggerGen(c => c.SwaggerDoc("v1", new() { Title = applicationName, Version = version, }));
+        _ = builder.Services.AddSwaggerGen(c => c.SwaggerDoc("v1", new() { Title = applicationName, Version = version, }));
 
-        builder.Services.AddControllers().AddDapr();
+        _ = builder.Services.AddControllers().AddDapr();
 
         if (debugInVisualStudio == true)
         {
             // When debugging, we want to be able to run the application inside Visual Studio to see the technical details.
-            builder.Services.AddDaprSidekick(builder.Configuration);
+            _ = builder.Services.AddDaprSidekick(builder.Configuration);
         }
 
-        builder.Services.AddDaprClient();
+        builder.Services.AddDaprClient(configure => configure.UseJsonSerializationOptions(new JsonSerializerOptions().AddPolymorphism()));
         builder.Services.AddActors(options =>
         {
             // Register actor types and configure actor settings
@@ -63,8 +65,8 @@ public static class HexalithWebApi
             // Configure serialization options
             options.JsonSerializerOptions.TypeInfoResolver = new PolymorphicTypeResolver();
         });
-        builder.Services.AddDaprHandlers(builder.Configuration);
-        builder.Services.AddSingleton<IDateTimeService, DateTimeService>();
+        _ = builder.Services.AddDaprHandlers(builder.Configuration);
+        _ = builder.Services.AddSingleton<IDateTimeService, DateTimeService>();
         return builder;
     }
 }
