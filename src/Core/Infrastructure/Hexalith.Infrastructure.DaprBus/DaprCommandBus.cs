@@ -1,0 +1,57 @@
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Infrastructure.DaprBus
+// Author           : Jérôme Piquot
+// Created          : 02-04-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 02-04-2023
+// ***********************************************************************
+// <copyright file="DaprCommandBus.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
+namespace Hexalith.Infrastructure.DaprBus;
+
+using System;
+
+using Dapr.Client;
+
+using Hexalith.Application.Abstractions.Commands;
+using Hexalith.Application.Abstractions.Metadatas;
+using Hexalith.Extensions.Common;
+using Hexalith.Infrastructure.DaprBus.Configuration;
+
+using Microsoft.Extensions.Logging;
+
+using Microsoft.Extensions.Options;
+
+/// <summary>
+/// Class DaprCommandBus.
+/// Implements the <see cref="Hexalith.Infrastructure.DaprBus.DaprApplicationBus{Hexalith.Domain.Abstractions.Commands.BaseCommand, Hexalith.Application.Abstractions.Metadatas.Metadata}" />
+/// Implements the <see cref="ICommandBus" />.
+/// </summary>
+/// <seealso cref="Hexalith.Infrastructure.DaprBus.DaprApplicationBus{Hexalith.Domain.Abstractions.Commands.BaseCommand, Hexalith.Application.Abstractions.Metadatas.Metadata}" />
+/// <seealso cref="ICommandBus" />
+public class DaprCommandBus : DaprApplicationBus<BaseCommand, Metadata>, ICommandBus
+{
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DaprCommandBus"/> class.
+    /// </summary>
+    /// <param name="client">The client.</param>
+    /// <param name="dateTimeService">The date time service.</param>
+    /// <param name="settings">The settings.</param>
+    /// <param name="logger">The logger.</param>
+    public DaprCommandBus(DaprClient client, IDateTimeService dateTimeService, IOptions<DaprCommandBusSettings> settings, ILogger<DaprCommandBus> logger)
+         : base(
+        client,
+        dateTimeService,
+        string.IsNullOrWhiteSpace(settings.Value.Name) ? throw new ArgumentException($"The name of the command bus is not defined in settings ({DaprCommandBusSettings.ConfigurationName()}.{nameof(DaprCommandBusSettings.Name)}).", nameof(settings)) : settings.Value.Name,
+        "-command",
+        logger)
+    {
+    }
+}
