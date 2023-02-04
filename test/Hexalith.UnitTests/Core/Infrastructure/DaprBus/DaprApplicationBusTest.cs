@@ -9,8 +9,9 @@ namespace Hexalith.UnitTests.Core.Infrastructure.DaprBus;
 using Dapr.Client;
 
 using Hexalith.Application.Abstractions.Metadatas;
+using Hexalith.Application.Abstractions.States;
 using Hexalith.Domain.Abstractions.Events;
-using Hexalith.Extensions.Helpers;
+using Hexalith.Extensions.Common;
 using Hexalith.Infrastructure.DaprBus;
 using Hexalith.UnitTests.Core.Application.Metadatas;
 using Hexalith.UnitTests.Core.Domain.Events;
@@ -31,17 +32,14 @@ public class DaprApplicationBusTest
 
         Mock<DaprClient> client = new();
         Mock<ILogger> logger = new();
-        DaprApplicationBus<BaseEvent, Metadata> bus = new(client.Object, busName, topicSuffix, logger.Object);
+        DaprApplicationBus<BaseEvent, Metadata> bus = new(client.Object, new DateTimeService(), busName, topicSuffix, logger.Object);
         await bus.PublishAsync(@event, meta, CancellationToken.None);
         client.Verify(
             p => p.PublishEventAsync(
             It.Is<string>(p => p == busName),
             It.Is<string>(p => p == @event.AggregateName + topicSuffix),
-            It.Is<string>(
-                p => p.Contains("$type", StringComparison.InvariantCulture) &&
-                p.Contains(nameof(DummyEvent2), StringComparison.InvariantCulture) &&
-                p.Contains(123456.ToInvariantString(), StringComparison.InvariantCulture) &&
-                p.Contains("hello test base", StringComparison.InvariantCulture)),
+            It.Is<EventState>(
+                p => p.Event == @event && p.Metadata == meta),
             It.IsAny<Dictionary<string, string>>(),
             It.IsAny<CancellationToken>()),
             Times.Once);

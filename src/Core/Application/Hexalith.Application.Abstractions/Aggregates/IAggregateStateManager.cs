@@ -52,8 +52,7 @@ public interface IAggregateStateManager
     /// Publishes the events asynchronous.
     /// </summary>
     /// <param name="stateProvider">The state provider.</param>
-    /// <param name="resiliencyPolicy">The resiliency policy.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;System.Boolean&gt;.</returns>
-    Task PublishEventsAsync(IStateStoreProvider stateProvider, ResiliencyPolicy resiliencyPolicy, CancellationToken cancellationToken);
+    Task PublishEventsAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken);
 }

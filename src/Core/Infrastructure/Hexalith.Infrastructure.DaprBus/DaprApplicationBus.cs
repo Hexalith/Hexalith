@@ -6,19 +6,20 @@
 
 namespace Hexalith.Infrastructure.DaprBus;
 
+using System.Threading;
+using System.Threading.Tasks;
+
 using Ardalis.GuardClauses;
 
 using Dapr.Client;
 
 using Hexalith.Application.Abstractions.Envelopes;
 using Hexalith.Application.Abstractions.Metadatas;
+using Hexalith.Application.Abstractions.States;
 using Hexalith.Domain.Abstractions.Messages;
-using Hexalith.Infrastructure.Serialization.Helpers;
+using Hexalith.Extensions.Common;
 
 using Microsoft.Extensions.Logging;
-
-using System.Threading;
-using System.Threading.Tasks;
 
 /// <summary>
 /// This class is used to store events in a Dapr actor state.
@@ -34,6 +35,8 @@ public class DaprApplicationBus<TMessage, TMetadata> : IMessageBus<TMessage, TMe
     /// </summary>
     private readonly DaprClient _daprClient;
 
+    private readonly IDateTimeService _dateTimeService;
+
     /// <summary>
     /// The logger.
     /// </summary>
@@ -46,17 +49,31 @@ public class DaprApplicationBus<TMessage, TMetadata> : IMessageBus<TMessage, TMe
 
     private readonly string _topicSuffix;
 
-    /// <summary>Initializes a new instance of the <see cref="DaprApplicationBus{TMessage, TMetadata}"/> class.</summary>
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DaprApplicationBus{TMessage, TMetadata}"/> class.
+    /// </summary>
     /// <param name="daprClient">The dapr client.</param>
+    /// <param name="dateTimeService">The date time service.</param>
     /// <param name="name">The name.</param>
-    /// <param name="topicSuffix"></param>
+    /// <param name="topicSuffix">The topic suffix.</param>
     /// <param name="logger">The logger.</param>
-    public DaprApplicationBus(DaprClient daprClient, string name, string topicSuffix, ILogger logger)
+    public DaprApplicationBus(
+        DaprClient daprClient,
+        IDateTimeService dateTimeService,
+        string name,
+        string topicSuffix,
+        ILogger logger)
     {
-        _daprClient = Guard.Against.Null(daprClient);
-        _name = Guard.Against.NullOrWhiteSpace(name);
-        _logger = Guard.Against.Null(logger);
-        _topicSuffix = Guard.Against.Null(topicSuffix);
+        ArgumentNullException.ThrowIfNull(daprClient);
+        ArgumentNullException.ThrowIfNull(dateTimeService);
+        ArgumentException.ThrowIfNullOrEmpty(name);
+        ArgumentException.ThrowIfNullOrEmpty(topicSuffix);
+        ArgumentNullException.ThrowIfNull(logger);
+        _daprClient = daprClient;
+        _name = name;
+        _logger = logger;
+        _topicSuffix = topicSuffix;
+        _dateTimeService = dateTimeService;
     }
 
     /// <inheritdoc/>
@@ -78,17 +95,11 @@ public class DaprApplicationBus<TMessage, TMetadata> : IMessageBus<TMessage, TMe
             metadata.Context.CorrelationId);
         try
         {
-            string json = $$"""
-            {
-              Message:{{message.ToPolymorphicJson()}},
-              Metadata:{{metadata.ToPolymorphicJson()}}
-            }
-            """;
             string topicName = !string.IsNullOrEmpty(message.AggregateName) ? message.AggregateName : throw new Exception("Event aggregate name is not defined.");
             await _daprClient.PublishEventAsync(
                 _name,
                 topicName + _topicSuffix,
-                json,
+                new EventState(_dateTimeService.UtcNow, message, metadata),
                 new Dictionary<string, string>(StringComparer.Ordinal)
                 {
                 { "MessageName", metadata.Message.Name ?? string.Empty },

@@ -6,8 +6,6 @@
 
 namespace Hexalith.UnitTests.Core.Infrastructure.DaprAggregateActor;
 
-using System.Threading.Tasks;
-
 using Dapr.Actors.Runtime;
 
 using FluentAssertions;
@@ -27,7 +25,7 @@ public class ActorStateStoreProviderTest
         Mock<IActorStateManager> actorStateManager = new();
         _ = actorStateManager
             .Setup(p => p.TryGetStateAsync<BaseCommand>("State", It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<BaseCommand>(true, command));
+            .ReturnsAsync(new ConditionalValue<BaseCommand>(true, command));
         Mock<ICommandDispatcher> dispatcher = new();
         ActorStateStoreProvider storeProvider = new(actorStateManager.Object);
         Extensions.Common.ConditionalValue<BaseCommand> result = await storeProvider.TryGetStateAsync<BaseCommand>("State", CancellationToken.None);

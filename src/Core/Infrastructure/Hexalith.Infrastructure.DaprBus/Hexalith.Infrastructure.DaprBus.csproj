@@ -3,7 +3,7 @@
 	  <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Dapr.Actors" Version="$(DaprVersion)" />
+    <PackageReference Include="Dapr.Client" Version="$(DaprVersion)" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Application\Hexalith.Application\Hexalith.Application.csproj" />

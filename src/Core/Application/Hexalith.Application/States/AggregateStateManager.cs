@@ -1,10 +1,10 @@
-﻿// <copyright file="AggregateActorStateManager.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="AggregateStateManager.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Infrastructure.DaprAggregateActor;
+namespace Hexalith.Application.States;
 
 using System;
 using System.Linq;
@@ -12,6 +12,7 @@ using System.Threading;
 
 using Hexalith.Application.Abstractions.Aggregates;
 using Hexalith.Application.Abstractions.Commands;
+using Hexalith.Application.Abstractions.Events;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Application.Abstractions.States;
 using Hexalith.Application.Abstractions.Tasks;
@@ -26,7 +27,7 @@ using Hexalith.Extensions.Helpers;
 /// Implements the <see cref="Christofle.Infrastructure.Dynamics365Finance.DaprCloud.AggregateActors.IAggregateActorState" />.
 /// </summary>
 /// <seealso cref="Christofle.Infrastructure.Dynamics365Finance.DaprCloud.AggregateActors.IAggregateActorState" />
-public class AggregateActorStateManager : IAggregateStateManager
+public class AggregateStateManager : IAggregateStateManager
 {
     /// <summary>
     /// The date time service.
@@ -39,19 +40,28 @@ public class AggregateActorStateManager : IAggregateStateManager
     private readonly ICommandDispatcher _dispatcher;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="AggregateActorStateManager" /> class.
+    /// The event bus.
     /// </summary>
-    /// <param name="dispatcher">The handler.</param>
+    private readonly IEventBus _eventBus;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="AggregateStateManager"/> class.
+    /// </summary>
+    /// <param name="dispatcher">The dispatcher.</param>
+    /// <param name="eventBus">The event bus.</param>
     /// <param name="dateTimeService">The date time service.</param>
     /// <exception cref="System.ArgumentNullException">Null argument.</exception>
-    public AggregateActorStateManager(
+    public AggregateStateManager(
         ICommandDispatcher dispatcher,
+        IEventBus eventBus,
         IDateTimeService dateTimeService)
     {
         ArgumentNullException.ThrowIfNull(dispatcher);
+        ArgumentNullException.ThrowIfNull(eventBus);
         ArgumentNullException.ThrowIfNull(dateTimeService);
         _dateTimeService = dateTimeService;
         _dispatcher = dispatcher;
+        _eventBus = eventBus;
     }
 
     /// <summary>
@@ -92,7 +102,7 @@ public class AggregateActorStateManager : IAggregateStateManager
     /// <param name="metadata">The metadata.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task representing the asynchronous operation.</returns>
-    /// <exception cref="System.ArgumentNullException">Null argument.</exception>
+    /// <exception cref="ArgumentNullException">Null argument.</exception>
     public async Task AddCommandAsync(IStateStoreProvider stateProvider, BaseCommand command, Metadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(stateProvider);
@@ -100,7 +110,7 @@ public class AggregateActorStateManager : IAggregateStateManager
         ArgumentNullException.ThrowIfNull(metadata.Message);
         ArgumentNullException.ThrowIfNull(command);
         ArgumentException.ThrowIfNullOrEmpty(metadata.Message.Id);
-        AggregateActorState state = await GetStateAsync(stateProvider, cancellationToken);
+        AggregateState state = await GetStateAsync(stateProvider, cancellationToken);
         MessageStore<CommandState> commands = new(stateProvider, CommandsStreamName);
         long version = await commands.AddAsync(
             new CommandState(
@@ -110,9 +120,9 @@ public class AggregateActorStateManager : IAggregateStateManager
             null).IntoArray(),
             state.CommandStreamVersion,
             cancellationToken);
-        await SetStateAsync(
+        await PersistStateAsync(
             stateProvider,
-            new AggregateActorState(
+            new AggregateState(
                 version,
                 state.EventStreamVersion,
                 state.LastCommandDone,
@@ -125,12 +135,12 @@ public class AggregateActorStateManager : IAggregateStateManager
     /// <param name="resiliencyPolicy">The resiliency policy.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task&lt;System.Boolean&gt; representing the asynchronous operation.</returns>
-    /// <exception cref="System.ArgumentNullException">Null argument.</exception>
+    /// <exception cref="ArgumentNullException">Null argument.</exception>
     public async Task ExecuteCommandsAsync(IStateStoreProvider stateProvider, ResiliencyPolicy resiliencyPolicy, CancellationToken cancellationToken)
     {
         MessageStore<CommandState> commandStore = new(stateProvider, CommandsStreamName);
         MessageStore<EventState> eventStore = new(stateProvider, EventsStreamName);
-        AggregateActorState state = await GetStateAsync(stateProvider, cancellationToken);
+        AggregateState state = await GetStateAsync(stateProvider, cancellationToken);
         while (state.LastCommandDone < state.CommandStreamVersion)
         {
             long nextCommand = state.LastCommandDone + 1;
@@ -155,13 +165,14 @@ public class AggregateActorStateManager : IAggregateStateManager
                     cancellationToken);
             }
 
-            await SetStateAsync(
-                stateProvider,
-                new AggregateActorState(
+            state = new AggregateState(
                     state.CommandStreamVersion,
                     eventVersion,
                     terminated ? nextCommand : state.LastCommandDone,
-                    state.LastEventPublished),
+                    state.LastEventPublished);
+            await PersistStateAsync(
+                stateProvider,
+                state,
                 cancellationToken);
             if (!terminated)
             {
@@ -177,34 +188,49 @@ public class AggregateActorStateManager : IAggregateStateManager
     /// <param name="registerReminder">The register reminder.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task representing the asynchronous operation.</returns>
-    /// <exception cref="System.ArgumentNullException">Null argument.</exception>
+    /// <exception cref="ArgumentNullException">Null argument.</exception>
     public async Task InitializeAsync(
         IStateStoreProvider stateProvider,
         Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(stateProvider);
-        ConditionalValue<AggregateActorState> state = await stateProvider.TryGetStateAsync<AggregateActorState>(StateName, cancellationToken);
+        ConditionalValue<AggregateState> state = await stateProvider.TryGetStateAsync<AggregateState>(StateName, cancellationToken);
 
         if (!state.HasValue)
         {
             // If the state does not exist, the actor has never been activated. We need to add the actor reminder.
             await registerReminder("Continue", Array.Empty<byte>(), TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(30));
-            await stateProvider.SetStateAsync(StateName, new AggregateActorState(0, 0, 0, 0), cancellationToken);
+            await PersistStateAsync(stateProvider, new AggregateState(0, 0, 0, 0), cancellationToken);
         }
-
-        await stateProvider.SaveChangesAsync(cancellationToken);
     }
 
     /// <inheritdoc/>
-    public Task PublishEventsAsync(IStateStoreProvider stateProvider, ResiliencyPolicy resiliencyPolicy, CancellationToken cancellationToken)
+    public async Task PublishEventsAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken)
     {
-        return Task.CompletedTask;
+        MessageStore<EventState> eventStore = new(stateProvider, EventsStreamName);
+        AggregateState state = await GetStateAsync(stateProvider, cancellationToken);
+        while (state.LastEventPublished < state.EventStreamVersion)
+        {
+            long nextEvent = state.LastEventPublished + 1;
+            EventState eventState = await eventStore.GetAsync(nextEvent, cancellationToken);
+
+            await _eventBus.PublishAsync(eventState.Event, eventState.Metadata, cancellationToken);
+            state = new AggregateState(
+                    state.CommandStreamVersion,
+                    state.EventStreamVersion,
+                    state.LastCommandDone,
+                    nextEvent);
+            await PersistStateAsync(
+                stateProvider,
+                state,
+                cancellationToken);
+        }
     }
 
-    private async Task<AggregateActorState> GetStateAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken)
+    private async Task<AggregateState> GetStateAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken)
     {
-        return await stateProvider.GetStateAsync<AggregateActorState>(StateName, cancellationToken);
+        return await stateProvider.GetStateAsync<AggregateState>(StateName, cancellationToken);
     }
 
     private string GetTaskProcessorStateName(long version)
@@ -218,7 +244,7 @@ public class AggregateActorStateManager : IAggregateStateManager
     /// <param name="state">The state.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task representing the asynchronous operation.</returns>
-    private async Task SetStateAsync(IStateStoreProvider stateProvider, AggregateActorState state, CancellationToken cancellationToken)
+    private async Task PersistStateAsync(IStateStoreProvider stateProvider, AggregateState state, CancellationToken cancellationToken)
     {
         await stateProvider.SetStateAsync(StateName, state, CancellationToken.None);
         await stateProvider.SaveChangesAsync(cancellationToken);

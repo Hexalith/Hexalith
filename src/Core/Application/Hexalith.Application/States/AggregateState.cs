@@ -1,20 +1,20 @@
-﻿// <copyright file="AggregateActorState.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="AggregateState.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Infrastructure.DaprAggregateActor;
+namespace Hexalith.Application.States;
 
 using System.Runtime.Serialization;
 
 /// <summary>
 /// Class AggregateActorState.
-/// Implements the <see cref="System.IEquatable{Hexalith.Infrastructure.DaprAggregateActor.AggregateActorState}" />.
+/// Implements the <see cref="IEquatable{AggregateActorState}" />.
 /// </summary>
-/// <seealso cref="System.IEquatable{Hexalith.Infrastructure.DaprAggregateActor.AggregateActorState}" />
+/// <seealso cref="IEquatable{AggregateActorState}" />
 [DataContract]
-public record AggregateActorState(
+public record AggregateState(
     long CommandStreamVersion,
     long EventStreamVersion,
     long LastCommandDone,
