@@ -11,7 +11,17 @@ using System.Text.Json;
 
 using Dapr.Actors.Runtime;
 
+using Hexalith.Application.Abstractions.Aggregates;
+using Hexalith.Application.Abstractions.Commands;
+using Hexalith.Application.Abstractions.Events;
+using Hexalith.Application.Abstractions.Notifications;
+using Hexalith.Application.Abstractions.Requests;
+using Hexalith.Application.Commands;
+using Hexalith.Application.States;
 using Hexalith.Extensions.Common;
+using Hexalith.Extensions.Configuration;
+using Hexalith.Infrastructure.DaprBus;
+using Hexalith.Infrastructure.DaprBus.Configuration;
 using Hexalith.Infrastructure.DaprHandlers.Helpers;
 using Hexalith.Infrastructure.Serialization;
 using Hexalith.Infrastructure.Serialization.Helpers;
@@ -67,6 +77,17 @@ public static class HexalithWebApi
         });
         _ = builder.Services.AddDaprHandlers(builder.Configuration);
         _ = builder.Services.AddSingleton<IDateTimeService, DateTimeService>();
+        _ = builder.Services.ConfigureSettings<DaprEventBusSettings>(builder.Configuration);
+        _ = builder.Services.ConfigureSettings<DaprCommandBusSettings>(builder.Configuration);
+        _ = builder.Services.ConfigureSettings<DaprNotificationBusSettings>(builder.Configuration);
+        _ = builder.Services.ConfigureSettings<DaprRequestBusSettings>(builder.Configuration);
+        _ = builder.Services.AddSingleton<IRequestBus, DaprRequestBus>();
+        _ = builder.Services.AddSingleton<INotificationBus, DaprNotificationBus>();
+        _ = builder.Services.AddSingleton<ICommandBus, DaprCommandBus>();
+        _ = builder.Services.AddSingleton<IEventBus, DaprEventBus>();
+        _ = builder.Services.AddSingleton<IAggregateStateManager, AggregateStateManager>();
+        _ = builder.Services.AddSingleton<ICommandDispatcher, DependencyInjectionCommandDispatcher>();
+
         return builder;
     }
 }

@@ -86,18 +86,13 @@ public class DaprApplicationBus<TMessage, TMetadata> : IMessageBus<TMessage, TMe
     {
         ArgumentNullException.ThrowIfNull(message);
         ArgumentNullException.ThrowIfNull(metadata);
-        _logger.LogInformation(
-            "Sending event : Name={MessageName}; Id='{MessageId}'; Correlation='{CorrelationId}'.",
-            metadata.Message.Name,
-            metadata.Message.Id,
-            metadata.Context.CorrelationId);
         try
         {
             string topicName = !string.IsNullOrEmpty(message.AggregateName) ? message.AggregateName : throw new Exception("Event aggregate name is not defined.");
             await _daprClient.PublishEventAsync(
                 _name,
                 topicName + _topicSuffix,
-                new EventState(_dateTimeService.UtcNow, message, metadata),
+                new MessageState(_dateTimeService.UtcNow, message, metadata),
                 new Dictionary<string, string>(StringComparer.Ordinal)
                 {
                 { "MessageName", metadata.Message.Name ?? string.Empty },
@@ -107,6 +102,13 @@ public class DaprApplicationBus<TMessage, TMetadata> : IMessageBus<TMessage, TMe
                 { "PartitionKey", message.AggregateId },
                 },
                 cancellationToken).ConfigureAwait(false);
+            _logger.LogInformation(
+                "Sent message : Name={MessageName}; Id='{MessageId}'; Correlation='{CorrelationId}' on {TopicName} of the {BusName} bus.",
+                metadata.Message.Name,
+                metadata.Message.Id,
+                metadata.Context.CorrelationId,
+                topicName + _topicSuffix,
+                _name);
         }
         catch (Exception e)
         {
@@ -114,7 +116,7 @@ public class DaprApplicationBus<TMessage, TMetadata> : IMessageBus<TMessage, TMe
                 e,
                 "Error while publishing on {BusName}/{Topic} ({BusType}) the message {MessageName} Id={MessageId} CorrelationId={CorrelationId}.}",
                 _name,
-                message.AggregateName + "-event",
+                message.AggregateName + _topicSuffix,
                 GetType().Name,
                 metadata.Message.Name,
                 metadata.Message.Id,

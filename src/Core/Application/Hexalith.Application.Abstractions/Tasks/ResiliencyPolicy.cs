@@ -139,6 +139,18 @@ public class ResiliencyPolicy
         return startedDate.Add(EvaluatePeriod(retryCount));
     }
 
+    /// <summary>
+    /// Time to wait until retry can be performed.
+    /// </summary>
+    /// <param name="startedDate">The started date.</param>
+    /// <param name="retryCount">The retry count.</param>
+    /// <returns>System.TimeSpan.</returns>
+    public TimeSpan RetryWaitTime(DateTimeOffset startedDate, int retryCount)
+    {
+        TimeSpan wait = DateTimeOffset.UtcNow - NextRetryTime(startedDate, retryCount);
+        return wait < TimeSpan.Zero ? TimeSpan.Zero : wait;
+    }
+
     private TimeSpan EvaluatePeriod(int retry)
     {
         if (retry < 1)

@@ -38,8 +38,8 @@ public class ResilientCommandProcessorTest
         const string key = "test1";
         string stateName = nameof(TaskProcessor) + key;
         DummyCommand1 command = new("My test 1", 1);
-        (bool completed, IEnumerable<BaseEvent> events) = await processor.ProcessAsync(key, command, CancellationToken.None);
-        _ = completed.Should().BeTrue();
+        (TimeSpan? retry, IEnumerable<BaseEvent> events) = await processor.ProcessAsync(key, command, CancellationToken.None);
+        _ = retry.Should().BeNull();
         _ = events.Should().HaveCount(1);
         _ = events.First().Should().BeOfType<DummyEvent1>();
         _ = stateProvider.State.Should().BeEmpty();
@@ -70,8 +70,8 @@ public class ResilientCommandProcessorTest
         const string key = "test1";
         string stateName = nameof(TaskProcessor) + key;
         DummyCommand1 command = new("My test 1", 1);
-        (bool completed, IEnumerable<BaseEvent> events) = await processor.ProcessAsync(key, command, CancellationToken.None);
-        _ = completed.Should().BeTrue();
+        (TimeSpan? retry, IEnumerable<BaseEvent> events) = await processor.ProcessAsync(key, command, CancellationToken.None);
+        _ = retry.Should().BeNull();
         _ = events.Should().HaveCount(1);
         _ = events.First().Should().BeOfType<CommandProcessingFailed>();
         _ = stateProvider.State.Should().BeEmpty();
@@ -108,8 +108,8 @@ public class ResilientCommandProcessorTest
         const string key = "test1";
         string stateName = nameof(TaskProcessor) + key;
         DummyCommand1 command = new("My test 1", 1);
-        (bool completed, IEnumerable<BaseEvent> events) = await processor.ProcessAsync(key, command, CancellationToken.None);
-        _ = completed.Should().BeFalse();
+        (TimeSpan? retry, IEnumerable<BaseEvent> events) = await processor.ProcessAsync(key, command, CancellationToken.None);
+        _ = retry.Should().BeNull();
         _ = events.Should().HaveCount(1);
         _ = events.First().Should().BeOfType<CommandProcessingFailed>();
         _ = stateProvider.State.Should().BeEmpty();

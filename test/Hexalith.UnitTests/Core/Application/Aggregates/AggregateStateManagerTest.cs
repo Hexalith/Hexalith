@@ -31,12 +31,10 @@ public class AggregateStateManagerTest
     {
         (AggregateStateManager stateManager, MemoryStateProvider stateProvider, MemoryEventBus bus) = await GetInitializedStateManager(commandCount);
 
-        await stateManager.ExecuteCommandsAsync(
+        await stateManager.ContinueAsync(
             stateProvider,
             ResiliencyPolicy.None,
-            CancellationToken.None);
-        await stateManager.PublishEventsAsync(
-            stateProvider,
+            async (name, data, start, period) => await Task.CompletedTask,
             CancellationToken.None);
         _ = bus.Stream.Should().HaveCount(commandCount);
     }
@@ -50,9 +48,10 @@ public class AggregateStateManagerTest
     {
         (AggregateStateManager stateManager, MemoryStateProvider stateProvider, _) = await GetInitializedStateManager(commandCount);
 
-        await stateManager.ExecuteCommandsAsync(
+        await stateManager.ContinueAsync(
             stateProvider,
             ResiliencyPolicy.None,
+            async (name, data, start, period) => await Task.CompletedTask,
             CancellationToken.None);
 
         _ = stateProvider.State.ContainsKey("State").Should().BeTrue();
@@ -84,30 +83,6 @@ public class AggregateStateManagerTest
         _ = state.EventStreamVersion.Should().Be(0L);
     }
 
-    [Fact]
-    public async Task Initialize_should_persist_initial_state()
-    {
-        MemoryStateProvider provider = new();
-        AggregateStateManager stateManager = new(
-            new DummyCommandDispatcher(),
-            new MemoryEventBus(),
-            new DateTimeService());
-        await stateManager.InitializeAsync(
-            provider,
-            async (name, data, start, period)
-               => await Task.CompletedTask,
-            CancellationToken.None);
-        _ = provider.State.Should().HaveCount(1);
-        _ = provider.State.ContainsKey("State").Should().BeTrue();
-        _ = provider.State["State"].Should().BeOfType<AggregateState>();
-        AggregateState state = (AggregateState)provider.State["State"];
-        _ = state.Should().NotBeNull();
-        _ = state.LastCommandDone.Should().Be(0L);
-        _ = state.LastEventPublished.Should().Be(0L);
-        _ = state.CommandStreamVersion.Should().Be(0L);
-        _ = state.EventStreamVersion.Should().Be(0L);
-    }
-
     private static (BaseCommand Command, Metadata Meta) GetCommand(int id)
     {
         DummyCommand1 command = new("Test" + id.ToInvariantString(), id);
@@ -133,11 +108,6 @@ public class AggregateStateManagerTest
             new DummyCommandDispatcher(),
             eventBus,
             new DateTimeService());
-        await stateManager.InitializeAsync(
-            provider,
-            async (name, data, start, period)
-               => await Task.CompletedTask,
-            CancellationToken.None);
         for (int i = 0; i < commandCount; i++)
         {
             (BaseCommand command, Metadata meta) = GetCommand(i);
@@ -145,6 +115,7 @@ public class AggregateStateManagerTest
                 provider,
                 command,
                 meta,
+                async (name, data, start, period) => await Task.CompletedTask,
                 CancellationToken.None);
         }
 

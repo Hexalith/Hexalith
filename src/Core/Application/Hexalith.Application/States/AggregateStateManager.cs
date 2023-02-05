@@ -14,8 +14,6 @@ using Hexalith.Application.Abstractions.Aggregates;
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Events;
 using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Application.Abstractions.Notifications;
-using Hexalith.Application.Abstractions.Requests;
 using Hexalith.Application.Abstractions.States;
 using Hexalith.Application.Abstractions.Tasks;
 using Hexalith.Application.StreamStores;
@@ -102,10 +100,16 @@ public class AggregateStateManager : IAggregateStateManager
     /// <param name="stateProvider">The state provider.</param>
     /// <param name="command">The command.</param>
     /// <param name="metadata">The metadata.</param>
+    /// <param name="registerReminder">The register reminder.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task representing the asynchronous operation.</returns>
-    /// <exception cref="ArgumentNullException">Null argument.</exception>
-    public async Task AddCommandAsync(IStateStoreProvider stateProvider, BaseCommand command, Metadata metadata, CancellationToken cancellationToken)
+    /// <exception cref="System.ArgumentNullException">Argument null.</exception>
+    public async Task AddCommandAsync(
+        IStateStoreProvider stateProvider,
+        BaseCommand command,
+        Metadata metadata,
+        Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder,
+        CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(stateProvider);
         ArgumentNullException.ThrowIfNull(metadata);
@@ -122,6 +126,7 @@ public class AggregateStateManager : IAggregateStateManager
             null).IntoArray(),
             state.CommandStreamVersion,
             cancellationToken);
+        await SetReminderAsync(TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(15), registerReminder);
         await PersistStateAsync(
             stateProvider,
             new AggregateState(
@@ -132,13 +137,47 @@ public class AggregateStateManager : IAggregateStateManager
             cancellationToken);
     }
 
+    /// <summary>
+    /// Initialize as an asynchronous operation.
+    /// </summary>
+    /// <param name="stateProvider">The state provider.</param>
+    /// <param name="resiliencyPolicy">The resiliency policy.</param>
+    /// <param name="registerReminder">The register reminder.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>A Task representing the asynchronous operation.</returns>
+    /// <exception cref="ArgumentNullException">Null argument.</exception>
+    public async Task ContinueAsync(
+        IStateStoreProvider stateProvider,
+        ResiliencyPolicy resiliencyPolicy,
+        Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(stateProvider);
+        TimeSpan? retry = await ExecuteCommandsAsync(stateProvider, resiliencyPolicy, cancellationToken);
+        await PublishEventsAsync(stateProvider, cancellationToken);
+        AggregateState state = await GetStateAsync(stateProvider, cancellationToken);
+        if (state.LastEventPublished < state.EventStreamVersion)
+        {
+            await SetReminderAsync(TimeSpan.FromSeconds(1), TimeSpan.FromMinutes(1), registerReminder);
+            return;
+        }
+
+        if (retry != null)
+        {
+            await SetReminderAsync(retry.Value.Add(TimeSpan.FromMilliseconds(100)), TimeSpan.FromMinutes(1), registerReminder);
+        }
+    }
+
     /// <summary>Do next command as an asynchronous operation.</summary>
     /// <param name="stateProvider">The state store provider.</param>
     /// <param name="resiliencyPolicy">The resiliency policy.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task&lt;System.Boolean&gt; representing the asynchronous operation.</returns>
     /// <exception cref="ArgumentNullException">Null argument.</exception>
-    public async Task ExecuteCommandsAsync(IStateStoreProvider stateProvider, ResiliencyPolicy resiliencyPolicy, CancellationToken cancellationToken)
+    protected async Task<TimeSpan?> ExecuteCommandsAsync(
+        IStateStoreProvider stateProvider,
+        ResiliencyPolicy resiliencyPolicy,
+        CancellationToken cancellationToken)
     {
         MessageStore<CommandState> commandStore = new(stateProvider, CommandsStreamName);
         MessageStore<EventState> eventStore = new(stateProvider, EventsStreamName);
@@ -152,7 +191,7 @@ public class AggregateStateManager : IAggregateStateManager
                 _dispatcher,
                 stateProvider);
 
-            (bool terminated, IEnumerable<BaseEvent> events) = await processor.ProcessAsync(nextCommand.ToInvariantString(), command.Command, cancellationToken);
+            (TimeSpan? retry, IEnumerable<BaseEvent> events) = await processor.ProcessAsync(nextCommand.ToInvariantString(), command.Command, cancellationToken);
             long eventVersion = state.EventStreamVersion;
             if (events.Any())
             {
@@ -170,45 +209,30 @@ public class AggregateStateManager : IAggregateStateManager
             state = new AggregateState(
                     state.CommandStreamVersion,
                     eventVersion,
-                    terminated ? nextCommand : state.LastCommandDone,
+                    retry == null ? nextCommand : state.LastCommandDone,
                     state.LastEventPublished);
             await PersistStateAsync(
                 stateProvider,
                 state,
                 cancellationToken);
-            if (!terminated)
+            if (retry != null)
             {
-                break;
+                return retry;
             }
         }
+
+        return null;
     }
 
     /// <summary>
-    /// Initialize as an asynchronous operation.
+    /// Publish events as an asynchronous operation.
     /// </summary>
     /// <param name="stateProvider">The state provider.</param>
-    /// <param name="registerReminder">The register reminder.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task representing the asynchronous operation.</returns>
-    /// <exception cref="ArgumentNullException">Null argument.</exception>
-    public async Task InitializeAsync(
+    protected async Task PublishEventsAsync(
         IStateStoreProvider stateProvider,
-        Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder,
         CancellationToken cancellationToken)
-    {
-        ArgumentNullException.ThrowIfNull(stateProvider);
-        ConditionalValue<AggregateState> state = await stateProvider.TryGetStateAsync<AggregateState>(StateName, cancellationToken);
-
-        if (!state.HasValue)
-        {
-            // If the state does not exist, the actor has never been activated. We need to add the actor reminder.
-            await registerReminder("Continue", Array.Empty<byte>(), TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(30));
-            await PersistStateAsync(stateProvider, new AggregateState(0, 0, 0, 0), cancellationToken);
-        }
-    }
-
-    /// <inheritdoc/>
-    public async Task PublishEventsAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken)
     {
         MessageStore<EventState> eventStore = new(stateProvider, EventsStreamName);
         AggregateState state = await GetStateAsync(stateProvider, cancellationToken);
@@ -232,7 +256,8 @@ public class AggregateStateManager : IAggregateStateManager
 
     private async Task<AggregateState> GetStateAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken)
     {
-        return await stateProvider.GetStateAsync<AggregateState>(StateName, cancellationToken);
+        ConditionalValue<AggregateState> result = await stateProvider.TryGetStateAsync<AggregateState>(StateName, cancellationToken);
+        return result.HasValue ? result.Value : new AggregateState(0, 0, 0, 0);
     }
 
     private string GetTaskProcessorStateName(long version)
@@ -250,5 +275,13 @@ public class AggregateStateManager : IAggregateStateManager
     {
         await stateProvider.SetStateAsync(StateName, state, CancellationToken.None);
         await stateProvider.SaveChangesAsync(cancellationToken);
+    }
+
+    private async Task SetReminderAsync(
+        TimeSpan next,
+        TimeSpan retry,
+        Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder)
+    {
+        await registerReminder("Continue", Array.Empty<byte>(), next, retry);
     }
 }

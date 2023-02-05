@@ -18,41 +18,32 @@ using Hexalith.Application.Abstractions.Tasks;
 public interface IAggregateStateManager
 {
     /// <summary>
-    /// Adds the command asynchronous.
+    /// Adds the command.
     /// </summary>
     /// <param name="stateProvider">The state provider.</param>
     /// <param name="command">The command.</param>
     /// <param name="metadata">The metadata.</param>
-    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>Task.</returns>
-    Task AddCommandAsync(IStateStoreProvider stateProvider, BaseCommand command, Metadata metadata, CancellationToken cancellationToken);
-
-    /// <summary>
-    /// Executes the commands asynchronous.
-    /// </summary>
-    /// <param name="stateProvider">The state provider.</param>
-    /// <param name="resiliencyPolicy">The resiliency policy.</param>
-    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>Task.</returns>
-    Task ExecuteCommandsAsync(IStateStoreProvider stateProvider, ResiliencyPolicy resiliencyPolicy, CancellationToken cancellationToken);
-
-    /// <summary>
-    /// Initializes aggregate state manager from the state store.
-    /// </summary>
-    /// <param name="stateProvider">The state provider.</param>
     /// <param name="registerReminder">The register reminder.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
-    Task InitializeAsync(
+    Task AddCommandAsync(
         IStateStoreProvider stateProvider,
+        BaseCommand command,
+        Metadata metadata,
         Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder,
         CancellationToken cancellationToken);
 
     /// <summary>
-    /// Publishes the events asynchronous.
+    /// Continues the execution of the commands and publish all events.
     /// </summary>
     /// <param name="stateProvider">The state provider.</param>
+    /// <param name="resiliencyPolicy">The resiliency policy.</param>
+    /// <param name="registerReminder">The register reminder.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>Task&lt;System.Boolean&gt;.</returns>
-    Task PublishEventsAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken);
+    /// <returns>Task.</returns>
+    Task ContinueAsync(
+        IStateStoreProvider stateProvider,
+        ResiliencyPolicy resiliencyPolicy,
+        Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder,
+        CancellationToken cancellationToken);
 }

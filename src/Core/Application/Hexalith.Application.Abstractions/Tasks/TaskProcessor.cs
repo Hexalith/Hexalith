@@ -73,6 +73,8 @@ public class TaskProcessor : ITaskProcessor
     }
 
     /// <inheritdoc/>
+    [IgnoreDataMember]
+    [JsonIgnore]
     public RetryStatus CanRetry =>
         ResiliencyPolicy.CanRetry(
               History.CreatedDate,
@@ -92,6 +94,16 @@ public class TaskProcessor : ITaskProcessor
     [DataMember(Order = 4)]
     [JsonPropertyOrder(4)]
     public ResiliencyPolicy ResiliencyPolicy { get; private set; }
+
+    /// <summary>
+    /// Gets the retry wait time.
+    /// </summary>
+    /// <value>The retry wait time.</value>
+    [IgnoreDataMember]
+    [JsonIgnore]
+    public TimeSpan RetryWaitTime => ResiliencyPolicy.RetryWaitTime(
+            History.CreatedDate,
+            Failure == null ? 0 : Failure.Count);
 
     /// <inheritdoc/>
     [DataMember(Order = 1)]
