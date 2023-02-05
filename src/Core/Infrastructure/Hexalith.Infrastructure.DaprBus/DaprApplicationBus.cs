@@ -16,9 +16,6 @@
 
 namespace Hexalith.Infrastructure.DaprBus;
 
-using System.Threading;
-using System.Threading.Tasks;
-
 using Dapr.Client;
 
 using Hexalith.Application.Abstractions.Envelopes;
@@ -121,11 +118,11 @@ public class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageBus<TMess
                 string topicName = !string.IsNullOrEmpty(state.Message.AggregateName) ? state.Message.AggregateName : throw new Exception("Event aggregate name is not defined.");
                 Dictionary<string, string> m = new(StringComparer.Ordinal)
                     {
-                { "MessageName", state.Metadata.Message.Name ?? string.Empty },
-                { "MessageId", state.Metadata.Message.Id },
-                { "CorrelationId", state.Metadata.Context.CorrelationId },
-                { "SessionId", state.Metadata.Context.SessionId ?? state.Message.AggregateId },
-                { "PartitionKey", state.Message.AggregateId },
+                        { "MessageName", state.Metadata.Message.Name ?? string.Empty },
+                        { "MessageId", state.Metadata.Message.Id },
+                        { "CorrelationId", state.Metadata.Context.CorrelationId },
+                        { "SessionId", state.Metadata.Context.SessionId ?? state.Message.AggregateId },
+                        { "PartitionKey", state.Message.AggregateId },
                     };
                 await _daprClient.PublishEventAsync(
                     _name,

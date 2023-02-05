@@ -6,16 +6,9 @@
 
 namespace Hexalith.Infrastructure.WebApis.Helpers;
 
-using Hexalith.Application.Abstractions.Errors;
-using Hexalith.Extensions.Helpers;
-
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Mvc;
 
 using Serilog;
-
-using System.Globalization;
-using System.Net;
 
 /// <summary>
 /// Class WebApiHelper.
@@ -32,7 +25,7 @@ public static class WebApiHelper
             .WriteTo.Console()
             .CreateBootstrapLogger();
 
-        builder.Host.UseSerilog(
+        _ = builder.Host.UseSerilog(
             (context, services, configuration)
             => configuration
                 .ReadFrom.Configuration(context.Configuration)

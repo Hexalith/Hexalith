@@ -58,15 +58,8 @@ public static class HexalithWebApi
 
         _ = builder.Services.AddSwaggerGen(c => c.SwaggerDoc("v1", new() { Title = applicationName, Version = version, }));
 
-        _ = builder.Services.AddControllers().AddDapr();
-
-        if (debugInVisualStudio == true)
-        {
-            // When debugging, we want to be able to run the application inside Visual Studio to see the technical details.
-            _ = builder.Services.AddDaprSidekick(builder.Configuration);
-        }
-
-        builder.Services.AddDaprClient(configure => configure.UseJsonSerializationOptions(new JsonSerializerOptions().AddPolymorphism()));
+        builder.Services.AddDaprClient(
+            configure => configure.UseJsonSerializationOptions(new JsonSerializerOptions().AddPolymorphism()));
         builder.Services.AddActors(options =>
         {
             // Register actor types and configure actor settings
@@ -75,6 +68,14 @@ public static class HexalithWebApi
             // Configure serialization options
             options.JsonSerializerOptions.TypeInfoResolver = new PolymorphicTypeResolver();
         });
+        _ = builder.Services.AddControllers().AddDapr();
+
+        if (debugInVisualStudio == true)
+        {
+            // When debugging, we want to be able to run the application inside Visual Studio to see the technical details.
+            _ = builder.Services.AddDaprSidekick(builder.Configuration);
+        }
+
         _ = builder.Services.AddDaprHandlers(builder.Configuration);
         _ = builder.Services.AddSingleton<IDateTimeService, DateTimeService>();
         _ = builder.Services.ConfigureSettings<DaprEventBusSettings>(builder.Configuration);
