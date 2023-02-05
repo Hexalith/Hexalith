@@ -9,7 +9,9 @@ namespace Hexalith.UnitTests.Core.Domain.Messages;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Extensions.Helpers;
 
 [DataContract]
 public abstract class DummyBaseMessage : BaseMessage
@@ -26,6 +28,21 @@ public abstract class DummyBaseMessage : BaseMessage
     }
 
     public string BaseValue { get; }
+
+    public Metadata CreateMetadata()
+    {
+        return new Metadata(
+                UniqueIdHelper.GenerateUniqueStringId(),
+                this,
+                DateTimeOffset.UtcNow,
+                new ContextMetadata(
+                    UniqueIdHelper.GenerateUniqueStringId(),
+                    "Test user",
+                    DateTimeOffset.UtcNow.AddMinutes(-1),
+                    1,
+                    "Test session"),
+                "TestScope".IntoArray());
+    }
 
     protected override string DefaultAggregateName()
     {

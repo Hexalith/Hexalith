@@ -84,8 +84,7 @@ public class CommandStateTest
                         null,
                         null,
                         null),
-                null),
-            DateTimeOffset.UtcNow);
+                null));
         string json = JsonSerializer.Serialize(messageState, new JsonSerializerOptions().AddPolymorphism());
         _ = json.Should().NotBeEmpty();
         _ = json.Should().Contain("\"$type\":\"DummyCommand1\"");

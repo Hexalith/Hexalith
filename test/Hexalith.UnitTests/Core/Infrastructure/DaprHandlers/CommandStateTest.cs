@@ -24,8 +24,7 @@ public class CommandStateTest
         CommandState original = new(
             DateTimeOffset.Now,
             command,
-            command.CreateMetadata(),
-            DateTimeOffset.Now);
+            command.CreateMetadata());
         JsonSerializerOptions options = new JsonSerializerOptions().AddPolymorphism();
         string json = JsonSerializer.Serialize(original, options);
         CommandState result = JsonSerializer.Deserialize<CommandState>(json, options);

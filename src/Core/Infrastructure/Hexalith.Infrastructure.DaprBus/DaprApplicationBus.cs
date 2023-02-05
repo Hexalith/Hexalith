@@ -1,8 +1,18 @@
-﻿// <copyright file="DaprApplicationBus.cs" company="Fiveforty SAS Paris France">
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Infrastructure.DaprBus
+// Author           : Jérôme Piquot
+// Created          : 01-13-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 02-05-2023
+// ***********************************************************************
+// <copyright file="DaprApplicationBus.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Hexalith.Infrastructure.DaprBus;
 
@@ -22,17 +32,22 @@ using Microsoft.Extensions.Logging;
 /// <summary>
 /// This class is used to store events in a Dapr actor state.
 /// </summary>
-/// <typeparam name="TMessage">The type of the message.</typeparam>
-/// <typeparam name="TMetadata">The type of the metadata.</typeparam>
-public class DaprApplicationBus<TMessage, TMetadata> : IMessageBus<TMessage, TMetadata>
+/// <typeparam name="TMessage">The type of the state.Message.</typeparam>
+/// <typeparam name="TMetadata">The type of the state.Metadata.</typeparam>
+/// <typeparam name="TState">The type of the t state.</typeparam>
+public class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageBus<TMessage, TMetadata, TState>
     where TMessage : BaseMessage
     where TMetadata : Metadata
+    where TState : MessageState<TMessage, TMetadata>, new()
 {
     /// <summary>
     /// The dapr client.
     /// </summary>
     private readonly DaprClient _daprClient;
 
+    /// <summary>
+    /// The date time service.
+    /// </summary>
     private readonly IDateTimeService _dateTimeService;
 
     /// <summary>
@@ -45,16 +60,20 @@ public class DaprApplicationBus<TMessage, TMetadata> : IMessageBus<TMessage, TMe
     /// </summary>
     private readonly string _name;
 
+    /// <summary>
+    /// The topic suffix.
+    /// </summary>
     private readonly string _topicSuffix;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="DaprApplicationBus{TMessage, TMetadata}"/> class.
+    /// Initializes a new instance of the <see cref="DaprApplicationBus{TMessage, TMetadata, TState}" /> class.
     /// </summary>
     /// <param name="daprClient">The dapr client.</param>
     /// <param name="dateTimeService">The date time service.</param>
     /// <param name="name">The name.</param>
     /// <param name="topicSuffix">The topic suffix.</param>
     /// <param name="logger">The logger.</param>
+    /// <exception cref="System.ArgumentNullException">Argument null.</exception>
     public DaprApplicationBus(
         DaprClient daprClient,
         IDateTimeService dateTimeService,
@@ -75,10 +94,10 @@ public class DaprApplicationBus<TMessage, TMetadata> : IMessageBus<TMessage, TMe
     }
 
     /// <inheritdoc/>
-    public Task PublishAsync(IEnvelope<TMessage, TMetadata> envelope, CancellationToken cancellationToken)
+    public async Task PublishAsync(IEnvelope<TMessage, TMetadata> envelope, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(envelope);
-        return PublishAsync(envelope.Message, envelope.Metadata, cancellationToken);
+        await PublishAsync(envelope.Message, envelope.Metadata, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -86,42 +105,55 @@ public class DaprApplicationBus<TMessage, TMetadata> : IMessageBus<TMessage, TMe
     {
         ArgumentNullException.ThrowIfNull(message);
         ArgumentNullException.ThrowIfNull(metadata);
-        try
+        TState state = new() { ReceivedDate = _dateTimeService.UtcNow, Message = message, Metadata = metadata };
+        await PublishAsync(state, cancellationToken);
+    }
+
+    /// <inheritdoc/>
+    public async Task PublishAsync(TState state, CancellationToken cancellationToken)
+    {
         {
-            string topicName = !string.IsNullOrEmpty(message.AggregateName) ? message.AggregateName : throw new Exception("Event aggregate name is not defined.");
-            await _daprClient.PublishEventAsync(
-                _name,
-                topicName + _topicSuffix,
-                new MessageState(_dateTimeService.UtcNow, message, metadata),
-                new Dictionary<string, string>(StringComparer.Ordinal)
-                {
-                { "MessageName", metadata.Message.Name ?? string.Empty },
-                { "MessageId", metadata.Message.Id },
-                { "CorrelationId", metadata.Context.CorrelationId },
-                { "SessionId", metadata.Context.SessionId ?? message.AggregateId },
-                { "PartitionKey", message.AggregateId },
-                },
-                cancellationToken).ConfigureAwait(false);
-            _logger.LogInformation(
-                "Sent message : Name={MessageName}; Id='{MessageId}'; Correlation='{CorrelationId}' on {TopicName} of the {BusName} bus.",
-                metadata.Message.Name,
-                metadata.Message.Id,
-                metadata.Context.CorrelationId,
-                topicName + _topicSuffix,
-                _name);
-        }
-        catch (Exception e)
-        {
-            _logger.LogError(
-                e,
-                "Error while publishing on {BusName}/{Topic} ({BusType}) the message {MessageName} Id={MessageId} CorrelationId={CorrelationId}.}",
-                _name,
-                message.AggregateName + _topicSuffix,
-                GetType().Name,
-                metadata.Message.Name,
-                metadata.Message.Id,
-                metadata.Context.CorrelationId);
-            throw;
+            ArgumentNullException.ThrowIfNull(state);
+            ArgumentNullException.ThrowIfNull(state.Message);
+            ArgumentNullException.ThrowIfNull(state.Metadata);
+            try
+            {
+                string topicName = !string.IsNullOrEmpty(state.Message.AggregateName) ? state.Message.AggregateName : throw new Exception("Event aggregate name is not defined.");
+                Dictionary<string, string> m = new(StringComparer.Ordinal)
+                    {
+                { "MessageName", state.Metadata.Message.Name ?? string.Empty },
+                { "MessageId", state.Metadata.Message.Id },
+                { "CorrelationId", state.Metadata.Context.CorrelationId },
+                { "SessionId", state.Metadata.Context.SessionId ?? state.Message.AggregateId },
+                { "PartitionKey", state.Message.AggregateId },
+                    };
+                await _daprClient.PublishEventAsync(
+                    _name,
+                    topicName + _topicSuffix,
+                    state,
+                    m,
+                    cancellationToken).ConfigureAwait(false);
+                _logger.LogInformation(
+                    "Sent message : Name={MessageName}; Id='{MessageId}'; Correlation='{CorrelationId}' on {TopicName} of the {BusName} bus.",
+                    state.Metadata.Message.Name,
+                    state.Metadata.Message.Id,
+                    state.Metadata.Context.CorrelationId,
+                    topicName + _topicSuffix,
+                    _name);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(
+                    e,
+                    "Error while publishing on {BusName}/{Topic} ({BusType}) the message {MessageName} Id={MessageId} CorrelationId={CorrelationId}.}",
+                    _name,
+                    state.Message.AggregateName + _topicSuffix,
+                    GetType().Name,
+                    state.Metadata.Message.Name,
+                    state.Metadata.Message.Id,
+                    state.Metadata.Context.CorrelationId);
+                throw;
+            }
         }
     }
 }

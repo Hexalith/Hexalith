@@ -16,6 +16,7 @@
 
 namespace Hexalith.Application.Abstractions.Commands;
 
+using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 using Hexalith.Application.Abstractions.Tasks;
@@ -26,6 +27,7 @@ using Hexalith.Domain.Abstractions.Events;
 /// Implements the <see cref="Hexalith.Application.Abstractions.Commands.BaseCommand" />.
 /// </summary>
 /// <seealso cref="Hexalith.Application.Abstractions.Commands.BaseCommand" />
+[DataContract]
 public class CommandProcessingFailed : BaseEvent
 {
     /// <summary>

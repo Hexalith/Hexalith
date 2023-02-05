@@ -122,8 +122,7 @@ public class AggregateStateManager : IAggregateStateManager
             new CommandState(
             _dateTimeService.UtcNow,
             command,
-            metadata,
-            null).IntoArray(),
+            metadata).IntoArray(),
             state.CommandStreamVersion,
             cancellationToken);
         await SetReminderAsync(TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(15), registerReminder);
@@ -186,12 +185,14 @@ public class AggregateStateManager : IAggregateStateManager
         {
             long nextCommand = state.LastCommandDone + 1;
             CommandState command = await commandStore.GetAsync(nextCommand, cancellationToken);
+            _ = command.Message ?? throw new InvalidOperationException($"Command {nextCommand} content is null.");
+            _ = command.Metadata ?? throw new InvalidOperationException($"Command {nextCommand} metadata is null.");
             ResilientCommandProcessor processor = new(
                 resiliencyPolicy,
                 _dispatcher,
                 stateProvider);
 
-            (TimeSpan? retry, IEnumerable<BaseEvent> events) = await processor.ProcessAsync(nextCommand.ToInvariantString(), command.Command, cancellationToken);
+            (TimeSpan? retry, IEnumerable<BaseEvent> events) = await processor.ProcessAsync(nextCommand.ToInvariantString(), command.Message, cancellationToken);
             long eventVersion = state.EventStreamVersion;
             if (events.Any())
             {
@@ -241,7 +242,7 @@ public class AggregateStateManager : IAggregateStateManager
             long nextEvent = state.LastEventPublished + 1;
             EventState eventState = await eventStore.GetAsync(nextEvent, cancellationToken);
 
-            await _eventBus.PublishAsync(eventState.Event, eventState.Metadata, cancellationToken);
+            await _eventBus.PublishAsync(eventState, cancellationToken);
             state = new AggregateState(
                     state.CommandStreamVersion,
                     state.EventStreamVersion,

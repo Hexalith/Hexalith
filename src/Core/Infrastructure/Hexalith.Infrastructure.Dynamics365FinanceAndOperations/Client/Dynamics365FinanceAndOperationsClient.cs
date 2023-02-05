@@ -6,9 +6,14 @@
 
 namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
 
+using System.Globalization;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
 using Ardalis.GuardClauses;
 
-using Hexalith.Extensions.Serialization;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Configurations;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Security;
@@ -16,12 +21,6 @@ using Hexalith.Infrastructure.Serialization.Serialization;
 
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-
-using System.Globalization;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 
 /// <summary>
 /// Client for Dynamics 365 for finance and operations.
@@ -54,11 +53,6 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// The security context.
     /// </summary>
     private readonly IDynamics365FinanceAndOperationsSecurityContext _securityContext;
-
-    /// <summary>
-    /// The client.
-    /// </summary>
-    private HttpClient? _client;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Dynamics365FinanceAndOperationsClient{TEntity}" /> class.
@@ -142,7 +136,7 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// Gets the client.
     /// </summary>
     /// <value>The client.</value>
-    private HttpClient Client => _client ??= _httpClientFactory.CreateClient();
+    private HttpClient Client => _httpClientFactory.CreateClient();
 
     /// <inheritdoc/>
     public Task DoActionAsync(string action, IDictionary<string, object?> parameters, CancellationToken cancellationToken)

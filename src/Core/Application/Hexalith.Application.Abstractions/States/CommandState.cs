@@ -1,8 +1,18 @@
-﻿// <copyright file="CommandState.cs" company="Fiveforty SAS Paris France">
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Application.Abstractions
+// Author           : Jérôme Piquot
+// Created          : 01-29-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 02-05-2023
+// ***********************************************************************
+// <copyright file="CommandState.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Hexalith.Application.Abstractions.States;
 
@@ -10,37 +20,19 @@ using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Ardalis.GuardClauses;
-
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Domain.Abstractions.Messages;
 
 /// <summary>
 /// Class CommandState.
 /// </summary>
 [DataContract]
-public class CommandState : MessageState
+public class CommandState : MessageState<BaseCommand, Metadata>
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="CommandState" /> class.
     /// </summary>
-    [Obsolete("For serialization only", true)]
     public CommandState()
-    {
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="CommandState"/> class.
-    /// </summary>
-    /// <param name="command">The command.</param>
-    /// <param name="processedDate">The processed date.</param>
-    public CommandState(CommandState command, DateTimeOffset processedDate)
-        : this(
-              Guard.Against.Null(command).ReceivedDate,
-              command.Message,
-              command.Metadata,
-              command.ProcessedDate)
     {
     }
 
@@ -48,37 +40,14 @@ public class CommandState : MessageState
     /// Initializes a new instance of the <see cref="CommandState" /> class.
     /// </summary>
     /// <param name="receivedDate">The received date.</param>
-    /// <param name="processedDate">The processed date.</param>
-    /// <param name="idempotencyId">The idempotency identifier.</param>
     /// <param name="message">The command.</param>
     /// <param name="metadata">The metadata.</param>
     [JsonConstructor]
     public CommandState(
-        DateTimeOffset receivedDate,
-        BaseMessage message,
-        Metadata metadata,
-        DateTimeOffset? processedDate)
+        DateTimeOffset? receivedDate,
+        BaseCommand? message,
+        Metadata? metadata)
         : base(receivedDate, message, metadata)
     {
-        if (message is not BaseCommand)
-        {
-            throw new ArgumentException("Message must be a command.", nameof(message));
-        }
-
-        ProcessedDate = processedDate;
     }
-
-    /// <summary>
-    /// Gets the command.
-    /// </summary>
-    /// <value>The command.</value>
-    [IgnoreDataMember]
-    [JsonIgnore]
-    public BaseCommand Command => (BaseCommand)Message;
-
-    /// <summary>
-    /// Gets the processed date.
-    /// </summary>
-    /// <value>The processed date.</value>
-    public DateTimeOffset? ProcessedDate { get; }
 }

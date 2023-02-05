@@ -19,33 +19,44 @@ namespace Hexalith.Application.Events;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Envelopes;
 using Hexalith.Application.Abstractions.Events;
 using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Application.Abstractions.Notifications;
-using Hexalith.Application.Abstractions.Requests;
+using Hexalith.Application.Abstractions.States;
 using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Extensions.Common;
 
 /// <summary>
 /// Class MemoryMessageBus.
 /// Implements the <see cref="IMessageBus{TMessage, TMetadata}" />.
 /// </summary>
-/// <typeparam name="TMessage">The type of the t message.</typeparam>
-/// <typeparam name="TMetadata">The type of the t metadata.</typeparam>
 /// <seealso cref="IMessageBus{TMessage, TMetadata}" />
 public class MemoryEventBus : IEventBus
 {
     /// <summary>
+    /// The date time service.
+    /// </summary>
+    private readonly IDateTimeService _dateTimeService;
+
+    /// <summary>
     /// The stream.
     /// </summary>
-    private readonly List<(BaseEvent, Metadata)> _stream = new();
+    private readonly List<EventState> _stream = new();
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MemoryEventBus"/> class.
+    /// </summary>
+    /// <param name="dateTimeService">The date time service.</param>
+    public MemoryEventBus(IDateTimeService dateTimeService)
+    {
+        _dateTimeService = dateTimeService;
+    }
 
     /// <summary>
     /// Gets the stream.
     /// </summary>
     /// <value>The stream.</value>
-    public IEnumerable<(BaseEvent Message, Metadata Metadata)> Stream => _stream;
+    public IEnumerable<EventState> Stream => _stream;
 
     /// <inheritdoc/>
     public Task PublishAsync(IEnvelope<BaseEvent, Metadata> envelope, CancellationToken cancellationToken)
@@ -56,7 +67,13 @@ public class MemoryEventBus : IEventBus
     /// <inheritdoc/>
     public Task PublishAsync(BaseEvent message, Metadata metadata, CancellationToken cancellationToken)
     {
-        _stream.Add((message, metadata));
+        return PublishAsync(new EventState(_dateTimeService.UtcNow, message, metadata), cancellationToken);
+    }
+
+    /// <inheritdoc/>
+    public Task PublishAsync(EventState state, CancellationToken cancellationToken)
+    {
+        _stream.Add(state);
         return Task.CompletedTask;
     }
 }

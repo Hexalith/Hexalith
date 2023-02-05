@@ -32,14 +32,14 @@ public class DaprApplicationBusTest
 
         Mock<DaprClient> client = new();
         Mock<ILogger> logger = new();
-        DaprApplicationBus<BaseEvent, Metadata> bus = new(client.Object, new DateTimeService(), busName, topicSuffix, logger.Object);
+        DaprApplicationBus<BaseEvent, Metadata, EventState> bus = new(client.Object, new DateTimeService(), busName, topicSuffix, logger.Object);
         await bus.PublishAsync(@event, meta, CancellationToken.None);
         client.Verify(
             p => p.PublishEventAsync(
             It.Is<string>(p => p == busName),
             It.Is<string>(p => p == @event.AggregateName + topicSuffix),
             It.Is<EventState>(
-                p => p.Event == @event && p.Metadata == meta),
+                p => p.Message == @event && p.Metadata == meta),
             It.IsAny<Dictionary<string, string>>(),
             It.IsAny<CancellationToken>()),
             Times.Once);

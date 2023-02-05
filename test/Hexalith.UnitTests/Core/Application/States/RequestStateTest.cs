@@ -1,0 +1,50 @@
+﻿// <copyright file="RequestStateTest.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+
+namespace Hexalith.UnitTests.Core.Application.States;
+
+using System;
+using System.Text.Json;
+
+using FluentAssertions;
+
+using Hexalith.Application.Abstractions.States;
+using Hexalith.Extensions.Helpers;
+using Hexalith.Infrastructure.Serialization.Helpers;
+using Hexalith.UnitTests.Core.Application.Requests;
+
+using Xunit;
+
+public class RequestStateTest
+{
+    [Fact]
+    public void State_serialization_and_deserialization_should_return_same_object()
+    {
+        DummyRequest1 request = new();
+        Hexalith.Application.Abstractions.Metadatas.Metadata meta = request.CreateMetadata();
+        RequestState state = new(DateTimeOffset.UtcNow, request, meta);
+        JsonSerializerOptions options = new JsonSerializerOptions().AddPolymorphism();
+        string json = JsonSerializer.Serialize(state, options);
+        _ = json.Should().NotBeNullOrEmpty();
+        RequestState result = JsonSerializer.Deserialize<RequestState>(json, options);
+        _ = result.Should().NotBeNull();
+        _ = result.Should().BeEquivalentTo(state);
+    }
+
+    [Fact]
+    public void State_serialization_should_succeed()
+    {
+        DummyRequest1 request = new();
+        Hexalith.Application.Abstractions.Metadatas.Metadata meta = request.CreateMetadata();
+        RequestState state = new(DateTimeOffset.UtcNow, request, meta);
+        string json = JsonSerializer.Serialize(state, new JsonSerializerOptions().AddPolymorphism());
+        _ = json.Should().NotBeNullOrEmpty();
+        _ = json.Should().Contain($"\"$type\":\"{nameof(DummyRequest1)}\"");
+        _ = json.Should().Contain($"\"{nameof(meta.Message.Id)}\":\"{meta.Message.Id}\"");
+        _ = json.Should().Contain($"\"{nameof(request.Value1)}\":{request.Value1.ToInvariantString()}");
+        _ = json.Should().Contain($"\"{nameof(request.BaseValue)}\":\"{request.BaseValue}\"");
+    }
+}

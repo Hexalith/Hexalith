@@ -1,28 +1,28 @@
-﻿// <copyright file="DummyBaseEvent.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="DummyBaseNotification.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.UnitTests.Core.Domain.Events;
+namespace Hexalith.UnitTests.Core.Application.Requests;
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Application.Abstractions.Requests;
 using Hexalith.Extensions.Helpers;
 
 [DataContract]
-public abstract class DummyBaseEvent : BaseEvent
+public abstract class DummyBaseRequest : BaseRequest
 {
-    protected DummyBaseEvent()
+    protected DummyBaseRequest()
     {
         BaseValue = string.Empty;
     }
 
     [JsonConstructor]
-    protected DummyBaseEvent(string baseValue)
+    protected DummyBaseRequest(string baseValue)
     {
         BaseValue = baseValue;
     }

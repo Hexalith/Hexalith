@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 02-05-2023
 // ***********************************************************************
-// <copyright file="EventState.cs" company="Fiveforty SAS Paris France">
+// <copyright file="NotificationState.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -17,33 +17,35 @@
 namespace Hexalith.Application.Abstractions.States;
 
 using System;
+using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Application.Abstractions.Notifications;
 using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Domain.Abstractions.Events;
 
 /// <summary>
-/// Class EventState.
+/// Class NotificationState.
 /// </summary>
-public class EventState : MessageState<BaseEvent, Metadata>
+[DataContract]
+public class NotificationState : MessageState<BaseNotification, Metadata>
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="EventState" /> class.
+    /// Initializes a new instance of the <see cref="NotificationState" /> class.
     /// </summary>
-    public EventState()
+    public NotificationState()
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="EventState" /> class.
+    /// Initializes a new instance of the <see cref="NotificationState" /> class.
     /// </summary>
     /// <param name="receivedDate">The received date.</param>
-    /// <param name="message">The message.</param>
+    /// <param name="message">The notification.</param>
     /// <param name="metadata">The metadata.</param>
     [JsonConstructor]
-    public EventState(
+    public NotificationState(
         DateTimeOffset? receivedDate,
-        BaseEvent? message,
+        BaseNotification? message,
         Metadata? metadata)
         : base(receivedDate, message, metadata)
     {

@@ -22,6 +22,7 @@ using Dapr.Client;
 
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Application.Abstractions.Notifications;
+using Hexalith.Application.Abstractions.States;
 using Hexalith.Extensions.Common;
 using Hexalith.Infrastructure.DaprBus.Configuration;
 
@@ -35,7 +36,7 @@ using Microsoft.Extensions.Options;
 /// </summary>
 /// <seealso cref="Hexalith.Infrastructure.DaprBus.DaprApplicationBus{Hexalith.Domain.Abstractions.Notifications.BaseNotification, Hexalith.Application.Abstractions.Metadatas.Metadata}" />
 /// <seealso cref="INotificationBus" />
-public class DaprNotificationBus : DaprApplicationBus<BaseNotification, Metadata>, INotificationBus
+public class DaprNotificationBus : DaprApplicationBus<BaseNotification, Metadata, NotificationState>, INotificationBus
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="DaprNotificationBus"/> class.

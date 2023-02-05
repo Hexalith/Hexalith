@@ -20,11 +20,9 @@ using System;
 
 using Dapr.Client;
 
-using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Events;
 using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Application.Abstractions.Notifications;
-using Hexalith.Application.Abstractions.Requests;
+using Hexalith.Application.Abstractions.States;
 using Hexalith.Domain.Abstractions.Events;
 using Hexalith.Extensions.Common;
 using Hexalith.Infrastructure.DaprBus.Configuration;
@@ -40,7 +38,7 @@ using Microsoft.Extensions.Options;
 /// </summary>
 /// <seealso cref="Hexalith.Infrastructure.DaprBus.DaprApplicationBus{Hexalith.Domain.Abstractions.Events.BaseEvent, Hexalith.Application.Abstractions.Metadatas.Metadata}" />
 /// <seealso cref="IEventBus" />
-public class DaprEventBus : DaprApplicationBus<BaseEvent, Metadata>, IEventBus
+public class DaprEventBus : DaprApplicationBus<BaseEvent, Metadata, EventState>, IEventBus
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="DaprEventBus"/> class.

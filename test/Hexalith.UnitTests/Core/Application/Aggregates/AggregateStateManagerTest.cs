@@ -59,7 +59,6 @@ public class AggregateStateManagerTest
         AggregateState state = (AggregateState)stateProvider.State["State"];
         _ = state.Should().NotBeNull();
         _ = state.LastCommandDone.Should().Be(commandCount);
-        _ = state.LastEventPublished.Should().Be(0L);
         _ = state.CommandStreamVersion.Should().Be(commandCount);
         _ = state.EventStreamVersion.Should().Be(commandCount);
     }
@@ -103,7 +102,7 @@ public class AggregateStateManagerTest
     private static async Task<(AggregateStateManager StateManager, MemoryStateProvider StateProvider, MemoryEventBus EventBus)> GetInitializedStateManager(int commandCount)
     {
         MemoryStateProvider provider = new();
-        MemoryEventBus eventBus = new();
+        MemoryEventBus eventBus = new(new DateTimeService());
         AggregateStateManager stateManager = new(
             new DummyCommandDispatcher(),
             eventBus,

@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 02-05-2023
 // ***********************************************************************
-// <copyright file="EventState.cs" company="Fiveforty SAS Paris France">
+// <copyright file="RequestState.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -17,33 +17,35 @@
 namespace Hexalith.Application.Abstractions.States;
 
 using System;
+using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Application.Abstractions.Requests;
 using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Domain.Abstractions.Events;
 
 /// <summary>
-/// Class EventState.
+/// Class RequestState.
 /// </summary>
-public class EventState : MessageState<BaseEvent, Metadata>
+[DataContract]
+public class RequestState : MessageState<BaseRequest, Metadata>
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="EventState" /> class.
+    /// Initializes a new instance of the <see cref="RequestState" /> class.
     /// </summary>
-    public EventState()
+    public RequestState()
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="EventState" /> class.
+    /// Initializes a new instance of the <see cref="RequestState" /> class.
     /// </summary>
     /// <param name="receivedDate">The received date.</param>
-    /// <param name="message">The message.</param>
+    /// <param name="message">The request.</param>
     /// <param name="metadata">The metadata.</param>
     [JsonConstructor]
-    public EventState(
+    public RequestState(
         DateTimeOffset? receivedDate,
-        BaseEvent? message,
+        BaseRequest? message,
         Metadata? metadata)
         : base(receivedDate, message, metadata)
     {
