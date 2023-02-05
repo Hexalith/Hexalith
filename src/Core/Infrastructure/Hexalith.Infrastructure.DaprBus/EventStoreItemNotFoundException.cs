@@ -4,12 +4,12 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Infrastructure.DaprEventStore;
-
-using Hexalith.Extensions.Helpers;
+namespace Hexalith.Infrastructure.DaprBus;
 
 using System;
 using System.Runtime.Serialization;
+
+using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// The event store item not found exception.
