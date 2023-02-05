@@ -6,14 +6,14 @@
 
 namespace Hexalith.IntegrationTests.Dynamics365Finance;
 
+using System.Threading.Tasks;
+
 using FluentAssertions;
 
 using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Services.CustomerGroups;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks;
-
-using System.Threading.Tasks;
 
 public class CustomerGroupTest
 {

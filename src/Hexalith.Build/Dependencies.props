@@ -1,9 +1,16 @@
 <Project>
 	<PropertyGroup>
 		<DaprVersion>1.9.*</DaprVersion>
-		<HexalithVersion>0.1.*</HexalithVersion>
+		<MinverVersion>4.3.0</MinverVersion>
 		<SwashbuckleAspNetCoreVersion>6.5.*</SwashbuckleAspNetCoreVersion>
 		<ManDaprSidekickVersion>1.2.*</ManDaprSidekickVersion>
 		<FluentAssertionsVersion>6.9.*</FluentAssertionsVersion>
+		<StyleCopAnalyzersVersion>1.2.0-beta.435</StyleCopAnalyzersVersion>
+		<MicrosoftVisualStudioThreadingAnalyzersVersion>17.5.22</MicrosoftVisualStudioThreadingAnalyzersVersion>
+		<MoqVersion>4.18.4</MoqVersion>
+		<XUnitVersion>2.4.2</XUnitVersion>
+		<XUnitRunnerVisualStudioVersion>2.4.5</XUnitRunnerVisualStudioVersion>
+		<CoverletCollectorVersion>3.2.0</CoverletCollectorVersion>
+		<MicrosoftNETTestSdkVersion>17.4.1</MicrosoftNETTestSdkVersion>
 	</PropertyGroup>
 </Project>

@@ -17,7 +17,7 @@ using Xunit;
 /// <summary>
 /// Class ConditionalValueTests.
 /// </summary>
-public class ConditionalValueTests
+public class ConditionalValueTest
 {
     /// <summary>
     /// Defines the test method to check if an empty conditional value HasValue property is false.

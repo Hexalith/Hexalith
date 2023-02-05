@@ -33,7 +33,7 @@ public class DummyCommand1 : DummyBaseCommand
         return new DummyCommand1("Test123", 35453);
     }
 
-    public Metadata CreateMetadata()
+    public new Metadata CreateMetadata()
     {
         return new Metadata(
             "ID35433",
