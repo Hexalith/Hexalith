@@ -6,6 +6,9 @@
 
 namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Controllers;
 
+using System.Runtime.Serialization;
+using System.Text.Json;
+
 using Ardalis.GuardClauses;
 
 using FluentValidation;
@@ -20,9 +23,6 @@ using Hexalith.Infrastructure.WebApis.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-
-using System.Runtime.Serialization;
-using System.Text.Json;
 
 /// <summary>
 /// Class Dynamics365FinanceEventBindingController.

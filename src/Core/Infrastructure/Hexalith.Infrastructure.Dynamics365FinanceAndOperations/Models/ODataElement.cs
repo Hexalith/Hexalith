@@ -6,10 +6,10 @@
 
 namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 
-using Ardalis.GuardClauses;
-
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
+
+using Ardalis.GuardClauses;
 
 /// <summary>
 /// Dynamics 365 Finance and Operations entity base class.

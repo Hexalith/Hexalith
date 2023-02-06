@@ -132,12 +132,6 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// <value>The logger.</value>
     protected ILogger Logger { get; }
 
-    /// <summary>
-    /// Gets the client.
-    /// </summary>
-    /// <value>The client.</value>
-    private HttpClient Client => _httpClientFactory.CreateClient();
-
     /// <inheritdoc/>
     public Task DoActionAsync(string action, IDictionary<string, object?> parameters, CancellationToken cancellationToken)
     {
@@ -274,16 +268,28 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// </summary>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task representing the asynchronous operation.</returns>
-    private async Task AddRequestHeadersAsync(CancellationToken cancellationToken)
+    private async Task<HttpClient> GetClientAsync(CancellationToken cancellationToken)
     {
-        Client.DefaultRequestHeaders.Clear();
-        Client.DefaultRequestHeaders.Add("OData-MaxVersion", "4.0");
-        Client.DefaultRequestHeaders.Add("OData-Version", "4.0");
-        Client.DefaultRequestHeaders.Add("Prefer", "odata.include-annotations = *");
-        Client.DefaultRequestHeaders.Accept.Add(
+        string token = await _securityContext
+            .AcquireTokenAsync(cancellationToken)
+            .ConfigureAwait(false);
+
+        Logger.LogInformation("Aquired Dynamics 365 FinOps token : {Token}", token);
+        if (string.IsNullOrWhiteSpace(token))
+        {
+            throw new InvalidOperationException("The acquired token is null or empty.");
+        }
+
+        HttpClient client = _httpClientFactory.CreateClient();
+        client.DefaultRequestHeaders.Clear();
+        client.DefaultRequestHeaders.Add("OData-MaxVersion", "4.0");
+        client.DefaultRequestHeaders.Add("OData-Version", "4.0");
+        client.DefaultRequestHeaders.Add("Prefer", "odata.include-annotations = *");
+        client.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("application/json"));
-        Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
             "Bearer",
-            await _securityContext.AcquireTokenAsync(cancellationToken).ConfigureAwait(false));
+            token);
+        return client;
     }
 }

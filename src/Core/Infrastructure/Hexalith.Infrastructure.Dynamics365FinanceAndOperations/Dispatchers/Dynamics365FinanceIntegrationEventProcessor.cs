@@ -6,6 +6,9 @@
 
 namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Dispatchers;
 
+using System.Threading;
+using System.Threading.Tasks;
+
 using Ardalis.GuardClauses;
 
 using Hexalith.Application.Abstractions.Commands;
@@ -19,9 +22,6 @@ using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents;
 
 using Microsoft.Extensions.Logging;
-
-using System.Threading;
-using System.Threading.Tasks;
 
 /// <summary>
 /// Class Dynamics365FinanceIntegrationEventDispatcher.

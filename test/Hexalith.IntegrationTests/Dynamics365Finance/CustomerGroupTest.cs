@@ -55,7 +55,7 @@ public class CustomerGroupTest
         _ = company.Should().NotBeNullOrWhiteSpace();
         CustomerGroupCreate newGroup = new(
             company!,
-            "TEST992",
+            "TEST9920",
             clearingPeriodPaymentTermName: null,
             defaultDimensionDisplayValue: null,
             customerAccountNumberSequence: null,

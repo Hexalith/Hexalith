@@ -6,14 +6,14 @@
 
 namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
 
+using System.Net.Http.Json;
+using System.Text.Json;
+using System.Web;
+
 using Hexalith.Application.Abstractions.Exceptions;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 
 using Microsoft.Extensions.Logging;
-
-using System.Net.Http.Json;
-using System.Text.Json;
-using System.Web;
 
 /// <summary>
 /// Client for Dynamics 365 for finance and operations.
@@ -76,12 +76,12 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     public async Task<IEnumerable<TEntity>> GetAsync(string company, IDictionary<string, object?> filter, CancellationToken cancellationToken)
     {
         string crossCompany = string.Equals(DefaultCompany, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : _crossCompanyQuery + "&";
-        await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
         Uri url = new(_instance, $"{_dataPath}/{TEntity.EntityName()}/?{crossCompany}$filter={HttpUtility.UrlEncode(GetQueryFilter(company, filter))}");
         HttpResponseMessage? response = null;
         try
         {
-            response = await Client.GetAsync(url, cancellationToken).ConfigureAwait(false);
+            HttpClient client = await GetClientAsync(cancellationToken);
+            response = await client.GetAsync(url, cancellationToken).ConfigureAwait(false);
             if (!response.IsSuccessStatusCode)
             {
                 throw new HttpRequestException(
@@ -103,13 +103,16 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
             throw new HttpRequestException(
                     $"The request to '{url.AbsoluteUri}' failed to deserialize :\n{await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false)}");
         }
-        catch
+        catch (Exception ex)
         {
+            string? responseContent = (response == null) ? null : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
             Logger.LogError(
-                "The method call to '{Path}' failed. response content :\n{ResponseContent}",
+                "Can't get {EntityName} list with filter {Filter}. The method call to '{Path}' failed. response content :\n{ResponseContent}",
+                typeof(TEntity).Name,
+                filter,
                 url.AbsoluteUri,
-                response == null ? "No response" : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false));
-            throw;
+                responseContent ?? "No response");
+            throw new GetRequestFailedException<TEntity>(TEntity.EntityName(), filter, responseContent, message: null, ex);
         }
     }
 
@@ -173,13 +176,13 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     public async Task<TEntity> GetSingleAsync(string company, IDictionary<string, object?> keys, CancellationToken cancellationToken)
     {
         string crossCompany = string.Equals(DefaultCompany, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : "?" + _crossCompanyQuery;
-        await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
         string keyFilter = GetEntityFilter(company, keys);
         Uri url = new(_instance, $"{_dataPath}/{TEntity.EntityName()}({HttpUtility.UrlEncode(keyFilter)}){crossCompany}");
         HttpResponseMessage? response = null;
         try
         {
-            response = await Client.GetAsync(url, cancellationToken).ConfigureAwait(false);
+            HttpClient client = await GetClientAsync(cancellationToken);
+            response = await client.GetAsync(url, cancellationToken).ConfigureAwait(false);
             if (!response.IsSuccessStatusCode)
             {
                 throw new HttpRequestException(

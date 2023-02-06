@@ -6,20 +6,19 @@
 
 namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents;
 
+using System;
+using System.Runtime.Serialization;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
 using Ardalis.GuardClauses;
 
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Domain.Abstractions.Events;
 using Hexalith.Extensions.Serialization;
-using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Helpers;
 using Hexalith.Infrastructure.Serialization;
 using Hexalith.Infrastructure.Serialization.Serialization;
-
-using System;
-using System.Runtime.Serialization;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 
 /// <summary>
 /// The dynamics365 business event metadata.
@@ -28,10 +27,10 @@ using System.Text.Json.Serialization;
 public class Dynamics365BusinessEventBase : IMetadata, IEvent
 {
     /// <inheritdoc/>
-    public virtual string AggregateId { get => string.Empty; }
+    public virtual string AggregateId => string.Empty;
 
     /// <inheritdoc/>
-    public virtual string AggregateName { get => string.Empty; }
+    public virtual string AggregateName => string.Empty;
 
     /// <summary>
     /// Gets or sets the business event id.
@@ -209,5 +208,8 @@ public class Dynamics365BusinessEventBase : IMetadata, IEvent
     /// Gets the business command.
     /// </summary>
     /// <returns>The command.</returns>
-    public virtual BaseCommand ToCommand() => throw new NotSupportedException();
+    public virtual BaseCommand ToCommand()
+    {
+        throw new NotSupportedException();
+    }
 }

@@ -6,11 +6,10 @@
 
 namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Dispatchers;
 
-using Hexalith.Application.Abstractions.Events;
-
-using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents;
-
 using System.Threading.Tasks;
+
+using Hexalith.Application.Abstractions.Events;
+using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents;
 
 /// <summary>
 /// The integration event handler interface.

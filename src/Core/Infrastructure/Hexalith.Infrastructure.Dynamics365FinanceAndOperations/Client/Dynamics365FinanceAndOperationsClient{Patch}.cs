@@ -6,15 +6,15 @@
 
 namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
 
+using System.Net.Http.Json;
+using System.Text.Json;
+using System.Web;
+
 using Ardalis.GuardClauses;
 
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 
 using Microsoft.Extensions.Logging;
-
-using System.Net.Http.Json;
-using System.Text.Json;
-using System.Web;
 
 /// <summary>
 /// Client for Dynamics 365 for finance and operations.
@@ -86,12 +86,12 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
         _ = Guard.Against.Null(key);
         _ = Guard.Against.Null(value);
         string crossCompany = string.Equals(DefaultCompany, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : "?" + _crossCompanyQuery;
-        await AddRequestHeadersAsync(cancellationToken).ConfigureAwait(false);
         Uri url = new(_instance, $"{_dataPath}/{TEntity.EntityName()}({HttpUtility.UrlEncode(GetEntityFilter(company, key))}){crossCompany}");
         HttpResponseMessage? response = null;
         try
         {
-            response = await Client
+            HttpClient client = await GetClientAsync(cancellationToken);
+            response = await client
                 .PatchAsJsonAsync(
                     url,
                     value,

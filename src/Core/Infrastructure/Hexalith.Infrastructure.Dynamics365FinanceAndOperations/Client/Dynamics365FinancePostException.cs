@@ -6,11 +6,11 @@
 
 namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
 
-using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
-
 using System;
 using System.Runtime.Serialization;
 using System.Text.Json;
+
+using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 
 /// <summary>
 /// Class Dynamics365FinancePostException.
@@ -52,8 +52,11 @@ public class Dynamics365FinancePostException<TEntity, TCreate> : Exception
     /// <summary>
     /// Initializes a new instance of the <see cref="Dynamics365FinancePostException{TEntity, TCreate}"/> class.
     /// </summary>
+    /// <param name="url">The URL.</param>
     /// <param name="company">The company.</param>
     /// <param name="value">The value.</param>
+    /// <param name="error">The error.</param>
+    /// <param name="message">The message.</param>
     /// <param name="responseContent">Content of the response.</param>
     /// <param name="innerException">The inner exception.</param>
     public Dynamics365FinancePostException(Uri? url, string company, TCreate? value, ErrorResponse? error, string? message, string? responseContent, Exception? innerException)
