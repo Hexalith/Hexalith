@@ -6,12 +6,12 @@
 
 namespace Hexalith.Application.Abstractions.Envelopes;
 
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
+
 using Hexalith.Application.Abstractions.Events;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Domain.Abstractions.Events;
-
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
 
 /// <summary>
 /// Class EventEnvelope.

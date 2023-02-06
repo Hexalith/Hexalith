@@ -6,11 +6,11 @@
 
 namespace Hexalith.Application.StreamStores;
 
-using Hexalith.Application.Abstractions.StreamStores;
-
 using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+
+using Hexalith.Application.Abstractions.StreamStores;
 
 /// <summary>
 /// Persited stream item.
@@ -92,7 +92,6 @@ public class JsonStreamItem : IStreamItem
     /// </summary>
     /// <param name="sequence">The stream item sequence number.</param>
     /// <param name="data">The data object.</param>
-    /// <param name="metadata">The metadata object.</param>
     /// <param name="options">The Json serializer options.</param>
     /// <returns>A new stream item object.</returns>
     public static IStreamItem CreateStreamItem(
@@ -113,7 +112,6 @@ public class JsonStreamItem : IStreamItem
     /// </summary>
     /// <param name="sequence">The stream item sequence number.</param>
     /// <param name="data">The data object.</param>
-    /// <param name="metadata">The metadata object.</param>
     /// <returns>A new stream item object.</returns>
     public static IStreamItem CreateStreamItem(
         long sequence,

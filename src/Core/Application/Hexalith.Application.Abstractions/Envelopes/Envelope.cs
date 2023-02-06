@@ -1,25 +1,40 @@
-﻿// <copyright file="Envelope.cs" company="Fiveforty SAS Paris France">
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Application.Abstractions
+// Author           : Jérôme Piquot
+// Created          : 01-13-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 02-06-2023
+// ***********************************************************************
+// <copyright file="Envelope.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Hexalith.Application.Abstractions.Envelopes;
-
-using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Domain.Abstractions.Messages;
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Application.Abstractions.Metadatas;
+using Hexalith.Domain.Abstractions.Messages;
+
+/// <summary>
+/// Class Envelope.
+/// Implements the <see cref="Hexalith.Application.Abstractions.Envelopes.BaseEnvelope{Hexalith.Domain.Abstractions.Messages.BaseMessage, Hexalith.Application.Abstractions.Metadatas.Metadata}" />.
+/// </summary>
+/// <seealso cref="Hexalith.Application.Abstractions.Envelopes.BaseEnvelope{Hexalith.Domain.Abstractions.Messages.BaseMessage, Hexalith.Application.Abstractions.Metadatas.Metadata}" />
 [DataContract]
 public class Envelope : BaseEnvelope<BaseMessage, Metadata>
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="Envelope"/> class.
+    /// Initializes a new instance of the <see cref="Envelope" /> class.
     /// </summary>
-    /// <param name="message"></param>
-    /// <param name="metadata"></param>
+    /// <param name="message">The message.</param>
+    /// <param name="metadata">The metadata.</param>
     [JsonConstructor]
     public Envelope(BaseMessage message, Metadata metadata)
         : base(message, metadata)

@@ -6,11 +6,11 @@
 
 namespace Hexalith.Application.Abstractions.Events;
 
-using Hexalith.Application.Abstractions.Commands;
-using Hexalith.Domain.Abstractions.Events;
-
 using System.Threading;
 using System.Threading.Tasks;
+
+using Hexalith.Application.Abstractions.Commands;
+using Hexalith.Domain.Abstractions.Events;
 
 /// <summary>
 /// Event handler interface.

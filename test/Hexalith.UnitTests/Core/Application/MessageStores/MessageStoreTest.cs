@@ -15,6 +15,8 @@ namespace Hexalith.UnitTests.Core.Application.MessageStores
     using Hexalith.Application.StreamStores;
     using Hexalith.Extensions.Common;
     using Hexalith.Extensions.Helpers;
+    using Hexalith.Infrastructure.Serialization.States;
+    using Hexalith.UnitTests.Core.Application.Commands;
 
     using Moq;
 
@@ -25,6 +27,34 @@ namespace Hexalith.UnitTests.Core.Application.MessageStores
         private const string _stateName = "TestStream";
         private const string _streamItemId = "TestStreamId-";
         private const string _streamName = "Test";
+
+        [Fact]
+        public async Task Add_and_get_from_serialized_command_state_should_return_same()
+        {
+            StringStateProvider provider = new();
+            MessageStore<CommandState> store = new(provider, _streamName);
+            DummyCommand1 command1 = new("5354323", 123);
+            DummyCommand2 command2 = new("AAAABBCC", 960);
+            CommandState original1 = new(DateTimeOffset.UtcNow, command1, command1.CreateMetadata());
+            CommandState original2 = new(DateTimeOffset.UtcNow, command2, command2.CreateMetadata());
+            _ = await store.AddAsync(original1.IntoArray(), 0, CancellationToken.None);
+            _ = await store.AddAsync(original2.IntoArray(), 1, CancellationToken.None);
+            CommandState result1 = await store.GetAsync(1, CancellationToken.None);
+            CommandState result2 = await store.GetAsync(2, CancellationToken.None);
+            _ = result1.Should().BeEquivalentTo(original1);
+            _ = result2.Should().BeEquivalentTo(original2);
+        }
+
+        [Fact]
+        public async Task Add_and_get_from_serialized_state_should_return_same()
+        {
+            StringStateProvider provider = new();
+            MessageStore<DummyState> store = new(provider, _streamName);
+            DummyState state = new("5354323", 123, "one two three");
+            _ = await store.AddAsync(state.IntoArray(), 0, CancellationToken.None);
+            DummyState result = await store.GetAsync(1, CancellationToken.None);
+            _ = result.Should().BeEquivalentTo(state);
+        }
 
         [Fact]
         public async Task Add_state_should_be_persisted()

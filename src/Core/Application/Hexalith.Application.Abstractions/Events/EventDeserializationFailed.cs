@@ -6,12 +6,12 @@
 
 namespace Hexalith.Application.Abstractions.Events;
 
+using System.Runtime.Serialization;
+
 using Ardalis.GuardClauses;
 
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
-
-using System.Runtime.Serialization;
 
 /// <summary>
 /// Class EventDeserializationFailed.

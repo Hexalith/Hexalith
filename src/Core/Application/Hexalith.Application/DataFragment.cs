@@ -6,10 +6,10 @@
 
 namespace Hexalith.Application;
 
-using Hexalith.Application.Abstractions.StreamStores;
-
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
+
+using Hexalith.Application.Abstractions.StreamStores;
 
 /// <summary>
 /// Data fragment class.

@@ -6,11 +6,11 @@
 
 namespace Hexalith.Infrastructure.DaprHandlers;
 
-using Hexalith.Application.Abstractions.Commands;
-using Hexalith.Application.Abstractions.Metadatas;
-
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
+
+using Hexalith.Application.Abstractions.Commands;
+using Hexalith.Application.Abstractions.Metadatas;
 
 /// <summary>
 /// Class ActorCommandEnvelope.

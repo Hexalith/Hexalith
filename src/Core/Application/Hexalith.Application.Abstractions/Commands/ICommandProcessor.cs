@@ -6,10 +6,10 @@
 
 namespace Hexalith.Application.Abstractions.Commands;
 
-using Hexalith.Application.Abstractions.Metadatas;
-
 using System.Threading;
 using System.Threading.Tasks;
+
+using Hexalith.Application.Abstractions.Metadatas;
 
 /// <summary>
 /// Command processor interface.

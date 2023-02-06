@@ -6,6 +6,12 @@
 
 namespace Hexalith.Application.Events;
 
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+
 using Ardalis.GuardClauses;
 
 using Hexalith.Application.Abstractions.Commands;
@@ -13,12 +19,6 @@ using Hexalith.Application.Abstractions.Events;
 using Hexalith.Domain.Abstractions.Events;
 
 using Microsoft.Extensions.Logging;
-
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 
 /// <summary>
 /// Class DependencyInjectionEventDispatcher.

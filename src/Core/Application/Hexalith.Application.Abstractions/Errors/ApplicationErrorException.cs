@@ -6,10 +6,10 @@
 
 namespace Hexalith.Application.Abstractions.Errors;
 
-using Hexalith.Extensions.Common;
-
 using System;
 using System.Runtime.Serialization;
+
+using Hexalith.Extensions.Common;
 
 /// <summary>
 /// Class ApplicationErrorException.
@@ -37,9 +37,10 @@ public class ApplicationErrorException : Exception
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ApplicationErrorException" /> class.
+    /// Initializes a new instance of the <see cref="ApplicationErrorException"/> class.
     /// </summary>
-    /// <param name="error">The error details.</param>
+    /// <param name="error">The error.</param>
+    /// <param name="innerException">The inner exception.</param>
     public ApplicationErrorException(Error error, Exception? innerException)
         : base(error.Title + Environment.NewLine + error.Detail, innerException)
     {

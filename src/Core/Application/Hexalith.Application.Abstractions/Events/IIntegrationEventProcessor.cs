@@ -6,9 +6,9 @@
 
 namespace Hexalith.Application.Abstractions.Events;
 
-using Hexalith.Domain.Abstractions.Events;
-
 using System.Threading.Tasks;
+
+using Hexalith.Domain.Abstractions.Events;
 
 /// <summary>
 /// The integration event handler interface.

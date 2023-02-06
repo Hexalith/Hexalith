@@ -6,10 +6,10 @@
 
 namespace Hexalith.Application.StreamStores;
 
-using Hexalith.Application.Abstractions.StreamStores;
-
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
+
+using Hexalith.Application.Abstractions.StreamStores;
 
 /// <summary>
 /// Persited stream item.
@@ -18,8 +18,10 @@ using System.Text.Json.Serialization;
 public class StreamItem : IStreamItem
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="StreamItem" /> class.
+    /// Initializes a new instance of the <see cref="StreamItem"/> class.
     /// </summary>
+    /// <param name="sequence">The sequence.</param>
+    /// <param name="message">The message.</param>
     [JsonConstructor]
     public StreamItem(long sequence, IDataFragment message)
     {

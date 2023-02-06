@@ -6,11 +6,11 @@
 
 namespace Hexalith.Application.Abstractions.Commands;
 
-using Hexalith.Domain.Abstractions.Events;
-
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+
+using Hexalith.Domain.Abstractions.Events;
 
 /// <summary>
 /// Command handler interface.
@@ -35,8 +35,11 @@ public interface ICommandHandler
 }
 
 /// <summary>
-/// Command handler interface.
+/// Interface ICommandHandler
+/// Extends the <see cref="Hexalith.Application.Abstractions.Commands.ICommandHandler" />.
 /// </summary>
+/// <typeparam name="TCommand">The type of the t command.</typeparam>
+/// <seealso cref="Hexalith.Application.Abstractions.Commands.ICommandHandler" />
 public interface ICommandHandler<TCommand> : ICommandHandler
     where TCommand : ICommand
 {

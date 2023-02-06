@@ -6,10 +6,10 @@
 
 namespace Hexalith.Application.Abstractions.Metadatas;
 
-using Ardalis.GuardClauses;
-
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
+
+using Ardalis.GuardClauses;
 
 /// <summary>
 /// The context metadata.

@@ -6,11 +6,11 @@
 
 namespace Hexalith.Application.Abstractions.Commands;
 
-using Hexalith.Domain.Abstractions.Events;
-
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+
+using Hexalith.Domain.Abstractions.Events;
 
 /// <summary>
 /// Class CommandHandler.

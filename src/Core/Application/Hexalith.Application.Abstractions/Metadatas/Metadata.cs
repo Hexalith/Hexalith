@@ -6,14 +6,14 @@
 
 namespace Hexalith.Application.Abstractions.Metadatas;
 
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
+
 using Ardalis.GuardClauses;
 
 using Hexalith.Domain.Abstractions.Messages;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Extensions.Serialization;
-
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
 
 /// <summary>
 /// Class Metadata.

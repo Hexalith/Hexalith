@@ -6,11 +6,11 @@
 
 namespace Hexalith.Infrastructure.Serialization;
 
-using Hexalith.Extensions.Serialization;
-
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization.Metadata;
+
+using Hexalith.Extensions.Serialization;
 
 /// <summary>
 /// Default type resolver for <see cref="JsonSerializer"/>. Inherits from base class <see cref="DefaultJsonTypeInfoResolver"/>.

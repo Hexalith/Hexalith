@@ -36,7 +36,7 @@ public class DummyCommand1 : DummyBaseCommand
     public new Metadata CreateMetadata()
     {
         return new Metadata(
-            "ID35433",
+            UniqueIdHelper.GenerateUniqueStringId(),
             this,
             DateTimeOffset.Now,
             new ContextMetadata(

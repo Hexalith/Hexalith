@@ -6,13 +6,13 @@
 
 namespace Hexalith.Infrastructure.Serialization;
 
-using Hexalith.Extensions.Serialization;
-
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
+
+using Hexalith.Extensions.Serialization;
 
 /// <summary>
 /// Options for polymorphic serialization of a base type.
