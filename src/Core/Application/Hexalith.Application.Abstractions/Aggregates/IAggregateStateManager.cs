@@ -46,4 +46,12 @@ public interface IAggregateStateManager
         ResiliencyPolicy resiliencyPolicy,
         Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder,
         CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Gets the command count asynchronous.
+    /// </summary>
+    /// <param name="stateProvider">The state provider.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task&lt;System.Int64&gt;.</returns>
+    Task<long> GetCommandCountAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken);
 }

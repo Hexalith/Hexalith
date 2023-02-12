@@ -23,24 +23,46 @@ public record ActorCommandEnvelope
     /// <summary>
     /// Initializes a new instance of the <see cref="ActorCommandEnvelope" /> class.
     /// </summary>
-    /// <param name="command">The command.</param>
-    /// <param name="metadata">The metadata.</param>
+    /// <param name="commands">The command.</param>
+    /// <param name="metadatas">The metadata.</param>
     [JsonConstructor]
-    public ActorCommandEnvelope(BaseCommand command, Metadata metadata)
+    public ActorCommandEnvelope(BaseCommand[] commands, Metadata[] metadatas)
     {
-        Command = command;
-        Metadata = metadata;
+        Commands = commands;
+        Metadatas = metadatas;
+        if (Commands.Length != Metadatas.Length)
+        {
+            throw new ArgumentException("Command and Metadata arrays must have the same number of elements.", nameof(metadatas));
+        }
+
+        if (Commands.Length == 0)
+        {
+            throw new ArgumentException("The command array must contain elements.", nameof(commands));
+        }
+
+        foreach (BaseCommand? command in commands.Skip(1))
+        {
+            if (command.AggregateName != commands[0].AggregateName)
+            {
+                throw new ArgumentException("All commands must be for the same aggregate.", nameof(commands));
+            }
+
+            if (command.AggregateId != commands[0].AggregateId)
+            {
+                throw new ArgumentException("All commands must be for the same aggregate identifier.", nameof(commands));
+            }
+        }
     }
 
     /// <summary>
     /// Gets the command.
     /// </summary>
     /// <value>The command.</value>
-    public BaseCommand Command { get; }
+    public BaseCommand[] Commands { get; }
 
     /// <summary>
     /// Gets the metadata.
     /// </summary>
     /// <value>The metadata.</value>
-    public Metadata Metadata { get; }
+    public Metadata[] Metadatas { get; }
 }

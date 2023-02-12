@@ -6,16 +6,18 @@
 
 namespace Hexalith.Infrastructure.DaprHandlers;
 
-using System.Reflection;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
 using Ardalis.GuardClauses;
 
+using Dapr.Actors;
 using Dapr.Actors.Client;
 
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
+using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class ActorsCommandProcessor.
@@ -41,64 +43,40 @@ public abstract class ActorsCommandProcessor : ICommandProcessor
     /// <inheritdoc/>
     public async Task SubmitAsync(BaseCommand command, Metadata metadata, CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(command);
-        ArgumentException.ThrowIfNullOrEmpty(command.AggregateName);
-        ArgumentException.ThrowIfNullOrEmpty(command.AggregateId);
+        await SubmitAsync(command.IntoArray(), metadata, cancellationToken);
+    }
+
+    /// <inheritdoc/>
+    public async Task SubmitAsync(IEnumerable<BaseCommand> commands, Metadata metadata, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(commands);
+        if (!commands.Any())
+        {
+            throw new InvalidOperationException("The list of commands is empty.");
+        }
+
+        BaseCommand command = commands.First();
 
         string actorName = GetActorName(command);
-        string methodName = GetActorMethodName(command);
-
-        ActorProxy actor = _actorProxy.Create(
-            new Dapr.Actors.ActorId(command.AggregateId),
-            actorName);
-
-        IEnumerable<MethodInfo> methods = typeof(ActorProxy)
-            .GetMethods()
-            .Where(x =>
-                x.Name == nameof(ActorProxy.InvokeMethodAsync) &&
-                x.GetParameters().Length == 3 &&
-                x.ContainsGenericParameters == true &&
-                x.GetGenericArguments().Length == 1);
-        MethodInfo? mi = methods.SingleOrDefault();
-        if (mi == null)
+        List<Metadata> metadatas = new() { metadata };
+        if (commands.Count() > 1)
         {
-            if (methods.Count() == 0)
-            {
-                throw new InvalidOperationException($"The method '{nameof(ActorProxy.InvokeMethodAsync)}' not found on {nameof(ActorProxy)}.");
-            }
-            else
-            {
-                throw new InvalidOperationException($"Duplicate method '{nameof(ActorProxy.InvokeMethodAsync)}' found on {nameof(ActorProxy)}.");
-            }
+            metadatas
+                .AddRange(commands
+                    .Skip(1)
+                    .Select(p => Metadata.CreateNew(p, metadata)));
         }
 
-        MethodInfo? generic = mi?.MakeGenericMethod(typeof(ActorCommandEnvelope));
-
-        if (generic == null)
-        {
-            throw new InvalidOperationException($"Could not make the generic method '{nameof(ActorProxy)}.{nameof(ActorProxy.InvokeMethodAsync)}<{nameof(ActorCommandEnvelope)}>'.");
-        }
-
-        if (generic.Invoke(
-            actor,
-            new object[]
-            {
-                methodName,
-                new ActorCommandEnvelope(command, metadata),
-                cancellationToken,
-            })
-            is not Task task)
-        {
-            throw new InvalidOperationException($"The actor {actorName} method '{methodName}' should have a return value of type Task.");
-        }
+        ActorCommandEnvelope envelope = new(commands.ToArray(), metadatas.ToArray());
 
         try
         {
-            await task;
+            ICommandProcessorActor actor = _actorProxy.CreateActorProxy<ICommandProcessorActor>(new ActorId(command.AggregateId), actorName);
+            await actor.DoAsync(envelope);
         }
         catch (Exception e)
         {
-            throw new InvalidOperationException($"Fail to call actor {actorName} method '{methodName}'.", e);
+            throw new InvalidOperationException($"Fail to call actor {actorName} method '{nameof(ICommandProcessorActor.DoAsync)}'.", e);
         }
     }
 

@@ -20,8 +20,8 @@ using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Application.Abstractions.Notifications;
 using Hexalith.Application.Abstractions.Metadatas;
+using Hexalith.Application.Abstractions.Notifications;
 
 /// <summary>
 /// Class NotificationState.

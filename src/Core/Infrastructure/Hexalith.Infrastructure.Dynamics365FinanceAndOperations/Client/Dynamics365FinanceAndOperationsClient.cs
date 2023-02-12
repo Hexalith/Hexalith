@@ -274,7 +274,6 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
             .AcquireTokenAsync(cancellationToken)
             .ConfigureAwait(false);
 
-        Logger.LogInformation("Aquired Dynamics 365 FinOps token : {Token}", token);
         if (string.IsNullOrWhiteSpace(token))
         {
             throw new InvalidOperationException("The acquired token is null or empty.");

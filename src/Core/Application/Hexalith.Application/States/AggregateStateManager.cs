@@ -167,6 +167,18 @@ public class AggregateStateManager : IAggregateStateManager
         }
     }
 
+    /// <summary>
+    /// Get command count as an asynchronous operation.
+    /// </summary>
+    /// <param name="stateProvider">The state provider.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>A Task&lt;System.Int64&gt; representing the asynchronous operation.</returns>
+    public async Task<long> GetCommandCountAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken)
+    {
+        AggregateState state = await GetStateAsync(stateProvider, cancellationToken);
+        return state.CommandStreamVersion;
+    }
+
     /// <summary>Do next command as an asynchronous operation.</summary>
     /// <param name="stateProvider">The state store provider.</param>
     /// <param name="resiliencyPolicy">The resiliency policy.</param>

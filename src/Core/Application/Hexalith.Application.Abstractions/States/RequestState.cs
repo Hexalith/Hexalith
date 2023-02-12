@@ -20,8 +20,8 @@ using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Application.Abstractions.Requests;
 using Hexalith.Application.Abstractions.Metadatas;
+using Hexalith.Application.Abstractions.Requests;
 
 /// <summary>
 /// Class RequestState.

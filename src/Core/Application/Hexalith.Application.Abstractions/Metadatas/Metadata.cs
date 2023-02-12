@@ -1,8 +1,18 @@
-﻿// <copyright file="Metadata.cs" company="Fiveforty SAS Paris France">
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Application.Abstractions
+// Author           : Jérôme Piquot
+// Created          : 01-13-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 02-06-2023
+// ***********************************************************************
+// <copyright file="Metadata.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Hexalith.Application.Abstractions.Metadatas;
 
@@ -125,6 +135,22 @@ public class Metadata : IMetadata
             UniqueIdHelper.GenerateUniqueStringId(),
             message,
             date,
+            new(metadata.Context),
+            metadata.Scopes);
+    }
+
+    /// <summary>
+    /// Creates the new.
+    /// </summary>
+    /// <param name="message">The message.</param>
+    /// <param name="metadata">The metadata.</param>
+    /// <returns>Metadata.</returns>
+    public static Metadata CreateNew(IMessage message, IMetadata metadata)
+    {
+        return new Metadata(
+            UniqueIdHelper.GenerateUniqueStringId(),
+            message,
+            metadata.Message.Date,
             new(metadata.Context),
             metadata.Scopes);
     }
