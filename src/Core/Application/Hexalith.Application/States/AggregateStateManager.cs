@@ -98,31 +98,32 @@ public class AggregateStateManager : IAggregateStateManager
     /// Add command as an asynchronous operation.
     /// </summary>
     /// <param name="stateProvider">The state provider.</param>
-    /// <param name="command">The command.</param>
-    /// <param name="metadata">The metadata.</param>
+    /// <param name="commands">The commands.</param>
+    /// <param name="metadatas">The metadatas.</param>
     /// <param name="registerReminder">The register reminder.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task representing the asynchronous operation.</returns>
     /// <exception cref="System.ArgumentNullException">Argument null.</exception>
     public async Task AddCommandAsync(
         IStateStoreProvider stateProvider,
-        BaseCommand command,
-        Metadata metadata,
+        BaseCommand[] commands,
+        Metadata[] metadatas,
         Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(stateProvider);
-        ArgumentNullException.ThrowIfNull(metadata);
-        ArgumentNullException.ThrowIfNull(metadata.Message);
-        ArgumentNullException.ThrowIfNull(command);
-        ArgumentException.ThrowIfNullOrEmpty(metadata.Message.Id);
+        ArgumentNullException.ThrowIfNull(metadatas);
+        ArgumentNullException.ThrowIfNull(commands);
         AggregateState state = await GetStateAsync(stateProvider, cancellationToken);
-        MessageStore<CommandState> commands = new(stateProvider, CommandsStreamName);
-        long version = await commands.AddAsync(
-            new CommandState(
-            _dateTimeService.UtcNow,
-            command,
-            metadata).IntoArray(),
+        MessageStore<CommandState> commandStore = new(stateProvider, CommandsStreamName);
+        List<CommandState> states = new();
+        for (int i = 0; i < commands.Length; i++)
+        {
+            states.Add(new CommandState(_dateTimeService.UtcNow, commands[i], metadatas[i]));
+        }
+
+        long version = await commandStore.AddAsync(
+            states,
             state.CommandStreamVersion,
             cancellationToken);
         await SetReminderAsync(TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(15), registerReminder);
@@ -267,6 +268,14 @@ public class AggregateStateManager : IAggregateStateManager
         }
     }
 
+    private static async Task SetReminderAsync(
+        TimeSpan next,
+        TimeSpan retry,
+        Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder)
+    {
+        await registerReminder("Continue", Array.Empty<byte>(), next, retry);
+    }
+
     private async Task<AggregateState> GetStateAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken)
     {
         ConditionalValue<AggregateState> result = await stateProvider.TryGetStateAsync<AggregateState>(StateName, cancellationToken);
@@ -288,13 +297,5 @@ public class AggregateStateManager : IAggregateStateManager
     {
         await stateProvider.SetStateAsync(StateName, state, CancellationToken.None);
         await stateProvider.SaveChangesAsync(cancellationToken);
-    }
-
-    private async Task SetReminderAsync(
-        TimeSpan next,
-        TimeSpan retry,
-        Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder)
-    {
-        await registerReminder("Continue", Array.Empty<byte>(), next, retry);
     }
 }

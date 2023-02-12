@@ -38,9 +38,9 @@ public interface ICommandProcessor
     /// <summary>
     /// Submits the asynchronous.
     /// </summary>
-    /// <param name="command">The command.</param>
+    /// <param name="commands">The command.</param>
     /// <param name="metadata">The metadata.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
-    Task SubmitAsync(IEnumerable<BaseCommand> command, Metadata metadata, CancellationToken cancellationToken);
+    Task SubmitAsync(IEnumerable<BaseCommand> commands, Metadata metadata, CancellationToken cancellationToken);
 }

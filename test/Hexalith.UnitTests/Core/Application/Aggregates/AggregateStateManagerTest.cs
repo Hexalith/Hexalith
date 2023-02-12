@@ -112,8 +112,8 @@ public class AggregateStateManagerTest
             (BaseCommand command, Metadata meta) = GetCommand(i);
             await stateManager.AddCommandAsync(
                 provider,
-                command,
-                meta,
+                command.IntoArray(),
+                meta.IntoArray(),
                 async (name, data, start, period) => await Task.CompletedTask,
                 CancellationToken.None);
         }

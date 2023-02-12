@@ -21,15 +21,15 @@ public interface IAggregateStateManager
     /// Adds the command.
     /// </summary>
     /// <param name="stateProvider">The state provider.</param>
-    /// <param name="command">The command.</param>
-    /// <param name="metadata">The metadata.</param>
+    /// <param name="commands">The command.</param>
+    /// <param name="metadatas">The metadata.</param>
     /// <param name="registerReminder">The register reminder.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
     Task AddCommandAsync(
         IStateStoreProvider stateProvider,
-        BaseCommand command,
-        Metadata metadata,
+        BaseCommand[] commands,
+        Metadata[] metadatas,
         Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder,
         CancellationToken cancellationToken);
 
