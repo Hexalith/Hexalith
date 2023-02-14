@@ -64,6 +64,10 @@ public class ActorCommandEnvelope : IJsonOnSerializing, IJsonOnDeserialized
     }
 
     [OnSerializing]
+    void OnSerializing(StreamingContext context)
+    {
+        OnSerializing();
+    }
     public void OnSerializing()
     {
         var options = new JsonSerializerOptions().AddPolymorphism();
@@ -72,6 +76,10 @@ public class ActorCommandEnvelope : IJsonOnSerializing, IJsonOnDeserialized
     }
 
     [OnDeserialized]
+    void OnDeserialized(StreamingContext context)
+    {
+        OnDeserialized();
+    }
     public void OnDeserialized()
     {
         var options = new JsonSerializerOptions().AddPolymorphism();

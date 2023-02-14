@@ -48,4 +48,15 @@ public class ActorCommandEnvelopeTest
         var result = JsonSerializer.Deserialize<ActorCommandEnvelope>(json);
         result.Should().BeEquivalentTo(envelope);
     }
+
+    [Fact]
+    public void Envelope_should_be_data_contract_serializable()
+    {
+        var c1 = DummyCommand1.Create();
+        var c2 = DummyCommand2.Create();
+        var envelope = new ActorCommandEnvelope(
+            new BaseCommand[] { c1, c2 },
+            new Metadata[] { c1.CreateMetadata(), c2.CreateMetadata() });
+        envelope.Should().BeDataContractSerializable();
+    }
 }
