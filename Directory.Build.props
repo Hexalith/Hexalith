@@ -4,9 +4,11 @@
 		<Authors>Jérôme Piquot</Authors>
 		<Company>Fiveforty</Company>
 		<Product>Hexalith</Product>
+		<PackageTags>Hexalith;Dapr</PackageTags>
 		<Description>Hexalith is a set of libraries to build a micro-service architecture.</Description>
 		<RepositoryUrl>https://github.com/Hexalith/Hexalith</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	</PropertyGroup>
 	<PropertyGroup>
 		<ImplicitUsings>enable</ImplicitUsings>

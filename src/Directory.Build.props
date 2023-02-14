@@ -10,7 +10,7 @@
 		<DebugSymbols>true</DebugSymbols>
 		<DebugType>embedded</DebugType>
 	</PropertyGroup>
-	<ItemGroup>
+	<ItemGroup  Condition="'$(BuildingInsideVisualStudio)' != 'true' and '$(BuildingByReSharper)' != 'true'">
 		<PackageReference Include="MinVer" Version="$(MinverVersion)">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
@@ -21,6 +21,9 @@
 			<_Parameter1>Hexalith.Tests</_Parameter1>
 		</AssemblyAttribute>
 	</ItemGroup>
+	<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' == 'true' or '$(BuildingByReSharper)' == 'true'">
+		<Version>1.0.0-local</Version>
+	</PropertyGroup>
 	<Target Name="AssemblyVersionTarget" AfterTargets="MinVer" Condition="'$(MinVerVersion)'!='' AND '$(BuildNumber)' != ''">
 		<PropertyGroup>
 			<FileVersion>$(MinVerMajor).$(MinVerMinor).$(MinVerPatch).$(BuildNumber)</FileVersion>

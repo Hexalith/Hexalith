@@ -6,10 +6,10 @@
 
 namespace Hexalith.TestMocks;
 
+using System.Net;
+
 using Moq;
 using Moq.Protected;
-
-using System.Net;
 
 /// <summary>
 /// Helper class to build a <see cref="IHttpClientFactory"/> mock.
@@ -18,6 +18,10 @@ public class HttpClientFactoryBuilder
 {
     private HttpMessageHandler? _httpHandler;
 
+    /// <summary>
+    /// Builds this instance.
+    /// </summary>
+    /// <returns>IHttpClientFactory.</returns>
     public IHttpClientFactory Build()
     {
         return BuildMock().Object;

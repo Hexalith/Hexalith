@@ -5,6 +5,7 @@
 		<IsPackable>false</IsPackable>
 		<Nullable>disable</Nullable>
 		<NoWarn>$(NoWarn);SA1600;VSTHRD200,SA1402</NoWarn>
+		<OutputPath>$(RepoRoot)bin\$(Configuration)\test\$(MSBuildProjectName)\</OutputPath>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="FluentAssertions" Version="$(FluentAssertionsVersion)" />
@@ -19,5 +20,9 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="$(MicrosoftNETTestSdkVersion)" />
+	</ItemGroup>
+	<!-- Used to annotate PR with test failures: https://github.com/Tyrrrz/GitHubActionsTestLogger -->
+	<ItemGroup>
+		<PackageReference Include="GitHubActionsTestLogger" Version="1.1.2" />
 	</ItemGroup>
 </Project>

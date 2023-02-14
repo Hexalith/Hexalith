@@ -14,9 +14,9 @@
 
 namespace Hexalith.Domain.Abstractions.Events;
 
-using Hexalith.Domain.Abstractions.Messages;
-
 using System.Runtime.Serialization;
+
+using Hexalith.Domain.Abstractions.Messages;
 
 /// <summary>
 /// Base class for business events.

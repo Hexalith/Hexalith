@@ -6,9 +6,9 @@
 
 namespace Hexalith.Extensions.Helpers;
 
-using Ardalis.GuardClauses;
-
 using System;
+
+using Ardalis.GuardClauses;
 
 /// <summary>
 /// Class DateHelper.
