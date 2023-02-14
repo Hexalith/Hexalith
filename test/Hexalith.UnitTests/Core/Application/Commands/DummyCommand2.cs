@@ -24,7 +24,10 @@ public class DummyCommand2 : DummyBaseCommand
     public DummyCommand2()
     {
     }
-
+    public static DummyCommand2 Create()
+    {
+        return new DummyCommand2("Test123", 35453);
+    }
     public int Value2 { get; }
 
     protected override string DefaultAggregateId()

@@ -7,10 +7,12 @@
 namespace Hexalith.Infrastructure.DaprHandlers;
 
 using System.Runtime.Serialization;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
+using Hexalith.Infrastructure.Serialization.Helpers;
 
 /// <summary>
 /// Class ActorCommandEnvelope.
@@ -18,14 +20,21 @@ using Hexalith.Application.Abstractions.Metadatas;
 /// </summary>
 /// <seealso cref="System.IEquatable{Hexalith.Infrastructure.DaprHandlers.ActorCommandEnvelope}" />
 [DataContract]
-public record ActorCommandEnvelope
+public class ActorCommandEnvelope : IJsonOnSerializing, IJsonOnDeserialized
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="ActorCommandEnvelope" /> class.
     /// </summary>
     /// <param name="commands">The command.</param>
     /// <param name="metadatas">The metadata.</param>
+    [Obsolete("Only used for serialization", true)]
     [JsonConstructor]
+    public ActorCommandEnvelope(string[]? commandsJson, string[]? metadatasJson)
+    {
+        CommandsJson = commandsJson;
+        MetadatasJson = metadatasJson;
+    }
+
     public ActorCommandEnvelope(BaseCommand[] commands, Metadata[] metadatas)
     {
         Commands = commands;
@@ -54,15 +63,47 @@ public record ActorCommandEnvelope
         }
     }
 
+    [OnSerializing]
+    public void OnSerializing()
+    {
+        var options = new JsonSerializerOptions().AddPolymorphism();
+        CommandsJson = Commands.Select (p => JsonSerializer.Serialize(p, options)).ToArray();
+        MetadatasJson = Metadatas.Select(p => JsonSerializer.Serialize(p, options)).ToArray();
+    }
+
+    [OnDeserialized]
+    public void OnDeserialized()
+    {
+        var options = new JsonSerializerOptions().AddPolymorphism();
+        Commands = CommandsJson == null
+            ? Array.Empty<BaseCommand>()
+            : CommandsJson.Select(p => JsonSerializer.Deserialize<BaseCommand>(p, options)!).ToArray();
+        Metadatas = MetadatasJson == null
+            ? Array.Empty<Metadata>()
+            : MetadatasJson.Select(p => JsonSerializer.Deserialize<Metadata>(p, options)!).ToArray();
+    }
+
     /// <summary>
     /// Gets the command.
     /// </summary>
     /// <value>The command.</value>
-    public BaseCommand[] Commands { get; }
+    [JsonIgnore]
+    [IgnoreDataMember]
+    public BaseCommand[] Commands { get; private set; }
 
     /// <summary>
     /// Gets the metadata.
     /// </summary>
     /// <value>The metadata.</value>
-    public Metadata[] Metadatas { get; }
+    [JsonIgnore]
+    [IgnoreDataMember]
+    public Metadata[] Metadatas { get; private set; }
+
+    [DataMember(Name = nameof(Commands))]
+    [JsonPropertyName(nameof(Commands))]
+    public string[]? CommandsJson { get; private set;}
+
+    [DataMember(Name = nameof(Metadatas))]
+    [JsonPropertyName(nameof(Metadatas))]
+    public string[]? MetadatasJson { get; private set; }
 }
