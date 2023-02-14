@@ -18,6 +18,7 @@ using Dapr.Actors.Client;
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Extensions.Helpers;
+using Hexalith.Infrastructure.DaprHandlers.Helpers;
 
 /// <summary>
 /// Class ActorsCommandProcessor.
@@ -71,7 +72,7 @@ public abstract class ActorsCommandProcessor : ICommandProcessor
 
         try
         {
-            ICommandProcessorActor actor = _actorProxy.CreateActorProxy<ICommandProcessorActor>(new ActorId(command.AggregateId), actorName);
+            ICommandProcessorActor actor = _actorProxy.CreateActorProxy<ICommandProcessorActor>(command.AggregateId.ToActorId(), actorName);
             await actor.DoAsync(envelope);
         }
         catch (Exception e)

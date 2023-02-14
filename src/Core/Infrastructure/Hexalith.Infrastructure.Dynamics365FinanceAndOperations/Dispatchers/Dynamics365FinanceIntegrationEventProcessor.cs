@@ -70,13 +70,10 @@ public class Dynamics365FinanceIntegrationEventProcessor : DependencyInjectionEv
                 commands = @event.ToCommand().IntoArray();
             }
 
-            foreach (BaseCommand command in commands)
-            {
-                await _commandProcessor.SubmitAsync(
-                    command,
-                    Metadata.CreateNew(command, @event, _dateTimeService.UtcNow),
-                    cancellationToken);
-            }
+            await _commandProcessor.SubmitAsync(
+                commands,
+                Metadata.CreateNew(commands.First(), @event, _dateTimeService.UtcNow),
+                cancellationToken);
         }
         catch (Exception ex)
         {
