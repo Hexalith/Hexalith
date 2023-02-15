@@ -33,6 +33,20 @@ public static class ActorHelper
     public static ActorId ToUrlEncodedActorId(this string id)
     {
         ArgumentException.ThrowIfNullOrEmpty(id);
-        return new ActorId(HttpUtility.UrlEncode(id).Replace("+", "%20"));
+        return id.Contains("~")
+            ? throw new ArgumentException($"The '~' character is not supported.")
+            : new ActorId(HttpUtility.UrlEncode(id.Replace(" ", "~")));
+    }
+
+    /// <summary>
+    /// Converts to decoded string.
+    /// </summary>
+    /// <param name="actorId">The actor identifier.</param>
+    /// <returns>System.String.</returns>
+    /// <exception cref="System.ArgumentNullException">Null argument.</exception>
+    public static string ToDecodedString(this ActorId actorId)
+    {
+        ArgumentNullException.ThrowIfNull(actorId);
+        return HttpUtility.UrlDecode(actorId.GetId()).Replace("~", " ");
     }
 }
