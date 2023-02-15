@@ -14,6 +14,7 @@ using FluentAssertions;
 using Hexalith.Extensions.Serialization;
 using Hexalith.Infrastructure.Serialization;
 
+#pragma warning disable SA1649 // File name should match first type name
 public interface ITest
 {
     string MyProp1 { get; set; }

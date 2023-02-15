@@ -16,7 +16,7 @@
 
 namespace Hexalith.Infrastructure.DaprRuntime.Helpers;
 using System;
-using System.Net;
+using System.Web;
 
 using Dapr.Actors;
 
@@ -33,6 +33,6 @@ public static class ActorHelper
     public static ActorId ToUrlEncodedActorId(this string id)
     {
         ArgumentException.ThrowIfNullOrEmpty(id);
-        return new ActorId(WebUtility.UrlEncode(id));
+        return new ActorId(HttpUtility.UrlEncode(id).Replace("+", "%20"));
     }
 }

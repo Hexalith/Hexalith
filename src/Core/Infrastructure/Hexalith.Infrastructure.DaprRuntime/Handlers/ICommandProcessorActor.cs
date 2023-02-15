@@ -33,4 +33,10 @@ public interface ICommandProcessorActor : IActor
     /// <param name="envelope">The envelope.</param>
     /// <returns>Task.</returns>
     Task DoAsync(ActorCommandEnvelope envelope);
+
+    /// <summary>
+    /// Determines whether has commands.
+    /// </summary>
+    /// <returns>Returns true is has commands, else false.</returns>
+    Task<bool> HasCommandsAsync();
 }
