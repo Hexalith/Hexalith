@@ -23,6 +23,7 @@ using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.DaprBus;
 using Hexalith.Infrastructure.DaprBus.Configuration;
 using Hexalith.Infrastructure.DaprHandlers.Helpers;
+using Hexalith.Infrastructure.DaprRuntime.Buses;
 using Hexalith.Infrastructure.Serialization;
 using Hexalith.Infrastructure.Serialization.Helpers;
 
@@ -34,7 +35,7 @@ using Microsoft.Extensions.DependencyInjection;
 /// </summary>
 public static class HexalithWebApi
 {
-    /// <summary>Creates the hexalith application.</summary>
+    /// <summary>Creates the Hexalith application.</summary>
     /// <param name="applicationName">Name of the application.</param>
     /// <param name="version">The API version, for example 'v1'.</param>
     /// <param name="debugInVisualStudio">If true, runs the application inside Visual Studio to simplify debugging.</param>

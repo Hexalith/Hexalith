@@ -4,7 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Infrastructure.DaprAggregateActor;
+namespace Hexalith.Infrastructure.DaprRuntime.Aggregates;
 
 using System.Threading;
 using System.Threading.Tasks;
@@ -62,7 +62,7 @@ public class ActorStateStoreProvider : IStateStoreProvider
     /// <inheritdoc/>
     public async Task SetStateAsync<T>(string key, T value, CancellationToken cancellationToken)
     {
-        await _actorStateManager.SetStateAsync<T>(key, value, cancellationToken);
+        await _actorStateManager.SetStateAsync(key, value, cancellationToken);
     }
 
     /// <inheritdoc/>

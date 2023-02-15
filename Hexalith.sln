@@ -94,19 +94,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.Serialization", "src\Core\Infrastructure\Hexalith.Infrastructure.Serialization\Hexalith.Infrastructure.Serialization.csproj", "{B207766E-3CE0-4DF5-B33B-367C9E8AF4EB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.DaprBus", "src\Core\Infrastructure\Hexalith.Infrastructure.DaprBus\Hexalith.Infrastructure.DaprBus.csproj", "{89262137-7F93-48BC-9F6F-1872E138DA28}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.UnitTests", "test\Hexalith.UnitTests\Hexalith.UnitTests.csproj", "{F0F792F3-8FB6-478F-AA87-CE238038269F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.IntegrationTests", "test\Hexalith.IntegrationTests\Hexalith.IntegrationTests.csproj", "{B6ECE592-7035-4CFD-86A1-152C2ADE0416}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.DaprMessageStore", "src\Core\Infrastructure\Hexalith.Infrastructure.DaprMessageStore\Hexalith.Infrastructure.DaprMessageStore.csproj", "{CE36A95D-7ACE-4AE7-BABB-35AEF850D898}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.WebApis", "src\Core\Infrastructure\Hexalith.Infrastructure.WebApis\Hexalith.Infrastructure.WebApis.csproj", "{00897BC6-2258-41E6-9246-B9EDB67A225B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.DaprHandlers", "src\Core\Infrastructure\Hexalith.Infrastructure.DaprHandlers\Hexalith.Infrastructure.DaprHandlers.csproj", "{C3A5EC36-6429-4411-92FF-20D8F773983F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.DaprAggregateActor", "src\Core\Infrastructure\Hexalith.Infrastructure.DaprAggregateActor\Hexalith.Infrastructure.DaprAggregateActor.csproj", "{BEEFBC0D-08C8-494B-ADFC-97A13379AE8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.DaprRuntime", "src\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime\Hexalith.Infrastructure.DaprRuntime.csproj", "{F92430D4-DCA2-4FDC-B902-FA053BCB8037}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -158,10 +152,6 @@ Global
 		{B207766E-3CE0-4DF5-B33B-367C9E8AF4EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B207766E-3CE0-4DF5-B33B-367C9E8AF4EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B207766E-3CE0-4DF5-B33B-367C9E8AF4EB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{89262137-7F93-48BC-9F6F-1872E138DA28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{89262137-7F93-48BC-9F6F-1872E138DA28}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{89262137-7F93-48BC-9F6F-1872E138DA28}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{89262137-7F93-48BC-9F6F-1872E138DA28}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F0F792F3-8FB6-478F-AA87-CE238038269F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F0F792F3-8FB6-478F-AA87-CE238038269F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F0F792F3-8FB6-478F-AA87-CE238038269F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -170,22 +160,14 @@ Global
 		{B6ECE592-7035-4CFD-86A1-152C2ADE0416}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6ECE592-7035-4CFD-86A1-152C2ADE0416}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6ECE592-7035-4CFD-86A1-152C2ADE0416}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CE36A95D-7ACE-4AE7-BABB-35AEF850D898}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CE36A95D-7ACE-4AE7-BABB-35AEF850D898}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CE36A95D-7ACE-4AE7-BABB-35AEF850D898}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CE36A95D-7ACE-4AE7-BABB-35AEF850D898}.Release|Any CPU.Build.0 = Release|Any CPU
 		{00897BC6-2258-41E6-9246-B9EDB67A225B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{00897BC6-2258-41E6-9246-B9EDB67A225B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00897BC6-2258-41E6-9246-B9EDB67A225B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00897BC6-2258-41E6-9246-B9EDB67A225B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C3A5EC36-6429-4411-92FF-20D8F773983F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C3A5EC36-6429-4411-92FF-20D8F773983F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C3A5EC36-6429-4411-92FF-20D8F773983F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C3A5EC36-6429-4411-92FF-20D8F773983F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BEEFBC0D-08C8-494B-ADFC-97A13379AE8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BEEFBC0D-08C8-494B-ADFC-97A13379AE8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BEEFBC0D-08C8-494B-ADFC-97A13379AE8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BEEFBC0D-08C8-494B-ADFC-97A13379AE8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F92430D4-DCA2-4FDC-B902-FA053BCB8037}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F92430D4-DCA2-4FDC-B902-FA053BCB8037}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F92430D4-DCA2-4FDC-B902-FA053BCB8037}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F92430D4-DCA2-4FDC-B902-FA053BCB8037}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -207,13 +189,10 @@ Global
 		{155E85F0-978B-4916-AB3C-741266DE7BE3} = {AA983AFF-9CBC-4F2A-98E3-3CACA5039C61}
 		{8CE66AE1-932A-4E2C-B8E5-4FA627ACA2D7} = {5A9735A3-CEE9-4E50-B2FD-54F0BF402002}
 		{B207766E-3CE0-4DF5-B33B-367C9E8AF4EB} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
-		{89262137-7F93-48BC-9F6F-1872E138DA28} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{F0F792F3-8FB6-478F-AA87-CE238038269F} = {3BE1D646-272F-4F96-931E-D1BA781583B4}
 		{B6ECE592-7035-4CFD-86A1-152C2ADE0416} = {3BE1D646-272F-4F96-931E-D1BA781583B4}
-		{CE36A95D-7ACE-4AE7-BABB-35AEF850D898} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{00897BC6-2258-41E6-9246-B9EDB67A225B} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
-		{C3A5EC36-6429-4411-92FF-20D8F773983F} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
-		{BEEFBC0D-08C8-494B-ADFC-97A13379AE8B} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
+		{F92430D4-DCA2-4FDC-B902-FA053BCB8037} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09CBB595-8996-4C7F-9C48-4C58AD9293AC}

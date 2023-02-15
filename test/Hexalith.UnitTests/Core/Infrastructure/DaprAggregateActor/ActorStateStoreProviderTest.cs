@@ -11,7 +11,7 @@ using Dapr.Actors.Runtime;
 using FluentAssertions;
 
 using Hexalith.Application.Abstractions.Commands;
-using Hexalith.Infrastructure.DaprAggregateActor;
+using Hexalith.Infrastructure.DaprRuntime.Aggregates;
 using Hexalith.UnitTests.Core.Application.Commands;
 
 using Moq;

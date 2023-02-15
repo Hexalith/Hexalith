@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Infrastructure.DaprBus;
+namespace Hexalith.Infrastructure.DaprRuntime.Buses;
 
 using Dapr.Client;
 
@@ -70,7 +70,7 @@ public class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageBus<TMess
     /// <param name="name">The name.</param>
     /// <param name="topicSuffix">The topic suffix.</param>
     /// <param name="logger">The logger.</param>
-    /// <exception cref="System.ArgumentNullException">Argument null.</exception>
+    /// <exception cref="ArgumentNullException">Argument null.</exception>
     public DaprApplicationBus(
         DaprClient daprClient,
         IDateTimeService dateTimeService,

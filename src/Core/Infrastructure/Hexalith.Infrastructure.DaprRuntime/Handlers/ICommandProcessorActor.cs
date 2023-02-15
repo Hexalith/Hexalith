@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Infrastructure.DaprHandlers;
+namespace Hexalith.Infrastructure.DaprRuntime.Handlers;
 
 using System.Threading.Tasks;
 

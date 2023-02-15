@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Infrastructure.DaprBus;
+namespace Hexalith.Infrastructure.DaprRuntime.Buses;
 
 using System;
 
@@ -32,10 +32,10 @@ using Microsoft.Extensions.Options;
 
 /// <summary>
 /// Class DaprCommandBus.
-/// Implements the <see cref="Hexalith.Infrastructure.DaprBus.DaprApplicationBus{Hexalith.Domain.Abstractions.Commands.BaseCommand, Hexalith.Application.Abstractions.Metadatas.Metadata}" />
+/// Implements the <see cref="DaprBus.DaprApplicationBus{Hexalith.Domain.Abstractions.Commands.BaseCommand, Hexalith.Application.Abstractions.Metadatas.Metadata}" />
 /// Implements the <see cref="ICommandBus" />.
 /// </summary>
-/// <seealso cref="Hexalith.Infrastructure.DaprBus.DaprApplicationBus{Hexalith.Domain.Abstractions.Commands.BaseCommand, Hexalith.Application.Abstractions.Metadatas.Metadata}" />
+/// <seealso cref="DaprBus.DaprApplicationBus{Hexalith.Domain.Abstractions.Commands.BaseCommand, Hexalith.Application.Abstractions.Metadatas.Metadata}" />
 /// <seealso cref="ICommandBus" />
 public class DaprCommandBus : DaprApplicationBus<BaseCommand, Metadata, CommandState>, ICommandBus
 {
