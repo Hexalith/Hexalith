@@ -37,7 +37,7 @@ Nightly (main):
 
 ## Status
 
-### Version 0.2
+### Version 0.3
 
 The software is in preview
 
