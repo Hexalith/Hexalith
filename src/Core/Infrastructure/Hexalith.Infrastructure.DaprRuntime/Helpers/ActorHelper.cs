@@ -44,7 +44,7 @@ public static class ActorHelper
     /// <param name="actorId">The actor identifier.</param>
     /// <returns>System.String.</returns>
     /// <exception cref="System.ArgumentNullException">Null argument.</exception>
-    public static string ToDecodedString(this ActorId actorId)
+    public static string ToUrlDecodedString(this ActorId actorId)
     {
         ArgumentNullException.ThrowIfNull(actorId);
         return HttpUtility.UrlDecode(actorId.GetId()).Replace("~", " ");

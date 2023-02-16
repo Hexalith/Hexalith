@@ -50,7 +50,14 @@ public class ActorStateStoreProvider : IStateStoreProvider
     /// <inheritdoc/>
     public async Task<T> GetStateAsync<T>(string key, CancellationToken cancellationToken)
     {
-        return await _actorStateManager.GetStateAsync<T>(key, cancellationToken);
+        try
+        {
+            return await _actorStateManager.GetStateAsync<T>(key, cancellationToken);
+        }
+        catch (NotSupportedException ex)
+        {
+            throw new NotSupportedException($"Error while getting state of type {typeof(T).Name} with Key={key}.", ex);
+        }
     }
 
     /// <inheritdoc/>
