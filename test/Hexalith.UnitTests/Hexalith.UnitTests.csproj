@@ -3,11 +3,6 @@
 	  <TargetFramework>$(DefaultTargetFramework)</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Core\Infrastructure\AzureActiveDirectory\**" />
-    <EmbeddedResource Remove="Core\Infrastructure\AzureActiveDirectory\**" />
-    <None Remove="Core\Infrastructure\AzureActiveDirectory\**" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="..\..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
   <ItemGroup>

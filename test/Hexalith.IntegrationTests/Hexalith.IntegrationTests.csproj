@@ -4,11 +4,6 @@
     <UserSecretsId>16985a23-56f5-4511-9b9b-38c8a672583a</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Core\**" />
-    <EmbeddedResource Remove="Core\**" />
-    <None Remove="Core\**" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="..\..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
   <ItemGroup>
@@ -21,9 +16,5 @@
     <None Update="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Update="Microsoft.NET.Test.Sdk" Version="17.4.1" />
-    <PackageReference Update="Moq" Version="4.18.4" />
   </ItemGroup>
 </Project>

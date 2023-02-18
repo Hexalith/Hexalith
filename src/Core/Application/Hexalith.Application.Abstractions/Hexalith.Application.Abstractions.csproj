@@ -16,4 +16,7 @@
     <ProjectReference Include="..\..\Common\Hexalith.Extensions\Hexalith.Extensions.csproj" />
     <ProjectReference Include="..\..\Domain\Hexalith.Domain.Abstractions\Hexalith.Domain.Abstractions.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Buses\" />
+  </ItemGroup>
 </Project>

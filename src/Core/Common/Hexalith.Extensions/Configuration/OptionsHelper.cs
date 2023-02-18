@@ -8,6 +8,7 @@ namespace Hexalith.Extensions.Configuration;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 /// <summary>
 /// Helper class to configure settings.
@@ -25,6 +26,12 @@ public static class OptionsHelper
         where T : class, ISettings
     {
         _ = configuration ?? throw new ArgumentNullException(nameof(configuration));
-        return services.Configure<T>(config: configuration.GetSection(T.ConfigurationName()));
+        _ = services
+            .AddOptions<T>()
+            .Bind(configuration.GetSection(T.ConfigurationName()))
+            .ValidateDataAnnotations();
+        return services.AddSingleton<IValidateOptions<T>>((s) => new FluentValidateOptions<T>(
+            T.ConfigurationName(),
+            s));
     }
 }

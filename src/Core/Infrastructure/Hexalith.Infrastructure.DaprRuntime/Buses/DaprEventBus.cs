@@ -23,9 +23,9 @@ using Dapr.Client;
 using Hexalith.Application.Abstractions.Events;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Application.Abstractions.States;
+using Hexalith.Application.Configuration;
 using Hexalith.Domain.Abstractions.Events;
 using Hexalith.Extensions.Common;
-using Hexalith.Infrastructure.DaprBus.Configuration;
 
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -46,11 +46,11 @@ public class DaprEventBus : DaprApplicationBus<BaseEvent, Metadata, EventState>,
     /// <param name="dateTimeService">The date time service.</param>
     /// <param name="settings">The settings.</param>
     /// <param name="logger">The logger.</param>
-    public DaprEventBus(DaprClient client, IDateTimeService dateTimeService, IOptions<DaprEventBusSettings> settings, ILogger<DaprEventBus> logger)
+    public DaprEventBus(DaprClient client, IDateTimeService dateTimeService, IOptions<EventBusSettings> settings, ILogger<DaprEventBus> logger)
          : base(
         client,
         dateTimeService,
-        string.IsNullOrWhiteSpace(settings.Value.Name) ? throw new ArgumentException($"The name of the event bus is not defined in settings ({DaprEventBusSettings.ConfigurationName()}.{nameof(DaprEventBusSettings.Name)}).", nameof(settings)) : settings.Value.Name,
+        string.IsNullOrWhiteSpace(settings.Value.Name) ? throw new ArgumentException($"The name of the event bus is not defined in settings ({EventBusSettings.ConfigurationName()}.{nameof(EventBusSettings.Name)}).", nameof(settings)) : settings.Value.Name,
         "-event",
         logger)
     {

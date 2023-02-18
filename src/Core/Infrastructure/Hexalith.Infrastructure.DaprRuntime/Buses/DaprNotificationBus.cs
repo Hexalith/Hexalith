@@ -23,8 +23,8 @@ using Dapr.Client;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Application.Abstractions.Notifications;
 using Hexalith.Application.Abstractions.States;
+using Hexalith.Application.Configuration;
 using Hexalith.Extensions.Common;
-using Hexalith.Infrastructure.DaprBus.Configuration;
 using Hexalith.Infrastructure.DaprRuntime.Buses;
 
 using Microsoft.Extensions.Logging;
@@ -46,11 +46,11 @@ public class DaprNotificationBus : DaprApplicationBus<BaseNotification, Metadata
     /// <param name="dateTimeService">The date time service.</param>
     /// <param name="settings">The settings.</param>
     /// <param name="logger">The logger.</param>
-    public DaprNotificationBus(DaprClient client, IDateTimeService dateTimeService, IOptions<DaprNotificationBusSettings> settings, ILogger<DaprNotificationBus> logger)
+    public DaprNotificationBus(DaprClient client, IDateTimeService dateTimeService, IOptions<NotificationBusSettings> settings, ILogger<DaprNotificationBus> logger)
          : base(
         client,
         dateTimeService,
-        string.IsNullOrWhiteSpace(settings.Value.Name) ? throw new ArgumentException($"The name of the notification bus is not defined in settings ({DaprNotificationBusSettings.ConfigurationName()}.{nameof(DaprNotificationBusSettings.Name)}).", nameof(settings)) : settings.Value.Name,
+        string.IsNullOrWhiteSpace(settings.Value.Name) ? throw new ArgumentException($"The name of the notification bus is not defined in settings ({NotificationBusSettings.ConfigurationName()}.{nameof(NotificationBusSettings.Name)}).", nameof(settings)) : settings.Value.Name,
         "-notification",
         logger)
     {

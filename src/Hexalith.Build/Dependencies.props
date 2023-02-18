@@ -4,14 +4,17 @@
 		<MinverVersion>4.3.0</MinverVersion>
 		<SwashbuckleAspNetCoreVersion>6.5.*</SwashbuckleAspNetCoreVersion>
 		<ManDaprSidekickVersion>1.2.*</ManDaprSidekickVersion>
-		<FluentAssertionsVersion>6.9.*</FluentAssertionsVersion>
+		<FluentAssertionsVersion>6.10.*</FluentAssertionsVersion>
+		<FluentValidationVersion>11.5.0</FluentValidationVersion>
 		<StyleCopAnalyzersVersion>1.2.0-beta.435</StyleCopAnalyzersVersion>
-		<MicrosoftVisualStudioThreadingAnalyzersVersion>17.5.22</MicrosoftVisualStudioThreadingAnalyzersVersion>
 		<MoqVersion>4.18.4</MoqVersion>
+		<GitHubActionsTestLoggerVersion>2.0.1</GitHubActionsTestLoggerVersion>
 		<XUnitVersion>2.4.2</XUnitVersion>
 		<XUnitRunnerVisualStudioVersion>2.4.5</XUnitRunnerVisualStudioVersion>
 		<CoverletCollectorVersion>3.2.0</CoverletCollectorVersion>
+		<MicrosoftIdentityClientVersion>4.50.0</MicrosoftIdentityClientVersion>
 		<MicrosoftNETTestSdkVersion>17.4.1</MicrosoftNETTestSdkVersion>
+		<MicrosoftVisualStudioThreadingAnalyzersVersion>17.5.22</MicrosoftVisualStudioThreadingAnalyzersVersion>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' == 'true' or '$(BuildingByReSharper)' == 'true'">
 		<DaprVersion>1.0.0-local</DaprVersion>

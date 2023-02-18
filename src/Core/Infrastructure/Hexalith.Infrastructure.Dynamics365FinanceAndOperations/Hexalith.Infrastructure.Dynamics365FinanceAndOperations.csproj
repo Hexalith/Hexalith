@@ -4,7 +4,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="FluentValidation" Version="11.4.0" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="$(MicrosoftExtensionsPackagesVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Options" Version="$(MicrosoftExtensionsPackagesVersion)" />

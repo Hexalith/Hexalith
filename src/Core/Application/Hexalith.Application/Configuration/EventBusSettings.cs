@@ -1,34 +1,35 @@
 ﻿// ***********************************************************************
-// Assembly         : Hexalith.Infrastructure.DaprBus
+// Assembly         : Hexalith.Infrastructure.Bus
 // Author           : Jérôme Piquot
 // Created          : 02-04-2023
 //
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 02-04-2023
 // ***********************************************************************
-// <copyright file="DaprEventBusSettings.cs" company="Fiveforty SAS Paris France">
+// <copyright file="EventBusSettings.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Hexalith.Infrastructure.DaprBus.Configuration;
+
+namespace Hexalith.Application.Configuration;
 
 using Hexalith.Extensions.Configuration;
 
 /// <summary>
-/// Class DaprEventBusSettings.
+/// Class EventBusSettings.
 /// Implements the <see cref="ISettings" />.
 /// </summary>
 /// <seealso cref="ISettings" />
-public class DaprEventBusSettings : ISettings
+public class EventBusSettings : ISettings
 {
     /// <summary>
-    /// Gets or sets the name.
+    /// Gets the name.
     /// </summary>
     /// <value>The name.</value>
-    public string? Name { get; set; }
+    public string Name { get; init; } = "event-bus";
 
     /// <summary>
     /// The configuration section name of the settings.
@@ -36,6 +37,6 @@ public class DaprEventBusSettings : ISettings
     /// <returns>The name.</returns>
     public static string ConfigurationName()
     {
-        return "DaprEventBus";
+        return "EventBus";
     }
 }

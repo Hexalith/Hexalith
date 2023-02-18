@@ -6,29 +6,30 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 02-04-2023
 // ***********************************************************************
-// <copyright file="DaprCommandBusSettings.cs" company="Fiveforty SAS Paris France">
+// <copyright file="CommandBusSettings.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Hexalith.Infrastructure.DaprBus.Configuration;
+
+namespace Hexalith.Application.Configuration;
 
 using Hexalith.Extensions.Configuration;
 
 /// <summary>
-/// Class DaprCommandBusSettings.
+/// Class CommandBusSettings.
 /// Implements the <see cref="ISettings" />.
 /// </summary>
 /// <seealso cref="ISettings" />
-public class DaprCommandBusSettings : ISettings
+public class CommandBusSettings : ISettings
 {
     /// <summary>
-    /// Gets or sets the name.
+    /// Gets the name.
     /// </summary>
     /// <value>The name.</value>
-    public string? Name { get; set; }
+    public string Name { get; init; } = "command-bus";
 
     /// <summary>
     /// The configuration section name of the settings.
@@ -36,6 +37,6 @@ public class DaprCommandBusSettings : ISettings
     /// <returns>The name.</returns>
     public static string ConfigurationName()
     {
-        return "DaprCommandBus";
+        return "CommandBus";
     }
 }

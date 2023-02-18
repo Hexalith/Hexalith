@@ -23,6 +23,6 @@
 	</ItemGroup>
 	<!-- Used to annotate PR with test failures: https://github.com/Tyrrrz/GitHubActionsTestLogger -->
 	<ItemGroup>
-		<PackageReference Include="GitHubActionsTestLogger" Version="1.1.2" />
+		<PackageReference Include="GitHubActionsTestLogger" Version="$(GitHubActionsTestLoggerVersion)" />
 	</ItemGroup>
 </Project>

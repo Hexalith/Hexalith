@@ -11,17 +11,19 @@ using System.Text.Json;
 
 using Dapr.Actors.Runtime;
 
+using FluentValidation;
+
 using Hexalith.Application.Abstractions.Aggregates;
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Events;
 using Hexalith.Application.Abstractions.Notifications;
 using Hexalith.Application.Abstractions.Requests;
 using Hexalith.Application.Commands;
+using Hexalith.Application.Configuration;
 using Hexalith.Application.States;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.DaprBus;
-using Hexalith.Infrastructure.DaprBus.Configuration;
 using Hexalith.Infrastructure.DaprHandlers.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Buses;
 using Hexalith.Infrastructure.Serialization;
@@ -77,12 +79,13 @@ public static class HexalithWebApi
             _ = builder.Services.AddDaprSidekick(builder.Configuration);
         }
 
+        _ = builder.Services.AddValidatorsFromAssemblyContaining<CommandBusSettingsValidator>(ServiceLifetime.Singleton);
         _ = builder.Services.AddDaprHandlers(builder.Configuration);
         _ = builder.Services.AddSingleton<IDateTimeService, DateTimeService>();
-        _ = builder.Services.ConfigureSettings<DaprEventBusSettings>(builder.Configuration);
-        _ = builder.Services.ConfigureSettings<DaprCommandBusSettings>(builder.Configuration);
-        _ = builder.Services.ConfigureSettings<DaprNotificationBusSettings>(builder.Configuration);
-        _ = builder.Services.ConfigureSettings<DaprRequestBusSettings>(builder.Configuration);
+        _ = builder.Services.ConfigureSettings<EventBusSettings>(builder.Configuration);
+        _ = builder.Services.ConfigureSettings<CommandBusSettings>(builder.Configuration);
+        _ = builder.Services.ConfigureSettings<NotificationBusSettings>(builder.Configuration);
+        _ = builder.Services.ConfigureSettings<RequestBusSettings>(builder.Configuration);
         _ = builder.Services.AddSingleton<IRequestBus, DaprRequestBus>();
         _ = builder.Services.AddSingleton<INotificationBus, DaprNotificationBus>();
         _ = builder.Services.AddSingleton<ICommandBus, DaprCommandBus>();

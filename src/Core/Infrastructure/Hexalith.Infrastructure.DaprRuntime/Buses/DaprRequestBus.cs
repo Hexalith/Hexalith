@@ -23,8 +23,8 @@ using Dapr.Client;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Application.Abstractions.Requests;
 using Hexalith.Application.Abstractions.States;
+using Hexalith.Application.Configuration;
 using Hexalith.Extensions.Common;
-using Hexalith.Infrastructure.DaprBus.Configuration;
 using Hexalith.Infrastructure.DaprRuntime.Buses;
 
 using Microsoft.Extensions.Logging;
@@ -46,11 +46,11 @@ public class DaprRequestBus : DaprApplicationBus<BaseRequest, Metadata, RequestS
     /// <param name="dateTimeService">The date time service.</param>
     /// <param name="settings">The settings.</param>
     /// <param name="logger">The logger.</param>
-    public DaprRequestBus(DaprClient client, IDateTimeService dateTimeService, IOptions<DaprRequestBusSettings> settings, ILogger<DaprRequestBus> logger)
+    public DaprRequestBus(DaprClient client, IDateTimeService dateTimeService, IOptions<RequestBusSettings> settings, ILogger<DaprRequestBus> logger)
          : base(
         client,
         dateTimeService,
-        string.IsNullOrWhiteSpace(settings.Value.Name) ? throw new ArgumentException($"The name of the request bus is not defined in settings ({DaprRequestBusSettings.ConfigurationName()}.{nameof(DaprRequestBusSettings.Name)}).", nameof(settings)) : settings.Value.Name,
+        string.IsNullOrWhiteSpace(settings.Value.Name) ? throw new ArgumentException($"The name of the request bus is not defined in settings ({RequestBusSettings.ConfigurationName()}.{nameof(RequestBusSettings.Name)}).", nameof(settings)) : settings.Value.Name,
         "-request",
         logger)
     {

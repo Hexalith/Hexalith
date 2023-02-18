@@ -1,34 +1,35 @@
 ﻿// ***********************************************************************
-// Assembly         : Hexalith.Infrastructure.DaprBus
+// Assembly         : Hexalith.Infrastructure.Bus
 // Author           : Jérôme Piquot
 // Created          : 02-04-2023
 //
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 02-04-2023
 // ***********************************************************************
-// <copyright file="DaprRequestBusSettings.cs" company="Fiveforty SAS Paris France">
+// <copyright file="RequestBusSettings.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Hexalith.Infrastructure.DaprBus.Configuration;
+
+namespace Hexalith.Application.Configuration;
 
 using Hexalith.Extensions.Configuration;
 
 /// <summary>
-/// Class DaprRequestBusSettings.
+/// Class RequestBusSettings.
 /// Implements the <see cref="ISettings" />.
 /// </summary>
 /// <seealso cref="ISettings" />
-public class DaprRequestBusSettings : ISettings
+public class RequestBusSettings : ISettings
 {
     /// <summary>
-    /// Gets or sets the name.
+    /// Gets the name.
     /// </summary>
     /// <value>The name.</value>
-    public string? Name { get; set; }
+    public string Name { get; init; } = "request-bus";
 
     /// <summary>
     /// The configuration section name of the settings.
@@ -36,6 +37,6 @@ public class DaprRequestBusSettings : ISettings
     /// <returns>The name.</returns>
     public static string ConfigurationName()
     {
-        return "DaprRequestBus";
+        return "RequestBus";
     }
 }
