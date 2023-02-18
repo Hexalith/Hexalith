@@ -24,6 +24,7 @@ using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Application.Abstractions.States;
 using Hexalith.Application.Buses;
+using Hexalith.Application.States;
 using Hexalith.Extensions.Common;
 
 using Microsoft.Extensions.Logging;

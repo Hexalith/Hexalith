@@ -18,6 +18,7 @@ using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Events;
 using Hexalith.Application.Abstractions.Notifications;
 using Hexalith.Application.Abstractions.Requests;
+using Hexalith.Application.Abstractions.States;
 using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Configuration;
@@ -27,6 +28,7 @@ using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.DaprBus;
 using Hexalith.Infrastructure.DaprHandlers.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Buses;
+using Hexalith.Infrastructure.DaprRuntime.States;
 using Hexalith.Infrastructure.Serialization;
 using Hexalith.Infrastructure.Serialization.Helpers;
 
@@ -87,12 +89,14 @@ public static class HexalithWebApi
         _ = builder.Services.ConfigureSettings<CommandBusSettings>(builder.Configuration);
         _ = builder.Services.ConfigureSettings<NotificationBusSettings>(builder.Configuration);
         _ = builder.Services.ConfigureSettings<RequestBusSettings>(builder.Configuration);
+        _ = builder.Services.ConfigureSettings<StateStoreSettings>(builder.Configuration);
         _ = builder.Services.AddSingleton<IRequestBus, DaprRequestBus>();
         _ = builder.Services.AddSingleton<INotificationBus, DaprNotificationBus>();
         _ = builder.Services.AddSingleton<ICommandBus, DaprCommandBus>();
         _ = builder.Services.AddSingleton<IEventBus, DaprEventBus>();
         _ = builder.Services.AddSingleton<IAggregateStateManager, AggregateStateManager>();
         _ = builder.Services.AddSingleton<ICommandDispatcher, DependencyInjectionCommandDispatcher>();
+        _ = builder.Services.AddSingleton<IStateStoreProvider, DaprClientStateStoreProvider>();
 
         return builder;
     }

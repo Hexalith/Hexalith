@@ -22,9 +22,11 @@ using System.Threading.Tasks;
 using Dapr.Client;
 
 using Hexalith.Application.Abstractions.States;
+using Hexalith.Application.States;
 using Hexalith.Extensions.Common;
 
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 /// <summary>
 /// Class DaprClientStateStoreProvider.
@@ -37,9 +39,10 @@ public class DaprClientStateStoreProvider : IStateStoreProvider
     /// Initializes a new instance of the <see cref="DaprClientStateStoreProvider"/> class.
     /// </summary>
     /// <param name="daprClient">The dapr client.</param>
+    /// <param name="settings">The settings.</param>
     [ActivatorUtilitiesConstructor]
-    public DaprClientStateStoreProvider(DaprClient daprClient)
-        : this(daprClient, "statestore")
+    public DaprClientStateStoreProvider(DaprClient daprClient, IOptions<StateStoreSettings> settings)
+        : this(daprClient, settings.Value.Name)
     {
     }
 

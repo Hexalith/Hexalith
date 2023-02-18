@@ -4,7 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.UnitTests.Core.Application.Configuration;
+namespace Hexalith.UnitTests.Core.Application.Buses;
 
 using FluentAssertions;
 
@@ -21,6 +21,14 @@ public class CommandBusSettingsTest
     }
 
     [Fact]
+    public void Check_default_values_validation()
+    {
+        CommandBusSettingsValidator validator = new();
+        FluentValidation.Results.ValidationResult result = validator.Validate(new CommandBusSettings());
+        _ = result.IsValid.Should().BeTrue();
+    }
+
+    [Fact]
     public void Check_load_from_configuration_has_correct_value()
     {
         OptionsBuilder<CommandBusSettings> settings = new OptionsBuilder<CommandBusSettings>()
@@ -28,14 +36,6 @@ public class CommandBusSettingsTest
         string name = settings.Build().Value.Name;
 
         _ = name.Should().Be("my-command-bus");
-    }
-
-    [Fact]
-    public void Check_default_values_validation()
-    {
-        CommandBusSettingsValidator validator = new();
-        FluentValidation.Results.ValidationResult result = validator.Validate(new CommandBusSettings());
-        _ = result.IsValid.Should().BeTrue();
     }
 
     [Fact]

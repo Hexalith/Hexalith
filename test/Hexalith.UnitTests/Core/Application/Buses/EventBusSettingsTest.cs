@@ -1,10 +1,10 @@
-﻿// <copyright file="CommandBusSettingsTest - Copy (3).cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="EventBusSettingsTest.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.UnitTests.Core.Application.Configuration;
+namespace Hexalith.UnitTests.Core.Application.Buses;
 
 using FluentAssertions;
 
@@ -22,6 +22,14 @@ public class EventBusSettingsTest
     }
 
     [Fact]
+    public void Check_default_values_validation()
+    {
+        EventBusSettingsValidator validator = new();
+        FluentValidation.Results.ValidationResult result = validator.Validate(new EventBusSettings());
+        _ = result.IsValid.Should().BeTrue();
+    }
+
+    [Fact]
     public void Check_load_from_configuration_has_correct_value()
     {
         OptionsBuilder<EventBusSettings> settings = new OptionsBuilder<EventBusSettings>()
@@ -29,14 +37,6 @@ public class EventBusSettingsTest
         string name = settings.Build().Value.Name;
 
         _ = name.Should().Be("my-event-bus");
-    }
-
-    [Fact]
-    public void Check_default_values_validation()
-    {
-        EventBusSettingsValidator validator = new();
-        FluentValidation.Results.ValidationResult result = validator.Validate(new EventBusSettings());
-        _ = result.IsValid.Should().BeTrue();
     }
 
     [Fact]
