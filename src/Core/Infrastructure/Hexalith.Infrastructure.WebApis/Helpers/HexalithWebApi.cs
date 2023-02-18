@@ -1,8 +1,18 @@
-﻿// <copyright file="HexalithWebApi.cs" company="Fiveforty SAS Paris France">
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Infrastructure.WebApis
+// Author           : jpiquot
+// Created          : 01-15-2023
+//
+// Last Modified By : jpiquot
+// Last Modified On : 02-18-2023
+// ***********************************************************************
+// <copyright file="HexalithWebApi.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Hexalith.Infrastructure.WebApis.Helpers;
 
@@ -34,13 +44,18 @@ using Hexalith.Infrastructure.Serialization.Helpers;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
+using Serilog;
 
 /// <summary>
 /// Class HexalithWebApi.
 /// </summary>
 public static class HexalithWebApi
 {
-    /// <summary>Creates the Hexalith application.</summary>
+    /// <summary>
+    /// Creates the Hexalith application.
+    /// </summary>
     /// <param name="applicationName">Name of the application.</param>
     /// <param name="version">The API version, for example 'v1'.</param>
     /// <param name="debugInVisualStudio">If true, runs the application inside Visual Studio to simplify debugging.</param>
@@ -99,5 +114,33 @@ public static class HexalithWebApi
         _ = builder.Services.AddSingleton<IStateStoreProvider, DaprClientStateStoreProvider>();
 
         return builder;
+    }
+
+    /// <summary>
+    /// Uses the Hexalith framework.
+    /// </summary>
+    /// <param name="app">The application.</param>
+    /// <returns>IApplicationBuilder.</returns>
+    public static IApplicationBuilder UseHexalith(this WebApplication app)
+    {
+        _ = app.UseSerilogRequestLogging();
+
+        _ = app.UseCloudEvents();
+
+        _ = app.MapControllers();
+
+        _ = app.MapSubscribeHandler();
+
+        if (app.Environment.IsDevelopment())
+        {
+            _ = app.UseDeveloperExceptionPage();
+            _ = app.UseSwagger();
+            _ = app.UseSwaggerUI();
+        }
+
+        _ = app.UseRouting();
+
+        _ = app.MapActorsHandlers();
+        return app;
     }
 }
