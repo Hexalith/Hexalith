@@ -18,6 +18,7 @@ using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Events;
 using Hexalith.Application.Abstractions.Notifications;
 using Hexalith.Application.Abstractions.Requests;
+using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Configuration;
 using Hexalith.Application.States;

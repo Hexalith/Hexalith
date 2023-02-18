@@ -14,15 +14,17 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Configuration;
+namespace Hexalith.Application.Buses;
 
 using FluentValidation;
 
+using Hexalith.Application.Configuration;
+
 /// <summary>
 /// Class RequestBusSettingsValidator.
-/// Implements the <see cref="FluentValidation.AbstractValidator{Hexalith.Application.Configuration.RequestBusSettings}" />.
+/// Implements the <see cref="AbstractValidator{RequestBusSettings}" />.
 /// </summary>
-/// <seealso cref="FluentValidation.AbstractValidator{Hexalith.Application.Configuration.RequestBusSettings}" />
+/// <seealso cref="AbstractValidator{RequestBusSettings}" />
 public class RequestBusSettingsValidator : AbstractValidator<RequestBusSettings>
 {
     /// <summary>

@@ -6,7 +6,7 @@
 // Last Modified By : jpiquot
 // Last Modified On : 02-18-2023
 // ***********************************************************************
-// <copyright file="EventBusSettingsValidator.cs" company="Fiveforty SAS Paris France">
+// <copyright file="NotificationBusSettingsValidator.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -14,21 +14,23 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Configuration;
+namespace Hexalith.Application.Buses;
 
 using FluentValidation;
 
+using Hexalith.Application.Configuration;
+
 /// <summary>
-/// Class EventBusSettingsValidator.
-/// Implements the <see cref="FluentValidation.AbstractValidator{Hexalith.Application.Configuration.EventBusSettings}" />.
+/// Class NotificationBusSettingsValidator.
+/// Implements the <see cref="AbstractValidator{NotificationBusSettings}" />.
 /// </summary>
-/// <seealso cref="FluentValidation.AbstractValidator{Hexalith.Application.Configuration.EventBusSettings}" />
-public class EventBusSettingsValidator : AbstractValidator<EventBusSettings>
+/// <seealso cref="AbstractValidator{NotificationBusSettings}" />
+public class NotificationBusSettingsValidator : AbstractValidator<NotificationBusSettings>
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="EventBusSettingsValidator" /> class.
+    /// Initializes a new instance of the <see cref="NotificationBusSettingsValidator" /> class.
     /// </summary>
-    public EventBusSettingsValidator()
+    public NotificationBusSettingsValidator()
     {
         _ = RuleFor(c => c.Name).NotEmpty();
     }

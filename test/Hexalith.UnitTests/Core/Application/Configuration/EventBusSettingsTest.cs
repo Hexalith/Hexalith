@@ -1,4 +1,4 @@
-﻿// <copyright file="CommandBusSettingsTest.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="CommandBusSettingsTest - Copy (3).cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -9,40 +9,41 @@ namespace Hexalith.UnitTests.Core.Application.Configuration;
 using FluentAssertions;
 
 using Hexalith.Application.Buses;
+using Hexalith.Application.Configuration;
 using Hexalith.TestMocks;
 
-public class CommandBusSettingsTest
+public class EventBusSettingsTest
 {
     [Fact]
     public void Check_default_name_is_not_null_or_empty()
     {
-        string name = new CommandBusSettings().Name;
+        string name = new EventBusSettings().Name;
         _ = name.Should().NotBeNullOrEmpty();
     }
 
     [Fact]
     public void Check_load_from_configuration_has_correct_value()
     {
-        OptionsBuilder<CommandBusSettings> settings = new OptionsBuilder<CommandBusSettings>()
-            .WithValueFromConfiguration<CommandBusSettingsTest>();
+        OptionsBuilder<EventBusSettings> settings = new OptionsBuilder<EventBusSettings>()
+            .WithValueFromConfiguration<EventBusSettingsTest>();
         string name = settings.Build().Value.Name;
 
-        _ = name.Should().Be("my-command-bus");
+        _ = name.Should().Be("my-event-bus");
     }
 
     [Fact]
     public void Check_default_values_validation()
     {
-        CommandBusSettingsValidator validator = new();
-        FluentValidation.Results.ValidationResult result = validator.Validate(new CommandBusSettings());
+        EventBusSettingsValidator validator = new();
+        FluentValidation.Results.ValidationResult result = validator.Validate(new EventBusSettings());
         _ = result.IsValid.Should().BeTrue();
     }
 
     [Fact]
     public void Validation_of_incorrect_values_should_fail()
     {
-        CommandBusSettingsValidator validator = new();
-        FluentValidation.Results.ValidationResult result = validator.Validate(new CommandBusSettings() { Name = string.Empty });
+        EventBusSettingsValidator validator = new();
+        FluentValidation.Results.ValidationResult result = validator.Validate(new EventBusSettings() { Name = string.Empty });
         _ = result.IsValid.Should().BeFalse();
     }
 }
