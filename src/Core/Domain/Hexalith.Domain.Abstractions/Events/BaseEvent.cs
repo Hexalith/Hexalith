@@ -22,6 +22,7 @@ using Hexalith.Domain.Abstractions.Messages;
 /// Base class for business events.
 /// </summary>
 [DataContract]
-public abstract class BaseEvent : BaseMessage, IEvent
+[Serializable]
+public class BaseEvent : BaseMessage, IEvent
 {
 }

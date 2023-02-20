@@ -14,20 +14,22 @@ using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Extensions.Helpers;
 
 [DataContract]
-public abstract class DummyBaseCommand : BaseCommand
+[Serializable]
+public class DummyBaseCommand : BaseCommand
 {
-    protected DummyBaseCommand()
+    public DummyBaseCommand()
     {
         BaseValue = string.Empty;
     }
 
     [JsonConstructor]
-    protected DummyBaseCommand(string baseValue)
+    public DummyBaseCommand(string baseValue)
     {
         BaseValue = baseValue;
     }
 
-    public string BaseValue { get; }
+    [DataMember]
+    public string BaseValue { get; private set; }
 
     public Metadata CreateMetadata()
     {

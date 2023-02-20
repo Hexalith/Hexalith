@@ -16,7 +16,8 @@ using Hexalith.Extensions.Serialization;
 /// </summary>
 [JsonPolymorphicBaseClass]
 [DataContract]
-public abstract class BaseMessage : IMessage
+[Serializable]
+public class BaseMessage : IMessage
 {
     /// <summary>
     /// Default string used for separating natural keys to compose the aggregate identifier.
@@ -52,13 +53,19 @@ public abstract class BaseMessage : IMessage
     /// Get the aggregate identifier.
     /// </summary>
     /// <returns>The identifier.</returns>
-    protected abstract string DefaultAggregateId();
+    protected virtual string DefaultAggregateId()
+    {
+        return string.Empty;
+    }
 
     /// <summary>
     /// Get the aggregate name.
     /// </summary>
     /// <returns>The name.</returns>
-    protected abstract string DefaultAggregateName();
+    protected virtual string DefaultAggregateName()
+    {
+        return GetType().Name;
+    }
 
     /// <summary>
     /// Get the message major version.

@@ -18,6 +18,7 @@ using Hexalith.Domain.Abstractions.Messages;
 /// <seealso cref="BaseMessage" />
 /// <seealso cref="Application.Notifications.INotification" />
 [DataContract]
-public abstract class BaseNotification : BaseMessage, INotification
+[Serializable]
+public class BaseNotification : BaseMessage, INotification
 {
 }
