@@ -46,14 +46,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3BE1D646
 		test\Directory.Build.props = test\Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_CICD", "_CICD", "{29DC5CD7-D89B-4981-91E7-59FCD4A4379F}"
-	ProjectSection(SolutionItems) = preProject
-		.github\workflows\preview_ci.yml = .github\workflows\preview_ci.yml
-		.github\workflows\release_ci.yml = .github\workflows\release_ci.yml
-		.github\workflows\semgrep.yml = .github\workflows\semgrep.yml
-		.github\workflows\sonarqube.yml = .github\workflows\sonarqube.yml
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D2DA3040-462E-4E0E-9CFE-3EA95FA3D014}"
 	ProjectSection(SolutionItems) = preProject
 		src\Directory.Build.props = src\Directory.Build.props

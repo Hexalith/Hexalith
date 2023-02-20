@@ -73,9 +73,39 @@ public class TaskProcessorTest
     }
 
     [Fact]
-    public void Serialize_and_deserialize_task_should_be_same()
+    public void Json_serialize_and_deserialize_task_should_return_same()
     {
-        TaskProcessor processor = new TaskProcessor(
+        TaskProcessor processor = GetTestProcessor();
+        string json = JsonSerializer.Serialize(processor);
+        TaskProcessor fromJson = JsonSerializer.Deserialize<TaskProcessor>(json);
+        _ = fromJson.Should().NotBeNull();
+        _ = fromJson.Should().BeEquivalentTo(processor);
+    }
+
+    [Fact]
+    public void Binary_serialize_and_deserialize_task_should_return_same()
+    {
+        TaskProcessor processor = GetTestProcessor();
+        _ = processor.Should().BeBinarySerializable();
+    }
+
+    [Fact]
+    public void Data_contract_serialize_and_deserialize_task_should_return_same()
+    {
+        TaskProcessor processor = GetTestProcessor();
+        _ = processor.Should().BeDataContractSerializable();
+    }
+
+    [Fact]
+    public void Xml_serialize_and_deserialize_task_should_return_same()
+    {
+        TaskProcessor processor = GetTestProcessor();
+        _ = processor.Should().BeXmlSerializable();
+    }
+
+    private static TaskProcessor GetTestProcessor()
+    {
+        return new TaskProcessor(
                 TaskProcessorStatus.New,
                 new TaskProcessingHistory(),
                 ResiliencyPolicy.CreateEternalRetry(TimeSpan.FromMinutes(1)),
@@ -83,18 +113,6 @@ public class TaskProcessorTest
             .Start()
             .Fail("my test fail message")
             .Complete();
-        string json = JsonSerializer.Serialize(processor);
-        TaskProcessor fromJson = JsonSerializer.Deserialize<TaskProcessor>(json);
-        _ = fromJson.Should().NotBeNull();
-        _ = fromJson!.Status.Should().Be(processor.Status);
-        _ = fromJson!.History.CreatedDate.Should().BeCloseTo(processor.History.CreatedDate, TimeSpan.FromSeconds(1));
-        _ = fromJson!.History.ProcessingStartDate.Should().Be(processor.History.ProcessingStartDate);
-        _ = fromJson!.History.CompletedDate.Should().Be(processor.History.CompletedDate);
-        _ = fromJson!.History.CanceledDate.Should().Be(processor.History.CanceledDate);
-        _ = fromJson!.Failure.Should().NotBeNull();
-        _ = fromJson!.Failure!.Count.Should().Be(processor.Failure!.Count);
-        _ = fromJson!.Failure!.Date.Should().Be(processor.Failure!.Date);
-        _ = fromJson!.Failure!.Message.Should().Be(processor.Failure!.Message);
     }
 
     [Fact]

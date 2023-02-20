@@ -14,6 +14,7 @@ using System.Text.Json.Serialization;
 /// The task processor.
 /// </summary>
 [DataContract]
+[Serializable]
 public class TaskProcessor : ITaskProcessor
 {
     /// <summary>
@@ -83,17 +84,17 @@ public class TaskProcessor : ITaskProcessor
     /// <inheritdoc/>
     [DataMember(Order = 3)]
     [JsonPropertyOrder(3)]
-    public TaskProcessingFailure? Failure { get; private set; }
+    public TaskProcessingFailure? Failure { get; set; }
 
     /// <inheritdoc/>
     [DataMember(Order = 2)]
     [JsonPropertyOrder(2)]
-    public TaskProcessingHistory History { get; private set; }
+    public TaskProcessingHistory History { get; set; }
 
     /// <inheritdoc/>
     [DataMember(Order = 4)]
     [JsonPropertyOrder(4)]
-    public ResiliencyPolicy ResiliencyPolicy { get; private set; }
+    public ResiliencyPolicy ResiliencyPolicy { get; set; }
 
     /// <summary>
     /// Gets the retry wait time.
@@ -108,7 +109,8 @@ public class TaskProcessor : ITaskProcessor
     /// <inheritdoc/>
     [DataMember(Order = 1)]
     [JsonPropertyOrder(1)]
-    public TaskProcessorStatus Status { get; private set; }
+    [JsonConverter(typeof(JsonStringEnumConverter))]
+    public TaskProcessorStatus Status { get; set; }
 
     /// <summary>
     /// Cancels this instance.

@@ -14,6 +14,7 @@ using System.Text.Json.Serialization;
 /// The task processing failure information.
 /// </summary>
 [DataContract]
+[Serializable]
 public class TaskProcessingFailure
 {
     /// <summary>
@@ -41,19 +42,25 @@ public class TaskProcessingFailure
     }
 
     /// <summary>
-    /// Gets the failed count.
+    /// Gets or sets the failed count.
     /// </summary>
-    public int Count { get; private set; }
+    [DataMember(Order = 1)]
+    [JsonPropertyOrder(1)]
+    public int Count { get; set; }
 
     /// <summary>
-    /// Gets the last failed date.
+    /// Gets or sets the last failed date.
     /// </summary>
-    public DateTimeOffset Date { get; private set; }
+    [DataMember(Order = 2)]
+    [JsonPropertyOrder(2)]
+    public DateTimeOffset Date { get; set; }
 
     /// <summary>
-    /// Gets the last failed message.
+    /// Gets or sets the last failed message.
     /// </summary>
-    public string Message { get; private set; }
+    [DataMember(Order = 3)]
+    [JsonPropertyOrder(3)]
+    public string Message { get; set; }
 
     /// <summary>
     /// Fail.

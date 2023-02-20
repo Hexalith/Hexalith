@@ -15,6 +15,7 @@ using Hexalith.Extensions.Helpers;
 /// Retry policy.
 /// </summary>
 [DataContract]
+[Serializable]
 public class ResiliencyPolicy
 {
     /// <summary>
@@ -67,31 +68,43 @@ public class ResiliencyPolicy
     /// <summary>
     /// Gets or sets a value indicating whether use exponential periods.
     /// </summary>
+    [DataMember(Order = 6)]
+    [JsonPropertyOrder(6)]
     public bool Exponential { get; set; }
 
     /// <summary>
     /// Gets or sets the initial retry period.
     /// </summary>
+    [DataMember(Order = 2)]
+    [JsonPropertyOrder(2)]
     public TimeSpan InitialPeriod { get; set; }
 
     /// <summary>
     /// Gets or sets a value the maximum exponential period value in milliseconds.
     /// </summary>
+    [DataMember(Order = 4)]
+    [JsonPropertyOrder(4)]
     public TimeSpan MaximumExponentialPeriod { get; set; }
 
     /// <summary>
     /// Gets or sets the maximum number of retries.
     /// </summary>
+    [DataMember(Order = 1)]
+    [JsonPropertyOrder(1)]
     public int MaximumRetries { get; set; }
 
     /// <summary>
     /// Gets or sets the retry period in milliseconds.
     /// </summary>
+    [DataMember(Order = 3)]
+    [JsonPropertyOrder(3)]
     public TimeSpan Period { get; set; }
 
     /// <summary>
     /// Gets or sets the timeout.
     /// </summary>
+    [DataMember(Order = 5)]
+    [JsonPropertyOrder(5)]
     public TimeSpan Timeout { get; set; }
 
     /// <summary>

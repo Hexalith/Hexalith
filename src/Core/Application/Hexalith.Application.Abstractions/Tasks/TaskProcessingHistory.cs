@@ -14,6 +14,7 @@ using System.Text.Json.Serialization;
 /// The task processing history information.
 /// </summary>
 [DataContract]
+[Serializable]
 public class TaskProcessingHistory
 {
     /// <summary>
@@ -48,29 +49,39 @@ public class TaskProcessingHistory
     }
 
     /// <summary>
-    /// Gets the task canceled date.
+    /// Gets or sets the task canceled date.
     /// </summary>
-    public DateTimeOffset? CanceledDate { get; private set; }
+    [DataMember(Order = 5)]
+    [JsonPropertyOrder(5)]
+    public DateTimeOffset? CanceledDate { get; set; }
 
     /// <summary>
-    /// Gets the task completed date.
+    /// Gets or sets the task completed date.
     /// </summary>
-    public DateTimeOffset? CompletedDate { get; private set; }
+    [DataMember(Order = 4)]
+    [JsonPropertyOrder(4)]
+    public DateTimeOffset? CompletedDate { get; set; }
 
     /// <summary>
-    /// Gets the task created date.
+    /// Gets or sets the task created date.
     /// </summary>
-    public DateTimeOffset CreatedDate { get; private set; }
+    [DataMember(Order = 1)]
+    [JsonPropertyOrder(1)]
+    public DateTimeOffset CreatedDate { get; set; }
 
     /// <summary>
-    /// Gets the task processing start date.
+    /// Gets or sets the task processing start date.
     /// </summary>
-    public DateTimeOffset? ProcessingStartDate { get; private set; }
+    [DataMember(Order = 3)]
+    [JsonPropertyOrder(3)]
+    public DateTimeOffset? ProcessingStartDate { get; set; }
 
     /// <summary>
-    /// Gets the task suspended date.
+    /// Gets or sets the task suspended date.
     /// </summary>
-    public DateTimeOffset? SuspendedDate { get; private set; }
+    [DataMember(Order = 2)]
+    [JsonPropertyOrder(2)]
+    public DateTimeOffset? SuspendedDate { get; set; }
 
     /// <summary>
     /// Gets a canceled processing history.

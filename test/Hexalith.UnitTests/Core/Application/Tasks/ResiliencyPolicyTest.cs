@@ -17,16 +17,26 @@ using Hexalith.TestMocks;
 public class ResiliencyPolicyTest
 {
     [Fact]
-    public void Deserialize_serialized_policy_should_return_same_value()
+    public void Binary_serialize_seserialize_should_return_same_value()
     {
         // Serialize resiliency policy
-        ResiliencyPolicy policy = new(
-            100,
-            TimeSpan.FromMilliseconds(200),
-            TimeSpan.FromSeconds(15),
-            TimeSpan.FromHours(24),
-            TimeSpan.FromDays(30),
-            exponential: false);
+        ResiliencyPolicy policy = GetTestPolicy();
+        _ = policy.Should().BeBinarySerializable();
+    }
+
+    [Fact]
+    public void Data_contract_serialize_seserialize_should_return_same_value()
+    {
+        // Serialize resiliency policy
+        ResiliencyPolicy policy = GetTestPolicy();
+        _ = policy.Should().BeDataContractSerializable();
+    }
+
+    [Fact]
+    public void Json_serialize_seserialize_should_return_same_value()
+    {
+        // Serialize resiliency policy
+        ResiliencyPolicy policy = GetTestPolicy();
         string json = JsonSerializer.Serialize(policy);
         ResiliencyPolicy deserialized = JsonSerializer.Deserialize<ResiliencyPolicy>(json);
         _ = deserialized.Should().NotBeNull();
@@ -102,6 +112,25 @@ public class ResiliencyPolicyTest
             exponential: false);
         long waitMilliseconds = policy.NextRetryTime(now, sequence).ToUnixTimeMilliseconds() - now.ToUnixTimeMilliseconds();
         _ = waitMilliseconds.Should().Be(value);
+    }
+
+    [Fact]
+    public void Xml_serialize_seserialize_should_return_same_value()
+    {
+        // Serialize resiliency policy
+        ResiliencyPolicy policy = GetTestPolicy();
+        _ = policy.Should().BeXmlSerializable();
+    }
+
+    private static ResiliencyPolicy GetTestPolicy()
+    {
+        return new(
+            100,
+            TimeSpan.FromMilliseconds(200),
+            TimeSpan.FromSeconds(15),
+            TimeSpan.FromHours(24),
+            TimeSpan.FromDays(30),
+            exponential: false);
     }
 }
 
