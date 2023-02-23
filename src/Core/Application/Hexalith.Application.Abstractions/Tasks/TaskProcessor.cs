@@ -21,6 +21,7 @@ public class TaskProcessor : ITaskProcessor
     /// Initializes a new instance of the <see cref="TaskProcessor" /> class.
     /// Initialize the task processor.
     /// </summary>
+    [Obsolete("This constructor is only for serialization purposes.", true)]
     public TaskProcessor()
     {
         Status = TaskProcessorStatus.New;
@@ -34,9 +35,11 @@ public class TaskProcessor : ITaskProcessor
     /// <param name="policy">The policy.</param>
     public TaskProcessor(ResiliencyPolicy policy)
     {
+#pragma warning disable CS0618 // Type or member is obsolete
         Status = TaskProcessorStatus.New;
         History = new TaskProcessingHistory();
         ResiliencyPolicy = policy;
+#pragma warning restore CS0618 // Type or member is obsolete
     }
 
     /// <summary>
@@ -53,10 +56,12 @@ public class TaskProcessor : ITaskProcessor
             ResiliencyPolicy resiliencyPolicy,
             TaskProcessingFailure? failure)
     {
+#pragma warning disable CS0618 // Type or member is obsolete
         Status = status;
         History = history;
         Failure = failure;
         ResiliencyPolicy = resiliencyPolicy;
+#pragma warning restore CS0618 // Type or member is obsolete
     }
 
     /// <summary>
@@ -67,10 +72,12 @@ public class TaskProcessor : ITaskProcessor
     private TaskProcessor(ITaskProcessor processor)
     {
         _ = processor ?? throw new ArgumentNullException(nameof(processor));
+#pragma warning disable CS0618 // Type or member is obsolete
         Status = processor.Status;
         History = processor.History;
         Failure = processor.Failure;
         ResiliencyPolicy = processor.ResiliencyPolicy;
+#pragma warning restore CS0618 // Type or member is obsolete
     }
 
     /// <inheritdoc/>
@@ -84,17 +91,32 @@ public class TaskProcessor : ITaskProcessor
     /// <inheritdoc/>
     [DataMember(Order = 3)]
     [JsonPropertyOrder(3)]
-    public TaskProcessingFailure? Failure { get; set; }
+    public TaskProcessingFailure? Failure
+    {
+        get;
+        [Obsolete("Setter used only for serialization purposes.", false)]
+        set;
+    }
 
     /// <inheritdoc/>
     [DataMember(Order = 2)]
     [JsonPropertyOrder(2)]
-    public TaskProcessingHistory History { get; set; }
+    public TaskProcessingHistory History
+    {
+        get;
+        [Obsolete("Setter used only for serialization purposes.", false)]
+        set;
+    }
 
     /// <inheritdoc/>
     [DataMember(Order = 4)]
     [JsonPropertyOrder(4)]
-    public ResiliencyPolicy ResiliencyPolicy { get; set; }
+    public ResiliencyPolicy ResiliencyPolicy
+    {
+        get;
+        [Obsolete("Setter used only for serialization purposes.", false)]
+        set;
+    }
 
     /// <summary>
     /// Gets the retry wait time.
@@ -110,13 +132,19 @@ public class TaskProcessor : ITaskProcessor
     [DataMember(Order = 1)]
     [JsonPropertyOrder(1)]
     [JsonConverter(typeof(JsonStringEnumConverter))]
-    public TaskProcessorStatus Status { get; set; }
+    public TaskProcessorStatus Status
+    {
+        get;
+        [Obsolete("Setter used only for serialization purposes.", false)]
+        set;
+    }
 
     /// <summary>
     /// Cancels this instance.
     /// </summary>
     /// <returns>Hexalith.Application.Abstractions.Tasks.TaskProcessor.</returns>
     /// <inheritdoc cref="ITaskProcessor.Cancel" />
+    [Obsolete]
     public TaskProcessor Cancel()
     {
         return (TaskProcessor)(Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed
@@ -133,6 +161,7 @@ public class TaskProcessor : ITaskProcessor
     /// </summary>
     /// <returns>Hexalith.Application.Abstractions.Tasks.TaskProcessor.</returns>
     /// <inheritdoc cref="ITaskProcessor.Complete" />
+    [Obsolete]
     public TaskProcessor Complete()
     {
         return (TaskProcessor)(Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed
@@ -151,6 +180,7 @@ public class TaskProcessor : ITaskProcessor
     /// <exception cref="InvalidStatusChangeException">currentStatus: Status, newStatus: TaskProcessorStatus.Active, Only suspended tasks can be continued.</exception>
     /// <exception cref="InvalidStatusChangeException">currentStatus: Status, newStatus: TaskProcessorStatus.Active, Cannot continue a task that has never been started.</exception>
     /// <inheritdoc cref="ITaskProcessor.Continue" />
+    [Obsolete]
     public TaskProcessor Continue()
     {
         if (Status is not TaskProcessorStatus.Suspended)
@@ -197,6 +227,7 @@ public class TaskProcessor : ITaskProcessor
     /// <param name="message">The message.</param>
     /// <returns>Hexalith.Application.Abstractions.Tasks.TaskProcessor.</returns>
     /// <inheritdoc cref="ITaskProcessor.Fail" />
+    [Obsolete]
     public TaskProcessor Fail(string message)
     {
         TaskProcessingFailure newFailure = Failure == null ? new TaskProcessingFailure(1, DateTimeOffset.UtcNow, message) : Failure.Fail(message);
@@ -224,6 +255,7 @@ public class TaskProcessor : ITaskProcessor
     /// </summary>
     /// <returns>Hexalith.Application.Abstractions.Tasks.TaskProcessor.</returns>
     /// <inheritdoc cref="ITaskProcessor.Start" />
+    [Obsolete]
     public TaskProcessor Start()
     {
         return Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed or TaskProcessorStatus.Active
@@ -236,30 +268,35 @@ public class TaskProcessor : ITaskProcessor
     }
 
     /// <inheritdoc/>
+    [Obsolete]
     ITaskProcessor ITaskProcessor.Cancel()
     {
         return Cancel();
     }
 
     /// <inheritdoc/>
+    [Obsolete]
     ITaskProcessor ITaskProcessor.Complete()
     {
         return Complete();
     }
 
     /// <inheritdoc/>
+    [Obsolete]
     ITaskProcessor ITaskProcessor.Continue()
     {
         return Continue();
     }
 
     /// <inheritdoc/>
+    [Obsolete]
     ITaskProcessor ITaskProcessor.Fail(string message)
     {
         return Fail(message);
     }
 
     /// <inheritdoc/>
+    [Obsolete]
     ITaskProcessor ITaskProcessor.Start()
     {
         return Start();

@@ -36,12 +36,14 @@ public class ResiliencyPolicy
         TimeSpan timeout,
         bool exponential)
     {
+#pragma warning disable CS0618 // Type or member is obsolete
         MaximumRetries = maximumRetries;
         InitialPeriod = initialPeriod;
         Period = period;
         MaximumExponentialPeriod = maximumExponentialPeriod;
         Timeout = timeout;
         Exponential = exponential;
+#pragma warning restore CS0618 // Type or member is obsolete
     }
 
     /// <summary>
@@ -70,42 +72,72 @@ public class ResiliencyPolicy
     /// </summary>
     [DataMember(Order = 6)]
     [JsonPropertyOrder(6)]
-    public bool Exponential { get; set; }
+    public bool Exponential
+    {
+        get;
+        [Obsolete("Setter used only for serialization purposes.", false)]
+        set;
+    }
 
     /// <summary>
     /// Gets or sets the initial retry period.
     /// </summary>
     [DataMember(Order = 2)]
     [JsonPropertyOrder(2)]
-    public TimeSpan InitialPeriod { get; set; }
+    public TimeSpan InitialPeriod
+    {
+        get;
+        [Obsolete("Setter used only for serialization purposes.", false)]
+        set;
+    }
 
     /// <summary>
     /// Gets or sets a value the maximum exponential period value in milliseconds.
     /// </summary>
     [DataMember(Order = 4)]
     [JsonPropertyOrder(4)]
-    public TimeSpan MaximumExponentialPeriod { get; set; }
+    public TimeSpan MaximumExponentialPeriod
+    {
+        get;
+        [Obsolete("Setter used only for serialization purposes.", false)]
+        set;
+    }
 
     /// <summary>
     /// Gets or sets the maximum number of retries.
     /// </summary>
     [DataMember(Order = 1)]
     [JsonPropertyOrder(1)]
-    public int MaximumRetries { get; set; }
+    public int MaximumRetries
+    {
+        get;
+        [Obsolete("Setter used only for serialization purposes.", false)]
+        set;
+    }
 
     /// <summary>
     /// Gets or sets the retry period in milliseconds.
     /// </summary>
     [DataMember(Order = 3)]
     [JsonPropertyOrder(3)]
-    public TimeSpan Period { get; set; }
+    public TimeSpan Period
+    {
+        get;
+        [Obsolete("Setter used only for serialization purposes.", false)]
+        set;
+    }
 
     /// <summary>
     /// Gets or sets the timeout.
     /// </summary>
     [DataMember(Order = 5)]
     [JsonPropertyOrder(5)]
-    public TimeSpan Timeout { get; set; }
+    public TimeSpan Timeout
+    {
+        get;
+        [Obsolete("Setter used only for serialization purposes.", false)]
+        set;
+    }
 
     /// <summary>
     /// Create an exponential retry, starting from one millisecond without any timeout.

@@ -17,7 +17,7 @@ public class TaskProcessingHistoryTest
     [Fact]
     public void Cancelled_history_date_should_be_now()
     {
-        TaskProcessingHistory history = new TaskProcessingHistory()
+        TaskProcessingHistory history = new TaskProcessingHistory(DateTimeOffset.UtcNow, null, null, null, null)
             .Canceled();
         _ = history.CreatedDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromMilliseconds(100));
         _ = history.CanceledDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromMilliseconds(100));
@@ -29,7 +29,7 @@ public class TaskProcessingHistoryTest
     [Fact]
     public void Completed_history_date_should_be_now()
     {
-        TaskProcessingHistory history = new TaskProcessingHistory()
+        TaskProcessingHistory history = new TaskProcessingHistory(DateTimeOffset.UtcNow, null, null, null, null)
             .Completed();
         _ = history.CreatedDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromMilliseconds(100));
         _ = history.CompletedDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromMilliseconds(100));
@@ -41,7 +41,7 @@ public class TaskProcessingHistoryTest
     [Fact]
     public void Created_history_date_should_be_now()
     {
-        TaskProcessingHistory history = new();
+        TaskProcessingHistory history = new(DateTimeOffset.UtcNow, null, null, null, null);
         _ = history.CreatedDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromMilliseconds(100));
         _ = history.CanceledDate.Should().BeNull();
         _ = history.CompletedDate.Should().BeNull();
@@ -52,7 +52,7 @@ public class TaskProcessingHistoryTest
     [Fact]
     public void Started_history_date_should_be_now()
     {
-        TaskProcessingHistory history = new TaskProcessingHistory()
+        TaskProcessingHistory history = new TaskProcessingHistory(DateTimeOffset.UtcNow, null, null, null, null)
             .ProcessingStarted();
         _ = history.CreatedDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromMilliseconds(100));
         _ = history.ProcessingStartDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromMilliseconds(10));
@@ -64,7 +64,7 @@ public class TaskProcessingHistoryTest
     [Fact]
     public void Suspended_history_date_should_be_now()
     {
-        TaskProcessingHistory history = new TaskProcessingHistory()
+        TaskProcessingHistory history = new TaskProcessingHistory(DateTimeOffset.UtcNow, null, null, null, null)
             .Suspended();
         _ = history.CreatedDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromMilliseconds(100));
         _ = history.SuspendedDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromMilliseconds(100));

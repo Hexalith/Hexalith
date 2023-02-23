@@ -20,6 +20,7 @@ public class TaskProcessingHistory
     /// <summary>
     /// Initializes a new instance of the <see cref="TaskProcessingHistory"/> class.
     /// </summary>
+    [Obsolete]
     public TaskProcessingHistory()
     {
         CreatedDate = DateTimeOffset.UtcNow;
@@ -41,11 +42,13 @@ public class TaskProcessingHistory
         DateTimeOffset? completedDate,
         DateTimeOffset? canceledDate)
     {
+#pragma warning disable CS0618 // Type or member is obsolete
         CreatedDate = createdDate;
         SuspendedDate = suspendedDate;
         ProcessingStartDate = processingStartDate;
         CompletedDate = completedDate;
         CanceledDate = canceledDate;
+#pragma warning restore CS0618 // Type or member is obsolete
     }
 
     /// <summary>
@@ -53,35 +56,60 @@ public class TaskProcessingHistory
     /// </summary>
     [DataMember(Order = 5)]
     [JsonPropertyOrder(5)]
-    public DateTimeOffset? CanceledDate { get; set; }
+    public DateTimeOffset? CanceledDate
+    {
+        get;
+        [Obsolete("Setter used only for serialization purposes.", false)]
+        set;
+    }
 
     /// <summary>
     /// Gets or sets the task completed date.
     /// </summary>
     [DataMember(Order = 4)]
     [JsonPropertyOrder(4)]
-    public DateTimeOffset? CompletedDate { get; set; }
+    public DateTimeOffset? CompletedDate
+    {
+        get;
+        [Obsolete("Setter used only for serialization purposes.", false)]
+        set;
+    }
 
     /// <summary>
     /// Gets or sets the task created date.
     /// </summary>
     [DataMember(Order = 1)]
     [JsonPropertyOrder(1)]
-    public DateTimeOffset CreatedDate { get; set; }
+    public DateTimeOffset CreatedDate
+    {
+        get;
+        [Obsolete("Setter used only for serialization purposes.", false)]
+        set;
+    }
 
     /// <summary>
     /// Gets or sets the task processing start date.
     /// </summary>
     [DataMember(Order = 3)]
     [JsonPropertyOrder(3)]
-    public DateTimeOffset? ProcessingStartDate { get; set; }
+    public DateTimeOffset? ProcessingStartDate
+    {
+        get;
+        [Obsolete("Setter used only for serialization purposes.", false)]
+        set;
+    }
 
     /// <summary>
     /// Gets or sets the task suspended date.
     /// </summary>
     [DataMember(Order = 2)]
     [JsonPropertyOrder(2)]
-    public DateTimeOffset? SuspendedDate { get; set; }
+    public DateTimeOffset? SuspendedDate
+    {
+        get;
+        [Obsolete("Setter used only for serialization purposes.", false)]
+        set;
+    }
 
     /// <summary>
     /// Gets a canceled processing history.

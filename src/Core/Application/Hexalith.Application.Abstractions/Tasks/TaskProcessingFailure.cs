@@ -26,9 +26,11 @@ public class TaskProcessingFailure
     [JsonConstructor]
     public TaskProcessingFailure(int count, DateTimeOffset date, string message)
     {
+#pragma warning disable CS0618 // Type or member is obsolete
         Count = count;
         Date = date;
         Message = message;
+#pragma warning restore CS0618 // Type or member is obsolete
     }
 
     /// <summary>
@@ -46,21 +48,36 @@ public class TaskProcessingFailure
     /// </summary>
     [DataMember(Order = 1)]
     [JsonPropertyOrder(1)]
-    public int Count { get; set; }
+    public int Count
+    {
+        get;
+        [Obsolete("Setter used only for serialization purposes.", false)]
+        set;
+    }
 
     /// <summary>
     /// Gets or sets the last failed date.
     /// </summary>
     [DataMember(Order = 2)]
     [JsonPropertyOrder(2)]
-    public DateTimeOffset Date { get; set; }
+    public DateTimeOffset Date
+    {
+        get;
+        [Obsolete("Setter used only for serialization purposes.", false)]
+        set;
+    }
 
     /// <summary>
     /// Gets or sets the last failed message.
     /// </summary>
     [DataMember(Order = 3)]
     [JsonPropertyOrder(3)]
-    public string Message { get; set; }
+    public string Message
+    {
+        get;
+        [Obsolete("Setter used only for serialization purposes.", false)]
+        set;
+    }
 
     /// <summary>
     /// Fail.
