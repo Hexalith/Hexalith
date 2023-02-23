@@ -16,9 +16,16 @@ using Hexalith.Application.Abstractions.Tasks;
 public class TaskProcessorTest
 {
     [Fact]
+    public void Binary_serialize_and_deserialize_task_should_return_same()
+    {
+        TaskProcessor processor = GetTestProcessor();
+        _ = processor.Should().BeBinarySerializable();
+    }
+
+    [Fact]
     public void Complete_processing_task_should_have_complete_date()
     {
-        TaskProcessor processor = new TaskProcessor()
+        TaskProcessor processor = new TaskProcessor(DateTimeOffset.UtcNow, ResiliencyPolicy.None)
             .Start()
             .Complete();
         _ = processor.History.CompletedDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromSeconds(1));
@@ -27,16 +34,24 @@ public class TaskProcessorTest
     [Fact]
     public void Complete_running_process_should_be_completed()
     {
-        TaskProcessor processor = new TaskProcessor()
+        TaskProcessor processor = new TaskProcessor(DateTimeOffset.UtcNow, ResiliencyPolicy.None)
             .Start()
             .Complete();
         _ = processor.Status.Should().Be(TaskProcessorStatus.Completed);
     }
 
     [Fact]
+    public void Data_contract_serialize_and_deserialize_task_should_return_same()
+    {
+        TaskProcessor processor = GetTestProcessor();
+        _ = processor.Should().BeDataContractSerializable();
+    }
+
+    [Fact]
     public void Fail_running_process_with_resiliency_should_be_suspended()
     {
         TaskProcessor processor = new TaskProcessor(
+            DateTimeOffset.UtcNow,
             new ResiliencyPolicy(
                 10,
                 TimeSpan.FromSeconds(10),
@@ -52,24 +67,10 @@ public class TaskProcessorTest
     [Fact]
     public void Fail_running_process_without_resiliency_should_be_canceled()
     {
-        TaskProcessor processor = new TaskProcessor()
+        TaskProcessor processor = new TaskProcessor(DateTimeOffset.UtcNow, ResiliencyPolicy.None)
             .Start()
             .Fail("fail");
         _ = processor.Status.Should().Be(TaskProcessorStatus.Canceled);
-    }
-
-    [Fact]
-    public void New_process_should_be_in_new_state()
-    {
-        TaskProcessor processor = new();
-        _ = processor.Status.Should().Be(TaskProcessorStatus.New);
-    }
-
-    [Fact]
-    public void New_process_should_have_created_date()
-    {
-        TaskProcessor processor = new();
-        _ = processor.History.CreatedDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromSeconds(1));
     }
 
     [Fact]
@@ -83,17 +84,34 @@ public class TaskProcessorTest
     }
 
     [Fact]
-    public void Binary_serialize_and_deserialize_task_should_return_same()
+    public void New_process_should_be_in_new_state()
     {
-        TaskProcessor processor = GetTestProcessor();
-        _ = processor.Should().BeBinarySerializable();
+        TaskProcessor processor = new(DateTimeOffset.UtcNow, ResiliencyPolicy.None);
+        _ = processor.Status.Should().Be(TaskProcessorStatus.New);
     }
 
     [Fact]
-    public void Data_contract_serialize_and_deserialize_task_should_return_same()
+    public void New_process_should_have_created_date()
     {
-        TaskProcessor processor = GetTestProcessor();
-        _ = processor.Should().BeDataContractSerializable();
+        TaskProcessor processor = new(DateTimeOffset.UtcNow, ResiliencyPolicy.None);
+        _ = processor.History.CreatedDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromSeconds(1));
+    }
+
+    [Fact]
+    public void Start_new_process_should_be_active()
+    {
+        TaskProcessor processor = new TaskProcessor(DateTimeOffset.UtcNow, ResiliencyPolicy.None)
+            .Start();
+        _ = processor.Status.Should().Be(TaskProcessorStatus.Active);
+    }
+
+    [Fact]
+    public void Start_new_process_should_have_current_processing_start_date()
+    {
+        TaskProcessor processor = new TaskProcessor(DateTimeOffset.UtcNow, ResiliencyPolicy.None)
+            .Start();
+        _ = processor.History.ProcessingStartDate.Should().NotBeNull();
+        _ = processor.History.ProcessingStartDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromSeconds(1));
     }
 
     [Fact]
@@ -107,28 +125,11 @@ public class TaskProcessorTest
     {
         return new TaskProcessor(
                 TaskProcessorStatus.New,
-                new TaskProcessingHistory(),
+                new TaskProcessingHistory(DateTimeOffset.UtcNow),
                 ResiliencyPolicy.CreateEternalRetry(TimeSpan.FromMinutes(1)),
                 failure: null)
             .Start()
             .Fail("my test fail message")
             .Complete();
-    }
-
-    [Fact]
-    public void Start_new_process_should_be_active()
-    {
-        TaskProcessor processor = new TaskProcessor()
-            .Start();
-        _ = processor.Status.Should().Be(TaskProcessorStatus.Active);
-    }
-
-    [Fact]
-    public void Start_new_process_should_have_current_processing_start_date()
-    {
-        TaskProcessor processor = new TaskProcessor()
-            .Start();
-        _ = processor.History.ProcessingStartDate.Should().NotBeNull();
-        _ = processor.History.ProcessingStartDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromSeconds(1));
     }
 }

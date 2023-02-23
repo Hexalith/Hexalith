@@ -138,6 +138,6 @@ public class ResilientCommandProcessor
             .TryGetStateAsync<TaskProcessor>(
                 nameof(TaskProcessor) + id,
                 cancellationToken);
-        return result.HasValue ? result.Value : new TaskProcessor(_resiliencyPolicy);
+        return result.HasValue ? result.Value : new TaskProcessor(DateTimeOffset.UtcNow, _resiliencyPolicy);
     }
 }

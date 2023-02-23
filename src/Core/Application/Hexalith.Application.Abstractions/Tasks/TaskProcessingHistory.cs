@@ -20,10 +20,21 @@ public class TaskProcessingHistory
     /// <summary>
     /// Initializes a new instance of the <see cref="TaskProcessingHistory"/> class.
     /// </summary>
-    [Obsolete]
+    /// <param name="createdDate">The created date.</param>
+    public TaskProcessingHistory(DateTimeOffset createdDate)
+    {
+#pragma warning disable CS0618 // Type or member is obsolete
+        CreatedDate = createdDate;
+#pragma warning restore CS0618 // Type or member is obsolete
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="TaskProcessingHistory"/> class.
+    /// </summary>
+    [Obsolete("This constructor is only for serialization purposes.", true)]
     public TaskProcessingHistory()
     {
-        CreatedDate = DateTimeOffset.UtcNow;
+        CreatedDate = DateTimeOffset.MinValue;
     }
 
     /// <summary>

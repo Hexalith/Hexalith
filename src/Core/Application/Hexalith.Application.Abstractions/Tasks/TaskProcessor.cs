@@ -32,12 +32,13 @@ public class TaskProcessor : ITaskProcessor
     /// <summary>
     /// Initializes a new instance of the <see cref="TaskProcessor"/> class.
     /// </summary>
+    /// <param name="createdDate">The created date.</param>
     /// <param name="policy">The policy.</param>
-    public TaskProcessor(ResiliencyPolicy policy)
+    public TaskProcessor(DateTimeOffset createdDate, ResiliencyPolicy policy)
     {
 #pragma warning disable CS0618 // Type or member is obsolete
         Status = TaskProcessorStatus.New;
-        History = new TaskProcessingHistory();
+        History = new TaskProcessingHistory(createdDate);
         ResiliencyPolicy = policy;
 #pragma warning restore CS0618 // Type or member is obsolete
     }
@@ -144,16 +145,17 @@ public class TaskProcessor : ITaskProcessor
     /// </summary>
     /// <returns>Hexalith.Application.Abstractions.Tasks.TaskProcessor.</returns>
     /// <inheritdoc cref="ITaskProcessor.Cancel" />
-    [Obsolete]
     public TaskProcessor Cancel()
     {
-        return (TaskProcessor)(Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed
+        return Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed
             ? throw new InvalidStatusChangeException(currentStatus: Status, newStatus: TaskProcessorStatus.Canceled, "Cannot cancel a terminated task.")
-            : (ITaskProcessor)new TaskProcessor(this)
-            {
-                History = History.Canceled(),
-                Status = TaskProcessorStatus.Canceled,
-            });
+            : new TaskProcessor(TaskProcessorStatus.Canceled, History.Canceled(), ResiliencyPolicy, Failure);
+    }
+
+    /// <inheritdoc/>
+    ITaskProcessor ITaskProcessor.Cancel()
+    {
+        return Cancel();
     }
 
     /// <summary>
@@ -161,16 +163,17 @@ public class TaskProcessor : ITaskProcessor
     /// </summary>
     /// <returns>Hexalith.Application.Abstractions.Tasks.TaskProcessor.</returns>
     /// <inheritdoc cref="ITaskProcessor.Complete" />
-    [Obsolete]
     public TaskProcessor Complete()
     {
-        return (TaskProcessor)(Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed
+        return Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed
             ? throw new InvalidStatusChangeException(currentStatus: Status, newStatus: TaskProcessorStatus.Completed, "Cannot complete a terminated task.")
-            : (ITaskProcessor)new TaskProcessor(this)
-            {
-                History = History.Completed(),
-                Status = TaskProcessorStatus.Completed,
-            });
+            : new TaskProcessor(TaskProcessorStatus.Completed, History.Completed(), ResiliencyPolicy, Failure);
+    }
+
+    /// <inheritdoc/>
+    ITaskProcessor ITaskProcessor.Complete()
+    {
+        return Complete();
     }
 
     /// <summary>
@@ -180,7 +183,6 @@ public class TaskProcessor : ITaskProcessor
     /// <exception cref="InvalidStatusChangeException">currentStatus: Status, newStatus: TaskProcessorStatus.Active, Only suspended tasks can be continued.</exception>
     /// <exception cref="InvalidStatusChangeException">currentStatus: Status, newStatus: TaskProcessorStatus.Active, Cannot continue a task that has never been started.</exception>
     /// <inheritdoc cref="ITaskProcessor.Continue" />
-    [Obsolete]
     public TaskProcessor Continue()
     {
         if (Status is not TaskProcessorStatus.Suspended)
@@ -196,29 +198,24 @@ public class TaskProcessor : ITaskProcessor
         if (Failure == null)
         {
             // The task has been manually suspended, so we can continue it without checking resiliency policy wait time.
-            return new TaskProcessor(this)
-            {
-                Status = TaskProcessorStatus.Active,
-            };
+            return new TaskProcessor(TaskProcessorStatus.Active, History, ResiliencyPolicy, Failure);
         }
 
         // Check if the can retry from resiliency policy
         RetryStatus status = ResiliencyPolicy.CanRetry(History.ProcessingStartDate.Value, Failure.Count);
         return status switch
         {
-            RetryStatus.Enabled => new TaskProcessor(this)
-            {
-                History = History,
-                Status = TaskProcessorStatus.Active,
-            },
+            RetryStatus.Enabled => new TaskProcessor(TaskProcessorStatus.Active, History, ResiliencyPolicy, Failure),
             RetryStatus.Suspended => this,
-            RetryStatus.Stopped => new TaskProcessor(this)
-            {
-                History = History.Canceled(),
-                Status = TaskProcessorStatus.Canceled,
-            },
+            RetryStatus.Stopped => new TaskProcessor(TaskProcessorStatus.Canceled, History.Canceled(), ResiliencyPolicy, Failure),
             _ => throw new InvalidStatusChangeException(Status, TaskProcessorStatus.Active, $"Invalid retry status : {status}"),
         };
+    }
+
+    /// <inheritdoc/>
+    ITaskProcessor ITaskProcessor.Continue()
+    {
+        return Continue();
     }
 
     /// <summary>
@@ -227,7 +224,6 @@ public class TaskProcessor : ITaskProcessor
     /// <param name="message">The message.</param>
     /// <returns>Hexalith.Application.Abstractions.Tasks.TaskProcessor.</returns>
     /// <inheritdoc cref="ITaskProcessor.Fail" />
-    [Obsolete]
     public TaskProcessor Fail(string message)
     {
         TaskProcessingFailure newFailure = Failure == null ? new TaskProcessingFailure(1, DateTimeOffset.UtcNow, message) : Failure.Fail(message);
@@ -236,18 +232,14 @@ public class TaskProcessor : ITaskProcessor
         return Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed
             ? throw new InvalidStatusChangeException(currentStatus: Status, newStatus: TaskProcessorStatus.Suspended, "Cannot fail a terminated task.")
             : canRetry
-                ? new TaskProcessor(this)
-                {
-                    History = History.Suspended(),
-                    Status = TaskProcessorStatus.Suspended,
-                    Failure = newFailure,
-                }
-                : new TaskProcessor(this)
-                {
-                    History = History.Canceled(),
-                    Status = TaskProcessorStatus.Canceled,
-                    Failure = newFailure,
-                };
+                ? new TaskProcessor(TaskProcessorStatus.Suspended, History.Suspended(), ResiliencyPolicy, newFailure)
+                : new TaskProcessor(TaskProcessorStatus.Canceled, History.Canceled(), ResiliencyPolicy, newFailure);
+    }
+
+    /// <inheritdoc/>
+    ITaskProcessor ITaskProcessor.Fail(string message)
+    {
+        return Fail(message);
     }
 
     /// <summary>
@@ -255,48 +247,14 @@ public class TaskProcessor : ITaskProcessor
     /// </summary>
     /// <returns>Hexalith.Application.Abstractions.Tasks.TaskProcessor.</returns>
     /// <inheritdoc cref="ITaskProcessor.Start" />
-    [Obsolete]
     public TaskProcessor Start()
     {
         return Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed or TaskProcessorStatus.Active
             ? throw new InvalidStatusChangeException(currentStatus: Status, newStatus: TaskProcessorStatus.Active, "Cannot start a terminated task.")
-            : new TaskProcessor(this)
-            {
-                History = History.ProcessingStarted(),
-                Status = TaskProcessorStatus.Active,
-            };
+            : new TaskProcessor(TaskProcessorStatus.Active, History.ProcessingStarted(), ResiliencyPolicy, Failure);
     }
 
     /// <inheritdoc/>
-    [Obsolete]
-    ITaskProcessor ITaskProcessor.Cancel()
-    {
-        return Cancel();
-    }
-
-    /// <inheritdoc/>
-    [Obsolete]
-    ITaskProcessor ITaskProcessor.Complete()
-    {
-        return Complete();
-    }
-
-    /// <inheritdoc/>
-    [Obsolete]
-    ITaskProcessor ITaskProcessor.Continue()
-    {
-        return Continue();
-    }
-
-    /// <inheritdoc/>
-    [Obsolete]
-    ITaskProcessor ITaskProcessor.Fail(string message)
-    {
-        return Fail(message);
-    }
-
-    /// <inheritdoc/>
-    [Obsolete]
     ITaskProcessor ITaskProcessor.Start()
     {
         return Start();
