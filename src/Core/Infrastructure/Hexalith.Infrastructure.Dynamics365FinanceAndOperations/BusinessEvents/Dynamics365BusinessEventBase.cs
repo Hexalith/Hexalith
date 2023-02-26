@@ -24,24 +24,32 @@ using Hexalith.Infrastructure.Serialization.Serialization;
 /// The dynamics365 business event metadata.
 /// </summary>
 [JsonPolymorphicBaseClass]
+[DataContract]
+[Serializable]
 public class Dynamics365BusinessEventBase : IMetadata, IEvent
 {
     /// <inheritdoc/>
+    [IgnoreDataMember]
+    [JsonIgnore]
     public virtual string AggregateId => string.Empty;
 
     /// <inheritdoc/>
+    [IgnoreDataMember]
+    [JsonIgnore]
     public virtual string AggregateName => string.Empty;
 
     /// <summary>
     /// Gets or sets the business event id.
     /// </summary>
-    [DataMember]
+    [DataMember(Order = 1)]
+    [JsonPropertyOrder(1)]
     public string? BusinessEventId { get; set; }
 
     /// <summary>
     /// Gets or sets the business event legal entity.
     /// </summary>
-    [DataMember]
+    [DataMember(Order = 2)]
+    [JsonPropertyOrder(2)]
     public string? BusinessEventLegalEntity { get; set; }
 
     /// <summary>
@@ -57,48 +65,48 @@ public class Dynamics365BusinessEventBase : IMetadata, IEvent
         sessionId: null);
 
     /// <summary>
-    /// Gets or sets the context record subject.
-    /// </summary>
-    [DataMember]
-    public string? ContextRecordSubject { get; set; }
-
-    /// <summary>
     /// Gets or sets the control number.
     /// </summary>
-    [DataMember]
+    [DataMember(Order = 9)]
+    [JsonPropertyOrder(9)]
     public long ControlNumber { get; set; }
 
     /// <summary>
     /// Gets or sets the event id.
     /// </summary>
-    [DataMember]
+    [DataMember(Order = 3)]
+    [JsonPropertyOrder(3)]
     public string? EventId { get; set; }
 
     /// <summary>
     /// Gets or sets the event time.
     /// </summary>
-    [DataMember]
+    [DataMember(Order = 4)]
+    [JsonPropertyOrder(4)]
     [JsonConverter(typeof(UnixEpochDateTimeConverter))]
     public DateTime? EventTime { get; set; }
 
     /// <summary>
     /// Gets or sets the event time iso8601.
     /// </summary>
-    [DataMember]
+    [DataMember(Order = 5)]
+    [JsonPropertyOrder(5)]
     [JsonConverter(typeof(IsoUtcDateTimeOffsetConverter))]
     public DateTimeOffset? EventTimeIso8601 { get; set; }
 
     /// <summary>
     /// Gets or sets the initiating user a a d object id.
     /// </summary>
-    [DataMember]
+    [DataMember(Order = 6)]
+    [JsonPropertyOrder(6)]
     [JsonPropertyName("InitiatingUserAADObjectId")]
     public string? InitiatingUserAzureActiveDirectoryObjectId { get; set; }
 
     /// <summary>
     /// Gets or sets the major version.
     /// </summary>
-    [DataMember]
+    [DataMember(Order = 7)]
+    [JsonPropertyOrder(7)]
     public int MajorVersion { get; set; }
 
     /// <summary>
@@ -116,12 +124,15 @@ public class Dynamics365BusinessEventBase : IMetadata, IEvent
         new AggregateMetadata(string.Empty, string.Empty));
 
     /// <inheritdoc/>
+    [IgnoreDataMember]
+    [JsonIgnore]
     public string MessageName => BusinessEventId ?? string.Empty;
 
     /// <summary>
     /// Gets or sets the minor version.
     /// </summary>
-    [DataMember]
+    [DataMember(Order = 8)]
+    [JsonPropertyOrder(8)]
     public int MinorVersion { get; set; }
 
     /// <summary>

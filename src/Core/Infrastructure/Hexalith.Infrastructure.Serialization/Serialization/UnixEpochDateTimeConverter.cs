@@ -64,7 +64,7 @@ public sealed partial class UnixEpochDateTimeConverter : JsonConverter<DateTime>
     /// <param name="options">An object that specifies serialization options to use.</param>
     public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
     {
-        long unixTime = Convert.ToInt64((value - _epoch).TotalMilliseconds);
+        long unixTime = Convert.ToInt64((value.ToUniversalTime() - _epoch).TotalMilliseconds);
 
         string formatted = FormattableString.Invariant($"/Date({unixTime})/");
         writer.WriteStringValue(formatted);
