@@ -27,6 +27,7 @@ using Hexalith.Application.Abstractions.Notifications;
 /// Class NotificationState.
 /// </summary>
 [DataContract]
+[Serializable]
 public class NotificationState : MessageState<BaseNotification, Metadata>
 {
     /// <summary>

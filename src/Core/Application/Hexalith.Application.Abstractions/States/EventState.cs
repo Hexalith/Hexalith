@@ -17,6 +17,7 @@
 namespace Hexalith.Application.Abstractions.States;
 
 using System;
+using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 using Hexalith.Application.Abstractions.Metadatas;
@@ -25,6 +26,8 @@ using Hexalith.Domain.Abstractions.Events;
 /// <summary>
 /// Class EventState.
 /// </summary>
+[DataContract]
+[Serializable]
 public class EventState : MessageState<BaseEvent, Metadata>
 {
     /// <summary>

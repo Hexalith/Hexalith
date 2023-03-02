@@ -25,6 +25,8 @@ public class DummyCommand2 : DummyBaseCommand
     {
     }
 
+    [DataMember(Order = 2)]
+    [JsonPropertyOrder(2)]
     public int Value2 { get; }
 
     public static DummyCommand2 Create()

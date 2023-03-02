@@ -16,6 +16,20 @@ using Hexalith.Infrastructure.Serialization.Helpers;
 public class BaseCommandTest
 {
     [Fact]
+    public void Binary_serialize_and_deserialize_should_return_same_object()
+    {
+        DummyCommand1 original = new("IB2343213FR", 1256);
+        _ = original.Should().BeBinarySerializable();
+    }
+
+    [Fact]
+    public void Data_contract_serialize_and_deserialize_should_return_same_object()
+    {
+        DummyCommand1 original = new("IB2343213FR", 1256);
+        _ = original.Should().BeDataContractSerializable();
+    }
+
+    [Fact]
     public void Polymorphic_serialize_and_deserialize_should_return_same_object()
     {
         JsonSerializerOptions options = new JsonSerializerOptions().AddPolymorphism();
@@ -28,6 +42,16 @@ public class BaseCommandTest
     }
 
     [Fact]
+    public void Polymorphic_serialize_first_field_should_be_type()
+    {
+        JsonSerializerOptions options = new JsonSerializerOptions().AddPolymorphism();
+        DummyCommand1 original = new("IB2343213FR", 655463);
+        string json = JsonSerializer.Serialize<BaseCommand>(original, options);
+        _ = json.Should().NotBeNull();
+        _ = json.Should().Contain($"{{\"$type\":\"{nameof(DummyCommand1)}\"");
+    }
+
+    [Fact]
     public void Serialize_and_deserialize_should_return_same_object()
     {
         DummyCommand1 original = new("IB2343213FR", 1256);
@@ -35,19 +59,5 @@ public class BaseCommandTest
         DummyCommand1 result = JsonSerializer.Deserialize<DummyCommand1>(json);
         _ = result.Should().NotBeNull();
         _ = result.Should().BeEquivalentTo(original);
-    }
-
-    [Fact]
-    public void Data_contract_serialize_and_deserialize_should_return_same_object()
-    {
-        DummyCommand1 original = new("IB2343213FR", 1256);
-        _ = original.Should().BeDataContractSerializable();
-    }
-
-    [Fact]
-    public void Binary_serialize_and_deserialize_should_return_same_object()
-    {
-        DummyCommand1 original = new("IB2343213FR", 1256);
-        _ = original.Should().BeBinarySerializable();
     }
 }

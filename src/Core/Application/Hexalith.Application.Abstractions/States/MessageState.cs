@@ -26,70 +26,11 @@ using Hexalith.Extensions.Common;
 
 /// <summary>
 /// Class MessageState.
-/// </summary>
-/// <typeparam name="TMessage">The type of the t message.</typeparam>
-/// <typeparam name="TMetadata">The type of the t metadata.</typeparam>
-[DataContract]
-public class MessageState<TMessage, TMetadata> : IIdempotent
-    where TMessage : BaseMessage
-    where TMetadata : Metadata
-{
-    /// <summary>
-    /// Initializes a new instance of the <see cref="MessageState{TMessage, TMetadata}" /> class.
-    /// </summary>
-    public MessageState()
-    {
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="MessageState{TMessage, TMetadata}" /> class.
-    /// </summary>
-    /// <param name="receivedDate">The received date.</param>
-    /// <param name="message">The message.</param>
-    /// <param name="metadata">The metadata.</param>
-    [JsonConstructor]
-    public MessageState(DateTimeOffset? receivedDate, TMessage? message, TMetadata? metadata)
-    {
-        ReceivedDate = receivedDate;
-        Message = message;
-        Metadata = metadata;
-    }
-
-    /// <summary>
-    /// Gets the idempotency identifier.
-    /// </summary>
-    /// <value>The idempotency identifier.</value>
-    /// <exception cref="System.InvalidOperationException">The Idempotency identifier is not defined.</exception>
-    [JsonIgnore]
-    [IgnoreDataMember]
-    public string IdempotencyId => string.IsNullOrWhiteSpace(Metadata?.Message.Id)
-        ? throw new InvalidOperationException("The Idempotency identifier is not defined.")
-        : Metadata.Message.Id;
-
-    /// <summary>
-    /// Gets or sets the message.
-    /// </summary>
-    /// <value>The message.</value>
-    public TMessage? Message { get; set; }
-
-    /// <summary>
-    /// Gets or sets the metadata.
-    /// </summary>
-    /// <value>The metadata.</value>
-    public TMetadata? Metadata { get; set; }
-
-    /// <summary>
-    /// Gets or sets the received date.
-    /// </summary>
-    /// <value>The received date.</value>
-    public DateTimeOffset? ReceivedDate { get; set; }
-}
-
-/// <summary>
-/// Class MessageState.
 /// Implements the <see cref="IIdempotent" />.
 /// </summary>
 /// <seealso cref="IIdempotent" />
+[Serializable]
+[DataContract]
 public class MessageState : MessageState<BaseMessage, Metadata>
 {
     /// <summary>

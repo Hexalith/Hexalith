@@ -28,7 +28,8 @@ public class DummyBaseCommand : BaseCommand
         BaseValue = baseValue;
     }
 
-    [DataMember]
+    [DataMember(Order = 2)]
+    [JsonPropertyOrder(2)]
     public string BaseValue { get; private set; }
 
     public Metadata CreateMetadata()
