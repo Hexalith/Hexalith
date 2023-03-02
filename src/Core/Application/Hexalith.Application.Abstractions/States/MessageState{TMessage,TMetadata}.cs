@@ -31,7 +31,6 @@ using Hexalith.Extensions.Common;
 /// <typeparam name="TMessage">The type of the t message.</typeparam>
 /// <typeparam name="TMetadata">The type of the t metadata.</typeparam>
 [DataContract]
-[Serializable]
 public class MessageState<TMessage, TMetadata> : IIdempotent
     where TMessage : BaseMessage
     where TMetadata : Metadata

@@ -17,14 +17,6 @@ using Hexalith.TestMocks;
 public class ResiliencyPolicyTest
 {
     [Fact]
-    public void Binary_serialize_seserialize_should_return_same_value()
-    {
-        // Serialize resiliency policy
-        ResiliencyPolicy policy = GetTestPolicy();
-        _ = policy.Should().BeBinarySerializable();
-    }
-
-    [Fact]
     public void Data_contract_serialize_seserialize_should_return_same_value()
     {
         // Serialize resiliency policy

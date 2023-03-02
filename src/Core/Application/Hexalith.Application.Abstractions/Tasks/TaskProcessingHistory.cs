@@ -14,7 +14,6 @@ using System.Text.Json.Serialization;
 /// The task processing history information.
 /// </summary>
 [DataContract]
-[Serializable]
 public class TaskProcessingHistory
 {
     /// <summary>

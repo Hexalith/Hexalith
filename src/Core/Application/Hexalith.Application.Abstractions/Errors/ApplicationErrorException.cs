@@ -16,7 +16,7 @@ using Hexalith.Extensions.Common;
 /// Implements the <see cref="Exception" />.
 /// </summary>
 /// <seealso cref="Exception" />
-[Serializable]
+[DataContract]
 public class ApplicationErrorException : Exception
 {
     /// <summary>
@@ -80,5 +80,5 @@ public class ApplicationErrorException : Exception
     /// Gets the error.
     /// </summary>
     /// <value>The error.</value>
-    public Error? Error { get; }
+    public Error? Error { get; private set; }
 }

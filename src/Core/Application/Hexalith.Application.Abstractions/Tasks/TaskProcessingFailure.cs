@@ -14,7 +14,6 @@ using System.Text.Json.Serialization;
 /// The task processing failure information.
 /// </summary>
 [DataContract]
-[Serializable]
 public class TaskProcessingFailure
 {
     /// <summary>

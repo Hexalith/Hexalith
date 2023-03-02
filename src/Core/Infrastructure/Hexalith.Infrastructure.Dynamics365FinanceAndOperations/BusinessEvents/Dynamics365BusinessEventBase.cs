@@ -25,7 +25,6 @@ using Hexalith.Infrastructure.Serialization.Serialization;
 /// </summary>
 [JsonPolymorphicBaseClass]
 [DataContract]
-[Serializable]
 public class Dynamics365BusinessEventBase : IMetadata, IEvent
 {
     /// <inheritdoc/>

@@ -16,13 +16,6 @@ using Hexalith.Application.Abstractions.Tasks;
 public class TaskProcessorTest
 {
     [Fact]
-    public void Binary_serialize_and_deserialize_task_should_return_same()
-    {
-        TaskProcessor processor = GetTestProcessor();
-        _ = processor.Should().BeBinarySerializable();
-    }
-
-    [Fact]
     public void Complete_processing_task_should_have_complete_date()
     {
         TaskProcessor processor = new TaskProcessor(DateTimeOffset.UtcNow, ResiliencyPolicy.None)

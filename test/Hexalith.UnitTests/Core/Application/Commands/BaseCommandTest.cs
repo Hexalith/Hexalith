@@ -16,13 +16,6 @@ using Hexalith.Infrastructure.Serialization.Helpers;
 public class BaseCommandTest
 {
     [Fact]
-    public void Binary_serialize_and_deserialize_should_return_same_object()
-    {
-        DummyCommand1 original = new("IB2343213FR", 1256);
-        _ = original.Should().BeBinarySerializable();
-    }
-
-    [Fact]
     public void Data_contract_serialize_and_deserialize_should_return_same_object()
     {
         DummyCommand1 original = new("IB2343213FR", 1256);

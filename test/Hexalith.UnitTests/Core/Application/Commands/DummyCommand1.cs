@@ -13,7 +13,6 @@ using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Extensions.Helpers;
 
 [DataContract]
-[Serializable]
 public class DummyCommand1 : DummyBaseCommand
 {
     [JsonConstructor]

@@ -27,7 +27,6 @@ using Hexalith.Application.Abstractions.Metadatas;
 /// Class CommandState.
 /// </summary>
 [DataContract]
-[Serializable]
 public class CommandState : MessageState<BaseCommand, Metadata>
 {
     /// <summary>

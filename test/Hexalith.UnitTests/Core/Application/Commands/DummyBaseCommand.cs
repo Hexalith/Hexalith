@@ -14,7 +14,6 @@ using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Extensions.Helpers;
 
 [DataContract]
-[Serializable]
 public class DummyBaseCommand : BaseCommand
 {
     public DummyBaseCommand()

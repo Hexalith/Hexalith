@@ -27,7 +27,6 @@ using Hexalith.Domain.Abstractions.Events;
 /// Class EventState.
 /// </summary>
 [DataContract]
-[Serializable]
 public class EventState : MessageState<BaseEvent, Metadata>
 {
     /// <summary>

@@ -14,7 +14,7 @@ using Hexalith.Extensions.Helpers;
 /// <summary>
 /// The message store item not found exception.
 /// </summary>
-[Serializable]
+[DataContract]
 public class MessageStoreItemNotFoundException : Exception
 {
     /// <summary>
@@ -70,10 +70,10 @@ public class MessageStoreItemNotFoundException : Exception
     /// <summary>
     /// Gets the stream name.
     /// </summary>
-    public string? StreamName { get; }
+    public string? StreamName { get; private set; }
 
     /// <summary>
     /// Gets the stream item version.
     /// </summary>
-    public long? Version { get; }
+    public long? Version { get; private set; }
 }

@@ -20,7 +20,7 @@ using System.Runtime.Serialization;
 /// Exception thrown when a single request failed.
 /// </summary>
 /// <typeparam name="T">Type of the returned entity.</typeparam>
-[Serializable]
+[DataContract]
 public sealed class GetRequestFailedException<T> : Exception
 {
     /// <summary>

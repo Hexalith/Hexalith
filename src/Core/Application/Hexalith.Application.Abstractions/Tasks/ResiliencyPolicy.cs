@@ -15,7 +15,6 @@ using Hexalith.Extensions.Helpers;
 /// Retry policy.
 /// </summary>
 [DataContract]
-[Serializable]
 public class ResiliencyPolicy
 {
     /// <summary>

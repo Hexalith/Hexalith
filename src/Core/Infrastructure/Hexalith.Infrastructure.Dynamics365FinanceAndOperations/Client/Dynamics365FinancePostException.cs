@@ -19,7 +19,7 @@ using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 /// <typeparam name="TEntity">The type of the entity.</typeparam>
 /// <typeparam name="TCreate">The type of the create.</typeparam>
 /// <seealso cref="Exception" />
-[Serializable]
+[DataContract]
 public class Dynamics365FinancePostException<TEntity, TCreate> : Exception
     where TEntity : class, IODataElement
 {
@@ -85,23 +85,23 @@ public class Dynamics365FinancePostException<TEntity, TCreate> : Exception
     /// Gets the company.
     /// </summary>
     /// <value>The company.</value>
-    public string? Company { get; }
+    public string? Company { get; private set; }
 
     /// <summary>
     /// Gets the content of the response.
     /// </summary>
     /// <value>The content of the response.</value>
-    public ErrorResponse? Error { get; }
+    public ErrorResponse? Error { get; private set; }
 
     /// <summary>
     /// Gets the content of the response.
     /// </summary>
     /// <value>The content of the response.</value>
-    public string? ResponseContent { get; }
+    public string? ResponseContent { get; private set; }
 
     /// <summary>Gets the URL.</summary>
     /// <value>The URL.</value>
-    public Uri? Url { get; }
+    public Uri? Url { get; private set; }
 
     /// <summary>
     /// Gets the value to create.

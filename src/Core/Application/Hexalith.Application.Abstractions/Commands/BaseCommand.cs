@@ -18,7 +18,6 @@ using Hexalith.Domain.Abstractions.Messages;
 /// <seealso cref="BaseMessage" />
 /// <seealso cref="Application.Commands.ICommand" />
 [DataContract]
-[Serializable]
 public class BaseCommand : BaseMessage, ICommand
 {
 }

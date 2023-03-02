@@ -24,7 +24,7 @@ using System.Runtime.Serialization;
 /// Implements the <see cref="Exception" />.
 /// </summary>
 /// <seealso cref="Exception" />
-[Serializable]
+[DataContract]
 public class DuplicateIdempotencyIdException : Exception
 {
     /// <summary>
@@ -78,11 +78,11 @@ public class DuplicateIdempotencyIdException : Exception
     /// Gets the duplicate data.
     /// </summary>
     /// <value>The duplicate data.</value>
-    public object? DuplicateData { get; }
+    public object? DuplicateData { get; private set; }
 
     /// <summary>
     /// Gets the idempotency identifier.
     /// </summary>
     /// <value>The idempotency identifier.</value>
-    public string? IdempotencyId { get; }
+    public string? IdempotencyId { get; private set; }
 }

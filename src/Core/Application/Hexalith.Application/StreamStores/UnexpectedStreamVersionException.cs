@@ -12,7 +12,7 @@ using System.Runtime.Serialization;
 /// <summary>
 /// Exception thrown when a stream version is not the expected one.
 /// </summary>
-[Serializable]
+[DataContract]
 public class UnexpectedStreamVersionException : Exception
 {
     /// <summary>

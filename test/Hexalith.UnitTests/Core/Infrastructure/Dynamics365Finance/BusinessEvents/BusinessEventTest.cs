@@ -131,14 +131,6 @@ public class BusinessEventTest
     }
 
     [Fact]
-    public void Binary_serialize_and_deserialize_should_return_same_object()
-    {
-        Dynamics365BusinessEventBase original = GetEvent();
-
-        _ = original.Should().BeBinarySerializable();
-    }
-
-    [Fact]
     public void Data_contract_serialize_and_deserialize_should_return_same_object()
     {
         Dynamics365BusinessEventBase original = GetEvent();

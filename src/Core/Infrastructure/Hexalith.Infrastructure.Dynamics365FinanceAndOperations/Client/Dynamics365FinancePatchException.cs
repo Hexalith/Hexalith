@@ -19,7 +19,7 @@ using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 /// <typeparam name="TEntity">The type of the entity.</typeparam>
 /// <typeparam name="TUpdate">The type of the create.</typeparam>
 /// <seealso cref="Exception" />
-[Serializable]
+[DataContract]
 public class Dynamics365FinancePatchException<TEntity, TUpdate> : Exception
     where TEntity : class, IODataElement
 {
@@ -85,29 +85,29 @@ public class Dynamics365FinancePatchException<TEntity, TUpdate> : Exception
     /// Gets the company.
     /// </summary>
     /// <value>The company.</value>
-    public string? Company { get; }
+    public string? Company { get; private set; }
 
     /// <summary>
     /// Gets the content of the response.
     /// </summary>
     /// <value>The content of the response.</value>
-    public ErrorResponse? Error { get; }
+    public ErrorResponse? Error { get; private set; }
 
     /// <summary>
     /// Gets the content of the response.
     /// </summary>
     /// <value>The content of the response.</value>
-    public string? ResponseContent { get; }
+    public string? ResponseContent { get; private set; }
 
     /// <summary>Gets the URL.</summary>
     /// <value>The URL.</value>
-    public Uri? Url { get; }
+    public Uri? Url { get; private set; }
 
     /// <summary>
     /// Gets the value to create.
     /// </summary>
     /// <value>The value.</value>
-    public TUpdate? Value { get; }
+    public TUpdate? Value { get; private set; }
 
     private static string CreateMessage(Uri url, string company, TUpdate? value, ErrorResponse? error, string? message, string? responseContent)
     {

@@ -29,7 +29,6 @@ using Hexalith.Extensions.Common;
 /// Implements the <see cref="IIdempotent" />.
 /// </summary>
 /// <seealso cref="IIdempotent" />
-[Serializable]
 [DataContract]
 public class MessageState : MessageState<BaseMessage, Metadata>
 {

@@ -16,7 +16,6 @@ using Hexalith.Extensions.Serialization;
 /// </summary>
 [JsonPolymorphicBaseClass]
 [DataContract]
-[Serializable]
 public class BaseMessage : IMessage
 {
     /// <summary>

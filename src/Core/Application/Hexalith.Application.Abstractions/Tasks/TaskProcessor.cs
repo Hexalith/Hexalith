@@ -14,7 +14,6 @@ using System.Text.Json.Serialization;
 /// The task processor.
 /// </summary>
 [DataContract]
-[Serializable]
 public class TaskProcessor : ITaskProcessor
 {
     /// <summary>

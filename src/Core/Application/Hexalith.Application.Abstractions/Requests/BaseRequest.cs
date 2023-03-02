@@ -18,7 +18,6 @@ using Hexalith.Domain.Abstractions.Messages;
 /// <seealso cref="BaseMessage" />
 /// <seealso cref="Application.Requests.IRequest" />
 [DataContract]
-[Serializable]
 public class BaseRequest : BaseMessage, IRequest
 {
 }

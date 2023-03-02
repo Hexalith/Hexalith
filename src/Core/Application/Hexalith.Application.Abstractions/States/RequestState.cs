@@ -27,7 +27,6 @@ using Hexalith.Application.Abstractions.Requests;
 /// Class RequestState.
 /// </summary>
 [DataContract]
-[Serializable]
 public class RequestState : MessageState<BaseRequest, Metadata>
 {
     /// <summary>

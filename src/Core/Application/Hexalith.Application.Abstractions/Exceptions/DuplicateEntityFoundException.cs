@@ -16,7 +16,7 @@ using System.Text.Json;
 /// </summary>
 /// <typeparam name="TEntity">The type of the t entity.</typeparam>
 /// <seealso cref="Exception" />
-[Serializable]
+[DataContract]
 public class DuplicateEntityFoundException<TEntity> : Exception
 {
     /// <summary>
@@ -71,5 +71,5 @@ public class DuplicateEntityFoundException<TEntity> : Exception
     /// Gets the key.
     /// </summary>
     /// <value>The key.</value>
-    public object? Key { get; }
+    public object? Key { get; private set; }
 }

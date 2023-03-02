@@ -12,7 +12,7 @@ using System.Runtime.Serialization;
 /// <summary>
 /// The exception that is thrown when a task processor status change is invalid.
 /// </summary>
-[Serializable]
+[DataContract]
 public sealed class InvalidStatusChangeException : Exception
 {
     /// <summary>
@@ -67,10 +67,10 @@ public sealed class InvalidStatusChangeException : Exception
     /// <summary>
     /// Gets the current processor status.
     /// </summary>
-    public TaskProcessorStatus? CurrentStatus { get; }
+    public TaskProcessorStatus? CurrentStatus { get; private set; }
 
     /// <summary>
     /// Gets the expected new status.
     /// </summary>
-    public TaskProcessorStatus? NewStatus { get; }
+    public TaskProcessorStatus? NewStatus { get; private set; }
 }
