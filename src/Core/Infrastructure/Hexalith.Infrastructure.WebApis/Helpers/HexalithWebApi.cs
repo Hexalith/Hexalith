@@ -39,7 +39,6 @@ using Hexalith.Infrastructure.DaprBus;
 using Hexalith.Infrastructure.DaprHandlers.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Buses;
 using Hexalith.Infrastructure.DaprRuntime.States;
-using Hexalith.Infrastructure.Serialization;
 using Hexalith.Infrastructure.Serialization.Helpers;
 
 using Microsoft.AspNetCore.Builder;
@@ -81,13 +80,14 @@ public static class HexalithWebApi
 
         builder.Services.AddDaprClient(
             configure => configure.UseJsonSerializationOptions(new JsonSerializerOptions().AddPolymorphism()));
+
         builder.Services.AddActors(options =>
         {
             // Register actor types and configure actor settings
             registerActors(options.Actors);
 
             // Configure serialization options
-            options.JsonSerializerOptions.TypeInfoResolver = new PolymorphicTypeResolver();
+            options.JsonSerializerOptions = new JsonSerializerOptions().AddPolymorphism();
         });
         _ = builder.Services.AddControllers().AddDapr();
 

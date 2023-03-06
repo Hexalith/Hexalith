@@ -4,7 +4,9 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.UnitTests.Core.Infrastructure.DaprAggregateActor;
+namespace Hexalith.UnitTests.Core.Infrastructure.States;
+
+using System.Text.Json;
 
 using Dapr.Actors.Runtime;
 
@@ -12,6 +14,7 @@ using FluentAssertions;
 
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Infrastructure.DaprRuntime.States;
+using Hexalith.Infrastructure.Serialization.Helpers;
 using Hexalith.UnitTests.Core.Application.Commands;
 
 using Moq;
@@ -24,8 +27,10 @@ public class ActorStateStoreProviderTest
         DummyCommand1 command = new("Test", 123456);
         Mock<IActorStateManager> actorStateManager = new();
         _ = actorStateManager
-            .Setup(p => p.TryGetStateAsync<BaseCommand>("State", It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<BaseCommand>(true, command));
+            .Setup(p => p.TryGetStateAsync<JsonDocument>("State", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ConditionalValue<JsonDocument>(
+                true,
+                JsonDocument.Parse(JsonSerializer.Serialize<BaseCommand>(command, new JsonSerializerOptions().AddPolymorphism()))));
         Mock<ICommandDispatcher> dispatcher = new();
         ActorStateStoreProvider storeProvider = new(actorStateManager.Object);
         Extensions.Common.ConditionalValue<BaseCommand> result = await storeProvider.TryGetStateAsync<BaseCommand>("State", CancellationToken.None);
