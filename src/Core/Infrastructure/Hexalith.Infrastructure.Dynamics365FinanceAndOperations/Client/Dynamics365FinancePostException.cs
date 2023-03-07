@@ -117,7 +117,7 @@ public class Dynamics365FinancePostException<TEntity, TCreate> : Exception
             msg += "\n" + message;
         }
 
-        msg += error != null && error.Error != null && !string.IsNullOrWhiteSpace(error.Error.Message) ? $"\n{error.Error.Message}\n{error.Error.InnerError?.Message}" : $"\nResponse content:\n{responseContent}";
+        msg += error != null && error.Error != null && !string.IsNullOrWhiteSpace(error.Error.Message) ? $"\n{error.Error.Message}\n{error.Error.InnerError?.Message}\n{error.Error.InnerError?.InternalException?.Message}" : $"\nResponse content:\n{responseContent}";
 
         if (!object.Equals(value, default(TCreate)))
         {

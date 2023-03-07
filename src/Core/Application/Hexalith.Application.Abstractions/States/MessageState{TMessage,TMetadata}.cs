@@ -18,7 +18,6 @@ namespace Hexalith.Application.Abstractions.States;
 
 using System;
 using System.Runtime.Serialization;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 
 using Hexalith.Application.Abstractions.Metadatas;
@@ -71,23 +70,23 @@ public class MessageState<TMessage, TMetadata> : IIdempotent
     /// Gets or sets the message.
     /// </summary>
     /// <value>The message.</value>
-    [DataMember(Order = 2)]
-    [JsonPropertyOrder(2)]
+    [DataMember(Order = 3)]
+    [JsonPropertyOrder(3)]
     public TMessage? Message { get; set; }
 
     /// <summary>
     /// Gets or sets the metadata.
     /// </summary>
     /// <value>The metadata.</value>
-    [DataMember(Order = 3)]
-    [JsonPropertyOrder(3)]
+    [DataMember(Order = 4)]
+    [JsonPropertyOrder(4)]
     public TMetadata? Metadata { get; set; }
 
     /// <summary>
     /// Gets or sets the received date.
     /// </summary>
     /// <value>The received date.</value>
-    [DataMember(Order = 1)]
-    [JsonPropertyOrder(1)]
+    [DataMember(Order = 2)]
+    [JsonPropertyOrder(2)]
     public DateTimeOffset? ReceivedDate { get; set; }
 }

@@ -27,7 +27,7 @@ public class ErrorMessage
     /// </summary>
     /// <value>The inner error.</value>
     [JsonPropertyName("innererror")]
-    public ErrorMessage? InnerError { get; set; }
+    public InnerErrorMessage? InnerError { get; set; }
 
     /// <summary>
     /// Gets or sets the message.
