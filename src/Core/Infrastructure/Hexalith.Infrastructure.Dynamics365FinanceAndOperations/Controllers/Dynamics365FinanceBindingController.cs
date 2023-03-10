@@ -6,10 +6,16 @@
 
 namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Controllers;
 
+using System.Runtime.Serialization;
+using System.Text.Json;
+
 using Ardalis.GuardClauses;
 
 using FluentValidation;
 
+using Hexalith.Application.Abstractions.Errors;
+using Hexalith.Application.Abstractions.Events;
+using Hexalith.Domain.Abstractions.Events;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Dispatchers;
 using Hexalith.Infrastructure.WebApis.Controllers;
@@ -46,4 +52,35 @@ public abstract class Dynamics365FinanceBindingController : BindingController
     {
         _eventValidator = Guard.Against.Null(metadataValidator);
     }
+
+    /// <inheritdoc/>
+    protected override IEvent DeserializeAndValidate(JsonElement message)
+    {
+        try
+        {
+            Dynamics365BusinessEventBase businessEvent = message.Deserialize<Dynamics365BusinessEventBase>() ?? throw new InvalidOperationException("Deserialized business event is null.");
+
+            _eventValidator.ValidateAndThrow(businessEvent);
+            ValidateAndThrow(businessEvent);
+            return businessEvent;
+        }
+        catch (ValidationException ex)
+        {
+            throw new ApplicationErrorException(
+                new EventValidationFailed(message.GetRawText(), ex),
+                ex);
+        }
+        catch (SerializationException ex)
+        {
+            throw new ApplicationErrorException(
+                new EventDeserializationFailed(message.GetRawText(), ex),
+                ex);
+        }
+    }
+
+    /// <summary>
+    /// Validates the message and if not successful throws a validation exception <see cref="ValidationException" /> .
+    /// </summary>
+    /// <param name="message">The message.</param>
+    protected abstract void ValidateAndThrow(Dynamics365BusinessEventBase message);
 }
