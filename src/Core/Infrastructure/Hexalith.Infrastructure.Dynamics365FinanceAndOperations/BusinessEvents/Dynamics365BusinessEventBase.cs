@@ -8,25 +8,25 @@ namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents
 
 using System;
 using System.Runtime.Serialization;
-using System.Text.Json;
 using System.Text.Json.Serialization;
-
-using Ardalis.GuardClauses;
 
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Domain.Abstractions.Converters;
 using Hexalith.Domain.Abstractions.Events;
-using Hexalith.Extensions.Serialization;
+using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Serialization;
 using Hexalith.Infrastructure.Serialization.Serialization;
 
 /// <summary>
 /// The dynamics365 business event metadata.
 /// </summary>
 [DataContract]
-[JsonConverter(typeof(PolymorphicJsonConverter<Dynamics365BusinessEventBase>))]
-public class Dynamics365BusinessEventBase : IMetadata, IEvent, IPolymorphicSerializable
+[JsonConverter(typeof(BusinessEventJsonConverter))]
+public abstract class Dynamics365BusinessEventBase : IMetadata, IEvent
 {
+    private string? _businessEventId;
+    private int _majorVersion;
+    private int _minorVersion;
+
     /// <inheritdoc/>
     [IgnoreDataMember]
     [JsonIgnore]
@@ -42,7 +42,11 @@ public class Dynamics365BusinessEventBase : IMetadata, IEvent, IPolymorphicSeria
     /// </summary>
     [DataMember(Order = 1)]
     [JsonPropertyOrder(1)]
-    public string? BusinessEventId { get; set; }
+    public string? BusinessEventId
+    {
+        get => string.IsNullOrEmpty(_businessEventId) ? DefaultTypeName() : _businessEventId;
+        set => _businessEventId = value;
+    }
 
     /// <summary>
     /// Gets or sets the business event legal entity.
@@ -106,7 +110,7 @@ public class Dynamics365BusinessEventBase : IMetadata, IEvent, IPolymorphicSeria
     /// </summary>
     [DataMember(Order = 7)]
     [JsonPropertyOrder(7)]
-    public int MajorVersion { get; set; }
+    public int MajorVersion { get => _majorVersion <= 0 ? DefaultMajorVersion() : _majorVersion; set => _majorVersion = value; }
 
     /// <summary>
     /// Gets the message id.
@@ -127,7 +131,7 @@ public class Dynamics365BusinessEventBase : IMetadata, IEvent, IPolymorphicSeria
     /// </summary>
     [DataMember(Order = 8)]
     [JsonPropertyOrder(8)]
-    public int MinorVersion { get; set; }
+    public int MinorVersion { get => _minorVersion <= 0 ? DefaultMinorVersion() : _minorVersion; set => _minorVersion = value; }
 
     /// <summary>
     /// Gets the received date time.
@@ -146,7 +150,7 @@ public class Dynamics365BusinessEventBase : IMetadata, IEvent, IPolymorphicSeria
     /// <inheritdoc/>
     [IgnoreDataMember]
     [JsonIgnore]
-    public string TypeName => BusinessEventId ?? string.Empty;
+    public string TypeName => string.IsNullOrWhiteSpace(BusinessEventId) ? DefaultTypeName() : BusinessEventId;
 
     /// <summary>
     /// Gets the user id.
@@ -156,65 +160,38 @@ public class Dynamics365BusinessEventBase : IMetadata, IEvent, IPolymorphicSeria
     public IMetadataVersion Version => new MetadataVersion(MajorVersion, MinorVersion);
 
     /// <summary>
-    /// Adds the polymorphic type property set with BusinessEventId value and deserialize object.
-    /// Standard .NET polymorphic deserialization needs the type to be the first property in the JSON. We cannot guarantee that the BusinessEventId will be first.
-    /// </summary>
-    /// <param name="json">The json.</param>
-    /// <returns>Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents.Dynamics365BusinessEventBase.</returns>
-    /// <exception cref="InvalidOperationException">Unable to deserialize business event. The BusinessEventId property is missing or empty.</exception>
-    public static Dynamics365BusinessEventBase AddTypeAndDeserialize(JsonElement json)
-    {
-        _ = Guard.Against.Null(json);
-        string? name;
-        try
-        {
-            name = json.GetProperty(nameof(Dynamics365BusinessEventBase.BusinessEventId)).GetString();
-        }
-        catch (Exception e)
-        {
-            throw new SerializationException("Unable to deserialize business event property BusinessEventId.", e);
-        }
-
-        if (string.IsNullOrWhiteSpace(name))
-        {
-            throw new SerializationException("The BusinessEventId property is empty.");
-        }
-
-        // Add polymorphic type property value
-        string jsonText = "{\"$type\":\"" + name + "\"," + json.GetRawText().Trim()[1..];
-
-        return Deserialize(jsonText);
-    }
-
-    /// <summary>Deserializes the specified json.</summary>
-    /// <param name="json">The json.</param>
-    /// <returns>Dynamics365BusinessEventBase.</returns>
-    /// <exception cref="System.InvalidOperationException">Unable to deserialize business event.</exception>
-    public static Dynamics365BusinessEventBase Deserialize(string json)
-    {
-        _ = Guard.Against.NullOrWhiteSpace(json);
-        Dynamics365BusinessEventBase? result = JsonSerializer
-            .Deserialize<Dynamics365BusinessEventBase>(json);
-        return result ?? throw new InvalidOperationException("Unable to deserialize business event.");
-    }
-
-    /// <summary>
-    /// Serializes the specified business event.
-    /// </summary>
-    /// <param name="businessEvent">The business event.</param>
-    /// <returns>System.String.</returns>
-    public static string Serialize(Dynamics365BusinessEventBase businessEvent)
-    {
-        _ = Guard.Against.Null(businessEvent);
-        return JsonSerializer.Serialize(businessEvent);
-    }
-
-    /// <summary>
     /// Gets the business command.
     /// </summary>
     /// <returns>The command.</returns>
     public virtual BaseCommand ToCommand()
     {
         throw new NotSupportedException();
+    }
+
+    /// <summary>
+    /// Get the message major version.
+    /// </summary>
+    /// <returns>The major version.</returns>
+    protected virtual int DefaultMajorVersion()
+    {
+        return 0;
+    }
+
+    /// <summary>
+    /// Gets the message minor version.
+    /// </summary>
+    /// <returns>The minor version.</returns>
+    protected virtual int DefaultMinorVersion()
+    {
+        return 0;
+    }
+
+    /// <summary>
+    /// Get the message name.
+    /// </summary>
+    /// <returns>The name.</returns>
+    protected virtual string DefaultTypeName()
+    {
+        return GetType().Name;
     }
 }

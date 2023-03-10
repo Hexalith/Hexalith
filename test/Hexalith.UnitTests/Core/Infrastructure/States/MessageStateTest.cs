@@ -4,7 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.UnitTests.Core.Infrastructure.DaprAggregateActor;
+namespace Hexalith.UnitTests.Core.Infrastructure.States;
 
 using System;
 using System.Text.Json;
@@ -14,7 +14,8 @@ using FluentAssertions;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Application.Abstractions.States;
 using Hexalith.Extensions.Helpers;
-
+using Hexalith.Extensions.Serialization;
+using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Serialization;
 using Hexalith.UnitTests.Core.Application.Commands;
 
 public class MessageStateTest
@@ -23,11 +24,14 @@ public class MessageStateTest
     {
         "IdempotencyId":"20230125085001962",
         "Message":{
-            "$type":"DummyCommand1",
+            "$type_name":"DummyCommand1",
+            "$version_major":4,
+            "$version_minor":6,
             "Value1":123456,
             "BaseValue":"Test"
         },
         "Metadata":{
+            "$type_name":"Metadata",
             "Context":{
                 "CorrelationId":"20230125085001962",
                 "UserId":"TestUser"
@@ -50,7 +54,7 @@ public class MessageStateTest
     {
         MessageState state = JsonSerializer.Deserialize<MessageState>(_json);
         _ = state.Should().NotBeNull();
-        _ = state!.Message.Should().BeOfType<DummyCommand1>();
+        _ = state.Message.Should().BeOfType<DummyCommand1>();
         _ = state.Message.As<DummyCommand1>().Value1.Should().Be(123456);
         _ = state.Message.As<DummyCommand1>().BaseValue.Should().Be("Test");
         _ = state.Metadata.Should().NotBeNull();
@@ -85,7 +89,8 @@ public class MessageStateTest
                 null));
         string json = JsonSerializer.Serialize(messageState);
         _ = json.Should().NotBeEmpty();
-        _ = json.Should().Contain("\"$type\":\"DummyCommand1\"");
+        _ = json.Should().Contain($"\"{PolymorphicJsonConverter<DummyCommand1>.TypeNamePropertyName}\":\"{nameof(DummyCommand1)}\"");
+        _ = json.Should().Contain($"\"{PolymorphicJsonConverter<DummyCommand1>.TypeNamePropertyName}\":\"{nameof(Metadata)}\"");
         _ = json.Should().Contain($"\"CorrelationId\":\"{messageId}\"");
         _ = json.Should().Contain("\"Value1\":123456");
         _ = json.Should().Contain("\"BaseValue\":\"Test\"");

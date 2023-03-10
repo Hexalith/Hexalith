@@ -14,6 +14,7 @@ using FluentAssertions;
 
 using Hexalith.Domain.Abstractions.Converters;
 using Hexalith.Extensions.Serialization;
+using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Serialization;
 
 #pragma warning disable SA1649 // File name should match first type name
 

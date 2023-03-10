@@ -14,18 +14,18 @@
 // <summary></summary>
 // ***********************************************************************
 
-using Hexalith.Domain.Abstractions.Converters;
-
 namespace Hexalith.Extensions.Serialization;
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
+using Hexalith.Domain.Abstractions.Converters;
+
 /// <summary>
 /// Class MessageSerializationMapper.
 /// </summary>
-public static class PolimorphicSerializableTypeMapper
+public static class PolymorphicSerializableTypeMapper
 {
     /// <summary>
     /// The map.
@@ -84,7 +84,7 @@ public static class PolimorphicSerializableTypeMapper
         }
         catch (KeyNotFoundException ex)
         {
-            throw new InvalidOperationException($"Base message class with MessageName='{name}' and Version='{majorVersion}.{minorVersion}' not found.", ex);
+            throw new InvalidOperationException($"Polymorphic type with MessageName='{name}' and Version='{majorVersion}.{minorVersion}' not found.", ex);
         }
     }
 }

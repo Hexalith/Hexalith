@@ -17,8 +17,5 @@
 		<ProjectReference Include="..\Hexalith.Infrastructure.WebApis\Hexalith.Infrastructure.WebApis.csproj" />
 		<ProjectReference Include="..\Hexalith.Infrastructure.Serialization\Hexalith.Infrastructure.Serialization.csproj" />
 	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Serialization\" />
-	</ItemGroup>
 
 </Project>

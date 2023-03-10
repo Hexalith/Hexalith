@@ -24,4 +24,14 @@ public class DummyBusinessEvent1 : Dynamics365BusinessEventBase
     {
         throw new NotSupportedException();
     }
+
+    protected override int DefaultMajorVersion()
+    {
+        return 6;
+    }
+
+    protected override int DefaultMinorVersion()
+    {
+        return 7;
+    }
 }

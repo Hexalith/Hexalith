@@ -14,7 +14,8 @@ using FluentAssertions;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Application.Abstractions.States;
 using Hexalith.Extensions.Helpers;
-
+using Hexalith.Extensions.Serialization;
+using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Serialization;
 using Hexalith.UnitTests.Core.Application.Commands;
 
 public class CommandStateTest
@@ -89,7 +90,8 @@ public class CommandStateTest
                 null));
         string json = JsonSerializer.Serialize(messageState);
         _ = json.Should().NotBeEmpty();
-        _ = json.Should().Contain("\"$type_name\":\"DummyCommand1\"");
+        _ = json.Should().Contain($"\"{PolymorphicJsonConverter<DummyCommand1>.TypeNamePropertyName}\":\"{nameof(DummyCommand1)}\"");
+        _ = json.Should().Contain($"\"{PolymorphicJsonConverter<DummyCommand1>.TypeNamePropertyName}\":\"{nameof(Metadata)}\"");
         _ = json.Should().Contain($"\"CorrelationId\":\"{messageId}\"");
         _ = json.Should().Contain("\"Value1\":123456");
         _ = json.Should().Contain("\"BaseValue\":\"Test\"");

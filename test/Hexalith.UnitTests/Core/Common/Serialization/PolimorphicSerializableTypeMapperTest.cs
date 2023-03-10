@@ -18,7 +18,7 @@ public class PolimorphicSerializableTypeMapperTest
     [Fact]
     public void Map_should_succeed()
     {
-        Dictionary<string, Type> map = PolimorphicSerializableTypeMapper.GetMap();
+        Dictionary<string, Type> map = PolymorphicSerializableTypeMapper.GetMap();
         _ = map.Should().NotBeNull();
     }
 }
