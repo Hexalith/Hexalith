@@ -27,7 +27,7 @@ using Hexalith.Application.Abstractions.Notifications;
 /// Class NotificationState.
 /// </summary>
 [DataContract]
-public class NotificationState : MessageState<BaseNotification, Metadata>
+public class NotificationState : MessageState<BaseNotification, BaseMetadata>
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="NotificationState" /> class.
@@ -46,7 +46,7 @@ public class NotificationState : MessageState<BaseNotification, Metadata>
     public NotificationState(
         DateTimeOffset? receivedDate,
         BaseNotification? message,
-        Metadata? metadata)
+        BaseMetadata? metadata)
         : base(receivedDate, message, metadata)
     {
     }

@@ -11,17 +11,15 @@ using System.Text.Json;
 using FluentAssertions;
 
 using Hexalith.Application.Abstractions.Notifications;
-using Hexalith.Infrastructure.Serialization.Helpers;
 
 public class BaseNotificationTest
 {
     [Fact]
     public void Polymorphic_serialize_and_deserialize_should_return_same_object()
     {
-        JsonSerializerOptions options = new JsonSerializerOptions().AddPolymorphism();
         DummyNotification1 original = new("IB2343213FR", 655463);
-        string json = JsonSerializer.Serialize<BaseNotification>(original, options);
-        BaseNotification result = JsonSerializer.Deserialize<BaseNotification>(json, options);
+        string json = JsonSerializer.Serialize<BaseNotification>(original);
+        BaseNotification result = JsonSerializer.Deserialize<BaseNotification>(json);
         _ = result.Should().NotBeNull();
         _ = result.Should().BeOfType<DummyNotification1>();
         _ = result.Should().BeEquivalentTo(original);

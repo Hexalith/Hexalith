@@ -14,7 +14,7 @@ using FluentAssertions;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Application.Abstractions.States;
 using Hexalith.Extensions.Helpers;
-using Hexalith.Infrastructure.Serialization.Helpers;
+
 using Hexalith.UnitTests.Core.Application.Commands;
 
 public class MessageStateTest
@@ -48,7 +48,7 @@ public class MessageStateTest
     [Fact]
     public void Deserialize_should_succeed()
     {
-        MessageState state = JsonSerializer.Deserialize<MessageState>(_json, new JsonSerializerOptions().AddPolymorphism());
+        MessageState state = JsonSerializer.Deserialize<MessageState>(_json);
         _ = state.Should().NotBeNull();
         _ = state!.Message.Should().BeOfType<DummyCommand1>();
         _ = state.Message.As<DummyCommand1>().Value1.Should().Be(123456);
@@ -83,7 +83,7 @@ public class MessageStateTest
                         null,
                         null),
                 null));
-        string json = JsonSerializer.Serialize(messageState, new JsonSerializerOptions().AddPolymorphism());
+        string json = JsonSerializer.Serialize(messageState);
         _ = json.Should().NotBeEmpty();
         _ = json.Should().Contain("\"$type\":\"DummyCommand1\"");
         _ = json.Should().Contain($"\"CorrelationId\":\"{messageId}\"");

@@ -4,7 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.UnitTests.Core.Infrastructure.DaprAggregateActor;
+namespace Hexalith.UnitTests.Core.Infrastructure.States;
 
 using System;
 using System.Text.Json;
@@ -14,7 +14,7 @@ using FluentAssertions;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Application.Abstractions.States;
 using Hexalith.Extensions.Helpers;
-using Hexalith.Infrastructure.Serialization.Helpers;
+
 using Hexalith.UnitTests.Core.Application.Commands;
 
 public class CommandStateTest
@@ -24,7 +24,9 @@ public class CommandStateTest
     {
         "IdempotencyId":"20230125085001962",
         "Message":{
-            "$type":"DummyCommand1",
+            "$type_name":"DummyCommand1",
+            "$version_major":4,
+            "$version_minor":6,
             "Value1":123456,
             "BaseValue":"Test"
         },
@@ -40,7 +42,7 @@ public class CommandStateTest
                 "Aggregate":{"Id":"Test-123456","Name":"Test"},
                 "Date":"2023-01-25T08:50:01.9630826+00:00"
             },
-            "Version":{"Major":0,"Minor":0}
+            "$type_name":"Metadata"
         },
         "ReceivedDate":"2023-01-25T08:50:01.9630825+00:00",
         "ProcessedDate":"2023-01-25T08:51:01.9630825+00:00"
@@ -50,7 +52,7 @@ public class CommandStateTest
     [Fact]
     public void Deserialize_should_succeed()
     {
-        CommandState state = JsonSerializer.Deserialize<CommandState>(_json, new JsonSerializerOptions().AddPolymorphism());
+        CommandState state = JsonSerializer.Deserialize<CommandState>(_json);
         _ = state.Should().NotBeNull();
         _ = state!.Message.Should().BeOfType<DummyCommand1>();
         _ = state.Message.As<DummyCommand1>().Value1.Should().Be(123456);
@@ -85,9 +87,9 @@ public class CommandStateTest
                         null,
                         null),
                 null));
-        string json = JsonSerializer.Serialize(messageState, new JsonSerializerOptions().AddPolymorphism());
+        string json = JsonSerializer.Serialize(messageState);
         _ = json.Should().NotBeEmpty();
-        _ = json.Should().Contain("\"$type\":\"DummyCommand1\"");
+        _ = json.Should().Contain("\"$type_name\":\"DummyCommand1\"");
         _ = json.Should().Contain($"\"CorrelationId\":\"{messageId}\"");
         _ = json.Should().Contain("\"Value1\":123456");
         _ = json.Should().Contain("\"BaseValue\":\"Test\"");

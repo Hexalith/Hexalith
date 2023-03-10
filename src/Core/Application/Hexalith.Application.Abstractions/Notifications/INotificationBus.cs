@@ -23,7 +23,7 @@ using Hexalith.Application.Abstractions.States;
 /// <summary>
 /// A notification bus is a component that allows to send notifications.
 /// </summary>
-public interface INotificationBus : IMessageBus<BaseNotification, Metadata, NotificationState>
+public interface INotificationBus : IMessageBus<BaseNotification, BaseMetadata, NotificationState>
 {
     /// <summary>
     /// Publishes the asynchronous.
@@ -31,7 +31,7 @@ public interface INotificationBus : IMessageBus<BaseNotification, Metadata, Noti
     /// <param name="envelope">The envelope.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
-    new Task PublishAsync(IEnvelope<BaseNotification, Metadata> envelope, CancellationToken cancellationToken);
+    new Task PublishAsync(IEnvelope<BaseNotification, BaseMetadata> envelope, CancellationToken cancellationToken);
 
     /// <summary>
     /// Publishes the asynchronous.
@@ -48,5 +48,5 @@ public interface INotificationBus : IMessageBus<BaseNotification, Metadata, Noti
     /// <param name="metadata">The metadata.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
-    new Task PublishAsync(BaseNotification notification, Metadata metadata, CancellationToken cancellationToken);
+    new Task PublishAsync(BaseNotification notification, BaseMetadata metadata, CancellationToken cancellationToken);
 }

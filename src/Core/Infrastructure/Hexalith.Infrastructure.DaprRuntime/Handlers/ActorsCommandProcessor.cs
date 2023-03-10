@@ -4,7 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Infrastructure.DaprHandlers;
+namespace Hexalith.Infrastructure.DaprRuntime.Handlers;
 
 using System.Linq;
 using System.Threading;
@@ -12,13 +12,11 @@ using System.Threading.Tasks;
 
 using Ardalis.GuardClauses;
 
-using Dapr.Actors;
 using Dapr.Actors.Client;
 
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Extensions.Helpers;
-using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 
 /// <summary>
@@ -43,13 +41,13 @@ public abstract class ActorsCommandProcessor : ICommandProcessor
     }
 
     /// <inheritdoc/>
-    public async Task SubmitAsync(BaseCommand command, Metadata metadata, CancellationToken cancellationToken)
+    public async Task SubmitAsync(BaseCommand command, BaseMetadata metadata, CancellationToken cancellationToken)
     {
         await SubmitAsync(command.IntoArray(), metadata, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task SubmitAsync(IEnumerable<BaseCommand> commands, Metadata metadata, CancellationToken cancellationToken)
+    public async Task SubmitAsync(IEnumerable<BaseCommand> commands, BaseMetadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(commands);
         if (!commands.Any())
@@ -60,7 +58,7 @@ public abstract class ActorsCommandProcessor : ICommandProcessor
         BaseCommand command = commands.First();
 
         string actorName = GetActorName(command);
-        List<Metadata> metadatas = new() { metadata };
+        List<BaseMetadata> metadatas = new() { metadata };
         if (commands.Count() > 1)
         {
             metadatas

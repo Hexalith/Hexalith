@@ -29,7 +29,7 @@ public interface IAggregateStateManager
     Task AddCommandAsync(
         IStateStoreProvider stateProvider,
         BaseCommand[] commands,
-        Metadata[] metadatas,
+        BaseMetadata[] metadatas,
         Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder,
         CancellationToken cancellationToken);
 

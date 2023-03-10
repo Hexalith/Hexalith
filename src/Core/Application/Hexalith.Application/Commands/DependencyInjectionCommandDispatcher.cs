@@ -49,7 +49,7 @@ public class DependencyInjectionCommandDispatcher : ICommandDispatcher
     /// <inheritdoc/>
     public async Task<IEnumerable<BaseEvent>> DoAsync(ICommand command, CancellationToken cancellationToken)
     {
-        _logger.LogDebug("Dispatching command {CommandType} with aggregate id {AggregateName}-{AggregateId}", command.MessageName, command.AggregateName, command.AggregateId);
+        _logger.LogDebug("Dispatching command {CommandType} with aggregate id {AggregateName}-{AggregateId}", command.TypeName, command.AggregateName, command.AggregateId);
         IEnumerable<BaseEvent> events = await GetHandler(command).DoAsync(command, cancellationToken);
         return events;
     }
@@ -57,7 +57,7 @@ public class DependencyInjectionCommandDispatcher : ICommandDispatcher
     /// <inheritdoc/>
     public async Task<IEnumerable<BaseEvent>> UnDoAsync(ICommand command, CancellationToken cancellationToken)
     {
-        _logger.LogDebug("Dispatching command {CommandType} undo with aggregate id {AggregateName}-{AggregateId}", command.MessageName, command.AggregateName, command.AggregateId);
+        _logger.LogDebug("Dispatching command {CommandType} undo with aggregate id {AggregateName}-{AggregateId}", command.TypeName, command.AggregateName, command.AggregateId);
         IEnumerable<BaseEvent> events = await GetHandler(command).UndoAsync(command, cancellationToken);
         return events;
     }

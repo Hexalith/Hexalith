@@ -12,7 +12,7 @@ using System.Text.Json;
 using FluentAssertions;
 
 using Hexalith.Application.Abstractions.States;
-using Hexalith.Infrastructure.Serialization.Helpers;
+
 using Hexalith.UnitTests.Core.Application.Commands;
 
 public class CommandStateTest
@@ -25,9 +25,8 @@ public class CommandStateTest
             DateTimeOffset.Now,
             command,
             command.CreateMetadata());
-        JsonSerializerOptions options = new JsonSerializerOptions().AddPolymorphism();
-        string json = JsonSerializer.Serialize(original, options);
-        CommandState result = JsonSerializer.Deserialize<CommandState>(json, options);
+        string json = JsonSerializer.Serialize(original);
+        CommandState result = JsonSerializer.Deserialize<CommandState>(json);
         _ = result.Should().NotBeNull();
         _ = result.Message.Should().BeOfType<DummyCommand1>();
         _ = result.Should().BeEquivalentTo(original);

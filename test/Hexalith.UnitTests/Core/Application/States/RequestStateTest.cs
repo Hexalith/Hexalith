@@ -11,9 +11,10 @@ using System.Text.Json;
 
 using FluentAssertions;
 
+using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Application.Abstractions.States;
 using Hexalith.Extensions.Helpers;
-using Hexalith.Infrastructure.Serialization.Helpers;
+using Hexalith.Extensions.Serialization;
 using Hexalith.UnitTests.Core.Application.Requests;
 
 using Xunit;
@@ -26,10 +27,9 @@ public class RequestStateTest
         DummyRequest1 request = new();
         Hexalith.Application.Abstractions.Metadatas.Metadata meta = request.CreateMetadata();
         RequestState state = new(DateTimeOffset.UtcNow, request, meta);
-        JsonSerializerOptions options = new JsonSerializerOptions().AddPolymorphism();
-        string json = JsonSerializer.Serialize(state, options);
+        string json = JsonSerializer.Serialize(state);
         _ = json.Should().NotBeNullOrEmpty();
-        RequestState result = JsonSerializer.Deserialize<RequestState>(json, options);
+        RequestState result = JsonSerializer.Deserialize<RequestState>(json);
         _ = result.Should().NotBeNull();
         _ = result.Should().BeEquivalentTo(state);
     }
@@ -40,9 +40,10 @@ public class RequestStateTest
         DummyRequest1 request = new();
         Hexalith.Application.Abstractions.Metadatas.Metadata meta = request.CreateMetadata();
         RequestState state = new(DateTimeOffset.UtcNow, request, meta);
-        string json = JsonSerializer.Serialize(state, new JsonSerializerOptions().AddPolymorphism());
+        string json = JsonSerializer.Serialize(state);
         _ = json.Should().NotBeNullOrEmpty();
-        _ = json.Should().Contain($"\"$type\":\"{nameof(DummyRequest1)}\"");
+        _ = json.Should().Contain($"\"{PolymorphicJsonConverter<DummyRequest1>.TypeNamePropertyName}\":\"{nameof(DummyRequest1)}\"");
+        _ = json.Should().Contain($"\"{PolymorphicJsonConverter<DummyRequest1>.TypeNamePropertyName}\":\"{nameof(Metadata)}\"");
         _ = json.Should().Contain($"\"{nameof(meta.Message.Id)}\":\"{meta.Message.Id}\"");
         _ = json.Should().Contain($"\"{nameof(request.Value1)}\":{request.Value1.ToInvariantString()}");
         _ = json.Should().Contain($"\"{nameof(request.BaseValue)}\":\"{request.BaseValue}\"");

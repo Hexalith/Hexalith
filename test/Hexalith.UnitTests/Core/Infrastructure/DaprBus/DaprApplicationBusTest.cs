@@ -32,7 +32,7 @@ public class DaprApplicationBusTest
 
         Mock<DaprClient> client = new();
         Mock<ILogger> logger = new();
-        DaprApplicationBus<BaseEvent, Metadata, EventState> bus = new(client.Object, new DateTimeService(), busName, topicSuffix, logger.Object);
+        DaprApplicationBus<BaseEvent, BaseMetadata, EventState> bus = new(client.Object, new DateTimeService(), busName, topicSuffix, logger.Object);
         await bus.PublishAsync(@event, meta, CancellationToken.None);
         client.Verify(
             p => p.PublishEventAsync(

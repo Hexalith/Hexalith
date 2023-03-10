@@ -11,7 +11,8 @@ using System.Text.Json;
 using FluentAssertions;
 
 using Hexalith.Application.Abstractions.Commands;
-using Hexalith.Infrastructure.Serialization.Helpers;
+using Hexalith.Extensions.Helpers;
+using Hexalith.Extensions.Serialization;
 
 public class BaseCommandTest
 {
@@ -25,10 +26,9 @@ public class BaseCommandTest
     [Fact]
     public void Polymorphic_serialize_and_deserialize_should_return_same_object()
     {
-        JsonSerializerOptions options = new JsonSerializerOptions().AddPolymorphism();
         DummyCommand1 original = new("IB2343213FR", 655463);
-        string json = JsonSerializer.Serialize<BaseCommand>(original, options);
-        BaseCommand result = JsonSerializer.Deserialize<BaseCommand>(json, options);
+        string json = JsonSerializer.Serialize<BaseCommand>(original);
+        BaseCommand result = JsonSerializer.Deserialize<BaseCommand>(json);
         _ = result.Should().NotBeNull();
         _ = result.Should().BeOfType<DummyCommand1>();
         _ = result.Should().BeEquivalentTo(original);
@@ -37,11 +37,12 @@ public class BaseCommandTest
     [Fact]
     public void Polymorphic_serialize_first_field_should_be_type()
     {
-        JsonSerializerOptions options = new JsonSerializerOptions().AddPolymorphism();
         DummyCommand1 original = new("IB2343213FR", 655463);
-        string json = JsonSerializer.Serialize<BaseCommand>(original, options);
+        string json = JsonSerializer.Serialize<BaseCommand>(original);
         _ = json.Should().NotBeNull();
-        _ = json.Should().Contain($"{{\"$type\":\"{nameof(DummyCommand1)}\"");
+        _ = json.Should().Contain($"\"{PolymorphicJsonConverter<BaseCommand>.TypeNamePropertyName}\":\"{nameof(DummyCommand1)}\"");
+        _ = json.Should().Contain($"\"{PolymorphicJsonConverter<BaseCommand>.MajorVersionPropertyName}\":{original.MajorVersion.ToInvariantString()}");
+        _ = json.Should().Contain($"\"{PolymorphicJsonConverter<BaseCommand>.MinorVersionPropertyName}\":{original.MinorVersion.ToInvariantString()}");
     }
 
     [Fact]

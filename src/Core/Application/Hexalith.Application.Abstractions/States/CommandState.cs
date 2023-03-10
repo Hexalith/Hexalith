@@ -27,7 +27,7 @@ using Hexalith.Application.Abstractions.Metadatas;
 /// Class CommandState.
 /// </summary>
 [DataContract]
-public class CommandState : MessageState<BaseCommand, Metadata>
+public class CommandState : MessageState<BaseCommand, BaseMetadata>
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="CommandState" /> class.
@@ -46,7 +46,7 @@ public class CommandState : MessageState<BaseCommand, Metadata>
     public CommandState(
         DateTimeOffset? receivedDate,
         BaseCommand? message,
-        Metadata? metadata)
+        BaseMetadata? metadata)
         : base(receivedDate, message, metadata)
     {
     }

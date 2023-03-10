@@ -37,7 +37,7 @@ using Microsoft.Extensions.Options;
 /// </summary>
 /// <seealso cref="DaprBus.DaprApplicationBus{Hexalith.Domain.Abstractions.Events.BaseEvent, Hexalith.Application.Abstractions.Metadatas.Metadata}" />
 /// <seealso cref="IEventBus" />
-public class DaprEventBus : DaprApplicationBus<BaseEvent, Metadata, EventState>, IEventBus
+public class DaprEventBus : DaprApplicationBus<BaseEvent, BaseMetadata, EventState>, IEventBus
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="DaprEventBus"/> class.

@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Infrastructure.DaprBus;
+namespace Hexalith.Infrastructure.DaprRuntime.Buses;
 
 using System;
 
@@ -25,19 +25,18 @@ using Hexalith.Application.Abstractions.Requests;
 using Hexalith.Application.Abstractions.States;
 using Hexalith.Application.Configuration;
 using Hexalith.Extensions.Common;
-using Hexalith.Infrastructure.DaprRuntime.Buses;
 
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 /// <summary>
 /// Class DaprRequestBus.
-/// Implements the <see cref="Hexalith.Infrastructure.DaprBus.DaprApplicationBus{Hexalith.Domain.Abstractions.Requests.BaseRequest, Hexalith.Application.Abstractions.Metadatas.Metadata}" />
+/// Implements the <see cref="DaprBus.DaprApplicationBus{Abstractions.Requests.BaseRequest, Metadata}" />
 /// Implements the <see cref="IRequestBus" />.
 /// </summary>
-/// <seealso cref="Hexalith.Infrastructure.DaprBus.DaprApplicationBus{Hexalith.Domain.Abstractions.Requests.BaseRequest, Hexalith.Application.Abstractions.Metadatas.Metadata}" />
+/// <seealso cref="DaprBus.DaprApplicationBus{Abstractions.Requests.BaseRequest, Metadata}" />
 /// <seealso cref="IRequestBus" />
-public class DaprRequestBus : DaprApplicationBus<BaseRequest, Metadata, RequestState>, IRequestBus
+public class DaprRequestBus : DaprApplicationBus<BaseRequest, BaseMetadata, RequestState>, IRequestBus
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="DaprRequestBus"/> class.

@@ -14,7 +14,7 @@ using FluentAssertions;
 
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Infrastructure.DaprRuntime.States;
-using Hexalith.Infrastructure.Serialization.Helpers;
+
 using Hexalith.UnitTests.Core.Application.Commands;
 
 using Moq;
@@ -30,7 +30,7 @@ public class ActorStateStoreProviderTest
             .Setup(p => p.TryGetStateAsync<JsonDocument>("State", It.IsAny<CancellationToken>()))
             .ReturnsAsync(new ConditionalValue<JsonDocument>(
                 true,
-                JsonDocument.Parse(JsonSerializer.Serialize<BaseCommand>(command, new JsonSerializerOptions().AddPolymorphism()))));
+                JsonDocument.Parse(JsonSerializer.Serialize<BaseCommand>(command))));
         Mock<ICommandDispatcher> dispatcher = new();
         ActorStateStoreProvider storeProvider = new(actorStateManager.Object);
         Extensions.Common.ConditionalValue<BaseCommand> result = await storeProvider.TryGetStateAsync<BaseCommand>("State", CancellationToken.None);

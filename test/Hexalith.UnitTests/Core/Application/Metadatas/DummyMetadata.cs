@@ -18,11 +18,10 @@ public class DummyMetadata : Metadata
 {
     [JsonConstructor]
     public DummyMetadata(
-        MetadataVersion version,
         MessageMetadata message,
         ContextMetadata context,
         IEnumerable<string> scopes)
-        : base(version, message, context, scopes)
+        : base(message, context, scopes)
     {
     }
 
@@ -38,6 +37,11 @@ public class DummyMetadata : Metadata
             102,
             "GFD4565"),
         new[] { "test123456" })
+    {
+    }
+
+    [Obsolete("Only for serialization")]
+    public DummyMetadata()
     {
     }
 }

@@ -7,29 +7,18 @@
 namespace Hexalith.UnitTests.Core.Application.MessageStores;
 
 using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
 
 using Hexalith.Domain.Abstractions.Events;
 using Hexalith.Extensions.Common;
-using Hexalith.Extensions.Serialization;
 
 [DataContract]
-[JsonPolymorphicBaseClass]
 public class BaseTestEvent : BaseEvent, IEvent, IIdempotent
 {
-    [JsonConstructor]
-    public BaseTestEvent(string idempotencyId, string id, string message)
-    {
-        Id = id;
-        Message = message;
-        IdempotencyId = idempotencyId;
-    }
+    public string Id { get; set; }
 
-    public string Id { get; }
+    public string IdempotencyId { get; set; }
 
-    public string IdempotencyId { get; }
-
-    public string Message { get; }
+    public string Message { get; set; }
 
     protected override string DefaultAggregateId()
     {
@@ -41,7 +30,7 @@ public class BaseTestEvent : BaseEvent, IEvent, IIdempotent
         return "Test";
     }
 
-    protected override string DefaultMessageName()
+    protected override string DefaultTypeName()
     {
         return GetType().Name;
     }

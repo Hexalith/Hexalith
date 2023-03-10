@@ -51,7 +51,7 @@ public class DependencyInjectionEventDispatcher : IIntegrationEventDispatcher
     /// <inheritdoc/>
     public async Task<IEnumerable<IEnumerable<BaseCommand>>> ApplyAsync(IEvent @event, CancellationToken cancellationToken)
     {
-        _logger.LogDebug("Dispatching event {EventType} with aggregate id {AggregateName}-{AggregateId}", @event.MessageName, @event.AggregateName, @event.AggregateId);
+        _logger.LogDebug("Dispatching event {EventType} with aggregate id {AggregateName}-{AggregateId}", @event.TypeName, @event.AggregateName, @event.AggregateId);
         return await Task.WhenAll(
             GetHandlers(@event)
                 .Select(p => p.ApplyAsync(@event, cancellationToken)));

@@ -13,7 +13,6 @@ using System.Threading.Tasks;
 
 using Hexalith.Application.Abstractions.States;
 using Hexalith.Extensions.Common;
-using Hexalith.Infrastructure.Serialization.Helpers;
 
 /// <summary>
 /// Class StringStateProvider.
@@ -63,7 +62,7 @@ public class StringStateProvider : IStateStoreProvider
     /// <inheritdoc/>
     public Task AddStateAsync<T>(string key, T value, CancellationToken cancellationToken)
     {
-        string v = JsonSerializer.Serialize(value, new JsonSerializerOptions().AddPolymorphism());
+        string v = JsonSerializer.Serialize(value);
         _uncommittedState.Add(key, v);
         return Task.CompletedTask;
     }
@@ -116,7 +115,7 @@ public class StringStateProvider : IStateStoreProvider
             _ = _uncommittedState.Remove(key);
         }
 
-        string v = JsonSerializer.Serialize(value, new JsonSerializerOptions().AddPolymorphism());
+        string v = JsonSerializer.Serialize(value);
         _uncommittedState.Add(key, v);
         return Task.CompletedTask;
     }
@@ -126,7 +125,7 @@ public class StringStateProvider : IStateStoreProvider
     {
         if (_uncommittedState.TryGetValue(key, out string? uncommitted))
         {
-            T? value = JsonSerializer.Deserialize<T>(uncommitted, new JsonSerializerOptions().AddPolymorphism());
+            T? value = JsonSerializer.Deserialize<T>(uncommitted);
             return value is null
                 ? Task.FromException<ConditionalValue<T>>(new InvalidOperationException($"The key '{key}' was found in the uncommitted state store but the value is null."))
                 : Task.FromResult(new ConditionalValue<T>(value));
@@ -134,7 +133,7 @@ public class StringStateProvider : IStateStoreProvider
 
         if (_state.TryGetValue(key, out string? committed))
         {
-            T? value = JsonSerializer.Deserialize<T>(committed, new JsonSerializerOptions().AddPolymorphism());
+            T? value = JsonSerializer.Deserialize<T>(committed);
             return value is null
                 ? Task.FromException<ConditionalValue<T>>(new InvalidOperationException($"The key '{key}' was found in the state store but the value is null."))
                 : Task.FromResult(new ConditionalValue<T>(value));

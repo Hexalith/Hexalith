@@ -54,4 +54,14 @@ public class DummyCommand1 : DummyBaseCommand
     {
         return BaseValue + "-" + Value1.ToInvariantString();
     }
+
+    protected override int DefaultMajorVersion()
+    {
+        return 4;
+    }
+
+    protected override int DefaultMinorVersion()
+    {
+        return 6;
+    }
 }

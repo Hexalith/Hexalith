@@ -23,7 +23,7 @@ using Hexalith.Application.Abstractions.States;
 /// <summary>
 /// A request bus is a component that allows to send requests.
 /// </summary>
-public interface IRequestBus : IMessageBus<BaseRequest, Metadata, RequestState>
+public interface IRequestBus : IMessageBus<BaseRequest, BaseMetadata, RequestState>
 {
     /// <summary>
     /// Publishes the asynchronous.
@@ -31,7 +31,7 @@ public interface IRequestBus : IMessageBus<BaseRequest, Metadata, RequestState>
     /// <param name="envelope">The envelope.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
-    new Task PublishAsync(IEnvelope<BaseRequest, Metadata> envelope, CancellationToken cancellationToken);
+    new Task PublishAsync(IEnvelope<BaseRequest, BaseMetadata> envelope, CancellationToken cancellationToken);
 
     /// <summary>
     /// Publishes the asynchronous.
@@ -40,7 +40,7 @@ public interface IRequestBus : IMessageBus<BaseRequest, Metadata, RequestState>
     /// <param name="metadata">The metadata.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
-    new Task PublishAsync(BaseRequest request, Metadata metadata, CancellationToken cancellationToken);
+    new Task PublishAsync(BaseRequest request, BaseMetadata metadata, CancellationToken cancellationToken);
 
     /// <summary>
     /// Publishes the asynchronous.

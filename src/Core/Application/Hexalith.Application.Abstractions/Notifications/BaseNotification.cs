@@ -7,8 +7,9 @@
 namespace Hexalith.Application.Abstractions.Notifications;
 
 using System.Runtime.Serialization;
-
+using System.Text.Json.Serialization;
 using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Extensions.Serialization;
 
 /// <summary>
 /// Class BaseNotification.
@@ -18,6 +19,7 @@ using Hexalith.Domain.Abstractions.Messages;
 /// <seealso cref="BaseMessage" />
 /// <seealso cref="Application.Notifications.INotification" />
 [DataContract]
+[JsonConverter(typeof(PolymorphicJsonConverter<BaseNotification>))]
 public class BaseNotification : BaseMessage, INotification
 {
 }

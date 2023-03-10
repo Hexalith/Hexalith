@@ -59,13 +59,13 @@ public class MemoryEventBus : IEventBus
     public IEnumerable<EventState> Stream => _stream;
 
     /// <inheritdoc/>
-    public Task PublishAsync(IEnvelope<BaseEvent, Metadata> envelope, CancellationToken cancellationToken)
+    public Task PublishAsync(IEnvelope<BaseEvent, BaseMetadata> envelope, CancellationToken cancellationToken)
     {
         return PublishAsync(envelope.Message, envelope.Metadata, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public Task PublishAsync(BaseEvent message, Metadata metadata, CancellationToken cancellationToken)
+    public Task PublishAsync(BaseEvent message, BaseMetadata metadata, CancellationToken cancellationToken)
     {
         return PublishAsync(new EventState(_dateTimeService.UtcNow, message, metadata), cancellationToken);
     }

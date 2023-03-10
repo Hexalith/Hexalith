@@ -27,7 +27,7 @@ using Hexalith.Application.Abstractions.Requests;
 /// Class RequestState.
 /// </summary>
 [DataContract]
-public class RequestState : MessageState<BaseRequest, Metadata>
+public class RequestState : MessageState<BaseRequest, BaseMetadata>
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="RequestState" /> class.
@@ -46,7 +46,7 @@ public class RequestState : MessageState<BaseRequest, Metadata>
     public RequestState(
         DateTimeOffset? receivedDate,
         BaseRequest? message,
-        Metadata? metadata)
+        BaseMetadata? metadata)
         : base(receivedDate, message, metadata)
     {
     }

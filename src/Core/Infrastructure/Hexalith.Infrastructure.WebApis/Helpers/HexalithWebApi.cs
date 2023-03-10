@@ -17,7 +17,6 @@
 namespace Hexalith.Infrastructure.WebApis.Helpers;
 
 using System.Diagnostics;
-using System.Text.Json;
 
 using Dapr.Actors.Runtime;
 
@@ -35,11 +34,9 @@ using Hexalith.Application.Configuration;
 using Hexalith.Application.States;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Configuration;
-using Hexalith.Infrastructure.DaprBus;
 using Hexalith.Infrastructure.DaprHandlers.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Buses;
 using Hexalith.Infrastructure.DaprRuntime.States;
-using Hexalith.Infrastructure.Serialization.Helpers;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -78,16 +75,12 @@ public static class HexalithWebApi
 
         _ = builder.Services.AddSwaggerGen(c => c.SwaggerDoc("v1", new() { Title = applicationName, Version = version, }));
 
-        builder.Services.AddDaprClient(
-            configure => configure.UseJsonSerializationOptions(new JsonSerializerOptions().AddPolymorphism()));
+        builder.Services.AddDaprClient();
 
         builder.Services.AddActors(options =>
         {
             // Register actor types and configure actor settings
             registerActors(options.Actors);
-
-            // Configure serialization options
-            options.JsonSerializerOptions = new JsonSerializerOptions().AddPolymorphism();
         });
         _ = builder.Services.AddControllers().AddDapr();
 

@@ -17,9 +17,21 @@ public interface IMetadata
     IContextMetadata Context { get; }
 
     /// <summary>
+    /// Gets the major version.
+    /// </summary>
+    /// <value>The major version.</value>
+    int MajorVersion { get; }
+
+    /// <summary>
     /// Gets the message metadata.
     /// </summary>
     IMessageMetadata Message { get; }
+
+    /// <summary>
+    /// Gets the minor version.
+    /// </summary>
+    /// <value>The minor version.</value>
+    int MinorVersion { get; }
 
     /// <summary>
     /// Gets the message scopes names.
@@ -27,7 +39,8 @@ public interface IMetadata
     IEnumerable<string>? Scopes { get; }
 
     /// <summary>
-    /// Gets the metadata version.
+    /// Gets the name of the type.
     /// </summary>
-    IMetadataVersion Version { get; }
+    /// <value>The name of the type.</value>
+    string TypeName { get; }
 }

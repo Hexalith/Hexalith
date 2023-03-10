@@ -34,7 +34,7 @@ using Microsoft.Extensions.Logging;
 /// <typeparam name="TState">The type of the t state.</typeparam>
 public class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageBus<TMessage, TMetadata, TState>
     where TMessage : BaseMessage
-    where TMetadata : Metadata
+    where TMetadata : BaseMetadata
     where TState : MessageState<TMessage, TMetadata>, new()
 {
     /// <summary>

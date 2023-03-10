@@ -27,7 +27,7 @@ using Hexalith.Domain.Abstractions.Events;
 /// Class EventState.
 /// </summary>
 [DataContract]
-public class EventState : MessageState<BaseEvent, Metadata>
+public class EventState : MessageState<BaseEvent, BaseMetadata>
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="EventState" /> class.
@@ -46,7 +46,7 @@ public class EventState : MessageState<BaseEvent, Metadata>
     public EventState(
         DateTimeOffset? receivedDate,
         BaseEvent? message,
-        Metadata? metadata)
+        BaseMetadata? metadata)
         : base(receivedDate, message, metadata)
     {
     }

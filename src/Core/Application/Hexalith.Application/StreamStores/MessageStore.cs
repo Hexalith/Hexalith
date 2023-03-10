@@ -15,7 +15,6 @@ using Hexalith.Application.Abstractions.States;
 using Hexalith.Application.Abstractions.StreamStores;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
-using Hexalith.Extensions.Serialization;
 
 /// <summary>
 /// This class is used to store messages state.

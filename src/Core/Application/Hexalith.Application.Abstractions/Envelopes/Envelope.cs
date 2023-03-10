@@ -28,7 +28,7 @@ using Hexalith.Domain.Abstractions.Messages;
 /// </summary>
 /// <seealso cref="Hexalith.Application.Abstractions.Envelopes.BaseEnvelope{Hexalith.Domain.Abstractions.Messages.BaseMessage, Hexalith.Application.Abstractions.Metadatas.Metadata}" />
 [DataContract]
-public class Envelope : BaseEnvelope<BaseMessage, Metadata>
+public class Envelope : BaseEnvelope<BaseMessage, BaseMetadata>
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="Envelope" /> class.
@@ -36,7 +36,7 @@ public class Envelope : BaseEnvelope<BaseMessage, Metadata>
     /// <param name="message">The message.</param>
     /// <param name="metadata">The metadata.</param>
     [JsonConstructor]
-    public Envelope(BaseMessage message, Metadata metadata)
+    public Envelope(BaseMessage message, BaseMetadata metadata)
         : base(message, metadata)
     {
     }

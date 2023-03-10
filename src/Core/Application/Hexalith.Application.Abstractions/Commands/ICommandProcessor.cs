@@ -33,7 +33,7 @@ public interface ICommandProcessor
     /// <param name="metadata">The command metadata.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
-    Task SubmitAsync(BaseCommand command, Metadata metadata, CancellationToken cancellationToken);
+    Task SubmitAsync(BaseCommand command, BaseMetadata metadata, CancellationToken cancellationToken);
 
     /// <summary>
     /// Submits the asynchronous.
@@ -42,5 +42,5 @@ public interface ICommandProcessor
     /// <param name="metadata">The metadata.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
-    Task SubmitAsync(IEnumerable<BaseCommand> commands, Metadata metadata, CancellationToken cancellationToken);
+    Task SubmitAsync(IEnumerable<BaseCommand> commands, BaseMetadata metadata, CancellationToken cancellationToken);
 }

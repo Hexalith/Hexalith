@@ -11,17 +11,15 @@ using System.Text.Json;
 using FluentAssertions;
 
 using Hexalith.Domain.Abstractions.Messages;
-using Hexalith.Infrastructure.Serialization.Helpers;
 
 public class BaseMessageTest
 {
     [Fact]
     public void Polymorphic_serialize_and_deserialize_should_return_same_object()
     {
-        JsonSerializerOptions options = new JsonSerializerOptions().AddPolymorphism();
         DummyMessage1 original = new("IB2343213FR", 655463);
-        string json = JsonSerializer.Serialize<BaseMessage>(original, options);
-        BaseMessage result = JsonSerializer.Deserialize<BaseMessage>(json, options);
+        string json = JsonSerializer.Serialize<BaseMessage>(original);
+        BaseMessage result = JsonSerializer.Deserialize<BaseMessage>(json);
         _ = result.Should().NotBeNull();
         _ = result.Should().BeOfType<DummyMessage1>();
         _ = result.Should().BeEquivalentTo(original);

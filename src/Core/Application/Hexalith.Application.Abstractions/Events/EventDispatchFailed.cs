@@ -48,11 +48,11 @@ public record EventDispatchFailed : Error
         Title = "Event dispatch failed";
         Type = nameof(EventDispatchFailed);
         Detail = "Could not dispatch event {EventName} with aggregate id {AggregateName}-{EventId}.";
-        Arguments = new object[] { @event.MessageName, @event.AggregateName, @event.AggregateId };
+        Arguments = new object[] { @event.TypeName, @event.AggregateName, @event.AggregateId };
         TechnicalDetail = "Could not dispatch event {EventName} with aggregate id {AggregateName}-{EventId}:\n{ErrorMessage}\n{StackTrace}";
         TechnicalArguments = new object[]
         {
-            @event.MessageName,
+            @event.TypeName,
             @event.AggregateName,
             @event.AggregateId,
             ex.FullMessage(),

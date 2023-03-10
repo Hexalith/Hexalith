@@ -36,7 +36,6 @@ public class MetadataTest
     private static Metadata GetMetadata()
     {
         return new(
-            new MetadataVersion(2, 4),
             new MessageMetadata(
                 "123-456-789",
                 "TestMessage",

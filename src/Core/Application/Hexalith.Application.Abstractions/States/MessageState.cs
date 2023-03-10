@@ -30,7 +30,7 @@ using Hexalith.Extensions.Common;
 /// </summary>
 /// <seealso cref="IIdempotent" />
 [DataContract]
-public class MessageState : MessageState<BaseMessage, Metadata>
+public class MessageState : MessageState<BaseMessage, BaseMetadata>
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="MessageState" /> class.
@@ -49,7 +49,7 @@ public class MessageState : MessageState<BaseMessage, Metadata>
     public MessageState(
         DateTimeOffset? receivedDate,
         BaseMessage? message,
-        Metadata? metadata)
+        BaseMetadata? metadata)
         : base(receivedDate, message, metadata)
     {
     }

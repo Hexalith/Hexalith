@@ -29,7 +29,7 @@ public interface IMessage
     /// <summary>
     /// Gets the message name.
     /// </summary>
-    string MessageName { get; }
+    string TypeName { get; }
 
     /// <summary>
     /// Gets the message minor version.

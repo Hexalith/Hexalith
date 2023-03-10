@@ -13,7 +13,6 @@ using System.Threading.Tasks;
 using Dapr.Actors.Runtime;
 
 using Hexalith.Application.Abstractions.States;
-using Hexalith.Infrastructure.Serialization.Helpers;
 
 /// <summary>
 /// Class ActorStateStoreProvider.
@@ -85,7 +84,7 @@ public class ActorStateStoreProvider : IStateStoreProvider
     {
         // Dapr issue with Json serialization of polymorphic types. The $type property is not the first field to the json string.
         // Replacing value by a JsonDocument to fix the issue.
-        string json = JsonSerializer.Serialize(value, new JsonSerializerOptions().AddPolymorphism());
+        string json = JsonSerializer.Serialize(value);
         JsonDocument jsonElement = JsonDocument.Parse(json);
         return jsonElement;
     }
@@ -94,6 +93,6 @@ public class ActorStateStoreProvider : IStateStoreProvider
     {
         // Dapr issue with Json serialization of polymorphic types. The $type property is not the first field to the json string.
         // Replacing value by a JsonDocument to fix the issue.
-        return JsonSerializer.Deserialize<T>(json.RootElement.GetRawText(), new JsonSerializerOptions().AddPolymorphism())!;
+        return JsonSerializer.Deserialize<T>(json.RootElement.GetRawText())!;
     }
 }

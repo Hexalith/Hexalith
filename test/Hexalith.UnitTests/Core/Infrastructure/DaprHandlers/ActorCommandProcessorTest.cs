@@ -26,7 +26,7 @@ using FluentAssertions;
 
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Infrastructure.DaprHandlers;
+using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.UnitTests.Core.Application.Commands;
 
 using Moq;

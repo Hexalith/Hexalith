@@ -11,6 +11,7 @@ using Ardalis.GuardClauses;
 using Dapr.Actors.Client;
 
 using Hexalith.Application.Abstractions.Commands;
+using Hexalith.Infrastructure.DaprRuntime.Handlers;
 
 /// <summary>
 /// Convention naming command processor.

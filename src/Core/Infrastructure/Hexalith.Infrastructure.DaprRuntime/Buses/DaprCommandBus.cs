@@ -24,7 +24,6 @@ using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Application.Abstractions.States;
 using Hexalith.Application.Buses;
-using Hexalith.Application.States;
 using Hexalith.Extensions.Common;
 
 using Microsoft.Extensions.Logging;
@@ -38,7 +37,7 @@ using Microsoft.Extensions.Options;
 /// </summary>
 /// <seealso cref="DaprBus.DaprApplicationBus{Hexalith.Domain.Abstractions.Commands.BaseCommand, Hexalith.Application.Abstractions.Metadatas.Metadata}" />
 /// <seealso cref="ICommandBus" />
-public class DaprCommandBus : DaprApplicationBus<BaseCommand, Metadata, CommandState>, ICommandBus
+public class DaprCommandBus : DaprApplicationBus<BaseCommand, BaseMetadata, CommandState>, ICommandBus
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="DaprCommandBus"/> class.

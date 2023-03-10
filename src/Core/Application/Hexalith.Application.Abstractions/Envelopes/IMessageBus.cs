@@ -28,7 +28,7 @@ using Hexalith.Domain.Abstractions.Messages;
 /// <typeparam name="TState">The type of the t state.</typeparam>
 public interface IMessageBus<in TMessage, in TMetadata, in TState>
     where TMessage : BaseMessage
-    where TMetadata : Metadata
+    where TMetadata : BaseMetadata
     where TState : MessageState<TMessage, TMetadata>
 {
     /// <summary>

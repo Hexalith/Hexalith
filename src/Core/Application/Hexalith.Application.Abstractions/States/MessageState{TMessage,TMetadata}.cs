@@ -32,7 +32,7 @@ using Hexalith.Extensions.Common;
 [DataContract]
 public class MessageState<TMessage, TMetadata> : IIdempotent
     where TMessage : BaseMessage
-    where TMetadata : Metadata
+    where TMetadata : BaseMetadata
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="MessageState{TMessage, TMetadata}" /> class.

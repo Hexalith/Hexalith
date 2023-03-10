@@ -15,17 +15,17 @@ using Ardalis.GuardClauses;
 
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
+using Hexalith.Domain.Abstractions.Converters;
 using Hexalith.Domain.Abstractions.Events;
 using Hexalith.Extensions.Serialization;
-using Hexalith.Infrastructure.Serialization;
 using Hexalith.Infrastructure.Serialization.Serialization;
 
 /// <summary>
 /// The dynamics365 business event metadata.
 /// </summary>
-[JsonPolymorphicBaseClass]
 [DataContract]
-public class Dynamics365BusinessEventBase : IMetadata, IEvent
+[JsonConverter(typeof(PolymorphicJsonConverter<Dynamics365BusinessEventBase>))]
+public class Dynamics365BusinessEventBase : IMetadata, IEvent, IPolymorphicSerializable
 {
     /// <inheritdoc/>
     [IgnoreDataMember]
@@ -122,11 +122,6 @@ public class Dynamics365BusinessEventBase : IMetadata, IEvent
             MinorVersion),
         new AggregateMetadata(string.Empty, string.Empty));
 
-    /// <inheritdoc/>
-    [IgnoreDataMember]
-    [JsonIgnore]
-    public string MessageName => BusinessEventId ?? string.Empty;
-
     /// <summary>
     /// Gets or sets the minor version.
     /// </summary>
@@ -147,6 +142,11 @@ public class Dynamics365BusinessEventBase : IMetadata, IEvent
     [IgnoreDataMember]
     [JsonIgnore]
     public IEnumerable<string>? Scopes => Array.Empty<string>();
+
+    /// <inheritdoc/>
+    [IgnoreDataMember]
+    [JsonIgnore]
+    public string TypeName => BusinessEventId ?? string.Empty;
 
     /// <summary>
     /// Gets the user id.
@@ -194,12 +194,7 @@ public class Dynamics365BusinessEventBase : IMetadata, IEvent
     {
         _ = Guard.Against.NullOrWhiteSpace(json);
         Dynamics365BusinessEventBase? result = JsonSerializer
-            .Deserialize<Dynamics365BusinessEventBase>(
-                json,
-                new JsonSerializerOptions
-                {
-                    TypeInfoResolver = new PolymorphicTypeResolver(),
-                });
+            .Deserialize<Dynamics365BusinessEventBase>(json);
         return result ?? throw new InvalidOperationException("Unable to deserialize business event.");
     }
 

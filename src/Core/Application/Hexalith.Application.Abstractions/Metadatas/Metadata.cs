@@ -19,11 +19,8 @@ namespace Hexalith.Application.Abstractions.Metadatas;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Ardalis.GuardClauses;
-
 using Hexalith.Domain.Abstractions.Messages;
 using Hexalith.Extensions.Helpers;
-using Hexalith.Extensions.Serialization;
 
 /// <summary>
 /// Class Metadata.
@@ -31,8 +28,7 @@ using Hexalith.Extensions.Serialization;
 /// </summary>
 /// <seealso cref="Hexalith.Application.Abstractions.Metadatas.IMetadata" />
 [DataContract]
-[JsonPolymorphicBaseClass]
-public class Metadata : IMetadata
+public class Metadata : BaseMetadata
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="Metadata" /> class.
@@ -40,9 +36,6 @@ public class Metadata : IMetadata
     [Obsolete("This constructor is only for serialization purposes.", true)]
     public Metadata()
     {
-        Message = new MessageMetadata();
-        Version = new MetadataVersion();
-        Context = new ContextMetadata();
     }
 
     /// <summary>
@@ -54,15 +47,11 @@ public class Metadata : IMetadata
     /// <param name="scopes">The scopes.</param>
     [JsonConstructor]
     public Metadata(
-        MetadataVersion version,
         MessageMetadata message,
         ContextMetadata context,
         IEnumerable<string>? scopes)
+        : base(message, context, scopes)
     {
-        Version = version;
-        Message = message;
-        Context = context;
-        Scopes = scopes;
     }
 
     /// <summary>
@@ -79,48 +68,9 @@ public class Metadata : IMetadata
         DateTimeOffset date,
         ContextMetadata context,
         IEnumerable<string>? scopes)
+        : base(id, message, date, context, scopes)
     {
-        _ = Guard.Against.Null(message);
-        Version = new MetadataVersion(0, 0);
-        Message = new MessageMetadata(
-            id,
-            message.MessageName,
-            date,
-            new MessageVersion(message.MajorVersion, message.MinorVersion),
-            new AggregateMetadata(message.AggregateId, message.AggregateName));
-        Context = context;
-        Scopes = scopes;
     }
-
-    /// <summary>
-    /// Gets the message context metadata.
-    /// </summary>
-    /// <value>The context.</value>
-    public ContextMetadata Context { get; private set; }
-
-    /// <summary>
-    /// Gets the message metadata.
-    /// </summary>
-    /// <value>The message.</value>
-    public MessageMetadata Message { get; private set; }
-
-    /// <inheritdoc/>
-    public IEnumerable<string>? Scopes { get; private set; }
-
-    /// <summary>
-    /// Gets the metadata version.
-    /// </summary>
-    /// <value>The version.</value>
-    public MetadataVersion Version { get; private set; }
-
-    /// <inheritdoc/>
-    IContextMetadata IMetadata.Context => Context;
-
-    /// <inheritdoc/>
-    IMessageMetadata IMetadata.Message => Message;
-
-    /// <inheritdoc/>
-    IMetadataVersion IMetadata.Version => Version;
 
     /// <summary>
     /// Creates the new.

@@ -21,7 +21,7 @@ using Hexalith.Domain.Abstractions.Events;
 /// <seealso cref="Hexalith.Application.Abstractions.Envelopes.BaseEnvelope{Hexalith.Domain.Abstractions.Events.BaseEvent, Hexalith.Application.Abstractions.Metadatas.Metadata}" />
 /// <seealso cref="IEventEnvelope" />
 [DataContract]
-public class EventEnvelope : BaseEnvelope<BaseEvent, Metadata>, IEventEnvelope
+public class EventEnvelope : BaseEnvelope<BaseEvent, BaseMetadata>, IEventEnvelope
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="EventEnvelope" /> class.
@@ -29,7 +29,7 @@ public class EventEnvelope : BaseEnvelope<BaseEvent, Metadata>, IEventEnvelope
     /// <param name="message">The message.</param>
     /// <param name="metadata">The metadata.</param>
     [JsonConstructor]
-    public EventEnvelope(BaseEvent message, Metadata metadata)
+    public EventEnvelope(BaseEvent message, BaseMetadata metadata)
         : base(message, metadata)
     {
     }

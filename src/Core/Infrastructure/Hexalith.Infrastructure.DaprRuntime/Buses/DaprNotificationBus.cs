@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Infrastructure.DaprBus;
+namespace Hexalith.Infrastructure.DaprRuntime.Buses;
 
 using System;
 
@@ -25,19 +25,18 @@ using Hexalith.Application.Abstractions.Notifications;
 using Hexalith.Application.Abstractions.States;
 using Hexalith.Application.Configuration;
 using Hexalith.Extensions.Common;
-using Hexalith.Infrastructure.DaprRuntime.Buses;
 
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 /// <summary>
 /// Class DaprNotificationBus.
-/// Implements the <see cref="Hexalith.Infrastructure.DaprBus.DaprApplicationBus{Hexalith.Domain.Abstractions.Notifications.BaseNotification, Hexalith.Application.Abstractions.Metadatas.Metadata}" />
+/// Implements the <see cref="DaprBus.DaprApplicationBus{Abstractions.Notifications.BaseNotification, Metadata}" />
 /// Implements the <see cref="INotificationBus" />.
 /// </summary>
-/// <seealso cref="Hexalith.Infrastructure.DaprBus.DaprApplicationBus{Hexalith.Domain.Abstractions.Notifications.BaseNotification, Hexalith.Application.Abstractions.Metadatas.Metadata}" />
+/// <seealso cref="DaprBus.DaprApplicationBus{Abstractions.Notifications.BaseNotification, Metadata}" />
 /// <seealso cref="INotificationBus" />
-public class DaprNotificationBus : DaprApplicationBus<BaseNotification, Metadata, NotificationState>, INotificationBus
+public class DaprNotificationBus : DaprApplicationBus<BaseNotification, BaseMetadata, NotificationState>, INotificationBus
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="DaprNotificationBus"/> class.

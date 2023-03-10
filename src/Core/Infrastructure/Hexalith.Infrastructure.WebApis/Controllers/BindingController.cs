@@ -91,7 +91,7 @@ public abstract class BindingController : ControllerBase
             IEvent @event = DeserializeAndValidate(message);
             Logger.LogInformation(
                 "Received event {EventName} {AggregateName}-{AggregateId}.",
-                @event.MessageName,
+                @event.TypeName,
                 @event.AggregateName,
                 @event.AggregateId);
             await _eventProcessor.SubmitAsync(@event, cancellationToken);

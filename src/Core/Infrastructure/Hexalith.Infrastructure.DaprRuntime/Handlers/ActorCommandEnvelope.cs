@@ -22,7 +22,6 @@ using System.Text.Json.Serialization;
 
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Infrastructure.Serialization.Helpers;
 
 /// <summary>
 /// Class ActorCommandEnvelope.
@@ -56,7 +55,7 @@ public class ActorCommandEnvelope : IJsonOnSerializing, IJsonOnDeserialized
     /// <exception cref="ArgumentException">The command array must contain elements. - commands.</exception>
     /// <exception cref="ArgumentException">All commands must be for the same aggregate. - commands.</exception>
     /// <exception cref="ArgumentException">All commands must be for the same aggregate identifier. - commands.</exception>
-    public ActorCommandEnvelope(BaseCommand[] commands, Metadata[] metadatas)
+    public ActorCommandEnvelope(BaseCommand[] commands, BaseMetadata[] metadatas)
     {
         Commands = commands;
         Metadatas = metadatas;
@@ -106,7 +105,7 @@ public class ActorCommandEnvelope : IJsonOnSerializing, IJsonOnDeserialized
     /// <value>The metadata.</value>
     [JsonIgnore]
     [IgnoreDataMember]
-    public Metadata[] Metadatas { get; private set; }
+    public BaseMetadata[] Metadatas { get; private set; }
 
     /// <summary>
     /// Gets the metadatas json.
@@ -121,13 +120,12 @@ public class ActorCommandEnvelope : IJsonOnSerializing, IJsonOnDeserialized
     /// </summary>
     public void OnDeserialized()
     {
-        JsonSerializerOptions options = new JsonSerializerOptions().AddPolymorphism();
         Commands = CommandsJson == null
             ? Array.Empty<BaseCommand>()
-            : CommandsJson.Select(p => JsonSerializer.Deserialize<BaseCommand>(p, options)!).ToArray();
+            : CommandsJson.Select(p => JsonSerializer.Deserialize<BaseCommand>(p)!).ToArray();
         Metadatas = MetadatasJson == null
             ? Array.Empty<Metadata>()
-            : MetadatasJson.Select(p => JsonSerializer.Deserialize<Metadata>(p, options)!).ToArray();
+            : MetadatasJson.Select(p => JsonSerializer.Deserialize<Metadata>(p)!).ToArray();
     }
 
     /// <summary>
@@ -135,9 +133,8 @@ public class ActorCommandEnvelope : IJsonOnSerializing, IJsonOnDeserialized
     /// </summary>
     public void OnSerializing()
     {
-        JsonSerializerOptions options = new JsonSerializerOptions().AddPolymorphism();
-        CommandsJson = Commands.Select(p => JsonSerializer.Serialize(p, options)).ToArray();
-        MetadatasJson = Metadatas.Select(p => JsonSerializer.Serialize(p, options)).ToArray();
+        CommandsJson = Commands.Select(p => JsonSerializer.Serialize(p)).ToArray();
+        MetadatasJson = Metadatas.Select(p => JsonSerializer.Serialize(p)).ToArray();
     }
 
     /// <summary>

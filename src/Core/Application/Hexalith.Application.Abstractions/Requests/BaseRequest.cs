@@ -7,8 +7,9 @@
 namespace Hexalith.Application.Abstractions.Requests;
 
 using System.Runtime.Serialization;
-
+using System.Text.Json.Serialization;
 using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Extensions.Serialization;
 
 /// <summary>
 /// Class BaseRequest.
@@ -18,6 +19,7 @@ using Hexalith.Domain.Abstractions.Messages;
 /// <seealso cref="BaseMessage" />
 /// <seealso cref="Application.Requests.IRequest" />
 [DataContract]
+[JsonConverter(typeof(PolymorphicJsonConverter<BaseRequest>))]
 public class BaseRequest : BaseMessage, IRequest
 {
 }

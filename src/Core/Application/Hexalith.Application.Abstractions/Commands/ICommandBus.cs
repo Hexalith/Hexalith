@@ -23,7 +23,7 @@ using Hexalith.Application.Abstractions.States;
 /// <summary>
 /// A command bus is a component that allows to send commands.
 /// </summary>
-public interface ICommandBus : IMessageBus<BaseCommand, Metadata, CommandState>
+public interface ICommandBus : IMessageBus<BaseCommand, BaseMetadata, CommandState>
 {
     /// <summary>
     /// Publishes the asynchronous.
@@ -31,7 +31,7 @@ public interface ICommandBus : IMessageBus<BaseCommand, Metadata, CommandState>
     /// <param name="envelope">The envelope.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
-    new Task PublishAsync(IEnvelope<BaseCommand, Metadata> envelope, CancellationToken cancellationToken);
+    new Task PublishAsync(IEnvelope<BaseCommand, BaseMetadata> envelope, CancellationToken cancellationToken);
 
     /// <summary>
     /// Publishes the asynchronous.
@@ -40,7 +40,7 @@ public interface ICommandBus : IMessageBus<BaseCommand, Metadata, CommandState>
     /// <param name="metadata">The metadata.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
-    new Task PublishAsync(BaseCommand command, Metadata metadata, CancellationToken cancellationToken);
+    new Task PublishAsync(BaseCommand command, BaseMetadata metadata, CancellationToken cancellationToken);
 
     /// <summary>
     /// Publishes the asynchronous.

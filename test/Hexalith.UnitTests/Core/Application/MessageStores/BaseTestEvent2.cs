@@ -7,17 +7,9 @@
 namespace Hexalith.UnitTests.Core.Application.MessageStores;
 
 using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
 
 [DataContract]
 public class BaseTestEvent2 : BaseTestEvent
 {
-    [JsonConstructor]
-    public BaseTestEvent2(string idempotencyId, string id, string message, string value2)
-        : base(idempotencyId, id, message)
-    {
-        Value2 = value2;
-    }
-
     public string Value2 { get; set; }
 }

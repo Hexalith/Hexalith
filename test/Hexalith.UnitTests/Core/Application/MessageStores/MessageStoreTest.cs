@@ -192,7 +192,7 @@ namespace Hexalith.UnitTests.Core.Application.MessageStores
         [Fact]
         public async Task Get_stream_should_return_event_value()
         {
-            BaseTestEvent2 testEvent = new("554643", "myId123", "hello", "463.33");
+            BaseTestEvent2 testEvent = new() { IdempotencyId = "554643", Id = "myId123", Message = "hello", Value2 = "463.33" };
             MemoryStateProvider provider = new(new Dictionary<string, object>
             {
                 { _stateName, 123L },
@@ -224,11 +224,11 @@ namespace Hexalith.UnitTests.Core.Application.MessageStores
                 string id = i.ToInvariantString();
                 if (i % 2 == 0)
                 {
-                    list.Add(new BaseTestEvent2(id, id, _fakeMessageStart + $"two {id}", _fakeValue2Start + id));
+                    list.Add(new BaseTestEvent2 { IdempotencyId = id, Id = id, Message = _fakeMessageStart + $"two {id}", Value2 = _fakeValue2Start + id });
                 }
                 else
                 {
-                    list.Add(new BaseTestEvent(id, id, _fakeMessageStart + $"base {id}"));
+                    list.Add(new BaseTestEvent { IdempotencyId = id, Id = id, Message = _fakeMessageStart + $"base {id}" });
                 }
             }
 
