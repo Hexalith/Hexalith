@@ -6,8 +6,6 @@
 
 namespace Hexalith.UnitTests.Core.Infrastructure.States;
 
-using System.Text.Json;
-
 using Dapr.Actors.Runtime;
 
 using FluentAssertions;
@@ -27,10 +25,10 @@ public class ActorStateStoreProviderTest
         DummyCommand1 command = new("Test", 123456);
         Mock<IActorStateManager> actorStateManager = new();
         _ = actorStateManager
-            .Setup(p => p.TryGetStateAsync<JsonDocument>("State", It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<JsonDocument>(
+            .Setup(p => p.TryGetStateAsync<BaseCommand>("State", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ConditionalValue<BaseCommand>(
                 true,
-                JsonDocument.Parse(JsonSerializer.Serialize<BaseCommand>(command))));
+                command));
         Mock<ICommandDispatcher> dispatcher = new();
         ActorStateStoreProvider storeProvider = new(actorStateManager.Object);
         Extensions.Common.ConditionalValue<BaseCommand> result = await storeProvider.TryGetStateAsync<BaseCommand>("State", CancellationToken.None);

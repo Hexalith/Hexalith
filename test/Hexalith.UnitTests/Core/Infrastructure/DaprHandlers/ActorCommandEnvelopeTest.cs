@@ -79,6 +79,6 @@ public class ActorCommandEnvelopeTest
         _ = json.Should().Contain(c2.Value2.ToInvariantString());
         _ = json.Should().Contain(nameof(DummyCommand1));
         _ = json.Should().Contain(nameof(DummyCommand2));
-        _ = json.Should().Contain("$type");
+        _ = json.Should().Contain("$type_name");
     }
 }
