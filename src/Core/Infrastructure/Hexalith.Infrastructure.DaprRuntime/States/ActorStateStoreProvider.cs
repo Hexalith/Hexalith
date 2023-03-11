@@ -6,7 +6,6 @@
 
 namespace Hexalith.Infrastructure.DaprRuntime.States;
 
-using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -39,13 +38,13 @@ public class ActorStateStoreProvider : IStateStoreProvider
     /// <inheritdoc/>
     public async Task AddStateAsync<T>(string key, T value, CancellationToken cancellationToken)
     {
-        await _actorStateManager.AddStateAsync(key, GetJsonDocument(value), cancellationToken);
+        await _actorStateManager.SetStateAsync(key, value, cancellationToken);
     }
 
     /// <inheritdoc/>
     public async Task<T> GetOrAddStateAsync<T>(string key, T value, CancellationToken cancellationToken)
     {
-        return GetValue<T>(await _actorStateManager.GetOrAddStateAsync(key, GetJsonDocument(value), cancellationToken));
+        return await _actorStateManager.GetOrAddStateAsync(key, value, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -53,7 +52,7 @@ public class ActorStateStoreProvider : IStateStoreProvider
     {
         try
         {
-            return GetValue<T>(await _actorStateManager.GetStateAsync<JsonDocument>(key, cancellationToken));
+            return await _actorStateManager.GetStateAsync<T>(key, cancellationToken);
         }
         catch (NotSupportedException ex)
         {
@@ -70,29 +69,13 @@ public class ActorStateStoreProvider : IStateStoreProvider
     /// <inheritdoc/>
     public async Task SetStateAsync<T>(string key, T value, CancellationToken cancellationToken)
     {
-        await _actorStateManager.SetStateAsync(key, GetJsonDocument(value), cancellationToken);
+        await _actorStateManager.SetStateAsync(key, value, cancellationToken);
     }
 
     /// <inheritdoc/>
     public async Task<Extensions.Common.ConditionalValue<T>> TryGetStateAsync<T>(string key, CancellationToken cancellationToken)
     {
-        ConditionalValue<JsonDocument> result = await _actorStateManager.TryGetStateAsync<JsonDocument>(key, cancellationToken);
-        return result.HasValue ? new Extensions.Common.ConditionalValue<T>(GetValue<T>(result.Value)) : new Extensions.Common.ConditionalValue<T>();
-    }
-
-    private JsonDocument GetJsonDocument<T>(T value)
-    {
-        // Dapr issue with Json serialization of polymorphic types. The $type property is not the first field to the json string.
-        // Replacing value by a JsonDocument to fix the issue.
-        string json = JsonSerializer.Serialize(value);
-        JsonDocument jsonElement = JsonDocument.Parse(json);
-        return jsonElement;
-    }
-
-    private T GetValue<T>(JsonDocument json)
-    {
-        // Dapr issue with Json serialization of polymorphic types. The $type property is not the first field to the json string.
-        // Replacing value by a JsonDocument to fix the issue.
-        return JsonSerializer.Deserialize<T>(json.RootElement.GetRawText())!;
+        ConditionalValue<T> result = await _actorStateManager.TryGetStateAsync<T>(key, cancellationToken);
+        return result.HasValue ? new Extensions.Common.ConditionalValue<T>(result.Value) : new Extensions.Common.ConditionalValue<T>();
     }
 }
