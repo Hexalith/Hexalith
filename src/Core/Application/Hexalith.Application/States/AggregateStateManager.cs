@@ -114,6 +114,7 @@ public class AggregateStateManager : IAggregateStateManager
         ArgumentNullException.ThrowIfNull(stateProvider);
         ArgumentNullException.ThrowIfNull(metadatas);
         ArgumentNullException.ThrowIfNull(commands);
+        await SetReminderAsync(TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(15), registerReminder);
         AggregateState state = await GetStateAsync(stateProvider, cancellationToken);
         MessageStore<CommandState> commandStore = new(stateProvider, CommandsStreamName);
         List<CommandState> states = new();
@@ -126,7 +127,6 @@ public class AggregateStateManager : IAggregateStateManager
             states,
             state.CommandStreamVersion,
             cancellationToken);
-        await SetReminderAsync(TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(15), registerReminder);
         await PersistStateAsync(
             stateProvider,
             new AggregateState(
@@ -158,13 +158,17 @@ public class AggregateStateManager : IAggregateStateManager
         AggregateState state = await GetStateAsync(stateProvider, cancellationToken);
         if (state.LastEventPublished < state.EventStreamVersion)
         {
-            await SetReminderAsync(TimeSpan.FromSeconds(1), TimeSpan.FromMinutes(1), registerReminder);
+            await SetReminderAsync(TimeSpan.FromMinutes(1), TimeSpan.FromMinutes(1), registerReminder);
             return;
         }
 
         if (retry != null)
         {
-            await SetReminderAsync(retry.Value.Add(TimeSpan.FromMilliseconds(100)), TimeSpan.FromMinutes(1), registerReminder);
+            await SetReminderAsync(retry.Value.Add(TimeSpan.FromSeconds(1)), TimeSpan.FromMinutes(1), registerReminder);
+        }
+        else
+        {
+            await SetReminderAsync(TimeSpan.FromDays(30), TimeSpan.FromMinutes(1), registerReminder);
         }
     }
 
