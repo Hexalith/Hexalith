@@ -10,7 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Domain.Abstractions.Messages;
 
 /// <summary>
 /// Class CommandHandler.
@@ -22,19 +22,19 @@ public abstract class CommandHandler<TCommand> : ICommandHandler<TCommand>
     where TCommand : ICommand
 {
     /// <inheritdoc/>
-    public abstract Task<IEnumerable<BaseEvent>> DoAsync(TCommand command, CancellationToken cancellationToken);
+    public abstract Task<IEnumerable<BaseMessage>> DoAsync(TCommand command, CancellationToken cancellationToken);
 
     /// <inheritdoc/>
-    public abstract Task<IEnumerable<BaseEvent>> UndoAsync(TCommand command, CancellationToken cancellationToken);
-
-    /// <inheritdoc/>
-    Task<IEnumerable<BaseEvent>> ICommandHandler.DoAsync(ICommand command, CancellationToken cancellationToken)
+    Task<IEnumerable<BaseMessage>> ICommandHandler.DoAsync(ICommand command, CancellationToken cancellationToken)
     {
         return DoAsync(ToCommand(command), cancellationToken);
     }
 
     /// <inheritdoc/>
-    Task<IEnumerable<BaseEvent>> ICommandHandler.UndoAsync(ICommand command, CancellationToken cancellationToken)
+    public abstract Task<IEnumerable<BaseMessage>> UndoAsync(TCommand command, CancellationToken cancellationToken);
+
+    /// <inheritdoc/>
+    Task<IEnumerable<BaseMessage>> ICommandHandler.UndoAsync(ICommand command, CancellationToken cancellationToken)
     {
         return DoAsync(ToCommand(command), cancellationToken);
     }

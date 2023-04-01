@@ -23,6 +23,7 @@ using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.States;
 using Hexalith.Application.Abstractions.Tasks;
 using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Domain.Abstractions.Messages;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 
@@ -69,9 +70,9 @@ public class ResilientCommandProcessor
     /// <param name="command">The command.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A <see cref="Task{TResult}" /> representing the result of the asynchronous operation.</returns>
-    public async Task<(TimeSpan? Retry, IEnumerable<BaseEvent> Events)> ProcessAsync(string id, BaseCommand command, CancellationToken cancellationToken)
+    public async Task<(TimeSpan? Retry, IEnumerable<BaseMessage> Events)> ProcessAsync(string id, BaseCommand command, CancellationToken cancellationToken)
     {
-        IEnumerable<BaseEvent> events;
+        IEnumerable<BaseMessage> events;
         TaskProcessor taskProcessor = await GetTaskProcessorAsync(id, cancellationToken);
         switch (taskProcessor.Status)
         {

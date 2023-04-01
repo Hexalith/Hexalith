@@ -11,18 +11,18 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Hexalith.Application.Abstractions.Commands;
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Domain.Abstractions.Messages;
 using Hexalith.Extensions.Helpers;
 
 internal class DummyCommandDispatcher : ICommandDispatcher
 {
-    public Task<IEnumerable<BaseEvent>> DoAsync(ICommand command, CancellationToken cancellationToken)
+    public Task<IEnumerable<BaseMessage>> DoAsync(ICommand command, CancellationToken cancellationToken)
     {
-        return Task.FromResult<IEnumerable<BaseEvent>>(new CommandDispatchDoEvent().IntoArray());
+        return Task.FromResult<IEnumerable<BaseMessage>>(new CommandDispatchDoEvent().IntoArray());
     }
 
-    public Task<IEnumerable<BaseEvent>> UnDoAsync(ICommand command, CancellationToken cancellationToken)
+    public Task<IEnumerable<BaseMessage>> UnDoAsync(ICommand command, CancellationToken cancellationToken)
     {
-        return Task.FromResult<IEnumerable<BaseEvent>>(new CommandDispatchUndoEvent().IntoArray());
+        return Task.FromResult<IEnumerable<BaseMessage>>(new CommandDispatchUndoEvent().IntoArray());
     }
 }

@@ -15,6 +15,7 @@ using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Application.Abstractions.Tasks;
 using Hexalith.Application.Events;
+using Hexalith.Application.Notifications;
 using Hexalith.Application.States;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
@@ -103,9 +104,11 @@ public class AggregateStateManagerTest
     {
         MemoryStateProvider provider = new();
         MemoryEventBus eventBus = new(new DateTimeService());
+        MemoryNotificationBus notificationBus = new(new DateTimeService());
         AggregateStateManager stateManager = new(
             new DummyCommandDispatcher(),
             eventBus,
+            notificationBus,
             new DateTimeService());
         for (int i = 0; i < commandCount; i++)
         {

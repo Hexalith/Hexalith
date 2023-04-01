@@ -1,8 +1,18 @@
-﻿// <copyright file="AggregateStateManager.cs" company="Fiveforty SAS Paris France">
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Application
+// Author           : Jérôme Piquot
+// Created          : 02-04-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 03-27-2023
+// ***********************************************************************
+// <copyright file="AggregateStateManager.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Hexalith.Application.States;
 
@@ -14,11 +24,13 @@ using Hexalith.Application.Abstractions.Aggregates;
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Events;
 using Hexalith.Application.Abstractions.Metadatas;
+using Hexalith.Application.Abstractions.Notifications;
 using Hexalith.Application.Abstractions.States;
 using Hexalith.Application.Abstractions.Tasks;
 using Hexalith.Application.StreamStores;
 using Hexalith.Application.Tasks;
 using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Domain.Abstractions.Messages;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 
@@ -45,23 +57,32 @@ public class AggregateStateManager : IAggregateStateManager
     private readonly IEventBus _eventBus;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="AggregateStateManager"/> class.
+    /// The notification bus.
+    /// </summary>
+    private readonly INotificationBus _notificationBus;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="AggregateStateManager" /> class.
     /// </summary>
     /// <param name="dispatcher">The dispatcher.</param>
     /// <param name="eventBus">The event bus.</param>
+    /// <param name="notificationBus">The notification bus.</param>
     /// <param name="dateTimeService">The date time service.</param>
-    /// <exception cref="System.ArgumentNullException">Null argument.</exception>
+    /// <exception cref="System.ArgumentNullException">Null arguments.</exception>
     public AggregateStateManager(
         ICommandDispatcher dispatcher,
         IEventBus eventBus,
+        INotificationBus notificationBus,
         IDateTimeService dateTimeService)
     {
         ArgumentNullException.ThrowIfNull(dispatcher);
         ArgumentNullException.ThrowIfNull(eventBus);
         ArgumentNullException.ThrowIfNull(dateTimeService);
+        ArgumentNullException.ThrowIfNull(notificationBus);
         _dateTimeService = dateTimeService;
         _dispatcher = dispatcher;
         _eventBus = eventBus;
+        _notificationBus = notificationBus;
     }
 
     /// <summary>
@@ -103,7 +124,7 @@ public class AggregateStateManager : IAggregateStateManager
     /// <param name="registerReminder">The register reminder.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task representing the asynchronous operation.</returns>
-    /// <exception cref="System.ArgumentNullException">Argument null.</exception>
+    /// <exception cref="System.ArgumentNullException">Null arguments.</exception>
     public async Task AddCommandAsync(
         IStateStoreProvider stateProvider,
         BaseCommand[] commands,
@@ -145,7 +166,7 @@ public class AggregateStateManager : IAggregateStateManager
     /// <param name="registerReminder">The register reminder.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task representing the asynchronous operation.</returns>
-    /// <exception cref="ArgumentNullException">Null argument.</exception>
+    /// <exception cref="System.ArgumentNullException">Null arguments.</exception>
     public async Task ContinueAsync(
         IStateStoreProvider stateProvider,
         ResiliencyPolicy resiliencyPolicy,
@@ -184,11 +205,60 @@ public class AggregateStateManager : IAggregateStateManager
         return state.CommandStreamVersion;
     }
 
-    /// <summary>Do next command as an asynchronous operation.</summary>
+    /// <inheritdoc/>
+    public async Task<IEnumerable<T>> GetCommandsAsync<T>(IStateStoreProvider stateProvider, CancellationToken cancellationToken)
+    {
+        MessageStore<CommandState> commandStore = new(stateProvider, EventsStreamName);
+        AggregateState state = await GetStateAsync(stateProvider, cancellationToken);
+        List<T> commands = new();
+        while (state.LastEventPublished < state.EventStreamVersion)
+        {
+            long nextEvent = state.LastEventPublished + 1;
+            CommandState eventState = await commandStore.GetAsync(nextEvent, cancellationToken);
+            if (eventState is T e)
+            {
+                commands.Add(e);
+            }
+        }
+
+        return commands;
+    }
+
+    /// <inheritdoc/>
+    public async Task<long> GetEventCountAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken)
+    {
+        AggregateState state = await GetStateAsync(stateProvider, cancellationToken);
+        return state.EventStreamVersion;
+    }
+
+    /// <inheritdoc/>
+    public async Task<IEnumerable<T>> GetEventsAsync<T>(IStateStoreProvider stateProvider, CancellationToken cancellationToken)
+    {
+        MessageStore<EventState> eventStore = new(stateProvider, EventsStreamName);
+        AggregateState state = await GetStateAsync(stateProvider, cancellationToken);
+        List<T> events = new();
+        while (state.LastEventPublished < state.EventStreamVersion)
+        {
+            long nextEvent = state.LastEventPublished + 1;
+            EventState eventState = await eventStore.GetAsync(nextEvent, cancellationToken);
+            if (eventState is T e)
+            {
+                events.Add(e);
+            }
+        }
+
+        return events;
+    }
+
+    /// <summary>
+    /// Do next command as an asynchronous operation.
+    /// </summary>
     /// <param name="stateProvider">The state store provider.</param>
     /// <param name="resiliencyPolicy">The resiliency policy.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task&lt;System.Boolean&gt; representing the asynchronous operation.</returns>
+    /// <exception cref="System.InvalidOperationException">Command {nextCommand} content is null.</exception>
+    /// <exception cref="System.InvalidOperationException">Command {nextCommand} metadata is null.</exception>
     /// <exception cref="ArgumentNullException">Null argument.</exception>
     protected async Task<TimeSpan?> ExecuteCommandsAsync(
         IStateStoreProvider stateProvider,
@@ -209,7 +279,8 @@ public class AggregateStateManager : IAggregateStateManager
                 _dispatcher,
                 stateProvider);
 
-            (TimeSpan? retry, IEnumerable<BaseEvent> events) = await processor.ProcessAsync(nextCommand.ToInvariantString(), command.Message, cancellationToken);
+            (TimeSpan? retry, IEnumerable<BaseMessage> messages) = await processor.ProcessAsync(nextCommand.ToInvariantString(), command.Message, cancellationToken);
+            BaseEvent[] events = messages.OfType<BaseEvent>().ToArray();
             long eventVersion = state.EventStreamVersion;
             if (events.Any())
             {
@@ -272,6 +343,13 @@ public class AggregateStateManager : IAggregateStateManager
         }
     }
 
+    /// <summary>
+    /// Set reminder as an asynchronous operation.
+    /// </summary>
+    /// <param name="next">The next.</param>
+    /// <param name="retry">The retry.</param>
+    /// <param name="registerReminder">The register reminder.</param>
+    /// <returns>A Task representing the asynchronous operation.</returns>
     private static async Task SetReminderAsync(
         TimeSpan next,
         TimeSpan retry,
@@ -280,12 +358,23 @@ public class AggregateStateManager : IAggregateStateManager
         await registerReminder("Continue", Array.Empty<byte>(), next, retry);
     }
 
+    /// <summary>
+    /// Get state as an asynchronous operation.
+    /// </summary>
+    /// <param name="stateProvider">The state provider.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>A Task&lt;AggregateState&gt; representing the asynchronous operation.</returns>
     private async Task<AggregateState> GetStateAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken)
     {
         ConditionalValue<AggregateState> result = await stateProvider.TryGetStateAsync<AggregateState>(StateName, cancellationToken);
         return result.HasValue ? result.Value : new AggregateState(0, 0, 0, 0);
     }
 
+    /// <summary>
+    /// Gets the name of the task processor state.
+    /// </summary>
+    /// <param name="version">The version.</param>
+    /// <returns>System.String.</returns>
     private string GetTaskProcessorStateName(long version)
     {
         return nameof(TaskProcessor) + version.ToInvariantString();
@@ -294,6 +383,7 @@ public class AggregateStateManager : IAggregateStateManager
     /// <summary>
     /// Set state as an asynchronous operation.
     /// </summary>
+    /// <param name="stateProvider">The state provider.</param>
     /// <param name="state">The state.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task representing the asynchronous operation.</returns>

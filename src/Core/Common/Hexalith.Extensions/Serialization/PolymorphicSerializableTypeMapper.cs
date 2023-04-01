@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 03-10-2023
 // ***********************************************************************
-// <copyright file="PolimorphicSerializableTypeMapper.cs" company="Fiveforty SAS Paris France">
+// <copyright file="PolymorphicSerializableTypeMapper.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -19,8 +19,6 @@ namespace Hexalith.Extensions.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
-using Hexalith.Domain.Abstractions.Converters;
 
 /// <summary>
 /// Class MessageSerializationMapper.

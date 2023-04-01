@@ -18,8 +18,6 @@ namespace Hexalith.Domain.Abstractions.Messages;
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
-
-using Hexalith.Domain.Abstractions.Converters;
 using Hexalith.Extensions.Serialization;
 
 /// <summary>

@@ -14,7 +14,7 @@ using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Tasks;
 using Hexalith.Application.States;
 using Hexalith.Application.Tasks;
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Domain.Abstractions.Messages;
 using Hexalith.Extensions.Helpers;
 using Hexalith.UnitTests.Core.Application.Commands;
 using Hexalith.UnitTests.Core.Domain.Events;
@@ -38,7 +38,7 @@ public class ResilientCommandProcessorTest
         const string key = "test1";
         string stateName = nameof(TaskProcessor) + key;
         DummyCommand1 command = new("My test 1", 1);
-        (TimeSpan? retry, IEnumerable<BaseEvent> events) = await processor.ProcessAsync(key, command, CancellationToken.None);
+        (TimeSpan? retry, IEnumerable<BaseMessage> events) = await processor.ProcessAsync(key, command, CancellationToken.None);
         _ = retry.Should().BeNull();
         _ = events.Should().HaveCount(1);
         _ = events.First().Should().BeOfType<DummyEvent1>();
@@ -61,7 +61,7 @@ public class ResilientCommandProcessorTest
         Mock<ICommandDispatcher> dispatcher = new();
         _ = dispatcher
             .Setup(p => p.DoAsync(It.IsAny<ICommand>(), It.IsAny<CancellationToken>()))
-            .Returns(Task.FromException<IEnumerable<BaseEvent>>(new InvalidOperationException("Command execution failed.")));
+            .Returns(Task.FromException<IEnumerable<BaseMessage>>(new InvalidOperationException("Command execution failed.")));
         MemoryStateProvider stateProvider = new();
         ResilientCommandProcessor processor = new(
             ResiliencyPolicy.None,
@@ -70,7 +70,7 @@ public class ResilientCommandProcessorTest
         const string key = "test1";
         string stateName = nameof(TaskProcessor) + key;
         DummyCommand1 command = new("My test 1", 1);
-        (TimeSpan? retry, IEnumerable<BaseEvent> events) = await processor.ProcessAsync(key, command, CancellationToken.None);
+        (TimeSpan? retry, IEnumerable<BaseMessage> events) = await processor.ProcessAsync(key, command, CancellationToken.None);
         _ = retry.Should().BeNull();
         _ = events.Should().HaveCount(1);
         _ = events.First().Should().BeOfType<CommandProcessingFailed>();
@@ -93,7 +93,7 @@ public class ResilientCommandProcessorTest
         Mock<ICommandDispatcher> dispatcher = new();
         _ = dispatcher
             .Setup(p => p.DoAsync(It.IsAny<ICommand>(), It.IsAny<CancellationToken>()))
-            .Returns(Task.FromException<IEnumerable<BaseEvent>>(new InvalidOperationException("Command execution failed.")));
+            .Returns(Task.FromException<IEnumerable<BaseMessage>>(new InvalidOperationException("Command execution failed.")));
         MemoryStateProvider stateProvider = new();
         ResilientCommandProcessor processor = new(
             new(
@@ -108,7 +108,7 @@ public class ResilientCommandProcessorTest
         const string key = "test1";
         string stateName = nameof(TaskProcessor) + key;
         DummyCommand1 command = new("My test 1", 1);
-        (TimeSpan? retry, IEnumerable<BaseEvent> events) = await processor.ProcessAsync(key, command, CancellationToken.None);
+        (TimeSpan? retry, IEnumerable<BaseMessage> events) = await processor.ProcessAsync(key, command, CancellationToken.None);
         _ = retry.Should().NotBeNull();
         _ = events.Should().HaveCount(1);
         _ = events.First().Should().BeOfType<CommandProcessingFailed>();

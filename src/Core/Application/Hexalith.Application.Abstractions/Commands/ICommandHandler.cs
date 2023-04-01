@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Domain.Abstractions.Messages;
 
 /// <summary>
 /// Command handler interface.
@@ -23,7 +23,7 @@ public interface ICommandHandler
     /// <param name="command">The command to execute.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>The generated events with their metadata.</returns>
-    Task<IEnumerable<BaseEvent>> DoAsync(ICommand command, CancellationToken cancellationToken);
+    Task<IEnumerable<BaseMessage>> DoAsync(ICommand command, CancellationToken cancellationToken);
 
     /// <summary>
     /// Undo the execution of the command.
@@ -31,7 +31,7 @@ public interface ICommandHandler
     /// <param name="command">The command to execute.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>The generated events with their metadata.</returns>
-    Task<IEnumerable<BaseEvent>> UndoAsync(ICommand command, CancellationToken cancellationToken);
+    Task<IEnumerable<BaseMessage>> UndoAsync(ICommand command, CancellationToken cancellationToken);
 }
 
 /// <summary>
@@ -49,7 +49,7 @@ public interface ICommandHandler<TCommand> : ICommandHandler
     /// <param name="command">The command to execute.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>The generated events with their metadata.</returns>
-    Task<IEnumerable<BaseEvent>> DoAsync(TCommand command, CancellationToken cancellationToken);
+    Task<IEnumerable<BaseMessage>> DoAsync(TCommand command, CancellationToken cancellationToken);
 
     /// <summary>
     /// Undo the execution of the command.
@@ -57,5 +57,5 @@ public interface ICommandHandler<TCommand> : ICommandHandler
     /// <param name="command">The command to execute.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>The generated events with their metadata.</returns>
-    Task<IEnumerable<BaseEvent>> UndoAsync(TCommand command, CancellationToken cancellationToken);
+    Task<IEnumerable<BaseMessage>> UndoAsync(TCommand command, CancellationToken cancellationToken);
 }
