@@ -4,14 +4,13 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Infrastructure.DaprHandlers;
+namespace Hexalith.Infrastructure.DaprRuntime.Handlers;
 
 using Ardalis.GuardClauses;
 
 using Dapr.Actors.Client;
 
 using Hexalith.Application.Abstractions.Commands;
-using Hexalith.Infrastructure.DaprRuntime.Handlers;
 
 /// <summary>
 /// Convention naming command processor.

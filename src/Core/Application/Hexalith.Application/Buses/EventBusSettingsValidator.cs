@@ -18,8 +18,6 @@ namespace Hexalith.Application.Buses;
 
 using FluentValidation;
 
-using Hexalith.Application.Configuration;
-
 /// <summary>
 /// Class EventBusSettingsValidator.
 /// Implements the <see cref="AbstractValidator{EventBusSettings}" />.

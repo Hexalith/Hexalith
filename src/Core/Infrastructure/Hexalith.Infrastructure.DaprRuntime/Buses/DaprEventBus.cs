@@ -23,7 +23,7 @@ using Dapr.Client;
 using Hexalith.Application.Abstractions.Events;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Application.Abstractions.States;
-using Hexalith.Application.Configuration;
+using Hexalith.Application.Buses;
 using Hexalith.Domain.Abstractions.Events;
 using Hexalith.Extensions.Common;
 

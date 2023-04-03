@@ -1,7 +1,7 @@
 <Project>
 	<Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
 	<PropertyGroup>
-		<MinVerDefaultPreReleasePhase>preview</MinVerDefaultPreReleasePhase>
+		<MinVerDefaultPreReleaseIdentifiers>preview</MinVerDefaultPreReleaseIdentifiers>
 		<MinVerTagPrefix>v</MinVerTagPrefix>
 		<MinVerSkip Condition="'$(Configuration)' == 'Debug'">true</MinVerSkip>
 		<Deterministic>true</Deterministic>

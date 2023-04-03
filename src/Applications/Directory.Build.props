@@ -1,0 +1,26 @@
+<Project>
+	<Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+	<PropertyGroup>
+		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+		<IsPackable>false</IsPackable>
+		<ContainerRegistry>hexalith.azurecr.io</ContainerRegistry>
+	</PropertyGroup>
+	<ItemGroup>
+		<ContainerEnvironmentVariable Include="DAPRSIDEKICK_ENABLED" Value="false" />
+		<ContainerEnvironmentVariable Include="DaprCommandBus__Name" Value="command-bus" />
+		<ContainerEnvironmentVariable Include="DaprEventBus__Name" Value="event-bus" />
+		<ContainerEnvironmentVariable Include="DaprNotificationBus__Name" Value="notification-bus" />
+		<ContainerEnvironmentVariable Include="DaprRequestBus__Name" Value="request-bus" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Man.Dapr.Sidekick.AspNetCore" Version="1.2.1" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.WebApis\Hexalith.Infrastructure.WebApis.csproj" />
+	</ItemGroup>
+	<Target Name="ContainerVersionTarget" AfterTargets="MinVer" Condition="'$(MinVerVersion)'!='' AND '$(BuildNumber)' != ''">
+		<PropertyGroup>
+			<ContainerImageTags>$(MinVerMajor).$(MinVerMinor).$(MinVerPatch);latest</ContainerImageTags>
+		</PropertyGroup>
+	</Target>
+</Project>

@@ -4,7 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Infrastructure.DaprHandlers;
+namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks;
 
 using Ardalis.GuardClauses;
 

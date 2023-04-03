@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Configuration;
+namespace Hexalith.Application.Buses;
 
 using Hexalith.Extensions.Configuration;
 

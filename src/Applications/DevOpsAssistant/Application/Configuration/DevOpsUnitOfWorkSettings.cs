@@ -1,42 +1,44 @@
 ﻿// ***********************************************************************
-// Assembly         : Hexalith.Infrastructure.Bus
+// Assembly         : DevOpsAssistant
 // Author           : Jérôme Piquot
-// Created          : 02-04-2023
+// Created          : 04-02-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 02-04-2023
+// Last Modified On : 04-02-2023
 // ***********************************************************************
-// <copyright file="RequestBusSettings.cs" company="Fiveforty SAS Paris France">
+// <copyright file="DevOpsUnitOfWorkSettings.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+namespace DevOpsAssistant.Application.Configuration;
 
-namespace Hexalith.Application.Buses;
+using DevOpsAssistant.Domain.Aggregates;
 
+using Hexalith.Application.Abstractions.Tasks;
 using Hexalith.Extensions.Configuration;
 
 /// <summary>
-/// Class RequestBusSettings.
+/// Class DevOpsUnitOfWorkSettings.
 /// Implements the <see cref="ISettings" />.
 /// </summary>
 /// <seealso cref="ISettings" />
-public class RequestBusSettings : ISettings
+public class DevOpsUnitOfWorkSettings : ISettings
 {
     /// <summary>
-    /// Gets the name.
+    /// Gets or sets the command execution resiliency policy.
     /// </summary>
-    /// <value>The name.</value>
-    public string Name { get; init; } = "request-bus";
+    /// <value>The resiliency policy.</value>
+    public ResiliencyPolicy? ExecuteCommandResiliencyPolicy { get; set; }
 
     /// <summary>
-    /// The configuration section name of the settings.
+    /// Configurations the name.
     /// </summary>
-    /// <returns>The name.</returns>
+    /// <returns>System.String.</returns>
     public static string ConfigurationName()
     {
-        return "RequestBus";
+        return nameof(DevOpsUnitOfWork);
     }
 }

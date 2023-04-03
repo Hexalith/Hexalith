@@ -9,7 +9,6 @@ namespace Hexalith.UnitTests.Core.Application.Buses;
 using FluentAssertions;
 
 using Hexalith.Application.Buses;
-using Hexalith.Application.Configuration;
 using Hexalith.TestMocks;
 
 public class NotificationBusSettingsTest

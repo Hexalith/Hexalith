@@ -4,9 +4,10 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Infrastructure.DaprHandlers.Helpers;
+namespace Hexalith.Infrastructure.DaprRuntime.Helpers;
 
 using Hexalith.Application.Abstractions.Commands;
+using Hexalith.Infrastructure.DaprRuntime.Handlers;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

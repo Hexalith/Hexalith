@@ -4,7 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.UnitTests.Core.Common.Extensions;
+namespace Hexalith.UnitTests.Core.Common.Helpers;
 
 using FluentAssertions;
 
