@@ -15,6 +15,7 @@
 // ***********************************************************************
 
 namespace Hexalith.Infrastructure.DaprRuntime.States;
+
 using System;
 using System.Threading;
 using System.Threading.Tasks;

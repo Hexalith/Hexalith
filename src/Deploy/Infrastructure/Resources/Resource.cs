@@ -18,6 +18,8 @@ namespace Deploy.Infrastructure.Resources;
 
 using Azure.ResourceManager;
 
+using Microsoft.Extensions.Logging;
+
 /// <summary>
 /// Class Resource.
 /// Implements the <see cref="System.IEquatable{Deploy.Infrastructure.Resources.Resource{TResource}}" />.
@@ -52,4 +54,19 @@ internal abstract record Resource<TResource>
     /// </summary>
     /// <value>The azure resource.</value>
     protected TResource? AzureResource { get; set; }
+
+    /// <summary>
+    /// Gets the logger.
+    /// </summary>
+    /// <value>The logger.</value>
+    protected ILogger Logger { get; }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Resource{TResource}"/> class.
+    /// </summary>
+    /// <param name="logger">The logger.</param>
+    public Resource(ILogger logger)
+    {
+        Logger = logger;
+    }
 }

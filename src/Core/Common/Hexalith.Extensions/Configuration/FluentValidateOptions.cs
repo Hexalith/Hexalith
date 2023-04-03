@@ -33,8 +33,8 @@ public class FluentValidateOptions<TOptions>
     : IValidateOptions<TOptions>
     where TOptions : class
 {
-    private readonly IValidator<TOptions>? _validator;
     private readonly ILogger<FluentValidateOptions<TOptions>> _logger;
+    private readonly IValidator<TOptions>? _validator;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="FluentValidateOptions{}"/> class.

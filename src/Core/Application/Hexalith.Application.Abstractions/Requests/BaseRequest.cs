@@ -8,6 +8,7 @@ namespace Hexalith.Application.Abstractions.Requests;
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
+
 using Hexalith.Domain.Abstractions.Messages;
 using Hexalith.Extensions.Serialization;
 

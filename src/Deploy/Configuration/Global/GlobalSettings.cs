@@ -39,6 +39,12 @@ public class GlobalSettings : ISettings
     public string? ContainerRegistryName { get; set; }
 
     /// <summary>
+    /// Gets or sets the container registry sku.
+    /// </summary>
+    /// <value>The container registry sku.</value>
+    public string? ContainerRegistrySku { get; set; }
+
+    /// <summary>
     /// Gets or sets the location.
     /// </summary>
     /// <value>The location.</value>

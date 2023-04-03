@@ -21,6 +21,8 @@ using Azure.ResourceManager;
 
 using Deploy.Infrastructure.Resources;
 
+using Microsoft.Extensions.Logging;
+
 /// <summary>
 /// Class Global.
 /// </summary>
@@ -38,16 +40,21 @@ internal class Global
         string subscriptionId,
         string resourceGroupName,
         string containerRegistryName,
-        string location)
+        string? containerRegistrySku,
+        string location,
+        ILogger logger)
     {
+        ArgumentNullException.ThrowIfNull(logger);
         ArgumentException.ThrowIfNullOrEmpty(subscriptionId);
         ArgumentException.ThrowIfNullOrEmpty(containerRegistryName);
         ArgumentException.ThrowIfNullOrEmpty(resourceGroupName);
         ArgumentException.ThrowIfNullOrEmpty(location);
         SubscriptionId = subscriptionId;
         ContainerRegistryName = containerRegistryName;
+        ContainerRegistrySku = containerRegistrySku;
         ResourceGroupName = resourceGroupName;
         Location = location;
+        Logger = logger;
     }
 
     /// <summary>
@@ -57,10 +64,22 @@ internal class Global
     public string ContainerRegistryName { get; }
 
     /// <summary>
+    /// Gets the container registry sku.
+    /// </summary>
+    /// <value>The container registry sku.</value>
+    public string? ContainerRegistrySku { get; }
+
+    /// <summary>
     /// Gets the location.
     /// </summary>
     /// <value>The location.</value>
     public string Location { get; }
+
+    /// <summary>
+    /// Gets the logger.
+    /// </summary>
+    /// <value>The logger.</value>
+    public ILogger Logger { get; }
 
     /// <summary>
     /// Gets the name of the resource group.
@@ -81,9 +100,11 @@ internal class Global
     /// <returns>A <see cref="Task" /> representing the result of the asynchronous operation.</returns>
     public async Task DeployAsync(CancellationToken cancellationToken)
     {
-        Subscription subscription = new(GetArmClient(SubscriptionId), SubscriptionId);
-        ResourceGroup resourceGroup = new(subscription, ResourceGroupName, Location);
+        Subscription subscription = new(GetArmClient(SubscriptionId), SubscriptionId, Logger);
+        ResourceGroup resourceGroup = new(subscription, ResourceGroupName, Location, Logger);
         _ = await resourceGroup.CreateOrUpdateAsync(cancellationToken);
+        ContainerRegistry containerRegistry = new(resourceGroup, ContainerRegistryName, Location, ContainerRegistrySku, Logger);
+        _ = await containerRegistry.CreateOrUpdateAsync(cancellationToken);
     }
 
     /// <summary>

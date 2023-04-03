@@ -21,6 +21,8 @@ using System.Threading.Tasks;
 using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
 
+using Microsoft.Extensions.Logging;
+
 /// <summary>
 /// Class Subscription.
 /// Implements the <see cref="Deploy.Infrastructure.Resources.Resource{Azure.ResourceManager.Resources.SubscriptionResource}" />
@@ -30,7 +32,7 @@ using Azure.ResourceManager.Resources;
 /// <seealso cref="Deploy.Infrastructure.Resources.Resource{Azure.ResourceManager.Resources.SubscriptionResource}" />
 /// <seealso cref="System.IEquatable{Deploy.Infrastructure.Resources.Resource{Azure.ResourceManager.Resources.SubscriptionResource}}" />
 /// <seealso cref="System.IEquatable{Deploy.Infrastructure.Resources.Subscription}" />
-internal record Subscription(ArmClient ArmClient, string Id) : Resource<SubscriptionResource>
+internal record Subscription(ArmClient ArmClient, string Id, ILogger Logger) : Resource<SubscriptionResource>(Logger)
 {
     /// <summary>
     /// Creates the or update asynchronous.

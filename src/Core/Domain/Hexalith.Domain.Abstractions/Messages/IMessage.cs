@@ -27,12 +27,12 @@ public interface IMessage
     int MajorVersion { get; }
 
     /// <summary>
-    /// Gets the message name.
-    /// </summary>
-    string TypeName { get; }
-
-    /// <summary>
     /// Gets the message minor version.
     /// </summary>
     int MinorVersion { get; }
+
+    /// <summary>
+    /// Gets the message name.
+    /// </summary>
+    string TypeName { get; }
 }

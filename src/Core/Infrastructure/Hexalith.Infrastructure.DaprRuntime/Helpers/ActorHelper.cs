@@ -15,6 +15,7 @@
 // ***********************************************************************
 
 namespace Hexalith.Infrastructure.DaprRuntime.Helpers;
+
 using System;
 using System.Web;
 
@@ -26,6 +27,18 @@ using Dapr.Actors;
 public static class ActorHelper
 {
     /// <summary>
+    /// Converts to decoded string.
+    /// </summary>
+    /// <param name="actorId">The actor identifier.</param>
+    /// <returns>System.String.</returns>
+    /// <exception cref="System.ArgumentNullException">Null argument.</exception>
+    public static string ToUrlDecodedString(this ActorId actorId)
+    {
+        ArgumentNullException.ThrowIfNull(actorId);
+        return HttpUtility.UrlDecode(actorId.GetId()).Replace("~", " ");
+    }
+
+    /// <summary>
     /// Converts to an actor id with an url encoded identifier.
     /// </summary>
     /// <param name="id">The identifier.</param>
@@ -36,17 +49,5 @@ public static class ActorHelper
         return id.Contains("~")
             ? throw new ArgumentException($"The '~' character is not supported.")
             : new ActorId(HttpUtility.UrlEncode(id.Replace(" ", "~")));
-    }
-
-    /// <summary>
-    /// Converts to decoded string.
-    /// </summary>
-    /// <param name="actorId">The actor identifier.</param>
-    /// <returns>System.String.</returns>
-    /// <exception cref="System.ArgumentNullException">Null argument.</exception>
-    public static string ToUrlDecodedString(this ActorId actorId)
-    {
-        ArgumentNullException.ThrowIfNull(actorId);
-        return HttpUtility.UrlDecode(actorId.GetId()).Replace("~", " ");
     }
 }

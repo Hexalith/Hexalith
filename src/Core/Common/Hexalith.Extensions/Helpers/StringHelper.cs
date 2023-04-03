@@ -25,6 +25,47 @@ using System.Text.RegularExpressions;
 public static partial class StringHelper
 {
     /// <summary>
+    /// Formats the with named placeholders.
+    /// </summary>
+    /// <param name="provider">The provider.</param>
+    /// <param name="value">The value.</param>
+    /// <param name="args">The arguments.</param>
+    /// <returns>System.String.</returns>
+    public static string FormatWithNamedPlaceholders(IFormatProvider provider, string value, params object?[] args)
+    {
+        return string.Format(
+            provider,
+            ReplacePlaceholderNamesByIndex(value),
+            args);
+    }
+
+    /// <summary>
+    /// Formats the with named placeholders.
+    /// </summary>
+    /// <param name="value">The value.</param>
+    /// <param name="args">The arguments.</param>
+    /// <returns>System.String.</returns>
+    public static string FormatWithNamedPlaceholders(string value, params object?[] args)
+    {
+        return string.Format(
+            CultureInfo.InvariantCulture,
+            ReplacePlaceholderNamesByIndex(value),
+            args);
+    }
+
+    /// <summary>
+    /// Replaces the placeholder names by their index.
+    /// </summary>
+    /// <param name="value">The value.</param>
+    /// <returns>System.String.</returns>
+    public static string ReplacePlaceholderNamesByIndex(string value)
+    {
+        string pattern = @"\{\w+\}";
+        int i = 0;
+        return Regex.Replace(value, pattern, match => "{" + i++ + "}");
+    }
+
+    /// <summary>
     /// Convert an invariant culture string to a decimal number.
     /// </summary>
     /// <param name="value">The number string.</param>
@@ -102,46 +143,5 @@ public static partial class StringHelper
     public static long ToLong(this string value)
     {
         return long.Parse(value, CultureInfo.InvariantCulture);
-    }
-
-    /// <summary>
-    /// Replaces the placeholder names by their index.
-    /// </summary>
-    /// <param name="value">The value.</param>
-    /// <returns>System.String.</returns>
-    public static string ReplacePlaceholderNamesByIndex(string value)
-    {
-        string pattern = @"\{\w+\}";
-        int i = 0;
-        return Regex.Replace(value, pattern, match => "{" + (i++) + "}");
-    }
-
-    /// <summary>
-    /// Formats the with named placeholders.
-    /// </summary>
-    /// <param name="provider">The provider.</param>
-    /// <param name="value">The value.</param>
-    /// <param name="args">The arguments.</param>
-    /// <returns>System.String.</returns>
-    public static string FormatWithNamedPlaceholders(IFormatProvider provider, string value, params object?[] args)
-    {
-        return string.Format(
-            provider,
-            ReplacePlaceholderNamesByIndex(value),
-            args);
-    }
-
-    /// <summary>
-    /// Formats the with named placeholders.
-    /// </summary>
-    /// <param name="value">The value.</param>
-    /// <param name="args">The arguments.</param>
-    /// <returns>System.String.</returns>
-    public static string FormatWithNamedPlaceholders(string value, params object?[] args)
-    {
-        return string.Format(
-            CultureInfo.InvariantCulture,
-            ReplacePlaceholderNamesByIndex(value),
-            args);
     }
 }

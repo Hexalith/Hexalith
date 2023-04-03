@@ -45,6 +45,9 @@ public class MessageMetadata : IMessageMetadata
     public AggregateMetadata Aggregate { get; }
 
     /// <inheritdoc/>
+    IAggregateMetadata IMessageMetadata.Aggregate => Aggregate;
+
+    /// <inheritdoc/>
     [DataMember(Order = 5)]
     [JsonPropertyOrder(5)]
     public DateTimeOffset Date { get; }
@@ -63,9 +66,6 @@ public class MessageMetadata : IMessageMetadata
     [DataMember(Order = 3)]
     [JsonPropertyOrder(3)]
     public MessageVersion Version { get; }
-
-    /// <inheritdoc/>
-    IAggregateMetadata IMessageMetadata.Aggregate => Aggregate;
 
     /// <inheritdoc/>
     IMessageVersion IMessageMetadata.Version => Version;

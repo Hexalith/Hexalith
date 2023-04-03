@@ -16,7 +16,6 @@ using Grpc.Core;
 using Hexalith.Application.Abstractions.States;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Extensions.Serialization;
-using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Serialization;
 using Hexalith.UnitTests.Core.Domain.Events;
 
 using Xunit;

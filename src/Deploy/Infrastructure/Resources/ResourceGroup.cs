@@ -19,6 +19,8 @@ namespace Deploy.Infrastructure.Resources;
 using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
 
+using Microsoft.Extensions.Logging;
+
 /// <summary>
 /// Class ResourceGroup.
 /// Implements the <see cref="Deploy.Infrastructure.Resources.Resource{Azure.ResourceManager.Resources.ResourceGroupResource}" />
@@ -28,21 +30,24 @@ using Azure.ResourceManager.Resources;
 /// <seealso cref="Deploy.Infrastructure.Resources.Resource{Azure.ResourceManager.Resources.ResourceGroupResource}" />
 /// <seealso cref="System.IEquatable{Deploy.Infrastructure.Resources.Resource{Azure.ResourceManager.Resources.ResourceGroupResource}}" />
 /// <seealso cref="System.IEquatable{Deploy.Infrastructure.Resources.ResourceGroup}" />
-internal record ResourceGroup(Subscription Subscription, string Name, string Location) : Resource<ResourceGroupResource>
+internal record ResourceGroup(Subscription Subscription, string Name, string Location, ILogger Logger) : Resource<ResourceGroupResource>(Logger)
 {
     /// <inheritdoc/>
     public override async Task<ResourceGroupResource> CreateOrUpdateAsync(CancellationToken cancellationToken)
     {
         SubscriptionResource subscriptionResource = await Subscription.GetResourceAsync(cancellationToken);
+        Azure.Response<SubscriptionResource> response = await subscriptionResource.GetAsync(cancellationToken);
+        SubscriptionData subscriptionData = response.Value.Data;
         ResourceGroupCollection resourceGroups = subscriptionResource.GetResourceGroups();
         ResourceGroupData resourceGroupData = new(Location);
-
+        Logger.LogInformation("Creating resource group {Name} in subscription {Subscription}/{SubscriptionId} in location {Location}", Name, subscriptionData.DisplayName, subscriptionData.SubscriptionId, Location);
         ArmOperation<ResourceGroupResource> operation = await resourceGroups
             .CreateOrUpdateAsync(
                 Azure.WaitUntil.Completed,
                 Name,
                 resourceGroupData,
                 cancellationToken);
+        Logger.LogInformation("Resource group {Name} created", Name);
         return operation.Value;
     }
 

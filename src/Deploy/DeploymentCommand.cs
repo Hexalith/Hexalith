@@ -19,6 +19,7 @@ using Cocona;
 using Deploy.Configuration.Global;
 using Deploy.Infrastructure.Global;
 
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 /// <summary>
@@ -31,13 +32,16 @@ internal class DeploymentCommand
     /// </summary>
     private readonly IOptions<GlobalSettings> _globalSettings;
 
+    private readonly ILogger<DeploymentCommand> _logger;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="DeploymentCommand" /> class.
     /// </summary>
     /// <param name="globalSettings">The global settings.</param>
-    public DeploymentCommand(IOptions<GlobalSettings> globalSettings)
+    public DeploymentCommand(IOptions<GlobalSettings> globalSettings, ILogger<DeploymentCommand> logger)
     {
         _globalSettings = globalSettings;
+        _logger = logger;
     }
 
     /// <summary>
@@ -52,9 +56,10 @@ internal class DeploymentCommand
         string? subscriptionId,
         string? globalResourceGroupName,
         string? containerRegistryName,
+        string? containerRegistrySku,
         string? globalLocation)
     {
-        await DeployGlobalResourcesAsync(subscriptionId, globalResourceGroupName, containerRegistryName, globalLocation);
+        await DeployGlobalResourcesAsync(subscriptionId, globalResourceGroupName, containerRegistryName, containerRegistrySku, globalLocation);
         await DevelopmentAsync();
         await StagingAsync();
         await ProductionAsync();
@@ -83,6 +88,7 @@ internal class DeploymentCommand
         string? subscriptionId,
         string? globalResourceGroupName,
         string? containerRegistryName,
+        string? containerRegistrySku,
         string? globalLocation)
     {
         subscriptionId = ArgumentMissingException.ThrowIfNullOrWhiteSpace(
@@ -105,7 +111,9 @@ internal class DeploymentCommand
             subscriptionId,
             globalResourceGroupName,
             containerRegistryName,
-            globalLocation)
+            containerRegistrySku ?? _globalSettings.Value.ContainerRegistrySku,
+            globalLocation,
+            _logger)
             .DeployAsync(CancellationToken.None);
     }
 
