@@ -6,6 +6,7 @@
     <None Include="..\..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Core\Application\Hexalith.Application.TopologicalSorting\Hexalith.Application.TopologicalSorting.csproj" />
     <ProjectReference Include="..\..\src\Core\Application\Hexalith.Application\Hexalith.Application.csproj" />
     <ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks\Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks.csproj" />
     <ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365FinanceAndOperations\Hexalith.Infrastructure.Dynamics365FinanceAndOperations.csproj" />
@@ -15,5 +16,8 @@
     <None Update="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Core\Application\TopologicalSort\" />
   </ItemGroup>
 </Project>

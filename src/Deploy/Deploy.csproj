@@ -7,17 +7,12 @@
 		<UserSecretsId>eb1a7842-89ba-4921-950c-8dcfe3be045e</UserSecretsId>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Azure.Identity" Version="1.8.2" />
-		<PackageReference Include="Azure.ResourceManager" Version="1.4.0" />
-		<PackageReference Include="Azure.ResourceManager.ContainerRegistry" Version="1.1.0" />
 		<PackageReference Include="Cocona" Version="2.2.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="$(MicrosoftExtensionsPackagesVersion)" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Core\Common\Hexalith.Extensions\Hexalith.Extensions.csproj" />
-	</ItemGroup>
-	<ItemGroup>
-		<Folder Include="Infrastructure\Helpers\" />
+		<ProjectReference Include="..\Core\Infrastructure\Hexalith.Infrastructure.AzureCloud\Hexalith.Infrastructure.AzureCloud.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Update="appsettings.json">

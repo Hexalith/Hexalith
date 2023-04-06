@@ -2,6 +2,9 @@
 	<PropertyGroup>
 		<!-- Detect if the solution is opened in VS to add local repository for packages -->
 		<MinverVersion>4.3.0</MinverVersion>
+		<AzureIdentityVersion>1.8.2</AzureIdentityVersion>
+		<AzureResourceManagerVersion>1.4.0</AzureResourceManagerVersion>
+		<AzureResourceManagerContainerRegistryVersion>1.1.0</AzureResourceManagerContainerRegistryVersion>
 		<SwashbuckleAspNetCoreVersion>6.5.*</SwashbuckleAspNetCoreVersion>
 		<ManDaprSidekickVersion>1.2.*</ManDaprSidekickVersion>
 		<FluentAssertionsVersion>6.10.*</FluentAssertionsVersion>

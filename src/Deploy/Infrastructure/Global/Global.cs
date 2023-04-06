@@ -16,10 +16,7 @@
 
 namespace Deploy.Infrastructure.Global;
 
-using Azure.Identity;
-using Azure.ResourceManager;
-
-using Deploy.Infrastructure.Resources;
+using Hexalith.Infrastructure.AzureCloud.Builders;
 
 using Microsoft.Extensions.Logging;
 
@@ -29,12 +26,14 @@ using Microsoft.Extensions.Logging;
 internal class Global
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="Global" /> class.
+    /// Initializes a new instance of the <see cref="Global"/> class.
     /// </summary>
     /// <param name="subscriptionId">The subscription identifier.</param>
     /// <param name="resourceGroupName">Name of the resource group.</param>
     /// <param name="containerRegistryName">Name of the container registry.</param>
+    /// <param name="containerRegistrySku">The container registry sku.</param>
     /// <param name="location">The location.</param>
+    /// <param name="loggerFactory">The logger factory.</param>
     /// <exception cref="System.ArgumentNullException">Null.</exception>
     public Global(
         string subscriptionId,
@@ -42,9 +41,9 @@ internal class Global
         string containerRegistryName,
         string? containerRegistrySku,
         string location,
-        ILogger logger)
+        ILoggerFactory loggerFactory)
     {
-        ArgumentNullException.ThrowIfNull(logger);
+        ArgumentNullException.ThrowIfNull(loggerFactory);
         ArgumentException.ThrowIfNullOrEmpty(subscriptionId);
         ArgumentException.ThrowIfNullOrEmpty(containerRegistryName);
         ArgumentException.ThrowIfNullOrEmpty(resourceGroupName);
@@ -54,7 +53,7 @@ internal class Global
         ContainerRegistrySku = containerRegistrySku;
         ResourceGroupName = resourceGroupName;
         Location = location;
-        Logger = logger;
+        LoggerFactory = loggerFactory;
     }
 
     /// <summary>
@@ -79,7 +78,7 @@ internal class Global
     /// Gets the logger.
     /// </summary>
     /// <value>The logger.</value>
-    public ILogger Logger { get; }
+    public ILoggerFactory LoggerFactory { get; }
 
     /// <summary>
     /// Gets the name of the resource group.
@@ -100,20 +99,9 @@ internal class Global
     /// <returns>A <see cref="Task" /> representing the result of the asynchronous operation.</returns>
     public async Task DeployAsync(CancellationToken cancellationToken)
     {
-        Subscription subscription = new(GetArmClient(SubscriptionId), SubscriptionId, Logger);
-        ResourceGroup resourceGroup = new(subscription, ResourceGroupName, Location, Logger);
-        _ = await resourceGroup.CreateOrUpdateAsync(cancellationToken);
-        ContainerRegistry containerRegistry = new(resourceGroup, ContainerRegistryName, Location, ContainerRegistrySku, Logger);
-        _ = await containerRegistry.CreateOrUpdateAsync(cancellationToken);
-    }
-
-    /// <summary>
-    /// Initializes the arm client.
-    /// </summary>
-    /// <param name="subscriptionId">The subscription identifier.</param>
-    /// <returns>System.Nullable&lt;ArmClient&gt;.</returns>
-    private static ArmClient GetArmClient(string? subscriptionId)
-    {
-        return new ArmClient(new DefaultAzureCredential(), subscriptionId);
+        AzureBuilder azureBuilder = new(SubscriptionId, LoggerFactory);
+        ResourceGroupBuilder resourceGroup = azureBuilder.AddResourceGroup(Location, ResourceGroupName);
+        _ = resourceGroup.AddContainerRegistry(ContainerRegistryName, ContainerRegistrySku, Location);
+        await azureBuilder.BuildAsync(cancellationToken);
     }
 }

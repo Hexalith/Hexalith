@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Azure.Identity" Version="$(AzureIdentityVersion)" />
+		<PackageReference Include="Azure.ResourceManager" Version="$(AzureResourceManagerVersion)" />
+		<PackageReference Include="Azure.ResourceManager.ContainerRegistry" Version="$(AzureResourceManagerContainerRegistryVersion)" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\Application\Hexalith.Application.TopologicalSorting\Hexalith.Application.TopologicalSorting.csproj" />
+		<ProjectReference Include="..\..\Common\Hexalith.Extensions\Hexalith.Extensions.csproj" />
+		<ProjectReference Include="..\Hexalith.Infrastructure.Security.Abstractions\Hexalith.Infrastructure.Security.Abstractions.csproj" />
+	</ItemGroup>
+</Project>

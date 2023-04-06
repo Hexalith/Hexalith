@@ -32,26 +32,28 @@ internal class DeploymentCommand
     /// </summary>
     private readonly IOptions<GlobalSettings> _globalSettings;
 
-    private readonly ILogger<DeploymentCommand> _logger;
+    private readonly ILoggerFactory _loggerFactory;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="DeploymentCommand" /> class.
+    /// Initializes a new instance of the <see cref="DeploymentCommand"/> class.
     /// </summary>
     /// <param name="globalSettings">The global settings.</param>
-    public DeploymentCommand(IOptions<GlobalSettings> globalSettings, ILogger<DeploymentCommand> logger)
+    /// <param name="loggerFactory">The logger factory.</param>
+    public DeploymentCommand(IOptions<GlobalSettings> globalSettings, ILoggerFactory loggerFactory)
     {
         _globalSettings = globalSettings;
-        _logger = logger;
+        _loggerFactory = loggerFactory;
     }
 
     /// <summary>
-    /// Deploy all.
+    /// All as an asynchronous operation.
     /// </summary>
     /// <param name="subscriptionId">The subscription identifier.</param>
     /// <param name="globalResourceGroupName">Name of the global resource group.</param>
     /// <param name="containerRegistryName">Name of the container registry.</param>
+    /// <param name="containerRegistrySku">The container registry sku.</param>
     /// <param name="globalLocation">The global location.</param>
-    /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>
+    /// <returns>A Task representing the asynchronous operation.</returns>
     public async Task AllAsync(
         string? subscriptionId,
         string? globalResourceGroupName,
@@ -113,7 +115,7 @@ internal class DeploymentCommand
             containerRegistryName,
             containerRegistrySku ?? _globalSettings.Value.ContainerRegistrySku,
             globalLocation,
-            _logger)
+            _loggerFactory)
             .DeployAsync(CancellationToken.None);
     }
 

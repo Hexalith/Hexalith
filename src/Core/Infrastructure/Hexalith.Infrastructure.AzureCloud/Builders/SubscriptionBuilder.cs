@@ -1,0 +1,48 @@
+﻿// <copyright file="SubscriptionBuilder.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+
+namespace Hexalith.Infrastructure.AzureCloud.Builders;
+
+using System.Threading;
+using System.Threading.Tasks;
+
+using Azure.ResourceManager.Resources;
+
+/// <summary>
+/// Class SubscriptionBuilder.
+/// </summary>
+public class SubscriptionBuilder : ResourceBuilder<SubscriptionResource>
+{
+    /// <summary>
+    /// Initializes a new instance of the <see cref="SubscriptionBuilder"/> class.
+    /// </summary>
+    /// <param name="azureBuilder">The azure builder.</param>
+    /// <param name="id">The identifier.</param>
+    public SubscriptionBuilder(AzureBuilder azureBuilder, string id)
+        : base(azureBuilder, null, id, true)
+    {
+        Id = id;
+    }
+
+    /// <summary>
+    /// Gets the identifier.
+    /// </summary>
+    /// <value>The identifier.</value>
+    public string? Id { get; }
+
+    /// <inheritdoc/>
+    public override async Task<SubscriptionResource> BuildAsync(CancellationToken cancellationToken)
+    {
+        if (Resource == null)
+        {
+            SubscriptionResource subscription = AzureBuilder.Client.GetSubscriptionResource(SubscriptionResource.CreateResourceIdentifier(Id));
+            Azure.Response<SubscriptionResource> response = await subscription.GetAsync(cancellationToken);
+            Resource = response.Value;
+        }
+
+        return Resource;
+    }
+}
