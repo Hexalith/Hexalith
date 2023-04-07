@@ -27,7 +27,8 @@ public abstract class ResourceBuilder<TArmResource> : IResourceBuilder
     where TArmResource : ArmResource
 {
     private ILogger? _logger;
-    private string? _resourceBuilderId;
+    private string? _resourceBuilderExistingId;
+    private string? _resourceBuilderNotExistingId;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ResourceBuilder{TArmResource}"/> class.
@@ -64,13 +65,13 @@ public abstract class ResourceBuilder<TArmResource> : IResourceBuilder
     public IResourceBuilder? Parent { get; }
 
     /// <inheritdoc/>
-    public string ResourceBuilderExistingId => _resourceBuilderId ??= $"{GetType().Name}-{UniqueId}-Existing";
+    public string ResourceBuilderExistingId => _resourceBuilderExistingId ??= $"{GetType().Name}-{UniqueId}-Existing";
 
     /// <inheritdoc/>
     public string ResourceBuilderId => Existing ? ResourceBuilderExistingId : ResourceBuilderNotExistingId;
 
     /// <inheritdoc/>
-    public string ResourceBuilderNotExistingId => _resourceBuilderId ??= $"{GetType().Name}-{UniqueId}";
+    public string ResourceBuilderNotExistingId => _resourceBuilderNotExistingId ??= $"{GetType().Name}-{UniqueId}";
 
     /// <summary>
     /// Gets the unique identifier.

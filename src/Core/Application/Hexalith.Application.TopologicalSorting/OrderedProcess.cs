@@ -8,6 +8,8 @@
 // ***********************************************************************
 // <copyright file="OrderedProcess.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -20,27 +22,17 @@ namespace Hexalith.Application.TopologicalSorting
     public class OrderedProcess
     {
         /// <summary>
-        /// The graph this process is part of.
-        /// </summary>
-        public readonly DependencyGraph Graph;
-
-        /// <summary>
-        /// The name of this process.
-        /// </summary>
-        public readonly string Name;
-
-        /// <summary>
-        /// The followers
+        /// The followers.
         /// </summary>
         private readonly HashSet<OrderedProcess> _followers = new();
 
         /// <summary>
-        /// The predecessors
+        /// The predecessors.
         /// </summary>
         private readonly HashSet<OrderedProcess> _predecessors = new();
 
         /// <summary>
-        /// The resources
+        /// The resources.
         /// </summary>
         private readonly HashSet<Resource> _resources = new();
 
@@ -62,6 +54,16 @@ namespace Hexalith.Application.TopologicalSorting
         /// </summary>
         /// <value>The followers.</value>
         public IEnumerable<OrderedProcess> Followers => _followers;
+
+        /// <summary>
+        /// Gets the graph this process is part of.
+        /// </summary>
+        public DependencyGraph Graph { get; }
+
+        /// <summary>
+        /// Gets the name of this process.
+        /// </summary>
+        public string Name { get; }
 
         /// <summary>
         /// Gets the predecessors of this process.

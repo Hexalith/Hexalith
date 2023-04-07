@@ -68,7 +68,7 @@ internal class DeploymentCommand
     }
 
     /// <summary>
-    /// Deploy Development resources only.
+    /// Developments the asynchronous.
     /// </summary>
     /// <returns>Task.</returns>
     /// <exception cref="System.NotImplementedException"></exception>
@@ -130,7 +130,7 @@ internal class DeploymentCommand
     }
 
     /// <summary>
-    /// Stagings the asynchronous.
+    /// Staging the asynchronous.
     /// </summary>
     /// <returns>Task.</returns>
     /// <exception cref="System.NotImplementedException"></exception>

@@ -8,6 +8,8 @@
 // ***********************************************************************
 // <copyright file="IEnumerableExtensions.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -100,9 +102,9 @@ namespace Hexalith.Application.TopologicalSorting
         }
 
         /// <summary>
-        /// Determines whether the specified enumerable is empty.
+        /// Determines whether the specified e is empty.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="T">Type of the list element.</typeparam>
         /// <param name="e">The e.</param>
         /// <returns><c>true</c> if the specified e is empty; otherwise, <c>false</c>.</returns>
         internal static bool IsEmpty<T>(this IEnumerable<T> e)

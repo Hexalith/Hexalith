@@ -8,6 +8,8 @@
 // ***********************************************************************
 // <copyright file="DependencyGraph.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -24,12 +26,12 @@ namespace Hexalith.Application.TopologicalSorting
     public class DependencyGraph
     {
         /// <summary>
-        /// The processes
+        /// The processes.
         /// </summary>
         private readonly HashSet<OrderedProcess> _processes = new();
 
         /// <summary>
-        /// The resources
+        /// The resources.
         /// </summary>
         private readonly HashSet<Resource> _resources = new();
 
@@ -66,7 +68,7 @@ namespace Hexalith.Application.TopologicalSorting
         /// </summary>
         /// <param name="instance">The instance.</param>
         /// <returns>TopologicalSort.</returns>
-        /// <exception cref="System.InvalidOperationException">Cannot order this set of processes</exception>
+        /// <exception cref="System.InvalidOperationException">Cannot order this set of processes.</exception>
         public TopologicalSort CalculateSort(TopologicalSort instance)
         {
             HashSet<OrderedProcess> unused = new(_processes);
@@ -98,12 +100,12 @@ namespace Hexalith.Application.TopologicalSorting
         /// </summary>
         /// <param name="a">a.</param>
         /// <param name="b">The b.</param>
-        /// <exception cref="System.ArgumentException"></exception>
+        /// <exception cref="System.ArgumentException">process {a} is not associated with the same graph as process {b}.</exception>
         internal static void CheckGraph(OrderedProcess a, OrderedProcess b)
         {
             if (a.Graph != b.Graph)
             {
-                throw new ArgumentException(string.Format("process {0} is not associated with the same graph as process {1}", a, b));
+                throw new ArgumentException($"process {a} is not associated with the same graph as process {b}.");
             }
         }
 
@@ -112,12 +114,12 @@ namespace Hexalith.Application.TopologicalSorting
         /// </summary>
         /// <param name="a">a.</param>
         /// <param name="b">The b.</param>
-        /// <exception cref="System.ArgumentException"></exception>
+        /// <exception cref="System.ArgumentException">Resource {a} is not associated with the same graph as process {b}.</exception>
         internal static void CheckGraph(Resource a, OrderedProcess b)
         {
             if (a.Graph != b.Graph)
             {
-                throw new ArgumentException(string.Format("Resource {0} is not associated with the same graph as process {1}", a, b));
+                throw new ArgumentException($"Resource {a} is not associated with the same graph as process {b}.");
             }
         }
 

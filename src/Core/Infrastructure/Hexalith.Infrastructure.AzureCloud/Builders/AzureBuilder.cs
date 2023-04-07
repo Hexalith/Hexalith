@@ -55,9 +55,9 @@ public class AzureBuilder
     {
         TokenCredential = tokenCredential;
         LoggerFactory = loggerFactory;
-        Subscription = new SubscriptionBuilder(this, subscriptionId);
         DependencyGraph = new DependencyGraph();
         Logger = loggerFactory.CreateLogger<AzureBuilder>();
+        Subscription = new SubscriptionBuilder(this, subscriptionId);
     }
 
     /// <summary>
@@ -124,16 +124,15 @@ public class AzureBuilder
     /// <param name="resourceBuilder">The resource builder.</param>
     public void AddResource(IResourceBuilder resourceBuilder)
     {
-        _ = new OrderedProcess(DependencyGraph, resourceBuilder.ResourceBuilderNotExistingId);
+        _resources.Add(resourceBuilder.ResourceBuilderId, resourceBuilder);
+        _ = _orderedProcesses.TryAdd(resourceBuilder.ResourceBuilderNotExistingId, new OrderedProcess(DependencyGraph, resourceBuilder.ResourceBuilderNotExistingId));
         OrderedProcess notExisting = _orderedProcesses[resourceBuilder.ResourceBuilderNotExistingId];
-        _ = _resources.TryAdd(resourceBuilder.ResourceBuilderId, resourceBuilder);
         OrderedProcess child = notExisting;
         if (resourceBuilder.Existing)
         {
             // If the resource should already exists, we add a dependency to the resource that should be created or updated before.
-            OrderedProcess existing = new(DependencyGraph, resourceBuilder.ResourceBuilderExistingId);
-            _ = _orderedProcesses.TryAdd(resourceBuilder.ResourceBuilderExistingId, existing);
-            existing = _orderedProcesses[resourceBuilder.ResourceBuilderExistingId];
+            _ = _orderedProcesses.TryAdd(resourceBuilder.ResourceBuilderExistingId, new(DependencyGraph, resourceBuilder.ResourceBuilderExistingId));
+            OrderedProcess existing = _orderedProcesses[resourceBuilder.ResourceBuilderExistingId];
             _ = notExisting.Before(existing);
             child = existing;
         }
@@ -154,6 +153,18 @@ public class AzureBuilder
     public ResourceGroupBuilder AddResourceGroup(string name, string location)
     {
         ResourceGroupBuilder builder = new(this, Subscription, name, location);
+        return builder;
+    }
+
+    /// <summary>
+    /// Adds the resource group.
+    /// </summary>
+    /// <param name="name">The name.</param>
+    /// <param name="existing">if set to <c>true</c> [existing].</param>
+    /// <returns>ResourceGroupBuilder.</returns>
+    public ResourceGroupBuilder AddResourceGroup(string name, bool existing)
+    {
+        ResourceGroupBuilder builder = new(this, Subscription, name, existing);
         return builder;
     }
 

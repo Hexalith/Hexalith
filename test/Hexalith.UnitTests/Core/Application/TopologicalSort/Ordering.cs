@@ -68,7 +68,7 @@ public class Ordering
         _ = s.Skip(1).First().Count().Should().Be(1);
         _ = s.Skip(1).First().First().Should().Be(b);
 
-        _ = s.Skip(2).First().Count().Should().Be(2);
+        _ = s.Skip(2).First().Count().Should().Be(1);
         _ = s.Skip(2).First().First().Should().Be(c);
     }
 
@@ -143,7 +143,7 @@ public class Ordering
         IEnumerable<IEnumerable<OrderedProcess>> s = g.CalculateSort();
 
         _ = s.Skip(0).First().Count().Should().Be(1);
-        _ = s.Skip(0).First().First().Should().Be(4);
+        _ = s.Skip(0).First().First().Should().Be(a);
 
         _ = s.Skip(1).First().Count().Should().Be(2);
         _ = s.Skip(1).First().Should().Contain(b1);

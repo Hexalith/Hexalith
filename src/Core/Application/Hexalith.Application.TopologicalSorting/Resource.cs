@@ -8,6 +8,8 @@
 // ***********************************************************************
 // <copyright file="Resource.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -20,17 +22,7 @@ namespace Hexalith.Application.TopologicalSorting;
 public class Resource
 {
     /// <summary>
-    /// The graph this class is part of.
-    /// </summary>
-    public readonly DependencyGraph Graph;
-
-    /// <summary>
-    /// The name of this resource.
-    /// </summary>
-    public readonly string Name;
-
-    /// <summary>
-    /// The users
+    /// The users.
     /// </summary>
     private readonly HashSet<OrderedProcess> _users = new();
 
@@ -46,6 +38,16 @@ public class Resource
 
         _ = Graph.Add(this);
     }
+
+    /// <summary>
+    /// Gets the graph this class is part of.
+    /// </summary>
+    public DependencyGraph Graph { get; }
+
+    /// <summary>
+    /// Gets the name of this resource.
+    /// </summary>
+    public string Name { get; }
 
     /// <summary>
     /// Gets a set of processes which use this resource.

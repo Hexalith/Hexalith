@@ -100,7 +100,7 @@ internal class Global
     public async Task DeployAsync(CancellationToken cancellationToken)
     {
         AzureBuilder azureBuilder = new(SubscriptionId, LoggerFactory);
-        ResourceGroupBuilder resourceGroup = azureBuilder.AddResourceGroup(Location, ResourceGroupName);
+        ResourceGroupBuilder resourceGroup = azureBuilder.AddResourceGroup(ResourceGroupName, Location);
         _ = resourceGroup.AddContainerRegistry(ContainerRegistryName, ContainerRegistrySku, Location);
         await azureBuilder.BuildAsync(cancellationToken);
     }
