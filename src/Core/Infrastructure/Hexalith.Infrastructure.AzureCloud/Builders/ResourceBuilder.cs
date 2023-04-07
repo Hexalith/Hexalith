@@ -35,12 +35,19 @@ public abstract class ResourceBuilder<TArmResource> : IResourceBuilder
     /// </summary>
     /// <param name="azureBuilder">The azure builder.</param>
     /// <param name="parent">The parent.</param>
+    /// <param name="resourceTypeName">Name of the resource type.</param>
     /// <param name="uniqueId">The unique identifier.</param>
     /// <param name="existing">if set to <c>true</c> [existing].</param>
-    public ResourceBuilder(AzureBuilder azureBuilder, IResourceBuilder? parent, string uniqueId, bool existing = false)
+    public ResourceBuilder(
+        AzureBuilder azureBuilder,
+        IResourceBuilder? parent,
+        string resourceTypeName,
+        string uniqueId,
+        bool existing = false)
     {
         AzureBuilder = azureBuilder;
         Parent = parent;
+        ResourceTypeName = resourceTypeName;
         Existing = existing;
         UniqueId = uniqueId;
         AzureBuilder.AddResource(this);
@@ -73,6 +80,9 @@ public abstract class ResourceBuilder<TArmResource> : IResourceBuilder
     /// <inheritdoc/>
     public string ResourceBuilderNotExistingId => _resourceBuilderNotExistingId ??= $"{GetType().Name}-{UniqueId}";
 
+    /// <inheritdoc/>
+    public string ResourceTypeName { get; }
+
     /// <summary>
     /// Gets the unique identifier.
     /// </summary>
@@ -103,4 +113,25 @@ public abstract class ResourceBuilder<TArmResource> : IResourceBuilder
     {
         return await BuildAsync(cancellationToken);
     }
+
+    /// <summary>
+    /// Creates the or update resource asynchronous.
+    /// </summary>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task&lt;TArmResource&gt;.</returns>
+    protected abstract Task<TArmResource> CreateOrUpdateResourceAsync(CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Exists.
+    /// </summary>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task&lt;System.Boolean&gt;.</returns>
+    protected abstract Task<bool> ExistsAsync(CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Gets the existing resource asynchronous.
+    /// </summary>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task&lt;TArmResource&gt;.</returns>
+    protected abstract Task<TArmResource> GetExistingResourceAsync(CancellationToken cancellationToken);
 }

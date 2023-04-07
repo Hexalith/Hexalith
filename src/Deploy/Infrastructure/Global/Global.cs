@@ -16,6 +16,8 @@
 
 namespace Deploy.Infrastructure.Global;
 
+using Azure.ResourceManager.KeyVault.Models;
+
 using Hexalith.Infrastructure.AzureCloud.Builders;
 
 using Microsoft.Extensions.Logging;
@@ -32,6 +34,7 @@ internal class Global
     /// <param name="resourceGroupName">Name of the resource group.</param>
     /// <param name="containerRegistryName">Name of the container registry.</param>
     /// <param name="containerRegistrySku">The container registry sku.</param>
+    /// <param name="cognitiveServicesAccountName">Name of the cognitive services account.</param>
     /// <param name="location">The location.</param>
     /// <param name="loggerFactory">The logger factory.</param>
     /// <exception cref="System.ArgumentNullException">Null.</exception>
@@ -40,6 +43,9 @@ internal class Global
         string resourceGroupName,
         string containerRegistryName,
         string? containerRegistrySku,
+        string cognitiveServicesAccountName,
+        string keyVaultName,
+        KeyVaultSkuName? keyVaultSku,
         string location,
         ILoggerFactory loggerFactory)
     {
@@ -47,14 +53,24 @@ internal class Global
         ArgumentException.ThrowIfNullOrEmpty(subscriptionId);
         ArgumentException.ThrowIfNullOrEmpty(containerRegistryName);
         ArgumentException.ThrowIfNullOrEmpty(resourceGroupName);
+        ArgumentException.ThrowIfNullOrEmpty(cognitiveServicesAccountName);
         ArgumentException.ThrowIfNullOrEmpty(location);
         SubscriptionId = subscriptionId;
         ContainerRegistryName = containerRegistryName;
         ContainerRegistrySku = containerRegistrySku;
+        CognitiveServicesAccountName = cognitiveServicesAccountName;
+        KeyVaultName = keyVaultName;
+        KeyVaultSku = keyVaultSku;
         ResourceGroupName = resourceGroupName;
         Location = location;
         LoggerFactory = loggerFactory;
     }
+
+    /// <summary>
+    /// Gets the name of the cognitive services account.
+    /// </summary>
+    /// <value>The name of the cognitive services account.</value>
+    public string CognitiveServicesAccountName { get; }
 
     /// <summary>
     /// Gets the name of the container registry.
@@ -67,6 +83,18 @@ internal class Global
     /// </summary>
     /// <value>The container registry sku.</value>
     public string? ContainerRegistrySku { get; }
+
+    /// <summary>
+    /// Gets the name of the key vault.
+    /// </summary>
+    /// <value>The name of the key vault.</value>
+    public string KeyVaultName { get; }
+
+    /// <summary>
+    /// Gets the key vault sku.
+    /// </summary>
+    /// <value>The key vault sku.</value>
+    public KeyVaultSkuName? KeyVaultSku { get; }
 
     /// <summary>
     /// Gets the location.
@@ -102,6 +130,8 @@ internal class Global
         AzureBuilder azureBuilder = new(SubscriptionId, LoggerFactory);
         ResourceGroupBuilder resourceGroup = azureBuilder.AddResourceGroup(ResourceGroupName, Location);
         _ = resourceGroup.AddContainerRegistry(ContainerRegistryName, ContainerRegistrySku, Location);
+        _ = resourceGroup.AddOpenAIAccount(CognitiveServicesAccountName, "eastus"); // Waiting for general availability
+        _ = resourceGroup.AddKeyVault(KeyVaultName, KeyVaultSku, Location);
         await azureBuilder.BuildAsync(cancellationToken);
     }
 }

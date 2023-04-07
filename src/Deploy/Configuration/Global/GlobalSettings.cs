@@ -16,6 +16,8 @@
 
 namespace Deploy.Configuration.Global;
 
+using Azure.ResourceManager.KeyVault.Models;
+
 using Hexalith.Extensions.Configuration;
 
 /// <summary>
@@ -33,6 +35,12 @@ public class GlobalSettings : ISettings
     }
 
     /// <summary>
+    /// Gets or sets the name of the cognitive services account.
+    /// </summary>
+    /// <value>The name of the cognitive services account.</value>
+    public string? CognitiveServicesAccountName { get; set; }
+
+    /// <summary>
     /// Gets or sets the name of the container registry.
     /// </summary>
     /// <value>The name of the container registry.</value>
@@ -43,6 +51,18 @@ public class GlobalSettings : ISettings
     /// </summary>
     /// <value>The container registry sku.</value>
     public string? ContainerRegistrySku { get; set; }
+
+    /// <summary>
+    /// Gets or sets the name of the key vault.
+    /// </summary>
+    /// <value>The name of the key vault.</value>
+    public string? KeyVaultName { get; set; }
+
+    /// <summary>
+    /// Gets or sets the key vault sku.
+    /// </summary>
+    /// <value>The key vault sku.</value>
+    public KeyVaultSkuName? KeyVaultSku { get; set; }
 
     /// <summary>
     /// Gets or sets the location.

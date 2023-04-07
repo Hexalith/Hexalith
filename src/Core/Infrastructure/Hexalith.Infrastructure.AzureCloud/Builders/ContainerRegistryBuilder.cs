@@ -28,8 +28,10 @@ using Microsoft.Extensions.Logging;
 /// Implements the <see cref="Hexalith.Infrastructure.AzureCloud.Builders.ResourceBuilder{Azure.ResourceManager.ContainerRegistry.ContainerRegistryResource}" />.
 /// </summary>
 /// <seealso cref="Hexalith.Infrastructure.AzureCloud.Builders.ResourceBuilder{Azure.ResourceManager.ContainerRegistry.ContainerRegistryResource}" />
-public class ContainerRegistryBuilder : ResourceBuilder<ContainerRegistryResource>
+public class ContainerRegistryBuilder : ResourceGroupItemBuilder<ContainerRegistryResource, ContainerRegistryData>
 {
+    private const string TypeName = "Container Registry";
+
     /// <summary>
     /// The resource group.
     /// </summary>
@@ -53,7 +55,7 @@ public class ContainerRegistryBuilder : ResourceBuilder<ContainerRegistryResourc
         string? location,
         ContainerRegistryData? data,
         bool existing)
-        : base(azureBuilder, resourceGroup, name, existing)
+        : base(azureBuilder, resourceGroup, TypeName, name, data, existing)
     {
         _resourceGroup = resourceGroup;
         Name = name;
@@ -70,7 +72,7 @@ public class ContainerRegistryBuilder : ResourceBuilder<ContainerRegistryResourc
     /// Gets the data.
     /// </summary>
     /// <value>The data.</value>
-    public ContainerRegistryData? Data { get; private set; }
+    public new ContainerRegistryData? Data { get; private set; }
 
     /// <summary>
     /// Gets the location.
@@ -91,40 +93,39 @@ public class ContainerRegistryBuilder : ResourceBuilder<ContainerRegistryResourc
     public string? Sku { get; }
 
     /// <inheritdoc/>
-    public override async Task<ContainerRegistryResource> BuildAsync(CancellationToken cancellationToken)
+    protected override async Task<ContainerRegistryResource> CreateOrUpdateResourceAsync(CancellationToken cancellationToken)
     {
-        if (Resource == null)
+        ResourceGroupResource group = await _resourceGroup.BuildAsync(cancellationToken);
+        ContainerRegistryCollection registries = group.GetContainerRegistries();
+        if (Data == null)
         {
-            ResourceGroupResource group = await _resourceGroup.BuildAsync(cancellationToken);
-            ContainerRegistryCollection registries = group.GetContainerRegistries();
-            if (Existing)
-            {
-                Logger.LogInformation("Getting container registry {Name} in resource group {ResourceGroup}", Name, group.Data.Name);
-                Resource = await registries.GetAsync(Name, cancellationToken);
-                Logger.LogInformation("Container registry {Name} found", Name);
-                Data = Resource.Data;
-                return Resource;
-            }
-
-            if (Data == null)
-            {
-                ContainerRegistrySkuName sku = string.IsNullOrWhiteSpace(Sku) ? ContainerRegistrySkuName.Basic : new ContainerRegistrySkuName(Sku);
-                AzureLocation location = string.IsNullOrWhiteSpace(Location) ? group.Data.Location : Location;
-                Data = new(location, new ContainerRegistrySku(sku));
-            }
-
-            Logger.LogInformation("Creating container registry {Name} in resource group {ResourceGroup} in location {Location} with sku {Sku}", Name, Name, Location, Sku);
-            ArmOperation<ContainerRegistryResource> operation = await registries
-                .CreateOrUpdateAsync(
-                    Azure.WaitUntil.Completed,
-                    Name,
-                    Data,
-                    cancellationToken);
-            Logger.LogInformation("Container registry {Name} created", Name);
-            Resource = operation.Value;
-            Data = Resource.Data;
+            ContainerRegistrySkuName sku = string.IsNullOrWhiteSpace(Sku) ? ContainerRegistrySkuName.Basic : new ContainerRegistrySkuName(Sku);
+            AzureLocation location = string.IsNullOrWhiteSpace(Location) ? group.Data.Location : Location;
+            Data = new(location, new ContainerRegistrySku(sku));
         }
 
-        return Resource;
+        Logger.LogInformation("Creating container registry {Name} in resource group {ResourceGroup} in location {Location} with sku {Sku}", Name, Name, Location, Sku);
+        ArmOperation<ContainerRegistryResource> operation = await registries
+            .CreateOrUpdateAsync(
+                Azure.WaitUntil.Completed,
+                Name,
+                Data,
+                cancellationToken);
+        Logger.LogInformation("Container registry {Name} created", Name);
+        return operation.Value;
+    }
+
+    /// <inheritdoc/>
+    protected override async Task<bool> ExistsAsync(CancellationToken cancellationToken)
+    {
+        ResourceGroupResource group = await _resourceGroup.BuildAsync(cancellationToken);
+        return (await group.GetContainerRegistries().ExistsAsync(Name, cancellationToken)).Value;
+    }
+
+    /// <inheritdoc/>
+    protected override async Task<ContainerRegistryResource> GetExistingResourceAsync(CancellationToken cancellationToken)
+    {
+        ResourceGroupResource group = await _resourceGroup.BuildAsync(cancellationToken);
+        return (await group.GetContainerRegistries().GetAsync(Name, cancellationToken)).Value;
     }
 }

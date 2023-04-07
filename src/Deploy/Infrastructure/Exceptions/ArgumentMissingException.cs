@@ -58,7 +58,7 @@ internal class ArgumentMissingException : Exception
     /// <param name="settingsName">Name of the settings.</param>
     /// <param name="settingsSection">The settings section.</param>
     public ArgumentMissingException(string? parameterName, string? settingsName, string? settingsSection)
-        : base($"The parameter '{parameterName ?? "Unknown"}' is not defined, neither the default value '{settingsName ?? "Unknown"}' in application settings.")
+        : base(CreateMessage(parameterName, settingsName, settingsSection))
     {
         ParameterName = parameterName;
         SettingsName = settingsName;
@@ -123,7 +123,7 @@ internal class ArgumentMissingException : Exception
     /// <param name="parameterName">Name of the parameter.</param>
     /// <param name="settingsName">Name of the settings.</param>
     /// <returns>System.String.</returns>
-    /// <exception cref="global.ArgumentMissingException"></exception>
+    /// <exception cref="global.ArgumentMissingException">Null.</exception>
     public static string ThrowIfNullOrWhiteSpace(
             string? parameter,
             string? settings,
@@ -136,5 +136,10 @@ internal class ArgumentMissingException : Exception
                 ? throw new ArgumentMissingException(parameterName, settingsName, settingsSection)
                 : settings
             : parameter;
+    }
+
+    private static string? CreateMessage(string? parameterName, string? settingsName, string? settingsSection)
+    {
+        return $"The parameter '{parameterName ?? "Unknown"}' is not defined, neither the default value '{(string.IsNullOrWhiteSpace(settingsSection) ? string.Empty : settingsSection + ".")}{settingsName?.Split('.').Last() ?? "Unknown"}' in the application settings.";
     }
 }

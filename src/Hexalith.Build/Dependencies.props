@@ -18,6 +18,8 @@
 		<MicrosoftIdentityClientVersion>4.52.0</MicrosoftIdentityClientVersion>
 		<MicrosoftNETTestSdkVersion>17.5.*</MicrosoftNETTestSdkVersion>
 		<MicrosoftVisualStudioThreadingAnalyzersVersion>17.5.22</MicrosoftVisualStudioThreadingAnalyzersVersion>
+		<AzureResourceManagerCognitiveServicesVersion>1.2.1</AzureResourceManagerCognitiveServicesVersion>
+		<AzureResourceManagerKeyVaultVersion>1.1.0</AzureResourceManagerKeyVaultVersion>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' == 'true' or '$(BuildingByReSharper)' == 'true'">
 		<!--<DaprVersion>1.0.0-local</DaprVersion>-->

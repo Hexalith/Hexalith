@@ -14,6 +14,8 @@
 // <summary></summary>
 // ***********************************************************************
 
+using Azure.ResourceManager.KeyVault.Models;
+
 using Cocona;
 
 using Deploy.Configuration.Global;
@@ -46,96 +48,63 @@ internal class DeploymentCommand
     }
 
     /// <summary>
-    /// All as an asynchronous operation.
+    /// Deploy global resources as an asynchronous operation.
     /// </summary>
     /// <param name="subscriptionId">The subscription identifier.</param>
-    /// <param name="globalResourceGroupName">Name of the global resource group.</param>
+    /// <param name="resourceGroupName">Name of the resource group.</param>
     /// <param name="containerRegistryName">Name of the container registry.</param>
     /// <param name="containerRegistrySku">The container registry sku.</param>
-    /// <param name="globalLocation">The global location.</param>
+    /// <param name="cognitiveServicesName">Name of the cognitive services.</param>
+    /// <param name="keyVaultName">Name of the key vault.</param>
+    /// <param name="keyVaultSku">The key vault sku.</param>
+    /// <param name="location">The location.</param>
     /// <returns>A Task representing the asynchronous operation.</returns>
-    public async Task AllAsync(
-        string? subscriptionId,
-        string? globalResourceGroupName,
-        string? containerRegistryName,
-        string? containerRegistrySku,
-        string? globalLocation)
-    {
-        await DeployGlobalResourcesAsync(subscriptionId, globalResourceGroupName, containerRegistryName, containerRegistrySku, globalLocation);
-        await DevelopmentAsync();
-        await StagingAsync();
-        await ProductionAsync();
-    }
-
-    /// <summary>
-    /// Developments the asynchronous.
-    /// </summary>
-    /// <returns>Task.</returns>
-    /// <exception cref="System.NotImplementedException"></exception>
-    public Task DevelopmentAsync()
-    {
-        throw new NotImplementedException();
-    }
-
-    /// <summary>
-    /// Globals the asynchronous.
-    /// </summary>
-    /// <param name="subscriptionId">The subscription identifier.</param>
-    /// <param name="globalResourceGroupName">Name of the global resource group.</param>
-    /// <param name="containerRegistryName">Name of the container registry.</param>
-    /// <param name="globalLocation">The global location.</param>
-    /// <returns>Task.</returns>
     [Command("global")]
-    private async Task DeployGlobalResourcesAsync(
+    public async Task DeployGlobalResourcesAsync(
         string? subscriptionId,
-        string? globalResourceGroupName,
+        string? resourceGroupName,
         string? containerRegistryName,
         string? containerRegistrySku,
-        string? globalLocation)
+        string? cognitiveServicesName,
+        string? keyVaultName,
+        KeyVaultSkuName? keyVaultSku,
+        string? location)
     {
         subscriptionId = ArgumentMissingException.ThrowIfNullOrWhiteSpace(
             subscriptionId,
             _globalSettings.Value.SubscriptionId,
             GlobalSettings.ConfigurationName());
-        globalResourceGroupName = ArgumentMissingException.ThrowIfNullOrWhiteSpace(
-            globalResourceGroupName,
+        resourceGroupName = ArgumentMissingException.ThrowIfNullOrWhiteSpace(
+            resourceGroupName,
             _globalSettings.Value.ResourceGroupName,
             GlobalSettings.ConfigurationName());
-        globalLocation = ArgumentMissingException.ThrowIfNullOrWhiteSpace(
-            globalLocation,
+        keyVaultName = ArgumentMissingException.ThrowIfNullOrWhiteSpace(
+            keyVaultName,
+            _globalSettings.Value.KeyVaultName,
+            GlobalSettings.ConfigurationName());
+        keyVaultSku ??= _globalSettings.Value.KeyVaultSku;
+        location = ArgumentMissingException.ThrowIfNullOrWhiteSpace(
+            location,
             _globalSettings.Value.Location,
             GlobalSettings.ConfigurationName());
         containerRegistryName = ArgumentMissingException.ThrowIfNullOrWhiteSpace(
             containerRegistryName,
             _globalSettings.Value.ContainerRegistryName,
             GlobalSettings.ConfigurationName());
+        cognitiveServicesName = ArgumentMissingException.ThrowIfNullOrWhiteSpace(
+            cognitiveServicesName,
+            _globalSettings.Value.CognitiveServicesAccountName,
+            GlobalSettings.ConfigurationName());
         await new Global(
             subscriptionId,
-            globalResourceGroupName,
+            resourceGroupName,
             containerRegistryName,
             containerRegistrySku ?? _globalSettings.Value.ContainerRegistrySku,
-            globalLocation,
+            cognitiveServicesName,
+            keyVaultName,
+            keyVaultSku,
+            location,
             _loggerFactory)
             .DeployAsync(CancellationToken.None);
-    }
-
-    /// <summary>
-    /// Productions the asynchronous.
-    /// </summary>
-    /// <returns>Task.</returns>
-    /// <exception cref="System.NotImplementedException"></exception>
-    private Task ProductionAsync()
-    {
-        throw new NotImplementedException();
-    }
-
-    /// <summary>
-    /// Staging the asynchronous.
-    /// </summary>
-    /// <returns>Task.</returns>
-    /// <exception cref="System.NotImplementedException"></exception>
-    private Task StagingAsync()
-    {
-        throw new NotImplementedException();
     }
 }

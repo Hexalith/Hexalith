@@ -15,6 +15,8 @@
 // ***********************************************************************
 namespace Hexalith.Infrastructure.AzureCloud.Builders;
 
+using System.Threading;
+
 using Azure.ResourceManager;
 
 /// <summary>
@@ -57,6 +59,12 @@ public interface IResourceBuilder
     /// </summary>
     /// <value>The resource builder not existing identifier.</value>
     string ResourceBuilderNotExistingId { get; }
+
+    /// <summary>
+    /// Gets the name of the resource type.
+    /// </summary>
+    /// <value>The name of the resource type.</value>
+    string ResourceTypeName { get; }
 
     /// <summary>
     /// Gets the unique identifier.

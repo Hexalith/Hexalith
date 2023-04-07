@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
 	</PropertyGroup>
@@ -6,6 +6,8 @@
 		<PackageReference Include="Azure.Identity" Version="$(AzureIdentityVersion)" />
 		<PackageReference Include="Azure.ResourceManager" Version="$(AzureResourceManagerVersion)" />
 		<PackageReference Include="Azure.ResourceManager.ContainerRegistry" Version="$(AzureResourceManagerContainerRegistryVersion)" />
+		<PackageReference Include="Azure.ResourceManager.CognitiveServices" Version="$(AzureResourceManagerCognitiveServicesVersion)" />
+		<PackageReference Include="Azure.ResourceManager.KeyVault" Version="$(AzureResourceManagerKeyVaultVersion)" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\Application\Hexalith.Application.TopologicalSorting\Hexalith.Application.TopologicalSorting.csproj" />
