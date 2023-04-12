@@ -71,6 +71,17 @@ public class AzureBuilder
     }
 
     /// <summary>
+    /// Initializes a new instance of the <see cref="AzureBuilder"/> class.
+    /// </summary>
+    /// <param name="subscriptionId">The subscription identifier.</param>
+    /// <param name="tenantId">The tenant identifier.</param>
+    /// <param name="loggerFactory">The logger factory.</param>
+    public AzureBuilder(string subscriptionId, string tenantId, ILoggerFactory loggerFactory)
+        : this(new DefaultAzureCredential(new DefaultAzureCredentialOptions { TenantId = tenantId, }), subscriptionId, loggerFactory)
+    {
+    }
+
+    /// <summary>
     /// Gets the client.
     /// </summary>
     /// <value>The client.</value>

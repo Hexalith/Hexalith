@@ -105,11 +105,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevOpsAssistant", "src\Appl
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deploy", "Deploy", "{39624851-E5EB-4607-9D0C-0A9BC8CC24FA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Deploy", "src\Deploy\Deploy.csproj", "{A65929D9-C51B-4520-A0EE-3545CCEDE15E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.AzureCloud", "src\Core\Infrastructure\Hexalith.Infrastructure.AzureCloud\Hexalith.Infrastructure.AzureCloud.csproj", "{0F0CB39E-4E90-4999-9CE3-21C0371915E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.Infrastructure.AzureCloud", "src\Core\Infrastructure\Hexalith.Infrastructure.AzureCloud\Hexalith.Infrastructure.AzureCloud.csproj", "{0F0CB39E-4E90-4999-9CE3-21C0371915E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Application.TopologicalSorting", "src\Core\Application\Hexalith.Application.TopologicalSorting\Hexalith.Application.TopologicalSorting.csproj", "{43D88290-657A-4D99-BB58-BA5B60B13630}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.Application.TopologicalSorting", "src\Core\Application\Hexalith.Application.TopologicalSorting\Hexalith.Application.TopologicalSorting.csproj", "{43D88290-657A-4D99-BB58-BA5B60B13630}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeployACA", "src\Deploy\ContainerApps\DeployACA.csproj", "{E6211DF5-DE13-4235-AA5C-C950A6242ECA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeployLCS", "src\Deploy\LCS\DeployLCS.csproj", "{8A51A9AB-9FF9-49B3-8888-0431C20E5547}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -181,10 +183,6 @@ Global
 		{21ACD5AD-F6F8-4C86-92C1-F823EAF3FA30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21ACD5AD-F6F8-4C86-92C1-F823EAF3FA30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21ACD5AD-F6F8-4C86-92C1-F823EAF3FA30}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A65929D9-C51B-4520-A0EE-3545CCEDE15E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A65929D9-C51B-4520-A0EE-3545CCEDE15E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A65929D9-C51B-4520-A0EE-3545CCEDE15E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A65929D9-C51B-4520-A0EE-3545CCEDE15E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0F0CB39E-4E90-4999-9CE3-21C0371915E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0F0CB39E-4E90-4999-9CE3-21C0371915E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F0CB39E-4E90-4999-9CE3-21C0371915E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -193,6 +191,14 @@ Global
 		{43D88290-657A-4D99-BB58-BA5B60B13630}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43D88290-657A-4D99-BB58-BA5B60B13630}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43D88290-657A-4D99-BB58-BA5B60B13630}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6211DF5-DE13-4235-AA5C-C950A6242ECA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6211DF5-DE13-4235-AA5C-C950A6242ECA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6211DF5-DE13-4235-AA5C-C950A6242ECA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6211DF5-DE13-4235-AA5C-C950A6242ECA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A51A9AB-9FF9-49B3-8888-0431C20E5547}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A51A9AB-9FF9-49B3-8888-0431C20E5547}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A51A9AB-9FF9-49B3-8888-0431C20E5547}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A51A9AB-9FF9-49B3-8888-0431C20E5547}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -222,9 +228,10 @@ Global
 		{03AE9EB1-CBEA-4B30-9161-A4175B003EC3} = {A902BF68-7168-4540-B9B7-1241D0F174A5}
 		{21ACD5AD-F6F8-4C86-92C1-F823EAF3FA30} = {03AE9EB1-CBEA-4B30-9161-A4175B003EC3}
 		{39624851-E5EB-4607-9D0C-0A9BC8CC24FA} = {D2DA3040-462E-4E0E-9CFE-3EA95FA3D014}
-		{A65929D9-C51B-4520-A0EE-3545CCEDE15E} = {39624851-E5EB-4607-9D0C-0A9BC8CC24FA}
 		{0F0CB39E-4E90-4999-9CE3-21C0371915E4} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{43D88290-657A-4D99-BB58-BA5B60B13630} = {AA983AFF-9CBC-4F2A-98E3-3CACA5039C61}
+		{E6211DF5-DE13-4235-AA5C-C950A6242ECA} = {39624851-E5EB-4607-9D0C-0A9BC8CC24FA}
+		{8A51A9AB-9FF9-49B3-8888-0431C20E5547} = {39624851-E5EB-4607-9D0C-0A9BC8CC24FA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09CBB595-8996-4C7F-9C48-4C58AD9293AC}

@@ -15,6 +15,7 @@
 // ***********************************************************************
 namespace Hexalith.Infrastructure.AzureCloud.Builders;
 
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -30,6 +31,8 @@ using Azure.ResourceManager.Resources;
 public class KeyVaultBuilder : ResourceGroupItemBuilder<KeyVaultResource, KeyVaultData>
 {
     private const string TypeName = "Key Vault";
+
+    private readonly Dictionary<string, string> _secrets = new();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="KeyVaultBuilder" /> class.
@@ -101,6 +104,23 @@ public class KeyVaultBuilder : ResourceGroupItemBuilder<KeyVaultResource, KeyVau
     /// <value>The sku.</value>
     public KeyVaultSkuName? Sku { get; }
 
+    /// <summary>
+    /// Adds the secret.
+    /// </summary>
+    /// <param name="name">The name.</param>
+    /// <param name="value">The value.</param>
+    /// <returns>KeyVaultBuilder.</returns>
+    public KeyVaultBuilder AddSecret(string name, string value)
+    {
+        if (Existing == true)
+        {
+            throw new InvalidOperationException("Can't add secret to an existing Key Vault.");
+        }
+
+        _secrets.Add(name, value);
+        return this;
+    }
+
     /// <inheritdoc/>
     protected override async Task<KeyVaultResource> CreateOrUpdateResourceAsync(CancellationToken cancellationToken)
     {
@@ -123,7 +143,27 @@ public class KeyVaultBuilder : ResourceGroupItemBuilder<KeyVaultResource, KeyVau
                     Data.Location,
                     Data.Properties),
                 cancellationToken);
-        return operation.Value;
+        KeyVaultResource keyVault = operation.Value;
+        /*
+        bool createPolicy = true;
+        foreach (var policy in Data.Properties.AccessPolicies)
+        {
+            if (policy.ObjectId == keyVault.Data.Properties.TenantId)
+            {
+                createPolicy = false;
+                break;
+            }
+        }
+        SecretClient secretsClient = new(keyVault.Data.Properties.VaultUri, new DefaultAzureCredential());
+        foreach (KeyValuePair<string, string> secret in _secrets)
+        {
+            if (await secretsClient.GetSecretAsync(secret.Key, null, cancellationToken) == null)
+            {
+                _ = await secretsClient.SetSecretAsync(secret.Key, secret.Value, cancellationToken);
+            }
+        }
+        */
+        return keyVault;
     }
 
     /// <inheritdoc/>

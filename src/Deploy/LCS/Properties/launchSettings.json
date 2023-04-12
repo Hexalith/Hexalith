@@ -1,0 +1,8 @@
+{
+	"profiles": {
+		"Deploy LCS": {
+			"commandName": "Project",
+			"commandLineArgs": "all"
+		}
+	}
+}
