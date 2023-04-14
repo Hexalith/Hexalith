@@ -125,6 +125,13 @@ public class KeyVaultBuilder : ResourceGroupItemBuilder<KeyVaultResource, KeyVau
     protected override async Task<KeyVaultResource> CreateOrUpdateResourceAsync(CancellationToken cancellationToken)
     {
         ResourceGroupResource group = await ResourceGroup.BuildAsync(cancellationToken).ConfigureAwait(false);
+        KeyVaultCollection keyVaults = group.GetKeyVaults();
+        if (await keyVaults.ExistsAsync(Name))
+        {
+            Azure.Response<KeyVaultResource> keyVaultResponse = await group.GetKeyVaultAsync(Name, cancellationToken);
+            return keyVaultResponse.Value;
+        }
+
         if (Data == null)
         {
             SubscriptionResource subscription = await ResourceGroup.Subscription.BuildAsync(cancellationToken);
@@ -135,7 +142,7 @@ public class KeyVaultBuilder : ResourceGroupItemBuilder<KeyVaultResource, KeyVau
                     new KeyVaultSku(KeyVaultSkuFamily.A, Sku ?? KeyVaultSkuName.Standard)));
         }
 
-        Azure.ResourceManager.ArmOperation<KeyVaultResource> operation = await group.GetKeyVaults()
+        Azure.ResourceManager.ArmOperation<KeyVaultResource> operation = await keyVaults
             .CreateOrUpdateAsync(
                 Azure.WaitUntil.Completed,
                 Name,

@@ -48,15 +48,16 @@ internal class DeploymentCommand
     }
 
     /// <summary>
-    /// Deploy Lcs resources as an asynchronous operation.
+    /// Deploy LCS resources as an asynchronous operation.
     /// </summary>
     /// <param name="subscriptionId">The subscription identifier.</param>
     /// <param name="resourceGroupName">Name of the resource group.</param>
-    /// <param name="lcsUserName">Name of the container registry.</param>
-    /// <param name="lcsPassword">The container registry sku.</param>
-    /// <param name="tokenLogicAppName">Name of the cognitive services.</param>
+    /// <param name="lcsUserName">Name of the LCS user.</param>
+    /// <param name="lcsPassword">The LCS password.</param>
+    /// <param name="tokenLogicAppName">Name of the token logic application.</param>
     /// <param name="keyVaultName">Name of the key vault.</param>
     /// <param name="keyVaultSku">The key vault sku.</param>
+    /// <param name="tenantId">The tenant identifier.</param>
     /// <param name="location">The location.</param>
     /// <returns>A Task representing the asynchronous operation.</returns>
     [Command("all")]

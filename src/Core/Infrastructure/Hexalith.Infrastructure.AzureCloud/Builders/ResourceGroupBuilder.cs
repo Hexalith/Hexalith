@@ -107,9 +107,20 @@ public class ResourceGroupBuilder : ResourceBuilder<ResourceGroupResource>
     /// <param name="sku">The sku.</param>
     /// <param name="location">The location.</param>
     /// <returns>KeyVaultBuilder.</returns>
-    public KeyVaultBuilder AddKeyVault(string name, KeyVaultSkuName? sku, string location)
+    public KeyVaultBuilder AddKeyVault(string name, KeyVaultSkuName? sku, string? location)
     {
         return new KeyVaultBuilder(AzureBuilder, this, name, sku, location, null);
+    }
+
+    /// <summary>
+    /// Adds the logic workflow.
+    /// </summary>
+    /// <param name="name">The name.</param>
+    /// <param name="location">The location.</param>
+    /// <returns>LogicWorkflowBuilder.</returns>
+    public LogicWorkflowBuilder AddLogicWorkflow(string name, string? location)
+    {
+        return new LogicWorkflowBuilder(AzureBuilder, this, name, location, null);
     }
 
     /// <summary>
