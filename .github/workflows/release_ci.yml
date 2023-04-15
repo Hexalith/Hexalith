@@ -35,12 +35,11 @@ jobs:
         echo "VERSION=$version" >> $GITHUB_ENV        
     - name: Build
       run: |
-        dotnet build --configuration Release
+        dotnet build --configuration Release -p:Version=${{ steps.get_version.outputs.VERSION }}
     - name: Unit Tests
       run: |
         dotnet test -c Release --no-restore --no-build ./test/Hexalith.UnitTests/Hexalith.UnitTests.csproj 
     - name: Deploy release nuget packages
       if: matrix.os == 'ubuntu-latest'
       run: |
-        dotnet pack './src/core/**/*.csproj' -c Release --no-restore --no-build -p:Version=${{ steps.get_version.outputs.VERSION }} -p:TreatWarningsAsErrors=false
         dotnet nuget push './src/core/**/*.nupkg' --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate

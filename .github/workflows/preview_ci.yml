@@ -34,12 +34,11 @@ jobs:
         echo "VERSION=$version" >> $GITHUB_ENV        
     - name: Build
       run: |
-        dotnet build --configuration Release
+        dotnet build --configuration Release -p:Version=${{ steps.get_version.outputs.VERSION }}
     - name: Unit Tests
       run: |
         dotnet test -c Release --no-restore --no-build ./test/Hexalith.UnitTests/Hexalith.UnitTests.csproj 
     - name: Deploy preview nuget packages
       if: matrix.os == 'ubuntu-latest'
       run: |
-        dotnet pack './src/core/**/*.csproj' -c Release --no-restore --no-build
         dotnet nuget push './src/core/**/*.nupkg' -k ${{secrets.GITHUB_TOKEN}} -n -s https://nuget.pkg.github.com/Hexalith/index.json --skip-duplicate
