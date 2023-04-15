@@ -23,15 +23,14 @@ jobs:
         dotnet-version: 7.0.x
     - name: Build Version
       run: |
-        dotnet tool install --global minver-cli --version 4.2.0
-        version=$(minver --tag-prefix v -v e -d preview)
+        dotnet tool install --global minver-cli --version 4.3.0
+        version=$(minver -t v -v e -d preview)
         echo "MINVERVERSIONOVERRIDE=$version" >> $GITHUB_ENV
         echo "VERSION=$version" >> $GITHUB_ENV
-        echo "VERSION=$version" >> $env:$GITHUB_OUTPUT
         echo "VERSION=$version"
     - name: Build
       run: |
-        dotnet build --configuration Release -p:Version=${{ steps.get_version.outputs.VERSION }}
+        dotnet build --configuration Release -p:Version=${{ env.VERSION }}
     - name: Unit Tests
       run: |
         dotnet test -c Release --no-restore --no-build ./test/Hexalith.UnitTests/Hexalith.UnitTests.csproj 
