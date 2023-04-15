@@ -26,7 +26,7 @@ using Azure.ResourceManager.Resources;
 /// <summary>
 /// Class ResourceGroupBuilder.
 /// </summary>
-public class LogicWorkflowBuilder : ResourceGroupItemBuilder<LogicWorkflowResource, LogicWorkflowBuilderData>
+public class LogicWorkflowBuilder : ResourceGroupItemBuilder<LogicWorkflowResource, LogicWorkflowData>
 {
     private const string TypeName = "Cognitive Services Account";
 
@@ -44,7 +44,7 @@ public class LogicWorkflowBuilder : ResourceGroupItemBuilder<LogicWorkflowResour
         ResourceGroupBuilder resourceGroupBuilder,
         string name,
         string? location,
-        LogicWorkflowBuilderData? data)
+        LogicWorkflowData? data)
         : base(azureBuilder, resourceGroupBuilder, TypeName, name, data, false)
     {
         ResourceGroup = resourceGroupBuilder;
@@ -75,7 +75,7 @@ public class LogicWorkflowBuilder : ResourceGroupItemBuilder<LogicWorkflowResour
     /// Gets the data.
     /// </summary>
     /// <value>The data.</value>
-    public new LogicWorkflowBuilderData? Data { get; private set; }
+    public new LogicWorkflowData? Data { get; private set; }
 
     /// <summary>
     /// Gets the location.
@@ -104,8 +104,7 @@ public class LogicWorkflowBuilder : ResourceGroupItemBuilder<LogicWorkflowResour
         if (Data == null)
         {
             AzureLocation location = string.IsNullOrWhiteSpace(Location) ? group.Data.Location : Location;
-            Data = new(location);
-            Data.Definition = new LogicWorkflowRunActionRepetitionDefinitionData(location);
+            Data = new LogicWorkflowData(location);
         }
 
         ArmOperation<LogicWorkflowResource> operation = await workflows

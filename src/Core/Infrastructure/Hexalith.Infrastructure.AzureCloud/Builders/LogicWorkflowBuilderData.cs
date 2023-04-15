@@ -57,4 +57,10 @@ public abstract class LogicWorkflowBuilderData
     /// </summary>
     /// <returns>System.String.</returns>
     protected abstract string GetDefinition();
+
+    /// <summary>
+    /// Gets the parameters.
+    /// </summary>
+    /// <returns>System.String.</returns>
+    protected abstract string GetParameters();
 }

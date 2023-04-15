@@ -148,7 +148,7 @@ internal class Lcs
             .AddKeyVault(KeyVaultName, KeyVaultSku, Location)
             .AddSecret(nameof(LcsUserName), LcsUserName)
             .AddSecret(nameof(LcsPassword), LcsPassword);
-        _ = resourceGroup.AddLogicWorkflow(TokenLogicAppName,, Location);
+        _ = resourceGroup.AddLogicWorkflow(TokenLogicAppName, Location);
         await azureBuilder.BuildAsync(cancellationToken);
     }
 }
