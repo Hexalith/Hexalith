@@ -44,15 +44,15 @@ public class SettingsExceptionTest
 
     internal class DummySettings : ISettings
     {
-        public string? Name { get; set; }
+        public string Name { get; set; }
 
-        public SubConfiguration? SubConfig { get; set; }
+        public SubConfiguration SubConfig { get; set; }
 
         public static string ConfigurationName() => "Dummy";
     }
 
     internal class SubConfiguration
     {
-        public string? Hello { get; set; }
+        public string Hello { get; set; }
     }
 }
