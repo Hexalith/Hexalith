@@ -45,20 +45,20 @@ public static class PolymorphicSerializableTypeMapper
     public static Dictionary<string, Type> GetMap()
     {
         Dictionary<string, Type> map = new();
-        IEnumerable<Type> types = AppDomain.CurrentDomain.GetAssemblies()
-            .SelectMany(a => a.GetTypes())
-            .Where(t => t.IsClass && !t.IsAbstract && typeof(IPolymorphicSerializable).IsAssignableFrom(t));
-        foreach (Type? type in types)
+        foreach (System.Reflection.Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
         {
-            IPolymorphicSerializable obj = Activator.CreateInstance(type) as IPolymorphicSerializable ?? throw new TypeInitializationException(type.AssemblyQualifiedName, null);
-            string key = $"{obj.TypeName}|{obj.MajorVersion}.{obj.MinorVersion}";
-            try
+            foreach (Type? type in assembly.GetTypes().Where(t => t.IsClass && !t.IsAbstract && typeof(IPolymorphicSerializable).IsAssignableFrom(t)))
             {
-                map.Add(key, type);
-            }
-            catch (ArgumentException ex)
-            {
-                throw new InvalidOperationException($"Type {type.FullName} could not be added to the serialization mapper. A type with TypeName='{obj.TypeName}' and Version='{obj.MajorVersion}.{obj.MinorVersion}' already exists : {map[key].FullName}", ex);
+                IPolymorphicSerializable obj = Activator.CreateInstance(type) as IPolymorphicSerializable ?? throw new TypeInitializationException(type.AssemblyQualifiedName, null);
+                string key = $"{obj.TypeName}|{obj.MajorVersion}.{obj.MinorVersion}";
+                try
+                {
+                    map.Add(key, type);
+                }
+                catch (ArgumentException ex)
+                {
+                    throw new InvalidOperationException($"Type {type.FullName} could not be added to the serialization mapper. A type with TypeName='{obj.TypeName}' and Version='{obj.MajorVersion}.{obj.MinorVersion}' already exists : {map[key].FullName}", ex);
+                }
             }
         }
 
