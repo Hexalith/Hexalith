@@ -116,8 +116,5 @@ public class LcsSettings : ISettings
     /// The configuration section name of the settings.
     /// </summary>
     /// <returns>The name.</returns>
-    public static string ConfigurationName()
-    {
-        return "Lcs";
-    }
+    public static string ConfigurationName() => "Lcs";
 }

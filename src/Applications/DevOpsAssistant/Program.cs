@@ -17,10 +17,8 @@
 using DevOpsAssistant.Application.Configuration;
 using DevOpsAssistant.Infrastructure.Actors;
 
-using Hexalith.Application.Abstractions.Aggregates;
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Commands;
-using Hexalith.Application.States;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.WebApis.Helpers;
 
@@ -41,7 +39,6 @@ WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
     (actors) => actors.RegisterActor<DevOpsUnitOfWorkAggregateActor>(),
     args);
 
-builder.Services.AddSingleton<IAggregateStateManager, AggregateStateManager>();
 builder.Services.AddSingleton<ICommandDispatcher, DependencyInjectionCommandDispatcher>();
 builder.Services.ConfigureSettings<DevOpsUnitOfWorkSettings>(builder.Configuration);
 

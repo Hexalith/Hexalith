@@ -29,6 +29,7 @@ using Hexalith.Application.Abstractions.States;
 using Hexalith.Application.Abstractions.Tasks;
 using Hexalith.Application.StreamStores;
 using Hexalith.Application.Tasks;
+using Hexalith.Domain.Abstractions.Aggregates;
 using Hexalith.Domain.Abstractions.Events;
 using Hexalith.Domain.Abstractions.Messages;
 using Hexalith.Extensions.Common;
@@ -39,7 +40,8 @@ using Hexalith.Extensions.Helpers;
 /// Implements the <see cref="Christofle.Infrastructure.Dynamics365Finance.DaprCloud.AggregateActors.IAggregateActorState" />.
 /// </summary>
 /// <seealso cref="Christofle.Infrastructure.Dynamics365Finance.DaprCloud.AggregateActors.IAggregateActorState" />
-public class AggregateStateManager : IAggregateStateManager
+public class AggregateStateManager<TAggregate> : IAggregateStateManager<TAggregate>
+    where TAggregate : IAggregate
 {
     /// <summary>
     /// The date time service.
@@ -62,7 +64,7 @@ public class AggregateStateManager : IAggregateStateManager
     private readonly INotificationBus _notificationBus;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="AggregateStateManager" /> class.
+    /// Initializes a new instance of the <see cref="AggregateStateManager{TAggregate}"/> class.
     /// </summary>
     /// <param name="dispatcher">The dispatcher.</param>
     /// <param name="eventBus">The event bus.</param>
@@ -191,6 +193,23 @@ public class AggregateStateManager : IAggregateStateManager
         {
             await SetReminderAsync(TimeSpan.FromDays(30), TimeSpan.FromMinutes(1), registerReminder);
         }
+    }
+
+    /// <inheritdoc/>
+    public async Task<TAggregate?> GetAggregateAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken)
+    {
+        MessageStore<EventState> eventStore = new(stateProvider, EventsStreamName);
+        AggregateState state = await GetStateAsync(stateProvider, cancellationToken);
+        TAggregate? aggregate = default;
+        while (state.LastEventPublished < state.EventStreamVersion)
+        {
+            long nextEvent = state.LastEventPublished + 1;
+            EventState eventState = await eventStore.GetAsync(nextEvent, cancellationToken);
+            BaseEvent e = eventState.Message ?? throw new InvalidDataException($"Message is null in {typeof(TAggregate).Name} event stream at position {nextEvent}. IdempotencyId={eventState.IdempotencyId}.");
+            aggregate = (TAggregate)(aggregate == null ? TAggregate.Apply(e.IntoArray()) : aggregate.Apply(e));
+        }
+
+        return aggregate;
     }
 
     /// <summary>
@@ -353,10 +372,7 @@ public class AggregateStateManager : IAggregateStateManager
     private static async Task SetReminderAsync(
         TimeSpan next,
         TimeSpan retry,
-        Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder)
-    {
-        await registerReminder("Continue", Array.Empty<byte>(), next, retry);
-    }
+        Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder) => await registerReminder("Continue", Array.Empty<byte>(), next, retry);
 
     /// <summary>
     /// Get state as an asynchronous operation.
@@ -375,10 +391,7 @@ public class AggregateStateManager : IAggregateStateManager
     /// </summary>
     /// <param name="version">The version.</param>
     /// <returns>System.String.</returns>
-    private string GetTaskProcessorStateName(long version)
-    {
-        return nameof(TaskProcessor) + version.ToInvariantString();
-    }
+    private string GetTaskProcessorStateName(long version) => nameof(TaskProcessor) + version.ToInvariantString();
 
     /// <summary>
     /// Set state as an asynchronous operation.

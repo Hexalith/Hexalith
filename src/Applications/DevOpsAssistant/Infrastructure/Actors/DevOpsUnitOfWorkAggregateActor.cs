@@ -21,6 +21,7 @@ using System;
 using Dapr.Actors.Runtime;
 
 using DevOpsAssistant.Application.Configuration;
+using DevOpsAssistant.Domain.Aggregates;
 
 using Hexalith.Application.Abstractions.Aggregates;
 using Hexalith.Application.Abstractions.States;
@@ -44,7 +45,7 @@ public class DevOpsUnitOfWorkAggregateActor : Actor, IDevOpsUnitOfWorkAggregateA
     /// <summary>
     /// The state manager.
     /// </summary>
-    private readonly IAggregateStateManager _stateManager;
+    private readonly IAggregateStateManager<DevOpsUnitOfWork> _stateManager;
 
     /// <summary>
     /// The state provider.
@@ -61,7 +62,7 @@ public class DevOpsUnitOfWorkAggregateActor : Actor, IDevOpsUnitOfWorkAggregateA
     public DevOpsUnitOfWorkAggregateActor(
         ActorHost host,
         IOptions<DevOpsUnitOfWorkSettings> settings,
-        IAggregateStateManager stateManager)
+        IAggregateStateManager<DevOpsUnitOfWork> stateManager)
         : base(host)
     {
         ArgumentNullException.ThrowIfNull(host);

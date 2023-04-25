@@ -21,11 +21,14 @@ using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Application.Abstractions.States;
 using Hexalith.Application.Abstractions.Tasks;
+using Hexalith.Domain.Abstractions.Aggregates;
 
 /// <summary>
-/// Aggregate state manager interface.
+/// Interface IAggregateStateManager.
 /// </summary>
-public interface IAggregateStateManager
+/// <typeparam name="TAggregate">The type of the aggregate.</typeparam>
+public interface IAggregateStateManager<TAggregate>
+    where TAggregate : IAggregate
 {
     /// <summary>
     /// Adds the command.
@@ -56,6 +59,14 @@ public interface IAggregateStateManager
         ResiliencyPolicy resiliencyPolicy,
         Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder,
         CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Gets the aggregate asynchronous.
+    /// </summary>
+    /// <param name="stateProvider">The state provider.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task&lt;TAggregate&gt;.</returns>
+    Task<TAggregate?> GetAggregateAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken);
 
     /// <summary>
     /// Gets the command count asynchronous.

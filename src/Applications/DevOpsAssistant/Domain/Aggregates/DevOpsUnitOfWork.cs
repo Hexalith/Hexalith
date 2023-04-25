@@ -16,9 +16,17 @@
 
 namespace DevOpsAssistant.Domain.Aggregates;
 
+using System.Collections.Generic;
+
+using Hexalith.Domain.Abstractions.Aggregates;
+using Hexalith.Domain.Abstractions.Events;
+
 /// <summary>
 /// Class DevOpsUnitOfWork.
 /// </summary>
-public class DevOpsUnitOfWork
+public class DevOpsUnitOfWork : IAggregate
 {
+    public static IAggregate Apply(IEnumerable<BaseEvent> events) => throw new NotImplementedException();
+
+    public IAggregate Apply(BaseEvent domainEvent) => throw new NotImplementedException();
 }
