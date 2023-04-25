@@ -1,12 +1,12 @@
 ﻿// ***********************************************************************
 // Assembly         : Hexalith.Application.Abstractions
 // Author           : Jérôme Piquot
-// Created          : 02-04-2023
+// Created          : 04-25-2023
 //
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 04-25-2023
 // ***********************************************************************
-// <copyright file="INotification.cs" company="Fiveforty SAS Paris France">
+// <copyright file="NotificationSeverity.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -16,34 +16,23 @@
 
 namespace Hexalith.Application.Abstractions.Notifications;
 
-using Hexalith.Domain.Abstractions.Messages;
-
 /// <summary>
-/// Interface for all commands.
+/// Enum NotificationSeverity.
 /// </summary>
-public interface INotification : IMessage
+public enum NotificationSeverity
 {
     /// <summary>
-    /// Gets the message.
+    /// The information.
     /// </summary>
-    /// <value>The message.</value>
-    public string Message { get; }
+    Information,
 
     /// <summary>
-    /// Gets the severity.
+    /// The warning.
     /// </summary>
-    /// <value>The severity.</value>
-    public NotificationSeverity Severity { get; }
+    Warning,
 
     /// <summary>
-    /// Gets the technical description.
+    /// The error.
     /// </summary>
-    /// <value>The technical description.</value>
-    public string? TechnicalDescription { get; }
-
-    /// <summary>
-    /// Gets the title.
-    /// </summary>
-    /// <value>The title.</value>
-    public string Title { get; }
+    Error,
 }

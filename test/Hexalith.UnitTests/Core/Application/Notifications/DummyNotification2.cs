@@ -16,19 +16,14 @@ public class DummyNotification2 : DummyBaseNotification
 {
     [JsonConstructor]
     public DummyNotification2(string baseValue, int value2)
-        : base(baseValue)
-    {
-        Value2 = value2;
-    }
+        : base(baseValue) => Value2 = value2;
 
+    [Obsolete("For serialization only", true)]
     public DummyNotification2()
     {
     }
 
     public int Value2 { get; }
 
-    protected override string DefaultAggregateId()
-    {
-        return BaseValue + "-" + Value2.ToInvariantString();
-    }
+    protected override string DefaultAggregateId() => BaseValue + "-" + Value2.ToInvariantString();
 }

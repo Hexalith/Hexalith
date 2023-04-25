@@ -16,16 +16,13 @@ using Hexalith.Extensions.Helpers;
 [DataContract]
 public abstract class DummyBaseNotification : BaseNotification
 {
+    [Obsolete("For serialization only", true)]
     protected DummyBaseNotification()
-    {
-        BaseValue = string.Empty;
-    }
+        : base("Test", "Dummy message", NotificationSeverity.Information, "Dummy technical description") => BaseValue = string.Empty;
 
     [JsonConstructor]
     protected DummyBaseNotification(string baseValue)
-    {
-        BaseValue = baseValue;
-    }
+        : base("Test", "Dummy message", NotificationSeverity.Information, "Dummy technical description") => BaseValue = baseValue;
 
     public string BaseValue { get; }
 
@@ -44,8 +41,5 @@ public abstract class DummyBaseNotification : BaseNotification
                 "TestScope".IntoArray());
     }
 
-    protected override string DefaultAggregateName()
-    {
-        return "Test";
-    }
+    protected override string DefaultAggregateName() => "Test";
 }
