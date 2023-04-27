@@ -7,8 +7,9 @@
 namespace Hexalith.UnitTests.Core.Application.Aggregates;
 
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
+
+using FluentAssertions;
 
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.Metadatas;
@@ -22,8 +23,6 @@ using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 using Hexalith.UnitTests.Core.Application.Commands;
 
-using FluentAssertions;
-
 public class AggregateStateManagerTest
 {
     [Theory]
@@ -33,12 +32,15 @@ public class AggregateStateManagerTest
     [InlineData(111)]
     public async Task Add_command_should_emit_events(int commandCount)
     {
-        (AggregateStateManager<DummyAggregate> stateManager, MemoryStateProvider stateProvider, MemoryEventBus bus) = await GetInitializedStateManager(commandCount);
+        (AggregateStateManager stateManager, MemoryStateProvider stateProvider, MemoryEventBus bus) = await GetInitializedStateManager(commandCount);
 
-        await stateManager.ContinueAsync(
+        _ = await stateManager.ContinueAsync(
             stateProvider,
             ResiliencyPolicy.None,
-            async (name, data, start, period) => await Task.CompletedTask,
+            null,
+            (_) => new DummyAggregate(),
+            (name, data, start, period) => Task.CompletedTask,
+            (name) => Task.CompletedTask,
             CancellationToken.None);
         _ = bus.Stream.Should().HaveCount(commandCount);
     }
@@ -50,12 +52,15 @@ public class AggregateStateManagerTest
     [InlineData(111)]
     public async Task Add_command_should_persist_events(int commandCount)
     {
-        (AggregateStateManager<DummyAggregate> stateManager, MemoryStateProvider stateProvider, _) = await GetInitializedStateManager(commandCount);
+        (AggregateStateManager stateManager, MemoryStateProvider stateProvider, _) = await GetInitializedStateManager(commandCount);
 
-        await stateManager.ContinueAsync(
+        _ = await stateManager.ContinueAsync(
             stateProvider,
             ResiliencyPolicy.None,
-            async (name, data, start, period) => await Task.CompletedTask,
+            null,
+            (_) => new DummyAggregate(),
+            (name, data, start, period) => Task.CompletedTask,
+            (name) => Task.CompletedTask,
             CancellationToken.None);
 
         _ = stateProvider.State.ContainsKey("State").Should().BeTrue();
@@ -72,7 +77,7 @@ public class AggregateStateManagerTest
     [InlineData(2)]
     [InlineData(10)]
     [InlineData(111)]
-    public async Task Add_command_should_persit_state_with_correct_command_version(int commandCount)
+    public async Task Add_command_should_persist_state_with_correct_command_version(int commandCount)
     {
         (_, MemoryStateProvider stateProvider, _) = await GetInitializedStateManager(commandCount);
 
@@ -103,12 +108,12 @@ public class AggregateStateManagerTest
         return (command, meta);
     }
 
-    private static async Task<(AggregateStateManager<DummyAggregate> StateManager, MemoryStateProvider StateProvider, MemoryEventBus EventBus)> GetInitializedStateManager(int commandCount)
+    private static async Task<(AggregateStateManager StateManager, MemoryStateProvider StateProvider, MemoryEventBus EventBus)> GetInitializedStateManager(int commandCount)
     {
         MemoryStateProvider provider = new();
         MemoryEventBus eventBus = new(new DateTimeService());
         MemoryNotificationBus notificationBus = new(new DateTimeService());
-        AggregateStateManager<DummyAggregate> stateManager = new(
+        AggregateStateManager stateManager = new(
             new DummyCommandDispatcher(),
             eventBus,
             notificationBus,
@@ -130,7 +135,15 @@ public class AggregateStateManagerTest
 
 public class DummyAggregate : IAggregate
 {
-    public static IAggregate Apply(IEnumerable<BaseEvent> events) => throw new NotImplementedException();
+    public DummyAggregate()
+    {
+        AggregateId = "Test1";
+        AggregateName = "Test";
+    }
 
-    public IAggregate Apply(BaseEvent domainEvent) => throw new NotImplementedException();
+    public string AggregateId { get; }
+
+    public string AggregateName { get; }
+
+    public IAggregate Apply(BaseEvent domainEvent) => new DummyAggregate();
 }

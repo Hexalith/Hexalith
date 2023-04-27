@@ -16,8 +16,6 @@
 
 namespace Hexalith.Domain.Abstractions.Aggregates;
 
-using System.Collections.Generic;
-
 using Hexalith.Domain.Abstractions.Events;
 
 /// <summary>
@@ -26,11 +24,16 @@ using Hexalith.Domain.Abstractions.Events;
 public interface IAggregate
 {
     /// <summary>
-    /// Applies the specified events.
+    /// Gets the aggregate identifier.
     /// </summary>
-    /// <param name="events">The events.</param>
-    /// <returns>IAggregate.</returns>
-    static abstract IAggregate Apply(IEnumerable<BaseEvent> events);
+    /// <value>The aggregate identifier.</value>
+    string AggregateId { get; }
+
+    /// <summary>
+    /// Gets the name of the aggregate.
+    /// </summary>
+    /// <value>The name of the aggregate.</value>
+    string AggregateName { get; }
 
     /// <summary>
     /// Applies the specified domain event.
@@ -38,4 +41,20 @@ public interface IAggregate
     /// <param name="domainEvent">The domain event.</param>
     /// <returns>IAggregate.</returns>
     IAggregate Apply(BaseEvent domainEvent);
+
+    /// <summary>
+    /// Applies the specified domain event.
+    /// </summary>
+    /// <param name="events">The domain events.</param>
+    /// <returns>IAggregate.</returns>
+    IAggregate Apply(IEnumerable<BaseEvent> events)
+    {
+        IAggregate aggregate = this;
+        foreach (BaseEvent e in events)
+        {
+            aggregate = aggregate.Apply(e);
+        }
+
+        return aggregate;
+    }
 }

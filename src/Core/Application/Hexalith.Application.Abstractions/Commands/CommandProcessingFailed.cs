@@ -19,8 +19,8 @@ namespace Hexalith.Application.Abstractions.Commands;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Application.Abstractions.Notifications;
 using Hexalith.Application.Abstractions.Tasks;
-using Hexalith.Domain.Abstractions.Events;
 
 /// <summary>
 /// Class CommandProcessingStalled.
@@ -28,7 +28,7 @@ using Hexalith.Domain.Abstractions.Events;
 /// </summary>
 /// <seealso cref="Hexalith.Application.Abstractions.Commands.BaseCommand" />
 [DataContract]
-public class CommandProcessingFailed : BaseEvent
+public class CommandProcessingFailed : BaseNotification
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="CommandProcessingFailed" /> class.
@@ -37,6 +37,11 @@ public class CommandProcessingFailed : BaseEvent
     /// <param name="taskProcessor">The task processor.</param>
     [JsonConstructor]
     public CommandProcessingFailed(BaseCommand command, TaskProcessor taskProcessor)
+        : base(
+            $"Command {command.TypeName} failed.",
+            taskProcessor.Failure?.Message ?? string.Empty,
+            NotificationSeverity.Error,
+            taskProcessor.Failure?.TechnicalError ?? string.Empty)
     {
         Command = command;
         TaskProcessor = taskProcessor;
@@ -65,14 +70,8 @@ public class CommandProcessingFailed : BaseEvent
     public TaskProcessor TaskProcessor { get; }
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateId()
-    {
-        return Command.AggregateId;
-    }
+    protected override string DefaultAggregateId() => Command.AggregateId;
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateName()
-    {
-        return Command.AggregateName;
-    }
+    protected override string DefaultAggregateName() => Command.AggregateName;
 }

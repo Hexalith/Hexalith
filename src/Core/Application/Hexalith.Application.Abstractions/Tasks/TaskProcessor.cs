@@ -152,10 +152,7 @@ public class TaskProcessor : ITaskProcessor
     }
 
     /// <inheritdoc/>
-    ITaskProcessor ITaskProcessor.Cancel()
-    {
-        return Cancel();
-    }
+    ITaskProcessor ITaskProcessor.Cancel() => Cancel();
 
     /// <summary>
     /// Completes this instance.
@@ -170,10 +167,7 @@ public class TaskProcessor : ITaskProcessor
     }
 
     /// <inheritdoc/>
-    ITaskProcessor ITaskProcessor.Complete()
-    {
-        return Complete();
-    }
+    ITaskProcessor ITaskProcessor.Complete() => Complete();
 
     /// <summary>
     /// Continues this instance.
@@ -212,20 +206,17 @@ public class TaskProcessor : ITaskProcessor
     }
 
     /// <inheritdoc/>
-    ITaskProcessor ITaskProcessor.Continue()
-    {
-        return Continue();
-    }
+    ITaskProcessor ITaskProcessor.Continue() => Continue();
 
     /// <summary>
     /// Fails the specified message.
     /// </summary>
     /// <param name="message">The message.</param>
+    /// <param name="technicalError">The technical error.</param>
     /// <returns>Hexalith.Application.Abstractions.Tasks.TaskProcessor.</returns>
-    /// <inheritdoc cref="ITaskProcessor.Fail" />
-    public TaskProcessor Fail(string message)
+    public TaskProcessor Fail(string message, string? technicalError)
     {
-        TaskProcessingFailure newFailure = Failure == null ? new TaskProcessingFailure(1, DateTimeOffset.UtcNow, message) : Failure.Fail(message);
+        TaskProcessingFailure newFailure = Failure == null ? new TaskProcessingFailure(1, DateTimeOffset.UtcNow, message, technicalError) : Failure.Fail(message, technicalError);
         bool canRetry = ResiliencyPolicy
             .CanRetry(History.ProcessingStartDate ?? History.CreatedDate, newFailure.Count) != RetryStatus.Stopped;
         return Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed
@@ -236,10 +227,7 @@ public class TaskProcessor : ITaskProcessor
     }
 
     /// <inheritdoc/>
-    ITaskProcessor ITaskProcessor.Fail(string message)
-    {
-        return Fail(message);
-    }
+    ITaskProcessor ITaskProcessor.Fail(string message, string? technicalError) => Fail(message, technicalError);
 
     /// <summary>
     /// Starts this instance.
@@ -254,8 +242,5 @@ public class TaskProcessor : ITaskProcessor
     }
 
     /// <inheritdoc/>
-    ITaskProcessor ITaskProcessor.Start()
-    {
-        return Start();
-    }
+    ITaskProcessor ITaskProcessor.Start() => Start();
 }

@@ -77,6 +77,7 @@ public static class HexalithWebApi
         builder.Services.AddDaprClient();
 
         builder.Services.AddActors(options =>
+
             // Register actor types and configure actor settings
             registerActors(options.Actors));
         _ = builder.Services.AddControllers().AddDapr();
@@ -99,8 +100,7 @@ public static class HexalithWebApi
         _ = builder.Services.AddScoped<INotificationBus, DaprNotificationBus>();
         _ = builder.Services.AddScoped<ICommandBus, DaprCommandBus>();
         _ = builder.Services.AddScoped<IEventBus, DaprEventBus>();
-        _ = builder.Services.AddScoped(typeof(IAggregateStateManager<>), typeof(AggregateStateManager<>));
-        _ = builder.Services.AddSingleton<IAggregateStateManagerFactory, AggregateStateManagerFactory>();
+        _ = builder.Services.AddSingleton<IAggregateStateManager, AggregateStateManager>();
         _ = builder.Services.AddSingleton<IStateStoreProvider, DaprClientStateStoreProvider>();
         _ = builder.Services.AddSingleton<ICommandDispatcher, DependencyInjectionCommandDispatcher>();
 

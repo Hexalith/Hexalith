@@ -62,44 +62,29 @@ public class BaseMessage : IMessage, IPolymorphicSerializable
     /// Get the aggregate identifier.
     /// </summary>
     /// <returns>The identifier.</returns>
-    protected virtual string DefaultAggregateId()
-    {
-        return string.Empty;
-    }
+    protected virtual string DefaultAggregateId() => string.Empty;
 
     /// <summary>
     /// Get the aggregate name.
     /// </summary>
     /// <returns>The name.</returns>
-    protected virtual string DefaultAggregateName()
-    {
-        return GetType().Name;
-    }
+    protected virtual string DefaultAggregateName() => GetType().Name;
 
     /// <summary>
     /// Get the message major version.
     /// </summary>
     /// <returns>The major version.</returns>
-    protected virtual int DefaultMajorVersion()
-    {
-        return 0;
-    }
+    protected virtual int DefaultMajorVersion() => 0;
 
     /// <summary>
     /// Gets the message minor version.
     /// </summary>
     /// <returns>The minor version.</returns>
-    protected virtual int DefaultMinorVersion()
-    {
-        return 0;
-    }
+    protected virtual int DefaultMinorVersion() => 0;
 
     /// <summary>
     /// Get the message name.
     /// </summary>
     /// <returns>The name.</returns>
-    protected virtual string DefaultTypeName()
-    {
-        return GetType().Name;
-    }
+    protected virtual string DefaultTypeName() => GetType().Name;
 }

@@ -22,13 +22,13 @@ using Hexalith.Application.Abstractions.Metadatas;
 using Hexalith.Application.Abstractions.States;
 using Hexalith.Application.Abstractions.Tasks;
 using Hexalith.Domain.Abstractions.Aggregates;
+using Hexalith.Domain.Abstractions.Events;
 
 /// <summary>
 /// Interface IAggregateStateManager.
 /// </summary>
 /// <typeparam name="TAggregate">The type of the aggregate.</typeparam>
-public interface IAggregateStateManager<TAggregate>
-    where TAggregate : IAggregate
+public interface IAggregateStateManager
 {
     /// <summary>
     /// Adds the command.
@@ -47,26 +47,33 @@ public interface IAggregateStateManager<TAggregate>
         CancellationToken cancellationToken);
 
     /// <summary>
-    /// Continues the execution of the commands and publish all events.
+    /// Continues the asynchronous.
     /// </summary>
     /// <param name="stateProvider">The state provider.</param>
     /// <param name="resiliencyPolicy">The resiliency policy.</param>
+    /// <param name="aggregate">The aggregate.</param>
+    /// <param name="aggregateInitializer">The aggregate initializer.</param>
     /// <param name="registerReminder">The register reminder.</param>
+    /// <param name="unregisterReminder">The remove reminder.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>Task.</returns>
-    Task ContinueAsync(
+    /// <returns>Task&lt;System.Nullable&lt;IAggregate&gt;&gt;.</returns>
+    Task<IAggregate?> ContinueAsync(
         IStateStoreProvider stateProvider,
         ResiliencyPolicy resiliencyPolicy,
+        IAggregate? aggregate,
+        Func<BaseEvent, IAggregate> aggregateInitializer,
         Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder,
+        Func<string, Task> unregisterReminder,
         CancellationToken cancellationToken);
 
     /// <summary>
     /// Gets the aggregate asynchronous.
     /// </summary>
     /// <param name="stateProvider">The state provider.</param>
+    /// <param name="aggregateInitializer">The aggregate initializer.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>Task&lt;TAggregate&gt;.</returns>
-    Task<TAggregate?> GetAggregateAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken);
+    /// <returns>Task&lt;System.Nullable&lt;IAggregate&gt;&gt;.</returns>
+    Task<IAggregate?> GetAggregateAsync(IStateStoreProvider stateProvider, Func<BaseEvent, IAggregate> aggregateInitializer, CancellationToken cancellationToken);
 
     /// <summary>
     /// Gets the command count asynchronous.

@@ -56,11 +56,12 @@ public interface ITaskProcessor
     ITaskProcessor Continue();
 
     /// <summary>
-    /// Set failure state and message.
+    /// Fails the specified message.
     /// </summary>
-    /// <param name="message">The error message.</param>
-    /// <returns>New copy of the task processor with status changed.</returns>
-    ITaskProcessor Fail(string message);
+    /// <param name="message">The message.</param>
+    /// <param name="technicalError">The technical error.</param>
+    /// <returns>ITaskProcessor.</returns>
+    ITaskProcessor Fail(string message, string? technicalError);
 
     /// <summary>
     /// Start the task.

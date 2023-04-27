@@ -17,13 +17,14 @@ using System.Text.Json.Serialization;
 public class TaskProcessingFailure
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="TaskProcessingFailure"/> class.
+    /// Initializes a new instance of the <see cref="TaskProcessingFailure" /> class.
     /// </summary>
     /// <param name="count">The total failure count.</param>
     /// <param name="date">The last failure date.</param>
     /// <param name="message">The last failure message.</param>
+    /// <param name="technicalError">The technical error.</param>
     [JsonConstructor]
-    public TaskProcessingFailure(int count, DateTimeOffset date, string message)
+    public TaskProcessingFailure(int count, DateTimeOffset date, string message, string? technicalError)
     {
 #pragma warning disable CS0618 // Type or member is obsolete
         Count = count;
@@ -79,12 +80,23 @@ public class TaskProcessingFailure
     }
 
     /// <summary>
-    /// Fail.
+    /// Gets or sets the technical error.
     /// </summary>
-    /// <param name="message">The error message.</param>
-    /// <returns>A new failure with the fail count incremented.</returns>
-    public TaskProcessingFailure Fail(string message)
+    /// <value>The technical error.</value>
+    [DataMember(Order = 4)]
+    [JsonPropertyOrder(4)]
+    public string? TechnicalError
     {
-        return new TaskProcessingFailure(Count + 1, DateTimeOffset.UtcNow, message);
+        get;
+        [Obsolete("Setter used only for serialization purposes.", false)]
+        set;
     }
+
+    /// <summary>
+    /// Fails the specified message.
+    /// </summary>
+    /// <param name="message">The message.</param>
+    /// <param name="technicalError">The technical error.</param>
+    /// <returns>TaskProcessingFailure.</returns>
+    public TaskProcessingFailure Fail(string message, string? technicalError) => new(Count + 1, DateTimeOffset.UtcNow, message, technicalError);
 }

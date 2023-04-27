@@ -53,7 +53,7 @@ public class TaskProcessorTest
                 TimeSpan.FromSeconds(10),
                 true))
             .Start()
-            .Fail("fail");
+            .Fail("fail", "error");
         _ = processor.Status.Should().Be(TaskProcessorStatus.Suspended);
     }
 
@@ -62,7 +62,7 @@ public class TaskProcessorTest
     {
         TaskProcessor processor = new TaskProcessor(DateTimeOffset.UtcNow, ResiliencyPolicy.None)
             .Start()
-            .Fail("fail");
+            .Fail("fail", "error");
         _ = processor.Status.Should().Be(TaskProcessorStatus.Canceled);
     }
 
@@ -122,7 +122,7 @@ public class TaskProcessorTest
                 ResiliencyPolicy.CreateEternalRetry(TimeSpan.FromMinutes(1)),
                 failure: null)
             .Start()
-            .Fail("my test fail message")
+            .Fail("my test fail message", "error")
             .Complete();
     }
 }

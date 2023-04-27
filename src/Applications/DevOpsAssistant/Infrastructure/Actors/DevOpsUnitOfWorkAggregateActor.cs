@@ -45,12 +45,17 @@ public class DevOpsUnitOfWorkAggregateActor : Actor, IDevOpsUnitOfWorkAggregateA
     /// <summary>
     /// The state manager.
     /// </summary>
-    private readonly IAggregateStateManager<DevOpsUnitOfWork> _stateManager;
+    private readonly IAggregateStateManager _stateManager;
 
     /// <summary>
     /// The state provider.
     /// </summary>
     private readonly IStateStoreProvider _stateProvider;
+
+    /// <summary>
+    /// The unit of work.
+    /// </summary>
+    private DevOpsUnitOfWork? _unitOfWork;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="DevOpsUnitOfWorkAggregateActor" /> class.
@@ -62,7 +67,7 @@ public class DevOpsUnitOfWorkAggregateActor : Actor, IDevOpsUnitOfWorkAggregateA
     public DevOpsUnitOfWorkAggregateActor(
         ActorHost host,
         IOptions<DevOpsUnitOfWorkSettings> settings,
-        IAggregateStateManager<DevOpsUnitOfWork> stateManager)
+        IAggregateStateManager stateManager)
         : base(host)
     {
         ArgumentNullException.ThrowIfNull(host);
@@ -71,6 +76,7 @@ public class DevOpsUnitOfWorkAggregateActor : Actor, IDevOpsUnitOfWorkAggregateA
         _stateManager = stateManager;
         _stateProvider = new ActorStateStoreProvider(StateManager);
         _settings = settings.Value;
+        _unitOfWork = null;
     }
 
     /// <summary>
@@ -103,11 +109,14 @@ public class DevOpsUnitOfWorkAggregateActor : Actor, IDevOpsUnitOfWorkAggregateA
     /// <inheritdoc/>
     public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period)
     {
-        await _stateManager
+        _unitOfWork = (DevOpsUnitOfWork?)await _stateManager
             .ContinueAsync(
                 _stateProvider,
                 _settings.ExecuteCommandResiliencyPolicy ?? ResiliencyPolicy.CreateEternalExponentialRetry(),
+                _unitOfWork,
+                (_) => new DevOpsUnitOfWork(),
                 RegisterReminderAsync,
+                UnregisterReminderAsync,
                 CancellationToken.None)
             .ConfigureAwait(false);
     }

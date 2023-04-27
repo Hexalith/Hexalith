@@ -22,7 +22,6 @@ using System.Threading;
 using Hexalith.Application.Abstractions.Commands;
 using Hexalith.Application.Abstractions.States;
 using Hexalith.Application.Abstractions.Tasks;
-using Hexalith.Domain.Abstractions.Events;
 using Hexalith.Domain.Abstractions.Messages;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
@@ -72,7 +71,7 @@ public class ResilientCommandProcessor
     /// <returns>A <see cref="Task{TResult}" /> representing the result of the asynchronous operation.</returns>
     public async Task<(TimeSpan? Retry, IEnumerable<BaseMessage> Events)> ProcessAsync(string id, BaseCommand command, CancellationToken cancellationToken)
     {
-        IEnumerable<BaseMessage> events;
+        IEnumerable<BaseMessage> messages;
         TaskProcessor taskProcessor = await GetTaskProcessorAsync(id, cancellationToken);
         switch (taskProcessor.Status)
         {
@@ -88,7 +87,7 @@ public class ResilientCommandProcessor
                         break;
 
                     case RetryStatus.Suspended:
-                        return (taskProcessor.RetryWaitTime, Array.Empty<BaseEvent>());
+                        return (taskProcessor.RetryWaitTime, Array.Empty<BaseMessage>());
 
                     case RetryStatus.Stopped:
                         taskProcessor = taskProcessor.Cancel();
@@ -101,30 +100,32 @@ public class ResilientCommandProcessor
                 break;
 
             case TaskProcessorStatus.Canceled:
+                return (null, new CommandProcessingFailed(command, taskProcessor).IntoArray());
+
             case TaskProcessorStatus.Completed:
-                return (null, Array.Empty<BaseEvent>());
+                return (null, Array.Empty<BaseMessage>());
         }
 
         try
         {
             if (taskProcessor.Status == TaskProcessorStatus.Active)
             {
-                events = await _commandDispatcher.DoAsync(command, cancellationToken);
+                messages = await _commandDispatcher.DoAsync(command, cancellationToken);
                 taskProcessor = taskProcessor.Complete();
             }
             else
             {
-                events = new CommandProcessingFailed(command, taskProcessor).IntoArray();
+                messages = new CommandProcessingFailed(command, taskProcessor).IntoArray();
             }
         }
         catch (Exception e)
         {
-            taskProcessor = taskProcessor.Fail(e.FullMessage());
-            events = new CommandProcessingFailed(command, taskProcessor).IntoArray();
+            taskProcessor = taskProcessor.Fail($"An error occured when executing command {command.TypeName} on {command.AggregateName}/{command.AggregateId}: {e.Message}", e.FullMessage());
+            messages = new CommandProcessingFailed(command, taskProcessor).IntoArray();
         }
 
         await _stateStoreProvider.SetStateAsync(nameof(TaskProcessor) + id, taskProcessor, cancellationToken);
-        return ((taskProcessor.Status is TaskProcessorStatus.Completed or TaskProcessorStatus.Canceled) ? null : taskProcessor.RetryWaitTime, events);
+        return ((taskProcessor.Status is TaskProcessorStatus.Completed or TaskProcessorStatus.Canceled) ? null : taskProcessor.RetryWaitTime, messages);
     }
 
     /// <summary>
