@@ -3,19 +3,19 @@
 		<!-- Detect if the solution is opened in VS to add local repository for packages -->
 		<MinverVersion>4.3.0</MinverVersion>
 		<AzureIdentityVersion>1.8.2</AzureIdentityVersion>
-		<AzureResourceManagerVersion>1.4.0</AzureResourceManagerVersion>
+		<AzureResourceManagerVersion>1.5.0</AzureResourceManagerVersion>
 		<AzureResourceManagerContainerRegistryVersion>1.1.0</AzureResourceManagerContainerRegistryVersion>
 		<SwashbuckleAspNetCoreVersion>6.5.*</SwashbuckleAspNetCoreVersion>
 		<ManDaprSidekickVersion>1.2.*</ManDaprSidekickVersion>
-		<FluentAssertionsVersion>6.10.*</FluentAssertionsVersion>
-		<FluentValidationVersion>11.5.1</FluentValidationVersion>
+		<FluentAssertionsVersion>6.11.*</FluentAssertionsVersion>
+		<FluentValidationVersion>11.5.2</FluentValidationVersion>
 		<StyleCopAnalyzersVersion>1.2.0-beta.435</StyleCopAnalyzersVersion>
 		<MoqVersion>4.18.4</MoqVersion>
-		<GitHubActionsTestLoggerVersion>2.0.1</GitHubActionsTestLoggerVersion>
+		<GitHubActionsTestLoggerVersion>2.0.2</GitHubActionsTestLoggerVersion>
 		<XUnitVersion>2.4.2</XUnitVersion>
 		<XUnitRunnerVisualStudioVersion>2.4.5</XUnitRunnerVisualStudioVersion>
 		<CoverletCollectorVersion>3.2.0</CoverletCollectorVersion>
-		<MicrosoftIdentityClientVersion>4.52.0</MicrosoftIdentityClientVersion>
+		<MicrosoftIdentityClientVersion>4.53.0</MicrosoftIdentityClientVersion>
 		<MicrosoftNETTestSdkVersion>17.5.*</MicrosoftNETTestSdkVersion>
 		<MicrosoftVisualStudioThreadingAnalyzersVersion>17.5.22</MicrosoftVisualStudioThreadingAnalyzersVersion>
 		<AzureResourceManagerCognitiveServicesVersion>1.2.1</AzureResourceManagerCognitiveServicesVersion>
