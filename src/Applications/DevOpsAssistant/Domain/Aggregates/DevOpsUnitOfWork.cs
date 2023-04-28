@@ -18,6 +18,7 @@ namespace DevOpsAssistant.Domain.Aggregates;
 
 using Hexalith.Domain.Abstractions.Aggregates;
 using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Domain.Abstractions.Exceptions;
 
 /// <summary>
 /// Class DevOpsUnitOfWork.
@@ -40,5 +41,5 @@ public class DevOpsUnitOfWork : IAggregate
     public string AggregateName { get; }
 
     /// <inheritdoc/>
-    public IAggregate Apply(BaseEvent domainEvent) => throw new NotImplementedException();
+    public IAggregate Apply(BaseEvent domainEvent) => throw new InvalidAggregateEventException(this, domainEvent, false);
 }
