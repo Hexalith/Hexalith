@@ -1,0 +1,611 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IAggregateStateManager
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IAggregateStateManager
+   ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Hexalith.Application.Abstractions.Aggregates.IAggregateStateManager">
+  
+  
+  <h1 id="Hexalith_Application_Abstractions_Aggregates_IAggregateStateManager" data-uid="Hexalith.Application.Abstractions.Aggregates.IAggregateStateManager" class="text-break">Interface IAggregateStateManager
+  </h1>
+  <div class="markdown level0 summary"><p>Interface IAggregateStateManager.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Hexalith.Application.Abstractions.Aggregates.html">Hexalith.Application.Abstractions.Aggregates</a></h6>
+  <h6><strong>Assembly</strong>: Hexalith.Application.Abstractions.dll</h6>
+  <h5 id="Hexalith_Application_Abstractions_Aggregates_IAggregateStateManager_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IAggregateStateManager</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Abstractions_Aggregates_IAggregateStateManager_AddCommandAsync_Hexalith_Application_Abstractions_States_IStateStoreProvider_Hexalith_Application_Abstractions_Commands_BaseCommand___Hexalith_Application_Abstractions_Metadatas_BaseMetadata___Func_System_String_System_Byte___TimeSpan_TimeSpan_Task__CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Abstractions.Aggregates.IAggregateStateManager.AddCommandAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider%2CHexalith.Application.Abstractions.Commands.BaseCommand%5B%5D%2CHexalith.Application.Abstractions.Metadatas.BaseMetadata%5B%5D%2CFunc%7BSystem.String%2CSystem.Byte%5B%5D%2CTimeSpan%2CTimeSpan%2CTask%7D%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Aggregates/IAggregateStateManager.cs/#L42">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Abstractions_Aggregates_IAggregateStateManager_AddCommandAsync_" data-uid="Hexalith.Application.Abstractions.Aggregates.IAggregateStateManager.AddCommandAsync*"></a>
+  <h4 id="Hexalith_Application_Abstractions_Aggregates_IAggregateStateManager_AddCommandAsync_Hexalith_Application_Abstractions_States_IStateStoreProvider_Hexalith_Application_Abstractions_Commands_BaseCommand___Hexalith_Application_Abstractions_Metadatas_BaseMetadata___Func_System_String_System_Byte___TimeSpan_TimeSpan_Task__CancellationToken_" data-uid="Hexalith.Application.Abstractions.Aggregates.IAggregateStateManager.AddCommandAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider,Hexalith.Application.Abstractions.Commands.BaseCommand[],Hexalith.Application.Abstractions.Metadatas.BaseMetadata[],Func{System.String,System.Byte[],TimeSpan,TimeSpan,Task},CancellationToken)">AddCommandAsync(IStateStoreProvider, BaseCommand[], BaseMetadata[], Func&lt;String, Byte[], TimeSpan, TimeSpan, Task&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Adds the command.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task AddCommandAsync(IStateStoreProvider stateProvider, BaseCommand[] commands, BaseMetadata[] metadatas, Func&lt;string, byte[], TimeSpan, TimeSpan, Task&gt; registerReminder, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.Abstractions.States.IStateStoreProvider.html">IStateStoreProvider</a></td>
+        <td><span class="parametername">stateProvider</span></td>
+        <td><p>The state provider.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.Abstractions.Commands.BaseCommand.html">BaseCommand</a>[]</td>
+        <td><span class="parametername">commands</span></td>
+        <td><p>The command.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.Abstractions.Metadatas.BaseMetadata.html">BaseMetadata</a>[]</td>
+        <td><span class="parametername">metadatas</span></td>
+        <td><p>The metadata.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Byte</span>[], <span class="xref">TimeSpan</span>, <span class="xref">TimeSpan</span>, <span class="xref">Task</span>&gt;</td>
+        <td><span class="parametername">registerReminder</span></td>
+        <td><p>The register reminder.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td><p>Task.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Abstractions_Aggregates_IAggregateStateManager_ContinueAsync_Hexalith_Application_Abstractions_States_IStateStoreProvider_Hexalith_Application_Abstractions_Tasks_ResiliencyPolicy_Hexalith_Domain_Abstractions_Aggregates_IAggregate_Func_Hexalith_Domain_Abstractions_Events_BaseEvent_Hexalith_Domain_Abstractions_Aggregates_IAggregate__Func_System_String_System_Byte___TimeSpan_TimeSpan_Task__Func_System_String_Task__CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Abstractions.Aggregates.IAggregateStateManager.ContinueAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider%2CHexalith.Application.Abstractions.Tasks.ResiliencyPolicy%2CHexalith.Domain.Abstractions.Aggregates.IAggregate%2CFunc%7BHexalith.Domain.Abstractions.Events.BaseEvent%2CHexalith.Domain.Abstractions.Aggregates.IAggregate%7D%2CFunc%7BSystem.String%2CSystem.Byte%5B%5D%2CTimeSpan%2CTimeSpan%2CTask%7D%2CFunc%7BSystem.String%2CTask%7D%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Aggregates/IAggregateStateManager.cs/#L60">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Abstractions_Aggregates_IAggregateStateManager_ContinueAsync_" data-uid="Hexalith.Application.Abstractions.Aggregates.IAggregateStateManager.ContinueAsync*"></a>
+  <h4 id="Hexalith_Application_Abstractions_Aggregates_IAggregateStateManager_ContinueAsync_Hexalith_Application_Abstractions_States_IStateStoreProvider_Hexalith_Application_Abstractions_Tasks_ResiliencyPolicy_Hexalith_Domain_Abstractions_Aggregates_IAggregate_Func_Hexalith_Domain_Abstractions_Events_BaseEvent_Hexalith_Domain_Abstractions_Aggregates_IAggregate__Func_System_String_System_Byte___TimeSpan_TimeSpan_Task__Func_System_String_Task__CancellationToken_" data-uid="Hexalith.Application.Abstractions.Aggregates.IAggregateStateManager.ContinueAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider,Hexalith.Application.Abstractions.Tasks.ResiliencyPolicy,Hexalith.Domain.Abstractions.Aggregates.IAggregate,Func{Hexalith.Domain.Abstractions.Events.BaseEvent,Hexalith.Domain.Abstractions.Aggregates.IAggregate},Func{System.String,System.Byte[],TimeSpan,TimeSpan,Task},Func{System.String,Task},CancellationToken)">ContinueAsync(IStateStoreProvider, ResiliencyPolicy, IAggregate, Func&lt;BaseEvent, IAggregate&gt;, Func&lt;String, Byte[], TimeSpan, TimeSpan, Task&gt;, Func&lt;String, Task&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Continues the asynchronous.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IAggregate&gt; ContinueAsync(IStateStoreProvider stateProvider, ResiliencyPolicy resiliencyPolicy, IAggregate aggregate, Func&lt;BaseEvent, IAggregate&gt; aggregateInitializer, Func&lt;string, byte[], TimeSpan, TimeSpan, Task&gt; registerReminder, Func&lt;string, Task&gt; unregisterReminder, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.Abstractions.States.IStateStoreProvider.html">IStateStoreProvider</a></td>
+        <td><span class="parametername">stateProvider</span></td>
+        <td><p>The state provider.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.Abstractions.Tasks.ResiliencyPolicy.html">ResiliencyPolicy</a></td>
+        <td><span class="parametername">resiliencyPolicy</span></td>
+        <td><p>The resiliency policy.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.Domain.Abstractions.Aggregates.IAggregate.html">IAggregate</a></td>
+        <td><span class="parametername">aggregate</span></td>
+        <td><p>The aggregate.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<a class="xref" href="Hexalith.Domain.Abstractions.Events.BaseEvent.html">BaseEvent</a>, <a class="xref" href="Hexalith.Domain.Abstractions.Aggregates.IAggregate.html">IAggregate</a>&gt;</td>
+        <td><span class="parametername">aggregateInitializer</span></td>
+        <td><p>The aggregate initializer.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Byte</span>[], <span class="xref">TimeSpan</span>, <span class="xref">TimeSpan</span>, <span class="xref">Task</span>&gt;</td>
+        <td><span class="parametername">registerReminder</span></td>
+        <td><p>The register reminder.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<span class="xref">System.String</span>, <span class="xref">Task</span>&gt;</td>
+        <td><span class="parametername">unregisterReminder</span></td>
+        <td><p>The remove reminder.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="Hexalith.Domain.Abstractions.Aggregates.IAggregate.html">IAggregate</a>&gt;</td>
+        <td><p>Task&lt;System.Nullable&lt;IAggregate&gt;&gt;.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Abstractions_Aggregates_IAggregateStateManager_GetAggregateAsync_Hexalith_Application_Abstractions_States_IStateStoreProvider_Func_Hexalith_Domain_Abstractions_Events_BaseEvent_Hexalith_Domain_Abstractions_Aggregates_IAggregate__CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Abstractions.Aggregates.IAggregateStateManager.GetAggregateAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider%2CFunc%7BHexalith.Domain.Abstractions.Events.BaseEvent%2CHexalith.Domain.Abstractions.Aggregates.IAggregate%7D%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Aggregates/IAggregateStateManager.cs/#L76">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Abstractions_Aggregates_IAggregateStateManager_GetAggregateAsync_" data-uid="Hexalith.Application.Abstractions.Aggregates.IAggregateStateManager.GetAggregateAsync*"></a>
+  <h4 id="Hexalith_Application_Abstractions_Aggregates_IAggregateStateManager_GetAggregateAsync_Hexalith_Application_Abstractions_States_IStateStoreProvider_Func_Hexalith_Domain_Abstractions_Events_BaseEvent_Hexalith_Domain_Abstractions_Aggregates_IAggregate__CancellationToken_" data-uid="Hexalith.Application.Abstractions.Aggregates.IAggregateStateManager.GetAggregateAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider,Func{Hexalith.Domain.Abstractions.Events.BaseEvent,Hexalith.Domain.Abstractions.Aggregates.IAggregate},CancellationToken)">GetAggregateAsync(IStateStoreProvider, Func&lt;BaseEvent, IAggregate&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets the aggregate asynchronous.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IAggregate&gt; GetAggregateAsync(IStateStoreProvider stateProvider, Func&lt;BaseEvent, IAggregate&gt; aggregateInitializer, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.Abstractions.States.IStateStoreProvider.html">IStateStoreProvider</a></td>
+        <td><span class="parametername">stateProvider</span></td>
+        <td><p>The state provider.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Func</span>&lt;<a class="xref" href="Hexalith.Domain.Abstractions.Events.BaseEvent.html">BaseEvent</a>, <a class="xref" href="Hexalith.Domain.Abstractions.Aggregates.IAggregate.html">IAggregate</a>&gt;</td>
+        <td><span class="parametername">aggregateInitializer</span></td>
+        <td><p>The aggregate initializer.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="Hexalith.Domain.Abstractions.Aggregates.IAggregate.html">IAggregate</a>&gt;</td>
+        <td><p>Task&lt;System.Nullable&lt;IAggregate&gt;&gt;.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Abstractions_Aggregates_IAggregateStateManager_GetCommandCountAsync_Hexalith_Application_Abstractions_States_IStateStoreProvider_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Abstractions.Aggregates.IAggregateStateManager.GetCommandCountAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Aggregates/IAggregateStateManager.cs/#L84">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Abstractions_Aggregates_IAggregateStateManager_GetCommandCountAsync_" data-uid="Hexalith.Application.Abstractions.Aggregates.IAggregateStateManager.GetCommandCountAsync*"></a>
+  <h4 id="Hexalith_Application_Abstractions_Aggregates_IAggregateStateManager_GetCommandCountAsync_Hexalith_Application_Abstractions_States_IStateStoreProvider_CancellationToken_" data-uid="Hexalith.Application.Abstractions.Aggregates.IAggregateStateManager.GetCommandCountAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider,CancellationToken)">GetCommandCountAsync(IStateStoreProvider, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets the command count asynchronous.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;long&gt; GetCommandCountAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.Abstractions.States.IStateStoreProvider.html">IStateStoreProvider</a></td>
+        <td><span class="parametername">stateProvider</span></td>
+        <td><p>The state provider.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">System.Int64</span>&gt;</td>
+        <td><p>Task&lt;System.Int64&gt;.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Abstractions_Aggregates_IAggregateStateManager_GetCommandsAsync__1_Hexalith_Application_Abstractions_States_IStateStoreProvider_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Abstractions.Aggregates.IAggregateStateManager.GetCommandsAsync%60%601(Hexalith.Application.Abstractions.States.IStateStoreProvider%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Aggregates/IAggregateStateManager.cs/#L93">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Abstractions_Aggregates_IAggregateStateManager_GetCommandsAsync_" data-uid="Hexalith.Application.Abstractions.Aggregates.IAggregateStateManager.GetCommandsAsync*"></a>
+  <h4 id="Hexalith_Application_Abstractions_Aggregates_IAggregateStateManager_GetCommandsAsync__1_Hexalith_Application_Abstractions_States_IStateStoreProvider_CancellationToken_" data-uid="Hexalith.Application.Abstractions.Aggregates.IAggregateStateManager.GetCommandsAsync``1(Hexalith.Application.Abstractions.States.IStateStoreProvider,CancellationToken)">GetCommandsAsync&lt;T&gt;(IStateStoreProvider, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets the commands.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IEnumerable&lt;T&gt;&gt; GetCommandsAsync&lt;T&gt;(IStateStoreProvider stateProvider, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.Abstractions.States.IStateStoreProvider.html">IStateStoreProvider</a></td>
+        <td><span class="parametername">stateProvider</span></td>
+        <td><p>The state provider.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">IEnumerable</span>&lt;T&gt;&gt;</td>
+        <td><p>Task&lt;IEnumerable&lt;T&gt;&gt;.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Command type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Abstractions_Aggregates_IAggregateStateManager_GetEventCountAsync_Hexalith_Application_Abstractions_States_IStateStoreProvider_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Abstractions.Aggregates.IAggregateStateManager.GetEventCountAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Aggregates/IAggregateStateManager.cs/#L101">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Abstractions_Aggregates_IAggregateStateManager_GetEventCountAsync_" data-uid="Hexalith.Application.Abstractions.Aggregates.IAggregateStateManager.GetEventCountAsync*"></a>
+  <h4 id="Hexalith_Application_Abstractions_Aggregates_IAggregateStateManager_GetEventCountAsync_Hexalith_Application_Abstractions_States_IStateStoreProvider_CancellationToken_" data-uid="Hexalith.Application.Abstractions.Aggregates.IAggregateStateManager.GetEventCountAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider,CancellationToken)">GetEventCountAsync(IStateStoreProvider, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets the event count asynchronous.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;long&gt; GetEventCountAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.Abstractions.States.IStateStoreProvider.html">IStateStoreProvider</a></td>
+        <td><span class="parametername">stateProvider</span></td>
+        <td><p>The state provider.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">System.Int64</span>&gt;</td>
+        <td><p>Task&lt;System.Int64&gt;.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Abstractions_Aggregates_IAggregateStateManager_GetEventsAsync__1_Hexalith_Application_Abstractions_States_IStateStoreProvider_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Abstractions.Aggregates.IAggregateStateManager.GetEventsAsync%60%601(Hexalith.Application.Abstractions.States.IStateStoreProvider%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Aggregates/IAggregateStateManager.cs/#L110">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Abstractions_Aggregates_IAggregateStateManager_GetEventsAsync_" data-uid="Hexalith.Application.Abstractions.Aggregates.IAggregateStateManager.GetEventsAsync*"></a>
+  <h4 id="Hexalith_Application_Abstractions_Aggregates_IAggregateStateManager_GetEventsAsync__1_Hexalith_Application_Abstractions_States_IStateStoreProvider_CancellationToken_" data-uid="Hexalith.Application.Abstractions.Aggregates.IAggregateStateManager.GetEventsAsync``1(Hexalith.Application.Abstractions.States.IStateStoreProvider,CancellationToken)">GetEventsAsync&lt;T&gt;(IStateStoreProvider, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets the events.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IEnumerable&lt;T&gt;&gt; GetEventsAsync&lt;T&gt;(IStateStoreProvider stateProvider, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.Abstractions.States.IStateStoreProvider.html">IStateStoreProvider</a></td>
+        <td><span class="parametername">stateProvider</span></td>
+        <td><p>The state provider.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">IEnumerable</span>&lt;T&gt;&gt;</td>
+        <td><p>Task&lt;IEnumerable&lt;T&gt;&gt;.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Event type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Hexalith.Extensions.Helpers.ArrayHelper.html#Hexalith_Extensions_Helpers_ArrayHelper_IntoArray__1___0_">ArrayHelper.IntoArray&lt;T&gt;(T)</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Abstractions_Aggregates_IAggregateStateManager.md&amp;value=---%0Auid%3A%20Hexalith.Application.Abstractions.Aggregates.IAggregateStateManager%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Aggregates/IAggregateStateManager.cs/#L31" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

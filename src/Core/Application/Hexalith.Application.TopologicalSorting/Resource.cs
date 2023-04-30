@@ -59,10 +59,7 @@ public class Resource
     /// Returns a <see cref="string" /> that represents this instance.
     /// </summary>
     /// <returns>A <see cref="string" /> that represents this instance.</returns>
-    public override string ToString()
-    {
-        return "Resource { " + Name + " }";
-    }
+    public override string ToString() => "Resource { " + Name + " }";
 
     /// <summary>
     /// Indicates that this resource is used by the given process.
@@ -82,10 +79,7 @@ public class Resource
     /// Indicates that this resource is used by the given processes.
     /// </summary>
     /// <param name="processes">The processes.</param>
-    public void UsedBy(params OrderedProcess[] processes)
-    {
-        UsedBy(processes as IEnumerable<OrderedProcess>);
-    }
+    public void UsedBy(params OrderedProcess[] processes) => UsedBy(processes as IEnumerable<OrderedProcess>);
 
     /// <summary>
     /// Indicates that this resource is used by the given processes.

@@ -1,7 +1,6 @@
-# Hexalith
+# [Hexalith](https://github.com/Hexalith/Hexalith)
 
-Hexalith consists of two different targets:
+Hexalith is a lightweight SDK that offers a simple, powerful, and consistent programming
+model based on Microsoft Dapr SDK.
 
-- **Hexalith Framework**: An application framework for building **modular**, **multi-tenant** cloud applications on .NET.
-- **Hexalith Bridge**: An application communication bridge built on top of the Hexalith Framework.
-
+Hexalith is designed to support and encapsulate several cloud enabled design patterns that developers can infuse their applications.

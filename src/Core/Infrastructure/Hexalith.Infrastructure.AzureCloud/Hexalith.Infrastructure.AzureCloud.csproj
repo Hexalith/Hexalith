@@ -16,4 +16,10 @@
 		<ProjectReference Include="..\..\Common\Hexalith.Extensions\Hexalith.Extensions.csproj" />
 		<ProjectReference Include="..\Hexalith.Infrastructure.Security.Abstractions\Hexalith.Infrastructure.Security.Abstractions.csproj" />
 	</ItemGroup>
+	<ItemGroup>
+	  <None Update="README.md">
+	    <PackagePath>\</PackagePath>
+	    <Pack>true</Pack>
+	  </None>
+	</ItemGroup>
 </Project>

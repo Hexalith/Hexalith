@@ -1,0 +1,3524 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Dev/Hexalith/docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "README.md",
+      "output": {
+        ".html": {
+          "relative_path": "README.html",
+          "hash": "mLQc0aFezA/VPN2W2F6C0EjR/QvGQeROZuCTQXJ/EiE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Deploy.Configuration.Global.GlobalSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Deploy.Configuration.Global.GlobalSettings.html",
+          "hash": "4sW1mFMLcM1Pa51cLC9qTjmmwIte+p7CKlNap/MOxq0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Deploy.Configuration.Global.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Deploy.Configuration.Global.html",
+          "hash": "qFhU4i+CkLNx2PoW6jBpR/9mtNLi2mgYB9IuenhbedI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeployLCS.Configuration.LcsSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeployLCS.Configuration.LcsSettings.html",
+          "hash": "+na7eke+AGDwfuQ2rXP+XxUouEvzttU1O+xi7pnQh3k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DeployLCS.Configuration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DeployLCS.Configuration.html",
+          "hash": "n3yKII/yVPq8ArP+jDvkR6csuYnvf6w/MgbT6sFSpp0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DevOpsAssistant.Application.Configuration.DevOpsUnitOfWorkSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DevOpsAssistant.Application.Configuration.DevOpsUnitOfWorkSettings.html",
+          "hash": "Dpb9TX2rzCt0aralU15Spa6/HckFXNm8BAhFDxWeQrs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DevOpsAssistant.Application.Configuration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DevOpsAssistant.Application.Configuration.html",
+          "hash": "5o6h69IgSgDYYAFE3kggsu70+jRiVDeyiymGOzcU0IM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DevOpsAssistant.Domain.Aggregates.DevOpsUnitOfWork.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DevOpsAssistant.Domain.Aggregates.DevOpsUnitOfWork.html",
+          "hash": "PcJjfnexGswuKAPZiD/1EGZB3vjhHM5BAgpK9vd+/4U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DevOpsAssistant.Domain.Aggregates.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DevOpsAssistant.Domain.Aggregates.html",
+          "hash": "ZKGO3KOjXz6fLS4iF/n1yGrMmiWm80Srd6PD+H/7Q6E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DevOpsAssistant.Infrastructure.Actors.DevOpsUnitOfWorkAggregateActor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DevOpsAssistant.Infrastructure.Actors.DevOpsUnitOfWorkAggregateActor.html",
+          "hash": "/bq+27TIyODS2zq2AP+33M0stnnI2+eduRFfkvmBCM4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DevOpsAssistant.Infrastructure.Actors.IDevOpsUnitOfWorkAggregateActor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DevOpsAssistant.Infrastructure.Actors.IDevOpsUnitOfWorkAggregateActor.html",
+          "hash": "Cn1ORufwWEsC7l7YvjzxbGPlIGO8fVf/gxhLk45pJbM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DevOpsAssistant.Infrastructure.Actors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DevOpsAssistant.Infrastructure.Actors.html",
+          "hash": "KK+ZgR1884+mG3j4AgnB0po/aqAt4gPoe4MKJOmV2a4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Aggregates.IAggregateStateManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Aggregates.IAggregateStateManager.html",
+          "hash": "OI2WsW6LdnoO+CIUkFisFa5F1YIKQQqL+F2Gqq7s4d8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Aggregates.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Aggregates.html",
+          "hash": "K2M4Ut7UQTpi3dTncyvrJip4J4//dkl1DiOE+xjSjYk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Commands.BaseCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Commands.BaseCommand.html",
+          "hash": "ZK3sgthpaqCFbylYRzNw/mcw+w/oHiCcYntdlNdM4nY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Commands.CommandHandler-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Commands.CommandHandler-1.html",
+          "hash": "BZUlTEVT+q71CzqjhY/AvTkyqxPxOEiJIWbV2ZhTITE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Commands.CommandProcessingFailed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Commands.CommandProcessingFailed.html",
+          "hash": "k5086BZJLrq4HlncRtea0GJ1OD2iR5Vha21RcoJoMfg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Commands.ICommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Commands.ICommand.html",
+          "hash": "L21zL7tDtwu27EM2id1cH5G3QZS9sPYz7prNZci9s3U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Commands.ICommandBus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Commands.ICommandBus.html",
+          "hash": "P9Ax9Qht7ko0E+JxqYSAeBNJ7EUgbj58U2GYOzOecTc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Commands.ICommandDispatcher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Commands.ICommandDispatcher.html",
+          "hash": "9oa8NzIbvdFrxaFJOe05Et1n/Eyo+bLXRFeSVv8TgZA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Commands.ICommandEnvelope-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Commands.ICommandEnvelope-2.html",
+          "hash": "Dse8CcQi/hLRFWnF8kT2IxWJsM6DFgbQq4aaJz+dO2s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Commands.ICommandEnvelope.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Commands.ICommandEnvelope.html",
+          "hash": "YRMPwn4hAyg6iF5KEx/ZkSS0SiqFZ5JfoOOqcoMBYjI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Commands.ICommandHandler-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Commands.ICommandHandler-1.html",
+          "hash": "t7x31FImSDpeJONzNBaytfvYxdufmivs83FgFlcNM8s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Commands.ICommandHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Commands.ICommandHandler.html",
+          "hash": "aPIxn6+hkocFjJ38tALnPkwmI0TxhMsc2cc84tm5AxQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Commands.ICommandProcessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Commands.ICommandProcessor.html",
+          "hash": "ZL4h6nZPVIeMSIpbsKwDOhNXC406wNYdX849Ue5cJok="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Commands.ICommandSaga.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Commands.ICommandSaga.html",
+          "hash": "UWFdA2FQk1RsE3DC4LR7nBGS9eZ9FnxzG0HoOAlKFPU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Commands.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Commands.html",
+          "hash": "kn7tEDUcPBxnzzzMducEqUYZSnhL3CxlGBYHM5cvh/o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Envelopes.BaseEnvelope-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Envelopes.BaseEnvelope-2.html",
+          "hash": "uLHkOPcPKspzScVNgvOeN5Z9/NtINQscF1QxaK2fCfU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Envelopes.Envelope.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Envelopes.Envelope.html",
+          "hash": "wvqs1wPPrwFYn7GUesNt3cOnmapDGOyB8yZm46yueEk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Envelopes.EventEnvelope.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Envelopes.EventEnvelope.html",
+          "hash": "Qq/nqeJ8kMksybZTDp4LPY1Ynkt66iwmrk9xMgBvl/U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Envelopes.IEnvelope-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Envelopes.IEnvelope-1.html",
+          "hash": "dtyMFQ8wgacZ+lXpRiiAhHxDAN9FnH9OLg2+fmd1gOA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Envelopes.IEnvelope-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Envelopes.IEnvelope-2.html",
+          "hash": "VJu/7kQLoheNSjKfmi3nvBU3gobmGmYeWVjZlsNFYD0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Envelopes.IEnvelope.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Envelopes.IEnvelope.html",
+          "hash": "ihzKNmykRjeVhxzCTW8cK+ew3rkR3Lmlwjm+AHZ/umU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Envelopes.IMessageBus-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Envelopes.IMessageBus-3.html",
+          "hash": "iAF1q2lpNmH4dWRfMHnJ6NecnlOg/AqMJIvLaClOFMM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Envelopes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Envelopes.html",
+          "hash": "TfcXJSP+Qc/e9drhaA+rK17yeMYlIYkGOimcv7TPfV4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Errors.ApplicationErrorException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Errors.ApplicationErrorException.html",
+          "hash": "/P/Yc1DuQCn/zyrDLCWj1oNQYI3EKqVZ7b8ACc8i8qQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Errors.ApplicationResult-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Errors.ApplicationResult-1.html",
+          "hash": "K9O59pIpStdFepY/v22MKmg07C6rzYPeIZ0cMM0zkrQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Errors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Errors.html",
+          "hash": "/IAKCNAowQG5dCvlLpX8DOBgLVd4d5Q/AJEvo9Y9h48="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Events.EventDeserializationFailed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Events.EventDeserializationFailed.html",
+          "hash": "yl02iyRM3TM+fUjNaL94MpFFPkRGhIULB/Jrmi1gW8I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Events.EventDispatchFailed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Events.EventDispatchFailed.html",
+          "hash": "emQ4jZk3MU9JcquJ6luvIR2d6u7M43c3wdepAh9X9lw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Events.EventNotSupportedByDispatcher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Events.EventNotSupportedByDispatcher.html",
+          "hash": "msEVHbVp9/2GnyOcJE1qskGgOvuZKpwgwf/SfjA9gJc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Events.EventValidationFailed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Events.EventValidationFailed.html",
+          "hash": "AKlFK/IHBrc+dNFf08TU0/0ksC3gwo9OOqJi3UeqRyA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Events.IEventBus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Events.IEventBus.html",
+          "hash": "d5nHiyroxa8lQ0g1fmSiYDdD4HWWOSjrafDjmACEp1c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Events.IEventEnvelope-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Events.IEventEnvelope-2.html",
+          "hash": "ZeT96ZDTh5GLQSZihFs+FVmC3FQ0wdJqLQI6rnWguFg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Events.IEventEnvelope.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Events.IEventEnvelope.html",
+          "hash": "em1da+iwF9U0OipXlstYBBietb4jdBUzas2PKXuhpUQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Events.IIntegrationEventDispatcher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Events.IIntegrationEventDispatcher.html",
+          "hash": "hY5Ba2gcQy87iLGu8ONGVkkYRWTx1Qbjb4orn7CDJW4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Events.IIntegrationEventHandler-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Events.IIntegrationEventHandler-1.html",
+          "hash": "kH9mjTvIbfDZH3K5b/in4rBgY2tTSCA/1L7VHI8df+8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Events.IIntegrationEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Events.IIntegrationEventHandler.html",
+          "hash": "NTZkxGuSaJ7oGV/t2l+1Fo93ecQYDf+C3lXRpZmJypg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Events.IIntegrationEventProcessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Events.IIntegrationEventProcessor.html",
+          "hash": "jsX4zj0f4wU/UbRjo+hwsQXJJ/t04Vc1r0kNd7SkZCw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Events.IntegrationEventHandler-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Events.IntegrationEventHandler-1.html",
+          "hash": "0cKZiBuOF7VtpyUu4SpIhlb+UvMvF3G3FYL0LkJS44o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Events.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Events.html",
+          "hash": "32YDvIOkoNe/HkWUdfzDa4jB4MNQzCC3YJvhlb5rE9c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Exceptions.DuplicateEntityFoundException-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Exceptions.DuplicateEntityFoundException-1.html",
+          "hash": "fOcSRoSTLUslESVHQQWcG2ehLo+AQJIOWSQUyQH4tlM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Exceptions.EntityNotFoundException-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Exceptions.EntityNotFoundException-1.html",
+          "hash": "VH4wz+UM1gTa6xADhO6Khl2xrIQZvhMPkh25D3QUPnI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Exceptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Exceptions.html",
+          "hash": "w/z28vuYbhpbu68Jc/VYD1BLiFiZ1UCP7mUJ2iyiHT4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Helpers.LogErrorHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Helpers.LogErrorHelper.html",
+          "hash": "hMXk9874NKjAhLdnRPePbR9aNBjwOdzNz4RcOxmIB0A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Helpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Helpers.html",
+          "hash": "LcPMHS7npqvMUoAVPPq2W5E90D9ef2RZqnTs4bae1aY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Metadatas.AggregateMetadata.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Metadatas.AggregateMetadata.html",
+          "hash": "PmgNwtotmmp7EuezWidRDGVUzjjF+bO5XdZp0ye3XGo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Metadatas.BaseMetadata.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Metadatas.BaseMetadata.html",
+          "hash": "6DWuSiCH7onIhZlFTpyaZOpQwdAKrLalhNrIuMZfyRo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Metadatas.ContextMetadata.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Metadatas.ContextMetadata.html",
+          "hash": "wO97n6nQBSDPKS6Z+oVEYja1nBC3A89TM0jj1iW4Weo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Metadatas.IAggregateMetadata.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Metadatas.IAggregateMetadata.html",
+          "hash": "bg5EWYqLHX29SW28+ummYa75Lomu8UmFEhw+uEH+pwQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Metadatas.IContextMetadata.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Metadatas.IContextMetadata.html",
+          "hash": "zSYZH3dZv9ZDcPYaOeDh0uGEVO9/5dPidDoNkjuKznQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Metadatas.IMessageMetadata.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Metadatas.IMessageMetadata.html",
+          "hash": "zG9g0p4OEEJ0DTHmPmIiT+GhHgv75lrL82SHBnyDxPI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Metadatas.IMessageVersion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Metadatas.IMessageVersion.html",
+          "hash": "zNHzElAXVOY0Ro3DHFHxlcOHPb6WSVkSyx06kwdIn/4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Metadatas.IMetadata.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Metadatas.IMetadata.html",
+          "hash": "OROKxsh7qOQSbVxRMthdK2zlxSAHZStd0f2yzjMiBfw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Metadatas.IMetadataVersion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Metadatas.IMetadataVersion.html",
+          "hash": "5HeWlKJoKYCHOxHsaZ2Xp8IebdUr7/goUeS1vy9vis4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Metadatas.MessageMetadata.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Metadatas.MessageMetadata.html",
+          "hash": "dmSChYQel67rT2TNVjh1MiuTqJDUv00c7NudWapGmZs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Metadatas.MessageVersion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Metadatas.MessageVersion.html",
+          "hash": "mnUymckJTSu9ohdN76TgiZkzcTS3KRNKacxTgwXnOLQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Metadatas.Metadata.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Metadatas.Metadata.html",
+          "hash": "UkZ1KdUV7YyCD1bS8rjjVJ5av7AzMPTNJF4K0hZKAdo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Metadatas.MetadataVersion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Metadatas.MetadataVersion.html",
+          "hash": "3QAwaYJZ4hWM0MPnyFeZtMtjf/mVjmrjqzK3A+iBnKM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Metadatas.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Metadatas.html",
+          "hash": "1yyuQRlW54fFFvo371w2E4uMUTn4NbTXdqqeT6ZbnxE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Notifications.BaseNotification.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Notifications.BaseNotification.html",
+          "hash": "6X9gEaMQhRhXR+9rJb9N/5vctIqNOPoPCfRxLbWjg2g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Notifications.INotification.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Notifications.INotification.html",
+          "hash": "TZMGQFcCiF5gjGBPKSdP+jMfFtRG3b3qATN9yLhV27Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Notifications.INotificationBus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Notifications.INotificationBus.html",
+          "hash": "HJTFoiWtc4g+0God4VwLdoTXEMVYppDYYeRIxKmZhYo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Notifications.NotificationSeverity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Notifications.NotificationSeverity.html",
+          "hash": "hzeAuuL++nybIz0PzCJsexjzyImEYCbXzvu3s5AqkSA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Notifications.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Notifications.html",
+          "hash": "OP0eHyGz2UVFhPqrh0+ieB7WkuXfCMBGYAqsTf0YJO8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Requests.BaseRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Requests.BaseRequest.html",
+          "hash": "GVCdZALRU0nXUiVqSn/cQAnxIKBaGvg49dTaoY/D150="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Requests.IRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Requests.IRequest.html",
+          "hash": "9WZIjKQPXvJlnC0sX2qFQX0XpYNC5Llc1cIHhJ+P2qI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Requests.IRequestBus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Requests.IRequestBus.html",
+          "hash": "SudBRFzHFjG4XT85YCVw90eZdFbm10BQi7dQ5mVZxTU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Requests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Requests.html",
+          "hash": "bcPnhHs834k+TQIcIImeqxvUVekBXpjqDKbvbOld6Uk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.States.CommandState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.States.CommandState.html",
+          "hash": "LNjuYA6HFKUzdNjOvTsFh2uI7ryhB5dOhdqpbJYRChU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.States.EventState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.States.EventState.html",
+          "hash": "gQFA5QHg/9pMuIpEOEwAN7BBDXnm/Yhodlt2GWSxbHI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.States.IStateStoreProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.States.IStateStoreProvider.html",
+          "hash": "VLBgtYRi8QBtiJfLgSxp/uRLoDev0sONADLClWes1Iw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.States.MessageState-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.States.MessageState-2.html",
+          "hash": "/AP/QMikR8LPmHR+uK0QUMxWaqUkZdgQIelAdTttNdE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.States.MessageState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.States.MessageState.html",
+          "hash": "B8OKl9qNzqo2p5oAIgcydtkYkqEtsI+/d25kz/5Ac2E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.States.NotificationState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.States.NotificationState.html",
+          "hash": "2fsTauGeg67UCINlSj/P0+IcIGK6lrn8+8PDGTstNj8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.States.RequestState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.States.RequestState.html",
+          "hash": "f2NoC/ATqhtJvhDDWcZz3Mfrn2pLgPsuxjLNL/HY8Yc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.States.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.States.html",
+          "hash": "Xkd5mFIk2Udt9UmiFS2p6gjxSDlHUVzElVXAnXG1/7Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.StreamStores.DuplicateIdempotencyIdException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.StreamStores.DuplicateIdempotencyIdException.html",
+          "hash": "O3364R+NEy+IeUE7OZjUwfJdhfn5LdcFlV7pNWkKfmY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.StreamStores.IDataFragment-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.StreamStores.IDataFragment-2.html",
+          "hash": "grwcOsyclDUZJYy972Uj8CikH7D5sraVnzJlhusfTzU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.StreamStores.IDataFragment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.StreamStores.IDataFragment.html",
+          "hash": "NpH9QDLB1LEvy3Lq62qfgM6y97VRzWEndnohYbW9C/4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.StreamStores.IPersistedStream.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.StreamStores.IPersistedStream.html",
+          "hash": "4q7TSnJ48URu1QQGoDEeqx3kMKPZBWg1NNMmAoTuA7Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.StreamStores.IStreamItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.StreamStores.IStreamItem.html",
+          "hash": "mGlEy8jfIoHdkiYhKQUev94xG/85VDIVGImC3wdJlsE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.StreamStores.IStreamStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.StreamStores.IStreamStore.html",
+          "hash": "bqA97fgNhW2m+7s5DfwD4/TyUTmDrz49hyKzXtyV/LY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.StreamStores.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.StreamStores.html",
+          "hash": "PjoVIzJHaPBwETzlQoQaZ5HC74KExKyxXdoDrEgDzxs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Tasks.ITaskProcessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Tasks.ITaskProcessor.html",
+          "hash": "IRAOcBa+fI1gmIsX6/lBAqje+Y6YIQjA1Dw3tvRTSAc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Tasks.InvalidStatusChangeException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Tasks.InvalidStatusChangeException.html",
+          "hash": "PhuRn0Y/8WqQfQnFJNoXW2w0TFFggCTU+mL5JWiCKIc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Tasks.ResiliencyPolicy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Tasks.ResiliencyPolicy.html",
+          "hash": "uo4RK/CSg2Xa/K/kaXU+1Mp9pbIOTW6/9SnKrxoIa7k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Tasks.RetryStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Tasks.RetryStatus.html",
+          "hash": "sGovW1WLQ8q5VAHPQI/ocQpC06jlQfhagDutQoQlVwU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Tasks.TaskProcessingFailure.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Tasks.TaskProcessingFailure.html",
+          "hash": "DrEv/ueiPTQ80Ih5tGxrPkkUZyADDdJpKxTAl+sOOV0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Tasks.TaskProcessingHistory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Tasks.TaskProcessingHistory.html",
+          "hash": "Kfd3Bwhy8843Y1XTE62YRPfgujNPyWR9DeuTQdwDPuk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Tasks.TaskProcessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Tasks.TaskProcessor.html",
+          "hash": "7mAHgd0BRfsIo+moUbm/e56rCMeoJy7CYcHKc+uPbE0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Tasks.TaskProcessorStatus.html",
+          "hash": "11K+p0n3PQEKdxMYRdiJ9yb5BlNEvl8RXH4ubJXPYPc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Abstractions.Tasks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Abstractions.Tasks.html",
+          "hash": "EfJ5hEA7BA7cZa/HAUhMg39AWJaRxOdI+coxalu0J/c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Buses.CommandBusSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Buses.CommandBusSettings.html",
+          "hash": "XvBlrlWQuY4uCXAMmhSn9ybyXBP3j6Df3hQjigVtiFc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Buses.CommandBusSettingsValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Buses.CommandBusSettingsValidator.html",
+          "hash": "tE4lJIVdwb0P0e9e608UKl+BOoA0syolsBIJPDeJg4E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Buses.EventBusSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Buses.EventBusSettings.html",
+          "hash": "wfOYOHu96xOB+RA1MlriWeKYu/hCi5hybTBrzh4j05w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Buses.EventBusSettingsValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Buses.EventBusSettingsValidator.html",
+          "hash": "tix17piVWgrwWXWdkT9Uk/YeWpFDgAfAoAVsaeJ26jc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Buses.NotificationBusSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Buses.NotificationBusSettings.html",
+          "hash": "F2aWfo3gvpAwt7pLgEidId94lzmmNnQ5J7rv4IL3cH8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Buses.NotificationBusSettingsValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Buses.NotificationBusSettingsValidator.html",
+          "hash": "Zov05XM91WndaLk2geNZluK7hfxh60cSvhJ3fWSdX2g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Buses.RequestBusSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Buses.RequestBusSettings.html",
+          "hash": "oXYUjXF9l84WTyxpSX1Pm4PzEL+OM/7fIIL6H0Trlrg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Buses.RequestBusSettingsValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Buses.RequestBusSettingsValidator.html",
+          "hash": "WDf2dOkrsvToCDwLFADQ7LKA7QNsxao952gN4B+Cj+Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Buses.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Buses.html",
+          "hash": "bOJicXrgaF0UMDH/iaB2wIChufsOsJUeNQWkcWSHkk8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.html",
+          "hash": "Bo4rKhJUnmOxLX8IXzHztcNdERzzngLHUxcInP+HD68="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Commands.MemoryCommandBus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Commands.MemoryCommandBus.html",
+          "hash": "CdsETeOK7DNQ2zjdzypNPWfuqHf6Mt45EIMzJqSWe5g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Commands.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Commands.html",
+          "hash": "DrFo8QyErAX96lr9UkEXIrkN74hF+wFTkWO5ClgNDXU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.DataFragment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.DataFragment.html",
+          "hash": "l2VBZRhjA4G74arVC5xLe3AhOk0DCtn3q3Ykb0Rq3IQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Events.DependencyInjectionEventDispatcher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Events.DependencyInjectionEventDispatcher.html",
+          "hash": "CJgFHQauzUCN2y+sEWJMgwV0L0KWUIyC6dFIqAcK/8o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Events.MemoryEventBus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Events.MemoryEventBus.html",
+          "hash": "MucWF1jKdYQ+Jg81ex0gwACsIPPKKdnIaxFekHPiTLw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Events.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Events.html",
+          "hash": "LSXTySQ5hPWKJlGy2/9UEh3znVPEZQhOqBvhbbWriLY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Notifications.MemoryNotificationBus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Notifications.MemoryNotificationBus.html",
+          "hash": "WFYEiIxqKRsC9q3CIyjWuu+AYoMZz0tlWUr1S5rzQiU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Notifications.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Notifications.html",
+          "hash": "v2XzBsZKsJFf8bBcmlj//oCvF3AH74adVj6NUBVxEsk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Requests.MemoryRequestBus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Requests.MemoryRequestBus.html",
+          "hash": "9vfJn+g8EAdP1d16+g2S5oB6VsNzPOVfEjres61x5OY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Requests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Requests.html",
+          "hash": "ZiPmvi2cT/dZU0qD3q7Llgos0xE5H5MaNM1GbaGAoc0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.States.AggregateState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.States.AggregateState.html",
+          "hash": "wn5W9U+MZDATkGUE84CHxKzLhmo0HmrPfPgqC7B4SeY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.States.AggregateStateManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.States.AggregateStateManager.html",
+          "hash": "1p+cIbIjTu28hl0oxhLjcb1wfPHtaAsbDcHvsrENbQM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.States.MemoryStateProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.States.MemoryStateProvider.html",
+          "hash": "Z7Rneww1ddVpf+aAXY1q3SO/xZivgo7C4YeDUJ32dhQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.States.StateStoreSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.States.StateStoreSettings.html",
+          "hash": "9Fjymwdw6h84lNd4d8Ap2Qo2zo/Xd52TPsneVMxDNjs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.States.StateStoreSettingsValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.States.StateStoreSettingsValidator.html",
+          "hash": "CkOKmNYSe7PZTYVsuxl/4Q1SbBowexNvErqKG4sbhgQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.States.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.States.html",
+          "hash": "2hOzE9q3lXsfnns+zg3gXi4AYiz/xqOK4q0HDcFXFOQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.StreamStores.JsonStreamItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.StreamStores.JsonStreamItem.html",
+          "hash": "AMCwSzNMAFkHjW6sIMZc4DFmkHmE5u1BAC7/eSh+wMo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.StreamStores.MemoryPersistedStream.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.StreamStores.MemoryPersistedStream.html",
+          "hash": "bOFfUqZkEvlnQcL6FpJMD5/qMu4ATX9JTE5h2h1/JUw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.StreamStores.MemoryStreamStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.StreamStores.MemoryStreamStore.html",
+          "hash": "4+s7WltmHprL6R4+ycNrxlWVNpMVCOosUldtF2o3AeA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.StreamStores.MessageStore-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.StreamStores.MessageStore-1.html",
+          "hash": "7nI3RbVmR5bqAM3fyGm1wiy2LSSPKpcoDHUQ63fl7QU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.StreamStores.MessageStoreItemNotFoundException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.StreamStores.MessageStoreItemNotFoundException.html",
+          "hash": "xS5h3q4S8iy5jPPpb1TjwHxLg7MBnjuyJ9DQrLqyyZA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.StreamStores.StreamItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.StreamStores.StreamItem.html",
+          "hash": "k9+KBeuQru52RMOKQHwVsttmwSgF5tCcbFpYiwT+aoQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.StreamStores.UnexpectedStreamVersionException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.StreamStores.UnexpectedStreamVersionException.html",
+          "hash": "xpMOFPhHu3ZEyD+60W2s1ukUEP/fEeY1CXC57+txf0Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.StreamStores.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.StreamStores.html",
+          "hash": "Jx0S3u8ug67kyc2jl1lDyF0CG6nAvQdpLSh0ZRcYUbM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Tasks.ResilientCommandProcessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Tasks.ResilientCommandProcessor.html",
+          "hash": "CUsdxjtdf5lGFlgn+Bpn5AoV4XScdnyIJ2Tk9fdAP0c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Tasks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Tasks.html",
+          "hash": "+ovkCCAygMdkTLGjO4nQgx7Cuw0d7Mp1dfUQg6meydE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.TopologicalSorting.DependencyGraph.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.TopologicalSorting.DependencyGraph.html",
+          "hash": "fkkZXFn87Bsuo4fn5gFdQKybNGaBZEOquGD5ekZHiZg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.TopologicalSorting.IEnumerableExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.TopologicalSorting.IEnumerableExtensions.html",
+          "hash": "O/bVP39Al7aCdfXRWN5RxMDG2Xw9V5hKluW1M6Dfkas="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.TopologicalSorting.OrderedProcess.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.TopologicalSorting.OrderedProcess.html",
+          "hash": "edc9G+KmphzgZmWLlusWmj01PRAUjGDGyQafthXmRpU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.TopologicalSorting.Resource.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.TopologicalSorting.Resource.html",
+          "hash": "lAL+oNCR1B/QOzRXBNRw5VL+sm5LQJF34DS0VHNmFqA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.TopologicalSorting.TopologicalSort.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.TopologicalSorting.TopologicalSort.html",
+          "hash": "XdAUEDyp3mfoCsz04w2SK9wWMlhgkSKzZ2lSzsztqAk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.TopologicalSorting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.TopologicalSorting.html",
+          "hash": "toH+fEtDodI8xBK8VWE9Nb5Y0xJa0YN1yQ9H29OGcxA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.html",
+          "hash": "4bhMXy+wznmKSOgjJ77/kbstek9kN/foABItXRBKYCM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Domain.Abstractions.Aggregates.AggregateBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Domain.Abstractions.Aggregates.AggregateBuilder.html",
+          "hash": "c6Qyw0Kau5zmqxt2NHaltsHFQWQLNNg+lrvDy5UJYW4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Domain.Abstractions.Aggregates.IAggregate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Domain.Abstractions.Aggregates.IAggregate.html",
+          "hash": "ZrkFLFOXDBX0ebQERNYO/OFq4M/HpYjU70sjUlb8c4Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Domain.Abstractions.Aggregates.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Domain.Abstractions.Aggregates.html",
+          "hash": "4OUxIoUmdpYBwYmgfpSQOHT1xF1jiXHGxaGZhKaIjNE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Domain.Abstractions.Events.BaseEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Domain.Abstractions.Events.BaseEvent.html",
+          "hash": "w9mfUOntwp8/VpZSUtyiUCFjbf89vN+l1z6krKloGwM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Domain.Abstractions.Events.IEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Domain.Abstractions.Events.IEvent.html",
+          "hash": "hrqE3zV8gtYWL5EYVaFAY/m1eEvjSfmjHKnQsJBJRXQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Domain.Abstractions.Events.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Domain.Abstractions.Events.html",
+          "hash": "jLQCjNSTfXHPq52B5wAwzSTDaYzrc5/gxTSLZ59t6YA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Domain.Abstractions.Exceptions.InvalidAggregateEventException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Domain.Abstractions.Exceptions.InvalidAggregateEventException.html",
+          "hash": "PdMHDOvJu6mfbMrTz7ZJMwpRVnHhuOeOaYnW39zdcWE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Domain.Abstractions.Exceptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Domain.Abstractions.Exceptions.html",
+          "hash": "OJe5c4hNlhEH69P1XYROhZPLGOmYhCos8gYYmyMcqcE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Domain.Abstractions.Messages.BaseMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Domain.Abstractions.Messages.BaseMessage.html",
+          "hash": "aT8E7XAiKdqNskMQB6IoF6XWFgj/hIF709MERAA/mZA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Domain.Abstractions.Messages.IMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Domain.Abstractions.Messages.IMessage.html",
+          "hash": "t8USrMilPf3QqE0Sm2AbUGeTVv9xMeQhQt0UHeYTPQ8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Domain.Abstractions.Messages.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Domain.Abstractions.Messages.html",
+          "hash": "AkwcEBHFR2d+vu+jjV/vidVpo3UJc+lU/lS94cwnNWY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Extensions.Common.ConditionalValue-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Extensions.Common.ConditionalValue-1.html",
+          "hash": "fzpE8cmGaBo+TzpsoAXH8tWoaaBOO3y+/NqG5Owh5tI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Extensions.Common.DateTimeService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Extensions.Common.DateTimeService.html",
+          "hash": "9DI8gllbporJIFvMe2KIScWbDW1LEVEM2gIgmgoXKr4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Extensions.Common.Error.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Extensions.Common.Error.html",
+          "hash": "0J5irdZfKQADjiOIwumfX9DoTiwoZ953XqOVVn/yBk0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Extensions.Common.ErrorCategory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Extensions.Common.ErrorCategory.html",
+          "hash": "7GhCjLugGx6bIBJDnUmbEs/NkGX0m1k9Ygyyl9aQing="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Extensions.Common.IDateTimeService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Extensions.Common.IDateTimeService.html",
+          "hash": "Vb7XKjEPNjb5Vs6md2mSpPPR3rTXpdddkfVQ4tTayss="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Extensions.Common.IIdempotent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Extensions.Common.IIdempotent.html",
+          "hash": "PKz1uAqkRVywFS9zrz0Mj1VEnl7yB4BfE35vlGjmXS4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Extensions.Common.ValueOrError-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Extensions.Common.ValueOrError-1.html",
+          "hash": "WmFRsw4RrnWQPpxh4a1lczSftk8D2NAKW5GwNuT82D4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Extensions.Common.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Extensions.Common.html",
+          "hash": "jivSe0gSUvLgfGFeuYH6NitmfCbWpyP7xEfY7vzCNPE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Extensions.Configuration.FluentValidateOptions-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Extensions.Configuration.FluentValidateOptions-1.html",
+          "hash": "LLvEM0rcmDyU6Jcp0xo2ilFOYzP3nPCZ/k940iGTn9E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Extensions.Configuration.ISettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Extensions.Configuration.ISettings.html",
+          "hash": "8SHQ/SnIIsabewiUs9M1oVokMM0/ztpFkTeve8GDs38="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Extensions.Configuration.OptionsHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Extensions.Configuration.OptionsHelper.html",
+          "hash": "D/eYRyXNWk6MLYHvVgKwpPd6mjsbjQTEEhzp54vXu7g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Extensions.Configuration.SettingsException-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Extensions.Configuration.SettingsException-1.html",
+          "hash": "ajZkgxyVrrnQHjQmZgqN05R//sl27CTo19YdH1WRDFc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Extensions.Configuration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Extensions.Configuration.html",
+          "hash": "VQApPhk/vbXGF9WqGC7IXaJpRczIdt3GRQmo9vFp5Lg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Extensions.Helpers.ArrayHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Extensions.Helpers.ArrayHelper.html",
+          "hash": "URAW3l2KhGFWriT+NmwcGZz66K2ydSQDx7gytO+OPYE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Extensions.Helpers.DateHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Extensions.Helpers.DateHelper.html",
+          "hash": "uLCrxpHtbMJvKCFeqO/vrrXVjkmyNmZMX8uRdCxynxU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Extensions.Helpers.ExceptionHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Extensions.Helpers.ExceptionHelper.html",
+          "hash": "hCGIkdAYILMiBrVSc2AeGhotjA3W7ZX9+S9AmqCDpGQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Extensions.Helpers.FibonacciSequence.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Extensions.Helpers.FibonacciSequence.html",
+          "hash": "l7/TbJEy1410G1UW0e0T5t4Uit8KRU4aFaVIbSDasIs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Extensions.Helpers.StringHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Extensions.Helpers.StringHelper.html",
+          "hash": "/EJBDKkNuZB2TfoqCb+6weOKWnI8dtx5LkqGTuHA4eg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Extensions.Helpers.UniqueIdHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Extensions.Helpers.UniqueIdHelper.html",
+          "hash": "Rqu6s1wHVnZAQpBZnVf0xNsz8m5pXf6E7qP68Dt3/6s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Extensions.Helpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Extensions.Helpers.html",
+          "hash": "c/h+p2bVxmbT7cr+e1BVwKRm3O3vWtkmldgvBDIafJU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Extensions.Serialization.IPolymorphicSerializable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Extensions.Serialization.IPolymorphicSerializable.html",
+          "hash": "6p8ZwQmNWsU4+QvpKKXaRbnMh4tdvXupR7EsmOcZWdw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Extensions.Serialization.PolymorphicJsonConverter-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Extensions.Serialization.PolymorphicJsonConverter-1.html",
+          "hash": "a5TgtemvcPwqX9TXkSd4GDnt7wDSYTrISudnkf0AU8Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Extensions.Serialization.PolymorphicSerializableTypeMapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Extensions.Serialization.PolymorphicSerializableTypeMapper.html",
+          "hash": "WYSIyEqmRDZHNzVPQhLqMxeLnCTIkFidS9tkADUZ5Rk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Extensions.Serialization.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Extensions.Serialization.html",
+          "hash": "htpL0k4A4LjBoubLaxHHT/vQjJWsw/YGGRg58i2fXeE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.AzureActiveDirectory.AzureActiveDirectoryApplicationSecurityContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.AzureActiveDirectory.AzureActiveDirectoryApplicationSecurityContext.html",
+          "hash": "Fh4dxJe9Yyg8HNQ6rE30hTKhREcOl8aM9DLCZ7Rb3ac="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.AzureActiveDirectory.Configurations.AzureActiveDirectoryApplicationSecurityContextConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.AzureActiveDirectory.Configurations.AzureActiveDirectoryApplicationSecurityContextConfiguration.html",
+          "hash": "Vf97nadQIE5K48OYaiExtLbeJzm46y/XpR5b1pIpwLM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.AzureActiveDirectory.Configurations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.AzureActiveDirectory.Configurations.html",
+          "hash": "V/pM9qj2ljrgfxELYz5wIGCTZDKImAzccREAQh1bHJQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.AzureActiveDirectory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.AzureActiveDirectory.html",
+          "hash": "S9XKiFHkxIAJCmMhMEzFHipGQFMovCeyN4BlEFrXZDg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.AzureBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.AzureBuilder.html",
+          "hash": "7FhKOccePiQxNn7G4YdiN29wb9NHrzReBj2E3DYBuSM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.CognitiveServicesAccountBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.CognitiveServicesAccountBuilder.html",
+          "hash": "DGG69HYa02iaV0z6GgUEAtJQqbALxLdqqxJOk96ZVXY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.ContainerRegistryBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.ContainerRegistryBuilder.html",
+          "hash": "+Ptjy3HEEVifz1WDn9YwD4/sIcu4YDma/2Oq9ZKtLxY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.IResourceBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.IResourceBuilder.html",
+          "hash": "+Oi0Yuo96p5WYHA03cCpXXPBfFrUvbcLEc3b9jmEPys="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.KeyVaultBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.KeyVaultBuilder.html",
+          "hash": "aunotWA/KZXrJ6WD7Gbi9TlCtD8q4tkkLC2MCoAn8bo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.LogicWorkflowBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.LogicWorkflowBuilder.html",
+          "hash": "3j7SSclE6PiGIud6h6vzvvLtleE1L8WPcdTYiNSoXTQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.LogicWorkflowBuilderData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.LogicWorkflowBuilderData.html",
+          "hash": "a2U1tolqkLv2iqHMu877dQD/u1nAR/NTXCuOoYZMYGo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.ResourceBuilder-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.ResourceBuilder-1.html",
+          "hash": "vNefYiFAOS/SdBgO0deQzh5/8e6m9M6sab7MlB1gT9w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.ResourceGroupBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.ResourceGroupBuilder.html",
+          "hash": "ogIkCfi5bREc49/uWEnyQHluVwY239pH4wGBqkowcgI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.ResourceGroupItemBuilder-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.ResourceGroupItemBuilder-2.html",
+          "hash": "fHNknFgb7xgLEEzINKqHYreQJljlyk8P2SA1+HlVu8o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.SubscriptionBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.SubscriptionBuilder.html",
+          "hash": "95cRr5VXOI3HRQB/ylfnTWJGFEZYrYiNaRLkLilx2SY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.html",
+          "hash": "MPS0BX4m7oTtCYn+FpNlC+xMFGf0KpIJrcshcaCcrxU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus-3.html",
+          "hash": "1T0H8UkrWXCfgj9AL8IfdscrS4ZadPHZMksqbQT4Ank="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Buses.DaprCommandBus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Buses.DaprCommandBus.html",
+          "hash": "ZYs1Jm0kADYtFuoVgB65Dadece7AT07OWtfYiu82Fc0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Buses.DaprEventBus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Buses.DaprEventBus.html",
+          "hash": "HGy0eec9rVcj91z2NQCbxtb6VyxpMd5jF80bVd65m+s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Buses.DaprNotificationBus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Buses.DaprNotificationBus.html",
+          "hash": "A8xHrQIRb0e89tw0nDVZHm/RZSwIo2mdQhtyR3QwLwQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Buses.DaprRequestBus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Buses.DaprRequestBus.html",
+          "hash": "cNVvhQR1zsZWpdDXl4qr5+nl4LE4FwVItn4pBK526eg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Buses.EventStoreItemNotFoundException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Buses.EventStoreItemNotFoundException.html",
+          "hash": "U8FPakwATXBAT/p+39i0Sy5By32VwujNYxdnaf3Unf4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Buses.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Buses.html",
+          "hash": "1IB9fPmcYL5NepOXBeQvj78fnA5GEQE/pmSQyXsbX24="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Handlers.ActorCommandEnvelope.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Handlers.ActorCommandEnvelope.html",
+          "hash": "7YcN8SvjmoqS55GZwdjrRmxXB3M+usrgRmLOa7aL80A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Handlers.ActorsCommandProcessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Handlers.ActorsCommandProcessor.html",
+          "hash": "KyADxyksQxsvjYynHtjfrtODE0pOcL3q4NbJM2x7xdo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor.html",
+          "hash": "LphKbGthp9mtB9kXFM7MwuroeYY4lFJtOFuElBGhFl8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Handlers.ICommandProcessorActor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Handlers.ICommandProcessorActor.html",
+          "hash": "Bar1xpDUkCIEZcE2ImsaW+gWrksA2xPdR+z4hOu9F6Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Handlers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Handlers.html",
+          "hash": "I1XO6jrvh/gIlkadZ0x1kimPeoUxqXAd6d+iYoiGFX0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.html",
+          "hash": "qaAKx7+oLV9g+BolFNtiW1+gYzRVlmdvFL1CGwrWXX8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Helpers.DaprHandlersHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Helpers.DaprHandlersHelper.html",
+          "hash": "wzx+cAWVyE0CGPk0+CeEqBWev7bhYN18OuRXVbsQ6WQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Helpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Helpers.html",
+          "hash": "2cpoJPXcROsDgHvhwxo/wTQuWLHz/RRyCIrjQeJR6FU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.States.ActorStateStoreProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.States.ActorStateStoreProvider.html",
+          "hash": "RE3ZMmkCigBhAfDpJhtQfbZrBTf6QtxsSBKo49PEVKk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.html",
+          "hash": "9Y5ZkLxHPvavzt+HPpEM9/UAzpglAMNaiu8981HSvf0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.States.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.States.html",
+          "hash": "ZvEL3InWSAQN0OYbrbcy2UXHq5jM7SAqzt8cJoBug08="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents.Dynamics365BusinessEventBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents.Dynamics365BusinessEventBase.html",
+          "hash": "MotZzun+XNbysz0eOm37HkDXVfv63yFxQJVuy8nL57s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents.Dynamics365BusinessEventValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents.Dynamics365BusinessEventValidator.html",
+          "hash": "2tXwSo97qffB9GRdXRApyiLeQIHkj6l79+LvmOqOl4U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents.html",
+          "hash": "Q//8ZvV8Uq84vpUzMd2K1PYMV74PLpzcf+3jSXJTqJE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.Dynamics365FinanceAndOperationsClient-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.Dynamics365FinanceAndOperationsClient-1.html",
+          "hash": "md0HSNGh5zfTTf/hwawbHTE+MQL5++c1xFeD+YFXIDc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.Dynamics365FinancePatchException-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.Dynamics365FinancePatchException-2.html",
+          "hash": "vAgPTmAE9Zs8t9Wu/LU7XcNTAzb1w7TpX82uvCWdK88="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.Dynamics365FinancePostException-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.Dynamics365FinancePostException-2.html",
+          "hash": "IA64bgFG19S4XNKxCnhYF+UGfJdzz+IPcmQ4UJGIrzM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.GetRequestFailedException-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.GetRequestFailedException-1.html",
+          "hash": "z9Btv+1fxez8LSo/EHtg5nx4hE945/FQoHKcDr4M2F4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.GetSingleRequestFailedException-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.GetSingleRequestFailedException-1.html",
+          "hash": "L2YYLnMcLy/7yjdmlZsrJiC8m3ed6q6HYIFQeWgLfCM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.IDynamics365FinanceAndOperationsClient-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.IDynamics365FinanceAndOperationsClient-1.html",
+          "hash": "hDtqX0EkB5qmkyCMrzb2jj6DQMjI8zHEpYvGuLj9WGg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.html",
+          "hash": "fS4sql+HFYZU/XYBHbM1C2ko+jtc08hR5WMpUROi/0g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Configurations.Dynamics365FinanceAndOperationsClientSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Configurations.Dynamics365FinanceAndOperationsClientSettings.html",
+          "hash": "BMmeYl459ILr8wL5l/obgpFW4BYkVCiczMgXzM4jYvc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Configurations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Configurations.html",
+          "hash": "kUDjYqVUaoyeiPJK9SOlgku28zkXj4SPjEym+ssX34o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Controllers.Dynamics365FinanceBindingController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Controllers.Dynamics365FinanceBindingController.html",
+          "hash": "ogyBsgzVaClSWgBk1UTnhsFDbxB6w5QFqI1BNha084Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Controllers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Controllers.html",
+          "hash": "R0djcbTudrXyWk9G9OPOQipq2vAYCrJsiFs95AhSWEw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Dispatchers.Dynamics365FinanceIntegrationEventProcessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Dispatchers.Dynamics365FinanceIntegrationEventProcessor.html",
+          "hash": "vHDb6xfxF4AzmWurhlxG4Fk2bzlApfiKP+d60tw55TQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Dispatchers.IDynamics365FinanceIntegrationEventProcessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Dispatchers.IDynamics365FinanceIntegrationEventProcessor.html",
+          "hash": "aE4nevFFlapC9Ur1bhYrcEJgrnHJvW5rxJgzh2aVSGU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Dispatchers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Dispatchers.html",
+          "hash": "l7sWcQfAh3NhgGV6B70nzxrlq2ECc9SxNTSYjrIl5oQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Helpers.Dynamics365BusinessEventHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Helpers.Dynamics365BusinessEventHelper.html",
+          "hash": "x8Rorbho3t2es/gWEYVJ2FDEeha+YZwpzWBGr0BOrHE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Helpers.Dynamics365FinanceAndOperationsHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Helpers.Dynamics365FinanceAndOperationsHelper.html",
+          "hash": "TPUusw2TzVt1C8LyoB7cHqgpnDdrQU2G9K4rqQYenHo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Helpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Helpers.html",
+          "hash": "11N1F8VPDqVTD/YmG2ndy6kKsYPLu8bTuegGXH7j68M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.ErrorMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.ErrorMessage.html",
+          "hash": "ENjyX+vRRQWo5FmX+R8EFStG1w51HVa1o58l4t3jqkg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.ErrorResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.ErrorResponse.html",
+          "hash": "S+czGVG8MZMqhrelYPvPO6K3oBeM3dhC2XknTgbcZH0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.ICommonFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.ICommonFilter.html",
+          "hash": "W9PLw0y8kiusUYqBLwptmWKpkL/baun7p0x0mDeoyr8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.ICommonPrimaryKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.ICommonPrimaryKey.html",
+          "hash": "esmUcoadR7LAQIML6YfJGY1AH3Cx8ncFJVz8oa+aVjs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.IFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.IFilter.html",
+          "hash": "kdfuAMZ0zXOVL/lPYbmDls8xEKiOEdrSvjmRmf3rv7Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.IODataElement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.IODataElement.html",
+          "hash": "C/HxCt1xZ9gHg235BcadCW2/k0TYcRuWL9QoMmJrv10="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.IPerCompanyFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.IPerCompanyFilter.html",
+          "hash": "hJKYb56DVSimRgyE9i2wPnyBHS639uyo6R8WzXDg8R4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.IPerCompanyPrimaryKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.IPerCompanyPrimaryKey.html",
+          "hash": "aRi6artKFTsBWBWKgiA50K94tlhceuGwqv0Ulv6uJR8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.IPrimaryKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.IPrimaryKey.html",
+          "hash": "dyYCcMyJxK51MaoaRSiM19o4dTJsCcNRMwJqucAn6hI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.InnerErrorMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.InnerErrorMessage.html",
+          "hash": "gduk/n3NuiVUlogp91ZQnfbhX0Osge1GtLQexlir2L8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.ODataArrayResponse-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.ODataArrayResponse-1.html",
+          "hash": "EKZJVMlktMow+qGpBGGhfQXtyth7DC9QmOs+qA0BYj8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.ODataElement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.ODataElement.html",
+          "hash": "08Tdmzy0t3/w+5H9A6pcOK9p4sSMLNGvih7cGBA6ov8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.PerCompanyFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.PerCompanyFilter.html",
+          "hash": "axQ/MOcp4uFIrAq2JaucPOuGxjRz6IVvurmpJt7+7zA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.PerCompanyPrimaryKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.PerCompanyPrimaryKey.html",
+          "hash": "gVRmmbK4ORAsaeWPty6uXQsM7/PrQxjLYCdlXwnipCE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models.html",
+          "hash": "izMs5ddDzq6fqlSTZnp8eVUnw++fumwMUphksdjkv8A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Security.Dynamics365FinanceAndOperationsSecurityContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Security.Dynamics365FinanceAndOperationsSecurityContext.html",
+          "hash": "suHPYtypEMfymfcpWTe7W+XT46U/aAuqeB12nZfQW6s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Security.IDynamics365FinanceAndOperationsSecurityContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Security.IDynamics365FinanceAndOperationsSecurityContext.html",
+          "hash": "DWUmGBXeXcangQkeZdD5oHpaRpC5VrmOLlN1fXkkBmA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Security.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Security.html",
+          "hash": "gSrvOAq+dWRgw+sSkPsuy98fUEO3jRj6w/VDQ0xcOfo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Serialization.BusinessEventJsonConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Serialization.BusinessEventJsonConverter.html",
+          "hash": "RQtwPehjrHFSrc56KLxG2kJL+SZ4T6wsmftm9+KItls="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Serialization.BusinessEventTypeMapper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Serialization.BusinessEventTypeMapper.html",
+          "hash": "SQTB/EEpIVSF0w+RIwr8Q9QhwfSWukG/TGC7T/0O96s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Serialization.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Serialization.html",
+          "hash": "ww7lLBtRUy+fM6y8eBPbESbXKo3KnxKpMda/5qK7Jng="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Services.CustomerGroups.CustomerGroup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Services.CustomerGroups.CustomerGroup.html",
+          "hash": "H9o6R6wr54sonvPeGTf1NbHZIc428gA3i+VA/Y3O2v8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Services.CustomerGroups.CustomerGroupCreate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Services.CustomerGroups.CustomerGroupCreate.html",
+          "hash": "r8VN7MelIBT/Ai3iA7tauc14ijzFfJtcPgq5+9UqhpM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Services.CustomerGroups.CustomerGroupKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Services.CustomerGroups.CustomerGroupKey.html",
+          "hash": "b248PJKruuTucRZhBKNALgfFltO+sR/KgDLrv3ULdwI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Services.CustomerGroups.CustomerGroupUpdate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Services.CustomerGroups.CustomerGroupUpdate.html",
+          "hash": "7e+a0V2TefzzWV+QxdK2/W/Fz3PGzrRboiqYSeRTwiw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Services.CustomerGroups.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Services.CustomerGroups.html",
+          "hash": "xcAcMh53M7WXX0xcs0qKTSnanSakZCUkzCTtzXYG4yI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks.ConventionNamingCommandProcessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks.ConventionNamingCommandProcessor.html",
+          "hash": "yKlFyjPgimkSQVQWWT7szwXE9+faZDMmlWPTCqN/va4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks.Dynamics365FinanceAndOperationsClientBuilder-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks.Dynamics365FinanceAndOperationsClientBuilder-1.html",
+          "hash": "PMMTaG4laTi9q9QiqwiuKjMzydVXJ/uWvZ8x9Dc6mUA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks.Dynamics365FinanceAndOperationsSecurityContextBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks.Dynamics365FinanceAndOperationsSecurityContextBuilder.html",
+          "hash": "QsaAQs/Oy4yB+sb7TCyt+Yeie6cNM16uvaHRNGuNZKM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks.html",
+          "hash": "Os7sWEMxozg7sZKA8YA3n7riI5pqGbYVzDG1brY5RGk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Security.Abstractions.IApplicationSecurityContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Security.Abstractions.IApplicationSecurityContext.html",
+          "hash": "FwhzGcXKLgaLHil96FLCg65boZe6IrOQ8c9PnKXbu7w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Security.Abstractions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Security.Abstractions.html",
+          "hash": "gFEQVLogmf7oiIPaSR4Kec0jOG3k4LY+J0KDpeDAJ8s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Serialization.Serialization.IsoUtcDateTimeOffsetConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Serialization.Serialization.IsoUtcDateTimeOffsetConverter.html",
+          "hash": "T/Wl3SpB835rr22AVEYzJGlD6Q9tV7IaNcxVauYtVlU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Serialization.Serialization.UnixEpochDateTimeConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Serialization.Serialization.UnixEpochDateTimeConverter.html",
+          "hash": "vI0SJYAz0cak5XX/gUCEId3rab/SpWj2TVIOzbaq5gA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Serialization.Serialization.UnixEpochDateTimeOffsetConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Serialization.Serialization.UnixEpochDateTimeOffsetConverter.html",
+          "hash": "OMoqxLoW6YM3Cs71dZ8bxm+T63aLw6VVz7GFW3WG690="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Serialization.Serialization.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Serialization.Serialization.html",
+          "hash": "4n/tWyb1r1ZlKy90fgB6adljcTN1RhbMAag6UvTJ/NY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Serialization.States.StringStateProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Serialization.States.StringStateProvider.html",
+          "hash": "LQDcFGUJ5JUJjO1ODC4i93IVNLMGJp+cqPIQVXuP0/4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Serialization.States.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Serialization.States.html",
+          "hash": "KTX5SNbhMyQk9oRsHQ6u8VgbeucqkG28iql2NOu7b4w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.WebApis.Controllers.BindingController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.WebApis.Controllers.BindingController.html",
+          "hash": "cvwB+fm9Me3ODgzvmQ6kDwNljSZdDOeFq9L8PnsKHro="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.WebApis.Controllers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.WebApis.Controllers.html",
+          "hash": "NTHnOSONPInK17L+IKzDz5885CM7P+keWim41/CAGlA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.WebApis.Helpers.HexalithWebApi.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.WebApis.Helpers.HexalithWebApi.html",
+          "hash": "sN0AC+YahhOSOyGcP5K0o23ml45RqLcjcGLI7Rc1+Rk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.WebApis.Helpers.WebApiHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.WebApis.Helpers.WebApiHelper.html",
+          "hash": "n4JfzOexPlSo26P7cPKNqjVjV/XZqdsphx9I8HRDNws="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.WebApis.Helpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.WebApis.Helpers.html",
+          "hash": "QF1eIoW1P1RHmYLLBPPTpUrpQC5tcGQsscO4Xpa0ALM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.TestMocks.HttpClientFactoryBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.TestMocks.HttpClientFactoryBuilder.html",
+          "hash": "iEivnTBASziik/77h83Cih+3IAK7q6Pohxu7jwM++v8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.TestMocks.IMockBuilder-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.TestMocks.IMockBuilder-1.html",
+          "hash": "aMDp1g859x6AAizepYdSI0saDXveze84mWDhI/hNAPI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.TestMocks.LoggerBuilder-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.TestMocks.LoggerBuilder-1.html",
+          "hash": "TcTZLm7ZkESk/PqryL459/vHqPdEy8Nd4N1ZntVnbgY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.TestMocks.OptionsBuilder-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.TestMocks.OptionsBuilder-1.html",
+          "hash": "laZvljkButWym+VAVPFeYbJ5qSVAO8T37SKonc0WoIA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.TestMocks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.TestMocks.html",
+          "hash": "rPYy7CYg0qc1WszUW7GqhOdh9KvCpzhjiAeyOcm+F2c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "gfU/J6hSC5WUHZ0KHHG52HtruM7IYb7PyKmpGi3a3/s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "gXpzkLYAE9teU6DJjIxW7MGqh0EHOufM9mVYCEtLLy4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "XREAr6iHtuka+aO7c3lTrh90rt0rybqw859u1tetgNM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "BlPxk5mtl2kgfcZUgkEguqiSAR/EUyUTT4EdebwkQvs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "vsW9ZvNJ7sOSf2pjIjuOSwvq6ulmUIdFPHc7lPEfC4Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "s+UecGKJLe11K3w4+MJjx6QoiqktkO8teeQG06lk8L0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Disable incremental build by force rebuild option.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "ForceRebuild"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 4,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 282,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

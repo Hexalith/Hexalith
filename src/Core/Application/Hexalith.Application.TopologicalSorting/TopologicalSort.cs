@@ -39,28 +39,19 @@ public class TopologicalSort
     /// </summary>
     /// <param name="g">The graph to fill this sort with.</param>
     public TopologicalSort(DependencyGraph g)
-        : this()
-    {
-        _ = g.CalculateSort(this);
-    }
-
-    /// <summary>
-    /// Gets the enumerator which enumerates sets of processes, where a set can be executed in any order.
-    /// </summary>
-    /// <returns>An enumerator that can be used to iterate through the collection.</returns>
-    IEnumerator<ISet<OrderedProcess>> IEnumerable<ISet<OrderedProcess>>.GetEnumerator()
-    {
-        return _collections.GetEnumerator();
-    }
+        : this() => _ = g.CalculateSort(this);
 
     /// <summary>
     /// Returns an enumerator that iterates through the processes.
     /// </summary>
     /// <returns>An <see cref="T:System.Collections.IEnumerator" /> object that can be used to iterate through the collection.</returns>
-    public System.Collections.IEnumerator GetEnumerator()
-    {
-        return (this as IEnumerable<OrderedProcess>).GetEnumerator();
-    }
+    public System.Collections.IEnumerator GetEnumerator() => (this as IEnumerable<OrderedProcess>).GetEnumerator();
+
+    /// <summary>
+    /// Gets the enumerator which enumerates sets of processes, where a set can be executed in any order.
+    /// </summary>
+    /// <returns>An enumerator that can be used to iterate through the collection.</returns>
+    IEnumerator<ISet<OrderedProcess>> IEnumerable<ISet<OrderedProcess>>.GetEnumerator() => _collections.GetEnumerator();
 
     /// <summary>
     /// Gets the enumerator which enumerates through the processes in an order to be executed.
@@ -77,8 +68,5 @@ public class TopologicalSort
     /// Appends the specified collection.
     /// </summary>
     /// <param name="collection">The collection.</param>
-    internal void Append(ISet<OrderedProcess> collection)
-    {
-        _collections.Add(collection);
-    }
+    internal void Append(ISet<OrderedProcess> collection) => _collections.Add(collection);
 }
