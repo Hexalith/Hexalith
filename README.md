@@ -26,7 +26,7 @@ Application blocks based on Dapr
 
 ## Build Status
 
-Stable (release/0.1): 
+Stable (version tag): 
 
 [![Build status](https://github.com/Hexalith/Hexalith/actions/workflows/release_ci.yml/badge.svg)](https://github.com/Hexalith/Hexalith/actions?query=workflow%3A%22Release+-+CI%22)
 [![NuGet](https://img.shields.io/nuget/v/Hexalith.Extensions.svg)](https://www.nuget.org/packages/Hexalith.Extensions)
@@ -37,7 +37,7 @@ Nightly (main):
 
 ## Status
 
-### Version 0.4
+### Version 0.5
 
 The software is in preview
 
