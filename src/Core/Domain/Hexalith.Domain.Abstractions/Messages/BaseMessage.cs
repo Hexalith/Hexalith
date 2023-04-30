@@ -16,6 +16,7 @@
 
 namespace Hexalith.Domain.Abstractions.Messages;
 
+using System.Diagnostics;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
@@ -26,6 +27,7 @@ using Hexalith.Extensions.Serialization;
 /// </summary>
 [DataContract]
 [JsonConverter(typeof(PolymorphicJsonConverter<BaseMessage>))]
+[DebuggerDisplay("{AggregateName}/{AggregateId}/{TypeName}/v{MajorVersion}/{MinorVersion}")]
 public class BaseMessage : IMessage, IPolymorphicSerializable
 {
     /// <summary>
