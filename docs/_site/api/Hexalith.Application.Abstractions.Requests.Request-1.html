@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class BaseRequest
+    <title>Class Request&lt;TResult&gt;
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class BaseRequest
+    <meta name="title" content="Class Request&lt;TResult&gt;
    ">
     <meta name="generator" content="docfx 2.59.4.0">
     
@@ -68,21 +68,21 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Hexalith.Application.Abstractions.Requests.BaseRequest">
+            <article class="content wrap" id="_content" data-uid="Hexalith.Application.Abstractions.Requests.Request`1">
   
   
-  <h1 id="Hexalith_Application_Abstractions_Requests_BaseRequest" data-uid="Hexalith.Application.Abstractions.Requests.BaseRequest" class="text-break">Class BaseRequest
+  <h1 id="Hexalith_Application_Abstractions_Requests_Request_1" data-uid="Hexalith.Application.Abstractions.Requests.Request`1" class="text-break">Class Request&lt;TResult&gt;
   </h1>
-  <div class="markdown level0 summary"><p>Class BaseRequest.
-Implements the <a class="xref" href="Hexalith.Domain.Abstractions.Messages.BaseMessage.html">BaseMessage</a>
-Implements the <see cref="!:Application.Requests.IRequest"></see>.</p>
+  <div class="markdown level0 summary"><p>Class Request.
+Implements the <a class="xref" href="Hexalith.Application.Abstractions.Requests.BaseRequest.html">BaseRequest</a>.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="Hexalith.Domain.Abstractions.Messages.BaseMessage.html">BaseMessage</a></div>
-    <div class="level2"><span class="xref">BaseRequest</span></div>
+    <div class="level2"><a class="xref" href="Hexalith.Application.Abstractions.Requests.BaseRequest.html">BaseRequest</a></div>
+    <div class="level3"><span class="xref">Request&lt;TResult&gt;</span></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
@@ -92,6 +92,9 @@ Implements the <see cref="!:Application.Requests.IRequest"></see>.</p>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Hexalith.Application.Abstractions.Requests.BaseRequest.html#Hexalith_Application_Abstractions_Requests_BaseRequest_ResultType">BaseRequest.ResultType</a>
+    </div>
     <div>
       <a class="xref" href="Hexalith.Domain.Abstractions.Messages.BaseMessage.html#Hexalith_Domain_Abstractions_Messages_BaseMessage_Separator">BaseMessage.Separator</a>
     </div>
@@ -149,44 +152,22 @@ Implements the <see cref="!:Application.Requests.IRequest"></see>.</p>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Hexalith.Application.Abstractions.Requests.html">Hexalith.Application.Abstractions.Requests</a></h6>
   <h6><strong>Assembly</strong>: Hexalith.Application.Abstractions.dll</h6>
-  <h5 id="Hexalith_Application_Abstractions_Requests_BaseRequest_syntax">Syntax</h5>
+  <h5 id="Hexalith_Application_Abstractions_Requests_Request_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataContract]
-[JsonConverter(typeof(PolymorphicJsonConverter&lt;BaseRequest&gt;))]
-public class BaseRequest : BaseMessage, IPolymorphicSerializable, IRequest, IMessage</code></pre>
+    <pre><code class="lang-csharp hljs">public class Request&lt;TResult&gt; : BaseRequest, IPolymorphicSerializable, IRequest, IMessage where TResult : BaseNotification</code></pre>
   </div>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Abstractions_Requests_BaseRequest_ResultType.md&amp;value=---%0Auid%3A%20Hexalith.Application.Abstractions.Requests.BaseRequest.ResultType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Requests/BaseRequest.cs/#L40">View Source</a>
-  </span>
-  <a id="Hexalith_Application_Abstractions_Requests_BaseRequest_ResultType_" data-uid="Hexalith.Application.Abstractions.Requests.BaseRequest.ResultType*"></a>
-  <h4 id="Hexalith_Application_Abstractions_Requests_BaseRequest_ResultType" data-uid="Hexalith.Application.Abstractions.Requests.BaseRequest.ResultType">ResultType</h4>
-  <div class="markdown level1 summary"><p>Gets the type of the result.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonIgnore]
-[IgnoreDataMember]
-public Type ResultType { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
+  <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
-        <th>Type</th>
+        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Type</span></td>
-        <td><p>The type of the result.</p>
+        <td><span class="parametername">TResult</span></td>
+        <td><p>The type of the t result.</p>
 </td>
       </tr>
     </tbody>
@@ -195,19 +176,19 @@ public Type ResultType { get; }</code></pre>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Abstractions_Requests_BaseRequest_GetDefaultResultType.md&amp;value=---%0Auid%3A%20Hexalith.Application.Abstractions.Requests.BaseRequest.GetDefaultResultType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Abstractions_Requests_Request_1_GetDefaultResultType.md&amp;value=---%0Auid%3A%20Hexalith.Application.Abstractions.Requests.Request%601.GetDefaultResultType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Requests/BaseRequest.cs/#L48">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Requests/Request.cs/#L33">View Source</a>
   </span>
-  <a id="Hexalith_Application_Abstractions_Requests_BaseRequest_GetDefaultResultType_" data-uid="Hexalith.Application.Abstractions.Requests.BaseRequest.GetDefaultResultType*"></a>
-  <h4 id="Hexalith_Application_Abstractions_Requests_BaseRequest_GetDefaultResultType" data-uid="Hexalith.Application.Abstractions.Requests.BaseRequest.GetDefaultResultType">GetDefaultResultType()</h4>
+  <a id="Hexalith_Application_Abstractions_Requests_Request_1_GetDefaultResultType_" data-uid="Hexalith.Application.Abstractions.Requests.Request`1.GetDefaultResultType*"></a>
+  <h4 id="Hexalith_Application_Abstractions_Requests_Request_1_GetDefaultResultType" data-uid="Hexalith.Application.Abstractions.Requests.Request`1.GetDefaultResultType">GetDefaultResultType()</h4>
   <div class="markdown level1 summary"><p>Gets the default type of the result.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual Type GetDefaultResultType()</code></pre>
+    <pre><code class="lang-csharp hljs">public override Type GetDefaultResultType()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -225,6 +206,8 @@ public Type ResultType { get; }</code></pre>
       </tr>
     </tbody>
   </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Hexalith.Application.Abstractions.Requests.BaseRequest.html#Hexalith_Application_Abstractions_Requests_BaseRequest_GetDefaultResultType">BaseRequest.GetDefaultResultType()</a></div>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="Hexalith.Extensions.Serialization.IPolymorphicSerializable.html">IPolymorphicSerializable</a>
@@ -241,7 +224,7 @@ public Type ResultType { get; }</code></pre>
   </div>
   <h3 id="seealso">See Also</h3>
   <div class="seealso">
-      <div><a class="xref" href="Hexalith.Domain.Abstractions.Messages.BaseMessage.html">BaseMessage</a></div>
+      <div><a class="xref" href="Hexalith.Application.Abstractions.Requests.BaseRequest.html">BaseRequest</a></div>
   </div>
 </article>
           </div>
@@ -251,10 +234,10 @@ public Type ResultType { get; }</code></pre>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Abstractions_Requests_BaseRequest.md&amp;value=---%0Auid%3A%20Hexalith.Application.Abstractions.Requests.BaseRequest%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Abstractions_Requests_Request_1.md&amp;value=---%0Auid%3A%20Hexalith.Application.Abstractions.Requests.Request%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Requests/BaseRequest.cs/#L32" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Requests/Request.cs/#L26" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

@@ -1,8 +1,18 @@
-﻿// <copyright file="BaseRequest.cs" company="Fiveforty SAS Paris France">
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Application.Abstractions
+// Author           : Jérôme Piquot
+// Created          : 02-04-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 05-01-2023
+// ***********************************************************************
+// <copyright file="BaseRequest.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Hexalith.Application.Abstractions.Requests;
 
@@ -23,4 +33,17 @@ using Hexalith.Extensions.Serialization;
 [JsonConverter(typeof(PolymorphicJsonConverter<BaseRequest>))]
 public class BaseRequest : BaseMessage, IRequest
 {
+    /// <summary>
+    /// Gets the type of the result.
+    /// </summary>
+    /// <value>The type of the result.</value>
+    [JsonIgnore]
+    [IgnoreDataMember]
+    public Type ResultType => GetDefaultResultType();
+
+    /// <summary>
+    /// Gets the default type of the result.
+    /// </summary>
+    /// <returns>Type.</returns>
+    public virtual Type GetDefaultResultType() => typeof(string);
 }

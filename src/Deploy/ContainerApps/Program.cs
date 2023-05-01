@@ -17,7 +17,7 @@
 using Cocona;
 using Cocona.Builder;
 
-using Deploy.Configuration.Global;
+using DeployACA.Configuration.Global;
 
 using Hexalith.Extensions.Configuration;
 

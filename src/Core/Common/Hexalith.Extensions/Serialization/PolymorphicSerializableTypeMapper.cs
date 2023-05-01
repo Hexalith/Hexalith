@@ -18,7 +18,7 @@ namespace Hexalith.Extensions.Serialization;
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Reflection;
 
 /// <summary>
 /// Class MessageSerializationMapper.
@@ -45,20 +45,30 @@ public static class PolymorphicSerializableTypeMapper
     public static Dictionary<string, Type> GetMap()
     {
         Dictionary<string, Type> map = new();
-        foreach (System.Reflection.Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
+        foreach (System.Reflection.Assembly assembly in AppDomain.CurrentDomain.GetAssemblies().Where(a => !a.IsDynamic))
         {
-            foreach (Type? type in assembly.GetTypes().Where(t => t.IsClass && !t.IsAbstract && typeof(IPolymorphicSerializable).IsAssignableFrom(t)))
+            try
             {
-                IPolymorphicSerializable obj = Activator.CreateInstance(type) as IPolymorphicSerializable ?? throw new TypeInitializationException(type.AssemblyQualifiedName, null);
-                string key = $"{obj.TypeName}|{obj.MajorVersion}.{obj.MinorVersion}";
-                try
+                foreach (Type? type in assembly.GetTypes())
                 {
-                    map.Add(key, type);
+                    if (type != null && type.IsClass && !type.IsAbstract && typeof(IPolymorphicSerializable).IsAssignableFrom(type))
+                    {
+                        IPolymorphicSerializable obj = Activator.CreateInstance(type) as IPolymorphicSerializable ?? throw new TypeInitializationException(type.AssemblyQualifiedName, null);
+                        string key = $"{obj.TypeName}|{obj.MajorVersion}.{obj.MinorVersion}";
+                        try
+                        {
+                            map.Add(key, type);
+                        }
+                        catch (ArgumentException ex)
+                        {
+                            throw new InvalidOperationException($"Type {type.FullName} could not be added to the serialization mapper. A type with TypeName='{obj.TypeName}' and Version='{obj.MajorVersion}.{obj.MinorVersion}' already exists : {map[key].FullName}", ex);
+                        }
+                    }
                 }
-                catch (ArgumentException ex)
-                {
-                    throw new InvalidOperationException($"Type {type.FullName} could not be added to the serialization mapper. A type with TypeName='{obj.TypeName}' and Version='{obj.MajorVersion}.{obj.MinorVersion}' already exists : {map[key].FullName}", ex);
-                }
+            }
+            catch (ReflectionTypeLoadException)
+            {
+                continue;
             }
         }
 

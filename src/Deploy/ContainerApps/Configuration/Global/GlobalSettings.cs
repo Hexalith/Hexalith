@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Deploy.Configuration.Global;
+namespace DeployACA.Configuration.Global;
 
 using Azure.ResourceManager.KeyVault.Models;
 

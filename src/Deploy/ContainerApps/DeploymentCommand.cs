@@ -18,8 +18,8 @@ using Azure.ResourceManager.KeyVault.Models;
 
 using Cocona;
 
-using Deploy.Configuration.Global;
-using Deploy.Infrastructure.Global;
+using DeployACA.Configuration.Global;
+using DeployACA.Infrastructure.Global;
 
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;

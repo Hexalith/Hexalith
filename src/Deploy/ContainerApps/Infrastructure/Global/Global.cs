@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Deploy.Infrastructure.Global;
+namespace DeployACA.Infrastructure.Global;
 
 using Azure.ResourceManager.KeyVault.Models;
 
@@ -37,7 +37,7 @@ internal class Global
     /// <param name="cognitiveServicesAccountName">Name of the cognitive services account.</param>
     /// <param name="location">The location.</param>
     /// <param name="loggerFactory">The logger factory.</param>
-    /// <exception cref="System.ArgumentNullException">Null.</exception>
+    /// <exception cref="ArgumentNullException">Null.</exception>
     public Global(
         string subscriptionId,
         string resourceGroupName,

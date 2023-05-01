@@ -1,147 +1,147 @@
 ### YamlMime:XRefMap
 sorted: true
 references:
-- uid: Deploy.Configuration.Global
-  name: Deploy.Configuration.Global
-  href: api/Deploy.Configuration.Global.html
-  commentId: N:Deploy.Configuration.Global
-  fullName: Deploy.Configuration.Global
-  nameWithType: Deploy.Configuration.Global
-- uid: Deploy.Configuration.Global.GlobalSettings
+- uid: DeployACA.Configuration.Global
+  name: DeployACA.Configuration.Global
+  href: api/DeployACA.Configuration.Global.html
+  commentId: N:DeployACA.Configuration.Global
+  fullName: DeployACA.Configuration.Global
+  nameWithType: DeployACA.Configuration.Global
+- uid: DeployACA.Configuration.Global.GlobalSettings
   name: GlobalSettings
-  href: api/Deploy.Configuration.Global.GlobalSettings.html
-  commentId: T:Deploy.Configuration.Global.GlobalSettings
-  fullName: Deploy.Configuration.Global.GlobalSettings
+  href: api/DeployACA.Configuration.Global.GlobalSettings.html
+  commentId: T:DeployACA.Configuration.Global.GlobalSettings
+  fullName: DeployACA.Configuration.Global.GlobalSettings
   nameWithType: GlobalSettings
-- uid: Deploy.Configuration.Global.GlobalSettings.#ctor
+- uid: DeployACA.Configuration.Global.GlobalSettings.#ctor
   name: GlobalSettings()
-  href: api/Deploy.Configuration.Global.GlobalSettings.html#Deploy_Configuration_Global_GlobalSettings__ctor
-  commentId: M:Deploy.Configuration.Global.GlobalSettings.#ctor
-  fullName: Deploy.Configuration.Global.GlobalSettings.GlobalSettings()
+  href: api/DeployACA.Configuration.Global.GlobalSettings.html#DeployACA_Configuration_Global_GlobalSettings__ctor
+  commentId: M:DeployACA.Configuration.Global.GlobalSettings.#ctor
+  fullName: DeployACA.Configuration.Global.GlobalSettings.GlobalSettings()
   nameWithType: GlobalSettings.GlobalSettings()
-- uid: Deploy.Configuration.Global.GlobalSettings.#ctor*
+- uid: DeployACA.Configuration.Global.GlobalSettings.#ctor*
   name: GlobalSettings
-  href: api/Deploy.Configuration.Global.GlobalSettings.html#Deploy_Configuration_Global_GlobalSettings__ctor_
-  commentId: Overload:Deploy.Configuration.Global.GlobalSettings.#ctor
+  href: api/DeployACA.Configuration.Global.GlobalSettings.html#DeployACA_Configuration_Global_GlobalSettings__ctor_
+  commentId: Overload:DeployACA.Configuration.Global.GlobalSettings.#ctor
   isSpec: "True"
-  fullName: Deploy.Configuration.Global.GlobalSettings.GlobalSettings
+  fullName: DeployACA.Configuration.Global.GlobalSettings.GlobalSettings
   nameWithType: GlobalSettings.GlobalSettings
-- uid: Deploy.Configuration.Global.GlobalSettings.CognitiveServicesAccountName
+- uid: DeployACA.Configuration.Global.GlobalSettings.CognitiveServicesAccountName
   name: CognitiveServicesAccountName
-  href: api/Deploy.Configuration.Global.GlobalSettings.html#Deploy_Configuration_Global_GlobalSettings_CognitiveServicesAccountName
-  commentId: P:Deploy.Configuration.Global.GlobalSettings.CognitiveServicesAccountName
-  fullName: Deploy.Configuration.Global.GlobalSettings.CognitiveServicesAccountName
+  href: api/DeployACA.Configuration.Global.GlobalSettings.html#DeployACA_Configuration_Global_GlobalSettings_CognitiveServicesAccountName
+  commentId: P:DeployACA.Configuration.Global.GlobalSettings.CognitiveServicesAccountName
+  fullName: DeployACA.Configuration.Global.GlobalSettings.CognitiveServicesAccountName
   nameWithType: GlobalSettings.CognitiveServicesAccountName
-- uid: Deploy.Configuration.Global.GlobalSettings.CognitiveServicesAccountName*
+- uid: DeployACA.Configuration.Global.GlobalSettings.CognitiveServicesAccountName*
   name: CognitiveServicesAccountName
-  href: api/Deploy.Configuration.Global.GlobalSettings.html#Deploy_Configuration_Global_GlobalSettings_CognitiveServicesAccountName_
-  commentId: Overload:Deploy.Configuration.Global.GlobalSettings.CognitiveServicesAccountName
+  href: api/DeployACA.Configuration.Global.GlobalSettings.html#DeployACA_Configuration_Global_GlobalSettings_CognitiveServicesAccountName_
+  commentId: Overload:DeployACA.Configuration.Global.GlobalSettings.CognitiveServicesAccountName
   isSpec: "True"
-  fullName: Deploy.Configuration.Global.GlobalSettings.CognitiveServicesAccountName
+  fullName: DeployACA.Configuration.Global.GlobalSettings.CognitiveServicesAccountName
   nameWithType: GlobalSettings.CognitiveServicesAccountName
-- uid: Deploy.Configuration.Global.GlobalSettings.ConfigurationName
+- uid: DeployACA.Configuration.Global.GlobalSettings.ConfigurationName
   name: ConfigurationName()
-  href: api/Deploy.Configuration.Global.GlobalSettings.html#Deploy_Configuration_Global_GlobalSettings_ConfigurationName
-  commentId: M:Deploy.Configuration.Global.GlobalSettings.ConfigurationName
-  fullName: Deploy.Configuration.Global.GlobalSettings.ConfigurationName()
+  href: api/DeployACA.Configuration.Global.GlobalSettings.html#DeployACA_Configuration_Global_GlobalSettings_ConfigurationName
+  commentId: M:DeployACA.Configuration.Global.GlobalSettings.ConfigurationName
+  fullName: DeployACA.Configuration.Global.GlobalSettings.ConfigurationName()
   nameWithType: GlobalSettings.ConfigurationName()
-- uid: Deploy.Configuration.Global.GlobalSettings.ConfigurationName*
+- uid: DeployACA.Configuration.Global.GlobalSettings.ConfigurationName*
   name: ConfigurationName
-  href: api/Deploy.Configuration.Global.GlobalSettings.html#Deploy_Configuration_Global_GlobalSettings_ConfigurationName_
-  commentId: Overload:Deploy.Configuration.Global.GlobalSettings.ConfigurationName
+  href: api/DeployACA.Configuration.Global.GlobalSettings.html#DeployACA_Configuration_Global_GlobalSettings_ConfigurationName_
+  commentId: Overload:DeployACA.Configuration.Global.GlobalSettings.ConfigurationName
   isSpec: "True"
-  fullName: Deploy.Configuration.Global.GlobalSettings.ConfigurationName
+  fullName: DeployACA.Configuration.Global.GlobalSettings.ConfigurationName
   nameWithType: GlobalSettings.ConfigurationName
-- uid: Deploy.Configuration.Global.GlobalSettings.ContainerRegistryName
+- uid: DeployACA.Configuration.Global.GlobalSettings.ContainerRegistryName
   name: ContainerRegistryName
-  href: api/Deploy.Configuration.Global.GlobalSettings.html#Deploy_Configuration_Global_GlobalSettings_ContainerRegistryName
-  commentId: P:Deploy.Configuration.Global.GlobalSettings.ContainerRegistryName
-  fullName: Deploy.Configuration.Global.GlobalSettings.ContainerRegistryName
+  href: api/DeployACA.Configuration.Global.GlobalSettings.html#DeployACA_Configuration_Global_GlobalSettings_ContainerRegistryName
+  commentId: P:DeployACA.Configuration.Global.GlobalSettings.ContainerRegistryName
+  fullName: DeployACA.Configuration.Global.GlobalSettings.ContainerRegistryName
   nameWithType: GlobalSettings.ContainerRegistryName
-- uid: Deploy.Configuration.Global.GlobalSettings.ContainerRegistryName*
+- uid: DeployACA.Configuration.Global.GlobalSettings.ContainerRegistryName*
   name: ContainerRegistryName
-  href: api/Deploy.Configuration.Global.GlobalSettings.html#Deploy_Configuration_Global_GlobalSettings_ContainerRegistryName_
-  commentId: Overload:Deploy.Configuration.Global.GlobalSettings.ContainerRegistryName
+  href: api/DeployACA.Configuration.Global.GlobalSettings.html#DeployACA_Configuration_Global_GlobalSettings_ContainerRegistryName_
+  commentId: Overload:DeployACA.Configuration.Global.GlobalSettings.ContainerRegistryName
   isSpec: "True"
-  fullName: Deploy.Configuration.Global.GlobalSettings.ContainerRegistryName
+  fullName: DeployACA.Configuration.Global.GlobalSettings.ContainerRegistryName
   nameWithType: GlobalSettings.ContainerRegistryName
-- uid: Deploy.Configuration.Global.GlobalSettings.ContainerRegistrySku
+- uid: DeployACA.Configuration.Global.GlobalSettings.ContainerRegistrySku
   name: ContainerRegistrySku
-  href: api/Deploy.Configuration.Global.GlobalSettings.html#Deploy_Configuration_Global_GlobalSettings_ContainerRegistrySku
-  commentId: P:Deploy.Configuration.Global.GlobalSettings.ContainerRegistrySku
-  fullName: Deploy.Configuration.Global.GlobalSettings.ContainerRegistrySku
+  href: api/DeployACA.Configuration.Global.GlobalSettings.html#DeployACA_Configuration_Global_GlobalSettings_ContainerRegistrySku
+  commentId: P:DeployACA.Configuration.Global.GlobalSettings.ContainerRegistrySku
+  fullName: DeployACA.Configuration.Global.GlobalSettings.ContainerRegistrySku
   nameWithType: GlobalSettings.ContainerRegistrySku
-- uid: Deploy.Configuration.Global.GlobalSettings.ContainerRegistrySku*
+- uid: DeployACA.Configuration.Global.GlobalSettings.ContainerRegistrySku*
   name: ContainerRegistrySku
-  href: api/Deploy.Configuration.Global.GlobalSettings.html#Deploy_Configuration_Global_GlobalSettings_ContainerRegistrySku_
-  commentId: Overload:Deploy.Configuration.Global.GlobalSettings.ContainerRegistrySku
+  href: api/DeployACA.Configuration.Global.GlobalSettings.html#DeployACA_Configuration_Global_GlobalSettings_ContainerRegistrySku_
+  commentId: Overload:DeployACA.Configuration.Global.GlobalSettings.ContainerRegistrySku
   isSpec: "True"
-  fullName: Deploy.Configuration.Global.GlobalSettings.ContainerRegistrySku
+  fullName: DeployACA.Configuration.Global.GlobalSettings.ContainerRegistrySku
   nameWithType: GlobalSettings.ContainerRegistrySku
-- uid: Deploy.Configuration.Global.GlobalSettings.KeyVaultName
+- uid: DeployACA.Configuration.Global.GlobalSettings.KeyVaultName
   name: KeyVaultName
-  href: api/Deploy.Configuration.Global.GlobalSettings.html#Deploy_Configuration_Global_GlobalSettings_KeyVaultName
-  commentId: P:Deploy.Configuration.Global.GlobalSettings.KeyVaultName
-  fullName: Deploy.Configuration.Global.GlobalSettings.KeyVaultName
+  href: api/DeployACA.Configuration.Global.GlobalSettings.html#DeployACA_Configuration_Global_GlobalSettings_KeyVaultName
+  commentId: P:DeployACA.Configuration.Global.GlobalSettings.KeyVaultName
+  fullName: DeployACA.Configuration.Global.GlobalSettings.KeyVaultName
   nameWithType: GlobalSettings.KeyVaultName
-- uid: Deploy.Configuration.Global.GlobalSettings.KeyVaultName*
+- uid: DeployACA.Configuration.Global.GlobalSettings.KeyVaultName*
   name: KeyVaultName
-  href: api/Deploy.Configuration.Global.GlobalSettings.html#Deploy_Configuration_Global_GlobalSettings_KeyVaultName_
-  commentId: Overload:Deploy.Configuration.Global.GlobalSettings.KeyVaultName
+  href: api/DeployACA.Configuration.Global.GlobalSettings.html#DeployACA_Configuration_Global_GlobalSettings_KeyVaultName_
+  commentId: Overload:DeployACA.Configuration.Global.GlobalSettings.KeyVaultName
   isSpec: "True"
-  fullName: Deploy.Configuration.Global.GlobalSettings.KeyVaultName
+  fullName: DeployACA.Configuration.Global.GlobalSettings.KeyVaultName
   nameWithType: GlobalSettings.KeyVaultName
-- uid: Deploy.Configuration.Global.GlobalSettings.KeyVaultSku
+- uid: DeployACA.Configuration.Global.GlobalSettings.KeyVaultSku
   name: KeyVaultSku
-  href: api/Deploy.Configuration.Global.GlobalSettings.html#Deploy_Configuration_Global_GlobalSettings_KeyVaultSku
-  commentId: P:Deploy.Configuration.Global.GlobalSettings.KeyVaultSku
-  fullName: Deploy.Configuration.Global.GlobalSettings.KeyVaultSku
+  href: api/DeployACA.Configuration.Global.GlobalSettings.html#DeployACA_Configuration_Global_GlobalSettings_KeyVaultSku
+  commentId: P:DeployACA.Configuration.Global.GlobalSettings.KeyVaultSku
+  fullName: DeployACA.Configuration.Global.GlobalSettings.KeyVaultSku
   nameWithType: GlobalSettings.KeyVaultSku
-- uid: Deploy.Configuration.Global.GlobalSettings.KeyVaultSku*
+- uid: DeployACA.Configuration.Global.GlobalSettings.KeyVaultSku*
   name: KeyVaultSku
-  href: api/Deploy.Configuration.Global.GlobalSettings.html#Deploy_Configuration_Global_GlobalSettings_KeyVaultSku_
-  commentId: Overload:Deploy.Configuration.Global.GlobalSettings.KeyVaultSku
+  href: api/DeployACA.Configuration.Global.GlobalSettings.html#DeployACA_Configuration_Global_GlobalSettings_KeyVaultSku_
+  commentId: Overload:DeployACA.Configuration.Global.GlobalSettings.KeyVaultSku
   isSpec: "True"
-  fullName: Deploy.Configuration.Global.GlobalSettings.KeyVaultSku
+  fullName: DeployACA.Configuration.Global.GlobalSettings.KeyVaultSku
   nameWithType: GlobalSettings.KeyVaultSku
-- uid: Deploy.Configuration.Global.GlobalSettings.Location
+- uid: DeployACA.Configuration.Global.GlobalSettings.Location
   name: Location
-  href: api/Deploy.Configuration.Global.GlobalSettings.html#Deploy_Configuration_Global_GlobalSettings_Location
-  commentId: P:Deploy.Configuration.Global.GlobalSettings.Location
-  fullName: Deploy.Configuration.Global.GlobalSettings.Location
+  href: api/DeployACA.Configuration.Global.GlobalSettings.html#DeployACA_Configuration_Global_GlobalSettings_Location
+  commentId: P:DeployACA.Configuration.Global.GlobalSettings.Location
+  fullName: DeployACA.Configuration.Global.GlobalSettings.Location
   nameWithType: GlobalSettings.Location
-- uid: Deploy.Configuration.Global.GlobalSettings.Location*
+- uid: DeployACA.Configuration.Global.GlobalSettings.Location*
   name: Location
-  href: api/Deploy.Configuration.Global.GlobalSettings.html#Deploy_Configuration_Global_GlobalSettings_Location_
-  commentId: Overload:Deploy.Configuration.Global.GlobalSettings.Location
+  href: api/DeployACA.Configuration.Global.GlobalSettings.html#DeployACA_Configuration_Global_GlobalSettings_Location_
+  commentId: Overload:DeployACA.Configuration.Global.GlobalSettings.Location
   isSpec: "True"
-  fullName: Deploy.Configuration.Global.GlobalSettings.Location
+  fullName: DeployACA.Configuration.Global.GlobalSettings.Location
   nameWithType: GlobalSettings.Location
-- uid: Deploy.Configuration.Global.GlobalSettings.ResourceGroupName
+- uid: DeployACA.Configuration.Global.GlobalSettings.ResourceGroupName
   name: ResourceGroupName
-  href: api/Deploy.Configuration.Global.GlobalSettings.html#Deploy_Configuration_Global_GlobalSettings_ResourceGroupName
-  commentId: P:Deploy.Configuration.Global.GlobalSettings.ResourceGroupName
-  fullName: Deploy.Configuration.Global.GlobalSettings.ResourceGroupName
+  href: api/DeployACA.Configuration.Global.GlobalSettings.html#DeployACA_Configuration_Global_GlobalSettings_ResourceGroupName
+  commentId: P:DeployACA.Configuration.Global.GlobalSettings.ResourceGroupName
+  fullName: DeployACA.Configuration.Global.GlobalSettings.ResourceGroupName
   nameWithType: GlobalSettings.ResourceGroupName
-- uid: Deploy.Configuration.Global.GlobalSettings.ResourceGroupName*
+- uid: DeployACA.Configuration.Global.GlobalSettings.ResourceGroupName*
   name: ResourceGroupName
-  href: api/Deploy.Configuration.Global.GlobalSettings.html#Deploy_Configuration_Global_GlobalSettings_ResourceGroupName_
-  commentId: Overload:Deploy.Configuration.Global.GlobalSettings.ResourceGroupName
+  href: api/DeployACA.Configuration.Global.GlobalSettings.html#DeployACA_Configuration_Global_GlobalSettings_ResourceGroupName_
+  commentId: Overload:DeployACA.Configuration.Global.GlobalSettings.ResourceGroupName
   isSpec: "True"
-  fullName: Deploy.Configuration.Global.GlobalSettings.ResourceGroupName
+  fullName: DeployACA.Configuration.Global.GlobalSettings.ResourceGroupName
   nameWithType: GlobalSettings.ResourceGroupName
-- uid: Deploy.Configuration.Global.GlobalSettings.SubscriptionId
+- uid: DeployACA.Configuration.Global.GlobalSettings.SubscriptionId
   name: SubscriptionId
-  href: api/Deploy.Configuration.Global.GlobalSettings.html#Deploy_Configuration_Global_GlobalSettings_SubscriptionId
-  commentId: P:Deploy.Configuration.Global.GlobalSettings.SubscriptionId
-  fullName: Deploy.Configuration.Global.GlobalSettings.SubscriptionId
+  href: api/DeployACA.Configuration.Global.GlobalSettings.html#DeployACA_Configuration_Global_GlobalSettings_SubscriptionId
+  commentId: P:DeployACA.Configuration.Global.GlobalSettings.SubscriptionId
+  fullName: DeployACA.Configuration.Global.GlobalSettings.SubscriptionId
   nameWithType: GlobalSettings.SubscriptionId
-- uid: Deploy.Configuration.Global.GlobalSettings.SubscriptionId*
+- uid: DeployACA.Configuration.Global.GlobalSettings.SubscriptionId*
   name: SubscriptionId
-  href: api/Deploy.Configuration.Global.GlobalSettings.html#Deploy_Configuration_Global_GlobalSettings_SubscriptionId_
-  commentId: Overload:Deploy.Configuration.Global.GlobalSettings.SubscriptionId
+  href: api/DeployACA.Configuration.Global.GlobalSettings.html#DeployACA_Configuration_Global_GlobalSettings_SubscriptionId_
+  commentId: Overload:DeployACA.Configuration.Global.GlobalSettings.SubscriptionId
   isSpec: "True"
-  fullName: Deploy.Configuration.Global.GlobalSettings.SubscriptionId
+  fullName: DeployACA.Configuration.Global.GlobalSettings.SubscriptionId
   nameWithType: GlobalSettings.SubscriptionId
 - uid: DeployLCS.Configuration
   name: DeployLCS.Configuration
@@ -2883,6 +2883,179 @@ references:
   commentId: F:Hexalith.Application.Abstractions.Notifications.NotificationSeverity.Warning
   fullName: Hexalith.Application.Abstractions.Notifications.NotificationSeverity.Warning
   nameWithType: NotificationSeverity.Warning
+- uid: Hexalith.Application.Abstractions.Projection
+  name: Hexalith.Application.Abstractions.Projection
+  href: api/Hexalith.Application.Abstractions.Projection.html
+  commentId: N:Hexalith.Application.Abstractions.Projection
+  fullName: Hexalith.Application.Abstractions.Projection
+  nameWithType: Hexalith.Application.Abstractions.Projection
+- uid: Hexalith.Application.Abstractions.Projection.IProjection
+  name: IProjection
+  href: api/Hexalith.Application.Abstractions.Projection.IProjection.html
+  commentId: T:Hexalith.Application.Abstractions.Projection.IProjection
+  fullName: Hexalith.Application.Abstractions.Projection.IProjection
+  nameWithType: IProjection
+- uid: Hexalith.Application.Abstractions.Projection.IProjection.ExecuteAsync(Hexalith.Application.Abstractions.Requests.BaseRequest,CancellationToken)
+  name: ExecuteAsync(BaseRequest, CancellationToken)
+  href: api/Hexalith.Application.Abstractions.Projection.IProjection.html#Hexalith_Application_Abstractions_Projection_IProjection_ExecuteAsync_Hexalith_Application_Abstractions_Requests_BaseRequest_CancellationToken_
+  commentId: M:Hexalith.Application.Abstractions.Projection.IProjection.ExecuteAsync(Hexalith.Application.Abstractions.Requests.BaseRequest,CancellationToken)
+  fullName: Hexalith.Application.Abstractions.Projection.IProjection.ExecuteAsync(Hexalith.Application.Abstractions.Requests.BaseRequest, CancellationToken)
+  nameWithType: IProjection.ExecuteAsync(BaseRequest, CancellationToken)
+- uid: Hexalith.Application.Abstractions.Projection.IProjection.ExecuteAsync*
+  name: ExecuteAsync
+  href: api/Hexalith.Application.Abstractions.Projection.IProjection.html#Hexalith_Application_Abstractions_Projection_IProjection_ExecuteAsync_
+  commentId: Overload:Hexalith.Application.Abstractions.Projection.IProjection.ExecuteAsync
+  isSpec: "True"
+  fullName: Hexalith.Application.Abstractions.Projection.IProjection.ExecuteAsync
+  nameWithType: IProjection.ExecuteAsync
+- uid: Hexalith.Application.Abstractions.Projection.IProjection.HandleAsync(Hexalith.Domain.Abstractions.Events.BaseEvent,CancellationToken)
+  name: HandleAsync(BaseEvent, CancellationToken)
+  href: api/Hexalith.Application.Abstractions.Projection.IProjection.html#Hexalith_Application_Abstractions_Projection_IProjection_HandleAsync_Hexalith_Domain_Abstractions_Events_BaseEvent_CancellationToken_
+  commentId: M:Hexalith.Application.Abstractions.Projection.IProjection.HandleAsync(Hexalith.Domain.Abstractions.Events.BaseEvent,CancellationToken)
+  fullName: Hexalith.Application.Abstractions.Projection.IProjection.HandleAsync(Hexalith.Domain.Abstractions.Events.BaseEvent, CancellationToken)
+  nameWithType: IProjection.HandleAsync(BaseEvent, CancellationToken)
+- uid: Hexalith.Application.Abstractions.Projection.IProjection.HandleAsync*
+  name: HandleAsync
+  href: api/Hexalith.Application.Abstractions.Projection.IProjection.html#Hexalith_Application_Abstractions_Projection_IProjection_HandleAsync_
+  commentId: Overload:Hexalith.Application.Abstractions.Projection.IProjection.HandleAsync
+  isSpec: "True"
+  fullName: Hexalith.Application.Abstractions.Projection.IProjection.HandleAsync
+  nameWithType: IProjection.HandleAsync
+- uid: Hexalith.Application.Abstractions.Projection.IProjection.SubmitAsync(Hexalith.Application.Abstractions.Requests.BaseRequest,System.String,System.String,System.String,CancellationToken)
+  name: SubmitAsync(BaseRequest, String, String, String, CancellationToken)
+  href: api/Hexalith.Application.Abstractions.Projection.IProjection.html#Hexalith_Application_Abstractions_Projection_IProjection_SubmitAsync_Hexalith_Application_Abstractions_Requests_BaseRequest_System_String_System_String_System_String_CancellationToken_
+  commentId: M:Hexalith.Application.Abstractions.Projection.IProjection.SubmitAsync(Hexalith.Application.Abstractions.Requests.BaseRequest,System.String,System.String,System.String,CancellationToken)
+  fullName: Hexalith.Application.Abstractions.Projection.IProjection.SubmitAsync(Hexalith.Application.Abstractions.Requests.BaseRequest, System.String, System.String, System.String, CancellationToken)
+  nameWithType: IProjection.SubmitAsync(BaseRequest, String, String, String, CancellationToken)
+- uid: Hexalith.Application.Abstractions.Projection.IProjection.SubmitAsync*
+  name: SubmitAsync
+  href: api/Hexalith.Application.Abstractions.Projection.IProjection.html#Hexalith_Application_Abstractions_Projection_IProjection_SubmitAsync_
+  commentId: Overload:Hexalith.Application.Abstractions.Projection.IProjection.SubmitAsync
+  isSpec: "True"
+  fullName: Hexalith.Application.Abstractions.Projection.IProjection.SubmitAsync
+  nameWithType: IProjection.SubmitAsync
+- uid: Hexalith.Application.Abstractions.Projection.IProjectionStateManager
+  name: IProjectionStateManager
+  href: api/Hexalith.Application.Abstractions.Projection.IProjectionStateManager.html
+  commentId: T:Hexalith.Application.Abstractions.Projection.IProjectionStateManager
+  fullName: Hexalith.Application.Abstractions.Projection.IProjectionStateManager
+  nameWithType: IProjectionStateManager
+- uid: Hexalith.Application.Abstractions.Projection.IProjectionStateManager.AddEventAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider,Hexalith.Domain.Abstractions.Events.BaseEvent[],Hexalith.Application.Abstractions.Metadatas.BaseMetadata[],Func{System.String,System.Byte[],TimeSpan,TimeSpan,Task},CancellationToken)
+  name: AddEventAsync(IStateStoreProvider, BaseEvent[], BaseMetadata[], Func<String, Byte[], TimeSpan, TimeSpan, Task>, CancellationToken)
+  href: api/Hexalith.Application.Abstractions.Projection.IProjectionStateManager.html#Hexalith_Application_Abstractions_Projection_IProjectionStateManager_AddEventAsync_Hexalith_Application_Abstractions_States_IStateStoreProvider_Hexalith_Domain_Abstractions_Events_BaseEvent___Hexalith_Application_Abstractions_Metadatas_BaseMetadata___Func_System_String_System_Byte___TimeSpan_TimeSpan_Task__CancellationToken_
+  commentId: M:Hexalith.Application.Abstractions.Projection.IProjectionStateManager.AddEventAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider,Hexalith.Domain.Abstractions.Events.BaseEvent[],Hexalith.Application.Abstractions.Metadatas.BaseMetadata[],Func{System.String,System.Byte[],TimeSpan,TimeSpan,Task},CancellationToken)
+  name.vb: AddEventAsync(IStateStoreProvider, BaseEvent(), BaseMetadata(), Func(Of String, Byte(), TimeSpan, TimeSpan, Task), CancellationToken)
+  fullName: Hexalith.Application.Abstractions.Projection.IProjectionStateManager.AddEventAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider, Hexalith.Domain.Abstractions.Events.BaseEvent[], Hexalith.Application.Abstractions.Metadatas.BaseMetadata[], Func<System.String, System.Byte[], TimeSpan, TimeSpan, Task>, CancellationToken)
+  fullName.vb: Hexalith.Application.Abstractions.Projection.IProjectionStateManager.AddEventAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider, Hexalith.Domain.Abstractions.Events.BaseEvent(), Hexalith.Application.Abstractions.Metadatas.BaseMetadata(), Func(Of System.String, System.Byte(), TimeSpan, TimeSpan, Task), CancellationToken)
+  nameWithType: IProjectionStateManager.AddEventAsync(IStateStoreProvider, BaseEvent[], BaseMetadata[], Func<String, Byte[], TimeSpan, TimeSpan, Task>, CancellationToken)
+  nameWithType.vb: IProjectionStateManager.AddEventAsync(IStateStoreProvider, BaseEvent(), BaseMetadata(), Func(Of String, Byte(), TimeSpan, TimeSpan, Task), CancellationToken)
+- uid: Hexalith.Application.Abstractions.Projection.IProjectionStateManager.AddEventAsync*
+  name: AddEventAsync
+  href: api/Hexalith.Application.Abstractions.Projection.IProjectionStateManager.html#Hexalith_Application_Abstractions_Projection_IProjectionStateManager_AddEventAsync_
+  commentId: Overload:Hexalith.Application.Abstractions.Projection.IProjectionStateManager.AddEventAsync
+  isSpec: "True"
+  fullName: Hexalith.Application.Abstractions.Projection.IProjectionStateManager.AddEventAsync
+  nameWithType: IProjectionStateManager.AddEventAsync
+- uid: Hexalith.Application.Abstractions.Projection.IProjectionStateManager.ContinueAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider,Hexalith.Application.Abstractions.Tasks.ResiliencyPolicy,Hexalith.Application.Abstractions.Projection.IProjection,Func{System.String,System.Byte[],TimeSpan,TimeSpan,Task},Func{System.String,Task},CancellationToken)
+  name: ContinueAsync(IStateStoreProvider, ResiliencyPolicy, IProjection, Func<String, Byte[], TimeSpan, TimeSpan, Task>, Func<String, Task>, CancellationToken)
+  href: api/Hexalith.Application.Abstractions.Projection.IProjectionStateManager.html#Hexalith_Application_Abstractions_Projection_IProjectionStateManager_ContinueAsync_Hexalith_Application_Abstractions_States_IStateStoreProvider_Hexalith_Application_Abstractions_Tasks_ResiliencyPolicy_Hexalith_Application_Abstractions_Projection_IProjection_Func_System_String_System_Byte___TimeSpan_TimeSpan_Task__Func_System_String_Task__CancellationToken_
+  commentId: M:Hexalith.Application.Abstractions.Projection.IProjectionStateManager.ContinueAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider,Hexalith.Application.Abstractions.Tasks.ResiliencyPolicy,Hexalith.Application.Abstractions.Projection.IProjection,Func{System.String,System.Byte[],TimeSpan,TimeSpan,Task},Func{System.String,Task},CancellationToken)
+  name.vb: ContinueAsync(IStateStoreProvider, ResiliencyPolicy, IProjection, Func(Of String, Byte(), TimeSpan, TimeSpan, Task), Func(Of String, Task), CancellationToken)
+  fullName: Hexalith.Application.Abstractions.Projection.IProjectionStateManager.ContinueAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider, Hexalith.Application.Abstractions.Tasks.ResiliencyPolicy, Hexalith.Application.Abstractions.Projection.IProjection, Func<System.String, System.Byte[], TimeSpan, TimeSpan, Task>, Func<System.String, Task>, CancellationToken)
+  fullName.vb: Hexalith.Application.Abstractions.Projection.IProjectionStateManager.ContinueAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider, Hexalith.Application.Abstractions.Tasks.ResiliencyPolicy, Hexalith.Application.Abstractions.Projection.IProjection, Func(Of System.String, System.Byte(), TimeSpan, TimeSpan, Task), Func(Of System.String, Task), CancellationToken)
+  nameWithType: IProjectionStateManager.ContinueAsync(IStateStoreProvider, ResiliencyPolicy, IProjection, Func<String, Byte[], TimeSpan, TimeSpan, Task>, Func<String, Task>, CancellationToken)
+  nameWithType.vb: IProjectionStateManager.ContinueAsync(IStateStoreProvider, ResiliencyPolicy, IProjection, Func(Of String, Byte(), TimeSpan, TimeSpan, Task), Func(Of String, Task), CancellationToken)
+- uid: Hexalith.Application.Abstractions.Projection.IProjectionStateManager.ContinueAsync*
+  name: ContinueAsync
+  href: api/Hexalith.Application.Abstractions.Projection.IProjectionStateManager.html#Hexalith_Application_Abstractions_Projection_IProjectionStateManager_ContinueAsync_
+  commentId: Overload:Hexalith.Application.Abstractions.Projection.IProjectionStateManager.ContinueAsync
+  isSpec: "True"
+  fullName: Hexalith.Application.Abstractions.Projection.IProjectionStateManager.ContinueAsync
+  nameWithType: IProjectionStateManager.ContinueAsync
+- uid: Hexalith.Application.Abstractions.Projection.IProjectionStateManager.GetEventCountAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider,CancellationToken)
+  name: GetEventCountAsync(IStateStoreProvider, CancellationToken)
+  href: api/Hexalith.Application.Abstractions.Projection.IProjectionStateManager.html#Hexalith_Application_Abstractions_Projection_IProjectionStateManager_GetEventCountAsync_Hexalith_Application_Abstractions_States_IStateStoreProvider_CancellationToken_
+  commentId: M:Hexalith.Application.Abstractions.Projection.IProjectionStateManager.GetEventCountAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider,CancellationToken)
+  fullName: Hexalith.Application.Abstractions.Projection.IProjectionStateManager.GetEventCountAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider, CancellationToken)
+  nameWithType: IProjectionStateManager.GetEventCountAsync(IStateStoreProvider, CancellationToken)
+- uid: Hexalith.Application.Abstractions.Projection.IProjectionStateManager.GetEventCountAsync*
+  name: GetEventCountAsync
+  href: api/Hexalith.Application.Abstractions.Projection.IProjectionStateManager.html#Hexalith_Application_Abstractions_Projection_IProjectionStateManager_GetEventCountAsync_
+  commentId: Overload:Hexalith.Application.Abstractions.Projection.IProjectionStateManager.GetEventCountAsync
+  isSpec: "True"
+  fullName: Hexalith.Application.Abstractions.Projection.IProjectionStateManager.GetEventCountAsync
+  nameWithType: IProjectionStateManager.GetEventCountAsync
+- uid: Hexalith.Application.Abstractions.Projection.IProjectionStateManager.GetEventsAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider,CancellationToken)
+  name: GetEventsAsync(IStateStoreProvider, CancellationToken)
+  href: api/Hexalith.Application.Abstractions.Projection.IProjectionStateManager.html#Hexalith_Application_Abstractions_Projection_IProjectionStateManager_GetEventsAsync_Hexalith_Application_Abstractions_States_IStateStoreProvider_CancellationToken_
+  commentId: M:Hexalith.Application.Abstractions.Projection.IProjectionStateManager.GetEventsAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider,CancellationToken)
+  fullName: Hexalith.Application.Abstractions.Projection.IProjectionStateManager.GetEventsAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider, CancellationToken)
+  nameWithType: IProjectionStateManager.GetEventsAsync(IStateStoreProvider, CancellationToken)
+- uid: Hexalith.Application.Abstractions.Projection.IProjectionStateManager.GetEventsAsync*
+  name: GetEventsAsync
+  href: api/Hexalith.Application.Abstractions.Projection.IProjectionStateManager.html#Hexalith_Application_Abstractions_Projection_IProjectionStateManager_GetEventsAsync_
+  commentId: Overload:Hexalith.Application.Abstractions.Projection.IProjectionStateManager.GetEventsAsync
+  isSpec: "True"
+  fullName: Hexalith.Application.Abstractions.Projection.IProjectionStateManager.GetEventsAsync
+  nameWithType: IProjectionStateManager.GetEventsAsync
+- uid: Hexalith.Application.Abstractions.Projection.Projection
+  name: Projection
+  href: api/Hexalith.Application.Abstractions.Projection.Projection.html
+  commentId: T:Hexalith.Application.Abstractions.Projection.Projection
+  fullName: Hexalith.Application.Abstractions.Projection.Projection
+  nameWithType: Projection
+- uid: Hexalith.Application.Abstractions.Projection.Projection.#ctor(Hexalith.Application.Abstractions.Notifications.INotificationBus,Hexalith.Extensions.Common.IDateTimeService)
+  name: Projection(INotificationBus, IDateTimeService)
+  href: api/Hexalith.Application.Abstractions.Projection.Projection.html#Hexalith_Application_Abstractions_Projection_Projection__ctor_Hexalith_Application_Abstractions_Notifications_INotificationBus_Hexalith_Extensions_Common_IDateTimeService_
+  commentId: M:Hexalith.Application.Abstractions.Projection.Projection.#ctor(Hexalith.Application.Abstractions.Notifications.INotificationBus,Hexalith.Extensions.Common.IDateTimeService)
+  fullName: Hexalith.Application.Abstractions.Projection.Projection.Projection(Hexalith.Application.Abstractions.Notifications.INotificationBus, Hexalith.Extensions.Common.IDateTimeService)
+  nameWithType: Projection.Projection(INotificationBus, IDateTimeService)
+- uid: Hexalith.Application.Abstractions.Projection.Projection.#ctor*
+  name: Projection
+  href: api/Hexalith.Application.Abstractions.Projection.Projection.html#Hexalith_Application_Abstractions_Projection_Projection__ctor_
+  commentId: Overload:Hexalith.Application.Abstractions.Projection.Projection.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Application.Abstractions.Projection.Projection.Projection
+  nameWithType: Projection.Projection
+- uid: Hexalith.Application.Abstractions.Projection.Projection.ExecuteAsync(Hexalith.Application.Abstractions.Requests.BaseRequest,System.Threading.CancellationToken)
+  name: ExecuteAsync(BaseRequest, CancellationToken)
+  href: api/Hexalith.Application.Abstractions.Projection.Projection.html#Hexalith_Application_Abstractions_Projection_Projection_ExecuteAsync_Hexalith_Application_Abstractions_Requests_BaseRequest_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Abstractions.Projection.Projection.ExecuteAsync(Hexalith.Application.Abstractions.Requests.BaseRequest,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Abstractions.Projection.Projection.ExecuteAsync(Hexalith.Application.Abstractions.Requests.BaseRequest, System.Threading.CancellationToken)
+  nameWithType: Projection.ExecuteAsync(BaseRequest, CancellationToken)
+- uid: Hexalith.Application.Abstractions.Projection.Projection.ExecuteAsync*
+  name: ExecuteAsync
+  href: api/Hexalith.Application.Abstractions.Projection.Projection.html#Hexalith_Application_Abstractions_Projection_Projection_ExecuteAsync_
+  commentId: Overload:Hexalith.Application.Abstractions.Projection.Projection.ExecuteAsync
+  isSpec: "True"
+  fullName: Hexalith.Application.Abstractions.Projection.Projection.ExecuteAsync
+  nameWithType: Projection.ExecuteAsync
+- uid: Hexalith.Application.Abstractions.Projection.Projection.HandleAsync(Hexalith.Domain.Abstractions.Events.BaseEvent,System.Threading.CancellationToken)
+  name: HandleAsync(BaseEvent, CancellationToken)
+  href: api/Hexalith.Application.Abstractions.Projection.Projection.html#Hexalith_Application_Abstractions_Projection_Projection_HandleAsync_Hexalith_Domain_Abstractions_Events_BaseEvent_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Abstractions.Projection.Projection.HandleAsync(Hexalith.Domain.Abstractions.Events.BaseEvent,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Abstractions.Projection.Projection.HandleAsync(Hexalith.Domain.Abstractions.Events.BaseEvent, System.Threading.CancellationToken)
+  nameWithType: Projection.HandleAsync(BaseEvent, CancellationToken)
+- uid: Hexalith.Application.Abstractions.Projection.Projection.HandleAsync*
+  name: HandleAsync
+  href: api/Hexalith.Application.Abstractions.Projection.Projection.html#Hexalith_Application_Abstractions_Projection_Projection_HandleAsync_
+  commentId: Overload:Hexalith.Application.Abstractions.Projection.Projection.HandleAsync
+  isSpec: "True"
+  fullName: Hexalith.Application.Abstractions.Projection.Projection.HandleAsync
+  nameWithType: Projection.HandleAsync
+- uid: Hexalith.Application.Abstractions.Projection.Projection.SubmitAsync(Hexalith.Application.Abstractions.Requests.BaseRequest,System.String,System.String,System.String,System.Threading.CancellationToken)
+  name: SubmitAsync(BaseRequest, String, String, String, CancellationToken)
+  href: api/Hexalith.Application.Abstractions.Projection.Projection.html#Hexalith_Application_Abstractions_Projection_Projection_SubmitAsync_Hexalith_Application_Abstractions_Requests_BaseRequest_System_String_System_String_System_String_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Abstractions.Projection.Projection.SubmitAsync(Hexalith.Application.Abstractions.Requests.BaseRequest,System.String,System.String,System.String,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Abstractions.Projection.Projection.SubmitAsync(Hexalith.Application.Abstractions.Requests.BaseRequest, System.String, System.String, System.String, System.Threading.CancellationToken)
+  nameWithType: Projection.SubmitAsync(BaseRequest, String, String, String, CancellationToken)
+- uid: Hexalith.Application.Abstractions.Projection.Projection.SubmitAsync*
+  name: SubmitAsync
+  href: api/Hexalith.Application.Abstractions.Projection.Projection.html#Hexalith_Application_Abstractions_Projection_Projection_SubmitAsync_
+  commentId: Overload:Hexalith.Application.Abstractions.Projection.Projection.SubmitAsync
+  isSpec: "True"
+  fullName: Hexalith.Application.Abstractions.Projection.Projection.SubmitAsync
+  nameWithType: Projection.SubmitAsync
 - uid: Hexalith.Application.Abstractions.Requests
   name: Hexalith.Application.Abstractions.Requests
   href: api/Hexalith.Application.Abstractions.Requests.html
@@ -2895,6 +3068,32 @@ references:
   commentId: T:Hexalith.Application.Abstractions.Requests.BaseRequest
   fullName: Hexalith.Application.Abstractions.Requests.BaseRequest
   nameWithType: BaseRequest
+- uid: Hexalith.Application.Abstractions.Requests.BaseRequest.GetDefaultResultType
+  name: GetDefaultResultType()
+  href: api/Hexalith.Application.Abstractions.Requests.BaseRequest.html#Hexalith_Application_Abstractions_Requests_BaseRequest_GetDefaultResultType
+  commentId: M:Hexalith.Application.Abstractions.Requests.BaseRequest.GetDefaultResultType
+  fullName: Hexalith.Application.Abstractions.Requests.BaseRequest.GetDefaultResultType()
+  nameWithType: BaseRequest.GetDefaultResultType()
+- uid: Hexalith.Application.Abstractions.Requests.BaseRequest.GetDefaultResultType*
+  name: GetDefaultResultType
+  href: api/Hexalith.Application.Abstractions.Requests.BaseRequest.html#Hexalith_Application_Abstractions_Requests_BaseRequest_GetDefaultResultType_
+  commentId: Overload:Hexalith.Application.Abstractions.Requests.BaseRequest.GetDefaultResultType
+  isSpec: "True"
+  fullName: Hexalith.Application.Abstractions.Requests.BaseRequest.GetDefaultResultType
+  nameWithType: BaseRequest.GetDefaultResultType
+- uid: Hexalith.Application.Abstractions.Requests.BaseRequest.ResultType
+  name: ResultType
+  href: api/Hexalith.Application.Abstractions.Requests.BaseRequest.html#Hexalith_Application_Abstractions_Requests_BaseRequest_ResultType
+  commentId: P:Hexalith.Application.Abstractions.Requests.BaseRequest.ResultType
+  fullName: Hexalith.Application.Abstractions.Requests.BaseRequest.ResultType
+  nameWithType: BaseRequest.ResultType
+- uid: Hexalith.Application.Abstractions.Requests.BaseRequest.ResultType*
+  name: ResultType
+  href: api/Hexalith.Application.Abstractions.Requests.BaseRequest.html#Hexalith_Application_Abstractions_Requests_BaseRequest_ResultType_
+  commentId: Overload:Hexalith.Application.Abstractions.Requests.BaseRequest.ResultType
+  isSpec: "True"
+  fullName: Hexalith.Application.Abstractions.Requests.BaseRequest.ResultType
+  nameWithType: BaseRequest.ResultType
 - uid: Hexalith.Application.Abstractions.Requests.IRequest
   name: IRequest
   href: api/Hexalith.Application.Abstractions.Requests.IRequest.html
@@ -5528,6 +5727,193 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.States.MemoryStateProvider.UncommittedState
   nameWithType: MemoryStateProvider.UncommittedState
+- uid: Hexalith.Application.States.ProjectionState
+  name: ProjectionState
+  href: api/Hexalith.Application.States.ProjectionState.html
+  commentId: T:Hexalith.Application.States.ProjectionState
+  fullName: Hexalith.Application.States.ProjectionState
+  nameWithType: ProjectionState
+- uid: Hexalith.Application.States.ProjectionState.#ctor(System.Int64,System.Int64)
+  name: ProjectionState(Int64, Int64)
+  href: api/Hexalith.Application.States.ProjectionState.html#Hexalith_Application_States_ProjectionState__ctor_System_Int64_System_Int64_
+  commentId: M:Hexalith.Application.States.ProjectionState.#ctor(System.Int64,System.Int64)
+  fullName: Hexalith.Application.States.ProjectionState.ProjectionState(System.Int64, System.Int64)
+  nameWithType: ProjectionState.ProjectionState(Int64, Int64)
+- uid: Hexalith.Application.States.ProjectionState.#ctor*
+  name: ProjectionState
+  href: api/Hexalith.Application.States.ProjectionState.html#Hexalith_Application_States_ProjectionState__ctor_
+  commentId: Overload:Hexalith.Application.States.ProjectionState.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Application.States.ProjectionState.ProjectionState
+  nameWithType: ProjectionState.ProjectionState
+- uid: Hexalith.Application.States.ProjectionState.EventStreamVersion
+  name: EventStreamVersion
+  href: api/Hexalith.Application.States.ProjectionState.html#Hexalith_Application_States_ProjectionState_EventStreamVersion
+  commentId: P:Hexalith.Application.States.ProjectionState.EventStreamVersion
+  fullName: Hexalith.Application.States.ProjectionState.EventStreamVersion
+  nameWithType: ProjectionState.EventStreamVersion
+- uid: Hexalith.Application.States.ProjectionState.EventStreamVersion*
+  name: EventStreamVersion
+  href: api/Hexalith.Application.States.ProjectionState.html#Hexalith_Application_States_ProjectionState_EventStreamVersion_
+  commentId: Overload:Hexalith.Application.States.ProjectionState.EventStreamVersion
+  isSpec: "True"
+  fullName: Hexalith.Application.States.ProjectionState.EventStreamVersion
+  nameWithType: ProjectionState.EventStreamVersion
+- uid: Hexalith.Application.States.ProjectionState.LastEventDone
+  name: LastEventDone
+  href: api/Hexalith.Application.States.ProjectionState.html#Hexalith_Application_States_ProjectionState_LastEventDone
+  commentId: P:Hexalith.Application.States.ProjectionState.LastEventDone
+  fullName: Hexalith.Application.States.ProjectionState.LastEventDone
+  nameWithType: ProjectionState.LastEventDone
+- uid: Hexalith.Application.States.ProjectionState.LastEventDone*
+  name: LastEventDone
+  href: api/Hexalith.Application.States.ProjectionState.html#Hexalith_Application_States_ProjectionState_LastEventDone_
+  commentId: Overload:Hexalith.Application.States.ProjectionState.LastEventDone
+  isSpec: "True"
+  fullName: Hexalith.Application.States.ProjectionState.LastEventDone
+  nameWithType: ProjectionState.LastEventDone
+- uid: Hexalith.Application.States.ProjectionStateManager
+  name: ProjectionStateManager
+  href: api/Hexalith.Application.States.ProjectionStateManager.html
+  commentId: T:Hexalith.Application.States.ProjectionStateManager
+  fullName: Hexalith.Application.States.ProjectionStateManager
+  nameWithType: ProjectionStateManager
+- uid: Hexalith.Application.States.ProjectionStateManager.#ctor(Hexalith.Application.Abstractions.Notifications.INotificationBus,Hexalith.Extensions.Common.IDateTimeService)
+  name: ProjectionStateManager(INotificationBus, IDateTimeService)
+  href: api/Hexalith.Application.States.ProjectionStateManager.html#Hexalith_Application_States_ProjectionStateManager__ctor_Hexalith_Application_Abstractions_Notifications_INotificationBus_Hexalith_Extensions_Common_IDateTimeService_
+  commentId: M:Hexalith.Application.States.ProjectionStateManager.#ctor(Hexalith.Application.Abstractions.Notifications.INotificationBus,Hexalith.Extensions.Common.IDateTimeService)
+  fullName: Hexalith.Application.States.ProjectionStateManager.ProjectionStateManager(Hexalith.Application.Abstractions.Notifications.INotificationBus, Hexalith.Extensions.Common.IDateTimeService)
+  nameWithType: ProjectionStateManager.ProjectionStateManager(INotificationBus, IDateTimeService)
+- uid: Hexalith.Application.States.ProjectionStateManager.#ctor*
+  name: ProjectionStateManager
+  href: api/Hexalith.Application.States.ProjectionStateManager.html#Hexalith_Application_States_ProjectionStateManager__ctor_
+  commentId: Overload:Hexalith.Application.States.ProjectionStateManager.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Application.States.ProjectionStateManager.ProjectionStateManager
+  nameWithType: ProjectionStateManager.ProjectionStateManager
+- uid: Hexalith.Application.States.ProjectionStateManager.AddEventAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider,Hexalith.Domain.Abstractions.Events.BaseEvent[],Hexalith.Application.Abstractions.Metadatas.BaseMetadata[],System.Func{System.String,System.Byte[],System.TimeSpan,System.TimeSpan,Task},System.Threading.CancellationToken)
+  name: AddEventAsync(IStateStoreProvider, BaseEvent[], BaseMetadata[], Func<String, Byte[], TimeSpan, TimeSpan, Task>, CancellationToken)
+  href: api/Hexalith.Application.States.ProjectionStateManager.html#Hexalith_Application_States_ProjectionStateManager_AddEventAsync_Hexalith_Application_Abstractions_States_IStateStoreProvider_Hexalith_Domain_Abstractions_Events_BaseEvent___Hexalith_Application_Abstractions_Metadatas_BaseMetadata___System_Func_System_String_System_Byte___System_TimeSpan_System_TimeSpan_Task__System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.States.ProjectionStateManager.AddEventAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider,Hexalith.Domain.Abstractions.Events.BaseEvent[],Hexalith.Application.Abstractions.Metadatas.BaseMetadata[],System.Func{System.String,System.Byte[],System.TimeSpan,System.TimeSpan,Task},System.Threading.CancellationToken)
+  name.vb: AddEventAsync(IStateStoreProvider, BaseEvent(), BaseMetadata(), Func(Of String, Byte(), TimeSpan, TimeSpan, Task), CancellationToken)
+  fullName: Hexalith.Application.States.ProjectionStateManager.AddEventAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider, Hexalith.Domain.Abstractions.Events.BaseEvent[], Hexalith.Application.Abstractions.Metadatas.BaseMetadata[], System.Func<System.String, System.Byte[], System.TimeSpan, System.TimeSpan, Task>, System.Threading.CancellationToken)
+  fullName.vb: Hexalith.Application.States.ProjectionStateManager.AddEventAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider, Hexalith.Domain.Abstractions.Events.BaseEvent(), Hexalith.Application.Abstractions.Metadatas.BaseMetadata(), System.Func(Of System.String, System.Byte(), System.TimeSpan, System.TimeSpan, Task), System.Threading.CancellationToken)
+  nameWithType: ProjectionStateManager.AddEventAsync(IStateStoreProvider, BaseEvent[], BaseMetadata[], Func<String, Byte[], TimeSpan, TimeSpan, Task>, CancellationToken)
+  nameWithType.vb: ProjectionStateManager.AddEventAsync(IStateStoreProvider, BaseEvent(), BaseMetadata(), Func(Of String, Byte(), TimeSpan, TimeSpan, Task), CancellationToken)
+- uid: Hexalith.Application.States.ProjectionStateManager.AddEventAsync*
+  name: AddEventAsync
+  href: api/Hexalith.Application.States.ProjectionStateManager.html#Hexalith_Application_States_ProjectionStateManager_AddEventAsync_
+  commentId: Overload:Hexalith.Application.States.ProjectionStateManager.AddEventAsync
+  isSpec: "True"
+  fullName: Hexalith.Application.States.ProjectionStateManager.AddEventAsync
+  nameWithType: ProjectionStateManager.AddEventAsync
+- uid: Hexalith.Application.States.ProjectionStateManager.ContinueAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider,Hexalith.Application.Abstractions.Tasks.ResiliencyPolicy,Hexalith.Application.Abstractions.Projection.IProjection,System.Func{System.String,System.Byte[],System.TimeSpan,System.TimeSpan,Task},System.Func{System.String,Task},System.Threading.CancellationToken)
+  name: ContinueAsync(IStateStoreProvider, ResiliencyPolicy, IProjection, Func<String, Byte[], TimeSpan, TimeSpan, Task>, Func<String, Task>, CancellationToken)
+  href: api/Hexalith.Application.States.ProjectionStateManager.html#Hexalith_Application_States_ProjectionStateManager_ContinueAsync_Hexalith_Application_Abstractions_States_IStateStoreProvider_Hexalith_Application_Abstractions_Tasks_ResiliencyPolicy_Hexalith_Application_Abstractions_Projection_IProjection_System_Func_System_String_System_Byte___System_TimeSpan_System_TimeSpan_Task__System_Func_System_String_Task__System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.States.ProjectionStateManager.ContinueAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider,Hexalith.Application.Abstractions.Tasks.ResiliencyPolicy,Hexalith.Application.Abstractions.Projection.IProjection,System.Func{System.String,System.Byte[],System.TimeSpan,System.TimeSpan,Task},System.Func{System.String,Task},System.Threading.CancellationToken)
+  name.vb: ContinueAsync(IStateStoreProvider, ResiliencyPolicy, IProjection, Func(Of String, Byte(), TimeSpan, TimeSpan, Task), Func(Of String, Task), CancellationToken)
+  fullName: Hexalith.Application.States.ProjectionStateManager.ContinueAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider, Hexalith.Application.Abstractions.Tasks.ResiliencyPolicy, Hexalith.Application.Abstractions.Projection.IProjection, System.Func<System.String, System.Byte[], System.TimeSpan, System.TimeSpan, Task>, System.Func<System.String, Task>, System.Threading.CancellationToken)
+  fullName.vb: Hexalith.Application.States.ProjectionStateManager.ContinueAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider, Hexalith.Application.Abstractions.Tasks.ResiliencyPolicy, Hexalith.Application.Abstractions.Projection.IProjection, System.Func(Of System.String, System.Byte(), System.TimeSpan, System.TimeSpan, Task), System.Func(Of System.String, Task), System.Threading.CancellationToken)
+  nameWithType: ProjectionStateManager.ContinueAsync(IStateStoreProvider, ResiliencyPolicy, IProjection, Func<String, Byte[], TimeSpan, TimeSpan, Task>, Func<String, Task>, CancellationToken)
+  nameWithType.vb: ProjectionStateManager.ContinueAsync(IStateStoreProvider, ResiliencyPolicy, IProjection, Func(Of String, Byte(), TimeSpan, TimeSpan, Task), Func(Of String, Task), CancellationToken)
+- uid: Hexalith.Application.States.ProjectionStateManager.ContinueAsync*
+  name: ContinueAsync
+  href: api/Hexalith.Application.States.ProjectionStateManager.html#Hexalith_Application_States_ProjectionStateManager_ContinueAsync_
+  commentId: Overload:Hexalith.Application.States.ProjectionStateManager.ContinueAsync
+  isSpec: "True"
+  fullName: Hexalith.Application.States.ProjectionStateManager.ContinueAsync
+  nameWithType: ProjectionStateManager.ContinueAsync
+- uid: Hexalith.Application.States.ProjectionStateManager.EventsStreamName
+  name: EventsStreamName
+  href: api/Hexalith.Application.States.ProjectionStateManager.html#Hexalith_Application_States_ProjectionStateManager_EventsStreamName
+  commentId: P:Hexalith.Application.States.ProjectionStateManager.EventsStreamName
+  fullName: Hexalith.Application.States.ProjectionStateManager.EventsStreamName
+  nameWithType: ProjectionStateManager.EventsStreamName
+- uid: Hexalith.Application.States.ProjectionStateManager.EventsStreamName*
+  name: EventsStreamName
+  href: api/Hexalith.Application.States.ProjectionStateManager.html#Hexalith_Application_States_ProjectionStateManager_EventsStreamName_
+  commentId: Overload:Hexalith.Application.States.ProjectionStateManager.EventsStreamName
+  isSpec: "True"
+  fullName: Hexalith.Application.States.ProjectionStateManager.EventsStreamName
+  nameWithType: ProjectionStateManager.EventsStreamName
+- uid: Hexalith.Application.States.ProjectionStateManager.ExecuteEventsAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider,Hexalith.Application.Abstractions.Projection.IProjection,Hexalith.Application.Abstractions.Tasks.ResiliencyPolicy,System.Threading.CancellationToken)
+  name: ExecuteEventsAsync(IStateStoreProvider, IProjection, ResiliencyPolicy, CancellationToken)
+  href: api/Hexalith.Application.States.ProjectionStateManager.html#Hexalith_Application_States_ProjectionStateManager_ExecuteEventsAsync_Hexalith_Application_Abstractions_States_IStateStoreProvider_Hexalith_Application_Abstractions_Projection_IProjection_Hexalith_Application_Abstractions_Tasks_ResiliencyPolicy_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.States.ProjectionStateManager.ExecuteEventsAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider,Hexalith.Application.Abstractions.Projection.IProjection,Hexalith.Application.Abstractions.Tasks.ResiliencyPolicy,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.States.ProjectionStateManager.ExecuteEventsAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider, Hexalith.Application.Abstractions.Projection.IProjection, Hexalith.Application.Abstractions.Tasks.ResiliencyPolicy, System.Threading.CancellationToken)
+  nameWithType: ProjectionStateManager.ExecuteEventsAsync(IStateStoreProvider, IProjection, ResiliencyPolicy, CancellationToken)
+- uid: Hexalith.Application.States.ProjectionStateManager.ExecuteEventsAsync*
+  name: ExecuteEventsAsync
+  href: api/Hexalith.Application.States.ProjectionStateManager.html#Hexalith_Application_States_ProjectionStateManager_ExecuteEventsAsync_
+  commentId: Overload:Hexalith.Application.States.ProjectionStateManager.ExecuteEventsAsync
+  isSpec: "True"
+  fullName: Hexalith.Application.States.ProjectionStateManager.ExecuteEventsAsync
+  nameWithType: ProjectionStateManager.ExecuteEventsAsync
+- uid: Hexalith.Application.States.ProjectionStateManager.GetEventCountAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider,System.Threading.CancellationToken)
+  name: GetEventCountAsync(IStateStoreProvider, CancellationToken)
+  href: api/Hexalith.Application.States.ProjectionStateManager.html#Hexalith_Application_States_ProjectionStateManager_GetEventCountAsync_Hexalith_Application_Abstractions_States_IStateStoreProvider_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.States.ProjectionStateManager.GetEventCountAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.States.ProjectionStateManager.GetEventCountAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider, System.Threading.CancellationToken)
+  nameWithType: ProjectionStateManager.GetEventCountAsync(IStateStoreProvider, CancellationToken)
+- uid: Hexalith.Application.States.ProjectionStateManager.GetEventCountAsync*
+  name: GetEventCountAsync
+  href: api/Hexalith.Application.States.ProjectionStateManager.html#Hexalith_Application_States_ProjectionStateManager_GetEventCountAsync_
+  commentId: Overload:Hexalith.Application.States.ProjectionStateManager.GetEventCountAsync
+  isSpec: "True"
+  fullName: Hexalith.Application.States.ProjectionStateManager.GetEventCountAsync
+  nameWithType: ProjectionStateManager.GetEventCountAsync
+- uid: Hexalith.Application.States.ProjectionStateManager.GetEventsAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider,System.Threading.CancellationToken)
+  name: GetEventsAsync(IStateStoreProvider, CancellationToken)
+  href: api/Hexalith.Application.States.ProjectionStateManager.html#Hexalith_Application_States_ProjectionStateManager_GetEventsAsync_Hexalith_Application_Abstractions_States_IStateStoreProvider_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.States.ProjectionStateManager.GetEventsAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.States.ProjectionStateManager.GetEventsAsync(Hexalith.Application.Abstractions.States.IStateStoreProvider, System.Threading.CancellationToken)
+  nameWithType: ProjectionStateManager.GetEventsAsync(IStateStoreProvider, CancellationToken)
+- uid: Hexalith.Application.States.ProjectionStateManager.GetEventsAsync*
+  name: GetEventsAsync
+  href: api/Hexalith.Application.States.ProjectionStateManager.html#Hexalith_Application_States_ProjectionStateManager_GetEventsAsync_
+  commentId: Overload:Hexalith.Application.States.ProjectionStateManager.GetEventsAsync
+  isSpec: "True"
+  fullName: Hexalith.Application.States.ProjectionStateManager.GetEventsAsync
+  nameWithType: ProjectionStateManager.GetEventsAsync
+- uid: Hexalith.Application.States.ProjectionStateManager.ResiliencyPolicyStateName
+  name: ResiliencyPolicyStateName
+  href: api/Hexalith.Application.States.ProjectionStateManager.html#Hexalith_Application_States_ProjectionStateManager_ResiliencyPolicyStateName
+  commentId: P:Hexalith.Application.States.ProjectionStateManager.ResiliencyPolicyStateName
+  fullName: Hexalith.Application.States.ProjectionStateManager.ResiliencyPolicyStateName
+  nameWithType: ProjectionStateManager.ResiliencyPolicyStateName
+- uid: Hexalith.Application.States.ProjectionStateManager.ResiliencyPolicyStateName*
+  name: ResiliencyPolicyStateName
+  href: api/Hexalith.Application.States.ProjectionStateManager.html#Hexalith_Application_States_ProjectionStateManager_ResiliencyPolicyStateName_
+  commentId: Overload:Hexalith.Application.States.ProjectionStateManager.ResiliencyPolicyStateName
+  isSpec: "True"
+  fullName: Hexalith.Application.States.ProjectionStateManager.ResiliencyPolicyStateName
+  nameWithType: ProjectionStateManager.ResiliencyPolicyStateName
+- uid: Hexalith.Application.States.ProjectionStateManager.Separator
+  name: Separator
+  href: api/Hexalith.Application.States.ProjectionStateManager.html#Hexalith_Application_States_ProjectionStateManager_Separator
+  commentId: P:Hexalith.Application.States.ProjectionStateManager.Separator
+  fullName: Hexalith.Application.States.ProjectionStateManager.Separator
+  nameWithType: ProjectionStateManager.Separator
+- uid: Hexalith.Application.States.ProjectionStateManager.Separator*
+  name: Separator
+  href: api/Hexalith.Application.States.ProjectionStateManager.html#Hexalith_Application_States_ProjectionStateManager_Separator_
+  commentId: Overload:Hexalith.Application.States.ProjectionStateManager.Separator
+  isSpec: "True"
+  fullName: Hexalith.Application.States.ProjectionStateManager.Separator
+  nameWithType: ProjectionStateManager.Separator
+- uid: Hexalith.Application.States.ProjectionStateManager.StateName
+  name: StateName
+  href: api/Hexalith.Application.States.ProjectionStateManager.html#Hexalith_Application_States_ProjectionStateManager_StateName
+  commentId: P:Hexalith.Application.States.ProjectionStateManager.StateName
+  fullName: Hexalith.Application.States.ProjectionStateManager.StateName
+  nameWithType: ProjectionStateManager.StateName
+- uid: Hexalith.Application.States.ProjectionStateManager.StateName*
+  name: StateName
+  href: api/Hexalith.Application.States.ProjectionStateManager.html#Hexalith_Application_States_ProjectionStateManager_StateName_
+  commentId: Overload:Hexalith.Application.States.ProjectionStateManager.StateName
+  isSpec: "True"
+  fullName: Hexalith.Application.States.ProjectionStateManager.StateName
+  nameWithType: ProjectionStateManager.StateName
 - uid: Hexalith.Application.States.StateStoreSettings
   name: StateStoreSettings
   href: api/Hexalith.Application.States.StateStoreSettings.html
@@ -6177,6 +6563,38 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Tasks.ResilientCommandProcessor.ProcessAsync
   nameWithType: ResilientCommandProcessor.ProcessAsync
+- uid: Hexalith.Application.Tasks.ResilientProjectionEventProcessor
+  name: ResilientProjectionEventProcessor
+  href: api/Hexalith.Application.Tasks.ResilientProjectionEventProcessor.html
+  commentId: T:Hexalith.Application.Tasks.ResilientProjectionEventProcessor
+  fullName: Hexalith.Application.Tasks.ResilientProjectionEventProcessor
+  nameWithType: ResilientProjectionEventProcessor
+- uid: Hexalith.Application.Tasks.ResilientProjectionEventProcessor.#ctor(Hexalith.Application.Abstractions.Tasks.ResiliencyPolicy,Hexalith.Application.Abstractions.Projection.IProjection,Hexalith.Application.Abstractions.States.IStateStoreProvider)
+  name: ResilientProjectionEventProcessor(ResiliencyPolicy, IProjection, IStateStoreProvider)
+  href: api/Hexalith.Application.Tasks.ResilientProjectionEventProcessor.html#Hexalith_Application_Tasks_ResilientProjectionEventProcessor__ctor_Hexalith_Application_Abstractions_Tasks_ResiliencyPolicy_Hexalith_Application_Abstractions_Projection_IProjection_Hexalith_Application_Abstractions_States_IStateStoreProvider_
+  commentId: M:Hexalith.Application.Tasks.ResilientProjectionEventProcessor.#ctor(Hexalith.Application.Abstractions.Tasks.ResiliencyPolicy,Hexalith.Application.Abstractions.Projection.IProjection,Hexalith.Application.Abstractions.States.IStateStoreProvider)
+  fullName: Hexalith.Application.Tasks.ResilientProjectionEventProcessor.ResilientProjectionEventProcessor(Hexalith.Application.Abstractions.Tasks.ResiliencyPolicy, Hexalith.Application.Abstractions.Projection.IProjection, Hexalith.Application.Abstractions.States.IStateStoreProvider)
+  nameWithType: ResilientProjectionEventProcessor.ResilientProjectionEventProcessor(ResiliencyPolicy, IProjection, IStateStoreProvider)
+- uid: Hexalith.Application.Tasks.ResilientProjectionEventProcessor.#ctor*
+  name: ResilientProjectionEventProcessor
+  href: api/Hexalith.Application.Tasks.ResilientProjectionEventProcessor.html#Hexalith_Application_Tasks_ResilientProjectionEventProcessor__ctor_
+  commentId: Overload:Hexalith.Application.Tasks.ResilientProjectionEventProcessor.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Application.Tasks.ResilientProjectionEventProcessor.ResilientProjectionEventProcessor
+  nameWithType: ResilientProjectionEventProcessor.ResilientProjectionEventProcessor
+- uid: Hexalith.Application.Tasks.ResilientProjectionEventProcessor.ProcessAsync(System.String,Hexalith.Domain.Abstractions.Events.BaseEvent,System.Threading.CancellationToken)
+  name: ProcessAsync(String, BaseEvent, CancellationToken)
+  href: api/Hexalith.Application.Tasks.ResilientProjectionEventProcessor.html#Hexalith_Application_Tasks_ResilientProjectionEventProcessor_ProcessAsync_System_String_Hexalith_Domain_Abstractions_Events_BaseEvent_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Tasks.ResilientProjectionEventProcessor.ProcessAsync(System.String,Hexalith.Domain.Abstractions.Events.BaseEvent,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Tasks.ResilientProjectionEventProcessor.ProcessAsync(System.String, Hexalith.Domain.Abstractions.Events.BaseEvent, System.Threading.CancellationToken)
+  nameWithType: ResilientProjectionEventProcessor.ProcessAsync(String, BaseEvent, CancellationToken)
+- uid: Hexalith.Application.Tasks.ResilientProjectionEventProcessor.ProcessAsync*
+  name: ProcessAsync
+  href: api/Hexalith.Application.Tasks.ResilientProjectionEventProcessor.html#Hexalith_Application_Tasks_ResilientProjectionEventProcessor_ProcessAsync_
+  commentId: Overload:Hexalith.Application.Tasks.ResilientProjectionEventProcessor.ProcessAsync
+  isSpec: "True"
+  fullName: Hexalith.Application.Tasks.ResilientProjectionEventProcessor.ProcessAsync
+  nameWithType: ResilientProjectionEventProcessor.ProcessAsync
 - uid: Hexalith.Application.TopologicalSorting
   name: Hexalith.Application.TopologicalSorting
   href: api/Hexalith.Application.TopologicalSorting.html

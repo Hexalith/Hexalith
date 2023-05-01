@@ -1,0 +1,140 @@
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Application.Abstractions
+// Author           : Jérôme Piquot
+// Created          : 01-30-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 05-01-2023
+// ***********************************************************************
+// <copyright file="ResilientProjectionEventProcessor.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
+namespace Hexalith.Application.Tasks;
+
+using System;
+using System.Threading;
+
+using Hexalith.Application.Abstractions.Projection;
+using Hexalith.Application.Abstractions.States;
+using Hexalith.Application.Abstractions.Tasks;
+using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Extensions.Common;
+using Hexalith.Extensions.Helpers;
+
+/// <summary>
+/// Class ResilientEventProcessor.
+/// </summary>
+public class ResilientProjectionEventProcessor
+{
+    /// <summary>
+    /// The projection.
+    /// </summary>
+    private readonly IProjection _projection;
+
+    /// <summary>
+    /// The resiliency policy.
+    /// </summary>
+    private readonly ResiliencyPolicy _resiliencyPolicy;
+
+    /// <summary>
+    /// The state store provider.
+    /// </summary>
+    private readonly IStateStoreProvider _stateStoreProvider;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ResilientProjectionEventProcessor" /> class.
+    /// </summary>
+    /// <param name="resiliencyPolicy">The resiliency policy.</param>
+    /// <param name="projection">The projection.</param>
+    /// <param name="stateStoreProvider">The state store provider.</param>
+    public ResilientProjectionEventProcessor(
+        ResiliencyPolicy resiliencyPolicy,
+        IProjection projection,
+        IStateStoreProvider stateStoreProvider)
+    {
+        ArgumentNullException.ThrowIfNull(resiliencyPolicy);
+        ArgumentNullException.ThrowIfNull(projection);
+        ArgumentNullException.ThrowIfNull(stateStoreProvider);
+        _resiliencyPolicy = resiliencyPolicy;
+        _projection = projection;
+        _stateStoreProvider = stateStoreProvider;
+    }
+
+    /// <summary>
+    /// Process as an asynchronous operation.
+    /// </summary>
+    /// <param name="id">The identifier.</param>
+    /// <param name="command">The command.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>A <see cref="Task{TResult}" /> representing the result of the asynchronous operation.</returns>
+    public async Task<TimeSpan?> ProcessAsync(string id, BaseEvent command, CancellationToken cancellationToken)
+    {
+        TaskProcessor taskProcessor = await GetTaskProcessorAsync(id, cancellationToken);
+        switch (taskProcessor.Status)
+        {
+            case TaskProcessorStatus.New:
+                taskProcessor = taskProcessor.Start();
+                break;
+
+            case TaskProcessorStatus.Suspended:
+                switch (taskProcessor.CanRetry)
+                {
+                    case RetryStatus.Enabled:
+                        taskProcessor = taskProcessor.Continue();
+                        break;
+
+                    case RetryStatus.Suspended:
+                        return taskProcessor.RetryWaitTime;
+
+                    case RetryStatus.Stopped:
+                        taskProcessor = taskProcessor.Cancel();
+                        return null;
+                }
+
+                break;
+
+            case TaskProcessorStatus.Active:
+                break;
+
+            case TaskProcessorStatus.Canceled:
+            case TaskProcessorStatus.Completed:
+                return null;
+        }
+
+        try
+        {
+            if (taskProcessor.Status == TaskProcessorStatus.Active)
+            {
+                await _projection.HandleAsync(command, cancellationToken);
+                taskProcessor = taskProcessor.Complete();
+            }
+        }
+        catch (Exception e)
+        {
+            taskProcessor = taskProcessor.Fail($"An error occured when executing command {command.TypeName} on {command.AggregateName}/{command.AggregateId}: {e.Message}", e.FullMessage());
+        }
+
+        await _stateStoreProvider.SetStateAsync(nameof(TaskProcessor) + id, taskProcessor, cancellationToken);
+        return (taskProcessor.Status is TaskProcessorStatus.Completed or TaskProcessorStatus.Canceled) ? null : taskProcessor.RetryWaitTime;
+    }
+
+    /// <summary>
+    /// Get task processor as an asynchronous operation.
+    /// </summary>
+    /// <param name="id">The identifier.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>A Task&lt;TaskProcessor&gt; representing the asynchronous operation.</returns>
+    private async Task<TaskProcessor> GetTaskProcessorAsync(string id, CancellationToken cancellationToken)
+    {
+        ConditionalValue<TaskProcessor> result = await _stateStoreProvider
+            .TryGetStateAsync<TaskProcessor>(
+                nameof(TaskProcessor) + id,
+                cancellationToken);
+        return result.HasValue ? result.Value : new TaskProcessor(DateTimeOffset.UtcNow, _resiliencyPolicy);
+    }
+}

@@ -25,16 +25,16 @@ using Hexalith.Extensions.Serialization;
 /// <summary>
 /// Class BaseNotification.
 /// Implements the <see cref="BaseMessage" />
-/// Implements the <see cref="Application.Notifications.INotification" />.
+/// Implements the <see cref="INotification" />.
 /// </summary>
 /// <seealso cref="BaseMessage" />
-/// <seealso cref="Application.Notifications.INotification" />
+/// <seealso cref="INotification" />
 [DataContract]
 [JsonConverter(typeof(PolymorphicJsonConverter<BaseNotification>))]
 public class BaseNotification : BaseMessage, INotification
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="BaseNotification"/> class.
+    /// Initializes a new instance of the <see cref="BaseNotification" /> class.
     /// </summary>
     /// <param name="title">The title.</param>
     /// <param name="message">The message.</param>
@@ -50,7 +50,7 @@ public class BaseNotification : BaseMessage, INotification
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="BaseNotification"/> class.
+    /// Initializes a new instance of the <see cref="BaseNotification" /> class.
     /// </summary>
     [Obsolete("For serialization only", true)]
     public BaseNotification() => Title = Message = string.Empty;
