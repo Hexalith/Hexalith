@@ -70,7 +70,7 @@ public class BaseMessage : IMessage, IPolymorphicSerializable
     /// Get the aggregate name.
     /// </summary>
     /// <returns>The name.</returns>
-    protected virtual string DefaultAggregateName() => GetType().Name;
+    protected virtual string DefaultAggregateName() => string.Empty;
 
     /// <summary>
     /// Get the message major version.

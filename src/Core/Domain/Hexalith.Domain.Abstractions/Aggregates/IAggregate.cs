@@ -52,6 +52,11 @@ public interface IAggregate
         IAggregate aggregate = this;
         foreach (BaseEvent e in events)
         {
+            if (e.AggregateId != aggregate.AggregateId)
+            {
+                throw new InvalidOperationException($"The event '{e.TypeName}' can only be applied to aggregate '{e.AggregateName}'. It cannot be applied to aggregate {aggregate.AggregateName} with id {aggregate.AggregateId}");
+            }
+
             aggregate = aggregate.Apply(e);
         }
 

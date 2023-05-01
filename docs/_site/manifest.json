@@ -12,7 +12,7 @@
           "hash": "mLQc0aFezA/VPN2W2F6C0EjR/QvGQeROZuCTQXJ/EiE="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -65,90 +65,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/DevOpsAssistant.Application.Configuration.DevOpsUnitOfWorkSettings.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/DevOpsAssistant.Application.Configuration.DevOpsUnitOfWorkSettings.html",
-          "hash": "Dpb9TX2rzCt0aralU15Spa6/HckFXNm8BAhFDxWeQrs="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/DevOpsAssistant.Application.Configuration.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/DevOpsAssistant.Application.Configuration.html",
-          "hash": "5o6h69IgSgDYYAFE3kggsu70+jRiVDeyiymGOzcU0IM="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/DevOpsAssistant.Domain.Aggregates.DevOpsUnitOfWork.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/DevOpsAssistant.Domain.Aggregates.DevOpsUnitOfWork.html",
-          "hash": "PcJjfnexGswuKAPZiD/1EGZB3vjhHM5BAgpK9vd+/4U="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/DevOpsAssistant.Domain.Aggregates.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/DevOpsAssistant.Domain.Aggregates.html",
-          "hash": "ZKGO3KOjXz6fLS4iF/n1yGrMmiWm80Srd6PD+H/7Q6E="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/DevOpsAssistant.Infrastructure.Actors.DevOpsUnitOfWorkAggregateActor.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/DevOpsAssistant.Infrastructure.Actors.DevOpsUnitOfWorkAggregateActor.html",
-          "hash": "/bq+27TIyODS2zq2AP+33M0stnnI2+eduRFfkvmBCM4="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/DevOpsAssistant.Infrastructure.Actors.IDevOpsUnitOfWorkAggregateActor.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/DevOpsAssistant.Infrastructure.Actors.IDevOpsUnitOfWorkAggregateActor.html",
-          "hash": "Cn1ORufwWEsC7l7YvjzxbGPlIGO8fVf/gxhLk45pJbM="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/DevOpsAssistant.Infrastructure.Actors.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/DevOpsAssistant.Infrastructure.Actors.html",
-          "hash": "KK+ZgR1884+mG3j4AgnB0po/aqAt4gPoe4MKJOmV2a4="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/Hexalith.Application.Abstractions.Aggregates.IAggregateStateManager.yml",
       "output": {
         ".html": {
@@ -177,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Abstractions.Commands.BaseCommand.html",
-          "hash": "ZK3sgthpaqCFbylYRzNw/mcw+w/oHiCcYntdlNdM4nY="
+          "hash": "HycctpcYpzDn+Ofy+FZOp3eVI00INNJxw7vWftA8698="
         }
       },
       "is_incremental": false,
@@ -321,7 +237,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Abstractions.Commands.html",
-          "hash": "kn7tEDUcPBxnzzzMducEqUYZSnhL3CxlGBYHM5cvh/o="
+          "hash": "REJc051OW3yrAqrt8rEOQJ1Bw1Pw3TrcxxrGMAdLepc="
         }
       },
       "is_incremental": false,
@@ -1757,6 +1673,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Domain.Abstractions.Aggregates.Aggregate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Domain.Abstractions.Aggregates.Aggregate.html",
+          "hash": "aQKEa2k3CwrKY6Gsa94EhrbHPA8JWX8Aq1jjbw66D1A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Hexalith.Domain.Abstractions.Aggregates.AggregateBuilder.yml",
       "output": {
         ".html": {
@@ -1785,7 +1713,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.Abstractions.Aggregates.html",
-          "hash": "4OUxIoUmdpYBwYmgfpSQOHT1xF1jiXHGxaGZhKaIjNE="
+          "hash": "QQAlBdHa3LE77feWEXaswrzSBoRagLFNEl6keezl1jA="
         }
       },
       "is_incremental": false,
@@ -1857,7 +1785,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.Abstractions.Messages.BaseMessage.html",
-          "hash": "aT8E7XAiKdqNskMQB6IoF6XWFgj/hIF709MERAA/mZA="
+          "hash": "R82WmquzVRhpGK/W6msuocPfyUFY1khCMRucUnCV/08="
         }
       },
       "is_incremental": false,
@@ -1905,7 +1833,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Extensions.Common.DateTimeService.html",
-          "hash": "9DI8gllbporJIFvMe2KIScWbDW1LEVEM2gIgmgoXKr4="
+          "hash": "HwR85ld7eNHfcvLRO7Z0xvO7oDpbx0gd3NY50tWia34="
         }
       },
       "is_incremental": false,
@@ -2013,7 +1941,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Extensions.Configuration.OptionsHelper.html",
-          "hash": "D/eYRyXNWk6MLYHvVgKwpPd6mjsbjQTEEhzp54vXu7g="
+          "hash": "sL62BPdGpj7nHEubR3zDWVaHGDN7pcGIfxWxkzLWzrA="
         }
       },
       "is_incremental": false,
@@ -2253,7 +2181,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.ContainerRegistryBuilder.html",
-          "hash": "+Ptjy3HEEVifz1WDn9YwD4/sIcu4YDma/2Oq9ZKtLxY="
+          "hash": "GUB0kqxcOQfv7Pve3jjauyz0mVnaPNlgS4uq1xhZiNA="
         }
       },
       "is_incremental": false,
@@ -2313,7 +2241,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.ResourceBuilder-1.html",
-          "hash": "vNefYiFAOS/SdBgO0deQzh5/8e6m9M6sab7MlB1gT9w="
+          "hash": "XSl1p9ewWvZr/HvNRK3m0NM/QKfLGjMjiPJs4oHorx4="
         }
       },
       "is_incremental": false,
@@ -3357,7 +3285,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.TestMocks.IMockBuilder-1.html",
-          "hash": "aMDp1g859x6AAizepYdSI0saDXveze84mWDhI/hNAPI="
+          "hash": "sybKWcgsczMY9/i1YHEPSXZqLCLIhniTuTw5duCuOGo="
         }
       },
       "is_incremental": false,
@@ -3381,7 +3309,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.TestMocks.OptionsBuilder-1.html",
-          "hash": "laZvljkButWym+VAVPFeYbJ5qSVAO8T37SKonc0WoIA="
+          "hash": "tCFaoBYwZ3Yr3XXIQN80ALScn9IqVo3TpOqWV/645s4="
         }
       },
       "is_incremental": false,
@@ -3417,7 +3345,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "gXpzkLYAE9teU6DJjIxW7MGqh0EHOufM9mVYCEtLLy4="
+          "hash": "tPAYJqjZxWMjPV9WrEMH4tF2b7/nBt+vzpd0iKHIeBg="
         }
       },
       "is_incremental": false,
@@ -3432,7 +3360,7 @@
           "hash": "XREAr6iHtuka+aO7c3lTrh90rt0rybqw859u1tetgNM="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3456,7 +3384,7 @@
           "hash": "vsW9ZvNJ7sOSf2pjIjuOSwvq6ulmUIdFPHc7lPEfC4Y="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3475,25 +3403,23 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": false,
-        "details": "Disable incremental build by force rebuild option.",
+        "can_incremental": true,
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0,
-        "full_build_reason_code": "ForceRebuild"
+        "skipped_file_count": 0
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 4,
-          "skipped_file_count": 0
+          "skipped_file_count": 4
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 282,
-          "skipped_file_count": 0
+          "total_file_count": 276,
+          "skipped_file_count": 249
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
@@ -3506,8 +3432,8 @@
     },
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0
