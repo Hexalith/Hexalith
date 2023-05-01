@@ -137,8 +137,8 @@ public class DummyAggregate : IAggregate
 {
     public DummyAggregate()
     {
-        AggregateId = "Test1";
-        AggregateName = "Test";
+        AggregateId = "123";
+        AggregateName = "Test1";
     }
 
     public string AggregateId { get; }

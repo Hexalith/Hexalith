@@ -6,11 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Update="README.md">
-      <PackagePath>\</PackagePath>
-      <Pack>true</Pack>
-    </None>
-  </ItemGroup>
-
 </Project>

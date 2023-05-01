@@ -12,7 +12,7 @@
           "hash": "mLQc0aFezA/VPN2W2F6C0EjR/QvGQeROZuCTQXJ/EiE="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1677,7 +1677,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.Abstractions.Aggregates.Aggregate.html",
-          "hash": "aQKEa2k3CwrKY6Gsa94EhrbHPA8JWX8Aq1jjbw66D1A="
+          "hash": "/RrKdEi/mFib7shKssnWhd0HHGWlNQobFCNdDoMbRZw="
         }
       },
       "is_incremental": false,
@@ -1833,7 +1833,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Extensions.Common.DateTimeService.html",
-          "hash": "HwR85ld7eNHfcvLRO7Z0xvO7oDpbx0gd3NY50tWia34="
+          "hash": "9DI8gllbporJIFvMe2KIScWbDW1LEVEM2gIgmgoXKr4="
         }
       },
       "is_incremental": false,
@@ -1941,7 +1941,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Extensions.Configuration.OptionsHelper.html",
-          "hash": "sL62BPdGpj7nHEubR3zDWVaHGDN7pcGIfxWxkzLWzrA="
+          "hash": "D/eYRyXNWk6MLYHvVgKwpPd6mjsbjQTEEhzp54vXu7g="
         }
       },
       "is_incremental": false,
@@ -2181,7 +2181,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.ContainerRegistryBuilder.html",
-          "hash": "GUB0kqxcOQfv7Pve3jjauyz0mVnaPNlgS4uq1xhZiNA="
+          "hash": "+Ptjy3HEEVifz1WDn9YwD4/sIcu4YDma/2Oq9ZKtLxY="
         }
       },
       "is_incremental": false,
@@ -2241,7 +2241,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.ResourceBuilder-1.html",
-          "hash": "XSl1p9ewWvZr/HvNRK3m0NM/QKfLGjMjiPJs4oHorx4="
+          "hash": "vNefYiFAOS/SdBgO0deQzh5/8e6m9M6sab7MlB1gT9w="
         }
       },
       "is_incremental": false,
@@ -3285,7 +3285,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.TestMocks.IMockBuilder-1.html",
-          "hash": "sybKWcgsczMY9/i1YHEPSXZqLCLIhniTuTw5duCuOGo="
+          "hash": "aMDp1g859x6AAizepYdSI0saDXveze84mWDhI/hNAPI="
         }
       },
       "is_incremental": false,
@@ -3309,7 +3309,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.TestMocks.OptionsBuilder-1.html",
-          "hash": "tCFaoBYwZ3Yr3XXIQN80ALScn9IqVo3TpOqWV/645s4="
+          "hash": "laZvljkButWym+VAVPFeYbJ5qSVAO8T37SKonc0WoIA="
         }
       },
       "is_incremental": false,
@@ -3360,7 +3360,7 @@
           "hash": "XREAr6iHtuka+aO7c3lTrh90rt0rybqw859u1tetgNM="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -3384,7 +3384,7 @@
           "hash": "vsW9ZvNJ7sOSf2pjIjuOSwvq6ulmUIdFPHc7lPEfC4Y="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -3403,23 +3403,25 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": true,
+        "can_incremental": false,
+        "details": "Disable incremental build by force rebuild option.",
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0
+        "skipped_file_count": 0,
+        "full_build_reason_code": "ForceRebuild"
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 4,
-          "skipped_file_count": 4
+          "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 276,
-          "skipped_file_count": 249
+          "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
@@ -3432,8 +3434,8 @@
     },
     {
       "status": {
-        "can_incremental": true,
-        "details": "Can support incremental post processing.",
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0
