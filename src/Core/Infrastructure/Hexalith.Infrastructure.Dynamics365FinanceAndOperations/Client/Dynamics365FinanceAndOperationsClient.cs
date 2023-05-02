@@ -1,8 +1,18 @@
-﻿// <copyright file="Dynamics365FinanceAndOperationsClient.cs" company="Fiveforty SAS Paris France">
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Infrastructure.Dynamics365FinanceAndOperations
+// Author           : Jérôme Piquot
+// Created          : 01-13-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 02-06-2023
+// ***********************************************************************
+// <copyright file="Dynamics365FinanceAndOperationsClient.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
 
@@ -72,7 +82,7 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Dynamics365FinanceAndOperationsClient{TEntity}"/> class.
+    /// Initializes a new instance of the <see cref="Dynamics365FinanceAndOperationsClient{TEntity}" /> class.
     /// </summary>
     /// <param name="httpClientFactory">The HTTP client factory.</param>
     /// <param name="securityContext">The security context.</param>
@@ -133,12 +143,11 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     protected ILogger Logger { get; }
 
     /// <inheritdoc/>
-    public Task DoActionAsync(string action, IDictionary<string, object?> parameters, CancellationToken cancellationToken)
-    {
-        throw new NotSupportedException();
-    }
+    public Task DoActionAsync(string action, IDictionary<string, object?> parameters, CancellationToken cancellationToken) => throw new NotSupportedException();
 
-    /// <summary>Per company filters to dictionary.</summary>
+    /// <summary>
+    /// Per company filters to dictionary.
+    /// </summary>
     /// <param name="filter">The key.</param>
     /// <returns>System.ValueTuple&lt;System.String, IDictionary&lt;System.String, System.Nullable&lt;System.Object&gt;&gt;&gt;.</returns>
     protected virtual (string DataAreaId, IDictionary<string, object?> Values) FilterToDictionary(IPerCompanyFilter filter)
@@ -153,7 +162,9 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
         return (dataAreaId, dict);
     }
 
-    /// <summary>Common filters to dictionary.</summary>
+    /// <summary>
+    /// Common filters to dictionary.
+    /// </summary>
     /// <param name="filter">The filter.</param>
     /// <returns>IDictionary&lt;System.String, System.Nullable&lt;System.Object&gt;&gt;.</returns>
     protected virtual IDictionary<string, object?> FilterToDictionary(ICommonFilter filter)
@@ -268,6 +279,7 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// </summary>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task representing the asynchronous operation.</returns>
+    /// <exception cref="System.InvalidOperationException">The acquired token is null or empty.</exception>
     private async Task<HttpClient> GetClientAsync(CancellationToken cancellationToken)
     {
         string token = await _securityContext

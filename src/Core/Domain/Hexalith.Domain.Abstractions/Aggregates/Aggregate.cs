@@ -29,7 +29,7 @@ using Hexalith.Domain.Abstractions.Events;
 /// <seealso cref="Hexalith.Domain.Abstractions.Aggregates.IAggregate" />
 [DataContract]
 [DebuggerDisplay("{AggregateName}/{AggregateId}")]
-public abstract class Aggregate : IAggregate
+public abstract record Aggregate : IAggregate
 {
     /// <summary>
     /// Default string used for separating natural keys to compose the aggregate identifier.

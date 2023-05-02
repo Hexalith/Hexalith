@@ -1761,7 +1761,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.Abstractions.Aggregates.Aggregate.html",
-          "hash": "/RrKdEi/mFib7shKssnWhd0HHGWlNQobFCNdDoMbRZw="
+          "hash": "9L1QSL6gnfzhOtgLWy6wFVmPANoqXliLvxes3IjDl0c="
         }
       },
       "is_incremental": false,
@@ -2169,7 +2169,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Extensions.Serialization.PolymorphicSerializableTypeMapper.html",
-          "hash": "WYSIyEqmRDZHNzVPQhLqMxeLnCTIkFidS9tkADUZ5Rk="
+          "hash": "b+gf0FArE9A/EoG+VDZT7QfuQrm+lgjyuf4tchw4cZ4="
         }
       },
       "is_incremental": false,

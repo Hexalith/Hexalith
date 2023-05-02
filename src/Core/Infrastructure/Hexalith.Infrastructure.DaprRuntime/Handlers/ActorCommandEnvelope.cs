@@ -158,18 +158,12 @@ public class ActorCommandEnvelope : IJsonOnSerializing, IJsonOnDeserialized
     /// </summary>
     /// <param name="context">The context.</param>
     [OnDeserialized]
-    private void OnDeserialized(StreamingContext context)
-    {
-        OnDeserialized();
-    }
+    private void OnDeserialized(StreamingContext context) => OnDeserialized();
 
     /// <summary>
     /// Called when [serializing].
     /// </summary>
     /// <param name="context">The context.</param>
     [OnSerializing]
-    private void OnSerializing(StreamingContext context)
-    {
-        OnSerializing();
-    }
+    private void OnSerializing(StreamingContext context) => OnSerializing();
 }

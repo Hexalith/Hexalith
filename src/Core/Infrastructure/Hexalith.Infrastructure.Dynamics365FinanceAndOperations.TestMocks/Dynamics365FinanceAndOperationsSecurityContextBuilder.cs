@@ -1,8 +1,18 @@
-﻿// <copyright file="Dynamics365FinanceAndOperationsSecurityContextBuilder.cs" company="Fiveforty SAS Paris France">
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks
+// Author           : Jérôme Piquot
+// Created          : 01-13-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 01-13-2023
+// ***********************************************************************
+// <copyright file="Dynamics365FinanceAndOperationsSecurityContextBuilder.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks;
 
@@ -17,18 +27,27 @@ using Moq;
 /// </summary>
 public class Dynamics365FinanceAndOperationsSecurityContextBuilder
 {
+    /// <summary>
+    /// The logger.
+    /// </summary>
     private LoggerBuilder<Dynamics365FinanceAndOperationsSecurityContext>? _logger;
+
+    /// <summary>
+    /// The settings.
+    /// </summary>
     private OptionsBuilder<Dynamics365FinanceAndOperationsClientSettings>? _settings;
 
     /// <summary>
     /// Gets logger to configure.
     /// </summary>
+    /// <value>The logger.</value>
     public LoggerBuilder<Dynamics365FinanceAndOperationsSecurityContext> Logger
         => _logger ??= new LoggerBuilder<Dynamics365FinanceAndOperationsSecurityContext>();
 
     /// <summary>
     /// Gets the settings to configure.
     /// </summary>
+    /// <value>The settings.</value>
     public OptionsBuilder<Dynamics365FinanceAndOperationsClientSettings> Settings
             => _settings ??= new OptionsBuilder<Dynamics365FinanceAndOperationsClientSettings>();
 
