@@ -30,6 +30,7 @@ public class TaskProcessingFailure
         Count = count;
         Date = date;
         Message = message;
+        TechnicalError = technicalError;
 #pragma warning restore CS0618 // Type or member is obsolete
     }
 
