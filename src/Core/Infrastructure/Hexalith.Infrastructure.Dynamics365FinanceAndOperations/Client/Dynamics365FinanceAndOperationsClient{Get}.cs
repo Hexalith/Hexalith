@@ -175,12 +175,7 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
                     .Content
                     .ReadFromJsonAsync<TEntity>(
                     options: JsonOptions,
-                    cancellationToken).ConfigureAwait(false);
-            if (content is null)
-            {
-                throw new HttpRequestException($"Empty content response on request to '{url.AbsoluteUri}'.");
-            }
-
+                    cancellationToken).ConfigureAwait(false) ?? throw new HttpRequestException($"Empty content response on request to '{url.AbsoluteUri}'.");
             Logger.LogDebug("The method call to '{Path}' was successful.", url.AbsoluteUri);
             return content;
         }

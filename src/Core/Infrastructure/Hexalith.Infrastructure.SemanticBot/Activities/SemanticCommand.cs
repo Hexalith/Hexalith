@@ -65,9 +65,6 @@ public abstract class SemanticCommand<TCommand> : ISemanticActivity
     /// <inheritdoc/>
     public Type ResponseType => typeof(TCommand);
 
-    /// <inheritdoc/>
-    public string? Schema { get; }
-
     private string GenerateClassificationPrompt()
     {
         Type commandType = typeof(TCommand);
