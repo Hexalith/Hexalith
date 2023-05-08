@@ -142,20 +142,14 @@ public class ResiliencyPolicy
     /// Create an exponential retry, starting from one millisecond without any timeout.
     /// </summary>
     /// <returns>The retry policy.</returns>
-    public static ResiliencyPolicy CreateEternalExponentialRetry()
-    {
-        return new ResiliencyPolicy(-1, TimeSpan.FromMilliseconds(1), TimeSpan.FromMilliseconds(1), TimeSpan.MaxValue, TimeSpan.MaxValue, exponential: true);
-    }
+    public static ResiliencyPolicy CreateEternalExponentialRetry() => new(-1, TimeSpan.FromMilliseconds(1), TimeSpan.FromMilliseconds(1), TimeSpan.MaxValue, TimeSpan.MaxValue, exponential: true);
 
     /// <summary>
     /// Create an linear retry with a defined period and without any global timeout.
     /// </summary>
     /// <param name="period">A fix period of time to wait for between each retry.</param>
     /// <returns>The retry policy.</returns>
-    public static ResiliencyPolicy CreateEternalRetry(TimeSpan period)
-    {
-        return new ResiliencyPolicy(-1, period, period, TimeSpan.Zero, TimeSpan.MaxValue, exponential: false);
-    }
+    public static ResiliencyPolicy CreateEternalRetry(TimeSpan period) => new(-1, period, period, TimeSpan.Zero, TimeSpan.MaxValue, exponential: false);
 
     /// <summary>
     /// Gets the retry policy status.
@@ -179,9 +173,7 @@ public class ResiliencyPolicy
     /// <param name="retryCount">Number of retries.</param>
     /// <returns>The next retry date and time.</returns>
     public DateTimeOffset NextRetryTime(DateTimeOffset startedDate, int retryCount)
-    {
-        return startedDate.Add(EvaluatePeriod(retryCount));
-    }
+        => startedDate.Add(EvaluatePeriod(retryCount));
 
     /// <summary>
     /// Time to wait until retry can be performed.
@@ -211,13 +203,7 @@ public class ResiliencyPolicy
         return period + EvaluatePeriod(retry - 1);
     }
 
-    private bool RetryLimitReached(int retryCount)
-    {
-        return retryCount > MaximumRetries && MaximumRetries >= 0;
-    }
+    private bool RetryLimitReached(int retryCount) => retryCount > MaximumRetries && MaximumRetries >= 0;
 
-    private bool TimeoutReached(DateTimeOffset startedDate)
-    {
-        return Timeout != TimeSpan.MaxValue && startedDate.Add(Timeout) < DateTimeOffset.UtcNow;
-    }
+    private bool TimeoutReached(DateTimeOffset startedDate) => Timeout != TimeSpan.MaxValue && startedDate.Add(Timeout) < DateTimeOffset.UtcNow;
 }

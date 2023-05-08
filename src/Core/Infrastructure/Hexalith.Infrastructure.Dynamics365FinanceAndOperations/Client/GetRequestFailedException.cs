@@ -15,6 +15,7 @@
 namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
 
 using System.Runtime.Serialization;
+using System.Text.Json;
 
 /// <summary>
 /// Exception thrown when a single request failed.
@@ -58,7 +59,7 @@ public sealed class GetRequestFailedException<T> : Exception
     /// <param name="message">The error message.</param>
     /// <param name="innerException">The inner exception.</param>
     public GetRequestFailedException(string entityName, IDictionary<string, object?> filter, string? responseContent, string? message, Exception? innerException)
-        : base($"Failed to retrieve {typeof(T).Name} with filter {filter} on entity {entityName}. " + message, innerException)
+        : base($"Failed to retrieve {typeof(T).Name} with filter {JsonSerializer.Serialize(filter)} on entity {entityName}. " + message, innerException)
     {
         EntityName = entityName;
         Filter = filter;
@@ -95,8 +96,5 @@ public sealed class GetRequestFailedException<T> : Exception
     public string? ResponseContent { get; private set; }
 
     /// <inheritdoc/>
-    public override void GetObjectData(SerializationInfo info, StreamingContext context)
-    {
-        base.GetObjectData(info, context);
-    }
+    public override void GetObjectData(SerializationInfo info, StreamingContext context) => base.GetObjectData(info, context);
 }

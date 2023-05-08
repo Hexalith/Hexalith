@@ -132,8 +132,5 @@ public class ResiliencyTestSettings : ISettings
 
     public ResiliencyPolicy TestResiliencyPolicy { get; set; }
 
-    public static string ConfigurationName()
-    {
-        return "ResiliencyTest";
-    }
+    public static string ConfigurationName() => "ResiliencyTest";
 }
