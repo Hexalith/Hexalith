@@ -27,16 +27,32 @@ using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents;
 /// </summary>
 public static class BusinessEventTypeMapper
 {
+    private static readonly object _syncMap = new();
+
     /// <summary>
     /// The map.
     /// </summary>
-    private static Dictionary<string, Type>? _map;
+    private static volatile Dictionary<string, Type>? _map;
 
     /// <summary>
     /// Gets the map.
     /// </summary>
     /// <value>The map.</value>
-    private static Dictionary<string, Type> Map => _map ??= GetMap();
+    private static Dictionary<string, Type> Map
+    {
+        get
+        {
+            if (_map == null)
+            {
+                lock (_syncMap)
+                {
+                    _map ??= GetMap();
+                }
+            }
+
+            return _map;
+        }
+    }
 
     /// <summary>
     /// Gets the map.
@@ -47,10 +63,12 @@ public static class BusinessEventTypeMapper
     public static Dictionary<string, Type> GetMap()
     {
         Dictionary<string, Type> map = new();
-        IEnumerable<Type> types = AppDomain.CurrentDomain.GetAssemblies()
+        System.Reflection.Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(p => !p.IsDynamic).ToArray();
+        Type[] types = assemblies
             .SelectMany(a => a.GetTypes())
-            .Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(typeof(Dynamics365BusinessEventBase)));
-        foreach (Type? type in types)
+            .Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(typeof(Dynamics365BusinessEventBase)))
+            .ToArray();
+        foreach (Type type in types)
         {
             Dynamics365BusinessEventBase obj = Activator.CreateInstance(type) as Dynamics365BusinessEventBase ?? throw new TypeInitializationException(type.AssemblyQualifiedName, null);
             string key = $"{obj.BusinessEventId}|{obj.MajorVersion}.{obj.MinorVersion}";
