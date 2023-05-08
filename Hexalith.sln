@@ -104,6 +104,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeployACA", "src\Deploy\Con
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeployLCS", "src\Deploy\LCS\DeployLCS.csproj", "{8A51A9AB-9FF9-49B3-8888-0431C20E5547}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.SemanticBot", "src\Core\Infrastructure\Hexalith.Infrastructure.SemanticBot\Hexalith.Infrastructure.SemanticBot.csproj", "{A586967F-0B03-4F8C-9711-E7DA08742E9E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -186,6 +188,10 @@ Global
 		{8A51A9AB-9FF9-49B3-8888-0431C20E5547}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A51A9AB-9FF9-49B3-8888-0431C20E5547}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A51A9AB-9FF9-49B3-8888-0431C20E5547}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A586967F-0B03-4F8C-9711-E7DA08742E9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A586967F-0B03-4F8C-9711-E7DA08742E9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A586967F-0B03-4F8C-9711-E7DA08742E9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A586967F-0B03-4F8C-9711-E7DA08742E9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -216,6 +222,7 @@ Global
 		{43D88290-657A-4D99-BB58-BA5B60B13630} = {AA983AFF-9CBC-4F2A-98E3-3CACA5039C61}
 		{E6211DF5-DE13-4235-AA5C-C950A6242ECA} = {39624851-E5EB-4607-9D0C-0A9BC8CC24FA}
 		{8A51A9AB-9FF9-49B3-8888-0431C20E5547} = {39624851-E5EB-4607-9D0C-0A9BC8CC24FA}
+		{A586967F-0B03-4F8C-9711-E7DA08742E9E} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09CBB595-8996-4C7F-9C48-4C58AD9293AC}

@@ -23,6 +23,11 @@
 		<AzureResourceManagerLogicVersion>1.0.1</AzureResourceManagerLogicVersion>
 		<AzureSecurityKeyVaultSecretsVersion>4.5.0</AzureSecurityKeyVaultSecretsVersion>
 		<DocFxConsoleVersion>2.59.4</DocFxConsoleVersion>
+		<MicrosoftSemanticKernelVersion>0.12.207.1-preview</MicrosoftSemanticKernelVersion>
+		<MicrosoftBotBuilderVersion>4.19.*</MicrosoftBotBuilderVersion>
+		<AdaptiveCardsVersion>3.0.0</AdaptiveCardsVersion>
+		<AdaptiveCardsTemplatingVersion>1.4.0</AdaptiveCardsTemplatingVersion>
+		<MicrosoftTeamsFxVersion>2.0.*</MicrosoftTeamsFxVersion>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' == 'true' or '$(BuildingByReSharper)' == 'true'">
 		<!--<DaprVersion>1.0.0-local</DaprVersion>-->

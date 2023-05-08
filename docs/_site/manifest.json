@@ -12,7 +12,7 @@
           "hash": "mLQc0aFezA/VPN2W2F6C0EjR/QvGQeROZuCTQXJ/EiE="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -117,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Abstractions.Commands.CommandProcessingFailed.html",
-          "hash": "k5086BZJLrq4HlncRtea0GJ1OD2iR5Vha21RcoJoMfg="
+          "hash": "M7C0bbV7Tfqcky7H0h6tRlhOJWohNGvhM7RrUPcHKPk="
         }
       },
       "is_incremental": false,
@@ -249,7 +249,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Abstractions.Envelopes.BaseEnvelope-2.html",
-          "hash": "uLHkOPcPKspzScVNgvOeN5Z9/NtINQscF1QxaK2fCfU="
+          "hash": "pi1BZUQKDqEe0yTPGY+1dN0VIOaUVSlHvon7LaAAsdM="
         }
       },
       "is_incremental": false,
@@ -273,7 +273,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Abstractions.Envelopes.EventEnvelope.html",
-          "hash": "Qq/nqeJ8kMksybZTDp4LPY1Ynkt66iwmrk9xMgBvl/U="
+          "hash": "Q+EQLD1Vhnetgjx8QcFg1Z8RlTqbYsw+hUmwVJsKva0="
         }
       },
       "is_incremental": false,
@@ -321,7 +321,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Abstractions.Envelopes.IMessageBus-3.html",
-          "hash": "iAF1q2lpNmH4dWRfMHnJ6NecnlOg/AqMJIvLaClOFMM="
+          "hash": "K/EzKDnJCYSjXHrHTLEtKf+32zVfJVhOlSfFfqfD2Bw="
         }
       },
       "is_incremental": false,
@@ -609,7 +609,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Abstractions.Metadatas.BaseMetadata.html",
-          "hash": "6DWuSiCH7onIhZlFTpyaZOpQwdAKrLalhNrIuMZfyRo="
+          "hash": "pt8QbBe+6FzltsZduCee4KUTfV1KEV8zvASGjX+rZtc="
         }
       },
       "is_incremental": false,
@@ -705,7 +705,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Abstractions.Metadatas.MessageMetadata.html",
-          "hash": "dmSChYQel67rT2TNVjh1MiuTqJDUv00c7NudWapGmZs="
+          "hash": "cerPwMl3n5Nt2O1IdS9gBrEBDvvXm402lcyYd/Pgx9g="
         }
       },
       "is_incremental": false,
@@ -1149,7 +1149,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Abstractions.Tasks.TaskProcessingFailure.html",
-          "hash": "DrEv/ueiPTQ80Ih5tGxrPkkUZyADDdJpKxTAl+sOOV0="
+          "hash": "ct0Q9umCJuSJJLZVREBVnOmXmDtzXkZPDT/fkV0/1Fc="
         }
       },
       "is_incremental": false,
@@ -1161,7 +1161,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Abstractions.Tasks.TaskProcessingHistory.html",
-          "hash": "Kfd3Bwhy8843Y1XTE62YRPfgujNPyWR9DeuTQdwDPuk="
+          "hash": "0CqrMFB50cPHipQEaqO6xSN/EapVu0SpzuPoo+B7954="
         }
       },
       "is_incremental": false,
@@ -1173,7 +1173,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Abstractions.Tasks.TaskProcessor.html",
-          "hash": "7mAHgd0BRfsIo+moUbm/e56rCMeoJy7CYcHKc+uPbE0="
+          "hash": "66z6cJGcXrVuMeBLZQSeRgHM8NnzK3sgYyF9lrlPFZk="
         }
       },
       "is_incremental": false,
@@ -1581,7 +1581,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.StreamStores.MessageStore-1.html",
-          "hash": "7nI3RbVmR5bqAM3fyGm1wiy2LSSPKpcoDHUQ63fl7QU="
+          "hash": "RmuzdQnaba2UkW3U5tAMEKFTI1/RfDWCTZOznEOgbmQ="
         }
       },
       "is_incremental": false,
@@ -1761,7 +1761,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.Abstractions.Aggregates.Aggregate.html",
-          "hash": "9L1QSL6gnfzhOtgLWy6wFVmPANoqXliLvxes3IjDl0c="
+          "hash": "eVBljeiZ59otr0Mt5S4C3U2VzZAps1JzL5iQCrAgLGU="
         }
       },
       "is_incremental": false,
@@ -1869,7 +1869,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.Abstractions.Messages.BaseMessage.html",
-          "hash": "R82WmquzVRhpGK/W6msuocPfyUFY1khCMRucUnCV/08="
+          "hash": "ehCGgaQ0O6JsYXVktxB5thy1m2ws21apCjDZ6Wn/0Qg="
         }
       },
       "is_incremental": false,
@@ -1917,7 +1917,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Extensions.Common.DateTimeService.html",
-          "hash": "9DI8gllbporJIFvMe2KIScWbDW1LEVEM2gIgmgoXKr4="
+          "hash": "HwR85ld7eNHfcvLRO7Z0xvO7oDpbx0gd3NY50tWia34="
         }
       },
       "is_incremental": false,
@@ -2025,7 +2025,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Extensions.Configuration.OptionsHelper.html",
-          "hash": "D/eYRyXNWk6MLYHvVgKwpPd6mjsbjQTEEhzp54vXu7g="
+          "hash": "sL62BPdGpj7nHEubR3zDWVaHGDN7pcGIfxWxkzLWzrA="
         }
       },
       "is_incremental": false,
@@ -2265,7 +2265,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.ContainerRegistryBuilder.html",
-          "hash": "+Ptjy3HEEVifz1WDn9YwD4/sIcu4YDma/2Oq9ZKtLxY="
+          "hash": "GUB0kqxcOQfv7Pve3jjauyz0mVnaPNlgS4uq1xhZiNA="
         }
       },
       "is_incremental": false,
@@ -2325,7 +2325,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.ResourceBuilder-1.html",
-          "hash": "vNefYiFAOS/SdBgO0deQzh5/8e6m9M6sab7MlB1gT9w="
+          "hash": "XSl1p9ewWvZr/HvNRK3m0NM/QKfLGjMjiPJs4oHorx4="
         }
       },
       "is_incremental": false,
@@ -2637,7 +2637,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.Dynamics365FinanceAndOperationsClient-1.html",
-          "hash": "md0HSNGh5zfTTf/hwawbHTE+MQL5++c1xFeD+YFXIDc="
+          "hash": "FzTC9NLxJAh5zMSMyg3rIiQJdgFwqJl1mzgZSBlyZ5g="
         }
       },
       "is_incremental": false,
@@ -3177,7 +3177,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks.Dynamics365FinanceAndOperationsSecurityContextBuilder.html",
-          "hash": "QsaAQs/Oy4yB+sb7TCyt+Yeie6cNM16uvaHRNGuNZKM="
+          "hash": "6i3W91M9xRNfgo9ArOW1ETBpFTgqEVN2MtYZId/DgR4="
         }
       },
       "is_incremental": false,
@@ -3214,6 +3214,78 @@
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Security.Abstractions.html",
           "hash": "gFEQVLogmf7oiIPaSR4Kec0jOG3k4LY+J0KDpeDAJ8s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.SemanticBot.Adapters.SemanticBotAdapter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.SemanticBot.Adapters.SemanticBotAdapter.html",
+          "hash": "y0WzDmHFwqOFf3E6npi3UekUHA4ROpoH5UzY8fGahBA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.SemanticBot.Adapters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.SemanticBot.Adapters.html",
+          "hash": "epGQxdMljZrSVg6C9IG1zc3T+skOmJ8YEITVkvDslNY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.html",
+          "hash": "GHbOk/8vajEuQY4qHivSUb6lmXtEPtJ09vouqVQ9p8s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.SemanticBot.Handlers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.SemanticBot.Handlers.html",
+          "hash": "AMRhLABdHioKH3+MqUmlTWdRQZNiLOf/7k92VlrOLZU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.SemanticBot.Helpers.SemanticBotHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.SemanticBot.Helpers.SemanticBotHelper.html",
+          "hash": "Fdm/49IgVGeV2GWcsPJZbHK5Hxr+Vp4NCQ37jDTMrCU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.SemanticBot.Helpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.SemanticBot.Helpers.html",
+          "hash": "BuOES5e+w+8FKS3GOK+iTaR7ZhDeTV9NFDXlPtj7dZc="
         }
       },
       "is_incremental": false,
@@ -3369,7 +3441,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.TestMocks.IMockBuilder-1.html",
-          "hash": "aMDp1g859x6AAizepYdSI0saDXveze84mWDhI/hNAPI="
+          "hash": "sybKWcgsczMY9/i1YHEPSXZqLCLIhniTuTw5duCuOGo="
         }
       },
       "is_incremental": false,
@@ -3393,7 +3465,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.TestMocks.OptionsBuilder-1.html",
-          "hash": "laZvljkButWym+VAVPFeYbJ5qSVAO8T37SKonc0WoIA="
+          "hash": "tCFaoBYwZ3Yr3XXIQN80ALScn9IqVo3TpOqWV/645s4="
         }
       },
       "is_incremental": false,
@@ -3429,7 +3501,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "JqzytwfiFmOPxvqfKJABCPVn/suryWKYYplkxx4O1Q0="
+          "hash": "gp1jW72n8vqZj/kiGyckfLkls5FXEEOtsqFIZQPj7xw="
         }
       },
       "is_incremental": false,
@@ -3444,7 +3516,7 @@
           "hash": "XREAr6iHtuka+aO7c3lTrh90rt0rybqw859u1tetgNM="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3468,7 +3540,7 @@
           "hash": "vsW9ZvNJ7sOSf2pjIjuOSwvq6ulmUIdFPHc7lPEfC4Y="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3487,25 +3559,23 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": false,
-        "details": "Disable incremental build by force rebuild option.",
+        "can_incremental": true,
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0,
-        "full_build_reason_code": "ForceRebuild"
+        "skipped_file_count": 0
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 4,
-          "skipped_file_count": 0
+          "skipped_file_count": 4
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 283,
-          "skipped_file_count": 0
+          "total_file_count": 289,
+          "skipped_file_count": 170
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
@@ -3518,8 +3588,8 @@
     },
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0

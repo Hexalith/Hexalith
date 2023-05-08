@@ -55,22 +55,13 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     }
 
     /// <inheritdoc/>
-    public async Task<bool> ExistsAsync(IPerCompanyFilter filter, CancellationToken cancellationToken)
-    {
-        return await CountAsync(filter, cancellationToken) > 0;
-    }
+    public async Task<bool> ExistsAsync(IPerCompanyFilter filter, CancellationToken cancellationToken) => await CountAsync(filter, cancellationToken) > 0;
 
     /// <inheritdoc/>
-    public async Task<bool> ExistsAsync(ICommonFilter filter, CancellationToken cancellationToken)
-    {
-        return await CountAsync(filter, cancellationToken) > 0;
-    }
+    public async Task<bool> ExistsAsync(ICommonFilter filter, CancellationToken cancellationToken) => await CountAsync(filter, cancellationToken) > 0;
 
     /// <inheritdoc/>
-    public Task<IEnumerable<TEntity>> GetAsync(IDictionary<string, object?> filter, CancellationToken cancellationToken)
-    {
-        return GetAsync(DefaultCompany, filter, cancellationToken);
-    }
+    public Task<IEnumerable<TEntity>> GetAsync(IDictionary<string, object?> filter, CancellationToken cancellationToken) => GetAsync(DefaultCompany, filter, cancellationToken);
 
     /// <inheritdoc/>
     public async Task<IEnumerable<TEntity>> GetAsync(string company, IDictionary<string, object?> filter, CancellationToken cancellationToken)
@@ -109,7 +100,7 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
             Logger.LogError(
                 "Can't get {EntityName} list with filter {Filter}. The method call to '{Path}' failed. response content :\n{ResponseContent}",
                 typeof(TEntity).Name,
-                filter,
+                JsonSerializer.Serialize(filter),
                 url.AbsoluteUri,
                 responseContent ?? "No response");
             throw new GetRequestFailedException<TEntity>(TEntity.EntityName(), filter, responseContent, message: null, ex);
@@ -124,10 +115,7 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     }
 
     /// <inheritdoc/>
-    public Task<IEnumerable<TEntity>> GetAsync(ICommonFilter filter, CancellationToken cancellationToken)
-    {
-        return GetAsync(DefaultCompany, FilterToDictionary(filter), cancellationToken);
-    }
+    public Task<IEnumerable<TEntity>> GetAsync(ICommonFilter filter, CancellationToken cancellationToken) => GetAsync(DefaultCompany, FilterToDictionary(filter), cancellationToken);
 
     /// <inheritdoc/>
     public async Task<TEntity> GetSingleAsync(IPerCompanyFilter key, CancellationToken cancellationToken)
@@ -161,16 +149,10 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     }
 
     /// <inheritdoc/>
-    public Task<TEntity> GetSingleAsync(ICommonPrimaryKey key, CancellationToken cancellationToken)
-    {
-        return GetSingleAsync(DefaultCompany, KeyToDictionary(key), cancellationToken);
-    }
+    public Task<TEntity> GetSingleAsync(ICommonPrimaryKey key, CancellationToken cancellationToken) => GetSingleAsync(DefaultCompany, KeyToDictionary(key), cancellationToken);
 
     /// <inheritdoc/>
-    public Task<TEntity> GetSingleAsync(IDictionary<string, object?> keys, CancellationToken cancellationToken)
-    {
-        return GetSingleAsync(DefaultCompany, keys, cancellationToken);
-    }
+    public Task<TEntity> GetSingleAsync(IDictionary<string, object?> keys, CancellationToken cancellationToken) => GetSingleAsync(DefaultCompany, keys, cancellationToken);
 
     /// <inheritdoc/>
     public async Task<TEntity> GetSingleAsync(string company, IDictionary<string, object?> keys, CancellationToken cancellationToken)

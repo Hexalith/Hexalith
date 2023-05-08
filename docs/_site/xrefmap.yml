@@ -14117,6 +14117,126 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.Security.Abstractions.IApplicationSecurityContext.AcquireTokenAsync
   nameWithType: IApplicationSecurityContext.AcquireTokenAsync
+- uid: Hexalith.Infrastructure.SemanticBot.Adapters
+  name: Hexalith.Infrastructure.SemanticBot.Adapters
+  href: api/Hexalith.Infrastructure.SemanticBot.Adapters.html
+  commentId: N:Hexalith.Infrastructure.SemanticBot.Adapters
+  fullName: Hexalith.Infrastructure.SemanticBot.Adapters
+  nameWithType: Hexalith.Infrastructure.SemanticBot.Adapters
+- uid: Hexalith.Infrastructure.SemanticBot.Adapters.SemanticBotAdapter
+  name: SemanticBotAdapter
+  href: api/Hexalith.Infrastructure.SemanticBot.Adapters.SemanticBotAdapter.html
+  commentId: T:Hexalith.Infrastructure.SemanticBot.Adapters.SemanticBotAdapter
+  fullName: Hexalith.Infrastructure.SemanticBot.Adapters.SemanticBotAdapter
+  nameWithType: SemanticBotAdapter
+- uid: Hexalith.Infrastructure.SemanticBot.Adapters.SemanticBotAdapter.#ctor(Microsoft.Bot.Connector.Authentication.BotFrameworkAuthentication,Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.SemanticBot.Adapters.SemanticBotAdapter})
+  name: SemanticBotAdapter(BotFrameworkAuthentication, ILogger<SemanticBotAdapter>)
+  href: api/Hexalith.Infrastructure.SemanticBot.Adapters.SemanticBotAdapter.html#Hexalith_Infrastructure_SemanticBot_Adapters_SemanticBotAdapter__ctor_Microsoft_Bot_Connector_Authentication_BotFrameworkAuthentication_Microsoft_Extensions_Logging_ILogger_Hexalith_Infrastructure_SemanticBot_Adapters_SemanticBotAdapter__
+  commentId: M:Hexalith.Infrastructure.SemanticBot.Adapters.SemanticBotAdapter.#ctor(Microsoft.Bot.Connector.Authentication.BotFrameworkAuthentication,Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.SemanticBot.Adapters.SemanticBotAdapter})
+  name.vb: SemanticBotAdapter(BotFrameworkAuthentication, ILogger(Of SemanticBotAdapter))
+  fullName: Hexalith.Infrastructure.SemanticBot.Adapters.SemanticBotAdapter.SemanticBotAdapter(Microsoft.Bot.Connector.Authentication.BotFrameworkAuthentication, Microsoft.Extensions.Logging.ILogger<Hexalith.Infrastructure.SemanticBot.Adapters.SemanticBotAdapter>)
+  fullName.vb: Hexalith.Infrastructure.SemanticBot.Adapters.SemanticBotAdapter.SemanticBotAdapter(Microsoft.Bot.Connector.Authentication.BotFrameworkAuthentication, Microsoft.Extensions.Logging.ILogger(Of Hexalith.Infrastructure.SemanticBot.Adapters.SemanticBotAdapter))
+  nameWithType: SemanticBotAdapter.SemanticBotAdapter(BotFrameworkAuthentication, ILogger<SemanticBotAdapter>)
+  nameWithType.vb: SemanticBotAdapter.SemanticBotAdapter(BotFrameworkAuthentication, ILogger(Of SemanticBotAdapter))
+- uid: Hexalith.Infrastructure.SemanticBot.Adapters.SemanticBotAdapter.#ctor*
+  name: SemanticBotAdapter
+  href: api/Hexalith.Infrastructure.SemanticBot.Adapters.SemanticBotAdapter.html#Hexalith_Infrastructure_SemanticBot_Adapters_SemanticBotAdapter__ctor_
+  commentId: Overload:Hexalith.Infrastructure.SemanticBot.Adapters.SemanticBotAdapter.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.SemanticBot.Adapters.SemanticBotAdapter.SemanticBotAdapter
+  nameWithType: SemanticBotAdapter.SemanticBotAdapter
+- uid: Hexalith.Infrastructure.SemanticBot.Adapters.SemanticBotAdapter.BotUnhandledError(Microsoft.Extensions.Logging.ILogger,Exception,System.String)
+  name: BotUnhandledError(ILogger, Exception, String)
+  href: api/Hexalith.Infrastructure.SemanticBot.Adapters.SemanticBotAdapter.html#Hexalith_Infrastructure_SemanticBot_Adapters_SemanticBotAdapter_BotUnhandledError_Microsoft_Extensions_Logging_ILogger_Exception_System_String_
+  commentId: M:Hexalith.Infrastructure.SemanticBot.Adapters.SemanticBotAdapter.BotUnhandledError(Microsoft.Extensions.Logging.ILogger,Exception,System.String)
+  fullName: Hexalith.Infrastructure.SemanticBot.Adapters.SemanticBotAdapter.BotUnhandledError(Microsoft.Extensions.Logging.ILogger, Exception, System.String)
+  nameWithType: SemanticBotAdapter.BotUnhandledError(ILogger, Exception, String)
+- uid: Hexalith.Infrastructure.SemanticBot.Adapters.SemanticBotAdapter.BotUnhandledError*
+  name: BotUnhandledError
+  href: api/Hexalith.Infrastructure.SemanticBot.Adapters.SemanticBotAdapter.html#Hexalith_Infrastructure_SemanticBot_Adapters_SemanticBotAdapter_BotUnhandledError_
+  commentId: Overload:Hexalith.Infrastructure.SemanticBot.Adapters.SemanticBotAdapter.BotUnhandledError
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.SemanticBot.Adapters.SemanticBotAdapter.BotUnhandledError
+  nameWithType: SemanticBotAdapter.BotUnhandledError
+- uid: Hexalith.Infrastructure.SemanticBot.Handlers
+  name: Hexalith.Infrastructure.SemanticBot.Handlers
+  href: api/Hexalith.Infrastructure.SemanticBot.Handlers.html
+  commentId: N:Hexalith.Infrastructure.SemanticBot.Handlers
+  fullName: Hexalith.Infrastructure.SemanticBot.Handlers
+  nameWithType: Hexalith.Infrastructure.SemanticBot.Handlers
+- uid: Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot
+  name: SemanticTeamsBot
+  href: api/Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.html
+  commentId: T:Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot
+  fullName: Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot
+  nameWithType: SemanticTeamsBot
+- uid: Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.#ctor(ArtificialIntelligenceService,IGlobalAdministrationQueryService,IUserQueryService)
+  name: SemanticTeamsBot(ArtificialIntelligenceService, IGlobalAdministrationQueryService, IUserQueryService)
+  href: api/Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.html#Hexalith_Infrastructure_SemanticBot_Handlers_SemanticTeamsBot__ctor_ArtificialIntelligenceService_IGlobalAdministrationQueryService_IUserQueryService_
+  commentId: M:Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.#ctor(ArtificialIntelligenceService,IGlobalAdministrationQueryService,IUserQueryService)
+  fullName: Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.SemanticTeamsBot(ArtificialIntelligenceService, IGlobalAdministrationQueryService, IUserQueryService)
+  nameWithType: SemanticTeamsBot.SemanticTeamsBot(ArtificialIntelligenceService, IGlobalAdministrationQueryService, IUserQueryService)
+- uid: Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.#ctor*
+  name: SemanticTeamsBot
+  href: api/Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.html#Hexalith_Infrastructure_SemanticBot_Handlers_SemanticTeamsBot__ctor_
+  commentId: Overload:Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.SemanticTeamsBot
+  nameWithType: SemanticTeamsBot.SemanticTeamsBot
+- uid: Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.OnMessageActivityAsync(Microsoft.Bot.Builder.ITurnContext{Microsoft.Bot.Schema.IMessageActivity},CancellationToken)
+  name: OnMessageActivityAsync(ITurnContext<IMessageActivity>, CancellationToken)
+  href: api/Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.html#Hexalith_Infrastructure_SemanticBot_Handlers_SemanticTeamsBot_OnMessageActivityAsync_Microsoft_Bot_Builder_ITurnContext_Microsoft_Bot_Schema_IMessageActivity__CancellationToken_
+  commentId: M:Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.OnMessageActivityAsync(Microsoft.Bot.Builder.ITurnContext{Microsoft.Bot.Schema.IMessageActivity},CancellationToken)
+  name.vb: OnMessageActivityAsync(ITurnContext(Of IMessageActivity), CancellationToken)
+  fullName: Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.OnMessageActivityAsync(Microsoft.Bot.Builder.ITurnContext<Microsoft.Bot.Schema.IMessageActivity>, CancellationToken)
+  fullName.vb: Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.OnMessageActivityAsync(Microsoft.Bot.Builder.ITurnContext(Of Microsoft.Bot.Schema.IMessageActivity), CancellationToken)
+  nameWithType: SemanticTeamsBot.OnMessageActivityAsync(ITurnContext<IMessageActivity>, CancellationToken)
+  nameWithType.vb: SemanticTeamsBot.OnMessageActivityAsync(ITurnContext(Of IMessageActivity), CancellationToken)
+- uid: Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.OnMessageActivityAsync*
+  name: OnMessageActivityAsync
+  href: api/Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.html#Hexalith_Infrastructure_SemanticBot_Handlers_SemanticTeamsBot_OnMessageActivityAsync_
+  commentId: Overload:Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.OnMessageActivityAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.OnMessageActivityAsync
+  nameWithType: SemanticTeamsBot.OnMessageActivityAsync
+- uid: Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.OnTurnAsync(Microsoft.Bot.Builder.ITurnContext,CancellationToken)
+  name: OnTurnAsync(ITurnContext, CancellationToken)
+  href: api/Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.html#Hexalith_Infrastructure_SemanticBot_Handlers_SemanticTeamsBot_OnTurnAsync_Microsoft_Bot_Builder_ITurnContext_CancellationToken_
+  commentId: M:Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.OnTurnAsync(Microsoft.Bot.Builder.ITurnContext,CancellationToken)
+  fullName: Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.OnTurnAsync(Microsoft.Bot.Builder.ITurnContext, CancellationToken)
+  nameWithType: SemanticTeamsBot.OnTurnAsync(ITurnContext, CancellationToken)
+- uid: Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.OnTurnAsync*
+  name: OnTurnAsync
+  href: api/Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.html#Hexalith_Infrastructure_SemanticBot_Handlers_SemanticTeamsBot_OnTurnAsync_
+  commentId: Overload:Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.OnTurnAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.OnTurnAsync
+  nameWithType: SemanticTeamsBot.OnTurnAsync
+- uid: Hexalith.Infrastructure.SemanticBot.Helpers
+  name: Hexalith.Infrastructure.SemanticBot.Helpers
+  href: api/Hexalith.Infrastructure.SemanticBot.Helpers.html
+  commentId: N:Hexalith.Infrastructure.SemanticBot.Helpers
+  fullName: Hexalith.Infrastructure.SemanticBot.Helpers
+  nameWithType: Hexalith.Infrastructure.SemanticBot.Helpers
+- uid: Hexalith.Infrastructure.SemanticBot.Helpers.SemanticBotHelper
+  name: SemanticBotHelper
+  href: api/Hexalith.Infrastructure.SemanticBot.Helpers.SemanticBotHelper.html
+  commentId: T:Hexalith.Infrastructure.SemanticBot.Helpers.SemanticBotHelper
+  fullName: Hexalith.Infrastructure.SemanticBot.Helpers.SemanticBotHelper
+  nameWithType: SemanticBotHelper
+- uid: Hexalith.Infrastructure.SemanticBot.Helpers.SemanticBotHelper.AddSemanticBot(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
+  name: AddSemanticBot(IServiceCollection, IConfiguration)
+  href: api/Hexalith.Infrastructure.SemanticBot.Helpers.SemanticBotHelper.html#Hexalith_Infrastructure_SemanticBot_Helpers_SemanticBotHelper_AddSemanticBot_Microsoft_Extensions_DependencyInjection_IServiceCollection_Microsoft_Extensions_Configuration_IConfiguration_
+  commentId: M:Hexalith.Infrastructure.SemanticBot.Helpers.SemanticBotHelper.AddSemanticBot(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
+  fullName: Hexalith.Infrastructure.SemanticBot.Helpers.SemanticBotHelper.AddSemanticBot(Microsoft.Extensions.DependencyInjection.IServiceCollection, Microsoft.Extensions.Configuration.IConfiguration)
+  nameWithType: SemanticBotHelper.AddSemanticBot(IServiceCollection, IConfiguration)
+- uid: Hexalith.Infrastructure.SemanticBot.Helpers.SemanticBotHelper.AddSemanticBot*
+  name: AddSemanticBot
+  href: api/Hexalith.Infrastructure.SemanticBot.Helpers.SemanticBotHelper.html#Hexalith_Infrastructure_SemanticBot_Helpers_SemanticBotHelper_AddSemanticBot_
+  commentId: Overload:Hexalith.Infrastructure.SemanticBot.Helpers.SemanticBotHelper.AddSemanticBot
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.SemanticBot.Helpers.SemanticBotHelper.AddSemanticBot
+  nameWithType: SemanticBotHelper.AddSemanticBot
 - uid: Hexalith.Infrastructure.Serialization.Serialization
   name: Hexalith.Infrastructure.Serialization.Serialization
   href: api/Hexalith.Infrastructure.Serialization.Serialization.html
