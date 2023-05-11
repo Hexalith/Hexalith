@@ -1,16 +1,18 @@
-﻿// <copyright file="GetRequestFailedException.cs" company="Fiveforty SAS Paris France">
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Infrastructure.Dynamics365FinanceAndOperations
+// Author           : Jérôme Piquot
+// Created          : 02-05-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 05-08-2023
+// ***********************************************************************
+// <copyright file="GetRequestFailedException.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
-
-/*
- * <Your-Product-Name>
- * Copyright (c) <Year-From>-<Year-To> <Your-Company-Name>
- *
- * Please configure this header in your SonarCloud/SonarQube quality profile.
- * You can also set it in SonarLint.xml additional file for SonarLint or standalone NuGet analyzer.
- */
+// <summary></summary>
+// ***********************************************************************
 
 namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
 
@@ -25,14 +27,14 @@ using System.Text.Json;
 public sealed class GetRequestFailedException<T> : Exception
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="GetRequestFailedException{T}"/> class.
+    /// Initializes a new instance of the <see cref="GetRequestFailedException{T}" /> class.
     /// </summary>
     public GetRequestFailedException()
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="GetRequestFailedException{T}"/> class.
+    /// Initializes a new instance of the <see cref="GetRequestFailedException{T}" /> class.
     /// </summary>
     /// <param name="message">The error message.</param>
     public GetRequestFailedException(string? message)
@@ -41,7 +43,7 @@ public sealed class GetRequestFailedException<T> : Exception
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="GetRequestFailedException{T}"/> class.
+    /// Initializes a new instance of the <see cref="GetRequestFailedException{T}" /> class.
     /// </summary>
     /// <param name="message">The error message.</param>
     /// <param name="innerException">The inner exception.</param>
@@ -51,7 +53,7 @@ public sealed class GetRequestFailedException<T> : Exception
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="GetRequestFailedException{T}"/> class.
+    /// Initializes a new instance of the <see cref="GetRequestFailedException{T}" /> class.
     /// </summary>
     /// <param name="entityName">The entity name.</param>
     /// <param name="filter">The filter used to get the entity list.</param>
@@ -66,6 +68,11 @@ public sealed class GetRequestFailedException<T> : Exception
         ResponseContent = responseContent;
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="GetRequestFailedException{T}"/> class.
+    /// </summary>
+    /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
+    /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
     private GetRequestFailedException(SerializationInfo info, StreamingContext context)
         : base(info, context)
     {
@@ -74,25 +81,19 @@ public sealed class GetRequestFailedException<T> : Exception
     /// <summary>
     /// Gets the entity name.
     /// </summary>
-    /// <value>
-    /// The entity name.
-    /// </value>
+    /// <value>The entity name.</value>
     public string? EntityName { get; private set; }
 
     /// <summary>
     /// Gets the keys used to get the entity.
     /// </summary>
-    /// <value>
-    /// The keys used to get the entity.
-    /// </value>
+    /// <value>The keys used to get the entity.</value>
     public IDictionary<string, object?>? Filter { get; private set; }
 
     /// <summary>
     /// Gets the returned response.
     /// </summary>
-    /// <value>
-    /// The returned response.
-    /// </value>
+    /// <value>The returned response.</value>
     public string? ResponseContent { get; private set; }
 
     /// <inheritdoc/>

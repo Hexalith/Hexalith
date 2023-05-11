@@ -14117,6 +14117,130 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.Security.Abstractions.IApplicationSecurityContext.AcquireTokenAsync
   nameWithType: IApplicationSecurityContext.AcquireTokenAsync
+- uid: Hexalith.Infrastructure.SemanticBot.Activities
+  name: Hexalith.Infrastructure.SemanticBot.Activities
+  href: api/Hexalith.Infrastructure.SemanticBot.Activities.html
+  commentId: N:Hexalith.Infrastructure.SemanticBot.Activities
+  fullName: Hexalith.Infrastructure.SemanticBot.Activities
+  nameWithType: Hexalith.Infrastructure.SemanticBot.Activities
+- uid: Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity
+  name: ISemanticActivity
+  href: api/Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.html
+  commentId: T:Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity
+  fullName: Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity
+  nameWithType: ISemanticActivity
+- uid: Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.Classification
+  name: Classification
+  href: api/Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.html#Hexalith_Infrastructure_SemanticBot_Activities_ISemanticActivity_Classification
+  commentId: P:Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.Classification
+  fullName: Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.Classification
+  nameWithType: ISemanticActivity.Classification
+- uid: Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.Classification*
+  name: Classification
+  href: api/Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.html#Hexalith_Infrastructure_SemanticBot_Activities_ISemanticActivity_Classification_
+  commentId: Overload:Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.Classification
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.Classification
+  nameWithType: ISemanticActivity.Classification
+- uid: Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.Name
+  name: Name
+  href: api/Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.html#Hexalith_Infrastructure_SemanticBot_Activities_ISemanticActivity_Name
+  commentId: P:Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.Name
+  fullName: Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.Name
+  nameWithType: ISemanticActivity.Name
+- uid: Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.Name*
+  name: Name
+  href: api/Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.html#Hexalith_Infrastructure_SemanticBot_Activities_ISemanticActivity_Name_
+  commentId: Overload:Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.Name
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.Name
+  nameWithType: ISemanticActivity.Name
+- uid: Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.Prompt
+  name: Prompt
+  href: api/Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.html#Hexalith_Infrastructure_SemanticBot_Activities_ISemanticActivity_Prompt
+  commentId: P:Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.Prompt
+  fullName: Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.Prompt
+  nameWithType: ISemanticActivity.Prompt
+- uid: Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.Prompt*
+  name: Prompt
+  href: api/Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.html#Hexalith_Infrastructure_SemanticBot_Activities_ISemanticActivity_Prompt_
+  commentId: Overload:Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.Prompt
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.Prompt
+  nameWithType: ISemanticActivity.Prompt
+- uid: Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.ResponseType
+  name: ResponseType
+  href: api/Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.html#Hexalith_Infrastructure_SemanticBot_Activities_ISemanticActivity_ResponseType
+  commentId: P:Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.ResponseType
+  fullName: Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.ResponseType
+  nameWithType: ISemanticActivity.ResponseType
+- uid: Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.ResponseType*
+  name: ResponseType
+  href: api/Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.html#Hexalith_Infrastructure_SemanticBot_Activities_ISemanticActivity_ResponseType_
+  commentId: Overload:Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.ResponseType
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.ResponseType
+  nameWithType: ISemanticActivity.ResponseType
+- uid: Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand`1
+  name: SemanticCommand<TCommand>
+  href: api/Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand-1.html
+  commentId: T:Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand`1
+  name.vb: SemanticCommand(Of TCommand)
+  fullName: Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand<TCommand>
+  fullName.vb: Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand(Of TCommand)
+  nameWithType: SemanticCommand<TCommand>
+  nameWithType.vb: SemanticCommand(Of TCommand)
+- uid: Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand`1.Classification
+  name: Classification
+  href: api/Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand-1.html#Hexalith_Infrastructure_SemanticBot_Activities_SemanticCommand_1_Classification
+  commentId: P:Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand`1.Classification
+  fullName: Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand<TCommand>.Classification
+  fullName.vb: Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand(Of TCommand).Classification
+  nameWithType: SemanticCommand<TCommand>.Classification
+  nameWithType.vb: SemanticCommand(Of TCommand).Classification
+- uid: Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand`1.Classification*
+  name: Classification
+  href: api/Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand-1.html#Hexalith_Infrastructure_SemanticBot_Activities_SemanticCommand_1_Classification_
+  commentId: Overload:Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand`1.Classification
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand<TCommand>.Classification
+  fullName.vb: Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand(Of TCommand).Classification
+  nameWithType: SemanticCommand<TCommand>.Classification
+  nameWithType.vb: SemanticCommand(Of TCommand).Classification
+- uid: Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand`1.Name
+  name: Name
+  href: api/Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand-1.html#Hexalith_Infrastructure_SemanticBot_Activities_SemanticCommand_1_Name
+  commentId: P:Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand`1.Name
+  fullName: Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand<TCommand>.Name
+  fullName.vb: Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand(Of TCommand).Name
+  nameWithType: SemanticCommand<TCommand>.Name
+  nameWithType.vb: SemanticCommand(Of TCommand).Name
+- uid: Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand`1.Name*
+  name: Name
+  href: api/Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand-1.html#Hexalith_Infrastructure_SemanticBot_Activities_SemanticCommand_1_Name_
+  commentId: Overload:Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand`1.Name
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand<TCommand>.Name
+  fullName.vb: Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand(Of TCommand).Name
+  nameWithType: SemanticCommand<TCommand>.Name
+  nameWithType.vb: SemanticCommand(Of TCommand).Name
+- uid: Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand`1.Prompt
+  name: Prompt
+  href: api/Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand-1.html#Hexalith_Infrastructure_SemanticBot_Activities_SemanticCommand_1_Prompt
+  commentId: P:Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand`1.Prompt
+  fullName: Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand<TCommand>.Prompt
+  fullName.vb: Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand(Of TCommand).Prompt
+  nameWithType: SemanticCommand<TCommand>.Prompt
+  nameWithType.vb: SemanticCommand(Of TCommand).Prompt
+- uid: Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand`1.Prompt*
+  name: Prompt
+  href: api/Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand-1.html#Hexalith_Infrastructure_SemanticBot_Activities_SemanticCommand_1_Prompt_
+  commentId: Overload:Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand`1.Prompt
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand<TCommand>.Prompt
+  fullName.vb: Hexalith.Infrastructure.SemanticBot.Activities.SemanticCommand(Of TCommand).Prompt
+  nameWithType: SemanticCommand<TCommand>.Prompt
+  nameWithType.vb: SemanticCommand(Of TCommand).Prompt
 - uid: Hexalith.Infrastructure.SemanticBot.Adapters
   name: Hexalith.Infrastructure.SemanticBot.Adapters
   href: api/Hexalith.Infrastructure.SemanticBot.Adapters.html
@@ -14158,6 +14282,159 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.SemanticBot.Adapters.SemanticBotAdapter.BotUnhandledError
   nameWithType: SemanticBotAdapter.BotUnhandledError
+- uid: Hexalith.Infrastructure.SemanticBot.Configurations
+  name: Hexalith.Infrastructure.SemanticBot.Configurations
+  href: api/Hexalith.Infrastructure.SemanticBot.Configurations.html
+  commentId: N:Hexalith.Infrastructure.SemanticBot.Configurations
+  fullName: Hexalith.Infrastructure.SemanticBot.Configurations
+  nameWithType: Hexalith.Infrastructure.SemanticBot.Configurations
+- uid: Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration
+  name: AiModelConfiguration
+  href: api/Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.html
+  commentId: T:Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration
+  fullName: Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration
+  nameWithType: AiModelConfiguration
+- uid: Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.ApplicationKey
+  name: ApplicationKey
+  href: api/Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.html#Hexalith_Infrastructure_SemanticBot_Configurations_AiModelConfiguration_ApplicationKey
+  commentId: P:Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.ApplicationKey
+  fullName: Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.ApplicationKey
+  nameWithType: AiModelConfiguration.ApplicationKey
+- uid: Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.ApplicationKey*
+  name: ApplicationKey
+  href: api/Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.html#Hexalith_Infrastructure_SemanticBot_Configurations_AiModelConfiguration_ApplicationKey_
+  commentId: Overload:Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.ApplicationKey
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.ApplicationKey
+  nameWithType: AiModelConfiguration.ApplicationKey
+- uid: Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.Endpoint
+  name: Endpoint
+  href: api/Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.html#Hexalith_Infrastructure_SemanticBot_Configurations_AiModelConfiguration_Endpoint
+  commentId: P:Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.Endpoint
+  fullName: Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.Endpoint
+  nameWithType: AiModelConfiguration.Endpoint
+- uid: Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.Endpoint*
+  name: Endpoint
+  href: api/Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.html#Hexalith_Infrastructure_SemanticBot_Configurations_AiModelConfiguration_Endpoint_
+  commentId: Overload:Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.Endpoint
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.Endpoint
+  nameWithType: AiModelConfiguration.Endpoint
+- uid: Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.Model
+  name: Model
+  href: api/Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.html#Hexalith_Infrastructure_SemanticBot_Configurations_AiModelConfiguration_Model
+  commentId: P:Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.Model
+  fullName: Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.Model
+  nameWithType: AiModelConfiguration.Model
+- uid: Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.Model*
+  name: Model
+  href: api/Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.html#Hexalith_Infrastructure_SemanticBot_Configurations_AiModelConfiguration_Model_
+  commentId: Overload:Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.Model
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.Model
+  nameWithType: AiModelConfiguration.Model
+- uid: Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.Name
+  name: Name
+  href: api/Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.html#Hexalith_Infrastructure_SemanticBot_Configurations_AiModelConfiguration_Name
+  commentId: P:Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.Name
+  fullName: Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.Name
+  nameWithType: AiModelConfiguration.Name
+- uid: Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.Name*
+  name: Name
+  href: api/Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.html#Hexalith_Infrastructure_SemanticBot_Configurations_AiModelConfiguration_Name_
+  commentId: Overload:Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.Name
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.Name
+  nameWithType: AiModelConfiguration.Name
+- uid: Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.OrganizationId
+  name: OrganizationId
+  href: api/Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.html#Hexalith_Infrastructure_SemanticBot_Configurations_AiModelConfiguration_OrganizationId
+  commentId: P:Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.OrganizationId
+  fullName: Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.OrganizationId
+  nameWithType: AiModelConfiguration.OrganizationId
+- uid: Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.OrganizationId*
+  name: OrganizationId
+  href: api/Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.html#Hexalith_Infrastructure_SemanticBot_Configurations_AiModelConfiguration_OrganizationId_
+  commentId: Overload:Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.OrganizationId
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.OrganizationId
+  nameWithType: AiModelConfiguration.OrganizationId
+- uid: Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.Type
+  name: Type
+  href: api/Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.html#Hexalith_Infrastructure_SemanticBot_Configurations_AiModelConfiguration_Type
+  commentId: P:Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.Type
+  fullName: Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.Type
+  nameWithType: AiModelConfiguration.Type
+- uid: Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.Type*
+  name: Type
+  href: api/Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.html#Hexalith_Infrastructure_SemanticBot_Configurations_AiModelConfiguration_Type_
+  commentId: Overload:Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.Type
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.SemanticBot.Configurations.AiModelConfiguration.Type
+  nameWithType: AiModelConfiguration.Type
+- uid: Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings
+  name: ArtificialIntelligenceServiceSettings
+  href: api/Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings.html
+  commentId: T:Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings
+  fullName: Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings
+  nameWithType: ArtificialIntelligenceServiceSettings
+- uid: Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings.ChatModelService
+  name: ChatModelService
+  href: api/Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings.html#Hexalith_Infrastructure_SemanticBot_Configurations_ArtificialIntelligenceServiceSettings_ChatModelService
+  commentId: P:Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings.ChatModelService
+  fullName: Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings.ChatModelService
+  nameWithType: ArtificialIntelligenceServiceSettings.ChatModelService
+- uid: Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings.ChatModelService*
+  name: ChatModelService
+  href: api/Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings.html#Hexalith_Infrastructure_SemanticBot_Configurations_ArtificialIntelligenceServiceSettings_ChatModelService_
+  commentId: Overload:Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings.ChatModelService
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings.ChatModelService
+  nameWithType: ArtificialIntelligenceServiceSettings.ChatModelService
+- uid: Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings.ConfigurationName
+  name: ConfigurationName()
+  href: api/Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings.html#Hexalith_Infrastructure_SemanticBot_Configurations_ArtificialIntelligenceServiceSettings_ConfigurationName
+  commentId: M:Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings.ConfigurationName
+  fullName: Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings.ConfigurationName()
+  nameWithType: ArtificialIntelligenceServiceSettings.ConfigurationName()
+- uid: Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings.ConfigurationName*
+  name: ConfigurationName
+  href: api/Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings.html#Hexalith_Infrastructure_SemanticBot_Configurations_ArtificialIntelligenceServiceSettings_ConfigurationName_
+  commentId: Overload:Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings.ConfigurationName
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings.ConfigurationName
+  nameWithType: ArtificialIntelligenceServiceSettings.ConfigurationName
+- uid: Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings.TextModelService
+  name: TextModelService
+  href: api/Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings.html#Hexalith_Infrastructure_SemanticBot_Configurations_ArtificialIntelligenceServiceSettings_TextModelService
+  commentId: P:Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings.TextModelService
+  fullName: Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings.TextModelService
+  nameWithType: ArtificialIntelligenceServiceSettings.TextModelService
+- uid: Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings.TextModelService*
+  name: TextModelService
+  href: api/Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings.html#Hexalith_Infrastructure_SemanticBot_Configurations_ArtificialIntelligenceServiceSettings_TextModelService_
+  commentId: Overload:Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings.TextModelService
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings.TextModelService
+  nameWithType: ArtificialIntelligenceServiceSettings.TextModelService
+- uid: Hexalith.Infrastructure.SemanticBot.Configurations.CompletionServiceType
+  name: CompletionServiceType
+  href: api/Hexalith.Infrastructure.SemanticBot.Configurations.CompletionServiceType.html
+  commentId: T:Hexalith.Infrastructure.SemanticBot.Configurations.CompletionServiceType
+  fullName: Hexalith.Infrastructure.SemanticBot.Configurations.CompletionServiceType
+  nameWithType: CompletionServiceType
+- uid: Hexalith.Infrastructure.SemanticBot.Configurations.CompletionServiceType.AzureOpenAI
+  name: AzureOpenAI
+  href: api/Hexalith.Infrastructure.SemanticBot.Configurations.CompletionServiceType.html#Hexalith_Infrastructure_SemanticBot_Configurations_CompletionServiceType_AzureOpenAI
+  commentId: F:Hexalith.Infrastructure.SemanticBot.Configurations.CompletionServiceType.AzureOpenAI
+  fullName: Hexalith.Infrastructure.SemanticBot.Configurations.CompletionServiceType.AzureOpenAI
+  nameWithType: CompletionServiceType.AzureOpenAI
+- uid: Hexalith.Infrastructure.SemanticBot.Configurations.CompletionServiceType.OpenAI
+  name: OpenAI
+  href: api/Hexalith.Infrastructure.SemanticBot.Configurations.CompletionServiceType.html#Hexalith_Infrastructure_SemanticBot_Configurations_CompletionServiceType_OpenAI
+  commentId: F:Hexalith.Infrastructure.SemanticBot.Configurations.CompletionServiceType.OpenAI
+  fullName: Hexalith.Infrastructure.SemanticBot.Configurations.CompletionServiceType.OpenAI
+  nameWithType: CompletionServiceType.OpenAI
 - uid: Hexalith.Infrastructure.SemanticBot.Handlers
   name: Hexalith.Infrastructure.SemanticBot.Handlers
   href: api/Hexalith.Infrastructure.SemanticBot.Handlers.html
@@ -14170,12 +14447,15 @@ references:
   commentId: T:Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot
   fullName: Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot
   nameWithType: SemanticTeamsBot
-- uid: Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.#ctor(ArtificialIntelligenceService,IGlobalAdministrationQueryService,IUserQueryService)
-  name: SemanticTeamsBot(ArtificialIntelligenceService, IGlobalAdministrationQueryService, IUserQueryService)
-  href: api/Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.html#Hexalith_Infrastructure_SemanticBot_Handlers_SemanticTeamsBot__ctor_ArtificialIntelligenceService_IGlobalAdministrationQueryService_IUserQueryService_
-  commentId: M:Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.#ctor(ArtificialIntelligenceService,IGlobalAdministrationQueryService,IUserQueryService)
-  fullName: Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.SemanticTeamsBot(ArtificialIntelligenceService, IGlobalAdministrationQueryService, IUserQueryService)
-  nameWithType: SemanticTeamsBot.SemanticTeamsBot(ArtificialIntelligenceService, IGlobalAdministrationQueryService, IUserQueryService)
+- uid: Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.#ctor(IEnumerable{Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity},Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService)
+  name: SemanticTeamsBot(IEnumerable<ISemanticActivity>, ArtificialIntelligenceService)
+  href: api/Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.html#Hexalith_Infrastructure_SemanticBot_Handlers_SemanticTeamsBot__ctor_IEnumerable_Hexalith_Infrastructure_SemanticBot_Activities_ISemanticActivity__Hexalith_Infrastructure_SemanticBot_Services_ArtificialIntelligenceService_
+  commentId: M:Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.#ctor(IEnumerable{Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity},Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService)
+  name.vb: SemanticTeamsBot(IEnumerable(Of ISemanticActivity), ArtificialIntelligenceService)
+  fullName: Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.SemanticTeamsBot(IEnumerable<Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity>, Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService)
+  fullName.vb: Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.SemanticTeamsBot(IEnumerable(Of Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity), Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService)
+  nameWithType: SemanticTeamsBot.SemanticTeamsBot(IEnumerable<ISemanticActivity>, ArtificialIntelligenceService)
+  nameWithType.vb: SemanticTeamsBot.SemanticTeamsBot(IEnumerable(Of ISemanticActivity), ArtificialIntelligenceService)
 - uid: Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.#ctor*
   name: SemanticTeamsBot
   href: api/Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.html#Hexalith_Infrastructure_SemanticBot_Handlers_SemanticTeamsBot__ctor_
@@ -14237,6 +14517,66 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.SemanticBot.Helpers.SemanticBotHelper.AddSemanticBot
   nameWithType: SemanticBotHelper.AddSemanticBot
+- uid: Hexalith.Infrastructure.SemanticBot.Helpers.SemanticKernelHelper
+  name: SemanticKernelHelper
+  href: api/Hexalith.Infrastructure.SemanticBot.Helpers.SemanticKernelHelper.html
+  commentId: T:Hexalith.Infrastructure.SemanticBot.Helpers.SemanticKernelHelper
+  fullName: Hexalith.Infrastructure.SemanticBot.Helpers.SemanticKernelHelper
+  nameWithType: SemanticKernelHelper
+- uid: Hexalith.Infrastructure.SemanticBot.Helpers.SemanticKernelHelper.AddCompletionService(Microsoft.SemanticKernel.KernelConfig,Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings)
+  name: AddCompletionService(KernelConfig, ArtificialIntelligenceServiceSettings)
+  href: api/Hexalith.Infrastructure.SemanticBot.Helpers.SemanticKernelHelper.html#Hexalith_Infrastructure_SemanticBot_Helpers_SemanticKernelHelper_AddCompletionService_Microsoft_SemanticKernel_KernelConfig_Hexalith_Infrastructure_SemanticBot_Configurations_ArtificialIntelligenceServiceSettings_
+  commentId: M:Hexalith.Infrastructure.SemanticBot.Helpers.SemanticKernelHelper.AddCompletionService(Microsoft.SemanticKernel.KernelConfig,Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings)
+  fullName: Hexalith.Infrastructure.SemanticBot.Helpers.SemanticKernelHelper.AddCompletionService(Microsoft.SemanticKernel.KernelConfig, Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings)
+  nameWithType: SemanticKernelHelper.AddCompletionService(KernelConfig, ArtificialIntelligenceServiceSettings)
+- uid: Hexalith.Infrastructure.SemanticBot.Helpers.SemanticKernelHelper.AddCompletionService*
+  name: AddCompletionService
+  href: api/Hexalith.Infrastructure.SemanticBot.Helpers.SemanticKernelHelper.html#Hexalith_Infrastructure_SemanticBot_Helpers_SemanticKernelHelper_AddCompletionService_
+  commentId: Overload:Hexalith.Infrastructure.SemanticBot.Helpers.SemanticKernelHelper.AddCompletionService
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.SemanticBot.Helpers.SemanticKernelHelper.AddCompletionService
+  nameWithType: SemanticKernelHelper.AddCompletionService
+- uid: Hexalith.Infrastructure.SemanticBot.Services
+  name: Hexalith.Infrastructure.SemanticBot.Services
+  href: api/Hexalith.Infrastructure.SemanticBot.Services.html
+  commentId: N:Hexalith.Infrastructure.SemanticBot.Services
+  fullName: Hexalith.Infrastructure.SemanticBot.Services
+  nameWithType: Hexalith.Infrastructure.SemanticBot.Services
+- uid: Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService
+  name: ArtificialIntelligenceService
+  href: api/Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService.html
+  commentId: T:Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService
+  fullName: Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService
+  nameWithType: ArtificialIntelligenceService
+- uid: Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService.#ctor(Microsoft.Extensions.Options.IOptions{Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings},Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService})
+  name: ArtificialIntelligenceService(IOptions<ArtificialIntelligenceServiceSettings>, ILogger<ArtificialIntelligenceService>)
+  href: api/Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService.html#Hexalith_Infrastructure_SemanticBot_Services_ArtificialIntelligenceService__ctor_Microsoft_Extensions_Options_IOptions_Hexalith_Infrastructure_SemanticBot_Configurations_ArtificialIntelligenceServiceSettings__Microsoft_Extensions_Logging_ILogger_Hexalith_Infrastructure_SemanticBot_Services_ArtificialIntelligenceService__
+  commentId: M:Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService.#ctor(Microsoft.Extensions.Options.IOptions{Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings},Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService})
+  name.vb: ArtificialIntelligenceService(IOptions(Of ArtificialIntelligenceServiceSettings), ILogger(Of ArtificialIntelligenceService))
+  fullName: Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService.ArtificialIntelligenceService(Microsoft.Extensions.Options.IOptions<Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings>, Microsoft.Extensions.Logging.ILogger<Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService>)
+  fullName.vb: Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService.ArtificialIntelligenceService(Microsoft.Extensions.Options.IOptions(Of Hexalith.Infrastructure.SemanticBot.Configurations.ArtificialIntelligenceServiceSettings), Microsoft.Extensions.Logging.ILogger(Of Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService))
+  nameWithType: ArtificialIntelligenceService.ArtificialIntelligenceService(IOptions<ArtificialIntelligenceServiceSettings>, ILogger<ArtificialIntelligenceService>)
+  nameWithType.vb: ArtificialIntelligenceService.ArtificialIntelligenceService(IOptions(Of ArtificialIntelligenceServiceSettings), ILogger(Of ArtificialIntelligenceService))
+- uid: Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService.#ctor*
+  name: ArtificialIntelligenceService
+  href: api/Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService.html#Hexalith_Infrastructure_SemanticBot_Services_ArtificialIntelligenceService__ctor_
+  commentId: Overload:Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService.ArtificialIntelligenceService
+  nameWithType: ArtificialIntelligenceService.ArtificialIntelligenceService
+- uid: Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService.Kernel
+  name: Kernel
+  href: api/Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService.html#Hexalith_Infrastructure_SemanticBot_Services_ArtificialIntelligenceService_Kernel
+  commentId: P:Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService.Kernel
+  fullName: Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService.Kernel
+  nameWithType: ArtificialIntelligenceService.Kernel
+- uid: Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService.Kernel*
+  name: Kernel
+  href: api/Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService.html#Hexalith_Infrastructure_SemanticBot_Services_ArtificialIntelligenceService_Kernel_
+  commentId: Overload:Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService.Kernel
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService.Kernel
+  nameWithType: ArtificialIntelligenceService.Kernel
 - uid: Hexalith.Infrastructure.Serialization.Serialization
   name: Hexalith.Infrastructure.Serialization.Serialization
   href: api/Hexalith.Infrastructure.Serialization.Serialization.html

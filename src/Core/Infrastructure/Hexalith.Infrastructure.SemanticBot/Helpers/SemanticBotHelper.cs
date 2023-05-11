@@ -16,8 +16,11 @@
 
 namespace Hexalith.Infrastructure.SemanticBot.Helpers;
 
+using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.SemanticBot.Adapters;
+using Hexalith.Infrastructure.SemanticBot.Configurations;
 using Hexalith.Infrastructure.SemanticBot.Handlers;
+using Hexalith.Infrastructure.SemanticBot.Services;
 
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
@@ -39,6 +42,8 @@ public static class SemanticBotHelper
     public static IServiceCollection AddSemanticBot(this IServiceCollection services, IConfiguration configuration)
     {
         return services
+            .AddSingleton<ArtificialIntelligenceService>()
+            .ConfigureSettings<ArtificialIntelligenceServiceSettings>(configuration)
             .AddSingleton<BotFrameworkAuthentication, ConfigurationBotFrameworkAuthentication>()
             .AddSingleton<CloudAdapter, SemanticBotAdapter>()
             .AddSingleton<IBotFrameworkHttpAdapter>(sp => sp.GetRequiredService<CloudAdapter>())

@@ -326,19 +326,19 @@ You can add your customization code here to extend your bot logic if needed.</p>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_SemanticBot_Handlers_SemanticTeamsBot__ctor_ArtificialIntelligenceService_IGlobalAdministrationQueryService_IUserQueryService_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.%23ctor(ArtificialIntelligenceService%2CIGlobalAdministrationQueryService%2CIUserQueryService)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_SemanticBot_Handlers_SemanticTeamsBot__ctor_IEnumerable_Hexalith_Infrastructure_SemanticBot_Activities_ISemanticActivity__Hexalith_Infrastructure_SemanticBot_Services_ArtificialIntelligenceService_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.%23ctor(IEnumerable%7BHexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity%7D%2CHexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.SemanticBot/Handlers/SemanticTeamsBot.cs/#L52">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.SemanticBot/Handlers/SemanticTeamsBot.cs/#L43">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_SemanticBot_Handlers_SemanticTeamsBot__ctor_" data-uid="Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.#ctor*"></a>
-  <h4 id="Hexalith_Infrastructure_SemanticBot_Handlers_SemanticTeamsBot__ctor_ArtificialIntelligenceService_IGlobalAdministrationQueryService_IUserQueryService_" data-uid="Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.#ctor(ArtificialIntelligenceService,IGlobalAdministrationQueryService,IUserQueryService)">SemanticTeamsBot(ArtificialIntelligenceService, IGlobalAdministrationQueryService, IUserQueryService)</h4>
+  <h4 id="Hexalith_Infrastructure_SemanticBot_Handlers_SemanticTeamsBot__ctor_IEnumerable_Hexalith_Infrastructure_SemanticBot_Activities_ISemanticActivity__Hexalith_Infrastructure_SemanticBot_Services_ArtificialIntelligenceService_" data-uid="Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.#ctor(IEnumerable{Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity},Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService)">SemanticTeamsBot(IEnumerable&lt;ISemanticActivity&gt;, ArtificialIntelligenceService)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.html">SemanticTeamsBot</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SemanticTeamsBot(ArtificialIntelligenceService artificialIntelligenceService, IGlobalAdministrationQueryService administrationService, IUserQueryService userService)</code></pre>
+    <pre><code class="lang-csharp hljs">public SemanticTeamsBot(IEnumerable&lt;ISemanticActivity&gt; semanticActivities, ArtificialIntelligenceService artificialIntelligenceService)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -351,21 +351,14 @@ You can add your customization code here to extend your bot logic if needed.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ArtificialIntelligenceService</span></td>
+        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="Hexalith.Infrastructure.SemanticBot.Activities.ISemanticActivity.html">ISemanticActivity</a>&gt;</td>
+        <td><span class="parametername">semanticActivities</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.Infrastructure.SemanticBot.Services.ArtificialIntelligenceService.html">ArtificialIntelligenceService</a></td>
         <td><span class="parametername">artificialIntelligenceService</span></td>
         <td><p>The artificial intelligence service.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">IGlobalAdministrationQueryService</span></td>
-        <td><span class="parametername">administrationService</span></td>
-        <td><p>The administration service.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">IUserQueryService</span></td>
-        <td><span class="parametername">userService</span></td>
-        <td><p>The user service.</p>
 </td>
       </tr>
     </tbody>
@@ -377,7 +370,7 @@ You can add your customization code here to extend your bot logic if needed.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_SemanticBot_Handlers_SemanticTeamsBot_OnMessageActivityAsync_Microsoft_Bot_Builder_ITurnContext_Microsoft_Bot_Schema_IMessageActivity__CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.OnMessageActivityAsync(Microsoft.Bot.Builder.ITurnContext%7BMicrosoft.Bot.Schema.IMessageActivity%7D%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.SemanticBot/Handlers/SemanticTeamsBot.cs/#L68">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.SemanticBot/Handlers/SemanticTeamsBot.cs/#L56">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_SemanticBot_Handlers_SemanticTeamsBot_OnMessageActivityAsync_" data-uid="Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.OnMessageActivityAsync*"></a>
   <h4 id="Hexalith_Infrastructure_SemanticBot_Handlers_SemanticTeamsBot_OnMessageActivityAsync_Microsoft_Bot_Builder_ITurnContext_Microsoft_Bot_Schema_IMessageActivity__CancellationToken_" data-uid="Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.OnMessageActivityAsync(Microsoft.Bot.Builder.ITurnContext{Microsoft.Bot.Schema.IMessageActivity},CancellationToken)">OnMessageActivityAsync(ITurnContext&lt;IMessageActivity&gt;, CancellationToken)</h4>
@@ -429,7 +422,7 @@ You can add your customization code here to extend your bot logic if needed.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_SemanticBot_Handlers_SemanticTeamsBot_OnTurnAsync_Microsoft_Bot_Builder_ITurnContext_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.OnTurnAsync(Microsoft.Bot.Builder.ITurnContext%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.SemanticBot/Handlers/SemanticTeamsBot.cs/#L64">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.SemanticBot/Handlers/SemanticTeamsBot.cs/#L52">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_SemanticBot_Handlers_SemanticTeamsBot_OnTurnAsync_" data-uid="Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.OnTurnAsync*"></a>
   <h4 id="Hexalith_Infrastructure_SemanticBot_Handlers_SemanticTeamsBot_OnTurnAsync_Microsoft_Bot_Builder_ITurnContext_CancellationToken_" data-uid="Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.OnTurnAsync(Microsoft.Bot.Builder.ITurnContext,CancellationToken)">OnTurnAsync(ITurnContext, CancellationToken)</h4>
@@ -495,7 +488,7 @@ You can add your customization code here to extend your bot logic if needed.</p>
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_SemanticBot_Handlers_SemanticTeamsBot.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.SemanticBot/Handlers/SemanticTeamsBot.cs/#L28" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.SemanticBot/Handlers/SemanticTeamsBot.cs/#L31" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

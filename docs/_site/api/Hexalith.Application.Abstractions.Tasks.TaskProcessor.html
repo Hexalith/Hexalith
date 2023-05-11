@@ -240,7 +240,8 @@ public TaskProcessor(TaskProcessorStatus status, TaskProcessingHistory history, 
   </span>
   <a id="Hexalith_Application_Abstractions_Tasks_TaskProcessor_CanRetry_" data-uid="Hexalith.Application.Abstractions.Tasks.TaskProcessor.CanRetry*"></a>
   <h4 id="Hexalith_Application_Abstractions_Tasks_TaskProcessor_CanRetry" data-uid="Hexalith.Application.Abstractions.Tasks.TaskProcessor.CanRetry">CanRetry</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether we can retry.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -259,7 +260,8 @@ public RetryStatus CanRetry { get; }</code></pre>
     <tbody>
       <tr>
         <td><a class="xref" href="Hexalith.Application.Abstractions.Tasks.RetryStatus.html">RetryStatus</a></td>
-        <td></td>
+        <td><p>true if total wait time is expired, else false.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -272,18 +274,16 @@ public RetryStatus CanRetry { get; }</code></pre>
   </span>
   <a id="Hexalith_Application_Abstractions_Tasks_TaskProcessor_Failure_" data-uid="Hexalith.Application.Abstractions.Tasks.TaskProcessor.Failure*"></a>
   <h4 id="Hexalith_Application_Abstractions_Tasks_TaskProcessor_Failure" data-uid="Hexalith.Application.Abstractions.Tasks.TaskProcessor.Failure">Failure</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the task processing failure.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataMember(Order = 3)]
 [JsonPropertyOrder(3)]
 public TaskProcessingFailure Failure { get;
-
     [Obsolete(&quot;Setter used only for serialization purposes.&quot;, false)]
-
     set;
-
 }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -310,18 +310,16 @@ public TaskProcessingFailure Failure { get;
   </span>
   <a id="Hexalith_Application_Abstractions_Tasks_TaskProcessor_History_" data-uid="Hexalith.Application.Abstractions.Tasks.TaskProcessor.History*"></a>
   <h4 id="Hexalith_Application_Abstractions_Tasks_TaskProcessor_History" data-uid="Hexalith.Application.Abstractions.Tasks.TaskProcessor.History">History</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the task processing history.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataMember(Order = 2)]
 [JsonPropertyOrder(2)]
 public TaskProcessingHistory History { get;
-
     [Obsolete(&quot;Setter used only for serialization purposes.&quot;, false)]
-
     set;
-
 }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -348,18 +346,16 @@ public TaskProcessingHistory History { get;
   </span>
   <a id="Hexalith_Application_Abstractions_Tasks_TaskProcessor_ResiliencyPolicy_" data-uid="Hexalith.Application.Abstractions.Tasks.TaskProcessor.ResiliencyPolicy*"></a>
   <h4 id="Hexalith_Application_Abstractions_Tasks_TaskProcessor_ResiliencyPolicy" data-uid="Hexalith.Application.Abstractions.Tasks.TaskProcessor.ResiliencyPolicy">ResiliencyPolicy</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets retry policy.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataMember(Order = 4)]
 [JsonPropertyOrder(4)]
 public ResiliencyPolicy ResiliencyPolicy { get;
-
     [Obsolete(&quot;Setter used only for serialization purposes.&quot;, false)]
-
     set;
-
 }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -420,7 +416,8 @@ public TimeSpan RetryWaitTime { get; }</code></pre>
   </span>
   <a id="Hexalith_Application_Abstractions_Tasks_TaskProcessor_Status_" data-uid="Hexalith.Application.Abstractions.Tasks.TaskProcessor.Status*"></a>
   <h4 id="Hexalith_Application_Abstractions_Tasks_TaskProcessor_Status" data-uid="Hexalith.Application.Abstractions.Tasks.TaskProcessor.Status">Status</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the task processor status.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -428,11 +425,8 @@ public TimeSpan RetryWaitTime { get; }</code></pre>
 [JsonPropertyOrder(1)]
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public TaskProcessorStatus Status { get;
-
     [Obsolete(&quot;Setter used only for serialization purposes.&quot;, false)]
-
     set;
-
 }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -668,7 +662,8 @@ public TaskProcessorStatus Status { get;
   </span>
   <a id="Hexalith_Application_Abstractions_Tasks_TaskProcessor_Hexalith_Application_Abstractions_Tasks_ITaskProcessor_Cancel_" data-uid="Hexalith.Application.Abstractions.Tasks.TaskProcessor.Hexalith#Application#Abstractions#Tasks#ITaskProcessor#Cancel*"></a>
   <h4 id="Hexalith_Application_Abstractions_Tasks_TaskProcessor_Hexalith_Application_Abstractions_Tasks_ITaskProcessor_Cancel" data-uid="Hexalith.Application.Abstractions.Tasks.TaskProcessor.Hexalith#Application#Abstractions#Tasks#ITaskProcessor#Cancel">ITaskProcessor.Cancel()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Cancel the task.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -685,7 +680,8 @@ public TaskProcessorStatus Status { get;
     <tbody>
       <tr>
         <td><a class="xref" href="Hexalith.Application.Abstractions.Tasks.ITaskProcessor.html">ITaskProcessor</a></td>
-        <td></td>
+        <td><p>New copy of the task processor with status changed.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -698,7 +694,8 @@ public TaskProcessorStatus Status { get;
   </span>
   <a id="Hexalith_Application_Abstractions_Tasks_TaskProcessor_Hexalith_Application_Abstractions_Tasks_ITaskProcessor_Complete_" data-uid="Hexalith.Application.Abstractions.Tasks.TaskProcessor.Hexalith#Application#Abstractions#Tasks#ITaskProcessor#Complete*"></a>
   <h4 id="Hexalith_Application_Abstractions_Tasks_TaskProcessor_Hexalith_Application_Abstractions_Tasks_ITaskProcessor_Complete" data-uid="Hexalith.Application.Abstractions.Tasks.TaskProcessor.Hexalith#Application#Abstractions#Tasks#ITaskProcessor#Complete">ITaskProcessor.Complete()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Complete the task.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -715,7 +712,8 @@ public TaskProcessorStatus Status { get;
     <tbody>
       <tr>
         <td><a class="xref" href="Hexalith.Application.Abstractions.Tasks.ITaskProcessor.html">ITaskProcessor</a></td>
-        <td></td>
+        <td><p>New copy of the task processor with status changed.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -728,7 +726,8 @@ public TaskProcessorStatus Status { get;
   </span>
   <a id="Hexalith_Application_Abstractions_Tasks_TaskProcessor_Hexalith_Application_Abstractions_Tasks_ITaskProcessor_Continue_" data-uid="Hexalith.Application.Abstractions.Tasks.TaskProcessor.Hexalith#Application#Abstractions#Tasks#ITaskProcessor#Continue*"></a>
   <h4 id="Hexalith_Application_Abstractions_Tasks_TaskProcessor_Hexalith_Application_Abstractions_Tasks_ITaskProcessor_Continue" data-uid="Hexalith.Application.Abstractions.Tasks.TaskProcessor.Hexalith#Application#Abstractions#Tasks#ITaskProcessor#Continue">ITaskProcessor.Continue()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Changes the status from suspended to active if the retry wait time has expired.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -745,7 +744,8 @@ public TaskProcessorStatus Status { get;
     <tbody>
       <tr>
         <td><a class="xref" href="Hexalith.Application.Abstractions.Tasks.ITaskProcessor.html">ITaskProcessor</a></td>
-        <td></td>
+        <td><p>New copy of the task processor with status changed.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -758,7 +758,8 @@ public TaskProcessorStatus Status { get;
   </span>
   <a id="Hexalith_Application_Abstractions_Tasks_TaskProcessor_Hexalith_Application_Abstractions_Tasks_ITaskProcessor_Fail_" data-uid="Hexalith.Application.Abstractions.Tasks.TaskProcessor.Hexalith#Application#Abstractions#Tasks#ITaskProcessor#Fail*"></a>
   <h4 id="Hexalith_Application_Abstractions_Tasks_TaskProcessor_Hexalith_Application_Abstractions_Tasks_ITaskProcessor_Fail_System_String_System_String_" data-uid="Hexalith.Application.Abstractions.Tasks.TaskProcessor.Hexalith#Application#Abstractions#Tasks#ITaskProcessor#Fail(System.String,System.String)">ITaskProcessor.Fail(String, String)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Fails the specified message.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -777,12 +778,14 @@ public TaskProcessorStatus Status { get;
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">message</span></td>
-        <td></td>
+        <td><p>The message.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">technicalError</span></td>
-        <td></td>
+        <td><p>The technical error.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -797,7 +800,8 @@ public TaskProcessorStatus Status { get;
     <tbody>
       <tr>
         <td><a class="xref" href="Hexalith.Application.Abstractions.Tasks.ITaskProcessor.html">ITaskProcessor</a></td>
-        <td></td>
+        <td><p>ITaskProcessor.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -810,7 +814,8 @@ public TaskProcessorStatus Status { get;
   </span>
   <a id="Hexalith_Application_Abstractions_Tasks_TaskProcessor_Hexalith_Application_Abstractions_Tasks_ITaskProcessor_Start_" data-uid="Hexalith.Application.Abstractions.Tasks.TaskProcessor.Hexalith#Application#Abstractions#Tasks#ITaskProcessor#Start*"></a>
   <h4 id="Hexalith_Application_Abstractions_Tasks_TaskProcessor_Hexalith_Application_Abstractions_Tasks_ITaskProcessor_Start" data-uid="Hexalith.Application.Abstractions.Tasks.TaskProcessor.Hexalith#Application#Abstractions#Tasks#ITaskProcessor#Start">ITaskProcessor.Start()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Start the task.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -827,7 +832,8 @@ public TaskProcessorStatus Status { get;
     <tbody>
       <tr>
         <td><a class="xref" href="Hexalith.Application.Abstractions.Tasks.ITaskProcessor.html">ITaskProcessor</a></td>
-        <td></td>
+        <td><p>New copy of the task processor with status changed.</p>
+</td>
       </tr>
     </tbody>
   </table>
