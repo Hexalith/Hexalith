@@ -12,6 +12,7 @@
 		<PackageReference Include="AdaptiveCards.Templating" Version="$(AdaptiveCardsTemplatingVersion)" />
 		<PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="$(MicrosoftBotBuilderVersion)" />
 		<PackageReference Include="Microsoft.SemanticKernel" Version="$(MicrosoftSemanticKernelVersion)" />
+		<PackageReference Include="Microsoft.TeamsFx" Version="2.0.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\Application\Hexalith.Application.Abstractions\Hexalith.Application.Abstractions.csproj" />

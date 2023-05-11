@@ -14435,6 +14435,44 @@ references:
   commentId: F:Hexalith.Infrastructure.SemanticBot.Configurations.CompletionServiceType.OpenAI
   fullName: Hexalith.Infrastructure.SemanticBot.Configurations.CompletionServiceType.OpenAI
   nameWithType: CompletionServiceType.OpenAI
+- uid: Hexalith.Infrastructure.SemanticBot.Controllers
+  name: Hexalith.Infrastructure.SemanticBot.Controllers
+  href: api/Hexalith.Infrastructure.SemanticBot.Controllers.html
+  commentId: N:Hexalith.Infrastructure.SemanticBot.Controllers
+  fullName: Hexalith.Infrastructure.SemanticBot.Controllers
+  nameWithType: Hexalith.Infrastructure.SemanticBot.Controllers
+- uid: Hexalith.Infrastructure.SemanticBot.Controllers.SemanticBotController
+  name: SemanticBotController
+  href: api/Hexalith.Infrastructure.SemanticBot.Controllers.SemanticBotController.html
+  commentId: T:Hexalith.Infrastructure.SemanticBot.Controllers.SemanticBotController
+  fullName: Hexalith.Infrastructure.SemanticBot.Controllers.SemanticBotController
+  nameWithType: SemanticBotController
+- uid: Hexalith.Infrastructure.SemanticBot.Controllers.SemanticBotController.#ctor(Microsoft.TeamsFx.Conversation.ConversationBot,Microsoft.Bot.Builder.IBot)
+  name: SemanticBotController(ConversationBot, IBot)
+  href: api/Hexalith.Infrastructure.SemanticBot.Controllers.SemanticBotController.html#Hexalith_Infrastructure_SemanticBot_Controllers_SemanticBotController__ctor_Microsoft_TeamsFx_Conversation_ConversationBot_Microsoft_Bot_Builder_IBot_
+  commentId: M:Hexalith.Infrastructure.SemanticBot.Controllers.SemanticBotController.#ctor(Microsoft.TeamsFx.Conversation.ConversationBot,Microsoft.Bot.Builder.IBot)
+  fullName: Hexalith.Infrastructure.SemanticBot.Controllers.SemanticBotController.SemanticBotController(Microsoft.TeamsFx.Conversation.ConversationBot, Microsoft.Bot.Builder.IBot)
+  nameWithType: SemanticBotController.SemanticBotController(ConversationBot, IBot)
+- uid: Hexalith.Infrastructure.SemanticBot.Controllers.SemanticBotController.#ctor*
+  name: SemanticBotController
+  href: api/Hexalith.Infrastructure.SemanticBot.Controllers.SemanticBotController.html#Hexalith_Infrastructure_SemanticBot_Controllers_SemanticBotController__ctor_
+  commentId: Overload:Hexalith.Infrastructure.SemanticBot.Controllers.SemanticBotController.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.SemanticBot.Controllers.SemanticBotController.SemanticBotController
+  nameWithType: SemanticBotController.SemanticBotController
+- uid: Hexalith.Infrastructure.SemanticBot.Controllers.SemanticBotController.PostAsync(CancellationToken)
+  name: PostAsync(CancellationToken)
+  href: api/Hexalith.Infrastructure.SemanticBot.Controllers.SemanticBotController.html#Hexalith_Infrastructure_SemanticBot_Controllers_SemanticBotController_PostAsync_CancellationToken_
+  commentId: M:Hexalith.Infrastructure.SemanticBot.Controllers.SemanticBotController.PostAsync(CancellationToken)
+  fullName: Hexalith.Infrastructure.SemanticBot.Controllers.SemanticBotController.PostAsync(CancellationToken)
+  nameWithType: SemanticBotController.PostAsync(CancellationToken)
+- uid: Hexalith.Infrastructure.SemanticBot.Controllers.SemanticBotController.PostAsync*
+  name: PostAsync
+  href: api/Hexalith.Infrastructure.SemanticBot.Controllers.SemanticBotController.html#Hexalith_Infrastructure_SemanticBot_Controllers_SemanticBotController_PostAsync_
+  commentId: Overload:Hexalith.Infrastructure.SemanticBot.Controllers.SemanticBotController.PostAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.SemanticBot.Controllers.SemanticBotController.PostAsync
+  nameWithType: SemanticBotController.PostAsync
 - uid: Hexalith.Infrastructure.SemanticBot.Handlers
   name: Hexalith.Infrastructure.SemanticBot.Handlers
   href: api/Hexalith.Infrastructure.SemanticBot.Handlers.html

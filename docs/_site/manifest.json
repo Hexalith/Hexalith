@@ -3329,11 +3329,35 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.SemanticBot.Controllers.SemanticBotController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.SemanticBot.Controllers.SemanticBotController.html",
+          "hash": "Gbi4bp92DMuTDsaUIQvBCcGgm8LB3pBDPAFx1f6ZImE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.SemanticBot.Controllers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.SemanticBot.Controllers.html",
+          "hash": "AS8ZahtU9kheqH6b7dFxiH6ZZbC1CaHk1ULy5WBGU/E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.yml",
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.SemanticBot.Handlers.SemanticTeamsBot.html",
-          "hash": "LPc/zcwXEySPt5jJ4Gm0Jt47KQcmCgAidJCmTmSTvV4="
+          "hash": "dGBkSdcj3Kuj/v0T9/RqQMkDkFO4Hm/W6RnAhC/gwCE="
         }
       },
       "is_incremental": false,
@@ -3621,7 +3645,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "GfA3uWoSMIrFWrLJc5bVDi/osC5wbbAbGIZwWQqTp54="
+          "hash": "Q+0KNEzg4C6t0G3nkSW9nU9e1X4zEhcI6/4tc1TaSNQ="
         }
       },
       "is_incremental": false,
@@ -3696,7 +3720,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 299,
+          "total_file_count": 301,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {

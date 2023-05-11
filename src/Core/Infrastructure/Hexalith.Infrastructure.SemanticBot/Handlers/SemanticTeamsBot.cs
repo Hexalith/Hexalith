@@ -4,7 +4,7 @@
 // Created          : 04-29-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 05-02-2023
+// Last Modified On : 05-11-2023
 // ***********************************************************************
 // <copyright file="SemanticTeamsBot.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -30,16 +30,22 @@ using Microsoft.SemanticKernel.Connectors.AI.OpenAI.ChatCompletion;
 /// </summary>
 public class SemanticTeamsBot : TeamsActivityHandler
 {
+    /// <summary>
+    /// The artificial intelligence service.
+    /// </summary>
     private readonly ArtificialIntelligenceService _artificialIntelligenceService;
+
+    /// <summary>
+    /// The semantic activities.
+    /// </summary>
     private readonly IEnumerable<ISemanticActivity> _semanticActivities;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="SemanticTeamsBot" /> class.
     /// </summary>
+    /// <param name="semanticActivities">The semantic activities.</param>
     /// <param name="artificialIntelligenceService">The artificial intelligence service.</param>
-    /// <param name="administrationService">The administration service.</param>
-    /// <param name="userService">The user service.</param>
-    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
     public SemanticTeamsBot(IEnumerable<ISemanticActivity> semanticActivities, ArtificialIntelligenceService artificialIntelligenceService)
     {
         ArgumentNullException.ThrowIfNull(semanticActivities);
