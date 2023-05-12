@@ -4,7 +4,7 @@
 // Created          : 03-07-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 03-10-2023
+// Last Modified On : 05-12-2023
 // ***********************************************************************
 // <copyright file="IPolymorphicSerializable.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -16,10 +16,12 @@
 
 namespace Hexalith.Extensions.Serialization;
 
+using Hexalith.Extensions.Reflections;
+
 /// <summary>
 /// Interface IPolymorphicSerializable.
 /// </summary>
-public interface IPolymorphicSerializable
+public interface IPolymorphicSerializable : IMappableType
 {
     /// <summary>
     /// Gets the major version.
@@ -38,4 +40,16 @@ public interface IPolymorphicSerializable
     /// </summary>
     /// <value>The name of the type.</value>
     string TypeName { get; }
+
+    /// <inheritdoc/>
+    string IMappableType.TypeMapName => GetTypeMapName(TypeName, MajorVersion, MinorVersion);
+
+    /// <summary>
+    /// Gets the name of the type map.
+    /// </summary>
+    /// <param name="typeName">Name of the type.</param>
+    /// <param name="majorVersion">The major version.</param>
+    /// <param name="minorVersion">The minor version.</param>
+    /// <returns>System.String.</returns>
+    static string GetTypeMapName(string typeName, int majorVersion, int minorVersion) => $"{typeName}|{majorVersion}.{minorVersion}";
 }

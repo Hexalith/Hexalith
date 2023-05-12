@@ -27,6 +27,7 @@ using Microsoft.Bot.Builder.Integration.AspNet.Core;
 using Microsoft.Bot.Connector.Authentication;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.TeamsFx.Conversation;
 
 /// <summary>
 /// Class MicrosoftBotHelper.
@@ -47,6 +48,15 @@ public static class SemanticBotHelper
             .AddSingleton<BotFrameworkAuthentication, ConfigurationBotFrameworkAuthentication>()
             .AddSingleton<CloudAdapter, SemanticBotAdapter>()
             .AddSingleton<IBotFrameworkHttpAdapter>(sp => sp.GetRequiredService<CloudAdapter>())
-            .AddTransient<IBot, SemanticTeamsBot>();
+            .AddTransient<IBot, SemanticTeamsBot>()
+            .AddSingleton(sp =>
+            {
+                ConversationOptions options = new()
+                {
+                    Adapter = sp.GetService<CloudAdapter>(),
+                };
+
+                return new ConversationBot(options);
+            });
     }
 }

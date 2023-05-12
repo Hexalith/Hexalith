@@ -85,6 +85,7 @@
   <div class="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="Hexalith.Extensions.Serialization.IPolymorphicSerializable.html">IPolymorphicSerializable</a></div>
+    <div><a class="xref" href="Hexalith.Extensions.Reflections.IMappableType.html">IMappableType</a></div>
     <div><a class="xref" href="Hexalith.Domain.Abstractions.Events.IEvent.html">IEvent</a></div>
     <div><a class="xref" href="Hexalith.Domain.Abstractions.Messages.IMessage.html">IMessage</a></div>
   </div>
@@ -151,11 +152,14 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataContract]
 [JsonConverter(typeof(PolymorphicJsonConverter&lt;BaseEvent&gt;))]
-public class BaseEvent : BaseMessage, IPolymorphicSerializable, IEvent, IMessage</code></pre>
+public class BaseEvent : BaseMessage, IPolymorphicSerializable, IMappableType, IEvent, IMessage</code></pre>
   </div>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="Hexalith.Extensions.Serialization.IPolymorphicSerializable.html">IPolymorphicSerializable</a>
+  </div>
+  <div>
+      <a class="xref" href="Hexalith.Extensions.Reflections.IMappableType.html">IMappableType</a>
   </div>
   <div>
       <a class="xref" href="Hexalith.Domain.Abstractions.Events.IEvent.html">IEvent</a>

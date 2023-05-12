@@ -21,6 +21,7 @@ using System.Collections.Generic;
 
 using FluentAssertions;
 
+using Hexalith.Extensions.Reflections;
 using Hexalith.Extensions.Serialization;
 
 /// <summary>
@@ -34,7 +35,7 @@ public class PolymorphicSerializableTypeMapperTest
     [Fact]
     public void Map_should_succeed()
     {
-        Dictionary<string, Type> map = PolymorphicSerializableTypeMapper.GetMap();
+        Dictionary<string, Type> map = TypeMapper<IPolymorphicSerializable>.GetMap();
         _ = map.Should().NotBeNull();
     }
 

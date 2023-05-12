@@ -72,7 +72,18 @@ public class SemanticTeamsBot : TeamsActivityHandler
         IChatCompletion chat = _artificialIntelligenceService.Kernel.GetService<IChatCompletion>("GPT");
         OpenAIChatHistory conversation = (OpenAIChatHistory)chat.CreateNewChat("The following is a conversation with Fority, the Fiveforty company AI assistant. The assistant is helpful, creative, clever, very friendly and a Microsoft Dynamics 365 for finance and operations ERP expert. The assistant thinks step by step.");
         conversation.AddUserMessage(turnContext.Activity.Text);
-        string reply = await chat.GenerateMessageAsync(conversation, new ChatRequestSettings(), cancellationToken).ConfigureAwait(false);
+        string reply = await chat
+            .GenerateMessageAsync(
+                conversation,
+                new ChatRequestSettings()
+                {
+                    FrequencyPenalty = 0.5,
+                    MaxTokens = 2000,
+                    PresencePenalty = 0.5,
+                    Temperature = 0.7,
+                },
+                cancellationToken)
+            .ConfigureAwait(false);
 
         // Sends an activity to the sender of the incoming activity.
         _ = await turnContext

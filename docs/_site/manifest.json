@@ -93,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Abstractions.Commands.BaseCommand.html",
-          "hash": "HycctpcYpzDn+Ofy+FZOp3eVI00INNJxw7vWftA8698="
+          "hash": "maptQZsbJeu85t7+hyWoY8oKt4WxBt6vkLvGFEaUut8="
         }
       },
       "is_incremental": false,
@@ -117,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Abstractions.Commands.CommandProcessingFailed.html",
-          "hash": "k5086BZJLrq4HlncRtea0GJ1OD2iR5Vha21RcoJoMfg="
+          "hash": "fxIvUBt0b3urJrKmpljq1pX9rL67Y2CNz1DTvrNZ+gc="
         }
       },
       "is_incremental": false,
@@ -609,7 +609,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Abstractions.Metadatas.BaseMetadata.html",
-          "hash": "6DWuSiCH7onIhZlFTpyaZOpQwdAKrLalhNrIuMZfyRo="
+          "hash": "UbOAbP2qOGReKS66wVN6rSBn+T7bMWj60APBE1PiObc="
         }
       },
       "is_incremental": false,
@@ -729,7 +729,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Abstractions.Metadatas.Metadata.html",
-          "hash": "UkZ1KdUV7YyCD1bS8rjjVJ5av7AzMPTNJF4K0hZKAdo="
+          "hash": "hot0MRTHVLBCxW0+42diJVv7BKgVAA7KlqNRSN7npbM="
         }
       },
       "is_incremental": false,
@@ -765,7 +765,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Abstractions.Notifications.BaseNotification.html",
-          "hash": "OMGV6uzxqg5bPdC1aBFK8o6qlKuQZvlScTcW/0SRspg="
+          "hash": "PV1JV7UvoEjwIEBzjjoYTOslvwnUFcmUpw5ELwhD+Qc="
         }
       },
       "is_incremental": false,
@@ -873,7 +873,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Abstractions.Requests.BaseRequest.html",
-          "hash": "XsrganLV0MXNg5IA/HhrK/k6I8zbeo1nDtxi1nq2v+U="
+          "hash": "AgkjcANOZXqLhzLBg3125IBMPQudb/EhTRLIBAkTJt0="
         }
       },
       "is_incremental": false,
@@ -1809,7 +1809,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.Abstractions.Events.BaseEvent.html",
-          "hash": "w9mfUOntwp8/VpZSUtyiUCFjbf89vN+l1z6krKloGwM="
+          "hash": "b/YvjS5g4F6ykASPpmt+LygQGzOtE2kRAvB6ESRWJxs="
         }
       },
       "is_incremental": false,
@@ -1869,7 +1869,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.Abstractions.Messages.BaseMessage.html",
-          "hash": "R82WmquzVRhpGK/W6msuocPfyUFY1khCMRucUnCV/08="
+          "hash": "GPtjVDANMlkZQKVL1oIxv1zb3TWkvEth+8GBZ6Q6L0Y="
         }
       },
       "is_incremental": false,
@@ -2141,11 +2141,47 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Extensions.Reflections.IMappableType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Extensions.Reflections.IMappableType.html",
+          "hash": "GbvTtODZxkE2sYjveFFE5apP3UcTg2U6oqr12xgVsPs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Extensions.Reflections.TypeMapper-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Extensions.Reflections.TypeMapper-1.html",
+          "hash": "iacn8ywP/lcXripvkD09aXFE6ve/uSImv+YGLo6GE7w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Extensions.Reflections.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Extensions.Reflections.html",
+          "hash": "CwTSxICUf8FizV4MmMvF2soEJqFmO18gnh2Kw24nxDs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Hexalith.Extensions.Serialization.IPolymorphicSerializable.yml",
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Extensions.Serialization.IPolymorphicSerializable.html",
-          "hash": "6p8ZwQmNWsU4+QvpKKXaRbnMh4tdvXupR7EsmOcZWdw="
+          "hash": "vVYWYPbeCxqtVepjc0mlJ7tHBJgqZ2BRT5pidUlDtw4="
         }
       },
       "is_incremental": false,
@@ -2157,19 +2193,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Extensions.Serialization.PolymorphicJsonConverter-1.html",
-          "hash": "a5TgtemvcPwqX9TXkSd4GDnt7wDSYTrISudnkf0AU8Y="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Extensions.Serialization.PolymorphicSerializableTypeMapper.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Extensions.Serialization.PolymorphicSerializableTypeMapper.html",
-          "hash": "b+gf0FArE9A/EoG+VDZT7QfuQrm+lgjyuf4tchw4cZ4="
+          "hash": "m6c1C6ymRlRueAXn+781AYZyMF45e/QO6H32HwKGJOU="
         }
       },
       "is_incremental": false,
@@ -2181,7 +2205,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Extensions.Serialization.html",
-          "hash": "htpL0k4A4LjBoubLaxHHT/vQjJWsw/YGGRg58i2fXeE="
+          "hash": "ybk6oubIDDZt056aEE4Sh4VjQaBjkXLN9Sa/ns3z1b8="
         }
       },
       "is_incremental": false,
@@ -3381,7 +3405,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.SemanticBot.Helpers.SemanticBotHelper.html",
-          "hash": "gKayB6TnMt74krEjVEC8kxwEoQEfqkwp5Yx9S2R7uX0="
+          "hash": "azioD9uLyaFTWMJIUVLYH9FIkawnWDQ+kmdWe8ieAn8="
         }
       },
       "is_incremental": false,
@@ -3645,7 +3669,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "Q+0KNEzg4C6t0G3nkSW9nU9e1X4zEhcI6/4tc1TaSNQ="
+          "hash": "xDzX2TDOCFoffRSyLORpZLWXymb2GwnCaN3C9YxILrk="
         }
       },
       "is_incremental": false,
@@ -3720,7 +3744,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 301,
+          "total_file_count": 303,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {

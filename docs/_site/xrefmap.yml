@@ -8397,6 +8397,74 @@ references:
   isSpec: "True"
   fullName: Hexalith.Extensions.Helpers.UniqueIdHelper.GenerateUniqueStringId
   nameWithType: UniqueIdHelper.GenerateUniqueStringId
+- uid: Hexalith.Extensions.Reflections
+  name: Hexalith.Extensions.Reflections
+  href: api/Hexalith.Extensions.Reflections.html
+  commentId: N:Hexalith.Extensions.Reflections
+  fullName: Hexalith.Extensions.Reflections
+  nameWithType: Hexalith.Extensions.Reflections
+- uid: Hexalith.Extensions.Reflections.IMappableType
+  name: IMappableType
+  href: api/Hexalith.Extensions.Reflections.IMappableType.html
+  commentId: T:Hexalith.Extensions.Reflections.IMappableType
+  fullName: Hexalith.Extensions.Reflections.IMappableType
+  nameWithType: IMappableType
+- uid: Hexalith.Extensions.Reflections.IMappableType.TypeMapName
+  name: TypeMapName
+  href: api/Hexalith.Extensions.Reflections.IMappableType.html#Hexalith_Extensions_Reflections_IMappableType_TypeMapName
+  commentId: P:Hexalith.Extensions.Reflections.IMappableType.TypeMapName
+  fullName: Hexalith.Extensions.Reflections.IMappableType.TypeMapName
+  nameWithType: IMappableType.TypeMapName
+- uid: Hexalith.Extensions.Reflections.IMappableType.TypeMapName*
+  name: TypeMapName
+  href: api/Hexalith.Extensions.Reflections.IMappableType.html#Hexalith_Extensions_Reflections_IMappableType_TypeMapName_
+  commentId: Overload:Hexalith.Extensions.Reflections.IMappableType.TypeMapName
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Reflections.IMappableType.TypeMapName
+  nameWithType: IMappableType.TypeMapName
+- uid: Hexalith.Extensions.Reflections.TypeMapper`1
+  name: TypeMapper<TMapped>
+  href: api/Hexalith.Extensions.Reflections.TypeMapper-1.html
+  commentId: T:Hexalith.Extensions.Reflections.TypeMapper`1
+  name.vb: TypeMapper(Of TMapped)
+  fullName: Hexalith.Extensions.Reflections.TypeMapper<TMapped>
+  fullName.vb: Hexalith.Extensions.Reflections.TypeMapper(Of TMapped)
+  nameWithType: TypeMapper<TMapped>
+  nameWithType.vb: TypeMapper(Of TMapped)
+- uid: Hexalith.Extensions.Reflections.TypeMapper`1.GetMap
+  name: GetMap()
+  href: api/Hexalith.Extensions.Reflections.TypeMapper-1.html#Hexalith_Extensions_Reflections_TypeMapper_1_GetMap
+  commentId: M:Hexalith.Extensions.Reflections.TypeMapper`1.GetMap
+  fullName: Hexalith.Extensions.Reflections.TypeMapper<TMapped>.GetMap()
+  fullName.vb: Hexalith.Extensions.Reflections.TypeMapper(Of TMapped).GetMap()
+  nameWithType: TypeMapper<TMapped>.GetMap()
+  nameWithType.vb: TypeMapper(Of TMapped).GetMap()
+- uid: Hexalith.Extensions.Reflections.TypeMapper`1.GetMap*
+  name: GetMap
+  href: api/Hexalith.Extensions.Reflections.TypeMapper-1.html#Hexalith_Extensions_Reflections_TypeMapper_1_GetMap_
+  commentId: Overload:Hexalith.Extensions.Reflections.TypeMapper`1.GetMap
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Reflections.TypeMapper<TMapped>.GetMap
+  fullName.vb: Hexalith.Extensions.Reflections.TypeMapper(Of TMapped).GetMap
+  nameWithType: TypeMapper<TMapped>.GetMap
+  nameWithType.vb: TypeMapper(Of TMapped).GetMap
+- uid: Hexalith.Extensions.Reflections.TypeMapper`1.GetType(System.String)
+  name: GetType(String)
+  href: api/Hexalith.Extensions.Reflections.TypeMapper-1.html#Hexalith_Extensions_Reflections_TypeMapper_1_GetType_System_String_
+  commentId: M:Hexalith.Extensions.Reflections.TypeMapper`1.GetType(System.String)
+  fullName: Hexalith.Extensions.Reflections.TypeMapper<TMapped>.GetType(System.String)
+  fullName.vb: Hexalith.Extensions.Reflections.TypeMapper(Of TMapped).GetType(System.String)
+  nameWithType: TypeMapper<TMapped>.GetType(String)
+  nameWithType.vb: TypeMapper(Of TMapped).GetType(String)
+- uid: Hexalith.Extensions.Reflections.TypeMapper`1.GetType*
+  name: GetType
+  href: api/Hexalith.Extensions.Reflections.TypeMapper-1.html#Hexalith_Extensions_Reflections_TypeMapper_1_GetType_
+  commentId: Overload:Hexalith.Extensions.Reflections.TypeMapper`1.GetType
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Reflections.TypeMapper<TMapped>.GetType
+  fullName.vb: Hexalith.Extensions.Reflections.TypeMapper(Of TMapped).GetType
+  nameWithType: TypeMapper<TMapped>.GetType
+  nameWithType.vb: TypeMapper(Of TMapped).GetType
 - uid: Hexalith.Extensions.Serialization
   name: Hexalith.Extensions.Serialization
   href: api/Hexalith.Extensions.Serialization.html
@@ -8409,6 +8477,23 @@ references:
   commentId: T:Hexalith.Extensions.Serialization.IPolymorphicSerializable
   fullName: Hexalith.Extensions.Serialization.IPolymorphicSerializable
   nameWithType: IPolymorphicSerializable
+- uid: Hexalith.Extensions.Serialization.IPolymorphicSerializable.Hexalith#Extensions#Reflections#IMappableType#TypeMapName
+  name: IMappableType.TypeMapName
+  href: api/Hexalith.Extensions.Serialization.IPolymorphicSerializable.html#Hexalith_Extensions_Serialization_IPolymorphicSerializable_Hexalith_Extensions_Reflections_IMappableType_TypeMapName
+  commentId: P:Hexalith.Extensions.Serialization.IPolymorphicSerializable.Hexalith#Extensions#Reflections#IMappableType#TypeMapName
+  name.vb: Hexalith.Extensions.Reflections.IMappableType.TypeMapName
+  fullName: Hexalith.Extensions.Serialization.IPolymorphicSerializable.Hexalith.Extensions.Reflections.IMappableType.TypeMapName
+  nameWithType: IPolymorphicSerializable.IMappableType.TypeMapName
+  nameWithType.vb: IPolymorphicSerializable.Hexalith.Extensions.Reflections.IMappableType.TypeMapName
+- uid: Hexalith.Extensions.Serialization.IPolymorphicSerializable.Hexalith#Extensions#Reflections#IMappableType#TypeMapName*
+  name: IMappableType.TypeMapName
+  href: api/Hexalith.Extensions.Serialization.IPolymorphicSerializable.html#Hexalith_Extensions_Serialization_IPolymorphicSerializable_Hexalith_Extensions_Reflections_IMappableType_TypeMapName_
+  commentId: Overload:Hexalith.Extensions.Serialization.IPolymorphicSerializable.Hexalith#Extensions#Reflections#IMappableType#TypeMapName
+  isSpec: "True"
+  name.vb: Hexalith.Extensions.Reflections.IMappableType.TypeMapName
+  fullName: Hexalith.Extensions.Serialization.IPolymorphicSerializable.Hexalith.Extensions.Reflections.IMappableType.TypeMapName
+  nameWithType: IPolymorphicSerializable.IMappableType.TypeMapName
+  nameWithType.vb: IPolymorphicSerializable.Hexalith.Extensions.Reflections.IMappableType.TypeMapName
 - uid: Hexalith.Extensions.Serialization.IPolymorphicSerializable.MajorVersion
   name: MajorVersion
   href: api/Hexalith.Extensions.Serialization.IPolymorphicSerializable.html#Hexalith_Extensions_Serialization_IPolymorphicSerializable_MajorVersion
@@ -8516,38 +8601,6 @@ references:
   fullName.vb: Hexalith.Extensions.Serialization.PolymorphicJsonConverter(Of T).Write
   nameWithType: PolymorphicJsonConverter<T>.Write
   nameWithType.vb: PolymorphicJsonConverter(Of T).Write
-- uid: Hexalith.Extensions.Serialization.PolymorphicSerializableTypeMapper
-  name: PolymorphicSerializableTypeMapper
-  href: api/Hexalith.Extensions.Serialization.PolymorphicSerializableTypeMapper.html
-  commentId: T:Hexalith.Extensions.Serialization.PolymorphicSerializableTypeMapper
-  fullName: Hexalith.Extensions.Serialization.PolymorphicSerializableTypeMapper
-  nameWithType: PolymorphicSerializableTypeMapper
-- uid: Hexalith.Extensions.Serialization.PolymorphicSerializableTypeMapper.GetMap
-  name: GetMap()
-  href: api/Hexalith.Extensions.Serialization.PolymorphicSerializableTypeMapper.html#Hexalith_Extensions_Serialization_PolymorphicSerializableTypeMapper_GetMap
-  commentId: M:Hexalith.Extensions.Serialization.PolymorphicSerializableTypeMapper.GetMap
-  fullName: Hexalith.Extensions.Serialization.PolymorphicSerializableTypeMapper.GetMap()
-  nameWithType: PolymorphicSerializableTypeMapper.GetMap()
-- uid: Hexalith.Extensions.Serialization.PolymorphicSerializableTypeMapper.GetMap*
-  name: GetMap
-  href: api/Hexalith.Extensions.Serialization.PolymorphicSerializableTypeMapper.html#Hexalith_Extensions_Serialization_PolymorphicSerializableTypeMapper_GetMap_
-  commentId: Overload:Hexalith.Extensions.Serialization.PolymorphicSerializableTypeMapper.GetMap
-  isSpec: "True"
-  fullName: Hexalith.Extensions.Serialization.PolymorphicSerializableTypeMapper.GetMap
-  nameWithType: PolymorphicSerializableTypeMapper.GetMap
-- uid: Hexalith.Extensions.Serialization.PolymorphicSerializableTypeMapper.GetType(System.String,System.Int32,System.Int32)
-  name: GetType(String, Int32, Int32)
-  href: api/Hexalith.Extensions.Serialization.PolymorphicSerializableTypeMapper.html#Hexalith_Extensions_Serialization_PolymorphicSerializableTypeMapper_GetType_System_String_System_Int32_System_Int32_
-  commentId: M:Hexalith.Extensions.Serialization.PolymorphicSerializableTypeMapper.GetType(System.String,System.Int32,System.Int32)
-  fullName: Hexalith.Extensions.Serialization.PolymorphicSerializableTypeMapper.GetType(System.String, System.Int32, System.Int32)
-  nameWithType: PolymorphicSerializableTypeMapper.GetType(String, Int32, Int32)
-- uid: Hexalith.Extensions.Serialization.PolymorphicSerializableTypeMapper.GetType*
-  name: GetType
-  href: api/Hexalith.Extensions.Serialization.PolymorphicSerializableTypeMapper.html#Hexalith_Extensions_Serialization_PolymorphicSerializableTypeMapper_GetType_
-  commentId: Overload:Hexalith.Extensions.Serialization.PolymorphicSerializableTypeMapper.GetType
-  isSpec: "True"
-  fullName: Hexalith.Extensions.Serialization.PolymorphicSerializableTypeMapper.GetType
-  nameWithType: PolymorphicSerializableTypeMapper.GetType
 - uid: Hexalith.Infrastructure.AzureActiveDirectory
   name: Hexalith.Infrastructure.AzureActiveDirectory
   href: api/Hexalith.Infrastructure.AzureActiveDirectory.html

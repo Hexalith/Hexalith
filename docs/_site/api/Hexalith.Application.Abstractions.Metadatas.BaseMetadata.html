@@ -87,6 +87,7 @@ Implements the <a class="xref" href="Hexalith.Application.Abstractions.Metadatas
     <h5>Implements</h5>
     <div><a class="xref" href="Hexalith.Application.Abstractions.Metadatas.IMetadata.html">IMetadata</a></div>
     <div><a class="xref" href="Hexalith.Extensions.Serialization.IPolymorphicSerializable.html">IPolymorphicSerializable</a></div>
+    <div><a class="xref" href="Hexalith.Extensions.Reflections.IMappableType.html">IMappableType</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -118,7 +119,7 @@ Implements the <a class="xref" href="Hexalith.Application.Abstractions.Metadatas
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataContract]
 [JsonConverter(typeof(PolymorphicJsonConverter&lt;BaseMetadata&gt;))]
-public abstract class BaseMetadata : IMetadata, IPolymorphicSerializable</code></pre>
+public abstract class BaseMetadata : IMetadata, IPolymorphicSerializable, IMappableType</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -610,6 +611,9 @@ public string TypeName { get; }</code></pre>
   </div>
   <div>
       <a class="xref" href="Hexalith.Extensions.Serialization.IPolymorphicSerializable.html">IPolymorphicSerializable</a>
+  </div>
+  <div>
+      <a class="xref" href="Hexalith.Extensions.Reflections.IMappableType.html">IMappableType</a>
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>

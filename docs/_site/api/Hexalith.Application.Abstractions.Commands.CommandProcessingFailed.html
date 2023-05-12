@@ -87,6 +87,7 @@ Implements the <a class="xref" href="Hexalith.Application.Abstractions.Commands.
   <div class="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="Hexalith.Extensions.Serialization.IPolymorphicSerializable.html">IPolymorphicSerializable</a></div>
+    <div><a class="xref" href="Hexalith.Extensions.Reflections.IMappableType.html">IMappableType</a></div>
     <div><a class="xref" href="Hexalith.Application.Abstractions.Notifications.INotification.html">INotification</a></div>
     <div><a class="xref" href="Hexalith.Domain.Abstractions.Messages.IMessage.html">IMessage</a></div>
   </div>
@@ -158,7 +159,7 @@ Implements the <a class="xref" href="Hexalith.Application.Abstractions.Commands.
   <h5 id="Hexalith_Application_Abstractions_Commands_CommandProcessingFailed_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataContract]
-public class CommandProcessingFailed : BaseNotification, IPolymorphicSerializable, INotification, IMessage</code></pre>
+public class CommandProcessingFailed : BaseNotification, IPolymorphicSerializable, IMappableType, INotification, IMessage</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -358,6 +359,9 @@ public CommandProcessingFailed(BaseCommand command, TaskProcessor taskProcessor)
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="Hexalith.Extensions.Serialization.IPolymorphicSerializable.html">IPolymorphicSerializable</a>
+  </div>
+  <div>
+      <a class="xref" href="Hexalith.Extensions.Reflections.IMappableType.html">IMappableType</a>
   </div>
   <div>
       <a class="xref" href="Hexalith.Application.Abstractions.Notifications.INotification.html">INotification</a>

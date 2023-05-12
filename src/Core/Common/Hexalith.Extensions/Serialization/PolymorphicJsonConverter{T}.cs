@@ -21,6 +21,8 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 
+using Hexalith.Extensions.Reflections;
+
 /// <summary>
 /// Class BaseMessageConverterInner.
 /// Implements the <see cref="JsonConverter{T}" />.
@@ -82,7 +84,7 @@ public class PolymorphicJsonConverter<T> : JsonConverter<T>
         return JsonSerializer
             .Deserialize(
                 jsonDoc.RootElement.GetRawText(),
-                PolymorphicSerializableTypeMapper.GetType(typeName, majorVersion, minorVersion),
+                TypeMapper<IPolymorphicSerializable>.GetType(IPolymorphicSerializable.GetTypeMapName(typeName, majorVersion, minorVersion)),
                 options) as T
                 ?? throw new NotSupportedException($"Deserialized object is null:\n" + jsonDoc.RootElement.GetRawText());
     }
