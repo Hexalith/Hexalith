@@ -121,7 +121,7 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataContract]
 [JsonConverter(typeof(PolymorphicJsonConverter&lt;BaseMessage&gt;))]
-public class BaseMessage : IMessage, IPolymorphicSerializable, IMappableType</code></pre>
+public abstract class BaseMessage : IMessage, IPolymorphicSerializable, IMappableType</code></pre>
   </div>
   <h3 id="fields">Fields
   </h3>

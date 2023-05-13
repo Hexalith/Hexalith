@@ -35,13 +35,13 @@ public static class TypeMapper<TMapped>
     /// <summary>
     /// The map.
     /// </summary>
-    private static Dictionary<string, Type>? _map;
+    private static Dictionary<string, TMapped>? _map;
 
     /// <summary>
     /// Gets the map.
     /// </summary>
     /// <value>The map.</value>
-    private static Dictionary<string, Type> Map
+    private static Dictionary<string, TMapped> Map
     {
         get
         {
@@ -63,9 +63,9 @@ public static class TypeMapper<TMapped>
     /// <returns>Dictionary&lt;System.String, Type&gt;.</returns>
     /// <exception cref="System.TypeInitializationException">null.</exception>
     /// <exception cref="System.InvalidOperationException">Type {type.FullName} could not be added to the serialization mapper. Name '{obj.TypeMapName}' already exists ans is associated to '{map[key].FullName}'.</exception>
-    public static Dictionary<string, Type> GetMap()
+    public static Dictionary<string, TMapped> GetMap()
     {
-        Dictionary<string, Type> map = new();
+        Dictionary<string, TMapped> map = new();
         foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies().Where(a => !a.IsDynamic))
         {
             try
@@ -87,11 +87,11 @@ public static class TypeMapper<TMapped>
                         string key = obj.TypeMapName;
                         try
                         {
-                            map.Add(key, type);
+                            map.Add(key, obj);
                         }
                         catch (ArgumentException ex)
                         {
-                            throw new InvalidOperationException($"Type {type.FullName} could not be added to the serialization mapper. Name '{obj.TypeMapName}' already exists ans is associated to '{map[key].FullName}'.", ex);
+                            throw new InvalidOperationException($"Type {type.FullName} could not be added to the serialization mapper. Name '{obj.TypeMapName}' already exists ans is associated to '{map[key].GetType().FullName}'.", ex);
                         }
                     }
                 }
@@ -106,12 +106,12 @@ public static class TypeMapper<TMapped>
     }
 
     /// <summary>
-    /// Gets the type.
+    /// Gets the object instance.
     /// </summary>
     /// <param name="name">The name.</param>
-    /// <returns>Type.</returns>
+    /// <returns>object.</returns>
     /// <exception cref="System.InvalidOperationException">Mappable type with name '{name}' not found.</exception>
-    public static Type GetType(string name)
+    public static object GetObject(string name)
     {
         try
         {
@@ -122,4 +122,12 @@ public static class TypeMapper<TMapped>
             throw new InvalidOperationException($"Mappable type with name '{name}' not found.", ex);
         }
     }
+
+    /// <summary>
+    /// Gets the type.
+    /// </summary>
+    /// <param name="name">The name.</param>
+    /// <returns>Type.</returns>
+    /// <exception cref="System.InvalidOperationException">Mappable type with name '{name}' not found.</exception>
+    public static Type GetType(string name) => GetObject(name).GetType();
 }

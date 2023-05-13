@@ -31,7 +31,7 @@ using Hexalith.Extensions.Serialization;
 /// <seealso cref="Application.Requests.IRequest" />
 [DataContract]
 [JsonConverter(typeof(PolymorphicJsonConverter<BaseRequest>))]
-public class BaseRequest : BaseMessage, IRequest
+public abstract class BaseRequest : BaseMessage, IRequest
 {
     /// <summary>
     /// Gets the type of the result.

@@ -28,7 +28,7 @@ using Hexalith.Extensions.Serialization;
 [DataContract]
 [JsonConverter(typeof(PolymorphicJsonConverter<BaseMessage>))]
 [DebuggerDisplay("{AggregateName}/{AggregateId}/{TypeName}/v{MajorVersion}/{MinorVersion}")]
-public class BaseMessage : IMessage, IPolymorphicSerializable
+public abstract class BaseMessage : IMessage, IPolymorphicSerializable
 {
     /// <summary>
     /// Default string used for separating natural keys to compose the aggregate identifier.

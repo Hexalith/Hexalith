@@ -16,7 +16,6 @@
 
 namespace Hexalith.UnitTests.Core.Common.Serialization;
 
-using System;
 using System.Collections.Generic;
 
 using FluentAssertions;
@@ -35,7 +34,7 @@ public class PolymorphicSerializableTypeMapperTest
     [Fact]
     public void Map_should_succeed()
     {
-        Dictionary<string, Type> map = TypeMapper<IPolymorphicSerializable>.GetMap();
+        Dictionary<string, IPolymorphicSerializable> map = TypeMapper<IPolymorphicSerializable>.GetMap();
         _ = map.Should().NotBeNull();
     }
 
