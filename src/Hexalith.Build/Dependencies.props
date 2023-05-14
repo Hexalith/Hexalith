@@ -28,6 +28,7 @@
 		<AdaptiveCardsVersion>3.0.0</AdaptiveCardsVersion>
 		<AdaptiveCardsTemplatingVersion>1.4.0</AdaptiveCardsTemplatingVersion>
 		<MicrosoftTeamsFxVersion>2.0.*</MicrosoftTeamsFxVersion>
+		<HumanizerVersion>2.14.1</HumanizerVersion>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' == 'true' or '$(BuildingByReSharper)' == 'true'">
 		<!--<DaprVersion>1.0.0-local</DaprVersion>-->

@@ -11,6 +11,7 @@
     <ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.AzureCloud\Hexalith.Infrastructure.AzureCloud.csproj" />
     <ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks\Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks.csproj" />
     <ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365FinanceAndOperations\Hexalith.Infrastructure.Dynamics365FinanceAndOperations.csproj" />
+    <ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.MicrosoftSemanticKernel\Hexalith.Infrastructure.MicrosoftSemanticKernel.csproj" />
     <ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Serialization\Hexalith.Infrastructure.Serialization.csproj" />
   </ItemGroup>
   <ItemGroup>

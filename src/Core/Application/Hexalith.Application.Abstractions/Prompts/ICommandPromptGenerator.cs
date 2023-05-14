@@ -19,7 +19,6 @@ namespace Hexalith.Application.Prompts;
 using System.Threading.Tasks;
 
 using Hexalith.Application.Commands;
-using Hexalith.Application.Metadatas;
 
 /// <summary>
 /// Interface ICommandPromptGenerator.
@@ -29,8 +28,20 @@ public interface ICommandPromptGenerator
     /// <summary>
     /// Generates the prompt asynchronous.
     /// </summary>
-    /// <param name="baseCommand">The base command.</param>
-    /// <param name="metadata">The metadata.</param>
+    /// <typeparam name="TCommand">The type of the t command.</typeparam>
+    /// <param name="assistantEmail">The assistant email.</param>
+    /// <param name="assistantName">Name of the assistant.</param>
+    /// <param name="userEmail">The user email.</param>
+    /// <param name="userName">Name of the user.</param>
+    /// <param name="language">The language.</param>
+    /// <param name="correlationId">The correlation identifier.</param>
     /// <returns>Task&lt;System.String&gt;.</returns>
-    public Task<string> GeneratePromptAsync(BaseCommand baseCommand, Metadata metadata);
+    public Task<string> GeneratePromptAsync<TCommand>(
+        string assistantEmail,
+        string assistantName,
+        string userEmail,
+        string userName,
+        string language,
+        string correlationId)
+        where TCommand : BaseCommand, new();
 }

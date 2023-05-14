@@ -5,6 +5,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="FluentValidation" Version="$(FluentValidationVersion)" />
+		<PackageReference Include="Humanizer" Version="2.14.1" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="$(MicrosoftExtensionsPackagesVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="$(MicrosoftExtensionsPackagesVersion)" />

@@ -45,29 +45,36 @@ public static class Example
         object instance = Activator.CreateInstance(type)
             ?? throw new InvalidOperationException($"Could not create an instance of type {type.FullName}. The class must have a default constructor.");
         PropertyInfo[] properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.SetProperty);
-        foreach (PropertyInfo property in properties)
+        foreach (PropertyInfo property in properties.Where(p => p.CanWrite))
         {
-            object? value;
-            ExampleValueAttribute? attribute = property.GetCustomAttribute<ExampleValueAttribute>();
-            value = attribute is not null
-                ? attribute.Value
-                : property.PropertyType switch
-                {
-                    _ when property.PropertyType == typeof(string) => "string",
-                    _ when property.PropertyType == typeof(int) => 101,
-                    _ when property.PropertyType == typeof(long) => 101L,
-                    _ when property.PropertyType == typeof(double) => 101.25,
-                    _ when property.PropertyType == typeof(decimal) => 101.20M,
-                    _ when property.PropertyType == typeof(DateTime) => DateTime.UtcNow,
-                    _ when property.PropertyType == typeof(DateTimeOffset) => DateTimeOffset.UtcNow,
-                    _ when property.PropertyType == typeof(bool) => true,
-                    _ when property.PropertyType == typeof(Guid) => Guid.NewGuid(),
-                    _ when property.PropertyType == typeof(byte[]) => Encoding.UTF8.GetBytes("string"),
-                    _ when property.PropertyType.IsEnum => Enum.GetValues(property.PropertyType).GetValue(0),
-                    _ when property.PropertyType.IsClass => Create(property.PropertyType),
-                    _ => null,
-                };
-            property.SetValue(instance, value);
+            try
+            {
+                object? value;
+                ExampleValueAttribute? attribute = property.GetCustomAttribute<ExampleValueAttribute>();
+                value = attribute is not null
+                    ? attribute.Value
+                    : property.PropertyType switch
+                    {
+                        _ when property.PropertyType == typeof(string) => "string",
+                        _ when property.PropertyType == typeof(int) => 101,
+                        _ when property.PropertyType == typeof(long) => 101L,
+                        _ when property.PropertyType == typeof(double) => 101.25,
+                        _ when property.PropertyType == typeof(decimal) => 101.20M,
+                        _ when property.PropertyType == typeof(DateTime) => DateTime.UtcNow,
+                        _ when property.PropertyType == typeof(DateTimeOffset) => DateTimeOffset.UtcNow,
+                        _ when property.PropertyType == typeof(bool) => true,
+                        _ when property.PropertyType == typeof(Guid) => Guid.NewGuid(),
+                        _ when property.PropertyType == typeof(byte[]) => Encoding.UTF8.GetBytes("string"),
+                        _ when property.PropertyType.IsEnum => Enum.GetValues(property.PropertyType).GetValue(0),
+                        _ when property.PropertyType.IsClass => Create(property.PropertyType),
+                        _ => null,
+                    };
+                property.SetValue(instance, value);
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException($"Could not set the value of property {property.Name} of type {type.FullName}.", ex);
+            }
         }
 
         return instance;

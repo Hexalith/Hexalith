@@ -16,6 +16,21 @@ using Hexalith.Extensions.Helpers;
 public class ExampleTest
 {
     [Fact]
+    public void Base_proprety_with_attribute_should_have_value()
+    {
+        BasePropertyExample example = Example.Create<BasePropertyExample>();
+        _ = example.Value.Should().Be("Hello");
+    }
+
+    [Fact]
+    public void Base_read_only_proprety_and_property_with_attribute_should_have_value()
+    {
+        BaseReadOnlyPropertyExample example = Example.Create<BaseReadOnlyPropertyExample>();
+        _ = example.ReadOnlyValue.Should().Be("Read");
+        _ = example.Value.Should().Be("Hello");
+    }
+
+    [Fact]
     public void Example_created_is_valid()
     {
         TestExample example = Example.Create<TestExample>();
@@ -57,6 +72,27 @@ public class ExampleTest
     {
         StringDefaultExample example = Example.Create<StringDefaultExample>();
         _ = example.Value.Should().Be("string");
+    }
+
+    public class BaseProperty
+    {
+        [ExampleValue("Hello")]
+        public string Value { get; set; }
+    }
+
+    public class BasePropertyExample : BaseProperty
+    {
+    }
+
+    public class BaseReadOnlyProperty
+    {
+        public string ReadOnlyValue => "Read";
+    }
+
+    public class BaseReadOnlyPropertyExample : BaseReadOnlyProperty
+    {
+        [ExampleValue("Hello")]
+        public string Value { get; set; }
     }
 
     public class IntegerDefaultExample
