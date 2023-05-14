@@ -2,6 +2,8 @@
   <PropertyGroup>
 	  <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
 	  <NoWarn>$(NoWarn);SA023;S1309</NoWarn>
+	  <AssemblyName>$(MSBuildProjectName)</AssemblyName>
+	  <RootNamespace>Hexalith.Application</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="ValueObjects\**" />

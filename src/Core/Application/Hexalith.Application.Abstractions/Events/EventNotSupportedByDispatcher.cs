@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Abstractions.Events;
+namespace Hexalith.Application.Events;
 
 using System.Runtime.Serialization;
 
@@ -23,12 +23,12 @@ using Hexalith.Extensions.Common;
 /// <summary>
 /// Class EventNotSupportedByDispatcher.
 /// Implements the <see cref="Error" />
-/// Implements the <see cref="System.IEquatable{Hexalith.Extensions.Common.Error}" />
-/// Implements the <see cref="System.IEquatable{Hexalith.Application.Abstractions.Events.EventNotSupportedByDispatcher}" />.
+/// Implements the <see cref="IEquatable{Error}" />
+/// Implements the <see cref="IEquatable{EventNotSupportedByDispatcher}" />.
 /// </summary>
 /// <seealso cref="Error" />
-/// <seealso cref="System.IEquatable{Hexalith.Extensions.Common.Error}" />
-/// <seealso cref="System.IEquatable{Hexalith.Application.Abstractions.Events.EventNotSupportedByDispatcher}" />
+/// <seealso cref="IEquatable{Error}" />
+/// <seealso cref="IEquatable{EventNotSupportedByDispatcher}" />
 [DataContract]
 public record EventNotSupportedByDispatcher : Error
 {

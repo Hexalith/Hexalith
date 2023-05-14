@@ -14,12 +14,12 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Abstractions.Commands;
+namespace Hexalith.Application.Commands;
 
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Abstractions.Metadatas;
+using Hexalith.Application.Metadatas;
 
 /// <summary>
 /// Command processor interface.

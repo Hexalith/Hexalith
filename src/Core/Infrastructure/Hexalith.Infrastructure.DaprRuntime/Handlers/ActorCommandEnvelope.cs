@@ -20,8 +20,8 @@ using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-using Hexalith.Application.Abstractions.Commands;
-using Hexalith.Application.Abstractions.Metadatas;
+using Hexalith.Application.Commands;
+using Hexalith.Application.Metadatas;
 
 /// <summary>
 /// Actor method object uses Data Contract Serialization that can't serialize and deserialize complex polymorphic objects. This class is used to serialize and deserialize commands and metadatas into JSON strings before the actor proxy serialization.

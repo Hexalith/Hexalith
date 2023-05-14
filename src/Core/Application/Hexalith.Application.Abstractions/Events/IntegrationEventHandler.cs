@@ -4,20 +4,20 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Application.Abstractions.Events;
+namespace Hexalith.Application.Events;
 
 using System;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Abstractions.Commands;
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Application.Commands;
+using Hexalith.Domain.Events;
 
 /// <summary>
 /// Class EventHandler.
-/// Implements the <see cref="Hexalith.Application.Abstractions.Events.IEventHandler{TEvent}" />.
+/// Implements the <see cref="Abstractions.Events.IEventHandler{TEvent}" />.
 /// </summary>
 /// <typeparam name="TEvent">The type of the t event.</typeparam>
-/// <seealso cref="Hexalith.Application.Abstractions.Events.IEventHandler{TEvent}" />
+/// <seealso cref="Abstractions.Events.IEventHandler{TEvent}" />
 public abstract class IntegrationEventHandler<TEvent> : IIntegrationEventHandler<TEvent>
     where TEvent : IEvent
 {
@@ -35,7 +35,7 @@ public abstract class IntegrationEventHandler<TEvent> : IIntegrationEventHandler
     /// </summary>
     /// <param name="event">The event.</param>
     /// <returns>TEvent.</returns>
-    /// <exception cref="System.ArgumentException">event.</exception>
+    /// <exception cref="ArgumentException">event.</exception>
     private static TEvent ToEvent(IEvent @event)
     {
         return @event is TEvent c

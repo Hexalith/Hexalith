@@ -11,14 +11,14 @@ using System.Threading.Tasks;
 
 using FluentAssertions;
 
-using Hexalith.Application.Abstractions.Commands;
-using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Application.Abstractions.Tasks;
+using Hexalith.Application.Commands;
+using Hexalith.Application.Metadatas;
+using Hexalith.Application.Tasks;
 using Hexalith.Application.Events;
 using Hexalith.Application.Notifications;
 using Hexalith.Application.States;
-using Hexalith.Domain.Abstractions.Aggregates;
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Domain.Aggregates;
+using Hexalith.Domain.Events;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 using Hexalith.UnitTests.Core.Application.Commands;

@@ -8,7 +8,7 @@ namespace Hexalith.UnitTests.Core.Application.MessageStores;
 
 using System.Runtime.Serialization;
 
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Domain.Events;
 using Hexalith.Extensions.Common;
 
 [DataContract]

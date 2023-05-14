@@ -14,11 +14,11 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Abstractions.Envelopes;
+namespace Hexalith.Application.Envelopes;
 
-using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Application.Abstractions.States;
-using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Application.Metadatas;
+using Hexalith.Application.States;
+using Hexalith.Domain.Messages;
 
 /// <summary>
 /// A message bus is a component that allows to send messages.

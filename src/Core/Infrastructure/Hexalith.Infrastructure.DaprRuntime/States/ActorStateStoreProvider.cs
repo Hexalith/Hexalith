@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 using Dapr.Actors.Runtime;
 
-using Hexalith.Application.Abstractions.States;
+using Hexalith.Application.States;
 
 /// <summary>
 /// Class ActorStateStoreProvider.

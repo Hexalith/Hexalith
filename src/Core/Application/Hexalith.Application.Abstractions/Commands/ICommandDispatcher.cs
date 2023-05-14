@@ -4,9 +4,9 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Application.Abstractions.Commands;
+namespace Hexalith.Application.Commands;
 
-using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Domain.Messages;
 
 /// <summary>
 /// Interface ICommandDispatcher.

@@ -14,14 +14,14 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Abstractions.States;
+namespace Hexalith.Application.States;
 
 using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Application.Metadatas;
+using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Common;
 
 /// <summary>
@@ -59,7 +59,7 @@ public class MessageState<TMessage, TMetadata> : IIdempotent
     /// Gets the idempotency identifier.
     /// </summary>
     /// <value>The idempotency identifier.</value>
-    /// <exception cref="System.InvalidOperationException">The Idempotency identifier is not defined.</exception>
+    /// <exception cref="InvalidOperationException">The Idempotency identifier is not defined.</exception>
     [JsonIgnore]
     [IgnoreDataMember]
     public string IdempotencyId => string.IsNullOrWhiteSpace(Metadata?.Message.Id)

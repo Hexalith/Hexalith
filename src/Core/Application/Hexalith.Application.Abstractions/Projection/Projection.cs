@@ -14,16 +14,16 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Abstractions.Projection;
+namespace Hexalith.Application.Projection;
 
 using System.Runtime.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Application.Abstractions.Notifications;
-using Hexalith.Application.Abstractions.Requests;
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Application.Metadatas;
+using Hexalith.Application.Notifications;
+using Hexalith.Application.Requests;
+using Hexalith.Domain.Events;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 
@@ -47,7 +47,7 @@ public abstract class Projection : IProjection
     /// </summary>
     /// <param name="notificationBus">The notification bus.</param>
     /// <param name="dateTimeService">The date time service.</param>
-    /// <exception cref="System.ArgumentNullException">null.</exception>
+    /// <exception cref="ArgumentNullException">null.</exception>
     public Projection(INotificationBus notificationBus, IDateTimeService dateTimeService)
     {
         ArgumentNullException.ThrowIfNull(notificationBus);

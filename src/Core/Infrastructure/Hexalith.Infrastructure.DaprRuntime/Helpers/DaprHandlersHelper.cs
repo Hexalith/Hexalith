@@ -6,7 +6,7 @@
 
 namespace Hexalith.Infrastructure.DaprRuntime.Helpers;
 
-using Hexalith.Application.Abstractions.Commands;
+using Hexalith.Application.Commands;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 
 using Microsoft.Extensions.Configuration;

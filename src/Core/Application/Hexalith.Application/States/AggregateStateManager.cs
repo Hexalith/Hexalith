@@ -20,18 +20,16 @@ using System;
 using System.Linq;
 using System.Threading;
 
-using Hexalith.Application.Abstractions.Aggregates;
-using Hexalith.Application.Abstractions.Commands;
-using Hexalith.Application.Abstractions.Events;
-using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Application.Abstractions.Notifications;
-using Hexalith.Application.Abstractions.States;
-using Hexalith.Application.Abstractions.Tasks;
+using Hexalith.Application.Aggregates;
+using Hexalith.Application.Commands;
+using Hexalith.Application.Events;
+using Hexalith.Application.Metadatas;
+using Hexalith.Application.Notifications;
 using Hexalith.Application.StreamStores;
 using Hexalith.Application.Tasks;
-using Hexalith.Domain.Abstractions.Aggregates;
-using Hexalith.Domain.Abstractions.Events;
-using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Domain.Aggregates;
+using Hexalith.Domain.Events;
+using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 

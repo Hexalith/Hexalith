@@ -4,10 +4,9 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Application.Abstractions.Commands;
-
-using Hexalith.Application.Abstractions.Envelopes;
-using Hexalith.Application.Abstractions.Metadatas;
+namespace Hexalith.Application.Commands;
+using Hexalith.Application.Envelopes;
+using Hexalith.Application.Metadatas;
 
 /// <summary>
 /// Interface for all command envelopes.

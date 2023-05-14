@@ -4,9 +4,9 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Domain.Abstractions.Events;
+namespace Hexalith.Domain.Events;
 
-using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Domain.Messages;
 
 /// <summary>
 /// Interface for all events.

@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 using FluentAssertions;
 
-using Hexalith.Application.Abstractions.Commands;
-using Hexalith.Application.Abstractions.Tasks;
+using Hexalith.Application.Commands;
+using Hexalith.Application.Tasks;
 using Hexalith.Application.States;
 using Hexalith.Application.Tasks;
-using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Helpers;
 using Hexalith.UnitTests.Core.Application.Commands;
 using Hexalith.UnitTests.Core.Domain.Events;

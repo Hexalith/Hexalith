@@ -14,13 +14,13 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Domain.Abstractions.Exceptions;
+namespace Hexalith.Domain.Exceptions;
 
 using System;
 using System.Runtime.Serialization;
 
-using Hexalith.Domain.Abstractions.Aggregates;
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Domain.Aggregates;
+using Hexalith.Domain.Events;
 
 /// <summary>
 /// Class InvalidAggregateEventException.

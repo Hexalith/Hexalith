@@ -21,9 +21,9 @@ using System.Text.Json;
 
 using Ardalis.GuardClauses;
 
-using Hexalith.Application.Abstractions.Errors;
-using Hexalith.Application.Abstractions.Events;
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Application.Errors;
+using Hexalith.Application.Events;
+using Hexalith.Domain.Events;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 

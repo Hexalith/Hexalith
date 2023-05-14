@@ -14,21 +14,21 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Abstractions.Requests;
+namespace Hexalith.Application.Requests;
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Serialization;
 
 /// <summary>
 /// Class BaseRequest.
 /// Implements the <see cref="BaseMessage" />
-/// Implements the <see cref="Application.Requests.IRequest" />.
+/// Implements the <see cref="IRequest" />.
 /// </summary>
 /// <seealso cref="BaseMessage" />
-/// <seealso cref="Application.Requests.IRequest" />
+/// <seealso cref="IRequest" />
 [DataContract]
 [JsonConverter(typeof(PolymorphicJsonConverter<BaseRequest>))]
 public abstract class BaseRequest : BaseMessage, IRequest

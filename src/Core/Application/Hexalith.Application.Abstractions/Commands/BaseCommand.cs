@@ -14,21 +14,21 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Abstractions.Commands;
+namespace Hexalith.Application.Commands;
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Serialization;
 
 /// <summary>
 /// Class BaseCommand.
 /// Implements the <see cref="BaseMessage" />
-/// Implements the <see cref="Hexalith.Application.Abstractions.Commands.ICommand" />.
+/// Implements the <see cref="ICommand" />.
 /// </summary>
 /// <seealso cref="BaseMessage" />
-/// <seealso cref="Hexalith.Application.Abstractions.Commands.ICommand" />
+/// <seealso cref="ICommand" />
 [DataContract]
 [JsonConverter(typeof(PolymorphicJsonConverter<BaseCommand>))]
 public abstract class BaseCommand : BaseMessage, ICommand

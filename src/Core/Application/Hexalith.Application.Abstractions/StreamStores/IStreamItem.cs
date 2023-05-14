@@ -4,7 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Application.Abstractions.StreamStores;
+namespace Hexalith.Application.StreamStores;
 
 /// <summary>
 /// Persisted stream item interface.

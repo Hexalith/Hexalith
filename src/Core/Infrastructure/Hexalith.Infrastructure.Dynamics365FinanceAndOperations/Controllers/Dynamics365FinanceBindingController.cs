@@ -13,9 +13,9 @@ using Ardalis.GuardClauses;
 
 using FluentValidation;
 
-using Hexalith.Application.Abstractions.Errors;
-using Hexalith.Application.Abstractions.Events;
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Application.Errors;
+using Hexalith.Application.Events;
+using Hexalith.Domain.Events;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Dispatchers;
 using Hexalith.Infrastructure.WebApis.Controllers;

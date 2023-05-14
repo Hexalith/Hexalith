@@ -10,7 +10,7 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Application.Abstractions.Requests;
+using Hexalith.Application.Requests;
 
 public class BaseRequestTest
 {

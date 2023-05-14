@@ -10,8 +10,8 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Abstractions.Commands;
-using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Application.Commands;
+using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Helpers;
 
 internal class DummyCommandDispatcher : ICommandDispatcher

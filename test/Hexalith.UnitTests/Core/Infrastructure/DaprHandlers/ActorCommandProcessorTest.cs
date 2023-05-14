@@ -24,8 +24,8 @@ using Dapr.Actors.Client;
 
 using FluentAssertions;
 
-using Hexalith.Application.Abstractions.Commands;
-using Hexalith.Application.Abstractions.Metadatas;
+using Hexalith.Application.Commands;
+using Hexalith.Application.Metadatas;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.UnitTests.Core.Application.Commands;
 

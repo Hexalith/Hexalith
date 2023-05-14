@@ -14,9 +14,9 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Domain.Abstractions.Aggregates;
+namespace Hexalith.Domain.Aggregates;
 
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Domain.Events;
 
 /// <summary>
 /// Interface IAggregate.

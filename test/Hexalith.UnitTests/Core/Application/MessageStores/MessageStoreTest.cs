@@ -10,7 +10,7 @@ namespace Hexalith.UnitTests.Core.Application.MessageStores
 
     using FluentAssertions;
 
-    using Hexalith.Application.Abstractions.States;
+    using Hexalith.Application.States;
     using Hexalith.Application.States;
     using Hexalith.Application.StreamStores;
     using Hexalith.Extensions.Common;

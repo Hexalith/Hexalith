@@ -4,11 +4,11 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Application.Abstractions.Events;
+namespace Hexalith.Application.Events;
 
 using System.Threading.Tasks;
 
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Domain.Events;
 
 /// <summary>
 /// The integration event handler interface.

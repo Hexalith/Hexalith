@@ -10,7 +10,7 @@ using Ardalis.GuardClauses;
 
 using Dapr.Actors.Client;
 
-using Hexalith.Application.Abstractions.Commands;
+using Hexalith.Application.Commands;
 
 /// <summary>
 /// Convention naming command processor.

@@ -14,19 +14,19 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Abstractions.Commands;
+namespace Hexalith.Application.Commands;
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Application.Abstractions.Notifications;
-using Hexalith.Application.Abstractions.Tasks;
+using Hexalith.Application.Notifications;
+using Hexalith.Application.Tasks;
 
 /// <summary>
 /// Class CommandProcessingStalled.
-/// Implements the <see cref="Hexalith.Application.Abstractions.Commands.BaseCommand" />.
+/// Implements the <see cref="BaseCommand" />.
 /// </summary>
-/// <seealso cref="Hexalith.Application.Abstractions.Commands.BaseCommand" />
+/// <seealso cref="BaseCommand" />
 [DataContract]
 public class CommandProcessingFailed : BaseNotification
 {

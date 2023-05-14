@@ -9,8 +9,8 @@ namespace Hexalith.UnitTests.Core.Domain.Events;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Application.Metadatas;
+using Hexalith.Domain.Events;
 using Hexalith.Extensions.Helpers;
 
 [DataContract]

@@ -20,9 +20,9 @@ using System;
 
 using Dapr.Client;
 
-using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Application.Abstractions.Requests;
-using Hexalith.Application.Abstractions.States;
+using Hexalith.Application.Metadatas;
+using Hexalith.Application.Requests;
+using Hexalith.Application.States;
 using Hexalith.Application.Buses;
 using Hexalith.Extensions.Common;
 

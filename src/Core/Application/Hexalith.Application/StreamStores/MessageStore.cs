@@ -11,8 +11,7 @@ using System.Globalization;
 
 using Ardalis.GuardClauses;
 
-using Hexalith.Application.Abstractions.States;
-using Hexalith.Application.Abstractions.StreamStores;
+using Hexalith.Application.States;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 
@@ -58,7 +57,7 @@ public class MessageStore<TMessage>
     /// <returns>A Task&lt;System.Int64&gt; representing the asynchronous operation.</returns>
     /// <exception cref="System.ArgumentNullException">Argument is null.</exception>
     /// <exception cref="System.Data.DBConcurrencyException">Stream version mismatch: Expected version={expectedVersion.ToString(CultureInfo.InvariantCulture)}; Actual version={version.ToString(CultureInfo.InvariantCulture)}.</exception>
-    /// <exception cref="Hexalith.Application.Abstractions.StreamStores.DuplicateIdempotencyIdException">The idempotent Id already exists in the stream.</exception>
+    /// <exception cref="StreamStores.DuplicateIdempotencyIdException">The idempotent Id already exists in the stream.</exception>
     public async Task<long> AddAsync(
         IEnumerable<TMessage> messages,
         long expectedVersion,

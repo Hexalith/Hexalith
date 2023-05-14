@@ -10,7 +10,7 @@ using System.Net.Http.Json;
 using System.Text.Json;
 using System.Web;
 
-using Hexalith.Application.Abstractions.Exceptions;
+using Hexalith.Application.Exceptions;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 
 using Microsoft.Extensions.Logging;

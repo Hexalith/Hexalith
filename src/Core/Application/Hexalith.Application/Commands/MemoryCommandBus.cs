@@ -19,10 +19,9 @@ namespace Hexalith.Application.Commands;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Abstractions.Commands;
-using Hexalith.Application.Abstractions.Envelopes;
-using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Application.Abstractions.States;
+using Hexalith.Application.Envelopes;
+using Hexalith.Application.Metadatas;
+using Hexalith.Application.States;
 using Hexalith.Extensions.Common;
 
 /// <summary>
@@ -46,10 +45,7 @@ public class MemoryCommandBus : ICommandBus
     /// Initializes a new instance of the <see cref="MemoryCommandBus"/> class.
     /// </summary>
     /// <param name="dateTimeService">The date time service.</param>
-    public MemoryCommandBus(IDateTimeService dateTimeService)
-    {
-        _dateTimeService = dateTimeService;
-    }
+    public MemoryCommandBus(IDateTimeService dateTimeService) => _dateTimeService = dateTimeService;
 
     /// <summary>
     /// Gets the stream.
@@ -58,16 +54,10 @@ public class MemoryCommandBus : ICommandBus
     public IEnumerable<CommandState> Stream => _stream;
 
     /// <inheritdoc/>
-    public Task PublishAsync(IEnvelope<BaseCommand, BaseMetadata> envelope, CancellationToken cancellationToken)
-    {
-        return PublishAsync(envelope.Message, envelope.Metadata, cancellationToken);
-    }
+    public Task PublishAsync(IEnvelope<BaseCommand, BaseMetadata> envelope, CancellationToken cancellationToken) => PublishAsync(envelope.Message, envelope.Metadata, cancellationToken);
 
     /// <inheritdoc/>
-    public Task PublishAsync(BaseCommand message, BaseMetadata metadata, CancellationToken cancellationToken)
-    {
-        return PublishAsync(new CommandState(_dateTimeService.UtcNow, message, metadata), cancellationToken);
-    }
+    public Task PublishAsync(BaseCommand message, BaseMetadata metadata, CancellationToken cancellationToken) => PublishAsync(new CommandState(_dateTimeService.UtcNow, message, metadata), cancellationToken);
 
     /// <inheritdoc/>
     public Task PublishAsync(CommandState state, CancellationToken cancellationToken)

@@ -19,10 +19,9 @@ namespace Hexalith.Application.Tasks;
 using System;
 using System.Threading;
 
-using Hexalith.Application.Abstractions.Commands;
-using Hexalith.Application.Abstractions.States;
-using Hexalith.Application.Abstractions.Tasks;
-using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Application.Commands;
+using Hexalith.Application.States;
+using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 

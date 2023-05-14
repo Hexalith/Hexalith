@@ -8,7 +8,7 @@ namespace Hexalith.UnitTests.Core.Infrastructure.Dynamics365Finance.BusinessEven
 
 using System.Runtime.Serialization;
 
-using Hexalith.Application.Abstractions.Commands;
+using Hexalith.Application.Commands;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents;
 
 [DataContract]

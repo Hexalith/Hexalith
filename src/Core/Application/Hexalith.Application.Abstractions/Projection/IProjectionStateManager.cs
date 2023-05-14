@@ -14,12 +14,12 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Abstractions.Projection;
+namespace Hexalith.Application.Projection;
 
-using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Application.Abstractions.States;
-using Hexalith.Application.Abstractions.Tasks;
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Application.Metadatas;
+using Hexalith.Application.States;
+using Hexalith.Application.Tasks;
+using Hexalith.Domain.Events;
 
 /// <summary>
 /// Interface IProjectionStateManager.

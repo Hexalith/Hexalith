@@ -14,11 +14,11 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Abstractions.Events;
+namespace Hexalith.Application.Events;
 
-using Hexalith.Application.Abstractions.Envelopes;
-using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Application.Envelopes;
+using Hexalith.Application.Metadatas;
+using Hexalith.Domain.Events;
 
 /// <summary>
 /// Interface for all event envelopes.

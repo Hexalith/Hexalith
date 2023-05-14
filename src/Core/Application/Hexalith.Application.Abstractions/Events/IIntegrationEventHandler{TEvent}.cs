@@ -14,13 +14,13 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Abstractions.Events;
+namespace Hexalith.Application.Events;
 
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Abstractions.Commands;
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Application.Commands;
+using Hexalith.Domain.Events;
 
 /// <summary>
 /// Event handler interface.

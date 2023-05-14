@@ -11,7 +11,7 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Application.Abstractions.Tasks;
+using Hexalith.Application.Tasks;
 
 public class TaskProcessorTest
 {

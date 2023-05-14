@@ -10,9 +10,9 @@ using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Application.Abstractions.Commands;
-using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Application.Commands;
+using Hexalith.Application.Metadatas;
+using Hexalith.Domain.Events;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Serialization;
 using Hexalith.Infrastructure.Serialization.Serialization;
 

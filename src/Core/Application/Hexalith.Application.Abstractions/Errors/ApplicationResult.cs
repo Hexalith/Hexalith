@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Abstractions.Errors;
+namespace Hexalith.Application.Errors;
 
 using System;
 using System.Runtime.Serialization;

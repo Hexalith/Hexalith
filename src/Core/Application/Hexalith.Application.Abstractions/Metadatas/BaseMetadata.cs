@@ -14,21 +14,21 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Abstractions.Metadatas;
+namespace Hexalith.Application.Metadatas;
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 using Ardalis.GuardClauses;
 
-using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Serialization;
 
 /// <summary>
 /// Class Metadata.
-/// Implements the <see cref="Hexalith.Application.Abstractions.Metadatas.IMetadata" />.
+/// Implements the <see cref="IMetadata" />.
 /// </summary>
-/// <seealso cref="Hexalith.Application.Abstractions.Metadatas.IMetadata" />
+/// <seealso cref="IMetadata" />
 [DataContract]
 [JsonConverter(typeof(PolymorphicJsonConverter<BaseMetadata>))]
 public abstract class BaseMetadata : IMetadata, IPolymorphicSerializable

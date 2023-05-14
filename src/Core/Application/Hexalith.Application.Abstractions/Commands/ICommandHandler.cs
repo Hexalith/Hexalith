@@ -4,13 +4,13 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Application.Abstractions.Commands;
+namespace Hexalith.Application.Commands;
 
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Domain.Messages;
 
 /// <summary>
 /// Command handler interface.
@@ -36,10 +36,10 @@ public interface ICommandHandler
 
 /// <summary>
 /// Interface ICommandHandler
-/// Extends the <see cref="Hexalith.Application.Abstractions.Commands.ICommandHandler" />.
+/// Extends the <see cref="ICommandHandler" />.
 /// </summary>
 /// <typeparam name="TCommand">The type of the t command.</typeparam>
-/// <seealso cref="Hexalith.Application.Abstractions.Commands.ICommandHandler" />
+/// <seealso cref="ICommandHandler" />
 public interface ICommandHandler<TCommand> : ICommandHandler
     where TCommand : ICommand
 {

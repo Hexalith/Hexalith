@@ -14,26 +14,26 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Abstractions.Events;
+namespace Hexalith.Application.Events;
 
 using System;
 using System.Runtime.Serialization;
 
 using Ardalis.GuardClauses;
 
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Domain.Events;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class EventDispatchFailed.
 /// Implements the <see cref="Error" />
-/// Implements the <see cref="System.IEquatable{Hexalith.Extensions.Common.Error}" />
-/// Implements the <see cref="System.IEquatable{Hexalith.Application.Abstractions.Events.EventDispatchFailed}" />.
+/// Implements the <see cref="IEquatable{Error}" />
+/// Implements the <see cref="IEquatable{EventDispatchFailed}" />.
 /// </summary>
 /// <seealso cref="Error" />
-/// <seealso cref="System.IEquatable{Hexalith.Extensions.Common.Error}" />
-/// <seealso cref="System.IEquatable{Hexalith.Application.Abstractions.Events.EventDispatchFailed}" />
+/// <seealso cref="IEquatable{Error}" />
+/// <seealso cref="IEquatable{EventDispatchFailed}" />
 [DataContract]
 public record EventDispatchFailed : Error
 {

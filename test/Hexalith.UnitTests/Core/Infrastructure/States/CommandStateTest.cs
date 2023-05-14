@@ -11,8 +11,8 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Application.Abstractions.States;
+using Hexalith.Application.Metadatas;
+using Hexalith.Application.States;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Extensions.Serialization;
 using Hexalith.UnitTests.Core.Application.Commands;

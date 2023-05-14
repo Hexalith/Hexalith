@@ -9,8 +9,6 @@ namespace Hexalith.Application.StreamStores;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Application.Abstractions.StreamStores;
-
 /// <summary>
 /// Persited stream item.
 /// </summary>

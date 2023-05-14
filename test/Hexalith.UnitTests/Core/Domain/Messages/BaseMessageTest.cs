@@ -10,7 +10,7 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Domain.Messages;
 
 public class BaseMessageTest
 {

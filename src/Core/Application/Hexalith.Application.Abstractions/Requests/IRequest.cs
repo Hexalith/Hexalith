@@ -4,9 +4,9 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Application.Abstractions.Requests;
+namespace Hexalith.Application.Requests;
 
-using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Domain.Messages;
 
 /// <summary>
 /// Interface for all commands.

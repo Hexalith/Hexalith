@@ -14,12 +14,12 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Abstractions.Notifications;
+namespace Hexalith.Application.Notifications;
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Serialization;
 
 /// <summary>

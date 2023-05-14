@@ -14,15 +14,14 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Abstractions.Aggregates;
+namespace Hexalith.Application.Aggregates;
 
-using Hexalith.Application.Abstractions.Commands;
-
-using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Application.Abstractions.States;
-using Hexalith.Application.Abstractions.Tasks;
-using Hexalith.Domain.Abstractions.Aggregates;
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Application.Commands;
+using Hexalith.Application.Metadatas;
+using Hexalith.Application.States;
+using Hexalith.Application.Tasks;
+using Hexalith.Domain.Aggregates;
+using Hexalith.Domain.Events;
 
 /// <summary>
 /// Interface IAggregateStateManager.

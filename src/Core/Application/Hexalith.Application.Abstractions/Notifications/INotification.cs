@@ -14,9 +14,9 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Abstractions.Notifications;
+namespace Hexalith.Application.Notifications;
 
-using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Domain.Messages;
 
 /// <summary>
 /// Interface for all commands.

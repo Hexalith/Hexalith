@@ -8,7 +8,7 @@ namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Dispatchers;
 
 using System.Threading.Tasks;
 
-using Hexalith.Application.Abstractions.Events;
+using Hexalith.Application.Events;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents;
 
 /// <summary>

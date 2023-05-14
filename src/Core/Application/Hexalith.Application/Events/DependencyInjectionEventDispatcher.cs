@@ -14,9 +14,8 @@ using System.Threading.Tasks;
 
 using Ardalis.GuardClauses;
 
-using Hexalith.Application.Abstractions.Commands;
-using Hexalith.Application.Abstractions.Events;
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Application.Commands;
+using Hexalith.Domain.Events;
 
 using Microsoft.Extensions.Logging;
 

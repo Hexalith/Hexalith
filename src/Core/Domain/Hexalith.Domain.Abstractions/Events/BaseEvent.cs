@@ -12,12 +12,12 @@
  * You can also set it in SonarLint.xml additional file for SonarLint or standalone NuGet analyzer.
  */
 
-namespace Hexalith.Domain.Abstractions.Events;
+namespace Hexalith.Domain.Events;
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Serialization;
 
 /// <summary>

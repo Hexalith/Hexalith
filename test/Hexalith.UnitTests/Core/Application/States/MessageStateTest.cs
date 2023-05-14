@@ -11,8 +11,8 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Application.Abstractions.States;
+using Hexalith.Application.Metadatas;
+using Hexalith.Application.States;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Extensions.Serialization;
 using Hexalith.UnitTests.Core.Domain.Messages;
@@ -25,7 +25,7 @@ public class MessageStateTest
     public void State_serialization_and_deserialization_should_return_same_object()
     {
         DummyMessage1 message = new();
-        Hexalith.Application.Abstractions.Metadatas.Metadata meta = message.CreateMetadata();
+        Hexalith.Application.Metadatas.Metadata meta = message.CreateMetadata();
         MessageState state = new(DateTimeOffset.UtcNow, message, meta);
         string json = JsonSerializer.Serialize(state);
         _ = json.Should().NotBeNullOrEmpty();
@@ -38,7 +38,7 @@ public class MessageStateTest
     public void State_serialization_should_succeed()
     {
         DummyMessage1 message = new();
-        Hexalith.Application.Abstractions.Metadatas.Metadata meta = message.CreateMetadata();
+        Hexalith.Application.Metadatas.Metadata meta = message.CreateMetadata();
         MessageState state = new(DateTimeOffset.UtcNow, message, meta);
         string json = JsonSerializer.Serialize(state);
         _ = json.Should().NotBeNullOrEmpty();

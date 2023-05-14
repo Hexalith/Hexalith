@@ -14,19 +14,19 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Domain.Abstractions.Aggregates;
+namespace Hexalith.Domain.Aggregates;
 
 using System.Diagnostics;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Domain.Events;
 
 /// <summary>
 /// Class Aggregate.
-/// Implements the <see cref="Hexalith.Domain.Abstractions.Aggregates.IAggregate" />.
+/// Implements the <see cref="IAggregate" />.
 /// </summary>
-/// <seealso cref="Hexalith.Domain.Abstractions.Aggregates.IAggregate" />
+/// <seealso cref="IAggregate" />
 [DataContract]
 [DebuggerDisplay("{AggregateName}/{AggregateId}")]
 public abstract record Aggregate : IAggregate

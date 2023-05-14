@@ -9,8 +9,8 @@ namespace Hexalith.UnitTests.Core.Application.Metadatas;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Application.Metadatas;
+using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Helpers;
 
 [DataContract]

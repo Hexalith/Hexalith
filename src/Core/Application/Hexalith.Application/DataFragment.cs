@@ -9,7 +9,7 @@ namespace Hexalith.Application;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Application.Abstractions.StreamStores;
+using Hexalith.Application.StreamStores;
 
 /// <summary>
 /// Data fragment class.

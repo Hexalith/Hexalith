@@ -4,10 +4,10 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Application.Abstractions.Events;
+namespace Hexalith.Application.Events;
 
-using Hexalith.Application.Abstractions.Commands;
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Application.Commands;
+using Hexalith.Domain.Events;
 
 /// <summary>
 /// Interface IEventDispatcher.

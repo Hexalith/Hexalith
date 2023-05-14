@@ -22,7 +22,7 @@ using System.Threading.Tasks;
 
 using Dapr.Client;
 
-using Hexalith.Application.Abstractions.States;
+using Hexalith.Application.States;
 using Hexalith.Application.States;
 using Hexalith.Extensions.Common;
 

@@ -13,8 +13,7 @@ using System.Threading.Tasks;
 
 using Ardalis.GuardClauses;
 
-using Hexalith.Application.Abstractions.Commands;
-using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Domain.Messages;
 
 using Microsoft.Extensions.Logging;
 

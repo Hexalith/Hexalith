@@ -14,19 +14,19 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Abstractions.Envelopes;
+namespace Hexalith.Application.Envelopes;
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Application.Metadatas;
+using Hexalith.Domain.Messages;
 
 /// <summary>
 /// Class Envelope.
-/// Implements the <see cref="Hexalith.Application.Abstractions.Envelopes.BaseEnvelope{Hexalith.Domain.Abstractions.Messages.BaseMessage, Hexalith.Application.Abstractions.Metadatas.Metadata}" />.
+/// Implements the <see cref="BaseEnvelope{BaseMessage, Metadata}" />.
 /// </summary>
-/// <seealso cref="Hexalith.Application.Abstractions.Envelopes.BaseEnvelope{Hexalith.Domain.Abstractions.Messages.BaseMessage, Hexalith.Application.Abstractions.Metadatas.Metadata}" />
+/// <seealso cref="BaseEnvelope{BaseMessage, Metadata}" />
 [DataContract]
 public class Envelope : BaseEnvelope<BaseMessage, BaseMetadata>
 {

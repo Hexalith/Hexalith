@@ -11,12 +11,12 @@ using System.Threading.Tasks;
 
 using Ardalis.GuardClauses;
 
-using Hexalith.Application.Abstractions.Commands;
-using Hexalith.Application.Abstractions.Errors;
-using Hexalith.Application.Abstractions.Events;
-using Hexalith.Application.Abstractions.Metadatas;
+using Hexalith.Application.Commands;
+using Hexalith.Application.Errors;
 using Hexalith.Application.Events;
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Application.Metadatas;
+using Hexalith.Application.Events;
+using Hexalith.Domain.Events;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents;

@@ -11,7 +11,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Abstractions.States;
+using Hexalith.Application.States;
 using Hexalith.Extensions.Common;
 
 /// <summary>
@@ -42,10 +42,7 @@ public class StringStateProvider : IStateStoreProvider
     /// Initializes a new instance of the <see cref="StringStateProvider"/> class.
     /// </summary>
     /// <param name="state">The provider initial state.</param>
-    public StringStateProvider(Dictionary<string, string> state)
-    {
-        _state = state;
-    }
+    public StringStateProvider(Dictionary<string, string> state) => _state = state;
 
     /// <summary>
     /// Gets the state.

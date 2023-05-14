@@ -4,7 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Application.Abstractions.Events;
+namespace Hexalith.Application.Events;
 
 using System.Runtime.Serialization;
 
@@ -16,12 +16,12 @@ using Hexalith.Extensions.Helpers;
 /// <summary>
 /// Class EventDeserializationFailed.
 /// Implements the <see cref="Error" />
-/// Implements the <see cref="System.IEquatable{Error}" />
-/// Implements the <see cref="System.IEquatable{Hexalith.Application.Abstractions.Events.EventDeserializationFailed}" />.
+/// Implements the <see cref="IEquatable{Error}" />
+/// Implements the <see cref="IEquatable{EventDeserializationFailed}" />.
 /// </summary>
 /// <seealso cref="Error" />
-/// <seealso cref="System.IEquatable{Error}" />
-/// <seealso cref="System.IEquatable{Hexalith.Application.Abstractions.Events.EventDeserializationFailed}" />
+/// <seealso cref="IEquatable{Error}" />
+/// <seealso cref="IEquatable{EventDeserializationFailed}" />
 [DataContract]
 public record EventDeserializationFailed : Error
 {

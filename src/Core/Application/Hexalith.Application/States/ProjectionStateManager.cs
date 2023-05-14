@@ -19,14 +19,12 @@ namespace Hexalith.Application.States;
 using System;
 using System.Threading;
 
-using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Application.Abstractions.Notifications;
-using Hexalith.Application.Abstractions.Projection;
-using Hexalith.Application.Abstractions.States;
-using Hexalith.Application.Abstractions.Tasks;
+using Hexalith.Application.Metadatas;
+using Hexalith.Application.Notifications;
+using Hexalith.Application.Projection;
 using Hexalith.Application.StreamStores;
 using Hexalith.Application.Tasks;
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Domain.Events;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 

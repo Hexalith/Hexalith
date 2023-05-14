@@ -4,21 +4,21 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Application.Abstractions.Envelopes;
+namespace Hexalith.Application.Envelopes;
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Application.Abstractions.Events;
-using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Application.Events;
+using Hexalith.Application.Metadatas;
+using Hexalith.Domain.Events;
 
 /// <summary>
 /// Class EventEnvelope.
-/// Implements the <see cref="Hexalith.Application.Abstractions.Envelopes.BaseEnvelope{Hexalith.Domain.Abstractions.Events.BaseEvent, Hexalith.Application.Abstractions.Metadatas.Metadata}" />
+/// Implements the <see cref="BaseEnvelope{BaseEvent, Metadata}" />
 /// Implements the <see cref="IEventEnvelope" />.
 /// </summary>
-/// <seealso cref="Hexalith.Application.Abstractions.Envelopes.BaseEnvelope{Hexalith.Domain.Abstractions.Events.BaseEvent, Hexalith.Application.Abstractions.Metadatas.Metadata}" />
+/// <seealso cref="BaseEnvelope{BaseEvent, Metadata}" />
 /// <seealso cref="IEventEnvelope" />
 [DataContract]
 public class EventEnvelope : BaseEnvelope<BaseEvent, BaseMetadata>, IEventEnvelope

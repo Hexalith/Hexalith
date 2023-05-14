@@ -14,11 +14,11 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Abstractions.Projection;
+namespace Hexalith.Application.Projection;
 
-using Hexalith.Application.Abstractions.Notifications;
-using Hexalith.Application.Abstractions.Requests;
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Application.Notifications;
+using Hexalith.Application.Requests;
+using Hexalith.Domain.Events;
 
 /// <summary>
 /// Interface IProjection.

@@ -14,13 +14,13 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Domain.Abstractions.Aggregates;
+namespace Hexalith.Domain.Aggregates;
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Domain.Events;
 
 /// <summary>
 /// Class AggregateBuilder.
@@ -41,8 +41,8 @@ public class AggregateBuilder
     /// Builds this instance.
     /// </summary>
     /// <returns>IAggregate.</returns>
-    /// <exception cref="System.InvalidOperationException">Events are not set.</exception>
-    /// <exception cref="System.InvalidOperationException">Initializer is not set.</exception>
+    /// <exception cref="InvalidOperationException">Events are not set.</exception>
+    /// <exception cref="InvalidOperationException">Initializer is not set.</exception>
     public IAggregate Build()
     {
         if (_events is null || _events.Length == 0)
@@ -69,7 +69,7 @@ public class AggregateBuilder
     /// </summary>
     /// <param name="events">The events.</param>
     /// <returns>AggregateBuilder.</returns>
-    /// <exception cref="System.ArgumentNullException">Null.</exception>
+    /// <exception cref="ArgumentNullException">Null.</exception>
     public AggregateBuilder Events(IEnumerable<BaseEvent> events)
     {
         ArgumentNullException.ThrowIfNull(events);
@@ -82,7 +82,7 @@ public class AggregateBuilder
     /// </summary>
     /// <param name="initializer">The initializer.</param>
     /// <returns>AggregateBuilder.</returns>
-    /// <exception cref="System.ArgumentNullException">Null.</exception>
+    /// <exception cref="ArgumentNullException">Null.</exception>
     public AggregateBuilder Initializer(Func<BaseEvent, IAggregate> initializer)
     {
         ArgumentNullException.ThrowIfNull(initializer);

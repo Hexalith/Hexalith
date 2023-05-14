@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Domain.Abstractions.Messages;
+namespace Hexalith.Domain.Messages;
 
 using System.Diagnostics;
 using System.Runtime.Serialization;

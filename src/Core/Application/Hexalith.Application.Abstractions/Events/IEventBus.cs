@@ -14,12 +14,12 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Abstractions.Events;
+namespace Hexalith.Application.Events;
 
-using Hexalith.Application.Abstractions.Envelopes;
-using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Application.Abstractions.States;
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Application.Envelopes;
+using Hexalith.Application.Metadatas;
+using Hexalith.Application.States;
+using Hexalith.Domain.Events;
 
 /// <summary>
 /// A event bus is a component that allows to send events.

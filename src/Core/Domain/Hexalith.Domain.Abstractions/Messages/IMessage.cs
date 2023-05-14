@@ -4,7 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Domain.Abstractions.Messages;
+namespace Hexalith.Domain.Messages;
 
 /// <summary>
 /// Base interface for messages.

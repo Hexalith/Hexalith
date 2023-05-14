@@ -4,20 +4,20 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Application.Abstractions.Commands;
+namespace Hexalith.Application.Commands;
 
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Domain.Messages;
 
 /// <summary>
 /// Class CommandHandler.
-/// Implements the <see cref="Hexalith.Application.Abstractions.Commands.ICommandHandler{TCommand}" />.
+/// Implements the <see cref="ICommandHandler{TCommand}" />.
 /// </summary>
 /// <typeparam name="TCommand">The type of the t command.</typeparam>
-/// <seealso cref="Hexalith.Application.Abstractions.Commands.ICommandHandler{TCommand}" />
+/// <seealso cref="ICommandHandler{TCommand}" />
 public abstract class CommandHandler<TCommand> : ICommandHandler<TCommand>
     where TCommand : ICommand
 {
@@ -44,7 +44,7 @@ public abstract class CommandHandler<TCommand> : ICommandHandler<TCommand>
     /// </summary>
     /// <param name="command">The command.</param>
     /// <returns>TCommand.</returns>
-    /// <exception cref="System.ArgumentException">command.</exception>
+    /// <exception cref="ArgumentException">command.</exception>
     private static TCommand ToCommand(ICommand command)
     {
         return command is TCommand c

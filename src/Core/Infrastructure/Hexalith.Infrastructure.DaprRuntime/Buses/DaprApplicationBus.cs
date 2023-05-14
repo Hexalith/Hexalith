@@ -18,10 +18,10 @@ namespace Hexalith.Infrastructure.DaprRuntime.Buses;
 
 using Dapr.Client;
 
-using Hexalith.Application.Abstractions.Envelopes;
-using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Application.Abstractions.States;
-using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Application.Envelopes;
+using Hexalith.Application.Metadatas;
+using Hexalith.Application.States;
+using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Common;
 
 using Microsoft.Extensions.Logging;

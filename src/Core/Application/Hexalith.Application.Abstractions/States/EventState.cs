@@ -14,14 +14,14 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Abstractions.States;
+namespace Hexalith.Application.States;
 
 using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Application.Metadatas;
+using Hexalith.Domain.Events;
 
 /// <summary>
 /// Class EventState.

@@ -14,18 +14,18 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Abstractions.Envelopes;
+namespace Hexalith.Application.Envelopes;
 
-using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Application.Metadatas;
+using Hexalith.Domain.Messages;
 
 /// <summary>
 /// Class BaseEnvelope.
-/// Implements the <see cref="Hexalith.Application.Abstractions.Envelopes.IEnvelope{TMessage, TMetadata}" />.
+/// Implements the <see cref="IEnvelope{TMessage, TMetadata}" />.
 /// </summary>
 /// <typeparam name="TMessage">The type of the t message.</typeparam>
 /// <typeparam name="TMetadata">The type of the t metadata.</typeparam>
-/// <seealso cref="Hexalith.Application.Abstractions.Envelopes.IEnvelope{TMessage, TMetadata}" />
+/// <seealso cref="IEnvelope{TMessage, TMetadata}" />
 public class BaseEnvelope<TMessage, TMetadata> : IEnvelope<TMessage, TMetadata>
     where TMessage : IMessage
     where TMetadata : IMetadata

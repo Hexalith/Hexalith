@@ -19,10 +19,9 @@ namespace Hexalith.Application.Requests;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Abstractions.Envelopes;
-using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Application.Abstractions.Requests;
-using Hexalith.Application.Abstractions.States;
+using Hexalith.Application.Envelopes;
+using Hexalith.Application.Metadatas;
+using Hexalith.Application.States;
 using Hexalith.Extensions.Common;
 
 /// <summary>

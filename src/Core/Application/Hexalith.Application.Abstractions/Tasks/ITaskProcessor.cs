@@ -4,8 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Application.Abstractions.Tasks;
-
+namespace Hexalith.Application.Tasks;
 /// <summary>
 /// The task processor.
 /// </summary>

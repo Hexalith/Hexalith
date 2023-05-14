@@ -19,11 +19,10 @@ namespace Hexalith.Application.Events;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Abstractions.Envelopes;
-using Hexalith.Application.Abstractions.Events;
-using Hexalith.Application.Abstractions.Metadatas;
-using Hexalith.Application.Abstractions.States;
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Application.Envelopes;
+using Hexalith.Application.Metadatas;
+using Hexalith.Application.States;
+using Hexalith.Domain.Events;
 using Hexalith.Extensions.Common;
 
 /// <summary>
@@ -47,10 +46,7 @@ public class MemoryEventBus : IEventBus
     /// Initializes a new instance of the <see cref="MemoryEventBus"/> class.
     /// </summary>
     /// <param name="dateTimeService">The date time service.</param>
-    public MemoryEventBus(IDateTimeService dateTimeService)
-    {
-        _dateTimeService = dateTimeService;
-    }
+    public MemoryEventBus(IDateTimeService dateTimeService) => _dateTimeService = dateTimeService;
 
     /// <summary>
     /// Gets the stream.
@@ -59,16 +55,10 @@ public class MemoryEventBus : IEventBus
     public IEnumerable<EventState> Stream => _stream;
 
     /// <inheritdoc/>
-    public Task PublishAsync(IEnvelope<BaseEvent, BaseMetadata> envelope, CancellationToken cancellationToken)
-    {
-        return PublishAsync(envelope.Message, envelope.Metadata, cancellationToken);
-    }
+    public Task PublishAsync(IEnvelope<BaseEvent, BaseMetadata> envelope, CancellationToken cancellationToken) => PublishAsync(envelope.Message, envelope.Metadata, cancellationToken);
 
     /// <inheritdoc/>
-    public Task PublishAsync(BaseEvent message, BaseMetadata metadata, CancellationToken cancellationToken)
-    {
-        return PublishAsync(new EventState(_dateTimeService.UtcNow, message, metadata), cancellationToken);
-    }
+    public Task PublishAsync(BaseEvent message, BaseMetadata metadata, CancellationToken cancellationToken) => PublishAsync(new EventState(_dateTimeService.UtcNow, message, metadata), cancellationToken);
 
     /// <inheritdoc/>
     public Task PublishAsync(EventState state, CancellationToken cancellationToken)

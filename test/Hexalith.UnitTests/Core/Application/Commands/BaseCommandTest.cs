@@ -10,7 +10,7 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Application.Abstractions.Commands;
+using Hexalith.Application.Commands;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Extensions.Serialization;
 

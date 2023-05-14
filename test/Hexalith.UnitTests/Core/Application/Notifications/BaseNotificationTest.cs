@@ -10,7 +10,7 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Application.Abstractions.Notifications;
+using Hexalith.Application.Notifications;
 
 public class BaseNotificationTest
 {

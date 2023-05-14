@@ -10,7 +10,7 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Application.Abstractions.Metadatas;
+using Hexalith.Application.Metadatas;
 
 public class MetadataTest
 {

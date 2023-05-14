@@ -13,7 +13,7 @@ using FluentAssertions;
 
 using Grpc.Core;
 
-using Hexalith.Application.Abstractions.States;
+using Hexalith.Application.States;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Extensions.Serialization;
 using Hexalith.UnitTests.Core.Domain.Events;
@@ -26,7 +26,7 @@ public class EventStateTest
     public void State_serialization_and_deserialization_should_return_same_object()
     {
         DummyEvent1 @event = new();
-        Hexalith.Application.Abstractions.Metadatas.Metadata meta = @event.CreateMetadata();
+        Hexalith.Application.Metadatas.Metadata meta = @event.CreateMetadata();
         EventState state = new(DateTimeOffset.UtcNow, @event, meta);
         string json = JsonSerializer.Serialize(state);
         _ = json.Should().NotBeNullOrEmpty();
@@ -39,7 +39,7 @@ public class EventStateTest
     public void State_serialization_should_succeed()
     {
         DummyEvent1 @event = new();
-        Hexalith.Application.Abstractions.Metadatas.Metadata meta = @event.CreateMetadata();
+        Hexalith.Application.Metadatas.Metadata meta = @event.CreateMetadata();
         EventState state = new(DateTimeOffset.UtcNow, @event, meta);
         string json = JsonSerializer.Serialize(state);
         _ = json.Should().NotBeNullOrEmpty();

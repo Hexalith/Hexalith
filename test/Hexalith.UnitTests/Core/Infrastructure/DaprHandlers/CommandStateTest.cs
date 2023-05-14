@@ -11,7 +11,7 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Application.Abstractions.States;
+using Hexalith.Application.States;
 
 using Hexalith.UnitTests.Core.Application.Commands;
 

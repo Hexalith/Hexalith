@@ -14,19 +14,19 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Abstractions.Metadatas;
+namespace Hexalith.Application.Metadatas;
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Domain.Abstractions.Messages;
+using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class Metadata.
-/// Implements the <see cref="Hexalith.Application.Abstractions.Metadatas.IMetadata" />.
+/// Implements the <see cref="IMetadata" />.
 /// </summary>
-/// <seealso cref="Hexalith.Application.Abstractions.Metadatas.IMetadata" />
+/// <seealso cref="IMetadata" />
 [DataContract]
 public class Metadata : BaseMetadata
 {

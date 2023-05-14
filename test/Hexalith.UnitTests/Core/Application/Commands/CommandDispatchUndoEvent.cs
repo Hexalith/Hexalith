@@ -6,7 +6,7 @@
 
 namespace Hexalith.UnitTests.Core.Application.Commands;
 
-using Hexalith.Domain.Abstractions.Events;
+using Hexalith.Domain.Events;
 
 internal class CommandDispatchUndoEvent : BaseEvent
 {

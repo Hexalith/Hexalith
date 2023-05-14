@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Abstractions.StreamStores;
+namespace Hexalith.Application.StreamStores;
 
 using System;
 using System.Runtime.Serialization;

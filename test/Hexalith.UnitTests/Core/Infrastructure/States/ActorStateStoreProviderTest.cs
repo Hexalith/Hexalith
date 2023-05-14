@@ -10,7 +10,7 @@ using Dapr.Actors.Runtime;
 
 using FluentAssertions;
 
-using Hexalith.Application.Abstractions.Commands;
+using Hexalith.Application.Commands;
 using Hexalith.Infrastructure.DaprRuntime.States;
 
 using Hexalith.UnitTests.Core.Application.Commands;

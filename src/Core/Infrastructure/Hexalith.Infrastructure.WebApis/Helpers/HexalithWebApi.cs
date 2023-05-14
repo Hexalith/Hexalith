@@ -22,12 +22,12 @@ using Dapr.Actors.Runtime;
 
 using FluentValidation;
 
-using Hexalith.Application.Abstractions.Aggregates;
-using Hexalith.Application.Abstractions.Commands;
-using Hexalith.Application.Abstractions.Events;
-using Hexalith.Application.Abstractions.Notifications;
-using Hexalith.Application.Abstractions.Requests;
-using Hexalith.Application.Abstractions.States;
+using Hexalith.Application.Aggregates;
+using Hexalith.Application.Commands;
+using Hexalith.Application.Events;
+using Hexalith.Application.Notifications;
+using Hexalith.Application.Requests;
+using Hexalith.Application.States;
 using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
 using Hexalith.Application.States;
