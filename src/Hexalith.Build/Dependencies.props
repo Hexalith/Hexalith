@@ -23,7 +23,7 @@
 		<AzureResourceManagerLogicVersion>1.0.1</AzureResourceManagerLogicVersion>
 		<AzureSecurityKeyVaultSecretsVersion>4.5.0</AzureSecurityKeyVaultSecretsVersion>
 		<DocFxConsoleVersion>2.59.4</DocFxConsoleVersion>
-		<MicrosoftSemanticKernelVersion>0.13.442.1-preview</MicrosoftSemanticKernelVersion>
+		<MicrosoftSemanticKernelVersion>0.14.547.1-preview</MicrosoftSemanticKernelVersion>
 		<MicrosoftBotBuilderVersion>4.19.*</MicrosoftBotBuilderVersion>
 		<AdaptiveCardsVersion>3.0.0</AdaptiveCardsVersion>
 		<AdaptiveCardsTemplatingVersion>1.4.0</AdaptiveCardsTemplatingVersion>

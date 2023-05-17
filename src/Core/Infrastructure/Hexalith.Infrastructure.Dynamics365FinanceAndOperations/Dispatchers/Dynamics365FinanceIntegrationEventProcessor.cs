@@ -15,7 +15,6 @@ using Hexalith.Application.Commands;
 using Hexalith.Application.Errors;
 using Hexalith.Application.Events;
 using Hexalith.Application.Metadatas;
-using Hexalith.Application.Events;
 using Hexalith.Domain.Events;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;

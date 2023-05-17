@@ -21,7 +21,7 @@ public class CommandPromptGenerationTest
         const string userEmail = "johndoe@hexalith.com";
         const string userName = "John Doe";
         string correlationId = UniqueIdHelper.GenerateUniqueStringId();
-        AddCountryCommand command = Example.Create<AddCountryCommand>();
+        AddCountryCommand command = ExampleHelper.Create<AddCountryCommand>();
         CommandPromptGenerator generator = new();
         string prompt = await generator.GeneratePromptAsync<AddCountryCommand>(
             assistantEmail,

@@ -5,6 +5,7 @@
 // </copyright>
 
 namespace Hexalith.Application.StreamStores;
+
 /// <summary>
 /// Persisted stream interface.
 /// </summary>

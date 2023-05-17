@@ -23,13 +23,11 @@ using Dapr.Actors.Runtime;
 using FluentValidation;
 
 using Hexalith.Application.Aggregates;
+using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
 using Hexalith.Application.Notifications;
 using Hexalith.Application.Requests;
-using Hexalith.Application.States;
-using Hexalith.Application.Buses;
-using Hexalith.Application.Commands;
 using Hexalith.Application.States;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Configuration;

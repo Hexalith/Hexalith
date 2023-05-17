@@ -5,6 +5,7 @@
 // </copyright>
 
 namespace Hexalith.Application.Tasks;
+
 /// <summary>
 /// The task processor.
 /// </summary>

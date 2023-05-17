@@ -25,7 +25,7 @@ using Hexalith.Extensions.Common;
 /// <summary>
 /// Class Example.
 /// </summary>
-public static class Example
+public static class ExampleHelper
 {
     /// <summary>
     /// Creates this instance.

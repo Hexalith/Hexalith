@@ -23,7 +23,6 @@ using System.Threading.Tasks;
 using Dapr.Client;
 
 using Hexalith.Application.States;
-using Hexalith.Application.States;
 using Hexalith.Extensions.Common;
 
 using Microsoft.Extensions.DependencyInjection;
@@ -74,10 +73,7 @@ public class DaprClientStateStoreProvider : IStateStoreProvider
     protected string StateStoreName { get; }
 
     /// <inheritdoc/>
-    public async Task AddStateAsync<T>(string key, T value, CancellationToken cancellationToken)
-    {
-        await DaprClient.SaveStateAsync(StateStoreName, key, value, null, null, cancellationToken).ConfigureAwait(false);
-    }
+    public async Task AddStateAsync<T>(string key, T value, CancellationToken cancellationToken) => await DaprClient.SaveStateAsync(StateStoreName, key, value, null, null, cancellationToken).ConfigureAwait(false);
 
     /// <inheritdoc/>
     public async Task<T> GetOrAddStateAsync<T>(string key, T value, CancellationToken cancellationToken)
@@ -93,22 +89,13 @@ public class DaprClientStateStoreProvider : IStateStoreProvider
     }
 
     /// <inheritdoc/>
-    public async Task<T> GetStateAsync<T>(string key, CancellationToken cancellationToken)
-    {
-        return await DaprClient.GetStateAsync<T>(StateStoreName, key, null, null, cancellationToken).ConfigureAwait(false);
-    }
+    public async Task<T> GetStateAsync<T>(string key, CancellationToken cancellationToken) => await DaprClient.GetStateAsync<T>(StateStoreName, key, null, null, cancellationToken).ConfigureAwait(false);
 
     /// <inheritdoc/>
-    public Task SaveChangesAsync(CancellationToken cancellationToken)
-    {
-        return Task.CompletedTask;
-    }
+    public Task SaveChangesAsync(CancellationToken cancellationToken) => Task.CompletedTask;
 
     /// <inheritdoc/>
-    public async Task SetStateAsync<T>(string key, T value, CancellationToken cancellationToken)
-    {
-        await DaprClient.SaveStateAsync(StateStoreName, key, value, null, null, cancellationToken).ConfigureAwait(false);
-    }
+    public async Task SetStateAsync<T>(string key, T value, CancellationToken cancellationToken) => await DaprClient.SaveStateAsync(StateStoreName, key, value, null, null, cancellationToken).ConfigureAwait(false);
 
     /// <inheritdoc/>
     public async Task<ConditionalValue<T>> TryGetStateAsync<T>(string key, CancellationToken cancellationToken)

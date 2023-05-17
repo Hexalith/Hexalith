@@ -48,7 +48,7 @@ public class CommandPromptGenerator : ICommandPromptGenerator
             return Task.FromResult(prompt);
         }
 
-        TCommand command = Example.Create<TCommand>();
+        TCommand command = ExampleHelper.Create<TCommand>();
         return Task.FromResult($$"""
         You are {{assistantName}} an AI assistant. Your email is {{assistantEmail}}.
         You can help {{userName}} generate a command in the JSON format.

@@ -8342,34 +8342,34 @@ references:
   isSpec: "True"
   fullName: Hexalith.Extensions.Helpers.DateHelper.ToUniveralTime
   nameWithType: DateHelper.ToUniveralTime
-- uid: Hexalith.Extensions.Helpers.Example
-  name: Example
-  href: api/Hexalith.Extensions.Helpers.Example.html
-  commentId: T:Hexalith.Extensions.Helpers.Example
-  fullName: Hexalith.Extensions.Helpers.Example
-  nameWithType: Example
-- uid: Hexalith.Extensions.Helpers.Example.Create(System.Type)
+- uid: Hexalith.Extensions.Helpers.ExampleHelper
+  name: ExampleHelper
+  href: api/Hexalith.Extensions.Helpers.ExampleHelper.html
+  commentId: T:Hexalith.Extensions.Helpers.ExampleHelper
+  fullName: Hexalith.Extensions.Helpers.ExampleHelper
+  nameWithType: ExampleHelper
+- uid: Hexalith.Extensions.Helpers.ExampleHelper.Create(System.Type)
   name: Create(Type)
-  href: api/Hexalith.Extensions.Helpers.Example.html#Hexalith_Extensions_Helpers_Example_Create_System_Type_
-  commentId: M:Hexalith.Extensions.Helpers.Example.Create(System.Type)
-  fullName: Hexalith.Extensions.Helpers.Example.Create(System.Type)
-  nameWithType: Example.Create(Type)
-- uid: Hexalith.Extensions.Helpers.Example.Create*
+  href: api/Hexalith.Extensions.Helpers.ExampleHelper.html#Hexalith_Extensions_Helpers_ExampleHelper_Create_System_Type_
+  commentId: M:Hexalith.Extensions.Helpers.ExampleHelper.Create(System.Type)
+  fullName: Hexalith.Extensions.Helpers.ExampleHelper.Create(System.Type)
+  nameWithType: ExampleHelper.Create(Type)
+- uid: Hexalith.Extensions.Helpers.ExampleHelper.Create*
   name: Create
-  href: api/Hexalith.Extensions.Helpers.Example.html#Hexalith_Extensions_Helpers_Example_Create_
-  commentId: Overload:Hexalith.Extensions.Helpers.Example.Create
+  href: api/Hexalith.Extensions.Helpers.ExampleHelper.html#Hexalith_Extensions_Helpers_ExampleHelper_Create_
+  commentId: Overload:Hexalith.Extensions.Helpers.ExampleHelper.Create
   isSpec: "True"
-  fullName: Hexalith.Extensions.Helpers.Example.Create
-  nameWithType: Example.Create
-- uid: Hexalith.Extensions.Helpers.Example.Create``1
+  fullName: Hexalith.Extensions.Helpers.ExampleHelper.Create
+  nameWithType: ExampleHelper.Create
+- uid: Hexalith.Extensions.Helpers.ExampleHelper.Create``1
   name: Create<T>()
-  href: api/Hexalith.Extensions.Helpers.Example.html#Hexalith_Extensions_Helpers_Example_Create__1
-  commentId: M:Hexalith.Extensions.Helpers.Example.Create``1
+  href: api/Hexalith.Extensions.Helpers.ExampleHelper.html#Hexalith_Extensions_Helpers_ExampleHelper_Create__1
+  commentId: M:Hexalith.Extensions.Helpers.ExampleHelper.Create``1
   name.vb: Create(Of T)()
-  fullName: Hexalith.Extensions.Helpers.Example.Create<T>()
-  fullName.vb: Hexalith.Extensions.Helpers.Example.Create(Of T)()
-  nameWithType: Example.Create<T>()
-  nameWithType.vb: Example.Create(Of T)()
+  fullName: Hexalith.Extensions.Helpers.ExampleHelper.Create<T>()
+  fullName.vb: Hexalith.Extensions.Helpers.ExampleHelper.Create(Of T)()
+  nameWithType: ExampleHelper.Create<T>()
+  nameWithType.vb: ExampleHelper.Create(Of T)()
 - uid: Hexalith.Extensions.Helpers.ExceptionHelper
   name: ExceptionHelper
   href: api/Hexalith.Extensions.Helpers.ExceptionHelper.html

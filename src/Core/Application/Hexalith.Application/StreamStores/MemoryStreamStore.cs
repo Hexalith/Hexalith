@@ -5,6 +5,7 @@
 // </copyright>
 
 namespace Hexalith.Application.StreamStores;
+
 /// <summary>
 /// Stream store.
 /// </summary>

@@ -5,6 +5,7 @@
 // </copyright>
 
 namespace Hexalith.Application.Metadatas;
+
 /// <summary>
 /// Interface for all message metadatas.
 /// </summary>

@@ -5,6 +5,7 @@
 // </copyright>
 
 namespace Hexalith.Application.StreamStores;
+
 /// <summary>
 /// In memory persisted stream.
 /// </summary>
@@ -49,8 +50,5 @@ public class MemoryPersistedStream : IPersistedStream
     }
 
     /// <inheritdoc/>
-    public IEnumerable<IStreamItem> GetItems()
-    {
-        return GetItems(0, -1);
-    }
+    public IEnumerable<IStreamItem> GetItems() => GetItems(0, -1);
 }

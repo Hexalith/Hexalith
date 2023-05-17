@@ -18,14 +18,14 @@ public class ExampleTest
     [Fact]
     public void Base_proprety_with_attribute_should_have_value()
     {
-        BasePropertyExample example = Example.Create<BasePropertyExample>();
+        BasePropertyExample example = ExampleHelper.Create<BasePropertyExample>();
         _ = example.Value.Should().Be("Hello");
     }
 
     [Fact]
     public void Base_read_only_proprety_and_property_with_attribute_should_have_value()
     {
-        BaseReadOnlyPropertyExample example = Example.Create<BaseReadOnlyPropertyExample>();
+        BaseReadOnlyPropertyExample example = ExampleHelper.Create<BaseReadOnlyPropertyExample>();
         _ = example.ReadOnlyValue.Should().Be("Read");
         _ = example.Value.Should().Be("Hello");
     }
@@ -33,7 +33,7 @@ public class ExampleTest
     [Fact]
     public void Example_created_is_valid()
     {
-        TestExample example = Example.Create<TestExample>();
+        TestExample example = ExampleHelper.Create<TestExample>();
         _ = example.StringValue.Should().Be("Hello");
         _ = example.StringDefault.Should().Be("string");
         _ = example.IntValue.Should().Be(10);
@@ -42,35 +42,35 @@ public class ExampleTest
     [Fact]
     public void Example_creation_should_not_throw_exceptions()
     {
-        Action action = () => Example.Create<TestExample>();
+        Action action = () => ExampleHelper.Create<TestExample>();
         _ = action.Should().NotThrow();
     }
 
     [Fact]
     public void Integer_with_attribute_should_have_value()
     {
-        IntegerExample example = Example.Create<IntegerExample>();
+        IntegerExample example = ExampleHelper.Create<IntegerExample>();
         _ = example.Value.Should().Be(129);
     }
 
     [Fact]
     public void Integer_with_no_attribute_should_have_value()
     {
-        IntegerDefaultExample example = Example.Create<IntegerDefaultExample>();
+        IntegerDefaultExample example = ExampleHelper.Create<IntegerDefaultExample>();
         _ = example.Value.Should().Be(101);
     }
 
     [Fact]
     public void String_with_attribute_should_have_value()
     {
-        StringExample example = Example.Create<StringExample>();
+        StringExample example = ExampleHelper.Create<StringExample>();
         _ = example.Value.Should().Be("Hello");
     }
 
     [Fact]
     public void String_with_no_attribute_should_have_value()
     {
-        StringDefaultExample example = Example.Create<StringDefaultExample>();
+        StringDefaultExample example = ExampleHelper.Create<StringDefaultExample>();
         _ = example.Value.Should().Be("string");
     }
 

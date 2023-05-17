@@ -15,10 +15,4 @@
   <ItemGroup>
     <ProjectReference Include="..\Hexalith.Extensions\Hexalith.Extensions.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <None Update="README.md">
-      <PackagePath>\</PackagePath>
-      <Pack>true</Pack>
-    </None>
-  </ItemGroup>
 </Project>

@@ -20,10 +20,10 @@ using System;
 
 using Dapr.Client;
 
+using Hexalith.Application.Buses;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.Notifications;
 using Hexalith.Application.States;
-using Hexalith.Application.Buses;
 using Hexalith.Extensions.Common;
 
 using Microsoft.Extensions.Logging;

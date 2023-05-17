@@ -20,14 +20,13 @@ using System;
 
 using Dapr.Client;
 
+using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.States;
-using Hexalith.Application.Buses;
 using Hexalith.Extensions.Common;
 
 using Microsoft.Extensions.Logging;
-
 using Microsoft.Extensions.Options;
 
 /// <summary>
