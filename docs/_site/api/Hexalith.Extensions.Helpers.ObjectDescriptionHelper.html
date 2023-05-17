@@ -115,19 +115,69 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Extensions_Helpers_ObjectDescriptionHelper_DescribeType_System_Type_.md&amp;value=---%0Auid%3A%20Hexalith.Extensions.Helpers.ObjectDescriptionHelper.DescribeType(System.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Extensions_Helpers_ObjectDescriptionHelper_Describe_System_Reflection_PropertyInfo_.md&amp;value=---%0Auid%3A%20Hexalith.Extensions.Helpers.ObjectDescriptionHelper.Describe(System.Reflection.PropertyInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Common/Hexalith.Extensions/Helpers/ObjectDescriptionHelper.cs/#L36">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Common/Hexalith.Extensions/Helpers/ObjectDescriptionHelper.cs/#L91">View Source</a>
   </span>
-  <a id="Hexalith_Extensions_Helpers_ObjectDescriptionHelper_DescribeType_" data-uid="Hexalith.Extensions.Helpers.ObjectDescriptionHelper.DescribeType*"></a>
-  <h4 id="Hexalith_Extensions_Helpers_ObjectDescriptionHelper_DescribeType_System_Type_" data-uid="Hexalith.Extensions.Helpers.ObjectDescriptionHelper.DescribeType(System.Type)">DescribeType(Type)</h4>
+  <a id="Hexalith_Extensions_Helpers_ObjectDescriptionHelper_Describe_" data-uid="Hexalith.Extensions.Helpers.ObjectDescriptionHelper.Describe*"></a>
+  <h4 id="Hexalith_Extensions_Helpers_ObjectDescriptionHelper_Describe_System_Reflection_PropertyInfo_" data-uid="Hexalith.Extensions.Helpers.ObjectDescriptionHelper.Describe(System.Reflection.PropertyInfo)">Describe(PropertyInfo)</h4>
+  <div class="markdown level1 summary"><p>Describes the specified property.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static (string DisplayName, string Description, object DefaultValue, bool IsRequired) Describe(this PropertyInfo property)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Reflection.PropertyInfo</span></td>
+        <td><span class="parametername">property</span></td>
+        <td><p>The property.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>, <span class="xref">System.Object</span>, <span class="xref">System.Boolean</span>&gt;</td>
+        <td><p>System.ValueTuple&lt;System.String, System.String, System.Nullable&lt;System.Object&gt;, System.Boolean&gt;.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Extensions_Helpers_ObjectDescriptionHelper_Describe_System_Type_.md&amp;value=---%0Auid%3A%20Hexalith.Extensions.Helpers.ObjectDescriptionHelper.Describe(System.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Common/Hexalith.Extensions/Helpers/ObjectDescriptionHelper.cs/#L38">View Source</a>
+  </span>
+  <a id="Hexalith_Extensions_Helpers_ObjectDescriptionHelper_Describe_" data-uid="Hexalith.Extensions.Helpers.ObjectDescriptionHelper.Describe*"></a>
+  <h4 id="Hexalith_Extensions_Helpers_ObjectDescriptionHelper_Describe_System_Type_" data-uid="Hexalith.Extensions.Helpers.ObjectDescriptionHelper.Describe(System.Type)">Describe(Type)</h4>
   <div class="markdown level1 summary"><p>Describes the type using attributes.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static (string TypeName, string DisplayName, string Description) DescribeType(this Type type)</code></pre>
+    <pre><code class="lang-csharp hljs">public static (string TypeName, string DisplayName, string Description) Describe(this Type type)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -163,6 +213,106 @@
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Extensions_Helpers_ObjectDescriptionHelper_DescribeInstanceWriteProperties_System_Type_.md&amp;value=---%0Auid%3A%20Hexalith.Extensions.Helpers.ObjectDescriptionHelper.DescribeInstanceWriteProperties(System.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Common/Hexalith.Extensions/Helpers/ObjectDescriptionHelper.cs/#L136">View Source</a>
+  </span>
+  <a id="Hexalith_Extensions_Helpers_ObjectDescriptionHelper_DescribeInstanceWriteProperties_" data-uid="Hexalith.Extensions.Helpers.ObjectDescriptionHelper.DescribeInstanceWriteProperties*"></a>
+  <h4 id="Hexalith_Extensions_Helpers_ObjectDescriptionHelper_DescribeInstanceWriteProperties_System_Type_" data-uid="Hexalith.Extensions.Helpers.ObjectDescriptionHelper.DescribeInstanceWriteProperties(System.Type)">DescribeInstanceWriteProperties(Type)</h4>
+  <div class="markdown level1 summary"><p>Describes the instance write properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IDictionary&lt;string, (string DisplayName, string Description, object DefaultValue, bool IsRequired)&gt; DescribeInstanceWriteProperties(this Type type)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td><span class="parametername">type</span></td>
+        <td><p>The type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>, <span class="xref">System.Object</span>, <span class="xref">System.Boolean</span>&gt;&gt;</td>
+        <td><p>IDictionary&lt;System.String, System.ValueTuple&lt;System.String, System.String, System.Nullable&lt;System.Object&gt;, System.Boolean&gt;&gt;.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Extensions_Helpers_ObjectDescriptionHelper_DescribeProperties_System_Type_.md&amp;value=---%0Auid%3A%20Hexalith.Extensions.Helpers.ObjectDescriptionHelper.DescribeProperties(System.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Common/Hexalith.Extensions/Helpers/ObjectDescriptionHelper.cs/#L152">View Source</a>
+  </span>
+  <a id="Hexalith_Extensions_Helpers_ObjectDescriptionHelper_DescribeProperties_" data-uid="Hexalith.Extensions.Helpers.ObjectDescriptionHelper.DescribeProperties*"></a>
+  <h4 id="Hexalith_Extensions_Helpers_ObjectDescriptionHelper_DescribeProperties_System_Type_" data-uid="Hexalith.Extensions.Helpers.ObjectDescriptionHelper.DescribeProperties(System.Type)">DescribeProperties(Type)</h4>
+  <div class="markdown level1 summary"><p>Describes the type using attributes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IDictionary&lt;string, (string DisplayName, string Description, object DefaultValue, bool IsRequired)&gt; DescribeProperties(this Type type)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td><span class="parametername">type</span></td>
+        <td><p>The type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>, <span class="xref">System.Object</span>, <span class="xref">System.Boolean</span>&gt;&gt;</td>
+        <td><p>System.ValueTuple&lt;System.String, System.String, System.String&gt;.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           
@@ -174,7 +324,7 @@
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Extensions_Helpers_ObjectDescriptionHelper.md&amp;value=---%0Auid%3A%20Hexalith.Extensions.Helpers.ObjectDescriptionHelper%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Common/Hexalith.Extensions/Helpers/ObjectDescriptionHelper.cs/#L29" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Common/Hexalith.Extensions/Helpers/ObjectDescriptionHelper.cs/#L31" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

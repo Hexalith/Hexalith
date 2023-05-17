@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 using FluentAssertions;
 
 using Hexalith.Application.Commands;
-using Hexalith.Application.Metadatas;
-using Hexalith.Application.Tasks;
 using Hexalith.Application.Events;
+using Hexalith.Application.Metadatas;
 using Hexalith.Application.Notifications;
 using Hexalith.Application.States;
+using Hexalith.Application.Tasks;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Extensions.Common;

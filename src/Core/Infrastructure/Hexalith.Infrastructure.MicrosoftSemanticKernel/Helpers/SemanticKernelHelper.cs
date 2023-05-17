@@ -4,7 +4,7 @@
 // Created          : 05-08-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 05-08-2023
+// Last Modified On : 05-17-2023
 // ***********************************************************************
 // <copyright file="SemanticKernelHelper.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -37,7 +37,7 @@ public static class SemanticKernelHelper
     /// <param name="config">The configuration.</param>
     /// <param name="settings">The settings.</param>
     /// <returns>KernelConfig.</returns>
-    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
     public static KernelConfig AddCompletionService([NotNull] this KernelConfig config, [NotNull] ArtificialIntelligenceServiceSettings settings)
     {
         ArgumentNullException.ThrowIfNull(config);
@@ -57,12 +57,10 @@ public static class SemanticKernelHelper
             CompletionServiceType.AzureOpenAI =>
                     config.AddAzureChatCompletionService(
                     settings.ChatModelService.Name,
-                    settings.ChatModelService.Model,
                     SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.ChatModelService.Endpoint)!,
                     settings.ChatModelService.ApplicationKey),
             CompletionServiceType.OpenAI =>
                 _ = config.AddOpenAIChatCompletionService(
-                    settings.ChatModelService.Name,
                     settings.ChatModelService.Model,
                     settings.ChatModelService.ApplicationKey,
                     settings.ChatModelService.OrganizationId),
@@ -84,6 +82,20 @@ public static class SemanticKernelHelper
                     settings.TextModelService.OrganizationId),
             _ => throw new InvalidOperationException($"Unknown completion service type {settings.TextModelService.Type}"),
         };
+    }
+
+    /// <summary>
+    /// Adds the hexalith.
+    /// </summary>
+    /// <param name="config">The configuration.</param>
+    /// <returns>IKernel.</returns>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
+    public static IKernel AddHexalith([NotNull] this KernelConfig config)
+    {
+        ArgumentNullException.ThrowIfNull(config);
+
+        // _ = kernel.ImportSkill(cloudDriveSkill, nameof(Microsoft.SemanticKernel.CoreSkills.CloudDriveSkill));
+        return config.AddHexalith();
     }
 
     /// <summary>

@@ -8414,19 +8414,51 @@ references:
   commentId: T:Hexalith.Extensions.Helpers.ObjectDescriptionHelper
   fullName: Hexalith.Extensions.Helpers.ObjectDescriptionHelper
   nameWithType: ObjectDescriptionHelper
-- uid: Hexalith.Extensions.Helpers.ObjectDescriptionHelper.DescribeType(System.Type)
-  name: DescribeType(Type)
-  href: api/Hexalith.Extensions.Helpers.ObjectDescriptionHelper.html#Hexalith_Extensions_Helpers_ObjectDescriptionHelper_DescribeType_System_Type_
-  commentId: M:Hexalith.Extensions.Helpers.ObjectDescriptionHelper.DescribeType(System.Type)
-  fullName: Hexalith.Extensions.Helpers.ObjectDescriptionHelper.DescribeType(System.Type)
-  nameWithType: ObjectDescriptionHelper.DescribeType(Type)
-- uid: Hexalith.Extensions.Helpers.ObjectDescriptionHelper.DescribeType*
-  name: DescribeType
-  href: api/Hexalith.Extensions.Helpers.ObjectDescriptionHelper.html#Hexalith_Extensions_Helpers_ObjectDescriptionHelper_DescribeType_
-  commentId: Overload:Hexalith.Extensions.Helpers.ObjectDescriptionHelper.DescribeType
+- uid: Hexalith.Extensions.Helpers.ObjectDescriptionHelper.Describe(System.Reflection.PropertyInfo)
+  name: Describe(PropertyInfo)
+  href: api/Hexalith.Extensions.Helpers.ObjectDescriptionHelper.html#Hexalith_Extensions_Helpers_ObjectDescriptionHelper_Describe_System_Reflection_PropertyInfo_
+  commentId: M:Hexalith.Extensions.Helpers.ObjectDescriptionHelper.Describe(System.Reflection.PropertyInfo)
+  fullName: Hexalith.Extensions.Helpers.ObjectDescriptionHelper.Describe(System.Reflection.PropertyInfo)
+  nameWithType: ObjectDescriptionHelper.Describe(PropertyInfo)
+- uid: Hexalith.Extensions.Helpers.ObjectDescriptionHelper.Describe(System.Type)
+  name: Describe(Type)
+  href: api/Hexalith.Extensions.Helpers.ObjectDescriptionHelper.html#Hexalith_Extensions_Helpers_ObjectDescriptionHelper_Describe_System_Type_
+  commentId: M:Hexalith.Extensions.Helpers.ObjectDescriptionHelper.Describe(System.Type)
+  fullName: Hexalith.Extensions.Helpers.ObjectDescriptionHelper.Describe(System.Type)
+  nameWithType: ObjectDescriptionHelper.Describe(Type)
+- uid: Hexalith.Extensions.Helpers.ObjectDescriptionHelper.Describe*
+  name: Describe
+  href: api/Hexalith.Extensions.Helpers.ObjectDescriptionHelper.html#Hexalith_Extensions_Helpers_ObjectDescriptionHelper_Describe_
+  commentId: Overload:Hexalith.Extensions.Helpers.ObjectDescriptionHelper.Describe
   isSpec: "True"
-  fullName: Hexalith.Extensions.Helpers.ObjectDescriptionHelper.DescribeType
-  nameWithType: ObjectDescriptionHelper.DescribeType
+  fullName: Hexalith.Extensions.Helpers.ObjectDescriptionHelper.Describe
+  nameWithType: ObjectDescriptionHelper.Describe
+- uid: Hexalith.Extensions.Helpers.ObjectDescriptionHelper.DescribeInstanceWriteProperties(System.Type)
+  name: DescribeInstanceWriteProperties(Type)
+  href: api/Hexalith.Extensions.Helpers.ObjectDescriptionHelper.html#Hexalith_Extensions_Helpers_ObjectDescriptionHelper_DescribeInstanceWriteProperties_System_Type_
+  commentId: M:Hexalith.Extensions.Helpers.ObjectDescriptionHelper.DescribeInstanceWriteProperties(System.Type)
+  fullName: Hexalith.Extensions.Helpers.ObjectDescriptionHelper.DescribeInstanceWriteProperties(System.Type)
+  nameWithType: ObjectDescriptionHelper.DescribeInstanceWriteProperties(Type)
+- uid: Hexalith.Extensions.Helpers.ObjectDescriptionHelper.DescribeInstanceWriteProperties*
+  name: DescribeInstanceWriteProperties
+  href: api/Hexalith.Extensions.Helpers.ObjectDescriptionHelper.html#Hexalith_Extensions_Helpers_ObjectDescriptionHelper_DescribeInstanceWriteProperties_
+  commentId: Overload:Hexalith.Extensions.Helpers.ObjectDescriptionHelper.DescribeInstanceWriteProperties
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Helpers.ObjectDescriptionHelper.DescribeInstanceWriteProperties
+  nameWithType: ObjectDescriptionHelper.DescribeInstanceWriteProperties
+- uid: Hexalith.Extensions.Helpers.ObjectDescriptionHelper.DescribeProperties(System.Type)
+  name: DescribeProperties(Type)
+  href: api/Hexalith.Extensions.Helpers.ObjectDescriptionHelper.html#Hexalith_Extensions_Helpers_ObjectDescriptionHelper_DescribeProperties_System_Type_
+  commentId: M:Hexalith.Extensions.Helpers.ObjectDescriptionHelper.DescribeProperties(System.Type)
+  fullName: Hexalith.Extensions.Helpers.ObjectDescriptionHelper.DescribeProperties(System.Type)
+  nameWithType: ObjectDescriptionHelper.DescribeProperties(Type)
+- uid: Hexalith.Extensions.Helpers.ObjectDescriptionHelper.DescribeProperties*
+  name: DescribeProperties
+  href: api/Hexalith.Extensions.Helpers.ObjectDescriptionHelper.html#Hexalith_Extensions_Helpers_ObjectDescriptionHelper_DescribeProperties_
+  commentId: Overload:Hexalith.Extensions.Helpers.ObjectDescriptionHelper.DescribeProperties
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Helpers.ObjectDescriptionHelper.DescribeProperties
+  nameWithType: ObjectDescriptionHelper.DescribeProperties
 - uid: Hexalith.Extensions.Helpers.StringHelper
   name: StringHelper
   href: api/Hexalith.Extensions.Helpers.StringHelper.html
@@ -14520,6 +14552,38 @@ references:
   commentId: N:Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers
   fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers
   nameWithType: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers
+- uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper
+  name: CommandSkillHelper
+  href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.html
+  commentId: T:Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper
+  fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper
+  nameWithType: CommandSkillHelper
+- uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.ImportApplicationCommandsAsSkills(Microsoft.SemanticKernel.IKernel)
+  name: ImportApplicationCommandsAsSkills(IKernel)
+  href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.html#Hexalith_Infrastructure_MicrosoftSemanticKernel_Helpers_CommandSkillHelper_ImportApplicationCommandsAsSkills_Microsoft_SemanticKernel_IKernel_
+  commentId: M:Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.ImportApplicationCommandsAsSkills(Microsoft.SemanticKernel.IKernel)
+  fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.ImportApplicationCommandsAsSkills(Microsoft.SemanticKernel.IKernel)
+  nameWithType: CommandSkillHelper.ImportApplicationCommandsAsSkills(IKernel)
+- uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.ImportApplicationCommandsAsSkills*
+  name: ImportApplicationCommandsAsSkills
+  href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.html#Hexalith_Infrastructure_MicrosoftSemanticKernel_Helpers_CommandSkillHelper_ImportApplicationCommandsAsSkills_
+  commentId: Overload:Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.ImportApplicationCommandsAsSkills
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.ImportApplicationCommandsAsSkills
+  nameWithType: CommandSkillHelper.ImportApplicationCommandsAsSkills
+- uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.ImportCommandSkill(Microsoft.SemanticKernel.IKernel,Hexalith.Application.Commands.BaseCommand)
+  name: ImportCommandSkill(IKernel, BaseCommand)
+  href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.html#Hexalith_Infrastructure_MicrosoftSemanticKernel_Helpers_CommandSkillHelper_ImportCommandSkill_Microsoft_SemanticKernel_IKernel_Hexalith_Application_Commands_BaseCommand_
+  commentId: M:Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.ImportCommandSkill(Microsoft.SemanticKernel.IKernel,Hexalith.Application.Commands.BaseCommand)
+  fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.ImportCommandSkill(Microsoft.SemanticKernel.IKernel, Hexalith.Application.Commands.BaseCommand)
+  nameWithType: CommandSkillHelper.ImportCommandSkill(IKernel, BaseCommand)
+- uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.ImportCommandSkill*
+  name: ImportCommandSkill
+  href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.html#Hexalith_Infrastructure_MicrosoftSemanticKernel_Helpers_CommandSkillHelper_ImportCommandSkill_
+  commentId: Overload:Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.ImportCommandSkill
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.ImportCommandSkill
+  nameWithType: CommandSkillHelper.ImportCommandSkill
 - uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.SemanticKernelHelper
   name: SemanticKernelHelper
   href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.SemanticKernelHelper.html
@@ -14539,6 +14603,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.SemanticKernelHelper.AddCompletionService
   nameWithType: SemanticKernelHelper.AddCompletionService
+- uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.SemanticKernelHelper.AddHexalith(Microsoft.SemanticKernel.KernelConfig)
+  name: AddHexalith(KernelConfig)
+  href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.SemanticKernelHelper.html#Hexalith_Infrastructure_MicrosoftSemanticKernel_Helpers_SemanticKernelHelper_AddHexalith_Microsoft_SemanticKernel_KernelConfig_
+  commentId: M:Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.SemanticKernelHelper.AddHexalith(Microsoft.SemanticKernel.KernelConfig)
+  fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.SemanticKernelHelper.AddHexalith(Microsoft.SemanticKernel.KernelConfig)
+  nameWithType: SemanticKernelHelper.AddHexalith(KernelConfig)
+- uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.SemanticKernelHelper.AddHexalith*
+  name: AddHexalith
+  href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.SemanticKernelHelper.html#Hexalith_Infrastructure_MicrosoftSemanticKernel_Helpers_SemanticKernelHelper_AddHexalith_
+  commentId: Overload:Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.SemanticKernelHelper.AddHexalith
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.SemanticKernelHelper.AddHexalith
+  nameWithType: SemanticKernelHelper.AddHexalith
 - uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.SemanticKernelHelper.AddSemanticKernel(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
   name: AddSemanticKernel(IServiceCollection, IConfiguration)
   href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.SemanticKernelHelper.html#Hexalith_Infrastructure_MicrosoftSemanticKernel_Helpers_SemanticKernelHelper_AddSemanticKernel_Microsoft_Extensions_DependencyInjection_IServiceCollection_Microsoft_Extensions_Configuration_IConfiguration_
