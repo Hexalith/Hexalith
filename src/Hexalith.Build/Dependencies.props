@@ -1,34 +1,35 @@
 <Project>
 	<PropertyGroup>
 		<!-- Detect if the solution is opened in VS to add local repository for packages -->
-		<MinverVersion>4.3.0</MinverVersion>
-		<AzureIdentityVersion>1.8.2</AzureIdentityVersion>
-		<AzureResourceManagerVersion>1.5.0</AzureResourceManagerVersion>
+		<AdaptiveCardsVersion>3.0.0</AdaptiveCardsVersion>
+		<AdaptiveCardsTemplatingVersion>1.4.0</AdaptiveCardsTemplatingVersion>
+		<AzureIdentityVersion>1.9.0</AzureIdentityVersion>
+		<AzureResourceManagerVersion>1.6.0</AzureResourceManagerVersion>
 		<AzureResourceManagerContainerRegistryVersion>1.1.0</AzureResourceManagerContainerRegistryVersion>
-		<SwashbuckleAspNetCoreVersion>6.5.*</SwashbuckleAspNetCoreVersion>
-		<ManDaprSidekickVersion>1.2.*</ManDaprSidekickVersion>
-		<FluentAssertionsVersion>6.11.*</FluentAssertionsVersion>
-		<FluentValidationVersion>11.5.2</FluentValidationVersion>
-		<StyleCopAnalyzersVersion>1.2.0-beta.435</StyleCopAnalyzersVersion>
-		<MoqVersion>4.18.4</MoqVersion>
-		<GitHubActionsTestLoggerVersion>2.0.2</GitHubActionsTestLoggerVersion>
-		<XUnitVersion>2.4.2</XUnitVersion>
-		<XUnitRunnerVisualStudioVersion>2.4.5</XUnitRunnerVisualStudioVersion>
-		<CoverletCollectorVersion>3.2.0</CoverletCollectorVersion>
-		<MicrosoftIdentityClientVersion>4.53.0</MicrosoftIdentityClientVersion>
-		<MicrosoftNETTestSdkVersion>17.5.*</MicrosoftNETTestSdkVersion>
-		<MicrosoftVisualStudioThreadingAnalyzersVersion>17.5.22</MicrosoftVisualStudioThreadingAnalyzersVersion>
 		<AzureResourceManagerCognitiveServicesVersion>1.2.1</AzureResourceManagerCognitiveServicesVersion>
 		<AzureResourceManagerKeyVaultVersion>1.1.0</AzureResourceManagerKeyVaultVersion>
 		<AzureResourceManagerLogicVersion>1.0.1</AzureResourceManagerLogicVersion>
 		<AzureSecurityKeyVaultSecretsVersion>4.5.0</AzureSecurityKeyVaultSecretsVersion>
+		<CoverletCollectorVersion>3.2.0</CoverletCollectorVersion>
 		<DocFxConsoleVersion>2.59.4</DocFxConsoleVersion>
-		<MicrosoftSemanticKernelVersion>0.14.547.1-preview</MicrosoftSemanticKernelVersion>
-		<MicrosoftBotBuilderVersion>4.19.*</MicrosoftBotBuilderVersion>
-		<AdaptiveCardsVersion>3.0.0</AdaptiveCardsVersion>
-		<AdaptiveCardsTemplatingVersion>1.4.0</AdaptiveCardsTemplatingVersion>
-		<MicrosoftTeamsFxVersion>2.0.*</MicrosoftTeamsFxVersion>
+		<FluentAssertionsVersion>6.11.*</FluentAssertionsVersion>
+		<FluentValidationVersion>11.5.2</FluentValidationVersion>
+		<GitHubActionsTestLoggerVersion>2.2.1</GitHubActionsTestLoggerVersion>
 		<HumanizerVersion>2.14.1</HumanizerVersion>
+		<ManDaprSidekickVersion>1.2.*</ManDaprSidekickVersion>
+		<MicrosoftBotBuilderVersion>4.19.*</MicrosoftBotBuilderVersion>
+		<MicrosoftIdentityClientVersion>4.54.0</MicrosoftIdentityClientVersion>
+		<MicrosoftNETTestSdkVersion>17.6.*</MicrosoftNETTestSdkVersion>
+		<MicrosoftSemanticKernelVersion>0.14.547.1-preview</MicrosoftSemanticKernelVersion>
+		<MicrosoftTeamsFxVersion>2.0.*</MicrosoftTeamsFxVersion>
+		<MicrosoftVisualStudioThreadingAnalyzersVersion>17.6.40</MicrosoftVisualStudioThreadingAnalyzersVersion>
+		<MinverVersion>4.3.0</MinverVersion>
+		<MoqVersion>4.18.4</MoqVersion>
+		<SerilogVersion>7.0.0</SerilogVersion>
+		<StyleCopAnalyzersVersion>1.2.0-beta.435</StyleCopAnalyzersVersion>
+		<SwashbuckleAspNetCoreVersion>6.5.*</SwashbuckleAspNetCoreVersion>
+		<XUnitRunnerVisualStudioVersion>2.4.5</XUnitRunnerVisualStudioVersion>
+		<XUnitVersion>2.4.2</XUnitVersion>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' == 'true' or '$(BuildingByReSharper)' == 'true'">
 		<!--<DaprVersion>1.0.0-local</DaprVersion>-->
