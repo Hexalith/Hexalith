@@ -28,7 +28,7 @@ public static class Dynamics365BusinessEventHelper
         string[] dateParts = d365Time.Split(new[] { '(', ')' });
         return dateParts.Length != 3 || !string.Equals(dateParts[0], "/Date", StringComparison.Ordinal) || !string.Equals(dateParts[2], "/", StringComparison.Ordinal) || !long.TryParse(dateParts[1], out long milliseconds)
             ? null
-            : global::System.DateTime.UnixEpoch.AddMilliseconds(milliseconds);
+            : DateTime.UnixEpoch.AddMilliseconds(milliseconds);
     }
 
     /// <summary>

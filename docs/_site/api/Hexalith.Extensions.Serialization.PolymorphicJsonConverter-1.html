@@ -124,7 +124,7 @@ Implements the <span class="xref">System.Text.Json.Serialization.JsonConverter&l
   <h6><strong>Assembly</strong>: Hexalith.Extensions.dll</h6>
   <h5 id="Hexalith_Extensions_Serialization_PolymorphicJsonConverter_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class PolymorphicJsonConverter&lt;T&gt; : JsonConverter&lt;T&gt; where T : class, IPolymorphicSerializable</code></pre>
+    <pre><code class="lang-csharp hljs">public class PolymorphicJsonConverter&lt;T&gt; : JsonConverter&lt;T&gt; where T : class, IPolymorphicSerializable, new()</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">

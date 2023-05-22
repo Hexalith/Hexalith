@@ -31,6 +31,6 @@ using Hexalith.Extensions.Serialization;
 /// <seealso cref="ICommand" />
 [DataContract]
 [JsonConverter(typeof(PolymorphicJsonConverter<BaseCommand>))]
-public abstract class BaseCommand : BaseMessage, ICommand
+public class BaseCommand : BaseMessage, ICommand
 {
 }

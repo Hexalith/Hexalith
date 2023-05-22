@@ -3,10 +3,6 @@
 		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
 	</PropertyGroup>
 	<ItemGroup>
-	  <Content Remove="C:\Users\jpiquot\.nuget\packages\microsoft.semantickernel.connectors.ai.openai\0.12.207.1-preview\contentFiles\any\netstandard2.0\Tokenizers\Settings\encoder.json" />
-	  <Content Remove="C:\Users\jpiquot\.nuget\packages\microsoft.semantickernel.connectors.ai.openai\0.12.207.1-preview\contentFiles\any\netstandard2.0\Tokenizers\Settings\vocab.bpe" />
-	</ItemGroup>
-	<ItemGroup>
 		<PackageReference Include="Microsoft.Identity.Client" Version="$(MicrosoftIdentityClientVersion)" />
 		<PackageReference Include="AdaptiveCards" Version="$(AdaptiveCardsVersion)" />
 		<PackageReference Include="AdaptiveCards.Templating" Version="$(AdaptiveCardsTemplatingVersion)" />

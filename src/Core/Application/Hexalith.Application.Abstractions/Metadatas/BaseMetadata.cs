@@ -31,7 +31,7 @@ using Hexalith.Extensions.Serialization;
 /// <seealso cref="IMetadata" />
 [DataContract]
 [JsonConverter(typeof(PolymorphicJsonConverter<BaseMetadata>))]
-public abstract class BaseMetadata : IMetadata, IPolymorphicSerializable
+public class BaseMetadata : IMetadata, IPolymorphicSerializable
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="BaseMetadata"/> class.
@@ -93,9 +93,6 @@ public abstract class BaseMetadata : IMetadata, IPolymorphicSerializable
     public ContextMetadata Context { get; private set; }
 
     /// <inheritdoc/>
-    IContextMetadata IMetadata.Context => Context;
-
-    /// <inheritdoc/>
     [IgnoreDataMember]
     [JsonIgnore]
     public int MajorVersion => DefaultMajorVersion();
@@ -105,9 +102,6 @@ public abstract class BaseMetadata : IMetadata, IPolymorphicSerializable
     /// </summary>
     /// <value>The message.</value>
     public MessageMetadata Message { get; private set; }
-
-    /// <inheritdoc/>
-    IMessageMetadata IMetadata.Message => Message;
 
     /// <inheritdoc/>
     [IgnoreDataMember]
@@ -122,30 +116,27 @@ public abstract class BaseMetadata : IMetadata, IPolymorphicSerializable
     [JsonIgnore]
     public string TypeName => DefaultTypeName();
 
+    /// <inheritdoc/>
+    IContextMetadata IMetadata.Context => Context;
+
+    /// <inheritdoc/>
+    IMessageMetadata IMetadata.Message => Message;
+
     /// <summary>
     /// Get the message major version.
     /// </summary>
     /// <returns>The major version.</returns>
-    protected virtual int DefaultMajorVersion()
-    {
-        return 0;
-    }
+    protected virtual int DefaultMajorVersion() => 0;
 
     /// <summary>
     /// Gets the message minor version.
     /// </summary>
     /// <returns>The minor version.</returns>
-    protected virtual int DefaultMinorVersion()
-    {
-        return 0;
-    }
+    protected virtual int DefaultMinorVersion() => 0;
 
     /// <summary>
     /// Get the message name.
     /// </summary>
     /// <returns>The name.</returns>
-    protected virtual string DefaultTypeName()
-    {
-        return GetType().Name;
-    }
+    protected virtual string DefaultTypeName() => GetType().Name;
 }

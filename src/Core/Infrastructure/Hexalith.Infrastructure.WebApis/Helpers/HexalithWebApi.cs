@@ -29,6 +29,7 @@ using Hexalith.Application.Events;
 using Hexalith.Application.Notifications;
 using Hexalith.Application.Requests;
 using Hexalith.Application.States;
+using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.DaprRuntime.Buses;
@@ -78,7 +79,11 @@ public static class HexalithWebApi
 
             // Register actor types and configure actor settings
             registerActors(options.Actors));
-        _ = builder.Services.AddControllers().AddDapr();
+        _ = builder
+            .Services
+            .AddControllers()
+            .AddApplicationPart(typeof(BaseMessage).Assembly) // Issue with MapControllers() throwing a type not found exception for BaseCommand
+            .AddDapr();
 
         if (debugInVisualStudio == true)
         {

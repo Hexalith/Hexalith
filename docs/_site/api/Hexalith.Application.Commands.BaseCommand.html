@@ -154,7 +154,7 @@ Implements the <a class="xref" href="Hexalith.Application.Commands.ICommand.html
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataContract]
 [JsonConverter(typeof(PolymorphicJsonConverter&lt;BaseCommand&gt;))]
-public abstract class BaseCommand : BaseMessage, IPolymorphicSerializable, IMappableType, ICommand, IMessage</code></pre>
+public class BaseCommand : BaseMessage, IPolymorphicSerializable, IMappableType, ICommand, IMessage</code></pre>
   </div>
   <h3 id="implements">Implements</h3>
   <div>

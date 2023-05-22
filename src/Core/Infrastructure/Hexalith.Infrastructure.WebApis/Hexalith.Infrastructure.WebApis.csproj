@@ -7,8 +7,9 @@
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\Hexalith.Infrastructure.DaprRuntime\Hexalith.Infrastructure.DaprRuntime.csproj" />
-	  <ProjectReference Include="..\Hexalith.Infrastructure.Security.Abstractions\Hexalith.Infrastructure.Security.Abstractions.csproj" />
+		<ProjectReference Include="..\..\Application\Hexalith.Application.Abstractions\Hexalith.Application.Abstractions.csproj" />
+		<ProjectReference Include="..\Hexalith.Infrastructure.DaprRuntime\Hexalith.Infrastructure.DaprRuntime.csproj" />
+		<ProjectReference Include="..\Hexalith.Infrastructure.Security.Abstractions\Hexalith.Infrastructure.Security.Abstractions.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="$(FluentValidationVersion)" />

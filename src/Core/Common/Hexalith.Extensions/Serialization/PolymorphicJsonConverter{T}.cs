@@ -30,7 +30,7 @@ using Hexalith.Extensions.Reflections;
 /// <typeparam name="T">Message type.</typeparam>
 /// <seealso cref="JsonConverter{T}" />
 public class PolymorphicJsonConverter<T> : JsonConverter<T>
-    where T : class, IPolymorphicSerializable
+    where T : class, IPolymorphicSerializable, new()
 {
     /// <summary>
     /// The major version property name.

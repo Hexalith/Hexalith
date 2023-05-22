@@ -119,7 +119,7 @@ Implements the <a class="xref" href="Hexalith.Application.Metadatas.IMetadata.ht
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataContract]
 [JsonConverter(typeof(PolymorphicJsonConverter&lt;BaseMetadata&gt;))]
-public abstract class BaseMetadata : IMetadata, IPolymorphicSerializable, IMappableType</code></pre>
+public class BaseMetadata : IMetadata, IPolymorphicSerializable, IMappableType</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -283,7 +283,7 @@ public BaseMetadata(MessageMetadata message, ContextMetadata context, IEnumerabl
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Metadatas_BaseMetadata_MajorVersion.md&amp;value=---%0Auid%3A%20Hexalith.Application.Metadatas.BaseMetadata.MajorVersion%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Metadatas/BaseMetadata.cs/#L99">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Metadatas/BaseMetadata.cs/#L96">View Source</a>
   </span>
   <a id="Hexalith_Application_Metadatas_BaseMetadata_MajorVersion_" data-uid="Hexalith.Application.Metadatas.BaseMetadata.MajorVersion*"></a>
   <h4 id="Hexalith_Application_Metadatas_BaseMetadata_MajorVersion" data-uid="Hexalith.Application.Metadatas.BaseMetadata.MajorVersion">MajorVersion</h4>
@@ -317,7 +317,7 @@ public int MajorVersion { get; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Metadatas_BaseMetadata_Message.md&amp;value=---%0Auid%3A%20Hexalith.Application.Metadatas.BaseMetadata.Message%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Metadatas/BaseMetadata.cs/#L107">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Metadatas/BaseMetadata.cs/#L104">View Source</a>
   </span>
   <a id="Hexalith_Application_Metadatas_BaseMetadata_Message_" data-uid="Hexalith.Application.Metadatas.BaseMetadata.Message*"></a>
   <h4 id="Hexalith_Application_Metadatas_BaseMetadata_Message" data-uid="Hexalith.Application.Metadatas.BaseMetadata.Message">Message</h4>
@@ -349,7 +349,7 @@ public int MajorVersion { get; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Metadatas_BaseMetadata_MinorVersion.md&amp;value=---%0Auid%3A%20Hexalith.Application.Metadatas.BaseMetadata.MinorVersion%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Metadatas/BaseMetadata.cs/#L113">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Metadatas/BaseMetadata.cs/#L107">View Source</a>
   </span>
   <a id="Hexalith_Application_Metadatas_BaseMetadata_MinorVersion_" data-uid="Hexalith.Application.Metadatas.BaseMetadata.MinorVersion*"></a>
   <h4 id="Hexalith_Application_Metadatas_BaseMetadata_MinorVersion" data-uid="Hexalith.Application.Metadatas.BaseMetadata.MinorVersion">MinorVersion</h4>
@@ -383,7 +383,7 @@ public int MinorVersion { get; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Metadatas_BaseMetadata_Scopes.md&amp;value=---%0Auid%3A%20Hexalith.Application.Metadatas.BaseMetadata.Scopes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Metadatas/BaseMetadata.cs/#L118">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Metadatas/BaseMetadata.cs/#L112">View Source</a>
   </span>
   <a id="Hexalith_Application_Metadatas_BaseMetadata_Scopes_" data-uid="Hexalith.Application.Metadatas.BaseMetadata.Scopes*"></a>
   <h4 id="Hexalith_Application_Metadatas_BaseMetadata_Scopes" data-uid="Hexalith.Application.Metadatas.BaseMetadata.Scopes">Scopes</h4>
@@ -414,7 +414,7 @@ public int MinorVersion { get; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Metadatas_BaseMetadata_TypeName.md&amp;value=---%0Auid%3A%20Hexalith.Application.Metadatas.BaseMetadata.TypeName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Metadatas/BaseMetadata.cs/#L121">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Metadatas/BaseMetadata.cs/#L115">View Source</a>
   </span>
   <a id="Hexalith_Application_Metadatas_BaseMetadata_TypeName_" data-uid="Hexalith.Application.Metadatas.BaseMetadata.TypeName*"></a>
   <h4 id="Hexalith_Application_Metadatas_BaseMetadata_TypeName" data-uid="Hexalith.Application.Metadatas.BaseMetadata.TypeName">TypeName</h4>
@@ -482,7 +482,7 @@ public string TypeName { get; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Metadatas_BaseMetadata_DefaultMinorVersion.md&amp;value=---%0Auid%3A%20Hexalith.Application.Metadatas.BaseMetadata.DefaultMinorVersion%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Metadatas/BaseMetadata.cs/#L138">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Metadatas/BaseMetadata.cs/#L135">View Source</a>
   </span>
   <a id="Hexalith_Application_Metadatas_BaseMetadata_DefaultMinorVersion_" data-uid="Hexalith.Application.Metadatas.BaseMetadata.DefaultMinorVersion*"></a>
   <h4 id="Hexalith_Application_Metadatas_BaseMetadata_DefaultMinorVersion" data-uid="Hexalith.Application.Metadatas.BaseMetadata.DefaultMinorVersion">DefaultMinorVersion()</h4>
@@ -514,7 +514,7 @@ public string TypeName { get; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Metadatas_BaseMetadata_DefaultTypeName.md&amp;value=---%0Auid%3A%20Hexalith.Application.Metadatas.BaseMetadata.DefaultTypeName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Metadatas/BaseMetadata.cs/#L147">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Metadatas/BaseMetadata.cs/#L141">View Source</a>
   </span>
   <a id="Hexalith_Application_Metadatas_BaseMetadata_DefaultTypeName_" data-uid="Hexalith.Application.Metadatas.BaseMetadata.DefaultTypeName*"></a>
   <h4 id="Hexalith_Application_Metadatas_BaseMetadata_DefaultTypeName" data-uid="Hexalith.Application.Metadatas.BaseMetadata.DefaultTypeName">DefaultTypeName()</h4>
@@ -548,7 +548,7 @@ public string TypeName { get; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Metadatas_BaseMetadata_Hexalith_Application_Metadatas_IMetadata_Context.md&amp;value=---%0Auid%3A%20Hexalith.Application.Metadatas.BaseMetadata.Hexalith%23Application%23Metadatas%23IMetadata%23Context%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Metadatas/BaseMetadata.cs/#L96">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Metadatas/BaseMetadata.cs/#L120">View Source</a>
   </span>
   <a id="Hexalith_Application_Metadatas_BaseMetadata_Hexalith_Application_Metadatas_IMetadata_Context_" data-uid="Hexalith.Application.Metadatas.BaseMetadata.Hexalith#Application#Metadatas#IMetadata#Context*"></a>
   <h4 id="Hexalith_Application_Metadatas_BaseMetadata_Hexalith_Application_Metadatas_IMetadata_Context" data-uid="Hexalith.Application.Metadatas.BaseMetadata.Hexalith#Application#Metadatas#IMetadata#Context">IMetadata.Context</h4>
@@ -579,7 +579,7 @@ public string TypeName { get; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Metadatas_BaseMetadata_Hexalith_Application_Metadatas_IMetadata_Message.md&amp;value=---%0Auid%3A%20Hexalith.Application.Metadatas.BaseMetadata.Hexalith%23Application%23Metadatas%23IMetadata%23Message%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Metadatas/BaseMetadata.cs/#L110">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Metadatas/BaseMetadata.cs/#L123">View Source</a>
   </span>
   <a id="Hexalith_Application_Metadatas_BaseMetadata_Hexalith_Application_Metadatas_IMetadata_Message_" data-uid="Hexalith.Application.Metadatas.BaseMetadata.Hexalith#Application#Metadatas#IMetadata#Message*"></a>
   <h4 id="Hexalith_Application_Metadatas_BaseMetadata_Hexalith_Application_Metadatas_IMetadata_Message" data-uid="Hexalith.Application.Metadatas.BaseMetadata.Hexalith#Application#Metadatas#IMetadata#Message">IMetadata.Message</h4>

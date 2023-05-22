@@ -18,7 +18,7 @@ using Hexalith.Extensions.Serialization;
 
 [DataContract]
 [JsonConverter(typeof(PolymorphicJsonConverter<TestBase>))]
-public abstract class TestBase : IPolymorphicSerializable
+public class TestBase : IPolymorphicSerializable
 {
     [IgnoreDataMember]
     [JsonIgnore]
@@ -32,20 +32,11 @@ public abstract class TestBase : IPolymorphicSerializable
     [JsonIgnore]
     public string TypeName => DefaultTypeName();
 
-    protected virtual int DefaultMajorVersion()
-    {
-        return 0;
-    }
+    protected virtual int DefaultMajorVersion() => 0;
 
-    protected virtual int DefaultMinorVersion()
-    {
-        return 0;
-    }
+    protected virtual int DefaultMinorVersion() => 0;
 
-    protected virtual string DefaultTypeName()
-    {
-        return GetType().Name;
-    }
+    protected virtual string DefaultTypeName() => GetType().Name;
 }
 
 [DataContract]

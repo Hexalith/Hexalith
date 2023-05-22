@@ -155,7 +155,7 @@ Implements the <a class="xref" href="Hexalith.Application.Notifications.INotific
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataContract]
 [JsonConverter(typeof(PolymorphicJsonConverter&lt;BaseNotification&gt;))]
-public abstract class BaseNotification : BaseMessage, IPolymorphicSerializable, IMappableType, INotification, IMessage</code></pre>
+public class BaseNotification : BaseMessage, IPolymorphicSerializable, IMappableType, INotification, IMessage</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>

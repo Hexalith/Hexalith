@@ -31,7 +31,7 @@ using Hexalith.Extensions.Serialization;
 /// <seealso cref="INotification" />
 [DataContract]
 [JsonConverter(typeof(PolymorphicJsonConverter<BaseNotification>))]
-public abstract class BaseNotification : BaseMessage, INotification
+public class BaseNotification : BaseMessage, INotification
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="BaseNotification" /> class.
