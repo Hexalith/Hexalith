@@ -121,21 +121,21 @@ public static class SemanticKernelHelper
     {
         ConversationSummarySkill conversationSummarySkill = new(kernel);
         _ = kernel.ImportSkill(conversationSummarySkill, nameof(ConversationSummarySkill));
-
-        Microsoft.SemanticKernel.CoreSkills.FileIOSkill fileIoSkill = new();
+        FileIOSkill fileIoSkill = new();
         _ = kernel.ImportSkill(fileIoSkill, nameof(FileIOSkill));
-        Microsoft.SemanticKernel.CoreSkills.HttpSkill httpSkill = new();
+        HttpSkill httpSkill = new();
         _ = kernel.ImportSkill(httpSkill, nameof(HttpSkill));
-        Microsoft.SemanticKernel.CoreSkills.MathSkill mathSkill = new();
+        MathSkill mathSkill = new();
         _ = kernel.ImportSkill(mathSkill, nameof(MathSkill));
-        Microsoft.SemanticKernel.CoreSkills.TextMemorySkill textMemorySkill = new();
+        TextMemorySkill textMemorySkill = new();
         _ = kernel.ImportSkill(textMemorySkill, nameof(TextMemorySkill));
-        Microsoft.SemanticKernel.CoreSkills.TextSkill textSkill = new();
+        TextSkill textSkill = new();
         _ = kernel.ImportSkill(textSkill, nameof(TextSkill));
-        Microsoft.SemanticKernel.CoreSkills.TimeSkill timeSkill = new();
+        TimeSkill timeSkill = new();
         _ = kernel.ImportSkill(timeSkill, nameof(TimeSkill));
-        Microsoft.SemanticKernel.CoreSkills.WaitSkill waitSkill = new();
+        WaitSkill waitSkill = new();
         _ = kernel.ImportSkill(waitSkill, nameof(WaitSkill));
+        _ = kernel.ImportApplicationCommandsAsSkills();
         _ = kernel.ImportSemanticSkillFromDirectory(
             Path.Combine(
                 Directory.GetCurrentDirectory(),

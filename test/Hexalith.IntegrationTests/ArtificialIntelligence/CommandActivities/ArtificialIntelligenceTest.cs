@@ -83,9 +83,8 @@ public class ArtificialIntelligenceTest
             .Configure(c => c.AddCompletionService(settings.Value))
             .Build();
         string ask = "Add Germany.";
-        SKContext context = kernel.CreateNewContext();
-        _ = kernel.ImportApplicationCommandsAsSkills();
         _ = kernel.AddSkills();
+        SKContext context = kernel.CreateNewContext();
         context["AssistantEmail"] = "hexai@hexalith.com";
         context["AssistantName"] = "Hexai";
         context["UserEmail"] = "jdoe@hexalith.com";

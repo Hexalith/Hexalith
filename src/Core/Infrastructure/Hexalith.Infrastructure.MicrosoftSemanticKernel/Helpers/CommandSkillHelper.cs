@@ -153,7 +153,7 @@ public static class CommandSkillHelper
                 : displayAttribute.Description;
         }
 
-        throw new InvalidOperationException($"The command {type.Name} should have a description. Use the 'Description' or 'Display' attribute on the class to define the command action description needed for the semantic kernel function.");
+        return type.Name.Humanize();
     }
 
     /// <summary>
@@ -193,13 +193,6 @@ public static class CommandSkillHelper
         // Get the example value attribute
         ExampleNameAttribute? attribute = type.GetCustomAttribute<ExampleNameAttribute>();
         return attribute is not null ? attribute.Name : string.Empty;
-    }
-
-    private static object? GetExampleValue(PropertyInfo property)
-    {
-        // Get the example value attribute
-        ExampleValueAttribute? attribute = property.GetCustomAttribute<ExampleValueAttribute>();
-        return attribute is not null && attribute.Value is not null ? JsonSerializer.Serialize(attribute.Value) : (object?)null;
     }
 
     /// <summary>
@@ -286,7 +279,7 @@ public static class CommandSkillHelper
         If you have completed all the steps and validated the information, the system will return the complete JSON for the {{commandDescription.ToLowerInvariant()}} command, as shown in the example below for {{exampleDescription}}:
 
         __JSON__
-        {{JsonSerializer.Serialize(commandExample, new JsonSerializerOptions { WriteIndented = true })}}
+        {{JsonSerializer.Serialize<BaseCommand>(commandExample, new JsonSerializerOptions { WriteIndented = true })}}
 
         __INPUT__
         """ + "\n{{$input}}";

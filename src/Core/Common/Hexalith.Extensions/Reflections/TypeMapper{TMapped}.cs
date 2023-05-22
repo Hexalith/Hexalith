@@ -72,7 +72,7 @@ public static class TypeMapper<TMapped>
             {
                 foreach (Type? type in assembly.GetTypes())
                 {
-                    if (type != null && type.IsClass && !type.IsAbstract && typeof(TMapped).IsAssignableFrom(type))
+                    if (type != null && type != typeof(TMapped) && type.IsClass && !type.IsAbstract && typeof(TMapped).IsAssignableFrom(type))
                     {
                         TMapped obj;
                         try
