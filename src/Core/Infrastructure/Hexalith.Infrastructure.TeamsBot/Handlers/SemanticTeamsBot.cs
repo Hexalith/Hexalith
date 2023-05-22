@@ -15,14 +15,19 @@
 // ***********************************************************************
 namespace Hexalith.Infrastructure.TeamsBot.Handlers;
 
+using System.Threading.Tasks;
+
 using Hexalith.Application.Conversations;
+using Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers;
 using Hexalith.Infrastructure.MicrosoftSemanticKernel.Services;
 
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Teams;
 using Microsoft.Bot.Schema;
+using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.AI.ChatCompletion;
-using Microsoft.SemanticKernel.Connectors.AI.OpenAI.ChatCompletion;
+using Microsoft.SemanticKernel.Orchestration;
+using Microsoft.SemanticKernel.Planning;
 
 /// <summary>
 /// An empty bot handler.
@@ -69,25 +74,30 @@ public class SemanticTeamsBot : TeamsActivityHandler
         }
 
         // Read adaptive card template
-        IChatCompletion chat = _artificialIntelligenceService.Kernel.GetService<IChatCompletion>("GPT");
-        OpenAIChatHistory conversation = (OpenAIChatHistory)chat.CreateNewChat("The following is a conversation with Fority, the Fiveforty company AI assistant. The assistant is helpful, creative, clever, very friendly and a Microsoft Dynamics 365 for finance and operations ERP expert. The assistant thinks step by step.");
-        conversation.AddUserMessage(turnContext.Activity.Text);
-        string reply = await chat
-            .GenerateMessageAsync(
-                conversation,
-                new ChatRequestSettings()
-                {
-                    FrequencyPenalty = 0.5,
-                    MaxTokens = 2000,
-                    PresencePenalty = 0.5,
-                    Temperature = 0.7,
-                },
-                cancellationToken)
-            .ConfigureAwait(false);
+        _ = _artificialIntelligenceService.Kernel.GetService<IChatCompletion>("GPT");
+        SKContext context = _artificialIntelligenceService.Kernel.CreateNewContext();
+        _ = _artificialIntelligenceService.Kernel.ImportApplicationCommandsAsSkills();
+        _ = _artificialIntelligenceService.Kernel.AddSkills();
+        context["AssistantEmail"] = "hexai@hexalith.com";
+        context["AssistantName"] = "Hexai";
+        context["UserEmail"] = "jdoe@hexalith.com";
+        context["UserName"] = "John Doe";
+        ActionPlanner planner = new(_artificialIntelligenceService.Kernel);
+        Plan plan = await planner.CreatePlanAsync(turnContext.Activity.Text);
+        string jsonPlan = plan.ToJson();
+        plan = Plan.FromJson(jsonPlan, context);
+        int iterations = 0;
+
+        while (plan.HasNextStep &&
+               iterations < 100)
+        {
+            plan = await _artificialIntelligenceService.Kernel.StepAsync(context.Variables, plan);
+            iterations++;
+        }
 
         // Sends an activity to the sender of the incoming activity.
         _ = await turnContext
-            .SendActivityAsync(MessageFactory.Text(reply), cancellationToken)
+            .SendActivityAsync(MessageFactory.Text(plan.State.Input), cancellationToken)
             .ConfigureAwait(false);
     }
 }

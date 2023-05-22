@@ -4,7 +4,7 @@
 // Created          : 05-13-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 05-13-2023
+// Last Modified On : 05-22-2023
 // ***********************************************************************
 // <copyright file="ExampleHelper.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -28,19 +28,21 @@ using Hexalith.Extensions.Common;
 public static class ExampleHelper
 {
     /// <summary>
-    /// Creates this instance.
-    /// </summary>
-    /// <typeparam name="T">Type of the example object instance.</typeparam>
-    /// <returns>T?.</returns>
-    public static T Create<T>()
-        where T : class, new() => (T)Create(typeof(T));
-
-    /// <summary>
     /// Creates the specified type.
     /// </summary>
-    /// <param name="type">The type.</param>
+    /// <typeparam name="T">class type.</typeparam>
     /// <returns>object?.</returns>
-    public static object Create(Type type)
+    public static T CreateExample<T>()
+        where T : class, new()
+        => (T)typeof(T).CreateExample();
+
+    /// <summary>
+    /// Creates the example.
+    /// </summary>
+    /// <param name="type">The type.</param>
+    /// <returns>object.</returns>
+    /// <exception cref="InvalidOperationException">$"Could not set the value of property {property.Name} of type {type.FullName}., ex.</exception>
+    public static object CreateExample(this Type type)
     {
         object instance = Activator.CreateInstance(type)
             ?? throw new InvalidOperationException($"Could not create an instance of type {type.FullName}. The class must have a default constructor.");
@@ -66,7 +68,7 @@ public static class ExampleHelper
                         _ when property.PropertyType == typeof(Guid) => Guid.NewGuid(),
                         _ when property.PropertyType == typeof(byte[]) => Encoding.UTF8.GetBytes("string"),
                         _ when property.PropertyType.IsEnum => Enum.GetValues(property.PropertyType).GetValue(0),
-                        _ when property.PropertyType.IsClass => Create(property.PropertyType),
+                        _ when property.PropertyType.IsClass => CreateExample(property.PropertyType),
                         _ => null,
                     };
                 property.SetValue(instance, value);

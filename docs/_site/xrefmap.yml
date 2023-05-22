@@ -1156,66 +1156,6 @@ references:
   commentId: N:Hexalith.Application.Conversations
   fullName: Hexalith.Application.Conversations
   nameWithType: Hexalith.Application.Conversations
-- uid: Hexalith.Application.Conversations.ConversationCommandActivity`1
-  name: ConversationCommandActivity<TCommand>
-  href: api/Hexalith.Application.Conversations.ConversationCommandActivity-1.html
-  commentId: T:Hexalith.Application.Conversations.ConversationCommandActivity`1
-  name.vb: ConversationCommandActivity(Of TCommand)
-  fullName: Hexalith.Application.Conversations.ConversationCommandActivity<TCommand>
-  fullName.vb: Hexalith.Application.Conversations.ConversationCommandActivity(Of TCommand)
-  nameWithType: ConversationCommandActivity<TCommand>
-  nameWithType.vb: ConversationCommandActivity(Of TCommand)
-- uid: Hexalith.Application.Conversations.ConversationCommandActivity`1.Classification
-  name: Classification
-  href: api/Hexalith.Application.Conversations.ConversationCommandActivity-1.html#Hexalith_Application_Conversations_ConversationCommandActivity_1_Classification
-  commentId: P:Hexalith.Application.Conversations.ConversationCommandActivity`1.Classification
-  fullName: Hexalith.Application.Conversations.ConversationCommandActivity<TCommand>.Classification
-  fullName.vb: Hexalith.Application.Conversations.ConversationCommandActivity(Of TCommand).Classification
-  nameWithType: ConversationCommandActivity<TCommand>.Classification
-  nameWithType.vb: ConversationCommandActivity(Of TCommand).Classification
-- uid: Hexalith.Application.Conversations.ConversationCommandActivity`1.Classification*
-  name: Classification
-  href: api/Hexalith.Application.Conversations.ConversationCommandActivity-1.html#Hexalith_Application_Conversations_ConversationCommandActivity_1_Classification_
-  commentId: Overload:Hexalith.Application.Conversations.ConversationCommandActivity`1.Classification
-  isSpec: "True"
-  fullName: Hexalith.Application.Conversations.ConversationCommandActivity<TCommand>.Classification
-  fullName.vb: Hexalith.Application.Conversations.ConversationCommandActivity(Of TCommand).Classification
-  nameWithType: ConversationCommandActivity<TCommand>.Classification
-  nameWithType.vb: ConversationCommandActivity(Of TCommand).Classification
-- uid: Hexalith.Application.Conversations.ConversationCommandActivity`1.Name
-  name: Name
-  href: api/Hexalith.Application.Conversations.ConversationCommandActivity-1.html#Hexalith_Application_Conversations_ConversationCommandActivity_1_Name
-  commentId: P:Hexalith.Application.Conversations.ConversationCommandActivity`1.Name
-  fullName: Hexalith.Application.Conversations.ConversationCommandActivity<TCommand>.Name
-  fullName.vb: Hexalith.Application.Conversations.ConversationCommandActivity(Of TCommand).Name
-  nameWithType: ConversationCommandActivity<TCommand>.Name
-  nameWithType.vb: ConversationCommandActivity(Of TCommand).Name
-- uid: Hexalith.Application.Conversations.ConversationCommandActivity`1.Name*
-  name: Name
-  href: api/Hexalith.Application.Conversations.ConversationCommandActivity-1.html#Hexalith_Application_Conversations_ConversationCommandActivity_1_Name_
-  commentId: Overload:Hexalith.Application.Conversations.ConversationCommandActivity`1.Name
-  isSpec: "True"
-  fullName: Hexalith.Application.Conversations.ConversationCommandActivity<TCommand>.Name
-  fullName.vb: Hexalith.Application.Conversations.ConversationCommandActivity(Of TCommand).Name
-  nameWithType: ConversationCommandActivity<TCommand>.Name
-  nameWithType.vb: ConversationCommandActivity(Of TCommand).Name
-- uid: Hexalith.Application.Conversations.ConversationCommandActivity`1.Prompt
-  name: Prompt
-  href: api/Hexalith.Application.Conversations.ConversationCommandActivity-1.html#Hexalith_Application_Conversations_ConversationCommandActivity_1_Prompt
-  commentId: P:Hexalith.Application.Conversations.ConversationCommandActivity`1.Prompt
-  fullName: Hexalith.Application.Conversations.ConversationCommandActivity<TCommand>.Prompt
-  fullName.vb: Hexalith.Application.Conversations.ConversationCommandActivity(Of TCommand).Prompt
-  nameWithType: ConversationCommandActivity<TCommand>.Prompt
-  nameWithType.vb: ConversationCommandActivity(Of TCommand).Prompt
-- uid: Hexalith.Application.Conversations.ConversationCommandActivity`1.Prompt*
-  name: Prompt
-  href: api/Hexalith.Application.Conversations.ConversationCommandActivity-1.html#Hexalith_Application_Conversations_ConversationCommandActivity_1_Prompt_
-  commentId: Overload:Hexalith.Application.Conversations.ConversationCommandActivity`1.Prompt
-  isSpec: "True"
-  fullName: Hexalith.Application.Conversations.ConversationCommandActivity<TCommand>.Prompt
-  fullName.vb: Hexalith.Application.Conversations.ConversationCommandActivity(Of TCommand).Prompt
-  nameWithType: ConversationCommandActivity<TCommand>.Prompt
-  nameWithType.vb: ConversationCommandActivity(Of TCommand).Prompt
 - uid: Hexalith.Application.Conversations.IConversationActivity
   name: IConversationActivity
   href: api/Hexalith.Application.Conversations.IConversationActivity.html
@@ -7914,6 +7854,38 @@ references:
   commentId: F:Hexalith.Extensions.Common.ErrorCategory.Unknown
   fullName: Hexalith.Extensions.Common.ErrorCategory.Unknown
   nameWithType: ErrorCategory.Unknown
+- uid: Hexalith.Extensions.Common.ExampleNameAttribute
+  name: ExampleNameAttribute
+  href: api/Hexalith.Extensions.Common.ExampleNameAttribute.html
+  commentId: T:Hexalith.Extensions.Common.ExampleNameAttribute
+  fullName: Hexalith.Extensions.Common.ExampleNameAttribute
+  nameWithType: ExampleNameAttribute
+- uid: Hexalith.Extensions.Common.ExampleNameAttribute.#ctor(System.String)
+  name: ExampleNameAttribute(String)
+  href: api/Hexalith.Extensions.Common.ExampleNameAttribute.html#Hexalith_Extensions_Common_ExampleNameAttribute__ctor_System_String_
+  commentId: M:Hexalith.Extensions.Common.ExampleNameAttribute.#ctor(System.String)
+  fullName: Hexalith.Extensions.Common.ExampleNameAttribute.ExampleNameAttribute(System.String)
+  nameWithType: ExampleNameAttribute.ExampleNameAttribute(String)
+- uid: Hexalith.Extensions.Common.ExampleNameAttribute.#ctor*
+  name: ExampleNameAttribute
+  href: api/Hexalith.Extensions.Common.ExampleNameAttribute.html#Hexalith_Extensions_Common_ExampleNameAttribute__ctor_
+  commentId: Overload:Hexalith.Extensions.Common.ExampleNameAttribute.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Common.ExampleNameAttribute.ExampleNameAttribute
+  nameWithType: ExampleNameAttribute.ExampleNameAttribute
+- uid: Hexalith.Extensions.Common.ExampleNameAttribute.Name
+  name: Name
+  href: api/Hexalith.Extensions.Common.ExampleNameAttribute.html#Hexalith_Extensions_Common_ExampleNameAttribute_Name
+  commentId: P:Hexalith.Extensions.Common.ExampleNameAttribute.Name
+  fullName: Hexalith.Extensions.Common.ExampleNameAttribute.Name
+  nameWithType: ExampleNameAttribute.Name
+- uid: Hexalith.Extensions.Common.ExampleNameAttribute.Name*
+  name: Name
+  href: api/Hexalith.Extensions.Common.ExampleNameAttribute.html#Hexalith_Extensions_Common_ExampleNameAttribute_Name_
+  commentId: Overload:Hexalith.Extensions.Common.ExampleNameAttribute.Name
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Common.ExampleNameAttribute.Name
+  nameWithType: ExampleNameAttribute.Name
 - uid: Hexalith.Extensions.Common.ExampleValueAttribute
   name: ExampleValueAttribute
   href: api/Hexalith.Extensions.Common.ExampleValueAttribute.html
@@ -8348,28 +8320,28 @@ references:
   commentId: T:Hexalith.Extensions.Helpers.ExampleHelper
   fullName: Hexalith.Extensions.Helpers.ExampleHelper
   nameWithType: ExampleHelper
-- uid: Hexalith.Extensions.Helpers.ExampleHelper.Create(System.Type)
-  name: Create(Type)
-  href: api/Hexalith.Extensions.Helpers.ExampleHelper.html#Hexalith_Extensions_Helpers_ExampleHelper_Create_System_Type_
-  commentId: M:Hexalith.Extensions.Helpers.ExampleHelper.Create(System.Type)
-  fullName: Hexalith.Extensions.Helpers.ExampleHelper.Create(System.Type)
-  nameWithType: ExampleHelper.Create(Type)
-- uid: Hexalith.Extensions.Helpers.ExampleHelper.Create*
-  name: Create
-  href: api/Hexalith.Extensions.Helpers.ExampleHelper.html#Hexalith_Extensions_Helpers_ExampleHelper_Create_
-  commentId: Overload:Hexalith.Extensions.Helpers.ExampleHelper.Create
+- uid: Hexalith.Extensions.Helpers.ExampleHelper.CreateExample(System.Type)
+  name: CreateExample(Type)
+  href: api/Hexalith.Extensions.Helpers.ExampleHelper.html#Hexalith_Extensions_Helpers_ExampleHelper_CreateExample_System_Type_
+  commentId: M:Hexalith.Extensions.Helpers.ExampleHelper.CreateExample(System.Type)
+  fullName: Hexalith.Extensions.Helpers.ExampleHelper.CreateExample(System.Type)
+  nameWithType: ExampleHelper.CreateExample(Type)
+- uid: Hexalith.Extensions.Helpers.ExampleHelper.CreateExample*
+  name: CreateExample
+  href: api/Hexalith.Extensions.Helpers.ExampleHelper.html#Hexalith_Extensions_Helpers_ExampleHelper_CreateExample_
+  commentId: Overload:Hexalith.Extensions.Helpers.ExampleHelper.CreateExample
   isSpec: "True"
-  fullName: Hexalith.Extensions.Helpers.ExampleHelper.Create
-  nameWithType: ExampleHelper.Create
-- uid: Hexalith.Extensions.Helpers.ExampleHelper.Create``1
-  name: Create<T>()
-  href: api/Hexalith.Extensions.Helpers.ExampleHelper.html#Hexalith_Extensions_Helpers_ExampleHelper_Create__1
-  commentId: M:Hexalith.Extensions.Helpers.ExampleHelper.Create``1
-  name.vb: Create(Of T)()
-  fullName: Hexalith.Extensions.Helpers.ExampleHelper.Create<T>()
-  fullName.vb: Hexalith.Extensions.Helpers.ExampleHelper.Create(Of T)()
-  nameWithType: ExampleHelper.Create<T>()
-  nameWithType.vb: ExampleHelper.Create(Of T)()
+  fullName: Hexalith.Extensions.Helpers.ExampleHelper.CreateExample
+  nameWithType: ExampleHelper.CreateExample
+- uid: Hexalith.Extensions.Helpers.ExampleHelper.CreateExample``1
+  name: CreateExample<T>()
+  href: api/Hexalith.Extensions.Helpers.ExampleHelper.html#Hexalith_Extensions_Helpers_ExampleHelper_CreateExample__1
+  commentId: M:Hexalith.Extensions.Helpers.ExampleHelper.CreateExample``1
+  name.vb: CreateExample(Of T)()
+  fullName: Hexalith.Extensions.Helpers.ExampleHelper.CreateExample<T>()
+  fullName.vb: Hexalith.Extensions.Helpers.ExampleHelper.CreateExample(Of T)()
+  nameWithType: ExampleHelper.CreateExample<T>()
+  nameWithType.vb: ExampleHelper.CreateExample(Of T)()
 - uid: Hexalith.Extensions.Helpers.ExceptionHelper
   name: ExceptionHelper
   href: api/Hexalith.Extensions.Helpers.ExceptionHelper.html
@@ -14418,6 +14390,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.AiModelConfiguration.ApplicationKey
   nameWithType: AiModelConfiguration.ApplicationKey
+- uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.AiModelConfiguration.ConfigurationName
+  name: ConfigurationName()
+  href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.AiModelConfiguration.html#Hexalith_Infrastructure_MicrosoftSemanticKernel_Configurations_AiModelConfiguration_ConfigurationName
+  commentId: M:Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.AiModelConfiguration.ConfigurationName
+  fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.AiModelConfiguration.ConfigurationName()
+  nameWithType: AiModelConfiguration.ConfigurationName()
+- uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.AiModelConfiguration.ConfigurationName*
+  name: ConfigurationName
+  href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.AiModelConfiguration.html#Hexalith_Infrastructure_MicrosoftSemanticKernel_Configurations_AiModelConfiguration_ConfigurationName_
+  commentId: Overload:Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.AiModelConfiguration.ConfigurationName
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.AiModelConfiguration.ConfigurationName
+  nameWithType: AiModelConfiguration.ConfigurationName
 - uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.AiModelConfiguration.Endpoint
   name: Endpoint
   href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.AiModelConfiguration.html#Hexalith_Infrastructure_MicrosoftSemanticKernel_Configurations_AiModelConfiguration_Endpoint
@@ -14571,12 +14556,12 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.ImportApplicationCommandsAsSkills
   nameWithType: CommandSkillHelper.ImportApplicationCommandsAsSkills
-- uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.ImportCommandSkill(Microsoft.SemanticKernel.IKernel,Hexalith.Application.Commands.BaseCommand)
-  name: ImportCommandSkill(IKernel, BaseCommand)
-  href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.html#Hexalith_Infrastructure_MicrosoftSemanticKernel_Helpers_CommandSkillHelper_ImportCommandSkill_Microsoft_SemanticKernel_IKernel_Hexalith_Application_Commands_BaseCommand_
-  commentId: M:Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.ImportCommandSkill(Microsoft.SemanticKernel.IKernel,Hexalith.Application.Commands.BaseCommand)
-  fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.ImportCommandSkill(Microsoft.SemanticKernel.IKernel, Hexalith.Application.Commands.BaseCommand)
-  nameWithType: CommandSkillHelper.ImportCommandSkill(IKernel, BaseCommand)
+- uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.ImportCommandSkill(Microsoft.SemanticKernel.IKernel,System.Type)
+  name: ImportCommandSkill(IKernel, Type)
+  href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.html#Hexalith_Infrastructure_MicrosoftSemanticKernel_Helpers_CommandSkillHelper_ImportCommandSkill_Microsoft_SemanticKernel_IKernel_System_Type_
+  commentId: M:Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.ImportCommandSkill(Microsoft.SemanticKernel.IKernel,System.Type)
+  fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.ImportCommandSkill(Microsoft.SemanticKernel.IKernel, System.Type)
+  nameWithType: CommandSkillHelper.ImportCommandSkill(IKernel, Type)
 - uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.ImportCommandSkill*
   name: ImportCommandSkill
   href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.html#Hexalith_Infrastructure_MicrosoftSemanticKernel_Helpers_CommandSkillHelper_ImportCommandSkill_
@@ -14584,6 +14569,15 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.ImportCommandSkill
   nameWithType: CommandSkillHelper.ImportCommandSkill
+- uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.ImportCommandSkill``1(Microsoft.SemanticKernel.IKernel)
+  name: ImportCommandSkill<TCommand>(IKernel)
+  href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.html#Hexalith_Infrastructure_MicrosoftSemanticKernel_Helpers_CommandSkillHelper_ImportCommandSkill__1_Microsoft_SemanticKernel_IKernel_
+  commentId: M:Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.ImportCommandSkill``1(Microsoft.SemanticKernel.IKernel)
+  name.vb: ImportCommandSkill(Of TCommand)(IKernel)
+  fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.ImportCommandSkill<TCommand>(Microsoft.SemanticKernel.IKernel)
+  fullName.vb: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.ImportCommandSkill(Of TCommand)(Microsoft.SemanticKernel.IKernel)
+  nameWithType: CommandSkillHelper.ImportCommandSkill<TCommand>(IKernel)
+  nameWithType.vb: CommandSkillHelper.ImportCommandSkill(Of TCommand)(IKernel)
 - uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.SemanticKernelHelper
   name: SemanticKernelHelper
   href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.SemanticKernelHelper.html
@@ -14629,6 +14623,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.SemanticKernelHelper.AddSemanticKernel
   nameWithType: SemanticKernelHelper.AddSemanticKernel
+- uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.SemanticKernelHelper.AddSkills(Microsoft.SemanticKernel.IKernel)
+  name: AddSkills(IKernel)
+  href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.SemanticKernelHelper.html#Hexalith_Infrastructure_MicrosoftSemanticKernel_Helpers_SemanticKernelHelper_AddSkills_Microsoft_SemanticKernel_IKernel_
+  commentId: M:Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.SemanticKernelHelper.AddSkills(Microsoft.SemanticKernel.IKernel)
+  fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.SemanticKernelHelper.AddSkills(Microsoft.SemanticKernel.IKernel)
+  nameWithType: SemanticKernelHelper.AddSkills(IKernel)
+- uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.SemanticKernelHelper.AddSkills*
+  name: AddSkills
+  href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.SemanticKernelHelper.html#Hexalith_Infrastructure_MicrosoftSemanticKernel_Helpers_SemanticKernelHelper_AddSkills_
+  commentId: Overload:Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.SemanticKernelHelper.AddSkills
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.SemanticKernelHelper.AddSkills
+  nameWithType: SemanticKernelHelper.AddSkills
 - uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Prompts
   name: Hexalith.Infrastructure.MicrosoftSemanticKernel.Prompts
   href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Prompts.html

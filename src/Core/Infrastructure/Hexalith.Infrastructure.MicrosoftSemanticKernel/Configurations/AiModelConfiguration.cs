@@ -4,7 +4,7 @@
 // Created          : 04-23-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 04-23-2023
+// Last Modified On : 05-20-2023
 // ***********************************************************************
 // <copyright file="AiModelConfiguration.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -22,7 +22,7 @@ using Hexalith.Extensions.Configuration;
 /// Artificial Intelligence Model Service Configuration.
 /// Implements the <see cref="ISettings" />.
 /// </summary>
-public class AiModelConfiguration
+public class AiModelConfiguration : ISettings
 {
     /// <summary>
     /// Gets or sets the application key.
@@ -59,4 +59,10 @@ public class AiModelConfiguration
     /// </summary>
     /// <value>The type.</value>
     public CompletionServiceType? Type { get; set; }
+
+    /// <summary>
+    /// The configuration section name of the settings.
+    /// </summary>
+    /// <returns>The name.</returns>
+    public static string ConfigurationName() => "AIModel";
 }

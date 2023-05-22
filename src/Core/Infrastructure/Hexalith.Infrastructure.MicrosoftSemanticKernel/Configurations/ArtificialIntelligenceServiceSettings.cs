@@ -41,5 +41,5 @@ public class ArtificialIntelligenceServiceSettings : ISettings
     /// Configurations the name.
     /// </summary>
     /// <returns>System.String.</returns>
-    public static string ConfigurationName() => "AI";
+    public static string ConfigurationName() => "ArtificialIntelligence";
 }

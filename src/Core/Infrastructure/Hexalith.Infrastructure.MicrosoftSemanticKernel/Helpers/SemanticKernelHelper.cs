@@ -25,6 +25,7 @@ using Hexalith.Infrastructure.MicrosoftSemanticKernel.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.SemanticKernel;
+using Microsoft.SemanticKernel.CoreSkills;
 
 /// <summary>
 /// Class MicrosoftBotHelper.
@@ -56,7 +57,7 @@ public static class SemanticKernelHelper
         {
             CompletionServiceType.AzureOpenAI =>
                     config.AddAzureChatCompletionService(
-                    settings.ChatModelService.Name,
+                    settings.ChatModelService.Model,
                     SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.ChatModelService.Endpoint)!,
                     settings.ChatModelService.ApplicationKey),
             CompletionServiceType.OpenAI =>
@@ -109,5 +110,36 @@ public static class SemanticKernelHelper
         return services
             .AddSingleton<ArtificialIntelligenceService>()
             .ConfigureSettings<ArtificialIntelligenceServiceSettings>(configuration);
+    }
+
+    /// <summary>
+    /// Adds the skills.
+    /// </summary>
+    /// <param name="kernel">The kernel.</param>
+    /// <returns>IKernel.</returns>
+    public static IKernel AddSkills(this IKernel kernel)
+    {
+        ConversationSummarySkill conversationSummarySkill = new(kernel);
+        _ = kernel.ImportSkill(conversationSummarySkill, nameof(ConversationSummarySkill));
+
+        Microsoft.SemanticKernel.CoreSkills.FileIOSkill fileIoSkill = new();
+        _ = kernel.ImportSkill(fileIoSkill, nameof(FileIOSkill));
+        Microsoft.SemanticKernel.CoreSkills.HttpSkill httpSkill = new();
+        _ = kernel.ImportSkill(httpSkill, nameof(HttpSkill));
+        Microsoft.SemanticKernel.CoreSkills.MathSkill mathSkill = new();
+        _ = kernel.ImportSkill(mathSkill, nameof(MathSkill));
+        Microsoft.SemanticKernel.CoreSkills.TextMemorySkill textMemorySkill = new();
+        _ = kernel.ImportSkill(textMemorySkill, nameof(TextMemorySkill));
+        Microsoft.SemanticKernel.CoreSkills.TextSkill textSkill = new();
+        _ = kernel.ImportSkill(textSkill, nameof(TextSkill));
+        Microsoft.SemanticKernel.CoreSkills.TimeSkill timeSkill = new();
+        _ = kernel.ImportSkill(timeSkill, nameof(TimeSkill));
+        Microsoft.SemanticKernel.CoreSkills.WaitSkill waitSkill = new();
+        _ = kernel.ImportSkill(waitSkill, nameof(WaitSkill));
+        _ = kernel.ImportSemanticSkillFromDirectory(
+            Path.Combine(
+                Directory.GetCurrentDirectory(),
+                "Skills"));
+        return kernel;
     }
 }

@@ -13,10 +13,11 @@ using Hexalith.Application.Commands;
 using Hexalith.Extensions.Common;
 
 [Display(Name = "Add a country", Description = "Add a new country")]
+[ExampleName("France")]
 public class AddCountryCommand : BaseCommand
 {
     [JsonConstructor]
-    public AddCountryCommand(string iso2, string iso3, int isoNumber, string name, string currencyName, string currencySymbol)
+    public AddCountryCommand(string iso2, string iso3, int isoNumber, string name, string currencyName, string currencySymbol, string currencyCode)
     {
         Iso2 = iso2;
         Iso3 = iso3;
@@ -24,10 +25,16 @@ public class AddCountryCommand : BaseCommand
         Name = name;
         CurrencyName = currencyName;
         CurrencySymbol = currencySymbol;
+        CurrencyCode = currencyCode;
     }
 
     [Obsolete("For serialization only", error: true)]
     public AddCountryCommand() => Iso2 = Iso3 = Name = CurrencyName = CurrencySymbol = string.Empty;
+
+    [Display(Name = "Currency code", Description = "ISO 4217 currency code")]
+    [ExampleValue("EUR")]
+    [Required]
+    public string CurrencyCode { get; set; }
 
     [Display(Name = "Currency name", Description = "Currency name")]
     [ExampleValue("Euro")]
@@ -56,4 +63,8 @@ public class AddCountryCommand : BaseCommand
     [Required]
     [ExampleValue("France")]
     public string Name { get; set; }
+
+    protected override string DefaultAggregateId() => Iso3;
+
+    protected override string DefaultAggregateName() => "Country";
 }
