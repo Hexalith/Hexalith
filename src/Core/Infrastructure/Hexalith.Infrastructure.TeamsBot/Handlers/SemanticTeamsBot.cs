@@ -25,7 +25,6 @@ using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Teams;
 using Microsoft.Bot.Schema;
 using Microsoft.SemanticKernel;
-using Microsoft.SemanticKernel.AI.ChatCompletion;
 using Microsoft.SemanticKernel.Orchestration;
 using Microsoft.SemanticKernel.Planning;
 
@@ -74,7 +73,6 @@ public class SemanticTeamsBot : TeamsActivityHandler
         }
 
         // Read adaptive card template
-        _ = _artificialIntelligenceService.Kernel.GetService<IChatCompletion>("GPT");
         SKContext context = _artificialIntelligenceService.Kernel.CreateNewContext();
         _ = _artificialIntelligenceService.Kernel.ImportApplicationCommandsAsSkills();
         _ = _artificialIntelligenceService.Kernel.AddSkills();
