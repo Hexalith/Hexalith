@@ -16,6 +16,7 @@
 
 namespace Hexalith.Infrastructure.TeamsBot.Helpers;
 
+using Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers;
 using Hexalith.Infrastructure.SemanticBot.Adapters;
 using Hexalith.Infrastructure.TeamsBot.Handlers;
 
@@ -40,6 +41,7 @@ public static class SemanticBotHelper
     public static IServiceCollection AddSemanticBot(this IServiceCollection services, IConfiguration configuration)
     {
         return services
+            .AddSemanticKernel(configuration)
             .AddSingleton<BotFrameworkAuthentication, ConfigurationBotFrameworkAuthentication>()
             .AddSingleton<CloudAdapter, TeamsBotAdapter>()
             .AddSingleton<IBotFrameworkHttpAdapter>(sp => sp.GetRequiredService<CloudAdapter>())
