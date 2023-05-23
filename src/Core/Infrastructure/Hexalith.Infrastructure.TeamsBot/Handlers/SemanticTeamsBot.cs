@@ -17,7 +17,6 @@ namespace Hexalith.Infrastructure.TeamsBot.Handlers;
 
 using System.Threading.Tasks;
 
-using Hexalith.Application.Conversations;
 using Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers;
 using Hexalith.Infrastructure.MicrosoftSemanticKernel.Services;
 
@@ -40,21 +39,14 @@ public class SemanticTeamsBot : TeamsActivityHandler
     private readonly ArtificialIntelligenceService _artificialIntelligenceService;
 
     /// <summary>
-    /// The semantic activities.
-    /// </summary>
-    private readonly IEnumerable<IConversationActivity> _conversationActivities;
-
-    /// <summary>
     /// Initializes a new instance of the <see cref="SemanticTeamsBot" /> class.
     /// </summary>
     /// <param name="conversationActivities">The semantic activities.</param>
     /// <param name="artificialIntelligenceService">The artificial intelligence service.</param>
     /// <exception cref="ArgumentNullException">null.</exception>
-    public SemanticTeamsBot(IEnumerable<IConversationActivity> conversationActivities, ArtificialIntelligenceService artificialIntelligenceService)
+    public SemanticTeamsBot(ArtificialIntelligenceService artificialIntelligenceService)
     {
-        ArgumentNullException.ThrowIfNull(conversationActivities);
         ArgumentNullException.ThrowIfNull(artificialIntelligenceService);
-        _conversationActivities = conversationActivities;
         _artificialIntelligenceService = artificialIntelligenceService;
     }
 
