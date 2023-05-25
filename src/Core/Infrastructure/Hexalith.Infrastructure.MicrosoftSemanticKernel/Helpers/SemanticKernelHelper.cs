@@ -43,45 +43,64 @@ public static class SemanticKernelHelper
     {
         ArgumentNullException.ThrowIfNull(config);
         ArgumentNullException.ThrowIfNull(settings);
+        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.CompletionModelService);
+        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.CompletionModelService.Type);
+        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.CompletionModelService.Name);
+        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.CompletionModelService.ApplicationKey);
+        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.CompletionModelService.Model);
+        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.TextEmbeddingModelService);
+        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.TextEmbeddingModelService.Type);
+        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.TextEmbeddingModelService.Name);
+        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.TextEmbeddingModelService.ApplicationKey);
+        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.TextEmbeddingModelService.Model);
         _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.ChatModelService);
-        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.TextModelService);
         _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.ChatModelService.Type);
         _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.ChatModelService.Name);
         _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.ChatModelService.ApplicationKey);
         _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.ChatModelService.Model);
-        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.TextModelService.Type);
-        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.TextModelService.Name);
-        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.TextModelService.ApplicationKey);
-        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.TextModelService.Model);
+        config = settings.CompletionModelService.Type switch
+        {
+            ModelServiceType.AzureOpenAI =>
+                    config.AddAzureTextCompletionService(
+                    settings.CompletionModelService.Name,
+                    SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.CompletionModelService.Endpoint)!,
+                    settings.CompletionModelService.ApplicationKey),
+            ModelServiceType.OpenAI =>
+                _ = config.AddOpenAITextCompletionService(
+                    settings.CompletionModelService.Model,
+                    settings.CompletionModelService.ApplicationKey,
+                    settings.CompletionModelService.OrganizationId),
+            _ => throw new InvalidOperationException($"Unknown completion service type {settings.CompletionModelService.Type}"),
+        };
         config = settings.ChatModelService.Type switch
         {
-            CompletionServiceType.AzureOpenAI =>
+            ModelServiceType.AzureOpenAI =>
                     config.AddAzureChatCompletionService(
-                    settings.ChatModelService.Model,
-                    SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.ChatModelService.Endpoint)!,
-                    settings.ChatModelService.ApplicationKey),
-            CompletionServiceType.OpenAI =>
+                    settings.CompletionModelService.Name,
+                    SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.CompletionModelService.Endpoint)!,
+                    settings.CompletionModelService.ApplicationKey),
+            ModelServiceType.OpenAI =>
                 _ = config.AddOpenAIChatCompletionService(
-                    settings.ChatModelService.Model,
-                    settings.ChatModelService.ApplicationKey,
-                    settings.ChatModelService.OrganizationId),
-            _ => throw new InvalidOperationException($"Unknown completion service type {settings.ChatModelService.Type}"),
+                    settings.CompletionModelService.Model,
+                    settings.CompletionModelService.ApplicationKey,
+                    settings.CompletionModelService.OrganizationId),
+            _ => throw new InvalidOperationException($"Unknown completion service type {settings.CompletionModelService.Type}"),
         };
-        return settings.TextModelService.Type switch
+        return settings.TextEmbeddingModelService.Type switch
         {
-            CompletionServiceType.AzureOpenAI =>
-                    config.AddAzureTextCompletionService(
-                    settings.TextModelService.Name,
-                    settings.TextModelService.Model,
-                    SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.TextModelService.Endpoint)!,
-                    settings.TextModelService.ApplicationKey),
-            CompletionServiceType.OpenAI =>
-                _ = config.AddOpenAITextCompletionService(
-                    settings.TextModelService.Name,
-                    settings.TextModelService.Model,
-                    settings.TextModelService.ApplicationKey,
-                    settings.TextModelService.OrganizationId),
-            _ => throw new InvalidOperationException($"Unknown completion service type {settings.TextModelService.Type}"),
+            ModelServiceType.AzureOpenAI =>
+                    config.AddAzureTextEmbeddingGenerationService(
+                    settings.TextEmbeddingModelService.Name,
+                    settings.TextEmbeddingModelService.Model,
+                    SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.TextEmbeddingModelService.Endpoint)!,
+                    settings.TextEmbeddingModelService.ApplicationKey),
+            ModelServiceType.OpenAI =>
+                _ = config.AddAzureTextEmbeddingGenerationService(
+                    settings.TextEmbeddingModelService.Name,
+                    settings.TextEmbeddingModelService.Model,
+                    settings.TextEmbeddingModelService.ApplicationKey,
+                    settings.TextEmbeddingModelService.OrganizationId),
+            _ => throw new InvalidOperationException($"Unknown completion service type {settings.TextEmbeddingModelService.Type}"),
         };
     }
 

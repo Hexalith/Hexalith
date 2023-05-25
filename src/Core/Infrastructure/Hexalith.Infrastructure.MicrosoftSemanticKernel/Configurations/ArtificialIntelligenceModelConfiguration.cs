@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 05-20-2023
 // ***********************************************************************
-// <copyright file="AiModelConfiguration.cs" company="Fiveforty SAS Paris France">
+// <copyright file="ArtificialIntelligenceModelConfiguration.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -22,7 +22,7 @@ using Hexalith.Extensions.Configuration;
 /// Artificial Intelligence Model Service Configuration.
 /// Implements the <see cref="ISettings" />.
 /// </summary>
-public class AiModelConfiguration : ISettings
+public class ArtificialIntelligenceModelConfiguration : ISettings
 {
     /// <summary>
     /// Gets or sets the application key.
@@ -58,11 +58,11 @@ public class AiModelConfiguration : ISettings
     /// Gets or sets the type.
     /// </summary>
     /// <value>The type.</value>
-    public CompletionServiceType? Type { get; set; }
+    public ModelServiceType? Type { get; set; }
 
     /// <summary>
     /// The configuration section name of the settings.
     /// </summary>
     /// <returns>The name.</returns>
-    public static string ConfigurationName() => "AIModel";
+    public static string ConfigurationName() => "ArtificialIntelligenceModel";
 }
