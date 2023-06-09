@@ -102,8 +102,9 @@ public class ArtificialIntelligenceTest
             iterations++;
         }
 
-        _ = plan.State.Input.Should().NotBeNullOrWhiteSpace();
-        string[] parts = plan.State.Input.Split("__JSON__", 2);
+        _ = plan.State.Input.Should().NotBeNull();
+        string input = plan.State.Input;
+        string[] parts = input.Split("__JSON__", 2);
         _ = parts.Length.Should().Be(2);
         AddCountryCommand aiCommand = JsonSerializer.Deserialize<AddCountryCommand>(parts[1]);
         _ = aiCommand.Should().BeEquivalentTo(expectedCommand);

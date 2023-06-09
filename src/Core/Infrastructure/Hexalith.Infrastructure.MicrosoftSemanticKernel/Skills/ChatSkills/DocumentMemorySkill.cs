@@ -1,21 +1,31 @@
-﻿// Copyright (c) Microsoft. All rights reserved.
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Infrastructure.MicrosoftSemanticKernel
+// Author           : Jérôme Piquot
+// Created          : 05-31-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 05-31-2023
+// ***********************************************************************
+// <copyright file="DocumentMemorySkill.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
-using System;
+namespace Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills;
+
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
-using Hexalith.Application.States;
 using Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations;
-using Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills;
 
-using Microsoft.Extensions.Options;
 using Microsoft.SemanticKernel.Memory;
 using Microsoft.SemanticKernel.Orchestration;
 using Microsoft.SemanticKernel.SkillDefinition;
-
-namespace Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills;
 
 /// <summary>
 /// This skill provides the functions to query the document memory.
@@ -25,61 +35,58 @@ public class DocumentMemorySkill
     /// <summary>
     /// Configuration settings for importing documents to memory.
     /// </summary>
-    private readonly DocumentMemoryConfiguration _documentImportConfig;
-
-    private readonly DocumentMemoryConfiguration _settings;
+    private readonly DocumentMemorySettings _documentImportOptions;
 
     /// <summary>
     /// Prompt settings.
     /// </summary>
-    //   private readonly PromptsConfiguration _promptOptions;
+    private readonly PromptsSettings _promptOptions;
+
     /// <summary>
+    /// Initializes a new instance of the <see cref="DocumentMemorySkill" /> class.
     /// Create a new instance of DocumentMemorySkill.
     /// </summary>
-    public DocumentMemorySkill(IOptions<DocumentMemoryConfiguration> settings)
+    /// <param name="promptOptions">The prompt options.</param>
+    /// <param name="documentImportOptions">The document import options.</param>
+    public DocumentMemorySkill(PromptsSettings promptOptions, DocumentMemorySettings documentImportOptions)
     {
-        ArgumentNullException.ThrowIfNull(settings);
-        ArgumentNullException.ThrowIfNull(settings.Value);
-        _settings = settings.Value;
+        _promptOptions = promptOptions;
+        _documentImportOptions = documentImportOptions;
     }
 
     /// <summary>
     /// Query the document memory collection for documents that match the query.
     /// </summary>
     /// <param name="query">Query to match.</param>
-    /// <param name="context">Contains the memory.</param>
+    /// <param name="context">The SkContext.</param>
+    /// <returns>A Task&lt;System.String&gt; representing the asynchronous operation.</returns>
     [SKFunction("Query documents in the memory given a user message")]
     [SKFunctionName("QueryDocuments")]
     [SKFunctionInput(Description = "Query to match.")]
     [SKFunctionContextParameter(Name = "chatId", Description = "ID of the chat that owns the documents")]
     [SKFunctionContextParameter(Name = "tokenLimit", Description = "Maximum number of tokens")]
-    [SKFunctionContextParameter(Name = "contextTokenLimit", Description = "Maximum number of context tokens")]
     public async Task<string> QueryDocumentsAsync(string query, SKContext context)
     {
         string chatId = context.Variables["chatId"];
         int tokenLimit = int.Parse(context.Variables["tokenLimit"], new NumberFormatInfo());
-        int contextTokenLimit = int.Parse(context.Variables["contextTokenLimit"], new NumberFormatInfo());
-        var remainingToken = Math.Min(
-            tokenLimit,
-            Math.Floor(contextTokenLimit * _settings.DocumentContextWeight)
-        );
+        int remainingToken = tokenLimit;
 
         // Search for relevant document snippets.
         string[] documentCollections = new string[]
         {
-            _documentImportConfig.ChatDocumentCollectionNamePrefix + chatId,
-            _documentImportConfig.GlobalDocumentCollectionName
+            _documentImportOptions.ChatDocumentCollectionNamePrefix + chatId,
+            _documentImportOptions.GlobalDocumentCollectionName,
         };
 
         List<MemoryQueryResult> relevantMemories = new();
-        foreach (var documentCollection in documentCollections)
+        foreach (string documentCollection in documentCollections)
         {
-            var results = context.Memory.SearchAsync(
+            IAsyncEnumerable<MemoryQueryResult> results = context.Memory.SearchAsync(
                 documentCollection,
                 query,
                 limit: 100,
-                minRelevanceScore: _settings.DocumentMemoryMinRelevance);
-            await foreach (var memory in results)
+                minRelevanceScore: _promptOptions.DocumentMemoryMinRelevance);
+            await foreach (MemoryQueryResult memory in results)
             {
                 relevantMemories.Add(memory);
             }
@@ -89,9 +96,9 @@ public class DocumentMemorySkill
 
         // Concatenate the relevant document snippets.
         string documentsText = string.Empty;
-        foreach (var memory in relevantMemories)
+        foreach (MemoryQueryResult memory in relevantMemories)
         {
-            var tokenCount = Utilities.TokenCount(memory.Metadata.Text);
+            int tokenCount = Utilities.TokenCount(memory.Metadata.Text);
             if (remainingToken - tokenCount > 0)
             {
                 documentsText += $"\n\nSnippet from {memory.Metadata.Description}: {memory.Metadata.Text}";
@@ -109,11 +116,6 @@ public class DocumentMemorySkill
             return string.Empty;
         }
 
-        // Update the token limit.
-        documentsText = $"User has also shared some document snippets:\n{documentsText}";
-        tokenLimit -= Utilities.TokenCount(documentsText);
-        context.Variables.Set("tokenLimit", tokenLimit.ToString(new NumberFormatInfo()));
-
-        return documentsText;
+        return $"User has also shared some document snippets:\n{documentsText}";
     }
 }

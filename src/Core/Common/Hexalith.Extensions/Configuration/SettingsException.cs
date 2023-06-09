@@ -93,8 +93,7 @@ public class SettingsException<TSettings> : ArgumentException
     /// <typeparam name="TValue">The type of the t value.</typeparam>
     /// <param name="argument">The reference type argument.</param>
     /// <param name="paramName">The name of the parameter with which <paramref name="argument" /> corresponds.</param>
-    /// <returns>TValue.</returns>
-    public static TValue ThrowIfUndefined<TValue>(
+    public static void ThrowIfUndefined<TValue>(
         [NotNull] TValue argument,
         [CallerArgumentExpression("argument")] string? paramName = null)
     {
@@ -103,8 +102,6 @@ public class SettingsException<TSettings> : ArgumentException
             string[] parts = string.IsNullOrEmpty(paramName) ? Array.Empty<string>() : paramName.Split(".", 2);
             Throw($"The {TSettings.ConfigurationName()}.{(parts.Length > 1 ? parts[1] : "?")} setting has not been defined.", paramName);
         }
-
-        return argument;
     }
 
     /// <summary>

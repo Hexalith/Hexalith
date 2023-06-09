@@ -8,6 +8,8 @@
 // ***********************************************************************
 // <copyright file="ConversationThreadEvent.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -36,16 +38,26 @@ public class ConversationThreadEvent : BaseEvent
     }
 
     /// <summary>
-    /// Gets the owner.
+    /// Initializes a new instance of the <see cref="ConversationThreadEvent"/> class.
     /// </summary>
-    /// <value>The owner.</value>
-    public string Owner { get; }
+    [Obsolete("For serialization purpose only", true)]
+    public ConversationThreadEvent()
+    {
+        Owner = string.Empty;
+        StartedDate = DateTimeOffset.MinValue;
+    }
 
     /// <summary>
-    /// Gets the started date.
+    /// Gets or sets the owner.
+    /// </summary>
+    /// <value>The owner.</value>
+    public string Owner { get; set; }
+
+    /// <summary>
+    /// Gets or sets the started date.
     /// </summary>
     /// <value>The started date.</value>
-    public DateTimeOffset StartedDate { get; }
+    public DateTimeOffset StartedDate { get; set; }
 
     /// <inheritdoc/>
     protected override string DefaultAggregateId() => ConversationThread.GetAggregateId(Owner, StartedDate);

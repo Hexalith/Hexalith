@@ -4,7 +4,7 @@
 // Created          : 04-23-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 05-25-2023
+// Last Modified On : 05-31-2023
 // ***********************************************************************
 // <copyright file="ArtificialIntelligenceServiceSettings.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -26,22 +26,46 @@ using Hexalith.Extensions.Configuration;
 public class ArtificialIntelligenceServiceSettings : ISettings
 {
     /// <summary>
+    /// Gets or sets the bot user identifier.
+    /// </summary>
+    /// <value>The bot user identifier.</value>
+    public string BotUserId { get; set; } = "AI";
+
+    /// <summary>
+    /// Gets or sets the name of the bot user.
+    /// </summary>
+    /// <value>The name of the bot user.</value>
+    public string BotUserName { get; set; } = "Bot";
+
+    /// <summary>
     /// Gets or sets the text model service.
     /// </summary>
     /// <value>The text model service.</value>
-    public ArtificialIntelligenceModelConfiguration? ChatModelService { get; set; }
+    public ArtificialIntelligenceModelSettings? ChatModelService { get; set; }
 
     /// <summary>
     /// Gets or sets the chat model service.
     /// </summary>
     /// <value>The chat model service.</value>
-    public ArtificialIntelligenceModelConfiguration? CompletionModelService { get; set; }
+    public ArtificialIntelligenceModelSettings? CompletionModelService { get; set; }
+
+    /// <summary>
+    /// Gets or sets the document memory.
+    /// </summary>
+    /// <value>The document memory.</value>
+    public DocumentMemorySettings? DocumentMemory { get; set; }
+
+    /// <summary>
+    /// Gets or sets the prompts.
+    /// </summary>
+    /// <value>The prompts.</value>
+    public PromptsSettings? Prompts { get; set; }
 
     /// <summary>
     /// Gets or sets the text model service.
     /// </summary>
     /// <value>The text model service.</value>
-    public ArtificialIntelligenceModelConfiguration? TextEmbeddingModelService { get; set; }
+    public ArtificialIntelligenceModelSettings? TextEmbeddingModelService { get; set; }
 
     /// <summary>
     /// Configurations the name.

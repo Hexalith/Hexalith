@@ -1,4 +1,16 @@
-﻿// Copyright (c) Microsoft. All rights reserved.
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Infrastructure.MicrosoftSemanticKernel
+// Author           : Jérôme Piquot
+// Created          : 05-31-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 05-31-2023
+// ***********************************************************************
+// <copyright file="SemanticChatMemoryItem.cs" company="Fiveforty">
+//     Copyright (c) Fiveforty S.A.S.. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 using System.Text.Json.Serialization;
 
@@ -23,12 +35,14 @@ public class SemanticChatMemoryItem
     /// <summary>
     /// Details for the chat memory item.
     /// </summary>
+    /// <value>The details.</value>
     [JsonPropertyName("details")]
     public string Details { get; set; }
 
     /// <summary>
     /// Label for the chat memory item.
     /// </summary>
+    /// <value>The label.</value>
     [JsonPropertyName("label")]
     public string Label { get; set; }
 

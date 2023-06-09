@@ -4,7 +4,7 @@
 // Created          : 05-25-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 05-25-2023
+// Last Modified On : 05-31-2023
 // ***********************************************************************
 // <copyright file="ConversationItemAdded.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -33,6 +33,7 @@ public class ConversationItemAdded : ConversationThreadEvent
     /// <param name="itemDate">The date.</param>
     /// <param name="participant">The participant.</param>
     /// <param name="content">The content.</param>
+    /// <param name="authorRole">The author role.</param>
     public ConversationItemAdded(string owner, DateTimeOffset startedDate, DateTimeOffset itemDate, string participant, string content)
         : base(owner, startedDate)
     {
@@ -42,22 +43,32 @@ public class ConversationItemAdded : ConversationThreadEvent
     }
 
     /// <summary>
-    /// Gets the content.
+    /// Initializes a new instance of the <see cref="ConversationItemAdded" /> class.
+    /// </summary>
+    [Obsolete("For serialization purpose only", true)]
+    public ConversationItemAdded()
+    {
+        Participant = Content = string.Empty;
+        ItemDate = DateTimeOffset.MinValue;
+    }
+
+    /// <summary>
+    /// Gets or sets the content.
     /// </summary>
     /// <value>The content.</value>
-    public string Content { get; }
+    public string Content { get; set; }
 
     /// <summary>
-    /// Gets the date.
+    /// Gets or sets the date.
     /// </summary>
     /// <value>The date.</value>
-    public DateTimeOffset ItemDate { get; }
+    public DateTimeOffset ItemDate { get; set; }
 
     /// <summary>
-    /// Gets the participant.
+    /// Gets or sets the participant.
     /// </summary>
     /// <value>The participant.</value>
-    public string Participant { get; }
+    public string Participant { get; set; }
 
     /// <summary>
     /// Get the message name.

@@ -1,4 +1,20 @@
-﻿// Copyright (c) Microsoft. All rights reserved.
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Infrastructure.MicrosoftSemanticKernel
+// Author           : Jérôme Piquot
+// Created          : 05-31-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 05-31-2023
+// ***********************************************************************
+// <copyright file="CopilotChatPlanner.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
+namespace Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills;
 
 using System.Threading.Tasks;
 
@@ -6,25 +22,21 @@ using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Planning;
 using Microsoft.SemanticKernel.SkillDefinition;
 
-namespace Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills;
-
 /// <summary>
 /// A lightweight wrapper around a planner to allow for curating which skills are available to it.
 /// </summary>
 public class CopilotChatPlanner
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="CopilotChatPlanner"/> class.
+    /// Initializes a new instance of the <see cref="CopilotChatPlanner" /> class.
     /// </summary>
     /// <param name="plannerKernel">The planner's kernel.</param>
-    public CopilotChatPlanner(IKernel plannerKernel)
-    {
-        Kernel = plannerKernel;
-    }
+    public CopilotChatPlanner(IKernel plannerKernel) => Kernel = plannerKernel;
 
     /// <summary>
-    /// The planner's kernel.
+    /// Gets the planner's kernel.
     /// </summary>
+    /// <value>The kernel.</value>
     public IKernel Kernel { get; }
 
     /// <summary>

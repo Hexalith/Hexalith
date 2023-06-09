@@ -39,31 +39,53 @@ public static class SemanticKernelHelper
     /// <param name="settings">The settings.</param>
     /// <returns>KernelConfig.</returns>
     /// <exception cref="System.ArgumentNullException">null.</exception>
+    [Obsolete]
     public static KernelConfig AddCompletionService([NotNull] this KernelConfig config, [NotNull] ArtificialIntelligenceServiceSettings settings)
     {
         ArgumentNullException.ThrowIfNull(config);
         ArgumentNullException.ThrowIfNull(settings);
-        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.CompletionModelService);
-        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.CompletionModelService.Type);
-        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.CompletionModelService.Name);
-        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.CompletionModelService.ApplicationKey);
-        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.CompletionModelService.Model);
-        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.TextEmbeddingModelService);
-        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.TextEmbeddingModelService.Type);
-        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.TextEmbeddingModelService.Name);
-        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.TextEmbeddingModelService.ApplicationKey);
-        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.TextEmbeddingModelService.Model);
-        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.ChatModelService);
-        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.ChatModelService.Type);
-        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.ChatModelService.Name);
-        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.ChatModelService.ApplicationKey);
-        _ = SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.ChatModelService.Model);
+        SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.CompletionModelService);
+        SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.CompletionModelService.Type);
+        SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.CompletionModelService.Name);
+        SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.CompletionModelService.ApplicationKey);
+        SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.CompletionModelService.Model);
+        SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.TextEmbeddingModelService);
+        SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.TextEmbeddingModelService.Type);
+        SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.TextEmbeddingModelService.Name);
+        SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.TextEmbeddingModelService.ApplicationKey);
+        SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.TextEmbeddingModelService.Model);
+        SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.ChatModelService);
+        SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.ChatModelService.Type);
+        SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.ChatModelService.Name);
+        SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.ChatModelService.ApplicationKey);
+        SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.ChatModelService.Model);
+        string completionEndpoint = string.Empty;
+        string chatEndpoint = string.Empty;
+        string textEndpoint = string.Empty;
+        if (settings.CompletionModelService.Type == ModelServiceType.AzureOpenAI)
+        {
+            SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.CompletionModelService.Endpoint);
+            completionEndpoint = settings.CompletionModelService.Endpoint;
+        }
+
+        if (settings.ChatModelService.Type == ModelServiceType.AzureOpenAI)
+        {
+            SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.CompletionModelService.Endpoint);
+            chatEndpoint = settings.CompletionModelService.Endpoint;
+        }
+
+        if (settings.TextEmbeddingModelService.Type == ModelServiceType.AzureOpenAI)
+        {
+            SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.CompletionModelService.Endpoint);
+            chatEndpoint = settings.CompletionModelService.Endpoint;
+        }
+
         config = settings.CompletionModelService.Type switch
         {
             ModelServiceType.AzureOpenAI =>
                     config.AddAzureTextCompletionService(
                     settings.CompletionModelService.Name,
-                    SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.CompletionModelService.Endpoint)!,
+                    completionEndpoint,
                     settings.CompletionModelService.ApplicationKey),
             ModelServiceType.OpenAI =>
                 _ = config.AddOpenAITextCompletionService(
@@ -77,7 +99,7 @@ public static class SemanticKernelHelper
             ModelServiceType.AzureOpenAI =>
                     config.AddAzureChatCompletionService(
                     settings.CompletionModelService.Name,
-                    SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.CompletionModelService.Endpoint)!,
+                    chatEndpoint,
                     settings.CompletionModelService.ApplicationKey),
             ModelServiceType.OpenAI =>
                 _ = config.AddOpenAIChatCompletionService(
@@ -92,7 +114,7 @@ public static class SemanticKernelHelper
                     config.AddAzureTextEmbeddingGenerationService(
                     settings.TextEmbeddingModelService.Name,
                     settings.TextEmbeddingModelService.Model,
-                    SettingsException<ArtificialIntelligenceServiceSettings>.ThrowIfUndefined(settings.TextEmbeddingModelService.Endpoint)!,
+                    textEndpoint,
                     settings.TextEmbeddingModelService.ApplicationKey),
             ModelServiceType.OpenAI =>
                 _ = config.AddAzureTextEmbeddingGenerationService(

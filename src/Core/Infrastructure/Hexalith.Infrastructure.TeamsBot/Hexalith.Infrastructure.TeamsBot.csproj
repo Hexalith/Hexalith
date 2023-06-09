@@ -10,6 +10,6 @@
 		<PackageReference Include="Microsoft.TeamsFx" Version="2.0.0" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\Hexalith.Infrastructure.MicrosoftSemanticKernel\Hexalith.Infrastructure.MicrosoftSemanticKernel.csproj" />
+		<ProjectReference Include="..\..\Application\Hexalith.Application\Hexalith.Application.csproj" />
 	</ItemGroup>
 </Project>

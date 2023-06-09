@@ -72,7 +72,7 @@
           "hash": "vcRVRVR+WDS7XgBIAT2FjCa96V4z3GVk2RblkLXQtjk="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -82,6 +82,66 @@
         ".html": {
           "relative_path": "api/Hexalith.Application.Aggregates.html",
           "hash": "eRlB9TiNYxq8yBuPQzrdRc4BzTeCg/gZihxhpG3Bth8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.ArtificialIntelligence.Answer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.ArtificialIntelligence.Answer.html",
+          "hash": "D6b13dzhudYik9MsQM+hNcrvcHXw4MRMYacfks/VELQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.ArtificialIntelligence.Ask.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.ArtificialIntelligence.Ask.html",
+          "hash": "fxO5JMBlwK2v83ZB5D8U4KlZ8ChslB4clwWYMgndTWk="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.ArtificialIntelligence.IChatService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.ArtificialIntelligence.IChatService.html",
+          "hash": "5T03laujrQV9+2NEnXSLsY72IdYuHlqxEAhAkPmTemI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.ArtificialIntelligence.OpenApiAuthentication.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.ArtificialIntelligence.OpenApiAuthentication.html",
+          "hash": "PCnmEcko4EIazjWu1KS9pB+2Zw7+S/YJvFK1oCXUyRM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.ArtificialIntelligence.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.ArtificialIntelligence.html",
+          "hash": "j3Q6r5g7W340o5Y6oER86+Tpa17XdX+4dOlOdAMT45I="
         }
       },
       "is_incremental": false,
@@ -225,7 +285,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Commands.CommandProcessingFailed.html",
-          "hash": "kfH7XVWOnDCp/kcuTelquM5CJoA3NriuRof1+P2FTik="
+          "hash": "UkAczCNHDjVIBxH/k/EIGDWj1i+8umDgck0Oxx5Sgno="
         }
       },
       "is_incremental": false,
@@ -348,7 +408,7 @@
           "hash": "U02axqpY6mg8tt0NuGl2tu088A/2N3SsYgVvYcUOzfc="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -377,6 +437,30 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.ConversationThreads.IConversationThreadService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.ConversationThreads.IConversationThreadService.html",
+          "hash": "vALcyefdk1su8gwtEkmdeYxoEp8yKNYd/s+79pjEr6g="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.ConversationThreads.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.ConversationThreads.html",
+          "hash": "wXX9RRBTqroP4V7KAzDG/Heu/sGlrtsvQ9KwbLNaFLM="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Hexalith.Application.DataFragment.yml",
       "output": {
         ".html": {
@@ -393,7 +477,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Envelopes.BaseEnvelope-2.html",
-          "hash": "d8sQPMRBu01o3mMZ3lJLzKodsWjJwG6sZo9+9FXeF/U="
+          "hash": "gchVItbXC8i1rxDnY5qRk1PoynlyAj4lmiSvTrd3Vmw="
         }
       },
       "is_incremental": false,
@@ -417,7 +501,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Envelopes.EventEnvelope.html",
-          "hash": "kPE9FYA2VaSyAYnqwg1fhGHW1f0rIySjKtdwgazrTKU="
+          "hash": "QZSE0A9z6aMC5NOnTs/l9fXnX+kMMCXdVsQkfXkml2c="
         }
       },
       "is_incremental": false,
@@ -456,7 +540,7 @@
           "hash": "jHs777TWlovySVTMizdzM7Hk5PttdNdcnZzIZK9iiVA="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -465,7 +549,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Envelopes.IMessageBus-3.html",
-          "hash": "lzWi0OaOXjQJylmRhEvks5OnEm2RTd6Bzr3MEeOJRH4="
+          "hash": "MpQ1d+0U/dOGRWAX8X+ZigLQEFvYxF8DjY/F9I3NvnA="
         }
       },
       "is_incremental": false,
@@ -777,7 +861,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Metadatas.BaseMetadata.html",
-          "hash": "sxuSX+V2lP6jRmw2VqXQ3U9lXYE/FPlqzzUOji75GPs="
+          "hash": "hak4EA8tvqPPqMUeDasHy1783CPByDkgLs0F8sUWG5A="
         }
       },
       "is_incremental": false,
@@ -804,7 +888,7 @@
           "hash": "1MeGFwdQ2aWmPRkPgNSvvWw8qdnjiN3hQo/kX95ZdGE="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -816,7 +900,7 @@
           "hash": "vXzV49q76jHMZ0kQo1T7/IpDp0AdIKSFhxtTK138J9w="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -828,7 +912,7 @@
           "hash": "H/EzNjJ6gXQ/zvXPySNBPg87lPhFWBvAR3jcPYQdUBA="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -840,7 +924,7 @@
           "hash": "tGxSYLY0vL7V+JSCBefNMqcoT+tDT0tZEql3wPxUhWM="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -852,7 +936,7 @@
           "hash": "QgiyuiRxkz7D7xxrqzdCXAulS+SfLiDDFJ5Qu/K8dnQ="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -864,7 +948,7 @@
           "hash": "/wXPG4h4HJd/WITWCYXJ3NKk7oqHWz1imsQWMo/FVnY="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -873,7 +957,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Metadatas.MessageMetadata.html",
-          "hash": "Lxt0u/mz3LoPzXg9OmrrDO45g6PydKm/IdgHvkLt7/4="
+          "hash": "rUGi8gXWIo2yAuK2atXLaUfV3qSyW+eNbpr7h3pKa3E="
         }
       },
       "is_incremental": false,
@@ -984,7 +1068,7 @@
           "hash": "ad3TV+yTnuBBotsmuXC7axThlx5XAvsgIO6f/onSIi4="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1020,7 +1104,7 @@
           "hash": "nTRop+kdvdZPyTp8WX3Gel60H/cnO8AN6mNwGmlg72A="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1053,7 +1137,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Prompts.ICommandPromptGenerator.html",
-          "hash": "oXzjyUPlfokUxTIMcSGI3dxHK/2FvHfN/IXrTxlt07M="
+          "hash": "aPwilmM8dkh6di2dr0llAz8bSG6Oe44VRMPHjq62D9A="
         }
       },
       "is_incremental": false,
@@ -1188,7 +1272,7 @@
           "hash": "Ei7eFxZLHHP+q1iZWFvcT9yC7uV0boZ4BUXyPka57tM="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1344,7 +1428,7 @@
           "hash": "BQ4HrDZjHYfc/k5VqeJvXrkInOGJRutzxqS/OJ9BmQA="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1356,7 +1440,7 @@
           "hash": "sMggr7OuzmcVKg3LH8HdHYQ4uBQOUeeZPpElbtR+IPE="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1368,7 +1452,7 @@
           "hash": "AXgACH+Yk8U/m47yDijXtKutN/fut+dnEhVNUbvOunQ="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1380,7 +1464,7 @@
           "hash": "hU+uB9dP4fTCk1ul41u9e+H/x/El/OvMRDmLNnUYXZI="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1425,7 +1509,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.StreamStores.MessageStore-1.html",
-          "hash": "Q2z4UQMsNxl7gOgJ2BsZicP1yMIJVbvxYdAd56qkNVQ="
+          "hash": "/nSV5B37fnz5iHnmwJ9Cumzyj2gkMOkXSba/H7Q97oo="
         }
       },
       "is_incremental": false,
@@ -1512,7 +1596,7 @@
           "hash": "tw0jMoLWMFeTAHQK6e9PRVfQrUMIGVfEKl2+xO2WoRA="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1548,7 +1632,7 @@
           "hash": "pRJ0fdslPNSLukb7i8H4tZ8RqNJvfYA/JDs4loI/AGk="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1557,7 +1641,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Tasks.TaskProcessingFailure.html",
-          "hash": "Ex9NIR9nxsqEFhqnaJEn+pXrthbBGuddYd4INDR7mf4="
+          "hash": "WqEwCxtYPovLA3iPurbk/T2Vmj2/ZyQX2nB9Y+KYIHI="
         }
       },
       "is_incremental": false,
@@ -1569,7 +1653,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Tasks.TaskProcessingHistory.html",
-          "hash": "epM+SeL7BATOL5qTNezqhtRRKd+sElEzRFukkm7qSik="
+          "hash": "zcRVgQyYptHZCMbL/By4PwMGhStzh1XoKQpnFQpyWcA="
         }
       },
       "is_incremental": false,
@@ -1581,7 +1665,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Tasks.TaskProcessor.html",
-          "hash": "wxkx/iPbWra682BwFsfYiobbmqTpZA4y1SMQ4pXRL1U="
+          "hash": "XWsNwNf6+tdyDWJCoSPAOyG+LsCLThEadVSaz8yZfAU="
         }
       },
       "is_incremental": false,
@@ -1596,7 +1680,7 @@
           "hash": "Wakja2e4IU9M+zFhnWiDhHPHGrodCEyC/j2lmx2QwsQ="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1620,7 +1704,7 @@
           "hash": "fkkZXFn87Bsuo4fn5gFdQKybNGaBZEOquGD5ekZHiZg="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1632,7 +1716,7 @@
           "hash": "O/bVP39Al7aCdfXRWN5RxMDG2Xw9V5hKluW1M6Dfkas="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1644,7 +1728,7 @@
           "hash": "edc9G+KmphzgZmWLlusWmj01PRAUjGDGyQafthXmRpU="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1656,7 +1740,7 @@
           "hash": "lAL+oNCR1B/QOzRXBNRw5VL+sm5LQJF34DS0VHNmFqA="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1668,7 +1752,7 @@
           "hash": "XdAUEDyp3mfoCsz04w2SK9wWMlhgkSKzZ2lSzsztqAk="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1680,7 +1764,7 @@
           "hash": "toH+fEtDodI8xBK8VWE9Nb5Y0xJa0YN1yQ9H29OGcxA="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1701,7 +1785,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.Aggregates.Aggregate.html",
-          "hash": "w9QfeP0WzEZHk8HF6wWtYY0NL1LtVwFl1QJp434yuzk="
+          "hash": "Dji2NAfHhf0Ri92nVuHSg0qO/HgDwDEwirbGgBeG5Ag="
         }
       },
       "is_incremental": false,
@@ -1716,7 +1800,7 @@
           "hash": "uGvlWr4QZYaFLYhqyDu/ALJS2U5nmO+ZkK0KIUx5U+0="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1773,7 +1857,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.ConversationThreads.Entities.ConversationItem.html",
-          "hash": "FpSu0yppiHrl9Axz09eONK/AR98AYQVYbFpm5maWiJU="
+          "hash": "4FiKPOjs6/tYRtlzWzHt5TwI1g5j6ozOvhhvyKEOBBk="
         }
       },
       "is_incremental": false,
@@ -1797,7 +1881,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.ConversationThreads.Events.ConversationItemAdded.html",
-          "hash": "jNqYW9qydB/Qcm8mwwLqdeM1tA/Q/98MAelWAwFFFHs="
+          "hash": "+KUylb/ji60MyrYqdvmEslExbnKCNupRy1JYO2LDQ4g="
         }
       },
       "is_incremental": false,
@@ -1809,7 +1893,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.ConversationThreads.Events.ConversationThreadEvent.html",
-          "hash": "WYmHPA39bqOBhHg1fqSbX7eJKkg7wnAWNNypVhmn7rw="
+          "hash": "0qD9bt33uvlFPlST4x0105BfXUUUWd2PWxCaN3WgC94="
         }
       },
       "is_incremental": false,
@@ -1905,7 +1989,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.Messages.BaseMessage.html",
-          "hash": "MBK0Nb+L4piM+2JLLdqg6lk0M02lBY/EU5JBx6qmc+w="
+          "hash": "We2JyFV5MmOawapnO+CdzMLX1gh1du+UFKK+byEiaTM="
         }
       },
       "is_incremental": false,
@@ -1920,7 +2004,7 @@
           "hash": "0tr8PBA1pE3mO+cSDlIKUMu29LpxjAJAlgBRLviWQWU="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1941,7 +2025,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.UserConversationProfiles.Aggregates.UserConversationsProfile.html",
-          "hash": "wCI7INGTZ9V9gTkh7OqOODJ+3vkD+IURGlf0gdOpfsY="
+          "hash": "svvAk9V+hPc/Urim50pVELGNTNbP/j9wd9WInZN++20="
         }
       },
       "is_incremental": false,
@@ -1985,11 +2069,23 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Domain.UserConversationProfiles.Events.ConversationAdded.yml",
+      "source_relative_path": "api/Hexalith.Domain.UserConversationProfiles.Events.UserConversationAdded.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Hexalith.Domain.UserConversationProfiles.Events.ConversationAdded.html",
-          "hash": "puBrQmRwcilDPiSe0iwWx6olqbI2r/y2ON4Aw115XKU="
+          "relative_path": "api/Hexalith.Domain.UserConversationProfiles.Events.UserConversationAdded.html",
+          "hash": "RFAjjt93Y+OdHZqCPhN5QcgNac4sKyEcTCj8a3K8xeI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Domain.UserConversationProfiles.Events.UserConversationsProfileAdded.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Domain.UserConversationProfiles.Events.UserConversationsProfileAdded.html",
+          "hash": "odF7TDUti1i+DghKsyaL+6jLYay6BZZJrbjdkdRBXps="
         }
       },
       "is_incremental": false,
@@ -2001,7 +2097,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.UserConversationProfiles.Events.UserConversationsProfileEvent.html",
-          "hash": "wpM1dBViNbsIck72ATfW8brxZAeDjcgDwli5Xc39mr0="
+          "hash": "wPN9qyiLKMaAEmK2y1cJcsaH2EOyS3fnZhcLYj0pERc="
         }
       },
       "is_incremental": false,
@@ -2013,7 +2109,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.UserConversationProfiles.Events.html",
-          "hash": "TGSWnJDCoK4XbgnlfyUqi3lwACEigsudXiDmaKI1Urg="
+          "hash": "Vc6gFFMPnfPydw/DWAgmqC/3ywmJGGWp9GZxCYahdI4="
         }
       },
       "is_incremental": false,
@@ -2028,7 +2124,7 @@
           "hash": "fzpE8cmGaBo+TzpsoAXH8tWoaaBOO3y+/NqG5Owh5tI="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2037,7 +2133,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Extensions.Common.DateTimeService.html",
-          "hash": "HwR85ld7eNHfcvLRO7Z0xvO7oDpbx0gd3NY50tWia34="
+          "hash": "9DI8gllbporJIFvMe2KIScWbDW1LEVEM2gIgmgoXKr4="
         }
       },
       "is_incremental": false,
@@ -2064,7 +2160,7 @@
           "hash": "7GhCjLugGx6bIBJDnUmbEs/NkGX0m1k9Ygyyl9aQing="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2100,7 +2196,7 @@
           "hash": "Vb7XKjEPNjb5Vs6md2mSpPPR3rTXpdddkfVQ4tTayss="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2112,7 +2208,7 @@
           "hash": "PKz1uAqkRVywFS9zrz0Mj1VEnl7yB4BfE35vlGjmXS4="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2160,7 +2256,7 @@
           "hash": "8SHQ/SnIIsabewiUs9M1oVokMM0/ztpFkTeve8GDs38="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2169,7 +2265,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Extensions.Configuration.OptionsHelper.html",
-          "hash": "sL62BPdGpj7nHEubR3zDWVaHGDN7pcGIfxWxkzLWzrA="
+          "hash": "D/eYRyXNWk6MLYHvVgKwpPd6mjsbjQTEEhzp54vXu7g="
         }
       },
       "is_incremental": false,
@@ -2181,7 +2277,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Extensions.Configuration.SettingsException-1.html",
-          "hash": "ajZkgxyVrrnQHjQmZgqN05R//sl27CTo19YdH1WRDFc="
+          "hash": "/U+Ly370/ELfH2+ZciJXEEzDqpECsXpifYuRm9snCag="
         }
       },
       "is_incremental": false,
@@ -2208,7 +2304,7 @@
           "hash": "URAW3l2KhGFWriT+NmwcGZz66K2ydSQDx7gytO+OPYE="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2220,7 +2316,7 @@
           "hash": "uLCrxpHtbMJvKCFeqO/vrrXVjkmyNmZMX8uRdCxynxU="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2229,7 +2325,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Extensions.Helpers.ExampleHelper.html",
-          "hash": "F+NjMpfUu3lOZeq4us0cOk9pufiYyCaOi2ZReIPrHpg="
+          "hash": "uMm3WeUEsQlRCNtr5BLsFJLYv6168nu+QBev5upCRII="
         }
       },
       "is_incremental": false,
@@ -2244,7 +2340,7 @@
           "hash": "hCGIkdAYILMiBrVSc2AeGhotjA3W7ZX9+S9AmqCDpGQ="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2256,7 +2352,7 @@
           "hash": "l7/TbJEy1410G1UW0e0T5t4Uit8KRU4aFaVIbSDasIs="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2268,7 +2364,7 @@
           "hash": "21WdoLg6xKl1wL2xTL+/4t+X+1hSM6lT4sqsG7C3bxg="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2280,7 +2376,7 @@
           "hash": "/EJBDKkNuZB2TfoqCb+6weOKWnI8dtx5LkqGTuHA4eg="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2292,7 +2388,7 @@
           "hash": "Rqu6s1wHVnZAQpBZnVf0xNsz8m5pXf6E7qP68Dt3/6s="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2316,7 +2412,7 @@
           "hash": "GbvTtODZxkE2sYjveFFE5apP3UcTg2U6oqr12xgVsPs="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2325,7 +2421,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Extensions.Reflections.TypeMapper-1.html",
-          "hash": "eE5n5Lroqm6AQy58c8TiyZYSG/HGKDUAhAYwCQczm+c="
+          "hash": "x7o304jsyzJd15NmE536owipE7/PcHdkNDi4vWIPTfc="
         }
       },
       "is_incremental": false,
@@ -2349,7 +2445,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Extensions.Serialization.IPolymorphicSerializable.html",
-          "hash": "RKypQrurfSDvDec/+Hhk/HzbjZMdfxJj1zJ/Tj8yW7A="
+          "hash": "rcfZmONFgY3YYxkrk/3QyCVh9OY1asBtD/O9OiXahrQ="
         }
       },
       "is_incremental": false,
@@ -2400,7 +2496,7 @@
           "hash": "Vf97nadQIE5K48OYaiExtLbeJzm46y/XpR5b1pIpwLM="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2412,7 +2508,7 @@
           "hash": "V/pM9qj2ljrgfxELYz5wIGCTZDKImAzccREAQh1bHJQ="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2457,7 +2553,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.ContainerRegistryBuilder.html",
-          "hash": "GUB0kqxcOQfv7Pve3jjauyz0mVnaPNlgS4uq1xhZiNA="
+          "hash": "+Ptjy3HEEVifz1WDn9YwD4/sIcu4YDma/2Oq9ZKtLxY="
         }
       },
       "is_incremental": false,
@@ -2472,7 +2568,7 @@
           "hash": "+Oi0Yuo96p5WYHA03cCpXXPBfFrUvbcLEc3b9jmEPys="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2508,7 +2604,7 @@
           "hash": "a2U1tolqkLv2iqHMu877dQD/u1nAR/NTXCuOoYZMYGo="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2517,7 +2613,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.ResourceBuilder-1.html",
-          "hash": "XSl1p9ewWvZr/HvNRK3m0NM/QKfLGjMjiPJs4oHorx4="
+          "hash": "vNefYiFAOS/SdBgO0deQzh5/8e6m9M6sab7MlB1gT9w="
         }
       },
       "is_incremental": false,
@@ -2673,7 +2769,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Handlers.ActorsCommandProcessor.html",
-          "hash": "/VbIn8AJBI0Sp8Zh2gfqttU6J6y50klvBtY9MwL+3Nc="
+          "hash": "ZeCeKyy1WIY1UArRsnEsyiD7KE5rYUoVtEWKhrQs/3o="
         }
       },
       "is_incremental": false,
@@ -2685,7 +2781,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor.html",
-          "hash": "z2vI7RkRB6i97+uRVBOEIbhfE5ZZ1YX9rHB3TWrea+U="
+          "hash": "Vi/2ykz5Av75iTHbNMU+pklrdavLVfeiVUeKiuqsNdw="
         }
       },
       "is_incremental": false,
@@ -2724,7 +2820,7 @@
           "hash": "qaAKx7+oLV9g+BolFNtiW1+gYzRVlmdvFL1CGwrWXX8="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2736,7 +2832,7 @@
           "hash": "wzx+cAWVyE0CGPk0+CeEqBWev7bhYN18OuRXVbsQ6WQ="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2748,7 +2844,7 @@
           "hash": "2cpoJPXcROsDgHvhwxo/wTQuWLHz/RRyCIrjQeJR6FU="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2793,7 +2889,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents.Dynamics365BusinessEventBase.html",
-          "hash": "p6KNf6/U+PTds9/MxKB4/RSwuaCB+7WWxEjFz6MKg10="
+          "hash": "R4Ou1zu9lFFjt00PH+rka/2VLkhwdct3ByNsqg/59t8="
         }
       },
       "is_incremental": false,
@@ -2829,7 +2925,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.Dynamics365FinanceAndOperationsClient-1.html",
-          "hash": "4bpxXlz2blyPMkeara6bK6Nr4EVOD71917dn0egnlNs="
+          "hash": "JFZqu253QLP7Fud7UlBBYw5ks1Vcpr3xbG3xUL/nBOY="
         }
       },
       "is_incremental": false,
@@ -2889,7 +2985,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.IDynamics365FinanceAndOperationsClient-1.html",
-          "hash": "PhA9ZnUGyuukfXKeov2yAWg1wacR7CrEKdZ4J0+M/4E="
+          "hash": "hDtqX0EkB5qmkyCMrzb2jj6DQMjI8zHEpYvGuLj9WGg="
         }
       },
       "is_incremental": false,
@@ -2937,7 +3033,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Controllers.Dynamics365FinanceBindingController.html",
-          "hash": "Gy1MYl2U66ooSWyM/xAVW8oLFThyAVM2jd+ixZ5wRwU="
+          "hash": "G71tfHgwwyjUpLmpn/WB1Mz4dvvMQ31oRhPvwnwgM5c="
         }
       },
       "is_incremental": false,
@@ -3000,7 +3096,7 @@
           "hash": "x8Rorbho3t2es/gWEYVJ2FDEeha+YZwpzWBGr0BOrHE="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3012,7 +3108,7 @@
           "hash": "TPUusw2TzVt1C8LyoB7cHqgpnDdrQU2G9K4rqQYenHo="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3024,7 +3120,7 @@
           "hash": "11N1F8VPDqVTD/YmG2ndy6kKsYPLu8bTuegGXH7j68M="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3036,7 +3132,7 @@
           "hash": "ENjyX+vRRQWo5FmX+R8EFStG1w51HVa1o58l4t3jqkg="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3048,7 +3144,7 @@
           "hash": "S+czGVG8MZMqhrelYPvPO6K3oBeM3dhC2XknTgbcZH0="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3084,7 +3180,7 @@
           "hash": "kdfuAMZ0zXOVL/lPYbmDls8xEKiOEdrSvjmRmf3rv7Q="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3096,7 +3192,7 @@
           "hash": "C/HxCt1xZ9gHg235BcadCW2/k0TYcRuWL9QoMmJrv10="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3132,7 +3228,7 @@
           "hash": "dyYCcMyJxK51MaoaRSiM19o4dTJsCcNRMwJqucAn6hI="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3144,7 +3240,7 @@
           "hash": "gduk/n3NuiVUlogp91ZQnfbhX0Osge1GtLQexlir2L8="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3156,7 +3252,7 @@
           "hash": "EKZJVMlktMow+qGpBGGhfQXtyth7DC9QmOs+qA0BYj8="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3213,7 +3309,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Security.Dynamics365FinanceAndOperationsSecurityContext.html",
-          "hash": "9i2+Y6JkBPkrj31qiCkW95fbLXiQoEY288LxRRwDXh8="
+          "hash": "suHPYtypEMfymfcpWTe7W+XT46U/aAuqeB12nZfQW6s="
         }
       },
       "is_incremental": false,
@@ -3264,7 +3360,7 @@
           "hash": "SHbCSNA9L6jXMNbGm/ieWAovhFbfZdcBc98kLFb+GRY="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3300,7 +3396,7 @@
           "hash": "r8VN7MelIBT/Ai3iA7tauc14ijzFfJtcPgq5+9UqhpM="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3324,7 +3420,7 @@
           "hash": "7e+a0V2TefzzWV+QxdK2/W/Fz3PGzrRboiqYSeRTwiw="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3345,7 +3441,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks.ConventionNamingCommandProcessor.html",
-          "hash": "Tem05ywP/SnSRILPvdnn10RDzCgmMa4dzTxJTdM6h5w="
+          "hash": "gzcK31KOgt/rtrI8YC5VV9WZk8MhspUhlSTdAuqLrjM="
         }
       },
       "is_incremental": false,
@@ -3357,7 +3453,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks.Dynamics365FinanceAndOperationsClientBuilder-1.html",
-          "hash": "XPIPhnpwj0B1IN2igZal2wVjEYV2w/pscnBCMIK+w/4="
+          "hash": "PMMTaG4laTi9q9QiqwiuKjMzydVXJ/uWvZ8x9Dc6mUA="
         }
       },
       "is_incremental": false,
@@ -3389,11 +3485,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.ArtificialIntelligenceModelConfiguration.yml",
+      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.ArtificialIntelligenceModelSettings.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.ArtificialIntelligenceModelConfiguration.html",
-          "hash": "7lLm2xYP17S2fuuwTDlDQ8IJg3ICORWnc4nIgUuIIAw="
+          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.ArtificialIntelligenceModelSettings.html",
+          "hash": "BhIIgMwD9ZiDqCS8UHoXJYOEQHscpBhraCdvGBiKDyM="
         }
       },
       "is_incremental": false,
@@ -3405,7 +3501,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.ArtificialIntelligenceServiceSettings.html",
-          "hash": "n00Ng2fy9w8w4/wqri0xm5fxepQRXlxqIWXeuujdCDk="
+          "hash": "vcH02QSujvCO9t/ylMZYS/YFO8WqxxmfSrmsuAPFAH0="
         }
       },
       "is_incremental": false,
@@ -3425,11 +3521,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.DocumentMemoryConfiguration.yml",
+      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.DocumentMemorySettings.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.DocumentMemoryConfiguration.html",
-          "hash": "/mD/UGx4VS82CpWYa+ri21nHj7t7Shtfe2D5jTowDHw="
+          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.DocumentMemorySettings.html",
+          "hash": "wuVJalaNzbB5YqC59HFkrzgEtnL+YKTflRKMoDTSaZU="
         }
       },
       "is_incremental": false,
@@ -3444,6 +3540,18 @@
           "hash": "2jHzkAiiOYS1c5fTgaTED1WcDL7xCwUmcOSMpFzYPQE="
         }
       },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.PromptsSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.PromptsSettings.html",
+          "hash": "IjFhaRiYlljxE9g3ZL2jkWHw+4HL4Ibn+O+FbV7L2Rs="
+        }
+      },
       "is_incremental": false,
       "version": ""
     },
@@ -3453,7 +3561,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.html",
-          "hash": "6VpCxK7Ds8a9gPd6mRi4CR3mMMWr59RxbaSYRo96OMg="
+          "hash": "9fe2gDg+y9wfTaFWnxynsdLXhmXh4u6Xc5yFjM2jOuU="
         }
       },
       "is_incremental": false,
@@ -3497,6 +3605,30 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Model.ProposedPlan.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Model.ProposedPlan.html",
+          "hash": "z9v+2Mr/SQcm3hEr6MIdiAE0AwPEYExIzzvSHmilzNc="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Model.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Model.html",
+          "hash": "zcNj6dH83oN2PbVy/YLBflBq2LLWtXpSwWjc8WzbuwQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Prompts.CommandPromptGenerator.yml",
       "output": {
         ".html": {
@@ -3533,14 +3665,38 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Services.ChatService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Services.ChatService.html",
+          "hash": "4BSoiGOb2j/tFaqKCiuQY4PWTq7FakUYF2P7ye9lBz0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Services.yml",
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Services.html",
-          "hash": "imGeP6l4C3O+krCXqgdgUO9deo/oM6utrxxNyg4v4/0="
+          "hash": "wdD6ygI9nDApBONU4P3yAo9kzY26QBptJcpl/p2YFyE="
         }
       },
       "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.AuthorRole.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.AuthorRole.html",
+          "hash": "O7e0IUd/koon1eaKT1r4TZA7yo2kXkrMQdWwfr7fldA="
+        }
+      },
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3549,7 +3705,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.ChatSkill.html",
-          "hash": "r1UadGwtStn0GobrRZLk9/DKE5oCdeNYNckpdfziO5E="
+          "hash": "70n6O6vPSeaXzuo7m3nn/MhMOdy97yBJdxsN6wnQRbQ="
         }
       },
       "is_incremental": false,
@@ -3561,10 +3717,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.CopilotChatPlanner.html",
-          "hash": "c/9Hg3KzIAd+cUEDg1J9GO1C8DEb94HCPoY2KSIsHLA="
+          "hash": "fbVJFovqniMre9kE8AQlfgXgfec9FzPrMcYIXqELwzE="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3573,7 +3729,19 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.DocumentMemorySkill.html",
-          "hash": "tIswTDIiceOyrYrW0aqtsceeInXRvKX7p6mjZwN8mAA="
+          "hash": "Z0bnKmv+Jqqko7A2bnjTBet4P99TFjV/jSibBL1SuQA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.ExternalInformationSkill.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.ExternalInformationSkill.html",
+          "hash": "rO1ZHLxusH+Pd7YhzaKsryepEdSdVQgfaXZPOWk4Q2w="
         }
       },
       "is_incremental": false,
@@ -3585,10 +3753,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.SemanticChatMemory.html",
-          "hash": "8v464csREw7c2jVIECgakPVYY3Idis8TSohhNfSUxUo="
+          "hash": "+Sn73XEPbCA6u3zlK6gf/yXjTY9GYt80tOE6fZaGZZI="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3597,7 +3765,19 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.SemanticChatMemoryItem.html",
-          "hash": "nEkg5jokpvvCe7Db9L4de/FB2/mlKgqGzNWLviR7xMM="
+          "hash": "Ka71bNZfcc84ptEjQbAlEgnD0BkHmyqPXGfi0Zuqv5I="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.SemanticChatMemorySkill.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.SemanticChatMemorySkill.html",
+          "hash": "Cd752wi5TLGleu3KHmut7dOhX+fleQbTVhXnMTy9aZ0="
         }
       },
       "is_incremental": false,
@@ -3609,7 +3789,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.html",
-          "hash": "vJc6jpc5Sd1FWRuTZTyaa6C+NkT+qHEPsOqZMfQeOEY="
+          "hash": "WrzUBD0CKbuP9HrP45nHEkvsY6Y/jg6KVn7ApexLkhI="
         }
       },
       "is_incremental": false,
@@ -3624,7 +3804,7 @@
           "hash": "XUhrVLDieTR2ZWUYHBq3QyLlusEegEnLTRoirXFf9AU="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3636,7 +3816,7 @@
           "hash": "r5KIWD0IXAS629t8nPxzvPWIwTwhg+3LA9YKCo0buME="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3648,7 +3828,7 @@
           "hash": "pYD/DN4VVgsFN5kO+Yn1BIi+r4yid2wT5dNOp8T3M1U="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3660,7 +3840,7 @@
           "hash": "EXNA2K2trd91moKIIgZKnleTVROjuSsCLKpN5c6xT1M="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3672,7 +3852,7 @@
           "hash": "MCCj+HoLgeSt0O3+IGXKajcXRMQ67NSeQ3eKQMf+ipI="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3684,7 +3864,7 @@
           "hash": "gfP2aOfE2fNVgLH1mBr1R1JDdqfmNyuqlAJ2dxsja3w="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3696,7 +3876,7 @@
           "hash": "cgw9f/NKyp0ljj6UqPceum+z79HEBWG1Lr0WDSBNaE8="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3708,7 +3888,7 @@
           "hash": "ZRfQgfFtinlfYpo28Fj+ziX1Xy/wcEHb/ioK26Yko70="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3720,7 +3900,7 @@
           "hash": "CG2y99rNzJyL6OQsAh9ZZ/OPJDXYz6yU6ZSYAKLixOg="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3732,7 +3912,7 @@
           "hash": "NP+NCx2YdZo5CVA4VdDk4SCB7ap1kpeTlR+ZOTESe+k="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3744,7 +3924,7 @@
           "hash": "qoggEgP/orCSIgZu2CXbO2Fcjf3xhe4yR/rUb4qNqhQ="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3756,7 +3936,7 @@
           "hash": "FwhzGcXKLgaLHil96FLCg65boZe6IrOQ8c9PnKXbu7w="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3768,7 +3948,7 @@
           "hash": "gFEQVLogmf7oiIPaSR4Kec0jOG3k4LY+J0KDpeDAJ8s="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3905,6 +4085,30 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.TeamsBot.Controllers.ChatController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.TeamsBot.Controllers.ChatController.html",
+          "hash": "zQ4DjQ1/cHbyzNB9RtVlRtNIOrLTLxiwNvX6WahCc+g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.TeamsBot.Controllers.SemanticKernelController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.TeamsBot.Controllers.SemanticKernelController.html",
+          "hash": "bzLhYM7GrXcpfCZ++X8MEPS8ufg967YmpGyFMV8Gxc0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Hexalith.Infrastructure.TeamsBot.Controllers.TeamsBotController.yml",
       "output": {
         ".html": {
@@ -3921,7 +4125,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.TeamsBot.Controllers.html",
-          "hash": "yxaKBE2T50p6/l2J6gMc4x5+3/XttVWltRy0Y5JizkM="
+          "hash": "IJs4w70+lgcC2PVZnXSUY1S8qnC7L5oD1XgJ7i4klTo="
         }
       },
       "is_incremental": false,
@@ -3933,7 +4137,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.TeamsBot.Handlers.SemanticTeamsBot.html",
-          "hash": "395lBBThQmfpz3+kg3mEkSYg01osUEAczy8k6U4liuE="
+          "hash": "llljVL5cdqx4yz9cHHkccBamkokgyN0uZt+N+Qlp6Mo="
         }
       },
       "is_incremental": false,
@@ -3960,7 +4164,7 @@
           "hash": "LSP3BWVAfIDCusrmbQNVIZxI2MLp1rD0zHmDR0rHOg4="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -3970,6 +4174,78 @@
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.TeamsBot.Helpers.html",
           "hash": "ZuN8fQmKtaNXPPbSTGzOp2sGya84ueIMYSatrI+qzg8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.TeamsBot.Models.OpenApiSkillsAuthHeaders.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.TeamsBot.Models.OpenApiSkillsAuthHeaders.html",
+          "hash": "Mx7ILav4MI4NL01yfnev1xC2Rb4Qk1iDBzSnX0LqOck="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.TeamsBot.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.TeamsBot.Models.html",
+          "hash": "1xIv6vlEtijq6yoPsUb0ZQaD7aZubVjpDFA7y05tc1E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.WebApis.Authentications.ApiKeyAuthenticationHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.WebApis.Authentications.ApiKeyAuthenticationHandler.html",
+          "hash": "tb1qV32P5e6d2goWSI3LqdNQUY0ayfmHm0MDQWCRliI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.WebApis.Authentications.ApiKeyAuthenticationSchemeOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.WebApis.Authentications.ApiKeyAuthenticationSchemeOptions.html",
+          "hash": "uyhkx1i3inFzxkbinsUhxjIZTMB8Mlis5VbJNDo3SE8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.WebApis.Authentications.PassThroughAuthenticationHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.WebApis.Authentications.PassThroughAuthenticationHandler.html",
+          "hash": "/BTi4uPUQRefX8Rlve3rCKDcXSKBLRo5GOatGRE8Kak="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.WebApis.Authentications.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.WebApis.Authentications.html",
+          "hash": "wU7bCIf6EKwb27UtGUg6KL2i4QB+D0Vc5I3tjpjFyTA="
         }
       },
       "is_incremental": false,
@@ -4008,7 +4284,7 @@
           "hash": "IbO3lIFrwkG4sHvJeP0Mb20msvtlIxX4Oq4/sgNKlqU="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -4020,7 +4296,7 @@
           "hash": "n4JfzOexPlSo26P7cPKNqjVjV/XZqdsphx9I8HRDNws="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -4032,7 +4308,7 @@
           "hash": "QF1eIoW1P1RHmYLLBPPTpUrpQC5tcGQsscO4Xpa0ALM="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -4044,7 +4320,7 @@
           "hash": "iEivnTBASziik/77h83Cih+3IAK7q6Pohxu7jwM++v8="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -4053,7 +4329,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.TestMocks.IMockBuilder-1.html",
-          "hash": "sybKWcgsczMY9/i1YHEPSXZqLCLIhniTuTw5duCuOGo="
+          "hash": "aMDp1g859x6AAizepYdSI0saDXveze84mWDhI/hNAPI="
         }
       },
       "is_incremental": false,
@@ -4077,7 +4353,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.TestMocks.OptionsBuilder-1.html",
-          "hash": "tCFaoBYwZ3Yr3XXIQN80ALScn9IqVo3TpOqWV/645s4="
+          "hash": "laZvljkButWym+VAVPFeYbJ5qSVAO8T37SKonc0WoIA="
         }
       },
       "is_incremental": false,
@@ -4104,7 +4380,7 @@
           "hash": "gfU/J6hSC5WUHZ0KHHG52HtruM7IYb7PyKmpGi3a3/s="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -4113,7 +4389,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "PXZ/NtjNfRnIi/d3VXfD4seaUighb6HtGqYvWgz+Z6Q="
+          "hash": "/g5ZCMq25a/cV9ooEPbXmgUTzOgbNTTEbapSAS1HDQY="
         }
       },
       "is_incremental": false,
@@ -4186,8 +4462,8 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 340,
-          "skipped_file_count": 142
+          "total_file_count": 363,
+          "skipped_file_count": 172
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
