@@ -15719,6 +15719,64 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.PromptsSettings.WorkingMemoryName
   nameWithType: PromptsSettings.WorkingMemoryName
+- uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings
+  name: WebSearchSettings
+  href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.html
+  commentId: T:Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings
+  fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings
+  nameWithType: WebSearchSettings
+- uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.BingApiKey
+  name: BingApiKey
+  href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.html#Hexalith_Infrastructure_MicrosoftSemanticKernel_Configurations_WebSearchSettings_BingApiKey
+  commentId: P:Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.BingApiKey
+  fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.BingApiKey
+  nameWithType: WebSearchSettings.BingApiKey
+- uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.BingApiKey*
+  name: BingApiKey
+  href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.html#Hexalith_Infrastructure_MicrosoftSemanticKernel_Configurations_WebSearchSettings_BingApiKey_
+  commentId: Overload:Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.BingApiKey
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.BingApiKey
+  nameWithType: WebSearchSettings.BingApiKey
+- uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.ConfigurationName
+  name: ConfigurationName()
+  href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.html#Hexalith_Infrastructure_MicrosoftSemanticKernel_Configurations_WebSearchSettings_ConfigurationName
+  commentId: M:Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.ConfigurationName
+  fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.ConfigurationName()
+  nameWithType: WebSearchSettings.ConfigurationName()
+- uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.ConfigurationName*
+  name: ConfigurationName
+  href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.html#Hexalith_Infrastructure_MicrosoftSemanticKernel_Configurations_WebSearchSettings_ConfigurationName_
+  commentId: Overload:Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.ConfigurationName
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.ConfigurationName
+  nameWithType: WebSearchSettings.ConfigurationName
+- uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.GoogleApiKey
+  name: GoogleApiKey
+  href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.html#Hexalith_Infrastructure_MicrosoftSemanticKernel_Configurations_WebSearchSettings_GoogleApiKey
+  commentId: P:Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.GoogleApiKey
+  fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.GoogleApiKey
+  nameWithType: WebSearchSettings.GoogleApiKey
+- uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.GoogleApiKey*
+  name: GoogleApiKey
+  href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.html#Hexalith_Infrastructure_MicrosoftSemanticKernel_Configurations_WebSearchSettings_GoogleApiKey_
+  commentId: Overload:Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.GoogleApiKey
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.GoogleApiKey
+  nameWithType: WebSearchSettings.GoogleApiKey
+- uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.GoogleEngineId
+  name: GoogleEngineId
+  href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.html#Hexalith_Infrastructure_MicrosoftSemanticKernel_Configurations_WebSearchSettings_GoogleEngineId
+  commentId: P:Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.GoogleEngineId
+  fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.GoogleEngineId
+  nameWithType: WebSearchSettings.GoogleEngineId
+- uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.GoogleEngineId*
+  name: GoogleEngineId
+  href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.html#Hexalith_Infrastructure_MicrosoftSemanticKernel_Configurations_WebSearchSettings_GoogleEngineId_
+  commentId: Overload:Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.GoogleEngineId
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.GoogleEngineId
+  nameWithType: WebSearchSettings.GoogleEngineId
 - uid: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers
   name: Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers
   href: api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.html
@@ -17603,12 +17661,15 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.TeamsBot.Controllers.ChatController.ChatController
   nameWithType: ChatController.ChatController
-- uid: Hexalith.Infrastructure.TeamsBot.Controllers.ChatController.ChatAsync(Hexalith.Application.ArtificialIntelligence.IChatService,Hexalith.Application.ArtificialIntelligence.Ask,Hexalith.Infrastructure.TeamsBot.Models.OpenApiSkillsAuthHeaders)
-  name: ChatAsync(IChatService, Ask, OpenApiSkillsAuthHeaders)
-  href: api/Hexalith.Infrastructure.TeamsBot.Controllers.ChatController.html#Hexalith_Infrastructure_TeamsBot_Controllers_ChatController_ChatAsync_Hexalith_Application_ArtificialIntelligence_IChatService_Hexalith_Application_ArtificialIntelligence_Ask_Hexalith_Infrastructure_TeamsBot_Models_OpenApiSkillsAuthHeaders_
-  commentId: M:Hexalith.Infrastructure.TeamsBot.Controllers.ChatController.ChatAsync(Hexalith.Application.ArtificialIntelligence.IChatService,Hexalith.Application.ArtificialIntelligence.Ask,Hexalith.Infrastructure.TeamsBot.Models.OpenApiSkillsAuthHeaders)
-  fullName: Hexalith.Infrastructure.TeamsBot.Controllers.ChatController.ChatAsync(Hexalith.Application.ArtificialIntelligence.IChatService, Hexalith.Application.ArtificialIntelligence.Ask, Hexalith.Infrastructure.TeamsBot.Models.OpenApiSkillsAuthHeaders)
-  nameWithType: ChatController.ChatAsync(IChatService, Ask, OpenApiSkillsAuthHeaders)
+- uid: Hexalith.Infrastructure.TeamsBot.Controllers.ChatController.ChatAsync(Microsoft.SemanticKernel.IKernel,Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.CopilotChatPlanner,Microsoft.Extensions.Options.IOptions{Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings},Hexalith.Application.ArtificialIntelligence.Ask,Hexalith.Infrastructure.TeamsBot.Models.OpenApiSkillsAuthHeaders)
+  name: ChatAsync(IKernel, CopilotChatPlanner, IOptions<WebSearchSettings>, Ask, OpenApiSkillsAuthHeaders)
+  href: api/Hexalith.Infrastructure.TeamsBot.Controllers.ChatController.html#Hexalith_Infrastructure_TeamsBot_Controllers_ChatController_ChatAsync_Microsoft_SemanticKernel_IKernel_Hexalith_Infrastructure_MicrosoftSemanticKernel_Skills_ChatSkills_CopilotChatPlanner_Microsoft_Extensions_Options_IOptions_Hexalith_Infrastructure_MicrosoftSemanticKernel_Configurations_WebSearchSettings__Hexalith_Application_ArtificialIntelligence_Ask_Hexalith_Infrastructure_TeamsBot_Models_OpenApiSkillsAuthHeaders_
+  commentId: M:Hexalith.Infrastructure.TeamsBot.Controllers.ChatController.ChatAsync(Microsoft.SemanticKernel.IKernel,Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.CopilotChatPlanner,Microsoft.Extensions.Options.IOptions{Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings},Hexalith.Application.ArtificialIntelligence.Ask,Hexalith.Infrastructure.TeamsBot.Models.OpenApiSkillsAuthHeaders)
+  name.vb: ChatAsync(IKernel, CopilotChatPlanner, IOptions(Of WebSearchSettings), Ask, OpenApiSkillsAuthHeaders)
+  fullName: Hexalith.Infrastructure.TeamsBot.Controllers.ChatController.ChatAsync(Microsoft.SemanticKernel.IKernel, Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.CopilotChatPlanner, Microsoft.Extensions.Options.IOptions<Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings>, Hexalith.Application.ArtificialIntelligence.Ask, Hexalith.Infrastructure.TeamsBot.Models.OpenApiSkillsAuthHeaders)
+  fullName.vb: Hexalith.Infrastructure.TeamsBot.Controllers.ChatController.ChatAsync(Microsoft.SemanticKernel.IKernel, Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.CopilotChatPlanner, Microsoft.Extensions.Options.IOptions(Of Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings), Hexalith.Application.ArtificialIntelligence.Ask, Hexalith.Infrastructure.TeamsBot.Models.OpenApiSkillsAuthHeaders)
+  nameWithType: ChatController.ChatAsync(IKernel, CopilotChatPlanner, IOptions<WebSearchSettings>, Ask, OpenApiSkillsAuthHeaders)
+  nameWithType.vb: ChatController.ChatAsync(IKernel, CopilotChatPlanner, IOptions(Of WebSearchSettings), Ask, OpenApiSkillsAuthHeaders)
 - uid: Hexalith.Infrastructure.TeamsBot.Controllers.ChatController.ChatAsync*
   name: ChatAsync
   href: api/Hexalith.Infrastructure.TeamsBot.Controllers.ChatController.html#Hexalith_Infrastructure_TeamsBot_Controllers_ChatController_ChatAsync_
@@ -17657,11 +17718,11 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.TeamsBot.Controllers.SemanticKernelController.SemanticKernelController
   nameWithType: SemanticKernelController.SemanticKernelController
-- uid: Hexalith.Infrastructure.TeamsBot.Controllers.SemanticKernelController.InvokeFunctionAsync(IKernel,Hexalith.Application.ArtificialIntelligence.Ask,System.String,System.String)
+- uid: Hexalith.Infrastructure.TeamsBot.Controllers.SemanticKernelController.InvokeFunctionAsync(Microsoft.SemanticKernel.IKernel,Hexalith.Application.ArtificialIntelligence.Ask,System.String,System.String)
   name: InvokeFunctionAsync(IKernel, Ask, String, String)
-  href: api/Hexalith.Infrastructure.TeamsBot.Controllers.SemanticKernelController.html#Hexalith_Infrastructure_TeamsBot_Controllers_SemanticKernelController_InvokeFunctionAsync_IKernel_Hexalith_Application_ArtificialIntelligence_Ask_System_String_System_String_
-  commentId: M:Hexalith.Infrastructure.TeamsBot.Controllers.SemanticKernelController.InvokeFunctionAsync(IKernel,Hexalith.Application.ArtificialIntelligence.Ask,System.String,System.String)
-  fullName: Hexalith.Infrastructure.TeamsBot.Controllers.SemanticKernelController.InvokeFunctionAsync(IKernel, Hexalith.Application.ArtificialIntelligence.Ask, System.String, System.String)
+  href: api/Hexalith.Infrastructure.TeamsBot.Controllers.SemanticKernelController.html#Hexalith_Infrastructure_TeamsBot_Controllers_SemanticKernelController_InvokeFunctionAsync_Microsoft_SemanticKernel_IKernel_Hexalith_Application_ArtificialIntelligence_Ask_System_String_System_String_
+  commentId: M:Hexalith.Infrastructure.TeamsBot.Controllers.SemanticKernelController.InvokeFunctionAsync(Microsoft.SemanticKernel.IKernel,Hexalith.Application.ArtificialIntelligence.Ask,System.String,System.String)
+  fullName: Hexalith.Infrastructure.TeamsBot.Controllers.SemanticKernelController.InvokeFunctionAsync(Microsoft.SemanticKernel.IKernel, Hexalith.Application.ArtificialIntelligence.Ask, System.String, System.String)
   nameWithType: SemanticKernelController.InvokeFunctionAsync(IKernel, Ask, String, String)
 - uid: Hexalith.Infrastructure.TeamsBot.Controllers.SemanticKernelController.InvokeFunctionAsync*
   name: InvokeFunctionAsync
@@ -17714,11 +17775,11 @@ references:
   commentId: T:Hexalith.Infrastructure.TeamsBot.Handlers.SemanticTeamsBot
   fullName: Hexalith.Infrastructure.TeamsBot.Handlers.SemanticTeamsBot
   nameWithType: SemanticTeamsBot
-- uid: Hexalith.Infrastructure.TeamsBot.Handlers.SemanticTeamsBot.#ctor(ArtificialIntelligenceService)
+- uid: Hexalith.Infrastructure.TeamsBot.Handlers.SemanticTeamsBot.#ctor(Hexalith.Infrastructure.MicrosoftSemanticKernel.Services.ArtificialIntelligenceService)
   name: SemanticTeamsBot(ArtificialIntelligenceService)
-  href: api/Hexalith.Infrastructure.TeamsBot.Handlers.SemanticTeamsBot.html#Hexalith_Infrastructure_TeamsBot_Handlers_SemanticTeamsBot__ctor_ArtificialIntelligenceService_
-  commentId: M:Hexalith.Infrastructure.TeamsBot.Handlers.SemanticTeamsBot.#ctor(ArtificialIntelligenceService)
-  fullName: Hexalith.Infrastructure.TeamsBot.Handlers.SemanticTeamsBot.SemanticTeamsBot(ArtificialIntelligenceService)
+  href: api/Hexalith.Infrastructure.TeamsBot.Handlers.SemanticTeamsBot.html#Hexalith_Infrastructure_TeamsBot_Handlers_SemanticTeamsBot__ctor_Hexalith_Infrastructure_MicrosoftSemanticKernel_Services_ArtificialIntelligenceService_
+  commentId: M:Hexalith.Infrastructure.TeamsBot.Handlers.SemanticTeamsBot.#ctor(Hexalith.Infrastructure.MicrosoftSemanticKernel.Services.ArtificialIntelligenceService)
+  fullName: Hexalith.Infrastructure.TeamsBot.Handlers.SemanticTeamsBot.SemanticTeamsBot(Hexalith.Infrastructure.MicrosoftSemanticKernel.Services.ArtificialIntelligenceService)
   nameWithType: SemanticTeamsBot.SemanticTeamsBot(ArtificialIntelligenceService)
 - uid: Hexalith.Infrastructure.TeamsBot.Handlers.SemanticTeamsBot.#ctor*
   name: SemanticTeamsBot

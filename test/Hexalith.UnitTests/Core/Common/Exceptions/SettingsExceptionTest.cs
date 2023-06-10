@@ -13,11 +13,10 @@ using Hexalith.Extensions.Configuration;
 public class SettingsExceptionTest
 {
     [Fact]
-    public void Defined_settings_property_should_return_value()
+    public void Defined_settings_should_not_throw_exception()
     {
         DummySettings settings = new() { Name = "hello world" };
-        string value = SettingsException<DummySettings>.ThrowIfUndefined(settings.Name);
-        _ = value.Should().Be("hello world");
+        SettingsException<DummySettings>.ThrowIfUndefined(settings.Name);
     }
 
     [Fact]

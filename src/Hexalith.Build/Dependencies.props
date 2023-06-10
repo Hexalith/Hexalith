@@ -20,7 +20,7 @@
 		<MicrosoftBotBuilderVersion>4.19.*</MicrosoftBotBuilderVersion>
 		<MicrosoftIdentityClientVersion>4.54.0</MicrosoftIdentityClientVersion>
 		<MicrosoftNETTestSdkVersion>17.6.*</MicrosoftNETTestSdkVersion>
-		<MicrosoftSemanticKernelVersion>0.15.230531.5-preview</MicrosoftSemanticKernelVersion>
+		<MicrosoftSemanticKernelVersion>0.15.230609.2-preview</MicrosoftSemanticKernelVersion>
 		<MicrosoftTeamsFxVersion>2.0.*</MicrosoftTeamsFxVersion>
 		<MicrosoftGraphVersion>5.12.*</MicrosoftGraphVersion>
 		<MicrosoftIdentityWebVersion>2.11.0</MicrosoftIdentityWebVersion>

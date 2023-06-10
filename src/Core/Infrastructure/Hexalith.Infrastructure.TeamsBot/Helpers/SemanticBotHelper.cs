@@ -16,11 +16,8 @@
 
 namespace Hexalith.Infrastructure.TeamsBot.Helpers;
 
-using Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers;
 using Hexalith.Infrastructure.SemanticBot.Adapters;
-using Hexalith.Infrastructure.TeamsBot.Handlers;
 
-using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
 using Microsoft.Bot.Connector.Authentication;
 using Microsoft.Extensions.Configuration;
@@ -41,11 +38,13 @@ public static class SemanticBotHelper
     public static IServiceCollection AddSemanticBot(this IServiceCollection services, IConfiguration configuration)
     {
         return services
-            .AddSemanticKernel(configuration)
+
+            // .AddSemanticKernel(configuration)
             .AddSingleton<BotFrameworkAuthentication, ConfigurationBotFrameworkAuthentication>()
             .AddSingleton<CloudAdapter, TeamsBotAdapter>()
             .AddSingleton<IBotFrameworkHttpAdapter>(sp => sp.GetRequiredService<CloudAdapter>())
-            .AddTransient<IBot, SemanticTeamsBot>()
+
+            // .AddTransient<IBot, SemanticTeamsBot>()
             .AddSingleton(sp =>
             {
                 ConversationOptions options = new()

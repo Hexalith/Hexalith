@@ -12,4 +12,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\Application\Hexalith.Application\Hexalith.Application.csproj" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Handlers\" />
+	</ItemGroup>
 </Project>
