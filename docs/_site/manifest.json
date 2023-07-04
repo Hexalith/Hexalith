@@ -12,7 +12,7 @@
           "hash": "mLQc0aFezA/VPN2W2F6C0EjR/QvGQeROZuCTQXJ/EiE="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -125,6 +125,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.ArtificialIntelligence.ISemanticMemoryProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.ArtificialIntelligence.ISemanticMemoryProvider.html",
+          "hash": "y1/21OeT49oogpDrEDBKRdOHL4MkWTfVfUEDdIIwu6I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Hexalith.Application.ArtificialIntelligence.OpenApiAuthentication.yml",
       "output": {
         ".html": {
@@ -141,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.ArtificialIntelligence.html",
-          "hash": "j3Q6r5g7W340o5Y6oER86+Tpa17XdX+4dOlOdAMT45I="
+          "hash": "RnU+2eJAFBKf4skZkweigUAnmdKgie4UgDDwnu3YWuA="
         }
       },
       "is_incremental": false,
@@ -285,7 +297,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Commands.CommandProcessingFailed.html",
-          "hash": "kfH7XVWOnDCp/kcuTelquM5CJoA3NriuRof1+P2FTik="
+          "hash": "UkAczCNHDjVIBxH/k/EIGDWj1i+8umDgck0Oxx5Sgno="
         }
       },
       "is_incremental": false,
@@ -477,7 +489,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Envelopes.BaseEnvelope-2.html",
-          "hash": "d8sQPMRBu01o3mMZ3lJLzKodsWjJwG6sZo9+9FXeF/U="
+          "hash": "gchVItbXC8i1rxDnY5qRk1PoynlyAj4lmiSvTrd3Vmw="
         }
       },
       "is_incremental": false,
@@ -501,7 +513,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Envelopes.EventEnvelope.html",
-          "hash": "kPE9FYA2VaSyAYnqwg1fhGHW1f0rIySjKtdwgazrTKU="
+          "hash": "QZSE0A9z6aMC5NOnTs/l9fXnX+kMMCXdVsQkfXkml2c="
         }
       },
       "is_incremental": false,
@@ -549,7 +561,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Envelopes.IMessageBus-3.html",
-          "hash": "lzWi0OaOXjQJylmRhEvks5OnEm2RTd6Bzr3MEeOJRH4="
+          "hash": "MpQ1d+0U/dOGRWAX8X+ZigLQEFvYxF8DjY/F9I3NvnA="
         }
       },
       "is_incremental": false,
@@ -861,7 +873,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Metadatas.BaseMetadata.html",
-          "hash": "sxuSX+V2lP6jRmw2VqXQ3U9lXYE/FPlqzzUOji75GPs="
+          "hash": "hak4EA8tvqPPqMUeDasHy1783CPByDkgLs0F8sUWG5A="
         }
       },
       "is_incremental": false,
@@ -957,7 +969,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Metadatas.MessageMetadata.html",
-          "hash": "Lxt0u/mz3LoPzXg9OmrrDO45g6PydKm/IdgHvkLt7/4="
+          "hash": "rUGi8gXWIo2yAuK2atXLaUfV3qSyW+eNbpr7h3pKa3E="
         }
       },
       "is_incremental": false,
@@ -1137,7 +1149,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Prompts.ICommandPromptGenerator.html",
-          "hash": "oXzjyUPlfokUxTIMcSGI3dxHK/2FvHfN/IXrTxlt07M="
+          "hash": "aPwilmM8dkh6di2dr0llAz8bSG6Oe44VRMPHjq62D9A="
         }
       },
       "is_incremental": false,
@@ -1509,7 +1521,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.StreamStores.MessageStore-1.html",
-          "hash": "Q2z4UQMsNxl7gOgJ2BsZicP1yMIJVbvxYdAd56qkNVQ="
+          "hash": "/nSV5B37fnz5iHnmwJ9Cumzyj2gkMOkXSba/H7Q97oo="
         }
       },
       "is_incremental": false,
@@ -1641,7 +1653,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Tasks.TaskProcessingFailure.html",
-          "hash": "Ex9NIR9nxsqEFhqnaJEn+pXrthbBGuddYd4INDR7mf4="
+          "hash": "WqEwCxtYPovLA3iPurbk/T2Vmj2/ZyQX2nB9Y+KYIHI="
         }
       },
       "is_incremental": false,
@@ -1653,7 +1665,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Tasks.TaskProcessingHistory.html",
-          "hash": "epM+SeL7BATOL5qTNezqhtRRKd+sElEzRFukkm7qSik="
+          "hash": "zcRVgQyYptHZCMbL/By4PwMGhStzh1XoKQpnFQpyWcA="
         }
       },
       "is_incremental": false,
@@ -1665,7 +1677,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Tasks.TaskProcessor.html",
-          "hash": "wxkx/iPbWra682BwFsfYiobbmqTpZA4y1SMQ4pXRL1U="
+          "hash": "XWsNwNf6+tdyDWJCoSPAOyG+LsCLThEadVSaz8yZfAU="
         }
       },
       "is_incremental": false,
@@ -1785,7 +1797,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.Aggregates.Aggregate.html",
-          "hash": "w9QfeP0WzEZHk8HF6wWtYY0NL1LtVwFl1QJp434yuzk="
+          "hash": "Dji2NAfHhf0Ri92nVuHSg0qO/HgDwDEwirbGgBeG5Ag="
         }
       },
       "is_incremental": false,
@@ -1833,7 +1845,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.html",
-          "hash": "AnNvQQuXBZBKo4U7RsFXd+FkXsfhSSM+Sy4PxgZgyDo="
+          "hash": "HWaTKadhDVlRi/wlG/xzvWugs6Cet9lu4Q5fr2zOyXs="
         }
       },
       "is_incremental": false,
@@ -1893,7 +1905,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.ConversationThreads.Events.ConversationThreadEvent.html",
-          "hash": "Vb8sdxzDKhSd/BPGjL1yfF8y6LP+xVEi7PhnTZRvV2Q="
+          "hash": "0qD9bt33uvlFPlST4x0105BfXUUUWd2PWxCaN3WgC94="
         }
       },
       "is_incremental": false,
@@ -1989,7 +2001,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.Messages.BaseMessage.html",
-          "hash": "MBK0Nb+L4piM+2JLLdqg6lk0M02lBY/EU5JBx6qmc+w="
+          "hash": "We2JyFV5MmOawapnO+CdzMLX1gh1du+UFKK+byEiaTM="
         }
       },
       "is_incremental": false,
@@ -2025,7 +2037,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.UserConversationProfiles.Aggregates.UserConversationsProfile.html",
-          "hash": "5vvnSmkKZ3QqwXSJPGTho0NTvEUS5KXnRWN+ZVwRjaE="
+          "hash": "svvAk9V+hPc/Urim50pVELGNTNbP/j9wd9WInZN++20="
         }
       },
       "is_incremental": false,
@@ -2097,7 +2109,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.UserConversationProfiles.Events.UserConversationsProfileEvent.html",
-          "hash": "EoP6jbHBGZ5KN9ayexTwNBobhDBaf3Uh9uwZHx1ZnDk="
+          "hash": "wPN9qyiLKMaAEmK2y1cJcsaH2EOyS3fnZhcLYj0pERc="
         }
       },
       "is_incremental": false,
@@ -2133,7 +2145,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Extensions.Common.DateTimeService.html",
-          "hash": "HwR85ld7eNHfcvLRO7Z0xvO7oDpbx0gd3NY50tWia34="
+          "hash": "9DI8gllbporJIFvMe2KIScWbDW1LEVEM2gIgmgoXKr4="
         }
       },
       "is_incremental": false,
@@ -2265,7 +2277,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Extensions.Configuration.OptionsHelper.html",
-          "hash": "sL62BPdGpj7nHEubR3zDWVaHGDN7pcGIfxWxkzLWzrA="
+          "hash": "D/eYRyXNWk6MLYHvVgKwpPd6mjsbjQTEEhzp54vXu7g="
         }
       },
       "is_incremental": false,
@@ -2325,7 +2337,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Extensions.Helpers.ExampleHelper.html",
-          "hash": "F+NjMpfUu3lOZeq4us0cOk9pufiYyCaOi2ZReIPrHpg="
+          "hash": "uMm3WeUEsQlRCNtr5BLsFJLYv6168nu+QBev5upCRII="
         }
       },
       "is_incremental": false,
@@ -2421,7 +2433,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Extensions.Reflections.TypeMapper-1.html",
-          "hash": "eE5n5Lroqm6AQy58c8TiyZYSG/HGKDUAhAYwCQczm+c="
+          "hash": "x7o304jsyzJd15NmE536owipE7/PcHdkNDi4vWIPTfc="
         }
       },
       "is_incremental": false,
@@ -2445,7 +2457,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Extensions.Serialization.IPolymorphicSerializable.html",
-          "hash": "RKypQrurfSDvDec/+Hhk/HzbjZMdfxJj1zJ/Tj8yW7A="
+          "hash": "rcfZmONFgY3YYxkrk/3QyCVh9OY1asBtD/O9OiXahrQ="
         }
       },
       "is_incremental": false,
@@ -2553,7 +2565,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.ContainerRegistryBuilder.html",
-          "hash": "GUB0kqxcOQfv7Pve3jjauyz0mVnaPNlgS4uq1xhZiNA="
+          "hash": "+Ptjy3HEEVifz1WDn9YwD4/sIcu4YDma/2Oq9ZKtLxY="
         }
       },
       "is_incremental": false,
@@ -2613,7 +2625,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.AzureCloud.Builders.ResourceBuilder-1.html",
-          "hash": "XSl1p9ewWvZr/HvNRK3m0NM/QKfLGjMjiPJs4oHorx4="
+          "hash": "vNefYiFAOS/SdBgO0deQzh5/8e6m9M6sab7MlB1gT9w="
         }
       },
       "is_incremental": false,
@@ -2769,7 +2781,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Handlers.ActorsCommandProcessor.html",
-          "hash": "/VbIn8AJBI0Sp8Zh2gfqttU6J6y50klvBtY9MwL+3Nc="
+          "hash": "ZeCeKyy1WIY1UArRsnEsyiD7KE5rYUoVtEWKhrQs/3o="
         }
       },
       "is_incremental": false,
@@ -2781,7 +2793,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor.html",
-          "hash": "z2vI7RkRB6i97+uRVBOEIbhfE5ZZ1YX9rHB3TWrea+U="
+          "hash": "Vi/2ykz5Av75iTHbNMU+pklrdavLVfeiVUeKiuqsNdw="
         }
       },
       "is_incremental": false,
@@ -2889,7 +2901,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents.Dynamics365BusinessEventBase.html",
-          "hash": "p6KNf6/U+PTds9/MxKB4/RSwuaCB+7WWxEjFz6MKg10="
+          "hash": "R4Ou1zu9lFFjt00PH+rka/2VLkhwdct3ByNsqg/59t8="
         }
       },
       "is_incremental": false,
@@ -2925,7 +2937,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.Dynamics365FinanceAndOperationsClient-1.html",
-          "hash": "4bpxXlz2blyPMkeara6bK6Nr4EVOD71917dn0egnlNs="
+          "hash": "JFZqu253QLP7Fud7UlBBYw5ks1Vcpr3xbG3xUL/nBOY="
         }
       },
       "is_incremental": false,
@@ -2985,7 +2997,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client.IDynamics365FinanceAndOperationsClient-1.html",
-          "hash": "PhA9ZnUGyuukfXKeov2yAWg1wacR7CrEKdZ4J0+M/4E="
+          "hash": "hDtqX0EkB5qmkyCMrzb2jj6DQMjI8zHEpYvGuLj9WGg="
         }
       },
       "is_incremental": false,
@@ -3033,7 +3045,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Controllers.Dynamics365FinanceBindingController.html",
-          "hash": "Gy1MYl2U66ooSWyM/xAVW8oLFThyAVM2jd+ixZ5wRwU="
+          "hash": "G71tfHgwwyjUpLmpn/WB1Mz4dvvMQ31oRhPvwnwgM5c="
         }
       },
       "is_incremental": false,
@@ -3309,7 +3321,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Security.Dynamics365FinanceAndOperationsSecurityContext.html",
-          "hash": "9i2+Y6JkBPkrj31qiCkW95fbLXiQoEY288LxRRwDXh8="
+          "hash": "suHPYtypEMfymfcpWTe7W+XT46U/aAuqeB12nZfQW6s="
         }
       },
       "is_incremental": false,
@@ -3441,7 +3453,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks.ConventionNamingCommandProcessor.html",
-          "hash": "Tem05ywP/SnSRILPvdnn10RDzCgmMa4dzTxJTdM6h5w="
+          "hash": "gzcK31KOgt/rtrI8YC5VV9WZk8MhspUhlSTdAuqLrjM="
         }
       },
       "is_incremental": false,
@@ -3453,7 +3465,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks.Dynamics365FinanceAndOperationsClientBuilder-1.html",
-          "hash": "XPIPhnpwj0B1IN2igZal2wVjEYV2w/pscnBCMIK+w/4="
+          "hash": "PMMTaG4laTi9q9QiqwiuKjMzydVXJ/uWvZ8x9Dc6mUA="
         }
       },
       "is_incremental": false,
@@ -3478,462 +3490,6 @@
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks.html",
           "hash": "Os7sWEMxozg7sZKA8YA3n7riI5pqGbYVzDG1brY5RGk="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.ArtificialIntelligenceModelSettings.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.ArtificialIntelligenceModelSettings.html",
-          "hash": "BhIIgMwD9ZiDqCS8UHoXJYOEQHscpBhraCdvGBiKDyM="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.ArtificialIntelligenceServiceSettings.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.ArtificialIntelligenceServiceSettings.html",
-          "hash": "vcH02QSujvCO9t/ylMZYS/YFO8WqxxmfSrmsuAPFAH0="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.AzureSpeechConfiguration.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.AzureSpeechConfiguration.html",
-          "hash": "ENdPw7eI1lNwcnL8Cw/HjxwUd8nDri0WnYUxyiUBeFs="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.DocumentMemorySettings.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.DocumentMemorySettings.html",
-          "hash": "wuVJalaNzbB5YqC59HFkrzgEtnL+YKTflRKMoDTSaZU="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.ModelServiceType.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.ModelServiceType.html",
-          "hash": "2jHzkAiiOYS1c5fTgaTED1WcDL7xCwUmcOSMpFzYPQE="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.PromptsSettings.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.PromptsSettings.html",
-          "hash": "IjFhaRiYlljxE9g3ZL2jkWHw+4HL4Ibn+O+FbV7L2Rs="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.WebSearchSettings.html",
-          "hash": "HC0GVvS9PowRuZ/h6Qxm/YsTt4rUkkIdY/4dpIiRecg="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.html",
-          "hash": "Ae6q4z5EdoXh+0RKi1t96BoFDiwDLknGpG0+LarMrq0="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.CommandSkillHelper.html",
-          "hash": "s5wF3CDe7xhocV79wKtHw0TYZrX6i4fhRGx4WjtMGNs="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.SemanticKernelHelper.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.SemanticKernelHelper.html",
-          "hash": "gxEQ24rsnb3+iC8qYylPveJtYeaJz0WnWTF1RYZocjU="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Helpers.html",
-          "hash": "7DNpXPzO+qM5BVDIiziRFKvM/JJB9sraFNCLWrFO9+o="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Model.ProposedPlan.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Model.ProposedPlan.html",
-          "hash": "z9v+2Mr/SQcm3hEr6MIdiAE0AwPEYExIzzvSHmilzNc="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Model.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Model.html",
-          "hash": "zcNj6dH83oN2PbVy/YLBflBq2LLWtXpSwWjc8WzbuwQ="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Prompts.CommandPromptGenerator.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Prompts.CommandPromptGenerator.html",
-          "hash": "RJzuH5G6NKVxYOSrSAO1sb+rridhhMVFaa8/x7dwi/k="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Prompts.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Prompts.html",
-          "hash": "8JR+IC2mHMKFo+oSvlOq9bDJv36V8+AA6WUUZo5uOSw="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Services.ArtificialIntelligenceService.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Services.ArtificialIntelligenceService.html",
-          "hash": "ShVZhIcnAoRczLF1S94fY4AhByCPJLVsmzmcNhSrQDA="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Services.ChatService.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Services.ChatService.html",
-          "hash": "4BSoiGOb2j/tFaqKCiuQY4PWTq7FakUYF2P7ye9lBz0="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Services.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Services.html",
-          "hash": "wdD6ygI9nDApBONU4P3yAo9kzY26QBptJcpl/p2YFyE="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.AuthorRole.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.AuthorRole.html",
-          "hash": "O7e0IUd/koon1eaKT1r4TZA7yo2kXkrMQdWwfr7fldA="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.ChatSkill.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.ChatSkill.html",
-          "hash": "70n6O6vPSeaXzuo7m3nn/MhMOdy97yBJdxsN6wnQRbQ="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.CopilotChatPlanner.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.CopilotChatPlanner.html",
-          "hash": "fbVJFovqniMre9kE8AQlfgXgfec9FzPrMcYIXqELwzE="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.DocumentMemorySkill.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.DocumentMemorySkill.html",
-          "hash": "Z0bnKmv+Jqqko7A2bnjTBet4P99TFjV/jSibBL1SuQA="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.ExternalInformationSkill.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.ExternalInformationSkill.html",
-          "hash": "rO1ZHLxusH+Pd7YhzaKsryepEdSdVQgfaXZPOWk4Q2w="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.SemanticChatMemory.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.SemanticChatMemory.html",
-          "hash": "+Sn73XEPbCA6u3zlK6gf/yXjTY9GYt80tOE6fZaGZZI="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.SemanticChatMemoryItem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.SemanticChatMemoryItem.html",
-          "hash": "Ka71bNZfcc84ptEjQbAlEgnD0BkHmyqPXGfi0Zuqv5I="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.SemanticChatMemorySkill.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.SemanticChatMemorySkill.html",
-          "hash": "Cd752wi5TLGleu3KHmut7dOhX+fleQbTVhXnMTy9aZ0="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.html",
-          "hash": "WrzUBD0CKbuP9HrP45nHEkvsY6Y/jg6KVn7ApexLkhI="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.OpenApiSkills.GitHubSkill.Model.GitHubUser.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.OpenApiSkills.GitHubSkill.Model.GitHubUser.html",
-          "hash": "XUhrVLDieTR2ZWUYHBq3QyLlusEegEnLTRoirXFf9AU="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.OpenApiSkills.GitHubSkill.Model.Label.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.OpenApiSkills.GitHubSkill.Model.Label.html",
-          "hash": "r5KIWD0IXAS629t8nPxzvPWIwTwhg+3LA9YKCo0buME="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.OpenApiSkills.GitHubSkill.Model.PullRequest.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.OpenApiSkills.GitHubSkill.Model.PullRequest.html",
-          "hash": "pYD/DN4VVgsFN5kO+Yn1BIi+r4yid2wT5dNOp8T3M1U="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.OpenApiSkills.GitHubSkill.Model.Repo.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.OpenApiSkills.GitHubSkill.Model.Repo.html",
-          "hash": "EXNA2K2trd91moKIIgZKnleTVROjuSsCLKpN5c6xT1M="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.OpenApiSkills.GitHubSkill.Model.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.OpenApiSkills.GitHubSkill.Model.html",
-          "hash": "MCCj+HoLgeSt0O3+IGXKajcXRMQ67NSeQ3eKQMf+ipI="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.OpenApiSkills.JiraSkill.Model.CommentAuthor.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.OpenApiSkills.JiraSkill.Model.CommentAuthor.html",
-          "hash": "gfP2aOfE2fNVgLH1mBr1R1JDdqfmNyuqlAJ2dxsja3w="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.OpenApiSkills.JiraSkill.Model.CommentResponse.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.OpenApiSkills.JiraSkill.Model.CommentResponse.html",
-          "hash": "cgw9f/NKyp0ljj6UqPceum+z79HEBWG1Lr0WDSBNaE8="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.OpenApiSkills.JiraSkill.Model.IndividualComments.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.OpenApiSkills.JiraSkill.Model.IndividualComments.html",
-          "hash": "ZRfQgfFtinlfYpo28Fj+ziX1Xy/wcEHb/ioK26Yko70="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.OpenApiSkills.JiraSkill.Model.IssueResponse.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.OpenApiSkills.JiraSkill.Model.IssueResponse.html",
-          "hash": "CG2y99rNzJyL6OQsAh9ZZ/OPJDXYz6yU6ZSYAKLixOg="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.OpenApiSkills.JiraSkill.Model.IssueResponseFields.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.OpenApiSkills.JiraSkill.Model.IssueResponseFields.html",
-          "hash": "NP+NCx2YdZo5CVA4VdDk4SCB7ap1kpeTlR+ZOTESe+k="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.OpenApiSkills.JiraSkill.Model.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.OpenApiSkills.JiraSkill.Model.html",
-          "hash": "qoggEgP/orCSIgZu2CXbO2Fcjf3xhe4yR/rUb4qNqhQ="
         }
       },
       "is_incremental": false,
@@ -4097,30 +3653,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.TeamsBot.Controllers.ChatController.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.TeamsBot.Controllers.ChatController.html",
-          "hash": "YPAxH4MhuvhKD9ALh6SwUuZo7hXJV/hVbBh1FPdK8lc="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.TeamsBot.Controllers.SemanticKernelController.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.TeamsBot.Controllers.SemanticKernelController.html",
-          "hash": "n3mY5K6fJtc1NNSm4WzMWrdw297Q9yG+mc0b2iscR5k="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/Hexalith.Infrastructure.TeamsBot.Controllers.TeamsBotController.yml",
       "output": {
         ".html": {
@@ -4137,31 +3669,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.TeamsBot.Controllers.html",
-          "hash": "IJs4w70+lgcC2PVZnXSUY1S8qnC7L5oD1XgJ7i4klTo="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.TeamsBot.Handlers.SemanticTeamsBot.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.TeamsBot.Handlers.SemanticTeamsBot.html",
-          "hash": "395lBBThQmfpz3+kg3mEkSYg01osUEAczy8k6U4liuE="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.TeamsBot.Handlers.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.TeamsBot.Handlers.html",
-          "hash": "77VNuAk7IPK/zONilVLpH2NZtIXbKWILgXfNAS2nNFc="
+          "hash": "yxaKBE2T50p6/l2J6gMc4x5+3/XttVWltRy0Y5JizkM="
         }
       },
       "is_incremental": false,
@@ -4173,7 +3681,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.TeamsBot.Helpers.SemanticBotHelper.html",
-          "hash": "LSP3BWVAfIDCusrmbQNVIZxI2MLp1rD0zHmDR0rHOg4="
+          "hash": "PnhP2uK08pD1mz3X94ee2fC/yW4epz1GD0DCl0ypj/k="
         }
       },
       "is_incremental": false,
@@ -4293,7 +3801,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.WebApis.Helpers.HexalithWebApi.html",
-          "hash": "IbO3lIFrwkG4sHvJeP0Mb20msvtlIxX4Oq4/sgNKlqU="
+          "hash": "8JJCIc8TAtUw9ipvG83ZHjN3cozbnfN35NTtovLqxt8="
         }
       },
       "is_incremental": false,
@@ -4341,7 +3849,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.TestMocks.IMockBuilder-1.html",
-          "hash": "sybKWcgsczMY9/i1YHEPSXZqLCLIhniTuTw5duCuOGo="
+          "hash": "aMDp1g859x6AAizepYdSI0saDXveze84mWDhI/hNAPI="
         }
       },
       "is_incremental": false,
@@ -4365,7 +3873,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.TestMocks.OptionsBuilder-1.html",
-          "hash": "tCFaoBYwZ3Yr3XXIQN80ALScn9IqVo3TpOqWV/645s4="
+          "hash": "laZvljkButWym+VAVPFeYbJ5qSVAO8T37SKonc0WoIA="
         }
       },
       "is_incremental": false,
@@ -4401,7 +3909,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "D0G68a6Yehd9NwkSgQwd7RCdrDzXorn0wt+Dw6Uy884="
+          "hash": "3i0HbuCTnE/MNmWR3iIQfoxZBdpdA0ar986a89mnyn8="
         }
       },
       "is_incremental": false,
@@ -4416,7 +3924,7 @@
           "hash": "XREAr6iHtuka+aO7c3lTrh90rt0rybqw859u1tetgNM="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -4440,7 +3948,7 @@
           "hash": "vsW9ZvNJ7sOSf2pjIjuOSwvq6ulmUIdFPHc7lPEfC4Y="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -4459,23 +3967,25 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": true,
+        "can_incremental": false,
+        "details": "Disable incremental build by force rebuild option.",
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0
+        "skipped_file_count": 0,
+        "full_build_reason_code": "ForceRebuild"
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 4,
-          "skipped_file_count": 4
+          "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 364,
-          "skipped_file_count": 187
+          "total_file_count": 323,
+          "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
@@ -4488,8 +3998,8 @@
     },
     {
       "status": {
-        "can_incremental": true,
-        "details": "Can support incremental post processing.",
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0

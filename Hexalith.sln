@@ -106,13 +106,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeployLCS", "src\Deploy\LCS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.TeamsBot", "src\Core\Infrastructure\Hexalith.Infrastructure.TeamsBot\Hexalith.Infrastructure.TeamsBot.csproj", "{4CB3A741-2FED-491A-AA0D-01F2F2577389}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.MicrosoftSemanticKernel", "src\Core\Infrastructure\Hexalith.Infrastructure.MicrosoftSemanticKernel\Hexalith.Infrastructure.MicrosoftSemanticKernel.csproj", "{840E9378-96E8-40BC-822E-4552316EC69B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Domain.ConversationThreads", "src\Core\Domain\Hexalith.Domain.ConversationThreads\Hexalith.Domain.ConversationThreads.csproj", "{E2751BF1-0B07-4CF2-B19C-FBA0C0FB0FB9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Domain.UserConversationProfiles", "src\Core\Domain\Hexalith.Domain.UserConversations\Hexalith.Domain.UserConversationProfiles.csproj", "{2F11D0F4-35B2-45D7-8966-DF5248DB82D4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Application.ConversationThreads", "src\Core\Application\Hexalith.Application.ConversationThreads\Hexalith.Application.ConversationThreads.csproj", "{C29D4822-A879-49FA-9025-880D716782FF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.AzureDevOps", "src\Core\Infrastructure\Hexalith.Infrastructure.AzureDevOps\Hexalith.Infrastructure.AzureDevOps.csproj", "{AABC96A7-2B2C-4F92-A4CC-D76596DCF0D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -200,10 +200,6 @@ Global
 		{4CB3A741-2FED-491A-AA0D-01F2F2577389}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CB3A741-2FED-491A-AA0D-01F2F2577389}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CB3A741-2FED-491A-AA0D-01F2F2577389}.Release|Any CPU.Build.0 = Release|Any CPU
-		{840E9378-96E8-40BC-822E-4552316EC69B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{840E9378-96E8-40BC-822E-4552316EC69B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{840E9378-96E8-40BC-822E-4552316EC69B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{840E9378-96E8-40BC-822E-4552316EC69B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E2751BF1-0B07-4CF2-B19C-FBA0C0FB0FB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E2751BF1-0B07-4CF2-B19C-FBA0C0FB0FB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2751BF1-0B07-4CF2-B19C-FBA0C0FB0FB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -216,6 +212,10 @@ Global
 		{C29D4822-A879-49FA-9025-880D716782FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C29D4822-A879-49FA-9025-880D716782FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C29D4822-A879-49FA-9025-880D716782FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AABC96A7-2B2C-4F92-A4CC-D76596DCF0D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AABC96A7-2B2C-4F92-A4CC-D76596DCF0D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AABC96A7-2B2C-4F92-A4CC-D76596DCF0D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AABC96A7-2B2C-4F92-A4CC-D76596DCF0D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -247,10 +247,10 @@ Global
 		{E6211DF5-DE13-4235-AA5C-C950A6242ECA} = {39624851-E5EB-4607-9D0C-0A9BC8CC24FA}
 		{8A51A9AB-9FF9-49B3-8888-0431C20E5547} = {39624851-E5EB-4607-9D0C-0A9BC8CC24FA}
 		{4CB3A741-2FED-491A-AA0D-01F2F2577389} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
-		{840E9378-96E8-40BC-822E-4552316EC69B} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{E2751BF1-0B07-4CF2-B19C-FBA0C0FB0FB9} = {5A9735A3-CEE9-4E50-B2FD-54F0BF402002}
 		{2F11D0F4-35B2-45D7-8966-DF5248DB82D4} = {5A9735A3-CEE9-4E50-B2FD-54F0BF402002}
 		{C29D4822-A879-49FA-9025-880D716782FF} = {AA983AFF-9CBC-4F2A-98E3-3CACA5039C61}
+		{AABC96A7-2B2C-4F92-A4CC-D76596DCF0D6} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09CBB595-8996-4C7F-9C48-4C58AD9293AC}

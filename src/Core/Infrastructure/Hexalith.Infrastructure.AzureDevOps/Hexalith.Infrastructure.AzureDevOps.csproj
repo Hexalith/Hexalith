@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+	</PropertyGroup>
+	<ItemGroup>
+	  <Content Remove="C:\Users\jpiquot\.nuget\packages\microsoft.semantickernel.connectors.ai.openai\0.15.230609.2-preview\contentFiles\any\netstandard2.0\Tokenizers\Settings\encoder.json" />
+	  <Content Remove="C:\Users\jpiquot\.nuget\packages\microsoft.semantickernel.connectors.ai.openai\0.15.230609.2-preview\contentFiles\any\netstandard2.0\Tokenizers\Settings\vocab.bpe" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.SemanticKernel" Version="$(MicrosoftSemanticKernelVersion)" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\Application\Hexalith.Application\Hexalith.Application.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="SemanticIndex\" />
+	</ItemGroup>
+</Project>

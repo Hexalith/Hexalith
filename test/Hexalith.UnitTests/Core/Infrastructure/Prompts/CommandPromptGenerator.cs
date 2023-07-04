@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Infrastructure.MicrosoftSemanticKernel.Prompts;
+namespace Hexalith.UnitTests.Core.Infrastructure.Prompts;
 
 using System.Collections.Concurrent;
 using System.Text.Json;
@@ -43,7 +43,7 @@ public class CommandPromptGenerator : ICommandPromptGenerator
         string correlationId)
         where TCommand : BaseCommand, new()
     {
-        if (_prompts.TryGetValue(typeof(TCommand), out string? prompt))
+        if (_prompts.TryGetValue(typeof(TCommand), out string prompt))
         {
             return Task.FromResult(prompt);
         }

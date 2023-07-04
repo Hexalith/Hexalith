@@ -9,7 +9,6 @@ namespace Hexalith.UnitTests.Core.Infrastructure.Prompts;
 using FluentAssertions;
 
 using Hexalith.Extensions.Helpers;
-using Hexalith.Infrastructure.MicrosoftSemanticKernel.Prompts;
 
 public class CommandPromptGenerationTest
 {
