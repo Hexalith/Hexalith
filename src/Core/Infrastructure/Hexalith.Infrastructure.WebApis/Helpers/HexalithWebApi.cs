@@ -81,6 +81,7 @@ public static class HexalithWebApi
             registerActors(options.Actors));
         _ = builder
             .Services
+            .AddHttpContextAccessor()
             .AddControllers()
             .AddApplicationPart(typeof(BaseCommand).Assembly) // Issue with MapControllers() throwing a type not found exception for BaseCommand
             .AddApplicationPart(typeof(BaseMessage).Assembly) // Issue with MapControllers() throwing a type not found exception for BaseCommand
@@ -118,11 +119,12 @@ public static class HexalithWebApi
     /// <returns>IApplicationBuilder.</returns>
     public static IApplicationBuilder UseHexalith(this WebApplication app)
     {
-        _ = app.UseSerilogRequestLogging();
+        app
+            .UseCors()
+            .UseSerilogRequestLogging()
+            .UseCloudEvents();
 
-        _ = app.UseCloudEvents();
-
-        _ = app.MapControllers();
+        app.MapControllers();
 
         _ = app.MapSubscribeHandler();
 
