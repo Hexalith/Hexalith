@@ -38,6 +38,14 @@ using Hexalith.Domain.ValueObjets;
 [DataContract]
 public record Customer(string Id, string Name, Contact Contact, PostalAddress InvoiceAddress, PostalAddress DeliveryAddress, Dictionary<string, string> ExternalIds) : Aggregate
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Customer"/> class.
+    /// </summary>
+    /// <param name="customer"></param>
+    public Customer(CustomerRegistrated customer)
+    {
+    }
+
     /// <inheritdoc/>
     public override IAggregate Apply(BaseEvent domainEvent) => throw new NotImplementedException();
 

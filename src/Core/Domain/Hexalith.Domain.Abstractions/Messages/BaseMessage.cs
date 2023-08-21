@@ -64,7 +64,7 @@ public class BaseMessage : IMessage, IPolymorphicSerializable
     /// Get the aggregate identifier.
     /// </summary>
     /// <returns>The identifier.</returns>
-    protected virtual string DefaultAggregateId() => string.Empty;
+    protected virtual string DefaultAggregateId() => DefaultAggregateName();
 
     /// <summary>
     /// Get the aggregate name.
