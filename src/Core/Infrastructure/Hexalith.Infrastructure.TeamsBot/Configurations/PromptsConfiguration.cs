@@ -36,7 +36,7 @@ public class PromptsConfiguration : ISettings
     /// <summary>
     /// The system chat continuation.
     /// </summary>
-    internal string SystemChatContinuation = "SINGLE RESPONSE FROM BOT TO USER:\n[{{TimeSkill.Now}} {{timeSkill.Second}}] bot:";
+    private readonly string _systemChatContinuation = "SINGLE RESPONSE FROM BOT TO USER:\n[{{TimeSkill.Now}} {{timeSkill.Second}}] bot:";
 
     /// <summary>
     /// Gets or sets token limit of the chat model.
@@ -298,7 +298,7 @@ public class PromptsConfiguration : ISettings
         "{{DocumentMemorySkill.QueryDocuments $INPUT}}",
         "{{ChatSkill.AcquireExternalInformation}}",
         "{{ChatSkill.ExtractChatHistory}}",
-        SystemChatContinuation,
+        _systemChatContinuation,
     };
 
     /// <summary>

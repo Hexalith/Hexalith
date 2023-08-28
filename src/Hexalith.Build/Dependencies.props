@@ -35,9 +35,9 @@
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' == 'true' or '$(BuildingByReSharper)' == 'true'">
 		<!--<DaprVersion>1.0.0-local</DaprVersion>-->
-		<DaprVersion>1.10.*</DaprVersion>
+		<DaprVersion>1.11.*</DaprVersion>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' != 'true' and '$(BuildingByReSharper)' != 'true'">
-		<DaprVersion>1.10.*</DaprVersion>
+		<DaprVersion>1.11.*</DaprVersion>
 	</PropertyGroup>
 </Project>

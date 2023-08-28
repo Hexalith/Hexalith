@@ -1,29 +1,23 @@
 ﻿// ***********************************************************************
 // Assembly         : Hexalith.Infrastructure.WebApis
 // Author           : Jérôme Piquot
-// Created          : 05-30-2023
+// Created          : 08-09-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 05-30-2023
+// Last Modified On : 08-28-2023
 // ***********************************************************************
-// <copyright file="PassThroughAuthenticationHandler.cs" company="Fiveforty">
-//     Copyright (c) Fiveforty S.A.S.. All rights reserved.
+// <copyright file="PassThroughAuthenticationHandler.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 namespace Hexalith.Infrastructure.WebApis.Authentications;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-// Copyright (c) Microsoft. All rights reserved.
 
 using System.Security.Claims;
 using System.Text.Encodings.Web;
-
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Authentication;
@@ -36,12 +30,13 @@ using Microsoft.Extensions.Options;
 public class PassThroughAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
 {
     /// <summary>
-    /// The authentication scheme
+    /// The authentication scheme.
     /// </summary>
     public const string AuthenticationScheme = "PassThrough";
 
     /// <summary>
-    /// Constructor
+    /// Initializes a new instance of the <see cref="PassThroughAuthenticationHandler" /> class.
+    /// Constructor.
     /// </summary>
     /// <param name="options">The options.</param>
     /// <param name="loggerFactory">The logger factory.</param>
@@ -51,7 +46,8 @@ public class PassThroughAuthenticationHandler : AuthenticationHandler<Authentica
         IOptionsMonitor<AuthenticationSchemeOptions> options,
         ILoggerFactory loggerFactory,
         UrlEncoder encoder,
-        ISystemClock clock) : base(options, loggerFactory, encoder, clock)
+        ISystemClock clock)
+        : base(options, loggerFactory, encoder, clock)
     {
     }
 
@@ -61,10 +57,10 @@ public class PassThroughAuthenticationHandler : AuthenticationHandler<Authentica
     /// <returns>The <see cref="T:Microsoft.AspNetCore.Authentication.AuthenticateResult" />.</returns>
     protected override Task<AuthenticateResult> HandleAuthenticateAsync()
     {
-        this.Logger.LogInformation("Allowing request to pass through");
+        Logger.LogInformation("Allowing request to pass through");
 
-        var principal = new ClaimsPrincipal(new ClaimsIdentity(AuthenticationScheme));
-        var ticket = new AuthenticationTicket(principal, this.Scheme.Name);
+        ClaimsPrincipal principal = new(new ClaimsIdentity(AuthenticationScheme));
+        AuthenticationTicket ticket = new(principal, Scheme.Name);
 
         return Task.FromResult(AuthenticateResult.Success(ticket));
     }

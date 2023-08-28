@@ -53,7 +53,7 @@ public abstract record Aggregate : IAggregate
     /// Get the aggregate identifier.
     /// </summary>
     /// <returns>The identifier.</returns>
-    protected abstract string DefaultAggregateId();
+    protected virtual string DefaultAggregateId() => DefaultAggregateName();
 
     /// <summary>
     /// Get the aggregate name.
