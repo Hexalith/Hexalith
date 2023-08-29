@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 08-29-2023
 // ***********************************************************************
-// <copyright file="RegisterCustomer.cs" company="Fiveforty SAS Paris France">
+// <copyright file="CustomerInformationChanged.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -14,22 +14,22 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Parties.Commands;
+namespace Hexalith.Domain.Events;
 
 using System.Runtime.Serialization;
 
 using Hexalith.Domain.ValueObjets;
 
 /// <summary>
-/// Class RegisterCustomer.
-/// Implements the <see cref="CustomerCommand" />.
+/// Class CustomerInformationChanged.
+/// Implements the <see cref="Hexalith.Domain.Events.CustomerEvent" />.
 /// </summary>
-/// <seealso cref="CustomerCommand" />
+/// <seealso cref="Hexalith.Domain.Events.CustomerEvent" />
 [DataContract]
-public class RegisterCustomer : CustomerCommand
+public class CustomerInformationChanged : CustomerEvent
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="RegisterCustomer" /> class.
+    /// Initializes a new instance of the <see cref="CustomerInformationChanged" /> class.
     /// </summary>
     /// <param name="id">The identifier.</param>
     /// <param name="name">The name.</param>
@@ -38,7 +38,7 @@ public class RegisterCustomer : CustomerCommand
     /// <param name="invoiceAddress">The invoice address.</param>
     /// <param name="deliveryAddress">The delivery address.</param>
     /// <param name="date">The external ids.</param>
-    public RegisterCustomer(
+    public CustomerInformationChanged(
         string id,
         string name,
         string companyId,
@@ -57,10 +57,10 @@ public class RegisterCustomer : CustomerCommand
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="RegisterCustomer" /> class.
+    /// Initializes a new instance of the <see cref="CustomerInformationChanged" /> class.
     /// </summary>
     [Obsolete("This constructor is only for serialization purposes.", true)]
-    public RegisterCustomer()
+    public CustomerInformationChanged()
     {
         Name = string.Empty;
         Contact = new Contact();

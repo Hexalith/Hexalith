@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 08-28-2023
 // ***********************************************************************
-// <copyright file="ExternalSystemEvent.cs" company="Fiveforty SAS Paris France">
+// <copyright file="ExternalSystemReferenceCommand.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -29,16 +29,16 @@ using Hexalith.Domain.Events;
 /// </summary>
 /// <seealso cref="BaseEvent" />
 [DataContract]
-public abstract class ExternalSystemCommand : BaseCommand
+public abstract class ExternalSystemReferenceCommand : BaseCommand
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="ExternalSystemCommand" /> class.
+    /// Initializes a new instance of the <see cref="ExternalSystemReferenceCommand" /> class.
     /// </summary>
     /// <param name="systemId">The identifier.</param>
     /// <param name="referenceAggregateName">Type of the aggregate.</param>
     /// <param name="externalId">The external identifier.</param>
     [JsonConstructor]
-    protected ExternalSystemCommand(
+    protected ExternalSystemReferenceCommand(
         string systemId,
         string externalId,
         string referenceAggregateName)
@@ -49,10 +49,10 @@ public abstract class ExternalSystemCommand : BaseCommand
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ExternalSystemCommand" /> class.
+    /// Initializes a new instance of the <see cref="ExternalSystemReferenceCommand" /> class.
     /// </summary>
     [Obsolete("This constructor is only for serialization purposes.", true)]
-    protected ExternalSystemCommand() => SystemId = ReferenceAggregateName = ExternalId = string.Empty;
+    protected ExternalSystemReferenceCommand() => SystemId = ReferenceAggregateName = ExternalId = string.Empty;
 
     /// <summary>
     /// Gets or sets the external identifier.

@@ -46,7 +46,7 @@ public record AggregateExternalReference(
     /// </summary>
     /// <param name="mapped">The mapped.</param>
     public AggregateExternalReference(AggregateExternalReferenceAdded mapped)
-        : this(mapped.Id, new ExternalReference[] { new ExternalReference(mapped.SystemId, mapped.ExternalId) })
+        : this(mapped.Id, new ValueObjets.ExternalReference[] { new ValueObjets.ExternalReference(mapped.SystemId, mapped.ExternalId) })
     {
     }
 

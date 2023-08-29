@@ -25,11 +25,11 @@ using Hexalith.Extensions;
 
 /// <summary>
 /// Class ExternalSystemReferenceUnmapped.
-/// Implements the <see cref="Application.ExternalSystems.Commands.ExternalSystemCommand" />.
+/// Implements the <see cref="Application.ExternalSystems.Commands.ExternalSystemReferenceCommand" />.
 /// </summary>
-/// <seealso cref="Application.ExternalSystems.Commands.ExternalSystemCommand" />
+/// <seealso cref="Application.ExternalSystems.Commands.ExternalSystemReferenceCommand" />
 [DataContract]
-public class UnmapExternalSystemReference : ExternalSystemCommand
+public class UnmapExternalSystemReference : ExternalSystemReferenceCommand
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="UnmapExternalSystemReference" /> class.

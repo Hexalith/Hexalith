@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 08-29-2023
 // ***********************************************************************
-// <copyright file="RegisterCustomer.cs" company="Fiveforty SAS Paris France">
+// <copyright file="ChangeCustomerInformation.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -21,15 +21,15 @@ using System.Runtime.Serialization;
 using Hexalith.Domain.ValueObjets;
 
 /// <summary>
-/// Class RegisterCustomer.
+/// Class ChangeCustomerInformation.
 /// Implements the <see cref="CustomerCommand" />.
 /// </summary>
 /// <seealso cref="CustomerCommand" />
 [DataContract]
-public class RegisterCustomer : CustomerCommand
+public class ChangeCustomerInformation : CustomerCommand
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="RegisterCustomer" /> class.
+    /// Initializes a new instance of the <see cref="ChangeCustomerInformation" /> class.
     /// </summary>
     /// <param name="id">The identifier.</param>
     /// <param name="name">The name.</param>
@@ -38,7 +38,7 @@ public class RegisterCustomer : CustomerCommand
     /// <param name="invoiceAddress">The invoice address.</param>
     /// <param name="deliveryAddress">The delivery address.</param>
     /// <param name="date">The external ids.</param>
-    public RegisterCustomer(
+    public ChangeCustomerInformation(
         string id,
         string name,
         string companyId,
@@ -57,10 +57,10 @@ public class RegisterCustomer : CustomerCommand
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="RegisterCustomer" /> class.
+    /// Initializes a new instance of the <see cref="ChangeCustomerInformation" /> class.
     /// </summary>
     [Obsolete("This constructor is only for serialization purposes.", true)]
-    public RegisterCustomer()
+    public ChangeCustomerInformation()
     {
         Name = string.Empty;
         Contact = new Contact();
