@@ -4,7 +4,7 @@
 // Created          : 08-28-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 08-28-2023
+// Last Modified On : 08-29-2023
 // ***********************************************************************
 // <copyright file="ExternalReference.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -44,18 +44,18 @@ public class ExternalReference
     }
 
     /// <summary>
-    /// Gets the identifier.
+    /// Gets or sets the identifier.
     /// </summary>
     /// <value>The identifier.</value>
     [JsonPropertyOrder(2)]
     [DataMember(Order = 2)]
-    public string ExternalId { get; }
+    public string ExternalId { get; set; }
 
     /// <summary>
-    /// Gets the system.
+    /// Gets or sets the system.
     /// </summary>
     /// <value>The system.</value>
     [DataMember(Order = 1)]
     [JsonPropertyOrder(1)]
-    public string SystemId { get; }
+    public string SystemId { get; set; }
 }

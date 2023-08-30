@@ -45,6 +45,7 @@ public class ChangeCustomerInformation : CustomerCommand
         Contact contact,
         PostalAddress invoiceAddress,
         PostalAddress deliveryAddress,
+        string warehouseId,
         DateTimeOffset date)
         : base(id)
     {
@@ -53,6 +54,7 @@ public class ChangeCustomerInformation : CustomerCommand
         Contact = contact;
         InvoiceAddress = invoiceAddress;
         DeliveryAddress = deliveryAddress;
+        WarehouseId = warehouseId;
         Date = date;
     }
 
@@ -62,7 +64,7 @@ public class ChangeCustomerInformation : CustomerCommand
     [Obsolete("This constructor is only for serialization purposes.", true)]
     public ChangeCustomerInformation()
     {
-        Name = string.Empty;
+        Name = WarehouseId = string.Empty;
         Contact = new Contact();
         InvoiceAddress = new PostalAddress();
         DeliveryAddress = new PostalAddress();
@@ -87,7 +89,7 @@ public class ChangeCustomerInformation : CustomerCommand
     /// Gets or sets the external ids.
     /// </summary>
     /// <value>The external ids.</value>
-    [DataMember(Order = 15)]
+    [DataMember(Order = 16)]
     public DateTimeOffset Date { get; set; }
 
     /// <summary>
@@ -110,4 +112,11 @@ public class ChangeCustomerInformation : CustomerCommand
     /// <value>The name.</value>
     [DataMember(Order = 10)]
     public string Name { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Gets the warehouse identifier.
+    /// </summary>
+    /// <value>The warehouse identifier.</value>
+    [DataMember(Order = 15)]
+    public string WarehouseId { get; }
 }

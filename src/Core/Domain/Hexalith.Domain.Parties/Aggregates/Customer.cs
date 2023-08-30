@@ -41,6 +41,7 @@ public record Customer(
     Contact Contact,
     PostalAddress InvoiceAddress,
     PostalAddress DeliveryAddress,
+    string WarehouseId,
     DateTimeOffset Date) : Aggregate
 {
     /// <summary>
@@ -55,6 +56,7 @@ public record Customer(
               customer.Contact,
               customer.InvoiceAddress,
               customer.DeliveryAddress,
+              customer.WarehouseId,
               customer.Date)
     {
     }
@@ -71,6 +73,7 @@ public record Customer(
               customer.Contact,
               customer.InvoiceAddress,
               customer.DeliveryAddress,
+              customer.WarehouseId,
               customer.Date)
     {
     }

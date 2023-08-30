@@ -53,7 +53,7 @@ public class RegisterCustomerHandler : CommandHandler<RegisterCustomer>
     /// <inheritdoc/>
     public override async Task<IEnumerable<BaseMessage>> DoAsync(RegisterCustomer command, CancellationToken cancellationToken)
     {
-        return await _customerService.ExistAsync(command.CompanyId, command.Id, cancellationToken)
+        return await _customerService.ExistAsync(command.AggregateId, cancellationToken)
             ? new CustomerInformationChanged(
                 command.Id,
                 command.Name,
@@ -61,6 +61,7 @@ public class RegisterCustomerHandler : CommandHandler<RegisterCustomer>
                 command.Contact,
                 command.InvoiceAddress,
                 command.DeliveryAddress,
+                command.WarehouseId,
                 command.Date)
                 .IntoArray()
             : new CustomerRegistered(
@@ -70,6 +71,7 @@ public class RegisterCustomerHandler : CommandHandler<RegisterCustomer>
                 command.Contact,
                 command.InvoiceAddress,
                 command.DeliveryAddress,
+                command.WarehouseId,
                 command.Date)
                 .IntoArray();
     }

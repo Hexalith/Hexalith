@@ -1,41 +1,41 @@
 ﻿// ***********************************************************************
-// Assembly         : Hexalith.Application.Parties
+// Assembly         : Hexalith.Application.ExternalSystems
 // Author           : Jérôme Piquot
-// Created          : 08-29-2023
+// Created          : 08-28-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 08-29-2023
+// Last Modified On : 08-28-2023
 // ***********************************************************************
-// <copyright file="ICustomerQueryService.cs" company="Fiveforty SAS Paris France">
+// <copyright file="IAggregateExternalReferenceQueryService.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+namespace Hexalith.Application.ExternalSystems.Services;
 
-namespace Hexalith.Application.Parties.Services;
-
-using Hexalith.Application.Parties.Commands;
+using Hexalith.Domain.ValueObjets;
 
 /// <summary>
-/// Interface ICustomerQueryService.
+/// Interface IExternalReferenceQueryService.
 /// </summary>
-public interface ICustomerQueryService
+public interface IAggregateExternalReferenceQueryService
 {
     /// <summary>
-    /// Exists the asynchronous.
+    /// Gets the aggregate external references.
     /// </summary>
     /// <param name="aggregateId">The aggregate identifier.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>Task&lt;System.Boolean&gt;.</returns>
-    Task<bool> ExistAsync(string aggregateId, CancellationToken cancellationToken);
+    /// <returns>Task&lt;IEnumerable&lt;ExternalReference&gt;&gt;.</returns>
+    Task<IEnumerable<ExternalReference>> GetAsync(string aggregateId, CancellationToken cancellationToken);
 
     /// <summary>
-    /// Determines whether [has changes asynchronous] [the specified change].
+    /// Gets the asynchronous.
     /// </summary>
-    /// <param name="change">The change.</param>
+    /// <param name="aggregateId">The aggregate identifier.</param>
+    /// <param name="systemId">The system identifier.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>Task&lt;System.Boolean&gt;.</returns>
-    Task<bool> HasChangesAsync(ChangeCustomerInformation change, CancellationToken cancellationToken);
+    /// <returns>Task&lt;System.Nullable&lt;System.String&gt;&gt;.</returns>
+    Task<string?> GetExternalIdAsync(string aggregateId, string systemId, CancellationToken cancellationToken);
 }

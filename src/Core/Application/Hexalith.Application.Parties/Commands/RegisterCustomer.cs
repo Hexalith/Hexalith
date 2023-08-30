@@ -29,7 +29,7 @@ using Hexalith.Domain.ValueObjets;
 public class RegisterCustomer : CustomerCommand
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="RegisterCustomer" /> class.
+    /// Initializes a new instance of the <see cref="RegisterCustomer"/> class.
     /// </summary>
     /// <param name="id">The identifier.</param>
     /// <param name="name">The name.</param>
@@ -37,7 +37,8 @@ public class RegisterCustomer : CustomerCommand
     /// <param name="contact">The contact.</param>
     /// <param name="invoiceAddress">The invoice address.</param>
     /// <param name="deliveryAddress">The delivery address.</param>
-    /// <param name="date">The external ids.</param>
+    /// <param name="warehouseId">The warehouse identifier.</param>
+    /// <param name="date">The date.</param>
     public RegisterCustomer(
         string id,
         string name,
@@ -45,6 +46,7 @@ public class RegisterCustomer : CustomerCommand
         Contact contact,
         PostalAddress invoiceAddress,
         PostalAddress deliveryAddress,
+        string warehouseId,
         DateTimeOffset date)
         : base(id)
     {
@@ -53,6 +55,7 @@ public class RegisterCustomer : CustomerCommand
         Contact = contact;
         InvoiceAddress = invoiceAddress;
         DeliveryAddress = deliveryAddress;
+        WarehouseId = warehouseId;
         Date = date;
     }
 
@@ -62,7 +65,7 @@ public class RegisterCustomer : CustomerCommand
     [Obsolete("This constructor is only for serialization purposes.", true)]
     public RegisterCustomer()
     {
-        Name = string.Empty;
+        Name = WarehouseId = string.Empty;
         Contact = new Contact();
         InvoiceAddress = new PostalAddress();
         DeliveryAddress = new PostalAddress();
@@ -87,7 +90,7 @@ public class RegisterCustomer : CustomerCommand
     /// Gets or sets the external ids.
     /// </summary>
     /// <value>The external ids.</value>
-    [DataMember(Order = 15)]
+    [DataMember(Order = 16)]
     public DateTimeOffset Date { get; set; }
 
     /// <summary>
@@ -110,4 +113,11 @@ public class RegisterCustomer : CustomerCommand
     /// <value>The name.</value>
     [DataMember(Order = 10)]
     public string Name { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Gets the warehouse identifier.
+    /// </summary>
+    /// <value>The warehouse identifier.</value>
+    [DataMember(Order = 15)]
+    public string WarehouseId { get; }
 }

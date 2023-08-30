@@ -29,7 +29,7 @@ using Hexalith.Domain.ValueObjets;
 public class CustomerInformationChanged : CustomerEvent
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="CustomerInformationChanged" /> class.
+    /// Initializes a new instance of the <see cref="CustomerInformationChanged"/> class.
     /// </summary>
     /// <param name="id">The identifier.</param>
     /// <param name="name">The name.</param>
@@ -37,7 +37,8 @@ public class CustomerInformationChanged : CustomerEvent
     /// <param name="contact">The contact.</param>
     /// <param name="invoiceAddress">The invoice address.</param>
     /// <param name="deliveryAddress">The delivery address.</param>
-    /// <param name="date">The external ids.</param>
+    /// <param name="warehouseId">The warehouse identifier.</param>
+    /// <param name="date">The date.</param>
     public CustomerInformationChanged(
         string id,
         string name,
@@ -45,6 +46,7 @@ public class CustomerInformationChanged : CustomerEvent
         Contact contact,
         PostalAddress invoiceAddress,
         PostalAddress deliveryAddress,
+        string warehouseId,
         DateTimeOffset date)
         : base(id)
     {
@@ -53,6 +55,7 @@ public class CustomerInformationChanged : CustomerEvent
         Contact = contact;
         InvoiceAddress = invoiceAddress;
         DeliveryAddress = deliveryAddress;
+        WarehouseId = warehouseId;
         Date = date;
     }
 
@@ -62,7 +65,7 @@ public class CustomerInformationChanged : CustomerEvent
     [Obsolete("This constructor is only for serialization purposes.", true)]
     public CustomerInformationChanged()
     {
-        Name = string.Empty;
+        Name = WarehouseId = string.Empty;
         Contact = new Contact();
         InvoiceAddress = new PostalAddress();
         DeliveryAddress = new PostalAddress();
@@ -87,7 +90,7 @@ public class CustomerInformationChanged : CustomerEvent
     /// Gets or sets the external ids.
     /// </summary>
     /// <value>The external ids.</value>
-    [DataMember(Order = 15)]
+    [DataMember(Order = 16)]
     public DateTimeOffset Date { get; set; }
 
     /// <summary>
@@ -110,4 +113,11 @@ public class CustomerInformationChanged : CustomerEvent
     /// <value>The name.</value>
     [DataMember(Order = 10)]
     public string Name { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Gets the warehouse identifier.
+    /// </summary>
+    /// <value>The warehouse identifier.</value>
+    [DataMember(Order = 15)]
+    public string WarehouseId { get; }
 }

@@ -53,7 +53,7 @@ public class ChangeCustomerInformationHandler : CommandHandler<ChangeCustomerInf
     /// <inheritdoc/>
     public override async Task<IEnumerable<BaseMessage>> DoAsync(ChangeCustomerInformation command, CancellationToken cancellationToken)
     {
-        return await _customerService.ExistAsync(command.CompanyId, command.Id, cancellationToken)
+        return await _customerService.ExistAsync(command.AggregateId, cancellationToken)
             ? await _customerService.HasChangesAsync(command, cancellationToken)
                 ? new CustomerInformationChanged(
                     command.Id,
@@ -62,6 +62,7 @@ public class ChangeCustomerInformationHandler : CommandHandler<ChangeCustomerInf
                     command.Contact,
                     command.InvoiceAddress,
                     command.DeliveryAddress,
+                    command.WarehouseId,
                     command.Date)
                     .IntoArray()
                 : Array.Empty<BaseMessage>()
@@ -72,6 +73,7 @@ public class ChangeCustomerInformationHandler : CommandHandler<ChangeCustomerInf
                 command.Contact,
                 command.InvoiceAddress,
                 command.DeliveryAddress,
+                command.WarehouseId,
                 command.Date)
                 .IntoArray();
     }
