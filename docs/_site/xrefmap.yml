@@ -2706,6 +2706,31 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.ExternalSystems.Commands.RemoveAggregateExternalSystemReference.SystemId
   nameWithType: RemoveAggregateExternalSystemReference.SystemId
+- uid: Hexalith.Application.ExternalSystems.Commands.UnmapExternalSystemReference
+  name: UnmapExternalSystemReference
+  href: api/Hexalith.Application.ExternalSystems.Commands.UnmapExternalSystemReference.html
+  commentId: T:Hexalith.Application.ExternalSystems.Commands.UnmapExternalSystemReference
+  fullName: Hexalith.Application.ExternalSystems.Commands.UnmapExternalSystemReference
+  nameWithType: UnmapExternalSystemReference
+- uid: Hexalith.Application.ExternalSystems.Commands.UnmapExternalSystemReference.#ctor
+  name: UnmapExternalSystemReference()
+  href: api/Hexalith.Application.ExternalSystems.Commands.UnmapExternalSystemReference.html#Hexalith_Application_ExternalSystems_Commands_UnmapExternalSystemReference__ctor
+  commentId: M:Hexalith.Application.ExternalSystems.Commands.UnmapExternalSystemReference.#ctor
+  fullName: Hexalith.Application.ExternalSystems.Commands.UnmapExternalSystemReference.UnmapExternalSystemReference()
+  nameWithType: UnmapExternalSystemReference.UnmapExternalSystemReference()
+- uid: Hexalith.Application.ExternalSystems.Commands.UnmapExternalSystemReference.#ctor(System.String,System.String,System.String)
+  name: UnmapExternalSystemReference(String, String, String)
+  href: api/Hexalith.Application.ExternalSystems.Commands.UnmapExternalSystemReference.html#Hexalith_Application_ExternalSystems_Commands_UnmapExternalSystemReference__ctor_System_String_System_String_System_String_
+  commentId: M:Hexalith.Application.ExternalSystems.Commands.UnmapExternalSystemReference.#ctor(System.String,System.String,System.String)
+  fullName: Hexalith.Application.ExternalSystems.Commands.UnmapExternalSystemReference.UnmapExternalSystemReference(System.String, System.String, System.String)
+  nameWithType: UnmapExternalSystemReference.UnmapExternalSystemReference(String, String, String)
+- uid: Hexalith.Application.ExternalSystems.Commands.UnmapExternalSystemReference.#ctor*
+  name: UnmapExternalSystemReference
+  href: api/Hexalith.Application.ExternalSystems.Commands.UnmapExternalSystemReference.html#Hexalith_Application_ExternalSystems_Commands_UnmapExternalSystemReference__ctor_
+  commentId: Overload:Hexalith.Application.ExternalSystems.Commands.UnmapExternalSystemReference.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Application.ExternalSystems.Commands.UnmapExternalSystemReference.UnmapExternalSystemReference
+  nameWithType: UnmapExternalSystemReference.UnmapExternalSystemReference
 - uid: Hexalith.Application.ExternalSystems.Services
   name: Hexalith.Application.ExternalSystems.Services
   href: api/Hexalith.Application.ExternalSystems.Services.html
@@ -9807,31 +9832,6 @@ references:
   commentId: T:Hexalith.Domain.Events.IEvent
   fullName: Hexalith.Domain.Events.IEvent
   nameWithType: IEvent
-- uid: Hexalith.Domain.Events.UnmapExternalSystemReference
-  name: UnmapExternalSystemReference
-  href: api/Hexalith.Domain.Events.UnmapExternalSystemReference.html
-  commentId: T:Hexalith.Domain.Events.UnmapExternalSystemReference
-  fullName: Hexalith.Domain.Events.UnmapExternalSystemReference
-  nameWithType: UnmapExternalSystemReference
-- uid: Hexalith.Domain.Events.UnmapExternalSystemReference.#ctor
-  name: UnmapExternalSystemReference()
-  href: api/Hexalith.Domain.Events.UnmapExternalSystemReference.html#Hexalith_Domain_Events_UnmapExternalSystemReference__ctor
-  commentId: M:Hexalith.Domain.Events.UnmapExternalSystemReference.#ctor
-  fullName: Hexalith.Domain.Events.UnmapExternalSystemReference.UnmapExternalSystemReference()
-  nameWithType: UnmapExternalSystemReference.UnmapExternalSystemReference()
-- uid: Hexalith.Domain.Events.UnmapExternalSystemReference.#ctor(System.String,System.String,System.String)
-  name: UnmapExternalSystemReference(String, String, String)
-  href: api/Hexalith.Domain.Events.UnmapExternalSystemReference.html#Hexalith_Domain_Events_UnmapExternalSystemReference__ctor_System_String_System_String_System_String_
-  commentId: M:Hexalith.Domain.Events.UnmapExternalSystemReference.#ctor(System.String,System.String,System.String)
-  fullName: Hexalith.Domain.Events.UnmapExternalSystemReference.UnmapExternalSystemReference(System.String, System.String, System.String)
-  nameWithType: UnmapExternalSystemReference.UnmapExternalSystemReference(String, String, String)
-- uid: Hexalith.Domain.Events.UnmapExternalSystemReference.#ctor*
-  name: UnmapExternalSystemReference
-  href: api/Hexalith.Domain.Events.UnmapExternalSystemReference.html#Hexalith_Domain_Events_UnmapExternalSystemReference__ctor_
-  commentId: Overload:Hexalith.Domain.Events.UnmapExternalSystemReference.#ctor
-  isSpec: "True"
-  fullName: Hexalith.Domain.Events.UnmapExternalSystemReference.UnmapExternalSystemReference
-  nameWithType: UnmapExternalSystemReference.UnmapExternalSystemReference
 - uid: Hexalith.Domain.Exceptions
   name: Hexalith.Domain.Exceptions
   href: api/Hexalith.Domain.Exceptions.html

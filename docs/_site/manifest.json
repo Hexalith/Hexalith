@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "C:/Dev/Fiveforty/BSPK/Hexalith/docs",
+  "source_base_path": "C:/Dev/Hexalith/docs",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -873,7 +873,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.html",
-          "hash": "oii/PPGIbilTmloJKQihGxjWCJr6q3Z/b3xYSCImC/M="
+          "hash": "v84/Bc17Xh8GKKktsqZJYKDaruDxGtc19YGnrnljujQ="
         }
       },
       "is_incremental": false,
@@ -905,11 +905,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.ExternalSystems.Commands.UnmapExternalSystemReference.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.ExternalSystems.Commands.UnmapExternalSystemReference.html",
+          "hash": "X4k/3y+buGzEjRxotxAB8ONo2uclQPSBo0vyl2NM9pM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Hexalith.Application.ExternalSystems.Commands.yml",
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.ExternalSystems.Commands.html",
-          "hash": "EkXie+32YSJN+qzPBSrbFh/+oEdHx0ipOLyc+Cy50wg="
+          "hash": "nS6isEE+FceHp1zn6rvxxR5VAeYsA8ulVUHJuAzsQL4="
         }
       },
       "is_incremental": false,
@@ -2381,23 +2393,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Domain.Events.UnmapExternalSystemReference.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Domain.Events.UnmapExternalSystemReference.html",
-          "hash": "Z5zqS38rOAg9gx1bgk1iLMs2hffe4UY8OJliOhF/EHo="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/Hexalith.Domain.Events.yml",
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.Events.html",
-          "hash": "UcnLjofqdrOMDr3ptd/yOVYpB2C7rQ2TeRM0FiekmmQ="
+          "hash": "MYXDktbdOsKSUdINNELIrLcvpFnnMczVQ/64/jZrEgo="
         }
       },
       "is_incremental": false,
@@ -4437,7 +4437,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "7vhxJ3Az+AJV4yTbxjfvMUrpu+0XIKvIBuKFNdDY24c="
+          "hash": "P7sJkVAFVd52BESIx7r5gnzO874YmNNIX/URPl2zyH4="
         }
       },
       "is_incremental": false,

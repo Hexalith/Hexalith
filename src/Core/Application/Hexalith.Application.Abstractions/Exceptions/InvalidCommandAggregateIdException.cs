@@ -80,7 +80,7 @@ public class InvalidCommandAggregateIdException : InvalidOperationException
     /// Gets the aggregate.
     /// </summary>
     /// <value>The aggregate.</value>
-    public string AggregateId { get; }
+    public string? AggregateId { get; }
 
     /// <summary>
     /// Gets the domain command.

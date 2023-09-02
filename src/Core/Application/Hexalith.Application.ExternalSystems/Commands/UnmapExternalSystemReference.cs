@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 08-28-2023
 // ***********************************************************************
-// <copyright file="ExternalSystemReferenceUnmapped.cs" company="Fiveforty SAS Paris France">
+// <copyright file="UnmapExternalSystemReference.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -14,20 +14,19 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Domain.Events;
+namespace Hexalith.Application.ExternalSystems.Commands;
 
 using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Application.ExternalSystems.Commands;
 using Hexalith.Extensions;
 
 /// <summary>
 /// Class ExternalSystemReferenceUnmapped.
-/// Implements the <see cref="Application.ExternalSystems.Commands.ExternalSystemReferenceCommand" />.
+/// Implements the <see cref="ExternalSystemReferenceCommand" />.
 /// </summary>
-/// <seealso cref="Application.ExternalSystems.Commands.ExternalSystemReferenceCommand" />
+/// <seealso cref="ExternalSystemReferenceCommand" />
 [DataContract]
 public class UnmapExternalSystemReference : ExternalSystemReferenceCommand
 {
