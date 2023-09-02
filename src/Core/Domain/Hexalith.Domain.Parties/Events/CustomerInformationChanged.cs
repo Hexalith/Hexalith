@@ -4,7 +4,7 @@
 // Created          : 08-21-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 08-29-2023
+// Last Modified On : 08-30-2023
 // ***********************************************************************
 // <copyright file="CustomerInformationChanged.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -29,7 +29,7 @@ using Hexalith.Domain.ValueObjets;
 public class CustomerInformationChanged : CustomerEvent
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="CustomerInformationChanged"/> class.
+    /// Initializes a new instance of the <see cref="CustomerInformationChanged" /> class.
     /// </summary>
     /// <param name="id">The identifier.</param>
     /// <param name="name">The name.</param>
@@ -38,6 +38,7 @@ public class CustomerInformationChanged : CustomerEvent
     /// <param name="invoiceAddress">The invoice address.</param>
     /// <param name="deliveryAddress">The delivery address.</param>
     /// <param name="warehouseId">The warehouse identifier.</param>
+    /// <param name="commissionSalesGroupId">The commission sales group identifier.</param>
     /// <param name="date">The date.</param>
     public CustomerInformationChanged(
         string id,
@@ -46,7 +47,8 @@ public class CustomerInformationChanged : CustomerEvent
         Contact contact,
         PostalAddress invoiceAddress,
         PostalAddress deliveryAddress,
-        string warehouseId,
+        string? warehouseId,
+        string? commissionSalesGroupId,
         DateTimeOffset date)
         : base(id)
     {
@@ -56,6 +58,7 @@ public class CustomerInformationChanged : CustomerEvent
         InvoiceAddress = invoiceAddress;
         DeliveryAddress = deliveryAddress;
         WarehouseId = warehouseId;
+        CommissionSalesGroupId = commissionSalesGroupId;
         Date = date;
     }
 
@@ -65,12 +68,19 @@ public class CustomerInformationChanged : CustomerEvent
     [Obsolete("This constructor is only for serialization purposes.", true)]
     public CustomerInformationChanged()
     {
-        Name = WarehouseId = string.Empty;
+        Name = string.Empty;
         Contact = new Contact();
         InvoiceAddress = new PostalAddress();
         DeliveryAddress = new PostalAddress();
         Date = DateTimeOffset.MinValue;
     }
+
+    /// <summary>
+    /// Gets the commission sales group identifier.
+    /// </summary>
+    /// <value>The commission sales group identifier.</value>
+    [DataMember(Order = 16)]
+    public string? CommissionSalesGroupId { get; }
 
     /// <summary>
     /// Gets or sets the name.
@@ -90,7 +100,7 @@ public class CustomerInformationChanged : CustomerEvent
     /// Gets or sets the external ids.
     /// </summary>
     /// <value>The external ids.</value>
-    [DataMember(Order = 16)]
+    [DataMember(Order = 17)]
     public DateTimeOffset Date { get; set; }
 
     /// <summary>
@@ -119,5 +129,5 @@ public class CustomerInformationChanged : CustomerEvent
     /// </summary>
     /// <value>The warehouse identifier.</value>
     [DataMember(Order = 15)]
-    public string WarehouseId { get; }
+    public string? WarehouseId { get; }
 }

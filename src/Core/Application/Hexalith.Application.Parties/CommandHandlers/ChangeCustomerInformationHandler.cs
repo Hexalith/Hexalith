@@ -63,6 +63,7 @@ public class ChangeCustomerInformationHandler : CommandHandler<ChangeCustomerInf
                     command.InvoiceAddress,
                     command.DeliveryAddress,
                     command.WarehouseId,
+                    command.CommissionSalesGroupId,
                     command.Date)
                     .IntoArray()
                 : Array.Empty<BaseMessage>()
@@ -74,6 +75,7 @@ public class ChangeCustomerInformationHandler : CommandHandler<ChangeCustomerInf
                 command.InvoiceAddress,
                 command.DeliveryAddress,
                 command.WarehouseId,
+                command.CommissionSalesGroupId,
                 command.Date)
                 .IntoArray();
     }

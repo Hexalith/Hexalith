@@ -12,21 +12,21 @@
 		<AzureSecurityKeyVaultSecretsVersion>4.5.0</AzureSecurityKeyVaultSecretsVersion>
 		<CoverletCollectorVersion>6.0.0</CoverletCollectorVersion>
 		<DocFxConsoleVersion>2.59.4</DocFxConsoleVersion>
-		<FluentAssertionsVersion>6.11.*</FluentAssertionsVersion>
-		<FluentValidationVersion>11.5.2</FluentValidationVersion>
+		<FluentAssertionsVersion>6.12.0</FluentAssertionsVersion>
+		<FluentValidationVersion>11.7.1</FluentValidationVersion>
 		<GitHubActionsTestLoggerVersion>2.3.2</GitHubActionsTestLoggerVersion>
 		<HumanizerVersion>2.14.1</HumanizerVersion>
 		<ManDaprSidekickVersion>1.2.*</ManDaprSidekickVersion>
 		<MicrosoftBotBuilderVersion>4.20.*</MicrosoftBotBuilderVersion>
-		<MicrosoftIdentityClientVersion>4.54.1</MicrosoftIdentityClientVersion>
-		<MicrosoftNETTestSdkVersion>17.6.*</MicrosoftNETTestSdkVersion>
+		<MicrosoftIdentityClientVersion>4.55.0</MicrosoftIdentityClientVersion>
+		<MicrosoftNETTestSdkVersion>17.7.2</MicrosoftNETTestSdkVersion>
 		<MicrosoftSemanticKernelVersion>0.15.230609.2-preview</MicrosoftSemanticKernelVersion>
 		<MicrosoftTeamsFxVersion>2.1.*</MicrosoftTeamsFxVersion>
 		<MicrosoftGraphVersion>5.12.*</MicrosoftGraphVersion>
-		<MicrosoftIdentityWebVersion>2.11.0</MicrosoftIdentityWebVersion>
+		<MicrosoftIdentityWebVersion>2.12.0</MicrosoftIdentityWebVersion>
 		<MicrosoftVisualStudioThreadingAnalyzersVersion>17.7.30</MicrosoftVisualStudioThreadingAnalyzersVersion>
 		<MinverVersion>4.3.0</MinverVersion>
-		<MoqVersion>4.18.4</MoqVersion>
+		<MoqVersion>4.20.69</MoqVersion>
 		<SerilogVersion>7.0.0</SerilogVersion>
 		<StyleCopAnalyzersVersion>1.2.0-beta.435</StyleCopAnalyzersVersion>
 		<SwashbuckleAspNetCoreVersion>6.5.*</SwashbuckleAspNetCoreVersion>

@@ -4,7 +4,7 @@
 // Created          : 08-21-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 08-29-2023
+// Last Modified On : 08-30-2023
 // ***********************************************************************
 // <copyright file="ChangeCustomerInformation.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -37,6 +37,8 @@ public class ChangeCustomerInformation : CustomerCommand
     /// <param name="contact">The contact.</param>
     /// <param name="invoiceAddress">The invoice address.</param>
     /// <param name="deliveryAddress">The delivery address.</param>
+    /// <param name="warehouseId">The warehouse identifier.</param>
+    /// <param name="commissionSalesGroupId">The commission sales group identifier.</param>
     /// <param name="date">The external ids.</param>
     public ChangeCustomerInformation(
         string id,
@@ -45,7 +47,8 @@ public class ChangeCustomerInformation : CustomerCommand
         Contact contact,
         PostalAddress invoiceAddress,
         PostalAddress deliveryAddress,
-        string warehouseId,
+        string? warehouseId,
+        string? commissionSalesGroupId,
         DateTimeOffset date)
         : base(id)
     {
@@ -55,6 +58,7 @@ public class ChangeCustomerInformation : CustomerCommand
         InvoiceAddress = invoiceAddress;
         DeliveryAddress = deliveryAddress;
         WarehouseId = warehouseId;
+        CommissionSalesGroupId = commissionSalesGroupId;
         Date = date;
     }
 
@@ -64,12 +68,19 @@ public class ChangeCustomerInformation : CustomerCommand
     [Obsolete("This constructor is only for serialization purposes.", true)]
     public ChangeCustomerInformation()
     {
-        Name = WarehouseId = string.Empty;
+        Name = string.Empty;
         Contact = new Contact();
         InvoiceAddress = new PostalAddress();
         DeliveryAddress = new PostalAddress();
         Date = DateTimeOffset.MinValue;
     }
+
+    /// <summary>
+    /// Gets the commission sales group identifier.
+    /// </summary>
+    /// <value>The commission sales group identifier.</value>
+    [DataMember(Order = 16)]
+    public string? CommissionSalesGroupId { get; }
 
     /// <summary>
     /// Gets or sets the name.
@@ -89,7 +100,7 @@ public class ChangeCustomerInformation : CustomerCommand
     /// Gets or sets the external ids.
     /// </summary>
     /// <value>The external ids.</value>
-    [DataMember(Order = 16)]
+    [DataMember(Order = 17)]
     public DateTimeOffset Date { get; set; }
 
     /// <summary>

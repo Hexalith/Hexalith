@@ -62,6 +62,7 @@ public class RegisterCustomerHandler : CommandHandler<RegisterCustomer>
                 command.InvoiceAddress,
                 command.DeliveryAddress,
                 command.WarehouseId,
+                command.CommissionSalesGroupId,
                 command.Date)
                 .IntoArray()
             : new CustomerRegistered(
@@ -72,6 +73,7 @@ public class RegisterCustomerHandler : CommandHandler<RegisterCustomer>
                 command.InvoiceAddress,
                 command.DeliveryAddress,
                 command.WarehouseId,
+                command.CommissionSalesGroupId,
                 command.Date)
                 .IntoArray();
     }
