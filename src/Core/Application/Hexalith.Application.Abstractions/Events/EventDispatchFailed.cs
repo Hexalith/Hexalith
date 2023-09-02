@@ -19,8 +19,6 @@ namespace Hexalith.Application.Events;
 using System;
 using System.Runtime.Serialization;
 
-using Ardalis.GuardClauses;
-
 using Hexalith.Domain.Events;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
@@ -44,7 +42,8 @@ public record EventDispatchFailed : Error
     /// <param name="ex">The ex.</param>
     public EventDispatchFailed(IEvent @event, Exception ex)
     {
-        _ = Guard.Against.Null(ex);
+        ArgumentNullException.ThrowIfNull(ex);
+        ArgumentNullException.ThrowIfNull(@event);
         Title = "Event dispatch failed";
         Type = nameof(EventDispatchFailed);
         Detail = "Could not dispatch event {EventName} with aggregate id {AggregateName}-{EventId}.";

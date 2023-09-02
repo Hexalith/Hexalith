@@ -11,8 +11,6 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Ardalis.GuardClauses;
-
 using Hexalith.Domain.Messages;
 
 using Microsoft.Extensions.Logging;
@@ -41,8 +39,10 @@ public class DependencyInjectionCommandDispatcher : ICommandDispatcher
     /// <param name="logger">The logger.</param>
     public DependencyInjectionCommandDispatcher(IServiceProvider serviceProvider, ILogger<DependencyInjectionCommandDispatcher> logger)
     {
-        _serviceProvider = Guard.Against.Null(serviceProvider);
-        _logger = Guard.Against.Null(logger);
+        ArgumentNullException.ThrowIfNull(serviceProvider);
+        ArgumentNullException.ThrowIfNull(logger);
+        _serviceProvider = serviceProvider;
+        _logger = logger;
     }
 
     /// <inheritdoc/>

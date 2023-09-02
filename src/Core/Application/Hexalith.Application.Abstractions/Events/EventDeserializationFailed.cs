@@ -8,8 +8,6 @@ namespace Hexalith.Application.Events;
 
 using System.Runtime.Serialization;
 
-using Ardalis.GuardClauses;
-
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 
@@ -34,7 +32,8 @@ public record EventDeserializationFailed : Error
         string? data,
         SerializationException exception)
     {
-        _ = Guard.Against.Null(exception);
+        ArgumentNullException.ThrowIfNull(exception);
+        _ = exception;
         Title = "Event deserialization failed";
         Type = nameof(EventDeserializationFailed);
         Detail = "Could not deserialize data : {Message}";

@@ -8,8 +8,6 @@ namespace Hexalith.Extensions.Helpers;
 
 using System;
 
-using Ardalis.GuardClauses;
-
 /// <summary>
 /// Class DateHelper.
 /// </summary>
@@ -23,7 +21,7 @@ public static class DateHelper
     /// <returns>DateTimeOffset.</returns>
     public static DateTimeOffset ToLocalTime(this DateOnly date, TimeSpan offset)
     {
-        _ = Guard.Against.Null(date);
+        ArgumentNullException.ThrowIfNull(date);
         return new DateTimeOffset(date.Year, date.Month, date.Day, 0, 0, 0, offset);
     }
 
@@ -34,7 +32,7 @@ public static class DateHelper
     /// <returns>DateTimeOffset.</returns>
     public static DateTimeOffset ToUniveralTime(this DateOnly date)
     {
-        _ = Guard.Against.Null(date);
+        ArgumentNullException.ThrowIfNull(date);
         return date.ToLocalTime(TimeSpan.Zero);
     }
 }

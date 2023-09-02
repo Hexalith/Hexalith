@@ -6,8 +6,6 @@
 
 namespace Hexalith.Application.Helpers;
 
-using Ardalis.GuardClauses;
-
 using Hexalith.Extensions.Common;
 
 using Microsoft.Extensions.Logging;
@@ -24,8 +22,8 @@ public static class LogErrorHelper
     /// <param name="error">The error.</param>
     public static void LogError(this ILogger logger, Error error)
     {
-        _ = Guard.Against.Null(logger);
-        _ = Guard.Against.Null(error);
+        ArgumentNullException.ThrowIfNull(error);
+        ArgumentNullException.ThrowIfNull(logger);
 #pragma warning disable CA2254 // Template should be a static expression
         logger.LogError(error.TechnicalDetail, error.TechnicalArguments);
 #pragma warning restore CA2254 // Template should be a static expression

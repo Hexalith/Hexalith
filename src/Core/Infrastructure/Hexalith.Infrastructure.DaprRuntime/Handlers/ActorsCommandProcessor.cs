@@ -10,8 +10,6 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Ardalis.GuardClauses;
-
 using Dapr.Actors.Client;
 
 using Hexalith.Application.Commands;
@@ -37,14 +35,13 @@ public abstract class ActorsCommandProcessor : ICommandProcessor
     /// <param name="actorProxy">The actor proxy.</param>
     public ActorsCommandProcessor(IActorProxyFactory actorProxy)
     {
-        _actorProxy = Guard.Against.Null(actorProxy);
+        ArgumentNullException.ThrowIfNull(actorProxy);
+        _actorProxy = actorProxy;
     }
 
     /// <inheritdoc/>
     public async Task SubmitAsync(BaseCommand command, BaseMetadata metadata, CancellationToken cancellationToken)
-    {
-        await SubmitAsync(command.IntoArray(), metadata, cancellationToken);
-    }
+        => await SubmitAsync(command.IntoArray(), metadata, cancellationToken);
 
     /// <inheritdoc/>
     public async Task SubmitAsync(IEnumerable<BaseCommand> commands, BaseMetadata metadata, CancellationToken cancellationToken)

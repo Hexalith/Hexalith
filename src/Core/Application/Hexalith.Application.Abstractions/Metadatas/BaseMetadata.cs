@@ -19,8 +19,6 @@ namespace Hexalith.Application.Metadatas;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Ardalis.GuardClauses;
-
 using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Serialization;
 
@@ -75,7 +73,7 @@ public class BaseMetadata : IMetadata, IPolymorphicSerializable
         ContextMetadata context,
         IEnumerable<string>? scopes)
     {
-        _ = Guard.Against.Null(message);
+        ArgumentNullException.ThrowIfNull(message);
         Message = new MessageMetadata(
             id,
             message.TypeName,

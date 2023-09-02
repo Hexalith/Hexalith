@@ -6,8 +6,6 @@
 
 namespace Hexalith.UnitTests.Core.Infrastructure.Dynamics365Finance.Client;
 
-using Ardalis.GuardClauses;
-
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 
 public record DummyEntity : ODataElement, IODataElement
@@ -15,13 +13,11 @@ public record DummyEntity : ODataElement, IODataElement
     public DummyEntity(string etag, string dataAreaId, string message)
         : base(etag, dataAreaId)
     {
-        Message = Guard.Against.NullOrWhiteSpace(message);
+        ArgumentException.ThrowIfNullOrEmpty(message);
+        Message = message;
     }
 
     public string Message { get; }
 
-    public static string EntityName()
-    {
-        return "Dummy";
-    }
+    public static string EntityName() => "Dummy";
 }

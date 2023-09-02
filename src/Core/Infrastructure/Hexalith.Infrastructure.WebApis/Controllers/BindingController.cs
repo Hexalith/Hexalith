@@ -19,8 +19,6 @@ using System.Globalization;
 using System.Net;
 using System.Text.Json;
 
-using Ardalis.GuardClauses;
-
 using Hexalith.Application.Errors;
 using Hexalith.Application.Events;
 using Hexalith.Domain.Events;
@@ -60,9 +58,12 @@ public abstract class BindingController : ControllerBase
         IHostEnvironment hostEnvironment,
         ILogger logger)
     {
-        _eventProcessor = Guard.Against.Null(eventProcessor);
-        Logger = Guard.Against.Null(logger);
-        _hostEnvironment = Guard.Against.Null(hostEnvironment);
+        ArgumentNullException.ThrowIfNull(eventProcessor);
+        ArgumentNullException.ThrowIfNull(hostEnvironment);
+        ArgumentNullException.ThrowIfNull(logger);
+        _eventProcessor = eventProcessor;
+        Logger = logger;
+        _hostEnvironment = hostEnvironment;
     }
 
     /// <summary>

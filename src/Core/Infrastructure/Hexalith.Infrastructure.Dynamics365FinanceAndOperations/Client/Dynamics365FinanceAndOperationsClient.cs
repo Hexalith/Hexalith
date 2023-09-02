@@ -22,8 +22,6 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-using Ardalis.GuardClauses;
-
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Configurations;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Security;
@@ -96,11 +94,16 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
         IOptions<Dynamics365FinanceAndOperationsClientSettings> settings,
         ILogger logger)
     {
-        Dynamics365FinanceAndOperationsClientSettings s = Guard.Against.Null(settings).Value;
+        ArgumentNullException.ThrowIfNull(settings);
+        ArgumentNullException.ThrowIfNull(httpClientFactory);
+        ArgumentNullException.ThrowIfNull(securityContext);
+        ArgumentNullException.ThrowIfNull(logger);
 
-        _httpClientFactory = Guard.Against.Null(httpClientFactory);
-        _securityContext = Guard.Against.Null(securityContext);
-        Logger = Guard.Against.Null(logger);
+        Dynamics365FinanceAndOperationsClientSettings s = settings.Value;
+
+        _httpClientFactory = httpClientFactory;
+        _securityContext = securityContext;
+        Logger = logger;
         if (string.IsNullOrWhiteSpace(s.Instance?.OriginalString))
         {
             throw new ArgumentException(
@@ -152,11 +155,15 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// <returns>System.ValueTuple&lt;System.String, IDictionary&lt;System.String, System.Nullable&lt;System.Object&gt;&gt;&gt;.</returns>
     protected virtual (string DataAreaId, IDictionary<string, object?> Values) FilterToDictionary(IPerCompanyFilter filter)
     {
-        _ = Guard.Against.Null(filter);
+        ArgumentNullException.ThrowIfNull(filter);
         IDictionary<string, object?> dict = ToDictionary(filter);
-        _ = Guard.Against.NegativeOrZero(
-            dict.Count - 1,
-            message: "The filter must have at least one property other than the DataAreaId.");
+        if (dict.Count < 2)
+        {
+            throw new ArgumentException(
+                "The filter must have at least one property other than the DataAreaId.",
+                nameof(filter));
+        }
+
         string dataAreaId = string.IsNullOrWhiteSpace(filter.DataAreaId) ? DefaultCompany : filter.DataAreaId;
         _ = dict.Remove(nameof(IPerCompanyFilter.DataAreaId));
         return (dataAreaId, dict);
@@ -169,12 +176,13 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// <returns>IDictionary&lt;System.String, System.Nullable&lt;System.Object&gt;&gt;.</returns>
     protected virtual IDictionary<string, object?> FilterToDictionary(ICommonFilter filter)
     {
-        _ = Guard.Against.Null(filter);
+        ArgumentNullException.ThrowIfNull(filter);
         IDictionary<string, object?> dict = ToDictionary(filter);
-        _ = Guard.Against.NegativeOrZero(
-            dict.Count,
-            message: "The filter must have at least one property.");
-        return dict;
+        return dict.Count < 1
+            ? throw new ArgumentException(
+                "The filter must have at least one property.",
+                nameof(filter))
+            : dict;
     }
 
     /// <summary>
@@ -184,11 +192,15 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// <returns>System.ValueTuple&lt;System.String, IDictionary&lt;System.String, System.Nullable&lt;System.Object&gt;&gt;&gt;.</returns>
     protected virtual (string DataAreaId, IDictionary<string, object?> Values) KeyToDictionary(IPerCompanyPrimaryKey key)
     {
-        _ = Guard.Against.Null(key);
+        ArgumentNullException.ThrowIfNull(key);
         IDictionary<string, object?> dict = ToDictionary(key);
-        _ = Guard.Against.NegativeOrZero(
-            dict.Count - 1,
-            message: "The key must have at least one property other than the DataAreaId.");
+        if (dict.Count < 2)
+        {
+            throw new ArgumentException(
+                "The key must have at least one property other than the DataAreaId.",
+                nameof(key));
+        }
+
         string dataAreaId = string.IsNullOrWhiteSpace(key.DataAreaId) ? DefaultCompany : key.DataAreaId;
         _ = dict.Remove(nameof(IPerCompanyPrimaryKey.DataAreaId));
         return (dataAreaId, dict);
@@ -201,12 +213,13 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// <returns>IDictionary&lt;System.String, System.Nullable&lt;System.Object&gt;&gt;.</returns>
     protected virtual IDictionary<string, object?> KeyToDictionary(ICommonPrimaryKey key)
     {
-        _ = Guard.Against.Null(key);
+        ArgumentNullException.ThrowIfNull(key);
         IDictionary<string, object?> dict = ToDictionary(key);
-        _ = Guard.Against.NegativeOrZero(
-            dict.Count,
-            message: "The key must have at least one property.");
-        return dict;
+        return dict.Count < 1
+            ? throw new ArgumentException(
+                "The key must have at least one property.",
+                nameof(key))
+            : dict;
     }
 
     /// <summary>
@@ -221,18 +234,18 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
         _ = filter.Append(CultureInfo.InvariantCulture, $"dataAreaId='{company}'");
         foreach (KeyValuePair<string, object?> key in keys)
         {
-            _ = filter.Append(CultureInfo.InvariantCulture, $",{key.Key}={GetOdataString(key.Value)}");
+            _ = filter.Append(CultureInfo.InvariantCulture, $",{key.Key}={GetODataString(key.Value)}");
         }
 
         return filter.ToString();
     }
 
     /// <summary>
-    /// Gets the odata string.
+    /// Gets the OData string.
     /// </summary>
     /// <param name="value">The value.</param>
     /// <returns>System.String.</returns>
-    private static string GetOdataString(object? value)
+    private static string GetODataString(object? value)
     {
         string v = value is string s ? $"'{s}'" : Convert.ToString(value, CultureInfo.InvariantCulture) ?? string.Empty;
         return value is null ? "null" : v;
@@ -250,7 +263,7 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
         _ = query.Append(CultureInfo.InvariantCulture, $"dataAreaId eq '{company}'");
         foreach (KeyValuePair<string, object?> key in filter)
         {
-            _ = query.Append(CultureInfo.InvariantCulture, $" and {key.Key} eq {GetOdataString(key.Value)}");
+            _ = query.Append(CultureInfo.InvariantCulture, $" and {key.Key} eq {GetODataString(key.Value)}");
         }
 
         return query.ToString();
@@ -264,7 +277,7 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// <returns>IDictionary&lt;System.String, System.Nullable&lt;System.Object&gt;&gt;.</returns>
     private static IDictionary<string, object?> ToDictionary<T>(T obj)
     {
-        _ = Guard.Against.Null(obj);
+        ArgumentNullException.ThrowIfNull(obj);
         Dictionary<string, object?> dico = new(StringComparer.Ordinal);
         foreach (System.Reflection.PropertyInfo prop in obj.GetType().GetProperties())
         {

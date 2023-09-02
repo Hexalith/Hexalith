@@ -6,8 +6,6 @@
 
 namespace Hexalith.Infrastructure.DaprRuntime.Handlers;
 
-using Ardalis.GuardClauses;
-
 using Dapr.Actors.Client;
 
 using Hexalith.Application.Commands;
@@ -33,14 +31,14 @@ public class ConventionNamingCommandProcessor : ActorsCommandProcessor
     /// <inheritdoc/>
     protected override string GetActorMethodName(ICommand command)
     {
-        _ = Guard.Against.Null(command);
+        ArgumentNullException.ThrowIfNull(command);
         return "Do" + command.GetType().Name + "Async";
     }
 
     /// <inheritdoc/>
     protected override string GetActorName(ICommand command)
     {
-        _ = Guard.Against.Null(command);
+        ArgumentNullException.ThrowIfNull(command);
         return command.AggregateName + "AggregateActor";
     }
 }
