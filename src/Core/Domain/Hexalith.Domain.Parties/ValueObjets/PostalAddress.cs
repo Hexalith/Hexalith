@@ -27,7 +27,7 @@ public class PostalAddress
     /// <param name="zipCode">The zip code.</param>
     /// <param name="city">The city.</param>
     /// <param name="countyId">The county identifier.</param>
-    /// <param name="stateId">The state identifier.</param>
+    /// <param name="stateName">The state identifier.</param>
     /// <param name="countryId">The country identifier.</param>
     /// <param name="countryName">Name of the country.</param>
     /// <param name="countryIso2">The country iso2.</param>
@@ -41,7 +41,7 @@ public class PostalAddress
             string? zipCode,
             string? city,
             string? countyId,
-            string? stateId,
+            string? stateName,
             string? countryId,
             string? countryName,
             string? countryIso2)
@@ -54,7 +54,7 @@ public class PostalAddress
         ZipCode = zipCode;
         City = city;
         CountyId = countyId;
-        StateId = stateId;
+        StateName = stateName;
         CountryId = countryId;
         CountryName = countryName;
         CountryIso2 = countryIso2;
@@ -69,98 +69,98 @@ public class PostalAddress
     }
 
     /// <summary>
-    /// Gets the city.
+    /// Gets or sets the city.
     /// </summary>
     /// <value>The city.</value>
     [DataMember(Order = 7)]
     [JsonPropertyOrder(7)]
-    public string? City { get; private set; }
+    public string? City { get; set; }
 
     /// <summary>
-    /// Gets the country identifier.
+    /// Gets or sets the country identifier.
     /// </summary>
     /// <value>The country identifier.</value>
     [DataMember(Order = 11)]
     [JsonPropertyOrder(11)]
-    public string? CountryId { get; private set; }
+    public string? CountryId { get; set; }
 
     /// <summary>
-    /// Gets the country identifier.
+    /// Gets or sets the country identifier.
     /// </summary>
     /// <value>The country identifier.</value>
     [DataMember(Order = 12)]
     [JsonPropertyOrder(12)]
-    public string? CountryIso2 { get; private set; }
+    public string? CountryIso2 { get; set; }
 
     /// <summary>
-    /// Gets the country identifier.
+    /// Gets or sets the country identifier.
     /// </summary>
     /// <value>The country identifier.</value>
     [DataMember(Order = 10)]
     [JsonPropertyOrder(10)]
-    public string? CountryName { get; private set; }
+    public string? CountryName { get; set; }
 
     /// <summary>
-    /// Gets the county identifier.
+    /// Gets or sets the county identifier.
     /// </summary>
     /// <value>The county identifier.</value>
     [DataMember(Order = 8)]
     [JsonPropertyOrder(8)]
-    public string? CountyId { get; private set; }
+    public string? CountyId { get; set; }
 
     /// <summary>
-    /// Gets the description.
+    /// Gets or sets the description.
     /// </summary>
     /// <value>The description.</value>
     [DataMember(Order = 2)]
     [JsonPropertyOrder(2)]
-    public string? Description { get; private set; }
+    public string? Description { get; set; }
 
     /// <summary>
-    /// Gets the name.
+    /// Gets or sets the name.
     /// </summary>
     /// <value>The name.</value>
     [DataMember(Order = 1)]
     [JsonPropertyOrder(1)]
-    public string? Name { get; private set; }
+    public string? Name { get; set; }
 
     /// <summary>
-    /// Gets the post box.
+    /// Gets or sets the post box.
     /// </summary>
     /// <value>The post box.</value>
     [DataMember(Order = 5)]
     [JsonPropertyOrder(5)]
-    public string? PostBox { get; private set; }
+    public string? PostBox { get; set; }
 
     /// <summary>
-    /// Gets the state identifier.
+    /// Gets or sets the state identifier.
     /// </summary>
     /// <value>The state identifier.</value>
     [DataMember(Order = 9)]
     [JsonPropertyOrder(9)]
-    public string? StateId { get; private set; }
+    public string? StateName { get; set; }
 
     /// <summary>
-    /// Gets the street.
+    /// Gets or sets the street.
     /// </summary>
     /// <value>The street.</value>
     [DataMember(Order = 4)]
     [JsonPropertyOrder(4)]
-    public string? Street { get; private set; }
+    public string? Street { get; set; }
 
     /// <summary>
-    /// Gets the street number.
+    /// Gets or sets the street number.
     /// </summary>
     /// <value>The street number.</value>
     [DataMember(Order = 3)]
     [JsonPropertyOrder(3)]
-    public string? StreetNumber { get; private set; }
+    public string? StreetNumber { get; set; }
 
     /// <summary>
-    /// Gets the zip code.
+    /// Gets or sets the zip code.
     /// </summary>
     /// <value>The zip code.</value>
     [DataMember(Order = 6)]
     [JsonPropertyOrder(6)]
-    public string? ZipCode { get; private set; }
+    public string? ZipCode { get; set; }
 }

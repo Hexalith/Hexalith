@@ -69,6 +69,7 @@ public class Person
     /// <value>The city.</value>
     [DataMember(Order = 5)]
     [JsonPropertyOrder(5)]
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public Gender? Gender { get; private set; }
 
     /// <summary>

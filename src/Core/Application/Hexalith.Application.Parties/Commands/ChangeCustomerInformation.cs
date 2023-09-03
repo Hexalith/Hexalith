@@ -129,5 +129,5 @@ public class ChangeCustomerInformation : CustomerCommand
     /// </summary>
     /// <value>The warehouse identifier.</value>
     [DataMember(Order = 15)]
-    public string WarehouseId { get; }
+    public string? WarehouseId { get; }
 }
