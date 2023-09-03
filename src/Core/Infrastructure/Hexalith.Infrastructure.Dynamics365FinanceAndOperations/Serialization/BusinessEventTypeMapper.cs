@@ -20,6 +20,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+using Hexalith.Application.Errors;
+using Hexalith.Extensions.Common;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents;
 
 /// <summary>
@@ -102,7 +104,17 @@ public static class BusinessEventTypeMapper
         }
         catch (KeyNotFoundException ex)
         {
-            throw new InvalidOperationException($"Business event class with MessageName='{name}' and Version='{majorVersion}.{minorVersion}' not found.", ex);
+            Error error = new()
+            {
+                Category = ErrorCategory.Technical,
+                Arguments = new object[] { name, majorVersion, minorVersion },
+                Detail = "The business event '{name}' v'{majorVersion}.{minorVersion}' not supported.",
+                Title = "Business event not supported",
+                Type = "BusinessEventNotSupported",
+                TechnicalArguments = new object[] { name, majorVersion, minorVersion },
+                TechnicalDetail = $"Business event class with MessageName='{name}' and Version='{majorVersion}.{minorVersion}' not found.",
+            };
+            throw new ApplicationErrorException(error, ex);
         }
     }
 }

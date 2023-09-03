@@ -68,7 +68,7 @@ public class ChangeCustomerInformation : CustomerCommand
     [Obsolete("This constructor is only for serialization purposes.", true)]
     public ChangeCustomerInformation()
     {
-        Name = string.Empty;
+        CompanyId = Name = string.Empty;
         Contact = new Contact();
         InvoiceAddress = new PostalAddress();
         DeliveryAddress = new PostalAddress();
@@ -76,18 +76,18 @@ public class ChangeCustomerInformation : CustomerCommand
     }
 
     /// <summary>
-    /// Gets the commission sales group identifier.
+    /// Gets or sets the commission sales group identifier.
     /// </summary>
     /// <value>The commission sales group identifier.</value>
     [DataMember(Order = 16)]
-    public string? CommissionSalesGroupId { get; }
+    public string? CommissionSalesGroupId { get; set; }
 
     /// <summary>
     /// Gets or sets the name.
     /// </summary>
     /// <value>The name.</value>
     [DataMember(Order = 11)]
-    public string CompanyId { get; set; } = string.Empty;
+    public string CompanyId { get; set; }
 
     /// <summary>
     /// Gets or sets the contact.
@@ -122,12 +122,12 @@ public class ChangeCustomerInformation : CustomerCommand
     /// </summary>
     /// <value>The name.</value>
     [DataMember(Order = 10)]
-    public string Name { get; set; } = string.Empty;
+    public string Name { get; set; }
 
     /// <summary>
-    /// Gets the warehouse identifier.
+    /// Gets or sets the warehouse identifier.
     /// </summary>
     /// <value>The warehouse identifier.</value>
     [DataMember(Order = 15)]
-    public string? WarehouseId { get; }
+    public string? WarehouseId { get; set; }
 }
