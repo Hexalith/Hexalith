@@ -10,8 +10,6 @@ using System.Net.Http.Json;
 using System.Text.Json;
 using System.Web;
 
-using Ardalis.GuardClauses;
-
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 
 using Microsoft.Extensions.Logging;
@@ -26,8 +24,8 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// <inheritdoc/>
     public async Task PatchAsync<TUpdate>(IPerCompanyPrimaryKey key, TUpdate value, CancellationToken cancellationToken)
     {
-        _ = Guard.Against.Null(key);
-        _ = Guard.Against.Null(value);
+        ArgumentNullException.ThrowIfNull(key);
+        ArgumentNullException.ThrowIfNull(value);
         (string? dataAreaId, IDictionary<string, object?>? dict) = KeyToDictionary(key);
         await PatchAsync(dataAreaId, dict, value, cancellationToken);
     }
@@ -35,8 +33,8 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// <inheritdoc/>
     public async Task PatchAsync<TUpdate>(ICommonPrimaryKey key, TUpdate value, CancellationToken cancellationToken)
     {
-        _ = Guard.Against.Null(key);
-        _ = Guard.Against.Null(value);
+        ArgumentNullException.ThrowIfNull(key);
+        ArgumentNullException.ThrowIfNull(value);
         await PatchAsync(DefaultCompany, KeyToDictionary(key), value, cancellationToken);
     }
 
@@ -46,8 +44,8 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
         TUpdate value,
         CancellationToken cancellationToken)
     {
-        _ = Guard.Against.Null(key);
-        _ = Guard.Against.Null(value);
+        ArgumentNullException.ThrowIfNull(key);
+        ArgumentNullException.ThrowIfNull(value);
         await PatchAsync(DefaultCompany, key, value, cancellationToken);
     }
 
@@ -58,9 +56,9 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
         TUpdate value,
         CancellationToken cancellationToken)
     {
-        _ = Guard.Against.NullOrWhiteSpace(company);
-        _ = Guard.Against.Null(key);
-        _ = Guard.Against.Null(value);
+        ArgumentNullException.ThrowIfNull(key);
+        ArgumentNullException.ThrowIfNull(value);
+        ArgumentException.ThrowIfNullOrEmpty(company);
         _ = await SendPatchAsync(company, key, value, cancellationToken).ConfigureAwait(false);
     }
 
@@ -70,8 +68,8 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
         TUpdate value,
         CancellationToken cancellationToken)
     {
-        _ = Guard.Against.Null(key);
-        _ = Guard.Against.Null(value);
+        ArgumentNullException.ThrowIfNull(key);
+        ArgumentNullException.ThrowIfNull(value);
         return await SendPatchAsync(DefaultCompany, key, value, cancellationToken);
     }
 
@@ -82,9 +80,9 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
         TUpdate value,
         CancellationToken cancellationToken)
     {
-        _ = Guard.Against.NullOrWhiteSpace(company);
-        _ = Guard.Against.Null(key);
-        _ = Guard.Against.Null(value);
+        ArgumentNullException.ThrowIfNull(key);
+        ArgumentNullException.ThrowIfNull(value);
+        ArgumentException.ThrowIfNullOrEmpty(company);
         string crossCompany = string.Equals(DefaultCompany, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : "?" + _crossCompanyQuery;
         Uri url = new(_instance, $"{_dataPath}/{TEntity.EntityName()}({HttpUtility.UrlEncode(GetEntityFilter(company, key))}){crossCompany}");
         HttpResponseMessage? response = null;

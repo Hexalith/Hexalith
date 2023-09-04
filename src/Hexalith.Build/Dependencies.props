@@ -3,8 +3,8 @@
 		<!-- Detect if the solution is opened in VS to add local repository for packages -->
 		<AdaptiveCardsVersion>3.0.0</AdaptiveCardsVersion>
 		<AdaptiveCardsTemplatingVersion>1.4.0</AdaptiveCardsTemplatingVersion>
-		<AzureIdentityVersion>1.9.0</AzureIdentityVersion>
-		<AzureResourceManagerVersion>1.6.0</AzureResourceManagerVersion>
+		<AzureIdentityVersion>1.10.0</AzureIdentityVersion>
+		<AzureResourceManagerVersion>1.7.0</AzureResourceManagerVersion>
 		<AzureResourceManagerContainerRegistryVersion>1.1.0</AzureResourceManagerContainerRegistryVersion>
 		<AzureResourceManagerCognitiveServicesVersion>1.3.0</AzureResourceManagerCognitiveServicesVersion>
 		<AzureResourceManagerKeyVaultVersion>1.1.0</AzureResourceManagerKeyVaultVersion>
@@ -12,32 +12,32 @@
 		<AzureSecurityKeyVaultSecretsVersion>4.5.0</AzureSecurityKeyVaultSecretsVersion>
 		<CoverletCollectorVersion>6.0.0</CoverletCollectorVersion>
 		<DocFxConsoleVersion>2.59.4</DocFxConsoleVersion>
-		<FluentAssertionsVersion>6.11.*</FluentAssertionsVersion>
-		<FluentValidationVersion>11.5.2</FluentValidationVersion>
-		<GitHubActionsTestLoggerVersion>2.3.2</GitHubActionsTestLoggerVersion>
+		<FluentAssertionsVersion>6.12.0</FluentAssertionsVersion>
+		<FluentValidationVersion>11.7.1</FluentValidationVersion>
+		<GitHubActionsTestLoggerVersion>2.3.3</GitHubActionsTestLoggerVersion>
 		<HumanizerVersion>2.14.1</HumanizerVersion>
 		<ManDaprSidekickVersion>1.2.*</ManDaprSidekickVersion>
 		<MicrosoftBotBuilderVersion>4.20.*</MicrosoftBotBuilderVersion>
-		<MicrosoftIdentityClientVersion>4.54.1</MicrosoftIdentityClientVersion>
-		<MicrosoftNETTestSdkVersion>17.6.*</MicrosoftNETTestSdkVersion>
+		<MicrosoftIdentityClientVersion>4.55.0</MicrosoftIdentityClientVersion>
+		<MicrosoftNETTestSdkVersion>17.7.2</MicrosoftNETTestSdkVersion>
 		<MicrosoftSemanticKernelVersion>0.15.230609.2-preview</MicrosoftSemanticKernelVersion>
-		<MicrosoftTeamsFxVersion>2.1.*</MicrosoftTeamsFxVersion>
+		<MicrosoftTeamsFxVersion>2.2.*</MicrosoftTeamsFxVersion>
 		<MicrosoftGraphVersion>5.12.*</MicrosoftGraphVersion>
-		<MicrosoftIdentityWebVersion>2.11.0</MicrosoftIdentityWebVersion>
-		<MicrosoftVisualStudioThreadingAnalyzersVersion>17.6.40</MicrosoftVisualStudioThreadingAnalyzersVersion>
+		<MicrosoftIdentityWebVersion>2.12.0</MicrosoftIdentityWebVersion>
+		<MicrosoftVisualStudioThreadingAnalyzersVersion>17.7.30</MicrosoftVisualStudioThreadingAnalyzersVersion>
 		<MinverVersion>4.3.0</MinverVersion>
-		<MoqVersion>4.18.4</MoqVersion>
+		<MoqVersion>4.20.69</MoqVersion>
 		<SerilogVersion>7.0.0</SerilogVersion>
 		<StyleCopAnalyzersVersion>1.2.0-beta.435</StyleCopAnalyzersVersion>
 		<SwashbuckleAspNetCoreVersion>6.5.*</SwashbuckleAspNetCoreVersion>
-		<XUnitRunnerVisualStudioVersion>2.4.5</XUnitRunnerVisualStudioVersion>
-		<XUnitVersion>2.4.2</XUnitVersion>
+		<XUnitRunnerVisualStudioVersion>2.5.0</XUnitRunnerVisualStudioVersion>
+		<XUnitVersion>2.5.0</XUnitVersion>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' == 'true' or '$(BuildingByReSharper)' == 'true'">
 		<!--<DaprVersion>1.0.0-local</DaprVersion>-->
-		<DaprVersion>1.10.*</DaprVersion>
+		<DaprVersion>1.11.*</DaprVersion>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' != 'true' and '$(BuildingByReSharper)' != 'true'">
-		<DaprVersion>1.10.*</DaprVersion>
+		<DaprVersion>1.11.*</DaprVersion>
 	</PropertyGroup>
 </Project>

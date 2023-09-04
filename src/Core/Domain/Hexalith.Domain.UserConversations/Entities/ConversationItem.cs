@@ -15,6 +15,7 @@
 // ***********************************************************************
 
 namespace Hexalith.Domain.UserConversationProfiles.Entities;
+
 /// <summary>
 /// Class ConversationItem.
 /// Implements the <see cref="IEquatable{ConversationItem}" />.

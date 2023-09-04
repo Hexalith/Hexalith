@@ -25,10 +25,7 @@ public abstract class IntegrationEventHandler<TEvent> : IIntegrationEventHandler
     public abstract Task<IEnumerable<BaseCommand>> ApplyAsync(TEvent @event, CancellationToken cancellationToken);
 
     /// <inheritdoc/>
-    Task<IEnumerable<BaseCommand>> IIntegrationEventHandler.ApplyAsync(IEvent @event, CancellationToken cancellationToken)
-    {
-        return ApplyAsync(ToEvent(@event), cancellationToken);
-    }
+    Task<IEnumerable<BaseCommand>> IIntegrationEventHandler.ApplyAsync(IEvent @event, CancellationToken cancellationToken) => ApplyAsync(ToEvent(@event), cancellationToken);
 
     /// <summary>
     /// Converts to event.

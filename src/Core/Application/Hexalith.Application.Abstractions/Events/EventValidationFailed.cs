@@ -8,8 +8,6 @@ namespace Hexalith.Application.Events;
 
 using System.Runtime.Serialization;
 
-using Ardalis.GuardClauses;
-
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 
@@ -34,7 +32,7 @@ public record EventValidationFailed : Error
         string data,
         Exception exception)
     {
-        _ = Guard.Against.Null(exception);
+        ArgumentNullException.ThrowIfNull(exception);
         Title = "Event validation failed";
         Type = nameof(EventValidationFailed);
         Detail = "Could not validate event : {Message}";

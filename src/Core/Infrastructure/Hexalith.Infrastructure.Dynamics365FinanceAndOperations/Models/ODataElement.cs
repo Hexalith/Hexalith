@@ -9,8 +9,6 @@ namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Ardalis.GuardClauses;
-
 /// <summary>
 /// Dynamics 365 Finance and Operations entity base class.
 /// </summary>
@@ -25,8 +23,10 @@ public record ODataElement
     [JsonConstructor]
     protected ODataElement(string etag, string dataAreaId)
     {
-        Etag = Guard.Against.NullOrWhiteSpace(etag);
-        DataAreaId = Guard.Against.NullOrWhiteSpace(dataAreaId);
+        ArgumentException.ThrowIfNullOrEmpty(etag);
+        ArgumentException.ThrowIfNullOrEmpty(dataAreaId);
+        Etag = etag;
+        DataAreaId = dataAreaId;
     }
 
     /// <summary>

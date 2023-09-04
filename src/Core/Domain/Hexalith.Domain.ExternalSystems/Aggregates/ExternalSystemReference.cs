@@ -1,0 +1,87 @@
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Domain.Parties
+// Author           : Jérôme Piquot
+// Created          : 08-21-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 08-28-2023
+// ***********************************************************************
+// <copyright file="ExternalSystemReference.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
+/// <summary>
+/// The Aggregates namespace.
+/// </summary>
+namespace Hexalith.Domain.Aggregates;
+
+using System.Runtime.Serialization;
+
+using Hexalith.Domain.Events;
+using Hexalith.Domain.Exceptions;
+
+/// <summary>
+/// Class Customer.
+/// Implements the <see cref="Hexalith.Domain.Aggregates.Aggregate" />
+/// Implements the <see cref="Hexalith.Domain.Aggregates.IAggregate" />
+/// Implements the <see cref="System.IEquatable{Hexalith.Domain.Aggregates.Aggregate}" />
+/// Implements the <see cref="System.IEquatable{Hexalith.Domain.Aggregates.ExternalSystemReference}" />.
+/// </summary>
+/// <seealso cref="Hexalith.Domain.Aggregates.Aggregate" />
+/// <seealso cref="Hexalith.Domain.Aggregates.IAggregate" />
+/// <seealso cref="System.IEquatable{Hexalith.Domain.Aggregates.Aggregate}" />
+/// <seealso cref="System.IEquatable{Hexalith.Domain.Aggregates.ExternalSystemReference}" />
+[DataContract]
+public record ExternalSystemReference(
+    string SystemId,
+    string ReferenceAggregateName,
+    string ExternalId,
+    string? ReferenceAggregateId) : Aggregate
+{
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ExternalSystemReference" /> class.
+    /// </summary>
+    /// <param name="mapped">The mapped.</param>
+    public ExternalSystemReference(ExternalSystemReferenceAdded mapped)
+        : this(
+              mapped.SystemId,
+              mapped.ReferenceAggregateName,
+              mapped.ExternalId,
+              mapped.ReferenceAggregateId)
+    {
+    }
+
+    /// <inheritdoc/>
+    public override IAggregate Apply(BaseEvent domainEvent)
+    {
+        ArgumentNullException.ThrowIfNull(domainEvent);
+        return domainEvent switch
+        {
+            ExternalSystemReferenceRemoved => this with { ReferenceAggregateId = null },
+            ExternalSystemReferenceAdded added => this with { ReferenceAggregateId = added.ReferenceAggregateId },
+            _ => throw new InvalidAggregateEventException(this, domainEvent, false),
+        };
+    }
+
+    /// <inheritdoc/>
+    protected override string DefaultAggregateId() => GetAggregateId(SystemId, ReferenceAggregateName, ExternalId);
+
+    /// <summary>
+    /// Gets the aggregate identifier.
+    /// </summary>
+    /// <param name="systemId">The system identifier.</param>
+    /// <param name="referenceAggregateName">Name of the reference aggregate.</param>
+    /// <param name="externalId">The external identifier.</param>
+    /// <returns>System.String.</returns>
+    public static string GetAggregateId(string systemId, string referenceAggregateName, string externalId) => GetAggregateName() + Separator + systemId + Separator + referenceAggregateName + Separator + externalId;
+
+    /// <summary>
+    /// Gets the name of the aggregate.
+    /// </summary>
+    /// <returns>System.String.</returns>
+    public static string GetAggregateName() => nameof(ExternalSystemReference);
+}

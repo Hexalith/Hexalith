@@ -3,6 +3,11 @@
 		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
 	</PropertyGroup>
 	<ItemGroup>
+	  <Compile Remove="Handlers\**" />
+	  <EmbeddedResource Remove="Handlers\**" />
+	  <None Remove="Handlers\**" />
+	</ItemGroup>
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Identity.Client" Version="$(MicrosoftIdentityClientVersion)" />
 		<PackageReference Include="AdaptiveCards" Version="$(AdaptiveCardsVersion)" />
 		<PackageReference Include="AdaptiveCards.Templating" Version="$(AdaptiveCardsTemplatingVersion)" />
@@ -11,8 +16,5 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\Application\Hexalith.Application\Hexalith.Application.csproj" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Handlers\" />
 	</ItemGroup>
 </Project>

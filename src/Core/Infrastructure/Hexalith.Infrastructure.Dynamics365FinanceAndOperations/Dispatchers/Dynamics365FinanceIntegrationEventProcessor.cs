@@ -9,8 +9,6 @@ namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Dispatchers;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Ardalis.GuardClauses;
-
 using Hexalith.Application.Commands;
 using Hexalith.Application.Errors;
 using Hexalith.Application.Events;
@@ -53,14 +51,16 @@ public class Dynamics365FinanceIntegrationEventProcessor : DependencyInjectionEv
         ILogger<Dynamics365FinanceIntegrationEventProcessor> logger)
         : base(serviceProvider, logger)
     {
-        _commandProcessor = Guard.Against.Null(commandProcessor);
-        _dateTimeService = Guard.Against.Null(dateTimeService);
+        ArgumentNullException.ThrowIfNull(commandProcessor);
+        ArgumentNullException.ThrowIfNull(dateTimeService);
+        _commandProcessor = commandProcessor;
+        _dateTimeService = dateTimeService;
     }
 
     /// <inheritdoc/>
     public async Task SubmitAsync(Dynamics365BusinessEventBase @event, CancellationToken cancellationToken)
     {
-        _ = Guard.Against.Null(@event);
+        ArgumentNullException.ThrowIfNull(@event);
         try
         {
             IEnumerable<BaseCommand> commands = (await ApplyAsync(@event, cancellationToken)).SelectMany(p => p);
@@ -83,6 +83,7 @@ public class Dynamics365FinanceIntegrationEventProcessor : DependencyInjectionEv
     /// <inheritdoc/>
     public Task SubmitAsync(IEvent @event, CancellationToken cancellationToken)
     {
+        ArgumentNullException.ThrowIfNull(@event);
         return @event is Dynamics365BusinessEventBase businessEvent
             ? SubmitAsync(businessEvent, cancellationToken)
             : throw new ApplicationErrorException(new EventNotSupportedByDispatcher(nameof(Dynamics365FinanceIntegrationEventProcessor)));

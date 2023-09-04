@@ -1,0 +1,89 @@
+﻿// <copyright file="Person.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+
+namespace Hexalith.Domain.ValueObjets;
+
+using System;
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
+
+/// <summary>
+/// Class Person.
+/// </summary>
+[DataContract]
+public class Person
+{
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Person"/> class.
+    /// </summary>
+    /// <param name="name">The name.</param>
+    /// <param name="firstName">The first name.</param>
+    /// <param name="lastName">The last name.</param>
+    /// <param name="birthDate">The birth date.</param>
+    /// <param name="gender">The gender.</param>
+    [JsonConstructor]
+    public Person(
+        string? name,
+        string? firstName,
+        string? lastName,
+        DateOnly? birthDate,
+        Gender? gender)
+    {
+        Name = name;
+        FirstName = firstName;
+        LastName = lastName;
+        BirthDate = birthDate;
+        Gender = gender;
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Person"/> class.
+    /// </summary>
+    [Obsolete("This constructor is only for serialization purposes.", true)]
+    public Person()
+    {
+    }
+
+    /// <summary>
+    /// Gets the city.
+    /// </summary>
+    /// <value>The city.</value>
+    [DataMember(Order = 4)]
+    [JsonPropertyOrder(4)]
+    public DateOnly? BirthDate { get; private set; }
+
+    /// <summary>
+    /// Gets the city.
+    /// </summary>
+    /// <value>The city.</value>
+    [DataMember(Order = 2)]
+    [JsonPropertyOrder(2)]
+    public string? FirstName { get; private set; }
+
+    /// <summary>
+    /// Gets the city.
+    /// </summary>
+    /// <value>The city.</value>
+    [DataMember(Order = 5)]
+    [JsonPropertyOrder(5)]
+    public Gender? Gender { get; private set; }
+
+    /// <summary>
+    /// Gets the city.
+    /// </summary>
+    /// <value>The city.</value>
+    [DataMember(Order = 3)]
+    [JsonPropertyOrder(3)]
+    public string? LastName { get; private set; }
+
+    /// <summary>
+    /// Gets the city.
+    /// </summary>
+    /// <value>The city.</value>
+    [DataMember(Order = 1)]
+    [JsonPropertyOrder(1)]
+    public string? Name { get; private set; }
+}

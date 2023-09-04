@@ -214,9 +214,8 @@ public class AggregateStateManager : IAggregateStateManager
         MessageStore<EventState> eventStore = new(stateProvider, EventsStreamName);
         AggregateState state = await GetStateAsync(stateProvider, cancellationToken);
         IAggregate? aggregate = default;
-        while (state.LastEventPublished < state.EventStreamVersion)
+        for (long nextEvent = 1; nextEvent <= state.EventStreamVersion; nextEvent++)
         {
-            long nextEvent = state.LastEventPublished + 1;
             EventState eventState = await eventStore.GetAsync(nextEvent, cancellationToken);
             BaseEvent e = eventState.Message ?? throw new InvalidDataException($"Message is null in event stream at position {nextEvent}. IdempotencyId={eventState.IdempotencyId}.");
             aggregate = aggregate?.Apply(e) ?? aggregateInitializer(e);

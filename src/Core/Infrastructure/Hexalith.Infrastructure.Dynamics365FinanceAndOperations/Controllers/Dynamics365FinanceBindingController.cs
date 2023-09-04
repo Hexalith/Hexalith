@@ -9,8 +9,6 @@ namespace Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Controllers;
 using System.Runtime.Serialization;
 using System.Text.Json;
 
-using Ardalis.GuardClauses;
-
 using FluentValidation;
 
 using Hexalith.Application.Errors;
@@ -50,7 +48,8 @@ public abstract class Dynamics365FinanceBindingController : BindingController
         ILogger logger)
         : base(eventProcessor, hostEnvironment, logger)
     {
-        _eventValidator = Guard.Against.Null(metadataValidator);
+        ArgumentNullException.ThrowIfNull(metadataValidator);
+        _eventValidator = metadataValidator;
     }
 
     /// <inheritdoc/>

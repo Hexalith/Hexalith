@@ -114,6 +114,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Application.Conver
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.AzureDevOps", "src\Core\Infrastructure\Hexalith.Infrastructure.AzureDevOps\Hexalith.Infrastructure.AzureDevOps.csproj", "{AABC96A7-2B2C-4F92-A4CC-D76596DCF0D6}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Domain.Parties", "src\Core\Domain\Hexalith.Domain.Parties\Hexalith.Domain.Parties.csproj", "{162206B2-5BC9-429B-9541-58C76E87CE0F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Domain.ExternalSystems", "src\Core\Domain\Hexalith.Domain.ExternalSystems\Hexalith.Domain.ExternalSystems.csproj", "{96BF047A-FF3C-410B-B98A-69C143446908}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Application.Parties", "src\Core\Application\Hexalith.Application.Parties\Hexalith.Application.Parties.csproj", "{370F3C51-4C98-4A2E-BCBE-6DD63DFC3FD7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Application.ExternalSystems", "src\Core\Application\Hexalith.Application.ExternalSystems\Hexalith.Application.ExternalSystems.csproj", "{385AE393-5FF3-4254-8B19-82D809599B8C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -216,6 +224,22 @@ Global
 		{AABC96A7-2B2C-4F92-A4CC-D76596DCF0D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AABC96A7-2B2C-4F92-A4CC-D76596DCF0D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AABC96A7-2B2C-4F92-A4CC-D76596DCF0D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{162206B2-5BC9-429B-9541-58C76E87CE0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{162206B2-5BC9-429B-9541-58C76E87CE0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{162206B2-5BC9-429B-9541-58C76E87CE0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{162206B2-5BC9-429B-9541-58C76E87CE0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96BF047A-FF3C-410B-B98A-69C143446908}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96BF047A-FF3C-410B-B98A-69C143446908}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96BF047A-FF3C-410B-B98A-69C143446908}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96BF047A-FF3C-410B-B98A-69C143446908}.Release|Any CPU.Build.0 = Release|Any CPU
+		{370F3C51-4C98-4A2E-BCBE-6DD63DFC3FD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{370F3C51-4C98-4A2E-BCBE-6DD63DFC3FD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{370F3C51-4C98-4A2E-BCBE-6DD63DFC3FD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{370F3C51-4C98-4A2E-BCBE-6DD63DFC3FD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{385AE393-5FF3-4254-8B19-82D809599B8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{385AE393-5FF3-4254-8B19-82D809599B8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{385AE393-5FF3-4254-8B19-82D809599B8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{385AE393-5FF3-4254-8B19-82D809599B8C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -251,6 +275,10 @@ Global
 		{2F11D0F4-35B2-45D7-8966-DF5248DB82D4} = {5A9735A3-CEE9-4E50-B2FD-54F0BF402002}
 		{C29D4822-A879-49FA-9025-880D716782FF} = {AA983AFF-9CBC-4F2A-98E3-3CACA5039C61}
 		{AABC96A7-2B2C-4F92-A4CC-D76596DCF0D6} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
+		{162206B2-5BC9-429B-9541-58C76E87CE0F} = {5A9735A3-CEE9-4E50-B2FD-54F0BF402002}
+		{96BF047A-FF3C-410B-B98A-69C143446908} = {5A9735A3-CEE9-4E50-B2FD-54F0BF402002}
+		{370F3C51-4C98-4A2E-BCBE-6DD63DFC3FD7} = {AA983AFF-9CBC-4F2A-98E3-3CACA5039C61}
+		{385AE393-5FF3-4254-8B19-82D809599B8C} = {AA983AFF-9CBC-4F2A-98E3-3CACA5039C61}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09CBB595-8996-4C7F-9C48-4C58AD9293AC}

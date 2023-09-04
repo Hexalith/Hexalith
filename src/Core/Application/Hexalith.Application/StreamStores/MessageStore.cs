@@ -6,10 +6,9 @@
 
 namespace Hexalith.Application.StreamStores;
 
+using System;
 using System.Data;
 using System.Globalization;
-
-using Ardalis.GuardClauses;
 
 using Hexalith.Application.States;
 using Hexalith.Extensions.Common;
@@ -63,8 +62,10 @@ public class MessageStore<TMessage>
         long expectedVersion,
         CancellationToken cancellationToken)
     {
-        _ = Guard.Against.Negative(expectedVersion);
-        ArgumentNullException.ThrowIfNull(expectedVersion);
+        if (expectedVersion < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(expectedVersion), "Version cannot be negative.");
+        }
 
         long version = await GetVersionAsync(cancellationToken)
             .ConfigureAwait(false);
@@ -126,8 +127,20 @@ public class MessageStore<TMessage>
     /// <exception cref="Hexalith.Application.StreamStores.MessageStoreItemNotFoundException">Item not found.</exception>
     public async Task<IEnumerable<TMessage>> GetAsync(long fromVersion, long toVersion, CancellationToken cancellationToken)
     {
-        _ = Guard.Against.AgainstExpression(p => p > 0, fromVersion, "From version should be greater than 0.");
-        _ = Guard.Against.AgainstExpression(p => p >= fromVersion, toVersion, "To version should be greater or equal than from version.");
+        if (fromVersion < 1)
+        {
+            throw new ArgumentOutOfRangeException(nameof(fromVersion), "Version cannot be negative or zero.");
+        }
+
+        if (toVersion < 1)
+        {
+            throw new ArgumentOutOfRangeException(nameof(toVersion), "Version cannot be negative or zero.");
+        }
+
+        if (toVersion <= fromVersion)
+        {
+            throw new ArgumentException("To version should be greater or equal than from version.", nameof(toVersion));
+        }
 
         List<TMessage> messages = new();
 
@@ -156,7 +169,10 @@ public class MessageStore<TMessage>
     /// <exception cref="Hexalith.Application.StreamStores.MessageStoreItemNotFoundException">Item not found.</exception>
     public async Task<TMessage> GetAsync(long version, CancellationToken cancellationToken)
     {
-        _ = Guard.Against.NegativeOrZero(version);
+        if (version < 1)
+        {
+            throw new ArgumentOutOfRangeException(nameof(version), "Version cannot be negative or zero.");
+        }
 
         ConditionalValue<string> result = await _stateManager
                 .TryGetStateAsync<string>(GetStreamItemStateName(version), cancellationToken)
@@ -185,29 +201,20 @@ public class MessageStore<TMessage>
     /// </summary>
     /// <param name="id">The stream item version number.</param>
     /// <returns>The message state name. Default is the version number.</returns>
-    public virtual string GetMessageStateName(string id)
-    {
-        return GetStreamStateName() + "Id-" + id;
-    }
+    public virtual string GetMessageStateName(string id) => GetStreamStateName() + "Id-" + id;
 
     /// <summary>
     /// The stream item version and identifier.
     /// </summary>
     /// <param name="version">The stream item version number.</param>
     /// <returns>The message state name. Default is the version number.</returns>
-    public virtual string GetStreamItemStateName(long version)
-    {
-        return GetStreamStateName() + version.ToInvariantString();
-    }
+    public virtual string GetStreamItemStateName(long version) => GetStreamStateName() + version.ToInvariantString();
 
     /// <summary>
     /// The stream state name. Used to store version.
     /// </summary>
     /// <returns>The stream state name. Default is 'Stream'.</returns>
-    public virtual string GetStreamStateName()
-    {
-        return StreamName + "Stream";
-    }
+    public virtual string GetStreamStateName() => StreamName + "Stream";
 
     /// <summary>
     /// Get version.

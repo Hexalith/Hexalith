@@ -10,8 +10,6 @@ using System;
 using System.Net.Http.Json;
 using System.Text.Json;
 
-using Ardalis.GuardClauses;
-
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 
 using Microsoft.Extensions.Logging;
@@ -26,7 +24,7 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// <inheritdoc/>
     public async Task<TEntity> PostAsync<TCreate>(TCreate value, CancellationToken cancellationToken)
     {
-        _ = Guard.Against.Null(value);
+        ArgumentNullException.ThrowIfNull(value);
         TEntity result = await PostAsync(DefaultCompany, value, cancellationToken)
             .ConfigureAwait(false);
         return result;
@@ -35,7 +33,7 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// <inheritdoc/>
     public async Task<TEntity> PostAsync<TCreate>(string company, TCreate value, CancellationToken cancellationToken)
     {
-        _ = Guard.Against.Null(value);
+        ArgumentNullException.ThrowIfNull(value);
         HttpResponseMessage? response = await SendPostAsync(company, value, cancellationToken).ConfigureAwait(false);
         TEntity? v = await response
             .Content
@@ -56,15 +54,15 @@ public partial class Dynamics365FinanceAndOperationsClient<TEntity> : IDynamics3
     /// <inheritdoc/>
     public Task<HttpResponseMessage> SendPostAsync<TCreate>(TCreate value, CancellationToken cancellationToken)
     {
-        _ = Guard.Against.Null(value);
+        ArgumentNullException.ThrowIfNull(value);
         return SendPostAsync(DefaultCompany, value, cancellationToken);
     }
 
     /// <inheritdoc/>
     public async Task<HttpResponseMessage> SendPostAsync<TCreate>(string company, TCreate value, CancellationToken cancellationToken)
     {
-        _ = Guard.Against.NullOrWhiteSpace(company);
-        _ = Guard.Against.Null(value);
+        ArgumentNullException.ThrowIfNull(value);
+        ArgumentException.ThrowIfNullOrEmpty(company);
         string crossCompany = string.Equals(DefaultCompany, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : "/?" + _crossCompanyQuery;
         Uri url = new(_instance, $"{_dataPath}/{TEntity.EntityName()}{crossCompany}");
         HttpResponseMessage? response = null;

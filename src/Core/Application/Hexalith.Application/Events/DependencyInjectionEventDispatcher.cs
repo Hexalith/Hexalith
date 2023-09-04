@@ -12,8 +12,6 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Ardalis.GuardClauses;
-
 using Hexalith.Application.Commands;
 using Hexalith.Domain.Events;
 
@@ -43,8 +41,10 @@ public class DependencyInjectionEventDispatcher : IIntegrationEventDispatcher
     /// <param name="logger">The logger.</param>
     public DependencyInjectionEventDispatcher(IServiceProvider serviceProvider, ILogger logger)
     {
-        _serviceProvider = Guard.Against.Null(serviceProvider);
-        _logger = Guard.Against.Null(logger);
+        ArgumentNullException.ThrowIfNull(serviceProvider);
+        ArgumentNullException.ThrowIfNull(logger);
+        _serviceProvider = serviceProvider;
+        _logger = logger;
     }
 
     /// <inheritdoc/>

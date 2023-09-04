@@ -1,0 +1,55 @@
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Domain.Parties
+// Author           : Jérôme Piquot
+// Created          : 08-21-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 08-28-2023
+// ***********************************************************************
+// <copyright file="ExternalSystemReferenceRemoved.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
+namespace Hexalith.Domain.Events;
+
+using System;
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
+
+using Hexalith.Extensions;
+
+/// <summary>
+/// Class ExternalSystemReferenceUnmapped.
+/// Implements the <see cref="Hexalith.Domain.Events.ExternalSystemEvent" />.
+/// </summary>
+/// <seealso cref="Hexalith.Domain.Events.ExternalSystemEvent" />
+[DataContract]
+public class ExternalSystemReferenceRemoved : ExternalSystemEvent
+{
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ExternalSystemReferenceRemoved" /> class.
+    /// </summary>
+    /// <param name="systemId">The system identifier.</param>
+    /// <param name="referenceAggregateName">Type of the aggregate.</param>
+    /// <param name="externalId">The external identifier.</param>
+    [JsonConstructor]
+    public ExternalSystemReferenceRemoved(
+        string systemId,
+        string referenceAggregateName,
+        string externalId)
+        : base(systemId, referenceAggregateName, externalId)
+    {
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ExternalSystemReferenceRemoved" /> class.
+    /// </summary>
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
+    public ExternalSystemReferenceRemoved()
+    {
+    }
+}

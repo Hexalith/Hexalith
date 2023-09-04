@@ -163,35 +163,23 @@ public abstract class Dynamics365BusinessEventBase : IMetadata, IEvent
     /// Gets the business command.
     /// </summary>
     /// <returns>The command.</returns>
-    public virtual BaseCommand ToCommand()
-    {
-        throw new NotSupportedException();
-    }
+    public virtual BaseCommand ToCommand() => throw new NotSupportedException();
 
     /// <summary>
     /// Get the message major version.
     /// </summary>
     /// <returns>The major version.</returns>
-    protected virtual int DefaultMajorVersion()
-    {
-        return 0;
-    }
+    protected virtual int DefaultMajorVersion() => 0;
 
     /// <summary>
     /// Gets the message minor version.
     /// </summary>
     /// <returns>The minor version.</returns>
-    protected virtual int DefaultMinorVersion()
-    {
-        return 0;
-    }
+    protected virtual int DefaultMinorVersion() => 0;
 
     /// <summary>
     /// Get the message name.
     /// </summary>
     /// <returns>The name.</returns>
-    protected virtual string DefaultTypeName()
-    {
-        return GetType().Name;
-    }
+    protected virtual string DefaultTypeName() => GetType().Name;
 }
