@@ -17,12 +17,21 @@
 namespace Hexalith.Application.Parties.Services;
 
 using Hexalith.Application.Parties.Commands;
+using Hexalith.Domain.Events;
 
 /// <summary>
 /// Interface ICustomerQueryService.
 /// </summary>
 public interface ICustomerQueryService
 {
+    /// <summary>
+    /// Creates the information changed event.
+    /// </summary>
+    /// <param name="aggregateId">The aggregate identifier.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task&lt;CustomerInformationChanged&gt;.</returns>
+    Task<CustomerInformationChanged?> CreateInformationChangedEventAsync(string aggregateId, CancellationToken cancellationToken);
+
     /// <summary>
     /// Exists the asynchronous.
     /// </summary>

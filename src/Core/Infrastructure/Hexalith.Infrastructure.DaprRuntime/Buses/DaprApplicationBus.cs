@@ -115,7 +115,7 @@ public class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageBus<TMess
             ArgumentNullException.ThrowIfNull(state.Metadata);
             try
             {
-                string topicName = !string.IsNullOrEmpty(state.Message.AggregateName) ? state.Message.AggregateName : throw new Exception("Event aggregate name is not defined.");
+                string topicName = !string.IsNullOrEmpty(state.Message.AggregateName) ? state.Message.AggregateName.ToLowerInvariant() : throw new Exception("Event aggregate name is not defined.");
                 Dictionary<string, string> m = new(StringComparer.Ordinal)
                     {
                         { "MessageName", state.Metadata.Message.Name ?? string.Empty },

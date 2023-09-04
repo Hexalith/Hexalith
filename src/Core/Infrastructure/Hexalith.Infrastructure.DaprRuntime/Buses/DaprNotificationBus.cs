@@ -50,7 +50,7 @@ public class DaprNotificationBus : DaprApplicationBus<BaseNotification, BaseMeta
         client,
         dateTimeService,
         string.IsNullOrWhiteSpace(settings.Value.Name) ? throw new ArgumentException($"The name of the notification bus is not defined in settings ({NotificationBusSettings.ConfigurationName()}.{nameof(NotificationBusSettings.Name)}).", nameof(settings)) : settings.Value.Name,
-        "-notification",
+        "-notifications",
         logger)
     {
     }

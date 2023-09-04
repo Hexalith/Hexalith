@@ -51,7 +51,7 @@ public class DaprEventBus : DaprApplicationBus<BaseEvent, BaseMetadata, EventSta
         client,
         dateTimeService,
         string.IsNullOrWhiteSpace(settings.Value.Name) ? throw new ArgumentException($"The name of the event bus is not defined in settings ({EventBusSettings.ConfigurationName()}.{nameof(EventBusSettings.Name)}).", nameof(settings)) : settings.Value.Name,
-        "-event",
+        "-events",
         logger)
     {
     }

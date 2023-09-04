@@ -50,7 +50,7 @@ public class DaprRequestBus : DaprApplicationBus<BaseRequest, BaseMetadata, Requ
         client,
         dateTimeService,
         string.IsNullOrWhiteSpace(settings.Value.Name) ? throw new ArgumentException($"The name of the request bus is not defined in settings ({RequestBusSettings.ConfigurationName()}.{nameof(RequestBusSettings.Name)}).", nameof(settings)) : settings.Value.Name,
-        "-request",
+        "-requests",
         logger)
     {
     }
