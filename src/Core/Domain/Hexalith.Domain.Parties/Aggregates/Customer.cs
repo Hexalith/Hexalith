@@ -35,9 +35,9 @@ using Hexalith.Domain.ValueObjets;
 /// <seealso cref="System.IEquatable{Hexalith.Domain.Aggregates.Aggregate}" />
 /// <seealso cref="System.IEquatable{Hexalith.Domain.Aggregates.Customer}" />
 public record Customer(
+    string CompanyId,
     string Id,
     string Name,
-    string CompanyId,
     Contact Contact,
     PostalAddress InvoiceAddress,
     PostalAddress DeliveryAddress,
@@ -51,9 +51,9 @@ public record Customer(
     /// <param name="customer">The customer.</param>
     public Customer(CustomerRegistered customer)
         : this(
+              customer.CompanyId,
               customer.Id,
               customer.Name,
-              customer.CompanyId,
               customer.Contact,
               customer.InvoiceAddress,
               customer.DeliveryAddress,
@@ -69,9 +69,9 @@ public record Customer(
     /// <param name="customer">The customer.</param>
     public Customer(CustomerInformationChanged customer)
         : this(
+              customer.CompanyId,
               customer.Id,
               customer.Name,
-              customer.CompanyId,
               customer.Contact,
               customer.InvoiceAddress,
               customer.DeliveryAddress,
@@ -93,5 +93,19 @@ public record Customer(
     }
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateId() => base.DefaultAggregateId() + Separator + Id;
+    protected override string DefaultAggregateId() => GetAggregateId(CompanyId, Id);
+
+    /// <summary>
+    /// Defaults the aggregate identifier.
+    /// </summary>
+    /// <param name="companyId">The company identifier.</param>
+    /// <param name="id">The identifier.</param>
+    /// <returns>System.String.</returns>
+    public static string GetAggregateId(string companyId, string id) => nameof(Customer) + Separator + companyId + Separator + id;
+
+    /// <summary>
+    /// Gets the name of the aggregate.
+    /// </summary>
+    /// <returns>System.String.</returns>
+    public static string GetAggregateName() => nameof(Customer);
 }

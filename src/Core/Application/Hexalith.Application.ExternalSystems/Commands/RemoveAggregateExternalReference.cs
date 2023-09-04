@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 08-28-2023
 // ***********************************************************************
-// <copyright file="RemoveAggregateExternalSystemReference.cs" company="Fiveforty SAS Paris France">
+// <copyright file="RemoveAggregateExternalReference.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -28,30 +28,30 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="AggregateExternalReferenceCommand" />
 [DataContract]
-public class RemoveAggregateExternalSystemReference : AggregateExternalReferenceCommand
+public class RemoveAggregateExternalReference : AggregateExternalReferenceCommand
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="RemoveAggregateExternalSystemReference" /> class.
+    /// Initializes a new instance of the <see cref="RemoveAggregateExternalReference"/> class.
     /// </summary>
-    /// <param name="id">The identifier.</param>
+    /// <param name="referenceAggregateId">The reference aggregate identifier.</param>
     /// <param name="systemId">The system identifier.</param>
     /// <param name="externalId">The external identifier.</param>
     [JsonConstructor]
-    public RemoveAggregateExternalSystemReference(
-        string id,
+    public RemoveAggregateExternalReference(
+        string referenceAggregateId,
         string systemId,
         string externalId)
-        : base(id)
+        : base(referenceAggregateId)
     {
         SystemId = systemId;
         ExternalId = externalId;
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="RemoveAggregateExternalSystemReference" /> class.
+    /// Initializes a new instance of the <see cref="RemoveAggregateExternalReference" /> class.
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    public RemoveAggregateExternalSystemReference() => SystemId = ExternalId = string.Empty;
+    public RemoveAggregateExternalReference() => SystemId = ExternalId = string.Empty;
 
     /// <summary>
     /// Gets the external identifier.

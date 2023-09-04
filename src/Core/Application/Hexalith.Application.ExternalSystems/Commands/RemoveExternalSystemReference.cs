@@ -1,12 +1,12 @@
 ﻿// ***********************************************************************
-// Assembly         : Hexalith.Domain.Parties
+// Assembly         : Hexalith.Application.ExternalSystems
 // Author           : Jérôme Piquot
-// Created          : 08-21-2023
+// Created          : 08-28-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 08-28-2023
+// Last Modified On : 09-04-2023
 // ***********************************************************************
-// <copyright file="UnmapExternalSystemReference.cs" company="Fiveforty SAS Paris France">
+// <copyright file="RemoveExternalSystemReference.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -28,28 +28,28 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="ExternalSystemReferenceCommand" />
 [DataContract]
-public class UnmapExternalSystemReference : ExternalSystemReferenceCommand
+public class RemoveExternalSystemReference : ExternalSystemReferenceCommand
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="UnmapExternalSystemReference" /> class.
+    /// Initializes a new instance of the <see cref="RemoveExternalSystemReference" /> class.
     /// </summary>
-    /// <param name="systemId">The system identifier.</param>
+    /// <param name="systemId">The identifier.</param>
     /// <param name="referenceAggregateName">Type of the aggregate.</param>
     /// <param name="externalId">The external identifier.</param>
     [JsonConstructor]
-    public UnmapExternalSystemReference(
+    public RemoveExternalSystemReference(
         string systemId,
-        string externalId,
-        string referenceAggregateName)
-        : base(systemId, externalId, referenceAggregateName)
+        string referenceAggregateName,
+        string externalId)
+        : base(systemId, referenceAggregateName, externalId)
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="UnmapExternalSystemReference" /> class.
+    /// Initializes a new instance of the <see cref="RemoveExternalSystemReference" /> class.
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    public UnmapExternalSystemReference()
+    public RemoveExternalSystemReference()
     {
     }
 }

@@ -41,19 +41,18 @@ public class CustomerInformationChanged : CustomerEvent
     /// <param name="commissionSalesGroupId">The commission sales group identifier.</param>
     /// <param name="date">The date.</param>
     public CustomerInformationChanged(
+        string companyId,
         string id,
         string name,
-        string companyId,
         Contact contact,
         PostalAddress invoiceAddress,
         PostalAddress deliveryAddress,
         string? warehouseId,
         string? commissionSalesGroupId,
         DateTimeOffset date)
-        : base(id)
+        : base(companyId, id)
     {
         Name = name;
-        CompanyId = companyId;
         Contact = contact;
         InvoiceAddress = invoiceAddress;
         DeliveryAddress = deliveryAddress;
@@ -68,7 +67,7 @@ public class CustomerInformationChanged : CustomerEvent
     [Obsolete("This constructor is only for serialization purposes.", true)]
     public CustomerInformationChanged()
     {
-        CompanyId = Name = string.Empty;
+        Name = string.Empty;
         Contact = new Contact();
         InvoiceAddress = new PostalAddress();
         DeliveryAddress = new PostalAddress();
@@ -81,13 +80,6 @@ public class CustomerInformationChanged : CustomerEvent
     /// <value>The commission sales group identifier.</value>
     [DataMember(Order = 16)]
     public string? CommissionSalesGroupId { get; set; }
-
-    /// <summary>
-    /// Gets or sets the name.
-    /// </summary>
-    /// <value>The name.</value>
-    [DataMember(Order = 11)]
-    public string CompanyId { get; set; }
 
     /// <summary>
     /// Gets or sets the contact.

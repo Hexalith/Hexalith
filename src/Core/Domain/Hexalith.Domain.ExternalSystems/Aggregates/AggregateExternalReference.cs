@@ -4,7 +4,7 @@
 // Created          : 08-21-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 08-21-2023
+// Last Modified On : 09-04-2023
 // ***********************************************************************
 // <copyright file="AggregateExternalReference.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -26,7 +26,7 @@ using Hexalith.Domain.Exceptions;
 using Hexalith.Domain.ValueObjets;
 
 /// <summary>
-/// Class Customer.
+/// Class AggregateExternalReference.
 /// Implements the <see cref="Hexalith.Domain.Aggregates.Aggregate" />
 /// Implements the <see cref="Hexalith.Domain.Aggregates.IAggregate" />
 /// Implements the <see cref="System.IEquatable{Hexalith.Domain.Aggregates.Aggregate}" />
@@ -38,7 +38,7 @@ using Hexalith.Domain.ValueObjets;
 /// <seealso cref="System.IEquatable{Hexalith.Domain.Aggregates.AggregateExternalReference}" />
 [DataContract]
 public record AggregateExternalReference(
-    string Id,
+    string ReferenceAggregateId,
     IEnumerable<ExternalReference> ExternalIds) : Aggregate
 {
     /// <summary>
@@ -46,7 +46,7 @@ public record AggregateExternalReference(
     /// </summary>
     /// <param name="mapped">The mapped.</param>
     public AggregateExternalReference(AggregateExternalReferenceAdded mapped)
-        : this(mapped.Id, new ValueObjets.ExternalReference[] { new ValueObjets.ExternalReference(mapped.SystemId, mapped.ExternalId) })
+        : this(mapped.ReferenceAggregateId, new ValueObjets.ExternalReference[] { new ValueObjets.ExternalReference(mapped.SystemId, mapped.ExternalId) })
     {
     }
 
@@ -73,5 +73,18 @@ public record AggregateExternalReference(
     }
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateId() => base.DefaultAggregateId() + Separator + Id;
+    protected override string DefaultAggregateId() => GetAggregateId(ReferenceAggregateId);
+
+    /// <summary>
+    /// Gets the aggregate identifier.
+    /// </summary>
+    /// <param name="referenceAggregateId">The reference aggregate identifier.</param>
+    /// <returns>System.String.</returns>
+    public static string GetAggregateId(string referenceAggregateId) => GetAggregateName() + Separator + referenceAggregateId;
+
+    /// <summary>
+    /// Gets the name of the aggregate.
+    /// </summary>
+    /// <returns>System.String.</returns>
+    public static string GetAggregateName() => nameof(AggregateExternalReference);
 }

@@ -33,15 +33,15 @@ public class AddAggregateExternalReference : AggregateExternalReferenceCommand
     /// <summary>
     /// Initializes a new instance of the <see cref="AddAggregateExternalReference" /> class.
     /// </summary>
-    /// <param name="id">The identifier.</param>
+    /// <param name="referenceAggregateId">The reference aggregate identifier.</param>
     /// <param name="systemId">The system identifier.</param>
     /// <param name="externalId">The external identifier.</param>
     [JsonConstructor]
     public AddAggregateExternalReference(
-        string id,
+        string referenceAggregateId,
         string systemId,
         string externalId)
-        : base(id)
+        : base(referenceAggregateId)
     {
         SystemId = systemId;
         ExternalId = externalId;

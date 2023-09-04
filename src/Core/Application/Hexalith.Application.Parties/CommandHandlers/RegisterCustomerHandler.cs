@@ -23,7 +23,6 @@ using System.Threading.Tasks;
 
 using Hexalith.Application.Commands;
 using Hexalith.Application.Parties.Commands;
-using Hexalith.Application.Parties.Services;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Helpers;
@@ -35,47 +34,21 @@ using Hexalith.Extensions.Helpers;
 /// <seealso cref="Hexalith.Application.Commands.CommandHandler{Hexalith.Application.Parties.Commands.RegisterCustomer}" />
 public class RegisterCustomerHandler : CommandHandler<RegisterCustomer>
 {
-    /// <summary>
-    /// The customer service.
-    /// </summary>
-    private readonly ICustomerQueryService _customerService;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="RegisterCustomerHandler"/> class.
-    /// </summary>
-    /// <param name="customerService">The customer service.</param>
-    public RegisterCustomerHandler(ICustomerQueryService customerService)
-    {
-        ArgumentNullException.ThrowIfNull(customerService);
-        _customerService = customerService;
-    }
-
     /// <inheritdoc/>
-    public override async Task<IEnumerable<BaseMessage>> DoAsync(RegisterCustomer command, CancellationToken cancellationToken)
+    public override Task<IEnumerable<BaseMessage>> DoAsync(RegisterCustomer command, CancellationToken cancellationToken)
     {
-        return await _customerService.ExistAsync(command.AggregateId, cancellationToken)
-            ? new CustomerInformationChanged(
+        return Task.FromResult<IEnumerable<BaseMessage>>(
+            new CustomerRegistered(
+                command.CompanyId,
                 command.Id,
                 command.Name,
-                command.CompanyId,
                 command.Contact,
                 command.InvoiceAddress,
                 command.DeliveryAddress,
                 command.WarehouseId,
                 command.CommissionSalesGroupId,
                 command.Date)
-                .IntoArray()
-            : new CustomerRegistered(
-                command.Id,
-                command.Name,
-                command.CompanyId,
-                command.Contact,
-                command.InvoiceAddress,
-                command.DeliveryAddress,
-                command.WarehouseId,
-                command.CommissionSalesGroupId,
-                command.Date)
-                .IntoArray();
+                .IntoArray<BaseMessage>());
     }
 
     /// <inheritdoc/>

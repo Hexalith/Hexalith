@@ -34,15 +34,28 @@ public abstract class CustomerCommand : BaseCommand
     /// <summary>
     /// Initializes a new instance of the <see cref="CustomerCommand"/> class.
     /// </summary>
+    /// <param name="companyId">The company identifier.</param>
     /// <param name="id">The identifier.</param>
     [JsonConstructor]
-    protected CustomerCommand(string id) => Id = id;
+    protected CustomerCommand(string companyId, string id)
+    {
+        Id = id;
+        CompanyId = companyId;
+    }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CustomerCommand" /> class.
     /// </summary>
     [Obsolete("This constructor is only for serialization purposes.", true)]
-    protected CustomerCommand() => Id = string.Empty;
+    protected CustomerCommand() => CompanyId = Id = string.Empty;
+
+    /// <summary>
+    /// Gets or sets the identifier.
+    /// </summary>
+    /// <value>The identifier.</value>
+    [DataMember(Order = 1)]
+    [JsonPropertyOrder(1)]
+    public string CompanyId { get; set; }
 
     /// <summary>
     /// Gets or sets the identifier.
@@ -53,8 +66,8 @@ public abstract class CustomerCommand : BaseCommand
     public string Id { get; set; }
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateId() => base.DefaultAggregateId() + Separator + Id;
+    protected override string DefaultAggregateId() => Customer.GetAggregateId(CompanyId, Id);
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateName() => nameof(Customer);
+    protected override string DefaultAggregateName() => Customer.GetAggregateName();
 }

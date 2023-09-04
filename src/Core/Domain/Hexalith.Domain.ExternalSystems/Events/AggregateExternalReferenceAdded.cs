@@ -31,17 +31,17 @@ using Hexalith.Extensions;
 public class AggregateExternalReferenceAdded : AggregateExternalReferenceEvent
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="AggregateExternalReferenceAdded" /> class.
+    /// Initializes a new instance of the <see cref="AggregateExternalReferenceAdded"/> class.
     /// </summary>
-    /// <param name="id">The identifier.</param>
+    /// <param name="referenceAggregateId">The reference aggregate identifier.</param>
     /// <param name="systemId">The system identifier.</param>
     /// <param name="externalId">The external identifier.</param>
     [JsonConstructor]
     public AggregateExternalReferenceAdded(
-        string id,
+        string referenceAggregateId,
         string systemId,
         string externalId)
-        : base(id)
+        : base(referenceAggregateId)
     {
         SystemId = systemId;
         ExternalId = externalId;

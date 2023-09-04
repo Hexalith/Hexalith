@@ -38,16 +38,20 @@ using Hexalith.Domain.Exceptions;
 [DataContract]
 public record ExternalSystemReference(
     string SystemId,
-    string ExternalId,
     string ReferenceAggregateName,
+    string ExternalId,
     string? ReferenceAggregateId) : Aggregate
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="ExternalSystemReference" /> class.
     /// </summary>
     /// <param name="mapped">The mapped.</param>
-    public ExternalSystemReference(ExternalSystemReferenceMapped mapped)
-        : this(mapped.SystemId, mapped.ExternalId, mapped.ReferenceAggregateName, mapped.Id)
+    public ExternalSystemReference(ExternalSystemReferenceAdded mapped)
+        : this(
+              mapped.SystemId,
+              mapped.ReferenceAggregateName,
+              mapped.ExternalId,
+              mapped.ReferenceAggregateId)
     {
     }
 
@@ -57,12 +61,27 @@ public record ExternalSystemReference(
         ArgumentNullException.ThrowIfNull(domainEvent);
         return domainEvent switch
         {
-            ExternalSystemReferenceUnmapped => this with { ReferenceAggregateId = null },
-            ExternalSystemReferenceMapped added => this with { ReferenceAggregateId = added.Id },
+            ExternalSystemReferenceRemoved => this with { ReferenceAggregateId = null },
+            ExternalSystemReferenceAdded added => this with { ReferenceAggregateId = added.ReferenceAggregateId },
             _ => throw new InvalidAggregateEventException(this, domainEvent, false),
         };
     }
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateId() => nameof(ExternalSystemReference) + Separator + SystemId + Separator + ReferenceAggregateName + Separator + ExternalId;
+    protected override string DefaultAggregateId() => GetAggregateId(SystemId, ReferenceAggregateName, ExternalId);
+
+    /// <summary>
+    /// Gets the aggregate identifier.
+    /// </summary>
+    /// <param name="systemId">The system identifier.</param>
+    /// <param name="referenceAggregateName">Name of the reference aggregate.</param>
+    /// <param name="externalId">The external identifier.</param>
+    /// <returns>System.String.</returns>
+    public static string GetAggregateId(string systemId, string referenceAggregateName, string externalId) => GetAggregateName() + Separator + systemId + Separator + referenceAggregateName + Separator + externalId;
+
+    /// <summary>
+    /// Gets the name of the aggregate.
+    /// </summary>
+    /// <returns>System.String.</returns>
+    public static string GetAggregateName() => nameof(ExternalSystemReference);
 }

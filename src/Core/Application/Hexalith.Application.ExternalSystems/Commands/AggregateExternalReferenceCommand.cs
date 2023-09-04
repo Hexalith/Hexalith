@@ -4,7 +4,7 @@
 // Created          : 08-21-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 08-28-2023
+// Last Modified On : 09-02-2023
 // ***********************************************************************
 // <copyright file="AggregateExternalReferenceCommand.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -34,16 +34,15 @@ public abstract class AggregateExternalReferenceCommand : BaseCommand
     /// <summary>
     /// Initializes a new instance of the <see cref="AggregateExternalReferenceCommand" /> class.
     /// </summary>
-    /// <param name="name">The aggregate type name.</param>
-    /// <param name="id">The aggregate identifier.</param>
+    /// <param name="referenceAggregateId">The reference aggregate identifier.</param>
     [JsonConstructor]
-    protected AggregateExternalReferenceCommand(string id) => Id = id;
+    protected AggregateExternalReferenceCommand(string referenceAggregateId) => ReferenceAggregateId = referenceAggregateId;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AggregateExternalReferenceCommand" /> class.
     /// </summary>
     [Obsolete("This constructor is only for serialization purposes.", true)]
-    protected AggregateExternalReferenceCommand() => Id = string.Empty;
+    protected AggregateExternalReferenceCommand() => ReferenceAggregateId = string.Empty;
 
     /// <summary>
     /// Gets or sets the identifier.
@@ -51,11 +50,11 @@ public abstract class AggregateExternalReferenceCommand : BaseCommand
     /// <value>The identifier.</value>
     [DataMember(Order = 1)]
     [JsonPropertyOrder(1)]
-    public string Id { get; set; }
+    public string ReferenceAggregateId { get; set; }
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateId() => base.DefaultAggregateId() + Separator + Id;
+    protected override string DefaultAggregateId() => AggregateExternalReference.GetAggregateId(ReferenceAggregateId);
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateName() => nameof(AggregateExternalReference);
+    protected override string DefaultAggregateName() => AggregateExternalReference.GetAggregateName();
 }

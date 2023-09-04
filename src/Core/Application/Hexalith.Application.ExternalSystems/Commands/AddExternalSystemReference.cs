@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 08-28-2023
 // ***********************************************************************
-// <copyright file="MapExternalSystemReference.cs" company="Fiveforty SAS Paris France">
+// <copyright file="AddExternalSystemReference.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -28,28 +28,28 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="ExternalSystemReferenceCommand" />
 [DataContract]
-public class MapExternalSystemReference : ExternalSystemReferenceCommand
+public class AddExternalSystemReference : ExternalSystemReferenceCommand
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="MapExternalSystemReference" /> class.
+    /// Initializes a new instance of the <see cref="AddExternalSystemReference"/> class.
     /// </summary>
     /// <param name="systemId">The system identifier.</param>
+    /// <param name="referenceAggregateName">Name of the reference aggregate.</param>
     /// <param name="externalId">The external identifier.</param>
-    /// <param name="referenceAggregateName">Type of the aggregate.</param>
-    /// <param name="referenceAggregateId">The identifier.</param>
+    /// <param name="referenceAggregateId">The reference aggregate identifier.</param>
     [JsonConstructor]
-    public MapExternalSystemReference(
+    public AddExternalSystemReference(
         string systemId,
-        string externalId,
         string referenceAggregateName,
+        string externalId,
         string referenceAggregateId)
-        : base(systemId, externalId, referenceAggregateName) => ReferenceAggregateId = referenceAggregateId;
+        : base(systemId, referenceAggregateName, externalId) => ReferenceAggregateId = referenceAggregateId;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="MapExternalSystemReference" /> class.
+    /// Initializes a new instance of the <see cref="AddExternalSystemReference" /> class.
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    public MapExternalSystemReference() => ReferenceAggregateId = string.Empty;
+    public AddExternalSystemReference() => ReferenceAggregateId = string.Empty;
 
     /// <summary>
     /// Gets or sets the identifier.

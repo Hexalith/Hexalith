@@ -47,33 +47,47 @@ public abstract class ActorsCommandProcessor : ICommandProcessor
     public async Task SubmitAsync(IEnumerable<BaseCommand> commands, BaseMetadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(commands);
-        if (!commands.Any())
+
+        string? aggregateName = null;
+        List<List<BaseCommand>> lists = new();
+        List<BaseCommand> aggregateCommands = new();
+        foreach (BaseCommand cmd in commands)
         {
-            throw new InvalidOperationException("The list of commands is empty.");
+            if (aggregateName != cmd.AggregateName)
+            {
+                aggregateName = cmd.AggregateName;
+                if (aggregateCommands.Count > 0)
+                {
+                    lists.Add(aggregateCommands);
+                }
+
+                aggregateCommands = new List<BaseCommand>();
+            }
+
+            aggregateCommands.Add(cmd);
+        }
+        if (aggregateCommands.Count > 0)
+        {
+            lists.Add(aggregateCommands);
         }
 
-        BaseCommand command = commands.First();
-
-        string actorName = GetActorName(command);
-        List<BaseMetadata> metadatas = new() { metadata };
-        if (commands.Count() > 1)
+        foreach (List<BaseCommand> list in lists)
         {
-            metadatas
-                .AddRange(commands
-                    .Skip(1)
-                    .Select(p => Metadata.CreateNew(p, metadata)));
-        }
+            BaseCommand cmd = list.First();
+            string actorName = GetActorName(cmd);
+            List<BaseMetadata> metadatas = list.Select(p => Metadata.CreateNew(p, metadata)).ToList<BaseMetadata>();
 
-        ActorCommandEnvelope envelope = new(commands.ToArray(), metadatas.ToArray());
+            ActorCommandEnvelope envelope = new(list.ToArray(), metadatas.ToArray());
 
-        try
-        {
-            ICommandProcessorActor actor = _actorProxy.CreateActorProxy<ICommandProcessorActor>(command.AggregateId.ToUrlEncodedActorId(), actorName);
-            await actor.DoAsync(envelope);
-        }
-        catch (Exception e)
-        {
-            throw new InvalidOperationException($"Fail to call actor {actorName} method '{nameof(ICommandProcessorActor.DoAsync)}'.", e);
+            try
+            {
+                ICommandProcessorActor actor = _actorProxy.CreateActorProxy<ICommandProcessorActor>(cmd.AggregateId.ToUrlEncodedActorId(), actorName);
+                await actor.DoAsync(envelope);
+            }
+            catch (Exception e)
+            {
+                throw new InvalidOperationException($"Fail to call actor {actorName} method '{nameof(ICommandProcessorActor.DoAsync)}'.", e);
+            }
         }
     }
 

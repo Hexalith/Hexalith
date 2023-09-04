@@ -4,7 +4,7 @@
 // Created          : 08-21-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 08-28-2023
+// Last Modified On : 09-04-2023
 // ***********************************************************************
 // <copyright file="AggregateExternalReferenceEvent.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -32,27 +32,26 @@ public abstract class AggregateExternalReferenceEvent : BaseEvent
     /// <summary>
     /// Initializes a new instance of the <see cref="AggregateExternalReferenceEvent" /> class.
     /// </summary>
-    /// <param name="name">The aggregate type name.</param>
-    /// <param name="id">The aggregate identifier.</param>
+    /// <param name="referenceAggregateId">The reference aggregate identifier.</param>
     [JsonConstructor]
-    protected AggregateExternalReferenceEvent(string id) => Id = id;
+    protected AggregateExternalReferenceEvent(string referenceAggregateId) => ReferenceAggregateId = referenceAggregateId;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AggregateExternalReferenceEvent" /> class.
     /// </summary>
     [Obsolete("This constructor is only for serialization purposes.", true)]
-    protected AggregateExternalReferenceEvent() => Id = string.Empty;
+    protected AggregateExternalReferenceEvent() => ReferenceAggregateId = string.Empty;
 
     /// <summary>
-    /// Gets or sets the identifier.
+    /// Gets or sets the reference aggregate identifier.
     /// </summary>
-    /// <value>The identifier.</value>
+    /// <value>The reference aggregate identifier.</value>
     [DataMember(Order = 1)]
     [JsonPropertyOrder(1)]
-    public string Id { get; set; }
+    public string ReferenceAggregateId { get; set; }
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateId() => base.DefaultAggregateId() + Separator + Id;
+    protected override string DefaultAggregateId() => base.DefaultAggregateId() + Separator + ReferenceAggregateId;
 
     /// <inheritdoc/>
     protected override string DefaultAggregateName() => nameof(AggregateExternalReference);

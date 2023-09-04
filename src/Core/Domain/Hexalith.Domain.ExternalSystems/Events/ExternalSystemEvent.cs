@@ -38,8 +38,8 @@ public abstract class ExternalSystemEvent : BaseEvent
     [JsonConstructor]
     protected ExternalSystemEvent(
         string systemId,
-        string externalId,
-        string referenceAggregateName)
+        string referenceAggregateName,
+        string externalId)
     {
         SystemId = systemId;
         ReferenceAggregateName = referenceAggregateName;
@@ -56,16 +56,16 @@ public abstract class ExternalSystemEvent : BaseEvent
     /// Gets or sets the external identifier.
     /// </summary>
     /// <value>The identifier.</value>
-    [DataMember(Order = 2)]
-    [JsonPropertyOrder(2)]
+    [DataMember(Order = 3)]
+    [JsonPropertyOrder(3)]
     public string ExternalId { get; set; }
 
     /// <summary>
     /// Gets or sets the aggregate type name.
     /// </summary>
     /// <value>The identifier.</value>
-    [DataMember(Order = 3)]
-    [JsonPropertyOrder(3)]
+    [DataMember(Order = 2)]
+    [JsonPropertyOrder(2)]
     public string ReferenceAggregateName { get; set; }
 
     /// <summary>
@@ -77,8 +77,8 @@ public abstract class ExternalSystemEvent : BaseEvent
     public string SystemId { get; set; }
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateId() => base.DefaultAggregateId() + Separator + SystemId + Separator + ReferenceAggregateName + Separator + ExternalId;
+    protected override string DefaultAggregateId() => ExternalSystemReference.GetAggregateId(SystemId, ReferenceAggregateName, ExternalId);
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateName() => nameof(ExternalSystemReference);
+    protected override string DefaultAggregateName() => ExternalSystemReference.GetAggregateName();
 }

@@ -127,14 +127,14 @@ public class MessageStore<TMessage>
     /// <exception cref="Hexalith.Application.StreamStores.MessageStoreItemNotFoundException">Item not found.</exception>
     public async Task<IEnumerable<TMessage>> GetAsync(long fromVersion, long toVersion, CancellationToken cancellationToken)
     {
-        if (fromVersion < 0)
+        if (fromVersion < 1)
         {
-            throw new ArgumentOutOfRangeException(nameof(fromVersion), "Version cannot be negative.");
+            throw new ArgumentOutOfRangeException(nameof(fromVersion), "Version cannot be negative or zero.");
         }
 
-        if (toVersion < 0)
+        if (toVersion < 1)
         {
-            throw new ArgumentOutOfRangeException(nameof(toVersion), "Version cannot be negative.");
+            throw new ArgumentOutOfRangeException(nameof(toVersion), "Version cannot be negative or zero.");
         }
 
         if (toVersion <= fromVersion)
@@ -169,9 +169,9 @@ public class MessageStore<TMessage>
     /// <exception cref="Hexalith.Application.StreamStores.MessageStoreItemNotFoundException">Item not found.</exception>
     public async Task<TMessage> GetAsync(long version, CancellationToken cancellationToken)
     {
-        if (version < 0)
+        if (version < 1)
         {
-            throw new ArgumentOutOfRangeException(nameof(version), "Version cannot be negative.");
+            throw new ArgumentOutOfRangeException(nameof(version), "Version cannot be negative or zero.");
         }
 
         ConditionalValue<string> result = await _stateManager

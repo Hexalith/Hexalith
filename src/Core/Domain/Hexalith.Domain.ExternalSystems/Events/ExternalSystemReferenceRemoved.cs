@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 08-28-2023
 // ***********************************************************************
-// <copyright file="ExternalSystemReferenceUnmapped.cs" company="Fiveforty SAS Paris France">
+// <copyright file="ExternalSystemReferenceRemoved.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -28,28 +28,28 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="Hexalith.Domain.Events.ExternalSystemEvent" />
 [DataContract]
-public class ExternalSystemReferenceUnmapped : ExternalSystemEvent
+public class ExternalSystemReferenceRemoved : ExternalSystemEvent
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="ExternalSystemReferenceUnmapped" /> class.
+    /// Initializes a new instance of the <see cref="ExternalSystemReferenceRemoved" /> class.
     /// </summary>
     /// <param name="systemId">The system identifier.</param>
     /// <param name="referenceAggregateName">Type of the aggregate.</param>
     /// <param name="externalId">The external identifier.</param>
     [JsonConstructor]
-    public ExternalSystemReferenceUnmapped(
+    public ExternalSystemReferenceRemoved(
         string systemId,
-        string externalId,
-        string referenceAggregateName)
-        : base(systemId, externalId, referenceAggregateName)
+        string referenceAggregateName,
+        string externalId)
+        : base(systemId, referenceAggregateName, externalId)
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ExternalSystemReferenceUnmapped" /> class.
+    /// Initializes a new instance of the <see cref="ExternalSystemReferenceRemoved" /> class.
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    public ExternalSystemReferenceUnmapped()
+    public ExternalSystemReferenceRemoved()
     {
     }
 }
