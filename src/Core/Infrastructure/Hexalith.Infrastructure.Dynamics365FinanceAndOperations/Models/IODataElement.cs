@@ -19,7 +19,7 @@ public interface IODataElement
     /// <summary>
     /// Gets the record Etag for concurrency checks.
     /// </summary>
-    string Etag { get; }
+    string? Etag { get; }
 
     /// <summary>
     /// Gets the entity name.

@@ -21,9 +21,8 @@ public record ODataElement
     /// <param name="etag">The Etag.</param>
     /// <param name="dataAreaId">The company identifier.</param>
     [JsonConstructor]
-    protected ODataElement(string etag, string dataAreaId)
+    protected ODataElement(string? etag, string dataAreaId)
     {
-        ArgumentException.ThrowIfNullOrEmpty(etag);
         ArgumentException.ThrowIfNullOrEmpty(dataAreaId);
         Etag = etag;
         DataAreaId = dataAreaId;
@@ -33,7 +32,7 @@ public record ODataElement
     /// Gets the record Etag for concurrency checks.
     /// </summary>
     [JsonPropertyName("@odata.etag")]
-    public string Etag { get; }
+    public string? Etag { get; }
 
     /// <summary>
     /// Gets the company.
