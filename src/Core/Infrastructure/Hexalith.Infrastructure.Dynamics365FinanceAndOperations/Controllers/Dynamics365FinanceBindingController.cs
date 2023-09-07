@@ -75,6 +75,12 @@ public abstract class Dynamics365FinanceBindingController : BindingController
                 new EventDeserializationFailed(message.GetRawText(), ex),
                 ex);
         }
+        catch (JsonException ex)
+        {
+            throw new ApplicationErrorException(
+                new EventDeserializationFailed(message.GetRawText(), ex),
+                ex);
+        }
     }
 
     /// <summary>

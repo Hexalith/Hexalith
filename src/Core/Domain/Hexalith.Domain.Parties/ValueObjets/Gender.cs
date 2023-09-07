@@ -34,4 +34,9 @@ public enum Gender
     /// The other.
     /// </summary>
     Other,
+
+    /// <summary>
+    /// Unknown gender.
+    /// </summary>
+    Unknown,
 }

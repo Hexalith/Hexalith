@@ -42,8 +42,6 @@ public class ChangeCustomerInformationHandler : CommandHandler<ChangeCustomerInf
                     command.Id,
                     command.Name,
                     command.Contact,
-                    command.InvoiceAddress,
-                    command.DeliveryAddress,
                     command.WarehouseId,
                     command.CommissionSalesGroupId,
                     command.Date)

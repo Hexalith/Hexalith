@@ -15,7 +15,6 @@ using Hexalith.Application.Events;
 using Hexalith.Application.Metadatas;
 using Hexalith.Domain.Events;
 using Hexalith.Extensions.Common;
-using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents;
 
 using Microsoft.Extensions.Logging;
@@ -64,15 +63,14 @@ public class Dynamics365FinanceIntegrationEventProcessor : DependencyInjectionEv
         try
         {
             IEnumerable<BaseCommand> commands = (await ApplyAsync(@event, cancellationToken)).SelectMany(p => p);
-            if (!commands.Any())
+            commands = commands.Union(@event.ToCommands());
+            if (commands.Any())
             {
-                commands = @event.ToCommand().IntoArray();
+                await _commandProcessor.SubmitAsync(
+                    commands,
+                    Metadata.CreateNew(commands.First(), @event, _dateTimeService.UtcNow),
+                    cancellationToken);
             }
-
-            await _commandProcessor.SubmitAsync(
-                commands,
-                Metadata.CreateNew(commands.First(), @event, _dateTimeService.UtcNow),
-                cancellationToken);
         }
         catch (Exception ex)
         {

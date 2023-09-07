@@ -96,4 +96,22 @@ public class Contact
     [DataMember(Order = 2)]
     [JsonPropertyOrder(2)]
     public PostalAddress? PostalAddress { get; private set; }
+
+    /// <summary>
+    /// Ares the same.
+    /// </summary>
+    /// <param name="a">a.</param>
+    /// <param name="b">The b.</param>
+    /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+    public static bool AreSame(Contact? a, Contact? b)
+    {
+        return a is null
+            ? b is null
+            : a == b || (
+                Person.AreSame(a.Person, b?.Person) &&
+                PostalAddress.AreSame(a.PostalAddress, b?.PostalAddress) &&
+                a.Email == b?.Email &&
+                a.Phone == b?.Phone &&
+                a.Mobile == b?.Mobile);
+    }
 }

@@ -66,6 +66,7 @@ public abstract class ActorsCommandProcessor : ICommandProcessor
 
             aggregateCommands.Add(cmd);
         }
+
         if (aggregateCommands.Count > 0)
         {
             lists.Add(aggregateCommands);
