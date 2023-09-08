@@ -32,8 +32,10 @@ using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 public record CustomerV3
 (
     string DataAreaId,
-    string CustomerAccount,
+    string? CustomerAccount = null,
     string? Etag = null,
+    string? CustomerGroupId = null,
+    string? SalesCurrencyCode = null,
     string? WarehouseId = null,
     string? CommissionSalesGroupId = null,
     string? AddressDescription = null,
