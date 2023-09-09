@@ -35,6 +35,8 @@ public record CustomerV3
     string? CustomerAccount = null,
     string? Etag = null,
     string? CustomerGroupId = null,
+    string? PartyType = null,
+    string? OrganizationName = null,
     string? SalesCurrencyCode = null,
     string? WarehouseId = null,
     string? CommissionSalesGroupId = null,
