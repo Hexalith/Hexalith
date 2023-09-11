@@ -31,11 +31,11 @@ using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 /// <seealso cref="IEquatable{CustomerExternalCode}" />
 public record CustomerExternalCode
 (
-    string Etag,
+    string? Etag,
     string DataAreaId,
-    string CustomerExternalCodeClassId,
-    string ExternalCode,
-    string CustomerAccountNumber)
+    string? System,
+    string? CustomerAccountNumber,
+    string? ExternalCode)
 
 : ODataElement(Etag, DataAreaId), IODataElement
 {

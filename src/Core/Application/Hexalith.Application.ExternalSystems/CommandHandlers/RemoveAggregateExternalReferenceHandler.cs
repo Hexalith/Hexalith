@@ -38,6 +38,7 @@ public class RemoveAggregateExternalReferenceHandler : CommandHandler<RemoveAggr
     public override Task<IEnumerable<BaseMessage>> DoAsync(RemoveAggregateExternalReference command, CancellationToken cancellationToken)
     {
         return Task.FromResult<IEnumerable<BaseMessage>>(new AggregateExternalReferenceRemoved(
+                command.ReferenceAggregateName,
                 command.ReferenceAggregateId,
                 command.SystemId,
                 command.ExternalId)

@@ -34,7 +34,7 @@ using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
 public record CustomerExternalCodeByAccountFilter
 (
     string DataAreaId,
-    string CustomerExternalCodeClassId,
+    string System,
     string CustomerAccountNumber)
     : PerCompanyFilter(DataAreaId)
 {
