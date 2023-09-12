@@ -30,29 +30,42 @@ using Hexalith.Domain.Aggregates;
 public abstract class AggregateExternalReferenceEvent : BaseEvent
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="AggregateExternalReferenceEvent" /> class.
+    /// Initializes a new instance of the <see cref="AggregateExternalReferenceEvent"/> class.
     /// </summary>
+    /// <param name="referenceAggregateName">Name of the reference aggregate.</param>
     /// <param name="referenceAggregateId">The reference aggregate identifier.</param>
     [JsonConstructor]
-    protected AggregateExternalReferenceEvent(string referenceAggregateId) => ReferenceAggregateId = referenceAggregateId;
+    protected AggregateExternalReferenceEvent(string referenceAggregateName, string referenceAggregateId)
+    {
+        ReferenceAggregateName = referenceAggregateName;
+        ReferenceAggregateId = referenceAggregateId;
+    }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AggregateExternalReferenceEvent" /> class.
     /// </summary>
     [Obsolete("This constructor is only for serialization purposes.", true)]
-    protected AggregateExternalReferenceEvent() => ReferenceAggregateId = string.Empty;
+    protected AggregateExternalReferenceEvent() => ReferenceAggregateId = ReferenceAggregateName = string.Empty;
 
     /// <summary>
     /// Gets or sets the reference aggregate identifier.
     /// </summary>
     /// <value>The reference aggregate identifier.</value>
-    [DataMember(Order = 1)]
-    [JsonPropertyOrder(1)]
+    [DataMember(Order = 2)]
+    [JsonPropertyOrder(2)]
     public string ReferenceAggregateId { get; set; }
 
-    /// <inheritdoc/>
-    protected override string DefaultAggregateId() => base.DefaultAggregateId() + Separator + ReferenceAggregateId;
+    /// <summary>
+    /// Gets the name of the reference aggregate.
+    /// </summary>
+    /// <value>The name of the reference aggregate.</value>
+    [DataMember(Order = 1)]
+    [JsonPropertyOrder(1)]
+    public string ReferenceAggregateName { get; }
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateName() => nameof(AggregateExternalReference);
+    protected override string DefaultAggregateId() => AggregateExternalReference.GetAggregateId(ReferenceAggregateId);
+
+    /// <inheritdoc/>
+    protected override string DefaultAggregateName() => AggregateExternalReference.GetAggregateName();
 }

@@ -163,4 +163,29 @@ public class PostalAddress
     [DataMember(Order = 6)]
     [JsonPropertyOrder(6)]
     public string? ZipCode { get; set; }
+
+    /// <summary>
+    /// Ares the same.
+    /// </summary>
+    /// <param name="a">a.</param>
+    /// <param name="b">The b.</param>
+    /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+    public static bool AreSame(PostalAddress? a, PostalAddress? b)
+    {
+        return a is null
+            ? b is null
+            : a == b ||
+                (a.Name == b?.Name &&
+                a.Description == b?.Description &&
+                a.StreetNumber == b?.StreetNumber &&
+                a.Street == b?.Street &&
+                a.PostBox == b?.PostBox &&
+                a.ZipCode == b?.ZipCode &&
+                a.City == b?.City &&
+                a.CountyId == b?.CountyId &&
+                a.StateName == b?.StateName &&
+                a.CountryId == b?.CountryId &&
+                a.CountryName == b?.CountryName &&
+                a.CountryIso2 == b?.CountryIso2);
+    }
 }

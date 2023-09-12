@@ -45,8 +45,6 @@ public class CustomerInformationChanged : CustomerEvent
         string id,
         string name,
         Contact contact,
-        PostalAddress invoiceAddress,
-        PostalAddress deliveryAddress,
         string? warehouseId,
         string? commissionSalesGroupId,
         DateTimeOffset date)
@@ -54,8 +52,6 @@ public class CustomerInformationChanged : CustomerEvent
     {
         Name = name;
         Contact = contact;
-        InvoiceAddress = invoiceAddress;
-        DeliveryAddress = deliveryAddress;
         WarehouseId = warehouseId;
         CommissionSalesGroupId = commissionSalesGroupId;
         Date = date;
@@ -69,8 +65,6 @@ public class CustomerInformationChanged : CustomerEvent
     {
         Name = string.Empty;
         Contact = new Contact();
-        InvoiceAddress = new PostalAddress();
-        DeliveryAddress = new PostalAddress();
         Date = DateTimeOffset.MinValue;
     }
 
@@ -94,20 +88,6 @@ public class CustomerInformationChanged : CustomerEvent
     /// <value>The external ids.</value>
     [DataMember(Order = 17)]
     public DateTimeOffset Date { get; set; }
-
-    /// <summary>
-    /// Gets or sets the delivery address.
-    /// </summary>
-    /// <value>The delivery address.</value>
-    [DataMember(Order = 14)]
-    public PostalAddress DeliveryAddress { get; set; }
-
-    /// <summary>
-    /// Gets or sets the invoice address.
-    /// </summary>
-    /// <value>The invoice address.</value>
-    [DataMember(Order = 13)]
-    public PostalAddress InvoiceAddress { get; set; }
 
     /// <summary>
     /// Gets or sets the name.

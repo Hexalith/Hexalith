@@ -38,6 +38,7 @@ public class AddAggregateExternalReferenceHandler : CommandHandler<AddAggregateE
     public override Task<IEnumerable<BaseMessage>> DoAsync(AddAggregateExternalReference command, CancellationToken cancellationToken)
     {
         return Task.FromResult<IEnumerable<BaseMessage>>(new AggregateExternalReferenceAdded(
+                command.ReferenceAggregateName,
                 command.ReferenceAggregateId,
                 command.SystemId,
                 command.ExternalId)

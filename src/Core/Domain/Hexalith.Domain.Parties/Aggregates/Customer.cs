@@ -39,8 +39,6 @@ public record Customer(
     string Id,
     string Name,
     Contact Contact,
-    PostalAddress InvoiceAddress,
-    PostalAddress DeliveryAddress,
     string? WarehouseId,
     string? CommissionSalesGroupId,
     DateTimeOffset Date) : Aggregate
@@ -55,8 +53,6 @@ public record Customer(
               customer.Id,
               customer.Name,
               customer.Contact,
-              customer.InvoiceAddress,
-              customer.DeliveryAddress,
               customer.WarehouseId,
               customer.CommissionSalesGroupId,
               customer.Date)
@@ -73,8 +69,6 @@ public record Customer(
               customer.Id,
               customer.Name,
               customer.Contact,
-              customer.InvoiceAddress,
-              customer.DeliveryAddress,
               customer.WarehouseId,
               customer.CommissionSalesGroupId,
               customer.Date)

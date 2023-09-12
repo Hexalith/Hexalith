@@ -87,4 +87,21 @@ public class Person
     [DataMember(Order = 1)]
     [JsonPropertyOrder(1)]
     public string? Name { get; private set; }
+
+    /// <summary>
+    /// Ares the same.
+    /// </summary>
+    /// <param name="a">a.</param>
+    /// <param name="b">The b.</param>
+    /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+    public static bool AreSame(Person? a, Person? b)
+    {
+        return a is null
+            ? b is null
+            : a == b ||
+                (a.Gender == b?.Gender &&
+                a.FirstName == b?.FirstName &&
+                a.LastName == b?.LastName &&
+                a.Name == b?.Name);
+    }
 }

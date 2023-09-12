@@ -163,7 +163,7 @@ public abstract class Dynamics365BusinessEventBase : IMetadata, IEvent
     /// Gets the business command.
     /// </summary>
     /// <returns>The command.</returns>
-    public virtual BaseCommand ToCommand() => throw new NotSupportedException();
+    public virtual IEnumerable<BaseCommand> ToCommands() => Enumerable.Empty<BaseCommand>();
 
     /// <summary>
     /// Get the message major version.

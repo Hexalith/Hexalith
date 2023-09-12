@@ -32,25 +32,40 @@ using Hexalith.Domain.Events;
 public abstract class AggregateExternalReferenceCommand : BaseCommand
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="AggregateExternalReferenceCommand" /> class.
+    /// Initializes a new instance of the <see cref="AggregateExternalReferenceCommand"/> class.
     /// </summary>
+    /// <param name="referenceAggregateName">Name of the reference aggregate.</param>
     /// <param name="referenceAggregateId">The reference aggregate identifier.</param>
     [JsonConstructor]
-    protected AggregateExternalReferenceCommand(string referenceAggregateId) => ReferenceAggregateId = referenceAggregateId;
+    protected AggregateExternalReferenceCommand(
+        string referenceAggregateName,
+        string referenceAggregateId)
+    {
+        ReferenceAggregateName = referenceAggregateName;
+        ReferenceAggregateId = referenceAggregateId;
+    }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AggregateExternalReferenceCommand" /> class.
     /// </summary>
     [Obsolete("This constructor is only for serialization purposes.", true)]
-    protected AggregateExternalReferenceCommand() => ReferenceAggregateId = string.Empty;
+    protected AggregateExternalReferenceCommand() => ReferenceAggregateName = ReferenceAggregateId = string.Empty;
 
     /// <summary>
     /// Gets or sets the identifier.
     /// </summary>
     /// <value>The identifier.</value>
+    [DataMember(Order = 2)]
+    [JsonPropertyOrder(2)]
+    public string ReferenceAggregateId { get; set; }
+
+    /// <summary>
+    /// Gets the name of the reference aggregate.
+    /// </summary>
+    /// <value>The name of the reference aggregate.</value>
     [DataMember(Order = 1)]
     [JsonPropertyOrder(1)]
-    public string ReferenceAggregateId { get; set; }
+    public string ReferenceAggregateName { get; }
 
     /// <inheritdoc/>
     protected override string DefaultAggregateId() => AggregateExternalReference.GetAggregateId(ReferenceAggregateId);

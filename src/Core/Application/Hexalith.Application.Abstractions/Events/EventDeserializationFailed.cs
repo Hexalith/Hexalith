@@ -1,12 +1,23 @@
-﻿// <copyright file="EventDeserializationFailed.cs" company="Fiveforty SAS Paris France">
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Application.Abstractions
+// Author           : Jérôme Piquot
+// Created          : 08-09-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 09-07-2023
+// ***********************************************************************
+// <copyright file="EventDeserializationFailed.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Hexalith.Application.Events;
 
 using System.Runtime.Serialization;
+using System.Text.Json;
 
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
@@ -24,13 +35,34 @@ using Hexalith.Extensions.Helpers;
 public record EventDeserializationFailed : Error
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="EventDeserializationFailed"/> class.
+    /// Initializes a new instance of the <see cref="EventDeserializationFailed" /> class.
     /// </summary>
     /// <param name="data">The serialization data.</param>
     /// <param name="exception">The serialization exception.</param>
+    /// <exception cref="System.ArgumentNullException">Exception object is null.</exception>
     public EventDeserializationFailed(
         string? data,
         SerializationException exception)
+    {
+        ArgumentNullException.ThrowIfNull(exception);
+        _ = exception;
+        Title = "Event deserialization failed";
+        Type = nameof(EventDeserializationFailed);
+        Detail = "Could not deserialize data : {Message}";
+        Arguments = new object[] { exception.Message };
+        TechnicalDetail = "Event deserialization failed for data:\n{SerializationData}\n{ErrorMessage}\n{StackTrace}";
+        TechnicalArguments = new object[] { data ?? string.Empty, exception.FullMessage(), exception.StackTrace ?? string.Empty };
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="EventDeserializationFailed" /> class.
+    /// </summary>
+    /// <param name="data">The serialization data.</param>
+    /// <param name="exception">The serialization exception.</param>
+    /// <exception cref="System.ArgumentNullException">Exception object is null.</exception>
+    public EventDeserializationFailed(
+        string? data,
+        JsonException exception)
     {
         ArgumentNullException.ThrowIfNull(exception);
         _ = exception;
