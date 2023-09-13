@@ -9,7 +9,7 @@ namespace Hexalith.Extensions.Helpers;
 /// <summary>
 /// Array helpers.
 /// </summary>
-public static class ArrayHelper
+public static class CollectionHelper
 {
     /// <summary>
     /// Creates an array containing the object.
@@ -17,8 +17,13 @@ public static class ArrayHelper
     /// <typeparam name="T">Type of the object.</typeparam>
     /// <param name="obj">Instance of the object.</param>
     /// <returns>An array containing the object.</returns>
-    public static T[] IntoArray<T>(this T obj)
-    {
-        return new[] { obj };
-    }
+    public static T[] IntoArray<T>(this T obj) => new[] { obj };
+
+    /// <summary>
+    /// Into enumerable collection.
+    /// </summary>
+    /// <typeparam name="T">Items type.</typeparam>
+    /// <param name="obj">The object.</param>
+    /// <returns>IEnumerable&lt;T&gt;.</returns>
+    public static IEnumerable<T> IntoEnumerable<T>(this T obj) => obj.IntoArray();
 }
