@@ -8,8 +8,8 @@
 // ***********************************************************************
 // <copyright file="MessageMetadata.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
-Licensed under the MIT license.
-    See LICENSE file in the project root for full license information.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -20,11 +20,10 @@ using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 using Hexalith.Domain.Messages;
-using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class MessageMetadata.
-/// Implements the <see cref="Hexalith.Application.Metadatas.IMessageMetadata" />
+/// Implements the <see cref="Hexalith.Application.Metadatas.IMessageMetadata" />.
 /// </summary>
 /// <seealso cref="Hexalith.Application.Metadatas.IMessageMetadata" />
 [DataContract]
