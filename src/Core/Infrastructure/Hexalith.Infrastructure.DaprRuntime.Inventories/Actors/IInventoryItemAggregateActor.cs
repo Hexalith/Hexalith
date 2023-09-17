@@ -20,7 +20,6 @@ using System.Threading.Tasks;
 
 using Dapr.Actors;
 
-using Hexalith.Application.Inventories.Commands;
 using Hexalith.Domain.Events;
 
 /// <summary>
@@ -43,9 +42,15 @@ public interface IInventoryItemAggregateActor : IActor
     Task<bool> ExistAsync();
 
     /// <summary>
-    /// Determines whether the specified command would change the InventoryOnHand information.
+    /// Gets the item name asynchronous.
     /// </summary>
-    /// <param name="change">The change.</param>
+    /// <returns>Task&lt;System.Nullable&lt;System.String&gt;&gt;.</returns>
+    Task<string?> GetItemNameAsync();
+
+    /// <summary>
+    /// Determines whether [has changes asynchronous] [the specified change].
+    /// </summary>
+    /// <param name="changed">The changed event.</param>
     /// <returns>Task&lt;System.Boolean&gt;.</returns>
-    Task<bool> HasChangesAsync(ChangeInventoryItemInformation change);
+    Task<bool> HasChangesAsync(InventoryItemInformationChanged changed);
 }

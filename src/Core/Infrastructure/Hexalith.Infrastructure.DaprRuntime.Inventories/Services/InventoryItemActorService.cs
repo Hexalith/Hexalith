@@ -22,7 +22,6 @@ using System.Threading.Tasks;
 using Dapr.Actors;
 using Dapr.Actors.Client;
 
-using Hexalith.Application.Inventories.Commands;
 using Hexalith.Application.Inventories.Services;
 using Hexalith.Domain.Events;
 using Hexalith.Infrastructure.DaprRuntime.Inventories.Actors;
@@ -53,16 +52,22 @@ public class InventoryItemActorService : IInventoryItemQueryService
     }
 
     /// <inheritdoc/>
-    public async Task<bool> HasChangesAsync(ChangeInventoryItemInformation change, CancellationToken cancellationToken)
+    public async Task<string?> GetItemNameAsync(string aggregateId, CancellationToken none)
     {
-        ArgumentNullException.ThrowIfNull(change);
-        return await GetActor(change.AggregateId)
-            .HasChangesAsync(change)
+        ArgumentException.ThrowIfNullOrEmpty(aggregateId);
+        return await GetActor(aggregateId)
+            .GetItemNameAsync()
             .ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public Task<bool> HasChangesAsync(InventoryItemInformationChanged change, CancellationToken cancellationToken) => throw new NotImplementedException();
+    public async Task<bool> HasChangesAsync(InventoryItemInformationChanged changed, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(changed);
+        return await GetActor(changed.AggregateId)
+            .HasChangesAsync(changed)
+            .ConfigureAwait(false);
+    }
 
     private static IInventoryItemAggregateActor GetActor(string aggregateId)
     {

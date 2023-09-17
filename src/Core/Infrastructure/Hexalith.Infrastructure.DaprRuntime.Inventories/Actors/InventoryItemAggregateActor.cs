@@ -20,8 +20,6 @@ using System;
 using Dapr.Actors.Runtime;
 
 using Hexalith.Application.Aggregates;
-using Hexalith.Application.Exceptions;
-using Hexalith.Application.Inventories.Commands;
 using Hexalith.Application.States;
 using Hexalith.Application.Tasks;
 using Hexalith.Domain.Aggregates;
@@ -116,19 +114,19 @@ public class InventoryItemAggregateActor : Actor, ICommandProcessorActor, IRemin
     }
 
     /// <inheritdoc/>
-    public async Task<bool> HasChangesAsync(ChangeInventoryItemInformation change)
+    public async Task<string?> GetItemNameAsync()
+        => (await GetAggregateAsync().ConfigureAwait(false))?.Name;
+
+    /// <inheritdoc/>
+    public async Task<bool> HasChangesAsync(InventoryItemInformationChanged changed)
     {
-        ArgumentNullException.ThrowIfNull(change);
-        if (change.AggregateId != Id.ToString())
-        {
-            throw new InvalidCommandAggregateIdException(Id.ToString(), change);
-        }
+        ArgumentNullException.ThrowIfNull(changed);
 
         InventoryItem? inventoryItem = await GetAggregateAsync().ConfigureAwait(false);
         return inventoryItem == null
             ? throw new InvalidOperationException($"InventoryItem {Id} not found.")
             :
-            inventoryItem.Name == change.Name;
+            inventoryItem.Name == changed.Name;
     }
 
     /// <inheritdoc/>

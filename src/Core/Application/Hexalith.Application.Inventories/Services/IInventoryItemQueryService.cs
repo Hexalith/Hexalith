@@ -40,6 +40,14 @@ public interface IInventoryItemQueryService
     Task<bool> ExistAsync(string aggregateId, CancellationToken cancellationToken);
 
     /// <summary>
+    /// Gets the item name asynchronous.
+    /// </summary>
+    /// <param name="aggregateId">The aggregate identifier.</param>
+    /// <param name="none">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task&lt;System.Nullable&lt;System.String&gt;&gt;.</returns>
+    Task<string?> GetItemNameAsync(string aggregateId, CancellationToken none);
+
+    /// <summary>
     /// Determines whether [has changes asynchronous] [the specified change].
     /// </summary>
     /// <param name="change">The change.</param>
