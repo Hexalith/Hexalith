@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Application\Hexalith.Application.Abstractions\Hexalith.Application.Abstractions.csproj" />
+		<ProjectReference Include="..\..\Application\Hexalith.Application\Hexalith.Application.csproj" />
+		<ProjectReference Include="..\..\Common\Hexalith.Extensions\Hexalith.Extensions.csproj" />
+		<ProjectReference Include="..\..\Domain\Hexalith.Domain.Parties\Hexalith.Domain.Parties.csproj" />
+		<ProjectReference Include="..\Hexalith.Infrastructure.Dynamics365Finance\Hexalith.Infrastructure.Dynamics365Finance.csproj" />
+	</ItemGroup>
+
+</Project>

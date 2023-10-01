@@ -12,7 +12,7 @@ using FluentAssertions;
 
 using FluentValidation;
 
-using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents;
+using Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents;
 
 public class BusinessEventTest
 {

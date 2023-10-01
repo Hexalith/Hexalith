@@ -11,19 +11,19 @@ using System.Threading.Tasks;
 using FluentAssertions;
 
 using Hexalith.Extensions.Helpers;
-using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Client;
-using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Services.CustomerGroups;
-using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks;
+using Hexalith.Infrastructure.Dynamics365Finance.Client;
+using Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups;
+using Hexalith.Infrastructure.Dynamics365Finance.TestMocks;
 
 public class CustomerGroupTest
 {
     [Fact]
     public Task Add_inconsitent_data_should_throw_exception()
     {
-        Dynamics365FinanceAndOperationsClientBuilder<CustomerGroup> builder = new();
+        Dynamics365FinanceClientBuilder<CustomerGroup> builder = new();
         _ = builder.WithValueFromConfiguration<CustomerGroupTest>();
 
-        IDynamics365FinanceAndOperationsClient<CustomerGroup> service = builder.Build();
+        IDynamics365FinanceClient<CustomerGroup> service = builder.Build();
 
         string company = builder.Settings.Build().Value.Company;
         _ = company.Should().NotBeNullOrWhiteSpace();
@@ -46,10 +46,10 @@ public class CustomerGroupTest
     [Fact]
     public async Task Check_can_add_new_group()
     {
-        Dynamics365FinanceAndOperationsClientBuilder<CustomerGroup> builder = new();
+        Dynamics365FinanceClientBuilder<CustomerGroup> builder = new();
         _ = builder.WithValueFromConfiguration<CustomerGroupTest>();
 
-        IDynamics365FinanceAndOperationsClient<CustomerGroup> service = builder.Build();
+        IDynamics365FinanceClient<CustomerGroup> service = builder.Build();
 
         string company = builder.Settings.Build().Value.Company;
         _ = company.Should().NotBeNullOrWhiteSpace();
@@ -74,10 +74,10 @@ public class CustomerGroupTest
     [Fact]
     public async Task Check_can_update_group_description()
     {
-        Dynamics365FinanceAndOperationsClientBuilder<CustomerGroup> builder = new();
+        Dynamics365FinanceClientBuilder<CustomerGroup> builder = new();
         _ = builder.WithValueFromConfiguration<CustomerGroupTest>();
 
-        IDynamics365FinanceAndOperationsClient<CustomerGroup> service = builder.Build();
+        IDynamics365FinanceClient<CustomerGroup> service = builder.Build();
 
         string company = builder.Settings.Build().Value.Company;
         _ = company.Should().NotBeNullOrWhiteSpace();
