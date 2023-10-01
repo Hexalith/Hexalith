@@ -37,7 +37,7 @@ public class DaprApplicationBusTest
         client.Verify(
             p => p.PublishEventAsync(
             It.Is<string>(p => p == busName),
-            It.Is<string>(p => p == @event.AggregateName + topicSuffix),
+            It.Is<string>(p => p == (@event.AggregateName + topicSuffix).ToLowerInvariant()),
             It.Is<EventState>(
                 p => p.Message == @event && p.Metadata == meta),
             It.IsAny<Dictionary<string, string>>(),
