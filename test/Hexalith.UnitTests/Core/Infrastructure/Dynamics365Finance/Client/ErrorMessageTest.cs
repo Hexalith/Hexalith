@@ -10,7 +10,7 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
+using Hexalith.Infrastructure.Dynamics365Finance.Models;
 
 public class ErrorMessageTest
 {

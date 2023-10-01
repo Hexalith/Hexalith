@@ -10,7 +10,7 @@ using System.Runtime.Serialization;
 
 using Hexalith.Application.Commands;
 using Hexalith.Extensions.Helpers;
-using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents;
+using Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents;
 
 [DataContract]
 public class DummyBusinessEvent2 : Dynamics365BusinessEventBase
@@ -21,18 +21,9 @@ public class DummyBusinessEvent2 : Dynamics365BusinessEventBase
 
     public int ValueTwo { get; set; }
 
-    public override BaseCommand ToCommand()
-    {
-        throw new NotSupportedException();
-    }
+    public override IEnumerable<BaseCommand> ToCommands() => throw new NotSupportedException();
 
-    protected override int DefaultMajorVersion()
-    {
-        return 10;
-    }
+    protected override int DefaultMajorVersion() => 10;
 
-    protected override int DefaultMinorVersion()
-    {
-        return 11;
-    }
+    protected override int DefaultMinorVersion() => 11;
 }

@@ -6,7 +6,7 @@
 
 namespace Hexalith.UnitTests.Core.Infrastructure.Dynamics365Finance.Client;
 
-using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.Models;
+using Hexalith.Infrastructure.Dynamics365Finance.Models;
 
 public record DummyEntity : ODataElement, IODataElement
 {

@@ -11,8 +11,8 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\src\Core\Application\Hexalith.Application\Hexalith.Application.csproj" />
-		<ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks\Hexalith.Infrastructure.Dynamics365FinanceAndOperations.TestMocks.csproj" />
-		<ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365FinanceAndOperations\Hexalith.Infrastructure.Dynamics365FinanceAndOperations.csproj" />
+		<ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365Finance.TestMocks\Hexalith.Infrastructure.Dynamics365Finance.TestMocks.csproj" />
+		<ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365Finance\Hexalith.Infrastructure.Dynamics365Finance.csproj" />
 		<ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Serialization\Hexalith.Infrastructure.Serialization.csproj" />
 	</ItemGroup>
 	<ItemGroup>

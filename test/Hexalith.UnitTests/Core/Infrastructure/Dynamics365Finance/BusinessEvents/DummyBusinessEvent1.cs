@@ -9,7 +9,7 @@ namespace Hexalith.UnitTests.Core.Infrastructure.Dynamics365Finance.BusinessEven
 using System.Runtime.Serialization;
 
 using Hexalith.Application.Commands;
-using Hexalith.Infrastructure.Dynamics365FinanceAndOperations.BusinessEvents;
+using Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents;
 
 [DataContract]
 public class DummyBusinessEvent1 : Dynamics365BusinessEventBase
@@ -20,18 +20,9 @@ public class DummyBusinessEvent1 : Dynamics365BusinessEventBase
 
     public string ValueOne { get; set; }
 
-    public override BaseCommand ToCommand()
-    {
-        throw new NotSupportedException();
-    }
+    public override IEnumerable<BaseCommand> ToCommands() => throw new NotSupportedException();
 
-    protected override int DefaultMajorVersion()
-    {
-        return 6;
-    }
+    protected override int DefaultMajorVersion() => 6;
 
-    protected override int DefaultMinorVersion()
-    {
-        return 7;
-    }
+    protected override int DefaultMinorVersion() => 7;
 }
