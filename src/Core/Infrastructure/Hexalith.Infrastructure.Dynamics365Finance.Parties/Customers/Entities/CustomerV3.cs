@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers;
+namespace Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities;
 
 using Hexalith.Infrastructure.Dynamics365Finance.Models;
 

@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers;
+namespace Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities;
 
 using Hexalith.Infrastructure.Dynamics365Finance.Models;
 
@@ -23,14 +23,14 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 /// Implements the <see cref="PerCompanyFilter" />
 /// Implements the <see cref="IPerCompanyFilter" />
 /// Implements the <see cref="IFilter" />
-/// Implements the <see cref="System.IEquatable{Hexalith.Infrastructure.Dynamics365Finance.Models.PerCompanyFilter}" />
-/// Implements the <see cref="System.IEquatable{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.CustomerExternalCodeFilter}" />.
+/// Implements the <see cref="IEquatable{PerCompanyFilter}" />
+/// Implements the <see cref="IEquatable{CustomerExternalCodeFilter}" />.
 /// </summary>
 /// <seealso cref="PerCompanyFilter" />
 /// <seealso cref="IPerCompanyFilter" />
 /// <seealso cref="IFilter" />
-/// <seealso cref="System.IEquatable{Hexalith.Infrastructure.Dynamics365Finance.Models.PerCompanyFilter}" />
-/// <seealso cref="System.IEquatable{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.CustomerExternalCodeFilter}" />
+/// <seealso cref="IEquatable{PerCompanyFilter}" />
+/// <seealso cref="IEquatable{CustomerExternalCodeFilter}" />
 public record CustomerExternalCodeFilter
 (
     string DataAreaId,
