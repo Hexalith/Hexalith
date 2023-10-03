@@ -21,9 +21,7 @@ public record PerCompanyPrimaryKey : IPerCompanyPrimaryKey
     /// <param name="dataAreaId">The company identifier.</param>
     [JsonConstructor]
     protected PerCompanyPrimaryKey(string? dataAreaId)
-    {
-        DataAreaId = dataAreaId;
-    }
+        => DataAreaId = dataAreaId;
 
     /// <summary>
     /// Gets the company.

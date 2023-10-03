@@ -17,7 +17,7 @@ using System.Text.Json.Serialization;
 public class PostalAddress
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="PostalAddress" /> class.
+    /// Initializes a new instance of the <see cref="PostalAddress"/> class.
     /// </summary>
     /// <param name="name">The name.</param>
     /// <param name="description">The description.</param>
@@ -27,7 +27,8 @@ public class PostalAddress
     /// <param name="zipCode">The zip code.</param>
     /// <param name="city">The city.</param>
     /// <param name="countyId">The county identifier.</param>
-    /// <param name="stateName">The state identifier.</param>
+    /// <param name="stateId">The state identifier.</param>
+    /// <param name="stateName">Name of the state.</param>
     /// <param name="countryId">The country identifier.</param>
     /// <param name="countryName">Name of the country.</param>
     /// <param name="countryIso2">The country iso2.</param>
@@ -41,6 +42,7 @@ public class PostalAddress
             string? zipCode,
             string? city,
             string? countyId,
+            string? stateId,
             string? stateName,
             string? countryId,
             string? countryName,
@@ -54,6 +56,7 @@ public class PostalAddress
         ZipCode = zipCode;
         City = city;
         CountyId = countyId;
+        StateId = stateId;
         StateName = stateName;
         CountryId = countryId;
         CountryName = countryName;
@@ -80,24 +83,24 @@ public class PostalAddress
     /// Gets or sets the country identifier.
     /// </summary>
     /// <value>The country identifier.</value>
-    [DataMember(Order = 11)]
-    [JsonPropertyOrder(11)]
+    [DataMember(Order = 12)]
+    [JsonPropertyOrder(12)]
     public string? CountryId { get; set; }
 
     /// <summary>
     /// Gets or sets the country identifier.
     /// </summary>
     /// <value>The country identifier.</value>
-    [DataMember(Order = 12)]
-    [JsonPropertyOrder(12)]
+    [DataMember(Order = 13)]
+    [JsonPropertyOrder(13)]
     public string? CountryIso2 { get; set; }
 
     /// <summary>
     /// Gets or sets the country identifier.
     /// </summary>
     /// <value>The country identifier.</value>
-    [DataMember(Order = 10)]
-    [JsonPropertyOrder(10)]
+    [DataMember(Order = 11)]
+    [JsonPropertyOrder(11)]
     public string? CountryName { get; set; }
 
     /// <summary>
@@ -133,11 +136,19 @@ public class PostalAddress
     public string? PostBox { get; set; }
 
     /// <summary>
-    /// Gets or sets the state identifier.
+    /// Gets the state identifier.
     /// </summary>
     /// <value>The state identifier.</value>
     [DataMember(Order = 9)]
     [JsonPropertyOrder(9)]
+    public string? StateId { get; }
+
+    /// <summary>
+    /// Gets or sets the state identifier.
+    /// </summary>
+    /// <value>The state identifier.</value>
+    [DataMember(Order = 10)]
+    [JsonPropertyOrder(10)]
     public string? StateName { get; set; }
 
     /// <summary>
@@ -183,6 +194,7 @@ public class PostalAddress
                 a.ZipCode == b?.ZipCode &&
                 a.City == b?.City &&
                 a.CountyId == b?.CountyId &&
+                a.StateId == b?.StateId &&
                 a.StateName == b?.StateName &&
                 a.CountryId == b?.CountryId &&
                 a.CountryName == b?.CountryName &&
