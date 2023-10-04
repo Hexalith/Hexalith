@@ -20,11 +20,12 @@ using System;
 using Dapr.Actors.Runtime;
 
 using Hexalith.Application.Aggregates;
+using Hexalith.Application.Configurations;
 using Hexalith.Application.States;
-using Hexalith.Application.Tasks;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
+using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Inventories.Configurations;
 using Hexalith.Infrastructure.DaprRuntime.States;
 
@@ -36,6 +37,11 @@ using Microsoft.Extensions.Options;
 /// </summary>
 public class InventoryItemAggregateActor : Actor, ICommandProcessorActor, IRemindable, IInventoryItemAggregateActor
 {
+    /// <summary>
+    /// The command processor settings.
+    /// </summary>
+    private readonly CommandProcessorSettings _commandProcessorSettings;
+
     /// <summary>
     /// The settings.
     /// </summary>
@@ -52,6 +58,16 @@ public class InventoryItemAggregateActor : Actor, ICommandProcessorActor, IRemin
     private readonly IStateStoreProvider _stateProvider;
 
     private InventoryItem? _aggregate;
+
+    /// <summary>
+    /// The reminder.
+    /// </summary>
+    private IActorReminder? _reminder;
+
+    /// <summary>
+    /// The timer.
+    /// </summary>
+    private ActorTimer? _timer;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="InventoryItemAggregateActor" /> class.
@@ -72,6 +88,7 @@ public class InventoryItemAggregateActor : Actor, ICommandProcessorActor, IRemin
         _stateManager = stateManager;
         _stateProvider = new ActorStateStoreProvider(StateManager);
         _settings = settings.Value;
+        _commandProcessorSettings = _settings.CommandProcessor ?? new CommandProcessorSettings();
     }
 
     /// <inheritdoc/>
@@ -96,7 +113,7 @@ public class InventoryItemAggregateActor : Actor, ICommandProcessorActor, IRemin
                 _stateProvider,
                 envelope.Commands.ToArray(),
                 envelope.Metadatas.ToArray(),
-                RegisterReminderAsync,
+                RegisterContinueCallbackAsync,
                 CancellationToken.None)
             .ConfigureAwait(false);
     }
@@ -143,11 +160,11 @@ public class InventoryItemAggregateActor : Actor, ICommandProcessorActor, IRemin
         _aggregate = (InventoryItem?)await _stateManager
             .ContinueAsync(
                 _stateProvider,
-                _settings.ExecuteCommandResiliencyPolicy ?? ResiliencyPolicy.CreateEternalExponentialRetry(),
+                _commandProcessorSettings.ResiliencyPolicy,
                 _aggregate,
                 (e) => new InventoryItem((InventoryItemAdded)e),
-                RegisterReminderAsync,
-                UnregisterReminderAsync,
+                RegisterContinueCallbackAsync,
+                UnregisterContinueCallbackAsync,
                 CancellationToken.None)
             .ConfigureAwait(false);
     }
@@ -163,4 +180,23 @@ public class InventoryItemAggregateActor : Actor, ICommandProcessorActor, IRemin
 
         return _aggregate;
     }
+
+    private async Task RegisterContinueCallbackAsync(TimeSpan dueTime)
+    {
+        (_reminder, _timer) = await this.RegisterContinueCallbackReminderAsync(
+        dueTime,
+        _commandProcessorSettings.ActiveCommandCheckPeriod,
+        _commandProcessorSettings.ResiliencyPolicy.Timeout,
+        _timer != null,
+        GetReminderAsync,
+        RegisterReminderAsync,
+        UnregisterTimerAsync);
+    }
+
+    private async Task UnregisterContinueCallbackAsync()
+        => await this.UnregisterContinueCallbackReminderAsync(
+            _timer != null,
+            GetReminderAsync,
+            UnregisterReminderAsync,
+            UnregisterTimerAsync);
 }

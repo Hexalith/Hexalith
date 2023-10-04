@@ -16,7 +16,7 @@
 
 namespace Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Configurations;
 
-using Hexalith.Application.Tasks;
+using Hexalith.Application.Configurations;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Extensions.Configuration;
 
@@ -28,10 +28,10 @@ using Hexalith.Extensions.Configuration;
 public class AggregateExternalReferenceSettings : ISettings
 {
     /// <summary>
-    /// Gets or sets the command execution resiliency policy.
+    /// Gets or sets the command processor.
     /// </summary>
-    /// <value>The resiliency policy.</value>
-    public ResiliencyPolicy? ExecuteCommandResiliencyPolicy { get; set; }
+    /// <value>The command processor.</value>
+    public CommandProcessorSettings? CommandProcessor { get; set; }
 
     /// <summary>
     /// The configuration section name of the settings.

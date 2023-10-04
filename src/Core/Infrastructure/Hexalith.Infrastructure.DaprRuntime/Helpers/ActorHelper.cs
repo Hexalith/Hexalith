@@ -1,10 +1,10 @@
 ﻿// ***********************************************************************
 // Assembly         : Hexalith.Infrastructure.DaprRuntime
-// Author           : jpiquot
-// Created          : 02-15-2023
+// Author           : Jérôme Piquot
+// Created          : 10-03-2023
 //
-// Last Modified By : jpiquot
-// Last Modified On : 02-15-2023
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 10-04-2023
 // ***********************************************************************
 // <copyright file="ActorHelper.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -20,12 +20,58 @@ using System;
 using System.Web;
 
 using Dapr.Actors;
+using Dapr.Actors.Runtime;
 
 /// <summary>
 /// Class ActorHelper.
 /// </summary>
 public static class ActorHelper
 {
+    /// <summary>
+    /// Register continue callback reminder as an asynchronous operation.
+    /// </summary>
+    /// <param name="actor">The actor.</param>
+    /// <param name="dueTime">The due time.</param>
+    /// <param name="reminderPeriod">The reminder period.</param>
+    /// <param name="ttl">The TTL.</param>
+    /// <param name="timerExist">The timer exist.</param>
+    /// <param name="getReminder">The get reminder.</param>
+    /// <param name="registerReminder">The register reminder.</param>
+    /// <param name="unregisterTimer">The unregister timer.</param>
+    /// <returns>A Task&lt;(Dapr.Actors.Runtime.IActorReminder Reminder, Dapr.Actors.Runtime.ActorTimer Timer)&gt; representing the asynchronous operation.</returns>
+    public static async Task<(IActorReminder Reminder, ActorTimer Timer)> RegisterContinueCallbackReminderAsync(
+            this Actor actor,
+            TimeSpan dueTime,
+            TimeSpan reminderPeriod,
+            TimeSpan ttl,
+            bool timerExist,
+            Func<string, Task<IActorReminder>> getReminder,
+            Func<string, byte[], TimeSpan, TimeSpan, TimeSpan, Task<IActorReminder>> registerReminder,
+            Func<string, Task> unregisterTimer)
+    {
+        IActorReminder reminder = await getReminder(ActorConstants.ContinueReminderName);
+        reminder ??= await registerReminder(
+                ActorConstants.ContinueReminderName,
+                [],
+                reminderPeriod,
+                reminderPeriod,
+                ttl + reminderPeriod);
+
+        if (timerExist)
+        {
+            await unregisterTimer(ActorConstants.ContinueTimerName);
+        }
+
+        ActorTimer timer = await actor.RegisterTimerAsync(
+         ActorConstants.ContinueTimerName,
+         ActorConstants.ContinueCallbackMethodName,
+         [],
+         dueTime,
+         dueTime,
+         reminderPeriod);
+        return (reminder, timer);
+    }
+
     /// <summary>
     /// Converts to decoded string.
     /// </summary>
@@ -46,8 +92,34 @@ public static class ActorHelper
     public static ActorId ToUrlEncodedActorId(this string id)
     {
         ArgumentException.ThrowIfNullOrEmpty(id);
-        return id.Contains("~")
+        return id.Contains('~')
             ? throw new ArgumentException($"The '~' character is not supported.")
             : new ActorId(HttpUtility.UrlEncode(id.Replace(" ", "~")));
+    }
+
+    /// <summary>
+    /// Unregister continue callback reminder as an asynchronous operation.
+    /// </summary>
+    /// <param name="actor">The actor.</param>
+    /// <param name="removeTimer">if set to <c>true</c> [remove timer].</param>
+    /// <param name="getReminder">The get reminder.</param>
+    /// <param name="unregisterReminder">The unregister reminder.</param>
+    /// <param name="unregisterTimer">The unregister timer.</param>
+    /// <returns>A Task representing the asynchronous operation.</returns>
+    public static async Task UnregisterContinueCallbackReminderAsync(
+            this Actor actor,
+            bool removeTimer,
+            Func<string, Task<IActorReminder>> getReminder,
+            Func<string, Task> unregisterReminder,
+            Func<string, Task> unregisterTimer)
+    {
+        if (await getReminder(ActorConstants.ContinueReminderName) != null)
+        {
+            await unregisterReminder(ActorConstants.ContinueTimerName);
+        }
+        if (removeTimer)
+        {
+            await unregisterTimer(ActorConstants.ContinueTimerName);
+        }
     }
 }

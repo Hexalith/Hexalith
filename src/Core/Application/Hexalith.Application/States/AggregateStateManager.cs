@@ -40,8 +40,6 @@ using Hexalith.Extensions.Helpers;
 /// <seealso cref="Christofle.Infrastructure.Dynamics365Finance.DaprCloud.AggregateActors.IAggregateActorState" />
 public class AggregateStateManager : IAggregateStateManager
 {
-    private const string ReminderName = "Continue";
-
     /// <summary>
     /// The date time service.
     /// </summary>
@@ -116,30 +114,21 @@ public class AggregateStateManager : IAggregateStateManager
     /// <value>The name of the state.</value>
     public virtual string StateName => "State";
 
-    /// <summary>
-    /// Add command as an asynchronous operation.
-    /// </summary>
-    /// <param name="stateProvider">The state provider.</param>
-    /// <param name="commands">The commands.</param>
-    /// <param name="metadatas">The metadatas.</param>
-    /// <param name="registerReminder">The register reminder.</param>
-    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>A Task representing the asynchronous operation.</returns>
-    /// <exception cref="System.ArgumentNullException">Null arguments.</exception>
+    /// <inheritdoc/>
     public async Task AddCommandAsync(
         IStateStoreProvider stateProvider,
         BaseCommand[] commands,
         BaseMetadata[] metadatas,
-        Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder,
+        Func<TimeSpan, Task> registerContinueCallback,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(stateProvider);
         ArgumentNullException.ThrowIfNull(metadatas);
         ArgumentNullException.ThrowIfNull(commands);
-        await SetReminderAsync(TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(15), registerReminder);
+        await registerContinueCallback(TimeSpan.FromMilliseconds(1));
         AggregateState state = await GetStateAsync(stateProvider, cancellationToken);
         MessageStore<CommandState> commandStore = new(stateProvider, CommandsStreamName);
-        List<CommandState> states = new();
+        List<CommandState> states = [];
         for (int i = 0; i < commands.Length; i++)
         {
             states.Add(new CommandState(_dateTimeService.UtcNow, commands[i], metadatas[i]));
@@ -159,25 +148,14 @@ public class AggregateStateManager : IAggregateStateManager
             cancellationToken);
     }
 
-    /// <summary>
-    /// Continue as an asynchronous operation.
-    /// </summary>
-    /// <param name="stateProvider">The state provider.</param>
-    /// <param name="resiliencyPolicy">The resiliency policy.</param>
-    /// <param name="aggregate">The aggregate.</param>
-    /// <param name="aggregateInitializer">The aggregate initializer.</param>
-    /// <param name="registerReminder">The register reminder.</param>
-    /// <param name="removeReminder">The remove reminder.</param>
-    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>A Task&lt;IAggregate&gt; representing the asynchronous operation.</returns>
-    /// <exception cref="System.ArgumentNullException">Null.</exception>
+    /// <inheritdoc/>
     public async Task<IAggregate?> ContinueAsync(
         IStateStoreProvider stateProvider,
         ResiliencyPolicy resiliencyPolicy,
         IAggregate? aggregate,
         Func<BaseEvent, IAggregate> aggregateInitializer,
-        Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder,
-        Func<string, Task> removeReminder,
+        Func<TimeSpan, Task> registerContinueCallback,
+        Func<Task> unregisterContinueCallback,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(stateProvider);
@@ -186,25 +164,21 @@ public class AggregateStateManager : IAggregateStateManager
         AggregateState state = await GetStateAsync(stateProvider, cancellationToken);
         if (state.LastEventPublished < state.EventStreamVersion)
         {
-            await SetReminderAsync(TimeSpan.FromMinutes(1), TimeSpan.FromMinutes(1), registerReminder);
+            await registerContinueCallback(TimeSpan.FromSeconds(1));
             return aggregate;
         }
 
-        if (state.LastCommandDone < state.CommandStreamVersion)
+        if (retry != null)
         {
-            if (retry != null)
-            {
-                await SetReminderAsync(retry.Value.Add(TimeSpan.FromSeconds(1)), TimeSpan.FromMinutes(1), registerReminder);
-            }
-            else
-            {
-                await SetReminderAsync(resiliencyPolicy.MaximumExponentialPeriod, resiliencyPolicy.MaximumExponentialPeriod, registerReminder);
-            }
-
-            return aggregate;
+            await registerContinueCallback(retry.Value);
+            return null;
         }
 
-        await RemoveReminderAsync(removeReminder);
+        if (aggregate != null)
+        {
+            await unregisterContinueCallback();
+        }
+
         return aggregate;
     }
 
@@ -241,7 +215,7 @@ public class AggregateStateManager : IAggregateStateManager
     {
         MessageStore<CommandState> commandStore = new(stateProvider, EventsStreamName);
         AggregateState state = await GetStateAsync(stateProvider, cancellationToken);
-        List<T> commands = new();
+        List<T> commands = [];
         while (state.LastEventPublished < state.EventStreamVersion)
         {
             long nextEvent = state.LastEventPublished + 1;
@@ -267,7 +241,7 @@ public class AggregateStateManager : IAggregateStateManager
     {
         MessageStore<EventState> eventStore = new(stateProvider, EventsStreamName);
         AggregateState state = await GetStateAsync(stateProvider, cancellationToken);
-        List<T> events = new();
+        List<T> events = [];
         while (state.LastEventPublished < state.EventStreamVersion)
         {
             long nextEvent = state.LastEventPublished + 1;
@@ -381,20 +355,6 @@ public class AggregateStateManager : IAggregateStateManager
                 cancellationToken);
         }
     }
-
-    private static async Task RemoveReminderAsync(Func<string, Task> removeReminder) => await removeReminder(ReminderName);
-
-    /// <summary>
-    /// Set reminder as an asynchronous operation.
-    /// </summary>
-    /// <param name="next">The next.</param>
-    /// <param name="retry">The retry.</param>
-    /// <param name="registerReminder">The register reminder.</param>
-    /// <returns>A Task representing the asynchronous operation.</returns>
-    private static async Task SetReminderAsync(
-        TimeSpan next,
-        TimeSpan retry,
-        Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder) => await registerReminder(ReminderName, Array.Empty<byte>(), next, retry);
 
     /// <summary>
     /// Get state as an asynchronous operation.

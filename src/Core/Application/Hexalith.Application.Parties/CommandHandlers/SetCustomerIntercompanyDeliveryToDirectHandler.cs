@@ -1,0 +1,49 @@
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Application.Parties
+// Author           : Jérôme Piquot
+// Created          : 08-29-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 08-29-2023
+// ***********************************************************************
+// <copyright file="SetCustomerIntercompanyDeliveryToDirectHandler.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
+namespace Hexalith.Application.Parties.CommandHandlers;
+
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+
+using Hexalith.Application.Commands;
+using Hexalith.Application.Parties.Commands;
+using Hexalith.Domain.Events;
+using Hexalith.Domain.Messages;
+using Hexalith.Extensions.Helpers;
+
+/// <summary>
+/// Class SetCustomerIntercompanyDeliveryToDirectHandler.
+/// Implements the <see cref="Hexalith.Application.Commands.CommandHandler{Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDeliveryToDirect}" />.
+/// </summary>
+/// <seealso cref="Hexalith.Application.Commands.CommandHandler{Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDeliveryToDirect}" />
+public class SetCustomerIntercompanyDeliveryToDirectHandler : CommandHandler<SetCustomerIntercompanyDeliveryToDirect>
+{
+    /// <inheritdoc/>
+    public override Task<IEnumerable<BaseMessage>> DoAsync(SetCustomerIntercompanyDeliveryToDirect command, CancellationToken cancellationToken)
+    {
+        return Task.FromResult<IEnumerable<BaseMessage>>(
+            new CustomerIntercompanyDeliveryTypeSetToDirect(
+                command.CompanyId,
+                command.Id)
+                .IntoArray<BaseMessage>());
+    }
+
+    /// <inheritdoc/>
+    public override Task<IEnumerable<BaseMessage>> UndoAsync(SetCustomerIntercompanyDeliveryToDirect command, CancellationToken cancellationToken) => throw new NotSupportedException();
+}

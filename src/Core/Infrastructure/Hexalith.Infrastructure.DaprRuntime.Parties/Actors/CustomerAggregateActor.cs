@@ -1,20 +1,17 @@
 ﻿// ***********************************************************************
-// Assembly         : Hexalith.Infrastructure.DaprRuntime.Inventories
+// Assembly         : Hexalith.Infrastructure.DaprRuntime.Parties
 // Author           : Jérôme Piquot
-// Created          : 10-03-2023
+// Created          : 01-02-2023
 //
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 10-04-2023
 // ***********************************************************************
-// <copyright file="InventoryItemStockAggregateActor.cs" company="Fiveforty SAS Paris France">
+// <copyright file="CustomerAggregateActor.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-
-namespace Hexalith.Infrastructure.DaprRuntime.Inventories.Actors;
+namespace Hexalith.Infrastructure.DaprRuntime.Parties.Actors;
 
 using System;
 
@@ -22,12 +19,15 @@ using Dapr.Actors.Runtime;
 
 using Hexalith.Application.Aggregates;
 using Hexalith.Application.Configurations;
+using Hexalith.Application.Exceptions;
+using Hexalith.Application.Parties.Commands;
 using Hexalith.Application.States;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
+using Hexalith.Domain.ValueObjets;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
-using Hexalith.Infrastructure.DaprRuntime.Inventories.Configurations;
+using Hexalith.Infrastructure.DaprRuntime.Parties.Configurations;
 using Hexalith.Infrastructure.DaprRuntime.States;
 
 using Microsoft.Extensions.Options;
@@ -36,7 +36,7 @@ using Microsoft.Extensions.Options;
 /// Logistics partner catalog item aggregate actor interface <see cref="BspkSalesInvoice" />.
 /// Extends the <see cref="IActor" />.
 /// </summary>
-public class InventoryItemStockAggregateActor : Actor, ICommandProcessorActor, IRemindable, IInventoryItemStockAggregateActor
+public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable, ICustomerAggregateActor
 {
     /// <summary>
     /// The command processor settings.
@@ -46,7 +46,7 @@ public class InventoryItemStockAggregateActor : Actor, ICommandProcessorActor, I
     /// <summary>
     /// The settings.
     /// </summary>
-    private readonly InventoryItemStockSettings _settings;
+    private readonly CustomerSettings _settings;
 
     /// <summary>
     /// The state manager.
@@ -61,7 +61,7 @@ public class InventoryItemStockAggregateActor : Actor, ICommandProcessorActor, I
     /// <summary>
     /// The aggregate.
     /// </summary>
-    private InventoryItemStock? _aggregate;
+    private Customer? _aggregate;
 
     /// <summary>
     /// The reminder.
@@ -74,15 +74,15 @@ public class InventoryItemStockAggregateActor : Actor, ICommandProcessorActor, I
     private ActorTimer? _timer;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="InventoryItemStockAggregateActor" /> class.
+    /// Initializes a new instance of the <see cref="CustomerAggregateActor" /> class.
     /// </summary>
     /// <param name="host">The <see cref="ActorHost" /> that will host this actor instance.</param>
     /// <param name="settings">The settings.</param>
     /// <param name="stateManager">The state manager.</param>
     /// <exception cref="ArgumentNullException">Argument null.</exception>
-    public InventoryItemStockAggregateActor(
+    public CustomerAggregateActor(
         ActorHost host,
-        IOptions<InventoryItemStockSettings> settings,
+        IOptions<CustomerSettings> settings,
         IAggregateStateManager stateManager)
         : base(host)
     {
@@ -93,6 +93,40 @@ public class InventoryItemStockAggregateActor : Actor, ICommandProcessorActor, I
         _stateProvider = new ActorStateStoreProvider(StateManager);
         _settings = settings.Value;
         _commandProcessorSettings = _settings.CommandProcessor ?? new CommandProcessorSettings();
+    }
+
+    /// <summary>
+    /// Continue as an asynchronous operation.
+    /// </summary>
+    /// <returns>A Task representing the asynchronous operation.</returns>
+    public async Task ContinueAsync()
+    {
+        _aggregate = (Customer?)await _stateManager
+            .ContinueAsync(
+                _stateProvider,
+                _commandProcessorSettings.ResiliencyPolicy,
+                _aggregate,
+                (e) => new Customer((CustomerRegistered)e),
+                RegisterContinueCallbackAsync,
+                UnregisterContinueCallbackAsync,
+                CancellationToken.None)
+            .ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task<CustomerInformationChanged?> CreateInformationChangedEventAsync()
+    {
+        Customer? customer = await GetAggregateAsync().ConfigureAwait(false);
+        return customer == null
+            ? null
+            : new CustomerInformationChanged(
+                customer.CompanyId,
+                customer.Id,
+                customer.Name,
+                customer.Contact,
+                customer.WarehouseId,
+                customer.CommissionSalesGroupId,
+                DateTimeOffset.UtcNow);
     }
 
     /// <inheritdoc/>
@@ -117,8 +151,27 @@ public class InventoryItemStockAggregateActor : Actor, ICommandProcessorActor, I
             return false;
         }
 
-        InventoryItemStock? inventoryItem = await GetAggregateAsync().ConfigureAwait(false);
-        return inventoryItem != null;
+        Customer? customer = await GetAggregateAsync().ConfigureAwait(false);
+        return customer != null;
+    }
+
+    /// <inheritdoc/>
+    public async Task<bool> HasChangesAsync(ChangeCustomerInformation change)
+    {
+        ArgumentNullException.ThrowIfNull(change);
+        if (change.AggregateId != Id.ToString())
+        {
+            throw new InvalidCommandAggregateIdException(Id.ToString(), change);
+        }
+
+        Customer? customer = await GetAggregateAsync().ConfigureAwait(false);
+        return customer == null
+            ? throw new InvalidOperationException($"Customer {Id} not found.")
+            :
+            customer.Name == change.Name &&
+            customer.CommissionSalesGroupId == change.CommissionSalesGroupId &&
+            customer.WarehouseId == change.WarehouseId &&
+            Contact.AreSame(customer.Contact, change.Contact);
     }
 
     /// <inheritdoc/>
@@ -130,44 +183,23 @@ public class InventoryItemStockAggregateActor : Actor, ICommandProcessorActor, I
     }
 
     /// <inheritdoc/>
-    public async Task<decimal> LevelAsync()
-    {
-        if (!await HasCommandsAsync().ConfigureAwait(false))
-        {
-            return 0m;
-        }
-
-        InventoryItemStock? stock = await GetAggregateAsync().ConfigureAwait(false);
-        return stock == null ? 0m : stock.Quantity;
-    }
-
-    /// <inheritdoc/>
-    public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period)
-    {
-        _aggregate = (InventoryItemStock?)await _stateManager
-            .ContinueAsync(
-                _stateProvider,
-                _commandProcessorSettings.ResiliencyPolicy,
-                _aggregate,
-                (e) => new InventoryItemStock((InventoryItemStockIncreased)e),
-                RegisterContinueCallbackAsync,
-                UnregisterContinueCallbackAsync,
-                CancellationToken.None)
-            .ConfigureAwait(false);
-    }
+    public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period) => await ContinueAsync();
 
     /// <summary>
     /// Get aggregate as an asynchronous operation.
     /// </summary>
-    /// <returns>A Task&lt;InventoryItemStock&gt; representing the asynchronous operation.</returns>
-    private async Task<InventoryItemStock?> GetAggregateAsync()
+    /// <returns>A Task&lt;Customer&gt; representing the asynchronous operation.</returns>
+    private async Task<Customer?> GetAggregateAsync()
     {
-        _aggregate ??= (InventoryItemStock?)await _stateManager
+        if (_aggregate == null)
+        {
+            _aggregate = (Customer?)await _stateManager
                 .GetAggregateAsync(
                     _stateProvider,
-                    (e) => new InventoryItemStock((InventoryItemStockIncreased)e),
+                    (e) => new Customer((CustomerRegistered)e),
                     CancellationToken.None)
                 .ConfigureAwait(false);
+        }
 
         return _aggregate;
     }

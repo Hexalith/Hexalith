@@ -39,8 +39,8 @@ public class AggregateStateManagerTest
             ResiliencyPolicy.None,
             null,
             (_) => new DummyAggregate(),
-            (name, data, start, period) => Task.CompletedTask,
-            (name) => Task.CompletedTask,
+            (dueDate) => Task.CompletedTask,
+            () => Task.CompletedTask,
             CancellationToken.None);
         _ = bus.Stream.Should().HaveCount(commandCount);
     }
@@ -59,8 +59,8 @@ public class AggregateStateManagerTest
             ResiliencyPolicy.None,
             null,
             (_) => new DummyAggregate(),
-            (name, data, start, period) => Task.CompletedTask,
-            (name) => Task.CompletedTask,
+            (dueDate) => Task.CompletedTask,
+            () => Task.CompletedTask,
             CancellationToken.None);
 
         _ = stateProvider.State.ContainsKey("State").Should().BeTrue();
@@ -125,7 +125,7 @@ public class AggregateStateManagerTest
                 provider,
                 command.IntoArray(),
                 meta.IntoArray(),
-                async (name, data, start, period) => await Task.CompletedTask,
+                async (dueDate) => await Task.CompletedTask,
                 CancellationToken.None);
         }
 

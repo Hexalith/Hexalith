@@ -142,6 +142,12 @@ public class ResiliencyPolicy
     /// Create an exponential retry, starting from one millisecond without any timeout.
     /// </summary>
     /// <returns>The retry policy.</returns>
+    public static ResiliencyPolicy CreateDefaultExponentialRetry() => new(-1, TimeSpan.FromMilliseconds(1), TimeSpan.FromMilliseconds(1), TimeSpan.FromDays(1), TimeSpan.FromDays(30), exponential: true);
+
+    /// <summary>
+    /// Create an exponential retry, starting from one millisecond without any timeout.
+    /// </summary>
+    /// <returns>The retry policy.</returns>
     public static ResiliencyPolicy CreateEternalExponentialRetry() => new(-1, TimeSpan.FromMilliseconds(1), TimeSpan.FromMilliseconds(1), TimeSpan.MaxValue, TimeSpan.MaxValue, exponential: true);
 
     /// <summary>

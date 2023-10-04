@@ -4,7 +4,7 @@
 // Created          : 01-02-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 09-12-2023
+// Last Modified On : 10-04-2023
 // ***********************************************************************
 // <copyright file="AggregateExternalReferenceAggregateActor.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -21,13 +21,14 @@ using System.Collections.Generic;
 using Dapr.Actors.Runtime;
 
 using Hexalith.Application.Aggregates;
+using Hexalith.Application.Configurations;
 using Hexalith.Application.States;
-using Hexalith.Application.Tasks;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.ValueObjets;
 using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Configurations;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
+using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.States;
 
 using Microsoft.Extensions.Options;
@@ -38,6 +39,11 @@ using Microsoft.Extensions.Options;
 /// </summary>
 public class AggregateExternalReferenceAggregateActor : Actor, ICommandProcessorActor, IRemindable, IAggregateExternalReferenceAggregateActor
 {
+    /// <summary>
+    /// The command processor settings.
+    /// </summary>
+    private readonly CommandProcessorSettings _commandProcessorSettings;
+
     /// <summary>
     /// The settings.
     /// </summary>
@@ -59,6 +65,16 @@ public class AggregateExternalReferenceAggregateActor : Actor, ICommandProcessor
     private AggregateExternalReference? _aggregate;
 
     /// <summary>
+    /// The reminder.
+    /// </summary>
+    private IActorReminder? _reminder;
+
+    /// <summary>
+    /// The timer.
+    /// </summary>
+    private ActorTimer? _timer;
+
+    /// <summary>
     /// Initializes a new instance of the <see cref="AggregateExternalReferenceAggregateActor" /> class.
     /// </summary>
     /// <param name="host">The <see cref="ActorHost" /> that will host this actor instance.</param>
@@ -77,6 +93,7 @@ public class AggregateExternalReferenceAggregateActor : Actor, ICommandProcessor
         _stateManager = stateManager;
         _stateProvider = new ActorStateStoreProvider(StateManager);
         _settings = settings.Value;
+        _commandProcessorSettings = _settings.CommandProcessor ?? new CommandProcessorSettings();
     }
 
     /// <inheritdoc/>
@@ -88,7 +105,7 @@ public class AggregateExternalReferenceAggregateActor : Actor, ICommandProcessor
                 _stateProvider,
                 envelope.Commands.ToArray(),
                 envelope.Metadatas.ToArray(),
-                RegisterReminderAsync,
+                RegisterContinueCallbackAsync,
                 CancellationToken.None)
             .ConfigureAwait(false);
     }
@@ -142,12 +159,40 @@ public class AggregateExternalReferenceAggregateActor : Actor, ICommandProcessor
         _aggregate = (AggregateExternalReference?)await _stateManager
             .ContinueAsync(
                 _stateProvider,
-                _settings.ExecuteCommandResiliencyPolicy ?? ResiliencyPolicy.CreateEternalExponentialRetry(),
+                _commandProcessorSettings.ResiliencyPolicy,
                 _aggregate,
                 (e) => new AggregateExternalReference((AggregateExternalReferenceAdded)e),
-                RegisterReminderAsync,
-                UnregisterReminderAsync,
+                RegisterContinueCallbackAsync,
+                UnregisterContinueCallbackAsync,
                 CancellationToken.None)
             .ConfigureAwait(false);
     }
+
+    /// <summary>
+    /// Register continue callback as an asynchronous operation.
+    /// </summary>
+    /// <param name="dueTime">The due time.</param>
+    /// <returns>A Task representing the asynchronous operation.</returns>
+    private async Task RegisterContinueCallbackAsync(TimeSpan dueTime)
+    {
+        (_reminder, _timer) = await this.RegisterContinueCallbackReminderAsync(
+            dueTime,
+            _commandProcessorSettings.ActiveCommandCheckPeriod,
+            _commandProcessorSettings.ResiliencyPolicy.Timeout,
+            _timer != null,
+            GetReminderAsync,
+            RegisterReminderAsync,
+            UnregisterTimerAsync);
+    }
+
+    /// <summary>
+    /// Unregister continue callback as an asynchronous operation.
+    /// </summary>
+    /// <returns>A Task representing the asynchronous operation.</returns>
+    private async Task UnregisterContinueCallbackAsync()
+        => await this.UnregisterContinueCallbackReminderAsync(
+            _timer != null,
+            GetReminderAsync,
+            UnregisterReminderAsync,
+            UnregisterTimerAsync);
 }

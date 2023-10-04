@@ -41,6 +41,7 @@ public record Customer(
     Contact Contact,
     string? WarehouseId,
     string? CommissionSalesGroupId,
+    bool IntercompanyDirectDelivery,
     DateTimeOffset Date) : Aggregate
 {
     /// <summary>
@@ -55,22 +56,7 @@ public record Customer(
               customer.Contact,
               customer.WarehouseId,
               customer.CommissionSalesGroupId,
-              customer.Date)
-    {
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Customer" /> class.
-    /// </summary>
-    /// <param name="customer">The customer.</param>
-    public Customer(CustomerInformationChanged customer)
-        : this(
-              customer.CompanyId,
-              customer.Id,
-              customer.Name,
-              customer.Contact,
-              customer.WarehouseId,
-              customer.CommissionSalesGroupId,
+              false,
               customer.Date)
     {
     }
@@ -80,7 +66,15 @@ public record Customer(
     {
         return domainEvent switch
         {
-            CustomerInformationChanged changed => new Customer(changed),
+            CustomerInformationChanged changed => this with
+            {
+                Name = changed.Name,
+                Contact = changed.Contact,
+                WarehouseId = changed.WarehouseId,
+                CommissionSalesGroupId = changed.CommissionSalesGroupId,
+            },
+            CustomerIntercompanyDeliveryTypeSetToDirect => this with { IntercompanyDirectDelivery = true },
+            CustomerIntercompanyDeliveryTypeSetToIndirect => this with { IntercompanyDirectDelivery = false },
             CustomerRegistered => throw new InvalidAggregateEventException(this, domainEvent, true),
             _ => throw new InvalidAggregateEventException(this, domainEvent, false),
         };

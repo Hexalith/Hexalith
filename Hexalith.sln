@@ -134,6 +134,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.Dyn
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.Dynamics365Finance.TestMocks", "src\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365Finance.TestMocks\Hexalith.Infrastructure.Dynamics365Finance.TestMocks.csproj", "{904F3D56-5426-478A-B0BC-31E153427281}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.DaprRuntime.Parties", "src\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime.Parties\Hexalith.Infrastructure.DaprRuntime.Parties.csproj", "{E884242F-A1B4-42E9-8D83-FF67B8E08B64}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -276,6 +278,10 @@ Global
 		{904F3D56-5426-478A-B0BC-31E153427281}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{904F3D56-5426-478A-B0BC-31E153427281}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{904F3D56-5426-478A-B0BC-31E153427281}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E884242F-A1B4-42E9-8D83-FF67B8E08B64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E884242F-A1B4-42E9-8D83-FF67B8E08B64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E884242F-A1B4-42E9-8D83-FF67B8E08B64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E884242F-A1B4-42E9-8D83-FF67B8E08B64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -321,6 +327,7 @@ Global
 		{86A5D369-AA6A-47E5-9B03-2563C56A1E38} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{3FF67031-E91A-499C-9EDD-7E29FCBFD065} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{904F3D56-5426-478A-B0BC-31E153427281} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
+		{E884242F-A1B4-42E9-8D83-FF67B8E08B64} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09CBB595-8996-4C7F-9C48-4C58AD9293AC}

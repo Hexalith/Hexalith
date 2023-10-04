@@ -30,19 +30,19 @@ using Hexalith.Domain.Events;
 public interface IAggregateStateManager
 {
     /// <summary>
-    /// Adds the command.
+    /// Adds the command asynchronous.
     /// </summary>
     /// <param name="stateProvider">The state provider.</param>
-    /// <param name="commands">The command.</param>
-    /// <param name="metadatas">The metadata.</param>
-    /// <param name="registerReminder">The register reminder.</param>
+    /// <param name="commands">The commands.</param>
+    /// <param name="metadatas">The metadatas.</param>
+    /// <param name="registerContinueCallback">The register continue callback.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
     Task AddCommandAsync(
         IStateStoreProvider stateProvider,
         BaseCommand[] commands,
         BaseMetadata[] metadatas,
-        Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder,
+        Func<TimeSpan, Task> registerContinueCallback,
         CancellationToken cancellationToken);
 
     /// <summary>
@@ -52,8 +52,8 @@ public interface IAggregateStateManager
     /// <param name="resiliencyPolicy">The resiliency policy.</param>
     /// <param name="aggregate">The aggregate.</param>
     /// <param name="aggregateInitializer">The aggregate initializer.</param>
-    /// <param name="registerReminder">The register reminder.</param>
-    /// <param name="unregisterReminder">The remove reminder.</param>
+    /// <param name="registerContinueCallback">The register continue callback.</param>
+    /// <param name="unregisterContinueCallback">The unregister continue callback.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;System.Nullable&lt;IAggregate&gt;&gt;.</returns>
     Task<IAggregate?> ContinueAsync(
@@ -61,8 +61,8 @@ public interface IAggregateStateManager
         ResiliencyPolicy resiliencyPolicy,
         IAggregate? aggregate,
         Func<BaseEvent, IAggregate> aggregateInitializer,
-        Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder,
-        Func<string, Task> unregisterReminder,
+        Func<TimeSpan, Task> registerContinueCallback,
+        Func<Task> unregisterContinueCallback,
         CancellationToken cancellationToken);
 
     /// <summary>
