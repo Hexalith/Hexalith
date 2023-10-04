@@ -14,7 +14,7 @@
 	<PropertyGroup>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<LangVersion>latest</LangVersion>
+		<LangVersion>preview</LangVersion>
 		<EnableNETAnalyzers>true</EnableNETAnalyzers>
 		<AnalysisMode>AllEnabledByDefault</AnalysisMode>
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
