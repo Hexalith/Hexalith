@@ -19,7 +19,7 @@ namespace Hexalith.Application.Inventories.Services;
 using Hexalith.Domain.Events;
 
 /// <summary>
-/// Interface ICustomerQueryService.
+/// Interface IInventoryItemQueryService.
 /// </summary>
 public interface IInventoryItemQueryService
 {
