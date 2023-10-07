@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 08-30-2023
 // ***********************************************************************
-// <copyright file="CustomerQueryService.cs" company="Fiveforty SAS Paris France">
+// <copyright file="CustomerActorService.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -58,6 +58,15 @@ public class CustomerActorService : ICustomerQueryService
         ArgumentNullException.ThrowIfNull(change);
         return await GetActor(change.AggregateId)
             .HasChangesAsync(change)
+            .ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task<bool> IsIntercompanyDirectDeliveryAsync(string aggregateId, CancellationToken cancellationToken)
+    {
+        ArgumentException.ThrowIfNullOrEmpty(aggregateId);
+        return await GetActor(aggregateId)
+            .IsIntercompanyDirectDeliveryAsync()
             .ConfigureAwait(false);
     }
 

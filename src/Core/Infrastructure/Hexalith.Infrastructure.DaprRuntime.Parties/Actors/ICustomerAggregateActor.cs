@@ -47,4 +47,10 @@ public interface ICustomerAggregateActor : IActor
     /// <param name="change">The change.</param>
     /// <returns>Task&lt;System.Boolean&gt;.</returns>
     Task<bool> HasChangesAsync(ChangeCustomerInformation change);
+
+    /// <summary>
+    /// Determines whether [is intercompany direct delivery asynchronous].
+    /// </summary>
+    /// <returns>Task&lt;System.Boolean&gt;.</returns>
+    Task<bool> IsIntercompanyDirectDeliveryAsync();
 }

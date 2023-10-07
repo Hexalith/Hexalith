@@ -8,6 +8,8 @@
 // ***********************************************************************
 // <copyright file="CustomerAggregateActor.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -62,11 +64,6 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
     /// The aggregate.
     /// </summary>
     private Customer? _aggregate;
-
-    /// <summary>
-    /// The reminder.
-    /// </summary>
-    private IActorReminder? _reminder;
 
     /// <summary>
     /// The timer.
@@ -133,6 +130,7 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
     public async Task DoAsync(ActorCommandEnvelope envelope)
     {
         ArgumentNullException.ThrowIfNull(envelope);
+        _aggregate = null;
         await _stateManager
             .AddCommandAsync(
                 _stateProvider,
@@ -145,15 +143,7 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
 
     /// <inheritdoc/>
     public async Task<bool> ExistAsync()
-    {
-        if (!await HasCommandsAsync().ConfigureAwait(false))
-        {
-            return false;
-        }
-
-        Customer? customer = await GetAggregateAsync().ConfigureAwait(false);
-        return customer != null;
-    }
+        => await GetAggregateAsync() != null;
 
     /// <inheritdoc/>
     public async Task<bool> HasChangesAsync(ChangeCustomerInformation change)
@@ -183,6 +173,15 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
     }
 
     /// <inheritdoc/>
+    public async Task<bool> IsIntercompanyDirectDeliveryAsync()
+    {
+        Customer? customer = await GetAggregateAsync().ConfigureAwait(false);
+        return customer == null
+            ? throw new InvalidOperationException($"Customer with AggregateId={Id} not found.")
+            : customer.IntercompanyDirectDelivery;
+    }
+
+    /// <inheritdoc/>
     public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period) => await ContinueAsync();
 
     /// <summary>
@@ -191,17 +190,12 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
     /// <returns>A Task&lt;Customer&gt; representing the asynchronous operation.</returns>
     private async Task<Customer?> GetAggregateAsync()
     {
-        if (_aggregate == null)
-        {
-            _aggregate = (Customer?)await _stateManager
+        return _aggregate ??= (Customer?)await _stateManager
                 .GetAggregateAsync(
                     _stateProvider,
                     (e) => new Customer((CustomerRegistered)e),
                     CancellationToken.None)
                 .ConfigureAwait(false);
-        }
-
-        return _aggregate;
     }
 
     /// <summary>
@@ -211,7 +205,7 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
     /// <returns>A Task representing the asynchronous operation.</returns>
     private async Task RegisterContinueCallbackAsync(TimeSpan dueTime)
     {
-        (_reminder, _timer) = await this.RegisterContinueCallbackReminderAsync(
+        (_, _timer) = await this.RegisterContinueCallbackReminderAsync(
         dueTime,
         _commandProcessorSettings.ActiveCommandCheckPeriod,
         _commandProcessorSettings.ResiliencyPolicy.Timeout,
