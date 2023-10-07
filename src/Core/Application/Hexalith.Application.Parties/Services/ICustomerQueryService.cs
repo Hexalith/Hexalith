@@ -47,4 +47,12 @@ public interface ICustomerQueryService
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;System.Boolean&gt;.</returns>
     Task<bool> HasChangesAsync(ChangeCustomerInformation change, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Determines whether [is intercompany direct delivery asynchronous] [the specified aggregate identifier].
+    /// </summary>
+    /// <param name="aggregateId">The aggregate identifier.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task&lt;System.Boolean&gt;.</returns>
+    Task<bool> IsIntercompanyDirectDeliveryAsync(string aggregateId, CancellationToken cancellationToken);
 }
