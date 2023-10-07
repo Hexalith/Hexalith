@@ -32,7 +32,7 @@ using Hexalith.Infrastructure.DaprRuntime.Parties.Actors;
 /// Implements the <see cref="ICustomerQueryService" />.
 /// </summary>
 /// <seealso cref="ICustomerQueryService" />
-public class CustomerQueryService : ICustomerQueryService
+public class CustomerActorService : ICustomerQueryService
 {
     /// <inheritdoc/>
     public async Task<CustomerInformationChanged?> CreateInformationChangedEventAsync(string aggregateId, CancellationToken cancellationToken)

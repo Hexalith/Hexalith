@@ -35,8 +35,8 @@ public static class PartiesHelper
     /// <param name="services">The services.</param>
     /// <param name="configuration">The configuration.</param>
     /// <returns>IServiceCollection.</returns>
-    public static IServiceCollection AddParties(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddDaprParties(this IServiceCollection services, IConfiguration configuration)
         => services
             .ConfigureSettings<CustomerSettings>(configuration)
-            .AddTransient<ICustomerQueryService, CustomerQueryService>();
+            .AddTransient<ICustomerQueryService, CustomerActorService>();
 }
