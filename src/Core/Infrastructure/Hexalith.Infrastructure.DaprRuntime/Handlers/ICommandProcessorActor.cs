@@ -28,6 +28,12 @@ using Dapr.Actors;
 public interface ICommandProcessorActor : IActor
 {
     /// <summary>
+    /// Continues the asynchronous.
+    /// </summary>
+    /// <returns>Task.</returns>
+    Task ContinueAsync();
+
+    /// <summary>
     /// Does the asynchronous.
     /// </summary>
     /// <param name="envelope">The envelope.</param>

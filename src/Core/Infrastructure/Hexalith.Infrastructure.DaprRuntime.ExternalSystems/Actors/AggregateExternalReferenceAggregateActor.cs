@@ -23,13 +23,14 @@ using Dapr.Actors.Runtime;
 using Hexalith.Application.Aggregates;
 using Hexalith.Application.Configurations;
 using Hexalith.Application.States;
+using Hexalith.Application.Tasks;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.ValueObjets;
 using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Configurations;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
-using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.States;
+using Hexalith.Infrastructure.DaprRuntime.Tasks;
 
 using Microsoft.Extensions.Options;
 
@@ -43,6 +44,8 @@ public class AggregateExternalReferenceAggregateActor : Actor, ICommandProcessor
     /// The command processor settings.
     /// </summary>
     private readonly CommandProcessorSettings _commandProcessorSettings;
+
+    private readonly IRetryCallbackManager _retryManager;
 
     /// <summary>
     /// The settings.
@@ -60,19 +63,14 @@ public class AggregateExternalReferenceAggregateActor : Actor, ICommandProcessor
     private readonly IStateStoreProvider _stateProvider;
 
     /// <summary>
+    /// The timer.
+    /// </summary>
+    private readonly ActorTimer? _timer;
+
+    /// <summary>
     /// The aggregate.
     /// </summary>
     private AggregateExternalReference? _aggregate;
-
-    /// <summary>
-    /// The reminder.
-    /// </summary>
-    private IActorReminder? _reminder;
-
-    /// <summary>
-    /// The timer.
-    /// </summary>
-    private ActorTimer? _timer;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AggregateExternalReferenceAggregateActor" /> class.
@@ -94,6 +92,26 @@ public class AggregateExternalReferenceAggregateActor : Actor, ICommandProcessor
         _stateProvider = new ActorStateStoreProvider(StateManager);
         _settings = settings.Value;
         _commandProcessorSettings = _settings.CommandProcessor ?? new CommandProcessorSettings();
+        _retryManager = new DaprRetryCallbackManager(
+            this,
+            _commandProcessorSettings.ActiveCommandCheckPeriod,
+            _commandProcessorSettings.ResiliencyPolicy.Timeout,
+            Logger);
+    }
+
+    /// <inheritdoc/>
+    public async Task ContinueAsync()
+    {
+        _aggregate = (AggregateExternalReference?)await _stateManager
+            .ContinueAsync(
+                _stateProvider,
+                _retryManager,
+                _commandProcessorSettings.ResiliencyPolicy,
+                _aggregate,
+                (e) => new AggregateExternalReference((AggregateExternalReferenceAdded)e),
+                Logger,
+                CancellationToken.None)
+            .ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -103,9 +121,10 @@ public class AggregateExternalReferenceAggregateActor : Actor, ICommandProcessor
         await _stateManager
             .AddCommandAsync(
                 _stateProvider,
+                _retryManager,
                 envelope.Commands.ToArray(),
                 envelope.Metadatas.ToArray(),
-                RegisterContinueCallbackAsync,
+                Logger,
                 CancellationToken.None)
             .ConfigureAwait(false);
     }
@@ -155,42 +174,5 @@ public class AggregateExternalReferenceAggregateActor : Actor, ICommandProcessor
 
     /// <inheritdoc/>
     public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period)
-    {
-        _aggregate = (AggregateExternalReference?)await _stateManager
-            .ContinueAsync(
-                _stateProvider,
-                _commandProcessorSettings.ResiliencyPolicy,
-                _aggregate,
-                (e) => new AggregateExternalReference((AggregateExternalReferenceAdded)e),
-                RegisterContinueCallbackAsync,
-                UnregisterContinueCallbackAsync,
-                CancellationToken.None)
-            .ConfigureAwait(false);
-    }
-
-    /// <summary>
-    /// Register continue callback as an asynchronous operation.
-    /// </summary>
-    /// <param name="dueTime">The due time.</param>
-    /// <returns>A Task representing the asynchronous operation.</returns>
-    private async Task RegisterContinueCallbackAsync(TimeSpan dueTime)
-    {
-        (_reminder, _timer) = await this.RegisterContinueCallbackReminderAsync(
-            dueTime,
-            _commandProcessorSettings.ActiveCommandCheckPeriod,
-            _commandProcessorSettings.ResiliencyPolicy.Timeout,
-            _timer != null,
-            Logger);
-    }
-
-    /// <summary>
-    /// Unregister continue callback as an asynchronous operation.
-    /// </summary>
-    /// <returns>A Task representing the asynchronous operation.</returns>
-    private async Task UnregisterContinueCallbackAsync()
-        => await this.UnregisterContinueCallbackReminderAsync(
-            _timer != null,
-            GetReminderAsync,
-            UnregisterReminderAsync,
-            UnregisterTimerAsync);
+        => await ContinueAsync().ConfigureAwait(false);
 }

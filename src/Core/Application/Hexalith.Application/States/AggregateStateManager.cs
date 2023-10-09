@@ -33,6 +33,8 @@ using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 
+using Microsoft.Extensions.Logging;
+
 /// <summary>
 /// Class AggregateActorState.
 /// Implements the <see cref="Christofle.Infrastructure.Dynamics365Finance.DaprCloud.AggregateActors.IAggregateActorState" />.
@@ -117,15 +119,16 @@ public class AggregateStateManager : IAggregateStateManager
     /// <inheritdoc/>
     public async Task AddCommandAsync(
         IStateStoreProvider stateProvider,
+        IRetryCallbackManager retryManager,
         BaseCommand[] commands,
         BaseMetadata[] metadatas,
-        Func<TimeSpan, Task> registerContinueCallback,
+        ILogger logger,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(stateProvider);
         ArgumentNullException.ThrowIfNull(metadatas);
         ArgumentNullException.ThrowIfNull(commands);
-        await registerContinueCallback(TimeSpan.FromMilliseconds(1));
+        await retryManager.RegisterContinueCallbackAsync(TimeSpan.FromMilliseconds(1), cancellationToken);
         AggregateState state = await GetStateAsync(stateProvider, cancellationToken);
         MessageStore<CommandState> commandStore = new(stateProvider, CommandsStreamName);
         List<CommandState> states = [];
@@ -151,11 +154,11 @@ public class AggregateStateManager : IAggregateStateManager
     /// <inheritdoc/>
     public async Task<IAggregate?> ContinueAsync(
         IStateStoreProvider stateProvider,
+        IRetryCallbackManager retryManager,
         ResiliencyPolicy resiliencyPolicy,
         IAggregate? aggregate,
         Func<BaseEvent, IAggregate> aggregateInitializer,
-        Func<TimeSpan, Task> registerContinueCallback,
-        Func<Task> unregisterContinueCallback,
+        ILogger logger,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(stateProvider);
@@ -164,19 +167,19 @@ public class AggregateStateManager : IAggregateStateManager
         AggregateState state = await GetStateAsync(stateProvider, cancellationToken);
         if (state.LastEventPublished < state.EventStreamVersion)
         {
-            await registerContinueCallback(TimeSpan.FromSeconds(1));
+            await retryManager.RegisterContinueCallbackAsync(TimeSpan.FromSeconds(1), cancellationToken);
             return aggregate;
         }
 
         if (retry != null)
         {
-            await registerContinueCallback(retry.Value);
+            await retryManager.RegisterContinueCallbackAsync(retry.Value, cancellationToken);
             return null;
         }
 
         if (aggregate != null)
         {
-            await unregisterContinueCallback();
+            await retryManager.UnregisterContinueCallbackAsync(cancellationToken);
         }
 
         return aggregate;

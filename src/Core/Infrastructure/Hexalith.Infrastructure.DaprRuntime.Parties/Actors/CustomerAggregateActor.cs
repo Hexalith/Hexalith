@@ -24,13 +24,14 @@ using Hexalith.Application.Configurations;
 using Hexalith.Application.Exceptions;
 using Hexalith.Application.Parties.Commands;
 using Hexalith.Application.States;
+using Hexalith.Application.Tasks;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.ValueObjets;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
-using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Parties.Configurations;
 using Hexalith.Infrastructure.DaprRuntime.States;
+using Hexalith.Infrastructure.DaprRuntime.Tasks;
 
 using Microsoft.Extensions.Options;
 
@@ -44,6 +45,11 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
     /// The command processor settings.
     /// </summary>
     private readonly CommandProcessorSettings _commandProcessorSettings;
+
+    /// <summary>
+    /// The retry manager.
+    /// </summary>
+    private readonly IRetryCallbackManager _retryManager;
 
     /// <summary>
     /// The settings.
@@ -61,14 +67,14 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
     private readonly IStateStoreProvider _stateProvider;
 
     /// <summary>
+    /// The timer.
+    /// </summary>
+    private readonly ActorTimer? _timer;
+
+    /// <summary>
     /// The aggregate.
     /// </summary>
     private Customer? _aggregate;
-
-    /// <summary>
-    /// The timer.
-    /// </summary>
-    private ActorTimer? _timer;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CustomerAggregateActor" /> class.
@@ -90,6 +96,11 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
         _stateProvider = new ActorStateStoreProvider(StateManager);
         _settings = settings.Value;
         _commandProcessorSettings = _settings.CommandProcessor ?? new CommandProcessorSettings();
+        _retryManager = new DaprRetryCallbackManager(
+            this,
+            _commandProcessorSettings.ActiveCommandCheckPeriod,
+            _commandProcessorSettings.ResiliencyPolicy.Timeout,
+            Logger);
     }
 
     /// <summary>
@@ -101,11 +112,11 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
         _aggregate = (Customer?)await _stateManager
             .ContinueAsync(
                 _stateProvider,
+                _retryManager,
                 _commandProcessorSettings.ResiliencyPolicy,
                 _aggregate,
                 (e) => new Customer((CustomerRegistered)e),
-                RegisterContinueCallbackAsync,
-                UnregisterContinueCallbackAsync,
+                Logger,
                 CancellationToken.None)
             .ConfigureAwait(false);
     }
@@ -134,9 +145,10 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
         await _stateManager
             .AddCommandAsync(
                 _stateProvider,
+                _retryManager,
                 envelope.Commands.ToArray(),
                 envelope.Metadatas.ToArray(),
-                RegisterContinueCallbackAsync,
+                Logger,
                 CancellationToken.None)
             .ConfigureAwait(false);
     }
@@ -197,30 +209,4 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
                     CancellationToken.None)
                 .ConfigureAwait(false);
     }
-
-    /// <summary>
-    /// Register continue callback as an asynchronous operation.
-    /// </summary>
-    /// <param name="dueTime">The due time.</param>
-    /// <returns>A Task representing the asynchronous operation.</returns>
-    private async Task RegisterContinueCallbackAsync(TimeSpan dueTime)
-    {
-        (_, _timer) = await this.RegisterContinueCallbackReminderAsync(
-        dueTime,
-        _commandProcessorSettings.ActiveCommandCheckPeriod,
-        _commandProcessorSettings.ResiliencyPolicy.Timeout,
-        _timer != null,
-        Logger);
-    }
-
-    /// <summary>
-    /// Unregister continue callback as an asynchronous operation.
-    /// </summary>
-    /// <returns>A Task representing the asynchronous operation.</returns>
-    private async Task UnregisterContinueCallbackAsync()
-        => await this.UnregisterContinueCallbackReminderAsync(
-            _timer != null,
-            GetReminderAsync,
-            UnregisterReminderAsync,
-            UnregisterTimerAsync);
 }

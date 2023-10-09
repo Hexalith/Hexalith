@@ -23,6 +23,8 @@ using Hexalith.Application.Tasks;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 
+using Microsoft.Extensions.Logging;
+
 /// <summary>
 /// Interface IAggregateStateManager.
 /// </summary>
@@ -33,36 +35,38 @@ public interface IAggregateStateManager
     /// Adds the command asynchronous.
     /// </summary>
     /// <param name="stateProvider">The state provider.</param>
+    /// <param name="retryManager">The retry manager.</param>
     /// <param name="commands">The commands.</param>
     /// <param name="metadatas">The metadatas.</param>
-    /// <param name="registerContinueCallback">The register continue callback.</param>
+    /// <param name="logger">The logger.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
     Task AddCommandAsync(
         IStateStoreProvider stateProvider,
+        IRetryCallbackManager retryManager,
         BaseCommand[] commands,
         BaseMetadata[] metadatas,
-        Func<TimeSpan, Task> registerContinueCallback,
+        ILogger logger,
         CancellationToken cancellationToken);
 
     /// <summary>
     /// Continues the asynchronous.
     /// </summary>
     /// <param name="stateProvider">The state provider.</param>
+    /// <param name="retryManager">The retry manager.</param>
     /// <param name="resiliencyPolicy">The resiliency policy.</param>
     /// <param name="aggregate">The aggregate.</param>
     /// <param name="aggregateInitializer">The aggregate initializer.</param>
-    /// <param name="registerContinueCallback">The register continue callback.</param>
-    /// <param name="unregisterContinueCallback">The unregister continue callback.</param>
+    /// <param name="logger">The logger.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;System.Nullable&lt;IAggregate&gt;&gt;.</returns>
     Task<IAggregate?> ContinueAsync(
         IStateStoreProvider stateProvider,
+        IRetryCallbackManager retryManager,
         ResiliencyPolicy resiliencyPolicy,
         IAggregate? aggregate,
         Func<BaseEvent, IAggregate> aggregateInitializer,
-        Func<TimeSpan, Task> registerContinueCallback,
-        Func<Task> unregisterContinueCallback,
+        ILogger logger,
         CancellationToken cancellationToken);
 
     /// <summary>
@@ -72,7 +76,10 @@ public interface IAggregateStateManager
     /// <param name="aggregateInitializer">The aggregate initializer.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;System.Nullable&lt;IAggregate&gt;&gt;.</returns>
-    Task<IAggregate?> GetAggregateAsync(IStateStoreProvider stateProvider, Func<BaseEvent, IAggregate> aggregateInitializer, CancellationToken cancellationToken);
+    Task<IAggregate?> GetAggregateAsync(
+        IStateStoreProvider stateProvider,
+        Func<BaseEvent, IAggregate> aggregateInitializer,
+        CancellationToken cancellationToken);
 
     /// <summary>
     /// Gets the command count asynchronous.

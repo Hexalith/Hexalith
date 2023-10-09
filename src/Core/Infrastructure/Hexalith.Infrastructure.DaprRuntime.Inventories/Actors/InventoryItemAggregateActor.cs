@@ -4,7 +4,7 @@
 // Created          : 01-02-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 03-11-2023
+// Last Modified On : 10-09-2023
 // ***********************************************************************
 // <copyright file="InventoryItemAggregateActor.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -22,12 +22,13 @@ using Dapr.Actors.Runtime;
 using Hexalith.Application.Aggregates;
 using Hexalith.Application.Configurations;
 using Hexalith.Application.States;
+using Hexalith.Application.Tasks;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
-using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Inventories.Configurations;
 using Hexalith.Infrastructure.DaprRuntime.States;
+using Hexalith.Infrastructure.DaprRuntime.Tasks;
 
 using Microsoft.Extensions.Options;
 
@@ -41,6 +42,11 @@ public class InventoryItemAggregateActor : Actor, ICommandProcessorActor, IRemin
     /// The command processor settings.
     /// </summary>
     private readonly CommandProcessorSettings _commandProcessorSettings;
+
+    /// <summary>
+    /// The retry manager.
+    /// </summary>
+    private readonly IRetryCallbackManager _retryManager;
 
     /// <summary>
     /// The settings.
@@ -57,17 +63,10 @@ public class InventoryItemAggregateActor : Actor, ICommandProcessorActor, IRemin
     /// </summary>
     private readonly IStateStoreProvider _stateProvider;
 
+    /// <summary>
+    /// The aggregate.
+    /// </summary>
     private InventoryItem? _aggregate;
-
-    /// <summary>
-    /// The reminder.
-    /// </summary>
-    private IActorReminder? _reminder;
-
-    /// <summary>
-    /// The timer.
-    /// </summary>
-    private ActorTimer? _timer;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="InventoryItemAggregateActor" /> class.
@@ -75,7 +74,7 @@ public class InventoryItemAggregateActor : Actor, ICommandProcessorActor, IRemin
     /// <param name="host">The <see cref="ActorHost" /> that will host this actor instance.</param>
     /// <param name="settings">The settings.</param>
     /// <param name="stateManager">The state manager.</param>
-    /// <exception cref="ArgumentNullException">Argument null.</exception>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
     public InventoryItemAggregateActor(
         ActorHost host,
         IOptions<InventoryItemSettings> settings,
@@ -89,6 +88,29 @@ public class InventoryItemAggregateActor : Actor, ICommandProcessorActor, IRemin
         _stateProvider = new ActorStateStoreProvider(StateManager);
         _settings = settings.Value;
         _commandProcessorSettings = _settings.CommandProcessor ?? new CommandProcessorSettings();
+        _retryManager = new DaprRetryCallbackManager(
+            this,
+            _commandProcessorSettings.ActiveCommandCheckPeriod,
+            _commandProcessorSettings.ResiliencyPolicy.Timeout,
+            Logger);
+    }
+
+    /// <summary>
+    /// Continue as an asynchronous operation.
+    /// </summary>
+    /// <returns>A Task representing the asynchronous operation.</returns>
+    public async Task ContinueAsync()
+    {
+        _aggregate = (InventoryItem?)await _stateManager
+            .ContinueAsync(
+                _stateProvider,
+                _retryManager,
+                _commandProcessorSettings.ResiliencyPolicy,
+                _aggregate,
+                (e) => new InventoryItem((InventoryItemAdded)e),
+                Logger,
+                CancellationToken.None)
+            .ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -111,9 +133,10 @@ public class InventoryItemAggregateActor : Actor, ICommandProcessorActor, IRemin
         await _stateManager
             .AddCommandAsync(
                 _stateProvider,
+                _retryManager,
                 envelope.Commands.ToArray(),
                 envelope.Metadatas.ToArray(),
-                RegisterContinueCallbackAsync,
+                Logger,
                 CancellationToken.None)
             .ConfigureAwait(false);
     }
@@ -155,20 +178,12 @@ public class InventoryItemAggregateActor : Actor, ICommandProcessorActor, IRemin
     }
 
     /// <inheritdoc/>
-    public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period)
-    {
-        _aggregate = (InventoryItem?)await _stateManager
-            .ContinueAsync(
-                _stateProvider,
-                _commandProcessorSettings.ResiliencyPolicy,
-                _aggregate,
-                (e) => new InventoryItem((InventoryItemAdded)e),
-                RegisterContinueCallbackAsync,
-                UnregisterContinueCallbackAsync,
-                CancellationToken.None)
-            .ConfigureAwait(false);
-    }
+    public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period) => await ContinueAsync();
 
+    /// <summary>
+    /// Get aggregate as an asynchronous operation.
+    /// </summary>
+    /// <returns>A Task&lt;InventoryItem&gt; representing the asynchronous operation.</returns>
     private async Task<InventoryItem?> GetAggregateAsync()
     {
         _aggregate ??= (InventoryItem?)await _stateManager
@@ -180,21 +195,4 @@ public class InventoryItemAggregateActor : Actor, ICommandProcessorActor, IRemin
 
         return _aggregate;
     }
-
-    private async Task RegisterContinueCallbackAsync(TimeSpan dueTime)
-    {
-        (_reminder, _timer) = await this.RegisterContinueCallbackReminderAsync(
-        dueTime,
-        _commandProcessorSettings.ActiveCommandCheckPeriod,
-        _commandProcessorSettings.ResiliencyPolicy.Timeout,
-        _timer != null,
-        Logger);
-    }
-
-    private async Task UnregisterContinueCallbackAsync()
-        => await this.UnregisterContinueCallbackReminderAsync(
-            _timer != null,
-            GetReminderAsync,
-            UnregisterReminderAsync,
-            UnregisterTimerAsync);
 }

@@ -22,100 +22,11 @@ using System.Web;
 using Dapr.Actors;
 using Dapr.Actors.Runtime;
 
-using Microsoft.Extensions.Logging;
-
 /// <summary>
 /// Class ActorHelper.
 /// </summary>
 public static class ActorHelper
 {
-    /// <summary>
-    /// Register continue callback reminder as an asynchronous operation.
-    /// </summary>
-    /// <param name="actor">The actor.</param>
-    /// <param name="dueTime">The due time.</param>
-    /// <param name="reminderPeriod">The reminder period.</param>
-    /// <param name="ttl">The TTL.</param>
-    /// <param name="timerExist">The timer exist.</param>
-    /// <param name="logger">The logger.</param>
-    /// <returns>A Task&lt;(Dapr.Actors.Runtime.IActorReminder Reminder, Dapr.Actors.Runtime.ActorTimer Timer)&gt; representing the asynchronous operation.</returns>
-    public static async Task<(IActorReminder Reminder, ActorTimer Timer)> RegisterContinueCallbackReminderAsync(
-            this Actor actor,
-            TimeSpan dueTime,
-            TimeSpan reminderPeriod,
-            TimeSpan ttl,
-            bool timerExist,
-            ILogger logger)
-    {
-        ActorTimer timer = new(
-                    actor.Host.ActorTypeInfo.ActorTypeName,
-                    actor.Id,
-                    ActorConstants.ContinueTimerName,
-                    ActorConstants.ContinueCallbackMethodName,
-                    [],
-                    dueTime,
-                    dueTime,
-                    reminderPeriod);
-        await actor
-            .Host
-            .TimerManager
-            .RegisterTimerAsync(timer);
-
-        IActorReminder? reminder;
-        ActorReminderToken token = new(
-                    actor.Host.ActorTypeInfo.ActorTypeName,
-                    actor.Id,
-                    ActorConstants.ContinueReminderName);
-        try
-        {
-            reminder = await actor
-                .Host
-                .TimerManager
-                .GetReminderAsync(token);
-        }
-        catch (Exception e)
-        {
-            logger.LogError(
-                e,
-                "Unable to get reminder '{ReminderName}' of actor '{ActorTypeName}' Id={ActorId}.",
-                ActorConstants.ContinueReminderName,
-                actor.Host.ActorTypeInfo.ActorTypeName,
-                actor.Id.GetId());
-            reminder = null;
-        }
-
-        if (reminder == null)
-        {
-            ActorReminder newReminder = new(
-                        actor.Host.ActorTypeInfo.ActorTypeName,
-                        actor.Id,
-                        ActorConstants.ContinueReminderName,
-                        [],
-                        reminderPeriod,
-                        reminderPeriod,
-                        ttl + reminderPeriod);
-
-            await actor
-                    .Host
-                    .TimerManager
-                    .RegisterReminderAsync(newReminder);
-            reminder = newReminder;
-        }
-
-        if (timerExist)
-        {
-            await actor
-                .Host
-                .TimerManager
-                .UnregisterTimerAsync(new ActorTimerToken(
-                        actor.Host.ActorTypeInfo.ActorTypeName,
-                        actor.Id,
-                        ActorConstants.ContinueTimerName));
-        }
-
-        return (reminder, timer);
-    }
-
     /// <summary>
     /// Converts to decoded string.
     /// </summary>

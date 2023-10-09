@@ -22,12 +22,13 @@ using Dapr.Actors.Runtime;
 using Hexalith.Application.Aggregates;
 using Hexalith.Application.Configurations;
 using Hexalith.Application.States;
+using Hexalith.Application.Tasks;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Configurations;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
-using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.States;
+using Hexalith.Infrastructure.DaprRuntime.Tasks;
 
 using Microsoft.Extensions.Options;
 
@@ -41,6 +42,8 @@ public class ExternalSystemReferenceAggregateActor : Actor, ICommandProcessorAct
     /// The command processor settings.
     /// </summary>
     private readonly CommandProcessorSettings _commandProcessorSettings;
+
+    private readonly IRetryCallbackManager _retryManager;
 
     /// <summary>
     /// The settings.
@@ -58,19 +61,14 @@ public class ExternalSystemReferenceAggregateActor : Actor, ICommandProcessorAct
     private readonly IStateStoreProvider _stateProvider;
 
     /// <summary>
+    /// The timer.
+    /// </summary>
+    private readonly ActorTimer? _timer;
+
+    /// <summary>
     /// The aggregate.
     /// </summary>
     private ExternalSystemReference? _aggregate;
-
-    /// <summary>
-    /// The reminder.
-    /// </summary>
-    private IActorReminder? _reminder;
-
-    /// <summary>
-    /// The timer.
-    /// </summary>
-    private ActorTimer? _timer;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ExternalSystemReferenceAggregateActor" /> class.
@@ -92,6 +90,26 @@ public class ExternalSystemReferenceAggregateActor : Actor, ICommandProcessorAct
         _stateProvider = new ActorStateStoreProvider(StateManager);
         _settings = settings.Value;
         _commandProcessorSettings = _settings.CommandProcessor ?? new CommandProcessorSettings();
+        _retryManager = new DaprRetryCallbackManager(
+            this,
+            _commandProcessorSettings.ActiveCommandCheckPeriod,
+            _commandProcessorSettings.ResiliencyPolicy.Timeout,
+            Logger);
+    }
+
+    /// <inheritdoc/>
+    public async Task ContinueAsync()
+    {
+        _aggregate = (ExternalSystemReference?)await _stateManager
+            .ContinueAsync(
+                _stateProvider,
+                _retryManager,
+                _commandProcessorSettings.ResiliencyPolicy,
+                _aggregate,
+                (e) => new ExternalSystemReference((ExternalSystemReferenceAdded)e),
+                Logger,
+                CancellationToken.None)
+            .ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -101,9 +119,10 @@ public class ExternalSystemReferenceAggregateActor : Actor, ICommandProcessorAct
         await _stateManager
             .AddCommandAsync(
                 _stateProvider,
+                _retryManager,
                 envelope.Commands.ToArray(),
                 envelope.Metadatas.ToArray(),
-                RegisterContinueCallbackAsync,
+                Logger,
                 CancellationToken.None)
             .ConfigureAwait(false);
     }
@@ -134,33 +153,5 @@ public class ExternalSystemReferenceAggregateActor : Actor, ICommandProcessorAct
 
     /// <inheritdoc/>
     public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period)
-    {
-        _aggregate = (ExternalSystemReference?)await _stateManager
-            .ContinueAsync(
-                _stateProvider,
-                _commandProcessorSettings.ResiliencyPolicy,
-                _aggregate,
-                (e) => new ExternalSystemReference((ExternalSystemReferenceAdded)e),
-                RegisterContinueCallbackAsync,
-                UnregisterContinueCallbackAsync,
-                CancellationToken.None)
-            .ConfigureAwait(false);
-    }
-
-    private async Task RegisterContinueCallbackAsync(TimeSpan dueTime)
-    {
-        (_reminder, _timer) = await this.RegisterContinueCallbackReminderAsync(
-        dueTime,
-        _commandProcessorSettings.ActiveCommandCheckPeriod,
-        _commandProcessorSettings.ResiliencyPolicy.Timeout,
-        _timer != null,
-        Logger);
-    }
-
-    private async Task UnregisterContinueCallbackAsync()
-        => await this.UnregisterContinueCallbackReminderAsync(
-            _timer != null,
-            GetReminderAsync,
-            UnregisterReminderAsync,
-            UnregisterTimerAsync);
+        => await ContinueAsync().ConfigureAwait(false);
 }
