@@ -184,9 +184,7 @@ public class InventoryItemStockAggregateActor : Actor, ICommandProcessorActor, I
         _commandProcessorSettings.ActiveCommandCheckPeriod,
         _commandProcessorSettings.ResiliencyPolicy.Timeout,
         _timer != null,
-        GetReminderAsync,
-        RegisterReminderAsync,
-        UnregisterTimerAsync);
+        Logger);
     }
 
     /// <summary>

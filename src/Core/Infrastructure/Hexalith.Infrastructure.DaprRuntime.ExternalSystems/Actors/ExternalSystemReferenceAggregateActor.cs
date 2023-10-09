@@ -154,9 +154,7 @@ public class ExternalSystemReferenceAggregateActor : Actor, ICommandProcessorAct
         _commandProcessorSettings.ActiveCommandCheckPeriod,
         _commandProcessorSettings.ResiliencyPolicy.Timeout,
         _timer != null,
-        GetReminderAsync,
-        RegisterReminderAsync,
-        UnregisterTimerAsync);
+        Logger);
     }
 
     private async Task UnregisterContinueCallbackAsync()

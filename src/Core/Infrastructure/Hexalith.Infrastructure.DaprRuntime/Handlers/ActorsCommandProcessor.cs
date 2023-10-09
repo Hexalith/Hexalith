@@ -49,8 +49,8 @@ public abstract class ActorsCommandProcessor : ICommandProcessor
         ArgumentNullException.ThrowIfNull(commands);
 
         string? aggregateName = null;
-        List<List<BaseCommand>> lists = new();
-        List<BaseCommand> aggregateCommands = new();
+        List<List<BaseCommand>> lists = [];
+        List<BaseCommand> aggregateCommands = [];
         foreach (BaseCommand cmd in commands)
         {
             if (aggregateName != cmd.AggregateName)
@@ -61,7 +61,7 @@ public abstract class ActorsCommandProcessor : ICommandProcessor
                     lists.Add(aggregateCommands);
                 }
 
-                aggregateCommands = new List<BaseCommand>();
+                aggregateCommands = [];
             }
 
             aggregateCommands.Add(cmd);

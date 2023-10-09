@@ -22,6 +22,8 @@ using System.Web;
 using Dapr.Actors;
 using Dapr.Actors.Runtime;
 
+using Microsoft.Extensions.Logging;
+
 /// <summary>
 /// Class ActorHelper.
 /// </summary>
@@ -35,9 +37,7 @@ public static class ActorHelper
     /// <param name="reminderPeriod">The reminder period.</param>
     /// <param name="ttl">The TTL.</param>
     /// <param name="timerExist">The timer exist.</param>
-    /// <param name="getReminder">The get reminder.</param>
-    /// <param name="registerReminder">The register reminder.</param>
-    /// <param name="unregisterTimer">The unregister timer.</param>
+    /// <param name="logger">The logger.</param>
     /// <returns>A Task&lt;(Dapr.Actors.Runtime.IActorReminder Reminder, Dapr.Actors.Runtime.ActorTimer Timer)&gt; representing the asynchronous operation.</returns>
     public static async Task<(IActorReminder Reminder, ActorTimer Timer)> RegisterContinueCallbackReminderAsync(
             this Actor actor,
@@ -45,30 +45,74 @@ public static class ActorHelper
             TimeSpan reminderPeriod,
             TimeSpan ttl,
             bool timerExist,
-            Func<string, Task<IActorReminder>> getReminder,
-            Func<string, byte[], TimeSpan, TimeSpan, TimeSpan, Task<IActorReminder>> registerReminder,
-            Func<string, Task> unregisterTimer)
+            ILogger logger)
     {
-        IActorReminder reminder = await getReminder(ActorConstants.ContinueReminderName);
-        reminder ??= await registerReminder(
+        ActorTimer timer = new(
+                    actor.Host.ActorTypeInfo.ActorTypeName,
+                    actor.Id,
+                    ActorConstants.ContinueTimerName,
+                    ActorConstants.ContinueCallbackMethodName,
+                    [],
+                    dueTime,
+                    dueTime,
+                    reminderPeriod);
+        await actor
+            .Host
+            .TimerManager
+            .RegisterTimerAsync(timer);
+
+        IActorReminder? reminder;
+        ActorReminderToken token = new(
+                    actor.Host.ActorTypeInfo.ActorTypeName,
+                    actor.Id,
+                    ActorConstants.ContinueReminderName);
+        try
+        {
+            reminder = await actor
+                .Host
+                .TimerManager
+                .GetReminderAsync(token);
+        }
+        catch (Exception e)
+        {
+            logger.LogError(
+                e,
+                "Unable to get reminder '{ReminderName}' of actor '{ActorTypeName}' Id={ActorId}.",
                 ActorConstants.ContinueReminderName,
-                [],
-                reminderPeriod,
-                reminderPeriod,
-                ttl + reminderPeriod);
+                actor.Host.ActorTypeInfo.ActorTypeName,
+                actor.Id.GetId());
+            reminder = null;
+        }
+
+        if (reminder == null)
+        {
+            ActorReminder newReminder = new(
+                        actor.Host.ActorTypeInfo.ActorTypeName,
+                        actor.Id,
+                        ActorConstants.ContinueReminderName,
+                        [],
+                        reminderPeriod,
+                        reminderPeriod,
+                        ttl + reminderPeriod);
+
+            await actor
+                    .Host
+                    .TimerManager
+                    .RegisterReminderAsync(newReminder);
+            reminder = newReminder;
+        }
 
         if (timerExist)
         {
-            await unregisterTimer(ActorConstants.ContinueTimerName);
+            await actor
+                .Host
+                .TimerManager
+                .UnregisterTimerAsync(new ActorTimerToken(
+                        actor.Host.ActorTypeInfo.ActorTypeName,
+                        actor.Id,
+                        ActorConstants.ContinueTimerName));
         }
 
-        ActorTimer timer = await actor.RegisterTimerAsync(
-         ActorConstants.ContinueTimerName,
-         ActorConstants.ContinueCallbackMethodName,
-         [],
-         dueTime,
-         dueTime,
-         reminderPeriod);
         return (reminder, timer);
     }
 
@@ -117,6 +161,7 @@ public static class ActorHelper
         {
             await unregisterReminder(ActorConstants.ContinueTimerName);
         }
+
         if (removeTimer)
         {
             await unregisterTimer(ActorConstants.ContinueTimerName);

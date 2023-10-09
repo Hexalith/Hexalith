@@ -149,14 +149,14 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
     public async Task<bool> HasChangesAsync(ChangeCustomerInformation change)
     {
         ArgumentNullException.ThrowIfNull(change);
-        if (change.AggregateId != Id.ToString())
+        if (change.AggregateId != Id.GetId())
         {
-            throw new InvalidCommandAggregateIdException(Id.ToString(), change);
+            throw new InvalidCommandAggregateIdException(Id.GetId(), change);
         }
 
         Customer? customer = await GetAggregateAsync().ConfigureAwait(false);
         return customer == null
-            ? throw new InvalidOperationException($"Customer {Id} not found.")
+            ? throw new InvalidOperationException($"Customer {Id.GetId()} not found.")
             :
             customer.Name == change.Name &&
             customer.CommissionSalesGroupId == change.CommissionSalesGroupId &&
@@ -177,7 +177,7 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
     {
         Customer? customer = await GetAggregateAsync().ConfigureAwait(false);
         return customer == null
-            ? throw new InvalidOperationException($"Customer with AggregateId={Id} not found.")
+            ? throw new InvalidOperationException($"Customer with AggregateId={Id.GetId()} not found.")
             : customer.IntercompanyDirectDelivery;
     }
 
@@ -210,9 +210,7 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
         _commandProcessorSettings.ActiveCommandCheckPeriod,
         _commandProcessorSettings.ResiliencyPolicy.Timeout,
         _timer != null,
-        GetReminderAsync,
-        RegisterReminderAsync,
-        UnregisterTimerAsync);
+        Logger);
     }
 
     /// <summary>

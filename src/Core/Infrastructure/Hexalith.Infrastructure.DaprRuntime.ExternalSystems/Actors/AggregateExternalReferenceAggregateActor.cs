@@ -180,9 +180,7 @@ public class AggregateExternalReferenceAggregateActor : Actor, ICommandProcessor
             _commandProcessorSettings.ActiveCommandCheckPeriod,
             _commandProcessorSettings.ResiliencyPolicy.Timeout,
             _timer != null,
-            GetReminderAsync,
-            RegisterReminderAsync,
-            UnregisterTimerAsync);
+            Logger);
     }
 
     /// <summary>

@@ -141,7 +141,7 @@ public class InventoryItemAggregateActor : Actor, ICommandProcessorActor, IRemin
 
         InventoryItem? inventoryItem = await GetAggregateAsync().ConfigureAwait(false);
         return inventoryItem == null
-            ? throw new InvalidOperationException($"InventoryItem {Id} not found.")
+            ? throw new InvalidOperationException($"InventoryItem {Id.GetId()} not found.")
             :
             inventoryItem.Name == changed.Name;
     }
@@ -188,9 +188,7 @@ public class InventoryItemAggregateActor : Actor, ICommandProcessorActor, IRemin
         _commandProcessorSettings.ActiveCommandCheckPeriod,
         _commandProcessorSettings.ResiliencyPolicy.Timeout,
         _timer != null,
-        GetReminderAsync,
-        RegisterReminderAsync,
-        UnregisterTimerAsync);
+        Logger);
     }
 
     private async Task UnregisterContinueCallbackAsync()

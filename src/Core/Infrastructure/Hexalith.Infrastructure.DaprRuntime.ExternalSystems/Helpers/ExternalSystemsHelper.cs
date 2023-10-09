@@ -35,7 +35,7 @@ public static class ExternalSystemsHelper
     /// <param name="services">The services.</param>
     /// <param name="configuration">The configuration.</param>
     /// <returns>IServiceCollection.</returns>
-    public static IServiceCollection AddExternalSystems(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddDaprExternalSystems(this IServiceCollection services, IConfiguration configuration)
         => services
             .ConfigureSettings<ExternalSystemReferenceSettings>(configuration)
             .ConfigureSettings<AggregateExternalReferenceSettings>(configuration)
