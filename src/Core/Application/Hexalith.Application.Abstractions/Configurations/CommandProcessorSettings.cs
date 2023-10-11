@@ -27,7 +27,7 @@ public class CommandProcessorSettings
     /// Gets or sets the cleanup period.
     /// </summary>
     /// <value>The cleanup period.</value>
-    public TimeSpan ActiveCommandCheckPeriod { get; set; } = TimeSpan.FromMinutes(15);
+    public TimeSpan ActiveCommandCheckPeriod { get; set; } = TimeSpan.FromMinutes(1);
 
     /// <summary>
     /// Gets or sets the resiliency policy.

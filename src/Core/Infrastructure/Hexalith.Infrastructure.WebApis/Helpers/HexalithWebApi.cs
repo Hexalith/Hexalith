@@ -119,12 +119,12 @@ public static class HexalithWebApi
     /// <returns>IApplicationBuilder.</returns>
     public static IApplicationBuilder UseHexalith(this WebApplication app)
     {
-        app
+        _ = app
             .UseCors()
             .UseSerilogRequestLogging()
             .UseCloudEvents();
 
-        app.MapControllers();
+        _ = app.MapControllers();
 
         _ = app.MapSubscribeHandler();
 

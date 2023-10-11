@@ -94,7 +94,7 @@ public class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageBus<TMess
     public async Task PublishAsync(IEnvelope<TMessage, TMetadata> envelope, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(envelope);
-        await PublishAsync(envelope.Message, envelope.Metadata, cancellationToken);
+        await PublishAsync(envelope.Message, envelope.Metadata, cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -103,38 +103,38 @@ public class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageBus<TMess
         ArgumentNullException.ThrowIfNull(message);
         ArgumentNullException.ThrowIfNull(metadata);
         TState state = new() { ReceivedDate = _dateTimeService.UtcNow, Message = message, Metadata = metadata };
-        await PublishAsync(state, cancellationToken);
+        await PublishAsync(state, cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public async Task PublishAsync(TState state, CancellationToken cancellationToken)
+    public async Task PublishAsync(TState envelope, CancellationToken cancellationToken)
     {
         {
-            ArgumentNullException.ThrowIfNull(state);
-            ArgumentNullException.ThrowIfNull(state.Message);
-            ArgumentNullException.ThrowIfNull(state.Metadata);
+            ArgumentNullException.ThrowIfNull(envelope);
+            ArgumentNullException.ThrowIfNull(envelope.Message);
+            ArgumentNullException.ThrowIfNull(envelope.Metadata);
             try
             {
-                string topicName = !string.IsNullOrEmpty(state.Message.AggregateName) ? state.Message.AggregateName.ToLowerInvariant() : throw new Exception("Event aggregate name is not defined.");
+                string topicName = !string.IsNullOrEmpty(envelope.Message.AggregateName) ? envelope.Message.AggregateName.ToLowerInvariant() : throw new Exception("Event aggregate name is not defined.");
                 Dictionary<string, string> m = new(StringComparer.Ordinal)
                     {
-                        { "MessageName", state.Metadata.Message.Name ?? string.Empty },
-                        { "MessageId", state.Metadata.Message.Id },
-                        { "CorrelationId", state.Metadata.Context.CorrelationId },
-                        { "SessionId", state.Metadata.Context.SessionId ?? state.Message.AggregateId },
-                        { "PartitionKey", state.Message.AggregateId },
+                        { "MessageName", envelope.Metadata.Message.Name ?? string.Empty },
+                        { "MessageId", envelope.Metadata.Message.Id },
+                        { "CorrelationId", envelope.Metadata.Context.CorrelationId },
+                        { "SessionId", envelope.Metadata.Context.SessionId ?? envelope.Message.AggregateId },
+                        { "PartitionKey", envelope.Message.AggregateId },
                     };
                 await _daprClient.PublishEventAsync(
                     _name,
                     topicName + _topicSuffix,
-                    state,
+                    envelope,
                     m,
                     cancellationToken).ConfigureAwait(false);
                 _logger.LogInformation(
                     "Sent message : Name={MessageName}; Id='{MessageId}'; Correlation='{CorrelationId}' on {TopicName} of the {BusName} bus.",
-                    state.Metadata.Message.Name,
-                    state.Metadata.Message.Id,
-                    state.Metadata.Context.CorrelationId,
+                    envelope.Metadata.Message.Name,
+                    envelope.Metadata.Message.Id,
+                    envelope.Metadata.Context.CorrelationId,
                     topicName + _topicSuffix,
                     _name);
             }
@@ -144,11 +144,11 @@ public class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageBus<TMess
                     e,
                     "Error while publishing on {BusName}/{Topic} ({BusType}) the message {MessageName} Id={MessageId} CorrelationId={CorrelationId}.}",
                     _name,
-                    state.Message.AggregateName + _topicSuffix,
+                    envelope.Message.AggregateName + _topicSuffix,
                     GetType().Name,
-                    state.Metadata.Message.Name,
-                    state.Metadata.Message.Id,
-                    state.Metadata.Context.CorrelationId);
+                    envelope.Metadata.Message.Name,
+                    envelope.Metadata.Message.Id,
+                    envelope.Metadata.Context.CorrelationId);
                 throw;
             }
         }

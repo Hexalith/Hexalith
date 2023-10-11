@@ -75,7 +75,8 @@ public partial class DaprRetryCallbackManager : IRetryCallbackManager
         ArgumentNullException.ThrowIfNull(actor);
         ArgumentNullException.ThrowIfNull(logger);
         _actor = actor;
-        _reminderPeriod = reminderPeriod < TimeSpan.FromMinutes(1) ? TimeSpan.FromMinutes(1) : reminderPeriod;
+        TimeSpan minPeriod = TimeSpan.FromMinutes(1);
+        _reminderPeriod = reminderPeriod < minPeriod ? minPeriod : reminderPeriod;
         _reminderTtl = reminderTtl;
         _logger = logger;
     }
