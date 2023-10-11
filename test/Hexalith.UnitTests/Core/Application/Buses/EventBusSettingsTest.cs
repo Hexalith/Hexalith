@@ -14,14 +14,14 @@ using Hexalith.TestMocks;
 public class EventBusSettingsTest
 {
     [Fact]
-    public void Check_default_name_is_not_null_or_empty()
+    public void CheckDefaultNameIsNotNullOrEmpty()
     {
         string name = new EventBusSettings().Name;
         _ = name.Should().NotBeNullOrEmpty();
     }
 
     [Fact]
-    public void Check_default_values_validation()
+    public void CheckDefaultValuesValidation()
     {
         EventBusSettingsValidator validator = new();
         FluentValidation.Results.ValidationResult result = validator.Validate(new EventBusSettings());
@@ -29,7 +29,7 @@ public class EventBusSettingsTest
     }
 
     [Fact]
-    public void Check_load_from_configuration_has_correct_value()
+    public void CheckLoadFromConfigurationHasCorrectValue()
     {
         OptionsBuilder<EventBusSettings> settings = new OptionsBuilder<EventBusSettings>()
             .WithValueFromConfiguration<EventBusSettingsTest>();
@@ -39,7 +39,7 @@ public class EventBusSettingsTest
     }
 
     [Fact]
-    public void Validation_of_incorrect_values_should_fail()
+    public void ValidationOfIncorrectValuesShouldFail()
     {
         EventBusSettingsValidator validator = new();
         FluentValidation.Results.ValidationResult result = validator.Validate(new EventBusSettings() { Name = string.Empty });

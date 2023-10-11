@@ -18,12 +18,14 @@ using Hexalith.Extensions.Helpers;
 using Hexalith.UnitTests.Core.Application.Commands;
 using Hexalith.UnitTests.Core.Domain.Events;
 
+using Microsoft.Extensions.Logging;
+
 using Moq;
 
 public class ResilientCommandProcessorTest
 {
     [Fact]
-    public async Task Completed_state_should_be_valid()
+    public async Task CompletedStateShouldBeValid()
     {
         Mock<ICommandDispatcher> dispatcher = new();
         _ = dispatcher
@@ -33,7 +35,8 @@ public class ResilientCommandProcessorTest
         ResilientCommandProcessor processor = new(
             ResiliencyPolicy.None,
             dispatcher.Object,
-            stateProvider);
+            stateProvider,
+            new Mock<ILogger<ResilientCommandProcessor>>().Object);
         const string key = "test1";
         string stateName = nameof(TaskProcessor) + key;
         DummyCommand1 command = new("My test 1", 1);
@@ -55,7 +58,7 @@ public class ResilientCommandProcessorTest
     }
 
     [Fact]
-    public async Task Task_status_should_be_cancelled_when_command_dispatcher_fails_without_resiliency()
+    public async Task TaskStatusShouldBeCancelledWhenCommandDispatcherFailsWithoutResiliency()
     {
         Mock<ICommandDispatcher> dispatcher = new();
         _ = dispatcher
@@ -65,7 +68,9 @@ public class ResilientCommandProcessorTest
         ResilientCommandProcessor processor = new(
             ResiliencyPolicy.None,
             dispatcher.Object,
-            stateProvider);
+            stateProvider,
+            new Mock<ILogger<ResilientCommandProcessor>>().Object);
+
         const string key = "test1";
         string stateName = nameof(TaskProcessor) + key;
         DummyCommand1 command = new("My test 1", 1);
@@ -87,7 +92,7 @@ public class ResilientCommandProcessorTest
     }
 
     [Fact]
-    public async Task Task_status_should_be_suspended_when_command_dispatcher_fails_with_resiliency()
+    public async Task TaskStatusShouldBeSuspendedWhenCommandDispatcherFailsWithResiliency()
     {
         Mock<ICommandDispatcher> dispatcher = new();
         _ = dispatcher
@@ -103,7 +108,9 @@ public class ResilientCommandProcessorTest
                 TimeSpan.FromDays(100),
                 false),
             dispatcher.Object,
-            stateProvider);
+            stateProvider,
+            new Mock<ILogger<ResilientCommandProcessor>>().Object);
+
         const string key = "test1";
         string stateName = nameof(TaskProcessor) + key;
         DummyCommand1 command = new("My test 1", 1);

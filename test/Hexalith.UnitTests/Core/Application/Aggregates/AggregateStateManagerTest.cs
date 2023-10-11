@@ -23,6 +23,10 @@ using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 using Hexalith.UnitTests.Core.Application.Commands;
 
+using Microsoft.Extensions.Logging;
+
+using Moq;
+
 public class AggregateStateManagerTest
 {
     [Theory]
@@ -30,18 +34,19 @@ public class AggregateStateManagerTest
     [InlineData(2)]
     [InlineData(10)]
     [InlineData(111)]
-    public async Task Add_command_should_emit_events(int commandCount)
+    public async Task AddCommandShouldEmitEvents(int commandCount)
     {
         (AggregateStateManager stateManager, MemoryStateProvider stateProvider, MemoryEventBus bus) = await GetInitializedStateManager(commandCount);
 
-        _ = await stateManager.ContinueAsync(
-            stateProvider,
-            ResiliencyPolicy.None,
-            null,
-            (_) => new DummyAggregate(),
-            (dueDate) => Task.CompletedTask,
-            () => Task.CompletedTask,
-            CancellationToken.None);
+        _ = await stateManager
+            .ContinueAsync(
+                stateProvider,
+                new Mock<IRetryCallbackManager>().Object,
+                ResiliencyPolicy.None,
+                null,
+                (_) => new DummyAggregate(),
+                new Mock<ILogger<AggregateStateManager>>().Object,
+                CancellationToken.None);
         _ = bus.Stream.Should().HaveCount(commandCount);
     }
 
@@ -50,17 +55,17 @@ public class AggregateStateManagerTest
     [InlineData(2)]
     [InlineData(10)]
     [InlineData(111)]
-    public async Task Add_command_should_persist_events(int commandCount)
+    public async Task AddCommandShouldPersistEvents(int commandCount)
     {
         (AggregateStateManager stateManager, MemoryStateProvider stateProvider, _) = await GetInitializedStateManager(commandCount);
 
         _ = await stateManager.ContinueAsync(
             stateProvider,
+            new Mock<IRetryCallbackManager>().Object,
             ResiliencyPolicy.None,
             null,
             (_) => new DummyAggregate(),
-            (dueDate) => Task.CompletedTask,
-            () => Task.CompletedTask,
+            new Mock<ILogger<AggregateStateManager>>().Object,
             CancellationToken.None);
 
         _ = stateProvider.State.ContainsKey("State").Should().BeTrue();
@@ -77,7 +82,7 @@ public class AggregateStateManagerTest
     [InlineData(2)]
     [InlineData(10)]
     [InlineData(111)]
-    public async Task Add_command_should_persist_state_with_correct_command_version(int commandCount)
+    public async Task AddCommandShouldPersistStateWithCorrectCommandVersion(int commandCount)
     {
         (_, MemoryStateProvider stateProvider, _) = await GetInitializedStateManager(commandCount);
 
@@ -117,16 +122,20 @@ public class AggregateStateManagerTest
             new DummyCommandDispatcher(),
             eventBus,
             notificationBus,
-            new DateTimeService());
+            new DateTimeService(),
+            new Mock<ILogger<AggregateStateManager>>().Object);
         for (int i = 0; i < commandCount; i++)
         {
             (BaseCommand command, Metadata meta) = GetCommand(i);
-            await stateManager.AddCommandAsync(
-                provider,
-                command.IntoArray(),
-                meta.IntoArray(),
-                async (dueDate) => await Task.CompletedTask,
-                CancellationToken.None);
+            await stateManager
+                .AddCommandAsync(
+                    provider,
+                    new Mock<IRetryCallbackManager>().Object,
+                    command.IntoArray(),
+                    meta.IntoArray(),
+                    new Mock<ILogger<AggregateStateManager>>().Object,
+                    CancellationToken.None)
+                .ConfigureAwait(false);
         }
 
         return (stateManager, provider, eventBus);

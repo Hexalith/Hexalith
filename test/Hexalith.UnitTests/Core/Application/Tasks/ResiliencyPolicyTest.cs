@@ -17,7 +17,7 @@ using Hexalith.TestMocks;
 public class ResiliencyPolicyTest
 {
     [Fact]
-    public void Data_contract_serialize_seserialize_should_return_same_value()
+    public void DataContractSerializeSeserializeShouldReturnSameValue()
     {
         // Serialize resiliency policy
         ResiliencyPolicy policy = GetTestPolicy();
@@ -25,7 +25,7 @@ public class ResiliencyPolicyTest
     }
 
     [Fact]
-    public void Json_serialize_seserialize_should_return_same_value()
+    public void JsonSerializeSeserializeShouldReturnSameValue()
     {
         // Serialize resiliency policy
         ResiliencyPolicy policy = GetTestPolicy();
@@ -36,7 +36,7 @@ public class ResiliencyPolicyTest
     }
 
     [Fact]
-    public void Loaded_policy_should_be_same_to_settings()
+    public void LoadedPolicyShouldBeSameToSettings()
     {
         OptionsBuilder<ResiliencyTestSettings> builder = new OptionsBuilder<ResiliencyTestSettings>().WithValueFromConfiguration<ResiliencyPolicyTest>();
         ResiliencyTestSettings settings = builder.Build().Value;
@@ -65,7 +65,7 @@ public class ResiliencyPolicyTest
     [InlineData(9, 340 + 545)]
     [InlineData(10, 550 + 885)]
     [InlineData(11, 890 + 1435)]
-    public void Wait_time_for_each_exponential_retry_should_be_expected_value(int sequence, int value)
+    public void WaitTimeForEachExponentialRetryShouldBeExpectedValue(int sequence, int value)
     {
         DateTimeOffset now = DateTimeOffset.UtcNow;
         ResiliencyPolicy policy = new(
@@ -92,7 +92,7 @@ public class ResiliencyPolicyTest
     [InlineData(9, 900 + 200)]
     [InlineData(10, 1000 + 200)]
     [InlineData(11, 1100 + 200)]
-    public void Wait_time_for_each_linear_retry_should_be_expected_value(int sequence, int value)
+    public void WaitTimeForEachLinearRetryShouldBeExpectedValue(int sequence, int value)
     {
         DateTimeOffset now = DateTimeOffset.UtcNow;
         ResiliencyPolicy policy = new(
@@ -107,7 +107,7 @@ public class ResiliencyPolicyTest
     }
 
     [Fact]
-    public void Xml_serialize_seserialize_should_return_same_value()
+    public void XmlSerializeSeserializeShouldReturnSameValue()
     {
         // Serialize resiliency policy
         ResiliencyPolicy policy = GetTestPolicy();

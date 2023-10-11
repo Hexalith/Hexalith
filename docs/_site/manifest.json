@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "C:/Dev/Hexalith/docs",
+  "source_base_path": "C:/Dev/Christofle/LogisticsPartner/Hexalith/docs",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -9,10 +9,10 @@
       "output": {
         ".html": {
           "relative_path": "README.html",
-          "hash": "mLQc0aFezA/VPN2W2F6C0EjR/QvGQeROZuCTQXJ/EiE="
+          "hash": "qrgNpZYfE7qO5xegdr4PeAN2vsqRQysE9AoQQrFqyjI="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -69,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Aggregates.IAggregateStateManager.html",
-          "hash": "odaW5OCehxMRsiRhpoQE1+TbuWVoDXmJkYccYL24RwA="
+          "hash": "4xON+tj3lYcQth/X7sY+fZDD/pEibgwdOYVCIjo6vI4="
         }
       },
       "is_incremental": false,
@@ -285,7 +285,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Commands.CommandHandler-1.html",
-          "hash": "H8LLdpVlxHg+0u4xLFZ39b+V9aNs+Nse/RrHW07uVJA="
+          "hash": "mol21B+3RN1Q9JpDpIvY0na6hmML5hKbp2N91Whl9DY="
         }
       },
       "is_incremental": false,
@@ -442,6 +442,30 @@
         ".html": {
           "relative_path": "api/Hexalith.Application.Commands.html",
           "hash": "EqkIX75hesQLyxl8VOm3PwILUb3D1o3LIwzH1dtW8Lo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Configurations.CommandProcessorSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Configurations.CommandProcessorSettings.html",
+          "hash": "4YPiM5d8koIvyWSY4oq368GTBgESMICLxnDuz++9DiY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Configurations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Configurations.html",
+          "hash": "GVDBF9fRXbXcaR06IgpUgTSW5sY97TR99KVxgyBSK74="
         }
       },
       "is_incremental": false,
@@ -621,7 +645,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Events.DependencyInjectionEventDispatcher.html",
-          "hash": "EsXpcUfIG+rSZZQXW6go84HgAmpgwuuYzfcKJZJbEL0="
+          "hash": "kq8rnnSlpaClSmbXg+MaA12Hr6BDl8j+k7PSHHtFP/0="
         }
       },
       "is_incremental": false,
@@ -1293,7 +1317,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Inventories.Services.IInventoryItemQueryService.html",
-          "hash": "ftOslHuWX8CzUFNMrIYQ44WKIRIMkAFFzRSFxSKTz+Y="
+          "hash": "EwMTiOfrEITgDAuHot3Ma5rn5+RCWSP4goP4EkHvhS4="
         }
       },
       "is_incremental": false,
@@ -1317,7 +1341,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Inventories.Services.html",
-          "hash": "K0EEmDHmKPXyNT42Da6A+AIEHAA670K7/0NYX584Xtw="
+          "hash": "I4niVxytXVNrrHMjdCjfaJFYMCwRPlmUcnP8nrmo8NY="
         }
       },
       "is_incremental": false,
@@ -1589,11 +1613,35 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToDirectHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToDirectHandler.html",
+          "hash": "BymiBnUf5E1iTWTY9z20sM7Thi9aQPfeywrz6CXcvUQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToIndirectHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToIndirectHandler.html",
+          "hash": "l6JukI6ngTMaWmgFbldgG0jouD96rptfPjU9r6HwtTk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Hexalith.Application.Parties.CommandHandlers.yml",
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Parties.CommandHandlers.html",
-          "hash": "1fnKeg+YhzNs+psg8auGyDItitZ5gkPWJacpFk6qdLQ="
+          "hash": "/L0mu8hSlQ6neT7FwmK3Xy51IymJG9VZsXemc7UNsfI="
         }
       },
       "is_incremental": false,
@@ -1617,7 +1665,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Parties.Commands.CustomerCommand.html",
-          "hash": "yurMjWsoHOuWhb/VqjT1u+a3YHltX8mEwaRYkqm70PU="
+          "hash": "nGpXe8X5JwtOMDJX4yTd/8ux00dCdsEg/TOTNhhF6Io="
         }
       },
       "is_incremental": false,
@@ -1637,11 +1685,35 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDeliveryToDirect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDeliveryToDirect.html",
+          "hash": "X4L122Ky45Tl9JY9MX1DWVNIcmcm9NOTedys2NtTYuM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDeliveryToIndirect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDeliveryToIndirect.html",
+          "hash": "SJYkdOrV97z+1+Av2AS9MIwfACjaMotgQQ6q8/XrLIQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Hexalith.Application.Parties.Commands.yml",
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Parties.Commands.html",
-          "hash": "RR1GgAHnc87gRuqQSRYX/+ngE06Z32YfNqkbhtqSymA="
+          "hash": "eNjmTWTE4zslu0gqEm36jHneh7/8EdLWuEy6LDQhN8E="
         }
       },
       "is_incremental": false,
@@ -1677,7 +1749,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Parties.Services.ICustomerQueryService.html",
-          "hash": "KBuOleyH4e6F7FdbCgl/h3igH1HvVNHxQilT7G0cCO4="
+          "hash": "ypAePFd4ia8TUEgWqSATD4og23mwcXONF++EbnCVwCQ="
         }
       },
       "is_incremental": false,
@@ -1845,7 +1917,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.States.AggregateStateManager.html",
-          "hash": "NuZ8+MM2zjISzCQKTIQTnPqM7DspKNDY2DtoqnyDAv0="
+          "hash": "4udrJEFSsndYMx7kLLuw5bAnMvr3cLtc3aYzBkdNo5I="
         }
       },
       "is_incremental": false,
@@ -2177,6 +2249,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Tasks.IRetryCallbackManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Tasks.IRetryCallbackManager.html",
+          "hash": "Gl4sjWQGE1cHCNC2kkkPRUHkUSUAW+lnSgBxomsfnTo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Hexalith.Application.Tasks.ITaskProcessor.yml",
       "output": {
         ".html": {
@@ -2205,7 +2289,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Tasks.ResiliencyPolicy.html",
-          "hash": "d8ZFtbOm29+WMcui77ev0Ikja8uoCQ/KzYGYakpbQVA="
+          "hash": "2ydhCA/l4AQpy8SnLiPcBfQD3Q1AYS2bCzWIHERmOsI="
         }
       },
       "is_incremental": false,
@@ -2217,7 +2301,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Tasks.ResilientCommandProcessor.html",
-          "hash": "fuzA4nEwYyzN4YO0qaJ2P1OsAoPcibRk24NhZt8Ah3Y="
+          "hash": "AGYGmgSg4+adbazmoRNcXBSh7MCPa2u7oX6puO5+yOU="
         }
       },
       "is_incremental": false,
@@ -2301,7 +2385,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Tasks.html",
-          "hash": "B3wWyZWJ8x2ucwVcQQg0jSaMdVv3EGehVRSt8AY90gM="
+          "hash": "ah8GD0pI/9IcWFVp9I46wdwxIX+7/lGHxBSzA64a/YU="
         }
       },
       "is_incremental": false,
@@ -2433,7 +2517,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.Aggregates.Customer.html",
-          "hash": "yyvOkxqNnUpVmXH5XJDhwXjjvceCQccdkrIhfLuIzG8="
+          "hash": "XTQY4wjj6eNtWG+QPe05US+UGbBT71RsJfrjTS28JHM="
         }
       },
       "is_incremental": false,
@@ -2661,7 +2745,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.Events.CustomerEvent.html",
-          "hash": "hubT77PhZxC77yS5+lvHR7yHNl52/TOThpibh1MRLVY="
+          "hash": "B6UeiqOi523/cgozZ7H3tHjYbJKtwiR63bFE5whEJw8="
         }
       },
       "is_incremental": false,
@@ -2673,7 +2757,31 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.Events.CustomerInformationChanged.html",
-          "hash": "7bdpf+UrLaRce4xhBtZK0LXF2tXsV2c7ynZ3Qn9T0Qs="
+          "hash": "T+YuCKYIyCAfCzw+4DW//G9Xa+ZMdPDZt4m94Lg4Fr8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToDirect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToDirect.html",
+          "hash": "2CuoyZ8stiXX7T8axS3FzE6pkjrfF9FoheJqMud7z+M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToIndirect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToIndirect.html",
+          "hash": "rltLtToo0ShICVhnnwH09pMRaWPlzsp5U2oTJoUtU+g="
         }
       },
       "is_incremental": false,
@@ -2877,7 +2985,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.Events.html",
-          "hash": "zv2/W00L8A1pr71enewulGZa0tPIs8d/OSixnxEXLwk="
+          "hash": "KI2JMCG2/hzQivwyYVbfmld1dzW7c6z8GxR8BFdCiJw="
         }
       },
       "is_incremental": false,
@@ -3713,11 +3821,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.ActorConstants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.ActorConstants.html",
+          "hash": "nsakSI9h/abmPb43P9J0kwJwWMY2Wb47GKKA59xEELI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus-3.yml",
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus-3.html",
-          "hash": "W33QbevvXSP6XklzlkEMy1ptTGC1dL7sJsPF752TWls="
+          "hash": "4Q31QIZCJ6E+NAd9ltcbUoIG8dFMG6UBycAD1ZAGkUM="
         }
       },
       "is_incremental": false,
@@ -3801,7 +3921,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.AggregateExternalReferenceAggregateActor.html",
-          "hash": "+k7keTYtx3Xe6jNTAsIomhAZpOjxsA6vWl4q4SR4ZDU="
+          "hash": "jhzleDLJuFLqeFssFHxX0etbpsfqFBSZVTdgJ4JFgdg="
         }
       },
       "is_incremental": false,
@@ -3813,7 +3933,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.ExternalSystemReferenceAggregateActor.html",
-          "hash": "QOBzSFqpMrsNtxPNcwrOkBSOn4qKD+79r60ZEDicptw="
+          "hash": "yJH9QqJ3zODulgux2FUy10d+sH1PtKQ8Ljr4HnpSLkI="
         }
       },
       "is_incremental": false,
@@ -3861,7 +3981,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Configurations.AggregateExternalReferenceSettings.html",
-          "hash": "FLYC5LpdXGdz3NwtUSCe0to8h2J5xnbq5H7bsPkEf5E="
+          "hash": "04xZ4nSa57cSd/ZRZjrN1szIQwpKfel556mcvv3tB+o="
         }
       },
       "is_incremental": false,
@@ -3873,7 +3993,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Configurations.ExternalSystemReferenceSettings.html",
-          "hash": "w+BGrKyZJuMUOu26el5Ce4Q+jUR4TLg9p97NK2OpYSs="
+          "hash": "GhKs4JJJOsc2ls+AJICOKbj+ZosDIIVtaqLDGoMUFvE="
         }
       },
       "is_incremental": false,
@@ -3897,7 +4017,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsHelper.html",
-          "hash": "rNj47Z6fU4p5olP0Y/RjBg4VY22EkCIilJ3aePtFOC8="
+          "hash": "wsMrGEzUmUnxMv+KI3tVet/NmgUaULDtwFwzOYBOheY="
         }
       },
       "is_incremental": false,
@@ -3993,7 +4113,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Handlers.ICommandProcessorActor.html",
-          "hash": "j67XWRBu/E4v8GqWKypCpd4BYBiKD+TkUpV2zgfyBn0="
+          "hash": "r/qD1ywond4G4G7T7+uaFs97d43NmcO3ED8nEXVfAGQ="
         }
       },
       "is_incremental": false,
@@ -4017,7 +4137,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.html",
-          "hash": "qaAKx7+oLV9g+BolFNtiW1+gYzRVlmdvFL1CGwrWXX8="
+          "hash": "WtRkIrLlg68pYtmdtPXQ46Ii2Uq1cLYtd8ueCajkHsc="
         }
       },
       "is_incremental": false,
@@ -4077,7 +4197,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Inventories.Actors.InventoryItemAggregateActor.html",
-          "hash": "VLsUgP/9KyNAuYQYO3d0eNjVZf644jaL55z7TIVDcis="
+          "hash": "tttuQEMFDiKkw7SEbqTSHYerV/22Psxc+qPiNe5uMNE="
         }
       },
       "is_incremental": false,
@@ -4089,7 +4209,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Inventories.Actors.InventoryItemStockAggregateActor.html",
-          "hash": "qKq7Ipdx4axSqOXuyWLqOfvRlW3hkxif/f5X4ypSzE4="
+          "hash": "RTtcrAJ+Q/DWckP6LQmnIP5APdbW42QvqwmslO4qlyo="
         }
       },
       "is_incremental": false,
@@ -4113,7 +4233,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Inventories.Configurations.InventoryItemSettings.html",
-          "hash": "cq8bHiNA/NVKn5eKlR9Qwe/K42nmfoRGbvKzO+W0zPI="
+          "hash": "Pmk1H3P88k0E8ZtLpoq2B4VVxE7ynnQARi92NwUqe8A="
         }
       },
       "is_incremental": false,
@@ -4125,7 +4245,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Inventories.Configurations.InventoryItemStockSettings.html",
-          "hash": "Qkx5+cOIxAOs54k62wFmVcUwqkbX5UVMjPQCt5PkV7o="
+          "hash": "qUmdug8Ijm3beBCigEYYkNmumJUEUWfctn93OSR2ZZs="
         }
       },
       "is_incremental": false,
@@ -4181,6 +4301,114 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Parties.Actors.CustomerAggregateActor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Parties.Actors.CustomerAggregateActor.html",
+          "hash": "Xbc0YlL6WEWq3T9mui387df/QFs/V+qQsruYeWJKovQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Parties.Actors.ICustomerAggregateActor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Parties.Actors.ICustomerAggregateActor.html",
+          "hash": "m6Ct5ezJhzWZK41tL6/mfZlqixNsHno44/JjCAz8pTk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Parties.Actors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Parties.Actors.html",
+          "hash": "kGO7FjZ5TC+iUYNZO+BQy9ORJ3eR7GiwS1rzW1zG3Y4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Parties.Configurations.CustomerSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Parties.Configurations.CustomerSettings.html",
+          "hash": "UmHPZUNiselVB7IMw2UMgaiA/c5v/4R+cETNDdcbyLA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Parties.Configurations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Parties.Configurations.html",
+          "hash": "dtn0Qn75Q0A+Z8Jsbdl7bggX41zQhn6Je8Y47NzSTA8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesHelper.html",
+          "hash": "380fNhXb4+rInHGCCRWc1HA955keUEoa+03HgCzDdCU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.html",
+          "hash": "URC42St3VRwBXcwblvbXjfKdAexVpsGunqhjGWzLF1U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Parties.Services.CustomerActorService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Parties.Services.CustomerActorService.html",
+          "hash": "4UKeirYwX4XNDW8LSnKiSdAQGOgTsouIXybIh47DgBw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Parties.Services.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Parties.Services.html",
+          "hash": "6COuF/buT+bF/fQRmIb9wXiWecC/o4EkrlFoe7g9r78="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.States.ActorStateStoreProvider.yml",
       "output": {
         ".html": {
@@ -4217,11 +4445,47 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Tasks.DaprRetryCallbackManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Tasks.DaprRetryCallbackManager.html",
+          "hash": "NC8p4j4dYjPKq6iNurf737RufQY24IktMaw5OK6SpcE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Tasks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Tasks.html",
+          "hash": "m31wk54G9lkV2fN+GQqVeCeSbxlzvtO86PLOGNOluIk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.html",
+          "hash": "6dFU1fGQiTahGWX+EopgfTvKQdaTHVOANVwG0Kpbbfo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase.yml",
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase.html",
-          "hash": "4RcXRQVq2QqjsFl54cTj8QoZmOvqsHa1Y45Vtqt7M8Q="
+          "hash": "dJIyqOJDCIH3WqpoIJ2YU92wx9FxfOHLqLEt0B1B1qA="
         }
       },
       "is_incremental": false,
@@ -4257,7 +4521,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient-1.html",
-          "hash": "XhgCo8fzWL9XLiBqoCM1pKA4V9A5YUGZUoCtFIA8B7o="
+          "hash": "iEhBcXD6pNWs8pLrV/xVgfWwusba0j/BYaBKXJrvgxY="
         }
       },
       "is_incremental": false,
@@ -4317,7 +4581,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient-1.html",
-          "hash": "AslDzXeQoYOqVW3oAYLPqZ9Es9jfAWQzfU41GVlPGgY="
+          "hash": "73d882bcpxARN4unpSn7mWJKZCMv00iBhqbhtj6wmgQ="
         }
       },
       "is_incremental": false,
@@ -4389,7 +4653,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.Dynamics365FinanceIntegrationEventProcessor.html",
-          "hash": "j/GNuGaLEOsDs+BLKIL0v8gwy8Tk/ykDDeZNOjHAoUQ="
+          "hash": "Fi3jS8WQGj2zcrTZVFfQOm8mn6qZTW+bk2pFY80w8JI="
         }
       },
       "is_incremental": false,
@@ -4709,11 +4973,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerChangedBusinessEvent.yml",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChanged.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerChangedBusinessEvent.html",
-          "hash": "husZN6jL78t7lkXd/AmnNFK0BD5qfyjwa9ysx94yDHs="
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChanged.html",
+          "hash": "b3yCuPQ809uvrh50uZX11AjLS4ssC9mbC+tquJFENYs="
         }
       },
       "is_incremental": false,
@@ -4721,11 +4985,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerChangedBusinessEventHandler.yml",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChangedHandler.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerChangedBusinessEventHandler.html",
-          "hash": "Z9KdJr4fdwC1G2kCQj7FE5niIv6pIv6AI/CG83uDyus="
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChangedHandler.html",
+          "hash": "dYxXsWmsgJk0peXGgr9FPa3CTYzUUNn7ZC0NbMdCW6w="
         }
       },
       "is_incremental": false,
@@ -4733,11 +4997,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerChangedBusinessEventValidator.yml",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChangedValidator.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerChangedBusinessEventValidator.html",
-          "hash": "wWqRKL2ltmrHJdaU+Jcjvna841Qz/OHaiApePBwHPNM="
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChangedValidator.html",
+          "hash": "mee5cwcLJ8T6MA8lQwynAGsHhTQ7JKXs9KoyYozl9tY="
         }
       },
       "is_incremental": false,
@@ -4745,11 +5009,47 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerInformationBusinessEvent.yml",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationBusinessEvent.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerInformationBusinessEvent.html",
-          "hash": "h2QcEGSrGdmfg6XoKbNqAXWOrYRARtgx5pTKOG9PJ6c="
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationBusinessEvent.html",
+          "hash": "1rw1FsEywkjGxgeds+wtsdIQxYc6tp6dy39c1h/53fw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegistered.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegistered.html",
+          "hash": "rh4uDH2KhrYZ4qXHGuKOL8pyiagacsiMIobjnRZzraY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegisteredHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegisteredHandler.html",
+          "hash": "qVa4D9FsATaO8cScO4XyCD8CfLEQ9+o88wjbPSse7f4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegisteredValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegisteredValidator.html",
+          "hash": "askWaJwvXf9VUYDVFKrRJbqqxGrbVmvMfVjhcdC2RPA="
         }
       },
       "is_incremental": false,
@@ -4761,43 +5061,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerInformationBusinessEventHandler-1.html",
-          "hash": "2LUH7ZTBUzxWN83JFUTCSKSdjg1aI5gvHbkTAR2+DXw="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerRegisteredBusinessEvent.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerRegisteredBusinessEvent.html",
-          "hash": "wXbyOl7fF/WT76PJPUcUITtBkTUHC+IE/oXIpommFKA="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerRegisteredBusinessEventHandler.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerRegisteredBusinessEventHandler.html",
-          "hash": "S9cJUN8vBZT5Koi7Y2BbJjuUCDyfSie1iC96aBsxw9g="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerRegisteredBusinessEventValidator.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerRegisteredBusinessEventValidator.html",
-          "hash": "lJAmroAtEw0zhunrCXwTxdP/twNowwU47+BsdGQ83iY="
+          "hash": "ViYY4WkulIwAS9aWLNqG0Tbko/pE0DaPCZaLGXTaUu4="
         }
       },
       "is_incremental": false,
@@ -4809,7 +5073,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.html",
-          "hash": "FFzZ8bTIDAa3+RNlYIdU/k8ImKUXy0BnyZtPAkZTUH4="
+          "hash": "bxZI0JCqnYPYaoiKqF4CtALVirBtlFaUdO72LnKoECU="
         }
       },
       "is_incremental": false,
@@ -4821,7 +5085,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerByAccountFilter.html",
-          "hash": "Em7zb5/SSU3F5J0kzHYc3mvoClB0xTv/RdMmFphMrlI="
+          "hash": "naD1SN9/lJwuwTY5dM5LjmDE7zNs3lr9KTEZNZbcUDs="
         }
       },
       "is_incremental": false,
@@ -4833,7 +5097,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerExternalCode.html",
-          "hash": "suTkwjaXEzBID4W+8SG/WJm1FTc2LIPUJpzH+fdViHg="
+          "hash": "4H3QWsErgcVzzkc5iVssqZK0bvtxwEXO86wOZ2ckmSI="
         }
       },
       "is_incremental": false,
@@ -4845,7 +5109,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerExternalCodeByAccountFilter.html",
-          "hash": "Gyp2sPt4UWtmquz02HCgqGHTsAjiqxzBzDnxr4SSg0E="
+          "hash": "s8cLx+GxubBN0xOILIa9mcf4GOpKTfamUfDWcioRnSY="
         }
       },
       "is_incremental": false,
@@ -4857,7 +5121,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerExternalCodeFilter.html",
-          "hash": "UHxq5JUrL6Z6hdzHjfJACh4/BsQbZqo4b7wMvkO5kDo="
+          "hash": "lOd750PP4H0wRqIFLuVshL7gNA1g/BEUWXCkIiGREJo="
         }
       },
       "is_incremental": false,
@@ -4869,7 +5133,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3.html",
-          "hash": "BFr0vDI79EKY4CzRnXz2lcfurojYu8S5zNOjR0jDrrg="
+          "hash": "ZRHo5erRzDVwPUvVmHvIThOanGA4cXfcSFPxYMBc6Fo="
         }
       },
       "is_incremental": false,
@@ -4881,7 +5145,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomersV3Helper.html",
-          "hash": "neOSbiywH94XQiSievuqASEBTAdjKK7TaJipi9vozCQ="
+          "hash": "StFf9n452omPvdNH+LEs4ojS7hwEpop04uIxCOBMEqk="
         }
       },
       "is_incremental": false,
@@ -4930,6 +5194,30 @@
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.html",
           "hash": "wl8iC/sko9I8rZ7tCEAxgptI0BJPh7nNx68IOdEV4O4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.html",
+          "hash": "ljuhdk1+GtY7fDMDs2iXRLCxCf7+oor94+v855of5ws="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.html",
+          "hash": "6VBA51UwyNkVV1JeVnUuOiH4zWPqHLBdGb68CiCk1rI="
         }
       },
       "is_incremental": false,
@@ -5517,7 +5805,7 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "gfU/J6hSC5WUHZ0KHHG52HtruM7IYb7PyKmpGi3a3/s="
+          "hash": "LSK1SxnJSDlDz48mHC9B5YqQ3z5V0T8q2HhtpNHpD8w="
         }
       },
       "is_incremental": false,
@@ -5529,7 +5817,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "pQiqP/yHWtuTtXX5f3VhA7f5aVAEj6K3Nk817Y/488Y="
+          "hash": "0+7AWpF9DopnsykHbjGYbrefCqF2udBkacxLzNNtrW0="
         }
       },
       "is_incremental": false,
@@ -5541,10 +5829,10 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "XREAr6iHtuka+aO7c3lTrh90rt0rybqw859u1tetgNM="
+          "hash": "ra9uKk0pe6ipEHpfKeTuuXK03QUOVfOJEBvKlekYKU0="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -5565,10 +5853,10 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "vsW9ZvNJ7sOSf2pjIjuOSwvq6ulmUIdFPHc7lPEfC4Y="
+          "hash": "JeH9Toqwy0atJWqIYN7lda90ymNThA9mqKfx7+H/EUY="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -5587,25 +5875,23 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": false,
-        "details": "Disable incremental build by force rebuild option.",
+        "can_incremental": true,
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0,
-        "full_build_reason_code": "ForceRebuild"
+        "skipped_file_count": 0
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 4,
-          "skipped_file_count": 0
+          "skipped_file_count": 4
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 458,
-          "skipped_file_count": 0
+          "total_file_count": 482,
+          "skipped_file_count": 81
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
@@ -5618,8 +5904,8 @@
     },
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0

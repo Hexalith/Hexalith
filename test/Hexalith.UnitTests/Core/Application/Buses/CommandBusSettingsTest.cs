@@ -14,14 +14,14 @@ using Hexalith.TestMocks;
 public class CommandBusSettingsTest
 {
     [Fact]
-    public void Check_default_name_is_not_null_or_empty()
+    public void CheckDefaultNameIsNotNullOrEmpty()
     {
         string name = new CommandBusSettings().Name;
         _ = name.Should().NotBeNullOrEmpty();
     }
 
     [Fact]
-    public void Check_default_values_validation()
+    public void CheckDefaultValuesValidation()
     {
         CommandBusSettingsValidator validator = new();
         FluentValidation.Results.ValidationResult result = validator.Validate(new CommandBusSettings());
@@ -29,7 +29,7 @@ public class CommandBusSettingsTest
     }
 
     [Fact]
-    public void Check_load_from_configuration_has_correct_value()
+    public void CheckLoadFromConfigurationHasCorrectValue()
     {
         OptionsBuilder<CommandBusSettings> settings = new OptionsBuilder<CommandBusSettings>()
             .WithValueFromConfiguration<CommandBusSettingsTest>();
@@ -39,7 +39,7 @@ public class CommandBusSettingsTest
     }
 
     [Fact]
-    public void Validation_of_incorrect_values_should_fail()
+    public void ValidationOfIncorrectValuesShouldFail()
     {
         CommandBusSettingsValidator validator = new();
         FluentValidation.Results.ValidationResult result = validator.Validate(new CommandBusSettings() { Name = string.Empty });

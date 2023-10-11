@@ -15,7 +15,7 @@ using Hexalith.Application.Tasks;
 public class TaskProcessingHistoryTest
 {
     [Fact]
-    public void Cancelled_history_date_should_be_now()
+    public void CancelledHistoryDateShouldBeNow()
     {
         TaskProcessingHistory history = new TaskProcessingHistory(DateTimeOffset.UtcNow, null, null, null, null)
             .Canceled();
@@ -27,7 +27,7 @@ public class TaskProcessingHistoryTest
     }
 
     [Fact]
-    public void Completed_history_date_should_be_now()
+    public void CompletedHistoryDateShouldBeNow()
     {
         TaskProcessingHistory history = new TaskProcessingHistory(DateTimeOffset.UtcNow, null, null, null, null)
             .Completed();
@@ -39,7 +39,7 @@ public class TaskProcessingHistoryTest
     }
 
     [Fact]
-    public void Created_history_date_should_be_now()
+    public void CreatedHistoryDateShouldBeNow()
     {
         TaskProcessingHistory history = new(DateTimeOffset.UtcNow, null, null, null, null);
         _ = history.CreatedDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromMilliseconds(100));
@@ -50,7 +50,7 @@ public class TaskProcessingHistoryTest
     }
 
     [Fact]
-    public void Started_history_date_should_be_now()
+    public void StartedHistoryDateShouldBeNow()
     {
         TaskProcessingHistory history = new TaskProcessingHistory(DateTimeOffset.UtcNow, null, null, null, null)
             .ProcessingStarted();
@@ -62,7 +62,7 @@ public class TaskProcessingHistoryTest
     }
 
     [Fact]
-    public void Suspended_history_date_should_be_now()
+    public void SuspendedHistoryDateShouldBeNow()
     {
         TaskProcessingHistory history = new TaskProcessingHistory(DateTimeOffset.UtcNow, null, null, null, null)
             .Suspended();

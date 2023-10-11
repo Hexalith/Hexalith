@@ -17,14 +17,14 @@ using Hexalith.Extensions.Serialization;
 public class BaseCommandTest
 {
     [Fact]
-    public void Data_contract_serialize_and_deserialize_should_return_same_object()
+    public void DataContractSerializeAndDeserializeShouldReturnSameObject()
     {
         DummyCommand1 original = new("IB2343213FR", 1256);
         _ = original.Should().BeDataContractSerializable();
     }
 
     [Fact]
-    public void Polymorphic_serialize_and_deserialize_should_return_same_object()
+    public void PolymorphicSerializeAndDeserializeShouldReturnSameObject()
     {
         DummyCommand1 original = new("IB2343213FR", 655463);
         string json = JsonSerializer.Serialize<BaseCommand>(original);
@@ -35,7 +35,7 @@ public class BaseCommandTest
     }
 
     [Fact]
-    public void Polymorphic_serialize_first_field_should_be_type()
+    public void PolymorphicSerializeFirstFieldShouldBeType()
     {
         DummyCommand1 original = new("IB2343213FR", 655463);
         string json = JsonSerializer.Serialize<BaseCommand>(original);
@@ -46,7 +46,7 @@ public class BaseCommandTest
     }
 
     [Fact]
-    public void Serialize_and_deserialize_should_return_same_object()
+    public void SerializeAndDeserializeShouldReturnSameObject()
     {
         DummyCommand1 original = new("IB2343213FR", 1256);
         string json = JsonSerializer.Serialize(original);
