@@ -9,10 +9,10 @@
       "output": {
         ".html": {
           "relative_path": "README.html",
-          "hash": "qrgNpZYfE7qO5xegdr4PeAN2vsqRQysE9AoQQrFqyjI="
+          "hash": "mLQc0aFezA/VPN2W2F6C0EjR/QvGQeROZuCTQXJ/EiE="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -5805,7 +5805,7 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "LSK1SxnJSDlDz48mHC9B5YqQ3z5V0T8q2HhtpNHpD8w="
+          "hash": "gfU/J6hSC5WUHZ0KHHG52HtruM7IYb7PyKmpGi3a3/s="
         }
       },
       "is_incremental": false,
@@ -5829,10 +5829,10 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "ra9uKk0pe6ipEHpfKeTuuXK03QUOVfOJEBvKlekYKU0="
+          "hash": "XREAr6iHtuka+aO7c3lTrh90rt0rybqw859u1tetgNM="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -5853,10 +5853,10 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "JeH9Toqwy0atJWqIYN7lda90ymNThA9mqKfx7+H/EUY="
+          "hash": "vsW9ZvNJ7sOSf2pjIjuOSwvq6ulmUIdFPHc7lPEfC4Y="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -5875,23 +5875,25 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": true,
+        "can_incremental": false,
+        "details": "Disable incremental build by force rebuild option.",
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0
+        "skipped_file_count": 0,
+        "full_build_reason_code": "ForceRebuild"
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 4,
-          "skipped_file_count": 4
+          "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 482,
-          "skipped_file_count": 81
+          "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
@@ -5904,8 +5906,8 @@
     },
     {
       "status": {
-        "can_incremental": true,
-        "details": "Can support incremental post processing.",
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0
