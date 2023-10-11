@@ -25,11 +25,6 @@ using Microsoft.Extensions.Logging;
 public class DependencyInjectionEventDispatcher : IIntegrationEventDispatcher
 {
     /// <summary>
-    /// The logger.
-    /// </summary>
-    private readonly ILogger _logger;
-
-    /// <summary>
     /// The service provider.
     /// </summary>
     private readonly IServiceProvider _serviceProvider;
@@ -44,13 +39,19 @@ public class DependencyInjectionEventDispatcher : IIntegrationEventDispatcher
         ArgumentNullException.ThrowIfNull(serviceProvider);
         ArgumentNullException.ThrowIfNull(logger);
         _serviceProvider = serviceProvider;
-        _logger = logger;
+        Logger = logger;
     }
+
+    /// <summary>
+    /// Gets the logger.
+    /// </summary>
+    /// <value>The logger.</value>
+    protected ILogger Logger { get; }
 
     /// <inheritdoc/>
     public async Task<IEnumerable<IEnumerable<BaseCommand>>> ApplyAsync(IEvent @event, CancellationToken cancellationToken)
     {
-        _logger.LogDebug("Dispatching event {EventType} with aggregate id {AggregateName}-{AggregateId}", @event.TypeName, @event.AggregateName, @event.AggregateId);
+        Logger.LogDebug("Dispatching event {EventType} with aggregate id {AggregateName}-{AggregateId}", @event.TypeName, @event.AggregateName, @event.AggregateId);
         return await Task.WhenAll(
             GetHandlers(@event)
                 .Select(p => p.ApplyAsync(@event, cancellationToken)));

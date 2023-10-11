@@ -6,7 +6,7 @@
 // Last Modified By : jpiquot
 // Last Modified On : 02-26-2023
 // ***********************************************************************
-// <copyright file="FFYCustomerRegisteredBusinessEventValidator.cs" company="Fiveforty SAS Paris France">
+// <copyright file="Dynamics365FinanceCustomerChangedValidator.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -19,15 +19,15 @@ using FluentValidation;
 
 /// <summary>
 /// Class FFYBspkCustomerValidator.
-/// Implements the <see cref="AbstractValidator{FFYCustomerRegisteredBusinessEvent}" />.
+/// Implements the <see cref="AbstractValidator{FFYCustomerChangedBusinessEvent}" />.
 /// </summary>
-/// <seealso cref="AbstractValidator{FFYCustomerRegisteredBusinessEvent}" />
-public class FFYCustomerRegisteredBusinessEventValidator : AbstractValidator<FFYCustomerRegisteredBusinessEvent>
+/// <seealso cref="AbstractValidator{FFYCustomerChangedBusinessEvent}" />
+public class Dynamics365FinanceCustomerChangedValidator : AbstractValidator<Dynamics365FinanceCustomerChanged>
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="FFYCustomerRegisteredBusinessEventValidator"/> class.
+    /// Initializes a new instance of the <see cref="Dynamics365FinanceCustomerChangedValidator"/> class.
     /// </summary>
-    public FFYCustomerRegisteredBusinessEventValidator()
+    public Dynamics365FinanceCustomerChangedValidator()
     {
         _ = RuleFor(x => x.BusinessEventLegalEntity)
            .NotEmpty();

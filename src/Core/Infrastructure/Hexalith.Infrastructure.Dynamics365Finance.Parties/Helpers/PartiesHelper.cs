@@ -15,8 +15,12 @@
 // ***********************************************************************
 namespace Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers;
 
+using FluentValidation;
+
 using Hexalith.Application.Events;
+using Hexalith.Infrastructure.Dynamics365Finance.Client;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents;
+using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -33,7 +37,11 @@ public static class PartiesHelper
     public static IServiceCollection AddDynamics365FinanceCustomers(this IServiceCollection services)
     {
         return services
-            .AddSingleton<IntegrationEventHandler<FFYCustomerChangedBusinessEvent>, FFYCustomerChangedBusinessHandler>()
-            .AddSingleton<IntegrationEventHandler<FFYCustomerRegisteredBusinessEvent>, FFYCustomerRegisteredBusinessHandler>();
+            .AddSingleton<IDynamics365FinanceClient<CustomerExternalCode>, Dynamics365FinanceClient<CustomerExternalCode>>()
+            .AddSingleton<IDynamics365FinanceClient<CustomerV3>, Dynamics365FinanceClient<CustomerV3>>()
+            .AddSingleton<IValidator<Dynamics365FinanceCustomerChanged>, Dynamics365FinanceCustomerChangedValidator>()
+            .AddSingleton<IValidator<Dynamics365FinanceCustomerRegistered>, Dynamics365FinanceCustomerRegisteredValidator>()
+            .AddSingleton<IntegrationEventHandler<Dynamics365FinanceCustomerChanged>, Dynamics365FinanceCustomerChangedHandler>()
+            .AddSingleton<IntegrationEventHandler<Dynamics365FinanceCustomerRegistered>, Dynamics365FinanceCustomerRegisteredHandler>();
     }
 }

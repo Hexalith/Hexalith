@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 08-28-2023
 // ***********************************************************************
-// <copyright file="FFYCustomerInformationBusinessEvent.cs" company="Fiveforty SAS Paris France">
+// <copyright file="Dynamics365FinanceCustomerInformationBusinessEvent.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -27,7 +27,7 @@ using Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents;
 /// This is the base class for logistics partner catalog events from Dynamics 365 for finance and operations.
 /// </summary>
 [DataContract]
-public abstract class FFYCustomerInformationBusinessEvent : Dynamics365BusinessEventBase
+public abstract class Dynamics365FinanceCustomerInformationBusinessEvent : Dynamics365BusinessEventBase
 {
     /// <summary>
     /// Gets or sets the account.
@@ -37,10 +37,10 @@ public abstract class FFYCustomerInformationBusinessEvent : Dynamics365BusinessE
     public string? Account { get; set; }
 
     /// <inheritdoc/>
-    public override string AggregateId => "FinOps-" + BusinessEventLegalEntity + "-" + Account;
+    public override string AggregateId => Customer.GetAggregateId(BusinessEventLegalEntity ?? string.Empty, Account ?? string.Empty);
 
     /// <inheritdoc/>
-    public override string AggregateName => nameof(Customer);
+    public override string AggregateName => Customer.GetAggregateName();
 
     /// <summary>
     /// Gets or sets the commission sales group identifier.

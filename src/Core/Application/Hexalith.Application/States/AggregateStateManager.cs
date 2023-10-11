@@ -58,6 +58,11 @@ public class AggregateStateManager : IAggregateStateManager
     private readonly IEventBus _eventBus;
 
     /// <summary>
+    /// The logger.
+    /// </summary>
+    private readonly ILogger<AggregateStateManager> _logger;
+
+    /// <summary>
     /// The notification bus.
     /// </summary>
     private readonly INotificationBus _notificationBus;
@@ -69,18 +74,22 @@ public class AggregateStateManager : IAggregateStateManager
     /// <param name="eventBus">The event bus.</param>
     /// <param name="notificationBus">The notification bus.</param>
     /// <param name="dateTimeService">The date time service.</param>
-    /// <exception cref="System.ArgumentNullException">Null arguments.</exception>
+    /// <param name="logger">The logger.</param>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
     public AggregateStateManager(
         ICommandDispatcher dispatcher,
         IEventBus eventBus,
         INotificationBus notificationBus,
-        IDateTimeService dateTimeService)
+        IDateTimeService dateTimeService,
+        ILogger<AggregateStateManager> logger)
     {
         ArgumentNullException.ThrowIfNull(dispatcher);
         ArgumentNullException.ThrowIfNull(eventBus);
         ArgumentNullException.ThrowIfNull(dateTimeService);
         ArgumentNullException.ThrowIfNull(notificationBus);
+        ArgumentNullException.ThrowIfNull(logger);
         _dateTimeService = dateTimeService;
+        _logger = logger;
         _dispatcher = dispatcher;
         _eventBus = eventBus;
         _notificationBus = notificationBus;
@@ -288,7 +297,8 @@ public class AggregateStateManager : IAggregateStateManager
             ResilientCommandProcessor processor = new(
                 resiliencyPolicy,
                 _dispatcher,
-                stateProvider);
+                stateProvider,
+                _logger);
 
             (TimeSpan? retry, IEnumerable<BaseMessage> messages) = await processor.ProcessAsync(nextCommand.ToInvariantString(), command.Message, cancellationToken);
             BaseEvent[] events = messages.OfType<BaseEvent>().ToArray();

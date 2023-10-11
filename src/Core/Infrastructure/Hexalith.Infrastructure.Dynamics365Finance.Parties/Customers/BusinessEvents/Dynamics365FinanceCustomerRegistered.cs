@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 08-28-2023
 // ***********************************************************************
-// <copyright file="FFYCustomerRegisteredBusinessEvent.cs" company="Fiveforty SAS Paris France">
+// <copyright file="Dynamics365FinanceCustomerRegistered.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -22,6 +22,8 @@ using System.Runtime.Serialization;
 /// This is the base class for logistics partner catalog events from Dynamics 365 for finance and operations.
 /// </summary>
 [DataContract]
-public class FFYCustomerRegisteredBusinessEvent : FFYCustomerInformationBusinessEvent
+public class Dynamics365FinanceCustomerRegistered : Dynamics365FinanceCustomerInformationBusinessEvent
 {
+    /// <inheritdoc/>
+    protected override string DefaultTypeName() => "FFYCustomerRegisteredBusinessEvent";
 }

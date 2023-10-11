@@ -31,7 +31,7 @@ using Microsoft.Extensions.Logging;
 /// Implements the <see cref="IRetryCallbackManager" />.
 /// </summary>
 /// <seealso cref="IRetryCallbackManager" />
-public class DaprRetryCallbackManager : IRetryCallbackManager
+public partial class DaprRetryCallbackManager : IRetryCallbackManager
 {
     /// <summary>
     /// The actor.
@@ -51,17 +51,17 @@ public class DaprRetryCallbackManager : IRetryCallbackManager
     /// <summary>
     /// The reminder TTL.
     /// </summary>
-    private readonly TimeSpan _reminderTtl;
+    private readonly TimeSpan? _reminderTtl;
 
     /// <summary>
     /// The reminder exists.
     /// </summary>
-    private bool? _reminderExists = null;
+    private IActorReminder? _reminder;
 
     /// <summary>
     /// The timer exists.
     /// </summary>
-    private bool _timerExists = false;
+    private ActorTimer? _timer;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="DaprRetryCallbackManager"/> class.
@@ -70,12 +70,12 @@ public class DaprRetryCallbackManager : IRetryCallbackManager
     /// <param name="reminderPeriod">The reminder period.</param>
     /// <param name="reminderTtl">The reminder TTL.</param>
     /// <param name="logger">The logger.</param>
-    public DaprRetryCallbackManager(Actor actor, TimeSpan reminderPeriod, TimeSpan reminderTtl, ILogger logger)
+    public DaprRetryCallbackManager(Actor actor, TimeSpan reminderPeriod, TimeSpan? reminderTtl, ILogger logger)
     {
         ArgumentNullException.ThrowIfNull(actor);
         ArgumentNullException.ThrowIfNull(logger);
         _actor = actor;
-        _reminderPeriod = reminderPeriod;
+        _reminderPeriod = reminderPeriod < TimeSpan.FromMinutes(1) ? TimeSpan.FromMinutes(1) : reminderPeriod;
         _reminderTtl = reminderTtl;
         _logger = logger;
     }
@@ -85,92 +85,94 @@ public class DaprRetryCallbackManager : IRetryCallbackManager
         TimeSpan dueTime,
         CancellationToken cancellationToken)
     {
-        if (_timerExists)
+        RegisterContinueCallbackInformation(_actor.Id.GetId(), dueTime);
+        await RegisterTimerAsync(dueTime, cancellationToken).ConfigureAwait(false);
+        if (await IsReminderRegisteredAsync().ConfigureAwait(false) == null)
         {
-            await _actor
-                .Host
-                .TimerManager
-                .UnregisterTimerAsync(new ActorTimerToken(
-                        _actor.Host.ActorTypeInfo.ActorTypeName,
-                        _actor.Id,
-                        ActorConstants.ContinueTimerName));
-        }
-
-        await _actor
-            .Host
-            .TimerManager
-            .RegisterTimerAsync(new ActorTimer(
-                    _actor.Host.ActorTypeInfo.ActorTypeName,
-                    _actor.Id,
-                    ActorConstants.ContinueTimerName,
-                    ActorConstants.ContinueCallbackMethodName,
-                    [],
-                    dueTime,
-                    dueTime,
-                    _reminderPeriod));
-        _timerExists = true;
-
-        if (await IsReminderRegisteredAsync())
-        {
-            ActorReminder newReminder = new(
+            ActorReminder newReminder = (_reminderTtl == null)
+                ? new(
                         _actor.Host.ActorTypeInfo.ActorTypeName,
                         _actor.Id,
                         ActorConstants.ContinueReminderName,
                         [],
                         _reminderPeriod,
+                        _reminderPeriod)
+             : new(
+                        _actor.Host.ActorTypeInfo.ActorTypeName,
+                        _actor.Id,
+                        ActorConstants.ContinueReminderName,
+                        [],
+                        _reminderPeriod > dueTime ? _reminderPeriod : dueTime,
                         _reminderPeriod,
-                        _reminderTtl + _reminderPeriod);
+                        _reminderTtl.Value);
 
             await _actor
                     .Host
                     .TimerManager
-                    .RegisterReminderAsync(newReminder);
-            _reminderExists = true;
+                    .RegisterReminderAsync(newReminder).ConfigureAwait(false);
+            _reminder = newReminder;
         }
     }
 
     /// <inheritdoc/>
     public async Task UnregisterContinueCallbackAsync(CancellationToken cancellationToken)
     {
-        if (_timerExists)
+        UnregisterContinueCallbackInformation(_actor.Id.GetId());
+        if (_timer != null)
         {
             await _actor
                 .Host
                 .TimerManager
                 .UnregisterTimerAsync(new ActorTimerToken(
-                        _actor.Host.ActorTypeInfo.ActorTypeName,
-                        _actor.Id,
-                        ActorConstants.ContinueTimerName));
-            _timerExists = false;
+                        _timer.ActorType,
+                        _timer.ActorId,
+                        _timer.Name)).ConfigureAwait(false);
+            ContinueCallbackTimerUnregisteredInformation(_timer.ActorId.GetId(), _timer.DueTime, _timer.Period, _timer.Ttl);
+            _timer = null;
         }
 
-        if (await IsReminderRegisteredAsync())
+        if (await IsReminderRegisteredAsync().ConfigureAwait(false) != null)
         {
-            ActorReminder newReminder = new(
-                        _actor.Host.ActorTypeInfo.ActorTypeName,
-                        _actor.Id,
-                        ActorConstants.ContinueReminderName,
-                        [],
-                        _reminderPeriod,
-                        _reminderPeriod,
-                        _reminderTtl + _reminderPeriod);
-
             await _actor
                     .Host
                     .TimerManager
-                    .UnregisterReminderAsync(newReminder);
-            _reminderExists = false;
+                    .UnregisterReminderAsync(new ActorReminderToken(
+                        _actor.Host.ActorTypeInfo.ActorTypeName,
+                        _actor.Id,
+                        _reminder?.Name))
+                    .ConfigureAwait(false);
+            _reminder = null;
         }
     }
 
-    private async Task<bool> IsReminderRegisteredAsync()
+    [LoggerMessage(
+           EventId = 3,
+           Level = LogLevel.Information,
+           Message = "Timer for {AggregateId} registered. Due time : {DueTime}; Period : {Period}; Timeout : {TimeOut}.",
+           EventName = nameof(DaprRetryCallbackManager))]
+    private partial void ContinueCallbackTimerRegisteredInformation(string aggregateId, TimeSpan dueTime, TimeSpan period, TimeSpan? timeout);
+
+    [LoggerMessage(
+            EventId = 4,
+            Level = LogLevel.Information,
+            Message = "Timer for {AggregateId} unregistered. Due time : {DueTime}; Period : {Period}; Timeout : {TimeOut}.",
+            EventName = nameof(DaprRetryCallbackManager))]
+    private partial void ContinueCallbackTimerUnregisteredInformation(string aggregateId, TimeSpan dueTime, TimeSpan period, TimeSpan? timeout);
+
+    [LoggerMessage(
+            EventId = 5,
+            Level = LogLevel.Error,
+            Message = "Error while getting reminder {ReminderName} for {AggregateName} with Id '{AggregateId}'.",
+            EventName = nameof(DaprRetryCallbackManager))]
+    private partial void GetReminderError(string aggregateName, string aggregateId, string reminderName, Exception exception);
+
+    private async Task<IActorReminder?> IsReminderRegisteredAsync()
     {
-        if (_reminderExists != null)
+        if (_reminder != null)
         {
-            return _reminderExists.Value;
+            return _reminder;
         }
 
-        IActorReminder? reminder;
         ActorReminderToken token = new(
                     _actor.Host.ActorTypeInfo.ActorTypeName,
                     _actor.Id,
@@ -178,22 +180,79 @@ public class DaprRetryCallbackManager : IRetryCallbackManager
 
         try
         {
-            reminder = await _actor
+            _reminder = await _actor
                 .Host
                 .TimerManager
-                .GetReminderAsync(token);
+                .GetReminderAsync(token).ConfigureAwait(false);
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            _logger.LogError(
-                e,
-                "Unable to get reminder '{ReminderName}' of actor '{ActorTypeName}' Id={ActorId}.",
-                ActorConstants.ContinueReminderName,
-                _actor.Host.ActorTypeInfo.ActorTypeName,
-                _actor.Id.GetId());
-            reminder = null;
+            GetReminderError(token.ActorType, token.ActorId.GetId(), token.Name, ex);
+            _reminder = null;
+            throw;
         }
 
-        return reminder != null;
+        return _reminder;
     }
+
+    [LoggerMessage(
+           EventId = 1,
+           Level = LogLevel.Information,
+           Message = "Registering continue call back in {DueTime} for {AggregateId}.",
+           EventName = nameof(DaprRetryCallbackManager))]
+    private partial void RegisterContinueCallbackInformation(string aggregateId, TimeSpan dueTime);
+
+    private async Task RegisterTimerAsync(
+                    TimeSpan dueTime,
+                    CancellationToken cancellationToken)
+    {
+        if (_timer != null)
+        {
+            await _actor
+                .Host
+                .TimerManager
+                .UnregisterTimerAsync(new ActorTimerToken(
+                        _actor.Host.ActorTypeInfo.ActorTypeName,
+                        _actor.Id,
+                        ActorConstants.ContinueTimerName)).ConfigureAwait(false);
+            ContinueCallbackTimerUnregisteredInformation(_timer.ActorId.GetId(), _timer.DueTime, _timer.Period, _timer.Ttl);
+            _timer = null;
+        }
+
+        if (dueTime < _reminderPeriod)
+        {
+            ActorTimer timer = (_reminderTtl > TimeSpan.Zero)
+            ? new ActorTimer(
+            _actor.Host.ActorTypeInfo.ActorTypeName,
+            _actor.Id,
+            ActorConstants.ContinueTimerName,
+            ActorConstants.ContinueCallbackMethodName,
+            [],
+            dueTime,
+            dueTime,
+            _reminderPeriod)
+                : new ActorTimer(
+                        _actor.Host.ActorTypeInfo.ActorTypeName,
+                        _actor.Id,
+                        ActorConstants.ContinueTimerName,
+                        ActorConstants.ContinueCallbackMethodName,
+                        [],
+                        dueTime,
+                        dueTime);
+
+            await _actor
+                .Host
+                .TimerManager
+                .RegisterTimerAsync(timer).ConfigureAwait(false);
+            _timer = timer;
+            ContinueCallbackTimerRegisteredInformation(timer.ActorId.GetId(), timer.DueTime, timer.Period, timer.Ttl);
+        }
+    }
+
+    [LoggerMessage(
+          EventId = 2,
+          Level = LogLevel.Information,
+          Message = "Unregistering continue call back for {AggregateId}.",
+          EventName = nameof(DaprRetryCallbackManager))]
+    private partial void UnregisterContinueCallbackInformation(string aggregateId);
 }

@@ -20,10 +20,13 @@ using System;
 using System.Threading;
 
 using Hexalith.Application.Commands;
+using Hexalith.Application.Helpers;
 using Hexalith.Application.States;
 using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
+
+using Microsoft.Extensions.Logging;
 
 /// <summary>
 /// Class ResilientCommandProcessor.
@@ -36,6 +39,11 @@ public class ResilientCommandProcessor
     private readonly ICommandDispatcher _commandDispatcher;
 
     /// <summary>
+    /// The logger.
+    /// </summary>
+    private readonly ILogger _logger;
+
+    /// <summary>
     /// The resiliency policy.
     /// </summary>
     private readonly ResiliencyPolicy _resiliencyPolicy;
@@ -46,19 +54,27 @@ public class ResilientCommandProcessor
     private readonly IStateStoreProvider _stateStoreProvider;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ResilientCommandProcessor" /> class.
+    /// Initializes a new instance of the <see cref="ResilientCommandProcessor"/> class.
     /// </summary>
     /// <param name="resiliencyPolicy">The resiliency policy.</param>
     /// <param name="commandDispatcher">The command dispatcher.</param>
     /// <param name="stateStoreProvider">The state store provider.</param>
+    /// <param name="logger">The logger.</param>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
     public ResilientCommandProcessor(
         ResiliencyPolicy resiliencyPolicy,
         ICommandDispatcher commandDispatcher,
-        IStateStoreProvider stateStoreProvider)
+        IStateStoreProvider stateStoreProvider,
+        ILogger logger)
     {
+        ArgumentNullException.ThrowIfNull(resiliencyPolicy);
+        ArgumentNullException.ThrowIfNull(commandDispatcher);
+        ArgumentNullException.ThrowIfNull(stateStoreProvider);
+        ArgumentNullException.ThrowIfNull(logger);
         _resiliencyPolicy = resiliencyPolicy;
         _commandDispatcher = commandDispatcher;
         _stateStoreProvider = stateStoreProvider;
+        _logger = logger;
     }
 
     /// <summary>
@@ -121,6 +137,7 @@ public class ResilientCommandProcessor
         {
             taskProcessor = taskProcessor.Fail($"An error occured when executing command {command.TypeName} on {command.AggregateName}/{command.AggregateId}: {e.Message}", e.FullMessage());
             messages = new CommandProcessingFailed(command, taskProcessor).IntoArray();
+            _logger.LogError(e, "An error occured when executing command {CommandType} on {AggregateName}/{AggregateId}: {Message}", command.TypeName, command.AggregateName, command.AggregateId, e.Message);
         }
 
         await _stateStoreProvider.SetStateAsync(nameof(TaskProcessor) + id, taskProcessor, cancellationToken);

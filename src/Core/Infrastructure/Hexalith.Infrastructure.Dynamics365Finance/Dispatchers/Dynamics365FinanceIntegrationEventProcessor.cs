@@ -70,7 +70,10 @@ public class Dynamics365FinanceIntegrationEventProcessor : DependencyInjectionEv
                     commands,
                     Metadata.CreateNew(commands.First(), @event, _dateTimeService.UtcNow),
                     cancellationToken);
+                return;
             }
+
+            Logger.LogWarning("No command generated from event with name '{EventName}' and identifier '{AggragateId}'.", @event.BusinessEventId, @event.AggregateId);
         }
         catch (Exception ex)
         {

@@ -36,7 +36,7 @@ using Hexalith.Extensions.Common;
 /// <typeparam name="TEvent">The type of the t event.</typeparam>
 /// <seealso cref="IntegrationEventHandler{TEvent}" />
 public abstract class FFYCustomerInformationBusinessEventHandler<TEvent> : IntegrationEventHandler<TEvent>
-    where TEvent : FFYCustomerInformationBusinessEvent
+    where TEvent : Dynamics365FinanceCustomerInformationBusinessEvent
 {
     /// <summary>
     /// The aggregate external reference service.

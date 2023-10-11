@@ -16,6 +16,7 @@
 
 namespace Hexalith.Infrastructure.DaprRuntime.Parties.Helpers;
 
+using Hexalith.Application.Parties.Helpers;
 using Hexalith.Application.Parties.Services;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.DaprRuntime.Parties.Configurations;
@@ -37,6 +38,7 @@ public static class PartiesHelper
     /// <returns>IServiceCollection.</returns>
     public static IServiceCollection AddDaprParties(this IServiceCollection services, IConfiguration configuration)
         => services
+            .AddPartiesCommandHandlers()
             .ConfigureSettings<CustomerSettings>(configuration)
             .AddTransient<ICustomerQueryService, CustomerActorService>();
 }

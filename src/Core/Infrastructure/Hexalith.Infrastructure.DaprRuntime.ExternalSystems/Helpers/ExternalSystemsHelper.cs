@@ -16,8 +16,12 @@
 
 namespace Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers;
 
+using Dapr.Actors.Runtime;
+
+using Hexalith.Application.ExternalSystems.Helpers;
 using Hexalith.Application.ExternalSystems.Services;
 using Hexalith.Extensions.Configuration;
+using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors;
 using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Configurations;
 using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services;
 
@@ -37,8 +41,21 @@ public static class ExternalSystemsHelper
     /// <returns>IServiceCollection.</returns>
     public static IServiceCollection AddDaprExternalSystems(this IServiceCollection services, IConfiguration configuration)
         => services
+            .AddExternalSystemsCommandHandlers()
             .ConfigureSettings<ExternalSystemReferenceSettings>(configuration)
             .ConfigureSettings<AggregateExternalReferenceSettings>(configuration)
             .AddTransient<IExternalSystemReferenceQueryService, ExternalSystemReferenceQueryService>()
             .AddTransient<IAggregateExternalReferenceQueryService, AggregateExternalReferenceQueryService>();
+
+    /// <summary>
+    /// Adds the external systems.
+    /// </summary>
+    /// <param name="actors">The actors.</param>
+    /// <returns>ActorRegistrationCollection.</returns>
+    public static ActorRegistrationCollection AddExternalSystems(this ActorRegistrationCollection actors)
+    {
+        actors.RegisterActor<ExternalSystemReferenceAggregateActor>();
+        actors.RegisterActor<AggregateExternalReferenceAggregateActor>();
+        return actors;
+    }
 }
