@@ -21,18 +21,16 @@ using System;
 /// <summary>
 /// Example value attribute used to create a example value for a property.
 /// </summary>
+/// <remarks>
+/// Initializes a new instance of the <see cref="ExampleValueAttribute"/> class.
+/// </remarks>
+/// <param name="value">The value.</param>
 [AttributeUsage(AttributeTargets.Property)]
-public class ExampleValueAttribute : Attribute
+public sealed class ExampleValueAttribute(object value) : Attribute
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ExampleValueAttribute"/> class.
-    /// </summary>
-    /// <param name="value">The value.</param>
-    public ExampleValueAttribute(object value) => Value = value;
-
     /// <summary>
     /// Gets the value.
     /// </summary>
     /// <value>The value.</value>
-    public object Value { get; private set; }
+    public object Value { get; private set; } = value;
 }

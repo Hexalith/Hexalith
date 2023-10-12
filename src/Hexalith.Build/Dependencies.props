@@ -16,7 +16,7 @@
 		<FluentValidationVersion>11.7.1</FluentValidationVersion>
 		<GitHubActionsTestLoggerVersion>2.3.3</GitHubActionsTestLoggerVersion>
 		<HumanizerVersion>2.14.1</HumanizerVersion>
-		<ManDaprSidekickVersion>1.2.*</ManDaprSidekickVersion>
+		<ManDaprSidekickVersion>1.2.2</ManDaprSidekickVersion>
 		<MicrosoftBotBuilderVersion>4.21.0</MicrosoftBotBuilderVersion>
 		<MicrosoftIdentityClientVersion>4.56.0</MicrosoftIdentityClientVersion>
 		<MicrosoftNETTestSdkVersion>17.7.2</MicrosoftNETTestSdkVersion>

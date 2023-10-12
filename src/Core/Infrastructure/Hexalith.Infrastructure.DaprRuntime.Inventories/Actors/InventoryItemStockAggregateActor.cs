@@ -106,7 +106,6 @@ public class InventoryItemStockAggregateActor : Actor, ICommandProcessorActor, I
                 _commandProcessorSettings.ResiliencyPolicy,
                 _aggregate,
                 (e) => new InventoryItemStock((InventoryItemStockIncreased)e),
-                Logger,
                 CancellationToken.None)
             .ConfigureAwait(false);
     }
@@ -121,7 +120,6 @@ public class InventoryItemStockAggregateActor : Actor, ICommandProcessorActor, I
                 _retryManager,
                 envelope.Commands.ToArray(),
                 envelope.Metadatas.ToArray(),
-                Logger,
                 CancellationToken.None)
             .ConfigureAwait(false);
     }

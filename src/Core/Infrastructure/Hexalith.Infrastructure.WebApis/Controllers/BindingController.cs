@@ -118,7 +118,7 @@ public abstract class BindingController : ControllerBase
     /// </summary>
     /// <param name="error">The error.</param>
     /// <returns>ObjectResult.</returns>
-    protected ObjectResult Problem(Error error)
+    protected ObjectResult Problem(ApplicationError error)
     {
         string detail;
         try

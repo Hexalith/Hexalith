@@ -15,7 +15,7 @@ public class ValueOrError<T>
     /// <summary>
     /// The error
     /// </summary>
-    private readonly Error? _error;
+    private readonly ApplicationError? _error;
 
     /// <summary>
     /// The value.
@@ -40,7 +40,7 @@ public class ValueOrError<T>
     /// <param name="value">The value.</param>
     /// <param name="error">The error.</param>
     /// <param name="hasValue">if set to <c>true</c> [has value].</param>
-    private ValueOrError(T value, Error error, bool hasValue)
+    private ValueOrError(T value, ApplicationError error, bool hasValue)
     {
         HasValue = hasValue;
         _value = value;
@@ -52,7 +52,7 @@ public class ValueOrError<T>
     /// </summary>
     /// <value><c>true</c> if this instance is success; otherwise, <c>false</c>.</value>
     /// <exception cref="System.InvalidOperationException">No error</exception>
-    public Error Error => (HasValue || _error == null) ? throw new InvalidOperationException("No error") : _error;
+    public ApplicationError Error => (HasValue || _error == null) ? throw new InvalidOperationException("No error") : _error;
 
     /// <summary>
     /// Gets a value indicating whether this instance is success.
@@ -72,7 +72,7 @@ public class ValueOrError<T>
     /// </summary>
     /// <param name="error">The error.</param>
     /// <returns>ValueOrError&lt;T&gt;.</returns>
-    public static ValueOrError<T> WithError(Error error)
+    public static ValueOrError<T> WithError(ApplicationError error)
     {
         return new ValueOrError<T>(default!, error, false);
     }

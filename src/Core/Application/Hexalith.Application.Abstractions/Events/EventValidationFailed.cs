@@ -13,15 +13,15 @@ using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class EventValidationFailed.
-/// Implements the <see cref="Error" />
+/// Implements the <see cref="ApplicationError" />
 /// Implements the <see cref="IEquatable{Error}" />
 /// Implements the <see cref="IEquatable{EventValidationFailed}" />.
 /// </summary>
-/// <seealso cref="Error" />
+/// <seealso cref="ApplicationError" />
 /// <seealso cref="IEquatable{Error}" />
 /// <seealso cref="IEquatable{EventValidationFailed}" />
 [DataContract]
-public record EventValidationFailed : Error
+public record EventValidationFailed : ApplicationError
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="EventValidationFailed"/> class.

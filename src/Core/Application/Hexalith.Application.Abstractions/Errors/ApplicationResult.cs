@@ -47,7 +47,7 @@ public class ApplicationResult<T>
     /// Initializes a new instance of the <see cref="ApplicationResult{T}"/> class.
     /// </summary>
     /// <param name="error">The error.</param>
-    public ApplicationResult(Error error)
+    public ApplicationResult(ApplicationError error)
     {
         Error = error;
         _value = default!;
@@ -57,7 +57,7 @@ public class ApplicationResult<T>
     /// Gets or sets the error.
     /// </summary>
     /// <value>The error.</value>
-    public Error? Error { get; set; }
+    public ApplicationError? Error { get; set; }
 
     /// <summary>
     /// Gets a value indicating whether this instance has failed.

@@ -30,7 +30,7 @@ public class ApplicationErrorException : Exception
     /// Initializes a new instance of the <see cref="ApplicationErrorException" /> class.
     /// </summary>
     /// <param name="error">The error details.</param>
-    public ApplicationErrorException(Error error)
+    public ApplicationErrorException(ApplicationError error)
         : base(error.Title + Environment.NewLine + error.Detail)
     {
         Error = error;
@@ -41,7 +41,7 @@ public class ApplicationErrorException : Exception
     /// </summary>
     /// <param name="error">The error.</param>
     /// <param name="innerException">The inner exception.</param>
-    public ApplicationErrorException(Error error, Exception? innerException)
+    public ApplicationErrorException(ApplicationError error, Exception? innerException)
         : base(error.Title + Environment.NewLine + error.Detail, innerException)
     {
         Error = error;
@@ -80,5 +80,5 @@ public class ApplicationErrorException : Exception
     /// Gets the error.
     /// </summary>
     /// <value>The error.</value>
-    public Error? Error { get; private set; }
+    public ApplicationError? Error { get; private set; }
 }

@@ -128,37 +128,48 @@ public class AggregateStateManager : IAggregateStateManager
 
     /// <inheritdoc/>
     public async Task AddCommandAsync(
-        IStateStoreProvider stateProvider,
-        IRetryCallbackManager retryManager,
-        BaseCommand[] commands,
-        BaseMetadata[] metadatas,
-        ILogger logger,
+        [NotNull] IStateStoreProvider stateProvider,
+        [NotNull] IRetryCallbackManager retryManager,
+        [NotNull] BaseCommand[] commands,
+        [NotNull] BaseMetadata[] metadatas,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(stateProvider);
         ArgumentNullException.ThrowIfNull(metadatas);
         ArgumentNullException.ThrowIfNull(commands);
+        ArgumentNullException.ThrowIfNull(retryManager);
+
         await retryManager.RegisterContinueCallbackAsync(TimeSpan.FromMilliseconds(1), cancellationToken).ConfigureAwait(false);
         AggregateState state = await GetStateAsync(stateProvider, cancellationToken).ConfigureAwait(false);
         MessageStore<CommandState> commandStore = new(stateProvider, CommandsStreamName);
         List<CommandState> states = [];
         for (int i = 0; i < commands.Length; i++)
         {
-            states.Add(new CommandState(_dateTimeService.UtcNow, commands[i], metadatas[i]));
+            BaseCommand command = commands[i];
+            states.Add(new CommandState(_dateTimeService.UtcNow, command, metadatas[i]));
+            _logger.LogInformation(
+                "Receiving command {CommandName} for aggregate {AggregateName} with id '{AggregateId}'.",
+                command.TypeName,
+                command.AggregateName,
+                command.AggregateId);
         }
 
-        long version = await commandStore.AddAsync(
-            states,
-            state.CommandStreamVersion,
-            cancellationToken).ConfigureAwait(false);
+        long version = await commandStore
+            .AddAsync(
+                states,
+                state.CommandStreamVersion,
+                cancellationToken)
+            .ConfigureAwait(false);
+
         await PersistStateAsync(
-            stateProvider,
-            new AggregateState(
-                version,
-                state.EventStreamVersion,
-                state.LastCommandDone,
-                state.LastEventPublished),
-            cancellationToken).ConfigureAwait(false);
+                stateProvider,
+                new AggregateState(
+                    version,
+                    state.EventStreamVersion,
+                    state.LastCommandDone,
+                    state.LastEventPublished),
+                cancellationToken)
+            .ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -168,11 +179,9 @@ public class AggregateStateManager : IAggregateStateManager
         [NotNull] ResiliencyPolicy resiliencyPolicy,
         IAggregate? aggregate,
         [NotNull] Func<BaseEvent, IAggregate> aggregateInitializer,
-        [NotNull] ILogger logger,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(retryManager);
-        ArgumentNullException.ThrowIfNull(logger);
         ArgumentNullException.ThrowIfNull(resiliencyPolicy);
         ArgumentNullException.ThrowIfNull(stateProvider);
         ArgumentNullException.ThrowIfNull(aggregateInitializer);
@@ -188,7 +197,11 @@ public class AggregateStateManager : IAggregateStateManager
 
         if (retry != null)
         {
-            await retryManager.RegisterContinueCallbackAsync(retry.Value, cancellationToken).ConfigureAwait(false);
+            await retryManager
+                .RegisterContinueCallbackAsync(
+                    retry.Value <= resiliencyPolicy.InitialPeriod ? resiliencyPolicy.InitialPeriod : retry.Value,
+                    cancellationToken)
+                .ConfigureAwait(false);
             return null;
         }
 
@@ -201,7 +214,10 @@ public class AggregateStateManager : IAggregateStateManager
     }
 
     /// <inheritdoc/>
-    public async Task<IAggregate?> GetAggregateAsync([NotNull] IStateStoreProvider stateProvider, [NotNull] Func<BaseEvent, IAggregate> aggregateInitializer, CancellationToken cancellationToken)
+    public async Task<IAggregate?> GetAggregateAsync(
+        [NotNull] IStateStoreProvider stateProvider,
+        [NotNull] Func<BaseEvent, IAggregate> aggregateInitializer,
+        CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(aggregateInitializer);
         ArgumentNullException.ThrowIfNull(stateProvider);

@@ -25,15 +25,15 @@ using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class EventDispatchFailed.
-/// Implements the <see cref="Error" />
+/// Implements the <see cref="ApplicationError" />
 /// Implements the <see cref="IEquatable{Error}" />
 /// Implements the <see cref="IEquatable{EventDispatchFailed}" />.
 /// </summary>
-/// <seealso cref="Error" />
+/// <seealso cref="ApplicationError" />
 /// <seealso cref="IEquatable{Error}" />
 /// <seealso cref="IEquatable{EventDispatchFailed}" />
 [DataContract]
-public record EventDispatchFailed : Error
+public record EventDispatchFailed : ApplicationError
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="EventDispatchFailed" /> class.

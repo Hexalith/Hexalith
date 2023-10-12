@@ -91,7 +91,7 @@ public partial class DaprRetryCallbackManager : IRetryCallbackManager
             throw new ArgumentOutOfRangeException(nameof(dueTime), "The time allocated for registering the 'continue' callback cannot be negative or zero.");
         }
 
-        RegisterContinueCallbackInformation(_actor.Id.GetId(), dueTime);
+        RegisterContinueCallbackInformation(_actor.Host.ActorTypeInfo.ActorTypeName, _actor.Id.GetId(), dueTime);
         await RegisterTimerAsync(dueTime, cancellationToken).ConfigureAwait(false);
         if (await IsReminderRegisteredAsync().ConfigureAwait(false) == null)
         {
@@ -123,7 +123,7 @@ public partial class DaprRetryCallbackManager : IRetryCallbackManager
     /// <inheritdoc/>
     public async Task UnregisterContinueCallbackAsync(CancellationToken cancellationToken)
     {
-        UnregisterContinueCallbackInformation(_actor.Id.GetId());
+        UnregisterContinueCallbackInformation(_actor.Host.ActorTypeInfo.ActorTypeName, _actor.Id.GetId());
         if (_timer != null)
         {
             await _actor
@@ -133,7 +133,7 @@ public partial class DaprRetryCallbackManager : IRetryCallbackManager
                         _timer.ActorType,
                         _timer.ActorId,
                         _timer.Name)).ConfigureAwait(false);
-            ContinueCallbackTimerUnregisteredInformation(_timer.ActorId.GetId(), _timer.DueTime, _timer.Period, _timer.Ttl);
+            ContinueCallbackTimerUnregisteredInformation(_timer.ActorType, _timer.ActorId.GetId(), _timer.DueTime, _timer.Period, _timer.Ttl);
             _timer = null;
         }
 
@@ -154,16 +154,16 @@ public partial class DaprRetryCallbackManager : IRetryCallbackManager
     [LoggerMessage(
            EventId = 3,
            Level = LogLevel.Information,
-           Message = "Timer for {AggregateId} registered. Due time : {DueTime}; Period : {Period}; Timeout : {TimeOut}.",
+           Message = "Timer for {AggregateName} {AggregateId} registered. Due time : {DueTime}; Period : {Period}; Timeout : {TimeOut}.",
            EventName = nameof(DaprRetryCallbackManager))]
-    private partial void ContinueCallbackTimerRegisteredInformation(string aggregateId, TimeSpan dueTime, TimeSpan period, TimeSpan? timeout);
+    private partial void ContinueCallbackTimerRegisteredInformation(string aggregateName, string aggregateId, TimeSpan dueTime, TimeSpan period, TimeSpan? timeout);
 
     [LoggerMessage(
             EventId = 4,
             Level = LogLevel.Information,
-            Message = "Timer for {AggregateId} unregistered. Due time : {DueTime}; Period : {Period}; Timeout : {TimeOut}.",
+            Message = "Timer for {AggregateName} {AggregateId} unregistered. Due time : {DueTime}; Period : {Period}; Timeout : {TimeOut}.",
             EventName = nameof(DaprRetryCallbackManager))]
-    private partial void ContinueCallbackTimerUnregisteredInformation(string aggregateId, TimeSpan dueTime, TimeSpan period, TimeSpan? timeout);
+    private partial void ContinueCallbackTimerUnregisteredInformation(string aggregateName, string aggregateId, TimeSpan dueTime, TimeSpan period, TimeSpan? timeout);
 
     [LoggerMessage(
             EventId = 5,
@@ -204,9 +204,9 @@ public partial class DaprRetryCallbackManager : IRetryCallbackManager
     [LoggerMessage(
            EventId = 1,
            Level = LogLevel.Information,
-           Message = "Registering continue call back in {DueTime} for {AggregateId}.",
+           Message = "Registering continue call back in {DueTime} for {AggregateName} {AggregateId}.",
            EventName = nameof(DaprRetryCallbackManager))]
-    private partial void RegisterContinueCallbackInformation(string aggregateId, TimeSpan dueTime);
+    private partial void RegisterContinueCallbackInformation(string aggregateName, string aggregateId, TimeSpan dueTime);
 
     private async Task RegisterTimerAsync(
                     TimeSpan dueTime,
@@ -221,7 +221,7 @@ public partial class DaprRetryCallbackManager : IRetryCallbackManager
                         _actor.Host.ActorTypeInfo.ActorTypeName,
                         _actor.Id,
                         ActorConstants.ContinueTimerName)).ConfigureAwait(false);
-            ContinueCallbackTimerUnregisteredInformation(_timer.ActorId.GetId(), _timer.DueTime, _timer.Period, _timer.Ttl);
+            ContinueCallbackTimerUnregisteredInformation(_timer.ActorType, _timer.ActorId.GetId(), _timer.DueTime, _timer.Period, _timer.Ttl);
             _timer = null;
         }
 
@@ -251,14 +251,14 @@ public partial class DaprRetryCallbackManager : IRetryCallbackManager
                 .TimerManager
                 .RegisterTimerAsync(timer).ConfigureAwait(false);
             _timer = timer;
-            ContinueCallbackTimerRegisteredInformation(timer.ActorId.GetId(), timer.DueTime, timer.Period, timer.Ttl);
+            ContinueCallbackTimerRegisteredInformation(timer.ActorType, timer.ActorId.GetId(), timer.DueTime, timer.Period, timer.Ttl);
         }
     }
 
     [LoggerMessage(
           EventId = 2,
           Level = LogLevel.Information,
-          Message = "Unregistering continue call back for {AggregateId}.",
+          Message = "Unregistering continue call back for {AggregateName} {AggregateId}.",
           EventName = nameof(DaprRetryCallbackManager))]
-    private partial void UnregisterContinueCallbackInformation(string aggregateId);
+    private partial void UnregisterContinueCallbackInformation(string aggregateName, string aggregateId);
 }

@@ -67,11 +67,6 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
     private readonly IStateStoreProvider _stateProvider;
 
     /// <summary>
-    /// The timer.
-    /// </summary>
-    private readonly ActorTimer? _timer;
-
-    /// <summary>
     /// The aggregate.
     /// </summary>
     private Customer? _aggregate;
@@ -116,7 +111,6 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
                 _commandProcessorSettings.ResiliencyPolicy,
                 _aggregate,
                 (e) => new Customer((CustomerRegistered)e),
-                Logger,
                 CancellationToken.None)
             .ConfigureAwait(false);
     }
@@ -148,14 +142,13 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
                 _retryManager,
                 envelope.Commands.ToArray(),
                 envelope.Metadatas.ToArray(),
-                Logger,
                 CancellationToken.None)
             .ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
     public async Task<bool> ExistAsync()
-        => await GetAggregateAsync() != null;
+        => await GetAggregateAsync().ConfigureAwait(false) != null;
 
     /// <inheritdoc/>
     public async Task<bool> HasChangesAsync(ChangeCustomerInformation change)
@@ -194,7 +187,7 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
     }
 
     /// <inheritdoc/>
-    public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period) => await ContinueAsync();
+    public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period) => await ContinueAsync().ConfigureAwait(false);
 
     /// <summary>
     /// Get aggregate as an asynchronous operation.

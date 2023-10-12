@@ -20,7 +20,7 @@ public static class LogErrorHelper
     /// </summary>
     /// <param name="logger">The logger.</param>
     /// <param name="error">The error.</param>
-    public static void LogError(this ILogger logger, Error error)
+    public static void LogError(this ILogger logger, ApplicationError error)
     {
         ArgumentNullException.ThrowIfNull(error);
         ArgumentNullException.ThrowIfNull(logger);

@@ -104,7 +104,7 @@ public static class BusinessEventTypeMapper
         }
         catch (KeyNotFoundException ex)
         {
-            Error error = new()
+            ApplicationError error = new()
             {
                 Category = ErrorCategory.Technical,
                 Arguments = new object[] { name, majorVersion, minorVersion },

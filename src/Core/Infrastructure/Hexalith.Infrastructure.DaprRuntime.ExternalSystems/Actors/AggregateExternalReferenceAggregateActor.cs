@@ -63,11 +63,6 @@ public class AggregateExternalReferenceAggregateActor : Actor, ICommandProcessor
     private readonly IStateStoreProvider _stateProvider;
 
     /// <summary>
-    /// The timer.
-    /// </summary>
-    private readonly ActorTimer? _timer;
-
-    /// <summary>
     /// The aggregate.
     /// </summary>
     private AggregateExternalReference? _aggregate;
@@ -109,7 +104,6 @@ public class AggregateExternalReferenceAggregateActor : Actor, ICommandProcessor
                 _commandProcessorSettings.ResiliencyPolicy,
                 _aggregate,
                 (e) => new AggregateExternalReference((AggregateExternalReferenceAdded)e),
-                Logger,
                 CancellationToken.None)
             .ConfigureAwait(false);
     }
@@ -124,7 +118,6 @@ public class AggregateExternalReferenceAggregateActor : Actor, ICommandProcessor
                 _retryManager,
                 envelope.Commands.ToArray(),
                 envelope.Metadatas.ToArray(),
-                Logger,
                 CancellationToken.None)
             .ConfigureAwait(false);
     }

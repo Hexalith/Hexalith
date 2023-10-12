@@ -108,7 +108,6 @@ public class InventoryItemAggregateActor : Actor, ICommandProcessorActor, IRemin
                 _commandProcessorSettings.ResiliencyPolicy,
                 _aggregate,
                 (e) => new InventoryItem((InventoryItemAdded)e),
-                Logger,
                 CancellationToken.None)
             .ConfigureAwait(false);
     }
@@ -136,7 +135,6 @@ public class InventoryItemAggregateActor : Actor, ICommandProcessorActor, IRemin
                 _retryManager,
                 envelope.Commands.ToArray(),
                 envelope.Metadatas.ToArray(),
-                Logger,
                 CancellationToken.None)
             .ConfigureAwait(false);
     }
@@ -178,7 +176,7 @@ public class InventoryItemAggregateActor : Actor, ICommandProcessorActor, IRemin
     }
 
     /// <inheritdoc/>
-    public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period) => await ContinueAsync();
+    public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period) => await ContinueAsync().ConfigureAwait(false);
 
     /// <summary>
     /// Get aggregate as an asynchronous operation.

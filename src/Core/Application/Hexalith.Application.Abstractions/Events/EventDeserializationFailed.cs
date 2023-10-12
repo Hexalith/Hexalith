@@ -24,15 +24,15 @@ using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class EventDeserializationFailed.
-/// Implements the <see cref="Error" />
+/// Implements the <see cref="ApplicationError" />
 /// Implements the <see cref="IEquatable{Error}" />
 /// Implements the <see cref="IEquatable{EventDeserializationFailed}" />.
 /// </summary>
-/// <seealso cref="Error" />
+/// <seealso cref="ApplicationError" />
 /// <seealso cref="IEquatable{Error}" />
 /// <seealso cref="IEquatable{EventDeserializationFailed}" />
 [DataContract]
-public record EventDeserializationFailed : Error
+public record EventDeserializationFailed : ApplicationError
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="EventDeserializationFailed" /> class.

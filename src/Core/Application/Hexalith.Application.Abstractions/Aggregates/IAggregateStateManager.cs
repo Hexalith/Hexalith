@@ -23,8 +23,6 @@ using Hexalith.Application.Tasks;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 
-using Microsoft.Extensions.Logging;
-
 /// <summary>
 /// Interface IAggregateStateManager.
 /// </summary>
@@ -38,7 +36,6 @@ public interface IAggregateStateManager
     /// <param name="retryManager">The retry manager.</param>
     /// <param name="commands">The commands.</param>
     /// <param name="metadatas">The metadatas.</param>
-    /// <param name="logger">The logger.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
     Task AddCommandAsync(
@@ -46,7 +43,6 @@ public interface IAggregateStateManager
         IRetryCallbackManager retryManager,
         BaseCommand[] commands,
         BaseMetadata[] metadatas,
-        ILogger logger,
         CancellationToken cancellationToken);
 
     /// <summary>
@@ -57,7 +53,6 @@ public interface IAggregateStateManager
     /// <param name="resiliencyPolicy">The resiliency policy.</param>
     /// <param name="aggregate">The aggregate.</param>
     /// <param name="aggregateInitializer">The aggregate initializer.</param>
-    /// <param name="logger">The logger.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;System.Nullable&lt;IAggregate&gt;&gt;.</returns>
     Task<IAggregate?> ContinueAsync(
@@ -66,7 +61,6 @@ public interface IAggregateStateManager
         ResiliencyPolicy resiliencyPolicy,
         IAggregate? aggregate,
         Func<BaseEvent, IAggregate> aggregateInitializer,
-        ILogger logger,
         CancellationToken cancellationToken);
 
     /// <summary>
