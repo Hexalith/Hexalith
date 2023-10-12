@@ -8,6 +8,7 @@ namespace Hexalith.Application.StreamStores;
 
 using System;
 using System.Data;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 using Hexalith.Application.States;
@@ -33,7 +34,7 @@ public class MessageStore<TMessage>
     /// <param name="stateManager">The actor state manager.</param>
     /// <param name="streamName">The stream name.</param>
     /// <exception cref="System.ArgumentNullException">Argument is null.</exception>
-    public MessageStore(IStateStoreProvider stateManager, string streamName)
+    public MessageStore([NotNull] IStateStoreProvider stateManager, [NotNull] string streamName)
     {
         ArgumentNullException.ThrowIfNull(stateManager);
         ArgumentException.ThrowIfNullOrEmpty(streamName);
@@ -142,7 +143,7 @@ public class MessageStore<TMessage>
             throw new ArgumentException("To version should be greater or equal than from version.", nameof(toVersion));
         }
 
-        List<TMessage> messages = new();
+        List<TMessage> messages = [];
 
         while (fromVersion <= toVersion)
         {
@@ -154,7 +155,7 @@ public class MessageStore<TMessage>
                 throw new MessageStoreItemNotFoundException(version: fromVersion, StreamName, message: null, innerException: null);
             }
 
-            messages.Add(await _stateManager.GetStateAsync<TMessage>(GetMessageStateName(result.Value), cancellationToken));
+            messages.Add(await _stateManager.GetStateAsync<TMessage>(GetMessageStateName(result.Value), cancellationToken).ConfigureAwait(false));
         }
 
         return messages;
@@ -179,7 +180,7 @@ public class MessageStore<TMessage>
                 .ConfigureAwait(false);
         return !result.HasValue
             ? throw new MessageStoreItemNotFoundException(version: version, StreamName, message: null, innerException: null)
-            : await _stateManager.GetStateAsync<TMessage>(GetMessageStateName(result.Value), cancellationToken);
+            : await _stateManager.GetStateAsync<TMessage>(GetMessageStateName(result.Value), cancellationToken).ConfigureAwait(false);
     }
 
     /// <summary>

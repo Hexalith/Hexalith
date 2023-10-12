@@ -86,8 +86,9 @@ public class ResilientCommandProcessor
     /// <returns>A <see cref="Task{TResult}" /> representing the result of the asynchronous operation.</returns>
     public async Task<(TimeSpan? Retry, IEnumerable<BaseMessage> Events)> ProcessAsync(string id, BaseCommand command, CancellationToken cancellationToken)
     {
+        ArgumentNullException.ThrowIfNull(command);
         IEnumerable<BaseMessage> messages;
-        TaskProcessor taskProcessor = await GetTaskProcessorAsync(id, cancellationToken);
+        TaskProcessor taskProcessor = await GetTaskProcessorAsync(id, cancellationToken).ConfigureAwait(false);
         switch (taskProcessor.Status)
         {
             case TaskProcessorStatus.New:
@@ -106,7 +107,7 @@ public class ResilientCommandProcessor
 
                     case RetryStatus.Stopped:
                         taskProcessor = taskProcessor.Cancel();
-                        break;
+                        return (null, new CommandProcessingFailed(command, taskProcessor).IntoArray());
                 }
 
                 break;
@@ -125,7 +126,7 @@ public class ResilientCommandProcessor
         {
             if (taskProcessor.Status == TaskProcessorStatus.Active)
             {
-                messages = await _commandDispatcher.DoAsync(command, cancellationToken);
+                messages = await _commandDispatcher.DoAsync(command, cancellationToken).ConfigureAwait(false);
                 taskProcessor = taskProcessor.Complete();
             }
             else
@@ -135,12 +136,12 @@ public class ResilientCommandProcessor
         }
         catch (Exception e)
         {
-            taskProcessor = taskProcessor.Fail($"An error occured when executing command {command.TypeName} on {command.AggregateName}/{command.AggregateId}: {e.Message}", e.FullMessage());
+            taskProcessor = taskProcessor.Fail($"An error occurred when executing command {command.TypeName} on {command.AggregateName}/{command.AggregateId}: {e.Message}", e.FullMessage());
             messages = new CommandProcessingFailed(command, taskProcessor).IntoArray();
             _logger.LogError(e, "An error occured when executing command {CommandType} on {AggregateName}/{AggregateId}: {Message}", command.TypeName, command.AggregateName, command.AggregateId, e.Message);
         }
 
-        await _stateStoreProvider.SetStateAsync(nameof(TaskProcessor) + id, taskProcessor, cancellationToken);
+        await _stateStoreProvider.SetStateAsync(nameof(TaskProcessor) + id, taskProcessor, cancellationToken).ConfigureAwait(false);
         return ((taskProcessor.Status is TaskProcessorStatus.Completed or TaskProcessorStatus.Canceled) ? null : taskProcessor.RetryWaitTime, messages);
     }
 
@@ -155,7 +156,7 @@ public class ResilientCommandProcessor
         ConditionalValue<TaskProcessor> result = await _stateStoreProvider
             .TryGetStateAsync<TaskProcessor>(
                 nameof(TaskProcessor) + id,
-                cancellationToken);
+                cancellationToken).ConfigureAwait(false);
         return result.HasValue ? result.Value : new TaskProcessor(DateTimeOffset.UtcNow, _resiliencyPolicy);
     }
 }

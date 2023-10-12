@@ -151,9 +151,6 @@ public class TaskProcessor : ITaskProcessor
             : new TaskProcessor(TaskProcessorStatus.Canceled, History.Canceled(), ResiliencyPolicy, Failure);
     }
 
-    /// <inheritdoc/>
-    ITaskProcessor ITaskProcessor.Cancel() => Cancel();
-
     /// <summary>
     /// Completes this instance.
     /// </summary>
@@ -165,9 +162,6 @@ public class TaskProcessor : ITaskProcessor
             ? throw new InvalidStatusChangeException(currentStatus: Status, newStatus: TaskProcessorStatus.Completed, "Cannot complete a terminated task.")
             : new TaskProcessor(TaskProcessorStatus.Completed, History.Completed(), ResiliencyPolicy, Failure);
     }
-
-    /// <inheritdoc/>
-    ITaskProcessor ITaskProcessor.Complete() => Complete();
 
     /// <summary>
     /// Continues this instance.
@@ -205,9 +199,6 @@ public class TaskProcessor : ITaskProcessor
         };
     }
 
-    /// <inheritdoc/>
-    ITaskProcessor ITaskProcessor.Continue() => Continue();
-
     /// <summary>
     /// Fails the specified message.
     /// </summary>
@@ -226,9 +217,6 @@ public class TaskProcessor : ITaskProcessor
                 : new TaskProcessor(TaskProcessorStatus.Canceled, History.Canceled(), ResiliencyPolicy, newFailure);
     }
 
-    /// <inheritdoc/>
-    ITaskProcessor ITaskProcessor.Fail(string message, string? technicalError) => Fail(message, technicalError);
-
     /// <summary>
     /// Starts this instance.
     /// </summary>
@@ -240,6 +228,18 @@ public class TaskProcessor : ITaskProcessor
             ? throw new InvalidStatusChangeException(currentStatus: Status, newStatus: TaskProcessorStatus.Active, "Cannot start a terminated task.")
             : new TaskProcessor(TaskProcessorStatus.Active, History.ProcessingStarted(), ResiliencyPolicy, Failure);
     }
+
+    /// <inheritdoc/>
+    ITaskProcessor ITaskProcessor.Cancel() => Cancel();
+
+    /// <inheritdoc/>
+    ITaskProcessor ITaskProcessor.Complete() => Complete();
+
+    /// <inheritdoc/>
+    ITaskProcessor ITaskProcessor.Continue() => Continue();
+
+    /// <inheritdoc/>
+    ITaskProcessor ITaskProcessor.Fail(string message, string? technicalError) => Fail(message, technicalError);
 
     /// <inheritdoc/>
     ITaskProcessor ITaskProcessor.Start() => Start();

@@ -86,6 +86,11 @@ public partial class DaprRetryCallbackManager : IRetryCallbackManager
         TimeSpan dueTime,
         CancellationToken cancellationToken)
     {
+        if (dueTime <= TimeSpan.Zero)
+        {
+            throw new ArgumentOutOfRangeException(nameof(dueTime), "The time allocated for registering the 'continue' callback cannot be negative or zero.");
+        }
+
         RegisterContinueCallbackInformation(_actor.Id.GetId(), dueTime);
         await RegisterTimerAsync(dueTime, cancellationToken).ConfigureAwait(false);
         if (await IsReminderRegisteredAsync().ConfigureAwait(false) == null)

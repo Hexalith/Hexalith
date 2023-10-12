@@ -68,12 +68,13 @@ public class ResilientProjectionEventProcessor
     /// Process as an asynchronous operation.
     /// </summary>
     /// <param name="id">The identifier.</param>
-    /// <param name="command">The command.</param>
+    /// <param name="baseEvent">The command.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A <see cref="Task{TResult}" /> representing the result of the asynchronous operation.</returns>
-    public async Task<TimeSpan?> ProcessAsync(string id, BaseEvent command, CancellationToken cancellationToken)
+    public async Task<TimeSpan?> ProcessAsync(string id, BaseEvent baseEvent, CancellationToken cancellationToken)
     {
-        TaskProcessor taskProcessor = await GetTaskProcessorAsync(id, cancellationToken);
+        ArgumentNullException.ThrowIfNull(baseEvent);
+        TaskProcessor taskProcessor = await GetTaskProcessorAsync(id, cancellationToken).ConfigureAwait(false);
         switch (taskProcessor.Status)
         {
             case TaskProcessorStatus.New:
@@ -109,16 +110,16 @@ public class ResilientProjectionEventProcessor
         {
             if (taskProcessor.Status == TaskProcessorStatus.Active)
             {
-                await _projection.HandleAsync(command, cancellationToken);
+                await _projection.HandleAsync(baseEvent, cancellationToken).ConfigureAwait(false);
                 taskProcessor = taskProcessor.Complete();
             }
         }
         catch (Exception e)
         {
-            taskProcessor = taskProcessor.Fail($"An error occured when executing command {command.TypeName} on {command.AggregateName}/{command.AggregateId}: {e.Message}", e.FullMessage());
+            taskProcessor = taskProcessor.Fail($"An error occurred when executing command {baseEvent.TypeName} on {baseEvent.AggregateName}/{baseEvent.AggregateId}: {e.Message}", e.FullMessage());
         }
 
-        await _stateStoreProvider.SetStateAsync(nameof(TaskProcessor) + id, taskProcessor, cancellationToken);
+        await _stateStoreProvider.SetStateAsync(nameof(TaskProcessor) + id, taskProcessor, cancellationToken).ConfigureAwait(false);
         return (taskProcessor.Status is TaskProcessorStatus.Completed or TaskProcessorStatus.Canceled) ? null : taskProcessor.RetryWaitTime;
     }
 
@@ -133,7 +134,7 @@ public class ResilientProjectionEventProcessor
         ConditionalValue<TaskProcessor> result = await _stateStoreProvider
             .TryGetStateAsync<TaskProcessor>(
                 nameof(TaskProcessor) + id,
-                cancellationToken);
+                cancellationToken).ConfigureAwait(false);
         return result.HasValue ? result.Value : new TaskProcessor(DateTimeOffset.UtcNow, _resiliencyPolicy);
     }
 }
