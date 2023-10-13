@@ -31,5 +31,11 @@ public interface IRetryCallbackManager
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
     Task RegisterContinueCallbackAsync(TimeSpan dueTime, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Unregisters the continue callback asynchronous.
+    /// </summary>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task.</returns>
     Task UnregisterContinueCallbackAsync(CancellationToken cancellationToken);
 }

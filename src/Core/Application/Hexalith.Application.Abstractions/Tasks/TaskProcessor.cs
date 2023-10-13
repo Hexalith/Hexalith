@@ -88,6 +88,15 @@ public class TaskProcessor : ITaskProcessor
               History.CreatedDate,
               Failure == null ? 0 : Failure.Count);
 
+    /// <summary>
+    /// Gets a value indicating whether gets the ended.
+    /// </summary>
+    /// <value>The ended.</value>
+    [IgnoreDataMember]
+    [JsonIgnore]
+    public bool Ended
+        => Status is TaskProcessorStatus.Completed or TaskProcessorStatus.Canceled;
+
     /// <inheritdoc/>
     [DataMember(Order = 3)]
     [JsonPropertyOrder(3)]
@@ -122,6 +131,15 @@ public class TaskProcessor : ITaskProcessor
     /// Gets the retry wait time.
     /// </summary>
     /// <value>The retry wait time.</value>
+    [DataMember(Order = 5)]
+    [JsonPropertyOrder(5)]
+    public DateTimeOffset? RetryDate
+        => Ended ? null : ResiliencyPolicy.NextRetryTime(History.CreatedDate, Failure?.Count ?? 0);
+
+    /// <summary>
+    /// Gets the retry wait time.
+    /// </summary>
+    /// <value>The retry wait time.</value>
     [IgnoreDataMember]
     [JsonIgnore]
     public TimeSpan RetryWaitTime => ResiliencyPolicy.RetryWaitTime(
@@ -146,7 +164,7 @@ public class TaskProcessor : ITaskProcessor
     /// <inheritdoc cref="ITaskProcessor.Cancel" />
     public TaskProcessor Cancel()
     {
-        return Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed
+        return Ended
             ? throw new InvalidStatusChangeException(currentStatus: Status, newStatus: TaskProcessorStatus.Canceled, "Cannot cancel a terminated task.")
             : new TaskProcessor(TaskProcessorStatus.Canceled, History.Canceled(), ResiliencyPolicy, Failure);
     }
@@ -158,7 +176,7 @@ public class TaskProcessor : ITaskProcessor
     /// <inheritdoc cref="ITaskProcessor.Complete" />
     public TaskProcessor Complete()
     {
-        return Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed
+        return Ended
             ? throw new InvalidStatusChangeException(currentStatus: Status, newStatus: TaskProcessorStatus.Completed, "Cannot complete a terminated task.")
             : new TaskProcessor(TaskProcessorStatus.Completed, History.Completed(), ResiliencyPolicy, Failure);
     }

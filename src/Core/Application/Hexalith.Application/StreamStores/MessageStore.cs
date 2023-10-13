@@ -178,9 +178,11 @@ public class MessageStore<TMessage>
         ConditionalValue<string> result = await _stateManager
                 .TryGetStateAsync<string>(GetStreamItemStateName(version), cancellationToken)
                 .ConfigureAwait(false);
-        return !result.HasValue
-            ? throw new MessageStoreItemNotFoundException(version: version, StreamName, message: null, innerException: null)
-            : await _stateManager.GetStateAsync<TMessage>(GetMessageStateName(result.Value), cancellationToken).ConfigureAwait(false);
+        return result.HasValue
+            ? await _stateManager
+                .GetStateAsync<TMessage>(GetMessageStateName(result.Value), cancellationToken)
+                .ConfigureAwait(false)
+            : throw new MessageStoreItemNotFoundException(version: version, StreamName, message: null, innerException: null);
     }
 
     /// <summary>

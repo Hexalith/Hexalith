@@ -88,13 +88,12 @@ public class SettingsException<TSettings> : ArgumentException
     }
 
     /// <summary>
-    /// Throws an <see cref="ArgumentException" /> if <paramref name="argument" /> is null.
+    /// Throws if undefined.
     /// </summary>
-    /// <typeparam name="TValue">The type of the t value.</typeparam>
-    /// <param name="argument">The reference type argument.</param>
-    /// <param name="paramName">The name of the parameter with which <paramref name="argument" /> corresponds.</param>
-    public static void ThrowIfUndefined<TValue>(
-        [NotNull] TValue argument,
+    /// <param name="argument">The argument.</param>
+    /// <param name="paramName">Name of the parameter.</param>
+    public static void ThrowIfUndefined(
+        [NotNull] object? argument,
         [CallerArgumentExpression("argument")] string? paramName = null)
     {
         if (argument is null || (argument is string str && string.IsNullOrWhiteSpace(str)))

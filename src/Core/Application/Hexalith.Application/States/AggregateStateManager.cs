@@ -23,6 +23,7 @@ using System.Threading;
 
 using Hexalith.Application.Aggregates;
 using Hexalith.Application.Commands;
+using Hexalith.Application.Errors;
 using Hexalith.Application.Events;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.Notifications;
@@ -186,7 +187,7 @@ public class AggregateStateManager : IAggregateStateManager
         ArgumentNullException.ThrowIfNull(stateProvider);
         ArgumentNullException.ThrowIfNull(aggregateInitializer);
 
-        (TimeSpan? retry, aggregate) = await ExecuteCommandsAsync(stateProvider, aggregate, aggregateInitializer, resiliencyPolicy, cancellationToken).ConfigureAwait(false);
+        (TaskProcessor? retry, aggregate) = await ExecuteCommandsAsync(stateProvider, aggregate, aggregateInitializer, resiliencyPolicy, cancellationToken).ConfigureAwait(false);
         await PublishEventsAsync(stateProvider, cancellationToken).ConfigureAwait(false);
         AggregateState state = await GetStateAsync(stateProvider, cancellationToken).ConfigureAwait(false);
         if (state.LastEventPublished < state.EventStreamVersion)
@@ -195,22 +196,21 @@ public class AggregateStateManager : IAggregateStateManager
             return aggregate;
         }
 
-        if (retry != null)
+        if (retry?.Status is TaskProcessorStatus.Completed or TaskProcessorStatus.Canceled)
         {
             await retryManager
+                .UnregisterContinueCallbackAsync(cancellationToken)
+                .ConfigureAwait(false);
+            return aggregate;
+        }
+
+        TimeSpan waitTime = retry?.RetryWaitTime ?? TimeSpan.Zero;
+        await retryManager
                 .RegisterContinueCallbackAsync(
-                    retry.Value <= resiliencyPolicy.InitialPeriod ? resiliencyPolicy.InitialPeriod : retry.Value,
+                    waitTime <= resiliencyPolicy.InitialPeriod ? resiliencyPolicy.InitialPeriod : waitTime,
                     cancellationToken)
                 .ConfigureAwait(false);
-            return null;
-        }
-
-        if (aggregate != null)
-        {
-            await retryManager.UnregisterContinueCallbackAsync(cancellationToken).ConfigureAwait(false);
-        }
-
-        return aggregate;
+        return null;
     }
 
     /// <inheritdoc/>
@@ -307,7 +307,7 @@ public class AggregateStateManager : IAggregateStateManager
     /// <returns>A Task&lt;System.ValueTuple&gt; representing the asynchronous operation.</returns>
     /// <exception cref="System.InvalidOperationException">Command {nextCommand} content is null.</exception>
     /// <exception cref="System.InvalidOperationException">Command {nextCommand} metadata is null.</exception>
-    protected async Task<(TimeSpan? WaitUntil, IAggregate? Aggregate)> ExecuteCommandsAsync(
+    protected async Task<(TaskProcessor? Processor, IAggregate? Aggregate)> ExecuteCommandsAsync(
         [NotNull] IStateStoreProvider stateProvider,
         IAggregate? aggregate,
         [NotNull] Func<BaseEvent, IAggregate> aggregateInitializer,
@@ -317,59 +317,80 @@ public class AggregateStateManager : IAggregateStateManager
         ArgumentNullException.ThrowIfNull(stateProvider);
         ArgumentNullException.ThrowIfNull(aggregateInitializer);
         ArgumentNullException.ThrowIfNull(resiliencyPolicy);
-
-        MessageStore<CommandState> commandStore = new(stateProvider, CommandsStreamName);
-        MessageStore<EventState> eventStore = new(stateProvider, EventsStreamName);
-        AggregateState state = await GetStateAsync(stateProvider, cancellationToken).ConfigureAwait(false);
-        while (state.LastCommandDone < state.CommandStreamVersion)
+        try
         {
-            long nextCommand = state.LastCommandDone + 1;
-            CommandState command = await commandStore.GetAsync(nextCommand, cancellationToken).ConfigureAwait(false);
-            _ = command.Message ?? throw new InvalidOperationException($"Command {nextCommand} content is null.");
-            _ = command.Metadata ?? throw new InvalidOperationException($"Command {nextCommand} metadata is null.");
-            ResilientCommandProcessor processor = new(
-                resiliencyPolicy,
-                _dispatcher,
-                stateProvider,
-                _logger);
-
-            (TimeSpan? retry, IEnumerable<BaseMessage> messages) = await processor.ProcessAsync(nextCommand.ToInvariantString(), command.Message, cancellationToken).ConfigureAwait(false);
-            BaseEvent[] events = messages.OfType<BaseEvent>().ToArray();
-            long eventVersion = state.EventStreamVersion;
-            if (events.Length != 0)
+            MessageStore<CommandState> commandStore = new(stateProvider, CommandsStreamName);
+            MessageStore<EventState> eventStore = new(stateProvider, EventsStreamName);
+            AggregateState state = await GetStateAsync(stateProvider, cancellationToken).ConfigureAwait(false);
+            TaskProcessor? processor = null;
+            while (state.LastCommandDone < state.CommandStreamVersion)
             {
-                aggregate = aggregate?.Apply(events)
-                    ?? new AggregateBuilder()
-                        .Initializer(aggregateInitializer)
-                        .Events(events)
-                        .Build();
-                IEnumerable<EventState> eventStates = events.Select(
-                        p => new EventState(
-                            _dateTimeService.UtcNow,
-                            p,
-                            Metadata.CreateNew(p, command.Metadata, _dateTimeService.UtcNow)));
-                eventVersion = await eventStore.AddAsync(
-                    eventStates,
-                    state.EventStreamVersion,
+                long nextCommand = state.LastCommandDone + 1;
+                CommandState command = await commandStore.GetAsync(nextCommand, cancellationToken).ConfigureAwait(false);
+                _ = command.Message ?? throw new InvalidOperationException($"Command {nextCommand} content is null.");
+                _ = command.Metadata ?? throw new InvalidOperationException($"Command {nextCommand} metadata is null.");
+                ResilientCommandProcessor commandProcessor = new(
+                    resiliencyPolicy,
+                    _dispatcher,
+                    stateProvider,
+                    _logger);
+
+                (processor, IEnumerable<BaseMessage> messages) = await commandProcessor.ProcessAsync(nextCommand.ToInvariantString(), command.Message, cancellationToken).ConfigureAwait(false);
+                BaseEvent[] events = messages.OfType<BaseEvent>().ToArray();
+                long eventVersion = state.EventStreamVersion;
+                if (events.Length != 0)
+                {
+                    aggregate = aggregate?.Apply(events)
+                        ?? new AggregateBuilder()
+                            .Initializer(aggregateInitializer)
+                            .Events(events)
+                            .Build();
+                    IEnumerable<EventState> eventStates = events.Select(
+                            p => new EventState(
+                                _dateTimeService.UtcNow,
+                                p,
+                                Metadata.CreateNew(p, command.Metadata, _dateTimeService.UtcNow)));
+                    eventVersion = await eventStore.AddAsync(
+                        eventStates,
+                        state.EventStreamVersion,
+                        cancellationToken).ConfigureAwait(false);
+                }
+
+                state = new AggregateState(
+                        state.CommandStreamVersion,
+                        eventVersion,
+                        processor?.Ended == false ? state.LastCommandDone : nextCommand,
+                        state.LastEventPublished);
+                await PersistStateAsync(
+                    stateProvider,
+                    state,
                     cancellationToken).ConfigureAwait(false);
+
+                if (processor?.Ended != true)
+                {
+                    aggregate = null;
+                    break;
+                }
             }
 
-            state = new AggregateState(
-                    state.CommandStreamVersion,
-                    eventVersion,
-                    retry == null ? nextCommand : state.LastCommandDone,
-                    state.LastEventPublished);
-            await PersistStateAsync(
-                stateProvider,
-                state,
-                cancellationToken).ConfigureAwait(false);
-            if (retry != null)
-            {
-                return (retry, aggregate);
-            }
+            return (processor, aggregate);
         }
-
-        return (null, aggregate);
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error while executing commands in {CommandsStreamName}.", CommandsStreamName);
+            throw new ApplicationErrorException(
+                new ApplicationError
+                {
+                    Title = "Command processing error",
+                    Category = ErrorCategory.Technical,
+                    Detail = "Error while executing commands in {CommandsStreamName}",
+                    Arguments = new[] { CommandsStreamName },
+                    TechnicalDetail = "Error while executing commands in {CommandsStreamName} : {ErrorMessage}",
+                    TechnicalArguments = new[] { CommandsStreamName, ex.FullMessage() },
+                    Type = nameof(AggregateStateManager) + nameof(ExecuteCommandsAsync),
+                },
+                ex);
+        }
     }
 
     /// <summary>

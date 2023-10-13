@@ -84,7 +84,7 @@ public class ResilientCommandProcessor
     /// <param name="command">The command.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A <see cref="Task{TResult}" /> representing the result of the asynchronous operation.</returns>
-    public async Task<(TimeSpan? Retry, IEnumerable<BaseMessage> Events)> ProcessAsync(string id, BaseCommand command, CancellationToken cancellationToken)
+    public async Task<(TaskProcessor Processor, IEnumerable<BaseMessage> Events)> ProcessAsync(string id, BaseCommand command, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
         IEnumerable<BaseMessage> messages;
@@ -103,11 +103,11 @@ public class ResilientCommandProcessor
                         break;
 
                     case RetryStatus.Suspended:
-                        return (taskProcessor.RetryWaitTime, Array.Empty<BaseMessage>());
+                        return (taskProcessor, Array.Empty<BaseMessage>());
 
                     case RetryStatus.Stopped:
                         taskProcessor = taskProcessor.Cancel();
-                        return (null, new CommandProcessingFailed(command, taskProcessor).IntoArray());
+                        return (taskProcessor, new CommandProcessingFailed(command, taskProcessor).IntoArray());
                 }
 
                 break;
@@ -116,10 +116,10 @@ public class ResilientCommandProcessor
                 break;
 
             case TaskProcessorStatus.Canceled:
-                return (null, new CommandProcessingFailed(command, taskProcessor).IntoArray());
+                return (taskProcessor, new CommandProcessingFailed(command, taskProcessor).IntoArray());
 
             case TaskProcessorStatus.Completed:
-                return (null, Array.Empty<BaseMessage>());
+                return (taskProcessor, Array.Empty<BaseMessage>());
         }
 
         try
@@ -142,7 +142,8 @@ public class ResilientCommandProcessor
         }
 
         await _stateStoreProvider.SetStateAsync(nameof(TaskProcessor) + id, taskProcessor, cancellationToken).ConfigureAwait(false);
-        return ((taskProcessor.Status is TaskProcessorStatus.Completed or TaskProcessorStatus.Canceled) ? null : taskProcessor.RetryWaitTime, messages);
+
+        return (taskProcessor, messages);
     }
 
     /// <summary>
