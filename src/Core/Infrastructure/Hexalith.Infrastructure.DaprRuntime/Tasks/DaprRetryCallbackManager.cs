@@ -224,7 +224,7 @@ public partial class DaprRetryCallbackManager : IRetryCallbackManager
             ContinueCallbackTimerUnregisteredInformation(_timer.ActorType, _timer.ActorId.GetId(), _timer.DueTime, _timer.Period, _timer.Ttl);
             _timer = null;
         }
-
+/*
         if (dueTime < _reminderPeriod)
         {
             ActorTimer timer = (_reminderTtl > TimeSpan.Zero)
@@ -253,6 +253,7 @@ public partial class DaprRetryCallbackManager : IRetryCallbackManager
             _timer = timer;
             ContinueCallbackTimerRegisteredInformation(timer.ActorType, timer.ActorId.GetId(), timer.DueTime, timer.Period, timer.Ttl);
         }
+*/
     }
 
     [LoggerMessage(

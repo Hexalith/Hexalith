@@ -139,7 +139,7 @@ public class AggregateStateManager : IAggregateStateManager
         ArgumentNullException.ThrowIfNull(commands);
         ArgumentNullException.ThrowIfNull(retryManager);
 
-        await retryManager.RegisterContinueCallbackAsync(TimeSpan.FromMilliseconds(1), cancellationToken).ConfigureAwait(false);
+        await retryManager.RegisterContinueCallbackAsync(TimeSpan.FromSeconds(1), cancellationToken).ConfigureAwait(false);
         AggregateState state = await GetStateAsync(stateProvider, cancellationToken).ConfigureAwait(false);
         MessageStore<CommandState> commandStore = new(stateProvider, CommandsStreamName);
         List<CommandState> states = [];
