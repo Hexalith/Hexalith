@@ -45,7 +45,6 @@ public class AggregateStateManagerTest
                 ResiliencyPolicy.None,
                 null,
                 (_) => new DummyAggregate(),
-                new Mock<ILogger<AggregateStateManager>>().Object,
                 CancellationToken.None);
         _ = bus.Stream.Should().HaveCount(commandCount);
     }
@@ -65,7 +64,6 @@ public class AggregateStateManagerTest
             ResiliencyPolicy.None,
             null,
             (_) => new DummyAggregate(),
-            new Mock<ILogger<AggregateStateManager>>().Object,
             CancellationToken.None);
 
         _ = stateProvider.State.ContainsKey("State").Should().BeTrue();
@@ -133,7 +131,6 @@ public class AggregateStateManagerTest
                     new Mock<IRetryCallbackManager>().Object,
                     command.IntoArray(),
                     meta.IntoArray(),
-                    new Mock<ILogger<AggregateStateManager>>().Object,
                     CancellationToken.None)
                 .ConfigureAwait(false);
         }

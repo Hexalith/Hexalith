@@ -18,6 +18,7 @@ namespace Hexalith.Extensions.Configuration;
 
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 using FluentValidation;
 
@@ -42,8 +43,9 @@ public class FluentValidateOptions<TOptions>
     /// </summary>
     /// <param name="name">The name of the option.</param>
     /// <param name="provider">The service provider.</param>
-    public FluentValidateOptions(string? name, IServiceProvider provider)
+    public FluentValidateOptions(string? name, [NotNull] IServiceProvider provider)
     {
+        ArgumentNullException.ThrowIfNull(provider);
         Name = name;
         _validator = provider.GetService(typeof(IValidator<TOptions>)) as IValidator<TOptions>;
         _logger = provider.GetRequiredService<ILogger<FluentValidateOptions<TOptions>>>();
@@ -86,7 +88,7 @@ public class FluentValidateOptions<TOptions>
             return ValidateOptionsResult.Success;
         }
 
-        List<string> errors = new();
+        List<string> errors = [];
         string typeName = options.GetType().Name;
         foreach (FluentValidation.Results.ValidationFailure? result in results.Errors)
         {

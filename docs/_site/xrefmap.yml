@@ -368,15 +368,15 @@ references:
   commentId: T:Hexalith.Application.Aggregates.IAggregateStateManager
   fullName: Hexalith.Application.Aggregates.IAggregateStateManager
   nameWithType: IAggregateStateManager
-- uid: Hexalith.Application.Aggregates.IAggregateStateManager.AddCommandAsync(Hexalith.Application.States.IStateStoreProvider,Hexalith.Application.Tasks.IRetryCallbackManager,Hexalith.Application.Commands.BaseCommand[],Hexalith.Application.Metadatas.BaseMetadata[],Microsoft.Extensions.Logging.ILogger,CancellationToken)
-  name: AddCommandAsync(IStateStoreProvider, IRetryCallbackManager, BaseCommand[], BaseMetadata[], ILogger, CancellationToken)
-  href: api/Hexalith.Application.Aggregates.IAggregateStateManager.html#Hexalith_Application_Aggregates_IAggregateStateManager_AddCommandAsync_Hexalith_Application_States_IStateStoreProvider_Hexalith_Application_Tasks_IRetryCallbackManager_Hexalith_Application_Commands_BaseCommand___Hexalith_Application_Metadatas_BaseMetadata___Microsoft_Extensions_Logging_ILogger_CancellationToken_
-  commentId: M:Hexalith.Application.Aggregates.IAggregateStateManager.AddCommandAsync(Hexalith.Application.States.IStateStoreProvider,Hexalith.Application.Tasks.IRetryCallbackManager,Hexalith.Application.Commands.BaseCommand[],Hexalith.Application.Metadatas.BaseMetadata[],Microsoft.Extensions.Logging.ILogger,CancellationToken)
-  name.vb: AddCommandAsync(IStateStoreProvider, IRetryCallbackManager, BaseCommand(), BaseMetadata(), ILogger, CancellationToken)
-  fullName: Hexalith.Application.Aggregates.IAggregateStateManager.AddCommandAsync(Hexalith.Application.States.IStateStoreProvider, Hexalith.Application.Tasks.IRetryCallbackManager, Hexalith.Application.Commands.BaseCommand[], Hexalith.Application.Metadatas.BaseMetadata[], Microsoft.Extensions.Logging.ILogger, CancellationToken)
-  fullName.vb: Hexalith.Application.Aggregates.IAggregateStateManager.AddCommandAsync(Hexalith.Application.States.IStateStoreProvider, Hexalith.Application.Tasks.IRetryCallbackManager, Hexalith.Application.Commands.BaseCommand(), Hexalith.Application.Metadatas.BaseMetadata(), Microsoft.Extensions.Logging.ILogger, CancellationToken)
-  nameWithType: IAggregateStateManager.AddCommandAsync(IStateStoreProvider, IRetryCallbackManager, BaseCommand[], BaseMetadata[], ILogger, CancellationToken)
-  nameWithType.vb: IAggregateStateManager.AddCommandAsync(IStateStoreProvider, IRetryCallbackManager, BaseCommand(), BaseMetadata(), ILogger, CancellationToken)
+- uid: Hexalith.Application.Aggregates.IAggregateStateManager.AddCommandAsync(Hexalith.Application.States.IStateStoreProvider,Hexalith.Application.Tasks.IRetryCallbackManager,Hexalith.Application.Commands.BaseCommand[],Hexalith.Application.Metadatas.BaseMetadata[],CancellationToken)
+  name: AddCommandAsync(IStateStoreProvider, IRetryCallbackManager, BaseCommand[], BaseMetadata[], CancellationToken)
+  href: api/Hexalith.Application.Aggregates.IAggregateStateManager.html#Hexalith_Application_Aggregates_IAggregateStateManager_AddCommandAsync_Hexalith_Application_States_IStateStoreProvider_Hexalith_Application_Tasks_IRetryCallbackManager_Hexalith_Application_Commands_BaseCommand___Hexalith_Application_Metadatas_BaseMetadata___CancellationToken_
+  commentId: M:Hexalith.Application.Aggregates.IAggregateStateManager.AddCommandAsync(Hexalith.Application.States.IStateStoreProvider,Hexalith.Application.Tasks.IRetryCallbackManager,Hexalith.Application.Commands.BaseCommand[],Hexalith.Application.Metadatas.BaseMetadata[],CancellationToken)
+  name.vb: AddCommandAsync(IStateStoreProvider, IRetryCallbackManager, BaseCommand(), BaseMetadata(), CancellationToken)
+  fullName: Hexalith.Application.Aggregates.IAggregateStateManager.AddCommandAsync(Hexalith.Application.States.IStateStoreProvider, Hexalith.Application.Tasks.IRetryCallbackManager, Hexalith.Application.Commands.BaseCommand[], Hexalith.Application.Metadatas.BaseMetadata[], CancellationToken)
+  fullName.vb: Hexalith.Application.Aggregates.IAggregateStateManager.AddCommandAsync(Hexalith.Application.States.IStateStoreProvider, Hexalith.Application.Tasks.IRetryCallbackManager, Hexalith.Application.Commands.BaseCommand(), Hexalith.Application.Metadatas.BaseMetadata(), CancellationToken)
+  nameWithType: IAggregateStateManager.AddCommandAsync(IStateStoreProvider, IRetryCallbackManager, BaseCommand[], BaseMetadata[], CancellationToken)
+  nameWithType.vb: IAggregateStateManager.AddCommandAsync(IStateStoreProvider, IRetryCallbackManager, BaseCommand(), BaseMetadata(), CancellationToken)
 - uid: Hexalith.Application.Aggregates.IAggregateStateManager.AddCommandAsync*
   name: AddCommandAsync
   href: api/Hexalith.Application.Aggregates.IAggregateStateManager.html#Hexalith_Application_Aggregates_IAggregateStateManager_AddCommandAsync_
@@ -384,15 +384,15 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Aggregates.IAggregateStateManager.AddCommandAsync
   nameWithType: IAggregateStateManager.AddCommandAsync
-- uid: Hexalith.Application.Aggregates.IAggregateStateManager.ContinueAsync(Hexalith.Application.States.IStateStoreProvider,Hexalith.Application.Tasks.IRetryCallbackManager,Hexalith.Application.Tasks.ResiliencyPolicy,Hexalith.Domain.Aggregates.IAggregate,Func{Hexalith.Domain.Events.BaseEvent,Hexalith.Domain.Aggregates.IAggregate},Microsoft.Extensions.Logging.ILogger,CancellationToken)
-  name: ContinueAsync(IStateStoreProvider, IRetryCallbackManager, ResiliencyPolicy, IAggregate, Func<BaseEvent, IAggregate>, ILogger, CancellationToken)
-  href: api/Hexalith.Application.Aggregates.IAggregateStateManager.html#Hexalith_Application_Aggregates_IAggregateStateManager_ContinueAsync_Hexalith_Application_States_IStateStoreProvider_Hexalith_Application_Tasks_IRetryCallbackManager_Hexalith_Application_Tasks_ResiliencyPolicy_Hexalith_Domain_Aggregates_IAggregate_Func_Hexalith_Domain_Events_BaseEvent_Hexalith_Domain_Aggregates_IAggregate__Microsoft_Extensions_Logging_ILogger_CancellationToken_
-  commentId: M:Hexalith.Application.Aggregates.IAggregateStateManager.ContinueAsync(Hexalith.Application.States.IStateStoreProvider,Hexalith.Application.Tasks.IRetryCallbackManager,Hexalith.Application.Tasks.ResiliencyPolicy,Hexalith.Domain.Aggregates.IAggregate,Func{Hexalith.Domain.Events.BaseEvent,Hexalith.Domain.Aggregates.IAggregate},Microsoft.Extensions.Logging.ILogger,CancellationToken)
-  name.vb: ContinueAsync(IStateStoreProvider, IRetryCallbackManager, ResiliencyPolicy, IAggregate, Func(Of BaseEvent, IAggregate), ILogger, CancellationToken)
-  fullName: Hexalith.Application.Aggregates.IAggregateStateManager.ContinueAsync(Hexalith.Application.States.IStateStoreProvider, Hexalith.Application.Tasks.IRetryCallbackManager, Hexalith.Application.Tasks.ResiliencyPolicy, Hexalith.Domain.Aggregates.IAggregate, Func<Hexalith.Domain.Events.BaseEvent, Hexalith.Domain.Aggregates.IAggregate>, Microsoft.Extensions.Logging.ILogger, CancellationToken)
-  fullName.vb: Hexalith.Application.Aggregates.IAggregateStateManager.ContinueAsync(Hexalith.Application.States.IStateStoreProvider, Hexalith.Application.Tasks.IRetryCallbackManager, Hexalith.Application.Tasks.ResiliencyPolicy, Hexalith.Domain.Aggregates.IAggregate, Func(Of Hexalith.Domain.Events.BaseEvent, Hexalith.Domain.Aggregates.IAggregate), Microsoft.Extensions.Logging.ILogger, CancellationToken)
-  nameWithType: IAggregateStateManager.ContinueAsync(IStateStoreProvider, IRetryCallbackManager, ResiliencyPolicy, IAggregate, Func<BaseEvent, IAggregate>, ILogger, CancellationToken)
-  nameWithType.vb: IAggregateStateManager.ContinueAsync(IStateStoreProvider, IRetryCallbackManager, ResiliencyPolicy, IAggregate, Func(Of BaseEvent, IAggregate), ILogger, CancellationToken)
+- uid: Hexalith.Application.Aggregates.IAggregateStateManager.ContinueAsync(Hexalith.Application.States.IStateStoreProvider,Hexalith.Application.Tasks.IRetryCallbackManager,Hexalith.Application.Tasks.ResiliencyPolicy,Hexalith.Domain.Aggregates.IAggregate,Func{Hexalith.Domain.Events.BaseEvent,Hexalith.Domain.Aggregates.IAggregate},CancellationToken)
+  name: ContinueAsync(IStateStoreProvider, IRetryCallbackManager, ResiliencyPolicy, IAggregate, Func<BaseEvent, IAggregate>, CancellationToken)
+  href: api/Hexalith.Application.Aggregates.IAggregateStateManager.html#Hexalith_Application_Aggregates_IAggregateStateManager_ContinueAsync_Hexalith_Application_States_IStateStoreProvider_Hexalith_Application_Tasks_IRetryCallbackManager_Hexalith_Application_Tasks_ResiliencyPolicy_Hexalith_Domain_Aggregates_IAggregate_Func_Hexalith_Domain_Events_BaseEvent_Hexalith_Domain_Aggregates_IAggregate__CancellationToken_
+  commentId: M:Hexalith.Application.Aggregates.IAggregateStateManager.ContinueAsync(Hexalith.Application.States.IStateStoreProvider,Hexalith.Application.Tasks.IRetryCallbackManager,Hexalith.Application.Tasks.ResiliencyPolicy,Hexalith.Domain.Aggregates.IAggregate,Func{Hexalith.Domain.Events.BaseEvent,Hexalith.Domain.Aggregates.IAggregate},CancellationToken)
+  name.vb: ContinueAsync(IStateStoreProvider, IRetryCallbackManager, ResiliencyPolicy, IAggregate, Func(Of BaseEvent, IAggregate), CancellationToken)
+  fullName: Hexalith.Application.Aggregates.IAggregateStateManager.ContinueAsync(Hexalith.Application.States.IStateStoreProvider, Hexalith.Application.Tasks.IRetryCallbackManager, Hexalith.Application.Tasks.ResiliencyPolicy, Hexalith.Domain.Aggregates.IAggregate, Func<Hexalith.Domain.Events.BaseEvent, Hexalith.Domain.Aggregates.IAggregate>, CancellationToken)
+  fullName.vb: Hexalith.Application.Aggregates.IAggregateStateManager.ContinueAsync(Hexalith.Application.States.IStateStoreProvider, Hexalith.Application.Tasks.IRetryCallbackManager, Hexalith.Application.Tasks.ResiliencyPolicy, Hexalith.Domain.Aggregates.IAggregate, Func(Of Hexalith.Domain.Events.BaseEvent, Hexalith.Domain.Aggregates.IAggregate), CancellationToken)
+  nameWithType: IAggregateStateManager.ContinueAsync(IStateStoreProvider, IRetryCallbackManager, ResiliencyPolicy, IAggregate, Func<BaseEvent, IAggregate>, CancellationToken)
+  nameWithType.vb: IAggregateStateManager.ContinueAsync(IStateStoreProvider, IRetryCallbackManager, ResiliencyPolicy, IAggregate, Func(Of BaseEvent, IAggregate), CancellationToken)
 - uid: Hexalith.Application.Aggregates.IAggregateStateManager.ContinueAsync*
   name: ContinueAsync
   href: api/Hexalith.Application.Aggregates.IAggregateStateManager.html#Hexalith_Application_Aggregates_IAggregateStateManager_ContinueAsync_
@@ -1722,18 +1722,18 @@ references:
   commentId: M:Hexalith.Application.Errors.ApplicationErrorException.#ctor
   fullName: Hexalith.Application.Errors.ApplicationErrorException.ApplicationErrorException()
   nameWithType: ApplicationErrorException.ApplicationErrorException()
-- uid: Hexalith.Application.Errors.ApplicationErrorException.#ctor(Hexalith.Extensions.Common.Error)
-  name: ApplicationErrorException(Error)
-  href: api/Hexalith.Application.Errors.ApplicationErrorException.html#Hexalith_Application_Errors_ApplicationErrorException__ctor_Hexalith_Extensions_Common_Error_
-  commentId: M:Hexalith.Application.Errors.ApplicationErrorException.#ctor(Hexalith.Extensions.Common.Error)
-  fullName: Hexalith.Application.Errors.ApplicationErrorException.ApplicationErrorException(Hexalith.Extensions.Common.Error)
-  nameWithType: ApplicationErrorException.ApplicationErrorException(Error)
-- uid: Hexalith.Application.Errors.ApplicationErrorException.#ctor(Hexalith.Extensions.Common.Error,System.Exception)
-  name: ApplicationErrorException(Error, Exception)
-  href: api/Hexalith.Application.Errors.ApplicationErrorException.html#Hexalith_Application_Errors_ApplicationErrorException__ctor_Hexalith_Extensions_Common_Error_System_Exception_
-  commentId: M:Hexalith.Application.Errors.ApplicationErrorException.#ctor(Hexalith.Extensions.Common.Error,System.Exception)
-  fullName: Hexalith.Application.Errors.ApplicationErrorException.ApplicationErrorException(Hexalith.Extensions.Common.Error, System.Exception)
-  nameWithType: ApplicationErrorException.ApplicationErrorException(Error, Exception)
+- uid: Hexalith.Application.Errors.ApplicationErrorException.#ctor(Hexalith.Extensions.Common.ApplicationError)
+  name: ApplicationErrorException(ApplicationError)
+  href: api/Hexalith.Application.Errors.ApplicationErrorException.html#Hexalith_Application_Errors_ApplicationErrorException__ctor_Hexalith_Extensions_Common_ApplicationError_
+  commentId: M:Hexalith.Application.Errors.ApplicationErrorException.#ctor(Hexalith.Extensions.Common.ApplicationError)
+  fullName: Hexalith.Application.Errors.ApplicationErrorException.ApplicationErrorException(Hexalith.Extensions.Common.ApplicationError)
+  nameWithType: ApplicationErrorException.ApplicationErrorException(ApplicationError)
+- uid: Hexalith.Application.Errors.ApplicationErrorException.#ctor(Hexalith.Extensions.Common.ApplicationError,System.Exception)
+  name: ApplicationErrorException(ApplicationError, Exception)
+  href: api/Hexalith.Application.Errors.ApplicationErrorException.html#Hexalith_Application_Errors_ApplicationErrorException__ctor_Hexalith_Extensions_Common_ApplicationError_System_Exception_
+  commentId: M:Hexalith.Application.Errors.ApplicationErrorException.#ctor(Hexalith.Extensions.Common.ApplicationError,System.Exception)
+  fullName: Hexalith.Application.Errors.ApplicationErrorException.ApplicationErrorException(Hexalith.Extensions.Common.ApplicationError, System.Exception)
+  nameWithType: ApplicationErrorException.ApplicationErrorException(ApplicationError, Exception)
 - uid: Hexalith.Application.Errors.ApplicationErrorException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
   name: ApplicationErrorException(SerializationInfo, StreamingContext)
   href: api/Hexalith.Application.Errors.ApplicationErrorException.html#Hexalith_Application_Errors_ApplicationErrorException__ctor_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_
@@ -1789,14 +1789,14 @@ references:
   fullName.vb: Hexalith.Application.Errors.ApplicationResult(Of T).ApplicationResult(T)
   nameWithType: ApplicationResult<T>.ApplicationResult(T)
   nameWithType.vb: ApplicationResult(Of T).ApplicationResult(T)
-- uid: Hexalith.Application.Errors.ApplicationResult`1.#ctor(Hexalith.Extensions.Common.Error)
-  name: ApplicationResult(Error)
-  href: api/Hexalith.Application.Errors.ApplicationResult-1.html#Hexalith_Application_Errors_ApplicationResult_1__ctor_Hexalith_Extensions_Common_Error_
-  commentId: M:Hexalith.Application.Errors.ApplicationResult`1.#ctor(Hexalith.Extensions.Common.Error)
-  fullName: Hexalith.Application.Errors.ApplicationResult<T>.ApplicationResult(Hexalith.Extensions.Common.Error)
-  fullName.vb: Hexalith.Application.Errors.ApplicationResult(Of T).ApplicationResult(Hexalith.Extensions.Common.Error)
-  nameWithType: ApplicationResult<T>.ApplicationResult(Error)
-  nameWithType.vb: ApplicationResult(Of T).ApplicationResult(Error)
+- uid: Hexalith.Application.Errors.ApplicationResult`1.#ctor(Hexalith.Extensions.Common.ApplicationError)
+  name: ApplicationResult(ApplicationError)
+  href: api/Hexalith.Application.Errors.ApplicationResult-1.html#Hexalith_Application_Errors_ApplicationResult_1__ctor_Hexalith_Extensions_Common_ApplicationError_
+  commentId: M:Hexalith.Application.Errors.ApplicationResult`1.#ctor(Hexalith.Extensions.Common.ApplicationError)
+  fullName: Hexalith.Application.Errors.ApplicationResult<T>.ApplicationResult(Hexalith.Extensions.Common.ApplicationError)
+  fullName.vb: Hexalith.Application.Errors.ApplicationResult(Of T).ApplicationResult(Hexalith.Extensions.Common.ApplicationError)
+  nameWithType: ApplicationResult<T>.ApplicationResult(ApplicationError)
+  nameWithType.vb: ApplicationResult(Of T).ApplicationResult(ApplicationError)
 - uid: Hexalith.Application.Errors.ApplicationResult`1.#ctor*
   name: ApplicationResult
   href: api/Hexalith.Application.Errors.ApplicationResult-1.html#Hexalith_Application_Errors_ApplicationResult_1__ctor_
@@ -3029,12 +3029,12 @@ references:
   commentId: T:Hexalith.Application.Helpers.LogErrorHelper
   fullName: Hexalith.Application.Helpers.LogErrorHelper
   nameWithType: LogErrorHelper
-- uid: Hexalith.Application.Helpers.LogErrorHelper.LogError(Microsoft.Extensions.Logging.ILogger,Hexalith.Extensions.Common.Error)
-  name: LogError(ILogger, Error)
-  href: api/Hexalith.Application.Helpers.LogErrorHelper.html#Hexalith_Application_Helpers_LogErrorHelper_LogError_Microsoft_Extensions_Logging_ILogger_Hexalith_Extensions_Common_Error_
-  commentId: M:Hexalith.Application.Helpers.LogErrorHelper.LogError(Microsoft.Extensions.Logging.ILogger,Hexalith.Extensions.Common.Error)
-  fullName: Hexalith.Application.Helpers.LogErrorHelper.LogError(Microsoft.Extensions.Logging.ILogger, Hexalith.Extensions.Common.Error)
-  nameWithType: LogErrorHelper.LogError(ILogger, Error)
+- uid: Hexalith.Application.Helpers.LogErrorHelper.LogError(Microsoft.Extensions.Logging.ILogger,Hexalith.Extensions.Common.ApplicationError)
+  name: LogError(ILogger, ApplicationError)
+  href: api/Hexalith.Application.Helpers.LogErrorHelper.html#Hexalith_Application_Helpers_LogErrorHelper_LogError_Microsoft_Extensions_Logging_ILogger_Hexalith_Extensions_Common_ApplicationError_
+  commentId: M:Hexalith.Application.Helpers.LogErrorHelper.LogError(Microsoft.Extensions.Logging.ILogger,Hexalith.Extensions.Common.ApplicationError)
+  fullName: Hexalith.Application.Helpers.LogErrorHelper.LogError(Microsoft.Extensions.Logging.ILogger, Hexalith.Extensions.Common.ApplicationError)
+  nameWithType: LogErrorHelper.LogError(ILogger, ApplicationError)
 - uid: Hexalith.Application.Helpers.LogErrorHelper.LogError*
   name: LogError
   href: api/Hexalith.Application.Helpers.LogErrorHelper.html#Hexalith_Application_Helpers_LogErrorHelper_LogError_
@@ -6027,15 +6027,15 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.States.AggregateStateManager.AggregateStateManager
   nameWithType: AggregateStateManager.AggregateStateManager
-- uid: Hexalith.Application.States.AggregateStateManager.AddCommandAsync(Hexalith.Application.States.IStateStoreProvider,Hexalith.Application.Tasks.IRetryCallbackManager,Hexalith.Application.Commands.BaseCommand[],Hexalith.Application.Metadatas.BaseMetadata[],Microsoft.Extensions.Logging.ILogger,System.Threading.CancellationToken)
-  name: AddCommandAsync(IStateStoreProvider, IRetryCallbackManager, BaseCommand[], BaseMetadata[], ILogger, CancellationToken)
-  href: api/Hexalith.Application.States.AggregateStateManager.html#Hexalith_Application_States_AggregateStateManager_AddCommandAsync_Hexalith_Application_States_IStateStoreProvider_Hexalith_Application_Tasks_IRetryCallbackManager_Hexalith_Application_Commands_BaseCommand___Hexalith_Application_Metadatas_BaseMetadata___Microsoft_Extensions_Logging_ILogger_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.States.AggregateStateManager.AddCommandAsync(Hexalith.Application.States.IStateStoreProvider,Hexalith.Application.Tasks.IRetryCallbackManager,Hexalith.Application.Commands.BaseCommand[],Hexalith.Application.Metadatas.BaseMetadata[],Microsoft.Extensions.Logging.ILogger,System.Threading.CancellationToken)
-  name.vb: AddCommandAsync(IStateStoreProvider, IRetryCallbackManager, BaseCommand(), BaseMetadata(), ILogger, CancellationToken)
-  fullName: Hexalith.Application.States.AggregateStateManager.AddCommandAsync(Hexalith.Application.States.IStateStoreProvider, Hexalith.Application.Tasks.IRetryCallbackManager, Hexalith.Application.Commands.BaseCommand[], Hexalith.Application.Metadatas.BaseMetadata[], Microsoft.Extensions.Logging.ILogger, System.Threading.CancellationToken)
-  fullName.vb: Hexalith.Application.States.AggregateStateManager.AddCommandAsync(Hexalith.Application.States.IStateStoreProvider, Hexalith.Application.Tasks.IRetryCallbackManager, Hexalith.Application.Commands.BaseCommand(), Hexalith.Application.Metadatas.BaseMetadata(), Microsoft.Extensions.Logging.ILogger, System.Threading.CancellationToken)
-  nameWithType: AggregateStateManager.AddCommandAsync(IStateStoreProvider, IRetryCallbackManager, BaseCommand[], BaseMetadata[], ILogger, CancellationToken)
-  nameWithType.vb: AggregateStateManager.AddCommandAsync(IStateStoreProvider, IRetryCallbackManager, BaseCommand(), BaseMetadata(), ILogger, CancellationToken)
+- uid: Hexalith.Application.States.AggregateStateManager.AddCommandAsync(Hexalith.Application.States.IStateStoreProvider,Hexalith.Application.Tasks.IRetryCallbackManager,Hexalith.Application.Commands.BaseCommand[],Hexalith.Application.Metadatas.BaseMetadata[],System.Threading.CancellationToken)
+  name: AddCommandAsync(IStateStoreProvider, IRetryCallbackManager, BaseCommand[], BaseMetadata[], CancellationToken)
+  href: api/Hexalith.Application.States.AggregateStateManager.html#Hexalith_Application_States_AggregateStateManager_AddCommandAsync_Hexalith_Application_States_IStateStoreProvider_Hexalith_Application_Tasks_IRetryCallbackManager_Hexalith_Application_Commands_BaseCommand___Hexalith_Application_Metadatas_BaseMetadata___System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.States.AggregateStateManager.AddCommandAsync(Hexalith.Application.States.IStateStoreProvider,Hexalith.Application.Tasks.IRetryCallbackManager,Hexalith.Application.Commands.BaseCommand[],Hexalith.Application.Metadatas.BaseMetadata[],System.Threading.CancellationToken)
+  name.vb: AddCommandAsync(IStateStoreProvider, IRetryCallbackManager, BaseCommand(), BaseMetadata(), CancellationToken)
+  fullName: Hexalith.Application.States.AggregateStateManager.AddCommandAsync(Hexalith.Application.States.IStateStoreProvider, Hexalith.Application.Tasks.IRetryCallbackManager, Hexalith.Application.Commands.BaseCommand[], Hexalith.Application.Metadatas.BaseMetadata[], System.Threading.CancellationToken)
+  fullName.vb: Hexalith.Application.States.AggregateStateManager.AddCommandAsync(Hexalith.Application.States.IStateStoreProvider, Hexalith.Application.Tasks.IRetryCallbackManager, Hexalith.Application.Commands.BaseCommand(), Hexalith.Application.Metadatas.BaseMetadata(), System.Threading.CancellationToken)
+  nameWithType: AggregateStateManager.AddCommandAsync(IStateStoreProvider, IRetryCallbackManager, BaseCommand[], BaseMetadata[], CancellationToken)
+  nameWithType.vb: AggregateStateManager.AddCommandAsync(IStateStoreProvider, IRetryCallbackManager, BaseCommand(), BaseMetadata(), CancellationToken)
 - uid: Hexalith.Application.States.AggregateStateManager.AddCommandAsync*
   name: AddCommandAsync
   href: api/Hexalith.Application.States.AggregateStateManager.html#Hexalith_Application_States_AggregateStateManager_AddCommandAsync_
@@ -6056,15 +6056,15 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.States.AggregateStateManager.CommandsStreamName
   nameWithType: AggregateStateManager.CommandsStreamName
-- uid: Hexalith.Application.States.AggregateStateManager.ContinueAsync(Hexalith.Application.States.IStateStoreProvider,Hexalith.Application.Tasks.IRetryCallbackManager,Hexalith.Application.Tasks.ResiliencyPolicy,Hexalith.Domain.Aggregates.IAggregate,System.Func{Hexalith.Domain.Events.BaseEvent,Hexalith.Domain.Aggregates.IAggregate},Microsoft.Extensions.Logging.ILogger,System.Threading.CancellationToken)
-  name: ContinueAsync(IStateStoreProvider, IRetryCallbackManager, ResiliencyPolicy, IAggregate, Func<BaseEvent, IAggregate>, ILogger, CancellationToken)
-  href: api/Hexalith.Application.States.AggregateStateManager.html#Hexalith_Application_States_AggregateStateManager_ContinueAsync_Hexalith_Application_States_IStateStoreProvider_Hexalith_Application_Tasks_IRetryCallbackManager_Hexalith_Application_Tasks_ResiliencyPolicy_Hexalith_Domain_Aggregates_IAggregate_System_Func_Hexalith_Domain_Events_BaseEvent_Hexalith_Domain_Aggregates_IAggregate__Microsoft_Extensions_Logging_ILogger_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.States.AggregateStateManager.ContinueAsync(Hexalith.Application.States.IStateStoreProvider,Hexalith.Application.Tasks.IRetryCallbackManager,Hexalith.Application.Tasks.ResiliencyPolicy,Hexalith.Domain.Aggregates.IAggregate,System.Func{Hexalith.Domain.Events.BaseEvent,Hexalith.Domain.Aggregates.IAggregate},Microsoft.Extensions.Logging.ILogger,System.Threading.CancellationToken)
-  name.vb: ContinueAsync(IStateStoreProvider, IRetryCallbackManager, ResiliencyPolicy, IAggregate, Func(Of BaseEvent, IAggregate), ILogger, CancellationToken)
-  fullName: Hexalith.Application.States.AggregateStateManager.ContinueAsync(Hexalith.Application.States.IStateStoreProvider, Hexalith.Application.Tasks.IRetryCallbackManager, Hexalith.Application.Tasks.ResiliencyPolicy, Hexalith.Domain.Aggregates.IAggregate, System.Func<Hexalith.Domain.Events.BaseEvent, Hexalith.Domain.Aggregates.IAggregate>, Microsoft.Extensions.Logging.ILogger, System.Threading.CancellationToken)
-  fullName.vb: Hexalith.Application.States.AggregateStateManager.ContinueAsync(Hexalith.Application.States.IStateStoreProvider, Hexalith.Application.Tasks.IRetryCallbackManager, Hexalith.Application.Tasks.ResiliencyPolicy, Hexalith.Domain.Aggregates.IAggregate, System.Func(Of Hexalith.Domain.Events.BaseEvent, Hexalith.Domain.Aggregates.IAggregate), Microsoft.Extensions.Logging.ILogger, System.Threading.CancellationToken)
-  nameWithType: AggregateStateManager.ContinueAsync(IStateStoreProvider, IRetryCallbackManager, ResiliencyPolicy, IAggregate, Func<BaseEvent, IAggregate>, ILogger, CancellationToken)
-  nameWithType.vb: AggregateStateManager.ContinueAsync(IStateStoreProvider, IRetryCallbackManager, ResiliencyPolicy, IAggregate, Func(Of BaseEvent, IAggregate), ILogger, CancellationToken)
+- uid: Hexalith.Application.States.AggregateStateManager.ContinueAsync(Hexalith.Application.States.IStateStoreProvider,Hexalith.Application.Tasks.IRetryCallbackManager,Hexalith.Application.Tasks.ResiliencyPolicy,Hexalith.Domain.Aggregates.IAggregate,System.Func{Hexalith.Domain.Events.BaseEvent,Hexalith.Domain.Aggregates.IAggregate},System.Threading.CancellationToken)
+  name: ContinueAsync(IStateStoreProvider, IRetryCallbackManager, ResiliencyPolicy, IAggregate, Func<BaseEvent, IAggregate>, CancellationToken)
+  href: api/Hexalith.Application.States.AggregateStateManager.html#Hexalith_Application_States_AggregateStateManager_ContinueAsync_Hexalith_Application_States_IStateStoreProvider_Hexalith_Application_Tasks_IRetryCallbackManager_Hexalith_Application_Tasks_ResiliencyPolicy_Hexalith_Domain_Aggregates_IAggregate_System_Func_Hexalith_Domain_Events_BaseEvent_Hexalith_Domain_Aggregates_IAggregate__System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.States.AggregateStateManager.ContinueAsync(Hexalith.Application.States.IStateStoreProvider,Hexalith.Application.Tasks.IRetryCallbackManager,Hexalith.Application.Tasks.ResiliencyPolicy,Hexalith.Domain.Aggregates.IAggregate,System.Func{Hexalith.Domain.Events.BaseEvent,Hexalith.Domain.Aggregates.IAggregate},System.Threading.CancellationToken)
+  name.vb: ContinueAsync(IStateStoreProvider, IRetryCallbackManager, ResiliencyPolicy, IAggregate, Func(Of BaseEvent, IAggregate), CancellationToken)
+  fullName: Hexalith.Application.States.AggregateStateManager.ContinueAsync(Hexalith.Application.States.IStateStoreProvider, Hexalith.Application.Tasks.IRetryCallbackManager, Hexalith.Application.Tasks.ResiliencyPolicy, Hexalith.Domain.Aggregates.IAggregate, System.Func<Hexalith.Domain.Events.BaseEvent, Hexalith.Domain.Aggregates.IAggregate>, System.Threading.CancellationToken)
+  fullName.vb: Hexalith.Application.States.AggregateStateManager.ContinueAsync(Hexalith.Application.States.IStateStoreProvider, Hexalith.Application.Tasks.IRetryCallbackManager, Hexalith.Application.Tasks.ResiliencyPolicy, Hexalith.Domain.Aggregates.IAggregate, System.Func(Of Hexalith.Domain.Events.BaseEvent, Hexalith.Domain.Aggregates.IAggregate), System.Threading.CancellationToken)
+  nameWithType: AggregateStateManager.ContinueAsync(IStateStoreProvider, IRetryCallbackManager, ResiliencyPolicy, IAggregate, Func<BaseEvent, IAggregate>, CancellationToken)
+  nameWithType.vb: AggregateStateManager.ContinueAsync(IStateStoreProvider, IRetryCallbackManager, ResiliencyPolicy, IAggregate, Func(Of BaseEvent, IAggregate), CancellationToken)
 - uid: Hexalith.Application.States.AggregateStateManager.ContinueAsync*
   name: ContinueAsync
   href: api/Hexalith.Application.States.AggregateStateManager.html#Hexalith_Application_States_AggregateStateManager_ContinueAsync_
@@ -8602,6 +8602,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Tasks.TaskProcessor.Continue
   nameWithType: TaskProcessor.Continue
+- uid: Hexalith.Application.Tasks.TaskProcessor.Ended
+  name: Ended
+  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Ended
+  commentId: P:Hexalith.Application.Tasks.TaskProcessor.Ended
+  fullName: Hexalith.Application.Tasks.TaskProcessor.Ended
+  nameWithType: TaskProcessor.Ended
+- uid: Hexalith.Application.Tasks.TaskProcessor.Ended*
+  name: Ended
+  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Ended_
+  commentId: Overload:Hexalith.Application.Tasks.TaskProcessor.Ended
+  isSpec: "True"
+  fullName: Hexalith.Application.Tasks.TaskProcessor.Ended
+  nameWithType: TaskProcessor.Ended
 - uid: Hexalith.Application.Tasks.TaskProcessor.Fail(System.String,System.String)
   name: Fail(String, String)
   href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Fail_System_String_System_String_
@@ -8739,6 +8752,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Tasks.TaskProcessor.ResiliencyPolicy
   nameWithType: TaskProcessor.ResiliencyPolicy
+- uid: Hexalith.Application.Tasks.TaskProcessor.RetryDate
+  name: RetryDate
+  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_RetryDate
+  commentId: P:Hexalith.Application.Tasks.TaskProcessor.RetryDate
+  fullName: Hexalith.Application.Tasks.TaskProcessor.RetryDate
+  nameWithType: TaskProcessor.RetryDate
+- uid: Hexalith.Application.Tasks.TaskProcessor.RetryDate*
+  name: RetryDate
+  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_RetryDate_
+  commentId: Overload:Hexalith.Application.Tasks.TaskProcessor.RetryDate
+  isSpec: "True"
+  fullName: Hexalith.Application.Tasks.TaskProcessor.RetryDate
+  nameWithType: TaskProcessor.RetryDate
 - uid: Hexalith.Application.Tasks.TaskProcessor.RetryWaitTime
   name: RetryWaitTime
   href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_RetryWaitTime
@@ -13259,6 +13285,116 @@ references:
   commentId: N:Hexalith.Extensions.Common
   fullName: Hexalith.Extensions.Common
   nameWithType: Hexalith.Extensions.Common
+- uid: Hexalith.Extensions.Common.ApplicationError
+  name: ApplicationError
+  href: api/Hexalith.Extensions.Common.ApplicationError.html
+  commentId: T:Hexalith.Extensions.Common.ApplicationError
+  fullName: Hexalith.Extensions.Common.ApplicationError
+  nameWithType: ApplicationError
+- uid: Hexalith.Extensions.Common.ApplicationError.Arguments
+  name: Arguments
+  href: api/Hexalith.Extensions.Common.ApplicationError.html#Hexalith_Extensions_Common_ApplicationError_Arguments
+  commentId: P:Hexalith.Extensions.Common.ApplicationError.Arguments
+  fullName: Hexalith.Extensions.Common.ApplicationError.Arguments
+  nameWithType: ApplicationError.Arguments
+- uid: Hexalith.Extensions.Common.ApplicationError.Arguments*
+  name: Arguments
+  href: api/Hexalith.Extensions.Common.ApplicationError.html#Hexalith_Extensions_Common_ApplicationError_Arguments_
+  commentId: Overload:Hexalith.Extensions.Common.ApplicationError.Arguments
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Common.ApplicationError.Arguments
+  nameWithType: ApplicationError.Arguments
+- uid: Hexalith.Extensions.Common.ApplicationError.Category
+  name: Category
+  href: api/Hexalith.Extensions.Common.ApplicationError.html#Hexalith_Extensions_Common_ApplicationError_Category
+  commentId: P:Hexalith.Extensions.Common.ApplicationError.Category
+  fullName: Hexalith.Extensions.Common.ApplicationError.Category
+  nameWithType: ApplicationError.Category
+- uid: Hexalith.Extensions.Common.ApplicationError.Category*
+  name: Category
+  href: api/Hexalith.Extensions.Common.ApplicationError.html#Hexalith_Extensions_Common_ApplicationError_Category_
+  commentId: Overload:Hexalith.Extensions.Common.ApplicationError.Category
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Common.ApplicationError.Category
+  nameWithType: ApplicationError.Category
+- uid: Hexalith.Extensions.Common.ApplicationError.Detail
+  name: Detail
+  href: api/Hexalith.Extensions.Common.ApplicationError.html#Hexalith_Extensions_Common_ApplicationError_Detail
+  commentId: P:Hexalith.Extensions.Common.ApplicationError.Detail
+  fullName: Hexalith.Extensions.Common.ApplicationError.Detail
+  nameWithType: ApplicationError.Detail
+- uid: Hexalith.Extensions.Common.ApplicationError.Detail*
+  name: Detail
+  href: api/Hexalith.Extensions.Common.ApplicationError.html#Hexalith_Extensions_Common_ApplicationError_Detail_
+  commentId: Overload:Hexalith.Extensions.Common.ApplicationError.Detail
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Common.ApplicationError.Detail
+  nameWithType: ApplicationError.Detail
+- uid: Hexalith.Extensions.Common.ApplicationError.InnerError
+  name: InnerError
+  href: api/Hexalith.Extensions.Common.ApplicationError.html#Hexalith_Extensions_Common_ApplicationError_InnerError
+  commentId: P:Hexalith.Extensions.Common.ApplicationError.InnerError
+  fullName: Hexalith.Extensions.Common.ApplicationError.InnerError
+  nameWithType: ApplicationError.InnerError
+- uid: Hexalith.Extensions.Common.ApplicationError.InnerError*
+  name: InnerError
+  href: api/Hexalith.Extensions.Common.ApplicationError.html#Hexalith_Extensions_Common_ApplicationError_InnerError_
+  commentId: Overload:Hexalith.Extensions.Common.ApplicationError.InnerError
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Common.ApplicationError.InnerError
+  nameWithType: ApplicationError.InnerError
+- uid: Hexalith.Extensions.Common.ApplicationError.TechnicalArguments
+  name: TechnicalArguments
+  href: api/Hexalith.Extensions.Common.ApplicationError.html#Hexalith_Extensions_Common_ApplicationError_TechnicalArguments
+  commentId: P:Hexalith.Extensions.Common.ApplicationError.TechnicalArguments
+  fullName: Hexalith.Extensions.Common.ApplicationError.TechnicalArguments
+  nameWithType: ApplicationError.TechnicalArguments
+- uid: Hexalith.Extensions.Common.ApplicationError.TechnicalArguments*
+  name: TechnicalArguments
+  href: api/Hexalith.Extensions.Common.ApplicationError.html#Hexalith_Extensions_Common_ApplicationError_TechnicalArguments_
+  commentId: Overload:Hexalith.Extensions.Common.ApplicationError.TechnicalArguments
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Common.ApplicationError.TechnicalArguments
+  nameWithType: ApplicationError.TechnicalArguments
+- uid: Hexalith.Extensions.Common.ApplicationError.TechnicalDetail
+  name: TechnicalDetail
+  href: api/Hexalith.Extensions.Common.ApplicationError.html#Hexalith_Extensions_Common_ApplicationError_TechnicalDetail
+  commentId: P:Hexalith.Extensions.Common.ApplicationError.TechnicalDetail
+  fullName: Hexalith.Extensions.Common.ApplicationError.TechnicalDetail
+  nameWithType: ApplicationError.TechnicalDetail
+- uid: Hexalith.Extensions.Common.ApplicationError.TechnicalDetail*
+  name: TechnicalDetail
+  href: api/Hexalith.Extensions.Common.ApplicationError.html#Hexalith_Extensions_Common_ApplicationError_TechnicalDetail_
+  commentId: Overload:Hexalith.Extensions.Common.ApplicationError.TechnicalDetail
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Common.ApplicationError.TechnicalDetail
+  nameWithType: ApplicationError.TechnicalDetail
+- uid: Hexalith.Extensions.Common.ApplicationError.Title
+  name: Title
+  href: api/Hexalith.Extensions.Common.ApplicationError.html#Hexalith_Extensions_Common_ApplicationError_Title
+  commentId: P:Hexalith.Extensions.Common.ApplicationError.Title
+  fullName: Hexalith.Extensions.Common.ApplicationError.Title
+  nameWithType: ApplicationError.Title
+- uid: Hexalith.Extensions.Common.ApplicationError.Title*
+  name: Title
+  href: api/Hexalith.Extensions.Common.ApplicationError.html#Hexalith_Extensions_Common_ApplicationError_Title_
+  commentId: Overload:Hexalith.Extensions.Common.ApplicationError.Title
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Common.ApplicationError.Title
+  nameWithType: ApplicationError.Title
+- uid: Hexalith.Extensions.Common.ApplicationError.Type
+  name: Type
+  href: api/Hexalith.Extensions.Common.ApplicationError.html#Hexalith_Extensions_Common_ApplicationError_Type
+  commentId: P:Hexalith.Extensions.Common.ApplicationError.Type
+  fullName: Hexalith.Extensions.Common.ApplicationError.Type
+  nameWithType: ApplicationError.Type
+- uid: Hexalith.Extensions.Common.ApplicationError.Type*
+  name: Type
+  href: api/Hexalith.Extensions.Common.ApplicationError.html#Hexalith_Extensions_Common_ApplicationError_Type_
+  commentId: Overload:Hexalith.Extensions.Common.ApplicationError.Type
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Common.ApplicationError.Type
+  nameWithType: ApplicationError.Type
 - uid: Hexalith.Extensions.Common.ConditionalValue`1
   name: ConditionalValue<T>
   href: api/Hexalith.Extensions.Common.ConditionalValue-1.html
@@ -13359,116 +13495,6 @@ references:
   isSpec: "True"
   fullName: Hexalith.Extensions.Common.DateTimeService.UtcNow
   nameWithType: DateTimeService.UtcNow
-- uid: Hexalith.Extensions.Common.Error
-  name: Error
-  href: api/Hexalith.Extensions.Common.Error.html
-  commentId: T:Hexalith.Extensions.Common.Error
-  fullName: Hexalith.Extensions.Common.Error
-  nameWithType: Error
-- uid: Hexalith.Extensions.Common.Error.Arguments
-  name: Arguments
-  href: api/Hexalith.Extensions.Common.Error.html#Hexalith_Extensions_Common_Error_Arguments
-  commentId: P:Hexalith.Extensions.Common.Error.Arguments
-  fullName: Hexalith.Extensions.Common.Error.Arguments
-  nameWithType: Error.Arguments
-- uid: Hexalith.Extensions.Common.Error.Arguments*
-  name: Arguments
-  href: api/Hexalith.Extensions.Common.Error.html#Hexalith_Extensions_Common_Error_Arguments_
-  commentId: Overload:Hexalith.Extensions.Common.Error.Arguments
-  isSpec: "True"
-  fullName: Hexalith.Extensions.Common.Error.Arguments
-  nameWithType: Error.Arguments
-- uid: Hexalith.Extensions.Common.Error.Category
-  name: Category
-  href: api/Hexalith.Extensions.Common.Error.html#Hexalith_Extensions_Common_Error_Category
-  commentId: P:Hexalith.Extensions.Common.Error.Category
-  fullName: Hexalith.Extensions.Common.Error.Category
-  nameWithType: Error.Category
-- uid: Hexalith.Extensions.Common.Error.Category*
-  name: Category
-  href: api/Hexalith.Extensions.Common.Error.html#Hexalith_Extensions_Common_Error_Category_
-  commentId: Overload:Hexalith.Extensions.Common.Error.Category
-  isSpec: "True"
-  fullName: Hexalith.Extensions.Common.Error.Category
-  nameWithType: Error.Category
-- uid: Hexalith.Extensions.Common.Error.Detail
-  name: Detail
-  href: api/Hexalith.Extensions.Common.Error.html#Hexalith_Extensions_Common_Error_Detail
-  commentId: P:Hexalith.Extensions.Common.Error.Detail
-  fullName: Hexalith.Extensions.Common.Error.Detail
-  nameWithType: Error.Detail
-- uid: Hexalith.Extensions.Common.Error.Detail*
-  name: Detail
-  href: api/Hexalith.Extensions.Common.Error.html#Hexalith_Extensions_Common_Error_Detail_
-  commentId: Overload:Hexalith.Extensions.Common.Error.Detail
-  isSpec: "True"
-  fullName: Hexalith.Extensions.Common.Error.Detail
-  nameWithType: Error.Detail
-- uid: Hexalith.Extensions.Common.Error.InnerError
-  name: InnerError
-  href: api/Hexalith.Extensions.Common.Error.html#Hexalith_Extensions_Common_Error_InnerError
-  commentId: P:Hexalith.Extensions.Common.Error.InnerError
-  fullName: Hexalith.Extensions.Common.Error.InnerError
-  nameWithType: Error.InnerError
-- uid: Hexalith.Extensions.Common.Error.InnerError*
-  name: InnerError
-  href: api/Hexalith.Extensions.Common.Error.html#Hexalith_Extensions_Common_Error_InnerError_
-  commentId: Overload:Hexalith.Extensions.Common.Error.InnerError
-  isSpec: "True"
-  fullName: Hexalith.Extensions.Common.Error.InnerError
-  nameWithType: Error.InnerError
-- uid: Hexalith.Extensions.Common.Error.TechnicalArguments
-  name: TechnicalArguments
-  href: api/Hexalith.Extensions.Common.Error.html#Hexalith_Extensions_Common_Error_TechnicalArguments
-  commentId: P:Hexalith.Extensions.Common.Error.TechnicalArguments
-  fullName: Hexalith.Extensions.Common.Error.TechnicalArguments
-  nameWithType: Error.TechnicalArguments
-- uid: Hexalith.Extensions.Common.Error.TechnicalArguments*
-  name: TechnicalArguments
-  href: api/Hexalith.Extensions.Common.Error.html#Hexalith_Extensions_Common_Error_TechnicalArguments_
-  commentId: Overload:Hexalith.Extensions.Common.Error.TechnicalArguments
-  isSpec: "True"
-  fullName: Hexalith.Extensions.Common.Error.TechnicalArguments
-  nameWithType: Error.TechnicalArguments
-- uid: Hexalith.Extensions.Common.Error.TechnicalDetail
-  name: TechnicalDetail
-  href: api/Hexalith.Extensions.Common.Error.html#Hexalith_Extensions_Common_Error_TechnicalDetail
-  commentId: P:Hexalith.Extensions.Common.Error.TechnicalDetail
-  fullName: Hexalith.Extensions.Common.Error.TechnicalDetail
-  nameWithType: Error.TechnicalDetail
-- uid: Hexalith.Extensions.Common.Error.TechnicalDetail*
-  name: TechnicalDetail
-  href: api/Hexalith.Extensions.Common.Error.html#Hexalith_Extensions_Common_Error_TechnicalDetail_
-  commentId: Overload:Hexalith.Extensions.Common.Error.TechnicalDetail
-  isSpec: "True"
-  fullName: Hexalith.Extensions.Common.Error.TechnicalDetail
-  nameWithType: Error.TechnicalDetail
-- uid: Hexalith.Extensions.Common.Error.Title
-  name: Title
-  href: api/Hexalith.Extensions.Common.Error.html#Hexalith_Extensions_Common_Error_Title
-  commentId: P:Hexalith.Extensions.Common.Error.Title
-  fullName: Hexalith.Extensions.Common.Error.Title
-  nameWithType: Error.Title
-- uid: Hexalith.Extensions.Common.Error.Title*
-  name: Title
-  href: api/Hexalith.Extensions.Common.Error.html#Hexalith_Extensions_Common_Error_Title_
-  commentId: Overload:Hexalith.Extensions.Common.Error.Title
-  isSpec: "True"
-  fullName: Hexalith.Extensions.Common.Error.Title
-  nameWithType: Error.Title
-- uid: Hexalith.Extensions.Common.Error.Type
-  name: Type
-  href: api/Hexalith.Extensions.Common.Error.html#Hexalith_Extensions_Common_Error_Type
-  commentId: P:Hexalith.Extensions.Common.Error.Type
-  fullName: Hexalith.Extensions.Common.Error.Type
-  nameWithType: Error.Type
-- uid: Hexalith.Extensions.Common.Error.Type*
-  name: Type
-  href: api/Hexalith.Extensions.Common.Error.html#Hexalith_Extensions_Common_Error_Type_
-  commentId: Overload:Hexalith.Extensions.Common.Error.Type
-  isSpec: "True"
-  fullName: Hexalith.Extensions.Common.Error.Type
-  nameWithType: Error.Type
 - uid: Hexalith.Extensions.Common.ErrorCategory
   name: ErrorCategory
   href: api/Hexalith.Extensions.Common.ErrorCategory.html
@@ -13499,64 +13525,12 @@ references:
   commentId: T:Hexalith.Extensions.Common.ExampleNameAttribute
   fullName: Hexalith.Extensions.Common.ExampleNameAttribute
   nameWithType: ExampleNameAttribute
-- uid: Hexalith.Extensions.Common.ExampleNameAttribute.#ctor(System.String)
-  name: ExampleNameAttribute(String)
-  href: api/Hexalith.Extensions.Common.ExampleNameAttribute.html#Hexalith_Extensions_Common_ExampleNameAttribute__ctor_System_String_
-  commentId: M:Hexalith.Extensions.Common.ExampleNameAttribute.#ctor(System.String)
-  fullName: Hexalith.Extensions.Common.ExampleNameAttribute.ExampleNameAttribute(System.String)
-  nameWithType: ExampleNameAttribute.ExampleNameAttribute(String)
-- uid: Hexalith.Extensions.Common.ExampleNameAttribute.#ctor*
-  name: ExampleNameAttribute
-  href: api/Hexalith.Extensions.Common.ExampleNameAttribute.html#Hexalith_Extensions_Common_ExampleNameAttribute__ctor_
-  commentId: Overload:Hexalith.Extensions.Common.ExampleNameAttribute.#ctor
-  isSpec: "True"
-  fullName: Hexalith.Extensions.Common.ExampleNameAttribute.ExampleNameAttribute
-  nameWithType: ExampleNameAttribute.ExampleNameAttribute
-- uid: Hexalith.Extensions.Common.ExampleNameAttribute.Name
-  name: Name
-  href: api/Hexalith.Extensions.Common.ExampleNameAttribute.html#Hexalith_Extensions_Common_ExampleNameAttribute_Name
-  commentId: P:Hexalith.Extensions.Common.ExampleNameAttribute.Name
-  fullName: Hexalith.Extensions.Common.ExampleNameAttribute.Name
-  nameWithType: ExampleNameAttribute.Name
-- uid: Hexalith.Extensions.Common.ExampleNameAttribute.Name*
-  name: Name
-  href: api/Hexalith.Extensions.Common.ExampleNameAttribute.html#Hexalith_Extensions_Common_ExampleNameAttribute_Name_
-  commentId: Overload:Hexalith.Extensions.Common.ExampleNameAttribute.Name
-  isSpec: "True"
-  fullName: Hexalith.Extensions.Common.ExampleNameAttribute.Name
-  nameWithType: ExampleNameAttribute.Name
 - uid: Hexalith.Extensions.Common.ExampleValueAttribute
   name: ExampleValueAttribute
   href: api/Hexalith.Extensions.Common.ExampleValueAttribute.html
   commentId: T:Hexalith.Extensions.Common.ExampleValueAttribute
   fullName: Hexalith.Extensions.Common.ExampleValueAttribute
   nameWithType: ExampleValueAttribute
-- uid: Hexalith.Extensions.Common.ExampleValueAttribute.#ctor(System.Object)
-  name: ExampleValueAttribute(Object)
-  href: api/Hexalith.Extensions.Common.ExampleValueAttribute.html#Hexalith_Extensions_Common_ExampleValueAttribute__ctor_System_Object_
-  commentId: M:Hexalith.Extensions.Common.ExampleValueAttribute.#ctor(System.Object)
-  fullName: Hexalith.Extensions.Common.ExampleValueAttribute.ExampleValueAttribute(System.Object)
-  nameWithType: ExampleValueAttribute.ExampleValueAttribute(Object)
-- uid: Hexalith.Extensions.Common.ExampleValueAttribute.#ctor*
-  name: ExampleValueAttribute
-  href: api/Hexalith.Extensions.Common.ExampleValueAttribute.html#Hexalith_Extensions_Common_ExampleValueAttribute__ctor_
-  commentId: Overload:Hexalith.Extensions.Common.ExampleValueAttribute.#ctor
-  isSpec: "True"
-  fullName: Hexalith.Extensions.Common.ExampleValueAttribute.ExampleValueAttribute
-  nameWithType: ExampleValueAttribute.ExampleValueAttribute
-- uid: Hexalith.Extensions.Common.ExampleValueAttribute.Value
-  name: Value
-  href: api/Hexalith.Extensions.Common.ExampleValueAttribute.html#Hexalith_Extensions_Common_ExampleValueAttribute_Value
-  commentId: P:Hexalith.Extensions.Common.ExampleValueAttribute.Value
-  fullName: Hexalith.Extensions.Common.ExampleValueAttribute.Value
-  nameWithType: ExampleValueAttribute.Value
-- uid: Hexalith.Extensions.Common.ExampleValueAttribute.Value*
-  name: Value
-  href: api/Hexalith.Extensions.Common.ExampleValueAttribute.html#Hexalith_Extensions_Common_ExampleValueAttribute_Value_
-  commentId: Overload:Hexalith.Extensions.Common.ExampleValueAttribute.Value
-  isSpec: "True"
-  fullName: Hexalith.Extensions.Common.ExampleValueAttribute.Value
-  nameWithType: ExampleValueAttribute.Value
 - uid: Hexalith.Extensions.Common.IDateTimeService
   name: IDateTimeService
   href: api/Hexalith.Extensions.Common.IDateTimeService.html
@@ -13685,14 +13659,14 @@ references:
   fullName.vb: Hexalith.Extensions.Common.ValueOrError(Of T).Value
   nameWithType: ValueOrError<T>.Value
   nameWithType.vb: ValueOrError(Of T).Value
-- uid: Hexalith.Extensions.Common.ValueOrError`1.WithError(Hexalith.Extensions.Common.Error)
-  name: WithError(Error)
-  href: api/Hexalith.Extensions.Common.ValueOrError-1.html#Hexalith_Extensions_Common_ValueOrError_1_WithError_Hexalith_Extensions_Common_Error_
-  commentId: M:Hexalith.Extensions.Common.ValueOrError`1.WithError(Hexalith.Extensions.Common.Error)
-  fullName: Hexalith.Extensions.Common.ValueOrError<T>.WithError(Hexalith.Extensions.Common.Error)
-  fullName.vb: Hexalith.Extensions.Common.ValueOrError(Of T).WithError(Hexalith.Extensions.Common.Error)
-  nameWithType: ValueOrError<T>.WithError(Error)
-  nameWithType.vb: ValueOrError(Of T).WithError(Error)
+- uid: Hexalith.Extensions.Common.ValueOrError`1.WithError(Hexalith.Extensions.Common.ApplicationError)
+  name: WithError(ApplicationError)
+  href: api/Hexalith.Extensions.Common.ValueOrError-1.html#Hexalith_Extensions_Common_ValueOrError_1_WithError_Hexalith_Extensions_Common_ApplicationError_
+  commentId: M:Hexalith.Extensions.Common.ValueOrError`1.WithError(Hexalith.Extensions.Common.ApplicationError)
+  fullName: Hexalith.Extensions.Common.ValueOrError<T>.WithError(Hexalith.Extensions.Common.ApplicationError)
+  fullName.vb: Hexalith.Extensions.Common.ValueOrError(Of T).WithError(Hexalith.Extensions.Common.ApplicationError)
+  nameWithType: ValueOrError<T>.WithError(ApplicationError)
+  nameWithType.vb: ValueOrError(Of T).WithError(ApplicationError)
 - uid: Hexalith.Extensions.Common.ValueOrError`1.WithError*
   name: WithError
   href: api/Hexalith.Extensions.Common.ValueOrError-1.html#Hexalith_Extensions_Common_ValueOrError_1_WithError_
@@ -13875,6 +13849,14 @@ references:
   fullName.vb: Hexalith.Extensions.Configuration.SettingsException(Of TSettings).SettingsException
   nameWithType: SettingsException<TSettings>.SettingsException
   nameWithType.vb: SettingsException(Of TSettings).SettingsException
+- uid: Hexalith.Extensions.Configuration.SettingsException`1.ThrowIfUndefined(System.Object,System.String)
+  name: ThrowIfUndefined(Object, String)
+  href: api/Hexalith.Extensions.Configuration.SettingsException-1.html#Hexalith_Extensions_Configuration_SettingsException_1_ThrowIfUndefined_System_Object_System_String_
+  commentId: M:Hexalith.Extensions.Configuration.SettingsException`1.ThrowIfUndefined(System.Object,System.String)
+  fullName: Hexalith.Extensions.Configuration.SettingsException<TSettings>.ThrowIfUndefined(System.Object, System.String)
+  fullName.vb: Hexalith.Extensions.Configuration.SettingsException(Of TSettings).ThrowIfUndefined(System.Object, System.String)
+  nameWithType: SettingsException<TSettings>.ThrowIfUndefined(Object, String)
+  nameWithType.vb: SettingsException(Of TSettings).ThrowIfUndefined(Object, String)
 - uid: Hexalith.Extensions.Configuration.SettingsException`1.ThrowIfUndefined*
   name: ThrowIfUndefined
   href: api/Hexalith.Extensions.Configuration.SettingsException-1.html#Hexalith_Extensions_Configuration_SettingsException_1_ThrowIfUndefined_
@@ -13884,15 +13866,6 @@ references:
   fullName.vb: Hexalith.Extensions.Configuration.SettingsException(Of TSettings).ThrowIfUndefined
   nameWithType: SettingsException<TSettings>.ThrowIfUndefined
   nameWithType.vb: SettingsException(Of TSettings).ThrowIfUndefined
-- uid: Hexalith.Extensions.Configuration.SettingsException`1.ThrowIfUndefined``1(``0,System.String)
-  name: ThrowIfUndefined<TValue>(TValue, String)
-  href: api/Hexalith.Extensions.Configuration.SettingsException-1.html#Hexalith_Extensions_Configuration_SettingsException_1_ThrowIfUndefined__1___0_System_String_
-  commentId: M:Hexalith.Extensions.Configuration.SettingsException`1.ThrowIfUndefined``1(``0,System.String)
-  name.vb: ThrowIfUndefined(Of TValue)(TValue, String)
-  fullName: Hexalith.Extensions.Configuration.SettingsException<TSettings>.ThrowIfUndefined<TValue>(TValue, System.String)
-  fullName.vb: Hexalith.Extensions.Configuration.SettingsException(Of TSettings).ThrowIfUndefined(Of TValue)(TValue, System.String)
-  nameWithType: SettingsException<TSettings>.ThrowIfUndefined<TValue>(TValue, String)
-  nameWithType.vb: SettingsException(Of TSettings).ThrowIfUndefined(Of TValue)(TValue, String)
 - uid: Hexalith.Extensions.DefaultLabels
   name: DefaultLabels
   href: api/Hexalith.Extensions.DefaultLabels.html
@@ -23784,12 +23757,12 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.WebApis.Controllers.BindingController.Logger
   nameWithType: BindingController.Logger
-- uid: Hexalith.Infrastructure.WebApis.Controllers.BindingController.Problem(Hexalith.Extensions.Common.Error)
-  name: Problem(Error)
-  href: api/Hexalith.Infrastructure.WebApis.Controllers.BindingController.html#Hexalith_Infrastructure_WebApis_Controllers_BindingController_Problem_Hexalith_Extensions_Common_Error_
-  commentId: M:Hexalith.Infrastructure.WebApis.Controllers.BindingController.Problem(Hexalith.Extensions.Common.Error)
-  fullName: Hexalith.Infrastructure.WebApis.Controllers.BindingController.Problem(Hexalith.Extensions.Common.Error)
-  nameWithType: BindingController.Problem(Error)
+- uid: Hexalith.Infrastructure.WebApis.Controllers.BindingController.Problem(Hexalith.Extensions.Common.ApplicationError)
+  name: Problem(ApplicationError)
+  href: api/Hexalith.Infrastructure.WebApis.Controllers.BindingController.html#Hexalith_Infrastructure_WebApis_Controllers_BindingController_Problem_Hexalith_Extensions_Common_ApplicationError_
+  commentId: M:Hexalith.Infrastructure.WebApis.Controllers.BindingController.Problem(Hexalith.Extensions.Common.ApplicationError)
+  fullName: Hexalith.Infrastructure.WebApis.Controllers.BindingController.Problem(Hexalith.Extensions.Common.ApplicationError)
+  nameWithType: BindingController.Problem(ApplicationError)
 - uid: Hexalith.Infrastructure.WebApis.Controllers.BindingController.Problem*
   name: Problem
   href: api/Hexalith.Infrastructure.WebApis.Controllers.BindingController.html#Hexalith_Infrastructure_WebApis_Controllers_BindingController_Problem_

@@ -19,6 +19,7 @@ namespace Hexalith.Extensions.Helpers;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
 using Hexalith.Extensions.Reflections;
@@ -35,8 +36,9 @@ public static class ObjectDescriptionHelper
     /// </summary>
     /// <param name="type">The type.</param>
     /// <returns>System.ValueTuple&lt;System.String, System.String, System.String&gt;.</returns>
-    public static (string TypeName, string DisplayName, string Description) Describe(this Type type)
+    public static (string TypeName, string DisplayName, string Description) Describe([NotNull] this Type type)
     {
+        ArgumentNullException.ThrowIfNull(type);
         string? typeName = null;
         string? name = null;
         string? description = null;
@@ -88,8 +90,9 @@ public static class ObjectDescriptionHelper
     /// </summary>
     /// <param name="property">The property.</param>
     /// <returns>System.ValueTuple&lt;System.String, System.String, System.Nullable&lt;System.Object&gt;, System.Boolean&gt;.</returns>
-    public static (string DisplayName, string Description, object? DefaultValue, bool IsRequired) Describe(this PropertyInfo property)
+    public static (string DisplayName, string Description, object? DefaultValue, bool IsRequired) Describe([NotNull] this PropertyInfo property)
     {
+        ArgumentNullException.ThrowIfNull(property);
         string? name = null;
         string? description = null;
         object? defaultValue = property.GetCustomAttribute<DefaultValueAttribute>()?.Value;
@@ -133,9 +136,10 @@ public static class ObjectDescriptionHelper
     /// </summary>
     /// <param name="type">The type.</param>
     /// <returns>IDictionary&lt;System.String, System.ValueTuple&lt;System.String, System.String, System.Nullable&lt;System.Object&gt;, System.Boolean&gt;&gt;.</returns>
-    public static IDictionary<string, (string DisplayName, string Description, object? DefaultValue, bool IsRequired)> DescribeInstanceWriteProperties(this Type type)
+    public static IDictionary<string, (string DisplayName, string Description, object? DefaultValue, bool IsRequired)> DescribeInstanceWriteProperties([NotNull] this Type type)
     {
-        Dictionary<string, (string DisplayName, string Description, object? DefaultValue, bool IsRequired)> result = new();
+        ArgumentNullException.ThrowIfNull(type);
+        Dictionary<string, (string DisplayName, string Description, object? DefaultValue, bool IsRequired)> result = [];
         foreach (PropertyInfo property in type.GetProperties(BindingFlags.Instance | BindingFlags.Public).Where(p => p.CanWrite))
         {
             result.Add(property.Name, property.Describe());
@@ -151,7 +155,7 @@ public static class ObjectDescriptionHelper
     /// <returns>System.ValueTuple&lt;System.String, System.String, System.String&gt;.</returns>
     public static IDictionary<string, (string DisplayName, string Description, object? DefaultValue, bool IsRequired)> DescribeProperties(this Type type)
     {
-        Dictionary<string, (string DisplayName, string Description, object? DefaultValue, bool IsRequired)> result = new();
+        Dictionary<string, (string DisplayName, string Description, object? DefaultValue, bool IsRequired)> result = [];
         foreach (PropertyInfo property in type.GetProperties())
         {
             result.Add(property.Name, property.Describe());

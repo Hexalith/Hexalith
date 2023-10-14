@@ -396,19 +396,19 @@ Implements the <span class="xref">System.ArgumentException</span>.</p>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Extensions_Configuration_SettingsException_1_ThrowIfUndefined__1___0_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Extensions.Configuration.SettingsException%601.ThrowIfUndefined%60%601(%60%600%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Extensions_Configuration_SettingsException_1_ThrowIfUndefined_System_Object_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Extensions.Configuration.SettingsException%601.ThrowIfUndefined(System.Object%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Common/Hexalith.Extensions/Configuration/SettingsException.cs/#L96">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Common/Hexalith.Extensions/Configuration/SettingsException.cs/#L95">View Source</a>
   </span>
   <a id="Hexalith_Extensions_Configuration_SettingsException_1_ThrowIfUndefined_" data-uid="Hexalith.Extensions.Configuration.SettingsException`1.ThrowIfUndefined*"></a>
-  <h4 id="Hexalith_Extensions_Configuration_SettingsException_1_ThrowIfUndefined__1___0_System_String_" data-uid="Hexalith.Extensions.Configuration.SettingsException`1.ThrowIfUndefined``1(``0,System.String)">ThrowIfUndefined&lt;TValue&gt;(TValue, String)</h4>
-  <div class="markdown level1 summary"><p>Throws an <span class="xref">System.ArgumentException</span> if <code data-dev-comment-type="paramref" class="paramref">argument</code> is null.</p>
+  <h4 id="Hexalith_Extensions_Configuration_SettingsException_1_ThrowIfUndefined_System_Object_System_String_" data-uid="Hexalith.Extensions.Configuration.SettingsException`1.ThrowIfUndefined(System.Object,System.String)">ThrowIfUndefined(Object, String)</h4>
+  <div class="markdown level1 summary"><p>Throws if undefined.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void ThrowIfUndefined&lt;TValue&gt;(TValue argument, string paramName = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static void ThrowIfUndefined(object argument, string paramName = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -421,31 +421,15 @@ Implements the <span class="xref">System.ArgumentException</span>.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">TValue</span></td>
+        <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">argument</span></td>
-        <td><p>The reference type argument.</p>
+        <td><p>The argument.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">paramName</span></td>
-        <td><p>The name of the parameter with which <code data-dev-comment-type="paramref" class="paramref">argument</code> corresponds.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">TValue</span></td>
-        <td><p>The type of the t value.</p>
+        <td><p>Name of the parameter.</p>
 </td>
       </tr>
     </tbody>

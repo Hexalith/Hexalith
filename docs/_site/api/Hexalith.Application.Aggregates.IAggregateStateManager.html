@@ -86,19 +86,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Aggregates_IAggregateStateManager_AddCommandAsync_Hexalith_Application_States_IStateStoreProvider_Hexalith_Application_Tasks_IRetryCallbackManager_Hexalith_Application_Commands_BaseCommand___Hexalith_Application_Metadatas_BaseMetadata___Microsoft_Extensions_Logging_ILogger_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Aggregates.IAggregateStateManager.AddCommandAsync(Hexalith.Application.States.IStateStoreProvider%2CHexalith.Application.Tasks.IRetryCallbackManager%2CHexalith.Application.Commands.BaseCommand%5B%5D%2CHexalith.Application.Metadatas.BaseMetadata%5B%5D%2CMicrosoft.Extensions.Logging.ILogger%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Aggregates_IAggregateStateManager_AddCommandAsync_Hexalith_Application_States_IStateStoreProvider_Hexalith_Application_Tasks_IRetryCallbackManager_Hexalith_Application_Commands_BaseCommand___Hexalith_Application_Metadatas_BaseMetadata___CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Aggregates.IAggregateStateManager.AddCommandAsync(Hexalith.Application.States.IStateStoreProvider%2CHexalith.Application.Tasks.IRetryCallbackManager%2CHexalith.Application.Commands.BaseCommand%5B%5D%2CHexalith.Application.Metadatas.BaseMetadata%5B%5D%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Aggregates/IAggregateStateManager.cs/#L44">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Aggregates/IAggregateStateManager.cs/#L41">View Source</a>
   </span>
   <a id="Hexalith_Application_Aggregates_IAggregateStateManager_AddCommandAsync_" data-uid="Hexalith.Application.Aggregates.IAggregateStateManager.AddCommandAsync*"></a>
-  <h4 id="Hexalith_Application_Aggregates_IAggregateStateManager_AddCommandAsync_Hexalith_Application_States_IStateStoreProvider_Hexalith_Application_Tasks_IRetryCallbackManager_Hexalith_Application_Commands_BaseCommand___Hexalith_Application_Metadatas_BaseMetadata___Microsoft_Extensions_Logging_ILogger_CancellationToken_" data-uid="Hexalith.Application.Aggregates.IAggregateStateManager.AddCommandAsync(Hexalith.Application.States.IStateStoreProvider,Hexalith.Application.Tasks.IRetryCallbackManager,Hexalith.Application.Commands.BaseCommand[],Hexalith.Application.Metadatas.BaseMetadata[],Microsoft.Extensions.Logging.ILogger,CancellationToken)">AddCommandAsync(IStateStoreProvider, IRetryCallbackManager, BaseCommand[], BaseMetadata[], ILogger, CancellationToken)</h4>
+  <h4 id="Hexalith_Application_Aggregates_IAggregateStateManager_AddCommandAsync_Hexalith_Application_States_IStateStoreProvider_Hexalith_Application_Tasks_IRetryCallbackManager_Hexalith_Application_Commands_BaseCommand___Hexalith_Application_Metadatas_BaseMetadata___CancellationToken_" data-uid="Hexalith.Application.Aggregates.IAggregateStateManager.AddCommandAsync(Hexalith.Application.States.IStateStoreProvider,Hexalith.Application.Tasks.IRetryCallbackManager,Hexalith.Application.Commands.BaseCommand[],Hexalith.Application.Metadatas.BaseMetadata[],CancellationToken)">AddCommandAsync(IStateStoreProvider, IRetryCallbackManager, BaseCommand[], BaseMetadata[], CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Adds the command asynchronous.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task AddCommandAsync(IStateStoreProvider stateProvider, IRetryCallbackManager retryManager, BaseCommand[] commands, BaseMetadata[] metadatas, ILogger logger, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">Task AddCommandAsync(IStateStoreProvider stateProvider, IRetryCallbackManager retryManager, BaseCommand[] commands, BaseMetadata[] metadatas, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -135,12 +135,6 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Microsoft.Extensions.Logging.ILogger</span></td>
-        <td><span class="parametername">logger</span></td>
-        <td><p>The logger.</p>
-</td>
-      </tr>
-      <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
@@ -166,19 +160,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Aggregates_IAggregateStateManager_ContinueAsync_Hexalith_Application_States_IStateStoreProvider_Hexalith_Application_Tasks_IRetryCallbackManager_Hexalith_Application_Tasks_ResiliencyPolicy_Hexalith_Domain_Aggregates_IAggregate_Func_Hexalith_Domain_Events_BaseEvent_Hexalith_Domain_Aggregates_IAggregate__Microsoft_Extensions_Logging_ILogger_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Aggregates.IAggregateStateManager.ContinueAsync(Hexalith.Application.States.IStateStoreProvider%2CHexalith.Application.Tasks.IRetryCallbackManager%2CHexalith.Application.Tasks.ResiliencyPolicy%2CHexalith.Domain.Aggregates.IAggregate%2CFunc%7BHexalith.Domain.Events.BaseEvent%2CHexalith.Domain.Aggregates.IAggregate%7D%2CMicrosoft.Extensions.Logging.ILogger%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Aggregates_IAggregateStateManager_ContinueAsync_Hexalith_Application_States_IStateStoreProvider_Hexalith_Application_Tasks_IRetryCallbackManager_Hexalith_Application_Tasks_ResiliencyPolicy_Hexalith_Domain_Aggregates_IAggregate_Func_Hexalith_Domain_Events_BaseEvent_Hexalith_Domain_Aggregates_IAggregate__CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Aggregates.IAggregateStateManager.ContinueAsync(Hexalith.Application.States.IStateStoreProvider%2CHexalith.Application.Tasks.IRetryCallbackManager%2CHexalith.Application.Tasks.ResiliencyPolicy%2CHexalith.Domain.Aggregates.IAggregate%2CFunc%7BHexalith.Domain.Events.BaseEvent%2CHexalith.Domain.Aggregates.IAggregate%7D%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Aggregates/IAggregateStateManager.cs/#L63">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Aggregates/IAggregateStateManager.cs/#L58">View Source</a>
   </span>
   <a id="Hexalith_Application_Aggregates_IAggregateStateManager_ContinueAsync_" data-uid="Hexalith.Application.Aggregates.IAggregateStateManager.ContinueAsync*"></a>
-  <h4 id="Hexalith_Application_Aggregates_IAggregateStateManager_ContinueAsync_Hexalith_Application_States_IStateStoreProvider_Hexalith_Application_Tasks_IRetryCallbackManager_Hexalith_Application_Tasks_ResiliencyPolicy_Hexalith_Domain_Aggregates_IAggregate_Func_Hexalith_Domain_Events_BaseEvent_Hexalith_Domain_Aggregates_IAggregate__Microsoft_Extensions_Logging_ILogger_CancellationToken_" data-uid="Hexalith.Application.Aggregates.IAggregateStateManager.ContinueAsync(Hexalith.Application.States.IStateStoreProvider,Hexalith.Application.Tasks.IRetryCallbackManager,Hexalith.Application.Tasks.ResiliencyPolicy,Hexalith.Domain.Aggregates.IAggregate,Func{Hexalith.Domain.Events.BaseEvent,Hexalith.Domain.Aggregates.IAggregate},Microsoft.Extensions.Logging.ILogger,CancellationToken)">ContinueAsync(IStateStoreProvider, IRetryCallbackManager, ResiliencyPolicy, IAggregate, Func&lt;BaseEvent, IAggregate&gt;, ILogger, CancellationToken)</h4>
+  <h4 id="Hexalith_Application_Aggregates_IAggregateStateManager_ContinueAsync_Hexalith_Application_States_IStateStoreProvider_Hexalith_Application_Tasks_IRetryCallbackManager_Hexalith_Application_Tasks_ResiliencyPolicy_Hexalith_Domain_Aggregates_IAggregate_Func_Hexalith_Domain_Events_BaseEvent_Hexalith_Domain_Aggregates_IAggregate__CancellationToken_" data-uid="Hexalith.Application.Aggregates.IAggregateStateManager.ContinueAsync(Hexalith.Application.States.IStateStoreProvider,Hexalith.Application.Tasks.IRetryCallbackManager,Hexalith.Application.Tasks.ResiliencyPolicy,Hexalith.Domain.Aggregates.IAggregate,Func{Hexalith.Domain.Events.BaseEvent,Hexalith.Domain.Aggregates.IAggregate},CancellationToken)">ContinueAsync(IStateStoreProvider, IRetryCallbackManager, ResiliencyPolicy, IAggregate, Func&lt;BaseEvent, IAggregate&gt;, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Continues the asynchronous.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IAggregate&gt; ContinueAsync(IStateStoreProvider stateProvider, IRetryCallbackManager retryManager, ResiliencyPolicy resiliencyPolicy, IAggregate aggregate, Func&lt;BaseEvent, IAggregate&gt; aggregateInitializer, ILogger logger, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;IAggregate&gt; ContinueAsync(IStateStoreProvider stateProvider, IRetryCallbackManager retryManager, ResiliencyPolicy resiliencyPolicy, IAggregate aggregate, Func&lt;BaseEvent, IAggregate&gt; aggregateInitializer, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -221,12 +215,6 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Microsoft.Extensions.Logging.ILogger</span></td>
-        <td><span class="parametername">logger</span></td>
-        <td><p>The logger.</p>
-</td>
-      </tr>
-      <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
@@ -255,7 +243,7 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Aggregates_IAggregateStateManager_GetAggregateAsync_Hexalith_Application_States_IStateStoreProvider_Func_Hexalith_Domain_Events_BaseEvent_Hexalith_Domain_Aggregates_IAggregate__CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Aggregates.IAggregateStateManager.GetAggregateAsync(Hexalith.Application.States.IStateStoreProvider%2CFunc%7BHexalith.Domain.Events.BaseEvent%2CHexalith.Domain.Aggregates.IAggregate%7D%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Aggregates/IAggregateStateManager.cs/#L79">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Aggregates/IAggregateStateManager.cs/#L73">View Source</a>
   </span>
   <a id="Hexalith_Application_Aggregates_IAggregateStateManager_GetAggregateAsync_" data-uid="Hexalith.Application.Aggregates.IAggregateStateManager.GetAggregateAsync*"></a>
   <h4 id="Hexalith_Application_Aggregates_IAggregateStateManager_GetAggregateAsync_Hexalith_Application_States_IStateStoreProvider_Func_Hexalith_Domain_Events_BaseEvent_Hexalith_Domain_Aggregates_IAggregate__CancellationToken_" data-uid="Hexalith.Application.Aggregates.IAggregateStateManager.GetAggregateAsync(Hexalith.Application.States.IStateStoreProvider,Func{Hexalith.Domain.Events.BaseEvent,Hexalith.Domain.Aggregates.IAggregate},CancellationToken)">GetAggregateAsync(IStateStoreProvider, Func&lt;BaseEvent, IAggregate&gt;, CancellationToken)</h4>
@@ -317,7 +305,7 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Aggregates_IAggregateStateManager_GetCommandCountAsync_Hexalith_Application_States_IStateStoreProvider_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Aggregates.IAggregateStateManager.GetCommandCountAsync(Hexalith.Application.States.IStateStoreProvider%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Aggregates/IAggregateStateManager.cs/#L90">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Aggregates/IAggregateStateManager.cs/#L84">View Source</a>
   </span>
   <a id="Hexalith_Application_Aggregates_IAggregateStateManager_GetCommandCountAsync_" data-uid="Hexalith.Application.Aggregates.IAggregateStateManager.GetCommandCountAsync*"></a>
   <h4 id="Hexalith_Application_Aggregates_IAggregateStateManager_GetCommandCountAsync_Hexalith_Application_States_IStateStoreProvider_CancellationToken_" data-uid="Hexalith.Application.Aggregates.IAggregateStateManager.GetCommandCountAsync(Hexalith.Application.States.IStateStoreProvider,CancellationToken)">GetCommandCountAsync(IStateStoreProvider, CancellationToken)</h4>
@@ -373,7 +361,7 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Aggregates_IAggregateStateManager_GetCommandsAsync__1_Hexalith_Application_States_IStateStoreProvider_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Aggregates.IAggregateStateManager.GetCommandsAsync%60%601(Hexalith.Application.States.IStateStoreProvider%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Aggregates/IAggregateStateManager.cs/#L99">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Aggregates/IAggregateStateManager.cs/#L93">View Source</a>
   </span>
   <a id="Hexalith_Application_Aggregates_IAggregateStateManager_GetCommandsAsync_" data-uid="Hexalith.Application.Aggregates.IAggregateStateManager.GetCommandsAsync*"></a>
   <h4 id="Hexalith_Application_Aggregates_IAggregateStateManager_GetCommandsAsync__1_Hexalith_Application_States_IStateStoreProvider_CancellationToken_" data-uid="Hexalith.Application.Aggregates.IAggregateStateManager.GetCommandsAsync``1(Hexalith.Application.States.IStateStoreProvider,CancellationToken)">GetCommandsAsync&lt;T&gt;(IStateStoreProvider, CancellationToken)</h4>
@@ -445,7 +433,7 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Aggregates_IAggregateStateManager_GetEventCountAsync_Hexalith_Application_States_IStateStoreProvider_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Aggregates.IAggregateStateManager.GetEventCountAsync(Hexalith.Application.States.IStateStoreProvider%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Aggregates/IAggregateStateManager.cs/#L107">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Aggregates/IAggregateStateManager.cs/#L101">View Source</a>
   </span>
   <a id="Hexalith_Application_Aggregates_IAggregateStateManager_GetEventCountAsync_" data-uid="Hexalith.Application.Aggregates.IAggregateStateManager.GetEventCountAsync*"></a>
   <h4 id="Hexalith_Application_Aggregates_IAggregateStateManager_GetEventCountAsync_Hexalith_Application_States_IStateStoreProvider_CancellationToken_" data-uid="Hexalith.Application.Aggregates.IAggregateStateManager.GetEventCountAsync(Hexalith.Application.States.IStateStoreProvider,CancellationToken)">GetEventCountAsync(IStateStoreProvider, CancellationToken)</h4>
@@ -501,7 +489,7 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Aggregates_IAggregateStateManager_GetEventsAsync__1_Hexalith_Application_States_IStateStoreProvider_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Aggregates.IAggregateStateManager.GetEventsAsync%60%601(Hexalith.Application.States.IStateStoreProvider%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Aggregates/IAggregateStateManager.cs/#L116">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Aggregates/IAggregateStateManager.cs/#L110">View Source</a>
   </span>
   <a id="Hexalith_Application_Aggregates_IAggregateStateManager_GetEventsAsync_" data-uid="Hexalith.Application.Aggregates.IAggregateStateManager.GetEventsAsync*"></a>
   <h4 id="Hexalith_Application_Aggregates_IAggregateStateManager_GetEventsAsync__1_Hexalith_Application_States_IStateStoreProvider_CancellationToken_" data-uid="Hexalith.Application.Aggregates.IAggregateStateManager.GetEventsAsync``1(Hexalith.Application.States.IStateStoreProvider,CancellationToken)">GetEventsAsync&lt;T&gt;(IStateStoreProvider, CancellationToken)</h4>
@@ -586,7 +574,7 @@
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Aggregates_IAggregateStateManager.md&amp;value=---%0Auid%3A%20Hexalith.Application.Aggregates.IAggregateStateManager%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Aggregates/IAggregateStateManager.cs/#L32" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Aggregates/IAggregateStateManager.cs/#L30" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

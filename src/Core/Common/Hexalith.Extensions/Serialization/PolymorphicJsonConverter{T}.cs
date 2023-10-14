@@ -98,7 +98,7 @@ public class PolymorphicJsonConverter<T> : JsonConverter<T>
     /// <exception cref="NotSupportedException">Cannot create JSON object.</exception>
     public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
     {
-        if (value.GetType() == typeof(T))
+        if (value != null && value.GetType() == typeof(T))
         {
             throw new InvalidOperationException("The serialized value type can't be the same as the polymorphic base class : " + value.GetType().Name);
         }

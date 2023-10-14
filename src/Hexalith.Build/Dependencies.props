@@ -3,7 +3,7 @@
 		<!-- Detect if the solution is opened in VS to add local repository for packages -->
 		<AdaptiveCardsVersion>3.1.0</AdaptiveCardsVersion>
 		<AdaptiveCardsTemplatingVersion>1.5.0</AdaptiveCardsTemplatingVersion>
-		<AzureIdentityVersion>1.10.1</AzureIdentityVersion>
+		<AzureIdentityVersion>1.10.2</AzureIdentityVersion>
 		<AzureResourceManagerVersion>1.7.0</AzureResourceManagerVersion>
 		<AzureResourceManagerContainerRegistryVersion>1.1.0</AzureResourceManagerContainerRegistryVersion>
 		<AzureResourceManagerCognitiveServicesVersion>1.3.0</AzureResourceManagerCognitiveServicesVersion>
@@ -27,11 +27,12 @@
 		<MicrosoftVisualStudioThreadingAnalyzersVersion>17.7.30</MicrosoftVisualStudioThreadingAnalyzersVersion>
 		<MinverVersion>4.3.0</MinverVersion>
 		<MoqVersion>4.20.69</MoqVersion>
-		<SerilogVersion>7.0.0</SerilogVersion>
+		<SerilogVersion>7.0.*</SerilogVersion>
+		<SerilogEnrichersEnvironmentVersion>2.3.0</SerilogEnrichersEnvironmentVersion>
 		<StyleCopAnalyzersVersion>1.2.0-beta.507</StyleCopAnalyzersVersion>
 		<SwashbuckleAspNetCoreVersion>6.5.*</SwashbuckleAspNetCoreVersion>
-		<XUnitRunnerVisualStudioVersion>2.5.1</XUnitRunnerVisualStudioVersion>
-		<XUnitVersion>2.5.1</XUnitVersion>
+		<XUnitRunnerVisualStudioVersion>2.5.3</XUnitRunnerVisualStudioVersion>
+		<XUnitVersion>2.5.2</XUnitVersion>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' == 'true' or '$(BuildingByReSharper)' == 'true'">
 		<!--<DaprVersion>1.0.0-local</DaprVersion>-->

@@ -49,7 +49,9 @@ public static class TypeMapper<TMapped>
             {
                 lock (_lock)
                 {
+#pragma warning disable CA1508 // Avoid dead conditional code
                     _map ??= GetMap();
+#pragma warning restore CA1508 // Avoid dead conditional code
                 }
             }
 
@@ -65,7 +67,7 @@ public static class TypeMapper<TMapped>
     /// <exception cref="System.InvalidOperationException">Type {type.FullName} could not be added to the serialization mapper. Name '{obj.TypeMapName}' already exists ans is associated to '{map[key].FullName}'.</exception>
     public static Dictionary<string, TMapped> GetMap()
     {
-        Dictionary<string, TMapped> map = new();
+        Dictionary<string, TMapped> map = [];
         foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies().Where(a => !a.IsDynamic))
         {
             try
