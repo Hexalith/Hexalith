@@ -69,7 +69,7 @@ public class TaskProcessor : ITaskProcessor
     /// Initialize a processor copy.
     /// </summary>
     /// <param name="processor">The processor to duplicate.</param>
-    private TaskProcessor(ITaskProcessor processor)
+    public TaskProcessor(ITaskProcessor processor)
     {
         _ = processor ?? throw new ArgumentNullException(nameof(processor));
 #pragma warning disable CS0618 // Type or member is obsolete
@@ -128,13 +128,17 @@ public class TaskProcessor : ITaskProcessor
     }
 
     /// <summary>
-    /// Gets the retry wait time.
+    /// Gets or sets the retry wait time.
     /// </summary>
     /// <value>The retry wait time.</value>
     [DataMember(Order = 5)]
     [JsonPropertyOrder(5)]
     public DateTimeOffset? RetryDate
-        => Ended ? null : ResiliencyPolicy.NextRetryTime(History.CreatedDate, Failure?.Count ?? 0);
+    {
+        get => Ended ? null : ResiliencyPolicy.NextRetryTime(History.CreatedDate, Failure?.Count ?? 0);
+        [Obsolete("Setter used only for serialization purposes.", false)]
+        set { }
+    }
 
     /// <summary>
     /// Gets the retry wait time.
@@ -161,7 +165,7 @@ public class TaskProcessor : ITaskProcessor
     /// Cancels this instance.
     /// </summary>
     /// <returns>Hexalith.Application.Abstractions.Tasks.TaskProcessor.</returns>
-    /// <inheritdoc cref="ITaskProcessor.Cancel" />
+    /// <inheritdoc cref="ITaskProcessor.CancelTask" />
     public TaskProcessor Cancel()
     {
         return Ended
@@ -169,11 +173,14 @@ public class TaskProcessor : ITaskProcessor
             : new TaskProcessor(TaskProcessorStatus.Canceled, History.Canceled(), ResiliencyPolicy, Failure);
     }
 
+    /// <inheritdoc/>
+    public ITaskProcessor CancelTask() => Cancel();
+
     /// <summary>
     /// Completes this instance.
     /// </summary>
     /// <returns>Hexalith.Application.Abstractions.Tasks.TaskProcessor.</returns>
-    /// <inheritdoc cref="ITaskProcessor.Complete" />
+    /// <inheritdoc cref="ITaskProcessor.CompleteTask" />
     public TaskProcessor Complete()
     {
         return Ended
@@ -181,13 +188,16 @@ public class TaskProcessor : ITaskProcessor
             : new TaskProcessor(TaskProcessorStatus.Completed, History.Completed(), ResiliencyPolicy, Failure);
     }
 
+    /// <inheritdoc/>
+    public ITaskProcessor CompleteTask() => Complete();
+
     /// <summary>
     /// Continues this instance.
     /// </summary>
     /// <returns>Hexalith.Application.Abstractions.Tasks.TaskProcessor.</returns>
     /// <exception cref="InvalidStatusChangeException">currentStatus: Status, newStatus: TaskProcessorStatus.Active, Only suspended tasks can be continued.</exception>
     /// <exception cref="InvalidStatusChangeException">currentStatus: Status, newStatus: TaskProcessorStatus.Active, Cannot continue a task that has never been started.</exception>
-    /// <inheritdoc cref="ITaskProcessor.Continue" />
+    /// <inheritdoc cref="ITaskProcessor.ContinueTask" />
     public TaskProcessor Continue()
     {
         if (Status is not TaskProcessorStatus.Suspended)
@@ -217,6 +227,9 @@ public class TaskProcessor : ITaskProcessor
         };
     }
 
+    /// <inheritdoc/>
+    public ITaskProcessor ContinueTask() => Continue();
+
     /// <summary>
     /// Fails the specified message.
     /// </summary>
@@ -235,11 +248,14 @@ public class TaskProcessor : ITaskProcessor
                 : new TaskProcessor(TaskProcessorStatus.Canceled, History.Canceled(), ResiliencyPolicy, newFailure);
     }
 
+    /// <inheritdoc/>
+    public ITaskProcessor FailTask(string message, string? technicalError) => Fail(message, technicalError);
+
     /// <summary>
     /// Starts this instance.
     /// </summary>
     /// <returns>Hexalith.Application.Abstractions.Tasks.TaskProcessor.</returns>
-    /// <inheritdoc cref="ITaskProcessor.Start" />
+    /// <inheritdoc cref="ITaskProcessor.StartTask" />
     public TaskProcessor Start()
     {
         return Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed or TaskProcessorStatus.Active
@@ -248,17 +264,5 @@ public class TaskProcessor : ITaskProcessor
     }
 
     /// <inheritdoc/>
-    ITaskProcessor ITaskProcessor.Cancel() => Cancel();
-
-    /// <inheritdoc/>
-    ITaskProcessor ITaskProcessor.Complete() => Complete();
-
-    /// <inheritdoc/>
-    ITaskProcessor ITaskProcessor.Continue() => Continue();
-
-    /// <inheritdoc/>
-    ITaskProcessor ITaskProcessor.Fail(string message, string? technicalError) => Fail(message, technicalError);
-
-    /// <inheritdoc/>
-    ITaskProcessor ITaskProcessor.Start() => Start();
+    public ITaskProcessor StartTask() => Start();
 }

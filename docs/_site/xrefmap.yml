@@ -3029,6 +3029,12 @@ references:
   commentId: T:Hexalith.Application.Helpers.LogErrorHelper
   fullName: Hexalith.Application.Helpers.LogErrorHelper
   nameWithType: LogErrorHelper
+- uid: Hexalith.Application.Helpers.LogErrorHelper.LogError(Microsoft.Extensions.Logging.ILogger,Hexalith.Application.Errors.ApplicationErrorException)
+  name: LogError(ILogger, ApplicationErrorException)
+  href: api/Hexalith.Application.Helpers.LogErrorHelper.html#Hexalith_Application_Helpers_LogErrorHelper_LogError_Microsoft_Extensions_Logging_ILogger_Hexalith_Application_Errors_ApplicationErrorException_
+  commentId: M:Hexalith.Application.Helpers.LogErrorHelper.LogError(Microsoft.Extensions.Logging.ILogger,Hexalith.Application.Errors.ApplicationErrorException)
+  fullName: Hexalith.Application.Helpers.LogErrorHelper.LogError(Microsoft.Extensions.Logging.ILogger, Hexalith.Application.Errors.ApplicationErrorException)
+  nameWithType: LogErrorHelper.LogError(ILogger, ApplicationErrorException)
 - uid: Hexalith.Application.Helpers.LogErrorHelper.LogError(Microsoft.Extensions.Logging.ILogger,Hexalith.Extensions.Common.ApplicationError)
   name: LogError(ILogger, ApplicationError)
   href: api/Hexalith.Application.Helpers.LogErrorHelper.html#Hexalith_Application_Helpers_LogErrorHelper_LogError_Microsoft_Extensions_Logging_ILogger_Hexalith_Extensions_Common_ApplicationError_
@@ -4306,19 +4312,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Metadatas.IMessageMetadata.Aggregate
   nameWithType: IMessageMetadata.Aggregate
-- uid: Hexalith.Application.Metadatas.IMessageMetadata.Date
-  name: Date
-  href: api/Hexalith.Application.Metadatas.IMessageMetadata.html#Hexalith_Application_Metadatas_IMessageMetadata_Date
-  commentId: P:Hexalith.Application.Metadatas.IMessageMetadata.Date
-  fullName: Hexalith.Application.Metadatas.IMessageMetadata.Date
-  nameWithType: IMessageMetadata.Date
-- uid: Hexalith.Application.Metadatas.IMessageMetadata.Date*
-  name: Date
-  href: api/Hexalith.Application.Metadatas.IMessageMetadata.html#Hexalith_Application_Metadatas_IMessageMetadata_Date_
-  commentId: Overload:Hexalith.Application.Metadatas.IMessageMetadata.Date
+- uid: Hexalith.Application.Metadatas.IMessageMetadata.CreatedDate
+  name: CreatedDate
+  href: api/Hexalith.Application.Metadatas.IMessageMetadata.html#Hexalith_Application_Metadatas_IMessageMetadata_CreatedDate
+  commentId: P:Hexalith.Application.Metadatas.IMessageMetadata.CreatedDate
+  fullName: Hexalith.Application.Metadatas.IMessageMetadata.CreatedDate
+  nameWithType: IMessageMetadata.CreatedDate
+- uid: Hexalith.Application.Metadatas.IMessageMetadata.CreatedDate*
+  name: CreatedDate
+  href: api/Hexalith.Application.Metadatas.IMessageMetadata.html#Hexalith_Application_Metadatas_IMessageMetadata_CreatedDate_
+  commentId: Overload:Hexalith.Application.Metadatas.IMessageMetadata.CreatedDate
   isSpec: "True"
-  fullName: Hexalith.Application.Metadatas.IMessageMetadata.Date
-  nameWithType: IMessageMetadata.Date
+  fullName: Hexalith.Application.Metadatas.IMessageMetadata.CreatedDate
+  nameWithType: IMessageMetadata.CreatedDate
 - uid: Hexalith.Application.Metadatas.IMessageMetadata.Id
   name: Id
   href: api/Hexalith.Application.Metadatas.IMessageMetadata.html#Hexalith_Application_Metadatas_IMessageMetadata_Id
@@ -4550,19 +4556,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Metadatas.MessageMetadata.Aggregate
   nameWithType: MessageMetadata.Aggregate
-- uid: Hexalith.Application.Metadatas.MessageMetadata.Date
-  name: Date
-  href: api/Hexalith.Application.Metadatas.MessageMetadata.html#Hexalith_Application_Metadatas_MessageMetadata_Date
-  commentId: P:Hexalith.Application.Metadatas.MessageMetadata.Date
-  fullName: Hexalith.Application.Metadatas.MessageMetadata.Date
-  nameWithType: MessageMetadata.Date
-- uid: Hexalith.Application.Metadatas.MessageMetadata.Date*
-  name: Date
-  href: api/Hexalith.Application.Metadatas.MessageMetadata.html#Hexalith_Application_Metadatas_MessageMetadata_Date_
-  commentId: Overload:Hexalith.Application.Metadatas.MessageMetadata.Date
+- uid: Hexalith.Application.Metadatas.MessageMetadata.CreatedDate
+  name: CreatedDate
+  href: api/Hexalith.Application.Metadatas.MessageMetadata.html#Hexalith_Application_Metadatas_MessageMetadata_CreatedDate
+  commentId: P:Hexalith.Application.Metadatas.MessageMetadata.CreatedDate
+  fullName: Hexalith.Application.Metadatas.MessageMetadata.CreatedDate
+  nameWithType: MessageMetadata.CreatedDate
+- uid: Hexalith.Application.Metadatas.MessageMetadata.CreatedDate*
+  name: CreatedDate
+  href: api/Hexalith.Application.Metadatas.MessageMetadata.html#Hexalith_Application_Metadatas_MessageMetadata_CreatedDate_
+  commentId: Overload:Hexalith.Application.Metadatas.MessageMetadata.CreatedDate
   isSpec: "True"
-  fullName: Hexalith.Application.Metadatas.MessageMetadata.Date
-  nameWithType: MessageMetadata.Date
+  fullName: Hexalith.Application.Metadatas.MessageMetadata.CreatedDate
+  nameWithType: MessageMetadata.CreatedDate
 - uid: Hexalith.Application.Metadatas.MessageMetadata.Hexalith#Application#Metadatas#IMessageMetadata#Aggregate
   name: IMessageMetadata.Aggregate
   href: api/Hexalith.Application.Metadatas.MessageMetadata.html#Hexalith_Application_Metadatas_MessageMetadata_Hexalith_Application_Metadatas_IMessageMetadata_Aggregate
@@ -7866,19 +7872,19 @@ references:
   commentId: T:Hexalith.Application.Tasks.ITaskProcessor
   fullName: Hexalith.Application.Tasks.ITaskProcessor
   nameWithType: ITaskProcessor
-- uid: Hexalith.Application.Tasks.ITaskProcessor.Cancel
-  name: Cancel()
-  href: api/Hexalith.Application.Tasks.ITaskProcessor.html#Hexalith_Application_Tasks_ITaskProcessor_Cancel
-  commentId: M:Hexalith.Application.Tasks.ITaskProcessor.Cancel
-  fullName: Hexalith.Application.Tasks.ITaskProcessor.Cancel()
-  nameWithType: ITaskProcessor.Cancel()
-- uid: Hexalith.Application.Tasks.ITaskProcessor.Cancel*
-  name: Cancel
-  href: api/Hexalith.Application.Tasks.ITaskProcessor.html#Hexalith_Application_Tasks_ITaskProcessor_Cancel_
-  commentId: Overload:Hexalith.Application.Tasks.ITaskProcessor.Cancel
+- uid: Hexalith.Application.Tasks.ITaskProcessor.CancelTask
+  name: CancelTask()
+  href: api/Hexalith.Application.Tasks.ITaskProcessor.html#Hexalith_Application_Tasks_ITaskProcessor_CancelTask
+  commentId: M:Hexalith.Application.Tasks.ITaskProcessor.CancelTask
+  fullName: Hexalith.Application.Tasks.ITaskProcessor.CancelTask()
+  nameWithType: ITaskProcessor.CancelTask()
+- uid: Hexalith.Application.Tasks.ITaskProcessor.CancelTask*
+  name: CancelTask
+  href: api/Hexalith.Application.Tasks.ITaskProcessor.html#Hexalith_Application_Tasks_ITaskProcessor_CancelTask_
+  commentId: Overload:Hexalith.Application.Tasks.ITaskProcessor.CancelTask
   isSpec: "True"
-  fullName: Hexalith.Application.Tasks.ITaskProcessor.Cancel
-  nameWithType: ITaskProcessor.Cancel
+  fullName: Hexalith.Application.Tasks.ITaskProcessor.CancelTask
+  nameWithType: ITaskProcessor.CancelTask
 - uid: Hexalith.Application.Tasks.ITaskProcessor.CanRetry
   name: CanRetry
   href: api/Hexalith.Application.Tasks.ITaskProcessor.html#Hexalith_Application_Tasks_ITaskProcessor_CanRetry
@@ -7892,45 +7898,45 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Tasks.ITaskProcessor.CanRetry
   nameWithType: ITaskProcessor.CanRetry
-- uid: Hexalith.Application.Tasks.ITaskProcessor.Complete
-  name: Complete()
-  href: api/Hexalith.Application.Tasks.ITaskProcessor.html#Hexalith_Application_Tasks_ITaskProcessor_Complete
-  commentId: M:Hexalith.Application.Tasks.ITaskProcessor.Complete
-  fullName: Hexalith.Application.Tasks.ITaskProcessor.Complete()
-  nameWithType: ITaskProcessor.Complete()
-- uid: Hexalith.Application.Tasks.ITaskProcessor.Complete*
-  name: Complete
-  href: api/Hexalith.Application.Tasks.ITaskProcessor.html#Hexalith_Application_Tasks_ITaskProcessor_Complete_
-  commentId: Overload:Hexalith.Application.Tasks.ITaskProcessor.Complete
+- uid: Hexalith.Application.Tasks.ITaskProcessor.CompleteTask
+  name: CompleteTask()
+  href: api/Hexalith.Application.Tasks.ITaskProcessor.html#Hexalith_Application_Tasks_ITaskProcessor_CompleteTask
+  commentId: M:Hexalith.Application.Tasks.ITaskProcessor.CompleteTask
+  fullName: Hexalith.Application.Tasks.ITaskProcessor.CompleteTask()
+  nameWithType: ITaskProcessor.CompleteTask()
+- uid: Hexalith.Application.Tasks.ITaskProcessor.CompleteTask*
+  name: CompleteTask
+  href: api/Hexalith.Application.Tasks.ITaskProcessor.html#Hexalith_Application_Tasks_ITaskProcessor_CompleteTask_
+  commentId: Overload:Hexalith.Application.Tasks.ITaskProcessor.CompleteTask
   isSpec: "True"
-  fullName: Hexalith.Application.Tasks.ITaskProcessor.Complete
-  nameWithType: ITaskProcessor.Complete
-- uid: Hexalith.Application.Tasks.ITaskProcessor.Continue
-  name: Continue()
-  href: api/Hexalith.Application.Tasks.ITaskProcessor.html#Hexalith_Application_Tasks_ITaskProcessor_Continue
-  commentId: M:Hexalith.Application.Tasks.ITaskProcessor.Continue
-  fullName: Hexalith.Application.Tasks.ITaskProcessor.Continue()
-  nameWithType: ITaskProcessor.Continue()
-- uid: Hexalith.Application.Tasks.ITaskProcessor.Continue*
-  name: Continue
-  href: api/Hexalith.Application.Tasks.ITaskProcessor.html#Hexalith_Application_Tasks_ITaskProcessor_Continue_
-  commentId: Overload:Hexalith.Application.Tasks.ITaskProcessor.Continue
+  fullName: Hexalith.Application.Tasks.ITaskProcessor.CompleteTask
+  nameWithType: ITaskProcessor.CompleteTask
+- uid: Hexalith.Application.Tasks.ITaskProcessor.ContinueTask
+  name: ContinueTask()
+  href: api/Hexalith.Application.Tasks.ITaskProcessor.html#Hexalith_Application_Tasks_ITaskProcessor_ContinueTask
+  commentId: M:Hexalith.Application.Tasks.ITaskProcessor.ContinueTask
+  fullName: Hexalith.Application.Tasks.ITaskProcessor.ContinueTask()
+  nameWithType: ITaskProcessor.ContinueTask()
+- uid: Hexalith.Application.Tasks.ITaskProcessor.ContinueTask*
+  name: ContinueTask
+  href: api/Hexalith.Application.Tasks.ITaskProcessor.html#Hexalith_Application_Tasks_ITaskProcessor_ContinueTask_
+  commentId: Overload:Hexalith.Application.Tasks.ITaskProcessor.ContinueTask
   isSpec: "True"
-  fullName: Hexalith.Application.Tasks.ITaskProcessor.Continue
-  nameWithType: ITaskProcessor.Continue
-- uid: Hexalith.Application.Tasks.ITaskProcessor.Fail(System.String,System.String)
-  name: Fail(String, String)
-  href: api/Hexalith.Application.Tasks.ITaskProcessor.html#Hexalith_Application_Tasks_ITaskProcessor_Fail_System_String_System_String_
-  commentId: M:Hexalith.Application.Tasks.ITaskProcessor.Fail(System.String,System.String)
-  fullName: Hexalith.Application.Tasks.ITaskProcessor.Fail(System.String, System.String)
-  nameWithType: ITaskProcessor.Fail(String, String)
-- uid: Hexalith.Application.Tasks.ITaskProcessor.Fail*
-  name: Fail
-  href: api/Hexalith.Application.Tasks.ITaskProcessor.html#Hexalith_Application_Tasks_ITaskProcessor_Fail_
-  commentId: Overload:Hexalith.Application.Tasks.ITaskProcessor.Fail
+  fullName: Hexalith.Application.Tasks.ITaskProcessor.ContinueTask
+  nameWithType: ITaskProcessor.ContinueTask
+- uid: Hexalith.Application.Tasks.ITaskProcessor.FailTask(System.String,System.String)
+  name: FailTask(String, String)
+  href: api/Hexalith.Application.Tasks.ITaskProcessor.html#Hexalith_Application_Tasks_ITaskProcessor_FailTask_System_String_System_String_
+  commentId: M:Hexalith.Application.Tasks.ITaskProcessor.FailTask(System.String,System.String)
+  fullName: Hexalith.Application.Tasks.ITaskProcessor.FailTask(System.String, System.String)
+  nameWithType: ITaskProcessor.FailTask(String, String)
+- uid: Hexalith.Application.Tasks.ITaskProcessor.FailTask*
+  name: FailTask
+  href: api/Hexalith.Application.Tasks.ITaskProcessor.html#Hexalith_Application_Tasks_ITaskProcessor_FailTask_
+  commentId: Overload:Hexalith.Application.Tasks.ITaskProcessor.FailTask
   isSpec: "True"
-  fullName: Hexalith.Application.Tasks.ITaskProcessor.Fail
-  nameWithType: ITaskProcessor.Fail
+  fullName: Hexalith.Application.Tasks.ITaskProcessor.FailTask
+  nameWithType: ITaskProcessor.FailTask
 - uid: Hexalith.Application.Tasks.ITaskProcessor.Failure
   name: Failure
   href: api/Hexalith.Application.Tasks.ITaskProcessor.html#Hexalith_Application_Tasks_ITaskProcessor_Failure
@@ -7970,19 +7976,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Tasks.ITaskProcessor.ResiliencyPolicy
   nameWithType: ITaskProcessor.ResiliencyPolicy
-- uid: Hexalith.Application.Tasks.ITaskProcessor.Start
-  name: Start()
-  href: api/Hexalith.Application.Tasks.ITaskProcessor.html#Hexalith_Application_Tasks_ITaskProcessor_Start
-  commentId: M:Hexalith.Application.Tasks.ITaskProcessor.Start
-  fullName: Hexalith.Application.Tasks.ITaskProcessor.Start()
-  nameWithType: ITaskProcessor.Start()
-- uid: Hexalith.Application.Tasks.ITaskProcessor.Start*
-  name: Start
-  href: api/Hexalith.Application.Tasks.ITaskProcessor.html#Hexalith_Application_Tasks_ITaskProcessor_Start_
-  commentId: Overload:Hexalith.Application.Tasks.ITaskProcessor.Start
+- uid: Hexalith.Application.Tasks.ITaskProcessor.StartTask
+  name: StartTask()
+  href: api/Hexalith.Application.Tasks.ITaskProcessor.html#Hexalith_Application_Tasks_ITaskProcessor_StartTask
+  commentId: M:Hexalith.Application.Tasks.ITaskProcessor.StartTask
+  fullName: Hexalith.Application.Tasks.ITaskProcessor.StartTask()
+  nameWithType: ITaskProcessor.StartTask()
+- uid: Hexalith.Application.Tasks.ITaskProcessor.StartTask*
+  name: StartTask
+  href: api/Hexalith.Application.Tasks.ITaskProcessor.html#Hexalith_Application_Tasks_ITaskProcessor_StartTask_
+  commentId: Overload:Hexalith.Application.Tasks.ITaskProcessor.StartTask
   isSpec: "True"
-  fullName: Hexalith.Application.Tasks.ITaskProcessor.Start
-  nameWithType: ITaskProcessor.Start
+  fullName: Hexalith.Application.Tasks.ITaskProcessor.StartTask
+  nameWithType: ITaskProcessor.StartTask
 - uid: Hexalith.Application.Tasks.ITaskProcessor.Status
   name: Status
   href: api/Hexalith.Application.Tasks.ITaskProcessor.html#Hexalith_Application_Tasks_ITaskProcessor_Status
@@ -8641,91 +8647,91 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Tasks.TaskProcessor.Failure
   nameWithType: TaskProcessor.Failure
-- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#Cancel
-  name: ITaskProcessor.Cancel()
-  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_Cancel
-  commentId: M:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#Cancel
-  name.vb: Hexalith.Application.Tasks.ITaskProcessor.Cancel()
-  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.Cancel()
-  nameWithType: TaskProcessor.ITaskProcessor.Cancel()
-  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.Cancel()
-- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#Cancel*
-  name: ITaskProcessor.Cancel
-  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_Cancel_
-  commentId: Overload:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#Cancel
+- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#CancelTask
+  name: ITaskProcessor.CancelTask()
+  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_CancelTask
+  commentId: M:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#CancelTask
+  name.vb: Hexalith.Application.Tasks.ITaskProcessor.CancelTask()
+  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.CancelTask()
+  nameWithType: TaskProcessor.ITaskProcessor.CancelTask()
+  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.CancelTask()
+- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#CancelTask*
+  name: ITaskProcessor.CancelTask
+  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_CancelTask_
+  commentId: Overload:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#CancelTask
   isSpec: "True"
-  name.vb: Hexalith.Application.Tasks.ITaskProcessor.Cancel
-  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.Cancel
-  nameWithType: TaskProcessor.ITaskProcessor.Cancel
-  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.Cancel
-- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#Complete
-  name: ITaskProcessor.Complete()
-  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_Complete
-  commentId: M:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#Complete
-  name.vb: Hexalith.Application.Tasks.ITaskProcessor.Complete()
-  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.Complete()
-  nameWithType: TaskProcessor.ITaskProcessor.Complete()
-  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.Complete()
-- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#Complete*
-  name: ITaskProcessor.Complete
-  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_Complete_
-  commentId: Overload:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#Complete
+  name.vb: Hexalith.Application.Tasks.ITaskProcessor.CancelTask
+  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.CancelTask
+  nameWithType: TaskProcessor.ITaskProcessor.CancelTask
+  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.CancelTask
+- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#CompleteTask
+  name: ITaskProcessor.CompleteTask()
+  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_CompleteTask
+  commentId: M:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#CompleteTask
+  name.vb: Hexalith.Application.Tasks.ITaskProcessor.CompleteTask()
+  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.CompleteTask()
+  nameWithType: TaskProcessor.ITaskProcessor.CompleteTask()
+  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.CompleteTask()
+- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#CompleteTask*
+  name: ITaskProcessor.CompleteTask
+  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_CompleteTask_
+  commentId: Overload:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#CompleteTask
   isSpec: "True"
-  name.vb: Hexalith.Application.Tasks.ITaskProcessor.Complete
-  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.Complete
-  nameWithType: TaskProcessor.ITaskProcessor.Complete
-  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.Complete
-- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#Continue
-  name: ITaskProcessor.Continue()
-  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_Continue
-  commentId: M:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#Continue
-  name.vb: Hexalith.Application.Tasks.ITaskProcessor.Continue()
-  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.Continue()
-  nameWithType: TaskProcessor.ITaskProcessor.Continue()
-  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.Continue()
-- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#Continue*
-  name: ITaskProcessor.Continue
-  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_Continue_
-  commentId: Overload:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#Continue
+  name.vb: Hexalith.Application.Tasks.ITaskProcessor.CompleteTask
+  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.CompleteTask
+  nameWithType: TaskProcessor.ITaskProcessor.CompleteTask
+  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.CompleteTask
+- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#ContinueTask
+  name: ITaskProcessor.ContinueTask()
+  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_ContinueTask
+  commentId: M:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#ContinueTask
+  name.vb: Hexalith.Application.Tasks.ITaskProcessor.ContinueTask()
+  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.ContinueTask()
+  nameWithType: TaskProcessor.ITaskProcessor.ContinueTask()
+  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.ContinueTask()
+- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#ContinueTask*
+  name: ITaskProcessor.ContinueTask
+  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_ContinueTask_
+  commentId: Overload:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#ContinueTask
   isSpec: "True"
-  name.vb: Hexalith.Application.Tasks.ITaskProcessor.Continue
-  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.Continue
-  nameWithType: TaskProcessor.ITaskProcessor.Continue
-  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.Continue
-- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#Fail(System.String,System.String)
-  name: ITaskProcessor.Fail(String, String)
-  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_Fail_System_String_System_String_
-  commentId: M:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#Fail(System.String,System.String)
-  name.vb: Hexalith.Application.Tasks.ITaskProcessor.Fail(String, String)
-  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.Fail(System.String, System.String)
-  nameWithType: TaskProcessor.ITaskProcessor.Fail(String, String)
-  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.Fail(String, String)
-- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#Fail*
-  name: ITaskProcessor.Fail
-  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_Fail_
-  commentId: Overload:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#Fail
+  name.vb: Hexalith.Application.Tasks.ITaskProcessor.ContinueTask
+  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.ContinueTask
+  nameWithType: TaskProcessor.ITaskProcessor.ContinueTask
+  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.ContinueTask
+- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#FailTask(System.String,System.String)
+  name: ITaskProcessor.FailTask(String, String)
+  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_FailTask_System_String_System_String_
+  commentId: M:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#FailTask(System.String,System.String)
+  name.vb: Hexalith.Application.Tasks.ITaskProcessor.FailTask(String, String)
+  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.FailTask(System.String, System.String)
+  nameWithType: TaskProcessor.ITaskProcessor.FailTask(String, String)
+  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.FailTask(String, String)
+- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#FailTask*
+  name: ITaskProcessor.FailTask
+  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_FailTask_
+  commentId: Overload:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#FailTask
   isSpec: "True"
-  name.vb: Hexalith.Application.Tasks.ITaskProcessor.Fail
-  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.Fail
-  nameWithType: TaskProcessor.ITaskProcessor.Fail
-  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.Fail
-- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#Start
-  name: ITaskProcessor.Start()
-  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_Start
-  commentId: M:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#Start
-  name.vb: Hexalith.Application.Tasks.ITaskProcessor.Start()
-  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.Start()
-  nameWithType: TaskProcessor.ITaskProcessor.Start()
-  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.Start()
-- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#Start*
-  name: ITaskProcessor.Start
-  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_Start_
-  commentId: Overload:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#Start
+  name.vb: Hexalith.Application.Tasks.ITaskProcessor.FailTask
+  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.FailTask
+  nameWithType: TaskProcessor.ITaskProcessor.FailTask
+  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.FailTask
+- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#StartTask
+  name: ITaskProcessor.StartTask()
+  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_StartTask
+  commentId: M:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#StartTask
+  name.vb: Hexalith.Application.Tasks.ITaskProcessor.StartTask()
+  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.StartTask()
+  nameWithType: TaskProcessor.ITaskProcessor.StartTask()
+  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.StartTask()
+- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#StartTask*
+  name: ITaskProcessor.StartTask
+  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_StartTask_
+  commentId: Overload:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#StartTask
   isSpec: "True"
-  name.vb: Hexalith.Application.Tasks.ITaskProcessor.Start
-  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.Start
-  nameWithType: TaskProcessor.ITaskProcessor.Start
-  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.Start
+  name.vb: Hexalith.Application.Tasks.ITaskProcessor.StartTask
+  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.StartTask
+  nameWithType: TaskProcessor.ITaskProcessor.StartTask
+  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.StartTask
 - uid: Hexalith.Application.Tasks.TaskProcessor.History
   name: History
   href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_History
@@ -16432,19 +16438,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.ExternalSystemReferenceAggregateActor.DoAsync
   nameWithType: ExternalSystemReferenceAggregateActor.DoAsync
-- uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.ExternalSystemReferenceAggregateActor.GetIdAsync
-  name: GetIdAsync()
-  href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.ExternalSystemReferenceAggregateActor.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Actors_ExternalSystemReferenceAggregateActor_GetIdAsync
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.ExternalSystemReferenceAggregateActor.GetIdAsync
-  fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.ExternalSystemReferenceAggregateActor.GetIdAsync()
-  nameWithType: ExternalSystemReferenceAggregateActor.GetIdAsync()
-- uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.ExternalSystemReferenceAggregateActor.GetIdAsync*
-  name: GetIdAsync
-  href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.ExternalSystemReferenceAggregateActor.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Actors_ExternalSystemReferenceAggregateActor_GetIdAsync_
-  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.ExternalSystemReferenceAggregateActor.GetIdAsync
+- uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.ExternalSystemReferenceAggregateActor.GetReferenceAggregateIdAsync
+  name: GetReferenceAggregateIdAsync()
+  href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.ExternalSystemReferenceAggregateActor.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Actors_ExternalSystemReferenceAggregateActor_GetReferenceAggregateIdAsync
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.ExternalSystemReferenceAggregateActor.GetReferenceAggregateIdAsync
+  fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.ExternalSystemReferenceAggregateActor.GetReferenceAggregateIdAsync()
+  nameWithType: ExternalSystemReferenceAggregateActor.GetReferenceAggregateIdAsync()
+- uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.ExternalSystemReferenceAggregateActor.GetReferenceAggregateIdAsync*
+  name: GetReferenceAggregateIdAsync
+  href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.ExternalSystemReferenceAggregateActor.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Actors_ExternalSystemReferenceAggregateActor_GetReferenceAggregateIdAsync_
+  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.ExternalSystemReferenceAggregateActor.GetReferenceAggregateIdAsync
   isSpec: "True"
-  fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.ExternalSystemReferenceAggregateActor.GetIdAsync
-  nameWithType: ExternalSystemReferenceAggregateActor.GetIdAsync
+  fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.ExternalSystemReferenceAggregateActor.GetReferenceAggregateIdAsync
+  nameWithType: ExternalSystemReferenceAggregateActor.GetReferenceAggregateIdAsync
 - uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.ExternalSystemReferenceAggregateActor.HasCommandsAsync
   name: HasCommandsAsync()
   href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.ExternalSystemReferenceAggregateActor.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Actors_ExternalSystemReferenceAggregateActor_HasCommandsAsync
@@ -16512,19 +16518,19 @@ references:
   commentId: T:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.IExternalSystemReferenceAggregateActor
   fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.IExternalSystemReferenceAggregateActor
   nameWithType: IExternalSystemReferenceAggregateActor
-- uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.IExternalSystemReferenceAggregateActor.GetIdAsync
-  name: GetIdAsync()
-  href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.IExternalSystemReferenceAggregateActor.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Actors_IExternalSystemReferenceAggregateActor_GetIdAsync
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.IExternalSystemReferenceAggregateActor.GetIdAsync
-  fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.IExternalSystemReferenceAggregateActor.GetIdAsync()
-  nameWithType: IExternalSystemReferenceAggregateActor.GetIdAsync()
-- uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.IExternalSystemReferenceAggregateActor.GetIdAsync*
-  name: GetIdAsync
-  href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.IExternalSystemReferenceAggregateActor.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Actors_IExternalSystemReferenceAggregateActor_GetIdAsync_
-  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.IExternalSystemReferenceAggregateActor.GetIdAsync
+- uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.IExternalSystemReferenceAggregateActor.GetReferenceAggregateIdAsync
+  name: GetReferenceAggregateIdAsync()
+  href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.IExternalSystemReferenceAggregateActor.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Actors_IExternalSystemReferenceAggregateActor_GetReferenceAggregateIdAsync
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.IExternalSystemReferenceAggregateActor.GetReferenceAggregateIdAsync
+  fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.IExternalSystemReferenceAggregateActor.GetReferenceAggregateIdAsync()
+  nameWithType: IExternalSystemReferenceAggregateActor.GetReferenceAggregateIdAsync()
+- uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.IExternalSystemReferenceAggregateActor.GetReferenceAggregateIdAsync*
+  name: GetReferenceAggregateIdAsync
+  href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.IExternalSystemReferenceAggregateActor.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Actors_IExternalSystemReferenceAggregateActor_GetReferenceAggregateIdAsync_
+  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.IExternalSystemReferenceAggregateActor.GetReferenceAggregateIdAsync
   isSpec: "True"
-  fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.IExternalSystemReferenceAggregateActor.GetIdAsync
-  nameWithType: IExternalSystemReferenceAggregateActor.GetIdAsync
+  fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors.IExternalSystemReferenceAggregateActor.GetReferenceAggregateIdAsync
+  nameWithType: IExternalSystemReferenceAggregateActor.GetReferenceAggregateIdAsync
 - uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Configurations
   name: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Configurations
   href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Configurations.html
@@ -20969,6 +20975,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationBusinessEvent.ExternalReferences
   nameWithType: Dynamics365FinanceCustomerInformationBusinessEvent.ExternalReferences
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationBusinessEvent.InterCompanyDirectDelivery
+  name: InterCompanyDirectDelivery
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationBusinessEvent.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_BusinessEvents_Dynamics365FinanceCustomerInformationBusinessEvent_InterCompanyDirectDelivery
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationBusinessEvent.InterCompanyDirectDelivery
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationBusinessEvent.InterCompanyDirectDelivery
+  nameWithType: Dynamics365FinanceCustomerInformationBusinessEvent.InterCompanyDirectDelivery
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationBusinessEvent.InterCompanyDirectDelivery*
+  name: InterCompanyDirectDelivery
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationBusinessEvent.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_BusinessEvents_Dynamics365FinanceCustomerInformationBusinessEvent_InterCompanyDirectDelivery_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationBusinessEvent.InterCompanyDirectDelivery
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationBusinessEvent.InterCompanyDirectDelivery
+  nameWithType: Dynamics365FinanceCustomerInformationBusinessEvent.InterCompanyDirectDelivery
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationBusinessEvent.Name
   name: Name
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationBusinessEvent.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_BusinessEvents_Dynamics365FinanceCustomerInformationBusinessEvent_Name
@@ -20995,6 +21014,49 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationBusinessEvent.WarehouseId
   nameWithType: Dynamics365FinanceCustomerInformationBusinessEvent.WarehouseId
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler`1
+  name: Dynamics365FinanceCustomerInformationHandler<TEvent>
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler-1.html
+  commentId: T:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler`1
+  name.vb: Dynamics365FinanceCustomerInformationHandler(Of TEvent)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler<TEvent>
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler(Of TEvent)
+  nameWithType: Dynamics365FinanceCustomerInformationHandler<TEvent>
+  nameWithType.vb: Dynamics365FinanceCustomerInformationHandler(Of TEvent)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler`1.#ctor(Hexalith.Extensions.Common.IDateTimeService,Hexalith.Application.Parties.Services.ICustomerQueryService,Hexalith.Application.ExternalSystems.Services.IExternalSystemReferenceQueryService,Hexalith.Application.ExternalSystems.Services.IAggregateExternalReferenceQueryService)
+  name: Dynamics365FinanceCustomerInformationHandler(IDateTimeService, ICustomerQueryService, IExternalSystemReferenceQueryService, IAggregateExternalReferenceQueryService)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler-1.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_BusinessEvents_Dynamics365FinanceCustomerInformationHandler_1__ctor_Hexalith_Extensions_Common_IDateTimeService_Hexalith_Application_Parties_Services_ICustomerQueryService_Hexalith_Application_ExternalSystems_Services_IExternalSystemReferenceQueryService_Hexalith_Application_ExternalSystems_Services_IAggregateExternalReferenceQueryService_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler`1.#ctor(Hexalith.Extensions.Common.IDateTimeService,Hexalith.Application.Parties.Services.ICustomerQueryService,Hexalith.Application.ExternalSystems.Services.IExternalSystemReferenceQueryService,Hexalith.Application.ExternalSystems.Services.IAggregateExternalReferenceQueryService)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler<TEvent>.Dynamics365FinanceCustomerInformationHandler(Hexalith.Extensions.Common.IDateTimeService, Hexalith.Application.Parties.Services.ICustomerQueryService, Hexalith.Application.ExternalSystems.Services.IExternalSystemReferenceQueryService, Hexalith.Application.ExternalSystems.Services.IAggregateExternalReferenceQueryService)
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler(Of TEvent).Dynamics365FinanceCustomerInformationHandler(Hexalith.Extensions.Common.IDateTimeService, Hexalith.Application.Parties.Services.ICustomerQueryService, Hexalith.Application.ExternalSystems.Services.IExternalSystemReferenceQueryService, Hexalith.Application.ExternalSystems.Services.IAggregateExternalReferenceQueryService)
+  nameWithType: Dynamics365FinanceCustomerInformationHandler<TEvent>.Dynamics365FinanceCustomerInformationHandler(IDateTimeService, ICustomerQueryService, IExternalSystemReferenceQueryService, IAggregateExternalReferenceQueryService)
+  nameWithType.vb: Dynamics365FinanceCustomerInformationHandler(Of TEvent).Dynamics365FinanceCustomerInformationHandler(IDateTimeService, ICustomerQueryService, IExternalSystemReferenceQueryService, IAggregateExternalReferenceQueryService)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler`1.#ctor*
+  name: Dynamics365FinanceCustomerInformationHandler
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler-1.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_BusinessEvents_Dynamics365FinanceCustomerInformationHandler_1__ctor_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler`1.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler<TEvent>.Dynamics365FinanceCustomerInformationHandler
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler(Of TEvent).Dynamics365FinanceCustomerInformationHandler
+  nameWithType: Dynamics365FinanceCustomerInformationHandler<TEvent>.Dynamics365FinanceCustomerInformationHandler
+  nameWithType.vb: Dynamics365FinanceCustomerInformationHandler(Of TEvent).Dynamics365FinanceCustomerInformationHandler
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler`1.ApplyAsync(`0,System.Threading.CancellationToken)
+  name: ApplyAsync(TEvent, CancellationToken)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler-1.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_BusinessEvents_Dynamics365FinanceCustomerInformationHandler_1_ApplyAsync__0_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler`1.ApplyAsync(`0,System.Threading.CancellationToken)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler<TEvent>.ApplyAsync(TEvent, System.Threading.CancellationToken)
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler(Of TEvent).ApplyAsync(TEvent, System.Threading.CancellationToken)
+  nameWithType: Dynamics365FinanceCustomerInformationHandler<TEvent>.ApplyAsync(TEvent, CancellationToken)
+  nameWithType.vb: Dynamics365FinanceCustomerInformationHandler(Of TEvent).ApplyAsync(TEvent, CancellationToken)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler`1.ApplyAsync*
+  name: ApplyAsync
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler-1.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_BusinessEvents_Dynamics365FinanceCustomerInformationHandler_1_ApplyAsync_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler`1.ApplyAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler<TEvent>.ApplyAsync
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler(Of TEvent).ApplyAsync
+  nameWithType: Dynamics365FinanceCustomerInformationHandler<TEvent>.ApplyAsync
+  nameWithType.vb: Dynamics365FinanceCustomerInformationHandler(Of TEvent).ApplyAsync
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegistered
   name: Dynamics365FinanceCustomerRegistered
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegistered.html
@@ -21052,49 +21114,6 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegisteredValidator.Dynamics365FinanceCustomerRegisteredValidator
   nameWithType: Dynamics365FinanceCustomerRegisteredValidator.Dynamics365FinanceCustomerRegisteredValidator
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerInformationBusinessEventHandler`1
-  name: FFYCustomerInformationBusinessEventHandler<TEvent>
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerInformationBusinessEventHandler-1.html
-  commentId: T:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerInformationBusinessEventHandler`1
-  name.vb: FFYCustomerInformationBusinessEventHandler(Of TEvent)
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerInformationBusinessEventHandler<TEvent>
-  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerInformationBusinessEventHandler(Of TEvent)
-  nameWithType: FFYCustomerInformationBusinessEventHandler<TEvent>
-  nameWithType.vb: FFYCustomerInformationBusinessEventHandler(Of TEvent)
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerInformationBusinessEventHandler`1.#ctor(Hexalith.Extensions.Common.IDateTimeService,Hexalith.Application.Parties.Services.ICustomerQueryService,Hexalith.Application.ExternalSystems.Services.IExternalSystemReferenceQueryService,Hexalith.Application.ExternalSystems.Services.IAggregateExternalReferenceQueryService)
-  name: FFYCustomerInformationBusinessEventHandler(IDateTimeService, ICustomerQueryService, IExternalSystemReferenceQueryService, IAggregateExternalReferenceQueryService)
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerInformationBusinessEventHandler-1.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_BusinessEvents_FFYCustomerInformationBusinessEventHandler_1__ctor_Hexalith_Extensions_Common_IDateTimeService_Hexalith_Application_Parties_Services_ICustomerQueryService_Hexalith_Application_ExternalSystems_Services_IExternalSystemReferenceQueryService_Hexalith_Application_ExternalSystems_Services_IAggregateExternalReferenceQueryService_
-  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerInformationBusinessEventHandler`1.#ctor(Hexalith.Extensions.Common.IDateTimeService,Hexalith.Application.Parties.Services.ICustomerQueryService,Hexalith.Application.ExternalSystems.Services.IExternalSystemReferenceQueryService,Hexalith.Application.ExternalSystems.Services.IAggregateExternalReferenceQueryService)
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerInformationBusinessEventHandler<TEvent>.FFYCustomerInformationBusinessEventHandler(Hexalith.Extensions.Common.IDateTimeService, Hexalith.Application.Parties.Services.ICustomerQueryService, Hexalith.Application.ExternalSystems.Services.IExternalSystemReferenceQueryService, Hexalith.Application.ExternalSystems.Services.IAggregateExternalReferenceQueryService)
-  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerInformationBusinessEventHandler(Of TEvent).FFYCustomerInformationBusinessEventHandler(Hexalith.Extensions.Common.IDateTimeService, Hexalith.Application.Parties.Services.ICustomerQueryService, Hexalith.Application.ExternalSystems.Services.IExternalSystemReferenceQueryService, Hexalith.Application.ExternalSystems.Services.IAggregateExternalReferenceQueryService)
-  nameWithType: FFYCustomerInformationBusinessEventHandler<TEvent>.FFYCustomerInformationBusinessEventHandler(IDateTimeService, ICustomerQueryService, IExternalSystemReferenceQueryService, IAggregateExternalReferenceQueryService)
-  nameWithType.vb: FFYCustomerInformationBusinessEventHandler(Of TEvent).FFYCustomerInformationBusinessEventHandler(IDateTimeService, ICustomerQueryService, IExternalSystemReferenceQueryService, IAggregateExternalReferenceQueryService)
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerInformationBusinessEventHandler`1.#ctor*
-  name: FFYCustomerInformationBusinessEventHandler
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerInformationBusinessEventHandler-1.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_BusinessEvents_FFYCustomerInformationBusinessEventHandler_1__ctor_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerInformationBusinessEventHandler`1.#ctor
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerInformationBusinessEventHandler<TEvent>.FFYCustomerInformationBusinessEventHandler
-  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerInformationBusinessEventHandler(Of TEvent).FFYCustomerInformationBusinessEventHandler
-  nameWithType: FFYCustomerInformationBusinessEventHandler<TEvent>.FFYCustomerInformationBusinessEventHandler
-  nameWithType.vb: FFYCustomerInformationBusinessEventHandler(Of TEvent).FFYCustomerInformationBusinessEventHandler
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerInformationBusinessEventHandler`1.ApplyAsync(`0,System.Threading.CancellationToken)
-  name: ApplyAsync(TEvent, CancellationToken)
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerInformationBusinessEventHandler-1.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_BusinessEvents_FFYCustomerInformationBusinessEventHandler_1_ApplyAsync__0_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerInformationBusinessEventHandler`1.ApplyAsync(`0,System.Threading.CancellationToken)
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerInformationBusinessEventHandler<TEvent>.ApplyAsync(TEvent, System.Threading.CancellationToken)
-  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerInformationBusinessEventHandler(Of TEvent).ApplyAsync(TEvent, System.Threading.CancellationToken)
-  nameWithType: FFYCustomerInformationBusinessEventHandler<TEvent>.ApplyAsync(TEvent, CancellationToken)
-  nameWithType.vb: FFYCustomerInformationBusinessEventHandler(Of TEvent).ApplyAsync(TEvent, CancellationToken)
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerInformationBusinessEventHandler`1.ApplyAsync*
-  name: ApplyAsync
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerInformationBusinessEventHandler-1.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_BusinessEvents_FFYCustomerInformationBusinessEventHandler_1_ApplyAsync_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerInformationBusinessEventHandler`1.ApplyAsync
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerInformationBusinessEventHandler<TEvent>.ApplyAsync
-  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.FFYCustomerInformationBusinessEventHandler(Of TEvent).ApplyAsync
-  nameWithType: FFYCustomerInformationBusinessEventHandler<TEvent>.ApplyAsync
-  nameWithType.vb: FFYCustomerInformationBusinessEventHandler(Of TEvent).ApplyAsync
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities
   name: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.html

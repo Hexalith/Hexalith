@@ -45,9 +45,9 @@ public interface IEventBus : IMessageBus<BaseEvent, BaseMetadata, EventState>
     /// <summary>
     /// Publishes the asynchronous.
     /// </summary>
-    /// <param name="event">The message.</param>
+    /// <param name="baseEvent">The message.</param>
     /// <param name="metadata">The metadata.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
-    new Task PublishAsync(BaseEvent @event, BaseMetadata metadata, CancellationToken cancellationToken);
+    new Task PublishAsync(BaseEvent baseEvent, BaseMetadata metadata, CancellationToken cancellationToken);
 }

@@ -48,7 +48,7 @@ public abstract class Projection : IProjection
     /// <param name="notificationBus">The notification bus.</param>
     /// <param name="dateTimeService">The date time service.</param>
     /// <exception cref="ArgumentNullException">null.</exception>
-    public Projection(INotificationBus notificationBus, IDateTimeService dateTimeService)
+    protected Projection(INotificationBus notificationBus, IDateTimeService dateTimeService)
     {
         ArgumentNullException.ThrowIfNull(notificationBus);
         ArgumentNullException.ThrowIfNull(dateTimeService);

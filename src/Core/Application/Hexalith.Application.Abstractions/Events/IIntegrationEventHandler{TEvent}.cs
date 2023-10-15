@@ -26,14 +26,17 @@ using Hexalith.Domain.Events;
 /// Event handler interface.
 /// </summary>
 /// <typeparam name="TEvent">The type of the event.</typeparam>
+#pragma warning disable CA1711 // Identifiers should not have incorrect suffix
+
 public interface IIntegrationEventHandler<TEvent> : IIntegrationEventHandler
+#pragma warning restore CA1711 // Identifiers should not have incorrect suffix
     where TEvent : IEvent
 {
     /// <summary>
     /// Handles the event.
     /// </summary>
-    /// <param name="event">The event to execute.</param>
+    /// <param name="baseEvent">The event to execute.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>The generated events with their metadata.</returns>
-    Task<IEnumerable<BaseCommand>> ApplyAsync(TEvent @event, CancellationToken cancellationToken);
+    Task<IEnumerable<BaseCommand>> ApplyAsync(TEvent baseEvent, CancellationToken cancellationToken);
 }

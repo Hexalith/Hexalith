@@ -48,7 +48,7 @@ public record ExternalSystemReference(
     /// <param name="mapped">The mapped.</param>
     public ExternalSystemReference(ExternalSystemReferenceAdded mapped)
         : this(
-              mapped.SystemId,
+              (mapped ?? throw new ArgumentNullException(nameof(mapped))).SystemId,
               mapped.ReferenceAggregateName,
               mapped.ExternalId,
               mapped.ReferenceAggregateId)
@@ -83,5 +83,7 @@ public record ExternalSystemReference(
     /// Gets the name of the aggregate.
     /// </summary>
     /// <returns>System.String.</returns>
+#pragma warning disable CA1024 // Use properties where appropriate
     public static string GetAggregateName() => nameof(ExternalSystemReference);
+#pragma warning restore CA1024 // Use properties where appropriate
 }

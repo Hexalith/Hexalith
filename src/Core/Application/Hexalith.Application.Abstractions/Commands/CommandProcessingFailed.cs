@@ -38,8 +38,8 @@ public class CommandProcessingFailed : BaseNotification
     [JsonConstructor]
     public CommandProcessingFailed(BaseCommand command, TaskProcessor taskProcessor)
         : base(
-            $"Command {command.TypeName} failed.",
-            taskProcessor.Failure?.Message ?? string.Empty,
+            $"Command {(command ?? throw new ArgumentNullException(nameof(command))).TypeName} failed.",
+            (taskProcessor ?? throw new ArgumentNullException(nameof(taskProcessor))).Failure?.Message ?? string.Empty,
             NotificationSeverity.Error,
             taskProcessor.Failure?.TechnicalError ?? string.Empty)
     {
@@ -70,8 +70,10 @@ public class CommandProcessingFailed : BaseNotification
     public TaskProcessor TaskProcessor { get; }
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateId() => Command.AggregateId;
+    protected override string DefaultAggregateId()
+        => Command.AggregateId;
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateName() => Command.AggregateName;
+    protected override string DefaultAggregateName()
+        => Command.AggregateName;
 }

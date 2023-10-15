@@ -18,8 +18,8 @@ public interface IIntegrationEventProcessor
     /// <summary>
     /// Submit the event.
     /// </summary>
-    /// <param name="event">The event.</param>
+    /// <param name="baseEvent">The event.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
-    Task SubmitAsync(IEvent @event, CancellationToken cancellationToken);
+    Task SubmitAsync(IEvent baseEvent, CancellationToken cancellationToken);
 }

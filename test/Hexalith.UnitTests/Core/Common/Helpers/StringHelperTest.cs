@@ -17,48 +17,38 @@ public class StringHelperTest
     [InlineData(1, "1")]
     [InlineData(10000, "10000")]
     [InlineData(-1001, "-1001")]
-    public void Decimal_into_invariant_string_should_be_expected(decimal value, string expected)
-    {
-        _ = value.ToInvariantString().Should().Be(expected);
-    }
+    public void DecimalIntoInvariantStringShouldBeExpected(decimal value, string expected) => _ = value.ToInvariantString().Should().Be(expected);
 
     [Theory]
     [InlineData(0)]
     [InlineData(1)]
     [InlineData(10000)]
     [InlineData(-1001)]
-    public void Decimal_into_string_and_back_to_number_should_be_same(decimal value)
-    {
-        _ = value.ToInvariantString().ToDecimal().Should().Be(value);
-    }
+    public void DecimalIntoStringAndBackToNumberShouldBeSame(decimal value) => _ = value.ToInvariantString().ToDecimal().Should().Be(value);
 
     [Theory]
     [InlineData(0d, "0")]
     [InlineData(1d, "1")]
     [InlineData(10000d, "10000")]
     [InlineData(-1001d, "-1001")]
-    public void Double_into_invariant_string_should_be_expected(double value, string expected)
-    {
-        _ = value.ToInvariantString().Should().Be(expected);
-    }
+    public void DoubleIntoInvariantStringShouldBeExpected(double value, string expected) => _ = value.ToInvariantString().Should().Be(expected);
 
     [Theory]
     [InlineData(0d)]
     [InlineData(1d)]
     [InlineData(10000d)]
     [InlineData(-1001d)]
-    public void Double_into_string_and_back_to_number_should_be_same(double value)
-    {
-        _ = value.ToInvariantString().ToDouble().Should().Be(value);
-    }
+    public void DoubleIntoStringAndBackToNumberShouldBeSame(double value) => _ = value.ToInvariantString().ToDouble().Should().Be(value);
 
     [Fact]
-    public void Format_string_with_named_placeholders_should_return_expected()
+    public void FormatStringWithNamedPlaceholdersShouldReturnExpected()
     {
+#pragma warning disable CA1305 // Specify IFormatProvider
         _ = StringHelper
-            .FormatWithNamedPlaceholders("Say {Hello} {Number} times", "hello world", 11)
+            .FormatWithNamedPlaceholders("Say {Hello} {Number} times",["hello world", 11])
             .Should()
             .Be("Say hello world 11 times");
+#pragma warning restore CA1305 // Specify IFormatProvider
     }
 
     [Theory]
@@ -66,58 +56,40 @@ public class StringHelperTest
     [InlineData(1, "1")]
     [InlineData(10000, "10000")]
     [InlineData(-1001, "-1001")]
-    public void Integer_into_invariant_string_should_be_expected(int value, string expected)
-    {
-        _ = value.ToInvariantString().Should().Be(expected);
-    }
+    public void IntegerIntoInvariantStringShouldBeExpected(int value, string expected) => _ = value.ToInvariantString().Should().Be(expected);
 
     [Theory]
     [InlineData(0)]
     [InlineData(1)]
     [InlineData(10000)]
     [InlineData(-1001)]
-    public void Integer_into_string_and_back_to_number_should_be_same(int value)
-    {
-        _ = value.ToInvariantString().ToInteger().Should().Be(value);
-    }
+    public void IntegerIntoStringAndBackToNumberShouldBeSame(int value) => _ = value.ToInvariantString().ToInteger().Should().Be(value);
 
     [Theory]
     [InlineData(0, "0")]
     [InlineData(1, "1")]
     [InlineData(10000, "10000")]
     [InlineData(-1001, "-1001")]
-    public void Invariant_string_into_integer_should_be_expected(int expected, string value)
-    {
-        _ = value.ToInteger().Should().Be(expected);
-    }
+    public void InvariantStringIntoIntegerShouldBeExpected(int expected, string value) => _ = value.ToInteger().Should().Be(expected);
 
     [Theory]
     [InlineData(0L, "0")]
     [InlineData(1L, "1")]
     [InlineData(10000L, "10000")]
     [InlineData(-1001L, "-1001")]
-    public void Long_into_invariant_string_should_be_expected(long value, string expected)
-    {
-        _ = value.ToInvariantString().Should().Be(expected);
-    }
+    public void LongIntoInvariantStringShouldBeExpected(long value, string expected) => _ = value.ToInvariantString().Should().Be(expected);
 
     [Theory]
     [InlineData(0L)]
     [InlineData(1L)]
     [InlineData(10000L)]
     [InlineData(-1001L)]
-    public void Long_into_string_and_back_to_number_should_be_same(long value)
-    {
-        _ = value.ToInvariantString().ToLong().Should().Be(value);
-    }
+    public void LongIntoStringAndBackToNumberShouldBeSame(long value) => _ = value.ToInvariantString().ToLong().Should().Be(value);
 
     [Theory]
     [InlineData("{hello}", "{0}")]
     [InlineData("{4}", "{0}")]
     [InlineData("{{double}} {test}", "{{0}} {1}")]
     [InlineData("hello from {me} and {him}", "hello from {0} and {1}")]
-    public void Replace_named_placeholders_should_return_expected_string_with_indices(string value, string expected)
-    {
-        _ = StringHelper.ReplacePlaceholderNamesByIndex(value).Should().Be(expected);
-    }
+    public void ReplaceNamedPlaceholdersShouldReturnExpectedStringWithIndices(string value, string expected) => _ = StringHelper.ReplacePlaceholderNamesByIndex(value).Should().Be(expected);
 }

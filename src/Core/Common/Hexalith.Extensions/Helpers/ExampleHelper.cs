@@ -17,6 +17,7 @@
 namespace Hexalith.Extensions.Helpers;
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Text;
 
@@ -42,8 +43,9 @@ public static class ExampleHelper
     /// <param name="type">The type.</param>
     /// <returns>object.</returns>
     /// <exception cref="InvalidOperationException">$"Could not set the value of property {property.Name} of type {type.FullName}., ex.</exception>
-    public static object CreateExample(this Type type)
+    public static object CreateExample([NotNull] this Type type)
     {
+        ArgumentNullException.ThrowIfNull(type);
         object instance = Activator.CreateInstance(type)
             ?? throw new InvalidOperationException($"Could not create an instance of type {type.FullName}. The class must have a default constructor.");
         PropertyInfo[] properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.SetProperty);

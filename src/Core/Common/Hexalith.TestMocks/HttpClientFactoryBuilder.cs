@@ -22,10 +22,7 @@ public class HttpClientFactoryBuilder
     /// Builds this instance.
     /// </summary>
     /// <returns>IHttpClientFactory.</returns>
-    public IHttpClientFactory Build()
-    {
-        return BuildMock().Object;
-    }
+    public IHttpClientFactory Build() => BuildMock().Object;
 
     /// <summary>
     /// Build a <see cref="Mock{IHttpClientFactory}"/> with the specified <see cref="HttpMessageHandler"/>.
@@ -86,6 +83,15 @@ public class HttpClientFactoryBuilder
                Content = new StringContent(
                     response),
            })
+           .Verifiable();
+        handlerMock
+           .Protected()
+
+           // Setup the PROTECTED method to mock
+           .Setup(
+              "Dispose",
+              ItExpr.IsAny<bool>())
+
            .Verifiable();
         return SetHttpMessageHandler(handlerMock.Object);
     }

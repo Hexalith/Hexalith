@@ -1,8 +1,18 @@
-﻿// <copyright file="IMessageMetadata.cs" company="Fiveforty SAS Paris France">
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Application.Abstractions
+// Author           : Jérôme Piquot
+// Created          : 09-12-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 09-12-2023
+// ***********************************************************************
+// <copyright file="IMessageMetadata.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Hexalith.Application.Metadatas;
 
@@ -12,27 +22,32 @@ namespace Hexalith.Application.Metadatas;
 public interface IMessageMetadata
 {
     /// <summary>
-    /// Gets aggregate metadata.
+    /// Gets the aggregate.
     /// </summary>
+    /// <value>The aggregate.</value>
     IAggregateMetadata Aggregate { get; }
 
     /// <summary>
-    /// Gets the message name.
+    /// Gets the created date.
     /// </summary>
-    DateTimeOffset Date { get; }
+    /// <value>The created date.</value>
+    DateTimeOffset CreatedDate { get; }
 
     /// <summary>
     /// Gets the aggregate identifier.
     /// </summary>
+    /// <value>The identifier.</value>
     string Id { get; }
 
     /// <summary>
     /// Gets the aggregate name.
     /// </summary>
+    /// <value>The name.</value>
     string Name { get; }
 
     /// <summary>
     /// Gets the message version.
     /// </summary>
+    /// <value>The version.</value>
     IMessageVersion Version { get; }
 }

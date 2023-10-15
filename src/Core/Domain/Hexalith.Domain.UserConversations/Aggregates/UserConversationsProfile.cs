@@ -37,7 +37,9 @@ public record UserConversationsProfile(string UserId, IEnumerable<DateTimeOffset
     /// </summary>
     /// <param name="startedEvent">The started event.</param>
     public UserConversationsProfile(UserConversationsProfileAdded startedEvent)
-        : this(startedEvent.UserId, Array.Empty<DateTimeOffset>())
+        : this(
+              (startedEvent ?? throw new ArgumentNullException(nameof(startedEvent))).UserId,
+              Array.Empty<DateTimeOffset>())
     {
     }
 

@@ -17,6 +17,7 @@
 namespace Hexalith.Domain.ConversationThreads.Aggregates;
 
 using System.Collections.Generic;
+using System.Globalization;
 
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.ConversationThreads.Entities;
@@ -38,7 +39,11 @@ public record ConversationThread(string Owner, DateTimeOffset StartedDate, DateT
     /// </summary>
     /// <param name="startedEvent">The started event.</param>
     public ConversationThread(ConversationThreadStarted startedEvent)
-        : this(startedEvent.Owner, startedEvent.StartedDate, null, Array.Empty<ConversationItem>())
+        : this(
+              (startedEvent ?? throw new ArgumentNullException(nameof(startedEvent))).Owner,
+              startedEvent.StartedDate,
+              null,
+              Array.Empty<ConversationItem>())
     {
     }
 
@@ -69,5 +74,6 @@ public record ConversationThread(string Owner, DateTimeOffset StartedDate, DateT
     /// <param name="owner">The owner.</param>
     /// <param name="startedDate">The started date.</param>
     /// <returns>System.String.</returns>
-    public static string GetAggregateId(string owner, DateTimeOffset startedDate) => owner + startedDate.UtcDateTime.ToString("YYYYMMDDHHmmss");
+    public static string GetAggregateId(string owner, DateTimeOffset startedDate)
+        => owner + startedDate.UtcDateTime.ToString("YYYYMMDDHHmmss", CultureInfo.InvariantCulture);
 }

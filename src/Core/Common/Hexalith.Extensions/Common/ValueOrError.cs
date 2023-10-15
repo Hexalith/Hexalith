@@ -13,7 +13,7 @@ namespace Hexalith.Extensions.Common;
 public class ValueOrError<T>
 {
     /// <summary>
-    /// The error
+    /// The error.
     /// </summary>
     private readonly ApplicationError? _error;
 
@@ -51,7 +51,7 @@ public class ValueOrError<T>
     /// Gets a value indicating whether this instance is success.
     /// </summary>
     /// <value><c>true</c> if this instance is success; otherwise, <c>false</c>.</value>
-    /// <exception cref="System.InvalidOperationException">No error</exception>
+    /// <exception cref="System.InvalidOperationException">No error.</exception>
     public ApplicationError Error => (HasValue || _error == null) ? throw new InvalidOperationException("No error") : _error;
 
     /// <summary>
@@ -64,7 +64,7 @@ public class ValueOrError<T>
     /// Gets the value.
     /// </summary>
     /// <value>The value.</value>
-    /// <exception cref="System.InvalidOperationException">No value</exception>
+    /// <exception cref="System.InvalidOperationException">No value.</exception>
     public T Value => HasValue ? _value : throw new InvalidOperationException("No value");
 
     /// <summary>
@@ -73,7 +73,5 @@ public class ValueOrError<T>
     /// <param name="error">The error.</param>
     /// <returns>ValueOrError&lt;T&gt;.</returns>
     public static ValueOrError<T> WithError(ApplicationError error)
-    {
-        return new ValueOrError<T>(default!, error, false);
-    }
+        => new(default!, error, false);
 }

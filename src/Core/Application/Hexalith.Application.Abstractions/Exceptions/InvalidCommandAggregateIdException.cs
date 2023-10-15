@@ -50,7 +50,7 @@ public class InvalidCommandAggregateIdException : InvalidOperationException
     /// <param name="aggregateId">The aggregate identifier.</param>
     /// <param name="command">The domain command.</param>
     public InvalidCommandAggregateIdException(string aggregateId, BaseCommand command)
-        : base($"Command {command.TypeName} has an invalid aggregate identifier {command.AggregateId}. Expected : {aggregateId}.")
+        : base($"Command '{command?.TypeName ?? "Unknown"}' has an invalid aggregate identifier '{command?.AggregateId}'. Expected : {aggregateId}.")
     {
         AggregateId = aggregateId;
         DomainCommand = command;

@@ -40,21 +40,18 @@ public class ResilientCommandProcessorTest
         const string key = "test1";
         string stateName = nameof(TaskProcessor) + key;
         DummyCommand1 command = new("My test 1", 1);
-        (TaskProcessor? retry, IEnumerable<BaseMessage> events) = await processor.ProcessAsync(key, command, CancellationToken.None);
-        _ = retry.Should().BeNull();
+        (TaskProcessor taskProcessor, IEnumerable<BaseMessage> events) = await processor.ProcessAsync(key, command, CancellationToken.None);
+        _ = taskProcessor.Should().NotBeNull();
+        _ = taskProcessor.Ended.Should().BeTrue();
+        _ = taskProcessor.Status.Should().Be(TaskProcessorStatus.Completed);
+        _ = taskProcessor.Failure.Should().BeNull();
+
         _ = events.Should().HaveCount(1);
         _ = events.First().Should().BeOfType<DummyEvent1>();
         _ = stateProvider.State.Should().BeEmpty();
         _ = stateProvider.UncommittedState.Should().NotBeEmpty();
         _ = stateProvider.UncommittedState.Should().ContainKey(stateName);
         _ = stateProvider.UncommittedState[stateName].Should().BeOfType<TaskProcessor>();
-        TaskProcessor taskProcessor = stateProvider.UncommittedState[stateName] as TaskProcessor;
-        _ = taskProcessor.Status.Should().Be(TaskProcessorStatus.Completed);
-        _ = taskProcessor.History.CompletedDate.Should().NotBeNull();
-        _ = taskProcessor.History.ProcessingStartDate.Should().NotBeNull();
-        _ = taskProcessor.History.SuspendedDate.Should().BeNull();
-        _ = taskProcessor.History.CanceledDate.Should().BeNull();
-        _ = taskProcessor.Failure.Should().BeNull();
     }
 
     [Fact]
@@ -74,21 +71,22 @@ public class ResilientCommandProcessorTest
         const string key = "test1";
         string stateName = nameof(TaskProcessor) + key;
         DummyCommand1 command = new("My test 1", 1);
-        (TaskProcessor? retry, IEnumerable<BaseMessage> events) = await processor.ProcessAsync(key, command, CancellationToken.None);
-        _ = retry.Should().BeNull();
-        _ = events.Should().HaveCount(1);
-        _ = events.First().Should().BeOfType<CommandProcessingFailed>();
-        _ = stateProvider.State.Should().BeEmpty();
-        _ = stateProvider.UncommittedState.Should().NotBeEmpty();
-        _ = stateProvider.UncommittedState.Should().ContainKey(stateName);
-        _ = stateProvider.UncommittedState[stateName].Should().BeOfType<TaskProcessor>();
-        TaskProcessor taskProcessor = stateProvider.UncommittedState[stateName] as TaskProcessor;
+        (TaskProcessor taskProcessor, IEnumerable<BaseMessage> events) = await processor.ProcessAsync(key, command, CancellationToken.None);
+        _ = taskProcessor.Should().NotBeNull();
         _ = taskProcessor.Status.Should().Be(TaskProcessorStatus.Canceled);
         _ = taskProcessor.History.CompletedDate.Should().BeNull();
         _ = taskProcessor.History.ProcessingStartDate.Should().NotBeNull();
         _ = taskProcessor.History.SuspendedDate.Should().BeNull();
         _ = taskProcessor.History.CanceledDate.Should().NotBeNull();
         _ = taskProcessor.Failure.Should().NotBeNull();
+        _ = events.Should().HaveCount(1);
+        _ = events.First().Should().BeOfType<CommandProcessingFailed>();
+        _ = stateProvider.State.Should().BeEmpty();
+        _ = stateProvider.UncommittedState.Should().NotBeEmpty();
+        _ = stateProvider.UncommittedState.Should().ContainKey(stateName);
+        _ = stateProvider.UncommittedState[stateName].Should().BeOfType<TaskProcessor>();
+        taskProcessor = stateProvider.UncommittedState[stateName] as TaskProcessor;
+        _ = taskProcessor.Should().NotBeNull();
     }
 
     [Fact]

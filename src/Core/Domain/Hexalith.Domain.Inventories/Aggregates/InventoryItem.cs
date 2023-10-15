@@ -45,7 +45,7 @@ public record InventoryItem(
     /// <param name="inventoryItem">The InventoryItem.</param>
     public InventoryItem(InventoryItemAdded inventoryItem)
         : this(
-              inventoryItem.CompanyId,
+              (inventoryItem ?? throw new ArgumentNullException(nameof(inventoryItem))).CompanyId,
               inventoryItem.Id,
               inventoryItem.Name,
               null,
@@ -59,7 +59,7 @@ public record InventoryItem(
     /// <param name="inventoryItem">The InventoryItem.</param>
     public InventoryItem(InventoryItemInformationChanged inventoryItem)
         : this(
-              inventoryItem.CompanyId,
+              (inventoryItem ?? throw new ArgumentNullException(nameof(inventoryItem))).CompanyId,
               inventoryItem.Id,
               inventoryItem.Name,
               null,
@@ -126,5 +126,7 @@ public record InventoryItem(
     /// Gets the name of the aggregate.
     /// </summary>
     /// <returns>System.String.</returns>
+#pragma warning disable CA1024 // Use properties where appropriate
     public static string GetAggregateName() => nameof(InventoryItem);
+#pragma warning restore CA1024 // Use properties where appropriate
 }

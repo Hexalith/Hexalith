@@ -139,7 +139,7 @@ public static class ObjectDescriptionHelper
     public static IDictionary<string, (string DisplayName, string Description, object? DefaultValue, bool IsRequired)> DescribeInstanceWriteProperties([NotNull] this Type type)
     {
         ArgumentNullException.ThrowIfNull(type);
-        Dictionary<string, (string DisplayName, string Description, object? DefaultValue, bool IsRequired)> result = [];
+        Dictionary<string, (string DisplayName, string Description, object? DefaultValue, bool IsRequired)> result =[];
         foreach (PropertyInfo property in type.GetProperties(BindingFlags.Instance | BindingFlags.Public).Where(p => p.CanWrite))
         {
             result.Add(property.Name, property.Describe());
@@ -153,9 +153,10 @@ public static class ObjectDescriptionHelper
     /// </summary>
     /// <param name="type">The type.</param>
     /// <returns>System.ValueTuple&lt;System.String, System.String, System.String&gt;.</returns>
-    public static IDictionary<string, (string DisplayName, string Description, object? DefaultValue, bool IsRequired)> DescribeProperties(this Type type)
+    public static IDictionary<string, (string DisplayName, string Description, object? DefaultValue, bool IsRequired)> DescribeProperties([NotNull] this Type type)
     {
-        Dictionary<string, (string DisplayName, string Description, object? DefaultValue, bool IsRequired)> result = [];
+        ArgumentNullException.ThrowIfNull(type);
+        Dictionary<string, (string DisplayName, string Description, object? DefaultValue, bool IsRequired)> result =[];
         foreach (PropertyInfo property in type.GetProperties())
         {
             result.Add(property.Name, property.Describe());

@@ -103,12 +103,16 @@ public class PolymorphicJsonConverter<T> : JsonConverter<T>
             throw new InvalidOperationException("The serialized value type can't be the same as the polymorphic base class : " + value.GetType().Name);
         }
 
-        JsonDocument jsonDoc = JsonDocument.Parse(JsonSerializer.Serialize<object>(value, options));
+        JsonDocument jsonDoc = JsonDocument.Parse(JsonSerializer.Serialize<object?>(value, options));
         JsonObject json = JsonObject.Create(jsonDoc.RootElement, null)
             ?? throw new NotSupportedException($"Cannot create JSON object from :\n" + jsonDoc.RootElement.GetRawText());
-        json.Add(TypeNamePropertyName, value.TypeName);
-        json.Add(MajorVersionPropertyName, value.MajorVersion);
-        json.Add(MinorVersionPropertyName, value.MinorVersion);
+        if (value != null)
+        {
+            json.Add(TypeNamePropertyName, value.TypeName);
+            json.Add(MajorVersionPropertyName, value.MajorVersion);
+            json.Add(MinorVersionPropertyName, value.MinorVersion);
+        }
+
         json.WriteTo(writer, options);
     }
 }

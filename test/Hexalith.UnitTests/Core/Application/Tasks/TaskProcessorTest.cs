@@ -1,8 +1,18 @@
-﻿// <copyright file="TaskProcessorTest.cs" company="Fiveforty SAS Paris France">
+﻿// ***********************************************************************
+// Assembly         : Hexalith.UnitTests
+// Author           : Jérôme Piquot
+// Created          : 09-12-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 10-15-2023
+// ***********************************************************************
+// <copyright file="TaskProcessorTest.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Hexalith.UnitTests.Core.Application.Tasks;
 
@@ -13,10 +23,16 @@ using FluentAssertions;
 
 using Hexalith.Application.Tasks;
 
+/// <summary>
+/// Class TaskProcessorTest.
+/// </summary>
 public class TaskProcessorTest
 {
+    /// <summary>
+    /// Defines the test method CompleteProcessingTaskShouldHaveCompleteDate.
+    /// </summary>
     [Fact]
-    public void Complete_processing_task_should_have_complete_date()
+    public void CompleteProcessingTaskShouldHaveCompleteDate()
     {
         TaskProcessor processor = new TaskProcessor(DateTimeOffset.UtcNow, ResiliencyPolicy.None)
             .Start()
@@ -24,8 +40,11 @@ public class TaskProcessorTest
         _ = processor.History.CompletedDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromSeconds(1));
     }
 
+    /// <summary>
+    /// Defines the test method CompleteRunningProcessShouldBeCompleted.
+    /// </summary>
     [Fact]
-    public void Complete_running_process_should_be_completed()
+    public void CompleteRunningProcessShouldBeCompleted()
     {
         TaskProcessor processor = new TaskProcessor(DateTimeOffset.UtcNow, ResiliencyPolicy.None)
             .Start()
@@ -33,15 +52,33 @@ public class TaskProcessorTest
         _ = processor.Status.Should().Be(TaskProcessorStatus.Completed);
     }
 
+    /// <summary>
+    /// Defines the test method DataContractSerializeAndDeserializeTaskShouldReturnSame.
+    /// </summary>
     [Fact]
-    public void Data_contract_serialize_and_deserialize_task_should_return_same()
+    public void DataContractSerializeAndDeserializeTaskShouldReturnSame()
     {
         TaskProcessor processor = GetTestProcessor();
         _ = processor.Should().BeDataContractSerializable();
     }
 
+    /// <summary>
+    /// Defines the test method FailRunningProcessWithoutResiliencyShouldBeCanceled.
+    /// </summary>
     [Fact]
-    public void Fail_running_process_with_resiliency_should_be_suspended()
+    public void FailRunningProcessWithoutResiliencyShouldBeCanceled()
+    {
+        TaskProcessor processor = new TaskProcessor(DateTimeOffset.UtcNow, ResiliencyPolicy.None)
+            .Start()
+            .Fail("fail", "error");
+        _ = processor.Status.Should().Be(TaskProcessorStatus.Canceled);
+    }
+
+    /// <summary>
+    /// Defines the test method FailRunningProcessWithResiliencyShouldBeSuspended.
+    /// </summary>
+    [Fact]
+    public void FailRunningProcessWithResiliencyShouldBeSuspended()
     {
         TaskProcessor processor = new TaskProcessor(
             DateTimeOffset.UtcNow,
@@ -57,17 +94,11 @@ public class TaskProcessorTest
         _ = processor.Status.Should().Be(TaskProcessorStatus.Suspended);
     }
 
+    /// <summary>
+    /// Defines the test method JsonSerializeAndDeserializeTaskShouldReturnSame.
+    /// </summary>
     [Fact]
-    public void Fail_running_process_without_resiliency_should_be_canceled()
-    {
-        TaskProcessor processor = new TaskProcessor(DateTimeOffset.UtcNow, ResiliencyPolicy.None)
-            .Start()
-            .Fail("fail", "error");
-        _ = processor.Status.Should().Be(TaskProcessorStatus.Canceled);
-    }
-
-    [Fact]
-    public void Json_serialize_and_deserialize_task_should_return_same()
+    public void JsonSerializeAndDeserializeTaskShouldReturnSame()
     {
         TaskProcessor processor = GetTestProcessor();
         string json = JsonSerializer.Serialize(processor);
@@ -76,30 +107,42 @@ public class TaskProcessorTest
         _ = fromJson.Should().BeEquivalentTo(processor);
     }
 
+    /// <summary>
+    /// Defines the test method NewProcessShouldBeInNewState.
+    /// </summary>
     [Fact]
-    public void New_process_should_be_in_new_state()
+    public void NewProcessShouldBeInNewState()
     {
         TaskProcessor processor = new(DateTimeOffset.UtcNow, ResiliencyPolicy.None);
         _ = processor.Status.Should().Be(TaskProcessorStatus.New);
     }
 
+    /// <summary>
+    /// Defines the test method NewProcessShouldHaveCreatedDate.
+    /// </summary>
     [Fact]
-    public void New_process_should_have_created_date()
+    public void NewProcessShouldHaveCreatedDate()
     {
         TaskProcessor processor = new(DateTimeOffset.UtcNow, ResiliencyPolicy.None);
         _ = processor.History.CreatedDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromSeconds(1));
     }
 
+    /// <summary>
+    /// Defines the test method StartNewProcessShouldBeActive.
+    /// </summary>
     [Fact]
-    public void Start_new_process_should_be_active()
+    public void StartNewProcessShouldBeActive()
     {
         TaskProcessor processor = new TaskProcessor(DateTimeOffset.UtcNow, ResiliencyPolicy.None)
             .Start();
         _ = processor.Status.Should().Be(TaskProcessorStatus.Active);
     }
 
+    /// <summary>
+    /// Defines the test method StartNewProcessShouldHaveCurrentProcessingStartDate.
+    /// </summary>
     [Fact]
-    public void Start_new_process_should_have_current_processing_start_date()
+    public void StartNewProcessShouldHaveCurrentProcessingStartDate()
     {
         TaskProcessor processor = new TaskProcessor(DateTimeOffset.UtcNow, ResiliencyPolicy.None)
             .Start();
@@ -107,13 +150,20 @@ public class TaskProcessorTest
         _ = processor.History.ProcessingStartDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromSeconds(1));
     }
 
+    /// <summary>
+    /// Defines the test method XmlSerializeAndDeserializeTaskShouldReturnSame.
+    /// </summary>
     [Fact]
-    public void Xml_serialize_and_deserialize_task_should_return_same()
+    public void XmlSerializeAndDeserializeTaskShouldReturnSame()
     {
         TaskProcessor processor = GetTestProcessor();
         _ = processor.Should().BeXmlSerializable();
     }
 
+    /// <summary>
+    /// Gets the test processor.
+    /// </summary>
+    /// <returns>TaskProcessor.</returns>
     private static TaskProcessor GetTestProcessor()
     {
         return new TaskProcessor(

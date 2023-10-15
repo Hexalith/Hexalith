@@ -9,7 +9,10 @@ namespace Hexalith.Application.StreamStores;
 /// <summary>
 /// Persisted stream interface.
 /// </summary>
+#pragma warning disable CA1711 // Identifiers should not have incorrect suffix
+
 public interface IPersistedStream
+#pragma warning restore CA1711 // Identifiers should not have incorrect suffix
 {
     /// <summary>
     /// Add new items to the stream.

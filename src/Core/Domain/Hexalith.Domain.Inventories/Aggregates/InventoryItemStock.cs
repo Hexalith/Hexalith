@@ -43,7 +43,7 @@ public record InventoryItemStock(
     /// <param name="increased">The increased.</param>
     public InventoryItemStock(InventoryItemStockIncreased increased)
         : this(
-              increased.CompanyId,
+              (increased ?? throw new ArgumentNullException(nameof(increased))).CompanyId,
               increased.LocationId,
               increased.InventoryItemId,
               increased.Quantity,
@@ -57,7 +57,7 @@ public record InventoryItemStock(
     /// <param name="decreased">The decreased.</param>
     public InventoryItemStock(InventoryItemStockDecreased decreased)
         : this(
-              decreased.CompanyId,
+              (decreased ?? throw new ArgumentNullException(nameof(decreased))).CompanyId,
               decreased.LocationId,
               decreased.InventoryItemId,
               -decreased.Quantity,
@@ -93,5 +93,7 @@ public record InventoryItemStock(
     /// Gets the name of the aggregate.
     /// </summary>
     /// <returns>System.String.</returns>
+#pragma warning disable CA1024 // Use properties where appropriate
     public static string GetAggregateName() => nameof(InventoryItemStock);
+#pragma warning restore CA1024 // Use properties where appropriate
 }

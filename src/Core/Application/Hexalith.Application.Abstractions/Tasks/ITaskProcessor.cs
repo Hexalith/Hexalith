@@ -41,19 +41,19 @@ public interface ITaskProcessor
     /// Cancel the task.
     /// </summary>
     /// <returns>New copy of the task processor with status changed.</returns>
-    ITaskProcessor Cancel();
+    ITaskProcessor CancelTask();
 
     /// <summary>
     /// Complete the task.
     /// </summary>
     /// <returns>New copy of the task processor with status changed.</returns>
-    ITaskProcessor Complete();
+    ITaskProcessor CompleteTask();
 
     /// <summary>
     /// Changes the status from suspended to active if the retry wait time has expired.
     /// </summary>
     /// <returns>New copy of the task processor with status changed.</returns>
-    ITaskProcessor Continue();
+    ITaskProcessor ContinueTask();
 
     /// <summary>
     /// Fails the specified message.
@@ -61,11 +61,11 @@ public interface ITaskProcessor
     /// <param name="message">The message.</param>
     /// <param name="technicalError">The technical error.</param>
     /// <returns>ITaskProcessor.</returns>
-    ITaskProcessor Fail(string message, string? technicalError);
+    ITaskProcessor FailTask(string message, string? technicalError);
 
     /// <summary>
     /// Start the task.
     /// </summary>
     /// <returns>New copy of the task processor with status changed.</returns>
-    ITaskProcessor Start();
+    ITaskProcessor StartTask();
 }

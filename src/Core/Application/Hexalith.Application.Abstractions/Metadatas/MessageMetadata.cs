@@ -4,7 +4,7 @@
 // Created          : 09-12-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 09-12-2023
+// Last Modified On : 10-15-2023
 // ***********************************************************************
 // <copyright file="MessageMetadata.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -16,6 +16,7 @@
 
 namespace Hexalith.Application.Metadatas;
 
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
@@ -45,35 +46,40 @@ public class MessageMetadata : IMessageMetadata
     /// </summary>
     /// <param name="id">The identifier.</param>
     /// <param name="name">The name.</param>
-    /// <param name="date">The date.</param>
+    /// <param name="createdDate">The date.</param>
     /// <param name="version">The version.</param>
     /// <param name="aggregate">The aggregate.</param>
     [JsonConstructor]
-    public MessageMetadata(string id, string name, DateTimeOffset date, MessageVersion version, AggregateMetadata aggregate)
+    public MessageMetadata(string id, string name, DateTimeOffset createdDate, MessageVersion version, AggregateMetadata aggregate)
     {
         Id = id;
         Name = name;
         Version = version;
         Aggregate = aggregate;
-        Date = date;
+        CreatedDate = createdDate;
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="MessageMetadata"/> class.
+    /// Initializes a new instance of the <see cref="MessageMetadata" /> class.
     /// </summary>
     /// <param name="id">The identifier.</param>
-    /// <param name="date">The date.</param>
+    /// <param name="createdDate">The date.</param>
     /// <param name="message">The message.</param>
-    public MessageMetadata(string id, DateTimeOffset date, BaseMessage message)
+    /// <exception cref="System.ArgumentNullException">null argument.</exception>
+    public MessageMetadata(string id, DateTimeOffset createdDate, [NotNull] BaseMessage message)
     {
+        ArgumentNullException.ThrowIfNull(message);
         Id = id;
         Name = message.TypeName;
         Version = new MessageVersion(message.MajorVersion, message.MinorVersion);
         Aggregate = new AggregateMetadata(message.AggregateId, message.AggregateName);
-        Date = date;
+        CreatedDate = createdDate;
     }
 
-    /// <inheritdoc/>
+    /// <summary>
+    /// Gets the aggregate.
+    /// </summary>
+    /// <value>The aggregate.</value>
     [DataMember(Order = 4)]
     [JsonPropertyOrder(4)]
     public AggregateMetadata Aggregate { get; }
@@ -81,7 +87,7 @@ public class MessageMetadata : IMessageMetadata
     /// <inheritdoc/>
     [DataMember(Order = 5)]
     [JsonPropertyOrder(5)]
-    public DateTimeOffset Date { get; }
+    public DateTimeOffset CreatedDate { get; }
 
     /// <inheritdoc/>
     [DataMember(Order = 1)]
@@ -93,7 +99,10 @@ public class MessageMetadata : IMessageMetadata
     [JsonPropertyOrder(2)]
     public string Name { get; }
 
-    /// <inheritdoc/>
+    /// <summary>
+    /// Gets the message version.
+    /// </summary>
+    /// <value>The version.</value>
     [DataMember(Order = 3)]
     [JsonPropertyOrder(3)]
     public MessageVersion Version { get; }

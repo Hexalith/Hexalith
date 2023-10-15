@@ -16,6 +16,7 @@
 
 namespace Hexalith.Application.Metadatas;
 
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
@@ -79,8 +80,10 @@ public class Metadata : BaseMetadata
     /// <param name="metadata">The metadata.</param>
     /// <param name="date">The date.</param>
     /// <returns>Metadata.</returns>
-    public static Metadata CreateNew(IMessage message, IMetadata metadata, DateTimeOffset date)
+    public static Metadata CreateNew([NotNull] IMessage message, [NotNull] IMetadata metadata, DateTimeOffset date)
     {
+        ArgumentNullException.ThrowIfNull(message);
+        ArgumentNullException.ThrowIfNull(metadata);
         return new Metadata(
             UniqueIdHelper.GenerateUniqueStringId(),
             message,
@@ -95,12 +98,14 @@ public class Metadata : BaseMetadata
     /// <param name="message">The message.</param>
     /// <param name="metadata">The metadata.</param>
     /// <returns>Metadata.</returns>
-    public static Metadata CreateNew(IMessage message, IMetadata metadata)
+    public static Metadata CreateNew([NotNull] IMessage message, [NotNull] IMetadata metadata)
     {
+        ArgumentNullException.ThrowIfNull(message);
+        ArgumentNullException.ThrowIfNull(metadata);
         return new Metadata(
             UniqueIdHelper.GenerateUniqueStringId(),
             message,
-            metadata.Message.Date,
+            metadata.Message.CreatedDate,
             new(metadata.Context),
             metadata.Scopes);
     }

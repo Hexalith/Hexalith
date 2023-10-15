@@ -46,7 +46,9 @@ public record AggregateExternalReference(
     /// </summary>
     /// <param name="mapped">The mapped.</param>
     public AggregateExternalReference(AggregateExternalReferenceAdded mapped)
-        : this(mapped.ReferenceAggregateId, new ValueObjets.ExternalReference[] { new ValueObjets.ExternalReference(mapped.SystemId, mapped.ExternalId) })
+        : this(
+              (mapped ?? throw new ArgumentNullException(nameof(mapped))).ReferenceAggregateId,
+              new ExternalReference[] { new(mapped.SystemId, mapped.ExternalId) })
     {
     }
 
@@ -61,7 +63,7 @@ public record AggregateExternalReference(
             AggregateExternalReferenceAdded added => this with
             {
                 ExternalIds = ExternalIds
-                .Union(new ExternalReference[] { new ExternalReference(added.SystemId, added.ExternalId) })
+                .Union(new ExternalReference[] { new(added.SystemId, added.ExternalId) })
 
                 // Convert to dictionary to check duplicate keys
                 .ToDictionary(k => k.SystemId, v => v)
@@ -86,5 +88,7 @@ public record AggregateExternalReference(
     /// Gets the name of the aggregate.
     /// </summary>
     /// <returns>System.String.</returns>
+#pragma warning disable CA1024 // Use properties where appropriate
     public static string GetAggregateName() => nameof(AggregateExternalReference);
+#pragma warning restore CA1024 // Use properties where appropriate
 }

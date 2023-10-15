@@ -30,8 +30,8 @@ public interface IIntegrationEventHandler
     /// <summary>
     /// Handles the event.
     /// </summary>
-    /// <param name="event">The event to execute.</param>
+    /// <param name="baseEvent">The event to execute.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>The generated events with their metadata.</returns>
-    Task<IEnumerable<BaseCommand>> ApplyAsync(IEvent @event, CancellationToken cancellationToken);
+    Task<IEnumerable<BaseCommand>> ApplyAsync(IEvent baseEvent, CancellationToken cancellationToken);
 }

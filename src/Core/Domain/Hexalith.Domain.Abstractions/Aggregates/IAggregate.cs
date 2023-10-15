@@ -16,6 +16,8 @@
 
 namespace Hexalith.Domain.Aggregates;
 
+using System.Diagnostics.CodeAnalysis;
+
 using Hexalith.Domain.Events;
 
 /// <summary>
@@ -47,8 +49,9 @@ public interface IAggregate
     /// </summary>
     /// <param name="events">The domain events.</param>
     /// <returns>IAggregate.</returns>
-    IAggregate Apply(IEnumerable<BaseEvent> events)
+    IAggregate Apply([NotNull] IEnumerable<BaseEvent> events)
     {
+        ArgumentNullException.ThrowIfNull(events);
         IAggregate aggregate = this;
         foreach (BaseEvent e in events)
         {
