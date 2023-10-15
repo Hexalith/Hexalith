@@ -110,6 +110,7 @@ public class ExternalSystemReferenceAggregateActor : Actor, ICommandProcessorAct
     public async Task DoAsync(ActorCommandEnvelope envelope)
     {
         ArgumentNullException.ThrowIfNull(envelope);
+        _aggregate = null;
         await _stateManager
             .AddCommandAsync(
                 _stateProvider,
@@ -121,19 +122,11 @@ public class ExternalSystemReferenceAggregateActor : Actor, ICommandProcessorAct
     }
 
     /// <inheritdoc/>
-    public async Task<string?> GetIdAsync()
+    public async Task<string?> GetReferenceAggregateIdAsync()
     {
-        if (_aggregate == null)
-        {
-            _aggregate = (ExternalSystemReference?)await _stateManager
-                .GetAggregateAsync(
-                    _stateProvider,
-                    (e) => new ExternalSystemReference((ExternalSystemReferenceAdded)e),
-                    CancellationToken.None)
-                .ConfigureAwait(false);
-        }
-
-        return _aggregate?.ReferenceAggregateId;
+        return _aggregate == null && !await HasCommandsAsync().ConfigureAwait(false)
+            ? null
+            : (await GetAggregateAsync().ConfigureAwait(false)).ReferenceAggregateId;
     }
 
     /// <inheritdoc/>
@@ -147,4 +140,22 @@ public class ExternalSystemReferenceAggregateActor : Actor, ICommandProcessorAct
     /// <inheritdoc/>
     public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period)
         => await ContinueAsync().ConfigureAwait(false);
+
+    /// <summary>
+    /// Get aggregate as an asynchronous operation.
+    /// </summary>
+    /// <returns>A Task&lt;ExternalSystemReference&gt; representing the asynchronous operation.</returns>
+    /// <exception cref="System.InvalidOperationException">Aggregate {Host.ActorTypeInfo.ActorTypeName} {Id.GetId()} is not ready. Check task processor failure information.</exception>
+    private async Task<ExternalSystemReference> GetAggregateAsync()
+    {
+        _aggregate ??= (ExternalSystemReference?)await _stateManager
+                .GetAggregateAsync(
+                    _stateProvider,
+                    (e) => new ExternalSystemReference((ExternalSystemReferenceAdded)e),
+                    CancellationToken.None)
+                .ConfigureAwait(false);
+
+        return _aggregate
+            ?? throw new InvalidOperationException($"Aggregate {Host.ActorTypeInfo.ActorTypeName} {Id.GetId()} is not ready. Check task processor failure information.");
+    }
 }

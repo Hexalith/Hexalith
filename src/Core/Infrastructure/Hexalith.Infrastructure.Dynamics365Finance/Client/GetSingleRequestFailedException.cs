@@ -95,8 +95,5 @@ public sealed class GetSingleRequestFailedException<T> : Exception
     public string? ResponseContent { get; private set; }
 
     /// <inheritdoc/>
-    public override void GetObjectData(SerializationInfo info, StreamingContext context)
-    {
-        base.GetObjectData(info, context);
-    }
+    public override void GetObjectData(SerializationInfo info, StreamingContext context) => base.GetObjectData(info, context);
 }

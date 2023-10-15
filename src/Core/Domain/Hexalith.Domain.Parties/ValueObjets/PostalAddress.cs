@@ -136,12 +136,12 @@ public class PostalAddress
     public string? PostBox { get; set; }
 
     /// <summary>
-    /// Gets the state identifier.
+    /// Gets or sets the state identifier.
     /// </summary>
     /// <value>The state identifier.</value>
     [DataMember(Order = 9)]
     [JsonPropertyOrder(9)]
-    public string? StateId { get; }
+    public string? StateId { get; set; }
 
     /// <summary>
     /// Gets or sets the state identifier.

@@ -37,7 +37,7 @@ public class ExternalSystemReferenceQueryService : IExternalSystemReferenceQuery
     {
         ArgumentException.ThrowIfNullOrEmpty(aggregateId);
         return await GetActor(aggregateId)
-            .GetIdAsync()
+            .GetReferenceAggregateIdAsync()
             .ConfigureAwait(false);
     }
 

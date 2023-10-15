@@ -27,7 +27,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
         ArgumentNullException.ThrowIfNull(key);
         ArgumentNullException.ThrowIfNull(value);
         (string? dataAreaId, IDictionary<string, object?>? dict) = KeyToDictionary(key);
-        await PatchAsync(dataAreaId, dict, value, cancellationToken);
+        await PatchAsync(dataAreaId, dict, value, cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -35,7 +35,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     {
         ArgumentNullException.ThrowIfNull(key);
         ArgumentNullException.ThrowIfNull(value);
-        await PatchAsync(DefaultCompany, KeyToDictionary(key), value, cancellationToken);
+        await PatchAsync(DefaultCompany, KeyToDictionary(key), value, cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -46,7 +46,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     {
         ArgumentNullException.ThrowIfNull(key);
         ArgumentNullException.ThrowIfNull(value);
-        await PatchAsync(DefaultCompany, key, value, cancellationToken);
+        await PatchAsync(DefaultCompany, key, value, cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -70,7 +70,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     {
         ArgumentNullException.ThrowIfNull(key);
         ArgumentNullException.ThrowIfNull(value);
-        return await SendPatchAsync(DefaultCompany, key, value, cancellationToken);
+        return await SendPatchAsync(DefaultCompany, key, value, cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -83,12 +83,12 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
         ArgumentNullException.ThrowIfNull(key);
         ArgumentNullException.ThrowIfNull(value);
         ArgumentException.ThrowIfNullOrEmpty(company);
-        string crossCompany = string.Equals(DefaultCompany, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : "?" + _crossCompanyQuery;
+        string crossCompany = string.Equals(DefaultCompany, company, StringComparison.OrdinalIgnoreCase) ? string.Empty : "?" + _crossCompanyQuery;
         Uri url = new(_instance, $"{_dataPath}/{TEntity.EntityName()}({HttpUtility.UrlEncode(GetEntityFilter(company, key))}){crossCompany}");
         HttpResponseMessage? response = null;
         try
         {
-            HttpClient client = await GetClientAsync(cancellationToken);
+            using HttpClient client = await GetClientAsync(cancellationToken).ConfigureAwait(false);
             response = await client
                 .PatchAsJsonAsync(
                     url,

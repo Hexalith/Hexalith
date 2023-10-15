@@ -31,5 +31,5 @@ public interface IExternalSystemReferenceAggregateActor : IActor
     /// Gets the aggregate identifier linked to the external identifier.
     /// </summary>
     /// <returns>Task&lt;System.Nullable&lt;System.String&gt;&gt;.</returns>
-    Task<string?> GetIdAsync();
+    Task<string?> GetReferenceAggregateIdAsync();
 }

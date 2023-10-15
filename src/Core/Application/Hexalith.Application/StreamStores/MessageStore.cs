@@ -138,7 +138,7 @@ public class MessageStore<TMessage>
             throw new ArgumentOutOfRangeException(nameof(toVersion), "Version cannot be negative or zero.");
         }
 
-        if (toVersion <= fromVersion)
+        if (toVersion < fromVersion)
         {
             throw new ArgumentException("To version should be greater or equal than from version.", nameof(toVersion));
         }
@@ -194,6 +194,11 @@ public class MessageStore<TMessage>
     {
         long version = await GetVersionAsync(cancellationToken)
             .ConfigureAwait(false);
+        if (version < 1)
+        {
+            return (Enumerable.Empty<TMessage>(), 0);
+        }
+
         IEnumerable<TMessage> messages = await GetAsync(1, version, cancellationToken)
             .ConfigureAwait(false);
         return (messages, version);

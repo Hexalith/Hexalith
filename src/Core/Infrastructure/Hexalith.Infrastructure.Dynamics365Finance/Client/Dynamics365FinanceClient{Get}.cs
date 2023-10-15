@@ -6,6 +6,7 @@
 
 namespace Hexalith.Infrastructure.Dynamics365Finance.Client;
 
+using System.Diagnostics.CodeAnalysis;
 using System.Net.Http.Json;
 using System.Text.Json;
 using System.Web;
@@ -26,14 +27,14 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     public async Task<int> CountAsync(IPerCompanyFilter filter, CancellationToken cancellationToken)
     {
         (string dataAreaId, IDictionary<string, object?> dict) = FilterToDictionary(filter);
-        IEnumerable<TEntity> result = await GetAsync(dataAreaId, dict, cancellationToken);
+        IEnumerable<TEntity> result = await GetAsync(dataAreaId, dict, cancellationToken).ConfigureAwait(false);
         return result.Count();
     }
 
     /// <inheritdoc/>
     public async Task<int> CountAsync(ICommonFilter filter, CancellationToken cancellationToken)
     {
-        IEnumerable<TEntity> result = await GetAsync(DefaultCompany, FilterToDictionary(filter), cancellationToken);
+        IEnumerable<TEntity> result = await GetAsync(DefaultCompany, FilterToDictionary(filter), cancellationToken).ConfigureAwait(false);
         return result.Count();
     }
 
@@ -41,7 +42,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     public async Task<bool> ExistsAsync(IPerCompanyPrimaryKey key, CancellationToken cancellationToken)
     {
         (string dataAreaId, IDictionary<string, object?> dict) = KeyToDictionary(key);
-        IEnumerable<TEntity> result = await GetAsync(dataAreaId, dict, cancellationToken);
+        IEnumerable<TEntity> result = await GetAsync(dataAreaId, dict, cancellationToken).ConfigureAwait(false);
         int count = result.Count();
         return count == 1 || (count == 0 ? false : throw new InvalidOperationException($"The key {JsonSerializer.Serialize(key)} is not unique."));
     }
@@ -49,29 +50,30 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     /// <inheritdoc/>
     public async Task<bool> ExistsAsync(ICommonPrimaryKey key, CancellationToken cancellationToken)
     {
-        IEnumerable<TEntity> result = await GetAsync(DefaultCompany, KeyToDictionary(key), cancellationToken);
+        IEnumerable<TEntity> result = await GetAsync(DefaultCompany, KeyToDictionary(key), cancellationToken).ConfigureAwait(false);
         int count = result.Count();
         return count == 1 || (count == 0 ? false : throw new InvalidOperationException($"The key {JsonSerializer.Serialize(key)} is not unique."));
     }
 
     /// <inheritdoc/>
-    public async Task<bool> ExistsAsync(IPerCompanyFilter filter, CancellationToken cancellationToken) => await CountAsync(filter, cancellationToken) > 0;
+    public async Task<bool> ExistsAsync(IPerCompanyFilter filter, CancellationToken cancellationToken) => await CountAsync(filter, cancellationToken).ConfigureAwait(false) > 0;
 
     /// <inheritdoc/>
-    public async Task<bool> ExistsAsync(ICommonFilter filter, CancellationToken cancellationToken) => await CountAsync(filter, cancellationToken) > 0;
+    public async Task<bool> ExistsAsync(ICommonFilter filter, CancellationToken cancellationToken) => await CountAsync(filter, cancellationToken).ConfigureAwait(false) > 0;
 
     /// <inheritdoc/>
     public Task<IEnumerable<TEntity>> GetAsync(IDictionary<string, object?> filter, CancellationToken cancellationToken) => GetAsync(DefaultCompany, filter, cancellationToken);
 
     /// <inheritdoc/>
-    public async Task<IEnumerable<TEntity>> GetAsync(string company, IDictionary<string, object?> filter, CancellationToken cancellationToken)
+    public async Task<IEnumerable<TEntity>> GetAsync(string company, [NotNull] IDictionary<string, object?> filter, CancellationToken cancellationToken)
     {
-        string crossCompany = string.Equals(DefaultCompany, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : _crossCompanyQuery + "&";
+        ArgumentNullException.ThrowIfNull(filter);
+        string crossCompany = string.Equals(DefaultCompany, company, StringComparison.OrdinalIgnoreCase) ? string.Empty : _crossCompanyQuery + "&";
         Uri url = new(_instance, $"{_dataPath}/{TEntity.EntityName()}/?{crossCompany}$filter={HttpUtility.UrlEncode(GetQueryFilter(company, filter))}");
         HttpResponseMessage? response = null;
         try
         {
-            HttpClient client = await GetClientAsync(cancellationToken);
+            using HttpClient client = await GetClientAsync(cancellationToken).ConfigureAwait(false);
             response = await client.GetAsync(url, cancellationToken).ConfigureAwait(false);
             if (!response.IsSuccessStatusCode)
             {
@@ -120,7 +122,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     /// <inheritdoc/>
     public async Task<TEntity> GetSingleAsync(IPerCompanyFilter key, CancellationToken cancellationToken)
     {
-        IEnumerable<TEntity> result = await GetAsync(key, cancellationToken);
+        IEnumerable<TEntity> result = await GetAsync(key, cancellationToken).ConfigureAwait(false);
         return result.Count() switch
         {
             0 => throw new EntityNotFoundException<TEntity>(key),
@@ -132,7 +134,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     /// <inheritdoc/>
     public async Task<TEntity> GetSingleAsync(ICommonFilter key, CancellationToken cancellationToken)
     {
-        IEnumerable<TEntity> result = await GetAsync(key, cancellationToken);
+        IEnumerable<TEntity> result = await GetAsync(key, cancellationToken).ConfigureAwait(false);
         return result.Count() switch
         {
             0 => throw new EntityNotFoundException<TEntity>(key),
@@ -155,15 +157,16 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     public Task<TEntity> GetSingleAsync(IDictionary<string, object?> keys, CancellationToken cancellationToken) => GetSingleAsync(DefaultCompany, keys, cancellationToken);
 
     /// <inheritdoc/>
-    public async Task<TEntity> GetSingleAsync(string company, IDictionary<string, object?> keys, CancellationToken cancellationToken)
+    public async Task<TEntity> GetSingleAsync(string company, [NotNull] IDictionary<string, object?> keys, CancellationToken cancellationToken)
     {
-        string crossCompany = string.Equals(DefaultCompany, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : "?" + _crossCompanyQuery;
+        ArgumentNullException.ThrowIfNull(keys);
+        string crossCompany = string.Equals(DefaultCompany, company, StringComparison.OrdinalIgnoreCase) ? string.Empty : "?" + _crossCompanyQuery;
         string keyFilter = GetEntityFilter(company, keys);
         Uri url = new(_instance, $"{_dataPath}/{TEntity.EntityName()}({HttpUtility.UrlEncode(keyFilter)}){crossCompany}");
         HttpResponseMessage? response = null;
         try
         {
-            HttpClient client = await GetClientAsync(cancellationToken);
+            using HttpClient client = await GetClientAsync(cancellationToken).ConfigureAwait(false);
             response = await client.GetAsync(url, cancellationToken).ConfigureAwait(false);
             if (!response.IsSuccessStatusCode)
             {

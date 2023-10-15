@@ -31,12 +31,22 @@ public static partial class StringHelper
     /// <param name="value">The value.</param>
     /// <param name="args">The arguments.</param>
     /// <returns>System.String.</returns>
-    public static string FormatWithNamedPlaceholders(IFormatProvider provider, string value, params object?[] args)
+    public static string FormatWithNamedPlaceholders(IFormatProvider provider, string value, object?[] args)
     {
-        return string.Format(
-            provider,
-            ReplacePlaceholderNamesByIndex(value),
-            args);
+        string format = ReplacePlaceholderNamesByIndex(value);
+        try
+        {
+            return string.Format(
+                provider,
+                format,
+                args);
+        }
+        catch (Exception e)
+        {
+            IEnumerable<string> argValues = args.Select(p => $"{p?.GetType().Name ?? "null"}:{p ?? "null"}");
+            throw new InvalidOperationException(
+                $"Could not format :\nOriginal={value}\nIndexed={format}\nValues={string.Join("\n", argValues)}", e);
+        }
     }
 
     /// <summary>
@@ -45,7 +55,7 @@ public static partial class StringHelper
     /// <param name="value">The value.</param>
     /// <param name="args">The arguments.</param>
     /// <returns>System.String.</returns>
-    public static string FormatWithNamedPlaceholders(string value, params object?[] args)
+    public static string FormatWithNamedPlaceholders(string value, object?[] args)
     {
         return string.Format(
             CultureInfo.InvariantCulture,

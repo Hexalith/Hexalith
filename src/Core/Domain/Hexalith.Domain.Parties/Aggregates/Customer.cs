@@ -50,7 +50,7 @@ public record Customer(
     /// <param name="customer">The customer.</param>
     public Customer(CustomerRegistered customer)
         : this(
-              customer.CompanyId,
+              (customer ?? throw new ArgumentNullException(nameof(customer))).CompanyId,
               customer.Id,
               customer.Name,
               customer.Contact,
@@ -95,5 +95,7 @@ public record Customer(
     /// Gets the name of the aggregate.
     /// </summary>
     /// <returns>System.String.</returns>
+#pragma warning disable CA1024 // Use properties where appropriate
     public static string GetAggregateName() => nameof(Customer);
+#pragma warning restore CA1024 // Use properties where appropriate
 }

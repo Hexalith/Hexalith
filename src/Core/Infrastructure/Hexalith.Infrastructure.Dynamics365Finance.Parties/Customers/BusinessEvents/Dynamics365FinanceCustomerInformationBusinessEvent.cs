@@ -64,6 +64,13 @@ public abstract class Dynamics365FinanceCustomerInformationBusinessEvent : Dynam
     public IEnumerable<ExternalReference>? ExternalReferences { get; set; }
 
     /// <summary>
+    /// Gets or sets the inter company direct delivery.
+    /// </summary>
+    /// <value>The inter company direct delivery.</value>
+    [DataMember]
+    public string? InterCompanyDirectDelivery { get; set; }
+
+    /// <summary>
     /// Gets or sets the name.
     /// </summary>
     /// <value>The name.</value>

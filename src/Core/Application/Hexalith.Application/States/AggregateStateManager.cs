@@ -336,16 +336,43 @@ public class AggregateStateManager : IAggregateStateManager
                     _logger);
 
                 (processor, IEnumerable<BaseMessage> messages) = await commandProcessor.ProcessAsync(nextCommand.ToInvariantString(), command.Message, cancellationToken).ConfigureAwait(false);
-                BaseEvent[] events = messages.OfType<BaseEvent>().ToArray();
+                BaseEvent[] newEvents = messages.OfType<BaseEvent>().ToArray();
                 long eventVersion = state.EventStreamVersion;
-                if (events.Length != 0)
+                if (newEvents.Length != 0)
                 {
-                    aggregate = aggregate?.Apply(events)
-                        ?? new AggregateBuilder()
-                            .Initializer(aggregateInitializer)
-                            .Events(events)
-                            .Build();
-                    IEnumerable<EventState> eventStates = events.Select(
+                    if (aggregate == null)
+                    {
+                        if (state.EventStreamVersion > 0)
+                        {
+                            // Get the aggregate from the event store and apply the new events
+                            (IEnumerable<EventState>? m, long v) = await eventStore.GetAsync(cancellationToken).ConfigureAwait(false);
+                            List<BaseEvent> events = m
+                                .Select(p => p.Message
+                                    ?? throw new InvalidOperationException("Message is null in event store state."))
+                                .ToList();
+                            aggregate = new AggregateBuilder()
+                                        .Initializer(aggregateInitializer)
+                                        .Events(events)
+                                        .Build()
+                                    .Apply(newEvents);
+                        }
+                        else
+                        {
+                            // Create a new aggregate with the new events
+                            aggregate = new AggregateBuilder()
+                                    .Initializer(aggregateInitializer)
+                                    .Events(newEvents)
+                                    .Build();
+                        }
+                    }
+                    else
+                    {
+                        // Apply the new events to the existing aggregate
+                        aggregate = aggregate.Apply(newEvents);
+                    }
+
+                    // Add the new events to the event store
+                    IEnumerable<EventState> eventStates = newEvents.Select(
                             p => new EventState(
                                 _dateTimeService.UtcNow,
                                 p,
@@ -356,6 +383,7 @@ public class AggregateStateManager : IAggregateStateManager
                         cancellationToken).ConfigureAwait(false);
                 }
 
+                // Update the aggregate state
                 state = new AggregateState(
                         state.CommandStreamVersion,
                         eventVersion,
@@ -368,6 +396,7 @@ public class AggregateStateManager : IAggregateStateManager
 
                 if (processor?.Ended != true)
                 {
+                    // The command processor did not end due to an error, we need to retry
                     aggregate = null;
                     break;
                 }
@@ -377,7 +406,6 @@ public class AggregateStateManager : IAggregateStateManager
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error while executing commands in {CommandsStreamName}.", CommandsStreamName);
             throw new ApplicationErrorException(
                 new ApplicationError
                 {

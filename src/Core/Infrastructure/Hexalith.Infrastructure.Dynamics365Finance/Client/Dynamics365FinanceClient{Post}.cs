@@ -63,12 +63,12 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     {
         ArgumentNullException.ThrowIfNull(value);
         ArgumentException.ThrowIfNullOrEmpty(company);
-        string crossCompany = string.Equals(DefaultCompany, company, StringComparison.InvariantCultureIgnoreCase) ? string.Empty : "/?" + _crossCompanyQuery;
+        string crossCompany = string.Equals(DefaultCompany, company, StringComparison.OrdinalIgnoreCase) ? string.Empty : "/?" + _crossCompanyQuery;
         Uri url = new(_instance, $"{_dataPath}/{TEntity.EntityName()}{crossCompany}");
         HttpResponseMessage? response = null;
         try
         {
-            HttpClient client = await GetClientAsync(cancellationToken);
+            using HttpClient client = await GetClientAsync(cancellationToken).ConfigureAwait(false);
             response = await client
                 .PostAsJsonAsync(
                     url,

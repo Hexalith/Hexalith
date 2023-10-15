@@ -146,7 +146,8 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     protected ILogger Logger { get; }
 
     /// <inheritdoc/>
-    public Task DoActionAsync(string action, IDictionary<string, object?> parameters, CancellationToken cancellationToken) => throw new NotSupportedException();
+    public Task DoActionAsync(string action, IDictionary<string, object?> parameters, CancellationToken cancellationToken)
+        => throw new NotSupportedException();
 
     /// <summary>
     /// Per company filters to dictionary.

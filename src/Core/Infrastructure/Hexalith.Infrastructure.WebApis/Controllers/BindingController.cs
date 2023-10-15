@@ -15,6 +15,7 @@
 // ***********************************************************************
 namespace Hexalith.Infrastructure.WebApis.Controllers;
 
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Net;
 using System.Text.Json;
@@ -95,7 +96,7 @@ public abstract class BindingController : ControllerBase
                 @event.TypeName,
                 @event.AggregateName,
                 @event.AggregateId);
-            await _eventProcessor.SubmitAsync(@event, cancellationToken);
+            await _eventProcessor.SubmitAsync(@event, cancellationToken).ConfigureAwait(false);
             return Accepted();
         }
         catch (ApplicationErrorException ex)
@@ -118,8 +119,9 @@ public abstract class BindingController : ControllerBase
     /// </summary>
     /// <param name="error">The error.</param>
     /// <returns>ObjectResult.</returns>
-    protected ObjectResult Problem(ApplicationError error)
+    protected ObjectResult Problem([NotNull] ApplicationError error)
     {
+        ArgumentNullException.ThrowIfNull(error);
         string detail;
         try
         {
@@ -127,11 +129,11 @@ public abstract class BindingController : ControllerBase
                 ? StringHelper.FormatWithNamedPlaceholders(
                     CultureInfo.InvariantCulture,
                     error.Detail ?? string.Empty,
-                    error.Arguments)
+                    error.Arguments?.ToArray() ?? [])
                 : StringHelper.FormatWithNamedPlaceholders(
                     CultureInfo.InvariantCulture,
                     error.TechnicalDetail ?? string.Empty,
-                    error.TechnicalArguments);
+                    error.TechnicalArguments?.ToArray() ?? []);
         }
         catch (Exception ex)
         {

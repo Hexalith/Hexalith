@@ -62,14 +62,17 @@ public class Dynamics365FinanceIntegrationEventProcessor : DependencyInjectionEv
         ArgumentNullException.ThrowIfNull(@event);
         try
         {
-            IEnumerable<BaseCommand> commands = (await ApplyAsync(@event, cancellationToken)).SelectMany(p => p);
-            commands = commands.Union(@event.ToCommands());
-            if (commands.Any())
+            List<BaseCommand> commands = (await ApplyAsync(@event, cancellationToken)
+                .ConfigureAwait(false))
+                .SelectMany(p => p)
+                .Union(@event.ToCommands())
+                .ToList();
+            if (commands.Count != 0)
             {
                 await _commandProcessor.SubmitAsync(
                     commands,
                     Metadata.CreateNew(commands.First(), @event, _dateTimeService.UtcNow),
-                    cancellationToken);
+                    cancellationToken).ConfigureAwait(false);
                 return;
             }
 

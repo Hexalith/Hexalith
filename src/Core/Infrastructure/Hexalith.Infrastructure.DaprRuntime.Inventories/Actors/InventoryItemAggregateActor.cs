@@ -115,10 +115,8 @@ public class InventoryItemAggregateActor : Actor, ICommandProcessorActor, IRemin
     /// <inheritdoc/>
     public async Task<InventoryItemInformationChanged?> CreateInformationChangedEventAsync()
     {
-        InventoryItem? inventoryItem = await GetAggregateAsync().ConfigureAwait(false);
-        return inventoryItem == null
-            ? null
-            : new InventoryItemInformationChanged(
+        InventoryItem inventoryItem = await GetAggregateAsync().ConfigureAwait(false);
+        return new InventoryItemInformationChanged(
                 inventoryItem.CompanyId,
                 inventoryItem.Id,
                 inventoryItem.Name,
@@ -129,6 +127,7 @@ public class InventoryItemAggregateActor : Actor, ICommandProcessorActor, IRemin
     public async Task DoAsync(ActorCommandEnvelope envelope)
     {
         ArgumentNullException.ThrowIfNull(envelope);
+        _aggregate = null;
         await _stateManager
             .AddCommandAsync(
                 _stateProvider,
@@ -147,24 +146,21 @@ public class InventoryItemAggregateActor : Actor, ICommandProcessorActor, IRemin
             return false;
         }
 
-        InventoryItem? inventoryItem = await GetAggregateAsync().ConfigureAwait(false);
-        return inventoryItem != null;
+        _ = await GetAggregateAsync().ConfigureAwait(false);
+        return true;
     }
 
     /// <inheritdoc/>
     public async Task<string?> GetItemNameAsync()
-        => (await GetAggregateAsync().ConfigureAwait(false))?.Name;
+        => (await GetAggregateAsync().ConfigureAwait(false)).Name;
 
     /// <inheritdoc/>
     public async Task<bool> HasChangesAsync(InventoryItemInformationChanged changed)
     {
         ArgumentNullException.ThrowIfNull(changed);
 
-        InventoryItem? inventoryItem = await GetAggregateAsync().ConfigureAwait(false);
-        return inventoryItem == null
-            ? throw new InvalidOperationException($"InventoryItem {Id.GetId()} not found.")
-            :
-            inventoryItem.Name == changed.Name;
+        InventoryItem inventoryItem = await GetAggregateAsync().ConfigureAwait(false);
+        return inventoryItem.Name != changed.Name;
     }
 
     /// <inheritdoc/>
@@ -176,13 +172,15 @@ public class InventoryItemAggregateActor : Actor, ICommandProcessorActor, IRemin
     }
 
     /// <inheritdoc/>
-    public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period) => await ContinueAsync().ConfigureAwait(false);
+    public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period)
+        => await ContinueAsync().ConfigureAwait(false);
 
     /// <summary>
     /// Get aggregate as an asynchronous operation.
     /// </summary>
     /// <returns>A Task&lt;InventoryItem&gt; representing the asynchronous operation.</returns>
-    private async Task<InventoryItem?> GetAggregateAsync()
+    /// <exception cref="System.InvalidOperationException">Aggregate {Host.ActorTypeInfo.ActorTypeName} {Id.GetId()} is not ready. Check task processor failure information.</exception>
+    private async Task<InventoryItem> GetAggregateAsync()
     {
         _aggregate ??= (InventoryItem?)await _stateManager
                 .GetAggregateAsync(
@@ -191,6 +189,7 @@ public class InventoryItemAggregateActor : Actor, ICommandProcessorActor, IRemin
                     CancellationToken.None)
                 .ConfigureAwait(false);
 
-        return _aggregate;
+        return _aggregate
+            ?? throw new InvalidOperationException($"Aggregate {Host.ActorTypeInfo.ActorTypeName} {Id.GetId()} is not ready. Check task processor failure information.");
     }
 }

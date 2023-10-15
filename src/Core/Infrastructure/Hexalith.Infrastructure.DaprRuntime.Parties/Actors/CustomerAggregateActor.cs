@@ -118,10 +118,8 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
     /// <inheritdoc/>
     public async Task<CustomerInformationChanged?> CreateInformationChangedEventAsync()
     {
-        Customer? customer = await GetAggregateAsync().ConfigureAwait(false);
-        return customer == null
-            ? null
-            : new CustomerInformationChanged(
+        Customer customer = await GetAggregateAsync().ConfigureAwait(false);
+        return new CustomerInformationChanged(
                 customer.CompanyId,
                 customer.Id,
                 customer.Name,
@@ -148,7 +146,15 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
 
     /// <inheritdoc/>
     public async Task<bool> ExistAsync()
-        => await GetAggregateAsync().ConfigureAwait(false) != null;
+    {
+        if (await HasCommandsAsync().ConfigureAwait(false))
+        {
+            _ = await GetAggregateAsync().ConfigureAwait(false);
+            return true;
+        }
+
+        return false;
+    }
 
     /// <inheritdoc/>
     public async Task<bool> HasChangesAsync(ChangeCustomerInformation change)
@@ -159,14 +165,12 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
             throw new InvalidCommandAggregateIdException(Id.GetId(), change);
         }
 
-        Customer? customer = await GetAggregateAsync().ConfigureAwait(false);
-        return customer == null
-            ? throw new InvalidOperationException($"Customer {Id.GetId()} not found.")
-            :
-            customer.Name == change.Name &&
+        Customer customer = await GetAggregateAsync()
+            .ConfigureAwait(false);
+        return !(customer.Name == change.Name &&
             customer.CommissionSalesGroupId == change.CommissionSalesGroupId &&
             customer.WarehouseId == change.WarehouseId &&
-            Contact.AreSame(customer.Contact, change.Contact);
+            Contact.AreSame(customer.Contact, change.Contact));
     }
 
     /// <inheritdoc/>
@@ -179,27 +183,26 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
 
     /// <inheritdoc/>
     public async Task<bool> IsIntercompanyDirectDeliveryAsync()
-    {
-        Customer? customer = await GetAggregateAsync().ConfigureAwait(false);
-        return customer == null
-            ? throw new InvalidOperationException($"Customer with AggregateId={Id.GetId()} not found.")
-            : customer.IntercompanyDirectDelivery;
-    }
+        => (await GetAggregateAsync().ConfigureAwait(false)).IntercompanyDirectDelivery;
 
     /// <inheritdoc/>
-    public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period) => await ContinueAsync().ConfigureAwait(false);
+    public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period)
+        => await ContinueAsync().ConfigureAwait(false);
 
     /// <summary>
     /// Get aggregate as an asynchronous operation.
     /// </summary>
     /// <returns>A Task&lt;Customer&gt; representing the asynchronous operation.</returns>
-    private async Task<Customer?> GetAggregateAsync()
+    /// <exception cref="System.InvalidOperationException">Aggregate {Host.ActorTypeInfo.ActorTypeName} {Id.GetId()} is not ready. Check task processor failure information.</exception>
+    private async Task<Customer> GetAggregateAsync()
     {
-        return _aggregate ??= (Customer?)await _stateManager
+        _aggregate ??= (Customer?)await _stateManager
                 .GetAggregateAsync(
                     _stateProvider,
                     (e) => new Customer((CustomerRegistered)e),
                     CancellationToken.None)
                 .ConfigureAwait(false);
+        return _aggregate
+            ?? throw new InvalidOperationException($"Aggregate {Host.ActorTypeInfo.ActorTypeName} {Id.GetId()} is not ready. Check task processor failure information.");
     }
 }

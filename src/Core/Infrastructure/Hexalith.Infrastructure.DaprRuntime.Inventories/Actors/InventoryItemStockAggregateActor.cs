@@ -114,6 +114,7 @@ public class InventoryItemStockAggregateActor : Actor, ICommandProcessorActor, I
     public async Task DoAsync(ActorCommandEnvelope envelope)
     {
         ArgumentNullException.ThrowIfNull(envelope);
+        _aggregate = null;
         await _stateManager
             .AddCommandAsync(
                 _stateProvider,
@@ -132,8 +133,9 @@ public class InventoryItemStockAggregateActor : Actor, ICommandProcessorActor, I
             return false;
         }
 
-        InventoryItemStock? inventoryItem = await GetAggregateAsync().ConfigureAwait(false);
-        return inventoryItem != null;
+        _ = await GetAggregateAsync()
+            .ConfigureAwait(false);
+        return true;
     }
 
     /// <inheritdoc/>
@@ -146,15 +148,9 @@ public class InventoryItemStockAggregateActor : Actor, ICommandProcessorActor, I
 
     /// <inheritdoc/>
     public async Task<decimal> LevelAsync()
-    {
-        if (!await HasCommandsAsync().ConfigureAwait(false))
-        {
-            return 0m;
-        }
-
-        InventoryItemStock? stock = await GetAggregateAsync().ConfigureAwait(false);
-        return stock == null ? 0m : stock.Quantity;
-    }
+        => await HasCommandsAsync().ConfigureAwait(false)
+            ? (await GetAggregateAsync().ConfigureAwait(false)).Quantity
+            : 0m;
 
     /// <inheritdoc/>
     public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period)
@@ -164,7 +160,8 @@ public class InventoryItemStockAggregateActor : Actor, ICommandProcessorActor, I
     /// Get aggregate as an asynchronous operation.
     /// </summary>
     /// <returns>A Task&lt;InventoryItemStock&gt; representing the asynchronous operation.</returns>
-    private async Task<InventoryItemStock?> GetAggregateAsync()
+    /// <exception cref="System.InvalidOperationException">Aggregate {Host.ActorTypeInfo.ActorTypeName} {Id.GetId()} is not ready. Check task processor failure information.</exception>
+    private async Task<InventoryItemStock> GetAggregateAsync()
     {
         _aggregate ??= (InventoryItemStock?)await _stateManager
                 .GetAggregateAsync(
@@ -173,6 +170,7 @@ public class InventoryItemStockAggregateActor : Actor, ICommandProcessorActor, I
                     CancellationToken.None)
                 .ConfigureAwait(false);
 
-        return _aggregate;
+        return _aggregate
+            ?? throw new InvalidOperationException($"Aggregate {Host.ActorTypeInfo.ActorTypeName} {Id.GetId()} is not ready. Check task processor failure information.");
     }
 }

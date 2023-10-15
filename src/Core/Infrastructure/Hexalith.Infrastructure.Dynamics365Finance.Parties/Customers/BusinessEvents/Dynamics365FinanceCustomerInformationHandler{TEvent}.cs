@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 08-30-2023
 // ***********************************************************************
-// <copyright file="FFYCustomerInformationBusinessEventHandler{TEvent}.cs" company="Fiveforty SAS Paris France">
+// <copyright file="Dynamics365FinanceCustomerInformationHandler{TEvent}.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -30,12 +30,12 @@ using Hexalith.Domain.ValueObjets;
 using Hexalith.Extensions.Common;
 
 /// <summary>
-/// Class FinOpsCustomerHandler.
-/// Implements the <see cref="IntegrationEventHandler{TEvent}" />.
+/// Class FFYCustomerInformationBusinessEventHandler.
+/// Implements the <see cref="IntegrationEventHandler`1" />.
 /// </summary>
 /// <typeparam name="TEvent">The type of the t event.</typeparam>
-/// <seealso cref="IntegrationEventHandler{TEvent}" />
-public abstract class FFYCustomerInformationBusinessEventHandler<TEvent> : IntegrationEventHandler<TEvent>
+/// <seealso cref="IntegrationEventHandler`1" />
+public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : IntegrationEventHandler<TEvent>
     where TEvent : Dynamics365FinanceCustomerInformationBusinessEvent
 {
     /// <summary>
@@ -59,14 +59,14 @@ public abstract class FFYCustomerInformationBusinessEventHandler<TEvent> : Integ
     private readonly IExternalSystemReferenceQueryService _externalReferenceService;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="FFYCustomerInformationBusinessEventHandler{TEvent}" /> class.
+    /// Initializes a new instance of the <see cref="Dynamics365FinanceCustomerInformationHandler{TEvent}" /> class.
     /// </summary>
     /// <param name="dateTimeService">The date time service.</param>
     /// <param name="customerService">The customer service.</param>
     /// <param name="externalReferenceService">The external reference service.</param>
     /// <param name="aggregateExternalReferenceService">The aggregate external reference service.</param>
     /// <exception cref="ArgumentNullException">null.</exception>
-    protected FFYCustomerInformationBusinessEventHandler(
+    protected Dynamics365FinanceCustomerInformationHandler(
         IDateTimeService dateTimeService,
         ICustomerQueryService customerService,
         IExternalSystemReferenceQueryService externalReferenceService,
@@ -94,13 +94,14 @@ public abstract class FFYCustomerInformationBusinessEventHandler<TEvent> : Integ
         string companyId = @event.BusinessEventLegalEntity.ToUpperInvariant();
         string customerId = @event.Account.ToUpperInvariant();
         string customerAggregateId = Customer.GetAggregateId(companyId, customerId);
+        string customerAggregateName = Customer.GetAggregateName();
         List<BaseCommand> commands = [];
         if (@event.ExternalReferences != null)
         {
             foreach (ExternalReference reference in @event.ExternalReferences)
             {
                 AddAggregateExternalReference addAggregateExternalReference = new(
-                        Customer.GetAggregateName(),
+                        customerAggregateName,
                         customerAggregateId,
                         reference.SystemId,
                         reference.ExternalId);
@@ -116,7 +117,7 @@ public abstract class FFYCustomerInformationBusinessEventHandler<TEvent> : Integ
 
                 AddExternalSystemReference mapExternalSystemReference = new(
                         reference.SystemId,
-                        Customer.GetAggregateName(),
+                        customerAggregateName,
                         reference.ExternalId,
                         customerAggregateId);
                 if (await _externalReferenceService.GetAsync(
@@ -129,6 +130,7 @@ public abstract class FFYCustomerInformationBusinessEventHandler<TEvent> : Integ
             }
         }
 
+        bool directDelivery = @event.InterCompanyDirectDelivery == "Yes";
         if (!await _customerService
             .ExistAsync(customerAggregateId, cancellationToken)
             .ConfigureAwait(false))
@@ -142,6 +144,14 @@ public abstract class FFYCustomerInformationBusinessEventHandler<TEvent> : Integ
                    @event.CommissionSalesGroupId,
                    _dateTimeService.UtcNow);
             commands.Add(registerCustomer);
+            if (directDelivery)
+            {
+                commands.Add(new SetCustomerIntercompanyDeliveryToDirect(companyId, customerId));
+            }
+            else
+            {
+                commands.Add(new SetCustomerIntercompanyDeliveryToIndirect(companyId, customerId));
+            }
         }
         else
         {
@@ -158,6 +168,20 @@ public abstract class FFYCustomerInformationBusinessEventHandler<TEvent> : Integ
                 .ConfigureAwait(false))
             {
                 commands.Add(changeCustomer);
+            }
+
+            if (await _customerService
+                .IsIntercompanyDirectDeliveryAsync(Customer.GetAggregateId(companyId, customerId), cancellationToken)
+                .ConfigureAwait(false) != directDelivery)
+            {
+                if (directDelivery)
+                {
+                    commands.Add(new SetCustomerIntercompanyDeliveryToDirect(companyId, customerId));
+                }
+                else
+                {
+                    commands.Add(new SetCustomerIntercompanyDeliveryToIndirect(companyId, customerId));
+                }
             }
         }
 

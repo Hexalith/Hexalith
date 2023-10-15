@@ -24,7 +24,7 @@ using Hexalith.Extensions.Common;
 /// Implements the <see cref="Application.Events.IntegrationEventHandler{Customers.Infrastructure.IntegrationEvents.FFYCustomerChangedBusinessEvent}" />.
 /// </summary>
 /// <seealso cref="Application.Events.IntegrationEventHandler{Customers.Infrastructure.IntegrationEvents.FFYCustomerChangedBusinessEvent}" />
-public class Dynamics365FinanceCustomerChangedHandler : FFYCustomerInformationBusinessEventHandler<Dynamics365FinanceCustomerChanged>
+public class Dynamics365FinanceCustomerChangedHandler : Dynamics365FinanceCustomerInformationHandler<Dynamics365FinanceCustomerChanged>
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="Dynamics365FinanceCustomerChangedHandler" /> class.

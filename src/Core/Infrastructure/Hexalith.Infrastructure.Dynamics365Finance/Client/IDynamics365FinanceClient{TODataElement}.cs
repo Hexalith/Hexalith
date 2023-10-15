@@ -8,6 +8,8 @@
 // ***********************************************************************
 // <copyright file="IDynamics365FinanceClient{TODataElement}.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -30,7 +32,7 @@ public interface IDynamics365FinanceClient<TODataElement>
     string DefaultCompany { get; }
 
     /// <summary>
-    /// Counts the number of occurences.
+    /// Counts the number of occurrences.
     /// </summary>
     /// <param name="filter">The filter.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -63,7 +65,7 @@ public interface IDynamics365FinanceClient<TODataElement>
     Task<bool> ExistsAsync(IPerCompanyFilter filter, CancellationToken cancellationToken);
 
     /// <summary>
-    /// Counts the number of occurences.
+    /// Counts the number of occurrences.
     /// </summary>
     /// <param name="filter">The filter.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>

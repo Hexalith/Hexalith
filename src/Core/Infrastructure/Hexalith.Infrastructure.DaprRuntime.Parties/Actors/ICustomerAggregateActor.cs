@@ -36,7 +36,7 @@ public interface ICustomerAggregateActor : IActor
     Task<CustomerInformationChanged?> CreateInformationChangedEventAsync();
 
     /// <summary>
-    /// Checks if the customer exists.
+    /// Exists the asynchronous.
     /// </summary>
     /// <returns>Task&lt;System.Boolean&gt;.</returns>
     Task<bool> ExistAsync();
