@@ -42,7 +42,9 @@ public interface IPolymorphicSerializable : IMappableType
     string TypeName { get; }
 
     /// <inheritdoc/>
+#pragma warning disable CA1033 // Interface methods should be callable by child types
     string IMappableType.TypeMapName => GetTypeMapName(TypeName, MajorVersion, MinorVersion);
+#pragma warning restore CA1033 // Interface methods should be callable by child types
 
     /// <summary>
     /// Gets the name of the type map.
@@ -51,5 +53,5 @@ public interface IPolymorphicSerializable : IMappableType
     /// <param name="majorVersion">The major version.</param>
     /// <param name="minorVersion">The minor version.</param>
     /// <returns>System.String.</returns>
-    static string GetTypeMapName(string typeName, int majorVersion, int minorVersion) => $"{typeName}|{majorVersion}.{minorVersion}";
+    public static string GetTypeMapName(string typeName, int majorVersion, int minorVersion) => $"{typeName}|{majorVersion}.{minorVersion}";
 }

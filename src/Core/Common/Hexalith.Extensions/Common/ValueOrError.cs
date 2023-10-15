@@ -72,6 +72,9 @@ public class ValueOrError<T>
     /// </summary>
     /// <param name="error">The error.</param>
     /// <returns>ValueOrError&lt;T&gt;.</returns>
+#pragma warning disable CA1000 // Do not declare static members on generic types
+
     public static ValueOrError<T> WithError(ApplicationError error)
+#pragma warning restore CA1000 // Do not declare static members on generic types
         => new(default!, error, false);
 }

@@ -30,7 +30,7 @@ using Microsoft.Extensions.Options;
 /// Implementation of <see cref="IValidateOptions{TOptions}"/> that uses FluentValidation <see cref="Validator"/> for validation.
 /// </summary>
 /// <typeparam name="TOptions">The instance being validated.</typeparam>
-public class FluentValidateOptions<TOptions>
+public partial class FluentValidateOptions<TOptions>
     : IValidateOptions<TOptions>
     where TOptions : class
 {
@@ -74,7 +74,7 @@ public class FluentValidateOptions<TOptions>
         // The fluent validator is missing.
         if (_validator == null)
         {
-            _logger.LogWarning("Validator not found in dependency injection container : {Settings}.", typeof(IValidator<TOptions>).Name);
+            ValidatorNotFound(typeof(IValidator<TOptions>).Name);
 
             // Ignored if not validating this instance.
             return ValidateOptionsResult.Skip;
@@ -88,7 +88,7 @@ public class FluentValidateOptions<TOptions>
             return ValidateOptionsResult.Success;
         }
 
-        List<string> errors = [];
+        List<string> errors =[];
         string typeName = options.GetType().Name;
         foreach (FluentValidation.Results.ValidationFailure? result in results.Errors)
         {
@@ -97,4 +97,10 @@ public class FluentValidateOptions<TOptions>
 
         return ValidateOptionsResult.Fail(errors);
     }
+
+    [LoggerMessage(
+    EventId = 1,
+    Level = LogLevel.Warning,
+    Message = "Validator '{ValidatorName}' not found in dependency injection container.")]
+    public partial void ValidatorNotFound(string validatorName);
 }

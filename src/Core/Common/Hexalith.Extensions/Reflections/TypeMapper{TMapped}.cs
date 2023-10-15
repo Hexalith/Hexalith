@@ -65,9 +65,12 @@ public static class TypeMapper<TMapped>
     /// <returns>Dictionary&lt;System.String, Type&gt;.</returns>
     /// <exception cref="System.TypeInitializationException">null.</exception>
     /// <exception cref="System.InvalidOperationException">Type {type.FullName} could not be added to the serialization mapper. Name '{obj.TypeMapName}' already exists ans is associated to '{map[key].FullName}'.</exception>
+#pragma warning disable CA1000 // Do not declare static members on generic types
+
     public static Dictionary<string, TMapped> GetMap()
+#pragma warning restore CA1000 // Do not declare static members on generic types
     {
-        Dictionary<string, TMapped> map = [];
+        Dictionary<string, TMapped> map =[];
         foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies().Where(a => !a.IsDynamic))
         {
             try
@@ -113,7 +116,10 @@ public static class TypeMapper<TMapped>
     /// <param name="name">The name.</param>
     /// <returns>object.</returns>
     /// <exception cref="System.InvalidOperationException">Mappable type with name '{name}' not found.</exception>
+#pragma warning disable CA1000 // Do not declare static members on generic types
+
     public static object GetObject(string name)
+#pragma warning restore CA1000 // Do not declare static members on generic types
     {
         try
         {
@@ -131,5 +137,9 @@ public static class TypeMapper<TMapped>
     /// <param name="name">The name.</param>
     /// <returns>Type.</returns>
     /// <exception cref="System.InvalidOperationException">Mappable type with name '{name}' not found.</exception>
+#pragma warning disable CA1000 // Do not declare static members on generic types
+
     public static Type GetType(string name) => GetObject(name).GetType();
+
+#pragma warning restore CA1000 // Do not declare static members on generic types
 }
