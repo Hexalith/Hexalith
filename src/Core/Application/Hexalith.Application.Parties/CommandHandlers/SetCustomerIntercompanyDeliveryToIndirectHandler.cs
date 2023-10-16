@@ -18,6 +18,7 @@ namespace Hexalith.Application.Parties.CommandHandlers;
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -35,8 +36,9 @@ using Hexalith.Extensions.Helpers;
 public class SetCustomerIntercompanyDeliveryToIndirectHandler : CommandHandler<SetCustomerIntercompanyDeliveryToIndirect>
 {
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> DoAsync(SetCustomerIntercompanyDeliveryToIndirect command, CancellationToken cancellationToken)
+    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] SetCustomerIntercompanyDeliveryToIndirect command, CancellationToken cancellationToken)
     {
+        ArgumentNullException.ThrowIfNull(command);
         return Task.FromResult<IEnumerable<BaseMessage>>(
             new CustomerIntercompanyDeliveryTypeSetToIndirect(
                 command.CompanyId,

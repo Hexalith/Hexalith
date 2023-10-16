@@ -1,10 +1,10 @@
 ﻿// ***********************************************************************
 // Assembly         : Hexalith.Infrastructure.WebApis
-// Author           : jpiquot
-// Created          : 01-15-2023
+// Author           : Jérôme Piquot
+// Created          : 09-12-2023
 //
-// Last Modified By : jpiquot
-// Last Modified On : 02-18-2023
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 10-16-2023
 // ***********************************************************************
 // <copyright file="HexalithWebApi.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -17,6 +17,7 @@
 namespace Hexalith.Infrastructure.WebApis.Helpers;
 
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 
 using Dapr.Actors.Runtime;
 
@@ -117,8 +118,10 @@ public static class HexalithWebApi
     /// </summary>
     /// <param name="app">The application.</param>
     /// <returns>IApplicationBuilder.</returns>
-    public static IApplicationBuilder UseHexalith(this WebApplication app)
+    /// <exception cref="System.ArgumentNullException"></exception>
+    public static IApplicationBuilder UseHexalith([NotNull] this WebApplication app)
     {
+        ArgumentNullException.ThrowIfNull(app);
         _ = app
             .UseCors()
             .UseSerilogRequestLogging()

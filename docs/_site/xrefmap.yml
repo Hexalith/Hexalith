@@ -8537,6 +8537,12 @@ references:
   commentId: M:Hexalith.Application.Tasks.TaskProcessor.#ctor
   fullName: Hexalith.Application.Tasks.TaskProcessor.TaskProcessor()
   nameWithType: TaskProcessor.TaskProcessor()
+- uid: Hexalith.Application.Tasks.TaskProcessor.#ctor(Hexalith.Application.Tasks.ITaskProcessor)
+  name: TaskProcessor(ITaskProcessor)
+  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor__ctor_Hexalith_Application_Tasks_ITaskProcessor_
+  commentId: M:Hexalith.Application.Tasks.TaskProcessor.#ctor(Hexalith.Application.Tasks.ITaskProcessor)
+  fullName: Hexalith.Application.Tasks.TaskProcessor.TaskProcessor(Hexalith.Application.Tasks.ITaskProcessor)
+  nameWithType: TaskProcessor.TaskProcessor(ITaskProcessor)
 - uid: Hexalith.Application.Tasks.TaskProcessor.#ctor(Hexalith.Application.Tasks.TaskProcessorStatus,Hexalith.Application.Tasks.TaskProcessingHistory,Hexalith.Application.Tasks.ResiliencyPolicy,Hexalith.Application.Tasks.TaskProcessingFailure)
   name: TaskProcessor(TaskProcessorStatus, TaskProcessingHistory, ResiliencyPolicy, TaskProcessingFailure)
   href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor__ctor_Hexalith_Application_Tasks_TaskProcessorStatus_Hexalith_Application_Tasks_TaskProcessingHistory_Hexalith_Application_Tasks_ResiliencyPolicy_Hexalith_Application_Tasks_TaskProcessingFailure_
@@ -8569,6 +8575,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Tasks.TaskProcessor.Cancel
   nameWithType: TaskProcessor.Cancel
+- uid: Hexalith.Application.Tasks.TaskProcessor.CancelTask
+  name: CancelTask()
+  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_CancelTask
+  commentId: M:Hexalith.Application.Tasks.TaskProcessor.CancelTask
+  fullName: Hexalith.Application.Tasks.TaskProcessor.CancelTask()
+  nameWithType: TaskProcessor.CancelTask()
+- uid: Hexalith.Application.Tasks.TaskProcessor.CancelTask*
+  name: CancelTask
+  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_CancelTask_
+  commentId: Overload:Hexalith.Application.Tasks.TaskProcessor.CancelTask
+  isSpec: "True"
+  fullName: Hexalith.Application.Tasks.TaskProcessor.CancelTask
+  nameWithType: TaskProcessor.CancelTask
 - uid: Hexalith.Application.Tasks.TaskProcessor.CanRetry
   name: CanRetry
   href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_CanRetry
@@ -8595,6 +8614,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Tasks.TaskProcessor.Complete
   nameWithType: TaskProcessor.Complete
+- uid: Hexalith.Application.Tasks.TaskProcessor.CompleteTask
+  name: CompleteTask()
+  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_CompleteTask
+  commentId: M:Hexalith.Application.Tasks.TaskProcessor.CompleteTask
+  fullName: Hexalith.Application.Tasks.TaskProcessor.CompleteTask()
+  nameWithType: TaskProcessor.CompleteTask()
+- uid: Hexalith.Application.Tasks.TaskProcessor.CompleteTask*
+  name: CompleteTask
+  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_CompleteTask_
+  commentId: Overload:Hexalith.Application.Tasks.TaskProcessor.CompleteTask
+  isSpec: "True"
+  fullName: Hexalith.Application.Tasks.TaskProcessor.CompleteTask
+  nameWithType: TaskProcessor.CompleteTask
 - uid: Hexalith.Application.Tasks.TaskProcessor.Continue
   name: Continue()
   href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Continue
@@ -8608,6 +8640,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Tasks.TaskProcessor.Continue
   nameWithType: TaskProcessor.Continue
+- uid: Hexalith.Application.Tasks.TaskProcessor.ContinueTask
+  name: ContinueTask()
+  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_ContinueTask
+  commentId: M:Hexalith.Application.Tasks.TaskProcessor.ContinueTask
+  fullName: Hexalith.Application.Tasks.TaskProcessor.ContinueTask()
+  nameWithType: TaskProcessor.ContinueTask()
+- uid: Hexalith.Application.Tasks.TaskProcessor.ContinueTask*
+  name: ContinueTask
+  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_ContinueTask_
+  commentId: Overload:Hexalith.Application.Tasks.TaskProcessor.ContinueTask
+  isSpec: "True"
+  fullName: Hexalith.Application.Tasks.TaskProcessor.ContinueTask
+  nameWithType: TaskProcessor.ContinueTask
 - uid: Hexalith.Application.Tasks.TaskProcessor.Ended
   name: Ended
   href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Ended
@@ -8634,6 +8679,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Tasks.TaskProcessor.Fail
   nameWithType: TaskProcessor.Fail
+- uid: Hexalith.Application.Tasks.TaskProcessor.FailTask(System.String,System.String)
+  name: FailTask(String, String)
+  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_FailTask_System_String_System_String_
+  commentId: M:Hexalith.Application.Tasks.TaskProcessor.FailTask(System.String,System.String)
+  fullName: Hexalith.Application.Tasks.TaskProcessor.FailTask(System.String, System.String)
+  nameWithType: TaskProcessor.FailTask(String, String)
+- uid: Hexalith.Application.Tasks.TaskProcessor.FailTask*
+  name: FailTask
+  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_FailTask_
+  commentId: Overload:Hexalith.Application.Tasks.TaskProcessor.FailTask
+  isSpec: "True"
+  fullName: Hexalith.Application.Tasks.TaskProcessor.FailTask
+  nameWithType: TaskProcessor.FailTask
 - uid: Hexalith.Application.Tasks.TaskProcessor.Failure
   name: Failure
   href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Failure
@@ -8647,91 +8705,6 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Tasks.TaskProcessor.Failure
   nameWithType: TaskProcessor.Failure
-- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#CancelTask
-  name: ITaskProcessor.CancelTask()
-  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_CancelTask
-  commentId: M:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#CancelTask
-  name.vb: Hexalith.Application.Tasks.ITaskProcessor.CancelTask()
-  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.CancelTask()
-  nameWithType: TaskProcessor.ITaskProcessor.CancelTask()
-  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.CancelTask()
-- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#CancelTask*
-  name: ITaskProcessor.CancelTask
-  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_CancelTask_
-  commentId: Overload:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#CancelTask
-  isSpec: "True"
-  name.vb: Hexalith.Application.Tasks.ITaskProcessor.CancelTask
-  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.CancelTask
-  nameWithType: TaskProcessor.ITaskProcessor.CancelTask
-  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.CancelTask
-- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#CompleteTask
-  name: ITaskProcessor.CompleteTask()
-  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_CompleteTask
-  commentId: M:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#CompleteTask
-  name.vb: Hexalith.Application.Tasks.ITaskProcessor.CompleteTask()
-  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.CompleteTask()
-  nameWithType: TaskProcessor.ITaskProcessor.CompleteTask()
-  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.CompleteTask()
-- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#CompleteTask*
-  name: ITaskProcessor.CompleteTask
-  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_CompleteTask_
-  commentId: Overload:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#CompleteTask
-  isSpec: "True"
-  name.vb: Hexalith.Application.Tasks.ITaskProcessor.CompleteTask
-  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.CompleteTask
-  nameWithType: TaskProcessor.ITaskProcessor.CompleteTask
-  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.CompleteTask
-- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#ContinueTask
-  name: ITaskProcessor.ContinueTask()
-  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_ContinueTask
-  commentId: M:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#ContinueTask
-  name.vb: Hexalith.Application.Tasks.ITaskProcessor.ContinueTask()
-  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.ContinueTask()
-  nameWithType: TaskProcessor.ITaskProcessor.ContinueTask()
-  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.ContinueTask()
-- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#ContinueTask*
-  name: ITaskProcessor.ContinueTask
-  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_ContinueTask_
-  commentId: Overload:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#ContinueTask
-  isSpec: "True"
-  name.vb: Hexalith.Application.Tasks.ITaskProcessor.ContinueTask
-  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.ContinueTask
-  nameWithType: TaskProcessor.ITaskProcessor.ContinueTask
-  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.ContinueTask
-- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#FailTask(System.String,System.String)
-  name: ITaskProcessor.FailTask(String, String)
-  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_FailTask_System_String_System_String_
-  commentId: M:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#FailTask(System.String,System.String)
-  name.vb: Hexalith.Application.Tasks.ITaskProcessor.FailTask(String, String)
-  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.FailTask(System.String, System.String)
-  nameWithType: TaskProcessor.ITaskProcessor.FailTask(String, String)
-  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.FailTask(String, String)
-- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#FailTask*
-  name: ITaskProcessor.FailTask
-  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_FailTask_
-  commentId: Overload:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#FailTask
-  isSpec: "True"
-  name.vb: Hexalith.Application.Tasks.ITaskProcessor.FailTask
-  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.FailTask
-  nameWithType: TaskProcessor.ITaskProcessor.FailTask
-  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.FailTask
-- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#StartTask
-  name: ITaskProcessor.StartTask()
-  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_StartTask
-  commentId: M:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#StartTask
-  name.vb: Hexalith.Application.Tasks.ITaskProcessor.StartTask()
-  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.StartTask()
-  nameWithType: TaskProcessor.ITaskProcessor.StartTask()
-  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.StartTask()
-- uid: Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#StartTask*
-  name: ITaskProcessor.StartTask
-  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Hexalith_Application_Tasks_ITaskProcessor_StartTask_
-  commentId: Overload:Hexalith.Application.Tasks.TaskProcessor.Hexalith#Application#Tasks#ITaskProcessor#StartTask
-  isSpec: "True"
-  name.vb: Hexalith.Application.Tasks.ITaskProcessor.StartTask
-  fullName: Hexalith.Application.Tasks.TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.StartTask
-  nameWithType: TaskProcessor.ITaskProcessor.StartTask
-  nameWithType.vb: TaskProcessor.Hexalith.Application.Tasks.ITaskProcessor.StartTask
 - uid: Hexalith.Application.Tasks.TaskProcessor.History
   name: History
   href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_History
@@ -8797,6 +8770,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Tasks.TaskProcessor.Start
   nameWithType: TaskProcessor.Start
+- uid: Hexalith.Application.Tasks.TaskProcessor.StartTask
+  name: StartTask()
+  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_StartTask
+  commentId: M:Hexalith.Application.Tasks.TaskProcessor.StartTask
+  fullName: Hexalith.Application.Tasks.TaskProcessor.StartTask()
+  nameWithType: TaskProcessor.StartTask()
+- uid: Hexalith.Application.Tasks.TaskProcessor.StartTask*
+  name: StartTask
+  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_StartTask_
+  commentId: Overload:Hexalith.Application.Tasks.TaskProcessor.StartTask
+  isSpec: "True"
+  fullName: Hexalith.Application.Tasks.TaskProcessor.StartTask
+  nameWithType: TaskProcessor.StartTask
 - uid: Hexalith.Application.Tasks.TaskProcessor.Status
   name: Status
   href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Status
@@ -13748,6 +13734,23 @@ references:
   fullName.vb: Hexalith.Extensions.Configuration.FluentValidateOptions(Of TOptions).Validate
   nameWithType: FluentValidateOptions<TOptions>.Validate
   nameWithType.vb: FluentValidateOptions(Of TOptions).Validate
+- uid: Hexalith.Extensions.Configuration.FluentValidateOptions`1.ValidatorNotFound(System.String)
+  name: ValidatorNotFound(String)
+  href: api/Hexalith.Extensions.Configuration.FluentValidateOptions-1.html#Hexalith_Extensions_Configuration_FluentValidateOptions_1_ValidatorNotFound_System_String_
+  commentId: M:Hexalith.Extensions.Configuration.FluentValidateOptions`1.ValidatorNotFound(System.String)
+  fullName: Hexalith.Extensions.Configuration.FluentValidateOptions<TOptions>.ValidatorNotFound(System.String)
+  fullName.vb: Hexalith.Extensions.Configuration.FluentValidateOptions(Of TOptions).ValidatorNotFound(System.String)
+  nameWithType: FluentValidateOptions<TOptions>.ValidatorNotFound(String)
+  nameWithType.vb: FluentValidateOptions(Of TOptions).ValidatorNotFound(String)
+- uid: Hexalith.Extensions.Configuration.FluentValidateOptions`1.ValidatorNotFound*
+  name: ValidatorNotFound
+  href: api/Hexalith.Extensions.Configuration.FluentValidateOptions-1.html#Hexalith_Extensions_Configuration_FluentValidateOptions_1_ValidatorNotFound_
+  commentId: Overload:Hexalith.Extensions.Configuration.FluentValidateOptions`1.ValidatorNotFound
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Configuration.FluentValidateOptions<TOptions>.ValidatorNotFound
+  fullName.vb: Hexalith.Extensions.Configuration.FluentValidateOptions(Of TOptions).ValidatorNotFound
+  nameWithType: FluentValidateOptions<TOptions>.ValidatorNotFound
+  nameWithType.vb: FluentValidateOptions(Of TOptions).ValidatorNotFound
 - uid: Hexalith.Extensions.Configuration.ISettings
   name: ISettings
   href: api/Hexalith.Extensions.Configuration.ISettings.html
@@ -17797,6 +17800,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesHelper.AddDaprParties
   nameWithType: PartiesHelper.AddDaprParties
+- uid: Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesHelper.AddParties(Dapr.Actors.Runtime.ActorRegistrationCollection)
+  name: AddParties(ActorRegistrationCollection)
+  href: api/Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesHelper.html#Hexalith_Infrastructure_DaprRuntime_Parties_Helpers_PartiesHelper_AddParties_Dapr_Actors_Runtime_ActorRegistrationCollection_
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesHelper.AddParties(Dapr.Actors.Runtime.ActorRegistrationCollection)
+  fullName: Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesHelper.AddParties(Dapr.Actors.Runtime.ActorRegistrationCollection)
+  nameWithType: PartiesHelper.AddParties(ActorRegistrationCollection)
+- uid: Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesHelper.AddParties*
+  name: AddParties
+  href: api/Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesHelper.html#Hexalith_Infrastructure_DaprRuntime_Parties_Helpers_PartiesHelper_AddParties_
+  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesHelper.AddParties
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesHelper.AddParties
+  nameWithType: PartiesHelper.AddParties
 - uid: Hexalith.Infrastructure.DaprRuntime.Parties.Services
   name: Hexalith.Infrastructure.DaprRuntime.Parties.Services
   href: api/Hexalith.Infrastructure.DaprRuntime.Parties.Services.html

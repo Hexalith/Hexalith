@@ -61,11 +61,11 @@ public class InventoryItemActorService : IInventoryItemQueryService
     }
 
     /// <inheritdoc/>
-    public async Task<bool> HasChangesAsync(InventoryItemInformationChanged changed, CancellationToken cancellationToken)
+    public async Task<bool> HasChangesAsync(InventoryItemInformationChanged change, CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(changed);
-        return await GetActor(changed.AggregateId)
-            .HasChangesAsync(changed)
+        ArgumentNullException.ThrowIfNull(change);
+        return await GetActor(change.AggregateId)
+            .HasChangesAsync(change)
             .ConfigureAwait(false);
     }
 

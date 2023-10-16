@@ -31,10 +31,7 @@ public class OptionsBuilder<T> : IMockBuilder<IOptions<T>>
     /// Build a <see cref="IOptions{TOptions}"/>.
     /// </summary>
     /// <returns>The mocked options instance.</returns>
-    public IOptions<T> Build()
-    {
-        return BuildMock().Object;
-    }
+    public IOptions<T> Build() => BuildMock().Object;
 
     /// <summary>
     /// Build a <see cref="Mock{IOptions{TOptions}}"/>.
@@ -80,7 +77,8 @@ public class OptionsBuilder<T> : IMockBuilder<IOptions<T>>
         IConfigurationRoot configuration = builder.Build();
         _value = configuration
             .GetSection(T.ConfigurationName())
-            .Get<T>() ?? throw new Exception("Unable to get settings: " + T.ConfigurationName());
+            .Get<T>()
+            ?? throw new InvalidOperationException("Unable to get settings: " + T.ConfigurationName());
         return this;
     }
 }

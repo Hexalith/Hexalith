@@ -16,6 +16,8 @@
 
 namespace Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers;
 
+using System.Diagnostics.CodeAnalysis;
+
 using Dapr.Actors.Runtime;
 
 using Hexalith.Application.ExternalSystems.Helpers;
@@ -52,8 +54,9 @@ public static class ExternalSystemsHelper
     /// </summary>
     /// <param name="actors">The actors.</param>
     /// <returns>ActorRegistrationCollection.</returns>
-    public static ActorRegistrationCollection AddExternalSystems(this ActorRegistrationCollection actors)
+    public static ActorRegistrationCollection AddExternalSystems([NotNull] this ActorRegistrationCollection actors)
     {
+        ArgumentNullException.ThrowIfNull(actors);
         actors.RegisterActor<ExternalSystemReferenceAggregateActor>();
         actors.RegisterActor<AggregateExternalReferenceAggregateActor>();
         return actors;

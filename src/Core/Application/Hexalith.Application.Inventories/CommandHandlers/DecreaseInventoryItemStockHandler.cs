@@ -18,6 +18,7 @@ namespace Hexalith.Application.Inventories.CommandHandlers;
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -35,8 +36,9 @@ using Hexalith.Extensions.Helpers;
 public class DecreaseInventoryItemStockHandler : CommandHandler<DecreaseInventoryItemStock>
 {
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> DoAsync(DecreaseInventoryItemStock command, CancellationToken cancellationToken)
+    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] DecreaseInventoryItemStock command, CancellationToken cancellationToken)
     {
+        ArgumentNullException.ThrowIfNull(command);
         return Task.FromResult<IEnumerable<BaseMessage>>(new InventoryItemStockDecreased(
                     command.CompanyId,
                     command.LocationId,

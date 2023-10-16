@@ -16,6 +16,8 @@
 
 namespace Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities;
 
+using System.Diagnostics.CodeAnalysis;
+
 using Hexalith.Domain.Events;
 
 /// <summary>
@@ -28,8 +30,9 @@ public static class CustomersV3Helper
     /// </summary>
     /// <param name="ev">The ev.</param>
     /// <returns>CustomerV3.</returns>
-    public static CustomerV3 ToCustomerV3(this CustomerInformationChanged ev)
+    public static CustomerV3 ToCustomerV3([NotNull] this CustomerInformationChanged ev)
     {
+        ArgumentNullException.ThrowIfNull(ev);
         return new CustomerV3(ev.CompanyId, ev.Id)
         {
             AddressCountryRegionId = ev.Contact.PostalAddress?.CountryId,

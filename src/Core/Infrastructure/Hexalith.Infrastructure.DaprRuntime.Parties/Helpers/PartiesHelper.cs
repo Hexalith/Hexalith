@@ -4,7 +4,7 @@
 // Created          : 09-12-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 09-12-2023
+// Last Modified On : 10-15-2023
 // ***********************************************************************
 // <copyright file="PartiesHelper.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -16,9 +16,14 @@
 
 namespace Hexalith.Infrastructure.DaprRuntime.Parties.Helpers;
 
+using System.Diagnostics.CodeAnalysis;
+
+using Dapr.Actors.Runtime;
+
 using Hexalith.Application.Parties.Helpers;
 using Hexalith.Application.Parties.Services;
 using Hexalith.Extensions.Configuration;
+using Hexalith.Infrastructure.DaprRuntime.Parties.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Parties.Configurations;
 using Hexalith.Infrastructure.DaprRuntime.Parties.Services;
 
@@ -41,4 +46,17 @@ public static class PartiesHelper
             .AddPartiesCommandHandlers()
             .ConfigureSettings<CustomerSettings>(configuration)
             .AddTransient<ICustomerQueryService, CustomerActorService>();
+
+    /// <summary>
+    /// Adds the parties.
+    /// </summary>
+    /// <param name="actors">The actors.</param>
+    /// <returns>ActorRegistrationCollection.</returns>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
+    public static ActorRegistrationCollection AddParties([NotNull] this ActorRegistrationCollection actors)
+    {
+        ArgumentNullException.ThrowIfNull(actors);
+        actors.RegisterActor<CustomerAggregateActor>();
+        return actors;
+    }
 }

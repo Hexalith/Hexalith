@@ -18,6 +18,7 @@ namespace Hexalith.Application.Parties.CommandHandlers;
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -35,8 +36,9 @@ using Hexalith.Extensions.Helpers;
 public class ChangeCustomerInformationHandler : CommandHandler<ChangeCustomerInformation>
 {
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> DoAsync(ChangeCustomerInformation command, CancellationToken cancellationToken)
+    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] ChangeCustomerInformation command, CancellationToken cancellationToken)
     {
+        ArgumentNullException.ThrowIfNull(command);
         return Task.FromResult<IEnumerable<BaseMessage>>(new CustomerInformationChanged(
                     command.CompanyId,
                     command.Id,

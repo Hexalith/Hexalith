@@ -20,7 +20,6 @@ using System;
 using System.Web;
 
 using Dapr.Actors;
-using Dapr.Actors.Runtime;
 
 /// <summary>
 /// Class ActorHelper.
@@ -33,10 +32,13 @@ public static class ActorHelper
     /// <param name="actorId">The actor identifier.</param>
     /// <returns>System.String.</returns>
     /// <exception cref="System.ArgumentNullException">Null argument.</exception>
+#pragma warning disable CA1055 // URI-like return values should not be strings
+
     public static string ToUrlDecodedString(this ActorId actorId)
+#pragma warning restore CA1055 // URI-like return values should not be strings
     {
         ArgumentNullException.ThrowIfNull(actorId);
-        return HttpUtility.UrlDecode(actorId.GetId()).Replace("~", " ");
+        return HttpUtility.UrlDecode(actorId.GetId()).Replace("~", " ", StringComparison.InvariantCultureIgnoreCase);
     }
 
     /// <summary>
@@ -47,35 +49,8 @@ public static class ActorHelper
     public static ActorId ToUrlEncodedActorId(this string id)
     {
         ArgumentException.ThrowIfNullOrEmpty(id);
-        return id.Contains('~')
+        return id.Contains('~', StringComparison.InvariantCultureIgnoreCase)
             ? throw new ArgumentException($"The '~' character is not supported.")
-            : new ActorId(HttpUtility.UrlEncode(id.Replace(" ", "~")));
-    }
-
-    /// <summary>
-    /// Unregister continue callback reminder as an asynchronous operation.
-    /// </summary>
-    /// <param name="actor">The actor.</param>
-    /// <param name="removeTimer">if set to <c>true</c> [remove timer].</param>
-    /// <param name="getReminder">The get reminder.</param>
-    /// <param name="unregisterReminder">The unregister reminder.</param>
-    /// <param name="unregisterTimer">The unregister timer.</param>
-    /// <returns>A Task representing the asynchronous operation.</returns>
-    public static async Task UnregisterContinueCallbackReminderAsync(
-            this Actor actor,
-            bool removeTimer,
-            Func<string, Task<IActorReminder>> getReminder,
-            Func<string, Task> unregisterReminder,
-            Func<string, Task> unregisterTimer)
-    {
-        if (await getReminder(ActorConstants.ContinueReminderName) != null)
-        {
-            await unregisterReminder(ActorConstants.ContinueTimerName);
-        }
-
-        if (removeTimer)
-        {
-            await unregisterTimer(ActorConstants.ContinueTimerName);
-        }
+            : new ActorId(HttpUtility.UrlEncode(id.Replace(" ", "~", StringComparison.InvariantCultureIgnoreCase)));
     }
 }

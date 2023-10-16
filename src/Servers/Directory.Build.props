@@ -1,0 +1,20 @@
+<Project>
+	<Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+	<PropertyGroup>
+		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+		<IsPackable>false</IsPackable>
+		<ContainerRegistry>fiveforty.azurecr.io</ContainerRegistry>
+	</PropertyGroup>
+	<ItemGroup>
+		<ContainerEnvironmentVariable Include="DAPRSIDEKICK_ENABLED" Value="false" />
+		<ContainerEnvironmentVariable Include="DaprCommandBus__Name" Value="command-bus" />
+		<ContainerEnvironmentVariable Include="DaprEventBus__Name" Value="event-bus" />
+		<ContainerEnvironmentVariable Include="DaprNotificationBus__Name" Value="notification-bus" />
+		<ContainerEnvironmentVariable Include="DaprRequestBus__Name" Value="request-bus" />
+		<ContainerEnvironmentVariable Include="DOTNET_URLS" Value="http://+:80" />
+		<ContainerEnvironmentVariable Include="ASPNETCORE_URLS" Value="http://+:80" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="$(MSBuildThisFileDirectory)..\Core\Infrastructure\Hexalith.Infrastructure.WebApis\Hexalith.Infrastructure.WebApis.csproj" />
+	</ItemGroup>
+</Project>

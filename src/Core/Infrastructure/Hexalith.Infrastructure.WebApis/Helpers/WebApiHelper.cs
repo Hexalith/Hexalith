@@ -1,10 +1,22 @@
-﻿// <copyright file="WebApiHelper.cs" company="Fiveforty SAS Paris France">
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Infrastructure.WebApis
+// Author           : Jérôme Piquot
+// Created          : 09-12-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 09-12-2023
+// ***********************************************************************
+// <copyright file="WebApiHelper.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Hexalith.Infrastructure.WebApis.Helpers;
+
+using System.Diagnostics.CodeAnalysis;
 
 using Microsoft.AspNetCore.Builder;
 
@@ -15,11 +27,15 @@ using Serilog;
 /// </summary>
 public static class WebApiHelper
 {
-    /// <summary>Adds the serilog logger.</summary>
+    /// <summary>
+    /// Adds the Serilog logger.
+    /// </summary>
     /// <param name="builder">The builder.</param>
     /// <returns>ILogger.</returns>
-    public static ILogger AddSerilogLogger(this WebApplicationBuilder builder)
+    /// <exception cref="System.ArgumentNullException">null.</exception>
+    public static ILogger AddSerilogLogger([NotNull] this WebApplicationBuilder builder)
     {
+        ArgumentNullException.ThrowIfNull(builder);
         ILogger startupLogger = Log.Logger = new LoggerConfiguration()
             .Enrich.FromLogContext()
             .WriteTo.Console()
@@ -41,11 +57,15 @@ public static class WebApiHelper
         return startupLogger;
     }
 
-    /// <summary>Uses the serilog logger.</summary>
+    /// <summary>
+    /// Uses the serilog logger.
+    /// </summary>
     /// <param name="app">The application.</param>
     /// <returns>IApplicationBuilder.</returns>
-    public static IApplicationBuilder UseSerilogLogger(this IApplicationBuilder app)
+    /// <exception cref="System.ArgumentNullException">null.</exception>
+    public static IApplicationBuilder UseSerilogLogger([NotNull] this IApplicationBuilder app)
     {
+        ArgumentNullException.ThrowIfNull(app);
         return app.UseSerilogRequestLogging();
     }
 }
