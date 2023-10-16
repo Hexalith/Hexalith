@@ -28,7 +28,7 @@ public class MessageStoreTest
     private const string _streamName = "Test";
 
     [Fact]
-    public async Task Add_and_get_from_serialized_command_state_should_return_same()
+    public async Task AddAndGetFromSerializedCommandStateShouldReturnSame()
     {
         StringStateProvider provider = new();
         MessageStore<CommandState> store = new(provider, _streamName);
@@ -45,7 +45,7 @@ public class MessageStoreTest
     }
 
     [Fact]
-    public async Task Add_and_get_from_serialized_state_should_return_same()
+    public async Task AddAndGetFromSerializedStateShouldReturnSame()
     {
         StringStateProvider provider = new();
         MessageStore<DummyState> store = new(provider, _streamName);
@@ -56,7 +56,7 @@ public class MessageStoreTest
     }
 
     [Fact]
-    public async Task Add_state_should_be_persisted()
+    public async Task AddStateShouldBePersisted()
     {
         MemoryStateProvider provider = new();
         MessageStore<DummyState> store = new(provider, _streamName);
@@ -78,7 +78,7 @@ public class MessageStoreTest
     [InlineData(11, 1025)]
     [InlineData(121, 10)]
     [InlineData(142, 123_456_789)]
-    public async Task Add_state_should_persist_new_version(int events, long version)
+    public async Task AddStateShouldPersistNewVersion(int events, long version)
     {
         MemoryStateProvider provider = new(new Dictionary<string, object> { { _stateName, version } });
         MessageStore<BaseTestEvent> eventStore = new(provider, _streamName);
@@ -100,7 +100,7 @@ public class MessageStoreTest
     [InlineData(11, 1025)]
     [InlineData(121, 10)]
     [InlineData(142, 123_456_789)]
-    public async Task Add_to_stream_returns_version_plus_event_count(int events, long version)
+    public async Task AddToStreamReturnsVersionPlusEventCount(int events, long version)
     {
         MemoryStateProvider provider = new(new Dictionary<string, object> { { _stateName, version } });
         MessageStore<BaseTestEvent> eventStore = new(provider, _streamName);
@@ -121,7 +121,7 @@ public class MessageStoreTest
     [InlineData(11, 1025, 5000)]
     [InlineData(121, 10, 1)]
     [InlineData(142, 123_456_789, 4235)]
-    public async Task Add_to_stream_with_wrong_version_throw_dbConcurrencyException(int events, long version, long badVersion)
+    public async Task AddToStreamWithWrongVersionThrowDbConcurrencyException(int events, long version, long badVersion)
     {
         MemoryStateProvider provider = new(new Dictionary<string, object> { { _stateName, version } });
         MessageStore<BaseTestEvent> eventStore = new(provider, _streamName);
@@ -129,7 +129,7 @@ public class MessageStoreTest
         async Task<long> Act() => await eventStore.AddAsync(
             GetEventList(events),
             badVersion,
-            CancellationToken.None).ConfigureAwait(false);
+            CancellationToken.None);
 
         DBConcurrencyException exception = await Assert.ThrowsAsync<DBConcurrencyException>(Act);
         _ = exception.Message.Should().NotBeEmpty();
@@ -138,7 +138,7 @@ public class MessageStoreTest
     }
 
     [Fact]
-    public void Check_event_state_name()
+    public void CheckEventStateName()
     {
         Mock<IStateStoreProvider> stateManager = new();
         MessageStore<BaseTestEvent> store = new(stateManager.Object, _streamName);
@@ -147,7 +147,7 @@ public class MessageStoreTest
     }
 
     [Fact]
-    public void Check_stream_state_name()
+    public void CheckStreamStateName()
     {
         Mock<IStateStoreProvider> stateManager = new();
         MessageStore<BaseTestEvent> store = new(stateManager.Object, _streamName);
@@ -156,7 +156,7 @@ public class MessageStoreTest
     }
 
     [Fact]
-    public async Task Empty_stream_version_should_be_zero()
+    public async Task EmptyStreamVersionShouldBeZero()
     {
         Mock<IStateStoreProvider> stateManager = new();
         _ = stateManager.Setup(m
@@ -170,7 +170,7 @@ public class MessageStoreTest
     }
 
     [Fact]
-    public async Task Events_added_to_stream_should_be_persisted()
+    public async Task EventsAddedToStreamShouldBePersisted()
     {
         MemoryStateProvider provider = new();
         MessageStore<BaseTestEvent> eventStore = new(provider, _streamName);
@@ -186,7 +186,7 @@ public class MessageStoreTest
     }
 
     [Fact]
-    public async Task Get_stream_should_return_event_value()
+    public async Task GetStreamShouldReturnEventValue()
     {
         BaseTestEvent2 testEvent = new() { IdempotencyId = "554643", Id = "myId123", Message = "hello", Value2 = "463.33" };
         MemoryStateProvider provider = new(new Dictionary<string, object>
@@ -204,7 +204,7 @@ public class MessageStoreTest
     }
 
     [Fact]
-    public async Task Get_stream_version_should_return_correct_value()
+    public async Task GetStreamVersionShouldReturnCorrectValue()
     {
         MemoryStateProvider provider = new(new Dictionary<string, object> { { "TestStream", 100L } });
         MessageStore<BaseTestEvent> eventStore = new(provider, _streamName);

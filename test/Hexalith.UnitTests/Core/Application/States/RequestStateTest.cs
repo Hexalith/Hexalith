@@ -22,7 +22,7 @@ using Xunit;
 public class RequestStateTest
 {
     [Fact]
-    public void State_serialization_and_deserialization_should_return_same_object()
+    public void StateSerializationAndDeserializationShouldReturnSameObject()
     {
         DummyRequest1 request = new();
         Hexalith.Application.Metadatas.Metadata meta = request.CreateMetadata();
@@ -35,7 +35,7 @@ public class RequestStateTest
     }
 
     [Fact]
-    public void State_serialization_should_succeed()
+    public void StateSerializationShouldSucceed()
     {
         DummyRequest1 request = new();
         Hexalith.Application.Metadatas.Metadata meta = request.CreateMetadata();

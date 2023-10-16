@@ -1,8 +1,18 @@
-﻿// <copyright file="ExampleTest.cs" company="Fiveforty SAS Paris France">
+﻿// ***********************************************************************
+// Assembly         : Hexalith.UnitTests
+// Author           : Jérôme Piquot
+// Created          : 09-12-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 10-16-2023
+// ***********************************************************************
+// <copyright file="ExampleTest.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Hexalith.UnitTests.Core.Common.Helpers;
 
@@ -13,25 +23,36 @@ using FluentAssertions;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 
+/// <summary>
+/// Class ExampleTest.
+/// </summary>
 public class ExampleTest
 {
+    // Defines the test method BasePropertyWithAttributeShouldHaveValue.
+    // </summary>
     [Fact]
-    public void Base_proprety_with_attribute_should_have_value()
+    public void BasePropertyWithAttributeShouldHaveValue()
     {
         BasePropertyExample example = ExampleHelper.CreateExample<BasePropertyExample>();
         _ = example.Value.Should().Be("Hello");
     }
 
+    /// <summary>
+    /// Defines the test method BaseReadOnlyPropertyAndPropertyWithAttributeShouldHaveValue.
+    /// </summary>
     [Fact]
-    public void Base_read_only_proprety_and_property_with_attribute_should_have_value()
+    public void BaseReadOnlyPropertyAndPropertyWithAttributeShouldHaveValue()
     {
         BaseReadOnlyPropertyExample example = ExampleHelper.CreateExample<BaseReadOnlyPropertyExample>();
-        _ = example.ReadOnlyValue.Should().Be("Read");
+        _ = BaseReadOnlyProperty.ReadOnlyValue.Should().Be("Read");
         _ = example.Value.Should().Be("Hello");
     }
 
+    /// <summary>
+    /// Defines the test method ExampleCreatedIsValid.
+    /// </summary>
     [Fact]
-    public void Example_created_is_valid()
+    public void ExampleCreatedIsValid()
     {
         TestExample example = ExampleHelper.CreateExample<TestExample>();
         _ = example.StringValue.Should().Be("Hello");
@@ -39,91 +60,179 @@ public class ExampleTest
         _ = example.IntValue.Should().Be(10);
     }
 
+    /// <summary>
+    /// Defines the test method ExampleCreationShouldNotThrowExceptions.
+    /// </summary>
     [Fact]
-    public void Example_creation_should_not_throw_exceptions()
+    public void ExampleCreationShouldNotThrowExceptions()
     {
         Action action = () => ExampleHelper.CreateExample<TestExample>();
         _ = action.Should().NotThrow();
     }
 
+    /// <summary>
+    /// Defines the test method IntegerWithAttributeShouldHaveValue.
+    /// </summary>
     [Fact]
-    public void Integer_with_attribute_should_have_value()
+    public void IntegerWithAttributeShouldHaveValue()
     {
         IntegerExample example = ExampleHelper.CreateExample<IntegerExample>();
         _ = example.Value.Should().Be(129);
     }
 
+    /// <summary>
+    /// Defines the test method IntegerWithNoAttributeShouldHaveValue.
+    /// </summary>
     [Fact]
-    public void Integer_with_no_attribute_should_have_value()
+    public void IntegerWithNoAttributeShouldHaveValue()
     {
         IntegerDefaultExample example = ExampleHelper.CreateExample<IntegerDefaultExample>();
         _ = example.Value.Should().Be(101);
     }
 
+    /// <summary>
+    /// Defines the test method StringWithAttributeShouldHaveValue.
+    /// </summary>
     [Fact]
-    public void String_with_attribute_should_have_value()
+    public void StringWithAttributeShouldHaveValue()
     {
         StringExample example = ExampleHelper.CreateExample<StringExample>();
         _ = example.Value.Should().Be("Hello");
     }
 
+    /// <summary>
+    /// Defines the test method StringWithNoAttributeShouldHaveValue.
+    /// </summary>
     [Fact]
-    public void String_with_no_attribute_should_have_value()
+    public void StringWithNoAttributeShouldHaveValue()
     {
         StringDefaultExample example = ExampleHelper.CreateExample<StringDefaultExample>();
         _ = example.Value.Should().Be("string");
     }
 
-    public class BaseProperty
+    /// <summary>
+    /// Class BaseReadOnlyProperty.
+    /// </summary>
+    private static class BaseReadOnlyProperty
     {
+        /// <summary>
+        /// The read only value.
+        /// </summary>
+        public const string ReadOnlyValue = "Read";
+    }
+
+    /// <summary>
+    /// Class BaseProperty.
+    /// </summary>
+    private class BaseProperty
+    {
+        /// <summary>
+        /// Gets or sets the value.
+        /// </summary>
+        /// <value>The value.</value>
         [ExampleValue("Hello")]
         public string Value { get; set; }
     }
 
-    public class BasePropertyExample : BaseProperty
+    /// <summary>
+    /// Class BasePropertyExample.
+    /// Implements the <see cref="Hexalith.UnitTests.Core.Common.Helpers.BaseProperty" />.
+    /// </summary>
+    /// <seealso cref="Hexalith.UnitTests.Core.Common.Helpers.BaseProperty" />
+    private class BasePropertyExample : BaseProperty
     {
     }
 
-    public class BaseReadOnlyProperty
+    /// <summary>
+    /// Class BaseReadOnlyPropertyExample.
+    /// </summary>
+    private class BaseReadOnlyPropertyExample
     {
-        public string ReadOnlyValue => "Read";
-    }
+        /// <summary>
+        /// The read only value.
+        /// </summary>
+        public const string ReadOnlyValue = "Read";
 
-    public class BaseReadOnlyPropertyExample : BaseReadOnlyProperty
-    {
+        /// <summary>
+        /// Gets or sets the value.
+        /// </summary>
+        /// <value>The value.</value>
         [ExampleValue("Hello")]
         public string Value { get; set; }
     }
 
-    public class IntegerDefaultExample
+    /// <summary>
+    /// Class IntegerDefaultExample.
+    /// </summary>
+    private class IntegerDefaultExample
     {
+        /// <summary>
+        /// Gets or sets the value.
+        /// </summary>
+        /// <value>The value.</value>
         public int Value { get; set; }
     }
 
-    public class IntegerExample
+    /// <summary>
+    /// Class IntegerExample.
+    /// </summary>
+    private class IntegerExample
     {
+        /// <summary>
+        /// Gets or sets the value.
+        /// </summary>
+        /// <value>The value.</value>
         [ExampleValue(129)]
         public int Value { get; set; }
     }
 
-    public class StringDefaultExample
+    /// <summary>
+    /// Class StringDefaultExample.
+    /// </summary>
+    private class StringDefaultExample
     {
+        /// <summary>
+        /// Gets or sets the value.
+        /// </summary>
+        /// <value>The value.</value>
         public string Value { get; set; }
     }
 
-    public class StringExample
+    /// <summary>
+    /// Class StringExample.
+    /// </summary>
+    private class StringExample
     {
+        /// <summary>
+        /// Gets or sets the value.
+        /// </summary>
+        /// <value>The value.</value>
         [ExampleValue("Hello")]
         public string Value { get; set; }
     }
 
-    public class TestExample
+    /// <summary>
+    /// Class TestExample.
+    /// </summary>
+    private class TestExample
     {
+        /// <summary>
+        /// Gets or sets the int value.
+        /// </summary>
+        /// <value>The int value.</value>
         [ExampleValue(10)]
         public int IntValue { get; set; }
 
+        /// <summary>
+        /// Gets or sets the string default.
+        /// </summary>
+        /// <value>The string default.</value>
         public string StringDefault { get; set; }
 
+        /// <summary>
+        /// Gets or sets the string value.
+        /// </summary>
+        /// <value>The string value.</value>
         [ExampleValue("Hello")]
         public string StringValue { get; set; }
     }

@@ -14,7 +14,7 @@ using Hexalith.Extensions.Common;
 public class MemoryStateProviderTest
 {
     [Fact]
-    public async Task Add_state_should_be_persisted()
+    public async Task AddStateShouldBePersisted()
     {
         MemoryStateProvider provider = new();
         DummyState state = new("5354323", 123, "one two three");
@@ -24,7 +24,7 @@ public class MemoryStateProviderTest
     }
 
     [Fact]
-    public async Task Get_state_should_return_content()
+    public async Task GetStateShouldReturnContent()
     {
         DummyState state = new("5354323", 123, "one two three");
         MemoryStateProvider provider = new(new Dictionary<string, object> { { state.IdempotencyId, state } });
@@ -34,7 +34,7 @@ public class MemoryStateProviderTest
     }
 
     [Fact]
-    public async Task Try_get_state_should_return_content()
+    public async Task TryGetStateShouldReturnContent()
     {
         DummyState state = new("5354323", 123, "one two three");
         MemoryStateProvider provider = new(new Dictionary<string, object> { { state.IdempotencyId, state } });
@@ -45,7 +45,7 @@ public class MemoryStateProviderTest
     }
 
     [Fact]
-    public async Task Try_get_state_should_return_nocontent()
+    public async Task TryGetStateShouldReturnNocontent()
     {
         DummyState state = new("5354323", 123, "one two three");
         MemoryStateProvider provider = new(new Dictionary<string, object> { { state.IdempotencyId, state } });

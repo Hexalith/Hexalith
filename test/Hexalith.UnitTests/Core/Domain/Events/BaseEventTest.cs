@@ -15,7 +15,7 @@ using Hexalith.Domain.Events;
 public class BaseEventTest
 {
     [Fact]
-    public void Polymorphic_serialize_and_deserialize_should_return_same_object()
+    public void PolymorphicSerializeAndDeserializeShouldReturnSameObject()
     {
         DummyEvent1 original = new("IB2343213FR", 655463);
         string json = JsonSerializer.Serialize<BaseEvent>(original);
@@ -26,7 +26,7 @@ public class BaseEventTest
     }
 
     [Fact]
-    public void Serialize_and_deserialize_should_return_same_object()
+    public void SerializeAndDeserializeShouldReturnSameObject()
     {
         DummyEvent1 original = new("IB2343213FR", 1256);
         string json = JsonSerializer.Serialize(original);

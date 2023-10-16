@@ -23,7 +23,7 @@ public class ConditionalValueTest
     /// Defines the test method to check if an empty conditional value HasValue property is false.
     /// </summary>
     [Fact]
-    public void Check_has_value_is_false_when_no_value()
+    public void CheckHasValueIsFalseWhenNoValue()
     {
         // Arrange
         ConditionalValue<int> conditionalValue = new();
@@ -36,7 +36,7 @@ public class ConditionalValueTest
     /// Defines the test method to check that the HasValue property is true when a value is set.
     /// </summary>
     [Fact]
-    public void Check_has_value_is_true_when_value()
+    public void CheckHasValueIsTrueWhenValue()
     {
         // Arrange
         ConditionalValue<int> conditionalValue = new(10);
@@ -49,7 +49,7 @@ public class ConditionalValueTest
     /// Defines the test method to check getting the value on an empty object is an invalid operation.
     /// </summary>
     [Fact]
-    public void Get_value_on_no_value_should_throw_invalid_operation_exception()
+    public void GetValueOnNoValueShouldThrowInvalidOperationException()
     {
         // Arrange
         ConditionalValue<int> value = new();
@@ -63,7 +63,7 @@ public class ConditionalValueTest
     /// Defines the test method to check if we retrieve the correct value.
     /// </summary>
     [Fact]
-    public void Get_value_should_return_the_correct_value()
+    public void GetValueShouldReturnTheCorrectValue()
     {
         // Arrange
         ConditionalValue<int> conditionalValue = new(5);

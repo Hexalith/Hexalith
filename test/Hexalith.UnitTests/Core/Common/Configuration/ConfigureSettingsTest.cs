@@ -14,7 +14,7 @@ using Hexalith.TestMocks;
 public class ConfigureSettingsTest
 {
     [Fact]
-    public void Retrieve_settings_should_succeed()
+    public void RetrieveSettingsShouldSucceed()
     {
         TestSettings expected = new()
         {
@@ -49,9 +49,6 @@ public class ConfigureSettingsTest
 
         public string TestString { get; set; }
 
-        public static string ConfigurationName()
-        {
-            return "Test";
-        }
+        public static string ConfigurationName() => "Test";
     }
 }

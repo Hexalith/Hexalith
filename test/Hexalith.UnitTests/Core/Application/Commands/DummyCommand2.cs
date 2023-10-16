@@ -16,10 +16,7 @@ public class DummyCommand2 : DummyBaseCommand
 {
     [JsonConstructor]
     public DummyCommand2(string baseValue, int value2)
-        : base(baseValue)
-    {
-        Value2 = value2;
-    }
+        : base(baseValue) => Value2 = value2;
 
     public DummyCommand2()
     {
@@ -29,13 +26,7 @@ public class DummyCommand2 : DummyBaseCommand
     [JsonPropertyOrder(2)]
     public int Value2 { get; }
 
-    public static DummyCommand2 Create()
-    {
-        return new DummyCommand2("Test123", 35453);
-    }
+    public static DummyCommand2 Create() => new("Test123", 35453);
 
-    protected override string DefaultAggregateId()
-    {
-        return BaseValue + "-" + Value2.ToInvariantString();
-    }
+    protected override string DefaultAggregateId() => BaseValue + "-" + Value2.ToInvariantString();
 }

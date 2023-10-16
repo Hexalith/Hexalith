@@ -33,7 +33,7 @@ public class ObjectDescriptionHelperTest
     /// Defines the test method Mappable_type_object_should_return_mapper_value.
     /// </summary>
     [Fact]
-    public void Mappable_type_object_should_return_mapper_value()
+    public void MappableTypeObjectShouldReturnMapperValue()
     {
         (string type, string name, string description) = ObjectDescriptionHelper.Describe(typeof(MappableTypeTestV2));
         _ = type.Should().Be("MappableTest");
@@ -45,7 +45,7 @@ public class ObjectDescriptionHelperTest
     /// Defines the test method Object_with_description_attribute_should_return_defined_value.
     /// </summary>
     [Fact]
-    public void Object_with_description_attribute_should_return_defined_value()
+    public void ObjectWithDescriptionAttributeShouldReturnDefinedValue()
     {
         (string type, string name, string description) = ObjectDescriptionHelper.Describe(typeof(DescriptionAttributeTest));
         _ = type.Should().Be(nameof(DescriptionAttributeTest));
@@ -57,7 +57,7 @@ public class ObjectDescriptionHelperTest
     /// Defines the test method Object_with_display_attribute_should_return_defined_value.
     /// </summary>
     [Fact]
-    public void Object_with_display_attribute_should_return_defined_value()
+    public void ObjectWithDisplayAttributeShouldReturnDefinedValue()
     {
         (string type, string name, string description) = ObjectDescriptionHelper.Describe(typeof(DisplayAttributeTest));
         _ = type.Should().Be(nameof(DisplayAttributeTest));
@@ -69,7 +69,7 @@ public class ObjectDescriptionHelperTest
     /// Defines the test method Object_with_display_name_attribute_should_return_defined_value.
     /// </summary>
     [Fact]
-    public void Object_with_display_name_attribute_should_return_defined_value()
+    public void ObjectWithDisplayNameAttributeShouldReturnDefinedValue()
     {
         (string type, string name, string description) = ObjectDescriptionHelper.Describe(typeof(DisplayNameAttributeTest));
         _ = type.Should().Be(nameof(DisplayNameAttributeTest));
@@ -81,7 +81,7 @@ public class ObjectDescriptionHelperTest
     /// Defines the test method Object_with_no_attributes_should_return_type_name.
     /// </summary>
     [Fact]
-    public void Object_with_no_attributes_should_return_type_name()
+    public void ObjectWithNoAttributesShouldReturnTypeName()
     {
         (string type, string name, string description) = ObjectDescriptionHelper.Describe(typeof(NoAttributesTest));
         _ = type.Should().Be(nameof(NoAttributesTest));

@@ -36,7 +36,7 @@ public class DummyMetadata : Metadata
             DateTimeOffset.UtcNow,
             102,
             "GFD4565"),
-        new[] { "test123456" })
+        null)
     {
     }
 

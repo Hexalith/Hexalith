@@ -14,13 +14,7 @@ internal class CommandDispatchUndoEvent : BaseEvent
     {
     }
 
-    protected override string DefaultAggregateId()
-    {
-        return "123";
-    }
+    protected override string DefaultAggregateId() => "123";
 
-    protected override string DefaultAggregateName()
-    {
-        return "Test";
-    }
+    protected override string DefaultAggregateName() => "Test";
 }

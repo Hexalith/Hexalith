@@ -29,7 +29,7 @@ using Hexalith.Extensions.Helpers;
 public class ObjectPropertyDescriptionHelperTest
 {
     [Fact]
-    public void Object_property_with_default_value_attribute_should_return_defined_value()
+    public void ObjectPropertyWithDefaultValueAttributeShouldReturnDefinedValue()
     {
         IDictionary<string, (string DisplayName, string Description, object DefaultValue, bool IsRequired)> props = ObjectDescriptionHelper.DescribeProperties(typeof(DefaultValuePropertyAttributeTest));
         (string displayName, string description, object defaultValue, bool isRequired) = props[nameof(DefaultValuePropertyAttributeTest.MyValue)];
@@ -43,7 +43,7 @@ public class ObjectPropertyDescriptionHelperTest
     /// Defines the test method Object_property_with_description_attribute_should_return_defined_value.
     /// </summary>
     [Fact]
-    public void Object_property_with_description_attribute_should_return_defined_value()
+    public void ObjectPropertyWithDescriptionAttributeShouldReturnDefinedValue()
     {
         IDictionary<string, (string DisplayName, string Description, object DefaultValue, bool IsRequired)> props = ObjectDescriptionHelper.DescribeProperties(typeof(DescriptionPropertyAttributeTest));
         (string displayName, string description, object defaultValue, bool isRequired) = props[nameof(DescriptionPropertyAttributeTest.MyValue)];
@@ -54,7 +54,7 @@ public class ObjectPropertyDescriptionHelperTest
     }
 
     [Fact]
-    public void Object_property_with_display_attribute_should_return_defined_value()
+    public void ObjectPropertyWithDisplayAttributeShouldReturnDefinedValue()
     {
         IDictionary<string, (string DisplayName, string Description, object DefaultValue, bool IsRequired)> props = ObjectDescriptionHelper.DescribeProperties(typeof(DisplayPropertyAttributeTest));
         (string displayName, string description, object defaultValue, bool isRequired) = props[nameof(DisplayPropertyAttributeTest.MyValue)];
@@ -65,7 +65,7 @@ public class ObjectPropertyDescriptionHelperTest
     }
 
     [Fact]
-    public void Object_property_with_display_name_attribute_should_return_defined_value()
+    public void ObjectPropertyWithDisplayNameAttributeShouldReturnDefinedValue()
     {
         IDictionary<string, (string DisplayName, string Description, object DefaultValue, bool IsRequired)> props = ObjectDescriptionHelper.DescribeProperties(typeof(DisplayNamePropertyAttributeTest));
         (string displayName, string description, object defaultValue, bool isRequired) = props[nameof(DisplayNamePropertyAttributeTest.MyValue)];
@@ -76,7 +76,7 @@ public class ObjectPropertyDescriptionHelperTest
     }
 
     [Fact]
-    public void Object_property_with_required_value_attribute_should_return_defined_value()
+    public void ObjectPropertyWithRequiredValueAttributeShouldReturnDefinedValue()
     {
         IDictionary<string, (string DisplayName, string Description, object DefaultValue, bool IsRequired)> props = ObjectDescriptionHelper.DescribeProperties(typeof(RequiredValuePropertyAttributeTest));
         (string displayName, string description, object defaultValue, bool isRequired) = props[nameof(RequiredValuePropertyAttributeTest.MyValue)];

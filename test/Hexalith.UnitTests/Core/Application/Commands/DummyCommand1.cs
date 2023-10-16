@@ -17,10 +17,7 @@ public class DummyCommand1 : DummyBaseCommand
 {
     [JsonConstructor]
     public DummyCommand1(string baseValue, int value1)
-        : base(baseValue)
-    {
-        Value1 = value1;
-    }
+        : base(baseValue) => Value1 = value1;
 
     public DummyCommand1()
     {
@@ -30,10 +27,9 @@ public class DummyCommand1 : DummyBaseCommand
     [JsonPropertyOrder(2)]
     public int Value1 { get; private set; }
 
-    public static DummyCommand1 Create()
-    {
-        return new DummyCommand1("Test123", 35453);
-    }
+    private static readonly string[] Scopes = new[] { "sc01", "sc02" };
+
+    public static DummyCommand1 Create() => new("Test123", 35453);
 
     public new Metadata CreateMetadata()
     {
@@ -47,21 +43,12 @@ public class DummyCommand1 : DummyBaseCommand
                 DateTimeOffset.UtcNow,
                 10,
                 "SES2132"),
-            new[] { "sc01", "sc02" });
+            Scopes);
     }
 
-    protected override string DefaultAggregateId()
-    {
-        return BaseValue + "-" + Value1.ToInvariantString();
-    }
+    protected override string DefaultAggregateId() => BaseValue + "-" + Value1.ToInvariantString();
 
-    protected override int DefaultMajorVersion()
-    {
-        return 4;
-    }
+    protected override int DefaultMajorVersion() => 4;
 
-    protected override int DefaultMinorVersion()
-    {
-        return 6;
-    }
+    protected override int DefaultMinorVersion() => 6;
 }

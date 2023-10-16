@@ -23,7 +23,7 @@ using Moq;
 public class DaprApplicationBusTest
 {
     [Fact]
-    public async Task Verify_publish_calls_dapr_publish_with_compliant_values()
+    public async Task VerifyPublishCallsDaprPublishWithCompliantValues()
     {
         const string busName = "TestBus";
         const string topicSuffix = "-event";
@@ -37,7 +37,7 @@ public class DaprApplicationBusTest
         client.Verify(
             p => p.PublishEventAsync(
             It.Is<string>(p => p == busName),
-            It.Is<string>(p => p == (@event.AggregateName + topicSuffix).ToLowerInvariant()),
+            It.Is<string>(p => p.Equals(@event.AggregateName + topicSuffix, StringComparison.OrdinalIgnoreCase)),
             It.Is<EventState>(
                 p => p.Message == @event && p.Metadata == meta),
             It.IsAny<Dictionary<string, string>>(),

@@ -18,7 +18,7 @@ using Hexalith.Infrastructure.Dynamics365Finance.TestMocks;
 public class CustomerGroupTest
 {
     [Fact]
-    public Task Add_inconsitent_data_should_throw_exception()
+    public Task AddInconsitentDataShouldThrowException()
     {
         Dynamics365FinanceClientBuilder<CustomerGroup> builder = new();
         _ = builder.WithValueFromConfiguration<CustomerGroupTest>();
@@ -44,7 +44,7 @@ public class CustomerGroupTest
     }
 
     [Fact]
-    public async Task Check_can_add_new_group()
+    public async Task CheckCanAddNewGroup()
     {
         Dynamics365FinanceClientBuilder<CustomerGroup> builder = new();
         _ = builder.WithValueFromConfiguration<CustomerGroupTest>();
@@ -72,7 +72,7 @@ public class CustomerGroupTest
     }
 
     [Fact]
-    public async Task Check_can_update_group_description()
+    public async Task CheckCanUpdateGroupDescription()
     {
         Dynamics365FinanceClientBuilder<CustomerGroup> builder = new();
         _ = builder.WithValueFromConfiguration<CustomerGroupTest>();

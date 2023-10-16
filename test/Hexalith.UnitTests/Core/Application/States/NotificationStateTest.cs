@@ -22,7 +22,7 @@ using Xunit;
 public class NotificationStateTest
 {
     [Fact]
-    public void State_serialization_and_deserialization_should_return_same_object()
+    public void StateSerializationAndDeserializationShouldReturnSameObject()
     {
         DummyNotification1 notification = new();
         Hexalith.Application.Metadatas.Metadata meta = notification.CreateMetadata();
@@ -35,7 +35,7 @@ public class NotificationStateTest
     }
 
     [Fact]
-    public void State_serialization_should_succeed()
+    public void StateSerializationShouldSucceed()
     {
         DummyNotification1 notification = new();
         Hexalith.Application.Metadatas.Metadata meta = notification.CreateMetadata();

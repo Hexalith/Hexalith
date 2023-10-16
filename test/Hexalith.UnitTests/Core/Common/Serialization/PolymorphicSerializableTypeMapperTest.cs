@@ -32,7 +32,7 @@ public class PolymorphicSerializableTypeMapperTest
     /// Defines the test method Map_should_succeed.
     /// </summary>
     [Fact]
-    public void Map_should_succeed()
+    public void MapShouldSucceed()
     {
         Dictionary<string, IPolymorphicSerializable> map = TypeMapper<IPolymorphicSerializable>.GetMap();
         _ = map.Should().NotBeNull();

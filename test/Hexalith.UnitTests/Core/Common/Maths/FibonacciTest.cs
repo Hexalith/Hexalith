@@ -25,7 +25,7 @@ public class FibonacciTest
     [InlineData(9, 34)]
     [InlineData(10, 55)]
     [InlineData(11, 89)]
-    public void Check_first_fibonacci_values(long sequence, long value)
+    public void CheckFirstFibonacciValues(long sequence, long value)
     {
         long result = FibonacciSequence.Number(sequence);
         _ = result.Should().Be(value);

@@ -13,7 +13,7 @@ using Hexalith.Extensions.Helpers;
 public class CommandPromptGenerationTest
 {
     [Fact]
-    public async Task Generate_command_prompt_should_succeed()
+    public async Task GenerateCommandPromptShouldSucceed()
     {
         const string assistantEmail = "testai@hexalith.com";
         const string assistantName = "Testai";

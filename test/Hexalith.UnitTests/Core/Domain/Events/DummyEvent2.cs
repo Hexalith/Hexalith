@@ -16,10 +16,7 @@ public class DummyEvent2 : DummyBaseEvent
 {
     [JsonConstructor]
     public DummyEvent2(string baseValue, int value2)
-        : base(baseValue)
-    {
-        Value2 = value2;
-    }
+        : base(baseValue) => Value2 = value2;
 
     public DummyEvent2()
     {
@@ -27,8 +24,5 @@ public class DummyEvent2 : DummyBaseEvent
 
     public int Value2 { get; }
 
-    protected override string DefaultAggregateId()
-    {
-        return BaseValue + "-" + Value2.ToInvariantString();
-    }
+    protected override string DefaultAggregateId() => BaseValue + "-" + Value2.ToInvariantString();
 }

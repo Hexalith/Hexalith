@@ -13,7 +13,7 @@ using Hexalith.Extensions.Helpers;
 public class ArrayHelperTest
 {
     [Fact]
-    public void Integer_into_array_should_contain_value()
+    public void IntegerIntoArrayShouldContainValue()
     {
         List<string>[] array = new List<string> { "Hello once", "Hello again " }.IntoArray();
         _ = array.Should().ContainSingle();
@@ -22,7 +22,7 @@ public class ArrayHelperTest
     }
 
     [Fact]
-    public void List_into_array_should_contain_integer_value()
+    public void ListIntoArrayShouldContainIntegerValue()
     {
         int[] array = 1254.IntoArray();
         _ = array.Should().ContainSingle();
@@ -30,7 +30,7 @@ public class ArrayHelperTest
     }
 
     [Fact]
-    public void Object_into_array_should_contain_value()
+    public void ObjectIntoArrayShouldContainValue()
     {
         var array = new { Hello = "Hello", Count = 100 }.IntoArray();
         _ = array.Should().ContainSingle();
@@ -39,7 +39,7 @@ public class ArrayHelperTest
     }
 
     [Fact]
-    public void String_into_array_should_contain_value()
+    public void StringIntoArrayShouldContainValue()
     {
         string[] array = "Hello".IntoArray();
         _ = array.Should().ContainSingle();

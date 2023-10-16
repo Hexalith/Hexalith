@@ -14,14 +14,14 @@ using Hexalith.TestMocks;
 public class StateStoreSettingsTest
 {
     [Fact]
-    public void Check_default_name_is_not_null_or_empty()
+    public void CheckDefaultNameIsNotNullOrEmpty()
     {
         string name = new StateStoreSettings().Name;
         _ = name.Should().NotBeNullOrEmpty();
     }
 
     [Fact]
-    public void Check_default_values_validation()
+    public void CheckDefaultValuesValidation()
     {
         StateStoreSettingsValidator validator = new();
         FluentValidation.Results.ValidationResult result = validator.Validate(new StateStoreSettings());
@@ -29,7 +29,7 @@ public class StateStoreSettingsTest
     }
 
     [Fact]
-    public void Check_load_from_configuration_has_correct_value()
+    public void CheckLoadFromConfigurationHasCorrectValue()
     {
         OptionsBuilder<StateStoreSettings> settings = new OptionsBuilder<StateStoreSettings>()
             .WithValueFromConfiguration<StateStoreSettingsTest>();
@@ -39,7 +39,7 @@ public class StateStoreSettingsTest
     }
 
     [Fact]
-    public void Validation_of_incorrect_values_should_fail()
+    public void ValidationOfIncorrectValuesShouldFail()
     {
         StateStoreSettingsValidator validator = new();
         FluentValidation.Results.ValidationResult result = validator.Validate(new StateStoreSettings() { Name = string.Empty });

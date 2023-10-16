@@ -15,7 +15,7 @@ using Hexalith.Application.Metadatas;
 public class MetadataTest
 {
     [Fact]
-    public void Metadata_should_be_equal_after_serialize_deserialize()
+    public void MetadataShouldBeEqualAfterSerializeDeserialize()
     {
         Metadata meta = GetMetadata();
         string json = JsonSerializer.Serialize(meta);
@@ -25,13 +25,15 @@ public class MetadataTest
     }
 
     [Fact]
-    public void Metadata_should_serialize_successfuly()
+    public void MetadataShouldSerializeSuccessfuly()
     {
         Metadata meta = GetMetadata();
         string json = JsonSerializer.Serialize(meta);
         _ = json.Should().NotBeNull();
         _ = json.Should().Contain(meta.Message.Id);
     }
+
+    private static readonly string[] Scopes = new[] { "scope1", "scope9" };
 
     private static Metadata GetMetadata()
     {
@@ -43,6 +45,6 @@ public class MetadataTest
                 new MessageVersion(4, 6),
                 new AggregateMetadata("123-AG", "TestAggregate")),
             new ContextMetadata("COR-6589", "TestUser", DateTimeOffset.UtcNow, 101, "session-6987"),
-            new[] { "scope1", "scope9" });
+            Scopes);
     }
 }

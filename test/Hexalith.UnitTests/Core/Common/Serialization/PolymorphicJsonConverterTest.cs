@@ -54,7 +54,7 @@ public class TestCustom2 : TestCustom1
 public class PolymorphicJsonConverterTest
 {
     [Fact]
-    public void Deserialize_polymorphic_object_should_succeed()
+    public void DeserializePolymorphicObjectShouldSucceed()
     {
         string json = $$"""{ "MyDisc":"TestCustom2", "MyProp1":"P1", "MyProp2":"P2", "$type_name":"TestCustom2" }""";
         TestBase result = JsonSerializer.Deserialize<TestBase>(json);
@@ -65,7 +65,7 @@ public class PolymorphicJsonConverterTest
     }
 
     [Fact]
-    public void Polymorphic_serialize_and_deserialize_should_return_same_object()
+    public void PolymorphicSerializeAndDeserializeShouldReturnSameObject()
     {
         TestCustom2 test2 = new() { MyProp1 = "P1", MyProp2 = "P2" };
         string json = JsonSerializer.Serialize<TestBase>(test2);

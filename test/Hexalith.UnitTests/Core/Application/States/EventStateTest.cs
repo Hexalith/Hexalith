@@ -23,7 +23,7 @@ using Xunit;
 public class EventStateTest
 {
     [Fact]
-    public void State_serialization_and_deserialization_should_return_same_object()
+    public void StateSerializationAndDeserializationShouldReturnSameObject()
     {
         DummyEvent1 @event = new();
         Hexalith.Application.Metadatas.Metadata meta = @event.CreateMetadata();
@@ -36,7 +36,7 @@ public class EventStateTest
     }
 
     [Fact]
-    public void State_serialization_should_succeed()
+    public void StateSerializationShouldSucceed()
     {
         DummyEvent1 @event = new();
         Hexalith.Application.Metadatas.Metadata meta = @event.CreateMetadata();

@@ -20,18 +20,9 @@ public class BaseTestEvent : BaseEvent, IEvent, IIdempotent
 
     public string Message { get; set; }
 
-    protected override string DefaultAggregateId()
-    {
-        return Id;
-    }
+    protected override string DefaultAggregateId() => Id;
 
-    protected override string DefaultAggregateName()
-    {
-        return "Test";
-    }
+    protected override string DefaultAggregateName() => "Test";
 
-    protected override string DefaultTypeName()
-    {
-        return GetType().Name;
-    }
+    protected override string DefaultTypeName() => GetType().Name;
 }

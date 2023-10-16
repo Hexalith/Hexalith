@@ -39,7 +39,7 @@ public class ActorCommandProcessorTest
     /// <summary>Defines the test method Submitting_a_command_should_succeed.</summary>
     /// <returns>Task.</returns>
     [Fact]
-    public async Task Submitting_a_command_should_succeed()
+    public async Task SubmittingACommandShouldSucceed()
     {
         Mock<IActorProxyFactory> factory = new();
         Mock<ActorProxy> actor = new();
@@ -91,18 +91,12 @@ public class DummyActorsCommandProcessor : ActorsCommandProcessor
     /// </summary>
     /// <param name="command">The command.</param>
     /// <returns>string.</returns>
-    protected override string GetActorMethodName(ICommand command)
-    {
-        return "TotoAsync";
-    }
+    protected override string GetActorMethodName(ICommand command) => "TotoAsync";
 
     /// <summary>
     /// Gets the name of the actor.
     /// </summary>
     /// <param name="command">The command.</param>
     /// <returns>string.</returns>
-    protected override string GetActorName(ICommand command)
-    {
-        return "Titi";
-    }
+    protected override string GetActorName(ICommand command) => "Titi";
 }

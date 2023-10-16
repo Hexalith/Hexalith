@@ -17,29 +17,29 @@ using Moq;
 public class ResourceBuilderTest
 {
     [Fact]
-    public void Builder_should_contain_all_existing_and_not_existing_processes()
+    public void BuilderShouldContainAllExistingAndNotExistingProcesses()
     {
         Mock<ILoggerFactory> loggerFactory = new();
         AzureBuilder builder = new("toto", loggerFactory.Object);
         _ = builder.AddResourceGroup("toto", true);
-        _ = builder.OrderedProcesses.Count().Should().Be(4);
+        _ = builder.OrderedProcesses.Count.Should().Be(4);
     }
 
     [Fact]
-    public void Builder_should_contain_all_processes()
+    public void BuilderShouldContainAllProcesses()
     {
         Mock<ILoggerFactory> loggerFactory = new();
         AzureBuilder builder = new("toto", loggerFactory.Object);
         _ = builder.AddResourceGroup("toto", "toto");
-        _ = builder.OrderedProcesses.Count().Should().Be(3);
+        _ = builder.OrderedProcesses.Count.Should().Be(3);
     }
 
     [Fact]
-    public void Builder_should_contain_all_resources()
+    public void BuilderShouldContainAllResources()
     {
         Mock<ILoggerFactory> loggerFactory = new();
         AzureBuilder builder = new("toto", loggerFactory.Object);
         _ = builder.AddResourceGroup("titi", "tata");
-        _ = builder.Resources.Count().Should().Be(2);
+        _ = builder.Resources.Count.Should().Be(2);
     }
 }

@@ -1,4 +1,4 @@
-﻿// <copyright file="Dynamics365FinanceClientTest.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="Dynamics365FinanceAndOperationsClientTest.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -17,7 +17,7 @@ using Hexalith.Infrastructure.Dynamics365Finance.TestMocks;
 public class Dynamics365FinanceClientTest
 {
     [Fact]
-    public async Task Get_should_return_hello()
+    public async Task GetShouldReturnHello()
     {
         Dynamics365FinanceClientSettings settings = new()
         {
@@ -51,7 +51,7 @@ public class Dynamics365FinanceClientTest
     }
 
     [Fact]
-    public async Task Patch_should_succeed()
+    public async Task PatchShouldSucceed()
     {
         Dynamics365FinanceClientSettings settings = new()
         {

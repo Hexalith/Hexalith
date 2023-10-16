@@ -16,13 +16,7 @@ using Hexalith.Extensions.Helpers;
 
 internal class DummyCommandDispatcher : ICommandDispatcher
 {
-    public Task<IEnumerable<BaseMessage>> DoAsync(ICommand command, CancellationToken cancellationToken)
-    {
-        return Task.FromResult<IEnumerable<BaseMessage>>(new CommandDispatchDoEvent().IntoArray());
-    }
+    public Task<IEnumerable<BaseMessage>> DoAsync(ICommand command, CancellationToken cancellationToken) => Task.FromResult<IEnumerable<BaseMessage>>(new CommandDispatchDoEvent().IntoArray());
 
-    public Task<IEnumerable<BaseMessage>> UnDoAsync(ICommand command, CancellationToken cancellationToken)
-    {
-        return Task.FromResult<IEnumerable<BaseMessage>>(new CommandDispatchUndoEvent().IntoArray());
-    }
+    public Task<IEnumerable<BaseMessage>> UnDoAsync(ICommand command, CancellationToken cancellationToken) => Task.FromResult<IEnumerable<BaseMessage>>(new CommandDispatchUndoEvent().IntoArray());
 }

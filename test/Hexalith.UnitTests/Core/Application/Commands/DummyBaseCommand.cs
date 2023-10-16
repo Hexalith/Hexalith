@@ -16,16 +16,10 @@ using Hexalith.Extensions.Helpers;
 [DataContract]
 public class DummyBaseCommand : BaseCommand
 {
-    public DummyBaseCommand()
-    {
-        BaseValue = string.Empty;
-    }
+    public DummyBaseCommand() => BaseValue = string.Empty;
 
     [JsonConstructor]
-    public DummyBaseCommand(string baseValue)
-    {
-        BaseValue = baseValue;
-    }
+    public DummyBaseCommand(string baseValue) => BaseValue = baseValue;
 
     [DataMember(Order = 2)]
     [JsonPropertyOrder(2)]
@@ -46,8 +40,5 @@ public class DummyBaseCommand : BaseCommand
                 "TestScope".IntoArray());
     }
 
-    protected override string DefaultAggregateName()
-    {
-        return "Test";
-    }
+    protected override string DefaultAggregateName() => "Test";
 }

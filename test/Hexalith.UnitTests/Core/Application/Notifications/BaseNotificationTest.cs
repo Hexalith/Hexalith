@@ -15,7 +15,7 @@ using Hexalith.Application.Notifications;
 public class BaseNotificationTest
 {
     [Fact]
-    public void Polymorphic_serialize_and_deserialize_should_return_same_object()
+    public void PolymorphicSerializeAndDeserializeShouldReturnSameObject()
     {
         DummyNotification1 original = new("IB2343213FR", 655463);
         string json = JsonSerializer.Serialize<BaseNotification>(original);
@@ -26,7 +26,7 @@ public class BaseNotificationTest
     }
 
     [Fact]
-    public void Serialize_and_deserialize_should_return_same_object()
+    public void SerializeAndDeserializeShouldReturnSameObject()
     {
         DummyNotification1 original = new("IB2343213FR", 1256);
         string json = JsonSerializer.Serialize(original);

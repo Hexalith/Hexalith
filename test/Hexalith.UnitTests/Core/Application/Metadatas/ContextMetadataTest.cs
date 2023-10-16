@@ -28,7 +28,7 @@ using Hexalith.Application.Metadatas;
 public class ContextMetadataTest
 {
     [Fact]
-    public void ContextMetadata_should_be_equal_after_serialize_deserialize()
+    public void ContextMetadataShouldBeEqualAfterSerializeDeserialize()
     {
         ContextMetadata meta = new(
             "COR-6589",

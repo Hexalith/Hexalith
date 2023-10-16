@@ -15,7 +15,7 @@ using Hexalith.Extensions.Helpers;
 public class ExceptionHelperTest
 {
     [Fact]
-    public void Get_full_message_on_nested_exceptions_should_return_all_messages()
+    public void GetFullMessageOnNestedExceptionsShouldReturnAllMessages()
     {
         const string msg1 = "Error message 1";
         const string msg2 = "Error 2";

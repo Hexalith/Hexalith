@@ -17015,22 +17015,6 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.ToUrlEncodedActorId
   nameWithType: ActorHelper.ToUrlEncodedActorId
-- uid: Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.UnregisterContinueCallbackReminderAsync(Dapr.Actors.Runtime.Actor,System.Boolean,System.Func{System.String,Task{Dapr.Actors.Runtime.IActorReminder}},System.Func{System.String,Task},System.Func{System.String,Task})
-  name: UnregisterContinueCallbackReminderAsync(Actor, Boolean, Func<String, Task<IActorReminder>>, Func<String, Task>, Func<String, Task>)
-  href: api/Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.html#Hexalith_Infrastructure_DaprRuntime_Helpers_ActorHelper_UnregisterContinueCallbackReminderAsync_Dapr_Actors_Runtime_Actor_System_Boolean_System_Func_System_String_Task_Dapr_Actors_Runtime_IActorReminder___System_Func_System_String_Task__System_Func_System_String_Task__
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.UnregisterContinueCallbackReminderAsync(Dapr.Actors.Runtime.Actor,System.Boolean,System.Func{System.String,Task{Dapr.Actors.Runtime.IActorReminder}},System.Func{System.String,Task},System.Func{System.String,Task})
-  name.vb: UnregisterContinueCallbackReminderAsync(Actor, Boolean, Func(Of String, Task(Of IActorReminder)), Func(Of String, Task), Func(Of String, Task))
-  fullName: Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.UnregisterContinueCallbackReminderAsync(Dapr.Actors.Runtime.Actor, System.Boolean, System.Func<System.String, Task<Dapr.Actors.Runtime.IActorReminder>>, System.Func<System.String, Task>, System.Func<System.String, Task>)
-  fullName.vb: Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.UnregisterContinueCallbackReminderAsync(Dapr.Actors.Runtime.Actor, System.Boolean, System.Func(Of System.String, Task(Of Dapr.Actors.Runtime.IActorReminder)), System.Func(Of System.String, Task), System.Func(Of System.String, Task))
-  nameWithType: ActorHelper.UnregisterContinueCallbackReminderAsync(Actor, Boolean, Func<String, Task<IActorReminder>>, Func<String, Task>, Func<String, Task>)
-  nameWithType.vb: ActorHelper.UnregisterContinueCallbackReminderAsync(Actor, Boolean, Func(Of String, Task(Of IActorReminder)), Func(Of String, Task), Func(Of String, Task))
-- uid: Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.UnregisterContinueCallbackReminderAsync*
-  name: UnregisterContinueCallbackReminderAsync
-  href: api/Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.html#Hexalith_Infrastructure_DaprRuntime_Helpers_ActorHelper_UnregisterContinueCallbackReminderAsync_
-  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.UnregisterContinueCallbackReminderAsync
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.UnregisterContinueCallbackReminderAsync
-  nameWithType: ActorHelper.UnregisterContinueCallbackReminderAsync
 - uid: Hexalith.Infrastructure.DaprRuntime.Helpers.DaprHandlersHelper
   name: DaprHandlersHelper
   href: api/Hexalith.Infrastructure.DaprRuntime.Helpers.DaprHandlersHelper.html

@@ -22,7 +22,7 @@ using Xunit;
 public class CommandStateTest
 {
     [Fact]
-    public void State_serialization_and_deserialization_should_return_same_object()
+    public void StateSerializationAndDeserializationShouldReturnSameObject()
     {
         DummyCommand1 command = new();
         Hexalith.Application.Metadatas.Metadata meta = command.CreateMetadata();
@@ -35,7 +35,7 @@ public class CommandStateTest
     }
 
     [Fact]
-    public void State_serialization_should_succeed()
+    public void StateSerializationShouldSucceed()
     {
         DummyCommand1 command = new();
         Hexalith.Application.Metadatas.Metadata meta = command.CreateMetadata();

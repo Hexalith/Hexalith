@@ -18,7 +18,7 @@ using Hexalith.UnitTests.Core.Application.Commands;
 public class CommandStateTest
 {
     [Fact]
-    public void Polymorphic_serialize_and_deserialize_should_return_same_object()
+    public void PolymorphicSerializeAndDeserializeShouldReturnSameObject()
     {
         DummyCommand1 command = DummyCommand1.Create();
         CommandState original = new(

@@ -16,16 +16,10 @@ using Hexalith.Extensions.Helpers;
 [DataContract]
 public abstract class DummyBaseRequest : BaseRequest
 {
-    protected DummyBaseRequest()
-    {
-        BaseValue = string.Empty;
-    }
+    protected DummyBaseRequest() => BaseValue = string.Empty;
 
     [JsonConstructor]
-    protected DummyBaseRequest(string baseValue)
-    {
-        BaseValue = baseValue;
-    }
+    protected DummyBaseRequest(string baseValue) => BaseValue = baseValue;
 
     public string BaseValue { get; }
 
@@ -44,8 +38,5 @@ public abstract class DummyBaseRequest : BaseRequest
                 "TestScope".IntoArray());
     }
 
-    protected override string DefaultAggregateName()
-    {
-        return "Test";
-    }
+    protected override string DefaultAggregateName() => "Test";
 }

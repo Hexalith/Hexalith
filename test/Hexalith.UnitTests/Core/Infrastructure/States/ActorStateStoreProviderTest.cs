@@ -20,7 +20,7 @@ using Moq;
 public class ActorStateStoreProviderTest
 {
     [Fact]
-    public async Task Try_get_state_should_succeed()
+    public async Task TryGetStateShouldSucceed()
     {
         DummyCommand1 command = new("Test", 123456);
         Mock<IActorStateManager> actorStateManager = new();

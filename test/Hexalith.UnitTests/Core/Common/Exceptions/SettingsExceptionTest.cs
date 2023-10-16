@@ -13,14 +13,14 @@ using Hexalith.Extensions.Configuration;
 public class SettingsExceptionTest
 {
     [Fact]
-    public void Defined_settings_should_not_throw_exception()
+    public void DefinedSettingsShouldNotThrowException()
     {
         DummySettings settings = new() { Name = "hello world" };
         SettingsException<DummySettings>.ThrowIfUndefined(settings.Name);
     }
 
     [Fact]
-    public void Null_settings_property_should_throw_exception()
+    public void NullSettingsPropertyShouldThrowException()
     {
         DummySettings settings = new();
         Action a = () => SettingsException<DummySettings>.ThrowIfUndefined(settings.Name);
@@ -31,7 +31,7 @@ public class SettingsExceptionTest
     }
 
     [Fact]
-    public void Null_settings_sub_property_should_throw_exception()
+    public void NullSettingsSubPropertyShouldThrowException()
     {
         DummySettings settings = new() { SubConfig = new SubConfiguration() };
         Action a = () => SettingsException<DummySettings>.ThrowIfUndefined(settings.SubConfig.Hello);

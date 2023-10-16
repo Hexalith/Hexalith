@@ -19,7 +19,7 @@ using Hexalith.UnitTests.Core.Application.Commands;
 
 public class MessageStateTest
 {
-    private static readonly string _json = $$"""
+    private const string _json = $$"""
     {
         "IdempotencyId":"20230125085001962",
         "Message":{
@@ -49,7 +49,7 @@ public class MessageStateTest
     """;
 
     [Fact]
-    public void Deserialize_should_succeed()
+    public void DeserializeShouldSucceed()
     {
         MessageState state = JsonSerializer.Deserialize<MessageState>(_json);
         _ = state.Should().NotBeNull();
@@ -68,7 +68,7 @@ public class MessageStateTest
     }
 
     [Fact]
-    public void Serialize_should_succeed()
+    public void SerializeShouldSucceed()
     {
         string messageId = UniqueIdHelper.GenerateDateTimeId();
         DummyCommand1 command = new("Test", 123456);

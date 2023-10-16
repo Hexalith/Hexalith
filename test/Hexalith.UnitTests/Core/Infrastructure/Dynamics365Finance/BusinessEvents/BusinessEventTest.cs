@@ -56,7 +56,7 @@ public class BusinessEventTest
 
     // test error message serialization
     [Fact]
-    public void Base_event_deserialize_should_succeed()
+    public void BaseEventDeserializeShouldSucceed()
     {
         DateTimeOffset date = new(2022, 12, 30, 13, 51, 15, 294, TimeSpan.Zero);
         Dynamics365BusinessEventBase be = JsonSerializer.Deserialize<Dynamics365BusinessEventBase>(_businessEventJson1);
@@ -80,7 +80,7 @@ public class BusinessEventTest
     }
 
     [Fact]
-    public void Data_contract_serialize_and_deserialize_should_return_same_object()
+    public void DataContractSerializeAndDeserializeShouldReturnSameObject()
     {
         Dynamics365BusinessEventBase original = GetEvent();
 
@@ -88,7 +88,7 @@ public class BusinessEventTest
     }
 
     [Fact]
-    public void Dummy_event_one_deserialization_should_succeed()
+    public void DummyEventOneDeserializationShouldSucceed()
     {
         DummyBusinessEvent1 be = JsonSerializer.Deserialize<DummyBusinessEvent1>(_businessEventJson1);
         _ = be.Should().NotBeNull();
@@ -98,7 +98,7 @@ public class BusinessEventTest
     }
 
     [Fact]
-    public void Dummy_event_one_polymorphic_deserialization_should_succeed()
+    public void DummyEventOnePolymorphicDeserializationShouldSucceed()
     {
         Dynamics365BusinessEventBase be = JsonSerializer.Deserialize<Dynamics365BusinessEventBase>(_businessEventJson1);
         _ = be.Should().NotBeNull();
@@ -108,7 +108,7 @@ public class BusinessEventTest
     }
 
     [Fact]
-    public void Dummy_event_two_deserialization_should_succeed()
+    public void DummyEventTwoDeserializationShouldSucceed()
     {
         DummyBusinessEvent2 be = JsonSerializer.Deserialize<DummyBusinessEvent2>(_businessEventJson2);
         _ = be.Should().NotBeNull();
@@ -118,7 +118,7 @@ public class BusinessEventTest
     }
 
     [Fact]
-    public void Dummy_event_two_polymorphic_deserialization_should_succeed()
+    public void DummyEventTwoPolymorphicDeserializationShouldSucceed()
     {
         Dynamics365BusinessEventBase be = JsonSerializer.Deserialize<Dynamics365BusinessEventBase>(_businessEventJson2);
         _ = be.Should().NotBeNull();
@@ -128,7 +128,7 @@ public class BusinessEventTest
     }
 
     [Fact]
-    public void Event_validation_should_succeed()
+    public void EventValidationShouldSucceed()
     {
         Dynamics365BusinessEventBase be = GetEvent();
         Dynamics365BusinessEventValidator validator = new();
@@ -136,7 +136,7 @@ public class BusinessEventTest
     }
 
     [Fact]
-    public void Event_with_undefined_date_time_validation_should_fail()
+    public void EventWithUndefinedDateTimeValidationShouldFail()
     {
         // A business event with an undefined event time should throw an exception
         DummyBusinessEvent2 be = new()
@@ -151,7 +151,7 @@ public class BusinessEventTest
     }
 
     [Fact]
-    public void Serialize_and_deserialize_should_return_same_object()
+    public void SerializeAndDeserializeShouldReturnSameObject()
     {
         Dynamics365BusinessEventBase original = GetEvent();
         string json = JsonSerializer.Serialize(original);

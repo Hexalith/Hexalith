@@ -16,10 +16,7 @@ public class DummyMessage1 : DummyBaseMessage
 {
     [JsonConstructor]
     public DummyMessage1(string baseValue, int value1)
-        : base(baseValue)
-    {
-        Value1 = value1;
-    }
+        : base(baseValue) => Value1 = value1;
 
     public DummyMessage1()
     {
@@ -27,8 +24,5 @@ public class DummyMessage1 : DummyBaseMessage
 
     public int Value1 { get; }
 
-    protected override string DefaultAggregateId()
-    {
-        return BaseValue + "-" + Value1.ToInvariantString();
-    }
+    protected override string DefaultAggregateId() => BaseValue + "-" + Value1.ToInvariantString();
 }

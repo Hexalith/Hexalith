@@ -16,7 +16,7 @@ using Hexalith.Infrastructure.Serialization.Serialization;
 public class IsoUtcDateTimeOffsetConverterTest
 {
     [Fact]
-    public void Deserialize_date_should_succeed()
+    public void DeserializeDateShouldSucceed()
     {
         IsoUtcDateTimeOffsetConverter converter = new();
         string json = "\"2022-05-06T13:05:22Z\"";
@@ -36,7 +36,7 @@ public class IsoUtcDateTimeOffsetConverterTest
     }
 
     [Fact]
-    public void Serialize_date_should_return_iso_8106_string()
+    public void SerializeDateShouldReturnIso8106String()
     {
         IsoUtcDateTimeOffsetConverter converter = new();
         DateTimeOffset date = DateTimeOffset.Now;

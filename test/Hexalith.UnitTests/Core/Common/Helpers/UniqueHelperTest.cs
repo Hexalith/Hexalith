@@ -13,9 +13,9 @@ using Hexalith.Extensions.Helpers;
 public class UniqueHelperTest
 {
     [Fact]
-    public async Task Get_a_hundred_concurrent_date_time_id_string_without_any_duplicatesAsync()
+    public async Task GetAHundredConcurrentDateTimeIdStringWithoutAnyDuplicatesAsync()
     {
-        List<Task<string>> ids = new();
+        List<Task<string>> ids =[];
         for (int i = 0; i < 100; i++)
         {
             ids.Add(Task.Run(UniqueIdHelper.GenerateDateTimeId));
@@ -26,9 +26,9 @@ public class UniqueHelperTest
     }
 
     [Fact]
-    public void Get_a_hundred_date_time_id_string_without_any_duplicates()
+    public void GetAHundredDateTimeIdStringWithoutAnyDuplicates()
     {
-        List<string> ids = new();
+        List<string> ids =[];
         for (int i = 0; i < 100; i++)
         {
             ids.Add(UniqueIdHelper.GenerateDateTimeId());
@@ -38,9 +38,9 @@ public class UniqueHelperTest
     }
 
     [Fact]
-    public void Get_a_thousand_unique_id_string_without_any_duplicates()
+    public void GetAThousandUniqueIdStringWithoutAnyDuplicates()
     {
-        List<string> ids = new();
+        List<string> ids =[];
         for (int i = 0; i < 1000; i++)
         {
             ids.Add(UniqueIdHelper.GenerateUniqueStringId());
@@ -50,14 +50,14 @@ public class UniqueHelperTest
     }
 
     [Fact]
-    public void Get_date_time_id_string_returns_17_chars()
+    public void GetDateTimeIdStringReturns17Chars()
     {
         string id = UniqueIdHelper.GenerateDateTimeId();
         _ = id.Should().HaveLength(17, "Because the id is a millisecond precision date time string");
     }
 
     [Fact]
-    public void Get_unique_id_string_returns_22_chars()
+    public void GetUniqueIdStringReturns22Chars()
     {
         string id = UniqueIdHelper.GenerateUniqueStringId();
         _ = id.Should().HaveLength(22, "Because the id is a base64 string of 16 bytes");
