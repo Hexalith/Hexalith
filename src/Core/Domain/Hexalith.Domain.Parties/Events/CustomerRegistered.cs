@@ -29,18 +29,18 @@ using Hexalith.Domain.ValueObjets;
 public class CustomerRegistered : CustomerEvent
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="CustomerRegistered" /> class.
+    /// Initializes a new instance of the <see cref="CustomerRegistered"/> class.
     /// </summary>
+    /// <param name="partitionId">The partition identifier.</param>
+    /// <param name="companyId">The company identifier.</param>
     /// <param name="id">The identifier.</param>
     /// <param name="name">The name.</param>
-    /// <param name="companyId">The company identifier.</param>
     /// <param name="contact">The contact.</param>
-    /// <param name="invoiceAddress">The invoice address.</param>
-    /// <param name="deliveryAddress">The delivery address.</param>
     /// <param name="warehouseId">The warehouse identifier.</param>
     /// <param name="commissionSalesGroupId">The commission sales group identifier.</param>
     /// <param name="date">The date.</param>
     public CustomerRegistered(
+        string partitionId,
         string companyId,
         string id,
         string name,
@@ -48,7 +48,7 @@ public class CustomerRegistered : CustomerEvent
         string? warehouseId,
         string? commissionSalesGroupId,
         DateTimeOffset date)
-        : base(companyId, id)
+        : base(partitionId, companyId, id)
     {
         Name = name;
         Contact = contact;

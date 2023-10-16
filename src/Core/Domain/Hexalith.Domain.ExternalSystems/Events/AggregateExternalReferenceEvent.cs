@@ -32,11 +32,13 @@ public abstract class AggregateExternalReferenceEvent : BaseEvent
     /// <summary>
     /// Initializes a new instance of the <see cref="AggregateExternalReferenceEvent"/> class.
     /// </summary>
+    /// <param name="partitionId">The partition identifier.</param>
     /// <param name="referenceAggregateName">Name of the reference aggregate.</param>
     /// <param name="referenceAggregateId">The reference aggregate identifier.</param>
     [JsonConstructor]
-    protected AggregateExternalReferenceEvent(string referenceAggregateName, string referenceAggregateId)
+    protected AggregateExternalReferenceEvent(string partitionId, string referenceAggregateName, string referenceAggregateId)
     {
+        PartitionId = partitionId;
         ReferenceAggregateName = referenceAggregateName;
         ReferenceAggregateId = referenceAggregateId;
     }
@@ -45,26 +47,34 @@ public abstract class AggregateExternalReferenceEvent : BaseEvent
     /// Initializes a new instance of the <see cref="AggregateExternalReferenceEvent" /> class.
     /// </summary>
     [Obsolete("This constructor is only for serialization purposes.", true)]
-    protected AggregateExternalReferenceEvent() => ReferenceAggregateId = ReferenceAggregateName = string.Empty;
+    protected AggregateExternalReferenceEvent() => PartitionId = ReferenceAggregateId = ReferenceAggregateName = string.Empty;
+
+    /// <summary>
+    /// Gets the partition identifier.
+    /// </summary>
+    /// <value>The partition identifier.</value>
+    [DataMember(Order = 1)]
+    [JsonPropertyOrder(1)]
+    public string PartitionId { get; }
 
     /// <summary>
     /// Gets or sets the reference aggregate identifier.
     /// </summary>
     /// <value>The reference aggregate identifier.</value>
-    [DataMember(Order = 2)]
-    [JsonPropertyOrder(2)]
+    [DataMember(Order = 3)]
+    [JsonPropertyOrder(3)]
     public string ReferenceAggregateId { get; set; }
 
     /// <summary>
     /// Gets the name of the reference aggregate.
     /// </summary>
     /// <value>The name of the reference aggregate.</value>
-    [DataMember(Order = 1)]
-    [JsonPropertyOrder(1)]
+    [DataMember(Order = 2)]
+    [JsonPropertyOrder(2)]
     public string ReferenceAggregateName { get; }
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateId() => AggregateExternalReference.GetAggregateId(ReferenceAggregateId);
+    protected override string DefaultAggregateId() => AggregateExternalReference.GetAggregateId(PartitionId, ReferenceAggregateId);
 
     /// <inheritdoc/>
     protected override string DefaultAggregateName() => AggregateExternalReference.GetAggregateName();

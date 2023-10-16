@@ -23,11 +23,15 @@ using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
 using Hexalith.Application.ExternalSystems.Commands;
 using Hexalith.Application.ExternalSystems.Services;
+using Hexalith.Application.Organizations.Configurations;
 using Hexalith.Application.Parties.Commands;
 using Hexalith.Application.Parties.Services;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.ValueObjets;
 using Hexalith.Extensions.Common;
+using Hexalith.Extensions.Configuration;
+
+using Microsoft.Extensions.Options;
 
 /// <summary>
 /// Class FFYCustomerInformationBusinessEventHandler.
@@ -58,24 +62,31 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
     /// </summary>
     private readonly IExternalSystemReferenceQueryService _externalReferenceService;
 
+    private readonly string _partitionId;
+
     /// <summary>
-    /// Initializes a new instance of the <see cref="Dynamics365FinanceCustomerInformationHandler{TEvent}" /> class.
+    /// Initializes a new instance of the <see cref="Dynamics365FinanceCustomerInformationHandler{TEvent}"/> class.
     /// </summary>
     /// <param name="dateTimeService">The date time service.</param>
     /// <param name="customerService">The customer service.</param>
     /// <param name="externalReferenceService">The external reference service.</param>
     /// <param name="aggregateExternalReferenceService">The aggregate external reference service.</param>
-    /// <exception cref="ArgumentNullException">null.</exception>
+    /// <param name="settings">The settings.</param>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
     protected Dynamics365FinanceCustomerInformationHandler(
         IDateTimeService dateTimeService,
         ICustomerQueryService customerService,
         IExternalSystemReferenceQueryService externalReferenceService,
-        IAggregateExternalReferenceQueryService aggregateExternalReferenceService)
+        IAggregateExternalReferenceQueryService aggregateExternalReferenceService,
+        IOptions<OrganizationSettings> settings)
     {
         ArgumentNullException.ThrowIfNull(dateTimeService);
         ArgumentNullException.ThrowIfNull(customerService);
         ArgumentNullException.ThrowIfNull(externalReferenceService);
         ArgumentNullException.ThrowIfNull(aggregateExternalReferenceService);
+        ArgumentNullException.ThrowIfNull(settings);
+        SettingsException<OrganizationSettings>.ThrowIfNullOrEmpty(settings.Value.DefaultPartitionId);
+        _partitionId = settings.Value.DefaultPartitionId;
         _dateTimeService = dateTimeService;
         _customerService = customerService;
         _externalReferenceService = externalReferenceService;
@@ -93,14 +104,15 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
         ArgumentException.ThrowIfNullOrEmpty(@event.BusinessEventLegalEntity);
         string companyId = @event.BusinessEventLegalEntity.ToUpperInvariant();
         string customerId = @event.Account.ToUpperInvariant();
-        string customerAggregateId = Customer.GetAggregateId(companyId, customerId);
+        string customerAggregateId = Customer.GetAggregateId(_partitionId, companyId, customerId);
         string customerAggregateName = Customer.GetAggregateName();
-        List<BaseCommand> commands = [];
+        List<BaseCommand> commands =[];
         if (@event.ExternalReferences != null)
         {
             foreach (ExternalReference reference in @event.ExternalReferences)
             {
                 AddAggregateExternalReference addAggregateExternalReference = new(
+                        _partitionId,
                         customerAggregateName,
                         customerAggregateId,
                         reference.SystemId,
@@ -116,6 +128,7 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
                 }
 
                 AddExternalSystemReference mapExternalSystemReference = new(
+                        _partitionId,
                         reference.SystemId,
                         customerAggregateName,
                         reference.ExternalId,
@@ -136,6 +149,7 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
             .ConfigureAwait(false))
         {
             RegisterCustomer registerCustomer = new(
+                   _partitionId,
                    companyId,
                    customerId,
                    @event.Name,
@@ -146,16 +160,17 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
             commands.Add(registerCustomer);
             if (directDelivery)
             {
-                commands.Add(new SetCustomerIntercompanyDeliveryToDirect(companyId, customerId));
+                commands.Add(new SetCustomerIntercompanyDirectDelivery(_partitionId, companyId, customerId));
             }
             else
             {
-                commands.Add(new SetCustomerIntercompanyDeliveryToIndirect(companyId, customerId));
+                commands.Add(new UnsetCustomerIntercompanyDirectDelivery(_partitionId, companyId, customerId));
             }
         }
         else
         {
             ChangeCustomerInformation changeCustomer = new(
+                   _partitionId,
                    companyId,
                    customerId,
                    @event.Name,
@@ -171,16 +186,16 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
             }
 
             if (await _customerService
-                .IsIntercompanyDirectDeliveryAsync(Customer.GetAggregateId(companyId, customerId), cancellationToken)
+                .IsIntercompanyDirectDeliveryAsync(Customer.GetAggregateId(_partitionId, companyId, customerId), cancellationToken)
                 .ConfigureAwait(false) != directDelivery)
             {
                 if (directDelivery)
                 {
-                    commands.Add(new SetCustomerIntercompanyDeliveryToDirect(companyId, customerId));
+                    commands.Add(new SetCustomerIntercompanyDirectDelivery(_partitionId, companyId, customerId));
                 }
                 else
                 {
-                    commands.Add(new SetCustomerIntercompanyDeliveryToIndirect(companyId, customerId));
+                    commands.Add(new UnsetCustomerIntercompanyDirectDelivery(_partitionId, companyId, customerId));
                 }
             }
         }

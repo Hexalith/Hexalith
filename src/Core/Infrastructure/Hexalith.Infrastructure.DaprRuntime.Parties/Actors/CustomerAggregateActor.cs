@@ -120,6 +120,7 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
     {
         Customer customer = await GetAggregateAsync().ConfigureAwait(false);
         return new CustomerInformationChanged(
+                customer.PartitionId,
                 customer.CompanyId,
                 customer.Id,
                 customer.Name,

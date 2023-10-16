@@ -16,6 +16,8 @@
 
 namespace Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand;
 
+using System.Diagnostics.CodeAnalysis;
+
 using Hexalith.Domain.Events;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers;
 
@@ -25,26 +27,30 @@ using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers;
 public static class WarehouseOnHandV2Helper
 {
     /// <summary>
-    /// Converts to inventory item stock event.
+    /// Converts to inventoryitemstockevent.
     /// </summary>
     /// <param name="onHand">The on hand.</param>
+    /// <param name="partitionId">The partition identifier.</param>
     /// <param name="quantity">The quantity.</param>
     /// <param name="date">The date.</param>
     /// <returns>InventoryItemStockEvent.</returns>
-    public static InventoryItemStockEvent ToInventoryItemStockEvent(this WarehouseOnHandV2 onHand, decimal quantity, DateTimeOffset date)
+    public static InventoryItemStockEvent ToInventoryItemStockEvent([NotNull] this WarehouseOnHandV2 onHand, string partitionId, decimal quantity, DateTimeOffset date)
     {
+        ArgumentNullException.ThrowIfNull(onHand);
         return quantity < onHand.AvailableOnHandQuantity
             ? new InventoryItemStockDecreased(
+                partitionId,
                 onHand.DataAreaId,
                 onHand.InventorySiteId + "-" + onHand.InventoryWarehouseId,
                 onHand.ItemNumber,
                 Math.Abs(quantity - (onHand.AvailableOnHandQuantity == null ? 0 : onHand.AvailableOnHandQuantity.Value)),
                 date)
             : new InventoryItemStockIncreased(
-            onHand.DataAreaId,
-            onHand.InventorySiteId + "-" + onHand.InventoryWarehouseId,
-            onHand.ItemNumber,
-            Math.Abs((onHand.AvailableOnHandQuantity == null ? 0 : onHand.AvailableOnHandQuantity.Value) - quantity),
-            date);
+                partitionId,
+                onHand.DataAreaId,
+                onHand.InventorySiteId + "-" + onHand.InventoryWarehouseId,
+                onHand.ItemNumber,
+                Math.Abs((onHand.AvailableOnHandQuantity == null ? 0 : onHand.AvailableOnHandQuantity.Value) - quantity),
+                date);
     }
 }

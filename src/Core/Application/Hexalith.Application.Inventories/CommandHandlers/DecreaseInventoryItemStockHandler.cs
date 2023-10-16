@@ -40,6 +40,7 @@ public class DecreaseInventoryItemStockHandler : CommandHandler<DecreaseInventor
     {
         ArgumentNullException.ThrowIfNull(command);
         return Task.FromResult<IEnumerable<BaseMessage>>(new InventoryItemStockDecreased(
+                    command.PartitionId,
                     command.CompanyId,
                     command.LocationId,
                     command.InventoryItemId,

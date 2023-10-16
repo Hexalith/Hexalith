@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 10-03-2023
 // ***********************************************************************
-// <copyright file="SetCustomerIntercompanyDeliveryToDirect.cs" company="Fiveforty SAS Paris France">
+// <copyright file="SetCustomerIntercompanyDirectDelivery.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -24,26 +24,27 @@ using System.Runtime.Serialization;
 /// </summary>
 /// <seealso cref="Application.Commands.CustomerCommand" />
 [DataContract]
-public class SetCustomerIntercompanyDeliveryToDirect : CustomerCommand
+public class SetCustomerIntercompanyDirectDelivery : CustomerCommand
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="SetCustomerIntercompanyDeliveryToDirect"/> class.
+    /// Initializes a new instance of the <see cref="SetCustomerIntercompanyDirectDelivery"/> class.
     /// </summary>
+    /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
     /// <param name="id">The identifier.</param>
-    /// <param name="date">The date.</param>
-    public SetCustomerIntercompanyDeliveryToDirect(
+    public SetCustomerIntercompanyDirectDelivery(
+        string partitionId,
         string companyId,
         string id)
-        : base(companyId, id)
+        : base(partitionId, companyId, id)
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="SetCustomerIntercompanyDeliveryToDirect"/> class.
+    /// Initializes a new instance of the <see cref="SetCustomerIntercompanyDirectDelivery"/> class.
     /// </summary>
     [Obsolete("This constructor is only for serialization purposes.", true)]
-    public SetCustomerIntercompanyDeliveryToDirect()
+    public SetCustomerIntercompanyDirectDelivery()
     {
     }
 }

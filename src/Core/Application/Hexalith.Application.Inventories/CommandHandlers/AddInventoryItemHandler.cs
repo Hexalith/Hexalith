@@ -40,6 +40,7 @@ public class AddInventoryItemHandler : CommandHandler<AddInventoryItem>
     {
         ArgumentNullException.ThrowIfNull(command);
         return Task.FromResult<IEnumerable<BaseMessage>>(new InventoryItemAdded(
+                    command.PartitionId,
                     command.CompanyId,
                     command.Id,
                     command.Name,

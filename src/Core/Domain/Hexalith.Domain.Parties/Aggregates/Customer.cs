@@ -19,6 +19,8 @@
 /// </summary>
 namespace Hexalith.Domain.Aggregates;
 
+using System.Diagnostics.CodeAnalysis;
+
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Exceptions;
 using Hexalith.Domain.ValueObjets;
@@ -35,6 +37,7 @@ using Hexalith.Domain.ValueObjets;
 /// <seealso cref="System.IEquatable{Hexalith.Domain.Aggregates.Aggregate}" />
 /// <seealso cref="System.IEquatable{Hexalith.Domain.Aggregates.Customer}" />
 public record Customer(
+    string PartitionId,
     string CompanyId,
     string Id,
     string Name,
@@ -50,7 +53,8 @@ public record Customer(
     /// <param name="customer">The customer.</param>
     public Customer(CustomerRegistered customer)
         : this(
-              (customer ?? throw new ArgumentNullException(nameof(customer))).CompanyId,
+              (customer ?? throw new ArgumentNullException(nameof(customer))).PartitionId,
+              customer.CompanyId,
               customer.Id,
               customer.Name,
               customer.Contact,
@@ -74,22 +78,29 @@ public record Customer(
                 CommissionSalesGroupId = changed.CommissionSalesGroupId,
             },
             CustomerIntercompanyDeliveryTypeSetToDirect => this with { IntercompanyDirectDelivery = true },
-            CustomerIntercompanyDeliveryTypeSetToIndirect => this with { IntercompanyDirectDelivery = false },
+            CustomerIntercompanyDeliveryTypeSetToNotDirect => this with { IntercompanyDirectDelivery = false },
             CustomerRegistered => throw new InvalidAggregateEventException(this, domainEvent, true),
             _ => throw new InvalidAggregateEventException(this, domainEvent, false),
         };
     }
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateId() => GetAggregateId(CompanyId, Id);
+    protected override string DefaultAggregateId() => GetAggregateId(PartitionId, CompanyId, Id);
 
     /// <summary>
-    /// Defaults the aggregate identifier.
+    /// Gets the aggregate identifier.
     /// </summary>
+    /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
     /// <param name="id">The identifier.</param>
     /// <returns>System.String.</returns>
-    public static string GetAggregateId(string companyId, string id) => nameof(Customer) + Separator + companyId + Separator + id;
+    public static string GetAggregateId([NotNull] string partitionId, [NotNull] string companyId, [NotNull] string id)
+    {
+        ArgumentException.ThrowIfNullOrEmpty(partitionId);
+        ArgumentException.ThrowIfNullOrEmpty(companyId);
+        ArgumentException.ThrowIfNullOrEmpty(id);
+        return nameof(Customer) + Separator + partitionId + Separator + companyId + Separator + id;
+    }
 
     /// <summary>
     /// Gets the name of the aggregate.

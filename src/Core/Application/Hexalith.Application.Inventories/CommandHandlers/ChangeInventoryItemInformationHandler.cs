@@ -40,6 +40,7 @@ public class ChangeInventoryItemInformationHandler : CommandHandler<ChangeInvent
     {
         ArgumentNullException.ThrowIfNull(command);
         return Task.FromResult<IEnumerable<BaseMessage>>(new InventoryItemInformationChanged(
+                    command.PartitionId,
                     command.CompanyId,
                     command.Id,
                     command.Name,

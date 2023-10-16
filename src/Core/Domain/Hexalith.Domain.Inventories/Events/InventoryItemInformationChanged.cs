@@ -29,16 +29,18 @@ public class InventoryItemInformationChanged : InventoryItemEvent
     /// <summary>
     /// Initializes a new instance of the <see cref="InventoryItemInformationChanged"/> class.
     /// </summary>
+    /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
     /// <param name="id">The identifier.</param>
     /// <param name="name">The name.</param>
     /// <param name="date">The date.</param>
     public InventoryItemInformationChanged(
+        string partitionId,
         string companyId,
         string id,
         string name,
         DateTimeOffset date)
-        : base(companyId, id)
+        : base(partitionId, companyId, id)
     {
         Name = name;
         Date = date;

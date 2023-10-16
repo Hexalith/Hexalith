@@ -30,22 +30,23 @@ using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class SetCustomerIntercompanyDeliveryToIndirectHandler.
-/// Implements the <see cref="Hexalith.Application.Commands.CommandHandler{Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDeliveryToIndirect}" />.
+/// Implements the <see cref="Hexalith.Application.Commands.CommandHandler{Hexalith.Application.Parties.Commands.UnsetCustomerIntercompanyDirectDelivery}" />.
 /// </summary>
-/// <seealso cref="Hexalith.Application.Commands.CommandHandler{Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDeliveryToIndirect}" />
-public class SetCustomerIntercompanyDeliveryToIndirectHandler : CommandHandler<SetCustomerIntercompanyDeliveryToIndirect>
+/// <seealso cref="Hexalith.Application.Commands.CommandHandler{Hexalith.Application.Parties.Commands.UnsetCustomerIntercompanyDirectDelivery}" />
+public class SetCustomerIntercompanyDeliveryToIndirectHandler : CommandHandler<UnsetCustomerIntercompanyDirectDelivery>
 {
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] SetCustomerIntercompanyDeliveryToIndirect command, CancellationToken cancellationToken)
+    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] UnsetCustomerIntercompanyDirectDelivery command, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
         return Task.FromResult<IEnumerable<BaseMessage>>(
-            new CustomerIntercompanyDeliveryTypeSetToIndirect(
+            new CustomerIntercompanyDeliveryTypeSetToNotDirect(
+                command.PartitionId,
                 command.CompanyId,
                 command.Id)
                 .IntoArray<BaseMessage>());
     }
 
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> UndoAsync(SetCustomerIntercompanyDeliveryToIndirect command, CancellationToken cancellationToken) => throw new NotSupportedException();
+    public override Task<IEnumerable<BaseMessage>> UndoAsync(UnsetCustomerIntercompanyDirectDelivery command, CancellationToken cancellationToken) => throw new NotSupportedException();
 }

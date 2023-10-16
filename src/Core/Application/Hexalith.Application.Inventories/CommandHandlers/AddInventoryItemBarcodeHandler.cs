@@ -40,6 +40,7 @@ public class AddInventoryItemBarcodeHandler : CommandHandler<AddInventoryItemBar
     {
         ArgumentNullException.ThrowIfNull(command);
         return Task.FromResult<IEnumerable<BaseMessage>>(new InventoryItemBarcodeAdded(
+                    command.PartitionId,
                     command.CompanyId,
                     command.Id,
                     command.Barcode,

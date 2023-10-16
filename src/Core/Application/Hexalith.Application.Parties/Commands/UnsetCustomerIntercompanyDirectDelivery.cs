@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 10-04-2023
 // ***********************************************************************
-// <copyright file="SetCustomerIntercompanyDeliveryToIndirect.cs" company="Fiveforty SAS Paris France">
+// <copyright file="UnsetCustomerIntercompanyDirectDelivery.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -24,25 +24,27 @@ using System.Runtime.Serialization;
 /// </summary>
 /// <seealso cref="Hexalith.Application.Parties.Commands.CustomerCommand" />
 [DataContract]
-public class SetCustomerIntercompanyDeliveryToIndirect : CustomerCommand
+public class UnsetCustomerIntercompanyDirectDelivery : CustomerCommand
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="SetCustomerIntercompanyDeliveryToIndirect" /> class.
+    /// Initializes a new instance of the <see cref="UnsetCustomerIntercompanyDirectDelivery"/> class.
     /// </summary>
+    /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
     /// <param name="id">The identifier.</param>
-    public SetCustomerIntercompanyDeliveryToIndirect(
+    public UnsetCustomerIntercompanyDirectDelivery(
+        string partitionId,
         string companyId,
         string id)
-        : base(companyId, id)
+        : base(partitionId, companyId, id)
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="SetCustomerIntercompanyDeliveryToIndirect" /> class.
+    /// Initializes a new instance of the <see cref="UnsetCustomerIntercompanyDirectDelivery" /> class.
     /// </summary>
     [Obsolete("This constructor is only for serialization purposes.", true)]
-    public SetCustomerIntercompanyDeliveryToIndirect()
+    public UnsetCustomerIntercompanyDirectDelivery()
     {
     }
 }

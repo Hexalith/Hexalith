@@ -40,14 +40,15 @@ public class ChangeCustomerInformationHandler : CommandHandler<ChangeCustomerInf
     {
         ArgumentNullException.ThrowIfNull(command);
         return Task.FromResult<IEnumerable<BaseMessage>>(new CustomerInformationChanged(
-                    command.CompanyId,
-                    command.Id,
-                    command.Name,
-                    command.Contact,
-                    command.WarehouseId,
-                    command.CommissionSalesGroupId,
-                    command.Date)
-                    .IntoArray<BaseMessage>());
+                command.PartitionId,
+                command.CompanyId,
+                command.Id,
+                command.Name,
+                command.Contact,
+                command.WarehouseId,
+                command.CommissionSalesGroupId,
+                command.Date)
+                .IntoArray<BaseMessage>());
     }
 
     /// <inheritdoc/>

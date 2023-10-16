@@ -23,48 +23,34 @@ using Hexalith.Domain.Aggregates;
 
 /// <summary>
 /// Class InventoryItemEvent.
-/// Implements the <see cref="Hexalith.Domain.Events.BaseEvent" />.
+/// Implements the <see cref="Hexalith.Domain.Events.CompanyEntityEvent" />.
 /// </summary>
-/// <seealso cref="Hexalith.Domain.Events.BaseEvent" />
+/// <seealso cref="Hexalith.Domain.Events.CompanyEntityEvent" />
 [DataContract]
-public abstract class InventoryItemEvent : BaseEvent
+public abstract class InventoryItemEvent : CompanyEntityEvent
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="InventoryItemEvent"/> class.
     /// </summary>
+    /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
     /// <param name="id">The identifier.</param>
     [JsonConstructor]
-    protected InventoryItemEvent(string companyId, string id)
+    protected InventoryItemEvent(string partitionId, string companyId, string id)
+        : base(partitionId, companyId, id)
     {
-        CompanyId = companyId;
-        Id = id;
     }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="InventoryItemEvent" /> class.
     /// </summary>
     [Obsolete("This constructor is only for serialization purposes.", true)]
-    protected InventoryItemEvent() => CompanyId = Id = string.Empty;
-
-    /// <summary>
-    /// Gets or sets the company identifier.
-    /// </summary>
-    /// <value>The company identifier.</value>
-    [DataMember(Order = 1)]
-    [JsonPropertyOrder(1)]
-    public string CompanyId { get; set; }
-
-    /// <summary>
-    /// Gets or sets the identifier.
-    /// </summary>
-    /// <value>The identifier.</value>
-    [DataMember(Order = 2)]
-    [JsonPropertyOrder(2)]
-    public string Id { get; set; }
+    protected InventoryItemEvent()
+    {
+    }
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateId() => InventoryItem.GetAggregateId(CompanyId, Id);
+    protected override string DefaultAggregateId() => InventoryItem.GetAggregateId(PartitionId, CompanyId, Id);
 
     /// <inheritdoc/>
     protected override string DefaultAggregateName() => InventoryItem.GetAggregateName();

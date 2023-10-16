@@ -33,17 +33,19 @@ public class AggregateExternalReferenceRemoved : AggregateExternalReferenceEvent
     /// <summary>
     /// Initializes a new instance of the <see cref="AggregateExternalReferenceRemoved"/> class.
     /// </summary>
+    /// <param name="partitionId">The partition identifier.</param>
     /// <param name="referenceAggregateName">Name of the reference aggregate.</param>
     /// <param name="referenceAggregateId">The reference aggregate identifier.</param>
     /// <param name="systemId">The system identifier.</param>
     /// <param name="externalId">The external identifier.</param>
     [JsonConstructor]
     public AggregateExternalReferenceRemoved(
+        string partitionId,
         string referenceAggregateName,
         string referenceAggregateId,
         string systemId,
         string externalId)
-        : base(referenceAggregateName, referenceAggregateId)
+        : base(partitionId, referenceAggregateName, referenceAggregateId)
     {
         SystemId = systemId;
         ExternalId = externalId;

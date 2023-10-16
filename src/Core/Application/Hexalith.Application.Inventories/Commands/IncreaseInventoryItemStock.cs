@@ -27,20 +27,22 @@ using System.Runtime.Serialization;
 public class IncreaseInventoryItemStock : InventoryItemStockCommand
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="IncreaseInventoryItemStock" /> class.
+    /// Initializes a new instance of the <see cref="IncreaseInventoryItemStock"/> class.
     /// </summary>
+    /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
     /// <param name="locationId">The location identifier.</param>
     /// <param name="inventoryItemId">The inventory item identifier.</param>
     /// <param name="quantity">The quantity.</param>
     /// <param name="date">The date.</param>
     public IncreaseInventoryItemStock(
+        string partitionId,
         string companyId,
         string locationId,
         string inventoryItemId,
         decimal quantity,
         DateTimeOffset date)
-        : base(companyId, locationId, inventoryItemId)
+        : base(partitionId, companyId, locationId, inventoryItemId)
     {
         Quantity = quantity;
         Date = date;

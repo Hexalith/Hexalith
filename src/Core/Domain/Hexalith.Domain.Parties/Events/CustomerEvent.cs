@@ -23,48 +23,34 @@ using Hexalith.Domain.Aggregates;
 
 /// <summary>
 /// Class CustomerEvent.
-/// Implements the <see cref="Hexalith.Domain.Events.BaseEvent" />.
+/// Implements the <see cref="Hexalith.Domain.Events.CompanyEntityEvent" />.
 /// </summary>
-/// <seealso cref="Hexalith.Domain.Events.BaseEvent" />
+/// <seealso cref="Hexalith.Domain.Events.CompanyEntityEvent" />
 [DataContract]
-public abstract class CustomerEvent : BaseEvent
+public abstract class CustomerEvent : CompanyEntityEvent
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="CustomerEvent"/> class.
     /// </summary>
+    /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
     /// <param name="id">The identifier.</param>
     [JsonConstructor]
-    protected CustomerEvent(string companyId, string id)
+    protected CustomerEvent(string partitionId, string companyId, string id)
+        : base(partitionId, companyId, id)
     {
-        CompanyId = companyId;
-        Id = id;
     }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CustomerEvent" /> class.
     /// </summary>
     [Obsolete("This constructor is only for serialization purposes.", true)]
-    protected CustomerEvent() => CompanyId = Id = string.Empty;
-
-    /// <summary>
-    /// Gets or sets the company identifier.
-    /// </summary>
-    /// <value>The company identifier.</value>
-    [DataMember(Order = 1)]
-    [JsonPropertyOrder(1)]
-    public string CompanyId { get; set; }
-
-    /// <summary>
-    /// Gets or sets the identifier.
-    /// </summary>
-    /// <value>The identifier.</value>
-    [DataMember(Order = 2)]
-    [JsonPropertyOrder(2)]
-    public string Id { get; set; }
+    protected CustomerEvent()
+    {
+    }
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateId() => Customer.GetAggregateId(CompanyId, Id);
+    protected override string DefaultAggregateId() => Customer.GetAggregateId(PartitionId, CompanyId, Id);
 
     /// <inheritdoc/>
     protected override string DefaultAggregateName() => Customer.GetAggregateName();

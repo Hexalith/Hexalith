@@ -29,16 +29,18 @@ public class InventoryItemBarcodeRemoved : InventoryItemEvent
     /// <summary>
     /// Initializes a new instance of the <see cref="InventoryItemBarcodeRemoved"/> class.
     /// </summary>
+    /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
     /// <param name="id">The identifier.</param>
     /// <param name="barcode">The barcode.</param>
     /// <param name="date">The date.</param>
     public InventoryItemBarcodeRemoved(
+        string partitionId,
         string companyId,
         string id,
         string barcode,
         DateTimeOffset date)
-        : base(companyId, id)
+        : base(partitionId, companyId, id)
     {
         Date = date;
         Barcode = barcode;

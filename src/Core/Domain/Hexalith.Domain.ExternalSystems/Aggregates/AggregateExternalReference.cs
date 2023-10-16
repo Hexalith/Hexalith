@@ -19,6 +19,7 @@
 /// </summary>
 namespace Hexalith.Domain.Aggregates;
 
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 
 using Hexalith.Domain.Events;
@@ -38,6 +39,7 @@ using Hexalith.Domain.ValueObjets;
 /// <seealso cref="System.IEquatable{Hexalith.Domain.Aggregates.AggregateExternalReference}" />
 [DataContract]
 public record AggregateExternalReference(
+    string PartitionId,
     string ReferenceAggregateId,
     IEnumerable<ExternalReference> ExternalIds) : Aggregate
 {
@@ -47,7 +49,8 @@ public record AggregateExternalReference(
     /// <param name="mapped">The mapped.</param>
     public AggregateExternalReference(AggregateExternalReferenceAdded mapped)
         : this(
-              (mapped ?? throw new ArgumentNullException(nameof(mapped))).ReferenceAggregateId,
+              (mapped ?? throw new ArgumentNullException(nameof(mapped))).PartitionId,
+              mapped.ReferenceAggregateId,
               new ExternalReference[] { new(mapped.SystemId, mapped.ExternalId) })
     {
     }
@@ -75,14 +78,20 @@ public record AggregateExternalReference(
     }
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateId() => GetAggregateId(ReferenceAggregateId);
+    protected override string DefaultAggregateId() => GetAggregateId(PartitionId, ReferenceAggregateId);
 
     /// <summary>
     /// Gets the aggregate identifier.
     /// </summary>
+    /// <param name="partitionId">The partition identifier.</param>
     /// <param name="referenceAggregateId">The reference aggregate identifier.</param>
     /// <returns>System.String.</returns>
-    public static string GetAggregateId(string referenceAggregateId) => GetAggregateName() + Separator + referenceAggregateId;
+    public static string GetAggregateId([NotNull] string partitionId, [NotNull] string referenceAggregateId)
+    {
+        ArgumentException.ThrowIfNullOrEmpty(partitionId);
+        ArgumentException.ThrowIfNullOrEmpty(referenceAggregateId);
+        return GetAggregateName() + Separator + partitionId + Separator + referenceAggregateId;
+    }
 
     /// <summary>
     /// Gets the name of the aggregate.

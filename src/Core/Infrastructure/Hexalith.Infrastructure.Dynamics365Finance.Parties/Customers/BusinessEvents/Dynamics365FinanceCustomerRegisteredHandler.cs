@@ -16,8 +16,11 @@
 namespace Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents;
 
 using Hexalith.Application.ExternalSystems.Services;
+using Hexalith.Application.Organizations.Configurations;
 using Hexalith.Application.Parties.Services;
 using Hexalith.Extensions.Common;
+
+using Microsoft.Extensions.Options;
 
 /// <summary>
 /// Class CustomerEventHandler.
@@ -27,19 +30,20 @@ using Hexalith.Extensions.Common;
 public class Dynamics365FinanceCustomerRegisteredHandler : Dynamics365FinanceCustomerInformationHandler<Dynamics365FinanceCustomerRegistered>
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="Dynamics365FinanceCustomerRegisteredHandler" /> class.
+    /// Initializes a new instance of the <see cref="Dynamics365FinanceCustomerRegisteredHandler"/> class.
     /// </summary>
     /// <param name="dateTimeService">The date time service.</param>
     /// <param name="customerService">The customer service.</param>
     /// <param name="externalReferenceService">The external reference service.</param>
     /// <param name="aggregateExternalReferenceService">The aggregate external reference service.</param>
-    /// <exception cref="ArgumentNullException">null.</exception>
+    /// <param name="settings">The settings.</param>
     public Dynamics365FinanceCustomerRegisteredHandler(
         IDateTimeService dateTimeService,
         ICustomerQueryService customerService,
         IExternalSystemReferenceQueryService externalReferenceService,
-        IAggregateExternalReferenceQueryService aggregateExternalReferenceService)
-        : base(dateTimeService, customerService, externalReferenceService, aggregateExternalReferenceService)
+        IAggregateExternalReferenceQueryService aggregateExternalReferenceService,
+        IOptions<OrganizationSettings> settings)
+        : base(dateTimeService, customerService, externalReferenceService, aggregateExternalReferenceService, settings)
     {
     }
 }

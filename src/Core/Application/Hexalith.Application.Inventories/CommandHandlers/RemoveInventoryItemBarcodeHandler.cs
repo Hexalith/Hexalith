@@ -40,6 +40,7 @@ public class RemoveInventoryItemBarcodeHandler : CommandHandler<RemoveInventoryI
     {
         ArgumentNullException.ThrowIfNull(command);
         return Task.FromResult<IEnumerable<BaseMessage>>(new InventoryItemBarcodeRemoved(
+                    command.PartitionId,
                     command.CompanyId,
                     command.Id,
                     command.Barcode,

@@ -4,7 +4,7 @@
 // Created          : 08-21-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 08-28-2023
+// Last Modified On : 09-12-2023
 // ***********************************************************************
 // <copyright file="AddExternalSystemReference.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -31,19 +31,21 @@ using Hexalith.Extensions;
 public class AddExternalSystemReference : ExternalSystemReferenceCommand
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="AddExternalSystemReference"/> class.
+    /// Initializes a new instance of the <see cref="AddExternalSystemReference" /> class.
     /// </summary>
+    /// <param name="partitionId">The partition identifier.</param>
     /// <param name="systemId">The system identifier.</param>
     /// <param name="referenceAggregateName">Name of the reference aggregate.</param>
     /// <param name="externalId">The external identifier.</param>
     /// <param name="referenceAggregateId">The reference aggregate identifier.</param>
     [JsonConstructor]
     public AddExternalSystemReference(
+        string partitionId,
         string systemId,
         string referenceAggregateName,
         string externalId,
         string referenceAggregateId)
-        : base(systemId, referenceAggregateName, externalId) => ReferenceAggregateId = referenceAggregateId;
+        : base(partitionId, systemId, referenceAggregateName, externalId) => ReferenceAggregateId = referenceAggregateId;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AddExternalSystemReference" /> class.

@@ -31,17 +31,19 @@ using Hexalith.Extensions;
 public class RemoveExternalSystemReference : ExternalSystemReferenceCommand
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="RemoveExternalSystemReference" /> class.
+    /// Initializes a new instance of the <see cref="RemoveExternalSystemReference"/> class.
     /// </summary>
-    /// <param name="systemId">The identifier.</param>
-    /// <param name="referenceAggregateName">Type of the aggregate.</param>
+    /// <param name="partitionId">The partition identifier.</param>
+    /// <param name="systemId">The system identifier.</param>
+    /// <param name="referenceAggregateName">Name of the reference aggregate.</param>
     /// <param name="externalId">The external identifier.</param>
     [JsonConstructor]
     public RemoveExternalSystemReference(
+        string partitionId,
         string systemId,
         string referenceAggregateName,
         string externalId)
-        : base(systemId, referenceAggregateName, externalId)
+        : base(partitionId, systemId, referenceAggregateName, externalId)
     {
     }
 

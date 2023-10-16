@@ -37,7 +37,7 @@ public abstract class Dynamics365FinanceCustomerInformationBusinessEvent : Dynam
     public string? Account { get; set; }
 
     /// <inheritdoc/>
-    public override string AggregateId => Customer.GetAggregateId(BusinessEventLegalEntity ?? string.Empty, Account ?? string.Empty);
+    public override string AggregateId => Customer.GetAggregateId(nameof(Dynamics365Finance), BusinessEventLegalEntity ?? string.Empty, Account ?? string.Empty);
 
     /// <inheritdoc/>
     public override string AggregateName => Customer.GetAggregateName();

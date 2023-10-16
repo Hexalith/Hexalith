@@ -33,17 +33,19 @@ public class ExternalSystemReferenceAdded : ExternalSystemEvent
     /// <summary>
     /// Initializes a new instance of the <see cref="ExternalSystemReferenceAdded"/> class.
     /// </summary>
+    /// <param name="partitionId">The partition identifier.</param>
     /// <param name="systemId">The system identifier.</param>
     /// <param name="referenceAggregateName">Name of the reference aggregate.</param>
     /// <param name="externalId">The external identifier.</param>
     /// <param name="referenceAggregateId">The reference aggregate identifier.</param>
     [JsonConstructor]
     public ExternalSystemReferenceAdded(
+        string partitionId,
         string systemId,
         string referenceAggregateName,
         string externalId,
         string referenceAggregateId)
-        : base(systemId, referenceAggregateName, externalId) => ReferenceAggregateId = referenceAggregateId;
+        : base(partitionId, systemId, referenceAggregateName, externalId) => ReferenceAggregateId = referenceAggregateId;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ExternalSystemReferenceAdded" /> class.

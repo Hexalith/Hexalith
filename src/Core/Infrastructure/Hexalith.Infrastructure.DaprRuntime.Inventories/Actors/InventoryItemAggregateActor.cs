@@ -117,6 +117,7 @@ public class InventoryItemAggregateActor : Actor, ICommandProcessorActor, IRemin
     {
         InventoryItem inventoryItem = await GetAggregateAsync().ConfigureAwait(false);
         return new InventoryItemInformationChanged(
+                inventoryItem.PartitionId,
                 inventoryItem.CompanyId,
                 inventoryItem.Id,
                 inventoryItem.Name,

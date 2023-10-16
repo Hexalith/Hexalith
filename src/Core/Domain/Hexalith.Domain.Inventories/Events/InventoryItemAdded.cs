@@ -27,23 +27,20 @@ using System.Runtime.Serialization;
 public class InventoryItemAdded : InventoryItemEvent
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="InventoryItemAdded" /> class.
+    /// Initializes a new instance of the <see cref="InventoryItemAdded"/> class.
     /// </summary>
+    /// <param name="partitionId">The partition identifier.</param>
+    /// <param name="companyId">The company identifier.</param>
     /// <param name="id">The identifier.</param>
     /// <param name="name">The name.</param>
-    /// <param name="companyId">The company identifier.</param>
-    /// <param name="contact">The contact.</param>
-    /// <param name="invoiceAddress">The invoice address.</param>
-    /// <param name="deliveryAddress">The delivery address.</param>
-    /// <param name="warehouseId">The warehouse identifier.</param>
-    /// <param name="commissionSalesGroupId">The commission sales group identifier.</param>
     /// <param name="date">The date.</param>
     public InventoryItemAdded(
+        string partitionId,
         string companyId,
         string id,
         string name,
         DateTimeOffset date)
-        : base(companyId, id)
+        : base(partitionId, companyId, id)
     {
         Name = name;
         Date = date;

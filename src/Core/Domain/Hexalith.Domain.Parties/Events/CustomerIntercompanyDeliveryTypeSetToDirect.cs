@@ -29,13 +29,14 @@ public class CustomerIntercompanyDeliveryTypeSetToDirect : CustomerEvent
     /// <summary>
     /// Initializes a new instance of the <see cref="CustomerIntercompanyDeliveryTypeSetToDirect"/> class.
     /// </summary>
+    /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
     /// <param name="id">The identifier.</param>
-    /// <param name="date">The date.</param>
     public CustomerIntercompanyDeliveryTypeSetToDirect(
+        string partitionId,
         string companyId,
         string id)
-        : base(companyId, id)
+        : base(partitionId, companyId, id)
     {
     }
 

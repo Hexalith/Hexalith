@@ -31,6 +31,7 @@ using Hexalith.Domain.Exceptions;
 /// <seealso cref="System.IEquatable{Hexalith.Domain.Aggregates.Aggregate}" />
 /// <seealso cref="System.IEquatable{Hexalith.Domain.Aggregates.InventoryItemStock}" />
 public record InventoryItemStock(
+    string PartitionId,
     string CompanyId,
     string LocationId,
     string InventoryItemId,
@@ -43,7 +44,8 @@ public record InventoryItemStock(
     /// <param name="increased">The increased.</param>
     public InventoryItemStock(InventoryItemStockIncreased increased)
         : this(
-              (increased ?? throw new ArgumentNullException(nameof(increased))).CompanyId,
+              (increased ?? throw new ArgumentNullException(nameof(increased))).PartitionId,
+              increased.CompanyId,
               increased.LocationId,
               increased.InventoryItemId,
               increased.Quantity,
@@ -57,7 +59,8 @@ public record InventoryItemStock(
     /// <param name="decreased">The decreased.</param>
     public InventoryItemStock(InventoryItemStockDecreased decreased)
         : this(
-              (decreased ?? throw new ArgumentNullException(nameof(decreased))).CompanyId,
+              (decreased ?? throw new ArgumentNullException(nameof(decreased))).PartitionId,
+              decreased.CompanyId,
               decreased.LocationId,
               decreased.InventoryItemId,
               -decreased.Quantity,
@@ -77,17 +80,18 @@ public record InventoryItemStock(
     }
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateId() => GetAggregateId(CompanyId, LocationId, InventoryItemId);
+    protected override string DefaultAggregateId() => GetAggregateId(PartitionId, CompanyId, LocationId, InventoryItemId);
 
     /// <summary>
     /// Gets the aggregate identifier.
     /// </summary>
+    /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
     /// <param name="locationId">The location identifier.</param>
     /// <param name="inventoryItemId">The inventory item identifier.</param>
-    /// <returns>string.</returns>
-    public static string GetAggregateId(string companyId, string locationId, string inventoryItemId)
-        => nameof(InventoryItemStock) + Separator + companyId + Separator + locationId + Separator + inventoryItemId;
+    /// <returns>System.String.</returns>
+    public static string GetAggregateId(string partitionId, string companyId, string locationId, string inventoryItemId)
+        => nameof(InventoryItemStock) + Separator + partitionId + Separator + companyId + Separator + locationId + Separator + inventoryItemId;
 
     /// <summary>
     /// Gets the name of the aggregate.

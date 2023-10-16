@@ -30,22 +30,23 @@ using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class SetCustomerIntercompanyDeliveryToDirectHandler.
-/// Implements the <see cref="Hexalith.Application.Commands.CommandHandler{Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDeliveryToDirect}" />.
+/// Implements the <see cref="Hexalith.Application.Commands.CommandHandler{Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDirectDelivery}" />.
 /// </summary>
-/// <seealso cref="Hexalith.Application.Commands.CommandHandler{Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDeliveryToDirect}" />
-public class SetCustomerIntercompanyDeliveryToDirectHandler : CommandHandler<SetCustomerIntercompanyDeliveryToDirect>
+/// <seealso cref="Hexalith.Application.Commands.CommandHandler{Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDirectDelivery}" />
+public class SetCustomerIntercompanyDeliveryToDirectHandler : CommandHandler<SetCustomerIntercompanyDirectDelivery>
 {
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] SetCustomerIntercompanyDeliveryToDirect command, CancellationToken cancellationToken)
+    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] SetCustomerIntercompanyDirectDelivery command, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
         return Task.FromResult<IEnumerable<BaseMessage>>(
             new CustomerIntercompanyDeliveryTypeSetToDirect(
+                command.PartitionId,
                 command.CompanyId,
                 command.Id)
                 .IntoArray<BaseMessage>());
     }
 
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> UndoAsync(SetCustomerIntercompanyDeliveryToDirect command, CancellationToken cancellationToken) => throw new NotSupportedException();
+    public override Task<IEnumerable<BaseMessage>> UndoAsync(SetCustomerIntercompanyDirectDelivery command, CancellationToken cancellationToken) => throw new NotSupportedException();
 }

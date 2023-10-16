@@ -6,5 +6,6 @@
     <ProjectReference Include="..\..\Domain\Hexalith.Domain.Inventories\Hexalith.Domain.Inventories.csproj" />
     <ProjectReference Include="..\..\Domain\Hexalith.Domain.Parties\Hexalith.Domain.Parties.csproj" />
     <ProjectReference Include="..\Hexalith.Application.Abstractions\Hexalith.Application.Abstractions.csproj" />
+    <ProjectReference Include="..\Hexalith.Application.Organizations\Hexalith.Application.Organizations.csproj" />
   </ItemGroup>
 </Project>

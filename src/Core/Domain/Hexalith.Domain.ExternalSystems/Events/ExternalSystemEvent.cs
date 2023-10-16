@@ -30,17 +30,20 @@ using Hexalith.Domain.Aggregates;
 public abstract class ExternalSystemEvent : BaseEvent
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="ExternalSystemEvent" /> class.
+    /// Initializes a new instance of the <see cref="ExternalSystemEvent"/> class.
     /// </summary>
-    /// <param name="systemId">The identifier.</param>
-    /// <param name="referenceAggregateName">Type of the aggregate.</param>
+    /// <param name="partitionId">The partition identifier.</param>
+    /// <param name="systemId">The system identifier.</param>
+    /// <param name="referenceAggregateName">Name of the reference aggregate.</param>
     /// <param name="externalId">The external identifier.</param>
     [JsonConstructor]
     protected ExternalSystemEvent(
+        string partitionId,
         string systemId,
         string referenceAggregateName,
         string externalId)
     {
+        PartitionId = partitionId;
         SystemId = systemId;
         ReferenceAggregateName = referenceAggregateName;
         ExternalId = externalId;
@@ -50,34 +53,42 @@ public abstract class ExternalSystemEvent : BaseEvent
     /// Initializes a new instance of the <see cref="ExternalSystemEvent" /> class.
     /// </summary>
     [Obsolete("This constructor is only for serialization purposes.", true)]
-    protected ExternalSystemEvent() => SystemId = ReferenceAggregateName = ExternalId = string.Empty;
+    protected ExternalSystemEvent() => PartitionId = SystemId = ReferenceAggregateName = ExternalId = string.Empty;
 
     /// <summary>
     /// Gets or sets the external identifier.
     /// </summary>
     /// <value>The identifier.</value>
-    [DataMember(Order = 3)]
-    [JsonPropertyOrder(3)]
+    [DataMember(Order = 4)]
+    [JsonPropertyOrder(4)]
     public string ExternalId { get; set; }
+
+    /// <summary>
+    /// Gets the partition identifier.
+    /// </summary>
+    /// <value>The partition identifier.</value>
+    [DataMember(Order = 1)]
+    [JsonPropertyOrder(1)]
+    public string PartitionId { get; }
 
     /// <summary>
     /// Gets or sets the aggregate type name.
     /// </summary>
     /// <value>The identifier.</value>
-    [DataMember(Order = 2)]
-    [JsonPropertyOrder(2)]
+    [DataMember(Order = 3)]
+    [JsonPropertyOrder(3)]
     public string ReferenceAggregateName { get; set; }
 
     /// <summary>
     /// Gets or sets the system identifier.
     /// </summary>
     /// <value>The identifier.</value>
-    [DataMember(Order = 1)]
-    [JsonPropertyOrder(1)]
+    [DataMember(Order = 2)]
+    [JsonPropertyOrder(2)]
     public string SystemId { get; set; }
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateId() => ExternalSystemReference.GetAggregateId(SystemId, ReferenceAggregateName, ExternalId);
+    protected override string DefaultAggregateId() => ExternalSystemReference.GetAggregateId(PartitionId, SystemId, ReferenceAggregateName, ExternalId);
 
     /// <inheritdoc/>
     protected override string DefaultAggregateName() => ExternalSystemReference.GetAggregateName();

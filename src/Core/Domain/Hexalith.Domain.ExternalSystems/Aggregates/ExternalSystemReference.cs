@@ -19,6 +19,7 @@
 /// </summary>
 namespace Hexalith.Domain.Aggregates;
 
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 
 using Hexalith.Domain.Events;
@@ -37,6 +38,7 @@ using Hexalith.Domain.Exceptions;
 /// <seealso cref="System.IEquatable{Hexalith.Domain.Aggregates.ExternalSystemReference}" />
 [DataContract]
 public record ExternalSystemReference(
+    string PartitionId,
     string SystemId,
     string ReferenceAggregateName,
     string ExternalId,
@@ -48,7 +50,8 @@ public record ExternalSystemReference(
     /// <param name="mapped">The mapped.</param>
     public ExternalSystemReference(ExternalSystemReferenceAdded mapped)
         : this(
-              (mapped ?? throw new ArgumentNullException(nameof(mapped))).SystemId,
+              (mapped ?? throw new ArgumentNullException(nameof(mapped))).PartitionId,
+              mapped.SystemId,
               mapped.ReferenceAggregateName,
               mapped.ExternalId,
               mapped.ReferenceAggregateId)
@@ -68,16 +71,28 @@ public record ExternalSystemReference(
     }
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateId() => GetAggregateId(SystemId, ReferenceAggregateName, ExternalId);
+    protected override string DefaultAggregateId() => GetAggregateId(PartitionId, SystemId, ReferenceAggregateName, ExternalId);
 
     /// <summary>
     /// Gets the aggregate identifier.
     /// </summary>
+    /// <param name="partitionId">The partition identifier.</param>
     /// <param name="systemId">The system identifier.</param>
     /// <param name="referenceAggregateName">Name of the reference aggregate.</param>
     /// <param name="externalId">The external identifier.</param>
     /// <returns>System.String.</returns>
-    public static string GetAggregateId(string systemId, string referenceAggregateName, string externalId) => GetAggregateName() + Separator + systemId + Separator + referenceAggregateName + Separator + externalId;
+    public static string GetAggregateId(
+        [NotNull] string partitionId,
+        [NotNull] string systemId,
+        [NotNull] string referenceAggregateName,
+        [NotNull] string externalId)
+    {
+        ArgumentException.ThrowIfNullOrEmpty(partitionId);
+        ArgumentException.ThrowIfNullOrEmpty(systemId);
+        ArgumentException.ThrowIfNullOrEmpty(referenceAggregateName);
+        ArgumentException.ThrowIfNullOrEmpty(externalId);
+        return GetAggregateName() + Separator + partitionId + Separator + systemId + Separator + referenceAggregateName + Separator + externalId;
+    }
 
     /// <summary>
     /// Gets the name of the aggregate.

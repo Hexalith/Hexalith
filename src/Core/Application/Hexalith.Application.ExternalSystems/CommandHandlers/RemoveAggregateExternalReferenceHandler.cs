@@ -18,6 +18,7 @@ namespace Hexalith.Application.ExternalSystems.CommandHandlers;
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -35,9 +36,11 @@ using Hexalith.Extensions.Helpers;
 public class RemoveAggregateExternalReferenceHandler : CommandHandler<RemoveAggregateExternalReference>
 {
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> DoAsync(RemoveAggregateExternalReference command, CancellationToken cancellationToken)
+    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] RemoveAggregateExternalReference command, CancellationToken cancellationToken)
     {
+        ArgumentNullException.ThrowIfNull(command);
         return Task.FromResult<IEnumerable<BaseMessage>>(new AggregateExternalReferenceRemoved(
+                command.PartitionId,
                 command.ReferenceAggregateName,
                 command.ReferenceAggregateId,
                 command.SystemId,

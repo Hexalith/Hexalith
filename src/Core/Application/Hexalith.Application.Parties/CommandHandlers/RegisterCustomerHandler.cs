@@ -41,6 +41,7 @@ public class RegisterCustomerHandler : CommandHandler<RegisterCustomer>
         ArgumentNullException.ThrowIfNull(command);
         return Task.FromResult<IEnumerable<BaseMessage>>(
             new CustomerRegistered(
+                command.PartitionId,
                 command.CompanyId,
                 command.Id,
                 command.Name,

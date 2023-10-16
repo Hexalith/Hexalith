@@ -29,16 +29,18 @@ using Hexalith.Domain.ValueObjets;
 public class ChangeCustomerInformation : CustomerCommand
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="ChangeCustomerInformation" /> class.
+    /// Initializes a new instance of the <see cref="ChangeCustomerInformation"/> class.
     /// </summary>
+    /// <param name="partitionId">The partition identifier.</param>
+    /// <param name="companyId">The company identifier.</param>
     /// <param name="id">The identifier.</param>
     /// <param name="name">The name.</param>
-    /// <param name="companyId">The company identifier.</param>
     /// <param name="contact">The contact.</param>
     /// <param name="warehouseId">The warehouse identifier.</param>
     /// <param name="commissionSalesGroupId">The commission sales group identifier.</param>
-    /// <param name="date">The external ids.</param>
+    /// <param name="date">The date.</param>
     public ChangeCustomerInformation(
+        string partitionId,
         string companyId,
         string id,
         string name,
@@ -46,7 +48,7 @@ public class ChangeCustomerInformation : CustomerCommand
         string? warehouseId,
         string? commissionSalesGroupId,
         DateTimeOffset date)
-        : base(companyId, id)
+        : base(partitionId, companyId, id)
     {
         Name = name;
         Contact = contact;
