@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 02-08-2023
 // ***********************************************************************
-// <copyright file="CustomerExternalCode.cs" company="Fiveforty SAS Paris France">
+// <copyright file="CustomerExternalSystemCode.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -29,7 +29,7 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 /// <seealso cref="IEquatable{ODataElement}" />
 /// <seealso cref="IODataElement" />
 /// <seealso cref="IEquatable{CustomerExternalCode}" />
-public record CustomerExternalCode
+public record CustomerExternalSystemCode
 (
     string? Etag,
     string DataAreaId,
@@ -43,5 +43,5 @@ public record CustomerExternalCode
     /// Entities the name.
     /// </summary>
     /// <returns>System.String.</returns>
-    public static string EntityName() => "FFYCustomerExternalCodes";
+    public static string EntityName() => "FFYCustomerExternalSystemCodes";
 }

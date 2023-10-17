@@ -106,7 +106,7 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
         string customerId = @event.Account.ToUpperInvariant();
         string customerAggregateId = Customer.GetAggregateId(_partitionId, companyId, customerId);
         string customerAggregateName = Customer.GetAggregateName();
-        List<BaseCommand> commands =[];
+        List<BaseCommand> commands = [];
         if (@event.ExternalReferences != null)
         {
             foreach (ExternalReference reference in @event.ExternalReferences)

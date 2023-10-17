@@ -46,10 +46,10 @@ public abstract class CompanyEntityEvent : CompanyEvent
     protected CompanyEntityEvent() => Id = string.Empty;
 
     /// <summary>
-    /// Gets the identifier.
+    /// Gets or sets the identifier.
     /// </summary>
     /// <value>The identifier.</value>
     [DataMember(Order = 3)]
     [JsonPropertyOrder(3)]
-    public string Id { get; }
+    public string Id { get; set; }
 }

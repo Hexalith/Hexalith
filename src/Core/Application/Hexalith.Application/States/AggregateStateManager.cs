@@ -143,7 +143,7 @@ public class AggregateStateManager : IAggregateStateManager
         await retryManager.RegisterContinueCallbackAsync(TimeSpan.FromSeconds(1), cancellationToken).ConfigureAwait(false);
         AggregateState state = await GetStateAsync(stateProvider, cancellationToken).ConfigureAwait(false);
         MessageStore<CommandState> commandStore = new(stateProvider, CommandsStreamName);
-        List<CommandState> states = [];
+        List<CommandState> states =[];
         for (int i = 0; i < commands.Length; i++)
         {
             BaseCommand command = commands[i];
@@ -196,7 +196,7 @@ public class AggregateStateManager : IAggregateStateManager
             return aggregate;
         }
 
-        if (retry?.Status is TaskProcessorStatus.Completed or TaskProcessorStatus.Canceled)
+        if (retry == null || retry.Status is TaskProcessorStatus.Completed or TaskProcessorStatus.Canceled)
         {
             await retryManager
                 .UnregisterContinueCallbackAsync(cancellationToken)
@@ -204,7 +204,7 @@ public class AggregateStateManager : IAggregateStateManager
             return aggregate;
         }
 
-        TimeSpan waitTime = retry?.RetryWaitTime ?? TimeSpan.Zero;
+        TimeSpan waitTime = retry.RetryWaitTime;
         await retryManager
                 .RegisterContinueCallbackAsync(
                     waitTime <= resiliencyPolicy.InitialPeriod ? resiliencyPolicy.InitialPeriod : waitTime,
@@ -254,7 +254,7 @@ public class AggregateStateManager : IAggregateStateManager
         ArgumentNullException.ThrowIfNull(stateProvider);
         MessageStore<CommandState> commandStore = new(stateProvider, EventsStreamName);
         AggregateState state = await GetStateAsync(stateProvider, cancellationToken).ConfigureAwait(false);
-        List<T> commands = [];
+        List<T> commands =[];
         while (state.LastEventPublished < state.EventStreamVersion)
         {
             long nextEvent = state.LastEventPublished + 1;
@@ -282,7 +282,7 @@ public class AggregateStateManager : IAggregateStateManager
         ArgumentNullException.ThrowIfNull(stateProvider);
         MessageStore<EventState> eventStore = new(stateProvider, EventsStreamName);
         AggregateState state = await GetStateAsync(stateProvider, cancellationToken).ConfigureAwait(false);
-        List<T> events = [];
+        List<T> events =[];
         while (state.LastEventPublished < state.EventStreamVersion)
         {
             long nextEvent = state.LastEventPublished + 1;

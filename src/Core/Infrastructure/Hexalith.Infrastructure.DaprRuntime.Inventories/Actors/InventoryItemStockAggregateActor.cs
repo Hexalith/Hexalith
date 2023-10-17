@@ -123,6 +123,7 @@ public class InventoryItemStockAggregateActor : Actor, ICommandProcessorActor, I
                 envelope.Metadatas.ToArray(),
                 CancellationToken.None)
             .ConfigureAwait(false);
+        _ = await GetAggregateAsync().ConfigureAwait(false);
     }
 
     /// <inheritdoc/>

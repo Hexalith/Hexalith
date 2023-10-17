@@ -143,6 +143,7 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
                 envelope.Metadatas.ToArray(),
                 CancellationToken.None)
             .ConfigureAwait(false);
+        _ = await GetAggregateAsync().ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -198,11 +199,14 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
     private async Task<Customer> GetAggregateAsync()
     {
         _aggregate ??= (Customer?)await _stateManager
-                .GetAggregateAsync(
-                    _stateProvider,
-                    (e) => new Customer((CustomerRegistered)e),
-                    CancellationToken.None)
-                .ConfigureAwait(false);
+            .ContinueAsync(
+                _stateProvider,
+                _retryManager,
+                _commandProcessorSettings.ResiliencyPolicy,
+                _aggregate,
+                (e) => new Customer((CustomerRegistered)e),
+                CancellationToken.None)
+            .ConfigureAwait(false);
         return _aggregate
             ?? throw new InvalidOperationException($"Aggregate {Host.ActorTypeInfo.ActorTypeName} {Id.GetId()} is not ready. Check task processor failure information.");
     }

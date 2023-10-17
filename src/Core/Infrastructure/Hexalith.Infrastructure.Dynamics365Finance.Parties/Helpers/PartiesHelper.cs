@@ -37,7 +37,7 @@ public static class PartiesHelper
     public static IServiceCollection AddDynamics365FinanceCustomers(this IServiceCollection services)
     {
         return services
-            .AddSingleton<IDynamics365FinanceClient<CustomerExternalCode>, Dynamics365FinanceClient<CustomerExternalCode>>()
+            .AddSingleton<IDynamics365FinanceClient<CustomerExternalSystemCode>, Dynamics365FinanceClient<CustomerExternalSystemCode>>()
             .AddSingleton<IDynamics365FinanceClient<CustomerV3>, Dynamics365FinanceClient<CustomerV3>>()
             .AddSingleton<IValidator<Dynamics365FinanceCustomerChanged>, Dynamics365FinanceCustomerChangedValidator>()
             .AddSingleton<IValidator<Dynamics365FinanceCustomerRegistered>, Dynamics365FinanceCustomerRegisteredValidator>()

@@ -121,6 +121,7 @@ public class AggregateExternalReferenceAggregateActor : Actor, ICommandProcessor
                 envelope.Metadatas.ToArray(),
                 CancellationToken.None)
             .ConfigureAwait(false);
+        _ = await GetAggregateAsync().ConfigureAwait(false);
     }
 
     /// <inheritdoc/>

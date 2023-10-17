@@ -44,10 +44,10 @@ public abstract class PartitionedEvent : BaseEvent
     protected PartitionedEvent() => PartitionId = string.Empty;
 
     /// <summary>
-    /// Gets the partition identifier.
+    /// Gets or sets the partition identifier.
     /// </summary>
     /// <value>The partition identifier.</value>
     [DataMember(Order = 1)]
     [JsonPropertyOrder(1)]
-    public string PartitionId { get; }
+    public string PartitionId { get; set; }
 }

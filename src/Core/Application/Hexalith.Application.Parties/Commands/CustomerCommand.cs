@@ -19,7 +19,7 @@ namespace Hexalith.Application.Parties.Commands;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Application.Commands;
+using Hexalith.Application.Organizations.Commands;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 
@@ -29,7 +29,7 @@ using Hexalith.Domain.Events;
 /// </summary>
 /// <seealso cref="BaseEvent" />
 [DataContract]
-public abstract class CustomerCommand : BaseCommand
+public abstract class CustomerCommand : CompanyEntityCommand
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="CustomerCommand"/> class.
@@ -39,41 +39,17 @@ public abstract class CustomerCommand : BaseCommand
     /// <param name="id">The identifier.</param>
     [JsonConstructor]
     protected CustomerCommand(string partitionId, string companyId, string id)
+        : base(partitionId, companyId, id)
     {
-        Id = id;
-        PartitionId = partitionId;
-        CompanyId = companyId;
     }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CustomerCommand" /> class.
     /// </summary>
     [Obsolete("This constructor is only for serialization purposes.", true)]
-    protected CustomerCommand() => PartitionId = CompanyId = Id = string.Empty;
-
-    /// <summary>
-    /// Gets or sets the identifier.
-    /// </summary>
-    /// <value>The identifier.</value>
-    [DataMember(Order = 2)]
-    [JsonPropertyOrder(2)]
-    public string CompanyId { get; set; }
-
-    /// <summary>
-    /// Gets or sets the identifier.
-    /// </summary>
-    /// <value>The identifier.</value>
-    [DataMember(Order = 3)]
-    [JsonPropertyOrder(3)]
-    public string Id { get; set; }
-
-    /// <summary>
-    /// Gets the partition identifier.
-    /// </summary>
-    /// <value>The partition identifier.</value>
-    [DataMember(Order = 1)]
-    [JsonPropertyOrder(1)]
-    public string PartitionId { get; }
+    protected CustomerCommand()
+    {
+    }
 
     /// <inheritdoc/>
     protected override string DefaultAggregateId() => Customer.GetAggregateId(PartitionId, CompanyId, Id);
