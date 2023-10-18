@@ -198,7 +198,7 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
     /// <exception cref="System.InvalidOperationException">Aggregate {Host.ActorTypeInfo.ActorTypeName} {Id.GetId()} is not ready. Check task processor failure information.</exception>
     private async Task<Customer> GetAggregateAsync()
     {
-        _aggregate ??= (Customer?)await _stateManager
+        return _aggregate ??= (Customer?)await _stateManager
             .ContinueAsync(
                 _stateProvider,
                 _retryManager,
@@ -206,8 +206,7 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
                 _aggregate,
                 (e) => new Customer((CustomerRegistered)e),
                 CancellationToken.None)
-            .ConfigureAwait(false);
-        return _aggregate
+            .ConfigureAwait(false)
             ?? throw new InvalidOperationException($"Aggregate {Host.ActorTypeInfo.ActorTypeName} {Id.GetId()} is not ready. Check task processor failure information.");
     }
 }

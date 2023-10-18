@@ -149,14 +149,15 @@ public class ExternalSystemReferenceAggregateActor : Actor, ICommandProcessorAct
     /// <exception cref="System.InvalidOperationException">Aggregate {Host.ActorTypeInfo.ActorTypeName} {Id.GetId()} is not ready. Check task processor failure information.</exception>
     private async Task<ExternalSystemReference> GetAggregateAsync()
     {
-        _aggregate ??= (ExternalSystemReference?)await _stateManager
-                .GetAggregateAsync(
-                    _stateProvider,
-                    (e) => new ExternalSystemReference((ExternalSystemReferenceAdded)e),
-                    CancellationToken.None)
-                .ConfigureAwait(false);
-
-        return _aggregate
+        return _aggregate ??= (ExternalSystemReference?)await _stateManager
+            .ContinueAsync(
+                 _stateProvider,
+                 _retryManager,
+                 _commandProcessorSettings.ResiliencyPolicy,
+                 _aggregate,
+                 (e) => new ExternalSystemReference((ExternalSystemReferenceAdded)e),
+                 CancellationToken.None)
+            .ConfigureAwait(false)
             ?? throw new InvalidOperationException($"Aggregate {Host.ActorTypeInfo.ActorTypeName} {Id.GetId()} is not ready. Check task processor failure information.");
     }
 }

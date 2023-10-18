@@ -22,6 +22,7 @@ using System.Text.Json;
 
 using Hexalith.Application.Errors;
 using Hexalith.Application.Events;
+using Hexalith.Application.Helpers;
 using Hexalith.Domain.Events;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
@@ -90,6 +91,11 @@ public abstract class BindingController : ControllerBase
     {
         try
         {
+            if (message.ValueKind == JsonValueKind.Null)
+            {
+                return BadRequest("Message received is null.");
+            }
+
             IEvent @event = DeserializeAndValidate(message);
             Logger.LogInformation(
                 "Received event {EventName} {AggregateName}-{AggregateId}.",
@@ -103,13 +109,10 @@ public abstract class BindingController : ControllerBase
         {
             if (ex.Error is not null)
             {
+                Logger.LogError(ex);
                 return Problem(ex.Error);
             }
 
-            Logger.LogError(
-                ex,
-                "Event dispatch error.\n{SerializationData}",
-                message.GetRawText());
             throw;
         }
     }
@@ -129,11 +132,11 @@ public abstract class BindingController : ControllerBase
                 ? StringHelper.FormatWithNamedPlaceholders(
                     CultureInfo.InvariantCulture,
                     error.Detail ?? string.Empty,
-                    error.Arguments?.ToArray() ?? [])
+                    error.Arguments?.ToArray() ??[])
                 : StringHelper.FormatWithNamedPlaceholders(
                     CultureInfo.InvariantCulture,
                     error.TechnicalDetail ?? string.Empty,
-                    error.TechnicalArguments?.ToArray() ?? []);
+                    error.TechnicalArguments?.ToArray() ??[]);
         }
         catch (Exception ex)
         {
