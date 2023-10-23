@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace DeployACA.Infrastructure.Global;
+namespace Hexalith.DeployACA.Infrastructure.Global;
 
 using Azure.ResourceManager.KeyVault.Models;
 
@@ -35,9 +35,11 @@ internal class Global
     /// <param name="containerRegistryName">Name of the container registry.</param>
     /// <param name="containerRegistrySku">The container registry sku.</param>
     /// <param name="cognitiveServicesAccountName">Name of the cognitive services account.</param>
+    /// <param name="keyVaultName">Name of the key vault.</param>
+    /// <param name="keyVaultSku">The key vault sku.</param>
     /// <param name="location">The location.</param>
     /// <param name="loggerFactory">The logger factory.</param>
-    /// <exception cref="ArgumentNullException">Null.</exception>
+    /// <exception cref="ArgumentNullException">null.</exception>
     public Global(
         string subscriptionId,
         string resourceGroupName,
@@ -132,6 +134,6 @@ internal class Global
         _ = resourceGroup.AddContainerRegistry(ContainerRegistryName, ContainerRegistrySku, Location);
         _ = resourceGroup.AddOpenAIAccount(CognitiveServicesAccountName, "eastus"); // Waiting for general availability
         _ = resourceGroup.AddKeyVault(KeyVaultName, KeyVaultSku, Location);
-        await azureBuilder.BuildAsync(cancellationToken);
+        await azureBuilder.BuildAsync(cancellationToken).ConfigureAwait(false);
     }
 }

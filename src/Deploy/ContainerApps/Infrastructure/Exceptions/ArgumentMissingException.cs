@@ -14,16 +14,18 @@
 // <summary></summary>
 // ***********************************************************************
 
+namespace Hexalith.DeployACA.Infrastructure.Exceptions;
+
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 
 /// <summary>
 /// Class ArgumentMissingException.
-/// Implements the <see cref="System.Exception" />.
+/// Implements the <see cref="Exception" />.
 /// </summary>
-/// <seealso cref="System.Exception" />
+/// <seealso cref="Exception" />
 [Serializable]
-internal class ArgumentMissingException : Exception
+public class ArgumentMissingException : Exception
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="ArgumentMissingException" /> class.
@@ -109,10 +111,7 @@ internal class ArgumentMissingException : Exception
         T settings,
         string settingsSection,
         [CallerArgumentExpression(nameof(parameter))] string? parameterName = null,
-        [CallerArgumentExpression(nameof(settings))] string? settingsName = null)
-    {
-        return parameter ?? settings ?? throw new ArgumentMissingException(parameterName, settingsName, settingsSection);
-    }
+        [CallerArgumentExpression(nameof(settings))] string? settingsName = null) => parameter ?? settings ?? throw new ArgumentMissingException(parameterName, settingsName, settingsSection);
 
     /// <summary>
     /// Throws if null or white space.
@@ -138,8 +137,5 @@ internal class ArgumentMissingException : Exception
             : parameter;
     }
 
-    private static string? CreateMessage(string? parameterName, string? settingsName, string? settingsSection)
-    {
-        return $"The parameter '{parameterName ?? "Unknown"}' is not defined, neither the default value '{(string.IsNullOrWhiteSpace(settingsSection) ? string.Empty : settingsSection + ".")}{settingsName?.Split('.').Last() ?? "Unknown"}' in the application settings.";
-    }
+    private static string? CreateMessage(string? parameterName, string? settingsName, string? settingsSection) => $"The parameter '{parameterName ?? "Unknown"}' is not defined, neither the default value '{(string.IsNullOrWhiteSpace(settingsSection) ? string.Empty : settingsSection + ".")}{settingsName?.Split('.').Last() ?? "Unknown"}' in the application settings.";
 }

@@ -82,11 +82,14 @@ Implements the <see cref="!:Domain.Commands.BaseCommand"></see>.</p>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html">BaseMessage</a></div>
     <div class="level2"><a class="xref" href="Hexalith.Application.Commands.BaseCommand.html">BaseCommand</a></div>
-    <div class="level3"><span class="xref">InventoryItemCommand</span></div>
-      <div class="level4"><a class="xref" href="Hexalith.Application.Inventories.Commands.AddInventoryItem.html">AddInventoryItem</a></div>
-      <div class="level4"><a class="xref" href="Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.html">AddInventoryItemBarcode</a></div>
-      <div class="level4"><a class="xref" href="Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.html">ChangeInventoryItemInformation</a></div>
-      <div class="level4"><a class="xref" href="Hexalith.Application.Inventories.Commands.RemoveInventoryItemBarcode.html">RemoveInventoryItemBarcode</a></div>
+    <div class="level3"><a class="xref" href="Hexalith.Application.Organizations.Commands.PartitionedCommand.html">PartitionedCommand</a></div>
+    <div class="level4"><a class="xref" href="Hexalith.Application.Organizations.Commands.CompanyCommand.html">CompanyCommand</a></div>
+    <div class="level5"><a class="xref" href="Hexalith.Application.Organizations.Commands.CompanyEntityCommand.html">CompanyEntityCommand</a></div>
+    <div class="level6"><span class="xref">InventoryItemCommand</span></div>
+      <div class="level7"><a class="xref" href="Hexalith.Application.Inventories.Commands.AddInventoryItem.html">AddInventoryItem</a></div>
+      <div class="level7"><a class="xref" href="Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.html">AddInventoryItemBarcode</a></div>
+      <div class="level7"><a class="xref" href="Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.html">ChangeInventoryItemInformation</a></div>
+      <div class="level7"><a class="xref" href="Hexalith.Application.Inventories.Commands.RemoveInventoryItemBarcode.html">RemoveInventoryItemBarcode</a></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
@@ -97,6 +100,15 @@ Implements the <see cref="!:Domain.Commands.BaseCommand"></see>.</p>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Hexalith.Application.Organizations.Commands.CompanyEntityCommand.html#Hexalith_Application_Organizations_Commands_CompanyEntityCommand_Id">CompanyEntityCommand.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Application.Organizations.Commands.CompanyCommand.html#Hexalith_Application_Organizations_Commands_CompanyCommand_CompanyId">CompanyCommand.CompanyId</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Application.Organizations.Commands.PartitionedCommand.html#Hexalith_Application_Organizations_Commands_PartitionedCommand_PartitionId">PartitionedCommand.PartitionId</a>
+    </div>
     <div>
       <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_Separator">BaseMessage.Separator</a>
     </div>
@@ -151,7 +163,7 @@ Implements the <see cref="!:Domain.Commands.BaseCommand"></see>.</p>
   <h5 id="Hexalith_Application_Inventories_Commands_InventoryItemCommand_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataContract]
-public abstract class InventoryItemCommand : BaseCommand, IPolymorphicSerializable, IMappableType, ICommand, IMessage</code></pre>
+public abstract class InventoryItemCommand : CompanyEntityCommand, IPolymorphicSerializable, IMappableType, ICommand, IMessage</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -160,7 +172,7 @@ public abstract class InventoryItemCommand : BaseCommand, IPolymorphicSerializab
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Inventories_Commands_InventoryItemCommand__ctor.md&amp;value=---%0Auid%3A%20Hexalith.Application.Inventories.Commands.InventoryItemCommand.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/Commands/InventoryItemCommand.cs/#L48">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/Commands/InventoryItemCommand.cs/#L49">View Source</a>
   </span>
   <a id="Hexalith_Application_Inventories_Commands_InventoryItemCommand__ctor_" data-uid="Hexalith.Application.Inventories.Commands.InventoryItemCommand.#ctor*"></a>
   <h4 id="Hexalith_Application_Inventories_Commands_InventoryItemCommand__ctor" data-uid="Hexalith.Application.Inventories.Commands.InventoryItemCommand.#ctor">InventoryItemCommand()</h4>
@@ -173,20 +185,20 @@ public abstract class InventoryItemCommand : BaseCommand, IPolymorphicSerializab
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Inventories_Commands_InventoryItemCommand__ctor_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Inventories.Commands.InventoryItemCommand.%23ctor(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Inventories_Commands_InventoryItemCommand__ctor_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Inventories.Commands.InventoryItemCommand.%23ctor(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/Commands/InventoryItemCommand.cs/#L38">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/Commands/InventoryItemCommand.cs/#L40">View Source</a>
   </span>
   <a id="Hexalith_Application_Inventories_Commands_InventoryItemCommand__ctor_" data-uid="Hexalith.Application.Inventories.Commands.InventoryItemCommand.#ctor*"></a>
-  <h4 id="Hexalith_Application_Inventories_Commands_InventoryItemCommand__ctor_System_String_System_String_" data-uid="Hexalith.Application.Inventories.Commands.InventoryItemCommand.#ctor(System.String,System.String)">InventoryItemCommand(String, String)</h4>
+  <h4 id="Hexalith_Application_Inventories_Commands_InventoryItemCommand__ctor_System_String_System_String_System_String_" data-uid="Hexalith.Application.Inventories.Commands.InventoryItemCommand.#ctor(System.String,System.String,System.String)">InventoryItemCommand(String, String, String)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Application.Inventories.Commands.InventoryItemCommand.html">InventoryItemCommand</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonConstructor]
-protected InventoryItemCommand(string companyId, string id)</code></pre>
+protected InventoryItemCommand(string partitionId, string companyId, string id)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -198,6 +210,12 @@ protected InventoryItemCommand(string companyId, string id)</code></pre>
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">partitionId</span></td>
+        <td><p>The partition identifier.</p>
+</td>
+      </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">companyId</span></td>
@@ -212,76 +230,6 @@ protected InventoryItemCommand(string companyId, string id)</code></pre>
       </tr>
     </tbody>
   </table>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Inventories_Commands_InventoryItemCommand_CompanyId.md&amp;value=---%0Auid%3A%20Hexalith.Application.Inventories.Commands.InventoryItemCommand.CompanyId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/Commands/InventoryItemCommand.cs/#L55">View Source</a>
-  </span>
-  <a id="Hexalith_Application_Inventories_Commands_InventoryItemCommand_CompanyId_" data-uid="Hexalith.Application.Inventories.Commands.InventoryItemCommand.CompanyId*"></a>
-  <h4 id="Hexalith_Application_Inventories_Commands_InventoryItemCommand_CompanyId" data-uid="Hexalith.Application.Inventories.Commands.InventoryItemCommand.CompanyId">CompanyId</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the company identifier.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember(Order = 1)]
-[JsonPropertyOrder(1)]
-public string CompanyId { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><p>The company identifier.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Inventories_Commands_InventoryItemCommand_Id.md&amp;value=---%0Auid%3A%20Hexalith.Application.Inventories.Commands.InventoryItemCommand.Id%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/Commands/InventoryItemCommand.cs/#L63">View Source</a>
-  </span>
-  <a id="Hexalith_Application_Inventories_Commands_InventoryItemCommand_Id_" data-uid="Hexalith.Application.Inventories.Commands.InventoryItemCommand.Id*"></a>
-  <h4 id="Hexalith_Application_Inventories_Commands_InventoryItemCommand_Id" data-uid="Hexalith.Application.Inventories.Commands.InventoryItemCommand.Id">Id</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the identifier.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember(Order = 2)]
-[JsonPropertyOrder(2)]
-public string Id { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><p>The identifier.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
@@ -289,12 +237,11 @@ public string Id { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Inventories_Commands_InventoryItemCommand_DefaultAggregateId.md&amp;value=---%0Auid%3A%20Hexalith.Application.Inventories.Commands.InventoryItemCommand.DefaultAggregateId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/Commands/InventoryItemCommand.cs/#L68">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/Commands/InventoryItemCommand.cs/#L54">View Source</a>
   </span>
   <a id="Hexalith_Application_Inventories_Commands_InventoryItemCommand_DefaultAggregateId_" data-uid="Hexalith.Application.Inventories.Commands.InventoryItemCommand.DefaultAggregateId*"></a>
   <h4 id="Hexalith_Application_Inventories_Commands_InventoryItemCommand_DefaultAggregateId" data-uid="Hexalith.Application.Inventories.Commands.InventoryItemCommand.DefaultAggregateId">DefaultAggregateId()</h4>
-  <div class="markdown level1 summary"><p>Get the aggregate identifier.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -311,8 +258,7 @@ public string Id { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><p>The identifier.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -323,12 +269,11 @@ public string Id { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Inventories_Commands_InventoryItemCommand_DefaultAggregateName.md&amp;value=---%0Auid%3A%20Hexalith.Application.Inventories.Commands.InventoryItemCommand.DefaultAggregateName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/Commands/InventoryItemCommand.cs/#L71">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/Commands/InventoryItemCommand.cs/#L57">View Source</a>
   </span>
   <a id="Hexalith_Application_Inventories_Commands_InventoryItemCommand_DefaultAggregateName_" data-uid="Hexalith.Application.Inventories.Commands.InventoryItemCommand.DefaultAggregateName*"></a>
   <h4 id="Hexalith_Application_Inventories_Commands_InventoryItemCommand_DefaultAggregateName" data-uid="Hexalith.Application.Inventories.Commands.InventoryItemCommand.DefaultAggregateName">DefaultAggregateName()</h4>
-  <div class="markdown level1 summary"><p>Get the aggregate name.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -345,8 +290,7 @@ public string Id { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><p>The name.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -383,7 +327,7 @@ public string Id { get; set; }</code></pre>
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Inventories_Commands_InventoryItemCommand.md&amp;value=---%0Auid%3A%20Hexalith.Application.Inventories.Commands.InventoryItemCommand%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/Commands/InventoryItemCommand.cs/#L30" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/Commands/InventoryItemCommand.cs/#L31" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

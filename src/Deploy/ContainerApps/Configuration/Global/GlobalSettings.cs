@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace DeployACA.Configuration.Global;
+namespace Hexalith.DeployACA.Configuration.Global;
 
 using Azure.ResourceManager.KeyVault.Models;
 
@@ -86,8 +86,5 @@ public class GlobalSettings : ISettings
     /// The configuration section name of the settings.
     /// </summary>
     /// <returns>The name.</returns>
-    public static string ConfigurationName()
-    {
-        return "Global";
-    }
+    public static string ConfigurationName() => "Global";
 }

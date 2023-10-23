@@ -82,8 +82,11 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.InventoryItemEvent.h
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html">BaseMessage</a></div>
     <div class="level2"><a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">BaseEvent</a></div>
-    <div class="level3"><a class="xref" href="Hexalith.Domain.Events.InventoryItemEvent.html">InventoryItemEvent</a></div>
-    <div class="level4"><span class="xref">InventoryItemBarcodeAdded</span></div>
+    <div class="level3"><a class="xref" href="Hexalith.Domain.Events.PartitionedEvent.html">PartitionedEvent</a></div>
+    <div class="level4"><a class="xref" href="Hexalith.Domain.Events.CompanyEvent.html">CompanyEvent</a></div>
+    <div class="level5"><a class="xref" href="Hexalith.Domain.Events.CompanyEntityEvent.html">CompanyEntityEvent</a></div>
+    <div class="level6"><a class="xref" href="Hexalith.Domain.Events.InventoryItemEvent.html">InventoryItemEvent</a></div>
+    <div class="level7"><span class="xref">InventoryItemBarcodeAdded</span></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
@@ -95,16 +98,19 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.InventoryItemEvent.h
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Hexalith.Domain.Events.InventoryItemEvent.html#Hexalith_Domain_Events_InventoryItemEvent_CompanyId">InventoryItemEvent.CompanyId</a>
-    </div>
-    <div>
-      <a class="xref" href="Hexalith.Domain.Events.InventoryItemEvent.html#Hexalith_Domain_Events_InventoryItemEvent_Id">InventoryItemEvent.Id</a>
-    </div>
-    <div>
       <a class="xref" href="Hexalith.Domain.Events.InventoryItemEvent.html#Hexalith_Domain_Events_InventoryItemEvent_DefaultAggregateId">InventoryItemEvent.DefaultAggregateId()</a>
     </div>
     <div>
       <a class="xref" href="Hexalith.Domain.Events.InventoryItemEvent.html#Hexalith_Domain_Events_InventoryItemEvent_DefaultAggregateName">InventoryItemEvent.DefaultAggregateName()</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Domain.Events.CompanyEntityEvent.html#Hexalith_Domain_Events_CompanyEntityEvent_Id">CompanyEntityEvent.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Domain.Events.CompanyEvent.html#Hexalith_Domain_Events_CompanyEvent_CompanyId">CompanyEvent.CompanyId</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Domain.Events.PartitionedEvent.html#Hexalith_Domain_Events_PartitionedEvent_PartitionId">PartitionedEvent.PartitionId</a>
     </div>
     <div>
       <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_Separator">BaseMessage.Separator</a>
@@ -169,7 +175,7 @@ public class InventoryItemBarcodeAdded : InventoryItemEvent, IPolymorphicSeriali
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_InventoryItemBarcodeAdded__ctor.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.InventoryItemBarcodeAdded.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/Events/InventoryItemBarcodeAdded.cs/#L52">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/Events/InventoryItemBarcodeAdded.cs/#L54">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_InventoryItemBarcodeAdded__ctor_" data-uid="Hexalith.Domain.Events.InventoryItemBarcodeAdded.#ctor*"></a>
   <h4 id="Hexalith_Domain_Events_InventoryItemBarcodeAdded__ctor" data-uid="Hexalith.Domain.Events.InventoryItemBarcodeAdded.#ctor">InventoryItemBarcodeAdded()</h4>
@@ -182,19 +188,19 @@ public class InventoryItemBarcodeAdded : InventoryItemEvent, IPolymorphicSeriali
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_InventoryItemBarcodeAdded__ctor_System_String_System_String_Hexalith_Domain_ValueObjets_ItemBarcode_DateTimeOffset_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.InventoryItemBarcodeAdded.%23ctor(System.String%2CSystem.String%2CHexalith.Domain.ValueObjets.ItemBarcode%2CDateTimeOffset)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_InventoryItemBarcodeAdded__ctor_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_ItemBarcode_DateTimeOffset_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.InventoryItemBarcodeAdded.%23ctor(System.String%2CSystem.String%2CSystem.String%2CHexalith.Domain.ValueObjets.ItemBarcode%2CDateTimeOffset)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/Events/InventoryItemBarcodeAdded.cs/#L38">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/Events/InventoryItemBarcodeAdded.cs/#L39">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_InventoryItemBarcodeAdded__ctor_" data-uid="Hexalith.Domain.Events.InventoryItemBarcodeAdded.#ctor*"></a>
-  <h4 id="Hexalith_Domain_Events_InventoryItemBarcodeAdded__ctor_System_String_System_String_Hexalith_Domain_ValueObjets_ItemBarcode_DateTimeOffset_" data-uid="Hexalith.Domain.Events.InventoryItemBarcodeAdded.#ctor(System.String,System.String,Hexalith.Domain.ValueObjets.ItemBarcode,DateTimeOffset)">InventoryItemBarcodeAdded(String, String, ItemBarcode, DateTimeOffset)</h4>
+  <h4 id="Hexalith_Domain_Events_InventoryItemBarcodeAdded__ctor_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_ItemBarcode_DateTimeOffset_" data-uid="Hexalith.Domain.Events.InventoryItemBarcodeAdded.#ctor(System.String,System.String,System.String,Hexalith.Domain.ValueObjets.ItemBarcode,DateTimeOffset)">InventoryItemBarcodeAdded(String, String, String, ItemBarcode, DateTimeOffset)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Domain.Events.InventoryItemBarcodeAdded.html">InventoryItemBarcodeAdded</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public InventoryItemBarcodeAdded(string companyId, string id, ItemBarcode barcode, DateTimeOffset date)</code></pre>
+    <pre><code class="lang-csharp hljs">public InventoryItemBarcodeAdded(string partitionId, string companyId, string id, ItemBarcode barcode, DateTimeOffset date)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -206,6 +212,12 @@ public class InventoryItemBarcodeAdded : InventoryItemEvent, IPolymorphicSeriali
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">partitionId</span></td>
+        <td><p>The partition identifier.</p>
+</td>
+      </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">companyId</span></td>
@@ -239,7 +251,7 @@ public class InventoryItemBarcodeAdded : InventoryItemEvent, IPolymorphicSeriali
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_InventoryItemBarcodeAdded_Barcode.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.InventoryItemBarcodeAdded.Barcode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/Events/InventoryItemBarcodeAdded.cs/#L63">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/Events/InventoryItemBarcodeAdded.cs/#L65">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_InventoryItemBarcodeAdded_Barcode_" data-uid="Hexalith.Domain.Events.InventoryItemBarcodeAdded.Barcode*"></a>
   <h4 id="Hexalith_Domain_Events_InventoryItemBarcodeAdded_Barcode" data-uid="Hexalith.Domain.Events.InventoryItemBarcodeAdded.Barcode">Barcode</h4>
@@ -272,7 +284,7 @@ public ItemBarcode Barcode { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_InventoryItemBarcodeAdded_Date.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.InventoryItemBarcodeAdded.Date%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/Events/InventoryItemBarcodeAdded.cs/#L70">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/Events/InventoryItemBarcodeAdded.cs/#L72">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_InventoryItemBarcodeAdded_Date_" data-uid="Hexalith.Domain.Events.InventoryItemBarcodeAdded.Date*"></a>
   <h4 id="Hexalith_Domain_Events_InventoryItemBarcodeAdded_Date" data-uid="Hexalith.Domain.Events.InventoryItemBarcodeAdded.Date">Date</h4>

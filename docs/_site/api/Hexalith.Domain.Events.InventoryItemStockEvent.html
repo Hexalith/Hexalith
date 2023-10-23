@@ -82,9 +82,11 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">Base
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html">BaseMessage</a></div>
     <div class="level2"><a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">BaseEvent</a></div>
-    <div class="level3"><span class="xref">InventoryItemStockEvent</span></div>
-      <div class="level4"><a class="xref" href="Hexalith.Domain.Events.InventoryItemStockDecreased.html">InventoryItemStockDecreased</a></div>
-      <div class="level4"><a class="xref" href="Hexalith.Domain.Events.InventoryItemStockIncreased.html">InventoryItemStockIncreased</a></div>
+    <div class="level3"><a class="xref" href="Hexalith.Domain.Events.PartitionedEvent.html">PartitionedEvent</a></div>
+    <div class="level4"><a class="xref" href="Hexalith.Domain.Events.CompanyEvent.html">CompanyEvent</a></div>
+    <div class="level5"><span class="xref">InventoryItemStockEvent</span></div>
+      <div class="level6"><a class="xref" href="Hexalith.Domain.Events.InventoryItemStockDecreased.html">InventoryItemStockDecreased</a></div>
+      <div class="level6"><a class="xref" href="Hexalith.Domain.Events.InventoryItemStockIncreased.html">InventoryItemStockIncreased</a></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
@@ -95,6 +97,12 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">Base
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Hexalith.Domain.Events.CompanyEvent.html#Hexalith_Domain_Events_CompanyEvent_CompanyId">CompanyEvent.CompanyId</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Domain.Events.PartitionedEvent.html#Hexalith_Domain_Events_PartitionedEvent_PartitionId">PartitionedEvent.PartitionId</a>
+    </div>
     <div>
       <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_Separator">BaseMessage.Separator</a>
     </div>
@@ -149,7 +157,7 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">Base
   <h5 id="Hexalith_Domain_Events_InventoryItemStockEvent_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataContract]
-public abstract class InventoryItemStockEvent : BaseEvent, IPolymorphicSerializable, IMappableType, IEvent, IMessage</code></pre>
+public abstract class InventoryItemStockEvent : CompanyEvent, IPolymorphicSerializable, IMappableType, IEvent, IMessage</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -158,7 +166,7 @@ public abstract class InventoryItemStockEvent : BaseEvent, IPolymorphicSerializa
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_InventoryItemStockEvent__ctor.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.InventoryItemStockEvent.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/Events/InventoryItemStockEvent.cs/#L49">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/Events/InventoryItemStockEvent.cs/#L50">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_InventoryItemStockEvent__ctor_" data-uid="Hexalith.Domain.Events.InventoryItemStockEvent.#ctor*"></a>
   <h4 id="Hexalith_Domain_Events_InventoryItemStockEvent__ctor" data-uid="Hexalith.Domain.Events.InventoryItemStockEvent.#ctor">InventoryItemStockEvent()</h4>
@@ -171,20 +179,20 @@ public abstract class InventoryItemStockEvent : BaseEvent, IPolymorphicSerializa
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_InventoryItemStockEvent__ctor_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.InventoryItemStockEvent.%23ctor(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_InventoryItemStockEvent__ctor_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.InventoryItemStockEvent.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/Events/InventoryItemStockEvent.cs/#L38">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/Events/InventoryItemStockEvent.cs/#L39">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_InventoryItemStockEvent__ctor_" data-uid="Hexalith.Domain.Events.InventoryItemStockEvent.#ctor*"></a>
-  <h4 id="Hexalith_Domain_Events_InventoryItemStockEvent__ctor_System_String_System_String_System_String_" data-uid="Hexalith.Domain.Events.InventoryItemStockEvent.#ctor(System.String,System.String,System.String)">InventoryItemStockEvent(String, String, String)</h4>
+  <h4 id="Hexalith_Domain_Events_InventoryItemStockEvent__ctor_System_String_System_String_System_String_System_String_" data-uid="Hexalith.Domain.Events.InventoryItemStockEvent.#ctor(System.String,System.String,System.String,System.String)">InventoryItemStockEvent(String, String, String, String)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Domain.Events.InventoryItemStockEvent.html">InventoryItemStockEvent</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonConstructor]
-protected InventoryItemStockEvent(string companyId, string locationId, string inventoryItemId)</code></pre>
+protected InventoryItemStockEvent(string partitionId, string companyId, string locationId, string inventoryItemId)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -196,6 +204,12 @@ protected InventoryItemStockEvent(string companyId, string locationId, string in
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">partitionId</span></td>
+        <td><p>The partition identifier.</p>
+</td>
+      </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">companyId</span></td>
@@ -220,44 +234,10 @@ protected InventoryItemStockEvent(string companyId, string locationId, string in
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_InventoryItemStockEvent_CompanyId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.InventoryItemStockEvent.CompanyId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/Events/InventoryItemStockEvent.cs/#L56">View Source</a>
-  </span>
-  <a id="Hexalith_Domain_Events_InventoryItemStockEvent_CompanyId_" data-uid="Hexalith.Domain.Events.InventoryItemStockEvent.CompanyId*"></a>
-  <h4 id="Hexalith_Domain_Events_InventoryItemStockEvent_CompanyId" data-uid="Hexalith.Domain.Events.InventoryItemStockEvent.CompanyId">CompanyId</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the company identifier.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember(Order = 1)]
-[JsonPropertyOrder(1)]
-public string CompanyId { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><p>The company identifier.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_InventoryItemStockEvent_InventoryItemId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.InventoryItemStockEvent.InventoryItemId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/Events/InventoryItemStockEvent.cs/#L64">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/Events/InventoryItemStockEvent.cs/#L57">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_InventoryItemStockEvent_InventoryItemId_" data-uid="Hexalith.Domain.Events.InventoryItemStockEvent.InventoryItemId*"></a>
   <h4 id="Hexalith_Domain_Events_InventoryItemStockEvent_InventoryItemId" data-uid="Hexalith.Domain.Events.InventoryItemStockEvent.InventoryItemId">InventoryItemId</h4>
@@ -266,8 +246,8 @@ public string CompanyId { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember(Order = 3)]
-[JsonPropertyOrder(3)]
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 4)]
+[JsonPropertyOrder(4)]
 public string InventoryItemId { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -291,7 +271,7 @@ public string InventoryItemId { get; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_InventoryItemStockEvent_LocationId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.InventoryItemStockEvent.LocationId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/Events/InventoryItemStockEvent.cs/#L72">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/Events/InventoryItemStockEvent.cs/#L65">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_InventoryItemStockEvent_LocationId_" data-uid="Hexalith.Domain.Events.InventoryItemStockEvent.LocationId*"></a>
   <h4 id="Hexalith_Domain_Events_InventoryItemStockEvent_LocationId" data-uid="Hexalith.Domain.Events.InventoryItemStockEvent.LocationId">LocationId</h4>
@@ -300,8 +280,8 @@ public string InventoryItemId { get; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember(Order = 2)]
-[JsonPropertyOrder(2)]
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 3)]
+[JsonPropertyOrder(3)]
 public string LocationId { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -327,12 +307,11 @@ public string LocationId { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_InventoryItemStockEvent_DefaultAggregateId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.InventoryItemStockEvent.DefaultAggregateId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/Events/InventoryItemStockEvent.cs/#L77">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/Events/InventoryItemStockEvent.cs/#L70">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_InventoryItemStockEvent_DefaultAggregateId_" data-uid="Hexalith.Domain.Events.InventoryItemStockEvent.DefaultAggregateId*"></a>
   <h4 id="Hexalith_Domain_Events_InventoryItemStockEvent_DefaultAggregateId" data-uid="Hexalith.Domain.Events.InventoryItemStockEvent.DefaultAggregateId">DefaultAggregateId()</h4>
-  <div class="markdown level1 summary"><p>Get the aggregate identifier.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -349,8 +328,7 @@ public string LocationId { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><p>The identifier.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -361,12 +339,11 @@ public string LocationId { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_InventoryItemStockEvent_DefaultAggregateName.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.InventoryItemStockEvent.DefaultAggregateName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/Events/InventoryItemStockEvent.cs/#L80">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/Events/InventoryItemStockEvent.cs/#L73">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_InventoryItemStockEvent_DefaultAggregateName_" data-uid="Hexalith.Domain.Events.InventoryItemStockEvent.DefaultAggregateName*"></a>
   <h4 id="Hexalith_Domain_Events_InventoryItemStockEvent_DefaultAggregateName" data-uid="Hexalith.Domain.Events.InventoryItemStockEvent.DefaultAggregateName">DefaultAggregateName()</h4>
-  <div class="markdown level1 summary"><p>Get the aggregate name.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -383,8 +360,7 @@ public string LocationId { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><p>The name.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>

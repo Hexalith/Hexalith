@@ -82,11 +82,14 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">Base
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html">BaseMessage</a></div>
     <div class="level2"><a class="xref" href="Hexalith.Application.Commands.BaseCommand.html">BaseCommand</a></div>
-    <div class="level3"><span class="xref">CustomerCommand</span></div>
-      <div class="level4"><a class="xref" href="Hexalith.Application.Parties.Commands.ChangeCustomerInformation.html">ChangeCustomerInformation</a></div>
-      <div class="level4"><a class="xref" href="Hexalith.Application.Parties.Commands.RegisterCustomer.html">RegisterCustomer</a></div>
-      <div class="level4"><a class="xref" href="Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDeliveryToDirect.html">SetCustomerIntercompanyDeliveryToDirect</a></div>
-      <div class="level4"><a class="xref" href="Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDeliveryToIndirect.html">SetCustomerIntercompanyDeliveryToIndirect</a></div>
+    <div class="level3"><a class="xref" href="Hexalith.Application.Organizations.Commands.PartitionedCommand.html">PartitionedCommand</a></div>
+    <div class="level4"><a class="xref" href="Hexalith.Application.Organizations.Commands.CompanyCommand.html">CompanyCommand</a></div>
+    <div class="level5"><a class="xref" href="Hexalith.Application.Organizations.Commands.CompanyEntityCommand.html">CompanyEntityCommand</a></div>
+    <div class="level6"><span class="xref">CustomerCommand</span></div>
+      <div class="level7"><a class="xref" href="Hexalith.Application.Parties.Commands.ChangeCustomerInformation.html">ChangeCustomerInformation</a></div>
+      <div class="level7"><a class="xref" href="Hexalith.Application.Parties.Commands.RegisterCustomer.html">RegisterCustomer</a></div>
+      <div class="level7"><a class="xref" href="Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDirectDelivery.html">SetCustomerIntercompanyDirectDelivery</a></div>
+      <div class="level7"><a class="xref" href="Hexalith.Application.Parties.Commands.UnsetCustomerIntercompanyDirectDelivery.html">UnsetCustomerIntercompanyDirectDelivery</a></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
@@ -97,6 +100,15 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">Base
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Hexalith.Application.Organizations.Commands.CompanyEntityCommand.html#Hexalith_Application_Organizations_Commands_CompanyEntityCommand_Id">CompanyEntityCommand.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Application.Organizations.Commands.CompanyCommand.html#Hexalith_Application_Organizations_Commands_CompanyCommand_CompanyId">CompanyCommand.CompanyId</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Application.Organizations.Commands.PartitionedCommand.html#Hexalith_Application_Organizations_Commands_PartitionedCommand_PartitionId">PartitionedCommand.PartitionId</a>
+    </div>
     <div>
       <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_Separator">BaseMessage.Separator</a>
     </div>
@@ -151,7 +163,7 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">Base
   <h5 id="Hexalith_Application_Parties_Commands_CustomerCommand_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataContract]
-public abstract class CustomerCommand : BaseCommand, IPolymorphicSerializable, IMappableType, ICommand, IMessage</code></pre>
+public abstract class CustomerCommand : CompanyEntityCommand, IPolymorphicSerializable, IMappableType, ICommand, IMessage</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -173,20 +185,20 @@ public abstract class CustomerCommand : BaseCommand, IPolymorphicSerializable, I
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Parties_Commands_CustomerCommand__ctor_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Parties.Commands.CustomerCommand.%23ctor(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Parties_Commands_CustomerCommand__ctor_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Parties.Commands.CustomerCommand.%23ctor(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/Commands/CustomerCommand.cs/#L39">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/Commands/CustomerCommand.cs/#L40">View Source</a>
   </span>
   <a id="Hexalith_Application_Parties_Commands_CustomerCommand__ctor_" data-uid="Hexalith.Application.Parties.Commands.CustomerCommand.#ctor*"></a>
-  <h4 id="Hexalith_Application_Parties_Commands_CustomerCommand__ctor_System_String_System_String_" data-uid="Hexalith.Application.Parties.Commands.CustomerCommand.#ctor(System.String,System.String)">CustomerCommand(String, String)</h4>
+  <h4 id="Hexalith_Application_Parties_Commands_CustomerCommand__ctor_System_String_System_String_System_String_" data-uid="Hexalith.Application.Parties.Commands.CustomerCommand.#ctor(System.String,System.String,System.String)">CustomerCommand(String, String, String)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Application.Parties.Commands.CustomerCommand.html">CustomerCommand</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonConstructor]
-protected CustomerCommand(string companyId, string id)</code></pre>
+protected CustomerCommand(string partitionId, string companyId, string id)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -198,6 +210,12 @@ protected CustomerCommand(string companyId, string id)</code></pre>
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">partitionId</span></td>
+        <td><p>The partition identifier.</p>
+</td>
+      </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">companyId</span></td>
@@ -212,76 +230,6 @@ protected CustomerCommand(string companyId, string id)</code></pre>
       </tr>
     </tbody>
   </table>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Parties_Commands_CustomerCommand_CompanyId.md&amp;value=---%0Auid%3A%20Hexalith.Application.Parties.Commands.CustomerCommand.CompanyId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/Commands/CustomerCommand.cs/#L56">View Source</a>
-  </span>
-  <a id="Hexalith_Application_Parties_Commands_CustomerCommand_CompanyId_" data-uid="Hexalith.Application.Parties.Commands.CustomerCommand.CompanyId*"></a>
-  <h4 id="Hexalith_Application_Parties_Commands_CustomerCommand_CompanyId" data-uid="Hexalith.Application.Parties.Commands.CustomerCommand.CompanyId">CompanyId</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the identifier.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember(Order = 1)]
-[JsonPropertyOrder(1)]
-public string CompanyId { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><p>The identifier.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Parties_Commands_CustomerCommand_Id.md&amp;value=---%0Auid%3A%20Hexalith.Application.Parties.Commands.CustomerCommand.Id%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/Commands/CustomerCommand.cs/#L64">View Source</a>
-  </span>
-  <a id="Hexalith_Application_Parties_Commands_CustomerCommand_Id_" data-uid="Hexalith.Application.Parties.Commands.CustomerCommand.Id*"></a>
-  <h4 id="Hexalith_Application_Parties_Commands_CustomerCommand_Id" data-uid="Hexalith.Application.Parties.Commands.CustomerCommand.Id">Id</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the identifier.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember(Order = 1)]
-[JsonPropertyOrder(1)]
-public string Id { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><p>The identifier.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
@@ -289,12 +237,11 @@ public string Id { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Parties_Commands_CustomerCommand_DefaultAggregateId.md&amp;value=---%0Auid%3A%20Hexalith.Application.Parties.Commands.CustomerCommand.DefaultAggregateId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/Commands/CustomerCommand.cs/#L69">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/Commands/CustomerCommand.cs/#L55">View Source</a>
   </span>
   <a id="Hexalith_Application_Parties_Commands_CustomerCommand_DefaultAggregateId_" data-uid="Hexalith.Application.Parties.Commands.CustomerCommand.DefaultAggregateId*"></a>
   <h4 id="Hexalith_Application_Parties_Commands_CustomerCommand_DefaultAggregateId" data-uid="Hexalith.Application.Parties.Commands.CustomerCommand.DefaultAggregateId">DefaultAggregateId()</h4>
-  <div class="markdown level1 summary"><p>Get the aggregate identifier.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -311,8 +258,7 @@ public string Id { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><p>The identifier.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -323,12 +269,11 @@ public string Id { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Parties_Commands_CustomerCommand_DefaultAggregateName.md&amp;value=---%0Auid%3A%20Hexalith.Application.Parties.Commands.CustomerCommand.DefaultAggregateName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/Commands/CustomerCommand.cs/#L72">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/Commands/CustomerCommand.cs/#L58">View Source</a>
   </span>
   <a id="Hexalith_Application_Parties_Commands_CustomerCommand_DefaultAggregateName_" data-uid="Hexalith.Application.Parties.Commands.CustomerCommand.DefaultAggregateName*"></a>
   <h4 id="Hexalith_Application_Parties_Commands_CustomerCommand_DefaultAggregateName" data-uid="Hexalith.Application.Parties.Commands.CustomerCommand.DefaultAggregateName">DefaultAggregateName()</h4>
-  <div class="markdown level1 summary"><p>Get the aggregate name.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -345,8 +290,7 @@ public string Id { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><p>The name.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>

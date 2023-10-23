@@ -82,8 +82,11 @@ Implements the <a class="xref" href="Hexalith.Application.Inventories.Commands.I
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html">BaseMessage</a></div>
     <div class="level2"><a class="xref" href="Hexalith.Application.Commands.BaseCommand.html">BaseCommand</a></div>
-    <div class="level3"><a class="xref" href="Hexalith.Application.Inventories.Commands.InventoryItemCommand.html">InventoryItemCommand</a></div>
-    <div class="level4"><span class="xref">ChangeInventoryItemInformation</span></div>
+    <div class="level3"><a class="xref" href="Hexalith.Application.Organizations.Commands.PartitionedCommand.html">PartitionedCommand</a></div>
+    <div class="level4"><a class="xref" href="Hexalith.Application.Organizations.Commands.CompanyCommand.html">CompanyCommand</a></div>
+    <div class="level5"><a class="xref" href="Hexalith.Application.Organizations.Commands.CompanyEntityCommand.html">CompanyEntityCommand</a></div>
+    <div class="level6"><a class="xref" href="Hexalith.Application.Inventories.Commands.InventoryItemCommand.html">InventoryItemCommand</a></div>
+    <div class="level7"><span class="xref">ChangeInventoryItemInformation</span></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
@@ -95,16 +98,19 @@ Implements the <a class="xref" href="Hexalith.Application.Inventories.Commands.I
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Hexalith.Application.Inventories.Commands.InventoryItemCommand.html#Hexalith_Application_Inventories_Commands_InventoryItemCommand_CompanyId">InventoryItemCommand.CompanyId</a>
-    </div>
-    <div>
-      <a class="xref" href="Hexalith.Application.Inventories.Commands.InventoryItemCommand.html#Hexalith_Application_Inventories_Commands_InventoryItemCommand_Id">InventoryItemCommand.Id</a>
-    </div>
-    <div>
       <a class="xref" href="Hexalith.Application.Inventories.Commands.InventoryItemCommand.html#Hexalith_Application_Inventories_Commands_InventoryItemCommand_DefaultAggregateId">InventoryItemCommand.DefaultAggregateId()</a>
     </div>
     <div>
       <a class="xref" href="Hexalith.Application.Inventories.Commands.InventoryItemCommand.html#Hexalith_Application_Inventories_Commands_InventoryItemCommand_DefaultAggregateName">InventoryItemCommand.DefaultAggregateName()</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Application.Organizations.Commands.CompanyEntityCommand.html#Hexalith_Application_Organizations_Commands_CompanyEntityCommand_Id">CompanyEntityCommand.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Application.Organizations.Commands.CompanyCommand.html#Hexalith_Application_Organizations_Commands_CompanyCommand_CompanyId">CompanyCommand.CompanyId</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Application.Organizations.Commands.PartitionedCommand.html#Hexalith_Application_Organizations_Commands_PartitionedCommand_PartitionId">PartitionedCommand.PartitionId</a>
     </div>
     <div>
       <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_Separator">BaseMessage.Separator</a>
@@ -169,7 +175,7 @@ public class ChangeInventoryItemInformation : InventoryItemCommand, IPolymorphic
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Inventories_Commands_ChangeInventoryItemInformation__ctor.md&amp;value=---%0Auid%3A%20Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/Commands/ChangeInventoryItemInformation.cs/#L50">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/Commands/ChangeInventoryItemInformation.cs/#L52">View Source</a>
   </span>
   <a id="Hexalith_Application_Inventories_Commands_ChangeInventoryItemInformation__ctor_" data-uid="Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.#ctor*"></a>
   <h4 id="Hexalith_Application_Inventories_Commands_ChangeInventoryItemInformation__ctor" data-uid="Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.#ctor">ChangeInventoryItemInformation()</h4>
@@ -182,19 +188,19 @@ public class ChangeInventoryItemInformation : InventoryItemCommand, IPolymorphic
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Inventories_Commands_ChangeInventoryItemInformation__ctor_System_String_System_String_System_String_DateTimeOffset_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.%23ctor(System.String%2CSystem.String%2CSystem.String%2CDateTimeOffset)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Inventories_Commands_ChangeInventoryItemInformation__ctor_System_String_System_String_System_String_System_String_DateTimeOffset_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CDateTimeOffset)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/Commands/ChangeInventoryItemInformation.cs/#L36">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/Commands/ChangeInventoryItemInformation.cs/#L37">View Source</a>
   </span>
   <a id="Hexalith_Application_Inventories_Commands_ChangeInventoryItemInformation__ctor_" data-uid="Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.#ctor*"></a>
-  <h4 id="Hexalith_Application_Inventories_Commands_ChangeInventoryItemInformation__ctor_System_String_System_String_System_String_DateTimeOffset_" data-uid="Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.#ctor(System.String,System.String,System.String,DateTimeOffset)">ChangeInventoryItemInformation(String, String, String, DateTimeOffset)</h4>
+  <h4 id="Hexalith_Application_Inventories_Commands_ChangeInventoryItemInformation__ctor_System_String_System_String_System_String_System_String_DateTimeOffset_" data-uid="Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.#ctor(System.String,System.String,System.String,System.String,DateTimeOffset)">ChangeInventoryItemInformation(String, String, String, String, DateTimeOffset)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.html">ChangeInventoryItemInformation</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ChangeInventoryItemInformation(string companyId, string id, string name, DateTimeOffset date)</code></pre>
+    <pre><code class="lang-csharp hljs">public ChangeInventoryItemInformation(string partitionId, string companyId, string id, string name, DateTimeOffset date)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -206,6 +212,12 @@ public class ChangeInventoryItemInformation : InventoryItemCommand, IPolymorphic
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">partitionId</span></td>
+        <td><p>The partition identifier.</p>
+</td>
+      </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">companyId</span></td>
@@ -239,7 +251,7 @@ public class ChangeInventoryItemInformation : InventoryItemCommand, IPolymorphic
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Inventories_Commands_ChangeInventoryItemInformation_Date.md&amp;value=---%0Auid%3A%20Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.Date%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/Commands/ChangeInventoryItemInformation.cs/#L61">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/Commands/ChangeInventoryItemInformation.cs/#L63">View Source</a>
   </span>
   <a id="Hexalith_Application_Inventories_Commands_ChangeInventoryItemInformation_Date_" data-uid="Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.Date*"></a>
   <h4 id="Hexalith_Application_Inventories_Commands_ChangeInventoryItemInformation_Date" data-uid="Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.Date">Date</h4>
@@ -272,7 +284,7 @@ public DateTimeOffset Date { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Inventories_Commands_ChangeInventoryItemInformation_Name.md&amp;value=---%0Auid%3A%20Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/Commands/ChangeInventoryItemInformation.cs/#L68">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/Commands/ChangeInventoryItemInformation.cs/#L70">View Source</a>
   </span>
   <a id="Hexalith_Application_Inventories_Commands_ChangeInventoryItemInformation_Name_" data-uid="Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.Name*"></a>
   <h4 id="Hexalith_Application_Inventories_Commands_ChangeInventoryItemInformation_Name" data-uid="Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.Name">Name</h4>

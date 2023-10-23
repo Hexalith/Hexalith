@@ -82,8 +82,11 @@ Implements the <a class="xref" href="Hexalith.Application.Parties.Commands.Custo
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html">BaseMessage</a></div>
     <div class="level2"><a class="xref" href="Hexalith.Application.Commands.BaseCommand.html">BaseCommand</a></div>
-    <div class="level3"><a class="xref" href="Hexalith.Application.Parties.Commands.CustomerCommand.html">CustomerCommand</a></div>
-    <div class="level4"><span class="xref">RegisterCustomer</span></div>
+    <div class="level3"><a class="xref" href="Hexalith.Application.Organizations.Commands.PartitionedCommand.html">PartitionedCommand</a></div>
+    <div class="level4"><a class="xref" href="Hexalith.Application.Organizations.Commands.CompanyCommand.html">CompanyCommand</a></div>
+    <div class="level5"><a class="xref" href="Hexalith.Application.Organizations.Commands.CompanyEntityCommand.html">CompanyEntityCommand</a></div>
+    <div class="level6"><a class="xref" href="Hexalith.Application.Parties.Commands.CustomerCommand.html">CustomerCommand</a></div>
+    <div class="level7"><span class="xref">RegisterCustomer</span></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
@@ -95,16 +98,19 @@ Implements the <a class="xref" href="Hexalith.Application.Parties.Commands.Custo
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Hexalith.Application.Parties.Commands.CustomerCommand.html#Hexalith_Application_Parties_Commands_CustomerCommand_CompanyId">CustomerCommand.CompanyId</a>
-    </div>
-    <div>
-      <a class="xref" href="Hexalith.Application.Parties.Commands.CustomerCommand.html#Hexalith_Application_Parties_Commands_CustomerCommand_Id">CustomerCommand.Id</a>
-    </div>
-    <div>
       <a class="xref" href="Hexalith.Application.Parties.Commands.CustomerCommand.html#Hexalith_Application_Parties_Commands_CustomerCommand_DefaultAggregateId">CustomerCommand.DefaultAggregateId()</a>
     </div>
     <div>
       <a class="xref" href="Hexalith.Application.Parties.Commands.CustomerCommand.html#Hexalith_Application_Parties_Commands_CustomerCommand_DefaultAggregateName">CustomerCommand.DefaultAggregateName()</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Application.Organizations.Commands.CompanyEntityCommand.html#Hexalith_Application_Organizations_Commands_CompanyEntityCommand_Id">CompanyEntityCommand.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Application.Organizations.Commands.CompanyCommand.html#Hexalith_Application_Organizations_Commands_CompanyCommand_CompanyId">CompanyCommand.CompanyId</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Application.Organizations.Commands.PartitionedCommand.html#Hexalith_Application_Organizations_Commands_PartitionedCommand_PartitionId">PartitionedCommand.PartitionId</a>
     </div>
     <div>
       <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_Separator">BaseMessage.Separator</a>
@@ -169,7 +175,7 @@ public class RegisterCustomer : CustomerCommand, IPolymorphicSerializable, IMapp
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Parties_Commands_RegisterCustomer__ctor.md&amp;value=---%0Auid%3A%20Hexalith.Application.Parties.Commands.RegisterCustomer.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/Commands/RegisterCustomer.cs/#L61">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/Commands/RegisterCustomer.cs/#L63">View Source</a>
   </span>
   <a id="Hexalith_Application_Parties_Commands_RegisterCustomer__ctor_" data-uid="Hexalith.Application.Parties.Commands.RegisterCustomer.#ctor*"></a>
   <h4 id="Hexalith_Application_Parties_Commands_RegisterCustomer__ctor" data-uid="Hexalith.Application.Parties.Commands.RegisterCustomer.#ctor">RegisterCustomer()</h4>
@@ -182,19 +188,19 @@ public class RegisterCustomer : CustomerCommand, IPolymorphicSerializable, IMapp
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Parties_Commands_RegisterCustomer__ctor_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_Contact_System_String_System_String_DateTimeOffset_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Parties.Commands.RegisterCustomer.%23ctor(System.String%2CSystem.String%2CSystem.String%2CHexalith.Domain.ValueObjets.Contact%2CSystem.String%2CSystem.String%2CDateTimeOffset)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Parties_Commands_RegisterCustomer__ctor_System_String_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_Contact_System_String_System_String_DateTimeOffset_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Parties.Commands.RegisterCustomer.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CHexalith.Domain.ValueObjets.Contact%2CSystem.String%2CSystem.String%2CDateTimeOffset)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/Commands/RegisterCustomer.cs/#L41">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/Commands/RegisterCustomer.cs/#L42">View Source</a>
   </span>
   <a id="Hexalith_Application_Parties_Commands_RegisterCustomer__ctor_" data-uid="Hexalith.Application.Parties.Commands.RegisterCustomer.#ctor*"></a>
-  <h4 id="Hexalith_Application_Parties_Commands_RegisterCustomer__ctor_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_Contact_System_String_System_String_DateTimeOffset_" data-uid="Hexalith.Application.Parties.Commands.RegisterCustomer.#ctor(System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,DateTimeOffset)">RegisterCustomer(String, String, String, Contact, String, String, DateTimeOffset)</h4>
+  <h4 id="Hexalith_Application_Parties_Commands_RegisterCustomer__ctor_System_String_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_Contact_System_String_System_String_DateTimeOffset_" data-uid="Hexalith.Application.Parties.Commands.RegisterCustomer.#ctor(System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,DateTimeOffset)">RegisterCustomer(String, String, String, String, Contact, String, String, DateTimeOffset)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Application.Parties.Commands.RegisterCustomer.html">RegisterCustomer</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public RegisterCustomer(string companyId, string id, string name, Contact contact, string warehouseId, string commissionSalesGroupId, DateTimeOffset date)</code></pre>
+    <pre><code class="lang-csharp hljs">public RegisterCustomer(string partitionId, string companyId, string id, string name, Contact contact, string warehouseId, string commissionSalesGroupId, DateTimeOffset date)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -206,6 +212,12 @@ public class RegisterCustomer : CustomerCommand, IPolymorphicSerializable, IMapp
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">partitionId</span></td>
+        <td><p>The partition identifier.</p>
+</td>
+      </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">companyId</span></td>
@@ -257,7 +269,7 @@ public class RegisterCustomer : CustomerCommand, IPolymorphicSerializable, IMapp
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Parties_Commands_RegisterCustomer_CommissionSalesGroupId.md&amp;value=---%0Auid%3A%20Hexalith.Application.Parties.Commands.RegisterCustomer.CommissionSalesGroupId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/Commands/RegisterCustomer.cs/#L73">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/Commands/RegisterCustomer.cs/#L75">View Source</a>
   </span>
   <a id="Hexalith_Application_Parties_Commands_RegisterCustomer_CommissionSalesGroupId_" data-uid="Hexalith.Application.Parties.Commands.RegisterCustomer.CommissionSalesGroupId*"></a>
   <h4 id="Hexalith_Application_Parties_Commands_RegisterCustomer_CommissionSalesGroupId" data-uid="Hexalith.Application.Parties.Commands.RegisterCustomer.CommissionSalesGroupId">CommissionSalesGroupId</h4>
@@ -290,7 +302,7 @@ public string CommissionSalesGroupId { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Parties_Commands_RegisterCustomer_Contact.md&amp;value=---%0Auid%3A%20Hexalith.Application.Parties.Commands.RegisterCustomer.Contact%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/Commands/RegisterCustomer.cs/#L80">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/Commands/RegisterCustomer.cs/#L82">View Source</a>
   </span>
   <a id="Hexalith_Application_Parties_Commands_RegisterCustomer_Contact_" data-uid="Hexalith.Application.Parties.Commands.RegisterCustomer.Contact*"></a>
   <h4 id="Hexalith_Application_Parties_Commands_RegisterCustomer_Contact" data-uid="Hexalith.Application.Parties.Commands.RegisterCustomer.Contact">Contact</h4>
@@ -323,7 +335,7 @@ public Contact Contact { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Parties_Commands_RegisterCustomer_Date.md&amp;value=---%0Auid%3A%20Hexalith.Application.Parties.Commands.RegisterCustomer.Date%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/Commands/RegisterCustomer.cs/#L87">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/Commands/RegisterCustomer.cs/#L89">View Source</a>
   </span>
   <a id="Hexalith_Application_Parties_Commands_RegisterCustomer_Date_" data-uid="Hexalith.Application.Parties.Commands.RegisterCustomer.Date*"></a>
   <h4 id="Hexalith_Application_Parties_Commands_RegisterCustomer_Date" data-uid="Hexalith.Application.Parties.Commands.RegisterCustomer.Date">Date</h4>
@@ -356,7 +368,7 @@ public DateTimeOffset Date { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Parties_Commands_RegisterCustomer_Name.md&amp;value=---%0Auid%3A%20Hexalith.Application.Parties.Commands.RegisterCustomer.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/Commands/RegisterCustomer.cs/#L94">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/Commands/RegisterCustomer.cs/#L96">View Source</a>
   </span>
   <a id="Hexalith_Application_Parties_Commands_RegisterCustomer_Name_" data-uid="Hexalith.Application.Parties.Commands.RegisterCustomer.Name*"></a>
   <h4 id="Hexalith_Application_Parties_Commands_RegisterCustomer_Name" data-uid="Hexalith.Application.Parties.Commands.RegisterCustomer.Name">Name</h4>
@@ -389,7 +401,7 @@ public string Name { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Parties_Commands_RegisterCustomer_WarehouseId.md&amp;value=---%0Auid%3A%20Hexalith.Application.Parties.Commands.RegisterCustomer.WarehouseId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/Commands/RegisterCustomer.cs/#L101">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/Commands/RegisterCustomer.cs/#L103">View Source</a>
   </span>
   <a id="Hexalith_Application_Parties_Commands_RegisterCustomer_WarehouseId_" data-uid="Hexalith.Application.Parties.Commands.RegisterCustomer.WarehouseId*"></a>
   <h4 id="Hexalith_Application_Parties_Commands_RegisterCustomer_WarehouseId" data-uid="Hexalith.Application.Parties.Commands.RegisterCustomer.WarehouseId">WarehouseId</h4>

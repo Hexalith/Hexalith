@@ -5,8 +5,10 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<UserSecretsId>eb1a7842-89ba-4921-950c-8dcfe3be045e</UserSecretsId>
+		<RootNamespace>Hexalith.DeployACA</RootNamespace>
 	</PropertyGroup>
 	<ItemGroup>
+		<PackageReference Include="Azure.Bicep.Core" Version="0.22.6" />
 		<PackageReference Include="Cocona" Version="2.2.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="$(MicrosoftExtensionsPackagesVersion)" />
 	</ItemGroup>

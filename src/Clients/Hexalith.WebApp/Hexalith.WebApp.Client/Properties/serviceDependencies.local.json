@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "identityapp1": {
+      "connectionInfo": "App registration: ffy-dev-hexalith-webclient, Tenant: FIVEFORTY (fiveforty.fr - Microsoft Entra ID)",
+      "secretStore": null,
+      "resourceId": null,
+      "type": "identityapp.default"
+    }
+  }
+}

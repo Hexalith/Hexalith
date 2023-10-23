@@ -82,9 +82,10 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">Base
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html">BaseMessage</a></div>
     <div class="level2"><a class="xref" href="Hexalith.Application.Commands.BaseCommand.html">BaseCommand</a></div>
-    <div class="level3"><span class="xref">ExternalSystemReferenceCommand</span></div>
-      <div class="level4"><a class="xref" href="Hexalith.Application.ExternalSystems.Commands.AddExternalSystemReference.html">AddExternalSystemReference</a></div>
-      <div class="level4"><a class="xref" href="Hexalith.Application.ExternalSystems.Commands.RemoveExternalSystemReference.html">RemoveExternalSystemReference</a></div>
+    <div class="level3"><a class="xref" href="Hexalith.Application.Organizations.Commands.PartitionedCommand.html">PartitionedCommand</a></div>
+    <div class="level4"><span class="xref">ExternalSystemReferenceCommand</span></div>
+      <div class="level5"><a class="xref" href="Hexalith.Application.ExternalSystems.Commands.AddExternalSystemReference.html">AddExternalSystemReference</a></div>
+      <div class="level5"><a class="xref" href="Hexalith.Application.ExternalSystems.Commands.RemoveExternalSystemReference.html">RemoveExternalSystemReference</a></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
@@ -95,6 +96,9 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">Base
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Hexalith.Application.Organizations.Commands.PartitionedCommand.html#Hexalith_Application_Organizations_Commands_PartitionedCommand_PartitionId">PartitionedCommand.PartitionId</a>
+    </div>
     <div>
       <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_Separator">BaseMessage.Separator</a>
     </div>
@@ -149,7 +153,7 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">Base
   <h5 id="Hexalith_Application_ExternalSystems_Commands_ExternalSystemReferenceCommand_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataContract]
-public abstract class ExternalSystemReferenceCommand : BaseCommand, IPolymorphicSerializable, IMappableType, ICommand, IMessage</code></pre>
+public abstract class ExternalSystemReferenceCommand : PartitionedCommand, IPolymorphicSerializable, IMappableType, ICommand, IMessage</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -158,7 +162,7 @@ public abstract class ExternalSystemReferenceCommand : BaseCommand, IPolymorphic
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_ExternalSystems_Commands_ExternalSystemReferenceCommand__ctor.md&amp;value=---%0Auid%3A%20Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.ExternalSystems/Commands/ExternalSystemReferenceCommand.cs/#L54">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.ExternalSystems/Commands/ExternalSystemReferenceCommand.cs/#L57">View Source</a>
   </span>
   <a id="Hexalith_Application_ExternalSystems_Commands_ExternalSystemReferenceCommand__ctor_" data-uid="Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.#ctor*"></a>
   <h4 id="Hexalith_Application_ExternalSystems_Commands_ExternalSystemReferenceCommand__ctor" data-uid="Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.#ctor">ExternalSystemReferenceCommand()</h4>
@@ -171,20 +175,20 @@ public abstract class ExternalSystemReferenceCommand : BaseCommand, IPolymorphic
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_ExternalSystems_Commands_ExternalSystemReferenceCommand__ctor_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.%23ctor(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_ExternalSystems_Commands_ExternalSystemReferenceCommand__ctor_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.ExternalSystems/Commands/ExternalSystemReferenceCommand.cs/#L40">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.ExternalSystems/Commands/ExternalSystemReferenceCommand.cs/#L41">View Source</a>
   </span>
   <a id="Hexalith_Application_ExternalSystems_Commands_ExternalSystemReferenceCommand__ctor_" data-uid="Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.#ctor*"></a>
-  <h4 id="Hexalith_Application_ExternalSystems_Commands_ExternalSystemReferenceCommand__ctor_System_String_System_String_System_String_" data-uid="Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.#ctor(System.String,System.String,System.String)">ExternalSystemReferenceCommand(String, String, String)</h4>
+  <h4 id="Hexalith_Application_ExternalSystems_Commands_ExternalSystemReferenceCommand__ctor_System_String_System_String_System_String_System_String_" data-uid="Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.#ctor(System.String,System.String,System.String,System.String)">ExternalSystemReferenceCommand(String, String, String, String)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.html">ExternalSystemReferenceCommand</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonConstructor]
-protected ExternalSystemReferenceCommand(string systemId, string referenceAggregateName, string externalId)</code></pre>
+protected ExternalSystemReferenceCommand(string partitionId, string systemId, string referenceAggregateName, string externalId)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -198,14 +202,20 @@ protected ExternalSystemReferenceCommand(string systemId, string referenceAggreg
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">partitionId</span></td>
+        <td><p>The partition identifier.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
         <td><span class="parametername">systemId</span></td>
-        <td><p>The identifier.</p>
+        <td><p>The system identifier.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">referenceAggregateName</span></td>
-        <td><p>Type of the aggregate.</p>
+        <td><p>Name of the reference aggregate.</p>
 </td>
       </tr>
       <tr>
@@ -223,7 +233,7 @@ protected ExternalSystemReferenceCommand(string systemId, string referenceAggreg
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_ExternalSystems_Commands_ExternalSystemReferenceCommand_ExternalId.md&amp;value=---%0Auid%3A%20Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.ExternalId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.ExternalSystems/Commands/ExternalSystemReferenceCommand.cs/#L61">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.ExternalSystems/Commands/ExternalSystemReferenceCommand.cs/#L64">View Source</a>
   </span>
   <a id="Hexalith_Application_ExternalSystems_Commands_ExternalSystemReferenceCommand_ExternalId_" data-uid="Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.ExternalId*"></a>
   <h4 id="Hexalith_Application_ExternalSystems_Commands_ExternalSystemReferenceCommand_ExternalId" data-uid="Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.ExternalId">ExternalId</h4>
@@ -232,8 +242,8 @@ protected ExternalSystemReferenceCommand(string systemId, string referenceAggreg
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember(Order = 3)]
-[JsonPropertyOrder(3)]
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 4)]
+[JsonPropertyOrder(4)]
 public string ExternalId { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -257,7 +267,7 @@ public string ExternalId { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_ExternalSystems_Commands_ExternalSystemReferenceCommand_ReferenceAggregateName.md&amp;value=---%0Auid%3A%20Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.ReferenceAggregateName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.ExternalSystems/Commands/ExternalSystemReferenceCommand.cs/#L69">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.ExternalSystems/Commands/ExternalSystemReferenceCommand.cs/#L72">View Source</a>
   </span>
   <a id="Hexalith_Application_ExternalSystems_Commands_ExternalSystemReferenceCommand_ReferenceAggregateName_" data-uid="Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.ReferenceAggregateName*"></a>
   <h4 id="Hexalith_Application_ExternalSystems_Commands_ExternalSystemReferenceCommand_ReferenceAggregateName" data-uid="Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.ReferenceAggregateName">ReferenceAggregateName</h4>
@@ -266,8 +276,8 @@ public string ExternalId { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember(Order = 2)]
-[JsonPropertyOrder(2)]
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 3)]
+[JsonPropertyOrder(3)]
 public string ReferenceAggregateName { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -291,7 +301,7 @@ public string ReferenceAggregateName { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_ExternalSystems_Commands_ExternalSystemReferenceCommand_SystemId.md&amp;value=---%0Auid%3A%20Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.SystemId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.ExternalSystems/Commands/ExternalSystemReferenceCommand.cs/#L77">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.ExternalSystems/Commands/ExternalSystemReferenceCommand.cs/#L80">View Source</a>
   </span>
   <a id="Hexalith_Application_ExternalSystems_Commands_ExternalSystemReferenceCommand_SystemId_" data-uid="Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.SystemId*"></a>
   <h4 id="Hexalith_Application_ExternalSystems_Commands_ExternalSystemReferenceCommand_SystemId" data-uid="Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.SystemId">SystemId</h4>
@@ -300,8 +310,8 @@ public string ReferenceAggregateName { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember(Order = 1)]
-[JsonPropertyOrder(1)]
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 2)]
+[JsonPropertyOrder(2)]
 public string SystemId { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -327,12 +337,11 @@ public string SystemId { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_ExternalSystems_Commands_ExternalSystemReferenceCommand_DefaultAggregateId.md&amp;value=---%0Auid%3A%20Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.DefaultAggregateId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.ExternalSystems/Commands/ExternalSystemReferenceCommand.cs/#L82">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.ExternalSystems/Commands/ExternalSystemReferenceCommand.cs/#L85">View Source</a>
   </span>
   <a id="Hexalith_Application_ExternalSystems_Commands_ExternalSystemReferenceCommand_DefaultAggregateId_" data-uid="Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.DefaultAggregateId*"></a>
   <h4 id="Hexalith_Application_ExternalSystems_Commands_ExternalSystemReferenceCommand_DefaultAggregateId" data-uid="Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.DefaultAggregateId">DefaultAggregateId()</h4>
-  <div class="markdown level1 summary"><p>Get the aggregate identifier.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -349,8 +358,7 @@ public string SystemId { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><p>The identifier.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -361,12 +369,11 @@ public string SystemId { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_ExternalSystems_Commands_ExternalSystemReferenceCommand_DefaultAggregateName.md&amp;value=---%0Auid%3A%20Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.DefaultAggregateName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.ExternalSystems/Commands/ExternalSystemReferenceCommand.cs/#L85">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.ExternalSystems/Commands/ExternalSystemReferenceCommand.cs/#L88">View Source</a>
   </span>
   <a id="Hexalith_Application_ExternalSystems_Commands_ExternalSystemReferenceCommand_DefaultAggregateName_" data-uid="Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.DefaultAggregateName*"></a>
   <h4 id="Hexalith_Application_ExternalSystems_Commands_ExternalSystemReferenceCommand_DefaultAggregateName" data-uid="Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.DefaultAggregateName">DefaultAggregateName()</h4>
-  <div class="markdown level1 summary"><p>Get the aggregate name.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -383,8 +390,7 @@ public string SystemId { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><p>The name.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>

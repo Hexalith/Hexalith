@@ -14,12 +14,15 @@
 // <summary></summary>
 // ***********************************************************************
 
+namespace Hexalith.DeployACA;
+
 using Azure.ResourceManager.KeyVault.Models;
 
 using Cocona;
 
-using DeployACA.Configuration.Global;
-using DeployACA.Infrastructure.Global;
+using Hexalith.DeployACA.Configuration.Global;
+using Hexalith.DeployACA.Infrastructure.Exceptions;
+using Hexalith.DeployACA.Infrastructure.Global;
 
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -105,6 +108,6 @@ internal class DeploymentCommand
             keyVaultSku,
             location,
             _loggerFactory)
-            .DeployAsync(CancellationToken.None);
+            .DeployAsync(CancellationToken.None).ConfigureAwait(false);
     }
 }
