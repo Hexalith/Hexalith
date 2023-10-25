@@ -46,7 +46,7 @@ public static class ExternalSystemsHelper
             .AddExternalSystemsCommandHandlers()
             .ConfigureSettings<ExternalSystemReferenceSettings>(configuration)
             .ConfigureSettings<AggregateExternalReferenceSettings>(configuration)
-            .AddTransient<IExternalSystemReferenceQueryService, ExternalSystemReferenceQueryService>()
+            .AddTransient<IExternalSystemReferenceQueryService, ExternalSystemReferenceActorService>()
             .AddTransient<IAggregateExternalReferenceQueryService, AggregateExternalReferenceQueryService>();
 
     /// <summary>
