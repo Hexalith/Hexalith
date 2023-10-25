@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 08-30-2023
 // ***********************************************************************
-// <copyright file="ExternalSystemReferenceQueryService.cs" company="Fiveforty SAS Paris France">
+// <copyright file="ExternalSystemReferenceActorService.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -30,7 +30,7 @@ using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors;
 /// Implements the <see cref="IExternalSystemReferenceQueryService" />.
 /// </summary>
 /// <seealso cref="IExternalSystemReferenceQueryService" />
-public class ExternalSystemReferenceQueryService : IExternalSystemReferenceQueryService
+public class ExternalSystemReferenceActorService : IExternalSystemReferenceQueryService
 {
     /// <inheritdoc/>
     public async Task<string?> GetAsync(string aggregateId, CancellationToken cancellationToken)
