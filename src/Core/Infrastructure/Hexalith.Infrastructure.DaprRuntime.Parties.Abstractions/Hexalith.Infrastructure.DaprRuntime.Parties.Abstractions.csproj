@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+	  <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+	  <RootNamespace>Hexalith.Infrastructure.DaprRuntime.Parties</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Dapr.Actors" Version="$(DaprVersion)" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Application\Hexalith.Application.Parties\Hexalith.Application.Parties.csproj" />
+    <ProjectReference Include="..\Hexalith.Infrastructure.DaprRuntime\Hexalith.Infrastructure.DaprRuntime.csproj" />
+  </ItemGroup>
+</Project>

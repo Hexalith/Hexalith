@@ -1,0 +1,16 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: event-bus
+spec:
+  type: pubsub.redis
+  version: v1
+  metadata:
+    - name: redisHost
+      value: localhost:6379
+    - name: redisPassword
+      secretKeyRef:
+        name: "EventBus:Password"
+        key: "EventBus:Password"
+auth:
+  secretStore: secretstore

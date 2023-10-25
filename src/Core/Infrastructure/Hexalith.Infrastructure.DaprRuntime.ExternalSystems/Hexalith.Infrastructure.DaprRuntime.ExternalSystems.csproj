@@ -6,9 +6,6 @@
     <PackageReference Include="Dapr.Actors" Version="$(DaprVersion)" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Application\Hexalith.Application.ExternalSystems\Hexalith.Application.ExternalSystems.csproj" />
-    <ProjectReference Include="..\..\Application\Hexalith.Application\Hexalith.Application.csproj" />
-    <ProjectReference Include="..\Hexalith.Infrastructure.DaprRuntime\Hexalith.Infrastructure.DaprRuntime.csproj" />
-    <ProjectReference Include="..\Hexalith.Infrastructure.Serialization\Hexalith.Infrastructure.Serialization.csproj" />
+    <ProjectReference Include="..\Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Abstractions\Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Abstractions.csproj" />
   </ItemGroup>
 </Project>

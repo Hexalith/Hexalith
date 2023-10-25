@@ -54,6 +54,6 @@ public class AggregateExternalReferenceQueryService : IAggregateExternalReferenc
     {
         return ActorProxy.Create<IAggregateExternalReferenceAggregateActor>(
             new ActorId(aggregateId),
-            nameof(AggregateExternalReferenceAggregateActor));
+            nameof(IAggregateExternalReferenceAggregateActor)[1..]);
     }
 }

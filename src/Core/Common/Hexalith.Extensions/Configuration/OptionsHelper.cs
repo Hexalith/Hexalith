@@ -8,6 +8,7 @@ namespace Hexalith.Extensions.Configuration;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 
 /// <summary>
@@ -30,8 +31,10 @@ public static class OptionsHelper
             .AddOptions<T>()
             .Bind(configuration.GetSection(T.ConfigurationName()))
             .ValidateDataAnnotations();
-        return services.AddSingleton<IValidateOptions<T>>((s) => new FluentValidateOptions<T>(
-            T.ConfigurationName(),
-            s));
+        services.TryAddSingleton<IValidateOptions<T>>((s) =>
+            new FluentValidateOptions<T>(
+                T.ConfigurationName(),
+                s));
+        return services;
     }
 }

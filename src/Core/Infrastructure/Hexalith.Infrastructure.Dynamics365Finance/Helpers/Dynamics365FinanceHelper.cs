@@ -25,6 +25,7 @@ using Hexalith.Infrastructure.Dynamics365Finance.Security;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 /// <summary>
 /// Helper class to configure Dynamics 365 Finance and Operations client.
@@ -39,9 +40,9 @@ public static class Dynamics365FinanceHelper
     /// <returns>IServiceCollection.</returns>
     public static IServiceCollection AddDynamics365FinanceBusinessEvents(this IServiceCollection services, IConfiguration configuration)
     {
-        return services
-            .AddSingleton<IDynamics365FinanceIntegrationEventProcessor, Dynamics365FinanceIntegrationEventProcessor>()
-            .AddSingleton<IValidator<Dynamics365BusinessEventBase>, Dynamics365BusinessEventValidator>();
+        services.TryAddSingleton<IDynamics365FinanceIntegrationEventProcessor, Dynamics365FinanceIntegrationEventProcessor>();
+        services.TryAddSingleton<IValidator<Dynamics365BusinessEventBase>, Dynamics365BusinessEventValidator>();
+        return services;
     }
 
     /// <summary>
@@ -52,10 +53,11 @@ public static class Dynamics365FinanceHelper
     /// <returns>The services collection.</returns>
     public static IServiceCollection AddDynamics365FinanceClient(this IServiceCollection services, IConfiguration configuration)
     {
-        return services
+        _ = services
             .AddHttpClient()
-            .ConfigureSettings<Dynamics365FinanceClientSettings>(configuration)
-            .AddSingleton<IDynamics365FinanceSecurityContext, Dynamics365FinanceSecurityContext>()
-            .AddSingleton(typeof(IDynamics365FinanceClient<>), typeof(Dynamics365FinanceClient<>));
+            .ConfigureSettings<Dynamics365FinanceClientSettings>(configuration);
+        services.TryAddSingleton<IDynamics365FinanceSecurityContext, Dynamics365FinanceSecurityContext>();
+        services.TryAddSingleton(typeof(IDynamics365FinanceClient<>), typeof(Dynamics365FinanceClient<>));
+        return services;
     }
 }

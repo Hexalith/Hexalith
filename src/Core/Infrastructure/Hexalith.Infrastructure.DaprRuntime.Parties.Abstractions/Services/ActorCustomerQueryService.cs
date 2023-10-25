@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 08-30-2023
 // ***********************************************************************
-// <copyright file="CustomerActorService.cs" company="Fiveforty SAS Paris France">
+// <copyright file="ActorCustomerQueryService.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -32,7 +32,7 @@ using Hexalith.Infrastructure.DaprRuntime.Parties.Actors;
 /// Implements the <see cref="ICustomerQueryService" />.
 /// </summary>
 /// <seealso cref="ICustomerQueryService" />
-public class CustomerActorService : ICustomerQueryService
+public class ActorCustomerQueryService : ICustomerQueryService
 {
     /// <inheritdoc/>
     public async Task<CustomerInformationChanged?> CreateInformationChangedEventAsync(string aggregateId, CancellationToken cancellationToken)
@@ -74,6 +74,6 @@ public class CustomerActorService : ICustomerQueryService
     {
         return ActorProxy.Create<ICustomerAggregateActor>(
             new ActorId(aggregateId),
-            nameof(CustomerAggregateActor));
+            nameof(ICustomerAggregateActor)[1..]);
     }
 }

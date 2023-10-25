@@ -18,17 +18,15 @@ namespace Hexalith.Infrastructure.DaprRuntime.Parties.Helpers;
 
 using System.Diagnostics.CodeAnalysis;
 
-using Dapr.Actors.Runtime;
-
 using Hexalith.Application.Parties.Helpers;
 using Hexalith.Application.Parties.Services;
 using Hexalith.Extensions.Configuration;
-using Hexalith.Infrastructure.DaprRuntime.Parties.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Parties.Configurations;
 using Hexalith.Infrastructure.DaprRuntime.Parties.Services;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 /// <summary>
 /// Class PartiesHelper.
@@ -41,22 +39,13 @@ public static class PartiesHelper
     /// <param name="services">The services.</param>
     /// <param name="configuration">The configuration.</param>
     /// <returns>IServiceCollection.</returns>
-    public static IServiceCollection AddDaprParties(this IServiceCollection services, IConfiguration configuration)
-        => services
-            .AddPartiesCommandHandlers()
-            .ConfigureSettings<CustomerSettings>(configuration)
-            .AddTransient<ICustomerQueryService, CustomerActorService>();
-
-    /// <summary>
-    /// Adds the parties.
-    /// </summary>
-    /// <param name="actors">The actors.</param>
-    /// <returns>ActorRegistrationCollection.</returns>
-    /// <exception cref="System.ArgumentNullException">null.</exception>
-    public static ActorRegistrationCollection AddParties([NotNull] this ActorRegistrationCollection actors)
+    public static IServiceCollection AddDaprParties([NotNull] this IServiceCollection services, [NotNull] IConfiguration configuration)
     {
-        ArgumentNullException.ThrowIfNull(actors);
-        actors.RegisterActor<CustomerAggregateActor>();
-        return actors;
+        ArgumentNullException.ThrowIfNull(services);
+        ArgumentNullException.ThrowIfNull(configuration);
+        services.AddPartiesCommandHandlers()
+            .ConfigureSettings<CustomerSettings>(configuration)
+            .TryAddScoped<ICustomerQueryService, ActorCustomerQueryService>();
+        return services;
     }
 }

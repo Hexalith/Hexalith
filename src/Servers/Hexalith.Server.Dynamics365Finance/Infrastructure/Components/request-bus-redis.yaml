@@ -1,18 +1,16 @@
 apiVersion: dapr.io/v1alpha1
 kind: Component
 metadata:
-  name: hexalith-parties
+  name: request-bus
 spec:
-  type: state.redis
+  type: pubsub.redis
   version: v1
   metadata:
     - name: redisHost
       value: localhost:6379
     - name: redisPassword
       secretKeyRef:
-        name: "StateStore:Password"
-        key: "StateStore:Password"
-    - name: actorStateStore
-      value: "true"
+        name: "RequestBus:Password"
+        key: "RequestBus:Password"
 auth:
   secretStore: secretstore

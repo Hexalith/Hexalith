@@ -45,6 +45,6 @@ public class ExternalSystemReferenceActorService : IExternalSystemReferenceQuery
     {
         return ActorProxy.Create<IExternalSystemReferenceAggregateActor>(
             new ActorId(aggregateId),
-            nameof(ExternalSystemReferenceAggregateActor));
+            nameof(IExternalSystemReferenceAggregateActor)[1..]);
     }
 }

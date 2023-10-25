@@ -59,6 +59,6 @@ public class InventoryItemStockActorService : IInventoryItemStockQueryService
     {
         return ActorProxy.Create<IInventoryItemStockAggregateActor>(
             new ActorId(aggregateId),
-            nameof(InventoryItemStockAggregateActor));
+            nameof(IInventoryItemStockAggregateActor)[1..]);
     }
 }

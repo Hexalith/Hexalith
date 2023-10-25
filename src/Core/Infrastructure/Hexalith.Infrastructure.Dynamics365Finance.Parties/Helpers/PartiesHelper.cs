@@ -19,10 +19,13 @@ using FluentValidation;
 
 using Hexalith.Application.Events;
 using Hexalith.Infrastructure.Dynamics365Finance.Client;
+using Hexalith.Infrastructure.Dynamics365Finance.Helpers;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities;
 
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 /// <summary>
 /// Class PartiesHelper.
@@ -30,18 +33,22 @@ using Microsoft.Extensions.DependencyInjection;
 public static class PartiesHelper
 {
     /// <summary>
-    /// Adds the fin ops customers.
+    /// Adds the dynamics365 finance customers.
     /// </summary>
     /// <param name="services">The services.</param>
+    /// <param name="configuration">The configuration.</param>
     /// <returns>IServiceCollection.</returns>
-    public static IServiceCollection AddDynamics365FinanceCustomers(this IServiceCollection services)
+    public static IServiceCollection AddDynamics365FinanceCustomers(this IServiceCollection services, IConfiguration configuration)
     {
-        return services
-            .AddSingleton<IDynamics365FinanceClient<CustomerExternalSystemCode>, Dynamics365FinanceClient<CustomerExternalSystemCode>>()
-            .AddSingleton<IDynamics365FinanceClient<CustomerV3>, Dynamics365FinanceClient<CustomerV3>>()
-            .AddSingleton<IValidator<Dynamics365FinanceCustomerChanged>, Dynamics365FinanceCustomerChangedValidator>()
-            .AddSingleton<IValidator<Dynamics365FinanceCustomerRegistered>, Dynamics365FinanceCustomerRegisteredValidator>()
-            .AddSingleton<IntegrationEventHandler<Dynamics365FinanceCustomerChanged>, Dynamics365FinanceCustomerChangedHandler>()
-            .AddSingleton<IntegrationEventHandler<Dynamics365FinanceCustomerRegistered>, Dynamics365FinanceCustomerRegisteredHandler>();
+        services
+            .AddDynamics365FinanceBusinessEvents(configuration)
+            .AddDynamics365FinanceClient(configuration)
+            .TryAddSingleton<IDynamics365FinanceClient<CustomerExternalSystemCode>, Dynamics365FinanceClient<CustomerExternalSystemCode>>();
+        services.TryAddSingleton<IDynamics365FinanceClient<CustomerV3>, Dynamics365FinanceClient<CustomerV3>>();
+        services.TryAddSingleton<IValidator<Dynamics365FinanceCustomerChanged>, Dynamics365FinanceCustomerChangedValidator>();
+        services.TryAddSingleton<IValidator<Dynamics365FinanceCustomerRegistered>, Dynamics365FinanceCustomerRegisteredValidator>();
+        services.TryAddSingleton<IntegrationEventHandler<Dynamics365FinanceCustomerChanged>, Dynamics365FinanceCustomerChangedHandler>();
+        services.TryAddSingleton<IntegrationEventHandler<Dynamics365FinanceCustomerRegistered>, Dynamics365FinanceCustomerRegisteredHandler>();
+        return services;
     }
 }
