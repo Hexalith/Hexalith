@@ -16,7 +16,12 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.UI;
 
+using MudBlazor.Services;
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container for MudBlazor UI.
+builder.Services.AddMudServices();
 
 // Add services to the container.
 builder

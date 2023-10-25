@@ -1,24 +1,58 @@
 @inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+<MudRTLProvider RightToLeft="false">
+	<MudThemeProvider Theme="_themeManager.Theme" />
+	<MudDialogProvider />
+	<MudSnackbarProvider />
 
-    <main>
-        <div class="top-row px-4 auth">
-            <LoginDisplay />
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
+	<MudLayout>
+		<MudThemeManagerButton OnClick="@((e) => OpenThemeManager(true))" />
+		<MudThemeManager Open="_themeManagerOpen" OpenChanged="OpenThemeManager" Theme="_themeManager" ThemeChanged="UpdateTheme" />
+		<MudMainContent>
+			<MudAppBar Elevation="_themeManager.AppBarElevation">
+				<MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+				<MudSpacer />
+				<MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
+			</MudAppBar>
+			<MudDrawer @bind-Open="_drawerOpen" ClipMode="_themeManager.DrawerClipMode" Elevation="_themeManager.DrawerElevation">
+				<MudDrawerHeader>
+					<MudText Typo="Typo.h5" Class="mt-1">Hexalith</MudText>
+				</MudDrawerHeader>
+				<NavMenu />
+			</MudDrawer>
+			<MudMainContent>
+				@Body
+			</MudMainContent>
+		</MudMainContent>
+	</MudLayout>
+</MudRTLProvider>
 
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
-</div>
+@code {
+	public MainLayout() { }
+	public bool _drawerOpen = true;
 
-<div id="blazor-error-ui">
-    An unhandled error has occurred.
-    <a href="" class="reload">Reload</a>
-    <a class="dismiss">🗙</a>
-</div>
+	void DrawerToggle()
+	{
+		_drawerOpen = !_drawerOpen;
+	}
+
+	ThemeManagerTheme _themeManager = new ThemeManagerTheme();
+	
+	public bool _themeManagerOpen = false;
+
+	void OpenThemeManager(bool value)
+	{
+		_themeManagerOpen = value;
+	}
+
+	void UpdateTheme(ThemeManagerTheme value)
+	{
+		_themeManager = value;
+		StateHasChanged();
+	}
+
+	protected override void OnInitialized()
+	{
+		StateHasChanged();
+	}
+}
