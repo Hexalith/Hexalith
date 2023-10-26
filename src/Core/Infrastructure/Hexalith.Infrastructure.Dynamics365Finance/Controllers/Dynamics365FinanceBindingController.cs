@@ -53,7 +53,7 @@ public abstract class Dynamics365FinanceBindingController : BindingController
     }
 
     /// <inheritdoc/>
-    protected override IEvent DeserializeAndValidate(JsonElement message)
+    protected override (IEvent Event, string MessageId, string CorrelationId) DeserializeAndValidate(JsonElement message)
     {
         try
         {
@@ -61,7 +61,7 @@ public abstract class Dynamics365FinanceBindingController : BindingController
 
             _eventValidator.ValidateAndThrow(businessEvent);
             ValidateAndThrow(businessEvent);
-            return businessEvent;
+            return (businessEvent, businessEvent.EventId ?? string.Empty, businessEvent.EventId ?? string.Empty);
         }
         catch (ValidationException ex)
         {

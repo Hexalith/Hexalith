@@ -57,7 +57,7 @@ public class Dynamics365FinanceCustomerBindingController : Dynamics365FinanceBin
     /// <param name="eventProcessor">The event processor.</param>
     /// <param name="hostEnvironment">The host environment.</param>
     /// <param name="logger">The logger.</param>
-    /// <exception cref="System.ArgumentNullException"></exception>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
     public Dynamics365FinanceCustomerBindingController(
         IValidator<Dynamics365BusinessEventBase> metadataValidator,
         IValidator<Dynamics365FinanceCustomerRegistered> registeredValidator,
@@ -85,14 +85,13 @@ public class Dynamics365FinanceCustomerBindingController : Dynamics365FinanceBin
        [FromBody] JsonElement message) => await HandleEventAsync(message, CancellationToken.None).ConfigureAwait(false);
 
     /// <summary>
-    /// Validates the message and if not successful throws a validation exception <see cref="ValidationException" /> .
+    /// Validates the message and if not successful throws a validation exception <see cref="T:FluentValidation.ValidationException" /> .
     /// </summary>
     /// <param name="message">The message.</param>
-    /// <exception cref="System.ArgumentNullException"></exception>
-    /// <exception cref="FluentValidation.ValidationException">Unsupported message type '{message.EventId}'. Expected:\n{nameof(Dynamics365FinanceCustomerChanged)} ({new Dynamics365FinanceCustomerChanged().TypeName}) or {nameof(Dynamics365FinanceCustomerRegistered)} ({new Dynamics365FinanceCustomerRegistered().TypeName}).</exception>
-    /// <exception cref="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChanged"></exception>
-    /// <exception cref="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegistered"></exception>
-    /// <exception cref="System.ComponentModel.DataAnnotations.ValidationException">null.</exception>
+    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="ValidationException">Unsupported message type '{message.EventId}'. Expected:\n{nameof(Dynamics365FinanceCustomerChanged)} ({new Dynamics365FinanceCustomerChanged().TypeName}) or {nameof(Dynamics365FinanceCustomerRegistered)} ({new Dynamics365FinanceCustomerRegistered().TypeName}).</exception>
+    /// <exception cref="Dynamics365FinanceCustomerChanged"></exception>
+    /// <exception cref="Dynamics365FinanceCustomerRegistered"></exception>
     protected override void ValidateAndThrow(Dynamics365BusinessEventBase message)
     {
         ArgumentNullException.ThrowIfNull(message);

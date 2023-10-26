@@ -67,7 +67,8 @@ public abstract partial class ReceiveMessageController : ControllerBase
         EventId = 1,
         Level = LogLevel.Information,
         Message = "Received message {MessageName} with Id={MessageId}, AggregateName={AggregateName}, AggregateId={AggregateId} and CorrelationId={CorrelationId}.")]
-    public partial void MessageReceivedInformation(
+    public static partial void MessageReceivedInformation(
+        ILogger logger,
         string? messageName,
         string? aggregateName,
         string? aggregateId,
@@ -96,6 +97,7 @@ public abstract partial class ReceiveMessageController : ControllerBase
             ? BadRequest($"Invalid data : The message state received type is {messageState.GetType().Name}, but {typeof(TMessageType).Name} was expected. MessageName={messageState.Metadata.Message.Name}; MessageId={messageState.Metadata.Message.Id}; CorrelationId={messageState.IdempotencyId}.")
             : null;
         MessageReceivedInformation(
+            Logger,
             messageState?.Metadata?.Message.Name ?? messageState?.Message?.TypeName ?? "Unknown",
             messageState?.Metadata?.Message?.Aggregate.Name,
             messageState?.Metadata?.Message.Aggregate.Id,

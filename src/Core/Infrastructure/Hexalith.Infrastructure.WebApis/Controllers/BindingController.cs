@@ -79,6 +79,7 @@ public abstract class BindingController : ReceiveMessageController
 
             (IEvent @event, string messageId, string correlationId) = DeserializeAndValidate(message);
             MessageReceivedInformation(
+                Logger,
                 @event.TypeName,
                 @event.AggregateName,
                 @event.AggregateId,
