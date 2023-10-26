@@ -73,7 +73,9 @@ public abstract partial class EventSubmissionController : ReceiveMessageControll
 
         try
         {
-            await _eventProcessor.SubmitAsync(eventState.Message, cancellationToken).ConfigureAwait(false);
+            await _eventProcessor
+                .SubmitAsync(eventState.Message, cancellationToken)
+                .ConfigureAwait(false);
             return Accepted();
         }
         catch (ApplicationErrorException ex)

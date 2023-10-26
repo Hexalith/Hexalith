@@ -25,7 +25,10 @@ using Hexalith.Domain.Events;
 /// <summary>
 /// Event handler interface.
 /// </summary>
+#pragma warning disable CA1711 // Identifiers should not have incorrect suffix
+
 public interface IIntegrationEventHandler
+#pragma warning restore CA1711 // Identifiers should not have incorrect suffix
 {
     /// <summary>
     /// Handles the event.

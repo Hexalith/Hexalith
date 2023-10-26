@@ -64,7 +64,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{FC1CDC0D
 	ProjectSection(SolutionItems) = preProject
 		src\Hexalith.Build\Dependencies.props = src\Hexalith.Build\Dependencies.props
 		Directory.Build.props = Directory.Build.props
+		.github\workflows\preview_ci.yml = .github\workflows\preview_ci.yml
 		src\Hexalith.Build\Project.Common.props = src\Hexalith.Build\Project.Common.props
+		.github\workflows\release_ci.yml = .github\workflows\release_ci.yml
+		.github\workflows\semgrep.yml = .github\workflows\semgrep.yml
+		.github\workflows\sonarqube.yml = .github\workflows\sonarqube.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Docs", "docs\Hexalith.Docs.csproj", "{2F42F417-7296-4791-8582-E824732A803F}"
