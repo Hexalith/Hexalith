@@ -73,7 +73,7 @@
   
   <h1 id="Hexalith_Infrastructure_WebApis_Controllers_BindingController" data-uid="Hexalith.Infrastructure.WebApis.Controllers.BindingController" class="text-break">Class BindingController
   </h1>
-  <div class="markdown level0 summary"><p>Class Dynamics365FinanceEventBindingController.
+  <div class="markdown level0 summary"><p>Class BindingController.
 Implements the <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase</span>.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
@@ -81,11 +81,24 @@ Implements the <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase</span>
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase</span></div>
-    <div class="level2"><span class="xref">BindingController</span></div>
-      <div class="level3"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Controllers.Dynamics365FinanceBindingController.html">Dynamics365FinanceBindingController</a></div>
+    <div class="level2"><a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.html">ReceiveMessageController</a></div>
+    <div class="level3"><span class="xref">BindingController</span></div>
+      <div class="level4"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Controllers.Dynamics365FinanceBindingController.html">Dynamics365FinanceBindingController</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.html#Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_Logger">ReceiveMessageController.Logger</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.html#Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_EventReceivedInformation_System_String_System_String_System_String_System_String_System_String_">ReceiveMessageController.EventReceivedInformation(String, String, String, String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.html#Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_MessageValidationErrors__1_Hexalith_Application_States_IMessageState_System_String_">ReceiveMessageController.MessageValidationErrors&lt;TMessageType&gt;(IMessageState, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.html#Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_Problem_Hexalith_Extensions_Common_ApplicationError_">ReceiveMessageController.Problem(ApplicationError)</a>
+    </div>
     <div>
       <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.StatusCode(System.Int32)</span>
     </div>
@@ -629,7 +642,7 @@ Implements the <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase</span>
   <h5 id="Hexalith_Infrastructure_WebApis_Controllers_BindingController_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ApiController]
-public abstract class BindingController : ControllerBase</code></pre>
+public abstract class BindingController : ReceiveMessageController</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -638,7 +651,7 @@ public abstract class BindingController : ControllerBase</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_Controllers_BindingController__ctor_Hexalith_Application_Events_IIntegrationEventProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Logging_ILogger_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.Controllers.BindingController.%23ctor(Hexalith.Application.Events.IIntegrationEventProcessor%2CMicrosoft.Extensions.Hosting.IHostEnvironment%2CMicrosoft.Extensions.Logging.ILogger)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/BindingController.cs/#L58">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/BindingController.cs/#L48">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_WebApis_Controllers_BindingController__ctor_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.BindingController.#ctor*"></a>
   <h4 id="Hexalith_Infrastructure_WebApis_Controllers_BindingController__ctor_Hexalith_Application_Events_IIntegrationEventProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Logging_ILogger_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.BindingController.#ctor(Hexalith.Application.Events.IIntegrationEventProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger)">BindingController(IIntegrationEventProcessor, IHostEnvironment, ILogger)</h4>
@@ -679,40 +692,6 @@ public abstract class BindingController : ControllerBase</code></pre>
       </tr>
     </tbody>
   </table>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_Controllers_BindingController_Logger.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.Controllers.BindingController.Logger%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/BindingController.cs/#L75">View Source</a>
-  </span>
-  <a id="Hexalith_Infrastructure_WebApis_Controllers_BindingController_Logger_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.BindingController.Logger*"></a>
-  <h4 id="Hexalith_Infrastructure_WebApis_Controllers_BindingController_Logger" data-uid="Hexalith.Infrastructure.WebApis.Controllers.BindingController.Logger">Logger</h4>
-  <div class="markdown level1 summary"><p>Gets the logger.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected ILogger Logger { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Microsoft.Extensions.Logging.ILogger</span></td>
-        <td><p>The logger.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
@@ -720,7 +699,7 @@ public abstract class BindingController : ControllerBase</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_Controllers_BindingController_DeserializeAndValidate_System_Text_Json_JsonElement_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.Controllers.BindingController.DeserializeAndValidate(System.Text.Json.JsonElement)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/BindingController.cs/#L82">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/BindingController.cs/#L63">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_WebApis_Controllers_BindingController_DeserializeAndValidate_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.BindingController.DeserializeAndValidate*"></a>
   <h4 id="Hexalith_Infrastructure_WebApis_Controllers_BindingController_DeserializeAndValidate_System_Text_Json_JsonElement_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.BindingController.DeserializeAndValidate(System.Text.Json.JsonElement)">DeserializeAndValidate(JsonElement)</h4>
@@ -729,7 +708,7 @@ public abstract class BindingController : ControllerBase</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected abstract IEvent DeserializeAndValidate(JsonElement message)</code></pre>
+    <pre><code class="lang-csharp hljs">protected abstract (IEvent Event, string MessageId, string CorrelationId) DeserializeAndValidate(JsonElement message)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -759,7 +738,7 @@ public abstract class BindingController : ControllerBase</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Hexalith.Domain.Events.IEvent.html">IEvent</a></td>
+        <td><span class="xref">System.ValueTuple</span>&lt;<a class="xref" href="Hexalith.Domain.Events.IEvent.html">IEvent</a>, <span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
         <td><p>IEvent.</p>
 </td>
       </tr>
@@ -770,7 +749,7 @@ public abstract class BindingController : ControllerBase</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_Controllers_BindingController_HandleEventAsync_System_Text_Json_JsonElement_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.Controllers.BindingController.HandleEventAsync(System.Text.Json.JsonElement%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/BindingController.cs/#L90">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/BindingController.cs/#L71">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_WebApis_Controllers_BindingController_HandleEventAsync_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.BindingController.HandleEventAsync*"></a>
   <h4 id="Hexalith_Infrastructure_WebApis_Controllers_BindingController_HandleEventAsync_System_Text_Json_JsonElement_CancellationToken_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.BindingController.HandleEventAsync(System.Text.Json.JsonElement,CancellationToken)">HandleEventAsync(JsonElement, CancellationToken)</h4>
@@ -821,56 +800,6 @@ public abstract class BindingController : ControllerBase</code></pre>
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_Controllers_BindingController_Problem_Hexalith_Extensions_Common_ApplicationError_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.Controllers.BindingController.Problem(Hexalith.Extensions.Common.ApplicationError)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/BindingController.cs/#L125">View Source</a>
-  </span>
-  <a id="Hexalith_Infrastructure_WebApis_Controllers_BindingController_Problem_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.BindingController.Problem*"></a>
-  <h4 id="Hexalith_Infrastructure_WebApis_Controllers_BindingController_Problem_Hexalith_Extensions_Common_ApplicationError_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.BindingController.Problem(Hexalith.Extensions.Common.ApplicationError)">Problem(ApplicationError)</h4>
-  <div class="markdown level1 summary"><p>Problems the specified error.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected ObjectResult Problem(ApplicationError error)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Hexalith.Extensions.Common.ApplicationError.html">ApplicationError</a></td>
-        <td><span class="parametername">error</span></td>
-        <td><p>The error.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Microsoft.AspNetCore.Mvc.ObjectResult</span></td>
-        <td><p>ObjectResult.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="Hexalith.Extensions.Helpers.CollectionHelper.html#Hexalith_Extensions_Helpers_CollectionHelper_IntoArray__1___0_">CollectionHelper.IntoArray&lt;T&gt;(T)</a>
@@ -893,7 +822,7 @@ public abstract class BindingController : ControllerBase</code></pre>
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_Controllers_BindingController.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.Controllers.BindingController%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/BindingController.cs/#L39" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/BindingController.cs/#L34" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

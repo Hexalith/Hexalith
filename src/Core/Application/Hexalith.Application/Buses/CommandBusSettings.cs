@@ -26,17 +26,14 @@ using Hexalith.Extensions.Configuration;
 public class CommandBusSettings : ISettings
 {
     /// <summary>
-    /// Gets the name.
+    /// Gets or sets the name.
     /// </summary>
     /// <value>The name.</value>
-    public string Name { get; init; } = "command-bus";
+    public string Name { get; set; } = ApplicationConstants.CommandBus;
 
     /// <summary>
     /// The configuration section name of the settings.
     /// </summary>
     /// <returns>The name.</returns>
-    public static string ConfigurationName()
-    {
-        return "CommandBus";
-    }
+    public static string ConfigurationName() => nameof(ApplicationConstants.CommandBus);
 }

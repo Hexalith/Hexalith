@@ -29,14 +29,11 @@ public class EventBusSettings : ISettings
     /// Gets the name.
     /// </summary>
     /// <value>The name.</value>
-    public string Name { get; init; } = "event-bus";
+    public string Name { get; init; } = ApplicationConstants.EventBus;
 
     /// <summary>
     /// The configuration section name of the settings.
     /// </summary>
     /// <returns>The name.</returns>
-    public static string ConfigurationName()
-    {
-        return "EventBus";
-    }
+    public static string ConfigurationName() => nameof(ApplicationConstants.EventBus);
 }

@@ -22,7 +22,6 @@ using System.Text.Json.Serialization;
 
 using Hexalith.Application.Metadatas;
 using Hexalith.Domain.Messages;
-using Hexalith.Extensions.Common;
 
 /// <summary>
 /// Class MessageState.
@@ -30,7 +29,7 @@ using Hexalith.Extensions.Common;
 /// <typeparam name="TMessage">The type of the t message.</typeparam>
 /// <typeparam name="TMetadata">The type of the t metadata.</typeparam>
 [DataContract]
-public class MessageState<TMessage, TMetadata> : IIdempotent
+public class MessageState<TMessage, TMetadata> : IMessageState
     where TMessage : BaseMessage
     where TMetadata : BaseMetadata
 {
@@ -89,4 +88,14 @@ public class MessageState<TMessage, TMetadata> : IIdempotent
     [DataMember(Order = 2)]
     [JsonPropertyOrder(2)]
     public DateTimeOffset? ReceivedDate { get; set; }
+
+    /// <inheritdoc/>
+    [IgnoreDataMember]
+    [JsonIgnore]
+    BaseMessage? IMessageState.Message => Message;
+
+    /// <inheritdoc/>
+    [IgnoreDataMember]
+    [JsonIgnore]
+    BaseMetadata? IMessageState.Metadata => Metadata;
 }

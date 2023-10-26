@@ -9,12 +9,15 @@ namespace Hexalith.Infrastructure.Dynamics365Finance.Dispatchers;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Hexalith.Application;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Errors;
 using Hexalith.Application.Events;
 using Hexalith.Application.Metadatas;
+using Hexalith.Application.Notifications;
 using Hexalith.Domain.Events;
 using Hexalith.Extensions.Common;
+using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents;
 
 using Microsoft.Extensions.Logging;
@@ -36,24 +39,31 @@ public class Dynamics365FinanceIntegrationEventProcessor : DependencyInjectionEv
     /// </summary>
     private readonly IDateTimeService _dateTimeService;
 
+    private readonly INotificationBus _notificationBus;
+
     /// <summary>
-    /// Initializes a new instance of the <see cref="Dynamics365FinanceIntegrationEventProcessor" /> class.
+    /// Initializes a new instance of the <see cref="Dynamics365FinanceIntegrationEventProcessor"/> class.
     /// </summary>
     /// <param name="commandProcessor">The command processor.</param>
     /// <param name="dateTimeService">The date time service.</param>
     /// <param name="serviceProvider">The service provider.</param>
+    /// <param name="notificationBus">The notification bus.</param>
     /// <param name="logger">The logger.</param>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
     public Dynamics365FinanceIntegrationEventProcessor(
         ICommandProcessor commandProcessor,
         IDateTimeService dateTimeService,
         IServiceProvider serviceProvider,
+        INotificationBus notificationBus,
         ILogger<Dynamics365FinanceIntegrationEventProcessor> logger)
         : base(serviceProvider, logger)
     {
         ArgumentNullException.ThrowIfNull(commandProcessor);
         ArgumentNullException.ThrowIfNull(dateTimeService);
+        ArgumentNullException.ThrowIfNull(notificationBus);
         _commandProcessor = commandProcessor;
         _dateTimeService = dateTimeService;
+        _notificationBus = notificationBus;
     }
 
     /// <inheritdoc/>
@@ -80,7 +90,33 @@ public class Dynamics365FinanceIntegrationEventProcessor : DependencyInjectionEv
         }
         catch (Exception ex)
         {
-            throw new ApplicationErrorException(new EventDispatchFailed(@event, ex));
+            ApplicationErrorException appException = new(new EventDispatchFailed(@event, ex));
+            ApplicationExceptionNotification notification = new(@event.Message.Id, @event.Message.Aggregate.Name, @event.Message.Aggregate.Id, appException);
+            DateTimeOffset date = _dateTimeService.UtcNow;
+#pragma warning disable CA1031 // Do not catch general exception types
+            try
+            {
+                await _notificationBus.PublishAsync(
+                    notification,
+                    new Metadata(
+                        UniqueIdHelper.GenerateUniqueStringId(),
+                        notification,
+                        date,
+                        new ContextMetadata(
+                            @event.EventId ?? UniqueIdHelper.GenerateDateTimeId(),
+                            @event.InitiatingUserAzureActiveDirectoryObjectId ?? ApplicationConstants.SystemUser,
+                            date,
+                            null,
+                            null),
+                        null),
+                    cancellationToken).ConfigureAwait(false);
+            }
+            catch
+            {
+            }
+#pragma warning restore CA1031 // Do not catch general exception types
+
+            throw appException;
         }
     }
 

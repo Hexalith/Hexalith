@@ -1,0 +1,131 @@
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Infrastructure.WebApis
+// Author           : JérômePiquot
+// Created          : 01-13-2023
+//
+// Last Modified By : JérômePiquot
+// Last Modified On : 01-15-2023
+// ***********************************************************************
+// <copyright file="ReceiveMessageController.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+namespace Hexalith.Infrastructure.WebApis.Controllers;
+
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Net;
+
+using Hexalith.Application.Helpers;
+using Hexalith.Application.States;
+using Hexalith.Extensions.Common;
+using Hexalith.Extensions.Helpers;
+
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+
+/// <summary>
+/// Class ApplicationController.
+/// Implements the <see cref="ControllerBase" />.
+/// </summary>
+/// <seealso cref="ControllerBase" />
+[ApiController]
+public abstract partial class ReceiveMessageController : ControllerBase
+{
+    /// <summary>
+    /// The host environment.
+    /// </summary>
+    private readonly IHostEnvironment _hostEnvironment;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ReceiveMessageController" /> class.
+    /// </summary>
+    /// <param name="eventProcessor">The event processor.</param>
+    /// <param name="hostEnvironment">The host environment.</param>
+    /// <param name="logger">The logger.</param>
+    protected ReceiveMessageController(
+        IHostEnvironment hostEnvironment,
+        ILogger logger)
+    {
+        ArgumentNullException.ThrowIfNull(hostEnvironment);
+        ArgumentNullException.ThrowIfNull(logger);
+        Logger = logger;
+        _hostEnvironment = hostEnvironment;
+    }
+
+    /// <summary>
+    /// Gets the logger.
+    /// </summary>
+    /// <value>The logger.</value>
+    protected ILogger Logger { get; }
+
+    [LoggerMessage(EventId = 110, Level = LogLevel.Information, Message = "Received message {MessageName} with Id={MessageId}, AggregateName={AggregateName}, AggregateId={AggregateId} and CorrelationId={CorrelationId}.")]
+    public partial void EventReceivedInformation(
+        string messageName,
+        string aggregateName,
+        string aggregateId,
+        string messageId,
+        string correlationId);
+
+    /// <summary>
+    /// Messages the validation errors.
+    /// </summary>
+    /// <typeparam name="TMessageType">The type of the message type.</typeparam>
+    /// <param name="messageState">State of the message.</param>
+    /// <param name="aggregateType">Type of the aggregate.</param>
+    /// <returns>System.Nullable&lt;ActionResult&gt;.</returns>
+    protected ActionResult? MessageValidationErrors<TMessageType>(IMessageState messageState, string aggregateType)
+        where TMessageType : IMessageState
+    {
+        return messageState == null
+            ? BadRequest("Invalid data : Message state received is null.")
+            : messageState.Metadata == null
+            ? BadRequest($"Invalid data : Message metadata received is null. CorrelationId={messageState.IdempotencyId}.")
+            : messageState.Message == null
+            ? BadRequest($"Invalid data : Message received is null. MessageName={messageState.Metadata.Message.Name}; MessageId={messageState.Metadata.Message.Id}; CorrelationId={messageState.IdempotencyId}.")
+            : messageState.Message.AggregateName != aggregateType
+            ? BadRequest($"Invalid data : The message aggregate is {messageState.Message.AggregateName}, but {aggregateType} was expected. MessageName={messageState.Metadata.Message.Name}; MessageId={messageState.Metadata.Message.Id}; CorrelationId={messageState.IdempotencyId}.")
+            : messageState is not TMessageType
+            ? BadRequest($"Invalid data : The message state received type is {messageState.GetType().Name}, but {typeof(TMessageType).Name} was expected. MessageName={messageState.Metadata.Message.Name}; MessageId={messageState.Metadata.Message.Id}; CorrelationId={messageState.IdempotencyId}.")
+            : (ActionResult?)null;
+    }
+
+    /// <summary>
+    /// Problems the specified error.
+    /// </summary>
+    /// <param name="error">The error.</param>
+    /// <returns>ObjectResult.</returns>
+    protected ObjectResult Problem([NotNull] ApplicationError error)
+    {
+        ArgumentNullException.ThrowIfNull(error);
+        Logger.LogError(error);
+        string detail;
+        try
+        {
+            detail = _hostEnvironment.IsProduction()
+                ? StringHelper.FormatWithNamedPlaceholders(
+                    CultureInfo.InvariantCulture,
+                    error.Detail ?? string.Empty,
+                    error.Arguments)
+                : StringHelper.FormatWithNamedPlaceholders(
+                    CultureInfo.InvariantCulture,
+                    error.TechnicalDetail ?? string.Empty,
+                    error.TechnicalArguments);
+        }
+        catch (Exception ex)
+        {
+            throw new InvalidOperationException("Could not format the error message:\n" + error.Detail + "\n" + error.TechnicalDetail, ex);
+        }
+
+        return Problem(
+            detail,
+            "https://github.com/Hexalith/Hexalith/issues/",
+            (int)HttpStatusCode.BadRequest,
+            error.Title,
+            error.Type?.ToString());
+    }
+}

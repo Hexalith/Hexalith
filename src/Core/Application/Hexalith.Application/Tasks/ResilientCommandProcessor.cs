@@ -107,7 +107,7 @@ public class ResilientCommandProcessor
 
                     case RetryStatus.Stopped:
                         taskProcessor = taskProcessor.Cancel();
-                        return (taskProcessor, new CommandProcessingFailed(command, taskProcessor).IntoArray());
+                        return (taskProcessor, new CommandProcessingFailed(string.Empty, command, taskProcessor).IntoArray());
                 }
 
                 break;
@@ -116,7 +116,7 @@ public class ResilientCommandProcessor
                 break;
 
             case TaskProcessorStatus.Canceled:
-                return (taskProcessor, new CommandProcessingFailed(command, taskProcessor).IntoArray());
+                return (taskProcessor, new CommandProcessingFailed(string.Empty, command, taskProcessor).IntoArray());
 
             case TaskProcessorStatus.Completed:
                 return (taskProcessor, Array.Empty<BaseMessage>());
@@ -131,13 +131,13 @@ public class ResilientCommandProcessor
             }
             else
             {
-                messages = new CommandProcessingFailed(command, taskProcessor).IntoArray();
+                messages = new CommandProcessingFailed(string.Empty, command, taskProcessor).IntoArray();
             }
         }
         catch (Exception e)
         {
             taskProcessor = taskProcessor.Fail($"An error occurred when executing command {command.TypeName} on {command.AggregateName}/{command.AggregateId}: {e.Message}", e.FullMessage());
-            messages = new CommandProcessingFailed(command, taskProcessor).IntoArray();
+            messages = new CommandProcessingFailed(string.Empty, command, taskProcessor).IntoArray();
             _logger.LogError(e, "An error occured when executing command {CommandType} on {AggregateName}/{AggregateId}: {Message}", command.TypeName, command.AggregateName, command.AggregateId, e.Message);
         }
 

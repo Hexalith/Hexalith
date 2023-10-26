@@ -9,7 +9,7 @@ using Hexalith.Infrastructure.WebApis.Helpers;
 
 using Serilog;
 
-const string appName = "Hexalith ExternalSystems";
+const string appName = "Hexalith External Systems";
 
 #if DEBUG
 bool debugInVisualStudio = true;

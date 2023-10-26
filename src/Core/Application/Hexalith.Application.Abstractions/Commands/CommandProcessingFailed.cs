@@ -31,14 +31,18 @@ using Hexalith.Application.Tasks;
 public class CommandProcessingFailed : BaseNotification
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="CommandProcessingFailed" /> class.
+    /// Initializes a new instance of the <see cref="CommandProcessingFailed"/> class.
     /// </summary>
+    /// <param name="correlationId">The correlation identifier.</param>
     /// <param name="command">The command.</param>
     /// <param name="taskProcessor">The task processor.</param>
     [JsonConstructor]
-    public CommandProcessingFailed(BaseCommand command, TaskProcessor taskProcessor)
+    public CommandProcessingFailed(string correlationId, BaseCommand command, TaskProcessor taskProcessor)
         : base(
-            $"Command {(command ?? throw new ArgumentNullException(nameof(command))).TypeName} failed.",
+            correlationId,
+            (command ?? throw new ArgumentNullException(nameof(command))).AggregateName,
+            command.AggregateId,
+            $"Command {command.TypeName} failed.",
             (taskProcessor ?? throw new ArgumentNullException(nameof(taskProcessor))).Failure?.Message ?? string.Empty,
             NotificationSeverity.Error,
             taskProcessor.Failure?.TechnicalError ?? string.Empty)

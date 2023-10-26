@@ -29,14 +29,11 @@ public class RequestBusSettings : ISettings
     /// Gets the name.
     /// </summary>
     /// <value>The name.</value>
-    public string Name { get; init; } = "request-bus";
+    public string Name { get; init; } = ApplicationConstants.RequestBus;
 
     /// <summary>
     /// The configuration section name of the settings.
     /// </summary>
     /// <returns>The name.</returns>
-    public static string ConfigurationName()
-    {
-        return "RequestBus";
-    }
+    public static string ConfigurationName() => nameof(ApplicationConstants.RequestBus);
 }

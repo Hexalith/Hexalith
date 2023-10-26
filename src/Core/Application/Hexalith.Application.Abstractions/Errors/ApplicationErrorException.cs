@@ -1,8 +1,18 @@
-﻿// <copyright file="ApplicationErrorException.cs" company="Fiveforty SAS Paris France">
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Application.Abstractions
+// Author           : Jérôme Piquot
+// Created          : 09-12-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 10-26-2023
+// ***********************************************************************
+// <copyright file="ApplicationErrorException.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Hexalith.Application.Errors;
 
@@ -31,21 +41,15 @@ public class ApplicationErrorException : Exception
     /// </summary>
     /// <param name="error">The error details.</param>
     public ApplicationErrorException(ApplicationError error)
-        : base(error.Title + Environment.NewLine + error.Detail)
-    {
-        Error = error;
-    }
+        : base(error.Title + Environment.NewLine + error.Detail) => Error = error;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ApplicationErrorException"/> class.
+    /// Initializes a new instance of the <see cref="ApplicationErrorException" /> class.
     /// </summary>
     /// <param name="error">The error.</param>
     /// <param name="innerException">The inner exception.</param>
     public ApplicationErrorException(ApplicationError error, Exception? innerException)
-        : base(error.Title + Environment.NewLine + error.Detail, innerException)
-    {
-        Error = error;
-    }
+        : base(error.Title + Environment.NewLine + error.Detail, innerException) => Error = error;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ApplicationErrorException" /> class.
@@ -69,8 +73,8 @@ public class ApplicationErrorException : Exception
     /// <summary>
     /// Initializes a new instance of the <see cref="ApplicationErrorException" /> class.
     /// </summary>
-    /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
-    /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
+    /// <param name="info">The <see cref="SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
+    /// <param name="context">The <see cref="StreamingContext" /> that contains contextual information about the source or destination.</param>
     protected ApplicationErrorException(SerializationInfo info, StreamingContext context)
         : base(info, context)
     {

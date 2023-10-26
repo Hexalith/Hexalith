@@ -1,0 +1,96 @@
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Infrastructure.WebApis
+// Author           : JérômePiquot
+// Created          : 01-13-2023
+//
+// Last Modified By : JérômePiquot
+// Last Modified On : 10-26-2023
+// ***********************************************************************
+// <copyright file="EventSubmissionController.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+namespace Hexalith.Infrastructure.WebApis.Controllers;
+
+using Hexalith.Application.Errors;
+using Hexalith.Application.Events;
+using Hexalith.Application.Helpers;
+using Hexalith.Application.States;
+
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+
+/// <summary>
+/// Class PubSubController.
+/// Implements the <see cref="ControllerBase" />.
+/// </summary>
+/// <seealso cref="ControllerBase" />
+[ApiController]
+public abstract partial class EventSubmissionController : ReceiveMessageController
+{
+    /// <summary>
+    /// The processor.
+    /// </summary>
+    private readonly IIntegrationEventProcessor _eventProcessor;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="EventSubmissionController" /> class.
+    /// </summary>
+    /// <param name="eventProcessor">The event processor.</param>
+    /// <param name="commandProcessor">The command processor.</param>
+    /// <param name="hostEnvironment">The host environment.</param>
+    /// <param name="logger">The logger.</param>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
+    protected EventSubmissionController(
+        IIntegrationEventProcessor eventProcessor,
+        IHostEnvironment hostEnvironment,
+        ILogger logger)
+        : base(hostEnvironment, logger)
+    {
+        ArgumentNullException.ThrowIfNull(eventProcessor);
+
+        _eventProcessor = eventProcessor;
+    }
+
+    /// <summary>
+    /// Handle event as an asynchronous operation.
+    /// </summary>
+    /// <param name="eventState">State of the event.</param>
+    /// <param name="validAggregateName">Name of the valid aggregate.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
+    protected async Task<ActionResult> HandleEventAsync(EventState eventState, string validAggregateName, CancellationToken cancellationToken)
+    {
+        ActionResult? badRequest = MessageValidationErrors<EventState>(eventState, validAggregateName);
+        if (badRequest is not null)
+        {
+            return badRequest;
+        }
+
+        try
+        {
+            EventReceivedInformation(
+            eventState.Metadata.Message.Name ?? eventState.Message.TypeName,
+            eventState.Metadata.Message.Aggregate.Name,
+            eventState.Metadata.Message.Aggregate.Id,
+            eventState.Metadata.Message.Id,
+            eventState.IdempotencyId);
+            await _eventProcessor.SubmitAsync(eventState.Message, cancellationToken).ConfigureAwait(false);
+            return Accepted();
+        }
+        catch (ApplicationErrorException ex)
+        {
+            if (ex.Error is not null)
+            {
+                Logger.LogError(ex);
+                return Problem(ex.Error);
+            }
+
+            throw;
+        }
+    }
+}

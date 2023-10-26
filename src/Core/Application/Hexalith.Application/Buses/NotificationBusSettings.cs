@@ -4,7 +4,7 @@
 // Created          : 02-04-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 02-04-2023
+// Last Modified On : 10-26-2023
 // ***********************************************************************
 // <copyright file="NotificationBusSettings.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -29,14 +29,11 @@ public class NotificationBusSettings : ISettings
     /// Gets the name.
     /// </summary>
     /// <value>The name.</value>
-    public string Name { get; init; } = "notification-bus";
+    public string Name { get; init; } = ApplicationConstants.NotificationBus;
 
     /// <summary>
     /// The configuration section name of the settings.
     /// </summary>
     /// <returns>The name.</returns>
-    public static string ConfigurationName()
-    {
-        return "NotificationBus";
-    }
+    public static string ConfigurationName() => nameof(ApplicationConstants.NotificationBus);
 }

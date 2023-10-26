@@ -1,0 +1,102 @@
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Infrastructure.WebApis
+// Author           : JérômePiquot
+// Created          : 01-13-2023
+//
+// Last Modified By : JérômePiquot
+// Last Modified On : 10-26-2023
+// ***********************************************************************
+// <copyright file="CommandSubmissionController.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+namespace Hexalith.Infrastructure.WebApis.Controllers;
+
+using Hexalith.Application.Commands;
+using Hexalith.Application.Errors;
+using Hexalith.Application.Helpers;
+using Hexalith.Application.States;
+
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+
+/// <summary>
+/// Class PubSubController.
+/// Implements the <see cref="ControllerBase" />.
+/// </summary>
+/// <seealso cref="ControllerBase" />
+[ApiController]
+public abstract partial class CommandSubmissionController : ReceiveMessageController
+{
+    /// <summary>
+    /// The command processor.
+    /// </summary>
+    private readonly ICommandProcessor _commandProcessor;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="CommandSubmissionController"/> class.
+    /// </summary>
+    /// <param name="commandProcessor">The command processor.</param>
+    /// <param name="hostEnvironment">The host environment.</param>
+    /// <param name="logger">The logger.</param>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
+    protected CommandSubmissionController(
+        ICommandProcessor commandProcessor,
+        IHostEnvironment hostEnvironment,
+        ILogger logger)
+        : base(hostEnvironment, logger)
+    {
+        ArgumentNullException.ThrowIfNull(commandProcessor);
+
+        _commandProcessor = commandProcessor;
+    }
+
+    /// <summary>
+    /// Handle command as an asynchronous operation.
+    /// </summary>
+    /// <param name="commandState">State of the command.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
+    protected async Task<ActionResult> HandleCommandAsync(CommandState commandState, string validAggregateName, CancellationToken cancellationToken)
+    {
+        ActionResult? badRequest = MessageValidationErrors<CommandState>(commandState, validAggregateName);
+        if (badRequest is not null)
+        {
+            return badRequest;
+        }
+
+        if (commandState == null || commandState.Message == null || commandState.Metadata == null)
+        {
+            return BadRequest("Invalid command state message.");
+        }
+
+        try
+        {
+            EventReceivedInformation(
+            commandState.Metadata.Message.Name ?? commandState.Message.TypeName,
+            commandState.Metadata.Message.Aggregate.Name,
+            commandState.Metadata.Message.Aggregate.Id,
+            commandState.Metadata.Message.Id,
+            commandState.IdempotencyId);
+            await _commandProcessor
+                .SubmitAsync(commandState.Message, commandState.Metadata, cancellationToken)
+                .ConfigureAwait(false);
+            return Accepted();
+        }
+        catch (ApplicationErrorException ex)
+        {
+            if (ex.Error is not null)
+            {
+                Logger.LogError(ex);
+                return Problem(ex.Error);
+            }
+
+            throw;
+        }
+    }
+}

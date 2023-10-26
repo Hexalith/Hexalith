@@ -6,6 +6,8 @@
 
 namespace Hexalith.UnitTests.Core.Common.Helpers;
 
+using System.Globalization;
+
 using FluentAssertions;
 
 using Hexalith.Extensions.Helpers;
@@ -43,12 +45,10 @@ public class StringHelperTest
     [Fact]
     public void FormatStringWithNamedPlaceholdersShouldReturnExpected()
     {
-#pragma warning disable CA1305 // Specify IFormatProvider
         _ = StringHelper
-            .FormatWithNamedPlaceholders("Say {Hello} {Number} times",["hello world", 11])
+            .FormatWithNamedPlaceholders(CultureInfo.InvariantCulture, "Say {Hello} {Number} times", ["hello world", 11])
             .Should()
             .Be("Say hello world 11 times");
-#pragma warning restore CA1305 // Specify IFormatProvider
     }
 
     [Theory]

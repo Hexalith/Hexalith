@@ -31,36 +31,31 @@ public static partial class StringHelper
     /// <param name="value">The value.</param>
     /// <param name="args">The arguments.</param>
     /// <returns>System.String.</returns>
-    public static string FormatWithNamedPlaceholders(IFormatProvider provider, string value, object?[] args)
+    public static string FormatWithNamedPlaceholders(IFormatProvider provider, string value, IEnumerable<object>? args)
     {
         string format = ReplacePlaceholderNamesByIndex(value);
         try
         {
-            return string.Format(
-                provider,
-                format,
-                args);
+            if (args != null)
+            {
+                object[] arguments = args.ToArray();
+                if (arguments.Length > 0)
+                {
+                    return string.Format(
+                        provider,
+                        format,
+                        arguments);
+                }
+            }
+
+            return value;
         }
         catch (Exception e)
         {
-            IEnumerable<string> argValues = args.Select(p => $"{p?.GetType().Name ?? "null"}:{p ?? "null"}");
+            IEnumerable<string> argValues = (args ?? Enumerable.Empty<object>()).Select(p => $"{p?.GetType().Name ?? "null"}:{p ?? "null"}");
             throw new InvalidOperationException(
                 $"Could not format :\nOriginal={value}\nIndexed={format}\nValues={string.Join("\n", argValues)}", e);
         }
-    }
-
-    /// <summary>
-    /// Formats the with named placeholders.
-    /// </summary>
-    /// <param name="value">The value.</param>
-    /// <param name="args">The arguments.</param>
-    /// <returns>System.String.</returns>
-    public static string FormatWithNamedPlaceholders(string value, object?[] args)
-    {
-        return string.Format(
-            CultureInfo.InvariantCulture,
-            ReplacePlaceholderNamesByIndex(value),
-            args);
     }
 
     /// <summary>

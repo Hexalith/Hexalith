@@ -7,5 +7,6 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime.ExternalSystems\Hexalith.Infrastructure.DaprRuntime.ExternalSystems.csproj" />
+		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.WebApis.ExternalSystems\Hexalith.Infrastructure.WebApis.ExternalSystems.csproj" />
 	</ItemGroup>
 </Project>

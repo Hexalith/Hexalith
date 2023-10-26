@@ -18,11 +18,11 @@ public abstract class DummyBaseNotification : BaseNotification
 {
     [Obsolete("For serialization only", true)]
     protected DummyBaseNotification()
-        : base("Test", "Dummy message", NotificationSeverity.Information, "Dummy technical description") => BaseValue = string.Empty;
+        : base("1233", "Customer", "Cust353", "Test", "Dummy message", NotificationSeverity.Information, "Dummy technical description") => BaseValue = string.Empty;
 
     [JsonConstructor]
     protected DummyBaseNotification(string baseValue)
-        : base("Test", "Dummy message", NotificationSeverity.Information, "Dummy technical description") => BaseValue = baseValue;
+        : base("1233", "Customer", "Cust353", "Test", "Dummy message", NotificationSeverity.Information, "Dummy technical description") => BaseValue = baseValue;
 
     public string BaseValue { get; }
 

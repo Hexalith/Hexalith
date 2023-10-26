@@ -15,39 +15,29 @@
 // ***********************************************************************
 namespace Hexalith.Infrastructure.WebApis.Controllers;
 
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Net;
 using System.Text.Json;
 
 using Hexalith.Application.Errors;
 using Hexalith.Application.Events;
 using Hexalith.Application.Helpers;
 using Hexalith.Domain.Events;
-using Hexalith.Extensions.Common;
-using Hexalith.Extensions.Helpers;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 /// <summary>
-/// Class Dynamics365FinanceEventBindingController.
+/// Class BindingController.
 /// Implements the <see cref="ControllerBase" />.
 /// </summary>
 /// <seealso cref="ControllerBase" />
 [ApiController]
-public abstract class BindingController : ControllerBase
+public abstract class BindingController : ReceiveMessageController
 {
     /// <summary>
     /// The processor.
     /// </summary>
     private readonly IIntegrationEventProcessor _eventProcessor;
-
-    /// <summary>
-    /// The host environment.
-    /// </summary>
-    private readonly IHostEnvironment _hostEnvironment;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="BindingController" /> class.
@@ -59,27 +49,18 @@ public abstract class BindingController : ControllerBase
         IIntegrationEventProcessor eventProcessor,
         IHostEnvironment hostEnvironment,
         ILogger logger)
+        : base(hostEnvironment, logger)
     {
         ArgumentNullException.ThrowIfNull(eventProcessor);
-        ArgumentNullException.ThrowIfNull(hostEnvironment);
-        ArgumentNullException.ThrowIfNull(logger);
         _eventProcessor = eventProcessor;
-        Logger = logger;
-        _hostEnvironment = hostEnvironment;
     }
-
-    /// <summary>
-    /// Gets the logger.
-    /// </summary>
-    /// <value>The logger.</value>
-    protected ILogger Logger { get; }
 
     /// <summary>
     /// Deserializes the and validate.
     /// </summary>
     /// <param name="message">The message.</param>
     /// <returns>IEvent.</returns>
-    protected abstract IEvent DeserializeAndValidate(JsonElement message);
+    protected abstract (IEvent Event, string MessageId, string CorrelationId) DeserializeAndValidate(JsonElement message);
 
     /// <summary>
     /// Handle business event.
@@ -96,12 +77,13 @@ public abstract class BindingController : ControllerBase
                 return BadRequest("Message received is null.");
             }
 
-            IEvent @event = DeserializeAndValidate(message);
-            Logger.LogInformation(
-                "Received event {EventName} {AggregateName}-{AggregateId}.",
+            (IEvent @event, string messageId, string correlationId) = DeserializeAndValidate(message);
+            EventReceivedInformation(
                 @event.TypeName,
                 @event.AggregateName,
-                @event.AggregateId);
+                @event.AggregateId,
+                messageId,
+                correlationId);
             await _eventProcessor.SubmitAsync(@event, cancellationToken).ConfigureAwait(false);
             return Accepted();
         }
@@ -115,39 +97,5 @@ public abstract class BindingController : ControllerBase
 
             throw;
         }
-    }
-
-    /// <summary>
-    /// Problems the specified error.
-    /// </summary>
-    /// <param name="error">The error.</param>
-    /// <returns>ObjectResult.</returns>
-    protected ObjectResult Problem([NotNull] ApplicationError error)
-    {
-        ArgumentNullException.ThrowIfNull(error);
-        string detail;
-        try
-        {
-            detail = _hostEnvironment.IsProduction()
-                ? StringHelper.FormatWithNamedPlaceholders(
-                    CultureInfo.InvariantCulture,
-                    error.Detail ?? string.Empty,
-                    error.Arguments?.ToArray() ??[])
-                : StringHelper.FormatWithNamedPlaceholders(
-                    CultureInfo.InvariantCulture,
-                    error.TechnicalDetail ?? string.Empty,
-                    error.TechnicalArguments?.ToArray() ??[]);
-        }
-        catch (Exception ex)
-        {
-            throw new InvalidOperationException("Could not format the error message:\n" + error.Detail + "\n" + error.TechnicalDetail, ex);
-        }
-
-        return Problem(
-            detail,
-            "https://github.com/Hexalith/Hexalith/issues/",
-            (int)HttpStatusCode.BadRequest,
-            error.Title,
-            error.Type?.ToString());
     }
 }

@@ -84,6 +84,7 @@
   </div>
   <div class="implements">
     <h5>Implements</h5>
+    <div><a class="xref" href="Hexalith.Application.States.IMessageState.html">IMessageState</a></div>
     <div><a class="xref" href="Hexalith.Extensions.Common.IIdempotent.html">IIdempotent</a></div>
   </div>
   <div class="inheritedMembers">
@@ -99,6 +100,12 @@
     </div>
     <div>
       <a class="xref" href="Hexalith.Application.States.MessageState-2.html#Hexalith_Application_States_MessageState_2_ReceivedDate">MessageState&lt;BaseCommand, BaseMetadata&gt;.ReceivedDate</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Application.States.MessageState-2.html#Hexalith_Application_States_MessageState_2_Hexalith_Application_States_IMessageState_Message">MessageState&lt;BaseCommand, BaseMetadata&gt;.IMessageState.Message</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Application.States.MessageState-2.html#Hexalith_Application_States_MessageState_2_Hexalith_Application_States_IMessageState_Metadata">MessageState&lt;BaseCommand, BaseMetadata&gt;.IMessageState.Metadata</a>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
@@ -127,7 +134,7 @@
   <h5 id="Hexalith_Application_States_CommandState_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataContract]
-public class CommandState : MessageState&lt;BaseCommand, BaseMetadata&gt;, IIdempotent</code></pre>
+public class CommandState : MessageState&lt;BaseCommand, BaseMetadata&gt;, IMessageState, IIdempotent</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -195,6 +202,9 @@ public CommandState(DateTimeOffset? receivedDate, BaseCommand message, BaseMetad
     </tbody>
   </table>
   <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Hexalith.Application.States.IMessageState.html">IMessageState</a>
+  </div>
   <div>
       <a class="xref" href="Hexalith.Extensions.Common.IIdempotent.html">IIdempotent</a>
   </div>
