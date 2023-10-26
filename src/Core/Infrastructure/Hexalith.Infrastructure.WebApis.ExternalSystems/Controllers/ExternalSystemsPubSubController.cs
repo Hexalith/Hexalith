@@ -16,14 +16,13 @@
 
 namespace Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers;
 
-using System.Runtime.CompilerServices;
-
 using Dapr;
 
 using Hexalith.Application;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
 using Hexalith.Application.States;
+using Hexalith.Domain.Aggregates;
 using Hexalith.Infrastructure.WebApis.Controllers;
 
 using Microsoft.AspNetCore.Mvc;
@@ -35,7 +34,7 @@ using Microsoft.Extensions.Logging;
 /// Implements the <see cref="EventSubmissionController" />.
 /// </summary>
 /// <seealso cref="EventSubmissionController" />
-public class ExternalSystemsCommandsController : EventSubmissionController
+public class ExternalSystemsCommandsController : CommandSubmissionController
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="ExternalSystemsCommandsController"/> class.
@@ -54,14 +53,24 @@ public class ExternalSystemsCommandsController : EventSubmissionController
     }
 
     /// <summary>
-    ///
+    /// Handle aggregate external reference commands as an asynchronous operation.
     /// </summary>
-    /// <param name="eventState"></param>
-    /// <returns>A <see cref="Task{TResult}"/> representing the result of the asynchronous operation.</returns>
-    [Topic(ApplicationConstants.CommandBus, "externalsystems-commands")]
-    [HttpPost("/handle-external-systems-commands")]
-    public static async Task<ActionResult> HandleExternalSystemsCommandsAsync(CommandState commandState)
-    {
-        await HandleCommandAsync(
-    }
+    /// <param name="commandState">State of the command.</param>
+    /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
+    [Topic(ApplicationConstants.CommandBus, "aggregateexternalreference-commands")]
+    [HttpPost("/handle-aggregate-external-reference-commands")]
+    public async Task<ActionResult> HandleAggregateExternalReferenceCommandsAsync(CommandState commandState)
+         => await HandleCommandAsync(commandState, AggregateExternalReference.GetAggregateName(), CancellationToken.None)
+             .ConfigureAwait(false);
+
+    /// <summary>
+    /// Handle external systems commands as an asynchronous operation.
+    /// </summary>
+    /// <param name="commandState">State of the command.</param>
+    /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
+    [Topic(ApplicationConstants.CommandBus, "externalsystemreference-commands")]
+    [HttpPost("/handle-external-system-reference-commands")]
+    public async Task<ActionResult> HandleExternalSystemsCommandsAsync(CommandState commandState)
+        => await HandleCommandAsync(commandState, ExternalSystemReference.GetAggregateName(), CancellationToken.None)
+            .ConfigureAwait(false);
 }

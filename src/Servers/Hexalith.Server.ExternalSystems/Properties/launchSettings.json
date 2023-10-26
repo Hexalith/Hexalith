@@ -1,6 +1,6 @@
 {
 	"profiles": {
-		"SalesOrders": {
+		"ExternalSystems": {
 			"commandName": "Project",
 			"launchBrowser": true,
 			"launchUrl": "swagger",
