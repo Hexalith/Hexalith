@@ -17329,18 +17329,6 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Configurations.ExternalSystemReferenceSettings.ConfigurationName
   nameWithType: ExternalSystemReferenceSettings.ConfigurationName
-- uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Controllers
-  name: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Controllers
-  href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Controllers.html
-  commentId: N:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Controllers
-  fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Controllers
-  nameWithType: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Controllers
-- uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Controllers.ExternalSystemsBindingController
-  name: ExternalSystemsBindingController
-  href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Controllers.ExternalSystemsBindingController.html
-  commentId: T:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Controllers.ExternalSystemsBindingController
-  fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Controllers.ExternalSystemsBindingController
-  nameWithType: ExternalSystemsBindingController
 - uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers
   name: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers
   href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.html
@@ -24669,19 +24657,6 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.ReceiveMessageController
   nameWithType: ReceiveMessageController.ReceiveMessageController
-- uid: Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.EventReceivedInformation(System.String,System.String,System.String,System.String,System.String)
-  name: EventReceivedInformation(String, String, String, String, String)
-  href: api/Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.html#Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_EventReceivedInformation_System_String_System_String_System_String_System_String_System_String_
-  commentId: M:Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.EventReceivedInformation(System.String,System.String,System.String,System.String,System.String)
-  fullName: Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.EventReceivedInformation(System.String, System.String, System.String, System.String, System.String)
-  nameWithType: ReceiveMessageController.EventReceivedInformation(String, String, String, String, String)
-- uid: Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.EventReceivedInformation*
-  name: EventReceivedInformation
-  href: api/Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.html#Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_EventReceivedInformation_
-  commentId: Overload:Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.EventReceivedInformation
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.EventReceivedInformation
-  nameWithType: ReceiveMessageController.EventReceivedInformation
 - uid: Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.Logger
   name: Logger
   href: api/Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.html#Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_Logger
@@ -24695,22 +24670,35 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.Logger
   nameWithType: ReceiveMessageController.Logger
-- uid: Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.MessageValidationErrors*
-  name: MessageValidationErrors
-  href: api/Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.html#Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_MessageValidationErrors_
-  commentId: Overload:Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.MessageValidationErrors
+- uid: Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.MessageReceivedInformation(System.String,System.String,System.String,System.String,System.String)
+  name: MessageReceivedInformation(String, String, String, String, String)
+  href: api/Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.html#Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_MessageReceivedInformation_System_String_System_String_System_String_System_String_System_String_
+  commentId: M:Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.MessageReceivedInformation(System.String,System.String,System.String,System.String,System.String)
+  fullName: Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.MessageReceivedInformation(System.String, System.String, System.String, System.String, System.String)
+  nameWithType: ReceiveMessageController.MessageReceivedInformation(String, String, String, String, String)
+- uid: Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.MessageReceivedInformation*
+  name: MessageReceivedInformation
+  href: api/Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.html#Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_MessageReceivedInformation_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.MessageReceivedInformation
   isSpec: "True"
-  fullName: Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.MessageValidationErrors
-  nameWithType: ReceiveMessageController.MessageValidationErrors
-- uid: Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.MessageValidationErrors``1(Hexalith.Application.States.IMessageState,System.String)
-  name: MessageValidationErrors<TMessageType>(IMessageState, String)
-  href: api/Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.html#Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_MessageValidationErrors__1_Hexalith_Application_States_IMessageState_System_String_
-  commentId: M:Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.MessageValidationErrors``1(Hexalith.Application.States.IMessageState,System.String)
-  name.vb: MessageValidationErrors(Of TMessageType)(IMessageState, String)
-  fullName: Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.MessageValidationErrors<TMessageType>(Hexalith.Application.States.IMessageState, System.String)
-  fullName.vb: Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.MessageValidationErrors(Of TMessageType)(Hexalith.Application.States.IMessageState, System.String)
-  nameWithType: ReceiveMessageController.MessageValidationErrors<TMessageType>(IMessageState, String)
-  nameWithType.vb: ReceiveMessageController.MessageValidationErrors(Of TMessageType)(IMessageState, String)
+  fullName: Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.MessageReceivedInformation
+  nameWithType: ReceiveMessageController.MessageReceivedInformation
+- uid: Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.MessageValidation*
+  name: MessageValidation
+  href: api/Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.html#Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_MessageValidation_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.MessageValidation
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.MessageValidation
+  nameWithType: ReceiveMessageController.MessageValidation
+- uid: Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.MessageValidation``1(Hexalith.Application.States.IMessageState,System.String)
+  name: MessageValidation<TMessageType>(IMessageState, String)
+  href: api/Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.html#Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_MessageValidation__1_Hexalith_Application_States_IMessageState_System_String_
+  commentId: M:Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.MessageValidation``1(Hexalith.Application.States.IMessageState,System.String)
+  name.vb: MessageValidation(Of TMessageType)(IMessageState, String)
+  fullName: Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.MessageValidation<TMessageType>(Hexalith.Application.States.IMessageState, System.String)
+  fullName.vb: Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.MessageValidation(Of TMessageType)(Hexalith.Application.States.IMessageState, System.String)
+  nameWithType: ReceiveMessageController.MessageValidation<TMessageType>(IMessageState, String)
+  nameWithType.vb: ReceiveMessageController.MessageValidation(Of TMessageType)(IMessageState, String)
 - uid: Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.Problem(Hexalith.Extensions.Common.ApplicationError)
   name: Problem(ApplicationError)
   href: api/Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.html#Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_Problem_Hexalith_Extensions_Common_ApplicationError_
@@ -24736,12 +24724,12 @@ references:
   commentId: T:Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsCommandsController
   fullName: Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsCommandsController
   nameWithType: ExternalSystemsCommandsController
-- uid: Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsCommandsController.#ctor(Hexalith.Application.Events.IIntegrationEventProcessor,Hexalith.Application.Commands.ICommandProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger)
-  name: ExternalSystemsCommandsController(IIntegrationEventProcessor, ICommandProcessor, IHostEnvironment, ILogger)
-  href: api/Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsCommandsController.html#Hexalith_Infrastructure_WebApis_ExternalSystems_Controllers_ExternalSystemsCommandsController__ctor_Hexalith_Application_Events_IIntegrationEventProcessor_Hexalith_Application_Commands_ICommandProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Logging_ILogger_
-  commentId: M:Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsCommandsController.#ctor(Hexalith.Application.Events.IIntegrationEventProcessor,Hexalith.Application.Commands.ICommandProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger)
-  fullName: Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsCommandsController.ExternalSystemsCommandsController(Hexalith.Application.Events.IIntegrationEventProcessor, Hexalith.Application.Commands.ICommandProcessor, Microsoft.Extensions.Hosting.IHostEnvironment, Microsoft.Extensions.Logging.ILogger)
-  nameWithType: ExternalSystemsCommandsController.ExternalSystemsCommandsController(IIntegrationEventProcessor, ICommandProcessor, IHostEnvironment, ILogger)
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsCommandsController.#ctor(Hexalith.Application.Commands.ICommandProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger)
+  name: ExternalSystemsCommandsController(ICommandProcessor, IHostEnvironment, ILogger)
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsCommandsController.html#Hexalith_Infrastructure_WebApis_ExternalSystems_Controllers_ExternalSystemsCommandsController__ctor_Hexalith_Application_Commands_ICommandProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Logging_ILogger_
+  commentId: M:Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsCommandsController.#ctor(Hexalith.Application.Commands.ICommandProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger)
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsCommandsController.ExternalSystemsCommandsController(Hexalith.Application.Commands.ICommandProcessor, Microsoft.Extensions.Hosting.IHostEnvironment, Microsoft.Extensions.Logging.ILogger)
+  nameWithType: ExternalSystemsCommandsController.ExternalSystemsCommandsController(ICommandProcessor, IHostEnvironment, ILogger)
 - uid: Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsCommandsController.#ctor*
   name: ExternalSystemsCommandsController
   href: api/Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsCommandsController.html#Hexalith_Infrastructure_WebApis_ExternalSystems_Controllers_ExternalSystemsCommandsController__ctor_
@@ -24749,6 +24737,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsCommandsController.ExternalSystemsCommandsController
   nameWithType: ExternalSystemsCommandsController.ExternalSystemsCommandsController
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsCommandsController.HandleAggregateExternalReferenceCommandsAsync(Hexalith.Application.States.CommandState)
+  name: HandleAggregateExternalReferenceCommandsAsync(CommandState)
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsCommandsController.html#Hexalith_Infrastructure_WebApis_ExternalSystems_Controllers_ExternalSystemsCommandsController_HandleAggregateExternalReferenceCommandsAsync_Hexalith_Application_States_CommandState_
+  commentId: M:Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsCommandsController.HandleAggregateExternalReferenceCommandsAsync(Hexalith.Application.States.CommandState)
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsCommandsController.HandleAggregateExternalReferenceCommandsAsync(Hexalith.Application.States.CommandState)
+  nameWithType: ExternalSystemsCommandsController.HandleAggregateExternalReferenceCommandsAsync(CommandState)
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsCommandsController.HandleAggregateExternalReferenceCommandsAsync*
+  name: HandleAggregateExternalReferenceCommandsAsync
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsCommandsController.html#Hexalith_Infrastructure_WebApis_ExternalSystems_Controllers_ExternalSystemsCommandsController_HandleAggregateExternalReferenceCommandsAsync_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsCommandsController.HandleAggregateExternalReferenceCommandsAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsCommandsController.HandleAggregateExternalReferenceCommandsAsync
+  nameWithType: ExternalSystemsCommandsController.HandleAggregateExternalReferenceCommandsAsync
 - uid: Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsCommandsController.HandleExternalSystemsCommandsAsync(Hexalith.Application.States.CommandState)
   name: HandleExternalSystemsCommandsAsync(CommandState)
   href: api/Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsCommandsController.html#Hexalith_Infrastructure_WebApis_ExternalSystems_Controllers_ExternalSystemsCommandsController_HandleExternalSystemsCommandsAsync_Hexalith_Application_States_CommandState_

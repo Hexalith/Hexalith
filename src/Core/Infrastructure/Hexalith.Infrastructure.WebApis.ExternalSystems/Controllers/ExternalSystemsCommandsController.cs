@@ -20,7 +20,6 @@ using Dapr;
 
 using Hexalith.Application;
 using Hexalith.Application.Commands;
-using Hexalith.Application.Events;
 using Hexalith.Application.States;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Infrastructure.WebApis.Controllers;
@@ -44,11 +43,10 @@ public class ExternalSystemsCommandsController : CommandSubmissionController
     /// <param name="hostEnvironment">The host environment.</param>
     /// <param name="logger">The logger.</param>
     protected ExternalSystemsCommandsController(
-        IIntegrationEventProcessor eventProcessor,
         ICommandProcessor commandProcessor,
         IHostEnvironment hostEnvironment,
         ILogger logger)
-        : base(eventProcessor, commandProcessor, hostEnvironment, logger)
+        : base(commandProcessor, hostEnvironment, logger)
     {
     }
 

@@ -66,7 +66,7 @@ public abstract partial class EventSubmissionController : ReceiveMessageControll
     protected async Task<ActionResult> HandleEventAsync(EventState eventState, string validAggregateName, CancellationToken cancellationToken)
     {
         ActionResult? badRequest = MessageValidation<EventState>(eventState, validAggregateName);
-        if (badRequest is not null)
+        if (badRequest != null)
         {
             return badRequest;
         }
@@ -74,7 +74,7 @@ public abstract partial class EventSubmissionController : ReceiveMessageControll
         try
         {
             await _eventProcessor
-                .SubmitAsync(eventState.Message, cancellationToken)
+                .SubmitAsync(eventState.Message!, cancellationToken)
                 .ConfigureAwait(false);
             return Accepted();
         }

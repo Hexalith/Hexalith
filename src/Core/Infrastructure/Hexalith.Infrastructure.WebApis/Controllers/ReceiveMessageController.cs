@@ -63,13 +63,16 @@ public abstract partial class ReceiveMessageController : ControllerBase
     /// <value>The logger.</value>
     protected ILogger Logger { get; }
 
-    [LoggerMessage(EventId = 1, Level = LogLevel.Information, Message = "Received message {MessageName} with Id={MessageId}, AggregateName={AggregateName}, AggregateId={AggregateId} and CorrelationId={CorrelationId}.")]
+    [LoggerMessage(
+        EventId = 1,
+        Level = LogLevel.Information,
+        Message = "Received message {MessageName} with Id={MessageId}, AggregateName={AggregateName}, AggregateId={AggregateId} and CorrelationId={CorrelationId}.")]
     public partial void MessageReceivedInformation(
-        string messageName,
-        string aggregateName,
-        string aggregateId,
-        string messageId,
-        string correlationId);
+        string? messageName,
+        string? aggregateName,
+        string? aggregateId,
+        string? messageId,
+        string? correlationId);
 
     /// <summary>
     /// Messages the validation errors.
@@ -93,11 +96,11 @@ public abstract partial class ReceiveMessageController : ControllerBase
             ? BadRequest($"Invalid data : The message state received type is {messageState.GetType().Name}, but {typeof(TMessageType).Name} was expected. MessageName={messageState.Metadata.Message.Name}; MessageId={messageState.Metadata.Message.Id}; CorrelationId={messageState.IdempotencyId}.")
             : null;
         MessageReceivedInformation(
-            messageState.Metadata.Message.Name ?? eventState.Message.TypeName,
-            messageState.Metadata.Message.Aggregate.Name,
-            messageState.Metadata.Message.Aggregate.Id,
-            messageState.Metadata.Message.Id,
-            messageState.IdempotencyId);
+            messageState?.Metadata?.Message.Name ?? messageState?.Message?.TypeName ?? "Unknown",
+            messageState?.Metadata?.Message?.Aggregate.Name,
+            messageState?.Metadata?.Message.Aggregate.Id,
+            messageState?.Metadata?.Message.Id,
+            messageState?.IdempotencyId);
         return badRequest;
     }
 
