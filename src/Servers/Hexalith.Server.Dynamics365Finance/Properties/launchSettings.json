@@ -1,6 +1,6 @@
 {
 	"profiles": {
-		"SalesOrders": {
+		"Dynamics365Finance": {
 			"commandName": "Project",
 			"launchBrowser": true,
 			"launchUrl": "swagger",

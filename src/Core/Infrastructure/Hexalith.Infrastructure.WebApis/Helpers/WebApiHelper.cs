@@ -37,8 +37,10 @@ public static class WebApiHelper
     {
         ArgumentNullException.ThrowIfNull(builder);
         ILogger startupLogger = Log.Logger = new LoggerConfiguration()
-            .Enrich.FromLogContext()
-            .WriteTo.Console()
+            .Enrich
+                .FromLogContext()
+            .WriteTo
+                .Console()
             .CreateBootstrapLogger();
 
         _ = builder.Host.UseSerilog(

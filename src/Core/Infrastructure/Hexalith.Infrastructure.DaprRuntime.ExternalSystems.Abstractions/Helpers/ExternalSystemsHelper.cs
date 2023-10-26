@@ -16,6 +16,8 @@
 
 namespace Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers;
 
+using System.Diagnostics.CodeAnalysis;
+
 using Hexalith.Application.ExternalSystems.Helpers;
 using Hexalith.Application.ExternalSystems.Services;
 using Hexalith.Extensions.Configuration;
@@ -37,14 +39,29 @@ public static class ExternalSystemsHelper
     /// <param name="services">The services.</param>
     /// <param name="configuration">The configuration.</param>
     /// <returns>IServiceCollection.</returns>
-    public static IServiceCollection AddDaprExternalSystems(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddDaprExternalSystems([NotNull] this IServiceCollection services, [NotNull] IConfiguration configuration)
     {
+        ArgumentNullException.ThrowIfNull(services);
+        ArgumentNullException.ThrowIfNull(configuration);
         services
             .AddExternalSystemsCommandHandlers()
             .ConfigureSettings<ExternalSystemReferenceSettings>(configuration)
             .ConfigureSettings<AggregateExternalReferenceSettings>(configuration)
             .TryAddTransient<IExternalSystemReferenceQueryService, ExternalSystemReferenceActorService>();
         services.TryAddTransient<IAggregateExternalReferenceQueryService, AggregateExternalReferenceQueryService>();
+        return services;
+    }
+
+    /// <summary>
+    /// Adds the dapr external systems client.
+    /// </summary>
+    /// <param name="services">The services.</param>
+    /// <returns>IServiceCollection.</returns>
+    public static IServiceCollection AddDaprExternalSystemsClient([NotNull] this IServiceCollection services)
+    {
+        ArgumentNullException.ThrowIfNull(services);
+        services.TryAddSingleton<IExternalSystemReferenceQueryService, ExternalSystemReferenceActorService>();
+        services.TryAddSingleton<IAggregateExternalReferenceQueryService, AggregateExternalReferenceQueryService>();
         return services;
     }
 }

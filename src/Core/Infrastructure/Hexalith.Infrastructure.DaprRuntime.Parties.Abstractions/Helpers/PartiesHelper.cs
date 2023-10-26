@@ -43,9 +43,23 @@ public static class PartiesHelper
     {
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
-        services.AddPartiesCommandHandlers()
+        _ = services
+            .AddPartiesCommandHandlers()
             .ConfigureSettings<CustomerSettings>(configuration)
-            .TryAddScoped<ICustomerQueryService, ActorCustomerQueryService>();
+            .AddDaprPartiesClient();
+        return services;
+    }
+
+    /// <summary>
+    /// Adds the dapr parties client.
+    /// </summary>
+    /// <param name="services">The services.</param>
+    /// <returns>IServiceCollection.</returns>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
+    public static IServiceCollection AddDaprPartiesClient([NotNull] this IServiceCollection services)
+    {
+        ArgumentNullException.ThrowIfNull(services);
+        services.TryAddSingleton<ICustomerQueryService, ActorCustomerQueryService>();
         return services;
     }
 }

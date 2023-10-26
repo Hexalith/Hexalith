@@ -4,6 +4,9 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
+using Hexalith.Application.Organizations.Helpers;
+using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers;
+using Hexalith.Infrastructure.DaprRuntime.Parties.Helpers;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers;
 using Hexalith.Infrastructure.WebApis.Helpers;
 
@@ -25,6 +28,9 @@ WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
     args);
 
 builder.Services.AddDynamics365FinanceCustomers(builder.Configuration);
+builder.Services.AddDaprPartiesClient();
+builder.Services.AddDaprExternalSystemsClient();
+builder.Services.AddOrganizations(builder.Configuration);
 
 WebApplication app = builder.Build();
 
