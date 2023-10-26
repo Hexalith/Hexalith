@@ -59,6 +59,7 @@ public abstract partial class CommandSubmissionController : ReceiveMessageContro
     /// Handle command as an asynchronous operation.
     /// </summary>
     /// <param name="commandState">State of the command.</param>
+    /// <param name="validAggregateName">Name of the valid aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
     /// <exception cref="System.ArgumentNullException">null.</exception>
@@ -73,7 +74,7 @@ public abstract partial class CommandSubmissionController : ReceiveMessageContro
         try
         {
             await _commandProcessor
-                .SubmitAsync(commandState.Message, commandState.Metadata, cancellationToken)
+                .SubmitAsync(commandState.Message!, commandState.Metadata!, cancellationToken)
                 .ConfigureAwait(false);
             return Accepted();
         }
