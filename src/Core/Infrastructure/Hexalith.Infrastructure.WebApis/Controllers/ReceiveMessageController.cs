@@ -63,8 +63,8 @@ public abstract partial class ReceiveMessageController : ControllerBase
     /// <value>The logger.</value>
     protected ILogger Logger { get; }
 
-    [LoggerMessage(EventId = 110, Level = LogLevel.Information, Message = "Received message {MessageName} with Id={MessageId}, AggregateName={AggregateName}, AggregateId={AggregateId} and CorrelationId={CorrelationId}.")]
-    public partial void EventReceivedInformation(
+    [LoggerMessage(EventId = 1, Level = LogLevel.Information, Message = "Received message {MessageName} with Id={MessageId}, AggregateName={AggregateName}, AggregateId={AggregateId} and CorrelationId={CorrelationId}.")]
+    public partial void MessageReceivedInformation(
         string messageName,
         string aggregateName,
         string aggregateId,
@@ -78,10 +78,10 @@ public abstract partial class ReceiveMessageController : ControllerBase
     /// <param name="messageState">State of the message.</param>
     /// <param name="aggregateType">Type of the aggregate.</param>
     /// <returns>System.Nullable&lt;ActionResult&gt;.</returns>
-    protected ActionResult? MessageValidationErrors<TMessageType>(IMessageState messageState, string aggregateType)
+    protected BadRequestObjectResult? MessageValidation<TMessageType>(IMessageState messageState, string aggregateType)
         where TMessageType : IMessageState
     {
-        return messageState == null
+        BadRequestObjectResult? badRequest = messageState == null
             ? BadRequest("Invalid data : Message state received is null.")
             : messageState.Metadata == null
             ? BadRequest($"Invalid data : Message metadata received is null. CorrelationId={messageState.IdempotencyId}.")
@@ -91,7 +91,14 @@ public abstract partial class ReceiveMessageController : ControllerBase
             ? BadRequest($"Invalid data : The message aggregate is {messageState.Message.AggregateName}, but {aggregateType} was expected. MessageName={messageState.Metadata.Message.Name}; MessageId={messageState.Metadata.Message.Id}; CorrelationId={messageState.IdempotencyId}.")
             : messageState is not TMessageType
             ? BadRequest($"Invalid data : The message state received type is {messageState.GetType().Name}, but {typeof(TMessageType).Name} was expected. MessageName={messageState.Metadata.Message.Name}; MessageId={messageState.Metadata.Message.Id}; CorrelationId={messageState.IdempotencyId}.")
-            : (ActionResult?)null;
+            : null;
+        MessageReceivedInformation(
+            messageState.Metadata.Message.Name ?? eventState.Message.TypeName,
+            messageState.Metadata.Message.Aggregate.Name,
+            messageState.Metadata.Message.Aggregate.Id,
+            messageState.Metadata.Message.Id,
+            messageState.IdempotencyId);
+        return badRequest;
     }
 
     /// <summary>

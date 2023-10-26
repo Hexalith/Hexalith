@@ -64,25 +64,14 @@ public abstract partial class CommandSubmissionController : ReceiveMessageContro
     /// <exception cref="System.ArgumentNullException">null.</exception>
     protected async Task<ActionResult> HandleCommandAsync(CommandState commandState, string validAggregateName, CancellationToken cancellationToken)
     {
-        ActionResult? badRequest = MessageValidationErrors<CommandState>(commandState, validAggregateName);
+        ActionResult? badRequest = MessageValidation<CommandState>(commandState, validAggregateName);
         if (badRequest is not null)
         {
             return badRequest;
         }
 
-        if (commandState == null || commandState.Message == null || commandState.Metadata == null)
-        {
-            return BadRequest("Invalid command state message.");
-        }
-
         try
         {
-            EventReceivedInformation(
-            commandState.Metadata.Message.Name ?? commandState.Message.TypeName,
-            commandState.Metadata.Message.Aggregate.Name,
-            commandState.Metadata.Message.Aggregate.Id,
-            commandState.Metadata.Message.Id,
-            commandState.IdempotencyId);
             await _commandProcessor
                 .SubmitAsync(commandState.Message, commandState.Metadata, cancellationToken)
                 .ConfigureAwait(false);

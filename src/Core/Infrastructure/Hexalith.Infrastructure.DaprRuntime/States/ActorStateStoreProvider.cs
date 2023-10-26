@@ -36,23 +36,17 @@ public class ActorStateStoreProvider : IStateStoreProvider
     }
 
     /// <inheritdoc/>
-    public async Task AddStateAsync<T>(string key, T value, CancellationToken cancellationToken)
-    {
-        await _actorStateManager.SetStateAsync(key, value, cancellationToken);
-    }
+    public async Task AddStateAsync<T>(string key, T value, CancellationToken cancellationToken) => await _actorStateManager.SetStateAsync(key, value, cancellationToken).ConfigureAwait(false);
 
     /// <inheritdoc/>
-    public async Task<T> GetOrAddStateAsync<T>(string key, T value, CancellationToken cancellationToken)
-    {
-        return await _actorStateManager.GetOrAddStateAsync(key, value, cancellationToken);
-    }
+    public async Task<T> GetOrAddStateAsync<T>(string key, T value, CancellationToken cancellationToken) => await _actorStateManager.GetOrAddStateAsync(key, value, cancellationToken).ConfigureAwait(false);
 
     /// <inheritdoc/>
     public async Task<T> GetStateAsync<T>(string key, CancellationToken cancellationToken)
     {
         try
         {
-            return await _actorStateManager.GetStateAsync<T>(key, cancellationToken);
+            return await _actorStateManager.GetStateAsync<T>(key, cancellationToken).ConfigureAwait(false);
         }
         catch (NotSupportedException ex)
         {
@@ -61,21 +55,15 @@ public class ActorStateStoreProvider : IStateStoreProvider
     }
 
     /// <inheritdoc/>
-    public async Task SaveChangesAsync(CancellationToken cancellationToken)
-    {
-        await _actorStateManager.SaveStateAsync(cancellationToken);
-    }
+    public async Task SaveChangesAsync(CancellationToken cancellationToken) => await _actorStateManager.SaveStateAsync(cancellationToken).ConfigureAwait(false);
 
     /// <inheritdoc/>
-    public async Task SetStateAsync<T>(string key, T value, CancellationToken cancellationToken)
-    {
-        await _actorStateManager.SetStateAsync(key, value, cancellationToken);
-    }
+    public async Task SetStateAsync<T>(string key, T value, CancellationToken cancellationToken) => await _actorStateManager.SetStateAsync(key, value, cancellationToken).ConfigureAwait(false);
 
     /// <inheritdoc/>
     public async Task<Extensions.Common.ConditionalValue<T>> TryGetStateAsync<T>(string key, CancellationToken cancellationToken)
     {
-        ConditionalValue<T> result = await _actorStateManager.TryGetStateAsync<T>(key, cancellationToken);
+        ConditionalValue<T> result = await _actorStateManager.TryGetStateAsync<T>(key, cancellationToken).ConfigureAwait(false);
         return result.HasValue ? new Extensions.Common.ConditionalValue<T>(result.Value) : new Extensions.Common.ConditionalValue<T>();
     }
 }

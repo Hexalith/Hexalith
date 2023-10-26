@@ -65,7 +65,7 @@ public abstract partial class EventSubmissionController : ReceiveMessageControll
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
     protected async Task<ActionResult> HandleEventAsync(EventState eventState, string validAggregateName, CancellationToken cancellationToken)
     {
-        ActionResult? badRequest = MessageValidationErrors<EventState>(eventState, validAggregateName);
+        ActionResult? badRequest = MessageValidation<EventState>(eventState, validAggregateName);
         if (badRequest is not null)
         {
             return badRequest;
@@ -73,12 +73,6 @@ public abstract partial class EventSubmissionController : ReceiveMessageControll
 
         try
         {
-            EventReceivedInformation(
-            eventState.Metadata.Message.Name ?? eventState.Message.TypeName,
-            eventState.Metadata.Message.Aggregate.Name,
-            eventState.Metadata.Message.Aggregate.Id,
-            eventState.Metadata.Message.Id,
-            eventState.IdempotencyId);
             await _eventProcessor.SubmitAsync(eventState.Message, cancellationToken).ConfigureAwait(false);
             return Accepted();
         }

@@ -95,8 +95,8 @@ public class ApplicationExceptionNotification : BaseNotification
               sourceAggregateName,
               sourceAggregateId,
               (exception ?? throw new ArgumentNullException(nameof(exception))).Error?.Title ?? "Error",
-              (exception.Error == null || string.IsNullOrWhiteSpace(exception.Error.Detail)) ? exception.FullMessage() : StringHelper.FormatWithNamedPlaceholders(CultureInfo.InvariantCulture, exception.Error.Detail, exception.Error.Arguments?.ToArray()),
-              (exception.Error == null || string.IsNullOrWhiteSpace(exception.Error.TechnicalDetail)) ? exception.FullMessage() : StringHelper.FormatWithNamedPlaceholders(CultureInfo.InvariantCulture, exception.Error.TechnicalDetail, exception.Error.TechnicalArguments.ToArray()))
+              (exception.Error == null || string.IsNullOrWhiteSpace(exception.Error.Detail)) ? exception.FullMessage() : StringHelper.FormatWithNamedPlaceholders(CultureInfo.InvariantCulture, exception.Error.Detail, exception.Error.Arguments),
+              (exception.Error == null || string.IsNullOrWhiteSpace(exception.Error.TechnicalDetail)) ? exception.FullMessage() : StringHelper.FormatWithNamedPlaceholders(CultureInfo.InvariantCulture, exception.Error.TechnicalDetail, exception.Error.TechnicalArguments))
     {
     }
 }

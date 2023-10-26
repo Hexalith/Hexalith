@@ -92,6 +92,8 @@ public class SettingsException<TSettings> : ArgumentException
     /// </summary>
     /// <param name="argument">The argument.</param>
     /// <param name="paramName">Name of the parameter.</param>
+#pragma warning disable CA1000 // Do not declare static members on generic types
+
     public static void ThrowIfUndefined(
         [NotNull] object? argument,
         [CallerArgumentExpression("argument")] string? paramName = null)
@@ -102,6 +104,8 @@ public class SettingsException<TSettings> : ArgumentException
             Throw($"The {TSettings.ConfigurationName()}.{(parts.Length > 1 ? parts[1] : "?")} setting has not been defined.", paramName);
         }
     }
+
+#pragma warning restore CA1000 // Do not declare static members on generic types
 
     /// <summary>
     /// Throws the specified message.
