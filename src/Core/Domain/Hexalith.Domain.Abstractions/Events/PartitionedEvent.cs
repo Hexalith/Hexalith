@@ -8,6 +8,8 @@
 // ***********************************************************************
 // <copyright file="PartitionedEvent.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -36,14 +38,14 @@ public abstract class PartitionedEvent : BaseEvent
     /// <summary>
     /// Initializes a new instance of the <see cref="PartitionedEvent" /> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     protected PartitionedEvent() => PartitionId = string.Empty;
 
     /// <summary>
-    /// Gets the partition identifier.
+    /// Gets or sets the partition identifier.
     /// </summary>
     /// <value>The partition identifier.</value>
     [DataMember(Order = 1)]
     [JsonPropertyOrder(1)]
-    public string PartitionId { get; }
+    public string PartitionId { get; set; }
 }

@@ -31,9 +31,10 @@ using Hexalith.Extensions;
 public class AddExternalSystemReference : ExternalSystemReferenceCommand
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="AddExternalSystemReference" /> class.
+    /// Initializes a new instance of the <see cref="AddExternalSystemReference"/> class.
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
+    /// <param name="companyId">The company identifier.</param>
     /// <param name="systemId">The system identifier.</param>
     /// <param name="referenceAggregateName">Name of the reference aggregate.</param>
     /// <param name="externalId">The external identifier.</param>
@@ -41,23 +42,20 @@ public class AddExternalSystemReference : ExternalSystemReferenceCommand
     [JsonConstructor]
     public AddExternalSystemReference(
         string partitionId,
+        string companyId,
         string systemId,
         string referenceAggregateName,
         string externalId,
         string referenceAggregateId)
-        : base(partitionId, systemId, referenceAggregateName, externalId) => ReferenceAggregateId = referenceAggregateId;
+        : base(partitionId, companyId, systemId, referenceAggregateName, externalId, referenceAggregateId)
+    {
+    }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AddExternalSystemReference" /> class.
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    public AddExternalSystemReference() => ReferenceAggregateId = string.Empty;
-
-    /// <summary>
-    /// Gets or sets the identifier.
-    /// </summary>
-    /// <value>The identifier.</value>
-    [DataMember(Order = 10)]
-    [JsonPropertyOrder(10)]
-    public string ReferenceAggregateId { get; set; }
+    public AddExternalSystemReference()
+    {
+    }
 }

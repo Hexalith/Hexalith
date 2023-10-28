@@ -34,16 +34,14 @@ public class Dynamics365FinanceCustomerRegisteredHandler : Dynamics365FinanceCus
     /// </summary>
     /// <param name="dateTimeService">The date time service.</param>
     /// <param name="customerService">The customer service.</param>
-    /// <param name="externalReferenceService">The external reference service.</param>
-    /// <param name="aggregateExternalReferenceService">The aggregate external reference service.</param>
+    /// <param name="externalReferenceMapperService">The external reference service.</param>
     /// <param name="settings">The settings.</param>
     public Dynamics365FinanceCustomerRegisteredHandler(
         IDateTimeService dateTimeService,
         ICustomerQueryService customerService,
-        IExternalSystemReferenceQueryService externalReferenceService,
-        IAggregateExternalReferenceQueryService aggregateExternalReferenceService,
+        IExternalReferenceMapperService externalReferenceMapperService,
         IOptions<OrganizationSettings> settings)
-        : base(dateTimeService, customerService, externalReferenceService, aggregateExternalReferenceService, settings)
+        : base(dateTimeService, customerService, externalReferenceMapperService, settings)
     {
     }
 }

@@ -22,6 +22,7 @@ using System.Text.Json.Serialization;
 using Hexalith.Application.Organizations.Commands;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
+using Hexalith.Extensions;
 
 /// <summary>
 /// Class CustomerEvent.
@@ -46,7 +47,7 @@ public abstract class CustomerCommand : CompanyEntityCommand
     /// <summary>
     /// Initializes a new instance of the <see cref="CustomerCommand" /> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     protected CustomerCommand()
     {
     }

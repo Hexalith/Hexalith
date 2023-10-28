@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 using Hexalith.Domain.Aggregates;
+using Hexalith.Extensions;
 
 /// <summary>
 /// Class CustomerEvent.
@@ -44,7 +45,7 @@ public abstract class CustomerEvent : CompanyEntityEvent
     /// <summary>
     /// Initializes a new instance of the <see cref="CustomerEvent" /> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     protected CustomerEvent()
     {
     }

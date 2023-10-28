@@ -31,7 +31,7 @@ public abstract class CompanyEvent : PartitionedEvent
     /// <summary>
     /// Initializes a new instance of the <see cref="CompanyEvent"/> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     protected CompanyEvent() => CompanyId = string.Empty;
 
     /// <summary>

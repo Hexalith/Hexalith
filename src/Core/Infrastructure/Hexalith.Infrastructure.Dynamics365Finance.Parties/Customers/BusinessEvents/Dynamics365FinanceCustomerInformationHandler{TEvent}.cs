@@ -43,11 +43,6 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
     where TEvent : Dynamics365FinanceCustomerInformationBusinessEvent
 {
     /// <summary>
-    /// The aggregate external reference service.
-    /// </summary>
-    private readonly IAggregateExternalReferenceQueryService _aggregateExternalReferenceService;
-
-    /// <summary>
     /// The customer service.
     /// </summary>
     private readonly ICustomerQueryService _customerService;
@@ -60,7 +55,7 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
     /// <summary>
     /// The external reference service.
     /// </summary>
-    private readonly IExternalSystemReferenceQueryService _externalReferenceService;
+    private readonly IExternalReferenceMapperService _externalReferenceMapperService;
 
     private readonly string _partitionId;
 
@@ -69,28 +64,25 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
     /// </summary>
     /// <param name="dateTimeService">The date time service.</param>
     /// <param name="customerService">The customer service.</param>
-    /// <param name="externalReferenceService">The external reference service.</param>
+    /// <param name="externalReferenceMapperService">The external reference service.</param>
     /// <param name="aggregateExternalReferenceService">The aggregate external reference service.</param>
     /// <param name="settings">The settings.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
     protected Dynamics365FinanceCustomerInformationHandler(
         IDateTimeService dateTimeService,
         ICustomerQueryService customerService,
-        IExternalSystemReferenceQueryService externalReferenceService,
-        IAggregateExternalReferenceQueryService aggregateExternalReferenceService,
+        IExternalReferenceMapperService externalReferenceMapperService,
         IOptions<OrganizationSettings> settings)
     {
         ArgumentNullException.ThrowIfNull(dateTimeService);
         ArgumentNullException.ThrowIfNull(customerService);
-        ArgumentNullException.ThrowIfNull(externalReferenceService);
-        ArgumentNullException.ThrowIfNull(aggregateExternalReferenceService);
+        ArgumentNullException.ThrowIfNull(externalReferenceMapperService);
         ArgumentNullException.ThrowIfNull(settings);
         SettingsException<OrganizationSettings>.ThrowIfNullOrEmpty(settings.Value.DefaultPartitionId);
         _partitionId = settings.Value.DefaultPartitionId;
         _dateTimeService = dateTimeService;
         _customerService = customerService;
-        _externalReferenceService = externalReferenceService;
-        _aggregateExternalReferenceService = aggregateExternalReferenceService;
+        _externalReferenceMapperService = externalReferenceMapperService;
     }
 
     /// <inheritdoc/>
@@ -111,33 +103,20 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
         {
             foreach (ExternalReference reference in @event.ExternalReferences)
             {
-                AddAggregateExternalReference addAggregateExternalReference = new(
-                        _partitionId,
-                        customerAggregateName,
-                        customerAggregateId,
-                        reference.SystemId,
-                        reference.ExternalId);
-                if (await _aggregateExternalReferenceService
+                if (await _externalReferenceMapperService
                     .GetExternalIdAsync(
-                        addAggregateExternalReference.AggregateId,
+                        customerAggregateId,
                         reference.SystemId,
                         cancellationToken)
                     .ConfigureAwait(false) != reference.ExternalId)
                 {
-                    commands.Add(addAggregateExternalReference);
-                }
-
-                AddExternalSystemReference mapExternalSystemReference = new(
-                        _partitionId,
-                        reference.SystemId,
-                        customerAggregateName,
-                        reference.ExternalId,
-                        customerAggregateId);
-                if (await _externalReferenceService.GetAsync(
-                    mapExternalSystemReference.AggregateId,
-                    cancellationToken)
-                    .ConfigureAwait(false) != customerAggregateId)
-                {
+                    AddExternalSystemReference mapExternalSystemReference = new(
+                            _partitionId,
+                            @event.BusinessEventLegalEntity,
+                            reference.SystemId,
+                            customerAggregateName,
+                            reference.ExternalId,
+                            customerAggregateId);
                     commands.Add(mapExternalSystemReference);
                 }
             }

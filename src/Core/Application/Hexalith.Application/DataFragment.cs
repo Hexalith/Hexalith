@@ -10,6 +10,7 @@ using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 using Hexalith.Application.StreamStores;
+using Hexalith.Extensions;
 
 /// <summary>
 /// Data fragment class.
@@ -33,11 +34,8 @@ public class DataFragment : IDataFragment
     /// Initializes a new instance of the <see cref="DataFragment"/> class.
     /// Initializer for serializers that require a parameterless constructor.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
-    public DataFragment()
-    {
-        Data = Metadata = string.Empty;
-    }
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
+    public DataFragment() => Data = Metadata = string.Empty;
 
     /// <summary>
     /// Gets the data object.

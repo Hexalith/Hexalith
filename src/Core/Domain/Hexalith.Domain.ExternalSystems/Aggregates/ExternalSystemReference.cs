@@ -39,6 +39,7 @@ using Hexalith.Domain.Exceptions;
 [DataContract]
 public record ExternalSystemReference(
     string PartitionId,
+    string CompanyId,
     string SystemId,
     string ReferenceAggregateName,
     string ExternalId,
@@ -51,6 +52,7 @@ public record ExternalSystemReference(
     public ExternalSystemReference(ExternalSystemReferenceAdded mapped)
         : this(
               (mapped ?? throw new ArgumentNullException(nameof(mapped))).PartitionId,
+              mapped.CompanyId,
               mapped.SystemId,
               mapped.ReferenceAggregateName,
               mapped.ExternalId,
@@ -71,27 +73,30 @@ public record ExternalSystemReference(
     }
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateId() => GetAggregateId(PartitionId, SystemId, ReferenceAggregateName, ExternalId);
+    protected override string DefaultAggregateId() => GetAggregateId(PartitionId, CompanyId, SystemId, ReferenceAggregateName, ExternalId);
 
     /// <summary>
     /// Gets the aggregate identifier.
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
+    /// <param name="companyId">The company identifier.</param>
     /// <param name="systemId">The system identifier.</param>
     /// <param name="referenceAggregateName">Name of the reference aggregate.</param>
     /// <param name="externalId">The external identifier.</param>
     /// <returns>System.String.</returns>
     public static string GetAggregateId(
         [NotNull] string partitionId,
+        [NotNull] string companyId,
         [NotNull] string systemId,
         [NotNull] string referenceAggregateName,
         [NotNull] string externalId)
     {
         ArgumentException.ThrowIfNullOrEmpty(partitionId);
+        ArgumentException.ThrowIfNullOrEmpty(companyId);
         ArgumentException.ThrowIfNullOrEmpty(systemId);
         ArgumentException.ThrowIfNullOrEmpty(referenceAggregateName);
         ArgumentException.ThrowIfNullOrEmpty(externalId);
-        return GetAggregateName() + Separator + partitionId + Separator + systemId + Separator + referenceAggregateName + Separator + externalId;
+        return GetAggregateName() + Separator + partitionId + Separator + companyId + Separator + systemId + Separator + referenceAggregateName + Separator + externalId;
     }
 
     /// <summary>

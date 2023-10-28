@@ -8,7 +8,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Abstractions\Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Abstractions.csproj" />
+	  <ProjectReference Include="..\..\Domain\Hexalith.Domain.ExternalSystems\Hexalith.Domain.ExternalSystems.csproj" />
+	  <ProjectReference Include="..\Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections\Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.csproj" />
 	  <ProjectReference Include="..\Hexalith.Infrastructure.WebApis\Hexalith.Infrastructure.WebApis.csproj" />
 	</ItemGroup>
 </Project>

@@ -19,6 +19,7 @@ namespace Hexalith.Application.Parties.Commands;
 using System.Runtime.Serialization;
 
 using Hexalith.Domain.ValueObjets;
+using Hexalith.Extensions;
 
 /// <summary>
 /// Class ChangeCustomerInformation.
@@ -60,7 +61,7 @@ public class ChangeCustomerInformation : CustomerCommand
     /// <summary>
     /// Initializes a new instance of the <see cref="ChangeCustomerInformation" /> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public ChangeCustomerInformation()
     {
         Name = string.Empty;

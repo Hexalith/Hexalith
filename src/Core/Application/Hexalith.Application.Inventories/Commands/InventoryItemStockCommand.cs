@@ -21,6 +21,7 @@ using System.Text.Json.Serialization;
 
 using Hexalith.Application.Organizations.Commands;
 using Hexalith.Domain.Aggregates;
+using Hexalith.Extensions;
 
 /// <summary>
 /// Class InventoryItemStockCommand.
@@ -48,7 +49,7 @@ public abstract class InventoryItemStockCommand : CompanyCommand
     /// <summary>
     /// Initializes a new instance of the <see cref="InventoryItemStockCommand" /> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     protected InventoryItemStockCommand() => LocationId = InventoryItemId = string.Empty;
 
     /// <summary>

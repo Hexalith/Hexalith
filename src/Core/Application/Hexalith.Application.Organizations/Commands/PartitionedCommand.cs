@@ -21,6 +21,7 @@ using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 using Hexalith.Application.Commands;
+using Hexalith.Extensions;
 
 /// <summary>
 /// Class PartitionedCommand.
@@ -40,7 +41,7 @@ public abstract class PartitionedCommand : BaseCommand
     /// <summary>
     /// Initializes a new instance of the <see cref="PartitionedCommand" /> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     protected PartitionedCommand() => PartitionId = string.Empty;
 
     /// <summary>

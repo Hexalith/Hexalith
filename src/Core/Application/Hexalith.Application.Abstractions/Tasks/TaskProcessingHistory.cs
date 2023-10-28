@@ -10,6 +10,8 @@ using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Extensions;
+
 /// <summary>
 /// The task processing history information.
 /// </summary>
@@ -20,21 +22,17 @@ public class TaskProcessingHistory
     /// Initializes a new instance of the <see cref="TaskProcessingHistory"/> class.
     /// </summary>
     /// <param name="createdDate">The created date.</param>
-    public TaskProcessingHistory(DateTimeOffset createdDate)
-    {
+    public TaskProcessingHistory(DateTimeOffset createdDate) =>
 #pragma warning disable CS0618 // Type or member is obsolete
         CreatedDate = createdDate;
+
 #pragma warning restore CS0618 // Type or member is obsolete
-    }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="TaskProcessingHistory"/> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
-    public TaskProcessingHistory()
-    {
-        CreatedDate = DateTimeOffset.MinValue;
-    }
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
+    public TaskProcessingHistory() => CreatedDate = DateTimeOffset.MinValue;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="TaskProcessingHistory"/> class.

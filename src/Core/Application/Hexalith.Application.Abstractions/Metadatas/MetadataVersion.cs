@@ -9,6 +9,8 @@ namespace Hexalith.Application.Metadatas;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Extensions;
+
 /// <summary>
 /// The metadata version.
 /// </summary>
@@ -30,7 +32,7 @@ public class MetadataVersion : IMetadataVersion
     /// <summary>
     /// Initializes a new instance of the <see cref="MetadataVersion"/> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public MetadataVersion()
     {
     }

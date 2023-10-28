@@ -19,6 +19,8 @@ namespace Hexalith.Domain.ValueObjets;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Extensions;
+
 /// <summary>
 /// Class ExternalReference.
 /// </summary>
@@ -28,7 +30,7 @@ public class ExternalReference
     /// <summary>
     /// Initializes a new instance of the <see cref="ExternalReference" /> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public ExternalReference() => SystemId = ExternalId = string.Empty;
 
     /// <summary>

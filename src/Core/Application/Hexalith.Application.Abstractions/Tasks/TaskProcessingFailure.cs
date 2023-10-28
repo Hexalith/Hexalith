@@ -10,6 +10,8 @@ using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Extensions;
+
 /// <summary>
 /// The task processing failure information.
 /// </summary>
@@ -37,7 +39,7 @@ public class TaskProcessingFailure
     /// <summary>
     /// Initializes a new instance of the <see cref="TaskProcessingFailure"/> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public TaskProcessingFailure()
     {
         Date = DateTimeOffset.MinValue;

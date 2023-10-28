@@ -9,6 +9,8 @@ namespace Hexalith.Application.StreamStores;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Extensions;
+
 /// <summary>
 /// Persited stream item.
 /// </summary>
@@ -31,11 +33,8 @@ public class StreamItem : IStreamItem
     /// Initializes a new instance of the <see cref="StreamItem"/> class.
     /// Initializer for serializers that require a parameterless constructor.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
-    public StreamItem()
-    {
-        Message = new DataFragment();
-    }
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
+    public StreamItem() => Message = new DataFragment();
 
     /// <summary>
     /// Gets message data.

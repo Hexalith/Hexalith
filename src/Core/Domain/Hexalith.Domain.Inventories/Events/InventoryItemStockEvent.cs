@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 using Hexalith.Domain.Aggregates;
+using Hexalith.Extensions;
 
 /// <summary>
 /// Class InventoryItemStockEvent.
@@ -47,7 +48,7 @@ public abstract class InventoryItemStockEvent : CompanyEvent
     /// <summary>
     /// Initializes a new instance of the <see cref="InventoryItemStockEvent" /> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     protected InventoryItemStockEvent() => LocationId = InventoryItemId = string.Empty;
 
     /// <summary>

@@ -9,6 +9,8 @@ namespace Hexalith.Application.Metadatas;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Extensions;
+
 /// <summary>
 /// The aggregate metadata.
 /// </summary>
@@ -18,11 +20,8 @@ public class AggregateMetadata : IAggregateMetadata
     /// <summary>
     /// Initializes a new instance of the <see cref="AggregateMetadata" /> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
-    public AggregateMetadata()
-    {
-        Id = Name = string.Empty;
-    }
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
+    public AggregateMetadata() => Id = Name = string.Empty;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AggregateMetadata" /> class.

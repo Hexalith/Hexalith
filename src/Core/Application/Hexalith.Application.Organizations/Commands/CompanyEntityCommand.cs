@@ -42,7 +42,7 @@ public abstract class CompanyEntityCommand : CompanyCommand
     /// <summary>
     /// Initializes a new instance of the <see cref="CompanyEntityCommand"/> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     protected CompanyEntityCommand() => Id = string.Empty;
 
     /// <summary>

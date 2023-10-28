@@ -28,6 +28,7 @@ using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
 using Hexalith.Application.Notifications;
+using Hexalith.Application.Projection;
 using Hexalith.Application.Requests;
 using Hexalith.Application.States;
 using Hexalith.Domain.Messages;
@@ -109,6 +110,7 @@ public static class HexalithWebApi
         builder.Services.TryAddSingleton<IStateStoreProvider, DaprClientStateStoreProvider>();
         builder.Services.TryAddSingleton<ICommandDispatcher, DependencyInjectionCommandDispatcher>();
         builder.Services.TryAddSingleton<ICommandProcessor, BusCommandProcessor>();
+        builder.Services.TryAddSingleton<IProjectionUpdateProcessor, DependencyInjectionProjectionUpdateProcessor>();
 
         return builder;
     }

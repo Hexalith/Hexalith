@@ -9,8 +9,7 @@ using Hexalith.Infrastructure.WebApis.Helpers;
 
 using Serilog;
 
-const string appName = "Hexalith External Systems";
-
+const string appDescription = "Hexalith External Systems";
 #if DEBUG
 bool debugInVisualStudio = true;
 #else
@@ -18,10 +17,10 @@ bool debugInVisualStudio = false;
 #endif
 
 WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
-    appName,
+    appDescription,
     "v1",
     debugInVisualStudio,
-    (actors) => actors.AddExternalSystems(),
+    (actors) => actors.AddExternalSystemsAggregates(),
     args);
 
 builder.Services.AddDaprExternalSystems(builder.Configuration);
@@ -30,7 +29,7 @@ WebApplication app = builder.Build();
 
 app.UseHexalith();
 
-Log.Logger.Information("Starting {AppName}.", appName);
+Log.Logger.Information("Starting {AppName}.", appDescription);
 
 try
 {
@@ -38,10 +37,10 @@ try
 }
 catch (Exception ex)
 {
-    Log.Logger.Fatal(ex, "Error starting {AppName}.", appName);
+    Log.Logger.Fatal(ex, "Error starting {AppName}.", appDescription);
     throw;
 }
 finally
 {
-    Log.Logger.Information("{AppName}, is stopped.", appName);
+    Log.Logger.Information("{AppName}, is stopped.", appDescription);
 }

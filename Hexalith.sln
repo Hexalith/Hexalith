@@ -126,8 +126,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Domain.Inventories
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Application.Inventories", "src\Core\Application\Hexalith.Application.Inventories\Hexalith.Application.Inventories.csproj", "{F554ED37-8A49-4604-8C76-FBAC60F24B54}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.DaprRuntime.ExternalSystems", "src\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime.ExternalSystems\Hexalith.Infrastructure.DaprRuntime.ExternalSystems.csproj", "{47DEF36D-688B-4305-9613-03FC017676C3}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.DaprRuntime.Inventories", "src\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime.Inventories\Hexalith.Infrastructure.DaprRuntime.Inventories.csproj", "{6A4BAE0F-C552-480E-B56D-8C5E799F9BFF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.Dynamics365Finance.Parties", "src\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365Finance.Parties\Hexalith.Infrastructure.Dynamics365Finance.Parties.csproj", "{4A5C52FF-2C9B-47CA-91A7-907722F5204F}"
@@ -165,11 +163,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Server.Dynamics365
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.DaprRuntime.Parties.Abstractions", "src\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime.Parties.Abstractions\Hexalith.Infrastructure.DaprRuntime.Parties.Abstractions.csproj", "{53512DC6-992E-4ABA-9D6D-AAF359BBB319}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Abstractions", "src\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Abstractions\Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Abstractions.csproj", "{56727F4E-70C9-49DB-A3F8-481E2832DDD0}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.DaprRuntime.Inventories.Abstractions", "src\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime.Inventories.Abstractions\Hexalith.Infrastructure.DaprRuntime.Inventories.Abstractions.csproj", "{275EC7FD-558A-4920-95E8-EF04AE313C5F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.WebApis.ExternalSystems", "src\Core\Infrastructure\Hexalith.Infrastructure.WebApis.ExternalSystems\Hexalith.Infrastructure.WebApis.ExternalSystems.csproj", "{DBEFC82E-C82B-4AF5-9FCE-130A93D58031}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.WebApis.Parties", "src\Core\Infrastructure\Hexalith.Infrastructure.WebApis.Parties\Hexalith.Infrastructure.WebApis.Parties.csproj", "{79BB1A1D-2B13-4FBB-B659-39D48EEC82F8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Aggregates", "src\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Aggregates\Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Aggregates.csproj", "{831B3337-84AD-4AB0-9312-38444AAF17B0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections", "src\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections\Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.csproj", "{FACEC4B4-B685-4853-98CA-F38587A025C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -289,10 +291,6 @@ Global
 		{F554ED37-8A49-4604-8C76-FBAC60F24B54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F554ED37-8A49-4604-8C76-FBAC60F24B54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F554ED37-8A49-4604-8C76-FBAC60F24B54}.Release|Any CPU.Build.0 = Release|Any CPU
-		{47DEF36D-688B-4305-9613-03FC017676C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{47DEF36D-688B-4305-9613-03FC017676C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{47DEF36D-688B-4305-9613-03FC017676C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{47DEF36D-688B-4305-9613-03FC017676C3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6A4BAE0F-C552-480E-B56D-8C5E799F9BFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6A4BAE0F-C552-480E-B56D-8C5E799F9BFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A4BAE0F-C552-480E-B56D-8C5E799F9BFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -353,10 +351,6 @@ Global
 		{53512DC6-992E-4ABA-9D6D-AAF359BBB319}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53512DC6-992E-4ABA-9D6D-AAF359BBB319}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53512DC6-992E-4ABA-9D6D-AAF359BBB319}.Release|Any CPU.Build.0 = Release|Any CPU
-		{56727F4E-70C9-49DB-A3F8-481E2832DDD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{56727F4E-70C9-49DB-A3F8-481E2832DDD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{56727F4E-70C9-49DB-A3F8-481E2832DDD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{56727F4E-70C9-49DB-A3F8-481E2832DDD0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{275EC7FD-558A-4920-95E8-EF04AE313C5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{275EC7FD-558A-4920-95E8-EF04AE313C5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{275EC7FD-558A-4920-95E8-EF04AE313C5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -365,6 +359,18 @@ Global
 		{DBEFC82E-C82B-4AF5-9FCE-130A93D58031}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBEFC82E-C82B-4AF5-9FCE-130A93D58031}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBEFC82E-C82B-4AF5-9FCE-130A93D58031}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79BB1A1D-2B13-4FBB-B659-39D48EEC82F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79BB1A1D-2B13-4FBB-B659-39D48EEC82F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79BB1A1D-2B13-4FBB-B659-39D48EEC82F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79BB1A1D-2B13-4FBB-B659-39D48EEC82F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{831B3337-84AD-4AB0-9312-38444AAF17B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{831B3337-84AD-4AB0-9312-38444AAF17B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{831B3337-84AD-4AB0-9312-38444AAF17B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{831B3337-84AD-4AB0-9312-38444AAF17B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FACEC4B4-B685-4853-98CA-F38587A025C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FACEC4B4-B685-4853-98CA-F38587A025C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FACEC4B4-B685-4853-98CA-F38587A025C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FACEC4B4-B685-4853-98CA-F38587A025C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -404,7 +410,6 @@ Global
 		{385AE393-5FF3-4254-8B19-82D809599B8C} = {AA983AFF-9CBC-4F2A-98E3-3CACA5039C61}
 		{862601BD-765D-4CB1-AD33-DF9034B4FBEE} = {5A9735A3-CEE9-4E50-B2FD-54F0BF402002}
 		{F554ED37-8A49-4604-8C76-FBAC60F24B54} = {AA983AFF-9CBC-4F2A-98E3-3CACA5039C61}
-		{47DEF36D-688B-4305-9613-03FC017676C3} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{6A4BAE0F-C552-480E-B56D-8C5E799F9BFF} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{4A5C52FF-2C9B-47CA-91A7-907722F5204F} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{86A5D369-AA6A-47E5-9B03-2563C56A1E38} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
@@ -422,9 +427,11 @@ Global
 		{27FAEED5-8FFB-474B-BFC0-BD870DAD993B} = {1ED57683-8967-462C-A901-F121DCAD4DC1}
 		{744C91DA-97BE-4C23-9C86-61A559E52ABE} = {7BB19707-E9C5-4FF6-B4D9-8464CF328CC0}
 		{53512DC6-992E-4ABA-9D6D-AAF359BBB319} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
-		{56727F4E-70C9-49DB-A3F8-481E2832DDD0} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{275EC7FD-558A-4920-95E8-EF04AE313C5F} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{DBEFC82E-C82B-4AF5-9FCE-130A93D58031} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
+		{79BB1A1D-2B13-4FBB-B659-39D48EEC82F8} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
+		{831B3337-84AD-4AB0-9312-38444AAF17B0} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
+		{FACEC4B4-B685-4853-98CA-F38587A025C0} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09CBB595-8996-4C7F-9C48-4C58AD9293AC}

@@ -41,7 +41,7 @@ public abstract class CompanyCommand : PartitionedCommand
     /// <summary>
     /// Initializes a new instance of the <see cref="CompanyCommand" /> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     protected CompanyCommand() => CompanyId = string.Empty;
 
     /// <summary>

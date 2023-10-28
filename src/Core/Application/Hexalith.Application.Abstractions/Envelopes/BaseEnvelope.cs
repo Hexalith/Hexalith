@@ -18,6 +18,7 @@ namespace Hexalith.Application.Envelopes;
 
 using Hexalith.Application.Metadatas;
 using Hexalith.Domain.Messages;
+using Hexalith.Extensions;
 
 /// <summary>
 /// Class BaseEnvelope.
@@ -44,7 +45,7 @@ public class BaseEnvelope<TMessage, TMetadata> : IEnvelope<TMessage, TMetadata>
     /// <summary>
     /// Initializes a new instance of the <see cref="BaseEnvelope{TMessage, TMetadata}" /> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public BaseEnvelope()
     {
         Message = default!;
@@ -55,10 +56,10 @@ public class BaseEnvelope<TMessage, TMetadata> : IEnvelope<TMessage, TMetadata>
     public TMessage Message { get; }
 
     /// <inheritdoc/>
-    IMessage IEnvelope.Message => Message;
+    public TMetadata Metadata { get; }
 
     /// <inheritdoc/>
-    public TMetadata Metadata { get; }
+    IMessage IEnvelope.Message => Message;
 
     /// <inheritdoc/>
     IMetadata IEnvelope.Metadata => Metadata;

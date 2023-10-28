@@ -9,6 +9,7 @@ namespace Hexalith.Application.Tasks;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Extensions;
 using Hexalith.Extensions.Helpers;
 
 /// <summary>
@@ -48,7 +49,7 @@ public class ResiliencyPolicy
     /// <summary>
     /// Initializes a new instance of the <see cref="ResiliencyPolicy"/> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public ResiliencyPolicy()
     {
         MaximumRetries = 0;

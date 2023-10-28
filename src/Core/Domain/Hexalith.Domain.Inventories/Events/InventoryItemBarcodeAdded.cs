@@ -19,6 +19,7 @@ namespace Hexalith.Domain.Events;
 using System.Runtime.Serialization;
 
 using Hexalith.Domain.ValueObjets;
+using Hexalith.Extensions;
 
 /// <summary>
 /// Class InventoryItemAdded.
@@ -51,7 +52,7 @@ public class InventoryItemBarcodeAdded : InventoryItemEvent
     /// <summary>
     /// Initializes a new instance of the <see cref="InventoryItemBarcodeAdded"/> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public InventoryItemBarcodeAdded()
     {
         Barcode = new ItemBarcode();

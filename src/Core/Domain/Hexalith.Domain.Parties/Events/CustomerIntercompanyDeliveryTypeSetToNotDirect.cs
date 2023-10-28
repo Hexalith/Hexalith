@@ -43,7 +43,7 @@ public class CustomerIntercompanyDeliveryTypeSetToNotDirect : CustomerEvent
     /// <summary>
     /// Initializes a new instance of the <see cref="CustomerIntercompanyDeliveryTypeSetToNotDirect"/> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public CustomerIntercompanyDeliveryTypeSetToNotDirect()
     {
     }

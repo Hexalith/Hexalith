@@ -22,6 +22,7 @@ using System.Text.Json.Serialization;
 using Hexalith.Application.Organizations.Commands;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
+using Hexalith.Extensions;
 
 /// <summary>
 /// Class CustomerEvent.
@@ -29,60 +30,73 @@ using Hexalith.Domain.Events;
 /// </summary>
 /// <seealso cref="BaseEvent" />
 [DataContract]
-public abstract class ExternalSystemReferenceCommand : PartitionedCommand
+public abstract class ExternalSystemReferenceCommand : CompanyCommand
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="ExternalSystemReferenceCommand"/> class.
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
+    /// <param name="companyId">The company identifier.</param>
     /// <param name="systemId">The system identifier.</param>
     /// <param name="referenceAggregateName">Name of the reference aggregate.</param>
     /// <param name="externalId">The external identifier.</param>
+    /// <param name="referenceAggregateId">The reference aggregate identifier.</param>
     [JsonConstructor]
     protected ExternalSystemReferenceCommand(
         string partitionId,
+        string companyId,
         string systemId,
         string referenceAggregateName,
-        string externalId)
-        : base(partitionId)
+        string externalId,
+        string referenceAggregateId)
+        : base(partitionId, companyId)
     {
         SystemId = systemId;
         ReferenceAggregateName = referenceAggregateName;
         ExternalId = externalId;
+        ReferenceAggregateId = referenceAggregateId;
     }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ExternalSystemReferenceCommand" /> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
-    protected ExternalSystemReferenceCommand() => SystemId = ReferenceAggregateName = ExternalId = string.Empty;
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
+    protected ExternalSystemReferenceCommand() => SystemId = ReferenceAggregateId = ReferenceAggregateName = ExternalId = string.Empty;
 
     /// <summary>
     /// Gets or sets the external identifier.
     /// </summary>
     /// <value>The identifier.</value>
-    [DataMember(Order = 4)]
-    [JsonPropertyOrder(4)]
+    [DataMember(Order = 5)]
+    [JsonPropertyOrder(5)]
     public string ExternalId { get; set; }
 
     /// <summary>
     /// Gets or sets the aggregate type name.
     /// </summary>
     /// <value>The identifier.</value>
-    [DataMember(Order = 3)]
-    [JsonPropertyOrder(3)]
+    [DataMember(Order = 6)]
+    [JsonPropertyOrder(6)]
+    public string ReferenceAggregateId { get; set; }
+
+    /// <summary>
+    /// Gets or sets the aggregate type name.
+    /// </summary>
+    /// <value>The identifier.</value>
+    [DataMember(Order = 4)]
+    [JsonPropertyOrder(4)]
     public string ReferenceAggregateName { get; set; }
 
     /// <summary>
     /// Gets or sets the system identifier.
     /// </summary>
     /// <value>The identifier.</value>
-    [DataMember(Order = 2)]
-    [JsonPropertyOrder(2)]
+    [DataMember(Order = 3)]
+    [JsonPropertyOrder(3)]
     public string SystemId { get; set; }
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateId() => ExternalSystemReference.GetAggregateId(PartitionId, SystemId, ReferenceAggregateName, ExternalId);
+    protected override string DefaultAggregateId() => ExternalSystemReference.GetAggregateId(PartitionId, CompanyId, SystemId, ReferenceAggregateName, ExternalId);
 
     /// <inheritdoc/>
     protected override string DefaultAggregateName() => ExternalSystemReference.GetAggregateName();

@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 using Hexalith.Domain.Messages;
+using Hexalith.Extensions;
 using Hexalith.Extensions.Serialization;
 
 /// <summary>
@@ -34,7 +35,7 @@ public class BaseMetadata : IMetadata, IPolymorphicSerializable
     /// <summary>
     /// Initializes a new instance of the <see cref="BaseMetadata"/> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public BaseMetadata()
     {
         Message = new MessageMetadata();

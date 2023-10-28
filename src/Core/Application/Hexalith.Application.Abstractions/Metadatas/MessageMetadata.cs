@@ -21,6 +21,7 @@ using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 using Hexalith.Domain.Messages;
+using Hexalith.Extensions;
 
 /// <summary>
 /// Class MessageMetadata.
@@ -33,7 +34,7 @@ public class MessageMetadata : IMessageMetadata
     /// <summary>
     /// Initializes a new instance of the <see cref="MessageMetadata" /> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public MessageMetadata()
     {
         Id = Name = string.Empty;

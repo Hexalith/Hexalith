@@ -18,6 +18,8 @@ namespace Hexalith.Application.Inventories.Commands;
 
 using System.Runtime.Serialization;
 
+using Hexalith.Extensions;
+
 /// <summary>
 /// Class InventoryItemAdded.
 /// Implements the <see cref="InventoryItemCommand" />.
@@ -51,7 +53,7 @@ public class IncreaseInventoryItemStock : InventoryItemStockCommand
     /// <summary>
     /// Initializes a new instance of the <see cref="IncreaseInventoryItemStock" /> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public IncreaseInventoryItemStock()
     {
         Quantity = 0;

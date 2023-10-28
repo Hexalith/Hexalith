@@ -1,0 +1,66 @@
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Infrastructure.WebApis.ExternalSystems
+// Author           : Jérôme Piquot
+// Created          : 10-26-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 10-27-2023
+// ***********************************************************************
+// <copyright file="ExternalSystemsIntegrationEventsController.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
+namespace Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers;
+
+using Dapr;
+
+using Hexalith.Application;
+using Hexalith.Application.Events;
+using Hexalith.Application.States;
+using Hexalith.Domain.Aggregates;
+using Hexalith.Infrastructure.WebApis.Controllers;
+
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+
+/// <summary>
+/// Class ExternalSystemsPubSubController.
+/// Implements the <see cref="EventIntegrationController" />.
+/// </summary>
+/// <seealso cref="EventIntegrationController" />
+[ApiController]
+public class ExternalSystemsIntegrationEventsController : EventIntegrationController
+{
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ExternalSystemsIntegrationEventsController" /> class.
+    /// </summary>
+    /// <param name="eventProcessor">The event processor.</param>
+    /// <param name="hostEnvironment">The host environment.</param>
+    /// <param name="logger">The logger.</param>
+    public ExternalSystemsIntegrationEventsController(
+        IIntegrationEventProcessor eventProcessor,
+        IHostEnvironment hostEnvironment,
+        ILogger logger)
+        : base(eventProcessor, hostEnvironment, logger)
+    {
+    }
+
+    /// <summary>
+    /// Handle external systems events as an asynchronous operation.
+    /// </summary>
+    /// <param name="eventState">State of the event.</param>
+    /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
+    [Topic(ApplicationConstants.EventBus, "externalsystemreference-events")]
+    [HttpPost("/handle-external-system-reference-events")]
+    public async Task<ActionResult> HandleExternalSystemsEventsAsync(EventState eventState)
+        => await HandleEventAsync(
+                eventState,
+                ExternalSystemReference.GetAggregateName(),
+                CancellationToken.None)
+            .ConfigureAwait(false);
+}

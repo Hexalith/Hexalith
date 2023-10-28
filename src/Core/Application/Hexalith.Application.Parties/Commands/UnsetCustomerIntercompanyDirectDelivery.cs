@@ -43,7 +43,7 @@ public class UnsetCustomerIntercompanyDirectDelivery : CustomerCommand
     /// <summary>
     /// Initializes a new instance of the <see cref="UnsetCustomerIntercompanyDirectDelivery" /> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public UnsetCustomerIntercompanyDirectDelivery()
     {
     }

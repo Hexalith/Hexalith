@@ -9,6 +9,8 @@ namespace Hexalith.Application.Metadatas;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Extensions;
+
 /// <summary>
 /// The context metadata.
 /// </summary>
@@ -18,7 +20,7 @@ public class ContextMetadata : IContextMetadata
     /// <summary>
     /// Initializes a new instance of the <see cref="ContextMetadata" /> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public ContextMetadata() => CorrelationId = UserId = string.Empty;
 
     /// <summary>Initializes a new instance of the <see cref="ContextMetadata" /> class.</summary>

@@ -42,7 +42,7 @@ public abstract class CompanyEntityEvent : CompanyEvent
     /// <summary>
     /// Initializes a new instance of the <see cref="CompanyEntityEvent"/> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     protected CompanyEntityEvent() => Id = string.Empty;
 
     /// <summary>

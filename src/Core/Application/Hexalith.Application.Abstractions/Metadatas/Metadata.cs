@@ -21,6 +21,7 @@ using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 using Hexalith.Domain.Messages;
+using Hexalith.Extensions;
 using Hexalith.Extensions.Helpers;
 
 /// <summary>
@@ -34,7 +35,7 @@ public class Metadata : BaseMetadata
     /// <summary>
     /// Initializes a new instance of the <see cref="Metadata" /> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public Metadata()
     {
     }

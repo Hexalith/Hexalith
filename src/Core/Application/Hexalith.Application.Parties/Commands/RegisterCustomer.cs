@@ -19,6 +19,7 @@ namespace Hexalith.Application.Parties.Commands;
 using System.Runtime.Serialization;
 
 using Hexalith.Domain.ValueObjets;
+using Hexalith.Extensions;
 
 /// <summary>
 /// Class RegisterCustomer.
@@ -60,7 +61,7 @@ public class RegisterCustomer : CustomerCommand
     /// <summary>
     /// Initializes a new instance of the <see cref="RegisterCustomer" /> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public RegisterCustomer()
     {
         Name = string.Empty;

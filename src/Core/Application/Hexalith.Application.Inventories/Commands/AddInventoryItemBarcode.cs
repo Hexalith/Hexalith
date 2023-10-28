@@ -19,6 +19,7 @@ namespace Hexalith.Application.Inventories.Commands;
 using System.Runtime.Serialization;
 
 using Hexalith.Domain.ValueObjets;
+using Hexalith.Extensions;
 
 /// <summary>
 /// Class InventoryItemAdded.
@@ -51,7 +52,7 @@ public class AddInventoryItemBarcode : InventoryItemCommand
     /// <summary>
     /// Initializes a new instance of the <see cref="AddInventoryItemBarcode"/> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public AddInventoryItemBarcode()
     {
         Barcode = new ItemBarcode();

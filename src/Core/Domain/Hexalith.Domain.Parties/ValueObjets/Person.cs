@@ -10,6 +10,8 @@ using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Extensions;
+
 /// <summary>
 /// Class Person.
 /// </summary>
@@ -42,7 +44,7 @@ public class Person
     /// <summary>
     /// Initializes a new instance of the <see cref="Person"/> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public Person()
     {
     }

@@ -41,9 +41,11 @@ public class RemoveExternalSystemReferenceHandler : CommandHandler<RemoveExterna
         ArgumentNullException.ThrowIfNull(command);
         return Task.FromResult<IEnumerable<BaseMessage>>(new ExternalSystemReferenceRemoved(
                 command.PartitionId,
+                command.CompanyId,
                 command.SystemId,
                 command.ReferenceAggregateName,
-                command.ExternalId)
+                command.ExternalId,
+                command.ReferenceAggregateId)
             .IntoArray<BaseMessage>());
     }
 

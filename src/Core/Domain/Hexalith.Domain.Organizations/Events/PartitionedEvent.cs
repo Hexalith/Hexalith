@@ -40,7 +40,7 @@ public abstract class PartitionedEvent : BaseEvent
     /// <summary>
     /// Initializes a new instance of the <see cref="PartitionedEvent" /> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     protected PartitionedEvent() => PartitionId = string.Empty;
 
     /// <summary>

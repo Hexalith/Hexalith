@@ -12,6 +12,7 @@ using System.Text.Json.Serialization;
 using Hexalith.Application.Events;
 using Hexalith.Application.Metadatas;
 using Hexalith.Domain.Events;
+using Hexalith.Extensions;
 
 /// <summary>
 /// Class EventEnvelope.
@@ -37,7 +38,7 @@ public class EventEnvelope : BaseEnvelope<BaseEvent, BaseMetadata>, IEventEnvelo
     /// <summary>
     /// Initializes a new instance of the <see cref="EventEnvelope"/> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public EventEnvelope()
     {
     }

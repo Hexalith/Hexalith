@@ -18,6 +18,8 @@ namespace Hexalith.Domain.Events;
 
 using System.Runtime.Serialization;
 
+using Hexalith.Extensions;
+
 /// <summary>
 /// Class InventoryItemAdded.
 /// Implements the <see cref="Hexalith.Domain.Events.InventoryItemEvent" />.
@@ -51,7 +53,7 @@ public class InventoryItemStockDecreased : InventoryItemStockEvent
     /// <summary>
     /// Initializes a new instance of the <see cref="InventoryItemStockDecreased" /> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public InventoryItemStockDecreased()
     {
         Quantity = 0;

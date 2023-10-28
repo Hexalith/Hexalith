@@ -10,6 +10,8 @@ using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
+using Hexalith.Extensions;
+
 /// <summary>
 /// Persited stream item.
 /// </summary>
@@ -39,11 +41,8 @@ public class JsonStreamItem : IStreamItem
     /// <summary>
     /// Initializes a new instance of the <see cref="JsonStreamItem" /> class. Initializer for serializers that require a parameterless constructor.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
-    public JsonStreamItem()
-    {
-        Data = Metadata = DataType = MetaType = string.Empty;
-    }
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
+    public JsonStreamItem() => Data = Metadata = DataType = MetaType = string.Empty;
 
     /// <summary>
     /// Gets the serialized data object.

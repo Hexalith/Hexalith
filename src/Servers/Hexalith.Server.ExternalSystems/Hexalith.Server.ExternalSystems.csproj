@@ -6,7 +6,8 @@
 		<UserSecretsId>237a39d7-0bf2-4320-b09c-bd6a84e1bd34</UserSecretsId>
 	</PropertyGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime.ExternalSystems\Hexalith.Infrastructure.DaprRuntime.ExternalSystems.csproj" />
+		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Aggregates\Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Aggregates.csproj" />
+		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections\Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.csproj" />
 		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.WebApis.ExternalSystems\Hexalith.Infrastructure.WebApis.ExternalSystems.csproj" />
 	</ItemGroup>
 </Project>

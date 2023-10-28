@@ -18,6 +18,8 @@ namespace Hexalith.Application.Inventories.Commands;
 
 using System.Runtime.Serialization;
 
+using Hexalith.Extensions;
+
 /// <summary>
 /// Class InventoryItemInformationChanged.
 /// Implements the <see cref="InventoryItemCommand" />.
@@ -49,7 +51,7 @@ public class ChangeInventoryItemInformation : InventoryItemCommand
     /// <summary>
     /// Initializes a new instance of the <see cref="ChangeInventoryItemInformation" /> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public ChangeInventoryItemInformation()
     {
         Name = string.Empty;

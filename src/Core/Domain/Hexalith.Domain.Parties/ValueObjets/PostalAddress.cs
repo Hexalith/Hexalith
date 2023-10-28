@@ -10,6 +10,8 @@ using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Extensions;
+
 /// <summary>
 /// Class PostalAddress.
 /// </summary>
@@ -66,7 +68,7 @@ public class PostalAddress
     /// <summary>
     /// Initializes a new instance of the <see cref="PostalAddress" /> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public PostalAddress()
     {
     }

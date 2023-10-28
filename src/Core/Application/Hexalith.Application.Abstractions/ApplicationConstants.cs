@@ -32,6 +32,11 @@ public static class ApplicationConstants
     public const string EventBus = "event-bus";
 
     /// <summary>
+    /// The identifier part separator.
+    /// </summary>
+    public const string IdPartSeparator = "-";
+
+    /// <summary>
     /// The notification bus name.
     /// </summary>
     public const string NotificationBus = "notification-bus";
@@ -40,6 +45,11 @@ public static class ApplicationConstants
     /// The request bus name.
     /// </summary>
     public const string RequestBus = "request-bus";
+
+    /// <summary>
+    /// The state name.
+    /// </summary>
+    public const string StateName = "state";
 
     /// <summary>
     /// The system user name.

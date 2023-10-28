@@ -19,9 +19,9 @@ namespace Hexalith.Application.Inventories.Commands;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Application.Commands;
 using Hexalith.Application.Organizations.Commands;
 using Hexalith.Domain.Aggregates;
+using Hexalith.Extensions;
 
 /// <summary>
 /// Class InventoryItemCommand.
@@ -46,9 +46,10 @@ public abstract class InventoryItemCommand : CompanyEntityCommand
     /// <summary>
     /// Initializes a new instance of the <see cref="InventoryItemCommand" /> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     protected InventoryItemCommand()
-    { }
+    {
+    }
 
     /// <inheritdoc/>
     protected override string DefaultAggregateId() => InventoryItem.GetAggregateId(PartitionId, CompanyId, Id);

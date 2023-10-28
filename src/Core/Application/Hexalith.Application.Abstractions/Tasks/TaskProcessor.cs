@@ -10,6 +10,8 @@ using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Extensions;
+
 /// <summary>
 /// The task processor.
 /// </summary>
@@ -20,7 +22,7 @@ public class TaskProcessor : ITaskProcessor
     /// Initializes a new instance of the <see cref="TaskProcessor" /> class.
     /// Initialize the task processor.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public TaskProcessor()
     {
         Status = TaskProcessorStatus.New;

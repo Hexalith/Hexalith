@@ -31,14 +31,14 @@ public abstract class CompanyEvent : PartitionedEvent
     /// <summary>
     /// Initializes a new instance of the <see cref="CompanyEvent"/> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     protected CompanyEvent() => CompanyId = string.Empty;
 
     /// <summary>
-    /// Gets the company identifier.
+    /// Gets or sets the company identifier.
     /// </summary>
     /// <value>The company identifier.</value>
     [DataMember(Order = 2)]
     [JsonPropertyOrder(2)]
-    public string CompanyId { get; }
+    public string CompanyId { get; set; }
 }

@@ -9,6 +9,8 @@ namespace Hexalith.Application.Metadatas;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Extensions;
+
 /// <summary>
 /// The message version.
 /// </summary>
@@ -18,7 +20,7 @@ public class MessageVersion : IMessageVersion
     /// <summary>
     /// Initializes a new instance of the <see cref="MessageVersion"/> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public MessageVersion()
     {
     }

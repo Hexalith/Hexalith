@@ -41,6 +41,7 @@ public class AddExternalSystemReferenceHandler : CommandHandler<AddExternalSyste
         ArgumentNullException.ThrowIfNull(command);
         return Task.FromResult<IEnumerable<BaseMessage>>(new ExternalSystemReferenceAdded(
             command.PartitionId,
+            command.CompanyId,
             command.SystemId,
             command.ReferenceAggregateName,
             command.ExternalId,

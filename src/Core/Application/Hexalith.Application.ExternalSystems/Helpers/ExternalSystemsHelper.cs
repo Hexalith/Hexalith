@@ -34,8 +34,6 @@ public static class ExternalSystemsHelper
     public static IServiceCollection AddExternalSystemsCommandHandlers(this IServiceCollection services)
     {
         return services
-            .AddTransient<ICommandHandler<AddAggregateExternalReference>, AddAggregateExternalReferenceHandler>()
-            .AddTransient<ICommandHandler<RemoveAggregateExternalReference>, RemoveAggregateExternalReferenceHandler>()
             .AddTransient<ICommandHandler<AddExternalSystemReference>, AddExternalSystemReferenceHandler>()
             .AddTransient<ICommandHandler<RemoveExternalSystemReference>, RemoveExternalSystemReferenceHandler>();
     }

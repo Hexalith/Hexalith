@@ -19,6 +19,7 @@ namespace Hexalith.Domain.Events;
 using System.Runtime.Serialization;
 
 using Hexalith.Domain.ValueObjets;
+using Hexalith.Extensions;
 
 /// <summary>
 /// Class CustomerRegistered.
@@ -60,7 +61,7 @@ public class CustomerRegistered : CustomerEvent
     /// <summary>
     /// Initializes a new instance of the <see cref="CustomerRegistered" /> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public CustomerRegistered()
     {
         Name = string.Empty;

@@ -5,38 +5,41 @@
 // </copyright>
 
 using Hexalith.Application.Organizations.Helpers;
+using Hexalith.Domain.Aggregates;
 using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Parties.Helpers;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers;
+using Hexalith.Infrastructure.WebApis.ExternalSystems.Helpers;
 using Hexalith.Infrastructure.WebApis.Helpers;
 
 using Serilog;
 
-const string appName = "Hexalith Dynamics 365 Finance and Operations";
+const string applicationDescription = "Hexalith Dynamics 365 Finance and Operations";
 
 #if DEBUG
 bool debugInVisualStudio = true;
 #else
 bool debugInVisualStudio = false;
 #endif
-
+const string applicationName = "Dynamics365Finance";
 WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
-    appName,
+    applicationDescription,
     "v1",
     debugInVisualStudio,
-    (actors) => { },
+    (actors) => actors.AddExternalSystemsMapper(applicationName, Customer.GetAggregateName()),
     args);
 
 builder.Services.AddDynamics365FinanceCustomers(builder.Configuration);
 builder.Services.AddDaprPartiesClient();
-builder.Services.AddDaprExternalSystemsClient();
+builder.Services.AddDaprExternalSystemsMapper(applicationName, Customer.GetAggregateName());
+builder.Services.AddExternalSystemsMapperUpdate(applicationName);
 builder.Services.AddOrganizations(builder.Configuration);
 
 WebApplication app = builder.Build();
 
 app.UseHexalith();
 
-Log.Logger.Information("Starting {AppName}.", appName);
+Log.Logger.Information("Starting {AppName}.", applicationDescription);
 
 try
 {
@@ -44,10 +47,10 @@ try
 }
 catch (Exception ex)
 {
-    Log.Logger.Fatal(ex, "Error starting {AppName}.", appName);
+    Log.Logger.Fatal(ex, "Error starting {AppName}.", applicationDescription);
     throw;
 }
 finally
 {
-    Log.Logger.Information("{AppName}, is stopped.", appName);
+    Log.Logger.Information("{AppName}, is stopped.", applicationDescription);
 }
