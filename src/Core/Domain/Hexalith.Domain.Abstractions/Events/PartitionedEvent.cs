@@ -20,6 +20,8 @@ using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Extensions;
+
 /// <summary>
 /// Class PartitionedEvent.
 /// Implements the <see cref="Hexalith.Domain.Events.BaseEvent" />.

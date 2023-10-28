@@ -14,8 +14,8 @@
 		<ProjectReference Include="..\..\Application\Hexalith.Application\Hexalith.Application.csproj" />
 		<ProjectReference Include="..\..\Common\Hexalith.Extensions\Hexalith.Extensions.csproj" />
 		<ProjectReference Include="..\Hexalith.Infrastructure.AzureActiveDirectory\Hexalith.Infrastructure.AzureActiveDirectory.csproj" />
-		<ProjectReference Include="..\Hexalith.Infrastructure.WebApis\Hexalith.Infrastructure.WebApis.csproj" />
 		<ProjectReference Include="..\Hexalith.Infrastructure.Serialization\Hexalith.Infrastructure.Serialization.csproj" />
+		<ProjectReference Include="..\Hexalith.Infrastructure.WebApis\Hexalith.Infrastructure.WebApis.csproj" />
 	</ItemGroup>
 
 </Project>

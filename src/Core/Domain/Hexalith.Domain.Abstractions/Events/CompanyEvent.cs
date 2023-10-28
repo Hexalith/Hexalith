@@ -10,6 +10,8 @@ using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Extensions;
+
 /// <summary>
 /// Class CompanyEvent.
 /// Implements the <see cref="Hexalith.Domain.Events.PartitionedEvent" />.

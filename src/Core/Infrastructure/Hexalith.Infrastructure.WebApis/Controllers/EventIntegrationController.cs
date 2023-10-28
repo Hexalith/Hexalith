@@ -6,7 +6,7 @@
 // Last Modified By : JérômePiquot
 // Last Modified On : 10-26-2023
 // ***********************************************************************
-// <copyright file="EventSubmissionController.cs" company="Fiveforty SAS Paris France">
+// <copyright file="EventIntegrationController.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -18,6 +18,7 @@ namespace Hexalith.Infrastructure.WebApis.Controllers;
 using Hexalith.Application.Errors;
 using Hexalith.Application.Events;
 using Hexalith.Application.Helpers;
+using Hexalith.Application.Projection;
 using Hexalith.Application.States;
 
 using Microsoft.AspNetCore.Mvc;
@@ -37,23 +38,28 @@ public abstract partial class EventIntegrationController : ReceiveMessageControl
     /// </summary>
     private readonly IIntegrationEventProcessor _eventProcessor;
 
+    private readonly IProjectionUpdateProcessor _projectionProcessor;
+
     /// <summary>
-    /// Initializes a new instance of the <see cref="EventIntegrationController" /> class.
+    /// Initializes a new instance of the <see cref="EventIntegrationController"/> class.
     /// </summary>
     /// <param name="eventProcessor">The event processor.</param>
-    /// <param name="commandProcessor">The command processor.</param>
+    /// <param name="projectionProcessor">The projection processor.</param>
     /// <param name="hostEnvironment">The host environment.</param>
     /// <param name="logger">The logger.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
     protected EventIntegrationController(
         IIntegrationEventProcessor eventProcessor,
+        IProjectionUpdateProcessor projectionProcessor,
         IHostEnvironment hostEnvironment,
         ILogger logger)
         : base(hostEnvironment, logger)
     {
         ArgumentNullException.ThrowIfNull(eventProcessor);
+        ArgumentNullException.ThrowIfNull(projectionProcessor);
 
         _eventProcessor = eventProcessor;
+        _projectionProcessor = projectionProcessor;
     }
 
     /// <summary>
@@ -75,6 +81,9 @@ public abstract partial class EventIntegrationController : ReceiveMessageControl
         {
             await _eventProcessor
                 .SubmitAsync(eventState.Message!, cancellationToken)
+                .ConfigureAwait(false);
+            await _projectionProcessor
+                .ApplyAsync(eventState.Message!, eventState.Metadata!, cancellationToken)
                 .ConfigureAwait(false);
             return Accepted();
         }

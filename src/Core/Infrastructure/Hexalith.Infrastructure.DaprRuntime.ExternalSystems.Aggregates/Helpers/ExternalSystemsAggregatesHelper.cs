@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 09-12-2023
 // ***********************************************************************
-// <copyright file="ExternalSystemsActorsHelper.cs" company="Fiveforty SAS Paris France">
+// <copyright file="ExternalSystemsAggregatesHelper.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers;
+namespace Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Aggregates.Helpers;
 
 using System.Diagnostics.CodeAnalysis;
 

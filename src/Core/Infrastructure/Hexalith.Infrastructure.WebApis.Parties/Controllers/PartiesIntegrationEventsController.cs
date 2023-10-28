@@ -20,6 +20,7 @@ using Dapr;
 
 using Hexalith.Application;
 using Hexalith.Application.Events;
+using Hexalith.Application.Projection;
 using Hexalith.Application.States;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Infrastructure.WebApis.Controllers;
@@ -37,16 +38,18 @@ using Microsoft.Extensions.Logging;
 public class PartiesIntegrationEventsController : EventIntegrationController
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="PartiesIntegrationEventsController" /> class.
+    /// Initializes a new instance of the <see cref="PartiesIntegrationEventsController"/> class.
     /// </summary>
     /// <param name="eventProcessor">The event processor.</param>
+    /// <param name="projectionProcessor">The projection processor.</param>
     /// <param name="hostEnvironment">The host environment.</param>
     /// <param name="logger">The logger.</param>
     public PartiesIntegrationEventsController(
         IIntegrationEventProcessor eventProcessor,
+        IProjectionUpdateProcessor projectionProcessor,
         IHostEnvironment hostEnvironment,
         ILogger logger)
-        : base(eventProcessor, hostEnvironment, logger)
+        : base(eventProcessor, projectionProcessor, hostEnvironment, logger)
     {
     }
 

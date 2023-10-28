@@ -21,6 +21,7 @@ using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 using Hexalith.Domain.Events;
+using Hexalith.Extensions;
 
 /// <summary>
 /// Class PartitionedEvent.

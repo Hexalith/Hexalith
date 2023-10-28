@@ -15,10 +15,10 @@ using Hexalith.Domain.Events;
 public interface IIntegrationEventDispatcher
 {
     /// <summary>
-    /// Applies the execution of the specified event.
+    /// Applies the asynchronous.
     /// </summary>
-    /// <param name="baseEvent">The event.</param>
+    /// <param name="baseEvent">The base event.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>Task.</returns>
+    /// <returns>Task&lt;IEnumerable&lt;IEnumerable&lt;BaseCommand&gt;&gt;&gt;.</returns>
     Task<IEnumerable<IEnumerable<BaseCommand>>> ApplyAsync(IEvent baseEvent, CancellationToken cancellationToken);
 }

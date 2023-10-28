@@ -18,6 +18,8 @@ namespace Hexalith.Domain.Events;
 
 using System.Runtime.Serialization;
 
+using Hexalith.Extensions;
+
 /// <summary>
 /// Class CustomerIntercompanyDeliveryTypeSetToIndirect.
 /// Implements the <see cref="Hexalith.Domain.Events.CustomerEvent" />.

@@ -95,7 +95,7 @@ Implements the <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase</span>
       <a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.html#Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_Logger">ReceiveMessageController.Logger</a>
     </div>
     <div>
-      <a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.html#Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_MessageReceivedInformation_System_String_System_String_System_String_System_String_System_String_">ReceiveMessageController.MessageReceivedInformation(String, String, String, String, String)</a>
+      <a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.html#Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_MessageReceivedInformation_Microsoft_Extensions_Logging_ILogger_System_String_System_String_System_String_System_String_System_String_">ReceiveMessageController.MessageReceivedInformation(ILogger, String, String, String, String, String)</a>
     </div>
     <div>
       <a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.html#Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_MessageValidation__1_Hexalith_Application_States_IMessageState_System_String_">ReceiveMessageController.MessageValidation&lt;TMessageType&gt;(IMessageState, String)</a>
@@ -716,7 +716,7 @@ Implements the <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase</span>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override IEvent DeserializeAndValidate(JsonElement message)</code></pre>
+    <pre><code class="lang-csharp hljs">protected override (IEvent Event, string MessageId, string CorrelationId) DeserializeAndValidate(JsonElement message)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -745,7 +745,7 @@ Implements the <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase</span>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Hexalith.Domain.Events.IEvent.html">IEvent</a></td>
+        <td><span class="xref">System.ValueTuple</span>&lt;<a class="xref" href="Hexalith.Domain.Events.IEvent.html">IEvent</a>, <span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>

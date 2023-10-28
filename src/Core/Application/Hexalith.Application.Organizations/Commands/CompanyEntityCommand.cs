@@ -20,6 +20,8 @@ using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Extensions;
+
 /// <summary>
 /// Class CompanyEntityCommand.
 /// Implements the <see cref="Domain.Commands.CompanyCommand" />.

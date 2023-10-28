@@ -8,6 +8,7 @@ namespace Hexalith.Application.Events;
 
 using System.Threading.Tasks;
 
+using Hexalith.Application.Metadatas;
 using Hexalith.Domain.Events;
 
 /// <summary>
@@ -16,10 +17,11 @@ using Hexalith.Domain.Events;
 public interface IIntegrationEventProcessor
 {
     /// <summary>
-    /// Submit the event.
+    /// Submits the asynchronous.
     /// </summary>
-    /// <param name="baseEvent">The event.</param>
+    /// <param name="baseEvent">The base event.</param>
+    /// <param name="metadata">The metadata.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
-    Task SubmitAsync(IEvent baseEvent, CancellationToken cancellationToken);
+    Task SubmitAsync(IEvent baseEvent, IMetadata metadata, CancellationToken cancellationToken);
 }

@@ -13,6 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Hexalith.Application.Commands;
+using Hexalith.Application.Metadatas;
 using Hexalith.Domain.Events;
 
 using Microsoft.Extensions.Logging;
@@ -49,13 +50,15 @@ public class DependencyInjectionEventDispatcher : IIntegrationEventDispatcher
     protected ILogger Logger { get; }
 
     /// <inheritdoc/>
-    public async Task<IEnumerable<IEnumerable<BaseCommand>>> ApplyAsync(IEvent @event, CancellationToken cancellationToken)
+    public async Task<IEnumerable<IEnumerable<BaseCommand>>> ApplyAsync(IEvent baseEvent, IMetadata metadata, CancellationToken cancellationToken)
     {
-        Logger.LogDebug("Dispatching event {EventType} with aggregate id {AggregateName}-{AggregateId}", @event.TypeName, @event.AggregateName, @event.AggregateId);
+        Logger.LogDebug("Dispatching event {EventType} with aggregate id {AggregateName}-{AggregateId}", baseEvent.TypeName, baseEvent.AggregateName, baseEvent.AggregateId);
         return await Task.WhenAll(
-            GetHandlers(@event)
-                .Select(p => p.ApplyAsync(@event, cancellationToken)));
+            GetHandlers(baseEvent)
+                .Select(p => p.ApplyAsync(baseEvent, cancellationToken))).ConfigureAwait(false);
     }
+
+    public Task<IEnumerable<IEnumerable<BaseCommand>>> ApplyAsync(IEvent baseEvent, CancellationToken cancellationToken) => throw new NotImplementedException();
 
     /// <summary>
     /// Gets the event handler of type IEventHandler.<MyEvent>.

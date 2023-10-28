@@ -84,7 +84,7 @@ Implements the <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase</span>
     <div class="level2"><span class="xref">ReceiveMessageController</span></div>
       <div class="level3"><a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.BindingController.html">BindingController</a></div>
       <div class="level3"><a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.CommandSubmissionController.html">CommandSubmissionController</a></div>
-      <div class="level3"><a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.EventSubmissionController.html">EventSubmissionController</a></div>
+      <div class="level3"><a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.EventIntegrationController.html">EventIntegrationController</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -713,19 +713,19 @@ public abstract class ReceiveMessageController : ControllerBase</code></pre>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_MessageReceivedInformation_System_String_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.MessageReceivedInformation(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_MessageReceivedInformation_Microsoft_Extensions_Logging_ILogger_System_String_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.MessageReceivedInformation(Microsoft.Extensions.Logging.ILogger%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/ReceiveMessageController.cs/#L66">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_MessageReceivedInformation_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.MessageReceivedInformation*"></a>
-  <h4 id="Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_MessageReceivedInformation_System_String_System_String_System_String_System_String_System_String_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.MessageReceivedInformation(System.String,System.String,System.String,System.String,System.String)">MessageReceivedInformation(String, String, String, String, String)</h4>
+  <h4 id="Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_MessageReceivedInformation_Microsoft_Extensions_Logging_ILogger_System_String_System_String_System_String_System_String_System_String_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.MessageReceivedInformation(Microsoft.Extensions.Logging.ILogger,System.String,System.String,System.String,System.String,System.String)">MessageReceivedInformation(ILogger, String, String, String, String, String)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[LoggerMessage(EventId = 1, Level = LogLevel.Information, Message = &quot;Received message {MessageName} with Id={MessageId}, AggregateName={AggregateName}, AggregateId={AggregateId} and CorrelationId={CorrelationId}.&quot;)]
-public void MessageReceivedInformation(string messageName, string aggregateName, string aggregateId, string messageId, string correlationId)</code></pre>
+public static void MessageReceivedInformation(ILogger logger, string messageName, string aggregateName, string aggregateId, string messageId, string correlationId)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -737,6 +737,11 @@ public void MessageReceivedInformation(string messageName, string aggregateName,
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Logging.ILogger</span></td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">messageName</span></td>
@@ -769,7 +774,7 @@ public void MessageReceivedInformation(string messageName, string aggregateName,
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_MessageValidation__1_Hexalith_Application_States_IMessageState_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.MessageValidation%60%601(Hexalith.Application.States.IMessageState%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/ReceiveMessageController.cs/#L84">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/ReceiveMessageController.cs/#L85">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_MessageValidation_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.MessageValidation*"></a>
   <h4 id="Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_MessageValidation__1_Hexalith_Application_States_IMessageState_System_String_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.MessageValidation``1(Hexalith.Application.States.IMessageState,System.String)">MessageValidation&lt;TMessageType&gt;(IMessageState, String)</h4>
@@ -843,7 +848,7 @@ public void MessageReceivedInformation(string messageName, string aggregateName,
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_Problem_Hexalith_Extensions_Common_ApplicationError_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.Problem(Hexalith.Extensions.Common.ApplicationError)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/ReceiveMessageController.cs/#L112">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/ReceiveMessageController.cs/#L114">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_Problem_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.Problem*"></a>
   <h4 id="Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_Problem_Hexalith_Extensions_Common_ApplicationError_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.Problem(Hexalith.Extensions.Common.ApplicationError)">Problem(ApplicationError)</h4>

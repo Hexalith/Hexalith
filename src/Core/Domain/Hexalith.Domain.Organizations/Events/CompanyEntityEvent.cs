@@ -20,6 +20,8 @@ using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Extensions;
+
 /// <summary>
 /// Class CompanyEntityEvent.
 /// Implements the <see cref="CompanyEvent" />.

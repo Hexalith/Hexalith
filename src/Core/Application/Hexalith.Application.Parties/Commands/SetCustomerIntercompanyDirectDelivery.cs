@@ -18,6 +18,8 @@ namespace Hexalith.Application.Parties.Commands;
 
 using System.Runtime.Serialization;
 
+using Hexalith.Extensions;
+
 /// <summary>
 /// Class SetCustomerIntercompanyDeliveryToDirect.
 /// Implements the <see cref="Application.Commands.CustomerCommand" />.

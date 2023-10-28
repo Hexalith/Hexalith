@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 08-29-2023
 // ***********************************************************************
-// <copyright file="ExternalReference - Copy.cs" company="Fiveforty SAS Paris France">
+// <copyright file="ExternalReferenceAggregate.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -18,6 +18,8 @@ namespace Hexalith.Domain.ValueObjets;
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
+
+using Hexalith.Extensions;
 
 /// <summary>
 /// Class ExternalReferenceAggregate.

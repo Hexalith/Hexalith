@@ -5,4 +5,8 @@
   <ItemGroup>
     <PackageReference Include="Dapr.Actors" Version="$(DaprVersion)" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Application\Hexalith.Application.ExternalSystems\Hexalith.Application.ExternalSystems.csproj" />
+    <ProjectReference Include="..\Hexalith.Infrastructure.DaprRuntime\Hexalith.Infrastructure.DaprRuntime.csproj" />
+  </ItemGroup>
 </Project>
