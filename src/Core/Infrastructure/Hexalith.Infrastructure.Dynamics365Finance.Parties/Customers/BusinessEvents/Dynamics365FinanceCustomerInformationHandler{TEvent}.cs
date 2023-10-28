@@ -25,7 +25,6 @@ using Hexalith.Application.ExternalSystems.Commands;
 using Hexalith.Application.ExternalSystems.Services;
 using Hexalith.Application.Organizations.Configurations;
 using Hexalith.Application.Parties.Commands;
-using Hexalith.Application.Parties.Services;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.ValueObjets;
 using Hexalith.Extensions.Common;
@@ -42,11 +41,6 @@ using Microsoft.Extensions.Options;
 public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : IntegrationEventHandler<TEvent>
     where TEvent : Dynamics365FinanceCustomerInformationBusinessEvent
 {
-    /// <summary>
-    /// The customer service.
-    /// </summary>
-    private readonly ICustomerQueryService _customerService;
-
     /// <summary>
     /// The date time service.
     /// </summary>
@@ -70,18 +64,15 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
     /// <exception cref="System.ArgumentNullException">null.</exception>
     protected Dynamics365FinanceCustomerInformationHandler(
         IDateTimeService dateTimeService,
-        ICustomerQueryService customerService,
         IExternalReferenceMapperService externalReferenceMapperService,
         IOptions<OrganizationSettings> settings)
     {
         ArgumentNullException.ThrowIfNull(dateTimeService);
-        ArgumentNullException.ThrowIfNull(customerService);
         ArgumentNullException.ThrowIfNull(externalReferenceMapperService);
         ArgumentNullException.ThrowIfNull(settings);
         SettingsException<OrganizationSettings>.ThrowIfNullOrEmpty(settings.Value.DefaultPartitionId);
         _partitionId = settings.Value.DefaultPartitionId;
         _dateTimeService = dateTimeService;
-        _customerService = customerService;
         _externalReferenceMapperService = externalReferenceMapperService;
     }
 
@@ -122,12 +113,7 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
             }
         }
 
-        bool directDelivery = @event.InterCompanyDirectDelivery == "Yes";
-        if (!await _customerService
-            .ExistAsync(customerAggregateId, cancellationToken)
-            .ConfigureAwait(false))
-        {
-            RegisterCustomer registerCustomer = new(
+        commands.Add(new RegisterOrChangeCustomer(
                    _partitionId,
                    companyId,
                    customerId,
@@ -135,48 +121,16 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
                    @event.Contact,
                    @event.WarehouseId,
                    @event.CommissionSalesGroupId,
-                   _dateTimeService.UtcNow);
-            commands.Add(registerCustomer);
-            if (directDelivery)
-            {
-                commands.Add(new SetCustomerIntercompanyDirectDelivery(_partitionId, companyId, customerId));
-            }
-            else
-            {
-                commands.Add(new UnsetCustomerIntercompanyDirectDelivery(_partitionId, companyId, customerId));
-            }
+                   _dateTimeService.UtcNow));
+
+        bool directDelivery = @event.InterCompanyDirectDelivery == "Yes";
+        if (directDelivery)
+        {
+            commands.Add(new SetCustomerIntercompanyDirectDelivery(_partitionId, companyId, customerId));
         }
         else
         {
-            ChangeCustomerInformation changeCustomer = new(
-                   _partitionId,
-                   companyId,
-                   customerId,
-                   @event.Name,
-                   @event.Contact,
-                   @event.WarehouseId,
-                   @event.CommissionSalesGroupId,
-                   _dateTimeService.UtcNow);
-            if (await _customerService
-                .HasChangesAsync(changeCustomer, cancellationToken)
-                .ConfigureAwait(false))
-            {
-                commands.Add(changeCustomer);
-            }
-
-            if (await _customerService
-                .IsIntercompanyDirectDeliveryAsync(Customer.GetAggregateId(_partitionId, companyId, customerId), cancellationToken)
-                .ConfigureAwait(false) != directDelivery)
-            {
-                if (directDelivery)
-                {
-                    commands.Add(new SetCustomerIntercompanyDirectDelivery(_partitionId, companyId, customerId));
-                }
-                else
-                {
-                    commands.Add(new UnsetCustomerIntercompanyDirectDelivery(_partitionId, companyId, customerId));
-                }
-            }
+            commands.Add(new UnsetCustomerIntercompanyDirectDelivery(_partitionId, companyId, customerId));
         }
 
         return commands;

@@ -107,10 +107,7 @@ public class ResourceGroupBuilder : ResourceBuilder<ResourceGroupResource>
     /// <param name="sku">The sku.</param>
     /// <param name="location">The location.</param>
     /// <returns>KeyVaultBuilder.</returns>
-    public KeyVaultBuilder AddKeyVault(string name, KeyVaultSkuName? sku, string? location)
-    {
-        return new KeyVaultBuilder(AzureBuilder, this, name, sku, location, null);
-    }
+    public KeyVaultBuilder AddKeyVault(string name, KeyVaultSkuName? sku, string? location) => new(AzureBuilder, this, name, sku, location, null);
 
     /// <summary>
     /// Adds the logic workflow.
@@ -118,10 +115,7 @@ public class ResourceGroupBuilder : ResourceBuilder<ResourceGroupResource>
     /// <param name="name">The name.</param>
     /// <param name="location">The location.</param>
     /// <returns>LogicWorkflowBuilder.</returns>
-    public LogicWorkflowBuilder AddLogicWorkflow(string name, string? location)
-    {
-        return new LogicWorkflowBuilder(AzureBuilder, this, name, location, null);
-    }
+    public LogicWorkflowBuilder AddLogicWorkflow(string name, string? location) => new(AzureBuilder, this, name, location, null);
 
     /// <summary>
     /// Adds the cognitive services account.
@@ -129,15 +123,12 @@ public class ResourceGroupBuilder : ResourceBuilder<ResourceGroupResource>
     /// <param name="name">The name.</param>
     /// <param name="location">The location.</param>
     /// <returns>System.Object.</returns>
-    public CognitiveServicesAccountBuilder AddOpenAIAccount(string name, string location)
-    {
-        return new CognitiveServicesAccountBuilder(AzureBuilder, this, name, "OpenAI", location, null);
-    }
+    public CognitiveServicesAccountBuilder AddOpenAIAccount(string name, string location) => new(AzureBuilder, this, name, "OpenAI", location, null);
 
     /// <inheritdoc/>
     public override async Task<ResourceGroupResource> BuildAsync(CancellationToken cancellationToken)
     {
-        Resource ??= Existing ? await GetExistingResourceAsync(cancellationToken) : await CreateOrUpdateResourceAsync(cancellationToken);
+        Resource ??= Existing ? await GetExistingResourceAsync(cancellationToken).ConfigureAwait(false) : await CreateOrUpdateResourceAsync(cancellationToken).ConfigureAwait(false);
 
         return Resource;
     }
@@ -145,7 +136,7 @@ public class ResourceGroupBuilder : ResourceBuilder<ResourceGroupResource>
     /// <inheritdoc/>
     protected override async Task<ResourceGroupResource> CreateOrUpdateResourceAsync(CancellationToken cancellationToken)
     {
-        SubscriptionResource subscriptionResource = await Subscription.BuildAsync(cancellationToken);
+        SubscriptionResource subscriptionResource = await Subscription.BuildAsync(cancellationToken).ConfigureAwait(false);
         ResourceGroupCollection resourceGroups = subscriptionResource.GetResourceGroups();
         ResourceGroupData resourceGroupData = new(Location);
         ArmOperation<ResourceGroupResource> operation = await resourceGroups
@@ -153,21 +144,21 @@ public class ResourceGroupBuilder : ResourceBuilder<ResourceGroupResource>
                 Azure.WaitUntil.Completed,
                 Name,
                 resourceGroupData,
-                cancellationToken);
+                cancellationToken).ConfigureAwait(false);
         return operation.Value;
     }
 
     /// <inheritdoc/>
     protected override async Task<bool> ExistsAsync(CancellationToken cancellationToken)
     {
-        SubscriptionResource subscription = await Subscription.BuildAsync(cancellationToken);
-        return (await subscription.GetResourceGroups().ExistsAsync(Name, cancellationToken)).Value;
+        SubscriptionResource subscription = await Subscription.BuildAsync(cancellationToken).ConfigureAwait(false);
+        return (await subscription.GetResourceGroups().ExistsAsync(Name, cancellationToken).ConfigureAwait(false)).Value;
     }
 
     /// <inheritdoc/>
     protected override async Task<ResourceGroupResource> GetExistingResourceAsync(CancellationToken cancellationToken)
     {
-        SubscriptionResource subscription = await Subscription.BuildAsync(cancellationToken);
-        return (await subscription.GetResourceGroups().GetAsync(Name, cancellationToken)).Value;
+        SubscriptionResource subscription = await Subscription.BuildAsync(cancellationToken).ConfigureAwait(false);
+        return (await subscription.GetResourceGroups().GetAsync(Name, cancellationToken).ConfigureAwait(false)).Value;
     }
 }

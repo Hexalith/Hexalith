@@ -116,6 +116,6 @@ internal class DeploymentCommand
             location,
             tenantId,
             _loggerFactory)
-            .DeployAsync(CancellationToken.None);
+            .DeployAsync(CancellationToken.None).ConfigureAwait(false);
     }
 }

@@ -107,7 +107,7 @@ public class CognitiveServicesAccountBuilder : ResourceGroupItemBuilder<Cognitiv
     /// <inheritdoc/>
     protected override async Task<CognitiveServicesAccountResource> CreateOrUpdateResourceAsync(CancellationToken cancellationToken)
     {
-        ResourceGroupResource group = await ResourceGroup.BuildAsync(cancellationToken);
+        ResourceGroupResource group = await ResourceGroup.BuildAsync(cancellationToken).ConfigureAwait(false);
         CognitiveServicesAccountCollection accounts = group.GetCognitiveServicesAccounts();
 
         if (Data == null)
@@ -125,21 +125,21 @@ public class CognitiveServicesAccountBuilder : ResourceGroupItemBuilder<Cognitiv
                 Azure.WaitUntil.Completed,
                 Name,
                 Data,
-                cancellationToken);
+                cancellationToken).ConfigureAwait(false);
         return operation.Value;
     }
 
     /// <inheritdoc/>
     protected override async Task<bool> ExistsAsync(CancellationToken cancellationToken)
     {
-        ResourceGroupResource group = await ResourceGroup.BuildAsync(cancellationToken);
-        return (await group.GetCognitiveServicesAccounts().ExistsAsync(Name, cancellationToken)).Value;
+        ResourceGroupResource group = await ResourceGroup.BuildAsync(cancellationToken).ConfigureAwait(false);
+        return (await group.GetCognitiveServicesAccounts().ExistsAsync(Name, cancellationToken).ConfigureAwait(false)).Value;
     }
 
     /// <inheritdoc/>
     protected override async Task<CognitiveServicesAccountResource> GetExistingResourceAsync(CancellationToken cancellationToken)
     {
-        ResourceGroupResource group = await ResourceGroup.BuildAsync(cancellationToken);
-        return (await group.GetCognitiveServicesAccounts().GetAsync(Name, cancellationToken)).Value;
+        ResourceGroupResource group = await ResourceGroup.BuildAsync(cancellationToken).ConfigureAwait(false);
+        return (await group.GetCognitiveServicesAccounts().GetAsync(Name, cancellationToken).ConfigureAwait(false)).Value;
     }
 }

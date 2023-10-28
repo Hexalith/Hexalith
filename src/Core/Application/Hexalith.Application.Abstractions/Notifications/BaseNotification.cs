@@ -123,4 +123,12 @@ public class BaseNotification : BaseMessage, INotification
     [JsonPropertyOrder(5)]
     [DataMember(Order = 5)]
     public string Title { get; set; }
+
+    /// <inheritdoc/>
+    protected override string DefaultAggregateId()
+        => SourceAggregateId ?? string.Empty;
+
+    /// <inheritdoc/>
+    protected override string DefaultAggregateName()
+        => string.IsNullOrWhiteSpace(SourceAggregateName) ? ApplicationConstants.NotificationDefaultAggregateName : SourceAggregateName;
 }

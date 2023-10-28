@@ -32,7 +32,7 @@ public class KeyVaultBuilder : ResourceGroupItemBuilder<KeyVaultResource, KeyVau
 {
     private const string TypeName = "Key Vault";
 
-    private readonly Dictionary<string, string> _secrets = new();
+    private readonly Dictionary<string, string> _secrets = [];
 
     /// <summary>
     /// Initializes a new instance of the <see cref="KeyVaultBuilder" /> class.
@@ -75,10 +75,7 @@ public class KeyVaultBuilder : ResourceGroupItemBuilder<KeyVaultResource, KeyVau
         ResourceGroupBuilder resourceGroup,
         string name,
         bool existing)
-        : base(azureBuilder, resourceGroup, TypeName, name, null, existing)
-    {
-        Name = name;
-    }
+        : base(azureBuilder, resourceGroup, TypeName, name, null, existing) => Name = name;
 
     /// <summary>
     /// Gets the data.
@@ -126,15 +123,15 @@ public class KeyVaultBuilder : ResourceGroupItemBuilder<KeyVaultResource, KeyVau
     {
         ResourceGroupResource group = await ResourceGroup.BuildAsync(cancellationToken).ConfigureAwait(false);
         KeyVaultCollection keyVaults = group.GetKeyVaults();
-        if (await keyVaults.ExistsAsync(Name))
+        if (await keyVaults.ExistsAsync(Name, cancellationToken).ConfigureAwait(false))
         {
-            Azure.Response<KeyVaultResource> keyVaultResponse = await group.GetKeyVaultAsync(Name, cancellationToken);
+            Azure.Response<KeyVaultResource> keyVaultResponse = await group.GetKeyVaultAsync(Name, cancellationToken).ConfigureAwait(false);
             return keyVaultResponse.Value;
         }
 
         if (Data == null)
         {
-            SubscriptionResource subscription = await ResourceGroup.Subscription.BuildAsync(cancellationToken);
+            SubscriptionResource subscription = await ResourceGroup.Subscription.BuildAsync(cancellationToken).ConfigureAwait(false);
             Data = new KeyVaultData(
                 Location ?? group.Data.Location,
                 new KeyVaultProperties(
@@ -149,7 +146,7 @@ public class KeyVaultBuilder : ResourceGroupItemBuilder<KeyVaultResource, KeyVau
                 new KeyVaultCreateOrUpdateContent(
                     Data.Location,
                     Data.Properties),
-                cancellationToken);
+                cancellationToken).ConfigureAwait(false);
         KeyVaultResource keyVault = operation.Value;
         /*
         bool createPolicy = true;
@@ -177,13 +174,13 @@ public class KeyVaultBuilder : ResourceGroupItemBuilder<KeyVaultResource, KeyVau
     protected override async Task<bool> ExistsAsync(CancellationToken cancellationToken)
     {
         ResourceGroupResource resource = await ResourceGroup.BuildAsync(cancellationToken).ConfigureAwait(false);
-        return await resource.GetKeyVaults().ExistsAsync(Name, cancellationToken);
+        return await resource.GetKeyVaults().ExistsAsync(Name, cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
     protected override async Task<KeyVaultResource> GetExistingResourceAsync(CancellationToken cancellationToken)
     {
         ResourceGroupResource resource = await ResourceGroup.BuildAsync(cancellationToken).ConfigureAwait(false);
-        return await resource.GetKeyVaults().GetAsync(Name, cancellationToken);
+        return await resource.GetKeyVaults().GetAsync(Name, cancellationToken).ConfigureAwait(false);
     }
 }

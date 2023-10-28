@@ -24,12 +24,12 @@ public class StringStateProvider : IStateStoreProvider
     /// <summary>
     /// The state.
     /// </summary>
-    private readonly Dictionary<string, string> _state = new();
+    private readonly Dictionary<string, string> _state = [];
 
     /// <summary>
     /// The uncommitted state.
     /// </summary>
-    private readonly Dictionary<string, string> _uncommittedState = new();
+    private readonly Dictionary<string, string> _uncommittedState = [];
 
     /// <summary>
     /// Initializes a new instance of the <see cref="StringStateProvider"/> class.
@@ -67,21 +67,21 @@ public class StringStateProvider : IStateStoreProvider
     /// <inheritdoc/>
     public async Task<T> GetOrAddStateAsync<T>(string key, T value, CancellationToken cancellationToken)
     {
-        ConditionalValue<T> result = await TryGetStateAsync<T>(key, cancellationToken);
+        ConditionalValue<T> result = await TryGetStateAsync<T>(key, cancellationToken).ConfigureAwait(false);
         if (result.HasValue)
         {
             return result.Value;
         }
 
-        await AddStateAsync(key, value, cancellationToken);
+        await AddStateAsync(key, value, cancellationToken).ConfigureAwait(false);
 
-        return await GetStateAsync<T>(key, cancellationToken);
+        return await GetStateAsync<T>(key, cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
     public async Task<T> GetStateAsync<T>(string key, CancellationToken cancellationToken)
     {
-        ConditionalValue<T> result = await TryGetStateAsync<T>(key, cancellationToken);
+        ConditionalValue<T> result = await TryGetStateAsync<T>(key, cancellationToken).ConfigureAwait(false);
         return result.HasValue
             ? result.Value
             : throw new KeyNotFoundException($"The key '{key}' was not found in the state store.");

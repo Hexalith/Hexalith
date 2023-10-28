@@ -1,0 +1,106 @@
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Domain.Parties
+// Author           : Jérôme Piquot
+// Created          : 08-21-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 08-30-2023
+// ***********************************************************************
+// <copyright file="RegisterOrChangeCustomer.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
+namespace Hexalith.Application.Parties.Commands;
+
+using System.Runtime.Serialization;
+
+using Hexalith.Domain.ValueObjets;
+using Hexalith.Extensions;
+
+/// <summary>
+/// Class RegisterOrChangeCustomer.
+/// Implements the <see cref="CustomerCommand" />.
+/// </summary>
+/// <seealso cref="CustomerCommand" />
+[DataContract]
+public class RegisterOrChangeCustomer : CustomerCommand
+{
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RegisterOrChangeCustomer"/> class.
+    /// </summary>
+    /// <param name="partitionId">The partition identifier.</param>
+    /// <param name="companyId">The company identifier.</param>
+    /// <param name="id">The identifier.</param>
+    /// <param name="name">The name.</param>
+    /// <param name="contact">The contact.</param>
+    /// <param name="warehouseId">The warehouse identifier.</param>
+    /// <param name="commissionSalesGroupId">The commission sales group identifier.</param>
+    /// <param name="date">The date.</param>
+    public RegisterOrChangeCustomer(
+        string partitionId,
+        string companyId,
+        string id,
+        string name,
+        Contact contact,
+        string? warehouseId,
+        string? commissionSalesGroupId,
+        DateTimeOffset date)
+        : base(partitionId, companyId, id)
+    {
+        Name = name;
+        Contact = contact;
+        WarehouseId = warehouseId;
+        CommissionSalesGroupId = commissionSalesGroupId;
+        Date = date;
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RegisterOrChangeCustomer" /> class.
+    /// </summary>
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
+    public RegisterOrChangeCustomer()
+    {
+        Name = string.Empty;
+        Contact = new Contact();
+        Date = DateTimeOffset.MinValue;
+    }
+
+    /// <summary>
+    /// Gets or sets the commission sales group identifier.
+    /// </summary>
+    /// <value>The commission sales group identifier.</value>
+    [DataMember(Order = 16)]
+    public string? CommissionSalesGroupId { get; set; }
+
+    /// <summary>
+    /// Gets or sets the contact.
+    /// </summary>
+    /// <value>The contact.</value>
+    [DataMember(Order = 12)]
+    public Contact Contact { get; set; }
+
+    /// <summary>
+    /// Gets or sets the external ids.
+    /// </summary>
+    /// <value>The external ids.</value>
+    [DataMember(Order = 17)]
+    public DateTimeOffset Date { get; set; }
+
+    /// <summary>
+    /// Gets or sets the name.
+    /// </summary>
+    /// <value>The name.</value>
+    [DataMember(Order = 10)]
+    public string Name { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Gets or sets the warehouse identifier.
+    /// </summary>
+    /// <value>The warehouse identifier.</value>
+    [DataMember(Order = 15)]
+    public string? WarehouseId { get; set; }
+}

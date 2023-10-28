@@ -32,10 +32,7 @@ public class SubscriptionBuilder : ResourceBuilder<SubscriptionResource>
     /// <param name="azureBuilder">The azure builder.</param>
     /// <param name="id">The identifier.</param>
     public SubscriptionBuilder(AzureBuilder azureBuilder, string id)
-        : base(azureBuilder, null, "Subscription", id, true)
-    {
-        Id = id;
-    }
+        : base(azureBuilder, null, "Subscription", id, true) => Id = id;
 
     /// <summary>
     /// Gets the identifier.
@@ -44,16 +41,10 @@ public class SubscriptionBuilder : ResourceBuilder<SubscriptionResource>
     public string? Id { get; }
 
     /// <inheritdoc/>
-    public override async Task<SubscriptionResource> BuildAsync(CancellationToken cancellationToken)
-    {
-        return Resource ??= await GetExistingResourceAsync(cancellationToken);
-    }
+    public override async Task<SubscriptionResource> BuildAsync(CancellationToken cancellationToken) => Resource ??= await GetExistingResourceAsync(cancellationToken).ConfigureAwait(false);
 
     /// <inheritdoc/>
-    protected override Task<SubscriptionResource> CreateOrUpdateResourceAsync(CancellationToken cancellationToken)
-    {
-        throw new NotSupportedException("Can't create an Azure Subscription.");
-    }
+    protected override Task<SubscriptionResource> CreateOrUpdateResourceAsync(CancellationToken cancellationToken) => throw new NotSupportedException("Can't create an Azure Subscription.");
 
     /// <inheritdoc/>
     protected override async Task<bool> ExistsAsync(CancellationToken cancellationToken)

@@ -654,7 +654,7 @@ Implements the <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase</span>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Controllers_Dynamics365FinanceBindingController__ctor_FluentValidation_IValidator_Hexalith_Infrastructure_Dynamics365Finance_BusinessEvents_Dynamics365BusinessEventBase__Hexalith_Infrastructure_Dynamics365Finance_Dispatchers_IDynamics365FinanceIntegrationEventProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Logging_ILogger_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Controllers.Dynamics365FinanceBindingController.%23ctor(FluentValidation.IValidator%7BHexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase%7D%2CHexalith.Infrastructure.Dynamics365Finance.Dispatchers.IDynamics365FinanceIntegrationEventProcessor%2CMicrosoft.Extensions.Hosting.IHostEnvironment%2CMicrosoft.Extensions.Logging.ILogger)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Controllers/Dynamics365FinanceBindingController.cs/#L44">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Controllers/Dynamics365FinanceBindingController.cs/#L45">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Controllers_Dynamics365FinanceBindingController__ctor_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Controllers.Dynamics365FinanceBindingController.#ctor*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Controllers_Dynamics365FinanceBindingController__ctor_FluentValidation_IValidator_Hexalith_Infrastructure_Dynamics365Finance_BusinessEvents_Dynamics365BusinessEventBase__Hexalith_Infrastructure_Dynamics365Finance_Dispatchers_IDynamics365FinanceIntegrationEventProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Logging_ILogger_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Controllers.Dynamics365FinanceBindingController.#ctor(FluentValidation.IValidator{Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase},Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.IDynamics365FinanceIntegrationEventProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger)">Dynamics365FinanceBindingController(IValidator&lt;Dynamics365BusinessEventBase&gt;, IDynamics365FinanceIntegrationEventProcessor, IHostEnvironment, ILogger)</h4>
@@ -708,15 +708,16 @@ Implements the <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase</span>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Controllers_Dynamics365FinanceBindingController_DeserializeAndValidate_System_Text_Json_JsonElement_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Controllers.Dynamics365FinanceBindingController.DeserializeAndValidate(System.Text.Json.JsonElement)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Controllers/Dynamics365FinanceBindingController.cs/#L56">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Controllers/Dynamics365FinanceBindingController.cs/#L57">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Controllers_Dynamics365FinanceBindingController_DeserializeAndValidate_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Controllers.Dynamics365FinanceBindingController.DeserializeAndValidate*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Controllers_Dynamics365FinanceBindingController_DeserializeAndValidate_System_Text_Json_JsonElement_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Controllers.Dynamics365FinanceBindingController.DeserializeAndValidate(System.Text.Json.JsonElement)">DeserializeAndValidate(JsonElement)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Deserializes the and validate.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override (IEvent Event, string MessageId, string CorrelationId) DeserializeAndValidate(JsonElement message)</code></pre>
+    <pre><code class="lang-csharp hljs">protected override (IEvent Event, IMetadata Metadata) DeserializeAndValidate(JsonElement message)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -731,7 +732,8 @@ Implements the <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase</span>
       <tr>
         <td><span class="xref">System.Text.Json.JsonElement</span></td>
         <td><span class="parametername">message</span></td>
-        <td></td>
+        <td><p>The message.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -745,8 +747,9 @@ Implements the <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase</span>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.ValueTuple</span>&lt;<a class="xref" href="Hexalith.Domain.Events.IEvent.html">IEvent</a>, <span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
-        <td></td>
+        <td><span class="xref">System.ValueTuple</span>&lt;<a class="xref" href="Hexalith.Domain.Events.IEvent.html">IEvent</a>, <a class="xref" href="Hexalith.Application.Metadatas.IMetadata.html">IMetadata</a>&gt;</td>
+        <td><p>System.ValueTuple&lt;IEvent, IMetadata&gt;.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -757,7 +760,7 @@ Implements the <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase</span>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Controllers_Dynamics365FinanceBindingController_ValidateAndThrow_Hexalith_Infrastructure_Dynamics365Finance_BusinessEvents_Dynamics365BusinessEventBase_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Controllers.Dynamics365FinanceBindingController.ValidateAndThrow(Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Controllers/Dynamics365FinanceBindingController.cs/#L90">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Controllers/Dynamics365FinanceBindingController.cs/#L91">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Controllers_Dynamics365FinanceBindingController_ValidateAndThrow_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Controllers.Dynamics365FinanceBindingController.ValidateAndThrow*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Controllers_Dynamics365FinanceBindingController_ValidateAndThrow_Hexalith_Infrastructure_Dynamics365Finance_BusinessEvents_Dynamics365BusinessEventBase_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Controllers.Dynamics365FinanceBindingController.ValidateAndThrow(Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase)">ValidateAndThrow(Dynamics365BusinessEventBase)</h4>
@@ -808,7 +811,7 @@ Implements the <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase</span>
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Controllers_Dynamics365FinanceBindingController.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Controllers.Dynamics365FinanceBindingController%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Controllers/Dynamics365FinanceBindingController.cs/#L30" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Controllers/Dynamics365FinanceBindingController.cs/#L31" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

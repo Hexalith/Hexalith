@@ -21,6 +21,7 @@ using Hexalith.Application.Events;
 using Hexalith.Infrastructure.Dynamics365Finance.Client;
 using Hexalith.Infrastructure.Dynamics365Finance.Helpers;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents;
+using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Controller;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities;
 
 using Microsoft.Extensions.Configuration;
@@ -49,6 +50,10 @@ public static class PartiesHelper
         services.TryAddSingleton<IValidator<Dynamics365FinanceCustomerRegistered>, Dynamics365FinanceCustomerRegisteredValidator>();
         services.TryAddSingleton<IIntegrationEventHandler<Dynamics365FinanceCustomerChanged>, Dynamics365FinanceCustomerChangedHandler>();
         services.TryAddSingleton<IIntegrationEventHandler<Dynamics365FinanceCustomerRegistered>, Dynamics365FinanceCustomerRegisteredHandler>();
+        _ = services
+            .AddControllers()
+            .AddApplicationPart(typeof(Dynamics365FinanceCustomerBindingController).Assembly)
+            .AddDapr();
         return services;
     }
 }

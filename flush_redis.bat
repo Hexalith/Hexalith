@@ -1,0 +1,1 @@
+docker exec -it dapr_redis redis-cli FLUSHALL

@@ -98,7 +98,7 @@ public class LogicWorkflowBuilder : ResourceGroupItemBuilder<LogicWorkflowResour
     /// <inheritdoc/>
     protected override async Task<LogicWorkflowResource> CreateOrUpdateResourceAsync(CancellationToken cancellationToken)
     {
-        ResourceGroupResource group = await ResourceGroup.BuildAsync(cancellationToken);
+        ResourceGroupResource group = await ResourceGroup.BuildAsync(cancellationToken).ConfigureAwait(false);
         LogicWorkflowCollection workflows = group.GetLogicWorkflows();
 
         if (Data == null)
@@ -112,21 +112,21 @@ public class LogicWorkflowBuilder : ResourceGroupItemBuilder<LogicWorkflowResour
                 Azure.WaitUntil.Completed,
                 Name,
                 Data,
-                cancellationToken);
+                cancellationToken).ConfigureAwait(false);
         return operation.Value;
     }
 
     /// <inheritdoc/>
     protected override async Task<bool> ExistsAsync(CancellationToken cancellationToken)
     {
-        ResourceGroupResource group = await ResourceGroup.BuildAsync(cancellationToken);
-        return (await group.GetLogicWorkflows().ExistsAsync(Name, cancellationToken)).Value;
+        ResourceGroupResource group = await ResourceGroup.BuildAsync(cancellationToken).ConfigureAwait(false);
+        return (await group.GetLogicWorkflows().ExistsAsync(Name, cancellationToken).ConfigureAwait(false)).Value;
     }
 
     /// <inheritdoc/>
     protected override async Task<LogicWorkflowResource> GetExistingResourceAsync(CancellationToken cancellationToken)
     {
-        ResourceGroupResource group = await ResourceGroup.BuildAsync(cancellationToken);
-        return (await group.GetLogicWorkflows().GetAsync(Name, cancellationToken)).Value;
+        ResourceGroupResource group = await ResourceGroup.BuildAsync(cancellationToken).ConfigureAwait(false);
+        return (await group.GetLogicWorkflows().GetAsync(Name, cancellationToken).ConfigureAwait(false)).Value;
     }
 }

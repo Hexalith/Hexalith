@@ -42,6 +42,11 @@ public static class ApplicationConstants
     public const string NotificationBus = "notification-bus";
 
     /// <summary>
+    /// The notification default aggregate name.
+    /// </summary>
+    public const string NotificationDefaultAggregateName = "Global";
+
+    /// <summary>
     /// The request bus name.
     /// </summary>
     public const string RequestBus = "request-bus";

@@ -4,7 +4,7 @@
 // Created          : 10-24-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 10-25-2023
+// Last Modified On : 10-28-2023
 // ***********************************************************************
 // <copyright file="Dynamics365FinanceCustomerBindingController.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -16,10 +16,12 @@
 
 namespace Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Controller;
 
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 
 using FluentValidation;
 
+using Hexalith.Application.Organizations.Configurations;
 using Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents;
 using Hexalith.Infrastructure.Dynamics365Finance.Controllers;
 using Hexalith.Infrastructure.Dynamics365Finance.Dispatchers;
@@ -28,6 +30,7 @@ using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvent
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -56,6 +59,7 @@ public class Dynamics365FinanceCustomerBindingController : Dynamics365FinanceBin
     /// <param name="changedValidator">The changed validator.</param>
     /// <param name="eventProcessor">The event processor.</param>
     /// <param name="hostEnvironment">The host environment.</param>
+    /// <param name="organizationSettings">The organization settings.</param>
     /// <param name="logger">The logger.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
     public Dynamics365FinanceCustomerBindingController(
@@ -64,8 +68,9 @@ public class Dynamics365FinanceCustomerBindingController : Dynamics365FinanceBin
         IValidator<Dynamics365FinanceCustomerChanged> changedValidator,
         IDynamics365FinanceIntegrationEventProcessor eventProcessor,
         IHostEnvironment hostEnvironment,
+        IOptions<OrganizationSettings> organizationSettings,
         ILogger<Dynamics365FinanceCustomerBindingController> logger)
-        : base(metadataValidator, eventProcessor, hostEnvironment, logger)
+        : base(metadataValidator, eventProcessor, hostEnvironment, organizationSettings, logger)
     {
         ArgumentNullException.ThrowIfNull(registeredValidator);
         ArgumentNullException.ThrowIfNull(changedValidator);
@@ -85,14 +90,14 @@ public class Dynamics365FinanceCustomerBindingController : Dynamics365FinanceBin
        [FromBody] JsonElement message) => await HandleEventAsync(message, CancellationToken.None).ConfigureAwait(false);
 
     /// <summary>
-    /// Validates the message and if not successful throws a validation exception <see cref="T:FluentValidation.ValidationException" /> .
+    /// Validates the message and if not successful throws a validation exception <see cref="ValidationException" /> .
     /// </summary>
     /// <param name="message">The message.</param>
-    /// <exception cref="ArgumentNullException"></exception>
-    /// <exception cref="ValidationException">Unsupported message type '{message.EventId}'. Expected:\n{nameof(Dynamics365FinanceCustomerChanged)} ({new Dynamics365FinanceCustomerChanged().TypeName}) or {nameof(Dynamics365FinanceCustomerRegistered)} ({new Dynamics365FinanceCustomerRegistered().TypeName}).</exception>
-    /// <exception cref="Dynamics365FinanceCustomerChanged"></exception>
-    /// <exception cref="Dynamics365FinanceCustomerRegistered"></exception>
-    protected override void ValidateAndThrow(Dynamics365BusinessEventBase message)
+    /// <exception cref="System.ArgumentNullException">null.</exception>
+    /// <exception cref="FluentValidation.ValidationException">Unsupported message type '{message.EventId}'. Expected:\n{nameof(Dynamics365FinanceCustomerChanged)} ({new Dynamics365FinanceCustomerChanged().TypeName}) or {nameof(Dynamics365FinanceCustomerRegistered)} ({new Dynamics365FinanceCustomerRegistered().TypeName}).</exception>
+    /// <exception cref="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChanged">error.</exception>
+    /// <exception cref="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegistered">error 2.</exception>
+    protected override void ValidateAndThrow([NotNull] Dynamics365BusinessEventBase message)
     {
         ArgumentNullException.ThrowIfNull(message);
         if (message is Dynamics365FinanceCustomerChanged changed)

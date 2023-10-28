@@ -110,10 +110,10 @@ public class ProjectionStateManager : IProjectionStateManager
         ArgumentNullException.ThrowIfNull(stateProvider);
         ArgumentNullException.ThrowIfNull(metadatas);
         ArgumentNullException.ThrowIfNull(events);
-        await SetReminderAsync(TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(15), registerReminder);
-        ProjectionState state = await GetStateAsync(stateProvider, cancellationToken);
+        await SetReminderAsync(TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(15), registerReminder).ConfigureAwait(false);
+        ProjectionState state = await GetStateAsync(stateProvider, cancellationToken).ConfigureAwait(false);
         MessageStore<EventState> eventStore = new(stateProvider, EventsStreamName);
-        List<EventState> states = new();
+        List<EventState> states = [];
         for (int i = 0; i < events.Length; i++)
         {
             states.Add(new EventState(_dateTimeService.UtcNow, events[i], metadatas[i]));
@@ -122,13 +122,13 @@ public class ProjectionStateManager : IProjectionStateManager
         long version = await eventStore.AddAsync(
             states,
             state.EventStreamVersion,
-            cancellationToken);
+            cancellationToken).ConfigureAwait(false);
         await PersistStateAsync(
             stateProvider,
             new ProjectionState(
                 version,
                 state.EventStreamVersion),
-            cancellationToken);
+            cancellationToken).ConfigureAwait(false);
     }
 
     /// <summary>
@@ -138,7 +138,7 @@ public class ProjectionStateManager : IProjectionStateManager
     /// <param name="resiliencyPolicy">The resiliency policy.</param>
     /// <param name="projection">The projection.</param>
     /// <param name="registerReminder">The register reminder.</param>
-    /// <param name="removeReminder">The remove reminder.</param>
+    /// <param name="unregisterReminder">The remove reminder.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task&lt;IProjection&gt; representing the asynchronous operation.</returns>
     /// <exception cref="System.ArgumentNullException">null.</exception>
@@ -147,32 +147,32 @@ public class ProjectionStateManager : IProjectionStateManager
         ResiliencyPolicy resiliencyPolicy,
         IProjection projection,
         Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder,
-        Func<string, Task> removeReminder,
+        Func<string, Task> unregisterReminder,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(stateProvider);
-        TimeSpan? retry = await ExecuteEventsAsync(stateProvider, projection, resiliencyPolicy, cancellationToken);
-        ProjectionState state = await GetStateAsync(stateProvider, cancellationToken);
+        TimeSpan? retry = await ExecuteEventsAsync(stateProvider, projection, resiliencyPolicy, cancellationToken).ConfigureAwait(false);
+        ProjectionState state = await GetStateAsync(stateProvider, cancellationToken).ConfigureAwait(false);
 
         if (state.LastEventDone < state.EventStreamVersion)
         {
             if (retry != null)
             {
-                await SetReminderAsync(retry.Value.Add(TimeSpan.FromSeconds(1)), TimeSpan.FromMinutes(1), registerReminder);
+                await SetReminderAsync(retry.Value.Add(TimeSpan.FromSeconds(1)), TimeSpan.FromMinutes(1), registerReminder).ConfigureAwait(false);
             }
             else
             {
-                await SetReminderAsync(resiliencyPolicy.MaximumExponentialPeriod, resiliencyPolicy.MaximumExponentialPeriod, registerReminder);
+                await SetReminderAsync(resiliencyPolicy.MaximumExponentialPeriod, resiliencyPolicy.MaximumExponentialPeriod, registerReminder).ConfigureAwait(false);
             }
         }
 
-        await RemoveReminderAsync(removeReminder);
+        await RemoveReminderAsync(unregisterReminder).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
     public async Task<long> GetEventCountAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken)
     {
-        ProjectionState state = await GetStateAsync(stateProvider, cancellationToken);
+        ProjectionState state = await GetStateAsync(stateProvider, cancellationToken).ConfigureAwait(false);
         return state.EventStreamVersion;
     }
 
@@ -180,12 +180,12 @@ public class ProjectionStateManager : IProjectionStateManager
     public async Task<IEnumerable<BaseEvent>> GetEventsAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken)
     {
         MessageStore<EventState> commandStore = new(stateProvider, EventsStreamName);
-        ProjectionState state = await GetStateAsync(stateProvider, cancellationToken);
-        List<BaseEvent> events = new();
+        ProjectionState state = await GetStateAsync(stateProvider, cancellationToken).ConfigureAwait(false);
+        List<BaseEvent> events = [];
         while (state.LastEventDone < state.EventStreamVersion)
         {
             long nextEvent = state.LastEventDone + 1;
-            EventState eventState = await commandStore.GetAsync(nextEvent, cancellationToken);
+            EventState eventState = await commandStore.GetAsync(nextEvent, cancellationToken).ConfigureAwait(false);
             events.Add(eventState.Message ?? throw new InvalidOperationException($"Event state {nextEvent} message is null."));
         }
 
@@ -210,11 +210,11 @@ public class ProjectionStateManager : IProjectionStateManager
     {
         MessageStore<EventState> commandStore = new(stateProvider, EventsStreamName);
         _ = new MessageStore<EventState>(stateProvider, EventsStreamName);
-        ProjectionState state = await GetStateAsync(stateProvider, cancellationToken);
+        ProjectionState state = await GetStateAsync(stateProvider, cancellationToken).ConfigureAwait(false);
         while (state.LastEventDone < state.EventStreamVersion)
         {
             long nextEvent = state.LastEventDone + 1;
-            EventState command = await commandStore.GetAsync(nextEvent, cancellationToken);
+            EventState command = await commandStore.GetAsync(nextEvent, cancellationToken).ConfigureAwait(false);
             _ = command.Message ?? throw new InvalidOperationException($"Event {nextEvent} content is null.");
             _ = command.Metadata ?? throw new InvalidOperationException($"Event {nextEvent} metadata is null.");
             ResilientProjectionEventProcessor processor = new(
@@ -222,7 +222,7 @@ public class ProjectionStateManager : IProjectionStateManager
                 projection,
                 stateProvider);
 
-            TimeSpan? retry = await processor.ProcessAsync(nextEvent.ToInvariantString(), command.Message, cancellationToken);
+            TimeSpan? retry = await processor.ProcessAsync(nextEvent.ToInvariantString(), command.Message, cancellationToken).ConfigureAwait(false);
 
             state = new ProjectionState(
                     state.EventStreamVersion,
@@ -230,7 +230,7 @@ public class ProjectionStateManager : IProjectionStateManager
             await PersistStateAsync(
                 stateProvider,
                 state,
-                cancellationToken);
+                cancellationToken).ConfigureAwait(false);
             if (retry != null)
             {
                 return retry;
@@ -245,7 +245,7 @@ public class ProjectionStateManager : IProjectionStateManager
     /// </summary>
     /// <param name="removeReminder">The remove reminder.</param>
     /// <returns>A Task representing the asynchronous operation.</returns>
-    private static async Task RemoveReminderAsync(Func<string, Task> removeReminder) => await removeReminder(_reminderName);
+    private static async Task RemoveReminderAsync(Func<string, Task> removeReminder) => await removeReminder(_reminderName).ConfigureAwait(false);
 
     /// <summary>
     /// Set reminder as an asynchronous operation.
@@ -257,7 +257,7 @@ public class ProjectionStateManager : IProjectionStateManager
     private static async Task SetReminderAsync(
         TimeSpan next,
         TimeSpan retry,
-        Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder) => await registerReminder(_reminderName, Array.Empty<byte>(), next, retry);
+        Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder) => await registerReminder(_reminderName, Array.Empty<byte>(), next, retry).ConfigureAwait(false);
 
     /// <summary>
     /// Get state as an asynchronous operation.
@@ -267,7 +267,7 @@ public class ProjectionStateManager : IProjectionStateManager
     /// <returns>A Task&lt;ProjectionState&gt; representing the asynchronous operation.</returns>
     private async Task<ProjectionState> GetStateAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken)
     {
-        ConditionalValue<ProjectionState> result = await stateProvider.TryGetStateAsync<ProjectionState>(StateName, cancellationToken);
+        ConditionalValue<ProjectionState> result = await stateProvider.TryGetStateAsync<ProjectionState>(StateName, cancellationToken).ConfigureAwait(false);
         return result.HasValue ? result.Value : new ProjectionState(0, 0);
     }
 
@@ -287,7 +287,7 @@ public class ProjectionStateManager : IProjectionStateManager
     /// <returns>A Task representing the asynchronous operation.</returns>
     private async Task PersistStateAsync(IStateStoreProvider stateProvider, ProjectionState state, CancellationToken cancellationToken)
     {
-        await stateProvider.SetStateAsync(StateName, state, CancellationToken.None);
-        await stateProvider.SaveChangesAsync(cancellationToken);
+        await stateProvider.SetStateAsync(StateName, state, CancellationToken.None).ConfigureAwait(false);
+        await stateProvider.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
     }
 }

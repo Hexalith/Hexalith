@@ -36,6 +36,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Global", "_Global", "{2A05
 		.stylecop.ruleset = .stylecop.ruleset
 		CODE-OF-CONDUCT.md = CODE-OF-CONDUCT.md
 		Directory.Build.props = Directory.Build.props
+		flush_redis.bat = flush_redis.bat
 		LICENSE.txt = LICENSE.txt
 		mkdocs.yml = mkdocs.yml
 		README.md = README.md

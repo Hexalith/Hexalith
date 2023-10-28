@@ -651,7 +651,7 @@ public abstract class BindingController : ReceiveMessageController</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_Controllers_BindingController__ctor_Hexalith_Application_Events_IIntegrationEventProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Logging_ILogger_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.Controllers.BindingController.%23ctor(Hexalith.Application.Events.IIntegrationEventProcessor%2CMicrosoft.Extensions.Hosting.IHostEnvironment%2CMicrosoft.Extensions.Logging.ILogger)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/BindingController.cs/#L48">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/BindingController.cs/#L49">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_WebApis_Controllers_BindingController__ctor_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.BindingController.#ctor*"></a>
   <h4 id="Hexalith_Infrastructure_WebApis_Controllers_BindingController__ctor_Hexalith_Application_Events_IIntegrationEventProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Logging_ILogger_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.BindingController.#ctor(Hexalith.Application.Events.IIntegrationEventProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger)">BindingController(IIntegrationEventProcessor, IHostEnvironment, ILogger)</h4>
@@ -699,7 +699,7 @@ public abstract class BindingController : ReceiveMessageController</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_Controllers_BindingController_DeserializeAndValidate_System_Text_Json_JsonElement_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.Controllers.BindingController.DeserializeAndValidate(System.Text.Json.JsonElement)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/BindingController.cs/#L63">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/BindingController.cs/#L64">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_WebApis_Controllers_BindingController_DeserializeAndValidate_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.BindingController.DeserializeAndValidate*"></a>
   <h4 id="Hexalith_Infrastructure_WebApis_Controllers_BindingController_DeserializeAndValidate_System_Text_Json_JsonElement_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.BindingController.DeserializeAndValidate(System.Text.Json.JsonElement)">DeserializeAndValidate(JsonElement)</h4>
@@ -708,7 +708,7 @@ public abstract class BindingController : ReceiveMessageController</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected abstract (IEvent Event, string MessageId, string CorrelationId) DeserializeAndValidate(JsonElement message)</code></pre>
+    <pre><code class="lang-csharp hljs">protected abstract (IEvent Event, IMetadata Metadata) DeserializeAndValidate(JsonElement message)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -738,8 +738,8 @@ public abstract class BindingController : ReceiveMessageController</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.ValueTuple</span>&lt;<a class="xref" href="Hexalith.Domain.Events.IEvent.html">IEvent</a>, <span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
-        <td><p>IEvent.</p>
+        <td><span class="xref">System.ValueTuple</span>&lt;<a class="xref" href="Hexalith.Domain.Events.IEvent.html">IEvent</a>, <a class="xref" href="Hexalith.Application.Metadatas.IMetadata.html">IMetadata</a>&gt;</td>
+        <td><p>System.ValueTuple&lt;IEvent, IMetadata&gt;.</p>
 </td>
       </tr>
     </tbody>
@@ -749,7 +749,7 @@ public abstract class BindingController : ReceiveMessageController</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_Controllers_BindingController_HandleEventAsync_System_Text_Json_JsonElement_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.Controllers.BindingController.HandleEventAsync(System.Text.Json.JsonElement%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/BindingController.cs/#L71">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/BindingController.cs/#L72">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_WebApis_Controllers_BindingController_HandleEventAsync_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.BindingController.HandleEventAsync*"></a>
   <h4 id="Hexalith_Infrastructure_WebApis_Controllers_BindingController_HandleEventAsync_System_Text_Json_JsonElement_CancellationToken_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.BindingController.HandleEventAsync(System.Text.Json.JsonElement,CancellationToken)">HandleEventAsync(JsonElement, CancellationToken)</h4>
@@ -822,7 +822,7 @@ public abstract class BindingController : ReceiveMessageController</code></pre>
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_Controllers_BindingController.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.Controllers.BindingController%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/BindingController.cs/#L34" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/BindingController.cs/#L35" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

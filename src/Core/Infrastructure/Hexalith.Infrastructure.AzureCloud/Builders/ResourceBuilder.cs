@@ -38,7 +38,7 @@ public abstract class ResourceBuilder<TArmResource> : IResourceBuilder
     /// <param name="resourceTypeName">Name of the resource type.</param>
     /// <param name="uniqueId">The unique identifier.</param>
     /// <param name="existing">if set to <c>true</c> [existing].</param>
-    public ResourceBuilder(
+    protected ResourceBuilder(
         AzureBuilder azureBuilder,
         IResourceBuilder? parent,
         string resourceTypeName,
@@ -109,10 +109,7 @@ public abstract class ResourceBuilder<TArmResource> : IResourceBuilder
     public abstract Task<TArmResource> BuildAsync(CancellationToken cancellationToken);
 
     /// <inheritdoc/>
-    async Task<ArmResource> IResourceBuilder.BuildAsync(CancellationToken cancellationToken)
-    {
-        return await BuildAsync(cancellationToken);
-    }
+    async Task<ArmResource> IResourceBuilder.BuildAsync(CancellationToken cancellationToken) => await BuildAsync(cancellationToken).ConfigureAwait(false);
 
     /// <summary>
     /// Creates the or update resource asynchronous.

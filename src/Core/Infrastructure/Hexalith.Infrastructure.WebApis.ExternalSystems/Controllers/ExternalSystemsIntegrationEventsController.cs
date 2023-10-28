@@ -48,7 +48,7 @@ public class ExternalSystemsIntegrationEventsController : EventIntegrationContro
         IIntegrationEventProcessor eventProcessor,
         IProjectionUpdateProcessor projectionProcessor,
         IHostEnvironment hostEnvironment,
-        ILogger logger)
+        ILogger<ExternalSystemsIntegrationEventsController> logger)
         : base(eventProcessor, projectionProcessor, hostEnvironment, logger)
     {
     }

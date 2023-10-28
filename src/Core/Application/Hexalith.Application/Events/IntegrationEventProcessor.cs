@@ -1,4 +1,4 @@
-﻿// <copyright file="DependencyInjectionIntegrationEventProcessor.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="IntegrationEventProcessor.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -23,7 +23,7 @@ using Microsoft.Extensions.Logging;
 /// Implements the <see cref="Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.IDynamics365FinanceIntegrationEventProcessor" />.
 /// </summary>
 /// <seealso cref="Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.IDynamics365FinanceIntegrationEventProcessor" />
-public partial class DependencyInjectionIntegrationEventProcessor : IIntegrationEventProcessor
+public partial class IntegrationEventProcessor : IIntegrationEventProcessor
 {
     /// <summary>
     /// The command processor.
@@ -36,11 +36,11 @@ public partial class DependencyInjectionIntegrationEventProcessor : IIntegration
     private readonly IDateTimeService _dateTimeService;
 
     private readonly IIntegrationEventDispatcher _dispatcher;
-    private readonly ILogger<DependencyInjectionIntegrationEventProcessor> _logger;
+    private readonly ILogger<IntegrationEventProcessor> _logger;
     private readonly INotificationBus _notificationBus;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="DependencyInjectionIntegrationEventProcessor"/> class.
+    /// Initializes a new instance of the <see cref="IntegrationEventProcessor"/> class.
     /// </summary>
     /// <param name="dispatcher">The dispatcher.</param>
     /// <param name="commandBus">The command bus.</param>
@@ -48,12 +48,12 @@ public partial class DependencyInjectionIntegrationEventProcessor : IIntegration
     /// <param name="dateTimeService">The date time service.</param>
     /// <param name="logger">The logger.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
-    public DependencyInjectionIntegrationEventProcessor(
+    public IntegrationEventProcessor(
         IIntegrationEventDispatcher dispatcher,
         ICommandBus commandBus,
         INotificationBus notificationBus,
         IDateTimeService dateTimeService,
-        ILogger<DependencyInjectionIntegrationEventProcessor> logger)
+        ILogger<IntegrationEventProcessor> logger)
     {
         ArgumentNullException.ThrowIfNull(dispatcher);
         ArgumentNullException.ThrowIfNull(commandBus);

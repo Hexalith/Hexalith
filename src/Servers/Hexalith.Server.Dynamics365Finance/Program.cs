@@ -4,6 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
+using Hexalith.Application.Events;
 using Hexalith.Application.Organizations.Helpers;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers;
@@ -34,6 +35,8 @@ builder.Services.AddDaprPartiesClient();
 builder.Services.AddDaprExternalSystemsMapper(applicationName, Customer.GetAggregateName());
 builder.Services.AddExternalSystemsMapperUpdate(applicationName);
 builder.Services.AddOrganizations(builder.Configuration);
+builder.Services.AddSingleton<IIntegrationEventProcessor, IntegrationEventProcessor>();
+builder.Services.AddSingleton<IIntegrationEventDispatcher, DependencyInjectionEventDispatcher>();
 
 WebApplication app = builder.Build();
 

@@ -27,7 +27,7 @@ using Microsoft.Extensions.Logging;
 /// Implements the <see cref="Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.IDynamics365FinanceIntegrationEventProcessor" />.
 /// </summary>
 /// <seealso cref="Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.IDynamics365FinanceIntegrationEventProcessor" />
-public class Dynamics365FinanceIntegrationEventProcessor : DependencyInjectionEventDispatcher, IDynamics365FinanceIntegrationEventProcessor
+public partial class Dynamics365FinanceIntegrationEventProcessor : DependencyInjectionEventDispatcher, IDynamics365FinanceIntegrationEventProcessor
 {
     /// <summary>
     /// The command processor.
@@ -39,6 +39,7 @@ public class Dynamics365FinanceIntegrationEventProcessor : DependencyInjectionEv
     /// </summary>
     private readonly IDateTimeService _dateTimeService;
 
+    private readonly ILogger<Dynamics365FinanceIntegrationEventProcessor> _logger;
     private readonly INotificationBus _notificationBus;
 
     /// <summary>
@@ -64,7 +65,14 @@ public class Dynamics365FinanceIntegrationEventProcessor : DependencyInjectionEv
         _commandProcessor = commandProcessor;
         _dateTimeService = dateTimeService;
         _notificationBus = notificationBus;
+        _logger = logger;
     }
+
+    [LoggerMessage(
+        EventId = 1,
+        Level = LogLevel.Debug,
+        Message = "Dispatching event with name '{EventName}', identifier '{AggregateId}' on AggregateName '{AggregateName}'.")]
+    public new partial void DispatchingEvent(string? eventName, string? aggregateName, string? aggregateId);
 
     /// <inheritdoc/>
     public async Task SubmitAsync(Dynamics365BusinessEventBase @event, CancellationToken cancellationToken)
@@ -72,6 +80,7 @@ public class Dynamics365FinanceIntegrationEventProcessor : DependencyInjectionEv
         ArgumentNullException.ThrowIfNull(@event);
         try
         {
+            DispatchingEvent(@event.BusinessEventId, @event.AggregateName, @event.AggregateId);
             List<BaseCommand> commands = (await ApplyAsync(@event, cancellationToken)
                 .ConfigureAwait(false))
                 .SelectMany(p => p)
@@ -85,13 +94,15 @@ public class Dynamics365FinanceIntegrationEventProcessor : DependencyInjectionEv
                     cancellationToken).ConfigureAwait(false);
                 return;
             }
-
-            Logger.LogWarning("No command generated from event with name '{EventName}' and identifier '{AggragateId}'.", @event.BusinessEventId, @event.AggregateId);
         }
         catch (Exception ex)
         {
             ApplicationErrorException appException = new(new EventDispatchFailed(@event, ex));
-            ApplicationExceptionNotification notification = new(@event.Message.Id, @event.Message.Aggregate.Name, @event.Message.Aggregate.Id, appException);
+            ApplicationExceptionNotification notification = new(
+                @event.Message.Id,
+                @event.AggregateName,
+                @event.AggregateId,
+                appException);
             DateTimeOffset date = _dateTimeService.UtcNow;
 #pragma warning disable CA1031 // Do not catch general exception types
             try
@@ -121,10 +132,10 @@ public class Dynamics365FinanceIntegrationEventProcessor : DependencyInjectionEv
     }
 
     /// <inheritdoc/>
-    public Task SubmitAsync(IEvent @event, CancellationToken cancellationToken)
+    public Task SubmitAsync(IEvent baseEvent, IMetadata metadata, CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(@event);
-        return @event is Dynamics365BusinessEventBase businessEvent
+        ArgumentNullException.ThrowIfNull(baseEvent);
+        return baseEvent is Dynamics365BusinessEventBase businessEvent
             ? SubmitAsync(businessEvent, cancellationToken)
             : throw new ApplicationErrorException(new EventNotSupportedByDispatcher(nameof(Dynamics365FinanceIntegrationEventProcessor)));
     }

@@ -39,7 +39,7 @@ public abstract class ResourceGroupItemBuilder<TArmResource, TData> : ResourceBu
     /// <param name="uniqueId">The unique identifier.</param>
     /// <param name="data">The data.</param>
     /// <param name="existing">if set to <c>true</c> [existing].</param>
-    public ResourceGroupItemBuilder(
+    protected ResourceGroupItemBuilder(
         AzureBuilder azureBuilder,
         ResourceGroupBuilder resourceGroup,
         string resourceTypeName,
@@ -69,17 +69,17 @@ public abstract class ResourceGroupItemBuilder<TArmResource, TData> : ResourceBu
     {
         if (Resource == null)
         {
-            ResourceGroupResource group = await ResourceGroup.BuildAsync(cancellationToken);
+            ResourceGroupResource group = await ResourceGroup.BuildAsync(cancellationToken).ConfigureAwait(false);
             if (Existing)
             {
                 Logger.LogInformation("Getting {ResourceTypeName} {Name} in resource group {ResourceGroup}", ResourceTypeName, UniqueId, group.Data.Name);
-                Resource = await GetExistingResourceAsync(cancellationToken);
+                Resource = await GetExistingResourceAsync(cancellationToken).ConfigureAwait(false);
                 Logger.LogInformation("{ResourceTypeName} {Name} found", ResourceTypeName, UniqueId);
                 return Resource;
             }
 
             Logger.LogInformation("Creating {ResourceTypeName} {Name} in resource group {ResourceGroup}", ResourceTypeName, UniqueId, group.Data.Name);
-            Resource = await CreateOrUpdateResourceAsync(cancellationToken);
+            Resource = await CreateOrUpdateResourceAsync(cancellationToken).ConfigureAwait(false);
             Logger.LogInformation("{ResourceTypeName} {Name} created", ResourceTypeName, UniqueId);
         }
 

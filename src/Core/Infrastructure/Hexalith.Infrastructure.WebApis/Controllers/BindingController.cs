@@ -20,6 +20,7 @@ using System.Text.Json;
 using Hexalith.Application.Errors;
 using Hexalith.Application.Events;
 using Hexalith.Application.Helpers;
+using Hexalith.Application.Metadatas;
 using Hexalith.Domain.Events;
 
 using Microsoft.AspNetCore.Mvc;
@@ -59,8 +60,8 @@ public abstract class BindingController : ReceiveMessageController
     /// Deserializes the and validate.
     /// </summary>
     /// <param name="message">The message.</param>
-    /// <returns>IEvent.</returns>
-    protected abstract (IEvent Event, string MessageId, string CorrelationId) DeserializeAndValidate(JsonElement message);
+    /// <returns>System.ValueTuple&lt;IEvent, IMetadata&gt;.</returns>
+    protected abstract (IEvent Event, IMetadata Metadata) DeserializeAndValidate(JsonElement message);
 
     /// <summary>
     /// Handle business event.
@@ -77,15 +78,15 @@ public abstract class BindingController : ReceiveMessageController
                 return BadRequest("Message received is null.");
             }
 
-            (IEvent @event, string messageId, string correlationId) = DeserializeAndValidate(message);
+            (IEvent @event, IMetadata metadata) = DeserializeAndValidate(message);
             MessageReceivedInformation(
                 Logger,
                 @event.TypeName,
                 @event.AggregateName,
                 @event.AggregateId,
-                messageId,
-                correlationId);
-            await _eventProcessor.SubmitAsync(@event, cancellationToken).ConfigureAwait(false);
+                metadata.Message.Id,
+                metadata.Context.CorrelationId);
+            await _eventProcessor.SubmitAsync(@event, metadata, cancellationToken).ConfigureAwait(false);
             return Accepted();
         }
         catch (ApplicationErrorException ex)

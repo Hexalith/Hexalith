@@ -22,12 +22,12 @@ public class MemoryStateProvider : IStateStoreProvider
     /// <summary>
     /// The state.
     /// </summary>
-    private readonly Dictionary<string, object?> _state = new();
+    private readonly Dictionary<string, object?> _state = [];
 
     /// <summary>
     /// The uncommitted state.
     /// </summary>
-    private readonly Dictionary<string, object?> _uncommittedState = new();
+    private readonly Dictionary<string, object?> _uncommittedState = [];
 
     /// <summary>
     /// Initializes a new instance of the <see cref="MemoryStateProvider"/> class.
@@ -40,10 +40,7 @@ public class MemoryStateProvider : IStateStoreProvider
     /// Initializes a new instance of the <see cref="MemoryStateProvider"/> class.
     /// </summary>
     /// <param name="state">The provider initial state.</param>
-    public MemoryStateProvider(Dictionary<string, object?> state)
-    {
-        _state = state;
-    }
+    public MemoryStateProvider(Dictionary<string, object?> state) => _state = state;
 
     /// <summary>
     /// Gets the state.
@@ -68,21 +65,21 @@ public class MemoryStateProvider : IStateStoreProvider
     /// <inheritdoc/>
     public async Task<T> GetOrAddStateAsync<T>(string key, T value, CancellationToken cancellationToken)
     {
-        ConditionalValue<T> result = await TryGetStateAsync<T>(key, cancellationToken);
+        ConditionalValue<T> result = await TryGetStateAsync<T>(key, cancellationToken).ConfigureAwait(false);
         if (result.HasValue)
         {
             return result.Value;
         }
 
-        await AddStateAsync<T>(key, value, cancellationToken);
+        await AddStateAsync(key, value, cancellationToken).ConfigureAwait(false);
 
-        return await GetStateAsync<T>(key, cancellationToken);
+        return await GetStateAsync<T>(key, cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
     public async Task<T> GetStateAsync<T>(string key, CancellationToken cancellationToken)
     {
-        ConditionalValue<T> result = await TryGetStateAsync<T>(key, cancellationToken);
+        ConditionalValue<T> result = await TryGetStateAsync<T>(key, cancellationToken).ConfigureAwait(false);
         return result.HasValue
             ? result.Value
             : throw new KeyNotFoundException($"The key '{key}' was not found in the state store.");

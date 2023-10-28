@@ -95,7 +95,7 @@ public class ContainerRegistryBuilder : ResourceGroupItemBuilder<ContainerRegist
     /// <inheritdoc/>
     protected override async Task<ContainerRegistryResource> CreateOrUpdateResourceAsync(CancellationToken cancellationToken)
     {
-        ResourceGroupResource group = await _resourceGroup.BuildAsync(cancellationToken);
+        ResourceGroupResource group = await _resourceGroup.BuildAsync(cancellationToken).ConfigureAwait(false);
         ContainerRegistryCollection registries = group.GetContainerRegistries();
         if (Data == null)
         {
@@ -110,7 +110,7 @@ public class ContainerRegistryBuilder : ResourceGroupItemBuilder<ContainerRegist
                 Azure.WaitUntil.Completed,
                 Name,
                 Data,
-                cancellationToken);
+                cancellationToken).ConfigureAwait(false);
         Logger.LogInformation("Container registry {Name} created", Name);
         return operation.Value;
     }
@@ -118,14 +118,14 @@ public class ContainerRegistryBuilder : ResourceGroupItemBuilder<ContainerRegist
     /// <inheritdoc/>
     protected override async Task<bool> ExistsAsync(CancellationToken cancellationToken)
     {
-        ResourceGroupResource group = await _resourceGroup.BuildAsync(cancellationToken);
-        return (await group.GetContainerRegistries().ExistsAsync(Name, cancellationToken)).Value;
+        ResourceGroupResource group = await _resourceGroup.BuildAsync(cancellationToken).ConfigureAwait(false);
+        return (await group.GetContainerRegistries().ExistsAsync(Name, cancellationToken).ConfigureAwait(false)).Value;
     }
 
     /// <inheritdoc/>
     protected override async Task<ContainerRegistryResource> GetExistingResourceAsync(CancellationToken cancellationToken)
     {
-        ResourceGroupResource group = await _resourceGroup.BuildAsync(cancellationToken);
-        return (await group.GetContainerRegistries().GetAsync(Name, cancellationToken)).Value;
+        ResourceGroupResource group = await _resourceGroup.BuildAsync(cancellationToken).ConfigureAwait(false);
+        return (await group.GetContainerRegistries().GetAsync(Name, cancellationToken).ConfigureAwait(false)).Value;
     }
 }

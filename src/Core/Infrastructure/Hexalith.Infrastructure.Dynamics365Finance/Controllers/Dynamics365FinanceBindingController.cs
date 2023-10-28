@@ -13,7 +13,10 @@ using FluentValidation;
 
 using Hexalith.Application.Errors;
 using Hexalith.Application.Events;
+using Hexalith.Application.Metadatas;
+using Hexalith.Application.Organizations.Configurations;
 using Hexalith.Domain.Events;
+using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents;
 using Hexalith.Infrastructure.Dynamics365Finance.Dispatchers;
 using Hexalith.Infrastructure.WebApis.Controllers;
@@ -21,6 +24,7 @@ using Hexalith.Infrastructure.WebApis.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 /// <summary>
 /// Class Dynamics365FinanceEventBindingController.
@@ -29,39 +33,52 @@ using Microsoft.Extensions.Logging;
 /// <seealso cref="ControllerBase" />
 public abstract class Dynamics365FinanceBindingController : BindingController
 {
+    private readonly string _defaultPartitionId;
+
     /// <summary>
     /// The event validator.
     /// </summary>
     private readonly IValidator<Dynamics365BusinessEventBase> _eventValidator;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Dynamics365FinanceBindingController" /> class.
+    /// Initializes a new instance of the <see cref="Dynamics365FinanceBindingController"/> class.
     /// </summary>
     /// <param name="metadataValidator">The metadata validator.</param>
-    /// <param name="eventProcessor">The dispatcher.</param>
+    /// <param name="eventProcessor">The event processor.</param>
     /// <param name="hostEnvironment">The host environment.</param>
+    /// <param name="organizationSettings">The organization settings.</param>
     /// <param name="logger">The logger.</param>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
     protected Dynamics365FinanceBindingController(
         IValidator<Dynamics365BusinessEventBase> metadataValidator,
         IDynamics365FinanceIntegrationEventProcessor eventProcessor,
         IHostEnvironment hostEnvironment,
+        IOptions<OrganizationSettings> organizationSettings,
         ILogger logger)
         : base(eventProcessor, hostEnvironment, logger)
     {
         ArgumentNullException.ThrowIfNull(metadataValidator);
+        ArgumentNullException.ThrowIfNull(organizationSettings);
+        OrganizationSettings settings = organizationSettings.Value;
+        SettingsException<OrganizationSettings>.ThrowIfNullOrEmpty(settings.DefaultPartitionId);
+        _defaultPartitionId = settings.DefaultPartitionId;
         _eventValidator = metadataValidator;
     }
 
     /// <inheritdoc/>
-    protected override (IEvent Event, string MessageId, string CorrelationId) DeserializeAndValidate(JsonElement message)
+    protected override (IEvent Event, IMetadata Metadata) DeserializeAndValidate(JsonElement message)
     {
         try
         {
             Dynamics365BusinessEventBase businessEvent = message.Deserialize<Dynamics365BusinessEventBase>() ?? throw new InvalidOperationException("Deserialized business event is null.");
+            if (string.IsNullOrWhiteSpace(businessEvent.PartitionId))
+            {
+                businessEvent.PartitionId = _defaultPartitionId;
+            }
 
             _eventValidator.ValidateAndThrow(businessEvent);
             ValidateAndThrow(businessEvent);
-            return (businessEvent, businessEvent.EventId ?? string.Empty, businessEvent.EventId ?? string.Empty);
+            return (businessEvent, businessEvent);
         }
         catch (ValidationException ex)
         {

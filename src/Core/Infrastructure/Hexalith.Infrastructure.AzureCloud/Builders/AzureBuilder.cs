@@ -33,12 +33,12 @@ public class AzureBuilder
     /// <summary>
     /// The ordered processes.
     /// </summary>
-    private readonly Dictionary<string, OrderedProcess> _orderedProcesses = new();
+    private readonly Dictionary<string, OrderedProcess> _orderedProcesses = [];
 
     /// <summary>
     /// The resources.
     /// </summary>
-    private readonly Dictionary<string, IResourceBuilder> _resources = new();
+    private readonly Dictionary<string, IResourceBuilder> _resources = [];
 
     /// <summary>
     /// The client.
@@ -198,10 +198,10 @@ public class AzureBuilder
             List<KeyValuePair<string, IResourceBuilder>> tasks = Resources
                         .Where(p => taskNames.Contains(p.Key))
                         .ToList();
-            if (tasks.Any())
+            if (tasks.Count != 0)
             {
                 Logger.LogInformation("Step {Step}: Handling resources: {ResourceNames}.", ++step, string.Join(", ", taskNames));
-                _ = await Task.WhenAll(tasks.Select(p => p.Value.BuildAsync(cancellationToken)));
+                _ = await Task.WhenAll(tasks.Select(p => p.Value.BuildAsync(cancellationToken))).ConfigureAwait(false);
             }
         }
 

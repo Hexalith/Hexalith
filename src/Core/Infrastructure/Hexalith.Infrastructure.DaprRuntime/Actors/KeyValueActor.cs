@@ -53,7 +53,8 @@ public class KeyValueActor : Actor, IKeyValueActor
     {
         if (!_isLoaded)
         {
-            _value = await StateManager.GetStateAsync<string?>(ApplicationConstants.StateName).ConfigureAwait(false);
+            ConditionalValue<string?> result = await StateManager.TryGetStateAsync<string?>(ApplicationConstants.StateName).ConfigureAwait(false);
+            _value = result.HasValue ? result.Value : null;
             _isLoaded = true;
         }
 
@@ -63,22 +64,24 @@ public class KeyValueActor : Actor, IKeyValueActor
     /// <inheritdoc/>
     public async Task RemoveAsync()
     {
-        await StateManager.SetStateAsync<string?>(ApplicationConstants.StateName, null).ConfigureAwait(false);
-        await StateManager.SaveStateAsync().ConfigureAwait(false);
-        _value = null;
-        _isLoaded = true;
+        if (!_isLoaded || _value != null)
+        {
+            await StateManager.SetStateAsync<string?>(ApplicationConstants.StateName, null).ConfigureAwait(false);
+            await StateManager.SaveStateAsync().ConfigureAwait(false);
+            _value = null;
+            _isLoaded = true;
+        }
     }
 
     /// <inheritdoc/>
     public async Task SetAsync(string? value)
     {
-        if (!_isLoaded || value != _value)
+        if (!_isLoaded || _value != value)
         {
             await StateManager.SetStateAsync(ApplicationConstants.StateName, value).ConfigureAwait(false);
             await StateManager.SaveStateAsync().ConfigureAwait(false);
+            _value = value;
+            _isLoaded = true;
         }
-
-        _value = value;
-        _isLoaded = true;
     }
 }

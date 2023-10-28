@@ -9,11 +9,11 @@ namespace Hexalith.Application.Events;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 
 using Hexalith.Application.Commands;
-using Hexalith.Application.Metadatas;
 using Hexalith.Domain.Events;
 
 using Microsoft.Extensions.Logging;
@@ -23,8 +23,10 @@ using Microsoft.Extensions.Logging;
 /// Implements the <see cref="IIntegrationEventDispatcher" />.
 /// </summary>
 /// <seealso cref="IIntegrationEventDispatcher" />
-public class DependencyInjectionEventDispatcher : IIntegrationEventDispatcher
+public partial class DependencyInjectionEventDispatcher : IIntegrationEventDispatcher
 {
+    private readonly ILogger<DependencyInjectionEventDispatcher> _logger;
+
     /// <summary>
     /// The service provider.
     /// </summary>
@@ -35,30 +37,29 @@ public class DependencyInjectionEventDispatcher : IIntegrationEventDispatcher
     /// </summary>
     /// <param name="serviceProvider">The service provider.</param>
     /// <param name="logger">The logger.</param>
-    public DependencyInjectionEventDispatcher(IServiceProvider serviceProvider, ILogger logger)
+    public DependencyInjectionEventDispatcher(IServiceProvider serviceProvider, ILogger<DependencyInjectionEventDispatcher> logger)
     {
         ArgumentNullException.ThrowIfNull(serviceProvider);
         ArgumentNullException.ThrowIfNull(logger);
         _serviceProvider = serviceProvider;
-        Logger = logger;
+        _logger = logger;
     }
 
-    /// <summary>
-    /// Gets the logger.
-    /// </summary>
-    /// <value>The logger.</value>
-    protected ILogger Logger { get; }
-
     /// <inheritdoc/>
-    public async Task<IEnumerable<IEnumerable<BaseCommand>>> ApplyAsync(IEvent baseEvent, IMetadata metadata, CancellationToken cancellationToken)
+    public async Task<IEnumerable<IEnumerable<BaseCommand>>> ApplyAsync([NotNull] IEvent baseEvent, CancellationToken cancellationToken)
     {
-        Logger.LogDebug("Dispatching event {EventType} with aggregate id {AggregateName}-{AggregateId}", baseEvent.TypeName, baseEvent.AggregateName, baseEvent.AggregateId);
+        ArgumentNullException.ThrowIfNull(baseEvent);
+        DispatchingEvent(baseEvent.TypeName, baseEvent.AggregateName, baseEvent.AggregateId);
         return await Task.WhenAll(
             GetHandlers(baseEvent)
                 .Select(p => p.ApplyAsync(baseEvent, cancellationToken))).ConfigureAwait(false);
     }
 
-    public Task<IEnumerable<IEnumerable<BaseCommand>>> ApplyAsync(IEvent baseEvent, CancellationToken cancellationToken) => throw new NotImplementedException();
+    [LoggerMessage(
+        EventId = 1,
+    Level = LogLevel.Debug,
+    Message = "Dispatching event with name '{EventName}', identifier '{AggregateId}' on AggregateName '{AggregateName}'.")]
+    public partial void DispatchingEvent(string? eventName, string? aggregateName, string? aggregateId);
 
     /// <summary>
     /// Gets the event handler of type IEventHandler.<MyEvent>.

@@ -33,7 +33,7 @@ public abstract class ActorsCommandProcessor : ICommandProcessor
     /// Initializes a new instance of the <see cref="ActorsCommandProcessor" /> class.
     /// </summary>
     /// <param name="actorProxy">The actor proxy.</param>
-    public ActorsCommandProcessor(IActorProxyFactory actorProxy)
+    protected ActorsCommandProcessor(IActorProxyFactory actorProxy)
     {
         ArgumentNullException.ThrowIfNull(actorProxy);
         _actorProxy = actorProxy;
@@ -41,7 +41,7 @@ public abstract class ActorsCommandProcessor : ICommandProcessor
 
     /// <inheritdoc/>
     public async Task SubmitAsync(BaseCommand command, BaseMetadata metadata, CancellationToken cancellationToken)
-        => await SubmitAsync(command.IntoArray(), metadata, cancellationToken);
+        => await SubmitAsync(command.IntoArray(), metadata, cancellationToken).ConfigureAwait(false);
 
     /// <inheritdoc/>
     public async Task SubmitAsync(IEnumerable<BaseCommand> commands, BaseMetadata metadata, CancellationToken cancellationToken)
@@ -83,7 +83,7 @@ public abstract class ActorsCommandProcessor : ICommandProcessor
             try
             {
                 ICommandProcessorActor actor = _actorProxy.CreateActorProxy<ICommandProcessorActor>(cmd.AggregateId.ToUrlEncodedActorId(), actorName);
-                await actor.DoAsync(envelope);
+                await actor.DoAsync(envelope).ConfigureAwait(false);
             }
             catch (Exception e)
             {
