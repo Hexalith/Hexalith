@@ -40,7 +40,7 @@ public class ResilientCommandProcessorTest
         const string key = "test1";
         string stateName = nameof(TaskProcessor) + key;
         DummyCommand1 command = new("My test 1", 1);
-        (TaskProcessor taskProcessor, IEnumerable<BaseMessage> events) = await processor.ProcessAsync(key, command, CancellationToken.None);
+        (TaskProcessor taskProcessor, IEnumerable<BaseMessage> events) = await processor.ProcessAsync(key, command, null, CancellationToken.None);
         _ = taskProcessor.Should().NotBeNull();
         _ = taskProcessor.Ended.Should().BeTrue();
         _ = taskProcessor.Status.Should().Be(TaskProcessorStatus.Completed);
@@ -71,7 +71,7 @@ public class ResilientCommandProcessorTest
         const string key = "test1";
         string stateName = nameof(TaskProcessor) + key;
         DummyCommand1 command = new("My test 1", 1);
-        (TaskProcessor taskProcessor, IEnumerable<BaseMessage> events) = await processor.ProcessAsync(key, command, CancellationToken.None);
+        (TaskProcessor taskProcessor, IEnumerable<BaseMessage> events) = await processor.ProcessAsync(key, command, null, CancellationToken.None);
         _ = taskProcessor.Should().NotBeNull();
         _ = taskProcessor.Status.Should().Be(TaskProcessorStatus.Canceled);
         _ = taskProcessor.History.CompletedDate.Should().BeNull();
@@ -112,7 +112,7 @@ public class ResilientCommandProcessorTest
         const string key = "test1";
         string stateName = nameof(TaskProcessor) + key;
         DummyCommand1 command = new("My test 1", 1);
-        (TaskProcessor? retry, IEnumerable<BaseMessage> events) = await processor.ProcessAsync(key, command, CancellationToken.None);
+        (TaskProcessor? retry, IEnumerable<BaseMessage> events) = await processor.ProcessAsync(key, command, null, CancellationToken.None);
         _ = retry.Should().NotBeNull();
         _ = events.Should().HaveCount(1);
         _ = events.First().Should().BeOfType<CommandProcessingFailed>();

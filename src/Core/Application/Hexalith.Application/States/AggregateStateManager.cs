@@ -335,6 +335,20 @@ public class AggregateStateManager : IAggregateStateManager
             MessageStore<EventState> eventStore = new(stateProvider, EventsStreamName);
             AggregateState state = await GetStateAsync(stateProvider, cancellationToken).ConfigureAwait(false);
             TaskProcessor? processor = null;
+            if (aggregate == null && state.EventStreamVersion > 0)
+            {
+                // Get the aggregate from the event store and apply the new events
+                (IEnumerable<EventState>? m, long v) = await eventStore.GetAsync(cancellationToken).ConfigureAwait(false);
+                List<BaseEvent> events = m
+                    .Select(p => p.Message
+                        ?? throw new InvalidOperationException("Message is null in event store state."))
+                    .ToList();
+                aggregate = new AggregateBuilder()
+                        .Initializer(aggregateInitializer)
+                        .Events(events)
+                        .Build();
+            }
+
             while (state.LastCommandDone < state.CommandStreamVersion)
             {
                 long nextCommand = state.LastCommandDone + 1;
@@ -347,35 +361,24 @@ public class AggregateStateManager : IAggregateStateManager
                     stateProvider,
                     _logger);
 
-                (processor, IEnumerable<BaseMessage> messages) = await commandProcessor.ProcessAsync(nextCommand.ToInvariantString(), command.Message, cancellationToken).ConfigureAwait(false);
+                (processor, IEnumerable<BaseMessage> messages) = await commandProcessor
+                    .ProcessAsync(
+                        nextCommand.ToInvariantString(),
+                        command.Message,
+                        aggregate,
+                        cancellationToken)
+                    .ConfigureAwait(false);
                 BaseEvent[] newEvents = messages.OfType<BaseEvent>().ToArray();
                 long eventVersion = state.EventStreamVersion;
                 if (newEvents.Length != 0)
                 {
                     if (aggregate == null)
                     {
-                        if (state.EventStreamVersion > 0)
-                        {
-                            // Get the aggregate from the event store and apply the new events
-                            (IEnumerable<EventState>? m, long v) = await eventStore.GetAsync(cancellationToken).ConfigureAwait(false);
-                            List<BaseEvent> events = m
-                                .Select(p => p.Message
-                                    ?? throw new InvalidOperationException("Message is null in event store state."))
-                                .ToList();
-                            aggregate = new AggregateBuilder()
-                                        .Initializer(aggregateInitializer)
-                                        .Events(events)
-                                        .Build()
-                                    .Apply(newEvents);
-                        }
-                        else
-                        {
-                            // Create a new aggregate with the new events
-                            aggregate = new AggregateBuilder()
-                                    .Initializer(aggregateInitializer)
-                                    .Events(newEvents)
-                                    .Build();
-                        }
+                        // Create a new aggregate with the new events
+                        aggregate = new AggregateBuilder()
+                                .Initializer(aggregateInitializer)
+                                .Events(newEvents)
+                                .Build();
                     }
                     else
                     {

@@ -4,7 +4,7 @@
 // Created          : 01-30-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 01-30-2023
+// Last Modified On : 10-29-2023
 // ***********************************************************************
 // <copyright file="ResilientCommandProcessor.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -17,11 +17,13 @@
 namespace Hexalith.Application.Tasks;
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 
 using Hexalith.Application.Commands;
 using Hexalith.Application.Helpers;
 using Hexalith.Application.States;
+using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
@@ -54,7 +56,7 @@ public class ResilientCommandProcessor
     private readonly IStateStoreProvider _stateStoreProvider;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ResilientCommandProcessor"/> class.
+    /// Initializes a new instance of the <see cref="ResilientCommandProcessor" /> class.
     /// </summary>
     /// <param name="resiliencyPolicy">The resiliency policy.</param>
     /// <param name="commandDispatcher">The command dispatcher.</param>
@@ -82,9 +84,11 @@ public class ResilientCommandProcessor
     /// </summary>
     /// <param name="id">The identifier.</param>
     /// <param name="command">The command.</param>
+    /// <param name="aggregate">The aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>A <see cref="Task{TResult}" /> representing the result of the asynchronous operation.</returns>
-    public async Task<(TaskProcessor Processor, IEnumerable<BaseMessage> Events)> ProcessAsync(string id, BaseCommand command, CancellationToken cancellationToken)
+    /// <returns>A Task&lt;System.ValueTuple&gt; representing the asynchronous operation.</returns>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
+    public async Task<(TaskProcessor Processor, IEnumerable<BaseMessage> Events)> ProcessAsync(string id, [NotNull] BaseCommand command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
         IEnumerable<BaseMessage> messages;
@@ -126,7 +130,7 @@ public class ResilientCommandProcessor
         {
             if (taskProcessor.Status == TaskProcessorStatus.Active)
             {
-                messages = await _commandDispatcher.DoAsync(command, cancellationToken).ConfigureAwait(false);
+                messages = await _commandDispatcher.DoAsync(command, aggregate, cancellationToken).ConfigureAwait(false);
                 taskProcessor = taskProcessor.Complete();
             }
             else
