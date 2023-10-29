@@ -33,12 +33,6 @@
 		<SwashbuckleAspNetCoreVersion>6.5.*</SwashbuckleAspNetCoreVersion>
 		<XUnitRunnerVisualStudioVersion>2.5.3</XUnitRunnerVisualStudioVersion>
 		<XUnitVersion>2.5.2</XUnitVersion>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' == 'true' or '$(BuildingByReSharper)' == 'true'">
-		<!--<DaprVersion>1.0.0-local</DaprVersion>-->
-		<DaprVersion>1.11.*</DaprVersion>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' != 'true' and '$(BuildingByReSharper)' != 'true'">
 		<DaprVersion>1.11.*</DaprVersion>
 	</PropertyGroup>
 </Project>

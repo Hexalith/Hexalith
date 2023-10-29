@@ -17,4 +17,9 @@
 	<ItemGroup>
 		<ProjectReference Include="$(MSBuildThisFileDirectory)..\Core\Infrastructure\Hexalith.Infrastructure.WebApis\Hexalith.Infrastructure.WebApis.csproj" />
 	</ItemGroup>
+	<Target Name="MyTarget" AfterTargets="MinVer" Condition="'$(MinVerBuildMetadata)' != ''">
+		<PropertyGroup>
+			<ContainerImageTag>$(PackageVersion)</ContainerImageTag>
+		</PropertyGroup>
+	</Target>
 </Project>

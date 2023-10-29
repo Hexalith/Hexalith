@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class AddInventoryItemHandler
+    <title>Class SelectIntercompanyDropshipDeliveryForCustomerHandler
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class AddInventoryItemHandler
+    <meta name="title" content="Class SelectIntercompanyDropshipDeliveryForCustomerHandler
    ">
     <meta name="generator" content="docfx 2.59.4.0">
     
@@ -68,33 +68,33 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler">
+            <article class="content wrap" id="_content" data-uid="Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler">
   
   
-  <h1 id="Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemHandler" data-uid="Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler" class="text-break">Class AddInventoryItemHandler
+  <h1 id="Hexalith_Application_Parties_CommandHandlers_SelectIntercompanyDropshipDeliveryForCustomerHandler" data-uid="Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler" class="text-break">Class SelectIntercompanyDropshipDeliveryForCustomerHandler
   </h1>
-  <div class="markdown level0 summary"><p>Class ChangeCustomerInformationHandler.
+  <div class="markdown level0 summary"><p>Class SetCustomerIntercompanyDeliveryToIndirectHandler.
 Implements the <a class="xref" href="Hexalith.Application.Commands.CommandHandler-1.html">CommandHandler&lt;TCommand&gt;</a>.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="Hexalith.Application.Commands.CommandHandler-1.html">CommandHandler</a>&lt;<a class="xref" href="Hexalith.Application.Inventories.Commands.AddInventoryItem.html">AddInventoryItem</a>&gt;</div>
-    <div class="level2"><span class="xref">AddInventoryItemHandler</span></div>
+    <div class="level1"><a class="xref" href="Hexalith.Application.Commands.CommandHandler-1.html">CommandHandler</a>&lt;<a class="xref" href="Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.html">SelectIntercompanyDropshipDeliveryForCustomer</a>&gt;</div>
+    <div class="level2"><span class="xref">SelectIntercompanyDropshipDeliveryForCustomerHandler</span></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
-    <div><a class="xref" href="Hexalith.Application.Commands.ICommandHandler-1.html">ICommandHandler</a>&lt;<a class="xref" href="Hexalith.Application.Inventories.Commands.AddInventoryItem.html">AddInventoryItem</a>&gt;</div>
+    <div><a class="xref" href="Hexalith.Application.Commands.ICommandHandler-1.html">ICommandHandler</a>&lt;<a class="xref" href="Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.html">SelectIntercompanyDropshipDeliveryForCustomer</a>&gt;</div>
     <div><a class="xref" href="Hexalith.Application.Commands.ICommandHandler.html">ICommandHandler</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Hexalith.Application.Commands.CommandHandler-1.html#Hexalith_Application_Commands_CommandHandler_1_DoAsync__0_Hexalith_Domain_Aggregates_IAggregate_CancellationToken_">CommandHandler&lt;AddInventoryItem&gt;.DoAsync(AddInventoryItem, IAggregate, CancellationToken)</a>
+      <a class="xref" href="Hexalith.Application.Commands.CommandHandler-1.html#Hexalith_Application_Commands_CommandHandler_1_DoAsync__0_Hexalith_Domain_Aggregates_IAggregate_CancellationToken_">CommandHandler&lt;SelectIntercompanyDropshipDeliveryForCustomer&gt;.DoAsync(SelectIntercompanyDropshipDeliveryForCustomer, IAggregate, CancellationToken)</a>
     </div>
     <div>
-      <a class="xref" href="Hexalith.Application.Commands.CommandHandler-1.html#Hexalith_Application_Commands_CommandHandler_1_UndoAsync__0_Hexalith_Domain_Aggregates_IAggregate_CancellationToken_">CommandHandler&lt;AddInventoryItem&gt;.UndoAsync(AddInventoryItem, IAggregate, CancellationToken)</a>
+      <a class="xref" href="Hexalith.Application.Commands.CommandHandler-1.html#Hexalith_Application_Commands_CommandHandler_1_UndoAsync__0_Hexalith_Domain_Aggregates_IAggregate_CancellationToken_">CommandHandler&lt;SelectIntercompanyDropshipDeliveryForCustomer&gt;.UndoAsync(SelectIntercompanyDropshipDeliveryForCustomer, IAggregate, CancellationToken)</a>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
@@ -118,28 +118,28 @@ Implements the <a class="xref" href="Hexalith.Application.Commands.CommandHandle
       <span class="xref">System.Object.ToString()</span>
     </div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Hexalith.Application.Inventories.CommandHandlers.html">Hexalith.Application.Inventories.CommandHandlers</a></h6>
-  <h6><strong>Assembly</strong>: Hexalith.Application.Inventories.dll</h6>
-  <h5 id="Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemHandler_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Hexalith.Application.Parties.CommandHandlers.html">Hexalith.Application.Parties.CommandHandlers</a></h6>
+  <h6><strong>Assembly</strong>: Hexalith.Application.Parties.dll</h6>
+  <h5 id="Hexalith_Application_Parties_CommandHandlers_SelectIntercompanyDropshipDeliveryForCustomerHandler_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class AddInventoryItemHandler : CommandHandler&lt;AddInventoryItem&gt;, ICommandHandler&lt;AddInventoryItem&gt;, ICommandHandler</code></pre>
+    <pre><code class="lang-csharp hljs">public class SelectIntercompanyDropshipDeliveryForCustomerHandler : CommandHandler&lt;SelectIntercompanyDropshipDeliveryForCustomer&gt;, ICommandHandler&lt;SelectIntercompanyDropshipDeliveryForCustomer&gt;, ICommandHandler</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemHandler_DoAsync_Hexalith_Application_Inventories_Commands_AddInventoryItem_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler.DoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItem%2CHexalith.Domain.Aggregates.IAggregate%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Parties_CommandHandlers_SelectIntercompanyDropshipDeliveryForCustomerHandler_DoAsync_Hexalith_Application_Parties_Commands_SelectIntercompanyDropshipDeliveryForCustomer_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer%2CHexalith.Domain.Aggregates.IAggregate%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/CommandHandlers/AddInventoryItemHandler.cs/#L40">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/CommandHandlers/SelectIntercompanyDropshipDeliveryForCustomerHandler.cs/#L39">View Source</a>
   </span>
-  <a id="Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemHandler_DoAsync_" data-uid="Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler.DoAsync*"></a>
-  <h4 id="Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemHandler_DoAsync_Hexalith_Application_Inventories_Commands_AddInventoryItem_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_" data-uid="Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler.DoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItem,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)">DoAsync(AddInventoryItem, IAggregate, CancellationToken)</h4>
+  <a id="Hexalith_Application_Parties_CommandHandlers_SelectIntercompanyDropshipDeliveryForCustomerHandler_DoAsync_" data-uid="Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler.DoAsync*"></a>
+  <h4 id="Hexalith_Application_Parties_CommandHandlers_SelectIntercompanyDropshipDeliveryForCustomerHandler_DoAsync_Hexalith_Application_Parties_Commands_SelectIntercompanyDropshipDeliveryForCustomer_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_" data-uid="Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)">DoAsync(SelectIntercompanyDropshipDeliveryForCustomer, IAggregate, CancellationToken)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override Task&lt;IEnumerable&lt;BaseMessage&gt;&gt; DoAsync(AddInventoryItem command, IAggregate aggregate, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public override Task&lt;IEnumerable&lt;BaseMessage&gt;&gt; DoAsync(SelectIntercompanyDropshipDeliveryForCustomer command, IAggregate aggregate, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -152,7 +152,7 @@ Implements the <a class="xref" href="Hexalith.Application.Commands.CommandHandle
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Hexalith.Application.Inventories.Commands.AddInventoryItem.html">AddInventoryItem</a></td>
+        <td><a class="xref" href="Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.html">SelectIntercompanyDropshipDeliveryForCustomer</a></td>
         <td><span class="parametername">command</span></td>
         <td></td>
       </tr>
@@ -185,18 +185,18 @@ Implements the <a class="xref" href="Hexalith.Application.Commands.CommandHandle
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemHandler_UndoAsync_Hexalith_Application_Inventories_Commands_AddInventoryItem_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler.UndoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItem%2CHexalith.Domain.Aggregates.IAggregate%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Parties_CommandHandlers_SelectIntercompanyDropshipDeliveryForCustomerHandler_UndoAsync_Hexalith_Application_Parties_Commands_SelectIntercompanyDropshipDeliveryForCustomer_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer%2CHexalith.Domain.Aggregates.IAggregate%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/CommandHandlers/AddInventoryItemHandler.cs/#L53">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/CommandHandlers/SelectIntercompanyDropshipDeliveryForCustomerHandler.cs/#L54">View Source</a>
   </span>
-  <a id="Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemHandler_UndoAsync_" data-uid="Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler.UndoAsync*"></a>
-  <h4 id="Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemHandler_UndoAsync_Hexalith_Application_Inventories_Commands_AddInventoryItem_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_" data-uid="Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler.UndoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItem,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)">UndoAsync(AddInventoryItem, IAggregate, CancellationToken)</h4>
+  <a id="Hexalith_Application_Parties_CommandHandlers_SelectIntercompanyDropshipDeliveryForCustomerHandler_UndoAsync_" data-uid="Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync*"></a>
+  <h4 id="Hexalith_Application_Parties_CommandHandlers_SelectIntercompanyDropshipDeliveryForCustomerHandler_UndoAsync_Hexalith_Application_Parties_Commands_SelectIntercompanyDropshipDeliveryForCustomer_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_" data-uid="Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)">UndoAsync(SelectIntercompanyDropshipDeliveryForCustomer, IAggregate, CancellationToken)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override Task&lt;IEnumerable&lt;BaseMessage&gt;&gt; UndoAsync(AddInventoryItem command, IAggregate aggregate, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public override Task&lt;IEnumerable&lt;BaseMessage&gt;&gt; UndoAsync(SelectIntercompanyDropshipDeliveryForCustomer command, IAggregate aggregate, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -209,7 +209,7 @@ Implements the <a class="xref" href="Hexalith.Application.Commands.CommandHandle
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Hexalith.Application.Inventories.Commands.AddInventoryItem.html">AddInventoryItem</a></td>
+        <td><a class="xref" href="Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.html">SelectIntercompanyDropshipDeliveryForCustomer</a></td>
         <td><span class="parametername">command</span></td>
         <td></td>
       </tr>
@@ -266,10 +266,10 @@ Implements the <a class="xref" href="Hexalith.Application.Commands.CommandHandle
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemHandler.md&amp;value=---%0Auid%3A%20Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Parties_CommandHandlers_SelectIntercompanyDropshipDeliveryForCustomerHandler.md&amp;value=---%0Auid%3A%20Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/CommandHandlers/AddInventoryItemHandler.cs/#L37" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/CommandHandlers/SelectIntercompanyDropshipDeliveryForCustomerHandler.cs/#L36" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

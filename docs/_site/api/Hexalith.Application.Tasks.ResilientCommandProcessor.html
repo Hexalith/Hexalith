@@ -118,7 +118,7 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Tasks_ResilientCommandProcessor__ctor_Hexalith_Application_Tasks_ResiliencyPolicy_Hexalith_Application_Commands_ICommandDispatcher_Hexalith_Application_States_IStateStoreProvider_Microsoft_Extensions_Logging_ILogger_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Tasks.ResilientCommandProcessor.%23ctor(Hexalith.Application.Tasks.ResiliencyPolicy%2CHexalith.Application.Commands.ICommandDispatcher%2CHexalith.Application.States.IStateStoreProvider%2CMicrosoft.Extensions.Logging.ILogger)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/Tasks/ResilientCommandProcessor.cs/#L64">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/Tasks/ResilientCommandProcessor.cs/#L66">View Source</a>
   </span>
   <a id="Hexalith_Application_Tasks_ResilientCommandProcessor__ctor_" data-uid="Hexalith.Application.Tasks.ResilientCommandProcessor.#ctor*"></a>
   <h4 id="Hexalith_Application_Tasks_ResilientCommandProcessor__ctor_Hexalith_Application_Tasks_ResiliencyPolicy_Hexalith_Application_Commands_ICommandDispatcher_Hexalith_Application_States_IStateStoreProvider_Microsoft_Extensions_Logging_ILogger_" data-uid="Hexalith.Application.Tasks.ResilientCommandProcessor.#ctor(Hexalith.Application.Tasks.ResiliencyPolicy,Hexalith.Application.Commands.ICommandDispatcher,Hexalith.Application.States.IStateStoreProvider,Microsoft.Extensions.Logging.ILogger)">ResilientCommandProcessor(ResiliencyPolicy, ICommandDispatcher, IStateStoreProvider, ILogger)</h4>
@@ -185,19 +185,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Tasks_ResilientCommandProcessor_ProcessAsync_System_String_Hexalith_Application_Commands_BaseCommand_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Tasks.ResilientCommandProcessor.ProcessAsync(System.String%2CHexalith.Application.Commands.BaseCommand%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Tasks_ResilientCommandProcessor_ProcessAsync_System_String_Hexalith_Application_Commands_BaseCommand_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Tasks.ResilientCommandProcessor.ProcessAsync(System.String%2CHexalith.Application.Commands.BaseCommand%2CHexalith.Domain.Aggregates.IAggregate%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/Tasks/ResilientCommandProcessor.cs/#L87">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/Tasks/ResilientCommandProcessor.cs/#L91">View Source</a>
   </span>
   <a id="Hexalith_Application_Tasks_ResilientCommandProcessor_ProcessAsync_" data-uid="Hexalith.Application.Tasks.ResilientCommandProcessor.ProcessAsync*"></a>
-  <h4 id="Hexalith_Application_Tasks_ResilientCommandProcessor_ProcessAsync_System_String_Hexalith_Application_Commands_BaseCommand_System_Threading_CancellationToken_" data-uid="Hexalith.Application.Tasks.ResilientCommandProcessor.ProcessAsync(System.String,Hexalith.Application.Commands.BaseCommand,System.Threading.CancellationToken)">ProcessAsync(String, BaseCommand, CancellationToken)</h4>
+  <h4 id="Hexalith_Application_Tasks_ResilientCommandProcessor_ProcessAsync_System_String_Hexalith_Application_Commands_BaseCommand_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_" data-uid="Hexalith.Application.Tasks.ResilientCommandProcessor.ProcessAsync(System.String,Hexalith.Application.Commands.BaseCommand,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)">ProcessAsync(String, BaseCommand, IAggregate, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Process as an asynchronous operation.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;(TaskProcessor Processor, IEnumerable&lt;BaseMessage&gt; Events)&gt; ProcessAsync(string id, BaseCommand command, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;(TaskProcessor Processor, IEnumerable&lt;BaseMessage&gt; Events)&gt; ProcessAsync(string id, BaseCommand command, IAggregate aggregate, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -222,6 +222,12 @@
 </td>
       </tr>
       <tr>
+        <td><a class="xref" href="Hexalith.Domain.Aggregates.IAggregate.html">IAggregate</a></td>
+        <td><span class="parametername">aggregate</span></td>
+        <td><p>The aggregate.</p>
+</td>
+      </tr>
+      <tr>
         <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
@@ -240,7 +246,23 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<a class="xref" href="Hexalith.Application.Tasks.TaskProcessor.html">TaskProcessor</a>, <span class="xref">IEnumerable</span>&lt;<a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html">BaseMessage</a>&gt;&gt;&gt;</td>
-        <td><p>A <see cref="!:Task&lt;TResult>"></see> representing the result of the asynchronous operation.</p>
+        <td><p>A Task&lt;System.ValueTuple&gt; representing the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>null.</p>
 </td>
       </tr>
     </tbody>
@@ -263,7 +285,7 @@
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Tasks_ResilientCommandProcessor.md&amp;value=---%0Auid%3A%20Hexalith.Application.Tasks.ResilientCommandProcessor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/Tasks/ResilientCommandProcessor.cs/#L34" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/Tasks/ResilientCommandProcessor.cs/#L36" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

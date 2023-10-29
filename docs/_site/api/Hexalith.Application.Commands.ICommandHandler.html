@@ -86,19 +86,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Commands_ICommandHandler_DoAsync_Hexalith_Application_Commands_ICommand_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Commands.ICommandHandler.DoAsync(Hexalith.Application.Commands.ICommand%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Commands_ICommandHandler_DoAsync_Hexalith_Application_Commands_ICommand_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Commands.ICommandHandler.DoAsync(Hexalith.Application.Commands.ICommand%2CHexalith.Domain.Aggregates.IAggregate%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Commands/ICommandHandler.cs/#L26">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Commands/ICommandHandler.cs/#L28">View Source</a>
   </span>
   <a id="Hexalith_Application_Commands_ICommandHandler_DoAsync_" data-uid="Hexalith.Application.Commands.ICommandHandler.DoAsync*"></a>
-  <h4 id="Hexalith_Application_Commands_ICommandHandler_DoAsync_Hexalith_Application_Commands_ICommand_System_Threading_CancellationToken_" data-uid="Hexalith.Application.Commands.ICommandHandler.DoAsync(Hexalith.Application.Commands.ICommand,System.Threading.CancellationToken)">DoAsync(ICommand, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Executes the command.</p>
+  <h4 id="Hexalith_Application_Commands_ICommandHandler_DoAsync_Hexalith_Application_Commands_ICommand_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_" data-uid="Hexalith.Application.Commands.ICommandHandler.DoAsync(Hexalith.Application.Commands.ICommand,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)">DoAsync(ICommand, IAggregate, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Does the asynchronous.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IEnumerable&lt;BaseMessage&gt;&gt; DoAsync(ICommand command, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;IEnumerable&lt;BaseMessage&gt;&gt; DoAsync(ICommand command, IAggregate aggregate, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -113,7 +113,13 @@
       <tr>
         <td><a class="xref" href="Hexalith.Application.Commands.ICommand.html">ICommand</a></td>
         <td><span class="parametername">command</span></td>
-        <td><p>The command to execute.</p>
+        <td><p>The command.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.Domain.Aggregates.IAggregate.html">IAggregate</a></td>
+        <td><span class="parametername">aggregate</span></td>
+        <td><p>The aggregate.</p>
 </td>
       </tr>
       <tr>
@@ -135,26 +141,26 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html">BaseMessage</a>&gt;&gt;</td>
-        <td><p>The generated events with their metadata.</p>
+        <td><p>Task&lt;IEnumerable&lt;BaseMessage&gt;&gt;.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Commands_ICommandHandler_UndoAsync_Hexalith_Application_Commands_ICommand_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Commands.ICommandHandler.UndoAsync(Hexalith.Application.Commands.ICommand%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Commands_ICommandHandler_UndoAsync_Hexalith_Application_Commands_ICommand_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Commands.ICommandHandler.UndoAsync(Hexalith.Application.Commands.ICommand%2CHexalith.Domain.Aggregates.IAggregate%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Commands/ICommandHandler.cs/#L34">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Commands/ICommandHandler.cs/#L37">View Source</a>
   </span>
   <a id="Hexalith_Application_Commands_ICommandHandler_UndoAsync_" data-uid="Hexalith.Application.Commands.ICommandHandler.UndoAsync*"></a>
-  <h4 id="Hexalith_Application_Commands_ICommandHandler_UndoAsync_Hexalith_Application_Commands_ICommand_System_Threading_CancellationToken_" data-uid="Hexalith.Application.Commands.ICommandHandler.UndoAsync(Hexalith.Application.Commands.ICommand,System.Threading.CancellationToken)">UndoAsync(ICommand, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Undo the execution of the command.</p>
+  <h4 id="Hexalith_Application_Commands_ICommandHandler_UndoAsync_Hexalith_Application_Commands_ICommand_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_" data-uid="Hexalith.Application.Commands.ICommandHandler.UndoAsync(Hexalith.Application.Commands.ICommand,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)">UndoAsync(ICommand, IAggregate, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Undoes the asynchronous.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IEnumerable&lt;BaseMessage&gt;&gt; UndoAsync(ICommand command, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;IEnumerable&lt;BaseMessage&gt;&gt; UndoAsync(ICommand command, IAggregate aggregate, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -169,7 +175,13 @@
       <tr>
         <td><a class="xref" href="Hexalith.Application.Commands.ICommand.html">ICommand</a></td>
         <td><span class="parametername">command</span></td>
-        <td><p>The command to execute.</p>
+        <td><p>The command.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.Domain.Aggregates.IAggregate.html">IAggregate</a></td>
+        <td><span class="parametername">aggregate</span></td>
+        <td><p>The aggregate.</p>
 </td>
       </tr>
       <tr>
@@ -191,7 +203,7 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html">BaseMessage</a>&gt;&gt;</td>
-        <td><p>The generated events with their metadata.</p>
+        <td><p>Task&lt;IEnumerable&lt;BaseMessage&gt;&gt;.</p>
 </td>
       </tr>
     </tbody>
@@ -214,7 +226,7 @@
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Commands_ICommandHandler.md&amp;value=---%0Auid%3A%20Hexalith.Application.Commands.ICommandHandler%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Commands/ICommandHandler.cs/#L18" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Commands/ICommandHandler.cs/#L19" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

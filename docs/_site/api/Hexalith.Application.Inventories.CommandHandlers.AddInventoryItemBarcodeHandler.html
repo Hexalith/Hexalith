@@ -91,10 +91,10 @@ Implements the <a class="xref" href="Hexalith.Application.Commands.CommandHandle
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Hexalith.Application.Commands.CommandHandler-1.html#Hexalith_Application_Commands_CommandHandler_1_DoAsync__0_CancellationToken_">CommandHandler&lt;AddInventoryItemBarcode&gt;.DoAsync(AddInventoryItemBarcode, CancellationToken)</a>
+      <a class="xref" href="Hexalith.Application.Commands.CommandHandler-1.html#Hexalith_Application_Commands_CommandHandler_1_DoAsync__0_Hexalith_Domain_Aggregates_IAggregate_CancellationToken_">CommandHandler&lt;AddInventoryItemBarcode&gt;.DoAsync(AddInventoryItemBarcode, IAggregate, CancellationToken)</a>
     </div>
     <div>
-      <a class="xref" href="Hexalith.Application.Commands.CommandHandler-1.html#Hexalith_Application_Commands_CommandHandler_1_UndoAsync__0_CancellationToken_">CommandHandler&lt;AddInventoryItemBarcode&gt;.UndoAsync(AddInventoryItemBarcode, CancellationToken)</a>
+      <a class="xref" href="Hexalith.Application.Commands.CommandHandler-1.html#Hexalith_Application_Commands_CommandHandler_1_UndoAsync__0_Hexalith_Domain_Aggregates_IAggregate_CancellationToken_">CommandHandler&lt;AddInventoryItemBarcode&gt;.UndoAsync(AddInventoryItemBarcode, IAggregate, CancellationToken)</a>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
@@ -128,18 +128,18 @@ Implements the <a class="xref" href="Hexalith.Application.Commands.CommandHandle
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemBarcodeHandler_DoAsync_Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.DoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemBarcodeHandler_DoAsync_Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.DoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode%2CHexalith.Domain.Aggregates.IAggregate%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/CommandHandlers/AddInventoryItemBarcodeHandler.cs/#L39">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/CommandHandlers/AddInventoryItemBarcodeHandler.cs/#L40">View Source</a>
   </span>
   <a id="Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemBarcodeHandler_DoAsync_" data-uid="Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.DoAsync*"></a>
-  <h4 id="Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemBarcodeHandler_DoAsync_Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode_System_Threading_CancellationToken_" data-uid="Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.DoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode,System.Threading.CancellationToken)">DoAsync(AddInventoryItemBarcode, CancellationToken)</h4>
+  <h4 id="Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemBarcodeHandler_DoAsync_Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_" data-uid="Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.DoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)">DoAsync(AddInventoryItemBarcode, IAggregate, CancellationToken)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override Task&lt;IEnumerable&lt;BaseMessage&gt;&gt; DoAsync(AddInventoryItemBarcode command, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public override Task&lt;IEnumerable&lt;BaseMessage&gt;&gt; DoAsync(AddInventoryItemBarcode command, IAggregate aggregate, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -154,6 +154,11 @@ Implements the <a class="xref" href="Hexalith.Application.Commands.CommandHandle
       <tr>
         <td><a class="xref" href="Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.html">AddInventoryItemBarcode</a></td>
         <td><span class="parametername">command</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.Domain.Aggregates.IAggregate.html">IAggregate</a></td>
+        <td><span class="parametername">aggregate</span></td>
         <td></td>
       </tr>
       <tr>
@@ -180,18 +185,18 @@ Implements the <a class="xref" href="Hexalith.Application.Commands.CommandHandle
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemBarcodeHandler_UndoAsync_Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.UndoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemBarcodeHandler_UndoAsync_Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.UndoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode%2CHexalith.Domain.Aggregates.IAggregate%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/CommandHandlers/AddInventoryItemBarcodeHandler.cs/#L52">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/CommandHandlers/AddInventoryItemBarcodeHandler.cs/#L53">View Source</a>
   </span>
   <a id="Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemBarcodeHandler_UndoAsync_" data-uid="Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.UndoAsync*"></a>
-  <h4 id="Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemBarcodeHandler_UndoAsync_Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode_System_Threading_CancellationToken_" data-uid="Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.UndoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode,System.Threading.CancellationToken)">UndoAsync(AddInventoryItemBarcode, CancellationToken)</h4>
+  <h4 id="Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemBarcodeHandler_UndoAsync_Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_" data-uid="Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.UndoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)">UndoAsync(AddInventoryItemBarcode, IAggregate, CancellationToken)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override Task&lt;IEnumerable&lt;BaseMessage&gt;&gt; UndoAsync(AddInventoryItemBarcode command, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public override Task&lt;IEnumerable&lt;BaseMessage&gt;&gt; UndoAsync(AddInventoryItemBarcode command, IAggregate aggregate, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -206,6 +211,11 @@ Implements the <a class="xref" href="Hexalith.Application.Commands.CommandHandle
       <tr>
         <td><a class="xref" href="Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.html">AddInventoryItemBarcode</a></td>
         <td><span class="parametername">command</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.Domain.Aggregates.IAggregate.html">IAggregate</a></td>
+        <td><span class="parametername">aggregate</span></td>
         <td></td>
       </tr>
       <tr>
@@ -259,7 +269,7 @@ Implements the <a class="xref" href="Hexalith.Application.Commands.CommandHandle
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemBarcodeHandler.md&amp;value=---%0Auid%3A%20Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/CommandHandlers/AddInventoryItemBarcodeHandler.cs/#L36" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/CommandHandlers/AddInventoryItemBarcodeHandler.cs/#L37" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

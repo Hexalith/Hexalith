@@ -785,14 +785,14 @@ references:
   fullName.vb: Hexalith.Application.Commands.CommandHandler(Of TCommand)
   nameWithType: CommandHandler<TCommand>
   nameWithType.vb: CommandHandler(Of TCommand)
-- uid: Hexalith.Application.Commands.CommandHandler`1.DoAsync(`0,CancellationToken)
-  name: DoAsync(TCommand, CancellationToken)
-  href: api/Hexalith.Application.Commands.CommandHandler-1.html#Hexalith_Application_Commands_CommandHandler_1_DoAsync__0_CancellationToken_
-  commentId: M:Hexalith.Application.Commands.CommandHandler`1.DoAsync(`0,CancellationToken)
-  fullName: Hexalith.Application.Commands.CommandHandler<TCommand>.DoAsync(TCommand, CancellationToken)
-  fullName.vb: Hexalith.Application.Commands.CommandHandler(Of TCommand).DoAsync(TCommand, CancellationToken)
-  nameWithType: CommandHandler<TCommand>.DoAsync(TCommand, CancellationToken)
-  nameWithType.vb: CommandHandler(Of TCommand).DoAsync(TCommand, CancellationToken)
+- uid: Hexalith.Application.Commands.CommandHandler`1.DoAsync(`0,Hexalith.Domain.Aggregates.IAggregate,CancellationToken)
+  name: DoAsync(TCommand, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Commands.CommandHandler-1.html#Hexalith_Application_Commands_CommandHandler_1_DoAsync__0_Hexalith_Domain_Aggregates_IAggregate_CancellationToken_
+  commentId: M:Hexalith.Application.Commands.CommandHandler`1.DoAsync(`0,Hexalith.Domain.Aggregates.IAggregate,CancellationToken)
+  fullName: Hexalith.Application.Commands.CommandHandler<TCommand>.DoAsync(TCommand, Hexalith.Domain.Aggregates.IAggregate, CancellationToken)
+  fullName.vb: Hexalith.Application.Commands.CommandHandler(Of TCommand).DoAsync(TCommand, Hexalith.Domain.Aggregates.IAggregate, CancellationToken)
+  nameWithType: CommandHandler<TCommand>.DoAsync(TCommand, IAggregate, CancellationToken)
+  nameWithType.vb: CommandHandler(Of TCommand).DoAsync(TCommand, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Commands.CommandHandler`1.DoAsync*
   name: DoAsync
   href: api/Hexalith.Application.Commands.CommandHandler-1.html#Hexalith_Application_Commands_CommandHandler_1_DoAsync_
@@ -802,14 +802,14 @@ references:
   fullName.vb: Hexalith.Application.Commands.CommandHandler(Of TCommand).DoAsync
   nameWithType: CommandHandler<TCommand>.DoAsync
   nameWithType.vb: CommandHandler(Of TCommand).DoAsync
-- uid: Hexalith.Application.Commands.CommandHandler`1.UndoAsync(`0,CancellationToken)
-  name: UndoAsync(TCommand, CancellationToken)
-  href: api/Hexalith.Application.Commands.CommandHandler-1.html#Hexalith_Application_Commands_CommandHandler_1_UndoAsync__0_CancellationToken_
-  commentId: M:Hexalith.Application.Commands.CommandHandler`1.UndoAsync(`0,CancellationToken)
-  fullName: Hexalith.Application.Commands.CommandHandler<TCommand>.UndoAsync(TCommand, CancellationToken)
-  fullName.vb: Hexalith.Application.Commands.CommandHandler(Of TCommand).UndoAsync(TCommand, CancellationToken)
-  nameWithType: CommandHandler<TCommand>.UndoAsync(TCommand, CancellationToken)
-  nameWithType.vb: CommandHandler(Of TCommand).UndoAsync(TCommand, CancellationToken)
+- uid: Hexalith.Application.Commands.CommandHandler`1.UndoAsync(`0,Hexalith.Domain.Aggregates.IAggregate,CancellationToken)
+  name: UndoAsync(TCommand, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Commands.CommandHandler-1.html#Hexalith_Application_Commands_CommandHandler_1_UndoAsync__0_Hexalith_Domain_Aggregates_IAggregate_CancellationToken_
+  commentId: M:Hexalith.Application.Commands.CommandHandler`1.UndoAsync(`0,Hexalith.Domain.Aggregates.IAggregate,CancellationToken)
+  fullName: Hexalith.Application.Commands.CommandHandler<TCommand>.UndoAsync(TCommand, Hexalith.Domain.Aggregates.IAggregate, CancellationToken)
+  fullName.vb: Hexalith.Application.Commands.CommandHandler(Of TCommand).UndoAsync(TCommand, Hexalith.Domain.Aggregates.IAggregate, CancellationToken)
+  nameWithType: CommandHandler<TCommand>.UndoAsync(TCommand, IAggregate, CancellationToken)
+  nameWithType.vb: CommandHandler(Of TCommand).UndoAsync(TCommand, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Commands.CommandHandler`1.UndoAsync*
   name: UndoAsync
   href: api/Hexalith.Application.Commands.CommandHandler-1.html#Hexalith_Application_Commands_CommandHandler_1_UndoAsync_
@@ -918,12 +918,12 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.DependencyInjectionCommandDispatcher
   nameWithType: DependencyInjectionCommandDispatcher.DependencyInjectionCommandDispatcher
-- uid: Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.DoAsync(Hexalith.Application.Commands.ICommand,System.Threading.CancellationToken)
-  name: DoAsync(ICommand, CancellationToken)
-  href: api/Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.html#Hexalith_Application_Commands_DependencyInjectionCommandDispatcher_DoAsync_Hexalith_Application_Commands_ICommand_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.DoAsync(Hexalith.Application.Commands.ICommand,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.DoAsync(Hexalith.Application.Commands.ICommand, System.Threading.CancellationToken)
-  nameWithType: DependencyInjectionCommandDispatcher.DoAsync(ICommand, CancellationToken)
+- uid: Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.DoAsync(Hexalith.Application.Commands.ICommand,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: DoAsync(ICommand, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.html#Hexalith_Application_Commands_DependencyInjectionCommandDispatcher_DoAsync_Hexalith_Application_Commands_ICommand_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.DoAsync(Hexalith.Application.Commands.ICommand,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.DoAsync(Hexalith.Application.Commands.ICommand, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: DependencyInjectionCommandDispatcher.DoAsync(ICommand, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.DoAsync*
   name: DoAsync
   href: api/Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.html#Hexalith_Application_Commands_DependencyInjectionCommandDispatcher_DoAsync_
@@ -931,12 +931,12 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.DoAsync
   nameWithType: DependencyInjectionCommandDispatcher.DoAsync
-- uid: Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.UnDoAsync(Hexalith.Application.Commands.ICommand,System.Threading.CancellationToken)
-  name: UnDoAsync(ICommand, CancellationToken)
-  href: api/Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.html#Hexalith_Application_Commands_DependencyInjectionCommandDispatcher_UnDoAsync_Hexalith_Application_Commands_ICommand_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.UnDoAsync(Hexalith.Application.Commands.ICommand,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.UnDoAsync(Hexalith.Application.Commands.ICommand, System.Threading.CancellationToken)
-  nameWithType: DependencyInjectionCommandDispatcher.UnDoAsync(ICommand, CancellationToken)
+- uid: Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.UnDoAsync(Hexalith.Application.Commands.ICommand,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: UnDoAsync(ICommand, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.html#Hexalith_Application_Commands_DependencyInjectionCommandDispatcher_UnDoAsync_Hexalith_Application_Commands_ICommand_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.UnDoAsync(Hexalith.Application.Commands.ICommand,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.UnDoAsync(Hexalith.Application.Commands.ICommand, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: DependencyInjectionCommandDispatcher.UnDoAsync(ICommand, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.UnDoAsync*
   name: UnDoAsync
   href: api/Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.html#Hexalith_Application_Commands_DependencyInjectionCommandDispatcher_UnDoAsync_
@@ -990,12 +990,12 @@ references:
   commentId: T:Hexalith.Application.Commands.ICommandDispatcher
   fullName: Hexalith.Application.Commands.ICommandDispatcher
   nameWithType: ICommandDispatcher
-- uid: Hexalith.Application.Commands.ICommandDispatcher.DoAsync(Hexalith.Application.Commands.ICommand,CancellationToken)
-  name: DoAsync(ICommand, CancellationToken)
-  href: api/Hexalith.Application.Commands.ICommandDispatcher.html#Hexalith_Application_Commands_ICommandDispatcher_DoAsync_Hexalith_Application_Commands_ICommand_CancellationToken_
-  commentId: M:Hexalith.Application.Commands.ICommandDispatcher.DoAsync(Hexalith.Application.Commands.ICommand,CancellationToken)
-  fullName: Hexalith.Application.Commands.ICommandDispatcher.DoAsync(Hexalith.Application.Commands.ICommand, CancellationToken)
-  nameWithType: ICommandDispatcher.DoAsync(ICommand, CancellationToken)
+- uid: Hexalith.Application.Commands.ICommandDispatcher.DoAsync(Hexalith.Application.Commands.ICommand,Hexalith.Domain.Aggregates.IAggregate,CancellationToken)
+  name: DoAsync(ICommand, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Commands.ICommandDispatcher.html#Hexalith_Application_Commands_ICommandDispatcher_DoAsync_Hexalith_Application_Commands_ICommand_Hexalith_Domain_Aggregates_IAggregate_CancellationToken_
+  commentId: M:Hexalith.Application.Commands.ICommandDispatcher.DoAsync(Hexalith.Application.Commands.ICommand,Hexalith.Domain.Aggregates.IAggregate,CancellationToken)
+  fullName: Hexalith.Application.Commands.ICommandDispatcher.DoAsync(Hexalith.Application.Commands.ICommand, Hexalith.Domain.Aggregates.IAggregate, CancellationToken)
+  nameWithType: ICommandDispatcher.DoAsync(ICommand, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Commands.ICommandDispatcher.DoAsync*
   name: DoAsync
   href: api/Hexalith.Application.Commands.ICommandDispatcher.html#Hexalith_Application_Commands_ICommandDispatcher_DoAsync_
@@ -1003,12 +1003,12 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Commands.ICommandDispatcher.DoAsync
   nameWithType: ICommandDispatcher.DoAsync
-- uid: Hexalith.Application.Commands.ICommandDispatcher.UnDoAsync(Hexalith.Application.Commands.ICommand,CancellationToken)
-  name: UnDoAsync(ICommand, CancellationToken)
-  href: api/Hexalith.Application.Commands.ICommandDispatcher.html#Hexalith_Application_Commands_ICommandDispatcher_UnDoAsync_Hexalith_Application_Commands_ICommand_CancellationToken_
-  commentId: M:Hexalith.Application.Commands.ICommandDispatcher.UnDoAsync(Hexalith.Application.Commands.ICommand,CancellationToken)
-  fullName: Hexalith.Application.Commands.ICommandDispatcher.UnDoAsync(Hexalith.Application.Commands.ICommand, CancellationToken)
-  nameWithType: ICommandDispatcher.UnDoAsync(ICommand, CancellationToken)
+- uid: Hexalith.Application.Commands.ICommandDispatcher.UnDoAsync(Hexalith.Application.Commands.ICommand,Hexalith.Domain.Aggregates.IAggregate,CancellationToken)
+  name: UnDoAsync(ICommand, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Commands.ICommandDispatcher.html#Hexalith_Application_Commands_ICommandDispatcher_UnDoAsync_Hexalith_Application_Commands_ICommand_Hexalith_Domain_Aggregates_IAggregate_CancellationToken_
+  commentId: M:Hexalith.Application.Commands.ICommandDispatcher.UnDoAsync(Hexalith.Application.Commands.ICommand,Hexalith.Domain.Aggregates.IAggregate,CancellationToken)
+  fullName: Hexalith.Application.Commands.ICommandDispatcher.UnDoAsync(Hexalith.Application.Commands.ICommand, Hexalith.Domain.Aggregates.IAggregate, CancellationToken)
+  nameWithType: ICommandDispatcher.UnDoAsync(ICommand, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Commands.ICommandDispatcher.UnDoAsync*
   name: UnDoAsync
   href: api/Hexalith.Application.Commands.ICommandDispatcher.html#Hexalith_Application_Commands_ICommandDispatcher_UnDoAsync_
@@ -1067,12 +1067,12 @@ references:
   commentId: T:Hexalith.Application.Commands.ICommandHandler
   fullName: Hexalith.Application.Commands.ICommandHandler
   nameWithType: ICommandHandler
-- uid: Hexalith.Application.Commands.ICommandHandler.DoAsync(Hexalith.Application.Commands.ICommand,System.Threading.CancellationToken)
-  name: DoAsync(ICommand, CancellationToken)
-  href: api/Hexalith.Application.Commands.ICommandHandler.html#Hexalith_Application_Commands_ICommandHandler_DoAsync_Hexalith_Application_Commands_ICommand_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Commands.ICommandHandler.DoAsync(Hexalith.Application.Commands.ICommand,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Commands.ICommandHandler.DoAsync(Hexalith.Application.Commands.ICommand, System.Threading.CancellationToken)
-  nameWithType: ICommandHandler.DoAsync(ICommand, CancellationToken)
+- uid: Hexalith.Application.Commands.ICommandHandler.DoAsync(Hexalith.Application.Commands.ICommand,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: DoAsync(ICommand, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Commands.ICommandHandler.html#Hexalith_Application_Commands_ICommandHandler_DoAsync_Hexalith_Application_Commands_ICommand_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Commands.ICommandHandler.DoAsync(Hexalith.Application.Commands.ICommand,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Commands.ICommandHandler.DoAsync(Hexalith.Application.Commands.ICommand, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: ICommandHandler.DoAsync(ICommand, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Commands.ICommandHandler.DoAsync*
   name: DoAsync
   href: api/Hexalith.Application.Commands.ICommandHandler.html#Hexalith_Application_Commands_ICommandHandler_DoAsync_
@@ -1080,12 +1080,12 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Commands.ICommandHandler.DoAsync
   nameWithType: ICommandHandler.DoAsync
-- uid: Hexalith.Application.Commands.ICommandHandler.UndoAsync(Hexalith.Application.Commands.ICommand,System.Threading.CancellationToken)
-  name: UndoAsync(ICommand, CancellationToken)
-  href: api/Hexalith.Application.Commands.ICommandHandler.html#Hexalith_Application_Commands_ICommandHandler_UndoAsync_Hexalith_Application_Commands_ICommand_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Commands.ICommandHandler.UndoAsync(Hexalith.Application.Commands.ICommand,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Commands.ICommandHandler.UndoAsync(Hexalith.Application.Commands.ICommand, System.Threading.CancellationToken)
-  nameWithType: ICommandHandler.UndoAsync(ICommand, CancellationToken)
+- uid: Hexalith.Application.Commands.ICommandHandler.UndoAsync(Hexalith.Application.Commands.ICommand,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: UndoAsync(ICommand, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Commands.ICommandHandler.html#Hexalith_Application_Commands_ICommandHandler_UndoAsync_Hexalith_Application_Commands_ICommand_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Commands.ICommandHandler.UndoAsync(Hexalith.Application.Commands.ICommand,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Commands.ICommandHandler.UndoAsync(Hexalith.Application.Commands.ICommand, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: ICommandHandler.UndoAsync(ICommand, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Commands.ICommandHandler.UndoAsync*
   name: UndoAsync
   href: api/Hexalith.Application.Commands.ICommandHandler.html#Hexalith_Application_Commands_ICommandHandler_UndoAsync_
@@ -1102,14 +1102,14 @@ references:
   fullName.vb: Hexalith.Application.Commands.ICommandHandler(Of TCommand)
   nameWithType: ICommandHandler<TCommand>
   nameWithType.vb: ICommandHandler(Of TCommand)
-- uid: Hexalith.Application.Commands.ICommandHandler`1.DoAsync(`0,System.Threading.CancellationToken)
-  name: DoAsync(TCommand, CancellationToken)
-  href: api/Hexalith.Application.Commands.ICommandHandler-1.html#Hexalith_Application_Commands_ICommandHandler_1_DoAsync__0_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Commands.ICommandHandler`1.DoAsync(`0,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Commands.ICommandHandler<TCommand>.DoAsync(TCommand, System.Threading.CancellationToken)
-  fullName.vb: Hexalith.Application.Commands.ICommandHandler(Of TCommand).DoAsync(TCommand, System.Threading.CancellationToken)
-  nameWithType: ICommandHandler<TCommand>.DoAsync(TCommand, CancellationToken)
-  nameWithType.vb: ICommandHandler(Of TCommand).DoAsync(TCommand, CancellationToken)
+- uid: Hexalith.Application.Commands.ICommandHandler`1.DoAsync(`0,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: DoAsync(TCommand, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Commands.ICommandHandler-1.html#Hexalith_Application_Commands_ICommandHandler_1_DoAsync__0_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Commands.ICommandHandler`1.DoAsync(`0,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Commands.ICommandHandler<TCommand>.DoAsync(TCommand, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  fullName.vb: Hexalith.Application.Commands.ICommandHandler(Of TCommand).DoAsync(TCommand, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: ICommandHandler<TCommand>.DoAsync(TCommand, IAggregate, CancellationToken)
+  nameWithType.vb: ICommandHandler(Of TCommand).DoAsync(TCommand, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Commands.ICommandHandler`1.DoAsync*
   name: DoAsync
   href: api/Hexalith.Application.Commands.ICommandHandler-1.html#Hexalith_Application_Commands_ICommandHandler_1_DoAsync_
@@ -1119,14 +1119,14 @@ references:
   fullName.vb: Hexalith.Application.Commands.ICommandHandler(Of TCommand).DoAsync
   nameWithType: ICommandHandler<TCommand>.DoAsync
   nameWithType.vb: ICommandHandler(Of TCommand).DoAsync
-- uid: Hexalith.Application.Commands.ICommandHandler`1.UndoAsync(`0,System.Threading.CancellationToken)
-  name: UndoAsync(TCommand, CancellationToken)
-  href: api/Hexalith.Application.Commands.ICommandHandler-1.html#Hexalith_Application_Commands_ICommandHandler_1_UndoAsync__0_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Commands.ICommandHandler`1.UndoAsync(`0,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Commands.ICommandHandler<TCommand>.UndoAsync(TCommand, System.Threading.CancellationToken)
-  fullName.vb: Hexalith.Application.Commands.ICommandHandler(Of TCommand).UndoAsync(TCommand, System.Threading.CancellationToken)
-  nameWithType: ICommandHandler<TCommand>.UndoAsync(TCommand, CancellationToken)
-  nameWithType.vb: ICommandHandler(Of TCommand).UndoAsync(TCommand, CancellationToken)
+- uid: Hexalith.Application.Commands.ICommandHandler`1.UndoAsync(`0,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: UndoAsync(TCommand, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Commands.ICommandHandler-1.html#Hexalith_Application_Commands_ICommandHandler_1_UndoAsync__0_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Commands.ICommandHandler`1.UndoAsync(`0,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Commands.ICommandHandler<TCommand>.UndoAsync(TCommand, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  fullName.vb: Hexalith.Application.Commands.ICommandHandler(Of TCommand).UndoAsync(TCommand, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: ICommandHandler<TCommand>.UndoAsync(TCommand, IAggregate, CancellationToken)
+  nameWithType.vb: ICommandHandler(Of TCommand).UndoAsync(TCommand, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Commands.ICommandHandler`1.UndoAsync*
   name: UndoAsync
   href: api/Hexalith.Application.Commands.ICommandHandler-1.html#Hexalith_Application_Commands_ICommandHandler_1_UndoAsync_
@@ -2516,12 +2516,12 @@ references:
   commentId: T:Hexalith.Application.ExternalSystems.CommandHandlers.AddExternalSystemReferenceHandler
   fullName: Hexalith.Application.ExternalSystems.CommandHandlers.AddExternalSystemReferenceHandler
   nameWithType: AddExternalSystemReferenceHandler
-- uid: Hexalith.Application.ExternalSystems.CommandHandlers.AddExternalSystemReferenceHandler.DoAsync(Hexalith.Application.ExternalSystems.Commands.AddExternalSystemReference,System.Threading.CancellationToken)
-  name: DoAsync(AddExternalSystemReference, CancellationToken)
-  href: api/Hexalith.Application.ExternalSystems.CommandHandlers.AddExternalSystemReferenceHandler.html#Hexalith_Application_ExternalSystems_CommandHandlers_AddExternalSystemReferenceHandler_DoAsync_Hexalith_Application_ExternalSystems_Commands_AddExternalSystemReference_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.ExternalSystems.CommandHandlers.AddExternalSystemReferenceHandler.DoAsync(Hexalith.Application.ExternalSystems.Commands.AddExternalSystemReference,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.ExternalSystems.CommandHandlers.AddExternalSystemReferenceHandler.DoAsync(Hexalith.Application.ExternalSystems.Commands.AddExternalSystemReference, System.Threading.CancellationToken)
-  nameWithType: AddExternalSystemReferenceHandler.DoAsync(AddExternalSystemReference, CancellationToken)
+- uid: Hexalith.Application.ExternalSystems.CommandHandlers.AddExternalSystemReferenceHandler.DoAsync(Hexalith.Application.ExternalSystems.Commands.AddExternalSystemReference,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: DoAsync(AddExternalSystemReference, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.ExternalSystems.CommandHandlers.AddExternalSystemReferenceHandler.html#Hexalith_Application_ExternalSystems_CommandHandlers_AddExternalSystemReferenceHandler_DoAsync_Hexalith_Application_ExternalSystems_Commands_AddExternalSystemReference_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.ExternalSystems.CommandHandlers.AddExternalSystemReferenceHandler.DoAsync(Hexalith.Application.ExternalSystems.Commands.AddExternalSystemReference,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.ExternalSystems.CommandHandlers.AddExternalSystemReferenceHandler.DoAsync(Hexalith.Application.ExternalSystems.Commands.AddExternalSystemReference, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: AddExternalSystemReferenceHandler.DoAsync(AddExternalSystemReference, IAggregate, CancellationToken)
 - uid: Hexalith.Application.ExternalSystems.CommandHandlers.AddExternalSystemReferenceHandler.DoAsync*
   name: DoAsync
   href: api/Hexalith.Application.ExternalSystems.CommandHandlers.AddExternalSystemReferenceHandler.html#Hexalith_Application_ExternalSystems_CommandHandlers_AddExternalSystemReferenceHandler_DoAsync_
@@ -2529,12 +2529,12 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.ExternalSystems.CommandHandlers.AddExternalSystemReferenceHandler.DoAsync
   nameWithType: AddExternalSystemReferenceHandler.DoAsync
-- uid: Hexalith.Application.ExternalSystems.CommandHandlers.AddExternalSystemReferenceHandler.UndoAsync(Hexalith.Application.ExternalSystems.Commands.AddExternalSystemReference,System.Threading.CancellationToken)
-  name: UndoAsync(AddExternalSystemReference, CancellationToken)
-  href: api/Hexalith.Application.ExternalSystems.CommandHandlers.AddExternalSystemReferenceHandler.html#Hexalith_Application_ExternalSystems_CommandHandlers_AddExternalSystemReferenceHandler_UndoAsync_Hexalith_Application_ExternalSystems_Commands_AddExternalSystemReference_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.ExternalSystems.CommandHandlers.AddExternalSystemReferenceHandler.UndoAsync(Hexalith.Application.ExternalSystems.Commands.AddExternalSystemReference,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.ExternalSystems.CommandHandlers.AddExternalSystemReferenceHandler.UndoAsync(Hexalith.Application.ExternalSystems.Commands.AddExternalSystemReference, System.Threading.CancellationToken)
-  nameWithType: AddExternalSystemReferenceHandler.UndoAsync(AddExternalSystemReference, CancellationToken)
+- uid: Hexalith.Application.ExternalSystems.CommandHandlers.AddExternalSystemReferenceHandler.UndoAsync(Hexalith.Application.ExternalSystems.Commands.AddExternalSystemReference,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: UndoAsync(AddExternalSystemReference, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.ExternalSystems.CommandHandlers.AddExternalSystemReferenceHandler.html#Hexalith_Application_ExternalSystems_CommandHandlers_AddExternalSystemReferenceHandler_UndoAsync_Hexalith_Application_ExternalSystems_Commands_AddExternalSystemReference_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.ExternalSystems.CommandHandlers.AddExternalSystemReferenceHandler.UndoAsync(Hexalith.Application.ExternalSystems.Commands.AddExternalSystemReference,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.ExternalSystems.CommandHandlers.AddExternalSystemReferenceHandler.UndoAsync(Hexalith.Application.ExternalSystems.Commands.AddExternalSystemReference, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: AddExternalSystemReferenceHandler.UndoAsync(AddExternalSystemReference, IAggregate, CancellationToken)
 - uid: Hexalith.Application.ExternalSystems.CommandHandlers.AddExternalSystemReferenceHandler.UndoAsync*
   name: UndoAsync
   href: api/Hexalith.Application.ExternalSystems.CommandHandlers.AddExternalSystemReferenceHandler.html#Hexalith_Application_ExternalSystems_CommandHandlers_AddExternalSystemReferenceHandler_UndoAsync_
@@ -2548,12 +2548,12 @@ references:
   commentId: T:Hexalith.Application.ExternalSystems.CommandHandlers.RemoveExternalSystemReferenceHandler
   fullName: Hexalith.Application.ExternalSystems.CommandHandlers.RemoveExternalSystemReferenceHandler
   nameWithType: RemoveExternalSystemReferenceHandler
-- uid: Hexalith.Application.ExternalSystems.CommandHandlers.RemoveExternalSystemReferenceHandler.DoAsync(Hexalith.Application.ExternalSystems.Commands.RemoveExternalSystemReference,System.Threading.CancellationToken)
-  name: DoAsync(RemoveExternalSystemReference, CancellationToken)
-  href: api/Hexalith.Application.ExternalSystems.CommandHandlers.RemoveExternalSystemReferenceHandler.html#Hexalith_Application_ExternalSystems_CommandHandlers_RemoveExternalSystemReferenceHandler_DoAsync_Hexalith_Application_ExternalSystems_Commands_RemoveExternalSystemReference_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.ExternalSystems.CommandHandlers.RemoveExternalSystemReferenceHandler.DoAsync(Hexalith.Application.ExternalSystems.Commands.RemoveExternalSystemReference,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.ExternalSystems.CommandHandlers.RemoveExternalSystemReferenceHandler.DoAsync(Hexalith.Application.ExternalSystems.Commands.RemoveExternalSystemReference, System.Threading.CancellationToken)
-  nameWithType: RemoveExternalSystemReferenceHandler.DoAsync(RemoveExternalSystemReference, CancellationToken)
+- uid: Hexalith.Application.ExternalSystems.CommandHandlers.RemoveExternalSystemReferenceHandler.DoAsync(Hexalith.Application.ExternalSystems.Commands.RemoveExternalSystemReference,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: DoAsync(RemoveExternalSystemReference, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.ExternalSystems.CommandHandlers.RemoveExternalSystemReferenceHandler.html#Hexalith_Application_ExternalSystems_CommandHandlers_RemoveExternalSystemReferenceHandler_DoAsync_Hexalith_Application_ExternalSystems_Commands_RemoveExternalSystemReference_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.ExternalSystems.CommandHandlers.RemoveExternalSystemReferenceHandler.DoAsync(Hexalith.Application.ExternalSystems.Commands.RemoveExternalSystemReference,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.ExternalSystems.CommandHandlers.RemoveExternalSystemReferenceHandler.DoAsync(Hexalith.Application.ExternalSystems.Commands.RemoveExternalSystemReference, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: RemoveExternalSystemReferenceHandler.DoAsync(RemoveExternalSystemReference, IAggregate, CancellationToken)
 - uid: Hexalith.Application.ExternalSystems.CommandHandlers.RemoveExternalSystemReferenceHandler.DoAsync*
   name: DoAsync
   href: api/Hexalith.Application.ExternalSystems.CommandHandlers.RemoveExternalSystemReferenceHandler.html#Hexalith_Application_ExternalSystems_CommandHandlers_RemoveExternalSystemReferenceHandler_DoAsync_
@@ -2561,12 +2561,12 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.ExternalSystems.CommandHandlers.RemoveExternalSystemReferenceHandler.DoAsync
   nameWithType: RemoveExternalSystemReferenceHandler.DoAsync
-- uid: Hexalith.Application.ExternalSystems.CommandHandlers.RemoveExternalSystemReferenceHandler.UndoAsync(Hexalith.Application.ExternalSystems.Commands.RemoveExternalSystemReference,System.Threading.CancellationToken)
-  name: UndoAsync(RemoveExternalSystemReference, CancellationToken)
-  href: api/Hexalith.Application.ExternalSystems.CommandHandlers.RemoveExternalSystemReferenceHandler.html#Hexalith_Application_ExternalSystems_CommandHandlers_RemoveExternalSystemReferenceHandler_UndoAsync_Hexalith_Application_ExternalSystems_Commands_RemoveExternalSystemReference_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.ExternalSystems.CommandHandlers.RemoveExternalSystemReferenceHandler.UndoAsync(Hexalith.Application.ExternalSystems.Commands.RemoveExternalSystemReference,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.ExternalSystems.CommandHandlers.RemoveExternalSystemReferenceHandler.UndoAsync(Hexalith.Application.ExternalSystems.Commands.RemoveExternalSystemReference, System.Threading.CancellationToken)
-  nameWithType: RemoveExternalSystemReferenceHandler.UndoAsync(RemoveExternalSystemReference, CancellationToken)
+- uid: Hexalith.Application.ExternalSystems.CommandHandlers.RemoveExternalSystemReferenceHandler.UndoAsync(Hexalith.Application.ExternalSystems.Commands.RemoveExternalSystemReference,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: UndoAsync(RemoveExternalSystemReference, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.ExternalSystems.CommandHandlers.RemoveExternalSystemReferenceHandler.html#Hexalith_Application_ExternalSystems_CommandHandlers_RemoveExternalSystemReferenceHandler_UndoAsync_Hexalith_Application_ExternalSystems_Commands_RemoveExternalSystemReference_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.ExternalSystems.CommandHandlers.RemoveExternalSystemReferenceHandler.UndoAsync(Hexalith.Application.ExternalSystems.Commands.RemoveExternalSystemReference,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.ExternalSystems.CommandHandlers.RemoveExternalSystemReferenceHandler.UndoAsync(Hexalith.Application.ExternalSystems.Commands.RemoveExternalSystemReference, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: RemoveExternalSystemReferenceHandler.UndoAsync(RemoveExternalSystemReference, IAggregate, CancellationToken)
 - uid: Hexalith.Application.ExternalSystems.CommandHandlers.RemoveExternalSystemReferenceHandler.UndoAsync*
   name: UndoAsync
   href: api/Hexalith.Application.ExternalSystems.CommandHandlers.RemoveExternalSystemReferenceHandler.html#Hexalith_Application_ExternalSystems_CommandHandlers_RemoveExternalSystemReferenceHandler_UndoAsync_
@@ -2839,12 +2839,12 @@ references:
   commentId: T:Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler
   fullName: Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler
   nameWithType: AddInventoryItemBarcodeHandler
-- uid: Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.DoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode,System.Threading.CancellationToken)
-  name: DoAsync(AddInventoryItemBarcode, CancellationToken)
-  href: api/Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.html#Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemBarcodeHandler_DoAsync_Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.DoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.DoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode, System.Threading.CancellationToken)
-  nameWithType: AddInventoryItemBarcodeHandler.DoAsync(AddInventoryItemBarcode, CancellationToken)
+- uid: Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.DoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: DoAsync(AddInventoryItemBarcode, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.html#Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemBarcodeHandler_DoAsync_Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.DoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.DoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: AddInventoryItemBarcodeHandler.DoAsync(AddInventoryItemBarcode, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.DoAsync*
   name: DoAsync
   href: api/Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.html#Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemBarcodeHandler_DoAsync_
@@ -2852,12 +2852,12 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.DoAsync
   nameWithType: AddInventoryItemBarcodeHandler.DoAsync
-- uid: Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.UndoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode,System.Threading.CancellationToken)
-  name: UndoAsync(AddInventoryItemBarcode, CancellationToken)
-  href: api/Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.html#Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemBarcodeHandler_UndoAsync_Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.UndoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.UndoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode, System.Threading.CancellationToken)
-  nameWithType: AddInventoryItemBarcodeHandler.UndoAsync(AddInventoryItemBarcode, CancellationToken)
+- uid: Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.UndoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: UndoAsync(AddInventoryItemBarcode, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.html#Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemBarcodeHandler_UndoAsync_Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.UndoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.UndoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: AddInventoryItemBarcodeHandler.UndoAsync(AddInventoryItemBarcode, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.UndoAsync*
   name: UndoAsync
   href: api/Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemBarcodeHandler.html#Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemBarcodeHandler_UndoAsync_
@@ -2871,12 +2871,12 @@ references:
   commentId: T:Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler
   fullName: Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler
   nameWithType: AddInventoryItemHandler
-- uid: Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler.DoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItem,System.Threading.CancellationToken)
-  name: DoAsync(AddInventoryItem, CancellationToken)
-  href: api/Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler.html#Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemHandler_DoAsync_Hexalith_Application_Inventories_Commands_AddInventoryItem_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler.DoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItem,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler.DoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItem, System.Threading.CancellationToken)
-  nameWithType: AddInventoryItemHandler.DoAsync(AddInventoryItem, CancellationToken)
+- uid: Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler.DoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItem,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: DoAsync(AddInventoryItem, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler.html#Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemHandler_DoAsync_Hexalith_Application_Inventories_Commands_AddInventoryItem_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler.DoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItem,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler.DoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItem, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: AddInventoryItemHandler.DoAsync(AddInventoryItem, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler.DoAsync*
   name: DoAsync
   href: api/Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler.html#Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemHandler_DoAsync_
@@ -2884,12 +2884,12 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler.DoAsync
   nameWithType: AddInventoryItemHandler.DoAsync
-- uid: Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler.UndoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItem,System.Threading.CancellationToken)
-  name: UndoAsync(AddInventoryItem, CancellationToken)
-  href: api/Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler.html#Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemHandler_UndoAsync_Hexalith_Application_Inventories_Commands_AddInventoryItem_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler.UndoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItem,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler.UndoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItem, System.Threading.CancellationToken)
-  nameWithType: AddInventoryItemHandler.UndoAsync(AddInventoryItem, CancellationToken)
+- uid: Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler.UndoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItem,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: UndoAsync(AddInventoryItem, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler.html#Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemHandler_UndoAsync_Hexalith_Application_Inventories_Commands_AddInventoryItem_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler.UndoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItem,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler.UndoAsync(Hexalith.Application.Inventories.Commands.AddInventoryItem, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: AddInventoryItemHandler.UndoAsync(AddInventoryItem, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler.UndoAsync*
   name: UndoAsync
   href: api/Hexalith.Application.Inventories.CommandHandlers.AddInventoryItemHandler.html#Hexalith_Application_Inventories_CommandHandlers_AddInventoryItemHandler_UndoAsync_
@@ -2903,12 +2903,12 @@ references:
   commentId: T:Hexalith.Application.Inventories.CommandHandlers.ChangeInventoryItemInformationHandler
   fullName: Hexalith.Application.Inventories.CommandHandlers.ChangeInventoryItemInformationHandler
   nameWithType: ChangeInventoryItemInformationHandler
-- uid: Hexalith.Application.Inventories.CommandHandlers.ChangeInventoryItemInformationHandler.DoAsync(Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation,System.Threading.CancellationToken)
-  name: DoAsync(ChangeInventoryItemInformation, CancellationToken)
-  href: api/Hexalith.Application.Inventories.CommandHandlers.ChangeInventoryItemInformationHandler.html#Hexalith_Application_Inventories_CommandHandlers_ChangeInventoryItemInformationHandler_DoAsync_Hexalith_Application_Inventories_Commands_ChangeInventoryItemInformation_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Inventories.CommandHandlers.ChangeInventoryItemInformationHandler.DoAsync(Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Inventories.CommandHandlers.ChangeInventoryItemInformationHandler.DoAsync(Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation, System.Threading.CancellationToken)
-  nameWithType: ChangeInventoryItemInformationHandler.DoAsync(ChangeInventoryItemInformation, CancellationToken)
+- uid: Hexalith.Application.Inventories.CommandHandlers.ChangeInventoryItemInformationHandler.DoAsync(Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: DoAsync(ChangeInventoryItemInformation, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Inventories.CommandHandlers.ChangeInventoryItemInformationHandler.html#Hexalith_Application_Inventories_CommandHandlers_ChangeInventoryItemInformationHandler_DoAsync_Hexalith_Application_Inventories_Commands_ChangeInventoryItemInformation_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Inventories.CommandHandlers.ChangeInventoryItemInformationHandler.DoAsync(Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Inventories.CommandHandlers.ChangeInventoryItemInformationHandler.DoAsync(Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: ChangeInventoryItemInformationHandler.DoAsync(ChangeInventoryItemInformation, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Inventories.CommandHandlers.ChangeInventoryItemInformationHandler.DoAsync*
   name: DoAsync
   href: api/Hexalith.Application.Inventories.CommandHandlers.ChangeInventoryItemInformationHandler.html#Hexalith_Application_Inventories_CommandHandlers_ChangeInventoryItemInformationHandler_DoAsync_
@@ -2916,12 +2916,12 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Inventories.CommandHandlers.ChangeInventoryItemInformationHandler.DoAsync
   nameWithType: ChangeInventoryItemInformationHandler.DoAsync
-- uid: Hexalith.Application.Inventories.CommandHandlers.ChangeInventoryItemInformationHandler.UndoAsync(Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation,System.Threading.CancellationToken)
-  name: UndoAsync(ChangeInventoryItemInformation, CancellationToken)
-  href: api/Hexalith.Application.Inventories.CommandHandlers.ChangeInventoryItemInformationHandler.html#Hexalith_Application_Inventories_CommandHandlers_ChangeInventoryItemInformationHandler_UndoAsync_Hexalith_Application_Inventories_Commands_ChangeInventoryItemInformation_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Inventories.CommandHandlers.ChangeInventoryItemInformationHandler.UndoAsync(Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Inventories.CommandHandlers.ChangeInventoryItemInformationHandler.UndoAsync(Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation, System.Threading.CancellationToken)
-  nameWithType: ChangeInventoryItemInformationHandler.UndoAsync(ChangeInventoryItemInformation, CancellationToken)
+- uid: Hexalith.Application.Inventories.CommandHandlers.ChangeInventoryItemInformationHandler.UndoAsync(Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: UndoAsync(ChangeInventoryItemInformation, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Inventories.CommandHandlers.ChangeInventoryItemInformationHandler.html#Hexalith_Application_Inventories_CommandHandlers_ChangeInventoryItemInformationHandler_UndoAsync_Hexalith_Application_Inventories_Commands_ChangeInventoryItemInformation_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Inventories.CommandHandlers.ChangeInventoryItemInformationHandler.UndoAsync(Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Inventories.CommandHandlers.ChangeInventoryItemInformationHandler.UndoAsync(Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: ChangeInventoryItemInformationHandler.UndoAsync(ChangeInventoryItemInformation, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Inventories.CommandHandlers.ChangeInventoryItemInformationHandler.UndoAsync*
   name: UndoAsync
   href: api/Hexalith.Application.Inventories.CommandHandlers.ChangeInventoryItemInformationHandler.html#Hexalith_Application_Inventories_CommandHandlers_ChangeInventoryItemInformationHandler_UndoAsync_
@@ -2935,12 +2935,12 @@ references:
   commentId: T:Hexalith.Application.Inventories.CommandHandlers.DecreaseInventoryItemStockHandler
   fullName: Hexalith.Application.Inventories.CommandHandlers.DecreaseInventoryItemStockHandler
   nameWithType: DecreaseInventoryItemStockHandler
-- uid: Hexalith.Application.Inventories.CommandHandlers.DecreaseInventoryItemStockHandler.DoAsync(Hexalith.Application.Inventories.Commands.DecreaseInventoryItemStock,System.Threading.CancellationToken)
-  name: DoAsync(DecreaseInventoryItemStock, CancellationToken)
-  href: api/Hexalith.Application.Inventories.CommandHandlers.DecreaseInventoryItemStockHandler.html#Hexalith_Application_Inventories_CommandHandlers_DecreaseInventoryItemStockHandler_DoAsync_Hexalith_Application_Inventories_Commands_DecreaseInventoryItemStock_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Inventories.CommandHandlers.DecreaseInventoryItemStockHandler.DoAsync(Hexalith.Application.Inventories.Commands.DecreaseInventoryItemStock,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Inventories.CommandHandlers.DecreaseInventoryItemStockHandler.DoAsync(Hexalith.Application.Inventories.Commands.DecreaseInventoryItemStock, System.Threading.CancellationToken)
-  nameWithType: DecreaseInventoryItemStockHandler.DoAsync(DecreaseInventoryItemStock, CancellationToken)
+- uid: Hexalith.Application.Inventories.CommandHandlers.DecreaseInventoryItemStockHandler.DoAsync(Hexalith.Application.Inventories.Commands.DecreaseInventoryItemStock,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: DoAsync(DecreaseInventoryItemStock, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Inventories.CommandHandlers.DecreaseInventoryItemStockHandler.html#Hexalith_Application_Inventories_CommandHandlers_DecreaseInventoryItemStockHandler_DoAsync_Hexalith_Application_Inventories_Commands_DecreaseInventoryItemStock_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Inventories.CommandHandlers.DecreaseInventoryItemStockHandler.DoAsync(Hexalith.Application.Inventories.Commands.DecreaseInventoryItemStock,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Inventories.CommandHandlers.DecreaseInventoryItemStockHandler.DoAsync(Hexalith.Application.Inventories.Commands.DecreaseInventoryItemStock, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: DecreaseInventoryItemStockHandler.DoAsync(DecreaseInventoryItemStock, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Inventories.CommandHandlers.DecreaseInventoryItemStockHandler.DoAsync*
   name: DoAsync
   href: api/Hexalith.Application.Inventories.CommandHandlers.DecreaseInventoryItemStockHandler.html#Hexalith_Application_Inventories_CommandHandlers_DecreaseInventoryItemStockHandler_DoAsync_
@@ -2948,12 +2948,12 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Inventories.CommandHandlers.DecreaseInventoryItemStockHandler.DoAsync
   nameWithType: DecreaseInventoryItemStockHandler.DoAsync
-- uid: Hexalith.Application.Inventories.CommandHandlers.DecreaseInventoryItemStockHandler.UndoAsync(Hexalith.Application.Inventories.Commands.DecreaseInventoryItemStock,System.Threading.CancellationToken)
-  name: UndoAsync(DecreaseInventoryItemStock, CancellationToken)
-  href: api/Hexalith.Application.Inventories.CommandHandlers.DecreaseInventoryItemStockHandler.html#Hexalith_Application_Inventories_CommandHandlers_DecreaseInventoryItemStockHandler_UndoAsync_Hexalith_Application_Inventories_Commands_DecreaseInventoryItemStock_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Inventories.CommandHandlers.DecreaseInventoryItemStockHandler.UndoAsync(Hexalith.Application.Inventories.Commands.DecreaseInventoryItemStock,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Inventories.CommandHandlers.DecreaseInventoryItemStockHandler.UndoAsync(Hexalith.Application.Inventories.Commands.DecreaseInventoryItemStock, System.Threading.CancellationToken)
-  nameWithType: DecreaseInventoryItemStockHandler.UndoAsync(DecreaseInventoryItemStock, CancellationToken)
+- uid: Hexalith.Application.Inventories.CommandHandlers.DecreaseInventoryItemStockHandler.UndoAsync(Hexalith.Application.Inventories.Commands.DecreaseInventoryItemStock,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: UndoAsync(DecreaseInventoryItemStock, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Inventories.CommandHandlers.DecreaseInventoryItemStockHandler.html#Hexalith_Application_Inventories_CommandHandlers_DecreaseInventoryItemStockHandler_UndoAsync_Hexalith_Application_Inventories_Commands_DecreaseInventoryItemStock_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Inventories.CommandHandlers.DecreaseInventoryItemStockHandler.UndoAsync(Hexalith.Application.Inventories.Commands.DecreaseInventoryItemStock,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Inventories.CommandHandlers.DecreaseInventoryItemStockHandler.UndoAsync(Hexalith.Application.Inventories.Commands.DecreaseInventoryItemStock, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: DecreaseInventoryItemStockHandler.UndoAsync(DecreaseInventoryItemStock, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Inventories.CommandHandlers.DecreaseInventoryItemStockHandler.UndoAsync*
   name: UndoAsync
   href: api/Hexalith.Application.Inventories.CommandHandlers.DecreaseInventoryItemStockHandler.html#Hexalith_Application_Inventories_CommandHandlers_DecreaseInventoryItemStockHandler_UndoAsync_
@@ -2967,12 +2967,12 @@ references:
   commentId: T:Hexalith.Application.Inventories.CommandHandlers.IncreaseInventoryItemStockHandler
   fullName: Hexalith.Application.Inventories.CommandHandlers.IncreaseInventoryItemStockHandler
   nameWithType: IncreaseInventoryItemStockHandler
-- uid: Hexalith.Application.Inventories.CommandHandlers.IncreaseInventoryItemStockHandler.DoAsync(Hexalith.Application.Inventories.Commands.IncreaseInventoryItemStock,System.Threading.CancellationToken)
-  name: DoAsync(IncreaseInventoryItemStock, CancellationToken)
-  href: api/Hexalith.Application.Inventories.CommandHandlers.IncreaseInventoryItemStockHandler.html#Hexalith_Application_Inventories_CommandHandlers_IncreaseInventoryItemStockHandler_DoAsync_Hexalith_Application_Inventories_Commands_IncreaseInventoryItemStock_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Inventories.CommandHandlers.IncreaseInventoryItemStockHandler.DoAsync(Hexalith.Application.Inventories.Commands.IncreaseInventoryItemStock,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Inventories.CommandHandlers.IncreaseInventoryItemStockHandler.DoAsync(Hexalith.Application.Inventories.Commands.IncreaseInventoryItemStock, System.Threading.CancellationToken)
-  nameWithType: IncreaseInventoryItemStockHandler.DoAsync(IncreaseInventoryItemStock, CancellationToken)
+- uid: Hexalith.Application.Inventories.CommandHandlers.IncreaseInventoryItemStockHandler.DoAsync(Hexalith.Application.Inventories.Commands.IncreaseInventoryItemStock,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: DoAsync(IncreaseInventoryItemStock, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Inventories.CommandHandlers.IncreaseInventoryItemStockHandler.html#Hexalith_Application_Inventories_CommandHandlers_IncreaseInventoryItemStockHandler_DoAsync_Hexalith_Application_Inventories_Commands_IncreaseInventoryItemStock_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Inventories.CommandHandlers.IncreaseInventoryItemStockHandler.DoAsync(Hexalith.Application.Inventories.Commands.IncreaseInventoryItemStock,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Inventories.CommandHandlers.IncreaseInventoryItemStockHandler.DoAsync(Hexalith.Application.Inventories.Commands.IncreaseInventoryItemStock, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: IncreaseInventoryItemStockHandler.DoAsync(IncreaseInventoryItemStock, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Inventories.CommandHandlers.IncreaseInventoryItemStockHandler.DoAsync*
   name: DoAsync
   href: api/Hexalith.Application.Inventories.CommandHandlers.IncreaseInventoryItemStockHandler.html#Hexalith_Application_Inventories_CommandHandlers_IncreaseInventoryItemStockHandler_DoAsync_
@@ -2980,12 +2980,12 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Inventories.CommandHandlers.IncreaseInventoryItemStockHandler.DoAsync
   nameWithType: IncreaseInventoryItemStockHandler.DoAsync
-- uid: Hexalith.Application.Inventories.CommandHandlers.IncreaseInventoryItemStockHandler.UndoAsync(Hexalith.Application.Inventories.Commands.IncreaseInventoryItemStock,System.Threading.CancellationToken)
-  name: UndoAsync(IncreaseInventoryItemStock, CancellationToken)
-  href: api/Hexalith.Application.Inventories.CommandHandlers.IncreaseInventoryItemStockHandler.html#Hexalith_Application_Inventories_CommandHandlers_IncreaseInventoryItemStockHandler_UndoAsync_Hexalith_Application_Inventories_Commands_IncreaseInventoryItemStock_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Inventories.CommandHandlers.IncreaseInventoryItemStockHandler.UndoAsync(Hexalith.Application.Inventories.Commands.IncreaseInventoryItemStock,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Inventories.CommandHandlers.IncreaseInventoryItemStockHandler.UndoAsync(Hexalith.Application.Inventories.Commands.IncreaseInventoryItemStock, System.Threading.CancellationToken)
-  nameWithType: IncreaseInventoryItemStockHandler.UndoAsync(IncreaseInventoryItemStock, CancellationToken)
+- uid: Hexalith.Application.Inventories.CommandHandlers.IncreaseInventoryItemStockHandler.UndoAsync(Hexalith.Application.Inventories.Commands.IncreaseInventoryItemStock,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: UndoAsync(IncreaseInventoryItemStock, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Inventories.CommandHandlers.IncreaseInventoryItemStockHandler.html#Hexalith_Application_Inventories_CommandHandlers_IncreaseInventoryItemStockHandler_UndoAsync_Hexalith_Application_Inventories_Commands_IncreaseInventoryItemStock_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Inventories.CommandHandlers.IncreaseInventoryItemStockHandler.UndoAsync(Hexalith.Application.Inventories.Commands.IncreaseInventoryItemStock,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Inventories.CommandHandlers.IncreaseInventoryItemStockHandler.UndoAsync(Hexalith.Application.Inventories.Commands.IncreaseInventoryItemStock, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: IncreaseInventoryItemStockHandler.UndoAsync(IncreaseInventoryItemStock, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Inventories.CommandHandlers.IncreaseInventoryItemStockHandler.UndoAsync*
   name: UndoAsync
   href: api/Hexalith.Application.Inventories.CommandHandlers.IncreaseInventoryItemStockHandler.html#Hexalith_Application_Inventories_CommandHandlers_IncreaseInventoryItemStockHandler_UndoAsync_
@@ -2999,12 +2999,12 @@ references:
   commentId: T:Hexalith.Application.Inventories.CommandHandlers.RemoveInventoryItemBarcodeHandler
   fullName: Hexalith.Application.Inventories.CommandHandlers.RemoveInventoryItemBarcodeHandler
   nameWithType: RemoveInventoryItemBarcodeHandler
-- uid: Hexalith.Application.Inventories.CommandHandlers.RemoveInventoryItemBarcodeHandler.DoAsync(Hexalith.Application.Inventories.Commands.RemoveInventoryItemBarcode,System.Threading.CancellationToken)
-  name: DoAsync(RemoveInventoryItemBarcode, CancellationToken)
-  href: api/Hexalith.Application.Inventories.CommandHandlers.RemoveInventoryItemBarcodeHandler.html#Hexalith_Application_Inventories_CommandHandlers_RemoveInventoryItemBarcodeHandler_DoAsync_Hexalith_Application_Inventories_Commands_RemoveInventoryItemBarcode_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Inventories.CommandHandlers.RemoveInventoryItemBarcodeHandler.DoAsync(Hexalith.Application.Inventories.Commands.RemoveInventoryItemBarcode,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Inventories.CommandHandlers.RemoveInventoryItemBarcodeHandler.DoAsync(Hexalith.Application.Inventories.Commands.RemoveInventoryItemBarcode, System.Threading.CancellationToken)
-  nameWithType: RemoveInventoryItemBarcodeHandler.DoAsync(RemoveInventoryItemBarcode, CancellationToken)
+- uid: Hexalith.Application.Inventories.CommandHandlers.RemoveInventoryItemBarcodeHandler.DoAsync(Hexalith.Application.Inventories.Commands.RemoveInventoryItemBarcode,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: DoAsync(RemoveInventoryItemBarcode, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Inventories.CommandHandlers.RemoveInventoryItemBarcodeHandler.html#Hexalith_Application_Inventories_CommandHandlers_RemoveInventoryItemBarcodeHandler_DoAsync_Hexalith_Application_Inventories_Commands_RemoveInventoryItemBarcode_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Inventories.CommandHandlers.RemoveInventoryItemBarcodeHandler.DoAsync(Hexalith.Application.Inventories.Commands.RemoveInventoryItemBarcode,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Inventories.CommandHandlers.RemoveInventoryItemBarcodeHandler.DoAsync(Hexalith.Application.Inventories.Commands.RemoveInventoryItemBarcode, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: RemoveInventoryItemBarcodeHandler.DoAsync(RemoveInventoryItemBarcode, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Inventories.CommandHandlers.RemoveInventoryItemBarcodeHandler.DoAsync*
   name: DoAsync
   href: api/Hexalith.Application.Inventories.CommandHandlers.RemoveInventoryItemBarcodeHandler.html#Hexalith_Application_Inventories_CommandHandlers_RemoveInventoryItemBarcodeHandler_DoAsync_
@@ -3012,12 +3012,12 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Inventories.CommandHandlers.RemoveInventoryItemBarcodeHandler.DoAsync
   nameWithType: RemoveInventoryItemBarcodeHandler.DoAsync
-- uid: Hexalith.Application.Inventories.CommandHandlers.RemoveInventoryItemBarcodeHandler.UndoAsync(Hexalith.Application.Inventories.Commands.RemoveInventoryItemBarcode,System.Threading.CancellationToken)
-  name: UndoAsync(RemoveInventoryItemBarcode, CancellationToken)
-  href: api/Hexalith.Application.Inventories.CommandHandlers.RemoveInventoryItemBarcodeHandler.html#Hexalith_Application_Inventories_CommandHandlers_RemoveInventoryItemBarcodeHandler_UndoAsync_Hexalith_Application_Inventories_Commands_RemoveInventoryItemBarcode_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Inventories.CommandHandlers.RemoveInventoryItemBarcodeHandler.UndoAsync(Hexalith.Application.Inventories.Commands.RemoveInventoryItemBarcode,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Inventories.CommandHandlers.RemoveInventoryItemBarcodeHandler.UndoAsync(Hexalith.Application.Inventories.Commands.RemoveInventoryItemBarcode, System.Threading.CancellationToken)
-  nameWithType: RemoveInventoryItemBarcodeHandler.UndoAsync(RemoveInventoryItemBarcode, CancellationToken)
+- uid: Hexalith.Application.Inventories.CommandHandlers.RemoveInventoryItemBarcodeHandler.UndoAsync(Hexalith.Application.Inventories.Commands.RemoveInventoryItemBarcode,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: UndoAsync(RemoveInventoryItemBarcode, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Inventories.CommandHandlers.RemoveInventoryItemBarcodeHandler.html#Hexalith_Application_Inventories_CommandHandlers_RemoveInventoryItemBarcodeHandler_UndoAsync_Hexalith_Application_Inventories_Commands_RemoveInventoryItemBarcode_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Inventories.CommandHandlers.RemoveInventoryItemBarcodeHandler.UndoAsync(Hexalith.Application.Inventories.Commands.RemoveInventoryItemBarcode,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Inventories.CommandHandlers.RemoveInventoryItemBarcodeHandler.UndoAsync(Hexalith.Application.Inventories.Commands.RemoveInventoryItemBarcode, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: RemoveInventoryItemBarcodeHandler.UndoAsync(RemoveInventoryItemBarcode, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Inventories.CommandHandlers.RemoveInventoryItemBarcodeHandler.UndoAsync*
   name: UndoAsync
   href: api/Hexalith.Application.Inventories.CommandHandlers.RemoveInventoryItemBarcodeHandler.html#Hexalith_Application_Inventories_CommandHandlers_RemoveInventoryItemBarcodeHandler_UndoAsync_
@@ -5154,12 +5154,12 @@ references:
   commentId: T:Hexalith.Application.Parties.CommandHandlers.ChangeCustomerInformationHandler
   fullName: Hexalith.Application.Parties.CommandHandlers.ChangeCustomerInformationHandler
   nameWithType: ChangeCustomerInformationHandler
-- uid: Hexalith.Application.Parties.CommandHandlers.ChangeCustomerInformationHandler.DoAsync(Hexalith.Application.Parties.Commands.ChangeCustomerInformation,System.Threading.CancellationToken)
-  name: DoAsync(ChangeCustomerInformation, CancellationToken)
-  href: api/Hexalith.Application.Parties.CommandHandlers.ChangeCustomerInformationHandler.html#Hexalith_Application_Parties_CommandHandlers_ChangeCustomerInformationHandler_DoAsync_Hexalith_Application_Parties_Commands_ChangeCustomerInformation_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Parties.CommandHandlers.ChangeCustomerInformationHandler.DoAsync(Hexalith.Application.Parties.Commands.ChangeCustomerInformation,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Parties.CommandHandlers.ChangeCustomerInformationHandler.DoAsync(Hexalith.Application.Parties.Commands.ChangeCustomerInformation, System.Threading.CancellationToken)
-  nameWithType: ChangeCustomerInformationHandler.DoAsync(ChangeCustomerInformation, CancellationToken)
+- uid: Hexalith.Application.Parties.CommandHandlers.ChangeCustomerInformationHandler.DoAsync(Hexalith.Application.Parties.Commands.ChangeCustomerInformation,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: DoAsync(ChangeCustomerInformation, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Parties.CommandHandlers.ChangeCustomerInformationHandler.html#Hexalith_Application_Parties_CommandHandlers_ChangeCustomerInformationHandler_DoAsync_Hexalith_Application_Parties_Commands_ChangeCustomerInformation_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Parties.CommandHandlers.ChangeCustomerInformationHandler.DoAsync(Hexalith.Application.Parties.Commands.ChangeCustomerInformation,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Parties.CommandHandlers.ChangeCustomerInformationHandler.DoAsync(Hexalith.Application.Parties.Commands.ChangeCustomerInformation, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: ChangeCustomerInformationHandler.DoAsync(ChangeCustomerInformation, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Parties.CommandHandlers.ChangeCustomerInformationHandler.DoAsync*
   name: DoAsync
   href: api/Hexalith.Application.Parties.CommandHandlers.ChangeCustomerInformationHandler.html#Hexalith_Application_Parties_CommandHandlers_ChangeCustomerInformationHandler_DoAsync_
@@ -5167,12 +5167,12 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Parties.CommandHandlers.ChangeCustomerInformationHandler.DoAsync
   nameWithType: ChangeCustomerInformationHandler.DoAsync
-- uid: Hexalith.Application.Parties.CommandHandlers.ChangeCustomerInformationHandler.UndoAsync(Hexalith.Application.Parties.Commands.ChangeCustomerInformation,System.Threading.CancellationToken)
-  name: UndoAsync(ChangeCustomerInformation, CancellationToken)
-  href: api/Hexalith.Application.Parties.CommandHandlers.ChangeCustomerInformationHandler.html#Hexalith_Application_Parties_CommandHandlers_ChangeCustomerInformationHandler_UndoAsync_Hexalith_Application_Parties_Commands_ChangeCustomerInformation_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Parties.CommandHandlers.ChangeCustomerInformationHandler.UndoAsync(Hexalith.Application.Parties.Commands.ChangeCustomerInformation,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Parties.CommandHandlers.ChangeCustomerInformationHandler.UndoAsync(Hexalith.Application.Parties.Commands.ChangeCustomerInformation, System.Threading.CancellationToken)
-  nameWithType: ChangeCustomerInformationHandler.UndoAsync(ChangeCustomerInformation, CancellationToken)
+- uid: Hexalith.Application.Parties.CommandHandlers.ChangeCustomerInformationHandler.UndoAsync(Hexalith.Application.Parties.Commands.ChangeCustomerInformation,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: UndoAsync(ChangeCustomerInformation, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Parties.CommandHandlers.ChangeCustomerInformationHandler.html#Hexalith_Application_Parties_CommandHandlers_ChangeCustomerInformationHandler_UndoAsync_Hexalith_Application_Parties_Commands_ChangeCustomerInformation_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Parties.CommandHandlers.ChangeCustomerInformationHandler.UndoAsync(Hexalith.Application.Parties.Commands.ChangeCustomerInformation,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Parties.CommandHandlers.ChangeCustomerInformationHandler.UndoAsync(Hexalith.Application.Parties.Commands.ChangeCustomerInformation, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: ChangeCustomerInformationHandler.UndoAsync(ChangeCustomerInformation, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Parties.CommandHandlers.ChangeCustomerInformationHandler.UndoAsync*
   name: UndoAsync
   href: api/Hexalith.Application.Parties.CommandHandlers.ChangeCustomerInformationHandler.html#Hexalith_Application_Parties_CommandHandlers_ChangeCustomerInformationHandler_UndoAsync_
@@ -5180,18 +5180,50 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Parties.CommandHandlers.ChangeCustomerInformationHandler.UndoAsync
   nameWithType: ChangeCustomerInformationHandler.UndoAsync
+- uid: Hexalith.Application.Parties.CommandHandlers.DeselectIntercompanyDropshipDeliveryForCustomerHandler
+  name: DeselectIntercompanyDropshipDeliveryForCustomerHandler
+  href: api/Hexalith.Application.Parties.CommandHandlers.DeselectIntercompanyDropshipDeliveryForCustomerHandler.html
+  commentId: T:Hexalith.Application.Parties.CommandHandlers.DeselectIntercompanyDropshipDeliveryForCustomerHandler
+  fullName: Hexalith.Application.Parties.CommandHandlers.DeselectIntercompanyDropshipDeliveryForCustomerHandler
+  nameWithType: DeselectIntercompanyDropshipDeliveryForCustomerHandler
+- uid: Hexalith.Application.Parties.CommandHandlers.DeselectIntercompanyDropshipDeliveryForCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: DoAsync(DeselectIntercompanyDropshipDeliveryForCustomer, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Parties.CommandHandlers.DeselectIntercompanyDropshipDeliveryForCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_DeselectIntercompanyDropshipDeliveryForCustomerHandler_DoAsync_Hexalith_Application_Parties_Commands_DeselectIntercompanyDropshipDeliveryForCustomer_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Parties.CommandHandlers.DeselectIntercompanyDropshipDeliveryForCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Parties.CommandHandlers.DeselectIntercompanyDropshipDeliveryForCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: DeselectIntercompanyDropshipDeliveryForCustomerHandler.DoAsync(DeselectIntercompanyDropshipDeliveryForCustomer, IAggregate, CancellationToken)
+- uid: Hexalith.Application.Parties.CommandHandlers.DeselectIntercompanyDropshipDeliveryForCustomerHandler.DoAsync*
+  name: DoAsync
+  href: api/Hexalith.Application.Parties.CommandHandlers.DeselectIntercompanyDropshipDeliveryForCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_DeselectIntercompanyDropshipDeliveryForCustomerHandler_DoAsync_
+  commentId: Overload:Hexalith.Application.Parties.CommandHandlers.DeselectIntercompanyDropshipDeliveryForCustomerHandler.DoAsync
+  isSpec: "True"
+  fullName: Hexalith.Application.Parties.CommandHandlers.DeselectIntercompanyDropshipDeliveryForCustomerHandler.DoAsync
+  nameWithType: DeselectIntercompanyDropshipDeliveryForCustomerHandler.DoAsync
+- uid: Hexalith.Application.Parties.CommandHandlers.DeselectIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: UndoAsync(DeselectIntercompanyDropshipDeliveryForCustomer, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Parties.CommandHandlers.DeselectIntercompanyDropshipDeliveryForCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_DeselectIntercompanyDropshipDeliveryForCustomerHandler_UndoAsync_Hexalith_Application_Parties_Commands_DeselectIntercompanyDropshipDeliveryForCustomer_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Parties.CommandHandlers.DeselectIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Parties.CommandHandlers.DeselectIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: DeselectIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync(DeselectIntercompanyDropshipDeliveryForCustomer, IAggregate, CancellationToken)
+- uid: Hexalith.Application.Parties.CommandHandlers.DeselectIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync*
+  name: UndoAsync
+  href: api/Hexalith.Application.Parties.CommandHandlers.DeselectIntercompanyDropshipDeliveryForCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_DeselectIntercompanyDropshipDeliveryForCustomerHandler_UndoAsync_
+  commentId: Overload:Hexalith.Application.Parties.CommandHandlers.DeselectIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync
+  isSpec: "True"
+  fullName: Hexalith.Application.Parties.CommandHandlers.DeselectIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync
+  nameWithType: DeselectIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync
 - uid: Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler
   name: RegisterCustomerHandler
   href: api/Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.html
   commentId: T:Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler
   fullName: Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler
   nameWithType: RegisterCustomerHandler
-- uid: Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.RegisterCustomer,System.Threading.CancellationToken)
-  name: DoAsync(RegisterCustomer, CancellationToken)
-  href: api/Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_RegisterCustomerHandler_DoAsync_Hexalith_Application_Parties_Commands_RegisterCustomer_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.RegisterCustomer,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.RegisterCustomer, System.Threading.CancellationToken)
-  nameWithType: RegisterCustomerHandler.DoAsync(RegisterCustomer, CancellationToken)
+- uid: Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.RegisterCustomer,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: DoAsync(RegisterCustomer, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_RegisterCustomerHandler_DoAsync_Hexalith_Application_Parties_Commands_RegisterCustomer_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.RegisterCustomer,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.RegisterCustomer, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: RegisterCustomerHandler.DoAsync(RegisterCustomer, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.DoAsync*
   name: DoAsync
   href: api/Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_RegisterCustomerHandler_DoAsync_
@@ -5199,12 +5231,12 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.DoAsync
   nameWithType: RegisterCustomerHandler.DoAsync
-- uid: Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.RegisterCustomer,System.Threading.CancellationToken)
-  name: UndoAsync(RegisterCustomer, CancellationToken)
-  href: api/Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_RegisterCustomerHandler_UndoAsync_Hexalith_Application_Parties_Commands_RegisterCustomer_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.RegisterCustomer,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.RegisterCustomer, System.Threading.CancellationToken)
-  nameWithType: RegisterCustomerHandler.UndoAsync(RegisterCustomer, CancellationToken)
+- uid: Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.RegisterCustomer,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: UndoAsync(RegisterCustomer, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_RegisterCustomerHandler_UndoAsync_Hexalith_Application_Parties_Commands_RegisterCustomer_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.RegisterCustomer,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.RegisterCustomer, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: RegisterCustomerHandler.UndoAsync(RegisterCustomer, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.UndoAsync*
   name: UndoAsync
   href: api/Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_RegisterCustomerHandler_UndoAsync_
@@ -5218,12 +5250,12 @@ references:
   commentId: T:Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler
   fullName: Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler
   nameWithType: RegisterOrChangeCustomerHandler
-- uid: Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer,System.Threading.CancellationToken)
-  name: DoAsync(RegisterOrChangeCustomer, CancellationToken)
-  href: api/Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_RegisterOrChangeCustomerHandler_DoAsync_Hexalith_Application_Parties_Commands_RegisterOrChangeCustomer_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer, System.Threading.CancellationToken)
-  nameWithType: RegisterOrChangeCustomerHandler.DoAsync(RegisterOrChangeCustomer, CancellationToken)
+- uid: Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: DoAsync(RegisterOrChangeCustomer, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_RegisterOrChangeCustomerHandler_DoAsync_Hexalith_Application_Parties_Commands_RegisterOrChangeCustomer_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: RegisterOrChangeCustomerHandler.DoAsync(RegisterOrChangeCustomer, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.DoAsync*
   name: DoAsync
   href: api/Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_RegisterOrChangeCustomerHandler_DoAsync_
@@ -5231,12 +5263,12 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.DoAsync
   nameWithType: RegisterOrChangeCustomerHandler.DoAsync
-- uid: Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer,System.Threading.CancellationToken)
-  name: UndoAsync(RegisterOrChangeCustomer, CancellationToken)
-  href: api/Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_RegisterOrChangeCustomerHandler_UndoAsync_Hexalith_Application_Parties_Commands_RegisterOrChangeCustomer_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer, System.Threading.CancellationToken)
-  nameWithType: RegisterOrChangeCustomerHandler.UndoAsync(RegisterOrChangeCustomer, CancellationToken)
+- uid: Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: UndoAsync(RegisterOrChangeCustomer, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_RegisterOrChangeCustomerHandler_UndoAsync_Hexalith_Application_Parties_Commands_RegisterOrChangeCustomer_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: RegisterOrChangeCustomerHandler.UndoAsync(RegisterOrChangeCustomer, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.UndoAsync*
   name: UndoAsync
   href: api/Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_RegisterOrChangeCustomerHandler_UndoAsync_
@@ -5244,70 +5276,38 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.UndoAsync
   nameWithType: RegisterOrChangeCustomerHandler.UndoAsync
-- uid: Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler
-  name: SetIntercompanyDropshipDeliveryForCustomerHandler
-  href: api/Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.html
-  commentId: T:Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler
-  fullName: Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler
-  nameWithType: SetIntercompanyDropshipDeliveryForCustomerHandler
-- uid: Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer,System.Threading.CancellationToken)
-  name: DoAsync(SetIntercompanyDropshipDeliveryForCustomer, CancellationToken)
-  href: api/Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_SetIntercompanyDropshipDeliveryForCustomerHandler_DoAsync_Hexalith_Application_Parties_Commands_SetIntercompanyDropshipDeliveryForCustomer_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer, System.Threading.CancellationToken)
-  nameWithType: SetIntercompanyDropshipDeliveryForCustomerHandler.DoAsync(SetIntercompanyDropshipDeliveryForCustomer, CancellationToken)
-- uid: Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.DoAsync*
+- uid: Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler
+  name: SelectIntercompanyDropshipDeliveryForCustomerHandler
+  href: api/Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler.html
+  commentId: T:Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler
+  fullName: Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler
+  nameWithType: SelectIntercompanyDropshipDeliveryForCustomerHandler
+- uid: Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: DoAsync(SelectIntercompanyDropshipDeliveryForCustomer, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_SelectIntercompanyDropshipDeliveryForCustomerHandler_DoAsync_Hexalith_Application_Parties_Commands_SelectIntercompanyDropshipDeliveryForCustomer_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: SelectIntercompanyDropshipDeliveryForCustomerHandler.DoAsync(SelectIntercompanyDropshipDeliveryForCustomer, IAggregate, CancellationToken)
+- uid: Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler.DoAsync*
   name: DoAsync
-  href: api/Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_SetIntercompanyDropshipDeliveryForCustomerHandler_DoAsync_
-  commentId: Overload:Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.DoAsync
+  href: api/Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_SelectIntercompanyDropshipDeliveryForCustomerHandler_DoAsync_
+  commentId: Overload:Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler.DoAsync
   isSpec: "True"
-  fullName: Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.DoAsync
-  nameWithType: SetIntercompanyDropshipDeliveryForCustomerHandler.DoAsync
-- uid: Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer,System.Threading.CancellationToken)
-  name: UndoAsync(SetIntercompanyDropshipDeliveryForCustomer, CancellationToken)
-  href: api/Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_SetIntercompanyDropshipDeliveryForCustomerHandler_UndoAsync_Hexalith_Application_Parties_Commands_SetIntercompanyDropshipDeliveryForCustomer_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer, System.Threading.CancellationToken)
-  nameWithType: SetIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync(SetIntercompanyDropshipDeliveryForCustomer, CancellationToken)
-- uid: Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync*
+  fullName: Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler.DoAsync
+  nameWithType: SelectIntercompanyDropshipDeliveryForCustomerHandler.DoAsync
+- uid: Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: UndoAsync(SelectIntercompanyDropshipDeliveryForCustomer, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_SelectIntercompanyDropshipDeliveryForCustomerHandler_UndoAsync_Hexalith_Application_Parties_Commands_SelectIntercompanyDropshipDeliveryForCustomer_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: SelectIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync(SelectIntercompanyDropshipDeliveryForCustomer, IAggregate, CancellationToken)
+- uid: Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync*
   name: UndoAsync
-  href: api/Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_SetIntercompanyDropshipDeliveryForCustomerHandler_UndoAsync_
-  commentId: Overload:Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync
+  href: api/Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_SelectIntercompanyDropshipDeliveryForCustomerHandler_UndoAsync_
+  commentId: Overload:Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync
   isSpec: "True"
-  fullName: Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync
-  nameWithType: SetIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync
-- uid: Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler
-  name: SetStockDeliveryForCustomerHandler
-  href: api/Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.html
-  commentId: T:Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler
-  fullName: Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler
-  nameWithType: SetStockDeliveryForCustomerHandler
-- uid: Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer,System.Threading.CancellationToken)
-  name: DoAsync(SetStockDeliveryForCustomer, CancellationToken)
-  href: api/Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_SetStockDeliveryForCustomerHandler_DoAsync_Hexalith_Application_Parties_Commands_SetStockDeliveryForCustomer_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer, System.Threading.CancellationToken)
-  nameWithType: SetStockDeliveryForCustomerHandler.DoAsync(SetStockDeliveryForCustomer, CancellationToken)
-- uid: Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.DoAsync*
-  name: DoAsync
-  href: api/Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_SetStockDeliveryForCustomerHandler_DoAsync_
-  commentId: Overload:Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.DoAsync
-  isSpec: "True"
-  fullName: Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.DoAsync
-  nameWithType: SetStockDeliveryForCustomerHandler.DoAsync
-- uid: Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer,System.Threading.CancellationToken)
-  name: UndoAsync(SetStockDeliveryForCustomer, CancellationToken)
-  href: api/Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_SetStockDeliveryForCustomerHandler_UndoAsync_Hexalith_Application_Parties_Commands_SetStockDeliveryForCustomer_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer, System.Threading.CancellationToken)
-  nameWithType: SetStockDeliveryForCustomerHandler.UndoAsync(SetStockDeliveryForCustomer, CancellationToken)
-- uid: Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.UndoAsync*
-  name: UndoAsync
-  href: api/Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_SetStockDeliveryForCustomerHandler_UndoAsync_
-  commentId: Overload:Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.UndoAsync
-  isSpec: "True"
-  fullName: Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.UndoAsync
-  nameWithType: SetStockDeliveryForCustomerHandler.UndoAsync
+  fullName: Hexalith.Application.Parties.CommandHandlers.SelectIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync
+  nameWithType: SelectIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync
 - uid: Hexalith.Application.Parties.Commands
   name: Hexalith.Application.Parties.Commands
   href: api/Hexalith.Application.Parties.Commands.html
@@ -5455,6 +5455,31 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Parties.Commands.CustomerCommand.DefaultAggregateName
   nameWithType: CustomerCommand.DefaultAggregateName
+- uid: Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer
+  name: DeselectIntercompanyDropshipDeliveryForCustomer
+  href: api/Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.html
+  commentId: T:Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer
+  fullName: Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer
+  nameWithType: DeselectIntercompanyDropshipDeliveryForCustomer
+- uid: Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.#ctor
+  name: DeselectIntercompanyDropshipDeliveryForCustomer()
+  href: api/Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.html#Hexalith_Application_Parties_Commands_DeselectIntercompanyDropshipDeliveryForCustomer__ctor
+  commentId: M:Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.#ctor
+  fullName: Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.DeselectIntercompanyDropshipDeliveryForCustomer()
+  nameWithType: DeselectIntercompanyDropshipDeliveryForCustomer.DeselectIntercompanyDropshipDeliveryForCustomer()
+- uid: Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.#ctor(System.String,System.String,System.String)
+  name: DeselectIntercompanyDropshipDeliveryForCustomer(String, String, String)
+  href: api/Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.html#Hexalith_Application_Parties_Commands_DeselectIntercompanyDropshipDeliveryForCustomer__ctor_System_String_System_String_System_String_
+  commentId: M:Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.#ctor(System.String,System.String,System.String)
+  fullName: Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.DeselectIntercompanyDropshipDeliveryForCustomer(System.String, System.String, System.String)
+  nameWithType: DeselectIntercompanyDropshipDeliveryForCustomer.DeselectIntercompanyDropshipDeliveryForCustomer(String, String, String)
+- uid: Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.#ctor*
+  name: DeselectIntercompanyDropshipDeliveryForCustomer
+  href: api/Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.html#Hexalith_Application_Parties_Commands_DeselectIntercompanyDropshipDeliveryForCustomer__ctor_
+  commentId: Overload:Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.DeselectIntercompanyDropshipDeliveryForCustomer
+  nameWithType: DeselectIntercompanyDropshipDeliveryForCustomer.DeselectIntercompanyDropshipDeliveryForCustomer
 - uid: Hexalith.Application.Parties.Commands.RegisterCustomer
   name: RegisterCustomer
   href: api/Hexalith.Application.Parties.Commands.RegisterCustomer.html
@@ -5635,56 +5660,31 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.WarehouseId
   nameWithType: RegisterOrChangeCustomer.WarehouseId
-- uid: Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer
-  name: SetIntercompanyDropshipDeliveryForCustomer
-  href: api/Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer.html
-  commentId: T:Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer
-  fullName: Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer
-  nameWithType: SetIntercompanyDropshipDeliveryForCustomer
-- uid: Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer.#ctor
-  name: SetIntercompanyDropshipDeliveryForCustomer()
-  href: api/Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer.html#Hexalith_Application_Parties_Commands_SetIntercompanyDropshipDeliveryForCustomer__ctor
-  commentId: M:Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer.#ctor
-  fullName: Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer.SetIntercompanyDropshipDeliveryForCustomer()
-  nameWithType: SetIntercompanyDropshipDeliveryForCustomer.SetIntercompanyDropshipDeliveryForCustomer()
-- uid: Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer.#ctor(System.String,System.String,System.String)
-  name: SetIntercompanyDropshipDeliveryForCustomer(String, String, String)
-  href: api/Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer.html#Hexalith_Application_Parties_Commands_SetIntercompanyDropshipDeliveryForCustomer__ctor_System_String_System_String_System_String_
-  commentId: M:Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer.#ctor(System.String,System.String,System.String)
-  fullName: Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer.SetIntercompanyDropshipDeliveryForCustomer(System.String, System.String, System.String)
-  nameWithType: SetIntercompanyDropshipDeliveryForCustomer.SetIntercompanyDropshipDeliveryForCustomer(String, String, String)
-- uid: Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer.#ctor*
-  name: SetIntercompanyDropshipDeliveryForCustomer
-  href: api/Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer.html#Hexalith_Application_Parties_Commands_SetIntercompanyDropshipDeliveryForCustomer__ctor_
-  commentId: Overload:Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer.#ctor
+- uid: Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer
+  name: SelectIntercompanyDropshipDeliveryForCustomer
+  href: api/Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.html
+  commentId: T:Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer
+  fullName: Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer
+  nameWithType: SelectIntercompanyDropshipDeliveryForCustomer
+- uid: Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.#ctor
+  name: SelectIntercompanyDropshipDeliveryForCustomer()
+  href: api/Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.html#Hexalith_Application_Parties_Commands_SelectIntercompanyDropshipDeliveryForCustomer__ctor
+  commentId: M:Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.#ctor
+  fullName: Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.SelectIntercompanyDropshipDeliveryForCustomer()
+  nameWithType: SelectIntercompanyDropshipDeliveryForCustomer.SelectIntercompanyDropshipDeliveryForCustomer()
+- uid: Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.#ctor(System.String,System.String,System.String)
+  name: SelectIntercompanyDropshipDeliveryForCustomer(String, String, String)
+  href: api/Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.html#Hexalith_Application_Parties_Commands_SelectIntercompanyDropshipDeliveryForCustomer__ctor_System_String_System_String_System_String_
+  commentId: M:Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.#ctor(System.String,System.String,System.String)
+  fullName: Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.SelectIntercompanyDropshipDeliveryForCustomer(System.String, System.String, System.String)
+  nameWithType: SelectIntercompanyDropshipDeliveryForCustomer.SelectIntercompanyDropshipDeliveryForCustomer(String, String, String)
+- uid: Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.#ctor*
+  name: SelectIntercompanyDropshipDeliveryForCustomer
+  href: api/Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.html#Hexalith_Application_Parties_Commands_SelectIntercompanyDropshipDeliveryForCustomer__ctor_
+  commentId: Overload:Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.#ctor
   isSpec: "True"
-  fullName: Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer.SetIntercompanyDropshipDeliveryForCustomer
-  nameWithType: SetIntercompanyDropshipDeliveryForCustomer.SetIntercompanyDropshipDeliveryForCustomer
-- uid: Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer
-  name: SetStockDeliveryForCustomer
-  href: api/Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer.html
-  commentId: T:Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer
-  fullName: Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer
-  nameWithType: SetStockDeliveryForCustomer
-- uid: Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer.#ctor
-  name: SetStockDeliveryForCustomer()
-  href: api/Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer.html#Hexalith_Application_Parties_Commands_SetStockDeliveryForCustomer__ctor
-  commentId: M:Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer.#ctor
-  fullName: Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer.SetStockDeliveryForCustomer()
-  nameWithType: SetStockDeliveryForCustomer.SetStockDeliveryForCustomer()
-- uid: Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer.#ctor(System.String,System.String,System.String)
-  name: SetStockDeliveryForCustomer(String, String, String)
-  href: api/Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer.html#Hexalith_Application_Parties_Commands_SetStockDeliveryForCustomer__ctor_System_String_System_String_System_String_
-  commentId: M:Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer.#ctor(System.String,System.String,System.String)
-  fullName: Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer.SetStockDeliveryForCustomer(System.String, System.String, System.String)
-  nameWithType: SetStockDeliveryForCustomer.SetStockDeliveryForCustomer(String, String, String)
-- uid: Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer.#ctor*
-  name: SetStockDeliveryForCustomer
-  href: api/Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer.html#Hexalith_Application_Parties_Commands_SetStockDeliveryForCustomer__ctor_
-  commentId: Overload:Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer.#ctor
-  isSpec: "True"
-  fullName: Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer.SetStockDeliveryForCustomer
-  nameWithType: SetStockDeliveryForCustomer.SetStockDeliveryForCustomer
+  fullName: Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.SelectIntercompanyDropshipDeliveryForCustomer
+  nameWithType: SelectIntercompanyDropshipDeliveryForCustomer.SelectIntercompanyDropshipDeliveryForCustomer
 - uid: Hexalith.Application.Parties.Helpers
   name: Hexalith.Application.Parties.Helpers
   href: api/Hexalith.Application.Parties.Helpers.html
@@ -8655,12 +8655,12 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Tasks.ResilientCommandProcessor.ResilientCommandProcessor
   nameWithType: ResilientCommandProcessor.ResilientCommandProcessor
-- uid: Hexalith.Application.Tasks.ResilientCommandProcessor.ProcessAsync(System.String,Hexalith.Application.Commands.BaseCommand,System.Threading.CancellationToken)
-  name: ProcessAsync(String, BaseCommand, CancellationToken)
-  href: api/Hexalith.Application.Tasks.ResilientCommandProcessor.html#Hexalith_Application_Tasks_ResilientCommandProcessor_ProcessAsync_System_String_Hexalith_Application_Commands_BaseCommand_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Tasks.ResilientCommandProcessor.ProcessAsync(System.String,Hexalith.Application.Commands.BaseCommand,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Tasks.ResilientCommandProcessor.ProcessAsync(System.String, Hexalith.Application.Commands.BaseCommand, System.Threading.CancellationToken)
-  nameWithType: ResilientCommandProcessor.ProcessAsync(String, BaseCommand, CancellationToken)
+- uid: Hexalith.Application.Tasks.ResilientCommandProcessor.ProcessAsync(System.String,Hexalith.Application.Commands.BaseCommand,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: ProcessAsync(String, BaseCommand, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Tasks.ResilientCommandProcessor.html#Hexalith_Application_Tasks_ResilientCommandProcessor_ProcessAsync_System_String_Hexalith_Application_Commands_BaseCommand_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Tasks.ResilientCommandProcessor.ProcessAsync(System.String,Hexalith.Application.Commands.BaseCommand,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Tasks.ResilientCommandProcessor.ProcessAsync(System.String, Hexalith.Application.Commands.BaseCommand, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: ResilientCommandProcessor.ProcessAsync(String, BaseCommand, IAggregate, CancellationToken)
 - uid: Hexalith.Application.Tasks.ResilientCommandProcessor.ProcessAsync*
   name: ProcessAsync
   href: api/Hexalith.Application.Tasks.ResilientCommandProcessor.html#Hexalith_Application_Tasks_ResilientCommandProcessor_ProcessAsync_
@@ -10253,6 +10253,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Aggregates.Customer.GetAggregateName
   nameWithType: Customer.GetAggregateName
+- uid: Hexalith.Domain.Aggregates.Customer.HasChanges(Hexalith.Domain.Events.CustomerInformationChanged)
+  name: HasChanges(CustomerInformationChanged)
+  href: api/Hexalith.Domain.Aggregates.Customer.html#Hexalith_Domain_Aggregates_Customer_HasChanges_Hexalith_Domain_Events_CustomerInformationChanged_
+  commentId: M:Hexalith.Domain.Aggregates.Customer.HasChanges(Hexalith.Domain.Events.CustomerInformationChanged)
+  fullName: Hexalith.Domain.Aggregates.Customer.HasChanges(Hexalith.Domain.Events.CustomerInformationChanged)
+  nameWithType: Customer.HasChanges(CustomerInformationChanged)
+- uid: Hexalith.Domain.Aggregates.Customer.HasChanges*
+  name: HasChanges
+  href: api/Hexalith.Domain.Aggregates.Customer.html#Hexalith_Domain_Aggregates_Customer_HasChanges_
+  commentId: Overload:Hexalith.Domain.Aggregates.Customer.HasChanges
+  isSpec: "True"
+  fullName: Hexalith.Domain.Aggregates.Customer.HasChanges
+  nameWithType: Customer.HasChanges
 - uid: Hexalith.Domain.Aggregates.Customer.Id
   name: Id
   href: api/Hexalith.Domain.Aggregates.Customer.html#Hexalith_Domain_Aggregates_Customer_Id
@@ -10266,19 +10279,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Aggregates.Customer.Id
   nameWithType: Customer.Id
-- uid: Hexalith.Domain.Aggregates.Customer.IntercompanyDirectDelivery
-  name: IntercompanyDirectDelivery
-  href: api/Hexalith.Domain.Aggregates.Customer.html#Hexalith_Domain_Aggregates_Customer_IntercompanyDirectDelivery
-  commentId: P:Hexalith.Domain.Aggregates.Customer.IntercompanyDirectDelivery
-  fullName: Hexalith.Domain.Aggregates.Customer.IntercompanyDirectDelivery
-  nameWithType: Customer.IntercompanyDirectDelivery
-- uid: Hexalith.Domain.Aggregates.Customer.IntercompanyDirectDelivery*
-  name: IntercompanyDirectDelivery
-  href: api/Hexalith.Domain.Aggregates.Customer.html#Hexalith_Domain_Aggregates_Customer_IntercompanyDirectDelivery_
-  commentId: Overload:Hexalith.Domain.Aggregates.Customer.IntercompanyDirectDelivery
+- uid: Hexalith.Domain.Aggregates.Customer.IntercompanyDropship
+  name: IntercompanyDropship
+  href: api/Hexalith.Domain.Aggregates.Customer.html#Hexalith_Domain_Aggregates_Customer_IntercompanyDropship
+  commentId: P:Hexalith.Domain.Aggregates.Customer.IntercompanyDropship
+  fullName: Hexalith.Domain.Aggregates.Customer.IntercompanyDropship
+  nameWithType: Customer.IntercompanyDropship
+- uid: Hexalith.Domain.Aggregates.Customer.IntercompanyDropship*
+  name: IntercompanyDropship
+  href: api/Hexalith.Domain.Aggregates.Customer.html#Hexalith_Domain_Aggregates_Customer_IntercompanyDropship_
+  commentId: Overload:Hexalith.Domain.Aggregates.Customer.IntercompanyDropship
   isSpec: "True"
-  fullName: Hexalith.Domain.Aggregates.Customer.IntercompanyDirectDelivery
-  nameWithType: Customer.IntercompanyDirectDelivery
+  fullName: Hexalith.Domain.Aggregates.Customer.IntercompanyDropship
+  nameWithType: Customer.IntercompanyDropship
 - uid: Hexalith.Domain.Aggregates.Customer.Name
   name: Name
   href: api/Hexalith.Domain.Aggregates.Customer.html#Hexalith_Domain_Aggregates_Customer_Name
@@ -11571,56 +11584,6 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Events.CustomerInformationChanged.WarehouseId
   nameWithType: CustomerInformationChanged.WarehouseId
-- uid: Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToDirect
-  name: CustomerIntercompanyDeliveryTypeSetToDirect
-  href: api/Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToDirect.html
-  commentId: T:Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToDirect
-  fullName: Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToDirect
-  nameWithType: CustomerIntercompanyDeliveryTypeSetToDirect
-- uid: Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToDirect.#ctor
-  name: CustomerIntercompanyDeliveryTypeSetToDirect()
-  href: api/Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToDirect.html#Hexalith_Domain_Events_CustomerIntercompanyDeliveryTypeSetToDirect__ctor
-  commentId: M:Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToDirect.#ctor
-  fullName: Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToDirect.CustomerIntercompanyDeliveryTypeSetToDirect()
-  nameWithType: CustomerIntercompanyDeliveryTypeSetToDirect.CustomerIntercompanyDeliveryTypeSetToDirect()
-- uid: Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToDirect.#ctor(System.String,System.String,System.String)
-  name: CustomerIntercompanyDeliveryTypeSetToDirect(String, String, String)
-  href: api/Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToDirect.html#Hexalith_Domain_Events_CustomerIntercompanyDeliveryTypeSetToDirect__ctor_System_String_System_String_System_String_
-  commentId: M:Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToDirect.#ctor(System.String,System.String,System.String)
-  fullName: Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToDirect.CustomerIntercompanyDeliveryTypeSetToDirect(System.String, System.String, System.String)
-  nameWithType: CustomerIntercompanyDeliveryTypeSetToDirect.CustomerIntercompanyDeliveryTypeSetToDirect(String, String, String)
-- uid: Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToDirect.#ctor*
-  name: CustomerIntercompanyDeliveryTypeSetToDirect
-  href: api/Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToDirect.html#Hexalith_Domain_Events_CustomerIntercompanyDeliveryTypeSetToDirect__ctor_
-  commentId: Overload:Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToDirect.#ctor
-  isSpec: "True"
-  fullName: Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToDirect.CustomerIntercompanyDeliveryTypeSetToDirect
-  nameWithType: CustomerIntercompanyDeliveryTypeSetToDirect.CustomerIntercompanyDeliveryTypeSetToDirect
-- uid: Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToNotDirect
-  name: CustomerIntercompanyDeliveryTypeSetToNotDirect
-  href: api/Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToNotDirect.html
-  commentId: T:Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToNotDirect
-  fullName: Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToNotDirect
-  nameWithType: CustomerIntercompanyDeliveryTypeSetToNotDirect
-- uid: Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToNotDirect.#ctor
-  name: CustomerIntercompanyDeliveryTypeSetToNotDirect()
-  href: api/Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToNotDirect.html#Hexalith_Domain_Events_CustomerIntercompanyDeliveryTypeSetToNotDirect__ctor
-  commentId: M:Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToNotDirect.#ctor
-  fullName: Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToNotDirect.CustomerIntercompanyDeliveryTypeSetToNotDirect()
-  nameWithType: CustomerIntercompanyDeliveryTypeSetToNotDirect.CustomerIntercompanyDeliveryTypeSetToNotDirect()
-- uid: Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToNotDirect.#ctor(System.String,System.String,System.String)
-  name: CustomerIntercompanyDeliveryTypeSetToNotDirect(String, String, String)
-  href: api/Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToNotDirect.html#Hexalith_Domain_Events_CustomerIntercompanyDeliveryTypeSetToNotDirect__ctor_System_String_System_String_System_String_
-  commentId: M:Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToNotDirect.#ctor(System.String,System.String,System.String)
-  fullName: Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToNotDirect.CustomerIntercompanyDeliveryTypeSetToNotDirect(System.String, System.String, System.String)
-  nameWithType: CustomerIntercompanyDeliveryTypeSetToNotDirect.CustomerIntercompanyDeliveryTypeSetToNotDirect(String, String, String)
-- uid: Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToNotDirect.#ctor*
-  name: CustomerIntercompanyDeliveryTypeSetToNotDirect
-  href: api/Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToNotDirect.html#Hexalith_Domain_Events_CustomerIntercompanyDeliveryTypeSetToNotDirect__ctor_
-  commentId: Overload:Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToNotDirect.#ctor
-  isSpec: "True"
-  fullName: Hexalith.Domain.Events.CustomerIntercompanyDeliveryTypeSetToNotDirect.CustomerIntercompanyDeliveryTypeSetToNotDirect
-  nameWithType: CustomerIntercompanyDeliveryTypeSetToNotDirect.CustomerIntercompanyDeliveryTypeSetToNotDirect
 - uid: Hexalith.Domain.Events.CustomerRegistered
   name: CustomerRegistered
   href: api/Hexalith.Domain.Events.CustomerRegistered.html
@@ -12010,6 +11973,56 @@ references:
   commentId: T:Hexalith.Domain.Events.IEvent
   fullName: Hexalith.Domain.Events.IEvent
   nameWithType: IEvent
+- uid: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected
+  name: IntercompanyDropshipDeliveryForCustomerDeselected
+  href: api/Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.html
+  commentId: T:Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected
+  fullName: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected
+  nameWithType: IntercompanyDropshipDeliveryForCustomerDeselected
+- uid: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.#ctor
+  name: IntercompanyDropshipDeliveryForCustomerDeselected()
+  href: api/Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.html#Hexalith_Domain_Events_IntercompanyDropshipDeliveryForCustomerDeselected__ctor
+  commentId: M:Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.#ctor
+  fullName: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.IntercompanyDropshipDeliveryForCustomerDeselected()
+  nameWithType: IntercompanyDropshipDeliveryForCustomerDeselected.IntercompanyDropshipDeliveryForCustomerDeselected()
+- uid: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.#ctor(System.String,System.String,System.String)
+  name: IntercompanyDropshipDeliveryForCustomerDeselected(String, String, String)
+  href: api/Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.html#Hexalith_Domain_Events_IntercompanyDropshipDeliveryForCustomerDeselected__ctor_System_String_System_String_System_String_
+  commentId: M:Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.#ctor(System.String,System.String,System.String)
+  fullName: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.IntercompanyDropshipDeliveryForCustomerDeselected(System.String, System.String, System.String)
+  nameWithType: IntercompanyDropshipDeliveryForCustomerDeselected.IntercompanyDropshipDeliveryForCustomerDeselected(String, String, String)
+- uid: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.#ctor*
+  name: IntercompanyDropshipDeliveryForCustomerDeselected
+  href: api/Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.html#Hexalith_Domain_Events_IntercompanyDropshipDeliveryForCustomerDeselected__ctor_
+  commentId: Overload:Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.IntercompanyDropshipDeliveryForCustomerDeselected
+  nameWithType: IntercompanyDropshipDeliveryForCustomerDeselected.IntercompanyDropshipDeliveryForCustomerDeselected
+- uid: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected
+  name: IntercompanyDropshipDeliveryForCustomerSelected
+  href: api/Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected.html
+  commentId: T:Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected
+  fullName: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected
+  nameWithType: IntercompanyDropshipDeliveryForCustomerSelected
+- uid: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected.#ctor
+  name: IntercompanyDropshipDeliveryForCustomerSelected()
+  href: api/Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected.html#Hexalith_Domain_Events_IntercompanyDropshipDeliveryForCustomerSelected__ctor
+  commentId: M:Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected.#ctor
+  fullName: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected.IntercompanyDropshipDeliveryForCustomerSelected()
+  nameWithType: IntercompanyDropshipDeliveryForCustomerSelected.IntercompanyDropshipDeliveryForCustomerSelected()
+- uid: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected.#ctor(System.String,System.String,System.String)
+  name: IntercompanyDropshipDeliveryForCustomerSelected(String, String, String)
+  href: api/Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected.html#Hexalith_Domain_Events_IntercompanyDropshipDeliveryForCustomerSelected__ctor_System_String_System_String_System_String_
+  commentId: M:Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected.#ctor(System.String,System.String,System.String)
+  fullName: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected.IntercompanyDropshipDeliveryForCustomerSelected(System.String, System.String, System.String)
+  nameWithType: IntercompanyDropshipDeliveryForCustomerSelected.IntercompanyDropshipDeliveryForCustomerSelected(String, String, String)
+- uid: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected.#ctor*
+  name: IntercompanyDropshipDeliveryForCustomerSelected
+  href: api/Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected.html#Hexalith_Domain_Events_IntercompanyDropshipDeliveryForCustomerSelected__ctor_
+  commentId: Overload:Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected.IntercompanyDropshipDeliveryForCustomerSelected
+  nameWithType: IntercompanyDropshipDeliveryForCustomerSelected.IntercompanyDropshipDeliveryForCustomerSelected
 - uid: Hexalith.Domain.Events.InventoryItemAdded
   name: InventoryItemAdded
   href: api/Hexalith.Domain.Events.InventoryItemAdded.html
