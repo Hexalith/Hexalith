@@ -1,0 +1,42 @@
+name: Trigger auto deployment for hexalith-dynamics365finance
+
+# When this action will be executed
+on:
+  # Automatically trigger it when detected changes in repo
+  push:
+    branches: 
+      [ main ]
+    paths:
+    - '**'
+    - '.github/workflows/hexalith-dynamics365finance-AutoDeployTrigger-e5ecf5db-1db1-49a6-99e8-bc2146cdf41e.yml'
+
+  # Allow manual trigger 
+  workflow_dispatch:
+      
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout to the branch
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.HEXALITHDYNAMICS365FINANCE_AZURE_CREDENTIALS }}
+
+      - name: Build and push container image to registry
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          appSourcePath: ${{ github.workspace }} 
+          registryUrl: christofle.azurecr.io
+          registryUsername: ${{ secrets.HEXALITHDYNAMICS365FINANCE_REGISTRY_USERNAME }}
+          registryPassword: ${{ secrets.HEXALITHDYNAMICS365FINANCE_REGISTRY_PASSWORD }}
+          containerAppName: hexalith-dynamics365finance
+          resourceGroup: chr-dev-logistics-partner
+          imageToBuild: christofle.azurecr.io/hexalith-dynamics365finance:${{ github.sha }}
+          
+
+     
+
