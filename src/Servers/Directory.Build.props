@@ -3,7 +3,6 @@
 	<PropertyGroup>
 		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
 		<IsPackable>false</IsPackable>
-		<ContainerRegistry>fiveforty.azurecr.io</ContainerRegistry>
 	</PropertyGroup>
 	<ItemGroup>
 		<ContainerEnvironmentVariable Include="DAPRSIDEKICK_ENABLED" Value="false" />
