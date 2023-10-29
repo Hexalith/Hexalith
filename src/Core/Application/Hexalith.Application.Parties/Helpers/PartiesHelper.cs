@@ -38,8 +38,8 @@ public static class PartiesHelper
         services.TryAddSingleton<ICommandHandler<ChangeCustomerInformation>, ChangeCustomerInformationHandler>();
         services.TryAddSingleton<ICommandHandler<RegisterCustomer>, RegisterCustomerHandler>();
         services.TryAddSingleton<ICommandHandler<RegisterOrChangeCustomer>, RegisterOrChangeCustomerHandler>();
-        services.TryAddSingleton<ICommandHandler<SetIntercompanyDropshipDeliveryForCustomer>, SetIntercompanyDropshipDeliveryForCustomerHandler>();
-        services.TryAddSingleton<ICommandHandler<SetStockDeliveryForCustomer>, SetStockDeliveryForCustomerHandler>();
+        services.TryAddSingleton<ICommandHandler<SelectIntercompanyDropshipDeliveryForCustomer>, SelectIntercompanyDropshipDeliveryForCustomerHandler>();
+        services.TryAddSingleton<ICommandHandler<DeselectIntercompanyDropshipDeliveryForCustomer>, DeselectIntercompanyDropshipDeliveryForCustomerHandler>();
         return services;
     }
 }

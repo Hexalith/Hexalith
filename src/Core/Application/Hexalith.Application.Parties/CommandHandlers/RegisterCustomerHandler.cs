@@ -24,9 +24,9 @@ using System.Threading.Tasks;
 
 using Hexalith.Application.Commands;
 using Hexalith.Application.Parties.Commands;
+using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Messages;
-using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class RegisterCustomerHandler.
@@ -36,11 +36,11 @@ using Hexalith.Extensions.Helpers;
 public class RegisterCustomerHandler : CommandHandler<RegisterCustomer>
 {
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] RegisterCustomer command, CancellationToken cancellationToken)
+    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] RegisterCustomer command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
-        return Task.FromResult<IEnumerable<BaseMessage>>(
-            new CustomerRegistered(
+        CustomerRegistered registered =
+            new(
                 command.PartitionId,
                 command.CompanyId,
                 command.Id,
@@ -48,10 +48,14 @@ public class RegisterCustomerHandler : CommandHandler<RegisterCustomer>
                 command.Contact,
                 command.WarehouseId,
                 command.CommissionSalesGroupId,
-                command.Date)
-                .IntoArray<BaseMessage>());
+                command.Date);
+        return aggregate is null
+            ? Task.FromResult<IEnumerable<BaseMessage>>([registered])
+            : Task.FromException<IEnumerable<BaseMessage>>(
+                new InvalidOperationException(
+                    $"The event {command.TypeName} with id '{command.AggregateId}' cannot be applied on an existing customer."));
     }
 
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> UndoAsync(RegisterCustomer command, CancellationToken cancellationToken) => throw new NotSupportedException();
+    public override Task<IEnumerable<BaseMessage>> UndoAsync(RegisterCustomer command, IAggregate? aggregate, CancellationToken cancellationToken) => throw new NotSupportedException();
 }

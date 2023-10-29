@@ -24,9 +24,9 @@ using System.Threading.Tasks;
 
 using Hexalith.Application.Commands;
 using Hexalith.Application.Parties.Commands;
+using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Messages;
-using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class RegisterOrChangeCustomerHandler.
@@ -36,22 +36,39 @@ using Hexalith.Extensions.Helpers;
 public class RegisterOrChangeCustomerHandler : CommandHandler<RegisterOrChangeCustomer>
 {
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] RegisterOrChangeCustomer command, CancellationToken cancellationToken)
+    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] RegisterOrChangeCustomer command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
-        return Task.FromResult<IEnumerable<BaseMessage>>(
-            new CustomerInformationChanged(
-                command.PartitionId,
-                command.CompanyId,
-                command.Id,
-                command.Name,
-                command.Contact,
-                command.WarehouseId,
-                command.CommissionSalesGroupId,
-                command.Date)
-                .IntoArray<BaseMessage>());
+        if (aggregate is not null and Customer customer)
+        {
+            CustomerInformationChanged changed = new(
+                    command.PartitionId,
+                    command.CompanyId,
+                    command.Id,
+                    command.Name,
+                    command.Contact,
+                    command.WarehouseId,
+                    command.CommissionSalesGroupId,
+                    command.Date);
+            return customer.HasChanges(changed)
+                ? Task.FromResult<IEnumerable<BaseMessage>>([changed])
+                : Task.FromResult<IEnumerable<BaseMessage>>([]);
+        }
+
+        CustomerRegistered registered = new(
+            command.PartitionId,
+            command.CompanyId,
+            command.Id,
+            command.Name,
+            command.Contact,
+            command.WarehouseId,
+            command.CommissionSalesGroupId,
+            command.Date);
+        return aggregate is null
+            ? Task.FromResult<IEnumerable<BaseMessage>>([registered])
+            : Task.FromException<IEnumerable<BaseMessage>>(new InvalidOperationException($"The event {command.TypeName} with id '{command.AggregateId}' can only be applied. Invalid aggregate type '{aggregate.AggregateName}'."));
     }
 
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> UndoAsync(RegisterOrChangeCustomer command, CancellationToken cancellationToken) => throw new NotSupportedException();
+    public override Task<IEnumerable<BaseMessage>> UndoAsync(RegisterOrChangeCustomer command, IAggregate? aggregate, CancellationToken cancellationToken) => throw new NotSupportedException();
 }

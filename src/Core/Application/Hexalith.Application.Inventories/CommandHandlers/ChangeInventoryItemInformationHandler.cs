@@ -24,6 +24,7 @@ using System.Threading.Tasks;
 
 using Hexalith.Application.Commands;
 using Hexalith.Application.Inventories.Commands;
+using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Helpers;
@@ -36,7 +37,7 @@ using Hexalith.Extensions.Helpers;
 public class ChangeInventoryItemInformationHandler : CommandHandler<ChangeInventoryItemInformation>
 {
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] ChangeInventoryItemInformation command, CancellationToken cancellationToken)
+    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] ChangeInventoryItemInformation command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
         return Task.FromResult<IEnumerable<BaseMessage>>(new InventoryItemInformationChanged(
@@ -49,6 +50,6 @@ public class ChangeInventoryItemInformationHandler : CommandHandler<ChangeInvent
     }
 
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> UndoAsync(ChangeInventoryItemInformation command, CancellationToken cancellationToken)
+    public override Task<IEnumerable<BaseMessage>> UndoAsync(ChangeInventoryItemInformation command, IAggregate? aggregate, CancellationToken cancellationToken)
         => throw new NotSupportedException();
 }

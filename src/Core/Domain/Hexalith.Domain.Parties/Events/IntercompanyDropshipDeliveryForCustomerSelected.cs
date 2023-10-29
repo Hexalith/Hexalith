@@ -26,15 +26,15 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="Hexalith.Domain.Events.CustomerEvent" />
 [DataContract]
-public class CustomerIntercompanyDeliveryTypeSetToDirect : CustomerEvent
+public class IntercompanyDropshipDeliveryForCustomerSelected : CustomerEvent
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="CustomerIntercompanyDeliveryTypeSetToDirect"/> class.
+    /// Initializes a new instance of the <see cref="IntercompanyDropshipDeliveryForCustomerSelected"/> class.
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
     /// <param name="id">The identifier.</param>
-    public CustomerIntercompanyDeliveryTypeSetToDirect(
+    public IntercompanyDropshipDeliveryForCustomerSelected(
         string partitionId,
         string companyId,
         string id)
@@ -43,10 +43,10 @@ public class CustomerIntercompanyDeliveryTypeSetToDirect : CustomerEvent
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="CustomerIntercompanyDeliveryTypeSetToDirect"/> class.
+    /// Initializes a new instance of the <see cref="IntercompanyDropshipDeliveryForCustomerSelected"/> class.
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    public CustomerIntercompanyDeliveryTypeSetToDirect()
+    public IntercompanyDropshipDeliveryForCustomerSelected()
     {
     }
 }

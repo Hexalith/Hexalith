@@ -24,6 +24,7 @@ using System.Threading.Tasks;
 
 using Hexalith.Application.Commands;
 using Hexalith.Application.Inventories.Commands;
+using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Helpers;
@@ -36,7 +37,7 @@ using Hexalith.Extensions.Helpers;
 public class RemoveInventoryItemBarcodeHandler : CommandHandler<RemoveInventoryItemBarcode>
 {
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] RemoveInventoryItemBarcode command, CancellationToken cancellationToken)
+    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] RemoveInventoryItemBarcode command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
         return Task.FromResult<IEnumerable<BaseMessage>>(new InventoryItemBarcodeRemoved(
@@ -49,6 +50,6 @@ public class RemoveInventoryItemBarcodeHandler : CommandHandler<RemoveInventoryI
     }
 
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> UndoAsync(RemoveInventoryItemBarcode command, CancellationToken cancellationToken)
+    public override Task<IEnumerable<BaseMessage>> UndoAsync(RemoveInventoryItemBarcode command, IAggregate? aggregate, CancellationToken cancellationToken)
         => throw new NotSupportedException();
 }

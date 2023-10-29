@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 10-03-2023
 // ***********************************************************************
-// <copyright file="CustomerIntercompanyDeliveryTypeSetToNotDirect.cs" company="Fiveforty SAS Paris France">
+// <copyright file="IntercompanyDropshipDeliveryForCustomerDeselected.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -26,15 +26,15 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="Hexalith.Domain.Events.CustomerEvent" />
 [DataContract]
-public class CustomerIntercompanyDeliveryTypeSetToNotDirect : CustomerEvent
+public class IntercompanyDropshipDeliveryForCustomerDeselected : CustomerEvent
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="CustomerIntercompanyDeliveryTypeSetToNotDirect"/> class.
+    /// Initializes a new instance of the <see cref="IntercompanyDropshipDeliveryForCustomerDeselected"/> class.
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
     /// <param name="id">The identifier.</param>
-    public CustomerIntercompanyDeliveryTypeSetToNotDirect(
+    public IntercompanyDropshipDeliveryForCustomerDeselected(
         string partitionId,
         string companyId,
         string id)
@@ -43,10 +43,10 @@ public class CustomerIntercompanyDeliveryTypeSetToNotDirect : CustomerEvent
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="CustomerIntercompanyDeliveryTypeSetToNotDirect"/> class.
+    /// Initializes a new instance of the <see cref="IntercompanyDropshipDeliveryForCustomerDeselected"/> class.
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    public CustomerIntercompanyDeliveryTypeSetToNotDirect()
+    public IntercompanyDropshipDeliveryForCustomerDeselected()
     {
     }
 }

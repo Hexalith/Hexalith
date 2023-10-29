@@ -127,11 +127,11 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
         bool directDelivery = @event.InterCompanyDirectDelivery == "Yes";
         if (directDelivery)
         {
-            commands.Add(new SetIntercompanyDropshipDeliveryForCustomer(_partitionId, companyId, customerId));
+            commands.Add(new SelectIntercompanyDropshipDeliveryForCustomer(_partitionId, companyId, customerId));
         }
         else
         {
-            commands.Add(new SetStockDeliveryForCustomer(_partitionId, companyId, customerId));
+            commands.Add(new DeselectIntercompanyDropshipDeliveryForCustomer(_partitionId, companyId, customerId));
         }
 
         return commands;

@@ -24,32 +24,33 @@ using System.Threading.Tasks;
 
 using Hexalith.Application.Commands;
 using Hexalith.Application.ExternalSystems.Commands;
+using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Messages;
-using Hexalith.Extensions.Helpers;
 
 /// <summary>
-/// Class UnmapExternalSystemReferenceHandler.
+/// Class RemoveExternalSystemReferenceHandler.
 /// Implements the <see cref="Hexalith.Application.Commands.CommandHandler{Hexalith.Application.ExternalSystems.Commands.RemoveExternalSystemReference}" />.
 /// </summary>
 /// <seealso cref="Hexalith.Application.Commands.CommandHandler{Hexalith.Application.ExternalSystems.Commands.RemoveExternalSystemReference}" />
 public class RemoveExternalSystemReferenceHandler : CommandHandler<RemoveExternalSystemReference>
 {
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] RemoveExternalSystemReference command, CancellationToken cancellationToken)
+    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] RemoveExternalSystemReference command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
-        return Task.FromResult<IEnumerable<BaseMessage>>(new ExternalSystemReferenceRemoved(
+        return aggregate is not null and ExternalSystemReference external && !string.IsNullOrWhiteSpace(external.ReferenceAggregateId)
+            ? Task.FromResult<IEnumerable<BaseMessage>>([new ExternalSystemReferenceRemoved(
                 command.PartitionId,
                 command.CompanyId,
                 command.SystemId,
                 command.ReferenceAggregateName,
                 command.ExternalId,
-                command.ReferenceAggregateId)
-            .IntoArray<BaseMessage>());
+                command.ReferenceAggregateId)])
+            : Task.FromResult<IEnumerable<BaseMessage>>([]);
     }
 
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> UndoAsync(RemoveExternalSystemReference command, CancellationToken cancellationToken)
+    public override Task<IEnumerable<BaseMessage>> UndoAsync(RemoveExternalSystemReference command, IAggregate? aggregate, CancellationToken cancellationToken)
         => throw new NotSupportedException();
 }

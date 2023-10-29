@@ -20,6 +20,7 @@
 namespace Hexalith.Domain.Aggregates;
 
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Exceptions;
@@ -44,7 +45,7 @@ public record Customer(
     Contact Contact,
     string? WarehouseId,
     string? CommissionSalesGroupId,
-    bool IntercompanyDirectDelivery,
+    bool IntercompanyDropship,
     DateTimeOffset Date) : Aggregate
 {
     /// <summary>
@@ -77,8 +78,8 @@ public record Customer(
                 WarehouseId = changed.WarehouseId,
                 CommissionSalesGroupId = changed.CommissionSalesGroupId,
             },
-            CustomerIntercompanyDeliveryTypeSetToDirect => this with { IntercompanyDirectDelivery = true },
-            CustomerIntercompanyDeliveryTypeSetToNotDirect => this with { IntercompanyDirectDelivery = false },
+            IntercompanyDropshipDeliveryForCustomerSelected => this with { IntercompanyDropship = true },
+            IntercompanyDropshipDeliveryForCustomerDeselected => this with { IntercompanyDropship = false },
             CustomerRegistered => throw new InvalidAggregateEventException(this, domainEvent, true),
             _ => throw new InvalidAggregateEventException(this, domainEvent, false),
         };
@@ -109,4 +110,32 @@ public record Customer(
 #pragma warning disable CA1024 // Use properties where appropriate
     public static string GetAggregateName() => nameof(Customer);
 #pragma warning restore CA1024 // Use properties where appropriate
+    /// <summary>
+    /// Determines whether the specified changed has changes.
+    /// </summary>
+    /// <param name="changed">The changed.</param>
+    /// <returns><c>true</c> if the specified changed has changes; otherwise, <c>false</c>.</returns>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
+    public bool HasChanges([NotNull] CustomerInformationChanged changed)
+    {
+        ArgumentNullException.ThrowIfNull(changed);
+        CheckEvent(changed);
+        return Name != changed.Name
+            || !Contact.AreSame(Contact, changed.Contact)
+            || WarehouseId != changed.WarehouseId
+            || CommissionSalesGroupId != changed.CommissionSalesGroupId;
+    }
+
+    private void CheckEvent(CustomerEvent customerEvent, [CallerArgumentExpression(nameof(customerEvent))] string? paramName = null)
+    {
+        if (AggregateName != customerEvent.AggregateName)
+        {
+            throw new ArgumentException($"{customerEvent.TypeName} can not be applied to aggregate {AggregateName}.", paramName);
+        }
+
+        if (AggregateId != customerEvent.AggregateId)
+        {
+            throw new ArgumentException($"{customerEvent.TypeName} aggregate aggregate Id '{customerEvent.AggregateId}' is invalid. Expected : '{AggregateId}'.", paramName);
+        }
+    }
 }

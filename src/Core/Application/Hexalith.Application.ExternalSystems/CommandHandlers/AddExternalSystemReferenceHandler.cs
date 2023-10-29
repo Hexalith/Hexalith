@@ -24,9 +24,9 @@ using System.Threading.Tasks;
 
 using Hexalith.Application.Commands;
 using Hexalith.Application.ExternalSystems.Commands;
+using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Messages;
-using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class MapExternalSystemReferenceHandler.
@@ -36,20 +36,21 @@ using Hexalith.Extensions.Helpers;
 public class AddExternalSystemReferenceHandler : CommandHandler<AddExternalSystemReference>
 {
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] AddExternalSystemReference command, CancellationToken cancellationToken)
+    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] AddExternalSystemReference command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
-        return Task.FromResult<IEnumerable<BaseMessage>>(new ExternalSystemReferenceAdded(
+        return aggregate is not null and ExternalSystemReference external && external.ReferenceAggregateId == command.ReferenceAggregateId
+            ? Task.FromResult<IEnumerable<BaseMessage>>([])
+            : Task.FromResult<IEnumerable<BaseMessage>>([new ExternalSystemReferenceAdded(
             command.PartitionId,
             command.CompanyId,
             command.SystemId,
             command.ReferenceAggregateName,
             command.ExternalId,
-            command.ReferenceAggregateId)
-            .IntoArray<BaseMessage>());
+            command.ReferenceAggregateId)]);
     }
 
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> UndoAsync(AddExternalSystemReference command, CancellationToken cancellationToken)
+    public override Task<IEnumerable<BaseMessage>> UndoAsync(AddExternalSystemReference command, IAggregate? aggregate, CancellationToken cancellationToken)
         => throw new NotSupportedException();
 }

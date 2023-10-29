@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Messages;
 
 using Microsoft.Extensions.Logging;
@@ -46,18 +47,18 @@ public class DependencyInjectionCommandDispatcher : ICommandDispatcher
     }
 
     /// <inheritdoc/>
-    public async Task<IEnumerable<BaseMessage>> DoAsync(ICommand command, CancellationToken cancellationToken)
+    public async Task<IEnumerable<BaseMessage>> DoAsync(ICommand command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
         _logger.LogDebug("Dispatching command {CommandType} with aggregate id {AggregateName}-{AggregateId}", command.TypeName, command.AggregateName, command.AggregateId);
-        IEnumerable<BaseMessage> events = await GetHandler(command).DoAsync(command, cancellationToken).ConfigureAwait(false);
+        IEnumerable<BaseMessage> events = await GetHandler(command).DoAsync(command, aggregate, cancellationToken).ConfigureAwait(false);
         return events;
     }
 
     /// <inheritdoc/>
-    public async Task<IEnumerable<BaseMessage>> UnDoAsync(ICommand command, CancellationToken cancellationToken)
+    public async Task<IEnumerable<BaseMessage>> UnDoAsync(ICommand command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
         _logger.LogDebug("Dispatching command {CommandType} undo with aggregate id {AggregateName}-{AggregateId}", command.TypeName, command.AggregateName, command.AggregateId);
-        IEnumerable<BaseMessage> events = await GetHandler(command).UndoAsync(command, cancellationToken).ConfigureAwait(false);
+        IEnumerable<BaseMessage> events = await GetHandler(command).UndoAsync(command, aggregate, cancellationToken).ConfigureAwait(false);
         return events;
     }
 

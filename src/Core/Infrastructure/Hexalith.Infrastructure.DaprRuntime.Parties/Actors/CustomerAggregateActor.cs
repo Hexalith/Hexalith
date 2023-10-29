@@ -185,7 +185,7 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
 
     /// <inheritdoc/>
     public async Task<bool> IsIntercompanyDirectDeliveryAsync()
-        => (await GetAggregateAsync().ConfigureAwait(false)).IntercompanyDirectDelivery;
+        => (await GetAggregateAsync().ConfigureAwait(false)).IntercompanyDropship;
 
     /// <inheritdoc/>
     public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period)

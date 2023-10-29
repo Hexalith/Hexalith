@@ -29,7 +29,7 @@ public class ResilientCommandProcessorTest
     {
         Mock<ICommandDispatcher> dispatcher = new();
         _ = dispatcher
-            .Setup(p => p.DoAsync(It.IsAny<ICommand>(), It.IsAny<CancellationToken>()))
+            .Setup(p => p.DoAsync(It.IsAny<ICommand>(), null, It.IsAny<CancellationToken>()))
             .ReturnsAsync(new DummyEvent1("My test response", 123).IntoArray());
         MemoryStateProvider stateProvider = new();
         ResilientCommandProcessor processor = new(
@@ -59,7 +59,7 @@ public class ResilientCommandProcessorTest
     {
         Mock<ICommandDispatcher> dispatcher = new();
         _ = dispatcher
-            .Setup(p => p.DoAsync(It.IsAny<ICommand>(), It.IsAny<CancellationToken>()))
+            .Setup(p => p.DoAsync(It.IsAny<ICommand>(), null, It.IsAny<CancellationToken>()))
             .Returns(Task.FromException<IEnumerable<BaseMessage>>(new InvalidOperationException("Command execution failed.")));
         MemoryStateProvider stateProvider = new();
         ResilientCommandProcessor processor = new(
@@ -94,7 +94,7 @@ public class ResilientCommandProcessorTest
     {
         Mock<ICommandDispatcher> dispatcher = new();
         _ = dispatcher
-            .Setup(p => p.DoAsync(It.IsAny<ICommand>(), It.IsAny<CancellationToken>()))
+            .Setup(p => p.DoAsync(It.IsAny<ICommand>(), null, It.IsAny<CancellationToken>()))
             .Returns(Task.FromException<IEnumerable<BaseMessage>>(new InvalidOperationException("Command execution failed.")));
         MemoryStateProvider stateProvider = new();
         ResilientCommandProcessor processor = new(

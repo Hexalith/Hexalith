@@ -26,15 +26,15 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="Hexalith.Application.Parties.Commands.CustomerCommand" />
 [DataContract]
-public class SetStockDeliveryForCustomer : CustomerCommand
+public class DeselectIntercompanyDropshipDeliveryForCustomer : CustomerCommand
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="SetStockDeliveryForCustomer"/> class.
+    /// Initializes a new instance of the <see cref="DeselectIntercompanyDropshipDeliveryForCustomer"/> class.
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
     /// <param name="id">The identifier.</param>
-    public SetStockDeliveryForCustomer(
+    public DeselectIntercompanyDropshipDeliveryForCustomer(
         string partitionId,
         string companyId,
         string id)
@@ -43,10 +43,10 @@ public class SetStockDeliveryForCustomer : CustomerCommand
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="SetStockDeliveryForCustomer" /> class.
+    /// Initializes a new instance of the <see cref="DeselectIntercompanyDropshipDeliveryForCustomer" /> class.
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    public SetStockDeliveryForCustomer()
+    public DeselectIntercompanyDropshipDeliveryForCustomer()
     {
     }
 }

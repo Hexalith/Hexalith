@@ -24,6 +24,7 @@ using System.Threading.Tasks;
 
 using Hexalith.Application.Commands;
 using Hexalith.Application.Inventories.Commands;
+using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Helpers;
@@ -36,7 +37,7 @@ using Hexalith.Extensions.Helpers;
 public class DecreaseInventoryItemStockHandler : CommandHandler<DecreaseInventoryItemStock>
 {
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] DecreaseInventoryItemStock command, CancellationToken cancellationToken)
+    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] DecreaseInventoryItemStock command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
         return Task.FromResult<IEnumerable<BaseMessage>>(new InventoryItemStockDecreased(
@@ -50,6 +51,6 @@ public class DecreaseInventoryItemStockHandler : CommandHandler<DecreaseInventor
     }
 
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> UndoAsync(DecreaseInventoryItemStock command, CancellationToken cancellationToken)
+    public override Task<IEnumerable<BaseMessage>> UndoAsync(DecreaseInventoryItemStock command, IAggregate? aggregate, CancellationToken cancellationToken)
         => throw new NotSupportedException();
 }

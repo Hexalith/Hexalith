@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Messages;
 
 /// <summary>
@@ -18,20 +19,22 @@ using Hexalith.Domain.Messages;
 public interface ICommandHandler
 {
     /// <summary>
-    /// Executes the command.
+    /// Does the asynchronous.
     /// </summary>
-    /// <param name="command">The command to execute.</param>
+    /// <param name="command">The command.</param>
+    /// <param name="aggregate">The aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>The generated events with their metadata.</returns>
-    Task<IEnumerable<BaseMessage>> DoAsync(ICommand command, CancellationToken cancellationToken);
+    /// <returns>Task&lt;IEnumerable&lt;BaseMessage&gt;&gt;.</returns>
+    Task<IEnumerable<BaseMessage>> DoAsync(ICommand command, IAggregate? aggregate, CancellationToken cancellationToken);
 
     /// <summary>
-    /// Undo the execution of the command.
+    /// Undoes the asynchronous.
     /// </summary>
-    /// <param name="command">The command to execute.</param>
+    /// <param name="command">The command.</param>
+    /// <param name="aggregate">The aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>The generated events with their metadata.</returns>
-    Task<IEnumerable<BaseMessage>> UndoAsync(ICommand command, CancellationToken cancellationToken);
+    /// <returns>Task&lt;IEnumerable&lt;BaseMessage&gt;&gt;.</returns>
+    Task<IEnumerable<BaseMessage>> UndoAsync(ICommand command, IAggregate? aggregate, CancellationToken cancellationToken);
 }
 
 /// <summary>
@@ -44,18 +47,20 @@ public interface ICommandHandler<TCommand> : ICommandHandler
     where TCommand : ICommand
 {
     /// <summary>
-    /// Executes the command.
+    /// Does the asynchronous.
     /// </summary>
-    /// <param name="command">The command to execute.</param>
+    /// <param name="command">The command.</param>
+    /// <param name="aggregate">The aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>The generated events with their metadata.</returns>
-    Task<IEnumerable<BaseMessage>> DoAsync(TCommand command, CancellationToken cancellationToken);
+    /// <returns>Task&lt;IEnumerable&lt;BaseMessage&gt;&gt;.</returns>
+    Task<IEnumerable<BaseMessage>> DoAsync(TCommand command, IAggregate? aggregate, CancellationToken cancellationToken);
 
     /// <summary>
-    /// Undo the execution of the command.
+    /// Undoes the asynchronous.
     /// </summary>
-    /// <param name="command">The command to execute.</param>
+    /// <param name="command">The command.</param>
+    /// <param name="aggregate">The aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>The generated events with their metadata.</returns>
-    Task<IEnumerable<BaseMessage>> UndoAsync(TCommand command, CancellationToken cancellationToken);
+    /// <returns>Task&lt;IEnumerable&lt;BaseMessage&gt;&gt;.</returns>
+    Task<IEnumerable<BaseMessage>> UndoAsync(TCommand command, IAggregate? aggregate, CancellationToken cancellationToken);
 }
