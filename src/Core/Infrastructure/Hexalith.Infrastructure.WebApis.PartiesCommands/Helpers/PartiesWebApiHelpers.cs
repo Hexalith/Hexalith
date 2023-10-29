@@ -20,9 +20,7 @@ using System.Diagnostics.CodeAnalysis;
 
 using Dapr.Actors.Client;
 
-using Hexalith.Application.Commands;
-using Hexalith.Application.Parties.CommandHandlers;
-using Hexalith.Application.Parties.Commands;
+using Hexalith.Application.Parties.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers;
 
@@ -39,14 +37,11 @@ public static class PartiesWebApiHelpers
     /// </summary>
     /// <param name="services">The services.</param>
     /// <returns>IServiceCollection.</returns>
-    public static IServiceCollection AddPartiesCommands([NotNull] this IServiceCollection services)
+    public static IServiceCollection AddPartiesCommandsSubmission([NotNull] this IServiceCollection services)
     {
-        services.TryAddSingleton<ICommandHandler<ChangeCustomerInformation>, ChangeCustomerInformationHandler>();
-        services.TryAddSingleton<ICommandHandler<RegisterCustomer>, RegisterCustomerHandler>();
-        services.TryAddSingleton<ICommandHandler<RegisterOrChangeCustomer>, RegisterOrChangeCustomerHandler>();
-        services.TryAddSingleton<ICommandHandler<SetIntercompanyDropshipDeliveryForCustomer>, SetIntercompanyDropshipDeliveryForCustomerHandler>();
-        services.TryAddSingleton<ICommandHandler<SetStockDeliveryForCustomer>, SetStockDeliveryForCustomerHandler>();
-        services.TryAddSingleton(new ConventionNamingCommandProcessor(ActorProxy.DefaultProxyFactory));
+        services
+            .AddPartiesCommandHandlers()
+            .TryAddSingleton(new ConventionNamingCommandProcessor(ActorProxy.DefaultProxyFactory));
 
         _ = services
          .AddControllers()

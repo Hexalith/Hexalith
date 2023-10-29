@@ -4,10 +4,9 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-using Hexalith.Domain.Aggregates;
-using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Parties.Helpers;
 using Hexalith.Infrastructure.WebApis.Helpers;
+using Hexalith.Infrastructure.WebApis.PartiesCommands.Helpers;
 
 using Serilog;
 
@@ -23,14 +22,10 @@ WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
     appName,
     "v1",
     debugInVisualStudio,
-    (actors) =>
-    {
-        actors.AddPartiesAggregates();
-        actors.AddExternalSystemsMapper(nameof(Hexalith.Application.Parties), [Customer.GetAggregateName()]);
-    },
+    (actors) => actors.AddPartiesAggregates(),
     args);
 
-builder.Services.AddDaprParties(builder.Configuration);
+builder.Services.AddPartiesCommandsSubmission();
 
 WebApplication app = builder.Build();
 

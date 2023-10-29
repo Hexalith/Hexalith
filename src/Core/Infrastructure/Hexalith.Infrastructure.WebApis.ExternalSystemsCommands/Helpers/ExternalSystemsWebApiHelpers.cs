@@ -20,9 +20,7 @@ using System.Diagnostics.CodeAnalysis;
 
 using Dapr.Actors.Client;
 
-using Hexalith.Application.Commands;
-using Hexalith.Application.ExternalSystems.CommandHandlers;
-using Hexalith.Application.ExternalSystems.Commands;
+using Hexalith.Application.ExternalSystems.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers;
 
@@ -39,11 +37,10 @@ public static class ExternalSystemsWebApiHelpers
     /// </summary>
     /// <param name="services">The services.</param>
     /// <returns>IServiceCollection.</returns>
-    public static IServiceCollection AddExternalSystemsCommands([NotNull] this IServiceCollection services)
+    public static IServiceCollection AddExternalSystemsCommandsSubmission([NotNull] this IServiceCollection services)
     {
         ArgumentNullException.ThrowIfNull(services);
-        services.TryAddSingleton<ICommandHandler<AddExternalSystemReference>, AddExternalSystemReferenceHandler>();
-        services.TryAddSingleton<ICommandHandler<RemoveExternalSystemReference>, RemoveExternalSystemReferenceHandler>();
+        _ = services.AddExternalSystemsCommandHandlers();
         services.TryAddSingleton(new ConventionNamingCommandProcessor(ActorProxy.DefaultProxyFactory));
 
         _ = services

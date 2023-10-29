@@ -15,11 +15,14 @@
 // ***********************************************************************
 namespace Hexalith.Application.ExternalSystems.Helpers;
 
+using System.Diagnostics.CodeAnalysis;
+
 using Hexalith.Application.Commands;
 using Hexalith.Application.ExternalSystems.CommandHandlers;
 using Hexalith.Application.ExternalSystems.Commands;
 
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 /// <summary>
 /// Class ExternalSystemsHelper.
@@ -31,10 +34,11 @@ public static class ExternalSystemsHelper
     /// </summary>
     /// <param name="services">The services.</param>
     /// <returns>IServiceCollection.</returns>
-    public static IServiceCollection AddExternalSystemsCommandHandlers(this IServiceCollection services)
+    public static IServiceCollection AddExternalSystemsCommandHandlers([NotNull] this IServiceCollection services)
     {
-        return services
-            .AddTransient<ICommandHandler<AddExternalSystemReference>, AddExternalSystemReferenceHandler>()
-            .AddTransient<ICommandHandler<RemoveExternalSystemReference>, RemoveExternalSystemReferenceHandler>();
+        ArgumentNullException.ThrowIfNull(services);
+        services.TryAddSingleton<ICommandHandler<AddExternalSystemReference>, AddExternalSystemReferenceHandler>();
+        services.TryAddSingleton<ICommandHandler<RemoveExternalSystemReference>, RemoveExternalSystemReferenceHandler>();
+        return services;
     }
 }

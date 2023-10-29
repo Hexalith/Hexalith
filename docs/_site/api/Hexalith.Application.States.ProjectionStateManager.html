@@ -410,7 +410,7 @@ Implements the <see cref="!:Christofle.Infrastructure.Dynamics365Finance.DaprClo
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task ContinueAsync(IStateStoreProvider stateProvider, ResiliencyPolicy resiliencyPolicy, IProjection projection, Func&lt;string, byte[], TimeSpan, TimeSpan, Task&gt; registerReminder, Func&lt;string, Task&gt; removeReminder, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task ContinueAsync(IStateStoreProvider stateProvider, ResiliencyPolicy resiliencyPolicy, IProjection projection, Func&lt;string, byte[], TimeSpan, TimeSpan, Task&gt; registerReminder, Func&lt;string, Task&gt; unregisterReminder, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -448,7 +448,7 @@ Implements the <see cref="!:Christofle.Infrastructure.Dynamics365Finance.DaprClo
       </tr>
       <tr>
         <td><span class="xref">System.Func</span>&lt;<span class="xref">System.String</span>, <span class="xref">Task</span>&gt;</td>
-        <td><span class="parametername">removeReminder</span></td>
+        <td><span class="parametername">unregisterReminder</span></td>
         <td><p>The remove reminder.</p>
 </td>
       </tr>

@@ -29,7 +29,7 @@ WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
     (actors) => actors.AddExternalSystemsAggregates(),
     args);
 
-builder.Services.AddExternalSystemsCommands();
+builder.Services.AddExternalSystemsCommandsSubmission();
 
 WebApplication app = builder.Build();
 

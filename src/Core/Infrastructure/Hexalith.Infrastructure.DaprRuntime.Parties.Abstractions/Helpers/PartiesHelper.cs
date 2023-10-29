@@ -45,8 +45,7 @@ public static class PartiesHelper
         ArgumentNullException.ThrowIfNull(configuration);
         _ = services
             .AddPartiesCommandHandlers()
-            .ConfigureSettings<CustomerSettings>(configuration)
-            .AddDaprPartiesClient();
+            .ConfigureSettings<CustomerSettings>(configuration);
         return services;
     }
 

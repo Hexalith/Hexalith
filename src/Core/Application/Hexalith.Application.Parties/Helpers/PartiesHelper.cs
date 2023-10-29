@@ -21,6 +21,7 @@ using Hexalith.Application.Parties.CommandHandlers;
 using Hexalith.Application.Parties.Commands;
 
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 /// <summary>
 /// Class PartiesHelper.
@@ -34,10 +35,11 @@ public static class PartiesHelper
     /// <returns>IServiceCollection.</returns>
     public static IServiceCollection AddPartiesCommandHandlers(this IServiceCollection services)
     {
-        return services
-            .AddTransient<ICommandHandler<SetStockDeliveryForCustomer>, SetStockDeliveryForCustomerHandler>()
-            .AddTransient<ICommandHandler<SetIntercompanyDropshipDeliveryForCustomer>, SetIntercompanyDropshipDeliveryForCustomerHandler>()
-            .AddTransient<ICommandHandler<ChangeCustomerInformation>, ChangeCustomerInformationHandler>()
-            .AddTransient<ICommandHandler<RegisterCustomer>, RegisterCustomerHandler>();
+        services.TryAddSingleton<ICommandHandler<ChangeCustomerInformation>, ChangeCustomerInformationHandler>();
+        services.TryAddSingleton<ICommandHandler<RegisterCustomer>, RegisterCustomerHandler>();
+        services.TryAddSingleton<ICommandHandler<RegisterOrChangeCustomer>, RegisterOrChangeCustomerHandler>();
+        services.TryAddSingleton<ICommandHandler<SetIntercompanyDropshipDeliveryForCustomer>, SetIntercompanyDropshipDeliveryForCustomerHandler>();
+        services.TryAddSingleton<ICommandHandler<SetStockDeliveryForCustomer>, SetStockDeliveryForCustomerHandler>();
+        return services;
     }
 }

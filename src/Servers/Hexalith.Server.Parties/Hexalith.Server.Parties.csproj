@@ -6,8 +6,6 @@
 		<UserSecretsId>237a39d7-0bf2-4320-b09c-bd6a84e1bd34</UserSecretsId>
 	</PropertyGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime.Parties\Hexalith.Infrastructure.DaprRuntime.Parties.csproj" />
-		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.WebApis.ExternalSystemsEvents\Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.csproj" />
-		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.WebApis.Parties\Hexalith.Infrastructure.WebApis.Parties.csproj" />
+		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.WebApis.PartiesCommands\Hexalith.Infrastructure.WebApis.PartiesCommands.csproj" />
 	</ItemGroup>
 </Project>

@@ -362,6 +362,12 @@ references:
   commentId: F:Hexalith.Application.ApplicationConstants.NotificationBus
   fullName: Hexalith.Application.ApplicationConstants.NotificationBus
   nameWithType: ApplicationConstants.NotificationBus
+- uid: Hexalith.Application.ApplicationConstants.NotificationDefaultAggregateName
+  name: NotificationDefaultAggregateName
+  href: api/Hexalith.Application.ApplicationConstants.html#Hexalith_Application_ApplicationConstants_NotificationDefaultAggregateName
+  commentId: F:Hexalith.Application.ApplicationConstants.NotificationDefaultAggregateName
+  fullName: Hexalith.Application.ApplicationConstants.NotificationDefaultAggregateName
+  nameWithType: ApplicationConstants.NotificationDefaultAggregateName
 - uid: Hexalith.Application.ApplicationConstants.RequestBus
   name: RequestBus
   href: api/Hexalith.Application.ApplicationConstants.html#Hexalith_Application_ApplicationConstants_RequestBus
@@ -1853,12 +1859,15 @@ references:
   commentId: T:Hexalith.Application.Events.DependencyInjectionEventDispatcher
   fullName: Hexalith.Application.Events.DependencyInjectionEventDispatcher
   nameWithType: DependencyInjectionEventDispatcher
-- uid: Hexalith.Application.Events.DependencyInjectionEventDispatcher.#ctor(System.IServiceProvider,Microsoft.Extensions.Logging.ILogger)
-  name: DependencyInjectionEventDispatcher(IServiceProvider, ILogger)
-  href: api/Hexalith.Application.Events.DependencyInjectionEventDispatcher.html#Hexalith_Application_Events_DependencyInjectionEventDispatcher__ctor_System_IServiceProvider_Microsoft_Extensions_Logging_ILogger_
-  commentId: M:Hexalith.Application.Events.DependencyInjectionEventDispatcher.#ctor(System.IServiceProvider,Microsoft.Extensions.Logging.ILogger)
-  fullName: Hexalith.Application.Events.DependencyInjectionEventDispatcher.DependencyInjectionEventDispatcher(System.IServiceProvider, Microsoft.Extensions.Logging.ILogger)
-  nameWithType: DependencyInjectionEventDispatcher.DependencyInjectionEventDispatcher(IServiceProvider, ILogger)
+- uid: Hexalith.Application.Events.DependencyInjectionEventDispatcher.#ctor(System.IServiceProvider,Microsoft.Extensions.Logging.ILogger{Hexalith.Application.Events.DependencyInjectionEventDispatcher})
+  name: DependencyInjectionEventDispatcher(IServiceProvider, ILogger<DependencyInjectionEventDispatcher>)
+  href: api/Hexalith.Application.Events.DependencyInjectionEventDispatcher.html#Hexalith_Application_Events_DependencyInjectionEventDispatcher__ctor_System_IServiceProvider_Microsoft_Extensions_Logging_ILogger_Hexalith_Application_Events_DependencyInjectionEventDispatcher__
+  commentId: M:Hexalith.Application.Events.DependencyInjectionEventDispatcher.#ctor(System.IServiceProvider,Microsoft.Extensions.Logging.ILogger{Hexalith.Application.Events.DependencyInjectionEventDispatcher})
+  name.vb: DependencyInjectionEventDispatcher(IServiceProvider, ILogger(Of DependencyInjectionEventDispatcher))
+  fullName: Hexalith.Application.Events.DependencyInjectionEventDispatcher.DependencyInjectionEventDispatcher(System.IServiceProvider, Microsoft.Extensions.Logging.ILogger<Hexalith.Application.Events.DependencyInjectionEventDispatcher>)
+  fullName.vb: Hexalith.Application.Events.DependencyInjectionEventDispatcher.DependencyInjectionEventDispatcher(System.IServiceProvider, Microsoft.Extensions.Logging.ILogger(Of Hexalith.Application.Events.DependencyInjectionEventDispatcher))
+  nameWithType: DependencyInjectionEventDispatcher.DependencyInjectionEventDispatcher(IServiceProvider, ILogger<DependencyInjectionEventDispatcher>)
+  nameWithType.vb: DependencyInjectionEventDispatcher.DependencyInjectionEventDispatcher(IServiceProvider, ILogger(Of DependencyInjectionEventDispatcher))
 - uid: Hexalith.Application.Events.DependencyInjectionEventDispatcher.#ctor*
   name: DependencyInjectionEventDispatcher
   href: api/Hexalith.Application.Events.DependencyInjectionEventDispatcher.html#Hexalith_Application_Events_DependencyInjectionEventDispatcher__ctor_
@@ -1866,12 +1875,6 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Events.DependencyInjectionEventDispatcher.DependencyInjectionEventDispatcher
   nameWithType: DependencyInjectionEventDispatcher.DependencyInjectionEventDispatcher
-- uid: Hexalith.Application.Events.DependencyInjectionEventDispatcher.ApplyAsync(Hexalith.Domain.Events.IEvent,Hexalith.Application.Metadatas.IMetadata,System.Threading.CancellationToken)
-  name: ApplyAsync(IEvent, IMetadata, CancellationToken)
-  href: api/Hexalith.Application.Events.DependencyInjectionEventDispatcher.html#Hexalith_Application_Events_DependencyInjectionEventDispatcher_ApplyAsync_Hexalith_Domain_Events_IEvent_Hexalith_Application_Metadatas_IMetadata_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Events.DependencyInjectionEventDispatcher.ApplyAsync(Hexalith.Domain.Events.IEvent,Hexalith.Application.Metadatas.IMetadata,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Events.DependencyInjectionEventDispatcher.ApplyAsync(Hexalith.Domain.Events.IEvent, Hexalith.Application.Metadatas.IMetadata, System.Threading.CancellationToken)
-  nameWithType: DependencyInjectionEventDispatcher.ApplyAsync(IEvent, IMetadata, CancellationToken)
 - uid: Hexalith.Application.Events.DependencyInjectionEventDispatcher.ApplyAsync(Hexalith.Domain.Events.IEvent,System.Threading.CancellationToken)
   name: ApplyAsync(IEvent, CancellationToken)
   href: api/Hexalith.Application.Events.DependencyInjectionEventDispatcher.html#Hexalith_Application_Events_DependencyInjectionEventDispatcher_ApplyAsync_Hexalith_Domain_Events_IEvent_System_Threading_CancellationToken_
@@ -1885,67 +1888,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Events.DependencyInjectionEventDispatcher.ApplyAsync
   nameWithType: DependencyInjectionEventDispatcher.ApplyAsync
-- uid: Hexalith.Application.Events.DependencyInjectionEventDispatcher.Logger
-  name: Logger
-  href: api/Hexalith.Application.Events.DependencyInjectionEventDispatcher.html#Hexalith_Application_Events_DependencyInjectionEventDispatcher_Logger
-  commentId: P:Hexalith.Application.Events.DependencyInjectionEventDispatcher.Logger
-  fullName: Hexalith.Application.Events.DependencyInjectionEventDispatcher.Logger
-  nameWithType: DependencyInjectionEventDispatcher.Logger
-- uid: Hexalith.Application.Events.DependencyInjectionEventDispatcher.Logger*
-  name: Logger
-  href: api/Hexalith.Application.Events.DependencyInjectionEventDispatcher.html#Hexalith_Application_Events_DependencyInjectionEventDispatcher_Logger_
-  commentId: Overload:Hexalith.Application.Events.DependencyInjectionEventDispatcher.Logger
+- uid: Hexalith.Application.Events.DependencyInjectionEventDispatcher.DispatchingEvent(System.String,System.String,System.String)
+  name: DispatchingEvent(String, String, String)
+  href: api/Hexalith.Application.Events.DependencyInjectionEventDispatcher.html#Hexalith_Application_Events_DependencyInjectionEventDispatcher_DispatchingEvent_System_String_System_String_System_String_
+  commentId: M:Hexalith.Application.Events.DependencyInjectionEventDispatcher.DispatchingEvent(System.String,System.String,System.String)
+  fullName: Hexalith.Application.Events.DependencyInjectionEventDispatcher.DispatchingEvent(System.String, System.String, System.String)
+  nameWithType: DependencyInjectionEventDispatcher.DispatchingEvent(String, String, String)
+- uid: Hexalith.Application.Events.DependencyInjectionEventDispatcher.DispatchingEvent*
+  name: DispatchingEvent
+  href: api/Hexalith.Application.Events.DependencyInjectionEventDispatcher.html#Hexalith_Application_Events_DependencyInjectionEventDispatcher_DispatchingEvent_
+  commentId: Overload:Hexalith.Application.Events.DependencyInjectionEventDispatcher.DispatchingEvent
   isSpec: "True"
-  fullName: Hexalith.Application.Events.DependencyInjectionEventDispatcher.Logger
-  nameWithType: DependencyInjectionEventDispatcher.Logger
-- uid: Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor
-  name: DependencyInjectionIntegrationEventProcessor
-  href: api/Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor.html
-  commentId: T:Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor
-  fullName: Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor
-  nameWithType: DependencyInjectionIntegrationEventProcessor
-- uid: Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor.#ctor(Hexalith.Application.Events.IIntegrationEventDispatcher,Hexalith.Application.Commands.ICommandBus,Hexalith.Application.Notifications.INotificationBus,Hexalith.Extensions.Common.IDateTimeService,Microsoft.Extensions.Logging.ILogger{Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor})
-  name: DependencyInjectionIntegrationEventProcessor(IIntegrationEventDispatcher, ICommandBus, INotificationBus, IDateTimeService, ILogger<DependencyInjectionIntegrationEventProcessor>)
-  href: api/Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor.html#Hexalith_Application_Events_DependencyInjectionIntegrationEventProcessor__ctor_Hexalith_Application_Events_IIntegrationEventDispatcher_Hexalith_Application_Commands_ICommandBus_Hexalith_Application_Notifications_INotificationBus_Hexalith_Extensions_Common_IDateTimeService_Microsoft_Extensions_Logging_ILogger_Hexalith_Application_Events_DependencyInjectionIntegrationEventProcessor__
-  commentId: M:Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor.#ctor(Hexalith.Application.Events.IIntegrationEventDispatcher,Hexalith.Application.Commands.ICommandBus,Hexalith.Application.Notifications.INotificationBus,Hexalith.Extensions.Common.IDateTimeService,Microsoft.Extensions.Logging.ILogger{Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor})
-  name.vb: DependencyInjectionIntegrationEventProcessor(IIntegrationEventDispatcher, ICommandBus, INotificationBus, IDateTimeService, ILogger(Of DependencyInjectionIntegrationEventProcessor))
-  fullName: Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor.DependencyInjectionIntegrationEventProcessor(Hexalith.Application.Events.IIntegrationEventDispatcher, Hexalith.Application.Commands.ICommandBus, Hexalith.Application.Notifications.INotificationBus, Hexalith.Extensions.Common.IDateTimeService, Microsoft.Extensions.Logging.ILogger<Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor>)
-  fullName.vb: Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor.DependencyInjectionIntegrationEventProcessor(Hexalith.Application.Events.IIntegrationEventDispatcher, Hexalith.Application.Commands.ICommandBus, Hexalith.Application.Notifications.INotificationBus, Hexalith.Extensions.Common.IDateTimeService, Microsoft.Extensions.Logging.ILogger(Of Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor))
-  nameWithType: DependencyInjectionIntegrationEventProcessor.DependencyInjectionIntegrationEventProcessor(IIntegrationEventDispatcher, ICommandBus, INotificationBus, IDateTimeService, ILogger<DependencyInjectionIntegrationEventProcessor>)
-  nameWithType.vb: DependencyInjectionIntegrationEventProcessor.DependencyInjectionIntegrationEventProcessor(IIntegrationEventDispatcher, ICommandBus, INotificationBus, IDateTimeService, ILogger(Of DependencyInjectionIntegrationEventProcessor))
-- uid: Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor.#ctor*
-  name: DependencyInjectionIntegrationEventProcessor
-  href: api/Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor.html#Hexalith_Application_Events_DependencyInjectionIntegrationEventProcessor__ctor_
-  commentId: Overload:Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor.#ctor
-  isSpec: "True"
-  fullName: Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor.DependencyInjectionIntegrationEventProcessor
-  nameWithType: DependencyInjectionIntegrationEventProcessor.DependencyInjectionIntegrationEventProcessor
-- uid: Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor.NoCommandGenerated(System.String,System.String,System.String)
-  name: NoCommandGenerated(String, String, String)
-  href: api/Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor.html#Hexalith_Application_Events_DependencyInjectionIntegrationEventProcessor_NoCommandGenerated_System_String_System_String_System_String_
-  commentId: M:Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor.NoCommandGenerated(System.String,System.String,System.String)
-  fullName: Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor.NoCommandGenerated(System.String, System.String, System.String)
-  nameWithType: DependencyInjectionIntegrationEventProcessor.NoCommandGenerated(String, String, String)
-- uid: Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor.NoCommandGenerated*
-  name: NoCommandGenerated
-  href: api/Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor.html#Hexalith_Application_Events_DependencyInjectionIntegrationEventProcessor_NoCommandGenerated_
-  commentId: Overload:Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor.NoCommandGenerated
-  isSpec: "True"
-  fullName: Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor.NoCommandGenerated
-  nameWithType: DependencyInjectionIntegrationEventProcessor.NoCommandGenerated
-- uid: Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor.SubmitAsync(Hexalith.Domain.Events.IEvent,Hexalith.Application.Metadatas.IMetadata,System.Threading.CancellationToken)
-  name: SubmitAsync(IEvent, IMetadata, CancellationToken)
-  href: api/Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor.html#Hexalith_Application_Events_DependencyInjectionIntegrationEventProcessor_SubmitAsync_Hexalith_Domain_Events_IEvent_Hexalith_Application_Metadatas_IMetadata_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor.SubmitAsync(Hexalith.Domain.Events.IEvent,Hexalith.Application.Metadatas.IMetadata,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor.SubmitAsync(Hexalith.Domain.Events.IEvent, Hexalith.Application.Metadatas.IMetadata, System.Threading.CancellationToken)
-  nameWithType: DependencyInjectionIntegrationEventProcessor.SubmitAsync(IEvent, IMetadata, CancellationToken)
-- uid: Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor.SubmitAsync*
-  name: SubmitAsync
-  href: api/Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor.html#Hexalith_Application_Events_DependencyInjectionIntegrationEventProcessor_SubmitAsync_
-  commentId: Overload:Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor.SubmitAsync
-  isSpec: "True"
-  fullName: Hexalith.Application.Events.DependencyInjectionIntegrationEventProcessor.SubmitAsync
-  nameWithType: DependencyInjectionIntegrationEventProcessor.SubmitAsync
+  fullName: Hexalith.Application.Events.DependencyInjectionEventDispatcher.DispatchingEvent
+  nameWithType: DependencyInjectionEventDispatcher.DispatchingEvent
 - uid: Hexalith.Application.Events.EventDeserializationFailed
   name: EventDeserializationFailed
   href: api/Hexalith.Application.Events.EventDeserializationFailed.html
@@ -2216,6 +2171,54 @@ references:
   fullName.vb: Hexalith.Application.Events.IntegrationEventHandler(Of TEvent).ApplyAsync
   nameWithType: IntegrationEventHandler<TEvent>.ApplyAsync
   nameWithType.vb: IntegrationEventHandler(Of TEvent).ApplyAsync
+- uid: Hexalith.Application.Events.IntegrationEventProcessor
+  name: IntegrationEventProcessor
+  href: api/Hexalith.Application.Events.IntegrationEventProcessor.html
+  commentId: T:Hexalith.Application.Events.IntegrationEventProcessor
+  fullName: Hexalith.Application.Events.IntegrationEventProcessor
+  nameWithType: IntegrationEventProcessor
+- uid: Hexalith.Application.Events.IntegrationEventProcessor.#ctor(Hexalith.Application.Events.IIntegrationEventDispatcher,Hexalith.Application.Commands.ICommandBus,Hexalith.Application.Notifications.INotificationBus,Hexalith.Extensions.Common.IDateTimeService,Microsoft.Extensions.Logging.ILogger{Hexalith.Application.Events.IntegrationEventProcessor})
+  name: IntegrationEventProcessor(IIntegrationEventDispatcher, ICommandBus, INotificationBus, IDateTimeService, ILogger<IntegrationEventProcessor>)
+  href: api/Hexalith.Application.Events.IntegrationEventProcessor.html#Hexalith_Application_Events_IntegrationEventProcessor__ctor_Hexalith_Application_Events_IIntegrationEventDispatcher_Hexalith_Application_Commands_ICommandBus_Hexalith_Application_Notifications_INotificationBus_Hexalith_Extensions_Common_IDateTimeService_Microsoft_Extensions_Logging_ILogger_Hexalith_Application_Events_IntegrationEventProcessor__
+  commentId: M:Hexalith.Application.Events.IntegrationEventProcessor.#ctor(Hexalith.Application.Events.IIntegrationEventDispatcher,Hexalith.Application.Commands.ICommandBus,Hexalith.Application.Notifications.INotificationBus,Hexalith.Extensions.Common.IDateTimeService,Microsoft.Extensions.Logging.ILogger{Hexalith.Application.Events.IntegrationEventProcessor})
+  name.vb: IntegrationEventProcessor(IIntegrationEventDispatcher, ICommandBus, INotificationBus, IDateTimeService, ILogger(Of IntegrationEventProcessor))
+  fullName: Hexalith.Application.Events.IntegrationEventProcessor.IntegrationEventProcessor(Hexalith.Application.Events.IIntegrationEventDispatcher, Hexalith.Application.Commands.ICommandBus, Hexalith.Application.Notifications.INotificationBus, Hexalith.Extensions.Common.IDateTimeService, Microsoft.Extensions.Logging.ILogger<Hexalith.Application.Events.IntegrationEventProcessor>)
+  fullName.vb: Hexalith.Application.Events.IntegrationEventProcessor.IntegrationEventProcessor(Hexalith.Application.Events.IIntegrationEventDispatcher, Hexalith.Application.Commands.ICommandBus, Hexalith.Application.Notifications.INotificationBus, Hexalith.Extensions.Common.IDateTimeService, Microsoft.Extensions.Logging.ILogger(Of Hexalith.Application.Events.IntegrationEventProcessor))
+  nameWithType: IntegrationEventProcessor.IntegrationEventProcessor(IIntegrationEventDispatcher, ICommandBus, INotificationBus, IDateTimeService, ILogger<IntegrationEventProcessor>)
+  nameWithType.vb: IntegrationEventProcessor.IntegrationEventProcessor(IIntegrationEventDispatcher, ICommandBus, INotificationBus, IDateTimeService, ILogger(Of IntegrationEventProcessor))
+- uid: Hexalith.Application.Events.IntegrationEventProcessor.#ctor*
+  name: IntegrationEventProcessor
+  href: api/Hexalith.Application.Events.IntegrationEventProcessor.html#Hexalith_Application_Events_IntegrationEventProcessor__ctor_
+  commentId: Overload:Hexalith.Application.Events.IntegrationEventProcessor.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Application.Events.IntegrationEventProcessor.IntegrationEventProcessor
+  nameWithType: IntegrationEventProcessor.IntegrationEventProcessor
+- uid: Hexalith.Application.Events.IntegrationEventProcessor.NoCommandGenerated(System.String,System.String,System.String)
+  name: NoCommandGenerated(String, String, String)
+  href: api/Hexalith.Application.Events.IntegrationEventProcessor.html#Hexalith_Application_Events_IntegrationEventProcessor_NoCommandGenerated_System_String_System_String_System_String_
+  commentId: M:Hexalith.Application.Events.IntegrationEventProcessor.NoCommandGenerated(System.String,System.String,System.String)
+  fullName: Hexalith.Application.Events.IntegrationEventProcessor.NoCommandGenerated(System.String, System.String, System.String)
+  nameWithType: IntegrationEventProcessor.NoCommandGenerated(String, String, String)
+- uid: Hexalith.Application.Events.IntegrationEventProcessor.NoCommandGenerated*
+  name: NoCommandGenerated
+  href: api/Hexalith.Application.Events.IntegrationEventProcessor.html#Hexalith_Application_Events_IntegrationEventProcessor_NoCommandGenerated_
+  commentId: Overload:Hexalith.Application.Events.IntegrationEventProcessor.NoCommandGenerated
+  isSpec: "True"
+  fullName: Hexalith.Application.Events.IntegrationEventProcessor.NoCommandGenerated
+  nameWithType: IntegrationEventProcessor.NoCommandGenerated
+- uid: Hexalith.Application.Events.IntegrationEventProcessor.SubmitAsync(Hexalith.Domain.Events.IEvent,Hexalith.Application.Metadatas.IMetadata,System.Threading.CancellationToken)
+  name: SubmitAsync(IEvent, IMetadata, CancellationToken)
+  href: api/Hexalith.Application.Events.IntegrationEventProcessor.html#Hexalith_Application_Events_IntegrationEventProcessor_SubmitAsync_Hexalith_Domain_Events_IEvent_Hexalith_Application_Metadatas_IMetadata_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Events.IntegrationEventProcessor.SubmitAsync(Hexalith.Domain.Events.IEvent,Hexalith.Application.Metadatas.IMetadata,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Events.IntegrationEventProcessor.SubmitAsync(Hexalith.Domain.Events.IEvent, Hexalith.Application.Metadatas.IMetadata, System.Threading.CancellationToken)
+  nameWithType: IntegrationEventProcessor.SubmitAsync(IEvent, IMetadata, CancellationToken)
+- uid: Hexalith.Application.Events.IntegrationEventProcessor.SubmitAsync*
+  name: SubmitAsync
+  href: api/Hexalith.Application.Events.IntegrationEventProcessor.html#Hexalith_Application_Events_IntegrationEventProcessor_SubmitAsync_
+  commentId: Overload:Hexalith.Application.Events.IntegrationEventProcessor.SubmitAsync
+  isSpec: "True"
+  fullName: Hexalith.Application.Events.IntegrationEventProcessor.SubmitAsync
+  nameWithType: IntegrationEventProcessor.SubmitAsync
 - uid: Hexalith.Application.Events.MemoryEventBus
   name: MemoryEventBus
   href: api/Hexalith.Application.Events.MemoryEventBus.html
@@ -2767,12 +2770,12 @@ references:
   commentId: T:Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService
   fullName: Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService
   nameWithType: IExternalReferenceMapperService
-- uid: Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService.GetAggregateIdAsync(System.String,System.String,System.String,System.String,CancellationToken)
-  name: GetAggregateIdAsync(String, String, String, String, CancellationToken)
-  href: api/Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService.html#Hexalith_Application_ExternalSystems_Services_IExternalReferenceMapperService_GetAggregateIdAsync_System_String_System_String_System_String_System_String_CancellationToken_
-  commentId: M:Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService.GetAggregateIdAsync(System.String,System.String,System.String,System.String,CancellationToken)
-  fullName: Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService.GetAggregateIdAsync(System.String, System.String, System.String, System.String, CancellationToken)
-  nameWithType: IExternalReferenceMapperService.GetAggregateIdAsync(String, String, String, String, CancellationToken)
+- uid: Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService.GetAggregateIdAsync(System.String,System.String,System.String,System.String,System.String,CancellationToken)
+  name: GetAggregateIdAsync(String, String, String, String, String, CancellationToken)
+  href: api/Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService.html#Hexalith_Application_ExternalSystems_Services_IExternalReferenceMapperService_GetAggregateIdAsync_System_String_System_String_System_String_System_String_System_String_CancellationToken_
+  commentId: M:Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService.GetAggregateIdAsync(System.String,System.String,System.String,System.String,System.String,CancellationToken)
+  fullName: Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService.GetAggregateIdAsync(System.String, System.String, System.String, System.String, System.String, CancellationToken)
+  nameWithType: IExternalReferenceMapperService.GetAggregateIdAsync(String, String, String, String, String, CancellationToken)
 - uid: Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService.GetAggregateIdAsync*
   name: GetAggregateIdAsync
   href: api/Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService.html#Hexalith_Application_ExternalSystems_Services_IExternalReferenceMapperService_GetAggregateIdAsync_
@@ -2780,12 +2783,12 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService.GetAggregateIdAsync
   nameWithType: IExternalReferenceMapperService.GetAggregateIdAsync
-- uid: Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService.GetExternalIdAsync(System.String,System.String,CancellationToken)
-  name: GetExternalIdAsync(String, String, CancellationToken)
-  href: api/Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService.html#Hexalith_Application_ExternalSystems_Services_IExternalReferenceMapperService_GetExternalIdAsync_System_String_System_String_CancellationToken_
-  commentId: M:Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService.GetExternalIdAsync(System.String,System.String,CancellationToken)
-  fullName: Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService.GetExternalIdAsync(System.String, System.String, CancellationToken)
-  nameWithType: IExternalReferenceMapperService.GetExternalIdAsync(String, String, CancellationToken)
+- uid: Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService.GetExternalIdAsync(System.String,System.String,System.String,CancellationToken)
+  name: GetExternalIdAsync(String, String, String, CancellationToken)
+  href: api/Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService.html#Hexalith_Application_ExternalSystems_Services_IExternalReferenceMapperService_GetExternalIdAsync_System_String_System_String_System_String_CancellationToken_
+  commentId: M:Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService.GetExternalIdAsync(System.String,System.String,System.String,CancellationToken)
+  fullName: Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService.GetExternalIdAsync(System.String, System.String, System.String, CancellationToken)
+  nameWithType: IExternalReferenceMapperService.GetExternalIdAsync(String, String, String, CancellationToken)
 - uid: Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService.GetExternalIdAsync*
   name: GetExternalIdAsync
   href: api/Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService.html#Hexalith_Application_ExternalSystems_Services_IExternalReferenceMapperService_GetExternalIdAsync_
@@ -4581,6 +4584,32 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Notifications.BaseNotification.CorrelationId
   nameWithType: BaseNotification.CorrelationId
+- uid: Hexalith.Application.Notifications.BaseNotification.DefaultAggregateId
+  name: DefaultAggregateId()
+  href: api/Hexalith.Application.Notifications.BaseNotification.html#Hexalith_Application_Notifications_BaseNotification_DefaultAggregateId
+  commentId: M:Hexalith.Application.Notifications.BaseNotification.DefaultAggregateId
+  fullName: Hexalith.Application.Notifications.BaseNotification.DefaultAggregateId()
+  nameWithType: BaseNotification.DefaultAggregateId()
+- uid: Hexalith.Application.Notifications.BaseNotification.DefaultAggregateId*
+  name: DefaultAggregateId
+  href: api/Hexalith.Application.Notifications.BaseNotification.html#Hexalith_Application_Notifications_BaseNotification_DefaultAggregateId_
+  commentId: Overload:Hexalith.Application.Notifications.BaseNotification.DefaultAggregateId
+  isSpec: "True"
+  fullName: Hexalith.Application.Notifications.BaseNotification.DefaultAggregateId
+  nameWithType: BaseNotification.DefaultAggregateId
+- uid: Hexalith.Application.Notifications.BaseNotification.DefaultAggregateName
+  name: DefaultAggregateName()
+  href: api/Hexalith.Application.Notifications.BaseNotification.html#Hexalith_Application_Notifications_BaseNotification_DefaultAggregateName
+  commentId: M:Hexalith.Application.Notifications.BaseNotification.DefaultAggregateName
+  fullName: Hexalith.Application.Notifications.BaseNotification.DefaultAggregateName()
+  nameWithType: BaseNotification.DefaultAggregateName()
+- uid: Hexalith.Application.Notifications.BaseNotification.DefaultAggregateName*
+  name: DefaultAggregateName
+  href: api/Hexalith.Application.Notifications.BaseNotification.html#Hexalith_Application_Notifications_BaseNotification_DefaultAggregateName_
+  commentId: Overload:Hexalith.Application.Notifications.BaseNotification.DefaultAggregateName
+  isSpec: "True"
+  fullName: Hexalith.Application.Notifications.BaseNotification.DefaultAggregateName
+  nameWithType: BaseNotification.DefaultAggregateName
 - uid: Hexalith.Application.Notifications.BaseNotification.Message
   name: Message
   href: api/Hexalith.Application.Notifications.BaseNotification.html#Hexalith_Application_Notifications_BaseNotification_Message
@@ -5183,70 +5212,102 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.UndoAsync
   nameWithType: RegisterCustomerHandler.UndoAsync
-- uid: Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToDirectHandler
-  name: SetCustomerIntercompanyDeliveryToDirectHandler
-  href: api/Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToDirectHandler.html
-  commentId: T:Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToDirectHandler
-  fullName: Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToDirectHandler
-  nameWithType: SetCustomerIntercompanyDeliveryToDirectHandler
-- uid: Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToDirectHandler.DoAsync(Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDirectDelivery,System.Threading.CancellationToken)
-  name: DoAsync(SetCustomerIntercompanyDirectDelivery, CancellationToken)
-  href: api/Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToDirectHandler.html#Hexalith_Application_Parties_CommandHandlers_SetCustomerIntercompanyDeliveryToDirectHandler_DoAsync_Hexalith_Application_Parties_Commands_SetCustomerIntercompanyDirectDelivery_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToDirectHandler.DoAsync(Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDirectDelivery,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToDirectHandler.DoAsync(Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDirectDelivery, System.Threading.CancellationToken)
-  nameWithType: SetCustomerIntercompanyDeliveryToDirectHandler.DoAsync(SetCustomerIntercompanyDirectDelivery, CancellationToken)
-- uid: Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToDirectHandler.DoAsync*
+- uid: Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler
+  name: RegisterOrChangeCustomerHandler
+  href: api/Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.html
+  commentId: T:Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler
+  fullName: Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler
+  nameWithType: RegisterOrChangeCustomerHandler
+- uid: Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer,System.Threading.CancellationToken)
+  name: DoAsync(RegisterOrChangeCustomer, CancellationToken)
+  href: api/Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_RegisterOrChangeCustomerHandler_DoAsync_Hexalith_Application_Parties_Commands_RegisterOrChangeCustomer_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer, System.Threading.CancellationToken)
+  nameWithType: RegisterOrChangeCustomerHandler.DoAsync(RegisterOrChangeCustomer, CancellationToken)
+- uid: Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.DoAsync*
   name: DoAsync
-  href: api/Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToDirectHandler.html#Hexalith_Application_Parties_CommandHandlers_SetCustomerIntercompanyDeliveryToDirectHandler_DoAsync_
-  commentId: Overload:Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToDirectHandler.DoAsync
+  href: api/Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_RegisterOrChangeCustomerHandler_DoAsync_
+  commentId: Overload:Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.DoAsync
   isSpec: "True"
-  fullName: Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToDirectHandler.DoAsync
-  nameWithType: SetCustomerIntercompanyDeliveryToDirectHandler.DoAsync
-- uid: Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToDirectHandler.UndoAsync(Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDirectDelivery,System.Threading.CancellationToken)
-  name: UndoAsync(SetCustomerIntercompanyDirectDelivery, CancellationToken)
-  href: api/Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToDirectHandler.html#Hexalith_Application_Parties_CommandHandlers_SetCustomerIntercompanyDeliveryToDirectHandler_UndoAsync_Hexalith_Application_Parties_Commands_SetCustomerIntercompanyDirectDelivery_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToDirectHandler.UndoAsync(Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDirectDelivery,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToDirectHandler.UndoAsync(Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDirectDelivery, System.Threading.CancellationToken)
-  nameWithType: SetCustomerIntercompanyDeliveryToDirectHandler.UndoAsync(SetCustomerIntercompanyDirectDelivery, CancellationToken)
-- uid: Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToDirectHandler.UndoAsync*
+  fullName: Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.DoAsync
+  nameWithType: RegisterOrChangeCustomerHandler.DoAsync
+- uid: Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer,System.Threading.CancellationToken)
+  name: UndoAsync(RegisterOrChangeCustomer, CancellationToken)
+  href: api/Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_RegisterOrChangeCustomerHandler_UndoAsync_Hexalith_Application_Parties_Commands_RegisterOrChangeCustomer_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer, System.Threading.CancellationToken)
+  nameWithType: RegisterOrChangeCustomerHandler.UndoAsync(RegisterOrChangeCustomer, CancellationToken)
+- uid: Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.UndoAsync*
   name: UndoAsync
-  href: api/Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToDirectHandler.html#Hexalith_Application_Parties_CommandHandlers_SetCustomerIntercompanyDeliveryToDirectHandler_UndoAsync_
-  commentId: Overload:Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToDirectHandler.UndoAsync
+  href: api/Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_RegisterOrChangeCustomerHandler_UndoAsync_
+  commentId: Overload:Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.UndoAsync
   isSpec: "True"
-  fullName: Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToDirectHandler.UndoAsync
-  nameWithType: SetCustomerIntercompanyDeliveryToDirectHandler.UndoAsync
-- uid: Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToIndirectHandler
-  name: SetCustomerIntercompanyDeliveryToIndirectHandler
-  href: api/Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToIndirectHandler.html
-  commentId: T:Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToIndirectHandler
-  fullName: Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToIndirectHandler
-  nameWithType: SetCustomerIntercompanyDeliveryToIndirectHandler
-- uid: Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToIndirectHandler.DoAsync(Hexalith.Application.Parties.Commands.UnsetCustomerIntercompanyDirectDelivery,System.Threading.CancellationToken)
-  name: DoAsync(UnsetCustomerIntercompanyDirectDelivery, CancellationToken)
-  href: api/Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToIndirectHandler.html#Hexalith_Application_Parties_CommandHandlers_SetCustomerIntercompanyDeliveryToIndirectHandler_DoAsync_Hexalith_Application_Parties_Commands_UnsetCustomerIntercompanyDirectDelivery_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToIndirectHandler.DoAsync(Hexalith.Application.Parties.Commands.UnsetCustomerIntercompanyDirectDelivery,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToIndirectHandler.DoAsync(Hexalith.Application.Parties.Commands.UnsetCustomerIntercompanyDirectDelivery, System.Threading.CancellationToken)
-  nameWithType: SetCustomerIntercompanyDeliveryToIndirectHandler.DoAsync(UnsetCustomerIntercompanyDirectDelivery, CancellationToken)
-- uid: Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToIndirectHandler.DoAsync*
+  fullName: Hexalith.Application.Parties.CommandHandlers.RegisterOrChangeCustomerHandler.UndoAsync
+  nameWithType: RegisterOrChangeCustomerHandler.UndoAsync
+- uid: Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler
+  name: SetIntercompanyDropshipDeliveryForCustomerHandler
+  href: api/Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.html
+  commentId: T:Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler
+  fullName: Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler
+  nameWithType: SetIntercompanyDropshipDeliveryForCustomerHandler
+- uid: Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer,System.Threading.CancellationToken)
+  name: DoAsync(SetIntercompanyDropshipDeliveryForCustomer, CancellationToken)
+  href: api/Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_SetIntercompanyDropshipDeliveryForCustomerHandler_DoAsync_Hexalith_Application_Parties_Commands_SetIntercompanyDropshipDeliveryForCustomer_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer, System.Threading.CancellationToken)
+  nameWithType: SetIntercompanyDropshipDeliveryForCustomerHandler.DoAsync(SetIntercompanyDropshipDeliveryForCustomer, CancellationToken)
+- uid: Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.DoAsync*
   name: DoAsync
-  href: api/Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToIndirectHandler.html#Hexalith_Application_Parties_CommandHandlers_SetCustomerIntercompanyDeliveryToIndirectHandler_DoAsync_
-  commentId: Overload:Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToIndirectHandler.DoAsync
+  href: api/Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_SetIntercompanyDropshipDeliveryForCustomerHandler_DoAsync_
+  commentId: Overload:Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.DoAsync
   isSpec: "True"
-  fullName: Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToIndirectHandler.DoAsync
-  nameWithType: SetCustomerIntercompanyDeliveryToIndirectHandler.DoAsync
-- uid: Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToIndirectHandler.UndoAsync(Hexalith.Application.Parties.Commands.UnsetCustomerIntercompanyDirectDelivery,System.Threading.CancellationToken)
-  name: UndoAsync(UnsetCustomerIntercompanyDirectDelivery, CancellationToken)
-  href: api/Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToIndirectHandler.html#Hexalith_Application_Parties_CommandHandlers_SetCustomerIntercompanyDeliveryToIndirectHandler_UndoAsync_Hexalith_Application_Parties_Commands_UnsetCustomerIntercompanyDirectDelivery_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToIndirectHandler.UndoAsync(Hexalith.Application.Parties.Commands.UnsetCustomerIntercompanyDirectDelivery,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToIndirectHandler.UndoAsync(Hexalith.Application.Parties.Commands.UnsetCustomerIntercompanyDirectDelivery, System.Threading.CancellationToken)
-  nameWithType: SetCustomerIntercompanyDeliveryToIndirectHandler.UndoAsync(UnsetCustomerIntercompanyDirectDelivery, CancellationToken)
-- uid: Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToIndirectHandler.UndoAsync*
+  fullName: Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.DoAsync
+  nameWithType: SetIntercompanyDropshipDeliveryForCustomerHandler.DoAsync
+- uid: Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer,System.Threading.CancellationToken)
+  name: UndoAsync(SetIntercompanyDropshipDeliveryForCustomer, CancellationToken)
+  href: api/Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_SetIntercompanyDropshipDeliveryForCustomerHandler_UndoAsync_Hexalith_Application_Parties_Commands_SetIntercompanyDropshipDeliveryForCustomer_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer, System.Threading.CancellationToken)
+  nameWithType: SetIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync(SetIntercompanyDropshipDeliveryForCustomer, CancellationToken)
+- uid: Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync*
   name: UndoAsync
-  href: api/Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToIndirectHandler.html#Hexalith_Application_Parties_CommandHandlers_SetCustomerIntercompanyDeliveryToIndirectHandler_UndoAsync_
-  commentId: Overload:Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToIndirectHandler.UndoAsync
+  href: api/Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_SetIntercompanyDropshipDeliveryForCustomerHandler_UndoAsync_
+  commentId: Overload:Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync
   isSpec: "True"
-  fullName: Hexalith.Application.Parties.CommandHandlers.SetCustomerIntercompanyDeliveryToIndirectHandler.UndoAsync
-  nameWithType: SetCustomerIntercompanyDeliveryToIndirectHandler.UndoAsync
+  fullName: Hexalith.Application.Parties.CommandHandlers.SetIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync
+  nameWithType: SetIntercompanyDropshipDeliveryForCustomerHandler.UndoAsync
+- uid: Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler
+  name: SetStockDeliveryForCustomerHandler
+  href: api/Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.html
+  commentId: T:Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler
+  fullName: Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler
+  nameWithType: SetStockDeliveryForCustomerHandler
+- uid: Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer,System.Threading.CancellationToken)
+  name: DoAsync(SetStockDeliveryForCustomer, CancellationToken)
+  href: api/Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_SetStockDeliveryForCustomerHandler_DoAsync_Hexalith_Application_Parties_Commands_SetStockDeliveryForCustomer_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer, System.Threading.CancellationToken)
+  nameWithType: SetStockDeliveryForCustomerHandler.DoAsync(SetStockDeliveryForCustomer, CancellationToken)
+- uid: Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.DoAsync*
+  name: DoAsync
+  href: api/Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_SetStockDeliveryForCustomerHandler_DoAsync_
+  commentId: Overload:Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.DoAsync
+  isSpec: "True"
+  fullName: Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.DoAsync
+  nameWithType: SetStockDeliveryForCustomerHandler.DoAsync
+- uid: Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer,System.Threading.CancellationToken)
+  name: UndoAsync(SetStockDeliveryForCustomer, CancellationToken)
+  href: api/Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_SetStockDeliveryForCustomerHandler_UndoAsync_Hexalith_Application_Parties_Commands_SetStockDeliveryForCustomer_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer, System.Threading.CancellationToken)
+  nameWithType: SetStockDeliveryForCustomerHandler.UndoAsync(SetStockDeliveryForCustomer, CancellationToken)
+- uid: Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.UndoAsync*
+  name: UndoAsync
+  href: api/Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.html#Hexalith_Application_Parties_CommandHandlers_SetStockDeliveryForCustomerHandler_UndoAsync_
+  commentId: Overload:Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.UndoAsync
+  isSpec: "True"
+  fullName: Hexalith.Application.Parties.CommandHandlers.SetStockDeliveryForCustomerHandler.UndoAsync
+  nameWithType: SetStockDeliveryForCustomerHandler.UndoAsync
 - uid: Hexalith.Application.Parties.Commands
   name: Hexalith.Application.Parties.Commands
   href: api/Hexalith.Application.Parties.Commands.html
@@ -5484,56 +5545,146 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Parties.Commands.RegisterCustomer.WarehouseId
   nameWithType: RegisterCustomer.WarehouseId
-- uid: Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDirectDelivery
-  name: SetCustomerIntercompanyDirectDelivery
-  href: api/Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDirectDelivery.html
-  commentId: T:Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDirectDelivery
-  fullName: Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDirectDelivery
-  nameWithType: SetCustomerIntercompanyDirectDelivery
-- uid: Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDirectDelivery.#ctor
-  name: SetCustomerIntercompanyDirectDelivery()
-  href: api/Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDirectDelivery.html#Hexalith_Application_Parties_Commands_SetCustomerIntercompanyDirectDelivery__ctor
-  commentId: M:Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDirectDelivery.#ctor
-  fullName: Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDirectDelivery.SetCustomerIntercompanyDirectDelivery()
-  nameWithType: SetCustomerIntercompanyDirectDelivery.SetCustomerIntercompanyDirectDelivery()
-- uid: Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDirectDelivery.#ctor(System.String,System.String,System.String)
-  name: SetCustomerIntercompanyDirectDelivery(String, String, String)
-  href: api/Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDirectDelivery.html#Hexalith_Application_Parties_Commands_SetCustomerIntercompanyDirectDelivery__ctor_System_String_System_String_System_String_
-  commentId: M:Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDirectDelivery.#ctor(System.String,System.String,System.String)
-  fullName: Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDirectDelivery.SetCustomerIntercompanyDirectDelivery(System.String, System.String, System.String)
-  nameWithType: SetCustomerIntercompanyDirectDelivery.SetCustomerIntercompanyDirectDelivery(String, String, String)
-- uid: Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDirectDelivery.#ctor*
-  name: SetCustomerIntercompanyDirectDelivery
-  href: api/Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDirectDelivery.html#Hexalith_Application_Parties_Commands_SetCustomerIntercompanyDirectDelivery__ctor_
-  commentId: Overload:Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDirectDelivery.#ctor
+- uid: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer
+  name: RegisterOrChangeCustomer
+  href: api/Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.html
+  commentId: T:Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer
+  fullName: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer
+  nameWithType: RegisterOrChangeCustomer
+- uid: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.#ctor
+  name: RegisterOrChangeCustomer()
+  href: api/Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.html#Hexalith_Application_Parties_Commands_RegisterOrChangeCustomer__ctor
+  commentId: M:Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.#ctor
+  fullName: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.RegisterOrChangeCustomer()
+  nameWithType: RegisterOrChangeCustomer.RegisterOrChangeCustomer()
+- uid: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.#ctor(System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,DateTimeOffset)
+  name: RegisterOrChangeCustomer(String, String, String, String, Contact, String, String, DateTimeOffset)
+  href: api/Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.html#Hexalith_Application_Parties_Commands_RegisterOrChangeCustomer__ctor_System_String_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_Contact_System_String_System_String_DateTimeOffset_
+  commentId: M:Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.#ctor(System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,DateTimeOffset)
+  fullName: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.RegisterOrChangeCustomer(System.String, System.String, System.String, System.String, Hexalith.Domain.ValueObjets.Contact, System.String, System.String, DateTimeOffset)
+  nameWithType: RegisterOrChangeCustomer.RegisterOrChangeCustomer(String, String, String, String, Contact, String, String, DateTimeOffset)
+- uid: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.#ctor*
+  name: RegisterOrChangeCustomer
+  href: api/Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.html#Hexalith_Application_Parties_Commands_RegisterOrChangeCustomer__ctor_
+  commentId: Overload:Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.#ctor
   isSpec: "True"
-  fullName: Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDirectDelivery.SetCustomerIntercompanyDirectDelivery
-  nameWithType: SetCustomerIntercompanyDirectDelivery.SetCustomerIntercompanyDirectDelivery
-- uid: Hexalith.Application.Parties.Commands.UnsetCustomerIntercompanyDirectDelivery
-  name: UnsetCustomerIntercompanyDirectDelivery
-  href: api/Hexalith.Application.Parties.Commands.UnsetCustomerIntercompanyDirectDelivery.html
-  commentId: T:Hexalith.Application.Parties.Commands.UnsetCustomerIntercompanyDirectDelivery
-  fullName: Hexalith.Application.Parties.Commands.UnsetCustomerIntercompanyDirectDelivery
-  nameWithType: UnsetCustomerIntercompanyDirectDelivery
-- uid: Hexalith.Application.Parties.Commands.UnsetCustomerIntercompanyDirectDelivery.#ctor
-  name: UnsetCustomerIntercompanyDirectDelivery()
-  href: api/Hexalith.Application.Parties.Commands.UnsetCustomerIntercompanyDirectDelivery.html#Hexalith_Application_Parties_Commands_UnsetCustomerIntercompanyDirectDelivery__ctor
-  commentId: M:Hexalith.Application.Parties.Commands.UnsetCustomerIntercompanyDirectDelivery.#ctor
-  fullName: Hexalith.Application.Parties.Commands.UnsetCustomerIntercompanyDirectDelivery.UnsetCustomerIntercompanyDirectDelivery()
-  nameWithType: UnsetCustomerIntercompanyDirectDelivery.UnsetCustomerIntercompanyDirectDelivery()
-- uid: Hexalith.Application.Parties.Commands.UnsetCustomerIntercompanyDirectDelivery.#ctor(System.String,System.String,System.String)
-  name: UnsetCustomerIntercompanyDirectDelivery(String, String, String)
-  href: api/Hexalith.Application.Parties.Commands.UnsetCustomerIntercompanyDirectDelivery.html#Hexalith_Application_Parties_Commands_UnsetCustomerIntercompanyDirectDelivery__ctor_System_String_System_String_System_String_
-  commentId: M:Hexalith.Application.Parties.Commands.UnsetCustomerIntercompanyDirectDelivery.#ctor(System.String,System.String,System.String)
-  fullName: Hexalith.Application.Parties.Commands.UnsetCustomerIntercompanyDirectDelivery.UnsetCustomerIntercompanyDirectDelivery(System.String, System.String, System.String)
-  nameWithType: UnsetCustomerIntercompanyDirectDelivery.UnsetCustomerIntercompanyDirectDelivery(String, String, String)
-- uid: Hexalith.Application.Parties.Commands.UnsetCustomerIntercompanyDirectDelivery.#ctor*
-  name: UnsetCustomerIntercompanyDirectDelivery
-  href: api/Hexalith.Application.Parties.Commands.UnsetCustomerIntercompanyDirectDelivery.html#Hexalith_Application_Parties_Commands_UnsetCustomerIntercompanyDirectDelivery__ctor_
-  commentId: Overload:Hexalith.Application.Parties.Commands.UnsetCustomerIntercompanyDirectDelivery.#ctor
+  fullName: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.RegisterOrChangeCustomer
+  nameWithType: RegisterOrChangeCustomer.RegisterOrChangeCustomer
+- uid: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.CommissionSalesGroupId
+  name: CommissionSalesGroupId
+  href: api/Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.html#Hexalith_Application_Parties_Commands_RegisterOrChangeCustomer_CommissionSalesGroupId
+  commentId: P:Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.CommissionSalesGroupId
+  fullName: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.CommissionSalesGroupId
+  nameWithType: RegisterOrChangeCustomer.CommissionSalesGroupId
+- uid: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.CommissionSalesGroupId*
+  name: CommissionSalesGroupId
+  href: api/Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.html#Hexalith_Application_Parties_Commands_RegisterOrChangeCustomer_CommissionSalesGroupId_
+  commentId: Overload:Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.CommissionSalesGroupId
   isSpec: "True"
-  fullName: Hexalith.Application.Parties.Commands.UnsetCustomerIntercompanyDirectDelivery.UnsetCustomerIntercompanyDirectDelivery
-  nameWithType: UnsetCustomerIntercompanyDirectDelivery.UnsetCustomerIntercompanyDirectDelivery
+  fullName: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.CommissionSalesGroupId
+  nameWithType: RegisterOrChangeCustomer.CommissionSalesGroupId
+- uid: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.Contact
+  name: Contact
+  href: api/Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.html#Hexalith_Application_Parties_Commands_RegisterOrChangeCustomer_Contact
+  commentId: P:Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.Contact
+  fullName: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.Contact
+  nameWithType: RegisterOrChangeCustomer.Contact
+- uid: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.Contact*
+  name: Contact
+  href: api/Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.html#Hexalith_Application_Parties_Commands_RegisterOrChangeCustomer_Contact_
+  commentId: Overload:Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.Contact
+  isSpec: "True"
+  fullName: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.Contact
+  nameWithType: RegisterOrChangeCustomer.Contact
+- uid: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.Date
+  name: Date
+  href: api/Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.html#Hexalith_Application_Parties_Commands_RegisterOrChangeCustomer_Date
+  commentId: P:Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.Date
+  fullName: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.Date
+  nameWithType: RegisterOrChangeCustomer.Date
+- uid: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.Date*
+  name: Date
+  href: api/Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.html#Hexalith_Application_Parties_Commands_RegisterOrChangeCustomer_Date_
+  commentId: Overload:Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.Date
+  isSpec: "True"
+  fullName: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.Date
+  nameWithType: RegisterOrChangeCustomer.Date
+- uid: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.Name
+  name: Name
+  href: api/Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.html#Hexalith_Application_Parties_Commands_RegisterOrChangeCustomer_Name
+  commentId: P:Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.Name
+  fullName: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.Name
+  nameWithType: RegisterOrChangeCustomer.Name
+- uid: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.Name*
+  name: Name
+  href: api/Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.html#Hexalith_Application_Parties_Commands_RegisterOrChangeCustomer_Name_
+  commentId: Overload:Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.Name
+  isSpec: "True"
+  fullName: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.Name
+  nameWithType: RegisterOrChangeCustomer.Name
+- uid: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.WarehouseId
+  name: WarehouseId
+  href: api/Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.html#Hexalith_Application_Parties_Commands_RegisterOrChangeCustomer_WarehouseId
+  commentId: P:Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.WarehouseId
+  fullName: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.WarehouseId
+  nameWithType: RegisterOrChangeCustomer.WarehouseId
+- uid: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.WarehouseId*
+  name: WarehouseId
+  href: api/Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.html#Hexalith_Application_Parties_Commands_RegisterOrChangeCustomer_WarehouseId_
+  commentId: Overload:Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.WarehouseId
+  isSpec: "True"
+  fullName: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.WarehouseId
+  nameWithType: RegisterOrChangeCustomer.WarehouseId
+- uid: Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer
+  name: SetIntercompanyDropshipDeliveryForCustomer
+  href: api/Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer.html
+  commentId: T:Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer
+  fullName: Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer
+  nameWithType: SetIntercompanyDropshipDeliveryForCustomer
+- uid: Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer.#ctor
+  name: SetIntercompanyDropshipDeliveryForCustomer()
+  href: api/Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer.html#Hexalith_Application_Parties_Commands_SetIntercompanyDropshipDeliveryForCustomer__ctor
+  commentId: M:Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer.#ctor
+  fullName: Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer.SetIntercompanyDropshipDeliveryForCustomer()
+  nameWithType: SetIntercompanyDropshipDeliveryForCustomer.SetIntercompanyDropshipDeliveryForCustomer()
+- uid: Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer.#ctor(System.String,System.String,System.String)
+  name: SetIntercompanyDropshipDeliveryForCustomer(String, String, String)
+  href: api/Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer.html#Hexalith_Application_Parties_Commands_SetIntercompanyDropshipDeliveryForCustomer__ctor_System_String_System_String_System_String_
+  commentId: M:Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer.#ctor(System.String,System.String,System.String)
+  fullName: Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer.SetIntercompanyDropshipDeliveryForCustomer(System.String, System.String, System.String)
+  nameWithType: SetIntercompanyDropshipDeliveryForCustomer.SetIntercompanyDropshipDeliveryForCustomer(String, String, String)
+- uid: Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer.#ctor*
+  name: SetIntercompanyDropshipDeliveryForCustomer
+  href: api/Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer.html#Hexalith_Application_Parties_Commands_SetIntercompanyDropshipDeliveryForCustomer__ctor_
+  commentId: Overload:Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer.SetIntercompanyDropshipDeliveryForCustomer
+  nameWithType: SetIntercompanyDropshipDeliveryForCustomer.SetIntercompanyDropshipDeliveryForCustomer
+- uid: Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer
+  name: SetStockDeliveryForCustomer
+  href: api/Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer.html
+  commentId: T:Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer
+  fullName: Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer
+  nameWithType: SetStockDeliveryForCustomer
+- uid: Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer.#ctor
+  name: SetStockDeliveryForCustomer()
+  href: api/Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer.html#Hexalith_Application_Parties_Commands_SetStockDeliveryForCustomer__ctor
+  commentId: M:Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer.#ctor
+  fullName: Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer.SetStockDeliveryForCustomer()
+  nameWithType: SetStockDeliveryForCustomer.SetStockDeliveryForCustomer()
+- uid: Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer.#ctor(System.String,System.String,System.String)
+  name: SetStockDeliveryForCustomer(String, String, String)
+  href: api/Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer.html#Hexalith_Application_Parties_Commands_SetStockDeliveryForCustomer__ctor_System_String_System_String_System_String_
+  commentId: M:Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer.#ctor(System.String,System.String,System.String)
+  fullName: Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer.SetStockDeliveryForCustomer(System.String, System.String, System.String)
+  nameWithType: SetStockDeliveryForCustomer.SetStockDeliveryForCustomer(String, String, String)
+- uid: Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer.#ctor*
+  name: SetStockDeliveryForCustomer
+  href: api/Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer.html#Hexalith_Application_Parties_Commands_SetStockDeliveryForCustomer__ctor_
+  commentId: Overload:Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Application.Parties.Commands.SetStockDeliveryForCustomer.SetStockDeliveryForCustomer
+  nameWithType: SetStockDeliveryForCustomer.SetStockDeliveryForCustomer
 - uid: Hexalith.Application.Parties.Helpers
   name: Hexalith.Application.Parties.Helpers
   href: api/Hexalith.Application.Parties.Helpers.html
@@ -17170,25 +17321,12 @@ references:
   commentId: T:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper
   fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper
   nameWithType: ExternalSystemsProjectionsHelper
-- uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.AddDaprExternalSystems(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
-  name: AddDaprExternalSystems(IServiceCollection, IConfiguration)
-  href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Helpers_ExternalSystemsProjectionsHelper_AddDaprExternalSystems_Microsoft_Extensions_DependencyInjection_IServiceCollection_Microsoft_Extensions_Configuration_IConfiguration_
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.AddDaprExternalSystems(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
-  fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.AddDaprExternalSystems(Microsoft.Extensions.DependencyInjection.IServiceCollection, Microsoft.Extensions.Configuration.IConfiguration)
-  nameWithType: ExternalSystemsProjectionsHelper.AddDaprExternalSystems(IServiceCollection, IConfiguration)
-- uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.AddDaprExternalSystems*
-  name: AddDaprExternalSystems
-  href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Helpers_ExternalSystemsProjectionsHelper_AddDaprExternalSystems_
-  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.AddDaprExternalSystems
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.AddDaprExternalSystems
-  nameWithType: ExternalSystemsProjectionsHelper.AddDaprExternalSystems
-- uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.AddDaprExternalSystemsMapper(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String)
-  name: AddDaprExternalSystemsMapper(IServiceCollection, String, String)
-  href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Helpers_ExternalSystemsProjectionsHelper_AddDaprExternalSystemsMapper_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_System_String_
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.AddDaprExternalSystemsMapper(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String)
-  fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.AddDaprExternalSystemsMapper(Microsoft.Extensions.DependencyInjection.IServiceCollection, System.String, System.String)
-  nameWithType: ExternalSystemsProjectionsHelper.AddDaprExternalSystemsMapper(IServiceCollection, String, String)
+- uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.AddDaprExternalSystemsMapper(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,System.String)
+  name: AddDaprExternalSystemsMapper(IServiceCollection, IConfiguration, String)
+  href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Helpers_ExternalSystemsProjectionsHelper_AddDaprExternalSystemsMapper_Microsoft_Extensions_DependencyInjection_IServiceCollection_Microsoft_Extensions_Configuration_IConfiguration_System_String_
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.AddDaprExternalSystemsMapper(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,System.String)
+  fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.AddDaprExternalSystemsMapper(Microsoft.Extensions.DependencyInjection.IServiceCollection, Microsoft.Extensions.Configuration.IConfiguration, System.String)
+  nameWithType: ExternalSystemsProjectionsHelper.AddDaprExternalSystemsMapper(IServiceCollection, IConfiguration, String)
 - uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.AddDaprExternalSystemsMapper*
   name: AddDaprExternalSystemsMapper
   href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Helpers_ExternalSystemsProjectionsHelper_AddDaprExternalSystemsMapper_
@@ -17196,12 +17334,15 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.AddDaprExternalSystemsMapper
   nameWithType: ExternalSystemsProjectionsHelper.AddDaprExternalSystemsMapper
-- uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.AddExternalSystemsMapper(Dapr.Actors.Runtime.ActorRegistrationCollection,System.String,System.String)
-  name: AddExternalSystemsMapper(ActorRegistrationCollection, String, String)
-  href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Helpers_ExternalSystemsProjectionsHelper_AddExternalSystemsMapper_Dapr_Actors_Runtime_ActorRegistrationCollection_System_String_System_String_
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.AddExternalSystemsMapper(Dapr.Actors.Runtime.ActorRegistrationCollection,System.String,System.String)
-  fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.AddExternalSystemsMapper(Dapr.Actors.Runtime.ActorRegistrationCollection, System.String, System.String)
-  nameWithType: ExternalSystemsProjectionsHelper.AddExternalSystemsMapper(ActorRegistrationCollection, String, String)
+- uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.AddExternalSystemsMapper(Dapr.Actors.Runtime.ActorRegistrationCollection,System.String,IEnumerable{System.String})
+  name: AddExternalSystemsMapper(ActorRegistrationCollection, String, IEnumerable<String>)
+  href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Helpers_ExternalSystemsProjectionsHelper_AddExternalSystemsMapper_Dapr_Actors_Runtime_ActorRegistrationCollection_System_String_IEnumerable_System_String__
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.AddExternalSystemsMapper(Dapr.Actors.Runtime.ActorRegistrationCollection,System.String,IEnumerable{System.String})
+  name.vb: AddExternalSystemsMapper(ActorRegistrationCollection, String, IEnumerable(Of String))
+  fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.AddExternalSystemsMapper(Dapr.Actors.Runtime.ActorRegistrationCollection, System.String, IEnumerable<System.String>)
+  fullName.vb: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.AddExternalSystemsMapper(Dapr.Actors.Runtime.ActorRegistrationCollection, System.String, IEnumerable(Of System.String))
+  nameWithType: ExternalSystemsProjectionsHelper.AddExternalSystemsMapper(ActorRegistrationCollection, String, IEnumerable<String>)
+  nameWithType.vb: ExternalSystemsProjectionsHelper.AddExternalSystemsMapper(ActorRegistrationCollection, String, IEnumerable(Of String))
 - uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.AddExternalSystemsMapper*
   name: AddExternalSystemsMapper
   href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers.ExternalSystemsProjectionsHelper.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Helpers_ExternalSystemsProjectionsHelper_AddExternalSystemsMapper_
@@ -17292,12 +17433,15 @@ references:
   commentId: T:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.ExternalSystemReferenceAddedMapperUpdateHandler
   fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.ExternalSystemReferenceAddedMapperUpdateHandler
   nameWithType: ExternalSystemReferenceAddedMapperUpdateHandler
-- uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.ExternalSystemReferenceAddedMapperUpdateHandler.#ctor(System.String)
-  name: ExternalSystemReferenceAddedMapperUpdateHandler(String)
-  href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.ExternalSystemReferenceAddedMapperUpdateHandler.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Projections_ExternalSystemReferenceAddedMapperUpdateHandler__ctor_System_String_
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.ExternalSystemReferenceAddedMapperUpdateHandler.#ctor(System.String)
-  fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.ExternalSystemReferenceAddedMapperUpdateHandler.ExternalSystemReferenceAddedMapperUpdateHandler(System.String)
-  nameWithType: ExternalSystemReferenceAddedMapperUpdateHandler.ExternalSystemReferenceAddedMapperUpdateHandler(String)
+- uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.ExternalSystemReferenceAddedMapperUpdateHandler.#ctor(System.String,IEnumerable{System.String})
+  name: ExternalSystemReferenceAddedMapperUpdateHandler(String, IEnumerable<String>)
+  href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.ExternalSystemReferenceAddedMapperUpdateHandler.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Projections_ExternalSystemReferenceAddedMapperUpdateHandler__ctor_System_String_IEnumerable_System_String__
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.ExternalSystemReferenceAddedMapperUpdateHandler.#ctor(System.String,IEnumerable{System.String})
+  name.vb: ExternalSystemReferenceAddedMapperUpdateHandler(String, IEnumerable(Of String))
+  fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.ExternalSystemReferenceAddedMapperUpdateHandler.ExternalSystemReferenceAddedMapperUpdateHandler(System.String, IEnumerable<System.String>)
+  fullName.vb: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.ExternalSystemReferenceAddedMapperUpdateHandler.ExternalSystemReferenceAddedMapperUpdateHandler(System.String, IEnumerable(Of System.String))
+  nameWithType: ExternalSystemReferenceAddedMapperUpdateHandler.ExternalSystemReferenceAddedMapperUpdateHandler(String, IEnumerable<String>)
+  nameWithType.vb: ExternalSystemReferenceAddedMapperUpdateHandler.ExternalSystemReferenceAddedMapperUpdateHandler(String, IEnumerable(Of String))
 - uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.ExternalSystemReferenceAddedMapperUpdateHandler.#ctor*
   name: ExternalSystemReferenceAddedMapperUpdateHandler
   href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.ExternalSystemReferenceAddedMapperUpdateHandler.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Projections_ExternalSystemReferenceAddedMapperUpdateHandler__ctor_
@@ -17324,12 +17468,15 @@ references:
   commentId: T:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.ExternalSystemReferenceRemovedMapperUpdateHandler
   fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.ExternalSystemReferenceRemovedMapperUpdateHandler
   nameWithType: ExternalSystemReferenceRemovedMapperUpdateHandler
-- uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.ExternalSystemReferenceRemovedMapperUpdateHandler.#ctor(System.String)
-  name: ExternalSystemReferenceRemovedMapperUpdateHandler(String)
-  href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.ExternalSystemReferenceRemovedMapperUpdateHandler.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Projections_ExternalSystemReferenceRemovedMapperUpdateHandler__ctor_System_String_
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.ExternalSystemReferenceRemovedMapperUpdateHandler.#ctor(System.String)
-  fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.ExternalSystemReferenceRemovedMapperUpdateHandler.ExternalSystemReferenceRemovedMapperUpdateHandler(System.String)
-  nameWithType: ExternalSystemReferenceRemovedMapperUpdateHandler.ExternalSystemReferenceRemovedMapperUpdateHandler(String)
+- uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.ExternalSystemReferenceRemovedMapperUpdateHandler.#ctor(System.String,IEnumerable{System.String})
+  name: ExternalSystemReferenceRemovedMapperUpdateHandler(String, IEnumerable<String>)
+  href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.ExternalSystemReferenceRemovedMapperUpdateHandler.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Projections_ExternalSystemReferenceRemovedMapperUpdateHandler__ctor_System_String_IEnumerable_System_String__
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.ExternalSystemReferenceRemovedMapperUpdateHandler.#ctor(System.String,IEnumerable{System.String})
+  name.vb: ExternalSystemReferenceRemovedMapperUpdateHandler(String, IEnumerable(Of String))
+  fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.ExternalSystemReferenceRemovedMapperUpdateHandler.ExternalSystemReferenceRemovedMapperUpdateHandler(System.String, IEnumerable<System.String>)
+  fullName.vb: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.ExternalSystemReferenceRemovedMapperUpdateHandler.ExternalSystemReferenceRemovedMapperUpdateHandler(System.String, IEnumerable(Of System.String))
+  nameWithType: ExternalSystemReferenceRemovedMapperUpdateHandler.ExternalSystemReferenceRemovedMapperUpdateHandler(String, IEnumerable<String>)
+  nameWithType.vb: ExternalSystemReferenceRemovedMapperUpdateHandler.ExternalSystemReferenceRemovedMapperUpdateHandler(String, IEnumerable(Of String))
 - uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.ExternalSystemReferenceRemovedMapperUpdateHandler.#ctor*
   name: ExternalSystemReferenceRemovedMapperUpdateHandler
   href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections.ExternalSystemReferenceRemovedMapperUpdateHandler.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Projections_ExternalSystemReferenceRemovedMapperUpdateHandler__ctor_
@@ -17362,12 +17509,12 @@ references:
   commentId: T:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService
   fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService
   nameWithType: ExternalReferenceMapperService
-- uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.#ctor(System.String,System.String)
-  name: ExternalReferenceMapperService(String, String)
-  href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Services_ExternalReferenceMapperService__ctor_System_String_System_String_
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.#ctor(System.String,System.String)
-  fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.ExternalReferenceMapperService(System.String, System.String)
-  nameWithType: ExternalReferenceMapperService.ExternalReferenceMapperService(String, String)
+- uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.#ctor(System.String)
+  name: ExternalReferenceMapperService(String)
+  href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Services_ExternalReferenceMapperService__ctor_System_String_
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.#ctor(System.String)
+  fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.ExternalReferenceMapperService(System.String)
+  nameWithType: ExternalReferenceMapperService.ExternalReferenceMapperService(String)
 - uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.#ctor*
   name: ExternalReferenceMapperService
   href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Services_ExternalReferenceMapperService__ctor_
@@ -17375,12 +17522,12 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.ExternalReferenceMapperService
   nameWithType: ExternalReferenceMapperService.ExternalReferenceMapperService
-- uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.GetAggregateIdAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)
-  name: GetAggregateIdAsync(String, String, String, String, CancellationToken)
-  href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Services_ExternalReferenceMapperService_GetAggregateIdAsync_System_String_System_String_System_String_System_String_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.GetAggregateIdAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)
-  fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.GetAggregateIdAsync(System.String, System.String, System.String, System.String, System.Threading.CancellationToken)
-  nameWithType: ExternalReferenceMapperService.GetAggregateIdAsync(String, String, String, String, CancellationToken)
+- uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.GetAggregateIdAsync(System.String,System.String,System.String,System.String,System.String,System.Threading.CancellationToken)
+  name: GetAggregateIdAsync(String, String, String, String, String, CancellationToken)
+  href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Services_ExternalReferenceMapperService_GetAggregateIdAsync_System_String_System_String_System_String_System_String_System_String_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.GetAggregateIdAsync(System.String,System.String,System.String,System.String,System.String,System.Threading.CancellationToken)
+  fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.GetAggregateIdAsync(System.String, System.String, System.String, System.String, System.String, System.Threading.CancellationToken)
+  nameWithType: ExternalReferenceMapperService.GetAggregateIdAsync(String, String, String, String, String, CancellationToken)
 - uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.GetAggregateIdAsync*
   name: GetAggregateIdAsync
   href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Services_ExternalReferenceMapperService_GetAggregateIdAsync_
@@ -17388,12 +17535,12 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.GetAggregateIdAsync
   nameWithType: ExternalReferenceMapperService.GetAggregateIdAsync
-- uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.GetExternalIdAsync(System.String,System.String,System.Threading.CancellationToken)
-  name: GetExternalIdAsync(String, String, CancellationToken)
-  href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Services_ExternalReferenceMapperService_GetExternalIdAsync_System_String_System_String_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.GetExternalIdAsync(System.String,System.String,System.Threading.CancellationToken)
-  fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.GetExternalIdAsync(System.String, System.String, System.Threading.CancellationToken)
-  nameWithType: ExternalReferenceMapperService.GetExternalIdAsync(String, String, CancellationToken)
+- uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.GetExternalIdAsync(System.String,System.String,System.String,System.Threading.CancellationToken)
+  name: GetExternalIdAsync(String, String, String, CancellationToken)
+  href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Services_ExternalReferenceMapperService_GetExternalIdAsync_System_String_System_String_System_String_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.GetExternalIdAsync(System.String,System.String,System.String,System.Threading.CancellationToken)
+  fullName: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.GetExternalIdAsync(System.String, System.String, System.String, System.Threading.CancellationToken)
+  nameWithType: ExternalReferenceMapperService.GetExternalIdAsync(String, String, String, CancellationToken)
 - uid: Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.GetExternalIdAsync*
   name: GetExternalIdAsync
   href: api/Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services.ExternalReferenceMapperService.html#Hexalith_Infrastructure_DaprRuntime_ExternalSystems_Services_ExternalReferenceMapperService_GetExternalIdAsync_
@@ -18499,19 +18646,19 @@ references:
   commentId: T:Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesActorsHelper
   fullName: Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesActorsHelper
   nameWithType: PartiesActorsHelper
-- uid: Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesActorsHelper.AddParties(Dapr.Actors.Runtime.ActorRegistrationCollection)
-  name: AddParties(ActorRegistrationCollection)
-  href: api/Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesActorsHelper.html#Hexalith_Infrastructure_DaprRuntime_Parties_Helpers_PartiesActorsHelper_AddParties_Dapr_Actors_Runtime_ActorRegistrationCollection_
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesActorsHelper.AddParties(Dapr.Actors.Runtime.ActorRegistrationCollection)
-  fullName: Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesActorsHelper.AddParties(Dapr.Actors.Runtime.ActorRegistrationCollection)
-  nameWithType: PartiesActorsHelper.AddParties(ActorRegistrationCollection)
-- uid: Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesActorsHelper.AddParties*
-  name: AddParties
-  href: api/Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesActorsHelper.html#Hexalith_Infrastructure_DaprRuntime_Parties_Helpers_PartiesActorsHelper_AddParties_
-  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesActorsHelper.AddParties
+- uid: Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesActorsHelper.AddPartiesAggregates(Dapr.Actors.Runtime.ActorRegistrationCollection)
+  name: AddPartiesAggregates(ActorRegistrationCollection)
+  href: api/Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesActorsHelper.html#Hexalith_Infrastructure_DaprRuntime_Parties_Helpers_PartiesActorsHelper_AddPartiesAggregates_Dapr_Actors_Runtime_ActorRegistrationCollection_
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesActorsHelper.AddPartiesAggregates(Dapr.Actors.Runtime.ActorRegistrationCollection)
+  fullName: Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesActorsHelper.AddPartiesAggregates(Dapr.Actors.Runtime.ActorRegistrationCollection)
+  nameWithType: PartiesActorsHelper.AddPartiesAggregates(ActorRegistrationCollection)
+- uid: Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesActorsHelper.AddPartiesAggregates*
+  name: AddPartiesAggregates
+  href: api/Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesActorsHelper.html#Hexalith_Infrastructure_DaprRuntime_Parties_Helpers_PartiesActorsHelper_AddPartiesAggregates_
+  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesActorsHelper.AddPartiesAggregates
   isSpec: "True"
-  fullName: Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesActorsHelper.AddParties
-  nameWithType: PartiesActorsHelper.AddParties
+  fullName: Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesActorsHelper.AddPartiesAggregates
+  nameWithType: PartiesActorsHelper.AddPartiesAggregates
 - uid: Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesHelper
   name: PartiesHelper
   href: api/Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesHelper.html
@@ -19147,6 +19294,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase.MinorVersion
   nameWithType: Dynamics365BusinessEventBase.MinorVersion
+- uid: Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase.PartitionId
+  name: PartitionId
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase.html#Hexalith_Infrastructure_Dynamics365Finance_BusinessEvents_Dynamics365BusinessEventBase_PartitionId
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase.PartitionId
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase.PartitionId
+  nameWithType: Dynamics365BusinessEventBase.PartitionId
+- uid: Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase.PartitionId*
+  name: PartitionId
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase.html#Hexalith_Infrastructure_Dynamics365Finance_BusinessEvents_Dynamics365BusinessEventBase_PartitionId_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase.PartitionId
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase.PartitionId
+  nameWithType: Dynamics365BusinessEventBase.PartitionId
 - uid: Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase.ReceivedDateTime
   name: ReceivedDateTime
   href: api/Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase.html#Hexalith_Infrastructure_Dynamics365Finance_BusinessEvents_Dynamics365BusinessEventBase_ReceivedDateTime
@@ -20626,15 +20786,15 @@ references:
   commentId: T:Hexalith.Infrastructure.Dynamics365Finance.Controllers.Dynamics365FinanceBindingController
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Controllers.Dynamics365FinanceBindingController
   nameWithType: Dynamics365FinanceBindingController
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Controllers.Dynamics365FinanceBindingController.#ctor(FluentValidation.IValidator{Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase},Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.IDynamics365FinanceIntegrationEventProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger)
-  name: Dynamics365FinanceBindingController(IValidator<Dynamics365BusinessEventBase>, IDynamics365FinanceIntegrationEventProcessor, IHostEnvironment, ILogger)
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Controllers.Dynamics365FinanceBindingController.html#Hexalith_Infrastructure_Dynamics365Finance_Controllers_Dynamics365FinanceBindingController__ctor_FluentValidation_IValidator_Hexalith_Infrastructure_Dynamics365Finance_BusinessEvents_Dynamics365BusinessEventBase__Hexalith_Infrastructure_Dynamics365Finance_Dispatchers_IDynamics365FinanceIntegrationEventProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Logging_ILogger_
-  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Controllers.Dynamics365FinanceBindingController.#ctor(FluentValidation.IValidator{Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase},Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.IDynamics365FinanceIntegrationEventProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger)
-  name.vb: Dynamics365FinanceBindingController(IValidator(Of Dynamics365BusinessEventBase), IDynamics365FinanceIntegrationEventProcessor, IHostEnvironment, ILogger)
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Controllers.Dynamics365FinanceBindingController.Dynamics365FinanceBindingController(FluentValidation.IValidator<Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase>, Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.IDynamics365FinanceIntegrationEventProcessor, Microsoft.Extensions.Hosting.IHostEnvironment, Microsoft.Extensions.Logging.ILogger)
-  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Controllers.Dynamics365FinanceBindingController.Dynamics365FinanceBindingController(FluentValidation.IValidator(Of Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase), Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.IDynamics365FinanceIntegrationEventProcessor, Microsoft.Extensions.Hosting.IHostEnvironment, Microsoft.Extensions.Logging.ILogger)
-  nameWithType: Dynamics365FinanceBindingController.Dynamics365FinanceBindingController(IValidator<Dynamics365BusinessEventBase>, IDynamics365FinanceIntegrationEventProcessor, IHostEnvironment, ILogger)
-  nameWithType.vb: Dynamics365FinanceBindingController.Dynamics365FinanceBindingController(IValidator(Of Dynamics365BusinessEventBase), IDynamics365FinanceIntegrationEventProcessor, IHostEnvironment, ILogger)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Controllers.Dynamics365FinanceBindingController.#ctor(FluentValidation.IValidator{Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase},Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.IDynamics365FinanceIntegrationEventProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Options.IOptions{Hexalith.Application.Organizations.Configurations.OrganizationSettings},Microsoft.Extensions.Logging.ILogger)
+  name: Dynamics365FinanceBindingController(IValidator<Dynamics365BusinessEventBase>, IDynamics365FinanceIntegrationEventProcessor, IHostEnvironment, IOptions<OrganizationSettings>, ILogger)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Controllers.Dynamics365FinanceBindingController.html#Hexalith_Infrastructure_Dynamics365Finance_Controllers_Dynamics365FinanceBindingController__ctor_FluentValidation_IValidator_Hexalith_Infrastructure_Dynamics365Finance_BusinessEvents_Dynamics365BusinessEventBase__Hexalith_Infrastructure_Dynamics365Finance_Dispatchers_IDynamics365FinanceIntegrationEventProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Options_IOptions_Hexalith_Application_Organizations_Configurations_OrganizationSettings__Microsoft_Extensions_Logging_ILogger_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Controllers.Dynamics365FinanceBindingController.#ctor(FluentValidation.IValidator{Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase},Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.IDynamics365FinanceIntegrationEventProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Options.IOptions{Hexalith.Application.Organizations.Configurations.OrganizationSettings},Microsoft.Extensions.Logging.ILogger)
+  name.vb: Dynamics365FinanceBindingController(IValidator(Of Dynamics365BusinessEventBase), IDynamics365FinanceIntegrationEventProcessor, IHostEnvironment, IOptions(Of OrganizationSettings), ILogger)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Controllers.Dynamics365FinanceBindingController.Dynamics365FinanceBindingController(FluentValidation.IValidator<Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase>, Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.IDynamics365FinanceIntegrationEventProcessor, Microsoft.Extensions.Hosting.IHostEnvironment, Microsoft.Extensions.Options.IOptions<Hexalith.Application.Organizations.Configurations.OrganizationSettings>, Microsoft.Extensions.Logging.ILogger)
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Controllers.Dynamics365FinanceBindingController.Dynamics365FinanceBindingController(FluentValidation.IValidator(Of Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase), Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.IDynamics365FinanceIntegrationEventProcessor, Microsoft.Extensions.Hosting.IHostEnvironment, Microsoft.Extensions.Options.IOptions(Of Hexalith.Application.Organizations.Configurations.OrganizationSettings), Microsoft.Extensions.Logging.ILogger)
+  nameWithType: Dynamics365FinanceBindingController.Dynamics365FinanceBindingController(IValidator<Dynamics365BusinessEventBase>, IDynamics365FinanceIntegrationEventProcessor, IHostEnvironment, IOptions<OrganizationSettings>, ILogger)
+  nameWithType.vb: Dynamics365FinanceBindingController.Dynamics365FinanceBindingController(IValidator(Of Dynamics365BusinessEventBase), IDynamics365FinanceIntegrationEventProcessor, IHostEnvironment, IOptions(Of OrganizationSettings), ILogger)
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Controllers.Dynamics365FinanceBindingController.#ctor*
   name: Dynamics365FinanceBindingController
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Controllers.Dynamics365FinanceBindingController.html#Hexalith_Infrastructure_Dynamics365Finance_Controllers_Dynamics365FinanceBindingController__ctor_
@@ -20696,6 +20856,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.Dynamics365FinanceIntegrationEventProcessor.Dynamics365FinanceIntegrationEventProcessor
   nameWithType: Dynamics365FinanceIntegrationEventProcessor.Dynamics365FinanceIntegrationEventProcessor
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.Dynamics365FinanceIntegrationEventProcessor.DispatchingEvent(System.String,System.String,System.String)
+  name: DispatchingEvent(String, String, String)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.Dynamics365FinanceIntegrationEventProcessor.html#Hexalith_Infrastructure_Dynamics365Finance_Dispatchers_Dynamics365FinanceIntegrationEventProcessor_DispatchingEvent_System_String_System_String_System_String_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.Dynamics365FinanceIntegrationEventProcessor.DispatchingEvent(System.String,System.String,System.String)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.Dynamics365FinanceIntegrationEventProcessor.DispatchingEvent(System.String, System.String, System.String)
+  nameWithType: Dynamics365FinanceIntegrationEventProcessor.DispatchingEvent(String, String, String)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.Dynamics365FinanceIntegrationEventProcessor.DispatchingEvent*
+  name: DispatchingEvent
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.Dynamics365FinanceIntegrationEventProcessor.html#Hexalith_Infrastructure_Dynamics365Finance_Dispatchers_Dynamics365FinanceIntegrationEventProcessor_DispatchingEvent_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.Dynamics365FinanceIntegrationEventProcessor.DispatchingEvent
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.Dynamics365FinanceIntegrationEventProcessor.DispatchingEvent
+  nameWithType: Dynamics365FinanceIntegrationEventProcessor.DispatchingEvent
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.Dynamics365FinanceIntegrationEventProcessor.SubmitAsync(Hexalith.Domain.Events.IEvent,Hexalith.Application.Metadatas.IMetadata,System.Threading.CancellationToken)
   name: SubmitAsync(IEvent, IMetadata, CancellationToken)
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.Dynamics365FinanceIntegrationEventProcessor.html#Hexalith_Infrastructure_Dynamics365Finance_Dispatchers_Dynamics365FinanceIntegrationEventProcessor_SubmitAsync_Hexalith_Domain_Events_IEvent_Hexalith_Application_Metadatas_IMetadata_System_Threading_CancellationToken_
@@ -21606,15 +21779,15 @@ references:
   commentId: T:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChangedHandler
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChangedHandler
   nameWithType: Dynamics365FinanceCustomerChangedHandler
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChangedHandler.#ctor(Hexalith.Extensions.Common.IDateTimeService,Hexalith.Application.Parties.Services.ICustomerQueryService,Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService,Microsoft.Extensions.Options.IOptions{Hexalith.Application.Organizations.Configurations.OrganizationSettings})
-  name: Dynamics365FinanceCustomerChangedHandler(IDateTimeService, ICustomerQueryService, IExternalReferenceMapperService, IOptions<OrganizationSettings>)
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChangedHandler.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_BusinessEvents_Dynamics365FinanceCustomerChangedHandler__ctor_Hexalith_Extensions_Common_IDateTimeService_Hexalith_Application_Parties_Services_ICustomerQueryService_Hexalith_Application_ExternalSystems_Services_IExternalReferenceMapperService_Microsoft_Extensions_Options_IOptions_Hexalith_Application_Organizations_Configurations_OrganizationSettings__
-  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChangedHandler.#ctor(Hexalith.Extensions.Common.IDateTimeService,Hexalith.Application.Parties.Services.ICustomerQueryService,Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService,Microsoft.Extensions.Options.IOptions{Hexalith.Application.Organizations.Configurations.OrganizationSettings})
-  name.vb: Dynamics365FinanceCustomerChangedHandler(IDateTimeService, ICustomerQueryService, IExternalReferenceMapperService, IOptions(Of OrganizationSettings))
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChangedHandler.Dynamics365FinanceCustomerChangedHandler(Hexalith.Extensions.Common.IDateTimeService, Hexalith.Application.Parties.Services.ICustomerQueryService, Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService, Microsoft.Extensions.Options.IOptions<Hexalith.Application.Organizations.Configurations.OrganizationSettings>)
-  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChangedHandler.Dynamics365FinanceCustomerChangedHandler(Hexalith.Extensions.Common.IDateTimeService, Hexalith.Application.Parties.Services.ICustomerQueryService, Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService, Microsoft.Extensions.Options.IOptions(Of Hexalith.Application.Organizations.Configurations.OrganizationSettings))
-  nameWithType: Dynamics365FinanceCustomerChangedHandler.Dynamics365FinanceCustomerChangedHandler(IDateTimeService, ICustomerQueryService, IExternalReferenceMapperService, IOptions<OrganizationSettings>)
-  nameWithType.vb: Dynamics365FinanceCustomerChangedHandler.Dynamics365FinanceCustomerChangedHandler(IDateTimeService, ICustomerQueryService, IExternalReferenceMapperService, IOptions(Of OrganizationSettings))
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChangedHandler.#ctor(Hexalith.Extensions.Common.IDateTimeService,Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService,Microsoft.Extensions.Options.IOptions{Hexalith.Application.Organizations.Configurations.OrganizationSettings})
+  name: Dynamics365FinanceCustomerChangedHandler(IDateTimeService, IExternalReferenceMapperService, IOptions<OrganizationSettings>)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChangedHandler.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_BusinessEvents_Dynamics365FinanceCustomerChangedHandler__ctor_Hexalith_Extensions_Common_IDateTimeService_Hexalith_Application_ExternalSystems_Services_IExternalReferenceMapperService_Microsoft_Extensions_Options_IOptions_Hexalith_Application_Organizations_Configurations_OrganizationSettings__
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChangedHandler.#ctor(Hexalith.Extensions.Common.IDateTimeService,Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService,Microsoft.Extensions.Options.IOptions{Hexalith.Application.Organizations.Configurations.OrganizationSettings})
+  name.vb: Dynamics365FinanceCustomerChangedHandler(IDateTimeService, IExternalReferenceMapperService, IOptions(Of OrganizationSettings))
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChangedHandler.Dynamics365FinanceCustomerChangedHandler(Hexalith.Extensions.Common.IDateTimeService, Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService, Microsoft.Extensions.Options.IOptions<Hexalith.Application.Organizations.Configurations.OrganizationSettings>)
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChangedHandler.Dynamics365FinanceCustomerChangedHandler(Hexalith.Extensions.Common.IDateTimeService, Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService, Microsoft.Extensions.Options.IOptions(Of Hexalith.Application.Organizations.Configurations.OrganizationSettings))
+  nameWithType: Dynamics365FinanceCustomerChangedHandler.Dynamics365FinanceCustomerChangedHandler(IDateTimeService, IExternalReferenceMapperService, IOptions<OrganizationSettings>)
+  nameWithType.vb: Dynamics365FinanceCustomerChangedHandler.Dynamics365FinanceCustomerChangedHandler(IDateTimeService, IExternalReferenceMapperService, IOptions(Of OrganizationSettings))
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChangedHandler.#ctor*
   name: Dynamics365FinanceCustomerChangedHandler
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChangedHandler.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_BusinessEvents_Dynamics365FinanceCustomerChangedHandler__ctor_
@@ -21773,15 +21946,15 @@ references:
   fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler(Of TEvent)
   nameWithType: Dynamics365FinanceCustomerInformationHandler<TEvent>
   nameWithType.vb: Dynamics365FinanceCustomerInformationHandler(Of TEvent)
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler`1.#ctor(Hexalith.Extensions.Common.IDateTimeService,Hexalith.Application.Parties.Services.ICustomerQueryService,Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService,Microsoft.Extensions.Options.IOptions{Hexalith.Application.Organizations.Configurations.OrganizationSettings})
-  name: Dynamics365FinanceCustomerInformationHandler(IDateTimeService, ICustomerQueryService, IExternalReferenceMapperService, IOptions<OrganizationSettings>)
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler-1.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_BusinessEvents_Dynamics365FinanceCustomerInformationHandler_1__ctor_Hexalith_Extensions_Common_IDateTimeService_Hexalith_Application_Parties_Services_ICustomerQueryService_Hexalith_Application_ExternalSystems_Services_IExternalReferenceMapperService_Microsoft_Extensions_Options_IOptions_Hexalith_Application_Organizations_Configurations_OrganizationSettings__
-  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler`1.#ctor(Hexalith.Extensions.Common.IDateTimeService,Hexalith.Application.Parties.Services.ICustomerQueryService,Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService,Microsoft.Extensions.Options.IOptions{Hexalith.Application.Organizations.Configurations.OrganizationSettings})
-  name.vb: Dynamics365FinanceCustomerInformationHandler(IDateTimeService, ICustomerQueryService, IExternalReferenceMapperService, IOptions(Of OrganizationSettings))
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler<TEvent>.Dynamics365FinanceCustomerInformationHandler(Hexalith.Extensions.Common.IDateTimeService, Hexalith.Application.Parties.Services.ICustomerQueryService, Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService, Microsoft.Extensions.Options.IOptions<Hexalith.Application.Organizations.Configurations.OrganizationSettings>)
-  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler(Of TEvent).Dynamics365FinanceCustomerInformationHandler(Hexalith.Extensions.Common.IDateTimeService, Hexalith.Application.Parties.Services.ICustomerQueryService, Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService, Microsoft.Extensions.Options.IOptions(Of Hexalith.Application.Organizations.Configurations.OrganizationSettings))
-  nameWithType: Dynamics365FinanceCustomerInformationHandler<TEvent>.Dynamics365FinanceCustomerInformationHandler(IDateTimeService, ICustomerQueryService, IExternalReferenceMapperService, IOptions<OrganizationSettings>)
-  nameWithType.vb: Dynamics365FinanceCustomerInformationHandler(Of TEvent).Dynamics365FinanceCustomerInformationHandler(IDateTimeService, ICustomerQueryService, IExternalReferenceMapperService, IOptions(Of OrganizationSettings))
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler`1.#ctor(Hexalith.Extensions.Common.IDateTimeService,Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService,Microsoft.Extensions.Options.IOptions{Hexalith.Application.Organizations.Configurations.OrganizationSettings})
+  name: Dynamics365FinanceCustomerInformationHandler(IDateTimeService, IExternalReferenceMapperService, IOptions<OrganizationSettings>)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler-1.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_BusinessEvents_Dynamics365FinanceCustomerInformationHandler_1__ctor_Hexalith_Extensions_Common_IDateTimeService_Hexalith_Application_ExternalSystems_Services_IExternalReferenceMapperService_Microsoft_Extensions_Options_IOptions_Hexalith_Application_Organizations_Configurations_OrganizationSettings__
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler`1.#ctor(Hexalith.Extensions.Common.IDateTimeService,Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService,Microsoft.Extensions.Options.IOptions{Hexalith.Application.Organizations.Configurations.OrganizationSettings})
+  name.vb: Dynamics365FinanceCustomerInformationHandler(IDateTimeService, IExternalReferenceMapperService, IOptions(Of OrganizationSettings))
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler<TEvent>.Dynamics365FinanceCustomerInformationHandler(Hexalith.Extensions.Common.IDateTimeService, Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService, Microsoft.Extensions.Options.IOptions<Hexalith.Application.Organizations.Configurations.OrganizationSettings>)
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler(Of TEvent).Dynamics365FinanceCustomerInformationHandler(Hexalith.Extensions.Common.IDateTimeService, Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService, Microsoft.Extensions.Options.IOptions(Of Hexalith.Application.Organizations.Configurations.OrganizationSettings))
+  nameWithType: Dynamics365FinanceCustomerInformationHandler<TEvent>.Dynamics365FinanceCustomerInformationHandler(IDateTimeService, IExternalReferenceMapperService, IOptions<OrganizationSettings>)
+  nameWithType.vb: Dynamics365FinanceCustomerInformationHandler(Of TEvent).Dynamics365FinanceCustomerInformationHandler(IDateTimeService, IExternalReferenceMapperService, IOptions(Of OrganizationSettings))
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler`1.#ctor*
   name: Dynamics365FinanceCustomerInformationHandler
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerInformationHandler-1.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_BusinessEvents_Dynamics365FinanceCustomerInformationHandler_1__ctor_
@@ -21833,15 +22006,15 @@ references:
   commentId: T:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegisteredHandler
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegisteredHandler
   nameWithType: Dynamics365FinanceCustomerRegisteredHandler
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegisteredHandler.#ctor(Hexalith.Extensions.Common.IDateTimeService,Hexalith.Application.Parties.Services.ICustomerQueryService,Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService,Microsoft.Extensions.Options.IOptions{Hexalith.Application.Organizations.Configurations.OrganizationSettings})
-  name: Dynamics365FinanceCustomerRegisteredHandler(IDateTimeService, ICustomerQueryService, IExternalReferenceMapperService, IOptions<OrganizationSettings>)
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegisteredHandler.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_BusinessEvents_Dynamics365FinanceCustomerRegisteredHandler__ctor_Hexalith_Extensions_Common_IDateTimeService_Hexalith_Application_Parties_Services_ICustomerQueryService_Hexalith_Application_ExternalSystems_Services_IExternalReferenceMapperService_Microsoft_Extensions_Options_IOptions_Hexalith_Application_Organizations_Configurations_OrganizationSettings__
-  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegisteredHandler.#ctor(Hexalith.Extensions.Common.IDateTimeService,Hexalith.Application.Parties.Services.ICustomerQueryService,Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService,Microsoft.Extensions.Options.IOptions{Hexalith.Application.Organizations.Configurations.OrganizationSettings})
-  name.vb: Dynamics365FinanceCustomerRegisteredHandler(IDateTimeService, ICustomerQueryService, IExternalReferenceMapperService, IOptions(Of OrganizationSettings))
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegisteredHandler.Dynamics365FinanceCustomerRegisteredHandler(Hexalith.Extensions.Common.IDateTimeService, Hexalith.Application.Parties.Services.ICustomerQueryService, Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService, Microsoft.Extensions.Options.IOptions<Hexalith.Application.Organizations.Configurations.OrganizationSettings>)
-  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegisteredHandler.Dynamics365FinanceCustomerRegisteredHandler(Hexalith.Extensions.Common.IDateTimeService, Hexalith.Application.Parties.Services.ICustomerQueryService, Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService, Microsoft.Extensions.Options.IOptions(Of Hexalith.Application.Organizations.Configurations.OrganizationSettings))
-  nameWithType: Dynamics365FinanceCustomerRegisteredHandler.Dynamics365FinanceCustomerRegisteredHandler(IDateTimeService, ICustomerQueryService, IExternalReferenceMapperService, IOptions<OrganizationSettings>)
-  nameWithType.vb: Dynamics365FinanceCustomerRegisteredHandler.Dynamics365FinanceCustomerRegisteredHandler(IDateTimeService, ICustomerQueryService, IExternalReferenceMapperService, IOptions(Of OrganizationSettings))
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegisteredHandler.#ctor(Hexalith.Extensions.Common.IDateTimeService,Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService,Microsoft.Extensions.Options.IOptions{Hexalith.Application.Organizations.Configurations.OrganizationSettings})
+  name: Dynamics365FinanceCustomerRegisteredHandler(IDateTimeService, IExternalReferenceMapperService, IOptions<OrganizationSettings>)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegisteredHandler.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_BusinessEvents_Dynamics365FinanceCustomerRegisteredHandler__ctor_Hexalith_Extensions_Common_IDateTimeService_Hexalith_Application_ExternalSystems_Services_IExternalReferenceMapperService_Microsoft_Extensions_Options_IOptions_Hexalith_Application_Organizations_Configurations_OrganizationSettings__
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegisteredHandler.#ctor(Hexalith.Extensions.Common.IDateTimeService,Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService,Microsoft.Extensions.Options.IOptions{Hexalith.Application.Organizations.Configurations.OrganizationSettings})
+  name.vb: Dynamics365FinanceCustomerRegisteredHandler(IDateTimeService, IExternalReferenceMapperService, IOptions(Of OrganizationSettings))
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegisteredHandler.Dynamics365FinanceCustomerRegisteredHandler(Hexalith.Extensions.Common.IDateTimeService, Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService, Microsoft.Extensions.Options.IOptions<Hexalith.Application.Organizations.Configurations.OrganizationSettings>)
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegisteredHandler.Dynamics365FinanceCustomerRegisteredHandler(Hexalith.Extensions.Common.IDateTimeService, Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService, Microsoft.Extensions.Options.IOptions(Of Hexalith.Application.Organizations.Configurations.OrganizationSettings))
+  nameWithType: Dynamics365FinanceCustomerRegisteredHandler.Dynamics365FinanceCustomerRegisteredHandler(IDateTimeService, IExternalReferenceMapperService, IOptions<OrganizationSettings>)
+  nameWithType.vb: Dynamics365FinanceCustomerRegisteredHandler.Dynamics365FinanceCustomerRegisteredHandler(IDateTimeService, IExternalReferenceMapperService, IOptions(Of OrganizationSettings))
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegisteredHandler.#ctor*
   name: Dynamics365FinanceCustomerRegisteredHandler
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegisteredHandler.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_BusinessEvents_Dynamics365FinanceCustomerRegisteredHandler__ctor_
@@ -21880,15 +22053,15 @@ references:
   commentId: T:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Controller.Dynamics365FinanceCustomerBindingController
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Controller.Dynamics365FinanceCustomerBindingController
   nameWithType: Dynamics365FinanceCustomerBindingController
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Controller.Dynamics365FinanceCustomerBindingController.#ctor(FluentValidation.IValidator{Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase},FluentValidation.IValidator{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegistered},FluentValidation.IValidator{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChanged},Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.IDynamics365FinanceIntegrationEventProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Controller.Dynamics365FinanceCustomerBindingController})
-  name: Dynamics365FinanceCustomerBindingController(IValidator<Dynamics365BusinessEventBase>, IValidator<Dynamics365FinanceCustomerRegistered>, IValidator<Dynamics365FinanceCustomerChanged>, IDynamics365FinanceIntegrationEventProcessor, IHostEnvironment, ILogger<Dynamics365FinanceCustomerBindingController>)
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Controller.Dynamics365FinanceCustomerBindingController.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Controller_Dynamics365FinanceCustomerBindingController__ctor_FluentValidation_IValidator_Hexalith_Infrastructure_Dynamics365Finance_BusinessEvents_Dynamics365BusinessEventBase__FluentValidation_IValidator_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_BusinessEvents_Dynamics365FinanceCustomerRegistered__FluentValidation_IValidator_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_BusinessEvents_Dynamics365FinanceCustomerChanged__Hexalith_Infrastructure_Dynamics365Finance_Dispatchers_IDynamics365FinanceIntegrationEventProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Logging_ILogger_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Controller_Dynamics365FinanceCustomerBindingController__
-  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Controller.Dynamics365FinanceCustomerBindingController.#ctor(FluentValidation.IValidator{Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase},FluentValidation.IValidator{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegistered},FluentValidation.IValidator{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChanged},Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.IDynamics365FinanceIntegrationEventProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Controller.Dynamics365FinanceCustomerBindingController})
-  name.vb: Dynamics365FinanceCustomerBindingController(IValidator(Of Dynamics365BusinessEventBase), IValidator(Of Dynamics365FinanceCustomerRegistered), IValidator(Of Dynamics365FinanceCustomerChanged), IDynamics365FinanceIntegrationEventProcessor, IHostEnvironment, ILogger(Of Dynamics365FinanceCustomerBindingController))
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Controller.Dynamics365FinanceCustomerBindingController.Dynamics365FinanceCustomerBindingController(FluentValidation.IValidator<Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase>, FluentValidation.IValidator<Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegistered>, FluentValidation.IValidator<Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChanged>, Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.IDynamics365FinanceIntegrationEventProcessor, Microsoft.Extensions.Hosting.IHostEnvironment, Microsoft.Extensions.Logging.ILogger<Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Controller.Dynamics365FinanceCustomerBindingController>)
-  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Controller.Dynamics365FinanceCustomerBindingController.Dynamics365FinanceCustomerBindingController(FluentValidation.IValidator(Of Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase), FluentValidation.IValidator(Of Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegistered), FluentValidation.IValidator(Of Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChanged), Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.IDynamics365FinanceIntegrationEventProcessor, Microsoft.Extensions.Hosting.IHostEnvironment, Microsoft.Extensions.Logging.ILogger(Of Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Controller.Dynamics365FinanceCustomerBindingController))
-  nameWithType: Dynamics365FinanceCustomerBindingController.Dynamics365FinanceCustomerBindingController(IValidator<Dynamics365BusinessEventBase>, IValidator<Dynamics365FinanceCustomerRegistered>, IValidator<Dynamics365FinanceCustomerChanged>, IDynamics365FinanceIntegrationEventProcessor, IHostEnvironment, ILogger<Dynamics365FinanceCustomerBindingController>)
-  nameWithType.vb: Dynamics365FinanceCustomerBindingController.Dynamics365FinanceCustomerBindingController(IValidator(Of Dynamics365BusinessEventBase), IValidator(Of Dynamics365FinanceCustomerRegistered), IValidator(Of Dynamics365FinanceCustomerChanged), IDynamics365FinanceIntegrationEventProcessor, IHostEnvironment, ILogger(Of Dynamics365FinanceCustomerBindingController))
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Controller.Dynamics365FinanceCustomerBindingController.#ctor(FluentValidation.IValidator{Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase},FluentValidation.IValidator{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegistered},FluentValidation.IValidator{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChanged},Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.IDynamics365FinanceIntegrationEventProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Options.IOptions{Hexalith.Application.Organizations.Configurations.OrganizationSettings},Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Controller.Dynamics365FinanceCustomerBindingController})
+  name: Dynamics365FinanceCustomerBindingController(IValidator<Dynamics365BusinessEventBase>, IValidator<Dynamics365FinanceCustomerRegistered>, IValidator<Dynamics365FinanceCustomerChanged>, IDynamics365FinanceIntegrationEventProcessor, IHostEnvironment, IOptions<OrganizationSettings>, ILogger<Dynamics365FinanceCustomerBindingController>)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Controller.Dynamics365FinanceCustomerBindingController.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Controller_Dynamics365FinanceCustomerBindingController__ctor_FluentValidation_IValidator_Hexalith_Infrastructure_Dynamics365Finance_BusinessEvents_Dynamics365BusinessEventBase__FluentValidation_IValidator_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_BusinessEvents_Dynamics365FinanceCustomerRegistered__FluentValidation_IValidator_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_BusinessEvents_Dynamics365FinanceCustomerChanged__Hexalith_Infrastructure_Dynamics365Finance_Dispatchers_IDynamics365FinanceIntegrationEventProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Options_IOptions_Hexalith_Application_Organizations_Configurations_OrganizationSettings__Microsoft_Extensions_Logging_ILogger_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Controller_Dynamics365FinanceCustomerBindingController__
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Controller.Dynamics365FinanceCustomerBindingController.#ctor(FluentValidation.IValidator{Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase},FluentValidation.IValidator{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegistered},FluentValidation.IValidator{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChanged},Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.IDynamics365FinanceIntegrationEventProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Options.IOptions{Hexalith.Application.Organizations.Configurations.OrganizationSettings},Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Controller.Dynamics365FinanceCustomerBindingController})
+  name.vb: Dynamics365FinanceCustomerBindingController(IValidator(Of Dynamics365BusinessEventBase), IValidator(Of Dynamics365FinanceCustomerRegistered), IValidator(Of Dynamics365FinanceCustomerChanged), IDynamics365FinanceIntegrationEventProcessor, IHostEnvironment, IOptions(Of OrganizationSettings), ILogger(Of Dynamics365FinanceCustomerBindingController))
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Controller.Dynamics365FinanceCustomerBindingController.Dynamics365FinanceCustomerBindingController(FluentValidation.IValidator<Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase>, FluentValidation.IValidator<Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegistered>, FluentValidation.IValidator<Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChanged>, Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.IDynamics365FinanceIntegrationEventProcessor, Microsoft.Extensions.Hosting.IHostEnvironment, Microsoft.Extensions.Options.IOptions<Hexalith.Application.Organizations.Configurations.OrganizationSettings>, Microsoft.Extensions.Logging.ILogger<Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Controller.Dynamics365FinanceCustomerBindingController>)
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Controller.Dynamics365FinanceCustomerBindingController.Dynamics365FinanceCustomerBindingController(FluentValidation.IValidator(Of Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase), FluentValidation.IValidator(Of Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegistered), FluentValidation.IValidator(Of Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChanged), Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.IDynamics365FinanceIntegrationEventProcessor, Microsoft.Extensions.Hosting.IHostEnvironment, Microsoft.Extensions.Options.IOptions(Of Hexalith.Application.Organizations.Configurations.OrganizationSettings), Microsoft.Extensions.Logging.ILogger(Of Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Controller.Dynamics365FinanceCustomerBindingController))
+  nameWithType: Dynamics365FinanceCustomerBindingController.Dynamics365FinanceCustomerBindingController(IValidator<Dynamics365BusinessEventBase>, IValidator<Dynamics365FinanceCustomerRegistered>, IValidator<Dynamics365FinanceCustomerChanged>, IDynamics365FinanceIntegrationEventProcessor, IHostEnvironment, IOptions<OrganizationSettings>, ILogger<Dynamics365FinanceCustomerBindingController>)
+  nameWithType.vb: Dynamics365FinanceCustomerBindingController.Dynamics365FinanceCustomerBindingController(IValidator(Of Dynamics365BusinessEventBase), IValidator(Of Dynamics365FinanceCustomerRegistered), IValidator(Of Dynamics365FinanceCustomerChanged), IDynamics365FinanceIntegrationEventProcessor, IHostEnvironment, IOptions(Of OrganizationSettings), ILogger(Of Dynamics365FinanceCustomerBindingController))
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Controller.Dynamics365FinanceCustomerBindingController.#ctor*
   name: Dynamics365FinanceCustomerBindingController
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Controller.Dynamics365FinanceCustomerBindingController.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Controller_Dynamics365FinanceCustomerBindingController__ctor_
@@ -24715,69 +24888,141 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.Problem
   nameWithType: ReceiveMessageController.Problem
-- uid: Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers
-  name: Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers
-  href: api/Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.html
-  commentId: N:Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers
-  fullName: Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers
-  nameWithType: Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers
-- uid: Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsIntegrationEventsController
-  name: ExternalSystemsIntegrationEventsController
-  href: api/Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsIntegrationEventsController.html
-  commentId: T:Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsIntegrationEventsController
-  fullName: Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsIntegrationEventsController
-  nameWithType: ExternalSystemsIntegrationEventsController
-- uid: Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsIntegrationEventsController.#ctor(Hexalith.Application.Events.IIntegrationEventProcessor,Hexalith.Application.Projection.IProjectionUpdateProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger)
-  name: ExternalSystemsIntegrationEventsController(IIntegrationEventProcessor, IProjectionUpdateProcessor, IHostEnvironment, ILogger)
-  href: api/Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_ExternalSystems_Controllers_ExternalSystemsIntegrationEventsController__ctor_Hexalith_Application_Events_IIntegrationEventProcessor_Hexalith_Application_Projection_IProjectionUpdateProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Logging_ILogger_
-  commentId: M:Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsIntegrationEventsController.#ctor(Hexalith.Application.Events.IIntegrationEventProcessor,Hexalith.Application.Projection.IProjectionUpdateProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger)
-  fullName: Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsIntegrationEventsController.ExternalSystemsIntegrationEventsController(Hexalith.Application.Events.IIntegrationEventProcessor, Hexalith.Application.Projection.IProjectionUpdateProcessor, Microsoft.Extensions.Hosting.IHostEnvironment, Microsoft.Extensions.Logging.ILogger)
-  nameWithType: ExternalSystemsIntegrationEventsController.ExternalSystemsIntegrationEventsController(IIntegrationEventProcessor, IProjectionUpdateProcessor, IHostEnvironment, ILogger)
-- uid: Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsIntegrationEventsController.#ctor*
-  name: ExternalSystemsIntegrationEventsController
-  href: api/Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_ExternalSystems_Controllers_ExternalSystemsIntegrationEventsController__ctor_
-  commentId: Overload:Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsIntegrationEventsController.#ctor
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers
+  name: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.html
+  commentId: N:Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers
+  nameWithType: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController
+  name: ExternalSystemsIntegrationCommandsController
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.html
+  commentId: T:Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController
+  nameWithType: ExternalSystemsIntegrationCommandsController
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.#ctor(Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController})
+  name: ExternalSystemsIntegrationCommandsController(ConventionNamingCommandProcessor, IHostEnvironment, ILogger<ExternalSystemsIntegrationCommandsController>)
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.html#Hexalith_Infrastructure_WebApis_ExternalSystemsCommands_Controllers_ExternalSystemsIntegrationCommandsController__ctor_Hexalith_Infrastructure_DaprRuntime_Handlers_ConventionNamingCommandProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Logging_ILogger_Hexalith_Infrastructure_WebApis_ExternalSystemsCommands_Controllers_ExternalSystemsIntegrationCommandsController__
+  commentId: M:Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.#ctor(Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController})
+  name.vb: ExternalSystemsIntegrationCommandsController(ConventionNamingCommandProcessor, IHostEnvironment, ILogger(Of ExternalSystemsIntegrationCommandsController))
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.ExternalSystemsIntegrationCommandsController(Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor, Microsoft.Extensions.Hosting.IHostEnvironment, Microsoft.Extensions.Logging.ILogger<Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController>)
+  fullName.vb: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.ExternalSystemsIntegrationCommandsController(Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor, Microsoft.Extensions.Hosting.IHostEnvironment, Microsoft.Extensions.Logging.ILogger(Of Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController))
+  nameWithType: ExternalSystemsIntegrationCommandsController.ExternalSystemsIntegrationCommandsController(ConventionNamingCommandProcessor, IHostEnvironment, ILogger<ExternalSystemsIntegrationCommandsController>)
+  nameWithType.vb: ExternalSystemsIntegrationCommandsController.ExternalSystemsIntegrationCommandsController(ConventionNamingCommandProcessor, IHostEnvironment, ILogger(Of ExternalSystemsIntegrationCommandsController))
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.#ctor*
+  name: ExternalSystemsIntegrationCommandsController
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.html#Hexalith_Infrastructure_WebApis_ExternalSystemsCommands_Controllers_ExternalSystemsIntegrationCommandsController__ctor_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.#ctor
   isSpec: "True"
-  fullName: Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsIntegrationEventsController.ExternalSystemsIntegrationEventsController
-  nameWithType: ExternalSystemsIntegrationEventsController.ExternalSystemsIntegrationEventsController
-- uid: Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsIntegrationEventsController.HandleExternalSystemsEventsAsync(Hexalith.Application.States.EventState)
-  name: HandleExternalSystemsEventsAsync(EventState)
-  href: api/Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_ExternalSystems_Controllers_ExternalSystemsIntegrationEventsController_HandleExternalSystemsEventsAsync_Hexalith_Application_States_EventState_
-  commentId: M:Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsIntegrationEventsController.HandleExternalSystemsEventsAsync(Hexalith.Application.States.EventState)
-  fullName: Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsIntegrationEventsController.HandleExternalSystemsEventsAsync(Hexalith.Application.States.EventState)
-  nameWithType: ExternalSystemsIntegrationEventsController.HandleExternalSystemsEventsAsync(EventState)
-- uid: Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsIntegrationEventsController.HandleExternalSystemsEventsAsync*
-  name: HandleExternalSystemsEventsAsync
-  href: api/Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_ExternalSystems_Controllers_ExternalSystemsIntegrationEventsController_HandleExternalSystemsEventsAsync_
-  commentId: Overload:Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsIntegrationEventsController.HandleExternalSystemsEventsAsync
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.ExternalSystemsIntegrationCommandsController
+  nameWithType: ExternalSystemsIntegrationCommandsController.ExternalSystemsIntegrationCommandsController
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.HandleExternalSystemsCommandsAsync(Hexalith.Application.States.CommandState)
+  name: HandleExternalSystemsCommandsAsync(CommandState)
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.html#Hexalith_Infrastructure_WebApis_ExternalSystemsCommands_Controllers_ExternalSystemsIntegrationCommandsController_HandleExternalSystemsCommandsAsync_Hexalith_Application_States_CommandState_
+  commentId: M:Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.HandleExternalSystemsCommandsAsync(Hexalith.Application.States.CommandState)
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.HandleExternalSystemsCommandsAsync(Hexalith.Application.States.CommandState)
+  nameWithType: ExternalSystemsIntegrationCommandsController.HandleExternalSystemsCommandsAsync(CommandState)
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.HandleExternalSystemsCommandsAsync*
+  name: HandleExternalSystemsCommandsAsync
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.html#Hexalith_Infrastructure_WebApis_ExternalSystemsCommands_Controllers_ExternalSystemsIntegrationCommandsController_HandleExternalSystemsCommandsAsync_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.HandleExternalSystemsCommandsAsync
   isSpec: "True"
-  fullName: Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers.ExternalSystemsIntegrationEventsController.HandleExternalSystemsEventsAsync
-  nameWithType: ExternalSystemsIntegrationEventsController.HandleExternalSystemsEventsAsync
-- uid: Hexalith.Infrastructure.WebApis.ExternalSystems.Helpers
-  name: Hexalith.Infrastructure.WebApis.ExternalSystems.Helpers
-  href: api/Hexalith.Infrastructure.WebApis.ExternalSystems.Helpers.html
-  commentId: N:Hexalith.Infrastructure.WebApis.ExternalSystems.Helpers
-  fullName: Hexalith.Infrastructure.WebApis.ExternalSystems.Helpers
-  nameWithType: Hexalith.Infrastructure.WebApis.ExternalSystems.Helpers
-- uid: Hexalith.Infrastructure.WebApis.ExternalSystems.Helpers.ExternalSystemsWebApiHelpers
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.HandleExternalSystemsCommandsAsync
+  nameWithType: ExternalSystemsIntegrationCommandsController.HandleExternalSystemsCommandsAsync
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Helpers
+  name: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Helpers
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Helpers.html
+  commentId: N:Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Helpers
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Helpers
+  nameWithType: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Helpers
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Helpers.ExternalSystemsWebApiHelpers
   name: ExternalSystemsWebApiHelpers
-  href: api/Hexalith.Infrastructure.WebApis.ExternalSystems.Helpers.ExternalSystemsWebApiHelpers.html
-  commentId: T:Hexalith.Infrastructure.WebApis.ExternalSystems.Helpers.ExternalSystemsWebApiHelpers
-  fullName: Hexalith.Infrastructure.WebApis.ExternalSystems.Helpers.ExternalSystemsWebApiHelpers
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Helpers.ExternalSystemsWebApiHelpers.html
+  commentId: T:Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Helpers.ExternalSystemsWebApiHelpers
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Helpers.ExternalSystemsWebApiHelpers
   nameWithType: ExternalSystemsWebApiHelpers
-- uid: Hexalith.Infrastructure.WebApis.ExternalSystems.Helpers.ExternalSystemsWebApiHelpers.AddExternalSystemsMapperUpdate(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)
-  name: AddExternalSystemsMapperUpdate(IServiceCollection, String)
-  href: api/Hexalith.Infrastructure.WebApis.ExternalSystems.Helpers.ExternalSystemsWebApiHelpers.html#Hexalith_Infrastructure_WebApis_ExternalSystems_Helpers_ExternalSystemsWebApiHelpers_AddExternalSystemsMapperUpdate_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_
-  commentId: M:Hexalith.Infrastructure.WebApis.ExternalSystems.Helpers.ExternalSystemsWebApiHelpers.AddExternalSystemsMapperUpdate(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)
-  fullName: Hexalith.Infrastructure.WebApis.ExternalSystems.Helpers.ExternalSystemsWebApiHelpers.AddExternalSystemsMapperUpdate(Microsoft.Extensions.DependencyInjection.IServiceCollection, System.String)
-  nameWithType: ExternalSystemsWebApiHelpers.AddExternalSystemsMapperUpdate(IServiceCollection, String)
-- uid: Hexalith.Infrastructure.WebApis.ExternalSystems.Helpers.ExternalSystemsWebApiHelpers.AddExternalSystemsMapperUpdate*
-  name: AddExternalSystemsMapperUpdate
-  href: api/Hexalith.Infrastructure.WebApis.ExternalSystems.Helpers.ExternalSystemsWebApiHelpers.html#Hexalith_Infrastructure_WebApis_ExternalSystems_Helpers_ExternalSystemsWebApiHelpers_AddExternalSystemsMapperUpdate_
-  commentId: Overload:Hexalith.Infrastructure.WebApis.ExternalSystems.Helpers.ExternalSystemsWebApiHelpers.AddExternalSystemsMapperUpdate
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Helpers.ExternalSystemsWebApiHelpers.AddExternalSystemsCommandsSubmission(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  name: AddExternalSystemsCommandsSubmission(IServiceCollection)
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Helpers.ExternalSystemsWebApiHelpers.html#Hexalith_Infrastructure_WebApis_ExternalSystemsCommands_Helpers_ExternalSystemsWebApiHelpers_AddExternalSystemsCommandsSubmission_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  commentId: M:Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Helpers.ExternalSystemsWebApiHelpers.AddExternalSystemsCommandsSubmission(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Helpers.ExternalSystemsWebApiHelpers.AddExternalSystemsCommandsSubmission(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  nameWithType: ExternalSystemsWebApiHelpers.AddExternalSystemsCommandsSubmission(IServiceCollection)
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Helpers.ExternalSystemsWebApiHelpers.AddExternalSystemsCommandsSubmission*
+  name: AddExternalSystemsCommandsSubmission
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Helpers.ExternalSystemsWebApiHelpers.html#Hexalith_Infrastructure_WebApis_ExternalSystemsCommands_Helpers_ExternalSystemsWebApiHelpers_AddExternalSystemsCommandsSubmission_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Helpers.ExternalSystemsWebApiHelpers.AddExternalSystemsCommandsSubmission
   isSpec: "True"
-  fullName: Hexalith.Infrastructure.WebApis.ExternalSystems.Helpers.ExternalSystemsWebApiHelpers.AddExternalSystemsMapperUpdate
-  nameWithType: ExternalSystemsWebApiHelpers.AddExternalSystemsMapperUpdate
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Helpers.ExternalSystemsWebApiHelpers.AddExternalSystemsCommandsSubmission
+  nameWithType: ExternalSystemsWebApiHelpers.AddExternalSystemsCommandsSubmission
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers
+  name: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.html
+  commentId: N:Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers
+  nameWithType: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController
+  name: ExternalSystemsIntegrationEventsController
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController.html
+  commentId: T:Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController
+  nameWithType: ExternalSystemsIntegrationEventsController
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController.#ctor(Hexalith.Application.Events.IIntegrationEventProcessor,Hexalith.Application.Projection.IProjectionUpdateProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController})
+  name: ExternalSystemsIntegrationEventsController(IIntegrationEventProcessor, IProjectionUpdateProcessor, IHostEnvironment, ILogger<ExternalSystemsIntegrationEventsController>)
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_ExternalSystemsEvents_Controllers_ExternalSystemsIntegrationEventsController__ctor_Hexalith_Application_Events_IIntegrationEventProcessor_Hexalith_Application_Projection_IProjectionUpdateProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Logging_ILogger_Hexalith_Infrastructure_WebApis_ExternalSystemsEvents_Controllers_ExternalSystemsIntegrationEventsController__
+  commentId: M:Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController.#ctor(Hexalith.Application.Events.IIntegrationEventProcessor,Hexalith.Application.Projection.IProjectionUpdateProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController})
+  name.vb: ExternalSystemsIntegrationEventsController(IIntegrationEventProcessor, IProjectionUpdateProcessor, IHostEnvironment, ILogger(Of ExternalSystemsIntegrationEventsController))
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController.ExternalSystemsIntegrationEventsController(Hexalith.Application.Events.IIntegrationEventProcessor, Hexalith.Application.Projection.IProjectionUpdateProcessor, Microsoft.Extensions.Hosting.IHostEnvironment, Microsoft.Extensions.Logging.ILogger<Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController>)
+  fullName.vb: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController.ExternalSystemsIntegrationEventsController(Hexalith.Application.Events.IIntegrationEventProcessor, Hexalith.Application.Projection.IProjectionUpdateProcessor, Microsoft.Extensions.Hosting.IHostEnvironment, Microsoft.Extensions.Logging.ILogger(Of Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController))
+  nameWithType: ExternalSystemsIntegrationEventsController.ExternalSystemsIntegrationEventsController(IIntegrationEventProcessor, IProjectionUpdateProcessor, IHostEnvironment, ILogger<ExternalSystemsIntegrationEventsController>)
+  nameWithType.vb: ExternalSystemsIntegrationEventsController.ExternalSystemsIntegrationEventsController(IIntegrationEventProcessor, IProjectionUpdateProcessor, IHostEnvironment, ILogger(Of ExternalSystemsIntegrationEventsController))
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController.#ctor*
+  name: ExternalSystemsIntegrationEventsController
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_ExternalSystemsEvents_Controllers_ExternalSystemsIntegrationEventsController__ctor_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController.ExternalSystemsIntegrationEventsController
+  nameWithType: ExternalSystemsIntegrationEventsController.ExternalSystemsIntegrationEventsController
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController.HandleExternalSystemsEventsAsync(Hexalith.Application.States.EventState)
+  name: HandleExternalSystemsEventsAsync(EventState)
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_ExternalSystemsEvents_Controllers_ExternalSystemsIntegrationEventsController_HandleExternalSystemsEventsAsync_Hexalith_Application_States_EventState_
+  commentId: M:Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController.HandleExternalSystemsEventsAsync(Hexalith.Application.States.EventState)
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController.HandleExternalSystemsEventsAsync(Hexalith.Application.States.EventState)
+  nameWithType: ExternalSystemsIntegrationEventsController.HandleExternalSystemsEventsAsync(EventState)
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController.HandleExternalSystemsEventsAsync*
+  name: HandleExternalSystemsEventsAsync
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_ExternalSystemsEvents_Controllers_ExternalSystemsIntegrationEventsController_HandleExternalSystemsEventsAsync_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController.HandleExternalSystemsEventsAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController.HandleExternalSystemsEventsAsync
+  nameWithType: ExternalSystemsIntegrationEventsController.HandleExternalSystemsEventsAsync
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Helpers
+  name: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Helpers
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Helpers.html
+  commentId: N:Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Helpers
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Helpers
+  nameWithType: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Helpers
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Helpers.ExternalSystemsWebApiHelpers
+  name: ExternalSystemsWebApiHelpers
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Helpers.ExternalSystemsWebApiHelpers.html
+  commentId: T:Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Helpers.ExternalSystemsWebApiHelpers
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Helpers.ExternalSystemsWebApiHelpers
+  nameWithType: ExternalSystemsWebApiHelpers
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Helpers.ExternalSystemsWebApiHelpers.AddExternalSystemsMapperSubscription(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,IEnumerable{System.String})
+  name: AddExternalSystemsMapperSubscription(IServiceCollection, String, IEnumerable<String>)
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Helpers.ExternalSystemsWebApiHelpers.html#Hexalith_Infrastructure_WebApis_ExternalSystemsEvents_Helpers_ExternalSystemsWebApiHelpers_AddExternalSystemsMapperSubscription_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_IEnumerable_System_String__
+  commentId: M:Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Helpers.ExternalSystemsWebApiHelpers.AddExternalSystemsMapperSubscription(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,IEnumerable{System.String})
+  name.vb: AddExternalSystemsMapperSubscription(IServiceCollection, String, IEnumerable(Of String))
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Helpers.ExternalSystemsWebApiHelpers.AddExternalSystemsMapperSubscription(Microsoft.Extensions.DependencyInjection.IServiceCollection, System.String, IEnumerable<System.String>)
+  fullName.vb: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Helpers.ExternalSystemsWebApiHelpers.AddExternalSystemsMapperSubscription(Microsoft.Extensions.DependencyInjection.IServiceCollection, System.String, IEnumerable(Of System.String))
+  nameWithType: ExternalSystemsWebApiHelpers.AddExternalSystemsMapperSubscription(IServiceCollection, String, IEnumerable<String>)
+  nameWithType.vb: ExternalSystemsWebApiHelpers.AddExternalSystemsMapperSubscription(IServiceCollection, String, IEnumerable(Of String))
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Helpers.ExternalSystemsWebApiHelpers.AddExternalSystemsMapperSubscription*
+  name: AddExternalSystemsMapperSubscription
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Helpers.ExternalSystemsWebApiHelpers.html#Hexalith_Infrastructure_WebApis_ExternalSystemsEvents_Helpers_ExternalSystemsWebApiHelpers_AddExternalSystemsMapperSubscription_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Helpers.ExternalSystemsWebApiHelpers.AddExternalSystemsMapperSubscription
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Helpers.ExternalSystemsWebApiHelpers.AddExternalSystemsMapperSubscription
+  nameWithType: ExternalSystemsWebApiHelpers.AddExternalSystemsMapperSubscription
 - uid: Hexalith.Infrastructure.WebApis.Helpers
   name: Hexalith.Infrastructure.WebApis.Helpers
   href: api/Hexalith.Infrastructure.WebApis.Helpers.html
@@ -24914,44 +25159,43 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.WebApis.Parties.Helpers.PartiesWebApiHelpers.AddPartiesIntegrationEventHandlers
   nameWithType: PartiesWebApiHelpers.AddPartiesIntegrationEventHandlers
-- uid: Hexalith.Server.ExternalSystems.Infrastructure.Controllers
-  name: Hexalith.Server.ExternalSystems.Infrastructure.Controllers
-  href: api/Hexalith.Server.ExternalSystems.Infrastructure.Controllers.html
-  commentId: N:Hexalith.Server.ExternalSystems.Infrastructure.Controllers
-  fullName: Hexalith.Server.ExternalSystems.Infrastructure.Controllers
-  nameWithType: Hexalith.Server.ExternalSystems.Infrastructure.Controllers
-- uid: Hexalith.Server.ExternalSystems.Infrastructure.Controllers.ExternalSystemsCommandsController
-  name: ExternalSystemsCommandsController
-  href: api/Hexalith.Server.ExternalSystems.Infrastructure.Controllers.ExternalSystemsCommandsController.html
-  commentId: T:Hexalith.Server.ExternalSystems.Infrastructure.Controllers.ExternalSystemsCommandsController
-  fullName: Hexalith.Server.ExternalSystems.Infrastructure.Controllers.ExternalSystemsCommandsController
-  nameWithType: ExternalSystemsCommandsController
-- uid: Hexalith.Server.ExternalSystems.Infrastructure.Controllers.ExternalSystemsCommandsController.#ctor(Hexalith.Application.Commands.ICommandProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger)
-  name: ExternalSystemsCommandsController(ICommandProcessor, IHostEnvironment, ILogger)
-  href: api/Hexalith.Server.ExternalSystems.Infrastructure.Controllers.ExternalSystemsCommandsController.html#Hexalith_Server_ExternalSystems_Infrastructure_Controllers_ExternalSystemsCommandsController__ctor_Hexalith_Application_Commands_ICommandProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Logging_ILogger_
-  commentId: M:Hexalith.Server.ExternalSystems.Infrastructure.Controllers.ExternalSystemsCommandsController.#ctor(Hexalith.Application.Commands.ICommandProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger)
-  fullName: Hexalith.Server.ExternalSystems.Infrastructure.Controllers.ExternalSystemsCommandsController.ExternalSystemsCommandsController(Hexalith.Application.Commands.ICommandProcessor, Microsoft.Extensions.Hosting.IHostEnvironment, Microsoft.Extensions.Logging.ILogger)
-  nameWithType: ExternalSystemsCommandsController.ExternalSystemsCommandsController(ICommandProcessor, IHostEnvironment, ILogger)
-- uid: Hexalith.Server.ExternalSystems.Infrastructure.Controllers.ExternalSystemsCommandsController.#ctor*
-  name: ExternalSystemsCommandsController
-  href: api/Hexalith.Server.ExternalSystems.Infrastructure.Controllers.ExternalSystemsCommandsController.html#Hexalith_Server_ExternalSystems_Infrastructure_Controllers_ExternalSystemsCommandsController__ctor_
-  commentId: Overload:Hexalith.Server.ExternalSystems.Infrastructure.Controllers.ExternalSystemsCommandsController.#ctor
+- uid: Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers
+  name: Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers
+  href: api/Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers.html
+  commentId: N:Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers
+  fullName: Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers
+  nameWithType: Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers
+- uid: Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers.PartiesCommandsController
+  name: PartiesCommandsController
+  href: api/Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers.PartiesCommandsController.html
+  commentId: T:Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers.PartiesCommandsController
+  fullName: Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers.PartiesCommandsController
+  nameWithType: PartiesCommandsController
+- uid: Hexalith.Infrastructure.WebApis.PartiesCommands.Helpers
+  name: Hexalith.Infrastructure.WebApis.PartiesCommands.Helpers
+  href: api/Hexalith.Infrastructure.WebApis.PartiesCommands.Helpers.html
+  commentId: N:Hexalith.Infrastructure.WebApis.PartiesCommands.Helpers
+  fullName: Hexalith.Infrastructure.WebApis.PartiesCommands.Helpers
+  nameWithType: Hexalith.Infrastructure.WebApis.PartiesCommands.Helpers
+- uid: Hexalith.Infrastructure.WebApis.PartiesCommands.Helpers.PartiesWebApiHelpers
+  name: PartiesWebApiHelpers
+  href: api/Hexalith.Infrastructure.WebApis.PartiesCommands.Helpers.PartiesWebApiHelpers.html
+  commentId: T:Hexalith.Infrastructure.WebApis.PartiesCommands.Helpers.PartiesWebApiHelpers
+  fullName: Hexalith.Infrastructure.WebApis.PartiesCommands.Helpers.PartiesWebApiHelpers
+  nameWithType: PartiesWebApiHelpers
+- uid: Hexalith.Infrastructure.WebApis.PartiesCommands.Helpers.PartiesWebApiHelpers.AddPartiesCommandsSubmission(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  name: AddPartiesCommandsSubmission(IServiceCollection)
+  href: api/Hexalith.Infrastructure.WebApis.PartiesCommands.Helpers.PartiesWebApiHelpers.html#Hexalith_Infrastructure_WebApis_PartiesCommands_Helpers_PartiesWebApiHelpers_AddPartiesCommandsSubmission_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  commentId: M:Hexalith.Infrastructure.WebApis.PartiesCommands.Helpers.PartiesWebApiHelpers.AddPartiesCommandsSubmission(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  fullName: Hexalith.Infrastructure.WebApis.PartiesCommands.Helpers.PartiesWebApiHelpers.AddPartiesCommandsSubmission(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  nameWithType: PartiesWebApiHelpers.AddPartiesCommandsSubmission(IServiceCollection)
+- uid: Hexalith.Infrastructure.WebApis.PartiesCommands.Helpers.PartiesWebApiHelpers.AddPartiesCommandsSubmission*
+  name: AddPartiesCommandsSubmission
+  href: api/Hexalith.Infrastructure.WebApis.PartiesCommands.Helpers.PartiesWebApiHelpers.html#Hexalith_Infrastructure_WebApis_PartiesCommands_Helpers_PartiesWebApiHelpers_AddPartiesCommandsSubmission_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.PartiesCommands.Helpers.PartiesWebApiHelpers.AddPartiesCommandsSubmission
   isSpec: "True"
-  fullName: Hexalith.Server.ExternalSystems.Infrastructure.Controllers.ExternalSystemsCommandsController.ExternalSystemsCommandsController
-  nameWithType: ExternalSystemsCommandsController.ExternalSystemsCommandsController
-- uid: Hexalith.Server.ExternalSystems.Infrastructure.Controllers.ExternalSystemsCommandsController.HandleExternalSystemsCommandsAsync(Hexalith.Application.States.CommandState)
-  name: HandleExternalSystemsCommandsAsync(CommandState)
-  href: api/Hexalith.Server.ExternalSystems.Infrastructure.Controllers.ExternalSystemsCommandsController.html#Hexalith_Server_ExternalSystems_Infrastructure_Controllers_ExternalSystemsCommandsController_HandleExternalSystemsCommandsAsync_Hexalith_Application_States_CommandState_
-  commentId: M:Hexalith.Server.ExternalSystems.Infrastructure.Controllers.ExternalSystemsCommandsController.HandleExternalSystemsCommandsAsync(Hexalith.Application.States.CommandState)
-  fullName: Hexalith.Server.ExternalSystems.Infrastructure.Controllers.ExternalSystemsCommandsController.HandleExternalSystemsCommandsAsync(Hexalith.Application.States.CommandState)
-  nameWithType: ExternalSystemsCommandsController.HandleExternalSystemsCommandsAsync(CommandState)
-- uid: Hexalith.Server.ExternalSystems.Infrastructure.Controllers.ExternalSystemsCommandsController.HandleExternalSystemsCommandsAsync*
-  name: HandleExternalSystemsCommandsAsync
-  href: api/Hexalith.Server.ExternalSystems.Infrastructure.Controllers.ExternalSystemsCommandsController.html#Hexalith_Server_ExternalSystems_Infrastructure_Controllers_ExternalSystemsCommandsController_HandleExternalSystemsCommandsAsync_
-  commentId: Overload:Hexalith.Server.ExternalSystems.Infrastructure.Controllers.ExternalSystemsCommandsController.HandleExternalSystemsCommandsAsync
-  isSpec: "True"
-  fullName: Hexalith.Server.ExternalSystems.Infrastructure.Controllers.ExternalSystemsCommandsController.HandleExternalSystemsCommandsAsync
-  nameWithType: ExternalSystemsCommandsController.HandleExternalSystemsCommandsAsync
+  fullName: Hexalith.Infrastructure.WebApis.PartiesCommands.Helpers.PartiesWebApiHelpers.AddPartiesCommandsSubmission
+  nameWithType: PartiesWebApiHelpers.AddPartiesCommandsSubmission
 - uid: Hexalith.TestMocks
   name: Hexalith.TestMocks
   href: api/Hexalith.TestMocks.html
