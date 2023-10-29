@@ -7,7 +7,4 @@
     <ProjectReference Include="..\Hexalith.Application.Abstractions\Hexalith.Application.Abstractions.csproj" />
     <ProjectReference Include="..\Hexalith.Application.Organizations\Hexalith.Application.Organizations.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Projections\" />
-  </ItemGroup>
 </Project>

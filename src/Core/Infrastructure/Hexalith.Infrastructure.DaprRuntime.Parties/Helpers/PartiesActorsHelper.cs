@@ -33,7 +33,7 @@ public static class PartiesActorsHelper
     /// <param name="actors">The actors.</param>
     /// <returns>ActorRegistrationCollection.</returns>
     /// <exception cref="System.ArgumentNullException">null.</exception>
-    public static ActorRegistrationCollection AddParties([NotNull] this ActorRegistrationCollection actors)
+    public static ActorRegistrationCollection AddPartiesAggregates([NotNull] this ActorRegistrationCollection actors)
     {
         ArgumentNullException.ThrowIfNull(actors);
         actors.RegisterActor<CustomerAggregateActor>();

@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 08-29-2023
 // ***********************************************************************
-// <copyright file="SetCustomerIntercompanyDeliveryToDirectHandler.cs" company="Fiveforty SAS Paris France">
+// <copyright file="SetIntercompanyDropshipDeliveryForCustomerHandler.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -30,13 +30,13 @@ using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class SetCustomerIntercompanyDeliveryToDirectHandler.
-/// Implements the <see cref="Hexalith.Application.Commands.CommandHandler{Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDirectDelivery}" />.
+/// Implements the <see cref="Hexalith.Application.Commands.CommandHandler{Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer}" />.
 /// </summary>
-/// <seealso cref="Hexalith.Application.Commands.CommandHandler{Hexalith.Application.Parties.Commands.SetCustomerIntercompanyDirectDelivery}" />
-public class SetCustomerIntercompanyDeliveryToDirectHandler : CommandHandler<SetCustomerIntercompanyDirectDelivery>
+/// <seealso cref="Hexalith.Application.Commands.CommandHandler{Hexalith.Application.Parties.Commands.SetIntercompanyDropshipDeliveryForCustomer}" />
+public class SetIntercompanyDropshipDeliveryForCustomerHandler : CommandHandler<SetIntercompanyDropshipDeliveryForCustomer>
 {
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] SetCustomerIntercompanyDirectDelivery command, CancellationToken cancellationToken)
+    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] SetIntercompanyDropshipDeliveryForCustomer command, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
         return Task.FromResult<IEnumerable<BaseMessage>>(
@@ -48,5 +48,5 @@ public class SetCustomerIntercompanyDeliveryToDirectHandler : CommandHandler<Set
     }
 
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> UndoAsync(SetCustomerIntercompanyDirectDelivery command, CancellationToken cancellationToken) => throw new NotSupportedException();
+    public override Task<IEnumerable<BaseMessage>> UndoAsync(SetIntercompanyDropshipDeliveryForCustomer command, CancellationToken cancellationToken) => throw new NotSupportedException();
 }

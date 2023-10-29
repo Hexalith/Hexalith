@@ -4,9 +4,9 @@
 // Created          : 08-21-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 10-03-2023
+// Last Modified On : 10-04-2023
 // ***********************************************************************
-// <copyright file="SetCustomerIntercompanyDirectDelivery.cs" company="Fiveforty SAS Paris France">
+// <copyright file="SetStockDeliveryForCustomer.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -21,20 +21,20 @@ using System.Runtime.Serialization;
 using Hexalith.Extensions;
 
 /// <summary>
-/// Class SetCustomerIntercompanyDeliveryToDirect.
-/// Implements the <see cref="Application.Commands.CustomerCommand" />.
+/// Class SetCustomerIntercompanyDeliveryToIndirect.
+/// Implements the <see cref="Hexalith.Application.Parties.Commands.CustomerCommand" />.
 /// </summary>
-/// <seealso cref="Application.Commands.CustomerCommand" />
+/// <seealso cref="Hexalith.Application.Parties.Commands.CustomerCommand" />
 [DataContract]
-public class SetCustomerIntercompanyDirectDelivery : CustomerCommand
+public class SetStockDeliveryForCustomer : CustomerCommand
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="SetCustomerIntercompanyDirectDelivery"/> class.
+    /// Initializes a new instance of the <see cref="SetStockDeliveryForCustomer"/> class.
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
     /// <param name="id">The identifier.</param>
-    public SetCustomerIntercompanyDirectDelivery(
+    public SetStockDeliveryForCustomer(
         string partitionId,
         string companyId,
         string id)
@@ -43,10 +43,10 @@ public class SetCustomerIntercompanyDirectDelivery : CustomerCommand
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="SetCustomerIntercompanyDirectDelivery"/> class.
+    /// Initializes a new instance of the <see cref="SetStockDeliveryForCustomer" /> class.
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    public SetCustomerIntercompanyDirectDelivery()
+    public SetStockDeliveryForCustomer()
     {
     }
 }

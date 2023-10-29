@@ -96,6 +96,7 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
             {
                 if (await _externalReferenceMapperService
                     .GetExternalIdAsync(
+                        customerAggregateName,
                         customerAggregateId,
                         reference.SystemId,
                         cancellationToken)
@@ -126,11 +127,11 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
         bool directDelivery = @event.InterCompanyDirectDelivery == "Yes";
         if (directDelivery)
         {
-            commands.Add(new SetCustomerIntercompanyDirectDelivery(_partitionId, companyId, customerId));
+            commands.Add(new SetIntercompanyDropshipDeliveryForCustomer(_partitionId, companyId, customerId));
         }
         else
         {
-            commands.Add(new UnsetCustomerIntercompanyDirectDelivery(_partitionId, companyId, customerId));
+            commands.Add(new SetStockDeliveryForCustomer(_partitionId, companyId, customerId));
         }
 
         return commands;

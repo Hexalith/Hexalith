@@ -32,22 +32,41 @@ using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services;
 /// <seealso cref="Hexalith.Application.Projection.IProjectionUpdateHandler{Hexalith.Domain.Events.ExternalSystemReferenceRemoved}" />
 public class ExternalSystemReferenceRemovedMapperUpdateHandler : IProjectionUpdateHandler<ExternalSystemReferenceRemoved>
 {
+    /// <summary>
+    /// The aggregate names.
+    /// </summary>
+    private readonly IEnumerable<string> _aggregateNames;
+
+    /// <summary>
+    /// The application name.
+    /// </summary>
     private readonly string _applicationName;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ExternalSystemReferenceRemovedMapperUpdateHandler"/> class.
+    /// Initializes a new instance of the <see cref="ExternalSystemReferenceRemovedMapperUpdateHandler" /> class.
     /// </summary>
     /// <param name="applicationName">Name of the application.</param>
-    public ExternalSystemReferenceRemovedMapperUpdateHandler([NotNull] string applicationName)
+    /// <param name="aggregateNames">The aggregate names.</param>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
+    public ExternalSystemReferenceRemovedMapperUpdateHandler([NotNull] string applicationName, [NotNull] IEnumerable<string> aggregateNames)
     {
-        ArgumentException.ThrowIfNullOrEmpty(applicationName);
+        ArgumentNullException.ThrowIfNull(applicationName);
+        ArgumentNullException.ThrowIfNull(aggregateNames);
         _applicationName = applicationName;
+        _aggregateNames = aggregateNames;
     }
 
     /// <inheritdoc/>
-    public async Task ApplyAsync(ExternalSystemReferenceRemoved baseEvent, IMetadata metadata, CancellationToken cancellationToken)
+    public async Task ApplyAsync(ExternalSystemReferenceRemoved baseEvent, [NotNull] IMetadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(baseEvent);
+        ArgumentNullException.ThrowIfNull(metadata);
+
+        if (!_aggregateNames.Contains(baseEvent.AggregateName, StringComparer.InvariantCultureIgnoreCase))
+        {
+            return;
+        }
+
         ExternalReferenceMapperUpdateService mapper = new(_applicationName, baseEvent.ReferenceAggregateName);
         await mapper.SetExternalIdAsync(
                 baseEvent.ReferenceAggregateId,

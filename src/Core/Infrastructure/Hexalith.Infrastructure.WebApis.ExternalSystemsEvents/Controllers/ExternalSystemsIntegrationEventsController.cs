@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers;
+namespace Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers;
 
 using Dapr;
 

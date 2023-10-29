@@ -4,7 +4,7 @@
 // Created          : 10-28-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 10-28-2023
+// Last Modified On : 10-29-2023
 // ***********************************************************************
 // <copyright file="ExternalSystemReferenceAddedMapperUpdateHandler.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -33,28 +33,39 @@ using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services;
 /// <seealso cref="Hexalith.Application.Projection.IProjectionUpdateHandler{Hexalith.Domain.Events.ExternalSystemReferenceAdded}" />
 public class ExternalSystemReferenceAddedMapperUpdateHandler : IProjectionUpdateHandler<ExternalSystemReferenceAdded>
 {
+    /// <summary>
+    /// The aggregate names.
+    /// </summary>
+    private readonly IEnumerable<string> _aggregateNames;
+
+    /// <summary>
+    /// The application name.
+    /// </summary>
     private readonly string _applicationName;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ExternalSystemReferenceAddedMapperUpdateHandler"/> class.
+    /// Initializes a new instance of the <see cref="ExternalSystemReferenceAddedMapperUpdateHandler" /> class.
     /// </summary>
     /// <param name="applicationName">Name of the application.</param>
-    public ExternalSystemReferenceAddedMapperUpdateHandler([NotNull] string applicationName)
+    /// <param name="aggregateNames">The aggregate names.</param>
+    public ExternalSystemReferenceAddedMapperUpdateHandler([NotNull] string applicationName, [NotNull] IEnumerable<string> aggregateNames)
     {
         ArgumentNullException.ThrowIfNull(applicationName);
+        ArgumentNullException.ThrowIfNull(aggregateNames);
         _applicationName = applicationName;
+        _aggregateNames = aggregateNames;
     }
 
-    /// <summary>
-    /// Apply as an asynchronous operation.
-    /// </summary>
-    /// <param name="baseEvent">The event.</param>
-    /// <param name="metadata">The metadata.</param>
-    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>A Task representing the asynchronous operation.</returns>
-    public async Task ApplyAsync(ExternalSystemReferenceAdded baseEvent, IMetadata metadata, CancellationToken cancellationToken)
+    /// <inheritdoc/>
+    public async Task ApplyAsync([NotNull] ExternalSystemReferenceAdded baseEvent, [NotNull] IMetadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(baseEvent);
+        ArgumentNullException.ThrowIfNull(metadata);
+        if (!_aggregateNames.Contains(baseEvent.AggregateName, StringComparer.InvariantCultureIgnoreCase))
+        {
+            return;
+        }
+
         ExternalReferenceMapperUpdateService mapper = new(_applicationName, baseEvent.ReferenceAggregateName);
         await mapper.SetExternalIdAsync(
                 baseEvent.ReferenceAggregateId,

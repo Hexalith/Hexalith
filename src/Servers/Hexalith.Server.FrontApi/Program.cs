@@ -21,7 +21,7 @@ WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
     appName,
     "v1",
     debugInVisualStudio,
-    (actors) => actors.AddParties(),
+    (actors) => actors.AddPartiesAggregates(),
     args);
 
 builder.Services.AddDaprParties(builder.Configuration);

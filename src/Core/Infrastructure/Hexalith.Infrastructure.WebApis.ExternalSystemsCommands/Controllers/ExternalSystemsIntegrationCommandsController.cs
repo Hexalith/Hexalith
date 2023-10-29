@@ -4,9 +4,9 @@
 // Created          : 10-26-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 10-26-2023
+// Last Modified On : 10-29-2023
 // ***********************************************************************
-// <copyright file="ExternalSystemsCommandsController.cs" company="Fiveforty SAS Paris France">
+// <copyright file="ExternalSystemsIntegrationCommandsController.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -14,14 +14,14 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Server.ExternalSystems.Infrastructure.Controllers;
+namespace Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers;
 
 using Dapr;
 
 using Hexalith.Application;
-using Hexalith.Application.Commands;
 using Hexalith.Application.States;
 using Hexalith.Domain.Aggregates;
+using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.WebApis.Controllers;
 
 using Microsoft.AspNetCore.Mvc;
@@ -30,22 +30,22 @@ using Microsoft.Extensions.Logging;
 
 /// <summary>
 /// Class ExternalSystemsPubSubController.
-/// Implements the <see cref="EventIntegrationController" />.
+/// Implements the <see cref="CommandIntegrationController" />.
 /// </summary>
-/// <seealso cref="EventIntegrationController" />
-public class ExternalSystemsCommandsController : CommandSubmissionController
+/// <seealso cref="CommandIntegrationController" />
+[ApiController]
+public class ExternalSystemsIntegrationCommandsController : CommandSubmissionController
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="ExternalSystemsCommandsController"/> class.
+    /// Initializes a new instance of the <see cref="ExternalSystemsIntegrationCommandsController" /> class.
     /// </summary>
-    /// <param name="eventProcessor">The event processor.</param>
     /// <param name="commandProcessor">The command processor.</param>
     /// <param name="hostEnvironment">The host environment.</param>
     /// <param name="logger">The logger.</param>
-    protected ExternalSystemsCommandsController(
-        ICommandProcessor commandProcessor,
+    public ExternalSystemsIntegrationCommandsController(
+        ConventionNamingCommandProcessor commandProcessor,
         IHostEnvironment hostEnvironment,
-        ILogger logger)
+        ILogger<ExternalSystemsIntegrationCommandsController> logger)
         : base(commandProcessor, hostEnvironment, logger)
     {
     }
@@ -58,6 +58,9 @@ public class ExternalSystemsCommandsController : CommandSubmissionController
     [Topic(ApplicationConstants.CommandBus, "externalsystemreference-commands")]
     [HttpPost("/handle-external-system-reference-commands")]
     public async Task<ActionResult> HandleExternalSystemsCommandsAsync(CommandState commandState)
-        => await HandleCommandAsync(commandState, ExternalSystemReference.GetAggregateName(), CancellationToken.None)
+        => await HandleCommandAsync(
+                commandState,
+                ExternalSystemReference.GetAggregateName(),
+                CancellationToken.None)
             .ConfigureAwait(false);
 }

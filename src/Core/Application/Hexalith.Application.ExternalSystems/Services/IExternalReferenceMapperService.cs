@@ -23,20 +23,22 @@ public interface IExternalReferenceMapperService
     /// <summary>
     /// Gets the aggregate identifier asynchronous.
     /// </summary>
+    /// <param name="aggregateName">Name of the aggregate.</param>
     /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
     /// <param name="systemId">The system identifier.</param>
     /// <param name="externalId">The external identifier.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;System.Nullable&lt;System.String&gt;&gt;.</returns>
-    Task<string?> GetAggregateIdAsync(string partitionId, string companyId, string systemId, string externalId, CancellationToken cancellationToken);
+    Task<string?> GetAggregateIdAsync(string aggregateName, string partitionId, string companyId, string systemId, string externalId, CancellationToken cancellationToken);
 
     /// <summary>
-    /// Gets the asynchronous.
+    /// Gets the external identifier asynchronous.
     /// </summary>
+    /// <param name="aggregateName">Name of the aggregate.</param>
     /// <param name="aggregateId">The aggregate identifier.</param>
     /// <param name="systemId">The system identifier.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;System.Nullable&lt;System.String&gt;&gt;.</returns>
-    Task<string?> GetExternalIdAsync(string aggregateId, string systemId, CancellationToken cancellationToken);
+    Task<string?> GetExternalIdAsync(string aggregateName, string aggregateId, string systemId, CancellationToken cancellationToken);
 }

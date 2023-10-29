@@ -23,7 +23,6 @@ using Dapr.Actors.Client;
 using Dapr.Actors.Runtime;
 
 using Hexalith.Application;
-using Hexalith.Application.ExternalSystems.Helpers;
 using Hexalith.Application.ExternalSystems.Services;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
@@ -40,37 +39,24 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 public static class ExternalSystemsProjectionsHelper
 {
     /// <summary>
-    /// Adds the external systems service.
+    /// Adds the dapr external systems mapper.
     /// </summary>
     /// <param name="services">The services.</param>
     /// <param name="configuration">The configuration.</param>
+    /// <param name="applicationName">Name of the application.</param>
+    /// <param name="aggregateNames">The aggregate names.</param>
     /// <returns>IServiceCollection.</returns>
     /// <exception cref="System.ArgumentNullException">null.</exception>
-    public static IServiceCollection AddDaprExternalSystems([NotNull] this IServiceCollection services, [NotNull] IConfiguration configuration)
+    public static IServiceCollection AddDaprExternalSystemsMapper(
+        [NotNull] this IServiceCollection services,
+        [NotNull] IConfiguration configuration,
+        [NotNull] string applicationName)
     {
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
         services
-            .AddExternalSystemsCommandHandlers()
             .ConfigureSettings<ExternalSystemsProjectionsSettings>(configuration)
-            .TryAddTransient<IExternalReferenceMapperService>();
-        services.TryAddTransient<IExternalReferenceMapperService, ExternalReferenceMapperService>();
-        return services;
-    }
-
-    /// <summary>
-    /// Adds the dapr external systems mapper.
-    /// </summary>
-    /// <param name="services">The services.</param>
-    /// <param name="applicationName">Name of the application.</param>
-    /// <param name="aggregateName">Name of the aggregate.</param>
-    /// <returns>IServiceCollection.</returns>
-    /// <exception cref="System.ArgumentNullException">null.</exception>
-    public static IServiceCollection AddDaprExternalSystemsMapper([NotNull] this IServiceCollection services, [NotNull] string applicationName, [NotNull] string aggregateName)
-    {
-        ArgumentNullException.ThrowIfNull(services);
-        ArgumentException.ThrowIfNullOrEmpty(aggregateName);
-        services.TryAddSingleton<IExternalReferenceMapperService>(new ExternalReferenceMapperService(applicationName, aggregateName));
+            .TryAddSingleton<IExternalReferenceMapperService>(new ExternalReferenceMapperService(applicationName));
         return services;
     }
 
@@ -79,15 +65,22 @@ public static class ExternalSystemsProjectionsHelper
     /// </summary>
     /// <param name="actors">The actors.</param>
     /// <param name="applicationName">Name of the application.</param>
-    /// <param name="aggregateName">Name of the aggregate.</param>
+    /// <param name="aggregateNames">The aggregate names.</param>
     /// <returns>ActorRegistrationCollection.</returns>
     /// <exception cref="System.ArgumentNullException">null.</exception>
-    public static ActorRegistrationCollection AddExternalSystemsMapper([NotNull] this ActorRegistrationCollection actors, [NotNull] string applicationName, [NotNull] string aggregateName)
+    public static ActorRegistrationCollection AddExternalSystemsMapper(
+        [NotNull] this ActorRegistrationCollection actors,
+        [NotNull] string applicationName,
+        [NotNull] IEnumerable<string> aggregateNames)
     {
         ArgumentNullException.ThrowIfNull(actors);
-        ArgumentException.ThrowIfNullOrEmpty(aggregateName);
-        actors.RegisterActor<KeyValueActor>(GetAggregateToExternalReferenceActorName(applicationName, aggregateName));
-        actors.RegisterActor<KeyValueActor>(GetExternalReferenceToAggregateActorName(applicationName, aggregateName));
+        ArgumentNullException.ThrowIfNull(aggregateNames);
+        foreach (string aggregateName in aggregateNames)
+        {
+            actors.RegisterActor<KeyValueActor>(GetAggregateToExternalReferenceActorName(applicationName, aggregateName));
+            actors.RegisterActor<KeyValueActor>(GetExternalReferenceToAggregateActorName(applicationName, aggregateName));
+        }
+
         return actors;
     }
 

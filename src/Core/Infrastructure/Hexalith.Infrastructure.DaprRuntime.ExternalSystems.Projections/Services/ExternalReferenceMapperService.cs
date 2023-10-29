@@ -33,38 +33,30 @@ using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers;
 /// <seealso cref="IExternalReferenceMapperService" />
 public class ExternalReferenceMapperService : IExternalReferenceMapperService
 {
-    /// <summary>
-    /// The aggregate name.
-    /// </summary>
-    private readonly string _aggregateName;
-
     private readonly string _applicationName;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ExternalReferenceMapperService"/> class.
     /// </summary>
     /// <param name="applicationName">Name of the application.</param>
-    /// <param name="aggregateName">Name of the aggregate.</param>
-    public ExternalReferenceMapperService(string applicationName, string aggregateName)
+    public ExternalReferenceMapperService(string applicationName)
     {
-        ArgumentException.ThrowIfNullOrEmpty(aggregateName);
         ArgumentException.ThrowIfNullOrEmpty(applicationName);
         _applicationName = applicationName;
-        _aggregateName = aggregateName;
     }
 
     /// <inheritdoc/>
-    public async Task<string?> GetAggregateIdAsync(string partitionId, string companyId, string systemId, string externalId, CancellationToken cancellationToken)
+    public async Task<string?> GetAggregateIdAsync(string aggregateName, string partitionId, string companyId, string systemId, string externalId, CancellationToken cancellationToken)
     {
-        return await GetExternalReferenceToAggregateActor(partitionId, companyId, systemId, externalId)
+        return await GetExternalReferenceToAggregateActor(_applicationName, partitionId, companyId, systemId, externalId)
             .GetAsync()
             .ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public async Task<string?> GetExternalIdAsync(string aggregateId, string systemId, CancellationToken cancellationToken)
+    public async Task<string?> GetExternalIdAsync(string aggregateName, string aggregateId, string systemId, CancellationToken cancellationToken)
     {
-        return await GetAggregateToExternalReferenceActor(aggregateId, systemId)
+        return await GetAggregateToExternalReferenceActor(_applicationName, aggregateId, systemId)
             .GetAsync()
             .ConfigureAwait(false);
     }
@@ -74,11 +66,11 @@ public class ExternalReferenceMapperService : IExternalReferenceMapperService
     /// </summary>
     /// <param name="aggregateId">The aggregate identifier.</param>
     /// <returns>IAggregateExternalReferenceProjectionActor.</returns>
-    private IKeyValueActor GetAggregateToExternalReferenceActor(string aggregateId, string systemId)
+    private IKeyValueActor GetAggregateToExternalReferenceActor(string aggregateName, string aggregateId, string systemId)
     {
         return ActorProxy.Create<IKeyValueActor>(
             new ActorId(ExternalSystemsProjectionsHelper.CreateExternalReferenceMapperId(aggregateId, systemId)),
-            ExternalSystemsProjectionsHelper.GetAggregateToExternalReferenceActorName(_applicationName, _aggregateName));
+            ExternalSystemsProjectionsHelper.GetAggregateToExternalReferenceActorName(_applicationName, aggregateName));
     }
 
     /// <summary>
@@ -89,10 +81,10 @@ public class ExternalReferenceMapperService : IExternalReferenceMapperService
     /// <param name="systemId">The system identifier.</param>
     /// <param name="externalId">The external identifier.</param>
     /// <returns>IExternalReferenceToAggregateActor.</returns>
-    private IKeyValueActor GetExternalReferenceToAggregateActor(string partitionId, string companyId, string systemId, string externalId)
+    private IKeyValueActor GetExternalReferenceToAggregateActor(string aggregateName, string partitionId, string companyId, string systemId, string externalId)
     {
         return ActorProxy.Create<IKeyValueActor>(
             new ActorId(ExternalSystemsProjectionsHelper.CreateExternalReferenceMapperId(partitionId, companyId, systemId, externalId)),
-            ExternalSystemsProjectionsHelper.GetAggregateToExternalReferenceActorName(_applicationName, _aggregateName));
+            ExternalSystemsProjectionsHelper.GetAggregateToExternalReferenceActorName(_applicationName, aggregateName));
     }
 }

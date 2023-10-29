@@ -14,12 +14,17 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Infrastructure.WebApis.ExternalSystems.Helpers;
+namespace Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Helpers;
 
-using Hexalith.Application.Projection;
-using Hexalith.Domain.Events;
-using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections;
-using Hexalith.Infrastructure.WebApis.ExternalSystems.Controllers;
+using System.Diagnostics.CodeAnalysis;
+
+using Dapr.Actors.Client;
+
+using Hexalith.Application.Commands;
+using Hexalith.Application.ExternalSystems.CommandHandlers;
+using Hexalith.Application.ExternalSystems.Commands;
+using Hexalith.Infrastructure.DaprRuntime.Handlers;
+using Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -30,18 +35,20 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 public static class ExternalSystemsWebApiHelpers
 {
     /// <summary>
-    /// Adds the external systems mapper.
+    /// Adds the external systems commands.
     /// </summary>
     /// <param name="services">The services.</param>
-    /// <param name="applicationName">Name of the application.</param>
     /// <returns>IServiceCollection.</returns>
-    public static IServiceCollection AddExternalSystemsMapperUpdate(this IServiceCollection services, string applicationName)
+    public static IServiceCollection AddExternalSystemsCommands([NotNull] this IServiceCollection services)
     {
-        services.TryAddSingleton<IProjectionUpdateHandler<ExternalSystemReferenceAdded>>(new ExternalSystemReferenceAddedMapperUpdateHandler(applicationName));
-        services.TryAddSingleton<IProjectionUpdateHandler<ExternalSystemReferenceRemoved>>(new ExternalSystemReferenceRemovedMapperUpdateHandler(applicationName));
+        ArgumentNullException.ThrowIfNull(services);
+        services.TryAddSingleton<ICommandHandler<AddExternalSystemReference>, AddExternalSystemReferenceHandler>();
+        services.TryAddSingleton<ICommandHandler<RemoveExternalSystemReference>, RemoveExternalSystemReferenceHandler>();
+        services.TryAddSingleton(new ConventionNamingCommandProcessor(ActorProxy.DefaultProxyFactory));
+
         _ = services
          .AddControllers()
-         .AddApplicationPart(typeof(ExternalSystemsIntegrationEventsController).Assembly)
+         .AddApplicationPart(typeof(ExternalSystemsIntegrationCommandsController).Assembly)
          .AddDapr();
         return services;
     }

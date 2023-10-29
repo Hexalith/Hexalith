@@ -35,8 +35,8 @@ public static class PartiesHelper
     public static IServiceCollection AddPartiesCommandHandlers(this IServiceCollection services)
     {
         return services
-            .AddTransient<ICommandHandler<UnsetCustomerIntercompanyDirectDelivery>, SetCustomerIntercompanyDeliveryToIndirectHandler>()
-            .AddTransient<ICommandHandler<SetCustomerIntercompanyDirectDelivery>, SetCustomerIntercompanyDeliveryToDirectHandler>()
+            .AddTransient<ICommandHandler<SetStockDeliveryForCustomer>, SetStockDeliveryForCustomerHandler>()
+            .AddTransient<ICommandHandler<SetIntercompanyDropshipDeliveryForCustomer>, SetIntercompanyDropshipDeliveryForCustomerHandler>()
             .AddTransient<ICommandHandler<ChangeCustomerInformation>, ChangeCustomerInformationHandler>()
             .AddTransient<ICommandHandler<RegisterCustomer>, RegisterCustomerHandler>();
     }
