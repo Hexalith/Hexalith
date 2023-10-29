@@ -4,7 +4,7 @@ on:
     paths-ignore:
       - '**/*.md'
       - 'mkdocs.yml'
-      - 'src/docs/**/*'
+      - 'docs/**/*'
     tags: 
       - 'v*.*.*'
 env:
@@ -39,3 +39,17 @@ jobs:
     - name: Deploy release nuget packages
       run: |
         dotnet nuget push './src/Core/**/*.nupkg' --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.HEXALITHDYNAMICS365FINANCE_AZURE_CREDENTIALS }}
+    - name: Build and push Dynamics365Finance container image to registry
+      uses: azure/container-apps-deploy-action@v1
+      with:
+        appSourcePath: ${{ github.workspace }}/src/Servers/Hexalith.Server.Dynamics365Finance 
+        registryUrl: christofle.azurecr.io
+        registryUsername: ${{ secrets.HEXALITHDYNAMICS365FINANCE_REGISTRY_USERNAME }}
+        registryPassword: ${{ secrets.HEXALITHDYNAMICS365FINANCE_REGISTRY_PASSWORD }}
+        containerAppName: hexalith-dynamics365finance
+        resourceGroup: chr-dev-logistics-partner
+        imageToBuild: christofle.azurecr.io/hexalith-dynamics365finance:${{ env.VERSION }}
