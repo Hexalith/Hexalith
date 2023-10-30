@@ -14,15 +14,11 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Infrastructure.WebApis.Parties.Helpers;
+namespace Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers;
 
-using Hexalith.Application.Events;
-using Hexalith.Domain.Events;
 using Hexalith.Infrastructure.WebApis.Parties.Controllers;
-using Hexalith.Infrastructure.WebApis.Parties.IntegrationEvents;
 
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 
 /// <summary>
 /// Class PartiesWebApiHelpers.
@@ -34,10 +30,8 @@ public static class PartiesWebApiHelpers
     /// </summary>
     /// <param name="services">The services.</param>
     /// <returns>IServiceCollection.</returns>
-    public static IServiceCollection AddPartiesIntegrationEventHandlers(this IServiceCollection services)
+    public static IServiceCollection AddPartiesIntegrationEventsSubscription(this IServiceCollection services)
     {
-        services.TryAddSingleton<IIntegrationEventHandler<CustomerRegistered>, CustomerRegisteredHandler>();
-        services.TryAddSingleton<IIntegrationEventHandler<CustomerInformationChanged>, CustomerInformationChangedHandler>();
         _ = services
          .AddControllers()
          .AddApplicationPart(typeof(PartiesIntegrationEventsController).Assembly)
