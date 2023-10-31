@@ -1,7 +1,7 @@
 apiVersion: dapr.io/v1alpha1
 kind: Component
 metadata:
-  name: hexalith-d365fno-statestore
+  name: dynamics-365-finance-statestore
 spec:
   type: state.redis
   version: v1

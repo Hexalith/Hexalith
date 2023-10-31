@@ -84,7 +84,7 @@ public class Dynamics365FinanceCustomerBindingController : Dynamics365FinanceBin
     /// <param name="message">The message.</param>
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
     [Produces("application/json")]
-    [HttpPost("finops-customer-binding")]
+    [HttpPost("d365fno-customers-binding")]
     public async Task<ActionResult> ReceiveCustomerEventAsync(
        [SwaggerRequestBody(Description ="Dynamics 365 finance customer business event", Required = true)]
        [FromBody] JsonElement message) => await HandleEventAsync(message, CancellationToken.None).ConfigureAwait(false);
