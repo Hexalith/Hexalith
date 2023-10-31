@@ -52,7 +52,7 @@ public class PartiesCommandsController(
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
     [Topic(ApplicationConstants.CommandBus, "customer-commands")]
     [HttpPost("/handle-customer-commands")]
-    public async Task<ActionResult> HandlePartiesCommandsAsync(CommandState commandState)
+    public async Task<ActionResult> SubmitCustomerCommandsAsync(CommandState commandState)
         => await HandleCommandAsync(
                 commandState,
                 Customer.GetAggregateName(),
