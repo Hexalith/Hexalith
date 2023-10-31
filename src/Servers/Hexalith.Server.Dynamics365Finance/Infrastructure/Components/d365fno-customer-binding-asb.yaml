@@ -1,7 +1,7 @@
 apiVersion: dapr.io/v1alpha1
 kind: Component
 metadata:
-  name: d365fno_customers_binding
+  name: d365fno-customers-binding
 spec:
   type: bindings.azure.servicebusqueues
   version: v1
