@@ -4,7 +4,7 @@
 // Created          : 10-09-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 10-09-2023
+// Last Modified On : 10-31-2023
 // ***********************************************************************
 // <copyright file="PartiesHelper.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -34,19 +34,16 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 public static class PartiesHelper
 {
     /// <summary>
-    /// Adds the dynamics365 finance customers.
+    /// Adds the dynamics365 finance business events.
     /// </summary>
     /// <param name="services">The services.</param>
     /// <param name="configuration">The configuration.</param>
     /// <returns>IServiceCollection.</returns>
-    public static IServiceCollection AddDynamics365FinanceCustomers(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddDynamics365FinanceBusinessEvents(this IServiceCollection services, IConfiguration configuration)
     {
         services
             .AddDynamics365FinanceBusinessEvents(configuration)
-            .AddDynamics365FinanceClient(configuration)
-            .TryAddSingleton<IDynamics365FinanceClient<CustomerExternalSystemCode>, Dynamics365FinanceClient<CustomerExternalSystemCode>>();
-        services.TryAddSingleton<IDynamics365FinanceClient<CustomerV3>, Dynamics365FinanceClient<CustomerV3>>();
-        services.TryAddSingleton<IValidator<Dynamics365FinanceCustomerChanged>, Dynamics365FinanceCustomerChangedValidator>();
+            .TryAddSingleton<IValidator<Dynamics365FinanceCustomerChanged>, Dynamics365FinanceCustomerChangedValidator>();
         services.TryAddSingleton<IValidator<Dynamics365FinanceCustomerRegistered>, Dynamics365FinanceCustomerRegisteredValidator>();
         services.TryAddSingleton<IIntegrationEventHandler<Dynamics365FinanceCustomerChanged>, Dynamics365FinanceCustomerChangedHandler>();
         services.TryAddSingleton<IIntegrationEventHandler<Dynamics365FinanceCustomerRegistered>, Dynamics365FinanceCustomerRegisteredHandler>();
@@ -54,6 +51,34 @@ public static class PartiesHelper
             .AddControllers()
             .AddApplicationPart(typeof(Dynamics365FinanceCustomerBindingController).Assembly)
             .AddDapr();
+        return services;
+    }
+
+    /// <summary>
+    /// Adds the dynamics365 finance customers.
+    /// </summary>
+    /// <param name="services">The services.</param>
+    /// <param name="configuration">The configuration.</param>
+    /// <returns>IServiceCollection.</returns>
+    public static IServiceCollection AddDynamics365FinanceCustomers(this IServiceCollection services, IConfiguration configuration)
+    {
+        return services
+            .AddDynamics365FinanceCustomersClient(configuration)
+            .AddDynamics365FinanceBusinessEvents(configuration);
+    }
+
+    /// <summary>
+    /// Adds the dynamics365 finance customers client.
+    /// </summary>
+    /// <param name="services">The services.</param>
+    /// <param name="configuration">The configuration.</param>
+    /// <returns>IServiceCollection.</returns>
+    public static IServiceCollection AddDynamics365FinanceCustomersClient(this IServiceCollection services, IConfiguration configuration)
+    {
+        services
+            .AddDynamics365FinanceClient(configuration)
+            .TryAddSingleton<IDynamics365FinanceClient<CustomerExternalSystemCode>, Dynamics365FinanceClient<CustomerExternalSystemCode>>();
+        services.TryAddSingleton<IDynamics365FinanceClient<CustomerV3>, Dynamics365FinanceClient<CustomerV3>>();
         return services;
     }
 }

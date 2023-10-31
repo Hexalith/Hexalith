@@ -18,9 +18,11 @@ namespace Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Helpers;
 
 using System.Diagnostics.CodeAnalysis;
 
+using Hexalith.Application.ExternalSystems.Services;
 using Hexalith.Application.Projection;
 using Hexalith.Domain.Events;
 using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections;
+using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services;
 using Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers;
 
 using Microsoft.Extensions.DependencyInjection;
@@ -49,6 +51,7 @@ public static class ExternalSystemsWebApiHelpers
 
         services.TryAddSingleton<IProjectionUpdateHandler<ExternalSystemReferenceAdded>>(new ExternalSystemReferenceAddedMapperUpdateHandler(applicationName, aggregateNames));
         services.TryAddSingleton<IProjectionUpdateHandler<ExternalSystemReferenceRemoved>>(new ExternalSystemReferenceRemovedMapperUpdateHandler(applicationName, aggregateNames));
+        services.TryAddSingleton<IExternalReferenceMapperService>(new ExternalReferenceMapperService(applicationName));
         _ = services
          .AddControllers()
          .AddApplicationPart(typeof(ExternalSystemsIntegrationEventsController).Assembly)

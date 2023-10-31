@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Infrastructure.WebApis.Parties.Controllers;
+namespace Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers;
 
 using Dapr;
 
@@ -48,7 +48,7 @@ public class PartiesIntegrationEventsController : EventIntegrationController
         IIntegrationEventProcessor eventProcessor,
         IProjectionUpdateProcessor projectionProcessor,
         IHostEnvironment hostEnvironment,
-        ILogger logger)
+        ILogger<PartiesIntegrationEventsController> logger)
         : base(eventProcessor, projectionProcessor, hostEnvironment, logger)
     {
     }
@@ -60,7 +60,7 @@ public class PartiesIntegrationEventsController : EventIntegrationController
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
     [Topic(ApplicationConstants.EventBus, "customer-events")]
     [HttpPost("/handle-customer-events")]
-    public async Task<ActionResult> HandleAggregateExternalReferenceEventsAsync(EventState eventState)
+    public async Task<ActionResult> HandleCustomerEventsAsync(EventState eventState)
          => await HandleEventAsync(
                 eventState,
                 Customer.GetAggregateName(),

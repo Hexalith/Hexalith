@@ -51,8 +51,10 @@ public abstract class CustomerEvent : CompanyEntityEvent
     }
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateId() => Customer.GetAggregateId(PartitionId, CompanyId, Id);
+    protected override string DefaultAggregateId()
+        => Customer.GetAggregateId(PartitionId, CompanyId, Id);
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateName() => Customer.GetAggregateName();
+    protected override string DefaultAggregateName()
+        => Customer.GetAggregateName();
 }

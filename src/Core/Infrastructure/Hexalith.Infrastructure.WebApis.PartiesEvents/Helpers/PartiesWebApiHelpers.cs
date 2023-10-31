@@ -16,7 +16,7 @@
 
 namespace Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers;
 
-using Hexalith.Infrastructure.WebApis.Parties.Controllers;
+using Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers;
 
 using Microsoft.Extensions.DependencyInjection;
 

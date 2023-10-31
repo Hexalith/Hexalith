@@ -100,7 +100,11 @@ public class DaprClientStateStoreProvider : IStateStoreProvider
     /// <inheritdoc/>
     public async Task<ConditionalValue<T>> TryGetStateAsync<T>(string key, CancellationToken cancellationToken)
     {
-        T result = await DaprClient.GetStateAsync<T>(StateStoreName, key, null, null, cancellationToken).ConfigureAwait(false);
-        return new ConditionalValue<T>(result);
+        T result = await DaprClient
+            .GetStateAsync<T>(StateStoreName, key, null, null, cancellationToken)
+            .ConfigureAwait(false);
+        return result == null
+            ? new ConditionalValue<T>()
+            : new ConditionalValue<T>(result);
     }
 }
