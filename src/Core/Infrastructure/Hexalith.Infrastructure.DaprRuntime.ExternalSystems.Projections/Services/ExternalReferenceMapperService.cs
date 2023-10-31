@@ -48,7 +48,7 @@ public class ExternalReferenceMapperService : IExternalReferenceMapperService
     /// <inheritdoc/>
     public async Task<string?> GetAggregateIdAsync(string aggregateName, string partitionId, string companyId, string systemId, string externalId, CancellationToken cancellationToken)
     {
-        return await GetExternalReferenceToAggregateActor(_applicationName, partitionId, companyId, systemId, externalId)
+        return await GetExternalReferenceToAggregateActor(aggregateName, partitionId, companyId, systemId, externalId)
             .GetAsync()
             .ConfigureAwait(false);
     }
@@ -56,7 +56,7 @@ public class ExternalReferenceMapperService : IExternalReferenceMapperService
     /// <inheritdoc/>
     public async Task<string?> GetExternalIdAsync(string aggregateName, string aggregateId, string systemId, CancellationToken cancellationToken)
     {
-        return await GetAggregateToExternalReferenceActor(_applicationName, aggregateId, systemId)
+        return await GetAggregateToExternalReferenceActor(aggregateName, aggregateId, systemId)
             .GetAsync()
             .ConfigureAwait(false);
     }

@@ -13,6 +13,7 @@ using Hexalith.Application;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Errors;
 using Hexalith.Application.Events;
+using Hexalith.Application.Helpers;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.Notifications;
 using Hexalith.Domain.Events;
@@ -97,7 +98,9 @@ public partial class Dynamics365FinanceIntegrationEventProcessor : DependencyInj
         }
         catch (Exception ex)
         {
-            ApplicationErrorException appException = new(new EventDispatchFailed(@event, ex));
+            EventDispatchFailed error = new(@event, ex);
+            _logger.LogError(error);
+            ApplicationErrorException appException = new(error);
             ApplicationExceptionNotification notification = new(
                 @event.Message.Id,
                 @event.AggregateName,
