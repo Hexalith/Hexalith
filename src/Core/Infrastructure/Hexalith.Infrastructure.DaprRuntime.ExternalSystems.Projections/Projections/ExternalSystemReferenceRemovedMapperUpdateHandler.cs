@@ -62,7 +62,7 @@ public class ExternalSystemReferenceRemovedMapperUpdateHandler : IProjectionUpda
         ArgumentNullException.ThrowIfNull(baseEvent);
         ArgumentNullException.ThrowIfNull(metadata);
 
-        if (!_aggregateNames.Contains(baseEvent.AggregateName, StringComparer.InvariantCultureIgnoreCase))
+        if (!_aggregateNames.Contains(baseEvent.ReferenceAggregateName, StringComparer.InvariantCultureIgnoreCase))
         {
             return;
         }

@@ -61,7 +61,7 @@ public class ExternalSystemReferenceAddedMapperUpdateHandler : IProjectionUpdate
     {
         ArgumentNullException.ThrowIfNull(baseEvent);
         ArgumentNullException.ThrowIfNull(metadata);
-        if (!_aggregateNames.Contains(baseEvent.AggregateName, StringComparer.InvariantCultureIgnoreCase))
+        if (!_aggregateNames.Contains(baseEvent.ReferenceAggregateName, StringComparer.InvariantCultureIgnoreCase))
         {
             return;
         }
@@ -77,7 +77,7 @@ public class ExternalSystemReferenceAddedMapperUpdateHandler : IProjectionUpdate
                 baseEvent.CompanyId,
                 baseEvent.SystemId,
                 baseEvent.ExternalId,
-                baseEvent.AggregateId)
+                baseEvent.ReferenceAggregateId)
             .ConfigureAwait(false);
     }
 }
