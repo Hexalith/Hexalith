@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class EventIntegrationController
+    <title>Class PartiesIntegrationEventsController
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class EventIntegrationController
+    <meta name="title" content="Class PartiesIntegrationEventsController
    ">
     <meta name="generator" content="docfx 2.59.4.0">
     
@@ -68,13 +68,13 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Hexalith.Infrastructure.WebApis.Controllers.EventIntegrationController">
+            <article class="content wrap" id="_content" data-uid="Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController">
   
   
-  <h1 id="Hexalith_Infrastructure_WebApis_Controllers_EventIntegrationController" data-uid="Hexalith.Infrastructure.WebApis.Controllers.EventIntegrationController" class="text-break">Class EventIntegrationController
+  <h1 id="Hexalith_Infrastructure_WebApis_PartiesEvents_Controllers_PartiesIntegrationEventsController" data-uid="Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController" class="text-break">Class PartiesIntegrationEventsController
   </h1>
-  <div class="markdown level0 summary"><p>Class PubSubController.
-Implements the <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase</span>.</p>
+  <div class="markdown level0 summary"><p>Class PartiesPubSubController.
+Implements the <a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.EventIntegrationController.html">EventIntegrationController</a>.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -82,12 +82,14 @@ Implements the <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase</span>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase</span></div>
     <div class="level2"><a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.html">ReceiveMessageController</a></div>
-    <div class="level3"><span class="xref">EventIntegrationController</span></div>
-      <div class="level4"><a class="xref" href="Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController.html">ExternalSystemsIntegrationEventsController</a></div>
-      <div class="level4"><a class="xref" href="Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.html">PartiesIntegrationEventsController</a></div>
+    <div class="level3"><a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.EventIntegrationController.html">EventIntegrationController</a></div>
+    <div class="level4"><span class="xref">PartiesIntegrationEventsController</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.EventIntegrationController.html#Hexalith_Infrastructure_WebApis_Controllers_EventIntegrationController_HandleEventAsync_Hexalith_Application_States_EventState_System_String_CancellationToken_">EventIntegrationController.HandleEventAsync(EventState, String, CancellationToken)</a>
+    </div>
     <div>
       <a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.html#Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_Logger">ReceiveMessageController.Logger</a>
     </div>
@@ -638,30 +640,30 @@ Implements the <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase</span>
       <span class="xref">System.Object.ToString()</span>
     </div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.html">Hexalith.Infrastructure.WebApis.Controllers</a></h6>
-  <h6><strong>Assembly</strong>: Hexalith.Infrastructure.WebApis.dll</h6>
-  <h5 id="Hexalith_Infrastructure_WebApis_Controllers_EventIntegrationController_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.html">Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers</a></h6>
+  <h6><strong>Assembly</strong>: Hexalith.Infrastructure.WebApis.PartiesEvents.dll</h6>
+  <h5 id="Hexalith_Infrastructure_WebApis_PartiesEvents_Controllers_PartiesIntegrationEventsController_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ApiController]
-public abstract class EventIntegrationController : ReceiveMessageController</code></pre>
+public class PartiesIntegrationEventsController : EventIntegrationController</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_Controllers_EventIntegrationController__ctor_Hexalith_Application_Events_IIntegrationEventProcessor_Hexalith_Application_Projection_IProjectionUpdateProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Logging_ILogger_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.Controllers.EventIntegrationController.%23ctor(Hexalith.Application.Events.IIntegrationEventProcessor%2CHexalith.Application.Projection.IProjectionUpdateProcessor%2CMicrosoft.Extensions.Hosting.IHostEnvironment%2CMicrosoft.Extensions.Logging.ILogger)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_PartiesEvents_Controllers_PartiesIntegrationEventsController__ctor_Hexalith_Application_Events_IIntegrationEventProcessor_Hexalith_Application_Projection_IProjectionUpdateProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Logging_ILogger_Hexalith_Infrastructure_WebApis_PartiesEvents_Controllers_PartiesIntegrationEventsController__.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.%23ctor(Hexalith.Application.Events.IIntegrationEventProcessor%2CHexalith.Application.Projection.IProjectionUpdateProcessor%2CMicrosoft.Extensions.Hosting.IHostEnvironment%2CMicrosoft.Extensions.Logging.ILogger%7BHexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/EventIntegrationController.cs/#L51">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis.PartiesEvents/Controllers/PartiesIntegrationEventsController.cs/#L47">View Source</a>
   </span>
-  <a id="Hexalith_Infrastructure_WebApis_Controllers_EventIntegrationController__ctor_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.EventIntegrationController.#ctor*"></a>
-  <h4 id="Hexalith_Infrastructure_WebApis_Controllers_EventIntegrationController__ctor_Hexalith_Application_Events_IIntegrationEventProcessor_Hexalith_Application_Projection_IProjectionUpdateProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Logging_ILogger_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.EventIntegrationController.#ctor(Hexalith.Application.Events.IIntegrationEventProcessor,Hexalith.Application.Projection.IProjectionUpdateProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger)">EventIntegrationController(IIntegrationEventProcessor, IProjectionUpdateProcessor, IHostEnvironment, ILogger)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.EventIntegrationController.html">EventIntegrationController</a> class.</p>
+  <a id="Hexalith_Infrastructure_WebApis_PartiesEvents_Controllers_PartiesIntegrationEventsController__ctor_" data-uid="Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.#ctor*"></a>
+  <h4 id="Hexalith_Infrastructure_WebApis_PartiesEvents_Controllers_PartiesIntegrationEventsController__ctor_Hexalith_Application_Events_IIntegrationEventProcessor_Hexalith_Application_Projection_IProjectionUpdateProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Logging_ILogger_Hexalith_Infrastructure_WebApis_PartiesEvents_Controllers_PartiesIntegrationEventsController__" data-uid="Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.#ctor(Hexalith.Application.Events.IIntegrationEventProcessor,Hexalith.Application.Projection.IProjectionUpdateProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController})">PartiesIntegrationEventsController(IIntegrationEventProcessor, IProjectionUpdateProcessor, IHostEnvironment, ILogger&lt;PartiesIntegrationEventsController&gt;)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.html">PartiesIntegrationEventsController</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected EventIntegrationController(IIntegrationEventProcessor eventProcessor, IProjectionUpdateProcessor projectionProcessor, IHostEnvironment hostEnvironment, ILogger logger)</code></pre>
+    <pre><code class="lang-csharp hljs">public PartiesIntegrationEventsController(IIntegrationEventProcessor eventProcessor, IProjectionUpdateProcessor projectionProcessor, IHostEnvironment hostEnvironment, ILogger&lt;PartiesIntegrationEventsController&gt; logger)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -692,25 +694,9 @@ public abstract class EventIntegrationController : ReceiveMessageController</cod
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Microsoft.Extensions.Logging.ILogger</span></td>
+        <td><span class="xref">Microsoft.Extensions.Logging.ILogger</span>&lt;<a class="xref" href="Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.html">PartiesIntegrationEventsController</a>&gt;</td>
         <td><span class="parametername">logger</span></td>
         <td><p>The logger.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.ArgumentNullException</span></td>
-        <td><p>null.</p>
 </td>
       </tr>
     </tbody>
@@ -719,19 +705,21 @@ public abstract class EventIntegrationController : ReceiveMessageController</cod
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_Controllers_EventIntegrationController_HandleEventAsync_Hexalith_Application_States_EventState_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.Controllers.EventIntegrationController.HandleEventAsync(Hexalith.Application.States.EventState%2CSystem.String%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_PartiesEvents_Controllers_PartiesIntegrationEventsController_HandleCustomerEventsAsync_Hexalith_Application_States_EventState_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.HandleCustomerEventsAsync(Hexalith.Application.States.EventState)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/EventIntegrationController.cs/#L72">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis.PartiesEvents/Controllers/PartiesIntegrationEventsController.cs/#L61">View Source</a>
   </span>
-  <a id="Hexalith_Infrastructure_WebApis_Controllers_EventIntegrationController_HandleEventAsync_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.EventIntegrationController.HandleEventAsync*"></a>
-  <h4 id="Hexalith_Infrastructure_WebApis_Controllers_EventIntegrationController_HandleEventAsync_Hexalith_Application_States_EventState_System_String_CancellationToken_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.EventIntegrationController.HandleEventAsync(Hexalith.Application.States.EventState,System.String,CancellationToken)">HandleEventAsync(EventState, String, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Handle event as an asynchronous operation.</p>
+  <a id="Hexalith_Infrastructure_WebApis_PartiesEvents_Controllers_PartiesIntegrationEventsController_HandleCustomerEventsAsync_" data-uid="Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.HandleCustomerEventsAsync*"></a>
+  <h4 id="Hexalith_Infrastructure_WebApis_PartiesEvents_Controllers_PartiesIntegrationEventsController_HandleCustomerEventsAsync_Hexalith_Application_States_EventState_" data-uid="Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.HandleCustomerEventsAsync(Hexalith.Application.States.EventState)">HandleCustomerEventsAsync(EventState)</h4>
+  <div class="markdown level1 summary"><p>Handle aggregate external reference events as an asynchronous operation.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected async Task&lt;ActionResult&gt; HandleEventAsync(EventState eventState, string validAggregateName, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">[Topic(&quot;event-bus&quot;, &quot;customer-events&quot;, null, null)]
+[HttpPost(&quot;/handle-customer-events&quot;)]
+public async Task&lt;ActionResult&gt; HandleCustomerEventsAsync(EventState eventState)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -747,18 +735,6 @@ public abstract class EventIntegrationController : ReceiveMessageController</cod
         <td><a class="xref" href="Hexalith.Application.States.EventState.html">EventState</a></td>
         <td><span class="parametername">eventState</span></td>
         <td><p>State of the event.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">validAggregateName</span></td>
-        <td><p>Name of the valid aggregate.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
 </td>
       </tr>
     </tbody>
@@ -788,7 +764,7 @@ public abstract class EventIntegrationController : ReceiveMessageController</cod
   </div>
   <h3 id="seealso">See Also</h3>
   <div class="seealso">
-      <div><span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase</span></div>
+      <div><a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.EventIntegrationController.html">EventIntegrationController</a></div>
   </div>
 </article>
           </div>
@@ -798,10 +774,10 @@ public abstract class EventIntegrationController : ReceiveMessageController</cod
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_Controllers_EventIntegrationController.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.Controllers.EventIntegrationController%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_PartiesEvents_Controllers_PartiesIntegrationEventsController.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/EventIntegrationController.cs/#L33" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis.PartiesEvents/Controllers/PartiesIntegrationEventsController.cs/#L37" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

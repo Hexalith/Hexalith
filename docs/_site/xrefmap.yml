@@ -10130,6 +10130,12 @@ references:
   commentId: T:Hexalith.Domain.Aggregates.Customer
   fullName: Hexalith.Domain.Aggregates.Customer
   nameWithType: Customer
+- uid: Hexalith.Domain.Aggregates.Customer.#ctor
+  name: Customer()
+  href: api/Hexalith.Domain.Aggregates.Customer.html#Hexalith_Domain_Aggregates_Customer__ctor
+  commentId: M:Hexalith.Domain.Aggregates.Customer.#ctor
+  fullName: Hexalith.Domain.Aggregates.Customer.Customer()
+  nameWithType: Customer.Customer()
 - uid: Hexalith.Domain.Aggregates.Customer.#ctor(Hexalith.Domain.Events.CustomerRegistered)
   name: Customer(CustomerRegistered)
   href: api/Hexalith.Domain.Aggregates.Customer.html#Hexalith_Domain_Aggregates_Customer__ctor_Hexalith_Domain_Events_CustomerRegistered_
@@ -22950,6 +22956,19 @@ references:
   commentId: T:Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper
   nameWithType: PartiesHelper
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceBusinessEvents(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
+  name: AddDynamics365FinanceBusinessEvents(IServiceCollection, IConfiguration)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Helpers_PartiesHelper_AddDynamics365FinanceBusinessEvents_Microsoft_Extensions_DependencyInjection_IServiceCollection_Microsoft_Extensions_Configuration_IConfiguration_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceBusinessEvents(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceBusinessEvents(Microsoft.Extensions.DependencyInjection.IServiceCollection, Microsoft.Extensions.Configuration.IConfiguration)
+  nameWithType: PartiesHelper.AddDynamics365FinanceBusinessEvents(IServiceCollection, IConfiguration)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceBusinessEvents*
+  name: AddDynamics365FinanceBusinessEvents
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Helpers_PartiesHelper_AddDynamics365FinanceBusinessEvents_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceBusinessEvents
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceBusinessEvents
+  nameWithType: PartiesHelper.AddDynamics365FinanceBusinessEvents
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceCustomers(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
   name: AddDynamics365FinanceCustomers(IServiceCollection, IConfiguration)
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Helpers_PartiesHelper_AddDynamics365FinanceCustomers_Microsoft_Extensions_DependencyInjection_IServiceCollection_Microsoft_Extensions_Configuration_IConfiguration_
@@ -22963,6 +22982,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceCustomers
   nameWithType: PartiesHelper.AddDynamics365FinanceCustomers
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceCustomersClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
+  name: AddDynamics365FinanceCustomersClient(IServiceCollection, IConfiguration)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Helpers_PartiesHelper_AddDynamics365FinanceCustomersClient_Microsoft_Extensions_DependencyInjection_IServiceCollection_Microsoft_Extensions_Configuration_IConfiguration_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceCustomersClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceCustomersClient(Microsoft.Extensions.DependencyInjection.IServiceCollection, Microsoft.Extensions.Configuration.IConfiguration)
+  nameWithType: PartiesHelper.AddDynamics365FinanceCustomersClient(IServiceCollection, IConfiguration)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceCustomersClient*
+  name: AddDynamics365FinanceCustomersClient
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Helpers_PartiesHelper_AddDynamics365FinanceCustomersClient_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceCustomersClient
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceCustomersClient
+  nameWithType: PartiesHelper.AddDynamics365FinanceCustomersClient
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Security
   name: Hexalith.Infrastructure.Dynamics365Finance.Security
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Security.html
@@ -25109,69 +25141,6 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.WebApis.Helpers.WebApiHelper.UseSerilogLogger
   nameWithType: WebApiHelper.UseSerilogLogger
-- uid: Hexalith.Infrastructure.WebApis.Parties.Controllers
-  name: Hexalith.Infrastructure.WebApis.Parties.Controllers
-  href: api/Hexalith.Infrastructure.WebApis.Parties.Controllers.html
-  commentId: N:Hexalith.Infrastructure.WebApis.Parties.Controllers
-  fullName: Hexalith.Infrastructure.WebApis.Parties.Controllers
-  nameWithType: Hexalith.Infrastructure.WebApis.Parties.Controllers
-- uid: Hexalith.Infrastructure.WebApis.Parties.Controllers.PartiesIntegrationEventsController
-  name: PartiesIntegrationEventsController
-  href: api/Hexalith.Infrastructure.WebApis.Parties.Controllers.PartiesIntegrationEventsController.html
-  commentId: T:Hexalith.Infrastructure.WebApis.Parties.Controllers.PartiesIntegrationEventsController
-  fullName: Hexalith.Infrastructure.WebApis.Parties.Controllers.PartiesIntegrationEventsController
-  nameWithType: PartiesIntegrationEventsController
-- uid: Hexalith.Infrastructure.WebApis.Parties.Controllers.PartiesIntegrationEventsController.#ctor(Hexalith.Application.Events.IIntegrationEventProcessor,Hexalith.Application.Projection.IProjectionUpdateProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger)
-  name: PartiesIntegrationEventsController(IIntegrationEventProcessor, IProjectionUpdateProcessor, IHostEnvironment, ILogger)
-  href: api/Hexalith.Infrastructure.WebApis.Parties.Controllers.PartiesIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_Parties_Controllers_PartiesIntegrationEventsController__ctor_Hexalith_Application_Events_IIntegrationEventProcessor_Hexalith_Application_Projection_IProjectionUpdateProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Logging_ILogger_
-  commentId: M:Hexalith.Infrastructure.WebApis.Parties.Controllers.PartiesIntegrationEventsController.#ctor(Hexalith.Application.Events.IIntegrationEventProcessor,Hexalith.Application.Projection.IProjectionUpdateProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger)
-  fullName: Hexalith.Infrastructure.WebApis.Parties.Controllers.PartiesIntegrationEventsController.PartiesIntegrationEventsController(Hexalith.Application.Events.IIntegrationEventProcessor, Hexalith.Application.Projection.IProjectionUpdateProcessor, Microsoft.Extensions.Hosting.IHostEnvironment, Microsoft.Extensions.Logging.ILogger)
-  nameWithType: PartiesIntegrationEventsController.PartiesIntegrationEventsController(IIntegrationEventProcessor, IProjectionUpdateProcessor, IHostEnvironment, ILogger)
-- uid: Hexalith.Infrastructure.WebApis.Parties.Controllers.PartiesIntegrationEventsController.#ctor*
-  name: PartiesIntegrationEventsController
-  href: api/Hexalith.Infrastructure.WebApis.Parties.Controllers.PartiesIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_Parties_Controllers_PartiesIntegrationEventsController__ctor_
-  commentId: Overload:Hexalith.Infrastructure.WebApis.Parties.Controllers.PartiesIntegrationEventsController.#ctor
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.WebApis.Parties.Controllers.PartiesIntegrationEventsController.PartiesIntegrationEventsController
-  nameWithType: PartiesIntegrationEventsController.PartiesIntegrationEventsController
-- uid: Hexalith.Infrastructure.WebApis.Parties.Controllers.PartiesIntegrationEventsController.HandleAggregateExternalReferenceEventsAsync(Hexalith.Application.States.EventState)
-  name: HandleAggregateExternalReferenceEventsAsync(EventState)
-  href: api/Hexalith.Infrastructure.WebApis.Parties.Controllers.PartiesIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_Parties_Controllers_PartiesIntegrationEventsController_HandleAggregateExternalReferenceEventsAsync_Hexalith_Application_States_EventState_
-  commentId: M:Hexalith.Infrastructure.WebApis.Parties.Controllers.PartiesIntegrationEventsController.HandleAggregateExternalReferenceEventsAsync(Hexalith.Application.States.EventState)
-  fullName: Hexalith.Infrastructure.WebApis.Parties.Controllers.PartiesIntegrationEventsController.HandleAggregateExternalReferenceEventsAsync(Hexalith.Application.States.EventState)
-  nameWithType: PartiesIntegrationEventsController.HandleAggregateExternalReferenceEventsAsync(EventState)
-- uid: Hexalith.Infrastructure.WebApis.Parties.Controllers.PartiesIntegrationEventsController.HandleAggregateExternalReferenceEventsAsync*
-  name: HandleAggregateExternalReferenceEventsAsync
-  href: api/Hexalith.Infrastructure.WebApis.Parties.Controllers.PartiesIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_Parties_Controllers_PartiesIntegrationEventsController_HandleAggregateExternalReferenceEventsAsync_
-  commentId: Overload:Hexalith.Infrastructure.WebApis.Parties.Controllers.PartiesIntegrationEventsController.HandleAggregateExternalReferenceEventsAsync
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.WebApis.Parties.Controllers.PartiesIntegrationEventsController.HandleAggregateExternalReferenceEventsAsync
-  nameWithType: PartiesIntegrationEventsController.HandleAggregateExternalReferenceEventsAsync
-- uid: Hexalith.Infrastructure.WebApis.Parties.Helpers
-  name: Hexalith.Infrastructure.WebApis.Parties.Helpers
-  href: api/Hexalith.Infrastructure.WebApis.Parties.Helpers.html
-  commentId: N:Hexalith.Infrastructure.WebApis.Parties.Helpers
-  fullName: Hexalith.Infrastructure.WebApis.Parties.Helpers
-  nameWithType: Hexalith.Infrastructure.WebApis.Parties.Helpers
-- uid: Hexalith.Infrastructure.WebApis.Parties.Helpers.PartiesWebApiHelpers
-  name: PartiesWebApiHelpers
-  href: api/Hexalith.Infrastructure.WebApis.Parties.Helpers.PartiesWebApiHelpers.html
-  commentId: T:Hexalith.Infrastructure.WebApis.Parties.Helpers.PartiesWebApiHelpers
-  fullName: Hexalith.Infrastructure.WebApis.Parties.Helpers.PartiesWebApiHelpers
-  nameWithType: PartiesWebApiHelpers
-- uid: Hexalith.Infrastructure.WebApis.Parties.Helpers.PartiesWebApiHelpers.AddPartiesIntegrationEventHandlers(Microsoft.Extensions.DependencyInjection.IServiceCollection)
-  name: AddPartiesIntegrationEventHandlers(IServiceCollection)
-  href: api/Hexalith.Infrastructure.WebApis.Parties.Helpers.PartiesWebApiHelpers.html#Hexalith_Infrastructure_WebApis_Parties_Helpers_PartiesWebApiHelpers_AddPartiesIntegrationEventHandlers_Microsoft_Extensions_DependencyInjection_IServiceCollection_
-  commentId: M:Hexalith.Infrastructure.WebApis.Parties.Helpers.PartiesWebApiHelpers.AddPartiesIntegrationEventHandlers(Microsoft.Extensions.DependencyInjection.IServiceCollection)
-  fullName: Hexalith.Infrastructure.WebApis.Parties.Helpers.PartiesWebApiHelpers.AddPartiesIntegrationEventHandlers(Microsoft.Extensions.DependencyInjection.IServiceCollection)
-  nameWithType: PartiesWebApiHelpers.AddPartiesIntegrationEventHandlers(IServiceCollection)
-- uid: Hexalith.Infrastructure.WebApis.Parties.Helpers.PartiesWebApiHelpers.AddPartiesIntegrationEventHandlers*
-  name: AddPartiesIntegrationEventHandlers
-  href: api/Hexalith.Infrastructure.WebApis.Parties.Helpers.PartiesWebApiHelpers.html#Hexalith_Infrastructure_WebApis_Parties_Helpers_PartiesWebApiHelpers_AddPartiesIntegrationEventHandlers_
-  commentId: Overload:Hexalith.Infrastructure.WebApis.Parties.Helpers.PartiesWebApiHelpers.AddPartiesIntegrationEventHandlers
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.WebApis.Parties.Helpers.PartiesWebApiHelpers.AddPartiesIntegrationEventHandlers
-  nameWithType: PartiesWebApiHelpers.AddPartiesIntegrationEventHandlers
 - uid: Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers
   name: Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers
   href: api/Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers.html
@@ -25209,6 +25178,72 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.WebApis.PartiesCommands.Helpers.PartiesWebApiHelpers.AddPartiesCommandsSubmission
   nameWithType: PartiesWebApiHelpers.AddPartiesCommandsSubmission
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers
+  name: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.html
+  commentId: N:Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers
+  nameWithType: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController
+  name: PartiesIntegrationEventsController
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.html
+  commentId: T:Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController
+  nameWithType: PartiesIntegrationEventsController
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.#ctor(Hexalith.Application.Events.IIntegrationEventProcessor,Hexalith.Application.Projection.IProjectionUpdateProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController})
+  name: PartiesIntegrationEventsController(IIntegrationEventProcessor, IProjectionUpdateProcessor, IHostEnvironment, ILogger<PartiesIntegrationEventsController>)
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Controllers_PartiesIntegrationEventsController__ctor_Hexalith_Application_Events_IIntegrationEventProcessor_Hexalith_Application_Projection_IProjectionUpdateProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Logging_ILogger_Hexalith_Infrastructure_WebApis_PartiesEvents_Controllers_PartiesIntegrationEventsController__
+  commentId: M:Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.#ctor(Hexalith.Application.Events.IIntegrationEventProcessor,Hexalith.Application.Projection.IProjectionUpdateProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController})
+  name.vb: PartiesIntegrationEventsController(IIntegrationEventProcessor, IProjectionUpdateProcessor, IHostEnvironment, ILogger(Of PartiesIntegrationEventsController))
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.PartiesIntegrationEventsController(Hexalith.Application.Events.IIntegrationEventProcessor, Hexalith.Application.Projection.IProjectionUpdateProcessor, Microsoft.Extensions.Hosting.IHostEnvironment, Microsoft.Extensions.Logging.ILogger<Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController>)
+  fullName.vb: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.PartiesIntegrationEventsController(Hexalith.Application.Events.IIntegrationEventProcessor, Hexalith.Application.Projection.IProjectionUpdateProcessor, Microsoft.Extensions.Hosting.IHostEnvironment, Microsoft.Extensions.Logging.ILogger(Of Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController))
+  nameWithType: PartiesIntegrationEventsController.PartiesIntegrationEventsController(IIntegrationEventProcessor, IProjectionUpdateProcessor, IHostEnvironment, ILogger<PartiesIntegrationEventsController>)
+  nameWithType.vb: PartiesIntegrationEventsController.PartiesIntegrationEventsController(IIntegrationEventProcessor, IProjectionUpdateProcessor, IHostEnvironment, ILogger(Of PartiesIntegrationEventsController))
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.#ctor*
+  name: PartiesIntegrationEventsController
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Controllers_PartiesIntegrationEventsController__ctor_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.PartiesIntegrationEventsController
+  nameWithType: PartiesIntegrationEventsController.PartiesIntegrationEventsController
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.HandleCustomerEventsAsync(Hexalith.Application.States.EventState)
+  name: HandleCustomerEventsAsync(EventState)
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Controllers_PartiesIntegrationEventsController_HandleCustomerEventsAsync_Hexalith_Application_States_EventState_
+  commentId: M:Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.HandleCustomerEventsAsync(Hexalith.Application.States.EventState)
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.HandleCustomerEventsAsync(Hexalith.Application.States.EventState)
+  nameWithType: PartiesIntegrationEventsController.HandleCustomerEventsAsync(EventState)
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.HandleCustomerEventsAsync*
+  name: HandleCustomerEventsAsync
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Controllers_PartiesIntegrationEventsController_HandleCustomerEventsAsync_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.HandleCustomerEventsAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.HandleCustomerEventsAsync
+  nameWithType: PartiesIntegrationEventsController.HandleCustomerEventsAsync
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers
+  name: Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.html
+  commentId: N:Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers
+  nameWithType: Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers
+  name: PartiesWebApiHelpers
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers.html
+  commentId: T:Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers
+  nameWithType: PartiesWebApiHelpers
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers.AddPartiesIntegrationEventsSubscription(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  name: AddPartiesIntegrationEventsSubscription(IServiceCollection)
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Helpers_PartiesWebApiHelpers_AddPartiesIntegrationEventsSubscription_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  commentId: M:Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers.AddPartiesIntegrationEventsSubscription(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers.AddPartiesIntegrationEventsSubscription(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  nameWithType: PartiesWebApiHelpers.AddPartiesIntegrationEventsSubscription(IServiceCollection)
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers.AddPartiesIntegrationEventsSubscription*
+  name: AddPartiesIntegrationEventsSubscription
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Helpers_PartiesWebApiHelpers_AddPartiesIntegrationEventsSubscription_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers.AddPartiesIntegrationEventsSubscription
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers.AddPartiesIntegrationEventsSubscription
+  nameWithType: PartiesWebApiHelpers.AddPartiesIntegrationEventsSubscription
 - uid: Hexalith.TestMocks
   name: Hexalith.TestMocks
   href: api/Hexalith.TestMocks.html

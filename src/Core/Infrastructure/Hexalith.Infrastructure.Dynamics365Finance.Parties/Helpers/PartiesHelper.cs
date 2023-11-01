@@ -34,12 +34,25 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 public static class PartiesHelper
 {
     /// <summary>
+    /// Adds the dynamics365 finance customers.
+    /// </summary>
+    /// <param name="services">The services.</param>
+    /// <param name="configuration">The configuration.</param>
+    /// <returns>IServiceCollection.</returns>
+    public static IServiceCollection AddDynamics365FinanceCustomers(this IServiceCollection services, IConfiguration configuration)
+    {
+        return services
+            .AddDynamics365FinanceCustomersClient(configuration)
+            .AddDynamics365FinanceCustomersBusinessEvents(configuration);
+    }
+
+    /// <summary>
     /// Adds the dynamics365 finance business events.
     /// </summary>
     /// <param name="services">The services.</param>
     /// <param name="configuration">The configuration.</param>
     /// <returns>IServiceCollection.</returns>
-    public static IServiceCollection AddDynamics365FinanceBusinessEvents(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddDynamics365FinanceCustomersBusinessEvents(this IServiceCollection services, IConfiguration configuration)
     {
         services
             .AddDynamics365FinanceBusinessEvents(configuration)
@@ -52,19 +65,6 @@ public static class PartiesHelper
             .AddApplicationPart(typeof(Dynamics365FinanceCustomerBindingController).Assembly)
             .AddDapr();
         return services;
-    }
-
-    /// <summary>
-    /// Adds the dynamics365 finance customers.
-    /// </summary>
-    /// <param name="services">The services.</param>
-    /// <param name="configuration">The configuration.</param>
-    /// <returns>IServiceCollection.</returns>
-    public static IServiceCollection AddDynamics365FinanceCustomers(this IServiceCollection services, IConfiguration configuration)
-    {
-        return services
-            .AddDynamics365FinanceCustomersClient(configuration)
-            .AddDynamics365FinanceBusinessEvents(configuration);
     }
 
     /// <summary>

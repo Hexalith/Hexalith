@@ -132,16 +132,33 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
   <h6><strong>Assembly</strong>: Hexalith.Domain.Parties.dll</h6>
   <h5 id="Hexalith_Domain_Aggregates_Customer_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Customer : Aggregate, IAggregate, IEquatable&lt;Aggregate&gt;, IEquatable&lt;Customer&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">[DataContract]
+public class Customer : Aggregate, IAggregate, IEquatable&lt;Aggregate&gt;, IEquatable&lt;Customer&gt;</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_Customer__ctor.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.Customer.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L57">View Source</a>
+  </span>
+  <a id="Hexalith_Domain_Aggregates_Customer__ctor_" data-uid="Hexalith.Domain.Aggregates.Customer.#ctor*"></a>
+  <h4 id="Hexalith_Domain_Aggregates_Customer__ctor" data-uid="Hexalith.Domain.Aggregates.Customer.#ctor">Customer()</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Domain.Aggregates.Customer.html">Customer</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Customer()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_Customer__ctor_Hexalith_Domain_Events_CustomerRegistered_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.Customer.%23ctor(Hexalith.Domain.Events.CustomerRegistered)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L55">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L76">View Source</a>
   </span>
   <a id="Hexalith_Domain_Aggregates_Customer__ctor_" data-uid="Hexalith.Domain.Aggregates.Customer.#ctor*"></a>
   <h4 id="Hexalith_Domain_Aggregates_Customer__ctor_Hexalith_Domain_Events_CustomerRegistered_" data-uid="Hexalith.Domain.Aggregates.Customer.#ctor(Hexalith.Domain.Events.CustomerRegistered)">Customer(CustomerRegistered)</h4>
@@ -175,7 +192,7 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_Customer__ctor_System_String_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_Contact_System_String_System_String_System_Boolean_DateTimeOffset_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.Customer.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CHexalith.Domain.ValueObjets.Contact%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CDateTimeOffset)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L40">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L42">View Source</a>
   </span>
   <a id="Hexalith_Domain_Aggregates_Customer__ctor_" data-uid="Hexalith.Domain.Aggregates.Customer.#ctor*"></a>
   <h4 id="Hexalith_Domain_Aggregates_Customer__ctor_System_String_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_Contact_System_String_System_String_System_Boolean_DateTimeOffset_" data-uid="Hexalith.Domain.Aggregates.Customer.#ctor(System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,System.Boolean,DateTimeOffset)">Customer(String, String, String, String, Contact, String, String, Boolean, DateTimeOffset)</h4>
@@ -261,7 +278,7 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_Customer_CommissionSalesGroupId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.Customer.CommissionSalesGroupId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L47">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L50">View Source</a>
   </span>
   <a id="Hexalith_Domain_Aggregates_Customer_CommissionSalesGroupId_" data-uid="Hexalith.Domain.Aggregates.Customer.CommissionSalesGroupId*"></a>
   <h4 id="Hexalith_Domain_Aggregates_Customer_CommissionSalesGroupId" data-uid="Hexalith.Domain.Aggregates.Customer.CommissionSalesGroupId">CommissionSalesGroupId</h4>
@@ -291,7 +308,7 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_Customer_CompanyId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.Customer.CompanyId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L42">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L45">View Source</a>
   </span>
   <a id="Hexalith_Domain_Aggregates_Customer_CompanyId_" data-uid="Hexalith.Domain.Aggregates.Customer.CompanyId*"></a>
   <h4 id="Hexalith_Domain_Aggregates_Customer_CompanyId" data-uid="Hexalith.Domain.Aggregates.Customer.CompanyId">CompanyId</h4>
@@ -321,7 +338,7 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_Customer_Contact.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.Customer.Contact%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L45">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L48">View Source</a>
   </span>
   <a id="Hexalith_Domain_Aggregates_Customer_Contact_" data-uid="Hexalith.Domain.Aggregates.Customer.Contact*"></a>
   <h4 id="Hexalith_Domain_Aggregates_Customer_Contact" data-uid="Hexalith.Domain.Aggregates.Customer.Contact">Contact</h4>
@@ -351,7 +368,7 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_Customer_Date.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.Customer.Date%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L49">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L52">View Source</a>
   </span>
   <a id="Hexalith_Domain_Aggregates_Customer_Date_" data-uid="Hexalith.Domain.Aggregates.Customer.Date*"></a>
   <h4 id="Hexalith_Domain_Aggregates_Customer_Date" data-uid="Hexalith.Domain.Aggregates.Customer.Date">Date</h4>
@@ -381,7 +398,7 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_Customer_Id.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.Customer.Id%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L43">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L46">View Source</a>
   </span>
   <a id="Hexalith_Domain_Aggregates_Customer_Id_" data-uid="Hexalith.Domain.Aggregates.Customer.Id*"></a>
   <h4 id="Hexalith_Domain_Aggregates_Customer_Id" data-uid="Hexalith.Domain.Aggregates.Customer.Id">Id</h4>
@@ -411,7 +428,7 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_Customer_IntercompanyDropship.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.Customer.IntercompanyDropship%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L48">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L51">View Source</a>
   </span>
   <a id="Hexalith_Domain_Aggregates_Customer_IntercompanyDropship_" data-uid="Hexalith.Domain.Aggregates.Customer.IntercompanyDropship*"></a>
   <h4 id="Hexalith_Domain_Aggregates_Customer_IntercompanyDropship" data-uid="Hexalith.Domain.Aggregates.Customer.IntercompanyDropship">IntercompanyDropship</h4>
@@ -441,7 +458,7 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_Customer_Name.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.Customer.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L44">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L47">View Source</a>
   </span>
   <a id="Hexalith_Domain_Aggregates_Customer_Name_" data-uid="Hexalith.Domain.Aggregates.Customer.Name*"></a>
   <h4 id="Hexalith_Domain_Aggregates_Customer_Name" data-uid="Hexalith.Domain.Aggregates.Customer.Name">Name</h4>
@@ -471,7 +488,7 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_Customer_PartitionId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.Customer.PartitionId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L41">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L44">View Source</a>
   </span>
   <a id="Hexalith_Domain_Aggregates_Customer_PartitionId_" data-uid="Hexalith.Domain.Aggregates.Customer.PartitionId*"></a>
   <h4 id="Hexalith_Domain_Aggregates_Customer_PartitionId" data-uid="Hexalith.Domain.Aggregates.Customer.PartitionId">PartitionId</h4>
@@ -501,7 +518,7 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_Customer_WarehouseId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.Customer.WarehouseId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L46">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L49">View Source</a>
   </span>
   <a id="Hexalith_Domain_Aggregates_Customer_WarehouseId_" data-uid="Hexalith.Domain.Aggregates.Customer.WarehouseId*"></a>
   <h4 id="Hexalith_Domain_Aggregates_Customer_WarehouseId" data-uid="Hexalith.Domain.Aggregates.Customer.WarehouseId">WarehouseId</h4>
@@ -533,7 +550,7 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_Customer_Apply_Hexalith_Domain_Events_BaseEvent_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.Customer.Apply(Hexalith.Domain.Events.BaseEvent)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L70">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L91">View Source</a>
   </span>
   <a id="Hexalith_Domain_Aggregates_Customer_Apply_" data-uid="Hexalith.Domain.Aggregates.Customer.Apply*"></a>
   <h4 id="Hexalith_Domain_Aggregates_Customer_Apply_Hexalith_Domain_Events_BaseEvent_" data-uid="Hexalith.Domain.Aggregates.Customer.Apply(Hexalith.Domain.Events.BaseEvent)">Apply(BaseEvent)</h4>
@@ -585,7 +602,7 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_Customer_DefaultAggregateId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.Customer.DefaultAggregateId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L89">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L110">View Source</a>
   </span>
   <a id="Hexalith_Domain_Aggregates_Customer_DefaultAggregateId_" data-uid="Hexalith.Domain.Aggregates.Customer.DefaultAggregateId*"></a>
   <h4 id="Hexalith_Domain_Aggregates_Customer_DefaultAggregateId" data-uid="Hexalith.Domain.Aggregates.Customer.DefaultAggregateId">DefaultAggregateId()</h4>
@@ -619,7 +636,7 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_Customer_GetAggregateId_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.Customer.GetAggregateId(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L98">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L119">View Source</a>
   </span>
   <a id="Hexalith_Domain_Aggregates_Customer_GetAggregateId_" data-uid="Hexalith.Domain.Aggregates.Customer.GetAggregateId*"></a>
   <h4 id="Hexalith_Domain_Aggregates_Customer_GetAggregateId_System_String_System_String_System_String_" data-uid="Hexalith.Domain.Aggregates.Customer.GetAggregateId(System.String,System.String,System.String)">GetAggregateId(String, String, String)</h4>
@@ -681,7 +698,7 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_Customer_GetAggregateName.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.Customer.GetAggregateName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L111">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L132">View Source</a>
   </span>
   <a id="Hexalith_Domain_Aggregates_Customer_GetAggregateName_" data-uid="Hexalith.Domain.Aggregates.Customer.GetAggregateName*"></a>
   <h4 id="Hexalith_Domain_Aggregates_Customer_GetAggregateName" data-uid="Hexalith.Domain.Aggregates.Customer.GetAggregateName">GetAggregateName()</h4>
@@ -713,7 +730,7 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_Customer_HasChanges_Hexalith_Domain_Events_CustomerInformationChanged_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.Customer.HasChanges(Hexalith.Domain.Events.CustomerInformationChanged)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L119">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L140">View Source</a>
   </span>
   <a id="Hexalith_Domain_Aggregates_Customer_HasChanges_" data-uid="Hexalith.Domain.Aggregates.Customer.HasChanges*"></a>
   <h4 id="Hexalith_Domain_Aggregates_Customer_HasChanges_Hexalith_Domain_Events_CustomerInformationChanged_" data-uid="Hexalith.Domain.Aggregates.Customer.HasChanges(Hexalith.Domain.Events.CustomerInformationChanged)">HasChanges(CustomerInformationChanged)</h4>
@@ -809,7 +826,7 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_Customer.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.Customer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L40" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Aggregates/Customer.cs/#L42" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
