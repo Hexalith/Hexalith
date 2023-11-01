@@ -16,9 +16,12 @@
 
 namespace Hexalith.Application.Parties.Helpers;
 
+using FluentValidation;
+
 using Hexalith.Application.Commands;
 using Hexalith.Application.Parties.CommandHandlers;
 using Hexalith.Application.Parties.Commands;
+using Hexalith.Domain.Events;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -40,6 +43,20 @@ public static class PartiesHelper
         services.TryAddSingleton<ICommandHandler<RegisterOrChangeCustomer>, RegisterOrChangeCustomerHandler>();
         services.TryAddSingleton<ICommandHandler<SelectIntercompanyDropshipDeliveryForCustomer>, SelectIntercompanyDropshipDeliveryForCustomerHandler>();
         services.TryAddSingleton<ICommandHandler<DeselectIntercompanyDropshipDeliveryForCustomer>, DeselectIntercompanyDropshipDeliveryForCustomerHandler>();
+        return services.AddPartiesEventValidators();
+    }
+
+    /// <summary>
+    /// Adds the parties event validators.
+    /// </summary>
+    /// <param name="services">The services.</param>
+    /// <returns>IServiceCollection.</returns>
+    public static IServiceCollection AddPartiesEventValidators(this IServiceCollection services)
+    {
+        services.TryAddSingleton<IValidator<CustomerInformationChanged>, CustomerInformationChangedValidator>();
+        services.TryAddSingleton<IValidator<CustomerRegistered>, CustomerRegisteredValidator>();
+        services.TryAddSingleton<IValidator<IntercompanyDropshipDeliveryForCustomerDeselected>, IntercompanyDropshipDeliveryForCustomerDeselectedValidator>();
+        services.TryAddSingleton<IValidator<IntercompanyDropshipDeliveryForCustomerSelected>, IntercompanyDropshipDeliveryForCustomerSelectedValidator>();
         return services;
     }
 }

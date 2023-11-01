@@ -2758,6 +2758,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.ExternalSystems.Helpers.ExternalSystemsHelper.AddExternalSystemsCommandHandlers
   nameWithType: ExternalSystemsHelper.AddExternalSystemsCommandHandlers
+- uid: Hexalith.Application.ExternalSystems.Helpers.ExternalSystemsHelper.AddExternalSystemsEventValidators(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  name: AddExternalSystemsEventValidators(IServiceCollection)
+  href: api/Hexalith.Application.ExternalSystems.Helpers.ExternalSystemsHelper.html#Hexalith_Application_ExternalSystems_Helpers_ExternalSystemsHelper_AddExternalSystemsEventValidators_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  commentId: M:Hexalith.Application.ExternalSystems.Helpers.ExternalSystemsHelper.AddExternalSystemsEventValidators(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  fullName: Hexalith.Application.ExternalSystems.Helpers.ExternalSystemsHelper.AddExternalSystemsEventValidators(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  nameWithType: ExternalSystemsHelper.AddExternalSystemsEventValidators(IServiceCollection)
+- uid: Hexalith.Application.ExternalSystems.Helpers.ExternalSystemsHelper.AddExternalSystemsEventValidators*
+  name: AddExternalSystemsEventValidators
+  href: api/Hexalith.Application.ExternalSystems.Helpers.ExternalSystemsHelper.html#Hexalith_Application_ExternalSystems_Helpers_ExternalSystemsHelper_AddExternalSystemsEventValidators_
+  commentId: Overload:Hexalith.Application.ExternalSystems.Helpers.ExternalSystemsHelper.AddExternalSystemsEventValidators
+  isSpec: "True"
+  fullName: Hexalith.Application.ExternalSystems.Helpers.ExternalSystemsHelper.AddExternalSystemsEventValidators
+  nameWithType: ExternalSystemsHelper.AddExternalSystemsEventValidators
 - uid: Hexalith.Application.ExternalSystems.Services
   name: Hexalith.Application.ExternalSystems.Services
   href: api/Hexalith.Application.ExternalSystems.Services.html
@@ -5710,6 +5723,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Parties.Helpers.PartiesHelper.AddPartiesCommandHandlers
   nameWithType: PartiesHelper.AddPartiesCommandHandlers
+- uid: Hexalith.Application.Parties.Helpers.PartiesHelper.AddPartiesEventValidators(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  name: AddPartiesEventValidators(IServiceCollection)
+  href: api/Hexalith.Application.Parties.Helpers.PartiesHelper.html#Hexalith_Application_Parties_Helpers_PartiesHelper_AddPartiesEventValidators_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  commentId: M:Hexalith.Application.Parties.Helpers.PartiesHelper.AddPartiesEventValidators(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  fullName: Hexalith.Application.Parties.Helpers.PartiesHelper.AddPartiesEventValidators(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  nameWithType: PartiesHelper.AddPartiesEventValidators(IServiceCollection)
+- uid: Hexalith.Application.Parties.Helpers.PartiesHelper.AddPartiesEventValidators*
+  name: AddPartiesEventValidators
+  href: api/Hexalith.Application.Parties.Helpers.PartiesHelper.html#Hexalith_Application_Parties_Helpers_PartiesHelper_AddPartiesEventValidators_
+  commentId: Overload:Hexalith.Application.Parties.Helpers.PartiesHelper.AddPartiesEventValidators
+  isSpec: "True"
+  fullName: Hexalith.Application.Parties.Helpers.PartiesHelper.AddPartiesEventValidators
+  nameWithType: PartiesHelper.AddPartiesEventValidators
 - uid: Hexalith.Application.Parties.Services
   name: Hexalith.Application.Parties.Services
   href: api/Hexalith.Application.Parties.Services.html
@@ -11590,6 +11616,25 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Events.CustomerInformationChanged.WarehouseId
   nameWithType: CustomerInformationChanged.WarehouseId
+- uid: Hexalith.Domain.Events.CustomerInformationChangedValidator
+  name: CustomerInformationChangedValidator
+  href: api/Hexalith.Domain.Events.CustomerInformationChangedValidator.html
+  commentId: T:Hexalith.Domain.Events.CustomerInformationChangedValidator
+  fullName: Hexalith.Domain.Events.CustomerInformationChangedValidator
+  nameWithType: CustomerInformationChangedValidator
+- uid: Hexalith.Domain.Events.CustomerInformationChangedValidator.#ctor
+  name: CustomerInformationChangedValidator()
+  href: api/Hexalith.Domain.Events.CustomerInformationChangedValidator.html#Hexalith_Domain_Events_CustomerInformationChangedValidator__ctor
+  commentId: M:Hexalith.Domain.Events.CustomerInformationChangedValidator.#ctor
+  fullName: Hexalith.Domain.Events.CustomerInformationChangedValidator.CustomerInformationChangedValidator()
+  nameWithType: CustomerInformationChangedValidator.CustomerInformationChangedValidator()
+- uid: Hexalith.Domain.Events.CustomerInformationChangedValidator.#ctor*
+  name: CustomerInformationChangedValidator
+  href: api/Hexalith.Domain.Events.CustomerInformationChangedValidator.html#Hexalith_Domain_Events_CustomerInformationChangedValidator__ctor_
+  commentId: Overload:Hexalith.Domain.Events.CustomerInformationChangedValidator.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Domain.Events.CustomerInformationChangedValidator.CustomerInformationChangedValidator
+  nameWithType: CustomerInformationChangedValidator.CustomerInformationChangedValidator
 - uid: Hexalith.Domain.Events.CustomerRegistered
   name: CustomerRegistered
   href: api/Hexalith.Domain.Events.CustomerRegistered.html
@@ -11680,6 +11725,25 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Events.CustomerRegistered.WarehouseId
   nameWithType: CustomerRegistered.WarehouseId
+- uid: Hexalith.Domain.Events.CustomerRegisteredValidator
+  name: CustomerRegisteredValidator
+  href: api/Hexalith.Domain.Events.CustomerRegisteredValidator.html
+  commentId: T:Hexalith.Domain.Events.CustomerRegisteredValidator
+  fullName: Hexalith.Domain.Events.CustomerRegisteredValidator
+  nameWithType: CustomerRegisteredValidator
+- uid: Hexalith.Domain.Events.CustomerRegisteredValidator.#ctor
+  name: CustomerRegisteredValidator()
+  href: api/Hexalith.Domain.Events.CustomerRegisteredValidator.html#Hexalith_Domain_Events_CustomerRegisteredValidator__ctor
+  commentId: M:Hexalith.Domain.Events.CustomerRegisteredValidator.#ctor
+  fullName: Hexalith.Domain.Events.CustomerRegisteredValidator.CustomerRegisteredValidator()
+  nameWithType: CustomerRegisteredValidator.CustomerRegisteredValidator()
+- uid: Hexalith.Domain.Events.CustomerRegisteredValidator.#ctor*
+  name: CustomerRegisteredValidator
+  href: api/Hexalith.Domain.Events.CustomerRegisteredValidator.html#Hexalith_Domain_Events_CustomerRegisteredValidator__ctor_
+  commentId: Overload:Hexalith.Domain.Events.CustomerRegisteredValidator.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Domain.Events.CustomerRegisteredValidator.CustomerRegisteredValidator
+  nameWithType: CustomerRegisteredValidator.CustomerRegisteredValidator
 - uid: Hexalith.Domain.Events.ExternalCustomerDetached
   name: ExternalCustomerDetached
   href: api/Hexalith.Domain.Events.ExternalCustomerDetached.html
@@ -11948,6 +12012,25 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Events.ExternalSystemReferenceAdded.ExternalSystemReferenceAdded
   nameWithType: ExternalSystemReferenceAdded.ExternalSystemReferenceAdded
+- uid: Hexalith.Domain.Events.ExternalSystemReferenceAddedValidator
+  name: ExternalSystemReferenceAddedValidator
+  href: api/Hexalith.Domain.Events.ExternalSystemReferenceAddedValidator.html
+  commentId: T:Hexalith.Domain.Events.ExternalSystemReferenceAddedValidator
+  fullName: Hexalith.Domain.Events.ExternalSystemReferenceAddedValidator
+  nameWithType: ExternalSystemReferenceAddedValidator
+- uid: Hexalith.Domain.Events.ExternalSystemReferenceAddedValidator.#ctor
+  name: ExternalSystemReferenceAddedValidator()
+  href: api/Hexalith.Domain.Events.ExternalSystemReferenceAddedValidator.html#Hexalith_Domain_Events_ExternalSystemReferenceAddedValidator__ctor
+  commentId: M:Hexalith.Domain.Events.ExternalSystemReferenceAddedValidator.#ctor
+  fullName: Hexalith.Domain.Events.ExternalSystemReferenceAddedValidator.ExternalSystemReferenceAddedValidator()
+  nameWithType: ExternalSystemReferenceAddedValidator.ExternalSystemReferenceAddedValidator()
+- uid: Hexalith.Domain.Events.ExternalSystemReferenceAddedValidator.#ctor*
+  name: ExternalSystemReferenceAddedValidator
+  href: api/Hexalith.Domain.Events.ExternalSystemReferenceAddedValidator.html#Hexalith_Domain_Events_ExternalSystemReferenceAddedValidator__ctor_
+  commentId: Overload:Hexalith.Domain.Events.ExternalSystemReferenceAddedValidator.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Domain.Events.ExternalSystemReferenceAddedValidator.ExternalSystemReferenceAddedValidator
+  nameWithType: ExternalSystemReferenceAddedValidator.ExternalSystemReferenceAddedValidator
 - uid: Hexalith.Domain.Events.ExternalSystemReferenceRemoved
   name: ExternalSystemReferenceRemoved
   href: api/Hexalith.Domain.Events.ExternalSystemReferenceRemoved.html
@@ -11973,6 +12056,25 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Events.ExternalSystemReferenceRemoved.ExternalSystemReferenceRemoved
   nameWithType: ExternalSystemReferenceRemoved.ExternalSystemReferenceRemoved
+- uid: Hexalith.Domain.Events.ExternalSystemReferenceRemovedValidator
+  name: ExternalSystemReferenceRemovedValidator
+  href: api/Hexalith.Domain.Events.ExternalSystemReferenceRemovedValidator.html
+  commentId: T:Hexalith.Domain.Events.ExternalSystemReferenceRemovedValidator
+  fullName: Hexalith.Domain.Events.ExternalSystemReferenceRemovedValidator
+  nameWithType: ExternalSystemReferenceRemovedValidator
+- uid: Hexalith.Domain.Events.ExternalSystemReferenceRemovedValidator.#ctor
+  name: ExternalSystemReferenceRemovedValidator()
+  href: api/Hexalith.Domain.Events.ExternalSystemReferenceRemovedValidator.html#Hexalith_Domain_Events_ExternalSystemReferenceRemovedValidator__ctor
+  commentId: M:Hexalith.Domain.Events.ExternalSystemReferenceRemovedValidator.#ctor
+  fullName: Hexalith.Domain.Events.ExternalSystemReferenceRemovedValidator.ExternalSystemReferenceRemovedValidator()
+  nameWithType: ExternalSystemReferenceRemovedValidator.ExternalSystemReferenceRemovedValidator()
+- uid: Hexalith.Domain.Events.ExternalSystemReferenceRemovedValidator.#ctor*
+  name: ExternalSystemReferenceRemovedValidator
+  href: api/Hexalith.Domain.Events.ExternalSystemReferenceRemovedValidator.html#Hexalith_Domain_Events_ExternalSystemReferenceRemovedValidator__ctor_
+  commentId: Overload:Hexalith.Domain.Events.ExternalSystemReferenceRemovedValidator.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Domain.Events.ExternalSystemReferenceRemovedValidator.ExternalSystemReferenceRemovedValidator
+  nameWithType: ExternalSystemReferenceRemovedValidator.ExternalSystemReferenceRemovedValidator
 - uid: Hexalith.Domain.Events.IEvent
   name: IEvent
   href: api/Hexalith.Domain.Events.IEvent.html
@@ -12004,6 +12106,25 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.IntercompanyDropshipDeliveryForCustomerDeselected
   nameWithType: IntercompanyDropshipDeliveryForCustomerDeselected.IntercompanyDropshipDeliveryForCustomerDeselected
+- uid: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselectedValidator
+  name: IntercompanyDropshipDeliveryForCustomerDeselectedValidator
+  href: api/Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselectedValidator.html
+  commentId: T:Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselectedValidator
+  fullName: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselectedValidator
+  nameWithType: IntercompanyDropshipDeliveryForCustomerDeselectedValidator
+- uid: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselectedValidator.#ctor
+  name: IntercompanyDropshipDeliveryForCustomerDeselectedValidator()
+  href: api/Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselectedValidator.html#Hexalith_Domain_Events_IntercompanyDropshipDeliveryForCustomerDeselectedValidator__ctor
+  commentId: M:Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselectedValidator.#ctor
+  fullName: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselectedValidator.IntercompanyDropshipDeliveryForCustomerDeselectedValidator()
+  nameWithType: IntercompanyDropshipDeliveryForCustomerDeselectedValidator.IntercompanyDropshipDeliveryForCustomerDeselectedValidator()
+- uid: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselectedValidator.#ctor*
+  name: IntercompanyDropshipDeliveryForCustomerDeselectedValidator
+  href: api/Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselectedValidator.html#Hexalith_Domain_Events_IntercompanyDropshipDeliveryForCustomerDeselectedValidator__ctor_
+  commentId: Overload:Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselectedValidator.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselectedValidator.IntercompanyDropshipDeliveryForCustomerDeselectedValidator
+  nameWithType: IntercompanyDropshipDeliveryForCustomerDeselectedValidator.IntercompanyDropshipDeliveryForCustomerDeselectedValidator
 - uid: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected
   name: IntercompanyDropshipDeliveryForCustomerSelected
   href: api/Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected.html
@@ -12029,6 +12150,25 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected.IntercompanyDropshipDeliveryForCustomerSelected
   nameWithType: IntercompanyDropshipDeliveryForCustomerSelected.IntercompanyDropshipDeliveryForCustomerSelected
+- uid: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelectedValidator
+  name: IntercompanyDropshipDeliveryForCustomerSelectedValidator
+  href: api/Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelectedValidator.html
+  commentId: T:Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelectedValidator
+  fullName: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelectedValidator
+  nameWithType: IntercompanyDropshipDeliveryForCustomerSelectedValidator
+- uid: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelectedValidator.#ctor
+  name: IntercompanyDropshipDeliveryForCustomerSelectedValidator()
+  href: api/Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelectedValidator.html#Hexalith_Domain_Events_IntercompanyDropshipDeliveryForCustomerSelectedValidator__ctor
+  commentId: M:Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelectedValidator.#ctor
+  fullName: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelectedValidator.IntercompanyDropshipDeliveryForCustomerSelectedValidator()
+  nameWithType: IntercompanyDropshipDeliveryForCustomerSelectedValidator.IntercompanyDropshipDeliveryForCustomerSelectedValidator()
+- uid: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelectedValidator.#ctor*
+  name: IntercompanyDropshipDeliveryForCustomerSelectedValidator
+  href: api/Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelectedValidator.html#Hexalith_Domain_Events_IntercompanyDropshipDeliveryForCustomerSelectedValidator__ctor_
+  commentId: Overload:Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelectedValidator.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelectedValidator.IntercompanyDropshipDeliveryForCustomerSelectedValidator
+  nameWithType: IntercompanyDropshipDeliveryForCustomerSelectedValidator.IntercompanyDropshipDeliveryForCustomerSelectedValidator
 - uid: Hexalith.Domain.Events.InventoryItemAdded
   name: InventoryItemAdded
   href: api/Hexalith.Domain.Events.InventoryItemAdded.html
@@ -22956,19 +23096,6 @@ references:
   commentId: T:Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper
   nameWithType: PartiesHelper
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceBusinessEvents(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
-  name: AddDynamics365FinanceBusinessEvents(IServiceCollection, IConfiguration)
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Helpers_PartiesHelper_AddDynamics365FinanceBusinessEvents_Microsoft_Extensions_DependencyInjection_IServiceCollection_Microsoft_Extensions_Configuration_IConfiguration_
-  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceBusinessEvents(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceBusinessEvents(Microsoft.Extensions.DependencyInjection.IServiceCollection, Microsoft.Extensions.Configuration.IConfiguration)
-  nameWithType: PartiesHelper.AddDynamics365FinanceBusinessEvents(IServiceCollection, IConfiguration)
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceBusinessEvents*
-  name: AddDynamics365FinanceBusinessEvents
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Helpers_PartiesHelper_AddDynamics365FinanceBusinessEvents_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceBusinessEvents
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceBusinessEvents
-  nameWithType: PartiesHelper.AddDynamics365FinanceBusinessEvents
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceCustomers(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
   name: AddDynamics365FinanceCustomers(IServiceCollection, IConfiguration)
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Helpers_PartiesHelper_AddDynamics365FinanceCustomers_Microsoft_Extensions_DependencyInjection_IServiceCollection_Microsoft_Extensions_Configuration_IConfiguration_
@@ -22982,6 +23109,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceCustomers
   nameWithType: PartiesHelper.AddDynamics365FinanceCustomers
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceCustomersBusinessEvents(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
+  name: AddDynamics365FinanceCustomersBusinessEvents(IServiceCollection, IConfiguration)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Helpers_PartiesHelper_AddDynamics365FinanceCustomersBusinessEvents_Microsoft_Extensions_DependencyInjection_IServiceCollection_Microsoft_Extensions_Configuration_IConfiguration_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceCustomersBusinessEvents(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceCustomersBusinessEvents(Microsoft.Extensions.DependencyInjection.IServiceCollection, Microsoft.Extensions.Configuration.IConfiguration)
+  nameWithType: PartiesHelper.AddDynamics365FinanceCustomersBusinessEvents(IServiceCollection, IConfiguration)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceCustomersBusinessEvents*
+  name: AddDynamics365FinanceCustomersBusinessEvents
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Helpers_PartiesHelper_AddDynamics365FinanceCustomersBusinessEvents_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceCustomersBusinessEvents
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceCustomersBusinessEvents
+  nameWithType: PartiesHelper.AddDynamics365FinanceCustomersBusinessEvents
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.AddDynamics365FinanceCustomersClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
   name: AddDynamics365FinanceCustomersClient(IServiceCollection, IConfiguration)
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.PartiesHelper.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Helpers_PartiesHelper_AddDynamics365FinanceCustomersClient_Microsoft_Extensions_DependencyInjection_IServiceCollection_Microsoft_Extensions_Configuration_IConfiguration_
