@@ -47,7 +47,7 @@ public class ExternalSystemReferenceAdded : ExternalSystemEvent
         string referenceAggregateName,
         string externalId,
         string referenceAggregateId)
-        : base(partitionId, systemId, systemId, referenceAggregateName, externalId, referenceAggregateId) => ReferenceAggregateId = referenceAggregateId;
+        : base(partitionId, companyId, systemId, referenceAggregateName, externalId, referenceAggregateId) => ReferenceAggregateId = referenceAggregateId;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ExternalSystemReferenceAdded" /> class.
