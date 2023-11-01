@@ -8,6 +8,3 @@ dotnet publish --os linux --arch x64 /t:PublishContainer -c Release -p Container
 cd ../Hexalith.Server.Parties
 dotnet publish --os linux --arch x64 /t:PublishContainer -c Release -p ContainerRegistry="christofle.azurecr.io" -p ContainerImageTag=$version
 pause
-
-d365fno-customers-binding 
-d365fno-customers-binding
