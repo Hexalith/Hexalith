@@ -21,10 +21,12 @@ namespace Hexalith.Domain.Aggregates;
 
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
 
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Exceptions;
 using Hexalith.Domain.ValueObjets;
+using Hexalith.Extensions;
 
 /// <summary>
 /// Class Customer.
@@ -37,6 +39,7 @@ using Hexalith.Domain.ValueObjets;
 /// <seealso cref="Hexalith.Domain.Aggregates.IAggregate" />
 /// <seealso cref="System.IEquatable{Hexalith.Domain.Aggregates.Aggregate}" />
 /// <seealso cref="System.IEquatable{Hexalith.Domain.Aggregates.Customer}" />
+[DataContract]
 public record Customer(
     string PartitionId,
     string CompanyId,
@@ -48,6 +51,24 @@ public record Customer(
     bool IntercompanyDropship,
     DateTimeOffset Date) : Aggregate
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Customer"/> class.
+    /// </summary>
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
+    public Customer()
+        : this(
+              string.Empty,
+              string.Empty,
+              string.Empty,
+              string.Empty,
+              new Contact(),
+              null,
+              null,
+              false,
+              DateTimeOffset.MinValue)
+    {
+    }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="Customer" /> class.
     /// </summary>
