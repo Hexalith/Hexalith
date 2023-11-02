@@ -13,7 +13,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors;
+namespace Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Aggregates.Actors;
 
 using System;
 
@@ -25,6 +25,7 @@ using Hexalith.Application.States;
 using Hexalith.Application.Tasks;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
+using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors;
 using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Configurations;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.DaprRuntime.States;
@@ -113,7 +114,7 @@ public class ExternalSystemReferenceAggregateActor : Actor, ICommandProcessorAct
                 envelope.Metadatas.ToArray(),
                 CancellationToken.None)
             .ConfigureAwait(false);
-        _ = await GetAggregateAsync().ConfigureAwait(false);
+        _aggregate = await GetAggregateAsync().ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -140,7 +141,7 @@ public class ExternalSystemReferenceAggregateActor : Actor, ICommandProcessorAct
     /// Get aggregate as an asynchronous operation.
     /// </summary>
     /// <returns>A Task&lt;ExternalSystemReference&gt; representing the asynchronous operation.</returns>
-    /// <exception cref="System.InvalidOperationException">Aggregate {Host.ActorTypeInfo.ActorTypeName} {Id.GetId()} is not ready. Check task processor failure information.</exception>
+    /// <exception cref="InvalidOperationException">Aggregate {Host.ActorTypeInfo.ActorTypeName} {Id.GetId()} is not ready. Check task processor failure information.</exception>
     private async Task<ExternalSystemReference> GetAggregateAsync()
     {
         return _aggregate ??= (ExternalSystemReference?)await _stateManager

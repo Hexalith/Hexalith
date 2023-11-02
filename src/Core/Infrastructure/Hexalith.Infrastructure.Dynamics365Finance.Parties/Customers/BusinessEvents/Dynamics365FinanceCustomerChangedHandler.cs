@@ -15,7 +15,6 @@
 // ***********************************************************************
 namespace Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents;
 
-using Hexalith.Application.ExternalSystems.Services;
 using Hexalith.Application.Organizations.Configurations;
 using Hexalith.Extensions.Common;
 
@@ -37,11 +36,13 @@ public class Dynamics365FinanceCustomerChangedHandler : Dynamics365FinanceCustom
     /// <param name="settings">The settings.</param>
     public Dynamics365FinanceCustomerChangedHandler(
         IDateTimeService dateTimeService,
-        IExternalReferenceMapperService externalReferenceMapperService,
+
+        // IExternalReferenceMapperService externalReferenceMapperService,
         IOptions<OrganizationSettings> settings)
         : base(
             dateTimeService,
-            externalReferenceMapperService,
+
+            // externalReferenceMapperService,
             settings)
     {
     }

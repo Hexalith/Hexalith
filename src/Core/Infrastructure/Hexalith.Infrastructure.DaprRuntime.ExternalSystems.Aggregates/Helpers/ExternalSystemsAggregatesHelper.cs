@@ -20,7 +20,7 @@ using System.Diagnostics.CodeAnalysis;
 
 using Dapr.Actors.Runtime;
 
-using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Actors;
+using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Aggregates.Actors;
 
 /// <summary>
 /// Class ExternalSystemsHelper.

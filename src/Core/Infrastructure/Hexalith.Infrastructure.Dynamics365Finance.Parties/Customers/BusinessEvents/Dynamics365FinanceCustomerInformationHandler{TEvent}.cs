@@ -22,7 +22,6 @@ using System.Threading.Tasks;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
 using Hexalith.Application.ExternalSystems.Commands;
-using Hexalith.Application.ExternalSystems.Services;
 using Hexalith.Application.Organizations.Configurations;
 using Hexalith.Application.Parties.Commands;
 using Hexalith.Domain.Aggregates;
@@ -49,8 +48,7 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
     /// <summary>
     /// The external reference service.
     /// </summary>
-    private readonly IExternalReferenceMapperService _externalReferenceMapperService;
-
+ // private readonly IExternalReferenceMapperService _externalReferenceMapperService;
     private readonly string _partitionId;
 
     /// <summary>
@@ -64,20 +62,23 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
     /// <exception cref="System.ArgumentNullException">null.</exception>
     protected Dynamics365FinanceCustomerInformationHandler(
         IDateTimeService dateTimeService,
-        IExternalReferenceMapperService externalReferenceMapperService,
+
+        // IExternalReferenceMapperService externalReferenceMapperService,
         IOptions<OrganizationSettings> settings)
     {
         ArgumentNullException.ThrowIfNull(dateTimeService);
-        ArgumentNullException.ThrowIfNull(externalReferenceMapperService);
+
+        // ArgumentNullException.ThrowIfNull(externalReferenceMapperService);
         ArgumentNullException.ThrowIfNull(settings);
         SettingsException<OrganizationSettings>.ThrowIfNullOrEmpty(settings.Value.DefaultPartitionId);
         _partitionId = settings.Value.DefaultPartitionId;
         _dateTimeService = dateTimeService;
-        _externalReferenceMapperService = externalReferenceMapperService;
+
+        // _externalReferenceMapperService = externalReferenceMapperService;
     }
 
     /// <inheritdoc/>
-    public override async Task<IEnumerable<BaseCommand>> ApplyAsync(TEvent @event, CancellationToken cancellationToken)
+    public override Task<IEnumerable<BaseCommand>> ApplyAsync(TEvent @event, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(@event);
         ArgumentNullException.ThrowIfNull(@event.Contact);
@@ -94,6 +95,7 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
         {
             foreach (ExternalReference reference in @event.ExternalReferences)
             {
+                /*
                 if (await _externalReferenceMapperService
                     .GetExternalIdAsync(
                         customerAggregateName,
@@ -111,6 +113,15 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
                             customerAggregateId);
                     commands.Add(mapExternalSystemReference);
                 }
+                */
+                AddExternalSystemReference mapExternalSystemReference = new(
+                        _partitionId,
+                        @event.BusinessEventLegalEntity,
+                        reference.SystemId,
+                        customerAggregateName,
+                        reference.ExternalId,
+                        customerAggregateId);
+                commands.Add(mapExternalSystemReference);
             }
         }
 
@@ -134,6 +145,6 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
             commands.Add(new DeselectIntercompanyDropshipDeliveryForCustomer(_partitionId, companyId, customerId));
         }
 
-        return commands;
+        return Task.FromResult<IEnumerable<BaseCommand>>(commands);
     }
 }

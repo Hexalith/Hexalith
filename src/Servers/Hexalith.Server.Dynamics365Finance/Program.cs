@@ -7,10 +7,7 @@
 using Hexalith.Application.Events;
 using Hexalith.Application.Organizations.Helpers;
 using Hexalith.Domain.Aggregates;
-using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers;
-using Hexalith.Infrastructure.DaprRuntime.Parties.Helpers;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers;
-using Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Helpers;
 using Hexalith.Infrastructure.WebApis.Helpers;
 
 using Serilog;
@@ -22,19 +19,21 @@ bool debugInVisualStudio = true;
 #else
 bool debugInVisualStudio = false;
 #endif
-const string applicationName = "Dynamics365Finance";
+
+// const string applicationName = "Dynamics365Finance";
 IEnumerable<string> aggregateNames = [Customer.GetAggregateName()];
 WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
     applicationDescription,
     "v1",
     debugInVisualStudio,
-    (actors) => actors.AddExternalSystemsMapper(applicationName, aggregateNames),
+    (actors) => { }, // { actors.AddExternalSystemsMapper(applicationName, aggregateNames);},
     args);
 
 builder.Services.AddDynamics365FinanceCustomers(builder.Configuration);
-builder.Services.AddDaprPartiesClient();
-builder.Services.AddDaprExternalSystemsMapper(builder.Configuration, applicationName);
-builder.Services.AddExternalSystemsMapperSubscription(applicationName, aggregateNames);
+
+// builder.Services.AddDaprPartiesClient();
+// builder.Services.AddDaprExternalSystemsMapper(builder.Configuration, applicationName);
+// builder.Services.AddExternalSystemsMapperSubscription(applicationName, aggregateNames);
 builder.Services.AddOrganizations(builder.Configuration);
 builder.Services.AddSingleton<IIntegrationEventProcessor, IntegrationEventProcessor>();
 builder.Services.AddSingleton<IIntegrationEventDispatcher, DependencyInjectionEventDispatcher>();

@@ -73,7 +73,8 @@ public class ExternalReferenceMapperUpdateService
     /// <returns>A Task representing the asynchronous operation.</returns>
     public async Task SetExternalIdAsync(string aggregateId, string systemId, string? externalId)
     {
-        await ExternalSystemsProjectionsHelper.GetAggregateToExternalReferenceActor(_applicationName, _aggregateName, aggregateId, systemId)
+        await ExternalSystemsProjectionsHelper
+            .GetAggregateToExternalReferenceActor(_applicationName, _aggregateName, aggregateId, systemId)
             .SetAsync(externalId)
             .ConfigureAwait(false);
     }
