@@ -18,7 +18,6 @@ namespace Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers;
 
 using System.Diagnostics.CodeAnalysis;
 
-using Dapr.Actors;
 using Dapr.Actors.Client;
 using Dapr.Actors.Runtime;
 
@@ -28,6 +27,7 @@ using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Configurations;
 using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services;
+using Hexalith.Infrastructure.DaprRuntime.Helpers;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -115,7 +115,7 @@ public static class ExternalSystemsProjectionsHelper
     public static IKeyValueActor GetAggregateToExternalReferenceActor(string applicationName, string aggregateName, string aggregateId, string systemId)
     {
         return ActorProxy.Create<IKeyValueActor>(
-            new ActorId(CreateExternalReferenceMapperId(aggregateId, systemId)),
+            CreateExternalReferenceMapperId(aggregateId, systemId).ToUrlEncodedActorId(),
             GetAggregateToExternalReferenceActorName(applicationName, aggregateName));
     }
 
@@ -140,7 +140,7 @@ public static class ExternalSystemsProjectionsHelper
     public static IKeyValueActor GetExternalReferenceToAggregateActor(string applicationName, string aggregateName, string partitionId, string companyId, string systemId, string externalId)
     {
         return ActorProxy.Create<IKeyValueActor>(
-            new ActorId(CreateExternalReferenceMapperId(partitionId, companyId, systemId, externalId)),
+            CreateExternalReferenceMapperId(partitionId, companyId, systemId, externalId).ToUrlEncodedActorId(),
             GetAggregateToExternalReferenceActorName(applicationName, aggregateName));
     }
 
@@ -150,5 +150,6 @@ public static class ExternalSystemsProjectionsHelper
     /// <param name="applicationName">Name of the application.</param>
     /// <param name="aggregateName">Name of the aggregate.</param>
     /// <returns>System.String.</returns>
-    public static string GetExternalReferenceToAggregateActorName(string applicationName, string aggregateName) => applicationName + "ExternalReferenceTo" + aggregateName;
+    public static string GetExternalReferenceToAggregateActorName(string applicationName, string aggregateName)
+        => applicationName + "ExternalReferenceTo" + aggregateName;
 }

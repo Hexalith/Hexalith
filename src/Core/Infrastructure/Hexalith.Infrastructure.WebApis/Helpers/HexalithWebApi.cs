@@ -78,9 +78,15 @@ public static class HexalithWebApi
         builder.Services.AddDaprClient();
 
         builder.Services.AddActors(options =>
-
+        {
             // Register actor types and configure actor settings
-            registerActors(options.Actors));
+            registerActors(options.Actors);
+            options.ReentrancyConfig = new Dapr.Actors.ActorReentrancyConfig()
+            {
+                Enabled = true,
+                MaxStackDepth = 32,
+            };
+        });
         _ = builder
             .Services
             .AddHttpContextAccessor()
