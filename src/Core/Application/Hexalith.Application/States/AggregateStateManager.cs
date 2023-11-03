@@ -197,7 +197,7 @@ public partial class AggregateStateManager : IAggregateStateManager
             {
                 if (state.LastEventPublished < state.EventStreamVersion)
                 {
-                    TimeSpan wait = TimeSpan.FromSeconds(1);
+                    TimeSpan wait = TimeSpan.FromSeconds(15);
                     LogRetryEventWarning(wait, state.EventStreamVersion - state.LastEventPublished);
                     await retryManager.RegisterContinueCallbackAsync(wait, cancellationToken).ConfigureAwait(false);
                 }
