@@ -59,10 +59,11 @@ public class MessageStore<TMessage>
     /// <exception cref="System.Data.DBConcurrencyException">Stream version mismatch: Expected version={expectedVersion.ToString(CultureInfo.InvariantCulture)}; Actual version={version.ToString(CultureInfo.InvariantCulture)}.</exception>
     /// <exception cref="StreamStores.DuplicateIdempotencyIdException">The idempotent Id already exists in the stream.</exception>
     public async Task<long> AddAsync(
-        IEnumerable<TMessage> messages,
+        [NotNull] IEnumerable<TMessage> messages,
         long expectedVersion,
         CancellationToken cancellationToken)
     {
+        ArgumentNullException.ThrowIfNull(messages);
         if (expectedVersion < 0)
         {
             throw new ArgumentOutOfRangeException(nameof(expectedVersion), "Version cannot be negative.");

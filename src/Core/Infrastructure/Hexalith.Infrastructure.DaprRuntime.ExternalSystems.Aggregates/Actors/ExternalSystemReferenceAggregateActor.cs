@@ -114,7 +114,6 @@ public class ExternalSystemReferenceAggregateActor : Actor, ICommandProcessorAct
                 envelope.Metadatas.ToArray(),
                 CancellationToken.None)
             .ConfigureAwait(false);
-        _aggregate = await GetAggregateAsync().ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
