@@ -43,7 +43,7 @@ using Microsoft.Extensions.Logging;
 /// Implements the <see cref="Christofle.Infrastructure.Dynamics365Finance.DaprCloud.AggregateActors.IAggregateActorState" />.
 /// </summary>
 /// <seealso cref="Christofle.Infrastructure.Dynamics365Finance.DaprCloud.AggregateActors.IAggregateActorState" />
-public class AggregateStateManager : IAggregateStateManager
+public partial class AggregateStateManager : IAggregateStateManager
 {
     /// <summary>
     /// The date time service.
@@ -192,21 +192,27 @@ public class AggregateStateManager : IAggregateStateManager
             (TaskProcessor? retry, aggregate) = await ExecuteCommandsAsync(stateProvider, aggregate, aggregateInitializer, resiliencyPolicy, cancellationToken).ConfigureAwait(false);
             await PublishEventsAsync(stateProvider, cancellationToken).ConfigureAwait(false);
             AggregateState state = await GetStateAsync(stateProvider, cancellationToken).ConfigureAwait(false);
-            if (state.LastEventPublished < state.EventStreamVersion)
-            {
-                await retryManager.RegisterContinueCallbackAsync(TimeSpan.FromSeconds(1), cancellationToken).ConfigureAwait(false);
-                return aggregate;
-            }
 
             if (retry == null || retry.Status is TaskProcessorStatus.Completed or TaskProcessorStatus.Canceled)
             {
-                await retryManager
+                if (state.LastEventPublished < state.EventStreamVersion)
+                {
+                    TimeSpan wait = TimeSpan.FromSeconds(1);
+                    LogRetryEventWarning(wait, state.EventStreamVersion - state.LastEventPublished);
+                    await retryManager.RegisterContinueCallbackAsync(wait, cancellationToken).ConfigureAwait(false);
+                }
+                else
+                {
+                    await retryManager
                     .UnregisterContinueCallbackAsync(cancellationToken)
                     .ConfigureAwait(false);
+                }
+
                 return aggregate;
             }
 
             TimeSpan waitTime = retry.RetryWaitTime;
+            LogRetryCommandWarning(retry.History.CreatedDate, retry.RetryWaitTime, retry.Failure?.Count ?? 0, retry.Failure?.Message ?? "Not defined.");
             await retryManager
                     .RegisterContinueCallbackAsync(
                         waitTime <= resiliencyPolicy.InitialPeriod ? resiliencyPolicy.InitialPeriod : waitTime,
@@ -307,6 +313,18 @@ public class AggregateStateManager : IAggregateStateManager
 
         return events;
     }
+
+    [LoggerMessage(
+        EventId = 1,
+        Level = LogLevel.Warning,
+        Message = "Registering retry number {RetryNumber} in {WaitTime} for command processing task created at {CreatedDate}, due to a failure : {Error}")]
+    public partial void LogRetryCommandWarning(DateTimeOffset createdDate, TimeSpan waitTime, int retryNumber, string error);
+
+    [LoggerMessage(
+         EventId = 2,
+         Level = LogLevel.Warning,
+         Message = "Registering retry in {WaitTime} for {UnpublishedEventCount} unpublished event(s).")]
+    public partial void LogRetryEventWarning(TimeSpan waitTime, long unpublishedEventCount);
 
     /// <summary>
     /// Execute commands as an asynchronous operation.
