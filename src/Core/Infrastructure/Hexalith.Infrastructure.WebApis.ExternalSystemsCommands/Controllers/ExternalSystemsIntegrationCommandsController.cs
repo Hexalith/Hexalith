@@ -55,7 +55,7 @@ public class ExternalSystemsIntegrationCommandsController : CommandSubmissionCon
     /// </summary>
     /// <param name="commandState">State of the command.</param>
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
-    [Topic(ApplicationConstants.CommandBus, "externalsystemreference-commands")]
+    [Topic(ApplicationConstants.CommandBus, "externalsystemreference-commands", ["requireSessions=true"])]
     [HttpPost("/handle-external-system-reference-commands")]
     public async Task<ActionResult> HandleExternalSystemsCommandsAsync(CommandState commandState)
         => await HandleCommandAsync(

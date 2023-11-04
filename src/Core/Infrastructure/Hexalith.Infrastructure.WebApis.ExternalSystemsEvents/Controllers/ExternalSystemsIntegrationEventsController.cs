@@ -58,7 +58,7 @@ public class ExternalSystemsIntegrationEventsController : EventIntegrationContro
     /// </summary>
     /// <param name="eventState">State of the event.</param>
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
-    [Topic(ApplicationConstants.EventBus, "externalsystemreference-events")]
+    [Topic(ApplicationConstants.EventBus, "externalsystemreference-events", ["requireSessions=true"])]
     [HttpPost("/handle-external-system-reference-events")]
     public async Task<ActionResult> HandleExternalSystemsEventsAsync(EventState eventState)
         => await HandleEventAsync(

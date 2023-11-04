@@ -50,7 +50,7 @@ public class PartiesCommandsController(
     /// </summary>
     /// <param name="commandState">State of the command.</param>
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
-    [Topic(ApplicationConstants.CommandBus, "customer-commands")]
+    [Topic(ApplicationConstants.CommandBus, "customer-commands", ["requireSessions=true"])]
     [HttpPost("/handle-customer-commands")]
     public async Task<ActionResult> SubmitCustomerCommandsAsync(CommandState commandState)
         => await HandleCommandAsync(
