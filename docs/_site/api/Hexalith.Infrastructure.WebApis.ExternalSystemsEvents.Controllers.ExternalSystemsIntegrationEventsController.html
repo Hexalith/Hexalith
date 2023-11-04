@@ -717,8 +717,7 @@ public class ExternalSystemsIntegrationEventsController : EventIntegrationContro
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Topic(&quot;event-bus&quot;, &quot;externalsystemreference-events&quot;, null, null)]
-[HttpPost(&quot;/handle-external-system-reference-events&quot;)]
+    <pre><code class="lang-csharp hljs">[HttpPost(&quot;/handle-external-system-reference-events&quot;)]
 public async Task&lt;ActionResult&gt; HandleExternalSystemsEventsAsync(EventState eventState)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>

@@ -20,6 +20,7 @@ using System;
 
 using Dapr.Client;
 
+using Hexalith.Application;
 using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Metadatas;
@@ -50,7 +51,7 @@ public class DaprCommandBus : DaprApplicationBus<BaseCommand, BaseMetadata, Comm
         client,
         dateTimeService,
         string.IsNullOrWhiteSpace(settings.Value.Name) ? throw new ArgumentException($"The name of the command bus is not defined in settings ({CommandBusSettings.ConfigurationName()}.{nameof(CommandBusSettings.Name)}).", nameof(settings)) : settings.Value.Name,
-        "-commands",
+        ApplicationConstants.CommandBusSuffix,
         logger)
     {
     }

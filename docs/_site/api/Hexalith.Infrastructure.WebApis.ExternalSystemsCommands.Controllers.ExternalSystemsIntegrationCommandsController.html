@@ -711,8 +711,7 @@ public class ExternalSystemsIntegrationCommandsController : CommandSubmissionCon
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Topic(&quot;command-bus&quot;, &quot;externalsystemreference-commands&quot;, null, null)]
-[HttpPost(&quot;/handle-external-system-reference-commands&quot;)]
+    <pre><code class="lang-csharp hljs">[HttpPost(&quot;/handle-external-system-reference-commands&quot;)]
 public async Task&lt;ActionResult&gt; HandleExternalSystemsCommandsAsync(CommandState commandState)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
