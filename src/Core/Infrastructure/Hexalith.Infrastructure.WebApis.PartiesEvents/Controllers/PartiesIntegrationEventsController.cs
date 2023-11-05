@@ -16,6 +16,8 @@
 
 namespace Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers;
 
+using Dapr;
+
 using Hexalith.Application.Events;
 using Hexalith.Application.Projection;
 using Hexalith.Application.States;
@@ -56,6 +58,7 @@ public abstract class PartiesIntegrationEventsController : EventIntegrationContr
     /// <param name="eventState">State of the event.</param>
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
     [CustomerEventsBusTopic]
+    [TopicMetadata("requireSessions", "true")]
     [HttpPost("/handle-customer-events")]
     public async Task<ActionResult> HandleCustomerEventsAsync(EventState eventState)
          => await HandleEventAsync(

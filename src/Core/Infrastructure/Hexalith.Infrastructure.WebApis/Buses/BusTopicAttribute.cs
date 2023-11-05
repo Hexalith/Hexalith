@@ -18,8 +18,6 @@ namespace Hexalith.Infrastructure.WebApis.Buses;
 
 using Dapr;
 
-using Hexalith.Application;
-
 /// <summary>
 /// Class BusTopicAttribute. This class cannot be inherited.
 /// Implements the <see cref="TopicAttribute" />.
@@ -38,8 +36,7 @@ public abstract class BusTopicAttribute : TopicAttribute
     protected BusTopicAttribute(string pubsubName, string name)
         : base(
             (pubsubName ?? throw new ArgumentNullException(nameof(pubsubName))).ToLowerInvariant(),
-            (name ?? throw new ArgumentNullException(nameof(name))).ToLowerInvariant(),
-            [ApplicationConstants.TopicRequireSessions])
+            (name ?? throw new ArgumentNullException(nameof(name))).ToLowerInvariant())
     {
     }
 }

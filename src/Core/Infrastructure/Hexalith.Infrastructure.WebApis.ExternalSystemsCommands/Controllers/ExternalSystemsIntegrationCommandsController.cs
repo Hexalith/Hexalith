@@ -16,6 +16,8 @@
 
 namespace Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers;
 
+using Dapr;
+
 using Hexalith.Application.States;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
@@ -53,6 +55,7 @@ public class ExternalSystemsIntegrationCommandsController : CommandSubmissionCon
     /// <param name="commandState">State of the command.</param>
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
     [ExternalSystemReferenceCommandsBusTopic]
+    [TopicMetadata("requireSessions", "true")]
     [HttpPost("/handle-external-system-reference-commands")]
     public async Task<ActionResult> HandleExternalSystemsCommandsAsync(CommandState commandState)
     {

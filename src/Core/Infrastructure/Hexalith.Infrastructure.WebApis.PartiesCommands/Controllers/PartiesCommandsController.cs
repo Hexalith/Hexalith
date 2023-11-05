@@ -16,6 +16,8 @@
 
 namespace Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers;
 
+using Dapr;
+
 using Hexalith.Application.States;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
@@ -48,6 +50,7 @@ public class PartiesCommandsController(
     /// <param name="commandState">State of the command.</param>
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
     [CustomerCommandsBusTopic]
+    [TopicMetadata("requireSessions", "true")]
     [HttpPost("/handle-customer-commands")]
     public async Task<ActionResult> SubmitCustomerCommandsAsync(CommandState commandState)
         => await HandleCommandAsync(

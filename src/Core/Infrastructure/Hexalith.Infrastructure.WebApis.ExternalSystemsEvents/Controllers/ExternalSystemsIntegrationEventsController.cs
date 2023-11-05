@@ -16,6 +16,8 @@
 
 namespace Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers;
 
+using Dapr;
+
 using Hexalith.Application.Events;
 using Hexalith.Application.Projection;
 using Hexalith.Application.States;
@@ -56,6 +58,7 @@ public abstract class ExternalSystemsIntegrationEventsController : EventIntegrat
     /// <param name="eventState">State of the event.</param>
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
     [ExternalSystemReferenceEventsBusTopic]
+    [TopicMetadata("requireSessions", "true")]
     [HttpPost("/handle-external-system-reference-events")]
     public async Task<ActionResult> HandleExternalSystemsEventsAsync(EventState eventState)
         => await HandleEventAsync(
