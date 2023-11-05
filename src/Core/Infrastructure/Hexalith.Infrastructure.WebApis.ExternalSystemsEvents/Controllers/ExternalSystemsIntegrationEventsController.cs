@@ -32,7 +32,7 @@ using Microsoft.Extensions.Logging;
 /// </summary>
 /// <seealso cref="EventIntegrationController" />
 [ApiController]
-public class ExternalSystemsIntegrationEventsController : EventIntegrationController
+public abstract class ExternalSystemsIntegrationEventsController : EventIntegrationController
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="ExternalSystemsIntegrationEventsController"/> class.
@@ -41,7 +41,7 @@ public class ExternalSystemsIntegrationEventsController : EventIntegrationContro
     /// <param name="projectionProcessor">The projection processor.</param>
     /// <param name="hostEnvironment">The host environment.</param>
     /// <param name="logger">The logger.</param>
-    public ExternalSystemsIntegrationEventsController(
+    protected ExternalSystemsIntegrationEventsController(
         IIntegrationEventProcessor eventProcessor,
         IProjectionUpdateProcessor projectionProcessor,
         IHostEnvironment hostEnvironment,
