@@ -84,5 +84,5 @@ public static class ApplicationConstants
     /// <summary>
     /// The require sessions.
     /// </summary>
-    public const string TopicRequireSessions = "requireSessions=true";
+    public const string TopicRequireSessions = "requireSessions: true";
 }
