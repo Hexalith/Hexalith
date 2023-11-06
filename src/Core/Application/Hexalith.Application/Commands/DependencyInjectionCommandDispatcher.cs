@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Messages;
+using Hexalith.Extensions.Helpers;
 
 using Microsoft.Extensions.Logging;
 
@@ -49,9 +50,18 @@ public class DependencyInjectionCommandDispatcher : ICommandDispatcher
     /// <inheritdoc/>
     public async Task<IEnumerable<BaseMessage>> DoAsync(ICommand command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
-        _logger.LogDebug("Dispatching command {CommandType} with aggregate id {AggregateName}-{AggregateId}", command.TypeName, command.AggregateName, command.AggregateId);
-        IEnumerable<BaseMessage> events = await GetHandler(command).DoAsync(command, aggregate, cancellationToken).ConfigureAwait(false);
-        return events;
+        try
+        {
+            _logger.LogDebug("Dispatching command {CommandType} with aggregate id {AggregateName}-{AggregateId}", command.TypeName, command.AggregateName, command.AggregateId);
+            IEnumerable<BaseMessage> events = await GetHandler(command).DoAsync(command, aggregate, cancellationToken).ConfigureAwait(false);
+
+            return events;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error while dispatching command {CommandType} with aggregate id {AggregateName}-{AggregateId} : {ErrorMessage}", command.TypeName, command.AggregateName, command.AggregateId, ex.FullMessage());
+            throw;
+        }
     }
 
     /// <inheritdoc/>

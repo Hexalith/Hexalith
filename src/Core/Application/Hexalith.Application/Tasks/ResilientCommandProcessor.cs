@@ -142,7 +142,7 @@ public class ResilientCommandProcessor
         {
             taskProcessor = taskProcessor.Fail($"An error occurred when executing command {command.TypeName} on {command.AggregateName}/{command.AggregateId}: {e.Message}", e.FullMessage());
             messages = new CommandProcessingFailed(string.Empty, command, taskProcessor).IntoArray();
-            _logger.LogError(e, "An error occured when executing command {CommandType} on {AggregateName}/{AggregateId}: {Message}", command.TypeName, command.AggregateName, command.AggregateId, e.Message);
+            _logger.LogError(e, "An error occured when executing command {CommandType} on {AggregateName}/{AggregateId}: {Message}", command.TypeName, command.AggregateName, command.AggregateId, e.FullMessage());
         }
 
         await _stateStoreProvider.SetStateAsync(nameof(TaskProcessor) + id, taskProcessor, cancellationToken).ConfigureAwait(false);
