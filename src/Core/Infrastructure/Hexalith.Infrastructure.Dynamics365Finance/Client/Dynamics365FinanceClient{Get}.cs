@@ -73,6 +73,8 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
         HttpResponseMessage? response = null;
         try
         {
+            Logger.LogInformation("Calling Dynamics 365 Finance ODATA endpoint : {Path}.", url.AbsoluteUri);
+
             using HttpClient client = await GetClientAsync(cancellationToken).ConfigureAwait(false);
             response = await client.GetAsync(url, cancellationToken).ConfigureAwait(false);
             if (!response.IsSuccessStatusCode)
