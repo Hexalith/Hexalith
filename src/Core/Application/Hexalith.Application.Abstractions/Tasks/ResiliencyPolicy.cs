@@ -1,8 +1,18 @@
-﻿// <copyright file="ResiliencyPolicy.cs" company="Fiveforty SAS Paris France">
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Application.Abstractions
+// Author           : Jérôme Piquot
+// Created          : 09-12-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 10-28-2023
+// ***********************************************************************
+// <copyright file="ResiliencyPolicy.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Hexalith.Application.Tasks;
 
@@ -19,7 +29,7 @@ using Hexalith.Extensions.Helpers;
 public class ResiliencyPolicy
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="ResiliencyPolicy"/> class.
+    /// Initializes a new instance of the <see cref="ResiliencyPolicy" /> class.
     /// </summary>
     /// <param name="maximumRetries">The maximum number of retries.</param>
     /// <param name="initialPeriod">The retry initial period in milliseconds.</param>
@@ -47,7 +57,7 @@ public class ResiliencyPolicy
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ResiliencyPolicy"/> class.
+    /// Initializes a new instance of the <see cref="ResiliencyPolicy" /> class.
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public ResiliencyPolicy()
@@ -63,6 +73,7 @@ public class ResiliencyPolicy
     /// <summary>
     /// Gets the default no retry policy.
     /// </summary>
+    /// <value>The none.</value>
     [JsonIgnore]
     [IgnoreDataMember]
     public static ResiliencyPolicy None { get; } = new(0, TimeSpan.Zero, TimeSpan.Zero, TimeSpan.Zero, TimeSpan.Zero, exponential: false);
@@ -70,6 +81,7 @@ public class ResiliencyPolicy
     /// <summary>
     /// Gets or sets a value indicating whether use exponential periods.
     /// </summary>
+    /// <value>The exponential.</value>
     [DataMember(Order = 6)]
     [JsonPropertyOrder(6)]
     public bool Exponential
@@ -82,6 +94,7 @@ public class ResiliencyPolicy
     /// <summary>
     /// Gets or sets the initial retry period.
     /// </summary>
+    /// <value>The initial period.</value>
     [DataMember(Order = 2)]
     [JsonPropertyOrder(2)]
     public TimeSpan InitialPeriod
@@ -94,6 +107,7 @@ public class ResiliencyPolicy
     /// <summary>
     /// Gets or sets a value the maximum exponential period value in milliseconds.
     /// </summary>
+    /// <value>The maximum exponential period.</value>
     [DataMember(Order = 4)]
     [JsonPropertyOrder(4)]
     public TimeSpan MaximumExponentialPeriod
@@ -106,6 +120,7 @@ public class ResiliencyPolicy
     /// <summary>
     /// Gets or sets the maximum number of retries.
     /// </summary>
+    /// <value>The maximum retries.</value>
     [DataMember(Order = 1)]
     [JsonPropertyOrder(1)]
     public int MaximumRetries
@@ -118,6 +133,7 @@ public class ResiliencyPolicy
     /// <summary>
     /// Gets or sets the retry period in milliseconds.
     /// </summary>
+    /// <value>The period.</value>
     [DataMember(Order = 3)]
     [JsonPropertyOrder(3)]
     public TimeSpan Period
@@ -130,6 +146,7 @@ public class ResiliencyPolicy
     /// <summary>
     /// Gets or sets the timeout.
     /// </summary>
+    /// <value>The timeout.</value>
     [DataMember(Order = 5)]
     [JsonPropertyOrder(5)]
     public TimeSpan Timeout
@@ -174,6 +191,50 @@ public class ResiliencyPolicy
     }
 
     /// <summary>
+    /// Evaluates the period.
+    /// </summary>
+    /// <param name="retry">The retry.</param>
+    /// <returns>System.TimeSpan.</returns>
+    public TimeSpan EvaluatePeriod(int retry)
+    {
+        if (retry <= 1)
+        {
+            return InitialPeriod;
+        }
+
+        // Get new period to wait
+        long period = Period.Ticks;
+        long maximumPeriod = long.MaxValue;
+        if (Exponential)
+        {
+            if (MaximumExponentialPeriod != TimeSpan.Zero)
+            {
+                maximumPeriod = MaximumExponentialPeriod.Ticks;
+            }
+
+            long multiplier = FibonacciSequence.Number(retry);
+            period = maximumPeriod / multiplier <= Period.Ticks ? maximumPeriod : Period.Ticks * multiplier;
+        }
+
+        if (period >= maximumPeriod)
+        {
+            return new TimeSpan(maximumPeriod);
+        }
+
+        long previousPeriod = EvaluatePeriod(retry - 1).Ticks;
+        if (maximumPeriod - previousPeriod <= period) // Check for overflow
+        {
+            period = maximumPeriod;
+        }
+        else
+        {
+            period += previousPeriod;
+        }
+
+        return new TimeSpan(period);
+    }
+
+    /// <summary>
     /// Gets next retry time.
     /// </summary>
     /// <param name="startedDate">Initial start date and time.</param>
@@ -190,27 +251,21 @@ public class ResiliencyPolicy
     /// <returns>System.TimeSpan.</returns>
     public TimeSpan RetryWaitTime(DateTimeOffset startedDate, int retryCount)
     {
-        TimeSpan wait = DateTimeOffset.UtcNow - NextRetryTime(startedDate, retryCount);
+        TimeSpan wait = NextRetryTime(startedDate, retryCount) - DateTimeOffset.UtcNow;
         return wait < TimeSpan.Zero ? TimeSpan.Zero : wait;
     }
 
-    private TimeSpan EvaluatePeriod(int retry)
-    {
-        if (retry < 1)
-        {
-            return InitialPeriod;
-        }
-
-        TimeSpan period = Period * (Exponential ? FibonacciSequence.Number(retry) : 1);
-        if (Exponential && period > MaximumExponentialPeriod)
-        {
-            period = MaximumExponentialPeriod;
-        }
-
-        return period + EvaluatePeriod(retry - 1);
-    }
-
+    /// <summary>
+    /// Retries the limit reached.
+    /// </summary>
+    /// <param name="retryCount">The retry count.</param>
+    /// <returns>bool.</returns>
     private bool RetryLimitReached(int retryCount) => retryCount > MaximumRetries && MaximumRetries >= 0;
 
+    /// <summary>
+    /// Timeouts the reached.
+    /// </summary>
+    /// <param name="startedDate">The started date.</param>
+    /// <returns>bool.</returns>
     private bool TimeoutReached(DateTimeOffset startedDate) => Timeout != TimeSpan.MaxValue && startedDate.Add(Timeout) < DateTimeOffset.UtcNow;
 }

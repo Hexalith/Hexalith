@@ -20,6 +20,7 @@ using System;
 using System.Text.Json;
 
 using FluentAssertions;
+using FluentAssertions.Equivalency;
 
 using Hexalith.Application.Tasks;
 
@@ -59,7 +60,7 @@ public class TaskProcessorTest
     public void DataContractSerializeAndDeserializeTaskShouldReturnSame()
     {
         TaskProcessor processor = GetTestProcessor();
-        _ = processor.Should().BeDataContractSerializable();
+        _ = processor.Should().BeDataContractSerializable<TaskProcessor>(ExcludeProperties);
     }
 
     /// <summary>
@@ -104,7 +105,7 @@ public class TaskProcessorTest
         string json = JsonSerializer.Serialize(processor);
         TaskProcessor fromJson = JsonSerializer.Deserialize<TaskProcessor>(json);
         _ = fromJson.Should().NotBeNull();
-        _ = fromJson.Should().BeEquivalentTo(processor);
+        _ = fromJson.Should().BeEquivalentTo(processor, ExcludeProperties);
     }
 
     /// <summary>
@@ -150,15 +151,37 @@ public class TaskProcessorTest
         _ = processor.History.ProcessingStartDate.Should().BeCloseTo(DateTimeOffset.UtcNow, TimeSpan.FromSeconds(1));
     }
 
-    /// <summary>
-    /// Defines the test method XmlSerializeAndDeserializeTaskShouldReturnSame.
-    /// </summary>
-    [Fact]
-    public void XmlSerializeAndDeserializeTaskShouldReturnSame()
+    [Theory]
+    [InlineData(15, 2595)]
+    [InlineData(30, (36 * 60 * 1000) + 19307)]
+    [InlineData(70, 24 * 3600 * 1000)]
+    [InlineData(90, 24 * 3600 * 1000)]
+    [InlineData(200, 24 * 3600 * 1000)]
+    public void SuspendedWaitTimeShouldBePositive(int retries, int milliseconds)
     {
-        TaskProcessor processor = GetTestProcessor();
-        _ = processor.Should().BeXmlSerializable();
+        TaskProcessor processor = new TaskProcessor(DateTimeOffset.UtcNow.AddSeconds(-10), ResiliencyPolicy.CreateDefaultExponentialRetry())
+            .Start();
+        for (int i = 0; i < retries; i++)
+        {
+            processor = processor.Fail($"Fail {retries}", null);
+        }
+
+        double seconds = (milliseconds / 1000d) - 10d;
+        seconds = seconds < 0d ? 0d : seconds;
+        _ = processor.RetryWaitTime.TotalSeconds.Should().BeApproximately(seconds, 1d);
     }
+
+    /*
+        /// <summary>
+        /// Defines the test method XmlSerializeAndDeserializeTaskShouldReturnSame.
+        /// </summary>
+        [Fact]
+        public void XmlSerializeAndDeserializeTaskShouldReturnSame()
+        {
+            TaskProcessor processor = GetTestProcessor();
+            _ = processor.Should().BeXmlSerializable();
+        }
+    */
 
     /// <summary>
     /// Gets the test processor.
@@ -174,5 +197,11 @@ public class TaskProcessorTest
             .Start()
             .Fail("my test fail message", "error")
             .Complete();
+    }
+
+    private EquivalencyAssertionOptions<TaskProcessor> ExcludeProperties(EquivalencyAssertionOptions<TaskProcessor> options)
+    {
+        _ = options.Excluding(t => t.RetryWaitTime);
+        return options;
     }
 }

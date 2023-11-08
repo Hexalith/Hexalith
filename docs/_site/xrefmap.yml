@@ -344,12 +344,24 @@ references:
   commentId: F:Hexalith.Application.ApplicationConstants.CommandBus
   fullName: Hexalith.Application.ApplicationConstants.CommandBus
   nameWithType: ApplicationConstants.CommandBus
+- uid: Hexalith.Application.ApplicationConstants.CommandBusSuffix
+  name: CommandBusSuffix
+  href: api/Hexalith.Application.ApplicationConstants.html#Hexalith_Application_ApplicationConstants_CommandBusSuffix
+  commentId: F:Hexalith.Application.ApplicationConstants.CommandBusSuffix
+  fullName: Hexalith.Application.ApplicationConstants.CommandBusSuffix
+  nameWithType: ApplicationConstants.CommandBusSuffix
 - uid: Hexalith.Application.ApplicationConstants.EventBus
   name: EventBus
   href: api/Hexalith.Application.ApplicationConstants.html#Hexalith_Application_ApplicationConstants_EventBus
   commentId: F:Hexalith.Application.ApplicationConstants.EventBus
   fullName: Hexalith.Application.ApplicationConstants.EventBus
   nameWithType: ApplicationConstants.EventBus
+- uid: Hexalith.Application.ApplicationConstants.EventBusSuffix
+  name: EventBusSuffix
+  href: api/Hexalith.Application.ApplicationConstants.html#Hexalith_Application_ApplicationConstants_EventBusSuffix
+  commentId: F:Hexalith.Application.ApplicationConstants.EventBusSuffix
+  fullName: Hexalith.Application.ApplicationConstants.EventBusSuffix
+  nameWithType: ApplicationConstants.EventBusSuffix
 - uid: Hexalith.Application.ApplicationConstants.IdPartSeparator
   name: IdPartSeparator
   href: api/Hexalith.Application.ApplicationConstants.html#Hexalith_Application_ApplicationConstants_IdPartSeparator
@@ -362,6 +374,12 @@ references:
   commentId: F:Hexalith.Application.ApplicationConstants.NotificationBus
   fullName: Hexalith.Application.ApplicationConstants.NotificationBus
   nameWithType: ApplicationConstants.NotificationBus
+- uid: Hexalith.Application.ApplicationConstants.NotificationBusSuffix
+  name: NotificationBusSuffix
+  href: api/Hexalith.Application.ApplicationConstants.html#Hexalith_Application_ApplicationConstants_NotificationBusSuffix
+  commentId: F:Hexalith.Application.ApplicationConstants.NotificationBusSuffix
+  fullName: Hexalith.Application.ApplicationConstants.NotificationBusSuffix
+  nameWithType: ApplicationConstants.NotificationBusSuffix
 - uid: Hexalith.Application.ApplicationConstants.NotificationDefaultAggregateName
   name: NotificationDefaultAggregateName
   href: api/Hexalith.Application.ApplicationConstants.html#Hexalith_Application_ApplicationConstants_NotificationDefaultAggregateName
@@ -374,6 +392,12 @@ references:
   commentId: F:Hexalith.Application.ApplicationConstants.RequestBus
   fullName: Hexalith.Application.ApplicationConstants.RequestBus
   nameWithType: ApplicationConstants.RequestBus
+- uid: Hexalith.Application.ApplicationConstants.RequestBusSuffix
+  name: RequestBusSuffix
+  href: api/Hexalith.Application.ApplicationConstants.html#Hexalith_Application_ApplicationConstants_RequestBusSuffix
+  commentId: F:Hexalith.Application.ApplicationConstants.RequestBusSuffix
+  fullName: Hexalith.Application.ApplicationConstants.RequestBusSuffix
+  nameWithType: ApplicationConstants.RequestBusSuffix
 - uid: Hexalith.Application.ApplicationConstants.StateName
   name: StateName
   href: api/Hexalith.Application.ApplicationConstants.html#Hexalith_Application_ApplicationConstants_StateName
@@ -386,6 +410,12 @@ references:
   commentId: F:Hexalith.Application.ApplicationConstants.SystemUser
   fullName: Hexalith.Application.ApplicationConstants.SystemUser
   nameWithType: ApplicationConstants.SystemUser
+- uid: Hexalith.Application.ApplicationConstants.TopicRequireSessions
+  name: TopicRequireSessions
+  href: api/Hexalith.Application.ApplicationConstants.html#Hexalith_Application_ApplicationConstants_TopicRequireSessions
+  commentId: F:Hexalith.Application.ApplicationConstants.TopicRequireSessions
+  fullName: Hexalith.Application.ApplicationConstants.TopicRequireSessions
+  nameWithType: ApplicationConstants.TopicRequireSessions
 - uid: Hexalith.Application.ArtificialIntelligence
   name: Hexalith.Application.ArtificialIntelligence
   href: api/Hexalith.Application.ArtificialIntelligence.html
@@ -8571,6 +8601,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Tasks.ResiliencyPolicy.CreateEternalRetry
   nameWithType: ResiliencyPolicy.CreateEternalRetry
+- uid: Hexalith.Application.Tasks.ResiliencyPolicy.EvaluatePeriod(System.Int32)
+  name: EvaluatePeriod(Int32)
+  href: api/Hexalith.Application.Tasks.ResiliencyPolicy.html#Hexalith_Application_Tasks_ResiliencyPolicy_EvaluatePeriod_System_Int32_
+  commentId: M:Hexalith.Application.Tasks.ResiliencyPolicy.EvaluatePeriod(System.Int32)
+  fullName: Hexalith.Application.Tasks.ResiliencyPolicy.EvaluatePeriod(System.Int32)
+  nameWithType: ResiliencyPolicy.EvaluatePeriod(Int32)
+- uid: Hexalith.Application.Tasks.ResiliencyPolicy.EvaluatePeriod*
+  name: EvaluatePeriod
+  href: api/Hexalith.Application.Tasks.ResiliencyPolicy.html#Hexalith_Application_Tasks_ResiliencyPolicy_EvaluatePeriod_
+  commentId: Overload:Hexalith.Application.Tasks.ResiliencyPolicy.EvaluatePeriod
+  isSpec: "True"
+  fullName: Hexalith.Application.Tasks.ResiliencyPolicy.EvaluatePeriod
+  nameWithType: ResiliencyPolicy.EvaluatePeriod
 - uid: Hexalith.Application.Tasks.ResiliencyPolicy.Exponential
   name: Exponential
   href: api/Hexalith.Application.Tasks.ResiliencyPolicy.html#Hexalith_Application_Tasks_ResiliencyPolicy_Exponential
@@ -24916,6 +24959,159 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.WebApis.Authentications.PassThroughAuthenticationHandler.HandleAuthenticateAsync
   nameWithType: PassThroughAuthenticationHandler.HandleAuthenticateAsync
+- uid: Hexalith.Infrastructure.WebApis.Buses
+  name: Hexalith.Infrastructure.WebApis.Buses
+  href: api/Hexalith.Infrastructure.WebApis.Buses.html
+  commentId: N:Hexalith.Infrastructure.WebApis.Buses
+  fullName: Hexalith.Infrastructure.WebApis.Buses
+  nameWithType: Hexalith.Infrastructure.WebApis.Buses
+- uid: Hexalith.Infrastructure.WebApis.Buses.BusTopicAttribute
+  name: BusTopicAttribute
+  href: api/Hexalith.Infrastructure.WebApis.Buses.BusTopicAttribute.html
+  commentId: T:Hexalith.Infrastructure.WebApis.Buses.BusTopicAttribute
+  fullName: Hexalith.Infrastructure.WebApis.Buses.BusTopicAttribute
+  nameWithType: BusTopicAttribute
+- uid: Hexalith.Infrastructure.WebApis.Buses.BusTopicAttribute.#ctor(System.String,System.String)
+  name: BusTopicAttribute(String, String)
+  href: api/Hexalith.Infrastructure.WebApis.Buses.BusTopicAttribute.html#Hexalith_Infrastructure_WebApis_Buses_BusTopicAttribute__ctor_System_String_System_String_
+  commentId: M:Hexalith.Infrastructure.WebApis.Buses.BusTopicAttribute.#ctor(System.String,System.String)
+  fullName: Hexalith.Infrastructure.WebApis.Buses.BusTopicAttribute.BusTopicAttribute(System.String, System.String)
+  nameWithType: BusTopicAttribute.BusTopicAttribute(String, String)
+- uid: Hexalith.Infrastructure.WebApis.Buses.BusTopicAttribute.#ctor*
+  name: BusTopicAttribute
+  href: api/Hexalith.Infrastructure.WebApis.Buses.BusTopicAttribute.html#Hexalith_Infrastructure_WebApis_Buses_BusTopicAttribute__ctor_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.Buses.BusTopicAttribute.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.Buses.BusTopicAttribute.BusTopicAttribute
+  nameWithType: BusTopicAttribute.BusTopicAttribute
+- uid: Hexalith.Infrastructure.WebApis.Buses.CommandBusTopicAttribute
+  name: CommandBusTopicAttribute
+  href: api/Hexalith.Infrastructure.WebApis.Buses.CommandBusTopicAttribute.html
+  commentId: T:Hexalith.Infrastructure.WebApis.Buses.CommandBusTopicAttribute
+  fullName: Hexalith.Infrastructure.WebApis.Buses.CommandBusTopicAttribute
+  nameWithType: CommandBusTopicAttribute
+- uid: Hexalith.Infrastructure.WebApis.Buses.CommandBusTopicAttribute.#ctor(System.String)
+  name: CommandBusTopicAttribute(String)
+  href: api/Hexalith.Infrastructure.WebApis.Buses.CommandBusTopicAttribute.html#Hexalith_Infrastructure_WebApis_Buses_CommandBusTopicAttribute__ctor_System_String_
+  commentId: M:Hexalith.Infrastructure.WebApis.Buses.CommandBusTopicAttribute.#ctor(System.String)
+  fullName: Hexalith.Infrastructure.WebApis.Buses.CommandBusTopicAttribute.CommandBusTopicAttribute(System.String)
+  nameWithType: CommandBusTopicAttribute.CommandBusTopicAttribute(String)
+- uid: Hexalith.Infrastructure.WebApis.Buses.CommandBusTopicAttribute.#ctor*
+  name: CommandBusTopicAttribute
+  href: api/Hexalith.Infrastructure.WebApis.Buses.CommandBusTopicAttribute.html#Hexalith_Infrastructure_WebApis_Buses_CommandBusTopicAttribute__ctor_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.Buses.CommandBusTopicAttribute.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.Buses.CommandBusTopicAttribute.CommandBusTopicAttribute
+  nameWithType: CommandBusTopicAttribute.CommandBusTopicAttribute
+- uid: Hexalith.Infrastructure.WebApis.Buses.CommandBusTopicAttribute.AggregateName
+  name: AggregateName
+  href: api/Hexalith.Infrastructure.WebApis.Buses.CommandBusTopicAttribute.html#Hexalith_Infrastructure_WebApis_Buses_CommandBusTopicAttribute_AggregateName
+  commentId: P:Hexalith.Infrastructure.WebApis.Buses.CommandBusTopicAttribute.AggregateName
+  fullName: Hexalith.Infrastructure.WebApis.Buses.CommandBusTopicAttribute.AggregateName
+  nameWithType: CommandBusTopicAttribute.AggregateName
+- uid: Hexalith.Infrastructure.WebApis.Buses.CommandBusTopicAttribute.AggregateName*
+  name: AggregateName
+  href: api/Hexalith.Infrastructure.WebApis.Buses.CommandBusTopicAttribute.html#Hexalith_Infrastructure_WebApis_Buses_CommandBusTopicAttribute_AggregateName_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.Buses.CommandBusTopicAttribute.AggregateName
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.Buses.CommandBusTopicAttribute.AggregateName
+  nameWithType: CommandBusTopicAttribute.AggregateName
+- uid: Hexalith.Infrastructure.WebApis.Buses.EventBusTopicAttribute
+  name: EventBusTopicAttribute
+  href: api/Hexalith.Infrastructure.WebApis.Buses.EventBusTopicAttribute.html
+  commentId: T:Hexalith.Infrastructure.WebApis.Buses.EventBusTopicAttribute
+  fullName: Hexalith.Infrastructure.WebApis.Buses.EventBusTopicAttribute
+  nameWithType: EventBusTopicAttribute
+- uid: Hexalith.Infrastructure.WebApis.Buses.EventBusTopicAttribute.#ctor(System.String)
+  name: EventBusTopicAttribute(String)
+  href: api/Hexalith.Infrastructure.WebApis.Buses.EventBusTopicAttribute.html#Hexalith_Infrastructure_WebApis_Buses_EventBusTopicAttribute__ctor_System_String_
+  commentId: M:Hexalith.Infrastructure.WebApis.Buses.EventBusTopicAttribute.#ctor(System.String)
+  fullName: Hexalith.Infrastructure.WebApis.Buses.EventBusTopicAttribute.EventBusTopicAttribute(System.String)
+  nameWithType: EventBusTopicAttribute.EventBusTopicAttribute(String)
+- uid: Hexalith.Infrastructure.WebApis.Buses.EventBusTopicAttribute.#ctor*
+  name: EventBusTopicAttribute
+  href: api/Hexalith.Infrastructure.WebApis.Buses.EventBusTopicAttribute.html#Hexalith_Infrastructure_WebApis_Buses_EventBusTopicAttribute__ctor_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.Buses.EventBusTopicAttribute.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.Buses.EventBusTopicAttribute.EventBusTopicAttribute
+  nameWithType: EventBusTopicAttribute.EventBusTopicAttribute
+- uid: Hexalith.Infrastructure.WebApis.Buses.EventBusTopicAttribute.AggregateName
+  name: AggregateName
+  href: api/Hexalith.Infrastructure.WebApis.Buses.EventBusTopicAttribute.html#Hexalith_Infrastructure_WebApis_Buses_EventBusTopicAttribute_AggregateName
+  commentId: P:Hexalith.Infrastructure.WebApis.Buses.EventBusTopicAttribute.AggregateName
+  fullName: Hexalith.Infrastructure.WebApis.Buses.EventBusTopicAttribute.AggregateName
+  nameWithType: EventBusTopicAttribute.AggregateName
+- uid: Hexalith.Infrastructure.WebApis.Buses.EventBusTopicAttribute.AggregateName*
+  name: AggregateName
+  href: api/Hexalith.Infrastructure.WebApis.Buses.EventBusTopicAttribute.html#Hexalith_Infrastructure_WebApis_Buses_EventBusTopicAttribute_AggregateName_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.Buses.EventBusTopicAttribute.AggregateName
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.Buses.EventBusTopicAttribute.AggregateName
+  nameWithType: EventBusTopicAttribute.AggregateName
+- uid: Hexalith.Infrastructure.WebApis.Buses.NotificationBusTopicAttribute
+  name: NotificationBusTopicAttribute
+  href: api/Hexalith.Infrastructure.WebApis.Buses.NotificationBusTopicAttribute.html
+  commentId: T:Hexalith.Infrastructure.WebApis.Buses.NotificationBusTopicAttribute
+  fullName: Hexalith.Infrastructure.WebApis.Buses.NotificationBusTopicAttribute
+  nameWithType: NotificationBusTopicAttribute
+- uid: Hexalith.Infrastructure.WebApis.Buses.NotificationBusTopicAttribute.#ctor(System.String)
+  name: NotificationBusTopicAttribute(String)
+  href: api/Hexalith.Infrastructure.WebApis.Buses.NotificationBusTopicAttribute.html#Hexalith_Infrastructure_WebApis_Buses_NotificationBusTopicAttribute__ctor_System_String_
+  commentId: M:Hexalith.Infrastructure.WebApis.Buses.NotificationBusTopicAttribute.#ctor(System.String)
+  fullName: Hexalith.Infrastructure.WebApis.Buses.NotificationBusTopicAttribute.NotificationBusTopicAttribute(System.String)
+  nameWithType: NotificationBusTopicAttribute.NotificationBusTopicAttribute(String)
+- uid: Hexalith.Infrastructure.WebApis.Buses.NotificationBusTopicAttribute.#ctor*
+  name: NotificationBusTopicAttribute
+  href: api/Hexalith.Infrastructure.WebApis.Buses.NotificationBusTopicAttribute.html#Hexalith_Infrastructure_WebApis_Buses_NotificationBusTopicAttribute__ctor_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.Buses.NotificationBusTopicAttribute.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.Buses.NotificationBusTopicAttribute.NotificationBusTopicAttribute
+  nameWithType: NotificationBusTopicAttribute.NotificationBusTopicAttribute
+- uid: Hexalith.Infrastructure.WebApis.Buses.NotificationBusTopicAttribute.AggregateName
+  name: AggregateName
+  href: api/Hexalith.Infrastructure.WebApis.Buses.NotificationBusTopicAttribute.html#Hexalith_Infrastructure_WebApis_Buses_NotificationBusTopicAttribute_AggregateName
+  commentId: P:Hexalith.Infrastructure.WebApis.Buses.NotificationBusTopicAttribute.AggregateName
+  fullName: Hexalith.Infrastructure.WebApis.Buses.NotificationBusTopicAttribute.AggregateName
+  nameWithType: NotificationBusTopicAttribute.AggregateName
+- uid: Hexalith.Infrastructure.WebApis.Buses.NotificationBusTopicAttribute.AggregateName*
+  name: AggregateName
+  href: api/Hexalith.Infrastructure.WebApis.Buses.NotificationBusTopicAttribute.html#Hexalith_Infrastructure_WebApis_Buses_NotificationBusTopicAttribute_AggregateName_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.Buses.NotificationBusTopicAttribute.AggregateName
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.Buses.NotificationBusTopicAttribute.AggregateName
+  nameWithType: NotificationBusTopicAttribute.AggregateName
+- uid: Hexalith.Infrastructure.WebApis.Buses.RequestBusTopicAttribute
+  name: RequestBusTopicAttribute
+  href: api/Hexalith.Infrastructure.WebApis.Buses.RequestBusTopicAttribute.html
+  commentId: T:Hexalith.Infrastructure.WebApis.Buses.RequestBusTopicAttribute
+  fullName: Hexalith.Infrastructure.WebApis.Buses.RequestBusTopicAttribute
+  nameWithType: RequestBusTopicAttribute
+- uid: Hexalith.Infrastructure.WebApis.Buses.RequestBusTopicAttribute.#ctor(System.String)
+  name: RequestBusTopicAttribute(String)
+  href: api/Hexalith.Infrastructure.WebApis.Buses.RequestBusTopicAttribute.html#Hexalith_Infrastructure_WebApis_Buses_RequestBusTopicAttribute__ctor_System_String_
+  commentId: M:Hexalith.Infrastructure.WebApis.Buses.RequestBusTopicAttribute.#ctor(System.String)
+  fullName: Hexalith.Infrastructure.WebApis.Buses.RequestBusTopicAttribute.RequestBusTopicAttribute(System.String)
+  nameWithType: RequestBusTopicAttribute.RequestBusTopicAttribute(String)
+- uid: Hexalith.Infrastructure.WebApis.Buses.RequestBusTopicAttribute.#ctor*
+  name: RequestBusTopicAttribute
+  href: api/Hexalith.Infrastructure.WebApis.Buses.RequestBusTopicAttribute.html#Hexalith_Infrastructure_WebApis_Buses_RequestBusTopicAttribute__ctor_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.Buses.RequestBusTopicAttribute.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.Buses.RequestBusTopicAttribute.RequestBusTopicAttribute
+  nameWithType: RequestBusTopicAttribute.RequestBusTopicAttribute
+- uid: Hexalith.Infrastructure.WebApis.Buses.RequestBusTopicAttribute.AggregateName
+  name: AggregateName
+  href: api/Hexalith.Infrastructure.WebApis.Buses.RequestBusTopicAttribute.html#Hexalith_Infrastructure_WebApis_Buses_RequestBusTopicAttribute_AggregateName
+  commentId: P:Hexalith.Infrastructure.WebApis.Buses.RequestBusTopicAttribute.AggregateName
+  fullName: Hexalith.Infrastructure.WebApis.Buses.RequestBusTopicAttribute.AggregateName
+  nameWithType: RequestBusTopicAttribute.AggregateName
+- uid: Hexalith.Infrastructure.WebApis.Buses.RequestBusTopicAttribute.AggregateName*
+  name: AggregateName
+  href: api/Hexalith.Infrastructure.WebApis.Buses.RequestBusTopicAttribute.html#Hexalith_Infrastructure_WebApis_Buses_RequestBusTopicAttribute_AggregateName_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.Buses.RequestBusTopicAttribute.AggregateName
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.Buses.RequestBusTopicAttribute.AggregateName
+  nameWithType: RequestBusTopicAttribute.AggregateName
 - uid: Hexalith.Infrastructure.WebApis.Controllers
   name: Hexalith.Infrastructure.WebApis.Controllers
   href: api/Hexalith.Infrastructure.WebApis.Controllers.html
@@ -25111,6 +25307,25 @@ references:
   commentId: N:Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers
   fullName: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers
   nameWithType: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemReferenceCommandsBusTopicAttribute
+  name: ExternalSystemReferenceCommandsBusTopicAttribute
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemReferenceCommandsBusTopicAttribute.html
+  commentId: T:Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemReferenceCommandsBusTopicAttribute
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemReferenceCommandsBusTopicAttribute
+  nameWithType: ExternalSystemReferenceCommandsBusTopicAttribute
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemReferenceCommandsBusTopicAttribute.#ctor
+  name: ExternalSystemReferenceCommandsBusTopicAttribute()
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemReferenceCommandsBusTopicAttribute.html#Hexalith_Infrastructure_WebApis_ExternalSystemsCommands_Controllers_ExternalSystemReferenceCommandsBusTopicAttribute__ctor
+  commentId: M:Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemReferenceCommandsBusTopicAttribute.#ctor
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemReferenceCommandsBusTopicAttribute.ExternalSystemReferenceCommandsBusTopicAttribute()
+  nameWithType: ExternalSystemReferenceCommandsBusTopicAttribute.ExternalSystemReferenceCommandsBusTopicAttribute()
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemReferenceCommandsBusTopicAttribute.#ctor*
+  name: ExternalSystemReferenceCommandsBusTopicAttribute
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemReferenceCommandsBusTopicAttribute.html#Hexalith_Infrastructure_WebApis_ExternalSystemsCommands_Controllers_ExternalSystemReferenceCommandsBusTopicAttribute__ctor_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemReferenceCommandsBusTopicAttribute.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemReferenceCommandsBusTopicAttribute.ExternalSystemReferenceCommandsBusTopicAttribute
+  nameWithType: ExternalSystemReferenceCommandsBusTopicAttribute.ExternalSystemReferenceCommandsBusTopicAttribute
 - uid: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController
   name: ExternalSystemsIntegrationCommandsController
   href: api/Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.html
@@ -25177,6 +25392,25 @@ references:
   commentId: N:Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers
   fullName: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers
   nameWithType: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemReferenceEventsBusTopicAttribute
+  name: ExternalSystemReferenceEventsBusTopicAttribute
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemReferenceEventsBusTopicAttribute.html
+  commentId: T:Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemReferenceEventsBusTopicAttribute
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemReferenceEventsBusTopicAttribute
+  nameWithType: ExternalSystemReferenceEventsBusTopicAttribute
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemReferenceEventsBusTopicAttribute.#ctor
+  name: ExternalSystemReferenceEventsBusTopicAttribute()
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemReferenceEventsBusTopicAttribute.html#Hexalith_Infrastructure_WebApis_ExternalSystemsEvents_Controllers_ExternalSystemReferenceEventsBusTopicAttribute__ctor
+  commentId: M:Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemReferenceEventsBusTopicAttribute.#ctor
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemReferenceEventsBusTopicAttribute.ExternalSystemReferenceEventsBusTopicAttribute()
+  nameWithType: ExternalSystemReferenceEventsBusTopicAttribute.ExternalSystemReferenceEventsBusTopicAttribute()
+- uid: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemReferenceEventsBusTopicAttribute.#ctor*
+  name: ExternalSystemReferenceEventsBusTopicAttribute
+  href: api/Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemReferenceEventsBusTopicAttribute.html#Hexalith_Infrastructure_WebApis_ExternalSystemsEvents_Controllers_ExternalSystemReferenceEventsBusTopicAttribute__ctor_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemReferenceEventsBusTopicAttribute.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemReferenceEventsBusTopicAttribute.ExternalSystemReferenceEventsBusTopicAttribute
+  nameWithType: ExternalSystemReferenceEventsBusTopicAttribute.ExternalSystemReferenceEventsBusTopicAttribute
 - uid: Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController
   name: ExternalSystemsIntegrationEventsController
   href: api/Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController.html
@@ -25319,6 +25553,25 @@ references:
   commentId: N:Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers
   fullName: Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers
   nameWithType: Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers
+- uid: Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers.CustomerCommandsBusTopicAttribute
+  name: CustomerCommandsBusTopicAttribute
+  href: api/Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers.CustomerCommandsBusTopicAttribute.html
+  commentId: T:Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers.CustomerCommandsBusTopicAttribute
+  fullName: Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers.CustomerCommandsBusTopicAttribute
+  nameWithType: CustomerCommandsBusTopicAttribute
+- uid: Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers.CustomerCommandsBusTopicAttribute.#ctor
+  name: CustomerCommandsBusTopicAttribute()
+  href: api/Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers.CustomerCommandsBusTopicAttribute.html#Hexalith_Infrastructure_WebApis_PartiesCommands_Controllers_CustomerCommandsBusTopicAttribute__ctor
+  commentId: M:Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers.CustomerCommandsBusTopicAttribute.#ctor
+  fullName: Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers.CustomerCommandsBusTopicAttribute.CustomerCommandsBusTopicAttribute()
+  nameWithType: CustomerCommandsBusTopicAttribute.CustomerCommandsBusTopicAttribute()
+- uid: Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers.CustomerCommandsBusTopicAttribute.#ctor*
+  name: CustomerCommandsBusTopicAttribute
+  href: api/Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers.CustomerCommandsBusTopicAttribute.html#Hexalith_Infrastructure_WebApis_PartiesCommands_Controllers_CustomerCommandsBusTopicAttribute__ctor_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers.CustomerCommandsBusTopicAttribute.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers.CustomerCommandsBusTopicAttribute.CustomerCommandsBusTopicAttribute
+  nameWithType: CustomerCommandsBusTopicAttribute.CustomerCommandsBusTopicAttribute
 - uid: Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers.PartiesCommandsController
   name: PartiesCommandsController
   href: api/Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers.PartiesCommandsController.html
@@ -25356,6 +25609,25 @@ references:
   commentId: N:Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers
   fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers
   nameWithType: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerEventsBusTopicAttribute
+  name: CustomerEventsBusTopicAttribute
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerEventsBusTopicAttribute.html
+  commentId: T:Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerEventsBusTopicAttribute
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerEventsBusTopicAttribute
+  nameWithType: CustomerEventsBusTopicAttribute
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerEventsBusTopicAttribute.#ctor
+  name: CustomerEventsBusTopicAttribute()
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerEventsBusTopicAttribute.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Controllers_CustomerEventsBusTopicAttribute__ctor
+  commentId: M:Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerEventsBusTopicAttribute.#ctor
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerEventsBusTopicAttribute.CustomerEventsBusTopicAttribute()
+  nameWithType: CustomerEventsBusTopicAttribute.CustomerEventsBusTopicAttribute()
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerEventsBusTopicAttribute.#ctor*
+  name: CustomerEventsBusTopicAttribute
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerEventsBusTopicAttribute.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Controllers_CustomerEventsBusTopicAttribute__ctor_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerEventsBusTopicAttribute.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerEventsBusTopicAttribute.CustomerEventsBusTopicAttribute
+  nameWithType: CustomerEventsBusTopicAttribute.CustomerEventsBusTopicAttribute
 - uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController
   name: PartiesIntegrationEventsController
   href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.html

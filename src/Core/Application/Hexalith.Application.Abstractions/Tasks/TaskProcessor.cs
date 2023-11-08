@@ -9,6 +9,7 @@ namespace Hexalith.Application.Tasks;
 using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
+using System.Xml.Serialization;
 
 using Hexalith.Extensions;
 
@@ -148,6 +149,7 @@ public class TaskProcessor : ITaskProcessor
     /// <value>The retry wait time.</value>
     [IgnoreDataMember]
     [JsonIgnore]
+    [XmlIgnore]
     public TimeSpan RetryWaitTime => ResiliencyPolicy.RetryWaitTime(
             History.CreatedDate,
             Failure == null ? 0 : Failure.Count);

@@ -17,7 +17,7 @@ using Hexalith.TestMocks;
 public class ResiliencyPolicyTest
 {
     [Fact]
-    public void DataContractSerializeSeserializeShouldReturnSameValue()
+    public void DataContractSerializeSerializeShouldReturnSameValue()
     {
         // Serialize resiliency policy
         ResiliencyPolicy policy = GetTestPolicy();
@@ -25,7 +25,55 @@ public class ResiliencyPolicyTest
     }
 
     [Fact]
-    public void JsonSerializeSeserializeShouldReturnSameValue()
+    public void ExponentialPeriodOverflowShouldBeMaximumExponentialPeriod()
+    {
+        ResiliencyPolicy policy = ResiliencyPolicy.CreateDefaultExponentialRetry();
+        TimeSpan value = policy.EvaluatePeriod(1000);
+        _ = value.Should().Be(policy.MaximumExponentialPeriod);
+    }
+
+    [Theory]
+    [InlineData(2, 1001)]
+    [InlineData(5, 1011)]
+    [InlineData(9, 1087)]
+    [InlineData(15, 2595)]
+    [InlineData(30, (36 * 60 * 1000) + 19307)]
+    [InlineData(70, 24 * 3600 * 1000)]
+    [InlineData(90, 24 * 3600 * 1000)]
+    [InlineData(200, 24 * 3600 * 1000)]
+    public void ExponentialPeriodTimeRetryShouldBeExpectedValue(int sequence, int milliseconds)
+    {
+        ResiliencyPolicy policy = ResiliencyPolicy.CreateDefaultExponentialRetry();
+        TimeSpan value = policy.EvaluatePeriod(sequence);
+        _ = value.Should().Be(TimeSpan.FromMilliseconds(milliseconds));
+    }
+
+    [Fact]
+    public void ExponentialPeriodTimeWithSixRetriesShouldBeOneSecondAndNineteenMilliseconds()
+    {
+        ResiliencyPolicy policy = ResiliencyPolicy.CreateDefaultExponentialRetry();
+        TimeSpan value = policy.EvaluatePeriod(6);
+        _ = value.Should().Be(TimeSpan.FromMilliseconds(1019));
+    }
+
+    [Fact]
+    public void ExponentialPeriodTimeWithTwoRetriesShouldBeInitialPlusPeriod()
+    {
+        ResiliencyPolicy policy = ResiliencyPolicy.CreateDefaultExponentialRetry();
+        TimeSpan value = policy.EvaluatePeriod(2);
+        _ = value.Should().Be(policy.InitialPeriod + policy.Period);
+    }
+
+    [Fact]
+    public void ExponentialPeriodWithNoRetryShouldBeInitialPeriod()
+    {
+        ResiliencyPolicy policy = ResiliencyPolicy.CreateDefaultExponentialRetry();
+        TimeSpan value = policy.EvaluatePeriod(0);
+        _ = value.Should().Be(policy.InitialPeriod);
+    }
+
+    [Fact]
+    public void JsonSerializeSerializeShouldReturnSameValue()
     {
         // Serialize resiliency policy
         ResiliencyPolicy policy = GetTestPolicy();
@@ -54,17 +102,17 @@ public class ResiliencyPolicyTest
 
     [Theory]
     [InlineData(0, 5)]
-    [InlineData(1, 10 + 5)]
-    [InlineData(2, 10 + 15)]
-    [InlineData(3, 20 + 25)]
-    [InlineData(4, 30 + 45)]
-    [InlineData(5, 50 + 75)]
-    [InlineData(6, 80 + 125)]
-    [InlineData(7, 130 + 205)]
-    [InlineData(8, 210 + 335)]
-    [InlineData(9, 340 + 545)]
-    [InlineData(10, 550 + 885)]
-    [InlineData(11, 890 + 1435)]
+    [InlineData(1, 5)]
+    [InlineData(2, 5 + 10)]
+    [InlineData(3, 20 + 15)]
+    [InlineData(4, 30 + 35)]
+    [InlineData(5, 50 + 65)]
+    [InlineData(6, 80 + 115)]
+    [InlineData(7, 130 + 195)]
+    [InlineData(8, 210 + 325)]
+    [InlineData(9, 340 + 535)]
+    [InlineData(10, 550 + 875)]
+    [InlineData(11, 890 + 1425)]
     public void WaitTimeForEachExponentialRetryShouldBeExpectedValue(int sequence, int value)
     {
         DateTimeOffset now = DateTimeOffset.UtcNow;
@@ -81,17 +129,17 @@ public class ResiliencyPolicyTest
 
     [Theory]
     [InlineData(0, 200)]
-    [InlineData(1, 100 + 200)]
-    [InlineData(2, 200 + 200)]
-    [InlineData(3, 300 + 200)]
-    [InlineData(4, 400 + 200)]
-    [InlineData(5, 500 + 200)]
-    [InlineData(6, 600 + 200)]
-    [InlineData(7, 700 + 200)]
-    [InlineData(8, 800 + 200)]
-    [InlineData(9, 900 + 200)]
-    [InlineData(10, 1000 + 200)]
-    [InlineData(11, 1100 + 200)]
+    [InlineData(1, 200)]
+    [InlineData(2, 100 + 200)]
+    [InlineData(3, 200 + 200)]
+    [InlineData(4, 300 + 200)]
+    [InlineData(5, 400 + 200)]
+    [InlineData(6, 500 + 200)]
+    [InlineData(7, 600 + 200)]
+    [InlineData(8, 700 + 200)]
+    [InlineData(9, 800 + 200)]
+    [InlineData(10, 900 + 200)]
+    [InlineData(11, 1000 + 200)]
     public void WaitTimeForEachLinearRetryShouldBeExpectedValue(int sequence, int value)
     {
         DateTimeOffset now = DateTimeOffset.UtcNow;
@@ -107,7 +155,7 @@ public class ResiliencyPolicyTest
     }
 
     [Fact]
-    public void XmlSerializeSeserializeShouldReturnSameValue()
+    public void XmlSerializeSerializeShouldReturnSameValue()
     {
         // Serialize resiliency policy
         ResiliencyPolicy policy = GetTestPolicy();

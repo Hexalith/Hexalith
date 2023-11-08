@@ -212,7 +212,7 @@ public partial class AggregateStateManager : IAggregateStateManager
             }
 
             TimeSpan waitTime = retry.RetryWaitTime;
-            LogRetryCommandWarning(retry.History.CreatedDate, retry.RetryWaitTime, retry.Failure?.Count ?? 0, retry.Failure?.Message ?? "Not defined.");
+            LogRetryCommandWarning(retry.History.CreatedDate, waitTime, retry.Failure?.Count ?? 0, retry.Failure?.Message ?? "Not defined.");
             await retryManager
                     .RegisterContinueCallbackAsync(
                         waitTime <= resiliencyPolicy.InitialPeriod ? resiliencyPolicy.InitialPeriod : waitTime,

@@ -12,7 +12,7 @@
           "hash": "mLQc0aFezA/VPN2W2F6C0EjR/QvGQeROZuCTQXJ/EiE="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -69,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.ApplicationConstants.html",
-          "hash": "PSFiFV84yZm58ilBHSOhL+KCdKMztx/UihMghdWscr4="
+          "hash": "f+9fm1xMOA3RZtGTenHHCzQl4pSTANBolCZNCT09zv0="
         }
       },
       "is_incremental": false,
@@ -309,7 +309,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.html",
-          "hash": "oIyi80ZOKaAg9ZgQoAziqTsGCno2q6jx3wQooRi3N+k="
+          "hash": "2aPltKTpEO4LdGddPORwVKWf+zUpS1prCWRuHdcqD0M="
         }
       },
       "is_incremental": false,
@@ -2469,7 +2469,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Tasks.ResiliencyPolicy.html",
-          "hash": "EYiS3KSz4Xeg0459LQhR4ImJLJoYONmSyU46K4UORGo="
+          "hash": "q/EcgKf24ISK5417SiGk6EnUxgKzxPp37Yb/x2dOuqU="
         }
       },
       "is_incremental": false,
@@ -4233,7 +4233,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Buses.DaprCommandBus.html",
-          "hash": "DLjJSrxvQjtLUwFyGNyhOyWK38HlrI4mKpVvytWwIK8="
+          "hash": "DE43njSnVOl8X8JSIWrdzyBB3YHnROdGZtaN9D10GAM="
         }
       },
       "is_incremental": false,
@@ -4953,7 +4953,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient-1.html",
-          "hash": "mWgkL275HJcCMNtBJLRsHbxN3FhFBIDtef9JmEx1syY="
+          "hash": "t0DLgp8Mh9gPFs8ksTjkYiPNjy1/mJOOxPo/Mdq3tFk="
         }
       },
       "is_incremental": false,
@@ -6149,6 +6149,78 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.WebApis.Buses.BusTopicAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.WebApis.Buses.BusTopicAttribute.html",
+          "hash": "0a1ORMCC4q3o4FD8VMayS3rgG9zN+I5QqjiSuzTZ8tY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.WebApis.Buses.CommandBusTopicAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.WebApis.Buses.CommandBusTopicAttribute.html",
+          "hash": "zeCkQWEmX8xqJq+8Jh12hhhTyj5xA+yOlhMs2SnAcyI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.WebApis.Buses.EventBusTopicAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.WebApis.Buses.EventBusTopicAttribute.html",
+          "hash": "xy+tk/u7fkNFJW65/D3wYflUwLf1LuUWJ86WmmQl+5Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.WebApis.Buses.NotificationBusTopicAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.WebApis.Buses.NotificationBusTopicAttribute.html",
+          "hash": "KP4kegQF3TmPi4vYVqvb2VccfdDM8wWmbPPYt57MuO4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.WebApis.Buses.RequestBusTopicAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.WebApis.Buses.RequestBusTopicAttribute.html",
+          "hash": "RGjArC2b6SkRXANrIlXjX12Aa0ydQ9wVWf9RTf8BZVQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.WebApis.Buses.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.WebApis.Buses.html",
+          "hash": "Mmir4V/QYd9FttRT3y7JfKsV300ZcoTD3kXrm5EqESQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Hexalith.Infrastructure.WebApis.Controllers.BindingController.yml",
       "output": {
         ".html": {
@@ -6209,11 +6281,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemReferenceCommandsBusTopicAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemReferenceCommandsBusTopicAttribute.html",
+          "hash": "jcLFyWCmz8/Pa1YXhVmIpERA8l6XgCpt54OzhM6PhGM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.yml",
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.html",
-          "hash": "gtNML5f+i+eZXZd0ebJnmbBmWUA3fXJkg+bbWZm4g/I="
+          "hash": "eWi+pRoSpV8ZcA3/9Y8mfEt+VChdFfpy47jxR/8/HdY="
         }
       },
       "is_incremental": false,
@@ -6225,7 +6309,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.html",
-          "hash": "W5DqpmP3OMNXJkySK6Zl83O2x3EuiFItBs9lwU7y5l8="
+          "hash": "ORMvVz0bcFKT+A8ExfVUNo6TwM3rfBevoxW8T2EddMw="
         }
       },
       "is_incremental": false,
@@ -6257,11 +6341,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemReferenceEventsBusTopicAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemReferenceEventsBusTopicAttribute.html",
+          "hash": "8bn432cU/kOqS63ticQ5OZbvSJVPff1Rcj9onDNGb1w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController.yml",
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemsIntegrationEventsController.html",
-          "hash": "1ShoJgrGWO3UWzuGg4fZKMhESMujugXwJi6/1kNOU6Q="
+          "hash": "Wo6IErJU6NbZxXntCQc2sEXQX1NZMv69qzjYSp1cBR4="
         }
       },
       "is_incremental": false,
@@ -6273,7 +6369,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.html",
-          "hash": "RSNXvH503NVz2WF2dOGnKt+uuJdVqxRPknrC+aCEICI="
+          "hash": "0BA9JUu2G+KnO+P/uJwalro1y8TkvOadDYwg66ekhww="
         }
       },
       "is_incremental": false,
@@ -6341,11 +6437,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers.CustomerCommandsBusTopicAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers.CustomerCommandsBusTopicAttribute.html",
+          "hash": "hzMrYSvn2RGWyfy2Y3Dis5ed5ERvn0vLIcS/1oNHNKY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers.PartiesCommandsController.yml",
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers.PartiesCommandsController.html",
-          "hash": "jqCJndB55wHCUUKoDMcKSclSMuSz+H/6TgFfwJgpJa0="
+          "hash": "6f3qRSwgXeR3d7A30yCgsLjTIjhqvQ80MvRPaX00zJc="
         }
       },
       "is_incremental": false,
@@ -6357,7 +6465,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers.html",
-          "hash": "SdiNkmVu5halP6eYMtEJxaOnlu/5pJdGi7KnBwXHPjA="
+          "hash": "JLhhQoyFKe9JcRWcwx/u8bcsS+KagwrlwtK2152uEYw="
         }
       },
       "is_incremental": false,
@@ -6389,11 +6497,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerEventsBusTopicAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerEventsBusTopicAttribute.html",
+          "hash": "HgyGK1ujoG3MlodJRjMmb1YwXCk6IGE4ejadxpN+osM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.yml",
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.html",
-          "hash": "GuFsgYGiikjR6XPCda00LqLsubO1ksl9KMJEUw//7mA="
+          "hash": "FSVoEidTYMZ5cdGuZz/leSFQij2zDc+Rv9kkd6SWbR0="
         }
       },
       "is_incremental": false,
@@ -6405,7 +6525,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.html",
-          "hash": "UB/gHHjrHRfcxnGJ5j1sJ8RUn6kfcZ+w7ei+owOTcVQ="
+          "hash": "aXNtpJ6A1nnL04JGdSR87Hm9cfudLiYA7/lC3V8D0t4="
         }
       },
       "is_incremental": false,
@@ -6573,7 +6693,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "/88rB1yy0SR4rN+5lsuluKjQrmEPIw2tSJMFLEV+7TI="
+          "hash": "/h5a+SH8aBZm2XM2L1XYTqhNVNz56xM9dbhHV6o3//8="
         }
       },
       "is_incremental": false,
@@ -6588,7 +6708,7 @@
           "hash": "XREAr6iHtuka+aO7c3lTrh90rt0rybqw859u1tetgNM="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -6612,7 +6732,7 @@
           "hash": "vsW9ZvNJ7sOSf2pjIjuOSwvq6ulmUIdFPHc7lPEfC4Y="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -6631,25 +6751,23 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": false,
-        "details": "Disable incremental build by force rebuild option.",
+        "can_incremental": true,
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0,
-        "full_build_reason_code": "ForceRebuild"
+        "skipped_file_count": 0
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 4,
-          "skipped_file_count": 0
+          "skipped_file_count": 4
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 545,
-          "skipped_file_count": 0
+          "total_file_count": 555,
+          "skipped_file_count": 531
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
@@ -6662,8 +6780,8 @@
     },
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0
