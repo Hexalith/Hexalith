@@ -153,23 +153,25 @@ public class TaskProcessorTest
     }
 
     [Theory]
-    [InlineData(15, 2595)]
-    [InlineData(30, (36 * 60 * 1000) + 19307)]
-    [InlineData(70, 24 * 3600 * 1000)]
-    [InlineData(90, 24 * 3600 * 1000)]
-    [InlineData(200, 24 * 3600 * 1000)]
+    [InlineData(5, 0)]
+    [InlineData(10, 0)]
+    [InlineData(20, 8707)]
+    [InlineData(25, 187416)]
+    [InlineData(70, (3600 * 24 * 1000) - 10000)]
     public void SuspendedWaitTimeShouldBePositive(int retries, int milliseconds)
     {
-        TaskProcessor processor = new TaskProcessor(DateTimeOffset.UtcNow.AddSeconds(-10), ResiliencyPolicy.CreateDefaultExponentialRetry())
+        DateTimeOffset startDate = DateTimeOffset.UtcNow.AddSeconds(-10);
+        TaskProcessor processor = new TaskProcessor(startDate, ResiliencyPolicy.CreateDefaultExponentialRetry())
             .Start();
         for (int i = 0; i < retries; i++)
         {
             processor = processor.Fail($"Fail {retries}", null);
         }
 
-        double seconds = (milliseconds / 1000d) - 10d;
-        seconds = seconds < 0d ? 0d : seconds;
-        _ = DateTimeOffset.Now.WaitTime(processor.RetryDate).TotalSeconds.Should().BeApproximately(seconds, 1d);
+        DateTimeOffset? retryDate = processor.RetryDate;
+        DateTimeOffset now = DateTimeOffset.Now;
+        TimeSpan waitTime = now.WaitTime(retryDate);
+        _ = waitTime.TotalMilliseconds.Should().BeApproximately(milliseconds, 10d);
     }
 
     /*

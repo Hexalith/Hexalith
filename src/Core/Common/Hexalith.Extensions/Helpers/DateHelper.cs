@@ -57,7 +57,7 @@ public static class DateHelper
             return TimeSpan.Zero;
         }
 
-        TimeSpan waitTime = from - to.Value;
-        return waitTime < TimeSpan.Zero ? TimeSpan.Zero : waitTime;
+        long waitTime = to.Value.UtcTicks - from.UtcTicks;
+        return waitTime > 0 ? new TimeSpan(waitTime) : TimeSpan.Zero;
     }
 }

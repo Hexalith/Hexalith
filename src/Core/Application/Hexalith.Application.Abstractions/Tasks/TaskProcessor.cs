@@ -142,6 +142,19 @@ public class TaskProcessor : ITaskProcessor
         set { }
     }
 
+    /// <summary>
+    /// Gets or sets the retry wait time.
+    /// </summary>
+    /// <value>The retry wait time.</value>
+    [DataMember(Order = 6)]
+    [JsonPropertyOrder(6)]
+    public TimeSpan RetryPeriod
+    {
+        get => ResiliencyPolicy.EvaluatePeriod(Failure?.Count ?? 0);
+        [Obsolete("Setter used only for serialization purposes.", false)]
+        set { }
+    }
+
     /// <inheritdoc/>
     [DataMember(Order = 1)]
     [JsonPropertyOrder(1)]
