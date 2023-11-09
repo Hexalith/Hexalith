@@ -23,6 +23,7 @@ using FluentAssertions;
 using FluentAssertions.Equivalency;
 
 using Hexalith.Application.Tasks;
+using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class TaskProcessorTest.
@@ -168,7 +169,7 @@ public class TaskProcessorTest
 
         double seconds = (milliseconds / 1000d) - 10d;
         seconds = seconds < 0d ? 0d : seconds;
-        _ = processor.RetryWaitTime.TotalSeconds.Should().BeApproximately(seconds, 1d);
+        _ = DateTimeOffset.Now.WaitTime(processor.RetryDate).TotalSeconds.Should().BeApproximately(seconds, 1d);
     }
 
     /*
@@ -199,9 +200,5 @@ public class TaskProcessorTest
             .Complete();
     }
 
-    private EquivalencyAssertionOptions<TaskProcessor> ExcludeProperties(EquivalencyAssertionOptions<TaskProcessor> options)
-    {
-        _ = options.Excluding(t => t.RetryWaitTime);
-        return options;
-    }
+    private EquivalencyAssertionOptions<TaskProcessor> ExcludeProperties(EquivalencyAssertionOptions<TaskProcessor> options) => options;
 }

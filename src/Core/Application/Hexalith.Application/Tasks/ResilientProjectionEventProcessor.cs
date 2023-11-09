@@ -71,7 +71,7 @@ public class ResilientProjectionEventProcessor
     /// <param name="baseEvent">The command.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A <see cref="Task{TResult}" /> representing the result of the asynchronous operation.</returns>
-    public async Task<TimeSpan?> ProcessAsync(string id, BaseEvent baseEvent, CancellationToken cancellationToken)
+    public async Task<DateTimeOffset?> ProcessAsync(string id, BaseEvent baseEvent, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(baseEvent);
         TaskProcessor taskProcessor = await GetTaskProcessorAsync(id, cancellationToken).ConfigureAwait(false);
@@ -89,7 +89,7 @@ public class ResilientProjectionEventProcessor
                         break;
 
                     case RetryStatus.Suspended:
-                        return taskProcessor.RetryWaitTime;
+                        return taskProcessor.RetryDate;
 
                     case RetryStatus.Stopped:
                         taskProcessor = taskProcessor.Cancel();
@@ -120,7 +120,7 @@ public class ResilientProjectionEventProcessor
         }
 
         await _stateStoreProvider.SetStateAsync(nameof(TaskProcessor) + id, taskProcessor, cancellationToken).ConfigureAwait(false);
-        return (taskProcessor.Status is TaskProcessorStatus.Completed or TaskProcessorStatus.Canceled) ? null : taskProcessor.RetryWaitTime;
+        return (taskProcessor.Status is TaskProcessorStatus.Completed or TaskProcessorStatus.Canceled) ? null : taskProcessor.RetryDate;
     }
 
     /// <summary>

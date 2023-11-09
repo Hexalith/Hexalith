@@ -171,19 +171,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Extensions_Helpers_DateHelper_ToUniveralTime_System_DateOnly_.md&amp;value=---%0Auid%3A%20Hexalith.Extensions.Helpers.DateHelper.ToUniveralTime(System.DateOnly)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Extensions_Helpers_DateHelper_ToUniversalTime_System_DateOnly_.md&amp;value=---%0Auid%3A%20Hexalith.Extensions.Helpers.DateHelper.ToUniversalTime(System.DateOnly)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Common/Hexalith.Extensions/Helpers/DateHelper.cs/#L33">View Source</a>
   </span>
-  <a id="Hexalith_Extensions_Helpers_DateHelper_ToUniveralTime_" data-uid="Hexalith.Extensions.Helpers.DateHelper.ToUniveralTime*"></a>
-  <h4 id="Hexalith_Extensions_Helpers_DateHelper_ToUniveralTime_System_DateOnly_" data-uid="Hexalith.Extensions.Helpers.DateHelper.ToUniveralTime(System.DateOnly)">ToUniveralTime(DateOnly)</h4>
+  <a id="Hexalith_Extensions_Helpers_DateHelper_ToUniversalTime_" data-uid="Hexalith.Extensions.Helpers.DateHelper.ToUniversalTime*"></a>
+  <h4 id="Hexalith_Extensions_Helpers_DateHelper_ToUniversalTime_System_DateOnly_" data-uid="Hexalith.Extensions.Helpers.DateHelper.ToUniversalTime(System.DateOnly)">ToUniversalTime(DateOnly)</h4>
   <div class="markdown level1 summary"><p>Converts a date only value to a GMT(UTC+0) date time.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static DateTimeOffset ToUniveralTime(this DateOnly date)</code></pre>
+    <pre><code class="lang-csharp hljs">public static DateTimeOffset ToUniversalTime(this DateOnly date)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -215,6 +215,118 @@
       <tr>
         <td><span class="xref">System.DateTimeOffset</span></td>
         <td><p>DateTimeOffset.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Extensions_Helpers_DateHelper_WaitTime_System_DateTimeOffset_System_Nullable_System_DateTimeOffset__.md&amp;value=---%0Auid%3A%20Hexalith.Extensions.Helpers.DateHelper.WaitTime(System.DateTimeOffset%2CSystem.Nullable%7BSystem.DateTimeOffset%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Common/Hexalith.Extensions/Helpers/DateHelper.cs/#L53">View Source</a>
+  </span>
+  <a id="Hexalith_Extensions_Helpers_DateHelper_WaitTime_" data-uid="Hexalith.Extensions.Helpers.DateHelper.WaitTime*"></a>
+  <h4 id="Hexalith_Extensions_Helpers_DateHelper_WaitTime_System_DateTimeOffset_System_Nullable_System_DateTimeOffset__" data-uid="Hexalith.Extensions.Helpers.DateHelper.WaitTime(System.DateTimeOffset,System.Nullable{System.DateTimeOffset})">WaitTime(DateTimeOffset, Nullable&lt;DateTimeOffset&gt;)</h4>
+  <div class="markdown level1 summary"><p>Waits the time.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TimeSpan WaitTime(this DateTimeOffset from, DateTimeOffset? to)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.DateTimeOffset</span></td>
+        <td><span class="parametername">from</span></td>
+        <td><p>From.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTimeOffset</span>&gt;</td>
+        <td><span class="parametername">to</span></td>
+        <td><p>To.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.TimeSpan</span></td>
+        <td><p>TimeSpan.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Extensions_Helpers_DateHelper_WaitTime_System_Nullable_System_DateTimeOffset__System_Nullable_System_DateTimeOffset__.md&amp;value=---%0Auid%3A%20Hexalith.Extensions.Helpers.DateHelper.WaitTime(System.Nullable%7BSystem.DateTimeOffset%7D%2CSystem.Nullable%7BSystem.DateTimeOffset%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Common/Hexalith.Extensions/Helpers/DateHelper.cs/#L45">View Source</a>
+  </span>
+  <a id="Hexalith_Extensions_Helpers_DateHelper_WaitTime_" data-uid="Hexalith.Extensions.Helpers.DateHelper.WaitTime*"></a>
+  <h4 id="Hexalith_Extensions_Helpers_DateHelper_WaitTime_System_Nullable_System_DateTimeOffset__System_Nullable_System_DateTimeOffset__" data-uid="Hexalith.Extensions.Helpers.DateHelper.WaitTime(System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">WaitTime(Nullable&lt;DateTimeOffset&gt;, Nullable&lt;DateTimeOffset&gt;)</h4>
+  <div class="markdown level1 summary"><p>Waits the time.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TimeSpan WaitTime(this DateTimeOffset? from, DateTimeOffset? to)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTimeOffset</span>&gt;</td>
+        <td><span class="parametername">from</span></td>
+        <td><p>From.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTimeOffset</span>&gt;</td>
+        <td><span class="parametername">to</span></td>
+        <td><p>To.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.TimeSpan</span></td>
+        <td><p>TimeSpan.</p>
 </td>
       </tr>
     </tbody>

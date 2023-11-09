@@ -9279,19 +9279,6 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Tasks.TaskProcessor.RetryDate
   nameWithType: TaskProcessor.RetryDate
-- uid: Hexalith.Application.Tasks.TaskProcessor.RetryWaitTime
-  name: RetryWaitTime
-  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_RetryWaitTime
-  commentId: P:Hexalith.Application.Tasks.TaskProcessor.RetryWaitTime
-  fullName: Hexalith.Application.Tasks.TaskProcessor.RetryWaitTime
-  nameWithType: TaskProcessor.RetryWaitTime
-- uid: Hexalith.Application.Tasks.TaskProcessor.RetryWaitTime*
-  name: RetryWaitTime
-  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_RetryWaitTime_
-  commentId: Overload:Hexalith.Application.Tasks.TaskProcessor.RetryWaitTime
-  isSpec: "True"
-  fullName: Hexalith.Application.Tasks.TaskProcessor.RetryWaitTime
-  nameWithType: TaskProcessor.RetryWaitTime
 - uid: Hexalith.Application.Tasks.TaskProcessor.Start
   name: Start()
   href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Start
@@ -14880,19 +14867,44 @@ references:
   isSpec: "True"
   fullName: Hexalith.Extensions.Helpers.DateHelper.ToLocalTime
   nameWithType: DateHelper.ToLocalTime
-- uid: Hexalith.Extensions.Helpers.DateHelper.ToUniveralTime(System.DateOnly)
-  name: ToUniveralTime(DateOnly)
-  href: api/Hexalith.Extensions.Helpers.DateHelper.html#Hexalith_Extensions_Helpers_DateHelper_ToUniveralTime_System_DateOnly_
-  commentId: M:Hexalith.Extensions.Helpers.DateHelper.ToUniveralTime(System.DateOnly)
-  fullName: Hexalith.Extensions.Helpers.DateHelper.ToUniveralTime(System.DateOnly)
-  nameWithType: DateHelper.ToUniveralTime(DateOnly)
-- uid: Hexalith.Extensions.Helpers.DateHelper.ToUniveralTime*
-  name: ToUniveralTime
-  href: api/Hexalith.Extensions.Helpers.DateHelper.html#Hexalith_Extensions_Helpers_DateHelper_ToUniveralTime_
-  commentId: Overload:Hexalith.Extensions.Helpers.DateHelper.ToUniveralTime
+- uid: Hexalith.Extensions.Helpers.DateHelper.ToUniversalTime(System.DateOnly)
+  name: ToUniversalTime(DateOnly)
+  href: api/Hexalith.Extensions.Helpers.DateHelper.html#Hexalith_Extensions_Helpers_DateHelper_ToUniversalTime_System_DateOnly_
+  commentId: M:Hexalith.Extensions.Helpers.DateHelper.ToUniversalTime(System.DateOnly)
+  fullName: Hexalith.Extensions.Helpers.DateHelper.ToUniversalTime(System.DateOnly)
+  nameWithType: DateHelper.ToUniversalTime(DateOnly)
+- uid: Hexalith.Extensions.Helpers.DateHelper.ToUniversalTime*
+  name: ToUniversalTime
+  href: api/Hexalith.Extensions.Helpers.DateHelper.html#Hexalith_Extensions_Helpers_DateHelper_ToUniversalTime_
+  commentId: Overload:Hexalith.Extensions.Helpers.DateHelper.ToUniversalTime
   isSpec: "True"
-  fullName: Hexalith.Extensions.Helpers.DateHelper.ToUniveralTime
-  nameWithType: DateHelper.ToUniveralTime
+  fullName: Hexalith.Extensions.Helpers.DateHelper.ToUniversalTime
+  nameWithType: DateHelper.ToUniversalTime
+- uid: Hexalith.Extensions.Helpers.DateHelper.WaitTime(System.DateTimeOffset,System.Nullable{System.DateTimeOffset})
+  name: WaitTime(DateTimeOffset, Nullable<DateTimeOffset>)
+  href: api/Hexalith.Extensions.Helpers.DateHelper.html#Hexalith_Extensions_Helpers_DateHelper_WaitTime_System_DateTimeOffset_System_Nullable_System_DateTimeOffset__
+  commentId: M:Hexalith.Extensions.Helpers.DateHelper.WaitTime(System.DateTimeOffset,System.Nullable{System.DateTimeOffset})
+  name.vb: WaitTime(DateTimeOffset, Nullable(Of DateTimeOffset))
+  fullName: Hexalith.Extensions.Helpers.DateHelper.WaitTime(System.DateTimeOffset, System.Nullable<System.DateTimeOffset>)
+  fullName.vb: Hexalith.Extensions.Helpers.DateHelper.WaitTime(System.DateTimeOffset, System.Nullable(Of System.DateTimeOffset))
+  nameWithType: DateHelper.WaitTime(DateTimeOffset, Nullable<DateTimeOffset>)
+  nameWithType.vb: DateHelper.WaitTime(DateTimeOffset, Nullable(Of DateTimeOffset))
+- uid: Hexalith.Extensions.Helpers.DateHelper.WaitTime(System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})
+  name: WaitTime(Nullable<DateTimeOffset>, Nullable<DateTimeOffset>)
+  href: api/Hexalith.Extensions.Helpers.DateHelper.html#Hexalith_Extensions_Helpers_DateHelper_WaitTime_System_Nullable_System_DateTimeOffset__System_Nullable_System_DateTimeOffset__
+  commentId: M:Hexalith.Extensions.Helpers.DateHelper.WaitTime(System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})
+  name.vb: WaitTime(Nullable(Of DateTimeOffset), Nullable(Of DateTimeOffset))
+  fullName: Hexalith.Extensions.Helpers.DateHelper.WaitTime(System.Nullable<System.DateTimeOffset>, System.Nullable<System.DateTimeOffset>)
+  fullName.vb: Hexalith.Extensions.Helpers.DateHelper.WaitTime(System.Nullable(Of System.DateTimeOffset), System.Nullable(Of System.DateTimeOffset))
+  nameWithType: DateHelper.WaitTime(Nullable<DateTimeOffset>, Nullable<DateTimeOffset>)
+  nameWithType.vb: DateHelper.WaitTime(Nullable(Of DateTimeOffset), Nullable(Of DateTimeOffset))
+- uid: Hexalith.Extensions.Helpers.DateHelper.WaitTime*
+  name: WaitTime
+  href: api/Hexalith.Extensions.Helpers.DateHelper.html#Hexalith_Extensions_Helpers_DateHelper_WaitTime_
+  commentId: Overload:Hexalith.Extensions.Helpers.DateHelper.WaitTime
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Helpers.DateHelper.WaitTime
+  nameWithType: DateHelper.WaitTime
 - uid: Hexalith.Extensions.Helpers.ExampleHelper
   name: ExampleHelper
   href: api/Hexalith.Extensions.Helpers.ExampleHelper.html

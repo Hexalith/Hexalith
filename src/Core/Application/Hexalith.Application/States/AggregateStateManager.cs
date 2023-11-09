@@ -211,7 +211,7 @@ public partial class AggregateStateManager : IAggregateStateManager
                 return aggregate;
             }
 
-            TimeSpan waitTime = retry.RetryWaitTime;
+            TimeSpan waitTime = _dateTimeService.UtcNow.WaitTime(retry.RetryDate);
             LogRetryCommandWarning(retry.History.CreatedDate, waitTime, retry.Failure?.Count ?? 0, retry.Failure?.Message ?? "Not defined.");
             await retryManager
                     .RegisterContinueCallbackAsync(

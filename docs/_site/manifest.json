@@ -12,7 +12,7 @@
           "hash": "mLQc0aFezA/VPN2W2F6C0EjR/QvGQeROZuCTQXJ/EiE="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -2205,7 +2205,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.States.ProjectionStateManager.html",
-          "hash": "vePJeqrfbIi1muqVUuZNn2ZrganDBCX87Yb8CqM0ESg="
+          "hash": "M1vZi4WmtKxIPF1tPzkoHZGOikzVhA/PPOzL5LOwTCk="
         }
       },
       "is_incremental": false,
@@ -2493,7 +2493,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Tasks.ResilientProjectionEventProcessor.html",
-          "hash": "/djzPZoNrS7KqeAOw3gLn7+rYmkUtA8Ou+jUurrXAkk="
+          "hash": "nHZ5v/TXgDWEvn9M2umjh6QoC1jMaw5urDiUYTi+pt0="
         }
       },
       "is_incremental": false,
@@ -2541,7 +2541,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Tasks.TaskProcessor.html",
-          "hash": "W9TiYR+wpP84b9odc+JGNSs9ojua6KjKoGP38hqNqUs="
+          "hash": "EV7V1yy14o4b+V7XXoXRDMPuHw2tayUCi8DMFfuI8tU="
         }
       },
       "is_incremental": false,
@@ -3801,7 +3801,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Extensions.Helpers.DateHelper.html",
-          "hash": "HJzD/+eZY9d8LVUslwhrMuA7PqFSWhUXAws80RHapug="
+          "hash": "MiwBes3e+U4eveEt8BW5kJkNLNjGmSD0AAnveUY3daE="
         }
       },
       "is_incremental": false,
@@ -4881,7 +4881,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Tasks.DaprRetryCallbackManager.html",
-          "hash": "Tp1paEd0aWvoXhcpnD9WHGf+yxMWqmbdd7N4QOLOZ7k="
+          "hash": "H7HY/Dej8dYmTG/u7OC8xxAo2kUn1d6t4/Mpdp+Tafo="
         }
       },
       "is_incremental": false,
@@ -6708,7 +6708,7 @@
           "hash": "XREAr6iHtuka+aO7c3lTrh90rt0rybqw859u1tetgNM="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -6732,7 +6732,7 @@
           "hash": "vsW9ZvNJ7sOSf2pjIjuOSwvq6ulmUIdFPHc7lPEfC4Y="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -6751,23 +6751,25 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": true,
+        "can_incremental": false,
+        "details": "Disable incremental build by force rebuild option.",
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0
+        "skipped_file_count": 0,
+        "full_build_reason_code": "ForceRebuild"
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 4,
-          "skipped_file_count": 4
+          "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 555,
-          "skipped_file_count": 531
+          "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
@@ -6780,8 +6782,8 @@
     },
     {
       "status": {
-        "can_incremental": true,
-        "details": "Can support incremental post processing.",
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0

@@ -30,9 +30,34 @@ public static class DateHelper
     /// </summary>
     /// <param name="date">The date.</param>
     /// <returns>DateTimeOffset.</returns>
-    public static DateTimeOffset ToUniveralTime(this DateOnly date)
+    public static DateTimeOffset ToUniversalTime(this DateOnly date)
     {
         ArgumentNullException.ThrowIfNull(date);
         return date.ToLocalTime(TimeSpan.Zero);
+    }
+
+    /// <summary>
+    /// Waits the time.
+    /// </summary>
+    /// <param name="from">From.</param>
+    /// <param name="to">To.</param>
+    /// <returns>TimeSpan.</returns>
+    public static TimeSpan WaitTime(this DateTimeOffset? from, DateTimeOffset? to) => from is null ? TimeSpan.Zero : from.Value.WaitTime(to);
+
+    /// <summary>
+    /// Waits the time.
+    /// </summary>
+    /// <param name="from">From.</param>
+    /// <param name="to">To.</param>
+    /// <returns>TimeSpan.</returns>
+    public static TimeSpan WaitTime(this DateTimeOffset from, DateTimeOffset? to)
+    {
+        if (to is null)
+        {
+            return TimeSpan.Zero;
+        }
+
+        TimeSpan waitTime = from - to.Value;
+        return waitTime < TimeSpan.Zero ? TimeSpan.Zero : waitTime;
     }
 }

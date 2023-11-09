@@ -401,7 +401,7 @@ Implements the <see cref="!:Christofle.Infrastructure.Dynamics365Finance.DaprClo
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_States_ProjectionStateManager_ContinueAsync_Hexalith_Application_States_IStateStoreProvider_Hexalith_Application_Tasks_ResiliencyPolicy_Hexalith_Application_Projection_IProjection_System_Func_System_String_System_Byte___System_TimeSpan_System_TimeSpan_Task__System_Func_System_String_Task__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.States.ProjectionStateManager.ContinueAsync(Hexalith.Application.States.IStateStoreProvider%2CHexalith.Application.Tasks.ResiliencyPolicy%2CHexalith.Application.Projection.IProjection%2CSystem.Func%7BSystem.String%2CSystem.Byte%5B%5D%2CSystem.TimeSpan%2CSystem.TimeSpan%2CTask%7D%2CSystem.Func%7BSystem.String%2CTask%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/States/ProjectionStateManager.cs/#L145">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/States/ProjectionStateManager.cs/#L146">View Source</a>
   </span>
   <a id="Hexalith_Application_States_ProjectionStateManager_ContinueAsync_" data-uid="Hexalith.Application.States.ProjectionStateManager.ContinueAsync*"></a>
   <h4 id="Hexalith_Application_States_ProjectionStateManager_ContinueAsync_Hexalith_Application_States_IStateStoreProvider_Hexalith_Application_Tasks_ResiliencyPolicy_Hexalith_Application_Projection_IProjection_System_Func_System_String_System_Byte___System_TimeSpan_System_TimeSpan_Task__System_Func_System_String_Task__System_Threading_CancellationToken_" data-uid="Hexalith.Application.States.ProjectionStateManager.ContinueAsync(Hexalith.Application.States.IStateStoreProvider,Hexalith.Application.Tasks.ResiliencyPolicy,Hexalith.Application.Projection.IProjection,System.Func{System.String,System.Byte[],System.TimeSpan,System.TimeSpan,Task},System.Func{System.String,Task},System.Threading.CancellationToken)">ContinueAsync(IStateStoreProvider, ResiliencyPolicy, IProjection, Func&lt;String, Byte[], TimeSpan, TimeSpan, Task&gt;, Func&lt;String, Task&gt;, CancellationToken)</h4>
@@ -497,7 +497,7 @@ Implements the <see cref="!:Christofle.Infrastructure.Dynamics365Finance.DaprClo
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_States_ProjectionStateManager_ExecuteEventsAsync_Hexalith_Application_States_IStateStoreProvider_Hexalith_Application_Projection_IProjection_Hexalith_Application_Tasks_ResiliencyPolicy_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.States.ProjectionStateManager.ExecuteEventsAsync(Hexalith.Application.States.IStateStoreProvider%2CHexalith.Application.Projection.IProjection%2CHexalith.Application.Tasks.ResiliencyPolicy%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/States/ProjectionStateManager.cs/#L205">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/States/ProjectionStateManager.cs/#L218">View Source</a>
   </span>
   <a id="Hexalith_Application_States_ProjectionStateManager_ExecuteEventsAsync_" data-uid="Hexalith.Application.States.ProjectionStateManager.ExecuteEventsAsync*"></a>
   <h4 id="Hexalith_Application_States_ProjectionStateManager_ExecuteEventsAsync_Hexalith_Application_States_IStateStoreProvider_Hexalith_Application_Projection_IProjection_Hexalith_Application_Tasks_ResiliencyPolicy_System_Threading_CancellationToken_" data-uid="Hexalith.Application.States.ProjectionStateManager.ExecuteEventsAsync(Hexalith.Application.States.IStateStoreProvider,Hexalith.Application.Projection.IProjection,Hexalith.Application.Tasks.ResiliencyPolicy,System.Threading.CancellationToken)">ExecuteEventsAsync(IStateStoreProvider, IProjection, ResiliencyPolicy, CancellationToken)</h4>
@@ -506,7 +506,7 @@ Implements the <see cref="!:Christofle.Infrastructure.Dynamics365Finance.DaprClo
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected async Task&lt;TimeSpan?&gt; ExecuteEventsAsync(IStateStoreProvider stateProvider, IProjection projection, ResiliencyPolicy resiliencyPolicy, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">protected async Task&lt;DateTimeOffset?&gt; ExecuteEventsAsync(IStateStoreProvider stateProvider, IProjection projection, ResiliencyPolicy resiliencyPolicy, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -554,7 +554,7 @@ Implements the <see cref="!:Christofle.Infrastructure.Dynamics365Finance.DaprClo
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">System.Nullable</span>&lt;<span class="xref">System.TimeSpan</span>&gt;&gt;</td>
+        <td><span class="xref">Task</span>&lt;<span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTimeOffset</span>&gt;&gt;</td>
         <td><p>A Task&lt;System.ValueTuple&gt; representing the asynchronous operation.</p>
 </td>
       </tr>
@@ -586,7 +586,7 @@ Implements the <see cref="!:Christofle.Infrastructure.Dynamics365Finance.DaprClo
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_States_ProjectionStateManager_GetEventCountAsync_Hexalith_Application_States_IStateStoreProvider_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.States.ProjectionStateManager.GetEventCountAsync(Hexalith.Application.States.IStateStoreProvider%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/States/ProjectionStateManager.cs/#L173">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/States/ProjectionStateManager.cs/#L185">View Source</a>
   </span>
   <a id="Hexalith_Application_States_ProjectionStateManager_GetEventCountAsync_" data-uid="Hexalith.Application.States.ProjectionStateManager.GetEventCountAsync*"></a>
   <h4 id="Hexalith_Application_States_ProjectionStateManager_GetEventCountAsync_Hexalith_Application_States_IStateStoreProvider_System_Threading_CancellationToken_" data-uid="Hexalith.Application.States.ProjectionStateManager.GetEventCountAsync(Hexalith.Application.States.IStateStoreProvider,System.Threading.CancellationToken)">GetEventCountAsync(IStateStoreProvider, CancellationToken)</h4>
@@ -638,7 +638,7 @@ Implements the <see cref="!:Christofle.Infrastructure.Dynamics365Finance.DaprClo
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_States_ProjectionStateManager_GetEventsAsync_Hexalith_Application_States_IStateStoreProvider_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.States.ProjectionStateManager.GetEventsAsync(Hexalith.Application.States.IStateStoreProvider%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/States/ProjectionStateManager.cs/#L180">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/States/ProjectionStateManager.cs/#L193">View Source</a>
   </span>
   <a id="Hexalith_Application_States_ProjectionStateManager_GetEventsAsync_" data-uid="Hexalith.Application.States.ProjectionStateManager.GetEventsAsync*"></a>
   <h4 id="Hexalith_Application_States_ProjectionStateManager_GetEventsAsync_Hexalith_Application_States_IStateStoreProvider_System_Threading_CancellationToken_" data-uid="Hexalith.Application.States.ProjectionStateManager.GetEventsAsync(Hexalith.Application.States.IStateStoreProvider,System.Threading.CancellationToken)">GetEventsAsync(IStateStoreProvider, CancellationToken)</h4>

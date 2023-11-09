@@ -110,6 +110,7 @@ public class ProjectionStateManager : IProjectionStateManager
         ArgumentNullException.ThrowIfNull(stateProvider);
         ArgumentNullException.ThrowIfNull(metadatas);
         ArgumentNullException.ThrowIfNull(events);
+        ArgumentNullException.ThrowIfNull(registerReminder);
         await SetReminderAsync(TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(15), registerReminder).ConfigureAwait(false);
         ProjectionState state = await GetStateAsync(stateProvider, cancellationToken).ConfigureAwait(false);
         MessageStore<EventState> eventStore = new(stateProvider, EventsStreamName);
@@ -151,14 +152,25 @@ public class ProjectionStateManager : IProjectionStateManager
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(stateProvider);
-        TimeSpan? retry = await ExecuteEventsAsync(stateProvider, projection, resiliencyPolicy, cancellationToken).ConfigureAwait(false);
+        ArgumentNullException.ThrowIfNull(registerReminder);
+        ArgumentNullException.ThrowIfNull(unregisterReminder);
+        ArgumentNullException.ThrowIfNull(projection);
+        ArgumentNullException.ThrowIfNull(resiliencyPolicy);
+
+        DateTimeOffset? retry = await ExecuteEventsAsync(stateProvider, projection, resiliencyPolicy, cancellationToken).ConfigureAwait(false);
         ProjectionState state = await GetStateAsync(stateProvider, cancellationToken).ConfigureAwait(false);
 
         if (state.LastEventDone < state.EventStreamVersion)
         {
             if (retry != null)
             {
-                await SetReminderAsync(retry.Value.Add(TimeSpan.FromSeconds(1)), TimeSpan.FromMinutes(1), registerReminder).ConfigureAwait(false);
+                TimeSpan waitTime = retry.Value - _dateTimeService.Now;
+                if (waitTime < TimeSpan.Zero)
+                {
+                    waitTime = TimeSpan.Zero;
+                }
+
+                await SetReminderAsync(waitTime.Add(TimeSpan.FromSeconds(1)), TimeSpan.FromMinutes(1), registerReminder).ConfigureAwait(false);
             }
             else
             {
@@ -172,6 +184,7 @@ public class ProjectionStateManager : IProjectionStateManager
     /// <inheritdoc/>
     public async Task<long> GetEventCountAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken)
     {
+        ArgumentNullException.ThrowIfNull(stateProvider);
         ProjectionState state = await GetStateAsync(stateProvider, cancellationToken).ConfigureAwait(false);
         return state.EventStreamVersion;
     }
@@ -202,7 +215,7 @@ public class ProjectionStateManager : IProjectionStateManager
     /// <returns>A Task&lt;System.ValueTuple&gt; representing the asynchronous operation.</returns>
     /// <exception cref="System.InvalidOperationException">Event {nextEvent} content is null.</exception>
     /// <exception cref="System.InvalidOperationException">Event {nextEvent} metadata is null.</exception>
-    protected async Task<TimeSpan?> ExecuteEventsAsync(
+    protected async Task<DateTimeOffset?> ExecuteEventsAsync(
         IStateStoreProvider stateProvider,
         IProjection projection,
         ResiliencyPolicy resiliencyPolicy,
@@ -222,7 +235,7 @@ public class ProjectionStateManager : IProjectionStateManager
                 projection,
                 stateProvider);
 
-            TimeSpan? retry = await processor.ProcessAsync(nextEvent.ToInvariantString(), command.Message, cancellationToken).ConfigureAwait(false);
+            DateTimeOffset? retry = await processor.ProcessAsync(nextEvent.ToInvariantString(), command.Message, cancellationToken).ConfigureAwait(false);
 
             state = new ProjectionState(
                     state.EventStreamVersion,

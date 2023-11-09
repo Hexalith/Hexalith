@@ -251,8 +251,10 @@ public class ResiliencyPolicy
     /// <returns>System.TimeSpan.</returns>
     public TimeSpan RetryWaitTime(DateTimeOffset startedDate, int retryCount)
     {
-        TimeSpan wait = NextRetryTime(startedDate, retryCount) - DateTimeOffset.UtcNow;
-        return wait < TimeSpan.Zero ? TimeSpan.Zero : wait;
+        DateTimeOffset date = NextRetryTime(startedDate, retryCount);
+        TimeSpan waitTime = date.UtcDateTime - DateTime.UtcNow;
+        waitTime = (waitTime.Ticks < 0) ? TimeSpan.Zero : waitTime;
+        return waitTime;
     }
 
     /// <summary>
