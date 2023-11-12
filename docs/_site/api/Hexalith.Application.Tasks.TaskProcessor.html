@@ -275,8 +275,7 @@ public TaskProcessor(TaskProcessorStatus status, TaskProcessingHistory history, 
   </span>
   <a id="Hexalith_Application_Tasks_TaskProcessor_CanRetry_" data-uid="Hexalith.Application.Tasks.TaskProcessor.CanRetry*"></a>
   <h4 id="Hexalith_Application_Tasks_TaskProcessor_CanRetry" data-uid="Hexalith.Application.Tasks.TaskProcessor.CanRetry">CanRetry</h4>
-  <div class="markdown level1 summary"><p>Gets a value indicating whether we can retry.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -295,8 +294,7 @@ public RetryStatus CanRetry { get; }</code></pre>
     <tbody>
       <tr>
         <td><a class="xref" href="Hexalith.Application.Tasks.RetryStatus.html">RetryStatus</a></td>
-        <td><p>true if total wait time is expired, else false.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -343,16 +341,18 @@ public bool Ended { get; }</code></pre>
   </span>
   <a id="Hexalith_Application_Tasks_TaskProcessor_Failure_" data-uid="Hexalith.Application.Tasks.TaskProcessor.Failure*"></a>
   <h4 id="Hexalith_Application_Tasks_TaskProcessor_Failure" data-uid="Hexalith.Application.Tasks.TaskProcessor.Failure">Failure</h4>
-  <div class="markdown level1 summary"><p>Gets the task processing failure.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataMember(Order = 3)]
 [JsonPropertyOrder(3)]
 public TaskProcessingFailure Failure { get;
+
     [Obsolete(&quot;Setter used only for serialization purposes.&quot;, false)]
+
     set;
+
 }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -379,16 +379,18 @@ public TaskProcessingFailure Failure { get;
   </span>
   <a id="Hexalith_Application_Tasks_TaskProcessor_History_" data-uid="Hexalith.Application.Tasks.TaskProcessor.History*"></a>
   <h4 id="Hexalith_Application_Tasks_TaskProcessor_History" data-uid="Hexalith.Application.Tasks.TaskProcessor.History">History</h4>
-  <div class="markdown level1 summary"><p>Gets the task processing history.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataMember(Order = 2)]
 [JsonPropertyOrder(2)]
 public TaskProcessingHistory History { get;
+
     [Obsolete(&quot;Setter used only for serialization purposes.&quot;, false)]
+
     set;
+
 }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -415,16 +417,18 @@ public TaskProcessingHistory History { get;
   </span>
   <a id="Hexalith_Application_Tasks_TaskProcessor_ResiliencyPolicy_" data-uid="Hexalith.Application.Tasks.TaskProcessor.ResiliencyPolicy*"></a>
   <h4 id="Hexalith_Application_Tasks_TaskProcessor_ResiliencyPolicy" data-uid="Hexalith.Application.Tasks.TaskProcessor.ResiliencyPolicy">ResiliencyPolicy</h4>
-  <div class="markdown level1 summary"><p>Gets retry policy.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataMember(Order = 4)]
 [JsonPropertyOrder(4)]
 public ResiliencyPolicy ResiliencyPolicy { get;
+
     [Obsolete(&quot;Setter used only for serialization purposes.&quot;, false)]
+
     set;
+
 }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -459,8 +463,11 @@ public ResiliencyPolicy ResiliencyPolicy { get;
     <pre><code class="lang-csharp hljs">[DataMember(Order = 5)]
 [JsonPropertyOrder(5)]
 public DateTimeOffset? RetryDate { get;
+
     [Obsolete(&quot;Setter used only for serialization purposes.&quot;, false)]
+
     set;
+
 }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -481,15 +488,54 @@ public DateTimeOffset? RetryDate { get;
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Tasks_TaskProcessor_RetryPeriod.md&amp;value=---%0Auid%3A%20Hexalith.Application.Tasks.TaskProcessor.RetryPeriod%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Tasks/TaskProcessor.cs/#L149">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Tasks_TaskProcessor_RetryPeriod_" data-uid="Hexalith.Application.Tasks.TaskProcessor.RetryPeriod*"></a>
+  <h4 id="Hexalith_Application_Tasks_TaskProcessor_RetryPeriod" data-uid="Hexalith.Application.Tasks.TaskProcessor.RetryPeriod">RetryPeriod</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the retry wait time.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 6)]
+[JsonPropertyOrder(6)]
+public TimeSpan RetryPeriod { get;
+
+    [Obsolete(&quot;Setter used only for serialization purposes.&quot;, false)]
+
+    set;
+
+}</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.TimeSpan</span></td>
+        <td><p>The retry wait time.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Tasks_TaskProcessor_Status.md&amp;value=---%0Auid%3A%20Hexalith.Application.Tasks.TaskProcessor.Status%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Tasks/TaskProcessor.cs/#L146">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Tasks/TaskProcessor.cs/#L159">View Source</a>
   </span>
   <a id="Hexalith_Application_Tasks_TaskProcessor_Status_" data-uid="Hexalith.Application.Tasks.TaskProcessor.Status*"></a>
   <h4 id="Hexalith_Application_Tasks_TaskProcessor_Status" data-uid="Hexalith.Application.Tasks.TaskProcessor.Status">Status</h4>
-  <div class="markdown level1 summary"><p>Gets the task processor status.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -497,8 +543,11 @@ public DateTimeOffset? RetryDate { get;
 [JsonPropertyOrder(1)]
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public TaskProcessorStatus Status { get;
+
     [Obsolete(&quot;Setter used only for serialization purposes.&quot;, false)]
+
     set;
+
 }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -523,7 +572,7 @@ public TaskProcessorStatus Status { get;
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Tasks_TaskProcessor_Cancel.md&amp;value=---%0Auid%3A%20Hexalith.Application.Tasks.TaskProcessor.Cancel%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Tasks/TaskProcessor.cs/#L161">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Tasks/TaskProcessor.cs/#L174">View Source</a>
   </span>
   <a id="Hexalith_Application_Tasks_TaskProcessor_Cancel_" data-uid="Hexalith.Application.Tasks.TaskProcessor.Cancel*"></a>
   <h4 id="Hexalith_Application_Tasks_TaskProcessor_Cancel" data-uid="Hexalith.Application.Tasks.TaskProcessor.Cancel">Cancel()</h4>
@@ -555,12 +604,11 @@ public TaskProcessorStatus Status { get;
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Tasks_TaskProcessor_CancelTask.md&amp;value=---%0Auid%3A%20Hexalith.Application.Tasks.TaskProcessor.CancelTask%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Tasks/TaskProcessor.cs/#L169">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Tasks/TaskProcessor.cs/#L182">View Source</a>
   </span>
   <a id="Hexalith_Application_Tasks_TaskProcessor_CancelTask_" data-uid="Hexalith.Application.Tasks.TaskProcessor.CancelTask*"></a>
   <h4 id="Hexalith_Application_Tasks_TaskProcessor_CancelTask" data-uid="Hexalith.Application.Tasks.TaskProcessor.CancelTask">CancelTask()</h4>
-  <div class="markdown level1 summary"><p>Cancel the task.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -577,8 +625,7 @@ public TaskProcessorStatus Status { get;
     <tbody>
       <tr>
         <td><a class="xref" href="Hexalith.Application.Tasks.ITaskProcessor.html">ITaskProcessor</a></td>
-        <td><p>New copy of the task processor with status changed.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -587,7 +634,7 @@ public TaskProcessorStatus Status { get;
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Tasks_TaskProcessor_Complete.md&amp;value=---%0Auid%3A%20Hexalith.Application.Tasks.TaskProcessor.Complete%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Tasks/TaskProcessor.cs/#L176">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Tasks/TaskProcessor.cs/#L189">View Source</a>
   </span>
   <a id="Hexalith_Application_Tasks_TaskProcessor_Complete_" data-uid="Hexalith.Application.Tasks.TaskProcessor.Complete*"></a>
   <h4 id="Hexalith_Application_Tasks_TaskProcessor_Complete" data-uid="Hexalith.Application.Tasks.TaskProcessor.Complete">Complete()</h4>
@@ -619,12 +666,11 @@ public TaskProcessorStatus Status { get;
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Tasks_TaskProcessor_CompleteTask.md&amp;value=---%0Auid%3A%20Hexalith.Application.Tasks.TaskProcessor.CompleteTask%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Tasks/TaskProcessor.cs/#L184">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Tasks/TaskProcessor.cs/#L197">View Source</a>
   </span>
   <a id="Hexalith_Application_Tasks_TaskProcessor_CompleteTask_" data-uid="Hexalith.Application.Tasks.TaskProcessor.CompleteTask*"></a>
   <h4 id="Hexalith_Application_Tasks_TaskProcessor_CompleteTask" data-uid="Hexalith.Application.Tasks.TaskProcessor.CompleteTask">CompleteTask()</h4>
-  <div class="markdown level1 summary"><p>Complete the task.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -641,8 +687,7 @@ public TaskProcessorStatus Status { get;
     <tbody>
       <tr>
         <td><a class="xref" href="Hexalith.Application.Tasks.ITaskProcessor.html">ITaskProcessor</a></td>
-        <td><p>New copy of the task processor with status changed.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -651,7 +696,7 @@ public TaskProcessorStatus Status { get;
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Tasks_TaskProcessor_Continue.md&amp;value=---%0Auid%3A%20Hexalith.Application.Tasks.TaskProcessor.Continue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Tasks/TaskProcessor.cs/#L193">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Tasks/TaskProcessor.cs/#L206">View Source</a>
   </span>
   <a id="Hexalith_Application_Tasks_TaskProcessor_Continue_" data-uid="Hexalith.Application.Tasks.TaskProcessor.Continue*"></a>
   <h4 id="Hexalith_Application_Tasks_TaskProcessor_Continue" data-uid="Hexalith.Application.Tasks.TaskProcessor.Continue">Continue()</h4>
@@ -704,12 +749,11 @@ public TaskProcessorStatus Status { get;
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Tasks_TaskProcessor_ContinueTask.md&amp;value=---%0Auid%3A%20Hexalith.Application.Tasks.TaskProcessor.ContinueTask%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Tasks/TaskProcessor.cs/#L223">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Tasks/TaskProcessor.cs/#L236">View Source</a>
   </span>
   <a id="Hexalith_Application_Tasks_TaskProcessor_ContinueTask_" data-uid="Hexalith.Application.Tasks.TaskProcessor.ContinueTask*"></a>
   <h4 id="Hexalith_Application_Tasks_TaskProcessor_ContinueTask" data-uid="Hexalith.Application.Tasks.TaskProcessor.ContinueTask">ContinueTask()</h4>
-  <div class="markdown level1 summary"><p>Changes the status from suspended to active if the retry wait time has expired.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -726,8 +770,7 @@ public TaskProcessorStatus Status { get;
     <tbody>
       <tr>
         <td><a class="xref" href="Hexalith.Application.Tasks.ITaskProcessor.html">ITaskProcessor</a></td>
-        <td><p>New copy of the task processor with status changed.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -736,7 +779,7 @@ public TaskProcessorStatus Status { get;
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Tasks_TaskProcessor_Fail_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Tasks.TaskProcessor.Fail(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Tasks/TaskProcessor.cs/#L231">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Tasks/TaskProcessor.cs/#L244">View Source</a>
   </span>
   <a id="Hexalith_Application_Tasks_TaskProcessor_Fail_" data-uid="Hexalith.Application.Tasks.TaskProcessor.Fail*"></a>
   <h4 id="Hexalith_Application_Tasks_TaskProcessor_Fail_System_String_System_String_" data-uid="Hexalith.Application.Tasks.TaskProcessor.Fail(System.String,System.String)">Fail(String, String)</h4>
@@ -792,12 +835,11 @@ public TaskProcessorStatus Status { get;
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Tasks_TaskProcessor_FailTask_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Tasks.TaskProcessor.FailTask(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Tasks/TaskProcessor.cs/#L244">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Tasks/TaskProcessor.cs/#L257">View Source</a>
   </span>
   <a id="Hexalith_Application_Tasks_TaskProcessor_FailTask_" data-uid="Hexalith.Application.Tasks.TaskProcessor.FailTask*"></a>
   <h4 id="Hexalith_Application_Tasks_TaskProcessor_FailTask_System_String_System_String_" data-uid="Hexalith.Application.Tasks.TaskProcessor.FailTask(System.String,System.String)">FailTask(String, String)</h4>
-  <div class="markdown level1 summary"><p>Fails the specified message.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -816,14 +858,12 @@ public TaskProcessorStatus Status { get;
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">message</span></td>
-        <td><p>The message.</p>
-</td>
+        <td></td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">technicalError</span></td>
-        <td><p>The technical error.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -838,8 +878,7 @@ public TaskProcessorStatus Status { get;
     <tbody>
       <tr>
         <td><a class="xref" href="Hexalith.Application.Tasks.ITaskProcessor.html">ITaskProcessor</a></td>
-        <td><p>ITaskProcessor.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -848,7 +887,7 @@ public TaskProcessorStatus Status { get;
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Tasks_TaskProcessor_Start.md&amp;value=---%0Auid%3A%20Hexalith.Application.Tasks.TaskProcessor.Start%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Tasks/TaskProcessor.cs/#L251">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Tasks/TaskProcessor.cs/#L264">View Source</a>
   </span>
   <a id="Hexalith_Application_Tasks_TaskProcessor_Start_" data-uid="Hexalith.Application.Tasks.TaskProcessor.Start*"></a>
   <h4 id="Hexalith_Application_Tasks_TaskProcessor_Start" data-uid="Hexalith.Application.Tasks.TaskProcessor.Start">Start()</h4>
@@ -880,12 +919,11 @@ public TaskProcessorStatus Status { get;
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Tasks_TaskProcessor_StartTask.md&amp;value=---%0Auid%3A%20Hexalith.Application.Tasks.TaskProcessor.StartTask%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Tasks/TaskProcessor.cs/#L259">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Tasks/TaskProcessor.cs/#L272">View Source</a>
   </span>
   <a id="Hexalith_Application_Tasks_TaskProcessor_StartTask_" data-uid="Hexalith.Application.Tasks.TaskProcessor.StartTask*"></a>
   <h4 id="Hexalith_Application_Tasks_TaskProcessor_StartTask" data-uid="Hexalith.Application.Tasks.TaskProcessor.StartTask">StartTask()</h4>
-  <div class="markdown level1 summary"><p>Start the task.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -902,8 +940,7 @@ public TaskProcessorStatus Status { get;
     <tbody>
       <tr>
         <td><a class="xref" href="Hexalith.Application.Tasks.ITaskProcessor.html">ITaskProcessor</a></td>
-        <td><p>New copy of the task processor with status changed.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>

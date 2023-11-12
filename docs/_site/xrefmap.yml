@@ -9279,6 +9279,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Tasks.TaskProcessor.RetryDate
   nameWithType: TaskProcessor.RetryDate
+- uid: Hexalith.Application.Tasks.TaskProcessor.RetryPeriod
+  name: RetryPeriod
+  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_RetryPeriod
+  commentId: P:Hexalith.Application.Tasks.TaskProcessor.RetryPeriod
+  fullName: Hexalith.Application.Tasks.TaskProcessor.RetryPeriod
+  nameWithType: TaskProcessor.RetryPeriod
+- uid: Hexalith.Application.Tasks.TaskProcessor.RetryPeriod*
+  name: RetryPeriod
+  href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_RetryPeriod_
+  commentId: Overload:Hexalith.Application.Tasks.TaskProcessor.RetryPeriod
+  isSpec: "True"
+  fullName: Hexalith.Application.Tasks.TaskProcessor.RetryPeriod
+  nameWithType: TaskProcessor.RetryPeriod
 - uid: Hexalith.Application.Tasks.TaskProcessor.Start
   name: Start()
   href: api/Hexalith.Application.Tasks.TaskProcessor.html#Hexalith_Application_Tasks_TaskProcessor_Start
@@ -21565,6 +21578,38 @@ references:
   commentId: N:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand
   nameWithType: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandFilter
+  name: WarehouseOnHandFilter
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandFilter.html
+  commentId: T:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandFilter
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandFilter
+  nameWithType: WarehouseOnHandFilter
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandFilter.#ctor(System.String,System.String)
+  name: WarehouseOnHandFilter(String, String)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandFilter.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandFilter__ctor_System_String_System_String_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandFilter.#ctor(System.String,System.String)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandFilter.WarehouseOnHandFilter(System.String, System.String)
+  nameWithType: WarehouseOnHandFilter.WarehouseOnHandFilter(String, String)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandFilter.#ctor*
+  name: WarehouseOnHandFilter
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandFilter.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandFilter__ctor_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandFilter.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandFilter.WarehouseOnHandFilter
+  nameWithType: WarehouseOnHandFilter.WarehouseOnHandFilter
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandFilter.InventoryWarehouseId
+  name: InventoryWarehouseId
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandFilter.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandFilter_InventoryWarehouseId
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandFilter.InventoryWarehouseId
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandFilter.InventoryWarehouseId
+  nameWithType: WarehouseOnHandFilter.InventoryWarehouseId
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandFilter.InventoryWarehouseId*
+  name: InventoryWarehouseId
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandFilter.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandFilter_InventoryWarehouseId_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandFilter.InventoryWarehouseId
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandFilter.InventoryWarehouseId
+  nameWithType: WarehouseOnHandFilter.InventoryWarehouseId
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2Helper
   name: WarehouseOnHandV2Helper
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2Helper.html
@@ -22870,38 +22915,6 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerExternalCodeFilter.System
   nameWithType: CustomerExternalCodeFilter.System
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandFilter
-  name: WarehouseOnHandFilter
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandFilter.html
-  commentId: T:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandFilter
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandFilter
-  nameWithType: WarehouseOnHandFilter
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandFilter.#ctor(System.String,System.String)
-  name: WarehouseOnHandFilter(String, String)
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandFilter.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandFilter__ctor_System_String_System_String_
-  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandFilter.#ctor(System.String,System.String)
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandFilter.WarehouseOnHandFilter(System.String, System.String)
-  nameWithType: WarehouseOnHandFilter.WarehouseOnHandFilter(String, String)
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandFilter.#ctor*
-  name: WarehouseOnHandFilter
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandFilter.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandFilter__ctor_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandFilter.#ctor
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandFilter.WarehouseOnHandFilter
-  nameWithType: WarehouseOnHandFilter.WarehouseOnHandFilter
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandFilter.InventoryWarehouseId
-  name: InventoryWarehouseId
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandFilter.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandFilter_InventoryWarehouseId
-  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandFilter.InventoryWarehouseId
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandFilter.InventoryWarehouseId
-  nameWithType: WarehouseOnHandFilter.InventoryWarehouseId
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandFilter.InventoryWarehouseId*
-  name: InventoryWarehouseId
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandFilter.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandFilter_InventoryWarehouseId_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandFilter.InventoryWarehouseId
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandFilter.InventoryWarehouseId
-  nameWithType: WarehouseOnHandFilter.InventoryWarehouseId
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2
   name: WarehouseOnHandV2
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html
@@ -25687,19 +25700,201 @@ references:
   commentId: T:Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers
   fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers
   nameWithType: PartiesWebApiHelpers
-- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers.AddPartiesIntegrationEventsSubscription(Microsoft.Extensions.DependencyInjection.IServiceCollection)
-  name: AddPartiesIntegrationEventsSubscription(IServiceCollection)
-  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Helpers_PartiesWebApiHelpers_AddPartiesIntegrationEventsSubscription_Microsoft_Extensions_DependencyInjection_IServiceCollection_
-  commentId: M:Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers.AddPartiesIntegrationEventsSubscription(Microsoft.Extensions.DependencyInjection.IServiceCollection)
-  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers.AddPartiesIntegrationEventsSubscription(Microsoft.Extensions.DependencyInjection.IServiceCollection)
-  nameWithType: PartiesWebApiHelpers.AddPartiesIntegrationEventsSubscription(IServiceCollection)
-- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers.AddPartiesIntegrationEventsSubscription*
-  name: AddPartiesIntegrationEventsSubscription
-  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Helpers_PartiesWebApiHelpers_AddPartiesIntegrationEventsSubscription_
-  commentId: Overload:Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers.AddPartiesIntegrationEventsSubscription
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers.AddCustomerAggregateProjection(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  name: AddCustomerAggregateProjection(IServiceCollection)
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Helpers_PartiesWebApiHelpers_AddCustomerAggregateProjection_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  commentId: M:Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers.AddCustomerAggregateProjection(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers.AddCustomerAggregateProjection(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  nameWithType: PartiesWebApiHelpers.AddCustomerAggregateProjection(IServiceCollection)
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers.AddCustomerAggregateProjection*
+  name: AddCustomerAggregateProjection
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Helpers_PartiesWebApiHelpers_AddCustomerAggregateProjection_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers.AddCustomerAggregateProjection
   isSpec: "True"
-  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers.AddPartiesIntegrationEventsSubscription
-  nameWithType: PartiesWebApiHelpers.AddPartiesIntegrationEventsSubscription
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.PartiesWebApiHelpers.AddCustomerAggregateProjection
+  nameWithType: PartiesWebApiHelpers.AddCustomerAggregateProjection
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections
+  name: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.html
+  commentId: N:Hexalith.Infrastructure.WebApis.PartiesEvents.Projections
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections
+  nameWithType: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerInformationChangedProjectionUpdateHandler
+  name: CustomerInformationChangedProjectionUpdateHandler
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerInformationChangedProjectionUpdateHandler.html
+  commentId: T:Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerInformationChangedProjectionUpdateHandler
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerInformationChangedProjectionUpdateHandler
+  nameWithType: CustomerInformationChangedProjectionUpdateHandler
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerInformationChangedProjectionUpdateHandler.#ctor(Hexalith.Application.States.IStateStoreProvider)
+  name: CustomerInformationChangedProjectionUpdateHandler(IStateStoreProvider)
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerInformationChangedProjectionUpdateHandler.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Projections_CustomerInformationChangedProjectionUpdateHandler__ctor_Hexalith_Application_States_IStateStoreProvider_
+  commentId: M:Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerInformationChangedProjectionUpdateHandler.#ctor(Hexalith.Application.States.IStateStoreProvider)
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerInformationChangedProjectionUpdateHandler.CustomerInformationChangedProjectionUpdateHandler(Hexalith.Application.States.IStateStoreProvider)
+  nameWithType: CustomerInformationChangedProjectionUpdateHandler.CustomerInformationChangedProjectionUpdateHandler(IStateStoreProvider)
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerInformationChangedProjectionUpdateHandler.#ctor*
+  name: CustomerInformationChangedProjectionUpdateHandler
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerInformationChangedProjectionUpdateHandler.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Projections_CustomerInformationChangedProjectionUpdateHandler__ctor_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerInformationChangedProjectionUpdateHandler.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerInformationChangedProjectionUpdateHandler.CustomerInformationChangedProjectionUpdateHandler
+  nameWithType: CustomerInformationChangedProjectionUpdateHandler.CustomerInformationChangedProjectionUpdateHandler
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler`1
+  name: CustomerProjectionUpdateHandler<TCustomerEvent>
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler-1.html
+  commentId: T:Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler`1
+  name.vb: CustomerProjectionUpdateHandler(Of TCustomerEvent)
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler<TCustomerEvent>
+  fullName.vb: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler(Of TCustomerEvent)
+  nameWithType: CustomerProjectionUpdateHandler<TCustomerEvent>
+  nameWithType.vb: CustomerProjectionUpdateHandler(Of TCustomerEvent)
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler`1.#ctor(Hexalith.Application.States.IStateStoreProvider)
+  name: CustomerProjectionUpdateHandler(IStateStoreProvider)
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler-1.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Projections_CustomerProjectionUpdateHandler_1__ctor_Hexalith_Application_States_IStateStoreProvider_
+  commentId: M:Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler`1.#ctor(Hexalith.Application.States.IStateStoreProvider)
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler<TCustomerEvent>.CustomerProjectionUpdateHandler(Hexalith.Application.States.IStateStoreProvider)
+  fullName.vb: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler(Of TCustomerEvent).CustomerProjectionUpdateHandler(Hexalith.Application.States.IStateStoreProvider)
+  nameWithType: CustomerProjectionUpdateHandler<TCustomerEvent>.CustomerProjectionUpdateHandler(IStateStoreProvider)
+  nameWithType.vb: CustomerProjectionUpdateHandler(Of TCustomerEvent).CustomerProjectionUpdateHandler(IStateStoreProvider)
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler`1.#ctor*
+  name: CustomerProjectionUpdateHandler
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler-1.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Projections_CustomerProjectionUpdateHandler_1__ctor_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler`1.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler<TCustomerEvent>.CustomerProjectionUpdateHandler
+  fullName.vb: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler(Of TCustomerEvent).CustomerProjectionUpdateHandler
+  nameWithType: CustomerProjectionUpdateHandler<TCustomerEvent>.CustomerProjectionUpdateHandler
+  nameWithType.vb: CustomerProjectionUpdateHandler(Of TCustomerEvent).CustomerProjectionUpdateHandler
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler`1.ApplyAsync(`0,Hexalith.Application.Metadatas.IMetadata,System.Threading.CancellationToken)
+  name: ApplyAsync(TCustomerEvent, IMetadata, CancellationToken)
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler-1.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Projections_CustomerProjectionUpdateHandler_1_ApplyAsync__0_Hexalith_Application_Metadatas_IMetadata_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler`1.ApplyAsync(`0,Hexalith.Application.Metadatas.IMetadata,System.Threading.CancellationToken)
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler<TCustomerEvent>.ApplyAsync(TCustomerEvent, Hexalith.Application.Metadatas.IMetadata, System.Threading.CancellationToken)
+  fullName.vb: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler(Of TCustomerEvent).ApplyAsync(TCustomerEvent, Hexalith.Application.Metadatas.IMetadata, System.Threading.CancellationToken)
+  nameWithType: CustomerProjectionUpdateHandler<TCustomerEvent>.ApplyAsync(TCustomerEvent, IMetadata, CancellationToken)
+  nameWithType.vb: CustomerProjectionUpdateHandler(Of TCustomerEvent).ApplyAsync(TCustomerEvent, IMetadata, CancellationToken)
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler`1.ApplyAsync*
+  name: ApplyAsync
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler-1.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Projections_CustomerProjectionUpdateHandler_1_ApplyAsync_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler`1.ApplyAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler<TCustomerEvent>.ApplyAsync
+  fullName.vb: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler(Of TCustomerEvent).ApplyAsync
+  nameWithType: CustomerProjectionUpdateHandler<TCustomerEvent>.ApplyAsync
+  nameWithType.vb: CustomerProjectionUpdateHandler(Of TCustomerEvent).ApplyAsync
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerRegisteredProjectionUpdateHandler
+  name: CustomerRegisteredProjectionUpdateHandler
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerRegisteredProjectionUpdateHandler.html
+  commentId: T:Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerRegisteredProjectionUpdateHandler
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerRegisteredProjectionUpdateHandler
+  nameWithType: CustomerRegisteredProjectionUpdateHandler
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerRegisteredProjectionUpdateHandler.#ctor(Hexalith.Application.States.IStateStoreProvider)
+  name: CustomerRegisteredProjectionUpdateHandler(IStateStoreProvider)
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerRegisteredProjectionUpdateHandler.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Projections_CustomerRegisteredProjectionUpdateHandler__ctor_Hexalith_Application_States_IStateStoreProvider_
+  commentId: M:Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerRegisteredProjectionUpdateHandler.#ctor(Hexalith.Application.States.IStateStoreProvider)
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerRegisteredProjectionUpdateHandler.CustomerRegisteredProjectionUpdateHandler(Hexalith.Application.States.IStateStoreProvider)
+  nameWithType: CustomerRegisteredProjectionUpdateHandler.CustomerRegisteredProjectionUpdateHandler(IStateStoreProvider)
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerRegisteredProjectionUpdateHandler.#ctor*
+  name: CustomerRegisteredProjectionUpdateHandler
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerRegisteredProjectionUpdateHandler.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Projections_CustomerRegisteredProjectionUpdateHandler__ctor_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerRegisteredProjectionUpdateHandler.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerRegisteredProjectionUpdateHandler.CustomerRegisteredProjectionUpdateHandler
+  nameWithType: CustomerRegisteredProjectionUpdateHandler.CustomerRegisteredProjectionUpdateHandler
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler
+  name: IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler.html
+  commentId: T:Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler
+  nameWithType: IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler.#ctor(Hexalith.Application.States.IStateStoreProvider)
+  name: IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler(IStateStoreProvider)
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Projections_IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler__ctor_Hexalith_Application_States_IStateStoreProvider_
+  commentId: M:Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler.#ctor(Hexalith.Application.States.IStateStoreProvider)
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler.IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler(Hexalith.Application.States.IStateStoreProvider)
+  nameWithType: IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler.IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler(IStateStoreProvider)
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler.#ctor*
+  name: IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Projections_IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler__ctor_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler.IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler
+  nameWithType: IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler.IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler
+  name: IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler.html
+  commentId: T:Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler
+  nameWithType: IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler.#ctor(Hexalith.Application.States.IStateStoreProvider)
+  name: IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler(IStateStoreProvider)
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Projections_IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler__ctor_Hexalith_Application_States_IStateStoreProvider_
+  commentId: M:Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler.#ctor(Hexalith.Application.States.IStateStoreProvider)
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler.IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler(Hexalith.Application.States.IStateStoreProvider)
+  nameWithType: IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler.IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler(IStateStoreProvider)
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler.#ctor*
+  name: IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Projections_IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler__ctor_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler.IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler
+  nameWithType: IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler.IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Services
+  name: Hexalith.Infrastructure.WebApis.PartiesEvents.Services
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Services.html
+  commentId: N:Hexalith.Infrastructure.WebApis.PartiesEvents.Services
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Services
+  nameWithType: Hexalith.Infrastructure.WebApis.PartiesEvents.Services
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Services.CustomerAggregateQueryService
+  name: CustomerAggregateQueryService
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Services.CustomerAggregateQueryService.html
+  commentId: T:Hexalith.Infrastructure.WebApis.PartiesEvents.Services.CustomerAggregateQueryService
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Services.CustomerAggregateQueryService
+  nameWithType: CustomerAggregateQueryService
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Services.CustomerAggregateQueryService.#ctor(Hexalith.Application.States.IStateStoreProvider)
+  name: CustomerAggregateQueryService(IStateStoreProvider)
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Services.CustomerAggregateQueryService.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Services_CustomerAggregateQueryService__ctor_Hexalith_Application_States_IStateStoreProvider_
+  commentId: M:Hexalith.Infrastructure.WebApis.PartiesEvents.Services.CustomerAggregateQueryService.#ctor(Hexalith.Application.States.IStateStoreProvider)
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Services.CustomerAggregateQueryService.CustomerAggregateQueryService(Hexalith.Application.States.IStateStoreProvider)
+  nameWithType: CustomerAggregateQueryService.CustomerAggregateQueryService(IStateStoreProvider)
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Services.CustomerAggregateQueryService.#ctor*
+  name: CustomerAggregateQueryService
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Services.CustomerAggregateQueryService.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Services_CustomerAggregateQueryService__ctor_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.PartiesEvents.Services.CustomerAggregateQueryService.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Services.CustomerAggregateQueryService.CustomerAggregateQueryService
+  nameWithType: CustomerAggregateQueryService.CustomerAggregateQueryService
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Services.CustomerAggregateQueryService.GetCustomerAsync(System.String,System.Threading.CancellationToken)
+  name: GetCustomerAsync(String, CancellationToken)
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Services.CustomerAggregateQueryService.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Services_CustomerAggregateQueryService_GetCustomerAsync_System_String_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Infrastructure.WebApis.PartiesEvents.Services.CustomerAggregateQueryService.GetCustomerAsync(System.String,System.Threading.CancellationToken)
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Services.CustomerAggregateQueryService.GetCustomerAsync(System.String, System.Threading.CancellationToken)
+  nameWithType: CustomerAggregateQueryService.GetCustomerAsync(String, CancellationToken)
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Services.CustomerAggregateQueryService.GetCustomerAsync*
+  name: GetCustomerAsync
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Services.CustomerAggregateQueryService.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Services_CustomerAggregateQueryService_GetCustomerAsync_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.PartiesEvents.Services.CustomerAggregateQueryService.GetCustomerAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Services.CustomerAggregateQueryService.GetCustomerAsync
+  nameWithType: CustomerAggregateQueryService.GetCustomerAsync
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Services.ICustomerAggregateQueryService
+  name: ICustomerAggregateQueryService
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Services.ICustomerAggregateQueryService.html
+  commentId: T:Hexalith.Infrastructure.WebApis.PartiesEvents.Services.ICustomerAggregateQueryService
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Services.ICustomerAggregateQueryService
+  nameWithType: ICustomerAggregateQueryService
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Services.ICustomerAggregateQueryService.GetCustomerAsync(System.String,CancellationToken)
+  name: GetCustomerAsync(String, CancellationToken)
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Services.ICustomerAggregateQueryService.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Services_ICustomerAggregateQueryService_GetCustomerAsync_System_String_CancellationToken_
+  commentId: M:Hexalith.Infrastructure.WebApis.PartiesEvents.Services.ICustomerAggregateQueryService.GetCustomerAsync(System.String,CancellationToken)
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Services.ICustomerAggregateQueryService.GetCustomerAsync(System.String, CancellationToken)
+  nameWithType: ICustomerAggregateQueryService.GetCustomerAsync(String, CancellationToken)
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Services.ICustomerAggregateQueryService.GetCustomerAsync*
+  name: GetCustomerAsync
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Services.ICustomerAggregateQueryService.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Services_ICustomerAggregateQueryService_GetCustomerAsync_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.PartiesEvents.Services.ICustomerAggregateQueryService.GetCustomerAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Services.ICustomerAggregateQueryService.GetCustomerAsync
+  nameWithType: ICustomerAggregateQueryService.GetCustomerAsync
 - uid: Hexalith.TestMocks
   name: Hexalith.TestMocks
   href: api/Hexalith.TestMocks.html
