@@ -16,9 +16,14 @@
 
 namespace Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers;
 
+using Hexalith.Application.Projection;
+using Hexalith.Domain.Events;
 using Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers;
+using Hexalith.Infrastructure.WebApis.PartiesEvents.Projections;
+using Hexalith.Infrastructure.WebApis.PartiesEvents.Services;
 
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 /// <summary>
 /// Class PartiesWebApiHelpers.
@@ -30,8 +35,14 @@ public static class PartiesWebApiHelpers
     /// </summary>
     /// <param name="services">The services.</param>
     /// <returns>IServiceCollection.</returns>
-    public static IServiceCollection AddPartiesIntegrationEventsSubscription(this IServiceCollection services)
+    public static IServiceCollection AddCustomerAggregateProjection(this IServiceCollection services)
     {
+        ArgumentNullException.ThrowIfNull(services);
+        services.TryAddSingleton<IProjectionUpdateHandler<CustomerInformationChanged>, CustomerInformationChangedProjectionUpdateHandler>();
+        services.TryAddSingleton<IProjectionUpdateHandler<CustomerRegistered>, CustomerRegisteredProjectionUpdateHandler>();
+        services.TryAddSingleton<IProjectionUpdateHandler<IntercompanyDropshipDeliveryForCustomerDeselected>, IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler>();
+        services.TryAddSingleton<IProjectionUpdateHandler<IntercompanyDropshipDeliveryForCustomerSelected>, IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler>();
+        services.TryAddSingleton<ICustomerAggregateQueryService, CustomerAggregateQueryService>();
         _ = services
          .AddControllers()
          .AddApplicationPart(typeof(PartiesIntegrationEventsController).Assembly)
