@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 10-27-2023
 // ***********************************************************************
-// <copyright file="PartiesIntegrationEventsController.cs" company="Fiveforty SAS Paris France">
+// <copyright file="CustomerIntegrationEventsController.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -34,20 +34,20 @@ using Microsoft.Extensions.Logging;
 /// </summary>
 /// <seealso cref="EventIntegrationController" />
 [ApiController]
-public abstract class PartiesIntegrationEventsController : EventIntegrationController
+public abstract class CustomerIntegrationEventsController : EventIntegrationController
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="PartiesIntegrationEventsController"/> class.
+    /// Initializes a new instance of the <see cref="CustomerIntegrationEventsController"/> class.
     /// </summary>
     /// <param name="eventProcessor">The event processor.</param>
     /// <param name="projectionProcessor">The projection processor.</param>
     /// <param name="hostEnvironment">The host environment.</param>
     /// <param name="logger">The logger.</param>
-    protected PartiesIntegrationEventsController(
+    protected CustomerIntegrationEventsController(
         IIntegrationEventProcessor eventProcessor,
         IProjectionUpdateProcessor projectionProcessor,
         IHostEnvironment hostEnvironment,
-        ILogger<PartiesIntegrationEventsController> logger)
+        ILogger logger)
         : base(eventProcessor, projectionProcessor, hostEnvironment, logger)
     {
     }

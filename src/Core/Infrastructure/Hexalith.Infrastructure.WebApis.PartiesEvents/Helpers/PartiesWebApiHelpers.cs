@@ -45,7 +45,7 @@ public static class PartiesWebApiHelpers
         services.TryAddSingleton<ICustomerAggregateQueryService, CustomerAggregateQueryService>();
         _ = services
          .AddControllers()
-         .AddApplicationPart(typeof(PartiesIntegrationEventsController).Assembly)
+         .AddApplicationPart(typeof(CustomerIntegrationEventsController).Assembly)
          .AddDapr();
         return services;
     }
