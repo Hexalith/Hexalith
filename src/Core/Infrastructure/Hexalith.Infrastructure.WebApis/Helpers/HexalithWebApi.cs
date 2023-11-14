@@ -78,6 +78,7 @@ public static class HexalithWebApi
         builder.Services.AddDaprClient();
 
         builder.Services.AddActors(options =>
+
             // Register actor types and configure actor settings
             registerActors(options.Actors));
         _ = builder

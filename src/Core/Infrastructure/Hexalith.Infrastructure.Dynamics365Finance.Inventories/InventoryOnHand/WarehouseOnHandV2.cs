@@ -1,7 +1,20 @@
 ﻿// ***********************************************************************
-// Assembly         : Christofle.Infrastructure.Dynamics365Finance.RestClient
+// Assembly         : Hexalith.Infrastructure.Dynamics365Finance.Inventories
+// Author           : Jérôme Piquot
+// Created          : 10-24-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 10-24-2023
+// ***********************************************************************
+// <copyright file="WarehouseOnHandV2.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
-namespace Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers;
+namespace Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand;
 
 using Hexalith.Infrastructure.Dynamics365Finance.Models;
 
@@ -9,11 +22,11 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 /// Class WarehouseOnHandV2.
 /// Implements the <see cref="ODataElement" />
 /// Implements the <see cref="IODataElement" />
-/// Implements the <see cref="System.IEquatable{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2}" />
+/// Implements the <see cref="IEquatable{WarehouseOnHandV2}" />.
 /// </summary>
 /// <seealso cref="ODataElement" />
 /// <seealso cref="IODataElement" />
-/// <seealso cref="System.IEquatable{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2}" />
+/// <seealso cref="IEquatable{WarehouseOnHandV2}" />
 public record WarehouseOnHandV2
 (
     string DataAreaId,

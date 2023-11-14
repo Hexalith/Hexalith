@@ -31,18 +31,12 @@ public class Dynamics365FinanceCustomerChangedHandler : Dynamics365FinanceCustom
     /// Initializes a new instance of the <see cref="Dynamics365FinanceCustomerChangedHandler"/> class.
     /// </summary>
     /// <param name="dateTimeService">The date time service.</param>
-    /// <param name="customerService">The customer service.</param>
-    /// <param name="externalReferenceMapperService">The external reference service.</param>
     /// <param name="settings">The settings.</param>
     public Dynamics365FinanceCustomerChangedHandler(
         IDateTimeService dateTimeService,
-
-        // IExternalReferenceMapperService externalReferenceMapperService,
         IOptions<OrganizationSettings> settings)
         : base(
             dateTimeService,
-
-            // externalReferenceMapperService,
             settings)
     {
     }

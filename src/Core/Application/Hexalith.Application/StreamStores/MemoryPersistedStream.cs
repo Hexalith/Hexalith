@@ -6,12 +6,17 @@
 
 namespace Hexalith.Application.StreamStores;
 
+using System.Diagnostics.CodeAnalysis;
+
 /// <summary>
 /// In memory persisted stream.
 /// </summary>
+#pragma warning disable CA1711 // Identifiers should not have incorrect suffix
+
 public class MemoryPersistedStream : IPersistedStream
+#pragma warning restore CA1711 // Identifiers should not have incorrect suffix
 {
-    private readonly Dictionary<long, IStreamItem> _items = new();
+    private readonly Dictionary<long, IStreamItem> _items = [];
 
     /// <inheritdoc/>
     public long AddItems(IEnumerable<IDataFragment> items, long expectedVersion)
@@ -23,12 +28,9 @@ public class MemoryPersistedStream : IPersistedStream
     }
 
     /// <inheritdoc/>
-    public long AddItems(IEnumerable<IDataFragment> items)
+    public long AddItems([NotNull] IEnumerable<IDataFragment> items)
     {
-        if (items == null)
-        {
-            throw new ArgumentNullException(nameof(items));
-        }
+        ArgumentNullException.ThrowIfNull(items);
 
         long sequence = _items.Max(p => p.Key);
         foreach (IDataFragment item in items)
