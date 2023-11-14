@@ -16,6 +16,7 @@
 
 namespace Hexalith.Application.Events;
 
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -40,13 +41,14 @@ public class MemoryEventBus : IEventBus
     /// <summary>
     /// The stream.
     /// </summary>
-    private readonly List<EventState> _stream = new();
+    private readonly List<EventState> _stream = [];
 
     /// <summary>
     /// Initializes a new instance of the <see cref="MemoryEventBus"/> class.
     /// </summary>
     /// <param name="dateTimeService">The date time service.</param>
-    public MemoryEventBus(IDateTimeService dateTimeService) => _dateTimeService = dateTimeService;
+    public MemoryEventBus(IDateTimeService dateTimeService)
+        => _dateTimeService = dateTimeService;
 
     /// <summary>
     /// Gets the stream.
@@ -55,7 +57,11 @@ public class MemoryEventBus : IEventBus
     public IEnumerable<EventState> Stream => _stream;
 
     /// <inheritdoc/>
-    public Task PublishAsync(IEnvelope<BaseEvent, BaseMetadata> envelope, CancellationToken cancellationToken) => PublishAsync(envelope.Message, envelope.Metadata, cancellationToken);
+    public async Task PublishAsync([NotNull] IEnvelope<BaseEvent, BaseMetadata> envelope, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(envelope);
+        await PublishAsync(envelope.Message, envelope.Metadata, cancellationToken).ConfigureAwait(false);
+    }
 
     /// <inheritdoc/>
     public Task PublishAsync(BaseEvent message, BaseMetadata metadata, CancellationToken cancellationToken) => PublishAsync(new EventState(_dateTimeService.UtcNow, message, metadata), cancellationToken);
