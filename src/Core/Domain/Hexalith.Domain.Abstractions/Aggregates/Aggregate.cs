@@ -4,7 +4,7 @@
 // Created          : 05-01-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 05-01-2023
+// Last Modified On : 11-15-2023
 // ***********************************************************************
 // <copyright file="Aggregate.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -33,6 +33,11 @@ using Hexalith.Domain.Events;
 [DebuggerDisplay("{AggregateName}/{AggregateId}")]
 public abstract record Aggregate : IAggregate
 {
+    /// <summary>
+    /// The space substitution.
+    /// </summary>
+    public const char SpaceSubstitutionCharacter = '~';
+
     /// <summary>
     /// Default string used for separating natural keys to compose the aggregate identifier.
     /// </summary>
@@ -68,14 +73,22 @@ public abstract record Aggregate : IAggregate
     /// </summary>
     /// <param name="id">The identifier.</param>
     /// <returns>System.String.</returns>
-    protected static string Normalize([NotNull] string id)
+    /// <exception cref="System.InvalidOperationException">The specified character '{SpaceSubstitution}' cannot be used in an aggregate identifier ({id}). It conflicts with the system's designated replacement for white spaces.</exception>
+    public static string Normalize([NotNull] string id)
     {
-        ArgumentException.ThrowIfNullOrEmpty(id);
+        if (string.IsNullOrWhiteSpace(id))
+        {
+            throw new ArgumentException("The specified identifier cannot be empty or white space.", nameof(id));
+        }
 
-        // replace spaces by tilde and escape tilde by double tilde
+        if (id.Contains(SpaceSubstitutionCharacter, StringComparison.OrdinalIgnoreCase))
+        {
+            throw new InvalidOperationException($"The specified character '{SpaceSubstitutionCharacter}' cannot be used in an aggregate identifier ({id}). It conflicts with the system's designated replacement for white spaces.");
+        }
+
+        // replace spaces by a special character to avoid incompatibility with the space
         return
             id
-            .Replace("~", "~~", StringComparison.OrdinalIgnoreCase)
-            .Replace(" ", "~", StringComparison.OrdinalIgnoreCase);
+            .Replace(' ', SpaceSubstitutionCharacter);
     }
 }

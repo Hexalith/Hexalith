@@ -10162,12 +10162,31 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Aggregates.Aggregate.DefaultAggregateName
   nameWithType: Aggregate.DefaultAggregateName
+- uid: Hexalith.Domain.Aggregates.Aggregate.Normalize(System.String)
+  name: Normalize(String)
+  href: api/Hexalith.Domain.Aggregates.Aggregate.html#Hexalith_Domain_Aggregates_Aggregate_Normalize_System_String_
+  commentId: M:Hexalith.Domain.Aggregates.Aggregate.Normalize(System.String)
+  fullName: Hexalith.Domain.Aggregates.Aggregate.Normalize(System.String)
+  nameWithType: Aggregate.Normalize(String)
+- uid: Hexalith.Domain.Aggregates.Aggregate.Normalize*
+  name: Normalize
+  href: api/Hexalith.Domain.Aggregates.Aggregate.html#Hexalith_Domain_Aggregates_Aggregate_Normalize_
+  commentId: Overload:Hexalith.Domain.Aggregates.Aggregate.Normalize
+  isSpec: "True"
+  fullName: Hexalith.Domain.Aggregates.Aggregate.Normalize
+  nameWithType: Aggregate.Normalize
 - uid: Hexalith.Domain.Aggregates.Aggregate.Separator
   name: Separator
   href: api/Hexalith.Domain.Aggregates.Aggregate.html#Hexalith_Domain_Aggregates_Aggregate_Separator
   commentId: F:Hexalith.Domain.Aggregates.Aggregate.Separator
   fullName: Hexalith.Domain.Aggregates.Aggregate.Separator
   nameWithType: Aggregate.Separator
+- uid: Hexalith.Domain.Aggregates.Aggregate.SpaceSubstitutionCharacter
+  name: SpaceSubstitutionCharacter
+  href: api/Hexalith.Domain.Aggregates.Aggregate.html#Hexalith_Domain_Aggregates_Aggregate_SpaceSubstitutionCharacter
+  commentId: F:Hexalith.Domain.Aggregates.Aggregate.SpaceSubstitutionCharacter
+  fullName: Hexalith.Domain.Aggregates.Aggregate.SpaceSubstitutionCharacter
+  nameWithType: Aggregate.SpaceSubstitutionCharacter
 - uid: Hexalith.Domain.Aggregates.AggregateBuilder
   name: AggregateBuilder
   href: api/Hexalith.Domain.Aggregates.AggregateBuilder.html
@@ -11090,32 +11109,6 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.ConversationThread
   nameWithType: ConversationThread.ConversationThread
-- uid: Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.AggregateId
-  name: AggregateId
-  href: api/Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.html#Hexalith_Domain_ConversationThreads_Aggregates_ConversationThread_AggregateId
-  commentId: P:Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.AggregateId
-  fullName: Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.AggregateId
-  nameWithType: ConversationThread.AggregateId
-- uid: Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.AggregateId*
-  name: AggregateId
-  href: api/Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.html#Hexalith_Domain_ConversationThreads_Aggregates_ConversationThread_AggregateId_
-  commentId: Overload:Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.AggregateId
-  isSpec: "True"
-  fullName: Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.AggregateId
-  nameWithType: ConversationThread.AggregateId
-- uid: Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.AggregateName
-  name: AggregateName
-  href: api/Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.html#Hexalith_Domain_ConversationThreads_Aggregates_ConversationThread_AggregateName
-  commentId: P:Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.AggregateName
-  fullName: Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.AggregateName
-  nameWithType: ConversationThread.AggregateName
-- uid: Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.AggregateName*
-  name: AggregateName
-  href: api/Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.html#Hexalith_Domain_ConversationThreads_Aggregates_ConversationThread_AggregateName_
-  commentId: Overload:Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.AggregateName
-  isSpec: "True"
-  fullName: Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.AggregateName
-  nameWithType: ConversationThread.AggregateName
 - uid: Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.Apply(Hexalith.Domain.Events.BaseEvent)
   name: Apply(BaseEvent)
   href: api/Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.html#Hexalith_Domain_ConversationThreads_Aggregates_ConversationThread_Apply_Hexalith_Domain_Events_BaseEvent_
@@ -11155,6 +11148,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.GetAggregateId
   nameWithType: ConversationThread.GetAggregateId
+- uid: Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.GetAggregateName
+  name: GetAggregateName()
+  href: api/Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.html#Hexalith_Domain_ConversationThreads_Aggregates_ConversationThread_GetAggregateName
+  commentId: M:Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.GetAggregateName
+  fullName: Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.GetAggregateName()
+  nameWithType: ConversationThread.GetAggregateName()
+- uid: Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.GetAggregateName*
+  name: GetAggregateName
+  href: api/Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.html#Hexalith_Domain_ConversationThreads_Aggregates_ConversationThread_GetAggregateName_
+  commentId: Overload:Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.GetAggregateName
+  isSpec: "True"
+  fullName: Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.GetAggregateName
+  nameWithType: ConversationThread.GetAggregateName
 - uid: Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.Items
   name: Items
   href: api/Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.html#Hexalith_Domain_ConversationThreads_Aggregates_ConversationThread_Items
@@ -18130,44 +18136,6 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.DaprRuntime.Handlers.ICommandProcessorActor.HasCommandsAsync
   nameWithType: ICommandProcessorActor.HasCommandsAsync
-- uid: Hexalith.Infrastructure.DaprRuntime.Helpers
-  name: Hexalith.Infrastructure.DaprRuntime.Helpers
-  href: api/Hexalith.Infrastructure.DaprRuntime.Helpers.html
-  commentId: N:Hexalith.Infrastructure.DaprRuntime.Helpers
-  fullName: Hexalith.Infrastructure.DaprRuntime.Helpers
-  nameWithType: Hexalith.Infrastructure.DaprRuntime.Helpers
-- uid: Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper
-  name: ActorHelper
-  href: api/Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.html
-  commentId: T:Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper
-  fullName: Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper
-  nameWithType: ActorHelper
-- uid: Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.ToUrlDecodedString(Dapr.Actors.ActorId)
-  name: ToUrlDecodedString(ActorId)
-  href: api/Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.html#Hexalith_Infrastructure_DaprRuntime_Helpers_ActorHelper_ToUrlDecodedString_Dapr_Actors_ActorId_
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.ToUrlDecodedString(Dapr.Actors.ActorId)
-  fullName: Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.ToUrlDecodedString(Dapr.Actors.ActorId)
-  nameWithType: ActorHelper.ToUrlDecodedString(ActorId)
-- uid: Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.ToUrlDecodedString*
-  name: ToUrlDecodedString
-  href: api/Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.html#Hexalith_Infrastructure_DaprRuntime_Helpers_ActorHelper_ToUrlDecodedString_
-  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.ToUrlDecodedString
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.ToUrlDecodedString
-  nameWithType: ActorHelper.ToUrlDecodedString
-- uid: Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.ToUrlEncodedActorId(System.String)
-  name: ToUrlEncodedActorId(String)
-  href: api/Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.html#Hexalith_Infrastructure_DaprRuntime_Helpers_ActorHelper_ToUrlEncodedActorId_System_String_
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.ToUrlEncodedActorId(System.String)
-  fullName: Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.ToUrlEncodedActorId(System.String)
-  nameWithType: ActorHelper.ToUrlEncodedActorId(String)
-- uid: Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.ToUrlEncodedActorId*
-  name: ToUrlEncodedActorId
-  href: api/Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.html#Hexalith_Infrastructure_DaprRuntime_Helpers_ActorHelper_ToUrlEncodedActorId_
-  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.ToUrlEncodedActorId
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.DaprRuntime.Helpers.ActorHelper.ToUrlEncodedActorId
-  nameWithType: ActorHelper.ToUrlEncodedActorId
 - uid: Hexalith.Infrastructure.DaprRuntime.Inventories.Actors
   name: Hexalith.Infrastructure.DaprRuntime.Inventories.Actors
   href: api/Hexalith.Infrastructure.DaprRuntime.Inventories.Actors.html
@@ -21610,17 +21578,286 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandFilter.InventoryWarehouseId
   nameWithType: WarehouseOnHandFilter.InventoryWarehouseId
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2
+  name: WarehouseOnHandV2
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html
+  commentId: T:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2
+  nameWithType: WarehouseOnHandV2
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal})
+  name: WarehouseOnHandV2(String, String, String, String, String, String, String, String, String, String, Nullable<Decimal>, Nullable<Decimal>, Nullable<Decimal>, String, Nullable<Decimal>, Nullable<Decimal>, String, Nullable<Decimal>, Nullable<Decimal>, Nullable<Decimal>)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2__ctor_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Nullable_System_Decimal__System_Nullable_System_Decimal__System_Nullable_System_Decimal__System_String_System_Nullable_System_Decimal__System_Nullable_System_Decimal__System_String_System_Nullable_System_Decimal__System_Nullable_System_Decimal__System_Nullable_System_Decimal__
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal})
+  name.vb: WarehouseOnHandV2(String, String, String, String, String, String, String, String, String, String, Nullable(Of Decimal), Nullable(Of Decimal), Nullable(Of Decimal), String, Nullable(Of Decimal), Nullable(Of Decimal), String, Nullable(Of Decimal), Nullable(Of Decimal), Nullable(Of Decimal))
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.WarehouseOnHandV2(System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.Nullable<System.Decimal>, System.Nullable<System.Decimal>, System.Nullable<System.Decimal>, System.String, System.Nullable<System.Decimal>, System.Nullable<System.Decimal>, System.String, System.Nullable<System.Decimal>, System.Nullable<System.Decimal>, System.Nullable<System.Decimal>)
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.WarehouseOnHandV2(System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.Nullable(Of System.Decimal), System.Nullable(Of System.Decimal), System.Nullable(Of System.Decimal), System.String, System.Nullable(Of System.Decimal), System.Nullable(Of System.Decimal), System.String, System.Nullable(Of System.Decimal), System.Nullable(Of System.Decimal), System.Nullable(Of System.Decimal))
+  nameWithType: WarehouseOnHandV2.WarehouseOnHandV2(String, String, String, String, String, String, String, String, String, String, Nullable<Decimal>, Nullable<Decimal>, Nullable<Decimal>, String, Nullable<Decimal>, Nullable<Decimal>, String, Nullable<Decimal>, Nullable<Decimal>, Nullable<Decimal>)
+  nameWithType.vb: WarehouseOnHandV2.WarehouseOnHandV2(String, String, String, String, String, String, String, String, String, String, Nullable(Of Decimal), Nullable(Of Decimal), Nullable(Of Decimal), String, Nullable(Of Decimal), Nullable(Of Decimal), String, Nullable(Of Decimal), Nullable(Of Decimal), Nullable(Of Decimal))
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.#ctor*
+  name: WarehouseOnHandV2
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2__ctor_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.WarehouseOnHandV2
+  nameWithType: WarehouseOnHandV2.WarehouseOnHandV2
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.AreWarehouseManagementProcessesUsed
+  name: AreWarehouseManagementProcessesUsed
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_AreWarehouseManagementProcessesUsed
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.AreWarehouseManagementProcessesUsed
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.AreWarehouseManagementProcessesUsed
+  nameWithType: WarehouseOnHandV2.AreWarehouseManagementProcessesUsed
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.AreWarehouseManagementProcessesUsed*
+  name: AreWarehouseManagementProcessesUsed
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_AreWarehouseManagementProcessesUsed_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.AreWarehouseManagementProcessesUsed
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.AreWarehouseManagementProcessesUsed
+  nameWithType: WarehouseOnHandV2.AreWarehouseManagementProcessesUsed
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.AvailableOnHandQuantity
+  name: AvailableOnHandQuantity
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_AvailableOnHandQuantity
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.AvailableOnHandQuantity
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.AvailableOnHandQuantity
+  nameWithType: WarehouseOnHandV2.AvailableOnHandQuantity
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.AvailableOnHandQuantity*
+  name: AvailableOnHandQuantity
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_AvailableOnHandQuantity_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.AvailableOnHandQuantity
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.AvailableOnHandQuantity
+  nameWithType: WarehouseOnHandV2.AvailableOnHandQuantity
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.AvailableOrderedQuantity
+  name: AvailableOrderedQuantity
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_AvailableOrderedQuantity
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.AvailableOrderedQuantity
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.AvailableOrderedQuantity
+  nameWithType: WarehouseOnHandV2.AvailableOrderedQuantity
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.AvailableOrderedQuantity*
+  name: AvailableOrderedQuantity
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_AvailableOrderedQuantity_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.AvailableOrderedQuantity
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.AvailableOrderedQuantity
+  nameWithType: WarehouseOnHandV2.AvailableOrderedQuantity
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.EntityName
+  name: EntityName()
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_EntityName
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.EntityName
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.EntityName()
+  nameWithType: WarehouseOnHandV2.EntityName()
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.EntityName*
+  name: EntityName
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_EntityName_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.EntityName
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.EntityName
+  nameWithType: WarehouseOnHandV2.EntityName
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.InventorySiteId
+  name: InventorySiteId
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_InventorySiteId
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.InventorySiteId
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.InventorySiteId
+  nameWithType: WarehouseOnHandV2.InventorySiteId
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.InventorySiteId*
+  name: InventorySiteId
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_InventorySiteId_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.InventorySiteId
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.InventorySiteId
+  nameWithType: WarehouseOnHandV2.InventorySiteId
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.InventoryWarehouseId
+  name: InventoryWarehouseId
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_InventoryWarehouseId
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.InventoryWarehouseId
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.InventoryWarehouseId
+  nameWithType: WarehouseOnHandV2.InventoryWarehouseId
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.InventoryWarehouseId*
+  name: InventoryWarehouseId
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_InventoryWarehouseId_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.InventoryWarehouseId
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.InventoryWarehouseId
+  nameWithType: WarehouseOnHandV2.InventoryWarehouseId
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ItemNumber
+  name: ItemNumber
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_ItemNumber
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ItemNumber
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ItemNumber
+  nameWithType: WarehouseOnHandV2.ItemNumber
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ItemNumber*
+  name: ItemNumber
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_ItemNumber_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ItemNumber
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ItemNumber
+  nameWithType: WarehouseOnHandV2.ItemNumber
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.OnHandQuantity
+  name: OnHandQuantity
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_OnHandQuantity
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.OnHandQuantity
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.OnHandQuantity
+  nameWithType: WarehouseOnHandV2.OnHandQuantity
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.OnHandQuantity*
+  name: OnHandQuantity
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_OnHandQuantity_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.OnHandQuantity
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.OnHandQuantity
+  nameWithType: WarehouseOnHandV2.OnHandQuantity
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.OnOrderQuantity
+  name: OnOrderQuantity
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_OnOrderQuantity
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.OnOrderQuantity
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.OnOrderQuantity
+  nameWithType: WarehouseOnHandV2.OnOrderQuantity
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.OnOrderQuantity*
+  name: OnOrderQuantity
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_OnOrderQuantity_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.OnOrderQuantity
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.OnOrderQuantity
+  nameWithType: WarehouseOnHandV2.OnOrderQuantity
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.OrderedQuantity
+  name: OrderedQuantity
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_OrderedQuantity
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.OrderedQuantity
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.OrderedQuantity
+  nameWithType: WarehouseOnHandV2.OrderedQuantity
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.OrderedQuantity*
+  name: OrderedQuantity
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_OrderedQuantity_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.OrderedQuantity
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.OrderedQuantity
+  nameWithType: WarehouseOnHandV2.OrderedQuantity
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductColorId
+  name: ProductColorId
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_ProductColorId
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductColorId
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductColorId
+  nameWithType: WarehouseOnHandV2.ProductColorId
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductColorId*
+  name: ProductColorId
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_ProductColorId_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductColorId
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductColorId
+  nameWithType: WarehouseOnHandV2.ProductColorId
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductConfigurationId
+  name: ProductConfigurationId
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_ProductConfigurationId
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductConfigurationId
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductConfigurationId
+  nameWithType: WarehouseOnHandV2.ProductConfigurationId
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductConfigurationId*
+  name: ProductConfigurationId
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_ProductConfigurationId_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductConfigurationId
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductConfigurationId
+  nameWithType: WarehouseOnHandV2.ProductConfigurationId
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductName
+  name: ProductName
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_ProductName
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductName
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductName
+  nameWithType: WarehouseOnHandV2.ProductName
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductName*
+  name: ProductName
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_ProductName_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductName
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductName
+  nameWithType: WarehouseOnHandV2.ProductName
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductSizeId
+  name: ProductSizeId
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_ProductSizeId
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductSizeId
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductSizeId
+  nameWithType: WarehouseOnHandV2.ProductSizeId
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductSizeId*
+  name: ProductSizeId
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_ProductSizeId_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductSizeId
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductSizeId
+  nameWithType: WarehouseOnHandV2.ProductSizeId
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductStyleId
+  name: ProductStyleId
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_ProductStyleId
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductStyleId
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductStyleId
+  nameWithType: WarehouseOnHandV2.ProductStyleId
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductStyleId*
+  name: ProductStyleId
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_ProductStyleId_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductStyleId
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductStyleId
+  nameWithType: WarehouseOnHandV2.ProductStyleId
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductVersionId
+  name: ProductVersionId
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_ProductVersionId
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductVersionId
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductVersionId
+  nameWithType: WarehouseOnHandV2.ProductVersionId
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductVersionId*
+  name: ProductVersionId
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_ProductVersionId_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductVersionId
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ProductVersionId
+  nameWithType: WarehouseOnHandV2.ProductVersionId
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ReservedOnHandQuantity
+  name: ReservedOnHandQuantity
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_ReservedOnHandQuantity
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ReservedOnHandQuantity
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ReservedOnHandQuantity
+  nameWithType: WarehouseOnHandV2.ReservedOnHandQuantity
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ReservedOnHandQuantity*
+  name: ReservedOnHandQuantity
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_ReservedOnHandQuantity_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ReservedOnHandQuantity
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ReservedOnHandQuantity
+  nameWithType: WarehouseOnHandV2.ReservedOnHandQuantity
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ReservedOrderedQuantity
+  name: ReservedOrderedQuantity
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_ReservedOrderedQuantity
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ReservedOrderedQuantity
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ReservedOrderedQuantity
+  nameWithType: WarehouseOnHandV2.ReservedOrderedQuantity
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ReservedOrderedQuantity*
+  name: ReservedOrderedQuantity
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_ReservedOrderedQuantity_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ReservedOrderedQuantity
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.ReservedOrderedQuantity
+  nameWithType: WarehouseOnHandV2.ReservedOrderedQuantity
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.TotalAvailableQuantity
+  name: TotalAvailableQuantity
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_TotalAvailableQuantity
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.TotalAvailableQuantity
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.TotalAvailableQuantity
+  nameWithType: WarehouseOnHandV2.TotalAvailableQuantity
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.TotalAvailableQuantity*
+  name: TotalAvailableQuantity
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_TotalAvailableQuantity_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.TotalAvailableQuantity
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2.TotalAvailableQuantity
+  nameWithType: WarehouseOnHandV2.TotalAvailableQuantity
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2Helper
   name: WarehouseOnHandV2Helper
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2Helper.html
   commentId: T:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2Helper
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2Helper
   nameWithType: WarehouseOnHandV2Helper
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2Helper.ToInventoryItemStockEvent(Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2,System.String,System.Decimal,DateTimeOffset)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2Helper.ToInventoryItemStockEvent(Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2,System.String,System.Decimal,DateTimeOffset)
   name: ToInventoryItemStockEvent(WarehouseOnHandV2, String, Decimal, DateTimeOffset)
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2Helper.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2Helper_ToInventoryItemStockEvent_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_System_String_System_Decimal_DateTimeOffset_
-  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2Helper.ToInventoryItemStockEvent(Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2,System.String,System.Decimal,DateTimeOffset)
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2Helper.ToInventoryItemStockEvent(Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2, System.String, System.Decimal, DateTimeOffset)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2Helper.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2Helper_ToInventoryItemStockEvent_Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_System_String_System_Decimal_DateTimeOffset_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2Helper.ToInventoryItemStockEvent(Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2,System.String,System.Decimal,DateTimeOffset)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2Helper.ToInventoryItemStockEvent(Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2, System.String, System.Decimal, DateTimeOffset)
   nameWithType: WarehouseOnHandV2Helper.ToInventoryItemStockEvent(WarehouseOnHandV2, String, Decimal, DateTimeOffset)
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2Helper.ToInventoryItemStockEvent*
   name: ToInventoryItemStockEvent
@@ -22033,12 +22270,6 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Models.PerCompanyPrimaryKey.DataAreaId
   nameWithType: PerCompanyPrimaryKey.DataAreaId
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers
-  name: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.html
-  commentId: N:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers
-  nameWithType: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents
   name: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.html
@@ -22915,275 +23146,6 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerExternalCodeFilter.System
   nameWithType: CustomerExternalCodeFilter.System
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2
-  name: WarehouseOnHandV2
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html
-  commentId: T:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2
-  nameWithType: WarehouseOnHandV2
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal})
-  name: WarehouseOnHandV2(String, String, String, String, String, String, String, String, String, String, Nullable<Decimal>, Nullable<Decimal>, Nullable<Decimal>, String, Nullable<Decimal>, Nullable<Decimal>, String, Nullable<Decimal>, Nullable<Decimal>, Nullable<Decimal>)
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2__ctor_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Nullable_System_Decimal__System_Nullable_System_Decimal__System_Nullable_System_Decimal__System_String_System_Nullable_System_Decimal__System_Nullable_System_Decimal__System_String_System_Nullable_System_Decimal__System_Nullable_System_Decimal__System_Nullable_System_Decimal__
-  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.Nullable{System.Decimal})
-  name.vb: WarehouseOnHandV2(String, String, String, String, String, String, String, String, String, String, Nullable(Of Decimal), Nullable(Of Decimal), Nullable(Of Decimal), String, Nullable(Of Decimal), Nullable(Of Decimal), String, Nullable(Of Decimal), Nullable(Of Decimal), Nullable(Of Decimal))
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.WarehouseOnHandV2(System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.Nullable<System.Decimal>, System.Nullable<System.Decimal>, System.Nullable<System.Decimal>, System.String, System.Nullable<System.Decimal>, System.Nullable<System.Decimal>, System.String, System.Nullable<System.Decimal>, System.Nullable<System.Decimal>, System.Nullable<System.Decimal>)
-  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.WarehouseOnHandV2(System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.Nullable(Of System.Decimal), System.Nullable(Of System.Decimal), System.Nullable(Of System.Decimal), System.String, System.Nullable(Of System.Decimal), System.Nullable(Of System.Decimal), System.String, System.Nullable(Of System.Decimal), System.Nullable(Of System.Decimal), System.Nullable(Of System.Decimal))
-  nameWithType: WarehouseOnHandV2.WarehouseOnHandV2(String, String, String, String, String, String, String, String, String, String, Nullable<Decimal>, Nullable<Decimal>, Nullable<Decimal>, String, Nullable<Decimal>, Nullable<Decimal>, String, Nullable<Decimal>, Nullable<Decimal>, Nullable<Decimal>)
-  nameWithType.vb: WarehouseOnHandV2.WarehouseOnHandV2(String, String, String, String, String, String, String, String, String, String, Nullable(Of Decimal), Nullable(Of Decimal), Nullable(Of Decimal), String, Nullable(Of Decimal), Nullable(Of Decimal), String, Nullable(Of Decimal), Nullable(Of Decimal), Nullable(Of Decimal))
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.#ctor*
-  name: WarehouseOnHandV2
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2__ctor_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.#ctor
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.WarehouseOnHandV2
-  nameWithType: WarehouseOnHandV2.WarehouseOnHandV2
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.AreWarehouseManagementProcessesUsed
-  name: AreWarehouseManagementProcessesUsed
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_AreWarehouseManagementProcessesUsed
-  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.AreWarehouseManagementProcessesUsed
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.AreWarehouseManagementProcessesUsed
-  nameWithType: WarehouseOnHandV2.AreWarehouseManagementProcessesUsed
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.AreWarehouseManagementProcessesUsed*
-  name: AreWarehouseManagementProcessesUsed
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_AreWarehouseManagementProcessesUsed_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.AreWarehouseManagementProcessesUsed
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.AreWarehouseManagementProcessesUsed
-  nameWithType: WarehouseOnHandV2.AreWarehouseManagementProcessesUsed
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.AvailableOnHandQuantity
-  name: AvailableOnHandQuantity
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_AvailableOnHandQuantity
-  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.AvailableOnHandQuantity
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.AvailableOnHandQuantity
-  nameWithType: WarehouseOnHandV2.AvailableOnHandQuantity
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.AvailableOnHandQuantity*
-  name: AvailableOnHandQuantity
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_AvailableOnHandQuantity_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.AvailableOnHandQuantity
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.AvailableOnHandQuantity
-  nameWithType: WarehouseOnHandV2.AvailableOnHandQuantity
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.AvailableOrderedQuantity
-  name: AvailableOrderedQuantity
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_AvailableOrderedQuantity
-  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.AvailableOrderedQuantity
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.AvailableOrderedQuantity
-  nameWithType: WarehouseOnHandV2.AvailableOrderedQuantity
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.AvailableOrderedQuantity*
-  name: AvailableOrderedQuantity
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_AvailableOrderedQuantity_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.AvailableOrderedQuantity
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.AvailableOrderedQuantity
-  nameWithType: WarehouseOnHandV2.AvailableOrderedQuantity
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.EntityName
-  name: EntityName()
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_EntityName
-  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.EntityName
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.EntityName()
-  nameWithType: WarehouseOnHandV2.EntityName()
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.EntityName*
-  name: EntityName
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_EntityName_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.EntityName
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.EntityName
-  nameWithType: WarehouseOnHandV2.EntityName
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.InventorySiteId
-  name: InventorySiteId
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_InventorySiteId
-  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.InventorySiteId
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.InventorySiteId
-  nameWithType: WarehouseOnHandV2.InventorySiteId
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.InventorySiteId*
-  name: InventorySiteId
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_InventorySiteId_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.InventorySiteId
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.InventorySiteId
-  nameWithType: WarehouseOnHandV2.InventorySiteId
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.InventoryWarehouseId
-  name: InventoryWarehouseId
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_InventoryWarehouseId
-  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.InventoryWarehouseId
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.InventoryWarehouseId
-  nameWithType: WarehouseOnHandV2.InventoryWarehouseId
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.InventoryWarehouseId*
-  name: InventoryWarehouseId
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_InventoryWarehouseId_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.InventoryWarehouseId
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.InventoryWarehouseId
-  nameWithType: WarehouseOnHandV2.InventoryWarehouseId
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ItemNumber
-  name: ItemNumber
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_ItemNumber
-  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ItemNumber
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ItemNumber
-  nameWithType: WarehouseOnHandV2.ItemNumber
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ItemNumber*
-  name: ItemNumber
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_ItemNumber_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ItemNumber
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ItemNumber
-  nameWithType: WarehouseOnHandV2.ItemNumber
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.OnHandQuantity
-  name: OnHandQuantity
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_OnHandQuantity
-  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.OnHandQuantity
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.OnHandQuantity
-  nameWithType: WarehouseOnHandV2.OnHandQuantity
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.OnHandQuantity*
-  name: OnHandQuantity
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_OnHandQuantity_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.OnHandQuantity
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.OnHandQuantity
-  nameWithType: WarehouseOnHandV2.OnHandQuantity
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.OnOrderQuantity
-  name: OnOrderQuantity
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_OnOrderQuantity
-  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.OnOrderQuantity
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.OnOrderQuantity
-  nameWithType: WarehouseOnHandV2.OnOrderQuantity
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.OnOrderQuantity*
-  name: OnOrderQuantity
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_OnOrderQuantity_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.OnOrderQuantity
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.OnOrderQuantity
-  nameWithType: WarehouseOnHandV2.OnOrderQuantity
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.OrderedQuantity
-  name: OrderedQuantity
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_OrderedQuantity
-  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.OrderedQuantity
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.OrderedQuantity
-  nameWithType: WarehouseOnHandV2.OrderedQuantity
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.OrderedQuantity*
-  name: OrderedQuantity
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_OrderedQuantity_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.OrderedQuantity
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.OrderedQuantity
-  nameWithType: WarehouseOnHandV2.OrderedQuantity
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductColorId
-  name: ProductColorId
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_ProductColorId
-  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductColorId
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductColorId
-  nameWithType: WarehouseOnHandV2.ProductColorId
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductColorId*
-  name: ProductColorId
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_ProductColorId_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductColorId
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductColorId
-  nameWithType: WarehouseOnHandV2.ProductColorId
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductConfigurationId
-  name: ProductConfigurationId
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_ProductConfigurationId
-  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductConfigurationId
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductConfigurationId
-  nameWithType: WarehouseOnHandV2.ProductConfigurationId
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductConfigurationId*
-  name: ProductConfigurationId
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_ProductConfigurationId_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductConfigurationId
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductConfigurationId
-  nameWithType: WarehouseOnHandV2.ProductConfigurationId
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductName
-  name: ProductName
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_ProductName
-  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductName
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductName
-  nameWithType: WarehouseOnHandV2.ProductName
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductName*
-  name: ProductName
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_ProductName_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductName
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductName
-  nameWithType: WarehouseOnHandV2.ProductName
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductSizeId
-  name: ProductSizeId
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_ProductSizeId
-  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductSizeId
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductSizeId
-  nameWithType: WarehouseOnHandV2.ProductSizeId
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductSizeId*
-  name: ProductSizeId
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_ProductSizeId_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductSizeId
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductSizeId
-  nameWithType: WarehouseOnHandV2.ProductSizeId
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductStyleId
-  name: ProductStyleId
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_ProductStyleId
-  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductStyleId
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductStyleId
-  nameWithType: WarehouseOnHandV2.ProductStyleId
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductStyleId*
-  name: ProductStyleId
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_ProductStyleId_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductStyleId
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductStyleId
-  nameWithType: WarehouseOnHandV2.ProductStyleId
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductVersionId
-  name: ProductVersionId
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_ProductVersionId
-  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductVersionId
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductVersionId
-  nameWithType: WarehouseOnHandV2.ProductVersionId
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductVersionId*
-  name: ProductVersionId
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_ProductVersionId_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductVersionId
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ProductVersionId
-  nameWithType: WarehouseOnHandV2.ProductVersionId
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ReservedOnHandQuantity
-  name: ReservedOnHandQuantity
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_ReservedOnHandQuantity
-  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ReservedOnHandQuantity
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ReservedOnHandQuantity
-  nameWithType: WarehouseOnHandV2.ReservedOnHandQuantity
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ReservedOnHandQuantity*
-  name: ReservedOnHandQuantity
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_ReservedOnHandQuantity_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ReservedOnHandQuantity
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ReservedOnHandQuantity
-  nameWithType: WarehouseOnHandV2.ReservedOnHandQuantity
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ReservedOrderedQuantity
-  name: ReservedOrderedQuantity
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_ReservedOrderedQuantity
-  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ReservedOrderedQuantity
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ReservedOrderedQuantity
-  nameWithType: WarehouseOnHandV2.ReservedOrderedQuantity
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ReservedOrderedQuantity*
-  name: ReservedOrderedQuantity
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_ReservedOrderedQuantity_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ReservedOrderedQuantity
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.ReservedOrderedQuantity
-  nameWithType: WarehouseOnHandV2.ReservedOrderedQuantity
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.TotalAvailableQuantity
-  name: TotalAvailableQuantity
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_TotalAvailableQuantity
-  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.TotalAvailableQuantity
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.TotalAvailableQuantity
-  nameWithType: WarehouseOnHandV2.TotalAvailableQuantity
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.TotalAvailableQuantity*
-  name: TotalAvailableQuantity
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_WarehouseOnHandV2_TotalAvailableQuantity_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.TotalAvailableQuantity
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.WarehouseOnHandV2.TotalAvailableQuantity
-  nameWithType: WarehouseOnHandV2.TotalAvailableQuantity
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers
   name: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.html
@@ -23471,19 +23433,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroup.EntityName
   nameWithType: CustomerGroup.EntityName
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroup.IsPublicSector_IT
-  name: IsPublicSector_IT
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroup.html#Hexalith_Infrastructure_Dynamics365Finance_Services_CustomerGroups_CustomerGroup_IsPublicSector_IT
-  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroup.IsPublicSector_IT
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroup.IsPublicSector_IT
-  nameWithType: CustomerGroup.IsPublicSector_IT
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroup.IsPublicSector_IT*
-  name: IsPublicSector_IT
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroup.html#Hexalith_Infrastructure_Dynamics365Finance_Services_CustomerGroups_CustomerGroup_IsPublicSector_IT_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroup.IsPublicSector_IT
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroup.IsPublicSectorIT
+  name: IsPublicSectorIT
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroup.html#Hexalith_Infrastructure_Dynamics365Finance_Services_CustomerGroups_CustomerGroup_IsPublicSectorIT
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroup.IsPublicSectorIT
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroup.IsPublicSectorIT
+  nameWithType: CustomerGroup.IsPublicSectorIT
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroup.IsPublicSectorIT*
+  name: IsPublicSectorIT
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroup.html#Hexalith_Infrastructure_Dynamics365Finance_Services_CustomerGroups_CustomerGroup_IsPublicSectorIT_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroup.IsPublicSectorIT
   isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroup.IsPublicSector_IT
-  nameWithType: CustomerGroup.IsPublicSector_IT
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroup.IsPublicSectorIT
+  nameWithType: CustomerGroup.IsPublicSectorIT
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroup.IsSalesTaxIncludedInPrice
   name: IsSalesTaxIncludedInPrice
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroup.html#Hexalith_Infrastructure_Dynamics365Finance_Services_CustomerGroups_CustomerGroup_IsSalesTaxIncludedInPrice
@@ -23807,19 +23769,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroupUpdate.Description
   nameWithType: CustomerGroupUpdate.Description
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroupUpdate.IsPublicSector_IT
-  name: IsPublicSector_IT
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroupUpdate.html#Hexalith_Infrastructure_Dynamics365Finance_Services_CustomerGroups_CustomerGroupUpdate_IsPublicSector_IT
-  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroupUpdate.IsPublicSector_IT
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroupUpdate.IsPublicSector_IT
-  nameWithType: CustomerGroupUpdate.IsPublicSector_IT
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroupUpdate.IsPublicSector_IT*
-  name: IsPublicSector_IT
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroupUpdate.html#Hexalith_Infrastructure_Dynamics365Finance_Services_CustomerGroups_CustomerGroupUpdate_IsPublicSector_IT_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroupUpdate.IsPublicSector_IT
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroupUpdate.IsPublicSectorIT
+  name: IsPublicSectorIT
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroupUpdate.html#Hexalith_Infrastructure_Dynamics365Finance_Services_CustomerGroups_CustomerGroupUpdate_IsPublicSectorIT
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroupUpdate.IsPublicSectorIT
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroupUpdate.IsPublicSectorIT
+  nameWithType: CustomerGroupUpdate.IsPublicSectorIT
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroupUpdate.IsPublicSectorIT*
+  name: IsPublicSectorIT
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroupUpdate.html#Hexalith_Infrastructure_Dynamics365Finance_Services_CustomerGroups_CustomerGroupUpdate_IsPublicSectorIT_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroupUpdate.IsPublicSectorIT
   isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroupUpdate.IsPublicSector_IT
-  nameWithType: CustomerGroupUpdate.IsPublicSector_IT
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroupUpdate.IsPublicSectorIT
+  nameWithType: CustomerGroupUpdate.IsPublicSectorIT
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroupUpdate.IsSalesTaxIncludedInPrice
   name: IsSalesTaxIncludedInPrice
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroupUpdate.html#Hexalith_Infrastructure_Dynamics365Finance_Services_CustomerGroups_CustomerGroupUpdate_IsSalesTaxIncludedInPrice
@@ -25653,41 +25615,38 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerEventsBusTopicAttribute.CustomerEventsBusTopicAttribute
   nameWithType: CustomerEventsBusTopicAttribute.CustomerEventsBusTopicAttribute
-- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController
-  name: PartiesIntegrationEventsController
-  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.html
-  commentId: T:Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController
-  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController
-  nameWithType: PartiesIntegrationEventsController
-- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.#ctor(Hexalith.Application.Events.IIntegrationEventProcessor,Hexalith.Application.Projection.IProjectionUpdateProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController})
-  name: PartiesIntegrationEventsController(IIntegrationEventProcessor, IProjectionUpdateProcessor, IHostEnvironment, ILogger<PartiesIntegrationEventsController>)
-  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Controllers_PartiesIntegrationEventsController__ctor_Hexalith_Application_Events_IIntegrationEventProcessor_Hexalith_Application_Projection_IProjectionUpdateProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Logging_ILogger_Hexalith_Infrastructure_WebApis_PartiesEvents_Controllers_PartiesIntegrationEventsController__
-  commentId: M:Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.#ctor(Hexalith.Application.Events.IIntegrationEventProcessor,Hexalith.Application.Projection.IProjectionUpdateProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController})
-  name.vb: PartiesIntegrationEventsController(IIntegrationEventProcessor, IProjectionUpdateProcessor, IHostEnvironment, ILogger(Of PartiesIntegrationEventsController))
-  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.PartiesIntegrationEventsController(Hexalith.Application.Events.IIntegrationEventProcessor, Hexalith.Application.Projection.IProjectionUpdateProcessor, Microsoft.Extensions.Hosting.IHostEnvironment, Microsoft.Extensions.Logging.ILogger<Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController>)
-  fullName.vb: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.PartiesIntegrationEventsController(Hexalith.Application.Events.IIntegrationEventProcessor, Hexalith.Application.Projection.IProjectionUpdateProcessor, Microsoft.Extensions.Hosting.IHostEnvironment, Microsoft.Extensions.Logging.ILogger(Of Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController))
-  nameWithType: PartiesIntegrationEventsController.PartiesIntegrationEventsController(IIntegrationEventProcessor, IProjectionUpdateProcessor, IHostEnvironment, ILogger<PartiesIntegrationEventsController>)
-  nameWithType.vb: PartiesIntegrationEventsController.PartiesIntegrationEventsController(IIntegrationEventProcessor, IProjectionUpdateProcessor, IHostEnvironment, ILogger(Of PartiesIntegrationEventsController))
-- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.#ctor*
-  name: PartiesIntegrationEventsController
-  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Controllers_PartiesIntegrationEventsController__ctor_
-  commentId: Overload:Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.#ctor
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerIntegrationEventsController
+  name: CustomerIntegrationEventsController
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerIntegrationEventsController.html
+  commentId: T:Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerIntegrationEventsController
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerIntegrationEventsController
+  nameWithType: CustomerIntegrationEventsController
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerIntegrationEventsController.#ctor(Hexalith.Application.Events.IIntegrationEventProcessor,Hexalith.Application.Projection.IProjectionUpdateProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger)
+  name: CustomerIntegrationEventsController(IIntegrationEventProcessor, IProjectionUpdateProcessor, IHostEnvironment, ILogger)
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Controllers_CustomerIntegrationEventsController__ctor_Hexalith_Application_Events_IIntegrationEventProcessor_Hexalith_Application_Projection_IProjectionUpdateProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Logging_ILogger_
+  commentId: M:Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerIntegrationEventsController.#ctor(Hexalith.Application.Events.IIntegrationEventProcessor,Hexalith.Application.Projection.IProjectionUpdateProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger)
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerIntegrationEventsController.CustomerIntegrationEventsController(Hexalith.Application.Events.IIntegrationEventProcessor, Hexalith.Application.Projection.IProjectionUpdateProcessor, Microsoft.Extensions.Hosting.IHostEnvironment, Microsoft.Extensions.Logging.ILogger)
+  nameWithType: CustomerIntegrationEventsController.CustomerIntegrationEventsController(IIntegrationEventProcessor, IProjectionUpdateProcessor, IHostEnvironment, ILogger)
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerIntegrationEventsController.#ctor*
+  name: CustomerIntegrationEventsController
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Controllers_CustomerIntegrationEventsController__ctor_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerIntegrationEventsController.#ctor
   isSpec: "True"
-  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.PartiesIntegrationEventsController
-  nameWithType: PartiesIntegrationEventsController.PartiesIntegrationEventsController
-- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.HandleCustomerEventsAsync(Hexalith.Application.States.EventState)
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerIntegrationEventsController.CustomerIntegrationEventsController
+  nameWithType: CustomerIntegrationEventsController.CustomerIntegrationEventsController
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerIntegrationEventsController.HandleCustomerEventsAsync(Hexalith.Application.States.EventState)
   name: HandleCustomerEventsAsync(EventState)
-  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Controllers_PartiesIntegrationEventsController_HandleCustomerEventsAsync_Hexalith_Application_States_EventState_
-  commentId: M:Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.HandleCustomerEventsAsync(Hexalith.Application.States.EventState)
-  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.HandleCustomerEventsAsync(Hexalith.Application.States.EventState)
-  nameWithType: PartiesIntegrationEventsController.HandleCustomerEventsAsync(EventState)
-- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.HandleCustomerEventsAsync*
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Controllers_CustomerIntegrationEventsController_HandleCustomerEventsAsync_Hexalith_Application_States_EventState_
+  commentId: M:Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerIntegrationEventsController.HandleCustomerEventsAsync(Hexalith.Application.States.EventState)
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerIntegrationEventsController.HandleCustomerEventsAsync(Hexalith.Application.States.EventState)
+  nameWithType: CustomerIntegrationEventsController.HandleCustomerEventsAsync(EventState)
+- uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerIntegrationEventsController.HandleCustomerEventsAsync*
   name: HandleCustomerEventsAsync
-  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Controllers_PartiesIntegrationEventsController_HandleCustomerEventsAsync_
-  commentId: Overload:Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.HandleCustomerEventsAsync
+  href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Controllers_CustomerIntegrationEventsController_HandleCustomerEventsAsync_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerIntegrationEventsController.HandleCustomerEventsAsync
   isSpec: "True"
-  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.PartiesIntegrationEventsController.HandleCustomerEventsAsync
-  nameWithType: PartiesIntegrationEventsController.HandleCustomerEventsAsync
+  fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerIntegrationEventsController.HandleCustomerEventsAsync
+  nameWithType: CustomerIntegrationEventsController.HandleCustomerEventsAsync
 - uid: Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers
   name: Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers
   href: api/Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers.html
@@ -26140,98 +26099,3 @@ references:
   fullName.vb: Hexalith.TestMocks.OptionsBuilder(Of T).WithValueFromConfiguration(Of TProgram)()
   nameWithType: OptionsBuilder<T>.WithValueFromConfiguration<TProgram>()
   nameWithType.vb: OptionsBuilder(Of T).WithValueFromConfiguration(Of TProgram)()
-- uid: Hexalith.WebApp.Authorizations
-  name: Hexalith.WebApp.Authorizations
-  href: api/Hexalith.WebApp.Authorizations.html
-  commentId: N:Hexalith.WebApp.Authorizations
-  fullName: Hexalith.WebApp.Authorizations
-  nameWithType: Hexalith.WebApp.Authorizations
-- uid: Hexalith.WebApp.Authorizations.ExternalAuthStateProvider
-  name: ExternalAuthStateProvider
-  href: api/Hexalith.WebApp.Authorizations.ExternalAuthStateProvider.html
-  commentId: T:Hexalith.WebApp.Authorizations.ExternalAuthStateProvider
-  fullName: Hexalith.WebApp.Authorizations.ExternalAuthStateProvider
-  nameWithType: ExternalAuthStateProvider
-- uid: Hexalith.WebApp.Authorizations.ExternalAuthStateProvider.GetAuthenticationStateAsync
-  name: GetAuthenticationStateAsync()
-  href: api/Hexalith.WebApp.Authorizations.ExternalAuthStateProvider.html#Hexalith_WebApp_Authorizations_ExternalAuthStateProvider_GetAuthenticationStateAsync
-  commentId: M:Hexalith.WebApp.Authorizations.ExternalAuthStateProvider.GetAuthenticationStateAsync
-  fullName: Hexalith.WebApp.Authorizations.ExternalAuthStateProvider.GetAuthenticationStateAsync()
-  nameWithType: ExternalAuthStateProvider.GetAuthenticationStateAsync()
-- uid: Hexalith.WebApp.Authorizations.ExternalAuthStateProvider.GetAuthenticationStateAsync*
-  name: GetAuthenticationStateAsync
-  href: api/Hexalith.WebApp.Authorizations.ExternalAuthStateProvider.html#Hexalith_WebApp_Authorizations_ExternalAuthStateProvider_GetAuthenticationStateAsync_
-  commentId: Overload:Hexalith.WebApp.Authorizations.ExternalAuthStateProvider.GetAuthenticationStateAsync
-  isSpec: "True"
-  fullName: Hexalith.WebApp.Authorizations.ExternalAuthStateProvider.GetAuthenticationStateAsync
-  nameWithType: ExternalAuthStateProvider.GetAuthenticationStateAsync
-- uid: Hexalith.WebApp.Authorizations.ExternalAuthStateProvider.LogInAsync
-  name: LogInAsync()
-  href: api/Hexalith.WebApp.Authorizations.ExternalAuthStateProvider.html#Hexalith_WebApp_Authorizations_ExternalAuthStateProvider_LogInAsync
-  commentId: M:Hexalith.WebApp.Authorizations.ExternalAuthStateProvider.LogInAsync
-  fullName: Hexalith.WebApp.Authorizations.ExternalAuthStateProvider.LogInAsync()
-  nameWithType: ExternalAuthStateProvider.LogInAsync()
-- uid: Hexalith.WebApp.Authorizations.ExternalAuthStateProvider.LogInAsync*
-  name: LogInAsync
-  href: api/Hexalith.WebApp.Authorizations.ExternalAuthStateProvider.html#Hexalith_WebApp_Authorizations_ExternalAuthStateProvider_LogInAsync_
-  commentId: Overload:Hexalith.WebApp.Authorizations.ExternalAuthStateProvider.LogInAsync
-  isSpec: "True"
-  fullName: Hexalith.WebApp.Authorizations.ExternalAuthStateProvider.LogInAsync
-  nameWithType: ExternalAuthStateProvider.LogInAsync
-- uid: Hexalith.WebApp.Authorizations.ExternalAuthStateProvider.Logout
-  name: Logout()
-  href: api/Hexalith.WebApp.Authorizations.ExternalAuthStateProvider.html#Hexalith_WebApp_Authorizations_ExternalAuthStateProvider_Logout
-  commentId: M:Hexalith.WebApp.Authorizations.ExternalAuthStateProvider.Logout
-  fullName: Hexalith.WebApp.Authorizations.ExternalAuthStateProvider.Logout()
-  nameWithType: ExternalAuthStateProvider.Logout()
-- uid: Hexalith.WebApp.Authorizations.ExternalAuthStateProvider.Logout*
-  name: Logout
-  href: api/Hexalith.WebApp.Authorizations.ExternalAuthStateProvider.html#Hexalith_WebApp_Authorizations_ExternalAuthStateProvider_Logout_
-  commentId: Overload:Hexalith.WebApp.Authorizations.ExternalAuthStateProvider.Logout
-  isSpec: "True"
-  fullName: Hexalith.WebApp.Authorizations.ExternalAuthStateProvider.Logout
-  nameWithType: ExternalAuthStateProvider.Logout
-- uid: Hexalith.WebApp.Client
-  name: Hexalith.WebApp.Client
-  href: api/Hexalith.WebApp.Client.html
-  commentId: N:Hexalith.WebApp.Client
-  fullName: Hexalith.WebApp.Client
-  nameWithType: Hexalith.WebApp.Client
-- uid: Hexalith.WebApp.Client.PersistentAuthenticationStateProvider
-  name: PersistentAuthenticationStateProvider
-  href: api/Hexalith.WebApp.Client.PersistentAuthenticationStateProvider.html
-  commentId: T:Hexalith.WebApp.Client.PersistentAuthenticationStateProvider
-  fullName: Hexalith.WebApp.Client.PersistentAuthenticationStateProvider
-  nameWithType: PersistentAuthenticationStateProvider
-- uid: Hexalith.WebApp.Client.UserInfo
-  name: UserInfo
-  href: api/Hexalith.WebApp.Client.UserInfo.html
-  commentId: T:Hexalith.WebApp.Client.UserInfo
-  fullName: Hexalith.WebApp.Client.UserInfo
-  nameWithType: UserInfo
-- uid: Hexalith.WebApp.Client.UserInfo.Email
-  name: Email
-  href: api/Hexalith.WebApp.Client.UserInfo.html#Hexalith_WebApp_Client_UserInfo_Email
-  commentId: P:Hexalith.WebApp.Client.UserInfo.Email
-  fullName: Hexalith.WebApp.Client.UserInfo.Email
-  nameWithType: UserInfo.Email
-- uid: Hexalith.WebApp.Client.UserInfo.Email*
-  name: Email
-  href: api/Hexalith.WebApp.Client.UserInfo.html#Hexalith_WebApp_Client_UserInfo_Email_
-  commentId: Overload:Hexalith.WebApp.Client.UserInfo.Email
-  isSpec: "True"
-  fullName: Hexalith.WebApp.Client.UserInfo.Email
-  nameWithType: UserInfo.Email
-- uid: Hexalith.WebApp.Client.UserInfo.UserId
-  name: UserId
-  href: api/Hexalith.WebApp.Client.UserInfo.html#Hexalith_WebApp_Client_UserInfo_UserId
-  commentId: P:Hexalith.WebApp.Client.UserInfo.UserId
-  fullName: Hexalith.WebApp.Client.UserInfo.UserId
-  nameWithType: UserInfo.UserId
-- uid: Hexalith.WebApp.Client.UserInfo.UserId*
-  name: UserId
-  href: api/Hexalith.WebApp.Client.UserInfo.html#Hexalith_WebApp_Client_UserInfo_UserId_
-  commentId: Overload:Hexalith.WebApp.Client.UserInfo.UserId
-  isSpec: "True"
-  fullName: Hexalith.WebApp.Client.UserInfo.UserId
-  nameWithType: UserInfo.UserId

@@ -4,8 +4,6 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-using HexalithApp.Components;
-
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Identity.Web;
@@ -85,7 +83,7 @@ app.UseAuthorization();
 
 app.UseAntiforgery();
 
-app.MapRazorComponents<App>()
+app.MapRazorComponents<HexalithApp.Components.App>()
     .AddInteractiveServerRenderMode();
 
 // .AddAdditionalAssemblies(typeof(Error).Assembly);
