@@ -16,7 +16,9 @@
 
 namespace Hexalith.Domain.Aggregates;
 
+using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
@@ -60,4 +62,20 @@ public abstract record Aggregate : IAggregate
     /// </summary>
     /// <returns>The name.</returns>
     protected virtual string DefaultAggregateName() => GetType().Name;
+
+    /// <summary>
+    /// Normalizes the specified identifier.
+    /// </summary>
+    /// <param name="id">The identifier.</param>
+    /// <returns>System.String.</returns>
+    protected static string Normalize([NotNull] string id)
+    {
+        ArgumentException.ThrowIfNullOrEmpty(id);
+
+        // replace spaces by tilde and escape tilde by double tilde
+        return
+            id
+            .Replace("~", "~~", StringComparison.OrdinalIgnoreCase)
+            .Replace(" ", "~", StringComparison.OrdinalIgnoreCase);
+    }
 }

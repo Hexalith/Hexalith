@@ -32,7 +32,7 @@ using Hexalith.Domain.Exceptions;
 /// </summary>
 /// <seealso cref="IAggregate" />
 /// <seealso cref="IEquatable{ConversationThread}" />
-public record ConversationThread(string Owner, DateTimeOffset StartedDate, DateTimeOffset? EndedDate, IEnumerable<ConversationItem> Items) : IAggregate
+public record ConversationThread(string Owner, DateTimeOffset StartedDate, DateTimeOffset? EndedDate, IEnumerable<ConversationItem> Items) : Aggregate
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="ConversationThread" /> class.
@@ -47,18 +47,12 @@ public record ConversationThread(string Owner, DateTimeOffset StartedDate, DateT
     {
     }
 
-    /// <inheritdoc/>
-    public string AggregateId => GetAggregateId(Owner, StartedDate);
-
-    /// <inheritdoc/>
-    public string AggregateName => nameof(ConversationThread);
-
     /// <summary>
     /// Applies the specified domain event.
     /// </summary>
     /// <param name="domainEvent">The domain event.</param>
     /// <returns>IAggregate.</returns>
-    public IAggregate Apply(BaseEvent domainEvent)
+    public override IAggregate Apply(BaseEvent domainEvent)
     {
         return domainEvent switch
         {
@@ -75,5 +69,13 @@ public record ConversationThread(string Owner, DateTimeOffset StartedDate, DateT
     /// <param name="startedDate">The started date.</param>
     /// <returns>System.String.</returns>
     public static string GetAggregateId(string owner, DateTimeOffset startedDate)
-        => owner + startedDate.UtcDateTime.ToString("YYYYMMDDHHmmss", CultureInfo.InvariantCulture);
+        => Normalize(GetAggregateName() + Separator + owner + startedDate.UtcDateTime.ToString("YYYYMMDDHHmmss", CultureInfo.InvariantCulture));
+
+    /// <summary>
+    /// Gets the name of the aggregate.
+    /// </summary>
+    /// <returns>System.String.</returns>
+#pragma warning disable CA1024 // Use properties where appropriate
+    public static string GetAggregateName() => nameof(ConversationThread);
+#pragma warning restore CA1024 // Use properties where appropriate
 }

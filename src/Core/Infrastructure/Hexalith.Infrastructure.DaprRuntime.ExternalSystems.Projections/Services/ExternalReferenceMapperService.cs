@@ -19,12 +19,12 @@ namespace Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Dapr.Actors;
 using Dapr.Actors.Client;
 
 using Hexalith.Application.ExternalSystems.Services;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers;
-using Hexalith.Infrastructure.DaprRuntime.Helpers;
 
 /// <summary>
 /// Class AggregateExternalReferenceQueryService.
@@ -69,7 +69,7 @@ public class ExternalReferenceMapperService : IExternalReferenceMapperService
     private IKeyValueActor GetAggregateToExternalReferenceActor(string aggregateName, string aggregateId, string systemId)
     {
         return ActorProxy.Create<IKeyValueActor>(
-            ExternalSystemsProjectionsHelper.CreateExternalReferenceMapperId(aggregateId, systemId).ToUrlEncodedActorId(),
+            new ActorId(ExternalSystemsProjectionsHelper.CreateExternalReferenceMapperId(aggregateId, systemId)),
             ExternalSystemsProjectionsHelper.GetAggregateToExternalReferenceActorName(_applicationName, aggregateName));
     }
 
@@ -84,7 +84,7 @@ public class ExternalReferenceMapperService : IExternalReferenceMapperService
     private IKeyValueActor GetExternalReferenceToAggregateActor(string aggregateName, string partitionId, string companyId, string systemId, string externalId)
     {
         return ActorProxy.Create<IKeyValueActor>(
-            ExternalSystemsProjectionsHelper.CreateExternalReferenceMapperId(partitionId, companyId, systemId, externalId).ToUrlEncodedActorId(),
+            new ActorId(ExternalSystemsProjectionsHelper.CreateExternalReferenceMapperId(partitionId, companyId, systemId, externalId)),
             ExternalSystemsProjectionsHelper.GetAggregateToExternalReferenceActorName(_applicationName, aggregateName));
     }
 }

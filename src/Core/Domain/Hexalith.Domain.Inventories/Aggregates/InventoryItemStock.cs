@@ -80,7 +80,8 @@ public record InventoryItemStock(
     }
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateId() => GetAggregateId(PartitionId, CompanyId, LocationId, InventoryItemId);
+    protected override string DefaultAggregateId()
+        => GetAggregateId(PartitionId, CompanyId, LocationId, InventoryItemId);
 
     /// <summary>
     /// Gets the aggregate identifier.
@@ -91,7 +92,7 @@ public record InventoryItemStock(
     /// <param name="inventoryItemId">The inventory item identifier.</param>
     /// <returns>System.String.</returns>
     public static string GetAggregateId(string partitionId, string companyId, string locationId, string inventoryItemId)
-        => nameof(InventoryItemStock) + Separator + partitionId + Separator + companyId + Separator + locationId + Separator + inventoryItemId;
+        => Normalize(GetAggregateName() + Separator + partitionId + Separator + companyId + Separator + locationId + Separator + inventoryItemId);
 
     /// <summary>
     /// Gets the name of the aggregate.

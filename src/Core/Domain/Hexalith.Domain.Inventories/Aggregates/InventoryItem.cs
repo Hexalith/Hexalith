@@ -124,7 +124,8 @@ public record InventoryItem(
     /// <param name="companyId">The company identifier.</param>
     /// <param name="id">The identifier.</param>
     /// <returns>string.</returns>
-    public static string GetAggregateId(string partitionId, string companyId, string id) => GetAggregateName() + Separator + partitionId + Separator + companyId + Separator + id;
+    public static string GetAggregateId(string partitionId, string companyId, string id)
+        => Normalize(GetAggregateName() + Separator + partitionId + Separator + companyId + Separator + id);
 
     /// <summary>
     /// Gets the name of the aggregate.

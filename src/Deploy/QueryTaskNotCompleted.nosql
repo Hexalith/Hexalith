@@ -1,0 +1,1 @@
+SELECT c.id, c['value']['failure']['message'], c['value']['failure']['technicalError'] FROM c where c.id like "%Task%" and c['value']['status'] = "Suspended"

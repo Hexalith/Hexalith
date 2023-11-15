@@ -10,12 +10,12 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Dapr.Actors;
 using Dapr.Actors.Client;
 
 using Hexalith.Application.Commands;
 using Hexalith.Application.Metadatas;
 using Hexalith.Extensions.Helpers;
-using Hexalith.Infrastructure.DaprRuntime.Helpers;
 
 /// <summary>
 /// Class ActorsCommandProcessor.
@@ -82,7 +82,7 @@ public abstract class ActorsCommandProcessor : ICommandProcessor
 
             try
             {
-                ICommandProcessorActor actor = _actorProxy.CreateActorProxy<ICommandProcessorActor>(cmd.AggregateId.ToUrlEncodedActorId(), actorName);
+                ICommandProcessorActor actor = _actorProxy.CreateActorProxy<ICommandProcessorActor>(new ActorId(cmd.AggregateId), actorName);
                 await actor.DoAsync(envelope).ConfigureAwait(false);
             }
             catch (Exception e)

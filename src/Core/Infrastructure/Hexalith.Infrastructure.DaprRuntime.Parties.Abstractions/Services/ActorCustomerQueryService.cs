@@ -19,12 +19,12 @@ namespace Hexalith.Infrastructure.DaprRuntime.Parties.Services;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Dapr.Actors;
 using Dapr.Actors.Client;
 
 using Hexalith.Application.Parties.Commands;
 using Hexalith.Application.Parties.Services;
 using Hexalith.Domain.Events;
-using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Parties.Actors;
 
 /// <summary>
@@ -73,7 +73,7 @@ public class ActorCustomerQueryService : ICustomerQueryService
     private static ICustomerAggregateActor GetActor(string aggregateId)
     {
         return ActorProxy.Create<ICustomerAggregateActor>(
-            aggregateId.ToUrlEncodedActorId(),
+            new ActorId(aggregateId),
             nameof(ICustomerAggregateActor)[1..]);
     }
 }

@@ -96,7 +96,7 @@ public record ExternalSystemReference(
         ArgumentException.ThrowIfNullOrEmpty(systemId);
         ArgumentException.ThrowIfNullOrEmpty(referenceAggregateName);
         ArgumentException.ThrowIfNullOrEmpty(externalId);
-        return GetAggregateName() + Separator + partitionId + Separator + companyId + Separator + systemId + Separator + referenceAggregateName + Separator + externalId;
+        return Normalize(GetAggregateName() + Separator + partitionId + Separator + companyId + Separator + systemId + Separator + referenceAggregateName + Separator + externalId);
     }
 
     /// <summary>

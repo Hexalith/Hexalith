@@ -121,7 +121,7 @@ public record Customer(
         ArgumentException.ThrowIfNullOrEmpty(partitionId);
         ArgumentException.ThrowIfNullOrEmpty(companyId);
         ArgumentException.ThrowIfNullOrEmpty(id);
-        return nameof(Customer) + Separator + partitionId + Separator + companyId + Separator + id;
+        return Normalize(GetAggregateName() + Separator + partitionId + Separator + companyId + Separator + id);
     }
 
     /// <summary>
