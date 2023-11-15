@@ -55,15 +55,10 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
     /// Initializes a new instance of the <see cref="Dynamics365FinanceCustomerInformationHandler{TEvent}"/> class.
     /// </summary>
     /// <param name="dateTimeService">The date time service.</param>
-    /// <param name="customerService">The customer service.</param>
-    /// <param name="externalReferenceMapperService">The external reference service.</param>
-    /// <param name="aggregateExternalReferenceService">The aggregate external reference service.</param>
     /// <param name="settings">The settings.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
     protected Dynamics365FinanceCustomerInformationHandler(
         IDateTimeService dateTimeService,
-
-        // IExternalReferenceMapperService externalReferenceMapperService,
         IOptions<OrganizationSettings> settings)
     {
         ArgumentNullException.ThrowIfNull(dateTimeService);

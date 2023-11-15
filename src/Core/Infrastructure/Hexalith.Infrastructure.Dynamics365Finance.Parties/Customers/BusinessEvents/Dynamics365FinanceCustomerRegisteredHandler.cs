@@ -31,13 +31,9 @@ public class Dynamics365FinanceCustomerRegisteredHandler : Dynamics365FinanceCus
     /// Initializes a new instance of the <see cref="Dynamics365FinanceCustomerRegisteredHandler"/> class.
     /// </summary>
     /// <param name="dateTimeService">The date time service.</param>
-    /// <param name="customerService">The customer service.</param>
-    /// <param name="externalReferenceMapperService">The external reference service.</param>
     /// <param name="settings">The settings.</param>
     public Dynamics365FinanceCustomerRegisteredHandler(
         IDateTimeService dateTimeService,
-
-        // IExternalReferenceMapperService externalReferenceMapperService,
         IOptions<OrganizationSettings> settings)
         : base(dateTimeService, /*externalReferenceMapperService,*/ settings)
     {

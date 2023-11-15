@@ -19,7 +19,6 @@ namespace Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand
 using System.Diagnostics.CodeAnalysis;
 
 using Hexalith.Domain.Events;
-using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers;
 
 /// <summary>
 /// Class CustomersV3Helper.
