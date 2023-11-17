@@ -45,8 +45,14 @@ jobs:
         password: ${{ secrets.AZURE_APPLICATIONSECRET }}
     - name: Publish and push the Dynamics365Finance server container images to the container registry
       run: |
-          dotnet publish './src/Servers/Hexalith.Server.Dynamics365Finance/Hexalith.Server.Dynamics365Finance.csproj' --configuration Release --os linux --arch x64 /p:PublishProfile=DefaultContainer -p:Version=${{ env.VERSION }}
+          dotnet publish './src/Servers/Hexalith.Server.Dynamics365Finance/Hexalith.Server.Dynamics365Finance.csproj' --configuration Release --os linux --arch x64 /p:PublishProfile=DefaultContainer -p:ContainerImageTag=${{ env.VERSION }}
     - name: Publish and push the ExternalSystems server container images to the container registry
       run: |
-          dotnet publish './src/Servers/Hexalith.Server.ExternalSystems/Hexalith.Server.ExternalSystems.csproj' --configuration Release --os linux --arch x64 /p:PublishProfile=DefaultContainer -p:Version=${{ env.VERSION }}
+          dotnet publish './src/Servers/Hexalith.Server.ExternalSystems/Hexalith.Server.ExternalSystems.csproj' --configuration Release --os linux --arch x64 /p:PublishProfile=DefaultContainer -p:ContainerImageTag=${{ env.VERSION }}
+    - name: Publish and push the Parties server container images to the container registry
+      run: |
+          dotnet publish './src/Servers/Hexalith.Server.Parties/Hexalith.Server.Parties.csproj' --configuration Release --os linux --arch x64 /p:PublishProfile=DefaultContainer -p:ContainerImageTag=${{ env.VERSION }}
+    - name: Publish and push the FrontApi server container images to the container registry
+      run: |
+          dotnet publish './src/Servers/Hexalith.Server.FrontApi/Hexalith.Server.FrontApi.csproj' --configuration Release --os linux --arch x64 /p:PublishProfile=DefaultContainer -p:ContainerImageTag=${{ env.VERSION }}
 
