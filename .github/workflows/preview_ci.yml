@@ -37,7 +37,7 @@ jobs:
     - name: Deploy preview nuget packages
       run: |
         dotnet nuget push './src/Core/**/*.nupkg' -k ${{secrets.GITHUB_TOKEN}} -n -s https://nuget.pkg.github.com/Hexalith/index.json --skip-duplicate
-    - name: Login to container registry ${{ env.AZURE_REGISTRY }}
+    - name: Login to container registry ${{ vars.AZURE_REGISTRY }}
       uses: docker/login-action@v3
       with:
         registry: ${{ vars.AZURE_REGISTRY }}
@@ -45,4 +45,4 @@ jobs:
         password: ${{ secrets.AZURE_APPLICATIONSECRET }}
     - name: Publish and push the servers container images to the container registry
       run: |
-          dotnet publish 'src/Server/**/*.csproj' --configuration Release --os linux --arch x64 /p:PublishProfile=DefaultContainer
+          dotnet publish './src/Server/**/*.csproj' --configuration Release --os linux --arch x64 /p:PublishProfile=DefaultContainer
