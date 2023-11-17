@@ -45,4 +45,4 @@ jobs:
         password: ${{ secrets.AZURE_APPLICATIONSECRET }}
     - name: Publish and push the servers container images to the container registry
       run: |
-          dotnet publish './src/Server/**/*.csproj' --configuration Release --os linux --arch x64 /p:PublishProfile=DefaultContainer
+          dotnet publish './src/Servers/**/*.csproj' --configuration Release --os linux --arch x64 /p:PublishProfile=DefaultContainer
