@@ -188,7 +188,8 @@ Implements the <a class="xref" href="Hexalith.Application.Projection.ProjectionU
   </span>
   <a id="Hexalith_Infrastructure_WebApis_PartiesEvents_Projections_CustomerProjectionUpdateHandler_1_ApplyAsync_" data-uid="Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler`1.ApplyAsync*"></a>
   <h4 id="Hexalith_Infrastructure_WebApis_PartiesEvents_Projections_CustomerProjectionUpdateHandler_1_ApplyAsync__0_Hexalith_Application_Metadatas_IMetadata_System_Threading_CancellationToken_" data-uid="Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler`1.ApplyAsync(`0,Hexalith.Application.Metadatas.IMetadata,System.Threading.CancellationToken)">ApplyAsync(TCustomerEvent, IMetadata, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Applies the specified event.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -212,12 +213,14 @@ Implements the <a class="xref" href="Hexalith.Application.Projection.ProjectionU
       <tr>
         <td><a class="xref" href="Hexalith.Application.Metadatas.IMetadata.html">IMetadata</a></td>
         <td><span class="parametername">metadata</span></td>
-        <td></td>
+        <td><p>The metadata.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -232,12 +235,29 @@ Implements the <a class="xref" href="Hexalith.Application.Projection.ProjectionU
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span></td>
-        <td></td>
+        <td><p>Task.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><span class="xref">Hexalith.Application.Projection.ProjectionUpdateHandler&lt;TCustomerEvent&gt;.ApplyAsync(TCustomerEvent, Hexalith.Application.Metadatas.IMetadata, System.Threading.CancellationToken)</span></div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.NotImplementedException</span></td>
+        <td><p>null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="Hexalith.Application.Projection.IProjectionUpdateHandler-1.html">IProjectionUpdateHandler&lt;TEvent&gt;</a>

@@ -3,6 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
 		<IsPackable>false</IsPackable>
+		<ContainerBaseImage>mcr.microsoft.com/dotnet/aspnet:$(DNVersion).0</ContainerBaseImage>
+		<ContainerImageName>$(ContainerRepository)</ContainerImageName>
 	</PropertyGroup>
 	<ItemGroup>
 		<ContainerEnvironmentVariable Include="DAPRSIDEKICK_ENABLED" Value="false" />
