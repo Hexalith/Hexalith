@@ -39,17 +39,22 @@ jobs:
     - name: Deploy release nuget packages
       run: |
         dotnet nuget push './src/Core/**/*.nupkg' --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
-    - name: Azure Login
-      uses: azure/login@v1
+    - name: Login to container registry ${{ vars.AZURE_REGISTRY }}
+      uses: docker/login-action@v3
       with:
-        creds: ${{ secrets.HEXALITHDYNAMICS365FINANCE_AZURE_CREDENTIALS }}
-    - name: Build and push Dynamics365Finance container image to registry
-      uses: azure/container-apps-deploy-action@v1
-      with:
-        appSourcePath: ${{ github.workspace }}/src/Servers/Hexalith.Server.Dynamics365Finance 
-        registryUrl: christofle.azurecr.io
-        registryUsername: ${{ secrets.HEXALITHDYNAMICS365FINANCE_REGISTRY_USERNAME }}
-        registryPassword: ${{ secrets.HEXALITHDYNAMICS365FINANCE_REGISTRY_PASSWORD }}
-        containerAppName: hexalith-dynamics365finance
-        resourceGroup: chr-dev-logistics-partner
-        imageToBuild: christofle.azurecr.io/hexalith-dynamics365finance:${{ env.VERSION }}
+        registry: ${{ vars.AZURE_REGISTRY }}
+        username: ${{ secrets.AZURE_APPLICATIONID }}
+        password: ${{ secrets.AZURE_APPLICATIONSECRET }}
+    - name: Publish and push the Dynamics365Finance server container images to the container registry
+      run: |
+          dotnet publish './src/Servers/Hexalith.Server.Dynamics365Finance/Hexalith.Server.Dynamics365Finance.csproj' --configuration Release --os linux --arch x64 -p:ContainerImageTag=${{ env.VERSION }} -p:ContainerRegistry=${{ vars.AZURE_REGISTRY }}
+    - name: Publish and push the ExternalSystems server container images to the container registry
+      run: |
+          dotnet publish './src/Servers/Hexalith.Server.ExternalSystems/Hexalith.Server.ExternalSystems.csproj' --configuration Release --os linux --arch x64 /t:PublishContainer -p:ContainerImageTag=${{ env.VERSION }} -p:ContainerRegistry=${{ vars.AZURE_REGISTRY }}
+    - name: Publish and push the Parties server container images to the container registry
+      run: |
+          dotnet publish './src/Servers/Hexalith.Server.Parties/Hexalith.Server.Parties.csproj' --configuration Release --os linux --arch x64 /t:PublishContainer -p:ContainerImageTag=${{ env.VERSION }} -p:ContainerRegistry=${{ vars.AZURE_REGISTRY }}
+    - name: Publish and push the FrontApi server container images to the container registry
+      run: |
+          dotnet publish './src/Servers/Hexalith.Server.FrontApi/Hexalith.Server.FrontApi.csproj' --configuration Release --os linux --arch x64 /t:PublishContainer -p:ContainerImageTag=${{ env.VERSION }} -p:ContainerRegistry=${{ vars.AZURE_REGISTRY }}
+ 

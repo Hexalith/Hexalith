@@ -55,7 +55,4 @@ jobs:
     - name: Publish and push the FrontApi server container images to the container registry
       run: |
           dotnet publish './src/Servers/Hexalith.Server.FrontApi/Hexalith.Server.FrontApi.csproj' --configuration Release --os linux --arch x64 /t:PublishContainer -p:ContainerImageTag=${{ env.VERSION }} -p:ContainerRegistry=${{ vars.AZURE_REGISTRY }}
-    - name: Publish and push servers container images to the container registry
-      run: |
-          dotnet publish './src/Servers/**/*.csproj' --configuration Release --os linux --arch x64 /t:PublishContainer -p:ContainerImageTag=${{ env.VERSION }} -p:ContainerRegistry=${{ vars.AZURE_REGISTRY }}
 
