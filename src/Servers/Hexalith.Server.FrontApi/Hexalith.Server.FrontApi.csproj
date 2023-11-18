@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 	<PropertyGroup>
 		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
-		<ContainerRepository>hexalith-parties</ContainerRepository>
+		<ContainerRepository>hexalith-frontapi</ContainerRepository>
 		<ContainerImageName>$(ContainerRepository)</ContainerImageName>
 		<EnableSdkContainerSupport>true</EnableSdkContainerSupport>
 		<UserSecretsId>237a39d7-0bf2-4320-b09c-bd6a84e1bd34</UserSecretsId>
