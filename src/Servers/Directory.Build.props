@@ -7,6 +7,10 @@
 		<EnableSdkContainerSupport>true</EnableSdkContainerSupport>
 	</PropertyGroup>
 	<ItemGroup>
+		<ContainerEnvironmentVariable Include="Organization__DefaultPartitionId" Value="FFY" />
+		<ContainerEnvironmentVariable Include="Organization__DefaultCompanyId" Value="FRRT" />
+	</ItemGroup>
+	<ItemGroup>
 		<ContainerEnvironmentVariable Include="DAPRSIDEKICK_ENABLED" Value="false" />
 		<ContainerEnvironmentVariable Include="DaprCommandBus__Name" Value="command-bus" />
 		<ContainerEnvironmentVariable Include="DaprEventBus__Name" Value="event-bus" />

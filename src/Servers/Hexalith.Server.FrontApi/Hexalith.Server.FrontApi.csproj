@@ -3,9 +3,12 @@
 		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
 		<ContainerRepository>hexalith-frontapi</ContainerRepository>
 		<ContainerImageName>$(ContainerRepository)</ContainerImageName>
+		<UserSecretsId>$(ContainerRepository)</UserSecretsId>
 		<EnableSdkContainerSupport>true</EnableSdkContainerSupport>
-		<UserSecretsId>237a39d7-0bf2-4320-b09c-bd6a84e1bd34</UserSecretsId>
 	</PropertyGroup>
+	<ItemGroup>
+		<ContainerEnvironmentVariable Include="Statestore__Name" Value="$(ContainerRepository)-statestore" />
+	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime.Parties\Hexalith.Infrastructure.DaprRuntime.Parties.csproj" />
 	</ItemGroup>
