@@ -4,7 +4,6 @@
 		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
 		<IsPackable>false</IsPackable>
 		<ContainerBaseImage>mcr.microsoft.com/dotnet/aspnet:$(DNVersion).0</ContainerBaseImage>
-		<ContainerImageName>$(ContainerRepository)</ContainerImageName>
 		<EnableSdkContainerSupport>true</EnableSdkContainerSupport>
 	</PropertyGroup>
 	<ItemGroup>
