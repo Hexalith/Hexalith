@@ -47,14 +47,14 @@ jobs:
         password: ${{ secrets.AZURE_APPLICATIONSECRET }}
     - name: Publish and push the Dynamics365Finance server container images to the container registry
       run: |
-          dotnet publish './src/Servers/Hexalith.Server.Dynamics365Finance/Hexalith.Server.Dynamics365Finance.csproj' --configuration Release --os linux --arch x64 -p:ContainerImageTag=${{ env.VERSION }} -p:ContainerRegistry=${{ vars.AZURE_REGISTRY }}
+          dotnet publish './src/Servers/Hexalith.Server.Dynamics365Finance/Hexalith.Server.Dynamics365Finance.csproj' /t:PublishContainer --configuration Release --os linux --arch x64 -p:ContainerImageTags='"${{ env.VERSION }};latest"' -p:ContainerRegistry=${{ vars.AZURE_REGISTRY }}
     - name: Publish and push the ExternalSystems server container images to the container registry
       run: |
-          dotnet publish './src/Servers/Hexalith.Server.ExternalSystems/Hexalith.Server.ExternalSystems.csproj' --configuration Release --os linux --arch x64 /t:PublishContainer -p:ContainerImageTag=${{ env.VERSION }} -p:ContainerRegistry=${{ vars.AZURE_REGISTRY }}
+          dotnet publish './src/Servers/Hexalith.Server.ExternalSystems/Hexalith.Server.ExternalSystems.csproj' --configuration Release --os linux --arch x64 /t:PublishContainer -p:ContainerImageTags='"${{ env.VERSION }};latest"' -p:ContainerRegistry=${{ vars.AZURE_REGISTRY }}
     - name: Publish and push the Parties server container images to the container registry
       run: |
-          dotnet publish './src/Servers/Hexalith.Server.Parties/Hexalith.Server.Parties.csproj' --configuration Release --os linux --arch x64 /t:PublishContainer -p:ContainerImageTag=${{ env.VERSION }} -p:ContainerRegistry=${{ vars.AZURE_REGISTRY }}
+          dotnet publish './src/Servers/Hexalith.Server.Parties/Hexalith.Server.Parties.csproj' --configuration Release --os linux --arch x64 /t:PublishContainer -p:ContainerImageTags='"${{ env.VERSION }};latest"' -p:ContainerRegistry=${{ vars.AZURE_REGISTRY }}
     - name: Publish and push the FrontApi server container images to the container registry
       run: |
-          dotnet publish './src/Servers/Hexalith.Server.FrontApi/Hexalith.Server.FrontApi.csproj' --configuration Release --os linux --arch x64 /t:PublishContainer -p:ContainerImageTag=${{ env.VERSION }} -p:ContainerRegistry=${{ vars.AZURE_REGISTRY }}
+          dotnet publish './src/Servers/Hexalith.Server.FrontApi/Hexalith.Server.FrontApi.csproj' --configuration Release --os linux --arch x64 /t:PublishContainer -p:ContainerImageTags='"${{ env.VERSION }};latest"' -p:ContainerRegistry=${{ vars.AZURE_REGISTRY }}
  

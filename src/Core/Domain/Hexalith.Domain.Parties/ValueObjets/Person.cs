@@ -31,7 +31,7 @@ public class Person
         string? name,
         string? firstName,
         string? lastName,
-        DateOnly? birthDate,
+        DateTimeOffset? birthDate,
         Gender? gender)
     {
         Name = name;
@@ -50,45 +50,45 @@ public class Person
     }
 
     /// <summary>
-    /// Gets the city.
+    /// Gets or sets the city.
     /// </summary>
     /// <value>The city.</value>
     [DataMember(Order = 4)]
     [JsonPropertyOrder(4)]
-    public DateOnly? BirthDate { get; private set; }
+    public DateTimeOffset? BirthDate { get; set; }
 
     /// <summary>
-    /// Gets the city.
+    /// Gets or sets the city.
     /// </summary>
     /// <value>The city.</value>
     [DataMember(Order = 2)]
     [JsonPropertyOrder(2)]
-    public string? FirstName { get; private set; }
+    public string? FirstName { get; set; }
 
     /// <summary>
-    /// Gets the city.
+    /// Gets or sets the city.
     /// </summary>
     /// <value>The city.</value>
     [DataMember(Order = 5)]
     [JsonPropertyOrder(5)]
     [JsonConverter(typeof(JsonStringEnumConverter))]
-    public Gender? Gender { get; private set; }
+    public Gender? Gender { get; set; }
 
     /// <summary>
-    /// Gets the city.
+    /// Gets or sets the city.
     /// </summary>
     /// <value>The city.</value>
     [DataMember(Order = 3)]
     [JsonPropertyOrder(3)]
-    public string? LastName { get; private set; }
+    public string? LastName { get; set; }
 
     /// <summary>
-    /// Gets the city.
+    /// Gets or sets the city.
     /// </summary>
     /// <value>The city.</value>
     [DataMember(Order = 1)]
     [JsonPropertyOrder(1)]
-    public string? Name { get; private set; }
+    public string? Name { get; set; }
 
     /// <summary>
     /// Ares the same.
@@ -104,6 +104,7 @@ public class Person
                 (a.Gender == b?.Gender &&
                 a.FirstName == b?.FirstName &&
                 a.LastName == b?.LastName &&
-                a.Name == b?.Name);
+                a.Name == b?.Name &&
+                a.BirthDate == b?.BirthDate);
     }
 }

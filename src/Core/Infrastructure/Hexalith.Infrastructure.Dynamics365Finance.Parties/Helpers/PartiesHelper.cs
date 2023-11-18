@@ -60,6 +60,9 @@ public static class PartiesHelper
         services.TryAddSingleton<IValidator<Dynamics365FinanceCustomerRegistered>, Dynamics365FinanceCustomerRegisteredValidator>();
         services.TryAddSingleton<IIntegrationEventHandler<Dynamics365FinanceCustomerChanged>, Dynamics365FinanceCustomerChangedHandler>();
         services.TryAddSingleton<IIntegrationEventHandler<Dynamics365FinanceCustomerRegistered>, Dynamics365FinanceCustomerRegisteredHandler>();
+
+        // services.TryAddSingleton<IIntegrationEventHandler<CustomerInformationChanged>, CustomerInformationChangedHandler>();
+        //       services.TryAddSingleton<IIntegrationEventHandler<CustomerRegistered>, CustomerRegisteredHandler>();
         _ = services
             .AddControllers()
             .AddApplicationPart(typeof(Dynamics365FinanceCustomerBindingController).Assembly)
