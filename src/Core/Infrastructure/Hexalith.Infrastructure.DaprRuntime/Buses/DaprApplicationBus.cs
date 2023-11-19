@@ -32,7 +32,7 @@ using Microsoft.Extensions.Logging;
 /// <typeparam name="TMessage">The type of the state.Message.</typeparam>
 /// <typeparam name="TMetadata">The type of the state.Metadata.</typeparam>
 /// <typeparam name="TState">The type of the t state.</typeparam>
-public class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageBus<TMessage, TMetadata, TState>
+public partial class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageBus<TMessage, TMetadata, TState>
     where TMessage : BaseMessage
     where TMetadata : BaseMetadata
     where TState : MessageState<TMessage, TMetadata>, new()
@@ -90,6 +90,18 @@ public class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageBus<TMess
         _dateTimeService = dateTimeService;
     }
 
+    [LoggerMessage(
+        EventId = 1,
+        Level = LogLevel.Error,
+        Message = "Error while publishing on {BusName}/{TopicName} ({BusType}) the message {MessageName} Id={MessageId} CorrelationId={CorrelationId}.")]
+    public partial void LogErrorWhileSendingMessage(string messageName, string messageId, string correlationId, string topicName, string busName, string busType);
+
+    [LoggerMessage(
+        EventId = 2,
+        Level = LogLevel.Information,
+        Message = "Sent message : Name={MessageName}; Id='{MessageId}'; Correlation='{CorrelationId}' on {TopicName} of the {BusName} bus.")]
+    public partial void LogMessageSent(string messageName, string messageId, string correlationId, string topicName, string busName);
+
     /// <inheritdoc/>
     public async Task PublishAsync(IEnvelope<TMessage, TMetadata> envelope, CancellationToken cancellationToken)
     {
@@ -113,14 +125,18 @@ public class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageBus<TMess
             ArgumentNullException.ThrowIfNull(envelope);
             ArgumentNullException.ThrowIfNull(envelope.Message);
             ArgumentNullException.ThrowIfNull(envelope.Metadata);
+#pragma warning disable CA1308 // Normalize strings to uppercase
+            string topicName = !string.IsNullOrEmpty(envelope.Message.AggregateName)
+                ? envelope.Message.AggregateName.ToLowerInvariant() + _topicSuffix
+                : throw new InvalidOperationException("Event aggregate name is not defined.");
+#pragma warning restore CA1308 // Normalize strings to uppercase
             try
             {
-                string topicName = !string.IsNullOrEmpty(envelope.Message.AggregateName)
-                    ? envelope.Message.AggregateName.ToLowerInvariant()
-                    : throw new InvalidOperationException("Event aggregate name is not defined.");
                 Dictionary<string, string> m = new(StringComparer.Ordinal)
                     {
-                        { "MessageName", envelope.Metadata.Message.Name ?? string.Empty },
+                        { "ContentType", "application/json" },
+                        { "Label", envelope.Metadata.Message.Name + ' ' + envelope.Message.AggregateId },
+                        { "MessageName", envelope.Metadata.Message.Name },
                         { "MessageId", envelope.Metadata.Message.Id },
                         { "CorrelationId", envelope.Metadata.Context.CorrelationId },
                         { "SessionId", envelope.Metadata.Context.SessionId ?? envelope.Message.AggregateId },
@@ -128,29 +144,26 @@ public class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageBus<TMess
                     };
                 await _daprClient.PublishEventAsync(
                     _name,
-                    topicName + _topicSuffix,
+                    topicName,
                     envelope,
                     m,
                     cancellationToken).ConfigureAwait(false);
-                _logger.LogInformation(
-                    "Sent message : Name={MessageName}; Id='{MessageId}'; Correlation='{CorrelationId}' on {TopicName} of the {BusName} bus.",
+                LogMessageSent(
                     envelope.Metadata.Message.Name,
                     envelope.Metadata.Message.Id,
                     envelope.Metadata.Context.CorrelationId,
-                    topicName + _topicSuffix,
+                    topicName,
                     _name);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                _logger.LogError(
-                    e,
-                    "Error while publishing on {BusName}/{Topic} ({BusType}) the message {MessageName} Id={MessageId} CorrelationId={CorrelationId}.}",
-                    _name,
-                    envelope.Message.AggregateName + _topicSuffix,
-                    GetType().Name,
+                LogErrorWhileSendingMessage(
                     envelope.Metadata.Message.Name,
                     envelope.Metadata.Message.Id,
-                    envelope.Metadata.Context.CorrelationId);
+                    envelope.Metadata.Context.CorrelationId,
+                    topicName,
+                    _name,
+                    GetType().Name);
                 throw;
             }
         }

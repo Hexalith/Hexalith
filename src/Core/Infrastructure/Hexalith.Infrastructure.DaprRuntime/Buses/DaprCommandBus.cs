@@ -50,7 +50,7 @@ public class DaprCommandBus : DaprApplicationBus<BaseCommand, BaseMetadata, Comm
          : base(
         client,
         dateTimeService,
-        string.IsNullOrWhiteSpace(settings.Value.Name) ? throw new ArgumentException($"The name of the command bus is not defined in settings ({CommandBusSettings.ConfigurationName()}.{nameof(CommandBusSettings.Name)}).", nameof(settings)) : settings.Value.Name,
+        string.IsNullOrWhiteSpace(settings?.Value.Name) ? throw new ArgumentException($"The name of the command bus is not defined in settings ({CommandBusSettings.ConfigurationName()}.{nameof(CommandBusSettings.Name)}).", nameof(settings)) : settings.Value.Name,
         ApplicationConstants.CommandBusSuffix,
         logger)
     {
