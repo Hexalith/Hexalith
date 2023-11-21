@@ -28,30 +28,31 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="CompanyEvent" />
 [DataContract]
-public abstract class CompanyEntityEvent : CompanyEvent
+public abstract class CompanyEntityEvent : EntityEvent
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="CompanyEntityEvent"/> class.
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
+    /// <param name="originId">The origin identifier.</param>
     /// <param name="companyId">The company identifier.</param>
     /// <param name="id">The identifier.</param>
     [JsonConstructor]
-    protected CompanyEntityEvent(string partitionId, string companyId, string id)
-        : base(partitionId, companyId)
-            => Id = id;
+    protected CompanyEntityEvent(string partitionId, string companyId, string originId, string id)
+        : base(partitionId, originId, id)
+            => CompanyId = companyId;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CompanyEntityEvent"/> class.
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    protected CompanyEntityEvent() => Id = string.Empty;
+    protected CompanyEntityEvent() => CompanyId = string.Empty;
 
     /// <summary>
-    /// Gets or sets the identifier.
+    /// Gets or sets the company identifier.
     /// </summary>
-    /// <value>The identifier.</value>
-    [DataMember(Order = 3)]
-    [JsonPropertyOrder(3)]
-    public string Id { get; set; }
+    /// <value>The company identifier.</value>
+    [DataMember(Order = 4)]
+    [JsonPropertyOrder(4)]
+    public string CompanyId { get; set; }
 }

@@ -42,6 +42,7 @@ public class DeselectIntercompanyDropshipDeliveryForCustomerHandler : CommandHan
         IntercompanyDropshipDeliveryForCustomerDeselected deselected = new(
             command.PartitionId,
             command.CompanyId,
+            command.OriginId,
             command.Id);
         return aggregate is not null and Customer customer
             ? customer.IntercompanyDropship

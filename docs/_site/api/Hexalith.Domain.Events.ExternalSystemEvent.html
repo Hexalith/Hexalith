@@ -82,11 +82,10 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">Base
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html">BaseMessage</a></div>
     <div class="level2"><a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">BaseEvent</a></div>
-    <div class="level3"><a class="xref" href="Hexalith.Domain.Events.PartitionedEvent.html">PartitionedEvent</a></div>
-    <div class="level4"><a class="xref" href="Hexalith.Domain.Events.CompanyEvent.html">CompanyEvent</a></div>
-    <div class="level5"><span class="xref">ExternalSystemEvent</span></div>
-      <div class="level6"><a class="xref" href="Hexalith.Domain.Events.ExternalSystemReferenceAdded.html">ExternalSystemReferenceAdded</a></div>
-      <div class="level6"><a class="xref" href="Hexalith.Domain.Events.ExternalSystemReferenceRemoved.html">ExternalSystemReferenceRemoved</a></div>
+    <div class="level3"><a class="xref" href="Hexalith.Domain.Organizations.Events.PartitionedEvent.html">PartitionedEvent</a></div>
+    <div class="level4"><span class="xref">ExternalSystemEvent</span></div>
+      <div class="level5"><a class="xref" href="Hexalith.Domain.Events.ExternalSystemReferenceAdded.html">ExternalSystemReferenceAdded</a></div>
+      <div class="level5"><a class="xref" href="Hexalith.Domain.Events.ExternalSystemReferenceRemoved.html">ExternalSystemReferenceRemoved</a></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
@@ -98,10 +97,7 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">Base
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Hexalith.Domain.Events.CompanyEvent.html#Hexalith_Domain_Events_CompanyEvent_CompanyId">CompanyEvent.CompanyId</a>
-    </div>
-    <div>
-      <a class="xref" href="Hexalith.Domain.Events.PartitionedEvent.html#Hexalith_Domain_Events_PartitionedEvent_PartitionId">PartitionedEvent.PartitionId</a>
+      <a class="xref" href="Hexalith.Domain.Organizations.Events.PartitionedEvent.html#Hexalith_Domain_Organizations_Events_PartitionedEvent_PartitionId">PartitionedEvent.PartitionId</a>
     </div>
     <div>
       <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_Separator">BaseMessage.Separator</a>
@@ -157,7 +153,7 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">Base
   <h5 id="Hexalith_Domain_Events_ExternalSystemEvent_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataContract]
-public abstract class ExternalSystemEvent : CompanyEvent, IPolymorphicSerializable, IMappableType, IEvent, IMessage</code></pre>
+public abstract class ExternalSystemEvent : PartitionedEvent, IPolymorphicSerializable, IMappableType, IEvent, IMessage</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -166,7 +162,7 @@ public abstract class ExternalSystemEvent : CompanyEvent, IPolymorphicSerializab
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_ExternalSystemEvent__ctor.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.ExternalSystemEvent.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.ExternalSystems/Events/ExternalSystemEvent.cs/#L61">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.ExternalSystems/Events/ExternalSystemEvent.cs/#L63">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_ExternalSystemEvent__ctor_" data-uid="Hexalith.Domain.Events.ExternalSystemEvent.#ctor*"></a>
   <h4 id="Hexalith_Domain_Events_ExternalSystemEvent__ctor" data-uid="Hexalith.Domain.Events.ExternalSystemEvent.#ctor">ExternalSystemEvent()</h4>
@@ -182,7 +178,7 @@ public abstract class ExternalSystemEvent : CompanyEvent, IPolymorphicSerializab
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_ExternalSystemEvent__ctor_System_String_System_String_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.ExternalSystemEvent.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.ExternalSystems/Events/ExternalSystemEvent.cs/#L42">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.ExternalSystems/Events/ExternalSystemEvent.cs/#L43">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_ExternalSystemEvent__ctor_" data-uid="Hexalith.Domain.Events.ExternalSystemEvent.#ctor*"></a>
   <h4 id="Hexalith_Domain_Events_ExternalSystemEvent__ctor_System_String_System_String_System_String_System_String_System_String_System_String_" data-uid="Hexalith.Domain.Events.ExternalSystemEvent.#ctor(System.String,System.String,System.String,System.String,System.String,System.String)">ExternalSystemEvent(String, String, String, String, String, String)</h4>
@@ -246,10 +242,44 @@ protected ExternalSystemEvent(string partitionId, string companyId, string syste
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_ExternalSystemEvent_CompanyId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.ExternalSystemEvent.CompanyId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.ExternalSystems/Events/ExternalSystemEvent.cs/#L70">View Source</a>
+  </span>
+  <a id="Hexalith_Domain_Events_ExternalSystemEvent_CompanyId_" data-uid="Hexalith.Domain.Events.ExternalSystemEvent.CompanyId*"></a>
+  <h4 id="Hexalith_Domain_Events_ExternalSystemEvent_CompanyId" data-uid="Hexalith.Domain.Events.ExternalSystemEvent.CompanyId">CompanyId</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the company identifier.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 2)]
+[JsonPropertyOrder(2)]
+public string CompanyId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The company identifier.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_ExternalSystemEvent_ExternalId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.ExternalSystemEvent.ExternalId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.ExternalSystems/Events/ExternalSystemEvent.cs/#L68">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.ExternalSystems/Events/ExternalSystemEvent.cs/#L78">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_ExternalSystemEvent_ExternalId_" data-uid="Hexalith.Domain.Events.ExternalSystemEvent.ExternalId*"></a>
   <h4 id="Hexalith_Domain_Events_ExternalSystemEvent_ExternalId" data-uid="Hexalith.Domain.Events.ExternalSystemEvent.ExternalId">ExternalId</h4>
@@ -283,7 +313,7 @@ public string ExternalId { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_ExternalSystemEvent_ReferenceAggregateId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.ExternalSystemEvent.ReferenceAggregateId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.ExternalSystems/Events/ExternalSystemEvent.cs/#L76">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.ExternalSystems/Events/ExternalSystemEvent.cs/#L86">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_ExternalSystemEvent_ReferenceAggregateId_" data-uid="Hexalith.Domain.Events.ExternalSystemEvent.ReferenceAggregateId*"></a>
   <h4 id="Hexalith_Domain_Events_ExternalSystemEvent_ReferenceAggregateId" data-uid="Hexalith.Domain.Events.ExternalSystemEvent.ReferenceAggregateId">ReferenceAggregateId</h4>
@@ -317,7 +347,7 @@ public string ReferenceAggregateId { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_ExternalSystemEvent_ReferenceAggregateName.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.ExternalSystemEvent.ReferenceAggregateName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.ExternalSystems/Events/ExternalSystemEvent.cs/#L84">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.ExternalSystems/Events/ExternalSystemEvent.cs/#L94">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_ExternalSystemEvent_ReferenceAggregateName_" data-uid="Hexalith.Domain.Events.ExternalSystemEvent.ReferenceAggregateName*"></a>
   <h4 id="Hexalith_Domain_Events_ExternalSystemEvent_ReferenceAggregateName" data-uid="Hexalith.Domain.Events.ExternalSystemEvent.ReferenceAggregateName">ReferenceAggregateName</h4>
@@ -351,7 +381,7 @@ public string ReferenceAggregateName { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_ExternalSystemEvent_SystemId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.ExternalSystemEvent.SystemId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.ExternalSystems/Events/ExternalSystemEvent.cs/#L92">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.ExternalSystems/Events/ExternalSystemEvent.cs/#L102">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_ExternalSystemEvent_SystemId_" data-uid="Hexalith.Domain.Events.ExternalSystemEvent.SystemId*"></a>
   <h4 id="Hexalith_Domain_Events_ExternalSystemEvent_SystemId" data-uid="Hexalith.Domain.Events.ExternalSystemEvent.SystemId">SystemId</h4>
@@ -387,7 +417,7 @@ public string SystemId { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_ExternalSystemEvent_DefaultAggregateId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.ExternalSystemEvent.DefaultAggregateId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.ExternalSystems/Events/ExternalSystemEvent.cs/#L97">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.ExternalSystems/Events/ExternalSystemEvent.cs/#L107">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_ExternalSystemEvent_DefaultAggregateId_" data-uid="Hexalith.Domain.Events.ExternalSystemEvent.DefaultAggregateId*"></a>
   <h4 id="Hexalith_Domain_Events_ExternalSystemEvent_DefaultAggregateId" data-uid="Hexalith.Domain.Events.ExternalSystemEvent.DefaultAggregateId">DefaultAggregateId()</h4>
@@ -421,7 +451,7 @@ public string SystemId { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_ExternalSystemEvent_DefaultAggregateName.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.ExternalSystemEvent.DefaultAggregateName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.ExternalSystems/Events/ExternalSystemEvent.cs/#L101">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.ExternalSystems/Events/ExternalSystemEvent.cs/#L111">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_ExternalSystemEvent_DefaultAggregateName_" data-uid="Hexalith.Domain.Events.ExternalSystemEvent.DefaultAggregateName*"></a>
   <h4 id="Hexalith_Domain_Events_ExternalSystemEvent_DefaultAggregateName" data-uid="Hexalith.Domain.Events.ExternalSystemEvent.DefaultAggregateName">DefaultAggregateName()</h4>
@@ -485,7 +515,7 @@ public string SystemId { get; set; }</code></pre>
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_ExternalSystemEvent.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.ExternalSystemEvent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.ExternalSystems/Events/ExternalSystemEvent.cs/#L30" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.ExternalSystems/Events/ExternalSystemEvent.cs/#L31" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

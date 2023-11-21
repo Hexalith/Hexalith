@@ -42,6 +42,7 @@ public class SelectIntercompanyDropshipDeliveryForCustomerHandler : CommandHandl
         IntercompanyDropshipDeliveryForCustomerSelected selected = new(
              command.PartitionId,
              command.CompanyId,
+             command.OriginId,
              command.Id);
         return aggregate is not null and Customer customer
             ? customer.IntercompanyDropship

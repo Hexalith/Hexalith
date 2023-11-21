@@ -21,6 +21,7 @@ public class Dynamics365FinanceCustomerChangedTest
             Account = "Cust123456",
             BusinessEventId = "MyEvent",
             CommissionSalesGroupId = "GRP1",
+            OriginId = "ORIG1",
             ControlNumber = 123456789022L,
             EventId = "1234567890",
             EventTime = DateTime.UtcNow,

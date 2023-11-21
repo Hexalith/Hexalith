@@ -14,6 +14,7 @@
 		<ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365Finance.TestMocks\Hexalith.Infrastructure.Dynamics365Finance.TestMocks.csproj" />
 		<ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365Finance\Hexalith.Infrastructure.Dynamics365Finance.csproj" />
 		<ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Serialization\Hexalith.Infrastructure.Serialization.csproj" />
+		<ProjectReference Include="..\..\src\Servers\Hexalith.Server.Dynamics365Finance\Hexalith.Server.Dynamics365Finance.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Update="appsettings.json">

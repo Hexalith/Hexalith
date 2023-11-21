@@ -43,6 +43,7 @@ public class AddInventoryItemHandler : CommandHandler<AddInventoryItem>
         return Task.FromResult<IEnumerable<BaseMessage>>(new InventoryItemAdded(
                     command.PartitionId,
                     command.CompanyId,
+                    command.OriginId,
                     command.Id,
                     command.Name,
                     command.Date)

@@ -36,10 +36,11 @@ public abstract class InventoryItemCommand : CompanyEntityCommand
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
+    /// <param name="originId">The origin identifier.</param>
     /// <param name="id">The identifier.</param>
     [JsonConstructor]
-    protected InventoryItemCommand(string partitionId, string companyId, string id)
-        : base(partitionId, companyId, id)
+    protected InventoryItemCommand(string partitionId, string companyId, string originId, string id)
+        : base(partitionId, companyId, originId, id)
     {
     }
 
@@ -52,7 +53,7 @@ public abstract class InventoryItemCommand : CompanyEntityCommand
     }
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateId() => InventoryItem.GetAggregateId(PartitionId, CompanyId, Id);
+    protected override string DefaultAggregateId() => InventoryItem.GetAggregateId(PartitionId, CompanyId, OriginId, Id);
 
     /// <inheritdoc/>
     protected override string DefaultAggregateName() => InventoryItem.GetAggregateName();

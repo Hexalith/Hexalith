@@ -37,10 +37,15 @@ public abstract class CustomerCommand : CompanyEntityCommand
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
+    /// <param name="originId">The origin identifier.</param>
     /// <param name="id">The identifier.</param>
     [JsonConstructor]
-    protected CustomerCommand(string partitionId, string companyId, string id)
-        : base(partitionId, companyId, id)
+    protected CustomerCommand(
+        string partitionId,
+        string companyId,
+        string originId,
+        string id)
+        : base(partitionId, companyId, originId, id)
     {
     }
 
@@ -53,7 +58,7 @@ public abstract class CustomerCommand : CompanyEntityCommand
     }
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateId() => Customer.GetAggregateId(PartitionId, CompanyId, Id);
+    protected override string DefaultAggregateId() => Customer.GetAggregateId(PartitionId, CompanyId, OriginId, Id);
 
     /// <inheritdoc/>
     protected override string DefaultAggregateName() => Customer.GetAggregateName();

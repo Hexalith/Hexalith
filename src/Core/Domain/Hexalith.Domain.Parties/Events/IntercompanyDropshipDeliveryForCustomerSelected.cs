@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 10-03-2023
 // ***********************************************************************
-// <copyright file="CustomerIntercompanyDeliveryTypeSetToDirect.cs" company="Fiveforty SAS Paris France">
+// <copyright file="IntercompanyDropshipDeliveryForCustomerSelected.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -33,12 +33,14 @@ public class IntercompanyDropshipDeliveryForCustomerSelected : CustomerEvent
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
+    /// <param name="originId">The origin identifier.</param>
     /// <param name="id">The identifier.</param>
     public IntercompanyDropshipDeliveryForCustomerSelected(
         string partitionId,
         string companyId,
+        string originId,
         string id)
-        : base(partitionId, companyId, id)
+        : base(partitionId, companyId, originId, id)
     {
     }
 

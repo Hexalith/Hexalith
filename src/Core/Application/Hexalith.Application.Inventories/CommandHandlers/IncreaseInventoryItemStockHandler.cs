@@ -43,8 +43,9 @@ public class IncreaseInventoryItemStockHandler : CommandHandler<IncreaseInventor
         return Task.FromResult<IEnumerable<BaseMessage>>(new InventoryItemStockIncreased(
                     command.PartitionId,
                     command.CompanyId,
+                    command.OriginId,
                     command.LocationId,
-                    command.InventoryItemId,
+                    command.Id,
                     command.Quantity,
                     command.Date)
                     .IntoArray<BaseMessage>());

@@ -33,12 +33,14 @@ public class IntercompanyDropshipDeliveryForCustomerDeselected : CustomerEvent
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
+    /// <param name="originId">The origin identifier.</param>
     /// <param name="id">The identifier.</param>
     public IntercompanyDropshipDeliveryForCustomerDeselected(
         string partitionId,
         string companyId,
+        string originId,
         string id)
-        : base(partitionId, companyId, id)
+        : base(partitionId, companyId, originId, id)
     {
     }
 

@@ -209,10 +209,121 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_LogErrorWhileSendingMessage_System_String_System_String_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus%603.LogErrorWhileSendingMessage(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/Buses/DaprApplicationBus.cs/#L93">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_LogErrorWhileSendingMessage_" data-uid="Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.LogErrorWhileSendingMessage*"></a>
+  <h4 id="Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_LogErrorWhileSendingMessage_System_String_System_String_System_String_System_String_System_String_System_String_" data-uid="Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.LogErrorWhileSendingMessage(System.String,System.String,System.String,System.String,System.String,System.String)">LogErrorWhileSendingMessage(String, String, String, String, String, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[LoggerMessage(EventId = 1, Level = LogLevel.Error, Message = &quot;Error while publishing on {BusName}/{TopicName} ({BusType}) the message {MessageName} Id={MessageId} CorrelationId={CorrelationId}.&quot;)]
+public void LogErrorWhileSendingMessage(string messageName, string messageId, string correlationId, string topicName, string busName, string busType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">messageName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">messageId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">correlationId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">topicName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">busName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">busType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_LogMessageSent_System_String_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus%603.LogMessageSent(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/Buses/DaprApplicationBus.cs/#L99">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_LogMessageSent_" data-uid="Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.LogMessageSent*"></a>
+  <h4 id="Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_LogMessageSent_System_String_System_String_System_String_System_String_System_String_" data-uid="Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.LogMessageSent(System.String,System.String,System.String,System.String,System.String)">LogMessageSent(String, String, String, String, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[LoggerMessage(EventId = 2, Level = LogLevel.Information, Message = &quot;Sent message : Name={MessageName}; Id='{MessageId}'; Correlation='{CorrelationId}' on {TopicName} of the {BusName} bus.&quot;)]
+public void LogMessageSent(string messageName, string messageId, string correlationId, string topicName, string busName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">messageName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">messageId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">correlationId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">topicName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">busName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_PublishAsync__0__1_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus%603.PublishAsync(%600%2C%601%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/Buses/DaprApplicationBus.cs/#L101">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/Buses/DaprApplicationBus.cs/#L113">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_PublishAsync_" data-uid="Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.PublishAsync*"></a>
   <h4 id="Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_PublishAsync__0__1_CancellationToken_" data-uid="Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.PublishAsync(`0,`1,CancellationToken)">PublishAsync(TMessage, TMetadata, CancellationToken)</h4>
@@ -269,7 +380,7 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_PublishAsync__2_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus%603.PublishAsync(%602%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/Buses/DaprApplicationBus.cs/#L110">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/Buses/DaprApplicationBus.cs/#L122">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_PublishAsync_" data-uid="Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.PublishAsync*"></a>
   <h4 id="Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_PublishAsync__2_CancellationToken_" data-uid="Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.PublishAsync(`2,CancellationToken)">PublishAsync(TState, CancellationToken)</h4>
@@ -321,7 +432,7 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_PublishAsync_Hexalith_Application_Envelopes_IEnvelope__0__1__CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus%603.PublishAsync(Hexalith.Application.Envelopes.IEnvelope%7B%600%2C%601%7D%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/Buses/DaprApplicationBus.cs/#L94">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/Buses/DaprApplicationBus.cs/#L106">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_PublishAsync_" data-uid="Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.PublishAsync*"></a>
   <h4 id="Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_PublishAsync_Hexalith_Application_Envelopes_IEnvelope__0__1__CancellationToken_" data-uid="Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.PublishAsync(Hexalith.Application.Envelopes.IEnvelope{`0,`1},CancellationToken)">PublishAsync(IEnvelope&lt;TMessage, TMetadata&gt;, CancellationToken)</h4>

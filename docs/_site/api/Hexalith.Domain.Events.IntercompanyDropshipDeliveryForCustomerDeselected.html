@@ -82,9 +82,9 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.CustomerEvent.html">
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html">BaseMessage</a></div>
     <div class="level2"><a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">BaseEvent</a></div>
-    <div class="level3"><a class="xref" href="Hexalith.Domain.Events.PartitionedEvent.html">PartitionedEvent</a></div>
-    <div class="level4"><a class="xref" href="Hexalith.Domain.Events.CompanyEvent.html">CompanyEvent</a></div>
-    <div class="level5"><a class="xref" href="Hexalith.Domain.Events.CompanyEntityEvent.html">CompanyEntityEvent</a></div>
+    <div class="level3"><a class="xref" href="Hexalith.Domain.Organizations.Events.PartitionedEvent.html">PartitionedEvent</a></div>
+    <div class="level4"><a class="xref" href="Hexalith.Domain.Organizations.Events.EntityEvent.html">EntityEvent</a></div>
+    <div class="level5"><a class="xref" href="Hexalith.Domain.Organizations.Events.CompanyEntityEvent.html">CompanyEntityEvent</a></div>
     <div class="level6"><a class="xref" href="Hexalith.Domain.Events.CustomerEvent.html">CustomerEvent</a></div>
     <div class="level7"><span class="xref">IntercompanyDropshipDeliveryForCustomerDeselected</span></div>
   </div>
@@ -104,13 +104,16 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.CustomerEvent.html">
       <a class="xref" href="Hexalith.Domain.Events.CustomerEvent.html#Hexalith_Domain_Events_CustomerEvent_DefaultAggregateName">CustomerEvent.DefaultAggregateName()</a>
     </div>
     <div>
-      <a class="xref" href="Hexalith.Domain.Events.CompanyEntityEvent.html#Hexalith_Domain_Events_CompanyEntityEvent_Id">CompanyEntityEvent.Id</a>
+      <a class="xref" href="Hexalith.Domain.Organizations.Events.CompanyEntityEvent.html#Hexalith_Domain_Organizations_Events_CompanyEntityEvent_CompanyId">CompanyEntityEvent.CompanyId</a>
     </div>
     <div>
-      <a class="xref" href="Hexalith.Domain.Events.CompanyEvent.html#Hexalith_Domain_Events_CompanyEvent_CompanyId">CompanyEvent.CompanyId</a>
+      <a class="xref" href="Hexalith.Domain.Organizations.Events.EntityEvent.html#Hexalith_Domain_Organizations_Events_EntityEvent_Id">EntityEvent.Id</a>
     </div>
     <div>
-      <a class="xref" href="Hexalith.Domain.Events.PartitionedEvent.html#Hexalith_Domain_Events_PartitionedEvent_PartitionId">PartitionedEvent.PartitionId</a>
+      <a class="xref" href="Hexalith.Domain.Organizations.Events.EntityEvent.html#Hexalith_Domain_Organizations_Events_EntityEvent_OriginId">EntityEvent.OriginId</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Domain.Organizations.Events.PartitionedEvent.html#Hexalith_Domain_Organizations_Events_PartitionedEvent_PartitionId">PartitionedEvent.PartitionId</a>
     </div>
     <div>
       <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_Separator">BaseMessage.Separator</a>
@@ -175,7 +178,7 @@ public class IntercompanyDropshipDeliveryForCustomerDeselected : CustomerEvent, 
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_IntercompanyDropshipDeliveryForCustomerDeselected__ctor.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Events/IntercompanyDropshipDeliveryForCustomerDeselected.cs/#L48">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Events/IntercompanyDropshipDeliveryForCustomerDeselected.cs/#L50">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_IntercompanyDropshipDeliveryForCustomerDeselected__ctor_" data-uid="Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.#ctor*"></a>
   <h4 id="Hexalith_Domain_Events_IntercompanyDropshipDeliveryForCustomerDeselected__ctor" data-uid="Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.#ctor">IntercompanyDropshipDeliveryForCustomerDeselected()</h4>
@@ -188,19 +191,19 @@ public class IntercompanyDropshipDeliveryForCustomerDeselected : CustomerEvent, 
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_IntercompanyDropshipDeliveryForCustomerDeselected__ctor_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.%23ctor(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_IntercompanyDropshipDeliveryForCustomerDeselected__ctor_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Events/IntercompanyDropshipDeliveryForCustomerDeselected.cs/#L37">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Events/IntercompanyDropshipDeliveryForCustomerDeselected.cs/#L38">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_IntercompanyDropshipDeliveryForCustomerDeselected__ctor_" data-uid="Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.#ctor*"></a>
-  <h4 id="Hexalith_Domain_Events_IntercompanyDropshipDeliveryForCustomerDeselected__ctor_System_String_System_String_System_String_" data-uid="Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.#ctor(System.String,System.String,System.String)">IntercompanyDropshipDeliveryForCustomerDeselected(String, String, String)</h4>
+  <h4 id="Hexalith_Domain_Events_IntercompanyDropshipDeliveryForCustomerDeselected__ctor_System_String_System_String_System_String_System_String_" data-uid="Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.#ctor(System.String,System.String,System.String,System.String)">IntercompanyDropshipDeliveryForCustomerDeselected(String, String, String, String)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.html">IntercompanyDropshipDeliveryForCustomerDeselected</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IntercompanyDropshipDeliveryForCustomerDeselected(string partitionId, string companyId, string id)</code></pre>
+    <pre><code class="lang-csharp hljs">public IntercompanyDropshipDeliveryForCustomerDeselected(string partitionId, string companyId, string originId, string id)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -222,6 +225,12 @@ public class IntercompanyDropshipDeliveryForCustomerDeselected : CustomerEvent, 
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">companyId</span></td>
         <td><p>The company identifier.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">originId</span></td>
+        <td><p>The origin identifier.</p>
 </td>
       </tr>
       <tr>

@@ -20,7 +20,7 @@ using Hexalith.Domain.Events;
 using Hexalith.Domain.Exceptions;
 
 /// <summary>
-/// Class InventoryItemLevel.
+/// Class InventoryItemStock.
 /// Implements the <see cref="Hexalith.Domain.Aggregates.Aggregate" />
 /// Implements the <see cref="Hexalith.Domain.Aggregates.IAggregate" />
 /// Implements the <see cref="System.IEquatable{Hexalith.Domain.Aggregates.Aggregate}" />
@@ -33,8 +33,9 @@ using Hexalith.Domain.Exceptions;
 public record InventoryItemStock(
     string PartitionId,
     string CompanyId,
+    string OriginId,
     string LocationId,
-    string InventoryItemId,
+    string Id,
     decimal Quantity,
     DateTimeOffset Date) : Aggregate
 {
@@ -45,9 +46,10 @@ public record InventoryItemStock(
     public InventoryItemStock(InventoryItemStockIncreased increased)
         : this(
               (increased ?? throw new ArgumentNullException(nameof(increased))).PartitionId,
+              increased.OriginId,
               increased.CompanyId,
               increased.LocationId,
-              increased.InventoryItemId,
+              increased.Id,
               increased.Quantity,
               increased.Date)
     {
@@ -60,9 +62,10 @@ public record InventoryItemStock(
     public InventoryItemStock(InventoryItemStockDecreased decreased)
         : this(
               (decreased ?? throw new ArgumentNullException(nameof(decreased))).PartitionId,
+              decreased.OriginId,
               decreased.CompanyId,
               decreased.LocationId,
-              decreased.InventoryItemId,
+              decreased.Id,
               -decreased.Quantity,
               decreased.Date)
     {
@@ -81,18 +84,19 @@ public record InventoryItemStock(
 
     /// <inheritdoc/>
     protected override string DefaultAggregateId()
-        => GetAggregateId(PartitionId, CompanyId, LocationId, InventoryItemId);
+        => GetAggregateId(PartitionId, OriginId, CompanyId, LocationId, Id);
 
     /// <summary>
     /// Gets the aggregate identifier.
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
+    /// <param name="originId">The origin identifier.</param>
     /// <param name="locationId">The location identifier.</param>
-    /// <param name="inventoryItemId">The inventory item identifier.</param>
+    /// <param name="id">The identifier.</param>
     /// <returns>System.String.</returns>
-    public static string GetAggregateId(string partitionId, string companyId, string locationId, string inventoryItemId)
-        => Normalize(GetAggregateName() + Separator + partitionId + Separator + companyId + Separator + locationId + Separator + inventoryItemId);
+    public static string GetAggregateId(string partitionId, string companyId, string originId, string locationId, string id)
+        => Normalize(GetAggregateName() + Separator + partitionId + Separator + companyId + Separator + originId + Separator + locationId + Separator + id);
 
     /// <summary>
     /// Gets the name of the aggregate.

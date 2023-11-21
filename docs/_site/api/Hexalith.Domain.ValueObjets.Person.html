@@ -133,20 +133,20 @@ public Person()</code></pre>
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_ValueObjets_Person__ctor_System_String_System_String_System_String_System_Nullable_System_DateOnly__System_Nullable_Hexalith_Domain_ValueObjets_Gender__.md&amp;value=---%0Auid%3A%20Hexalith.Domain.ValueObjets.Person.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.Nullable%7BSystem.DateOnly%7D%2CSystem.Nullable%7BHexalith.Domain.ValueObjets.Gender%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_ValueObjets_Person__ctor_System_String_System_String_System_String_System_Nullable_System_DateTimeOffset__System_Nullable_Hexalith_Domain_ValueObjets_Gender__.md&amp;value=---%0Auid%3A%20Hexalith.Domain.ValueObjets.Person.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.Nullable%7BSystem.DateTimeOffset%7D%2CSystem.Nullable%7BHexalith.Domain.ValueObjets.Gender%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/ValueObjets/Person.cs/#L29">View Source</a>
   </span>
   <a id="Hexalith_Domain_ValueObjets_Person__ctor_" data-uid="Hexalith.Domain.ValueObjets.Person.#ctor*"></a>
-  <h4 id="Hexalith_Domain_ValueObjets_Person__ctor_System_String_System_String_System_String_System_Nullable_System_DateOnly__System_Nullable_Hexalith_Domain_ValueObjets_Gender__" data-uid="Hexalith.Domain.ValueObjets.Person.#ctor(System.String,System.String,System.String,System.Nullable{System.DateOnly},System.Nullable{Hexalith.Domain.ValueObjets.Gender})">Person(String, String, String, Nullable&lt;DateOnly&gt;, Nullable&lt;Gender&gt;)</h4>
+  <h4 id="Hexalith_Domain_ValueObjets_Person__ctor_System_String_System_String_System_String_System_Nullable_System_DateTimeOffset__System_Nullable_Hexalith_Domain_ValueObjets_Gender__" data-uid="Hexalith.Domain.ValueObjets.Person.#ctor(System.String,System.String,System.String,System.Nullable{System.DateTimeOffset},System.Nullable{Hexalith.Domain.ValueObjets.Gender})">Person(String, String, String, Nullable&lt;DateTimeOffset&gt;, Nullable&lt;Gender&gt;)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Domain.ValueObjets.Person.html">Person</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonConstructor]
-public Person(string name, string firstName, string lastName, DateOnly? birthDate, Gender? gender)</code></pre>
+public Person(string name, string firstName, string lastName, DateTimeOffset? birthDate, Gender? gender)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -177,7 +177,7 @@ public Person(string name, string firstName, string lastName, DateOnly? birthDat
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateOnly</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTimeOffset</span>&gt;</td>
         <td><span class="parametername">birthDate</span></td>
         <td><p>The birth date.</p>
 </td>
@@ -201,14 +201,14 @@ public Person(string name, string firstName, string lastName, DateOnly? birthDat
   </span>
   <a id="Hexalith_Domain_ValueObjets_Person_BirthDate_" data-uid="Hexalith.Domain.ValueObjets.Person.BirthDate*"></a>
   <h4 id="Hexalith_Domain_ValueObjets_Person_BirthDate" data-uid="Hexalith.Domain.ValueObjets.Person.BirthDate">BirthDate</h4>
-  <div class="markdown level1 summary"><p>Gets the city.</p>
+  <div class="markdown level1 summary"><p>Gets or sets the city.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataMember(Order = 4)]
 [JsonPropertyOrder(4)]
-public DateOnly? BirthDate { get; }</code></pre>
+public DateTimeOffset? BirthDate { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -220,7 +220,7 @@ public DateOnly? BirthDate { get; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateOnly</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTimeOffset</span>&gt;</td>
         <td><p>The city.</p>
 </td>
       </tr>
@@ -235,14 +235,14 @@ public DateOnly? BirthDate { get; }</code></pre>
   </span>
   <a id="Hexalith_Domain_ValueObjets_Person_FirstName_" data-uid="Hexalith.Domain.ValueObjets.Person.FirstName*"></a>
   <h4 id="Hexalith_Domain_ValueObjets_Person_FirstName" data-uid="Hexalith.Domain.ValueObjets.Person.FirstName">FirstName</h4>
-  <div class="markdown level1 summary"><p>Gets the city.</p>
+  <div class="markdown level1 summary"><p>Gets or sets the city.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataMember(Order = 2)]
 [JsonPropertyOrder(2)]
-public string FirstName { get; }</code></pre>
+public string FirstName { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -269,7 +269,7 @@ public string FirstName { get; }</code></pre>
   </span>
   <a id="Hexalith_Domain_ValueObjets_Person_Gender_" data-uid="Hexalith.Domain.ValueObjets.Person.Gender*"></a>
   <h4 id="Hexalith_Domain_ValueObjets_Person_Gender" data-uid="Hexalith.Domain.ValueObjets.Person.Gender">Gender</h4>
-  <div class="markdown level1 summary"><p>Gets the city.</p>
+  <div class="markdown level1 summary"><p>Gets or sets the city.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -277,7 +277,7 @@ public string FirstName { get; }</code></pre>
     <pre><code class="lang-csharp hljs">[DataMember(Order = 5)]
 [JsonPropertyOrder(5)]
 [JsonConverter(typeof(JsonStringEnumConverter))]
-public Gender? Gender { get; }</code></pre>
+public Gender? Gender { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -304,14 +304,14 @@ public Gender? Gender { get; }</code></pre>
   </span>
   <a id="Hexalith_Domain_ValueObjets_Person_LastName_" data-uid="Hexalith.Domain.ValueObjets.Person.LastName*"></a>
   <h4 id="Hexalith_Domain_ValueObjets_Person_LastName" data-uid="Hexalith.Domain.ValueObjets.Person.LastName">LastName</h4>
-  <div class="markdown level1 summary"><p>Gets the city.</p>
+  <div class="markdown level1 summary"><p>Gets or sets the city.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataMember(Order = 3)]
 [JsonPropertyOrder(3)]
-public string LastName { get; }</code></pre>
+public string LastName { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -338,14 +338,14 @@ public string LastName { get; }</code></pre>
   </span>
   <a id="Hexalith_Domain_ValueObjets_Person_Name_" data-uid="Hexalith.Domain.ValueObjets.Person.Name*"></a>
   <h4 id="Hexalith_Domain_ValueObjets_Person_Name" data-uid="Hexalith.Domain.ValueObjets.Person.Name">Name</h4>
-  <div class="markdown level1 summary"><p>Gets the city.</p>
+  <div class="markdown level1 summary"><p>Gets or sets the city.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataMember(Order = 1)]
 [JsonPropertyOrder(1)]
-public string Name { get; }</code></pre>
+public string Name { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">

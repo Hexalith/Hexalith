@@ -119,6 +119,7 @@ public class InventoryItemAggregateActor : Actor, ICommandProcessorActor, IRemin
         return new InventoryItemInformationChanged(
                 inventoryItem.PartitionId,
                 inventoryItem.CompanyId,
+                inventoryItem.OriginId,
                 inventoryItem.Id,
                 inventoryItem.Name,
                 DateTimeOffset.UtcNow);

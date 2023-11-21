@@ -17,23 +17,34 @@
 namespace Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents;
 
 using Hexalith.Application.Events;
+using Hexalith.Application.ExternalSystems.Services;
+using Hexalith.Application.Organizations.Configurations;
 using Hexalith.Domain.Events;
 using Hexalith.Infrastructure.Dynamics365Finance.Client;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities;
+
+using Microsoft.Extensions.Options;
 
 /// <summary>
 /// Class CustomerRegisteredHandler.
 /// Implements the <see cref="IntegrationEventHandler{CustomerRegistered}" />.
 /// </summary>
 /// <seealso cref="IntegrationEventHandler{CustomerRegistered}" />
-internal class CustomerRegisteredHandler : CustomerChangedHandler<CustomerRegistered>
+public class CustomerRegisteredHandler : CustomerChangedHandler<CustomerRegistered>
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="CustomerRegisteredHandler"/> class.
     /// </summary>
     /// <param name="customerService">The customer service.</param>
-    public CustomerRegisteredHandler(IDynamics365FinanceClient<CustomerV3> customerService)
-        : base(customerService)
+    /// <param name="externalCustomerService">The external customer service.</param>
+    /// <param name="externalReferenceMapperService">The external reference mapper service.</param>
+    /// <param name="settings">The settings.</param>
+    public CustomerRegisteredHandler(
+        IDynamics365FinanceClient<CustomerV3> customerService,
+        IDynamics365FinanceClient<CustomerExternalSystemCode> externalCustomerService,
+        IExternalReferenceMapperService externalReferenceMapperService,
+        IOptions<OrganizationSettings> settings)
+        : base(customerService, externalCustomerService, externalReferenceMapperService, settings)
     {
     }
 }

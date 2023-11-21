@@ -43,6 +43,7 @@ public class RemoveInventoryItemBarcodeHandler : CommandHandler<RemoveInventoryI
         return Task.FromResult<IEnumerable<BaseMessage>>(new InventoryItemBarcodeRemoved(
                     command.PartitionId,
                     command.CompanyId,
+                    command.OriginId,
                     command.Id,
                     command.Barcode,
                     command.Date)

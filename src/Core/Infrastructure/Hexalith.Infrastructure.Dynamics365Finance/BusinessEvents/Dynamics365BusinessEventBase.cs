@@ -134,6 +134,14 @@ public abstract class Dynamics365BusinessEventBase : IMetadata, IEvent
     public int MinorVersion { get => _minorVersion <= 0 ? DefaultMinorVersion() : _minorVersion; set => _minorVersion = value; }
 
     /// <summary>
+    /// Gets or sets the origin identifier.
+    /// </summary>
+    /// <value>The origin identifier.</value>
+    [DataMember(Order = 11)]
+    [JsonPropertyOrder(11)]
+    public string? OriginId { get; set; }
+
+    /// <summary>
     /// Gets or sets the partition identifier.
     /// </summary>
     /// <value>The partition identifier.</value>

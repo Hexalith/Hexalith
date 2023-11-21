@@ -46,9 +46,13 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
     private readonly IDateTimeService _dateTimeService;
 
     /// <summary>
+    /// The origin identifier.
+    /// </summary>
+    private readonly string _originId;
+
+    /// <summary>
     /// The external reference service.
     /// </summary>
- // private readonly IExternalReferenceMapperService _externalReferenceMapperService;
     private readonly string _partitionId;
 
     /// <summary>
@@ -66,7 +70,9 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
         // ArgumentNullException.ThrowIfNull(externalReferenceMapperService);
         ArgumentNullException.ThrowIfNull(settings);
         SettingsException<OrganizationSettings>.ThrowIfNullOrEmpty(settings.Value.DefaultPartitionId);
+        SettingsException<OrganizationSettings>.ThrowIfNullOrEmpty(settings.Value.DefaultOriginId);
         _partitionId = settings.Value.DefaultPartitionId;
+        _originId = settings.Value.DefaultOriginId;
         _dateTimeService = dateTimeService;
 
         // _externalReferenceMapperService = externalReferenceMapperService;
@@ -83,32 +89,13 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
         ArgumentException.ThrowIfNullOrEmpty(@event.BusinessEventLegalEntity);
         string companyId = @event.BusinessEventLegalEntity.ToUpperInvariant();
         string customerId = @event.Account.ToUpperInvariant();
-        string customerAggregateId = Customer.GetAggregateId(_partitionId, companyId, customerId);
+        string customerAggregateId = Customer.GetAggregateId(_partitionId, companyId, _originId, customerId);
         string customerAggregateName = Customer.GetAggregateName();
         List<BaseCommand> commands = [];
         if (@event.ExternalReferences != null)
         {
             foreach (ExternalReference reference in @event.ExternalReferences)
             {
-                /*
-                if (await _externalReferenceMapperService
-                    .GetExternalIdAsync(
-                        customerAggregateName,
-                        customerAggregateId,
-                        reference.SystemId,
-                        cancellationToken)
-                    .ConfigureAwait(false) != reference.ExternalId)
-                {
-                    AddExternalSystemReference mapExternalSystemReference = new(
-                            _partitionId,
-                            @event.BusinessEventLegalEntity,
-                            reference.SystemId,
-                            customerAggregateName,
-                            reference.ExternalId,
-                            customerAggregateId);
-                    commands.Add(mapExternalSystemReference);
-                }
-                */
                 AddExternalSystemReference mapExternalSystemReference = new(
                         _partitionId,
                         @event.BusinessEventLegalEntity,
@@ -120,9 +107,18 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
             }
         }
 
+        commands.Add(new AddExternalSystemReference(
+                _partitionId,
+                @event.BusinessEventLegalEntity,
+                _originId,
+                customerAggregateName,
+                customerId,
+                customerAggregateId));
+
         commands.Add(new RegisterOrChangeCustomer(
                    _partitionId,
                    companyId,
+                   _originId,
                    customerId,
                    @event.Name,
                    @event.Contact,
@@ -133,11 +129,11 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
         bool directDelivery = @event.InterCompanyDirectDelivery == "Yes";
         if (directDelivery)
         {
-            commands.Add(new SelectIntercompanyDropshipDeliveryForCustomer(_partitionId, companyId, customerId));
+            commands.Add(new SelectIntercompanyDropshipDeliveryForCustomer(_partitionId, companyId, _originId, customerId));
         }
         else
         {
-            commands.Add(new DeselectIntercompanyDropshipDeliveryForCustomer(_partitionId, companyId, customerId));
+            commands.Add(new DeselectIntercompanyDropshipDeliveryForCustomer(_partitionId, companyId, _originId, customerId));
         }
 
         return Task.FromResult<IEnumerable<BaseCommand>>(commands);

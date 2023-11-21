@@ -83,7 +83,7 @@ Implements the <a class="xref" href="Hexalith.Application.Parties.Commands.Custo
     <div class="level1"><a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html">BaseMessage</a></div>
     <div class="level2"><a class="xref" href="Hexalith.Application.Commands.BaseCommand.html">BaseCommand</a></div>
     <div class="level3"><a class="xref" href="Hexalith.Application.Organizations.Commands.PartitionedCommand.html">PartitionedCommand</a></div>
-    <div class="level4"><a class="xref" href="Hexalith.Application.Organizations.Commands.CompanyCommand.html">CompanyCommand</a></div>
+    <div class="level4"><a class="xref" href="Hexalith.Application.Organizations.Commands.EntityCommand.html">EntityCommand</a></div>
     <div class="level5"><a class="xref" href="Hexalith.Application.Organizations.Commands.CompanyEntityCommand.html">CompanyEntityCommand</a></div>
     <div class="level6"><a class="xref" href="Hexalith.Application.Parties.Commands.CustomerCommand.html">CustomerCommand</a></div>
     <div class="level7"><span class="xref">DeselectIntercompanyDropshipDeliveryForCustomer</span></div>
@@ -104,10 +104,13 @@ Implements the <a class="xref" href="Hexalith.Application.Parties.Commands.Custo
       <a class="xref" href="Hexalith.Application.Parties.Commands.CustomerCommand.html#Hexalith_Application_Parties_Commands_CustomerCommand_DefaultAggregateName">CustomerCommand.DefaultAggregateName()</a>
     </div>
     <div>
-      <a class="xref" href="Hexalith.Application.Organizations.Commands.CompanyEntityCommand.html#Hexalith_Application_Organizations_Commands_CompanyEntityCommand_Id">CompanyEntityCommand.Id</a>
+      <a class="xref" href="Hexalith.Application.Organizations.Commands.CompanyEntityCommand.html#Hexalith_Application_Organizations_Commands_CompanyEntityCommand_CompanyId">CompanyEntityCommand.CompanyId</a>
     </div>
     <div>
-      <a class="xref" href="Hexalith.Application.Organizations.Commands.CompanyCommand.html#Hexalith_Application_Organizations_Commands_CompanyCommand_CompanyId">CompanyCommand.CompanyId</a>
+      <a class="xref" href="Hexalith.Application.Organizations.Commands.EntityCommand.html#Hexalith_Application_Organizations_Commands_EntityCommand_Id">EntityCommand.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Application.Organizations.Commands.EntityCommand.html#Hexalith_Application_Organizations_Commands_EntityCommand_OriginId">EntityCommand.OriginId</a>
     </div>
     <div>
       <a class="xref" href="Hexalith.Application.Organizations.Commands.PartitionedCommand.html#Hexalith_Application_Organizations_Commands_PartitionedCommand_PartitionId">PartitionedCommand.PartitionId</a>
@@ -175,7 +178,7 @@ public class DeselectIntercompanyDropshipDeliveryForCustomer : CustomerCommand, 
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Parties_Commands_DeselectIntercompanyDropshipDeliveryForCustomer__ctor.md&amp;value=---%0Auid%3A%20Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/Commands/DeselectIntercompanyDropshipDeliveryForCustomer.cs/#L48">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/Commands/DeselectIntercompanyDropshipDeliveryForCustomer.cs/#L50">View Source</a>
   </span>
   <a id="Hexalith_Application_Parties_Commands_DeselectIntercompanyDropshipDeliveryForCustomer__ctor_" data-uid="Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.#ctor*"></a>
   <h4 id="Hexalith_Application_Parties_Commands_DeselectIntercompanyDropshipDeliveryForCustomer__ctor" data-uid="Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.#ctor">DeselectIntercompanyDropshipDeliveryForCustomer()</h4>
@@ -188,19 +191,19 @@ public class DeselectIntercompanyDropshipDeliveryForCustomer : CustomerCommand, 
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Parties_Commands_DeselectIntercompanyDropshipDeliveryForCustomer__ctor_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.%23ctor(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Parties_Commands_DeselectIntercompanyDropshipDeliveryForCustomer__ctor_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/Commands/DeselectIntercompanyDropshipDeliveryForCustomer.cs/#L37">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/Commands/DeselectIntercompanyDropshipDeliveryForCustomer.cs/#L38">View Source</a>
   </span>
   <a id="Hexalith_Application_Parties_Commands_DeselectIntercompanyDropshipDeliveryForCustomer__ctor_" data-uid="Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.#ctor*"></a>
-  <h4 id="Hexalith_Application_Parties_Commands_DeselectIntercompanyDropshipDeliveryForCustomer__ctor_System_String_System_String_System_String_" data-uid="Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.#ctor(System.String,System.String,System.String)">DeselectIntercompanyDropshipDeliveryForCustomer(String, String, String)</h4>
+  <h4 id="Hexalith_Application_Parties_Commands_DeselectIntercompanyDropshipDeliveryForCustomer__ctor_System_String_System_String_System_String_System_String_" data-uid="Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.#ctor(System.String,System.String,System.String,System.String)">DeselectIntercompanyDropshipDeliveryForCustomer(String, String, String, String)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.html">DeselectIntercompanyDropshipDeliveryForCustomer</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DeselectIntercompanyDropshipDeliveryForCustomer(string partitionId, string companyId, string id)</code></pre>
+    <pre><code class="lang-csharp hljs">public DeselectIntercompanyDropshipDeliveryForCustomer(string partitionId, string companyId, string originId, string id)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -222,6 +225,12 @@ public class DeselectIntercompanyDropshipDeliveryForCustomer : CustomerCommand, 
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">companyId</span></td>
         <td><p>The company identifier.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">originId</span></td>
+        <td><p>The origin identifier.</p>
 </td>
       </tr>
       <tr>

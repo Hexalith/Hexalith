@@ -43,6 +43,7 @@ using Hexalith.Extensions;
 public record Customer(
     string PartitionId,
     string CompanyId,
+    string OriginId,
     string Id,
     string Name,
     Contact Contact,
@@ -57,6 +58,7 @@ public record Customer(
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public Customer()
         : this(
+              string.Empty,
               string.Empty,
               string.Empty,
               string.Empty,
@@ -77,6 +79,7 @@ public record Customer(
         : this(
               (customer ?? throw new ArgumentNullException(nameof(customer))).PartitionId,
               customer.CompanyId,
+              customer.OriginId,
               customer.Id,
               customer.Name,
               customer.Contact,
@@ -107,21 +110,24 @@ public record Customer(
     }
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateId() => GetAggregateId(PartitionId, CompanyId, Id);
+    protected override string DefaultAggregateId() => GetAggregateId(PartitionId, CompanyId, OriginId, Id);
 
     /// <summary>
     /// Gets the aggregate identifier.
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
+    /// <param name="originId">The origin identifier.</param>
     /// <param name="id">The identifier.</param>
     /// <returns>System.String.</returns>
-    public static string GetAggregateId([NotNull] string partitionId, [NotNull] string companyId, [NotNull] string id)
+    public static string GetAggregateId([NotNull] string partitionId, [NotNull] string companyId, [NotNull] string originId, [NotNull] string id)
     {
         ArgumentException.ThrowIfNullOrEmpty(partitionId);
         ArgumentException.ThrowIfNullOrEmpty(companyId);
+        ArgumentException.ThrowIfNullOrEmpty(originId);
         ArgumentException.ThrowIfNullOrEmpty(id);
-        return Normalize(GetAggregateName() + Separator + partitionId + Separator + companyId + Separator + id);
+
+        return Normalize(GetAggregateName() + Separator + partitionId + Separator + companyId + Separator + originId + Separator + id);
     }
 
     /// <summary>

@@ -83,7 +83,7 @@ Implements the <a class="xref" href="Hexalith.Application.Inventories.Commands.I
     <div class="level1"><a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html">BaseMessage</a></div>
     <div class="level2"><a class="xref" href="Hexalith.Application.Commands.BaseCommand.html">BaseCommand</a></div>
     <div class="level3"><a class="xref" href="Hexalith.Application.Organizations.Commands.PartitionedCommand.html">PartitionedCommand</a></div>
-    <div class="level4"><a class="xref" href="Hexalith.Application.Organizations.Commands.CompanyCommand.html">CompanyCommand</a></div>
+    <div class="level4"><a class="xref" href="Hexalith.Application.Organizations.Commands.EntityCommand.html">EntityCommand</a></div>
     <div class="level5"><a class="xref" href="Hexalith.Application.Organizations.Commands.CompanyEntityCommand.html">CompanyEntityCommand</a></div>
     <div class="level6"><a class="xref" href="Hexalith.Application.Inventories.Commands.InventoryItemCommand.html">InventoryItemCommand</a></div>
     <div class="level7"><span class="xref">AddInventoryItemBarcode</span></div>
@@ -104,10 +104,13 @@ Implements the <a class="xref" href="Hexalith.Application.Inventories.Commands.I
       <a class="xref" href="Hexalith.Application.Inventories.Commands.InventoryItemCommand.html#Hexalith_Application_Inventories_Commands_InventoryItemCommand_DefaultAggregateName">InventoryItemCommand.DefaultAggregateName()</a>
     </div>
     <div>
-      <a class="xref" href="Hexalith.Application.Organizations.Commands.CompanyEntityCommand.html#Hexalith_Application_Organizations_Commands_CompanyEntityCommand_Id">CompanyEntityCommand.Id</a>
+      <a class="xref" href="Hexalith.Application.Organizations.Commands.CompanyEntityCommand.html#Hexalith_Application_Organizations_Commands_CompanyEntityCommand_CompanyId">CompanyEntityCommand.CompanyId</a>
     </div>
     <div>
-      <a class="xref" href="Hexalith.Application.Organizations.Commands.CompanyCommand.html#Hexalith_Application_Organizations_Commands_CompanyCommand_CompanyId">CompanyCommand.CompanyId</a>
+      <a class="xref" href="Hexalith.Application.Organizations.Commands.EntityCommand.html#Hexalith_Application_Organizations_Commands_EntityCommand_Id">EntityCommand.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Application.Organizations.Commands.EntityCommand.html#Hexalith_Application_Organizations_Commands_EntityCommand_OriginId">EntityCommand.OriginId</a>
     </div>
     <div>
       <a class="xref" href="Hexalith.Application.Organizations.Commands.PartitionedCommand.html#Hexalith_Application_Organizations_Commands_PartitionedCommand_PartitionId">PartitionedCommand.PartitionId</a>
@@ -175,7 +178,7 @@ public class AddInventoryItemBarcode : InventoryItemCommand, IPolymorphicSeriali
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode__ctor.md&amp;value=---%0Auid%3A%20Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/Commands/AddInventoryItemBarcode.cs/#L55">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/Commands/AddInventoryItemBarcode.cs/#L57">View Source</a>
   </span>
   <a id="Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode__ctor_" data-uid="Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.#ctor*"></a>
   <h4 id="Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode__ctor" data-uid="Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.#ctor">AddInventoryItemBarcode()</h4>
@@ -188,19 +191,19 @@ public class AddInventoryItemBarcode : InventoryItemCommand, IPolymorphicSeriali
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode__ctor_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_ItemBarcode_DateTimeOffset_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.%23ctor(System.String%2CSystem.String%2CSystem.String%2CHexalith.Domain.ValueObjets.ItemBarcode%2CDateTimeOffset)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode__ctor_System_String_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_ItemBarcode_DateTimeOffset_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CHexalith.Domain.ValueObjets.ItemBarcode%2CDateTimeOffset)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/Commands/AddInventoryItemBarcode.cs/#L40">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/Commands/AddInventoryItemBarcode.cs/#L41">View Source</a>
   </span>
   <a id="Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode__ctor_" data-uid="Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.#ctor*"></a>
-  <h4 id="Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode__ctor_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_ItemBarcode_DateTimeOffset_" data-uid="Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.#ctor(System.String,System.String,System.String,Hexalith.Domain.ValueObjets.ItemBarcode,DateTimeOffset)">AddInventoryItemBarcode(String, String, String, ItemBarcode, DateTimeOffset)</h4>
+  <h4 id="Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode__ctor_System_String_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_ItemBarcode_DateTimeOffset_" data-uid="Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.#ctor(System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.ItemBarcode,DateTimeOffset)">AddInventoryItemBarcode(String, String, String, String, ItemBarcode, DateTimeOffset)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.html">AddInventoryItemBarcode</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AddInventoryItemBarcode(string partitionId, string companyId, string id, ItemBarcode barcode, DateTimeOffset date)</code></pre>
+    <pre><code class="lang-csharp hljs">public AddInventoryItemBarcode(string partitionId, string companyId, string originId, string id, ItemBarcode barcode, DateTimeOffset date)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -222,6 +225,12 @@ public class AddInventoryItemBarcode : InventoryItemCommand, IPolymorphicSeriali
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">companyId</span></td>
         <td><p>The company identifier.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">originId</span></td>
+        <td><p>The origin identifier.</p>
 </td>
       </tr>
       <tr>
@@ -251,7 +260,7 @@ public class AddInventoryItemBarcode : InventoryItemCommand, IPolymorphicSeriali
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode_Barcode.md&amp;value=---%0Auid%3A%20Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.Barcode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/Commands/AddInventoryItemBarcode.cs/#L66">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/Commands/AddInventoryItemBarcode.cs/#L68">View Source</a>
   </span>
   <a id="Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode_Barcode_" data-uid="Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.Barcode*"></a>
   <h4 id="Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode_Barcode" data-uid="Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.Barcode">Barcode</h4>
@@ -284,7 +293,7 @@ public ItemBarcode Barcode { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode_Date.md&amp;value=---%0Auid%3A%20Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.Date%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/Commands/AddInventoryItemBarcode.cs/#L73">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Inventories/Commands/AddInventoryItemBarcode.cs/#L75">View Source</a>
   </span>
   <a id="Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode_Date_" data-uid="Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.Date*"></a>
   <h4 id="Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode_Date" data-uid="Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.Date">Date</h4>

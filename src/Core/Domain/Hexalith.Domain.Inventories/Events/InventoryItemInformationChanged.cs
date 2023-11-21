@@ -33,16 +33,12 @@ public class InventoryItemInformationChanged : InventoryItemEvent
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
+    /// <param name="originId">The origin identifier.</param>
     /// <param name="id">The identifier.</param>
     /// <param name="name">The name.</param>
     /// <param name="date">The date.</param>
-    public InventoryItemInformationChanged(
-        string partitionId,
-        string companyId,
-        string id,
-        string name,
-        DateTimeOffset date)
-        : base(partitionId, companyId, id)
+    public InventoryItemInformationChanged(string partitionId, string companyId, string originId, string id, string name, DateTimeOffset date)
+        : base(partitionId, companyId, originId, id)
     {
         Name = name;
         Date = date;

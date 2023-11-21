@@ -2660,6 +2660,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.ExternalSystemReferenceCommand
   nameWithType: ExternalSystemReferenceCommand.ExternalSystemReferenceCommand
+- uid: Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.CompanyId
+  name: CompanyId
+  href: api/Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.html#Hexalith_Application_ExternalSystems_Commands_ExternalSystemReferenceCommand_CompanyId
+  commentId: P:Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.CompanyId
+  fullName: Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.CompanyId
+  nameWithType: ExternalSystemReferenceCommand.CompanyId
+- uid: Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.CompanyId*
+  name: CompanyId
+  href: api/Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.html#Hexalith_Application_ExternalSystems_Commands_ExternalSystemReferenceCommand_CompanyId_
+  commentId: Overload:Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.CompanyId
+  isSpec: "True"
+  fullName: Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.CompanyId
+  nameWithType: ExternalSystemReferenceCommand.CompanyId
 - uid: Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.DefaultAggregateId
   name: DefaultAggregateId()
   href: api/Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.html#Hexalith_Application_ExternalSystems_Commands_ExternalSystemReferenceCommand_DefaultAggregateId
@@ -3086,12 +3099,12 @@ references:
   commentId: M:Hexalith.Application.Inventories.Commands.AddInventoryItem.#ctor
   fullName: Hexalith.Application.Inventories.Commands.AddInventoryItem.AddInventoryItem()
   nameWithType: AddInventoryItem.AddInventoryItem()
-- uid: Hexalith.Application.Inventories.Commands.AddInventoryItem.#ctor(System.String,System.String,System.String,System.String,DateTimeOffset)
-  name: AddInventoryItem(String, String, String, String, DateTimeOffset)
-  href: api/Hexalith.Application.Inventories.Commands.AddInventoryItem.html#Hexalith_Application_Inventories_Commands_AddInventoryItem__ctor_System_String_System_String_System_String_System_String_DateTimeOffset_
-  commentId: M:Hexalith.Application.Inventories.Commands.AddInventoryItem.#ctor(System.String,System.String,System.String,System.String,DateTimeOffset)
-  fullName: Hexalith.Application.Inventories.Commands.AddInventoryItem.AddInventoryItem(System.String, System.String, System.String, System.String, DateTimeOffset)
-  nameWithType: AddInventoryItem.AddInventoryItem(String, String, String, String, DateTimeOffset)
+- uid: Hexalith.Application.Inventories.Commands.AddInventoryItem.#ctor(System.String,System.String,System.String,System.String,System.String,DateTimeOffset)
+  name: AddInventoryItem(String, String, String, String, String, DateTimeOffset)
+  href: api/Hexalith.Application.Inventories.Commands.AddInventoryItem.html#Hexalith_Application_Inventories_Commands_AddInventoryItem__ctor_System_String_System_String_System_String_System_String_System_String_DateTimeOffset_
+  commentId: M:Hexalith.Application.Inventories.Commands.AddInventoryItem.#ctor(System.String,System.String,System.String,System.String,System.String,DateTimeOffset)
+  fullName: Hexalith.Application.Inventories.Commands.AddInventoryItem.AddInventoryItem(System.String, System.String, System.String, System.String, System.String, DateTimeOffset)
+  nameWithType: AddInventoryItem.AddInventoryItem(String, String, String, String, String, DateTimeOffset)
 - uid: Hexalith.Application.Inventories.Commands.AddInventoryItem.#ctor*
   name: AddInventoryItem
   href: api/Hexalith.Application.Inventories.Commands.AddInventoryItem.html#Hexalith_Application_Inventories_Commands_AddInventoryItem__ctor_
@@ -3137,12 +3150,12 @@ references:
   commentId: M:Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.#ctor
   fullName: Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.AddInventoryItemBarcode()
   nameWithType: AddInventoryItemBarcode.AddInventoryItemBarcode()
-- uid: Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.#ctor(System.String,System.String,System.String,Hexalith.Domain.ValueObjets.ItemBarcode,DateTimeOffset)
-  name: AddInventoryItemBarcode(String, String, String, ItemBarcode, DateTimeOffset)
-  href: api/Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.html#Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode__ctor_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_ItemBarcode_DateTimeOffset_
-  commentId: M:Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.#ctor(System.String,System.String,System.String,Hexalith.Domain.ValueObjets.ItemBarcode,DateTimeOffset)
-  fullName: Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.AddInventoryItemBarcode(System.String, System.String, System.String, Hexalith.Domain.ValueObjets.ItemBarcode, DateTimeOffset)
-  nameWithType: AddInventoryItemBarcode.AddInventoryItemBarcode(String, String, String, ItemBarcode, DateTimeOffset)
+- uid: Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.#ctor(System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.ItemBarcode,DateTimeOffset)
+  name: AddInventoryItemBarcode(String, String, String, String, ItemBarcode, DateTimeOffset)
+  href: api/Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.html#Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode__ctor_System_String_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_ItemBarcode_DateTimeOffset_
+  commentId: M:Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.#ctor(System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.ItemBarcode,DateTimeOffset)
+  fullName: Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.AddInventoryItemBarcode(System.String, System.String, System.String, System.String, Hexalith.Domain.ValueObjets.ItemBarcode, DateTimeOffset)
+  nameWithType: AddInventoryItemBarcode.AddInventoryItemBarcode(String, String, String, String, ItemBarcode, DateTimeOffset)
 - uid: Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.#ctor*
   name: AddInventoryItemBarcode
   href: api/Hexalith.Application.Inventories.Commands.AddInventoryItemBarcode.html#Hexalith_Application_Inventories_Commands_AddInventoryItemBarcode__ctor_
@@ -3188,12 +3201,12 @@ references:
   commentId: M:Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.#ctor
   fullName: Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.ChangeInventoryItemInformation()
   nameWithType: ChangeInventoryItemInformation.ChangeInventoryItemInformation()
-- uid: Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.#ctor(System.String,System.String,System.String,System.String,DateTimeOffset)
-  name: ChangeInventoryItemInformation(String, String, String, String, DateTimeOffset)
-  href: api/Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.html#Hexalith_Application_Inventories_Commands_ChangeInventoryItemInformation__ctor_System_String_System_String_System_String_System_String_DateTimeOffset_
-  commentId: M:Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.#ctor(System.String,System.String,System.String,System.String,DateTimeOffset)
-  fullName: Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.ChangeInventoryItemInformation(System.String, System.String, System.String, System.String, DateTimeOffset)
-  nameWithType: ChangeInventoryItemInformation.ChangeInventoryItemInformation(String, String, String, String, DateTimeOffset)
+- uid: Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.#ctor(System.String,System.String,System.String,System.String,System.String,DateTimeOffset)
+  name: ChangeInventoryItemInformation(String, String, String, String, String, DateTimeOffset)
+  href: api/Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.html#Hexalith_Application_Inventories_Commands_ChangeInventoryItemInformation__ctor_System_String_System_String_System_String_System_String_System_String_DateTimeOffset_
+  commentId: M:Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.#ctor(System.String,System.String,System.String,System.String,System.String,DateTimeOffset)
+  fullName: Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.ChangeInventoryItemInformation(System.String, System.String, System.String, System.String, System.String, DateTimeOffset)
+  nameWithType: ChangeInventoryItemInformation.ChangeInventoryItemInformation(String, String, String, String, String, DateTimeOffset)
 - uid: Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.#ctor*
   name: ChangeInventoryItemInformation
   href: api/Hexalith.Application.Inventories.Commands.ChangeInventoryItemInformation.html#Hexalith_Application_Inventories_Commands_ChangeInventoryItemInformation__ctor_
@@ -3239,12 +3252,12 @@ references:
   commentId: M:Hexalith.Application.Inventories.Commands.DecreaseInventoryItemStock.#ctor
   fullName: Hexalith.Application.Inventories.Commands.DecreaseInventoryItemStock.DecreaseInventoryItemStock()
   nameWithType: DecreaseInventoryItemStock.DecreaseInventoryItemStock()
-- uid: Hexalith.Application.Inventories.Commands.DecreaseInventoryItemStock.#ctor(System.String,System.String,System.String,System.String,System.Decimal,DateTimeOffset)
-  name: DecreaseInventoryItemStock(String, String, String, String, Decimal, DateTimeOffset)
-  href: api/Hexalith.Application.Inventories.Commands.DecreaseInventoryItemStock.html#Hexalith_Application_Inventories_Commands_DecreaseInventoryItemStock__ctor_System_String_System_String_System_String_System_String_System_Decimal_DateTimeOffset_
-  commentId: M:Hexalith.Application.Inventories.Commands.DecreaseInventoryItemStock.#ctor(System.String,System.String,System.String,System.String,System.Decimal,DateTimeOffset)
-  fullName: Hexalith.Application.Inventories.Commands.DecreaseInventoryItemStock.DecreaseInventoryItemStock(System.String, System.String, System.String, System.String, System.Decimal, DateTimeOffset)
-  nameWithType: DecreaseInventoryItemStock.DecreaseInventoryItemStock(String, String, String, String, Decimal, DateTimeOffset)
+- uid: Hexalith.Application.Inventories.Commands.DecreaseInventoryItemStock.#ctor(System.String,System.String,System.String,System.String,System.String,System.Decimal,DateTimeOffset)
+  name: DecreaseInventoryItemStock(String, String, String, String, String, Decimal, DateTimeOffset)
+  href: api/Hexalith.Application.Inventories.Commands.DecreaseInventoryItemStock.html#Hexalith_Application_Inventories_Commands_DecreaseInventoryItemStock__ctor_System_String_System_String_System_String_System_String_System_String_System_Decimal_DateTimeOffset_
+  commentId: M:Hexalith.Application.Inventories.Commands.DecreaseInventoryItemStock.#ctor(System.String,System.String,System.String,System.String,System.String,System.Decimal,DateTimeOffset)
+  fullName: Hexalith.Application.Inventories.Commands.DecreaseInventoryItemStock.DecreaseInventoryItemStock(System.String, System.String, System.String, System.String, System.String, System.Decimal, DateTimeOffset)
+  nameWithType: DecreaseInventoryItemStock.DecreaseInventoryItemStock(String, String, String, String, String, Decimal, DateTimeOffset)
 - uid: Hexalith.Application.Inventories.Commands.DecreaseInventoryItemStock.#ctor*
   name: DecreaseInventoryItemStock
   href: api/Hexalith.Application.Inventories.Commands.DecreaseInventoryItemStock.html#Hexalith_Application_Inventories_Commands_DecreaseInventoryItemStock__ctor_
@@ -3290,12 +3303,12 @@ references:
   commentId: M:Hexalith.Application.Inventories.Commands.IncreaseInventoryItemStock.#ctor
   fullName: Hexalith.Application.Inventories.Commands.IncreaseInventoryItemStock.IncreaseInventoryItemStock()
   nameWithType: IncreaseInventoryItemStock.IncreaseInventoryItemStock()
-- uid: Hexalith.Application.Inventories.Commands.IncreaseInventoryItemStock.#ctor(System.String,System.String,System.String,System.String,System.Decimal,DateTimeOffset)
-  name: IncreaseInventoryItemStock(String, String, String, String, Decimal, DateTimeOffset)
-  href: api/Hexalith.Application.Inventories.Commands.IncreaseInventoryItemStock.html#Hexalith_Application_Inventories_Commands_IncreaseInventoryItemStock__ctor_System_String_System_String_System_String_System_String_System_Decimal_DateTimeOffset_
-  commentId: M:Hexalith.Application.Inventories.Commands.IncreaseInventoryItemStock.#ctor(System.String,System.String,System.String,System.String,System.Decimal,DateTimeOffset)
-  fullName: Hexalith.Application.Inventories.Commands.IncreaseInventoryItemStock.IncreaseInventoryItemStock(System.String, System.String, System.String, System.String, System.Decimal, DateTimeOffset)
-  nameWithType: IncreaseInventoryItemStock.IncreaseInventoryItemStock(String, String, String, String, Decimal, DateTimeOffset)
+- uid: Hexalith.Application.Inventories.Commands.IncreaseInventoryItemStock.#ctor(System.String,System.String,System.String,System.String,System.String,System.Decimal,DateTimeOffset)
+  name: IncreaseInventoryItemStock(String, String, String, String, String, Decimal, DateTimeOffset)
+  href: api/Hexalith.Application.Inventories.Commands.IncreaseInventoryItemStock.html#Hexalith_Application_Inventories_Commands_IncreaseInventoryItemStock__ctor_System_String_System_String_System_String_System_String_System_String_System_Decimal_DateTimeOffset_
+  commentId: M:Hexalith.Application.Inventories.Commands.IncreaseInventoryItemStock.#ctor(System.String,System.String,System.String,System.String,System.String,System.Decimal,DateTimeOffset)
+  fullName: Hexalith.Application.Inventories.Commands.IncreaseInventoryItemStock.IncreaseInventoryItemStock(System.String, System.String, System.String, System.String, System.String, System.Decimal, DateTimeOffset)
+  nameWithType: IncreaseInventoryItemStock.IncreaseInventoryItemStock(String, String, String, String, String, Decimal, DateTimeOffset)
 - uid: Hexalith.Application.Inventories.Commands.IncreaseInventoryItemStock.#ctor*
   name: IncreaseInventoryItemStock
   href: api/Hexalith.Application.Inventories.Commands.IncreaseInventoryItemStock.html#Hexalith_Application_Inventories_Commands_IncreaseInventoryItemStock__ctor_
@@ -3341,12 +3354,12 @@ references:
   commentId: M:Hexalith.Application.Inventories.Commands.InventoryItemCommand.#ctor
   fullName: Hexalith.Application.Inventories.Commands.InventoryItemCommand.InventoryItemCommand()
   nameWithType: InventoryItemCommand.InventoryItemCommand()
-- uid: Hexalith.Application.Inventories.Commands.InventoryItemCommand.#ctor(System.String,System.String,System.String)
-  name: InventoryItemCommand(String, String, String)
-  href: api/Hexalith.Application.Inventories.Commands.InventoryItemCommand.html#Hexalith_Application_Inventories_Commands_InventoryItemCommand__ctor_System_String_System_String_System_String_
-  commentId: M:Hexalith.Application.Inventories.Commands.InventoryItemCommand.#ctor(System.String,System.String,System.String)
-  fullName: Hexalith.Application.Inventories.Commands.InventoryItemCommand.InventoryItemCommand(System.String, System.String, System.String)
-  nameWithType: InventoryItemCommand.InventoryItemCommand(String, String, String)
+- uid: Hexalith.Application.Inventories.Commands.InventoryItemCommand.#ctor(System.String,System.String,System.String,System.String)
+  name: InventoryItemCommand(String, String, String, String)
+  href: api/Hexalith.Application.Inventories.Commands.InventoryItemCommand.html#Hexalith_Application_Inventories_Commands_InventoryItemCommand__ctor_System_String_System_String_System_String_System_String_
+  commentId: M:Hexalith.Application.Inventories.Commands.InventoryItemCommand.#ctor(System.String,System.String,System.String,System.String)
+  fullName: Hexalith.Application.Inventories.Commands.InventoryItemCommand.InventoryItemCommand(System.String, System.String, System.String, System.String)
+  nameWithType: InventoryItemCommand.InventoryItemCommand(String, String, String, String)
 - uid: Hexalith.Application.Inventories.Commands.InventoryItemCommand.#ctor*
   name: InventoryItemCommand
   href: api/Hexalith.Application.Inventories.Commands.InventoryItemCommand.html#Hexalith_Application_Inventories_Commands_InventoryItemCommand__ctor_
@@ -3392,12 +3405,12 @@ references:
   commentId: M:Hexalith.Application.Inventories.Commands.InventoryItemStockCommand.#ctor
   fullName: Hexalith.Application.Inventories.Commands.InventoryItemStockCommand.InventoryItemStockCommand()
   nameWithType: InventoryItemStockCommand.InventoryItemStockCommand()
-- uid: Hexalith.Application.Inventories.Commands.InventoryItemStockCommand.#ctor(System.String,System.String,System.String,System.String)
-  name: InventoryItemStockCommand(String, String, String, String)
-  href: api/Hexalith.Application.Inventories.Commands.InventoryItemStockCommand.html#Hexalith_Application_Inventories_Commands_InventoryItemStockCommand__ctor_System_String_System_String_System_String_System_String_
-  commentId: M:Hexalith.Application.Inventories.Commands.InventoryItemStockCommand.#ctor(System.String,System.String,System.String,System.String)
-  fullName: Hexalith.Application.Inventories.Commands.InventoryItemStockCommand.InventoryItemStockCommand(System.String, System.String, System.String, System.String)
-  nameWithType: InventoryItemStockCommand.InventoryItemStockCommand(String, String, String, String)
+- uid: Hexalith.Application.Inventories.Commands.InventoryItemStockCommand.#ctor(System.String,System.String,System.String,System.String,System.String)
+  name: InventoryItemStockCommand(String, String, String, String, String)
+  href: api/Hexalith.Application.Inventories.Commands.InventoryItemStockCommand.html#Hexalith_Application_Inventories_Commands_InventoryItemStockCommand__ctor_System_String_System_String_System_String_System_String_System_String_
+  commentId: M:Hexalith.Application.Inventories.Commands.InventoryItemStockCommand.#ctor(System.String,System.String,System.String,System.String,System.String)
+  fullName: Hexalith.Application.Inventories.Commands.InventoryItemStockCommand.InventoryItemStockCommand(System.String, System.String, System.String, System.String, System.String)
+  nameWithType: InventoryItemStockCommand.InventoryItemStockCommand(String, String, String, String, String)
 - uid: Hexalith.Application.Inventories.Commands.InventoryItemStockCommand.#ctor*
   name: InventoryItemStockCommand
   href: api/Hexalith.Application.Inventories.Commands.InventoryItemStockCommand.html#Hexalith_Application_Inventories_Commands_InventoryItemStockCommand__ctor_
@@ -3431,19 +3444,6 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Inventories.Commands.InventoryItemStockCommand.DefaultAggregateName
   nameWithType: InventoryItemStockCommand.DefaultAggregateName
-- uid: Hexalith.Application.Inventories.Commands.InventoryItemStockCommand.InventoryItemId
-  name: InventoryItemId
-  href: api/Hexalith.Application.Inventories.Commands.InventoryItemStockCommand.html#Hexalith_Application_Inventories_Commands_InventoryItemStockCommand_InventoryItemId
-  commentId: P:Hexalith.Application.Inventories.Commands.InventoryItemStockCommand.InventoryItemId
-  fullName: Hexalith.Application.Inventories.Commands.InventoryItemStockCommand.InventoryItemId
-  nameWithType: InventoryItemStockCommand.InventoryItemId
-- uid: Hexalith.Application.Inventories.Commands.InventoryItemStockCommand.InventoryItemId*
-  name: InventoryItemId
-  href: api/Hexalith.Application.Inventories.Commands.InventoryItemStockCommand.html#Hexalith_Application_Inventories_Commands_InventoryItemStockCommand_InventoryItemId_
-  commentId: Overload:Hexalith.Application.Inventories.Commands.InventoryItemStockCommand.InventoryItemId
-  isSpec: "True"
-  fullName: Hexalith.Application.Inventories.Commands.InventoryItemStockCommand.InventoryItemId
-  nameWithType: InventoryItemStockCommand.InventoryItemId
 - uid: Hexalith.Application.Inventories.Commands.InventoryItemStockCommand.LocationId
   name: LocationId
   href: api/Hexalith.Application.Inventories.Commands.InventoryItemStockCommand.html#Hexalith_Application_Inventories_Commands_InventoryItemStockCommand_LocationId
@@ -3469,12 +3469,12 @@ references:
   commentId: M:Hexalith.Application.Inventories.Commands.RemoveInventoryItemBarcode.#ctor
   fullName: Hexalith.Application.Inventories.Commands.RemoveInventoryItemBarcode.RemoveInventoryItemBarcode()
   nameWithType: RemoveInventoryItemBarcode.RemoveInventoryItemBarcode()
-- uid: Hexalith.Application.Inventories.Commands.RemoveInventoryItemBarcode.#ctor(System.String,System.String,System.String,System.String,DateTimeOffset)
-  name: RemoveInventoryItemBarcode(String, String, String, String, DateTimeOffset)
-  href: api/Hexalith.Application.Inventories.Commands.RemoveInventoryItemBarcode.html#Hexalith_Application_Inventories_Commands_RemoveInventoryItemBarcode__ctor_System_String_System_String_System_String_System_String_DateTimeOffset_
-  commentId: M:Hexalith.Application.Inventories.Commands.RemoveInventoryItemBarcode.#ctor(System.String,System.String,System.String,System.String,DateTimeOffset)
-  fullName: Hexalith.Application.Inventories.Commands.RemoveInventoryItemBarcode.RemoveInventoryItemBarcode(System.String, System.String, System.String, System.String, DateTimeOffset)
-  nameWithType: RemoveInventoryItemBarcode.RemoveInventoryItemBarcode(String, String, String, String, DateTimeOffset)
+- uid: Hexalith.Application.Inventories.Commands.RemoveInventoryItemBarcode.#ctor(System.String,System.String,System.String,System.String,System.String,DateTimeOffset)
+  name: RemoveInventoryItemBarcode(String, String, String, String, String, DateTimeOffset)
+  href: api/Hexalith.Application.Inventories.Commands.RemoveInventoryItemBarcode.html#Hexalith_Application_Inventories_Commands_RemoveInventoryItemBarcode__ctor_System_String_System_String_System_String_System_String_System_String_DateTimeOffset_
+  commentId: M:Hexalith.Application.Inventories.Commands.RemoveInventoryItemBarcode.#ctor(System.String,System.String,System.String,System.String,System.String,DateTimeOffset)
+  fullName: Hexalith.Application.Inventories.Commands.RemoveInventoryItemBarcode.RemoveInventoryItemBarcode(System.String, System.String, System.String, System.String, System.String, DateTimeOffset)
+  nameWithType: RemoveInventoryItemBarcode.RemoveInventoryItemBarcode(String, String, String, String, String, DateTimeOffset)
 - uid: Hexalith.Application.Inventories.Commands.RemoveInventoryItemBarcode.#ctor*
   name: RemoveInventoryItemBarcode
   href: api/Hexalith.Application.Inventories.Commands.RemoveInventoryItemBarcode.html#Hexalith_Application_Inventories_Commands_RemoveInventoryItemBarcode__ctor_
@@ -4913,44 +4913,6 @@ references:
   commentId: N:Hexalith.Application.Organizations.Commands
   fullName: Hexalith.Application.Organizations.Commands
   nameWithType: Hexalith.Application.Organizations.Commands
-- uid: Hexalith.Application.Organizations.Commands.CompanyCommand
-  name: CompanyCommand
-  href: api/Hexalith.Application.Organizations.Commands.CompanyCommand.html
-  commentId: T:Hexalith.Application.Organizations.Commands.CompanyCommand
-  fullName: Hexalith.Application.Organizations.Commands.CompanyCommand
-  nameWithType: CompanyCommand
-- uid: Hexalith.Application.Organizations.Commands.CompanyCommand.#ctor
-  name: CompanyCommand()
-  href: api/Hexalith.Application.Organizations.Commands.CompanyCommand.html#Hexalith_Application_Organizations_Commands_CompanyCommand__ctor
-  commentId: M:Hexalith.Application.Organizations.Commands.CompanyCommand.#ctor
-  fullName: Hexalith.Application.Organizations.Commands.CompanyCommand.CompanyCommand()
-  nameWithType: CompanyCommand.CompanyCommand()
-- uid: Hexalith.Application.Organizations.Commands.CompanyCommand.#ctor(System.String,System.String)
-  name: CompanyCommand(String, String)
-  href: api/Hexalith.Application.Organizations.Commands.CompanyCommand.html#Hexalith_Application_Organizations_Commands_CompanyCommand__ctor_System_String_System_String_
-  commentId: M:Hexalith.Application.Organizations.Commands.CompanyCommand.#ctor(System.String,System.String)
-  fullName: Hexalith.Application.Organizations.Commands.CompanyCommand.CompanyCommand(System.String, System.String)
-  nameWithType: CompanyCommand.CompanyCommand(String, String)
-- uid: Hexalith.Application.Organizations.Commands.CompanyCommand.#ctor*
-  name: CompanyCommand
-  href: api/Hexalith.Application.Organizations.Commands.CompanyCommand.html#Hexalith_Application_Organizations_Commands_CompanyCommand__ctor_
-  commentId: Overload:Hexalith.Application.Organizations.Commands.CompanyCommand.#ctor
-  isSpec: "True"
-  fullName: Hexalith.Application.Organizations.Commands.CompanyCommand.CompanyCommand
-  nameWithType: CompanyCommand.CompanyCommand
-- uid: Hexalith.Application.Organizations.Commands.CompanyCommand.CompanyId
-  name: CompanyId
-  href: api/Hexalith.Application.Organizations.Commands.CompanyCommand.html#Hexalith_Application_Organizations_Commands_CompanyCommand_CompanyId
-  commentId: P:Hexalith.Application.Organizations.Commands.CompanyCommand.CompanyId
-  fullName: Hexalith.Application.Organizations.Commands.CompanyCommand.CompanyId
-  nameWithType: CompanyCommand.CompanyId
-- uid: Hexalith.Application.Organizations.Commands.CompanyCommand.CompanyId*
-  name: CompanyId
-  href: api/Hexalith.Application.Organizations.Commands.CompanyCommand.html#Hexalith_Application_Organizations_Commands_CompanyCommand_CompanyId_
-  commentId: Overload:Hexalith.Application.Organizations.Commands.CompanyCommand.CompanyId
-  isSpec: "True"
-  fullName: Hexalith.Application.Organizations.Commands.CompanyCommand.CompanyId
-  nameWithType: CompanyCommand.CompanyId
 - uid: Hexalith.Application.Organizations.Commands.CompanyEntityCommand
   name: CompanyEntityCommand
   href: api/Hexalith.Application.Organizations.Commands.CompanyEntityCommand.html
@@ -4963,12 +4925,12 @@ references:
   commentId: M:Hexalith.Application.Organizations.Commands.CompanyEntityCommand.#ctor
   fullName: Hexalith.Application.Organizations.Commands.CompanyEntityCommand.CompanyEntityCommand()
   nameWithType: CompanyEntityCommand.CompanyEntityCommand()
-- uid: Hexalith.Application.Organizations.Commands.CompanyEntityCommand.#ctor(System.String,System.String,System.String)
-  name: CompanyEntityCommand(String, String, String)
-  href: api/Hexalith.Application.Organizations.Commands.CompanyEntityCommand.html#Hexalith_Application_Organizations_Commands_CompanyEntityCommand__ctor_System_String_System_String_System_String_
-  commentId: M:Hexalith.Application.Organizations.Commands.CompanyEntityCommand.#ctor(System.String,System.String,System.String)
-  fullName: Hexalith.Application.Organizations.Commands.CompanyEntityCommand.CompanyEntityCommand(System.String, System.String, System.String)
-  nameWithType: CompanyEntityCommand.CompanyEntityCommand(String, String, String)
+- uid: Hexalith.Application.Organizations.Commands.CompanyEntityCommand.#ctor(System.String,System.String,System.String,System.String)
+  name: CompanyEntityCommand(String, String, String, String)
+  href: api/Hexalith.Application.Organizations.Commands.CompanyEntityCommand.html#Hexalith_Application_Organizations_Commands_CompanyEntityCommand__ctor_System_String_System_String_System_String_System_String_
+  commentId: M:Hexalith.Application.Organizations.Commands.CompanyEntityCommand.#ctor(System.String,System.String,System.String,System.String)
+  fullName: Hexalith.Application.Organizations.Commands.CompanyEntityCommand.CompanyEntityCommand(System.String, System.String, System.String, System.String)
+  nameWithType: CompanyEntityCommand.CompanyEntityCommand(String, String, String, String)
 - uid: Hexalith.Application.Organizations.Commands.CompanyEntityCommand.#ctor*
   name: CompanyEntityCommand
   href: api/Hexalith.Application.Organizations.Commands.CompanyEntityCommand.html#Hexalith_Application_Organizations_Commands_CompanyEntityCommand__ctor_
@@ -4976,19 +4938,70 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Organizations.Commands.CompanyEntityCommand.CompanyEntityCommand
   nameWithType: CompanyEntityCommand.CompanyEntityCommand
-- uid: Hexalith.Application.Organizations.Commands.CompanyEntityCommand.Id
-  name: Id
-  href: api/Hexalith.Application.Organizations.Commands.CompanyEntityCommand.html#Hexalith_Application_Organizations_Commands_CompanyEntityCommand_Id
-  commentId: P:Hexalith.Application.Organizations.Commands.CompanyEntityCommand.Id
-  fullName: Hexalith.Application.Organizations.Commands.CompanyEntityCommand.Id
-  nameWithType: CompanyEntityCommand.Id
-- uid: Hexalith.Application.Organizations.Commands.CompanyEntityCommand.Id*
-  name: Id
-  href: api/Hexalith.Application.Organizations.Commands.CompanyEntityCommand.html#Hexalith_Application_Organizations_Commands_CompanyEntityCommand_Id_
-  commentId: Overload:Hexalith.Application.Organizations.Commands.CompanyEntityCommand.Id
+- uid: Hexalith.Application.Organizations.Commands.CompanyEntityCommand.CompanyId
+  name: CompanyId
+  href: api/Hexalith.Application.Organizations.Commands.CompanyEntityCommand.html#Hexalith_Application_Organizations_Commands_CompanyEntityCommand_CompanyId
+  commentId: P:Hexalith.Application.Organizations.Commands.CompanyEntityCommand.CompanyId
+  fullName: Hexalith.Application.Organizations.Commands.CompanyEntityCommand.CompanyId
+  nameWithType: CompanyEntityCommand.CompanyId
+- uid: Hexalith.Application.Organizations.Commands.CompanyEntityCommand.CompanyId*
+  name: CompanyId
+  href: api/Hexalith.Application.Organizations.Commands.CompanyEntityCommand.html#Hexalith_Application_Organizations_Commands_CompanyEntityCommand_CompanyId_
+  commentId: Overload:Hexalith.Application.Organizations.Commands.CompanyEntityCommand.CompanyId
   isSpec: "True"
-  fullName: Hexalith.Application.Organizations.Commands.CompanyEntityCommand.Id
-  nameWithType: CompanyEntityCommand.Id
+  fullName: Hexalith.Application.Organizations.Commands.CompanyEntityCommand.CompanyId
+  nameWithType: CompanyEntityCommand.CompanyId
+- uid: Hexalith.Application.Organizations.Commands.EntityCommand
+  name: EntityCommand
+  href: api/Hexalith.Application.Organizations.Commands.EntityCommand.html
+  commentId: T:Hexalith.Application.Organizations.Commands.EntityCommand
+  fullName: Hexalith.Application.Organizations.Commands.EntityCommand
+  nameWithType: EntityCommand
+- uid: Hexalith.Application.Organizations.Commands.EntityCommand.#ctor
+  name: EntityCommand()
+  href: api/Hexalith.Application.Organizations.Commands.EntityCommand.html#Hexalith_Application_Organizations_Commands_EntityCommand__ctor
+  commentId: M:Hexalith.Application.Organizations.Commands.EntityCommand.#ctor
+  fullName: Hexalith.Application.Organizations.Commands.EntityCommand.EntityCommand()
+  nameWithType: EntityCommand.EntityCommand()
+- uid: Hexalith.Application.Organizations.Commands.EntityCommand.#ctor(System.String,System.String,System.String)
+  name: EntityCommand(String, String, String)
+  href: api/Hexalith.Application.Organizations.Commands.EntityCommand.html#Hexalith_Application_Organizations_Commands_EntityCommand__ctor_System_String_System_String_System_String_
+  commentId: M:Hexalith.Application.Organizations.Commands.EntityCommand.#ctor(System.String,System.String,System.String)
+  fullName: Hexalith.Application.Organizations.Commands.EntityCommand.EntityCommand(System.String, System.String, System.String)
+  nameWithType: EntityCommand.EntityCommand(String, String, String)
+- uid: Hexalith.Application.Organizations.Commands.EntityCommand.#ctor*
+  name: EntityCommand
+  href: api/Hexalith.Application.Organizations.Commands.EntityCommand.html#Hexalith_Application_Organizations_Commands_EntityCommand__ctor_
+  commentId: Overload:Hexalith.Application.Organizations.Commands.EntityCommand.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Application.Organizations.Commands.EntityCommand.EntityCommand
+  nameWithType: EntityCommand.EntityCommand
+- uid: Hexalith.Application.Organizations.Commands.EntityCommand.Id
+  name: Id
+  href: api/Hexalith.Application.Organizations.Commands.EntityCommand.html#Hexalith_Application_Organizations_Commands_EntityCommand_Id
+  commentId: P:Hexalith.Application.Organizations.Commands.EntityCommand.Id
+  fullName: Hexalith.Application.Organizations.Commands.EntityCommand.Id
+  nameWithType: EntityCommand.Id
+- uid: Hexalith.Application.Organizations.Commands.EntityCommand.Id*
+  name: Id
+  href: api/Hexalith.Application.Organizations.Commands.EntityCommand.html#Hexalith_Application_Organizations_Commands_EntityCommand_Id_
+  commentId: Overload:Hexalith.Application.Organizations.Commands.EntityCommand.Id
+  isSpec: "True"
+  fullName: Hexalith.Application.Organizations.Commands.EntityCommand.Id
+  nameWithType: EntityCommand.Id
+- uid: Hexalith.Application.Organizations.Commands.EntityCommand.OriginId
+  name: OriginId
+  href: api/Hexalith.Application.Organizations.Commands.EntityCommand.html#Hexalith_Application_Organizations_Commands_EntityCommand_OriginId
+  commentId: P:Hexalith.Application.Organizations.Commands.EntityCommand.OriginId
+  fullName: Hexalith.Application.Organizations.Commands.EntityCommand.OriginId
+  nameWithType: EntityCommand.OriginId
+- uid: Hexalith.Application.Organizations.Commands.EntityCommand.OriginId*
+  name: OriginId
+  href: api/Hexalith.Application.Organizations.Commands.EntityCommand.html#Hexalith_Application_Organizations_Commands_EntityCommand_OriginId_
+  commentId: Overload:Hexalith.Application.Organizations.Commands.EntityCommand.OriginId
+  isSpec: "True"
+  fullName: Hexalith.Application.Organizations.Commands.EntityCommand.OriginId
+  nameWithType: EntityCommand.OriginId
 - uid: Hexalith.Application.Organizations.Commands.PartitionedCommand
   name: PartitionedCommand
   href: api/Hexalith.Application.Organizations.Commands.PartitionedCommand.html
@@ -5065,6 +5078,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Organizations.Configurations.OrganizationSettings.DefaultCompanyId
   nameWithType: OrganizationSettings.DefaultCompanyId
+- uid: Hexalith.Application.Organizations.Configurations.OrganizationSettings.DefaultOriginId
+  name: DefaultOriginId
+  href: api/Hexalith.Application.Organizations.Configurations.OrganizationSettings.html#Hexalith_Application_Organizations_Configurations_OrganizationSettings_DefaultOriginId
+  commentId: P:Hexalith.Application.Organizations.Configurations.OrganizationSettings.DefaultOriginId
+  fullName: Hexalith.Application.Organizations.Configurations.OrganizationSettings.DefaultOriginId
+  nameWithType: OrganizationSettings.DefaultOriginId
+- uid: Hexalith.Application.Organizations.Configurations.OrganizationSettings.DefaultOriginId*
+  name: DefaultOriginId
+  href: api/Hexalith.Application.Organizations.Configurations.OrganizationSettings.html#Hexalith_Application_Organizations_Configurations_OrganizationSettings_DefaultOriginId_
+  commentId: Overload:Hexalith.Application.Organizations.Configurations.OrganizationSettings.DefaultOriginId
+  isSpec: "True"
+  fullName: Hexalith.Application.Organizations.Configurations.OrganizationSettings.DefaultOriginId
+  nameWithType: OrganizationSettings.DefaultOriginId
 - uid: Hexalith.Application.Organizations.Configurations.OrganizationSettings.DefaultPartitionId
   name: DefaultPartitionId
   href: api/Hexalith.Application.Organizations.Configurations.OrganizationSettings.html#Hexalith_Application_Organizations_Configurations_OrganizationSettings_DefaultPartitionId
@@ -5369,12 +5395,12 @@ references:
   commentId: M:Hexalith.Application.Parties.Commands.ChangeCustomerInformation.#ctor
   fullName: Hexalith.Application.Parties.Commands.ChangeCustomerInformation.ChangeCustomerInformation()
   nameWithType: ChangeCustomerInformation.ChangeCustomerInformation()
-- uid: Hexalith.Application.Parties.Commands.ChangeCustomerInformation.#ctor(System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,DateTimeOffset)
-  name: ChangeCustomerInformation(String, String, String, String, Contact, String, String, DateTimeOffset)
-  href: api/Hexalith.Application.Parties.Commands.ChangeCustomerInformation.html#Hexalith_Application_Parties_Commands_ChangeCustomerInformation__ctor_System_String_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_Contact_System_String_System_String_DateTimeOffset_
-  commentId: M:Hexalith.Application.Parties.Commands.ChangeCustomerInformation.#ctor(System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,DateTimeOffset)
-  fullName: Hexalith.Application.Parties.Commands.ChangeCustomerInformation.ChangeCustomerInformation(System.String, System.String, System.String, System.String, Hexalith.Domain.ValueObjets.Contact, System.String, System.String, DateTimeOffset)
-  nameWithType: ChangeCustomerInformation.ChangeCustomerInformation(String, String, String, String, Contact, String, String, DateTimeOffset)
+- uid: Hexalith.Application.Parties.Commands.ChangeCustomerInformation.#ctor(System.String,System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,DateTimeOffset)
+  name: ChangeCustomerInformation(String, String, String, String, String, Contact, String, String, DateTimeOffset)
+  href: api/Hexalith.Application.Parties.Commands.ChangeCustomerInformation.html#Hexalith_Application_Parties_Commands_ChangeCustomerInformation__ctor_System_String_System_String_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_Contact_System_String_System_String_DateTimeOffset_
+  commentId: M:Hexalith.Application.Parties.Commands.ChangeCustomerInformation.#ctor(System.String,System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,DateTimeOffset)
+  fullName: Hexalith.Application.Parties.Commands.ChangeCustomerInformation.ChangeCustomerInformation(System.String, System.String, System.String, System.String, System.String, Hexalith.Domain.ValueObjets.Contact, System.String, System.String, DateTimeOffset)
+  nameWithType: ChangeCustomerInformation.ChangeCustomerInformation(String, String, String, String, String, Contact, String, String, DateTimeOffset)
 - uid: Hexalith.Application.Parties.Commands.ChangeCustomerInformation.#ctor*
   name: ChangeCustomerInformation
   href: api/Hexalith.Application.Parties.Commands.ChangeCustomerInformation.html#Hexalith_Application_Parties_Commands_ChangeCustomerInformation__ctor_
@@ -5459,12 +5485,12 @@ references:
   commentId: M:Hexalith.Application.Parties.Commands.CustomerCommand.#ctor
   fullName: Hexalith.Application.Parties.Commands.CustomerCommand.CustomerCommand()
   nameWithType: CustomerCommand.CustomerCommand()
-- uid: Hexalith.Application.Parties.Commands.CustomerCommand.#ctor(System.String,System.String,System.String)
-  name: CustomerCommand(String, String, String)
-  href: api/Hexalith.Application.Parties.Commands.CustomerCommand.html#Hexalith_Application_Parties_Commands_CustomerCommand__ctor_System_String_System_String_System_String_
-  commentId: M:Hexalith.Application.Parties.Commands.CustomerCommand.#ctor(System.String,System.String,System.String)
-  fullName: Hexalith.Application.Parties.Commands.CustomerCommand.CustomerCommand(System.String, System.String, System.String)
-  nameWithType: CustomerCommand.CustomerCommand(String, String, String)
+- uid: Hexalith.Application.Parties.Commands.CustomerCommand.#ctor(System.String,System.String,System.String,System.String)
+  name: CustomerCommand(String, String, String, String)
+  href: api/Hexalith.Application.Parties.Commands.CustomerCommand.html#Hexalith_Application_Parties_Commands_CustomerCommand__ctor_System_String_System_String_System_String_System_String_
+  commentId: M:Hexalith.Application.Parties.Commands.CustomerCommand.#ctor(System.String,System.String,System.String,System.String)
+  fullName: Hexalith.Application.Parties.Commands.CustomerCommand.CustomerCommand(System.String, System.String, System.String, System.String)
+  nameWithType: CustomerCommand.CustomerCommand(String, String, String, String)
 - uid: Hexalith.Application.Parties.Commands.CustomerCommand.#ctor*
   name: CustomerCommand
   href: api/Hexalith.Application.Parties.Commands.CustomerCommand.html#Hexalith_Application_Parties_Commands_CustomerCommand__ctor_
@@ -5510,12 +5536,12 @@ references:
   commentId: M:Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.#ctor
   fullName: Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.DeselectIntercompanyDropshipDeliveryForCustomer()
   nameWithType: DeselectIntercompanyDropshipDeliveryForCustomer.DeselectIntercompanyDropshipDeliveryForCustomer()
-- uid: Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.#ctor(System.String,System.String,System.String)
-  name: DeselectIntercompanyDropshipDeliveryForCustomer(String, String, String)
-  href: api/Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.html#Hexalith_Application_Parties_Commands_DeselectIntercompanyDropshipDeliveryForCustomer__ctor_System_String_System_String_System_String_
-  commentId: M:Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.#ctor(System.String,System.String,System.String)
-  fullName: Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.DeselectIntercompanyDropshipDeliveryForCustomer(System.String, System.String, System.String)
-  nameWithType: DeselectIntercompanyDropshipDeliveryForCustomer.DeselectIntercompanyDropshipDeliveryForCustomer(String, String, String)
+- uid: Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.#ctor(System.String,System.String,System.String,System.String)
+  name: DeselectIntercompanyDropshipDeliveryForCustomer(String, String, String, String)
+  href: api/Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.html#Hexalith_Application_Parties_Commands_DeselectIntercompanyDropshipDeliveryForCustomer__ctor_System_String_System_String_System_String_System_String_
+  commentId: M:Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.#ctor(System.String,System.String,System.String,System.String)
+  fullName: Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.DeselectIntercompanyDropshipDeliveryForCustomer(System.String, System.String, System.String, System.String)
+  nameWithType: DeselectIntercompanyDropshipDeliveryForCustomer.DeselectIntercompanyDropshipDeliveryForCustomer(String, String, String, String)
 - uid: Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.#ctor*
   name: DeselectIntercompanyDropshipDeliveryForCustomer
   href: api/Hexalith.Application.Parties.Commands.DeselectIntercompanyDropshipDeliveryForCustomer.html#Hexalith_Application_Parties_Commands_DeselectIntercompanyDropshipDeliveryForCustomer__ctor_
@@ -5535,12 +5561,12 @@ references:
   commentId: M:Hexalith.Application.Parties.Commands.RegisterCustomer.#ctor
   fullName: Hexalith.Application.Parties.Commands.RegisterCustomer.RegisterCustomer()
   nameWithType: RegisterCustomer.RegisterCustomer()
-- uid: Hexalith.Application.Parties.Commands.RegisterCustomer.#ctor(System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,DateTimeOffset)
-  name: RegisterCustomer(String, String, String, String, Contact, String, String, DateTimeOffset)
-  href: api/Hexalith.Application.Parties.Commands.RegisterCustomer.html#Hexalith_Application_Parties_Commands_RegisterCustomer__ctor_System_String_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_Contact_System_String_System_String_DateTimeOffset_
-  commentId: M:Hexalith.Application.Parties.Commands.RegisterCustomer.#ctor(System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,DateTimeOffset)
-  fullName: Hexalith.Application.Parties.Commands.RegisterCustomer.RegisterCustomer(System.String, System.String, System.String, System.String, Hexalith.Domain.ValueObjets.Contact, System.String, System.String, DateTimeOffset)
-  nameWithType: RegisterCustomer.RegisterCustomer(String, String, String, String, Contact, String, String, DateTimeOffset)
+- uid: Hexalith.Application.Parties.Commands.RegisterCustomer.#ctor(System.String,System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,DateTimeOffset)
+  name: RegisterCustomer(String, String, String, String, String, Contact, String, String, DateTimeOffset)
+  href: api/Hexalith.Application.Parties.Commands.RegisterCustomer.html#Hexalith_Application_Parties_Commands_RegisterCustomer__ctor_System_String_System_String_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_Contact_System_String_System_String_DateTimeOffset_
+  commentId: M:Hexalith.Application.Parties.Commands.RegisterCustomer.#ctor(System.String,System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,DateTimeOffset)
+  fullName: Hexalith.Application.Parties.Commands.RegisterCustomer.RegisterCustomer(System.String, System.String, System.String, System.String, System.String, Hexalith.Domain.ValueObjets.Contact, System.String, System.String, DateTimeOffset)
+  nameWithType: RegisterCustomer.RegisterCustomer(String, String, String, String, String, Contact, String, String, DateTimeOffset)
 - uid: Hexalith.Application.Parties.Commands.RegisterCustomer.#ctor*
   name: RegisterCustomer
   href: api/Hexalith.Application.Parties.Commands.RegisterCustomer.html#Hexalith_Application_Parties_Commands_RegisterCustomer__ctor_
@@ -5625,12 +5651,12 @@ references:
   commentId: M:Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.#ctor
   fullName: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.RegisterOrChangeCustomer()
   nameWithType: RegisterOrChangeCustomer.RegisterOrChangeCustomer()
-- uid: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.#ctor(System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,DateTimeOffset)
-  name: RegisterOrChangeCustomer(String, String, String, String, Contact, String, String, DateTimeOffset)
-  href: api/Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.html#Hexalith_Application_Parties_Commands_RegisterOrChangeCustomer__ctor_System_String_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_Contact_System_String_System_String_DateTimeOffset_
-  commentId: M:Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.#ctor(System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,DateTimeOffset)
-  fullName: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.RegisterOrChangeCustomer(System.String, System.String, System.String, System.String, Hexalith.Domain.ValueObjets.Contact, System.String, System.String, DateTimeOffset)
-  nameWithType: RegisterOrChangeCustomer.RegisterOrChangeCustomer(String, String, String, String, Contact, String, String, DateTimeOffset)
+- uid: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.#ctor(System.String,System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,DateTimeOffset)
+  name: RegisterOrChangeCustomer(String, String, String, String, String, Contact, String, String, DateTimeOffset)
+  href: api/Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.html#Hexalith_Application_Parties_Commands_RegisterOrChangeCustomer__ctor_System_String_System_String_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_Contact_System_String_System_String_DateTimeOffset_
+  commentId: M:Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.#ctor(System.String,System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,DateTimeOffset)
+  fullName: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.RegisterOrChangeCustomer(System.String, System.String, System.String, System.String, System.String, Hexalith.Domain.ValueObjets.Contact, System.String, System.String, DateTimeOffset)
+  nameWithType: RegisterOrChangeCustomer.RegisterOrChangeCustomer(String, String, String, String, String, Contact, String, String, DateTimeOffset)
 - uid: Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.#ctor*
   name: RegisterOrChangeCustomer
   href: api/Hexalith.Application.Parties.Commands.RegisterOrChangeCustomer.html#Hexalith_Application_Parties_Commands_RegisterOrChangeCustomer__ctor_
@@ -5715,12 +5741,12 @@ references:
   commentId: M:Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.#ctor
   fullName: Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.SelectIntercompanyDropshipDeliveryForCustomer()
   nameWithType: SelectIntercompanyDropshipDeliveryForCustomer.SelectIntercompanyDropshipDeliveryForCustomer()
-- uid: Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.#ctor(System.String,System.String,System.String)
-  name: SelectIntercompanyDropshipDeliveryForCustomer(String, String, String)
-  href: api/Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.html#Hexalith_Application_Parties_Commands_SelectIntercompanyDropshipDeliveryForCustomer__ctor_System_String_System_String_System_String_
-  commentId: M:Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.#ctor(System.String,System.String,System.String)
-  fullName: Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.SelectIntercompanyDropshipDeliveryForCustomer(System.String, System.String, System.String)
-  nameWithType: SelectIntercompanyDropshipDeliveryForCustomer.SelectIntercompanyDropshipDeliveryForCustomer(String, String, String)
+- uid: Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.#ctor(System.String,System.String,System.String,System.String)
+  name: SelectIntercompanyDropshipDeliveryForCustomer(String, String, String, String)
+  href: api/Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.html#Hexalith_Application_Parties_Commands_SelectIntercompanyDropshipDeliveryForCustomer__ctor_System_String_System_String_System_String_System_String_
+  commentId: M:Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.#ctor(System.String,System.String,System.String,System.String)
+  fullName: Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.SelectIntercompanyDropshipDeliveryForCustomer(System.String, System.String, System.String, System.String)
+  nameWithType: SelectIntercompanyDropshipDeliveryForCustomer.SelectIntercompanyDropshipDeliveryForCustomer(String, String, String, String)
 - uid: Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.#ctor*
   name: SelectIntercompanyDropshipDeliveryForCustomer
   href: api/Hexalith.Application.Parties.Commands.SelectIntercompanyDropshipDeliveryForCustomer.html#Hexalith_Application_Parties_Commands_SelectIntercompanyDropshipDeliveryForCustomer__ctor_
@@ -10256,12 +10282,12 @@ references:
   commentId: M:Hexalith.Domain.Aggregates.Customer.#ctor(Hexalith.Domain.Events.CustomerRegistered)
   fullName: Hexalith.Domain.Aggregates.Customer.Customer(Hexalith.Domain.Events.CustomerRegistered)
   nameWithType: Customer.Customer(CustomerRegistered)
-- uid: Hexalith.Domain.Aggregates.Customer.#ctor(System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,System.Boolean,DateTimeOffset)
-  name: Customer(String, String, String, String, Contact, String, String, Boolean, DateTimeOffset)
-  href: api/Hexalith.Domain.Aggregates.Customer.html#Hexalith_Domain_Aggregates_Customer__ctor_System_String_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_Contact_System_String_System_String_System_Boolean_DateTimeOffset_
-  commentId: M:Hexalith.Domain.Aggregates.Customer.#ctor(System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,System.Boolean,DateTimeOffset)
-  fullName: Hexalith.Domain.Aggregates.Customer.Customer(System.String, System.String, System.String, System.String, Hexalith.Domain.ValueObjets.Contact, System.String, System.String, System.Boolean, DateTimeOffset)
-  nameWithType: Customer.Customer(String, String, String, String, Contact, String, String, Boolean, DateTimeOffset)
+- uid: Hexalith.Domain.Aggregates.Customer.#ctor(System.String,System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,System.Boolean,DateTimeOffset)
+  name: Customer(String, String, String, String, String, Contact, String, String, Boolean, DateTimeOffset)
+  href: api/Hexalith.Domain.Aggregates.Customer.html#Hexalith_Domain_Aggregates_Customer__ctor_System_String_System_String_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_Contact_System_String_System_String_System_Boolean_DateTimeOffset_
+  commentId: M:Hexalith.Domain.Aggregates.Customer.#ctor(System.String,System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,System.Boolean,DateTimeOffset)
+  fullName: Hexalith.Domain.Aggregates.Customer.Customer(System.String, System.String, System.String, System.String, System.String, Hexalith.Domain.ValueObjets.Contact, System.String, System.String, System.Boolean, DateTimeOffset)
+  nameWithType: Customer.Customer(String, String, String, String, String, Contact, String, String, Boolean, DateTimeOffset)
 - uid: Hexalith.Domain.Aggregates.Customer.#ctor*
   name: Customer
   href: api/Hexalith.Domain.Aggregates.Customer.html#Hexalith_Domain_Aggregates_Customer__ctor_
@@ -10347,12 +10373,12 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Aggregates.Customer.DefaultAggregateId
   nameWithType: Customer.DefaultAggregateId
-- uid: Hexalith.Domain.Aggregates.Customer.GetAggregateId(System.String,System.String,System.String)
-  name: GetAggregateId(String, String, String)
-  href: api/Hexalith.Domain.Aggregates.Customer.html#Hexalith_Domain_Aggregates_Customer_GetAggregateId_System_String_System_String_System_String_
-  commentId: M:Hexalith.Domain.Aggregates.Customer.GetAggregateId(System.String,System.String,System.String)
-  fullName: Hexalith.Domain.Aggregates.Customer.GetAggregateId(System.String, System.String, System.String)
-  nameWithType: Customer.GetAggregateId(String, String, String)
+- uid: Hexalith.Domain.Aggregates.Customer.GetAggregateId(System.String,System.String,System.String,System.String)
+  name: GetAggregateId(String, String, String, String)
+  href: api/Hexalith.Domain.Aggregates.Customer.html#Hexalith_Domain_Aggregates_Customer_GetAggregateId_System_String_System_String_System_String_System_String_
+  commentId: M:Hexalith.Domain.Aggregates.Customer.GetAggregateId(System.String,System.String,System.String,System.String)
+  fullName: Hexalith.Domain.Aggregates.Customer.GetAggregateId(System.String, System.String, System.String, System.String)
+  nameWithType: Customer.GetAggregateId(String, String, String, String)
 - uid: Hexalith.Domain.Aggregates.Customer.GetAggregateId*
   name: GetAggregateId
   href: api/Hexalith.Domain.Aggregates.Customer.html#Hexalith_Domain_Aggregates_Customer_GetAggregateId_
@@ -10425,6 +10451,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Aggregates.Customer.Name
   nameWithType: Customer.Name
+- uid: Hexalith.Domain.Aggregates.Customer.OriginId
+  name: OriginId
+  href: api/Hexalith.Domain.Aggregates.Customer.html#Hexalith_Domain_Aggregates_Customer_OriginId
+  commentId: P:Hexalith.Domain.Aggregates.Customer.OriginId
+  fullName: Hexalith.Domain.Aggregates.Customer.OriginId
+  nameWithType: Customer.OriginId
+- uid: Hexalith.Domain.Aggregates.Customer.OriginId*
+  name: OriginId
+  href: api/Hexalith.Domain.Aggregates.Customer.html#Hexalith_Domain_Aggregates_Customer_OriginId_
+  commentId: Overload:Hexalith.Domain.Aggregates.Customer.OriginId
+  isSpec: "True"
+  fullName: Hexalith.Domain.Aggregates.Customer.OriginId
+  nameWithType: Customer.OriginId
 - uid: Hexalith.Domain.Aggregates.Customer.PartitionId
   name: PartitionId
   href: api/Hexalith.Domain.Aggregates.Customer.html#Hexalith_Domain_Aggregates_Customer_PartitionId
@@ -10768,15 +10807,15 @@ references:
   commentId: M:Hexalith.Domain.Aggregates.InventoryItem.#ctor(Hexalith.Domain.Events.InventoryItemInformationChanged)
   fullName: Hexalith.Domain.Aggregates.InventoryItem.InventoryItem(Hexalith.Domain.Events.InventoryItemInformationChanged)
   nameWithType: InventoryItem.InventoryItem(InventoryItemInformationChanged)
-- uid: Hexalith.Domain.Aggregates.InventoryItem.#ctor(System.String,System.String,System.String,System.String,System.Nullable{IEnumerable{Hexalith.Domain.ValueObjets.ItemBarcode}},DateTimeOffset)
-  name: InventoryItem(String, String, String, String, Nullable<IEnumerable<ItemBarcode>>, DateTimeOffset)
-  href: api/Hexalith.Domain.Aggregates.InventoryItem.html#Hexalith_Domain_Aggregates_InventoryItem__ctor_System_String_System_String_System_String_System_String_System_Nullable_IEnumerable_Hexalith_Domain_ValueObjets_ItemBarcode___DateTimeOffset_
-  commentId: M:Hexalith.Domain.Aggregates.InventoryItem.#ctor(System.String,System.String,System.String,System.String,System.Nullable{IEnumerable{Hexalith.Domain.ValueObjets.ItemBarcode}},DateTimeOffset)
-  name.vb: InventoryItem(String, String, String, String, Nullable(Of IEnumerable(Of ItemBarcode)), DateTimeOffset)
-  fullName: Hexalith.Domain.Aggregates.InventoryItem.InventoryItem(System.String, System.String, System.String, System.String, System.Nullable<IEnumerable<Hexalith.Domain.ValueObjets.ItemBarcode>>, DateTimeOffset)
-  fullName.vb: Hexalith.Domain.Aggregates.InventoryItem.InventoryItem(System.String, System.String, System.String, System.String, System.Nullable(Of IEnumerable(Of Hexalith.Domain.ValueObjets.ItemBarcode)), DateTimeOffset)
-  nameWithType: InventoryItem.InventoryItem(String, String, String, String, Nullable<IEnumerable<ItemBarcode>>, DateTimeOffset)
-  nameWithType.vb: InventoryItem.InventoryItem(String, String, String, String, Nullable(Of IEnumerable(Of ItemBarcode)), DateTimeOffset)
+- uid: Hexalith.Domain.Aggregates.InventoryItem.#ctor(System.String,System.String,System.String,System.String,System.String,System.Nullable{IEnumerable{Hexalith.Domain.ValueObjets.ItemBarcode}},DateTimeOffset)
+  name: InventoryItem(String, String, String, String, String, Nullable<IEnumerable<ItemBarcode>>, DateTimeOffset)
+  href: api/Hexalith.Domain.Aggregates.InventoryItem.html#Hexalith_Domain_Aggregates_InventoryItem__ctor_System_String_System_String_System_String_System_String_System_String_System_Nullable_IEnumerable_Hexalith_Domain_ValueObjets_ItemBarcode___DateTimeOffset_
+  commentId: M:Hexalith.Domain.Aggregates.InventoryItem.#ctor(System.String,System.String,System.String,System.String,System.String,System.Nullable{IEnumerable{Hexalith.Domain.ValueObjets.ItemBarcode}},DateTimeOffset)
+  name.vb: InventoryItem(String, String, String, String, String, Nullable(Of IEnumerable(Of ItemBarcode)), DateTimeOffset)
+  fullName: Hexalith.Domain.Aggregates.InventoryItem.InventoryItem(System.String, System.String, System.String, System.String, System.String, System.Nullable<IEnumerable<Hexalith.Domain.ValueObjets.ItemBarcode>>, DateTimeOffset)
+  fullName.vb: Hexalith.Domain.Aggregates.InventoryItem.InventoryItem(System.String, System.String, System.String, System.String, System.String, System.Nullable(Of IEnumerable(Of Hexalith.Domain.ValueObjets.ItemBarcode)), DateTimeOffset)
+  nameWithType: InventoryItem.InventoryItem(String, String, String, String, String, Nullable<IEnumerable<ItemBarcode>>, DateTimeOffset)
+  nameWithType.vb: InventoryItem.InventoryItem(String, String, String, String, String, Nullable(Of IEnumerable(Of ItemBarcode)), DateTimeOffset)
 - uid: Hexalith.Domain.Aggregates.InventoryItem.#ctor*
   name: InventoryItem
   href: api/Hexalith.Domain.Aggregates.InventoryItem.html#Hexalith_Domain_Aggregates_InventoryItem__ctor_
@@ -10849,12 +10888,12 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Aggregates.InventoryItem.DefaultAggregateId
   nameWithType: InventoryItem.DefaultAggregateId
-- uid: Hexalith.Domain.Aggregates.InventoryItem.GetAggregateId(System.String,System.String,System.String)
-  name: GetAggregateId(String, String, String)
-  href: api/Hexalith.Domain.Aggregates.InventoryItem.html#Hexalith_Domain_Aggregates_InventoryItem_GetAggregateId_System_String_System_String_System_String_
-  commentId: M:Hexalith.Domain.Aggregates.InventoryItem.GetAggregateId(System.String,System.String,System.String)
-  fullName: Hexalith.Domain.Aggregates.InventoryItem.GetAggregateId(System.String, System.String, System.String)
-  nameWithType: InventoryItem.GetAggregateId(String, String, String)
+- uid: Hexalith.Domain.Aggregates.InventoryItem.GetAggregateId(System.String,System.String,System.String,System.String)
+  name: GetAggregateId(String, String, String, String)
+  href: api/Hexalith.Domain.Aggregates.InventoryItem.html#Hexalith_Domain_Aggregates_InventoryItem_GetAggregateId_System_String_System_String_System_String_System_String_
+  commentId: M:Hexalith.Domain.Aggregates.InventoryItem.GetAggregateId(System.String,System.String,System.String,System.String)
+  fullName: Hexalith.Domain.Aggregates.InventoryItem.GetAggregateId(System.String, System.String, System.String, System.String)
+  nameWithType: InventoryItem.GetAggregateId(String, String, String, String)
 - uid: Hexalith.Domain.Aggregates.InventoryItem.GetAggregateId*
   name: GetAggregateId
   href: api/Hexalith.Domain.Aggregates.InventoryItem.html#Hexalith_Domain_Aggregates_InventoryItem_GetAggregateId_
@@ -10901,6 +10940,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Aggregates.InventoryItem.Name
   nameWithType: InventoryItem.Name
+- uid: Hexalith.Domain.Aggregates.InventoryItem.OriginId
+  name: OriginId
+  href: api/Hexalith.Domain.Aggregates.InventoryItem.html#Hexalith_Domain_Aggregates_InventoryItem_OriginId
+  commentId: P:Hexalith.Domain.Aggregates.InventoryItem.OriginId
+  fullName: Hexalith.Domain.Aggregates.InventoryItem.OriginId
+  nameWithType: InventoryItem.OriginId
+- uid: Hexalith.Domain.Aggregates.InventoryItem.OriginId*
+  name: OriginId
+  href: api/Hexalith.Domain.Aggregates.InventoryItem.html#Hexalith_Domain_Aggregates_InventoryItem_OriginId_
+  commentId: Overload:Hexalith.Domain.Aggregates.InventoryItem.OriginId
+  isSpec: "True"
+  fullName: Hexalith.Domain.Aggregates.InventoryItem.OriginId
+  nameWithType: InventoryItem.OriginId
 - uid: Hexalith.Domain.Aggregates.InventoryItem.PartitionId
   name: PartitionId
   href: api/Hexalith.Domain.Aggregates.InventoryItem.html#Hexalith_Domain_Aggregates_InventoryItem_PartitionId
@@ -10932,12 +10984,12 @@ references:
   commentId: M:Hexalith.Domain.Aggregates.InventoryItemStock.#ctor(Hexalith.Domain.Events.InventoryItemStockIncreased)
   fullName: Hexalith.Domain.Aggregates.InventoryItemStock.InventoryItemStock(Hexalith.Domain.Events.InventoryItemStockIncreased)
   nameWithType: InventoryItemStock.InventoryItemStock(InventoryItemStockIncreased)
-- uid: Hexalith.Domain.Aggregates.InventoryItemStock.#ctor(System.String,System.String,System.String,System.String,System.Decimal,DateTimeOffset)
-  name: InventoryItemStock(String, String, String, String, Decimal, DateTimeOffset)
-  href: api/Hexalith.Domain.Aggregates.InventoryItemStock.html#Hexalith_Domain_Aggregates_InventoryItemStock__ctor_System_String_System_String_System_String_System_String_System_Decimal_DateTimeOffset_
-  commentId: M:Hexalith.Domain.Aggregates.InventoryItemStock.#ctor(System.String,System.String,System.String,System.String,System.Decimal,DateTimeOffset)
-  fullName: Hexalith.Domain.Aggregates.InventoryItemStock.InventoryItemStock(System.String, System.String, System.String, System.String, System.Decimal, DateTimeOffset)
-  nameWithType: InventoryItemStock.InventoryItemStock(String, String, String, String, Decimal, DateTimeOffset)
+- uid: Hexalith.Domain.Aggregates.InventoryItemStock.#ctor(System.String,System.String,System.String,System.String,System.String,System.Decimal,DateTimeOffset)
+  name: InventoryItemStock(String, String, String, String, String, Decimal, DateTimeOffset)
+  href: api/Hexalith.Domain.Aggregates.InventoryItemStock.html#Hexalith_Domain_Aggregates_InventoryItemStock__ctor_System_String_System_String_System_String_System_String_System_String_System_Decimal_DateTimeOffset_
+  commentId: M:Hexalith.Domain.Aggregates.InventoryItemStock.#ctor(System.String,System.String,System.String,System.String,System.String,System.Decimal,DateTimeOffset)
+  fullName: Hexalith.Domain.Aggregates.InventoryItemStock.InventoryItemStock(System.String, System.String, System.String, System.String, System.String, System.Decimal, DateTimeOffset)
+  nameWithType: InventoryItemStock.InventoryItemStock(String, String, String, String, String, Decimal, DateTimeOffset)
 - uid: Hexalith.Domain.Aggregates.InventoryItemStock.#ctor*
   name: InventoryItemStock
   href: api/Hexalith.Domain.Aggregates.InventoryItemStock.html#Hexalith_Domain_Aggregates_InventoryItemStock__ctor_
@@ -10997,12 +11049,12 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Aggregates.InventoryItemStock.DefaultAggregateId
   nameWithType: InventoryItemStock.DefaultAggregateId
-- uid: Hexalith.Domain.Aggregates.InventoryItemStock.GetAggregateId(System.String,System.String,System.String,System.String)
-  name: GetAggregateId(String, String, String, String)
-  href: api/Hexalith.Domain.Aggregates.InventoryItemStock.html#Hexalith_Domain_Aggregates_InventoryItemStock_GetAggregateId_System_String_System_String_System_String_System_String_
-  commentId: M:Hexalith.Domain.Aggregates.InventoryItemStock.GetAggregateId(System.String,System.String,System.String,System.String)
-  fullName: Hexalith.Domain.Aggregates.InventoryItemStock.GetAggregateId(System.String, System.String, System.String, System.String)
-  nameWithType: InventoryItemStock.GetAggregateId(String, String, String, String)
+- uid: Hexalith.Domain.Aggregates.InventoryItemStock.GetAggregateId(System.String,System.String,System.String,System.String,System.String)
+  name: GetAggregateId(String, String, String, String, String)
+  href: api/Hexalith.Domain.Aggregates.InventoryItemStock.html#Hexalith_Domain_Aggregates_InventoryItemStock_GetAggregateId_System_String_System_String_System_String_System_String_System_String_
+  commentId: M:Hexalith.Domain.Aggregates.InventoryItemStock.GetAggregateId(System.String,System.String,System.String,System.String,System.String)
+  fullName: Hexalith.Domain.Aggregates.InventoryItemStock.GetAggregateId(System.String, System.String, System.String, System.String, System.String)
+  nameWithType: InventoryItemStock.GetAggregateId(String, String, String, String, String)
 - uid: Hexalith.Domain.Aggregates.InventoryItemStock.GetAggregateId*
   name: GetAggregateId
   href: api/Hexalith.Domain.Aggregates.InventoryItemStock.html#Hexalith_Domain_Aggregates_InventoryItemStock_GetAggregateId_
@@ -11023,19 +11075,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Aggregates.InventoryItemStock.GetAggregateName
   nameWithType: InventoryItemStock.GetAggregateName
-- uid: Hexalith.Domain.Aggregates.InventoryItemStock.InventoryItemId
-  name: InventoryItemId
-  href: api/Hexalith.Domain.Aggregates.InventoryItemStock.html#Hexalith_Domain_Aggregates_InventoryItemStock_InventoryItemId
-  commentId: P:Hexalith.Domain.Aggregates.InventoryItemStock.InventoryItemId
-  fullName: Hexalith.Domain.Aggregates.InventoryItemStock.InventoryItemId
-  nameWithType: InventoryItemStock.InventoryItemId
-- uid: Hexalith.Domain.Aggregates.InventoryItemStock.InventoryItemId*
-  name: InventoryItemId
-  href: api/Hexalith.Domain.Aggregates.InventoryItemStock.html#Hexalith_Domain_Aggregates_InventoryItemStock_InventoryItemId_
-  commentId: Overload:Hexalith.Domain.Aggregates.InventoryItemStock.InventoryItemId
+- uid: Hexalith.Domain.Aggregates.InventoryItemStock.Id
+  name: Id
+  href: api/Hexalith.Domain.Aggregates.InventoryItemStock.html#Hexalith_Domain_Aggregates_InventoryItemStock_Id
+  commentId: P:Hexalith.Domain.Aggregates.InventoryItemStock.Id
+  fullName: Hexalith.Domain.Aggregates.InventoryItemStock.Id
+  nameWithType: InventoryItemStock.Id
+- uid: Hexalith.Domain.Aggregates.InventoryItemStock.Id*
+  name: Id
+  href: api/Hexalith.Domain.Aggregates.InventoryItemStock.html#Hexalith_Domain_Aggregates_InventoryItemStock_Id_
+  commentId: Overload:Hexalith.Domain.Aggregates.InventoryItemStock.Id
   isSpec: "True"
-  fullName: Hexalith.Domain.Aggregates.InventoryItemStock.InventoryItemId
-  nameWithType: InventoryItemStock.InventoryItemId
+  fullName: Hexalith.Domain.Aggregates.InventoryItemStock.Id
+  nameWithType: InventoryItemStock.Id
 - uid: Hexalith.Domain.Aggregates.InventoryItemStock.LocationId
   name: LocationId
   href: api/Hexalith.Domain.Aggregates.InventoryItemStock.html#Hexalith_Domain_Aggregates_InventoryItemStock_LocationId
@@ -11049,6 +11101,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Aggregates.InventoryItemStock.LocationId
   nameWithType: InventoryItemStock.LocationId
+- uid: Hexalith.Domain.Aggregates.InventoryItemStock.OriginId
+  name: OriginId
+  href: api/Hexalith.Domain.Aggregates.InventoryItemStock.html#Hexalith_Domain_Aggregates_InventoryItemStock_OriginId
+  commentId: P:Hexalith.Domain.Aggregates.InventoryItemStock.OriginId
+  fullName: Hexalith.Domain.Aggregates.InventoryItemStock.OriginId
+  nameWithType: InventoryItemStock.OriginId
+- uid: Hexalith.Domain.Aggregates.InventoryItemStock.OriginId*
+  name: OriginId
+  href: api/Hexalith.Domain.Aggregates.InventoryItemStock.html#Hexalith_Domain_Aggregates_InventoryItemStock_OriginId_
+  commentId: Overload:Hexalith.Domain.Aggregates.InventoryItemStock.OriginId
+  isSpec: "True"
+  fullName: Hexalith.Domain.Aggregates.InventoryItemStock.OriginId
+  nameWithType: InventoryItemStock.OriginId
 - uid: Hexalith.Domain.Aggregates.InventoryItemStock.PartitionId
   name: PartitionId
   href: api/Hexalith.Domain.Aggregates.InventoryItemStock.html#Hexalith_Domain_Aggregates_InventoryItemStock_PartitionId
@@ -11474,82 +11539,6 @@ references:
   commentId: T:Hexalith.Domain.Events.BaseEvent
   fullName: Hexalith.Domain.Events.BaseEvent
   nameWithType: BaseEvent
-- uid: Hexalith.Domain.Events.CompanyEntityEvent
-  name: CompanyEntityEvent
-  href: api/Hexalith.Domain.Events.CompanyEntityEvent.html
-  commentId: T:Hexalith.Domain.Events.CompanyEntityEvent
-  fullName: Hexalith.Domain.Events.CompanyEntityEvent
-  nameWithType: CompanyEntityEvent
-- uid: Hexalith.Domain.Events.CompanyEntityEvent.#ctor
-  name: CompanyEntityEvent()
-  href: api/Hexalith.Domain.Events.CompanyEntityEvent.html#Hexalith_Domain_Events_CompanyEntityEvent__ctor
-  commentId: M:Hexalith.Domain.Events.CompanyEntityEvent.#ctor
-  fullName: Hexalith.Domain.Events.CompanyEntityEvent.CompanyEntityEvent()
-  nameWithType: CompanyEntityEvent.CompanyEntityEvent()
-- uid: Hexalith.Domain.Events.CompanyEntityEvent.#ctor(System.String,System.String,System.String)
-  name: CompanyEntityEvent(String, String, String)
-  href: api/Hexalith.Domain.Events.CompanyEntityEvent.html#Hexalith_Domain_Events_CompanyEntityEvent__ctor_System_String_System_String_System_String_
-  commentId: M:Hexalith.Domain.Events.CompanyEntityEvent.#ctor(System.String,System.String,System.String)
-  fullName: Hexalith.Domain.Events.CompanyEntityEvent.CompanyEntityEvent(System.String, System.String, System.String)
-  nameWithType: CompanyEntityEvent.CompanyEntityEvent(String, String, String)
-- uid: Hexalith.Domain.Events.CompanyEntityEvent.#ctor*
-  name: CompanyEntityEvent
-  href: api/Hexalith.Domain.Events.CompanyEntityEvent.html#Hexalith_Domain_Events_CompanyEntityEvent__ctor_
-  commentId: Overload:Hexalith.Domain.Events.CompanyEntityEvent.#ctor
-  isSpec: "True"
-  fullName: Hexalith.Domain.Events.CompanyEntityEvent.CompanyEntityEvent
-  nameWithType: CompanyEntityEvent.CompanyEntityEvent
-- uid: Hexalith.Domain.Events.CompanyEntityEvent.Id
-  name: Id
-  href: api/Hexalith.Domain.Events.CompanyEntityEvent.html#Hexalith_Domain_Events_CompanyEntityEvent_Id
-  commentId: P:Hexalith.Domain.Events.CompanyEntityEvent.Id
-  fullName: Hexalith.Domain.Events.CompanyEntityEvent.Id
-  nameWithType: CompanyEntityEvent.Id
-- uid: Hexalith.Domain.Events.CompanyEntityEvent.Id*
-  name: Id
-  href: api/Hexalith.Domain.Events.CompanyEntityEvent.html#Hexalith_Domain_Events_CompanyEntityEvent_Id_
-  commentId: Overload:Hexalith.Domain.Events.CompanyEntityEvent.Id
-  isSpec: "True"
-  fullName: Hexalith.Domain.Events.CompanyEntityEvent.Id
-  nameWithType: CompanyEntityEvent.Id
-- uid: Hexalith.Domain.Events.CompanyEvent
-  name: CompanyEvent
-  href: api/Hexalith.Domain.Events.CompanyEvent.html
-  commentId: T:Hexalith.Domain.Events.CompanyEvent
-  fullName: Hexalith.Domain.Events.CompanyEvent
-  nameWithType: CompanyEvent
-- uid: Hexalith.Domain.Events.CompanyEvent.#ctor
-  name: CompanyEvent()
-  href: api/Hexalith.Domain.Events.CompanyEvent.html#Hexalith_Domain_Events_CompanyEvent__ctor
-  commentId: M:Hexalith.Domain.Events.CompanyEvent.#ctor
-  fullName: Hexalith.Domain.Events.CompanyEvent.CompanyEvent()
-  nameWithType: CompanyEvent.CompanyEvent()
-- uid: Hexalith.Domain.Events.CompanyEvent.#ctor(System.String,System.String)
-  name: CompanyEvent(String, String)
-  href: api/Hexalith.Domain.Events.CompanyEvent.html#Hexalith_Domain_Events_CompanyEvent__ctor_System_String_System_String_
-  commentId: M:Hexalith.Domain.Events.CompanyEvent.#ctor(System.String,System.String)
-  fullName: Hexalith.Domain.Events.CompanyEvent.CompanyEvent(System.String, System.String)
-  nameWithType: CompanyEvent.CompanyEvent(String, String)
-- uid: Hexalith.Domain.Events.CompanyEvent.#ctor*
-  name: CompanyEvent
-  href: api/Hexalith.Domain.Events.CompanyEvent.html#Hexalith_Domain_Events_CompanyEvent__ctor_
-  commentId: Overload:Hexalith.Domain.Events.CompanyEvent.#ctor
-  isSpec: "True"
-  fullName: Hexalith.Domain.Events.CompanyEvent.CompanyEvent
-  nameWithType: CompanyEvent.CompanyEvent
-- uid: Hexalith.Domain.Events.CompanyEvent.CompanyId
-  name: CompanyId
-  href: api/Hexalith.Domain.Events.CompanyEvent.html#Hexalith_Domain_Events_CompanyEvent_CompanyId
-  commentId: P:Hexalith.Domain.Events.CompanyEvent.CompanyId
-  fullName: Hexalith.Domain.Events.CompanyEvent.CompanyId
-  nameWithType: CompanyEvent.CompanyId
-- uid: Hexalith.Domain.Events.CompanyEvent.CompanyId*
-  name: CompanyId
-  href: api/Hexalith.Domain.Events.CompanyEvent.html#Hexalith_Domain_Events_CompanyEvent_CompanyId_
-  commentId: Overload:Hexalith.Domain.Events.CompanyEvent.CompanyId
-  isSpec: "True"
-  fullName: Hexalith.Domain.Events.CompanyEvent.CompanyId
-  nameWithType: CompanyEvent.CompanyId
 - uid: Hexalith.Domain.Events.CustomerEvent
   name: CustomerEvent
   href: api/Hexalith.Domain.Events.CustomerEvent.html
@@ -11562,12 +11551,12 @@ references:
   commentId: M:Hexalith.Domain.Events.CustomerEvent.#ctor
   fullName: Hexalith.Domain.Events.CustomerEvent.CustomerEvent()
   nameWithType: CustomerEvent.CustomerEvent()
-- uid: Hexalith.Domain.Events.CustomerEvent.#ctor(System.String,System.String,System.String)
-  name: CustomerEvent(String, String, String)
-  href: api/Hexalith.Domain.Events.CustomerEvent.html#Hexalith_Domain_Events_CustomerEvent__ctor_System_String_System_String_System_String_
-  commentId: M:Hexalith.Domain.Events.CustomerEvent.#ctor(System.String,System.String,System.String)
-  fullName: Hexalith.Domain.Events.CustomerEvent.CustomerEvent(System.String, System.String, System.String)
-  nameWithType: CustomerEvent.CustomerEvent(String, String, String)
+- uid: Hexalith.Domain.Events.CustomerEvent.#ctor(System.String,System.String,System.String,System.String)
+  name: CustomerEvent(String, String, String, String)
+  href: api/Hexalith.Domain.Events.CustomerEvent.html#Hexalith_Domain_Events_CustomerEvent__ctor_System_String_System_String_System_String_System_String_
+  commentId: M:Hexalith.Domain.Events.CustomerEvent.#ctor(System.String,System.String,System.String,System.String)
+  fullName: Hexalith.Domain.Events.CustomerEvent.CustomerEvent(System.String, System.String, System.String, System.String)
+  nameWithType: CustomerEvent.CustomerEvent(String, String, String, String)
 - uid: Hexalith.Domain.Events.CustomerEvent.#ctor*
   name: CustomerEvent
   href: api/Hexalith.Domain.Events.CustomerEvent.html#Hexalith_Domain_Events_CustomerEvent__ctor_
@@ -11613,12 +11602,12 @@ references:
   commentId: M:Hexalith.Domain.Events.CustomerInformationChanged.#ctor
   fullName: Hexalith.Domain.Events.CustomerInformationChanged.CustomerInformationChanged()
   nameWithType: CustomerInformationChanged.CustomerInformationChanged()
-- uid: Hexalith.Domain.Events.CustomerInformationChanged.#ctor(System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,DateTimeOffset)
-  name: CustomerInformationChanged(String, String, String, String, Contact, String, String, DateTimeOffset)
-  href: api/Hexalith.Domain.Events.CustomerInformationChanged.html#Hexalith_Domain_Events_CustomerInformationChanged__ctor_System_String_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_Contact_System_String_System_String_DateTimeOffset_
-  commentId: M:Hexalith.Domain.Events.CustomerInformationChanged.#ctor(System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,DateTimeOffset)
-  fullName: Hexalith.Domain.Events.CustomerInformationChanged.CustomerInformationChanged(System.String, System.String, System.String, System.String, Hexalith.Domain.ValueObjets.Contact, System.String, System.String, DateTimeOffset)
-  nameWithType: CustomerInformationChanged.CustomerInformationChanged(String, String, String, String, Contact, String, String, DateTimeOffset)
+- uid: Hexalith.Domain.Events.CustomerInformationChanged.#ctor(System.String,System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,DateTimeOffset)
+  name: CustomerInformationChanged(String, String, String, String, String, Contact, String, String, DateTimeOffset)
+  href: api/Hexalith.Domain.Events.CustomerInformationChanged.html#Hexalith_Domain_Events_CustomerInformationChanged__ctor_System_String_System_String_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_Contact_System_String_System_String_DateTimeOffset_
+  commentId: M:Hexalith.Domain.Events.CustomerInformationChanged.#ctor(System.String,System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,DateTimeOffset)
+  fullName: Hexalith.Domain.Events.CustomerInformationChanged.CustomerInformationChanged(System.String, System.String, System.String, System.String, System.String, Hexalith.Domain.ValueObjets.Contact, System.String, System.String, DateTimeOffset)
+  nameWithType: CustomerInformationChanged.CustomerInformationChanged(String, String, String, String, String, Contact, String, String, DateTimeOffset)
 - uid: Hexalith.Domain.Events.CustomerInformationChanged.#ctor*
   name: CustomerInformationChanged
   href: api/Hexalith.Domain.Events.CustomerInformationChanged.html#Hexalith_Domain_Events_CustomerInformationChanged__ctor_
@@ -11722,12 +11711,12 @@ references:
   commentId: M:Hexalith.Domain.Events.CustomerRegistered.#ctor
   fullName: Hexalith.Domain.Events.CustomerRegistered.CustomerRegistered()
   nameWithType: CustomerRegistered.CustomerRegistered()
-- uid: Hexalith.Domain.Events.CustomerRegistered.#ctor(System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,DateTimeOffset)
-  name: CustomerRegistered(String, String, String, String, Contact, String, String, DateTimeOffset)
-  href: api/Hexalith.Domain.Events.CustomerRegistered.html#Hexalith_Domain_Events_CustomerRegistered__ctor_System_String_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_Contact_System_String_System_String_DateTimeOffset_
-  commentId: M:Hexalith.Domain.Events.CustomerRegistered.#ctor(System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,DateTimeOffset)
-  fullName: Hexalith.Domain.Events.CustomerRegistered.CustomerRegistered(System.String, System.String, System.String, System.String, Hexalith.Domain.ValueObjets.Contact, System.String, System.String, DateTimeOffset)
-  nameWithType: CustomerRegistered.CustomerRegistered(String, String, String, String, Contact, String, String, DateTimeOffset)
+- uid: Hexalith.Domain.Events.CustomerRegistered.#ctor(System.String,System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,DateTimeOffset)
+  name: CustomerRegistered(String, String, String, String, String, Contact, String, String, DateTimeOffset)
+  href: api/Hexalith.Domain.Events.CustomerRegistered.html#Hexalith_Domain_Events_CustomerRegistered__ctor_System_String_System_String_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_Contact_System_String_System_String_DateTimeOffset_
+  commentId: M:Hexalith.Domain.Events.CustomerRegistered.#ctor(System.String,System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,DateTimeOffset)
+  fullName: Hexalith.Domain.Events.CustomerRegistered.CustomerRegistered(System.String, System.String, System.String, System.String, System.String, Hexalith.Domain.ValueObjets.Contact, System.String, System.String, DateTimeOffset)
+  nameWithType: CustomerRegistered.CustomerRegistered(String, String, String, String, String, Contact, String, String, DateTimeOffset)
 - uid: Hexalith.Domain.Events.CustomerRegistered.#ctor*
   name: CustomerRegistered
   href: api/Hexalith.Domain.Events.CustomerRegistered.html#Hexalith_Domain_Events_CustomerRegistered__ctor_
@@ -11984,6 +11973,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Events.ExternalSystemEvent.ExternalSystemEvent
   nameWithType: ExternalSystemEvent.ExternalSystemEvent
+- uid: Hexalith.Domain.Events.ExternalSystemEvent.CompanyId
+  name: CompanyId
+  href: api/Hexalith.Domain.Events.ExternalSystemEvent.html#Hexalith_Domain_Events_ExternalSystemEvent_CompanyId
+  commentId: P:Hexalith.Domain.Events.ExternalSystemEvent.CompanyId
+  fullName: Hexalith.Domain.Events.ExternalSystemEvent.CompanyId
+  nameWithType: ExternalSystemEvent.CompanyId
+- uid: Hexalith.Domain.Events.ExternalSystemEvent.CompanyId*
+  name: CompanyId
+  href: api/Hexalith.Domain.Events.ExternalSystemEvent.html#Hexalith_Domain_Events_ExternalSystemEvent_CompanyId_
+  commentId: Overload:Hexalith.Domain.Events.ExternalSystemEvent.CompanyId
+  isSpec: "True"
+  fullName: Hexalith.Domain.Events.ExternalSystemEvent.CompanyId
+  nameWithType: ExternalSystemEvent.CompanyId
 - uid: Hexalith.Domain.Events.ExternalSystemEvent.DefaultAggregateId
   name: DefaultAggregateId()
   href: api/Hexalith.Domain.Events.ExternalSystemEvent.html#Hexalith_Domain_Events_ExternalSystemEvent_DefaultAggregateId
@@ -12168,12 +12170,12 @@ references:
   commentId: M:Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.#ctor
   fullName: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.IntercompanyDropshipDeliveryForCustomerDeselected()
   nameWithType: IntercompanyDropshipDeliveryForCustomerDeselected.IntercompanyDropshipDeliveryForCustomerDeselected()
-- uid: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.#ctor(System.String,System.String,System.String)
-  name: IntercompanyDropshipDeliveryForCustomerDeselected(String, String, String)
-  href: api/Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.html#Hexalith_Domain_Events_IntercompanyDropshipDeliveryForCustomerDeselected__ctor_System_String_System_String_System_String_
-  commentId: M:Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.#ctor(System.String,System.String,System.String)
-  fullName: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.IntercompanyDropshipDeliveryForCustomerDeselected(System.String, System.String, System.String)
-  nameWithType: IntercompanyDropshipDeliveryForCustomerDeselected.IntercompanyDropshipDeliveryForCustomerDeselected(String, String, String)
+- uid: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.#ctor(System.String,System.String,System.String,System.String)
+  name: IntercompanyDropshipDeliveryForCustomerDeselected(String, String, String, String)
+  href: api/Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.html#Hexalith_Domain_Events_IntercompanyDropshipDeliveryForCustomerDeselected__ctor_System_String_System_String_System_String_System_String_
+  commentId: M:Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.#ctor(System.String,System.String,System.String,System.String)
+  fullName: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.IntercompanyDropshipDeliveryForCustomerDeselected(System.String, System.String, System.String, System.String)
+  nameWithType: IntercompanyDropshipDeliveryForCustomerDeselected.IntercompanyDropshipDeliveryForCustomerDeselected(String, String, String, String)
 - uid: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.#ctor*
   name: IntercompanyDropshipDeliveryForCustomerDeselected
   href: api/Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerDeselected.html#Hexalith_Domain_Events_IntercompanyDropshipDeliveryForCustomerDeselected__ctor_
@@ -12212,12 +12214,12 @@ references:
   commentId: M:Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected.#ctor
   fullName: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected.IntercompanyDropshipDeliveryForCustomerSelected()
   nameWithType: IntercompanyDropshipDeliveryForCustomerSelected.IntercompanyDropshipDeliveryForCustomerSelected()
-- uid: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected.#ctor(System.String,System.String,System.String)
-  name: IntercompanyDropshipDeliveryForCustomerSelected(String, String, String)
-  href: api/Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected.html#Hexalith_Domain_Events_IntercompanyDropshipDeliveryForCustomerSelected__ctor_System_String_System_String_System_String_
-  commentId: M:Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected.#ctor(System.String,System.String,System.String)
-  fullName: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected.IntercompanyDropshipDeliveryForCustomerSelected(System.String, System.String, System.String)
-  nameWithType: IntercompanyDropshipDeliveryForCustomerSelected.IntercompanyDropshipDeliveryForCustomerSelected(String, String, String)
+- uid: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected.#ctor(System.String,System.String,System.String,System.String)
+  name: IntercompanyDropshipDeliveryForCustomerSelected(String, String, String, String)
+  href: api/Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected.html#Hexalith_Domain_Events_IntercompanyDropshipDeliveryForCustomerSelected__ctor_System_String_System_String_System_String_System_String_
+  commentId: M:Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected.#ctor(System.String,System.String,System.String,System.String)
+  fullName: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected.IntercompanyDropshipDeliveryForCustomerSelected(System.String, System.String, System.String, System.String)
+  nameWithType: IntercompanyDropshipDeliveryForCustomerSelected.IntercompanyDropshipDeliveryForCustomerSelected(String, String, String, String)
 - uid: Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected.#ctor*
   name: IntercompanyDropshipDeliveryForCustomerSelected
   href: api/Hexalith.Domain.Events.IntercompanyDropshipDeliveryForCustomerSelected.html#Hexalith_Domain_Events_IntercompanyDropshipDeliveryForCustomerSelected__ctor_
@@ -12256,12 +12258,12 @@ references:
   commentId: M:Hexalith.Domain.Events.InventoryItemAdded.#ctor
   fullName: Hexalith.Domain.Events.InventoryItemAdded.InventoryItemAdded()
   nameWithType: InventoryItemAdded.InventoryItemAdded()
-- uid: Hexalith.Domain.Events.InventoryItemAdded.#ctor(System.String,System.String,System.String,System.String,DateTimeOffset)
-  name: InventoryItemAdded(String, String, String, String, DateTimeOffset)
-  href: api/Hexalith.Domain.Events.InventoryItemAdded.html#Hexalith_Domain_Events_InventoryItemAdded__ctor_System_String_System_String_System_String_System_String_DateTimeOffset_
-  commentId: M:Hexalith.Domain.Events.InventoryItemAdded.#ctor(System.String,System.String,System.String,System.String,DateTimeOffset)
-  fullName: Hexalith.Domain.Events.InventoryItemAdded.InventoryItemAdded(System.String, System.String, System.String, System.String, DateTimeOffset)
-  nameWithType: InventoryItemAdded.InventoryItemAdded(String, String, String, String, DateTimeOffset)
+- uid: Hexalith.Domain.Events.InventoryItemAdded.#ctor(System.String,System.String,System.String,System.String,System.String,DateTimeOffset)
+  name: InventoryItemAdded(String, String, String, String, String, DateTimeOffset)
+  href: api/Hexalith.Domain.Events.InventoryItemAdded.html#Hexalith_Domain_Events_InventoryItemAdded__ctor_System_String_System_String_System_String_System_String_System_String_DateTimeOffset_
+  commentId: M:Hexalith.Domain.Events.InventoryItemAdded.#ctor(System.String,System.String,System.String,System.String,System.String,DateTimeOffset)
+  fullName: Hexalith.Domain.Events.InventoryItemAdded.InventoryItemAdded(System.String, System.String, System.String, System.String, System.String, DateTimeOffset)
+  nameWithType: InventoryItemAdded.InventoryItemAdded(String, String, String, String, String, DateTimeOffset)
 - uid: Hexalith.Domain.Events.InventoryItemAdded.#ctor*
   name: InventoryItemAdded
   href: api/Hexalith.Domain.Events.InventoryItemAdded.html#Hexalith_Domain_Events_InventoryItemAdded__ctor_
@@ -12307,12 +12309,12 @@ references:
   commentId: M:Hexalith.Domain.Events.InventoryItemBarcodeAdded.#ctor
   fullName: Hexalith.Domain.Events.InventoryItemBarcodeAdded.InventoryItemBarcodeAdded()
   nameWithType: InventoryItemBarcodeAdded.InventoryItemBarcodeAdded()
-- uid: Hexalith.Domain.Events.InventoryItemBarcodeAdded.#ctor(System.String,System.String,System.String,Hexalith.Domain.ValueObjets.ItemBarcode,DateTimeOffset)
-  name: InventoryItemBarcodeAdded(String, String, String, ItemBarcode, DateTimeOffset)
-  href: api/Hexalith.Domain.Events.InventoryItemBarcodeAdded.html#Hexalith_Domain_Events_InventoryItemBarcodeAdded__ctor_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_ItemBarcode_DateTimeOffset_
-  commentId: M:Hexalith.Domain.Events.InventoryItemBarcodeAdded.#ctor(System.String,System.String,System.String,Hexalith.Domain.ValueObjets.ItemBarcode,DateTimeOffset)
-  fullName: Hexalith.Domain.Events.InventoryItemBarcodeAdded.InventoryItemBarcodeAdded(System.String, System.String, System.String, Hexalith.Domain.ValueObjets.ItemBarcode, DateTimeOffset)
-  nameWithType: InventoryItemBarcodeAdded.InventoryItemBarcodeAdded(String, String, String, ItemBarcode, DateTimeOffset)
+- uid: Hexalith.Domain.Events.InventoryItemBarcodeAdded.#ctor(System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.ItemBarcode,DateTimeOffset)
+  name: InventoryItemBarcodeAdded(String, String, String, String, ItemBarcode, DateTimeOffset)
+  href: api/Hexalith.Domain.Events.InventoryItemBarcodeAdded.html#Hexalith_Domain_Events_InventoryItemBarcodeAdded__ctor_System_String_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_ItemBarcode_DateTimeOffset_
+  commentId: M:Hexalith.Domain.Events.InventoryItemBarcodeAdded.#ctor(System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.ItemBarcode,DateTimeOffset)
+  fullName: Hexalith.Domain.Events.InventoryItemBarcodeAdded.InventoryItemBarcodeAdded(System.String, System.String, System.String, System.String, Hexalith.Domain.ValueObjets.ItemBarcode, DateTimeOffset)
+  nameWithType: InventoryItemBarcodeAdded.InventoryItemBarcodeAdded(String, String, String, String, ItemBarcode, DateTimeOffset)
 - uid: Hexalith.Domain.Events.InventoryItemBarcodeAdded.#ctor*
   name: InventoryItemBarcodeAdded
   href: api/Hexalith.Domain.Events.InventoryItemBarcodeAdded.html#Hexalith_Domain_Events_InventoryItemBarcodeAdded__ctor_
@@ -12358,12 +12360,12 @@ references:
   commentId: M:Hexalith.Domain.Events.InventoryItemBarcodeRemoved.#ctor
   fullName: Hexalith.Domain.Events.InventoryItemBarcodeRemoved.InventoryItemBarcodeRemoved()
   nameWithType: InventoryItemBarcodeRemoved.InventoryItemBarcodeRemoved()
-- uid: Hexalith.Domain.Events.InventoryItemBarcodeRemoved.#ctor(System.String,System.String,System.String,System.String,DateTimeOffset)
-  name: InventoryItemBarcodeRemoved(String, String, String, String, DateTimeOffset)
-  href: api/Hexalith.Domain.Events.InventoryItemBarcodeRemoved.html#Hexalith_Domain_Events_InventoryItemBarcodeRemoved__ctor_System_String_System_String_System_String_System_String_DateTimeOffset_
-  commentId: M:Hexalith.Domain.Events.InventoryItemBarcodeRemoved.#ctor(System.String,System.String,System.String,System.String,DateTimeOffset)
-  fullName: Hexalith.Domain.Events.InventoryItemBarcodeRemoved.InventoryItemBarcodeRemoved(System.String, System.String, System.String, System.String, DateTimeOffset)
-  nameWithType: InventoryItemBarcodeRemoved.InventoryItemBarcodeRemoved(String, String, String, String, DateTimeOffset)
+- uid: Hexalith.Domain.Events.InventoryItemBarcodeRemoved.#ctor(System.String,System.String,System.String,System.String,System.String,DateTimeOffset)
+  name: InventoryItemBarcodeRemoved(String, String, String, String, String, DateTimeOffset)
+  href: api/Hexalith.Domain.Events.InventoryItemBarcodeRemoved.html#Hexalith_Domain_Events_InventoryItemBarcodeRemoved__ctor_System_String_System_String_System_String_System_String_System_String_DateTimeOffset_
+  commentId: M:Hexalith.Domain.Events.InventoryItemBarcodeRemoved.#ctor(System.String,System.String,System.String,System.String,System.String,DateTimeOffset)
+  fullName: Hexalith.Domain.Events.InventoryItemBarcodeRemoved.InventoryItemBarcodeRemoved(System.String, System.String, System.String, System.String, System.String, DateTimeOffset)
+  nameWithType: InventoryItemBarcodeRemoved.InventoryItemBarcodeRemoved(String, String, String, String, String, DateTimeOffset)
 - uid: Hexalith.Domain.Events.InventoryItemBarcodeRemoved.#ctor*
   name: InventoryItemBarcodeRemoved
   href: api/Hexalith.Domain.Events.InventoryItemBarcodeRemoved.html#Hexalith_Domain_Events_InventoryItemBarcodeRemoved__ctor_
@@ -12409,12 +12411,12 @@ references:
   commentId: M:Hexalith.Domain.Events.InventoryItemEvent.#ctor
   fullName: Hexalith.Domain.Events.InventoryItemEvent.InventoryItemEvent()
   nameWithType: InventoryItemEvent.InventoryItemEvent()
-- uid: Hexalith.Domain.Events.InventoryItemEvent.#ctor(System.String,System.String,System.String)
-  name: InventoryItemEvent(String, String, String)
-  href: api/Hexalith.Domain.Events.InventoryItemEvent.html#Hexalith_Domain_Events_InventoryItemEvent__ctor_System_String_System_String_System_String_
-  commentId: M:Hexalith.Domain.Events.InventoryItemEvent.#ctor(System.String,System.String,System.String)
-  fullName: Hexalith.Domain.Events.InventoryItemEvent.InventoryItemEvent(System.String, System.String, System.String)
-  nameWithType: InventoryItemEvent.InventoryItemEvent(String, String, String)
+- uid: Hexalith.Domain.Events.InventoryItemEvent.#ctor(System.String,System.String,System.String,System.String)
+  name: InventoryItemEvent(String, String, String, String)
+  href: api/Hexalith.Domain.Events.InventoryItemEvent.html#Hexalith_Domain_Events_InventoryItemEvent__ctor_System_String_System_String_System_String_System_String_
+  commentId: M:Hexalith.Domain.Events.InventoryItemEvent.#ctor(System.String,System.String,System.String,System.String)
+  fullName: Hexalith.Domain.Events.InventoryItemEvent.InventoryItemEvent(System.String, System.String, System.String, System.String)
+  nameWithType: InventoryItemEvent.InventoryItemEvent(String, String, String, String)
 - uid: Hexalith.Domain.Events.InventoryItemEvent.#ctor*
   name: InventoryItemEvent
   href: api/Hexalith.Domain.Events.InventoryItemEvent.html#Hexalith_Domain_Events_InventoryItemEvent__ctor_
@@ -12460,12 +12462,12 @@ references:
   commentId: M:Hexalith.Domain.Events.InventoryItemInformationChanged.#ctor
   fullName: Hexalith.Domain.Events.InventoryItemInformationChanged.InventoryItemInformationChanged()
   nameWithType: InventoryItemInformationChanged.InventoryItemInformationChanged()
-- uid: Hexalith.Domain.Events.InventoryItemInformationChanged.#ctor(System.String,System.String,System.String,System.String,DateTimeOffset)
-  name: InventoryItemInformationChanged(String, String, String, String, DateTimeOffset)
-  href: api/Hexalith.Domain.Events.InventoryItemInformationChanged.html#Hexalith_Domain_Events_InventoryItemInformationChanged__ctor_System_String_System_String_System_String_System_String_DateTimeOffset_
-  commentId: M:Hexalith.Domain.Events.InventoryItemInformationChanged.#ctor(System.String,System.String,System.String,System.String,DateTimeOffset)
-  fullName: Hexalith.Domain.Events.InventoryItemInformationChanged.InventoryItemInformationChanged(System.String, System.String, System.String, System.String, DateTimeOffset)
-  nameWithType: InventoryItemInformationChanged.InventoryItemInformationChanged(String, String, String, String, DateTimeOffset)
+- uid: Hexalith.Domain.Events.InventoryItemInformationChanged.#ctor(System.String,System.String,System.String,System.String,System.String,DateTimeOffset)
+  name: InventoryItemInformationChanged(String, String, String, String, String, DateTimeOffset)
+  href: api/Hexalith.Domain.Events.InventoryItemInformationChanged.html#Hexalith_Domain_Events_InventoryItemInformationChanged__ctor_System_String_System_String_System_String_System_String_System_String_DateTimeOffset_
+  commentId: M:Hexalith.Domain.Events.InventoryItemInformationChanged.#ctor(System.String,System.String,System.String,System.String,System.String,DateTimeOffset)
+  fullName: Hexalith.Domain.Events.InventoryItemInformationChanged.InventoryItemInformationChanged(System.String, System.String, System.String, System.String, System.String, DateTimeOffset)
+  nameWithType: InventoryItemInformationChanged.InventoryItemInformationChanged(String, String, String, String, String, DateTimeOffset)
 - uid: Hexalith.Domain.Events.InventoryItemInformationChanged.#ctor*
   name: InventoryItemInformationChanged
   href: api/Hexalith.Domain.Events.InventoryItemInformationChanged.html#Hexalith_Domain_Events_InventoryItemInformationChanged__ctor_
@@ -12511,12 +12513,12 @@ references:
   commentId: M:Hexalith.Domain.Events.InventoryItemStockDecreased.#ctor
   fullName: Hexalith.Domain.Events.InventoryItemStockDecreased.InventoryItemStockDecreased()
   nameWithType: InventoryItemStockDecreased.InventoryItemStockDecreased()
-- uid: Hexalith.Domain.Events.InventoryItemStockDecreased.#ctor(System.String,System.String,System.String,System.String,System.Decimal,DateTimeOffset)
-  name: InventoryItemStockDecreased(String, String, String, String, Decimal, DateTimeOffset)
-  href: api/Hexalith.Domain.Events.InventoryItemStockDecreased.html#Hexalith_Domain_Events_InventoryItemStockDecreased__ctor_System_String_System_String_System_String_System_String_System_Decimal_DateTimeOffset_
-  commentId: M:Hexalith.Domain.Events.InventoryItemStockDecreased.#ctor(System.String,System.String,System.String,System.String,System.Decimal,DateTimeOffset)
-  fullName: Hexalith.Domain.Events.InventoryItemStockDecreased.InventoryItemStockDecreased(System.String, System.String, System.String, System.String, System.Decimal, DateTimeOffset)
-  nameWithType: InventoryItemStockDecreased.InventoryItemStockDecreased(String, String, String, String, Decimal, DateTimeOffset)
+- uid: Hexalith.Domain.Events.InventoryItemStockDecreased.#ctor(System.String,System.String,System.String,System.String,System.String,System.Decimal,DateTimeOffset)
+  name: InventoryItemStockDecreased(String, String, String, String, String, Decimal, DateTimeOffset)
+  href: api/Hexalith.Domain.Events.InventoryItemStockDecreased.html#Hexalith_Domain_Events_InventoryItemStockDecreased__ctor_System_String_System_String_System_String_System_String_System_String_System_Decimal_DateTimeOffset_
+  commentId: M:Hexalith.Domain.Events.InventoryItemStockDecreased.#ctor(System.String,System.String,System.String,System.String,System.String,System.Decimal,DateTimeOffset)
+  fullName: Hexalith.Domain.Events.InventoryItemStockDecreased.InventoryItemStockDecreased(System.String, System.String, System.String, System.String, System.String, System.Decimal, DateTimeOffset)
+  nameWithType: InventoryItemStockDecreased.InventoryItemStockDecreased(String, String, String, String, String, Decimal, DateTimeOffset)
 - uid: Hexalith.Domain.Events.InventoryItemStockDecreased.#ctor*
   name: InventoryItemStockDecreased
   href: api/Hexalith.Domain.Events.InventoryItemStockDecreased.html#Hexalith_Domain_Events_InventoryItemStockDecreased__ctor_
@@ -12562,12 +12564,12 @@ references:
   commentId: M:Hexalith.Domain.Events.InventoryItemStockEvent.#ctor
   fullName: Hexalith.Domain.Events.InventoryItemStockEvent.InventoryItemStockEvent()
   nameWithType: InventoryItemStockEvent.InventoryItemStockEvent()
-- uid: Hexalith.Domain.Events.InventoryItemStockEvent.#ctor(System.String,System.String,System.String,System.String)
-  name: InventoryItemStockEvent(String, String, String, String)
-  href: api/Hexalith.Domain.Events.InventoryItemStockEvent.html#Hexalith_Domain_Events_InventoryItemStockEvent__ctor_System_String_System_String_System_String_System_String_
-  commentId: M:Hexalith.Domain.Events.InventoryItemStockEvent.#ctor(System.String,System.String,System.String,System.String)
-  fullName: Hexalith.Domain.Events.InventoryItemStockEvent.InventoryItemStockEvent(System.String, System.String, System.String, System.String)
-  nameWithType: InventoryItemStockEvent.InventoryItemStockEvent(String, String, String, String)
+- uid: Hexalith.Domain.Events.InventoryItemStockEvent.#ctor(System.String,System.String,System.String,System.String,System.String)
+  name: InventoryItemStockEvent(String, String, String, String, String)
+  href: api/Hexalith.Domain.Events.InventoryItemStockEvent.html#Hexalith_Domain_Events_InventoryItemStockEvent__ctor_System_String_System_String_System_String_System_String_System_String_
+  commentId: M:Hexalith.Domain.Events.InventoryItemStockEvent.#ctor(System.String,System.String,System.String,System.String,System.String)
+  fullName: Hexalith.Domain.Events.InventoryItemStockEvent.InventoryItemStockEvent(System.String, System.String, System.String, System.String, System.String)
+  nameWithType: InventoryItemStockEvent.InventoryItemStockEvent(String, String, String, String, String)
 - uid: Hexalith.Domain.Events.InventoryItemStockEvent.#ctor*
   name: InventoryItemStockEvent
   href: api/Hexalith.Domain.Events.InventoryItemStockEvent.html#Hexalith_Domain_Events_InventoryItemStockEvent__ctor_
@@ -12601,19 +12603,6 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Events.InventoryItemStockEvent.DefaultAggregateName
   nameWithType: InventoryItemStockEvent.DefaultAggregateName
-- uid: Hexalith.Domain.Events.InventoryItemStockEvent.InventoryItemId
-  name: InventoryItemId
-  href: api/Hexalith.Domain.Events.InventoryItemStockEvent.html#Hexalith_Domain_Events_InventoryItemStockEvent_InventoryItemId
-  commentId: P:Hexalith.Domain.Events.InventoryItemStockEvent.InventoryItemId
-  fullName: Hexalith.Domain.Events.InventoryItemStockEvent.InventoryItemId
-  nameWithType: InventoryItemStockEvent.InventoryItemId
-- uid: Hexalith.Domain.Events.InventoryItemStockEvent.InventoryItemId*
-  name: InventoryItemId
-  href: api/Hexalith.Domain.Events.InventoryItemStockEvent.html#Hexalith_Domain_Events_InventoryItemStockEvent_InventoryItemId_
-  commentId: Overload:Hexalith.Domain.Events.InventoryItemStockEvent.InventoryItemId
-  isSpec: "True"
-  fullName: Hexalith.Domain.Events.InventoryItemStockEvent.InventoryItemId
-  nameWithType: InventoryItemStockEvent.InventoryItemId
 - uid: Hexalith.Domain.Events.InventoryItemStockEvent.LocationId
   name: LocationId
   href: api/Hexalith.Domain.Events.InventoryItemStockEvent.html#Hexalith_Domain_Events_InventoryItemStockEvent_LocationId
@@ -12639,12 +12628,12 @@ references:
   commentId: M:Hexalith.Domain.Events.InventoryItemStockIncreased.#ctor
   fullName: Hexalith.Domain.Events.InventoryItemStockIncreased.InventoryItemStockIncreased()
   nameWithType: InventoryItemStockIncreased.InventoryItemStockIncreased()
-- uid: Hexalith.Domain.Events.InventoryItemStockIncreased.#ctor(System.String,System.String,System.String,System.String,System.Decimal,DateTimeOffset)
-  name: InventoryItemStockIncreased(String, String, String, String, Decimal, DateTimeOffset)
-  href: api/Hexalith.Domain.Events.InventoryItemStockIncreased.html#Hexalith_Domain_Events_InventoryItemStockIncreased__ctor_System_String_System_String_System_String_System_String_System_Decimal_DateTimeOffset_
-  commentId: M:Hexalith.Domain.Events.InventoryItemStockIncreased.#ctor(System.String,System.String,System.String,System.String,System.Decimal,DateTimeOffset)
-  fullName: Hexalith.Domain.Events.InventoryItemStockIncreased.InventoryItemStockIncreased(System.String, System.String, System.String, System.String, System.Decimal, DateTimeOffset)
-  nameWithType: InventoryItemStockIncreased.InventoryItemStockIncreased(String, String, String, String, Decimal, DateTimeOffset)
+- uid: Hexalith.Domain.Events.InventoryItemStockIncreased.#ctor(System.String,System.String,System.String,System.String,System.String,System.Decimal,DateTimeOffset)
+  name: InventoryItemStockIncreased(String, String, String, String, String, Decimal, DateTimeOffset)
+  href: api/Hexalith.Domain.Events.InventoryItemStockIncreased.html#Hexalith_Domain_Events_InventoryItemStockIncreased__ctor_System_String_System_String_System_String_System_String_System_String_System_Decimal_DateTimeOffset_
+  commentId: M:Hexalith.Domain.Events.InventoryItemStockIncreased.#ctor(System.String,System.String,System.String,System.String,System.String,System.Decimal,DateTimeOffset)
+  fullName: Hexalith.Domain.Events.InventoryItemStockIncreased.InventoryItemStockIncreased(System.String, System.String, System.String, System.String, System.String, System.Decimal, DateTimeOffset)
+  nameWithType: InventoryItemStockIncreased.InventoryItemStockIncreased(String, String, String, String, String, Decimal, DateTimeOffset)
 - uid: Hexalith.Domain.Events.InventoryItemStockIncreased.#ctor*
   name: InventoryItemStockIncreased
   href: api/Hexalith.Domain.Events.InventoryItemStockIncreased.html#Hexalith_Domain_Events_InventoryItemStockIncreased__ctor_
@@ -12678,44 +12667,6 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Events.InventoryItemStockIncreased.Quantity
   nameWithType: InventoryItemStockIncreased.Quantity
-- uid: Hexalith.Domain.Events.PartitionedEvent
-  name: PartitionedEvent
-  href: api/Hexalith.Domain.Events.PartitionedEvent.html
-  commentId: T:Hexalith.Domain.Events.PartitionedEvent
-  fullName: Hexalith.Domain.Events.PartitionedEvent
-  nameWithType: PartitionedEvent
-- uid: Hexalith.Domain.Events.PartitionedEvent.#ctor
-  name: PartitionedEvent()
-  href: api/Hexalith.Domain.Events.PartitionedEvent.html#Hexalith_Domain_Events_PartitionedEvent__ctor
-  commentId: M:Hexalith.Domain.Events.PartitionedEvent.#ctor
-  fullName: Hexalith.Domain.Events.PartitionedEvent.PartitionedEvent()
-  nameWithType: PartitionedEvent.PartitionedEvent()
-- uid: Hexalith.Domain.Events.PartitionedEvent.#ctor(System.String)
-  name: PartitionedEvent(String)
-  href: api/Hexalith.Domain.Events.PartitionedEvent.html#Hexalith_Domain_Events_PartitionedEvent__ctor_System_String_
-  commentId: M:Hexalith.Domain.Events.PartitionedEvent.#ctor(System.String)
-  fullName: Hexalith.Domain.Events.PartitionedEvent.PartitionedEvent(System.String)
-  nameWithType: PartitionedEvent.PartitionedEvent(String)
-- uid: Hexalith.Domain.Events.PartitionedEvent.#ctor*
-  name: PartitionedEvent
-  href: api/Hexalith.Domain.Events.PartitionedEvent.html#Hexalith_Domain_Events_PartitionedEvent__ctor_
-  commentId: Overload:Hexalith.Domain.Events.PartitionedEvent.#ctor
-  isSpec: "True"
-  fullName: Hexalith.Domain.Events.PartitionedEvent.PartitionedEvent
-  nameWithType: PartitionedEvent.PartitionedEvent
-- uid: Hexalith.Domain.Events.PartitionedEvent.PartitionId
-  name: PartitionId
-  href: api/Hexalith.Domain.Events.PartitionedEvent.html#Hexalith_Domain_Events_PartitionedEvent_PartitionId
-  commentId: P:Hexalith.Domain.Events.PartitionedEvent.PartitionId
-  fullName: Hexalith.Domain.Events.PartitionedEvent.PartitionId
-  nameWithType: PartitionedEvent.PartitionId
-- uid: Hexalith.Domain.Events.PartitionedEvent.PartitionId*
-  name: PartitionId
-  href: api/Hexalith.Domain.Events.PartitionedEvent.html#Hexalith_Domain_Events_PartitionedEvent_PartitionId_
-  commentId: Overload:Hexalith.Domain.Events.PartitionedEvent.PartitionId
-  isSpec: "True"
-  fullName: Hexalith.Domain.Events.PartitionedEvent.PartitionId
-  nameWithType: PartitionedEvent.PartitionId
 - uid: Hexalith.Domain.Exceptions
   name: Hexalith.Domain.Exceptions
   href: api/Hexalith.Domain.Exceptions.html
@@ -13041,12 +12992,12 @@ references:
   commentId: M:Hexalith.Domain.Organizations.Events.CompanyEntityEvent.#ctor
   fullName: Hexalith.Domain.Organizations.Events.CompanyEntityEvent.CompanyEntityEvent()
   nameWithType: CompanyEntityEvent.CompanyEntityEvent()
-- uid: Hexalith.Domain.Organizations.Events.CompanyEntityEvent.#ctor(System.String,System.String,System.String)
-  name: CompanyEntityEvent(String, String, String)
-  href: api/Hexalith.Domain.Organizations.Events.CompanyEntityEvent.html#Hexalith_Domain_Organizations_Events_CompanyEntityEvent__ctor_System_String_System_String_System_String_
-  commentId: M:Hexalith.Domain.Organizations.Events.CompanyEntityEvent.#ctor(System.String,System.String,System.String)
-  fullName: Hexalith.Domain.Organizations.Events.CompanyEntityEvent.CompanyEntityEvent(System.String, System.String, System.String)
-  nameWithType: CompanyEntityEvent.CompanyEntityEvent(String, String, String)
+- uid: Hexalith.Domain.Organizations.Events.CompanyEntityEvent.#ctor(System.String,System.String,System.String,System.String)
+  name: CompanyEntityEvent(String, String, String, String)
+  href: api/Hexalith.Domain.Organizations.Events.CompanyEntityEvent.html#Hexalith_Domain_Organizations_Events_CompanyEntityEvent__ctor_System_String_System_String_System_String_System_String_
+  commentId: M:Hexalith.Domain.Organizations.Events.CompanyEntityEvent.#ctor(System.String,System.String,System.String,System.String)
+  fullName: Hexalith.Domain.Organizations.Events.CompanyEntityEvent.CompanyEntityEvent(System.String, System.String, System.String, System.String)
+  nameWithType: CompanyEntityEvent.CompanyEntityEvent(String, String, String, String)
 - uid: Hexalith.Domain.Organizations.Events.CompanyEntityEvent.#ctor*
   name: CompanyEntityEvent
   href: api/Hexalith.Domain.Organizations.Events.CompanyEntityEvent.html#Hexalith_Domain_Organizations_Events_CompanyEntityEvent__ctor_
@@ -13054,57 +13005,70 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Organizations.Events.CompanyEntityEvent.CompanyEntityEvent
   nameWithType: CompanyEntityEvent.CompanyEntityEvent
-- uid: Hexalith.Domain.Organizations.Events.CompanyEntityEvent.Id
-  name: Id
-  href: api/Hexalith.Domain.Organizations.Events.CompanyEntityEvent.html#Hexalith_Domain_Organizations_Events_CompanyEntityEvent_Id
-  commentId: P:Hexalith.Domain.Organizations.Events.CompanyEntityEvent.Id
-  fullName: Hexalith.Domain.Organizations.Events.CompanyEntityEvent.Id
-  nameWithType: CompanyEntityEvent.Id
-- uid: Hexalith.Domain.Organizations.Events.CompanyEntityEvent.Id*
-  name: Id
-  href: api/Hexalith.Domain.Organizations.Events.CompanyEntityEvent.html#Hexalith_Domain_Organizations_Events_CompanyEntityEvent_Id_
-  commentId: Overload:Hexalith.Domain.Organizations.Events.CompanyEntityEvent.Id
-  isSpec: "True"
-  fullName: Hexalith.Domain.Organizations.Events.CompanyEntityEvent.Id
-  nameWithType: CompanyEntityEvent.Id
-- uid: Hexalith.Domain.Organizations.Events.CompanyEvent
-  name: CompanyEvent
-  href: api/Hexalith.Domain.Organizations.Events.CompanyEvent.html
-  commentId: T:Hexalith.Domain.Organizations.Events.CompanyEvent
-  fullName: Hexalith.Domain.Organizations.Events.CompanyEvent
-  nameWithType: CompanyEvent
-- uid: Hexalith.Domain.Organizations.Events.CompanyEvent.#ctor
-  name: CompanyEvent()
-  href: api/Hexalith.Domain.Organizations.Events.CompanyEvent.html#Hexalith_Domain_Organizations_Events_CompanyEvent__ctor
-  commentId: M:Hexalith.Domain.Organizations.Events.CompanyEvent.#ctor
-  fullName: Hexalith.Domain.Organizations.Events.CompanyEvent.CompanyEvent()
-  nameWithType: CompanyEvent.CompanyEvent()
-- uid: Hexalith.Domain.Organizations.Events.CompanyEvent.#ctor(System.String,System.String)
-  name: CompanyEvent(String, String)
-  href: api/Hexalith.Domain.Organizations.Events.CompanyEvent.html#Hexalith_Domain_Organizations_Events_CompanyEvent__ctor_System_String_System_String_
-  commentId: M:Hexalith.Domain.Organizations.Events.CompanyEvent.#ctor(System.String,System.String)
-  fullName: Hexalith.Domain.Organizations.Events.CompanyEvent.CompanyEvent(System.String, System.String)
-  nameWithType: CompanyEvent.CompanyEvent(String, String)
-- uid: Hexalith.Domain.Organizations.Events.CompanyEvent.#ctor*
-  name: CompanyEvent
-  href: api/Hexalith.Domain.Organizations.Events.CompanyEvent.html#Hexalith_Domain_Organizations_Events_CompanyEvent__ctor_
-  commentId: Overload:Hexalith.Domain.Organizations.Events.CompanyEvent.#ctor
-  isSpec: "True"
-  fullName: Hexalith.Domain.Organizations.Events.CompanyEvent.CompanyEvent
-  nameWithType: CompanyEvent.CompanyEvent
-- uid: Hexalith.Domain.Organizations.Events.CompanyEvent.CompanyId
+- uid: Hexalith.Domain.Organizations.Events.CompanyEntityEvent.CompanyId
   name: CompanyId
-  href: api/Hexalith.Domain.Organizations.Events.CompanyEvent.html#Hexalith_Domain_Organizations_Events_CompanyEvent_CompanyId
-  commentId: P:Hexalith.Domain.Organizations.Events.CompanyEvent.CompanyId
-  fullName: Hexalith.Domain.Organizations.Events.CompanyEvent.CompanyId
-  nameWithType: CompanyEvent.CompanyId
-- uid: Hexalith.Domain.Organizations.Events.CompanyEvent.CompanyId*
+  href: api/Hexalith.Domain.Organizations.Events.CompanyEntityEvent.html#Hexalith_Domain_Organizations_Events_CompanyEntityEvent_CompanyId
+  commentId: P:Hexalith.Domain.Organizations.Events.CompanyEntityEvent.CompanyId
+  fullName: Hexalith.Domain.Organizations.Events.CompanyEntityEvent.CompanyId
+  nameWithType: CompanyEntityEvent.CompanyId
+- uid: Hexalith.Domain.Organizations.Events.CompanyEntityEvent.CompanyId*
   name: CompanyId
-  href: api/Hexalith.Domain.Organizations.Events.CompanyEvent.html#Hexalith_Domain_Organizations_Events_CompanyEvent_CompanyId_
-  commentId: Overload:Hexalith.Domain.Organizations.Events.CompanyEvent.CompanyId
+  href: api/Hexalith.Domain.Organizations.Events.CompanyEntityEvent.html#Hexalith_Domain_Organizations_Events_CompanyEntityEvent_CompanyId_
+  commentId: Overload:Hexalith.Domain.Organizations.Events.CompanyEntityEvent.CompanyId
   isSpec: "True"
-  fullName: Hexalith.Domain.Organizations.Events.CompanyEvent.CompanyId
-  nameWithType: CompanyEvent.CompanyId
+  fullName: Hexalith.Domain.Organizations.Events.CompanyEntityEvent.CompanyId
+  nameWithType: CompanyEntityEvent.CompanyId
+- uid: Hexalith.Domain.Organizations.Events.EntityEvent
+  name: EntityEvent
+  href: api/Hexalith.Domain.Organizations.Events.EntityEvent.html
+  commentId: T:Hexalith.Domain.Organizations.Events.EntityEvent
+  fullName: Hexalith.Domain.Organizations.Events.EntityEvent
+  nameWithType: EntityEvent
+- uid: Hexalith.Domain.Organizations.Events.EntityEvent.#ctor
+  name: EntityEvent()
+  href: api/Hexalith.Domain.Organizations.Events.EntityEvent.html#Hexalith_Domain_Organizations_Events_EntityEvent__ctor
+  commentId: M:Hexalith.Domain.Organizations.Events.EntityEvent.#ctor
+  fullName: Hexalith.Domain.Organizations.Events.EntityEvent.EntityEvent()
+  nameWithType: EntityEvent.EntityEvent()
+- uid: Hexalith.Domain.Organizations.Events.EntityEvent.#ctor(System.String,System.String,System.String)
+  name: EntityEvent(String, String, String)
+  href: api/Hexalith.Domain.Organizations.Events.EntityEvent.html#Hexalith_Domain_Organizations_Events_EntityEvent__ctor_System_String_System_String_System_String_
+  commentId: M:Hexalith.Domain.Organizations.Events.EntityEvent.#ctor(System.String,System.String,System.String)
+  fullName: Hexalith.Domain.Organizations.Events.EntityEvent.EntityEvent(System.String, System.String, System.String)
+  nameWithType: EntityEvent.EntityEvent(String, String, String)
+- uid: Hexalith.Domain.Organizations.Events.EntityEvent.#ctor*
+  name: EntityEvent
+  href: api/Hexalith.Domain.Organizations.Events.EntityEvent.html#Hexalith_Domain_Organizations_Events_EntityEvent__ctor_
+  commentId: Overload:Hexalith.Domain.Organizations.Events.EntityEvent.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Domain.Organizations.Events.EntityEvent.EntityEvent
+  nameWithType: EntityEvent.EntityEvent
+- uid: Hexalith.Domain.Organizations.Events.EntityEvent.Id
+  name: Id
+  href: api/Hexalith.Domain.Organizations.Events.EntityEvent.html#Hexalith_Domain_Organizations_Events_EntityEvent_Id
+  commentId: P:Hexalith.Domain.Organizations.Events.EntityEvent.Id
+  fullName: Hexalith.Domain.Organizations.Events.EntityEvent.Id
+  nameWithType: EntityEvent.Id
+- uid: Hexalith.Domain.Organizations.Events.EntityEvent.Id*
+  name: Id
+  href: api/Hexalith.Domain.Organizations.Events.EntityEvent.html#Hexalith_Domain_Organizations_Events_EntityEvent_Id_
+  commentId: Overload:Hexalith.Domain.Organizations.Events.EntityEvent.Id
+  isSpec: "True"
+  fullName: Hexalith.Domain.Organizations.Events.EntityEvent.Id
+  nameWithType: EntityEvent.Id
+- uid: Hexalith.Domain.Organizations.Events.EntityEvent.OriginId
+  name: OriginId
+  href: api/Hexalith.Domain.Organizations.Events.EntityEvent.html#Hexalith_Domain_Organizations_Events_EntityEvent_OriginId
+  commentId: P:Hexalith.Domain.Organizations.Events.EntityEvent.OriginId
+  fullName: Hexalith.Domain.Organizations.Events.EntityEvent.OriginId
+  nameWithType: EntityEvent.OriginId
+- uid: Hexalith.Domain.Organizations.Events.EntityEvent.OriginId*
+  name: OriginId
+  href: api/Hexalith.Domain.Organizations.Events.EntityEvent.html#Hexalith_Domain_Organizations_Events_EntityEvent_OriginId_
+  commentId: Overload:Hexalith.Domain.Organizations.Events.EntityEvent.OriginId
+  isSpec: "True"
+  fullName: Hexalith.Domain.Organizations.Events.EntityEvent.OriginId
+  nameWithType: EntityEvent.OriginId
 - uid: Hexalith.Domain.Organizations.Events.PartitionedEvent
   name: PartitionedEvent
   href: api/Hexalith.Domain.Organizations.Events.PartitionedEvent.html
@@ -13764,15 +13728,15 @@ references:
   commentId: M:Hexalith.Domain.ValueObjets.Person.#ctor
   fullName: Hexalith.Domain.ValueObjets.Person.Person()
   nameWithType: Person.Person()
-- uid: Hexalith.Domain.ValueObjets.Person.#ctor(System.String,System.String,System.String,System.Nullable{System.DateOnly},System.Nullable{Hexalith.Domain.ValueObjets.Gender})
-  name: Person(String, String, String, Nullable<DateOnly>, Nullable<Gender>)
-  href: api/Hexalith.Domain.ValueObjets.Person.html#Hexalith_Domain_ValueObjets_Person__ctor_System_String_System_String_System_String_System_Nullable_System_DateOnly__System_Nullable_Hexalith_Domain_ValueObjets_Gender__
-  commentId: M:Hexalith.Domain.ValueObjets.Person.#ctor(System.String,System.String,System.String,System.Nullable{System.DateOnly},System.Nullable{Hexalith.Domain.ValueObjets.Gender})
-  name.vb: Person(String, String, String, Nullable(Of DateOnly), Nullable(Of Gender))
-  fullName: Hexalith.Domain.ValueObjets.Person.Person(System.String, System.String, System.String, System.Nullable<System.DateOnly>, System.Nullable<Hexalith.Domain.ValueObjets.Gender>)
-  fullName.vb: Hexalith.Domain.ValueObjets.Person.Person(System.String, System.String, System.String, System.Nullable(Of System.DateOnly), System.Nullable(Of Hexalith.Domain.ValueObjets.Gender))
-  nameWithType: Person.Person(String, String, String, Nullable<DateOnly>, Nullable<Gender>)
-  nameWithType.vb: Person.Person(String, String, String, Nullable(Of DateOnly), Nullable(Of Gender))
+- uid: Hexalith.Domain.ValueObjets.Person.#ctor(System.String,System.String,System.String,System.Nullable{System.DateTimeOffset},System.Nullable{Hexalith.Domain.ValueObjets.Gender})
+  name: Person(String, String, String, Nullable<DateTimeOffset>, Nullable<Gender>)
+  href: api/Hexalith.Domain.ValueObjets.Person.html#Hexalith_Domain_ValueObjets_Person__ctor_System_String_System_String_System_String_System_Nullable_System_DateTimeOffset__System_Nullable_Hexalith_Domain_ValueObjets_Gender__
+  commentId: M:Hexalith.Domain.ValueObjets.Person.#ctor(System.String,System.String,System.String,System.Nullable{System.DateTimeOffset},System.Nullable{Hexalith.Domain.ValueObjets.Gender})
+  name.vb: Person(String, String, String, Nullable(Of DateTimeOffset), Nullable(Of Gender))
+  fullName: Hexalith.Domain.ValueObjets.Person.Person(System.String, System.String, System.String, System.Nullable<System.DateTimeOffset>, System.Nullable<Hexalith.Domain.ValueObjets.Gender>)
+  fullName.vb: Hexalith.Domain.ValueObjets.Person.Person(System.String, System.String, System.String, System.Nullable(Of System.DateTimeOffset), System.Nullable(Of Hexalith.Domain.ValueObjets.Gender))
+  nameWithType: Person.Person(String, String, String, Nullable<DateTimeOffset>, Nullable<Gender>)
+  nameWithType.vb: Person.Person(String, String, String, Nullable(Of DateTimeOffset), Nullable(Of Gender))
 - uid: Hexalith.Domain.ValueObjets.Person.#ctor*
   name: Person
   href: api/Hexalith.Domain.ValueObjets.Person.html#Hexalith_Domain_ValueObjets_Person__ctor_
@@ -17154,6 +17118,40 @@ references:
   fullName.vb: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus(Of TMessage, TMetadata, TState).DaprApplicationBus
   nameWithType: DaprApplicationBus<TMessage, TMetadata, TState>.DaprApplicationBus
   nameWithType.vb: DaprApplicationBus(Of TMessage, TMetadata, TState).DaprApplicationBus
+- uid: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.LogErrorWhileSendingMessage(System.String,System.String,System.String,System.String,System.String,System.String)
+  name: LogErrorWhileSendingMessage(String, String, String, String, String, String)
+  href: api/Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus-3.html#Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_LogErrorWhileSendingMessage_System_String_System_String_System_String_System_String_System_String_System_String_
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.LogErrorWhileSendingMessage(System.String,System.String,System.String,System.String,System.String,System.String)
+  fullName: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus<TMessage, TMetadata, TState>.LogErrorWhileSendingMessage(System.String, System.String, System.String, System.String, System.String, System.String)
+  fullName.vb: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus(Of TMessage, TMetadata, TState).LogErrorWhileSendingMessage(System.String, System.String, System.String, System.String, System.String, System.String)
+  nameWithType: DaprApplicationBus<TMessage, TMetadata, TState>.LogErrorWhileSendingMessage(String, String, String, String, String, String)
+  nameWithType.vb: DaprApplicationBus(Of TMessage, TMetadata, TState).LogErrorWhileSendingMessage(String, String, String, String, String, String)
+- uid: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.LogErrorWhileSendingMessage*
+  name: LogErrorWhileSendingMessage
+  href: api/Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus-3.html#Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_LogErrorWhileSendingMessage_
+  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.LogErrorWhileSendingMessage
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus<TMessage, TMetadata, TState>.LogErrorWhileSendingMessage
+  fullName.vb: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus(Of TMessage, TMetadata, TState).LogErrorWhileSendingMessage
+  nameWithType: DaprApplicationBus<TMessage, TMetadata, TState>.LogErrorWhileSendingMessage
+  nameWithType.vb: DaprApplicationBus(Of TMessage, TMetadata, TState).LogErrorWhileSendingMessage
+- uid: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.LogMessageSent(System.String,System.String,System.String,System.String,System.String)
+  name: LogMessageSent(String, String, String, String, String)
+  href: api/Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus-3.html#Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_LogMessageSent_System_String_System_String_System_String_System_String_System_String_
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.LogMessageSent(System.String,System.String,System.String,System.String,System.String)
+  fullName: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus<TMessage, TMetadata, TState>.LogMessageSent(System.String, System.String, System.String, System.String, System.String)
+  fullName.vb: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus(Of TMessage, TMetadata, TState).LogMessageSent(System.String, System.String, System.String, System.String, System.String)
+  nameWithType: DaprApplicationBus<TMessage, TMetadata, TState>.LogMessageSent(String, String, String, String, String)
+  nameWithType.vb: DaprApplicationBus(Of TMessage, TMetadata, TState).LogMessageSent(String, String, String, String, String)
+- uid: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.LogMessageSent*
+  name: LogMessageSent
+  href: api/Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus-3.html#Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_LogMessageSent_
+  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.LogMessageSent
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus<TMessage, TMetadata, TState>.LogMessageSent
+  fullName.vb: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus(Of TMessage, TMetadata, TState).LogMessageSent
+  nameWithType: DaprApplicationBus<TMessage, TMetadata, TState>.LogMessageSent
+  nameWithType.vb: DaprApplicationBus(Of TMessage, TMetadata, TState).LogMessageSent
 - uid: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.PublishAsync(`0,`1,CancellationToken)
   name: PublishAsync(TMessage, TMetadata, CancellationToken)
   href: api/Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus-3.html#Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_PublishAsync__0__1_CancellationToken_
@@ -19521,6 +19519,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase.MinorVersion
   nameWithType: Dynamics365BusinessEventBase.MinorVersion
+- uid: Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase.OriginId
+  name: OriginId
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase.html#Hexalith_Infrastructure_Dynamics365Finance_BusinessEvents_Dynamics365BusinessEventBase_OriginId
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase.OriginId
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase.OriginId
+  nameWithType: Dynamics365BusinessEventBase.OriginId
+- uid: Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase.OriginId*
+  name: OriginId
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase.html#Hexalith_Infrastructure_Dynamics365Finance_BusinessEvents_Dynamics365BusinessEventBase_OriginId_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase.OriginId
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase.OriginId
+  nameWithType: Dynamics365BusinessEventBase.OriginId
 - uid: Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase.PartitionId
   name: PartitionId
   href: api/Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents.Dynamics365BusinessEventBase.html#Hexalith_Infrastructure_Dynamics365Finance_BusinessEvents_Dynamics365BusinessEventBase_PartitionId
@@ -21853,12 +21864,12 @@ references:
   commentId: T:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2Helper
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2Helper
   nameWithType: WarehouseOnHandV2Helper
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2Helper.ToInventoryItemStockEvent(Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2,System.String,System.Decimal,DateTimeOffset)
-  name: ToInventoryItemStockEvent(WarehouseOnHandV2, String, Decimal, DateTimeOffset)
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2Helper.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2Helper_ToInventoryItemStockEvent_Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_System_String_System_Decimal_DateTimeOffset_
-  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2Helper.ToInventoryItemStockEvent(Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2,System.String,System.Decimal,DateTimeOffset)
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2Helper.ToInventoryItemStockEvent(Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2, System.String, System.Decimal, DateTimeOffset)
-  nameWithType: WarehouseOnHandV2Helper.ToInventoryItemStockEvent(WarehouseOnHandV2, String, Decimal, DateTimeOffset)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2Helper.ToInventoryItemStockEvent(Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2,System.String,System.String,System.Decimal,DateTimeOffset)
+  name: ToInventoryItemStockEvent(WarehouseOnHandV2, String, String, Decimal, DateTimeOffset)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2Helper.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2Helper_ToInventoryItemStockEvent_Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2_System_String_System_String_System_Decimal_DateTimeOffset_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2Helper.ToInventoryItemStockEvent(Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2,System.String,System.String,System.Decimal,DateTimeOffset)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2Helper.ToInventoryItemStockEvent(Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2, System.String, System.String, System.Decimal, DateTimeOffset)
+  nameWithType: WarehouseOnHandV2Helper.ToInventoryItemStockEvent(WarehouseOnHandV2, String, String, Decimal, DateTimeOffset)
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2Helper.ToInventoryItemStockEvent*
   name: ToInventoryItemStockEvent
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandV2Helper.html#Hexalith_Infrastructure_Dynamics365Finance_Inventories_InventoryOnHand_WarehouseOnHandV2Helper_ToInventoryItemStockEvent_
@@ -22623,6 +22634,38 @@ references:
   commentId: N:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities
   nameWithType: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerAccountKey
+  name: CustomerAccountKey
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerAccountKey.html
+  commentId: T:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerAccountKey
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerAccountKey
+  nameWithType: CustomerAccountKey
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerAccountKey.#ctor(System.String,System.String)
+  name: CustomerAccountKey(String, String)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerAccountKey.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerAccountKey__ctor_System_String_System_String_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerAccountKey.#ctor(System.String,System.String)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerAccountKey.CustomerAccountKey(System.String, System.String)
+  nameWithType: CustomerAccountKey.CustomerAccountKey(String, String)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerAccountKey.#ctor*
+  name: CustomerAccountKey
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerAccountKey.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerAccountKey__ctor_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerAccountKey.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerAccountKey.CustomerAccountKey
+  nameWithType: CustomerAccountKey.CustomerAccountKey
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerAccountKey.CustomerAccount
+  name: CustomerAccount
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerAccountKey.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerAccountKey_CustomerAccount
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerAccountKey.CustomerAccount
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerAccountKey.CustomerAccount
+  nameWithType: CustomerAccountKey.CustomerAccount
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerAccountKey.CustomerAccount*
+  name: CustomerAccount
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerAccountKey.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerAccountKey_CustomerAccount_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerAccountKey.CustomerAccount
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerAccountKey.CustomerAccount
+  nameWithType: CustomerAccountKey.CustomerAccount
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerByAccountFilter
   name: CustomerByAccountFilter
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerByAccountFilter.html
@@ -23146,6 +23189,131 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerExternalCodeFilter.System
   nameWithType: CustomerExternalCodeFilter.System
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers
+  name: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.html
+  commentId: N:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers
+  nameWithType: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter
+  name: CustomerConverter
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.html
+  commentId: T:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter
+  nameWithType: CustomerConverter
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamics365FinanceCustomer(Hexalith.Domain.Events.CustomerInformationChanged)
+  name: ToDynamics365FinanceCustomer(CustomerInformationChanged)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToDynamics365FinanceCustomer_Hexalith_Domain_Events_CustomerInformationChanged_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamics365FinanceCustomer(Hexalith.Domain.Events.CustomerInformationChanged)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamics365FinanceCustomer(Hexalith.Domain.Events.CustomerInformationChanged)
+  nameWithType: CustomerConverter.ToDynamics365FinanceCustomer(CustomerInformationChanged)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamics365FinanceCustomer(Hexalith.Domain.Events.CustomerRegistered)
+  name: ToDynamics365FinanceCustomer(CustomerRegistered)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToDynamics365FinanceCustomer_Hexalith_Domain_Events_CustomerRegistered_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamics365FinanceCustomer(Hexalith.Domain.Events.CustomerRegistered)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamics365FinanceCustomer(Hexalith.Domain.Events.CustomerRegistered)
+  nameWithType: CustomerConverter.ToDynamics365FinanceCustomer(CustomerRegistered)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamics365FinanceCustomer*
+  name: ToDynamics365FinanceCustomer
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToDynamics365FinanceCustomer_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamics365FinanceCustomer
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamics365FinanceCustomer
+  nameWithType: CustomerConverter.ToDynamics365FinanceCustomer
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents
+  name: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.html
+  commentId: N:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents
+  nameWithType: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerChangedHandler`1
+  name: CustomerChangedHandler<TCustomerEvent>
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerChangedHandler-1.html
+  commentId: T:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerChangedHandler`1
+  name.vb: CustomerChangedHandler(Of TCustomerEvent)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerChangedHandler<TCustomerEvent>
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerChangedHandler(Of TCustomerEvent)
+  nameWithType: CustomerChangedHandler<TCustomerEvent>
+  nameWithType.vb: CustomerChangedHandler(Of TCustomerEvent)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerChangedHandler`1.#ctor(Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3},Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerExternalSystemCode},Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService,Microsoft.Extensions.Options.IOptions{Hexalith.Application.Organizations.Configurations.OrganizationSettings})
+  name: CustomerChangedHandler(IDynamics365FinanceClient<CustomerV3>, IDynamics365FinanceClient<CustomerExternalSystemCode>, IExternalReferenceMapperService, IOptions<OrganizationSettings>)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerChangedHandler-1.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_IntegrationEvents_CustomerChangedHandler_1__ctor_Hexalith_Infrastructure_Dynamics365Finance_Client_IDynamics365FinanceClient_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerV3__Hexalith_Infrastructure_Dynamics365Finance_Client_IDynamics365FinanceClient_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerExternalSystemCode__Hexalith_Application_ExternalSystems_Services_IExternalReferenceMapperService_Microsoft_Extensions_Options_IOptions_Hexalith_Application_Organizations_Configurations_OrganizationSettings__
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerChangedHandler`1.#ctor(Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3},Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerExternalSystemCode},Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService,Microsoft.Extensions.Options.IOptions{Hexalith.Application.Organizations.Configurations.OrganizationSettings})
+  name.vb: CustomerChangedHandler(IDynamics365FinanceClient(Of CustomerV3), IDynamics365FinanceClient(Of CustomerExternalSystemCode), IExternalReferenceMapperService, IOptions(Of OrganizationSettings))
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerChangedHandler<TCustomerEvent>.CustomerChangedHandler(Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient<Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3>, Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient<Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerExternalSystemCode>, Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService, Microsoft.Extensions.Options.IOptions<Hexalith.Application.Organizations.Configurations.OrganizationSettings>)
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerChangedHandler(Of TCustomerEvent).CustomerChangedHandler(Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient(Of Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3), Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient(Of Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerExternalSystemCode), Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService, Microsoft.Extensions.Options.IOptions(Of Hexalith.Application.Organizations.Configurations.OrganizationSettings))
+  nameWithType: CustomerChangedHandler<TCustomerEvent>.CustomerChangedHandler(IDynamics365FinanceClient<CustomerV3>, IDynamics365FinanceClient<CustomerExternalSystemCode>, IExternalReferenceMapperService, IOptions<OrganizationSettings>)
+  nameWithType.vb: CustomerChangedHandler(Of TCustomerEvent).CustomerChangedHandler(IDynamics365FinanceClient(Of CustomerV3), IDynamics365FinanceClient(Of CustomerExternalSystemCode), IExternalReferenceMapperService, IOptions(Of OrganizationSettings))
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerChangedHandler`1.#ctor*
+  name: CustomerChangedHandler
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerChangedHandler-1.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_IntegrationEvents_CustomerChangedHandler_1__ctor_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerChangedHandler`1.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerChangedHandler<TCustomerEvent>.CustomerChangedHandler
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerChangedHandler(Of TCustomerEvent).CustomerChangedHandler
+  nameWithType: CustomerChangedHandler<TCustomerEvent>.CustomerChangedHandler
+  nameWithType.vb: CustomerChangedHandler(Of TCustomerEvent).CustomerChangedHandler
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerChangedHandler`1.ApplyAsync(`0,System.Threading.CancellationToken)
+  name: ApplyAsync(TCustomerEvent, CancellationToken)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerChangedHandler-1.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_IntegrationEvents_CustomerChangedHandler_1_ApplyAsync__0_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerChangedHandler`1.ApplyAsync(`0,System.Threading.CancellationToken)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerChangedHandler<TCustomerEvent>.ApplyAsync(TCustomerEvent, System.Threading.CancellationToken)
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerChangedHandler(Of TCustomerEvent).ApplyAsync(TCustomerEvent, System.Threading.CancellationToken)
+  nameWithType: CustomerChangedHandler<TCustomerEvent>.ApplyAsync(TCustomerEvent, CancellationToken)
+  nameWithType.vb: CustomerChangedHandler(Of TCustomerEvent).ApplyAsync(TCustomerEvent, CancellationToken)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerChangedHandler`1.ApplyAsync*
+  name: ApplyAsync
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerChangedHandler-1.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_IntegrationEvents_CustomerChangedHandler_1_ApplyAsync_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerChangedHandler`1.ApplyAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerChangedHandler<TCustomerEvent>.ApplyAsync
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerChangedHandler(Of TCustomerEvent).ApplyAsync
+  nameWithType: CustomerChangedHandler<TCustomerEvent>.ApplyAsync
+  nameWithType.vb: CustomerChangedHandler(Of TCustomerEvent).ApplyAsync
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerInformationChangedHandler
+  name: CustomerInformationChangedHandler
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerInformationChangedHandler.html
+  commentId: T:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerInformationChangedHandler
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerInformationChangedHandler
+  nameWithType: CustomerInformationChangedHandler
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerInformationChangedHandler.#ctor(Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3},Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerExternalSystemCode},Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService,Microsoft.Extensions.Options.IOptions{Hexalith.Application.Organizations.Configurations.OrganizationSettings})
+  name: CustomerInformationChangedHandler(IDynamics365FinanceClient<CustomerV3>, IDynamics365FinanceClient<CustomerExternalSystemCode>, IExternalReferenceMapperService, IOptions<OrganizationSettings>)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerInformationChangedHandler.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_IntegrationEvents_CustomerInformationChangedHandler__ctor_Hexalith_Infrastructure_Dynamics365Finance_Client_IDynamics365FinanceClient_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerV3__Hexalith_Infrastructure_Dynamics365Finance_Client_IDynamics365FinanceClient_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerExternalSystemCode__Hexalith_Application_ExternalSystems_Services_IExternalReferenceMapperService_Microsoft_Extensions_Options_IOptions_Hexalith_Application_Organizations_Configurations_OrganizationSettings__
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerInformationChangedHandler.#ctor(Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3},Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerExternalSystemCode},Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService,Microsoft.Extensions.Options.IOptions{Hexalith.Application.Organizations.Configurations.OrganizationSettings})
+  name.vb: CustomerInformationChangedHandler(IDynamics365FinanceClient(Of CustomerV3), IDynamics365FinanceClient(Of CustomerExternalSystemCode), IExternalReferenceMapperService, IOptions(Of OrganizationSettings))
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerInformationChangedHandler.CustomerInformationChangedHandler(Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient<Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3>, Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient<Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerExternalSystemCode>, Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService, Microsoft.Extensions.Options.IOptions<Hexalith.Application.Organizations.Configurations.OrganizationSettings>)
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerInformationChangedHandler.CustomerInformationChangedHandler(Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient(Of Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3), Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient(Of Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerExternalSystemCode), Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService, Microsoft.Extensions.Options.IOptions(Of Hexalith.Application.Organizations.Configurations.OrganizationSettings))
+  nameWithType: CustomerInformationChangedHandler.CustomerInformationChangedHandler(IDynamics365FinanceClient<CustomerV3>, IDynamics365FinanceClient<CustomerExternalSystemCode>, IExternalReferenceMapperService, IOptions<OrganizationSettings>)
+  nameWithType.vb: CustomerInformationChangedHandler.CustomerInformationChangedHandler(IDynamics365FinanceClient(Of CustomerV3), IDynamics365FinanceClient(Of CustomerExternalSystemCode), IExternalReferenceMapperService, IOptions(Of OrganizationSettings))
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerInformationChangedHandler.#ctor*
+  name: CustomerInformationChangedHandler
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerInformationChangedHandler.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_IntegrationEvents_CustomerInformationChangedHandler__ctor_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerInformationChangedHandler.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerInformationChangedHandler.CustomerInformationChangedHandler
+  nameWithType: CustomerInformationChangedHandler.CustomerInformationChangedHandler
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler
+  name: CustomerRegisteredHandler
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler.html
+  commentId: T:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler
+  nameWithType: CustomerRegisteredHandler
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler.#ctor(Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3},Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerExternalSystemCode},Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService,Microsoft.Extensions.Options.IOptions{Hexalith.Application.Organizations.Configurations.OrganizationSettings})
+  name: CustomerRegisteredHandler(IDynamics365FinanceClient<CustomerV3>, IDynamics365FinanceClient<CustomerExternalSystemCode>, IExternalReferenceMapperService, IOptions<OrganizationSettings>)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_IntegrationEvents_CustomerRegisteredHandler__ctor_Hexalith_Infrastructure_Dynamics365Finance_Client_IDynamics365FinanceClient_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerV3__Hexalith_Infrastructure_Dynamics365Finance_Client_IDynamics365FinanceClient_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerExternalSystemCode__Hexalith_Application_ExternalSystems_Services_IExternalReferenceMapperService_Microsoft_Extensions_Options_IOptions_Hexalith_Application_Organizations_Configurations_OrganizationSettings__
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler.#ctor(Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3},Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerExternalSystemCode},Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService,Microsoft.Extensions.Options.IOptions{Hexalith.Application.Organizations.Configurations.OrganizationSettings})
+  name.vb: CustomerRegisteredHandler(IDynamics365FinanceClient(Of CustomerV3), IDynamics365FinanceClient(Of CustomerExternalSystemCode), IExternalReferenceMapperService, IOptions(Of OrganizationSettings))
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler.CustomerRegisteredHandler(Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient<Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3>, Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient<Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerExternalSystemCode>, Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService, Microsoft.Extensions.Options.IOptions<Hexalith.Application.Organizations.Configurations.OrganizationSettings>)
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler.CustomerRegisteredHandler(Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient(Of Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3), Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient(Of Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerExternalSystemCode), Hexalith.Application.ExternalSystems.Services.IExternalReferenceMapperService, Microsoft.Extensions.Options.IOptions(Of Hexalith.Application.Organizations.Configurations.OrganizationSettings))
+  nameWithType: CustomerRegisteredHandler.CustomerRegisteredHandler(IDynamics365FinanceClient<CustomerV3>, IDynamics365FinanceClient<CustomerExternalSystemCode>, IExternalReferenceMapperService, IOptions<OrganizationSettings>)
+  nameWithType.vb: CustomerRegisteredHandler.CustomerRegisteredHandler(IDynamics365FinanceClient(Of CustomerV3), IDynamics365FinanceClient(Of CustomerExternalSystemCode), IExternalReferenceMapperService, IOptions(Of OrganizationSettings))
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler.#ctor*
+  name: CustomerRegisteredHandler
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_IntegrationEvents_CustomerRegisteredHandler__ctor_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler.CustomerRegisteredHandler
+  nameWithType: CustomerRegisteredHandler.CustomerRegisteredHandler
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers
   name: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.html

@@ -33,16 +33,18 @@ public class RemoveInventoryItemBarcode : InventoryItemCommand
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
+    /// <param name="originId">The origin identifier.</param>
     /// <param name="id">The identifier.</param>
     /// <param name="barcode">The barcode.</param>
     /// <param name="date">The date.</param>
     public RemoveInventoryItemBarcode(
         string partitionId,
         string companyId,
+        string originId,
         string id,
         string barcode,
         DateTimeOffset date)
-        : base(partitionId, companyId, id)
+        : base(partitionId, companyId, originId, id)
     {
         Date = date;
         Barcode = barcode;

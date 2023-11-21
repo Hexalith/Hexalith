@@ -43,6 +43,7 @@ public class AddInventoryItemBarcodeHandler : CommandHandler<AddInventoryItemBar
         return Task.FromResult<IEnumerable<BaseMessage>>(new InventoryItemBarcodeAdded(
                     command.PartitionId,
                     command.CompanyId,
+                    command.OriginId,
                     command.Id,
                     command.Barcode,
                     command.Date)

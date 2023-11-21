@@ -30,7 +30,7 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="BaseEvent" />
 [DataContract]
-public abstract class ExternalSystemReferenceCommand : CompanyCommand
+public abstract class ExternalSystemReferenceCommand : PartitionedCommand
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="ExternalSystemReferenceCommand"/> class.
@@ -49,19 +49,28 @@ public abstract class ExternalSystemReferenceCommand : CompanyCommand
         string referenceAggregateName,
         string externalId,
         string referenceAggregateId)
-        : base(partitionId, companyId)
+        : base(partitionId)
     {
         SystemId = systemId;
         ReferenceAggregateName = referenceAggregateName;
         ExternalId = externalId;
         ReferenceAggregateId = referenceAggregateId;
+        CompanyId = companyId;
     }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ExternalSystemReferenceCommand" /> class.
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    protected ExternalSystemReferenceCommand() => SystemId = ReferenceAggregateId = ReferenceAggregateName = ExternalId = string.Empty;
+    protected ExternalSystemReferenceCommand() => CompanyId = SystemId = ReferenceAggregateId = ReferenceAggregateName = ExternalId = string.Empty;
+
+    /// <summary>
+    /// Gets or sets the company identifier.
+    /// </summary>
+    /// <value>The company identifier.</value>
+    [DataMember(Order = 2)]
+    [JsonPropertyOrder(2)]
+    public string CompanyId { get; set; }
 
     /// <summary>
     /// Gets or sets the external identifier.

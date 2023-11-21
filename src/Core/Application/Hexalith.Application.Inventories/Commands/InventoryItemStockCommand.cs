@@ -29,47 +29,41 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="CompanyCommand" />
 [DataContract]
-public abstract class InventoryItemStockCommand : CompanyCommand
+public abstract class InventoryItemStockCommand : CompanyEntityCommand
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="InventoryItemStockCommand"/> class.
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
+    /// <param name="originId">The origin identifier.</param>
     /// <param name="companyId">The company identifier.</param>
     /// <param name="locationId">The location identifier.</param>
-    /// <param name="inventoryItemId">The inventory item identifier.</param>
+    /// <param name="id">The identifier.</param>
     [JsonConstructor]
-    protected InventoryItemStockCommand(string partitionId, string companyId, string locationId, string inventoryItemId)
-        : base(partitionId, companyId)
-    {
-        LocationId = locationId;
-        InventoryItemId = inventoryItemId;
-    }
+    protected InventoryItemStockCommand(
+        string partitionId,
+        string companyId,
+        string originId,
+        string locationId,
+        string id)
+        : base(partitionId, originId, companyId, id) => LocationId = locationId;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="InventoryItemStockCommand" /> class.
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    protected InventoryItemStockCommand() => LocationId = InventoryItemId = string.Empty;
-
-    /// <summary>
-    /// Gets the inventory item identifier.
-    /// </summary>
-    /// <value>The inventory item identifier.</value>
-    [DataMember(Order = 4)]
-    [JsonPropertyOrder(4)]
-    public string InventoryItemId { get; }
+    protected InventoryItemStockCommand() => LocationId = string.Empty;
 
     /// <summary>
     /// Gets or sets the identifier.
     /// </summary>
     /// <value>The identifier.</value>
-    [DataMember(Order = 3)]
-    [JsonPropertyOrder(3)]
+    [DataMember(Order = 10)]
+    [JsonPropertyOrder(10)]
     public string LocationId { get; set; }
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateId() => InventoryItemStock.GetAggregateId(PartitionId, CompanyId, LocationId, InventoryItemId);
+    protected override string DefaultAggregateId() => InventoryItemStock.GetAggregateId(PartitionId, CompanyId, OriginId, LocationId, Id);
 
     /// <inheritdoc/>
     protected override string DefaultAggregateName() => InventoryItemStock.GetAggregateName();

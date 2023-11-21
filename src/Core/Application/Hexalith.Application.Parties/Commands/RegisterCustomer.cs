@@ -34,6 +34,7 @@ public class RegisterCustomer : CustomerCommand
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
+    /// <param name="originId">The origin identifier.</param>
     /// <param name="id">The identifier.</param>
     /// <param name="name">The name.</param>
     /// <param name="contact">The contact.</param>
@@ -43,13 +44,14 @@ public class RegisterCustomer : CustomerCommand
     public RegisterCustomer(
         string partitionId,
         string companyId,
+        string originId,
         string id,
         string name,
         Contact contact,
         string? warehouseId,
         string? commissionSalesGroupId,
         DateTimeOffset date)
-        : base(partitionId, companyId, id)
+        : base(partitionId, companyId, originId, id)
     {
         Name = name;
         Contact = contact;

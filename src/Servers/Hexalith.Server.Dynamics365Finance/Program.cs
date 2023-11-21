@@ -30,10 +30,6 @@ WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
     args);
 
 builder.Services.AddDynamics365FinanceCustomers(builder.Configuration);
-
-// builder.Services.AddDaprPartiesClient();
-// builder.Services.AddDaprExternalSystemsMapper(builder.Configuration, applicationName);
-// builder.Services.AddExternalSystemsMapperSubscription(applicationName, aggregateNames);
 builder.Services.AddOrganizations(builder.Configuration);
 builder.Services.AddSingleton<IIntegrationEventProcessor, IntegrationEventProcessor>();
 builder.Services.AddSingleton<IIntegrationEventDispatcher, DependencyInjectionEventDispatcher>();

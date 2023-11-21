@@ -35,6 +35,7 @@ using Hexalith.Extensions.Helpers;
 public record InventoryItem(
     string PartitionId,
     string CompanyId,
+    string OriginId,
     string Id,
     string Name,
     IEnumerable<ItemBarcode>? Barcodes,
@@ -48,6 +49,7 @@ public record InventoryItem(
         : this(
               (inventoryItem ?? throw new ArgumentNullException(nameof(inventoryItem))).PartitionId,
               inventoryItem.CompanyId,
+              inventoryItem.OriginId,
               inventoryItem.Id,
               inventoryItem.Name,
               null,
@@ -63,6 +65,7 @@ public record InventoryItem(
         : this(
               (inventoryItem ?? throw new ArgumentNullException(nameof(inventoryItem))).PartitionId,
               inventoryItem.CompanyId,
+              inventoryItem.OriginId,
               inventoryItem.Id,
               inventoryItem.Name,
               null,
@@ -115,17 +118,18 @@ public record InventoryItem(
     }
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateId() => GetAggregateId(PartitionId, CompanyId, Id);
+    protected override string DefaultAggregateId() => GetAggregateId(PartitionId, CompanyId, OriginId, Id);
 
     /// <summary>
     /// Gets the aggregate identifier.
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
+    /// <param name="originId">The origin identifier.</param>
     /// <param name="id">The identifier.</param>
     /// <returns>string.</returns>
-    public static string GetAggregateId(string partitionId, string companyId, string id)
-        => Normalize(GetAggregateName() + Separator + partitionId + Separator + companyId + Separator + id);
+    public static string GetAggregateId(string partitionId, string companyId, string originId, string id)
+        => Normalize(GetAggregateName() + Separator + partitionId + Separator + companyId + Separator + originId + Separator + id);
 
     /// <summary>
     /// Gets the name of the aggregate.

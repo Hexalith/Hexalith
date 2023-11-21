@@ -33,16 +33,18 @@ public class AddInventoryItem : InventoryItemCommand
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
+    /// <param name="originId">The origin identifier.</param>
     /// <param name="id">The identifier.</param>
     /// <param name="name">The name.</param>
     /// <param name="date">The date.</param>
     public AddInventoryItem(
         string partitionId,
         string companyId,
+        string originId,
         string id,
         string name,
         DateTimeOffset date)
-        : base(partitionId, companyId, id)
+        : base(partitionId, companyId, originId, id)
     {
         Name = name;
         Date = date;

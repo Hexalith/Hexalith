@@ -43,6 +43,7 @@ public class ChangeInventoryItemInformationHandler : CommandHandler<ChangeInvent
         return Task.FromResult<IEnumerable<BaseMessage>>(new InventoryItemInformationChanged(
                     command.PartitionId,
                     command.CompanyId,
+                    command.OriginId,
                     command.Id,
                     command.Name,
                     command.Date)

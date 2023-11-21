@@ -34,16 +34,18 @@ public class InventoryItemBarcodeAdded : InventoryItemEvent
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
+    /// <param name="originId">The origin identifier.</param>
     /// <param name="id">The identifier.</param>
     /// <param name="barcode">The barcode.</param>
     /// <param name="date">The date.</param>
     public InventoryItemBarcodeAdded(
         string partitionId,
         string companyId,
+        string originId,
         string id,
         ItemBarcode barcode,
         DateTimeOffset date)
-        : base(partitionId, companyId, id)
+        : base(partitionId, companyId, originId, id)
     {
         Date = date;
         Barcode = barcode;

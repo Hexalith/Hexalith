@@ -61,6 +61,7 @@ public abstract class CustomerProjectionUpdateHandler<TCustomerEvent> : Projecti
                 : new Customer(new CustomerRegistered(
                     baseEvent.PartitionId,
                     baseEvent.CompanyId,
+                    baseEvent.OriginId,
                     baseEvent.Id,
                     "Not Defined",
                     new Domain.ValueObjets.Contact(null, null, null, null, null),

@@ -33,18 +33,20 @@ public class InventoryItemStockDecreased : InventoryItemStockEvent
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
+    /// <param name="originId">The origin identifier.</param>
     /// <param name="locationId">The location identifier.</param>
-    /// <param name="inventoryItemId">The inventory item identifier.</param>
+    /// <param name="id">The identifier.</param>
     /// <param name="quantity">The quantity.</param>
     /// <param name="date">The date.</param>
     public InventoryItemStockDecreased(
         string partitionId,
         string companyId,
+        string originId,
         string locationId,
-        string inventoryItemId,
+        string id,
         decimal quantity,
         DateTimeOffset date)
-        : base(partitionId, companyId, locationId, inventoryItemId)
+        : base(partitionId, companyId, originId, locationId, id)
     {
         Quantity = quantity;
         Date = date;

@@ -44,6 +44,7 @@ public class RegisterOrChangeCustomerHandler : CommandHandler<RegisterOrChangeCu
             CustomerInformationChanged changed = new(
                     command.PartitionId,
                     command.CompanyId,
+                    command.OriginId,
                     command.Id,
                     command.Name,
                     command.Contact,
@@ -58,6 +59,7 @@ public class RegisterOrChangeCustomerHandler : CommandHandler<RegisterOrChangeCu
         CustomerRegistered registered = new(
             command.PartitionId,
             command.CompanyId,
+            command.OriginId,
             command.Id,
             command.Name,
             command.Contact,

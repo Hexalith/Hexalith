@@ -122,6 +122,7 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
         return new CustomerInformationChanged(
                 customer.PartitionId,
                 customer.CompanyId,
+                customer.OriginId,
                 customer.Id,
                 customer.Name,
                 customer.Contact,

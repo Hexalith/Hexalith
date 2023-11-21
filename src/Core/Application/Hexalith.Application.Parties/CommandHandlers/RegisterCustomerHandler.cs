@@ -43,6 +43,7 @@ public class RegisterCustomerHandler : CommandHandler<RegisterCustomer>
             new(
                 command.PartitionId,
                 command.CompanyId,
+                command.OriginId,
                 command.Id,
                 command.Name,
                 command.Contact,

@@ -32,6 +32,12 @@ public class OrganizationSettings : ISettings
     public string? DefaultCompanyId { get; set; }
 
     /// <summary>
+    /// Gets or sets the default origin identifier.
+    /// </summary>
+    /// <value>The default origin identifier.</value>
+    public string? DefaultOriginId { get; set; }
+
+    /// <summary>
     /// Gets or sets the default partition identifier.
     /// </summary>
     /// <value>The default partition identifier.</value>

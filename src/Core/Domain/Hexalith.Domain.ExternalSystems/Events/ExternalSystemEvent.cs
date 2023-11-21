@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 using Hexalith.Domain.Aggregates;
+using Hexalith.Domain.Organizations.Events;
 using Hexalith.Extensions;
 
 /// <summary>
@@ -28,7 +29,7 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="Hexalith.Domain.Events.BaseEvent" />
 [DataContract]
-public abstract class ExternalSystemEvent : CompanyEvent
+public abstract class ExternalSystemEvent : PartitionedEvent
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="ExternalSystemEvent"/> class.
@@ -47,19 +48,28 @@ public abstract class ExternalSystemEvent : CompanyEvent
         string referenceAggregateName,
         string externalId,
         string referenceAggregateId)
-        : base(partitionId, companyId)
+        : base(partitionId)
     {
         SystemId = systemId;
         ReferenceAggregateName = referenceAggregateName;
         ReferenceAggregateId = referenceAggregateId;
         ExternalId = externalId;
+        CompanyId = companyId;
     }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ExternalSystemEvent" /> class.
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    protected ExternalSystemEvent() => SystemId = ReferenceAggregateId = ReferenceAggregateName = ExternalId = string.Empty;
+    protected ExternalSystemEvent() => CompanyId = SystemId = ReferenceAggregateId = ReferenceAggregateName = ExternalId = string.Empty;
+
+    /// <summary>
+    /// Gets or sets the company identifier.
+    /// </summary>
+    /// <value>The company identifier.</value>
+    [DataMember(Order = 2)]
+    [JsonPropertyOrder(2)]
+    public string CompanyId { get; set; }
 
     /// <summary>
     /// Gets or sets the external identifier.

@@ -42,6 +42,7 @@ public class ChangeCustomerInformationHandler : CommandHandler<ChangeCustomerInf
         CustomerInformationChanged changed = new(
                 command.PartitionId,
                 command.CompanyId,
+                command.OriginId,
                 command.Id,
                 command.Name,
                 command.Contact,
