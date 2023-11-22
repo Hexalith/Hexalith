@@ -38,7 +38,7 @@ public abstract class CompanyEntityCommand : EntityCommand
     /// <param name="companyId">The company identifier.</param>
     /// <param name="id">The identifier.</param>
     [JsonConstructor]
-    protected CompanyEntityCommand(string partitionId, string originId, string companyId, string id)
+    protected CompanyEntityCommand(string partitionId, string companyId, string originId, string id)
         : base(partitionId, originId, id)
             => CompanyId = companyId;
 

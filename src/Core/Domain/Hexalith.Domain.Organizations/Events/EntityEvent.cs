@@ -51,18 +51,18 @@ public abstract class EntityEvent : PartitionedEvent
     protected EntityEvent() => OriginId = Id = string.Empty;
 
     /// <summary>
-    /// Gets the identifier.
+    /// Gets or sets the identifier.
     /// </summary>
     /// <value>The identifier.</value>
     [DataMember(Order = 3)]
     [JsonPropertyOrder(3)]
-    public string Id { get; }
+    public string Id { get; set; }
 
     /// <summary>
-    /// Gets the company identifier.
+    /// Gets or sets the company identifier.
     /// </summary>
     /// <value>The company identifier.</value>
     [DataMember(Order = 2)]
     [JsonPropertyOrder(2)]
-    public string OriginId { get; }
+    public string OriginId { get; set; }
 }

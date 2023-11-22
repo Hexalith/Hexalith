@@ -51,12 +51,12 @@ public abstract class EntityCommand : PartitionedCommand
     protected EntityCommand() => OriginId = Id = string.Empty;
 
     /// <summary>
-    /// Gets the identifier.
+    /// Gets or sets the identifier.
     /// </summary>
     /// <value>The identifier.</value>
     [DataMember(Order = 3)]
     [JsonPropertyOrder(3)]
-    public string Id { get; }
+    public string Id { get; set; }
 
     /// <summary>
     /// Gets or sets the company identifier.

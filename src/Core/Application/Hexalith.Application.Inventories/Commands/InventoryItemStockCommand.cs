@@ -46,7 +46,7 @@ public abstract class InventoryItemStockCommand : CompanyEntityCommand
         string originId,
         string locationId,
         string id)
-        : base(partitionId, originId, companyId, id) => LocationId = locationId;
+        : base(partitionId, companyId, originId, id) => LocationId = locationId;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="InventoryItemStockCommand" /> class.
