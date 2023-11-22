@@ -33,6 +33,8 @@ using Microsoft.Extensions.Options;
 /// <seealso cref="ControllerBase" />
 public abstract class Dynamics365FinanceBindingController : BindingController
 {
+    private readonly string _defaultCompanyId;
+    private readonly string _defaultOriginId;
     private readonly string _defaultPartitionId;
 
     /// <summary>
@@ -61,7 +63,11 @@ public abstract class Dynamics365FinanceBindingController : BindingController
         ArgumentNullException.ThrowIfNull(organizationSettings);
         OrganizationSettings settings = organizationSettings.Value;
         SettingsException<OrganizationSettings>.ThrowIfNullOrEmpty(settings.DefaultPartitionId);
+        SettingsException<OrganizationSettings>.ThrowIfNullOrEmpty(settings.DefaultCompanyId);
+        SettingsException<OrganizationSettings>.ThrowIfNullOrEmpty(settings.DefaultOriginId);
         _defaultPartitionId = settings.DefaultPartitionId;
+        _defaultOriginId = settings.DefaultOriginId;
+        _defaultCompanyId = settings.DefaultCompanyId;
         _eventValidator = metadataValidator;
     }
 
@@ -71,10 +77,9 @@ public abstract class Dynamics365FinanceBindingController : BindingController
         try
         {
             Dynamics365BusinessEventBase businessEvent = message.Deserialize<Dynamics365BusinessEventBase>() ?? throw new InvalidOperationException("Deserialized business event is null.");
-            if (string.IsNullOrWhiteSpace(businessEvent.PartitionId))
-            {
-                businessEvent.PartitionId = _defaultPartitionId;
-            }
+            businessEvent.PartitionId = string.IsNullOrWhiteSpace(businessEvent.PartitionId) ? _defaultPartitionId : businessEvent.PartitionId;
+            businessEvent.BusinessEventLegalEntity = string.IsNullOrWhiteSpace(businessEvent.BusinessEventLegalEntity) ? _defaultCompanyId : businessEvent.BusinessEventLegalEntity;
+            businessEvent.OriginId = string.IsNullOrWhiteSpace(businessEvent.OriginId) ? _defaultOriginId : businessEvent.OriginId;
 
             _eventValidator.ValidateAndThrow(businessEvent);
             ValidateAndThrow(businessEvent);
