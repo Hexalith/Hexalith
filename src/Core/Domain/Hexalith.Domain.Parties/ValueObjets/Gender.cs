@@ -31,6 +31,11 @@ public enum Gender
     Female,
 
     /// <summary>
+    /// The non specific.
+    /// </summary>
+    NonSpecific,
+
+    /// <summary>
     /// The other.
     /// </summary>
     Other,
