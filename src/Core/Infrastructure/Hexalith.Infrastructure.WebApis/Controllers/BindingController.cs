@@ -87,7 +87,7 @@ public abstract class BindingController : ReceiveMessageController
                 metadata.Message.Id,
                 metadata.Context.CorrelationId);
             await _eventProcessor.SubmitAsync(@event, metadata, cancellationToken).ConfigureAwait(false);
-            return Accepted();
+            return Ok();
         }
         catch (ApplicationErrorException ex)
         {
