@@ -31,6 +31,7 @@ using Hexalith.Domain.Events;
 /// <seealso cref="IAggregate" />
 [DataContract]
 [DebuggerDisplay("{AggregateName}/{AggregateId}")]
+[Serializable]
 public abstract record Aggregate : IAggregate
 {
     /// <summary>

@@ -20,6 +20,8 @@ using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Extensions;
+
 /// <summary>
 /// Class ExternalCustomerDetached.
 /// Implements the <see cref="Hexalith.Domain.Events.ExternalCustomerEvent" />.
@@ -42,7 +44,7 @@ public class ExternalCustomerDetached : ExternalCustomerEvent
     /// <summary>
     /// Initializes a new instance of the <see cref="ExternalCustomerDetached" /> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public ExternalCustomerDetached()
     {
     }

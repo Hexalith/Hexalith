@@ -16,6 +16,7 @@ using Hexalith.Extensions;
 /// Class Person.
 /// </summary>
 [DataContract]
+[Serializable]
 public class Person
 {
     /// <summary>

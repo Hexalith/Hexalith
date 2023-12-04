@@ -24,6 +24,7 @@ using Hexalith.Extensions.Serialization;
 /// Base class for business events.
 /// </summary>
 [DataContract]
+[Serializable]
 [JsonConverter(typeof(PolymorphicJsonConverter<BaseEvent>))]
 public class BaseEvent : BaseMessage, IEvent
 {

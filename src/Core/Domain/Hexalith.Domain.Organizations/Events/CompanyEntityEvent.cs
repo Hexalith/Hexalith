@@ -28,6 +28,7 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="CompanyEvent" />
 [DataContract]
+[Serializable]
 public abstract class CompanyEntityEvent : EntityEvent
 {
     /// <summary>

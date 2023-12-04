@@ -17,6 +17,7 @@
 namespace Hexalith.Domain.Events;
 
 using System.Runtime.Serialization;
+
 using Hexalith.Domain.Entities;
 using Hexalith.Domain.ValueObjects;
 using Hexalith.Extensions;
@@ -58,7 +59,7 @@ public class SurveyRegistered : SurveyEvent
         Name = name;
         Categories = categories;
         Users = users;
-        Periods = period;
+        Period = period;
         StartDate = startDate;
         EndDate = endDate;
     }
@@ -71,7 +72,7 @@ public class SurveyRegistered : SurveyEvent
     {
         Name = string.Empty;
         StartDate = EndDate = DateTimeOffset.MinValue;
-        Periods = SurveyPeriod.Infinite;
+        Period = SurveyPeriod.Once;
         Categories = Enumerable.Empty<SurveyCategory>();
         Users = Enumerable.Empty<SurveyUser>();
     }
@@ -102,7 +103,7 @@ public class SurveyRegistered : SurveyEvent
     /// </summary>
     /// <value>The period.</value>
     [DataMember(Order = 11)]
-    public SurveyPeriod Periods { get; }
+    public SurveyPeriod Period { get; }
 
     /// <summary>
     /// Gets or sets the external ids.

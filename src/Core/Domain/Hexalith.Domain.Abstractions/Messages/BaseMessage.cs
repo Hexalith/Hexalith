@@ -26,6 +26,7 @@ using Hexalith.Extensions.Serialization;
 /// Base class for messages.
 /// </summary>
 [DataContract]
+[Serializable]
 [JsonConverter(typeof(PolymorphicJsonConverter<BaseMessage>))]
 [DebuggerDisplay("{AggregateName}/{AggregateId}/{TypeName}/v{MajorVersion}/{MinorVersion}")]
 public class BaseMessage : IMessage, IPolymorphicSerializable

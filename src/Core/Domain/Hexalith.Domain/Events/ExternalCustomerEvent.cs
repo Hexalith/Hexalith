@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 using Hexalith.Domain.Aggregates;
+using Hexalith.Extensions;
 
 /// <summary>
 /// Class ExternalCustomerEvent.
@@ -43,7 +44,7 @@ public abstract class ExternalCustomerEvent : BaseEvent
     /// <summary>
     /// Initializes a new instance of the <see cref="ExternalCustomerEvent" /> class.
     /// </summary>
-    [Obsolete("This constructor is only for serialization purposes.", true)]
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     protected ExternalCustomerEvent()
     {
         ExternalId = string.Empty;

@@ -78,6 +78,6 @@ public static class DummyPartiesDomainHelper
             "LDN",
             "London City",
             "GBR",
-            "Great britain",
+            "Great Britain",
             "GB");
 }

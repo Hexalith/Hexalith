@@ -8,6 +8,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Core\Application\Hexalith.Application.TopologicalSorting\Hexalith.Application.TopologicalSorting.csproj" />
     <ProjectReference Include="..\..\src\Core\Application\Hexalith.Application\Hexalith.Application.csproj" />
+    <ProjectReference Include="..\..\src\Core\Domain\Hexalith.Domain.Inventories\Hexalith.Domain.Inventories.csproj" />
     <ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.AzureCloud\Hexalith.Infrastructure.AzureCloud.csproj" />
     <ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365Finance.Parties\Hexalith.Infrastructure.Dynamics365Finance.Parties.csproj" />
     <ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365Finance.TestMocks\Hexalith.Infrastructure.Dynamics365Finance.TestMocks.csproj" />

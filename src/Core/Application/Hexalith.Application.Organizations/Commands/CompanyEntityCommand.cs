@@ -28,6 +28,7 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="Domain.Commands.CompanyCommand" />
 [DataContract]
+[Serializable]
 public abstract class CompanyEntityCommand : EntityCommand
 {
     /// <summary>
@@ -55,4 +56,8 @@ public abstract class CompanyEntityCommand : EntityCommand
     [DataMember(Order = 4)]
     [JsonPropertyOrder(4)]
     public string CompanyId { get; set; }
+
+    /// <inheritdoc/>
+    protected override string DefaultAggregateId()
+        => DefaultAggregateName() + Separator + PartitionId + Separator + CompanyId + Separator + OriginId + Separator + Id;
 }

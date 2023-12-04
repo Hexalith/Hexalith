@@ -8,8 +8,8 @@
 		<RootNamespace>Hexalith.DeployACA</RootNamespace>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Azure.Bicep.Core" Version="0.22.6" />
-		<PackageReference Include="Cocona" Version="2.2.0" />
+		<PackageReference Include="Azure.Bicep.Core" Version="$(AzureBicepCoreVersion)" />
+		<PackageReference Include="Cocona" Version="$(CoconaVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="$(MicrosoftExtensionsPackagesVersion)" />
 	</ItemGroup>
 	<ItemGroup>

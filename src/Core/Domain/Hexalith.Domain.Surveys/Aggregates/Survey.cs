@@ -22,6 +22,7 @@ namespace Hexalith.Domain.Aggregates;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
+
 using Hexalith.Domain.Entities;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Exceptions;
@@ -48,7 +49,7 @@ public record Survey(
     string Name,
     IEnumerable<SurveyCategory> Categories,
     IEnumerable<SurveyUser> Users,
-    IEnumerable<SurveyPeriod> Periods,
+    SurveyPeriod Period,
     DateTimeOffset StartDate,
     DateTimeOffset EndDate) : Aggregate
 {
@@ -65,7 +66,7 @@ public record Survey(
               string.Empty,
               Enumerable.Empty<SurveyCategory>(),
               Enumerable.Empty<SurveyUser>(),
-              Enumerable.Empty<SurveyPeriod>(),
+              SurveyPeriod.Once,
               DateTimeOffset.MinValue,
               DateTimeOffset.MinValue)
     {
@@ -84,7 +85,7 @@ public record Survey(
               customer.Name,
               customer.Categories,
               customer.Users,
-              customer.Periods,
+              customer.Period,
               customer.StartDate,
               customer.EndDate)
     {
@@ -129,7 +130,9 @@ public record Survey(
     /// Gets the name of the aggregate.
     /// </summary>
     /// <returns>System.String.</returns>
+#pragma warning disable CA1024 // Use properties where appropriate
     public static string GetAggregateName() => nameof(Survey);
+#pragma warning restore CA1024 // Use properties where appropriate
 
     /// <summary>
     /// Determines whether the specified changed has changes.

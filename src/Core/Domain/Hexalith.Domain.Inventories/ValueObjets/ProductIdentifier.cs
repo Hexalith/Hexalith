@@ -13,6 +13,7 @@ using System.Text.Json.Serialization;
 /// Class ProductIdentifier.
 /// </summary>
 [DataContract]
+[Serializable]
 public class ProductIdentifier
 {
     /// <summary>

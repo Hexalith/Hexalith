@@ -29,6 +29,7 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="BaseCommand" />
 [DataContract]
+[Serializable]
 public abstract class PartitionedCommand : BaseCommand
 {
     /// <summary>
@@ -51,4 +52,8 @@ public abstract class PartitionedCommand : BaseCommand
     [DataMember(Order = 1)]
     [JsonPropertyOrder(1)]
     public string PartitionId { get; set; }
+
+    /// <inheritdoc/>
+    protected override string DefaultAggregateId()
+        => DefaultAggregateName() + Separator + PartitionId;
 }

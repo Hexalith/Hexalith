@@ -16,6 +16,7 @@ using Hexalith.Extensions;
 /// Class PostalAddress.
 /// </summary>
 [DataContract]
+[Serializable]
 public class PostalAddress
 {
     /// <summary>
