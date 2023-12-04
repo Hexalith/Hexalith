@@ -31,6 +31,7 @@ using Hexalith.Extensions.Serialization;
 /// <seealso cref="INotification" />
 [DataContract]
 [JsonConverter(typeof(PolymorphicJsonConverter<BaseNotification>))]
+[Serializable]
 public class BaseNotification : BaseMessage, INotification
 {
     /// <summary>
@@ -69,12 +70,12 @@ public class BaseNotification : BaseMessage, INotification
     public BaseNotification() => CorrelationId = SourceAggregateId = SourceAggregateName = Title = Message = string.Empty;
 
     /// <summary>
-    /// Gets the correlation identifier.
+    /// Gets or sets the correlation identifier.
     /// </summary>
     /// <value>The correlation identifier.</value>
     [JsonPropertyOrder(2)]
     [DataMember(Order = 2)]
-    public string CorrelationId { get; }
+    public string CorrelationId { get; set; }
 
     /// <summary>
     /// Gets or sets the message.
@@ -93,20 +94,20 @@ public class BaseNotification : BaseMessage, INotification
     public NotificationSeverity Severity { get; set; }
 
     /// <summary>
-    /// Gets the source aggregate identifier.
+    /// Gets or sets the source aggregate identifier.
     /// </summary>
     /// <value>The source aggregate identifier.</value>
     [JsonPropertyOrder(4)]
     [DataMember(Order = 4)]
-    public string? SourceAggregateId { get; }
+    public string? SourceAggregateId { get; set; }
 
     /// <summary>
-    /// Gets the name of the source aggregate.
+    /// Gets or sets the name of the source aggregate.
     /// </summary>
     /// <value>The name of the source aggregate.</value>
     [JsonPropertyOrder(3)]
     [DataMember(Order = 3)]
-    public string? SourceAggregateName { get; }
+    public string? SourceAggregateName { get; set; }
 
     /// <summary>
     /// Gets or sets the technical description.
