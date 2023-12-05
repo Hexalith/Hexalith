@@ -1,1 +1,9 @@
-SELECT c.id, c['value']['failure']['message'], c['value']['failure']['technicalError'] FROM c where c.id like "%Task%" and c['value']['status'] = "Suspended"
+SELECT 
+    c.id, 
+    c['value']['failure']['message'], 
+    c['value']['failure']['technicalError'], 
+    c['value']['history']['createdDate'] 
+FROM c 
+WHERE 
+    c.id like "%Task%" and 
+    c['value']['status'] = "Suspended"

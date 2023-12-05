@@ -34,10 +34,10 @@ using Hexalith.Domain.Events;
 [Serializable]
 public abstract record Aggregate : IAggregate
 {
-    /// <summary>
-    /// The space substitution.
-    /// </summary>
-    public const char SpaceSubstitutionCharacter = '~';
+    ///// <summary>
+    ///// The space substitution.
+    ///// </summary>
+    // public const char SpaceSubstitutionCharacter = '~';
 
     /// <summary>
     /// Default string used for separating natural keys to compose the aggregate identifier.
@@ -77,19 +77,18 @@ public abstract record Aggregate : IAggregate
     /// <exception cref="System.InvalidOperationException">The specified character '{SpaceSubstitution}' cannot be used in an aggregate identifier ({id}). It conflicts with the system's designated replacement for white spaces.</exception>
     public static string Normalize([NotNull] string id)
     {
-        if (string.IsNullOrWhiteSpace(id))
-        {
-            throw new ArgumentException("The specified identifier cannot be empty or white space.", nameof(id));
-        }
+        return string.IsNullOrWhiteSpace(id)
+            ? throw new ArgumentException("The specified identifier cannot be empty or white space.", nameof(id))
+            : id;
 
-        if (id.Contains(SpaceSubstitutionCharacter, StringComparison.OrdinalIgnoreCase))
-        {
-            throw new InvalidOperationException($"The specified character '{SpaceSubstitutionCharacter}' cannot be used in an aggregate identifier ({id}). It conflicts with the system's designated replacement for white spaces.");
-        }
+        // if (id.Contains(SpaceSubstitutionCharacter, StringComparison.OrdinalIgnoreCase))
+        // {
+        //    throw new InvalidOperationException($"The specified character '{SpaceSubstitutionCharacter}' cannot be used in an aggregate identifier ({id}). It conflicts with the system's designated replacement for white spaces.");
+        // }
 
-        // replace spaces by a special character to avoid incompatibility with the space
-        return
-            id
-            .Replace(' ', SpaceSubstitutionCharacter);
+        //// replace spaces by a special character to avoid incompatibility with the space
+        // return
+        //    id
+        //    .Replace(' ', SpaceSubstitutionCharacter);
     }
 }

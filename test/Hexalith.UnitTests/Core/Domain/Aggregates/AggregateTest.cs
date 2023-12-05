@@ -38,31 +38,31 @@ public class AggregateTest
         _ = act.Should().Throw<ArgumentException>();
     }
 
-    [Theory]
-    [InlineData("a~")]
-    [InlineData("~~~~a")]
-    [InlineData("~")]
-    [InlineData("~ ~~")]
-    public void NormalizeStringContainingReplacementCharacterShouldThrowInvalidOperationException(string id)
-    {
-        // Act
-        Action act = () => Aggregate.Normalize(id);
+    // [Theory]
+    // [InlineData("a~")]
+    // [InlineData("~~~~a")]
+    // [InlineData("~")]
+    // [InlineData("~ ~~")]
+    // public void NormalizeStringContainingReplacementCharacterShouldThrowInvalidOperationException(string id)
+    // {
+    //    // Act
+    //    Action act = () => Aggregate.Normalize(id);
 
-        // Assert
-        _ = act.Should().Throw<InvalidOperationException>();
-    }
+    // // Assert
+    //    _ = act.Should().Throw<InvalidOperationException>();
+    // }
 
-    [Theory]
-    [InlineData("a ", "a~")]
-    [InlineData("    a", "~~~~a")]
-    [InlineData("a b", "a~b")]
-    [InlineData("d  e", "d~~e")]
-    public void NormalizeStringContainingSpacesShouldReplaceWhiteSpaces(string id, string normalizedId)
-    {
-        // Act
-        string result = Aggregate.Normalize(id);
+    // [Theory]
+    // [InlineData("a ", "a~")]
+    // [InlineData("    a", "~~~~a")]
+    // [InlineData("a b", "a~b")]
+    // [InlineData("d  e", "d~~e")]
+    // public void NormalizeStringContainingSpacesShouldReplaceWhiteSpaces(string id, string normalizedId)
+    // {
+    //    // Act
+    //    string result = Aggregate.Normalize(id);
 
-        // Assert
-        _ = result.Should().Be(normalizedId);
-    }
+    // // Assert
+    //    _ = result.Should().Be(normalizedId);
+    // }
 }
