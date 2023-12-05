@@ -85,7 +85,7 @@ public abstract partial class EventIntegrationController : ReceiveMessageControl
             await _eventProcessor
                 .SubmitAsync(eventState.Message!, eventState.Metadata!, cancellationToken)
                 .ConfigureAwait(false);
-            return Accepted();
+            return Ok();
         }
         catch (ApplicationErrorException ex)
         {

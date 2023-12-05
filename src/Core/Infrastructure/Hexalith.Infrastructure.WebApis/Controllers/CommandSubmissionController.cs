@@ -76,7 +76,7 @@ public abstract partial class CommandSubmissionController : ReceiveMessageContro
             await _commandProcessor
                 .SubmitAsync(commandState.Message!, commandState.Metadata!, cancellationToken)
                 .ConfigureAwait(false);
-            return Accepted();
+            return Ok();
         }
         catch (ApplicationErrorException ex)
         {
