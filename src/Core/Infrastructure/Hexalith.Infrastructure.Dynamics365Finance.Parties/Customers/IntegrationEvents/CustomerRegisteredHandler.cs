@@ -23,6 +23,7 @@ using Hexalith.Domain.Events;
 using Hexalith.Infrastructure.Dynamics365Finance.Client;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities;
 
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 /// <summary>
@@ -43,8 +44,9 @@ public class CustomerRegisteredHandler : CustomerChangedHandler<CustomerRegister
         IDynamics365FinanceClient<CustomerV3> customerService,
         IDynamics365FinanceClient<CustomerExternalSystemCode> externalCustomerService,
         IExternalReferenceMapperService externalReferenceMapperService,
-        IOptions<OrganizationSettings> settings)
-        : base(customerService, externalCustomerService, externalReferenceMapperService, settings)
+        IOptions<OrganizationSettings> settings,
+        ILogger<CustomerChangedHandler<CustomerRegistered>> logger)
+        : base(customerService, externalCustomerService, externalReferenceMapperService, settings, logger)
     {
     }
 }

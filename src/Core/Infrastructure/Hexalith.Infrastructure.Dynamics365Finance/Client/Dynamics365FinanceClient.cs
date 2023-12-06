@@ -16,6 +16,7 @@
 
 namespace Hexalith.Infrastructure.Dynamics365Finance.Client;
 
+using System.Diagnostics;
 using System.Globalization;
 using System.Net.Http.Headers;
 using System.Text;
@@ -34,6 +35,7 @@ using Microsoft.Extensions.Options;
 /// Client for Dynamics 365 for finance and operations.
 /// </summary>
 /// <typeparam name="TEntity">The entity type.</typeparam>
+[DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
 public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClient<TEntity>
     where TEntity : class, IODataElement
 {
@@ -50,7 +52,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     /// <summary>
     /// The HTTP client factory.
     /// </summary>
-    private readonly IHttpClientFactory _httpClientFactory;
+    private readonly HttpClient _httpClientFactory;
 
     /// <summary>
     /// The instance.
@@ -71,28 +73,10 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     /// <param name="logger">The client logger.</param>
     /// <exception cref="ArgumentException">Setting not defined.</exception>
     public Dynamics365FinanceClient(
-        IHttpClientFactory httpClientFactory,
+        HttpClient httpClientFactory,
         IDynamics365FinanceSecurityContext securityContext,
         IOptions<Dynamics365FinanceClientSettings> settings,
         ILogger<Dynamics365FinanceClient<TEntity>> logger)
-        : this(httpClientFactory, securityContext, settings, (ILogger)logger)
-    {
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Dynamics365FinanceClient{TEntity}" /> class.
-    /// </summary>
-    /// <param name="httpClientFactory">The HTTP client factory.</param>
-    /// <param name="securityContext">The security context.</param>
-    /// <param name="settings">The settings.</param>
-    /// <param name="logger">The logger.</param>
-    /// <exception cref="System.ArgumentException">The {nameof(s.Instance)} setting is not defined. - settings.</exception>
-    /// <exception cref="System.ArgumentException">The {nameof(s.Company)} setting is not defined. - settings.</exception>
-    protected Dynamics365FinanceClient(
-        IHttpClientFactory httpClientFactory,
-        IDynamics365FinanceSecurityContext securityContext,
-        IOptions<Dynamics365FinanceClientSettings> settings,
-        ILogger logger)
     {
         ArgumentNullException.ThrowIfNull(settings);
         ArgumentNullException.ThrowIfNull(httpClientFactory);
@@ -223,6 +207,8 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
             : dict;
     }
 
+    private static string GetDebuggerDisplay() => typeof(TEntity).Name;
+
     /// <summary>
     /// Gets the entity filter.
     /// </summary>
@@ -276,7 +262,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     /// <typeparam name="T">Value type.</typeparam>
     /// <param name="obj">The object.</param>
     /// <returns>IDictionary&lt;System.String, System.Nullable&lt;System.Object&gt;&gt;.</returns>
-    private static IDictionary<string, object?> ToDictionary<T>(T obj)
+    private static Dictionary<string, object?> ToDictionary<T>(T obj)
     {
         ArgumentNullException.ThrowIfNull(obj);
         Dictionary<string, object?> dico = new(StringComparer.Ordinal);
@@ -305,7 +291,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
             throw new InvalidOperationException("The acquired token is null or empty.");
         }
 
-        HttpClient client = _httpClientFactory.CreateClient();
+        HttpClient client = _httpClientFactory;
         client.DefaultRequestHeaders.Clear();
         client.DefaultRequestHeaders.Add("OData-MaxVersion", "4.0");
         client.DefaultRequestHeaders.Add("OData-Version", "4.0");

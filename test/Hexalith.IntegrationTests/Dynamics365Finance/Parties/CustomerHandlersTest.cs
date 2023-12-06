@@ -6,6 +6,7 @@
 
 namespace Hexalith.IntegrationTests.Dynamics365Finance.Parties;
 
+using System.Net.Http;
 using System.Threading.Tasks;
 
 using FluentAssertions;
@@ -24,6 +25,8 @@ using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEv
 using Hexalith.Infrastructure.Dynamics365Finance.TestMocks;
 using Hexalith.TestMocks;
 
+using Microsoft.Extensions.Logging;
+
 using Moq;
 
 public class CustomerHandlersTest
@@ -31,22 +34,28 @@ public class CustomerHandlersTest
     [Fact]
     public async Task CheckCanCreateCustomerInDynamics365Finance()
     {
+        using HttpClient client = new();
         IDynamics365FinanceClient<CustomerV3> customerV3Service = new Dynamics365FinanceClientBuilder<CustomerV3>()
           .WithValueFromConfiguration<CustomerHandlersTest>()
-          .Build();
+          .Build(client);
         IDynamics365FinanceClient<CustomerExternalSystemCode> externalCustomer = new Dynamics365FinanceClientBuilder<CustomerExternalSystemCode>()
           .WithValueFromConfiguration<CustomerHandlersTest>()
-          .Build();
+          .Build(client);
         IExternalReferenceMapperService mapper = Mock.Of<IExternalReferenceMapperService>();
         Microsoft.Extensions.Options.IOptions<OrganizationSettings> options = new OptionsBuilder<OrganizationSettings>()
-            .WithValue(new OrganizationSettings { DefaultCompanyId = "FRRT", DefaultOriginId = "FinOps", DefaultPartitionId = "TEST" })
+            .WithValue(new OrganizationSettings { DefaultCompanyId = "frrt", DefaultOriginId = "FinOps", DefaultPartitionId = "TEST" })
             .Build();
-
-        CustomerRegisteredHandler handler = new(customerV3Service, externalCustomer, mapper, options);
+        ILogger<CustomerChangedHandler<CustomerRegistered>> logger = new LoggerBuilder<CustomerChangedHandler<CustomerRegistered>>().Build();
+        CustomerRegisteredHandler handler = new(
+            customerV3Service,
+            externalCustomer,
+            mapper,
+            options,
+            logger);
         CustomerRegistered registered = new(
             "TEST",
-            "FRRT",
-            "Tests",
+            "frrt",
+            "MyOrigin",
             UniqueIdHelper.GenerateUniqueStringId(),
             "John Doe",
             new Contact(
@@ -84,9 +93,15 @@ public class CustomerHandlersTest
         _ = commands.First().Should().BeOfType<AddExternalSystemReference>();
         _ = externalCodes.Should().NotBeNull();
         _ = externalCodes.Should().HaveCount(1);
-        _ = externalCodes.First().Should().NotBeNull();
-        string customerId = externalCodes.First().CustomerAccountNumber;
+        var externalCode = externalCodes.First();
+        _ = externalCode.Should().NotBeNull();
+        string customerId = externalCodes
+            .First()
+            .CustomerAccountNumber;
         _ = customerId.Should().NotBeEmpty();
+        _ = externalCode.ExternalCode.Should().Be(registered.Id);
+        _ = externalCode.System.Should().Be(registered.OriginId);
+        _ = externalCode.DataAreaId.Should().Be(registered.CompanyId);
         _ = commands.First().Should().BeEquivalentTo(
             new AddExternalSystemReference(
             registered.PartitionId,

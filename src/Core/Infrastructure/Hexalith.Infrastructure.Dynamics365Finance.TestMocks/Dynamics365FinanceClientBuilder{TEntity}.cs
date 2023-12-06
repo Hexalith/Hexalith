@@ -79,16 +79,18 @@ public class Dynamics365FinanceClientBuilder<TEntity> :
                 => _settings ??= new OptionsBuilder<Dynamics365FinanceClientSettings>();
 
     /// <inheritdoc/>
-    public IDynamics365FinanceClient<TEntity> Build()
+    public IDynamics365FinanceClient<TEntity> Build(HttpClient httpClient)
     {
         return _settings is null || !_settings.HasValue
             ? BuildMock().Object
             : new Dynamics365FinanceClient<TEntity>(
-                HttpClientfactory.Build(),
+                httpClient,
                 SecurityContext.Build(),
                 Settings.Build(),
                 Logger.Build());
     }
+
+    public IDynamics365FinanceClient<TEntity> Build() => throw new NotImplementedException();
 
     /// <inheritdoc/>
     public IMock<IDynamics365FinanceClient<TEntity>> BuildMock()
