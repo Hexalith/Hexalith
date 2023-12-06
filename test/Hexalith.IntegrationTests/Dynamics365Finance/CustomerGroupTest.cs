@@ -18,12 +18,13 @@ using Hexalith.Infrastructure.Dynamics365Finance.TestMocks;
 public class CustomerGroupTest
 {
     [Fact]
-    public Task AddInconsitentDataShouldThrowException()
+    public async Task AddInconsistentDataShouldThrowException()
     {
         Dynamics365FinanceClientBuilder<CustomerGroup> builder = new();
         _ = builder.WithValueFromConfiguration<CustomerGroupTest>();
 
-        IDynamics365FinanceClient<CustomerGroup> service = builder.Build();
+        using HttpClient client = new();
+        IDynamics365FinanceClient<CustomerGroup> service = builder.Build(client);
 
         string company = builder.Settings.Build().Value.Company;
         _ = company.Should().NotBeNullOrWhiteSpace();
@@ -40,7 +41,7 @@ public class CustomerGroupTest
             taxGroupId: "BADTAX",
             "No");
         Func<Task> act = () => service.PostAsync(newGroup, CancellationToken.None);
-        return act.Should().ThrowAsync<Dynamics365FinancePostException<CustomerGroup, CustomerGroupCreate>>();
+        _ = await act.Should().ThrowAsync<Dynamics365FinancePostException<CustomerGroup, CustomerGroupCreate>>();
     }
 
     [Fact]
@@ -49,7 +50,8 @@ public class CustomerGroupTest
         Dynamics365FinanceClientBuilder<CustomerGroup> builder = new();
         _ = builder.WithValueFromConfiguration<CustomerGroupTest>();
 
-        IDynamics365FinanceClient<CustomerGroup> service = builder.Build();
+        using HttpClient client = new();
+        IDynamics365FinanceClient<CustomerGroup> service = builder.Build(client);
 
         string company = builder.Settings.Build().Value.Company;
         _ = company.Should().NotBeNullOrWhiteSpace();
@@ -76,8 +78,8 @@ public class CustomerGroupTest
     {
         Dynamics365FinanceClientBuilder<CustomerGroup> builder = new();
         _ = builder.WithValueFromConfiguration<CustomerGroupTest>();
-
-        IDynamics365FinanceClient<CustomerGroup> service = builder.Build();
+        using HttpClient client = new();
+        IDynamics365FinanceClient<CustomerGroup> service = builder.Build(client);
 
         string company = builder.Settings.Build().Value.Company;
         _ = company.Should().NotBeNullOrWhiteSpace();
