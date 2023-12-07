@@ -17,12 +17,15 @@
 namespace Hexalith.Domain.ConversationThreads.Events;
 
 using System;
+using System.Runtime.Serialization;
 
 /// <summary>
 /// Class AddConversationItem.
 /// Implements the <see cref="ConversationThreadEvent" />.
 /// </summary>
 /// <seealso cref="ConversationThreadEvent" />
+[DataContract]
+[Serializable]
 public class ConversationItemAdded : ConversationThreadEvent
 {
     /// <summary>

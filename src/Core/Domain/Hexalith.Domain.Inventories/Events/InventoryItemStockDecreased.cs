@@ -26,6 +26,7 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="Hexalith.Domain.Events.InventoryItemEvent" />
 [DataContract]
+[Serializable]
 public class InventoryItemStockDecreased : InventoryItemStockEvent
 {
     /// <summary>

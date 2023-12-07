@@ -29,6 +29,7 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="CompanyCommand" />
 [DataContract]
+[Serializable]
 public abstract class InventoryItemStockCommand : CompanyEntityCommand
 {
     /// <summary>

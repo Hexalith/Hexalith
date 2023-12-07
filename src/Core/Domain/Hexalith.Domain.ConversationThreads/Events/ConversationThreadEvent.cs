@@ -16,6 +16,8 @@
 
 namespace Hexalith.Domain.ConversationThreads.Events;
 
+using System.Runtime.Serialization;
+
 using Hexalith.Domain.ConversationThreads.Aggregates;
 using Hexalith.Domain.Events;
 
@@ -24,6 +26,8 @@ using Hexalith.Domain.Events;
 /// Implements the <see cref="BaseEvent" />.
 /// </summary>
 /// <seealso cref="BaseEvent" />
+[DataContract]
+[Serializable]
 public class ConversationThreadEvent : BaseEvent
 {
     /// <summary>

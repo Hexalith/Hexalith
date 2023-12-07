@@ -27,6 +27,7 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="InventoryItemCommand" />
 [DataContract]
+[Serializable]
 public class AddInventoryItemBarcode : InventoryItemCommand
 {
     /// <summary>

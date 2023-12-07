@@ -29,6 +29,7 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="Hexalith.Domain.Events.CompanyEntityEvent" />
 [DataContract]
+[Serializable]
 public abstract class InventoryItemEvent : CompanyEntityEvent
 {
     /// <summary>

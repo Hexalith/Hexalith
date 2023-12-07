@@ -25,6 +25,7 @@ using Hexalith.Extensions;
 /// Class ExternalReference.
 /// </summary>
 [DataContract]
+[Serializable]
 public class ExternalReference
 {
     /// <summary>

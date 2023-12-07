@@ -80,8 +80,8 @@ public static class PartiesHelper
     {
         services
             .AddDynamics365FinanceClient(configuration)
-            .TryAddSingleton<IDynamics365FinanceClient<CustomerExternalSystemCode>, Dynamics365FinanceClient<CustomerExternalSystemCode>>();
-        services.TryAddSingleton<IDynamics365FinanceClient<CustomerV3>, Dynamics365FinanceClient<CustomerV3>>();
+            .AddHttpClient<IDynamics365FinanceClient<CustomerExternalSystemCode>, Dynamics365FinanceClient<CustomerExternalSystemCode>>();
+        services.AddHttpClient<IDynamics365FinanceClient<CustomerV3>, Dynamics365FinanceClient<CustomerV3>>();
         return services;
     }
 }

@@ -29,6 +29,7 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="Hexalith.Domain.Events.BaseEvent" />
 [DataContract]
+[Serializable]
 public abstract class ExternalSystemEvent : PartitionedEvent
 {
     /// <summary>

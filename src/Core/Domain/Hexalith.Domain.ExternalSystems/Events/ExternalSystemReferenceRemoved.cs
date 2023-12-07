@@ -28,6 +28,7 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="Hexalith.Domain.Events.ExternalSystemEvent" />
 [DataContract]
+[Serializable]
 public class ExternalSystemReferenceRemoved : ExternalSystemEvent
 {
     /// <summary>

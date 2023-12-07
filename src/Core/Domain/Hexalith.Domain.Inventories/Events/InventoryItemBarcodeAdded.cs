@@ -27,6 +27,7 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="Hexalith.Domain.Events.InventoryItemEvent" />
 [DataContract]
+[Serializable]
 public class InventoryItemBarcodeAdded : InventoryItemEvent
 {
     /// <summary>

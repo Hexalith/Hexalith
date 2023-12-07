@@ -26,6 +26,7 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="InventoryItemCommand" />
 [DataContract]
+[Serializable]
 public class ChangeInventoryItemInformation : InventoryItemCommand
 {
     /// <summary>

@@ -23529,6 +23529,12 @@ references:
   commentId: T:Hexalith.Infrastructure.Dynamics365Finance.Models.ODataElement
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Models.ODataElement
   nameWithType: ODataElement
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Models.ODataElement.#ctor
+  name: ODataElement()
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Models.ODataElement.html#Hexalith_Infrastructure_Dynamics365Finance_Models_ODataElement__ctor
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Models.ODataElement.#ctor
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Models.ODataElement.ODataElement()
+  nameWithType: ODataElement.ODataElement()
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Models.ODataElement.#ctor(System.String,System.String)
   name: ODataElement(String, String)
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Models.ODataElement.html#Hexalith_Infrastructure_Dynamics365Finance_Models_ODataElement__ctor_System_String_System_String_

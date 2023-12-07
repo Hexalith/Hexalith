@@ -21,11 +21,12 @@ using System.Runtime.Serialization;
 using Hexalith.Extensions;
 
 /// <summary>
-/// Class CustomerIntercompanyDeliveryTypeSetToDirect.
+/// Class IntercompanyDropshipDeliveryForCustomerSelected.
 /// Implements the <see cref="Hexalith.Domain.Events.CustomerEvent" />.
 /// </summary>
 /// <seealso cref="Hexalith.Domain.Events.CustomerEvent" />
 [DataContract]
+[Serializable]
 public class IntercompanyDropshipDeliveryForCustomerSelected : CustomerEvent
 {
     /// <summary>

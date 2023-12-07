@@ -30,6 +30,7 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="BaseEvent" />
 [DataContract]
+[Serializable]
 public abstract class CustomerCommand : CompanyEntityCommand
 {
     /// <summary>

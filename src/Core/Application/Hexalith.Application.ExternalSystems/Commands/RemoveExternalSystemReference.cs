@@ -28,6 +28,7 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="ExternalSystemReferenceCommand" />
 [DataContract]
+[Serializable]
 public class RemoveExternalSystemReference : ExternalSystemReferenceCommand
 {
     /// <summary>

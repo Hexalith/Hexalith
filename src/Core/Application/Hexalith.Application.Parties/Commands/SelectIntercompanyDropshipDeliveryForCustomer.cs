@@ -26,6 +26,7 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="Application.Commands.CustomerCommand" />
 [DataContract]
+[Serializable]
 public class SelectIntercompanyDropshipDeliveryForCustomer : CustomerCommand
 {
     /// <summary>

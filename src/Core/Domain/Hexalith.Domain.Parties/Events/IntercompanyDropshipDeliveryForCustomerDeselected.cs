@@ -26,6 +26,7 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="Hexalith.Domain.Events.CustomerEvent" />
 [DataContract]
+[Serializable]
 public class IntercompanyDropshipDeliveryForCustomerDeselected : CustomerEvent
 {
     /// <summary>

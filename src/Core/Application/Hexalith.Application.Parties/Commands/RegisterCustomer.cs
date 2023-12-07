@@ -28,6 +28,7 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="CustomerCommand" />
 [DataContract]
+[Serializable]
 public class RegisterCustomer : CustomerCommand
 {
     /// <summary>
