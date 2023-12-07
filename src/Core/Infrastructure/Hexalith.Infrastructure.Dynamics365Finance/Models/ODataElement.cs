@@ -15,6 +15,7 @@ using Hexalith.Extensions;
 /// Dynamics 365 Finance and Operations entity base class.
 /// </summary>
 [DataContract]
+[Serializable]
 public record ODataElement
 {
     /// <summary>
@@ -40,16 +41,16 @@ public record ODataElement
     }
 
     /// <summary>
-    /// Gets the record Etag for concurrency checks.
+    /// Gets or sets the record Etag for concurrency checks.
     /// </summary>
     [JsonPropertyName("@odata.etag")]
     [DataMember]
-    public string? Etag { get; }
+    public string? Etag { get; set; }
 
     /// <summary>
-    /// Gets the company.
+    /// Gets or sets the company.
     /// </summary>
     [JsonPropertyName("dataAreaId")]
     [DataMember]
-    public string DataAreaId { get; }
+    public string DataAreaId { get; set; }
 }

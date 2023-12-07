@@ -16,6 +16,8 @@
 
 namespace Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities;
 
+using System.Runtime.Serialization;
+
 using Hexalith.Infrastructure.Dynamics365Finance.Models;
 
 /// <summary>
@@ -29,6 +31,8 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 /// <seealso cref="IEquatable{ODataElement}" />
 /// <seealso cref="IODataElement" />
 /// <seealso cref="IEquatable{CustomerExternalCode}" />
+[DataContract]
+[Serializable]
 public record CustomerV3
 (
     string DataAreaId,
