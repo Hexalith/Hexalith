@@ -115,19 +115,259 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToDynamics365FinanceCustomer_Hexalith_Domain_Events_CustomerInformationChanged_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamics365FinanceCustomer(Hexalith.Domain.Events.CustomerInformationChanged)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToCustomerChangedEvent_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerV3_System_String_System_String_System_DateTimeOffset_System_String_System_String_System_String_System_Nullable_System_DateTimeOffset__System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToCustomerChangedEvent(Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3%2CSystem.String%2CSystem.String%2CSystem.DateTimeOffset%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Nullable%7BSystem.DateTimeOffset%7D%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance.Parties/Customers/Helpers/CustomerConverter.cs/#L66">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance.Parties/Customers/Helpers/CustomerConverter.cs/#L46">View Source</a>
   </span>
-  <a id="Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToDynamics365FinanceCustomer_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamics365FinanceCustomer*"></a>
-  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToDynamics365FinanceCustomer_Hexalith_Domain_Events_CustomerInformationChanged_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamics365FinanceCustomer(Hexalith.Domain.Events.CustomerInformationChanged)">ToDynamics365FinanceCustomer(CustomerInformationChanged)</h4>
-  <div class="markdown level1 summary"><p>Converts to dynamics365financecustomer.</p>
+  <a id="Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToCustomerChangedEvent_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToCustomerChangedEvent*"></a>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToCustomerChangedEvent_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerV3_System_String_System_String_System_DateTimeOffset_System_String_System_String_System_String_System_Nullable_System_DateTimeOffset__System_String_System_String_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToCustomerChangedEvent(Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3,System.String,System.String,System.DateTimeOffset,System.String,System.String,System.String,System.Nullable{System.DateTimeOffset},System.String,System.String)">ToCustomerChangedEvent(CustomerV3, String, String, DateTimeOffset, String, String, String, Nullable&lt;DateTimeOffset&gt;, String, String)</h4>
+  <div class="markdown level1 summary"><p>Converts to customer changed event.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static CustomerV3 ToDynamics365FinanceCustomer(this CustomerInformationChanged customerChanged)</code></pre>
+    <pre><code class="lang-csharp hljs">public static CustomerInformationChanged ToCustomerChangedEvent(this CustomerV3 customer, string partitionId, string originId, DateTimeOffset date, string postBox = null, string stateName = null, string countryName = null, DateTimeOffset? personBirthDate = null, string phone = null, string mobile = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3.html">CustomerV3</a></td>
+        <td><span class="parametername">customer</span></td>
+        <td><p>The customer.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">partitionId</span></td>
+        <td><p>The partition identifier.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">originId</span></td>
+        <td><p>The origin identifier.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTimeOffset</span></td>
+        <td><span class="parametername">date</span></td>
+        <td><p>The date.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">postBox</span></td>
+        <td><p>The post box.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">stateName</span></td>
+        <td><p>Name of the state.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">countryName</span></td>
+        <td><p>Name of the country.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTimeOffset</span>&gt;</td>
+        <td><span class="parametername">personBirthDate</span></td>
+        <td><p>The person birth date.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">phone</span></td>
+        <td><p>The phone.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">mobile</span></td>
+        <td><p>The mobile.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Domain.Events.CustomerInformationChanged.html">CustomerInformationChanged</a></td>
+        <td><p>CustomerInformationChanged.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToCustomerRegisteredEvent_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerV3_System_String_System_String_System_DateTimeOffset_System_String_System_String_System_String_System_Nullable_System_DateTimeOffset__System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToCustomerRegisteredEvent(Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3%2CSystem.String%2CSystem.String%2CSystem.DateTimeOffset%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Nullable%7BSystem.DateTimeOffset%7D%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance.Parties/Customers/Helpers/CustomerConverter.cs/#L115">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToCustomerRegisteredEvent_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToCustomerRegisteredEvent*"></a>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToCustomerRegisteredEvent_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerV3_System_String_System_String_System_DateTimeOffset_System_String_System_String_System_String_System_Nullable_System_DateTimeOffset__System_String_System_String_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToCustomerRegisteredEvent(Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3,System.String,System.String,System.DateTimeOffset,System.String,System.String,System.String,System.Nullable{System.DateTimeOffset},System.String,System.String)">ToCustomerRegisteredEvent(CustomerV3, String, String, DateTimeOffset, String, String, String, Nullable&lt;DateTimeOffset&gt;, String, String)</h4>
+  <div class="markdown level1 summary"><p>Converts to customer registered event.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static CustomerRegistered ToCustomerRegisteredEvent(this CustomerV3 customer, string partitionId, string originId, DateTimeOffset date, string postBox = null, string stateName = null, string countryName = null, DateTimeOffset? personBirthDate = null, string phone = null, string mobile = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3.html">CustomerV3</a></td>
+        <td><span class="parametername">customer</span></td>
+        <td><p>The customer.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">partitionId</span></td>
+        <td><p>The partition identifier.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">originId</span></td>
+        <td><p>The origin identifier.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.DateTimeOffset</span></td>
+        <td><span class="parametername">date</span></td>
+        <td><p>The date.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">postBox</span></td>
+        <td><p>The post box.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">stateName</span></td>
+        <td><p>Name of the state.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">countryName</span></td>
+        <td><p>Name of the country.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTimeOffset</span>&gt;</td>
+        <td><span class="parametername">personBirthDate</span></td>
+        <td><p>The person birth date.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">phone</span></td>
+        <td><p>The phone.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">mobile</span></td>
+        <td><p>The mobile.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Domain.Events.CustomerRegistered.html">CustomerRegistered</a></td>
+        <td><p>CustomerRegistered.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToDynamics365FinanceCustomer_Hexalith_Domain_Events_CustomerInformationChanged_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamics365FinanceCustomer(Hexalith.Domain.Events.CustomerInformationChanged%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance.Parties/Customers/Helpers/CustomerConverter.cs/#L216">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToDynamics365FinanceCustomer_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamics365FinanceCustomer*"></a>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToDynamics365FinanceCustomer_Hexalith_Domain_Events_CustomerInformationChanged_System_String_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamics365FinanceCustomer(Hexalith.Domain.Events.CustomerInformationChanged,System.String)">ToDynamics365FinanceCustomer(CustomerInformationChanged, String)</h4>
+  <div class="markdown level1 summary"><p>Converts to dynamics 365 finance customer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static CustomerV3 ToDynamics365FinanceCustomer(this CustomerInformationChanged customerChanged, string customerAccount = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -143,6 +383,12 @@
         <td><a class="xref" href="Hexalith.Domain.Events.CustomerInformationChanged.html">CustomerInformationChanged</a></td>
         <td><span class="parametername">customerChanged</span></td>
         <td><p>The customer changed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">customerAccount</span></td>
+        <td><p>The customer account.</p>
 </td>
       </tr>
     </tbody>
@@ -181,19 +427,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToDynamics365FinanceCustomer_Hexalith_Domain_Events_CustomerRegistered_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamics365FinanceCustomer(Hexalith.Domain.Events.CustomerRegistered)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToDynamics365FinanceCustomer_Hexalith_Domain_Events_CustomerRegistered_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamics365FinanceCustomer(Hexalith.Domain.Events.CustomerRegistered%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance.Parties/Customers/Helpers/CustomerConverter.cs/#L37">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance.Parties/Customers/Helpers/CustomerConverter.cs/#L176">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToDynamics365FinanceCustomer_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamics365FinanceCustomer*"></a>
-  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToDynamics365FinanceCustomer_Hexalith_Domain_Events_CustomerRegistered_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamics365FinanceCustomer(Hexalith.Domain.Events.CustomerRegistered)">ToDynamics365FinanceCustomer(CustomerRegistered)</h4>
-  <div class="markdown level1 summary"><p>Converts to dynamics365financecustomer.</p>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToDynamics365FinanceCustomer_Hexalith_Domain_Events_CustomerRegistered_System_String_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamics365FinanceCustomer(Hexalith.Domain.Events.CustomerRegistered,System.String)">ToDynamics365FinanceCustomer(CustomerRegistered, String)</h4>
+  <div class="markdown level1 summary"><p>Converts to dynamics 365 finance customer.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static CustomerV3 ToDynamics365FinanceCustomer(this CustomerRegistered customerRegistered)</code></pre>
+    <pre><code class="lang-csharp hljs">public static CustomerV3 ToDynamics365FinanceCustomer(this CustomerRegistered customerRegistered, string customerAccount = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -209,6 +455,12 @@
         <td><a class="xref" href="Hexalith.Domain.Events.CustomerRegistered.html">CustomerRegistered</a></td>
         <td><span class="parametername">customerRegistered</span></td>
         <td><p>The customer registered.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">customerAccount</span></td>
+        <td><p>The customer account.</p>
 </td>
       </tr>
     </tbody>
@@ -241,6 +493,206 @@
       <tr>
         <td><span class="xref">System.ArgumentNullException</span></td>
         <td><p>null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToDynamicsGender_System_Nullable_Hexalith_Domain_ValueObjets_Gender__.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamicsGender(System.Nullable%7BHexalith.Domain.ValueObjets.Gender%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance.Parties/Customers/Helpers/CustomerConverter.cs/#L254">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToDynamicsGender_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamicsGender*"></a>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToDynamicsGender_System_Nullable_Hexalith_Domain_ValueObjets_Gender__" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamicsGender(System.Nullable{Hexalith.Domain.ValueObjets.Gender})">ToDynamicsGender(Nullable&lt;Gender&gt;)</h4>
+  <div class="markdown level1 summary"><p>Converts to dynamics gender.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ToDynamicsGender(Gender? gender)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="Hexalith.Domain.ValueObjets.Gender.html">Gender</a>&gt;</td>
+        <td><span class="parametername">gender</span></td>
+        <td><p>The gender.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>string?.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToDynamicsPartyType_Hexalith_Domain_ValueObjets_PartyType_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamicsPartyType(Hexalith.Domain.ValueObjets.PartyType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance.Parties/Customers/Helpers/CustomerConverter.cs/#L270">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToDynamicsPartyType_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamicsPartyType*"></a>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToDynamicsPartyType_Hexalith_Domain_ValueObjets_PartyType_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamicsPartyType(Hexalith.Domain.ValueObjets.PartyType)">ToDynamicsPartyType(PartyType)</h4>
+  <div class="markdown level1 summary"><p>Converts to dynamics party type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ToDynamicsPartyType(PartyType partyType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Domain.ValueObjets.PartyType.html">PartyType</a></td>
+        <td><span class="parametername">partyType</span></td>
+        <td><p>Type of the party.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>System.String.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToGender_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToGender(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance.Parties/Customers/Helpers/CustomerConverter.cs/#L285">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToGender_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToGender*"></a>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToGender_System_String_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToGender(System.String)">ToGender(String)</h4>
+  <div class="markdown level1 summary"><p>Converts to gender.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Gender? ToGender(string gender)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">gender</span></td>
+        <td><p>The gender.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="Hexalith.Domain.ValueObjets.Gender.html">Gender</a>&gt;</td>
+        <td><p>Hexalith.Domain.ValueObjets.Gender?.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToPartyType_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToPartyType(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance.Parties/Customers/Helpers/CustomerConverter.cs/#L301">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToPartyType_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToPartyType*"></a>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToPartyType_System_String_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToPartyType(System.String)">ToPartyType(String)</h4>
+  <div class="markdown level1 summary"><p>Converts to party type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static PartyType ToPartyType(string partyType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">partyType</span></td>
+        <td><p>Type of the party.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Domain.ValueObjets.PartyType.html">PartyType</a></td>
+        <td><p>PartyType.</p>
 </td>
       </tr>
     </tbody>

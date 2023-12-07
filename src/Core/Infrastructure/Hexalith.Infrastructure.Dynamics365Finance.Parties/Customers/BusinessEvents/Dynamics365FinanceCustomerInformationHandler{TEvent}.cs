@@ -28,6 +28,7 @@ using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.ValueObjets;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Configuration;
+using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers;
 
 using Microsoft.Extensions.Options;
 
@@ -121,9 +122,12 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
                    _originId,
                    customerId,
                    @event.Name,
+                   CustomerConverter.ToPartyType(@event.PartyType ?? nameof(PartyType.Person)),
                    @event.Contact,
                    @event.WarehouseId,
                    @event.CommissionSalesGroupId,
+                   @event.GroupId,
+                   @event.SalesCurrencyId,
                    _dateTimeService.UtcNow));
 
         bool directDelivery = @event.InterCompanyDirectDelivery == "Yes";

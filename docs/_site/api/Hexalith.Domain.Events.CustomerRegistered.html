@@ -178,7 +178,7 @@ public class CustomerRegistered : CustomerEvent, IPolymorphicSerializable, IMapp
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_CustomerRegistered__ctor.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.CustomerRegistered.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Events/CustomerRegistered.cs/#L66">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Events/CustomerRegistered.cs/#L76">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_CustomerRegistered__ctor_" data-uid="Hexalith.Domain.Events.CustomerRegistered.#ctor*"></a>
   <h4 id="Hexalith_Domain_Events_CustomerRegistered__ctor" data-uid="Hexalith.Domain.Events.CustomerRegistered.#ctor">CustomerRegistered()</h4>
@@ -191,19 +191,19 @@ public class CustomerRegistered : CustomerEvent, IPolymorphicSerializable, IMapp
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_CustomerRegistered__ctor_System_String_System_String_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_Contact_System_String_System_String_DateTimeOffset_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.CustomerRegistered.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CHexalith.Domain.ValueObjets.Contact%2CSystem.String%2CSystem.String%2CDateTimeOffset)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_CustomerRegistered__ctor_System_String_System_String_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_PartyType_Hexalith_Domain_ValueObjets_Contact_System_String_System_String_System_String_System_String_DateTimeOffset_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.CustomerRegistered.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CHexalith.Domain.ValueObjets.PartyType%2CHexalith.Domain.ValueObjets.Contact%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CDateTimeOffset)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Events/CustomerRegistered.cs/#L44">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Events/CustomerRegistered.cs/#L48">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_CustomerRegistered__ctor_" data-uid="Hexalith.Domain.Events.CustomerRegistered.#ctor*"></a>
-  <h4 id="Hexalith_Domain_Events_CustomerRegistered__ctor_System_String_System_String_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_Contact_System_String_System_String_DateTimeOffset_" data-uid="Hexalith.Domain.Events.CustomerRegistered.#ctor(System.String,System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,DateTimeOffset)">CustomerRegistered(String, String, String, String, String, Contact, String, String, DateTimeOffset)</h4>
+  <h4 id="Hexalith_Domain_Events_CustomerRegistered__ctor_System_String_System_String_System_String_System_String_System_String_Hexalith_Domain_ValueObjets_PartyType_Hexalith_Domain_ValueObjets_Contact_System_String_System_String_System_String_System_String_DateTimeOffset_" data-uid="Hexalith.Domain.Events.CustomerRegistered.#ctor(System.String,System.String,System.String,System.String,System.String,Hexalith.Domain.ValueObjets.PartyType,Hexalith.Domain.ValueObjets.Contact,System.String,System.String,System.String,System.String,DateTimeOffset)">CustomerRegistered(String, String, String, String, String, PartyType, Contact, String, String, String, String, DateTimeOffset)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Domain.Events.CustomerRegistered.html">CustomerRegistered</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CustomerRegistered(string partitionId, string companyId, string originId, string id, string name, Contact contact, string warehouseId, string commissionSalesGroupId, DateTimeOffset date)</code></pre>
+    <pre><code class="lang-csharp hljs">public CustomerRegistered(string partitionId, string companyId, string originId, string id, string name, PartyType partyType, Contact contact, string warehouseId, string commissionSalesGroupId, string groupId, string salesCurrencyId, DateTimeOffset date)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -246,6 +246,12 @@ public class CustomerRegistered : CustomerEvent, IPolymorphicSerializable, IMapp
 </td>
       </tr>
       <tr>
+        <td><a class="xref" href="Hexalith.Domain.ValueObjets.PartyType.html">PartyType</a></td>
+        <td><span class="parametername">partyType</span></td>
+        <td><p>Type of the party.</p>
+</td>
+      </tr>
+      <tr>
         <td><a class="xref" href="Hexalith.Domain.ValueObjets.Contact.html">Contact</a></td>
         <td><span class="parametername">contact</span></td>
         <td><p>The contact.</p>
@@ -264,6 +270,18 @@ public class CustomerRegistered : CustomerEvent, IPolymorphicSerializable, IMapp
 </td>
       </tr>
       <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">groupId</span></td>
+        <td><p>The group identifier.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">salesCurrencyId</span></td>
+        <td><p>The sales currency identifier.</p>
+</td>
+      </tr>
+      <tr>
         <td><span class="xref">DateTimeOffset</span></td>
         <td><span class="parametername">date</span></td>
         <td><p>The date.</p>
@@ -278,7 +296,7 @@ public class CustomerRegistered : CustomerEvent, IPolymorphicSerializable, IMapp
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_CustomerRegistered_CommissionSalesGroupId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.CustomerRegistered.CommissionSalesGroupId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Events/CustomerRegistered.cs/#L78">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Events/CustomerRegistered.cs/#L88">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_CustomerRegistered_CommissionSalesGroupId_" data-uid="Hexalith.Domain.Events.CustomerRegistered.CommissionSalesGroupId*"></a>
   <h4 id="Hexalith_Domain_Events_CustomerRegistered_CommissionSalesGroupId" data-uid="Hexalith.Domain.Events.CustomerRegistered.CommissionSalesGroupId">CommissionSalesGroupId</h4>
@@ -311,7 +329,7 @@ public string CommissionSalesGroupId { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_CustomerRegistered_Contact.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.CustomerRegistered.Contact%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Events/CustomerRegistered.cs/#L85">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Events/CustomerRegistered.cs/#L95">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_CustomerRegistered_Contact_" data-uid="Hexalith.Domain.Events.CustomerRegistered.Contact*"></a>
   <h4 id="Hexalith_Domain_Events_CustomerRegistered_Contact" data-uid="Hexalith.Domain.Events.CustomerRegistered.Contact">Contact</h4>
@@ -344,7 +362,7 @@ public Contact Contact { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_CustomerRegistered_Date.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.CustomerRegistered.Date%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Events/CustomerRegistered.cs/#L92">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Events/CustomerRegistered.cs/#L102">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_CustomerRegistered_Date_" data-uid="Hexalith.Domain.Events.CustomerRegistered.Date*"></a>
   <h4 id="Hexalith_Domain_Events_CustomerRegistered_Date" data-uid="Hexalith.Domain.Events.CustomerRegistered.Date">Date</h4>
@@ -374,10 +392,43 @@ public DateTimeOffset Date { get; set; }</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_CustomerRegistered_GroupId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.CustomerRegistered.GroupId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Events/CustomerRegistered.cs/#L109">View Source</a>
+  </span>
+  <a id="Hexalith_Domain_Events_CustomerRegistered_GroupId_" data-uid="Hexalith.Domain.Events.CustomerRegistered.GroupId*"></a>
+  <h4 id="Hexalith_Domain_Events_CustomerRegistered_GroupId" data-uid="Hexalith.Domain.Events.CustomerRegistered.GroupId">GroupId</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the group identifier.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 13)]
+public string GroupId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The group identifier.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_CustomerRegistered_Name.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.CustomerRegistered.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Events/CustomerRegistered.cs/#L99">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Events/CustomerRegistered.cs/#L116">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_CustomerRegistered_Name_" data-uid="Hexalith.Domain.Events.CustomerRegistered.Name*"></a>
   <h4 id="Hexalith_Domain_Events_CustomerRegistered_Name" data-uid="Hexalith.Domain.Events.CustomerRegistered.Name">Name</h4>
@@ -407,10 +458,77 @@ public string Name { get; set; }</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_CustomerRegistered_PartyType.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.CustomerRegistered.PartyType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Events/CustomerRegistered.cs/#L123">View Source</a>
+  </span>
+  <a id="Hexalith_Domain_Events_CustomerRegistered_PartyType_" data-uid="Hexalith.Domain.Events.CustomerRegistered.PartyType*"></a>
+  <h4 id="Hexalith_Domain_Events_CustomerRegistered_PartyType" data-uid="Hexalith.Domain.Events.CustomerRegistered.PartyType">PartyType</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the type of the party.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 11)]
+[JsonConverter(typeof(JsonStringEnumConverter))]
+public PartyType PartyType { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Domain.ValueObjets.PartyType.html">PartyType</a></td>
+        <td><p>The type of the party.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_CustomerRegistered_SalesCurrencyId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.CustomerRegistered.SalesCurrencyId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Events/CustomerRegistered.cs/#L131">View Source</a>
+  </span>
+  <a id="Hexalith_Domain_Events_CustomerRegistered_SalesCurrencyId_" data-uid="Hexalith.Domain.Events.CustomerRegistered.SalesCurrencyId*"></a>
+  <h4 id="Hexalith_Domain_Events_CustomerRegistered_SalesCurrencyId" data-uid="Hexalith.Domain.Events.CustomerRegistered.SalesCurrencyId">SalesCurrencyId</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the sales currency identifier.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 14)]
+public string SalesCurrencyId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The sales currency identifier.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_CustomerRegistered_WarehouseId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.CustomerRegistered.WarehouseId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Events/CustomerRegistered.cs/#L106">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Events/CustomerRegistered.cs/#L138">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_CustomerRegistered_WarehouseId_" data-uid="Hexalith.Domain.Events.CustomerRegistered.WarehouseId*"></a>
   <h4 id="Hexalith_Domain_Events_CustomerRegistered_WarehouseId" data-uid="Hexalith.Domain.Events.CustomerRegistered.WarehouseId">WarehouseId</h4>
@@ -459,7 +577,7 @@ public string WarehouseId { get; set; }</code></pre>
       <a class="xref" href="Hexalith.Extensions.Helpers.CollectionHelper.html#Hexalith_Extensions_Helpers_CollectionHelper_IntoEnumerable__1___0_">CollectionHelper.IntoEnumerable&lt;T&gt;(T)</a>
   </div>
   <div>
-      <a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToDynamics365FinanceCustomer_Hexalith_Domain_Events_CustomerRegistered_">CustomerConverter.ToDynamics365FinanceCustomer(CustomerRegistered)</a>
+      <a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToDynamics365FinanceCustomer_Hexalith_Domain_Events_CustomerRegistered_System_String_">CustomerConverter.ToDynamics365FinanceCustomer(CustomerRegistered, String)</a>
   </div>
   <h3 id="seealso">See Also</h3>
   <div class="seealso">
@@ -476,7 +594,7 @@ public string WarehouseId { get; set; }</code></pre>
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_CustomerRegistered.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.CustomerRegistered%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Events/CustomerRegistered.cs/#L29" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Parties/Events/CustomerRegistered.cs/#L30" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

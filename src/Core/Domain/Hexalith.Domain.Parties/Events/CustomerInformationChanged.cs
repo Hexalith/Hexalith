@@ -4,7 +4,7 @@
 // Created          : 08-21-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 08-30-2023
+// Last Modified On : 11-21-2023
 // ***********************************************************************
 // <copyright file="CustomerInformationChanged.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -17,6 +17,7 @@
 namespace Hexalith.Domain.Events;
 
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 using Hexalith.Domain.ValueObjets;
 using Hexalith.Extensions;
@@ -37,9 +38,12 @@ public class CustomerInformationChanged : CustomerEvent
     /// <param name="originId">The origin identifier.</param>
     /// <param name="id">The identifier.</param>
     /// <param name="name">The name.</param>
+    /// <param name="partyType">Type of the party.</param>
     /// <param name="contact">The contact.</param>
     /// <param name="warehouseId">The warehouse identifier.</param>
     /// <param name="commissionSalesGroupId">The commission sales group identifier.</param>
+    /// <param name="groupId">The group identifier.</param>
+    /// <param name="salesCurrencyId">The sales currency identifier.</param>
     /// <param name="date">The date.</param>
     public CustomerInformationChanged(
         string partitionId,
@@ -47,16 +51,22 @@ public class CustomerInformationChanged : CustomerEvent
         string originId,
         string id,
         string name,
+        PartyType partyType,
         Contact contact,
         string? warehouseId,
         string? commissionSalesGroupId,
+        string? groupId,
+        string? salesCurrencyId,
         DateTimeOffset date)
         : base(partitionId, companyId, originId, id)
     {
         Name = name;
+        PartyType = partyType;
         Contact = contact;
         WarehouseId = warehouseId;
         CommissionSalesGroupId = commissionSalesGroupId;
+        GroupId = groupId;
+        SalesCurrencyId = salesCurrencyId;
         Date = date;
     }
 
@@ -93,11 +103,33 @@ public class CustomerInformationChanged : CustomerEvent
     public DateTimeOffset Date { get; set; }
 
     /// <summary>
+    /// Gets or sets the group identifier.
+    /// </summary>
+    /// <value>The group identifier.</value>
+    [DataMember(Order = 13)]
+    public string? GroupId { get; set; }
+
+    /// <summary>
     /// Gets or sets the name.
     /// </summary>
     /// <value>The name.</value>
     [DataMember(Order = 10)]
     public string Name { get; set; }
+
+    /// <summary>
+    /// Gets or sets the type of the party.
+    /// </summary>
+    /// <value>The type of the party.</value>
+    [DataMember(Order = 11)]
+    [JsonConverter(typeof(JsonStringEnumConverter))]
+    public PartyType PartyType { get; set; }
+
+    /// <summary>
+    /// Gets or sets the sales currency identifier.
+    /// </summary>
+    /// <value>The sales currency identifier.</value>
+    [DataMember(Order = 14)]
+    public string? SalesCurrencyId { get; set; }
 
     /// <summary>
     /// Gets or sets the warehouse identifier.

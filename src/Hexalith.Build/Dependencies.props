@@ -29,6 +29,7 @@
 		<MicrosoftVisualStudioThreadingAnalyzersVersion>17.8.14</MicrosoftVisualStudioThreadingAnalyzersVersion>
 		<MinverVersion>4.3.0</MinverVersion>
 		<MoqVersion>4.20.70</MoqVersion>
+		<MoqContribHttpClientVersion>1.4.0</MoqContribHttpClientVersion>
 		<RadzenBlazorVersion>4.20.4</RadzenBlazorVersion>
 		<SerilogVersion>7.0.*</SerilogVersion>
 		<SerilogEnrichersEnvironmentVersion>2.3.0</SerilogEnrichersEnvironmentVersion>

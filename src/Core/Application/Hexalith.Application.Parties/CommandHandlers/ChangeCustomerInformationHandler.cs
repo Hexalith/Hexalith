@@ -45,9 +45,12 @@ public class ChangeCustomerInformationHandler : CommandHandler<ChangeCustomerInf
                 command.OriginId,
                 command.Id,
                 command.Name,
+                command.PartyType,
                 command.Contact,
                 command.WarehouseId,
                 command.CommissionSalesGroupId,
+                command.GroupId,
+                command.SalesCurrencyId,
                 command.Date);
         return aggregate is not null and Customer customer
             ? customer.HasChanges(changed)

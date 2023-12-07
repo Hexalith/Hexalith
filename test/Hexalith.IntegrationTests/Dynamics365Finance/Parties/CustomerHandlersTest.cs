@@ -156,6 +156,7 @@ public class CustomerHandlersTest
             "MyOrigin",
             customerId,
             "John Doe Modified",
+            PartyType.Person,
             new Contact(
                 new Person(
                     "John Doe Modified",
@@ -167,7 +168,7 @@ public class CustomerHandlersTest
                     "Test Modified",
                     "Test address Modified",
                     "126",
-                    "Rue de madrid modified",
+                    "Rue de Madrid modified",
                     "5684M",
                     "74801",
                     "Shawnee",
@@ -182,6 +183,8 @@ public class CustomerHandlersTest
                 "+33682246599"),
             "Nice",
             string.Empty,
+            string.Empty,
+            "YEN",
             DateTimeOffset.Now);
     }
 
@@ -194,6 +197,7 @@ public class CustomerHandlersTest
             "MyOrigin",
             id,
             "John Doe",
+            PartyType.Person,
             new Contact(
                 new Person(
                     "John Doe " + id,
@@ -205,7 +209,7 @@ public class CustomerHandlersTest
                     "Test",
                     "Test address",
                     "125",
-                    "Rue de madrid",
+                    "Rue de Madrid",
                     "5684",
                     "75008",
                     "Paris",
@@ -220,6 +224,8 @@ public class CustomerHandlersTest
                 "+33682246555"),
             "Bordeau",
             string.Empty,
+            string.Empty,
+            "EUR",
             DateTimeOffset.Now);
     }
 }

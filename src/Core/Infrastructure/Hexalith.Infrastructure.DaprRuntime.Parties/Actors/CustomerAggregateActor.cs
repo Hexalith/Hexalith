@@ -125,9 +125,12 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
                 customer.OriginId,
                 customer.Id,
                 customer.Name,
+                customer.PartyType,
                 customer.Contact,
                 customer.WarehouseId,
                 customer.CommissionSalesGroupId,
+                customer.GroupId,
+                customer.SalesCurrencyId,
                 DateTimeOffset.UtcNow);
     }
 

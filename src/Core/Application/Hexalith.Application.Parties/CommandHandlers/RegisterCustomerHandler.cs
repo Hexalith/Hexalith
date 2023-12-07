@@ -46,9 +46,12 @@ public class RegisterCustomerHandler : CommandHandler<RegisterCustomer>
                 command.OriginId,
                 command.Id,
                 command.Name,
+                command.PartyType,
                 command.Contact,
                 command.WarehouseId,
                 command.CommissionSalesGroupId,
+                command.GroupId,
+                command.SalesCurrencyId,
                 command.Date);
         return aggregate is null
             ? Task.FromResult<IEnumerable<BaseMessage>>([registered])

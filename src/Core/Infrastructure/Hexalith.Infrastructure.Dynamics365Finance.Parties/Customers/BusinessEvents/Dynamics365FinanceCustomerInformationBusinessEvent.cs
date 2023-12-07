@@ -4,7 +4,7 @@
 // Created          : 01-02-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 08-28-2023
+// Last Modified On : 12-07-2023
 // ***********************************************************************
 // <copyright file="Dynamics365FinanceCustomerInformationBusinessEvent.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -68,6 +68,13 @@ public abstract class Dynamics365FinanceCustomerInformationBusinessEvent : Dynam
     public IEnumerable<ExternalReference>? ExternalReferences { get; set; }
 
     /// <summary>
+    /// Gets or sets the group identifier.
+    /// </summary>
+    /// <value>The group identifier.</value>
+    [DataMember]
+    public string? GroupId { get; set; }
+
+    /// <summary>
     /// Gets or sets the inter company direct delivery.
     /// </summary>
     /// <value>The inter company direct delivery.</value>
@@ -80,6 +87,20 @@ public abstract class Dynamics365FinanceCustomerInformationBusinessEvent : Dynam
     /// <value>The name.</value>
     [DataMember]
     public string? Name { get; set; }
+
+    /// <summary>
+    /// Gets or sets the type of the party.
+    /// </summary>
+    /// <value>The type of the party.</value>
+    [DataMember]
+    public string? PartyType { get; set; }
+
+    /// <summary>
+    /// Gets or sets the sales currency identifier.
+    /// </summary>
+    /// <value>The sales currency identifier.</value>
+    [DataMember]
+    public string? SalesCurrencyId { get; set; }
 
     /// <summary>
     /// Gets or sets the warehouse identifier.

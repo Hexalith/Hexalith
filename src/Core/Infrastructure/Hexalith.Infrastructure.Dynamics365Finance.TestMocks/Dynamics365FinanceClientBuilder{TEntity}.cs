@@ -32,11 +32,6 @@ public class Dynamics365FinanceClientBuilder<TEntity> :
     where TEntity : class, IODataElement
 {
     /// <summary>
-    /// The HTTP clientfactory.
-    /// </summary>
-    private HttpClientFactoryBuilder? _httpClientfactory;
-
-    /// <summary>
     /// The logger.
     /// </summary>
     private LoggerBuilder<Dynamics365FinanceClient<TEntity>>? _logger;
@@ -55,7 +50,7 @@ public class Dynamics365FinanceClientBuilder<TEntity> :
     /// Gets the <see cref="IHttpClientFactory" /> builder configuration.
     /// </summary>
     /// <value>The HTTP clientfactory.</value>
-    public HttpClientFactoryBuilder HttpClientfactory => _httpClientfactory ??= new HttpClientFactoryBuilder();
+    // public HttpClientFactoryBuilder HttpClientfactory => _httpClientfactory ??= new HttpClientFactoryBuilder();
 
     /// <summary>
     /// Gets the <see cref="ILogger{Dynamics365FinanceClient}" /> builder configuration.

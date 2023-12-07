@@ -9,6 +9,8 @@ namespace Hexalith.Infrastructure.Dynamics365Finance.Models;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Extensions;
+
 /// <summary>
 /// Dynamics 365 Finance and Operations entity base class.
 /// </summary>
@@ -29,14 +31,25 @@ public record ODataElement
     }
 
     /// <summary>
+    /// Initializes a new instance of the <see cref="ODataElement"/> class.
+    /// </summary>
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
+    protected ODataElement()
+        : this(null, DefaultLabels.ForSerializationOnly)
+    {
+    }
+
+    /// <summary>
     /// Gets the record Etag for concurrency checks.
     /// </summary>
     [JsonPropertyName("@odata.etag")]
+    [DataMember]
     public string? Etag { get; }
 
     /// <summary>
     /// Gets the company.
     /// </summary>
     [JsonPropertyName("dataAreaId")]
+    [DataMember]
     public string DataAreaId { get; }
 }

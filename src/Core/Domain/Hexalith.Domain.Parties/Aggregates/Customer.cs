@@ -46,9 +46,12 @@ public record Customer(
     string OriginId,
     string Id,
     string Name,
+    PartyType PartyType,
     Contact Contact,
     string? WarehouseId,
     string? CommissionSalesGroupId,
+    string? GroupId,
+    string? SalesCurrencyId,
     bool IntercompanyDropship,
     DateTimeOffset Date) : Aggregate
 {
@@ -63,7 +66,10 @@ public record Customer(
               string.Empty,
               string.Empty,
               string.Empty,
+              PartyType.Other,
               new Contact(),
+              null,
+              null,
               null,
               null,
               false,
@@ -82,9 +88,12 @@ public record Customer(
               customer.OriginId,
               customer.Id,
               customer.Name,
+              customer.PartyType,
               customer.Contact,
               customer.WarehouseId,
               customer.CommissionSalesGroupId,
+              customer.GroupId,
+              customer.SalesCurrencyId,
               false,
               customer.Date)
     {
@@ -101,6 +110,10 @@ public record Customer(
                 Contact = changed.Contact,
                 WarehouseId = changed.WarehouseId,
                 CommissionSalesGroupId = changed.CommissionSalesGroupId,
+                Date = changed.Date,
+                PartyType = changed.PartyType,
+                GroupId = changed.GroupId,
+                SalesCurrencyId = changed.SalesCurrencyId,
             },
             IntercompanyDropshipDeliveryForCustomerSelected => this with { IntercompanyDropship = true },
             IntercompanyDropshipDeliveryForCustomerDeselected => this with { IntercompanyDropship = false },
@@ -149,6 +162,10 @@ public record Customer(
         CheckEvent(changed);
         return Name != changed.Name
             || !Contact.AreSame(Contact, changed.Contact)
+            || GroupId != changed.GroupId
+            || PartyType != changed.PartyType
+            || Date != changed.Date
+            || SalesCurrencyId != changed.SalesCurrencyId
             || WarehouseId != changed.WarehouseId
             || CommissionSalesGroupId != changed.CommissionSalesGroupId;
     }

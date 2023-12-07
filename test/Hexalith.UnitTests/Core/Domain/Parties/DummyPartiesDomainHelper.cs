@@ -26,9 +26,12 @@ public static class DummyPartiesDomainHelper
             "ORIG1",
             "Cust123456",
             "My customer changed",
+            PartyType.Organisation,
             DummyContact(),
             "WH2",
+            "COM5",
             "GRP2",
+            "EUR",
             new DateTimeOffset(2003, 10, 25, 11, 16, 35, TimeSpan.FromHours(3)));
 
     public static CustomerRegistered DummyCustomerRegistered()
@@ -38,9 +41,12 @@ public static class DummyPartiesDomainHelper
             "ORIG1",
             "Cust123456",
             "My customer",
+            PartyType.Person,
             DummyContact(),
             "WH1",
+            "COM6",
             "GRP1",
+            "YEN",
             new DateTimeOffset(2002, 11, 5, 10, 6, 25, TimeSpan.Zero));
 
     public static IntercompanyDropshipDeliveryForCustomerDeselected DummyIntercompanyDropshipDeliveryForCustomerDeselected()
@@ -74,7 +80,7 @@ public static class DummyPartiesDomainHelper
             "25669",
             "67008",
             "London",
-            "GB",
+            "LD",
             "LDN",
             "London City",
             "GBR",

@@ -48,6 +48,7 @@ public record CustomerV3
     string? AddressCity = null,
     string? AddressZipCode = null,
     string? AddressCountryRegionId = null,
+    string? AddressCountryRegionISOCode = null,
     string? PrimaryContactPhoneExtension = null,
     string? PrimaryContactPhoneIsMobile = null,
     string? PrimaryContactEmail = null,

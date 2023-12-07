@@ -25,6 +25,7 @@ using Hexalith.Application.Projection;
 using Hexalith.Application.States;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
+using Hexalith.Domain.ValueObjets;
 
 /// <summary>
 /// Class CustomerProjectionUpdateHandler.
@@ -64,7 +65,10 @@ public abstract class CustomerProjectionUpdateHandler<TCustomerEvent> : Projecti
                     baseEvent.OriginId,
                     baseEvent.Id,
                     "Not Defined",
+                    PartyType.Other,
                     new Domain.ValueObjets.Contact(null, null, null, null, null),
+                    null,
+                    null,
                     null,
                     null,
                     DateTimeOffset.MinValue));

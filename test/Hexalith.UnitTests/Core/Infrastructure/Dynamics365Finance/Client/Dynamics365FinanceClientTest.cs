@@ -1,4 +1,4 @@
-﻿// <copyright file="Dynamics365FinanceAndOperationsClientTest.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="Dynamics365FinanceClientTest.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -6,7 +6,7 @@
 
 namespace Hexalith.UnitTests.Core.Infrastructure.Dynamics365Finance.Client;
 
-using System.Text.Json;
+using System.Net;
 
 using FluentAssertions;
 
@@ -14,11 +14,16 @@ using Hexalith.Infrastructure.Dynamics365Finance.Client;
 using Hexalith.Infrastructure.Dynamics365Finance.Configurations;
 using Hexalith.Infrastructure.Dynamics365Finance.TestMocks;
 
+using Moq;
+using Moq.Contrib.HttpClient;
+
 public class Dynamics365FinanceClientTest
 {
     [Fact]
     public async Task GetShouldReturnHello()
     {
+        Mock<HttpMessageHandler> mockHandler = new(MockBehavior.Strict);
+        using HttpClient httpClient = mockHandler.CreateClient();
         Dynamics365FinanceClientSettings settings = new()
         {
             Company = "CIE",
@@ -27,49 +32,54 @@ public class Dynamics365FinanceClientTest
         const string message = "Hello world";
         const string etag = "123etag123";
         const string company = "CIE";
-        const string response =
-            $$"""
-            {
-                "@odata.etag":"{{etag}}",
-                "dataAreaId":"{{company}}",
-                "Message":"{{message}}"
-            }
-            """;
+        const string id = "3525";
+        DummyEntity dummyEntity = new(etag, company, message);
+        string mockUrl = $"https://test.dynamics.com/data/Dummy(dataAreaId%3d%27CIE%27%2cid%3d%273525%27)";
+        Moq.Language.Flow.IReturnsResult<HttpMessageHandler> mockResponse = mockHandler
+            .SetupRequest(HttpMethod.Get, new Uri(mockUrl))
+            .ReturnsJsonResponse(HttpStatusCode.OK, dummyEntity);
         Dynamics365FinanceClientBuilder<DummyEntity> builder = new();
         _ = builder.Settings.WithValue(settings);
-        _ = builder.HttpClientfactory.SetMockHttpMessageHandler(response);
-        IDynamics365FinanceClient<DummyEntity> client = builder.Build();
+        IDynamics365FinanceClient<DummyEntity> client = builder.Build(httpClient);
         DummyEntity result = await client.GetSingleAsync(
             company,
             new Dictionary<string, object>(
             StringComparer.Ordinal)
-            { { "id", "3525" } },
+            { { "id", id } },
             CancellationToken.None);
-        _ = result.Message.Should().Be(message);
-        _ = result.DataAreaId.Should().Be(company);
-        _ = result.Etag.Should().Be(etag);
+        _ = result.Should().NotBeNull();
+        _ = result.Should().BeEquivalentTo(dummyEntity);
+        mockHandler.VerifyRequest(HttpMethod.Get, mockUrl, Times.Once());
+        mockHandler.VerifyNoOtherCalls();
     }
 
     [Fact]
     public async Task PatchShouldSucceed()
     {
+        Mock<HttpMessageHandler> mockHandler = new(MockBehavior.Strict);
+        using HttpClient httpClient = mockHandler.CreateClient();
         Dynamics365FinanceClientSettings settings = new()
         {
             Company = "CIE",
             Instance = new Uri("https://test.dynamics.com"),
         };
-        DummyEntity dummy = new("123etag123", "CIE", "Hello world");
+        DummyEntity dummyEntity = new("123etag123", "CIE", "Hello world");
+        string mockUrl = $"https://test.dynamics.com/data/Dummy(dataAreaId%3d%27CIE%27%2cid%3d%273525%27)";
+        Moq.Language.Flow.IReturnsResult<HttpMessageHandler> mockResponse = mockHandler
+            .SetupRequest(HttpMethod.Patch, new Uri(mockUrl))
+            .ReturnsResponse(HttpStatusCode.OK);
 
         Dynamics365FinanceClientBuilder<DummyEntity> builder = new();
         _ = builder.Settings.WithValue(settings);
-        _ = builder.HttpClientfactory.SetMockHttpMessageHandler(JsonSerializer.Serialize(dummy));
-        IDynamics365FinanceClient<DummyEntity> client = builder.Build();
+        IDynamics365FinanceClient<DummyEntity> client = builder.Build(httpClient);
         HttpResponseMessage response = await client.SendPatchAsync(
             new Dictionary<string, object>(
             StringComparer.Ordinal)
             { { "id", "3525" } },
-            dummy,
+            dummyEntity,
             CancellationToken.None);
         _ = response.IsSuccessStatusCode.Should().BeTrue();
+        mockHandler.VerifyRequest(HttpMethod.Patch, mockUrl, Times.Once());
+        mockHandler.VerifyNoOtherCalls();
     }
 }

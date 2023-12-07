@@ -47,9 +47,12 @@ public class RegisterOrChangeCustomerHandler : CommandHandler<RegisterOrChangeCu
                     command.OriginId,
                     command.Id,
                     command.Name,
+                    command.PartyType,
                     command.Contact,
                     command.WarehouseId,
                     command.CommissionSalesGroupId,
+                    command.GroupId,
+                    command.SalesCurrencyId,
                     command.Date);
             return customer.HasChanges(changed)
                 ? Task.FromResult<IEnumerable<BaseMessage>>([changed])
@@ -62,9 +65,12 @@ public class RegisterOrChangeCustomerHandler : CommandHandler<RegisterOrChangeCu
             command.OriginId,
             command.Id,
             command.Name,
+            command.PartyType,
             command.Contact,
             command.WarehouseId,
             command.CommissionSalesGroupId,
+            command.GroupId,
+            command.SalesCurrencyId,
             command.Date);
         return aggregate is null
             ? Task.FromResult<IEnumerable<BaseMessage>>([registered])
