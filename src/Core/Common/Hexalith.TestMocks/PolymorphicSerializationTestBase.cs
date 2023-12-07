@@ -40,7 +40,7 @@ public abstract class PolymorphicSerializationTestBase<TObject, TBase> : Seriali
     public void PolymorphicSerializeAndDeserializeShouldReturnSameObject()
     {
         TObject original = (TObject)ToSerializeObject();
-        string json = JsonSerializer.Serialize(original);
+        string json = JsonSerializer.Serialize<TBase>(original);
         TBase? result = JsonSerializer.Deserialize<TBase>(json);
         _ = result.Should().NotBeNull();
         _ = result.Should().BeOfType<TObject>();
