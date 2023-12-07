@@ -17,7 +17,7 @@ using Hexalith.Application.Commands;
 /// Implements the <see cref="ActorsCommandProcessor" />.
 /// </summary>
 /// <seealso cref="ActorsCommandProcessor" />
-public class ConventionNamingCommandProcessor : ActorsCommandProcessor
+public class ConventionNamingCommandProcessor : ActorsCommandProcessor, IConventionNamingCommandProcessor
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="ConventionNamingCommandProcessor" /> class.
