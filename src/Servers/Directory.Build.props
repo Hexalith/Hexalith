@@ -18,6 +18,7 @@
 		<ContainerEnvironmentVariable Include="DaprRequestBus__Name" Value="request-bus" />
 		<ContainerEnvironmentVariable Include="DOTNET_URLS" Value="http://+:80" />
 		<ContainerEnvironmentVariable Include="ASPNETCORE_URLS" Value="http://+:80" />
+		<ContainerEnvironmentVariable Include="ASPNETCORE_ENVIRONMENT" Value="Production" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="$(MSBuildThisFileDirectory)..\Core\Infrastructure\Hexalith.Infrastructure.WebApis\Hexalith.Infrastructure.WebApis.csproj" />
