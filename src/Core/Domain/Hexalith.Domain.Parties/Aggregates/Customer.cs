@@ -182,4 +182,46 @@ public record Customer(
             throw new ArgumentException($"{customerEvent.TypeName} aggregate aggregate Id '{customerEvent.AggregateId}' is invalid. Expected : '{AggregateId}'.", paramName);
         }
     }
+
+    /// <summary>
+    /// Converts to change customer information event.
+    /// </summary>
+    /// <returns>CustomerInformationChanged.</returns>
+    public CustomerInformationChanged ToCustomerInformationChanged()
+    {
+        return new CustomerInformationChanged(
+            PartitionId,
+            CompanyId,
+            OriginId,
+            Id,
+            Name,
+            PartyType,
+            Contact,
+            WarehouseId,
+            CompanyId,
+            GroupId,
+            SalesCurrencyId,
+            Date);
+    }
+
+    /// <summary>
+    /// Converts to register customer event.
+    /// </summary>
+    /// <returns>CustomerRegistered.</returns>
+    public CustomerRegistered ToCustomerRegistered()
+    {
+        return new CustomerRegistered(
+            PartitionId,
+            CompanyId,
+            OriginId,
+            Id,
+            Name,
+            PartyType,
+            Contact,
+            WarehouseId,
+            CompanyId,
+            GroupId,
+            SalesCurrencyId,
+            Date);
+    }
 }
