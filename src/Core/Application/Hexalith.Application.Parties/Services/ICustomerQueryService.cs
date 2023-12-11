@@ -17,6 +17,7 @@
 namespace Hexalith.Application.Parties.Services;
 
 using Hexalith.Application.Parties.Commands;
+using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 
 /// <summary>
