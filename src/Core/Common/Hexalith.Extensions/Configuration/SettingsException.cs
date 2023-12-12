@@ -108,7 +108,7 @@ public class SettingsException<TSettings> : ArgumentException
                 settingsName = "Unknown";
             }
 
-            Throw($"The {TSettings.ConfigurationName()}.{settingsName} setting has not been defined.", paramName);
+            Throw($"The {settingsName} value is undefined in {TSettings.ConfigurationName()} settings. Argument : {paramName}.", paramName);
         }
     }
 

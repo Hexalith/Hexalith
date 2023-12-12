@@ -36,7 +36,7 @@ public class SettingsExceptionTest
         _ = a
             .Should()
             .Throw<SettingsException<DummySettings>>()
-            .Where(p => p.ParamName == "options.Value.Name" && p.Message.Contains("Dummy.Name"));
+            .Where(p => p.ParamName == "options.Value.Name" && p.Message.Contains("Dummy") && p.Message.Contains("Name"));
     }
 
     [Fact]
@@ -47,7 +47,7 @@ public class SettingsExceptionTest
         _ = a
             .Should()
             .Throw<SettingsException<DummySettings>>()
-            .Where(p => p.ParamName == "settings.Name" && p.Message.Contains("Dummy.Name"));
+            .Where(p => p.ParamName == "settings.Name" && p.Message.Contains("Dummy") && p.Message.Contains("Name"));
     }
 
     [Fact]
@@ -58,7 +58,7 @@ public class SettingsExceptionTest
         _ = a
             .Should()
             .Throw<SettingsException<DummySettings>>()
-            .Where(p => p.ParamName == "settings.SubConfig.Hello" && p.Message.Contains("Dummy.SubConfig.Hello"));
+            .Where(p => p.ParamName == "settings.SubConfig.Hello" && p.Message.Contains("Dummy") && p.Message.Contains("Hello"));
     }
 
     internal class DummySettings : ISettings
