@@ -51,13 +51,14 @@ public static class CustomerConverter
         string? stateName = null,
         string? countryName = null,
         string? phone = null,
-        string? mobile = null)
+        string? mobile = null,
+        string? title = null)
     {
         ArgumentNullException.ThrowIfNull(customer);
         ArgumentException.ThrowIfNullOrEmpty(customer.CustomerAccount);
         ArgumentException.ThrowIfNullOrEmpty(customer.OrganizationName);
-        DateTimeOffset? birthDate = customer.PersonBithDay.HasValue && customer.PersonBithMonth.HasValue && customer.PersonBithYear.HasValue
-            ? new DateTimeOffset(customer.PersonBithYear.Value, customer.PersonBithMonth.Value, customer.PersonBithDay.Value, 0, 0, 0, TimeSpan.Zero)
+        DateTimeOffset? birthDate = customer.PersonBirthDay.HasValue && customer.PersonBirthMonth.HasValue && customer.PersonBirthYear.HasValue
+            ? new DateTimeOffset(customer.PersonBirthYear.Value, customer.PersonBirthMonth.Value, customer.PersonBirthDay.Value, 0, 0, 0, TimeSpan.Zero)
             : null;
         CustomerInformationChanged changed = new(
             partitionId,
@@ -71,7 +72,7 @@ public static class CustomerConverter
                     customer.OrganizationName,
                     customer.PersonFirstName,
                     customer.PersonLastName,
-                    customer.PersonPersonalTitle,
+                    title,
                     birthDate,
                     ToGender(customer.PersonGender)),
                 new PostalAddress(
@@ -122,13 +123,16 @@ public static class CustomerConverter
         string? postBox = null,
         string? stateName = null,
         string? countryName = null,
-        DateTimeOffset? personBirthDate = null,
         string? phone = null,
-        string? mobile = null)
+        string? mobile = null,
+        string? title = null)
     {
         ArgumentNullException.ThrowIfNull(customer);
         ArgumentException.ThrowIfNullOrEmpty(customer.CustomerAccount);
         ArgumentException.ThrowIfNullOrEmpty(customer.OrganizationName);
+        DateTimeOffset? birthDate = customer.PersonBirthDay.HasValue && customer.PersonBirthMonth.HasValue && customer.PersonBirthYear.HasValue
+            ? new DateTimeOffset(customer.PersonBirthYear.Value, customer.PersonBirthMonth.Value, customer.PersonBirthDay.Value, 0, 0, 0, TimeSpan.Zero)
+            : null;
         CustomerRegistered registered = new(
             partitionId,
             customer.DataAreaId,
@@ -141,8 +145,8 @@ public static class CustomerConverter
                     customer.OrganizationName,
                     customer.PersonFirstName,
                     customer.PersonLastName,
-                    customer.PersonPersonalTitle,
-                    personBirthDate,
+                    title,
+                    birthDate,
                     ToGender(customer.PersonGender)),
                 new PostalAddress(
                     customer.AddressDescription,
@@ -237,13 +241,12 @@ public static class CustomerConverter
             PersonFirstName = customerChanged.Contact.Person?.FirstName,
             PersonLastName = customerChanged.Contact.Person?.LastName,
             PersonGender = ToDynamicsGender(customerChanged.Contact.Person?.Gender),
-            PersonPersonalTitle = customerChanged.Contact.Person?.Title,
             PrimaryContactPhoneExtension = customerChanged.Contact?.Mobile ?? customerChanged.Contact?.Phone,
             PrimaryContactPhoneIsMobile = customerChanged.Contact?.Mobile == null ? "No" : "Yes",
             PrimaryContactEmail = customerChanged.Contact?.Email,
-            PersonBithDay = customerChanged.Contact?.Person?.BirthDate?.Day,
-            PersonBithMonth = customerChanged.Contact?.Person?.BirthDate?.Month,
-            PersonBithYear = customerChanged.Contact?.Person?.BirthDate?.Year,
+            PersonBirthDay = customerChanged.Contact?.Person?.BirthDate?.Day,
+            PersonBirthMonth = customerChanged.Contact?.Person?.BirthDate?.Month,
+            PersonBirthYear = customerChanged.Contact?.Person?.BirthDate?.Year,
             CustomerGroupId = customerChanged.GroupId,
             SalesCurrencyCode = customerChanged.SalesCurrencyId,
             PartyType = ToDynamicsPartyType(customerChanged.PartyType),

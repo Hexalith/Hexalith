@@ -59,10 +59,9 @@ public record CustomerV3
     string? PersonLastName = null,
     string? PersonFirstName = null,
     string? PersonGender = null,
-    string? PersonPersonalTitle = null,
-    int? PersonBithDay = null,
-    int? PersonBithMonth = null,
-    int? PersonBithYear = null)
+    int? PersonBirthDay = null,
+    int? PersonBirthMonth = null,
+    int? PersonBirthYear = null)
 
 : ODataElement(Etag, DataAreaId), IODataElement
 {

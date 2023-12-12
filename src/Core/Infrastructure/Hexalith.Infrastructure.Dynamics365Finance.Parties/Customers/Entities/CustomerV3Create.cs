@@ -106,25 +106,25 @@ public class CustomerV3Create
     public string? PartyType { get; set; }
 
     /// <summary>
-    /// Gets or sets the person bith day.
+    /// Gets or sets the person birth day.
     /// </summary>
-    /// <value>The person bith day.</value>
+    /// <value>The person birth day.</value>
     [DataMember]
-    public int? PersonBithDay { get; set; }
+    public int? PersonBirthDay { get; set; }
 
     /// <summary>
-    /// Gets or sets the person bith month.
+    /// Gets or sets the person birth month.
     /// </summary>
-    /// <value>The person bith month.</value>
+    /// <value>The person birth month.</value>
     [DataMember]
-    public int? PersonBithMonth { get; set; }
+    public int? PersonBirthMonth { get; set; }
 
     /// <summary>
-    /// Gets or sets the person bith year.
+    /// Gets or sets the person brith year.
     /// </summary>
-    /// <value>The person bith year.</value>
+    /// <value>The person brith year.</value>
     [DataMember]
-    public int? PersonBithYear { get; set; }
+    public int? PersonBirthYear { get; set; }
 
     /// <summary>
     /// Gets or sets the first name of the person.

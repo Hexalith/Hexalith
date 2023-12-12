@@ -35,7 +35,9 @@ public static class DummyDynamicsCustomersHelper
         "Doe",
         "John",
         "Male",
-        "Mr");
+        22,
+        1,
+        1964);
 
     public static CustomerV3Create DummyCustomerV3Create => new()
     {
@@ -59,5 +61,8 @@ public static class DummyDynamicsCustomersHelper
         PrimaryContactPhoneIsMobile = "Yes",
         SalesCurrencyCode = "EUR",
         WarehouseId = "WH2",
+        PersonBirthDay = 22,
+        PersonBirthMonth = 1,
+        PersonBirthYear = 1964,
     };
 }

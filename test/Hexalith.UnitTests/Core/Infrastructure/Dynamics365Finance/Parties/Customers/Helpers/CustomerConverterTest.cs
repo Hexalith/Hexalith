@@ -84,7 +84,8 @@ public class CustomerConverterTest
             e.Contact.PostalAddress.StateName,
             e.Contact.PostalAddress.CountryName,
             e.Contact.Phone,
-            e.Contact.Mobile);
+            e.Contact.Mobile,
+            "Mr");
         _ = newEvent.Should().BeEquivalentTo(e);
     }
 }

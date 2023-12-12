@@ -7,12 +7,14 @@
 		<EnableSdkContainerSupport>true</EnableSdkContainerSupport>
 	</PropertyGroup>
 	<ItemGroup>
-		<ContainerEnvironmentVariable Include="Statestore__Name" Value="$(ContainerRepository)-statestore" />
+		<ContainerEnvironmentVariable Include="Statestore__Name" Value="hexalith-dynamics365finance-statestore" />
 		<ContainerEnvironmentVariable Include="Dynamics365Finance__Company" Value="FRRT" />
 		<ContainerEnvironmentVariable Include="Dynamics365Finance__Identity__Tenant" Value="fiveforty.fr" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime.Parties.Abstractions\Hexalith.Infrastructure.DaprRuntime.Parties.Abstractions.csproj" />
 		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365Finance.Parties\Hexalith.Infrastructure.Dynamics365Finance.Parties.csproj" />
+		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.WebApis.ExternalSystemsEvents\Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.csproj" />
+		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.WebApis.PartiesEvents\Hexalith.Infrastructure.WebApis.PartiesEvents.csproj" />
 	</ItemGroup>
 </Project>

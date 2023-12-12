@@ -1,17 +1,13 @@
 apiVersion: dapr.io/v1alpha1
 kind: Component
 metadata:
-  name: dynamics-365-finance-statestore
+  name: hexalith-dynamics365finance-statestore
 spec:
   type: state.redis
   version: v1
   metadata:
     - name: redisHost
       value: localhost:6379
-    - name: redisPassword
-      secretKeyRef:
-        name: "StateStore:Password"
-        key: "StateStore:Password"
     - name: actorStateStore
       value: "true"
 auth:

@@ -7,8 +7,13 @@
 using Hexalith.Application.Events;
 using Hexalith.Application.Organizations.Helpers;
 using Hexalith.Domain.Aggregates;
+using Hexalith.Domain.Events;
+using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers;
+using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers;
+using Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Helpers;
 using Hexalith.Infrastructure.WebApis.Helpers;
+using Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers;
 
 using Serilog;
 
@@ -20,19 +25,24 @@ bool debugInVisualStudio = true;
 bool debugInVisualStudio = false;
 #endif
 
-// const string applicationName = "Dynamics365Finance";
+const string applicationName = "Dynamics365Finance";
 IEnumerable<string> aggregateNames = [Customer.GetAggregateName()];
 WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
     applicationDescription,
     "v1",
     debugInVisualStudio,
-    (actors) => { }, // { actors.AddExternalSystemsMapper(applicationName, aggregateNames);},
+    (actors) => actors.AddExternalSystemsMapper(applicationName, aggregateNames),
     args);
 
-builder.Services.AddDynamics365FinanceCustomers(builder.Configuration);
-builder.Services.AddOrganizations(builder.Configuration);
-builder.Services.AddSingleton<IIntegrationEventProcessor, IntegrationEventProcessor>();
-builder.Services.AddSingleton<IIntegrationEventDispatcher, DependencyInjectionEventDispatcher>();
+builder.Services
+    .AddCustomerAggregateProjection()
+    .AddExternalSystemsMapperSubscription(applicationName, aggregateNames)
+    .AddDynamics365FinanceCustomers(builder.Configuration)
+    .AddOrganizations(builder.Configuration)
+    .AddScoped<IIntegrationEventHandler<CustomerRegistered>, CustomerRegisteredHandler>()
+    .AddScoped<IIntegrationEventHandler<CustomerInformationChanged>, CustomerInformationChangedHandler>()
+    .AddScoped<IIntegrationEventProcessor, IntegrationEventProcessor>()
+    .AddScoped<IIntegrationEventDispatcher, DependencyInjectionEventDispatcher>();
 
 WebApplication app = builder.Build();
 
