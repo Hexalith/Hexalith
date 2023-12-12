@@ -138,6 +138,20 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
     public async Task DoAsync(ActorCommandEnvelope envelope)
     {
         ArgumentNullException.ThrowIfNull(envelope);
+        Application.Commands.BaseCommand[] commands = envelope.Commands.ToArray();
+        Application.Metadatas.BaseMetadata[] metadatas = envelope.Metadatas.ToArray();
+        if (commands.Length <= 0)
+        {
+            return;
+        }
+
+        if (await _stateManager
+            .GetCommandCountAsync(_stateProvider, CancellationToken.None)
+            .ConfigureAwait(false) <= 0L && commands[0].GetType() != typeof(RegisterCustomer))
+        {
+            throw new InvalidOperationException($"Aggregate {Host.ActorTypeInfo.ActorTypeName} {Id.GetId()} cannot be initialized with message type {commands[0].GetType().Name}. First command expected: {nameof(RegisterCustomer)}.");
+        }
+
         _aggregate = null;
         await _stateManager
             .AddCommandAsync(
