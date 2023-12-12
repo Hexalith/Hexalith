@@ -29,7 +29,7 @@ using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities;
 public static class CustomerConverter
 {
     /// <summary>
-    /// Converts to customer changed event.
+    /// Converts to customerchangedevent.
     /// </summary>
     /// <param name="customer">The customer.</param>
     /// <param name="partitionId">The partition identifier.</param>
@@ -38,7 +38,6 @@ public static class CustomerConverter
     /// <param name="postBox">The post box.</param>
     /// <param name="stateName">Name of the state.</param>
     /// <param name="countryName">Name of the country.</param>
-    /// <param name="personBirthDate">The person birth date.</param>
     /// <param name="phone">The phone.</param>
     /// <param name="mobile">The mobile.</param>
     /// <returns>CustomerInformationChanged.</returns>
