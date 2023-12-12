@@ -100,8 +100,15 @@ public class SettingsException<TSettings> : ArgumentException
     {
         if (argument is null || (argument is string str && string.IsNullOrWhiteSpace(str)))
         {
-            string[] parts = string.IsNullOrEmpty(paramName) ? Array.Empty<string>() : paramName.Split(".", 2);
-            Throw($"The {TSettings.ConfigurationName()}.{(parts.Length > 1 ? parts[1] : "?")} setting has not been defined.", paramName);
+            string? settingsName = string.IsNullOrWhiteSpace(paramName)
+                ? string.Empty
+                : paramName.Split(".").LastOrDefault();
+            if (string.IsNullOrWhiteSpace(settingsName))
+            {
+                settingsName = "Unknown";
+            }
+
+            Throw($"The {TSettings.ConfigurationName()}.{settingsName} setting has not been defined.", paramName);
         }
     }
 
