@@ -162,6 +162,7 @@ public class CustomerHandlersTest
                     "John Doe Modified",
                     "John Modified",
                     "Doe Modified",
+                    "Mr2",
                     new DateTimeOffset(2002, 03, 11, 0, 0, 0, TimeSpan.Zero),
                     Gender.Male),
                 new PostalAddress(
@@ -203,6 +204,7 @@ public class CustomerHandlersTest
                     "John Doe " + id,
                     "John",
                     "Doe",
+                    "Mr",
                     new DateTimeOffset(2001, 04, 12, 0, 0, 0, TimeSpan.Zero),
                     Gender.Female),
                 new PostalAddress(

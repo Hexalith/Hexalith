@@ -70,6 +70,7 @@ public static class CustomerConverter
                     customer.OrganizationName,
                     customer.PersonFirstName,
                     customer.PersonLastName,
+                    customer.PersonPersonalTitle,
                     personBirthDate,
                     ToGender(customer.PersonGender)),
                 new PostalAddress(
@@ -139,6 +140,7 @@ public static class CustomerConverter
                     customer.OrganizationName,
                     customer.PersonFirstName,
                     customer.PersonLastName,
+                    customer.PersonPersonalTitle,
                     personBirthDate,
                     ToGender(customer.PersonGender)),
                 new PostalAddress(
@@ -234,6 +236,7 @@ public static class CustomerConverter
             PersonFirstName = customerChanged.Contact.Person?.FirstName,
             PersonLastName = customerChanged.Contact.Person?.LastName,
             PersonGender = ToDynamicsGender(customerChanged.Contact.Person?.Gender),
+            PersonPersonalTitle = customerChanged.Contact.Person?.Title,
             PrimaryContactPhoneExtension = customerChanged.Contact?.Mobile ?? customerChanged.Contact?.Phone,
             PrimaryContactPhoneIsMobile = customerChanged.Contact?.Mobile == null ? "No" : "Yes",
             PrimaryContactEmail = customerChanged.Contact?.Email,

@@ -156,7 +156,9 @@ Implements the <a class="xref" href="Hexalith.Domain.ConversationThreads.Events.
   <h6><strong>Assembly</strong>: Hexalith.Domain.ConversationThreads.dll</h6>
   <h5 id="Hexalith_Domain_ConversationThreads_Events_ConversationThreadStarted_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ConversationThreadStarted : ConversationThreadEvent, IPolymorphicSerializable, IMappableType, IEvent, IMessage</code></pre>
+    <pre><code class="lang-csharp hljs">[DataContract]
+[Serializable]
+public class ConversationThreadStarted : ConversationThreadEvent, IPolymorphicSerializable, IMappableType, IEvent, IMessage</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -165,7 +167,7 @@ Implements the <a class="xref" href="Hexalith.Domain.ConversationThreads.Events.
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_ConversationThreads_Events_ConversationThreadStarted__ctor.md&amp;value=---%0Auid%3A%20Hexalith.Domain.ConversationThreads.Events.ConversationThreadStarted.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.ConversationThreads/Events/ConversationThreadStarted.cs/#L41">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.ConversationThreads/Events/ConversationThreadStarted.cs/#L44">View Source</a>
   </span>
   <a id="Hexalith_Domain_ConversationThreads_Events_ConversationThreadStarted__ctor_" data-uid="Hexalith.Domain.ConversationThreads.Events.ConversationThreadStarted.#ctor*"></a>
   <h4 id="Hexalith_Domain_ConversationThreads_Events_ConversationThreadStarted__ctor" data-uid="Hexalith.Domain.ConversationThreads.Events.ConversationThreadStarted.#ctor">ConversationThreadStarted()</h4>
@@ -182,7 +184,7 @@ public ConversationThreadStarted()</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_ConversationThreads_Events_ConversationThreadStarted__ctor_System_String_System_DateTimeOffset_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.ConversationThreads.Events.ConversationThreadStarted.%23ctor(System.String%2CSystem.DateTimeOffset)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.ConversationThreads/Events/ConversationThreadStarted.cs/#L33">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.ConversationThreads/Events/ConversationThreadStarted.cs/#L36">View Source</a>
   </span>
   <a id="Hexalith_Domain_ConversationThreads_Events_ConversationThreadStarted__ctor_" data-uid="Hexalith.Domain.ConversationThreads.Events.ConversationThreadStarted.#ctor*"></a>
   <h4 id="Hexalith_Domain_ConversationThreads_Events_ConversationThreadStarted__ctor_System_String_System_DateTimeOffset_" data-uid="Hexalith.Domain.ConversationThreads.Events.ConversationThreadStarted.#ctor(System.String,System.DateTimeOffset)">ConversationThreadStarted(String, DateTimeOffset)</h4>
@@ -224,7 +226,7 @@ public ConversationThreadStarted()</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_ConversationThreads_Events_ConversationThreadStarted_DefaultTypeName.md&amp;value=---%0Auid%3A%20Hexalith.Domain.ConversationThreads.Events.ConversationThreadStarted.DefaultTypeName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.ConversationThreads/Events/ConversationThreadStarted.cs/#L50">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.ConversationThreads/Events/ConversationThreadStarted.cs/#L53">View Source</a>
   </span>
   <a id="Hexalith_Domain_ConversationThreads_Events_ConversationThreadStarted_DefaultTypeName_" data-uid="Hexalith.Domain.ConversationThreads.Events.ConversationThreadStarted.DefaultTypeName*"></a>
   <h4 id="Hexalith_Domain_ConversationThreads_Events_ConversationThreadStarted_DefaultTypeName" data-uid="Hexalith.Domain.ConversationThreads.Events.ConversationThreadStarted.DefaultTypeName">DefaultTypeName()</h4>
@@ -288,7 +290,7 @@ public ConversationThreadStarted()</code></pre>
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_ConversationThreads_Events_ConversationThreadStarted.md&amp;value=---%0Auid%3A%20Hexalith.Domain.ConversationThreads.Events.ConversationThreadStarted%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.ConversationThreads/Events/ConversationThreadStarted.cs/#L26" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.ConversationThreads/Events/ConversationThreadStarted.cs/#L27" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

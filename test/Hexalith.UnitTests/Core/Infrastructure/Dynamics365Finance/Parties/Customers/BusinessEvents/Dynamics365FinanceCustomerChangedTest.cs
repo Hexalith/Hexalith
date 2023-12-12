@@ -39,6 +39,7 @@ public class Dynamics365FinanceCustomerChangedTest
                     "John Doe",
                     "John",
                     "Doe",
+                    "Mr",
                     DateTimeOffset.Now.Add(TimeSpan.FromDays(-50000d)),
                     Gender.Male),
                 new PostalAddress(

@@ -34,7 +34,8 @@ public static class DummyDynamicsCustomersHelper
         "test@hotmail.tst",
         "Doe",
         "John",
-        "Male");
+        "Male",
+        "Mr");
 
     public static CustomerV3Create DummyCustomerV3Create => new()
     {
@@ -52,6 +53,7 @@ public static class DummyDynamicsCustomersHelper
         PersonFirstName = "John",
         PersonLastName = "Doe",
         PersonGender = "Male",
+        PersonPersonalTitle = "Mr",
         PrimaryContactEmail = "test@hotmail.tst",
         PrimaryContactPhoneExtension = "+33659564520",
         PrimaryContactPhoneIsMobile = "Yes",

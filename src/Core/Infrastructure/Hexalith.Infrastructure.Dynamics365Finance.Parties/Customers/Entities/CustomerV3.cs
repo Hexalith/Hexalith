@@ -58,7 +58,8 @@ public record CustomerV3
     string? PrimaryContactEmail = null,
     string? PersonLastName = null,
     string? PersonFirstName = null,
-    string? PersonGender = null)
+    string? PersonGender = null,
+    string? PersonPersonalTitle = null)
 
 : ODataElement(Etag, DataAreaId), IODataElement
 {

@@ -68,6 +68,7 @@ public static class DummyPartiesDomainHelper
             "John Doe",
             "John",
             "Doe",
+            "Mr",
             new DateTimeOffset(2001, 12, 25, 0, 0, 0, TimeSpan.Zero),
             Gender.Female);
 

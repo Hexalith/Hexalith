@@ -126,6 +126,13 @@ public class CustomerV3Create
     public string? PersonLastName { get; set; }
 
     /// <summary>
+    /// Gets or sets the person personal title.
+    /// </summary>
+    /// <value>The person personal title.</value>
+    [DataMember]
+    public string? PersonPersonalTitle { get; set; }
+
+    /// <summary>
     /// Gets or sets the primary contact email.
     /// </summary>
     /// <value>The primary contact email.</value>

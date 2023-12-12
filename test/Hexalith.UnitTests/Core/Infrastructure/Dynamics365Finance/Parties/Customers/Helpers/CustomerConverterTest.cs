@@ -75,6 +75,7 @@ public class CustomerConverterTest
             new DateTimeOffset(2003, 10, 25, 11, 16, 35, TimeSpan.FromHours(3)));
 
         CustomerV3 customer = e.ToDynamics365FinanceCustomer(e.Id);
+
         CustomerInformationChanged newEvent = customer.ToCustomerChangedEvent(
             e.PartitionId,
             e.OriginId,
