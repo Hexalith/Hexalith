@@ -147,9 +147,9 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
 
         if (await _stateManager
             .GetCommandCountAsync(_stateProvider, CancellationToken.None)
-            .ConfigureAwait(false) <= 0L && commands[0].GetType() != typeof(RegisterCustomer))
+            .ConfigureAwait(false) <= 0L && !(commands[0] is RegisterCustomer or RegisterOrChangeCustomer))
         {
-            throw new InvalidOperationException($"Aggregate {Host.ActorTypeInfo.ActorTypeName} {Id.GetId()} cannot be initialized with message type {commands[0].GetType().Name}. First command expected: {nameof(RegisterCustomer)}.");
+            throw new InvalidOperationException($"Aggregate {Host.ActorTypeInfo.ActorTypeName} {Id.GetId()} cannot be initialized with message type {commands[0].GetType().Name}. First commands expected: {nameof(RegisterCustomer)} or {nameof(RegisterOrChangeCustomer)}.");
         }
 
         _aggregate = null;
