@@ -83,7 +83,6 @@ public class CustomerConverterTest
             e.Contact.PostalAddress.PostBox,
             e.Contact.PostalAddress.StateName,
             e.Contact.PostalAddress.CountryName,
-            e.Contact.Person.BirthDate,
             e.Contact.Phone,
             e.Contact.Mobile);
         _ = newEvent.Should().BeEquivalentTo(e);

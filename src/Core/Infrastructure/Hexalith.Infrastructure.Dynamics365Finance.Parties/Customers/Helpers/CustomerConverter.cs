@@ -51,13 +51,15 @@ public static class CustomerConverter
         string? postBox = null,
         string? stateName = null,
         string? countryName = null,
-        DateTimeOffset? personBirthDate = null,
         string? phone = null,
         string? mobile = null)
     {
         ArgumentNullException.ThrowIfNull(customer);
         ArgumentException.ThrowIfNullOrEmpty(customer.CustomerAccount);
         ArgumentException.ThrowIfNullOrEmpty(customer.OrganizationName);
+        DateTimeOffset? birthDate = customer.PersonBithDay.HasValue && customer.PersonBithMonth.HasValue && customer.PersonBithYear.HasValue
+            ? new DateTimeOffset(customer.PersonBithYear.Value, customer.PersonBithMonth.Value, customer.PersonBithDay.Value, 0, 0, 0, TimeSpan.Zero)
+            : null;
         CustomerInformationChanged changed = new(
             partitionId,
             customer.DataAreaId,
@@ -71,7 +73,7 @@ public static class CustomerConverter
                     customer.PersonFirstName,
                     customer.PersonLastName,
                     customer.PersonPersonalTitle,
-                    personBirthDate,
+                    birthDate,
                     ToGender(customer.PersonGender)),
                 new PostalAddress(
                     customer.AddressDescription,
