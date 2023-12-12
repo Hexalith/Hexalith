@@ -43,7 +43,7 @@ public class CustomerEventsController : CustomerIntegrationEventsController
         "$type_name": "CustomerInformationChanged",
         "$version_major": 0,
         "$version_minor": 0,
-        "commissionSalesGroupId": "FRRT",
+        "commissionSalesGroupId": "TEST1",
         "companyId": "FRRT",
         "contact": {
             "email": "mark.d@email.com",
@@ -66,8 +66,8 @@ public class CustomerEventsController : CustomerIntegrationEventsController
                 "description": "Mark",
                 "name": "Mark Desmound Toto",
                 "postBox": "661 N Park Ave\nApartment #106\ntoto\ntiti",
-                "stateId": "Oklahoma(OK)",
-                "stateName": "Bourgogne",
+                "stateId": "OK",
+                "stateName": "",
                 "street": "",
                 "streetNumber": "Desmound Toto",
                 "zipCode": "74801"
@@ -81,7 +81,7 @@ public class CustomerEventsController : CustomerIntegrationEventsController
         "partitionId": "FFY",
         "partyType": "Person",
         "salesCurrencyId": null,
-        "warehouseId": "STR-001"
+        "warehouseId": "Bordeau"
     },
     "metadata": {
         "$type_name": "Metadata",

@@ -34,10 +34,7 @@ public static class DummyDynamicsCustomersHelper
         "test@hotmail.tst",
         "Doe",
         "John",
-        "Male",
-        22,
-        1,
-        1964);
+        "Male");
 
     public static CustomerV3Create DummyCustomerV3Create => new()
     {
