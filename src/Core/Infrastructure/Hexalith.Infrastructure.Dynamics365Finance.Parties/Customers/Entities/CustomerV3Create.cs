@@ -4,7 +4,7 @@
 // Created          : 01-13-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 12-07-2023
+// Last Modified On : 12-12-2023
 // ***********************************************************************
 // <copyright file="CustomerV3Create.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -106,6 +106,27 @@ public class CustomerV3Create
     public string? PartyType { get; set; }
 
     /// <summary>
+    /// Gets or sets the person bith day.
+    /// </summary>
+    /// <value>The person bith day.</value>
+    [DataMember]
+    public int? PersonBithDay { get; set; }
+
+    /// <summary>
+    /// Gets or sets the person bith month.
+    /// </summary>
+    /// <value>The person bith month.</value>
+    [DataMember]
+    public int? PersonBithMonth { get; set; }
+
+    /// <summary>
+    /// Gets or sets the person bith year.
+    /// </summary>
+    /// <value>The person bith year.</value>
+    [DataMember]
+    public int? PersonBithYear { get; set; }
+
+    /// <summary>
     /// Gets or sets the first name of the person.
     /// </summary>
     /// <value>The first name of the person.</value>
@@ -115,6 +136,7 @@ public class CustomerV3Create
     /// <summary>
     /// Gets or sets the person gender.
     /// </summary>
+    /// <value>The person gender.</value>
     [DataMember]
     public string? PersonGender { get; set; }
 
