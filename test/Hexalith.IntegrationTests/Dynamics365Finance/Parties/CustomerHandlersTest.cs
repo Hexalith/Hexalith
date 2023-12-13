@@ -38,6 +38,9 @@ public class CustomerHandlersTest
         IDynamics365FinanceClient<CustomerV3> customerV3Service = new Dynamics365FinanceClientBuilder<CustomerV3>()
           .WithValueFromConfiguration<CustomerHandlersTest>()
           .Build(client);
+        IDynamics365FinanceClient<CustomerBase> customerBaseService = new Dynamics365FinanceClientBuilder<CustomerBase>()
+          .WithValueFromConfiguration<CustomerHandlersTest>()
+          .Build(client);
         IDynamics365FinanceClient<CustomerExternalSystemCode> externalCustomer = new Dynamics365FinanceClientBuilder<CustomerExternalSystemCode>()
           .WithValueFromConfiguration<CustomerHandlersTest>()
           .Build(client);
@@ -45,13 +48,14 @@ public class CustomerHandlersTest
         Microsoft.Extensions.Options.IOptions<OrganizationSettings> options = new OptionsBuilder<OrganizationSettings>()
             .WithValue(new OrganizationSettings { DefaultCompanyId = "frrt", DefaultOriginId = "FinOps", DefaultPartitionId = "TEST" })
             .Build();
-        ILogger<CustomerChangedHandler<CustomerRegistered>> logger = new LoggerBuilder<CustomerChangedHandler<CustomerRegistered>>().Build();
+        ILogger<CustomerRegisteredHandler> logger = new LoggerBuilder<CustomerRegisteredHandler>().Build();
         CustomerRegisteredHandler handler = new(
+            customerBaseService,
             customerV3Service,
             externalCustomer,
-            mapper,
             options,
             logger);
+
         CustomerRegistered registered = GetCustomerRegisteredTestEvent();
         IEnumerable<Application.Commands.BaseCommand> commands = await handler.ApplyAsync(registered, CancellationToken.None);
         IEnumerable<CustomerExternalSystemCode> externalCodes = await externalCustomer.GetAsync(
@@ -105,6 +109,9 @@ public class CustomerHandlersTest
     public async Task CheckCanUpdateCustomerInDynamics365Finance()
     {
         using HttpClient client = new();
+        IDynamics365FinanceClient<CustomerBase> customerBaseService = new Dynamics365FinanceClientBuilder<CustomerBase>()
+          .WithValueFromConfiguration<CustomerHandlersTest>()
+          .Build(client);
         IDynamics365FinanceClient<CustomerV3> customerV3Service = new Dynamics365FinanceClientBuilder<CustomerV3>()
           .WithValueFromConfiguration<CustomerHandlersTest>()
           .Build(client);
@@ -115,12 +122,10 @@ public class CustomerHandlersTest
         Microsoft.Extensions.Options.IOptions<OrganizationSettings> options = new OptionsBuilder<OrganizationSettings>()
             .WithValue(new OrganizationSettings { DefaultCompanyId = "frrt", DefaultOriginId = "FinOps", DefaultPartitionId = "TEST" })
             .Build();
-        ILogger<CustomerChangedHandler<CustomerInformationChanged>> logger = new LoggerBuilder<CustomerChangedHandler<CustomerInformationChanged>>().Build();
+        ILogger<CustomerInformationChangedHandler> logger = new LoggerBuilder<CustomerInformationChangedHandler>().Build();
         CustomerInformationChangedHandler handler = new(
+            customerBaseService,
             customerV3Service,
-            externalCustomer,
-            mapper,
-            options,
             logger);
         CustomerV3 registered = GetCustomerRegisteredTestEvent().ToDynamics365FinanceCustomer();
         registered = await customerV3Service.PostAsync(registered, CancellationToken.None);
