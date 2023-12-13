@@ -31,7 +31,7 @@ public static partial class ProblemDetailsHelper
     /// <param name="level">The level.</param>
     /// <param name="title">The title.</param>
     /// <param name="message">The message.</param>
-    [LoggerMessage(EventId = 0)]
+    [LoggerMessage(EventId = 0, EventName = "Application Problem", Message = "{Title} : {Message}")]
     public static partial void LogProblemDetails(this ILogger logger, LogLevel level, string? title, string? message);
 
     /// <summary>
