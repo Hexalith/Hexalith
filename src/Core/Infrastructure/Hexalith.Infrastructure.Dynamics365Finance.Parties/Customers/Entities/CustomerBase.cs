@@ -38,6 +38,7 @@ public record CustomerBase
     string DataAreaId,
     string? CustomerAccount,
     string? Etag,
+    string? Name,
     string? PersonPersonalTitle = null,
     int? PersonBirthDay = null,
     int? PersonBirthMonth = null,

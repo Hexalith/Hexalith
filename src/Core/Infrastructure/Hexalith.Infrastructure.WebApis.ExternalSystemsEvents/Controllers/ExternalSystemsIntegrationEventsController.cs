@@ -59,6 +59,8 @@ public abstract class ExternalSystemsIntegrationEventsController : EventIntegrat
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
     [ExternalSystemReferenceEventsBusTopic]
     [TopicMetadata("requireSessions", "true")]
+    [TopicMetadata("sessionIdleTimeoutInSec ", "2")]
+    [TopicMetadata("maxConcurrentSessions", "8")]
     [HttpPost("/handle-external-system-reference-events")]
     public async Task<ActionResult> HandleExternalSystemsEventsAsync(EventState eventState)
         => await HandleEventAsync(

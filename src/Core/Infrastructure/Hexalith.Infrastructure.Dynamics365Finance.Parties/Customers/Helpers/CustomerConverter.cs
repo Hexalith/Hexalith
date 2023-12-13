@@ -4,7 +4,7 @@
 // Created          : 11-21-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 12-06-2023
+// Last Modified On : 12-13-2023
 // ***********************************************************************
 // <copyright file="CustomerConverter.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -49,6 +49,12 @@ public static class CustomerConverter
         return changes;
     }
 
+    /// <summary>
+    /// Gets the changes.
+    /// </summary>
+    /// <param name="customer">The customer.</param>
+    /// <param name="e">The e.</param>
+    /// <returns>System.Collections.Generic.Dictionary&lt;string, object?&gt;.</returns>
     public static Dictionary<string, object?> GetChanges([NotNull] this CustomerV3 customer, [NotNull] CustomerInformationChanged e)
     {
         ArgumentNullException.ThrowIfNull(customer);
@@ -303,6 +309,39 @@ public static class CustomerConverter
     }
 
     /// <summary>
+    /// Converts to dynamics365financecustomercreate.
+    /// </summary>
+    /// <param name="customerRegistered">The customer registered.</param>
+    /// <returns>Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3Create.</returns>
+    public static CustomerV3Create ToDynamics365FinanceCustomerCreate(
+                [NotNull] this CustomerRegistered customerRegistered, string? organizationName = null)
+    {
+        ArgumentNullException.ThrowIfNull(customerRegistered);
+        CustomerV3Create customerV3 = new()
+        {
+            DataAreaId = customerRegistered.CompanyId,
+            OrganizationName = organizationName ?? customerRegistered.Name,
+            AddressCity = customerRegistered.Contact.PostalAddress?.City,
+            AddressCountryRegionId = customerRegistered.Contact.PostalAddress?.CountryId,
+            AddressStreet = customerRegistered.Contact.PostalAddress?.Street,
+            AddressZipCode = customerRegistered.Contact.PostalAddress?.ZipCode,
+            AddressDescription = customerRegistered.Contact.PostalAddress?.Name,
+            PersonFirstName = customerRegistered.Contact.Person?.FirstName,
+            PersonLastName = customerRegistered.Contact.Person?.LastName,
+            PersonGender = ToDynamicsGender(customerRegistered.Contact.Person?.Gender),
+            PrimaryContactPhoneExtension = customerRegistered.Contact?.Mobile ?? customerRegistered.Contact?.Phone,
+            PrimaryContactPhoneIsMobile = customerRegistered.Contact?.Mobile == null ? "No" : "Yes",
+            PrimaryContactEmail = customerRegistered.Contact?.Email,
+            CustomerGroupId = customerRegistered.GroupId,
+            SalesCurrencyCode = customerRegistered.SalesCurrencyId,
+            PartyType = ToDynamicsPartyType(customerRegistered.PartyType),
+            CommissionSalesGroupId = customerRegistered.CommissionSalesGroupId,
+            WarehouseId = customerRegistered.WarehouseId,
+        };
+        return customerV3;
+    }
+
+    /// <summary>
     /// Converts to dynamics gender.
     /// </summary>
     /// <param name="gender">The gender.</param>
@@ -364,6 +403,14 @@ public static class CustomerConverter
         };
     }
 
+    /// <summary>
+    /// Adds the changes.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="changes">The changes.</param>
+    /// <param name="originalValue">The original value.</param>
+    /// <param name="newValue">The new value.</param>
+    /// <param name="fieldName">Name of the field.</param>
     private static void AddChanges<T>(this Dictionary<string, object?> changes, T? originalValue, T? newValue, [CallerArgumentExpression("originalValue")] string? fieldName = null)
     {
         if (originalValue == null && newValue == null)
