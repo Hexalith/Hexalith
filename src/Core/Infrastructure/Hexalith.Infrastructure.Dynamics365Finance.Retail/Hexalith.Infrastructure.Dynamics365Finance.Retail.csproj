@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Application\Hexalith.Application.Parties\Hexalith.Application.Parties.csproj" />
+		<ProjectReference Include="..\..\Application\Hexalith.Application.ExternalSystems\Hexalith.Application.ExternalSystems.csproj" />
+		<ProjectReference Include="..\Hexalith.Infrastructure.Dynamics365Finance\Hexalith.Infrastructure.Dynamics365Finance.csproj" />
+	</ItemGroup>
+
+</Project>
