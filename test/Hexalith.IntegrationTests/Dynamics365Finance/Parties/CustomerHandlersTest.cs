@@ -22,6 +22,7 @@ using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents;
+using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services;
 using Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Entities;
 using Hexalith.Infrastructure.Dynamics365Finance.TestMocks;
 using Hexalith.TestMocks;
@@ -53,11 +54,14 @@ public class CustomerHandlersTest
             .WithValue(new OrganizationSettings { DefaultCompanyId = "frrt", DefaultOriginId = "FinOps", DefaultPartitionId = "TEST" })
             .Build();
         ILogger<CustomerRegisteredHandler> logger = new LoggerBuilder<CustomerRegisteredHandler>().Build();
-        CustomerRegisteredHandler handler = new(
+        Dynamics365FinanceCustomerService customerService = new(
             customerBaseService,
             customerV3Service,
             externalCustomerService,
             storeService,
+            new LoggerBuilder<Dynamics365FinanceCustomerService>().Build());
+        CustomerRegisteredHandler handler = new(
+            customerService,
             options,
             logger);
 

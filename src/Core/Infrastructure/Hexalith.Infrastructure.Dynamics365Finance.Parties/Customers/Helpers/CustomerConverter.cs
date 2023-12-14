@@ -312,9 +312,11 @@ public static class CustomerConverter
     /// Converts to dynamics365financecustomercreate.
     /// </summary>
     /// <param name="customerRegistered">The customer registered.</param>
+    /// <param name="organizationName">Name of the organization.</param>
+    /// <param name="template">The template.</param>
     /// <returns>Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3Create.</returns>
     public static CustomerV3Create ToDynamics365FinanceCustomerCreate(
-                [NotNull] this CustomerRegistered customerRegistered, string? organizationName = null)
+                [NotNull] this CustomerRegistered customerRegistered, string? organizationName = null, CustomerV3? template = null)
     {
         ArgumentNullException.ThrowIfNull(customerRegistered);
         CustomerV3Create customerV3 = new()
@@ -332,8 +334,8 @@ public static class CustomerConverter
             PrimaryContactPhoneExtension = customerRegistered.Contact?.Mobile ?? customerRegistered.Contact?.Phone,
             PrimaryContactPhoneIsMobile = customerRegistered.Contact?.Mobile == null ? "No" : "Yes",
             PrimaryContactEmail = customerRegistered.Contact?.Email,
-            CustomerGroupId = customerRegistered.GroupId,
-            SalesCurrencyCode = customerRegistered.SalesCurrencyId,
+            CustomerGroupId = string.IsNullOrWhiteSpace(customerRegistered.GroupId) ? template?.CustomerGroupId : customerRegistered.GroupId,
+            SalesCurrencyCode = string.IsNullOrWhiteSpace(customerRegistered.SalesCurrencyId) ? template?.SalesCurrencyCode : customerRegistered.SalesCurrencyId,
             PartyType = ToDynamicsPartyType(customerRegistered.PartyType),
             CommissionSalesGroupId = customerRegistered.CommissionSalesGroupId,
             WarehouseId = customerRegistered.WarehouseId,
