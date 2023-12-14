@@ -43,7 +43,6 @@ public interface IDynamics365FinanceCustomerService
     /// <summary>
     /// Get template customer as an asynchronous operation.
     /// </summary>
-    /// <param name="companyId">The company identifier.</param>
     /// <param name="warehouseId">The warehouse identifier.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task&lt;CustomerV3&gt; representing the asynchronous operation.</returns>
@@ -52,5 +51,5 @@ public interface IDynamics365FinanceCustomerService
     /// <exception cref="System.InvalidOperationException">Duplicate store found for warehouse {warehouseId} while getting customer default values : {string.Join(';', stores.Select(s =&gt; s.RetailChannelId))}.</exception>
     /// <exception cref="System.InvalidOperationException">No default customer template defined for store {store.RetailChannelId} while getting customer default values.</exception>
     /// <exception cref="System.InvalidOperationException">No default customer legal entity defined for store {store.RetailChannelId} while getting customer default values.</exception>
-    Task<CustomerV3> GetStoreDefaultCustomerTemplateAsync(string companyId, string warehouseId, CancellationToken cancellationToken);
+    Task<CustomerV3> GetStoreDefaultCustomerTemplateAsync(string warehouseId, CancellationToken cancellationToken);
 }
