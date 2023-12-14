@@ -179,7 +179,7 @@ public class Dynamics365FinanceCustomerService : IDynamics365FinanceCustomerServ
 
         try
         {
-            CustomerV3 customerTemplate = await GetStoreDefaultCustomerTemplateAsync(registered.CompanyId, registered.WarehouseId, cancellationToken)
+            CustomerV3 customerTemplate = await GetStoreDefaultCustomerTemplateAsync(registered.WarehouseId, cancellationToken)
                 .ConfigureAwait(false);
             CustomerV3Create create = registered
                 .ToDynamics365FinanceCustomerCreate(temporaryName, customerTemplate);
@@ -195,14 +195,13 @@ public class Dynamics365FinanceCustomerService : IDynamics365FinanceCustomerServ
     }
 
     /// <inheritdoc/>
-    public async Task<CustomerV3> GetStoreDefaultCustomerTemplateAsync(string companyId, string warehouseId, CancellationToken cancellationToken)
+    public async Task<CustomerV3> GetStoreDefaultCustomerTemplateAsync(string warehouseId, CancellationToken cancellationToken)
     {
-        ArgumentException.ThrowIfNullOrEmpty(companyId);
         ArgumentException.ThrowIfNullOrEmpty(warehouseId);
 
         // Get customer default values from the store and it's related customer template.
         RetailStore[] stores = (await _storeService
-                .GetAsync(new RetailStoreByWarehouseFilter(companyId, warehouseId), cancellationToken)
+                .GetAsync(new RetailStoreByWarehouseFilter(warehouseId), cancellationToken)
                 .ConfigureAwait(false))
                 .ToArray();
         if (stores.Length < 1)
