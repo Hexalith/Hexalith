@@ -42,11 +42,18 @@ public class CustomerV3Create
     public string? AddressCountryRegionId { get; set; }
 
     /// <summary>
-    /// Gets or sets the address country region iso code.
+    /// Gets or sets the primary address country region iso code.
     /// </summary>
-    /// <value>The address country region iso code.</value>
+    /// <value>The primary address country region iso code.</value>
     [DataMember]
     public string? AddressCountryRegionISOCode { get; set; }
+
+    /// <summary>
+    /// Gets or sets the primary address county.
+    /// </summary>
+    /// <value>The primary address county.</value>
+    [DataMember]
+    public string? AddressCounty { get; set; }
 
     /// <summary>
     /// Gets or sets the address description.
@@ -56,9 +63,9 @@ public class CustomerV3Create
     public string? AddressDescription { get; set; }
 
     /// <summary>
-    /// Gets or sets the address street.
+    /// Gets or sets the primary address street.
     /// </summary>
-    /// <value>The address street.</value>
+    /// <value>The primary address street.</value>
     [DataMember]
     public string? AddressStreet { get; set; }
 
@@ -167,69 +174,6 @@ public class CustomerV3Create
     /// <value>The person personal title.</value>
     [DataMember]
     public string? PersonPersonalTitle { get; set; }
-
-    /// <summary>
-    /// Gets or sets the address city.
-    /// </summary>
-    /// <value>The address city.</value>
-    [DataMember]
-    public string? PrimaryAddressCity { get; set; }
-
-    /// <summary>
-    /// Gets or sets the address country region identifier.
-    /// </summary>
-    /// <value>The address country region identifier.</value>
-    [DataMember]
-    public string? PrimaryAddressCountryRegionId { get; set; }
-
-    /// <summary>
-    /// Gets or sets the primary address country region iso code.
-    /// </summary>
-    /// <value>The primary address country region iso code.</value>
-    [DataMember]
-    public string? PrimaryAddressCountryRegionISOCode { get; set; }
-
-    /// <summary>
-    /// Gets or sets the primary address county.
-    /// </summary>
-    /// <value>The primary address county.</value>
-    [DataMember]
-    public string? PrimaryAddressCounty { get; set; }
-
-    /// <summary>
-    /// Gets or sets the address description.
-    /// </summary>
-    /// <value>The address description.</value>
-    [DataMember]
-    public string? PrimaryAddressDescription { get; set; }
-
-    /// <summary>
-    /// Gets or sets the state of the primary address.
-    /// </summary>
-    /// <value>The state of the primary address.</value>
-    [DataMember]
-    public string? PrimaryAddressState { get; set; }
-
-    /// <summary>
-    /// Gets or sets the primary address street.
-    /// </summary>
-    /// <value>The primary address street.</value>
-    [DataMember]
-    public string? PrimaryAddressStreet { get; set; }
-
-    /// <summary>
-    /// Gets or sets the address street number.
-    /// </summary>
-    /// <value>The address street number.</value>
-    [DataMember]
-    public string? PrimaryAddressStreetNumber { get; set; }
-
-    /// <summary>
-    /// Gets or sets the address zip code.
-    /// </summary>
-    /// <value>The address zip code.</value>
-    [DataMember]
-    public string? PrimaryAddressZipCode { get; set; }
 
     /// <summary>
     /// Gets or sets the primary contact email.
