@@ -83,22 +83,25 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.ODataElement.html">ODataElement</a></div>
-    <div class="level2"><span class="xref">CustomerGroup</span></div>
+    <div class="level1"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.ODataCommon.html">ODataCommon</a></div>
+    <div class="level2"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.ODataElement.html">ODataElement</a></div>
+    <div class="level3"><span class="xref">CustomerGroup</span></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
+    <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.ODataCommon.html">ODataCommon</a>&gt;</div>
     <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.ODataElement.html">ODataElement</a>&gt;</div>
     <div><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.IODataElement.html">IODataElement</a></div>
+    <div><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.IODataCommon.html">IODataCommon</a></div>
     <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroup.html">CustomerGroup</a>&gt;</div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.ODataElement.html#Hexalith_Infrastructure_Dynamics365Finance_Models_ODataElement_Etag">ODataElement.Etag</a>
+      <a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.ODataElement.html#Hexalith_Infrastructure_Dynamics365Finance_Models_ODataElement_DataAreaId">ODataElement.DataAreaId</a>
     </div>
     <div>
-      <a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.ODataElement.html#Hexalith_Infrastructure_Dynamics365Finance_Models_ODataElement_DataAreaId">ODataElement.DataAreaId</a>
+      <a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.ODataCommon.html#Hexalith_Infrastructure_Dynamics365Finance_Models_ODataCommon_Etag">ODataCommon.Etag</a>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
@@ -126,7 +129,7 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
   <h6><strong>Assembly</strong>: Hexalith.Infrastructure.Dynamics365Finance.dll</h6>
   <h5 id="Hexalith_Infrastructure_Dynamics365Finance_Services_CustomerGroups_CustomerGroup_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class CustomerGroup : ODataElement, IEquatable&lt;ODataElement&gt;, IODataElement, IEquatable&lt;CustomerGroup&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public class CustomerGroup : ODataElement, IEquatable&lt;ODataCommon&gt;, IEquatable&lt;ODataElement&gt;, IODataElement, IODataCommon, IEquatable&lt;CustomerGroup&gt;</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -570,7 +573,13 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
       <span class="xref">System.IEquatable&lt;T&gt;</span>
   </div>
   <div>
+      <span class="xref">System.IEquatable&lt;T&gt;</span>
+  </div>
+  <div>
       <a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.IODataElement.html">IODataElement</a>
+  </div>
+  <div>
+      <a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.IODataCommon.html">IODataCommon</a>
   </div>
   <div>
       <span class="xref">System.IEquatable&lt;T&gt;</span>

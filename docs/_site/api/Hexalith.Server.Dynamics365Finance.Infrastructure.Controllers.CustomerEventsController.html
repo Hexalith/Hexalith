@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ExternalSystemsIntegrationCommandsController
+    <title>Class CustomerEventsController
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ExternalSystemsIntegrationCommandsController
+    <meta name="title" content="Class CustomerEventsController
    ">
     <meta name="generator" content="docfx 2.59.4.0">
     
@@ -68,13 +68,13 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController">
+            <article class="content wrap" id="_content" data-uid="Hexalith.Server.Dynamics365Finance.Infrastructure.Controllers.CustomerEventsController">
   
   
-  <h1 id="Hexalith_Infrastructure_WebApis_ExternalSystemsCommands_Controllers_ExternalSystemsIntegrationCommandsController" data-uid="Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController" class="text-break">Class ExternalSystemsIntegrationCommandsController
+  <h1 id="Hexalith_Server_Dynamics365Finance_Infrastructure_Controllers_CustomerEventsController" data-uid="Hexalith.Server.Dynamics365Finance.Infrastructure.Controllers.CustomerEventsController" class="text-break">Class CustomerEventsController
   </h1>
-  <div class="markdown level0 summary"><p>Class ExternalSystemsPubSubController.
-Implements the <see cref="!:CommandIntegrationController"></see>.</p>
+  <div class="markdown level0 summary"><p>Class CustomerEventsController.
+Implements the <a class="xref" href="Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerIntegrationEventsController.html">CustomerIntegrationEventsController</a>.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -82,13 +82,17 @@ Implements the <see cref="!:CommandIntegrationController"></see>.</p>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase</span></div>
     <div class="level2"><a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.html">ReceiveMessageController</a></div>
-    <div class="level3"><a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.CommandSubmissionController.html">CommandSubmissionController</a></div>
-    <div class="level4"><span class="xref">ExternalSystemsIntegrationCommandsController</span></div>
+    <div class="level3"><a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.EventIntegrationController.html">EventIntegrationController</a></div>
+    <div class="level4"><a class="xref" href="Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerIntegrationEventsController.html">CustomerIntegrationEventsController</a></div>
+    <div class="level5"><span class="xref">CustomerEventsController</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.CommandSubmissionController.html#Hexalith_Infrastructure_WebApis_Controllers_CommandSubmissionController_HandleCommandAsync_Hexalith_Application_States_CommandState_System_String_CancellationToken_">CommandSubmissionController.HandleCommandAsync(CommandState, String, CancellationToken)</a>
+      <a class="xref" href="Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_PartiesEvents_Controllers_CustomerIntegrationEventsController_HandleCustomerEventsAsync_Hexalith_Application_States_EventState_">CustomerIntegrationEventsController.HandleCustomerEventsAsync(EventState)</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.EventIntegrationController.html#Hexalith_Infrastructure_WebApis_Controllers_EventIntegrationController_HandleEventAsync_Hexalith_Application_States_EventState_System_String_CancellationToken_">EventIntegrationController.HandleEventAsync(EventState, String, CancellationToken)</a>
     </div>
     <div>
       <a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.html#Hexalith_Infrastructure_WebApis_Controllers_ReceiveMessageController_Logger">ReceiveMessageController.Logger</a>
@@ -640,30 +644,30 @@ Implements the <see cref="!:CommandIntegrationController"></see>.</p>
       <span class="xref">System.Object.ToString()</span>
     </div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.html">Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers</a></h6>
-  <h6><strong>Assembly</strong>: Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.dll</h6>
-  <h5 id="Hexalith_Infrastructure_WebApis_ExternalSystemsCommands_Controllers_ExternalSystemsIntegrationCommandsController_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Hexalith.Server.Dynamics365Finance.Infrastructure.Controllers.html">Hexalith.Server.Dynamics365Finance.Infrastructure.Controllers</a></h6>
+  <h6><strong>Assembly</strong>: Hexalith.Server.Dynamics365Finance.dll</h6>
+  <h5 id="Hexalith_Server_Dynamics365Finance_Infrastructure_Controllers_CustomerEventsController_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ApiController]
-public class ExternalSystemsIntegrationCommandsController : CommandSubmissionController</code></pre>
+public class CustomerEventsController : CustomerIntegrationEventsController</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_ExternalSystemsCommands_Controllers_ExternalSystemsIntegrationCommandsController__ctor_Hexalith_Infrastructure_DaprRuntime_Handlers_ConventionNamingCommandProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Logging_ILogger_Hexalith_Infrastructure_WebApis_ExternalSystemsCommands_Controllers_ExternalSystemsIntegrationCommandsController__.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.%23ctor(Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor%2CMicrosoft.Extensions.Hosting.IHostEnvironment%2CMicrosoft.Extensions.Logging.ILogger%7BHexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Server_Dynamics365Finance_Infrastructure_Controllers_CustomerEventsController__ctor_Hexalith_Application_Events_IIntegrationEventProcessor_Hexalith_Application_Projection_IProjectionUpdateProcessor_IHostEnvironment_ILogger_Hexalith_Server_Dynamics365Finance_Infrastructure_Controllers_CustomerEventsController__.md&amp;value=---%0Auid%3A%20Hexalith.Server.Dynamics365Finance.Infrastructure.Controllers.CustomerEventsController.%23ctor(Hexalith.Application.Events.IIntegrationEventProcessor%2CHexalith.Application.Projection.IProjectionUpdateProcessor%2CIHostEnvironment%2CILogger%7BHexalith.Server.Dynamics365Finance.Infrastructure.Controllers.CustomerEventsController%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis.ExternalSystemsCommands/Controllers/ExternalSystemsIntegrationCommandsController.cs/#L44">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Servers/Hexalith.Server.Dynamics365Finance/Infrastructure/Controllers/CustomerEventsController.cs/#L30">View Source</a>
   </span>
-  <a id="Hexalith_Infrastructure_WebApis_ExternalSystemsCommands_Controllers_ExternalSystemsIntegrationCommandsController__ctor_" data-uid="Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.#ctor*"></a>
-  <h4 id="Hexalith_Infrastructure_WebApis_ExternalSystemsCommands_Controllers_ExternalSystemsIntegrationCommandsController__ctor_Hexalith_Infrastructure_DaprRuntime_Handlers_ConventionNamingCommandProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Logging_ILogger_Hexalith_Infrastructure_WebApis_ExternalSystemsCommands_Controllers_ExternalSystemsIntegrationCommandsController__" data-uid="Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.#ctor(Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController})">ExternalSystemsIntegrationCommandsController(ConventionNamingCommandProcessor, IHostEnvironment, ILogger&lt;ExternalSystemsIntegrationCommandsController&gt;)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.html">ExternalSystemsIntegrationCommandsController</a> class.</p>
+  <a id="Hexalith_Server_Dynamics365Finance_Infrastructure_Controllers_CustomerEventsController__ctor_" data-uid="Hexalith.Server.Dynamics365Finance.Infrastructure.Controllers.CustomerEventsController.#ctor*"></a>
+  <h4 id="Hexalith_Server_Dynamics365Finance_Infrastructure_Controllers_CustomerEventsController__ctor_Hexalith_Application_Events_IIntegrationEventProcessor_Hexalith_Application_Projection_IProjectionUpdateProcessor_IHostEnvironment_ILogger_Hexalith_Server_Dynamics365Finance_Infrastructure_Controllers_CustomerEventsController__" data-uid="Hexalith.Server.Dynamics365Finance.Infrastructure.Controllers.CustomerEventsController.#ctor(Hexalith.Application.Events.IIntegrationEventProcessor,Hexalith.Application.Projection.IProjectionUpdateProcessor,IHostEnvironment,ILogger{Hexalith.Server.Dynamics365Finance.Infrastructure.Controllers.CustomerEventsController})">CustomerEventsController(IIntegrationEventProcessor, IProjectionUpdateProcessor, IHostEnvironment, ILogger&lt;CustomerEventsController&gt;)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Server.Dynamics365Finance.Infrastructure.Controllers.CustomerEventsController.html">CustomerEventsController</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ExternalSystemsIntegrationCommandsController(ConventionNamingCommandProcessor commandProcessor, IHostEnvironment hostEnvironment, ILogger&lt;ExternalSystemsIntegrationCommandsController&gt; logger)</code></pre>
+    <pre><code class="lang-csharp hljs">public CustomerEventsController(IIntegrationEventProcessor eventProcessor, IProjectionUpdateProcessor projectionProcessor, IHostEnvironment hostEnvironment, ILogger&lt;CustomerEventsController&gt; logger)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -676,78 +680,27 @@ public class ExternalSystemsIntegrationCommandsController : CommandSubmissionCon
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor.html">ConventionNamingCommandProcessor</a></td>
-        <td><span class="parametername">commandProcessor</span></td>
-        <td><p>The command processor.</p>
+        <td><a class="xref" href="Hexalith.Application.Events.IIntegrationEventProcessor.html">IIntegrationEventProcessor</a></td>
+        <td><span class="parametername">eventProcessor</span></td>
+        <td><p>The event processor.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Microsoft.Extensions.Hosting.IHostEnvironment</span></td>
+        <td><a class="xref" href="Hexalith.Application.Projection.IProjectionUpdateProcessor.html">IProjectionUpdateProcessor</a></td>
+        <td><span class="parametername">projectionProcessor</span></td>
+        <td><p>The projection processor.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">IHostEnvironment</span></td>
         <td><span class="parametername">hostEnvironment</span></td>
         <td><p>The host environment.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Microsoft.Extensions.Logging.ILogger</span>&lt;<a class="xref" href="Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.html">ExternalSystemsIntegrationCommandsController</a>&gt;</td>
+        <td><span class="xref">ILogger</span>&lt;<a class="xref" href="Hexalith.Server.Dynamics365Finance.Infrastructure.Controllers.CustomerEventsController.html">CustomerEventsController</a>&gt;</td>
         <td><span class="parametername">logger</span></td>
         <td><p>The logger.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_ExternalSystemsCommands_Controllers_ExternalSystemsIntegrationCommandsController_HandleExternalSystemsCommandsAsync_Hexalith_Application_States_CommandState_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.HandleExternalSystemsCommandsAsync(Hexalith.Application.States.CommandState)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis.ExternalSystemsCommands/Controllers/ExternalSystemsIntegrationCommandsController.cs/#L57">View Source</a>
-  </span>
-  <a id="Hexalith_Infrastructure_WebApis_ExternalSystemsCommands_Controllers_ExternalSystemsIntegrationCommandsController_HandleExternalSystemsCommandsAsync_" data-uid="Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.HandleExternalSystemsCommandsAsync*"></a>
-  <h4 id="Hexalith_Infrastructure_WebApis_ExternalSystemsCommands_Controllers_ExternalSystemsIntegrationCommandsController_HandleExternalSystemsCommandsAsync_Hexalith_Application_States_CommandState_" data-uid="Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController.HandleExternalSystemsCommandsAsync(Hexalith.Application.States.CommandState)">HandleExternalSystemsCommandsAsync(CommandState)</h4>
-  <div class="markdown level1 summary"><p>Handle external systems commands as an asynchronous operation.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ExternalSystemReferenceCommandsBusTopic]
-[TopicMetadata(&quot;requireSessions&quot;, &quot;true&quot;)]
-[TopicMetadata(&quot;sessionIdleTimeoutInSec &quot;, &quot;2&quot;)]
-[TopicMetadata(&quot;maxConcurrentSessions&quot;, &quot;8&quot;)]
-[HttpPost(&quot;/handle-external-system-reference-commands&quot;)]
-public async Task&lt;ActionResult&gt; HandleExternalSystemsCommandsAsync(CommandState commandState)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Hexalith.Application.States.CommandState.html">CommandState</a></td>
-        <td><span class="parametername">commandState</span></td>
-        <td><p>State of the command.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">Microsoft.AspNetCore.Mvc.ActionResult</span>&gt;</td>
-        <td><p>A Task&lt;ActionResult&gt; representing the asynchronous operation.</p>
 </td>
       </tr>
     </tbody>
@@ -759,6 +712,10 @@ public async Task&lt;ActionResult&gt; HandleExternalSystemsCommandsAsync(Command
   <div>
       <a class="xref" href="Hexalith.Extensions.Helpers.CollectionHelper.html#Hexalith_Extensions_Helpers_CollectionHelper_IntoEnumerable__1___0_">CollectionHelper.IntoEnumerable&lt;T&gt;(T)</a>
   </div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><a class="xref" href="Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerIntegrationEventsController.html">CustomerIntegrationEventsController</a></div>
+  </div>
 </article>
           </div>
           
@@ -767,10 +724,10 @@ public async Task&lt;ActionResult&gt; HandleExternalSystemsCommandsAsync(Command
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_ExternalSystemsCommands_Controllers_ExternalSystemsIntegrationCommandsController.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers.ExternalSystemsIntegrationCommandsController%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Server_Dynamics365Finance_Infrastructure_Controllers_CustomerEventsController.md&amp;value=---%0Auid%3A%20Hexalith.Server.Dynamics365Finance.Infrastructure.Controllers.CustomerEventsController%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis.ExternalSystemsCommands/Controllers/ExternalSystemsIntegrationCommandsController.cs/#L35" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Servers/Hexalith.Server.Dynamics365Finance/Infrastructure/Controllers/CustomerEventsController.cs/#L20" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

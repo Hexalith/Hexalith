@@ -22,6 +22,7 @@ using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents;
+using Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Entities;
 using Hexalith.Infrastructure.Dynamics365Finance.TestMocks;
 using Hexalith.TestMocks;
 
@@ -41,7 +42,10 @@ public class CustomerHandlersTest
         IDynamics365FinanceClient<CustomerBase> customerBaseService = new Dynamics365FinanceClientBuilder<CustomerBase>()
           .WithValueFromConfiguration<CustomerHandlersTest>()
           .Build(client);
-        IDynamics365FinanceClient<CustomerExternalSystemCode> externalCustomer = new Dynamics365FinanceClientBuilder<CustomerExternalSystemCode>()
+        IDynamics365FinanceClient<CustomerExternalSystemCode> externalCustomerService = new Dynamics365FinanceClientBuilder<CustomerExternalSystemCode>()
+          .WithValueFromConfiguration<CustomerHandlersTest>()
+          .Build(client);
+        IDynamics365FinanceClient<RetailStore> storeService = new Dynamics365FinanceClientBuilder<RetailStore>()
           .WithValueFromConfiguration<CustomerHandlersTest>()
           .Build(client);
         IExternalReferenceMapperService mapper = Mock.Of<IExternalReferenceMapperService>();
@@ -52,13 +56,14 @@ public class CustomerHandlersTest
         CustomerRegisteredHandler handler = new(
             customerBaseService,
             customerV3Service,
-            externalCustomer,
+            externalCustomerService,
+            storeService,
             options,
             logger);
 
         CustomerRegistered registered = GetCustomerRegisteredTestEvent();
         IEnumerable<Application.Commands.BaseCommand> commands = await handler.ApplyAsync(registered, CancellationToken.None);
-        IEnumerable<CustomerExternalSystemCode> externalCodes = await externalCustomer.GetAsync(
+        IEnumerable<CustomerExternalSystemCode> externalCodes = await externalCustomerService.GetAsync(
             new CustomerExternalCodeFilter(registered.CompanyId, registered.OriginId, registered.Id),
             CancellationToken.None);
         _ = commands.Should().HaveCount(1);

@@ -126,7 +126,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[LoggerMessage(EventId = 0)]
+    <pre><code class="lang-csharp hljs">[LoggerMessage(EventId = 0, EventName = &quot;Application Problem&quot;, Message = &quot;{Title} : {Message}&quot;)]
 public static void LogProblemDetails(this ILogger logger, LogLevel level, string title, string message)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>

@@ -84,6 +84,7 @@ Implements the <a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers
     <div class="level2"><a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.ReceiveMessageController.html">ReceiveMessageController</a></div>
     <div class="level3"><a class="xref" href="Hexalith.Infrastructure.WebApis.Controllers.EventIntegrationController.html">EventIntegrationController</a></div>
     <div class="level4"><span class="xref">ExternalSystemsIntegrationEventsController</span></div>
+      <div class="level5"><a class="xref" href="Hexalith.Server.Dynamics365Finance.Infrastructure.Controllers.ExternalSystemReferenceController.html">ExternalSystemReferenceController</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -719,6 +720,8 @@ public abstract class ExternalSystemsIntegrationEventsController : EventIntegrat
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ExternalSystemReferenceEventsBusTopic]
 [TopicMetadata(&quot;requireSessions&quot;, &quot;true&quot;)]
+[TopicMetadata(&quot;sessionIdleTimeoutInSec &quot;, &quot;2&quot;)]
+[TopicMetadata(&quot;maxConcurrentSessions&quot;, &quot;8&quot;)]
 [HttpPost(&quot;/handle-external-system-reference-events&quot;)]
 public async Task&lt;ActionResult&gt; HandleExternalSystemsEventsAsync(EventState eventState)</code></pre>
   </div>
