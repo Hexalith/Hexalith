@@ -12,6 +12,7 @@
 		<AzureResourceManagerLogicVersion>1.1.0</AzureResourceManagerLogicVersion>
 		<AzureSecurityKeyVaultSecretsVersion>4.5.0</AzureSecurityKeyVaultSecretsVersion>
 		<CoconaVersion>2.2.0</CoconaVersion>
+		<CompareNETObjectsVersion>4.83.0</CompareNETObjectsVersion>
 		<CoverletCollectorVersion>6.0.0</CoverletCollectorVersion>
 		<DocFxConsoleVersion>2.59.4</DocFxConsoleVersion>
 		<FluentAssertionsVersion>6.12.0</FluentAssertionsVersion>

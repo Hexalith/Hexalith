@@ -20,6 +20,7 @@ using System.Diagnostics.CodeAnalysis;
 
 using Hexalith.Application.Parties.Helpers;
 using Hexalith.Application.Parties.Services;
+using Hexalith.Domain.Helpers;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.DaprRuntime.Parties.Configurations;
 using Hexalith.Infrastructure.DaprRuntime.Parties.Services;

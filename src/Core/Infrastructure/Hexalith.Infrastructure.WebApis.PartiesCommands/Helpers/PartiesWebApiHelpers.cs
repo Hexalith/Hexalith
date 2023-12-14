@@ -21,6 +21,7 @@ using System.Diagnostics.CodeAnalysis;
 using Dapr.Actors.Client;
 
 using Hexalith.Application.Parties.Helpers;
+using Hexalith.Domain.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers;
 
