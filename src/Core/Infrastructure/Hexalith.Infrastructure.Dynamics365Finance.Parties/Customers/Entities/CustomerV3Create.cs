@@ -4,7 +4,7 @@
 // Created          : 01-13-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 12-12-2023
+// Last Modified On : 12-14-2023
 // ***********************************************************************
 // <copyright file="CustomerV3Create.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -40,6 +40,13 @@ public class CustomerV3Create
     /// <value>The address country region identifier.</value>
     [DataMember]
     public string? AddressCountryRegionId { get; set; }
+
+    /// <summary>
+    /// Gets or sets the address country region iso code.
+    /// </summary>
+    /// <value>The address country region iso code.</value>
+    [DataMember]
+    public string? AddressCountryRegionISOCode { get; set; }
 
     /// <summary>
     /// Gets or sets the address description.
@@ -90,6 +97,13 @@ public class CustomerV3Create
     [DataMember]
     [JsonPropertyName("dataAreaId")]
     public string? DataAreaId { get; set; }
+
+    /// <summary>
+    /// Gets or sets the name alias.
+    /// </summary>
+    /// <value>The name alias.</value>
+    [DataMember]
+    public string? NameAlias { get; set; }
 
     /// <summary>
     /// Gets or sets the name of the organization.
@@ -155,11 +169,81 @@ public class CustomerV3Create
     public string? PersonPersonalTitle { get; set; }
 
     /// <summary>
+    /// Gets or sets the address city.
+    /// </summary>
+    /// <value>The address city.</value>
+    [DataMember]
+    public string? PrimaryAddressCity { get; set; }
+
+    /// <summary>
+    /// Gets or sets the address country region identifier.
+    /// </summary>
+    /// <value>The address country region identifier.</value>
+    [DataMember]
+    public string? PrimaryAddressCountryRegionId { get; set; }
+
+    /// <summary>
+    /// Gets or sets the primary address country region iso code.
+    /// </summary>
+    /// <value>The primary address country region iso code.</value>
+    [DataMember]
+    public string? PrimaryAddressCountryRegionISOCode { get; set; }
+
+    /// <summary>
+    /// Gets or sets the primary address county.
+    /// </summary>
+    /// <value>The primary address county.</value>
+    [DataMember]
+    public string? PrimaryAddressCounty { get; set; }
+
+    /// <summary>
+    /// Gets or sets the address description.
+    /// </summary>
+    /// <value>The address description.</value>
+    [DataMember]
+    public string? PrimaryAddressDescription { get; set; }
+
+    /// <summary>
+    /// Gets or sets the state of the primary address.
+    /// </summary>
+    /// <value>The state of the primary address.</value>
+    [DataMember]
+    public string? PrimaryAddressState { get; set; }
+
+    /// <summary>
+    /// Gets or sets the primary address street.
+    /// </summary>
+    /// <value>The primary address street.</value>
+    [DataMember]
+    public string? PrimaryAddressStreet { get; set; }
+
+    /// <summary>
+    /// Gets or sets the address street number.
+    /// </summary>
+    /// <value>The address street number.</value>
+    [DataMember]
+    public string? PrimaryAddressStreetNumber { get; set; }
+
+    /// <summary>
+    /// Gets or sets the address zip code.
+    /// </summary>
+    /// <value>The address zip code.</value>
+    [DataMember]
+    public string? PrimaryAddressZipCode { get; set; }
+
+    /// <summary>
     /// Gets or sets the primary contact email.
     /// </summary>
     /// <value>The primary contact email.</value>
     [DataMember]
     public string? PrimaryContactEmail { get; set; }
+
+    /// <summary>
+    /// Gets or sets the primary contact phone.
+    /// </summary>
+    /// <value>The primary contact phone.</value>
+    [DataMember]
+    public string? PrimaryContactPhone { get; set; }
 
     /// <summary>
     /// Gets or sets the primary contact phone extension.

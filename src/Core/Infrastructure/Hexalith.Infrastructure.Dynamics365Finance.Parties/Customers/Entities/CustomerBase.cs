@@ -18,6 +18,7 @@ namespace Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities;
 
 using System.Runtime.Serialization;
 
+using Hexalith.Extensions.Common;
 using Hexalith.Infrastructure.Dynamics365Finance.Models;
 
 /// <summary>
@@ -38,10 +39,10 @@ public record CustomerBase
     string DataAreaId,
     string? CustomerAccount,
     string? Etag,
-    string? Name,
+    string? NameAlias,
     string? PersonPersonalTitle = null,
     int? PersonBirthDay = null,
-    int? PersonBirthMonth = null,
+    Month? PersonBirthMonth = null,
     int? PersonBirthYear = null)
 
 : ODataElement(Etag, DataAreaId), IODataElement

@@ -20,6 +20,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using Hexalith.Domain.Events;
+using Hexalith.Extensions.Common;
 using Hexalith.Infrastructure.Dynamics365Finance.Client;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters;
@@ -157,7 +158,7 @@ public class Dynamics365FinanceCustomerService : IDynamics365FinanceCustomerServ
                     registered.Name,
                     registered.Contact?.Person?.Title,
                     birthDate?.Day,
-                    birthDate?.Month,
+                    (Month?)birthDate?.Month,
                     birthDate?.Year),
                 cancellationToken).ConfigureAwait(false);
             return customerAccount;
@@ -249,7 +250,7 @@ public class Dynamics365FinanceCustomerService : IDynamics365FinanceCustomerServ
     private async Task<string?> FindAsync(string companyId, string tempName, CancellationToken cancellationToken)
     {
         IEnumerable<CustomerBase> result = await _customerBaseService.GetAsync(
-                    new CustomerByNameFilter(companyId, tempName),
+                    new CustomerByNameAliasFilter(companyId, tempName),
                     cancellationToken).ConfigureAwait(false);
         return result.FirstOrDefault()?.CustomerAccount;
     }

@@ -14108,6 +14108,57 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Exceptions.InvalidAggregateEventException.IsInitializerEvent
   nameWithType: InvalidAggregateEventException.IsInitializerEvent
+- uid: Hexalith.Domain.Helpers
+  name: Hexalith.Domain.Helpers
+  href: api/Hexalith.Domain.Helpers.html
+  commentId: N:Hexalith.Domain.Helpers
+  fullName: Hexalith.Domain.Helpers
+  nameWithType: Hexalith.Domain.Helpers
+- uid: Hexalith.Domain.Helpers.CustomerEventsConverter
+  name: CustomerEventsConverter
+  href: api/Hexalith.Domain.Helpers.CustomerEventsConverter.html
+  commentId: T:Hexalith.Domain.Helpers.CustomerEventsConverter
+  fullName: Hexalith.Domain.Helpers.CustomerEventsConverter
+  nameWithType: CustomerEventsConverter
+- uid: Hexalith.Domain.Helpers.CustomerEventsConverter.ToCustomer(Hexalith.Domain.Events.CustomerInformationChanged,System.Boolean)
+  name: ToCustomer(CustomerInformationChanged, Boolean)
+  href: api/Hexalith.Domain.Helpers.CustomerEventsConverter.html#Hexalith_Domain_Helpers_CustomerEventsConverter_ToCustomer_Hexalith_Domain_Events_CustomerInformationChanged_System_Boolean_
+  commentId: M:Hexalith.Domain.Helpers.CustomerEventsConverter.ToCustomer(Hexalith.Domain.Events.CustomerInformationChanged,System.Boolean)
+  fullName: Hexalith.Domain.Helpers.CustomerEventsConverter.ToCustomer(Hexalith.Domain.Events.CustomerInformationChanged, System.Boolean)
+  nameWithType: CustomerEventsConverter.ToCustomer(CustomerInformationChanged, Boolean)
+- uid: Hexalith.Domain.Helpers.CustomerEventsConverter.ToCustomer*
+  name: ToCustomer
+  href: api/Hexalith.Domain.Helpers.CustomerEventsConverter.html#Hexalith_Domain_Helpers_CustomerEventsConverter_ToCustomer_
+  commentId: Overload:Hexalith.Domain.Helpers.CustomerEventsConverter.ToCustomer
+  isSpec: "True"
+  fullName: Hexalith.Domain.Helpers.CustomerEventsConverter.ToCustomer
+  nameWithType: CustomerEventsConverter.ToCustomer
+- uid: Hexalith.Domain.Helpers.CustomerEventsConverter.ToCustomerInformationChanged(Hexalith.Domain.Aggregates.Customer)
+  name: ToCustomerInformationChanged(Customer)
+  href: api/Hexalith.Domain.Helpers.CustomerEventsConverter.html#Hexalith_Domain_Helpers_CustomerEventsConverter_ToCustomerInformationChanged_Hexalith_Domain_Aggregates_Customer_
+  commentId: M:Hexalith.Domain.Helpers.CustomerEventsConverter.ToCustomerInformationChanged(Hexalith.Domain.Aggregates.Customer)
+  fullName: Hexalith.Domain.Helpers.CustomerEventsConverter.ToCustomerInformationChanged(Hexalith.Domain.Aggregates.Customer)
+  nameWithType: CustomerEventsConverter.ToCustomerInformationChanged(Customer)
+- uid: Hexalith.Domain.Helpers.CustomerEventsConverter.ToCustomerInformationChanged*
+  name: ToCustomerInformationChanged
+  href: api/Hexalith.Domain.Helpers.CustomerEventsConverter.html#Hexalith_Domain_Helpers_CustomerEventsConverter_ToCustomerInformationChanged_
+  commentId: Overload:Hexalith.Domain.Helpers.CustomerEventsConverter.ToCustomerInformationChanged
+  isSpec: "True"
+  fullName: Hexalith.Domain.Helpers.CustomerEventsConverter.ToCustomerInformationChanged
+  nameWithType: CustomerEventsConverter.ToCustomerInformationChanged
+- uid: Hexalith.Domain.Helpers.CustomerEventsConverter.ToCustomerRegistered(Hexalith.Domain.Aggregates.Customer)
+  name: ToCustomerRegistered(Customer)
+  href: api/Hexalith.Domain.Helpers.CustomerEventsConverter.html#Hexalith_Domain_Helpers_CustomerEventsConverter_ToCustomerRegistered_Hexalith_Domain_Aggregates_Customer_
+  commentId: M:Hexalith.Domain.Helpers.CustomerEventsConverter.ToCustomerRegistered(Hexalith.Domain.Aggregates.Customer)
+  fullName: Hexalith.Domain.Helpers.CustomerEventsConverter.ToCustomerRegistered(Hexalith.Domain.Aggregates.Customer)
+  nameWithType: CustomerEventsConverter.ToCustomerRegistered(Customer)
+- uid: Hexalith.Domain.Helpers.CustomerEventsConverter.ToCustomerRegistered*
+  name: ToCustomerRegistered
+  href: api/Hexalith.Domain.Helpers.CustomerEventsConverter.html#Hexalith_Domain_Helpers_CustomerEventsConverter_ToCustomerRegistered_
+  commentId: Overload:Hexalith.Domain.Helpers.CustomerEventsConverter.ToCustomerRegistered
+  isSpec: "True"
+  fullName: Hexalith.Domain.Helpers.CustomerEventsConverter.ToCustomerRegistered
+  nameWithType: CustomerEventsConverter.ToCustomerRegistered
 - uid: Hexalith.Domain.Messages
   name: Hexalith.Domain.Messages
   href: api/Hexalith.Domain.Messages.html
@@ -15930,6 +15981,90 @@ references:
   isSpec: "True"
   fullName: Hexalith.Extensions.Common.IIdempotent.IdempotencyId
   nameWithType: IIdempotent.IdempotencyId
+- uid: Hexalith.Extensions.Common.Month
+  name: Month
+  href: api/Hexalith.Extensions.Common.Month.html
+  commentId: T:Hexalith.Extensions.Common.Month
+  fullName: Hexalith.Extensions.Common.Month
+  nameWithType: Month
+- uid: Hexalith.Extensions.Common.Month.April
+  name: April
+  href: api/Hexalith.Extensions.Common.Month.html#Hexalith_Extensions_Common_Month_April
+  commentId: F:Hexalith.Extensions.Common.Month.April
+  fullName: Hexalith.Extensions.Common.Month.April
+  nameWithType: Month.April
+- uid: Hexalith.Extensions.Common.Month.August
+  name: August
+  href: api/Hexalith.Extensions.Common.Month.html#Hexalith_Extensions_Common_Month_August
+  commentId: F:Hexalith.Extensions.Common.Month.August
+  fullName: Hexalith.Extensions.Common.Month.August
+  nameWithType: Month.August
+- uid: Hexalith.Extensions.Common.Month.December
+  name: December
+  href: api/Hexalith.Extensions.Common.Month.html#Hexalith_Extensions_Common_Month_December
+  commentId: F:Hexalith.Extensions.Common.Month.December
+  fullName: Hexalith.Extensions.Common.Month.December
+  nameWithType: Month.December
+- uid: Hexalith.Extensions.Common.Month.February
+  name: February
+  href: api/Hexalith.Extensions.Common.Month.html#Hexalith_Extensions_Common_Month_February
+  commentId: F:Hexalith.Extensions.Common.Month.February
+  fullName: Hexalith.Extensions.Common.Month.February
+  nameWithType: Month.February
+- uid: Hexalith.Extensions.Common.Month.January
+  name: January
+  href: api/Hexalith.Extensions.Common.Month.html#Hexalith_Extensions_Common_Month_January
+  commentId: F:Hexalith.Extensions.Common.Month.January
+  fullName: Hexalith.Extensions.Common.Month.January
+  nameWithType: Month.January
+- uid: Hexalith.Extensions.Common.Month.July
+  name: July
+  href: api/Hexalith.Extensions.Common.Month.html#Hexalith_Extensions_Common_Month_July
+  commentId: F:Hexalith.Extensions.Common.Month.July
+  fullName: Hexalith.Extensions.Common.Month.July
+  nameWithType: Month.July
+- uid: Hexalith.Extensions.Common.Month.June
+  name: June
+  href: api/Hexalith.Extensions.Common.Month.html#Hexalith_Extensions_Common_Month_June
+  commentId: F:Hexalith.Extensions.Common.Month.June
+  fullName: Hexalith.Extensions.Common.Month.June
+  nameWithType: Month.June
+- uid: Hexalith.Extensions.Common.Month.March
+  name: March
+  href: api/Hexalith.Extensions.Common.Month.html#Hexalith_Extensions_Common_Month_March
+  commentId: F:Hexalith.Extensions.Common.Month.March
+  fullName: Hexalith.Extensions.Common.Month.March
+  nameWithType: Month.March
+- uid: Hexalith.Extensions.Common.Month.May
+  name: May
+  href: api/Hexalith.Extensions.Common.Month.html#Hexalith_Extensions_Common_Month_May
+  commentId: F:Hexalith.Extensions.Common.Month.May
+  fullName: Hexalith.Extensions.Common.Month.May
+  nameWithType: Month.May
+- uid: Hexalith.Extensions.Common.Month.November
+  name: November
+  href: api/Hexalith.Extensions.Common.Month.html#Hexalith_Extensions_Common_Month_November
+  commentId: F:Hexalith.Extensions.Common.Month.November
+  fullName: Hexalith.Extensions.Common.Month.November
+  nameWithType: Month.November
+- uid: Hexalith.Extensions.Common.Month.October
+  name: October
+  href: api/Hexalith.Extensions.Common.Month.html#Hexalith_Extensions_Common_Month_October
+  commentId: F:Hexalith.Extensions.Common.Month.October
+  fullName: Hexalith.Extensions.Common.Month.October
+  nameWithType: Month.October
+- uid: Hexalith.Extensions.Common.Month.September
+  name: September
+  href: api/Hexalith.Extensions.Common.Month.html#Hexalith_Extensions_Common_Month_September
+  commentId: F:Hexalith.Extensions.Common.Month.September
+  fullName: Hexalith.Extensions.Common.Month.September
+  nameWithType: Month.September
+- uid: Hexalith.Extensions.Common.Month.Undefined
+  name: Undefined
+  href: api/Hexalith.Extensions.Common.Month.html#Hexalith_Extensions_Common_Month_Undefined
+  commentId: F:Hexalith.Extensions.Common.Month.Undefined
+  fullName: Hexalith.Extensions.Common.Month.Undefined
+  nameWithType: Month.Undefined
 - uid: Hexalith.Extensions.Common.ValueOrError`1
   name: ValueOrError<T>
   href: api/Hexalith.Extensions.Common.ValueOrError-1.html
@@ -16636,6 +16771,25 @@ references:
   isSpec: "True"
   fullName: Hexalith.Extensions.Reflections.IMappableType.TypeMapName
   nameWithType: IMappableType.TypeMapName
+- uid: Hexalith.Extensions.Reflections.ObjectDifferenceHelper
+  name: ObjectDifferenceHelper
+  href: api/Hexalith.Extensions.Reflections.ObjectDifferenceHelper.html
+  commentId: T:Hexalith.Extensions.Reflections.ObjectDifferenceHelper
+  fullName: Hexalith.Extensions.Reflections.ObjectDifferenceHelper
+  nameWithType: ObjectDifferenceHelper
+- uid: Hexalith.Extensions.Reflections.ObjectDifferenceHelper.GetDifferenceInformation(System.Object,System.Object)
+  name: GetDifferenceInformation(Object, Object)
+  href: api/Hexalith.Extensions.Reflections.ObjectDifferenceHelper.html#Hexalith_Extensions_Reflections_ObjectDifferenceHelper_GetDifferenceInformation_System_Object_System_Object_
+  commentId: M:Hexalith.Extensions.Reflections.ObjectDifferenceHelper.GetDifferenceInformation(System.Object,System.Object)
+  fullName: Hexalith.Extensions.Reflections.ObjectDifferenceHelper.GetDifferenceInformation(System.Object, System.Object)
+  nameWithType: ObjectDifferenceHelper.GetDifferenceInformation(Object, Object)
+- uid: Hexalith.Extensions.Reflections.ObjectDifferenceHelper.GetDifferenceInformation*
+  name: GetDifferenceInformation
+  href: api/Hexalith.Extensions.Reflections.ObjectDifferenceHelper.html#Hexalith_Extensions_Reflections_ObjectDifferenceHelper_GetDifferenceInformation_
+  commentId: Overload:Hexalith.Extensions.Reflections.ObjectDifferenceHelper.GetDifferenceInformation
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Reflections.ObjectDifferenceHelper.GetDifferenceInformation
+  nameWithType: ObjectDifferenceHelper.GetDifferenceInformation
 - uid: Hexalith.Extensions.Reflections.TypeMapper`1
   name: TypeMapper<TMapped>
   href: api/Hexalith.Extensions.Reflections.TypeMapper-1.html
@@ -21269,15 +21423,14 @@ references:
   fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient(Of TEntity).GetAsync(IDictionary(Of System.String, System.Object), CancellationToken)
   nameWithType: Dynamics365FinanceClient<TEntity>.GetAsync(IDictionary<String, Object>, CancellationToken)
   nameWithType.vb: Dynamics365FinanceClient(Of TEntity).GetAsync(IDictionary(Of String, Object), CancellationToken)
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetAsync(System.String,IDictionary{System.String,System.Object},CancellationToken)
-  name: GetAsync(String, IDictionary<String, Object>, CancellationToken)
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient-1.html#Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetAsync_System_String_IDictionary_System_String_System_Object__CancellationToken_
-  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetAsync(System.String,IDictionary{System.String,System.Object},CancellationToken)
-  name.vb: GetAsync(String, IDictionary(Of String, Object), CancellationToken)
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient<TEntity>.GetAsync(System.String, IDictionary<System.String, System.Object>, CancellationToken)
-  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient(Of TEntity).GetAsync(System.String, IDictionary(Of System.String, System.Object), CancellationToken)
-  nameWithType: Dynamics365FinanceClient<TEntity>.GetAsync(String, IDictionary<String, Object>, CancellationToken)
-  nameWithType.vb: Dynamics365FinanceClient(Of TEntity).GetAsync(String, IDictionary(Of String, Object), CancellationToken)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetAsync(Uri,CancellationToken)
+  name: GetAsync(Uri, CancellationToken)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient-1.html#Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetAsync_Uri_CancellationToken_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetAsync(Uri,CancellationToken)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient<TEntity>.GetAsync(Uri, CancellationToken)
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient(Of TEntity).GetAsync(Uri, CancellationToken)
+  nameWithType: Dynamics365FinanceClient<TEntity>.GetAsync(Uri, CancellationToken)
+  nameWithType.vb: Dynamics365FinanceClient(Of TEntity).GetAsync(Uri, CancellationToken)
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetAsync*
   name: GetAsync
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient-1.html#Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetAsync_
@@ -21287,6 +21440,42 @@ references:
   fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient(Of TEntity).GetAsync
   nameWithType: Dynamics365FinanceClient<TEntity>.GetAsync
   nameWithType.vb: Dynamics365FinanceClient(Of TEntity).GetAsync
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetCommonAsync(IDictionary{System.String,System.Object},CancellationToken)
+  name: GetCommonAsync(IDictionary<String, Object>, CancellationToken)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient-1.html#Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetCommonAsync_IDictionary_System_String_System_Object__CancellationToken_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetCommonAsync(IDictionary{System.String,System.Object},CancellationToken)
+  name.vb: GetCommonAsync(IDictionary(Of String, Object), CancellationToken)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient<TEntity>.GetCommonAsync(IDictionary<System.String, System.Object>, CancellationToken)
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient(Of TEntity).GetCommonAsync(IDictionary(Of System.String, System.Object), CancellationToken)
+  nameWithType: Dynamics365FinanceClient<TEntity>.GetCommonAsync(IDictionary<String, Object>, CancellationToken)
+  nameWithType.vb: Dynamics365FinanceClient(Of TEntity).GetCommonAsync(IDictionary(Of String, Object), CancellationToken)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetCommonAsync*
+  name: GetCommonAsync
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient-1.html#Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetCommonAsync_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetCommonAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient<TEntity>.GetCommonAsync
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient(Of TEntity).GetCommonAsync
+  nameWithType: Dynamics365FinanceClient<TEntity>.GetCommonAsync
+  nameWithType.vb: Dynamics365FinanceClient(Of TEntity).GetCommonAsync
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetPerCompanyAsync(System.String,IDictionary{System.String,System.Object},CancellationToken)
+  name: GetPerCompanyAsync(String, IDictionary<String, Object>, CancellationToken)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient-1.html#Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetPerCompanyAsync_System_String_IDictionary_System_String_System_Object__CancellationToken_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetPerCompanyAsync(System.String,IDictionary{System.String,System.Object},CancellationToken)
+  name.vb: GetPerCompanyAsync(String, IDictionary(Of String, Object), CancellationToken)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient<TEntity>.GetPerCompanyAsync(System.String, IDictionary<System.String, System.Object>, CancellationToken)
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient(Of TEntity).GetPerCompanyAsync(System.String, IDictionary(Of System.String, System.Object), CancellationToken)
+  nameWithType: Dynamics365FinanceClient<TEntity>.GetPerCompanyAsync(String, IDictionary<String, Object>, CancellationToken)
+  nameWithType.vb: Dynamics365FinanceClient(Of TEntity).GetPerCompanyAsync(String, IDictionary(Of String, Object), CancellationToken)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetPerCompanyAsync*
+  name: GetPerCompanyAsync
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient-1.html#Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetPerCompanyAsync_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetPerCompanyAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient<TEntity>.GetPerCompanyAsync
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient(Of TEntity).GetPerCompanyAsync
+  nameWithType: Dynamics365FinanceClient<TEntity>.GetPerCompanyAsync
+  nameWithType.vb: Dynamics365FinanceClient(Of TEntity).GetPerCompanyAsync
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetSingleAsync(Hexalith.Infrastructure.Dynamics365Finance.Models.ICommonFilter,CancellationToken)
   name: GetSingleAsync(ICommonFilter, CancellationToken)
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient-1.html#Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetSingleAsync_Hexalith_Infrastructure_Dynamics365Finance_Models_ICommonFilter_CancellationToken_
@@ -21860,6 +22049,15 @@ references:
   fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Client.GetRequestFailedException(Of T).GetRequestFailedException(System.String, System.Nullable(Of Exception))
   nameWithType: GetRequestFailedException<T>.GetRequestFailedException(String, Nullable<Exception>)
   nameWithType.vb: GetRequestFailedException(Of T).GetRequestFailedException(String, Nullable(Of Exception))
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Client.GetRequestFailedException`1.#ctor(System.String,Uri,System.String,System.String,System.Nullable{Exception})
+  name: GetRequestFailedException(String, Uri, String, String, Nullable<Exception>)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Client.GetRequestFailedException-1.html#Hexalith_Infrastructure_Dynamics365Finance_Client_GetRequestFailedException_1__ctor_System_String_Uri_System_String_System_String_System_Nullable_Exception__
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Client.GetRequestFailedException`1.#ctor(System.String,Uri,System.String,System.String,System.Nullable{Exception})
+  name.vb: GetRequestFailedException(String, Uri, String, String, Nullable(Of Exception))
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Client.GetRequestFailedException<T>.GetRequestFailedException(System.String, Uri, System.String, System.String, System.Nullable<Exception>)
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Client.GetRequestFailedException(Of T).GetRequestFailedException(System.String, Uri, System.String, System.String, System.Nullable(Of Exception))
+  nameWithType: GetRequestFailedException<T>.GetRequestFailedException(String, Uri, String, String, Nullable<Exception>)
+  nameWithType.vb: GetRequestFailedException(Of T).GetRequestFailedException(String, Uri, String, String, Nullable(Of Exception))
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Client.GetRequestFailedException`1.#ctor*
   name: GetRequestFailedException
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Client.GetRequestFailedException-1.html#Hexalith_Infrastructure_Dynamics365Finance_Client_GetRequestFailedException_1__ctor_
@@ -21937,6 +22135,23 @@ references:
   fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Client.GetRequestFailedException(Of T).ResponseContent
   nameWithType: GetRequestFailedException<T>.ResponseContent
   nameWithType.vb: GetRequestFailedException(Of T).ResponseContent
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Client.GetRequestFailedException`1.Url
+  name: Url
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Client.GetRequestFailedException-1.html#Hexalith_Infrastructure_Dynamics365Finance_Client_GetRequestFailedException_1_Url
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Client.GetRequestFailedException`1.Url
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Client.GetRequestFailedException<T>.Url
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Client.GetRequestFailedException(Of T).Url
+  nameWithType: GetRequestFailedException<T>.Url
+  nameWithType.vb: GetRequestFailedException(Of T).Url
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Client.GetRequestFailedException`1.Url*
+  name: Url
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Client.GetRequestFailedException-1.html#Hexalith_Infrastructure_Dynamics365Finance_Client_GetRequestFailedException_1_Url_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Client.GetRequestFailedException`1.Url
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Client.GetRequestFailedException<T>.Url
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Client.GetRequestFailedException(Of T).Url
+  nameWithType: GetRequestFailedException<T>.Url
+  nameWithType.vb: GetRequestFailedException(Of T).Url
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Client.GetSingleRequestFailedException`1
   name: GetSingleRequestFailedException<T>
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Client.GetSingleRequestFailedException-1.html
@@ -22192,15 +22407,6 @@ references:
   fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient(Of TODataCommon).GetAsync(IDictionary(Of System.String, System.Object), CancellationToken)
   nameWithType: IDynamics365FinanceClient<TODataCommon>.GetAsync(IDictionary<String, Object>, CancellationToken)
   nameWithType.vb: IDynamics365FinanceClient(Of TODataCommon).GetAsync(IDictionary(Of String, Object), CancellationToken)
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient`1.GetAsync(System.String,IDictionary{System.String,System.Object},CancellationToken)
-  name: GetAsync(String, IDictionary<String, Object>, CancellationToken)
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient-1.html#Hexalith_Infrastructure_Dynamics365Finance_Client_IDynamics365FinanceClient_1_GetAsync_System_String_IDictionary_System_String_System_Object__CancellationToken_
-  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient`1.GetAsync(System.String,IDictionary{System.String,System.Object},CancellationToken)
-  name.vb: GetAsync(String, IDictionary(Of String, Object), CancellationToken)
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient<TODataCommon>.GetAsync(System.String, IDictionary<System.String, System.Object>, CancellationToken)
-  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient(Of TODataCommon).GetAsync(System.String, IDictionary(Of System.String, System.Object), CancellationToken)
-  nameWithType: IDynamics365FinanceClient<TODataCommon>.GetAsync(String, IDictionary<String, Object>, CancellationToken)
-  nameWithType.vb: IDynamics365FinanceClient(Of TODataCommon).GetAsync(String, IDictionary(Of String, Object), CancellationToken)
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient`1.GetAsync*
   name: GetAsync
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient-1.html#Hexalith_Infrastructure_Dynamics365Finance_Client_IDynamics365FinanceClient_1_GetAsync_
@@ -22210,6 +22416,42 @@ references:
   fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient(Of TODataCommon).GetAsync
   nameWithType: IDynamics365FinanceClient<TODataCommon>.GetAsync
   nameWithType.vb: IDynamics365FinanceClient(Of TODataCommon).GetAsync
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient`1.GetCommonAsync(IDictionary{System.String,System.Object},CancellationToken)
+  name: GetCommonAsync(IDictionary<String, Object>, CancellationToken)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient-1.html#Hexalith_Infrastructure_Dynamics365Finance_Client_IDynamics365FinanceClient_1_GetCommonAsync_IDictionary_System_String_System_Object__CancellationToken_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient`1.GetCommonAsync(IDictionary{System.String,System.Object},CancellationToken)
+  name.vb: GetCommonAsync(IDictionary(Of String, Object), CancellationToken)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient<TODataCommon>.GetCommonAsync(IDictionary<System.String, System.Object>, CancellationToken)
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient(Of TODataCommon).GetCommonAsync(IDictionary(Of System.String, System.Object), CancellationToken)
+  nameWithType: IDynamics365FinanceClient<TODataCommon>.GetCommonAsync(IDictionary<String, Object>, CancellationToken)
+  nameWithType.vb: IDynamics365FinanceClient(Of TODataCommon).GetCommonAsync(IDictionary(Of String, Object), CancellationToken)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient`1.GetCommonAsync*
+  name: GetCommonAsync
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient-1.html#Hexalith_Infrastructure_Dynamics365Finance_Client_IDynamics365FinanceClient_1_GetCommonAsync_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient`1.GetCommonAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient<TODataCommon>.GetCommonAsync
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient(Of TODataCommon).GetCommonAsync
+  nameWithType: IDynamics365FinanceClient<TODataCommon>.GetCommonAsync
+  nameWithType.vb: IDynamics365FinanceClient(Of TODataCommon).GetCommonAsync
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient`1.GetPerCompanyAsync(System.String,IDictionary{System.String,System.Object},CancellationToken)
+  name: GetPerCompanyAsync(String, IDictionary<String, Object>, CancellationToken)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient-1.html#Hexalith_Infrastructure_Dynamics365Finance_Client_IDynamics365FinanceClient_1_GetPerCompanyAsync_System_String_IDictionary_System_String_System_Object__CancellationToken_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient`1.GetPerCompanyAsync(System.String,IDictionary{System.String,System.Object},CancellationToken)
+  name.vb: GetPerCompanyAsync(String, IDictionary(Of String, Object), CancellationToken)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient<TODataCommon>.GetPerCompanyAsync(System.String, IDictionary<System.String, System.Object>, CancellationToken)
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient(Of TODataCommon).GetPerCompanyAsync(System.String, IDictionary(Of System.String, System.Object), CancellationToken)
+  nameWithType: IDynamics365FinanceClient<TODataCommon>.GetPerCompanyAsync(String, IDictionary<String, Object>, CancellationToken)
+  nameWithType.vb: IDynamics365FinanceClient(Of TODataCommon).GetPerCompanyAsync(String, IDictionary(Of String, Object), CancellationToken)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient`1.GetPerCompanyAsync*
+  name: GetPerCompanyAsync
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient-1.html#Hexalith_Infrastructure_Dynamics365Finance_Client_IDynamics365FinanceClient_1_GetPerCompanyAsync_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient`1.GetPerCompanyAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient<TODataCommon>.GetPerCompanyAsync
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient(Of TODataCommon).GetPerCompanyAsync
+  nameWithType: IDynamics365FinanceClient<TODataCommon>.GetPerCompanyAsync
+  nameWithType.vb: IDynamics365FinanceClient(Of TODataCommon).GetPerCompanyAsync
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient`1.GetSingleAsync(Hexalith.Infrastructure.Dynamics365Finance.Models.ICommonFilter,CancellationToken)
   name: GetSingleAsync(ICommonFilter, CancellationToken)
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient-1.html#Hexalith_Infrastructure_Dynamics365Finance_Client_IDynamics365FinanceClient_1_GetSingleAsync_Hexalith_Infrastructure_Dynamics365Finance_Models_ICommonFilter_CancellationToken_
@@ -24224,19 +24466,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerBase.EntityName
   nameWithType: CustomerBase.EntityName
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerBase.Name
-  name: Name
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerBase.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerBase_Name
-  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerBase.Name
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerBase.Name
-  nameWithType: CustomerBase.Name
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerBase.Name*
-  name: Name
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerBase.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerBase_Name_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerBase.Name
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerBase.NameAlias
+  name: NameAlias
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerBase.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerBase_NameAlias
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerBase.NameAlias
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerBase.NameAlias
+  nameWithType: CustomerBase.NameAlias
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerBase.NameAlias*
+  name: NameAlias
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerBase.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerBase_NameAlias_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerBase.NameAlias
   isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerBase.Name
-  nameWithType: CustomerBase.Name
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerBase.NameAlias
+  nameWithType: CustomerBase.NameAlias
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerBase.PersonBirthDay
   name: PersonBirthDay
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerBase.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerBase_PersonBirthDay
@@ -24865,6 +25107,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3Create.DataAreaId
   nameWithType: CustomerV3Create.DataAreaId
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3Create.NameAlias
+  name: NameAlias
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3Create.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerV3Create_NameAlias
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3Create.NameAlias
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3Create.NameAlias
+  nameWithType: CustomerV3Create.NameAlias
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3Create.NameAlias*
+  name: NameAlias
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3Create.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerV3Create_NameAlias_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3Create.NameAlias
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3Create.NameAlias
+  nameWithType: CustomerV3Create.NameAlias
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3Create.OrganizationName
   name: OrganizationName
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3Create.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerV3Create_OrganizationName
@@ -25053,6 +25308,38 @@ references:
   commentId: N:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters
   nameWithType: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerByNameAliasFilter
+  name: CustomerByNameAliasFilter
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerByNameAliasFilter.html
+  commentId: T:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerByNameAliasFilter
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerByNameAliasFilter
+  nameWithType: CustomerByNameAliasFilter
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerByNameAliasFilter.#ctor(System.String,System.String)
+  name: CustomerByNameAliasFilter(String, String)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerByNameAliasFilter.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Filters_CustomerByNameAliasFilter__ctor_System_String_System_String_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerByNameAliasFilter.#ctor(System.String,System.String)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerByNameAliasFilter.CustomerByNameAliasFilter(System.String, System.String)
+  nameWithType: CustomerByNameAliasFilter.CustomerByNameAliasFilter(String, String)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerByNameAliasFilter.#ctor*
+  name: CustomerByNameAliasFilter
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerByNameAliasFilter.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Filters_CustomerByNameAliasFilter__ctor_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerByNameAliasFilter.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerByNameAliasFilter.CustomerByNameAliasFilter
+  nameWithType: CustomerByNameAliasFilter.CustomerByNameAliasFilter
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerByNameAliasFilter.NameAlias
+  name: NameAlias
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerByNameAliasFilter.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Filters_CustomerByNameAliasFilter_NameAlias
+  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerByNameAliasFilter.NameAlias
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerByNameAliasFilter.NameAlias
+  nameWithType: CustomerByNameAliasFilter.NameAlias
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerByNameAliasFilter.NameAlias*
+  name: NameAlias
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerByNameAliasFilter.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Filters_CustomerByNameAliasFilter_NameAlias_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerByNameAliasFilter.NameAlias
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerByNameAliasFilter.NameAlias
+  nameWithType: CustomerByNameAliasFilter.NameAlias
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerExternalCodeByAccountFilter
   name: CustomerExternalCodeByAccountFilter
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerExternalCodeByAccountFilter.html
@@ -25225,12 +25512,12 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamics365FinanceCustomer
   nameWithType: CustomerConverter.ToDynamics365FinanceCustomer
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamics365FinanceCustomerCreate(Hexalith.Domain.Events.CustomerRegistered,System.String)
-  name: ToDynamics365FinanceCustomerCreate(CustomerRegistered, String)
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToDynamics365FinanceCustomerCreate_Hexalith_Domain_Events_CustomerRegistered_System_String_
-  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamics365FinanceCustomerCreate(Hexalith.Domain.Events.CustomerRegistered,System.String)
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamics365FinanceCustomerCreate(Hexalith.Domain.Events.CustomerRegistered, System.String)
-  nameWithType: CustomerConverter.ToDynamics365FinanceCustomerCreate(CustomerRegistered, String)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamics365FinanceCustomerCreate(Hexalith.Domain.Events.CustomerRegistered,System.String,Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3)
+  name: ToDynamics365FinanceCustomerCreate(CustomerRegistered, String, CustomerV3)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToDynamics365FinanceCustomerCreate_Hexalith_Domain_Events_CustomerRegistered_System_String_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerV3_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamics365FinanceCustomerCreate(Hexalith.Domain.Events.CustomerRegistered,System.String,Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamics365FinanceCustomerCreate(Hexalith.Domain.Events.CustomerRegistered, System.String, Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3)
+  nameWithType: CustomerConverter.ToDynamics365FinanceCustomerCreate(CustomerRegistered, String, CustomerV3)
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.ToDynamics365FinanceCustomerCreate*
   name: ToDynamics365FinanceCustomerCreate
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers.CustomerConverter.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Helpers_CustomerConverter_ToDynamics365FinanceCustomerCreate_
@@ -25340,15 +25627,15 @@ references:
   commentId: T:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler
   nameWithType: CustomerRegisteredHandler
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler.#ctor(Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerBase},Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3},Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerExternalSystemCode},Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient{Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Entities.RetailStore},Microsoft.Extensions.Options.IOptions{Hexalith.Application.Organizations.Configurations.OrganizationSettings},Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler})
-  name: CustomerRegisteredHandler(IDynamics365FinanceClient<CustomerBase>, IDynamics365FinanceClient<CustomerV3>, IDynamics365FinanceClient<CustomerExternalSystemCode>, IDynamics365FinanceClient<RetailStore>, IOptions<OrganizationSettings>, ILogger<CustomerRegisteredHandler>)
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_IntegrationEvents_CustomerRegisteredHandler__ctor_Hexalith_Infrastructure_Dynamics365Finance_Client_IDynamics365FinanceClient_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerBase__Hexalith_Infrastructure_Dynamics365Finance_Client_IDynamics365FinanceClient_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerV3__Hexalith_Infrastructure_Dynamics365Finance_Client_IDynamics365FinanceClient_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerExternalSystemCode__Hexalith_Infrastructure_Dynamics365Finance_Client_IDynamics365FinanceClient_Hexalith_Infrastructure_Dynamics365Finance_Retail_Stores_Entities_RetailStore__Microsoft_Extensions_Options_IOptions_Hexalith_Application_Organizations_Configurations_OrganizationSettings__Microsoft_Extensions_Logging_ILogger_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_IntegrationEvents_CustomerRegisteredHandler__
-  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler.#ctor(Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerBase},Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3},Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerExternalSystemCode},Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient{Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Entities.RetailStore},Microsoft.Extensions.Options.IOptions{Hexalith.Application.Organizations.Configurations.OrganizationSettings},Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler})
-  name.vb: CustomerRegisteredHandler(IDynamics365FinanceClient(Of CustomerBase), IDynamics365FinanceClient(Of CustomerV3), IDynamics365FinanceClient(Of CustomerExternalSystemCode), IDynamics365FinanceClient(Of RetailStore), IOptions(Of OrganizationSettings), ILogger(Of CustomerRegisteredHandler))
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler.CustomerRegisteredHandler(Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient<Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerBase>, Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient<Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3>, Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient<Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerExternalSystemCode>, Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient<Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Entities.RetailStore>, Microsoft.Extensions.Options.IOptions<Hexalith.Application.Organizations.Configurations.OrganizationSettings>, Microsoft.Extensions.Logging.ILogger<Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler>)
-  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler.CustomerRegisteredHandler(Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient(Of Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerBase), Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient(Of Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3), Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient(Of Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerExternalSystemCode), Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient(Of Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Entities.RetailStore), Microsoft.Extensions.Options.IOptions(Of Hexalith.Application.Organizations.Configurations.OrganizationSettings), Microsoft.Extensions.Logging.ILogger(Of Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler))
-  nameWithType: CustomerRegisteredHandler.CustomerRegisteredHandler(IDynamics365FinanceClient<CustomerBase>, IDynamics365FinanceClient<CustomerV3>, IDynamics365FinanceClient<CustomerExternalSystemCode>, IDynamics365FinanceClient<RetailStore>, IOptions<OrganizationSettings>, ILogger<CustomerRegisteredHandler>)
-  nameWithType.vb: CustomerRegisteredHandler.CustomerRegisteredHandler(IDynamics365FinanceClient(Of CustomerBase), IDynamics365FinanceClient(Of CustomerV3), IDynamics365FinanceClient(Of CustomerExternalSystemCode), IDynamics365FinanceClient(Of RetailStore), IOptions(Of OrganizationSettings), ILogger(Of CustomerRegisteredHandler))
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler.#ctor(Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService,Microsoft.Extensions.Options.IOptions{Hexalith.Application.Organizations.Configurations.OrganizationSettings},Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler})
+  name: CustomerRegisteredHandler(IDynamics365FinanceCustomerService, IOptions<OrganizationSettings>, ILogger<CustomerRegisteredHandler>)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_IntegrationEvents_CustomerRegisteredHandler__ctor_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Services_IDynamics365FinanceCustomerService_Microsoft_Extensions_Options_IOptions_Hexalith_Application_Organizations_Configurations_OrganizationSettings__Microsoft_Extensions_Logging_ILogger_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_IntegrationEvents_CustomerRegisteredHandler__
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler.#ctor(Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService,Microsoft.Extensions.Options.IOptions{Hexalith.Application.Organizations.Configurations.OrganizationSettings},Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler})
+  name.vb: CustomerRegisteredHandler(IDynamics365FinanceCustomerService, IOptions(Of OrganizationSettings), ILogger(Of CustomerRegisteredHandler))
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler.CustomerRegisteredHandler(Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService, Microsoft.Extensions.Options.IOptions<Hexalith.Application.Organizations.Configurations.OrganizationSettings>, Microsoft.Extensions.Logging.ILogger<Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler>)
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler.CustomerRegisteredHandler(Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService, Microsoft.Extensions.Options.IOptions(Of Hexalith.Application.Organizations.Configurations.OrganizationSettings), Microsoft.Extensions.Logging.ILogger(Of Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler))
+  nameWithType: CustomerRegisteredHandler.CustomerRegisteredHandler(IDynamics365FinanceCustomerService, IOptions<OrganizationSettings>, ILogger<CustomerRegisteredHandler>)
+  nameWithType.vb: CustomerRegisteredHandler.CustomerRegisteredHandler(IDynamics365FinanceCustomerService, IOptions(Of OrganizationSettings), ILogger(Of CustomerRegisteredHandler))
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler.#ctor*
   name: CustomerRegisteredHandler
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_IntegrationEvents_CustomerRegisteredHandler__ctor_
@@ -25369,6 +25656,118 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents.CustomerRegisteredHandler.ApplyAsync
   nameWithType: CustomerRegisteredHandler.ApplyAsync
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services
+  name: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.html
+  commentId: N:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services
+  nameWithType: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService
+  name: Dynamics365FinanceCustomerService
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.html
+  commentId: T:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService
+  nameWithType: Dynamics365FinanceCustomerService
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.#ctor(Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerBase},Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3},Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerExternalSystemCode},Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient{Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Entities.RetailStore},Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService})
+  name: Dynamics365FinanceCustomerService(IDynamics365FinanceClient<CustomerBase>, IDynamics365FinanceClient<CustomerV3>, IDynamics365FinanceClient<CustomerExternalSystemCode>, IDynamics365FinanceClient<RetailStore>, ILogger<Dynamics365FinanceCustomerService>)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Services_Dynamics365FinanceCustomerService__ctor_Hexalith_Infrastructure_Dynamics365Finance_Client_IDynamics365FinanceClient_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerBase__Hexalith_Infrastructure_Dynamics365Finance_Client_IDynamics365FinanceClient_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerV3__Hexalith_Infrastructure_Dynamics365Finance_Client_IDynamics365FinanceClient_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Entities_CustomerExternalSystemCode__Hexalith_Infrastructure_Dynamics365Finance_Client_IDynamics365FinanceClient_Hexalith_Infrastructure_Dynamics365Finance_Retail_Stores_Entities_RetailStore__Microsoft_Extensions_Logging_ILogger_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Services_Dynamics365FinanceCustomerService__
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.#ctor(Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerBase},Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3},Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerExternalSystemCode},Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient{Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Entities.RetailStore},Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService})
+  name.vb: Dynamics365FinanceCustomerService(IDynamics365FinanceClient(Of CustomerBase), IDynamics365FinanceClient(Of CustomerV3), IDynamics365FinanceClient(Of CustomerExternalSystemCode), IDynamics365FinanceClient(Of RetailStore), ILogger(Of Dynamics365FinanceCustomerService))
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.Dynamics365FinanceCustomerService(Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient<Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerBase>, Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient<Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3>, Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient<Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerExternalSystemCode>, Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient<Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Entities.RetailStore>, Microsoft.Extensions.Logging.ILogger<Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService>)
+  fullName.vb: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.Dynamics365FinanceCustomerService(Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient(Of Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerBase), Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient(Of Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3), Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient(Of Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerExternalSystemCode), Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient(Of Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Entities.RetailStore), Microsoft.Extensions.Logging.ILogger(Of Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService))
+  nameWithType: Dynamics365FinanceCustomerService.Dynamics365FinanceCustomerService(IDynamics365FinanceClient<CustomerBase>, IDynamics365FinanceClient<CustomerV3>, IDynamics365FinanceClient<CustomerExternalSystemCode>, IDynamics365FinanceClient<RetailStore>, ILogger<Dynamics365FinanceCustomerService>)
+  nameWithType.vb: Dynamics365FinanceCustomerService.Dynamics365FinanceCustomerService(IDynamics365FinanceClient(Of CustomerBase), IDynamics365FinanceClient(Of CustomerV3), IDynamics365FinanceClient(Of CustomerExternalSystemCode), IDynamics365FinanceClient(Of RetailStore), ILogger(Of Dynamics365FinanceCustomerService))
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.#ctor*
+  name: Dynamics365FinanceCustomerService
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Services_Dynamics365FinanceCustomerService__ctor_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.Dynamics365FinanceCustomerService
+  nameWithType: Dynamics365FinanceCustomerService.Dynamics365FinanceCustomerService
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.CreateCustomerAsync(Hexalith.Domain.Events.CustomerRegistered,CancellationToken)
+  name: CreateCustomerAsync(CustomerRegistered, CancellationToken)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Services_Dynamics365FinanceCustomerService_CreateCustomerAsync_Hexalith_Domain_Events_CustomerRegistered_CancellationToken_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.CreateCustomerAsync(Hexalith.Domain.Events.CustomerRegistered,CancellationToken)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.CreateCustomerAsync(Hexalith.Domain.Events.CustomerRegistered, CancellationToken)
+  nameWithType: Dynamics365FinanceCustomerService.CreateCustomerAsync(CustomerRegistered, CancellationToken)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.CreateCustomerAsync*
+  name: CreateCustomerAsync
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Services_Dynamics365FinanceCustomerService_CreateCustomerAsync_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.CreateCustomerAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.CreateCustomerAsync
+  nameWithType: Dynamics365FinanceCustomerService.CreateCustomerAsync
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.CreateCustomerV3Async(Hexalith.Domain.Events.CustomerRegistered,System.String,CancellationToken)
+  name: CreateCustomerV3Async(CustomerRegistered, String, CancellationToken)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Services_Dynamics365FinanceCustomerService_CreateCustomerV3Async_Hexalith_Domain_Events_CustomerRegistered_System_String_CancellationToken_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.CreateCustomerV3Async(Hexalith.Domain.Events.CustomerRegistered,System.String,CancellationToken)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.CreateCustomerV3Async(Hexalith.Domain.Events.CustomerRegistered, System.String, CancellationToken)
+  nameWithType: Dynamics365FinanceCustomerService.CreateCustomerV3Async(CustomerRegistered, String, CancellationToken)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.CreateCustomerV3Async*
+  name: CreateCustomerV3Async
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Services_Dynamics365FinanceCustomerService_CreateCustomerV3Async_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.CreateCustomerV3Async
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.CreateCustomerV3Async
+  nameWithType: Dynamics365FinanceCustomerService.CreateCustomerV3Async
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.GetStoreDefaultCustomerTemplateAsync(System.String,CancellationToken)
+  name: GetStoreDefaultCustomerTemplateAsync(String, CancellationToken)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Services_Dynamics365FinanceCustomerService_GetStoreDefaultCustomerTemplateAsync_System_String_CancellationToken_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.GetStoreDefaultCustomerTemplateAsync(System.String,CancellationToken)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.GetStoreDefaultCustomerTemplateAsync(System.String, CancellationToken)
+  nameWithType: Dynamics365FinanceCustomerService.GetStoreDefaultCustomerTemplateAsync(String, CancellationToken)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.GetStoreDefaultCustomerTemplateAsync*
+  name: GetStoreDefaultCustomerTemplateAsync
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Services_Dynamics365FinanceCustomerService_GetStoreDefaultCustomerTemplateAsync_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.GetStoreDefaultCustomerTemplateAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.Dynamics365FinanceCustomerService.GetStoreDefaultCustomerTemplateAsync
+  nameWithType: Dynamics365FinanceCustomerService.GetStoreDefaultCustomerTemplateAsync
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService
+  name: IDynamics365FinanceCustomerService
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService.html
+  commentId: T:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService
+  nameWithType: IDynamics365FinanceCustomerService
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService.CreateCustomerAsync(Hexalith.Domain.Events.CustomerRegistered,CancellationToken)
+  name: CreateCustomerAsync(CustomerRegistered, CancellationToken)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Services_IDynamics365FinanceCustomerService_CreateCustomerAsync_Hexalith_Domain_Events_CustomerRegistered_CancellationToken_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService.CreateCustomerAsync(Hexalith.Domain.Events.CustomerRegistered,CancellationToken)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService.CreateCustomerAsync(Hexalith.Domain.Events.CustomerRegistered, CancellationToken)
+  nameWithType: IDynamics365FinanceCustomerService.CreateCustomerAsync(CustomerRegistered, CancellationToken)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService.CreateCustomerAsync*
+  name: CreateCustomerAsync
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Services_IDynamics365FinanceCustomerService_CreateCustomerAsync_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService.CreateCustomerAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService.CreateCustomerAsync
+  nameWithType: IDynamics365FinanceCustomerService.CreateCustomerAsync
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService.CreateCustomerV3Async(Hexalith.Domain.Events.CustomerRegistered,System.String,CancellationToken)
+  name: CreateCustomerV3Async(CustomerRegistered, String, CancellationToken)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Services_IDynamics365FinanceCustomerService_CreateCustomerV3Async_Hexalith_Domain_Events_CustomerRegistered_System_String_CancellationToken_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService.CreateCustomerV3Async(Hexalith.Domain.Events.CustomerRegistered,System.String,CancellationToken)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService.CreateCustomerV3Async(Hexalith.Domain.Events.CustomerRegistered, System.String, CancellationToken)
+  nameWithType: IDynamics365FinanceCustomerService.CreateCustomerV3Async(CustomerRegistered, String, CancellationToken)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService.CreateCustomerV3Async*
+  name: CreateCustomerV3Async
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Services_IDynamics365FinanceCustomerService_CreateCustomerV3Async_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService.CreateCustomerV3Async
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService.CreateCustomerV3Async
+  nameWithType: IDynamics365FinanceCustomerService.CreateCustomerV3Async
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService.GetStoreDefaultCustomerTemplateAsync(System.String,CancellationToken)
+  name: GetStoreDefaultCustomerTemplateAsync(String, CancellationToken)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Services_IDynamics365FinanceCustomerService_GetStoreDefaultCustomerTemplateAsync_System_String_CancellationToken_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService.GetStoreDefaultCustomerTemplateAsync(System.String,CancellationToken)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService.GetStoreDefaultCustomerTemplateAsync(System.String, CancellationToken)
+  nameWithType: IDynamics365FinanceCustomerService.GetStoreDefaultCustomerTemplateAsync(String, CancellationToken)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService.GetStoreDefaultCustomerTemplateAsync*
+  name: GetStoreDefaultCustomerTemplateAsync
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Services_IDynamics365FinanceCustomerService_GetStoreDefaultCustomerTemplateAsync_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService.GetStoreDefaultCustomerTemplateAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.IDynamics365FinanceCustomerService.GetStoreDefaultCustomerTemplateAsync
+  nameWithType: IDynamics365FinanceCustomerService.GetStoreDefaultCustomerTemplateAsync
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers
   name: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.html
@@ -25650,12 +26049,12 @@ references:
   commentId: T:Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Filters.RetailStoreByWarehouseFilter
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Filters.RetailStoreByWarehouseFilter
   nameWithType: RetailStoreByWarehouseFilter
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Filters.RetailStoreByWarehouseFilter.#ctor(System.String,System.String)
-  name: RetailStoreByWarehouseFilter(String, String)
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Filters.RetailStoreByWarehouseFilter.html#Hexalith_Infrastructure_Dynamics365Finance_Retail_Stores_Filters_RetailStoreByWarehouseFilter__ctor_System_String_System_String_
-  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Filters.RetailStoreByWarehouseFilter.#ctor(System.String,System.String)
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Filters.RetailStoreByWarehouseFilter.RetailStoreByWarehouseFilter(System.String, System.String)
-  nameWithType: RetailStoreByWarehouseFilter.RetailStoreByWarehouseFilter(String, String)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Filters.RetailStoreByWarehouseFilter.#ctor(System.String)
+  name: RetailStoreByWarehouseFilter(String)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Filters.RetailStoreByWarehouseFilter.html#Hexalith_Infrastructure_Dynamics365Finance_Retail_Stores_Filters_RetailStoreByWarehouseFilter__ctor_System_String_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Filters.RetailStoreByWarehouseFilter.#ctor(System.String)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Filters.RetailStoreByWarehouseFilter.RetailStoreByWarehouseFilter(System.String)
+  nameWithType: RetailStoreByWarehouseFilter.RetailStoreByWarehouseFilter(String)
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Filters.RetailStoreByWarehouseFilter.#ctor*
   name: RetailStoreByWarehouseFilter
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Filters.RetailStoreByWarehouseFilter.html#Hexalith_Infrastructure_Dynamics365Finance_Retail_Stores_Filters_RetailStoreByWarehouseFilter__ctor_
@@ -25676,19 +26075,6 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Filters.RetailStoreByWarehouseFilter.WarehouseId
   nameWithType: RetailStoreByWarehouseFilter.WarehouseId
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Filters.RetailStoreByWarehouseFilter.WarehouseLegalEntity
-  name: WarehouseLegalEntity
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Filters.RetailStoreByWarehouseFilter.html#Hexalith_Infrastructure_Dynamics365Finance_Retail_Stores_Filters_RetailStoreByWarehouseFilter_WarehouseLegalEntity
-  commentId: P:Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Filters.RetailStoreByWarehouseFilter.WarehouseLegalEntity
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Filters.RetailStoreByWarehouseFilter.WarehouseLegalEntity
-  nameWithType: RetailStoreByWarehouseFilter.WarehouseLegalEntity
-- uid: Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Filters.RetailStoreByWarehouseFilter.WarehouseLegalEntity*
-  name: WarehouseLegalEntity
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Filters.RetailStoreByWarehouseFilter.html#Hexalith_Infrastructure_Dynamics365Finance_Retail_Stores_Filters_RetailStoreByWarehouseFilter_WarehouseLegalEntity_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Filters.RetailStoreByWarehouseFilter.WarehouseLegalEntity
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Filters.RetailStoreByWarehouseFilter.WarehouseLegalEntity
-  nameWithType: RetailStoreByWarehouseFilter.WarehouseLegalEntity
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Security
   name: Hexalith.Infrastructure.Dynamics365Finance.Security
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Security.html
