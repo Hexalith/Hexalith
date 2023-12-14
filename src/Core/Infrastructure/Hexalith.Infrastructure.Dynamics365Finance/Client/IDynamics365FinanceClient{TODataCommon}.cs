@@ -4,9 +4,9 @@
 // Created          : 10-03-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 10-03-2023
+// Last Modified On : 12-14-2023
 // ***********************************************************************
-// <copyright file="IDynamics365FinanceClient{TODataElement}.cs" company="Fiveforty SAS Paris France">
+// <copyright file="IDynamics365FinanceClient{TODataCommon}.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -15,6 +15,8 @@
 // ***********************************************************************
 
 namespace Hexalith.Infrastructure.Dynamics365Finance.Client;
+
+using System.Diagnostics.CodeAnalysis;
 
 using Hexalith.Infrastructure.Dynamics365Finance.Models;
 
@@ -105,21 +107,29 @@ public interface IDynamics365FinanceClient<TODataCommon>
     Task<IEnumerable<TODataCommon>> GetAsync(ICommonFilter key, CancellationToken cancellationToken);
 
     /// <summary>
-    /// Get a filtered entity object.
-    /// </summary>
-    /// <param name="company">Company identifier.</param>
-    /// <param name="filter">Filter values.</param>
-    /// <param name="cancellationToken">Cancellation token.</param>
-    /// <returns>List of entity objects.</returns>
-    Task<IEnumerable<TODataCommon>> GetAsync(string company, IDictionary<string, object?> filter, CancellationToken cancellationToken);
-
-    /// <summary>
     /// Get a filtered entity object list.
     /// </summary>
     /// <param name="filter">Filter values.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>List of entity objects.</returns>
     Task<IEnumerable<TODataCommon>> GetAsync(IDictionary<string, object?> filter, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Gets the common asynchronous.
+    /// </summary>
+    /// <param name="filter">The filter.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task&lt;IEnumerable&lt;TODataCommon&gt;&gt;.</returns>
+    Task<IEnumerable<TODataCommon>> GetCommonAsync([NotNull] IDictionary<string, object?> filter, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Gets the per company asynchronous.
+    /// </summary>
+    /// <param name="company">The company.</param>
+    /// <param name="filter">The filter.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task&lt;IEnumerable&lt;TODataCommon&gt;&gt;.</returns>
+    Task<IEnumerable<TODataCommon>> GetPerCompanyAsync(string company, [NotNull] IDictionary<string, object?> filter, CancellationToken cancellationToken);
 
     /// <summary>
     /// Gets the single asynchronous.

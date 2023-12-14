@@ -67,6 +67,11 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     private readonly IDynamics365FinanceSecurityContext _securityContext;
 
     /// <summary>
+    /// The is per company.
+    /// </summary>
+    private readonly bool IsPerCompany = typeof(IODataElement).IsAssignableFrom(typeof(TEntity));
+
+    /// <summary>
     /// Initializes a new instance of the <see cref="Dynamics365FinanceClient{TEntity}"/> class.
     /// </summary>
     /// <param name="httpClientFactory">The HTTP client factory.</param>
@@ -243,15 +248,18 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     /// Gets the query filter.
     /// </summary>
     /// <param name="company">The company.</param>
-    /// <param name="filter">The filter.</param>
     /// <returns>System.String.</returns>
-    private static string GetQueryFilter(string company, IDictionary<string, object?> filter)
+    private static string GetQueryFilter(IDictionary<string, object?> filter)
     {
         StringBuilder query = new();
-        _ = query.Append(CultureInfo.InvariantCulture, $"dataAreaId eq '{company}'");
         foreach (KeyValuePair<string, object?> key in filter)
         {
-            _ = query.Append(CultureInfo.InvariantCulture, $" and {key.Key} eq {GetODataString(key.Value)}");
+            if (query.Length > 0)
+            {
+                _ = query.Append(CultureInfo.InvariantCulture, $" and ");
+            }
+
+            _ = query.Append(CultureInfo.InvariantCulture, $"{key.Key} eq {GetODataString(key.Value)}");
         }
 
         return query.ToString();

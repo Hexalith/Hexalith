@@ -47,5 +47,5 @@ public record RetailStore
     /// Entities the name.
     /// </summary>
     /// <returns>System.String.</returns>
-    public static string EntityName() => "RetailStoresV3";
+    public static string EntityName() => "RetailStores";
 }

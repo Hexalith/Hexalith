@@ -23,6 +23,8 @@ using Hexalith.Infrastructure.Dynamics365Finance.Helpers;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Controller;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities;
+using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services;
+using Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Entities;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -78,10 +80,14 @@ public static class PartiesHelper
     /// <returns>IServiceCollection.</returns>
     public static IServiceCollection AddDynamics365FinanceCustomersClient(this IServiceCollection services, IConfiguration configuration)
     {
-        services
+        _ = services
             .AddDynamics365FinanceClient(configuration)
             .AddHttpClient<IDynamics365FinanceClient<CustomerExternalSystemCode>, Dynamics365FinanceClient<CustomerExternalSystemCode>>();
-        services.AddHttpClient<IDynamics365FinanceClient<CustomerV3>, Dynamics365FinanceClient<CustomerV3>>();
+        services.TryAddScoped<IDynamics365FinanceCustomerService, Dynamics365FinanceCustomerService>();
+        _ = services.AddHttpClient<IDynamics365FinanceClient<CustomerV3>, Dynamics365FinanceClient<CustomerV3>>();
+        _ = services.AddHttpClient<IDynamics365FinanceClient<CustomerBase>, Dynamics365FinanceClient<CustomerBase>>();
+        _ = services.AddHttpClient<IDynamics365FinanceClient<RetailStore>, Dynamics365FinanceClient<RetailStore>>();
+
         return services;
     }
 }

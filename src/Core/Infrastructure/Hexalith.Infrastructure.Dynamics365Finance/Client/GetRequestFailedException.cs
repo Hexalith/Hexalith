@@ -24,6 +24,7 @@ using System.Text.Json;
 /// </summary>
 /// <typeparam name="T">Type of the returned entity.</typeparam>
 [DataContract]
+[Serializable]
 public sealed class GetRequestFailedException<T> : Exception
 {
     /// <summary>
@@ -71,6 +72,23 @@ public sealed class GetRequestFailedException<T> : Exception
     /// <summary>
     /// Initializes a new instance of the <see cref="GetRequestFailedException{T}"/> class.
     /// </summary>
+    /// <param name="entityName">Name of the entity.</param>
+    /// <param name="url">The URL.</param>
+    /// <param name="responseContent">Content of the response.</param>
+    /// <param name="message">The message.</param>
+    /// <param name="innerException">The inner exception.</param>
+    public GetRequestFailedException(string entityName, Uri url, string? responseContent, string? message, Exception? innerException)
+        : base($"Failed to retrieve {typeof(T).Name} with url '{url}' on entity {entityName}. " + message, innerException)
+    {
+        EntityName = entityName;
+        Filter = null;
+        ResponseContent = responseContent;
+        Url = url;
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="GetRequestFailedException{T}"/> class.
+    /// </summary>
     /// <param name="info">The <see cref="SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
     /// <param name="context">The <see cref="StreamingContext" /> that contains contextual information about the source or destination.</param>
     private GetRequestFailedException(SerializationInfo info, StreamingContext context)
@@ -79,22 +97,28 @@ public sealed class GetRequestFailedException<T> : Exception
     }
 
     /// <summary>
-    /// Gets the entity name.
+    /// Gets or sets the entity name.
     /// </summary>
     /// <value>The entity name.</value>
-    public string? EntityName { get; private set; }
+    [DataMember]
+    public string? EntityName { get; set; }
 
     /// <summary>
-    /// Gets the keys used to get the entity.
+    /// Gets or sets the keys used to get the entity.
     /// </summary>
     /// <value>The keys used to get the entity.</value>
-    public IDictionary<string, object?>? Filter { get; private set; }
+    [DataMember]
+    public IDictionary<string, object?>? Filter { get; set; }
 
     /// <summary>
-    /// Gets the returned response.
+    /// Gets or sets the returned response.
     /// </summary>
     /// <value>The returned response.</value>
-    public string? ResponseContent { get; private set; }
+    [DataMember]
+    public string? ResponseContent { get; set; }
+
+    [DataMember]
+    public Uri? Url { get; set; }
 
     /// <inheritdoc/>
     public override void GetObjectData(SerializationInfo info, StreamingContext context) => base.GetObjectData(info, context);
