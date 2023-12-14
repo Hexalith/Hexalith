@@ -7,23 +7,14 @@
 namespace Hexalith.Infrastructure.Dynamics365Finance.Models;
 
 /// <summary>
-/// Interface for Dynamics 365 for finance and operations OData elements.
+/// Interface IODataElement
+/// Extends the <see cref="Hexalith.Infrastructure.Dynamics365Finance.Models.IODataCommon" />.
 /// </summary>
-public interface IODataElement
+/// <seealso cref="Hexalith.Infrastructure.Dynamics365Finance.Models.IODataCommon" />
+public interface IODataElement : IODataCommon
 {
     /// <summary>
     /// Gets the company.
     /// </summary>
     string DataAreaId { get; }
-
-    /// <summary>
-    /// Gets the record Etag for concurrency checks.
-    /// </summary>
-    string? Etag { get; }
-
-    /// <summary>
-    /// Gets the entity name.
-    /// </summary>
-    /// <returns>The name.</returns>
-    static abstract string EntityName();
 }

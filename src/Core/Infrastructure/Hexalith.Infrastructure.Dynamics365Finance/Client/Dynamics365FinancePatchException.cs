@@ -21,7 +21,7 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 /// <seealso cref="Exception" />
 [DataContract]
 public class Dynamics365FinancePatchException<TEntity, TUpdate> : Exception
-    where TEntity : class, IODataElement
+    where TEntity : class, IODataCommon
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="Dynamics365FinancePatchException{TEntity, TUpdate}"/> class.

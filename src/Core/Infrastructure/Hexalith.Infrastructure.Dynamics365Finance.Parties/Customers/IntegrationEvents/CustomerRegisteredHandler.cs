@@ -26,6 +26,8 @@ using Hexalith.Infrastructure.Dynamics365Finance.Client;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers;
+using Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Entities;
+using Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Filters;
 
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -67,25 +69,30 @@ public class CustomerRegisteredHandler : IntegrationEventHandler<CustomerRegiste
     /// </summary>
     private readonly string? _originId;
 
+    private readonly IDynamics365FinanceClient<RetailStore> _storeService;
+
     /// <summary>
-    /// Initializes a new instance of the <see cref="CustomerRegisteredHandler" /> class.
+    /// Initializes a new instance of the <see cref="CustomerRegisteredHandler"/> class.
     /// </summary>
     /// <param name="customerBaseService">The customer base service.</param>
     /// <param name="customerService">The customer service.</param>
     /// <param name="externalCodeService">The external code service.</param>
+    /// <param name="storeService">The store service.</param>
     /// <param name="organizationSettings">The organization settings.</param>
     /// <param name="logger">The logger.</param>
-    /// <exception cref="ArgumentNullException">null.</exception>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
     public CustomerRegisteredHandler(
         IDynamics365FinanceClient<CustomerBase> customerBaseService,
         IDynamics365FinanceClient<CustomerV3> customerService,
         IDynamics365FinanceClient<CustomerExternalSystemCode> externalCodeService,
+        IDynamics365FinanceClient<RetailStore> storeService,
         IOptions<OrganizationSettings> organizationSettings,
         ILogger<CustomerRegisteredHandler> logger)
     {
         ArgumentNullException.ThrowIfNull(customerBaseService);
         ArgumentNullException.ThrowIfNull(customerService);
-        ArgumentNullException.ThrowIfNull(logger);
+        ArgumentNullException.ThrowIfNull(externalCodeService);
+        ArgumentNullException.ThrowIfNull(storeService);
         ArgumentNullException.ThrowIfNull(organizationSettings);
         ArgumentNullException.ThrowIfNull(logger);
 
@@ -94,6 +101,7 @@ public class CustomerRegisteredHandler : IntegrationEventHandler<CustomerRegiste
         _customerBaseService = customerBaseService;
         _customerService = customerService;
         _externalCodeService = externalCodeService;
+        _storeService = storeService;
         _organizationSettings = organizationSettings;
         _logger = logger;
         _originId = _organizationSettings.Value.DefaultOriginId;
@@ -122,7 +130,8 @@ public class CustomerRegisteredHandler : IntegrationEventHandler<CustomerRegiste
             // No incompleted customer found in Dynamics 365 Finance.
             if (string.IsNullOrWhiteSpace(hexalithExternalCodeCustomer) && string.IsNullOrWhiteSpace(originExternalCodeCustomer))
             {
-                // The external codes are not mapped to an existing Dynamics 365 Finance customer, create a new one.
+                CustomerV3 customerV3 = await GetStoreTemplateCustomerAsync(@event.AggregateId, @event.CompanyId, @event.WarehouseId, cancellationToken)
+                        .ConfigureAwait(false);
                 CustomerV3Create create = @event.ToDynamics365FinanceCustomerCreate(tempName);
                 CustomerV3 customer = await _customerService
                         .PostAsync(create, cancellationToken)
@@ -217,5 +226,52 @@ public class CustomerRegisteredHandler : IntegrationEventHandler<CustomerRegiste
                  externalId),
                  cancellationToken).ConfigureAwait(false);
         return externalCodes.FirstOrDefault()?.CustomerAccountNumber;
+    }
+
+    private async Task<CustomerV3> GetStoreTemplateCustomerAsync(string aggregateId, string companyId, string? warehouseId, CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(warehouseId))
+        {
+            throw new InvalidOperationException($"Warehouse is not defined for customer {aggregateId}.");
+        }
+
+        // Get customer default values from the store and it's related customer template.
+        RetailStore[] stores = (await _storeService
+                .GetAsync(new RetailStoreByWarehouseFilter(companyId, warehouseId), cancellationToken)
+                .ConfigureAwait(false))
+                .ToArray();
+        if (stores.Length < 1)
+        {
+            // No store found for the warehouse.
+            throw new InvalidOperationException($"No store found for warehouse {warehouseId} while getting customer '{aggregateId}' default values.");
+        }
+
+        if (stores.Length > 1)
+        {
+            // Duplicate stores found for the warehouse.
+            throw new InvalidOperationException($"Duplicate store found for warehouse {warehouseId} while getting customer '{aggregateId}' default values : {string.Join(';', stores.Select(s => s.RetailChannelId))}");
+        }
+
+        RetailStore store = stores[0];
+
+        if (string.IsNullOrWhiteSpace(store.DefaultCustomerAccount))
+        {
+            // No default customer template defined for the store.
+            throw new InvalidOperationException($"No default customer template defined for store {store.RetailChannelId} while getting customer '{aggregateId}' default values.");
+        }
+
+        if (string.IsNullOrWhiteSpace(store.DefaultCustomerLegalEntity))
+        {
+            // No default legal entity defined for the store.
+            throw new InvalidOperationException($"No default customer legal entity defined for store {store.RetailChannelId} while getting customer '{aggregateId}' default values.");
+        }
+
+        return await _customerService
+                .GetSingleAsync(
+                    new CustomerAccountKey(
+                    store.DefaultCustomerLegalEntity,
+                    store.DefaultCustomerAccount),
+                    cancellationToken)
+                .ConfigureAwait(false);
     }
 }

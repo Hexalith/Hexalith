@@ -19,7 +19,7 @@ using Microsoft.Extensions.Logging;
 /// </summary>
 /// <typeparam name="TEntity">The entity type.</typeparam>
 public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClient<TEntity>
-    where TEntity : class, IODataElement
+    where TEntity : class, IODataCommon
 {
     /// <inheritdoc/>
     public async Task PatchAsync<TUpdate>(IPerCompanyPrimaryKey key, TUpdate value, CancellationToken cancellationToken)

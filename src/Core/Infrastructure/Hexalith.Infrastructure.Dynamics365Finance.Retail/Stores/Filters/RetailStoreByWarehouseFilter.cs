@@ -25,7 +25,7 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 /// </summary>
 /// <seealso cref="IFilter" />
 /// <seealso cref="System.IEquatable{Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Filters.RetailStoreByWarehouseFilter}" />
-public record RetailStoreByWarehouseFilter(string WarehouseId)
-    : IFilter
+public record RetailStoreByWarehouseFilter(string WarehouseLegalEntity, string WarehouseId)
+    : ICommonFilter
 {
 }

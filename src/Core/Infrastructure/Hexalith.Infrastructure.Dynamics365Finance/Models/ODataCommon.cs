@@ -1,4 +1,4 @@
-﻿// <copyright file="ODataElement.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="ODataCommon.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -16,34 +16,29 @@ using Hexalith.Extensions;
 /// </summary>
 [DataContract]
 [Serializable]
-public record ODataElement : ODataCommon
+public record ODataCommon
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="ODataElement"/> class.
+    /// Initializes a new instance of the <see cref="ODataCommon"/> class.
     /// </summary>
     /// <param name="etag">The Etag.</param>
     /// <param name="dataAreaId">The company identifier.</param>
     [JsonConstructor]
-    protected ODataElement(string? etag, string dataAreaId)
-        : base(etag)
-    {
-        ArgumentException.ThrowIfNullOrEmpty(dataAreaId);
-        DataAreaId = dataAreaId;
-    }
+    protected ODataCommon(string? etag) => Etag = etag;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ODataElement"/> class.
+    /// Initializes a new instance of the <see cref="ODataCommon"/> class.
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    protected ODataElement()
-        : this(null, DefaultLabels.ForSerializationOnly)
+    protected ODataCommon()
+        : this(etag: null)
     {
     }
 
     /// <summary>
-    /// Gets or sets the company.
+    /// Gets or sets the record Etag for concurrency checks.
     /// </summary>
-    [JsonPropertyName("dataAreaId")]
+    [JsonPropertyName("@odata.etag")]
     [DataMember]
-    public string DataAreaId { get; set; }
+    public string? Etag { get; set; }
 }

@@ -23,6 +23,8 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
+using Hexalith.Application.Organizations.Configurations;
+using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.Dynamics365Finance.Configurations;
 using Hexalith.Infrastructure.Dynamics365Finance.Models;
 using Hexalith.Infrastructure.Dynamics365Finance.Security;
@@ -37,7 +39,7 @@ using Microsoft.Extensions.Options;
 /// <typeparam name="TEntity">The entity type.</typeparam>
 [DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
 public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClient<TEntity>
-    where TEntity : class, IODataElement
+    where TEntity : class, IODataCommon
 {
     /// <summary>
     /// The cross company query.
@@ -65,45 +67,44 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     private readonly IDynamics365FinanceSecurityContext _securityContext;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Dynamics365FinanceClient{TEntity}" /> class.
+    /// Initializes a new instance of the <see cref="Dynamics365FinanceClient{TEntity}"/> class.
     /// </summary>
     /// <param name="httpClientFactory">The HTTP client factory.</param>
-    /// <param name="securityContext">The Dynamics 365 security context.</param>
-    /// <param name="settings">The client settings.</param>
-    /// <param name="logger">The client logger.</param>
-    /// <exception cref="ArgumentException">Setting not defined.</exception>
+    /// <param name="securityContext">The security context.</param>
+    /// <param name="finOpsSettings">The fin ops settings.</param>
+    /// <param name="organizationSettings">The organization settings.</param>
+    /// <param name="logger">The logger.</param>
+    /// <exception cref="System.ArgumentNullException"></exception>
+    /// <exception cref="System.ArgumentException">The {nameof(s.Instance)} setting is not defined. - finOpsSettings.</exception>
+    /// <exception cref="System.ArgumentException">The {nameof(s.Company)} setting is not defined. - finOpsSettings.</exception>
     public Dynamics365FinanceClient(
         HttpClient httpClientFactory,
         IDynamics365FinanceSecurityContext securityContext,
-        IOptions<Dynamics365FinanceClientSettings> settings,
+        IOptions<Dynamics365FinanceClientSettings> finOpsSettings,
+        IOptions<OrganizationSettings> organizationSettings,
         ILogger<Dynamics365FinanceClient<TEntity>> logger)
     {
-        ArgumentNullException.ThrowIfNull(settings);
+        ArgumentNullException.ThrowIfNull(finOpsSettings);
+        ArgumentNullException.ThrowIfNull(organizationSettings);
         ArgumentNullException.ThrowIfNull(httpClientFactory);
         ArgumentNullException.ThrowIfNull(securityContext);
         ArgumentNullException.ThrowIfNull(logger);
 
-        Dynamics365FinanceClientSettings s = settings.Value;
+        SettingsException<OrganizationSettings>.ThrowIfNullOrEmpty(organizationSettings.Value.DefaultCompanyId);
+        SettingsException<Dynamics365FinanceClientSettings>.ThrowIfUndefined(finOpsSettings.Value.Instance);
 
         _httpClientFactory = httpClientFactory;
         _securityContext = securityContext;
         Logger = logger;
-        if (string.IsNullOrWhiteSpace(s.Instance?.OriginalString))
+        if (string.IsNullOrWhiteSpace(finOpsSettings.Value.Instance?.OriginalString))
         {
             throw new ArgumentException(
-                $"The {nameof(s.Instance)} setting is not defined.",
-                nameof(settings));
+                $"The {nameof(finOpsSettings.Value.Instance)} setting is not defined.",
+                nameof(finOpsSettings));
         }
 
-        if (string.IsNullOrWhiteSpace(s.Company))
-        {
-            throw new ArgumentException(
-                $"The {nameof(s.Company)} setting is not defined.",
-                nameof(settings));
-        }
-
-        DefaultCompany = s.Company;
-        _instance = s.Instance;
+        DefaultCompany = organizationSettings.Value.DefaultCompanyId;
+        _instance = finOpsSettings.Value.Instance;
     }
 
     /// <summary>

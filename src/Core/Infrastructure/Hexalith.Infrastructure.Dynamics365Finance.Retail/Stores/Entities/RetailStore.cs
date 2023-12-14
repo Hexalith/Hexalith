@@ -35,32 +35,13 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 [Serializable]
 public record RetailStore
 (
-    string DataAreaId,
-    string? RetailStoreAccount = null,
-    string? Etag = null,
-    string? RetailStoreGroupId = null,
-    string? PartyType = null,
-    string? OrganizationName = null,
-    string? SalesCurrencyCode = null,
-    string? WarehouseId = null,
-    string? CommissionSalesGroupId = null,
-    string? AddressDescription = null,
-    string? AddressStreetNumber = null,
-    string? AddressStreet = null,
-    string? AddressState = null,
-    string? AddressCounty = null,
-    string? AddressCity = null,
-    string? AddressZipCode = null,
-    string? AddressCountryRegionId = null,
-    string? AddressCountryRegionISOCode = null,
-    string? PrimaryContactPhoneExtension = null,
-    string? PrimaryContactPhoneIsMobile = null,
-    string? PrimaryContactEmail = null,
-    string? PersonLastName = null,
-    string? PersonFirstName = null,
-    string? PersonGender = null)
-
-: ODataElement(Etag, DataAreaId), IODataElement
+    string? RetailChannelId = null,
+    string? DefaultCustomerAccount = null,
+    string? DefaultCustomerLegalEntity = null,
+    string? WareHouseId = null,
+    string? WarehouseLegalEntity = null,
+    string? Currency = null)
+: ODataCommon(etag: null), IODataCommon
 {
     /// <summary>
     /// Entities the name.

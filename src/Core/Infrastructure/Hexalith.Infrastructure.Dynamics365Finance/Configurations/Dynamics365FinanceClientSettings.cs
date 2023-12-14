@@ -15,14 +15,6 @@ using Hexalith.Infrastructure.AzureActiveDirectory.Configurations;
 public class Dynamics365FinanceClientSettings : ISettings
 {
     /// <summary>
-    /// Gets or sets Microsoft Dynamics 365 for finance and operations company identifier (DataAreaId).
-    /// </summary>
-    /// <value>
-    /// Microsoft Dynamics 365 for finance and operations company identifier (DataAreaId).
-    /// </value>
-    public string? Company { get; set; }
-
-    /// <summary>
     /// Gets or sets application Azure Active Directory identity.
     /// </summary>
     /// <value>
@@ -42,8 +34,5 @@ public class Dynamics365FinanceClientSettings : ISettings
     /// Gets or sets the settings name..
     /// </summary>
     /// <returns>The name.</returns>
-    public static string ConfigurationName()
-    {
-        return nameof(Dynamics365Finance);
-    }
+    public static string ConfigurationName() => nameof(Dynamics365Finance);
 }

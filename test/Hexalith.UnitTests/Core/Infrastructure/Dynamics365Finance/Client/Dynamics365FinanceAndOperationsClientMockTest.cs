@@ -23,7 +23,9 @@ public class Dynamics365FinanceClientMockTest
         Mock<HttpMessageHandler> mockHandler = new(MockBehavior.Strict);
         using HttpClient client = mockHandler.CreateClient();
         Dynamics365FinanceClientBuilder<DummyEntity> builder = new Dynamics365FinanceClientBuilder<DummyEntity>()
-            .WithSettingsValue(new Dynamics365FinanceClientSettings { Company = "CIE", Instance = new Uri("https://test.dynamics.com") });
+            .WithSettingsValue(
+                new Dynamics365FinanceClientSettings { Instance = new Uri("https://test.dynamics.com") },
+                new Hexalith.Application.Organizations.Configurations.OrganizationSettings { DefaultCompanyId = "CIE" });
         _ = builder
             .Invoking(y => y.Build(client))
             .Should()

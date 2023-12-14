@@ -10,6 +10,7 @@ using System.Net;
 
 using FluentAssertions;
 
+using Hexalith.Application.Organizations.Configurations;
 using Hexalith.Infrastructure.Dynamics365Finance.Client;
 using Hexalith.Infrastructure.Dynamics365Finance.Configurations;
 using Hexalith.Infrastructure.Dynamics365Finance.TestMocks;
@@ -26,8 +27,11 @@ public class Dynamics365FinanceClientTest
         using HttpClient httpClient = mockHandler.CreateClient();
         Dynamics365FinanceClientSettings settings = new()
         {
-            Company = "CIE",
             Instance = new Uri("https://test.dynamics.com"),
+        };
+        OrganizationSettings orgSettings = new()
+        {
+            DefaultCompanyId = "CIE",
         };
         const string message = "Hello world";
         const string etag = "123etag123";
@@ -39,7 +43,8 @@ public class Dynamics365FinanceClientTest
             .SetupRequest(HttpMethod.Get, new Uri(mockUrl))
             .ReturnsJsonResponse(HttpStatusCode.OK, dummyEntity);
         Dynamics365FinanceClientBuilder<DummyEntity> builder = new();
-        _ = builder.Settings.WithValue(settings);
+        _ = builder.FinOpsSettings.WithValue(settings);
+        _ = builder.OrganizationSettings.WithValue(orgSettings);
         IDynamics365FinanceClient<DummyEntity> client = builder.Build(httpClient);
         DummyEntity result = await client.GetSingleAsync(
             company,
@@ -60,8 +65,11 @@ public class Dynamics365FinanceClientTest
         using HttpClient httpClient = mockHandler.CreateClient();
         Dynamics365FinanceClientSettings settings = new()
         {
-            Company = "CIE",
             Instance = new Uri("https://test.dynamics.com"),
+        };
+        OrganizationSettings orgSettings = new()
+        {
+            DefaultCompanyId = "CIE",
         };
         DummyEntity dummyEntity = new("123etag123", "CIE", "Hello world");
         string mockUrl = $"https://test.dynamics.com/data/Dummy(dataAreaId%3d%27CIE%27%2cid%3d%273525%27)";
@@ -70,7 +78,8 @@ public class Dynamics365FinanceClientTest
             .ReturnsResponse(HttpStatusCode.OK);
 
         Dynamics365FinanceClientBuilder<DummyEntity> builder = new();
-        _ = builder.Settings.WithValue(settings);
+        _ = builder.FinOpsSettings.WithValue(settings);
+        _ = builder.OrganizationSettings.WithValue(orgSettings);
         IDynamics365FinanceClient<DummyEntity> client = builder.Build(httpClient);
         HttpResponseMessage response = await client.SendPatchAsync(
             new Dictionary<string, object>(
