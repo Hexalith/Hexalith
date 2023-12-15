@@ -17,10 +17,14 @@ namespace Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services;
 
 using System;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
+using Hexalith.Application.ExternalSystems.Services;
+using Hexalith.Application.Organizations.Configurations;
 using Hexalith.Domain.Events;
 using Hexalith.Extensions.Common;
+using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.Dynamics365Finance.Client;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters;
@@ -29,11 +33,12 @@ using Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Entities;
 using Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Filters;
 
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 /// <summary>
 /// Class Dynamics365FinanceCustomerService.
 /// </summary>
-public class Dynamics365FinanceCustomerService : IDynamics365FinanceCustomerService
+public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCustomerService
 {
     private readonly IDynamics365FinanceClient<CustomerBase> _customerBaseService;
 
@@ -43,8 +48,9 @@ public class Dynamics365FinanceCustomerService : IDynamics365FinanceCustomerServ
     private readonly IDynamics365FinanceClient<CustomerV3> _customerService;
 
     private readonly IDynamics365FinanceClient<CustomerExternalSystemCode> _externalCodeService;
-
+    private readonly IExternalReferenceMapperService _externalReferenceMapperService;
     private readonly ILogger<Dynamics365FinanceCustomerService> _logger;
+    private readonly string _originId;
 
     /// <summary>
     /// The store service.
@@ -58,25 +64,35 @@ public class Dynamics365FinanceCustomerService : IDynamics365FinanceCustomerServ
     /// <param name="customerService">The customer service.</param>
     /// <param name="externalCodeService">The external code service.</param>
     /// <param name="storeService">The store service.</param>
+    /// <param name="externalReferenceMapperService">The external reference mapper service.</param>
+    /// <param name="organizationSettings">The organization settings.</param>
     /// <param name="logger">The logger.</param>
-    /// <exception cref="System.ArgumentNullException">null.</exception>
+    /// <exception cref="System.ArgumentNullException"></exception>
     public Dynamics365FinanceCustomerService(
         IDynamics365FinanceClient<CustomerBase> customerBaseService,
         IDynamics365FinanceClient<CustomerV3> customerService,
         IDynamics365FinanceClient<CustomerExternalSystemCode> externalCodeService,
         IDynamics365FinanceClient<RetailStore> storeService,
+        IExternalReferenceMapperService externalReferenceMapperService,
+        IOptions<OrganizationSettings> organizationSettings,
         ILogger<Dynamics365FinanceCustomerService> logger)
     {
         ArgumentNullException.ThrowIfNull(customerBaseService);
         ArgumentNullException.ThrowIfNull(customerService);
         ArgumentNullException.ThrowIfNull(externalCodeService);
         ArgumentNullException.ThrowIfNull(storeService);
+        ArgumentNullException.ThrowIfNull(externalReferenceMapperService);
+        ArgumentNullException.ThrowIfNull(organizationSettings);
         ArgumentNullException.ThrowIfNull(logger);
 
+        SettingsException<OrganizationSettings>.ThrowIfNullOrEmpty(organizationSettings.Value.DefaultOriginId);
+
+        _originId = organizationSettings.Value.DefaultOriginId;
         _customerBaseService = customerBaseService;
         _customerService = customerService;
         _externalCodeService = externalCodeService;
         _storeService = storeService;
+        _externalReferenceMapperService = externalReferenceMapperService;
         _logger = logger;
     }
 
@@ -240,6 +256,71 @@ public class Dynamics365FinanceCustomerService : IDynamics365FinanceCustomerServ
                 .ConfigureAwait(false);
     }
 
+    /// <inheritdoc/>
+    public async Task UpdateCustomerAsync(CustomerInformationChanged changed, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(changed);
+        string? accountNumber = changed.OriginId == _originId
+            ? changed.OriginId
+            : await _externalReferenceMapperService.GetExternalIdAsync(changed.AggregateName, changed.AggregateId, _originId, cancellationToken).ConfigureAwait(false);
+        if (string.IsNullOrWhiteSpace(accountNumber))
+        {
+            LogExternalCodeNotFoundWarning(changed.AggregateId, _originId);
+            accountNumber = await FindExternalCodeAsync(
+                    changed.CompanyId,
+                    nameof(Hexalith),
+                    changed.AggregateId,
+                    cancellationToken)
+                .ConfigureAwait(false);
+            if (string.IsNullOrWhiteSpace(accountNumber))
+            {
+                accountNumber = await FindExternalCodeAsync(
+                    changed.CompanyId,
+                    changed.OriginId,
+                    changed.Id,
+                    cancellationToken).ConfigureAwait(false);
+            }
+
+            if (string.IsNullOrWhiteSpace(accountNumber))
+            {
+                throw new InvalidOperationException($"Customer {changed.AggregateId} from {changed.OriginId} external code not found in Dynamics 365 Finance company {changed.CompanyId}.");
+            }
+        }
+
+        CustomerAccountKey customerKey = new(changed.CompanyId, accountNumber);
+        DateTimeOffset? birthDate = changed.Contact?.Person?.BirthDate;
+        CustomerV3 customer = await _customerService.GetSingleAsync(customerKey, cancellationToken).ConfigureAwait(false);
+        CustomerBase customerBase = await _customerBaseService.GetSingleAsync(customerKey, cancellationToken).ConfigureAwait(false);
+        Dictionary<string, object?> customerDelta = customer.GetChanges(changed);
+        bool hasChanges = false;
+        if (customerDelta.Count > 1)
+        {
+            await _customerService
+                    .PatchAsync(customerKey, customerDelta, cancellationToken)
+                    .ConfigureAwait(false);
+            hasChanges = true;
+        }
+
+        Dictionary<string, object?> customerBaseDelta = customerBase.GetChanges(changed);
+        if (customerDelta.Count > 1)
+        {
+            await _customerBaseService
+                    .PatchAsync(customerKey, customerBaseDelta, cancellationToken)
+                    .ConfigureAwait(false);
+            hasChanges = true;
+        }
+
+        if (hasChanges)
+        {
+            LogUpdateChangesInformation(
+                changed.CompanyId,
+                accountNumber,
+                changed.OriginId,
+                changed.Id,
+                JsonSerializer.Serialize(customerDelta) + "\n" + JsonSerializer.Serialize(customerBaseDelta));
+        }
+    }
+
     /// <summary>
     /// Find as an asynchronous operation.
     /// </summary>
@@ -272,6 +353,30 @@ public class Dynamics365FinanceCustomerService : IDynamics365FinanceCustomerServ
                  originId,
                  externalId),
                  cancellationToken).ConfigureAwait(false);
-        return externalCodes.FirstOrDefault()?.CustomerAccountNumber;
+        string? customerId = externalCodes.FirstOrDefault()?.CustomerAccountNumber;
+        if (customerId != null)
+        {
+            LogDynamicsExternalCodeFoundInformation(companyId, customerId, originId, externalId);
+        }
+
+        return customerId;
     }
+
+    [LoggerMessage(
+        EventId = 2,
+        Level = LogLevel.Information,
+        Message = "Customer '{CustomerId}' found for system '{OriginId}' and code '{ExternalId}' in Dynamics 365 for Finance company '{CompanyId}'.")]
+    private partial void LogDynamicsExternalCodeFoundInformation(string companyId, string customerId, string originId, string externalId);
+
+    [LoggerMessage(
+            EventId = 1,
+        Level = LogLevel.Warning,
+        Message = "Customer external code not found for Id={AggregateId} for system {SystemId}.")]
+    private partial void LogExternalCodeNotFoundWarning(string aggregateId, string systemId);
+
+    [LoggerMessage(
+            EventId = 3,
+        Level = LogLevel.Information,
+        Message = "Updating customer '{CustomerId}' ({OriginId}/{ExternalId}) in Dynamics 365 for Finance company '{CompanyId}' :\n{changes}")]
+    private partial void LogUpdateChangesInformation(string companyId, string customerId, string originId, string externalId, string changes);
 }

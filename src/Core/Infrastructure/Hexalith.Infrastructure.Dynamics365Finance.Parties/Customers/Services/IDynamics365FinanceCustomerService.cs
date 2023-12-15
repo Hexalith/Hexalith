@@ -52,4 +52,12 @@ public interface IDynamics365FinanceCustomerService
     /// <exception cref="System.InvalidOperationException">No default customer template defined for store {store.RetailChannelId} while getting customer default values.</exception>
     /// <exception cref="System.InvalidOperationException">No default customer legal entity defined for store {store.RetailChannelId} while getting customer default values.</exception>
     Task<CustomerV3> GetStoreDefaultCustomerTemplateAsync(string warehouseId, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Updates the customer asynchronous.
+    /// </summary>
+    /// <param name="changed">The changed.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task.</returns>
+    Task UpdateCustomerAsync(CustomerInformationChanged changed, CancellationToken cancellationToken);
 }
