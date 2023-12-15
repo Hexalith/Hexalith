@@ -79,7 +79,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     /// <param name="finOpsSettings">The fin ops settings.</param>
     /// <param name="organizationSettings">The organization settings.</param>
     /// <param name="logger">The logger.</param>
-    /// <exception cref="System.ArgumentNullException"></exception>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
     /// <exception cref="System.ArgumentException">The {nameof(s.Instance)} setting is not defined. - finOpsSettings.</exception>
     /// <exception cref="System.ArgumentException">The {nameof(s.Company)} setting is not defined. - finOpsSettings.</exception>
     public Dynamics365FinanceClient(
@@ -138,6 +138,8 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     /// <inheritdoc/>
     public Task DoActionAsync(string action, IDictionary<string, object?> parameters, CancellationToken cancellationToken)
         => throw new NotSupportedException();
+
+    public Task<IEnumerable<TEntity>> GetAsync(string company, IDictionary<string, object?> filter, CancellationToken cancellationToken) => throw new NotImplementedException();
 
     /// <summary>
     /// Per company filters to dictionary.
