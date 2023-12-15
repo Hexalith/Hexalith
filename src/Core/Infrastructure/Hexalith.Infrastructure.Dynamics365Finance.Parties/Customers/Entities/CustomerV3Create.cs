@@ -8,8 +8,6 @@
 // ***********************************************************************
 // <copyright file="CustomerV3Create.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -27,6 +25,13 @@ using System.Text.Json.Serialization;
 [Serializable]
 public class CustomerV3Create
 {
+    /// <summary>
+    /// Gets or sets the address books.
+    /// </summary>
+    /// <value>The address books.</value>
+    [DataMember]
+    public string? AddressBooks { get; set; }
+
     /// <summary>
     /// Gets or sets the address city.
     /// </summary>
@@ -104,6 +109,13 @@ public class CustomerV3Create
     [DataMember]
     [JsonPropertyName("dataAreaId")]
     public string? DataAreaId { get; set; }
+
+    /// <summary>
+    /// Gets or sets the default dimension display value.
+    /// </summary>
+    /// <value>The default dimension display value.</value>
+    [DataMember]
+    public string? DefaultDimensionDisplayValue { get; set; }
 
     /// <summary>
     /// Gets or sets the name alias.
@@ -209,6 +221,13 @@ public class CustomerV3Create
     /// <value>The sales currency code.</value>
     [DataMember]
     public string? SalesCurrencyCode { get; set; }
+
+    /// <summary>
+    /// Gets or sets the sales tax group.
+    /// </summary>
+    /// <value>The sales tax group.</value>
+    [DataMember]
+    public string? SalesTaxGroup { get; set; }
 
     /// <summary>
     /// Gets or sets the warehouse identifier.

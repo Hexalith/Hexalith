@@ -29,6 +29,7 @@ using Hexalith.Domain.Messages;
 /// <typeparam name="TMessage">The type of the t message.</typeparam>
 /// <typeparam name="TMetadata">The type of the t metadata.</typeparam>
 [DataContract]
+[Serializable]
 public class MessageState<TMessage, TMetadata> : IMessageState
     where TMessage : BaseMessage
     where TMetadata : BaseMetadata

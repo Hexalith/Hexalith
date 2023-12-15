@@ -41,9 +41,12 @@ public static class CustomerConverter
         ArgumentNullException.ThrowIfNull(customer);
         ArgumentNullException.ThrowIfNull(e);
         Dictionary<string, object?> changes = [];
+        Month? month = (e.Contact?.Person?.BirthDate == null)
+            ? null
+            : (Month)e.Contact.Person.BirthDate.Value.Month;
 
         changes.AddChanges(customer.PersonBirthDay, e.Contact?.Person?.BirthDate?.Day);
-        changes.AddChanges(customer.PersonBirthMonth, (Month?)e.Contact?.Person?.BirthDate?.Month);
+        changes.AddChanges(customer.PersonBirthMonth, month);
         changes.AddChanges(customer.PersonBirthYear, e.Contact?.Person?.BirthDate?.Year);
         changes.AddChanges(customer.PersonPersonalTitle, e.Contact?.Person?.Title);
 
@@ -348,6 +351,9 @@ public static class CustomerConverter
             PartyType = ToDynamicsPartyType(customerRegistered.PartyType),
             CommissionSalesGroupId = customerRegistered.CommissionSalesGroupId,
             WarehouseId = customerRegistered.WarehouseId,
+            SalesTaxGroup = template?.SalesTaxGroup,
+            AddressBooks = template?.AddressBooks,
+            DefaultDimensionDisplayValue = template?.DefaultDimensionDisplayValue,
         };
         return customerV3;
     }

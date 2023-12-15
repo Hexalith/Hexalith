@@ -60,7 +60,10 @@ public record CustomerV3
     string? PrimaryContactEmail = null,
     string? PersonLastName = null,
     string? PersonFirstName = null,
-    string? PersonGender = null)
+    string? PersonGender = null,
+    string? SalesTaxGroup = null,
+    string? DefaultDimensionDisplayValue = null,
+    string? AddressBooks = null)
 
 : ODataElement(Etag, DataAreaId), IODataElement
 {
