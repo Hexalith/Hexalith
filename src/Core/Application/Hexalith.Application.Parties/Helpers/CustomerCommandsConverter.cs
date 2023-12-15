@@ -45,7 +45,7 @@ public static class CustomerCommandsConverter
             customer.PartyType,
             customer.Contact,
             customer.WarehouseId,
-            customer.CompanyId,
+            customer.CommissionSalesGroupId,
             customer.GroupId,
             customer.SalesCurrencyId,
             customer.Date);
