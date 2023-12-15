@@ -66,15 +66,15 @@ public static class CustomerConverter
         Dictionary<string, object?> changes = [];
 
         changes.AddChanges(customer.OrganizationName, e.Name);
-        changes.AddChanges(customer.PrimaryAddressCity, e.Contact?.PostalAddress?.City);
-        changes.AddChanges(customer.PrimaryAddressCountryRegionId, e.Contact?.PostalAddress?.CountryId);
-        changes.AddChanges(customer.PrimaryAddressCountryRegionISOCode, e.Contact?.PostalAddress?.CountryIso2);
-        changes.AddChanges(customer.PrimaryAddressCounty, e.Contact?.PostalAddress?.CountyId);
-        changes.AddChanges(customer.PrimaryAddressState, e.Contact?.PostalAddress?.StateId);
-        changes.AddChanges(customer.PrimaryAddressStreet, e.Contact?.PostalAddress?.Street);
-        changes.AddChanges(customer.PrimaryAddressStreetNumber, e.Contact?.PostalAddress?.StreetNumber);
-        changes.AddChanges(customer.PrimaryAddressZipCode, e.Contact?.PostalAddress?.ZipCode);
-        changes.AddChanges(customer.PrimaryAddressDescription, e.Contact?.PostalAddress?.Name);
+        changes.AddChanges(customer.AddressCity, e.Contact?.PostalAddress?.City);
+        changes.AddChanges(customer.AddressCountryRegionId, e.Contact?.PostalAddress?.CountryId);
+        changes.AddChanges(customer.AddressCountryRegionISOCode, e.Contact?.PostalAddress?.CountryIso2);
+        changes.AddChanges(customer.AddressCounty, e.Contact?.PostalAddress?.CountyId);
+        changes.AddChanges(customer.AddressState, e.Contact?.PostalAddress?.StateId);
+        changes.AddChanges(customer.AddressStreet, e.Contact?.PostalAddress?.Street);
+        changes.AddChanges(customer.AddressStreetNumber, e.Contact?.PostalAddress?.StreetNumber);
+        changes.AddChanges(customer.AddressZipCode, e.Contact?.PostalAddress?.ZipCode);
+        changes.AddChanges(customer.AddressDescription, e.Contact?.PostalAddress?.Name);
         changes.AddChanges(customer.PersonFirstName, e.Contact?.Person?.FirstName);
         changes.AddChanges(customer.PersonLastName, e.Contact?.Person?.LastName);
         changes.AddChanges(customer.PersonGender, ToDynamicsGender(e.Contact?.Person?.Gender));
@@ -137,19 +137,19 @@ public static class CustomerConverter
                     birthDate,
                     ToGender(customer.PersonGender)),
                 new PostalAddress(
-                    customer.PrimaryAddressDescription,
-                    customer.PrimaryAddressDescription,
-                    customer.PrimaryAddressStreetNumber,
-                    customer.PrimaryAddressStreet,
+                    customer.AddressDescription,
+                    customer.AddressDescription,
+                    customer.AddressStreetNumber,
+                    customer.AddressStreet,
                     postBox,
-                    customer.PrimaryAddressZipCode,
-                    customer.PrimaryAddressCity,
-                    customer.PrimaryAddressCounty,
-                    customer.PrimaryAddressState,
+                    customer.AddressZipCode,
+                    customer.AddressCity,
+                    customer.AddressCounty,
+                    customer.AddressState,
                     stateName,
-                    customer.PrimaryAddressCountryRegionId,
+                    customer.AddressCountryRegionId,
                     countryName,
-                    customer.PrimaryAddressCountryRegionISOCode),
+                    customer.AddressCountryRegionISOCode),
                 customer.PrimaryContactEmail,
                 customer.PrimaryContactPhoneIsMobile != "Yes" ? customer.PrimaryContactPhone : phone,
                 customer.PrimaryContactPhoneIsMobile == "Yes" ? customer.PrimaryContactPhone : mobile),
@@ -208,19 +208,19 @@ public static class CustomerConverter
                     birthDate,
                     ToGender(customer.PersonGender)),
                 new PostalAddress(
-                    customer.PrimaryAddressDescription,
-                    customer.PrimaryAddressDescription,
-                    customer.PrimaryAddressStreetNumber,
-                    customer.PrimaryAddressStreet,
+                    customer.AddressDescription,
+                    customer.AddressDescription,
+                    customer.AddressStreetNumber,
+                    customer.AddressStreet,
                     postBox,
-                    customer.PrimaryAddressZipCode,
-                    customer.PrimaryAddressCity,
-                    customer.PrimaryAddressCounty,
-                    customer.PrimaryAddressState,
+                    customer.AddressZipCode,
+                    customer.AddressCity,
+                    customer.AddressCounty,
+                    customer.AddressState,
                     stateName,
-                    customer.PrimaryAddressCountryRegionId,
+                    customer.AddressCountryRegionId,
                     countryName,
-                    customer.PrimaryAddressCountryRegionISOCode),
+                    customer.AddressCountryRegionISOCode),
                 customer.PrimaryContactEmail,
                 customer.PrimaryContactPhoneIsMobile != "Yes" ? customer.PrimaryContactPhone : phone,
                 customer.PrimaryContactPhoneIsMobile == "Yes" ? customer.PrimaryContactPhone : mobile),
@@ -248,15 +248,15 @@ public static class CustomerConverter
         {
             CustomerAccount = customerAccount ?? customerRegistered.Id,
             OrganizationName = customerRegistered.Name,
-            PrimaryAddressCity = customerRegistered.Contact.PostalAddress?.City,
-            PrimaryAddressCountryRegionId = customerRegistered.Contact.PostalAddress?.CountryId,
-            PrimaryAddressCountryRegionISOCode = customerRegistered.Contact.PostalAddress?.CountryIso2,
-            PrimaryAddressState = customerRegistered.Contact.PostalAddress?.StateId,
-            PrimaryAddressCounty = customerRegistered.Contact.PostalAddress?.CountyId,
-            PrimaryAddressStreetNumber = customerRegistered.Contact.PostalAddress?.StreetNumber,
-            PrimaryAddressStreet = customerRegistered.Contact.PostalAddress?.Street,
-            PrimaryAddressZipCode = customerRegistered.Contact.PostalAddress?.ZipCode,
-            PrimaryAddressDescription = customerRegistered.Contact.PostalAddress?.Name,
+            AddressCity = customerRegistered.Contact.PostalAddress?.City,
+            AddressCountryRegionId = customerRegistered.Contact.PostalAddress?.CountryId,
+            AddressCountryRegionISOCode = customerRegistered.Contact.PostalAddress?.CountryIso2,
+            AddressState = customerRegistered.Contact.PostalAddress?.StateId,
+            AddressCounty = customerRegistered.Contact.PostalAddress?.CountyId,
+            AddressStreetNumber = customerRegistered.Contact.PostalAddress?.StreetNumber,
+            AddressStreet = customerRegistered.Contact.PostalAddress?.Street,
+            AddressZipCode = customerRegistered.Contact.PostalAddress?.ZipCode,
+            AddressDescription = customerRegistered.Contact.PostalAddress?.Name,
             PersonFirstName = customerRegistered.Contact.Person?.FirstName,
             PersonLastName = customerRegistered.Contact.Person?.LastName,
             PersonGender = ToDynamicsGender(customerRegistered.Contact.Person?.Gender),
@@ -288,15 +288,15 @@ public static class CustomerConverter
         {
             CustomerAccount = customerAccount ?? customerChanged.Id,
             OrganizationName = customerChanged.Name,
-            PrimaryAddressCity = customerChanged.Contact.PostalAddress?.City,
-            PrimaryAddressCountryRegionId = customerChanged.Contact.PostalAddress?.CountryId,
-            PrimaryAddressCountryRegionISOCode = customerChanged.Contact.PostalAddress?.CountryIso2,
-            PrimaryAddressCounty = customerChanged.Contact.PostalAddress?.CountyId,
-            PrimaryAddressState = customerChanged.Contact.PostalAddress?.StateId,
-            PrimaryAddressStreet = customerChanged.Contact.PostalAddress?.Street,
-            PrimaryAddressStreetNumber = customerChanged.Contact.PostalAddress?.StreetNumber,
-            PrimaryAddressZipCode = customerChanged.Contact.PostalAddress?.ZipCode,
-            PrimaryAddressDescription = customerChanged.Contact.PostalAddress?.Name,
+            AddressCity = customerChanged.Contact.PostalAddress?.City,
+            AddressCountryRegionId = customerChanged.Contact.PostalAddress?.CountryId,
+            AddressCountryRegionISOCode = customerChanged.Contact.PostalAddress?.CountryIso2,
+            AddressCounty = customerChanged.Contact.PostalAddress?.CountyId,
+            AddressState = customerChanged.Contact.PostalAddress?.StateId,
+            AddressStreet = customerChanged.Contact.PostalAddress?.Street,
+            AddressStreetNumber = customerChanged.Contact.PostalAddress?.StreetNumber,
+            AddressZipCode = customerChanged.Contact.PostalAddress?.ZipCode,
+            AddressDescription = customerChanged.Contact.PostalAddress?.Name,
             PersonFirstName = customerChanged.Contact.Person?.FirstName,
             PersonLastName = customerChanged.Contact.Person?.LastName,
             PersonGender = ToDynamicsGender(customerChanged.Contact.Person?.Gender),
