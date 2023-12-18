@@ -300,8 +300,8 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
                 changed.AggregateId,
                 customer.DataAreaId,
                 customer.CustomerAccount,
-                CustomerV3.EntityName,
-                string.Join('\n', customerDelta.Select(p => $"{p.Key}:{p.Value.Item1} => {p.Value.Item2}")));
+                CustomerV3.EntityName(),
+                GetChangeInformation(customerDelta));
             await _customerService
                     .PatchAsync(
                 customerKey,
@@ -318,8 +318,8 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
                 changed.AggregateId,
                 customer.DataAreaId,
                 customer.CustomerAccount,
-                CustomerBase.EntityName,
-                string.Join('\n', customerBaseDelta.Select(p => $"{p.Key}:{p.Value.Item1} => {p.Value.Item2}")));
+                CustomerBase.EntityName(),
+                GetChangeInformation(customerBaseDelta));
             await _customerBaseService
                     .PatchAsync(
                 customerKey,
@@ -381,11 +381,18 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
         return customerId;
     }
 
+    private string GetChangeInformation(Dictionary<string, (object? OldValue, object? NewValue)> values)
+    {
+        return string.Join('\n', values
+            .Select(p =>
+                $"{p.Key}:'{p.Value.OldValue ?? "<null>"}' => '{p.Value.NewValue ?? "<null>"}"));
+    }
+
     [LoggerMessage(
                 EventId = 4,
         Level = LogLevel.Information,
         Message = "Updating customer '{AggregateId}' ({EntityName}:{DataAreaId}/{CustomerAccount}) in Dynamics 365 for Finance:\n{Changes}")]
-    private partial void LogDeltaInformation(string aggregateId, string dataAreaId, string? customerAccount, Func<string> entityName, string changes);
+    private partial void LogDeltaInformation(string aggregateId, string dataAreaId, string? customerAccount, string entityName, string changes);
 
     [LoggerMessage(
         EventId = 2,
