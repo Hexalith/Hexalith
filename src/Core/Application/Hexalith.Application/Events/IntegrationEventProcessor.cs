@@ -72,7 +72,7 @@ public partial class IntegrationEventProcessor : IIntegrationEventProcessor
         EventId = 1,
         Level = LogLevel.Information,
         Message = "No command generated from event with name '{EventName}', identifier '{AggregateId}' and CorrelationId '{CorrelationId}'.")]
-    public partial void NoCommandGenerated(string? eventName, string? aggregateId, string? correlationId);
+    public partial void LogNoCommandGeneratedInformation(string? eventName, string? aggregateId, string? correlationId);
 
     /// <inheritdoc/>
     public async Task SubmitAsync(IEvent baseEvent, IMetadata metadata, CancellationToken cancellationToken)
@@ -88,7 +88,7 @@ public partial class IntegrationEventProcessor : IIntegrationEventProcessor
                 .ToList();
             if (commands.Count <= 0)
             {
-                NoCommandGenerated(metadata.TypeName, baseEvent.AggregateId, metadata.Context.CorrelationId);
+                LogNoCommandGeneratedInformation(metadata.Message.Name, baseEvent.AggregateId, metadata.Context.CorrelationId);
             }
 
             foreach (BaseCommand command in commands)
