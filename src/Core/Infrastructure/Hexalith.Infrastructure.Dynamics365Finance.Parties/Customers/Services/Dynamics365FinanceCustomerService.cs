@@ -292,21 +292,39 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
         DateTimeOffset? birthDate = changed.Contact?.Person?.BirthDate;
         CustomerV3 customer = await _customerService.GetSingleAsync(customerKey, cancellationToken).ConfigureAwait(false);
         CustomerBase customerBase = await _customerBaseService.GetSingleAsync(customerKey, cancellationToken).ConfigureAwait(false);
-        Dictionary<string, object?> customerDelta = customer.GetChanges(changed);
+        Dictionary<string, (object?, object?)> customerDelta = customer.GetChanges(changed);
         bool hasChanges = false;
         if (customerDelta.Count > 1)
         {
+            LogDeltaInformation(
+                changed.AggregateId,
+                customer.DataAreaId,
+                customer.CustomerAccount,
+                CustomerV3.EntityName,
+                string.Join('\n', customerDelta.Select(p => $"{p.Key}:{p.Value.Item1} => {p.Value.Item2}")));
             await _customerService
-                    .PatchAsync(customerKey, customerDelta, cancellationToken)
+                    .PatchAsync(
+                customerKey,
+                customerDelta.ToDictionary(k => k.Key, v => v.Value.Item2),
+                cancellationToken)
                     .ConfigureAwait(false);
             hasChanges = true;
         }
 
-        Dictionary<string, object?> customerBaseDelta = customerBase.GetChanges(changed);
+        Dictionary<string, (object?, object?)> customerBaseDelta = customerBase.GetChanges(changed);
         if (customerDelta.Count > 1)
         {
+            LogDeltaInformation(
+                changed.AggregateId,
+                customer.DataAreaId,
+                customer.CustomerAccount,
+                CustomerBase.EntityName,
+                string.Join('\n', customerBaseDelta.Select(p => $"{p.Key}:{p.Value.Item1} => {p.Value.Item2}")));
             await _customerBaseService
-                    .PatchAsync(customerKey, customerBaseDelta, cancellationToken)
+                    .PatchAsync(
+                customerKey,
+                customerBaseDelta.ToDictionary(k => k.Key, v => v.Value.Item2),
+                cancellationToken)
                     .ConfigureAwait(false);
             hasChanges = true;
         }
@@ -362,6 +380,12 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
 
         return customerId;
     }
+
+    [LoggerMessage(
+                EventId = 4,
+        Level = LogLevel.Information,
+        Message = "Updating customer '{AggregateId}' ({EntityName}:{DataAreaId}/{CustomerAccount}) in Dynamics 365 for Finance:\n{Changes}")]
+    private partial void LogDeltaInformation(string aggregateId, string dataAreaId, string? customerAccount, Func<string> entityName, string changes);
 
     [LoggerMessage(
         EventId = 2,

@@ -36,11 +36,11 @@ public static class CustomerConverter
     /// <param name="customer">The customer.</param>
     /// <param name="e">The e.</param>
     /// <returns>System.Collections.Generic.Dictionary&lt;string, object?&gt;.</returns>
-    public static Dictionary<string, object?> GetChanges([NotNull] this CustomerBase customer, [NotNull] CustomerInformationChanged e)
+    public static Dictionary<string, (object? OldValue, object? NewValue)> GetChanges([NotNull] this CustomerBase customer, [NotNull] CustomerInformationChanged e)
     {
         ArgumentNullException.ThrowIfNull(customer);
         ArgumentNullException.ThrowIfNull(e);
-        Dictionary<string, object?> changes = [];
+        Dictionary<string, (object?, object?)> changes = [];
         DateTimeOffset birthDate = e.Contact?.Person?.BirthDate ?? new DateTimeOffset(1900, 1, 1, 0, 0, 0, TimeSpan.Zero);
 
         changes.AddChanges(customer.PersonBirthDay, birthDate.Day);
@@ -57,11 +57,11 @@ public static class CustomerConverter
     /// <param name="customer">The customer.</param>
     /// <param name="e">The e.</param>
     /// <returns>System.Collections.Generic.Dictionary&lt;string, object?&gt;.</returns>
-    public static Dictionary<string, object?> GetChanges([NotNull] this CustomerV3 customer, [NotNull] CustomerInformationChanged e)
+    public static Dictionary<string, (object? OldValue, object? NewValue)> GetChanges([NotNull] this CustomerV3 customer, [NotNull] CustomerInformationChanged e)
     {
         ArgumentNullException.ThrowIfNull(customer);
         ArgumentNullException.ThrowIfNull(e);
-        Dictionary<string, object?> changes = [];
+        Dictionary<string, (object?, object?)> changes = [];
 
         changes.AddChanges(customer.OrganizationName, e.Name);
         changes.AddChanges(customer.AddressCity, e.Contact?.PostalAddress?.City);
@@ -419,33 +419,33 @@ public static class CustomerConverter
     /// <summary>
     /// Adds the changes.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
     /// <param name="changes">The changes.</param>
-    /// <param name="originalValue">The original value.</param>
+    /// <param name="oldValue">The original value.</param>
     /// <param name="newValue">The new value.</param>
     /// <param name="fieldName">Name of the field.</param>
-    private static void AddChanges<T>(this Dictionary<string, object?> changes, T? originalValue, T? newValue, [CallerArgumentExpression("originalValue")] string? fieldName = null)
+    private static void AddChanges(
+        this Dictionary<string, (object? OldValue, object? NewValue)> changes,
+        object? oldValue,
+        object? newValue,
+        [CallerArgumentExpression("oldValue")] string? fieldName = null)
     {
-        if (originalValue == null && newValue == null)
+        ArgumentException.ThrowIfNullOrEmpty(fieldName);
+        if (oldValue == null && newValue == null)
         {
             return;
         }
 
-        if (originalValue != null && originalValue.Equals(newValue))
+        if (oldValue != null && oldValue.Equals(newValue))
         {
             return;
         }
 
-        string? name = (string.IsNullOrWhiteSpace(fieldName)
-            ? null
-            : fieldName.Split(".").LastOrDefault()) ?? throw new InvalidOperationException("Invalid field name");
-        if (newValue == null)
+        string? name = fieldName.Split(".").LastOrDefault();
+        if (string.IsNullOrWhiteSpace(name))
         {
-            changes.Add(name, default(T));
+            throw new ArgumentException("Field name is invalid.");
         }
-        else
-        {
-            changes.Add(name, newValue);
-        }
+
+        changes.Add(name, (oldValue, newValue));
     }
 }
