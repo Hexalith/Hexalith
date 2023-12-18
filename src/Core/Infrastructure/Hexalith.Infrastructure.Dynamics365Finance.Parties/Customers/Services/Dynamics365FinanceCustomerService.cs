@@ -174,7 +174,7 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
                     registered.Name,
                     registered.Contact?.Person?.Title,
                     birthDate?.Day,
-                    (Month?)birthDate?.Month,
+                    (Month?)birthDate?.Month ?? Month.January,
                     birthDate?.Year),
                 cancellationToken).ConfigureAwait(false);
             return customerAccount;
@@ -261,7 +261,7 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
     {
         ArgumentNullException.ThrowIfNull(changed);
         string? accountNumber = changed.OriginId == _originId
-            ? changed.OriginId
+            ? changed.Id
             : await _externalReferenceMapperService.GetExternalIdAsync(changed.AggregateName, changed.AggregateId, _originId, cancellationToken).ConfigureAwait(false);
         if (string.IsNullOrWhiteSpace(accountNumber))
         {

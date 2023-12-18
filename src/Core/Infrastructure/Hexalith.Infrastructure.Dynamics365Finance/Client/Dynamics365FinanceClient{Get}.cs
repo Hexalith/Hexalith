@@ -211,7 +211,8 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
                 typeof(TEntity).Name,
                 keys,
                 url.AbsoluteUri,
-                responseContent ?? "No response");
+                responseContent ?? "No response",
+                ex);
             throw new GetSingleRequestFailedException<TEntity>(TEntity.EntityName(), keys, responseContent, message: null, ex);
         }
     }

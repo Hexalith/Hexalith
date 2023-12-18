@@ -31,6 +31,7 @@ using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers;
 
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 /// <summary>
@@ -39,7 +40,7 @@ using Microsoft.Extensions.Options;
 /// </summary>
 /// <typeparam name="TEvent">The type of the t event.</typeparam>
 /// <seealso cref="IntegrationEventHandler`1" />
-public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : IntegrationEventHandler<TEvent>
+public abstract partial class Dynamics365FinanceCustomerInformationHandler<TEvent> : IntegrationEventHandler<TEvent>
     where TEvent : Dynamics365FinanceCustomerInformationBusinessEvent
 {
     private readonly ICustomerAggregateQueryService _customerService;
@@ -48,6 +49,8 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
     /// The date time service.
     /// </summary>
     private readonly IDateTimeService _dateTimeService;
+
+    private readonly ILogger _logger;
 
     /// <summary>
     /// The origin identifier.
@@ -65,15 +68,18 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
     /// <param name="customerService">The customer service.</param>
     /// <param name="dateTimeService">The date time service.</param>
     /// <param name="settings">The settings.</param>
+    /// <param name="logger">The logger.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
     protected Dynamics365FinanceCustomerInformationHandler(
         ICustomerAggregateQueryService customerService,
         IDateTimeService dateTimeService,
-        IOptions<OrganizationSettings> settings)
+        IOptions<OrganizationSettings> settings,
+        ILogger logger)
     {
         ArgumentNullException.ThrowIfNull(dateTimeService);
         ArgumentNullException.ThrowIfNull(customerService);
         ArgumentNullException.ThrowIfNull(settings);
+        ArgumentNullException.ThrowIfNull(logger);
 
         // ArgumentNullException.ThrowIfNull(externalReferenceMapperService);
         ArgumentNullException.ThrowIfNull(settings);
@@ -83,6 +89,7 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
         _originId = settings.Value.DefaultOriginId;
         _customerService = customerService;
         _dateTimeService = dateTimeService;
+        _logger = logger;
 
         // _externalReferenceMapperService = externalReferenceMapperService;
     }
@@ -107,6 +114,13 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
         string companyId;
         if (string.IsNullOrWhiteSpace(aggregateId))
         {
+            if (@event is not Dynamics365FinanceCustomerRegistered)
+            {
+                // Ignore event without Hexalith external code if not a registration event
+                LogMessageWithoutHexalithExternalCode(@event.TypeName, @event.BusinessEventLegalEntity, @event.Account);
+                return [];
+            }
+
             originId = _originId;
             customerId = @event.Account;
             partitionId = _partitionId;
@@ -174,4 +188,10 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
 
         return commands;
     }
+
+    [LoggerMessage(
+        EventId = 1,
+        Level = LogLevel.Information,
+        Message = "Event {EventType} for customer '{CompanyId}/{CustomerAccount}' without 'Hexalith' external code, is ignored.")]
+    private partial void LogMessageWithoutHexalithExternalCode(string eventType, string companyId, string customerAccount);
 }

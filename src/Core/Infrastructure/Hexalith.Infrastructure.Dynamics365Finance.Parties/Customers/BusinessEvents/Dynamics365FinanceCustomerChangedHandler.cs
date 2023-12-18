@@ -19,6 +19,7 @@ using Hexalith.Application.Organizations.Configurations;
 using Hexalith.Application.Parties.Services;
 using Hexalith.Extensions.Common;
 
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 /// <summary>
@@ -37,11 +38,13 @@ public class Dynamics365FinanceCustomerChangedHandler : Dynamics365FinanceCustom
     public Dynamics365FinanceCustomerChangedHandler(
         ICustomerAggregateQueryService customerService,
         IDateTimeService dateTimeService,
-        IOptions<OrganizationSettings> settings)
+        IOptions<OrganizationSettings> settings,
+        ILogger<Dynamics365FinanceCustomerChangedHandler> logger)
         : base(
             customerService,
             dateTimeService,
-            settings)
+            settings,
+            logger)
     {
     }
 }

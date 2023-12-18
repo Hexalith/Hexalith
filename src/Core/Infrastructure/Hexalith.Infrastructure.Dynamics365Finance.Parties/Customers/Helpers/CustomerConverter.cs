@@ -42,7 +42,7 @@ public static class CustomerConverter
         ArgumentNullException.ThrowIfNull(e);
         Dictionary<string, object?> changes = [];
         Month? month = (e.Contact?.Person?.BirthDate == null)
-            ? null
+            ? Month.January
             : (Month)e.Contact.Person.BirthDate.Value.Month;
 
         changes.AddChanges(customer.PersonBirthDay, e.Contact?.Person?.BirthDate?.Day);
@@ -77,7 +77,7 @@ public static class CustomerConverter
         changes.AddChanges(customer.AddressDescription, e.Contact?.PostalAddress?.Name);
         changes.AddChanges(customer.PersonFirstName, e.Contact?.Person?.FirstName);
         changes.AddChanges(customer.PersonLastName, e.Contact?.Person?.LastName);
-        changes.AddChanges(customer.PersonGender, ToDynamicsGender(e.Contact?.Person?.Gender));
+        changes.AddChanges(customer.PersonGender, ToDynamicsGender(e.Contact?.Person?.Gender ?? Gender.Unknown));
         changes.AddChanges(customer.PrimaryContactPhone, e.Contact?.Mobile ?? e.Contact?.Phone);
         changes.AddChanges(customer.PrimaryContactPhoneIsMobile, e.Contact?.Mobile == null ? "No" : "Yes");
         changes.AddChanges(customer.PrimaryContactEmail, e.Contact?.Email);
