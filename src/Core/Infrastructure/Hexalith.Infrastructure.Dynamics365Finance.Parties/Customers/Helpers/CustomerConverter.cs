@@ -41,14 +41,12 @@ public static class CustomerConverter
         ArgumentNullException.ThrowIfNull(customer);
         ArgumentNullException.ThrowIfNull(e);
         Dictionary<string, object?> changes = [];
-        Month? month = (e.Contact?.Person?.BirthDate == null)
-            ? Month.January
-            : (Month)e.Contact.Person.BirthDate.Value.Month;
+        DateTimeOffset birthDate = e.Contact?.Person?.BirthDate ?? new DateTimeOffset(1900, 1, 1, 0, 0, 0, TimeSpan.Zero);
 
-        changes.AddChanges(customer.PersonBirthDay, e.Contact?.Person?.BirthDate?.Day);
-        changes.AddChanges(customer.PersonBirthMonth, month);
-        changes.AddChanges(customer.PersonBirthYear, e.Contact?.Person?.BirthDate?.Year);
-        changes.AddChanges(customer.PersonPersonalTitle, e.Contact?.Person?.Title);
+        changes.AddChanges(customer.PersonBirthDay, birthDate.Day);
+        changes.AddChanges(customer.PersonBirthMonth, (Month)birthDate.Month);
+        changes.AddChanges(customer.PersonBirthYear, birthDate.Year);
+        changes.AddChanges(customer.PersonPersonalTitle, e.Contact?.Person?.Title ?? "Mr.");
 
         return changes;
     }

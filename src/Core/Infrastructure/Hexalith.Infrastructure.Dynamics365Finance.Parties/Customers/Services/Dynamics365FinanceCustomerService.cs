@@ -138,7 +138,6 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
                 customerKey = new(registered.CompanyId, customerAccount);
             }
 
-            DateTimeOffset? birthDate = registered.Contact?.Person?.BirthDate;
             if (string.IsNullOrWhiteSpace(originExternalCodeCustomer))
             {
                 _ = await _externalCodeService
@@ -165,6 +164,7 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
                             cancellationToken).ConfigureAwait(false);
             }
 
+            DateTimeOffset birthDate = registered.Contact?.Person?.BirthDate ?? new DateTimeOffset(1900, 1, 1, 0, 0, 0, TimeSpan.Zero);
             await _customerBaseService.PatchAsync(
                 customerKey,
                 new CustomerBase(
@@ -173,10 +173,11 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
                     null,
                     registered.Name,
                     registered.Contact?.Person?.Title,
-                    birthDate?.Day,
-                    (Month?)birthDate?.Month ?? Month.January,
-                    birthDate?.Year),
+                    birthDate.Day,
+                    (Month)birthDate.Month,
+                    birthDate.Year),
                 cancellationToken).ConfigureAwait(false);
+
             return customerAccount;
         }
         catch (Exception ex)
