@@ -36,11 +36,6 @@ public enum Gender
     NonSpecific,
 
     /// <summary>
-    /// The other.
-    /// </summary>
-    Other,
-
-    /// <summary>
     /// Unknown gender.
     /// </summary>
     Unknown,

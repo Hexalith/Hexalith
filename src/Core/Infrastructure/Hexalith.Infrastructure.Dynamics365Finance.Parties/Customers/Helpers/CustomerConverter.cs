@@ -369,8 +369,7 @@ public static class CustomerConverter
         {
             Gender.Male => nameof(Gender.Male),
             Gender.Female => nameof(Gender.Female),
-            null => null,
-            _ => nameof(Gender.Other),
+            _ => nameof(Gender.Unknown),
         };
     }
 
@@ -400,8 +399,7 @@ public static class CustomerConverter
         {
             nameof(Gender.Male) => Gender.Male,
             nameof(Gender.Female) => Gender.Female,
-            null => null,
-            _ => Gender.Other,
+            _ => Gender.Unknown,
         };
     }
 
