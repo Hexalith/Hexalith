@@ -24,6 +24,7 @@ using Hexalith.Application.Events;
 using Hexalith.Application.ExternalSystems.Commands;
 using Hexalith.Application.Organizations.Configurations;
 using Hexalith.Application.Parties.Commands;
+using Hexalith.Application.Parties.Services;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.ValueObjets;
 using Hexalith.Extensions.Common;
@@ -41,6 +42,8 @@ using Microsoft.Extensions.Options;
 public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : IntegrationEventHandler<TEvent>
     where TEvent : Dynamics365FinanceCustomerInformationBusinessEvent
 {
+    private readonly ICustomerAggregateQueryService _customerService;
+
     /// <summary>
     /// The date time service.
     /// </summary>
@@ -59,14 +62,18 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
     /// <summary>
     /// Initializes a new instance of the <see cref="Dynamics365FinanceCustomerInformationHandler{TEvent}"/> class.
     /// </summary>
+    /// <param name="customerService">The customer service.</param>
     /// <param name="dateTimeService">The date time service.</param>
     /// <param name="settings">The settings.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
     protected Dynamics365FinanceCustomerInformationHandler(
+        ICustomerAggregateQueryService customerService,
         IDateTimeService dateTimeService,
         IOptions<OrganizationSettings> settings)
     {
         ArgumentNullException.ThrowIfNull(dateTimeService);
+        ArgumentNullException.ThrowIfNull(customerService);
+        ArgumentNullException.ThrowIfNull(settings);
 
         // ArgumentNullException.ThrowIfNull(externalReferenceMapperService);
         ArgumentNullException.ThrowIfNull(settings);
@@ -74,13 +81,14 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
         SettingsException<OrganizationSettings>.ThrowIfNullOrEmpty(settings.Value.DefaultOriginId);
         _partitionId = settings.Value.DefaultPartitionId;
         _originId = settings.Value.DefaultOriginId;
+        _customerService = customerService;
         _dateTimeService = dateTimeService;
 
         // _externalReferenceMapperService = externalReferenceMapperService;
     }
 
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseCommand>> ApplyAsync(TEvent @event, CancellationToken cancellationToken)
+    public override async Task<IEnumerable<BaseCommand>> ApplyAsync(TEvent @event, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(@event);
         ArgumentNullException.ThrowIfNull(@event.Contact);
@@ -88,9 +96,33 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
         ArgumentException.ThrowIfNullOrEmpty(@event.Account);
         ArgumentException.ThrowIfNullOrEmpty(@event.Name);
         ArgumentException.ThrowIfNullOrEmpty(@event.BusinessEventLegalEntity);
-        string companyId = @event.BusinessEventLegalEntity.ToUpperInvariant();
-        string customerId = @event.Account.ToUpperInvariant();
-        string customerAggregateId = Customer.GetAggregateId(_partitionId, companyId, _originId, customerId);
+        string? aggregateId = @event
+            .ExternalReferences?
+            .Where(p => p.SystemId == nameof(Hexalith))
+            .FirstOrDefault()?
+            .ExternalId;
+        string originId;
+        string customerId;
+        string partitionId;
+        string companyId;
+        if (string.IsNullOrWhiteSpace(aggregateId))
+        {
+            originId = _originId;
+            customerId = @event.Account;
+            partitionId = _partitionId;
+            companyId = @event.BusinessEventLegalEntity.ToUpperInvariant();
+            aggregateId = Customer.GetAggregateId(_partitionId, companyId, _originId, customerId);
+        }
+        else
+        {
+            Customer? customer = await _customerService.GetCustomerAsync(aggregateId, cancellationToken).ConfigureAwait(false);
+            _ = customer ?? throw new InvalidOperationException($"Customer '{aggregateId}' not found while handling '{@event.BusinessEventLegalEntity}/{@event.Account}' event.");
+            originId = customer.OriginId;
+            customerId = customer.Id;
+            partitionId = customer.PartitionId;
+            companyId = customer.CompanyId;
+        }
+
         string customerAggregateName = Customer.GetAggregateName();
         List<BaseCommand> commands = [];
         if (@event.ExternalReferences != null)
@@ -103,23 +135,23 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
                         reference.SystemId,
                         customerAggregateName,
                         reference.ExternalId,
-                        customerAggregateId);
+                        aggregateId);
                 commands.Add(mapExternalSystemReference);
             }
         }
 
         commands.Add(new AddExternalSystemReference(
                 _partitionId,
-                @event.BusinessEventLegalEntity,
+                @event.BusinessEventLegalEntity.ToUpperInvariant(),
                 _originId,
                 customerAggregateName,
-                customerId,
-                customerAggregateId));
+                @event.Account,
+                aggregateId));
 
         commands.Add(new RegisterOrChangeCustomer(
-                   _partitionId,
+                   partitionId,
                    companyId,
-                   _originId,
+                   originId,
                    customerId,
                    @event.Name,
                    CustomerConverter.ToPartyType(@event.PartyType ?? nameof(PartyType.Person)),
@@ -140,6 +172,6 @@ public abstract class Dynamics365FinanceCustomerInformationHandler<TEvent> : Int
             commands.Add(new DeselectIntercompanyDropshipDeliveryForCustomer(_partitionId, companyId, _originId, customerId));
         }
 
-        return Task.FromResult<IEnumerable<BaseCommand>>(commands);
+        return commands;
     }
 }

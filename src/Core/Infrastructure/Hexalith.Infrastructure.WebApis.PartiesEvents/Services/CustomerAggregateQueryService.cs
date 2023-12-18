@@ -19,6 +19,7 @@ namespace Hexalith.Infrastructure.WebApis.PartiesEvents.Services;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 
+using Hexalith.Application.Parties.Services;
 using Hexalith.Application.States;
 using Hexalith.Domain.Aggregates;
 

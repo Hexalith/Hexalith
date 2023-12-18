@@ -16,6 +16,7 @@
 namespace Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents;
 
 using Hexalith.Application.Organizations.Configurations;
+using Hexalith.Application.Parties.Services;
 using Hexalith.Extensions.Common;
 
 using Microsoft.Extensions.Options;
@@ -30,12 +31,15 @@ public class Dynamics365FinanceCustomerChangedHandler : Dynamics365FinanceCustom
     /// <summary>
     /// Initializes a new instance of the <see cref="Dynamics365FinanceCustomerChangedHandler"/> class.
     /// </summary>
+    /// <param name="customerService">The customer service.</param>
     /// <param name="dateTimeService">The date time service.</param>
     /// <param name="settings">The settings.</param>
     public Dynamics365FinanceCustomerChangedHandler(
+        ICustomerAggregateQueryService customerService,
         IDateTimeService dateTimeService,
         IOptions<OrganizationSettings> settings)
         : base(
+            customerService,
             dateTimeService,
             settings)
     {

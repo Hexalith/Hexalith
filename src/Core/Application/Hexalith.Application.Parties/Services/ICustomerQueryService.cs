@@ -4,7 +4,7 @@
 // Created          : 08-29-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 08-29-2023
+// Last Modified On : 12-12-2023
 // ***********************************************************************
 // <copyright file="ICustomerQueryService.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -17,7 +17,6 @@
 namespace Hexalith.Application.Parties.Services;
 
 using Hexalith.Application.Parties.Commands;
-using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 
 /// <summary>

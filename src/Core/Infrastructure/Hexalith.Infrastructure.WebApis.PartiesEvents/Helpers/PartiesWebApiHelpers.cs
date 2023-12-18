@@ -16,6 +16,7 @@
 
 namespace Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers;
 
+using Hexalith.Application.Parties.Services;
 using Hexalith.Application.Projection;
 using Hexalith.Domain.Events;
 using Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers;

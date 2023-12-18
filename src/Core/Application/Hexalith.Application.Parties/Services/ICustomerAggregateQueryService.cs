@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Infrastructure.WebApis.PartiesEvents.Services;
+namespace Hexalith.Application.Parties.Services;
 
 using Hexalith.Domain.Aggregates;
 
