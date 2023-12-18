@@ -148,13 +148,13 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
         long commandCount = await _stateManager
             .GetCommandCountAsync(_stateProvider, CancellationToken.None)
             .ConfigureAwait(false);
-
-        if (commandCount > 0 && commands[0] is RegisterCustomer)
+        Type messageType = commands[0].GetType();
+        if (commandCount > 0 && messageType == typeof(RegisterCustomer))
         {
             throw new InvalidOperationException($"Aggregate {Host.ActorTypeInfo.ActorTypeName} {Id.GetId()} already exists (Commands received : {commandCount}). Can not handle message type {commands[0].GetType().Name}.");
         }
 
-        if (commandCount <= 0 && (commands[0] is not RegisterCustomer || commands[0] is not RegisterOrChangeCustomer))
+        if (commandCount <= 0 && messageType != typeof(RegisterCustomer) && messageType != typeof(RegisterOrChangeCustomer))
         {
             throw new InvalidOperationException($"Aggregate {Host.ActorTypeInfo.ActorTypeName} {Id.GetId()} cannot be initialized with message type {commands[0].GetType().Name}. First commands expected: {nameof(RegisterCustomer)} or {nameof(RegisterOrChangeCustomer)}.");
         }

@@ -1,8 +1,18 @@
-﻿// <copyright file="ExternalSystemReferenceController.cs" company="Fiveforty SAS Paris France">
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Server.Dynamics365Finance
+// Author           : Jérôme Piquot
+// Created          : 12-12-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 12-12-2023
+// ***********************************************************************
+// <copyright file="ExternalSystemReferenceController.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Hexalith.Server.Dynamics365Finance.Infrastructure.Controllers;
 
