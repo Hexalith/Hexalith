@@ -56,7 +56,7 @@ public static class ExternalSystemsProjectionsHelper
         ArgumentNullException.ThrowIfNull(configuration);
         services
             .ConfigureSettings<ExternalSystemsProjectionsSettings>(configuration)
-            .TryAddSingleton<IExternalReferenceMapperService>(new ExternalReferenceMapperService(applicationName));
+            .TryAddScoped<IExternalReferenceMapperService>(s => new ExternalReferenceMapperService(applicationName));
         return services;
     }
 

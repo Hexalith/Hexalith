@@ -19,7 +19,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Net;
 
-using Hexalith.Application.Helpers;
 using Hexalith.Application.States;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
@@ -110,11 +109,14 @@ public abstract partial class ReceiveMessageController : ControllerBase
     /// Problems the specified error.
     /// </summary>
     /// <param name="error">The error.</param>
+    /// <param name="exception">The exception.</param>
     /// <returns>ObjectResult.</returns>
-    protected ObjectResult Problem([NotNull] ApplicationError error)
+    /// <exception cref="System.ArgumentNullException">null.</exception>
+    /// <exception cref="System.InvalidOperationException">Could not format the error message:\n" + error.Detail + "\n" + error.TechnicalDetail.</exception>
+    protected ObjectResult Problem([NotNull] ApplicationError error, Exception? exception)
     {
         ArgumentNullException.ThrowIfNull(error);
-        Logger.LogError(error);
+        error.LogApplicationErrorDetails(Logger, exception);
         string detail;
         try
         {
@@ -135,7 +137,7 @@ public abstract partial class ReceiveMessageController : ControllerBase
 
         return Problem(
             detail,
-            "https://github.com/Hexalith/Hexalith/issues/",
+            _hostEnvironment.EnvironmentName,
             (int)HttpStatusCode.BadRequest,
             error.Title,
             error.Type?.ToString());

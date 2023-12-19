@@ -20,9 +20,11 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Dapr.Actors;
 using Dapr.Actors.Client;
 
 using Hexalith.Infrastructure.DaprRuntime.Actors;
+using Hexalith.Infrastructure.DaprRuntime.Helpers;
 
 /// <summary>
 /// Class ActorProjectionFactory.
@@ -30,22 +32,27 @@ using Hexalith.Infrastructure.DaprRuntime.Actors;
 /// </summary>
 /// <typeparam name="TState">The type of the t state.</typeparam>
 /// <seealso cref="Hexalith.Infrastructure.DaprRuntime.Projections.IActorProjectionFactory" />
-public abstract class ActorProjectionFactory<TState> : IActorProjectionFactory
-    where TState : class
+public class ActorProjectionFactory<TState> : IActorProjectionFactory<TState>
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="ActorProjectionFactory{TState}" /> class.
     /// </summary>
     /// <param name="actorFactory">The actor factory.</param>
-    /// <param name="appName">Name of the application.</param>
+    /// <param name="applicationName">Name of the application.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
-    protected ActorProjectionFactory(IActorProxyFactory actorFactory, string appName)
+    public ActorProjectionFactory(IActorProxyFactory actorFactory, string applicationName)
     {
         ArgumentNullException.ThrowIfNull(actorFactory);
-        ArgumentException.ThrowIfNullOrEmpty(appName);
+        ArgumentException.ThrowIfNullOrEmpty(applicationName);
         ActorFactory = actorFactory;
-        AppName = appName;
+        AplicationName = applicationName;
     }
+
+    /// <summary>
+    /// Gets the name of the projection actor.
+    /// </summary>
+    /// <value>The name of the projection actor.</value>
+    public string ProjectionActorName => ProjectionActorHelper.GetProjectionActorName<TState>(AplicationName);
 
     /// <summary>
     /// Gets the actor factory.
@@ -57,15 +64,13 @@ public abstract class ActorProjectionFactory<TState> : IActorProjectionFactory
     /// Gets the name of the application.
     /// </summary>
     /// <value>The name of the application.</value>
-    protected string AppName { get; }
+    protected string AplicationName { get; }
 
     /// <inheritdoc/>
-    public Task<T?> GetAsync<T>(string aggregateId, CancellationToken cancellationToken)
-        where T : class
+    public IKeyValueActor GetProjectionActor(string aggregateId)
     {
-        return Task.FromResult(typeof(T) != typeof(TState)
-            ? throw new ArgumentException($"Type {typeof(T).Name} is not supported by projection factory '{GetType().Name}'. Expected : {typeof(TState).Name}.")
-            : GetAsync(aggregateId, cancellationToken) as T);
+        ArgumentException.ThrowIfNullOrEmpty(aggregateId);
+        return ActorFactory.CreateActorProxy<IKeyValueActor>(new ActorId(aggregateId), ProjectionActorName);
     }
 
     /// <summary>
@@ -74,21 +79,17 @@ public abstract class ActorProjectionFactory<TState> : IActorProjectionFactory
     /// <param name="aggregateId">The aggregate identifier.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task&lt;TState&gt; representing the asynchronous operation.</returns>
-    public async Task<TState?> GetAsync(string aggregateId, CancellationToken cancellationToken)
+    public async Task<TState?> GetStateAsync(string aggregateId, CancellationToken cancellationToken)
     {
         ArgumentException.ThrowIfNullOrEmpty(aggregateId);
         string? result = await GetProjectionActor(aggregateId)
             .GetAsync()
             .ConfigureAwait(false);
-        return result is null ? null : JsonSerializer.Deserialize<TState>(result);
+        return result is null ? (TState?)(object?)null : JsonSerializer.Deserialize<TState>(result);
     }
 
     /// <inheritdoc/>
-    public abstract IKeyValueActor GetProjectionActor(string aggregateId);
-
-    /// <inheritdoc/>
-    public async Task SetAsync<T>(string aggregateId, T state, CancellationToken cancellationToken)
-        where T : class
+    public async Task SetStateAsync(string aggregateId, TState state, CancellationToken cancellationToken)
     {
         ArgumentException.ThrowIfNullOrEmpty(aggregateId);
         await GetProjectionActor(aggregateId)

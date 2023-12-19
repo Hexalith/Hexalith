@@ -24,7 +24,7 @@ using Hexalith.Domain.Events;
 /// </summary>
 /// <typeparam name="TEvent">The type of the t event.</typeparam>
 public interface IProjectionUpdateHandler<TEvent> : IProjectionUpdateHandler
-    where TEvent : BaseEvent
+    where TEvent : IEvent
 {
     /// <summary>
     /// Applies the specified event.

@@ -41,8 +41,8 @@ public static class ExternalSystemsHelper
     public static IServiceCollection AddExternalSystemsCommandHandlers([NotNull] this IServiceCollection services)
     {
         ArgumentNullException.ThrowIfNull(services);
-        services.TryAddSingleton<ICommandHandler<AddExternalSystemReference>, AddExternalSystemReferenceHandler>();
-        services.TryAddSingleton<ICommandHandler<RemoveExternalSystemReference>, RemoveExternalSystemReferenceHandler>();
+        services.TryAddScoped<ICommandHandler<AddExternalSystemReference>, AddExternalSystemReferenceHandler>();
+        services.TryAddScoped<ICommandHandler<RemoveExternalSystemReference>, RemoveExternalSystemReferenceHandler>();
         return services
             .AddExternalSystemsEventValidators();
     }

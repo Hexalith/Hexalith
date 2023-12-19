@@ -102,15 +102,15 @@ public static class HexalithWebApi
         _ = builder.Services.ConfigureSettings<NotificationBusSettings>(builder.Configuration);
         _ = builder.Services.ConfigureSettings<RequestBusSettings>(builder.Configuration);
         _ = builder.Services.ConfigureSettings<StateStoreSettings>(builder.Configuration);
-        builder.Services.TryAddSingleton<IRequestBus, DaprRequestBus>();
-        builder.Services.TryAddSingleton<INotificationBus, DaprNotificationBus>();
-        builder.Services.TryAddSingleton<ICommandBus, DaprCommandBus>();
-        builder.Services.TryAddSingleton<IEventBus, DaprEventBus>();
-        builder.Services.TryAddSingleton<IAggregateStateManager, AggregateStateManager>();
-        builder.Services.TryAddSingleton<IStateStoreProvider, DaprClientStateStoreProvider>();
-        builder.Services.TryAddSingleton<ICommandDispatcher, DependencyInjectionCommandDispatcher>();
-        builder.Services.TryAddSingleton<ICommandProcessor, BusCommandProcessor>();
-        builder.Services.TryAddSingleton<IProjectionUpdateProcessor, DependencyInjectionProjectionUpdateProcessor>();
+        builder.Services.TryAddScoped<IRequestBus, DaprRequestBus>();
+        builder.Services.TryAddScoped<INotificationBus, DaprNotificationBus>();
+        builder.Services.TryAddScoped<ICommandBus, DaprCommandBus>();
+        builder.Services.TryAddScoped<IEventBus, DaprEventBus>();
+        builder.Services.TryAddScoped<IAggregateStateManager, AggregateStateManager>();
+        builder.Services.TryAddScoped<IStateStoreProvider, DaprClientStateStoreProvider>();
+        builder.Services.TryAddScoped<ICommandDispatcher, DependencyInjectionCommandDispatcher>();
+        builder.Services.TryAddScoped<ICommandProcessor, BusCommandProcessor>();
+        builder.Services.TryAddScoped<IProjectionUpdateProcessor, DependencyInjectionProjectionUpdateProcessor>();
 
         return builder;
     }

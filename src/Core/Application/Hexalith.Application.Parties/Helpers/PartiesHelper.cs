@@ -38,11 +38,11 @@ public static class PartiesHelper
     /// <returns>IServiceCollection.</returns>
     public static IServiceCollection AddPartiesCommandHandlers(this IServiceCollection services)
     {
-        services.TryAddSingleton<ICommandHandler<ChangeCustomerInformation>, ChangeCustomerInformationHandler>();
-        services.TryAddSingleton<ICommandHandler<RegisterCustomer>, RegisterCustomerHandler>();
-        services.TryAddSingleton<ICommandHandler<RegisterOrChangeCustomer>, RegisterOrChangeCustomerHandler>();
-        services.TryAddSingleton<ICommandHandler<SelectIntercompanyDropshipDeliveryForCustomer>, SelectIntercompanyDropshipDeliveryForCustomerHandler>();
-        services.TryAddSingleton<ICommandHandler<DeselectIntercompanyDropshipDeliveryForCustomer>, DeselectIntercompanyDropshipDeliveryForCustomerHandler>();
+        services.TryAddScoped<ICommandHandler<ChangeCustomerInformation>, ChangeCustomerInformationHandler>();
+        services.TryAddScoped<ICommandHandler<RegisterCustomer>, RegisterCustomerHandler>();
+        services.TryAddScoped<ICommandHandler<RegisterOrChangeCustomer>, RegisterOrChangeCustomerHandler>();
+        services.TryAddScoped<ICommandHandler<SelectIntercompanyDropshipDeliveryForCustomer>, SelectIntercompanyDropshipDeliveryForCustomerHandler>();
+        services.TryAddScoped<ICommandHandler<DeselectIntercompanyDropshipDeliveryForCustomer>, DeselectIntercompanyDropshipDeliveryForCustomerHandler>();
         return services.AddPartiesEventValidators();
     }
 

@@ -21,7 +21,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 
 using Hexalith.Application.Commands;
-using Hexalith.Application.Helpers;
 using Hexalith.Application.States;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Messages;

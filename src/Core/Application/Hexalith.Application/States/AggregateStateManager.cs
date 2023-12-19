@@ -25,7 +25,6 @@ using Hexalith.Application.Aggregates;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Errors;
 using Hexalith.Application.Events;
-using Hexalith.Application.Helpers;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.Notifications;
 using Hexalith.Application.StreamStores;
@@ -221,7 +220,14 @@ public partial class AggregateStateManager : IAggregateStateManager
         }
         catch (ApplicationErrorException e)
         {
-            _logger.LogError(e);
+            if (e.Error == null)
+            {
+                _logger.LogError(e, "Error in state manager while continuing task processing.");
+            }
+            else
+            {
+                e.Error.LogApplicationErrorDetails(_logger, e);
+            }
         }
         catch (Exception e)
         {

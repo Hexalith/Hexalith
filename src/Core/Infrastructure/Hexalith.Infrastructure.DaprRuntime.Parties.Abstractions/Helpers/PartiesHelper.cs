@@ -20,7 +20,6 @@ using System.Diagnostics.CodeAnalysis;
 
 using Hexalith.Application.Parties.Helpers;
 using Hexalith.Application.Parties.Services;
-using Hexalith.Domain.Helpers;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.DaprRuntime.Parties.Configurations;
 using Hexalith.Infrastructure.DaprRuntime.Parties.Services;
@@ -59,7 +58,7 @@ public static class PartiesHelper
     public static IServiceCollection AddDaprPartiesClient([NotNull] this IServiceCollection services)
     {
         ArgumentNullException.ThrowIfNull(services);
-        services.TryAddSingleton<ICustomerQueryService, ActorCustomerQueryService>();
+        services.TryAddScoped<ICustomerQueryService, ActorCustomerQueryService>();
         return services;
     }
 }

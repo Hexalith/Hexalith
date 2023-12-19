@@ -19,7 +19,6 @@ using System.Text.Json;
 
 using Hexalith.Application.Errors;
 using Hexalith.Application.Events;
-using Hexalith.Application.Helpers;
 using Hexalith.Application.Metadatas;
 using Hexalith.Domain.Events;
 
@@ -87,17 +86,26 @@ public abstract class BindingController : ReceiveMessageController
                 metadata.Message.Id,
                 metadata.Context.CorrelationId);
             await _eventProcessor.SubmitAsync(@event, metadata, cancellationToken).ConfigureAwait(false);
+            await PostHandleEventProcessAsync(@event, metadata, cancellationToken).ConfigureAwait(false);
             return Ok();
         }
         catch (ApplicationErrorException ex)
         {
             if (ex.Error is not null)
             {
-                Logger.LogError(ex);
-                return Problem(ex.Error);
+                return Problem(ex.Error, ex);
             }
 
             throw;
         }
     }
+
+    /// <summary>
+    /// Posts the handle event process.
+    /// </summary>
+    /// <param name="event">The event.</param>
+    /// <param name="metadata">The metadata.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task.</returns>
+    protected virtual Task PostHandleEventProcessAsync(IEvent @event, IMetadata metadata, CancellationToken cancellationToken) => Task.CompletedTask;
 }

@@ -15,6 +15,7 @@ using Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers;
 using Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Helpers;
 using Hexalith.Infrastructure.WebApis.Helpers;
 using Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers;
+using Hexalith.Server.Dynamics365Finance;
 
 using Serilog;
 
@@ -26,7 +27,6 @@ bool debugInVisualStudio = true;
 bool debugInVisualStudio = false;
 #endif
 
-const string applicationName = "Dynamics365Finance";
 IEnumerable<string> aggregateNames = [Customer.GetAggregateName()];
 WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
     applicationDescription,
@@ -34,15 +34,16 @@ WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
     debugInVisualStudio,
     (actors) =>
     {
-        actors.AddExternalSystemsMapper(applicationName, aggregateNames);
-        actors.AddPartiesProjections(applicationName);
+        actors.AddExternalSystemsMapper(Dynamics365FinanceConstants.ApplicationName, aggregateNames);
+        actors.AddPartiesProjections(Dynamics365FinanceConstants.ApplicationName);
+        actors.AddDynamics365FinanceProjections(Dynamics365FinanceConstants.ApplicationName);
     },
     args);
 
 builder.Services
-    .AddCustomerProjections(applicationName)
-    .AddExternalSystemsMapperSubscription(applicationName, aggregateNames)
-    .AddDynamics365FinanceCustomers(builder.Configuration)
+    .AddCustomerProjections(Dynamics365FinanceConstants.ApplicationName)
+    .AddExternalSystemsMapperSubscription(Dynamics365FinanceConstants.ApplicationName, aggregateNames)
+    .AddDynamics365FinanceCustomers(builder.Configuration, Dynamics365FinanceConstants.ApplicationName)
     .AddOrganizations(builder.Configuration)
     .AddScoped<IIntegrationEventHandler<CustomerRegistered>, CustomerRegisteredHandler>()
     .AddScoped<IIntegrationEventHandler<CustomerInformationChanged>, CustomerInformationChangedHandler>()

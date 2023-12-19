@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 12-19-2023
 // ***********************************************************************
-// <copyright file="IActorProjectionFactory.cs" company="Fiveforty SAS Paris France">
+// <copyright file="IActorProjectionFactory{TState}.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -19,20 +19,13 @@ namespace Hexalith.Infrastructure.DaprRuntime.Projections;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 
 /// <summary>
-/// Interface IActorProjectionFactory.
+/// Interface IActorProjectionFactory
+/// Extends the <see cref="Hexalith.Infrastructure.DaprRuntime.Projections.IActorProjectionFactory" />.
 /// </summary>
-public interface IActorProjectionFactory
+/// <typeparam name="TState">The type of the t state.</typeparam>
+/// <seealso cref="Hexalith.Infrastructure.DaprRuntime.Projections.IActorProjectionFactory" />
+public interface IActorProjectionFactory<TState>
 {
-    /// <summary>
-    /// Gets the asynchronous.
-    /// </summary>
-    /// <typeparam name="T">State.</typeparam>
-    /// <param name="aggregateId">The aggregate identifier.</param>
-    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>Task&lt;System.Nullable&lt;T&gt;&gt;.</returns>
-    Task<T?> GetAsync<T>(string aggregateId, CancellationToken cancellationToken)
-        where T : class;
-
     /// <summary>
     /// Gets the projection actor.
     /// </summary>
@@ -41,13 +34,19 @@ public interface IActorProjectionFactory
     IKeyValueActor GetProjectionActor(string aggregateId);
 
     /// <summary>
-    /// Sets the asynchronous.
+    /// Gets the state asynchronous.
     /// </summary>
-    /// <typeparam name="T">State.</typeparam>
+    /// <param name="aggregateId">The aggregate identifier.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task&lt;System.Nullable&lt;TState&gt;&gt;.</returns>
+    Task<TState?> GetStateAsync(string aggregateId, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Sets the state asynchronous.
+    /// </summary>
     /// <param name="aggregateId">The aggregate identifier.</param>
     /// <param name="state">The state.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
-    Task SetAsync<T>(string aggregateId, T state, CancellationToken cancellationToken)
-        where T : class;
+    Task SetStateAsync(string aggregateId, TState state, CancellationToken cancellationToken);
 }

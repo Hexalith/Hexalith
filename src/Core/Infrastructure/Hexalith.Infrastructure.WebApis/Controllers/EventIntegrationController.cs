@@ -17,7 +17,6 @@ namespace Hexalith.Infrastructure.WebApis.Controllers;
 
 using Hexalith.Application.Errors;
 using Hexalith.Application.Events;
-using Hexalith.Application.Helpers;
 using Hexalith.Application.Projection;
 using Hexalith.Application.States;
 
@@ -91,8 +90,7 @@ public abstract partial class EventIntegrationController : ReceiveMessageControl
         {
             if (ex.Error is not null)
             {
-                Logger.LogError(ex);
-                return Problem(ex.Error);
+                return Problem(ex.Error, ex);
             }
 
             throw;

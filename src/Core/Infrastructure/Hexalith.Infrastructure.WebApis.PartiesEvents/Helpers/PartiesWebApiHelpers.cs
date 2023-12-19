@@ -16,14 +16,11 @@
 
 namespace Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers;
 
-using Dapr.Actors.Client;
-
-using Hexalith.Application.Parties.Services;
 using Hexalith.Application.Projection;
 using Hexalith.Domain.Events;
+using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers;
 using Hexalith.Infrastructure.WebApis.PartiesEvents.Projections;
-using Hexalith.Infrastructure.WebApis.PartiesEvents.Services;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -44,13 +41,11 @@ public static class PartiesWebApiHelpers
     {
         ArgumentNullException.ThrowIfNull(services);
         ArgumentException.ThrowIfNullOrEmpty(appName);
-        services.TryAddSingleton<IProjectionUpdateHandler<CustomerInformationChanged>, CustomerInformationChangedProjectionUpdateHandler>();
-        services.TryAddSingleton<IProjectionUpdateHandler<CustomerRegistered>, CustomerRegisteredProjectionUpdateHandler>();
-        services.TryAddSingleton<IProjectionUpdateHandler<IntercompanyDropshipDeliveryForCustomerDeselected>, IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler>();
-        services.TryAddSingleton<IProjectionUpdateHandler<IntercompanyDropshipDeliveryForCustomerSelected>, IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler>();
-        services.TryAddSingleton<ICustomerProjectionService, CustomerAggregateQueryService>();
-        services.TryAddSingleton<ICustomerProjectionActorFactory>(s
-            => new CustomerProjectionActorFactory(s.GetRequiredService<IActorProxyFactory>(), appName));
+        services.TryAddScoped<IProjectionUpdateHandler<CustomerInformationChanged>, CustomerInformationChangedProjectionUpdateHandler>();
+        services.TryAddScoped<IProjectionUpdateHandler<CustomerRegistered>, CustomerRegisteredProjectionUpdateHandler>();
+        services.TryAddScoped<IProjectionUpdateHandler<IntercompanyDropshipDeliveryForCustomerDeselected>, IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler>();
+        services.TryAddScoped<IProjectionUpdateHandler<IntercompanyDropshipDeliveryForCustomerSelected>, IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler>();
+        _ = services.AddActorProjectionFactory<CustomerRegistered>(appName);
         _ = services
          .AddControllers()
          .AddApplicationPart(typeof(CustomerIntegrationEventsController).Assembly)

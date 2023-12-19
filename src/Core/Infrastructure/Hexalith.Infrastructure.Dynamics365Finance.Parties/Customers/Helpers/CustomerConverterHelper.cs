@@ -28,7 +28,7 @@ using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities;
 /// <summary>
 /// Class CustomerConverter.
 /// </summary>
-public static class CustomerConverter
+public static class CustomerConverterHelper
 {
     /// <summary>
     /// Gets the changes.
@@ -433,6 +433,22 @@ public static class CustomerConverter
         if (oldValue == null && newValue == null)
         {
             return;
+        }
+
+        if (oldValue is string strOldValue && string.IsNullOrWhiteSpace(strOldValue))
+        {
+            if (newValue == null || (newValue is string str && string.IsNullOrWhiteSpace(str)))
+            {
+                return;
+            }
+        }
+
+        if (newValue is string strNewValue && string.IsNullOrWhiteSpace(strNewValue))
+        {
+            if (oldValue == null || (oldValue is string str && string.IsNullOrWhiteSpace(str)))
+            {
+                return;
+            }
         }
 
         if (oldValue != null && oldValue.Equals(newValue))

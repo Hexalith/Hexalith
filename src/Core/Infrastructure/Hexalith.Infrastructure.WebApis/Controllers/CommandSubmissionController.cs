@@ -17,7 +17,6 @@ namespace Hexalith.Infrastructure.WebApis.Controllers;
 
 using Hexalith.Application.Commands;
 using Hexalith.Application.Errors;
-using Hexalith.Application.Helpers;
 using Hexalith.Application.States;
 
 using Microsoft.AspNetCore.Mvc;
@@ -82,8 +81,7 @@ public abstract partial class CommandSubmissionController : ReceiveMessageContro
         {
             if (ex.Error is not null)
             {
-                Logger.LogError(ex);
-                return Problem(ex.Error);
+                return Problem(ex.Error, ex);
             }
 
             throw;

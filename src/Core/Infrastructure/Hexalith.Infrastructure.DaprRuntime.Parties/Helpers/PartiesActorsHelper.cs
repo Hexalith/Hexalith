@@ -18,11 +18,10 @@ namespace Hexalith.Infrastructure.DaprRuntime.Parties.Helpers;
 
 using System.Diagnostics.CodeAnalysis;
 
-using Dapr.Actors;
-using Dapr.Actors.Client;
 using Dapr.Actors.Runtime;
 
-using Hexalith.Infrastructure.DaprRuntime.Actors;
+using Hexalith.Domain.Events;
+using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Parties.Actors;
 
 /// <summary>
@@ -44,38 +43,16 @@ public static class PartiesActorsHelper
     }
 
     /// <summary>
-    /// Adds the parties projection.
+    /// Adds the parties projections.
     /// </summary>
     /// <param name="actors">The actors.</param>
-    /// <param name="prefix">The prefix.</param>
+    /// <param name="applicationName">Name of the application.</param>
     /// <returns>ActorRegistrationCollection.</returns>
     /// <exception cref="System.ArgumentNullException">null.</exception>
-    public static ActorRegistrationCollection AddPartiesProjections([NotNull] this ActorRegistrationCollection actors, string prefix)
+    public static ActorRegistrationCollection AddPartiesProjections([NotNull] this ActorRegistrationCollection actors, string applicationName)
     {
         ArgumentNullException.ThrowIfNull(actors);
-        actors.RegisterActor<KeyValueActor>(GetCustomerProjectionActorName(prefix));
+        actors.RegisterProjectionActor<CustomerRegistered>(applicationName);
         return actors;
     }
-
-    /// <summary>
-    /// Gets the customer projection actor.
-    /// </summary>
-    /// <param name="actorfactory">The actorfactory.</param>
-    /// <param name="prefix">The prefix.</param>
-    /// <param name="aggregateId">The aggregate identifier.</param>
-    /// <returns>IKeyValueActor.</returns>
-    /// <exception cref="System.ArgumentNullException">null.</exception>
-    public static IKeyValueActor GetCustomerProjectionActor([NotNull] this IActorProxyFactory actorfactory, string prefix, string aggregateId)
-    {
-        ArgumentNullException.ThrowIfNull(actorfactory);
-
-        return actorfactory.CreateActorProxy<IKeyValueActor>(new ActorId(aggregateId), GetCustomerProjectionActorName(prefix));
-    }
-
-    /// <summary>
-    /// Gets the name of the customer projection actor.
-    /// </summary>
-    /// <param name="prefix">The prefix.</param>
-    /// <returns>System.String.</returns>
-    private static string GetCustomerProjectionActorName(string prefix) => prefix + "CustomerProjectiondActor";
 }

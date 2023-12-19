@@ -46,13 +46,12 @@ public record EventDispatchFailed : ApplicationError
         ArgumentNullException.ThrowIfNull(@event);
         Title = "Event dispatch failed";
         Type = nameof(EventDispatchFailed);
-        Detail = "Could not dispatch event {EventName} with aggregate id {AggregateName}-{EventId}.";
-        Arguments = new object[] { @event.TypeName, @event.AggregateName, @event.AggregateId };
-        TechnicalDetail = "Could not dispatch event {EventName} with aggregate id {AggregateName}-{EventId}:\n{ErrorMessage}\n{StackTrace}";
+        Detail = "Could not dispatch event {EventName} with aggregate id {EventId}.";
+        Arguments = new object[] { @event.TypeName, @event.AggregateId };
+        TechnicalDetail = "Could not dispatch event {EventName} with aggregate id {EventId}:\n{ErrorMessage}\n{StackTrace}";
         TechnicalArguments = new object[]
         {
             @event.TypeName,
-            @event.AggregateName,
             @event.AggregateId,
             ex.FullMessage(),
             ex.StackTrace ?? string.Empty,

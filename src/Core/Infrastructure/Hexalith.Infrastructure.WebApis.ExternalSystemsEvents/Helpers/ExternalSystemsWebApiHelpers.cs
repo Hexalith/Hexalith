@@ -49,9 +49,9 @@ public static class ExternalSystemsWebApiHelpers
         ArgumentException.ThrowIfNullOrEmpty(applicationName);
         ArgumentNullException.ThrowIfNull(aggregateNames);
 
-        services.TryAddSingleton<IProjectionUpdateHandler<ExternalSystemReferenceAdded>>(new ExternalSystemReferenceAddedMapperUpdateHandler(applicationName, aggregateNames));
-        services.TryAddSingleton<IProjectionUpdateHandler<ExternalSystemReferenceRemoved>>(new ExternalSystemReferenceRemovedMapperUpdateHandler(applicationName, aggregateNames));
-        services.TryAddSingleton<IExternalReferenceMapperService>(new ExternalReferenceMapperService(applicationName));
+        services.TryAddScoped<IProjectionUpdateHandler<ExternalSystemReferenceAdded>>(s => new ExternalSystemReferenceAddedMapperUpdateHandler(applicationName, aggregateNames));
+        services.TryAddScoped<IProjectionUpdateHandler<ExternalSystemReferenceRemoved>>(s => new ExternalSystemReferenceRemovedMapperUpdateHandler(applicationName, aggregateNames));
+        services.TryAddScoped<IExternalReferenceMapperService>(s => new ExternalReferenceMapperService(applicationName));
         _ = services
          .AddControllers()
          .AddApplicationPart(typeof(ExternalSystemsIntegrationEventsController).Assembly)

@@ -25,7 +25,6 @@ using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Projections;
-using Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers;
 
 using Microsoft.Extensions.Logging;
 
@@ -45,7 +44,7 @@ public abstract partial class CustomerProjectionUpdateHandler<TCustomerEvent> : 
     /// </summary>
     /// <param name="factory">The factory.</param>
     /// <param name="logger">The logger.</param>
-    protected CustomerProjectionUpdateHandler(ICustomerProjectionActorFactory factory, ILogger logger)
+    protected CustomerProjectionUpdateHandler(IActorProjectionFactory<CustomerRegistered> factory, ILogger logger)
         : base(factory) => _logger = logger;
 
     /// <inheritdoc/>

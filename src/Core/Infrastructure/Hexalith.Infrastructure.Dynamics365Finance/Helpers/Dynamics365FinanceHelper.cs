@@ -40,7 +40,7 @@ public static class Dynamics365FinanceHelper
     /// <returns>IServiceCollection.</returns>
     public static IServiceCollection AddDynamics365FinanceBusinessEvents(this IServiceCollection services, IConfiguration configuration)
     {
-        services.TryAddSingleton<IDynamics365FinanceIntegrationEventProcessor, Dynamics365FinanceIntegrationEventProcessor>();
+        services.TryAddScoped<IDynamics365FinanceIntegrationEventProcessor, Dynamics365FinanceIntegrationEventProcessor>();
         services.TryAddSingleton<IValidator<Dynamics365BusinessEventBase>, Dynamics365BusinessEventValidator>();
         return services;
     }

@@ -20,12 +20,14 @@ using Hexalith.Application.Events;
 using Hexalith.Application.ExternalSystems.Commands;
 using Hexalith.Application.Organizations.Configurations;
 using Hexalith.Application.Parties.Commands;
-using Hexalith.Application.Parties.Services;
 using Hexalith.Domain.Aggregates;
+using Hexalith.Domain.Events;
 using Hexalith.Domain.ValueObjets;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Configuration;
+using Hexalith.Infrastructure.DaprRuntime.Projections;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers;
+using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Projections;
 
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -37,8 +39,9 @@ using Microsoft.Extensions.Options;
 /// <seealso cref="Application.Events.IntegrationEventHandler{Customers.Infrastructure.IntegrationEvents.FFYCustomerChangedBusinessEvent}" />
 public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEventHandler<Dynamics365FinanceCustomerChanged>
 {
-    private readonly ICustomerProjectionService _customerService;
+    private readonly IActorProjectionFactory<CustomerRegistered> _customerService;
     private readonly IDateTimeService _dateTimeService;
+    private readonly IActorProjectionFactory<Dynamics365FinanceCustomerState> _erpState;
     private readonly ILogger<Dynamics365FinanceCustomerChangedHandler> _logger;
     private readonly IOptions<OrganizationSettings> _settings;
     private string _originId;
@@ -47,24 +50,30 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
     /// <summary>
     /// Initializes a new instance of the <see cref="Dynamics365FinanceCustomerChangedHandler"/> class.
     /// </summary>
+    /// <param name="erpState">State of the erp.</param>
     /// <param name="customerService">The customer service.</param>
     /// <param name="dateTimeService">The date time service.</param>
     /// <param name="settings">The settings.</param>
+    /// <param name="logger">The logger.</param>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
     public Dynamics365FinanceCustomerChangedHandler(
-        ICustomerProjectionService customerService,
+        IActorProjectionFactory<Dynamics365FinanceCustomerState> erpState,
+        IActorProjectionFactory<CustomerRegistered> customerService,
         IDateTimeService dateTimeService,
         IOptions<OrganizationSettings> settings,
         ILogger<Dynamics365FinanceCustomerChangedHandler> logger)
     {
+        ArgumentNullException.ThrowIfNull(erpState);
         ArgumentNullException.ThrowIfNull(customerService);
         ArgumentNullException.ThrowIfNull(dateTimeService);
         ArgumentNullException.ThrowIfNull(settings);
         ArgumentNullException.ThrowIfNull(logger);
+
         SettingsException<OrganizationSettings>.ThrowIfNullOrEmpty(settings.Value.DefaultPartitionId);
         SettingsException<OrganizationSettings>.ThrowIfNullOrEmpty(settings.Value.DefaultOriginId);
         _partitionId = settings.Value.DefaultPartitionId;
         _originId = settings.Value.DefaultOriginId;
-
+        _erpState = erpState;
         _customerService = customerService;
         _dateTimeService = dateTimeService;
         _settings = settings;
@@ -80,6 +89,18 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
         ArgumentException.ThrowIfNullOrEmpty(@event.Account);
         ArgumentException.ThrowIfNullOrEmpty(@event.Name);
         ArgumentException.ThrowIfNullOrEmpty(@event.BusinessEventLegalEntity);
+        Dynamics365FinanceCustomerState? lastState = await _erpState.GetStateAsync(@event.AggregateId, cancellationToken).ConfigureAwait(false);
+        if (lastState != null)
+        {
+            string? hasChanges = lastState.HasChanges(@event);
+            if (hasChanges == null)
+            {
+                return [];
+            }
+
+            LogEventHasChangesInformation(@event.BusinessEventLegalEntity, @event.Account, hasChanges);
+        }
+
         string? aggregateId = @event
             .ExternalReferences?
             .Where(p => p.SystemId == nameof(Hexalith))
@@ -88,7 +109,6 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
         string originId;
         string customerId;
         string companyId;
-        Customer? customer = null;
         if (string.IsNullOrWhiteSpace(aggregateId))
         {
             // Ignore event without Hexalith external code if not a registration event
@@ -97,10 +117,10 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
         }
         else
         {
-            customer = await _customerService
-                .GetCustomerAsync(aggregateId, cancellationToken)
+            CustomerRegistered? customerRegistered = await _customerService
+                .GetStateAsync(aggregateId, cancellationToken)
                 .ConfigureAwait(false);
-            if (customer == null)
+            if (customerRegistered == null)
             {
                 string[] parts = aggregateId.Split(Aggregate.Separator, 5);
                 companyId = parts[2];
@@ -112,9 +132,9 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
             }
             else
             {
-                originId = customer.OriginId;
-                customerId = customer.Id;
-                companyId = customer.CompanyId;
+                originId = customerRegistered.OriginId;
+                customerId = customerRegistered.Id;
+                companyId = customerRegistered.CompanyId;
             }
         }
 
@@ -149,7 +169,7 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
                    originId,
                    customerId,
                    @event.Name,
-                   CustomerConverter.ToPartyType(@event.PartyType ?? nameof(PartyType.Person)),
+                   CustomerConverterHelper.ToPartyType(@event.PartyType ?? nameof(PartyType.Person)),
                    @event.Contact,
                    @event.WarehouseId,
                    @event.CommissionSalesGroupId,
@@ -171,6 +191,12 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
 
         return commands;
     }
+
+    [LoggerMessage(
+               EventId = 0,
+               Level = LogLevel.Information,
+               Message = "Event {BusinessEventLegalEntity}/{Account} has changes :\n{HasChanges}.")]
+    private partial void LogEventHasChangesInformation(string businessEventLegalEntity, string account, string hasChanges);
 
     [LoggerMessage(
         EventId = 1,

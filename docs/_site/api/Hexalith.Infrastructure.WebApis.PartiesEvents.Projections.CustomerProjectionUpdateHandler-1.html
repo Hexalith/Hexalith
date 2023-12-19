@@ -74,13 +74,13 @@
   <h1 id="Hexalith_Infrastructure_WebApis_PartiesEvents_Projections_CustomerProjectionUpdateHandler_1" data-uid="Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler`1" class="text-break">Class CustomerProjectionUpdateHandler&lt;TCustomerEvent&gt;
   </h1>
   <div class="markdown level0 summary"><p>Class CustomerProjectionUpdateHandler.
-Implements the <a class="xref" href="Hexalith.Application.Projection.ProjectionUpdateHandler-1.html">ProjectionUpdateHandler&lt;TEvent&gt;</a>.</p>
+Implements the <see cref="!:ProjectionUpdateHandler&lt;TCustomerEvent>"></see>.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="Hexalith.Application.Projection.ProjectionUpdateHandler-1.html">ProjectionUpdateHandler</a>&lt;TCustomerEvent&gt;</div>
+    <div class="level1"><a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Projections.KeyValueActorProjectionUpdateEventHandlerBase-2.html">KeyValueActorProjectionUpdateEventHandlerBase</a>&lt;TCustomerEvent, <a class="xref" href="Hexalith.Domain.Events.CustomerRegistered.html">CustomerRegistered</a>&gt;</div>
     <div class="level2"><span class="xref">CustomerProjectionUpdateHandler&lt;TCustomerEvent&gt;</span></div>
       <div class="level3"><a class="xref" href="Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerInformationChangedProjectionUpdateHandler.html">CustomerInformationChangedProjectionUpdateHandler</a></div>
       <div class="level3"><a class="xref" href="Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerRegisteredProjectionUpdateHandler.html">CustomerRegisteredProjectionUpdateHandler</a></div>
@@ -95,7 +95,13 @@ Implements the <a class="xref" href="Hexalith.Application.Projection.ProjectionU
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Hexalith.Application.Projection.ProjectionUpdateHandler-1.html#Hexalith_Application_Projection_ProjectionUpdateHandler_1_StateStore">ProjectionUpdateHandler&lt;TCustomerEvent&gt;.StateStore</a>
+      <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Projections.KeyValueActorProjectionUpdateEventHandlerBase-2.html#Hexalith_Infrastructure_DaprRuntime_Projections_KeyValueActorProjectionUpdateEventHandlerBase_2_ApplyAsync__0_Hexalith_Application_Metadatas_IMetadata_System_Threading_CancellationToken_">KeyValueActorProjectionUpdateEventHandlerBase&lt;TCustomerEvent, CustomerRegistered&gt;.ApplyAsync(TCustomerEvent, IMetadata, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Projections.KeyValueActorProjectionUpdateEventHandlerBase-2.html#Hexalith_Infrastructure_DaprRuntime_Projections_KeyValueActorProjectionUpdateEventHandlerBase_2_GetProjectionAsync_System_String_System_Threading_CancellationToken_">KeyValueActorProjectionUpdateEventHandlerBase&lt;TCustomerEvent, CustomerRegistered&gt;.GetProjectionAsync(String, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Projections.KeyValueActorProjectionUpdateEventHandlerBase-2.html#Hexalith_Infrastructure_DaprRuntime_Projections_KeyValueActorProjectionUpdateEventHandlerBase_2_SaveProjectionAsync_System_String__1_System_Threading_CancellationToken_">KeyValueActorProjectionUpdateEventHandlerBase&lt;TCustomerEvent, CustomerRegistered&gt;.SaveProjectionAsync(String, CustomerRegistered, CancellationToken)</a>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
@@ -123,7 +129,7 @@ Implements the <a class="xref" href="Hexalith.Application.Projection.ProjectionU
   <h6><strong>Assembly</strong>: Hexalith.Infrastructure.WebApis.PartiesEvents.dll</h6>
   <h5 id="Hexalith_Infrastructure_WebApis_PartiesEvents_Projections_CustomerProjectionUpdateHandler_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class CustomerProjectionUpdateHandler&lt;TCustomerEvent&gt; : ProjectionUpdateHandler&lt;TCustomerEvent&gt;, IProjectionUpdateHandler&lt;TCustomerEvent&gt;, IProjectionUpdateHandler where TCustomerEvent : CustomerEvent</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class CustomerProjectionUpdateHandler&lt;TCustomerEvent&gt; : KeyValueActorProjectionUpdateEventHandlerBase&lt;TCustomerEvent, CustomerRegistered&gt;, IProjectionUpdateHandler&lt;TCustomerEvent&gt;, IProjectionUpdateHandler where TCustomerEvent : CustomerEvent</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -145,19 +151,19 @@ Implements the <a class="xref" href="Hexalith.Application.Projection.ProjectionU
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_PartiesEvents_Projections_CustomerProjectionUpdateHandler_1__ctor_Hexalith_Application_States_IStateStoreProvider_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler%601.%23ctor(Hexalith.Application.States.IStateStoreProvider)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_PartiesEvents_Projections_CustomerProjectionUpdateHandler_1__ctor_Hexalith_Infrastructure_DaprRuntime_Projections_IActorProjectionFactory_Hexalith_Domain_Events_CustomerRegistered__Microsoft_Extensions_Logging_ILogger_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler%601.%23ctor(Hexalith.Infrastructure.DaprRuntime.Projections.IActorProjectionFactory%7BHexalith.Domain.Events.CustomerRegistered%7D%2CMicrosoft.Extensions.Logging.ILogger)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis.PartiesEvents/Projections/CustomerProjectionUpdateHandler.cs/#L43">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis.PartiesEvents/Projections/CustomerProjectionUpdateHandler.cs/#L47">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_WebApis_PartiesEvents_Projections_CustomerProjectionUpdateHandler_1__ctor_" data-uid="Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler`1.#ctor*"></a>
-  <h4 id="Hexalith_Infrastructure_WebApis_PartiesEvents_Projections_CustomerProjectionUpdateHandler_1__ctor_Hexalith_Application_States_IStateStoreProvider_" data-uid="Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler`1.#ctor(Hexalith.Application.States.IStateStoreProvider)">CustomerProjectionUpdateHandler(IStateStoreProvider)</h4>
+  <h4 id="Hexalith_Infrastructure_WebApis_PartiesEvents_Projections_CustomerProjectionUpdateHandler_1__ctor_Hexalith_Infrastructure_DaprRuntime_Projections_IActorProjectionFactory_Hexalith_Domain_Events_CustomerRegistered__Microsoft_Extensions_Logging_ILogger_" data-uid="Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler`1.#ctor(Hexalith.Infrastructure.DaprRuntime.Projections.IActorProjectionFactory{Hexalith.Domain.Events.CustomerRegistered},Microsoft.Extensions.Logging.ILogger)">CustomerProjectionUpdateHandler(IActorProjectionFactory&lt;CustomerRegistered&gt;, ILogger)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler-1.html">CustomerProjectionUpdateHandler&lt;TCustomerEvent&gt;</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected CustomerProjectionUpdateHandler(IStateStoreProvider stateStoreProvider)</code></pre>
+    <pre><code class="lang-csharp hljs">protected CustomerProjectionUpdateHandler(IActorProjectionFactory&lt;CustomerRegistered&gt; factory, ILogger logger)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -170,9 +176,15 @@ Implements the <a class="xref" href="Hexalith.Application.Projection.ProjectionU
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Hexalith.Application.States.IStateStoreProvider.html">IStateStoreProvider</a></td>
-        <td><span class="parametername">stateStoreProvider</span></td>
-        <td><p>The state store provider.</p>
+        <td><a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Projections.IActorProjectionFactory-1.html">IActorProjectionFactory</a>&lt;<a class="xref" href="Hexalith.Domain.Events.CustomerRegistered.html">CustomerRegistered</a>&gt;</td>
+        <td><span class="parametername">factory</span></td>
+        <td><p>The factory.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Logging.ILogger</span></td>
+        <td><span class="parametername">logger</span></td>
+        <td><p>The logger.</p>
 </td>
       </tr>
     </tbody>
@@ -184,7 +196,7 @@ Implements the <a class="xref" href="Hexalith.Application.Projection.ProjectionU
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_PartiesEvents_Projections_CustomerProjectionUpdateHandler_1_ApplyAsync__0_Hexalith_Application_Metadatas_IMetadata_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler%601.ApplyAsync(%600%2CHexalith.Application.Metadatas.IMetadata%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis.PartiesEvents/Projections/CustomerProjectionUpdateHandler.cs/#L49">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis.PartiesEvents/Projections/CustomerProjectionUpdateHandler.cs/#L51">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_WebApis_PartiesEvents_Projections_CustomerProjectionUpdateHandler_1_ApplyAsync_" data-uid="Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler`1.ApplyAsync*"></a>
   <h4 id="Hexalith_Infrastructure_WebApis_PartiesEvents_Projections_CustomerProjectionUpdateHandler_1_ApplyAsync__0_Hexalith_Application_Metadatas_IMetadata_System_Threading_CancellationToken_" data-uid="Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler`1.ApplyAsync(`0,Hexalith.Application.Metadatas.IMetadata,System.Threading.CancellationToken)">ApplyAsync(TCustomerEvent, IMetadata, CancellationToken)</h4>
@@ -237,7 +249,7 @@ Implements the <a class="xref" href="Hexalith.Application.Projection.ProjectionU
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">Hexalith.Application.Projection.ProjectionUpdateHandler&lt;TCustomerEvent&gt;.ApplyAsync(TCustomerEvent, Hexalith.Application.Metadatas.IMetadata, System.Threading.CancellationToken)</span></div>
+  <div><span class="xref">Hexalith.Infrastructure.DaprRuntime.Projections.KeyValueActorProjectionUpdateEventHandlerBase&lt;TCustomerEvent, Hexalith.Domain.Events.CustomerRegistered&gt;.ApplyAsync(TCustomerEvent, Hexalith.Application.Metadatas.IMetadata, System.Threading.CancellationToken)</span></div>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="Hexalith.Application.Projection.IProjectionUpdateHandler-1.html">IProjectionUpdateHandler&lt;TEvent&gt;</a>
@@ -255,10 +267,6 @@ Implements the <a class="xref" href="Hexalith.Application.Projection.ProjectionU
   <div>
       <a class="xref" href="Hexalith.Extensions.Reflections.ObjectDifferenceHelper.html#Hexalith_Extensions_Reflections_ObjectDifferenceHelper_GetDifferenceInformation_System_Object_System_Object_">ObjectDifferenceHelper.GetDifferenceInformation(Object, Object)</a>
   </div>
-  <h3 id="seealso">See Also</h3>
-  <div class="seealso">
-      <div><a class="xref" href="Hexalith.Application.Projection.ProjectionUpdateHandler-1.html">ProjectionUpdateHandler</a>&lt;TEvent&gt;</div>
-  </div>
 </article>
           </div>
           
@@ -270,7 +278,7 @@ Implements the <a class="xref" href="Hexalith.Application.Projection.ProjectionU
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_PartiesEvents_Projections_CustomerProjectionUpdateHandler_1.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.CustomerProjectionUpdateHandler%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis.PartiesEvents/Projections/CustomerProjectionUpdateHandler.cs/#L36" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis.PartiesEvents/Projections/CustomerProjectionUpdateHandler.cs/#L37" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
