@@ -42,7 +42,7 @@ public abstract record Aggregate : IAggregate
     /// <summary>
     /// Default string used for separating natural keys to compose the aggregate identifier.
     /// </summary>
-    protected const string Separator = "-";
+    public const string Separator = "-";
 
     /// <inheritdoc/>
     [IgnoreDataMember]

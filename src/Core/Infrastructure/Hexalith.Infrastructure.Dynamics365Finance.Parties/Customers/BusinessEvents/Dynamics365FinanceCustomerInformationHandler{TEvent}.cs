@@ -129,12 +129,27 @@ public abstract partial class Dynamics365FinanceCustomerInformationHandler<TEven
         }
         else
         {
-            Customer? customer = await _customerService.GetCustomerAsync(aggregateId, cancellationToken).ConfigureAwait(false);
-            _ = customer ?? throw new InvalidOperationException($"Customer '{aggregateId}' not found while handling '{@event.BusinessEventLegalEntity}/{@event.Account}' event.");
-            originId = customer.OriginId;
-            customerId = customer.Id;
-            partitionId = customer.PartitionId;
-            companyId = customer.CompanyId;
+            Customer? customer = await _customerService
+                .GetCustomerAsync(aggregateId, cancellationToken)
+                .ConfigureAwait(false);
+            if (customer == null)
+            {
+                string[] parts = aggregateId.Split(Aggregate.Separator, 5);
+                partitionId = parts[1];
+                companyId = parts[2];
+                originId = parts[3];
+                customerId = parts[4];
+
+                // TODO : Do a call to the customer aggregate service to get the customer
+                // throw new InvalidOperationException($"Customer '{aggregateId}' not found while handling '{@event.BusinessEventLegalEntity}/{@event.Account}' event.");
+            }
+            else
+            {
+                originId = customer.OriginId;
+                customerId = customer.Id;
+                partitionId = customer.PartitionId;
+                companyId = customer.CompanyId;
+            }
         }
 
         string customerAggregateName = Customer.GetAggregateName();
