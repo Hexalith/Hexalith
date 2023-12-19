@@ -21,11 +21,13 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Hexalith.Application.Metadatas;
-using Hexalith.Application.Projection;
-using Hexalith.Application.States;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
-using Hexalith.Domain.ValueObjets;
+using Hexalith.Domain.Helpers;
+using Hexalith.Infrastructure.DaprRuntime.Projections;
+using Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers;
+
+using Microsoft.Extensions.Logging;
 
 /// <summary>
 /// Class CustomerProjectionUpdateHandler.
@@ -33,48 +35,50 @@ using Hexalith.Domain.ValueObjets;
 /// </summary>
 /// <typeparam name="TCustomerEvent">The type of the t customer event.</typeparam>
 /// <seealso cref="ProjectionUpdateHandler{TCustomerEvent}" />
-public abstract class CustomerProjectionUpdateHandler<TCustomerEvent> : ProjectionUpdateHandler<TCustomerEvent>
+public abstract partial class CustomerProjectionUpdateHandler<TCustomerEvent> : KeyValueActorProjectionUpdateEventHandlerBase<TCustomerEvent, CustomerRegistered>
     where TCustomerEvent : CustomerEvent
 {
+    private readonly ILogger _logger;
+
     /// <summary>
-    /// Initializes a new instance of the <see cref="CustomerProjectionUpdateHandler{TCustomerEvent}" /> class.
+    /// Initializes a new instance of the <see cref="CustomerProjectionUpdateHandler{TCustomerEvent}"/> class.
     /// </summary>
-    /// <param name="stateStoreProvider">The state store provider.</param>
-    protected CustomerProjectionUpdateHandler(IStateStoreProvider stateStoreProvider)
-        : base(stateStoreProvider)
-    {
-    }
+    /// <param name="factory">The factory.</param>
+    /// <param name="logger">The logger.</param>
+    protected CustomerProjectionUpdateHandler(ICustomerProjectionActorFactory factory, ILogger logger)
+        : base(factory) => _logger = logger;
 
     /// <inheritdoc/>
     public override async Task ApplyAsync([NotNull] TCustomerEvent baseEvent, IMetadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(baseEvent);
-        Customer customer;
         if (baseEvent is CustomerRegistered registered)
         {
-            customer = new Customer(registered);
-        }
-        else
-        {
-            Extensions.Common.ConditionalValue<Customer> result = await StateStore.TryGetStateAsync<Customer>(baseEvent.AggregateId, cancellationToken).ConfigureAwait(false);
-            customer = result.HasValue
-                ? result.Value
-                : new Customer(new CustomerRegistered(
-                    baseEvent.PartitionId,
-                    baseEvent.CompanyId,
-                    baseEvent.OriginId,
-                    baseEvent.Id,
-                    "Not Defined",
-                    PartyType.Other,
-                    new Domain.ValueObjets.Contact(null, null, null, null, null),
-                    null,
-                    null,
-                    null,
-                    null,
-                    DateTimeOffset.MinValue));
-            customer = (Customer)customer.Apply(baseEvent);
+            await SaveProjectionAsync(baseEvent.AggregateId, registered, cancellationToken).ConfigureAwait(false);
+            return;
         }
 
-        await StateStore.SetStateAsync(baseEvent.AggregateId, customer, cancellationToken).ConfigureAwait(false);
+        Customer customer;
+        CustomerRegistered? existingCustomer = await GetProjectionAsync(baseEvent.AggregateId, cancellationToken).ConfigureAwait(false);
+        if (existingCustomer == null)
+        {
+            if (baseEvent is CustomerInformationChanged changed)
+            {
+                await SaveProjectionAsync(baseEvent.AggregateId, changed.ToCustomer(false).ToCustomerRegistered(), cancellationToken).ConfigureAwait(false);
+            }
+
+            LogCustomerProjectionNotInitialized(baseEvent.AggregateId, baseEvent.TypeName);
+            return;
+        }
+
+        customer = new Customer(existingCustomer);
+        customer = (Customer)customer.Apply(baseEvent);
+        await SaveProjectionAsync(baseEvent.AggregateId, customer.ToCustomerRegistered(), cancellationToken).ConfigureAwait(false);
     }
+
+    [LoggerMessage(
+        EventId = 1,
+        Level = LogLevel.Warning,
+        Message = "Customer projection not initialized for aggregate {AggregateId} and event {TypeName}.")]
+    private partial void LogCustomerProjectionNotInitialized(string aggregateId, string typeName);
 }

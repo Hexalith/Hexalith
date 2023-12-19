@@ -20,28 +20,29 @@ using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 
 using Hexalith.Application.Parties.Services;
-using Hexalith.Application.States;
 using Hexalith.Domain.Aggregates;
+using Hexalith.Domain.Events;
+using Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers;
 
 /// <summary>
 /// Class CustomerAggregateQueryService.
 /// </summary>
-public class CustomerAggregateQueryService : ICustomerAggregateQueryService
+public class CustomerAggregateQueryService : ICustomerProjectionService
 {
     /// <summary>
     /// The state store.
     /// </summary>
-    private readonly IStateStoreProvider _stateStore;
+    private readonly ICustomerProjectionActorFactory _factory;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="CustomerAggregateQueryService" /> class.
+    /// Initializes a new instance of the <see cref="CustomerAggregateQueryService"/> class.
     /// </summary>
-    /// <param name="stateStore">The state store.</param>
-    /// <exception cref="System.ArgumentNullException"></exception>
-    public CustomerAggregateQueryService(IStateStoreProvider stateStore)
+    /// <param name="factory">The factory.</param>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
+    public CustomerAggregateQueryService(ICustomerProjectionActorFactory factory)
     {
-        ArgumentNullException.ThrowIfNull(stateStore);
-        _stateStore = stateStore;
+        ArgumentNullException.ThrowIfNull(factory);
+        _factory = factory;
     }
 
     /// <summary>
@@ -54,9 +55,9 @@ public class CustomerAggregateQueryService : ICustomerAggregateQueryService
     {
         ArgumentException.ThrowIfNullOrEmpty(aggregateId);
 
-        Extensions.Common.ConditionalValue<Customer> result = await _stateStore
-            .TryGetStateAsync<Customer>(aggregateId, cancellationToken)
+        CustomerRegistered? result = await _factory
+            .GetAsync(aggregateId, cancellationToken)
             .ConfigureAwait(false);
-        return result.HasValue ? result.Value : null;
+        return (result == null) ? null : new Customer(result);
     }
 }

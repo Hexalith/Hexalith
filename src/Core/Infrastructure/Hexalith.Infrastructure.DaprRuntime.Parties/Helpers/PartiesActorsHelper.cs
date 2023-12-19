@@ -77,5 +77,5 @@ public static class PartiesActorsHelper
     /// </summary>
     /// <param name="prefix">The prefix.</param>
     /// <returns>System.String.</returns>
-    private static string GetCustomerProjectionActorName(string prefix) => prefix + "CustomerRegisteredActor";
+    private static string GetCustomerProjectionActorName(string prefix) => prefix + "CustomerProjectiondActor";
 }

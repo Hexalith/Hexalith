@@ -46,3 +46,7 @@ public class CustomerEventsController : CustomerIntegrationEventsController
     {
     }
 }
+
+/*
+{"message":{"$type_name":"CustomerInformationChanged","$version_major":0,"$version_minor":0,"commissionSalesGroupId":"","companyId":"FRRT","contact":{"email":"jean@valjean.com","mobile":"+33611223344","person":{"birthDate":null,"firstName":"Jean A","gender":"Unknown","lastName":"Valjean","name":null,"title":null},"phone":"","postalAddress":{"city":"","countryId":"","countryIso2":"","countryName":"","countyId":null,"description":null,"name":null,"postBox":null,"stateId":"","stateName":"","street":"","streetNumber":"","zipCode":""}},"date":"2023-12-19T07:17:41.6780365+00:00","groupId":null,"id":"473882","name":"Jean A Valjean","originId":"Bspk","partitionId":"FFY","partyType":"Person","salesCurrencyId":null,"warehouseId":"Paris"},"metadata":{"$type_name":"Metadata","$version_major":0,"$version_minor":0,"context":{"correlationId":"71C64076-E677-47D6-8E59-44024D814A41","receivedDate":"2023-12-18T21:31:16+00:00","sequenceNumber":null,"sessionId":null,"userId":"{3AF3FAE3-CF09-45FA-80ED-548822D4F02E}"},"message":{"aggregate":{"id":"Customer-FFY-FRRT-Bspk-473882","name":"Customer"},"createdDate":"2023-12-19T07:17:41.6798412+00:00","id":"7wHWnD7oj0WjeBAa2wwOyA","name":"CustomerInformationChanged","version":{"major":0,"minor":0}},"scopes":[]},"receivedDate":"2023-12-19T07:17:42.0510821+00:00"}
+ */

@@ -16,8 +16,10 @@
 
 namespace Hexalith.Infrastructure.WebApis.PartiesEvents.Projections;
 
-using Hexalith.Application.States;
 using Hexalith.Domain.Events;
+using Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers;
+
+using Microsoft.Extensions.Logging;
 
 /// <summary>
 /// Class CustomerRegisteredProjectionUpdateHandler.
@@ -27,11 +29,12 @@ using Hexalith.Domain.Events;
 public class CustomerRegisteredProjectionUpdateHandler : CustomerProjectionUpdateHandler<CustomerRegistered>
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="CustomerRegisteredProjectionUpdateHandler" /> class.
+    /// Initializes a new instance of the <see cref="CustomerRegisteredProjectionUpdateHandler"/> class.
     /// </summary>
-    /// <param name="stateStoreProvider">The state store provider.</param>
-    public CustomerRegisteredProjectionUpdateHandler(IStateStoreProvider stateStoreProvider)
-        : base(stateStoreProvider)
+    /// <param name="factory">The factory.</param>
+    /// <param name="logger">The logger.</param>
+    public CustomerRegisteredProjectionUpdateHandler(ICustomerProjectionActorFactory factory, ILogger<CustomerRegisteredProjectionUpdateHandler> logger)
+        : base(factory, logger)
     {
     }
 }

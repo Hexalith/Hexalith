@@ -9,6 +9,7 @@ using Hexalith.Application.Organizations.Helpers;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers;
+using Hexalith.Infrastructure.DaprRuntime.Parties.Helpers;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers;
 using Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Helpers;
@@ -31,11 +32,15 @@ WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
     applicationDescription,
     "v1",
     debugInVisualStudio,
-    (actors) => actors.AddExternalSystemsMapper(applicationName, aggregateNames),
+    (actors) =>
+    {
+        actors.AddExternalSystemsMapper(applicationName, aggregateNames);
+        actors.AddPartiesProjections(applicationName);
+    },
     args);
 
 builder.Services
-    .AddCustomerAggregateProjection()
+    .AddCustomerProjections(applicationName)
     .AddExternalSystemsMapperSubscription(applicationName, aggregateNames)
     .AddDynamics365FinanceCustomers(builder.Configuration)
     .AddOrganizations(builder.Configuration)

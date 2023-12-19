@@ -43,7 +43,7 @@ using Microsoft.Extensions.Options;
 public abstract partial class Dynamics365FinanceCustomerInformationHandler<TEvent> : IntegrationEventHandler<TEvent>
     where TEvent : Dynamics365FinanceCustomerInformationBusinessEvent
 {
-    private readonly ICustomerAggregateQueryService _customerService;
+    private readonly ICustomerProjectionService _customerService;
 
     /// <summary>
     /// The date time service.
@@ -71,7 +71,7 @@ public abstract partial class Dynamics365FinanceCustomerInformationHandler<TEven
     /// <param name="logger">The logger.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
     protected Dynamics365FinanceCustomerInformationHandler(
-        ICustomerAggregateQueryService customerService,
+        ICustomerProjectionService customerService,
         IDateTimeService dateTimeService,
         IOptions<OrganizationSettings> settings,
         ILogger logger)

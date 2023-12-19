@@ -36,7 +36,7 @@ public class Dynamics365FinanceCustomerRegisteredHandler : Dynamics365FinanceCus
     /// <param name="dateTimeService">The date time service.</param>
     /// <param name="settings">The settings.</param>
     public Dynamics365FinanceCustomerRegisteredHandler(
-        ICustomerAggregateQueryService customerService,
+        ICustomerProjectionService customerService,
         IDateTimeService dateTimeService,
         IOptions<OrganizationSettings> settings,
         ILogger<Dynamics365FinanceCustomerRegisteredHandler> logger)

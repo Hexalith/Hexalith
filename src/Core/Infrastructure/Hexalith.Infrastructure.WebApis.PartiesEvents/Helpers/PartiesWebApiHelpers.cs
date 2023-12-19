@@ -16,6 +16,8 @@
 
 namespace Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers;
 
+using Dapr.Actors.Client;
+
 using Hexalith.Application.Parties.Services;
 using Hexalith.Application.Projection;
 using Hexalith.Domain.Events;
@@ -32,18 +34,23 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 public static class PartiesWebApiHelpers
 {
     /// <summary>
-    /// Adds the external systems integration event handlers.
+    /// Adds the customer projections.
     /// </summary>
     /// <param name="services">The services.</param>
+    /// <param name="appName">Name of the application.</param>
     /// <returns>IServiceCollection.</returns>
-    public static IServiceCollection AddCustomerAggregateProjection(this IServiceCollection services)
+    /// <exception cref="System.ArgumentNullException">null.</exception>
+    public static IServiceCollection AddCustomerProjections(this IServiceCollection services, string appName)
     {
         ArgumentNullException.ThrowIfNull(services);
+        ArgumentException.ThrowIfNullOrEmpty(appName);
         services.TryAddSingleton<IProjectionUpdateHandler<CustomerInformationChanged>, CustomerInformationChangedProjectionUpdateHandler>();
         services.TryAddSingleton<IProjectionUpdateHandler<CustomerRegistered>, CustomerRegisteredProjectionUpdateHandler>();
         services.TryAddSingleton<IProjectionUpdateHandler<IntercompanyDropshipDeliveryForCustomerDeselected>, IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler>();
         services.TryAddSingleton<IProjectionUpdateHandler<IntercompanyDropshipDeliveryForCustomerSelected>, IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler>();
-        services.TryAddSingleton<ICustomerAggregateQueryService, CustomerAggregateQueryService>();
+        services.TryAddSingleton<ICustomerProjectionService, CustomerAggregateQueryService>();
+        services.TryAddSingleton<ICustomerProjectionActorFactory>(s
+            => new CustomerProjectionActorFactory(s.GetRequiredService<IActorProxyFactory>(), appName));
         _ = services
          .AddControllers()
          .AddApplicationPart(typeof(CustomerIntegrationEventsController).Assembly)

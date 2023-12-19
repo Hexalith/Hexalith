@@ -36,7 +36,7 @@ public class Dynamics365FinanceCustomerChangedHandler : Dynamics365FinanceCustom
     /// <param name="dateTimeService">The date time service.</param>
     /// <param name="settings">The settings.</param>
     public Dynamics365FinanceCustomerChangedHandler(
-        ICustomerAggregateQueryService customerService,
+        ICustomerProjectionService customerService,
         IDateTimeService dateTimeService,
         IOptions<OrganizationSettings> settings,
         ILogger<Dynamics365FinanceCustomerChangedHandler> logger)
