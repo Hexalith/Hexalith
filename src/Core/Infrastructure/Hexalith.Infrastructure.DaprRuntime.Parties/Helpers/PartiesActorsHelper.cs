@@ -50,7 +50,7 @@ public static class PartiesActorsHelper
     /// <param name="prefix">The prefix.</param>
     /// <returns>ActorRegistrationCollection.</returns>
     /// <exception cref="System.ArgumentNullException">null.</exception>
-    public static ActorRegistrationCollection AddPartiesProjection([NotNull] this ActorRegistrationCollection actors, string prefix)
+    public static ActorRegistrationCollection AddPartiesProjections([NotNull] this ActorRegistrationCollection actors, string prefix)
     {
         ArgumentNullException.ThrowIfNull(actors);
         actors.RegisterActor<KeyValueActor>(GetCustomerProjectionActorName(prefix));
