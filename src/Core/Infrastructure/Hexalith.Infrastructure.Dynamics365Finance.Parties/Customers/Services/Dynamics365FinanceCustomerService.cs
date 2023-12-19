@@ -67,7 +67,7 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
     /// <param name="externalReferenceMapperService">The external reference mapper service.</param>
     /// <param name="organizationSettings">The organization settings.</param>
     /// <param name="logger">The logger.</param>
-    /// <exception cref="System.ArgumentNullException"></exception>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
     public Dynamics365FinanceCustomerService(
         IDynamics365FinanceClient<CustomerBase> customerBaseService,
         IDynamics365FinanceClient<CustomerV3> customerService,
