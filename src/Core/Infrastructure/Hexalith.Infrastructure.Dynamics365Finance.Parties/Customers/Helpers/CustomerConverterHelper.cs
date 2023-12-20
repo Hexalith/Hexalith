@@ -64,7 +64,7 @@ public static class CustomerConverterHelper
         ArgumentNullException.ThrowIfNull(e);
         Dictionary<string, (object?, object?)> changes = [];
 
-        changes.AddChanges(customer.OrganizationName, e.Name);
+        // changes.AddChanges(customer.OrganizationName, e.Name);
         changes.AddChanges(customer.AddressCity, e.Contact?.PostalAddress?.City);
         changes.AddChanges(customer.AddressCountryRegionISOCode, e.Contact?.PostalAddress?.CountryIso2);
         changes.AddChanges(customer.AddressStreet, e.Contact?.PostalAddress?.Street);

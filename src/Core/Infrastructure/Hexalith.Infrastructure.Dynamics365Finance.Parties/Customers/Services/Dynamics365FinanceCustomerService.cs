@@ -17,7 +17,6 @@ namespace Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services;
 
 using System;
 using System.Linq;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 using Hexalith.Application.ExternalSystems.Services;
@@ -293,9 +292,10 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
         CustomerV3 customer = await _customerService.GetSingleAsync(customerKey, cancellationToken).ConfigureAwait(false);
         CustomerBase customerBase = await _customerBaseService.GetSingleAsync(customerKey, cancellationToken).ConfigureAwait(false);
         Dictionary<string, (object?, object?)> customerDelta = customer.GetChanges(changed);
-        bool hasChanges = false;
-        if (customerDelta.Count > 1)
+        if (customerDelta.Count > 0)
         {
+            Dictionary<string, object?> data = customerDelta
+                .ToDictionary(k => k.Key, v => v.Value.Item2);
             LogDeltaInformation(
                 changed.AggregateId,
                 customer.DataAreaId,
@@ -305,14 +305,13 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
             await _customerService
                     .PatchAsync(
                 customerKey,
-                customerDelta.ToDictionary(k => k.Key, v => v.Value.Item2),
+                data,
                 cancellationToken)
                     .ConfigureAwait(false);
-            hasChanges = true;
         }
 
         Dictionary<string, (object?, object?)> customerBaseDelta = customerBase.GetChanges(changed);
-        if (customerBaseDelta.Count > 1)
+        if (customerBaseDelta.Count > 0)
         {
             LogDeltaInformation(
                 changed.AggregateId,
@@ -326,17 +325,6 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
                 customerBaseDelta.ToDictionary(k => k.Key, v => v.Value.Item2),
                 cancellationToken)
                     .ConfigureAwait(false);
-            hasChanges = true;
-        }
-
-        if (hasChanges)
-        {
-            LogUpdateChangesInformation(
-                changed.CompanyId,
-                accountNumber,
-                changed.OriginId,
-                changed.Id,
-                JsonSerializer.Serialize(customerDelta) + "\n" + JsonSerializer.Serialize(customerBaseDelta));
         }
     }
 
@@ -405,10 +393,4 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
         Level = LogLevel.Warning,
         Message = "Customer external code not found for Id={AggregateId} for system {SystemId}.")]
     private partial void LogExternalCodeNotFoundWarning(string aggregateId, string systemId);
-
-    [LoggerMessage(
-            EventId = 3,
-        Level = LogLevel.Information,
-        Message = "Updating customer '{CustomerId}' ({OriginId}/{ExternalId}) in Dynamics 365 for Finance company '{CompanyId}' :\n{changes}")]
-    private partial void LogUpdateChangesInformation(string companyId, string customerId, string originId, string externalId, string changes);
 }

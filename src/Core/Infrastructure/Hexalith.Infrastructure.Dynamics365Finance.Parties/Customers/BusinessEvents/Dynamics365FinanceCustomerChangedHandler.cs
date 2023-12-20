@@ -213,10 +213,11 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
             .GetSingleAsync(
                 new CustomerAccountKey(@event.BusinessEventLegalEntity, @event.Account),
                 cancellationToken).ConfigureAwait(false);
+        int month = (customerBase.PersonBirthMonth == null) ? 1 : (int)customerBase.PersonBirthMonth;
         DateTimeOffset birthDate = new(
-            customerBase.PersonBirthDay ?? 1,
-            (customerBase.PersonBirthMonth == null) ? 1 : (int)customerBase.PersonBirthMonth,
             customerBase.PersonBirthYear ?? 1,
+            month,
+            customerBase.PersonBirthDay ?? 1,
             0,
             0,
             0,
