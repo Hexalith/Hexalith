@@ -312,7 +312,7 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
         }
 
         Dictionary<string, (object?, object?)> customerBaseDelta = customerBase.GetChanges(changed);
-        if (customerDelta.Count > 1)
+        if (customerBaseDelta.Count > 1)
         {
             LogDeltaInformation(
                 changed.AggregateId,

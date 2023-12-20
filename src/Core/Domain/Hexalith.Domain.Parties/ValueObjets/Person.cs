@@ -56,6 +56,21 @@ public class Person
     }
 
     /// <summary>
+    /// Initializes a new instance of the <see cref="Person"/> class.
+    /// </summary>
+    /// <param name="person">The person.</param>
+    public Person(Person person)
+        : this(
+            (person ?? throw new ArgumentNullException(nameof(person))).Name,
+            person.FirstName,
+            person.LastName,
+            person.Title,
+            person.BirthDate,
+            person.Gender)
+    {
+    }
+
+    /// <summary>
     /// Initializes a new instance of the <see cref="Person" /> class.
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]

@@ -14802,6 +14802,12 @@ references:
   commentId: M:Hexalith.Domain.ValueObjets.Contact.#ctor
   fullName: Hexalith.Domain.ValueObjets.Contact.Contact()
   nameWithType: Contact.Contact()
+- uid: Hexalith.Domain.ValueObjets.Contact.#ctor(Hexalith.Domain.ValueObjets.Contact)
+  name: Contact(Contact)
+  href: api/Hexalith.Domain.ValueObjets.Contact.html#Hexalith_Domain_ValueObjets_Contact__ctor_Hexalith_Domain_ValueObjets_Contact_
+  commentId: M:Hexalith.Domain.ValueObjets.Contact.#ctor(Hexalith.Domain.ValueObjets.Contact)
+  fullName: Hexalith.Domain.ValueObjets.Contact.Contact(Hexalith.Domain.ValueObjets.Contact)
+  nameWithType: Contact.Contact(Contact)
 - uid: Hexalith.Domain.ValueObjets.Contact.#ctor(Hexalith.Domain.ValueObjets.Person,Hexalith.Domain.ValueObjets.PostalAddress,System.String,System.String,System.String)
   name: Contact(Person, PostalAddress, String, String, String)
   href: api/Hexalith.Domain.ValueObjets.Contact.html#Hexalith_Domain_ValueObjets_Contact__ctor_Hexalith_Domain_ValueObjets_Person_Hexalith_Domain_ValueObjets_PostalAddress_System_String_System_String_System_String_
@@ -15125,6 +15131,12 @@ references:
   commentId: M:Hexalith.Domain.ValueObjets.Person.#ctor
   fullName: Hexalith.Domain.ValueObjets.Person.Person()
   nameWithType: Person.Person()
+- uid: Hexalith.Domain.ValueObjets.Person.#ctor(Hexalith.Domain.ValueObjets.Person)
+  name: Person(Person)
+  href: api/Hexalith.Domain.ValueObjets.Person.html#Hexalith_Domain_ValueObjets_Person__ctor_Hexalith_Domain_ValueObjets_Person_
+  commentId: M:Hexalith.Domain.ValueObjets.Person.#ctor(Hexalith.Domain.ValueObjets.Person)
+  fullName: Hexalith.Domain.ValueObjets.Person.Person(Hexalith.Domain.ValueObjets.Person)
+  nameWithType: Person.Person(Person)
 - uid: Hexalith.Domain.ValueObjets.Person.#ctor(System.String,System.String,System.String,System.String,System.Nullable{System.DateTimeOffset},System.Nullable{Hexalith.Domain.ValueObjets.Gender})
   name: Person(String, String, String, String, Nullable<DateTimeOffset>, Nullable<Gender>)
   href: api/Hexalith.Domain.ValueObjets.Person.html#Hexalith_Domain_ValueObjets_Person__ctor_System_String_System_String_System_String_System_String_System_Nullable_System_DateTimeOffset__System_Nullable_Hexalith_Domain_ValueObjets_Gender__
@@ -15244,6 +15256,12 @@ references:
   commentId: M:Hexalith.Domain.ValueObjets.PostalAddress.#ctor
   fullName: Hexalith.Domain.ValueObjets.PostalAddress.PostalAddress()
   nameWithType: PostalAddress.PostalAddress()
+- uid: Hexalith.Domain.ValueObjets.PostalAddress.#ctor(Hexalith.Domain.ValueObjets.PostalAddress)
+  name: PostalAddress(PostalAddress)
+  href: api/Hexalith.Domain.ValueObjets.PostalAddress.html#Hexalith_Domain_ValueObjets_PostalAddress__ctor_Hexalith_Domain_ValueObjets_PostalAddress_
+  commentId: M:Hexalith.Domain.ValueObjets.PostalAddress.#ctor(Hexalith.Domain.ValueObjets.PostalAddress)
+  fullName: Hexalith.Domain.ValueObjets.PostalAddress.PostalAddress(Hexalith.Domain.ValueObjets.PostalAddress)
+  nameWithType: PostalAddress.PostalAddress(PostalAddress)
 - uid: Hexalith.Domain.ValueObjets.PostalAddress.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)
   name: PostalAddress(String, String, String, String, String, String, String, String, String, String, String, String, String)
   href: api/Hexalith.Domain.ValueObjets.PostalAddress.html#Hexalith_Domain_ValueObjets_PostalAddress__ctor_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_
@@ -26108,6 +26126,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Projections.Dynamics365FinanceCustomerState.Create
   nameWithType: Dynamics365FinanceCustomerState.Create
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Projections.Dynamics365FinanceCustomerState.HasChanges(Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChanged)
+  name: HasChanges(Dynamics365FinanceCustomerChanged)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Projections.Dynamics365FinanceCustomerState.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Projections_Dynamics365FinanceCustomerState_HasChanges_Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_BusinessEvents_Dynamics365FinanceCustomerChanged_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Projections.Dynamics365FinanceCustomerState.HasChanges(Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChanged)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Projections.Dynamics365FinanceCustomerState.HasChanges(Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerChanged)
+  nameWithType: Dynamics365FinanceCustomerState.HasChanges(Dynamics365FinanceCustomerChanged)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Projections.Dynamics365FinanceCustomerState.HasChanges*
+  name: HasChanges
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Projections.Dynamics365FinanceCustomerState.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_Projections_Dynamics365FinanceCustomerState_HasChanges_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Projections.Dynamics365FinanceCustomerState.HasChanges
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Projections.Dynamics365FinanceCustomerState.HasChanges
+  nameWithType: Dynamics365FinanceCustomerState.HasChanges
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services
   name: Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services.html
@@ -26297,6 +26328,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.Dynamics365FinancePartiesHelper.AddDynamics365FinanceCustomersClient
   nameWithType: Dynamics365FinancePartiesHelper.AddDynamics365FinanceCustomersClient
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.Dynamics365FinancePartiesHelper.AddDynamics365FinanceProjections(Dapr.Actors.Runtime.ActorRegistrationCollection,System.String)
+  name: AddDynamics365FinanceProjections(ActorRegistrationCollection, String)
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.Dynamics365FinancePartiesHelper.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Helpers_Dynamics365FinancePartiesHelper_AddDynamics365FinanceProjections_Dapr_Actors_Runtime_ActorRegistrationCollection_System_String_
+  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.Dynamics365FinancePartiesHelper.AddDynamics365FinanceProjections(Dapr.Actors.Runtime.ActorRegistrationCollection,System.String)
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.Dynamics365FinancePartiesHelper.AddDynamics365FinanceProjections(Dapr.Actors.Runtime.ActorRegistrationCollection, System.String)
+  nameWithType: Dynamics365FinancePartiesHelper.AddDynamics365FinanceProjections(ActorRegistrationCollection, String)
+- uid: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.Dynamics365FinancePartiesHelper.AddDynamics365FinanceProjections*
+  name: AddDynamics365FinanceProjections
+  href: api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.Dynamics365FinancePartiesHelper.html#Hexalith_Infrastructure_Dynamics365Finance_Parties_Helpers_Dynamics365FinancePartiesHelper_AddDynamics365FinanceProjections_
+  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.Dynamics365FinancePartiesHelper.AddDynamics365FinanceProjections
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers.Dynamics365FinancePartiesHelper.AddDynamics365FinanceProjections
+  nameWithType: Dynamics365FinancePartiesHelper.AddDynamics365FinanceProjections
 - uid: Hexalith.Infrastructure.Dynamics365Finance.Retail.Helpers
   name: Hexalith.Infrastructure.Dynamics365Finance.Retail.Helpers
   href: api/Hexalith.Infrastructure.Dynamics365Finance.Retail.Helpers.html

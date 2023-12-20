@@ -75,6 +75,28 @@ public class PostalAddress
     }
 
     /// <summary>
+    /// Initializes a new instance of the <see cref="PostalAddress"/> class.
+    /// </summary>
+    /// <param name="address">The address.</param>
+    public PostalAddress(PostalAddress address)
+        : this(
+              (address ?? throw new ArgumentNullException(nameof(address))).Name,
+              address.Description,
+              address.StreetNumber,
+              address.Street,
+              address.PostBox,
+              address.ZipCode,
+              address.City,
+              address.CountyId,
+              address.StateId,
+              address.StateName,
+              address.CountryId,
+              address.CountryName,
+              address.CountryIso2)
+    {
+    }
+
+    /// <summary>
     /// Gets or sets the city.
     /// </summary>
     /// <value>The city.</value>

@@ -53,6 +53,20 @@ public class Contact
     }
 
     /// <summary>
+    /// Initializes a new instance of the <see cref="Contact"/> class.
+    /// </summary>
+    /// <param name="contact">The contact.</param>
+    public Contact(Contact contact)
+        : this(
+              (contact?.Person == null) ? null : new Person(contact.Person),
+              (contact?.PostalAddress == null) ? null : new PostalAddress(contact.PostalAddress),
+              (contact ?? throw new ArgumentNullException(nameof(contact))).Email,
+              contact.Phone,
+              contact.Mobile)
+    {
+    }
+
+    /// <summary>
     /// Initializes a new instance of the <see cref="Contact" /> class.
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
@@ -61,44 +75,44 @@ public class Contact
     }
 
     /// <summary>
-    /// Gets the email.
+    /// Gets or sets the email.
     /// </summary>
     /// <value>The email.</value>
     [DataMember(Order = 3)]
     [JsonPropertyOrder(3)]
-    public string? Email { get; private set; }
+    public string? Email { get; set; }
 
     /// <summary>
-    /// Gets the mobile.
+    /// Gets or sets the mobile.
     /// </summary>
     /// <value>The mobile.</value>
     [DataMember(Order = 5)]
     [JsonPropertyOrder(5)]
-    public string? Mobile { get; private set; }
+    public string? Mobile { get; set; }
 
     /// <summary>
-    /// Gets the person.
+    /// Gets or sets the person.
     /// </summary>
     /// <value>The person.</value>
     [DataMember(Order = 1)]
     [JsonPropertyOrder(1)]
-    public Person? Person { get; private set; }
+    public Person? Person { get; set; }
 
     /// <summary>
-    /// Gets the phone.
+    /// Gets or sets the phone.
     /// </summary>
     /// <value>The phone.</value>
     [DataMember(Order = 4)]
     [JsonPropertyOrder(4)]
-    public string? Phone { get; private set; }
+    public string? Phone { get; set; }
 
     /// <summary>
-    /// Gets the postal address.
+    /// Gets or sets the postal address.
     /// </summary>
     /// <value>The postal address.</value>
     [DataMember(Order = 2)]
     [JsonPropertyOrder(2)]
-    public PostalAddress? PostalAddress { get; private set; }
+    public PostalAddress? PostalAddress { get; set; }
 
     /// <summary>
     /// Ares the same.

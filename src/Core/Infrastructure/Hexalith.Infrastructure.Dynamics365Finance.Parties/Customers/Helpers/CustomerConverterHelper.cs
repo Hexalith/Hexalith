@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 12-13-2023
 // ***********************************************************************
-// <copyright file="CustomerConverter.cs" company="Fiveforty SAS Paris France">
+// <copyright file="CustomerConverterHelper.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -65,12 +65,8 @@ public static class CustomerConverterHelper
 
         changes.AddChanges(customer.OrganizationName, e.Name);
         changes.AddChanges(customer.AddressCity, e.Contact?.PostalAddress?.City);
-        changes.AddChanges(customer.AddressCountryRegionId, e.Contact?.PostalAddress?.CountryId);
         changes.AddChanges(customer.AddressCountryRegionISOCode, e.Contact?.PostalAddress?.CountryIso2);
-        changes.AddChanges(customer.AddressCounty, e.Contact?.PostalAddress?.CountyId);
-        changes.AddChanges(customer.AddressState, e.Contact?.PostalAddress?.StateId);
         changes.AddChanges(customer.AddressStreet, e.Contact?.PostalAddress?.Street);
-        changes.AddChanges(customer.AddressStreetNumber, e.Contact?.PostalAddress?.StreetNumber);
         changes.AddChanges(customer.AddressZipCode, e.Contact?.PostalAddress?.ZipCode);
         changes.AddChanges(customer.AddressDescription, e.Contact?.PostalAddress?.Name);
         changes.AddChanges(customer.PersonFirstName, e.Contact?.Person?.FirstName);
@@ -79,9 +75,6 @@ public static class CustomerConverterHelper
         changes.AddChanges(customer.PrimaryContactPhone, e.Contact?.Mobile ?? e.Contact?.Phone);
         changes.AddChanges(customer.PrimaryContactPhoneIsMobile, e.Contact?.Mobile == null ? "No" : "Yes");
         changes.AddChanges(customer.PrimaryContactEmail, e.Contact?.Email);
-        changes.AddChanges(customer.CustomerGroupId, e.GroupId);
-        changes.AddChanges(customer.SalesCurrencyCode, e.SalesCurrencyId);
-        changes.AddChanges(customer.PartyType, ToDynamicsPartyType(e.PartyType));
         changes.AddChanges(customer.CommissionSalesGroupId, e.CommissionSalesGroupId);
         changes.AddChanges(customer.WarehouseId, e.WarehouseId);
 

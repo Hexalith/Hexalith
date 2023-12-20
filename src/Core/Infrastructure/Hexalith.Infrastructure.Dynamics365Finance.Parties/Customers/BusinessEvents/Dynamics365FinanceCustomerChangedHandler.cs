@@ -115,27 +115,25 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
             LogMessageWithoutHexalithExternalCode(@event.TypeName, @event.BusinessEventLegalEntity, @event.Account);
             return [];
         }
-        else
-        {
-            CustomerRegistered? customerRegistered = await _customerService
+
+        CustomerRegistered? customerRegistered = await _customerService
                 .GetStateAsync(aggregateId, cancellationToken)
                 .ConfigureAwait(false);
-            if (customerRegistered == null)
-            {
-                string[] parts = aggregateId.Split(Aggregate.Separator, 5);
-                companyId = parts[2];
-                originId = parts[3];
-                customerId = parts[4];
+        if (customerRegistered == null)
+        {
+            string[] parts = aggregateId.Split(Aggregate.Separator, 5);
+            companyId = parts[2];
+            originId = parts[3];
+            customerId = parts[4];
 
-                // TODO : Do a call to the customer aggregate service to get the customer
-                // throw new InvalidOperationException($"Customer '{aggregateId}' not found while handling '{@event.BusinessEventLegalEntity}/{@event.Account}' event.");
-            }
-            else
-            {
-                originId = customerRegistered.OriginId;
-                customerId = customerRegistered.Id;
-                companyId = customerRegistered.CompanyId;
-            }
+            // TODO : Do a call to the customer aggregate service to get the customer
+            // throw new InvalidOperationException($"Customer '{aggregateId}' not found while handling '{@event.BusinessEventLegalEntity}/{@event.Account}' event.");
+        }
+        else
+        {
+            originId = customerRegistered.OriginId;
+            customerId = customerRegistered.Id;
+            companyId = customerRegistered.CompanyId;
         }
 
         string customerAggregateName = Customer.GetAggregateName();
@@ -162,7 +160,6 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
                 customerAggregateName,
                 @event.Account,
                 aggregateId));
-
         ChangeCustomerInformation changeCustomer = new(
                    _partitionId,
                    companyId,
@@ -170,11 +167,16 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
                    customerId,
                    @event.Name,
                    CustomerConverterHelper.ToPartyType(@event.PartyType ?? nameof(PartyType.Person)),
-                   @event.Contact,
+                   new Contact(
+                       @event.Contact?.Person,
+                       GetPostalAddress(customerRegistered?.Contact?.PostalAddress, @event.Contact?.PostalAddress),
+                       @event.Contact?.Email,
+                       @event.Contact?.Phone,
+                       @event.Contact?.Mobile),
                    @event.WarehouseId,
                    @event.CommissionSalesGroupId,
-                   @event.GroupId,
-                   @event.SalesCurrencyId,
+                   customerRegistered?.GroupId,
+                   customerRegistered?.SalesCurrencyId,
                    _dateTimeService.UtcNow);
 
         commands.Add(changeCustomer);
@@ -190,6 +192,37 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
         }
 
         return commands;
+    }
+
+    private PostalAddress? GetPostalAddress(PostalAddress? previousAddress, PostalAddress? newAddress)
+    {
+        if (previousAddress == null)
+        {
+            return (newAddress == null) ? null : new PostalAddress(newAddress);
+        }
+
+        if (newAddress == null)
+        {
+            return previousAddress;
+        }
+
+        PostalAddress address = new(newAddress)
+        {
+            CountyId = newAddress.CountyId ?? previousAddress.CountyId,
+            StateId = newAddress.StateId ?? previousAddress.StateId,
+            CountryId = newAddress.CountryId ?? previousAddress.CountryId,
+            City = newAddress.City ?? previousAddress.City,
+            Street = newAddress.Street ?? previousAddress.Street,
+            ZipCode = newAddress.ZipCode ?? previousAddress.ZipCode,
+            StreetNumber = newAddress.StreetNumber ?? previousAddress.StreetNumber,
+            CountryName = newAddress.CountryName ?? previousAddress.CountryName,
+            StateName = newAddress.StateName ?? previousAddress.StateName,
+            Name = newAddress.Name ?? previousAddress.Name,
+            CountryIso2 = newAddress.CountryIso2 ?? previousAddress.CountryIso2,
+            Description = newAddress.Description ?? previousAddress.Description,
+            PostBox = newAddress.PostBox ?? previousAddress.PostBox,
+        };
+        return address;
     }
 
     [LoggerMessage(
