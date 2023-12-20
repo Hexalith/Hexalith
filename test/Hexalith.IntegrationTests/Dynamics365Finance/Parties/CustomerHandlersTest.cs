@@ -105,7 +105,9 @@ public class CustomerHandlersTest
         _ = customers.First().CustomerAccount.Should().Be(customerId);
         CustomerRegistered newRegistered = customers.First().ToCustomerRegisteredEvent(
             registered.PartitionId,
-            options.Value.DefaultOriginId,
+            registered.CompanyId,
+            registered.OriginId,
+            registered.Id,
             registered.Date);
         CustomerV3 expectedCustomer = registered.ToDynamics365FinanceCustomer();
         _ = expectedCustomer

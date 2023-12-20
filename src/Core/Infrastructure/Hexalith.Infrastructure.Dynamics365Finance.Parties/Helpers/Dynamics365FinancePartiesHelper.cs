@@ -22,13 +22,11 @@ using Dapr.Actors.Runtime;
 using FluentValidation;
 
 using Hexalith.Application.Events;
-using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.Dynamics365Finance.Client;
 using Hexalith.Infrastructure.Dynamics365Finance.Helpers;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Controller;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities;
-using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Projections;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services;
 using Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Entities;
 
@@ -74,7 +72,6 @@ public static class Dynamics365FinancePartiesHelper
         ArgumentException.ThrowIfNullOrEmpty(applicationName);
         services
             .AddDynamics365FinanceBusinessEvents(configuration)
-            .AddActorProjectionFactory<Dynamics365FinanceCustomerState>(applicationName)
             .TryAddSingleton<IValidator<Dynamics365FinanceCustomerChanged>, Dynamics365FinanceCustomerChangedValidator>();
         services.TryAddSingleton<IValidator<Dynamics365FinanceCustomerRegistered>, Dynamics365FinanceCustomerRegisteredValidator>();
         services.TryAddScoped<IIntegrationEventHandler<Dynamics365FinanceCustomerChanged>, Dynamics365FinanceCustomerChangedHandler>();
@@ -119,7 +116,6 @@ public static class Dynamics365FinancePartiesHelper
     public static ActorRegistrationCollection AddDynamics365FinanceProjections([NotNull] this ActorRegistrationCollection actors, string applicationName)
     {
         ArgumentNullException.ThrowIfNull(actors);
-        actors.RegisterProjectionActor<Dynamics365FinanceCustomerState>(applicationName);
         return actors;
     }
 }

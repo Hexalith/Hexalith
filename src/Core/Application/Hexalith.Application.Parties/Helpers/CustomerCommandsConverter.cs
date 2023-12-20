@@ -21,12 +21,34 @@ using System.Diagnostics.CodeAnalysis;
 
 using Hexalith.Application.Parties.Commands;
 using Hexalith.Domain.Aggregates;
+using Hexalith.Domain.Events;
+
+using KellermanSoftware.CompareNetObjects;
 
 /// <summary>
 /// Class CustomerCommandsConverter.
 /// </summary>
 public static class CustomerCommandsConverter
 {
+    /// <summary>
+    /// Determines whether the specified registered has changes.
+    /// </summary>
+    /// <param name="changed">The changed.</param>
+    /// <param name="registered">The registered.</param>
+    /// <returns>System.Nullable&lt;System.String&gt;.</returns>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
+    public static string? HasChanges(this ChangeCustomerInformation changed, CustomerRegistered registered)
+    {
+        ArgumentNullException.ThrowIfNull(changed);
+        CompareLogic compareLogic = new();
+        ChangeCustomerInformation newValue = new Customer(registered).ToChangeCustomerInformation();
+        compareLogic.Config.IgnoreProperty<ChangeCustomerInformation>(x => x.Date);
+
+        ComparisonResult result = compareLogic.Compare(changed, registered);
+
+        return !result.AreEqual ? result.DifferencesString : null;
+    }
+
     /// <summary>
     /// Converts to change customer information.
     /// </summary>
@@ -46,6 +68,30 @@ public static class CustomerCommandsConverter
             customer.Contact,
             customer.WarehouseId,
             customer.CommissionSalesGroupId,
+            customer.GroupId,
+            customer.SalesCurrencyId,
+            customer.Date);
+    }
+
+    /// <summary>
+    /// Converts to command.
+    /// </summary>
+    /// <param name="customer">The customer.</param>
+    /// <returns>ChangeCustomerInformation.</returns>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
+    public static ChangeCustomerInformation ToCommand([NotNull] this CustomerInformationChanged customer)
+    {
+        ArgumentNullException.ThrowIfNull(customer);
+        return new ChangeCustomerInformation(
+            customer.PartitionId,
+            customer.CompanyId,
+            customer.OriginId,
+            customer.Id,
+            customer.Name,
+            customer.PartyType,
+            customer.Contact,
+            customer.WarehouseId,
+            customer.CompanyId,
             customer.GroupId,
             customer.SalesCurrencyId,
             customer.Date);

@@ -18,16 +18,19 @@ namespace Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessE
 using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
 using Hexalith.Application.ExternalSystems.Commands;
+using Hexalith.Application.ExternalSystems.Services;
 using Hexalith.Application.Organizations.Configurations;
 using Hexalith.Application.Parties.Commands;
+using Hexalith.Application.Parties.Helpers;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.ValueObjets;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.DaprRuntime.Projections;
+using Hexalith.Infrastructure.Dynamics365Finance.Client;
+using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers;
-using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Projections;
 
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -41,7 +44,9 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
 {
     private readonly IActorProjectionFactory<CustomerRegistered> _customerService;
     private readonly IDateTimeService _dateTimeService;
-    private readonly IActorProjectionFactory<Dynamics365FinanceCustomerState> _erpState;
+    private readonly IDynamics365FinanceClient<CustomerBase> _erpCustomerBaseService;
+    private readonly IDynamics365FinanceClient<CustomerV3> _erpCustomerV3Service;
+    private readonly IExternalReferenceMapperService _externalReferenceMapperService;
     private readonly ILogger<Dynamics365FinanceCustomerChangedHandler> _logger;
     private readonly IOptions<OrganizationSettings> _settings;
     private string _originId;
@@ -50,21 +55,25 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
     /// <summary>
     /// Initializes a new instance of the <see cref="Dynamics365FinanceCustomerChangedHandler"/> class.
     /// </summary>
-    /// <param name="erpState">State of the erp.</param>
     /// <param name="customerService">The customer service.</param>
+    /// <param name="erpCustomerV3Service">The erp customer v3 service.</param>
+    /// <param name="erpCustomerBaseService">The erp customer base service.</param>
+    /// <param name="externalReferenceMapperService">The external reference mapper service.</param>
     /// <param name="dateTimeService">The date time service.</param>
     /// <param name="settings">The settings.</param>
     /// <param name="logger">The logger.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
     public Dynamics365FinanceCustomerChangedHandler(
-        IActorProjectionFactory<Dynamics365FinanceCustomerState> erpState,
         IActorProjectionFactory<CustomerRegistered> customerService,
+        IDynamics365FinanceClient<CustomerV3> erpCustomerV3Service,
+        IDynamics365FinanceClient<CustomerBase> erpCustomerBaseService,
+        IExternalReferenceMapperService externalReferenceMapperService,
         IDateTimeService dateTimeService,
         IOptions<OrganizationSettings> settings,
         ILogger<Dynamics365FinanceCustomerChangedHandler> logger)
     {
-        ArgumentNullException.ThrowIfNull(erpState);
         ArgumentNullException.ThrowIfNull(customerService);
+        ArgumentNullException.ThrowIfNull(externalReferenceMapperService);
         ArgumentNullException.ThrowIfNull(dateTimeService);
         ArgumentNullException.ThrowIfNull(settings);
         ArgumentNullException.ThrowIfNull(logger);
@@ -73,8 +82,10 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
         SettingsException<OrganizationSettings>.ThrowIfNullOrEmpty(settings.Value.DefaultOriginId);
         _partitionId = settings.Value.DefaultPartitionId;
         _originId = settings.Value.DefaultOriginId;
-        _erpState = erpState;
         _customerService = customerService;
+        _erpCustomerV3Service = erpCustomerV3Service;
+        _erpCustomerBaseService = erpCustomerBaseService;
+        _externalReferenceMapperService = externalReferenceMapperService;
         _dateTimeService = dateTimeService;
         _settings = settings;
         _logger = logger;
@@ -89,17 +100,6 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
         ArgumentException.ThrowIfNullOrEmpty(@event.Account);
         ArgumentException.ThrowIfNullOrEmpty(@event.Name);
         ArgumentException.ThrowIfNullOrEmpty(@event.BusinessEventLegalEntity);
-        Dynamics365FinanceCustomerState? lastState = await _erpState.GetStateAsync(@event.AggregateId, cancellationToken).ConfigureAwait(false);
-        if (lastState != null)
-        {
-            string? hasChanges = lastState.HasChanges(@event);
-            if (hasChanges == null)
-            {
-                return [];
-            }
-
-            LogEventHasChangesInformation(@event.BusinessEventLegalEntity, @event.Account, hasChanges);
-        }
 
         string? aggregateId = @event
             .ExternalReferences?
@@ -116,10 +116,11 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
             return [];
         }
 
-        CustomerRegistered? customerRegistered = await _customerService
-                .GetStateAsync(aggregateId, cancellationToken)
-                .ConfigureAwait(false);
-        if (customerRegistered == null)
+        CustomerRegistered? lastState = await _customerService
+            .GetStateAsync(@event.AggregateId, cancellationToken)
+            .ConfigureAwait(false);
+
+        if (lastState == null)
         {
             string[] parts = aggregateId.Split(Aggregate.Separator, 5);
             companyId = parts[2];
@@ -131,12 +132,29 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
         }
         else
         {
-            originId = customerRegistered.OriginId;
-            customerId = customerRegistered.Id;
-            companyId = customerRegistered.CompanyId;
+            originId = lastState.OriginId;
+            customerId = lastState.Id;
+            companyId = lastState.CompanyId;
         }
 
-        string customerAggregateName = Customer.GetAggregateName();
+        ChangeCustomerInformation changeCustomer = await GetCustomerChangedAsync(
+                _partitionId,
+                companyId,
+                originId,
+                customerId,
+                lastState,
+                @event,
+                cancellationToken)
+            .ConfigureAwait(false);
+
+        string? hasChanges = (lastState == null) ? $"No current state found for '{aggregateId}', applying changes." : changeCustomer.HasChanges(lastState);
+        if (hasChanges == null)
+        {
+            return [];
+        }
+
+        LogEventHasChangesInformation(@event.BusinessEventLegalEntity, @event.Account, hasChanges);
+
         List<BaseCommand> commands = [];
         if (@event.ExternalReferences != null)
         {
@@ -146,9 +164,9 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
                         _partitionId,
                         @event.BusinessEventLegalEntity,
                         reference.SystemId,
-                        customerAggregateName,
+                        changeCustomer.AggregateName,
                         reference.ExternalId,
-                        aggregateId);
+                        changeCustomer.AggregateId);
                 commands.Add(mapExternalSystemReference);
             }
         }
@@ -157,27 +175,9 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
                 _partitionId,
                 @event.BusinessEventLegalEntity.ToUpperInvariant(),
                 _originId,
-                customerAggregateName,
+                changeCustomer.AggregateName,
                 @event.Account,
-                aggregateId));
-        ChangeCustomerInformation changeCustomer = new(
-                   _partitionId,
-                   companyId,
-                   originId,
-                   customerId,
-                   @event.Name,
-                   CustomerConverterHelper.ToPartyType(@event.PartyType ?? nameof(PartyType.Person)),
-                   new Contact(
-                       @event.Contact?.Person,
-                       GetPostalAddress(customerRegistered?.Contact?.PostalAddress, @event.Contact?.PostalAddress),
-                       @event.Contact?.Email,
-                       @event.Contact?.Phone,
-                       @event.Contact?.Mobile),
-                   @event.WarehouseId,
-                   @event.CommissionSalesGroupId,
-                   customerRegistered?.GroupId,
-                   customerRegistered?.SalesCurrencyId,
-                   _dateTimeService.UtcNow);
+                changeCustomer.AggregateId));
 
         commands.Add(changeCustomer);
 
@@ -192,6 +192,49 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
         }
 
         return commands;
+    }
+
+    private async Task<ChangeCustomerInformation> GetCustomerChangedAsync(
+        string partitionId,
+        string companyId,
+        string originId,
+        string customerId,
+        CustomerRegistered? lastState,
+        Dynamics365FinanceCustomerChanged @event,
+        CancellationToken cancellationToken)
+    {
+        ArgumentException.ThrowIfNullOrEmpty(@event.BusinessEventLegalEntity);
+        ArgumentException.ThrowIfNullOrEmpty(@event.Account);
+        CustomerBase customerBase = await _erpCustomerBaseService
+            .GetSingleAsync(
+                new CustomerAccountKey(@event.BusinessEventLegalEntity, @event.Account),
+                cancellationToken).ConfigureAwait(false);
+        CustomerV3 customerV3 = await _erpCustomerV3Service
+            .GetSingleAsync(
+                new CustomerAccountKey(@event.BusinessEventLegalEntity, @event.Account),
+                cancellationToken).ConfigureAwait(false);
+        DateTimeOffset birthDate = new(
+            customerBase.PersonBirthDay ?? 1,
+            (customerBase.PersonBirthMonth == null) ? 1 : (int)customerBase.PersonBirthMonth,
+            customerBase.PersonBirthYear ?? 1,
+            0,
+            0,
+            0,
+            TimeSpan.Zero);
+
+        return customerV3.ToChangeCustomerCommand(
+                partitionId,
+                companyId,
+                originId,
+                customerId,
+                _dateTimeService.Now,
+                lastState?.Contact?.PostalAddress?.PostBox,
+                lastState?.Contact?.PostalAddress?.StateName,
+                lastState?.Contact?.PostalAddress?.CountryName,
+                lastState?.Contact?.Phone,
+                lastState?.Contact?.Mobile,
+                customerBase.PersonPersonalTitle,
+                birthDate);
     }
 
     private PostalAddress? GetPostalAddress(PostalAddress? previousAddress, PostalAddress? newAddress)

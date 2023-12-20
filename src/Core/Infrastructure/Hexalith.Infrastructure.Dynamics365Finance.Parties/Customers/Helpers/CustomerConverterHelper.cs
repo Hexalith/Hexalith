@@ -20,6 +20,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
+using Hexalith.Application.Parties.Commands;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.ValueObjets;
 using Hexalith.Extensions.Common;
@@ -82,11 +83,88 @@ public static class CustomerConverterHelper
     }
 
     /// <summary>
+    /// Converts to changecustomercommand.
+    /// </summary>
+    /// <param name="customer">The customer.</param>
+    /// <param name="partitionId">The partition identifier.</param>
+    /// <param name="companyId">The company identifier.</param>
+    /// <param name="originId">The origin identifier.</param>
+    /// <param name="customerId">The customer identifier.</param>
+    /// <param name="date">The date.</param>
+    /// <param name="postBox">The post box.</param>
+    /// <param name="stateName">Name of the state.</param>
+    /// <param name="countryName">Name of the country.</param>
+    /// <param name="phone">The phone.</param>
+    /// <param name="mobile">The mobile.</param>
+    /// <param name="title">The title.</param>
+    /// <param name="birthDate">The birth date.</param>
+    /// <returns>Hexalith.Application.Parties.Commands.ChangeCustomerInformation.</returns>
+    public static ChangeCustomerInformation ToChangeCustomerCommand(
+            [NotNull] this CustomerV3 customer,
+            string partitionId,
+            string companyId,
+            string originId,
+            string customerId,
+            DateTimeOffset date,
+            string? postBox = null,
+            string? stateName = null,
+            string? countryName = null,
+            string? phone = null,
+            string? mobile = null,
+            string? title = null,
+            DateTimeOffset? birthDate = null)
+    {
+        ArgumentNullException.ThrowIfNull(customer);
+        ArgumentException.ThrowIfNullOrEmpty(customer.CustomerAccount);
+        ArgumentException.ThrowIfNullOrEmpty(customer.OrganizationName);
+        ChangeCustomerInformation changed = new(
+            partitionId,
+            companyId,
+            originId,
+            customerId,
+            customer.OrganizationName,
+            ToPartyType(customer.PartyType ?? string.Empty),
+            new Contact(
+                new Person(
+                    customer.OrganizationName,
+                    customer.PersonFirstName,
+                    customer.PersonLastName,
+                    title,
+                    birthDate,
+                    ToGender(customer.PersonGender)),
+                new PostalAddress(
+                    customer.AddressDescription,
+                    customer.AddressDescription,
+                    customer.AddressStreetNumber,
+                    customer.AddressStreet,
+                    postBox,
+                    customer.AddressZipCode,
+                    customer.AddressCity,
+                    customer.AddressCounty,
+                    customer.AddressState,
+                    stateName,
+                    customer.AddressCountryRegionId,
+                    countryName,
+                    customer.AddressCountryRegionISOCode),
+                customer.PrimaryContactEmail,
+                customer.PrimaryContactPhoneIsMobile != "Yes" ? customer.PrimaryContactPhone : phone,
+                customer.PrimaryContactPhoneIsMobile == "Yes" ? customer.PrimaryContactPhone : mobile),
+            customer.WarehouseId,
+            customer.CommissionSalesGroupId,
+            customer.CustomerGroupId,
+            customer.SalesCurrencyCode,
+            date);
+        return changed;
+    }
+
+    /// <summary>
     /// Converts to customerchangedevent.
     /// </summary>
     /// <param name="customer">The customer.</param>
     /// <param name="partitionId">The partition identifier.</param>
+    /// <param name="companyId">The company identifier.</param>
     /// <param name="originId">The origin identifier.</param>
+    /// <param name="customerId">The customer identifier.</param>
     /// <param name="date">The date.</param>
     /// <param name="postBox">The post box.</param>
     /// <param name="stateName">Name of the state.</param>
@@ -99,7 +177,9 @@ public static class CustomerConverterHelper
     public static CustomerInformationChanged ToCustomerChangedEvent(
         [NotNull] this CustomerV3 customer,
         string partitionId,
+        string companyId,
         string originId,
+        string customerId,
         DateTimeOffset date,
         string? postBox = null,
         string? stateName = null,
@@ -114,9 +194,9 @@ public static class CustomerConverterHelper
         ArgumentException.ThrowIfNullOrEmpty(customer.OrganizationName);
         CustomerInformationChanged changed = new(
             partitionId,
-            customer.DataAreaId,
+            companyId,
             originId,
-            customer.CustomerAccount,
+            customerId,
             customer.OrganizationName,
             ToPartyType(customer.PartyType ?? string.Empty),
             new Contact(
@@ -157,7 +237,9 @@ public static class CustomerConverterHelper
     /// </summary>
     /// <param name="customer">The customer.</param>
     /// <param name="partitionId">The partition identifier.</param>
+    /// <param name="companyId">The company identifier.</param>
     /// <param name="originId">The origin identifier.</param>
+    /// <param name="customerId">The customer identifier.</param>
     /// <param name="date">The date.</param>
     /// <param name="postBox">The post box.</param>
     /// <param name="stateName">Name of the state.</param>
@@ -170,7 +252,9 @@ public static class CustomerConverterHelper
     public static CustomerRegistered ToCustomerRegisteredEvent(
         [NotNull] this CustomerV3 customer,
         string partitionId,
+        string companyId,
         string originId,
+        string customerId,
         DateTimeOffset date,
         string? postBox = null,
         string? stateName = null,
@@ -185,9 +269,9 @@ public static class CustomerConverterHelper
         ArgumentException.ThrowIfNullOrEmpty(customer.OrganizationName);
         CustomerRegistered registered = new(
             partitionId,
-            customer.DataAreaId,
+            companyId,
             originId,
-            customer.CustomerAccount,
+            customerId,
             customer.OrganizationName,
             ToPartyType(customer.PartyType ?? string.Empty),
             new Contact(

@@ -24,9 +24,7 @@ using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.ValueObjets;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Configuration;
-using Hexalith.Infrastructure.DaprRuntime.Projections;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers;
-using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Projections;
 
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -39,7 +37,6 @@ using Microsoft.Extensions.Options;
 public class Dynamics365FinanceCustomerRegisteredHandler : IntegrationEventHandler<Dynamics365FinanceCustomerRegistered>
 {
     private readonly IDateTimeService _dateTimeService;
-    private readonly IActorProjectionFactory<Dynamics365FinanceCustomerState> _erpState;
     private readonly ILogger<Dynamics365FinanceCustomerRegisteredHandler> _logger;
     private readonly string _originId;
     private readonly string _partitionId;
@@ -54,18 +51,15 @@ public class Dynamics365FinanceCustomerRegisteredHandler : IntegrationEventHandl
     /// <param name="logger">The logger.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
     public Dynamics365FinanceCustomerRegisteredHandler(
-        IActorProjectionFactory<Dynamics365FinanceCustomerState> erpState,
         IDateTimeService dateTimeService,
         IOptions<OrganizationSettings> settings,
         ILogger<Dynamics365FinanceCustomerRegisteredHandler> logger)
     {
-        ArgumentNullException.ThrowIfNull(erpState);
         ArgumentNullException.ThrowIfNull(dateTimeService);
         ArgumentNullException.ThrowIfNull(settings);
         ArgumentNullException.ThrowIfNull(logger);
         SettingsException<OrganizationSettings>.ThrowIfNullOrEmpty(settings.Value.DefaultPartitionId);
         SettingsException<OrganizationSettings>.ThrowIfNullOrEmpty(settings.Value.DefaultOriginId);
-        _erpState = erpState;
         _dateTimeService = dateTimeService;
         _settings = settings;
         _logger = logger;
@@ -74,7 +68,7 @@ public class Dynamics365FinanceCustomerRegisteredHandler : IntegrationEventHandl
     }
 
     /// <inheritdoc/>
-    public override async Task<IEnumerable<BaseCommand>> ApplyAsync(Dynamics365FinanceCustomerRegistered @event, CancellationToken cancellationToken)
+    public override Task<IEnumerable<BaseCommand>> ApplyAsync(Dynamics365FinanceCustomerRegistered @event, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(@event);
         ArgumentNullException.ThrowIfNull(@event.Contact);
@@ -147,7 +141,6 @@ public class Dynamics365FinanceCustomerRegisteredHandler : IntegrationEventHandl
             commands.Add(new DeselectIntercompanyDropshipDeliveryForCustomer(_partitionId, companyId, _originId, customerId));
         }
 
-        await _erpState.SetStateAsync(@event.AggregateId, Dynamics365FinanceCustomerState.Create(@event), cancellationToken).ConfigureAwait(false);
-        return commands;
+        return Task.FromResult<IEnumerable<BaseCommand>>(commands);
     }
 }

@@ -78,7 +78,9 @@ public class CustomerConverterTest
 
         CustomerInformationChanged newEvent = customer.ToCustomerChangedEvent(
             e.PartitionId,
+            e.CompanyId,
             e.OriginId,
+            e.Id,
             e.Date,
             e.Contact.PostalAddress.PostBox,
             e.Contact.PostalAddress.StateName,

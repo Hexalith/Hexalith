@@ -22,15 +22,11 @@ using System.Threading;
 
 using FluentValidation;
 
-using Hexalith.Application.Metadatas;
 using Hexalith.Application.Organizations.Configurations;
-using Hexalith.Domain.Events;
-using Hexalith.Infrastructure.DaprRuntime.Projections;
 using Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents;
 using Hexalith.Infrastructure.Dynamics365Finance.Controllers;
 using Hexalith.Infrastructure.Dynamics365Finance.Dispatchers;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents;
-using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Projections;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
@@ -51,8 +47,6 @@ public class Dynamics365FinanceCustomerBindingController : Dynamics365FinanceBin
     /// </summary>
     private readonly IValidator<Dynamics365FinanceCustomerChanged> _changedValidator;
 
-    private readonly IActorProjectionFactory<Dynamics365FinanceCustomerState> _erpState;
-
     /// <summary>
     /// The registered validator.
     /// </summary>
@@ -61,7 +55,6 @@ public class Dynamics365FinanceCustomerBindingController : Dynamics365FinanceBin
     /// <summary>
     /// Initializes a new instance of the <see cref="Dynamics365FinanceCustomerBindingController"/> class.
     /// </summary>
-    /// <param name="erpState">State of the erp.</param>
     /// <param name="metadataValidator">The metadata validator.</param>
     /// <param name="registeredValidator">The registered validator.</param>
     /// <param name="changedValidator">The changed validator.</param>
@@ -69,9 +62,8 @@ public class Dynamics365FinanceCustomerBindingController : Dynamics365FinanceBin
     /// <param name="hostEnvironment">The host environment.</param>
     /// <param name="organizationSettings">The organization settings.</param>
     /// <param name="logger">The logger.</param>
-    /// <exception cref="System.ArgumentNullException"></exception>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
     public Dynamics365FinanceCustomerBindingController(
-        IActorProjectionFactory<Dynamics365FinanceCustomerState> erpState,
         IValidator<Dynamics365BusinessEventBase> metadataValidator,
         IValidator<Dynamics365FinanceCustomerRegistered> registeredValidator,
         IValidator<Dynamics365FinanceCustomerChanged> changedValidator,
@@ -81,11 +73,9 @@ public class Dynamics365FinanceCustomerBindingController : Dynamics365FinanceBin
         ILogger<Dynamics365FinanceCustomerBindingController> logger)
         : base(metadataValidator, eventProcessor, hostEnvironment, organizationSettings, logger)
     {
-        ArgumentNullException.ThrowIfNull(erpState);
         ArgumentNullException.ThrowIfNull(registeredValidator);
         ArgumentNullException.ThrowIfNull(changedValidator);
         _changedValidator = changedValidator;
-        _erpState = erpState;
         _registeredValidator = registeredValidator;
     }
 
@@ -99,19 +89,6 @@ public class Dynamics365FinanceCustomerBindingController : Dynamics365FinanceBin
     public async Task<ActionResult> ReceiveCustomerEventAsync(
        [SwaggerRequestBody(Description ="Dynamics 365 finance customer business event", Required = true)]
        [FromBody] JsonElement message) => await HandleEventAsync(message, CancellationToken.None).ConfigureAwait(false);
-
-    /// <inheritdoc/>
-    protected override async Task PostHandleEventProcessAsync(IEvent @event, IMetadata metadata, CancellationToken cancellationToken)
-    {
-        if (@event is Dynamics365FinanceCustomerInformationBusinessEvent businessEvent)
-        {
-            await _erpState.SetStateAsync(
-                    @event.AggregateId,
-                    Dynamics365FinanceCustomerState.Create(businessEvent),
-                    cancellationToken)
-                .ConfigureAwait(false);
-        }
-    }
 
     /// <summary>
     /// Validates the message and if not successful throws a validation exception <see cref="ValidationException" /> .

@@ -46,6 +46,7 @@ public class CustomerRegistered : CustomerEvent
     /// <param name="groupId">The group identifier.</param>
     /// <param name="salesCurrencyId">The sales currency identifier.</param>
     /// <param name="date">The date.</param>
+    [JsonConstructor]
     public CustomerRegistered(
         string partitionId,
         string companyId,
@@ -80,6 +81,27 @@ public class CustomerRegistered : CustomerEvent
         Name = string.Empty;
         Contact = new Contact();
         Date = DateTimeOffset.MinValue;
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="CustomerRegistered"/> class.
+    /// </summary>
+    /// <param name="customerRegistered">The customer registered.</param>
+    public CustomerRegistered(CustomerRegistered customerRegistered)
+        : this(
+             (customerRegistered ?? throw new ArgumentNullException(nameof(customerRegistered))).PartitionId,
+             customerRegistered.CompanyId,
+             customerRegistered.OriginId,
+             customerRegistered.Id,
+             customerRegistered.Name,
+             customerRegistered.PartyType,
+             customerRegistered.Contact,
+             customerRegistered.WarehouseId,
+             customerRegistered.CommissionSalesGroupId,
+             customerRegistered.GroupId,
+             customerRegistered.SalesCurrencyId,
+             customerRegistered.Date)
+    {
     }
 
     /// <summary>
