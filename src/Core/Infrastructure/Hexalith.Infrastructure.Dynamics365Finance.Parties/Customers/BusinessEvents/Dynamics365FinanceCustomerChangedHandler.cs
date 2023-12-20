@@ -106,6 +106,7 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
             .Where(p => p.SystemId == nameof(Hexalith))
             .FirstOrDefault()?
             .ExternalId;
+        string partitionId;
         string originId;
         string customerId;
         string companyId;
@@ -123,6 +124,7 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
         if (lastState == null)
         {
             string[] parts = aggregateId.Split(Aggregate.Separator, 5);
+            partitionId = parts[1];
             companyId = parts[2];
             originId = parts[3];
             customerId = parts[4];
@@ -132,13 +134,14 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
         }
         else
         {
+            partitionId = lastState.PartitionId;
             originId = lastState.OriginId;
             customerId = lastState.Id;
             companyId = lastState.CompanyId;
         }
 
         ChangeCustomerInformation changeCustomer = await GetCustomerChangedAsync(
-                _partitionId,
+                partitionId,
                 companyId,
                 originId,
                 customerId,
@@ -161,8 +164,8 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
             foreach (ExternalReference reference in @event.ExternalReferences)
             {
                 AddExternalSystemReference mapExternalSystemReference = new(
-                        _partitionId,
-                        @event.BusinessEventLegalEntity,
+                        partitionId,
+                        companyId,
                         reference.SystemId,
                         changeCustomer.AggregateName,
                         reference.ExternalId,
@@ -172,8 +175,8 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
         }
 
         commands.Add(new AddExternalSystemReference(
-                _partitionId,
-                @event.BusinessEventLegalEntity.ToUpperInvariant(),
+                partitionId,
+                companyId,
                 _originId,
                 changeCustomer.AggregateName,
                 @event.Account,
@@ -184,11 +187,11 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
         bool directDelivery = @event.InterCompanyDirectDelivery == "Yes";
         if (directDelivery)
         {
-            commands.Add(new SelectIntercompanyDropshipDeliveryForCustomer(_partitionId, companyId, _originId, customerId));
+            commands.Add(new SelectIntercompanyDropshipDeliveryForCustomer(partitionId, companyId, originId, customerId));
         }
         else
         {
-            commands.Add(new DeselectIntercompanyDropshipDeliveryForCustomer(_partitionId, companyId, _originId, customerId));
+            commands.Add(new DeselectIntercompanyDropshipDeliveryForCustomer(partitionId, companyId, originId, customerId));
         }
 
         return commands;
