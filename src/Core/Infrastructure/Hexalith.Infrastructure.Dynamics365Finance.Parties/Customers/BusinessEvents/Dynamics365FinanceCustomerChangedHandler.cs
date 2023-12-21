@@ -110,12 +110,46 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
         string originId;
         string customerId;
         string companyId;
+        CustomerBase customerBase = await _erpCustomerBaseService
+            .GetSingleAsync(
+                new CustomerAccountKey(@event.BusinessEventLegalEntity, @event.Account),
+                cancellationToken).ConfigureAwait(false);
+
         if (string.IsNullOrWhiteSpace(aggregateId))
         {
-            // Ignore event without Hexalith external code if not a registration event
-            LogMessageWithoutHexalithExternalCode(@event.TypeName, @event.BusinessEventLegalEntity, @event.Account);
-            return [];
+            // The customer does not have a Hexalith identifier in the external codes.
+            if (customerBase.NameAlias != null && customerBase
+                .NameAlias
+                .StartsWith(Dynamics365FinancePartiesConstants.CreatingCustomerStamp, StringComparison.OrdinalIgnoreCase))
+            {
+                // Ignore events comming from the Hexalith customer creation process.
+                LogMessageFromHexalithCustomerCreation(@event.TypeName, @event.BusinessEventLegalEntity, @event.Account, customerBase.NameAlias);
+                return [];
+            }
+
+            companyId = @event.BusinessEventLegalEntity.ToUpperInvariant();
+            partitionId = _partitionId;
+            aggregateId = await _externalReferenceMapperService
+                .GetAggregateIdAsync(
+                    Customer.GetAggregateName(),
+                    partitionId,
+                    companyId,
+                    _originId,
+                    @event.Account,
+                    cancellationToken)
+                .ConfigureAwait(false);
+            if (string.IsNullOrWhiteSpace(aggregateId))
+            {
+                originId = _originId;
+                customerId = @event.Account;
+                aggregateId = Customer.GetAggregateId(partitionId, companyId, _originId, @event.Account);
+            }
         }
+
+        CustomerV3 customerV3 = await _erpCustomerV3Service
+            .GetSingleAsync(
+                new CustomerAccountKey(@event.BusinessEventLegalEntity, @event.Account),
+                cancellationToken).ConfigureAwait(false);
 
         CustomerRegistered? lastState = await _customerService
             .GetStateAsync(@event.AggregateId, cancellationToken)
@@ -140,15 +174,16 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
             companyId = lastState.CompanyId;
         }
 
-        ChangeCustomerInformation changeCustomer = await GetCustomerChangedAsync(
+        RegisterOrChangeCustomer changeCustomer = GetCustomerChanged(
                 partitionId,
                 companyId,
                 originId,
                 customerId,
                 lastState,
                 @event,
-                cancellationToken)
-            .ConfigureAwait(false);
+                customerBase,
+                customerV3,
+                cancellationToken);
 
         string? hasChanges = (lastState == null) ? $"No current state found for '{aggregateId}', applying changes." : changeCustomer.HasChanges(lastState);
         if (hasChanges == null)
@@ -197,25 +232,19 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
         return commands;
     }
 
-    private async Task<ChangeCustomerInformation> GetCustomerChangedAsync(
+    private RegisterOrChangeCustomer GetCustomerChanged(
         string partitionId,
         string companyId,
         string originId,
         string customerId,
         CustomerRegistered? lastState,
         Dynamics365FinanceCustomerChanged @event,
+        CustomerBase customerBase,
+        CustomerV3 customerV3,
         CancellationToken cancellationToken)
     {
         ArgumentException.ThrowIfNullOrEmpty(@event.BusinessEventLegalEntity);
         ArgumentException.ThrowIfNullOrEmpty(@event.Account);
-        CustomerBase customerBase = await _erpCustomerBaseService
-            .GetSingleAsync(
-                new CustomerAccountKey(@event.BusinessEventLegalEntity, @event.Account),
-                cancellationToken).ConfigureAwait(false);
-        CustomerV3 customerV3 = await _erpCustomerV3Service
-            .GetSingleAsync(
-                new CustomerAccountKey(@event.BusinessEventLegalEntity, @event.Account),
-                cancellationToken).ConfigureAwait(false);
         int month = (customerBase.PersonBirthMonth == null) ? 1 : (int)customerBase.PersonBirthMonth;
         DateTimeOffset birthDate = new(
             customerBase.PersonBirthYear ?? 1,
@@ -226,7 +255,7 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
             0,
             TimeSpan.Zero);
 
-        return customerV3.ToChangeCustomerCommand(
+        return customerV3.ToRegisterOrChangeCustomerCommand(
                 partitionId,
                 companyId,
                 originId,
@@ -280,7 +309,7 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
 
     [LoggerMessage(
         EventId = 1,
-        Level = LogLevel.Information,
-        Message = "Event {EventType} for customer '{CompanyId}/{CustomerAccount}' without 'Hexalith' external code, is ignored.")]
-    private partial void LogMessageWithoutHexalithExternalCode(string eventType, string companyId, string customerAccount);
+    Level = LogLevel.Information,
+        Message = "Event '{EventType}' for customer '{CompanyId}/{CustomerAccount}' is ignored as it is currently being processed for creation by Hexalith. Creation stamp is : '{CreationStamp}'")]
+    private partial void LogMessageFromHexalithCustomerCreation(string eventType, string companyId, string customerAccount, string creationStamp);
 }

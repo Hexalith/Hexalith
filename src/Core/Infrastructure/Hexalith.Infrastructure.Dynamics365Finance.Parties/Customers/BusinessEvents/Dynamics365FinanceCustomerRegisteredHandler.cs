@@ -17,14 +17,9 @@ namespace Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessE
 
 using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
-using Hexalith.Application.ExternalSystems.Commands;
 using Hexalith.Application.Organizations.Configurations;
-using Hexalith.Application.Parties.Commands;
-using Hexalith.Domain.Aggregates;
-using Hexalith.Domain.ValueObjets;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Configuration;
-using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers;
 
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -69,7 +64,9 @@ public class Dynamics365FinanceCustomerRegisteredHandler : IntegrationEventHandl
 
     /// <inheritdoc/>
     public override Task<IEnumerable<BaseCommand>> ApplyAsync(Dynamics365FinanceCustomerRegistered @event, CancellationToken cancellationToken)
-    {
+        => Task.FromResult<IEnumerable<BaseCommand>>(Array.Empty<BaseCommand>());
+
+    /*
         ArgumentNullException.ThrowIfNull(@event);
         ArgumentNullException.ThrowIfNull(@event.Contact);
         ArgumentNullException.ThrowIfNull(@event.Contact.PostalAddress);
@@ -142,5 +139,5 @@ public class Dynamics365FinanceCustomerRegisteredHandler : IntegrationEventHandl
         }
 
         return Task.FromResult<IEnumerable<BaseCommand>>(commands);
-    }
+        */
 }

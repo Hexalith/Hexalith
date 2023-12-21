@@ -51,6 +51,25 @@ public static class CustomerCommandsConverter
     }
 
     /// <summary>
+    /// Determines whether the specified registered has changes.
+    /// </summary>
+    /// <param name="changed">The changed.</param>
+    /// <param name="registered">The registered.</param>
+    /// <returns>System.Nullable&lt;System.String&gt;.</returns>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
+    public static string? HasChanges(this RegisterOrChangeCustomer changed, CustomerRegistered registered)
+    {
+        ArgumentNullException.ThrowIfNull(changed);
+        CompareLogic compareLogic = new();
+        RegisterOrChangeCustomer newValue = new Customer(registered).ToRegisterOrChangeCustomer();
+        compareLogic.Config.IgnoreProperty<ChangeCustomerInformation>(x => x.Date);
+
+        ComparisonResult result = compareLogic.Compare(changed, registered);
+
+        return !result.AreEqual ? result.DifferencesString : null;
+    }
+
+    /// <summary>
     /// Converts to change customer information.
     /// </summary>
     /// <param name="customer">The customer.</param>
@@ -167,6 +186,30 @@ public static class CustomerCommandsConverter
             new Contact(customer.Contact),
             customer.WarehouseId,
             customer.CompanyId,
+            customer.GroupId,
+            customer.SalesCurrencyId,
+            customer.Date);
+    }
+
+    /// <summary>
+    /// Converts to registerorchangecustomer.
+    /// </summary>
+    /// <param name="customer">The customer.</param>
+    /// <returns>RegisterOrChangeCustomer.</returns>
+    /// <exception cref="System.ArgumentNullException">nill.</exception>
+    public static RegisterOrChangeCustomer ToRegisterOrChangeCustomer([NotNull] this Customer customer)
+    {
+        ArgumentNullException.ThrowIfNull(customer);
+        return new RegisterOrChangeCustomer(
+            customer.PartitionId,
+            customer.CompanyId,
+            customer.OriginId,
+            customer.Id,
+            customer.Name,
+            customer.PartyType,
+            new Contact(customer.Contact),
+            customer.WarehouseId,
+            customer.CommissionSalesGroupId,
             customer.GroupId,
             customer.SalesCurrencyId,
             customer.Date);

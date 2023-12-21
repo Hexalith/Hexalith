@@ -4,7 +4,7 @@
 // Created          : 11-21-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 12-13-2023
+// Last Modified On : 12-20-2023
 // ***********************************************************************
 // <copyright file="CustomerConverterHelper.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -494,12 +494,88 @@ public static class CustomerConverterHelper
     }
 
     /// <summary>
+    /// Converts to changecustomercommand.
+    /// </summary>
+    /// <param name="customer">The customer.</param>
+    /// <param name="partitionId">The partition identifier.</param>
+    /// <param name="companyId">The company identifier.</param>
+    /// <param name="originId">The origin identifier.</param>
+    /// <param name="customerId">The customer identifier.</param>
+    /// <param name="date">The date.</param>
+    /// <param name="postBox">The post box.</param>
+    /// <param name="stateName">Name of the state.</param>
+    /// <param name="countryName">Name of the country.</param>
+    /// <param name="phone">The phone.</param>
+    /// <param name="mobile">The mobile.</param>
+    /// <param name="title">The title.</param>
+    /// <param name="birthDate">The birth date.</param>
+    /// <returns>Hexalith.Application.Parties.Commands.ChangeCustomerInformation.</returns>
+    public static RegisterOrChangeCustomer ToRegisterOrChangeCustomerCommand(
+            [NotNull] this CustomerV3 customer,
+            string partitionId,
+            string companyId,
+            string originId,
+            string customerId,
+            DateTimeOffset date,
+            string? postBox = null,
+            string? stateName = null,
+            string? countryName = null,
+            string? phone = null,
+            string? mobile = null,
+            string? title = null,
+            DateTimeOffset? birthDate = null)
+    {
+        ArgumentNullException.ThrowIfNull(customer);
+        ArgumentException.ThrowIfNullOrEmpty(customer.CustomerAccount);
+        ArgumentException.ThrowIfNullOrEmpty(customer.OrganizationName);
+        RegisterOrChangeCustomer changed = new(
+            partitionId,
+            companyId,
+            originId,
+            customerId,
+            customer.OrganizationName,
+            ToPartyType(customer.PartyType ?? string.Empty),
+            new Contact(
+                new Person(
+                    customer.OrganizationName,
+                    customer.PersonFirstName,
+                    customer.PersonLastName,
+                    title,
+                    birthDate,
+                    ToGender(customer.PersonGender)),
+                new PostalAddress(
+                    customer.AddressDescription,
+                    customer.AddressDescription,
+                    customer.AddressStreetNumber,
+                    customer.AddressStreet,
+                    postBox,
+                    customer.AddressZipCode,
+                    customer.AddressCity,
+                    customer.AddressCounty,
+                    customer.AddressState,
+                    stateName,
+                    customer.AddressCountryRegionId,
+                    countryName,
+                    customer.AddressCountryRegionISOCode),
+                customer.PrimaryContactEmail,
+                customer.PrimaryContactPhoneIsMobile != "Yes" ? customer.PrimaryContactPhone : phone,
+                customer.PrimaryContactPhoneIsMobile == "Yes" ? customer.PrimaryContactPhone : mobile),
+            customer.WarehouseId,
+            customer.CommissionSalesGroupId,
+            customer.CustomerGroupId,
+            customer.SalesCurrencyCode,
+            date);
+        return changed;
+    }
+
+    /// <summary>
     /// Adds the changes.
     /// </summary>
     /// <param name="changes">The changes.</param>
     /// <param name="oldValue">The original value.</param>
     /// <param name="newValue">The new value.</param>
     /// <param name="fieldName">Name of the field.</param>
+    /// <exception cref="ArgumentException">Field name is invalid.</exception>
     private static void AddChanges(
         this Dictionary<string, (object? OldValue, object? NewValue)> changes,
         object? oldValue,

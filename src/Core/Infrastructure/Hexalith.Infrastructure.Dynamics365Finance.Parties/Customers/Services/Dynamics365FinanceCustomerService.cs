@@ -111,7 +111,7 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
                     .ConfigureAwait(false);
             string? originExternalCodeCustomer = await FindExternalCodeAsync(registered.CompanyId, registered.OriginId, registered.Id, cancellationToken)
                     .ConfigureAwait(false);
-            string tempName = $"[{registered.AggregateId}]";
+            string tempName = Dynamics365FinancePartiesConstants.CreatingCustomerStamp + $"[{registered.AggregateId}]";
             string? customerAccount = await FindAsync(registered.CompanyId, tempName, cancellationToken)
                     .ConfigureAwait(false);
             CustomerAccountKey customerKey;
