@@ -40,7 +40,7 @@ using Swashbuckle.AspNetCore.Annotations;
 /// Implements the <see cref="Dynamics365FinanceBindingController" />.
 /// </summary>
 /// <seealso cref="Dynamics365FinanceBindingController" />
-public class Dynamics365FinanceCustomerBindingController : Dynamics365FinanceBindingController
+public abstract class Dynamics365FinanceCustomerBindingController : Dynamics365FinanceBindingController
 {
     /// <summary>
     /// The add validator.
@@ -63,7 +63,7 @@ public class Dynamics365FinanceCustomerBindingController : Dynamics365FinanceBin
     /// <param name="organizationSettings">The organization settings.</param>
     /// <param name="logger">The logger.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
-    public Dynamics365FinanceCustomerBindingController(
+    protected Dynamics365FinanceCustomerBindingController(
         IValidator<Dynamics365BusinessEventBase> metadataValidator,
         IValidator<Dynamics365FinanceCustomerRegistered> registeredValidator,
         IValidator<Dynamics365FinanceCustomerChanged> changedValidator,
