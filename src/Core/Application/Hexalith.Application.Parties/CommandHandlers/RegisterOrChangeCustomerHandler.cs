@@ -109,6 +109,8 @@ public partial class RegisterOrChangeCustomerHandler : CommandHandler<RegisterOr
     {
         CompareLogic compareLogic = new();
 
+        compareLogic.Config.IgnoreProperty<CustomerInformationChanged>(p => p.Date);
+
         ComparisonResult result = compareLogic.Compare(current, changed);
 
         if (result.AreEqual)

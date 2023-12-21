@@ -4,7 +4,7 @@
 // Created          : 08-29-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 08-29-2023
+// Last Modified On : 12-21-2023
 // ***********************************************************************
 // <copyright file="RegisterCustomerHandler.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -29,15 +29,32 @@ using Hexalith.Domain.Events;
 using Hexalith.Domain.Messages;
 using Hexalith.Domain.ValueObjets;
 
+using Microsoft.Extensions.Logging;
+
 /// <summary>
 /// Class RegisterCustomerHandler.
 /// Implements the <see cref="Hexalith.Application.Commands.CommandHandler{Hexalith.Application.Parties.Commands.RegisterCustomer}" />.
 /// </summary>
 /// <seealso cref="Hexalith.Application.Commands.CommandHandler{Hexalith.Application.Parties.Commands.RegisterCustomer}" />
-public class RegisterCustomerHandler : CommandHandler<RegisterCustomer>
+public partial class RegisterCustomerHandler : CommandHandler<RegisterCustomer>
 {
+    /// <summary>
+    /// The logger.
+    /// </summary>
+    private readonly ILogger<RegisterCustomerHandler> _logger;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RegisterCustomerHandler"/> class.
+    /// </summary>
+    /// <param name="logger">The logger.</param>
+    public RegisterCustomerHandler(ILogger<RegisterCustomerHandler> logger)
+    {
+        ArgumentNullException.ThrowIfNull(logger);
+        _logger = logger;
+    }
+
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] RegisterCustomer command, IAggregate? aggregate, CancellationToken cancellationToken)
+    public override async Task<IEnumerable<BaseMessage>> DoAsync([NotNull] RegisterCustomer command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
         CustomerRegistered registered =
@@ -54,11 +71,11 @@ public class RegisterCustomerHandler : CommandHandler<RegisterCustomer>
                 command.GroupId,
                 command.SalesCurrencyId,
                 command.Date);
-        return aggregate is null
+        return await (aggregate is null
             ? Task.FromResult<IEnumerable<BaseMessage>>([registered])
             : Task.FromException<IEnumerable<BaseMessage>>(
                 new InvalidOperationException(
-                    $"The event {command.TypeName} with id '{command.AggregateId}' cannot be applied on an existing customer."));
+                    $"The event {command.TypeName} with id '{command.AggregateId}' cannot be applied on an existing customer."))).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
