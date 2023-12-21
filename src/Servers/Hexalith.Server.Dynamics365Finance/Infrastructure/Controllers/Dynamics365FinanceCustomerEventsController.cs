@@ -36,7 +36,7 @@ public class Dynamics365FinanceCustomerEventsController : Dynamics365FinanceCust
     /// <param name="hostEnvironment">The host environment.</param>
     /// <param name="organizationSettings">The organization settings.</param>
     /// <param name="logger">The logger.</param>
-    protected Dynamics365FinanceCustomerEventsController(
+    public Dynamics365FinanceCustomerEventsController(
         IValidator<Dynamics365BusinessEventBase> metadataValidator,
         IValidator<Dynamics365FinanceCustomerRegistered> registeredValidator,
         IValidator<Dynamics365FinanceCustomerChanged> changedValidator,
