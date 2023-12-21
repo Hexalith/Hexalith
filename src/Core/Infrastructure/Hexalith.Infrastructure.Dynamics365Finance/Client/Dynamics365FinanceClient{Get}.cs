@@ -209,7 +209,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
             Logger.LogError(
                 "Can't get {EntityName} with keys {Keys}. The method call to '{Path}' failed. response content :\n{ResponseContent}",
                 typeof(TEntity).Name,
-                keys,
+                string.Join('\n', keys.Select(s => $"{s.Key}='{s.Value}'")),
                 url.AbsoluteUri,
                 responseContent ?? "No response",
                 ex);

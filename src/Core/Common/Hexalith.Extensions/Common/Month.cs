@@ -17,7 +17,7 @@ public enum Month
     /// <summary>
     /// The undefined.
     /// </summary>
-    Undefined = 0,
+    None = 0,
 
     /// <summary>
     /// The january.
