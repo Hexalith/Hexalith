@@ -22,6 +22,7 @@ using System.Diagnostics.CodeAnalysis;
 using Hexalith.Application.Parties.Commands;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
+using Hexalith.Domain.ValueObjets;
 
 using KellermanSoftware.CompareNetObjects;
 
@@ -65,7 +66,7 @@ public static class CustomerCommandsConverter
             customer.Id,
             customer.Name,
             customer.PartyType,
-            customer.Contact,
+            new Contact(customer.Contact),
             customer.WarehouseId,
             customer.CommissionSalesGroupId,
             customer.GroupId,
@@ -89,7 +90,7 @@ public static class CustomerCommandsConverter
             customer.Id,
             customer.Name,
             customer.PartyType,
-            customer.Contact,
+            new Contact(customer.Contact),
             customer.WarehouseId,
             customer.CompanyId,
             customer.GroupId,
@@ -113,7 +114,7 @@ public static class CustomerCommandsConverter
             register.Id,
             register.Name,
             register.PartyType,
-            register.Contact,
+            new Contact(register.Contact),
             register.WarehouseId,
             register.CompanyId,
             register.GroupId,
@@ -138,7 +139,7 @@ public static class CustomerCommandsConverter
             change.Id,
             change.Name,
             change.PartyType,
-            change.Contact,
+            new Contact(change.Contact),
             change.WarehouseId,
             change.CompanyId,
             change.GroupId,
@@ -163,7 +164,7 @@ public static class CustomerCommandsConverter
             customer.Id,
             customer.Name,
             customer.PartyType,
-            customer.Contact,
+            new Contact(customer.Contact),
             customer.WarehouseId,
             customer.CompanyId,
             customer.GroupId,

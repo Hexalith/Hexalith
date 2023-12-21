@@ -124,7 +124,7 @@ public class Dynamics365FinanceCustomerRegisteredHandler : IntegrationEventHandl
                    customerId,
                    @event.Name,
                    CustomerConverterHelper.ToPartyType(@event.PartyType ?? nameof(PartyType.Person)),
-                   @event.Contact,
+                   new(@event.Contact),
                    @event.WarehouseId,
                    @event.CommissionSalesGroupId,
                    @event.GroupId,

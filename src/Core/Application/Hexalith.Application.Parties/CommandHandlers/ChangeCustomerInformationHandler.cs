@@ -27,6 +27,7 @@ using Hexalith.Application.Parties.Commands;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Messages;
+using Hexalith.Domain.ValueObjets;
 
 using KellermanSoftware.CompareNetObjects;
 
@@ -66,7 +67,7 @@ public partial class ChangeCustomerInformationHandler : CommandHandler<ChangeCus
                 command.Id,
                 command.Name,
                 command.PartyType,
-                command.Contact,
+                new Contact(command.Contact),
                 command.WarehouseId,
                 command.CommissionSalesGroupId,
                 command.GroupId,

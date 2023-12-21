@@ -95,7 +95,7 @@ public class CustomerRegistered : CustomerEvent
              customerRegistered.Id,
              customerRegistered.Name,
              customerRegistered.PartyType,
-             customerRegistered.Contact,
+             new Contact(customerRegistered.Contact),
              customerRegistered.WarehouseId,
              customerRegistered.CommissionSalesGroupId,
              customerRegistered.GroupId,

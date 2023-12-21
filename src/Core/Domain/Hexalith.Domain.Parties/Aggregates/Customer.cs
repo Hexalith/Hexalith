@@ -89,7 +89,7 @@ public record Customer(
               customer.Id,
               customer.Name,
               customer.PartyType,
-              customer.Contact,
+              new Contact(customer.Contact),
               customer.WarehouseId,
               customer.CommissionSalesGroupId,
               customer.GroupId,
@@ -107,7 +107,7 @@ public record Customer(
             CustomerInformationChanged changed => this with
             {
                 Name = changed.Name,
-                Contact = changed.Contact,
+                Contact = new Contact(changed.Contact),
                 WarehouseId = changed.WarehouseId,
                 CommissionSalesGroupId = changed.CommissionSalesGroupId,
                 Date = changed.Date,
@@ -177,9 +177,9 @@ public record Customer(
             Id,
             Name,
             PartyType,
-            Contact,
+            new Contact(Contact),
             WarehouseId,
-            CompanyId,
+            CommissionSalesGroupId,
             GroupId,
             SalesCurrencyId,
             Date);
@@ -198,9 +198,9 @@ public record Customer(
             Id,
             Name,
             PartyType,
-            Contact,
+            new Contact(Contact),
             WarehouseId,
-            CompanyId,
+            CommissionSalesGroupId,
             GroupId,
             SalesCurrencyId,
             Date);

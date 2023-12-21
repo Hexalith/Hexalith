@@ -21,6 +21,7 @@ using System.Diagnostics.CodeAnalysis;
 
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
+using Hexalith.Domain.ValueObjets;
 
 /// <summary>
 /// Class CustomerEventsConverter.
@@ -44,7 +45,7 @@ public static class CustomerEventsConverter
             change.Id,
             change.Name,
             change.PartyType,
-            change.Contact,
+            new Contact(change.Contact),
             change.WarehouseId,
             change.CompanyId,
             change.GroupId,
@@ -69,7 +70,7 @@ public static class CustomerEventsConverter
             customer.Id,
             customer.Name,
             customer.PartyType,
-            customer.Contact,
+            new Contact(customer.Contact),
             customer.WarehouseId,
             customer.CompanyId,
             customer.GroupId,
@@ -93,7 +94,7 @@ public static class CustomerEventsConverter
             customer.Id,
             customer.Name,
             customer.PartyType,
-            customer.Contact,
+            new Contact(customer.Contact),
             customer.WarehouseId,
             customer.CompanyId,
             customer.GroupId,

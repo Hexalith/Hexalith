@@ -126,7 +126,7 @@ public class CustomerAggregateActor : Actor, ICommandProcessorActor, IRemindable
                 customer.Id,
                 customer.Name,
                 customer.PartyType,
-                customer.Contact,
+                new(customer.Contact),
                 customer.WarehouseId,
                 customer.CommissionSalesGroupId,
                 customer.GroupId,
