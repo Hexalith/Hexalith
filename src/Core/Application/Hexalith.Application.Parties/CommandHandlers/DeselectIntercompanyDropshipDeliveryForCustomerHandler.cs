@@ -36,7 +36,7 @@ using Hexalith.Domain.Messages;
 public class DeselectIntercompanyDropshipDeliveryForCustomerHandler : CommandHandler<DeselectIntercompanyDropshipDeliveryForCustomer>
 {
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] DeselectIntercompanyDropshipDeliveryForCustomer command, IAggregate? aggregate, CancellationToken cancellationToken)
+    public override async Task<IEnumerable<BaseMessage>> DoAsync([NotNull] DeselectIntercompanyDropshipDeliveryForCustomer command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
         IntercompanyDropshipDeliveryForCustomerDeselected deselected = new(
@@ -44,11 +44,16 @@ public class DeselectIntercompanyDropshipDeliveryForCustomerHandler : CommandHan
             command.CompanyId,
             command.OriginId,
             command.Id);
-        return aggregate is not null and Customer customer
-            ? customer.IntercompanyDropship
-                ? Task.FromResult<IEnumerable<BaseMessage>>([deselected])
-                : Task.FromResult<IEnumerable<BaseMessage>>([])
-            : Task.FromException<IEnumerable<BaseMessage>>(new InvalidOperationException($"The event {command.TypeName} with id '{command.AggregateId}' can only be applied on an existing customer."));
+        if (aggregate is not null)
+        {
+            Customer customer = (Customer)aggregate;
+            if (!customer.IntercompanyDropship)
+            {
+                return await Task.FromResult<IEnumerable<BaseMessage>>([]).ConfigureAwait(false);
+            }
+        }
+
+        return await Task.FromResult<IEnumerable<BaseMessage>>([deselected]).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
