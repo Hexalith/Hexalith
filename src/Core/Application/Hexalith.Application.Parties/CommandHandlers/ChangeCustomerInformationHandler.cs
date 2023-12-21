@@ -4,7 +4,7 @@
 // Created          : 08-29-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 08-29-2023
+// Last Modified On : 12-21-2023
 // ***********************************************************************
 // <copyright file="ChangeCustomerInformationHandler.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -28,15 +28,35 @@ using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Messages;
 
+using KellermanSoftware.CompareNetObjects;
+
+using Microsoft.Extensions.Logging;
+
 /// <summary>
 /// Class ChangeCustomerInformationHandler.
 /// Implements the <see cref="Hexalith.Application.Commands.CommandHandler{Hexalith.Application.Parties.Commands.ChangeCustomerInformation}" />.
 /// </summary>
 /// <seealso cref="Hexalith.Application.Commands.CommandHandler{Hexalith.Application.Parties.Commands.ChangeCustomerInformation}" />
-public class ChangeCustomerInformationHandler : CommandHandler<ChangeCustomerInformation>
+public partial class ChangeCustomerInformationHandler : CommandHandler<ChangeCustomerInformation>
 {
+    /// <summary>
+    /// The logger.
+    /// </summary>
+    private readonly ILogger<ChangeCustomerInformationHandler> _logger;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ChangeCustomerInformationHandler" /> class.
+    /// </summary>
+    /// <param name="logger">The logger.</param>
+    /// <exception cref="System.ArgumentNullException">logger.</exception>
+    public ChangeCustomerInformationHandler(ILogger<ChangeCustomerInformationHandler> logger)
+    {
+        ArgumentNullException.ThrowIfNull(logger);
+        _logger = logger;
+    }
+
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] ChangeCustomerInformation command, IAggregate? aggregate, CancellationToken cancellationToken)
+    public override async Task<IEnumerable<BaseMessage>> DoAsync([NotNull] ChangeCustomerInformation command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
         CustomerInformationChanged changed = new(
@@ -52,13 +72,56 @@ public class ChangeCustomerInformationHandler : CommandHandler<ChangeCustomerInf
                 command.GroupId,
                 command.SalesCurrencyId,
                 command.Date);
-        return aggregate is not null and Customer customer
-            ? customer.HasChanges(changed)
-                ? Task.FromResult<IEnumerable<BaseMessage>>([changed])
-                : Task.FromResult<IEnumerable<BaseMessage>>([])
-            : Task.FromException<IEnumerable<BaseMessage>>(new InvalidOperationException($"The event {command.TypeName} with id '{command.AggregateId}' can only be applied on an existing customer."));
+        if (aggregate is not null)
+        {
+            if (aggregate is Customer customer)
+            {
+                return HasChanges(customer.ToCustomerInformationChanged(), changed)
+                    ? await Task.FromResult<IEnumerable<BaseMessage>>(new BaseMessage[] { changed }).ConfigureAwait(false)
+                    : await Task.FromResult<IEnumerable<BaseMessage>>(Array.Empty<BaseMessage>()).ConfigureAwait(false);
+            }
+        }
+
+        throw new InvalidOperationException($"The event {command.TypeName} with id '{command.AggregateId}' can only be applied on an existing customer.");
     }
 
     /// <inheritdoc/>
     public override Task<IEnumerable<BaseMessage>> UndoAsync(ChangeCustomerInformation command, IAggregate? aggregate, CancellationToken cancellationToken) => throw new NotSupportedException();
+
+    /// <summary>
+    /// Determines whether the specified current has changes.
+    /// </summary>
+    /// <param name="current">The current.</param>
+    /// <param name="changed">The changed.</param>
+    /// <returns><c>true</c> if the specified current has changes; otherwise, <c>false</c>.</returns>
+    private bool HasChanges(CustomerInformationChanged current, CustomerInformationChanged changed)
+    {
+        CompareLogic compareLogic = new();
+
+        ComparisonResult result = compareLogic.Compare(current, changed);
+
+        if (result.AreEqual)
+        {
+            LogNoChangeToApplyInformation(current.AggregateId);
+            return false;
+        }
+
+        LogChangesToApplyFoundInformation(current.AggregateId, result.DifferencesString);
+        return true;
+    }
+
+    /// <summary>
+    /// Logs the changes to apply found information.
+    /// </summary>
+    /// <param name="aggregateId">The aggregate identifier.</param>
+    /// <param name="changes">The changes.</param>
+    [LoggerMessage(EventId = 1, Level = LogLevel.Information, Message = "Changes to apply found for customer '{AggregateId}' :\n{Changes}")]
+    private partial void LogChangesToApplyFoundInformation(string aggregateId, string changes);
+
+    /// <summary>
+    /// Logs the no change to apply information.
+    /// </summary>
+    /// <param name="aggregateId">The aggregate identifier.</param>
+    [LoggerMessage(EventId = 2, Level = LogLevel.Information, Message = "No change to apply found for customer '{AggregateId}'")]
+    private partial void LogNoChangeToApplyInformation(string aggregateId);
 }

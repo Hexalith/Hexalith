@@ -150,25 +150,6 @@ public record Customer(
 #pragma warning disable CA1024 // Use properties where appropriate
     public static string GetAggregateName() => nameof(Customer);
 #pragma warning restore CA1024 // Use properties where appropriate
-    /// <summary>
-    /// Determines whether the specified changed has changes.
-    /// </summary>
-    /// <param name="changed">The changed.</param>
-    /// <returns><c>true</c> if the specified changed has changes; otherwise, <c>false</c>.</returns>
-    /// <exception cref="System.ArgumentNullException">null.</exception>
-    public bool HasChanges([NotNull] CustomerInformationChanged changed)
-    {
-        ArgumentNullException.ThrowIfNull(changed);
-        CheckEvent(changed);
-        return Name != changed.Name
-            || !Contact.AreSame(Contact, changed.Contact)
-            || GroupId != changed.GroupId
-            || PartyType != changed.PartyType
-            || Date != changed.Date
-            || SalesCurrencyId != changed.SalesCurrencyId
-            || WarehouseId != changed.WarehouseId
-            || CommissionSalesGroupId != changed.CommissionSalesGroupId;
-    }
 
     private void CheckEvent(CustomerEvent customerEvent, [CallerArgumentExpression(nameof(customerEvent))] string? paramName = null)
     {
