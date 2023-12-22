@@ -7,8 +7,7 @@
 		<EnableSdkContainerSupport>true</EnableSdkContainerSupport>
 	</PropertyGroup>
 	<ItemGroup>
-		<ContainerEnvironmentVariable Include="Statestore__Name" Value="hexalith-dynamics365finance-statestore" />
-		<ContainerEnvironmentVariable Include="Dynamics365Finance__Company" Value="FRRT" />
+		<ContainerEnvironmentVariable Include="Statestore__Name" Value="dynamics365finance-statestore" />
 		<ContainerEnvironmentVariable Include="Dynamics365Finance__Parties__ReceiveCustomersFromErpEnabled" Value="false" />
 		<ContainerEnvironmentVariable Include="Dynamics365Finance__Parties__SendCustomersToErpEnabled" Value="false" />
 		<ContainerEnvironmentVariable Include="Dynamics365Finance__Identity__Tenant" Value="fiveforty.fr" />

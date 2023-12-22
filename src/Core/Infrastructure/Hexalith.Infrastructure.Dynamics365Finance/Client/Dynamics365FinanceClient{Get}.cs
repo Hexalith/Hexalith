@@ -175,7 +175,8 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     public Task<TEntity> GetSingleAsync(ICommonPrimaryKey key, CancellationToken cancellationToken) => GetSingleAsync(DefaultCompany, KeyToDictionary(key), cancellationToken);
 
     /// <inheritdoc/>
-    public Task<TEntity> GetSingleAsync(IDictionary<string, object?> keys, CancellationToken cancellationToken) => GetSingleAsync(DefaultCompany, keys, cancellationToken);
+    public Task<TEntity> GetSingleAsync(IDictionary<string, object?> keys, CancellationToken cancellationToken)
+        => GetSingleAsync(DefaultCompany, keys, cancellationToken);
 
     /// <inheritdoc/>
     public async Task<TEntity> GetSingleAsync(string company, [NotNull] IDictionary<string, object?> keys, CancellationToken cancellationToken)

@@ -58,7 +58,9 @@ public sealed class GetSingleRequestFailedException<T> : Exception
     /// <param name="message">The error message.</param>
     /// <param name="innerException">The inner exception.</param>
     public GetSingleRequestFailedException(string entityName, IDictionary<string, object?> keys, string? responseContent, string? message, Exception? innerException)
-        : base($"Failed to retrieve {typeof(T).Name} with keys {keys} on entity {entityName}. " + message, innerException)
+        : base(
+            $"Failed to retrieve {typeof(T).Name} with keys [{string.Join(';', keys.Select(s => $"{s.Key}='{s.Value}'"))}] on entity {entityName}. " + message,
+            innerException)
     {
         EntityName = entityName;
         Keys = keys;
