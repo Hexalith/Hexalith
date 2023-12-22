@@ -22,6 +22,7 @@ using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
 using Hexalith.Application.Organizations.Configurations;
 using Hexalith.Domain.Events;
+using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Configuration;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services;
 
 using Microsoft.Extensions.Logging;
@@ -32,7 +33,7 @@ using Microsoft.Extensions.Options;
 /// Implements the <see cref="CustomerEventsHandler{CustomerRegistered}" />.
 /// </summary>
 /// <seealso cref="CustomerEventsHandler{CustomerRegistered}" />
-public class CustomerRegisteredHandler : IntegrationEventHandler<CustomerRegistered>
+public partial class CustomerRegisteredHandler : IntegrationEventHandler<CustomerRegistered>
 {
     private readonly IDynamics365FinanceCustomerService _customerService;
 
@@ -51,25 +52,31 @@ public class CustomerRegisteredHandler : IntegrationEventHandler<CustomerRegiste
     /// </summary>
     private readonly string? _originId;
 
+    private readonly IOptions<Dynamics365FinancePartiesSettings> _partiesSettings;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="CustomerRegisteredHandler"/> class.
     /// </summary>
-    /// <param name="customerService">The store service.</param>
+    /// <param name="customerService">The customer service.</param>
+    /// <param name="partiesSettings">The parties settings.</param>
     /// <param name="organizationSettings">The organization settings.</param>
     /// <param name="logger">The logger.</param>
-    /// <exception cref="System.ArgumentNullException">null.</exception>
+    /// <exception cref="System.ArgumentNullException"></exception>
     public CustomerRegisteredHandler(
         IDynamics365FinanceCustomerService customerService,
+        IOptions<Dynamics365FinancePartiesSettings> partiesSettings,
         IOptions<OrganizationSettings> organizationSettings,
         ILogger<CustomerRegisteredHandler> logger)
     {
         ArgumentNullException.ThrowIfNull(customerService);
+        ArgumentNullException.ThrowIfNull(partiesSettings);
         ArgumentNullException.ThrowIfNull(organizationSettings);
         ArgumentNullException.ThrowIfNull(logger);
 
         ArgumentException.ThrowIfNullOrEmpty(organizationSettings.Value.DefaultOriginId);
 
         _customerService = customerService;
+        _partiesSettings = partiesSettings;
         _organizationSettings = organizationSettings;
         _logger = logger;
         _originId = _organizationSettings.Value.DefaultOriginId;
@@ -84,7 +91,21 @@ public class CustomerRegisteredHandler : IntegrationEventHandler<CustomerRegiste
             return [];
         }
 
-        _ = await _customerService.CreateCustomerAsync(@event, cancellationToken).ConfigureAwait(false);
+        if (_partiesSettings.Value.Parties?.SendCustomersToErpEnabled == true)
+        {
+            _ = await _customerService.CreateCustomerAsync(@event, cancellationToken).ConfigureAwait(false);
+        }
+        else
+        {
+            LogSendCustomersToErpIsDisabledInformation();
+        }
+
         return [];
     }
+
+    [LoggerMessage(
+    EventId = 1,
+    Level = LogLevel.Information,
+    Message = "Send customers to Dynamics 365 Finance is disabled.")]
+    private partial void LogSendCustomersToErpIsDisabledInformation();
 }

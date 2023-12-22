@@ -27,6 +27,7 @@ using Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents;
 using Hexalith.Infrastructure.Dynamics365Finance.Controllers;
 using Hexalith.Infrastructure.Dynamics365Finance.Dispatchers;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents;
+using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Configuration;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
@@ -40,12 +41,14 @@ using Swashbuckle.AspNetCore.Annotations;
 /// Implements the <see cref="Dynamics365FinanceBindingController" />.
 /// </summary>
 /// <seealso cref="Dynamics365FinanceBindingController" />
-public abstract class Dynamics365FinanceCustomerBindingController : Dynamics365FinanceBindingController
+public abstract partial class Dynamics365FinanceCustomerBindingController : Dynamics365FinanceBindingController
 {
     /// <summary>
     /// The add validator.
     /// </summary>
     private readonly IValidator<Dynamics365FinanceCustomerChanged> _changedValidator;
+
+    private readonly IOptions<Dynamics365FinancePartiesSettings> _partiesSettings;
 
     /// <summary>
     /// The registered validator.
@@ -61,6 +64,7 @@ public abstract class Dynamics365FinanceCustomerBindingController : Dynamics365F
     /// <param name="eventProcessor">The event processor.</param>
     /// <param name="hostEnvironment">The host environment.</param>
     /// <param name="organizationSettings">The organization settings.</param>
+    /// <param name="partiesSettings">The parties settings.</param>
     /// <param name="logger">The logger.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
     protected Dynamics365FinanceCustomerBindingController(
@@ -70,12 +74,16 @@ public abstract class Dynamics365FinanceCustomerBindingController : Dynamics365F
         IDynamics365FinanceIntegrationEventProcessor eventProcessor,
         IHostEnvironment hostEnvironment,
         IOptions<OrganizationSettings> organizationSettings,
+        IOptions<Dynamics365FinancePartiesSettings> partiesSettings,
         ILogger<Dynamics365FinanceCustomerBindingController> logger)
         : base(metadataValidator, eventProcessor, hostEnvironment, organizationSettings, logger)
     {
         ArgumentNullException.ThrowIfNull(registeredValidator);
         ArgumentNullException.ThrowIfNull(changedValidator);
+        ArgumentNullException.ThrowIfNull(partiesSettings);
+
         _changedValidator = changedValidator;
+        _partiesSettings = partiesSettings;
         _registeredValidator = registeredValidator;
     }
 
@@ -88,7 +96,17 @@ public abstract class Dynamics365FinanceCustomerBindingController : Dynamics365F
     [HttpPost("d365fno-customers-binding")]
     public async Task<ActionResult> ReceiveCustomerEventAsync(
        [SwaggerRequestBody(Description ="Dynamics 365 finance customer business event", Required = true)]
-       [FromBody] JsonElement message) => await HandleEventAsync(message, CancellationToken.None).ConfigureAwait(false);
+       [FromBody] JsonElement message)
+    {
+        if (_partiesSettings.Value.Parties?.ReceiveCustomersFromErpEnabled == true)
+        {
+            return await HandleEventAsync(message, CancellationToken.None)
+                .ConfigureAwait(false);
+        }
+
+        LogMessageIsIgnoredInformation(Logger);
+        return Ok();
+    }
 
     /// <summary>
     /// Validates the message and if not successful throws a validation exception <see cref="ValidationException" /> .
@@ -116,4 +134,10 @@ public abstract class Dynamics365FinanceCustomerBindingController : Dynamics365F
         throw new ValidationException(
             $"Unsupported message type '{message.EventId}'. Expected:\n{nameof(Dynamics365FinanceCustomerChanged)} ({new Dynamics365FinanceCustomerChanged().TypeName}) or {nameof(Dynamics365FinanceCustomerRegistered)} ({new Dynamics365FinanceCustomerRegistered().TypeName})");
     }
+
+    [LoggerMessage(
+            EventId = 1,
+        Level = LogLevel.Information,
+        Message = "Receive customer event from Dynamics 365 Finance and Operations is disabled. Business event is ignored.")]
+    private static partial void LogMessageIsIgnoredInformation(ILogger logger);
 }

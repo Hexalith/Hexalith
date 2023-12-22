@@ -25,6 +25,7 @@ using Hexalith.Domain.Events;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.Dynamics365Finance.Client;
+using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Configuration;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers;
@@ -50,6 +51,7 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
     private readonly IExternalReferenceMapperService _externalReferenceMapperService;
     private readonly ILogger<Dynamics365FinanceCustomerService> _logger;
     private readonly string _originId;
+    private readonly IOptions<Dynamics365FinancePartiesSettings> _partiesSettings;
 
     /// <summary>
     /// The store service.
@@ -64,6 +66,7 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
     /// <param name="externalCodeService">The external code service.</param>
     /// <param name="storeService">The store service.</param>
     /// <param name="externalReferenceMapperService">The external reference mapper service.</param>
+    /// <param name="partiesSettings">The parties settings.</param>
     /// <param name="organizationSettings">The organization settings.</param>
     /// <param name="logger">The logger.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
@@ -73,6 +76,7 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
         IDynamics365FinanceClient<CustomerExternalSystemCode> externalCodeService,
         IDynamics365FinanceClient<RetailStore> storeService,
         IExternalReferenceMapperService externalReferenceMapperService,
+        IOptions<Dynamics365FinancePartiesSettings> partiesSettings,
         IOptions<OrganizationSettings> organizationSettings,
         ILogger<Dynamics365FinanceCustomerService> logger)
     {
@@ -81,6 +85,7 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
         ArgumentNullException.ThrowIfNull(externalCodeService);
         ArgumentNullException.ThrowIfNull(storeService);
         ArgumentNullException.ThrowIfNull(externalReferenceMapperService);
+        ArgumentNullException.ThrowIfNull(partiesSettings);
         ArgumentNullException.ThrowIfNull(organizationSettings);
         ArgumentNullException.ThrowIfNull(logger);
 
@@ -92,6 +97,7 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
         _externalCodeService = externalCodeService;
         _storeService = storeService;
         _externalReferenceMapperService = externalReferenceMapperService;
+        _partiesSettings = partiesSettings;
         _logger = logger;
     }
 
@@ -99,6 +105,11 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
     public async Task<string> CreateCustomerAsync(CustomerRegistered registered, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(registered);
+        if (_partiesSettings.Value.Parties?.SendCustomersToErpEnabled != true)
+        {
+            throw new InvalidOperationException("Sending customers to Dynamics 365 for Finance is disabled.");
+        }
+
         if (string.IsNullOrWhiteSpace(registered.WarehouseId))
         {
             throw new InvalidOperationException($"No warehouse defined for customer {registered.AggregateId}.");
@@ -189,6 +200,11 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
     public async Task<CustomerV3> CreateCustomerV3Async(CustomerRegistered registered, string? temporaryName, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(registered);
+        if (_partiesSettings.Value.Parties?.SendCustomersToErpEnabled != true)
+        {
+            throw new InvalidOperationException("Sending customers to Dynamics 365 for Finance is disabled.");
+        }
+
         if (string.IsNullOrWhiteSpace(registered.WarehouseId))
         {
             throw new InvalidOperationException($"No warehouse defined for customer {registered.AggregateId}.");

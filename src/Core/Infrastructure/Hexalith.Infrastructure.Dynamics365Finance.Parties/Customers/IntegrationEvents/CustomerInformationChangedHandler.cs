@@ -19,16 +19,18 @@ namespace Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Integrati
 using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
 using Hexalith.Domain.Events;
+using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Configuration;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services;
 
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 /// <summary>
 /// Class CustomerInformationChangedHandler.
 /// Implements the <see cref="CustomerEventsHandler{CustomerInformationChanged}" />.
 /// </summary>
 /// <seealso cref="CustomerEventsHandler{CustomerInformationChanged}" />
-public class CustomerInformationChangedHandler : IntegrationEventHandler<CustomerInformationChanged>
+public partial class CustomerInformationChangedHandler : IntegrationEventHandler<CustomerInformationChanged>
 {
     /// <summary>
     /// The customer service.
@@ -40,20 +42,25 @@ public class CustomerInformationChangedHandler : IntegrationEventHandler<Custome
     /// </summary>
     private readonly ILogger<CustomerInformationChangedHandler> _logger;
 
+    private readonly IOptions<Dynamics365FinancePartiesSettings> _partiesSettings;
+
     /// <summary>
-    /// Initializes a new instance of the <see cref="CustomerInformationChangedHandler" /> class.
+    /// Initializes a new instance of the <see cref="CustomerInformationChangedHandler"/> class.
     /// </summary>
-    /// <param name="customerBaseService">The customer base service.</param>
     /// <param name="customerService">The customer service.</param>
+    /// <param name="partiesSettings">The parties settings.</param>
     /// <param name="logger">The logger.</param>
-    /// <exception cref="ArgumentNullException">null.</exception>
+    /// <exception cref="System.ArgumentNullException"></exception>
     public CustomerInformationChangedHandler(
         IDynamics365FinanceCustomerService customerService,
+        IOptions<Dynamics365FinancePartiesSettings> partiesSettings,
         ILogger<CustomerInformationChangedHandler> logger)
     {
         ArgumentNullException.ThrowIfNull(customerService);
+        ArgumentNullException.ThrowIfNull(partiesSettings);
         ArgumentNullException.ThrowIfNull(logger);
         _customerService = customerService;
+        _partiesSettings = partiesSettings;
         _logger = logger;
     }
 
@@ -61,9 +68,21 @@ public class CustomerInformationChangedHandler : IntegrationEventHandler<Custome
     public override async Task<IEnumerable<BaseCommand>> ApplyAsync(CustomerInformationChanged @event, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(@event);
-
-        await _customerService.UpdateCustomerAsync(@event, cancellationToken).ConfigureAwait(false);
+        if (_partiesSettings.Value.Parties?.SendCustomersToErpEnabled == true)
+        {
+            await _customerService.UpdateCustomerAsync(@event, cancellationToken).ConfigureAwait(false);
+        }
+        else
+        {
+            LogSendCustomersToErpIsDisabledInformation();
+        }
 
         return [];
     }
+
+    [LoggerMessage(
+        EventId = 1,
+        Level = LogLevel.Information,
+        Message = "Send customers to Dynamics 365 Finance is disabled.")]
+    private partial void LogSendCustomersToErpIsDisabledInformation();
 }

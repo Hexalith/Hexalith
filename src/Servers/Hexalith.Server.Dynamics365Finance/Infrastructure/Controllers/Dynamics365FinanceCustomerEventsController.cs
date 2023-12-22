@@ -13,6 +13,7 @@ using Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents;
 using Hexalith.Infrastructure.Dynamics365Finance.Controllers;
 using Hexalith.Infrastructure.Dynamics365Finance.Dispatchers;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents;
+using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Configuration;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Controller;
 
 using Microsoft.AspNetCore.Mvc;
@@ -35,6 +36,7 @@ public class Dynamics365FinanceCustomerEventsController : Dynamics365FinanceCust
     /// <param name="eventProcessor">The event processor.</param>
     /// <param name="hostEnvironment">The host environment.</param>
     /// <param name="organizationSettings">The organization settings.</param>
+    /// <param name="partiesSettings">The parties settings.</param>
     /// <param name="logger">The logger.</param>
     public Dynamics365FinanceCustomerEventsController(
         IValidator<Dynamics365BusinessEventBase> metadataValidator,
@@ -43,8 +45,9 @@ public class Dynamics365FinanceCustomerEventsController : Dynamics365FinanceCust
         IDynamics365FinanceIntegrationEventProcessor eventProcessor,
         IHostEnvironment hostEnvironment,
         IOptions<OrganizationSettings> organizationSettings,
+        IOptions<Dynamics365FinancePartiesSettings> partiesSettings,
         ILogger<Dynamics365FinanceCustomerBindingController> logger)
-        : base(metadataValidator, registeredValidator, changedValidator, eventProcessor, hostEnvironment, organizationSettings, logger)
+        : base(metadataValidator, registeredValidator, changedValidator, eventProcessor, hostEnvironment, organizationSettings, partiesSettings, logger)
     {
     }
 }

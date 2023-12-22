@@ -18,6 +18,7 @@ using Hexalith.Domain.Events;
 using Hexalith.Domain.ValueObjets;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.Dynamics365Finance.Client;
+using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Configuration;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers;
@@ -50,8 +51,18 @@ public class CustomerHandlersTest
           .WithValueFromConfiguration<CustomerHandlersTest>()
           .Build(client);
         IExternalReferenceMapperService mapper = Mock.Of<IExternalReferenceMapperService>();
-        Microsoft.Extensions.Options.IOptions<OrganizationSettings> options = new OptionsBuilder<OrganizationSettings>()
+        Microsoft.Extensions.Options.IOptions<OrganizationSettings> organizationOptions = new OptionsBuilder<OrganizationSettings>()
             .WithValue(new OrganizationSettings { DefaultCompanyId = "frrt", DefaultOriginId = "FinOps", DefaultPartitionId = "TEST" })
+            .Build();
+        Microsoft.Extensions.Options.IOptions<Dynamics365FinancePartiesSettings> partiesOptions = new OptionsBuilder<Dynamics365FinancePartiesSettings>()
+            .WithValue(new Dynamics365FinancePartiesSettings
+            {
+                Parties = new PartiesSettings
+                {
+                    SendCustomersToErpEnabled = true,
+                    ReceiveCustomersFromErpEnabled = true,
+                },
+            })
             .Build();
         ILogger<CustomerRegisteredHandler> logger = new LoggerBuilder<CustomerRegisteredHandler>().Build();
         Dynamics365FinanceCustomerService customerService = new(
@@ -60,11 +71,13 @@ public class CustomerHandlersTest
             externalCustomerService,
             storeService,
             mapper,
-            options,
+            partiesOptions,
+            organizationOptions,
             new LoggerBuilder<Dynamics365FinanceCustomerService>().Build());
         CustomerRegisteredHandler handler = new(
             customerService,
-            options,
+            partiesOptions,
+            organizationOptions,
             logger);
 
         CustomerRegistered registered = GetCustomerRegisteredTestEvent();
@@ -89,7 +102,7 @@ public class CustomerHandlersTest
             new AddExternalSystemReference(
             registered.PartitionId,
             registered.CompanyId,
-            options.Value.DefaultOriginId,
+            organizationOptions.Value.DefaultOriginId,
             registered.AggregateName,
             customerId,
             registered.AggregateId));
