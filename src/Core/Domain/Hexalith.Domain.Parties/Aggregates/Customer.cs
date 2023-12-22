@@ -99,6 +99,14 @@ public record Customer(
     {
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Customer"/> class.
+    /// </summary>
+    /// <param name="customer">The customer.</param>
+    /// <param name="intercompanyDropship">if set to <c>true</c> [intercompany dropship].</param>
+    public Customer(CustomerRegistered customer, bool intercompanyDropship)
+        : this(customer) => IntercompanyDropship = intercompanyDropship;
+
     /// <inheritdoc/>
     public override IAggregate Apply(BaseEvent domainEvent)
     {
