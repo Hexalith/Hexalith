@@ -406,8 +406,19 @@ public partial class AggregateStateManager : IAggregateStateManager
                     }
                     else
                     {
-                        // Apply the new events to the existing aggregate
-                        aggregate = aggregate.Apply(newEvents);
+                        try
+                        {
+                            // Apply the new events to the existing aggregate
+                            aggregate = aggregate.Apply(newEvents);
+                        }
+                        catch (Exception ex)
+                        {
+                            _logger.LogError(
+                                ex,
+                                "Error while applying events to aggregate {AggregateName} with id '{AggregateId}'.",
+                                aggregate.AggregateName,
+                                aggregate.AggregateId);
+                        }
                     }
 
                     // Add the new events to the event store
