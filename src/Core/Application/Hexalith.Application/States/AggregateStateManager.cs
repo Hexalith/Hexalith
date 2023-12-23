@@ -186,11 +186,12 @@ public partial class AggregateStateManager : IAggregateStateManager
         ArgumentNullException.ThrowIfNull(resiliencyPolicy);
         ArgumentNullException.ThrowIfNull(stateProvider);
         ArgumentNullException.ThrowIfNull(aggregateInitializer);
+        AggregateState state = await PublishEventsAsync(stateProvider, cancellationToken)
+            .ConfigureAwait(false);
         try
         {
-            (TaskProcessor? retry, aggregate) = await ExecuteCommandsAsync(stateProvider, aggregate, aggregateInitializer, resiliencyPolicy, cancellationToken).ConfigureAwait(false);
-            await PublishEventsAsync(stateProvider, cancellationToken).ConfigureAwait(false);
-            AggregateState state = await GetStateAsync(stateProvider, cancellationToken).ConfigureAwait(false);
+            (TaskProcessor? retry, aggregate) = await ExecuteCommandsAsync(stateProvider, aggregate, aggregateInitializer, resiliencyPolicy, cancellationToken)
+                .ConfigureAwait(false);
 
             if (retry == null || retry.Status is TaskProcessorStatus.Completed or TaskProcessorStatus.Canceled)
             {
@@ -478,28 +479,49 @@ public partial class AggregateStateManager : IAggregateStateManager
     /// <param name="stateProvider">The state provider.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task representing the asynchronous operation.</returns>
-    protected async Task PublishEventsAsync(
+    protected async Task<AggregateState> PublishEventsAsync(
         IStateStoreProvider stateProvider,
         CancellationToken cancellationToken)
     {
-        MessageStore<EventState> eventStore = new(stateProvider, EventsStreamName);
+        ArgumentNullException.ThrowIfNull(stateProvider);
         AggregateState state = await GetStateAsync(stateProvider, cancellationToken).ConfigureAwait(false);
-        while (state.LastEventPublished < state.EventStreamVersion)
+        long nextEvent = state.LastEventPublished;
+        try
         {
-            long nextEvent = state.LastEventPublished + 1;
-            EventState eventState = await eventStore.GetAsync(nextEvent, cancellationToken).ConfigureAwait(false);
+            MessageStore<EventState> eventStore = new(stateProvider, EventsStreamName);
+            while (state.LastEventPublished < state.EventStreamVersion)
+            {
+                EventState eventState = await eventStore.GetAsync(++nextEvent, cancellationToken).ConfigureAwait(false);
 
-            await _eventBus.PublishAsync(eventState, cancellationToken).ConfigureAwait(false);
-            state = new AggregateState(
-                    state.CommandStreamVersion,
-                    state.EventStreamVersion,
-                    state.LastCommandDone,
-                    nextEvent);
-            await PersistStateAsync(
-                stateProvider,
-                state,
-                cancellationToken).ConfigureAwait(false);
+                await _eventBus.PublishAsync(eventState, cancellationToken).ConfigureAwait(false);
+                state = new AggregateState(
+                        state.CommandStreamVersion,
+                        state.EventStreamVersion,
+                        state.LastCommandDone,
+                        nextEvent);
+                await PersistStateAsync(
+                    stateProvider,
+                    state,
+                    cancellationToken).ConfigureAwait(false);
+            }
         }
+        catch (Exception ex)
+        {
+            throw new ApplicationErrorException(
+                new ApplicationError
+                {
+                    Title = "Event publishing error",
+                    Category = ErrorCategory.Technical,
+                    Detail = "Error while publishing events in {EventsStreamName}",
+                    Arguments = new object[] { EventsStreamName },
+                    TechnicalDetail = "Error while publishing event {EventNumber} in {EventsStreamName} : {ErrorMessage}",
+                    TechnicalArguments = new object[] { nextEvent, EventsStreamName, ex.FullMessage() },
+                    Type = nameof(AggregateStateManager) + nameof(PublishEventsAsync),
+                },
+                ex);
+        }
+
+        return state;
     }
 
     /// <summary>
