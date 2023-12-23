@@ -124,6 +124,42 @@ Implements the <a class="xref" href="Hexalith.Application.Commands.CommandHandle
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class RegisterCustomerHandler : CommandHandler&lt;RegisterCustomer&gt;, ICommandHandler&lt;RegisterCustomer&gt;, ICommandHandler</code></pre>
   </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Parties_CommandHandlers_RegisterCustomerHandler__ctor_Microsoft_Extensions_Logging_ILogger_Hexalith_Application_Parties_CommandHandlers_RegisterCustomerHandler__.md&amp;value=---%0Auid%3A%20Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.%23ctor(Microsoft.Extensions.Logging.ILogger%7BHexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/CommandHandlers/RegisterCustomerHandler.cs/#L50">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Parties_CommandHandlers_RegisterCustomerHandler__ctor_" data-uid="Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.#ctor*"></a>
+  <h4 id="Hexalith_Application_Parties_CommandHandlers_RegisterCustomerHandler__ctor_Microsoft_Extensions_Logging_ILogger_Hexalith_Application_Parties_CommandHandlers_RegisterCustomerHandler__" data-uid="Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.#ctor(Microsoft.Extensions.Logging.ILogger{Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler})">RegisterCustomerHandler(ILogger&lt;RegisterCustomerHandler&gt;)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.html">RegisterCustomerHandler</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RegisterCustomerHandler(ILogger&lt;RegisterCustomerHandler&gt; logger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Logging.ILogger</span>&lt;<a class="xref" href="Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.html">RegisterCustomerHandler</a>&gt;</td>
+        <td><span class="parametername">logger</span></td>
+        <td><p>The logger.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
@@ -131,7 +167,7 @@ Implements the <a class="xref" href="Hexalith.Application.Commands.CommandHandle
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Parties_CommandHandlers_RegisterCustomerHandler_DoAsync_Hexalith_Application_Parties_Commands_RegisterCustomer_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.RegisterCustomer%2CHexalith.Domain.Aggregates.IAggregate%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/CommandHandlers/RegisterCustomerHandler.cs/#L39">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/CommandHandlers/RegisterCustomerHandler.cs/#L57">View Source</a>
   </span>
   <a id="Hexalith_Application_Parties_CommandHandlers_RegisterCustomerHandler_DoAsync_" data-uid="Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.DoAsync*"></a>
   <h4 id="Hexalith_Application_Parties_CommandHandlers_RegisterCustomerHandler_DoAsync_Hexalith_Application_Parties_Commands_RegisterCustomer_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_" data-uid="Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.DoAsync(Hexalith.Application.Parties.Commands.RegisterCustomer,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)">DoAsync(RegisterCustomer, IAggregate, CancellationToken)</h4>
@@ -139,7 +175,7 @@ Implements the <a class="xref" href="Hexalith.Application.Commands.CommandHandle
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override Task&lt;IEnumerable&lt;BaseMessage&gt;&gt; DoAsync(RegisterCustomer command, IAggregate aggregate, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public override async Task&lt;IEnumerable&lt;BaseMessage&gt;&gt; DoAsync(RegisterCustomer command, IAggregate aggregate, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -188,7 +224,7 @@ Implements the <a class="xref" href="Hexalith.Application.Commands.CommandHandle
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Parties_CommandHandlers_RegisterCustomerHandler_UndoAsync_Hexalith_Application_Parties_Commands_RegisterCustomer_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.RegisterCustomer%2CHexalith.Domain.Aggregates.IAggregate%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/CommandHandlers/RegisterCustomerHandler.cs/#L64">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/CommandHandlers/RegisterCustomerHandler.cs/#L82">View Source</a>
   </span>
   <a id="Hexalith_Application_Parties_CommandHandlers_RegisterCustomerHandler_UndoAsync_" data-uid="Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.UndoAsync*"></a>
   <h4 id="Hexalith_Application_Parties_CommandHandlers_RegisterCustomerHandler_UndoAsync_Hexalith_Application_Parties_Commands_RegisterCustomer_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_" data-uid="Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler.UndoAsync(Hexalith.Application.Parties.Commands.RegisterCustomer,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)">UndoAsync(RegisterCustomer, IAggregate, CancellationToken)</h4>
@@ -272,7 +308,7 @@ Implements the <a class="xref" href="Hexalith.Application.Commands.CommandHandle
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Parties_CommandHandlers_RegisterCustomerHandler.md&amp;value=---%0Auid%3A%20Hexalith.Application.Parties.CommandHandlers.RegisterCustomerHandler%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/CommandHandlers/RegisterCustomerHandler.cs/#L36" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Parties/CommandHandlers/RegisterCustomerHandler.cs/#L39" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
