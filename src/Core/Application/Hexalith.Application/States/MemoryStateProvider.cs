@@ -55,11 +55,11 @@ public class MemoryStateProvider : IStateStoreProvider
     public IReadOnlyDictionary<string, object?> UncommittedState => _uncommittedState;
 
     /// <inheritdoc/>
-    public Task AddStateAsync<T>(string key, T value, CancellationToken cancellationToken)
+    public async Task AddStateAsync<T>(string key, T value, CancellationToken cancellationToken)
     {
         object? v = value;
         _uncommittedState.Add(key, v);
-        return Task.CompletedTask;
+        await Task.CompletedTask.ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -86,7 +86,7 @@ public class MemoryStateProvider : IStateStoreProvider
     }
 
     /// <inheritdoc/>
-    public Task SaveChangesAsync(CancellationToken cancellationToken)
+    public async Task SaveChangesAsync(CancellationToken cancellationToken)
     {
         foreach (KeyValuePair<string, object?> entry in _uncommittedState.ToList())
         {
@@ -99,11 +99,11 @@ public class MemoryStateProvider : IStateStoreProvider
             _ = _uncommittedState.Remove(entry.Key);
         }
 
-        return Task.CompletedTask;
+        await Task.CompletedTask.ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public Task SetStateAsync<T>(string key, T value, CancellationToken cancellationToken)
+    public async Task SetStateAsync<T>(string key, T value, CancellationToken cancellationToken)
     {
         if (_uncommittedState.ContainsKey(key))
         {
@@ -111,19 +111,19 @@ public class MemoryStateProvider : IStateStoreProvider
         }
 
         _uncommittedState.Add(key, value);
-        return Task.CompletedTask;
+        await Task.CompletedTask.ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public Task<ConditionalValue<T>> TryGetStateAsync<T>(string key, CancellationToken cancellationToken)
+    public async Task<ConditionalValue<T>> TryGetStateAsync<T>(string key, CancellationToken cancellationToken)
     {
         bool hasValue = _uncommittedState.TryGetValue(key, out object? uncommitted);
         if (hasValue)
         {
-            return Task.FromResult(new ConditionalValue<T>((T)uncommitted!));
+            return await Task.FromResult(new ConditionalValue<T>((T)uncommitted!)).ConfigureAwait(false);
         }
 
         hasValue = _state.TryGetValue(key, out object? committed);
-        return Task.FromResult(hasValue ? new ConditionalValue<T>((T)committed!) : new ConditionalValue<T>());
+        return await Task.FromResult(hasValue ? new ConditionalValue<T>((T)committed!) : new ConditionalValue<T>()).ConfigureAwait(false);
     }
 }

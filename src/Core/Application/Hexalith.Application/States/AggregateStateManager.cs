@@ -186,11 +186,12 @@ public partial class AggregateStateManager : IAggregateStateManager
         ArgumentNullException.ThrowIfNull(resiliencyPolicy);
         ArgumentNullException.ThrowIfNull(stateProvider);
         ArgumentNullException.ThrowIfNull(aggregateInitializer);
-        AggregateState state = await PublishEventsAsync(stateProvider, cancellationToken)
-            .ConfigureAwait(false);
         try
         {
             (TaskProcessor? retry, aggregate) = await ExecuteCommandsAsync(stateProvider, aggregate, aggregateInitializer, resiliencyPolicy, cancellationToken)
+                .ConfigureAwait(false);
+
+            AggregateState state = await PublishEventsAsync(stateProvider, cancellationToken)
                 .ConfigureAwait(false);
 
             if (retry == null || retry.Status is TaskProcessorStatus.Completed or TaskProcessorStatus.Canceled)
