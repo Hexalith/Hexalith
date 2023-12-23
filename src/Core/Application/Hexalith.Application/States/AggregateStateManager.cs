@@ -508,18 +508,18 @@ public partial class AggregateStateManager : IAggregateStateManager
         }
         catch (Exception ex)
         {
-            throw new ApplicationErrorException(
-                new ApplicationError
-                {
-                    Title = "Event publishing error",
-                    Category = ErrorCategory.Technical,
-                    Detail = "Error while publishing events in {EventsStreamName}",
-                    Arguments = new object[] { EventsStreamName },
-                    TechnicalDetail = "Error while publishing event {EventNumber} in {EventsStreamName} : {ErrorMessage}",
-                    TechnicalArguments = new object[] { nextEvent, EventsStreamName, ex.FullMessage() },
-                    Type = nameof(AggregateStateManager) + nameof(PublishEventsAsync),
-                },
-                ex);
+            ApplicationError error = new()
+            {
+                Title = "Event publishing error",
+                Category = ErrorCategory.Technical,
+                Detail = "Error while publishing events in {EventsStreamName}",
+                Arguments = new object[] { EventsStreamName },
+                TechnicalDetail = "Error while publishing event {EventNumber} in {EventsStreamName} : {ErrorMessage}",
+                TechnicalArguments = new object[] { nextEvent, EventsStreamName, ex.FullMessage() },
+                Type = nameof(AggregateStateManager) + nameof(PublishEventsAsync),
+            };
+            error.LogApplicationErrorDetails(_logger, ex);
+            throw new ApplicationErrorException(error, ex);
         }
 
         return state;
