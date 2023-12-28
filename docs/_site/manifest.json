@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "C:/Dev/Christofle/LogisticsPartner/Hexalith/docs",
+  "source_base_path": "C:/Dev/jpiquot/Hexalith/docs",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -2721,7 +2721,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.Aggregates.Customer.html",
-          "hash": "3l6UeJIZxvkOClZEfWzT14rnhz8P16HV09qyWqGEVJw="
+          "hash": "wancSznQ0okYKCmeSQy/heQOoQG8lgHuDPEp7Sf96Sw="
         }
       },
       "is_incremental": false,
@@ -2985,7 +2985,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.Events.CustomerInformationChanged.html",
-          "hash": "zMLOGTwwz9Ho6fcDMw4E8a5hMyqPI18fQ1opa+tNDuI="
+          "hash": "1A+1ZAsI5OJ/wUSUKdipUzt650JBrg4+A0WKnon9u+4="
         }
       },
       "is_incremental": false,
@@ -3009,7 +3009,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.Events.CustomerRegistered.html",
-          "hash": "xiBhv7ZSLaYLYR0wAZaF4D1Sco5Xeax57+ujgYkLgqw="
+          "hash": "LS0Wm9UjONpAcOCS7tAerhL2HxRe1i+GCIOUXGJode4="
         }
       },
       "is_incremental": false,
@@ -5853,7 +5853,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerBase.html",
-          "hash": "Jsd9D6t7z/SO1hF5Sav9H+wshiVzWgVOLb+tqCMWOn4="
+          "hash": "Y9Kj0JHZz6ycmEVptZcl3zz2aLHMiCRAKap98UcrIas="
         }
       },
       "is_incremental": false,
@@ -5901,7 +5901,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerV3.html",
-          "hash": "4G2Ztnm0HeBygZqms2wH85aUVdiP6HeFqfJ3Ew3ashY="
+          "hash": "jzd5SrzRonP6jM+1V5+1z5rieP/yyz/5oLOeOqKy/cg="
         }
       },
       "is_incremental": false,
@@ -7400,11 +7400,11 @@
     {
       "status": {
         "can_incremental": false,
-        "details": "Disable incremental build by force rebuild option.",
+        "details": "Cannot build incrementally because last build info is missing.",
         "incrementalPhase": "build",
         "total_file_count": 0,
         "skipped_file_count": 0,
-        "full_build_reason_code": "ForceRebuild"
+        "full_build_reason_code": "NoAvailableBuildCache"
       },
       "processors": {
         "ConceptualDocumentProcessor": {
@@ -7431,7 +7431,7 @@
     {
       "status": {
         "can_incremental": false,
-        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
+        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0
