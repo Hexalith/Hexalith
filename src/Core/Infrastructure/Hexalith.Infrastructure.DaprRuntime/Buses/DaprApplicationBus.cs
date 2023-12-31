@@ -94,7 +94,7 @@ public partial class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageB
         EventId = 1,
         Level = LogLevel.Error,
         Message = "Error while publishing on {BusName}/{TopicName} ({BusType}) the message {MessageName} Id={MessageId} CorrelationId={CorrelationId}.")]
-    public partial void LogErrorWhileSendingMessage(string messageName, string messageId, string correlationId, string topicName, string busName, string busType);
+    public partial void LogErrorWhileSendingMessage(Exception ex, string messageName, string messageId, string correlationId, string topicName, string busName, string busType);
 
     [LoggerMessage(
         EventId = 2,
@@ -155,9 +155,10 @@ public partial class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageB
                     topicName,
                     _name);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 LogErrorWhileSendingMessage(
+                    ex,
                     envelope.Metadata.Message.Name,
                     envelope.Metadata.Message.Id,
                     envelope.Metadata.Context.CorrelationId,

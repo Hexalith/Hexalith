@@ -102,10 +102,10 @@ public static class HexalithWebApi
         _ = builder.Services.ConfigureSettings<NotificationBusSettings>(builder.Configuration);
         _ = builder.Services.ConfigureSettings<RequestBusSettings>(builder.Configuration);
         _ = builder.Services.ConfigureSettings<StateStoreSettings>(builder.Configuration);
-        builder.Services.TryAddScoped<IRequestBus, DaprRequestBus>();
-        builder.Services.TryAddScoped<INotificationBus, DaprNotificationBus>();
-        builder.Services.TryAddScoped<ICommandBus, DaprCommandBus>();
-        builder.Services.TryAddScoped<IEventBus, DaprEventBus>();
+        builder.Services.TryAddSingleton<IRequestBus, DaprRequestBus>();
+        builder.Services.TryAddSingleton<INotificationBus, DaprNotificationBus>();
+        builder.Services.TryAddSingleton<ICommandBus, DaprCommandBus>();
+        builder.Services.TryAddSingleton<IEventBus, DaprEventBus>();
         builder.Services.TryAddScoped<IAggregateStateManager, AggregateStateManager>();
         builder.Services.TryAddScoped<IStateStoreProvider, DaprClientStateStoreProvider>();
         builder.Services.TryAddScoped<ICommandDispatcher, DependencyInjectionCommandDispatcher>();
