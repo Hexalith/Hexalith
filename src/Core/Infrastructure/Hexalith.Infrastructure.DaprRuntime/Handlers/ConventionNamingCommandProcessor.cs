@@ -10,6 +10,8 @@ using Dapr.Actors.Client;
 
 using Hexalith.Application.Commands;
 
+using Microsoft.Extensions.Logging;
+
 /// <summary>
 /// Convention naming command processor.
 /// The processor will call the method named 'Do+commandTypeName+Async' on the actor named 'aggregateName+AggregateActor'.
@@ -20,11 +22,12 @@ using Hexalith.Application.Commands;
 public class ConventionNamingCommandProcessor : ActorsCommandProcessor, IConventionNamingCommandProcessor
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="ConventionNamingCommandProcessor" /> class.
+    /// Initializes a new instance of the <see cref="ConventionNamingCommandProcessor"/> class.
     /// </summary>
     /// <param name="actorProxy">The actor proxy.</param>
-    public ConventionNamingCommandProcessor(IActorProxyFactory actorProxy)
-        : base(actorProxy)
+    /// <param name="logger">The logger.</param>
+    public ConventionNamingCommandProcessor(IActorProxyFactory actorProxy, ILogger<ConventionNamingCommandProcessor> logger)
+        : base(actorProxy, logger)
     {
     }
 

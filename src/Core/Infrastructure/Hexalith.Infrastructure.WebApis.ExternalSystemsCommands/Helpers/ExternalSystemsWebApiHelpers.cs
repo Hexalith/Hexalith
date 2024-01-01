@@ -26,6 +26,7 @@ using Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Logging;
 
 /// <summary>
 /// Class ExternalSystemsWebApiHelpers.
@@ -41,7 +42,10 @@ public static class ExternalSystemsWebApiHelpers
     {
         ArgumentNullException.ThrowIfNull(services);
         _ = services.AddExternalSystemsCommandHandlers();
-        services.TryAddSingleton(new ConventionNamingCommandProcessor(ActorProxy.DefaultProxyFactory));
+        services.TryAddSingleton(service =>
+            new ConventionNamingCommandProcessor(
+                ActorProxy.DefaultProxyFactory,
+                service.GetRequiredService<ILogger<ConventionNamingCommandProcessor>>()));
 
         _ = services
          .AddControllers()

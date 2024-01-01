@@ -21,12 +21,12 @@ using System.Diagnostics.CodeAnalysis;
 using Dapr.Actors.Client;
 
 using Hexalith.Application.Parties.Helpers;
-using Hexalith.Domain.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Logging;
 
 /// <summary>
 /// Class PartiesWebApiHelpers.
@@ -42,7 +42,9 @@ public static class PartiesWebApiHelpers
     {
         services
             .AddPartiesCommandHandlers()
-            .TryAddSingleton(new ConventionNamingCommandProcessor(ActorProxy.DefaultProxyFactory));
+            .TryAddSingleton((s) => new ConventionNamingCommandProcessor(
+                ActorProxy.DefaultProxyFactory,
+                s.GetRequiredService<ILogger<ConventionNamingCommandProcessor>>()));
 
         _ = services
          .AddControllers()

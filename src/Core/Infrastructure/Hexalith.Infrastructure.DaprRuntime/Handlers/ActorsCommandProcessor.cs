@@ -17,26 +17,34 @@ using Hexalith.Application.Commands;
 using Hexalith.Application.Metadatas;
 using Hexalith.Extensions.Helpers;
 
+using Microsoft.Extensions.Logging;
+
 /// <summary>
 /// Class ActorsCommandProcessor.
 /// Implements the <see cref="ICommandProcessor" />.
 /// </summary>
 /// <seealso cref="ICommandProcessor" />
-public abstract class ActorsCommandProcessor : ICommandProcessor
+public abstract partial class ActorsCommandProcessor : ICommandProcessor
 {
     /// <summary>
     /// The actor proxy.
     /// </summary>
     private readonly IActorProxyFactory _actorProxy;
 
+    private readonly ILogger _logger;
+
     /// <summary>
-    /// Initializes a new instance of the <see cref="ActorsCommandProcessor" /> class.
+    /// Initializes a new instance of the <see cref="ActorsCommandProcessor"/> class.
     /// </summary>
     /// <param name="actorProxy">The actor proxy.</param>
-    protected ActorsCommandProcessor(IActorProxyFactory actorProxy)
+    /// <param name="logger">The logger.</param>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
+    protected ActorsCommandProcessor(IActorProxyFactory actorProxy, ILogger logger)
     {
         ArgumentNullException.ThrowIfNull(actorProxy);
+        ArgumentNullException.ThrowIfNull(logger);
         _actorProxy = actorProxy;
+        _logger = logger;
     }
 
     /// <inheritdoc/>
@@ -47,41 +55,28 @@ public abstract class ActorsCommandProcessor : ICommandProcessor
     public async Task SubmitAsync(IEnumerable<BaseCommand> commands, BaseMetadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(commands);
+        ArgumentNullException.ThrowIfNull(metadata);
+        BaseCommand[] commandsArray = commands.ToArray();
 
-        string? aggregateName = null;
-        List<List<BaseCommand>> lists = [];
-        List<BaseCommand> aggregateCommands = [];
-        foreach (BaseCommand cmd in commands)
+        List<string> aggregateNames = commandsArray.Select(p => p.AggregateName).Distinct().ToList();
+
+        foreach (string aggregateName in aggregateNames)
         {
-            if (aggregateName != cmd.AggregateName)
+            BaseCommand[] aggregateCommands = commandsArray.Where(p => p.AggregateName == aggregateName).ToArray();
+            if (aggregateCommands.Select(p => p.AggregateId).Distinct().Count() > 1)
             {
-                aggregateName = cmd.AggregateName;
-                if (aggregateCommands.Count > 0)
-                {
-                    lists.Add(aggregateCommands);
-                }
-
-                aggregateCommands = [];
+                throw new InvalidOperationException($"Commands for aggregate '{aggregateName}' must have the same aggregate id.");
             }
 
-            aggregateCommands.Add(cmd);
-        }
-
-        if (aggregateCommands.Count > 0)
-        {
-            lists.Add(aggregateCommands);
-        }
-
-        foreach (List<BaseCommand> list in lists)
-        {
-            BaseCommand cmd = list.First();
+            BaseCommand cmd = aggregateCommands[0];
             string actorName = GetActorName(cmd);
-            List<BaseMetadata> metadatas = list.Select(p => Metadata.CreateNew(p, metadata)).ToList<BaseMetadata>();
+            Metadata[] metadatas = aggregateCommands.Select(p => Metadata.CreateNew(p, metadata)).ToArray();
 
-            ActorCommandEnvelope envelope = new(list.ToArray(), metadatas.ToArray());
+            ActorCommandEnvelope envelope = new(aggregateCommands, metadatas);
 
             try
             {
+                LogSendingCommandsToActor(string.Join(", ", aggregateCommands.Select(p => p.TypeName)), cmd.AggregateId, actorName);
                 ICommandProcessorActor actor = _actorProxy.CreateActorProxy<ICommandProcessorActor>(new ActorId(cmd.AggregateId), actorName);
                 await actor.DoAsync(envelope).ConfigureAwait(false);
             }
@@ -105,4 +100,10 @@ public abstract class ActorsCommandProcessor : ICommandProcessor
     /// <param name="command">The command.</param>
     /// <returns>string.</returns>
     protected abstract string GetActorName(ICommand command);
+
+    [LoggerMessage(
+                EventId = 1,
+        Level = LogLevel.Information,
+        Message = "Sending commands {CommandNames} to actor {ActorName} for aggregate {AggregateId}.")]
+    private partial void LogSendingCommandsToActor(string commandNames, string aggregateId, string actorName);
 }

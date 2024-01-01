@@ -20,19 +20,19 @@
 		<GitHubActionsTestLoggerVersion>2.3.3</GitHubActionsTestLoggerVersion>
 		<HumanizerVersion>2.14.1</HumanizerVersion>
 		<ManDaprSidekickVersion>1.2.2</ManDaprSidekickVersion>
-		<MicrosoftBotBuilderVersion>4.21.0</MicrosoftBotBuilderVersion>
+		<MicrosoftBotBuilderVersion>4.21.2</MicrosoftBotBuilderVersion>
 		<MicrosoftIdentityClientVersion>4.58.1</MicrosoftIdentityClientVersion>
 		<MicrosoftIdentityWebVersion>2.16.0</MicrosoftIdentityWebVersion>
 		<MicrosoftNETTestSdkVersion>17.8.0</MicrosoftNETTestSdkVersion>
 		<MicrosoftSemanticKernelVersion>1.0.1</MicrosoftSemanticKernelVersion>
-		<MicrosoftTeamsFxVersion>2.3.0</MicrosoftTeamsFxVersion>
+		<MicrosoftTeamsFxVersion>2.4.0</MicrosoftTeamsFxVersion>
 		<MicrosoftGraphVersion>5.12.*</MicrosoftGraphVersion>
 		<MicrosoftVisualStudioThreadingAnalyzersVersion>17.8.14</MicrosoftVisualStudioThreadingAnalyzersVersion>
 		<MinverVersion>4.3.0</MinverVersion>
 		<MoqVersion>4.20.70</MoqVersion>
 		<MoqContribHttpClientVersion>1.4.0</MoqContribHttpClientVersion>
 		<RadzenBlazorVersion>4.23.4</RadzenBlazorVersion>
-		<SerilogVersion>7.0.*</SerilogVersion>
+		<SerilogVersion>8.0.*</SerilogVersion>
 		<SerilogEnrichersEnvironmentVersion>2.3.0</SerilogEnrichersEnvironmentVersion>
 		<StyleCopAnalyzersVersion>1.2.0-beta.507</StyleCopAnalyzersVersion>
 		<SwashbuckleAspNetCoreVersion>6.5.*</SwashbuckleAspNetCoreVersion>

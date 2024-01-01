@@ -3,12 +3,12 @@
 		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
 	</PropertyGroup>
 
-	<ItemGroup>
+	<!--<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Http" Version="$(MicrosoftExtensionsPackagesVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Options" Version="$(MicrosoftExtensionsPackagesVersion)" />
 		<PackageReference Include="WebSerializer" Version="1.3.0" />
-	</ItemGroup>
+	</ItemGroup>-->
 	<ItemGroup>
 		<ProjectReference Include="..\..\Application\Hexalith.Application.Abstractions\Hexalith.Application.Abstractions.csproj" />
 		<ProjectReference Include="..\..\Application\Hexalith.Application.Organizations\Hexalith.Application.Organizations.csproj" />
