@@ -18773,14 +18773,14 @@ references:
   fullName.vb: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus(Of TMessage, TMetadata, TState).DaprApplicationBus
   nameWithType: DaprApplicationBus<TMessage, TMetadata, TState>.DaprApplicationBus
   nameWithType.vb: DaprApplicationBus(Of TMessage, TMetadata, TState).DaprApplicationBus
-- uid: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.LogErrorWhileSendingMessage(System.String,System.String,System.String,System.String,System.String,System.String)
-  name: LogErrorWhileSendingMessage(String, String, String, String, String, String)
-  href: api/Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus-3.html#Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_LogErrorWhileSendingMessage_System_String_System_String_System_String_System_String_System_String_System_String_
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.LogErrorWhileSendingMessage(System.String,System.String,System.String,System.String,System.String,System.String)
-  fullName: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus<TMessage, TMetadata, TState>.LogErrorWhileSendingMessage(System.String, System.String, System.String, System.String, System.String, System.String)
-  fullName.vb: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus(Of TMessage, TMetadata, TState).LogErrorWhileSendingMessage(System.String, System.String, System.String, System.String, System.String, System.String)
-  nameWithType: DaprApplicationBus<TMessage, TMetadata, TState>.LogErrorWhileSendingMessage(String, String, String, String, String, String)
-  nameWithType.vb: DaprApplicationBus(Of TMessage, TMetadata, TState).LogErrorWhileSendingMessage(String, String, String, String, String, String)
+- uid: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.LogErrorWhileSendingMessage(Exception,System.String,System.String,System.String,System.String,System.String,System.String)
+  name: LogErrorWhileSendingMessage(Exception, String, String, String, String, String, String)
+  href: api/Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus-3.html#Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_LogErrorWhileSendingMessage_Exception_System_String_System_String_System_String_System_String_System_String_System_String_
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.LogErrorWhileSendingMessage(Exception,System.String,System.String,System.String,System.String,System.String,System.String)
+  fullName: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus<TMessage, TMetadata, TState>.LogErrorWhileSendingMessage(Exception, System.String, System.String, System.String, System.String, System.String, System.String)
+  fullName.vb: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus(Of TMessage, TMetadata, TState).LogErrorWhileSendingMessage(Exception, System.String, System.String, System.String, System.String, System.String, System.String)
+  nameWithType: DaprApplicationBus<TMessage, TMetadata, TState>.LogErrorWhileSendingMessage(Exception, String, String, String, String, String, String)
+  nameWithType.vb: DaprApplicationBus(Of TMessage, TMetadata, TState).LogErrorWhileSendingMessage(Exception, String, String, String, String, String, String)
 - uid: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.LogErrorWhileSendingMessage*
   name: LogErrorWhileSendingMessage
   href: api/Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus-3.html#Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_LogErrorWhileSendingMessage_
@@ -19638,12 +19638,12 @@ references:
   commentId: T:Hexalith.Infrastructure.DaprRuntime.Handlers.ActorsCommandProcessor
   fullName: Hexalith.Infrastructure.DaprRuntime.Handlers.ActorsCommandProcessor
   nameWithType: ActorsCommandProcessor
-- uid: Hexalith.Infrastructure.DaprRuntime.Handlers.ActorsCommandProcessor.#ctor(Dapr.Actors.Client.IActorProxyFactory)
-  name: ActorsCommandProcessor(IActorProxyFactory)
-  href: api/Hexalith.Infrastructure.DaprRuntime.Handlers.ActorsCommandProcessor.html#Hexalith_Infrastructure_DaprRuntime_Handlers_ActorsCommandProcessor__ctor_Dapr_Actors_Client_IActorProxyFactory_
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.Handlers.ActorsCommandProcessor.#ctor(Dapr.Actors.Client.IActorProxyFactory)
-  fullName: Hexalith.Infrastructure.DaprRuntime.Handlers.ActorsCommandProcessor.ActorsCommandProcessor(Dapr.Actors.Client.IActorProxyFactory)
-  nameWithType: ActorsCommandProcessor.ActorsCommandProcessor(IActorProxyFactory)
+- uid: Hexalith.Infrastructure.DaprRuntime.Handlers.ActorsCommandProcessor.#ctor(Dapr.Actors.Client.IActorProxyFactory,Microsoft.Extensions.Logging.ILogger)
+  name: ActorsCommandProcessor(IActorProxyFactory, ILogger)
+  href: api/Hexalith.Infrastructure.DaprRuntime.Handlers.ActorsCommandProcessor.html#Hexalith_Infrastructure_DaprRuntime_Handlers_ActorsCommandProcessor__ctor_Dapr_Actors_Client_IActorProxyFactory_Microsoft_Extensions_Logging_ILogger_
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Handlers.ActorsCommandProcessor.#ctor(Dapr.Actors.Client.IActorProxyFactory,Microsoft.Extensions.Logging.ILogger)
+  fullName: Hexalith.Infrastructure.DaprRuntime.Handlers.ActorsCommandProcessor.ActorsCommandProcessor(Dapr.Actors.Client.IActorProxyFactory, Microsoft.Extensions.Logging.ILogger)
+  nameWithType: ActorsCommandProcessor.ActorsCommandProcessor(IActorProxyFactory, ILogger)
 - uid: Hexalith.Infrastructure.DaprRuntime.Handlers.ActorsCommandProcessor.#ctor*
   name: ActorsCommandProcessor
   href: api/Hexalith.Infrastructure.DaprRuntime.Handlers.ActorsCommandProcessor.html#Hexalith_Infrastructure_DaprRuntime_Handlers_ActorsCommandProcessor__ctor_
@@ -19705,12 +19705,15 @@ references:
   commentId: T:Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor
   fullName: Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor
   nameWithType: ConventionNamingCommandProcessor
-- uid: Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor.#ctor(Dapr.Actors.Client.IActorProxyFactory)
-  name: ConventionNamingCommandProcessor(IActorProxyFactory)
-  href: api/Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor.html#Hexalith_Infrastructure_DaprRuntime_Handlers_ConventionNamingCommandProcessor__ctor_Dapr_Actors_Client_IActorProxyFactory_
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor.#ctor(Dapr.Actors.Client.IActorProxyFactory)
-  fullName: Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor.ConventionNamingCommandProcessor(Dapr.Actors.Client.IActorProxyFactory)
-  nameWithType: ConventionNamingCommandProcessor.ConventionNamingCommandProcessor(IActorProxyFactory)
+- uid: Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor.#ctor(Dapr.Actors.Client.IActorProxyFactory,Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor})
+  name: ConventionNamingCommandProcessor(IActorProxyFactory, ILogger<ConventionNamingCommandProcessor>)
+  href: api/Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor.html#Hexalith_Infrastructure_DaprRuntime_Handlers_ConventionNamingCommandProcessor__ctor_Dapr_Actors_Client_IActorProxyFactory_Microsoft_Extensions_Logging_ILogger_Hexalith_Infrastructure_DaprRuntime_Handlers_ConventionNamingCommandProcessor__
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor.#ctor(Dapr.Actors.Client.IActorProxyFactory,Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor})
+  name.vb: ConventionNamingCommandProcessor(IActorProxyFactory, ILogger(Of ConventionNamingCommandProcessor))
+  fullName: Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor.ConventionNamingCommandProcessor(Dapr.Actors.Client.IActorProxyFactory, Microsoft.Extensions.Logging.ILogger<Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor>)
+  fullName.vb: Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor.ConventionNamingCommandProcessor(Dapr.Actors.Client.IActorProxyFactory, Microsoft.Extensions.Logging.ILogger(Of Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor))
+  nameWithType: ConventionNamingCommandProcessor.ConventionNamingCommandProcessor(IActorProxyFactory, ILogger<ConventionNamingCommandProcessor>)
+  nameWithType.vb: ConventionNamingCommandProcessor.ConventionNamingCommandProcessor(IActorProxyFactory, ILogger(Of ConventionNamingCommandProcessor))
 - uid: Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor.#ctor*
   name: ConventionNamingCommandProcessor
   href: api/Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor.html#Hexalith_Infrastructure_DaprRuntime_Handlers_ConventionNamingCommandProcessor__ctor_
@@ -27401,51 +27404,6 @@ references:
   commentId: N:Hexalith.Infrastructure.Dynamics365Finance.TestMocks
   fullName: Hexalith.Infrastructure.Dynamics365Finance.TestMocks
   nameWithType: Hexalith.Infrastructure.Dynamics365Finance.TestMocks
-- uid: Hexalith.Infrastructure.Dynamics365Finance.TestMocks.ConventionNamingCommandProcessor
-  name: ConventionNamingCommandProcessor
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.TestMocks.ConventionNamingCommandProcessor.html
-  commentId: T:Hexalith.Infrastructure.Dynamics365Finance.TestMocks.ConventionNamingCommandProcessor
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.TestMocks.ConventionNamingCommandProcessor
-  nameWithType: ConventionNamingCommandProcessor
-- uid: Hexalith.Infrastructure.Dynamics365Finance.TestMocks.ConventionNamingCommandProcessor.#ctor(Dapr.Actors.Client.IActorProxyFactory)
-  name: ConventionNamingCommandProcessor(IActorProxyFactory)
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.TestMocks.ConventionNamingCommandProcessor.html#Hexalith_Infrastructure_Dynamics365Finance_TestMocks_ConventionNamingCommandProcessor__ctor_Dapr_Actors_Client_IActorProxyFactory_
-  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.TestMocks.ConventionNamingCommandProcessor.#ctor(Dapr.Actors.Client.IActorProxyFactory)
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.TestMocks.ConventionNamingCommandProcessor.ConventionNamingCommandProcessor(Dapr.Actors.Client.IActorProxyFactory)
-  nameWithType: ConventionNamingCommandProcessor.ConventionNamingCommandProcessor(IActorProxyFactory)
-- uid: Hexalith.Infrastructure.Dynamics365Finance.TestMocks.ConventionNamingCommandProcessor.#ctor*
-  name: ConventionNamingCommandProcessor
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.TestMocks.ConventionNamingCommandProcessor.html#Hexalith_Infrastructure_Dynamics365Finance_TestMocks_ConventionNamingCommandProcessor__ctor_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.TestMocks.ConventionNamingCommandProcessor.#ctor
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.TestMocks.ConventionNamingCommandProcessor.ConventionNamingCommandProcessor
-  nameWithType: ConventionNamingCommandProcessor.ConventionNamingCommandProcessor
-- uid: Hexalith.Infrastructure.Dynamics365Finance.TestMocks.ConventionNamingCommandProcessor.GetActorMethodName(Hexalith.Application.Commands.ICommand)
-  name: GetActorMethodName(ICommand)
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.TestMocks.ConventionNamingCommandProcessor.html#Hexalith_Infrastructure_Dynamics365Finance_TestMocks_ConventionNamingCommandProcessor_GetActorMethodName_Hexalith_Application_Commands_ICommand_
-  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.TestMocks.ConventionNamingCommandProcessor.GetActorMethodName(Hexalith.Application.Commands.ICommand)
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.TestMocks.ConventionNamingCommandProcessor.GetActorMethodName(Hexalith.Application.Commands.ICommand)
-  nameWithType: ConventionNamingCommandProcessor.GetActorMethodName(ICommand)
-- uid: Hexalith.Infrastructure.Dynamics365Finance.TestMocks.ConventionNamingCommandProcessor.GetActorMethodName*
-  name: GetActorMethodName
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.TestMocks.ConventionNamingCommandProcessor.html#Hexalith_Infrastructure_Dynamics365Finance_TestMocks_ConventionNamingCommandProcessor_GetActorMethodName_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.TestMocks.ConventionNamingCommandProcessor.GetActorMethodName
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.TestMocks.ConventionNamingCommandProcessor.GetActorMethodName
-  nameWithType: ConventionNamingCommandProcessor.GetActorMethodName
-- uid: Hexalith.Infrastructure.Dynamics365Finance.TestMocks.ConventionNamingCommandProcessor.GetActorName(Hexalith.Application.Commands.ICommand)
-  name: GetActorName(ICommand)
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.TestMocks.ConventionNamingCommandProcessor.html#Hexalith_Infrastructure_Dynamics365Finance_TestMocks_ConventionNamingCommandProcessor_GetActorName_Hexalith_Application_Commands_ICommand_
-  commentId: M:Hexalith.Infrastructure.Dynamics365Finance.TestMocks.ConventionNamingCommandProcessor.GetActorName(Hexalith.Application.Commands.ICommand)
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.TestMocks.ConventionNamingCommandProcessor.GetActorName(Hexalith.Application.Commands.ICommand)
-  nameWithType: ConventionNamingCommandProcessor.GetActorName(ICommand)
-- uid: Hexalith.Infrastructure.Dynamics365Finance.TestMocks.ConventionNamingCommandProcessor.GetActorName*
-  name: GetActorName
-  href: api/Hexalith.Infrastructure.Dynamics365Finance.TestMocks.ConventionNamingCommandProcessor.html#Hexalith_Infrastructure_Dynamics365Finance_TestMocks_ConventionNamingCommandProcessor_GetActorName_
-  commentId: Overload:Hexalith.Infrastructure.Dynamics365Finance.TestMocks.ConventionNamingCommandProcessor.GetActorName
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.Dynamics365Finance.TestMocks.ConventionNamingCommandProcessor.GetActorName
-  nameWithType: ConventionNamingCommandProcessor.GetActorName
 - uid: Hexalith.Infrastructure.Dynamics365Finance.TestMocks.Dynamics365FinanceClientBuilder`1
   name: Dynamics365FinanceClientBuilder<TEntity>
   href: api/Hexalith.Infrastructure.Dynamics365Finance.TestMocks.Dynamics365FinanceClientBuilder-1.html

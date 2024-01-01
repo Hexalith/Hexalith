@@ -29,6 +29,8 @@ using Hexalith.Application.Metadatas;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.UnitTests.Core.Application.Commands;
 
+using Microsoft.Extensions.Logging;
+
 using Moq;
 
 /// <summary>
@@ -45,7 +47,7 @@ public class ActorCommandProcessorTest
         Mock<ActorProxy> actor = new();
         _ = factory.Setup(x => x.Create(It.IsAny<ActorId>(), It.IsAny<string>(), It.IsAny<ActorProxyOptions>()))
             .Returns(actor.Object);
-        DummyActorsCommandProcessor processor = new(factory.Object);
+        DummyActorsCommandProcessor processor = new(factory.Object, new Mock<ILogger<DummyActorsCommandProcessor>>().Object);
         DummyCommand1 command = new();
 
         Func<Task> submit = async () => await processor.SubmitAsync(
@@ -81,8 +83,9 @@ public class DummyActorsCommandProcessor : ActorsCommandProcessor
     /// Initializes a new instance of the <see cref="DummyActorsCommandProcessor"/> class.
     /// </summary>
     /// <param name="actorProxy">The actor proxy.</param>
-    public DummyActorsCommandProcessor(IActorProxyFactory actorProxy)
-        : base(actorProxy)
+    /// <param name="logger">The logger.</param>
+    public DummyActorsCommandProcessor(IActorProxyFactory actorProxy, ILogger<DummyActorsCommandProcessor> logger)
+        : base(actorProxy, logger)
     {
     }
 
