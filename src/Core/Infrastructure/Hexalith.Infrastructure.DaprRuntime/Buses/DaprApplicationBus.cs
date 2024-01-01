@@ -16,6 +16,8 @@
 
 namespace Hexalith.Infrastructure.DaprRuntime.Buses;
 
+using System.Text.Json;
+
 using Dapr.Client;
 
 using Hexalith.Application.Envelopes;
@@ -94,7 +96,7 @@ public partial class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageB
     [LoggerMessage(
         EventId = 1,
         Level = LogLevel.Error,
-        Message = "Error while publishing on {BusName}/{TopicName} ({BusType}) the message {MessageName} Id={MessageId} CorrelationId={CorrelationId}.\nError : {ErrorMessage}")]
+        Message = "Error while publishing on {BusName}/{TopicName} ({BusType}) the message {MessageName} Id={MessageId} CorrelationId={CorrelationId}.\nError : {ErrorMessage}\nMetadata :\n{Metadata}\nData:\n{Data}")]
     public partial void LogErrorWhileSendingMessage(
         Exception ex,
         string messageName,
@@ -103,7 +105,9 @@ public partial class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageB
         string topicName,
         string busName,
         string busType,
-        string errorMessage);
+        string errorMessage,
+        string metadata,
+        string data);
 
     [LoggerMessage(
         EventId = 2,
@@ -174,7 +178,9 @@ public partial class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageB
                     topicName,
                     _name,
                     GetType().Name,
-                    ex.FullMessage());
+                    ex.FullMessage(),
+                    string.Join("\n", m.Select(p => $"{p.Key}={p.Value}")),
+                    JsonSerializer.Serialize(envelope));
                 throw;
             }
         }
