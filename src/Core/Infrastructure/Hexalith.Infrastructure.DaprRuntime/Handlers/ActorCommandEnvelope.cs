@@ -29,6 +29,7 @@ using Hexalith.Application.Metadatas;
 /// </summary>
 /// <seealso cref="IEquatable{ActorCommandEnvelope}" />
 [DataContract]
+[Serializable]
 public class ActorCommandEnvelope : IJsonOnSerializing, IJsonOnDeserialized
 {
     /// <summary>

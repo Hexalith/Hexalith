@@ -16,6 +16,8 @@
 
 namespace Hexalith.Application.Envelopes;
 
+using System.Runtime.Serialization;
+
 using Hexalith.Application.Metadatas;
 using Hexalith.Domain.Messages;
 using Hexalith.Extensions;
@@ -27,6 +29,8 @@ using Hexalith.Extensions;
 /// <typeparam name="TMessage">The type of the t message.</typeparam>
 /// <typeparam name="TMetadata">The type of the t metadata.</typeparam>
 /// <seealso cref="IEnvelope{TMessage, TMetadata}" />
+[DataContract]
+[Serializable]
 public class BaseEnvelope<TMessage, TMetadata> : IEnvelope<TMessage, TMetadata>
     where TMessage : IMessage
     where TMetadata : IMetadata
@@ -53,10 +57,12 @@ public class BaseEnvelope<TMessage, TMetadata> : IEnvelope<TMessage, TMetadata>
     }
 
     /// <inheritdoc/>
-    public TMessage Message { get; }
+    [DataMember(Order = 1)]
+    public TMessage Message { get; set; }
 
     /// <inheritdoc/>
-    public TMetadata Metadata { get; }
+    [DataMember(Order = 2)]
+    public TMetadata Metadata { get; set; }
 
     /// <inheritdoc/>
     IMessage IEnvelope.Message => Message;

@@ -21,6 +21,7 @@ using System.Text.Json.Serialization;
 
 using Hexalith.Application.Metadatas;
 using Hexalith.Domain.Messages;
+using Hexalith.Extensions;
 
 /// <summary>
 /// Class Envelope.
@@ -28,6 +29,7 @@ using Hexalith.Domain.Messages;
 /// </summary>
 /// <seealso cref="BaseEnvelope{BaseMessage, Metadata}" />
 [DataContract]
+[Serializable]
 public class Envelope : BaseEnvelope<BaseMessage, BaseMetadata>
 {
     /// <summary>
@@ -38,6 +40,15 @@ public class Envelope : BaseEnvelope<BaseMessage, BaseMetadata>
     [JsonConstructor]
     public Envelope(BaseMessage message, BaseMetadata metadata)
         : base(message, metadata)
+    {
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Envelope"/> class.
+    /// </summary>
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
+    public Envelope()
+        : base(new BaseMessage(), new Metadata())
     {
     }
 }

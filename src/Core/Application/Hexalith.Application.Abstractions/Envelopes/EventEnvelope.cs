@@ -22,6 +22,7 @@ using Hexalith.Extensions;
 /// <seealso cref="BaseEnvelope{BaseEvent, Metadata}" />
 /// <seealso cref="IEventEnvelope" />
 [DataContract]
+[Serializable]
 public class EventEnvelope : BaseEnvelope<BaseEvent, BaseMetadata>, IEventEnvelope
 {
     /// <summary>
