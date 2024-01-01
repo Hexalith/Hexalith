@@ -23,6 +23,7 @@ using Hexalith.Application.Metadatas;
 using Hexalith.Application.States;
 using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Common;
+using Hexalith.Extensions.Helpers;
 
 using Microsoft.Extensions.Logging;
 
@@ -93,8 +94,16 @@ public partial class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageB
     [LoggerMessage(
         EventId = 1,
         Level = LogLevel.Error,
-        Message = "Error while publishing on {BusName}/{TopicName} ({BusType}) the message {MessageName} Id={MessageId} CorrelationId={CorrelationId}.")]
-    public partial void LogErrorWhileSendingMessage(Exception ex, string messageName, string messageId, string correlationId, string topicName, string busName, string busType);
+        Message = "Error while publishing on {BusName}/{TopicName} ({BusType}) the message {MessageName} Id={MessageId} CorrelationId={CorrelationId}.\nError : {ErrorMessage}")]
+    public partial void LogErrorWhileSendingMessage(
+        Exception ex,
+        string messageName,
+        string messageId,
+        string correlationId,
+        string topicName,
+        string busName,
+        string busType,
+        string errorMessage);
 
     [LoggerMessage(
         EventId = 2,
@@ -130,9 +139,7 @@ public partial class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageB
                 ? envelope.Message.AggregateName.ToLowerInvariant() + _topicSuffix
                 : throw new InvalidOperationException("Event aggregate name is not defined.");
 #pragma warning restore CA1308 // Normalize strings to uppercase
-            try
-            {
-                Dictionary<string, string> m = new(StringComparer.Ordinal)
+            Dictionary<string, string> m = new(StringComparer.Ordinal)
                     {
                         { "ContentType", "application/json" },
                         { "Label", envelope.Metadata.Message.Name + ' ' + envelope.Message.AggregateId },
@@ -142,6 +149,8 @@ public partial class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageB
                         { "SessionId", envelope.Metadata.Context.SessionId ?? envelope.Message.AggregateId },
                         { "PartitionKey", envelope.Message.AggregateId },
                     };
+            try
+            {
                 await _daprClient.PublishEventAsync(
                     _name,
                     topicName,
@@ -164,7 +173,8 @@ public partial class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageB
                     envelope.Metadata.Context.CorrelationId,
                     topicName,
                     _name,
-                    GetType().Name);
+                    GetType().Name,
+                    ex.FullMessage());
                 throw;
             }
         }
