@@ -415,12 +415,12 @@ public partial class AggregateStateManager : IAggregateStateManager
                         }
                         catch (Exception ex)
                         {
-                            // TODO remove this catch when all aggregates are migrated to the new Apply method
                             _logger.LogError(
                                 ex,
                                 "Error while applying events to aggregate {AggregateName} with id '{AggregateId}'.",
                                 aggregate.AggregateName,
                                 aggregate.AggregateId);
+                            throw;
                         }
                     }
 
