@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+	<PropertyGroup>
+		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+		<ContainerRepository>hexalith-parties</ContainerRepository>
+		<ContainerImageName>$(ContainerRepository)</ContainerImageName>
+		<UserSecretsId>$(ContainerRepository)</UserSecretsId>
+		<EnableSdkContainerSupport>true</EnableSdkContainerSupport>
+	</PropertyGroup>
+	<ItemGroup>
+		<ContainerEnvironmentVariable Include="Statestore__Name" Value="$(ContainerRepository)-statestore" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.WebApis.PartiesCommands\Hexalith.Infrastructure.WebApis.PartiesCommands.csproj" />
+	</ItemGroup>
+</Project>
