@@ -1,12 +1,12 @@
 ﻿// ***********************************************************************
 // Assembly         : Hexalith.Domain.Sales
 // Author           : Jérôme Piquot
-// Created          : 08-21-2023
+// Created          : 01-02-2024
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 08-30-2023
+// Last Modified On : 01-03-2024
 // ***********************************************************************
-// <copyright file="RegisterCustomer.cs" company="Fiveforty SAS Paris France">
+// <copyright file="IssueSalesInvoice.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -19,55 +19,45 @@ namespace Hexalith.Application.Sales.Commands;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Domain.ValueObjets;
 using Hexalith.Extensions;
 
 /// <summary>
-/// Class RegisterSalesInvoice.
-/// Implements the <see cref="SalesInvoiceCommand" />.
+/// Class SalesInvoiceRegistered.
+/// Implements the <see cref="Domain.Commands.SalesInvoiceCommand" />.
 /// </summary>
-/// <seealso cref="SalesInvoiceCommand" />
+/// <seealso cref="Domain.Commands.SalesInvoiceCommand" />
 [DataContract]
 [Serializable]
 public class IssueSalesInvoice : SalesInvoiceCommand
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="IssueSalesInvoice"/> class.
+    /// Initializes a new instance of the <see cref="IssueSalesInvoice" /> class.
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
     /// <param name="originId">The origin identifier.</param>
     /// <param name="id">The identifier.</param>
-    /// <param name="name">The name.</param>
-    /// <param name="partyType">Type of the party.</param>
-    /// <param name="contact">The contact.</param>
-    /// <param name="warehouseId">The warehouse identifier.</param>
-    /// <param name="commissionSalesGroupId">The commission sales group identifier.</param>
-    /// <param name="groupId">The group identifier.</param>
-    /// <param name="salesCurrencyId">The sales currency identifier.</param>
-    /// <param name="date">The date.</param>
+    /// <param name="createdDate">The created date.</param>
+    /// <param name="customerId">The customer identifier.</param>
+    /// <param name="currencyId">The currency identifier.</param>
+    /// <param name="lines">The lines.</param>
+    [JsonConstructor]
     public IssueSalesInvoice(
         string partitionId,
         string companyId,
         string originId,
         string id,
-        string name,
-        PartyType partyType,
-        Contact contact,
-        string? warehouseId,
-        string? commissionSalesGroupId,
-        string? groupId,
-        string? salesCurrencyId,
-        DateTimeOffset date)
+        DateTimeOffset createdDate,
+        string customerId,
+        string currencyId,
+        IEnumerable<SalesInvoiceLine> lines)
         : base(partitionId, companyId, originId, id)
     {
-        Name = name;
-        PartyType = partyType;
-        Contact = contact;
-        WarehouseId = warehouseId;
-        CommissionSalesGroupId = commissionSalesGroupId;
-        GroupId = groupId;
-        SalesCurrencyId = salesCurrencyId;
-        Date = date;
+        CreatedDate = createdDate;
+        CustomerId = customerId;
+        CurrencyId = currencyId;
+        Lines = lines.Select(p => new SalesInvoiceLine(p)).ToList();
     }
 
     /// <summary>
@@ -76,65 +66,39 @@ public class IssueSalesInvoice : SalesInvoiceCommand
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public IssueSalesInvoice()
     {
-        Name = string.Empty;
-        Contact = new Contact();
-        Date = DateTimeOffset.MinValue;
+        CustomerId = CurrencyId = string.Empty;
+        Lines = new List<SalesInvoiceLine>();
     }
 
     /// <summary>
-    /// Gets or sets the commission sales group identifier.
+    /// Gets or sets the created date.
     /// </summary>
-    /// <value>The commission sales group identifier.</value>
-    [DataMember(Order = 16)]
-    public string? CommissionSalesGroupId { get; set; }
-
-    /// <summary>
-    /// Gets or sets the contact.
-    /// </summary>
-    /// <value>The contact.</value>
-    [DataMember(Order = 12)]
-    public Contact Contact { get; set; }
-
-    /// <summary>
-    /// Gets or sets the external ids.
-    /// </summary>
-    /// <value>The external ids.</value>
-    [DataMember(Order = 17)]
-    public DateTimeOffset Date { get; set; }
-
-    /// <summary>
-    /// Gets or sets the group identifier.
-    /// </summary>
-    /// <value>The group identifier.</value>
-    [DataMember(Order = 13)]
-    public string? GroupId { get; set; }
-
-    /// <summary>
-    /// Gets or sets the name.
-    /// </summary>
-    /// <value>The name.</value>
+    /// <value>The created date.</value>
     [DataMember(Order = 10)]
-    public string Name { get; set; }
+    [JsonPropertyOrder(10)]
+    public DateTimeOffset CreatedDate { get; set; }
 
     /// <summary>
-    /// Gets or sets the type of the party.
+    /// Gets or sets the currency identifier.
     /// </summary>
-    /// <value>The type of the party.</value>
+    /// <value>The currency identifier.</value>
+    [DataMember(Order = 12)]
+    [JsonPropertyOrder(12)]
+    public string CurrencyId { get; set; }
+
+    /// <summary>
+    /// Gets or sets the customer identifier.
+    /// </summary>
+    /// <value>The customer identifier.</value>
     [DataMember(Order = 11)]
-    [JsonConverter(typeof(JsonStringEnumConverter))]
-    public PartyType PartyType { get; set; }
+    [JsonPropertyOrder(11)]
+    public string CustomerId { get; set; }
 
     /// <summary>
-    /// Gets or sets the sales currency identifier.
+    /// Gets or sets the lines.
     /// </summary>
-    /// <value>The sales currency identifier.</value>
-    [DataMember(Order = 14)]
-    public string? SalesCurrencyId { get; set; }
-
-    /// <summary>
-    /// Gets or sets the warehouse identifier.
-    /// </summary>
-    /// <value>The warehouse identifier.</value>
-    [DataMember(Order = 15)]
-    public string? WarehouseId { get; set; }
+    /// <value>The lines.</value>
+    [DataMember(Order = 20)]
+    [JsonPropertyOrder(20)]
+    public IEnumerable<SalesInvoiceLine> Lines { get; set; }
 }

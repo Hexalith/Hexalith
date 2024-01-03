@@ -24,7 +24,6 @@ using System.Runtime.CompilerServices;
 
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Exceptions;
-using Hexalith.Extensions;
 
 /// <summary>
 /// Class SalesInvoice.
@@ -43,7 +42,6 @@ public record SalesInvoice(
     /// <summary>
     /// Initializes a new instance of the <see cref="SalesInvoice"/> class.
     /// </summary>
-    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public SalesInvoice()
         : this(new SalesInvoiceState())
     {

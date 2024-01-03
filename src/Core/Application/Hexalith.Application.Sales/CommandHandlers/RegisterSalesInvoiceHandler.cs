@@ -25,6 +25,7 @@ using System.Threading.Tasks;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Sales.Commands;
 using Hexalith.Domain.Aggregates;
+using Hexalith.Domain.Events;
 using Hexalith.Domain.Messages;
 
 using Microsoft.Extensions.Logging;
@@ -55,25 +56,20 @@ public partial class IssueSalesInvoiceHandler : CommandHandler<IssueSalesInvoice
     public override async Task<IEnumerable<BaseMessage>> DoAsync([NotNull] IssueSalesInvoice command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
-        SalesInvoiceRegistered registered =
+        SalesInvoice salesInvoice = aggregate as SalesInvoice ?? new SalesInvoice();
+        SalesInvoiceIssued issued =
             new(
                 command.PartitionId,
                 command.CompanyId,
                 command.OriginId,
                 command.Id,
-                command.Name,
-                command.PartyType,
-                new Contact(command.Contact),
-                command.WarehouseId,
-                command.CommissionSalesGroupId,
-                command.GroupId,
-                command.SalesCurrencyId,
-                command.Date);
-        return await (aggregate is null
-            ? Task.FromResult<IEnumerable<BaseMessage>>((IEnumerable<BaseMessage>)([registered]))
-            : Task.FromException<IEnumerable<BaseMessage>>(
-                new InvalidOperationException(
-                    $"The event {command.TypeName} with id '{command.AggregateId}' cannot be applied on an existing customer."))).ConfigureAwait(false);
+                command.CreatedDate,
+                command.CurrencyId,
+                command.CustomerId,
+                command.Lines);
+        _ = salesInvoice.Apply(issued);
+        return await Task.FromResult((IEnumerable<BaseMessage>)[issued])
+            .ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
