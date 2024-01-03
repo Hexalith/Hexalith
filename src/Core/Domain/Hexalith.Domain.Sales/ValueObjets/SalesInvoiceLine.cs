@@ -40,10 +40,12 @@ public class SalesInvoiceLine : IEquatableObject
     [JsonConstructor]
     public SalesInvoiceLine(string id, SalesLineItem item, SalesLineOrigin origin, IEnumerable<SalesLineTax> taxes)
     {
+#pragma warning disable CS0618 // Type or member is obsolete
         Id = id;
-        Item = item;
-        Origin = origin;
-        Taxes = taxes;
+        Item = new SalesLineItem(item);
+        Origin = new SalesLineOrigin(origin);
+        Taxes = taxes.Select(p => new SalesLineTax(p)).ToList();
+#pragma warning restore CS0618 // Type or member is obsolete
     }
 
     /// <summary>
@@ -60,12 +62,30 @@ public class SalesInvoiceLine : IEquatableObject
     }
 
     /// <summary>
+    /// Initializes a new instance of the <see cref="SalesInvoiceLine"/> class.
+    /// </summary>
+    /// <param name="line">The line.</param>
+    public SalesInvoiceLine(SalesInvoiceLine line)
+        : this(
+              (line ?? throw new ArgumentNullException(nameof(line))).Id,
+              line.Item,
+              line.Origin,
+              line.Taxes)
+    {
+    }
+
+    /// <summary>
     /// Gets or sets the identifier.
     /// </summary>
     /// <value>The identifier.</value>
     [DataMember(Order = 1)]
     [JsonPropertyOrder(1)]
-    public string Id { get; set; }
+    public string Id
+    {
+        get;
+        [Obsolete(DefaultLabels.ForSerializationOnly, false)]
+        set;
+    }
 
     /// <summary>
     /// Gets or sets the item.
@@ -73,7 +93,12 @@ public class SalesInvoiceLine : IEquatableObject
     /// <value>The item.</value>
     [DataMember(Order = 2)]
     [JsonPropertyOrder(2)]
-    public SalesLineItem Item { get; set; }
+    public SalesLineItem Item
+    {
+        get;
+        [Obsolete(DefaultLabels.ForSerializationOnly, false)]
+        set;
+    }
 
     /// <summary>
     /// Gets or sets the origin.
@@ -81,7 +106,12 @@ public class SalesInvoiceLine : IEquatableObject
     /// <value>The origin.</value>
     [DataMember(Order = 3)]
     [JsonPropertyOrder(3)]
-    public SalesLineOrigin Origin { get; set; }
+    public SalesLineOrigin Origin
+    {
+        get;
+        [Obsolete(DefaultLabels.ForSerializationOnly, false)]
+        set;
+    }
 
     /// <summary>
     /// Gets or sets the taxes.
@@ -89,7 +119,12 @@ public class SalesInvoiceLine : IEquatableObject
     /// <value>The taxes.</value>
     [DataMember(Order = 4)]
     [JsonPropertyOrder(4)]
-    public IEnumerable<SalesLineTax> Taxes { get; set; }
+    public IEnumerable<SalesLineTax> Taxes
+    {
+        get;
+        [Obsolete(DefaultLabels.ForSerializationOnly, false)]
+        set;
+    }
 
     /// <inheritdoc/>
     public IEnumerable<object?> GetEqualityComponents()

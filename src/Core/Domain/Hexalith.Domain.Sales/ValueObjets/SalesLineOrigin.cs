@@ -39,8 +39,21 @@ public class SalesLineOrigin : IEquatableObject
     [JsonConstructor]
     public SalesLineOrigin(string locationId, string vendorId)
     {
+#pragma warning disable CS0618 // Type or member is obsolete
         LocationId = locationId;
         VendorId = vendorId;
+#pragma warning restore CS0618 // Type or member is obsolete
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="SalesLineOrigin"/> class.
+    /// </summary>
+    /// <param name="origin">The origin.</param>
+    public SalesLineOrigin(SalesLineOrigin origin)
+        : this(
+             (origin ?? throw new ArgumentNullException(nameof(origin))).LocationId,
+             origin.VendorId)
+    {
     }
 
     /// <summary>
@@ -56,7 +69,12 @@ public class SalesLineOrigin : IEquatableObject
     /// <value>The location identifier.</value>
     [DataMember(Order = 1)]
     [JsonPropertyOrder(1)]
-    public string LocationId { get; set; }
+    public string LocationId
+    {
+        get;
+        [Obsolete(DefaultLabels.ForSerializationOnly, false)]
+        set;
+    }
 
     /// <summary>
     /// Gets or sets the vendor identifier.
@@ -64,21 +82,11 @@ public class SalesLineOrigin : IEquatableObject
     /// <value>The vendor identifier.</value>
     [DataMember(Order = 2)]
     [JsonPropertyOrder(2)]
-    public string VendorId { get; set; }
-
-    /// <summary>
-    /// Ares the same.
-    /// </summary>
-    /// <param name="a">a.</param>
-    /// <param name="b">The b.</param>
-    /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-    public static bool AreSame(SalesLineOrigin? a, SalesLineOrigin? b)
+    public string VendorId
     {
-        return a is null
-            ? b is null
-            : a == b ||
-                (a.VendorId == b?.VendorId &&
-                a.LocationId == b?.LocationId);
+        get;
+        [Obsolete(DefaultLabels.ForSerializationOnly, false)]
+        set;
     }
 
     /// <inheritdoc/>

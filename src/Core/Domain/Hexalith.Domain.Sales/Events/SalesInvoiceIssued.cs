@@ -57,7 +57,7 @@ public class SalesInvoiceIssued : SalesInvoiceEvent
         CreatedDate = createdDate;
         CustomerId = customerId;
         CurrencyId = currencyId;
-        Lines = lines;
+        Lines = lines.Select(p => new SalesInvoiceLine(p)).ToList();
     }
 
     /// <summary>

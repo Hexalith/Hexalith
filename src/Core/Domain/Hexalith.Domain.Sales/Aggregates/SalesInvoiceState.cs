@@ -54,7 +54,7 @@ public class SalesInvoiceState : EntityAggregateState
         CreatedDate = issued.CreatedDate;
         CurrencyId = issued.CurrencyId;
         CustomerId = issued.CustomerId;
-        Lines = issued.Lines;
+        Lines = issued.Lines.Select(p => new SalesInvoiceLine(p)).ToList();
     }
 
     /// <summary>

@@ -41,10 +41,25 @@ public class SalesLineItem : IEquatableObject
     [JsonConstructor]
     public SalesLineItem(string itemId, decimal quantity, string unitId, decimal price)
     {
+#pragma warning disable CS0618 // Type or member is obsolete
         ItemId = itemId;
         Quantity = quantity;
         UnitId = unitId;
         Price = price;
+#pragma warning restore CS0618 // Type or member is obsolete
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="SalesLineItem"/> class.
+    /// </summary>
+    /// <param name="lineItem">The line item.</param>
+    public SalesLineItem(SalesLineItem lineItem)
+        : this(
+              (lineItem ?? throw new ArgumentNullException(nameof(lineItem))).ItemId,
+              lineItem.Quantity,
+              lineItem.UnitId,
+              lineItem.Price)
+    {
     }
 
     /// <summary>
@@ -60,7 +75,12 @@ public class SalesLineItem : IEquatableObject
     /// <value>The item identifier.</value>
     [DataMember(Order = 1)]
     [JsonPropertyOrder(1)]
-    public string ItemId { get; set; }
+    public string ItemId
+    {
+        get;
+        [Obsolete(DefaultLabels.ForSerializationOnly, false)]
+        set;
+    }
 
     /// <summary>
     /// Gets or sets the price.
@@ -68,7 +88,12 @@ public class SalesLineItem : IEquatableObject
     /// <value>The price.</value>
     [DataMember(Order = 4)]
     [JsonPropertyOrder(4)]
-    public decimal Price { get; set; }
+    public decimal Price
+    {
+        get;
+        [Obsolete(DefaultLabels.ForSerializationOnly, false)]
+        set;
+    }
 
     /// <summary>
     /// Gets or sets the quantity.
@@ -76,7 +101,12 @@ public class SalesLineItem : IEquatableObject
     /// <value>The quantity.</value>
     [DataMember(Order = 2)]
     [JsonPropertyOrder(2)]
-    public decimal Quantity { get; set; }
+    public decimal Quantity
+    {
+        get;
+        [Obsolete(DefaultLabels.ForSerializationOnly, false)]
+        set;
+    }
 
     /// <summary>
     /// Gets or sets the unit identifier.
@@ -84,7 +114,12 @@ public class SalesLineItem : IEquatableObject
     /// <value>The unit identifier.</value>
     [DataMember(Order = 3)]
     [JsonPropertyOrder(3)]
-    public string UnitId { get; set; }
+    public string UnitId
+    {
+        get;
+        [Obsolete(DefaultLabels.ForSerializationOnly, false)]
+        set;
+    }
 
     /// <inheritdoc/>
     public IEnumerable<object?> GetEqualityComponents()

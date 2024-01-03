@@ -63,7 +63,9 @@ public record SalesInvoice(
     {
         return domainEvent switch
         {
-            SalesInvoiceIssued => throw new InvalidAggregateEventException(this, domainEvent, true),
+            SalesInvoiceIssued issued => string.IsNullOrWhiteSpace(State.Id)
+                ? new SalesInvoice(issued)
+                : throw new InvalidAggregateEventException(this, domainEvent, true),
             _ => throw new InvalidAggregateEventException(this, domainEvent, false),
         };
     }

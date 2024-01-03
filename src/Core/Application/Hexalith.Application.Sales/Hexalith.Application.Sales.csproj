@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\Hexalith.Domain.Sales\Hexalith.Domain.Sales.csproj" />
+    <ProjectReference Include="..\Hexalith.Application.Abstractions\Hexalith.Application.Abstractions.csproj" />
+    <ProjectReference Include="..\Hexalith.Application.Organizations\Hexalith.Application.Organizations.csproj" />
+  </ItemGroup>
+</Project>
