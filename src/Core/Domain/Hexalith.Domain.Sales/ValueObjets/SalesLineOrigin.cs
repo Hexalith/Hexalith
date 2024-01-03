@@ -16,17 +16,20 @@
 namespace Hexalith.Domain.ValueObjets;
 
 using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 using Hexalith.Extensions;
+using Hexalith.Extensions.Common;
 
 /// <summary>
 /// Class SalesLineItem.
 /// </summary>
 [DataContract]
 [Serializable]
-public class SalesLineOrigin
+public class SalesLineOrigin : IEquatableObject
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="SalesLineOrigin" /> class.
@@ -44,6 +47,7 @@ public class SalesLineOrigin
     /// Initializes a new instance of the <see cref="SalesLineOrigin" /> class.
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
+    [ExcludeFromCodeCoverage]
     public SalesLineOrigin() => LocationId = VendorId = string.Empty;
 
     /// <summary>
@@ -76,4 +80,8 @@ public class SalesLineOrigin
                 (a.VendorId == b?.VendorId &&
                 a.LocationId == b?.LocationId);
     }
+
+    /// <inheritdoc/>
+    public IEnumerable<object?> GetEqualityComponents()
+        => new object?[] { LocationId, VendorId };
 }

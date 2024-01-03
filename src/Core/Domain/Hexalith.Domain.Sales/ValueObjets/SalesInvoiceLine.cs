@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 01-03-2024
 // ***********************************************************************
-// <copyright file="SalesLineItem.cs" company="Fiveforty SAS Paris France">
+// <copyright file="SalesInvoiceLine.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -16,7 +16,6 @@
 namespace Hexalith.Domain.ValueObjets;
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
@@ -29,64 +28,70 @@ using Hexalith.Extensions.Common;
 /// </summary>
 [DataContract]
 [Serializable]
-public class SalesLineItem : IEquatableObject
+public class SalesInvoiceLine : IEquatableObject
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="SalesLineItem" /> class.
+    /// Initializes a new instance of the <see cref="SalesInvoiceLine" /> class.
     /// </summary>
-    /// <param name="itemId">The item identifier.</param>
-    /// <param name="quantity">The quantity.</param>
-    /// <param name="unitId">The unit identifier.</param>
-    /// <param name="price">The price.</param>
+    /// <param name="id">The identifier.</param>
+    /// <param name="item">The item.</param>
+    /// <param name="origin">The origin.</param>
+    /// <param name="taxes">The taxes.</param>
     [JsonConstructor]
-    public SalesLineItem(string itemId, decimal quantity, string unitId, decimal price)
+    public SalesInvoiceLine(string id, SalesLineItem item, SalesLineOrigin origin, IEnumerable<SalesLineTax> taxes)
     {
-        ItemId = itemId;
-        Quantity = quantity;
-        UnitId = unitId;
-        Price = price;
+        Id = id;
+        Item = item;
+        Origin = origin;
+        Taxes = taxes;
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="SalesLineItem" /> class.
+    /// Initializes a new instance of the <see cref="SalesInvoiceLine" /> class.
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     [ExcludeFromCodeCoverage]
-    public SalesLineItem() => ItemId = UnitId = string.Empty;
+    public SalesInvoiceLine()
+    {
+        Item = new SalesLineItem();
+        Origin = new SalesLineOrigin();
+        Taxes = new List<SalesLineTax>();
+        Id = string.Empty;
+    }
 
     /// <summary>
-    /// Gets or sets the item identifier.
+    /// Gets or sets the identifier.
     /// </summary>
-    /// <value>The item identifier.</value>
+    /// <value>The identifier.</value>
     [DataMember(Order = 1)]
     [JsonPropertyOrder(1)]
-    public string ItemId { get; set; }
+    public string Id { get; set; }
 
     /// <summary>
-    /// Gets or sets the price.
+    /// Gets or sets the item.
     /// </summary>
-    /// <value>The price.</value>
-    [DataMember(Order = 4)]
-    [JsonPropertyOrder(4)]
-    public decimal Price { get; set; }
-
-    /// <summary>
-    /// Gets or sets the quantity.
-    /// </summary>
-    /// <value>The quantity.</value>
+    /// <value>The item.</value>
     [DataMember(Order = 2)]
     [JsonPropertyOrder(2)]
-    public decimal Quantity { get; set; }
+    public SalesLineItem Item { get; set; }
 
     /// <summary>
-    /// Gets or sets the unit identifier.
+    /// Gets or sets the origin.
     /// </summary>
-    /// <value>The unit identifier.</value>
+    /// <value>The origin.</value>
     [DataMember(Order = 3)]
     [JsonPropertyOrder(3)]
-    public string UnitId { get; set; }
+    public SalesLineOrigin Origin { get; set; }
+
+    /// <summary>
+    /// Gets or sets the taxes.
+    /// </summary>
+    /// <value>The taxes.</value>
+    [DataMember(Order = 4)]
+    [JsonPropertyOrder(4)]
+    public IEnumerable<SalesLineTax> Taxes { get; set; }
 
     /// <inheritdoc/>
     public IEnumerable<object?> GetEqualityComponents()
-        => new object?[] { ItemId, Quantity, UnitId, Price };
+        => new object?[] { Id, Item, Origin, Taxes };
 }

@@ -20,9 +20,9 @@ using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Domain.Entities;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Organizations.Aggregates;
+using Hexalith.Domain.ValueObjets;
 
 /// <summary>
 /// Class SalesInvoiceState.
@@ -46,6 +46,15 @@ public class SalesInvoiceState : EntityAggregateState
     /// <param name="issued">The issued.</param>
     public SalesInvoiceState(SalesInvoiceIssued issued)
     {
+        ArgumentNullException.ThrowIfNull(issued);
+        PartitionId = issued.PartitionId;
+        CompanyId = issued.CompanyId;
+        OriginId = issued.OriginId;
+        Id = issued.Id;
+        CreatedDate = issued.CreatedDate;
+        CurrencyId = issued.CurrencyId;
+        CustomerId = issued.CustomerId;
+        Lines = issued.Lines;
     }
 
     /// <summary>
@@ -78,5 +87,8 @@ public class SalesInvoiceState : EntityAggregateState
     /// <value>The lines.</value>
     [DataMember(Order = 20)]
     [JsonPropertyOrder(20)]
-    public IEnumerable<SalesInvoiceLineState> Lines { get; set; } = new List<SalesInvoiceLineState>();
+    public IEnumerable<SalesInvoiceLine> Lines { get; set; } = new List<SalesInvoiceLine>();
+
+    /// <inheritdoc/>
+    public override IEnumerable<object?> GetEqualityComponents() => base.GetEqualityComponents().Union([CreatedDate, CurrencyId, CustomerId, Lines]);
 }

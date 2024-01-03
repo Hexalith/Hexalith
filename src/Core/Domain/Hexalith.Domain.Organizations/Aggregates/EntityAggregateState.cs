@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 01-02-2024
 // ***********************************************************************
-// <copyright file="SalesInvoiceState.cs" company="Fiveforty SAS Paris France">
+// <copyright file="EntityAggregateState.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -17,14 +17,17 @@
 namespace Hexalith.Domain.Organizations.Aggregates;
 
 using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
+
+using Hexalith.Extensions.Common;
 
 /// <summary>
 /// Class EntityAggregateState.
 /// </summary>
 [DataContract]
 [Serializable]
-public abstract class EntityAggregateState
+public abstract class EntityAggregateState : IEquatableObject
 {
     /// <summary>
     /// Gets or sets the company identifier.
@@ -53,4 +56,8 @@ public abstract class EntityAggregateState
     /// <value>The partition identifier.</value>
     [DataMember(Order = 1)]
     public string PartitionId { get; set; } = string.Empty;
+
+    /// <inheritdoc/>
+    public virtual IEnumerable<object?> GetEqualityComponents()
+        => new object?[] { PartitionId, CompanyId, OriginId, Id };
 }

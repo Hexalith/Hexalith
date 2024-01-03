@@ -7,29 +7,33 @@
 namespace Hexalith.UnitTests.Core.Domain.Sales;
 
 using Hexalith.Domain.Aggregates;
-using Hexalith.Domain.Entities;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.ValueObjets;
 
 public static class DummySalesDomainHelper
 {
-    public static SalesInvoiceDraftCreated DummySalesInvoiceDraftCreated()
-        => new("TST", "CPY", "ORG", "INV456987", "Cust456");
-
     public static SalesInvoiceIssued DummySalesInvoiceIssued()
-        => new("TST", "CPY", "ORG", "INV123456", DateTimeOffset.Now);
+        => new(
+            "TST",
+            "CPY",
+            "ORG",
+            "INV123456",
+            DateTimeOffset.Now,
+            "CUST3",
+            "EUR",
+            new List<SalesInvoiceLine>() { DummySalesInvoiceLine(), DummySalesInvoiceLine2(), DummySalesInvoiceLine3() });
 
-    public static SalesInvoiceLineState DummySalesInvoiceLineState()
+    public static SalesInvoiceLine DummySalesInvoiceLine()
         => new("Line1", DummySalesLineItem(), DummySalesLineOrigin(), new List<SalesLineTax>() { DummySalesLineTax(), DummySalesLineTax2() });
 
-    public static SalesInvoiceLineState DummySalesInvoiceLineState2()
+    public static SalesInvoiceLine DummySalesInvoiceLine2()
         => new("Line2", DummySalesLineItem2(), DummySalesLineOrigin(), new List<SalesLineTax>() { DummySalesLineTax2() });
 
-    public static SalesInvoiceLineState DummySalesInvoiceLineState3()
+    public static SalesInvoiceLine DummySalesInvoiceLine3()
         => new("Line3", DummySalesLineItem3(), DummySalesLineOrigin(), new List<SalesLineTax>());
 
     public static SalesInvoiceState DummySalesInvoiceState()
-                    => new();
+                    => new(DummySalesInvoiceIssued());
 
     public static SalesLineItem DummySalesLineItem()
         => new("MyItem123", 101.20m, "Kg", 50.25m);

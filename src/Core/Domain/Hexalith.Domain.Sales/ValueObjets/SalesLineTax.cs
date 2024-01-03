@@ -16,17 +16,19 @@
 namespace Hexalith.Domain.ValueObjets;
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 using Hexalith.Extensions;
+using Hexalith.Extensions.Common;
 
 /// <summary>
 /// Class SalesLineItem.
 /// </summary>
 [DataContract]
 [Serializable]
-public class SalesLineTax
+public class SalesLineTax : IEquatableObject
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="SalesLineTax" /> class.
@@ -46,6 +48,7 @@ public class SalesLineTax
     /// Initializes a new instance of the <see cref="SalesLineTax" /> class.
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
+    [ExcludeFromCodeCoverage]
     public SalesLineTax() => TaxId = Name = string.Empty;
 
     /// <summary>
@@ -87,4 +90,45 @@ public class SalesLineTax
                 a.Name == b?.Name &&
                 a.Amount == b?.Amount);
     }
+
+    /// <summary>
+    /// Ares the same taxes.
+    /// </summary>
+    /// <param name="taxes1">The taxes1.</param>
+    /// <param name="taxes2">The taxes2.</param>
+    /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+    public static bool AreSame(IEnumerable<SalesLineTax>? taxes1, IEnumerable<SalesLineTax>? taxes2)
+    {
+        if (taxes1 is null)
+        {
+            return taxes2 is null;
+        }
+        else if (taxes2 is null)
+        {
+            return false;
+        }
+        else
+        {
+            SalesLineTax[] taxes1Array = taxes1.ToArray();
+            SalesLineTax[] taxes2Array = taxes2.ToArray();
+            if (taxes1Array.Length != taxes2Array.Length)
+            {
+                return false;
+            }
+
+            for (int i = 0; i < taxes1Array.Length; i++)
+            {
+                if (!AreSame(taxes1Array[i], taxes2Array[i]))
+                {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    /// <inheritdoc/>
+    public IEnumerable<object?> GetEqualityComponents()
+        => new object?[] { TaxId, Name, Amount };
 }

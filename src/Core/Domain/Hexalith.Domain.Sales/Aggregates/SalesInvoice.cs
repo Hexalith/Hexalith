@@ -50,9 +50,9 @@ public record SalesInvoice(
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="SalesInvoice" /> class.
+    /// Initializes a new instance of the <see cref="SalesInvoice"/> class.
     /// </summary>
-    /// <param name="customer">The customer.</param>
+    /// <param name="issued">The issued.</param>
     public SalesInvoice(SalesInvoiceIssued issued)
         : this(new SalesInvoiceState(issued))
     {
