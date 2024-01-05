@@ -45,7 +45,8 @@ public partial class AggregateActor : AggregateActorBase, IAggregateActor
     /// <param name="notificationBus">The notification bus.</param>
     /// <param name="commandBus">The command bus.</param>
     /// <param name="requestBus">The request bus.</param>
-    protected AggregateActor(
+    /// <param name="actorStateManager">The actor state manager.</param>
+    public AggregateActor(
         ActorHost host,
         ICommandDispatcher commandDispatcher,
         IAggregateFactory aggregateFactory,
@@ -53,8 +54,9 @@ public partial class AggregateActor : AggregateActorBase, IAggregateActor
         IEventBus eventBus,
         INotificationBus notificationBus,
         ICommandBus commandBus,
-        IRequestBus requestBus)
-        : base(host, commandDispatcher, aggregateFactory, dateTimeService, eventBus, notificationBus, commandBus, requestBus)
+        IRequestBus requestBus,
+        IActorStateManager? actorStateManager = null)
+        : base(host, commandDispatcher, aggregateFactory, dateTimeService, eventBus, notificationBus, commandBus, requestBus, actorStateManager)
     {
     }
 

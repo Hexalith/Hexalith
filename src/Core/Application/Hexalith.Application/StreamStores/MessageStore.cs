@@ -80,7 +80,7 @@ public class MessageStore<TMessage>
 
         foreach (TMessage m in messages)
         {
-            ConditionalValue<TMessage> result = await _stateManager.TryGetStateAsync<TMessage>(
+            ConditionalValue<long> result = await _stateManager.TryGetStateAsync<long>(
                   GetMessageStateName(m.IdempotencyId),
                   cancellationToken)
                   .ConfigureAwait(false);
@@ -91,12 +91,12 @@ public class MessageStore<TMessage>
 
             await _stateManager.AddStateAsync(
                   GetMessageStateName(m.IdempotencyId),
-                  m,
+                  ++version,
                   cancellationToken)
                   .ConfigureAwait(false);
             await _stateManager.AddStateAsync(
-                GetStreamItemStateName(++version),
-                m.IdempotencyId,
+                GetStreamItemStateName(version),
+                m,
                 cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -148,15 +148,15 @@ public class MessageStore<TMessage>
 
         while (fromVersion <= toVersion)
         {
-            ConditionalValue<string> result = await _stateManager
-                .TryGetStateAsync<string>(GetStreamItemStateName(fromVersion++), cancellationToken)
+            ConditionalValue<TMessage> result = await _stateManager
+                .TryGetStateAsync<TMessage>(GetStreamItemStateName(fromVersion++), cancellationToken)
                 .ConfigureAwait(false);
             if (!result.HasValue)
             {
                 throw new MessageStoreItemNotFoundException(version: fromVersion, StreamName, message: null, innerException: null);
             }
 
-            messages.Add(await _stateManager.GetStateAsync<TMessage>(GetMessageStateName(result.Value), cancellationToken).ConfigureAwait(false));
+            messages.Add(result.Value);
         }
 
         return messages;
@@ -176,13 +176,11 @@ public class MessageStore<TMessage>
             throw new ArgumentOutOfRangeException(nameof(version), "Version cannot be negative or zero.");
         }
 
-        ConditionalValue<string> result = await _stateManager
-                .TryGetStateAsync<string>(GetStreamItemStateName(version), cancellationToken)
+        ConditionalValue<TMessage> result = await _stateManager
+                .TryGetStateAsync<TMessage>(GetStreamItemStateName(version), cancellationToken)
                 .ConfigureAwait(false);
         return result.HasValue
-            ? await _stateManager
-                .GetStateAsync<TMessage>(GetMessageStateName(result.Value), cancellationToken)
-                .ConfigureAwait(false)
+            ? result.Value
             : throw new MessageStoreItemNotFoundException(version: version, StreamName, message: null, innerException: null);
     }
 

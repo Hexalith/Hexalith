@@ -22,6 +22,11 @@ namespace Hexalith.Infrastructure.DaprRuntime.Abstractions;
 public static class ActorConstants
 {
     /// <summary>
+    /// The aggregate state store name.
+    /// </summary>
+    public const string AggregateStateStoreName = "State";
+
+    /// <summary>
     /// The command store name.
     /// </summary>
     public const string CommandStoreName = "Command";

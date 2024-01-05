@@ -45,6 +45,7 @@ public class SalesInvoiceAggregateActor : AggregateActor, ISalesInvoiceAggregate
     /// <param name="notificationBus">The notification bus.</param>
     /// <param name="commandBus">The command bus.</param>
     /// <param name="requestBus">The request bus.</param>
+    /// <param name="actorStateManager">The actor state manager.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
     public SalesInvoiceAggregateActor(
         ActorHost host,
@@ -54,8 +55,9 @@ public class SalesInvoiceAggregateActor : AggregateActor, ISalesInvoiceAggregate
         IEventBus eventBus,
         INotificationBus notificationBus,
         ICommandBus commandBus,
-        IRequestBus requestBus)
-        : base(host, commandDispatcher, aggregateFactory, dateTimeService, eventBus, notificationBus, commandBus, requestBus)
+        IRequestBus requestBus,
+        IActorStateManager? actorStateManager = null)
+        : base(host, commandDispatcher, aggregateFactory, dateTimeService, eventBus, notificationBus, commandBus, requestBus, actorStateManager)
         => ArgumentNullException.ThrowIfNull(host);
 
     /// <inheritdoc/>

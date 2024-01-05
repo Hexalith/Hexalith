@@ -27,7 +27,6 @@ using Hexalith.Application.States;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Messages;
-using Hexalith.Infrastructure.DaprRuntime.Abstractions;
 using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
@@ -38,6 +37,13 @@ using Hexalith.Infrastructure.DaprRuntime.Handlers;
 /// </summary>
 public abstract partial class AggregateActorBase
 {
+    /// <summary>
+    /// Gets the name of the aggregate actor.
+    /// </summary>
+    /// <param name="aggregateName">Name of the aggregate.</param>
+    /// <returns>string.</returns>
+    public static string GetAggregateActorName(string aggregateName) => aggregateName + nameof(Aggregate);
+
     /// <inheritdoc/>
     public async Task SubmitCommandAsync(ActorCommandEnvelope envelope)
     {
@@ -55,20 +61,12 @@ public abstract partial class AggregateActorBase
             return;
         }
 
-        if (_state is null)
-        {
-            Dapr.Actors.Runtime.ConditionalValue<AggregateActorState> result = await StateManager
-                .TryGetStateAsync<AggregateActorState>(nameof(AggregateActorState))
-                .ConfigureAwait(false);
-            _state = result.HasValue ? result.Value : new AggregateActorState();
-        }
-
         List<CommandState> commandStates = [];
         for (int i = 0; i < commands.Length; i++)
         {
-            Application.Commands.BaseCommand command = commands[i];
-            Application.Metadatas.BaseMetadata metadata = metadatas[i];
-            if ((command.AggregateName + nameof(Aggregate)) != Host.ActorTypeInfo.ActorTypeName)
+            BaseCommand command = commands[i];
+            BaseMetadata metadata = metadatas[i];
+            if (GetAggregateActorName(command.AggregateName) != Host.ActorTypeInfo.ActorTypeName)
             {
                 throw new InvalidOperationException($"Submitted command to {Host.ActorTypeInfo.ActorTypeName}/{Id} has an invalid aggregate name : {command.AggregateName}.");
             }
@@ -88,18 +86,13 @@ public abstract partial class AggregateActorBase
                 command.AggregateId);
         }
 
-        _state.CommandCount = await CommandStore.AddAsync(commandStates, _state.CommandCount, CancellationToken.None).ConfigureAwait(false);
-
-        _state.Reminder = TimeSpan.FromMinutes(1);
-        _ = await RegisterReminderAsync(
-            ActorConstants.ContinueReminderName,
-            null,
-            _state.Reminder.Value,
-            _state.Reminder.Value)
+        AggregateActorState state = await GetAggregateStateAsync(CancellationToken.None).ConfigureAwait(false);
+        state.CommandCount = await CommandStore
+            .AddAsync(commandStates, state.CommandCount, CancellationToken.None)
             .ConfigureAwait(false);
-        await StateManager.SetStateAsync(nameof(AggregateActorState), _state).ConfigureAwait(false);
-        await StateManager.SaveStateAsync().ConfigureAwait(false);
-        await RegisterContinueTimerAsync().ConfigureAwait(false);
+
+        await RegisterContinueCallbackAsync().ConfigureAwait(false);
+        await SaveAggregateStateAsync(CancellationToken.None).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -161,7 +154,7 @@ public abstract partial class AggregateActorBase
 
     private async Task<bool> ProcessNextSubmittedCommandAsync(CancellationToken cancellationToken)
     {
-        AggregateActorState state = await GetStateAsync(cancellationToken)
+        AggregateActorState state = await GetAggregateStateAsync(cancellationToken)
             .ConfigureAwait(false);
 
         LogProcessingCommandsInformation(Logger, Id.ToString(), Host.ActorTypeInfo.ActorTypeName, state.CommandCount, state.LastCommandProcessed);
@@ -179,8 +172,7 @@ public abstract partial class AggregateActorBase
 
             state.MessageCount = messageStoreVersion;
             state.EventCount = eventSourceVersion;
-            await StateManager.SetStateAsync(nameof(AggregateActorState), state, cancellationToken).ConfigureAwait(false);
-            await StateManager.SaveStateAsync(cancellationToken).ConfigureAwait(false);
+            await SaveAggregateStateAsync(cancellationToken).ConfigureAwait(false);
             return true;
         }
 

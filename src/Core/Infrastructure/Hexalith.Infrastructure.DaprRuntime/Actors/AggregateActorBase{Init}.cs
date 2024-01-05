@@ -69,6 +69,7 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
     /// <param name="notificationBus">The notification bus.</param>
     /// <param name="commandBus">The command bus.</param>
     /// <param name="requestBus">The request bus.</param>
+    /// <param name="actorStateManager">The actor state manager.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
     protected AggregateActorBase(
         ActorHost host,
@@ -78,8 +79,9 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
         IEventBus eventBus,
         INotificationBus notificationBus,
         ICommandBus commandBus,
-        IRequestBus requestBus)
-        : base(host)
+        IRequestBus requestBus,
+        IActorStateManager? actorStateManager = null)
+       : base(host)
     {
         ArgumentNullException.ThrowIfNull(host);
         ArgumentNullException.ThrowIfNull(commandDispatcher);
@@ -97,6 +99,10 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
         _notificationBus = notificationBus;
         _commandBus = commandBus;
         _requestBus = requestBus;
+        if (actorStateManager is not null)
+        {
+            StateManager = actorStateManager;
+        }
     }
 
     private MessageStore<CommandState> CommandStore
@@ -151,7 +157,7 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
             return;
         }
 
-        await UnregisterContinueTimerAsync().ConfigureAwait(false);
+        await UnregisterContinueCallbackAsync().ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -162,7 +168,7 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
     {
         if (_aggregate is null)
         {
-            AggregateActorState state = await GetStateAsync(cancellationToken).ConfigureAwait(false);
+            AggregateActorState state = await GetAggregateStateAsync(cancellationToken).ConfigureAwait(false);
 
             _aggregate = _aggregateFactory.Create(aggregateName);
             for (int i = 1; i <= state.EventCount; i++)
@@ -185,12 +191,12 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
         return _aggregate;
     }
 
-    private async Task<AggregateActorState> GetStateAsync(CancellationToken cancellationToken)
+    private async Task<AggregateActorState> GetAggregateStateAsync(CancellationToken cancellationToken)
     {
         if (_state is null)
         {
             Dapr.Actors.Runtime.ConditionalValue<AggregateActorState> result = await StateManager
-                .TryGetStateAsync<AggregateActorState>(nameof(AggregateActorState), cancellationToken)
+                .TryGetStateAsync<AggregateActorState>(ActorConstants.AggregateStateStoreName, cancellationToken)
                 .ConfigureAwait(false);
             _state = result.HasValue ? result.Value : new AggregateActorState();
         }
@@ -198,7 +204,7 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
         return _state;
     }
 
-    private async Task RegisterContinueTimerAsync()
+    private async Task RegisterContinueCallbackAsync()
     {
         _timer ??=
             await RegisterTimerAsync(
@@ -208,15 +214,45 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
                 TimeSpan.FromMilliseconds(1),
                 TimeSpan.FromSeconds(1))
             .ConfigureAwait(false);
+        AggregateActorState state = await GetAggregateStateAsync(CancellationToken.None).ConfigureAwait(false);
+        if (state.Reminder == null)
+        {
+            IActorReminder reminder = await RegisterReminderAsync(
+                ActorConstants.ContinueReminderName,
+                null,
+                TimeSpan.FromMinutes(1),
+                TimeSpan.FromMinutes(1)).ConfigureAwait(false);
+            state.Reminder = reminder.DueTime;
+        }
     }
 
-    private async Task UnregisterContinueTimerAsync()
+    private async Task SaveAggregateStateAsync(CancellationToken cancellationToken)
+    {
+        if (_state is not null)
+        {
+            await StateManager
+                .SetStateAsync(ActorConstants.AggregateStateStoreName, _state, cancellationToken)
+                .ConfigureAwait(false);
+            await StateManager
+                .SaveStateAsync(cancellationToken)
+                .ConfigureAwait(false);
+        }
+    }
+
+    private async Task UnregisterContinueCallbackAsync()
     {
         if (_timer != null)
         {
             await UnregisterTimerAsync(_timer)
                 .ConfigureAwait(false);
             _timer = null;
+        }
+
+        AggregateActorState state = await GetAggregateStateAsync(CancellationToken.None).ConfigureAwait(false);
+        if (state.Reminder is not null)
+        {
+            await UnregisterReminderAsync(ActorConstants.ContinueReminderName).ConfigureAwait(false);
+            state.Reminder = null;
         }
     }
 }

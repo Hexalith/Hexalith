@@ -50,7 +50,7 @@ public abstract partial class AggregateActorBase
     /// <inheritdoc/>
     public async Task<bool> PublishNextMessageAsync()
     {
-        AggregateActorState state = await GetStateAsync(CancellationToken.None).ConfigureAwait(false);
+        AggregateActorState state = await GetAggregateStateAsync(CancellationToken.None).ConfigureAwait(false);
         if (state.LastMessagePublished < state.MessageCount)
         {
             MessageState messageState = await MessageStore
