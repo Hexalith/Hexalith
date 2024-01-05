@@ -49,6 +49,11 @@ public class BaseMessage : IMessage, IPolymorphicSerializable
     /// <inheritdoc/>
     [IgnoreDataMember]
     [JsonIgnore]
+    public bool IsPrivateToAggregate => DefaultIsPrivateToAggregate();
+
+    /// <inheritdoc/>
+    [IgnoreDataMember]
+    [JsonIgnore]
     public int MajorVersion => DefaultMajorVersion();
 
     /// <inheritdoc/>
@@ -72,6 +77,12 @@ public class BaseMessage : IMessage, IPolymorphicSerializable
     /// </summary>
     /// <returns>The name.</returns>
     protected virtual string DefaultAggregateName() => string.Empty;
+
+    /// <summary>
+    /// Defaults the is private to aggregate.
+    /// </summary>
+    /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+    protected virtual bool DefaultIsPrivateToAggregate() => false;
 
     /// <summary>
     /// Get the message major version.

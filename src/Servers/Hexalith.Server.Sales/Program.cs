@@ -4,13 +4,13 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-using Hexalith.Infrastructure.DaprRuntime.Parties.Helpers;
+using Hexalith.Infrastructure.DaprRuntime.Sales.Helpers;
 using Hexalith.Infrastructure.WebApis.Helpers;
-using Hexalith.Infrastructure.WebApis.PartiesCommands.Helpers;
+using Hexalith.Infrastructure.WebApis.SalesCommands.Helpers;
 
 using Serilog;
 
-const string appName = "Hexalith Parties";
+const string appName = "Hexalith Sales";
 
 #if DEBUG
 bool debugInVisualStudio = true;
@@ -22,10 +22,10 @@ WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
     appName,
     "v1",
     debugInVisualStudio,
-    (actors) => actors.AddPartiesAggregates(),
+    (actors) => actors.AddSalesAggregates(),
     args);
 
-builder.Services.AddPartiesCommandsSubmission();
+builder.Services.AddSalesCommandsSubmission();
 
 WebApplication app = builder.Build();
 

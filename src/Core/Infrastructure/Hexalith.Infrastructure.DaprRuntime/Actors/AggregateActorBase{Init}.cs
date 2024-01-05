@@ -1,0 +1,222 @@
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Infrastructure.DaprRuntime.Sales
+// Author           : Jérôme Piquot
+// Created          : 01-02-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 01-03-2024
+// ***********************************************************************
+// <copyright file="AggregateActorBase{Init}.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+namespace Hexalith.Infrastructure.DaprRuntime.Sales.Actors;
+
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+using Dapr.Actors;
+using Dapr.Actors.Runtime;
+
+using Hexalith.Application.Commands;
+using Hexalith.Application.Events;
+using Hexalith.Application.Notifications;
+using Hexalith.Application.Requests;
+using Hexalith.Application.States;
+using Hexalith.Application.StreamStores;
+using Hexalith.Domain.Aggregates;
+using Hexalith.Extensions.Common;
+using Hexalith.Infrastructure.DaprRuntime.Abstractions;
+using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
+using Hexalith.Infrastructure.DaprRuntime.Actors;
+using Hexalith.Infrastructure.DaprRuntime.States;
+
+using Microsoft.Extensions.Logging;
+
+/// <summary>
+/// Logistics partner catalog item aggregate actor interface <see cref="BspkSalesInvoice" />.
+/// Extends the <see cref="IActor" />.
+/// </summary>
+public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregateActor
+{
+    private readonly IAggregateFactory _aggregateFactory;
+    private readonly ICommandBus _commandBus;
+    private readonly ICommandDispatcher _commandDispatcher;
+    private readonly IDateTimeService _dateTimeService;
+    private readonly IEventBus _eventBus;
+    private readonly ActorHost _host;
+    private readonly INotificationBus _notificationBus;
+    private readonly IRequestBus _requestBus;
+    private IAggregate? _aggregate;
+    private MessageStore<CommandState>? _commandStore;
+    private MessageStore<EventState>? _eventSourceStore;
+    private MessageStore<MessageState>? _messageStore;
+    private AggregateActorState? _state;
+    private ActorTimer? _timer;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="AggregateActorBase"/> class.
+    /// </summary>
+    /// <param name="host">The host.</param>
+    /// <param name="commandDispatcher">The command dispatcher.</param>
+    /// <param name="aggregateFactory">The aggregate factory.</param>
+    /// <param name="dateTimeService">The date time service.</param>
+    /// <param name="eventBus">The event bus.</param>
+    /// <param name="notificationBus">The notification bus.</param>
+    /// <param name="commandBus">The command bus.</param>
+    /// <param name="requestBus">The request bus.</param>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
+    protected AggregateActorBase(
+        ActorHost host,
+        ICommandDispatcher commandDispatcher,
+        IAggregateFactory aggregateFactory,
+        IDateTimeService dateTimeService,
+        IEventBus eventBus,
+        INotificationBus notificationBus,
+        ICommandBus commandBus,
+        IRequestBus requestBus)
+        : base(host)
+    {
+        ArgumentNullException.ThrowIfNull(host);
+        ArgumentNullException.ThrowIfNull(commandDispatcher);
+        ArgumentNullException.ThrowIfNull(aggregateFactory);
+        ArgumentNullException.ThrowIfNull(dateTimeService);
+        ArgumentNullException.ThrowIfNull(eventBus);
+        ArgumentNullException.ThrowIfNull(notificationBus);
+        ArgumentNullException.ThrowIfNull(commandBus);
+        ArgumentNullException.ThrowIfNull(requestBus);
+        _host = host;
+        _commandDispatcher = commandDispatcher;
+        _aggregateFactory = aggregateFactory;
+        _dateTimeService = dateTimeService;
+        _eventBus = eventBus;
+        _notificationBus = notificationBus;
+        _commandBus = commandBus;
+        _requestBus = requestBus;
+    }
+
+    private MessageStore<CommandState> CommandStore
+        => _commandStore ??= new MessageStore<CommandState>(
+            new ActorStateStoreProvider(StateManager),
+            ActorConstants.CommandStoreName);
+
+    private MessageStore<EventState> EventSourceStore
+        => _eventSourceStore ??= new MessageStore<EventState>(
+            new ActorStateStoreProvider(StateManager),
+            ActorConstants.EventSourcingName);
+
+    private MessageStore<MessageState> MessageStore
+        => _messageStore ??= new MessageStore<MessageState>(
+            new ActorStateStoreProvider(StateManager),
+            ActorConstants.MessageStoreName);
+
+    [LoggerMessage(
+                EventId = 2,
+                Level = LogLevel.Information,
+                Message = "Accepted command {CommandType} ({CommandId}) for aggregate {AggregateName}:{AggregateId}.")]
+    public static partial void LogAcceptedCommandInformation(ILogger logger, string commandType, string commandId, string aggregateName, string aggregateId);
+
+    [LoggerMessage(
+                EventId = 3,
+                Level = LogLevel.Warning,
+                Message = "The command envolope submitted to {ActorType} ({ActorId}), has no commands to process.")]
+    public static partial void LogNoCommandsToSubmitWarning(ILogger logger, string actorId, string actorType);
+
+    [LoggerMessage(
+                    EventId = 4,
+                Level = LogLevel.Information,
+                Message = "Processed command {CommandType} ({CommandId}) for aggregate {AggregateName}:{AggregateId}.")]
+    public static partial void LogProcessedCommandInformation(ILogger logger, string commandType, string commandId, string aggregateName, string aggregateId);
+
+    [LoggerMessage(
+            EventId = 1,
+            Level = LogLevel.Information,
+            Message = "Actor {ActorType} ({ActorId}) is processing commands. {LastCommandProcessed} commands processed on a total of {CommandCount}")]
+    public static partial void LogProcessingCommandsInformation(ILogger logger, string actorId, string actorType, long commandCount, long lastCommandProcessed);
+
+    /// <inheritdoc/>
+    public async Task ContinueProcessingWorkflowAsync()
+    {
+        if (await ProcessNextSubmittedCommandAsync(CancellationToken.None).ConfigureAwait(false))
+        {
+            return;
+        }
+
+        if (await PublishNextMessageAsync().ConfigureAwait(false))
+        {
+            return;
+        }
+
+        await UnregisterContinueTimerAsync().ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period)
+        => await ContinueProcessingWorkflowAsync().ConfigureAwait(false);
+
+    private async Task<IAggregate> GetAggregateAsync(string aggregateName, CancellationToken cancellationToken)
+    {
+        if (_aggregate is null)
+        {
+            AggregateActorState state = await GetStateAsync(cancellationToken).ConfigureAwait(false);
+
+            _aggregate = _aggregateFactory.Create(aggregateName);
+            for (int i = 1; i <= state.EventCount; i++)
+            {
+                EventState ev = await EventSourceStore.GetAsync(i, cancellationToken).ConfigureAwait(false);
+                if (ev.Message is null)
+                {
+                    throw new InvalidOperationException($"Event {i} for {Id} is null.");
+                }
+
+                if (ev.Message.AggregateId != Id.ToString())
+                {
+                    throw new InvalidOperationException($"Event {i} for {Id} has an invalid aggregate id : {ev.Message.AggregateId}.");
+                }
+
+                _aggregate = _aggregate.Apply(ev.Message);
+            }
+        }
+
+        return _aggregate;
+    }
+
+    private async Task<AggregateActorState> GetStateAsync(CancellationToken cancellationToken)
+    {
+        if (_state is null)
+        {
+            Dapr.Actors.Runtime.ConditionalValue<AggregateActorState> result = await StateManager
+                .TryGetStateAsync<AggregateActorState>(nameof(AggregateActorState), cancellationToken)
+                .ConfigureAwait(false);
+            _state = result.HasValue ? result.Value : new AggregateActorState();
+        }
+
+        return _state;
+    }
+
+    private async Task RegisterContinueTimerAsync()
+    {
+        _timer ??=
+            await RegisterTimerAsync(
+                ActorConstants.ContinueTimerName,
+                nameof(ContinueProcessingWorkflowAsync),
+                null,
+                TimeSpan.FromMilliseconds(1),
+                TimeSpan.FromSeconds(1))
+            .ConfigureAwait(false);
+    }
+
+    private async Task UnregisterContinueTimerAsync()
+    {
+        if (_timer != null)
+        {
+            await UnregisterTimerAsync(_timer)
+                .ConfigureAwait(false);
+            _timer = null;
+        }
+    }
+}

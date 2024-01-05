@@ -22,6 +22,12 @@ public interface IMessage
     string AggregateName { get; }
 
     /// <summary>
+    /// Gets a value indicating whether this instance is private to aggregate.
+    /// </summary>
+    /// <value><c>true</c> if this instance is private to aggregate; otherwise, <c>false</c>.</value>
+    bool IsPrivateToAggregate { get; }
+
+    /// <summary>
     /// Gets the message major version.
     /// </summary>
     int MajorVersion { get; }

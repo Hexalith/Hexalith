@@ -1511,6 +1511,12 @@ references:
   commentId: T:Hexalith.Application.Envelopes.Envelope
   fullName: Hexalith.Application.Envelopes.Envelope
   nameWithType: Envelope
+- uid: Hexalith.Application.Envelopes.Envelope.#ctor
+  name: Envelope()
+  href: api/Hexalith.Application.Envelopes.Envelope.html#Hexalith_Application_Envelopes_Envelope__ctor
+  commentId: M:Hexalith.Application.Envelopes.Envelope.#ctor
+  fullName: Hexalith.Application.Envelopes.Envelope.Envelope()
+  nameWithType: Envelope.Envelope()
 - uid: Hexalith.Application.Envelopes.Envelope.#ctor(Hexalith.Domain.Messages.BaseMessage,Hexalith.Application.Metadatas.BaseMetadata)
   name: Envelope(BaseMessage, BaseMetadata)
   href: api/Hexalith.Application.Envelopes.Envelope.html#Hexalith_Application_Envelopes_Envelope__ctor_Hexalith_Domain_Messages_BaseMessage_Hexalith_Application_Metadatas_BaseMetadata_
@@ -6601,6 +6607,235 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Requests.MemoryRequestBus.Stream
   nameWithType: MemoryRequestBus.Stream
+- uid: Hexalith.Application.Sales.CommandHandlers
+  name: Hexalith.Application.Sales.CommandHandlers
+  href: api/Hexalith.Application.Sales.CommandHandlers.html
+  commentId: N:Hexalith.Application.Sales.CommandHandlers
+  fullName: Hexalith.Application.Sales.CommandHandlers
+  nameWithType: Hexalith.Application.Sales.CommandHandlers
+- uid: Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler
+  name: IssueSalesInvoiceHandler
+  href: api/Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler.html
+  commentId: T:Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler
+  fullName: Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler
+  nameWithType: IssueSalesInvoiceHandler
+- uid: Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler.#ctor(Microsoft.Extensions.Logging.ILogger{Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler})
+  name: IssueSalesInvoiceHandler(ILogger<IssueSalesInvoiceHandler>)
+  href: api/Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler.html#Hexalith_Application_Sales_CommandHandlers_IssueSalesInvoiceHandler__ctor_Microsoft_Extensions_Logging_ILogger_Hexalith_Application_Sales_CommandHandlers_IssueSalesInvoiceHandler__
+  commentId: M:Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler.#ctor(Microsoft.Extensions.Logging.ILogger{Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler})
+  name.vb: IssueSalesInvoiceHandler(ILogger(Of IssueSalesInvoiceHandler))
+  fullName: Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler.IssueSalesInvoiceHandler(Microsoft.Extensions.Logging.ILogger<Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler>)
+  fullName.vb: Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler.IssueSalesInvoiceHandler(Microsoft.Extensions.Logging.ILogger(Of Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler))
+  nameWithType: IssueSalesInvoiceHandler.IssueSalesInvoiceHandler(ILogger<IssueSalesInvoiceHandler>)
+  nameWithType.vb: IssueSalesInvoiceHandler.IssueSalesInvoiceHandler(ILogger(Of IssueSalesInvoiceHandler))
+- uid: Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler.#ctor*
+  name: IssueSalesInvoiceHandler
+  href: api/Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler.html#Hexalith_Application_Sales_CommandHandlers_IssueSalesInvoiceHandler__ctor_
+  commentId: Overload:Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler.IssueSalesInvoiceHandler
+  nameWithType: IssueSalesInvoiceHandler.IssueSalesInvoiceHandler
+- uid: Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler.DoAsync(Hexalith.Application.Sales.Commands.IssueSalesInvoice,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: DoAsync(IssueSalesInvoice, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler.html#Hexalith_Application_Sales_CommandHandlers_IssueSalesInvoiceHandler_DoAsync_Hexalith_Application_Sales_Commands_IssueSalesInvoice_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler.DoAsync(Hexalith.Application.Sales.Commands.IssueSalesInvoice,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler.DoAsync(Hexalith.Application.Sales.Commands.IssueSalesInvoice, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: IssueSalesInvoiceHandler.DoAsync(IssueSalesInvoice, IAggregate, CancellationToken)
+- uid: Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler.DoAsync*
+  name: DoAsync
+  href: api/Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler.html#Hexalith_Application_Sales_CommandHandlers_IssueSalesInvoiceHandler_DoAsync_
+  commentId: Overload:Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler.DoAsync
+  isSpec: "True"
+  fullName: Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler.DoAsync
+  nameWithType: IssueSalesInvoiceHandler.DoAsync
+- uid: Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler.UndoAsync(Hexalith.Application.Sales.Commands.IssueSalesInvoice,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  name: UndoAsync(IssueSalesInvoice, IAggregate, CancellationToken)
+  href: api/Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler.html#Hexalith_Application_Sales_CommandHandlers_IssueSalesInvoiceHandler_UndoAsync_Hexalith_Application_Sales_Commands_IssueSalesInvoice_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler.UndoAsync(Hexalith.Application.Sales.Commands.IssueSalesInvoice,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)
+  fullName: Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler.UndoAsync(Hexalith.Application.Sales.Commands.IssueSalesInvoice, Hexalith.Domain.Aggregates.IAggregate, System.Threading.CancellationToken)
+  nameWithType: IssueSalesInvoiceHandler.UndoAsync(IssueSalesInvoice, IAggregate, CancellationToken)
+- uid: Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler.UndoAsync*
+  name: UndoAsync
+  href: api/Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler.html#Hexalith_Application_Sales_CommandHandlers_IssueSalesInvoiceHandler_UndoAsync_
+  commentId: Overload:Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler.UndoAsync
+  isSpec: "True"
+  fullName: Hexalith.Application.Sales.CommandHandlers.IssueSalesInvoiceHandler.UndoAsync
+  nameWithType: IssueSalesInvoiceHandler.UndoAsync
+- uid: Hexalith.Application.Sales.Commands
+  name: Hexalith.Application.Sales.Commands
+  href: api/Hexalith.Application.Sales.Commands.html
+  commentId: N:Hexalith.Application.Sales.Commands
+  fullName: Hexalith.Application.Sales.Commands
+  nameWithType: Hexalith.Application.Sales.Commands
+- uid: Hexalith.Application.Sales.Commands.IssueSalesInvoice
+  name: IssueSalesInvoice
+  href: api/Hexalith.Application.Sales.Commands.IssueSalesInvoice.html
+  commentId: T:Hexalith.Application.Sales.Commands.IssueSalesInvoice
+  fullName: Hexalith.Application.Sales.Commands.IssueSalesInvoice
+  nameWithType: IssueSalesInvoice
+- uid: Hexalith.Application.Sales.Commands.IssueSalesInvoice.#ctor
+  name: IssueSalesInvoice()
+  href: api/Hexalith.Application.Sales.Commands.IssueSalesInvoice.html#Hexalith_Application_Sales_Commands_IssueSalesInvoice__ctor
+  commentId: M:Hexalith.Application.Sales.Commands.IssueSalesInvoice.#ctor
+  fullName: Hexalith.Application.Sales.Commands.IssueSalesInvoice.IssueSalesInvoice()
+  nameWithType: IssueSalesInvoice.IssueSalesInvoice()
+- uid: Hexalith.Application.Sales.Commands.IssueSalesInvoice.#ctor(System.String,System.String,System.String,System.String,DateTimeOffset,System.String,System.String,IEnumerable{Hexalith.Domain.ValueObjets.SalesInvoiceLine})
+  name: IssueSalesInvoice(String, String, String, String, DateTimeOffset, String, String, IEnumerable<SalesInvoiceLine>)
+  href: api/Hexalith.Application.Sales.Commands.IssueSalesInvoice.html#Hexalith_Application_Sales_Commands_IssueSalesInvoice__ctor_System_String_System_String_System_String_System_String_DateTimeOffset_System_String_System_String_IEnumerable_Hexalith_Domain_ValueObjets_SalesInvoiceLine__
+  commentId: M:Hexalith.Application.Sales.Commands.IssueSalesInvoice.#ctor(System.String,System.String,System.String,System.String,DateTimeOffset,System.String,System.String,IEnumerable{Hexalith.Domain.ValueObjets.SalesInvoiceLine})
+  name.vb: IssueSalesInvoice(String, String, String, String, DateTimeOffset, String, String, IEnumerable(Of SalesInvoiceLine))
+  fullName: Hexalith.Application.Sales.Commands.IssueSalesInvoice.IssueSalesInvoice(System.String, System.String, System.String, System.String, DateTimeOffset, System.String, System.String, IEnumerable<Hexalith.Domain.ValueObjets.SalesInvoiceLine>)
+  fullName.vb: Hexalith.Application.Sales.Commands.IssueSalesInvoice.IssueSalesInvoice(System.String, System.String, System.String, System.String, DateTimeOffset, System.String, System.String, IEnumerable(Of Hexalith.Domain.ValueObjets.SalesInvoiceLine))
+  nameWithType: IssueSalesInvoice.IssueSalesInvoice(String, String, String, String, DateTimeOffset, String, String, IEnumerable<SalesInvoiceLine>)
+  nameWithType.vb: IssueSalesInvoice.IssueSalesInvoice(String, String, String, String, DateTimeOffset, String, String, IEnumerable(Of SalesInvoiceLine))
+- uid: Hexalith.Application.Sales.Commands.IssueSalesInvoice.#ctor*
+  name: IssueSalesInvoice
+  href: api/Hexalith.Application.Sales.Commands.IssueSalesInvoice.html#Hexalith_Application_Sales_Commands_IssueSalesInvoice__ctor_
+  commentId: Overload:Hexalith.Application.Sales.Commands.IssueSalesInvoice.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Application.Sales.Commands.IssueSalesInvoice.IssueSalesInvoice
+  nameWithType: IssueSalesInvoice.IssueSalesInvoice
+- uid: Hexalith.Application.Sales.Commands.IssueSalesInvoice.CreatedDate
+  name: CreatedDate
+  href: api/Hexalith.Application.Sales.Commands.IssueSalesInvoice.html#Hexalith_Application_Sales_Commands_IssueSalesInvoice_CreatedDate
+  commentId: P:Hexalith.Application.Sales.Commands.IssueSalesInvoice.CreatedDate
+  fullName: Hexalith.Application.Sales.Commands.IssueSalesInvoice.CreatedDate
+  nameWithType: IssueSalesInvoice.CreatedDate
+- uid: Hexalith.Application.Sales.Commands.IssueSalesInvoice.CreatedDate*
+  name: CreatedDate
+  href: api/Hexalith.Application.Sales.Commands.IssueSalesInvoice.html#Hexalith_Application_Sales_Commands_IssueSalesInvoice_CreatedDate_
+  commentId: Overload:Hexalith.Application.Sales.Commands.IssueSalesInvoice.CreatedDate
+  isSpec: "True"
+  fullName: Hexalith.Application.Sales.Commands.IssueSalesInvoice.CreatedDate
+  nameWithType: IssueSalesInvoice.CreatedDate
+- uid: Hexalith.Application.Sales.Commands.IssueSalesInvoice.CurrencyId
+  name: CurrencyId
+  href: api/Hexalith.Application.Sales.Commands.IssueSalesInvoice.html#Hexalith_Application_Sales_Commands_IssueSalesInvoice_CurrencyId
+  commentId: P:Hexalith.Application.Sales.Commands.IssueSalesInvoice.CurrencyId
+  fullName: Hexalith.Application.Sales.Commands.IssueSalesInvoice.CurrencyId
+  nameWithType: IssueSalesInvoice.CurrencyId
+- uid: Hexalith.Application.Sales.Commands.IssueSalesInvoice.CurrencyId*
+  name: CurrencyId
+  href: api/Hexalith.Application.Sales.Commands.IssueSalesInvoice.html#Hexalith_Application_Sales_Commands_IssueSalesInvoice_CurrencyId_
+  commentId: Overload:Hexalith.Application.Sales.Commands.IssueSalesInvoice.CurrencyId
+  isSpec: "True"
+  fullName: Hexalith.Application.Sales.Commands.IssueSalesInvoice.CurrencyId
+  nameWithType: IssueSalesInvoice.CurrencyId
+- uid: Hexalith.Application.Sales.Commands.IssueSalesInvoice.CustomerId
+  name: CustomerId
+  href: api/Hexalith.Application.Sales.Commands.IssueSalesInvoice.html#Hexalith_Application_Sales_Commands_IssueSalesInvoice_CustomerId
+  commentId: P:Hexalith.Application.Sales.Commands.IssueSalesInvoice.CustomerId
+  fullName: Hexalith.Application.Sales.Commands.IssueSalesInvoice.CustomerId
+  nameWithType: IssueSalesInvoice.CustomerId
+- uid: Hexalith.Application.Sales.Commands.IssueSalesInvoice.CustomerId*
+  name: CustomerId
+  href: api/Hexalith.Application.Sales.Commands.IssueSalesInvoice.html#Hexalith_Application_Sales_Commands_IssueSalesInvoice_CustomerId_
+  commentId: Overload:Hexalith.Application.Sales.Commands.IssueSalesInvoice.CustomerId
+  isSpec: "True"
+  fullName: Hexalith.Application.Sales.Commands.IssueSalesInvoice.CustomerId
+  nameWithType: IssueSalesInvoice.CustomerId
+- uid: Hexalith.Application.Sales.Commands.IssueSalesInvoice.Lines
+  name: Lines
+  href: api/Hexalith.Application.Sales.Commands.IssueSalesInvoice.html#Hexalith_Application_Sales_Commands_IssueSalesInvoice_Lines
+  commentId: P:Hexalith.Application.Sales.Commands.IssueSalesInvoice.Lines
+  fullName: Hexalith.Application.Sales.Commands.IssueSalesInvoice.Lines
+  nameWithType: IssueSalesInvoice.Lines
+- uid: Hexalith.Application.Sales.Commands.IssueSalesInvoice.Lines*
+  name: Lines
+  href: api/Hexalith.Application.Sales.Commands.IssueSalesInvoice.html#Hexalith_Application_Sales_Commands_IssueSalesInvoice_Lines_
+  commentId: Overload:Hexalith.Application.Sales.Commands.IssueSalesInvoice.Lines
+  isSpec: "True"
+  fullName: Hexalith.Application.Sales.Commands.IssueSalesInvoice.Lines
+  nameWithType: IssueSalesInvoice.Lines
+- uid: Hexalith.Application.Sales.Commands.SalesInvoiceCommand
+  name: SalesInvoiceCommand
+  href: api/Hexalith.Application.Sales.Commands.SalesInvoiceCommand.html
+  commentId: T:Hexalith.Application.Sales.Commands.SalesInvoiceCommand
+  fullName: Hexalith.Application.Sales.Commands.SalesInvoiceCommand
+  nameWithType: SalesInvoiceCommand
+- uid: Hexalith.Application.Sales.Commands.SalesInvoiceCommand.#ctor
+  name: SalesInvoiceCommand()
+  href: api/Hexalith.Application.Sales.Commands.SalesInvoiceCommand.html#Hexalith_Application_Sales_Commands_SalesInvoiceCommand__ctor
+  commentId: M:Hexalith.Application.Sales.Commands.SalesInvoiceCommand.#ctor
+  fullName: Hexalith.Application.Sales.Commands.SalesInvoiceCommand.SalesInvoiceCommand()
+  nameWithType: SalesInvoiceCommand.SalesInvoiceCommand()
+- uid: Hexalith.Application.Sales.Commands.SalesInvoiceCommand.#ctor(System.String,System.String,System.String,System.String)
+  name: SalesInvoiceCommand(String, String, String, String)
+  href: api/Hexalith.Application.Sales.Commands.SalesInvoiceCommand.html#Hexalith_Application_Sales_Commands_SalesInvoiceCommand__ctor_System_String_System_String_System_String_System_String_
+  commentId: M:Hexalith.Application.Sales.Commands.SalesInvoiceCommand.#ctor(System.String,System.String,System.String,System.String)
+  fullName: Hexalith.Application.Sales.Commands.SalesInvoiceCommand.SalesInvoiceCommand(System.String, System.String, System.String, System.String)
+  nameWithType: SalesInvoiceCommand.SalesInvoiceCommand(String, String, String, String)
+- uid: Hexalith.Application.Sales.Commands.SalesInvoiceCommand.#ctor*
+  name: SalesInvoiceCommand
+  href: api/Hexalith.Application.Sales.Commands.SalesInvoiceCommand.html#Hexalith_Application_Sales_Commands_SalesInvoiceCommand__ctor_
+  commentId: Overload:Hexalith.Application.Sales.Commands.SalesInvoiceCommand.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Application.Sales.Commands.SalesInvoiceCommand.SalesInvoiceCommand
+  nameWithType: SalesInvoiceCommand.SalesInvoiceCommand
+- uid: Hexalith.Application.Sales.Commands.SalesInvoiceCommand.DefaultAggregateId
+  name: DefaultAggregateId()
+  href: api/Hexalith.Application.Sales.Commands.SalesInvoiceCommand.html#Hexalith_Application_Sales_Commands_SalesInvoiceCommand_DefaultAggregateId
+  commentId: M:Hexalith.Application.Sales.Commands.SalesInvoiceCommand.DefaultAggregateId
+  fullName: Hexalith.Application.Sales.Commands.SalesInvoiceCommand.DefaultAggregateId()
+  nameWithType: SalesInvoiceCommand.DefaultAggregateId()
+- uid: Hexalith.Application.Sales.Commands.SalesInvoiceCommand.DefaultAggregateId*
+  name: DefaultAggregateId
+  href: api/Hexalith.Application.Sales.Commands.SalesInvoiceCommand.html#Hexalith_Application_Sales_Commands_SalesInvoiceCommand_DefaultAggregateId_
+  commentId: Overload:Hexalith.Application.Sales.Commands.SalesInvoiceCommand.DefaultAggregateId
+  isSpec: "True"
+  fullName: Hexalith.Application.Sales.Commands.SalesInvoiceCommand.DefaultAggregateId
+  nameWithType: SalesInvoiceCommand.DefaultAggregateId
+- uid: Hexalith.Application.Sales.Commands.SalesInvoiceCommand.DefaultAggregateName
+  name: DefaultAggregateName()
+  href: api/Hexalith.Application.Sales.Commands.SalesInvoiceCommand.html#Hexalith_Application_Sales_Commands_SalesInvoiceCommand_DefaultAggregateName
+  commentId: M:Hexalith.Application.Sales.Commands.SalesInvoiceCommand.DefaultAggregateName
+  fullName: Hexalith.Application.Sales.Commands.SalesInvoiceCommand.DefaultAggregateName()
+  nameWithType: SalesInvoiceCommand.DefaultAggregateName()
+- uid: Hexalith.Application.Sales.Commands.SalesInvoiceCommand.DefaultAggregateName*
+  name: DefaultAggregateName
+  href: api/Hexalith.Application.Sales.Commands.SalesInvoiceCommand.html#Hexalith_Application_Sales_Commands_SalesInvoiceCommand_DefaultAggregateName_
+  commentId: Overload:Hexalith.Application.Sales.Commands.SalesInvoiceCommand.DefaultAggregateName
+  isSpec: "True"
+  fullName: Hexalith.Application.Sales.Commands.SalesInvoiceCommand.DefaultAggregateName
+  nameWithType: SalesInvoiceCommand.DefaultAggregateName
+- uid: Hexalith.Application.Sales.Helpers
+  name: Hexalith.Application.Sales.Helpers
+  href: api/Hexalith.Application.Sales.Helpers.html
+  commentId: N:Hexalith.Application.Sales.Helpers
+  fullName: Hexalith.Application.Sales.Helpers
+  nameWithType: Hexalith.Application.Sales.Helpers
+- uid: Hexalith.Application.Sales.Helpers.SalesHelper
+  name: SalesHelper
+  href: api/Hexalith.Application.Sales.Helpers.SalesHelper.html
+  commentId: T:Hexalith.Application.Sales.Helpers.SalesHelper
+  fullName: Hexalith.Application.Sales.Helpers.SalesHelper
+  nameWithType: SalesHelper
+- uid: Hexalith.Application.Sales.Helpers.SalesHelper.AddSalesCommandHandlers(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  name: AddSalesCommandHandlers(IServiceCollection)
+  href: api/Hexalith.Application.Sales.Helpers.SalesHelper.html#Hexalith_Application_Sales_Helpers_SalesHelper_AddSalesCommandHandlers_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  commentId: M:Hexalith.Application.Sales.Helpers.SalesHelper.AddSalesCommandHandlers(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  fullName: Hexalith.Application.Sales.Helpers.SalesHelper.AddSalesCommandHandlers(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  nameWithType: SalesHelper.AddSalesCommandHandlers(IServiceCollection)
+- uid: Hexalith.Application.Sales.Helpers.SalesHelper.AddSalesCommandHandlers*
+  name: AddSalesCommandHandlers
+  href: api/Hexalith.Application.Sales.Helpers.SalesHelper.html#Hexalith_Application_Sales_Helpers_SalesHelper_AddSalesCommandHandlers_
+  commentId: Overload:Hexalith.Application.Sales.Helpers.SalesHelper.AddSalesCommandHandlers
+  isSpec: "True"
+  fullName: Hexalith.Application.Sales.Helpers.SalesHelper.AddSalesCommandHandlers
+  nameWithType: SalesHelper.AddSalesCommandHandlers
+- uid: Hexalith.Application.Sales.Helpers.SalesHelper.AddSalesEventValidators(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  name: AddSalesEventValidators(IServiceCollection)
+  href: api/Hexalith.Application.Sales.Helpers.SalesHelper.html#Hexalith_Application_Sales_Helpers_SalesHelper_AddSalesEventValidators_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  commentId: M:Hexalith.Application.Sales.Helpers.SalesHelper.AddSalesEventValidators(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  fullName: Hexalith.Application.Sales.Helpers.SalesHelper.AddSalesEventValidators(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  nameWithType: SalesHelper.AddSalesEventValidators(IServiceCollection)
+- uid: Hexalith.Application.Sales.Helpers.SalesHelper.AddSalesEventValidators*
+  name: AddSalesEventValidators
+  href: api/Hexalith.Application.Sales.Helpers.SalesHelper.html#Hexalith_Application_Sales_Helpers_SalesHelper_AddSalesEventValidators_
+  commentId: Overload:Hexalith.Application.Sales.Helpers.SalesHelper.AddSalesEventValidators
+  isSpec: "True"
+  fullName: Hexalith.Application.Sales.Helpers.SalesHelper.AddSalesEventValidators
+  nameWithType: SalesHelper.AddSalesEventValidators
 - uid: Hexalith.Application.States
   name: Hexalith.Application.States
   href: api/Hexalith.Application.States.html
@@ -11407,6 +11642,192 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Aggregates.InventoryItemStock.Quantity
   nameWithType: InventoryItemStock.Quantity
+- uid: Hexalith.Domain.Aggregates.SalesInvoice
+  name: SalesInvoice
+  href: api/Hexalith.Domain.Aggregates.SalesInvoice.html
+  commentId: T:Hexalith.Domain.Aggregates.SalesInvoice
+  fullName: Hexalith.Domain.Aggregates.SalesInvoice
+  nameWithType: SalesInvoice
+- uid: Hexalith.Domain.Aggregates.SalesInvoice.#ctor
+  name: SalesInvoice()
+  href: api/Hexalith.Domain.Aggregates.SalesInvoice.html#Hexalith_Domain_Aggregates_SalesInvoice__ctor
+  commentId: M:Hexalith.Domain.Aggregates.SalesInvoice.#ctor
+  fullName: Hexalith.Domain.Aggregates.SalesInvoice.SalesInvoice()
+  nameWithType: SalesInvoice.SalesInvoice()
+- uid: Hexalith.Domain.Aggregates.SalesInvoice.#ctor(Hexalith.Domain.Aggregates.SalesInvoiceState)
+  name: SalesInvoice(SalesInvoiceState)
+  href: api/Hexalith.Domain.Aggregates.SalesInvoice.html#Hexalith_Domain_Aggregates_SalesInvoice__ctor_Hexalith_Domain_Aggregates_SalesInvoiceState_
+  commentId: M:Hexalith.Domain.Aggregates.SalesInvoice.#ctor(Hexalith.Domain.Aggregates.SalesInvoiceState)
+  fullName: Hexalith.Domain.Aggregates.SalesInvoice.SalesInvoice(Hexalith.Domain.Aggregates.SalesInvoiceState)
+  nameWithType: SalesInvoice.SalesInvoice(SalesInvoiceState)
+- uid: Hexalith.Domain.Aggregates.SalesInvoice.#ctor(Hexalith.Domain.Events.SalesInvoiceIssued)
+  name: SalesInvoice(SalesInvoiceIssued)
+  href: api/Hexalith.Domain.Aggregates.SalesInvoice.html#Hexalith_Domain_Aggregates_SalesInvoice__ctor_Hexalith_Domain_Events_SalesInvoiceIssued_
+  commentId: M:Hexalith.Domain.Aggregates.SalesInvoice.#ctor(Hexalith.Domain.Events.SalesInvoiceIssued)
+  fullName: Hexalith.Domain.Aggregates.SalesInvoice.SalesInvoice(Hexalith.Domain.Events.SalesInvoiceIssued)
+  nameWithType: SalesInvoice.SalesInvoice(SalesInvoiceIssued)
+- uid: Hexalith.Domain.Aggregates.SalesInvoice.#ctor*
+  name: SalesInvoice
+  href: api/Hexalith.Domain.Aggregates.SalesInvoice.html#Hexalith_Domain_Aggregates_SalesInvoice__ctor_
+  commentId: Overload:Hexalith.Domain.Aggregates.SalesInvoice.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Domain.Aggregates.SalesInvoice.SalesInvoice
+  nameWithType: SalesInvoice.SalesInvoice
+- uid: Hexalith.Domain.Aggregates.SalesInvoice.Apply(Hexalith.Domain.Events.BaseEvent)
+  name: Apply(BaseEvent)
+  href: api/Hexalith.Domain.Aggregates.SalesInvoice.html#Hexalith_Domain_Aggregates_SalesInvoice_Apply_Hexalith_Domain_Events_BaseEvent_
+  commentId: M:Hexalith.Domain.Aggregates.SalesInvoice.Apply(Hexalith.Domain.Events.BaseEvent)
+  fullName: Hexalith.Domain.Aggregates.SalesInvoice.Apply(Hexalith.Domain.Events.BaseEvent)
+  nameWithType: SalesInvoice.Apply(BaseEvent)
+- uid: Hexalith.Domain.Aggregates.SalesInvoice.Apply*
+  name: Apply
+  href: api/Hexalith.Domain.Aggregates.SalesInvoice.html#Hexalith_Domain_Aggregates_SalesInvoice_Apply_
+  commentId: Overload:Hexalith.Domain.Aggregates.SalesInvoice.Apply
+  isSpec: "True"
+  fullName: Hexalith.Domain.Aggregates.SalesInvoice.Apply
+  nameWithType: SalesInvoice.Apply
+- uid: Hexalith.Domain.Aggregates.SalesInvoice.DefaultAggregateId
+  name: DefaultAggregateId()
+  href: api/Hexalith.Domain.Aggregates.SalesInvoice.html#Hexalith_Domain_Aggregates_SalesInvoice_DefaultAggregateId
+  commentId: M:Hexalith.Domain.Aggregates.SalesInvoice.DefaultAggregateId
+  fullName: Hexalith.Domain.Aggregates.SalesInvoice.DefaultAggregateId()
+  nameWithType: SalesInvoice.DefaultAggregateId()
+- uid: Hexalith.Domain.Aggregates.SalesInvoice.DefaultAggregateId*
+  name: DefaultAggregateId
+  href: api/Hexalith.Domain.Aggregates.SalesInvoice.html#Hexalith_Domain_Aggregates_SalesInvoice_DefaultAggregateId_
+  commentId: Overload:Hexalith.Domain.Aggregates.SalesInvoice.DefaultAggregateId
+  isSpec: "True"
+  fullName: Hexalith.Domain.Aggregates.SalesInvoice.DefaultAggregateId
+  nameWithType: SalesInvoice.DefaultAggregateId
+- uid: Hexalith.Domain.Aggregates.SalesInvoice.GetAggregateId(System.String,System.String,System.String,System.String)
+  name: GetAggregateId(String, String, String, String)
+  href: api/Hexalith.Domain.Aggregates.SalesInvoice.html#Hexalith_Domain_Aggregates_SalesInvoice_GetAggregateId_System_String_System_String_System_String_System_String_
+  commentId: M:Hexalith.Domain.Aggregates.SalesInvoice.GetAggregateId(System.String,System.String,System.String,System.String)
+  fullName: Hexalith.Domain.Aggregates.SalesInvoice.GetAggregateId(System.String, System.String, System.String, System.String)
+  nameWithType: SalesInvoice.GetAggregateId(String, String, String, String)
+- uid: Hexalith.Domain.Aggregates.SalesInvoice.GetAggregateId*
+  name: GetAggregateId
+  href: api/Hexalith.Domain.Aggregates.SalesInvoice.html#Hexalith_Domain_Aggregates_SalesInvoice_GetAggregateId_
+  commentId: Overload:Hexalith.Domain.Aggregates.SalesInvoice.GetAggregateId
+  isSpec: "True"
+  fullName: Hexalith.Domain.Aggregates.SalesInvoice.GetAggregateId
+  nameWithType: SalesInvoice.GetAggregateId
+- uid: Hexalith.Domain.Aggregates.SalesInvoice.GetAggregateName
+  name: GetAggregateName()
+  href: api/Hexalith.Domain.Aggregates.SalesInvoice.html#Hexalith_Domain_Aggregates_SalesInvoice_GetAggregateName
+  commentId: M:Hexalith.Domain.Aggregates.SalesInvoice.GetAggregateName
+  fullName: Hexalith.Domain.Aggregates.SalesInvoice.GetAggregateName()
+  nameWithType: SalesInvoice.GetAggregateName()
+- uid: Hexalith.Domain.Aggregates.SalesInvoice.GetAggregateName*
+  name: GetAggregateName
+  href: api/Hexalith.Domain.Aggregates.SalesInvoice.html#Hexalith_Domain_Aggregates_SalesInvoice_GetAggregateName_
+  commentId: Overload:Hexalith.Domain.Aggregates.SalesInvoice.GetAggregateName
+  isSpec: "True"
+  fullName: Hexalith.Domain.Aggregates.SalesInvoice.GetAggregateName
+  nameWithType: SalesInvoice.GetAggregateName
+- uid: Hexalith.Domain.Aggregates.SalesInvoice.State
+  name: State
+  href: api/Hexalith.Domain.Aggregates.SalesInvoice.html#Hexalith_Domain_Aggregates_SalesInvoice_State
+  commentId: P:Hexalith.Domain.Aggregates.SalesInvoice.State
+  fullName: Hexalith.Domain.Aggregates.SalesInvoice.State
+  nameWithType: SalesInvoice.State
+- uid: Hexalith.Domain.Aggregates.SalesInvoice.State*
+  name: State
+  href: api/Hexalith.Domain.Aggregates.SalesInvoice.html#Hexalith_Domain_Aggregates_SalesInvoice_State_
+  commentId: Overload:Hexalith.Domain.Aggregates.SalesInvoice.State
+  isSpec: "True"
+  fullName: Hexalith.Domain.Aggregates.SalesInvoice.State
+  nameWithType: SalesInvoice.State
+- uid: Hexalith.Domain.Aggregates.SalesInvoiceState
+  name: SalesInvoiceState
+  href: api/Hexalith.Domain.Aggregates.SalesInvoiceState.html
+  commentId: T:Hexalith.Domain.Aggregates.SalesInvoiceState
+  fullName: Hexalith.Domain.Aggregates.SalesInvoiceState
+  nameWithType: SalesInvoiceState
+- uid: Hexalith.Domain.Aggregates.SalesInvoiceState.#ctor
+  name: SalesInvoiceState()
+  href: api/Hexalith.Domain.Aggregates.SalesInvoiceState.html#Hexalith_Domain_Aggregates_SalesInvoiceState__ctor
+  commentId: M:Hexalith.Domain.Aggregates.SalesInvoiceState.#ctor
+  fullName: Hexalith.Domain.Aggregates.SalesInvoiceState.SalesInvoiceState()
+  nameWithType: SalesInvoiceState.SalesInvoiceState()
+- uid: Hexalith.Domain.Aggregates.SalesInvoiceState.#ctor(Hexalith.Domain.Events.SalesInvoiceIssued)
+  name: SalesInvoiceState(SalesInvoiceIssued)
+  href: api/Hexalith.Domain.Aggregates.SalesInvoiceState.html#Hexalith_Domain_Aggregates_SalesInvoiceState__ctor_Hexalith_Domain_Events_SalesInvoiceIssued_
+  commentId: M:Hexalith.Domain.Aggregates.SalesInvoiceState.#ctor(Hexalith.Domain.Events.SalesInvoiceIssued)
+  fullName: Hexalith.Domain.Aggregates.SalesInvoiceState.SalesInvoiceState(Hexalith.Domain.Events.SalesInvoiceIssued)
+  nameWithType: SalesInvoiceState.SalesInvoiceState(SalesInvoiceIssued)
+- uid: Hexalith.Domain.Aggregates.SalesInvoiceState.#ctor*
+  name: SalesInvoiceState
+  href: api/Hexalith.Domain.Aggregates.SalesInvoiceState.html#Hexalith_Domain_Aggregates_SalesInvoiceState__ctor_
+  commentId: Overload:Hexalith.Domain.Aggregates.SalesInvoiceState.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Domain.Aggregates.SalesInvoiceState.SalesInvoiceState
+  nameWithType: SalesInvoiceState.SalesInvoiceState
+- uid: Hexalith.Domain.Aggregates.SalesInvoiceState.CreatedDate
+  name: CreatedDate
+  href: api/Hexalith.Domain.Aggregates.SalesInvoiceState.html#Hexalith_Domain_Aggregates_SalesInvoiceState_CreatedDate
+  commentId: P:Hexalith.Domain.Aggregates.SalesInvoiceState.CreatedDate
+  fullName: Hexalith.Domain.Aggregates.SalesInvoiceState.CreatedDate
+  nameWithType: SalesInvoiceState.CreatedDate
+- uid: Hexalith.Domain.Aggregates.SalesInvoiceState.CreatedDate*
+  name: CreatedDate
+  href: api/Hexalith.Domain.Aggregates.SalesInvoiceState.html#Hexalith_Domain_Aggregates_SalesInvoiceState_CreatedDate_
+  commentId: Overload:Hexalith.Domain.Aggregates.SalesInvoiceState.CreatedDate
+  isSpec: "True"
+  fullName: Hexalith.Domain.Aggregates.SalesInvoiceState.CreatedDate
+  nameWithType: SalesInvoiceState.CreatedDate
+- uid: Hexalith.Domain.Aggregates.SalesInvoiceState.CurrencyId
+  name: CurrencyId
+  href: api/Hexalith.Domain.Aggregates.SalesInvoiceState.html#Hexalith_Domain_Aggregates_SalesInvoiceState_CurrencyId
+  commentId: P:Hexalith.Domain.Aggregates.SalesInvoiceState.CurrencyId
+  fullName: Hexalith.Domain.Aggregates.SalesInvoiceState.CurrencyId
+  nameWithType: SalesInvoiceState.CurrencyId
+- uid: Hexalith.Domain.Aggregates.SalesInvoiceState.CurrencyId*
+  name: CurrencyId
+  href: api/Hexalith.Domain.Aggregates.SalesInvoiceState.html#Hexalith_Domain_Aggregates_SalesInvoiceState_CurrencyId_
+  commentId: Overload:Hexalith.Domain.Aggregates.SalesInvoiceState.CurrencyId
+  isSpec: "True"
+  fullName: Hexalith.Domain.Aggregates.SalesInvoiceState.CurrencyId
+  nameWithType: SalesInvoiceState.CurrencyId
+- uid: Hexalith.Domain.Aggregates.SalesInvoiceState.CustomerId
+  name: CustomerId
+  href: api/Hexalith.Domain.Aggregates.SalesInvoiceState.html#Hexalith_Domain_Aggregates_SalesInvoiceState_CustomerId
+  commentId: P:Hexalith.Domain.Aggregates.SalesInvoiceState.CustomerId
+  fullName: Hexalith.Domain.Aggregates.SalesInvoiceState.CustomerId
+  nameWithType: SalesInvoiceState.CustomerId
+- uid: Hexalith.Domain.Aggregates.SalesInvoiceState.CustomerId*
+  name: CustomerId
+  href: api/Hexalith.Domain.Aggregates.SalesInvoiceState.html#Hexalith_Domain_Aggregates_SalesInvoiceState_CustomerId_
+  commentId: Overload:Hexalith.Domain.Aggregates.SalesInvoiceState.CustomerId
+  isSpec: "True"
+  fullName: Hexalith.Domain.Aggregates.SalesInvoiceState.CustomerId
+  nameWithType: SalesInvoiceState.CustomerId
+- uid: Hexalith.Domain.Aggregates.SalesInvoiceState.GetEqualityComponents
+  name: GetEqualityComponents()
+  href: api/Hexalith.Domain.Aggregates.SalesInvoiceState.html#Hexalith_Domain_Aggregates_SalesInvoiceState_GetEqualityComponents
+  commentId: M:Hexalith.Domain.Aggregates.SalesInvoiceState.GetEqualityComponents
+  fullName: Hexalith.Domain.Aggregates.SalesInvoiceState.GetEqualityComponents()
+  nameWithType: SalesInvoiceState.GetEqualityComponents()
+- uid: Hexalith.Domain.Aggregates.SalesInvoiceState.GetEqualityComponents*
+  name: GetEqualityComponents
+  href: api/Hexalith.Domain.Aggregates.SalesInvoiceState.html#Hexalith_Domain_Aggregates_SalesInvoiceState_GetEqualityComponents_
+  commentId: Overload:Hexalith.Domain.Aggregates.SalesInvoiceState.GetEqualityComponents
+  isSpec: "True"
+  fullName: Hexalith.Domain.Aggregates.SalesInvoiceState.GetEqualityComponents
+  nameWithType: SalesInvoiceState.GetEqualityComponents
+- uid: Hexalith.Domain.Aggregates.SalesInvoiceState.Lines
+  name: Lines
+  href: api/Hexalith.Domain.Aggregates.SalesInvoiceState.html#Hexalith_Domain_Aggregates_SalesInvoiceState_Lines
+  commentId: P:Hexalith.Domain.Aggregates.SalesInvoiceState.Lines
+  fullName: Hexalith.Domain.Aggregates.SalesInvoiceState.Lines
+  nameWithType: SalesInvoiceState.Lines
+- uid: Hexalith.Domain.Aggregates.SalesInvoiceState.Lines*
+  name: Lines
+  href: api/Hexalith.Domain.Aggregates.SalesInvoiceState.html#Hexalith_Domain_Aggregates_SalesInvoiceState_Lines_
+  commentId: Overload:Hexalith.Domain.Aggregates.SalesInvoiceState.Lines
+  isSpec: "True"
+  fullName: Hexalith.Domain.Aggregates.SalesInvoiceState.Lines
+  nameWithType: SalesInvoiceState.Lines
 - uid: Hexalith.Domain.Aggregates.Survey
   name: Survey
   href: api/Hexalith.Domain.Aggregates.Survey.html
@@ -13775,6 +14196,156 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Events.InventoryItemStockIncreased.Quantity
   nameWithType: InventoryItemStockIncreased.Quantity
+- uid: Hexalith.Domain.Events.SalesInvoiceEvent
+  name: SalesInvoiceEvent
+  href: api/Hexalith.Domain.Events.SalesInvoiceEvent.html
+  commentId: T:Hexalith.Domain.Events.SalesInvoiceEvent
+  fullName: Hexalith.Domain.Events.SalesInvoiceEvent
+  nameWithType: SalesInvoiceEvent
+- uid: Hexalith.Domain.Events.SalesInvoiceEvent.#ctor
+  name: SalesInvoiceEvent()
+  href: api/Hexalith.Domain.Events.SalesInvoiceEvent.html#Hexalith_Domain_Events_SalesInvoiceEvent__ctor
+  commentId: M:Hexalith.Domain.Events.SalesInvoiceEvent.#ctor
+  fullName: Hexalith.Domain.Events.SalesInvoiceEvent.SalesInvoiceEvent()
+  nameWithType: SalesInvoiceEvent.SalesInvoiceEvent()
+- uid: Hexalith.Domain.Events.SalesInvoiceEvent.#ctor(System.String,System.String,System.String,System.String)
+  name: SalesInvoiceEvent(String, String, String, String)
+  href: api/Hexalith.Domain.Events.SalesInvoiceEvent.html#Hexalith_Domain_Events_SalesInvoiceEvent__ctor_System_String_System_String_System_String_System_String_
+  commentId: M:Hexalith.Domain.Events.SalesInvoiceEvent.#ctor(System.String,System.String,System.String,System.String)
+  fullName: Hexalith.Domain.Events.SalesInvoiceEvent.SalesInvoiceEvent(System.String, System.String, System.String, System.String)
+  nameWithType: SalesInvoiceEvent.SalesInvoiceEvent(String, String, String, String)
+- uid: Hexalith.Domain.Events.SalesInvoiceEvent.#ctor*
+  name: SalesInvoiceEvent
+  href: api/Hexalith.Domain.Events.SalesInvoiceEvent.html#Hexalith_Domain_Events_SalesInvoiceEvent__ctor_
+  commentId: Overload:Hexalith.Domain.Events.SalesInvoiceEvent.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Domain.Events.SalesInvoiceEvent.SalesInvoiceEvent
+  nameWithType: SalesInvoiceEvent.SalesInvoiceEvent
+- uid: Hexalith.Domain.Events.SalesInvoiceEvent.DefaultAggregateId
+  name: DefaultAggregateId()
+  href: api/Hexalith.Domain.Events.SalesInvoiceEvent.html#Hexalith_Domain_Events_SalesInvoiceEvent_DefaultAggregateId
+  commentId: M:Hexalith.Domain.Events.SalesInvoiceEvent.DefaultAggregateId
+  fullName: Hexalith.Domain.Events.SalesInvoiceEvent.DefaultAggregateId()
+  nameWithType: SalesInvoiceEvent.DefaultAggregateId()
+- uid: Hexalith.Domain.Events.SalesInvoiceEvent.DefaultAggregateId*
+  name: DefaultAggregateId
+  href: api/Hexalith.Domain.Events.SalesInvoiceEvent.html#Hexalith_Domain_Events_SalesInvoiceEvent_DefaultAggregateId_
+  commentId: Overload:Hexalith.Domain.Events.SalesInvoiceEvent.DefaultAggregateId
+  isSpec: "True"
+  fullName: Hexalith.Domain.Events.SalesInvoiceEvent.DefaultAggregateId
+  nameWithType: SalesInvoiceEvent.DefaultAggregateId
+- uid: Hexalith.Domain.Events.SalesInvoiceEvent.DefaultAggregateName
+  name: DefaultAggregateName()
+  href: api/Hexalith.Domain.Events.SalesInvoiceEvent.html#Hexalith_Domain_Events_SalesInvoiceEvent_DefaultAggregateName
+  commentId: M:Hexalith.Domain.Events.SalesInvoiceEvent.DefaultAggregateName
+  fullName: Hexalith.Domain.Events.SalesInvoiceEvent.DefaultAggregateName()
+  nameWithType: SalesInvoiceEvent.DefaultAggregateName()
+- uid: Hexalith.Domain.Events.SalesInvoiceEvent.DefaultAggregateName*
+  name: DefaultAggregateName
+  href: api/Hexalith.Domain.Events.SalesInvoiceEvent.html#Hexalith_Domain_Events_SalesInvoiceEvent_DefaultAggregateName_
+  commentId: Overload:Hexalith.Domain.Events.SalesInvoiceEvent.DefaultAggregateName
+  isSpec: "True"
+  fullName: Hexalith.Domain.Events.SalesInvoiceEvent.DefaultAggregateName
+  nameWithType: SalesInvoiceEvent.DefaultAggregateName
+- uid: Hexalith.Domain.Events.SalesInvoiceIssued
+  name: SalesInvoiceIssued
+  href: api/Hexalith.Domain.Events.SalesInvoiceIssued.html
+  commentId: T:Hexalith.Domain.Events.SalesInvoiceIssued
+  fullName: Hexalith.Domain.Events.SalesInvoiceIssued
+  nameWithType: SalesInvoiceIssued
+- uid: Hexalith.Domain.Events.SalesInvoiceIssued.#ctor
+  name: SalesInvoiceIssued()
+  href: api/Hexalith.Domain.Events.SalesInvoiceIssued.html#Hexalith_Domain_Events_SalesInvoiceIssued__ctor
+  commentId: M:Hexalith.Domain.Events.SalesInvoiceIssued.#ctor
+  fullName: Hexalith.Domain.Events.SalesInvoiceIssued.SalesInvoiceIssued()
+  nameWithType: SalesInvoiceIssued.SalesInvoiceIssued()
+- uid: Hexalith.Domain.Events.SalesInvoiceIssued.#ctor(System.String,System.String,System.String,System.String,DateTimeOffset,System.String,System.String,IEnumerable{Hexalith.Domain.ValueObjets.SalesInvoiceLine})
+  name: SalesInvoiceIssued(String, String, String, String, DateTimeOffset, String, String, IEnumerable<SalesInvoiceLine>)
+  href: api/Hexalith.Domain.Events.SalesInvoiceIssued.html#Hexalith_Domain_Events_SalesInvoiceIssued__ctor_System_String_System_String_System_String_System_String_DateTimeOffset_System_String_System_String_IEnumerable_Hexalith_Domain_ValueObjets_SalesInvoiceLine__
+  commentId: M:Hexalith.Domain.Events.SalesInvoiceIssued.#ctor(System.String,System.String,System.String,System.String,DateTimeOffset,System.String,System.String,IEnumerable{Hexalith.Domain.ValueObjets.SalesInvoiceLine})
+  name.vb: SalesInvoiceIssued(String, String, String, String, DateTimeOffset, String, String, IEnumerable(Of SalesInvoiceLine))
+  fullName: Hexalith.Domain.Events.SalesInvoiceIssued.SalesInvoiceIssued(System.String, System.String, System.String, System.String, DateTimeOffset, System.String, System.String, IEnumerable<Hexalith.Domain.ValueObjets.SalesInvoiceLine>)
+  fullName.vb: Hexalith.Domain.Events.SalesInvoiceIssued.SalesInvoiceIssued(System.String, System.String, System.String, System.String, DateTimeOffset, System.String, System.String, IEnumerable(Of Hexalith.Domain.ValueObjets.SalesInvoiceLine))
+  nameWithType: SalesInvoiceIssued.SalesInvoiceIssued(String, String, String, String, DateTimeOffset, String, String, IEnumerable<SalesInvoiceLine>)
+  nameWithType.vb: SalesInvoiceIssued.SalesInvoiceIssued(String, String, String, String, DateTimeOffset, String, String, IEnumerable(Of SalesInvoiceLine))
+- uid: Hexalith.Domain.Events.SalesInvoiceIssued.#ctor*
+  name: SalesInvoiceIssued
+  href: api/Hexalith.Domain.Events.SalesInvoiceIssued.html#Hexalith_Domain_Events_SalesInvoiceIssued__ctor_
+  commentId: Overload:Hexalith.Domain.Events.SalesInvoiceIssued.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Domain.Events.SalesInvoiceIssued.SalesInvoiceIssued
+  nameWithType: SalesInvoiceIssued.SalesInvoiceIssued
+- uid: Hexalith.Domain.Events.SalesInvoiceIssued.CreatedDate
+  name: CreatedDate
+  href: api/Hexalith.Domain.Events.SalesInvoiceIssued.html#Hexalith_Domain_Events_SalesInvoiceIssued_CreatedDate
+  commentId: P:Hexalith.Domain.Events.SalesInvoiceIssued.CreatedDate
+  fullName: Hexalith.Domain.Events.SalesInvoiceIssued.CreatedDate
+  nameWithType: SalesInvoiceIssued.CreatedDate
+- uid: Hexalith.Domain.Events.SalesInvoiceIssued.CreatedDate*
+  name: CreatedDate
+  href: api/Hexalith.Domain.Events.SalesInvoiceIssued.html#Hexalith_Domain_Events_SalesInvoiceIssued_CreatedDate_
+  commentId: Overload:Hexalith.Domain.Events.SalesInvoiceIssued.CreatedDate
+  isSpec: "True"
+  fullName: Hexalith.Domain.Events.SalesInvoiceIssued.CreatedDate
+  nameWithType: SalesInvoiceIssued.CreatedDate
+- uid: Hexalith.Domain.Events.SalesInvoiceIssued.CurrencyId
+  name: CurrencyId
+  href: api/Hexalith.Domain.Events.SalesInvoiceIssued.html#Hexalith_Domain_Events_SalesInvoiceIssued_CurrencyId
+  commentId: P:Hexalith.Domain.Events.SalesInvoiceIssued.CurrencyId
+  fullName: Hexalith.Domain.Events.SalesInvoiceIssued.CurrencyId
+  nameWithType: SalesInvoiceIssued.CurrencyId
+- uid: Hexalith.Domain.Events.SalesInvoiceIssued.CurrencyId*
+  name: CurrencyId
+  href: api/Hexalith.Domain.Events.SalesInvoiceIssued.html#Hexalith_Domain_Events_SalesInvoiceIssued_CurrencyId_
+  commentId: Overload:Hexalith.Domain.Events.SalesInvoiceIssued.CurrencyId
+  isSpec: "True"
+  fullName: Hexalith.Domain.Events.SalesInvoiceIssued.CurrencyId
+  nameWithType: SalesInvoiceIssued.CurrencyId
+- uid: Hexalith.Domain.Events.SalesInvoiceIssued.CustomerId
+  name: CustomerId
+  href: api/Hexalith.Domain.Events.SalesInvoiceIssued.html#Hexalith_Domain_Events_SalesInvoiceIssued_CustomerId
+  commentId: P:Hexalith.Domain.Events.SalesInvoiceIssued.CustomerId
+  fullName: Hexalith.Domain.Events.SalesInvoiceIssued.CustomerId
+  nameWithType: SalesInvoiceIssued.CustomerId
+- uid: Hexalith.Domain.Events.SalesInvoiceIssued.CustomerId*
+  name: CustomerId
+  href: api/Hexalith.Domain.Events.SalesInvoiceIssued.html#Hexalith_Domain_Events_SalesInvoiceIssued_CustomerId_
+  commentId: Overload:Hexalith.Domain.Events.SalesInvoiceIssued.CustomerId
+  isSpec: "True"
+  fullName: Hexalith.Domain.Events.SalesInvoiceIssued.CustomerId
+  nameWithType: SalesInvoiceIssued.CustomerId
+- uid: Hexalith.Domain.Events.SalesInvoiceIssued.Lines
+  name: Lines
+  href: api/Hexalith.Domain.Events.SalesInvoiceIssued.html#Hexalith_Domain_Events_SalesInvoiceIssued_Lines
+  commentId: P:Hexalith.Domain.Events.SalesInvoiceIssued.Lines
+  fullName: Hexalith.Domain.Events.SalesInvoiceIssued.Lines
+  nameWithType: SalesInvoiceIssued.Lines
+- uid: Hexalith.Domain.Events.SalesInvoiceIssued.Lines*
+  name: Lines
+  href: api/Hexalith.Domain.Events.SalesInvoiceIssued.html#Hexalith_Domain_Events_SalesInvoiceIssued_Lines_
+  commentId: Overload:Hexalith.Domain.Events.SalesInvoiceIssued.Lines
+  isSpec: "True"
+  fullName: Hexalith.Domain.Events.SalesInvoiceIssued.Lines
+  nameWithType: SalesInvoiceIssued.Lines
+- uid: Hexalith.Domain.Events.SalesInvoiceIssuedValidator
+  name: SalesInvoiceIssuedValidator
+  href: api/Hexalith.Domain.Events.SalesInvoiceIssuedValidator.html
+  commentId: T:Hexalith.Domain.Events.SalesInvoiceIssuedValidator
+  fullName: Hexalith.Domain.Events.SalesInvoiceIssuedValidator
+  nameWithType: SalesInvoiceIssuedValidator
+- uid: Hexalith.Domain.Events.SalesInvoiceIssuedValidator.#ctor
+  name: SalesInvoiceIssuedValidator()
+  href: api/Hexalith.Domain.Events.SalesInvoiceIssuedValidator.html#Hexalith_Domain_Events_SalesInvoiceIssuedValidator__ctor
+  commentId: M:Hexalith.Domain.Events.SalesInvoiceIssuedValidator.#ctor
+  fullName: Hexalith.Domain.Events.SalesInvoiceIssuedValidator.SalesInvoiceIssuedValidator()
+  nameWithType: SalesInvoiceIssuedValidator.SalesInvoiceIssuedValidator()
+- uid: Hexalith.Domain.Events.SalesInvoiceIssuedValidator.#ctor*
+  name: SalesInvoiceIssuedValidator
+  href: api/Hexalith.Domain.Events.SalesInvoiceIssuedValidator.html#Hexalith_Domain_Events_SalesInvoiceIssuedValidator__ctor_
+  commentId: Overload:Hexalith.Domain.Events.SalesInvoiceIssuedValidator.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Domain.Events.SalesInvoiceIssuedValidator.SalesInvoiceIssuedValidator
+  nameWithType: SalesInvoiceIssuedValidator.SalesInvoiceIssuedValidator
 - uid: Hexalith.Domain.Events.SurveyEvent
   name: SurveyEvent
   href: api/Hexalith.Domain.Events.SurveyEvent.html
@@ -14379,6 +14950,83 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Messages.IMessage.TypeName
   nameWithType: IMessage.TypeName
+- uid: Hexalith.Domain.Organizations.Aggregates
+  name: Hexalith.Domain.Organizations.Aggregates
+  href: api/Hexalith.Domain.Organizations.Aggregates.html
+  commentId: N:Hexalith.Domain.Organizations.Aggregates
+  fullName: Hexalith.Domain.Organizations.Aggregates
+  nameWithType: Hexalith.Domain.Organizations.Aggregates
+- uid: Hexalith.Domain.Organizations.Aggregates.EntityAggregateState
+  name: EntityAggregateState
+  href: api/Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.html
+  commentId: T:Hexalith.Domain.Organizations.Aggregates.EntityAggregateState
+  fullName: Hexalith.Domain.Organizations.Aggregates.EntityAggregateState
+  nameWithType: EntityAggregateState
+- uid: Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.CompanyId
+  name: CompanyId
+  href: api/Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.html#Hexalith_Domain_Organizations_Aggregates_EntityAggregateState_CompanyId
+  commentId: P:Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.CompanyId
+  fullName: Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.CompanyId
+  nameWithType: EntityAggregateState.CompanyId
+- uid: Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.CompanyId*
+  name: CompanyId
+  href: api/Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.html#Hexalith_Domain_Organizations_Aggregates_EntityAggregateState_CompanyId_
+  commentId: Overload:Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.CompanyId
+  isSpec: "True"
+  fullName: Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.CompanyId
+  nameWithType: EntityAggregateState.CompanyId
+- uid: Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.GetEqualityComponents
+  name: GetEqualityComponents()
+  href: api/Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.html#Hexalith_Domain_Organizations_Aggregates_EntityAggregateState_GetEqualityComponents
+  commentId: M:Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.GetEqualityComponents
+  fullName: Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.GetEqualityComponents()
+  nameWithType: EntityAggregateState.GetEqualityComponents()
+- uid: Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.GetEqualityComponents*
+  name: GetEqualityComponents
+  href: api/Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.html#Hexalith_Domain_Organizations_Aggregates_EntityAggregateState_GetEqualityComponents_
+  commentId: Overload:Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.GetEqualityComponents
+  isSpec: "True"
+  fullName: Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.GetEqualityComponents
+  nameWithType: EntityAggregateState.GetEqualityComponents
+- uid: Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.Id
+  name: Id
+  href: api/Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.html#Hexalith_Domain_Organizations_Aggregates_EntityAggregateState_Id
+  commentId: P:Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.Id
+  fullName: Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.Id
+  nameWithType: EntityAggregateState.Id
+- uid: Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.Id*
+  name: Id
+  href: api/Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.html#Hexalith_Domain_Organizations_Aggregates_EntityAggregateState_Id_
+  commentId: Overload:Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.Id
+  isSpec: "True"
+  fullName: Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.Id
+  nameWithType: EntityAggregateState.Id
+- uid: Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.OriginId
+  name: OriginId
+  href: api/Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.html#Hexalith_Domain_Organizations_Aggregates_EntityAggregateState_OriginId
+  commentId: P:Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.OriginId
+  fullName: Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.OriginId
+  nameWithType: EntityAggregateState.OriginId
+- uid: Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.OriginId*
+  name: OriginId
+  href: api/Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.html#Hexalith_Domain_Organizations_Aggregates_EntityAggregateState_OriginId_
+  commentId: Overload:Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.OriginId
+  isSpec: "True"
+  fullName: Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.OriginId
+  nameWithType: EntityAggregateState.OriginId
+- uid: Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.PartitionId
+  name: PartitionId
+  href: api/Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.html#Hexalith_Domain_Organizations_Aggregates_EntityAggregateState_PartitionId
+  commentId: P:Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.PartitionId
+  fullName: Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.PartitionId
+  nameWithType: EntityAggregateState.PartitionId
+- uid: Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.PartitionId*
+  name: PartitionId
+  href: api/Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.html#Hexalith_Domain_Organizations_Aggregates_EntityAggregateState_PartitionId_
+  commentId: Overload:Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.PartitionId
+  isSpec: "True"
+  fullName: Hexalith.Domain.Organizations.Aggregates.EntityAggregateState.PartitionId
+  nameWithType: EntityAggregateState.PartitionId
 - uid: Hexalith.Domain.Organizations.Events
   name: Hexalith.Domain.Organizations.Events
   href: api/Hexalith.Domain.Organizations.Events.html
@@ -15685,6 +16333,354 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.ValueObjets.ProductIdentifier.VersionId
   nameWithType: ProductIdentifier.VersionId
+- uid: Hexalith.Domain.ValueObjets.SalesInvoiceLine
+  name: SalesInvoiceLine
+  href: api/Hexalith.Domain.ValueObjets.SalesInvoiceLine.html
+  commentId: T:Hexalith.Domain.ValueObjets.SalesInvoiceLine
+  fullName: Hexalith.Domain.ValueObjets.SalesInvoiceLine
+  nameWithType: SalesInvoiceLine
+- uid: Hexalith.Domain.ValueObjets.SalesInvoiceLine.#ctor
+  name: SalesInvoiceLine()
+  href: api/Hexalith.Domain.ValueObjets.SalesInvoiceLine.html#Hexalith_Domain_ValueObjets_SalesInvoiceLine__ctor
+  commentId: M:Hexalith.Domain.ValueObjets.SalesInvoiceLine.#ctor
+  fullName: Hexalith.Domain.ValueObjets.SalesInvoiceLine.SalesInvoiceLine()
+  nameWithType: SalesInvoiceLine.SalesInvoiceLine()
+- uid: Hexalith.Domain.ValueObjets.SalesInvoiceLine.#ctor(Hexalith.Domain.ValueObjets.SalesInvoiceLine)
+  name: SalesInvoiceLine(SalesInvoiceLine)
+  href: api/Hexalith.Domain.ValueObjets.SalesInvoiceLine.html#Hexalith_Domain_ValueObjets_SalesInvoiceLine__ctor_Hexalith_Domain_ValueObjets_SalesInvoiceLine_
+  commentId: M:Hexalith.Domain.ValueObjets.SalesInvoiceLine.#ctor(Hexalith.Domain.ValueObjets.SalesInvoiceLine)
+  fullName: Hexalith.Domain.ValueObjets.SalesInvoiceLine.SalesInvoiceLine(Hexalith.Domain.ValueObjets.SalesInvoiceLine)
+  nameWithType: SalesInvoiceLine.SalesInvoiceLine(SalesInvoiceLine)
+- uid: Hexalith.Domain.ValueObjets.SalesInvoiceLine.#ctor(System.String,Hexalith.Domain.ValueObjets.SalesLineItem,Hexalith.Domain.ValueObjets.SalesLineOrigin,IEnumerable{Hexalith.Domain.ValueObjets.SalesLineTax})
+  name: SalesInvoiceLine(String, SalesLineItem, SalesLineOrigin, IEnumerable<SalesLineTax>)
+  href: api/Hexalith.Domain.ValueObjets.SalesInvoiceLine.html#Hexalith_Domain_ValueObjets_SalesInvoiceLine__ctor_System_String_Hexalith_Domain_ValueObjets_SalesLineItem_Hexalith_Domain_ValueObjets_SalesLineOrigin_IEnumerable_Hexalith_Domain_ValueObjets_SalesLineTax__
+  commentId: M:Hexalith.Domain.ValueObjets.SalesInvoiceLine.#ctor(System.String,Hexalith.Domain.ValueObjets.SalesLineItem,Hexalith.Domain.ValueObjets.SalesLineOrigin,IEnumerable{Hexalith.Domain.ValueObjets.SalesLineTax})
+  name.vb: SalesInvoiceLine(String, SalesLineItem, SalesLineOrigin, IEnumerable(Of SalesLineTax))
+  fullName: Hexalith.Domain.ValueObjets.SalesInvoiceLine.SalesInvoiceLine(System.String, Hexalith.Domain.ValueObjets.SalesLineItem, Hexalith.Domain.ValueObjets.SalesLineOrigin, IEnumerable<Hexalith.Domain.ValueObjets.SalesLineTax>)
+  fullName.vb: Hexalith.Domain.ValueObjets.SalesInvoiceLine.SalesInvoiceLine(System.String, Hexalith.Domain.ValueObjets.SalesLineItem, Hexalith.Domain.ValueObjets.SalesLineOrigin, IEnumerable(Of Hexalith.Domain.ValueObjets.SalesLineTax))
+  nameWithType: SalesInvoiceLine.SalesInvoiceLine(String, SalesLineItem, SalesLineOrigin, IEnumerable<SalesLineTax>)
+  nameWithType.vb: SalesInvoiceLine.SalesInvoiceLine(String, SalesLineItem, SalesLineOrigin, IEnumerable(Of SalesLineTax))
+- uid: Hexalith.Domain.ValueObjets.SalesInvoiceLine.#ctor*
+  name: SalesInvoiceLine
+  href: api/Hexalith.Domain.ValueObjets.SalesInvoiceLine.html#Hexalith_Domain_ValueObjets_SalesInvoiceLine__ctor_
+  commentId: Overload:Hexalith.Domain.ValueObjets.SalesInvoiceLine.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Domain.ValueObjets.SalesInvoiceLine.SalesInvoiceLine
+  nameWithType: SalesInvoiceLine.SalesInvoiceLine
+- uid: Hexalith.Domain.ValueObjets.SalesInvoiceLine.GetEqualityComponents
+  name: GetEqualityComponents()
+  href: api/Hexalith.Domain.ValueObjets.SalesInvoiceLine.html#Hexalith_Domain_ValueObjets_SalesInvoiceLine_GetEqualityComponents
+  commentId: M:Hexalith.Domain.ValueObjets.SalesInvoiceLine.GetEqualityComponents
+  fullName: Hexalith.Domain.ValueObjets.SalesInvoiceLine.GetEqualityComponents()
+  nameWithType: SalesInvoiceLine.GetEqualityComponents()
+- uid: Hexalith.Domain.ValueObjets.SalesInvoiceLine.GetEqualityComponents*
+  name: GetEqualityComponents
+  href: api/Hexalith.Domain.ValueObjets.SalesInvoiceLine.html#Hexalith_Domain_ValueObjets_SalesInvoiceLine_GetEqualityComponents_
+  commentId: Overload:Hexalith.Domain.ValueObjets.SalesInvoiceLine.GetEqualityComponents
+  isSpec: "True"
+  fullName: Hexalith.Domain.ValueObjets.SalesInvoiceLine.GetEqualityComponents
+  nameWithType: SalesInvoiceLine.GetEqualityComponents
+- uid: Hexalith.Domain.ValueObjets.SalesInvoiceLine.Id
+  name: Id
+  href: api/Hexalith.Domain.ValueObjets.SalesInvoiceLine.html#Hexalith_Domain_ValueObjets_SalesInvoiceLine_Id
+  commentId: P:Hexalith.Domain.ValueObjets.SalesInvoiceLine.Id
+  fullName: Hexalith.Domain.ValueObjets.SalesInvoiceLine.Id
+  nameWithType: SalesInvoiceLine.Id
+- uid: Hexalith.Domain.ValueObjets.SalesInvoiceLine.Id*
+  name: Id
+  href: api/Hexalith.Domain.ValueObjets.SalesInvoiceLine.html#Hexalith_Domain_ValueObjets_SalesInvoiceLine_Id_
+  commentId: Overload:Hexalith.Domain.ValueObjets.SalesInvoiceLine.Id
+  isSpec: "True"
+  fullName: Hexalith.Domain.ValueObjets.SalesInvoiceLine.Id
+  nameWithType: SalesInvoiceLine.Id
+- uid: Hexalith.Domain.ValueObjets.SalesInvoiceLine.Item
+  name: Item
+  href: api/Hexalith.Domain.ValueObjets.SalesInvoiceLine.html#Hexalith_Domain_ValueObjets_SalesInvoiceLine_Item
+  commentId: P:Hexalith.Domain.ValueObjets.SalesInvoiceLine.Item
+  fullName: Hexalith.Domain.ValueObjets.SalesInvoiceLine.Item
+  nameWithType: SalesInvoiceLine.Item
+- uid: Hexalith.Domain.ValueObjets.SalesInvoiceLine.Item*
+  name: Item
+  href: api/Hexalith.Domain.ValueObjets.SalesInvoiceLine.html#Hexalith_Domain_ValueObjets_SalesInvoiceLine_Item_
+  commentId: Overload:Hexalith.Domain.ValueObjets.SalesInvoiceLine.Item
+  isSpec: "True"
+  fullName: Hexalith.Domain.ValueObjets.SalesInvoiceLine.Item
+  nameWithType: SalesInvoiceLine.Item
+- uid: Hexalith.Domain.ValueObjets.SalesInvoiceLine.Origin
+  name: Origin
+  href: api/Hexalith.Domain.ValueObjets.SalesInvoiceLine.html#Hexalith_Domain_ValueObjets_SalesInvoiceLine_Origin
+  commentId: P:Hexalith.Domain.ValueObjets.SalesInvoiceLine.Origin
+  fullName: Hexalith.Domain.ValueObjets.SalesInvoiceLine.Origin
+  nameWithType: SalesInvoiceLine.Origin
+- uid: Hexalith.Domain.ValueObjets.SalesInvoiceLine.Origin*
+  name: Origin
+  href: api/Hexalith.Domain.ValueObjets.SalesInvoiceLine.html#Hexalith_Domain_ValueObjets_SalesInvoiceLine_Origin_
+  commentId: Overload:Hexalith.Domain.ValueObjets.SalesInvoiceLine.Origin
+  isSpec: "True"
+  fullName: Hexalith.Domain.ValueObjets.SalesInvoiceLine.Origin
+  nameWithType: SalesInvoiceLine.Origin
+- uid: Hexalith.Domain.ValueObjets.SalesInvoiceLine.Taxes
+  name: Taxes
+  href: api/Hexalith.Domain.ValueObjets.SalesInvoiceLine.html#Hexalith_Domain_ValueObjets_SalesInvoiceLine_Taxes
+  commentId: P:Hexalith.Domain.ValueObjets.SalesInvoiceLine.Taxes
+  fullName: Hexalith.Domain.ValueObjets.SalesInvoiceLine.Taxes
+  nameWithType: SalesInvoiceLine.Taxes
+- uid: Hexalith.Domain.ValueObjets.SalesInvoiceLine.Taxes*
+  name: Taxes
+  href: api/Hexalith.Domain.ValueObjets.SalesInvoiceLine.html#Hexalith_Domain_ValueObjets_SalesInvoiceLine_Taxes_
+  commentId: Overload:Hexalith.Domain.ValueObjets.SalesInvoiceLine.Taxes
+  isSpec: "True"
+  fullName: Hexalith.Domain.ValueObjets.SalesInvoiceLine.Taxes
+  nameWithType: SalesInvoiceLine.Taxes
+- uid: Hexalith.Domain.ValueObjets.SalesLineItem
+  name: SalesLineItem
+  href: api/Hexalith.Domain.ValueObjets.SalesLineItem.html
+  commentId: T:Hexalith.Domain.ValueObjets.SalesLineItem
+  fullName: Hexalith.Domain.ValueObjets.SalesLineItem
+  nameWithType: SalesLineItem
+- uid: Hexalith.Domain.ValueObjets.SalesLineItem.#ctor
+  name: SalesLineItem()
+  href: api/Hexalith.Domain.ValueObjets.SalesLineItem.html#Hexalith_Domain_ValueObjets_SalesLineItem__ctor
+  commentId: M:Hexalith.Domain.ValueObjets.SalesLineItem.#ctor
+  fullName: Hexalith.Domain.ValueObjets.SalesLineItem.SalesLineItem()
+  nameWithType: SalesLineItem.SalesLineItem()
+- uid: Hexalith.Domain.ValueObjets.SalesLineItem.#ctor(Hexalith.Domain.ValueObjets.SalesLineItem)
+  name: SalesLineItem(SalesLineItem)
+  href: api/Hexalith.Domain.ValueObjets.SalesLineItem.html#Hexalith_Domain_ValueObjets_SalesLineItem__ctor_Hexalith_Domain_ValueObjets_SalesLineItem_
+  commentId: M:Hexalith.Domain.ValueObjets.SalesLineItem.#ctor(Hexalith.Domain.ValueObjets.SalesLineItem)
+  fullName: Hexalith.Domain.ValueObjets.SalesLineItem.SalesLineItem(Hexalith.Domain.ValueObjets.SalesLineItem)
+  nameWithType: SalesLineItem.SalesLineItem(SalesLineItem)
+- uid: Hexalith.Domain.ValueObjets.SalesLineItem.#ctor(System.String,System.Decimal,System.String,System.Decimal)
+  name: SalesLineItem(String, Decimal, String, Decimal)
+  href: api/Hexalith.Domain.ValueObjets.SalesLineItem.html#Hexalith_Domain_ValueObjets_SalesLineItem__ctor_System_String_System_Decimal_System_String_System_Decimal_
+  commentId: M:Hexalith.Domain.ValueObjets.SalesLineItem.#ctor(System.String,System.Decimal,System.String,System.Decimal)
+  fullName: Hexalith.Domain.ValueObjets.SalesLineItem.SalesLineItem(System.String, System.Decimal, System.String, System.Decimal)
+  nameWithType: SalesLineItem.SalesLineItem(String, Decimal, String, Decimal)
+- uid: Hexalith.Domain.ValueObjets.SalesLineItem.#ctor*
+  name: SalesLineItem
+  href: api/Hexalith.Domain.ValueObjets.SalesLineItem.html#Hexalith_Domain_ValueObjets_SalesLineItem__ctor_
+  commentId: Overload:Hexalith.Domain.ValueObjets.SalesLineItem.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Domain.ValueObjets.SalesLineItem.SalesLineItem
+  nameWithType: SalesLineItem.SalesLineItem
+- uid: Hexalith.Domain.ValueObjets.SalesLineItem.GetEqualityComponents
+  name: GetEqualityComponents()
+  href: api/Hexalith.Domain.ValueObjets.SalesLineItem.html#Hexalith_Domain_ValueObjets_SalesLineItem_GetEqualityComponents
+  commentId: M:Hexalith.Domain.ValueObjets.SalesLineItem.GetEqualityComponents
+  fullName: Hexalith.Domain.ValueObjets.SalesLineItem.GetEqualityComponents()
+  nameWithType: SalesLineItem.GetEqualityComponents()
+- uid: Hexalith.Domain.ValueObjets.SalesLineItem.GetEqualityComponents*
+  name: GetEqualityComponents
+  href: api/Hexalith.Domain.ValueObjets.SalesLineItem.html#Hexalith_Domain_ValueObjets_SalesLineItem_GetEqualityComponents_
+  commentId: Overload:Hexalith.Domain.ValueObjets.SalesLineItem.GetEqualityComponents
+  isSpec: "True"
+  fullName: Hexalith.Domain.ValueObjets.SalesLineItem.GetEqualityComponents
+  nameWithType: SalesLineItem.GetEqualityComponents
+- uid: Hexalith.Domain.ValueObjets.SalesLineItem.ItemId
+  name: ItemId
+  href: api/Hexalith.Domain.ValueObjets.SalesLineItem.html#Hexalith_Domain_ValueObjets_SalesLineItem_ItemId
+  commentId: P:Hexalith.Domain.ValueObjets.SalesLineItem.ItemId
+  fullName: Hexalith.Domain.ValueObjets.SalesLineItem.ItemId
+  nameWithType: SalesLineItem.ItemId
+- uid: Hexalith.Domain.ValueObjets.SalesLineItem.ItemId*
+  name: ItemId
+  href: api/Hexalith.Domain.ValueObjets.SalesLineItem.html#Hexalith_Domain_ValueObjets_SalesLineItem_ItemId_
+  commentId: Overload:Hexalith.Domain.ValueObjets.SalesLineItem.ItemId
+  isSpec: "True"
+  fullName: Hexalith.Domain.ValueObjets.SalesLineItem.ItemId
+  nameWithType: SalesLineItem.ItemId
+- uid: Hexalith.Domain.ValueObjets.SalesLineItem.Price
+  name: Price
+  href: api/Hexalith.Domain.ValueObjets.SalesLineItem.html#Hexalith_Domain_ValueObjets_SalesLineItem_Price
+  commentId: P:Hexalith.Domain.ValueObjets.SalesLineItem.Price
+  fullName: Hexalith.Domain.ValueObjets.SalesLineItem.Price
+  nameWithType: SalesLineItem.Price
+- uid: Hexalith.Domain.ValueObjets.SalesLineItem.Price*
+  name: Price
+  href: api/Hexalith.Domain.ValueObjets.SalesLineItem.html#Hexalith_Domain_ValueObjets_SalesLineItem_Price_
+  commentId: Overload:Hexalith.Domain.ValueObjets.SalesLineItem.Price
+  isSpec: "True"
+  fullName: Hexalith.Domain.ValueObjets.SalesLineItem.Price
+  nameWithType: SalesLineItem.Price
+- uid: Hexalith.Domain.ValueObjets.SalesLineItem.Quantity
+  name: Quantity
+  href: api/Hexalith.Domain.ValueObjets.SalesLineItem.html#Hexalith_Domain_ValueObjets_SalesLineItem_Quantity
+  commentId: P:Hexalith.Domain.ValueObjets.SalesLineItem.Quantity
+  fullName: Hexalith.Domain.ValueObjets.SalesLineItem.Quantity
+  nameWithType: SalesLineItem.Quantity
+- uid: Hexalith.Domain.ValueObjets.SalesLineItem.Quantity*
+  name: Quantity
+  href: api/Hexalith.Domain.ValueObjets.SalesLineItem.html#Hexalith_Domain_ValueObjets_SalesLineItem_Quantity_
+  commentId: Overload:Hexalith.Domain.ValueObjets.SalesLineItem.Quantity
+  isSpec: "True"
+  fullName: Hexalith.Domain.ValueObjets.SalesLineItem.Quantity
+  nameWithType: SalesLineItem.Quantity
+- uid: Hexalith.Domain.ValueObjets.SalesLineItem.UnitId
+  name: UnitId
+  href: api/Hexalith.Domain.ValueObjets.SalesLineItem.html#Hexalith_Domain_ValueObjets_SalesLineItem_UnitId
+  commentId: P:Hexalith.Domain.ValueObjets.SalesLineItem.UnitId
+  fullName: Hexalith.Domain.ValueObjets.SalesLineItem.UnitId
+  nameWithType: SalesLineItem.UnitId
+- uid: Hexalith.Domain.ValueObjets.SalesLineItem.UnitId*
+  name: UnitId
+  href: api/Hexalith.Domain.ValueObjets.SalesLineItem.html#Hexalith_Domain_ValueObjets_SalesLineItem_UnitId_
+  commentId: Overload:Hexalith.Domain.ValueObjets.SalesLineItem.UnitId
+  isSpec: "True"
+  fullName: Hexalith.Domain.ValueObjets.SalesLineItem.UnitId
+  nameWithType: SalesLineItem.UnitId
+- uid: Hexalith.Domain.ValueObjets.SalesLineOrigin
+  name: SalesLineOrigin
+  href: api/Hexalith.Domain.ValueObjets.SalesLineOrigin.html
+  commentId: T:Hexalith.Domain.ValueObjets.SalesLineOrigin
+  fullName: Hexalith.Domain.ValueObjets.SalesLineOrigin
+  nameWithType: SalesLineOrigin
+- uid: Hexalith.Domain.ValueObjets.SalesLineOrigin.#ctor
+  name: SalesLineOrigin()
+  href: api/Hexalith.Domain.ValueObjets.SalesLineOrigin.html#Hexalith_Domain_ValueObjets_SalesLineOrigin__ctor
+  commentId: M:Hexalith.Domain.ValueObjets.SalesLineOrigin.#ctor
+  fullName: Hexalith.Domain.ValueObjets.SalesLineOrigin.SalesLineOrigin()
+  nameWithType: SalesLineOrigin.SalesLineOrigin()
+- uid: Hexalith.Domain.ValueObjets.SalesLineOrigin.#ctor(Hexalith.Domain.ValueObjets.SalesLineOrigin)
+  name: SalesLineOrigin(SalesLineOrigin)
+  href: api/Hexalith.Domain.ValueObjets.SalesLineOrigin.html#Hexalith_Domain_ValueObjets_SalesLineOrigin__ctor_Hexalith_Domain_ValueObjets_SalesLineOrigin_
+  commentId: M:Hexalith.Domain.ValueObjets.SalesLineOrigin.#ctor(Hexalith.Domain.ValueObjets.SalesLineOrigin)
+  fullName: Hexalith.Domain.ValueObjets.SalesLineOrigin.SalesLineOrigin(Hexalith.Domain.ValueObjets.SalesLineOrigin)
+  nameWithType: SalesLineOrigin.SalesLineOrigin(SalesLineOrigin)
+- uid: Hexalith.Domain.ValueObjets.SalesLineOrigin.#ctor(System.String,System.String)
+  name: SalesLineOrigin(String, String)
+  href: api/Hexalith.Domain.ValueObjets.SalesLineOrigin.html#Hexalith_Domain_ValueObjets_SalesLineOrigin__ctor_System_String_System_String_
+  commentId: M:Hexalith.Domain.ValueObjets.SalesLineOrigin.#ctor(System.String,System.String)
+  fullName: Hexalith.Domain.ValueObjets.SalesLineOrigin.SalesLineOrigin(System.String, System.String)
+  nameWithType: SalesLineOrigin.SalesLineOrigin(String, String)
+- uid: Hexalith.Domain.ValueObjets.SalesLineOrigin.#ctor*
+  name: SalesLineOrigin
+  href: api/Hexalith.Domain.ValueObjets.SalesLineOrigin.html#Hexalith_Domain_ValueObjets_SalesLineOrigin__ctor_
+  commentId: Overload:Hexalith.Domain.ValueObjets.SalesLineOrigin.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Domain.ValueObjets.SalesLineOrigin.SalesLineOrigin
+  nameWithType: SalesLineOrigin.SalesLineOrigin
+- uid: Hexalith.Domain.ValueObjets.SalesLineOrigin.GetEqualityComponents
+  name: GetEqualityComponents()
+  href: api/Hexalith.Domain.ValueObjets.SalesLineOrigin.html#Hexalith_Domain_ValueObjets_SalesLineOrigin_GetEqualityComponents
+  commentId: M:Hexalith.Domain.ValueObjets.SalesLineOrigin.GetEqualityComponents
+  fullName: Hexalith.Domain.ValueObjets.SalesLineOrigin.GetEqualityComponents()
+  nameWithType: SalesLineOrigin.GetEqualityComponents()
+- uid: Hexalith.Domain.ValueObjets.SalesLineOrigin.GetEqualityComponents*
+  name: GetEqualityComponents
+  href: api/Hexalith.Domain.ValueObjets.SalesLineOrigin.html#Hexalith_Domain_ValueObjets_SalesLineOrigin_GetEqualityComponents_
+  commentId: Overload:Hexalith.Domain.ValueObjets.SalesLineOrigin.GetEqualityComponents
+  isSpec: "True"
+  fullName: Hexalith.Domain.ValueObjets.SalesLineOrigin.GetEqualityComponents
+  nameWithType: SalesLineOrigin.GetEqualityComponents
+- uid: Hexalith.Domain.ValueObjets.SalesLineOrigin.LocationId
+  name: LocationId
+  href: api/Hexalith.Domain.ValueObjets.SalesLineOrigin.html#Hexalith_Domain_ValueObjets_SalesLineOrigin_LocationId
+  commentId: P:Hexalith.Domain.ValueObjets.SalesLineOrigin.LocationId
+  fullName: Hexalith.Domain.ValueObjets.SalesLineOrigin.LocationId
+  nameWithType: SalesLineOrigin.LocationId
+- uid: Hexalith.Domain.ValueObjets.SalesLineOrigin.LocationId*
+  name: LocationId
+  href: api/Hexalith.Domain.ValueObjets.SalesLineOrigin.html#Hexalith_Domain_ValueObjets_SalesLineOrigin_LocationId_
+  commentId: Overload:Hexalith.Domain.ValueObjets.SalesLineOrigin.LocationId
+  isSpec: "True"
+  fullName: Hexalith.Domain.ValueObjets.SalesLineOrigin.LocationId
+  nameWithType: SalesLineOrigin.LocationId
+- uid: Hexalith.Domain.ValueObjets.SalesLineOrigin.VendorId
+  name: VendorId
+  href: api/Hexalith.Domain.ValueObjets.SalesLineOrigin.html#Hexalith_Domain_ValueObjets_SalesLineOrigin_VendorId
+  commentId: P:Hexalith.Domain.ValueObjets.SalesLineOrigin.VendorId
+  fullName: Hexalith.Domain.ValueObjets.SalesLineOrigin.VendorId
+  nameWithType: SalesLineOrigin.VendorId
+- uid: Hexalith.Domain.ValueObjets.SalesLineOrigin.VendorId*
+  name: VendorId
+  href: api/Hexalith.Domain.ValueObjets.SalesLineOrigin.html#Hexalith_Domain_ValueObjets_SalesLineOrigin_VendorId_
+  commentId: Overload:Hexalith.Domain.ValueObjets.SalesLineOrigin.VendorId
+  isSpec: "True"
+  fullName: Hexalith.Domain.ValueObjets.SalesLineOrigin.VendorId
+  nameWithType: SalesLineOrigin.VendorId
+- uid: Hexalith.Domain.ValueObjets.SalesLineTax
+  name: SalesLineTax
+  href: api/Hexalith.Domain.ValueObjets.SalesLineTax.html
+  commentId: T:Hexalith.Domain.ValueObjets.SalesLineTax
+  fullName: Hexalith.Domain.ValueObjets.SalesLineTax
+  nameWithType: SalesLineTax
+- uid: Hexalith.Domain.ValueObjets.SalesLineTax.#ctor
+  name: SalesLineTax()
+  href: api/Hexalith.Domain.ValueObjets.SalesLineTax.html#Hexalith_Domain_ValueObjets_SalesLineTax__ctor
+  commentId: M:Hexalith.Domain.ValueObjets.SalesLineTax.#ctor
+  fullName: Hexalith.Domain.ValueObjets.SalesLineTax.SalesLineTax()
+  nameWithType: SalesLineTax.SalesLineTax()
+- uid: Hexalith.Domain.ValueObjets.SalesLineTax.#ctor(Hexalith.Domain.ValueObjets.SalesLineTax)
+  name: SalesLineTax(SalesLineTax)
+  href: api/Hexalith.Domain.ValueObjets.SalesLineTax.html#Hexalith_Domain_ValueObjets_SalesLineTax__ctor_Hexalith_Domain_ValueObjets_SalesLineTax_
+  commentId: M:Hexalith.Domain.ValueObjets.SalesLineTax.#ctor(Hexalith.Domain.ValueObjets.SalesLineTax)
+  fullName: Hexalith.Domain.ValueObjets.SalesLineTax.SalesLineTax(Hexalith.Domain.ValueObjets.SalesLineTax)
+  nameWithType: SalesLineTax.SalesLineTax(SalesLineTax)
+- uid: Hexalith.Domain.ValueObjets.SalesLineTax.#ctor(System.String,System.String,System.Decimal)
+  name: SalesLineTax(String, String, Decimal)
+  href: api/Hexalith.Domain.ValueObjets.SalesLineTax.html#Hexalith_Domain_ValueObjets_SalesLineTax__ctor_System_String_System_String_System_Decimal_
+  commentId: M:Hexalith.Domain.ValueObjets.SalesLineTax.#ctor(System.String,System.String,System.Decimal)
+  fullName: Hexalith.Domain.ValueObjets.SalesLineTax.SalesLineTax(System.String, System.String, System.Decimal)
+  nameWithType: SalesLineTax.SalesLineTax(String, String, Decimal)
+- uid: Hexalith.Domain.ValueObjets.SalesLineTax.#ctor*
+  name: SalesLineTax
+  href: api/Hexalith.Domain.ValueObjets.SalesLineTax.html#Hexalith_Domain_ValueObjets_SalesLineTax__ctor_
+  commentId: Overload:Hexalith.Domain.ValueObjets.SalesLineTax.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Domain.ValueObjets.SalesLineTax.SalesLineTax
+  nameWithType: SalesLineTax.SalesLineTax
+- uid: Hexalith.Domain.ValueObjets.SalesLineTax.Amount
+  name: Amount
+  href: api/Hexalith.Domain.ValueObjets.SalesLineTax.html#Hexalith_Domain_ValueObjets_SalesLineTax_Amount
+  commentId: P:Hexalith.Domain.ValueObjets.SalesLineTax.Amount
+  fullName: Hexalith.Domain.ValueObjets.SalesLineTax.Amount
+  nameWithType: SalesLineTax.Amount
+- uid: Hexalith.Domain.ValueObjets.SalesLineTax.Amount*
+  name: Amount
+  href: api/Hexalith.Domain.ValueObjets.SalesLineTax.html#Hexalith_Domain_ValueObjets_SalesLineTax_Amount_
+  commentId: Overload:Hexalith.Domain.ValueObjets.SalesLineTax.Amount
+  isSpec: "True"
+  fullName: Hexalith.Domain.ValueObjets.SalesLineTax.Amount
+  nameWithType: SalesLineTax.Amount
+- uid: Hexalith.Domain.ValueObjets.SalesLineTax.GetEqualityComponents
+  name: GetEqualityComponents()
+  href: api/Hexalith.Domain.ValueObjets.SalesLineTax.html#Hexalith_Domain_ValueObjets_SalesLineTax_GetEqualityComponents
+  commentId: M:Hexalith.Domain.ValueObjets.SalesLineTax.GetEqualityComponents
+  fullName: Hexalith.Domain.ValueObjets.SalesLineTax.GetEqualityComponents()
+  nameWithType: SalesLineTax.GetEqualityComponents()
+- uid: Hexalith.Domain.ValueObjets.SalesLineTax.GetEqualityComponents*
+  name: GetEqualityComponents
+  href: api/Hexalith.Domain.ValueObjets.SalesLineTax.html#Hexalith_Domain_ValueObjets_SalesLineTax_GetEqualityComponents_
+  commentId: Overload:Hexalith.Domain.ValueObjets.SalesLineTax.GetEqualityComponents
+  isSpec: "True"
+  fullName: Hexalith.Domain.ValueObjets.SalesLineTax.GetEqualityComponents
+  nameWithType: SalesLineTax.GetEqualityComponents
+- uid: Hexalith.Domain.ValueObjets.SalesLineTax.Name
+  name: Name
+  href: api/Hexalith.Domain.ValueObjets.SalesLineTax.html#Hexalith_Domain_ValueObjets_SalesLineTax_Name
+  commentId: P:Hexalith.Domain.ValueObjets.SalesLineTax.Name
+  fullName: Hexalith.Domain.ValueObjets.SalesLineTax.Name
+  nameWithType: SalesLineTax.Name
+- uid: Hexalith.Domain.ValueObjets.SalesLineTax.Name*
+  name: Name
+  href: api/Hexalith.Domain.ValueObjets.SalesLineTax.html#Hexalith_Domain_ValueObjets_SalesLineTax_Name_
+  commentId: Overload:Hexalith.Domain.ValueObjets.SalesLineTax.Name
+  isSpec: "True"
+  fullName: Hexalith.Domain.ValueObjets.SalesLineTax.Name
+  nameWithType: SalesLineTax.Name
+- uid: Hexalith.Domain.ValueObjets.SalesLineTax.TaxId
+  name: TaxId
+  href: api/Hexalith.Domain.ValueObjets.SalesLineTax.html#Hexalith_Domain_ValueObjets_SalesLineTax_TaxId
+  commentId: P:Hexalith.Domain.ValueObjets.SalesLineTax.TaxId
+  fullName: Hexalith.Domain.ValueObjets.SalesLineTax.TaxId
+  nameWithType: SalesLineTax.TaxId
+- uid: Hexalith.Domain.ValueObjets.SalesLineTax.TaxId*
+  name: TaxId
+  href: api/Hexalith.Domain.ValueObjets.SalesLineTax.html#Hexalith_Domain_ValueObjets_SalesLineTax_TaxId_
+  commentId: Overload:Hexalith.Domain.ValueObjets.SalesLineTax.TaxId
+  isSpec: "True"
+  fullName: Hexalith.Domain.ValueObjets.SalesLineTax.TaxId
+  nameWithType: SalesLineTax.TaxId
 - uid: Hexalith.Extensions
   name: Hexalith.Extensions
   href: api/Hexalith.Extensions.html
@@ -15975,6 +16971,25 @@ references:
   isSpec: "True"
   fullName: Hexalith.Extensions.Common.IDateTimeService.UtcNow
   nameWithType: IDateTimeService.UtcNow
+- uid: Hexalith.Extensions.Common.IEquatableObject
+  name: IEquatableObject
+  href: api/Hexalith.Extensions.Common.IEquatableObject.html
+  commentId: T:Hexalith.Extensions.Common.IEquatableObject
+  fullName: Hexalith.Extensions.Common.IEquatableObject
+  nameWithType: IEquatableObject
+- uid: Hexalith.Extensions.Common.IEquatableObject.GetEqualityComponents
+  name: GetEqualityComponents()
+  href: api/Hexalith.Extensions.Common.IEquatableObject.html#Hexalith_Extensions_Common_IEquatableObject_GetEqualityComponents
+  commentId: M:Hexalith.Extensions.Common.IEquatableObject.GetEqualityComponents
+  fullName: Hexalith.Extensions.Common.IEquatableObject.GetEqualityComponents()
+  nameWithType: IEquatableObject.GetEqualityComponents()
+- uid: Hexalith.Extensions.Common.IEquatableObject.GetEqualityComponents*
+  name: GetEqualityComponents
+  href: api/Hexalith.Extensions.Common.IEquatableObject.html#Hexalith_Extensions_Common_IEquatableObject_GetEqualityComponents_
+  commentId: Overload:Hexalith.Extensions.Common.IEquatableObject.GetEqualityComponents
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Common.IEquatableObject.GetEqualityComponents
+  nameWithType: IEquatableObject.GetEqualityComponents
 - uid: Hexalith.Extensions.Common.IIdempotent
   name: IIdempotent
   href: api/Hexalith.Extensions.Common.IIdempotent.html
@@ -16492,6 +17507,51 @@ references:
   isSpec: "True"
   fullName: Hexalith.Extensions.Helpers.DateHelper.WaitTime
   nameWithType: DateHelper.WaitTime
+- uid: Hexalith.Extensions.Helpers.EquatableHelper
+  name: EquatableHelper
+  href: api/Hexalith.Extensions.Helpers.EquatableHelper.html
+  commentId: T:Hexalith.Extensions.Helpers.EquatableHelper
+  fullName: Hexalith.Extensions.Helpers.EquatableHelper
+  nameWithType: EquatableHelper
+- uid: Hexalith.Extensions.Helpers.EquatableHelper.AreSame(System.Object,System.Object)
+  name: AreSame(Object, Object)
+  href: api/Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSame_System_Object_System_Object_
+  commentId: M:Hexalith.Extensions.Helpers.EquatableHelper.AreSame(System.Object,System.Object)
+  fullName: Hexalith.Extensions.Helpers.EquatableHelper.AreSame(System.Object, System.Object)
+  nameWithType: EquatableHelper.AreSame(Object, Object)
+- uid: Hexalith.Extensions.Helpers.EquatableHelper.AreSame*
+  name: AreSame
+  href: api/Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSame_
+  commentId: Overload:Hexalith.Extensions.Helpers.EquatableHelper.AreSame
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Helpers.EquatableHelper.AreSame
+  nameWithType: EquatableHelper.AreSame
+- uid: Hexalith.Extensions.Helpers.EquatableHelper.AreSameDictionary(System.Collections.IDictionary,System.Collections.IDictionary)
+  name: AreSameDictionary(IDictionary, IDictionary)
+  href: api/Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSameDictionary_System_Collections_IDictionary_System_Collections_IDictionary_
+  commentId: M:Hexalith.Extensions.Helpers.EquatableHelper.AreSameDictionary(System.Collections.IDictionary,System.Collections.IDictionary)
+  fullName: Hexalith.Extensions.Helpers.EquatableHelper.AreSameDictionary(System.Collections.IDictionary, System.Collections.IDictionary)
+  nameWithType: EquatableHelper.AreSameDictionary(IDictionary, IDictionary)
+- uid: Hexalith.Extensions.Helpers.EquatableHelper.AreSameDictionary*
+  name: AreSameDictionary
+  href: api/Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSameDictionary_
+  commentId: Overload:Hexalith.Extensions.Helpers.EquatableHelper.AreSameDictionary
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Helpers.EquatableHelper.AreSameDictionary
+  nameWithType: EquatableHelper.AreSameDictionary
+- uid: Hexalith.Extensions.Helpers.EquatableHelper.AreSameEnumeration(System.Collections.IEnumerable,System.Collections.IEnumerable)
+  name: AreSameEnumeration(IEnumerable, IEnumerable)
+  href: api/Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSameEnumeration_System_Collections_IEnumerable_System_Collections_IEnumerable_
+  commentId: M:Hexalith.Extensions.Helpers.EquatableHelper.AreSameEnumeration(System.Collections.IEnumerable,System.Collections.IEnumerable)
+  fullName: Hexalith.Extensions.Helpers.EquatableHelper.AreSameEnumeration(System.Collections.IEnumerable, System.Collections.IEnumerable)
+  nameWithType: EquatableHelper.AreSameEnumeration(IEnumerable, IEnumerable)
+- uid: Hexalith.Extensions.Helpers.EquatableHelper.AreSameEnumeration*
+  name: AreSameEnumeration
+  href: api/Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSameEnumeration_
+  commentId: Overload:Hexalith.Extensions.Helpers.EquatableHelper.AreSameEnumeration
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Helpers.EquatableHelper.AreSameEnumeration
+  nameWithType: EquatableHelper.AreSameEnumeration
 - uid: Hexalith.Extensions.Helpers.ExampleHelper
   name: ExampleHelper
   href: api/Hexalith.Extensions.Helpers.ExampleHelper.html
@@ -18773,14 +19833,14 @@ references:
   fullName.vb: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus(Of TMessage, TMetadata, TState).DaprApplicationBus
   nameWithType: DaprApplicationBus<TMessage, TMetadata, TState>.DaprApplicationBus
   nameWithType.vb: DaprApplicationBus(Of TMessage, TMetadata, TState).DaprApplicationBus
-- uid: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.LogErrorWhileSendingMessage(Exception,System.String,System.String,System.String,System.String,System.String,System.String)
-  name: LogErrorWhileSendingMessage(Exception, String, String, String, String, String, String)
-  href: api/Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus-3.html#Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_LogErrorWhileSendingMessage_Exception_System_String_System_String_System_String_System_String_System_String_System_String_
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.LogErrorWhileSendingMessage(Exception,System.String,System.String,System.String,System.String,System.String,System.String)
-  fullName: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus<TMessage, TMetadata, TState>.LogErrorWhileSendingMessage(Exception, System.String, System.String, System.String, System.String, System.String, System.String)
-  fullName.vb: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus(Of TMessage, TMetadata, TState).LogErrorWhileSendingMessage(Exception, System.String, System.String, System.String, System.String, System.String, System.String)
-  nameWithType: DaprApplicationBus<TMessage, TMetadata, TState>.LogErrorWhileSendingMessage(Exception, String, String, String, String, String, String)
-  nameWithType.vb: DaprApplicationBus(Of TMessage, TMetadata, TState).LogErrorWhileSendingMessage(Exception, String, String, String, String, String, String)
+- uid: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.LogErrorWhileSendingMessage(Exception,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)
+  name: LogErrorWhileSendingMessage(Exception, String, String, String, String, String, String, String, String, String)
+  href: api/Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus-3.html#Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_LogErrorWhileSendingMessage_Exception_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.LogErrorWhileSendingMessage(Exception,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)
+  fullName: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus<TMessage, TMetadata, TState>.LogErrorWhileSendingMessage(Exception, System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String)
+  fullName.vb: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus(Of TMessage, TMetadata, TState).LogErrorWhileSendingMessage(Exception, System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String)
+  nameWithType: DaprApplicationBus<TMessage, TMetadata, TState>.LogErrorWhileSendingMessage(Exception, String, String, String, String, String, String, String, String, String)
+  nameWithType.vb: DaprApplicationBus(Of TMessage, TMetadata, TState).LogErrorWhileSendingMessage(Exception, String, String, String, String, String, String, String, String, String)
 - uid: Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus`3.LogErrorWhileSendingMessage*
   name: LogErrorWhileSendingMessage
   href: api/Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus-3.html#Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_LogErrorWhileSendingMessage_
@@ -20983,6 +22043,261 @@ references:
   fullName.vb: Hexalith.Infrastructure.DaprRuntime.Projections.KeyValueActorProjectionUpdateEventHandlerBase(Of TEvent, TState).SaveProjectionAsync
   nameWithType: KeyValueActorProjectionUpdateEventHandlerBase<TEvent, TState>.SaveProjectionAsync
   nameWithType.vb: KeyValueActorProjectionUpdateEventHandlerBase(Of TEvent, TState).SaveProjectionAsync
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors
+  name: Hexalith.Infrastructure.DaprRuntime.Sales.Actors
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.html
+  commentId: N:Hexalith.Infrastructure.DaprRuntime.Sales.Actors
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors
+  nameWithType: Hexalith.Infrastructure.DaprRuntime.Sales.Actors
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor
+  name: AggregateActor
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.html
+  commentId: T:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor
+  nameWithType: AggregateActor
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.#ctor(Dapr.Actors.Runtime.ActorHost)
+  name: AggregateActor(ActorHost)
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActor__ctor_Dapr_Actors_Runtime_ActorHost_
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.#ctor(Dapr.Actors.Runtime.ActorHost)
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.AggregateActor(Dapr.Actors.Runtime.ActorHost)
+  nameWithType: AggregateActor.AggregateActor(ActorHost)
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.#ctor*
+  name: AggregateActor
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActor__ctor_
+  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.AggregateActor
+  nameWithType: AggregateActor.AggregateActor
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.LogProcessingCommandsInformation(Microsoft.Extensions.Logging.ILogger,System.String,System.String)
+  name: LogProcessingCommandsInformation(ILogger, String, String)
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActor_LogProcessingCommandsInformation_Microsoft_Extensions_Logging_ILogger_System_String_System_String_
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.LogProcessingCommandsInformation(Microsoft.Extensions.Logging.ILogger,System.String,System.String)
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.LogProcessingCommandsInformation(Microsoft.Extensions.Logging.ILogger, System.String, System.String)
+  nameWithType: AggregateActor.LogProcessingCommandsInformation(ILogger, String, String)
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.LogProcessingCommandsInformation*
+  name: LogProcessingCommandsInformation
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActor_LogProcessingCommandsInformation_
+  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.LogProcessingCommandsInformation
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.LogProcessingCommandsInformation
+  nameWithType: AggregateActor.LogProcessingCommandsInformation
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.ProcessCommandsAsync
+  name: ProcessCommandsAsync()
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActor_ProcessCommandsAsync
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.ProcessCommandsAsync
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.ProcessCommandsAsync()
+  nameWithType: AggregateActor.ProcessCommandsAsync()
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.ProcessCommandsAsync*
+  name: ProcessCommandsAsync
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActor_ProcessCommandsAsync_
+  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.ProcessCommandsAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.ProcessCommandsAsync
+  nameWithType: AggregateActor.ProcessCommandsAsync
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.SubmitCommandAsync(Hexalith.Infrastructure.DaprRuntime.Handlers.ActorCommandEnvelope)
+  name: SubmitCommandAsync(ActorCommandEnvelope)
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActor_SubmitCommandAsync_Hexalith_Infrastructure_DaprRuntime_Handlers_ActorCommandEnvelope_
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.SubmitCommandAsync(Hexalith.Infrastructure.DaprRuntime.Handlers.ActorCommandEnvelope)
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.SubmitCommandAsync(Hexalith.Infrastructure.DaprRuntime.Handlers.ActorCommandEnvelope)
+  nameWithType: AggregateActor.SubmitCommandAsync(ActorCommandEnvelope)
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.SubmitCommandAsync*
+  name: SubmitCommandAsync
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActor_SubmitCommandAsync_
+  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.SubmitCommandAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.SubmitCommandAsync
+  nameWithType: AggregateActor.SubmitCommandAsync
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.IAggregateActor
+  name: IAggregateActor
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.IAggregateActor.html
+  commentId: T:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.IAggregateActor
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.IAggregateActor
+  nameWithType: IAggregateActor
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.IAggregateActor.ProcessCommandsAsync
+  name: ProcessCommandsAsync()
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.IAggregateActor.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_IAggregateActor_ProcessCommandsAsync
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.IAggregateActor.ProcessCommandsAsync
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.IAggregateActor.ProcessCommandsAsync()
+  nameWithType: IAggregateActor.ProcessCommandsAsync()
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.IAggregateActor.ProcessCommandsAsync*
+  name: ProcessCommandsAsync
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.IAggregateActor.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_IAggregateActor_ProcessCommandsAsync_
+  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.IAggregateActor.ProcessCommandsAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.IAggregateActor.ProcessCommandsAsync
+  nameWithType: IAggregateActor.ProcessCommandsAsync
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.IAggregateActor.SubmitCommandAsync(Hexalith.Infrastructure.DaprRuntime.Handlers.ActorCommandEnvelope)
+  name: SubmitCommandAsync(ActorCommandEnvelope)
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.IAggregateActor.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_IAggregateActor_SubmitCommandAsync_Hexalith_Infrastructure_DaprRuntime_Handlers_ActorCommandEnvelope_
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.IAggregateActor.SubmitCommandAsync(Hexalith.Infrastructure.DaprRuntime.Handlers.ActorCommandEnvelope)
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.IAggregateActor.SubmitCommandAsync(Hexalith.Infrastructure.DaprRuntime.Handlers.ActorCommandEnvelope)
+  nameWithType: IAggregateActor.SubmitCommandAsync(ActorCommandEnvelope)
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.IAggregateActor.SubmitCommandAsync*
+  name: SubmitCommandAsync
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.IAggregateActor.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_IAggregateActor_SubmitCommandAsync_
+  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.IAggregateActor.SubmitCommandAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.IAggregateActor.SubmitCommandAsync
+  nameWithType: IAggregateActor.SubmitCommandAsync
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.ISalesInvoiceAggregateActor
+  name: ISalesInvoiceAggregateActor
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.ISalesInvoiceAggregateActor.html
+  commentId: T:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.ISalesInvoiceAggregateActor
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.ISalesInvoiceAggregateActor
+  nameWithType: ISalesInvoiceAggregateActor
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.ISalesInvoiceAggregateActor.SayHelloAsync
+  name: SayHelloAsync()
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.ISalesInvoiceAggregateActor.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_ISalesInvoiceAggregateActor_SayHelloAsync
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.ISalesInvoiceAggregateActor.SayHelloAsync
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.ISalesInvoiceAggregateActor.SayHelloAsync()
+  nameWithType: ISalesInvoiceAggregateActor.SayHelloAsync()
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.ISalesInvoiceAggregateActor.SayHelloAsync*
+  name: SayHelloAsync
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.ISalesInvoiceAggregateActor.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_ISalesInvoiceAggregateActor_SayHelloAsync_
+  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.ISalesInvoiceAggregateActor.SayHelloAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.ISalesInvoiceAggregateActor.SayHelloAsync
+  nameWithType: ISalesInvoiceAggregateActor.SayHelloAsync
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor
+  name: SalesInvoiceAggregateActor
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.html
+  commentId: T:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor
+  nameWithType: SalesInvoiceAggregateActor
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.#ctor(Dapr.Actors.Runtime.ActorHost)
+  name: SalesInvoiceAggregateActor(ActorHost)
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_SalesInvoiceAggregateActor__ctor_Dapr_Actors_Runtime_ActorHost_
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.#ctor(Dapr.Actors.Runtime.ActorHost)
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.SalesInvoiceAggregateActor(Dapr.Actors.Runtime.ActorHost)
+  nameWithType: SalesInvoiceAggregateActor.SalesInvoiceAggregateActor(ActorHost)
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.#ctor*
+  name: SalesInvoiceAggregateActor
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_SalesInvoiceAggregateActor__ctor_
+  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.SalesInvoiceAggregateActor
+  nameWithType: SalesInvoiceAggregateActor.SalesInvoiceAggregateActor
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.SayHelloAsync
+  name: SayHelloAsync()
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_SalesInvoiceAggregateActor_SayHelloAsync
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.SayHelloAsync
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.SayHelloAsync()
+  nameWithType: SalesInvoiceAggregateActor.SayHelloAsync()
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.SayHelloAsync*
+  name: SayHelloAsync
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_SalesInvoiceAggregateActor_SayHelloAsync_
+  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.SayHelloAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.SayHelloAsync
+  nameWithType: SalesInvoiceAggregateActor.SayHelloAsync
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Configurations
+  name: Hexalith.Infrastructure.DaprRuntime.Sales.Configurations
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Configurations.html
+  commentId: N:Hexalith.Infrastructure.DaprRuntime.Sales.Configurations
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Configurations
+  nameWithType: Hexalith.Infrastructure.DaprRuntime.Sales.Configurations
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Configurations.SalesInvoiceSettings
+  name: SalesInvoiceSettings
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Configurations.SalesInvoiceSettings.html
+  commentId: T:Hexalith.Infrastructure.DaprRuntime.Sales.Configurations.SalesInvoiceSettings
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Configurations.SalesInvoiceSettings
+  nameWithType: SalesInvoiceSettings
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Configurations.SalesInvoiceSettings.CommandProcessor
+  name: CommandProcessor
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Configurations.SalesInvoiceSettings.html#Hexalith_Infrastructure_DaprRuntime_Sales_Configurations_SalesInvoiceSettings_CommandProcessor
+  commentId: P:Hexalith.Infrastructure.DaprRuntime.Sales.Configurations.SalesInvoiceSettings.CommandProcessor
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Configurations.SalesInvoiceSettings.CommandProcessor
+  nameWithType: SalesInvoiceSettings.CommandProcessor
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Configurations.SalesInvoiceSettings.CommandProcessor*
+  name: CommandProcessor
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Configurations.SalesInvoiceSettings.html#Hexalith_Infrastructure_DaprRuntime_Sales_Configurations_SalesInvoiceSettings_CommandProcessor_
+  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Sales.Configurations.SalesInvoiceSettings.CommandProcessor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Configurations.SalesInvoiceSettings.CommandProcessor
+  nameWithType: SalesInvoiceSettings.CommandProcessor
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Configurations.SalesInvoiceSettings.ConfigurationName
+  name: ConfigurationName()
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Configurations.SalesInvoiceSettings.html#Hexalith_Infrastructure_DaprRuntime_Sales_Configurations_SalesInvoiceSettings_ConfigurationName
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Sales.Configurations.SalesInvoiceSettings.ConfigurationName
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Configurations.SalesInvoiceSettings.ConfigurationName()
+  nameWithType: SalesInvoiceSettings.ConfigurationName()
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Configurations.SalesInvoiceSettings.ConfigurationName*
+  name: ConfigurationName
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Configurations.SalesInvoiceSettings.html#Hexalith_Infrastructure_DaprRuntime_Sales_Configurations_SalesInvoiceSettings_ConfigurationName_
+  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Sales.Configurations.SalesInvoiceSettings.ConfigurationName
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Configurations.SalesInvoiceSettings.ConfigurationName
+  nameWithType: SalesInvoiceSettings.ConfigurationName
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Helpers
+  name: Hexalith.Infrastructure.DaprRuntime.Sales.Helpers
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.html
+  commentId: N:Hexalith.Infrastructure.DaprRuntime.Sales.Helpers
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Helpers
+  nameWithType: Hexalith.Infrastructure.DaprRuntime.Sales.Helpers
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesActorsHelper
+  name: SalesActorsHelper
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesActorsHelper.html
+  commentId: T:Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesActorsHelper
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesActorsHelper
+  nameWithType: SalesActorsHelper
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesActorsHelper.AddSalesAggregates(Dapr.Actors.Runtime.ActorRegistrationCollection)
+  name: AddSalesAggregates(ActorRegistrationCollection)
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesActorsHelper.html#Hexalith_Infrastructure_DaprRuntime_Sales_Helpers_SalesActorsHelper_AddSalesAggregates_Dapr_Actors_Runtime_ActorRegistrationCollection_
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesActorsHelper.AddSalesAggregates(Dapr.Actors.Runtime.ActorRegistrationCollection)
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesActorsHelper.AddSalesAggregates(Dapr.Actors.Runtime.ActorRegistrationCollection)
+  nameWithType: SalesActorsHelper.AddSalesAggregates(ActorRegistrationCollection)
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesActorsHelper.AddSalesAggregates*
+  name: AddSalesAggregates
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesActorsHelper.html#Hexalith_Infrastructure_DaprRuntime_Sales_Helpers_SalesActorsHelper_AddSalesAggregates_
+  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesActorsHelper.AddSalesAggregates
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesActorsHelper.AddSalesAggregates
+  nameWithType: SalesActorsHelper.AddSalesAggregates
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesActorsHelper.AddSalesProjections(Dapr.Actors.Runtime.ActorRegistrationCollection,System.String)
+  name: AddSalesProjections(ActorRegistrationCollection, String)
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesActorsHelper.html#Hexalith_Infrastructure_DaprRuntime_Sales_Helpers_SalesActorsHelper_AddSalesProjections_Dapr_Actors_Runtime_ActorRegistrationCollection_System_String_
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesActorsHelper.AddSalesProjections(Dapr.Actors.Runtime.ActorRegistrationCollection,System.String)
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesActorsHelper.AddSalesProjections(Dapr.Actors.Runtime.ActorRegistrationCollection, System.String)
+  nameWithType: SalesActorsHelper.AddSalesProjections(ActorRegistrationCollection, String)
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesActorsHelper.AddSalesProjections*
+  name: AddSalesProjections
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesActorsHelper.html#Hexalith_Infrastructure_DaprRuntime_Sales_Helpers_SalesActorsHelper_AddSalesProjections_
+  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesActorsHelper.AddSalesProjections
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesActorsHelper.AddSalesProjections
+  nameWithType: SalesActorsHelper.AddSalesProjections
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesHelper
+  name: SalesHelper
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesHelper.html
+  commentId: T:Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesHelper
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesHelper
+  nameWithType: SalesHelper
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesHelper.AddDaprSales(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
+  name: AddDaprSales(IServiceCollection, IConfiguration)
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesHelper.html#Hexalith_Infrastructure_DaprRuntime_Sales_Helpers_SalesHelper_AddDaprSales_Microsoft_Extensions_DependencyInjection_IServiceCollection_Microsoft_Extensions_Configuration_IConfiguration_
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesHelper.AddDaprSales(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesHelper.AddDaprSales(Microsoft.Extensions.DependencyInjection.IServiceCollection, Microsoft.Extensions.Configuration.IConfiguration)
+  nameWithType: SalesHelper.AddDaprSales(IServiceCollection, IConfiguration)
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesHelper.AddDaprSales*
+  name: AddDaprSales
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesHelper.html#Hexalith_Infrastructure_DaprRuntime_Sales_Helpers_SalesHelper_AddDaprSales_
+  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesHelper.AddDaprSales
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesHelper.AddDaprSales
+  nameWithType: SalesHelper.AddDaprSales
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesHelper.AddDaprSalesClient(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  name: AddDaprSalesClient(IServiceCollection)
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesHelper.html#Hexalith_Infrastructure_DaprRuntime_Sales_Helpers_SalesHelper_AddDaprSalesClient_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesHelper.AddDaprSalesClient(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesHelper.AddDaprSalesClient(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  nameWithType: SalesHelper.AddDaprSalesClient(IServiceCollection)
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesHelper.AddDaprSalesClient*
+  name: AddDaprSalesClient
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesHelper.html#Hexalith_Infrastructure_DaprRuntime_Sales_Helpers_SalesHelper_AddDaprSalesClient_
+  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesHelper.AddDaprSalesClient
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Helpers.SalesHelper.AddDaprSalesClient
+  nameWithType: SalesHelper.AddDaprSalesClient
 - uid: Hexalith.Infrastructure.DaprRuntime.States
   name: Hexalith.Infrastructure.DaprRuntime.States
   href: api/Hexalith.Infrastructure.DaprRuntime.States.html
@@ -29353,6 +30668,216 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.WebApis.PartiesEvents.Projections.IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler.IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler
   nameWithType: IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler.IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler
+- uid: Hexalith.Infrastructure.WebApis.SalesCommands.Controllers
+  name: Hexalith.Infrastructure.WebApis.SalesCommands.Controllers
+  href: api/Hexalith.Infrastructure.WebApis.SalesCommands.Controllers.html
+  commentId: N:Hexalith.Infrastructure.WebApis.SalesCommands.Controllers
+  fullName: Hexalith.Infrastructure.WebApis.SalesCommands.Controllers
+  nameWithType: Hexalith.Infrastructure.WebApis.SalesCommands.Controllers
+- uid: Hexalith.Infrastructure.WebApis.SalesCommands.Controllers.SalesCommandsController
+  name: SalesCommandsController
+  href: api/Hexalith.Infrastructure.WebApis.SalesCommands.Controllers.SalesCommandsController.html
+  commentId: T:Hexalith.Infrastructure.WebApis.SalesCommands.Controllers.SalesCommandsController
+  fullName: Hexalith.Infrastructure.WebApis.SalesCommands.Controllers.SalesCommandsController
+  nameWithType: SalesCommandsController
+- uid: Hexalith.Infrastructure.WebApis.SalesCommands.Controllers.SalesInvoiceCommandsBusTopicAttribute
+  name: SalesInvoiceCommandsBusTopicAttribute
+  href: api/Hexalith.Infrastructure.WebApis.SalesCommands.Controllers.SalesInvoiceCommandsBusTopicAttribute.html
+  commentId: T:Hexalith.Infrastructure.WebApis.SalesCommands.Controllers.SalesInvoiceCommandsBusTopicAttribute
+  fullName: Hexalith.Infrastructure.WebApis.SalesCommands.Controllers.SalesInvoiceCommandsBusTopicAttribute
+  nameWithType: SalesInvoiceCommandsBusTopicAttribute
+- uid: Hexalith.Infrastructure.WebApis.SalesCommands.Controllers.SalesInvoiceCommandsBusTopicAttribute.#ctor
+  name: SalesInvoiceCommandsBusTopicAttribute()
+  href: api/Hexalith.Infrastructure.WebApis.SalesCommands.Controllers.SalesInvoiceCommandsBusTopicAttribute.html#Hexalith_Infrastructure_WebApis_SalesCommands_Controllers_SalesInvoiceCommandsBusTopicAttribute__ctor
+  commentId: M:Hexalith.Infrastructure.WebApis.SalesCommands.Controllers.SalesInvoiceCommandsBusTopicAttribute.#ctor
+  fullName: Hexalith.Infrastructure.WebApis.SalesCommands.Controllers.SalesInvoiceCommandsBusTopicAttribute.SalesInvoiceCommandsBusTopicAttribute()
+  nameWithType: SalesInvoiceCommandsBusTopicAttribute.SalesInvoiceCommandsBusTopicAttribute()
+- uid: Hexalith.Infrastructure.WebApis.SalesCommands.Controllers.SalesInvoiceCommandsBusTopicAttribute.#ctor*
+  name: SalesInvoiceCommandsBusTopicAttribute
+  href: api/Hexalith.Infrastructure.WebApis.SalesCommands.Controllers.SalesInvoiceCommandsBusTopicAttribute.html#Hexalith_Infrastructure_WebApis_SalesCommands_Controllers_SalesInvoiceCommandsBusTopicAttribute__ctor_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.SalesCommands.Controllers.SalesInvoiceCommandsBusTopicAttribute.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.SalesCommands.Controllers.SalesInvoiceCommandsBusTopicAttribute.SalesInvoiceCommandsBusTopicAttribute
+  nameWithType: SalesInvoiceCommandsBusTopicAttribute.SalesInvoiceCommandsBusTopicAttribute
+- uid: Hexalith.Infrastructure.WebApis.SalesCommands.Helpers
+  name: Hexalith.Infrastructure.WebApis.SalesCommands.Helpers
+  href: api/Hexalith.Infrastructure.WebApis.SalesCommands.Helpers.html
+  commentId: N:Hexalith.Infrastructure.WebApis.SalesCommands.Helpers
+  fullName: Hexalith.Infrastructure.WebApis.SalesCommands.Helpers
+  nameWithType: Hexalith.Infrastructure.WebApis.SalesCommands.Helpers
+- uid: Hexalith.Infrastructure.WebApis.SalesCommands.Helpers.SalesWebApiHelpers
+  name: SalesWebApiHelpers
+  href: api/Hexalith.Infrastructure.WebApis.SalesCommands.Helpers.SalesWebApiHelpers.html
+  commentId: T:Hexalith.Infrastructure.WebApis.SalesCommands.Helpers.SalesWebApiHelpers
+  fullName: Hexalith.Infrastructure.WebApis.SalesCommands.Helpers.SalesWebApiHelpers
+  nameWithType: SalesWebApiHelpers
+- uid: Hexalith.Infrastructure.WebApis.SalesCommands.Helpers.SalesWebApiHelpers.AddSalesCommandsSubmission(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  name: AddSalesCommandsSubmission(IServiceCollection)
+  href: api/Hexalith.Infrastructure.WebApis.SalesCommands.Helpers.SalesWebApiHelpers.html#Hexalith_Infrastructure_WebApis_SalesCommands_Helpers_SalesWebApiHelpers_AddSalesCommandsSubmission_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  commentId: M:Hexalith.Infrastructure.WebApis.SalesCommands.Helpers.SalesWebApiHelpers.AddSalesCommandsSubmission(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  fullName: Hexalith.Infrastructure.WebApis.SalesCommands.Helpers.SalesWebApiHelpers.AddSalesCommandsSubmission(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  nameWithType: SalesWebApiHelpers.AddSalesCommandsSubmission(IServiceCollection)
+- uid: Hexalith.Infrastructure.WebApis.SalesCommands.Helpers.SalesWebApiHelpers.AddSalesCommandsSubmission*
+  name: AddSalesCommandsSubmission
+  href: api/Hexalith.Infrastructure.WebApis.SalesCommands.Helpers.SalesWebApiHelpers.html#Hexalith_Infrastructure_WebApis_SalesCommands_Helpers_SalesWebApiHelpers_AddSalesCommandsSubmission_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.SalesCommands.Helpers.SalesWebApiHelpers.AddSalesCommandsSubmission
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.SalesCommands.Helpers.SalesWebApiHelpers.AddSalesCommandsSubmission
+  nameWithType: SalesWebApiHelpers.AddSalesCommandsSubmission
+- uid: Hexalith.Infrastructure.WebApis.SalesEvents.Controllers
+  name: Hexalith.Infrastructure.WebApis.SalesEvents.Controllers
+  href: api/Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.html
+  commentId: N:Hexalith.Infrastructure.WebApis.SalesEvents.Controllers
+  fullName: Hexalith.Infrastructure.WebApis.SalesEvents.Controllers
+  nameWithType: Hexalith.Infrastructure.WebApis.SalesEvents.Controllers
+- uid: Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceEventsBusTopicAttribute
+  name: SalesInvoiceEventsBusTopicAttribute
+  href: api/Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceEventsBusTopicAttribute.html
+  commentId: T:Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceEventsBusTopicAttribute
+  fullName: Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceEventsBusTopicAttribute
+  nameWithType: SalesInvoiceEventsBusTopicAttribute
+- uid: Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceEventsBusTopicAttribute.#ctor
+  name: SalesInvoiceEventsBusTopicAttribute()
+  href: api/Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceEventsBusTopicAttribute.html#Hexalith_Infrastructure_WebApis_SalesEvents_Controllers_SalesInvoiceEventsBusTopicAttribute__ctor
+  commentId: M:Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceEventsBusTopicAttribute.#ctor
+  fullName: Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceEventsBusTopicAttribute.SalesInvoiceEventsBusTopicAttribute()
+  nameWithType: SalesInvoiceEventsBusTopicAttribute.SalesInvoiceEventsBusTopicAttribute()
+- uid: Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceEventsBusTopicAttribute.#ctor*
+  name: SalesInvoiceEventsBusTopicAttribute
+  href: api/Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceEventsBusTopicAttribute.html#Hexalith_Infrastructure_WebApis_SalesEvents_Controllers_SalesInvoiceEventsBusTopicAttribute__ctor_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceEventsBusTopicAttribute.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceEventsBusTopicAttribute.SalesInvoiceEventsBusTopicAttribute
+  nameWithType: SalesInvoiceEventsBusTopicAttribute.SalesInvoiceEventsBusTopicAttribute
+- uid: Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceIntegrationEventsController
+  name: SalesInvoiceIntegrationEventsController
+  href: api/Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceIntegrationEventsController.html
+  commentId: T:Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceIntegrationEventsController
+  fullName: Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceIntegrationEventsController
+  nameWithType: SalesInvoiceIntegrationEventsController
+- uid: Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceIntegrationEventsController.#ctor(Hexalith.Application.Events.IIntegrationEventProcessor,Hexalith.Application.Projection.IProjectionUpdateProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger)
+  name: SalesInvoiceIntegrationEventsController(IIntegrationEventProcessor, IProjectionUpdateProcessor, IHostEnvironment, ILogger)
+  href: api/Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_SalesEvents_Controllers_SalesInvoiceIntegrationEventsController__ctor_Hexalith_Application_Events_IIntegrationEventProcessor_Hexalith_Application_Projection_IProjectionUpdateProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Logging_ILogger_
+  commentId: M:Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceIntegrationEventsController.#ctor(Hexalith.Application.Events.IIntegrationEventProcessor,Hexalith.Application.Projection.IProjectionUpdateProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger)
+  fullName: Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceIntegrationEventsController.SalesInvoiceIntegrationEventsController(Hexalith.Application.Events.IIntegrationEventProcessor, Hexalith.Application.Projection.IProjectionUpdateProcessor, Microsoft.Extensions.Hosting.IHostEnvironment, Microsoft.Extensions.Logging.ILogger)
+  nameWithType: SalesInvoiceIntegrationEventsController.SalesInvoiceIntegrationEventsController(IIntegrationEventProcessor, IProjectionUpdateProcessor, IHostEnvironment, ILogger)
+- uid: Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceIntegrationEventsController.#ctor*
+  name: SalesInvoiceIntegrationEventsController
+  href: api/Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_SalesEvents_Controllers_SalesInvoiceIntegrationEventsController__ctor_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceIntegrationEventsController.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceIntegrationEventsController.SalesInvoiceIntegrationEventsController
+  nameWithType: SalesInvoiceIntegrationEventsController.SalesInvoiceIntegrationEventsController
+- uid: Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceIntegrationEventsController.HandleSalesInvoiceEventsAsync(Hexalith.Application.States.EventState)
+  name: HandleSalesInvoiceEventsAsync(EventState)
+  href: api/Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_SalesEvents_Controllers_SalesInvoiceIntegrationEventsController_HandleSalesInvoiceEventsAsync_Hexalith_Application_States_EventState_
+  commentId: M:Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceIntegrationEventsController.HandleSalesInvoiceEventsAsync(Hexalith.Application.States.EventState)
+  fullName: Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceIntegrationEventsController.HandleSalesInvoiceEventsAsync(Hexalith.Application.States.EventState)
+  nameWithType: SalesInvoiceIntegrationEventsController.HandleSalesInvoiceEventsAsync(EventState)
+- uid: Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceIntegrationEventsController.HandleSalesInvoiceEventsAsync*
+  name: HandleSalesInvoiceEventsAsync
+  href: api/Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceIntegrationEventsController.html#Hexalith_Infrastructure_WebApis_SalesEvents_Controllers_SalesInvoiceIntegrationEventsController_HandleSalesInvoiceEventsAsync_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceIntegrationEventsController.HandleSalesInvoiceEventsAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceIntegrationEventsController.HandleSalesInvoiceEventsAsync
+  nameWithType: SalesInvoiceIntegrationEventsController.HandleSalesInvoiceEventsAsync
+- uid: Hexalith.Infrastructure.WebApis.SalesEvents.Helpers
+  name: Hexalith.Infrastructure.WebApis.SalesEvents.Helpers
+  href: api/Hexalith.Infrastructure.WebApis.SalesEvents.Helpers.html
+  commentId: N:Hexalith.Infrastructure.WebApis.SalesEvents.Helpers
+  fullName: Hexalith.Infrastructure.WebApis.SalesEvents.Helpers
+  nameWithType: Hexalith.Infrastructure.WebApis.SalesEvents.Helpers
+- uid: Hexalith.Infrastructure.WebApis.SalesEvents.Helpers.SalesWebApiHelpers
+  name: SalesWebApiHelpers
+  href: api/Hexalith.Infrastructure.WebApis.SalesEvents.Helpers.SalesWebApiHelpers.html
+  commentId: T:Hexalith.Infrastructure.WebApis.SalesEvents.Helpers.SalesWebApiHelpers
+  fullName: Hexalith.Infrastructure.WebApis.SalesEvents.Helpers.SalesWebApiHelpers
+  nameWithType: SalesWebApiHelpers
+- uid: Hexalith.Infrastructure.WebApis.SalesEvents.Helpers.SalesWebApiHelpers.AddSalesInvoiceProjections(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)
+  name: AddSalesInvoiceProjections(IServiceCollection, String)
+  href: api/Hexalith.Infrastructure.WebApis.SalesEvents.Helpers.SalesWebApiHelpers.html#Hexalith_Infrastructure_WebApis_SalesEvents_Helpers_SalesWebApiHelpers_AddSalesInvoiceProjections_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_String_
+  commentId: M:Hexalith.Infrastructure.WebApis.SalesEvents.Helpers.SalesWebApiHelpers.AddSalesInvoiceProjections(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)
+  fullName: Hexalith.Infrastructure.WebApis.SalesEvents.Helpers.SalesWebApiHelpers.AddSalesInvoiceProjections(Microsoft.Extensions.DependencyInjection.IServiceCollection, System.String)
+  nameWithType: SalesWebApiHelpers.AddSalesInvoiceProjections(IServiceCollection, String)
+- uid: Hexalith.Infrastructure.WebApis.SalesEvents.Helpers.SalesWebApiHelpers.AddSalesInvoiceProjections*
+  name: AddSalesInvoiceProjections
+  href: api/Hexalith.Infrastructure.WebApis.SalesEvents.Helpers.SalesWebApiHelpers.html#Hexalith_Infrastructure_WebApis_SalesEvents_Helpers_SalesWebApiHelpers_AddSalesInvoiceProjections_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.SalesEvents.Helpers.SalesWebApiHelpers.AddSalesInvoiceProjections
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.SalesEvents.Helpers.SalesWebApiHelpers.AddSalesInvoiceProjections
+  nameWithType: SalesWebApiHelpers.AddSalesInvoiceProjections
+- uid: Hexalith.Infrastructure.WebApis.SalesEvents.Projections
+  name: Hexalith.Infrastructure.WebApis.SalesEvents.Projections
+  href: api/Hexalith.Infrastructure.WebApis.SalesEvents.Projections.html
+  commentId: N:Hexalith.Infrastructure.WebApis.SalesEvents.Projections
+  fullName: Hexalith.Infrastructure.WebApis.SalesEvents.Projections
+  nameWithType: Hexalith.Infrastructure.WebApis.SalesEvents.Projections
+- uid: Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceIssuedProjectionUpdateHandler
+  name: SalesInvoiceIssuedProjectionUpdateHandler
+  href: api/Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceIssuedProjectionUpdateHandler.html
+  commentId: T:Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceIssuedProjectionUpdateHandler
+  fullName: Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceIssuedProjectionUpdateHandler
+  nameWithType: SalesInvoiceIssuedProjectionUpdateHandler
+- uid: Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceIssuedProjectionUpdateHandler.#ctor(Hexalith.Infrastructure.DaprRuntime.Projections.IActorProjectionFactory{Hexalith.Domain.Aggregates.SalesInvoiceState})
+  name: SalesInvoiceIssuedProjectionUpdateHandler(IActorProjectionFactory<SalesInvoiceState>)
+  href: api/Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceIssuedProjectionUpdateHandler.html#Hexalith_Infrastructure_WebApis_SalesEvents_Projections_SalesInvoiceIssuedProjectionUpdateHandler__ctor_Hexalith_Infrastructure_DaprRuntime_Projections_IActorProjectionFactory_Hexalith_Domain_Aggregates_SalesInvoiceState__
+  commentId: M:Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceIssuedProjectionUpdateHandler.#ctor(Hexalith.Infrastructure.DaprRuntime.Projections.IActorProjectionFactory{Hexalith.Domain.Aggregates.SalesInvoiceState})
+  name.vb: SalesInvoiceIssuedProjectionUpdateHandler(IActorProjectionFactory(Of SalesInvoiceState))
+  fullName: Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceIssuedProjectionUpdateHandler.SalesInvoiceIssuedProjectionUpdateHandler(Hexalith.Infrastructure.DaprRuntime.Projections.IActorProjectionFactory<Hexalith.Domain.Aggregates.SalesInvoiceState>)
+  fullName.vb: Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceIssuedProjectionUpdateHandler.SalesInvoiceIssuedProjectionUpdateHandler(Hexalith.Infrastructure.DaprRuntime.Projections.IActorProjectionFactory(Of Hexalith.Domain.Aggregates.SalesInvoiceState))
+  nameWithType: SalesInvoiceIssuedProjectionUpdateHandler.SalesInvoiceIssuedProjectionUpdateHandler(IActorProjectionFactory<SalesInvoiceState>)
+  nameWithType.vb: SalesInvoiceIssuedProjectionUpdateHandler.SalesInvoiceIssuedProjectionUpdateHandler(IActorProjectionFactory(Of SalesInvoiceState))
+- uid: Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceIssuedProjectionUpdateHandler.#ctor*
+  name: SalesInvoiceIssuedProjectionUpdateHandler
+  href: api/Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceIssuedProjectionUpdateHandler.html#Hexalith_Infrastructure_WebApis_SalesEvents_Projections_SalesInvoiceIssuedProjectionUpdateHandler__ctor_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceIssuedProjectionUpdateHandler.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceIssuedProjectionUpdateHandler.SalesInvoiceIssuedProjectionUpdateHandler
+  nameWithType: SalesInvoiceIssuedProjectionUpdateHandler.SalesInvoiceIssuedProjectionUpdateHandler
+- uid: Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceProjectionUpdateHandler`1
+  name: SalesInvoiceProjectionUpdateHandler<TSalesInvoiceEvent>
+  href: api/Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceProjectionUpdateHandler-1.html
+  commentId: T:Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceProjectionUpdateHandler`1
+  name.vb: SalesInvoiceProjectionUpdateHandler(Of TSalesInvoiceEvent)
+  fullName: Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceProjectionUpdateHandler<TSalesInvoiceEvent>
+  fullName.vb: Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceProjectionUpdateHandler(Of TSalesInvoiceEvent)
+  nameWithType: SalesInvoiceProjectionUpdateHandler<TSalesInvoiceEvent>
+  nameWithType.vb: SalesInvoiceProjectionUpdateHandler(Of TSalesInvoiceEvent)
+- uid: Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceProjectionUpdateHandler`1.#ctor(Hexalith.Infrastructure.DaprRuntime.Projections.IActorProjectionFactory{Hexalith.Domain.Aggregates.SalesInvoiceState})
+  name: SalesInvoiceProjectionUpdateHandler(IActorProjectionFactory<SalesInvoiceState>)
+  href: api/Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceProjectionUpdateHandler-1.html#Hexalith_Infrastructure_WebApis_SalesEvents_Projections_SalesInvoiceProjectionUpdateHandler_1__ctor_Hexalith_Infrastructure_DaprRuntime_Projections_IActorProjectionFactory_Hexalith_Domain_Aggregates_SalesInvoiceState__
+  commentId: M:Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceProjectionUpdateHandler`1.#ctor(Hexalith.Infrastructure.DaprRuntime.Projections.IActorProjectionFactory{Hexalith.Domain.Aggregates.SalesInvoiceState})
+  name.vb: SalesInvoiceProjectionUpdateHandler(IActorProjectionFactory(Of SalesInvoiceState))
+  fullName: Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceProjectionUpdateHandler<TSalesInvoiceEvent>.SalesInvoiceProjectionUpdateHandler(Hexalith.Infrastructure.DaprRuntime.Projections.IActorProjectionFactory<Hexalith.Domain.Aggregates.SalesInvoiceState>)
+  fullName.vb: Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceProjectionUpdateHandler(Of TSalesInvoiceEvent).SalesInvoiceProjectionUpdateHandler(Hexalith.Infrastructure.DaprRuntime.Projections.IActorProjectionFactory(Of Hexalith.Domain.Aggregates.SalesInvoiceState))
+  nameWithType: SalesInvoiceProjectionUpdateHandler<TSalesInvoiceEvent>.SalesInvoiceProjectionUpdateHandler(IActorProjectionFactory<SalesInvoiceState>)
+  nameWithType.vb: SalesInvoiceProjectionUpdateHandler(Of TSalesInvoiceEvent).SalesInvoiceProjectionUpdateHandler(IActorProjectionFactory(Of SalesInvoiceState))
+- uid: Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceProjectionUpdateHandler`1.#ctor*
+  name: SalesInvoiceProjectionUpdateHandler
+  href: api/Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceProjectionUpdateHandler-1.html#Hexalith_Infrastructure_WebApis_SalesEvents_Projections_SalesInvoiceProjectionUpdateHandler_1__ctor_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceProjectionUpdateHandler`1.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceProjectionUpdateHandler<TSalesInvoiceEvent>.SalesInvoiceProjectionUpdateHandler
+  fullName.vb: Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceProjectionUpdateHandler(Of TSalesInvoiceEvent).SalesInvoiceProjectionUpdateHandler
+  nameWithType: SalesInvoiceProjectionUpdateHandler<TSalesInvoiceEvent>.SalesInvoiceProjectionUpdateHandler
+  nameWithType.vb: SalesInvoiceProjectionUpdateHandler(Of TSalesInvoiceEvent).SalesInvoiceProjectionUpdateHandler
+- uid: Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceProjectionUpdateHandler`1.ApplyAsync(`0,Hexalith.Application.Metadatas.IMetadata,System.Threading.CancellationToken)
+  name: ApplyAsync(TSalesInvoiceEvent, IMetadata, CancellationToken)
+  href: api/Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceProjectionUpdateHandler-1.html#Hexalith_Infrastructure_WebApis_SalesEvents_Projections_SalesInvoiceProjectionUpdateHandler_1_ApplyAsync__0_Hexalith_Application_Metadatas_IMetadata_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceProjectionUpdateHandler`1.ApplyAsync(`0,Hexalith.Application.Metadatas.IMetadata,System.Threading.CancellationToken)
+  fullName: Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceProjectionUpdateHandler<TSalesInvoiceEvent>.ApplyAsync(TSalesInvoiceEvent, Hexalith.Application.Metadatas.IMetadata, System.Threading.CancellationToken)
+  fullName.vb: Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceProjectionUpdateHandler(Of TSalesInvoiceEvent).ApplyAsync(TSalesInvoiceEvent, Hexalith.Application.Metadatas.IMetadata, System.Threading.CancellationToken)
+  nameWithType: SalesInvoiceProjectionUpdateHandler<TSalesInvoiceEvent>.ApplyAsync(TSalesInvoiceEvent, IMetadata, CancellationToken)
+  nameWithType.vb: SalesInvoiceProjectionUpdateHandler(Of TSalesInvoiceEvent).ApplyAsync(TSalesInvoiceEvent, IMetadata, CancellationToken)
+- uid: Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceProjectionUpdateHandler`1.ApplyAsync*
+  name: ApplyAsync
+  href: api/Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceProjectionUpdateHandler-1.html#Hexalith_Infrastructure_WebApis_SalesEvents_Projections_SalesInvoiceProjectionUpdateHandler_1_ApplyAsync_
+  commentId: Overload:Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceProjectionUpdateHandler`1.ApplyAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceProjectionUpdateHandler<TSalesInvoiceEvent>.ApplyAsync
+  fullName.vb: Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceProjectionUpdateHandler(Of TSalesInvoiceEvent).ApplyAsync
+  nameWithType: SalesInvoiceProjectionUpdateHandler<TSalesInvoiceEvent>.ApplyAsync
+  nameWithType.vb: SalesInvoiceProjectionUpdateHandler(Of TSalesInvoiceEvent).ApplyAsync
 - uid: Hexalith.Server.Dynamics365Finance
   name: Hexalith.Server.Dynamics365Finance
   href: api/Hexalith.Server.Dynamics365Finance.html

@@ -15,13 +15,16 @@
 // ***********************************************************************
 namespace Hexalith.Infrastructure.DaprRuntime.Sales.Actors;
 
-using System;
-using System.Threading.Tasks;
-
 using Dapr.Actors;
 using Dapr.Actors.Runtime;
 
-using Hexalith.Infrastructure.DaprRuntime.Handlers;
+using Hexalith.Application.Commands;
+using Hexalith.Application.Events;
+using Hexalith.Application.Notifications;
+using Hexalith.Application.Requests;
+using Hexalith.Domain.Aggregates;
+using Hexalith.Extensions.Common;
+using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 
 using Microsoft.Extensions.Logging;
 
@@ -29,16 +32,31 @@ using Microsoft.Extensions.Logging;
 /// Logistics partner catalog item aggregate actor interface <see cref="BspkSalesInvoice" />.
 /// Extends the <see cref="IActor" />.
 /// </summary>
-public abstract partial class AggregateActor : Actor, IAggregateActor
+public partial class AggregateActor : AggregateActorBase, IAggregateActor
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="AggregateActor" /> class.
+    /// Initializes a new instance of the <see cref="AggregateActor"/> class.
     /// </summary>
     /// <param name="host">The host.</param>
-    /// <exception cref="System.ArgumentNullException"></exception>
+    /// <param name="commandDispatcher">The command dispatcher.</param>
+    /// <param name="aggregateFactory">The aggregate factory.</param>
+    /// <param name="dateTimeService">The date time service.</param>
+    /// <param name="eventBus">The event bus.</param>
+    /// <param name="notificationBus">The notification bus.</param>
+    /// <param name="commandBus">The command bus.</param>
+    /// <param name="requestBus">The request bus.</param>
     protected AggregateActor(
-        ActorHost host)
-        : base(host) => ArgumentNullException.ThrowIfNull(host);
+        ActorHost host,
+        ICommandDispatcher commandDispatcher,
+        IAggregateFactory aggregateFactory,
+        IDateTimeService dateTimeService,
+        IEventBus eventBus,
+        INotificationBus notificationBus,
+        ICommandBus commandBus,
+        IRequestBus requestBus)
+        : base(host, commandDispatcher, aggregateFactory, dateTimeService, eventBus, notificationBus, commandBus, requestBus)
+    {
+    }
 
     /// <summary>
     /// Logs the processing commands information.
@@ -51,14 +69,4 @@ public abstract partial class AggregateActor : Actor, IAggregateActor
             Level = LogLevel.Information,
             Message = "Actor {ActorType} ({ActorId}) is processing commands.")]
     public static partial void LogProcessingCommandsInformation(ILogger logger, string actorId, string actorType);
-
-    /// <inheritdoc/>
-    public async Task ProcessCommandsAsync()
-    {
-        LogProcessingCommandsInformation(Logger, Id.ToString(), Host.ActorTypeInfo.ActorTypeName);
-        await Task.CompletedTask.ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
-    public async Task SubmitCommandAsync(ActorCommandEnvelope envelope) => await Task.CompletedTask.ConfigureAwait(false);
 }

@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Application\Hexalith.Application.Sales\Hexalith.Application.Sales.csproj" />
+	  <ProjectReference Include="..\Hexalith.Infrastructure.DaprRuntime.Sales\Hexalith.Infrastructure.DaprRuntime.Sales.csproj" />
+	  <ProjectReference Include="..\Hexalith.Infrastructure.WebApis\Hexalith.Infrastructure.WebApis.csproj" />
+	</ItemGroup>
+</Project>

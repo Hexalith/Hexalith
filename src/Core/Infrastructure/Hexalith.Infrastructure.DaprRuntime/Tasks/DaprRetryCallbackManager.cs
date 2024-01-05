@@ -23,6 +23,7 @@ using System.Threading.Tasks;
 using Dapr.Actors.Runtime;
 
 using Hexalith.Application.Tasks;
+using Hexalith.Infrastructure.DaprRuntime.Abstractions;
 
 using Microsoft.Extensions.Logging;
 

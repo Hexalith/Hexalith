@@ -1,0 +1,77 @@
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Infrastructure.DaprRuntime
+// Author           : Jérôme Piquot
+// Created          : 01-04-2024
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 01-04-2024
+// ***********************************************************************
+// <copyright file="CommandProcessingState.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
+namespace Hexalith.Infrastructure.DaprRuntime.Actors;
+
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.DataContracts;
+using System.Text.Json.Serialization;
+
+/// <summary>
+/// Class CommandProcessingState.
+/// </summary>
+[Serializable]
+[DataContract]
+internal class AggregateActorState
+{
+    /// <summary>
+    /// Gets or sets the command count.
+    /// </summary>
+    /// <value>The command count.</value>
+    [DataMember(Order = 1)]
+    [JsonPropertyOrder(1)]
+    public long CommandCount { get; set; }
+
+    /// <summary>
+    /// Gets or sets the event count.
+    /// </summary>
+    /// <value>The event count.</value>
+    [DataMember(Order = 2)]
+    [JsonPropertyOrder(2)]
+    public long EventCount { get; set; }
+
+    /// <summary>
+    /// Gets or sets the last command processed.
+    /// </summary>
+    /// <value>The last command processed.</value>
+    [DataMember(Order = 4)]
+    [JsonPropertyOrder(4)]
+    public long LastCommandProcessed { get; set; }
+
+    /// <summary>
+    /// Gets or sets the last event processed.
+    /// </summary>
+    /// <value>The last event processed.</value>
+    [DataMember(Order = 5)]
+    [JsonPropertyOrder(5)]
+    public long LastMessagePublished { get; set; }
+
+    /// <summary>
+    /// Gets or sets the message count.
+    /// </summary>
+    /// <value>The message count.</value>
+    [DataMember(Order = 3)]
+    [JsonPropertyOrder(3)]
+    public long MessageCount { get; set; }
+
+    /// <summary>
+    /// Gets or sets the reminder.
+    /// </summary>
+    /// <value>The reminder.</value>
+    [DataMember(Order = 6)]
+    [JsonPropertyOrder(6)]
+    public TimeSpan? Reminder { get; set; }
+}

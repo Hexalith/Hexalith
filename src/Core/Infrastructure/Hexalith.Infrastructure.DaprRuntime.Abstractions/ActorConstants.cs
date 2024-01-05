@@ -14,13 +14,18 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Infrastructure.DaprRuntime;
+namespace Hexalith.Infrastructure.DaprRuntime.Abstractions;
 
 /// <summary>
 /// Class ActorConstants.
 /// </summary>
 public static class ActorConstants
 {
+    /// <summary>
+    /// The command store name.
+    /// </summary>
+    public const string CommandStoreName = "Command";
+
     /// <summary>
     /// The continue callback method name.
     /// </summary>
@@ -35,4 +40,14 @@ public static class ActorConstants
     /// The continue timer name.
     /// </summary>
     public const string ContinueTimerName = "Continue";
+
+    /// <summary>
+    /// The event state name.
+    /// </summary>
+    public const string EventSourcingName = "EventSource";
+
+    /// <summary>
+    /// The message store name.
+    /// </summary>
+    public const string MessageStoreName = "Message";
 }

@@ -106,6 +106,12 @@ public abstract class Dynamics365BusinessEventBase : IMetadata, IEvent
     public string? InitiatingUserAzureActiveDirectoryObjectId { get; set; }
 
     /// <summary>
+    /// Gets a value indicating whether this instance is private to aggregate.
+    /// </summary>
+    /// <value><c>true</c> if this instance is private to aggregate; otherwise, <c>false</c>.</value>
+    public bool IsPrivateToAggregate => false;
+
+    /// <summary>
     /// Gets or sets the major version.
     /// </summary>
     [DataMember(Order = 7)]
