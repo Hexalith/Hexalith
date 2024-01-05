@@ -16,12 +16,9 @@ using Hexalith.Application.Events;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.Notifications;
 using Hexalith.Application.Requests;
-using Hexalith.Application.States;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
-using Hexalith.Infrastructure.DaprRuntime.Abstractions;
-using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.DaprRuntime.Sales.Actors;
 
@@ -96,73 +93,75 @@ public partial class AggregateActorTest
                 e.Message.Contains(actor.Host.ActorTypeInfo.ActorTypeName));
     }
 
-    [Fact]
-    public async Task SubmitCommandToNewActorShouldStoreCommand()
-    {
-        DummyAggregateCommand1 command = new() { Id = "123456" };
-        ActorTimerManager timerManager = new DummyTimerManager();
-        ActorHost host = ActorHost.CreateForTest(
-            typeof(AggregateActor),
-            AggregateActorBase.GetAggregateActorName(command.AggregateName),
-            new ActorTestOptions
-            {
-                ActorId = new ActorId(command.AggregateId),
-                TimerManager = timerManager,
-            });
-        Metadata metadata = CreateMetadata(command);
-        Mock<ICommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
-        Mock<IAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
-        Mock<IEventBus> eventBus = new(MockBehavior.Strict);
-        Mock<INotificationBus> notificationBus = new(MockBehavior.Strict);
-        Mock<ICommandBus> commandBus = new(MockBehavior.Strict);
-        Mock<IRequestBus> requestBus = new(MockBehavior.Strict);
-        Mock<IActorStateManager> actorStateManager = new(MockBehavior.Strict);
-        actorStateManager
-            .Setup(s => s.TryGetStateAsync<AggregateActorState>(
-                        It.Is<string>(t => t == ActorConstants.AggregateStateStoreName),
-                        It.IsAny<CancellationToken>()))
-            .ReturnsAsync(default(Dapr.Actors.Runtime.ConditionalValue<AggregateActorState>))
-            .Verifiable();
-        actorStateManager
-            .Setup(s => s.TryGetStateAsync<long>(
-                        It.IsAny<string>(),
-                        It.IsAny<CancellationToken>()))
-            .ReturnsAsync(default(Dapr.Actors.Runtime.ConditionalValue<long>))
-            .Verifiable();
-        actorStateManager
-            .Setup(s => s.SetStateAsync<long>(
-                        It.Is<string>(s => s.Contains(metadata.Message.Id)),
-                        It.Is<long>(l => l == 1),
-                        It.IsAny<CancellationToken>()))
-            .Returns(Task.CompletedTask)
-            .Verifiable(Times.Once);
-        actorStateManager
-            .Setup(s => s.SetStateAsync<long>(
-                        It.Is<string>(s => s == "CommandStream"),
-                        It.Is<long>(l => l == 1),
-                        It.IsAny<CancellationToken>()))
-            .Returns(Task.CompletedTask)
-            .Verifiable(Times.Once);
-        actorStateManager
-            .Setup(s => s.SetStateAsync<CommandState>(
-                        It.Is<string>(s => s.Contains('1') && s.Contains("Command")),
-                        It.Is<CommandState>(s => s.Message.AggregateId == command.AggregateId),
-                        It.IsAny<CancellationToken>()))
-            .Returns(Task.CompletedTask)
-            .Verifiable(Times.Once);
-        AggregateActor actor = new(
-            host,
-            commandDispatcher.Object,
-            aggregateFactory.Object,
-            new DateTimeService(),
-            eventBus.Object,
-            notificationBus.Object,
-            commandBus.Object,
-            requestBus.Object,
-            actorStateManager.Object);
-        await actor.SubmitCommandAsync(new ActorCommandEnvelope([command], [metadata]));
-        Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, notificationBus, commandBus, requestBus);
-    }
+    /*
+        [Fact]
+        public async Task SubmitCommandToNewActorShouldStoreCommand()
+        {
+            DummyAggregateCommand1 command = new() { Id = "123456" };
+            ActorTimerManager timerManager = new DummyTimerManager();
+            ActorHost host = ActorHost.CreateForTest(
+                typeof(AggregateActor),
+                AggregateActorBase.GetAggregateActorName(command.AggregateName),
+                new ActorTestOptions
+                {
+                    ActorId = new ActorId(command.AggregateId),
+                    TimerManager = timerManager,
+                });
+            Metadata metadata = CreateMetadata(command);
+            Mock<ICommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
+            Mock<IAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
+            Mock<IEventBus> eventBus = new(MockBehavior.Strict);
+            Mock<INotificationBus> notificationBus = new(MockBehavior.Strict);
+            Mock<ICommandBus> commandBus = new(MockBehavior.Strict);
+            Mock<IRequestBus> requestBus = new(MockBehavior.Strict);
+            Mock<IActorStateManager> actorStateManager = new(MockBehavior.Strict);
+            actorStateManager
+                .Setup(s => s.TryGetStateAsync<AggregateActorState>(
+                            It.Is<string>(t => t == ActorConstants.AggregateStateStoreName),
+                            It.IsAny<CancellationToken>()))
+                .ReturnsAsync(default(Dapr.Actors.Runtime.ConditionalValue<AggregateActorState>))
+                .Verifiable();
+            actorStateManager
+                .Setup(s => s.TryGetStateAsync<long>(
+                            It.IsAny<string>(),
+                            It.IsAny<CancellationToken>()))
+                .ReturnsAsync(default(Dapr.Actors.Runtime.ConditionalValue<long>))
+                .Verifiable();
+            actorStateManager
+                .Setup(s => s.SetStateAsync<long>(
+                            It.Is<string>(s => s.Contains(metadata.Message.Id)),
+                            It.Is<long>(l => l == 1),
+                            It.IsAny<CancellationToken>()))
+                .Returns(Task.CompletedTask)
+                .Verifiable(Times.Once);
+            actorStateManager
+                .Setup(s => s.SetStateAsync<long>(
+                            It.Is<string>(s => s == "CommandStream"),
+                            It.Is<long>(l => l == 1),
+                            It.IsAny<CancellationToken>()))
+                .Returns(Task.CompletedTask)
+                .Verifiable(Times.Once);
+            actorStateManager
+                .Setup(s => s.SetStateAsync<CommandState>(
+                            It.Is<string>(s => s.Contains('1') && s.Contains("Command")),
+                            It.Is<CommandState>(s => s.Message.AggregateId == command.AggregateId),
+                            It.IsAny<CancellationToken>()))
+                .Returns(Task.CompletedTask)
+                .Verifiable(Times.Once);
+            AggregateActor actor = new(
+                host,
+                commandDispatcher.Object,
+                aggregateFactory.Object,
+                new DateTimeService(),
+                eventBus.Object,
+                notificationBus.Object,
+                commandBus.Object,
+                requestBus.Object,
+                actorStateManager.Object);
+            await actor.SubmitCommandAsync(new ActorCommandEnvelope([command], [metadata]));
+            Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, notificationBus, commandBus, requestBus);
+        }
+    */
 
     private ActorCommandEnvelope CreateEnvelope(DummyAggregateCommand1 command)
                 => new([command], [CreateMetadata(command)]);

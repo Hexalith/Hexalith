@@ -64,8 +64,8 @@ public class MessageStoreTest
         _ = await store.AddAsync(state.IntoArray(), 0, CancellationToken.None);
         _ = provider.UncommittedState.Should().HaveCount(3);
         _ = provider.UncommittedState[_stateName].Should().Be(1L);
-        _ = provider.UncommittedState[_stateName + "1"].Should().Be(state.IdempotencyId);
-        _ = provider.UncommittedState[_streamItemId + state.IdempotencyId].Should().Be(state);
+        _ = provider.UncommittedState[_stateName + "1"].Should().Be(state);
+        _ = provider.UncommittedState[_streamItemId + state.IdempotencyId].Should().Be(1L);
     }
 
     [Theory]
@@ -179,10 +179,10 @@ public class MessageStoreTest
             list,
             0L,
             CancellationToken.None);
-        _ = provider.UncommittedState[_stateName + "1"].Should().Be(list[0].IdempotencyId);
-        _ = provider.UncommittedState[_stateName + "2"].Should().Be(list[1].IdempotencyId);
-        _ = provider.UncommittedState[_streamItemId + list[0].IdempotencyId].Should().Be(list[0]);
-        _ = provider.UncommittedState[_streamItemId + list[1].IdempotencyId].Should().Be(list[1]);
+        _ = provider.UncommittedState[_stateName + "1"].Should().Be(list[0]);
+        _ = provider.UncommittedState[_stateName + "2"].Should().Be(list[1]);
+        _ = provider.UncommittedState[_streamItemId + list[0].IdempotencyId].Should().Be(1L);
+        _ = provider.UncommittedState[_streamItemId + list[1].IdempotencyId].Should().Be(2L);
     }
 
     [Fact]
@@ -192,8 +192,8 @@ public class MessageStoreTest
         MemoryStateProvider provider = new(new Dictionary<string, object>
         {
             { _stateName, 123L },
-            { _streamItemId + testEvent.IdempotencyId, testEvent },
-            { _stateName + "123", testEvent.IdempotencyId },
+            { _streamItemId + testEvent.IdempotencyId, 123L },
+            { _stateName + "123", testEvent },
         });
         MessageStore<BaseTestEvent> eventStore = new(provider, _streamName);
 
