@@ -109,4 +109,7 @@ public record SalesInvoice(
             throw new ArgumentException($"{customerEvent.TypeName} aggregate aggregate Id '{customerEvent.AggregateId}' is invalid. Expected : '{AggregateId}'.", paramName);
         }
     }
+
+    /// <inheritdoc/>
+    public override bool IsInitialized() => !string.IsNullOrEmpty(State.Id);
 }

@@ -35,6 +35,14 @@ public record UserConversationsProfile(string UserId, IEnumerable<DateTimeOffset
     /// <summary>
     /// Initializes a new instance of the <see cref="UserConversationsProfile"/> class.
     /// </summary>
+    public UserConversationsProfile()
+        : this(string.Empty, [])
+    {
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="UserConversationsProfile"/> class.
+    /// </summary>
     /// <param name="startedEvent">The started event.</param>
     public UserConversationsProfile(UserConversationsProfileAdded startedEvent)
         : this(
@@ -63,4 +71,7 @@ public record UserConversationsProfile(string UserId, IEnumerable<DateTimeOffset
             _ => throw new InvalidAggregateEventException(this, domainEvent, false),
         };
     }
+
+    /// <inheritdoc/>
+    public bool IsInitialized() => !string.IsNullOrWhiteSpace(UserId);
 }

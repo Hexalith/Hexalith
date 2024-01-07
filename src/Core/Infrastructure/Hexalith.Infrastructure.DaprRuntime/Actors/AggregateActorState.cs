@@ -41,7 +41,7 @@ public class AggregateActorState
     /// <value>The event count.</value>
     [DataMember(Order = 2)]
     [JsonPropertyOrder(2)]
-    public long EventCount { get; set; }
+    public long EventSourceCount { get; set; }
 
     /// <summary>
     /// Gets or sets the last command processed.
@@ -74,4 +74,12 @@ public class AggregateActorState
     [DataMember(Order = 6)]
     [JsonPropertyOrder(6)]
     public TimeSpan? Reminder { get; set; }
+
+    /// <summary>
+    /// Gets or sets the retry on failure time.
+    /// </summary>
+    /// <value>The retry on failure time.</value>
+    [DataMember(Order = 7)]
+    [JsonPropertyOrder(7)]
+    public DateTimeOffset RetryOnFailureTime { get; set; }
 }

@@ -137,5 +137,8 @@ public record InventoryItem(
     /// <returns>System.String.</returns>
 #pragma warning disable CA1024 // Use properties where appropriate
     public static string GetAggregateName() => nameof(InventoryItem);
+
 #pragma warning restore CA1024 // Use properties where appropriate
+    /// <inheritdoc/>
+    public override bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);
 }

@@ -81,15 +81,51 @@ Extends the <span class="xref">Dapr.Actors.IActor</span>.</p>
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">Dapr.Actors.Runtime.Actor</span></div>
-    <div class="level2"><span class="xref">AggregateActor</span></div>
-      <div class="level3"><a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.html">SalesInvoiceAggregateActor</a></div>
+    <div class="level2"><a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.html">AggregateActorBase</a></div>
+    <div class="level3"><span class="xref">AggregateActor</span></div>
+      <div class="level4"><a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.html">SalesInvoiceAggregateActor</a></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
-    <div><a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.IAggregateActor.html">IAggregateActor</a></div>
+    <div><span class="xref">Dapr.Actors.Runtime.IRemindable</span></div>
+    <div><a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.IAggregateActor.html">IAggregateActor</a></div>
+    <div><span class="xref">Dapr.Actors.IActor</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActorBase_GetAggregateActorName_System_String_">AggregateActorBase.GetAggregateActorName(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActorBase_LogAcceptedCommandInformation_Microsoft_Extensions_Logging_ILogger_System_String_System_String_System_String_System_String_">AggregateActorBase.LogAcceptedCommandInformation(ILogger, String, String, String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActorBase_LogNoCommandsToSubmitWarning_Microsoft_Extensions_Logging_ILogger_System_String_System_String_">AggregateActorBase.LogNoCommandsToSubmitWarning(ILogger, String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActorBase_LogProcessedCommandInformation_Microsoft_Extensions_Logging_ILogger_System_String_System_String_System_String_System_String_">AggregateActorBase.LogProcessedCommandInformation(ILogger, String, String, String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActorBase_LogProcessingCommandsInformation_Microsoft_Extensions_Logging_ILogger_System_String_System_String_System_Int64_System_Int64_">AggregateActorBase.LogProcessingCommandsInformation(ILogger, String, String, Int64, Int64)</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActorBase_ContinueProcessingWorkflowAsync">AggregateActorBase.ContinueProcessingWorkflowAsync()</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActorBase_ReceiveReminderAsync_System_String_System_Byte___System_TimeSpan_System_TimeSpan_">AggregateActorBase.ReceiveReminderAsync(String, Byte[], TimeSpan, TimeSpan)</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActorBase_ProcessNextCommandAsync">AggregateActorBase.ProcessNextCommandAsync()</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActorBase_LogInvalidPublishMessageError_Microsoft_Extensions_Logging_ILogger_System_Int64_System_String_System_String_System_String_System_String_">AggregateActorBase.LogInvalidPublishMessageError(ILogger, Int64, String, String, String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActorBase_PublishNextMessageAsync">AggregateActorBase.PublishNextMessageAsync()</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActorBase_SubmitCommandAsync_Hexalith_Infrastructure_DaprRuntime_Handlers_ActorCommandEnvelope_">AggregateActorBase.SubmitCommandAsync(ActorCommandEnvelope)</a>
+    </div>
     <div>
       <span class="xref">Dapr.Actors.Runtime.Actor.SaveStateAsync()</span>
     </div>
@@ -176,28 +212,28 @@ Extends the <span class="xref">Dapr.Actors.IActor</span>.</p>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.html">Hexalith.Infrastructure.DaprRuntime.Sales.Actors</a></h6>
-  <h6><strong>Assembly</strong>: Hexalith.Infrastructure.DaprRuntime.Sales.dll</h6>
+  <h6><strong>Assembly</strong>: Hexalith.Infrastructure.DaprRuntime.dll</h6>
   <h5 id="Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActor_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class AggregateActor : Actor, IAggregateActor</code></pre>
+    <pre><code class="lang-csharp hljs">public class AggregateActor : AggregateActorBase, IRemindable, IAggregateActor, IActor</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActor__ctor_Dapr_Actors_Runtime_ActorHost_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.%23ctor(Dapr.Actors.Runtime.ActorHost)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActor__ctor_Dapr_Actors_Runtime_ActorHost_Hexalith_Application_Commands_ICommandDispatcher_Hexalith_Domain_Aggregates_IAggregateFactory_Hexalith_Extensions_Common_IDateTimeService_Hexalith_Application_Events_IEventBus_Hexalith_Application_Notifications_INotificationBus_Hexalith_Application_Commands_ICommandBus_Hexalith_Application_Requests_IRequestBus_Hexalith_Application_Tasks_IResiliencyPolicyProvider_Dapr_Actors_Runtime_IActorStateManager_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.%23ctor(Dapr.Actors.Runtime.ActorHost%2CHexalith.Application.Commands.ICommandDispatcher%2CHexalith.Domain.Aggregates.IAggregateFactory%2CHexalith.Extensions.Common.IDateTimeService%2CHexalith.Application.Events.IEventBus%2CHexalith.Application.Notifications.INotificationBus%2CHexalith.Application.Commands.ICommandBus%2CHexalith.Application.Requests.IRequestBus%2CHexalith.Application.Tasks.IResiliencyPolicyProvider%2CDapr.Actors.Runtime.IActorStateManager)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime.Sales/Actors/AggregateActor.cs/#L39">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/Actors/AggregateActor.cs/#L51">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActor__ctor_" data-uid="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.#ctor*"></a>
-  <h4 id="Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActor__ctor_Dapr_Actors_Runtime_ActorHost_" data-uid="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.#ctor(Dapr.Actors.Runtime.ActorHost)">AggregateActor(ActorHost)</h4>
+  <h4 id="Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActor__ctor_Dapr_Actors_Runtime_ActorHost_Hexalith_Application_Commands_ICommandDispatcher_Hexalith_Domain_Aggregates_IAggregateFactory_Hexalith_Extensions_Common_IDateTimeService_Hexalith_Application_Events_IEventBus_Hexalith_Application_Notifications_INotificationBus_Hexalith_Application_Commands_ICommandBus_Hexalith_Application_Requests_IRequestBus_Hexalith_Application_Tasks_IResiliencyPolicyProvider_Dapr_Actors_Runtime_IActorStateManager_" data-uid="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.#ctor(Dapr.Actors.Runtime.ActorHost,Hexalith.Application.Commands.ICommandDispatcher,Hexalith.Domain.Aggregates.IAggregateFactory,Hexalith.Extensions.Common.IDateTimeService,Hexalith.Application.Events.IEventBus,Hexalith.Application.Notifications.INotificationBus,Hexalith.Application.Commands.ICommandBus,Hexalith.Application.Requests.IRequestBus,Hexalith.Application.Tasks.IResiliencyPolicyProvider,Dapr.Actors.Runtime.IActorStateManager)">AggregateActor(ActorHost, ICommandDispatcher, IAggregateFactory, IDateTimeService, IEventBus, INotificationBus, ICommandBus, IRequestBus, IResiliencyPolicyProvider, IActorStateManager)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.html">AggregateActor</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected AggregateActor(ActorHost host)</code></pre>
+    <pre><code class="lang-csharp hljs">public AggregateActor(ActorHost host, ICommandDispatcher commandDispatcher, IAggregateFactory aggregateFactory, IDateTimeService dateTimeService, IEventBus eventBus, INotificationBus notificationBus, ICommandBus commandBus, IRequestBus requestBus, IResiliencyPolicyProvider resiliencyPolicyProvider, IActorStateManager actorStateManager = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -215,20 +251,59 @@ Extends the <span class="xref">Dapr.Actors.IActor</span>.</p>
         <td><p>The host.</p>
 </td>
       </tr>
-    </tbody>
-  </table>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
       <tr>
-        <th>Type</th>
-        <th>Condition</th>
+        <td><a class="xref" href="Hexalith.Application.Commands.ICommandDispatcher.html">ICommandDispatcher</a></td>
+        <td><span class="parametername">commandDispatcher</span></td>
+        <td><p>The command dispatcher.</p>
+</td>
       </tr>
-    </thead>
-    <tbody>
       <tr>
-        <td><span class="xref">System.ArgumentNullException</span></td>
-        <td></td>
+        <td><a class="xref" href="Hexalith.Domain.Aggregates.IAggregateFactory.html">IAggregateFactory</a></td>
+        <td><span class="parametername">aggregateFactory</span></td>
+        <td><p>The aggregate factory.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.Extensions.Common.IDateTimeService.html">IDateTimeService</a></td>
+        <td><span class="parametername">dateTimeService</span></td>
+        <td><p>The date time service.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.Events.IEventBus.html">IEventBus</a></td>
+        <td><span class="parametername">eventBus</span></td>
+        <td><p>The event bus.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.Notifications.INotificationBus.html">INotificationBus</a></td>
+        <td><span class="parametername">notificationBus</span></td>
+        <td><p>The notification bus.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.Commands.ICommandBus.html">ICommandBus</a></td>
+        <td><span class="parametername">commandBus</span></td>
+        <td><p>The command bus.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.Requests.IRequestBus.html">IRequestBus</a></td>
+        <td><span class="parametername">requestBus</span></td>
+        <td><p>The request bus.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.Tasks.IResiliencyPolicyProvider.html">IResiliencyPolicyProvider</a></td>
+        <td><span class="parametername">resiliencyPolicyProvider</span></td>
+        <td><p>The resiliency policy provider.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Dapr.Actors.Runtime.IActorStateManager</span></td>
+        <td><span class="parametername">actorStateManager</span></td>
+        <td><p>The actor state manager.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -239,7 +314,7 @@ Extends the <span class="xref">Dapr.Actors.IActor</span>.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActor_LogProcessingCommandsInformation_Microsoft_Extensions_Logging_ILogger_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.LogProcessingCommandsInformation(Microsoft.Extensions.Logging.ILogger%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime.Sales/Actors/AggregateActor.cs/#L49">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/Actors/AggregateActor.cs/#L72">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActor_LogProcessingCommandsInformation_" data-uid="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.LogProcessingCommandsInformation*"></a>
   <h4 id="Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActor_LogProcessingCommandsInformation_Microsoft_Extensions_Logging_ILogger_System_String_System_String_" data-uid="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.LogProcessingCommandsInformation(Microsoft.Extensions.Logging.ILogger,System.String,System.String)">LogProcessingCommandsInformation(ILogger, String, String)</h4>
@@ -277,86 +352,15 @@ public static void LogProcessingCommandsInformation(ILogger logger, string actor
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActor_ProcessCommandsAsync.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.ProcessCommandsAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime.Sales/Actors/AggregateActor.cs/#L56">View Source</a>
-  </span>
-  <a id="Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActor_ProcessCommandsAsync_" data-uid="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.ProcessCommandsAsync*"></a>
-  <h4 id="Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActor_ProcessCommandsAsync" data-uid="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.ProcessCommandsAsync">ProcessCommandsAsync()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task ProcessCommandsAsync()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActor_SubmitCommandAsync_Hexalith_Infrastructure_DaprRuntime_Handlers_ActorCommandEnvelope_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.SubmitCommandAsync(Hexalith.Infrastructure.DaprRuntime.Handlers.ActorCommandEnvelope)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime.Sales/Actors/AggregateActor.cs/#L63">View Source</a>
-  </span>
-  <a id="Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActor_SubmitCommandAsync_" data-uid="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.SubmitCommandAsync*"></a>
-  <h4 id="Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActor_SubmitCommandAsync_Hexalith_Infrastructure_DaprRuntime_Handlers_ActorCommandEnvelope_" data-uid="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.SubmitCommandAsync(Hexalith.Infrastructure.DaprRuntime.Handlers.ActorCommandEnvelope)">SubmitCommandAsync(ActorCommandEnvelope)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task SubmitCommandAsync(ActorCommandEnvelope envelope)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Handlers.ActorCommandEnvelope.html">ActorCommandEnvelope</a></td>
-        <td><span class="parametername">envelope</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="implements">Implements</h3>
   <div>
-      <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.IAggregateActor.html">IAggregateActor</a>
+      <span class="xref">Dapr.Actors.Runtime.IRemindable</span>
+  </div>
+  <div>
+      <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.IAggregateActor.html">IAggregateActor</a>
+  </div>
+  <div>
+      <span class="xref">Dapr.Actors.IActor</span>
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
@@ -382,7 +386,7 @@ public static void LogProcessingCommandsInformation(ILogger logger, string actor
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActor.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime.Sales/Actors/AggregateActor.cs/#L32" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/Actors/AggregateActor.cs/#L36" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

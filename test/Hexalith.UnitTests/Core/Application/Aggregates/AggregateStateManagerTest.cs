@@ -142,7 +142,7 @@ public class DummyAggregate : IAggregate
     public DummyAggregate()
     {
         AggregateId = "123";
-        AggregateName = "Test1";
+        AggregateName = "Test";
     }
 
     public string AggregateId { get; }
@@ -150,4 +150,6 @@ public class DummyAggregate : IAggregate
     public string AggregateName { get; }
 
     public IAggregate Apply(BaseEvent domainEvent) => new DummyAggregate();
+
+    public bool IsInitialized() => true;
 }

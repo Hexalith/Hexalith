@@ -31,6 +31,7 @@ using Hexalith.Application.Notifications;
 using Hexalith.Application.Projection;
 using Hexalith.Application.Requests;
 using Hexalith.Application.States;
+using Hexalith.Application.Tasks;
 using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Configuration;
@@ -102,6 +103,7 @@ public static class HexalithWebApi
         _ = builder.Services.ConfigureSettings<NotificationBusSettings>(builder.Configuration);
         _ = builder.Services.ConfigureSettings<RequestBusSettings>(builder.Configuration);
         _ = builder.Services.ConfigureSettings<StateStoreSettings>(builder.Configuration);
+        builder.Services.TryAddSingleton<IResiliencyPolicyProvider, ResiliencyPolicyProvider>();
         builder.Services.TryAddSingleton<IRequestBus, DaprRequestBus>();
         builder.Services.TryAddSingleton<INotificationBus, DaprNotificationBus>();
         builder.Services.TryAddSingleton<ICommandBus, DaprCommandBus>();

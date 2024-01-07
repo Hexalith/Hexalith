@@ -57,6 +57,9 @@ public abstract record Aggregate : IAggregate
     /// <inheritdoc/>
     public abstract IAggregate Apply(BaseEvent domainEvent);
 
+    /// <inheritdoc/>
+    public abstract bool IsInitialized();
+
     /// <summary>
     /// Get the aggregate identifier.
     /// </summary>

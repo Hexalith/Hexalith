@@ -213,4 +213,7 @@ public record Customer(
             SalesCurrencyId,
             Date);
     }
+
+    /// <inheritdoc/>
+    public override bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);
 }

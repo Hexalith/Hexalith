@@ -11,6 +11,11 @@ using Hexalith.Domain.Events;
 
 public record DummyAggregate(string Id) : Aggregate
 {
+    public DummyAggregate()
+        : this(string.Empty)
+    {
+    }
+
     protected override string DefaultAggregateId() => GetAggregateId(Id);
 
     public static string GetAggregateId(string id) => GetAggregateName() + Separator + id;
@@ -28,4 +33,6 @@ public record DummyAggregate(string Id) : Aggregate
             })
             : throw new NotImplementedException();
     }
+
+    public override bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);
 }

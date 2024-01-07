@@ -4,7 +4,7 @@
 // Created          : 10-12-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 10-12-2023
+// Last Modified On : 01-06-2024
 // ***********************************************************************
 // <copyright file="ApplicationError.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -15,6 +15,10 @@
 // ***********************************************************************
 
 namespace Hexalith.Extensions.Common;
+
+using System;
+
+using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Event deserialization error.
@@ -70,4 +74,20 @@ public record ApplicationError
     /// </summary>
     /// <value>The title.</value>
     public string? Title { get; init; }
+
+    /// <summary>
+    /// Gets the detail message.
+    /// </summary>
+    /// <param name="formatProvider">The format provider.</param>
+    /// <returns>System.String.</returns>
+    public string GetDetailMessage(IFormatProvider formatProvider)
+        => string.IsNullOrWhiteSpace(Detail) ? string.Empty : StringHelper.FormatWithNamedPlaceholders(formatProvider, Detail, Arguments);
+
+    /// <summary>
+    /// Gets the technical message.
+    /// </summary>
+    /// <param name="formatProvider">The format provider.</param>
+    /// <returns>System.Nullable&lt;System.String&gt;.</returns>
+    public string? GetTechnicalMessage(IFormatProvider formatProvider)
+        => string.IsNullOrWhiteSpace(TechnicalDetail) ? string.Empty : StringHelper.FormatWithNamedPlaceholders(formatProvider, TechnicalDetail, TechnicalArguments);
 }

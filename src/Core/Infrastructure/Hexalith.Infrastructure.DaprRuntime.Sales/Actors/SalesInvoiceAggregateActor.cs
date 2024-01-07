@@ -24,6 +24,7 @@ using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
 using Hexalith.Application.Notifications;
 using Hexalith.Application.Requests;
+using Hexalith.Application.Tasks;
 using Hexalith.Domain.Aggregates;
 
 using Hexalith.Extensions.Common;
@@ -45,6 +46,7 @@ public class SalesInvoiceAggregateActor : AggregateActor, ISalesInvoiceAggregate
     /// <param name="notificationBus">The notification bus.</param>
     /// <param name="commandBus">The command bus.</param>
     /// <param name="requestBus">The request bus.</param>
+    /// <param name="resiliencyPolicyProvider">The resiliency policy provider.</param>
     /// <param name="actorStateManager">The actor state manager.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
     public SalesInvoiceAggregateActor(
@@ -56,8 +58,9 @@ public class SalesInvoiceAggregateActor : AggregateActor, ISalesInvoiceAggregate
         INotificationBus notificationBus,
         ICommandBus commandBus,
         IRequestBus requestBus,
+        IResiliencyPolicyProvider resiliencyPolicyProvider,
         IActorStateManager? actorStateManager = null)
-        : base(host, commandDispatcher, aggregateFactory, dateTimeService, eventBus, notificationBus, commandBus, requestBus, actorStateManager)
+        : base(host, commandDispatcher, aggregateFactory, dateTimeService, eventBus, notificationBus, commandBus, requestBus, resiliencyPolicyProvider, actorStateManager)
         => ArgumentNullException.ThrowIfNull(host);
 
     /// <inheritdoc/>

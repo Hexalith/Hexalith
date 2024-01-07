@@ -55,9 +55,10 @@ public interface IAggregate
         IAggregate aggregate = this;
         foreach (BaseEvent e in events)
         {
-            if (e.AggregateId != aggregate.AggregateId)
+            if (e.AggregateName != aggregate.AggregateName || (IsInitialized() && e.AggregateId != aggregate.AggregateId))
             {
-                throw new InvalidOperationException($"The event '{e.TypeName}' can only be applied to aggregate '{e.AggregateName}'. It cannot be applied to aggregate {aggregate.AggregateName} with id {aggregate.AggregateId}");
+                string aggregateId = IsInitialized() ? $"/{e.AggregateId}" : string.Empty;
+                throw new InvalidOperationException($"The event '{e.TypeName}' can only be applied to aggregate '{e.AggregateName}' with Id {e.AggregateId}. It cannot be applied to aggregate {aggregate.AggregateName}{aggregateId}.");
             }
 
             aggregate = aggregate.Apply(e);
@@ -65,4 +66,10 @@ public interface IAggregate
 
         return aggregate;
     }
+
+    /// <summary>
+    /// Determines whether this instance is initialized.
+    /// </summary>
+    /// <returns><c>true</c> if this instance is initialized; otherwise, <c>false</c>.</returns>
+    bool IsInitialized();
 }

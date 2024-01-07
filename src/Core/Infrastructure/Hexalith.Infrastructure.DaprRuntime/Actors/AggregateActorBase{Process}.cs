@@ -16,20 +16,23 @@
 namespace Hexalith.Infrastructure.DaprRuntime.Sales.Actors;
 
 using System;
+using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
 
 using Dapr.Actors;
 
 using Hexalith.Application.Commands;
+using Hexalith.Application.Errors;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.States;
+using Hexalith.Application.Tasks;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Messages;
-using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
-using Hexalith.Infrastructure.DaprRuntime.Handlers;
+
+using Microsoft.Extensions.Logging;
 
 /// <summary>
 /// Logistics partner catalog item aggregate actor interface <see cref="BspkSalesInvoice" />.
@@ -37,97 +40,188 @@ using Hexalith.Infrastructure.DaprRuntime.Handlers;
 /// </summary>
 public abstract partial class AggregateActorBase
 {
-    /// <summary>
-    /// Gets the name of the aggregate actor.
-    /// </summary>
-    /// <param name="aggregateName">Name of the aggregate.</param>
-    /// <returns>string.</returns>
-    public static string GetAggregateActorName(string aggregateName) => aggregateName + nameof(Aggregate);
-
     /// <inheritdoc/>
-    public async Task SubmitCommandAsync(ActorCommandEnvelope envelope)
+    public async Task<bool> ProcessNextCommandAsync()
     {
-        ArgumentNullException.ThrowIfNull(envelope);
-        Application.Commands.BaseCommand[] commands = envelope.Commands.ToArray();
-        Application.Metadatas.BaseMetadata[] metadatas = envelope.Metadatas.ToArray();
-        if (commands.Length != metadatas.Length)
+        await ProcessNextSubmittedCommandAsync(CancellationToken.None)
+            .ConfigureAwait(false);
+
+        await SaveStateAsync()
+            .ConfigureAwait(false);
+
+        AggregateActorState state = await GetAggregateStateAsync(CancellationToken.None)
+            .ConfigureAwait(false);
+
+        // Returns true if there are unprocessed commands remaining
+        return state.LastCommandProcessed < state.CommandCount;
+    }
+
+    [LoggerMessage(
+        EventId = 5,
+        Level = LogLevel.Warning,
+        Message = "Application error while processing command number {CommandSequence}, type '{CommandType}', correlationId '{CorrelationId}' for aggregate '{AggregateName}/{AggregateId}' : {ErrorMessage}\n{TechnicalErrorMessage}")]
+    private static partial void LogApplicationErrorWarning(
+        ILogger logger,
+        long commandSequence,
+        string commandType,
+        string aggregateName,
+        string aggregateId,
+        string correlationId,
+        string errorMessage,
+        string? technicalErrorMessage);
+
+    private async Task<TaskProcessor> GetTaskProcessorAsync(long commandSequence, CancellationToken cancellationToken)
+    {
+        Dapr.Actors.Runtime.ConditionalValue<TaskProcessor> taskProcessorState = await StateManager
+            .TryGetStateAsync<TaskProcessor>(GetTaskProcessorStateName(commandSequence), cancellationToken)
+            .ConfigureAwait(false);
+        if (taskProcessorState.HasValue)
         {
-            throw new InvalidOperationException($"Invalid commands envelope submitted to {Host.ActorTypeInfo.ActorTypeName}/{Id}. Command and Metadata arrays must have the same number of elements.");
+            return taskProcessorState.Value;
         }
 
-        if (commands.Length == 0)
+        TaskProcessor task = new(_dateTimeService.UtcNow, _resiliencyPolicyProvider.GetPolicy(Host.ActorTypeInfo.ActorTypeName));
+        return task.Start();
+    }
+
+    private string GetTaskProcessorStateName(long commandSequence) => $"{nameof(TaskProcessor)}-{commandSequence}";
+
+    private async Task<IEnumerable<BaseMessage>> HandleCommandProcessingErrorAsync(
+        TaskProcessor taskProcessor,
+        long commandSequence,
+        string correlationId,
+        BaseCommand command,
+        ApplicationErrorException ex,
+        CancellationToken cancellationToken)
+    {
+        TaskProcessingFailure? previousFailure = taskProcessor.Failure;
+        taskProcessor = taskProcessor.Fail(ex);
+        IEnumerable<BaseMessage> messages = (previousFailure == null || taskProcessor.Failure?.Date == null || _dateTimeService.UtcNow.Subtract(taskProcessor.Failure.Date) > TimeSpan.FromMinutes(15))
+            ? [new ApplicationExceptionNotification(
+                correlationId,
+                command.AggregateName,
+                command.AggregateId,
+                ex)]
+            : [];
+        await PersistTaskProcessorAsync(commandSequence, taskProcessor, cancellationToken).ConfigureAwait(false);
+        LogApplicationErrorWarning(
+            Logger,
+            commandSequence,
+            command.TypeName,
+            command.AggregateName,
+            command.AggregateId,
+            correlationId,
+            ex.Error?.GetDetailMessage(CultureInfo.InvariantCulture) ?? "Unknown application error.",
+            ex.Error?.GetTechnicalMessage(CultureInfo.InvariantCulture));
+        return messages;
+    }
+
+    private async Task PersistTaskProcessorAsync(long commandSequence, TaskProcessor taskProcessor, CancellationToken cancellationToken)
+    {
+        await StateManager.SetStateAsync(
+                GetTaskProcessorStateName(commandSequence),
+                taskProcessor,
+                cancellationToken)
+            .ConfigureAwait(false);
+    }
+
+    private async Task ProcessNextSubmittedCommandAsync(CancellationToken cancellationToken)
+    {
+        AggregateActorState state = await GetAggregateStateAsync(cancellationToken)
+           .ConfigureAwait(false);
+
+        if (state.LastCommandProcessed >= state.CommandCount)
         {
-            LogNoCommandsToSubmitWarning(Logger, Id.ToString(), Host.ActorTypeInfo.ActorTypeName);
+            // All commands have been processed
             return;
         }
 
-        List<CommandState> commandStates = [];
-        for (int i = 0; i < commands.Length; i++)
+        LogProcessingCommandsInformation(Logger, Id.ToString(), Host.ActorTypeInfo.ActorTypeName, state.CommandCount, state.LastCommandProcessed);
+
+        long commandNumber = state.LastCommandProcessed + 1;
+
+        // Get the next command to process
+        CommandState commandState = await CommandStore
+            .GetAsync(commandNumber, CancellationToken.None)
+            .ConfigureAwait(false);
+
+        BaseCommand command = commandState.Message ?? throw new InvalidOperationException("The specified command state is missing associated message.");
+        BaseMetadata metadata = commandState.Metadata ?? throw new InvalidOperationException("The specified command state is missing associated metadata.");
+
+        if (command.AggregateId != Id.ToString())
         {
-            BaseCommand command = commands[i];
-            BaseMetadata metadata = metadatas[i];
-            if (GetAggregateActorName(command.AggregateName) != Host.ActorTypeInfo.ActorTypeName)
-            {
-                throw new InvalidOperationException($"Submitted command to {Host.ActorTypeInfo.ActorTypeName}/{Id} has an invalid aggregate name : {command.AggregateName}.");
-            }
+            throw new InvalidOperationException($"Command {command.TypeName} aggregate identifier '{commandState.Message.AggregateId}' is invalid: Expected : {Id}.");
+        }
 
-            if (command.AggregateId != Id.ToString())
-            {
-                throw new InvalidOperationException($"Submitted command to {Host.ActorTypeInfo.ActorTypeName}/{Id} has an invalid aggregate id : {command.AggregateId}.");
-            }
+        if (GetAggregateActorName(command.AggregateName) != Host.ActorTypeInfo.ActorTypeName)
+        {
+            throw new InvalidOperationException($"Command {command.TypeName} for '{commandState.Message.AggregateId}' has an invalid aggregate actor name '{GetAggregateActorName(commandState.Message.AggregateId)}'. Expected : {Host.ActorTypeInfo.ActorTypeName}.");
+        }
 
-            CommandState commandState = new(_dateTimeService.UtcNow, command, metadata);
-            commandStates.Add(commandState);
-            LogAcceptedCommandInformation(
+        IAggregate aggregate = await GetAggregateAsync(
+                commandState.Message.AggregateName,
+                CancellationToken.None)
+            .ConfigureAwait(false);
+
+        IEnumerable<BaseMessage> messages;
+        TaskProcessor taskProcessor = await GetTaskProcessorAsync(
+            commandNumber,
+            CancellationToken.None)
+        .ConfigureAwait(false);
+        if (taskProcessor.Status == TaskProcessorStatus.Suspended)
+        {
+            taskProcessor = taskProcessor.Continue();
+        }
+
+        if (taskProcessor.Status == TaskProcessorStatus.Suspended)
+        {
+            // The task processor is suspended, we can't process the command now
+            await RegisterContinueCallbackAsync(taskProcessor.RetryPeriod).ConfigureAwait(false);
+        }
+
+        try
+        {
+            // Execute the commands
+            messages = await _commandDispatcher
+                    .DoAsync(command, aggregate, cancellationToken)
+                    .ConfigureAwait(false);
+
+            // Get aggregate events to persist in the event sourcing store
+            BaseEvent[] aggregateEvents = messages
+                .OfType<BaseEvent>()
+                .Where(p => p.AggregateId == command.AggregateId && p.AggregateName == aggregate.AggregateName)
+                .ToArray();
+
+            // Apply events to aggregate
+            _aggregate = aggregate.Apply(aggregateEvents);
+            EventState[] aggregateEventStates = aggregateEvents
+                .Select(p => new EventState(_dateTimeService.UtcNow, p, Metadata.CreateNew(p, metadata)))
+                .ToArray();
+
+            // Persist events and messages
+            state.EventSourceCount = await EventSourceStore
+                .AddAsync(aggregateEventStates, state.EventSourceCount, cancellationToken)
+                .ConfigureAwait(false);
+            taskProcessor = taskProcessor.Complete();
+            state.LastCommandProcessed = commandNumber;
+            await PersistTaskProcessorAsync(commandNumber, taskProcessor, cancellationToken).ConfigureAwait(false);
+            LogProcessedCommandInformation(
                 Logger,
                 command.TypeName,
                 metadata.Message.Id,
                 command.AggregateName,
                 command.AggregateId);
         }
-
-        AggregateActorState state = await GetAggregateStateAsync(CancellationToken.None).ConfigureAwait(false);
-        state.CommandCount = await CommandStore
-            .AddAsync(commandStates, state.CommandCount, CancellationToken.None)
-            .ConfigureAwait(false);
-
-        await RegisterContinueCallbackAsync().ConfigureAwait(false);
-        await SaveAggregateStateAsync(CancellationToken.None).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
-    Task<bool> IAggregateActor.ProcessNextCommandAsync() => throw new NotImplementedException();
-
-    private async Task<(long EventSourceVersion, long MessageStoreVersion)> ProcessCommandAsync(
-        CommandState commandState,
-        long eventSourceVersion,
-        long messageStoreVersion,
-        CancellationToken cancellationToken)
-    {
-        BaseCommand command = commandState.Message ?? throw new InvalidOperationException("The specified command state is missing associated message.");
-        BaseMetadata metadata = commandState.Metadata ?? throw new InvalidOperationException("The specified command state is missing associated metadata.");
-
-        if (command.AggregateId != Id.ToString())
+        catch (ApplicationErrorException ex)
         {
-            throw new InvalidOperationException($"Command {command.TypeName} for {Id} has an invalid aggregate id : {commandState.Message.AggregateId}.");
+            messages = await HandleCommandProcessingErrorAsync(
+                taskProcessor,
+                commandNumber,
+                metadata.Context.CorrelationId,
+                command,
+                ex,
+                cancellationToken).ConfigureAwait(false);
         }
-
-        IAggregate aggregate = await GetAggregateAsync(commandState.Message.AggregateName, CancellationToken.None)
-                .ConfigureAwait(false);
-
-        // Execute the commands
-        IEnumerable<BaseMessage> messages = await _commandDispatcher
-                .DoAsync(command, aggregate, cancellationToken)
-                .ConfigureAwait(false);
-
-        // Get aggregate events to persist in the event sourcing store
-        BaseEvent[] aggregateEvents = messages
-            .OfType<BaseEvent>()
-            .Where(p => p.AggregateId == command.AggregateId && p.AggregateName == aggregate.AggregateName)
-            .ToArray();
-        EventState[] aggregateEventStates = aggregateEvents
-            .Select(p => new EventState(_dateTimeService.UtcNow, p, Metadata.CreateNew(p, metadata)))
-            .ToArray();
 
         // Get integration messages to persist in the message store
         MessageState[] integrationMessages = messages
@@ -136,46 +230,7 @@ public abstract partial class AggregateActorBase
             .Select(p => new MessageState(_dateTimeService.UtcNow, p, Metadata.CreateNew(p, metadata)))
             .ToArray();
 
-        // Apply events to aggregate
-        _aggregate = aggregate.Apply(aggregateEvents);
-
-        // Persist events and messages
-        long newEventSourceVersion = await EventSourceStore.AddAsync(aggregateEventStates, eventSourceVersion, cancellationToken).ConfigureAwait(false);
-        long newMessageStoreVersion = await MessageStore.AddAsync(integrationMessages, messageStoreVersion, cancellationToken).ConfigureAwait(false);
-
-        LogProcessedCommandInformation(
-            Logger,
-            command.TypeName,
-            metadata.Message.Id,
-            command.AggregateName,
-            command.AggregateId);
-        return (newEventSourceVersion, newMessageStoreVersion);
-    }
-
-    private async Task<bool> ProcessNextSubmittedCommandAsync(CancellationToken cancellationToken)
-    {
-        AggregateActorState state = await GetAggregateStateAsync(cancellationToken)
-            .ConfigureAwait(false);
-
-        LogProcessingCommandsInformation(Logger, Id.ToString(), Host.ActorTypeInfo.ActorTypeName, state.CommandCount, state.LastCommandProcessed);
-        if (state.LastCommandProcessed < state.CommandCount)
-        {
-            // Get the next command to process
-            CommandState commandState = await CommandStore
-                .GetAsync(++state.LastCommandProcessed, CancellationToken.None)
-                .ConfigureAwait(false);
-            (long eventSourceVersion, long messageStoreVersion) = await ProcessCommandAsync(
-                commandState,
-                state.EventCount,
-                state.MessageCount,
-                cancellationToken).ConfigureAwait(false);
-
-            state.MessageCount = messageStoreVersion;
-            state.EventCount = eventSourceVersion;
-            await SaveAggregateStateAsync(cancellationToken).ConfigureAwait(false);
-            return true;
-        }
-
-        return false;
+        state.MessageCount = await MessageStore.AddAsync(integrationMessages, state.MessageCount, cancellationToken).ConfigureAwait(false);
+        await SaveAggregateStateAsync(cancellationToken).ConfigureAwait(false);
     }
 }

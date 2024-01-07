@@ -7,10 +7,14 @@
 namespace Hexalith.Application.Tasks;
 
 using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Application.Errors;
 using Hexalith.Extensions;
+using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// The task processor.
@@ -218,7 +222,7 @@ public class TaskProcessor : ITaskProcessor
         if (Failure == null)
         {
             // The task has been manually suspended, so we can continue it without checking resiliency policy wait time.
-            return new TaskProcessor(TaskProcessorStatus.Active, History, ResiliencyPolicy, Failure);
+            return new TaskProcessor(TaskProcessorStatus.Active, History, ResiliencyPolicy, null);
         }
 
         // Check if the can retry from resiliency policy
@@ -251,6 +255,23 @@ public class TaskProcessor : ITaskProcessor
             : canRetry
                 ? new TaskProcessor(TaskProcessorStatus.Suspended, History.Suspended(), ResiliencyPolicy, newFailure)
                 : new TaskProcessor(TaskProcessorStatus.Canceled, History.Canceled(), ResiliencyPolicy, newFailure);
+    }
+
+    /// <summary>
+    /// Fails the specified ex.
+    /// </summary>
+    /// <param name="ex">The ex.</param>
+    /// <returns>Hexalith.Application.Tasks.TaskProcessor.</returns>
+    public TaskProcessor Fail([NotNull] ApplicationErrorException ex)
+    {
+        ArgumentNullException.ThrowIfNull(ex);
+        string detailMessage = ex.Error == null
+            ? "Application error"
+            : ex.Error.GetDetailMessage(CultureInfo.InvariantCulture);
+        string technicalMessage = (ex.Error == null
+            ? ex.FullMessage()
+            : ex.Error.GetTechnicalMessage(CultureInfo.InvariantCulture)) + "\nStack :\n" + ex.StackTrace;
+        return Fail(detailMessage, technicalMessage);
     }
 
     /// <inheritdoc/>

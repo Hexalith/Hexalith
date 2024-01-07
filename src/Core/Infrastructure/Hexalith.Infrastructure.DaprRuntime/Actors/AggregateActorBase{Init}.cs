@@ -28,6 +28,7 @@ using Hexalith.Application.Notifications;
 using Hexalith.Application.Requests;
 using Hexalith.Application.States;
 using Hexalith.Application.StreamStores;
+using Hexalith.Application.Tasks;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Extensions.Common;
 using Hexalith.Infrastructure.DaprRuntime.Abstractions;
@@ -51,6 +52,7 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
     private readonly ActorHost _host;
     private readonly INotificationBus _notificationBus;
     private readonly IRequestBus _requestBus;
+    private readonly IResiliencyPolicyProvider _resiliencyPolicyProvider;
     private IAggregate? _aggregate;
     private MessageStore<CommandState>? _commandStore;
     private MessageStore<EventState>? _eventSourceStore;
@@ -69,6 +71,7 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
     /// <param name="notificationBus">The notification bus.</param>
     /// <param name="commandBus">The command bus.</param>
     /// <param name="requestBus">The request bus.</param>
+    /// <param name="resiliencyPolicyProvider">The resiliency policy provider.</param>
     /// <param name="actorStateManager">The actor state manager.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
     protected AggregateActorBase(
@@ -80,6 +83,7 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
         INotificationBus notificationBus,
         ICommandBus commandBus,
         IRequestBus requestBus,
+        IResiliencyPolicyProvider resiliencyPolicyProvider,
         IActorStateManager? actorStateManager = null)
        : base(host)
     {
@@ -91,6 +95,7 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
         ArgumentNullException.ThrowIfNull(notificationBus);
         ArgumentNullException.ThrowIfNull(commandBus);
         ArgumentNullException.ThrowIfNull(requestBus);
+        ArgumentNullException.ThrowIfNull(resiliencyPolicyProvider);
         _host = host;
         _commandDispatcher = commandDispatcher;
         _aggregateFactory = aggregateFactory;
@@ -99,6 +104,7 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
         _notificationBus = notificationBus;
         _commandBus = commandBus;
         _requestBus = requestBus;
+        _resiliencyPolicyProvider = resiliencyPolicyProvider;
         if (actorStateManager is not null)
         {
             StateManager = actorStateManager;
@@ -120,8 +126,15 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
             new ActorStateStoreProvider(StateManager),
             ActorConstants.MessageStoreName);
 
+    /// <summary>
+    /// Gets the name of the aggregate actor.
+    /// </summary>
+    /// <param name="aggregateName">Name of the aggregate.</param>
+    /// <returns>string.</returns>
+    public static string GetAggregateActorName(string aggregateName) => aggregateName + nameof(Aggregate);
+
     [LoggerMessage(
-                EventId = 2,
+                    EventId = 2,
                 Level = LogLevel.Information,
                 Message = "Accepted command {CommandType} ({CommandId}) for aggregate {AggregateName}:{AggregateId}.")]
     public static partial void LogAcceptedCommandInformation(ILogger logger, string commandType, string commandId, string aggregateName, string aggregateId);
@@ -129,7 +142,7 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
     [LoggerMessage(
                 EventId = 3,
                 Level = LogLevel.Warning,
-                Message = "The command envolope submitted to {ActorType} ({ActorId}), has no commands to process.")]
+                Message = "The command envelope submitted to {ActorType} ({ActorId}), has no commands to process.")]
     public static partial void LogNoCommandsToSubmitWarning(ILogger logger, string actorId, string actorType);
 
     [LoggerMessage(
@@ -147,16 +160,7 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
     /// <inheritdoc/>
     public async Task ContinueProcessingWorkflowAsync()
     {
-        if (await ProcessNextSubmittedCommandAsync(CancellationToken.None).ConfigureAwait(false))
-        {
-            return;
-        }
-
-        if (await PublishNextMessageAsync().ConfigureAwait(false))
-        {
-            return;
-        }
-
+        await ProcessNextSubmittedCommandAsync(CancellationToken.None).ConfigureAwait(false);
         await UnregisterContinueCallbackAsync().ConfigureAwait(false);
     }
 
@@ -171,7 +175,7 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
             AggregateActorState state = await GetAggregateStateAsync(cancellationToken).ConfigureAwait(false);
 
             _aggregate = _aggregateFactory.Create(aggregateName);
-            for (int i = 1; i <= state.EventCount; i++)
+            for (int i = 1; i <= state.EventSourceCount; i++)
             {
                 EventState ev = await EventSourceStore.GetAsync(i, cancellationToken).ConfigureAwait(false);
                 if (ev.Message is null)
@@ -204,24 +208,41 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
         return _state;
     }
 
-    private async Task RegisterContinueCallbackAsync()
+    private async Task RegisterContinueCallbackAsync(TimeSpan waitTime)
     {
-        _timer ??=
-            await RegisterTimerAsync(
-                ActorConstants.ContinueTimerName,
-                nameof(ContinueProcessingWorkflowAsync),
-                null,
-                TimeSpan.FromMilliseconds(1),
-                TimeSpan.FromSeconds(1))
-            .ConfigureAwait(false);
+        if (_timer != null)
+        {
+            await UnregisterTimerAsync(_timer).ConfigureAwait(false);
+            _timer = null;
+        }
+
+        if (waitTime < TimeSpan.FromMinutes(1))
+        {
+            _timer =
+                await RegisterTimerAsync(
+                    ActorConstants.ContinueTimerName,
+                    nameof(ContinueProcessingWorkflowAsync),
+                    null,
+                    waitTime,
+                    waitTime)
+                .ConfigureAwait(false);
+        }
+
         AggregateActorState state = await GetAggregateStateAsync(CancellationToken.None).ConfigureAwait(false);
-        if (state.Reminder == null)
+        waitTime = waitTime < TimeSpan.FromMinutes(1) ? TimeSpan.FromMinutes(1) : waitTime;
+        if (state.Reminder != null && state.Reminder != waitTime)
+        {
+            await UnregisterReminderAsync(ActorConstants.ContinueReminderName).ConfigureAwait(false);
+            state.Reminder = null;
+        }
+
+        if (state.Reminder is null)
         {
             IActorReminder reminder = await RegisterReminderAsync(
                 ActorConstants.ContinueReminderName,
                 null,
-                TimeSpan.FromMinutes(1),
-                TimeSpan.FromMinutes(1)).ConfigureAwait(false);
+                waitTime,
+                waitTime).ConfigureAwait(false);
             state.Reminder = reminder.DueTime;
         }
     }
@@ -232,9 +253,6 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
         {
             await StateManager
                 .SetStateAsync(ActorConstants.AggregateStateStoreName, _state, cancellationToken)
-                .ConfigureAwait(false);
-            await StateManager
-                .SaveStateAsync(cancellationToken)
                 .ConfigureAwait(false);
         }
     }

@@ -22,6 +22,7 @@ using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
 using Hexalith.Application.Notifications;
 using Hexalith.Application.Requests;
+using Hexalith.Application.Tasks;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Extensions.Common;
 using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
@@ -45,6 +46,7 @@ public partial class AggregateActor : AggregateActorBase, IAggregateActor
     /// <param name="notificationBus">The notification bus.</param>
     /// <param name="commandBus">The command bus.</param>
     /// <param name="requestBus">The request bus.</param>
+    /// <param name="resiliencyPolicyProvider">The resiliency policy provider.</param>
     /// <param name="actorStateManager">The actor state manager.</param>
     public AggregateActor(
         ActorHost host,
@@ -55,8 +57,9 @@ public partial class AggregateActor : AggregateActorBase, IAggregateActor
         INotificationBus notificationBus,
         ICommandBus commandBus,
         IRequestBus requestBus,
+        IResiliencyPolicyProvider resiliencyPolicyProvider,
         IActorStateManager? actorStateManager = null)
-        : base(host, commandDispatcher, aggregateFactory, dateTimeService, eventBus, notificationBus, commandBus, requestBus, actorStateManager)
+        : base(host, commandDispatcher, aggregateFactory, dateTimeService, eventBus, notificationBus, commandBus, requestBus, resiliencyPolicyProvider, actorStateManager)
     {
     }
 

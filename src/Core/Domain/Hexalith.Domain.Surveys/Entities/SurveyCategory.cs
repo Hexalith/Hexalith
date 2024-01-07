@@ -22,6 +22,7 @@ namespace Hexalith.Domain.Entities;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
+
 using Hexalith.Domain.Aggregates;
 
 using Hexalith.Domain.Events;
@@ -145,4 +146,7 @@ public record SurveyCategory(
             throw new ArgumentException($"{customerEvent.TypeName} aggregate aggregate Id '{customerEvent.AggregateId}' is invalid. Expected : '{AggregateId}'.", paramName);
         }
     }
+
+    /// <inheritdoc/>
+    public override bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);
 }
