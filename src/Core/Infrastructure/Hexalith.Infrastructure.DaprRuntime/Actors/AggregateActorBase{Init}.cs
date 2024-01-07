@@ -57,6 +57,7 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
     private MessageStore<CommandState>? _commandStore;
     private MessageStore<EventState>? _eventSourceStore;
     private MessageStore<MessageState>? _messageStore;
+    private ResiliencyPolicy? _resiliencyPolicy;
     private AggregateActorState? _state;
     private ActorTimer? _timer;
 
@@ -125,6 +126,9 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
         => _messageStore ??= new MessageStore<MessageState>(
             new ActorStateStoreProvider(StateManager),
             ActorConstants.MessageStoreName);
+
+    private ResiliencyPolicy ResiliencyPolicy
+                    => _resiliencyPolicy ??= _resiliencyPolicyProvider.GetPolicy(Host.ActorTypeInfo.ActorTypeName);
 
     /// <summary>
     /// Gets the name of the aggregate actor.

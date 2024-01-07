@@ -80,7 +80,7 @@ public abstract partial class AggregateActorBase
             return taskProcessorState.Value;
         }
 
-        TaskProcessor task = new(_dateTimeService.UtcNow, _resiliencyPolicyProvider.GetPolicy(Host.ActorTypeInfo.ActorTypeName));
+        TaskProcessor task = new(_dateTimeService.UtcNow, ResiliencyPolicy);
         return task.Start();
     }
 

@@ -16,6 +16,8 @@ public class DummyAggregateEvent1 : BaseEvent
 {
     public string Id { get; set; }
 
+    public string Name { get; set; } = string.Empty;
+
     protected override string DefaultAggregateId() => DummyAggregate.GetAggregateId(Id);
 
     protected override string DefaultAggregateName() => DummyAggregate.GetAggregateName();
