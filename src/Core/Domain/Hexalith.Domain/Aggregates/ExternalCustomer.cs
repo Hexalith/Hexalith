@@ -64,4 +64,6 @@ public record ExternalCustomer(
 
     /// <inheritdoc/>
     protected override string DefaultAggregateId() => nameof(ExternalCustomer) + Separator + System + Separator + ExternalId;
+    /// <inheritdoc/>
+    public override bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);
 }
