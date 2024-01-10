@@ -17,6 +17,7 @@ using Hexalith.Application.Metadatas;
 using Hexalith.Application.Notifications;
 using Hexalith.Domain.Events;
 using Hexalith.Extensions.Common;
+using Hexalith.Extensions.Errors;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents;
 

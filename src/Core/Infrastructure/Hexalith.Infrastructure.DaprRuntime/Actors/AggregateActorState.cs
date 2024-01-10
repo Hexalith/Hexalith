@@ -4,7 +4,7 @@
 // Created          : 01-04-2024
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 01-04-2024
+// Last Modified On : 01-10-2024
 // ***********************************************************************
 // <copyright file="AggregateActorState.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -68,6 +68,14 @@ public class AggregateActorState
     public long MessageCount { get; set; }
 
     /// <summary>
+    /// Gets or sets the process reminder due time.
+    /// </summary>
+    /// <value>The process reminder due time.</value>
+    [DataMember(Order = 7)]
+    [JsonPropertyOrder(7)]
+    public TimeSpan? ProcessReminderDueTime { get; set; }
+
+    /// <summary>
     /// Gets or sets a value indicating whether [publish failed].
     /// </summary>
     /// <value><c>true</c> if [publish failed]; otherwise, <c>false</c>.</value>
@@ -81,13 +89,21 @@ public class AggregateActorState
     /// <value>The reminder.</value>
     [DataMember(Order = 6)]
     [JsonPropertyOrder(6)]
-    public TimeSpan? Reminder { get; set; }
+    public TimeSpan? PublishReminderDueTime { get; set; }
 
     /// <summary>
     /// Gets or sets the retry on failure time.
     /// </summary>
     /// <value>The retry on failure time.</value>
-    [DataMember(Order = 7)]
-    [JsonPropertyOrder(7)]
-    public DateTimeOffset? RetryOnFailureTime { get; set; }
+    [DataMember(Order = 9)]
+    [JsonPropertyOrder(9)]
+    public DateTimeOffset? RetryOnFailureDateTime { get; set; }
+
+    /// <summary>
+    /// Gets or sets the retry on failure period.
+    /// </summary>
+    /// <value>The retry on failure period.</value>
+    [DataMember(Order = 10)]
+    [JsonPropertyOrder(10)]
+    public TimeSpan? RetryOnFailurePeriod { get; set; }
 }

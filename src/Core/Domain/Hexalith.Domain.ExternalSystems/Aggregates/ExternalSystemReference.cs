@@ -60,6 +60,20 @@ public record ExternalSystemReference(
     {
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ExternalSystemReference"/> class.
+    /// </summary>
+    public ExternalSystemReference()
+        : this(
+        string.Empty,
+        string.Empty,
+        string.Empty,
+        string.Empty,
+        string.Empty,
+        string.Empty)
+    {
+    }
+
     /// <inheritdoc/>
     public override IAggregate Apply(BaseEvent domainEvent)
     {

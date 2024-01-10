@@ -11,12 +11,12 @@ using System.Text.Json;
 
 using FluentValidation;
 
-using Hexalith.Application.Errors;
 using Hexalith.Application.Events;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.Organizations.Configurations;
 using Hexalith.Domain.Events;
 using Hexalith.Extensions.Configuration;
+using Hexalith.Extensions.Errors;
 using Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents;
 using Hexalith.Infrastructure.Dynamics365Finance.Dispatchers;
 using Hexalith.Infrastructure.WebApis.Controllers;

@@ -4,7 +4,7 @@
 // Created          : 10-04-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 10-04-2023
+// Last Modified On : 01-10-2024
 // ***********************************************************************
 // <copyright file="ActorConstants.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -55,4 +55,24 @@ public static class ActorConstants
     /// The message store name.
     /// </summary>
     public const string MessageStoreName = "Message";
+
+    /// <summary>
+    /// The process reminder name.
+    /// </summary>
+    public const string ProcessReminderName = "ContinueProcess";
+
+    /// <summary>
+    /// The process timer name.
+    /// </summary>
+    public const string ProcessTimerName = "ContinueProcess";
+
+    /// <summary>
+    /// The publish reminder name.
+    /// </summary>
+    public const string PublishReminderName = "ContinuePublish";
+
+    /// <summary>
+    /// The publish timer name.
+    /// </summary>
+    public const string PublishTimerName = "ContinuePublish";
 }

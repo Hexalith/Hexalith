@@ -19,6 +19,13 @@ namespace Hexalith.Server.Sales.Infrastructure.Controllers;
 using Dapr.Actors;
 using Dapr.Actors.Client;
 
+using Hexalith.Application.Metadatas;
+using Hexalith.Application.Sales.Commands;
+using Hexalith.Domain.Aggregates;
+using Hexalith.Domain.ValueObjets;
+using Hexalith.Extensions.Helpers;
+using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
+using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.DaprRuntime.Sales.Actors;
 
 using Microsoft.AspNetCore.Mvc;
@@ -49,8 +56,35 @@ public class TestController : ControllerBase
     [HttpGet("/hello")]
     public async Task<ActionResult> TestActorAsync()
     {
-        ISalesInvoiceAggregateActor actor = _proxyFactory.CreateActorProxy<ISalesInvoiceAggregateActor>(new ActorId("Test1"), nameof(SalesInvoiceAggregateActor));
-        string hello = await actor.SayHelloAsync().ConfigureAwait(false);
-        return Ok(hello);
+        IssueSalesInvoice command = new(
+            "FFY",
+            "FRRT",
+            "EDI",
+            "123456",
+            DateTimeOffset.UtcNow,
+            "CUST123",
+            "EUR",
+            [new SalesInvoiceLine(
+                    "1",
+                    new SalesLineItem("Item1", 10.5m, "UNIT", 123.25m),
+                    new SalesLineOrigin("W1", "VEN123"),
+                    [new SalesLineTax("V20", "VAT 20%", 10.56m)])]);
+        Metadata metadata = new(
+            UniqueIdHelper.GenerateUniqueStringId(),
+            command,
+            DateTimeOffset.UtcNow,
+            new ContextMetadata(UniqueIdHelper.GenerateUniqueStringId(), "test-user", DateTimeOffset.UtcNow, null, null),
+            null);
+
+        IAggregateActor actor = _proxyFactory.CreateActorProxy<IAggregateActor>(
+            new ActorId(command.AggregateId),
+            AggregateActor.GetAggregateActorName(SalesInvoice.GetAggregateName()));
+
+        await actor
+            .SubmitCommandAsync(new ActorCommandEnvelope([command], [metadata]))
+            .ConfigureAwait(false);
+        _ = await actor.ProcessNextCommandAsync().ConfigureAwait(false);
+        _ = await actor.PublishNextMessageAsync().ConfigureAwait(false);
+        return Ok(metadata.Message.Id);
     }
 }

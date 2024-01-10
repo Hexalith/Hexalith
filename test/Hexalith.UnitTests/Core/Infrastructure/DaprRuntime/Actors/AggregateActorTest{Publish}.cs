@@ -11,6 +11,7 @@ using Dapr.Actors.Runtime;
 
 using FluentAssertions;
 
+using Hexalith.Application.Aggregates;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
 using Hexalith.Application.Metadatas;
@@ -18,7 +19,6 @@ using Hexalith.Application.Notifications;
 using Hexalith.Application.Requests;
 using Hexalith.Application.States;
 using Hexalith.Application.Tasks;
-using Hexalith.Domain.Aggregates;
 using Hexalith.Extensions.Common;
 using Hexalith.Infrastructure.DaprRuntime.Abstractions;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
@@ -39,7 +39,7 @@ public partial class AggregateActorTest
             LastCommandProcessed = 2,
             LastMessagePublished = 1,
             MessageCount = 2,
-            Reminder = null,
+            ProcessReminderDueTime = null,
         };
         DummyTimerManager timerManager = new();
         ActorHost host = ActorHost.CreateForTest(
@@ -84,7 +84,7 @@ public partial class AggregateActorTest
         actorStateManager
             .Setup(s => s.SetStateAsync<AggregateActorState>(
                         It.Is<string>(s => s == ActorConstants.AggregateStateStoreName),
-                        It.Is<AggregateActorState>(s => s.MessageCount == 2 && s.LastMessagePublished == 2 && s.Reminder == null),
+                        It.Is<AggregateActorState>(s => s.MessageCount == 2 && s.LastMessagePublished == 2 && s.ProcessReminderDueTime == null),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);
@@ -121,7 +121,7 @@ public partial class AggregateActorTest
             LastCommandProcessed = 2,
             LastMessagePublished = 1,
             MessageCount = 3,
-            Reminder = null,
+            ProcessReminderDueTime = null,
         };
         DummyTimerManager timerManager = new();
         ActorHost host = ActorHost.CreateForTest(
@@ -170,7 +170,7 @@ public partial class AggregateActorTest
                             s.MessageCount == 3 &&
                             s.LastMessagePublished == 1 &&
                             s.PublishFailed &&
-                            s.Reminder.Value.CompareTo(TimeSpan.FromMinutes(1)) == 0),
+                            s.ProcessReminderDueTime.Value.CompareTo(TimeSpan.FromMinutes(1)) == 0),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);
@@ -208,7 +208,7 @@ public partial class AggregateActorTest
             LastCommandProcessed = 2,
             LastMessagePublished = 1,
             MessageCount = 3,
-            Reminder = null,
+            ProcessReminderDueTime = null,
         };
         DummyTimerManager timerManager = new();
         ActorHost host = ActorHost.CreateForTest(
@@ -256,7 +256,7 @@ public partial class AggregateActorTest
                         It.Is<AggregateActorState>(s =>
                             s.MessageCount == 3 &&
                             s.LastMessagePublished == 2 &&
-                            s.Reminder.Value.CompareTo(TimeSpan.FromMinutes(1)) == 0),
+                            s.ProcessReminderDueTime.Value.CompareTo(TimeSpan.FromMinutes(1)) == 0),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);

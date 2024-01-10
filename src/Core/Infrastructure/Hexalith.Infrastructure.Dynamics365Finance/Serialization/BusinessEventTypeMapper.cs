@@ -20,8 +20,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-using Hexalith.Application.Errors;
 using Hexalith.Extensions.Common;
+using Hexalith.Extensions.Errors;
 using Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents;
 
 /// <summary>
@@ -64,7 +64,7 @@ public static class BusinessEventTypeMapper
     /// <exception cref="System.InvalidOperationException">Type {type.FullName} could not be added to the serialization mapper. A type with TypeName='{obj.TypeName}' and Version='{obj.MajorVersion}.{obj.MinorVersion}' already exists : {map[key].FullName}.</exception>
     public static Dictionary<string, Type> GetMap()
     {
-        Dictionary<string, Type> map = new();
+        Dictionary<string, Type> map = [];
         System.Reflection.Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(p => !p.IsDynamic).ToArray();
         Type[] types = assemblies
             .SelectMany(a => a.GetTypes())

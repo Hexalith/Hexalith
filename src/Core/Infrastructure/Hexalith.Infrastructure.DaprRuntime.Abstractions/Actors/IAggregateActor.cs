@@ -27,12 +27,6 @@ using Hexalith.Infrastructure.DaprRuntime.Handlers;
 public interface IAggregateActor : IActor
 {
     /// <summary>
-    /// Continues the workflow asynchronous.
-    /// </summary>
-    /// <returns>Task.</returns>
-    public Task ContinueProcessingWorkflowAsync();
-
-    /// <summary>
     /// Processes the commands asynchronous.
     /// </summary>
     /// <returns>Task.</returns>

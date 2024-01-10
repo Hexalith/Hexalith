@@ -69,7 +69,7 @@ public abstract partial class AggregateActorBase
                     state.LastMessagePublished + 1,
                     cancellationToken)
                 .ConfigureAwait(false);
-            await SetContinueCallbackOnRemainingActionsAsync(cancellationToken)
+            await SetPublishCallbackAsync(cancellationToken)
                 .ConfigureAwait(false);
             await SaveAggregateStateAsync(cancellationToken)
                 .ConfigureAwait(false);

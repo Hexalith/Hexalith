@@ -13,7 +13,9 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Hexalith.Domain.Aggregates;
+using Hexalith.Domain.Aggregates;
+
+namespace Hexalith.Application.Aggregates;
 
 using System;
 

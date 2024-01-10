@@ -17,10 +17,10 @@ namespace Hexalith.Infrastructure.WebApis.Controllers;
 
 using System.Text.Json;
 
-using Hexalith.Application.Errors;
 using Hexalith.Application.Events;
 using Hexalith.Application.Metadatas;
 using Hexalith.Domain.Events;
+using Hexalith.Extensions.Errors;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;

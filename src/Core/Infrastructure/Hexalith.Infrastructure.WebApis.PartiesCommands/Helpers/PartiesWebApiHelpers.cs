@@ -20,7 +20,9 @@ using System.Diagnostics.CodeAnalysis;
 
 using Dapr.Actors.Client;
 
+using Hexalith.Application.Aggregates;
 using Hexalith.Application.Parties.Helpers;
+using Hexalith.Domain.Aggregates;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers;
 
@@ -46,6 +48,8 @@ public static class PartiesWebApiHelpers
                 ActorProxy.DefaultProxyFactory,
                 s.GetRequiredService<ILogger<ConventionNamingCommandProcessor>>()));
 
+        services.TryAddSingleton<IAggregateFactory, AggregateFactory>();
+        services.TryAddSingleton<IAggregateProvider, AggregateProvider<Customer>>();
         _ = services
          .AddControllers()
          .AddApplicationPart(typeof(PartiesCommandsController).Assembly)

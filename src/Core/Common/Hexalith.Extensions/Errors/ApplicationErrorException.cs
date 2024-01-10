@@ -14,9 +14,10 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Errors;
+namespace Hexalith.Extensions.Errors;
 
 using System;
+using System.Globalization;
 using System.Runtime.Serialization;
 
 using Hexalith.Extensions.Common;
@@ -41,7 +42,7 @@ public class ApplicationErrorException : Exception
     /// </summary>
     /// <param name="error">The error details.</param>
     public ApplicationErrorException(ApplicationError error)
-        : base(error.Title + Environment.NewLine + error.Detail) => Error = error;
+        : base((error ?? throw new ArgumentNullException(nameof(error))).Title + Environment.NewLine + error.GetDetailMessage(CultureInfo.InvariantCulture)) => Error = error;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ApplicationErrorException" /> class.
@@ -49,7 +50,7 @@ public class ApplicationErrorException : Exception
     /// <param name="error">The error.</param>
     /// <param name="innerException">The inner exception.</param>
     public ApplicationErrorException(ApplicationError error, Exception? innerException)
-        : base(error.Title + Environment.NewLine + error.Detail, innerException) => Error = error;
+        : base((error ?? throw new ArgumentNullException(nameof(error))).Title + Environment.NewLine + error.GetDetailMessage(CultureInfo.InvariantCulture), innerException) => Error = error;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ApplicationErrorException" /> class.

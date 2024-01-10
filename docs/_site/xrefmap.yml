@@ -220,6 +220,236 @@ references:
   commentId: N:Hexalith.Application.Aggregates
   fullName: Hexalith.Application.Aggregates
   nameWithType: Hexalith.Application.Aggregates
+- uid: Hexalith.Application.Aggregates.AggregateFactory
+  name: AggregateFactory
+  href: api/Hexalith.Application.Aggregates.AggregateFactory.html
+  commentId: T:Hexalith.Application.Aggregates.AggregateFactory
+  fullName: Hexalith.Application.Aggregates.AggregateFactory
+  nameWithType: AggregateFactory
+- uid: Hexalith.Application.Aggregates.AggregateFactory.#ctor(IEnumerable{Hexalith.Application.Aggregates.IAggregateProvider})
+  name: AggregateFactory(IEnumerable<IAggregateProvider>)
+  href: api/Hexalith.Application.Aggregates.AggregateFactory.html#Hexalith_Application_Aggregates_AggregateFactory__ctor_IEnumerable_Hexalith_Application_Aggregates_IAggregateProvider__
+  commentId: M:Hexalith.Application.Aggregates.AggregateFactory.#ctor(IEnumerable{Hexalith.Application.Aggregates.IAggregateProvider})
+  name.vb: AggregateFactory(IEnumerable(Of IAggregateProvider))
+  fullName: Hexalith.Application.Aggregates.AggregateFactory.AggregateFactory(IEnumerable<Hexalith.Application.Aggregates.IAggregateProvider>)
+  fullName.vb: Hexalith.Application.Aggregates.AggregateFactory.AggregateFactory(IEnumerable(Of Hexalith.Application.Aggregates.IAggregateProvider))
+  nameWithType: AggregateFactory.AggregateFactory(IEnumerable<IAggregateProvider>)
+  nameWithType.vb: AggregateFactory.AggregateFactory(IEnumerable(Of IAggregateProvider))
+- uid: Hexalith.Application.Aggregates.AggregateFactory.#ctor*
+  name: AggregateFactory
+  href: api/Hexalith.Application.Aggregates.AggregateFactory.html#Hexalith_Application_Aggregates_AggregateFactory__ctor_
+  commentId: Overload:Hexalith.Application.Aggregates.AggregateFactory.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Application.Aggregates.AggregateFactory.AggregateFactory
+  nameWithType: AggregateFactory.AggregateFactory
+- uid: Hexalith.Application.Aggregates.AggregateFactory.Create(System.String)
+  name: Create(String)
+  href: api/Hexalith.Application.Aggregates.AggregateFactory.html#Hexalith_Application_Aggregates_AggregateFactory_Create_System_String_
+  commentId: M:Hexalith.Application.Aggregates.AggregateFactory.Create(System.String)
+  fullName: Hexalith.Application.Aggregates.AggregateFactory.Create(System.String)
+  nameWithType: AggregateFactory.Create(String)
+- uid: Hexalith.Application.Aggregates.AggregateFactory.Create*
+  name: Create
+  href: api/Hexalith.Application.Aggregates.AggregateFactory.html#Hexalith_Application_Aggregates_AggregateFactory_Create_
+  commentId: Overload:Hexalith.Application.Aggregates.AggregateFactory.Create
+  isSpec: "True"
+  fullName: Hexalith.Application.Aggregates.AggregateFactory.Create
+  nameWithType: AggregateFactory.Create
+- uid: Hexalith.Application.Aggregates.AggregateFactory.GetAggregateType(System.String)
+  name: GetAggregateType(String)
+  href: api/Hexalith.Application.Aggregates.AggregateFactory.html#Hexalith_Application_Aggregates_AggregateFactory_GetAggregateType_System_String_
+  commentId: M:Hexalith.Application.Aggregates.AggregateFactory.GetAggregateType(System.String)
+  fullName: Hexalith.Application.Aggregates.AggregateFactory.GetAggregateType(System.String)
+  nameWithType: AggregateFactory.GetAggregateType(String)
+- uid: Hexalith.Application.Aggregates.AggregateFactory.GetAggregateType*
+  name: GetAggregateType
+  href: api/Hexalith.Application.Aggregates.AggregateFactory.html#Hexalith_Application_Aggregates_AggregateFactory_GetAggregateType_
+  commentId: Overload:Hexalith.Application.Aggregates.AggregateFactory.GetAggregateType
+  isSpec: "True"
+  fullName: Hexalith.Application.Aggregates.AggregateFactory.GetAggregateType
+  nameWithType: AggregateFactory.GetAggregateType
+- uid: Hexalith.Application.Aggregates.AggregateProvider`1
+  name: AggregateProvider<TAggregate>
+  href: api/Hexalith.Application.Aggregates.AggregateProvider-1.html
+  commentId: T:Hexalith.Application.Aggregates.AggregateProvider`1
+  name.vb: AggregateProvider(Of TAggregate)
+  fullName: Hexalith.Application.Aggregates.AggregateProvider<TAggregate>
+  fullName.vb: Hexalith.Application.Aggregates.AggregateProvider(Of TAggregate)
+  nameWithType: AggregateProvider<TAggregate>
+  nameWithType.vb: AggregateProvider(Of TAggregate)
+- uid: Hexalith.Application.Aggregates.AggregateProvider`1.AggregateName
+  name: AggregateName
+  href: api/Hexalith.Application.Aggregates.AggregateProvider-1.html#Hexalith_Application_Aggregates_AggregateProvider_1_AggregateName
+  commentId: P:Hexalith.Application.Aggregates.AggregateProvider`1.AggregateName
+  fullName: Hexalith.Application.Aggregates.AggregateProvider<TAggregate>.AggregateName
+  fullName.vb: Hexalith.Application.Aggregates.AggregateProvider(Of TAggregate).AggregateName
+  nameWithType: AggregateProvider<TAggregate>.AggregateName
+  nameWithType.vb: AggregateProvider(Of TAggregate).AggregateName
+- uid: Hexalith.Application.Aggregates.AggregateProvider`1.AggregateName*
+  name: AggregateName
+  href: api/Hexalith.Application.Aggregates.AggregateProvider-1.html#Hexalith_Application_Aggregates_AggregateProvider_1_AggregateName_
+  commentId: Overload:Hexalith.Application.Aggregates.AggregateProvider`1.AggregateName
+  isSpec: "True"
+  fullName: Hexalith.Application.Aggregates.AggregateProvider<TAggregate>.AggregateName
+  fullName.vb: Hexalith.Application.Aggregates.AggregateProvider(Of TAggregate).AggregateName
+  nameWithType: AggregateProvider<TAggregate>.AggregateName
+  nameWithType.vb: AggregateProvider(Of TAggregate).AggregateName
+- uid: Hexalith.Application.Aggregates.AggregateProvider`1.AggregateType
+  name: AggregateType
+  href: api/Hexalith.Application.Aggregates.AggregateProvider-1.html#Hexalith_Application_Aggregates_AggregateProvider_1_AggregateType
+  commentId: P:Hexalith.Application.Aggregates.AggregateProvider`1.AggregateType
+  fullName: Hexalith.Application.Aggregates.AggregateProvider<TAggregate>.AggregateType
+  fullName.vb: Hexalith.Application.Aggregates.AggregateProvider(Of TAggregate).AggregateType
+  nameWithType: AggregateProvider<TAggregate>.AggregateType
+  nameWithType.vb: AggregateProvider(Of TAggregate).AggregateType
+- uid: Hexalith.Application.Aggregates.AggregateProvider`1.AggregateType*
+  name: AggregateType
+  href: api/Hexalith.Application.Aggregates.AggregateProvider-1.html#Hexalith_Application_Aggregates_AggregateProvider_1_AggregateType_
+  commentId: Overload:Hexalith.Application.Aggregates.AggregateProvider`1.AggregateType
+  isSpec: "True"
+  fullName: Hexalith.Application.Aggregates.AggregateProvider<TAggregate>.AggregateType
+  fullName.vb: Hexalith.Application.Aggregates.AggregateProvider(Of TAggregate).AggregateType
+  nameWithType: AggregateProvider<TAggregate>.AggregateType
+  nameWithType.vb: AggregateProvider(Of TAggregate).AggregateType
+- uid: Hexalith.Application.Aggregates.AggregateProvider`1.Create
+  name: Create()
+  href: api/Hexalith.Application.Aggregates.AggregateProvider-1.html#Hexalith_Application_Aggregates_AggregateProvider_1_Create
+  commentId: M:Hexalith.Application.Aggregates.AggregateProvider`1.Create
+  fullName: Hexalith.Application.Aggregates.AggregateProvider<TAggregate>.Create()
+  fullName.vb: Hexalith.Application.Aggregates.AggregateProvider(Of TAggregate).Create()
+  nameWithType: AggregateProvider<TAggregate>.Create()
+  nameWithType.vb: AggregateProvider(Of TAggregate).Create()
+- uid: Hexalith.Application.Aggregates.AggregateProvider`1.Create*
+  name: Create
+  href: api/Hexalith.Application.Aggregates.AggregateProvider-1.html#Hexalith_Application_Aggregates_AggregateProvider_1_Create_
+  commentId: Overload:Hexalith.Application.Aggregates.AggregateProvider`1.Create
+  isSpec: "True"
+  fullName: Hexalith.Application.Aggregates.AggregateProvider<TAggregate>.Create
+  fullName.vb: Hexalith.Application.Aggregates.AggregateProvider(Of TAggregate).Create
+  nameWithType: AggregateProvider<TAggregate>.Create
+  nameWithType.vb: AggregateProvider(Of TAggregate).Create
+- uid: Hexalith.Application.Aggregates.AggregateProvider`1.Hexalith#Application#Aggregates#IAggregateProvider#Create
+  name: IAggregateProvider.Create()
+  href: api/Hexalith.Application.Aggregates.AggregateProvider-1.html#Hexalith_Application_Aggregates_AggregateProvider_1_Hexalith_Application_Aggregates_IAggregateProvider_Create
+  commentId: M:Hexalith.Application.Aggregates.AggregateProvider`1.Hexalith#Application#Aggregates#IAggregateProvider#Create
+  name.vb: Hexalith.Application.Aggregates.IAggregateProvider.Create()
+  fullName: Hexalith.Application.Aggregates.AggregateProvider<TAggregate>.Hexalith.Application.Aggregates.IAggregateProvider.Create()
+  fullName.vb: Hexalith.Application.Aggregates.AggregateProvider(Of TAggregate).Hexalith.Application.Aggregates.IAggregateProvider.Create()
+  nameWithType: AggregateProvider<TAggregate>.IAggregateProvider.Create()
+  nameWithType.vb: AggregateProvider(Of TAggregate).Hexalith.Application.Aggregates.IAggregateProvider.Create()
+- uid: Hexalith.Application.Aggregates.AggregateProvider`1.Hexalith#Application#Aggregates#IAggregateProvider#Create*
+  name: IAggregateProvider.Create
+  href: api/Hexalith.Application.Aggregates.AggregateProvider-1.html#Hexalith_Application_Aggregates_AggregateProvider_1_Hexalith_Application_Aggregates_IAggregateProvider_Create_
+  commentId: Overload:Hexalith.Application.Aggregates.AggregateProvider`1.Hexalith#Application#Aggregates#IAggregateProvider#Create
+  isSpec: "True"
+  name.vb: Hexalith.Application.Aggregates.IAggregateProvider.Create
+  fullName: Hexalith.Application.Aggregates.AggregateProvider<TAggregate>.Hexalith.Application.Aggregates.IAggregateProvider.Create
+  fullName.vb: Hexalith.Application.Aggregates.AggregateProvider(Of TAggregate).Hexalith.Application.Aggregates.IAggregateProvider.Create
+  nameWithType: AggregateProvider<TAggregate>.IAggregateProvider.Create
+  nameWithType.vb: AggregateProvider(Of TAggregate).Hexalith.Application.Aggregates.IAggregateProvider.Create
+- uid: Hexalith.Application.Aggregates.IAggregateFactory
+  name: IAggregateFactory
+  href: api/Hexalith.Application.Aggregates.IAggregateFactory.html
+  commentId: T:Hexalith.Application.Aggregates.IAggregateFactory
+  fullName: Hexalith.Application.Aggregates.IAggregateFactory
+  nameWithType: IAggregateFactory
+- uid: Hexalith.Application.Aggregates.IAggregateFactory.Create(System.String)
+  name: Create(String)
+  href: api/Hexalith.Application.Aggregates.IAggregateFactory.html#Hexalith_Application_Aggregates_IAggregateFactory_Create_System_String_
+  commentId: M:Hexalith.Application.Aggregates.IAggregateFactory.Create(System.String)
+  fullName: Hexalith.Application.Aggregates.IAggregateFactory.Create(System.String)
+  nameWithType: IAggregateFactory.Create(String)
+- uid: Hexalith.Application.Aggregates.IAggregateFactory.Create*
+  name: Create
+  href: api/Hexalith.Application.Aggregates.IAggregateFactory.html#Hexalith_Application_Aggregates_IAggregateFactory_Create_
+  commentId: Overload:Hexalith.Application.Aggregates.IAggregateFactory.Create
+  isSpec: "True"
+  fullName: Hexalith.Application.Aggregates.IAggregateFactory.Create
+  nameWithType: IAggregateFactory.Create
+- uid: Hexalith.Application.Aggregates.IAggregateFactory.GetAggregateType(System.String)
+  name: GetAggregateType(String)
+  href: api/Hexalith.Application.Aggregates.IAggregateFactory.html#Hexalith_Application_Aggregates_IAggregateFactory_GetAggregateType_System_String_
+  commentId: M:Hexalith.Application.Aggregates.IAggregateFactory.GetAggregateType(System.String)
+  fullName: Hexalith.Application.Aggregates.IAggregateFactory.GetAggregateType(System.String)
+  nameWithType: IAggregateFactory.GetAggregateType(String)
+- uid: Hexalith.Application.Aggregates.IAggregateFactory.GetAggregateType*
+  name: GetAggregateType
+  href: api/Hexalith.Application.Aggregates.IAggregateFactory.html#Hexalith_Application_Aggregates_IAggregateFactory_GetAggregateType_
+  commentId: Overload:Hexalith.Application.Aggregates.IAggregateFactory.GetAggregateType
+  isSpec: "True"
+  fullName: Hexalith.Application.Aggregates.IAggregateFactory.GetAggregateType
+  nameWithType: IAggregateFactory.GetAggregateType
+- uid: Hexalith.Application.Aggregates.IAggregateProvider
+  name: IAggregateProvider
+  href: api/Hexalith.Application.Aggregates.IAggregateProvider.html
+  commentId: T:Hexalith.Application.Aggregates.IAggregateProvider
+  fullName: Hexalith.Application.Aggregates.IAggregateProvider
+  nameWithType: IAggregateProvider
+- uid: Hexalith.Application.Aggregates.IAggregateProvider.AggregateName
+  name: AggregateName
+  href: api/Hexalith.Application.Aggregates.IAggregateProvider.html#Hexalith_Application_Aggregates_IAggregateProvider_AggregateName
+  commentId: P:Hexalith.Application.Aggregates.IAggregateProvider.AggregateName
+  fullName: Hexalith.Application.Aggregates.IAggregateProvider.AggregateName
+  nameWithType: IAggregateProvider.AggregateName
+- uid: Hexalith.Application.Aggregates.IAggregateProvider.AggregateName*
+  name: AggregateName
+  href: api/Hexalith.Application.Aggregates.IAggregateProvider.html#Hexalith_Application_Aggregates_IAggregateProvider_AggregateName_
+  commentId: Overload:Hexalith.Application.Aggregates.IAggregateProvider.AggregateName
+  isSpec: "True"
+  fullName: Hexalith.Application.Aggregates.IAggregateProvider.AggregateName
+  nameWithType: IAggregateProvider.AggregateName
+- uid: Hexalith.Application.Aggregates.IAggregateProvider.AggregateType
+  name: AggregateType
+  href: api/Hexalith.Application.Aggregates.IAggregateProvider.html#Hexalith_Application_Aggregates_IAggregateProvider_AggregateType
+  commentId: P:Hexalith.Application.Aggregates.IAggregateProvider.AggregateType
+  fullName: Hexalith.Application.Aggregates.IAggregateProvider.AggregateType
+  nameWithType: IAggregateProvider.AggregateType
+- uid: Hexalith.Application.Aggregates.IAggregateProvider.AggregateType*
+  name: AggregateType
+  href: api/Hexalith.Application.Aggregates.IAggregateProvider.html#Hexalith_Application_Aggregates_IAggregateProvider_AggregateType_
+  commentId: Overload:Hexalith.Application.Aggregates.IAggregateProvider.AggregateType
+  isSpec: "True"
+  fullName: Hexalith.Application.Aggregates.IAggregateProvider.AggregateType
+  nameWithType: IAggregateProvider.AggregateType
+- uid: Hexalith.Application.Aggregates.IAggregateProvider.Create
+  name: Create()
+  href: api/Hexalith.Application.Aggregates.IAggregateProvider.html#Hexalith_Application_Aggregates_IAggregateProvider_Create
+  commentId: M:Hexalith.Application.Aggregates.IAggregateProvider.Create
+  fullName: Hexalith.Application.Aggregates.IAggregateProvider.Create()
+  nameWithType: IAggregateProvider.Create()
+- uid: Hexalith.Application.Aggregates.IAggregateProvider.Create*
+  name: Create
+  href: api/Hexalith.Application.Aggregates.IAggregateProvider.html#Hexalith_Application_Aggregates_IAggregateProvider_Create_
+  commentId: Overload:Hexalith.Application.Aggregates.IAggregateProvider.Create
+  isSpec: "True"
+  fullName: Hexalith.Application.Aggregates.IAggregateProvider.Create
+  nameWithType: IAggregateProvider.Create
+- uid: Hexalith.Application.Aggregates.IAggregateProvider`1
+  name: IAggregateProvider<TAggregate>
+  href: api/Hexalith.Application.Aggregates.IAggregateProvider-1.html
+  commentId: T:Hexalith.Application.Aggregates.IAggregateProvider`1
+  name.vb: IAggregateProvider(Of TAggregate)
+  fullName: Hexalith.Application.Aggregates.IAggregateProvider<TAggregate>
+  fullName.vb: Hexalith.Application.Aggregates.IAggregateProvider(Of TAggregate)
+  nameWithType: IAggregateProvider<TAggregate>
+  nameWithType.vb: IAggregateProvider(Of TAggregate)
+- uid: Hexalith.Application.Aggregates.IAggregateProvider`1.Create
+  name: Create()
+  href: api/Hexalith.Application.Aggregates.IAggregateProvider-1.html#Hexalith_Application_Aggregates_IAggregateProvider_1_Create
+  commentId: M:Hexalith.Application.Aggregates.IAggregateProvider`1.Create
+  fullName: Hexalith.Application.Aggregates.IAggregateProvider<TAggregate>.Create()
+  fullName.vb: Hexalith.Application.Aggregates.IAggregateProvider(Of TAggregate).Create()
+  nameWithType: IAggregateProvider<TAggregate>.Create()
+  nameWithType.vb: IAggregateProvider(Of TAggregate).Create()
+- uid: Hexalith.Application.Aggregates.IAggregateProvider`1.Create*
+  name: Create
+  href: api/Hexalith.Application.Aggregates.IAggregateProvider-1.html#Hexalith_Application_Aggregates_IAggregateProvider_1_Create_
+  commentId: Overload:Hexalith.Application.Aggregates.IAggregateProvider`1.Create
+  isSpec: "True"
+  fullName: Hexalith.Application.Aggregates.IAggregateProvider<TAggregate>.Create
+  fullName.vb: Hexalith.Application.Aggregates.IAggregateProvider(Of TAggregate).Create
+  nameWithType: IAggregateProvider<TAggregate>.Create
+  nameWithType.vb: IAggregateProvider(Of TAggregate).Create
 - uid: Hexalith.Application.Aggregates.IAggregateStateManager
   name: IAggregateStateManager
   href: api/Hexalith.Application.Aggregates.IAggregateStateManager.html
@@ -10682,6 +10912,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Aggregates.Aggregate.DefaultAggregateName
   nameWithType: Aggregate.DefaultAggregateName
+- uid: Hexalith.Domain.Aggregates.Aggregate.IsInitialized
+  name: IsInitialized()
+  href: api/Hexalith.Domain.Aggregates.Aggregate.html#Hexalith_Domain_Aggregates_Aggregate_IsInitialized
+  commentId: M:Hexalith.Domain.Aggregates.Aggregate.IsInitialized
+  fullName: Hexalith.Domain.Aggregates.Aggregate.IsInitialized()
+  nameWithType: Aggregate.IsInitialized()
+- uid: Hexalith.Domain.Aggregates.Aggregate.IsInitialized*
+  name: IsInitialized
+  href: api/Hexalith.Domain.Aggregates.Aggregate.html#Hexalith_Domain_Aggregates_Aggregate_IsInitialized_
+  commentId: Overload:Hexalith.Domain.Aggregates.Aggregate.IsInitialized
+  isSpec: "True"
+  fullName: Hexalith.Domain.Aggregates.Aggregate.IsInitialized
+  nameWithType: Aggregate.IsInitialized
 - uid: Hexalith.Domain.Aggregates.Aggregate.Normalize(System.String)
   name: Normalize(String)
   href: api/Hexalith.Domain.Aggregates.Aggregate.html#Hexalith_Domain_Aggregates_Aggregate_Normalize_System_String_
@@ -10932,6 +11175,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Aggregates.Customer.IntercompanyDropship
   nameWithType: Customer.IntercompanyDropship
+- uid: Hexalith.Domain.Aggregates.Customer.IsInitialized
+  name: IsInitialized()
+  href: api/Hexalith.Domain.Aggregates.Customer.html#Hexalith_Domain_Aggregates_Customer_IsInitialized
+  commentId: M:Hexalith.Domain.Aggregates.Customer.IsInitialized
+  fullName: Hexalith.Domain.Aggregates.Customer.IsInitialized()
+  nameWithType: Customer.IsInitialized()
+- uid: Hexalith.Domain.Aggregates.Customer.IsInitialized*
+  name: IsInitialized
+  href: api/Hexalith.Domain.Aggregates.Customer.html#Hexalith_Domain_Aggregates_Customer_IsInitialized_
+  commentId: Overload:Hexalith.Domain.Aggregates.Customer.IsInitialized
+  isSpec: "True"
+  fullName: Hexalith.Domain.Aggregates.Customer.IsInitialized
+  nameWithType: Customer.IsInitialized
 - uid: Hexalith.Domain.Aggregates.Customer.Name
   name: Name
   href: api/Hexalith.Domain.Aggregates.Customer.html#Hexalith_Domain_Aggregates_Customer_Name
@@ -11113,6 +11369,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Aggregates.ExternalCustomer.Id
   nameWithType: ExternalCustomer.Id
+- uid: Hexalith.Domain.Aggregates.ExternalCustomer.IsInitialized
+  name: IsInitialized()
+  href: api/Hexalith.Domain.Aggregates.ExternalCustomer.html#Hexalith_Domain_Aggregates_ExternalCustomer_IsInitialized
+  commentId: M:Hexalith.Domain.Aggregates.ExternalCustomer.IsInitialized
+  fullName: Hexalith.Domain.Aggregates.ExternalCustomer.IsInitialized()
+  nameWithType: ExternalCustomer.IsInitialized()
+- uid: Hexalith.Domain.Aggregates.ExternalCustomer.IsInitialized*
+  name: IsInitialized
+  href: api/Hexalith.Domain.Aggregates.ExternalCustomer.html#Hexalith_Domain_Aggregates_ExternalCustomer_IsInitialized_
+  commentId: Overload:Hexalith.Domain.Aggregates.ExternalCustomer.IsInitialized
+  isSpec: "True"
+  fullName: Hexalith.Domain.Aggregates.ExternalCustomer.IsInitialized
+  nameWithType: ExternalCustomer.IsInitialized
 - uid: Hexalith.Domain.Aggregates.ExternalCustomer.System
   name: System
   href: api/Hexalith.Domain.Aggregates.ExternalCustomer.html#Hexalith_Domain_Aggregates_ExternalCustomer_System
@@ -11132,6 +11401,12 @@ references:
   commentId: T:Hexalith.Domain.Aggregates.ExternalSystemReference
   fullName: Hexalith.Domain.Aggregates.ExternalSystemReference
   nameWithType: ExternalSystemReference
+- uid: Hexalith.Domain.Aggregates.ExternalSystemReference.#ctor
+  name: ExternalSystemReference()
+  href: api/Hexalith.Domain.Aggregates.ExternalSystemReference.html#Hexalith_Domain_Aggregates_ExternalSystemReference__ctor
+  commentId: M:Hexalith.Domain.Aggregates.ExternalSystemReference.#ctor
+  fullName: Hexalith.Domain.Aggregates.ExternalSystemReference.ExternalSystemReference()
+  nameWithType: ExternalSystemReference.ExternalSystemReference()
 - uid: Hexalith.Domain.Aggregates.ExternalSystemReference.#ctor(Hexalith.Domain.Events.ExternalSystemReferenceAdded)
   name: ExternalSystemReference(ExternalSystemReferenceAdded)
   href: api/Hexalith.Domain.Aggregates.ExternalSystemReference.html#Hexalith_Domain_Aggregates_ExternalSystemReference__ctor_Hexalith_Domain_Events_ExternalSystemReferenceAdded_
@@ -11229,6 +11504,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Aggregates.ExternalSystemReference.GetAggregateName
   nameWithType: ExternalSystemReference.GetAggregateName
+- uid: Hexalith.Domain.Aggregates.ExternalSystemReference.IsInitialized
+  name: IsInitialized()
+  href: api/Hexalith.Domain.Aggregates.ExternalSystemReference.html#Hexalith_Domain_Aggregates_ExternalSystemReference_IsInitialized
+  commentId: M:Hexalith.Domain.Aggregates.ExternalSystemReference.IsInitialized
+  fullName: Hexalith.Domain.Aggregates.ExternalSystemReference.IsInitialized()
+  nameWithType: ExternalSystemReference.IsInitialized()
+- uid: Hexalith.Domain.Aggregates.ExternalSystemReference.IsInitialized*
+  name: IsInitialized
+  href: api/Hexalith.Domain.Aggregates.ExternalSystemReference.html#Hexalith_Domain_Aggregates_ExternalSystemReference_IsInitialized_
+  commentId: Overload:Hexalith.Domain.Aggregates.ExternalSystemReference.IsInitialized
+  isSpec: "True"
+  fullName: Hexalith.Domain.Aggregates.ExternalSystemReference.IsInitialized
+  nameWithType: ExternalSystemReference.IsInitialized
 - uid: Hexalith.Domain.Aggregates.ExternalSystemReference.PartitionId
   name: PartitionId
   href: api/Hexalith.Domain.Aggregates.ExternalSystemReference.html#Hexalith_Domain_Aggregates_ExternalSystemReference_PartitionId
@@ -11335,38 +11623,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Aggregates.IAggregate.Apply
   nameWithType: IAggregate.Apply
-- uid: Hexalith.Domain.Aggregates.IAggregateFactory
-  name: IAggregateFactory
-  href: api/Hexalith.Domain.Aggregates.IAggregateFactory.html
-  commentId: T:Hexalith.Domain.Aggregates.IAggregateFactory
-  fullName: Hexalith.Domain.Aggregates.IAggregateFactory
-  nameWithType: IAggregateFactory
-- uid: Hexalith.Domain.Aggregates.IAggregateFactory.Create(System.String)
-  name: Create(String)
-  href: api/Hexalith.Domain.Aggregates.IAggregateFactory.html#Hexalith_Domain_Aggregates_IAggregateFactory_Create_System_String_
-  commentId: M:Hexalith.Domain.Aggregates.IAggregateFactory.Create(System.String)
-  fullName: Hexalith.Domain.Aggregates.IAggregateFactory.Create(System.String)
-  nameWithType: IAggregateFactory.Create(String)
-- uid: Hexalith.Domain.Aggregates.IAggregateFactory.Create*
-  name: Create
-  href: api/Hexalith.Domain.Aggregates.IAggregateFactory.html#Hexalith_Domain_Aggregates_IAggregateFactory_Create_
-  commentId: Overload:Hexalith.Domain.Aggregates.IAggregateFactory.Create
+- uid: Hexalith.Domain.Aggregates.IAggregate.IsInitialized
+  name: IsInitialized()
+  href: api/Hexalith.Domain.Aggregates.IAggregate.html#Hexalith_Domain_Aggregates_IAggregate_IsInitialized
+  commentId: M:Hexalith.Domain.Aggregates.IAggregate.IsInitialized
+  fullName: Hexalith.Domain.Aggregates.IAggregate.IsInitialized()
+  nameWithType: IAggregate.IsInitialized()
+- uid: Hexalith.Domain.Aggregates.IAggregate.IsInitialized*
+  name: IsInitialized
+  href: api/Hexalith.Domain.Aggregates.IAggregate.html#Hexalith_Domain_Aggregates_IAggregate_IsInitialized_
+  commentId: Overload:Hexalith.Domain.Aggregates.IAggregate.IsInitialized
   isSpec: "True"
-  fullName: Hexalith.Domain.Aggregates.IAggregateFactory.Create
-  nameWithType: IAggregateFactory.Create
-- uid: Hexalith.Domain.Aggregates.IAggregateFactory.GetAggregateType(System.String)
-  name: GetAggregateType(String)
-  href: api/Hexalith.Domain.Aggregates.IAggregateFactory.html#Hexalith_Domain_Aggregates_IAggregateFactory_GetAggregateType_System_String_
-  commentId: M:Hexalith.Domain.Aggregates.IAggregateFactory.GetAggregateType(System.String)
-  fullName: Hexalith.Domain.Aggregates.IAggregateFactory.GetAggregateType(System.String)
-  nameWithType: IAggregateFactory.GetAggregateType(String)
-- uid: Hexalith.Domain.Aggregates.IAggregateFactory.GetAggregateType*
-  name: GetAggregateType
-  href: api/Hexalith.Domain.Aggregates.IAggregateFactory.html#Hexalith_Domain_Aggregates_IAggregateFactory_GetAggregateType_
-  commentId: Overload:Hexalith.Domain.Aggregates.IAggregateFactory.GetAggregateType
-  isSpec: "True"
-  fullName: Hexalith.Domain.Aggregates.IAggregateFactory.GetAggregateType
-  nameWithType: IAggregateFactory.GetAggregateType
+  fullName: Hexalith.Domain.Aggregates.IAggregate.IsInitialized
+  nameWithType: IAggregate.IsInitialized
 - uid: Hexalith.Domain.Aggregates.InventoryItem
   name: InventoryItem
   href: api/Hexalith.Domain.Aggregates.InventoryItem.html
@@ -11505,6 +11774,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Aggregates.InventoryItem.Id
   nameWithType: InventoryItem.Id
+- uid: Hexalith.Domain.Aggregates.InventoryItem.IsInitialized
+  name: IsInitialized()
+  href: api/Hexalith.Domain.Aggregates.InventoryItem.html#Hexalith_Domain_Aggregates_InventoryItem_IsInitialized
+  commentId: M:Hexalith.Domain.Aggregates.InventoryItem.IsInitialized
+  fullName: Hexalith.Domain.Aggregates.InventoryItem.IsInitialized()
+  nameWithType: InventoryItem.IsInitialized()
+- uid: Hexalith.Domain.Aggregates.InventoryItem.IsInitialized*
+  name: IsInitialized
+  href: api/Hexalith.Domain.Aggregates.InventoryItem.html#Hexalith_Domain_Aggregates_InventoryItem_IsInitialized_
+  commentId: Overload:Hexalith.Domain.Aggregates.InventoryItem.IsInitialized
+  isSpec: "True"
+  fullName: Hexalith.Domain.Aggregates.InventoryItem.IsInitialized
+  nameWithType: InventoryItem.IsInitialized
 - uid: Hexalith.Domain.Aggregates.InventoryItem.Name
   name: Name
   href: api/Hexalith.Domain.Aggregates.InventoryItem.html#Hexalith_Domain_Aggregates_InventoryItem_Name
@@ -11666,6 +11948,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Aggregates.InventoryItemStock.Id
   nameWithType: InventoryItemStock.Id
+- uid: Hexalith.Domain.Aggregates.InventoryItemStock.IsInitialized
+  name: IsInitialized()
+  href: api/Hexalith.Domain.Aggregates.InventoryItemStock.html#Hexalith_Domain_Aggregates_InventoryItemStock_IsInitialized
+  commentId: M:Hexalith.Domain.Aggregates.InventoryItemStock.IsInitialized
+  fullName: Hexalith.Domain.Aggregates.InventoryItemStock.IsInitialized()
+  nameWithType: InventoryItemStock.IsInitialized()
+- uid: Hexalith.Domain.Aggregates.InventoryItemStock.IsInitialized*
+  name: IsInitialized
+  href: api/Hexalith.Domain.Aggregates.InventoryItemStock.html#Hexalith_Domain_Aggregates_InventoryItemStock_IsInitialized_
+  commentId: Overload:Hexalith.Domain.Aggregates.InventoryItemStock.IsInitialized
+  isSpec: "True"
+  fullName: Hexalith.Domain.Aggregates.InventoryItemStock.IsInitialized
+  nameWithType: InventoryItemStock.IsInitialized
 - uid: Hexalith.Domain.Aggregates.InventoryItemStock.LocationId
   name: LocationId
   href: api/Hexalith.Domain.Aggregates.InventoryItemStock.html#Hexalith_Domain_Aggregates_InventoryItemStock_LocationId
@@ -11801,6 +12096,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Aggregates.SalesInvoice.GetAggregateName
   nameWithType: SalesInvoice.GetAggregateName
+- uid: Hexalith.Domain.Aggregates.SalesInvoice.IsInitialized
+  name: IsInitialized()
+  href: api/Hexalith.Domain.Aggregates.SalesInvoice.html#Hexalith_Domain_Aggregates_SalesInvoice_IsInitialized
+  commentId: M:Hexalith.Domain.Aggregates.SalesInvoice.IsInitialized
+  fullName: Hexalith.Domain.Aggregates.SalesInvoice.IsInitialized()
+  nameWithType: SalesInvoice.IsInitialized()
+- uid: Hexalith.Domain.Aggregates.SalesInvoice.IsInitialized*
+  name: IsInitialized
+  href: api/Hexalith.Domain.Aggregates.SalesInvoice.html#Hexalith_Domain_Aggregates_SalesInvoice_IsInitialized_
+  commentId: Overload:Hexalith.Domain.Aggregates.SalesInvoice.IsInitialized
+  isSpec: "True"
+  fullName: Hexalith.Domain.Aggregates.SalesInvoice.IsInitialized
+  nameWithType: SalesInvoice.IsInitialized
 - uid: Hexalith.Domain.Aggregates.SalesInvoice.State
   name: State
   href: api/Hexalith.Domain.Aggregates.SalesInvoice.html#Hexalith_Domain_Aggregates_SalesInvoice_State
@@ -12055,6 +12363,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Aggregates.Survey.Id
   nameWithType: Survey.Id
+- uid: Hexalith.Domain.Aggregates.Survey.IsInitialized
+  name: IsInitialized()
+  href: api/Hexalith.Domain.Aggregates.Survey.html#Hexalith_Domain_Aggregates_Survey_IsInitialized
+  commentId: M:Hexalith.Domain.Aggregates.Survey.IsInitialized
+  fullName: Hexalith.Domain.Aggregates.Survey.IsInitialized()
+  nameWithType: Survey.IsInitialized()
+- uid: Hexalith.Domain.Aggregates.Survey.IsInitialized*
+  name: IsInitialized
+  href: api/Hexalith.Domain.Aggregates.Survey.html#Hexalith_Domain_Aggregates_Survey_IsInitialized_
+  commentId: Overload:Hexalith.Domain.Aggregates.Survey.IsInitialized
+  isSpec: "True"
+  fullName: Hexalith.Domain.Aggregates.Survey.IsInitialized
+  nameWithType: Survey.IsInitialized
 - uid: Hexalith.Domain.Aggregates.Survey.Name
   name: Name
   href: api/Hexalith.Domain.Aggregates.Survey.html#Hexalith_Domain_Aggregates_Survey_Name
@@ -12268,6 +12589,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Aggregates.SurveyCampaign.Id
   nameWithType: SurveyCampaign.Id
+- uid: Hexalith.Domain.Aggregates.SurveyCampaign.IsInitialized
+  name: IsInitialized()
+  href: api/Hexalith.Domain.Aggregates.SurveyCampaign.html#Hexalith_Domain_Aggregates_SurveyCampaign_IsInitialized
+  commentId: M:Hexalith.Domain.Aggregates.SurveyCampaign.IsInitialized
+  fullName: Hexalith.Domain.Aggregates.SurveyCampaign.IsInitialized()
+  nameWithType: SurveyCampaign.IsInitialized()
+- uid: Hexalith.Domain.Aggregates.SurveyCampaign.IsInitialized*
+  name: IsInitialized
+  href: api/Hexalith.Domain.Aggregates.SurveyCampaign.html#Hexalith_Domain_Aggregates_SurveyCampaign_IsInitialized_
+  commentId: Overload:Hexalith.Domain.Aggregates.SurveyCampaign.IsInitialized
+  isSpec: "True"
+  fullName: Hexalith.Domain.Aggregates.SurveyCampaign.IsInitialized
+  nameWithType: SurveyCampaign.IsInitialized
 - uid: Hexalith.Domain.Aggregates.SurveyCampaign.Name
   name: Name
   href: api/Hexalith.Domain.Aggregates.SurveyCampaign.html#Hexalith_Domain_Aggregates_SurveyCampaign_Name
@@ -12393,6 +12727,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.GetAggregateName
   nameWithType: ConversationThread.GetAggregateName
+- uid: Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.IsInitialized
+  name: IsInitialized()
+  href: api/Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.html#Hexalith_Domain_ConversationThreads_Aggregates_ConversationThread_IsInitialized
+  commentId: M:Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.IsInitialized
+  fullName: Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.IsInitialized()
+  nameWithType: ConversationThread.IsInitialized()
+- uid: Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.IsInitialized*
+  name: IsInitialized
+  href: api/Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.html#Hexalith_Domain_ConversationThreads_Aggregates_ConversationThread_IsInitialized_
+  commentId: Overload:Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.IsInitialized
+  isSpec: "True"
+  fullName: Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.IsInitialized
+  nameWithType: ConversationThread.IsInitialized
 - uid: Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.Items
   name: Items
   href: api/Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.html#Hexalith_Domain_ConversationThreads_Aggregates_ConversationThread_Items
@@ -12835,6 +13182,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Entities.SurveyCategory.Id
   nameWithType: SurveyCategory.Id
+- uid: Hexalith.Domain.Entities.SurveyCategory.IsInitialized
+  name: IsInitialized()
+  href: api/Hexalith.Domain.Entities.SurveyCategory.html#Hexalith_Domain_Entities_SurveyCategory_IsInitialized
+  commentId: M:Hexalith.Domain.Entities.SurveyCategory.IsInitialized
+  fullName: Hexalith.Domain.Entities.SurveyCategory.IsInitialized()
+  nameWithType: SurveyCategory.IsInitialized()
+- uid: Hexalith.Domain.Entities.SurveyCategory.IsInitialized*
+  name: IsInitialized
+  href: api/Hexalith.Domain.Entities.SurveyCategory.html#Hexalith_Domain_Entities_SurveyCategory_IsInitialized_
+  commentId: Overload:Hexalith.Domain.Entities.SurveyCategory.IsInitialized
+  isSpec: "True"
+  fullName: Hexalith.Domain.Entities.SurveyCategory.IsInitialized
+  nameWithType: SurveyCategory.IsInitialized
 - uid: Hexalith.Domain.Entities.SurveyCategory.Name
   name: Name
   href: api/Hexalith.Domain.Entities.SurveyCategory.html#Hexalith_Domain_Entities_SurveyCategory_Name
@@ -13009,6 +13369,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Entities.SurveyUser.Id
   nameWithType: SurveyUser.Id
+- uid: Hexalith.Domain.Entities.SurveyUser.IsInitialized
+  name: IsInitialized()
+  href: api/Hexalith.Domain.Entities.SurveyUser.html#Hexalith_Domain_Entities_SurveyUser_IsInitialized
+  commentId: M:Hexalith.Domain.Entities.SurveyUser.IsInitialized
+  fullName: Hexalith.Domain.Entities.SurveyUser.IsInitialized()
+  nameWithType: SurveyUser.IsInitialized()
+- uid: Hexalith.Domain.Entities.SurveyUser.IsInitialized*
+  name: IsInitialized
+  href: api/Hexalith.Domain.Entities.SurveyUser.html#Hexalith_Domain_Entities_SurveyUser_IsInitialized_
+  commentId: Overload:Hexalith.Domain.Entities.SurveyUser.IsInitialized
+  isSpec: "True"
+  fullName: Hexalith.Domain.Entities.SurveyUser.IsInitialized
+  nameWithType: SurveyUser.IsInitialized
 - uid: Hexalith.Domain.Entities.SurveyUser.Name
   name: Name
   href: api/Hexalith.Domain.Entities.SurveyUser.html#Hexalith_Domain_Entities_SurveyUser_Name
@@ -15287,6 +15660,12 @@ references:
   commentId: T:Hexalith.Domain.UserConversationProfiles.Aggregates.UserConversationsProfile
   fullName: Hexalith.Domain.UserConversationProfiles.Aggregates.UserConversationsProfile
   nameWithType: UserConversationsProfile
+- uid: Hexalith.Domain.UserConversationProfiles.Aggregates.UserConversationsProfile.#ctor
+  name: UserConversationsProfile()
+  href: api/Hexalith.Domain.UserConversationProfiles.Aggregates.UserConversationsProfile.html#Hexalith_Domain_UserConversationProfiles_Aggregates_UserConversationsProfile__ctor
+  commentId: M:Hexalith.Domain.UserConversationProfiles.Aggregates.UserConversationsProfile.#ctor
+  fullName: Hexalith.Domain.UserConversationProfiles.Aggregates.UserConversationsProfile.UserConversationsProfile()
+  nameWithType: UserConversationsProfile.UserConversationsProfile()
 - uid: Hexalith.Domain.UserConversationProfiles.Aggregates.UserConversationsProfile.#ctor(Hexalith.Domain.UserConversationProfiles.Events.UserConversationsProfileAdded)
   name: UserConversationsProfile(UserConversationsProfileAdded)
   href: api/Hexalith.Domain.UserConversationProfiles.Aggregates.UserConversationsProfile.html#Hexalith_Domain_UserConversationProfiles_Aggregates_UserConversationsProfile__ctor_Hexalith_Domain_UserConversationProfiles_Events_UserConversationsProfileAdded_
@@ -15361,6 +15740,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.UserConversationProfiles.Aggregates.UserConversationsProfile.Conversations
   nameWithType: UserConversationsProfile.Conversations
+- uid: Hexalith.Domain.UserConversationProfiles.Aggregates.UserConversationsProfile.IsInitialized
+  name: IsInitialized()
+  href: api/Hexalith.Domain.UserConversationProfiles.Aggregates.UserConversationsProfile.html#Hexalith_Domain_UserConversationProfiles_Aggregates_UserConversationsProfile_IsInitialized
+  commentId: M:Hexalith.Domain.UserConversationProfiles.Aggregates.UserConversationsProfile.IsInitialized
+  fullName: Hexalith.Domain.UserConversationProfiles.Aggregates.UserConversationsProfile.IsInitialized()
+  nameWithType: UserConversationsProfile.IsInitialized()
+- uid: Hexalith.Domain.UserConversationProfiles.Aggregates.UserConversationsProfile.IsInitialized*
+  name: IsInitialized
+  href: api/Hexalith.Domain.UserConversationProfiles.Aggregates.UserConversationsProfile.html#Hexalith_Domain_UserConversationProfiles_Aggregates_UserConversationsProfile_IsInitialized_
+  commentId: Overload:Hexalith.Domain.UserConversationProfiles.Aggregates.UserConversationsProfile.IsInitialized
+  isSpec: "True"
+  fullName: Hexalith.Domain.UserConversationProfiles.Aggregates.UserConversationsProfile.IsInitialized
+  nameWithType: UserConversationsProfile.IsInitialized
 - uid: Hexalith.Domain.UserConversationProfiles.Aggregates.UserConversationsProfile.UserId
   name: UserId
   href: api/Hexalith.Domain.UserConversationProfiles.Aggregates.UserConversationsProfile.html#Hexalith_Domain_UserConversationProfiles_Aggregates_UserConversationsProfile_UserId
@@ -19998,6 +20390,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.DaprRuntime.Actors.AggregateActorState.MessageCount
   nameWithType: AggregateActorState.MessageCount
+- uid: Hexalith.Infrastructure.DaprRuntime.Actors.AggregateActorState.PublishFailed
+  name: PublishFailed
+  href: api/Hexalith.Infrastructure.DaprRuntime.Actors.AggregateActorState.html#Hexalith_Infrastructure_DaprRuntime_Actors_AggregateActorState_PublishFailed
+  commentId: P:Hexalith.Infrastructure.DaprRuntime.Actors.AggregateActorState.PublishFailed
+  fullName: Hexalith.Infrastructure.DaprRuntime.Actors.AggregateActorState.PublishFailed
+  nameWithType: AggregateActorState.PublishFailed
+- uid: Hexalith.Infrastructure.DaprRuntime.Actors.AggregateActorState.PublishFailed*
+  name: PublishFailed
+  href: api/Hexalith.Infrastructure.DaprRuntime.Actors.AggregateActorState.html#Hexalith_Infrastructure_DaprRuntime_Actors_AggregateActorState_PublishFailed_
+  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Actors.AggregateActorState.PublishFailed
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.DaprRuntime.Actors.AggregateActorState.PublishFailed
+  nameWithType: AggregateActorState.PublishFailed
 - uid: Hexalith.Infrastructure.DaprRuntime.Actors.AggregateActorState.Reminder
   name: Reminder
   href: api/Hexalith.Infrastructure.DaprRuntime.Actors.AggregateActorState.html#Hexalith_Infrastructure_DaprRuntime_Actors_AggregateActorState_Reminder
@@ -20011,19 +20416,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.DaprRuntime.Actors.AggregateActorState.Reminder
   nameWithType: AggregateActorState.Reminder
-- uid: Hexalith.Infrastructure.DaprRuntime.Actors.AggregateActorState.RetryOnFailureWaitTime
-  name: RetryOnFailureWaitTime
-  href: api/Hexalith.Infrastructure.DaprRuntime.Actors.AggregateActorState.html#Hexalith_Infrastructure_DaprRuntime_Actors_AggregateActorState_RetryOnFailureWaitTime
-  commentId: P:Hexalith.Infrastructure.DaprRuntime.Actors.AggregateActorState.RetryOnFailureWaitTime
-  fullName: Hexalith.Infrastructure.DaprRuntime.Actors.AggregateActorState.RetryOnFailureWaitTime
-  nameWithType: AggregateActorState.RetryOnFailureWaitTime
-- uid: Hexalith.Infrastructure.DaprRuntime.Actors.AggregateActorState.RetryOnFailureWaitTime*
-  name: RetryOnFailureWaitTime
-  href: api/Hexalith.Infrastructure.DaprRuntime.Actors.AggregateActorState.html#Hexalith_Infrastructure_DaprRuntime_Actors_AggregateActorState_RetryOnFailureWaitTime_
-  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Actors.AggregateActorState.RetryOnFailureWaitTime
+- uid: Hexalith.Infrastructure.DaprRuntime.Actors.AggregateActorState.RetryOnFailureTime
+  name: RetryOnFailureTime
+  href: api/Hexalith.Infrastructure.DaprRuntime.Actors.AggregateActorState.html#Hexalith_Infrastructure_DaprRuntime_Actors_AggregateActorState_RetryOnFailureTime
+  commentId: P:Hexalith.Infrastructure.DaprRuntime.Actors.AggregateActorState.RetryOnFailureTime
+  fullName: Hexalith.Infrastructure.DaprRuntime.Actors.AggregateActorState.RetryOnFailureTime
+  nameWithType: AggregateActorState.RetryOnFailureTime
+- uid: Hexalith.Infrastructure.DaprRuntime.Actors.AggregateActorState.RetryOnFailureTime*
+  name: RetryOnFailureTime
+  href: api/Hexalith.Infrastructure.DaprRuntime.Actors.AggregateActorState.html#Hexalith_Infrastructure_DaprRuntime_Actors_AggregateActorState_RetryOnFailureTime_
+  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Actors.AggregateActorState.RetryOnFailureTime
   isSpec: "True"
-  fullName: Hexalith.Infrastructure.DaprRuntime.Actors.AggregateActorState.RetryOnFailureWaitTime
-  nameWithType: AggregateActorState.RetryOnFailureWaitTime
+  fullName: Hexalith.Infrastructure.DaprRuntime.Actors.AggregateActorState.RetryOnFailureTime
+  nameWithType: AggregateActorState.RetryOnFailureTime
 - uid: Hexalith.Infrastructure.DaprRuntime.Actors.IKeyValueActor
   name: IKeyValueActor
   href: api/Hexalith.Infrastructure.DaprRuntime.Actors.IKeyValueActor.html
@@ -22381,11 +22786,11 @@ references:
   commentId: T:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor
   fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor
   nameWithType: AggregateActor
-- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.#ctor(Dapr.Actors.Runtime.ActorHost,Hexalith.Application.Commands.ICommandDispatcher,Hexalith.Domain.Aggregates.IAggregateFactory,Hexalith.Extensions.Common.IDateTimeService,Hexalith.Application.Events.IEventBus,Hexalith.Application.Notifications.INotificationBus,Hexalith.Application.Commands.ICommandBus,Hexalith.Application.Requests.IRequestBus,Hexalith.Application.Tasks.IResiliencyPolicyProvider,Dapr.Actors.Runtime.IActorStateManager)
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.#ctor(Dapr.Actors.Runtime.ActorHost,Hexalith.Application.Commands.ICommandDispatcher,Hexalith.Application.Aggregates.IAggregateFactory,Hexalith.Extensions.Common.IDateTimeService,Hexalith.Application.Events.IEventBus,Hexalith.Application.Notifications.INotificationBus,Hexalith.Application.Commands.ICommandBus,Hexalith.Application.Requests.IRequestBus,Hexalith.Application.Tasks.IResiliencyPolicyProvider,Dapr.Actors.Runtime.IActorStateManager)
   name: AggregateActor(ActorHost, ICommandDispatcher, IAggregateFactory, IDateTimeService, IEventBus, INotificationBus, ICommandBus, IRequestBus, IResiliencyPolicyProvider, IActorStateManager)
-  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActor__ctor_Dapr_Actors_Runtime_ActorHost_Hexalith_Application_Commands_ICommandDispatcher_Hexalith_Domain_Aggregates_IAggregateFactory_Hexalith_Extensions_Common_IDateTimeService_Hexalith_Application_Events_IEventBus_Hexalith_Application_Notifications_INotificationBus_Hexalith_Application_Commands_ICommandBus_Hexalith_Application_Requests_IRequestBus_Hexalith_Application_Tasks_IResiliencyPolicyProvider_Dapr_Actors_Runtime_IActorStateManager_
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.#ctor(Dapr.Actors.Runtime.ActorHost,Hexalith.Application.Commands.ICommandDispatcher,Hexalith.Domain.Aggregates.IAggregateFactory,Hexalith.Extensions.Common.IDateTimeService,Hexalith.Application.Events.IEventBus,Hexalith.Application.Notifications.INotificationBus,Hexalith.Application.Commands.ICommandBus,Hexalith.Application.Requests.IRequestBus,Hexalith.Application.Tasks.IResiliencyPolicyProvider,Dapr.Actors.Runtime.IActorStateManager)
-  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.AggregateActor(Dapr.Actors.Runtime.ActorHost, Hexalith.Application.Commands.ICommandDispatcher, Hexalith.Domain.Aggregates.IAggregateFactory, Hexalith.Extensions.Common.IDateTimeService, Hexalith.Application.Events.IEventBus, Hexalith.Application.Notifications.INotificationBus, Hexalith.Application.Commands.ICommandBus, Hexalith.Application.Requests.IRequestBus, Hexalith.Application.Tasks.IResiliencyPolicyProvider, Dapr.Actors.Runtime.IActorStateManager)
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActor__ctor_Dapr_Actors_Runtime_ActorHost_Hexalith_Application_Commands_ICommandDispatcher_Hexalith_Application_Aggregates_IAggregateFactory_Hexalith_Extensions_Common_IDateTimeService_Hexalith_Application_Events_IEventBus_Hexalith_Application_Notifications_INotificationBus_Hexalith_Application_Commands_ICommandBus_Hexalith_Application_Requests_IRequestBus_Hexalith_Application_Tasks_IResiliencyPolicyProvider_Dapr_Actors_Runtime_IActorStateManager_
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.#ctor(Dapr.Actors.Runtime.ActorHost,Hexalith.Application.Commands.ICommandDispatcher,Hexalith.Application.Aggregates.IAggregateFactory,Hexalith.Extensions.Common.IDateTimeService,Hexalith.Application.Events.IEventBus,Hexalith.Application.Notifications.INotificationBus,Hexalith.Application.Commands.ICommandBus,Hexalith.Application.Requests.IRequestBus,Hexalith.Application.Tasks.IResiliencyPolicyProvider,Dapr.Actors.Runtime.IActorStateManager)
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.AggregateActor(Dapr.Actors.Runtime.ActorHost, Hexalith.Application.Commands.ICommandDispatcher, Hexalith.Application.Aggregates.IAggregateFactory, Hexalith.Extensions.Common.IDateTimeService, Hexalith.Application.Events.IEventBus, Hexalith.Application.Notifications.INotificationBus, Hexalith.Application.Commands.ICommandBus, Hexalith.Application.Requests.IRequestBus, Hexalith.Application.Tasks.IResiliencyPolicyProvider, Dapr.Actors.Runtime.IActorStateManager)
   nameWithType: AggregateActor.AggregateActor(ActorHost, ICommandDispatcher, IAggregateFactory, IDateTimeService, IEventBus, INotificationBus, ICommandBus, IRequestBus, IResiliencyPolicyProvider, IActorStateManager)
 - uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActor.#ctor*
   name: AggregateActor
@@ -22413,11 +22818,11 @@ references:
   commentId: T:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase
   fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase
   nameWithType: AggregateActorBase
-- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.#ctor(Dapr.Actors.Runtime.ActorHost,Hexalith.Application.Commands.ICommandDispatcher,Hexalith.Domain.Aggregates.IAggregateFactory,Hexalith.Extensions.Common.IDateTimeService,Hexalith.Application.Events.IEventBus,Hexalith.Application.Notifications.INotificationBus,Hexalith.Application.Commands.ICommandBus,Hexalith.Application.Requests.IRequestBus,Hexalith.Application.Tasks.IResiliencyPolicyProvider,Dapr.Actors.Runtime.IActorStateManager)
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.#ctor(Dapr.Actors.Runtime.ActorHost,Hexalith.Application.Commands.ICommandDispatcher,Hexalith.Application.Aggregates.IAggregateFactory,Hexalith.Extensions.Common.IDateTimeService,Hexalith.Application.Events.IEventBus,Hexalith.Application.Notifications.INotificationBus,Hexalith.Application.Commands.ICommandBus,Hexalith.Application.Requests.IRequestBus,Hexalith.Application.Tasks.IResiliencyPolicyProvider,Dapr.Actors.Runtime.IActorStateManager)
   name: AggregateActorBase(ActorHost, ICommandDispatcher, IAggregateFactory, IDateTimeService, IEventBus, INotificationBus, ICommandBus, IRequestBus, IResiliencyPolicyProvider, IActorStateManager)
-  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActorBase__ctor_Dapr_Actors_Runtime_ActorHost_Hexalith_Application_Commands_ICommandDispatcher_Hexalith_Domain_Aggregates_IAggregateFactory_Hexalith_Extensions_Common_IDateTimeService_Hexalith_Application_Events_IEventBus_Hexalith_Application_Notifications_INotificationBus_Hexalith_Application_Commands_ICommandBus_Hexalith_Application_Requests_IRequestBus_Hexalith_Application_Tasks_IResiliencyPolicyProvider_Dapr_Actors_Runtime_IActorStateManager_
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.#ctor(Dapr.Actors.Runtime.ActorHost,Hexalith.Application.Commands.ICommandDispatcher,Hexalith.Domain.Aggregates.IAggregateFactory,Hexalith.Extensions.Common.IDateTimeService,Hexalith.Application.Events.IEventBus,Hexalith.Application.Notifications.INotificationBus,Hexalith.Application.Commands.ICommandBus,Hexalith.Application.Requests.IRequestBus,Hexalith.Application.Tasks.IResiliencyPolicyProvider,Dapr.Actors.Runtime.IActorStateManager)
-  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.AggregateActorBase(Dapr.Actors.Runtime.ActorHost, Hexalith.Application.Commands.ICommandDispatcher, Hexalith.Domain.Aggregates.IAggregateFactory, Hexalith.Extensions.Common.IDateTimeService, Hexalith.Application.Events.IEventBus, Hexalith.Application.Notifications.INotificationBus, Hexalith.Application.Commands.ICommandBus, Hexalith.Application.Requests.IRequestBus, Hexalith.Application.Tasks.IResiliencyPolicyProvider, Dapr.Actors.Runtime.IActorStateManager)
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActorBase__ctor_Dapr_Actors_Runtime_ActorHost_Hexalith_Application_Commands_ICommandDispatcher_Hexalith_Application_Aggregates_IAggregateFactory_Hexalith_Extensions_Common_IDateTimeService_Hexalith_Application_Events_IEventBus_Hexalith_Application_Notifications_INotificationBus_Hexalith_Application_Commands_ICommandBus_Hexalith_Application_Requests_IRequestBus_Hexalith_Application_Tasks_IResiliencyPolicyProvider_Dapr_Actors_Runtime_IActorStateManager_
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.#ctor(Dapr.Actors.Runtime.ActorHost,Hexalith.Application.Commands.ICommandDispatcher,Hexalith.Application.Aggregates.IAggregateFactory,Hexalith.Extensions.Common.IDateTimeService,Hexalith.Application.Events.IEventBus,Hexalith.Application.Notifications.INotificationBus,Hexalith.Application.Commands.ICommandBus,Hexalith.Application.Requests.IRequestBus,Hexalith.Application.Tasks.IResiliencyPolicyProvider,Dapr.Actors.Runtime.IActorStateManager)
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.AggregateActorBase(Dapr.Actors.Runtime.ActorHost, Hexalith.Application.Commands.ICommandDispatcher, Hexalith.Application.Aggregates.IAggregateFactory, Hexalith.Extensions.Common.IDateTimeService, Hexalith.Application.Events.IEventBus, Hexalith.Application.Notifications.INotificationBus, Hexalith.Application.Commands.ICommandBus, Hexalith.Application.Requests.IRequestBus, Hexalith.Application.Tasks.IResiliencyPolicyProvider, Dapr.Actors.Runtime.IActorStateManager)
   nameWithType: AggregateActorBase.AggregateActorBase(ActorHost, ICommandDispatcher, IAggregateFactory, IDateTimeService, IEventBus, INotificationBus, ICommandBus, IRequestBus, IResiliencyPolicyProvider, IActorStateManager)
 - uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.#ctor*
   name: AggregateActorBase
@@ -22517,6 +22922,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.LogProcessingCommandsInformation
   nameWithType: AggregateActorBase.LogProcessingCommandsInformation
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.LogPublishError(Microsoft.Extensions.Logging.ILogger,Exception,System.Int64,System.String,System.String,System.String,System.String,System.String)
+  name: LogPublishError(ILogger, Exception, Int64, String, String, String, String, String)
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActorBase_LogPublishError_Microsoft_Extensions_Logging_ILogger_Exception_System_Int64_System_String_System_String_System_String_System_String_System_String_
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.LogPublishError(Microsoft.Extensions.Logging.ILogger,Exception,System.Int64,System.String,System.String,System.String,System.String,System.String)
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.LogPublishError(Microsoft.Extensions.Logging.ILogger, Exception, System.Int64, System.String, System.String, System.String, System.String, System.String)
+  nameWithType: AggregateActorBase.LogPublishError(ILogger, Exception, Int64, String, String, String, String, String)
+- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.LogPublishError*
+  name: LogPublishError
+  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActorBase_LogPublishError_
+  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.LogPublishError
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.LogPublishError
+  nameWithType: AggregateActorBase.LogPublishError
 - uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.ProcessNextCommandAsync
   name: ProcessNextCommandAsync()
   href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_AggregateActorBase_ProcessNextCommandAsync
@@ -22591,38 +23009,6 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.ISalesInvoiceAggregateActor.SayHelloAsync
   nameWithType: ISalesInvoiceAggregateActor.SayHelloAsync
-- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor
-  name: SalesInvoiceAggregateActor
-  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.html
-  commentId: T:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor
-  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor
-  nameWithType: SalesInvoiceAggregateActor
-- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.#ctor(Dapr.Actors.Runtime.ActorHost,Hexalith.Application.Commands.ICommandDispatcher,Hexalith.Domain.Aggregates.IAggregateFactory,Hexalith.Extensions.Common.IDateTimeService,Hexalith.Application.Events.IEventBus,Hexalith.Application.Notifications.INotificationBus,Hexalith.Application.Commands.ICommandBus,Hexalith.Application.Requests.IRequestBus,Dapr.Actors.Runtime.IActorStateManager)
-  name: SalesInvoiceAggregateActor(ActorHost, ICommandDispatcher, IAggregateFactory, IDateTimeService, IEventBus, INotificationBus, ICommandBus, IRequestBus, IActorStateManager)
-  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_SalesInvoiceAggregateActor__ctor_Dapr_Actors_Runtime_ActorHost_Hexalith_Application_Commands_ICommandDispatcher_Hexalith_Domain_Aggregates_IAggregateFactory_Hexalith_Extensions_Common_IDateTimeService_Hexalith_Application_Events_IEventBus_Hexalith_Application_Notifications_INotificationBus_Hexalith_Application_Commands_ICommandBus_Hexalith_Application_Requests_IRequestBus_Dapr_Actors_Runtime_IActorStateManager_
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.#ctor(Dapr.Actors.Runtime.ActorHost,Hexalith.Application.Commands.ICommandDispatcher,Hexalith.Domain.Aggregates.IAggregateFactory,Hexalith.Extensions.Common.IDateTimeService,Hexalith.Application.Events.IEventBus,Hexalith.Application.Notifications.INotificationBus,Hexalith.Application.Commands.ICommandBus,Hexalith.Application.Requests.IRequestBus,Dapr.Actors.Runtime.IActorStateManager)
-  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.SalesInvoiceAggregateActor(Dapr.Actors.Runtime.ActorHost, Hexalith.Application.Commands.ICommandDispatcher, Hexalith.Domain.Aggregates.IAggregateFactory, Hexalith.Extensions.Common.IDateTimeService, Hexalith.Application.Events.IEventBus, Hexalith.Application.Notifications.INotificationBus, Hexalith.Application.Commands.ICommandBus, Hexalith.Application.Requests.IRequestBus, Dapr.Actors.Runtime.IActorStateManager)
-  nameWithType: SalesInvoiceAggregateActor.SalesInvoiceAggregateActor(ActorHost, ICommandDispatcher, IAggregateFactory, IDateTimeService, IEventBus, INotificationBus, ICommandBus, IRequestBus, IActorStateManager)
-- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.#ctor*
-  name: SalesInvoiceAggregateActor
-  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_SalesInvoiceAggregateActor__ctor_
-  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.#ctor
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.SalesInvoiceAggregateActor
-  nameWithType: SalesInvoiceAggregateActor.SalesInvoiceAggregateActor
-- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.SayHelloAsync
-  name: SayHelloAsync()
-  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_SalesInvoiceAggregateActor_SayHelloAsync
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.SayHelloAsync
-  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.SayHelloAsync()
-  nameWithType: SalesInvoiceAggregateActor.SayHelloAsync()
-- uid: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.SayHelloAsync*
-  name: SayHelloAsync
-  href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.html#Hexalith_Infrastructure_DaprRuntime_Sales_Actors_SalesInvoiceAggregateActor_SayHelloAsync_
-  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.SayHelloAsync
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.DaprRuntime.Sales.Actors.SalesInvoiceAggregateActor.SayHelloAsync
-  nameWithType: SalesInvoiceAggregateActor.SayHelloAsync
 - uid: Hexalith.Infrastructure.DaprRuntime.Sales.Configurations
   name: Hexalith.Infrastructure.DaprRuntime.Sales.Configurations
   href: api/Hexalith.Infrastructure.DaprRuntime.Sales.Configurations.html

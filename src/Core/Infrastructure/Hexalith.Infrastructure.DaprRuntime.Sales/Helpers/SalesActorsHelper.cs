@@ -20,6 +20,7 @@ using System.Diagnostics.CodeAnalysis;
 
 using Dapr.Actors.Runtime;
 
+using Hexalith.Domain.Aggregates;
 using Hexalith.Infrastructure.DaprRuntime.Sales.Actors;
 
 /// <summary>
@@ -36,7 +37,7 @@ public static class SalesActorsHelper
     public static ActorRegistrationCollection AddSalesAggregates([NotNull] this ActorRegistrationCollection actors)
     {
         ArgumentNullException.ThrowIfNull(actors);
-        actors.RegisterActor<SalesInvoiceAggregateActor>();
+        actors.RegisterActor<AggregateActor>(AggregateActor.GetAggregateActorName(SalesInvoice.GetAggregateName()));
         return actors;
     }
 

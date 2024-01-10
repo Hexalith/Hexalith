@@ -1,8 +1,18 @@
-﻿// <copyright file="AggregateActorTest{submit}.cs" company="Fiveforty SAS Paris France">
+﻿// ***********************************************************************
+// Assembly         : Hexalith.UnitTests
+// Author           : Jérôme Piquot
+// Created          : 01-05-2024
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 01-10-2024
+// ***********************************************************************
+// <copyright file="AggregateActorTest{submit}.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Hexalith.UnitTests.Core.Infrastructure.DaprRuntime.Actors;
 
@@ -11,6 +21,7 @@ using Dapr.Actors.Runtime;
 
 using FluentAssertions;
 
+using Hexalith.Application.Aggregates;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
 using Hexalith.Application.Metadatas;
@@ -18,7 +29,6 @@ using Hexalith.Application.Notifications;
 using Hexalith.Application.Requests;
 using Hexalith.Application.States;
 using Hexalith.Application.Tasks;
-using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
@@ -29,8 +39,15 @@ using Hexalith.Infrastructure.DaprRuntime.Sales.Actors;
 
 using Moq;
 
+/// <summary>
+/// Class AggregateActorTest.
+/// </summary>
 public partial class AggregateActorTest
 {
+    /// <summary>
+    /// Defines the test method SubmitCommandToActorWithCommandShouldStoreCommand.
+    /// </summary>
+    /// <returns>System.Threading.Tasks.Task.</returns>
     [Fact]
     public async Task SubmitCommandToActorWithCommandShouldStoreCommand()
     {
@@ -42,7 +59,7 @@ public partial class AggregateActorTest
             LastCommandProcessed = 2,
             LastMessagePublished = 2,
             MessageCount = 2,
-            Reminder = null,
+            ProcessReminderDueTime = null,
         };
         DummyTimerManager timerManager = new();
         ActorHost host = ActorHost.CreateForTest(
@@ -107,7 +124,7 @@ public partial class AggregateActorTest
         actorStateManager
             .Setup(s => s.SetStateAsync<AggregateActorState>(
                         It.Is<string>(s => s == ActorConstants.AggregateStateStoreName),
-                        It.Is<AggregateActorState>(s => s.CommandCount == 3 && s.Reminder != null),
+                        It.Is<AggregateActorState>(s => s.CommandCount == 3 && s.ProcessReminderDueTime != null),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);
@@ -134,6 +151,10 @@ public partial class AggregateActorTest
         Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, notificationBus, commandBus, requestBus);
     }
 
+    /// <summary>
+    /// Defines the test method SubmitCommandToActorWithIdMismatchShouldThrowException.
+    /// </summary>
+    /// <returns>System.Threading.Tasks.Task.</returns>
     [Fact]
     public async Task SubmitCommandToActorWithIdMismatchShouldThrowException()
     {
@@ -168,6 +189,10 @@ public partial class AggregateActorTest
             .Where(e => e.Message.Contains(command.Id) && e.Message.Contains(actor.Id.ToString()));
     }
 
+    /// <summary>
+    /// Defines the test method SubmitCommandToActorWithNameMismatchShouldThrowException.
+    /// </summary>
+    /// <returns>System.Threading.Tasks.Task.</returns>
     [Fact]
     public async Task SubmitCommandToActorWithNameMismatchShouldThrowException()
     {
@@ -205,6 +230,10 @@ public partial class AggregateActorTest
                 e.Message.Contains(actor.Host.ActorTypeInfo.ActorTypeName));
     }
 
+    /// <summary>
+    /// Defines the test method SubmitCommandToNewActorShouldStoreCommand.
+    /// </summary>
+    /// <returns>System.Threading.Tasks.Task.</returns>
     [Fact]
     public async Task SubmitCommandToNewActorShouldStoreCommand()
     {
@@ -263,7 +292,7 @@ public partial class AggregateActorTest
         actorStateManager
             .Setup(s => s.SetStateAsync<AggregateActorState>(
                         It.Is<string>(s => s == ActorConstants.AggregateStateStoreName),
-                        It.Is<AggregateActorState>(s => s.CommandCount == 1 && s.Reminder != null),
+                        It.Is<AggregateActorState>(s => s.CommandCount == 1 && s.ProcessReminderDueTime != null),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);
@@ -288,9 +317,19 @@ public partial class AggregateActorTest
         Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, notificationBus, commandBus, requestBus);
     }
 
+    /// <summary>
+    /// Creates the envelope.
+    /// </summary>
+    /// <param name="command">The command.</param>
+    /// <returns>Hexalith.Infrastructure.DaprRuntime.Handlers.ActorCommandEnvelope.</returns>
     private ActorCommandEnvelope CreateEnvelope(DummyAggregateCommand1 command)
                 => new([command], [CreateMetadata(command)]);
 
+    /// <summary>
+    /// Creates the metadata.
+    /// </summary>
+    /// <param name="message">The message.</param>
+    /// <returns>Hexalith.Application.Metadatas.Metadata.</returns>
     private Metadata CreateMetadata(BaseMessage message)
         => new(
             UniqueIdHelper.GenerateUniqueStringId(),

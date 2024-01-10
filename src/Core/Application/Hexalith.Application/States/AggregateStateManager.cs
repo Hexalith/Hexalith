@@ -23,7 +23,6 @@ using System.Threading;
 
 using Hexalith.Application.Aggregates;
 using Hexalith.Application.Commands;
-using Hexalith.Application.Errors;
 using Hexalith.Application.Events;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.Notifications;
@@ -33,6 +32,7 @@ using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Common;
+using Hexalith.Extensions.Errors;
 using Hexalith.Extensions.Helpers;
 
 using Microsoft.Extensions.Logging;

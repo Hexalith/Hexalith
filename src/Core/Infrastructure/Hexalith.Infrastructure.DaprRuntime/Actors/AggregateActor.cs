@@ -18,12 +18,12 @@ namespace Hexalith.Infrastructure.DaprRuntime.Sales.Actors;
 using Dapr.Actors;
 using Dapr.Actors.Runtime;
 
+using Hexalith.Application.Aggregates;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
 using Hexalith.Application.Notifications;
 using Hexalith.Application.Requests;
 using Hexalith.Application.Tasks;
-using Hexalith.Domain.Aggregates;
 using Hexalith.Extensions.Common;
 using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 

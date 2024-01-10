@@ -30,6 +30,7 @@ using Hexalith.Application.Tasks;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Messages;
+using Hexalith.Extensions.Errors;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 
 using Microsoft.Extensions.Logging;
@@ -47,7 +48,9 @@ public abstract partial class AggregateActorBase
         await ProcessNextSubmittedCommandAsync(cancellationToken)
             .ConfigureAwait(false);
 
-        await SetContinueCallbackOnRemainingActionsAsync(cancellationToken)
+        await SetProcessCallbackAsync(cancellationToken)
+           .ConfigureAwait(false);
+        await SetPublishCallbackAsync(cancellationToken)
            .ConfigureAwait(false);
         await SaveAggregateStateAsync(cancellationToken)
             .ConfigureAwait(false);
@@ -75,6 +78,20 @@ public abstract partial class AggregateActorBase
         string errorMessage,
         string? technicalErrorMessage);
 
+    [LoggerMessage(
+        EventId = 7,
+        Level = LogLevel.Information,
+        Message = "The command number {Sequence} '{MessageType}' cannot be processed on aggregate {AggregateName} with id {AggregateId}. The retry attempt {NextRetryNumber} will be executed at {NextRetryDateTime}. CorrelationId={CorrelationId}.")]
+    private static partial void LogTaskProcessorRetryInformation(
+        ILogger logger,
+        string messageType,
+        long sequence,
+        string correlationId,
+        string aggregateName,
+        string aggregateId,
+        int nextRetryNumber,
+        DateTimeOffset nextRetryDateTime);
+
     private async Task<TaskProcessor> GetTaskProcessorAsync(long commandSequence, CancellationToken cancellationToken)
     {
         Dapr.Actors.Runtime.ConditionalValue<TaskProcessor> taskProcessorState = await StateManager
@@ -91,7 +108,7 @@ public abstract partial class AggregateActorBase
 
     private string GetTaskProcessorStateName(long commandSequence) => $"{nameof(TaskProcessor)}-{commandSequence}";
 
-    private async Task<IEnumerable<BaseMessage>> HandleCommandProcessingErrorAsync(
+    private async Task<(IEnumerable<BaseMessage> Messages, TaskProcessor Processor)> HandleCommandProcessingErrorAsync(
         TaskProcessor taskProcessor,
         long commandSequence,
         string correlationId,
@@ -101,33 +118,39 @@ public abstract partial class AggregateActorBase
     {
         TaskProcessingFailure? previousFailure = taskProcessor.Failure;
         taskProcessor = taskProcessor.Fail(ex);
-        IEnumerable<BaseMessage> messages;
-        await PersistTaskProcessorAsync(commandSequence, taskProcessor, cancellationToken).ConfigureAwait(false);
+        IEnumerable<BaseMessage> messages = [];
         AggregateActorState state = await GetAggregateStateAsync(cancellationToken).ConfigureAwait(false);
-        switch (taskProcessor.CanRetry)
+        if (taskProcessor.Status == TaskProcessorStatus.Canceled)
         {
-            case RetryStatus.Stopped:
-                state.LastCommandProcessed = commandSequence;
+            state.LastCommandProcessed = commandSequence;
+            messages = [new ApplicationExceptionNotification(
+                correlationId,
+                command.AggregateName,
+                command.AggregateId,
+                ex)];
+        }
+        else
+        {
+            if (previousFailure == null || taskProcessor.Failure?.Date == null || _dateTimeService.UtcNow.Subtract(taskProcessor.Failure.Date) > TimeSpan.FromMinutes(15))
+            {
                 messages = [new ApplicationExceptionNotification(
                 correlationId,
                 command.AggregateName,
                 command.AggregateId,
                 ex)];
-                break;
+            }
 
-            case RetryStatus.Suspended:
-                state.RetryOnFailureTime = _dateTimeService.UtcNow + taskProcessor.RetryPeriod;
-                messages = (previousFailure == null || taskProcessor.Failure?.Date == null || _dateTimeService.UtcNow.Subtract(taskProcessor.Failure.Date) > TimeSpan.FromMinutes(15))
-                ? [new ApplicationExceptionNotification(
+            state.RetryOnFailurePeriod = taskProcessor.RetryPeriod;
+            state.RetryOnFailureDateTime = _dateTimeService.UtcNow + taskProcessor.RetryPeriod;
+            LogTaskProcessorRetryInformation(
+                Logger,
+                command.TypeName,
+                commandSequence,
                 correlationId,
                 command.AggregateName,
                 command.AggregateId,
-                ex)]
-                : [];
-                break;
-
-            default:
-                throw new InvalidOperationException($"Invalid task processor status '{taskProcessor.Status}' for command '{commandSequence}'.");
+                (taskProcessor.Failure?.Count ?? 0) + 1,
+                state.RetryOnFailureDateTime.Value);
         }
 
         LogApplicationErrorWarning(
@@ -139,7 +162,7 @@ public abstract partial class AggregateActorBase
             correlationId,
             ex.Error?.GetDetailMessage(CultureInfo.InvariantCulture) ?? "Unknown application error.",
             ex.Error?.GetTechnicalMessage(CultureInfo.InvariantCulture));
-        return messages;
+        return (messages, taskProcessor);
     }
 
     private async Task PersistTaskProcessorAsync(long commandSequence, TaskProcessor taskProcessor, CancellationToken cancellationToken)
@@ -203,12 +226,13 @@ public abstract partial class AggregateActorBase
         if (taskProcessor.Status == TaskProcessorStatus.Suspended)
         {
             // The task processor is suspended, we can't process the command now
-            await RegisterContinueCallbackAsync(taskProcessor.RetryPeriod).ConfigureAwait(false);
+            return;
         }
 
         try
         {
-            state.RetryOnFailureTime = null;
+            state.RetryOnFailurePeriod = null;
+            state.RetryOnFailureDateTime = null;
 
             // Execute the commands
             messages = await _commandDispatcher
@@ -233,7 +257,6 @@ public abstract partial class AggregateActorBase
                 .ConfigureAwait(false);
             taskProcessor = taskProcessor.Complete();
             state.LastCommandProcessed = commandNumber;
-            await PersistTaskProcessorAsync(commandNumber, taskProcessor, cancellationToken).ConfigureAwait(false);
             LogProcessedCommandInformation(
                 Logger,
                 command.TypeName,
@@ -243,7 +266,7 @@ public abstract partial class AggregateActorBase
         }
         catch (ApplicationErrorException ex)
         {
-            messages = await HandleCommandProcessingErrorAsync(
+            (messages, taskProcessor) = await HandleCommandProcessingErrorAsync(
                 taskProcessor,
                 commandNumber,
                 metadata.Context.CorrelationId,
@@ -251,6 +274,8 @@ public abstract partial class AggregateActorBase
                 ex,
                 cancellationToken).ConfigureAwait(false);
         }
+
+        await PersistTaskProcessorAsync(commandNumber, taskProcessor, cancellationToken).ConfigureAwait(false);
 
         // Get integration messages to persist in the message store
         MessageState[] integrationMessages = messages

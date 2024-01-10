@@ -12,8 +12,8 @@ using System.Globalization;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Application.Errors;
 using Hexalith.Extensions;
+using Hexalith.Extensions.Errors;
 using Hexalith.Extensions.Helpers;
 
 /// <summary>

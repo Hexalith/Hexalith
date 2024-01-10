@@ -20,7 +20,9 @@ using System.Diagnostics.CodeAnalysis;
 
 using Dapr.Actors.Client;
 
+using Hexalith.Application.Aggregates;
 using Hexalith.Application.Sales.Helpers;
+using Hexalith.Domain.Aggregates;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.WebApis.SalesCommands.Controllers;
 
@@ -46,6 +48,8 @@ public static class SalesWebApiHelpers
                 ActorProxy.DefaultProxyFactory,
                 s.GetRequiredService<ILogger<ConventionNamingCommandProcessor>>()));
 
+        services.TryAddSingleton<IAggregateFactory, AggregateFactory>();
+        services.TryAddSingleton<IAggregateProvider, AggregateProvider<SalesInvoice>>();
         _ = services
          .AddControllers()
          .AddApplicationPart(typeof(SalesCommandsController).Assembly)

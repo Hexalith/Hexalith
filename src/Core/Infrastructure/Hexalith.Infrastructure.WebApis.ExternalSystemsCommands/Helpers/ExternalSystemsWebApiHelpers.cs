@@ -20,7 +20,9 @@ using System.Diagnostics.CodeAnalysis;
 
 using Dapr.Actors.Client;
 
+using Hexalith.Application.Aggregates;
 using Hexalith.Application.ExternalSystems.Helpers;
+using Hexalith.Domain.Aggregates;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers;
 
@@ -42,6 +44,8 @@ public static class ExternalSystemsWebApiHelpers
     {
         ArgumentNullException.ThrowIfNull(services);
         _ = services.AddExternalSystemsCommandHandlers();
+        services.TryAddSingleton<IAggregateFactory, AggregateFactory>();
+        services.TryAddSingleton<IAggregateProvider, AggregateProvider<ExternalSystemReference>>();
         services.TryAddSingleton(service =>
             new ConventionNamingCommandProcessor(
                 ActorProxy.DefaultProxyFactory,

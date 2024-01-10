@@ -82,7 +82,9 @@ public abstract partial class AggregateActorBase
             .AddAsync(commandStates, state.CommandCount, cancellationToken)
             .ConfigureAwait(false);
 
-        await SetContinueCallbackOnRemainingActionsAsync(cancellationToken)
+        await SetProcessCallbackAsync(cancellationToken)
+           .ConfigureAwait(false);
+        await SetPublishCallbackAsync(cancellationToken)
            .ConfigureAwait(false);
         await SaveAggregateStateAsync(cancellationToken)
             .ConfigureAwait(false);

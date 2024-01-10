@@ -1,8 +1,18 @@
-﻿// <copyright file="AggregateActorTest{Process}.cs" company="Fiveforty SAS Paris France">
+﻿// ***********************************************************************
+// Assembly         : Hexalith.UnitTests
+// Author           : Jérôme Piquot
+// Created          : 01-06-2024
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 01-10-2024
+// ***********************************************************************
+// <copyright file="AggregateActorTest{Process}.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Hexalith.UnitTests.Core.Infrastructure.DaprRuntime.Actors;
 
@@ -11,8 +21,8 @@ using Dapr.Actors.Runtime;
 
 using FluentAssertions;
 
+using Hexalith.Application.Aggregates;
 using Hexalith.Application.Commands;
-using Hexalith.Application.Errors;
 using Hexalith.Application.Events;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.Notifications;
@@ -21,14 +31,22 @@ using Hexalith.Application.States;
 using Hexalith.Application.Tasks;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Extensions.Common;
+using Hexalith.Extensions.Errors;
 using Hexalith.Infrastructure.DaprRuntime.Abstractions;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Sales.Actors;
 
 using Moq;
 
+/// <summary>
+/// Class AggregateActorTest.
+/// </summary>
 public partial class AggregateActorTest
 {
+    /// <summary>
+    /// Defines the test method ProcessWithCommandWithErrorShouldSetReminderDueTimeToPolicyDelay.
+    /// </summary>
+    /// <returns>System.Threading.Tasks.Task.</returns>
     [Fact]
     public async Task ProcessWithCommandWithErrorShouldSetReminderDueTimeToPolicyDelay()
     {
@@ -40,7 +58,8 @@ public partial class AggregateActorTest
             LastCommandProcessed = 0,
             LastMessagePublished = 1,
             MessageCount = 1,
-            Reminder = null,
+            ProcessReminderDueTime = null,
+            PublishReminderDueTime = null,
         };
         ActorId actorId = new(command.AggregateId);
         DummyTimerManager timerManager = new();
@@ -125,7 +144,7 @@ public partial class AggregateActorTest
                             s.CommandCount == 1 &&
                             s.LastCommandProcessed == 0 &&
                             s.MessageCount == 1 &&
-                            s.Reminder != null),
+                            s.ProcessReminderDueTime != null),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);
@@ -160,6 +179,10 @@ public partial class AggregateActorTest
         Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, notificationBus, commandBus, requestBus);
     }
 
+    /// <summary>
+    /// Defines the test method ProcessWithFirstCommandShouldStoreEventAndMessage.
+    /// </summary>
+    /// <returns>System.Threading.Tasks.Task.</returns>
     [Fact]
     public async Task ProcessWithFirstCommandShouldStoreEventAndMessage()
     {
@@ -171,7 +194,7 @@ public partial class AggregateActorTest
             LastCommandProcessed = 0,
             LastMessagePublished = 0,
             MessageCount = 0,
-            Reminder = new TimeSpan(0, 0, 1),
+            ProcessReminderDueTime = new TimeSpan(0, 0, 1),
         };
         ActorId actorId = new(command.AggregateId);
         DummyTimerManager timerManager = new();
@@ -273,7 +296,7 @@ public partial class AggregateActorTest
                             s.LastCommandProcessed == 1 &&
                             s.MessageCount == 1 &&
                             s.LastMessagePublished == 0 &&
-                            s.Reminder != null),
+                            s.ProcessReminderDueTime != null),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);
@@ -356,6 +379,10 @@ public partial class AggregateActorTest
         Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, notificationBus, commandBus, requestBus);
     }
 
+    /// <summary>
+    /// Defines the test method ProcessWithManyCommandsShouldStoreEventsAndMessages.
+    /// </summary>
+    /// <returns>System.Threading.Tasks.Task.</returns>
     [Fact]
     public async Task ProcessWithManyCommandsShouldStoreEventsAndMessages()
     {
@@ -371,7 +398,7 @@ public partial class AggregateActorTest
             LastCommandProcessed = 7,
             LastMessagePublished = 5,
             MessageCount = 5,
-            Reminder = null,
+            ProcessReminderDueTime = null,
         };
         DummyTimerManager timerManager = new();
         ActorHost host = ActorHost.CreateForTest(
@@ -523,7 +550,7 @@ public partial class AggregateActorTest
                             s.LastCommandProcessed == 8 &&
                             s.MessageCount == 6 &&
                             s.LastMessagePublished == 5 &&
-                            s.Reminder != null),
+                            s.ProcessReminderDueTime != null),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);
@@ -536,7 +563,7 @@ public partial class AggregateActorTest
                             s.LastCommandProcessed == 9 &&
                             s.MessageCount == 7 &&
                             s.LastMessagePublished == 5 &&
-                            s.Reminder != null),
+                            s.ProcessReminderDueTime != null),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);
@@ -549,7 +576,7 @@ public partial class AggregateActorTest
                             s.LastCommandProcessed == 10 &&
                             s.MessageCount == 8 &&
                             s.LastMessagePublished == 5 &&
-                            s.Reminder != null),
+                            s.ProcessReminderDueTime != null),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);

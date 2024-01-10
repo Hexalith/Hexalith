@@ -21,13 +21,15 @@ using System.Runtime.Serialization;
 
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
+using Hexalith.Extensions.Common;
+using Hexalith.Extensions.Errors;
 
 /// <summary>
 /// Class InvalidAggregateEventException.
 /// Implements the <see cref="InvalidOperationException" />.
 /// </summary>
 /// <seealso cref="InvalidOperationException" />
-public class InvalidAggregateEventException : InvalidOperationException
+public class InvalidAggregateEventException : ApplicationErrorException
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="InvalidAggregateEventException"/> class.
@@ -52,8 +54,7 @@ public class InvalidAggregateEventException : InvalidOperationException
     /// <param name="domainEvent">The domain event.</param>
     /// <param name="isInitializerEvent">if set to <c>true</c> [is initializer event].</param>
     public InvalidAggregateEventException(IAggregate aggregate, BaseEvent domainEvent, bool isInitializerEvent)
-        : base($"Event {domainEvent?.TypeName} is not supported by aggregate {aggregate?.AggregateName}." +
-            (isInitializerEvent ? $" This event can only be used once, to initialize the aggregate." : string.Empty))
+        : base(GetError(aggregate, domainEvent, isInitializerEvent), null)
     {
         Aggregate = aggregate;
         DomainEvent = domainEvent;
@@ -92,5 +93,26 @@ public class InvalidAggregateEventException : InvalidOperationException
     /// <value>The domain event.</value>
     public BaseEvent? DomainEvent { get; }
 
+    /// <summary>
+    /// Gets a value indicating whether this instance is initializer event.
+    /// </summary>
+    /// <value><c>true</c> if this instance is initializer event; otherwise, <c>false</c>.</value>
     public bool IsInitializerEvent { get; }
+
+    private static ApplicationError GetError(IAggregate aggregate, BaseEvent domainEvent, bool isInitializerEvent)
+        => isInitializerEvent
+            ? new ApplicationError
+            {
+                Title = "Error applying event",
+                Detail = "The Event '{MessageType}' cannot be applied to the aggregate '{AggregateName}' with id '{AggregateId}'.",
+                Arguments = new[] { domainEvent.TypeName, domainEvent.AggregateName, domainEvent.AggregateId },
+                Category = ErrorCategory.Functional,
+            }
+            : new ApplicationError
+            {
+                Title = "Error applying event",
+                Detail = "The event '{MessageType}' can only be used for initialization. The aggregate '{AggregateName}' with ID '{aggregateId}' is already initialized.",
+                Arguments = new[] { domainEvent.TypeName, domainEvent.AggregateName, domainEvent.AggregateId },
+                Category = ErrorCategory.Functional,
+            };
 }
