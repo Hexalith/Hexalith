@@ -43,13 +43,18 @@ public abstract partial class AggregateActorBase
     /// <inheritdoc/>
     public async Task<bool> ProcessNextCommandAsync()
     {
-        await ProcessNextSubmittedCommandAsync(CancellationToken.None)
+        CancellationToken cancellationToken = CancellationToken.None;
+        await ProcessNextSubmittedCommandAsync(cancellationToken)
             .ConfigureAwait(false);
 
+        await SetContinueCallbackOnRemainingActionsAsync(cancellationToken)
+           .ConfigureAwait(false);
+        await SaveAggregateStateAsync(cancellationToken)
+            .ConfigureAwait(false);
         await SaveStateAsync()
             .ConfigureAwait(false);
 
-        AggregateActorState state = await GetAggregateStateAsync(CancellationToken.None)
+        AggregateActorState state = await GetAggregateStateAsync(cancellationToken)
             .ConfigureAwait(false);
 
         // Returns true if there are unprocessed commands remaining
@@ -96,14 +101,35 @@ public abstract partial class AggregateActorBase
     {
         TaskProcessingFailure? previousFailure = taskProcessor.Failure;
         taskProcessor = taskProcessor.Fail(ex);
-        IEnumerable<BaseMessage> messages = (previousFailure == null || taskProcessor.Failure?.Date == null || _dateTimeService.UtcNow.Subtract(taskProcessor.Failure.Date) > TimeSpan.FromMinutes(15))
-            ? [new ApplicationExceptionNotification(
+        IEnumerable<BaseMessage> messages;
+        await PersistTaskProcessorAsync(commandSequence, taskProcessor, cancellationToken).ConfigureAwait(false);
+        AggregateActorState state = await GetAggregateStateAsync(cancellationToken).ConfigureAwait(false);
+        switch (taskProcessor.CanRetry)
+        {
+            case RetryStatus.Stopped:
+                state.LastCommandProcessed = commandSequence;
+                messages = [new ApplicationExceptionNotification(
+                correlationId,
+                command.AggregateName,
+                command.AggregateId,
+                ex)];
+                break;
+
+            case RetryStatus.Suspended:
+                state.RetryOnFailureTime = _dateTimeService.UtcNow + taskProcessor.RetryPeriod;
+                messages = (previousFailure == null || taskProcessor.Failure?.Date == null || _dateTimeService.UtcNow.Subtract(taskProcessor.Failure.Date) > TimeSpan.FromMinutes(15))
+                ? [new ApplicationExceptionNotification(
                 correlationId,
                 command.AggregateName,
                 command.AggregateId,
                 ex)]
-            : [];
-        await PersistTaskProcessorAsync(commandSequence, taskProcessor, cancellationToken).ConfigureAwait(false);
+                : [];
+                break;
+
+            default:
+                throw new InvalidOperationException($"Invalid task processor status '{taskProcessor.Status}' for command '{commandSequence}'.");
+        }
+
         LogApplicationErrorWarning(
             Logger,
             commandSequence,
@@ -168,6 +194,7 @@ public abstract partial class AggregateActorBase
             commandNumber,
             CancellationToken.None)
         .ConfigureAwait(false);
+
         if (taskProcessor.Status == TaskProcessorStatus.Suspended)
         {
             taskProcessor = taskProcessor.Continue();
@@ -181,6 +208,8 @@ public abstract partial class AggregateActorBase
 
         try
         {
+            state.RetryOnFailureTime = null;
+
             // Execute the commands
             messages = await _commandDispatcher
                     .DoAsync(command, aggregate, cancellationToken)
@@ -230,7 +259,9 @@ public abstract partial class AggregateActorBase
             .Select(p => new MessageState(_dateTimeService.UtcNow, p, Metadata.CreateNew(p, metadata)))
             .ToArray();
 
-        state.MessageCount = await MessageStore.AddAsync(integrationMessages, state.MessageCount, cancellationToken).ConfigureAwait(false);
-        await SaveAggregateStateAsync(cancellationToken).ConfigureAwait(false);
+        if (integrationMessages.Length > 0)
+        {
+            state.MessageCount = await MessageStore.AddAsync(integrationMessages, state.MessageCount, cancellationToken).ConfigureAwait(false);
+        }
     }
 }

@@ -19,6 +19,7 @@ using Hexalith.Application.Requests;
 using Hexalith.Application.States;
 using Hexalith.Application.Tasks;
 using Hexalith.Domain.Aggregates;
+using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Abstractions;
@@ -126,6 +127,10 @@ public partial class AggregateActorTest
             resiliencyPolicyProvider.Object,
             actorStateManager.Object);
         await actor.SubmitCommandAsync(new ActorCommandEnvelope([command], [metadata]));
+        _ = timerManager.Reminders.Count.Should().Be(1);
+        _ = timerManager.Timers.Count.Should().Be(1);
+        _ = timerManager.Reminders[ActorConstants.ContinueReminderName].DueTime.Should().Be(TimeSpan.FromMinutes(1));
+        _ = timerManager.Timers[ActorConstants.ContinueTimerName].DueTime.Should().Be(TimeSpan.FromMilliseconds(1));
         Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, notificationBus, commandBus, requestBus);
     }
 
@@ -286,11 +291,16 @@ public partial class AggregateActorTest
     private ActorCommandEnvelope CreateEnvelope(DummyAggregateCommand1 command)
                 => new([command], [CreateMetadata(command)]);
 
-    private Metadata CreateMetadata(BaseCommand command)
+    private Metadata CreateMetadata(BaseMessage message)
         => new(
-                    UniqueIdHelper.GenerateUniqueStringId(),
-                    command,
-                    DateTimeOffset.Now,
-                    new ContextMetadata(UniqueIdHelper.GenerateUniqueStringId(), "test-user", DateTimeOffset.Now, 100, "my session id"),
-                    ["test", "actor"]);
+            UniqueIdHelper.GenerateUniqueStringId(),
+            message,
+            DateTimeOffset.Now,
+            new ContextMetadata(
+                UniqueIdHelper.GenerateUniqueStringId(),
+                "test-user",
+                DateTimeOffset.Now,
+                100,
+                "my session id"),
+            ["test", "actor"]);
 }

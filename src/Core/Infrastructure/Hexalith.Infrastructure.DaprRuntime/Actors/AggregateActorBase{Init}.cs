@@ -261,6 +261,39 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
         }
     }
 
+    private async Task SetContinueCallbackOnRemainingActionsAsync(CancellationToken cancellationToken)
+    {
+        AggregateActorState state = await GetAggregateStateAsync(cancellationToken).ConfigureAwait(false);
+        TimeSpan? waitTime = null;
+        if (state.LastMessagePublished < state.MessageCount)
+        {
+            waitTime = state.PublishFailed ? TimeSpan.FromMinutes(1) : TimeSpan.FromMilliseconds(1);
+        }
+
+        if (state.LastCommandProcessed < state.CommandCount)
+        {
+            if (state.RetryOnFailureTime != null)
+            {
+                TimeSpan remaining = state.RetryOnFailureTime.Value.Subtract(_dateTimeService.UtcNow);
+                remaining = remaining < TimeSpan.FromMilliseconds(1) ? TimeSpan.FromMilliseconds(1) : remaining;
+                waitTime = waitTime < remaining ? waitTime : remaining;
+            }
+            else
+            {
+                waitTime = TimeSpan.FromMilliseconds(1);
+            }
+        }
+
+        if (waitTime is not null)
+        {
+            await RegisterContinueCallbackAsync(waitTime.Value).ConfigureAwait(false);
+        }
+        else
+        {
+            await UnregisterContinueCallbackAsync().ConfigureAwait(false);
+        }
+    }
+
     private async Task UnregisterContinueCallbackAsync()
     {
         if (_timer != null)

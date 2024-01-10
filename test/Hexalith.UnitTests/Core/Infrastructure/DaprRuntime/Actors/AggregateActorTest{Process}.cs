@@ -9,7 +9,10 @@ namespace Hexalith.UnitTests.Core.Infrastructure.DaprRuntime.Actors;
 using Dapr.Actors;
 using Dapr.Actors.Runtime;
 
+using FluentAssertions;
+
 using Hexalith.Application.Commands;
+using Hexalith.Application.Errors;
 using Hexalith.Application.Events;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.Notifications;
@@ -27,6 +30,137 @@ using Moq;
 public partial class AggregateActorTest
 {
     [Fact]
+    public async Task ProcessWithCommandWithErrorShouldSetReminderDueTimeToPolicyDelay()
+    {
+        DummyAggregateCommand1 command = new() { Id = "123456" };
+        AggregateActorState currentState = new()
+        {
+            CommandCount = 1,
+            EventSourceCount = 0,
+            LastCommandProcessed = 0,
+            LastMessagePublished = 1,
+            MessageCount = 1,
+            Reminder = null,
+        };
+        ActorId actorId = new(command.AggregateId);
+        DummyTimerManager timerManager = new();
+        ActorHost host = ActorHost.CreateForTest(
+            typeof(AggregateActor),
+            AggregateActorBase.GetAggregateActorName(command.AggregateName),
+            new ActorTestOptions
+            {
+                ActorId = actorId,
+                TimerManager = timerManager,
+            });
+        Metadata metadata = CreateMetadata(command);
+        DummyAggregateEvent1 ev = new() { Id = command.Id };
+        Mock<ICommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
+        Mock<IAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
+        Mock<IEventBus> eventBus = new(MockBehavior.Strict);
+        Mock<INotificationBus> notificationBus = new(MockBehavior.Strict);
+        Mock<ICommandBus> commandBus = new(MockBehavior.Strict);
+        Mock<IRequestBus> requestBus = new(MockBehavior.Strict);
+        Mock<IActorStateManager> actorStateManager = new(MockBehavior.Strict);
+        Mock<IResiliencyPolicyProvider> resiliencyPolicyProvider = new(MockBehavior.Strict);
+        commandDispatcher.Setup(s => s.DoAsync(
+            It.Is<ICommand>(c => c.AggregateId == command.AggregateId && c.TypeName == command.TypeName),
+            It.Is<IAggregate>(a => a.AggregateName == DummyAggregate.GetAggregateName()),
+            It.IsAny<CancellationToken>()))
+            .ThrowsAsync(new ApplicationErrorException("Dummy Error"))
+            .Verifiable(Times.Once);
+        ResiliencyPolicy resiliencyPolicy = new(
+            3,
+            TimeSpan.FromMinutes(3),
+            TimeSpan.FromMinutes(10),
+            TimeSpan.FromDays(1),
+            TimeSpan.FromDays(10),
+            false);
+        resiliencyPolicyProvider
+            .Setup(p => p.GetPolicy(It.Is<string>(s => s == AggregateActorBase.GetAggregateActorName(DummyAggregate.GetAggregateName()))))
+            .Returns(resiliencyPolicy)
+            .Verifiable(Times.Once);
+
+        aggregateFactory
+            .Setup(c => c.Create(It.Is<string>(s => s == DummyAggregate.GetAggregateName())))
+            .Returns(new DummyAggregate())
+            .Verifiable(Times.Once);
+
+        actorStateManager
+            .Setup(s => s.TryGetStateAsync<AggregateActorState>(
+                        It.Is<string>(t => t == ActorConstants.AggregateStateStoreName),
+                        It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<AggregateActorState>(true, currentState))
+            .Verifiable(Times.Once);
+        actorStateManager
+            .Setup(s => s.TryGetStateAsync<CommandState>(
+                        It.Is<string>(s => s == "CommandStream1"),
+                        It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<CommandState>(true, new CommandState(DateTimeOffset.Now, command, metadata)))
+            .Verifiable(Times.Once);
+
+        actorStateManager
+            .Setup(s => s.TryGetStateAsync<TaskProcessor>(
+                        It.Is<string>(s => s == "TaskProcessor-1"),
+                        It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<TaskProcessor>(true, new TaskProcessor(
+                TaskProcessorStatus.Suspended,
+                new TaskProcessingHistory(
+                    DateTimeOffset.UtcNow.AddMinutes(-2),
+                    DateTimeOffset.UtcNow.AddMinutes(-1),
+                    DateTimeOffset.UtcNow.AddMinutes(-1),
+                    null,
+                    null),
+                resiliencyPolicy,
+                new TaskProcessingFailure(
+                    1,
+                    DateTimeOffset.UtcNow.AddMinutes(-5),
+                    "Dummy error",
+                    "Test dummy error"))))
+            .Verifiable(Times.Once);
+
+        actorStateManager
+            .Setup(s => s.SetStateAsync<AggregateActorState>(
+                        It.Is<string>(s => s == ActorConstants.AggregateStateStoreName),
+                        It.Is<AggregateActorState>(s =>
+                            s.CommandCount == 1 &&
+                            s.LastCommandProcessed == 0 &&
+                            s.MessageCount == 1 &&
+                            s.Reminder != null),
+                        It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask)
+            .Verifiable(Times.Once);
+        actorStateManager
+            .Setup(s => s.SetStateAsync<TaskProcessor>(
+                        It.Is<string>(s => s == "TaskProcessor-1"),
+                        It.Is<TaskProcessor>(s =>
+                            s.Status == TaskProcessorStatus.Suspended &&
+                            s.Failure.Count == 2),
+                        It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask)
+            .Verifiable(Times.Once);
+        actorStateManager
+            .Setup(s => s.SaveStateAsync(It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask)
+            .Verifiable(Times.Once);
+        AggregateActor actor = new(
+            host,
+            commandDispatcher.Object,
+            aggregateFactory.Object,
+            new DateTimeService(),
+            eventBus.Object,
+            notificationBus.Object,
+            commandBus.Object,
+            requestBus.Object,
+            resiliencyPolicyProvider.Object,
+            actorStateManager.Object);
+        _ = await actor.ProcessNextCommandAsync();
+        _ = timerManager.Reminders.Count.Should().Be(1);
+        _ = timerManager.Timers.Should().BeEmpty();
+        _ = timerManager.Reminders[ActorConstants.ContinueReminderName].DueTime.Should().BeCloseTo(TimeSpan.FromMinutes(13), TimeSpan.FromSeconds(5));
+        Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, notificationBus, commandBus, requestBus);
+    }
+
+    [Fact]
     public async Task ProcessWithFirstCommandShouldStoreEventAndMessage()
     {
         DummyAggregateCommand1 command = new() { Id = "123456" };
@@ -39,13 +173,21 @@ public partial class AggregateActorTest
             MessageCount = 0,
             Reminder = new TimeSpan(0, 0, 1),
         };
+        ActorId actorId = new(command.AggregateId);
         DummyTimerManager timerManager = new();
+        timerManager.Reminders.Add(ActorConstants.ContinueReminderName, new ActorReminder(
+            command.AggregateName,
+            actorId,
+            ActorConstants.ContinueReminderName,
+            null,
+            TimeSpan.FromSeconds(1),
+            TimeSpan.FromSeconds(1)));
         ActorHost host = ActorHost.CreateForTest(
             typeof(AggregateActor),
             AggregateActorBase.GetAggregateActorName(command.AggregateName),
             new ActorTestOptions
             {
-                ActorId = new ActorId(command.AggregateId),
+                ActorId = actorId,
                 TimerManager = timerManager,
             });
         Metadata metadata = CreateMetadata(command);
@@ -207,6 +349,10 @@ public partial class AggregateActorTest
             resiliencyPolicyProvider.Object,
             actorStateManager.Object);
         _ = await actor.ProcessNextCommandAsync();
+        _ = timerManager.Reminders.Count.Should().Be(1);
+        _ = timerManager.Timers.Count.Should().Be(1);
+        _ = timerManager.Reminders[ActorConstants.ContinueReminderName].DueTime.Should().Be(TimeSpan.FromMinutes(1));
+        _ = timerManager.Timers[ActorConstants.ContinueTimerName].DueTime.Should().Be(TimeSpan.FromMilliseconds(1));
         Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, notificationBus, commandBus, requestBus);
     }
 
@@ -225,7 +371,7 @@ public partial class AggregateActorTest
             LastCommandProcessed = 7,
             LastMessagePublished = 5,
             MessageCount = 5,
-            Reminder = new TimeSpan(0, 0, 1),
+            Reminder = null,
         };
         DummyTimerManager timerManager = new();
         ActorHost host = ActorHost.CreateForTest(
@@ -599,6 +745,10 @@ public partial class AggregateActorTest
         _ = await actor.ProcessNextCommandAsync();
         _ = await actor.ProcessNextCommandAsync();
         _ = await actor.ProcessNextCommandAsync();
+        _ = timerManager.Reminders.Count.Should().Be(1);
+        _ = timerManager.Timers.Count.Should().Be(1);
+        _ = timerManager.Reminders[ActorConstants.ContinueReminderName].DueTime.Should().Be(TimeSpan.FromMinutes(1));
+        _ = timerManager.Timers[ActorConstants.ContinueTimerName].DueTime.Should().Be(TimeSpan.FromMilliseconds(1));
         Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, notificationBus, commandBus, requestBus);
     }
 }

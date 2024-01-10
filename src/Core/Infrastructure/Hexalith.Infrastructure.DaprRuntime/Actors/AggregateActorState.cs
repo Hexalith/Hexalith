@@ -68,6 +68,14 @@ public class AggregateActorState
     public long MessageCount { get; set; }
 
     /// <summary>
+    /// Gets or sets a value indicating whether [publish failed].
+    /// </summary>
+    /// <value><c>true</c> if [publish failed]; otherwise, <c>false</c>.</value>
+    [DataMember(Order = 8)]
+    [JsonPropertyOrder(8)]
+    public bool PublishFailed { get; set; }
+
+    /// <summary>
     /// Gets or sets the reminder.
     /// </summary>
     /// <value>The reminder.</value>
@@ -81,5 +89,5 @@ public class AggregateActorState
     /// <value>The retry on failure time.</value>
     [DataMember(Order = 7)]
     [JsonPropertyOrder(7)]
-    public DateTimeOffset RetryOnFailureTime { get; set; }
+    public DateTimeOffset? RetryOnFailureTime { get; set; }
 }

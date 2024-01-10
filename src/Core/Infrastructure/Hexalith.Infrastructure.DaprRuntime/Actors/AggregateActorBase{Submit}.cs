@@ -36,6 +36,7 @@ public abstract partial class AggregateActorBase
     /// <inheritdoc/>
     public async Task SubmitCommandAsync(ActorCommandEnvelope envelope)
     {
+        CancellationToken cancellationToken = CancellationToken.None;
         ArgumentNullException.ThrowIfNull(envelope);
         Application.Commands.BaseCommand[] commands = envelope.Commands.ToArray();
         Application.Metadatas.BaseMetadata[] metadatas = envelope.Metadatas.ToArray();
@@ -75,13 +76,16 @@ public abstract partial class AggregateActorBase
                 command.AggregateId);
         }
 
-        AggregateActorState state = await GetAggregateStateAsync(CancellationToken.None).ConfigureAwait(false);
+        AggregateActorState state = await GetAggregateStateAsync(cancellationToken)
+            .ConfigureAwait(false);
         state.CommandCount = await CommandStore
-            .AddAsync(commandStates, state.CommandCount, CancellationToken.None)
+            .AddAsync(commandStates, state.CommandCount, cancellationToken)
             .ConfigureAwait(false);
 
-        await RegisterContinueCallbackAsync(TimeSpan.FromMilliseconds(1)).ConfigureAwait(false);
-        await SaveAggregateStateAsync(CancellationToken.None).ConfigureAwait(false);
+        await SetContinueCallbackOnRemainingActionsAsync(cancellationToken)
+           .ConfigureAwait(false);
+        await SaveAggregateStateAsync(cancellationToken)
+            .ConfigureAwait(false);
         await SaveStateAsync().ConfigureAwait(false);
     }
 }

@@ -25,6 +25,7 @@ using Hexalith.Application.Notifications;
 using Hexalith.Application.Requests;
 using Hexalith.Application.States;
 using Hexalith.Domain.Events;
+using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 
 using Microsoft.Extensions.Logging;
@@ -47,47 +48,90 @@ public abstract partial class AggregateActorBase
             string? correlationId,
             string? aggregateId);
 
+    [LoggerMessage(
+            EventId = 6,
+            Level = LogLevel.Warning,
+            Message = "Publish message {MessageSequence} (Id={MessageId}; CorrelationId={CorrelationId}) operation failed on actor {ActorType}/{ActorId}. Error : {ErrorMessage}")]
+    public static partial void LogPublishError(ILogger logger, Exception exception, long messageSequence, string? messageId, string? correlationId, string actorId, string actorType, string errorMessage);
+
     /// <inheritdoc/>
     public async Task<bool> PublishNextMessageAsync()
     {
-        AggregateActorState state = await GetAggregateStateAsync(CancellationToken.None).ConfigureAwait(false);
+        CancellationToken cancellationToken = CancellationToken.None;
+        AggregateActorState state = await GetAggregateStateAsync(cancellationToken).ConfigureAwait(false);
         if (state.LastMessagePublished < state.MessageCount)
         {
             MessageState messageState = await MessageStore
-                .GetAsync(++state.LastMessagePublished, CancellationToken.None)
+                .GetAsync(state.LastMessagePublished + 1, cancellationToken)
                 .ConfigureAwait(false);
-            await PublishNextEmittedMessageAsync(messageState, state.LastMessagePublished, CancellationToken.None).ConfigureAwait(false);
+            await PublishNextEmittedMessageAsync(
+                    messageState,
+                    state.LastMessagePublished + 1,
+                    cancellationToken)
+                .ConfigureAwait(false);
+            await SetContinueCallbackOnRemainingActionsAsync(cancellationToken)
+                .ConfigureAwait(false);
+            await SaveAggregateStateAsync(cancellationToken)
+                .ConfigureAwait(false);
+            await SaveStateAsync()
+                .ConfigureAwait(false);
         }
 
-        return false;
+        return state.LastMessagePublished < state.MessageCount;
     }
 
     private async Task PublishNextEmittedMessageAsync(MessageState messageState, long sequence, CancellationToken cancellationToken)
     {
-        if (messageState.Message is BaseEvent ev)
+        AggregateActorState state = await GetAggregateStateAsync(cancellationToken).ConfigureAwait(false);
+        state.PublishFailed = false;
+#pragma warning disable CA1031 // Do not catch general exception types
+        try
         {
-            await _eventBus.PublishAsync(new EventState(messageState.ReceivedDate, ev, messageState.Metadata), cancellationToken).ConfigureAwait(false);
+            if (messageState.Message is BaseEvent ev)
+            {
+                await _eventBus.PublishAsync(new EventState(messageState.ReceivedDate, ev, messageState.Metadata), cancellationToken).ConfigureAwait(false);
+                state.LastMessagePublished = sequence;
+                return;
+            }
+
+            if (messageState.Message is BaseNotification notification)
+            {
+                await _notificationBus.PublishAsync(new NotificationState(messageState.ReceivedDate, notification, messageState.Metadata), cancellationToken).ConfigureAwait(false);
+                state.LastMessagePublished = sequence;
+                return;
+            }
+
+            if (messageState.Message is BaseCommand command)
+            {
+                await _commandBus.PublishAsync(new CommandState(messageState.ReceivedDate, command, messageState.Metadata), cancellationToken).ConfigureAwait(false);
+                state.LastMessagePublished = sequence;
+                return;
+            }
+
+            if (messageState.Message is BaseRequest request)
+            {
+                await _requestBus.PublishAsync(new RequestState(messageState.ReceivedDate, request, messageState.Metadata), cancellationToken).ConfigureAwait(false);
+                state.LastMessagePublished = sequence;
+                return;
+            }
+        }
+        catch (Exception ex)
+        {
+            state.PublishFailed = true;
+            LogPublishError(
+                Logger,
+                ex,
+                sequence,
+                messageState.Metadata?.Message.Id,
+                messageState.Metadata?.Context.CorrelationId,
+                Id.ToString(),
+                Host.ActorTypeInfo.ActorTypeName,
+                ex.FullMessage());
             return;
         }
+#pragma warning restore CA1031 // Do not catch general exception types
 
-        if (messageState.Message is BaseNotification notification)
-        {
-            await _notificationBus.PublishAsync(new NotificationState(messageState.ReceivedDate, notification, messageState.Metadata), cancellationToken).ConfigureAwait(false);
-            return;
-        }
-
-        if (messageState.Message is BaseCommand command)
-        {
-            await _commandBus.PublishAsync(new CommandState(messageState.ReceivedDate, command, messageState.Metadata), cancellationToken).ConfigureAwait(false);
-            return;
-        }
-
-        if (messageState.Message is BaseRequest request)
-        {
-            await _requestBus.PublishAsync(new RequestState(messageState.ReceivedDate, request, messageState.Metadata), cancellationToken).ConfigureAwait(false);
-            return;
-        }
-
+        state.LastMessagePublished = sequence;
         LogInvalidPublishMessageError(
             Logger,
             sequence,
