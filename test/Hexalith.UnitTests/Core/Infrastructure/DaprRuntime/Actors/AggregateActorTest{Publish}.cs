@@ -170,7 +170,7 @@ public partial class AggregateActorTest
                             s.MessageCount == 3 &&
                             s.LastMessagePublished == 1 &&
                             s.PublishFailed &&
-                            s.ProcessReminderDueTime.Value.CompareTo(TimeSpan.FromMinutes(1)) == 0),
+                            s.PublishReminderDueTime != null),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);
@@ -191,8 +191,8 @@ public partial class AggregateActorTest
             actorStateManager.Object);
         bool result = await actor.PublishNextMessageAsync();
         _ = result.Should().BeTrue();
-        _ = timerManager.Reminders.Should().NotBeEmpty();
-        _ = timerManager.Reminders[ActorConstants.ContinueReminderName].Period.Should().Be(TimeSpan.FromMinutes(1));
+        _ = timerManager.Reminders.Should().HaveCount(1);
+        _ = timerManager.Reminders[ActorConstants.PublishReminderName].Period.Should().Be(TimeSpan.FromMinutes(1));
         _ = timerManager.Timers.Should().BeEmpty();
         Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, notificationBus, commandBus, requestBus);
     }
@@ -256,7 +256,7 @@ public partial class AggregateActorTest
                         It.Is<AggregateActorState>(s =>
                             s.MessageCount == 3 &&
                             s.LastMessagePublished == 2 &&
-                            s.ProcessReminderDueTime.Value.CompareTo(TimeSpan.FromMinutes(1)) == 0),
+                            s.PublishReminderDueTime != null),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);
@@ -277,10 +277,10 @@ public partial class AggregateActorTest
             actorStateManager.Object);
         bool result = await actor.PublishNextMessageAsync();
         _ = result.Should().BeTrue();
-        _ = timerManager.Reminders.Should().NotBeEmpty();
-        _ = timerManager.Reminders[ActorConstants.ContinueReminderName].Period.Should().Be(TimeSpan.FromMinutes(1));
-        _ = timerManager.Timers.Should().NotBeEmpty();
-        _ = timerManager.Timers[ActorConstants.ContinueTimerName].Period.Should().Be(TimeSpan.FromMilliseconds(1));
+        _ = timerManager.Reminders.Should().HaveCount(1);
+        _ = timerManager.Reminders[ActorConstants.PublishReminderName].Period.Should().Be(TimeSpan.FromMinutes(1));
+        _ = timerManager.Timers.Should().HaveCount(1);
+        _ = timerManager.Timers[ActorConstants.PublishTimerName].Period.Should().Be(TimeSpan.FromMilliseconds(1));
         Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, notificationBus, commandBus, requestBus);
     }
 }

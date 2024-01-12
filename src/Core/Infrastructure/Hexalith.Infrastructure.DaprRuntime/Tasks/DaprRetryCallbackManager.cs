@@ -24,6 +24,7 @@ using Dapr.Actors.Runtime;
 
 using Hexalith.Application.Tasks;
 using Hexalith.Infrastructure.DaprRuntime.Abstractions;
+using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 
 using Microsoft.Extensions.Logging;
 
@@ -117,14 +118,14 @@ public partial class DaprRetryCallbackManager : IRetryCallbackManager
             ? new(
                     _actor.Host.ActorTypeInfo.ActorTypeName,
                     _actor.Id,
-                    ActorConstants.ContinueReminderName,
+                    ActorConstants.ProcessReminderName,
                     [],
                     reminderDueTime,
                     reminderDueTime)
          : new(
                     _actor.Host.ActorTypeInfo.ActorTypeName,
                     _actor.Id,
-                    ActorConstants.ContinueReminderName,
+                    ActorConstants.ProcessReminderName,
                     [],
                     reminderDueTime,
                     reminderDueTime,
@@ -192,7 +193,7 @@ public partial class DaprRetryCallbackManager : IRetryCallbackManager
         ActorReminderToken token = new(
                     _actor.Host.ActorTypeInfo.ActorTypeName,
                     _actor.Id,
-                    ActorConstants.ContinueReminderName);
+                    ActorConstants.ProcessReminderName);
 
         try
         {
@@ -237,7 +238,7 @@ public partial class DaprRetryCallbackManager : IRetryCallbackManager
                 .UnregisterTimerAsync(new ActorTimerToken(
                         _actor.Host.ActorTypeInfo.ActorTypeName,
                         _actor.Id,
-                        ActorConstants.ContinueTimerName)).ConfigureAwait(false);
+                        ActorConstants.ProcessTimerName)).ConfigureAwait(false);
             ContinueCallbackTimerUnregisteredInformation(_timer.ActorType, _timer.ActorId.GetId(), _timer.DueTime, _timer.Period, _timer.Ttl);
             _timer = null;
         }
@@ -246,8 +247,8 @@ public partial class DaprRetryCallbackManager : IRetryCallbackManager
         ? new ActorTimer(
         _actor.Host.ActorTypeInfo.ActorTypeName,
         _actor.Id,
-        ActorConstants.ContinueTimerName,
-        ActorConstants.ContinueCallbackMethodName,
+        ActorConstants.ProcessTimerName,
+        nameof(IAggregateActor.ProcessCallbackAsync),
         [],
         dueTime,
         dueTime,
@@ -255,8 +256,8 @@ public partial class DaprRetryCallbackManager : IRetryCallbackManager
             : new ActorTimer(
                     _actor.Host.ActorTypeInfo.ActorTypeName,
                     _actor.Id,
-                    ActorConstants.ContinueTimerName,
-                    ActorConstants.ContinueCallbackMethodName,
+                    ActorConstants.ProcessTimerName,
+                    nameof(IAggregateActor.ProcessCallbackAsync),
                     [],
                     dueTime,
                     dueTime);

@@ -32,21 +32,6 @@ public static class ActorConstants
     public const string CommandStoreName = "Command";
 
     /// <summary>
-    /// The continue callback method name.
-    /// </summary>
-    public const string ContinueCallbackMethodName = "ContinueAsync";
-
-    /// <summary>
-    /// The continue reminder name.
-    /// </summary>
-    public const string ContinueReminderName = "Continue";
-
-    /// <summary>
-    /// The continue timer name.
-    /// </summary>
-    public const string ContinueTimerName = "Continue";
-
-    /// <summary>
     /// The event state name.
     /// </summary>
     public const string EventSourcingName = "EventSource";

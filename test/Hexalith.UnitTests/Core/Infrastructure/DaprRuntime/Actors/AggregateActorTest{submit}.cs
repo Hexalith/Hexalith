@@ -146,8 +146,8 @@ public partial class AggregateActorTest
         await actor.SubmitCommandAsync(new ActorCommandEnvelope([command], [metadata]));
         _ = timerManager.Reminders.Count.Should().Be(1);
         _ = timerManager.Timers.Count.Should().Be(1);
-        _ = timerManager.Reminders[ActorConstants.ContinueReminderName].DueTime.Should().Be(TimeSpan.FromMinutes(1));
-        _ = timerManager.Timers[ActorConstants.ContinueTimerName].DueTime.Should().Be(TimeSpan.FromMilliseconds(1));
+        _ = timerManager.Reminders[ActorConstants.ProcessReminderName].DueTime.Should().Be(TimeSpan.FromMinutes(1));
+        _ = timerManager.Timers[ActorConstants.ProcessTimerName].DueTime.Should().Be(TimeSpan.FromMilliseconds(1));
         Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, notificationBus, commandBus, requestBus);
     }
 
