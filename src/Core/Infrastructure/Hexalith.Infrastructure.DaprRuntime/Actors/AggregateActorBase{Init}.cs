@@ -166,16 +166,22 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
     public static partial void LogProcessingCommandsInformation(ILogger logger, string actorId, string actorType, long commandCount, long lastCommandProcessed);
 
     /// <inheritdoc/>
+    public async Task ProcessCallbackAsync() => await ProcessNextCommandAsync().ConfigureAwait(false);
+
+    /// <inheritdoc/>
+    public async Task PublishCallbackAsync() => await PublishNextMessageAsync().ConfigureAwait(false);
+
+    /// <inheritdoc/>
     public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period)
     {
         if (reminderName == ActorConstants.ProcessReminderName)
         {
-            _ = await ProcessNextCommandAsync().ConfigureAwait(false);
+            await ProcessCallbackAsync().ConfigureAwait(false);
         }
 
         if (reminderName == ActorConstants.PublishReminderName)
         {
-            _ = await PublishNextMessageAsync().ConfigureAwait(false);
+            await PublishCallbackAsync().ConfigureAwait(false);
         }
     }
 
@@ -253,7 +259,7 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
         {
             if (_processTimer == null && timerWaitTime < _maxTimerDueTime)
             {
-                _processTimer = await RegisterTimerAsync(ActorConstants.ProcessTimerName, nameof(ProcessNextCommandAsync), null, timerWaitTime, timerWaitTime).ConfigureAwait(false);
+                _processTimer = await RegisterTimerAsync(ActorConstants.ProcessTimerName, nameof(ProcessCallbackAsync), null, timerWaitTime, timerWaitTime).ConfigureAwait(false);
             }
 
             if (state.ProcessReminderDueTime == null)
@@ -286,7 +292,7 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
         {
             if (_publishTimer == null && timerWaitTime < _maxTimerDueTime)
             {
-                _publishTimer = await RegisterTimerAsync(ActorConstants.PublishTimerName, nameof(PublishNextMessageAsync), null, timerWaitTime, timerWaitTime).ConfigureAwait(false);
+                _publishTimer = await RegisterTimerAsync(ActorConstants.PublishTimerName, nameof(PublishCallbackAsync), null, timerWaitTime, timerWaitTime).ConfigureAwait(false);
             }
 
             if (state.PublishReminderDueTime == null)

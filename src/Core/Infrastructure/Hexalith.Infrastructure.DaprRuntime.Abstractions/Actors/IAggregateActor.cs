@@ -27,10 +27,22 @@ using Hexalith.Infrastructure.DaprRuntime.Handlers;
 public interface IAggregateActor : IActor
 {
     /// <summary>
+    /// Processes the callback asynchronous.
+    /// </summary>
+    /// <returns>Task.</returns>
+    public Task ProcessCallbackAsync();
+
+    /// <summary>
     /// Processes the commands asynchronous.
     /// </summary>
     /// <returns>Task.</returns>
     public Task<bool> ProcessNextCommandAsync();
+
+    /// <summary>
+    /// Publishes the callback.
+    /// </summary>
+    /// <returns>Task.</returns>
+    public Task PublishCallbackAsync();
 
     /// <summary>
     /// Publishes the messages asynchronous.

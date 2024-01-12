@@ -41,6 +41,8 @@ using Microsoft.Extensions.Logging;
 /// </summary>
 public abstract partial class AggregateActorBase
 {
+    private TimeSpan _minimumDuplicateNotificationPeriod = TimeSpan.FromMinutes(15);
+
     /// <inheritdoc/>
     public async Task<bool> ProcessNextCommandAsync()
     {
@@ -81,7 +83,7 @@ public abstract partial class AggregateActorBase
     [LoggerMessage(
         EventId = 7,
         Level = LogLevel.Information,
-        Message = "The command number {Sequence} '{MessageType}' cannot be processed on aggregate {AggregateName} with id {AggregateId}. The retry attempt {NextRetryNumber} will be executed at {NextRetryDateTime}. CorrelationId={CorrelationId}.")]
+        Message = "The command number {Sequence} '{MessageType}' cannot be processed on aggregate {AggregateName} with id {AggregateId}. The retry attempt {NextRetryNumber} will be executed in {RetryDueTime} at {NextRetryDateTime}. CorrelationId={CorrelationId}.")]
     private static partial void LogTaskProcessorRetryInformation(
         ILogger logger,
         string messageType,
@@ -90,6 +92,7 @@ public abstract partial class AggregateActorBase
         string aggregateName,
         string aggregateId,
         int nextRetryNumber,
+        TimeSpan retryDueTime,
         DateTimeOffset nextRetryDateTime);
 
     private async Task<TaskProcessor> GetTaskProcessorAsync(long commandSequence, CancellationToken cancellationToken)
@@ -123,6 +126,8 @@ public abstract partial class AggregateActorBase
         if (taskProcessor.Status == TaskProcessorStatus.Canceled)
         {
             state.LastCommandProcessed = commandSequence;
+            state.RetryOnFailurePeriod = null;
+            state.RetryOnFailureDateTime = null;
             messages = [new ApplicationExceptionNotification(
                 correlationId,
                 command.AggregateName,
@@ -131,7 +136,7 @@ public abstract partial class AggregateActorBase
         }
         else
         {
-            if (previousFailure == null || taskProcessor.Failure?.Date == null || _dateTimeService.UtcNow.Subtract(taskProcessor.Failure.Date) > TimeSpan.FromMinutes(15))
+            if (previousFailure == null || _dateTimeService.UtcNow.Subtract(previousFailure.Date) > _minimumDuplicateNotificationPeriod)
             {
                 messages = [new ApplicationExceptionNotification(
                 correlationId,
@@ -150,6 +155,7 @@ public abstract partial class AggregateActorBase
                 command.AggregateName,
                 command.AggregateId,
                 (taskProcessor.Failure?.Count ?? 0) + 1,
+                state.RetryOnFailurePeriod.Value,
                 state.RetryOnFailureDateTime.Value);
         }
 
