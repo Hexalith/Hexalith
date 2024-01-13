@@ -138,9 +138,10 @@ public static class HexalithWebApi
         if (app.Environment.IsDevelopment())
         {
             _ = app.UseDeveloperExceptionPage();
-            _ = app.UseSwagger();
-            _ = app.UseSwaggerUI();
         }
+
+        _ = app.UseSwagger();
+        _ = app.UseSwaggerUI();
 
         _ = app.UseRouting();
 
