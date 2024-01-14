@@ -20,9 +20,10 @@ using System.Diagnostics.CodeAnalysis;
 
 using Dapr.Actors.Runtime;
 
+using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
-using Hexalith.Infrastructure.DaprRuntime.Parties.Actors;
+using Hexalith.Infrastructure.DaprRuntime.Sales.Actors;
 
 /// <summary>
 /// Class PartiesHelper.
@@ -38,7 +39,7 @@ public static class PartiesActorsHelper
     public static ActorRegistrationCollection AddPartiesAggregates([NotNull] this ActorRegistrationCollection actors)
     {
         ArgumentNullException.ThrowIfNull(actors);
-        actors.RegisterActor<CustomerAggregateActor>();
+        actors.RegisterActor<AggregateActor>(AggregateActor.GetAggregateActorName(Customer.GetAggregateName()));
         return actors;
     }
 

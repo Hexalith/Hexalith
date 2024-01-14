@@ -19,6 +19,7 @@
 		<FluentValidationVersion>11.9.0</FluentValidationVersion>
 		<GitHubActionsTestLoggerVersion>2.3.3</GitHubActionsTestLoggerVersion>
 		<HumanizerVersion>2.14.1</HumanizerVersion>
+		<MailKitVersion>4.3.0</MailKitVersion>
 		<ManDaprSidekickVersion>1.2.2</ManDaprSidekickVersion>
 		<MicrosoftBotBuilderVersion>4.21.2</MicrosoftBotBuilderVersion>
 		<MicrosoftIdentityClientVersion>4.58.1</MicrosoftIdentityClientVersion>
@@ -32,6 +33,7 @@
 		<MoqVersion>4.20.70</MoqVersion>
 		<MoqContribHttpClientVersion>1.4.0</MoqContribHttpClientVersion>
 		<RadzenBlazorVersion>4.23.4</RadzenBlazorVersion>
+		<SendGridExtensionsDependencyInjectionVersion>1.0.1</SendGridExtensionsDependencyInjectionVersion>
 		<SerilogVersion>8.0.*</SerilogVersion>
 		<SerilogEnrichersEnvironmentVersion>2.3.0</SerilogEnrichersEnvironmentVersion>
 		<StyleCopAnalyzersVersion>1.2.0-beta.507</StyleCopAnalyzersVersion>

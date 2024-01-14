@@ -1623,6 +1623,37 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.DataFragment.Metadata
   nameWithType: DataFragment.Metadata
+- uid: Hexalith.Application.Emails
+  name: Hexalith.Application.Emails
+  href: api/Hexalith.Application.Emails.html
+  commentId: N:Hexalith.Application.Emails
+  fullName: Hexalith.Application.Emails
+  nameWithType: Hexalith.Application.Emails
+- uid: Hexalith.Application.Emails.IEmailService
+  name: IEmailService
+  href: api/Hexalith.Application.Emails.IEmailService.html
+  commentId: T:Hexalith.Application.Emails.IEmailService
+  fullName: Hexalith.Application.Emails.IEmailService
+  nameWithType: IEmailService
+- uid: Hexalith.Application.Emails.IEmailService.SendAsync(System.String,System.String,System.String,System.String,CancellationToken)
+  name: SendAsync(String, String, String, String, CancellationToken)
+  href: api/Hexalith.Application.Emails.IEmailService.html#Hexalith_Application_Emails_IEmailService_SendAsync_System_String_System_String_System_String_System_String_CancellationToken_
+  commentId: M:Hexalith.Application.Emails.IEmailService.SendAsync(System.String,System.String,System.String,System.String,CancellationToken)
+  fullName: Hexalith.Application.Emails.IEmailService.SendAsync(System.String, System.String, System.String, System.String, CancellationToken)
+  nameWithType: IEmailService.SendAsync(String, String, String, String, CancellationToken)
+- uid: Hexalith.Application.Emails.IEmailService.SendAsync(System.String,System.String,System.String,System.String,System.String,System.String,CancellationToken)
+  name: SendAsync(String, String, String, String, String, String, CancellationToken)
+  href: api/Hexalith.Application.Emails.IEmailService.html#Hexalith_Application_Emails_IEmailService_SendAsync_System_String_System_String_System_String_System_String_System_String_System_String_CancellationToken_
+  commentId: M:Hexalith.Application.Emails.IEmailService.SendAsync(System.String,System.String,System.String,System.String,System.String,System.String,CancellationToken)
+  fullName: Hexalith.Application.Emails.IEmailService.SendAsync(System.String, System.String, System.String, System.String, System.String, System.String, CancellationToken)
+  nameWithType: IEmailService.SendAsync(String, String, String, String, String, String, CancellationToken)
+- uid: Hexalith.Application.Emails.IEmailService.SendAsync*
+  name: SendAsync
+  href: api/Hexalith.Application.Emails.IEmailService.html#Hexalith_Application_Emails_IEmailService_SendAsync_
+  commentId: Overload:Hexalith.Application.Emails.IEmailService.SendAsync
+  isSpec: "True"
+  fullName: Hexalith.Application.Emails.IEmailService.SendAsync
+  nameWithType: IEmailService.SendAsync
 - uid: Hexalith.Application.Envelopes
   name: Hexalith.Application.Envelopes
   href: api/Hexalith.Application.Envelopes.html
@@ -21541,6 +21572,50 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.DaprRuntime.Handlers.ActorsCommandProcessor.SubmitAsync
   nameWithType: ActorsCommandProcessor.SubmitAsync
+- uid: Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor
+  name: AggregateActorCommandProcessor
+  href: api/Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor.html
+  commentId: T:Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor
+  fullName: Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor
+  nameWithType: AggregateActorCommandProcessor
+- uid: Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor.#ctor(Dapr.Actors.Client.IActorProxyFactory,Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor})
+  name: AggregateActorCommandProcessor(IActorProxyFactory, ILogger<AggregateActorCommandProcessor>)
+  href: api/Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor.html#Hexalith_Infrastructure_DaprRuntime_Handlers_AggregateActorCommandProcessor__ctor_Dapr_Actors_Client_IActorProxyFactory_Microsoft_Extensions_Logging_ILogger_Hexalith_Infrastructure_DaprRuntime_Handlers_AggregateActorCommandProcessor__
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor.#ctor(Dapr.Actors.Client.IActorProxyFactory,Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor})
+  name.vb: AggregateActorCommandProcessor(IActorProxyFactory, ILogger(Of AggregateActorCommandProcessor))
+  fullName: Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor.AggregateActorCommandProcessor(Dapr.Actors.Client.IActorProxyFactory, Microsoft.Extensions.Logging.ILogger<Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor>)
+  fullName.vb: Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor.AggregateActorCommandProcessor(Dapr.Actors.Client.IActorProxyFactory, Microsoft.Extensions.Logging.ILogger(Of Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor))
+  nameWithType: AggregateActorCommandProcessor.AggregateActorCommandProcessor(IActorProxyFactory, ILogger<AggregateActorCommandProcessor>)
+  nameWithType.vb: AggregateActorCommandProcessor.AggregateActorCommandProcessor(IActorProxyFactory, ILogger(Of AggregateActorCommandProcessor))
+- uid: Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor.#ctor*
+  name: AggregateActorCommandProcessor
+  href: api/Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor.html#Hexalith_Infrastructure_DaprRuntime_Handlers_AggregateActorCommandProcessor__ctor_
+  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor.AggregateActorCommandProcessor
+  nameWithType: AggregateActorCommandProcessor.AggregateActorCommandProcessor
+- uid: Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor.SubmitAsync(Hexalith.Application.Commands.BaseCommand,Hexalith.Application.Metadatas.BaseMetadata,System.Threading.CancellationToken)
+  name: SubmitAsync(BaseCommand, BaseMetadata, CancellationToken)
+  href: api/Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor.html#Hexalith_Infrastructure_DaprRuntime_Handlers_AggregateActorCommandProcessor_SubmitAsync_Hexalith_Application_Commands_BaseCommand_Hexalith_Application_Metadatas_BaseMetadata_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor.SubmitAsync(Hexalith.Application.Commands.BaseCommand,Hexalith.Application.Metadatas.BaseMetadata,System.Threading.CancellationToken)
+  fullName: Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor.SubmitAsync(Hexalith.Application.Commands.BaseCommand, Hexalith.Application.Metadatas.BaseMetadata, System.Threading.CancellationToken)
+  nameWithType: AggregateActorCommandProcessor.SubmitAsync(BaseCommand, BaseMetadata, CancellationToken)
+- uid: Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor.SubmitAsync(IEnumerable{Hexalith.Application.Commands.BaseCommand},Hexalith.Application.Metadatas.BaseMetadata,System.Threading.CancellationToken)
+  name: SubmitAsync(IEnumerable<BaseCommand>, BaseMetadata, CancellationToken)
+  href: api/Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor.html#Hexalith_Infrastructure_DaprRuntime_Handlers_AggregateActorCommandProcessor_SubmitAsync_IEnumerable_Hexalith_Application_Commands_BaseCommand__Hexalith_Application_Metadatas_BaseMetadata_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor.SubmitAsync(IEnumerable{Hexalith.Application.Commands.BaseCommand},Hexalith.Application.Metadatas.BaseMetadata,System.Threading.CancellationToken)
+  name.vb: SubmitAsync(IEnumerable(Of BaseCommand), BaseMetadata, CancellationToken)
+  fullName: Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor.SubmitAsync(IEnumerable<Hexalith.Application.Commands.BaseCommand>, Hexalith.Application.Metadatas.BaseMetadata, System.Threading.CancellationToken)
+  fullName.vb: Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor.SubmitAsync(IEnumerable(Of Hexalith.Application.Commands.BaseCommand), Hexalith.Application.Metadatas.BaseMetadata, System.Threading.CancellationToken)
+  nameWithType: AggregateActorCommandProcessor.SubmitAsync(IEnumerable<BaseCommand>, BaseMetadata, CancellationToken)
+  nameWithType.vb: AggregateActorCommandProcessor.SubmitAsync(IEnumerable(Of BaseCommand), BaseMetadata, CancellationToken)
+- uid: Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor.SubmitAsync*
+  name: SubmitAsync
+  href: api/Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor.html#Hexalith_Infrastructure_DaprRuntime_Handlers_AggregateActorCommandProcessor_SubmitAsync_
+  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor.SubmitAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor.SubmitAsync
+  nameWithType: AggregateActorCommandProcessor.SubmitAsync
 - uid: Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor
   name: ConventionNamingCommandProcessor
   href: api/Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor.html
@@ -29827,6 +29902,340 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.Dynamics365Finance.TestMocks.Dynamics365FinanceSecurityContextBuilder.Settings
   nameWithType: Dynamics365FinanceSecurityContextBuilder.Settings
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Configurations
+  name: Hexalith.Infrastructure.Emails.Abstractions.Configurations
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Configurations.html
+  commentId: N:Hexalith.Infrastructure.Emails.Abstractions.Configurations
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Configurations
+  nameWithType: Hexalith.Infrastructure.Emails.Abstractions.Configurations
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings
+  name: EmailServerSettings
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.html
+  commentId: T:Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings
+  nameWithType: EmailServerSettings
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ApplicationId
+  name: ApplicationId
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.html#Hexalith_Infrastructure_Emails_Abstractions_Configurations_EmailServerSettings_ApplicationId
+  commentId: P:Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ApplicationId
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ApplicationId
+  nameWithType: EmailServerSettings.ApplicationId
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ApplicationId*
+  name: ApplicationId
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.html#Hexalith_Infrastructure_Emails_Abstractions_Configurations_EmailServerSettings_ApplicationId_
+  commentId: Overload:Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ApplicationId
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ApplicationId
+  nameWithType: EmailServerSettings.ApplicationId
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ApplicationSecret
+  name: ApplicationSecret
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.html#Hexalith_Infrastructure_Emails_Abstractions_Configurations_EmailServerSettings_ApplicationSecret
+  commentId: P:Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ApplicationSecret
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ApplicationSecret
+  nameWithType: EmailServerSettings.ApplicationSecret
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ApplicationSecret*
+  name: ApplicationSecret
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.html#Hexalith_Infrastructure_Emails_Abstractions_Configurations_EmailServerSettings_ApplicationSecret_
+  commentId: Overload:Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ApplicationSecret
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ApplicationSecret
+  nameWithType: EmailServerSettings.ApplicationSecret
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ConfigurationName
+  name: ConfigurationName()
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.html#Hexalith_Infrastructure_Emails_Abstractions_Configurations_EmailServerSettings_ConfigurationName
+  commentId: M:Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ConfigurationName
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ConfigurationName()
+  nameWithType: EmailServerSettings.ConfigurationName()
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ConfigurationName*
+  name: ConfigurationName
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.html#Hexalith_Infrastructure_Emails_Abstractions_Configurations_EmailServerSettings_ConfigurationName_
+  commentId: Overload:Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ConfigurationName
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ConfigurationName
+  nameWithType: EmailServerSettings.ConfigurationName
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.FromEmail
+  name: FromEmail
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.html#Hexalith_Infrastructure_Emails_Abstractions_Configurations_EmailServerSettings_FromEmail
+  commentId: P:Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.FromEmail
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.FromEmail
+  nameWithType: EmailServerSettings.FromEmail
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.FromEmail*
+  name: FromEmail
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.html#Hexalith_Infrastructure_Emails_Abstractions_Configurations_EmailServerSettings_FromEmail_
+  commentId: Overload:Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.FromEmail
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.FromEmail
+  nameWithType: EmailServerSettings.FromEmail
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.FromName
+  name: FromName
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.html#Hexalith_Infrastructure_Emails_Abstractions_Configurations_EmailServerSettings_FromName
+  commentId: P:Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.FromName
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.FromName
+  nameWithType: EmailServerSettings.FromName
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.FromName*
+  name: FromName
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.html#Hexalith_Infrastructure_Emails_Abstractions_Configurations_EmailServerSettings_FromName_
+  commentId: Overload:Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.FromName
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.FromName
+  nameWithType: EmailServerSettings.FromName
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.Password
+  name: Password
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.html#Hexalith_Infrastructure_Emails_Abstractions_Configurations_EmailServerSettings_Password
+  commentId: P:Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.Password
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.Password
+  nameWithType: EmailServerSettings.Password
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.Password*
+  name: Password
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.html#Hexalith_Infrastructure_Emails_Abstractions_Configurations_EmailServerSettings_Password_
+  commentId: Overload:Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.Password
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.Password
+  nameWithType: EmailServerSettings.Password
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ServerName
+  name: ServerName
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.html#Hexalith_Infrastructure_Emails_Abstractions_Configurations_EmailServerSettings_ServerName
+  commentId: P:Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ServerName
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ServerName
+  nameWithType: EmailServerSettings.ServerName
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ServerName*
+  name: ServerName
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.html#Hexalith_Infrastructure_Emails_Abstractions_Configurations_EmailServerSettings_ServerName_
+  commentId: Overload:Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ServerName
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ServerName
+  nameWithType: EmailServerSettings.ServerName
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ServerPort
+  name: ServerPort
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.html#Hexalith_Infrastructure_Emails_Abstractions_Configurations_EmailServerSettings_ServerPort
+  commentId: P:Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ServerPort
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ServerPort
+  nameWithType: EmailServerSettings.ServerPort
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ServerPort*
+  name: ServerPort
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.html#Hexalith_Infrastructure_Emails_Abstractions_Configurations_EmailServerSettings_ServerPort_
+  commentId: Overload:Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ServerPort
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.ServerPort
+  nameWithType: EmailServerSettings.ServerPort
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.UserName
+  name: UserName
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.html#Hexalith_Infrastructure_Emails_Abstractions_Configurations_EmailServerSettings_UserName
+  commentId: P:Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.UserName
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.UserName
+  nameWithType: EmailServerSettings.UserName
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.UserName*
+  name: UserName
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.html#Hexalith_Infrastructure_Emails_Abstractions_Configurations_EmailServerSettings_UserName_
+  commentId: Overload:Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.UserName
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.UserName
+  nameWithType: EmailServerSettings.UserName
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Services
+  name: Hexalith.Infrastructure.Emails.Abstractions.Services
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Services.html
+  commentId: N:Hexalith.Infrastructure.Emails.Abstractions.Services
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Services
+  nameWithType: Hexalith.Infrastructure.Emails.Abstractions.Services
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase
+  name: EmailServiceBase
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.html
+  commentId: T:Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase
+  nameWithType: EmailServiceBase
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.#ctor(Microsoft.Extensions.Options.IOptions{Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings})
+  name: EmailServiceBase(IOptions<EmailServerSettings>)
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.html#Hexalith_Infrastructure_Emails_Abstractions_Services_EmailServiceBase__ctor_Microsoft_Extensions_Options_IOptions_Hexalith_Infrastructure_Emails_Abstractions_Configurations_EmailServerSettings__
+  commentId: M:Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.#ctor(Microsoft.Extensions.Options.IOptions{Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings})
+  name.vb: EmailServiceBase(IOptions(Of EmailServerSettings))
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.EmailServiceBase(Microsoft.Extensions.Options.IOptions<Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings>)
+  fullName.vb: Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.EmailServiceBase(Microsoft.Extensions.Options.IOptions(Of Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings))
+  nameWithType: EmailServiceBase.EmailServiceBase(IOptions<EmailServerSettings>)
+  nameWithType.vb: EmailServiceBase.EmailServiceBase(IOptions(Of EmailServerSettings))
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.#ctor*
+  name: EmailServiceBase
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.html#Hexalith_Infrastructure_Emails_Abstractions_Services_EmailServiceBase__ctor_
+  commentId: Overload:Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.EmailServiceBase
+  nameWithType: EmailServiceBase.EmailServiceBase
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.DefaultFromEmail
+  name: DefaultFromEmail
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.html#Hexalith_Infrastructure_Emails_Abstractions_Services_EmailServiceBase_DefaultFromEmail
+  commentId: P:Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.DefaultFromEmail
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.DefaultFromEmail
+  nameWithType: EmailServiceBase.DefaultFromEmail
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.DefaultFromEmail*
+  name: DefaultFromEmail
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.html#Hexalith_Infrastructure_Emails_Abstractions_Services_EmailServiceBase_DefaultFromEmail_
+  commentId: Overload:Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.DefaultFromEmail
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.DefaultFromEmail
+  nameWithType: EmailServiceBase.DefaultFromEmail
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.DefaultFromName
+  name: DefaultFromName
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.html#Hexalith_Infrastructure_Emails_Abstractions_Services_EmailServiceBase_DefaultFromName
+  commentId: P:Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.DefaultFromName
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.DefaultFromName
+  nameWithType: EmailServiceBase.DefaultFromName
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.DefaultFromName*
+  name: DefaultFromName
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.html#Hexalith_Infrastructure_Emails_Abstractions_Services_EmailServiceBase_DefaultFromName_
+  commentId: Overload:Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.DefaultFromName
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.DefaultFromName
+  nameWithType: EmailServiceBase.DefaultFromName
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.SendAsync(System.String,System.String,System.String,System.String,CancellationToken)
+  name: SendAsync(String, String, String, String, CancellationToken)
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.html#Hexalith_Infrastructure_Emails_Abstractions_Services_EmailServiceBase_SendAsync_System_String_System_String_System_String_System_String_CancellationToken_
+  commentId: M:Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.SendAsync(System.String,System.String,System.String,System.String,CancellationToken)
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.SendAsync(System.String, System.String, System.String, System.String, CancellationToken)
+  nameWithType: EmailServiceBase.SendAsync(String, String, String, String, CancellationToken)
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.SendAsync(System.String,System.String,System.String,System.String,System.String,System.String,CancellationToken)
+  name: SendAsync(String, String, String, String, String, String, CancellationToken)
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.html#Hexalith_Infrastructure_Emails_Abstractions_Services_EmailServiceBase_SendAsync_System_String_System_String_System_String_System_String_System_String_System_String_CancellationToken_
+  commentId: M:Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.SendAsync(System.String,System.String,System.String,System.String,System.String,System.String,CancellationToken)
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.SendAsync(System.String, System.String, System.String, System.String, System.String, System.String, CancellationToken)
+  nameWithType: EmailServiceBase.SendAsync(String, String, String, String, String, String, CancellationToken)
+- uid: Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.SendAsync*
+  name: SendAsync
+  href: api/Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.html#Hexalith_Infrastructure_Emails_Abstractions_Services_EmailServiceBase_SendAsync_
+  commentId: Overload:Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.SendAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.SendAsync
+  nameWithType: EmailServiceBase.SendAsync
+- uid: Hexalith.Infrastructure.Emails.MailKit.Helpers
+  name: Hexalith.Infrastructure.Emails.MailKit.Helpers
+  href: api/Hexalith.Infrastructure.Emails.MailKit.Helpers.html
+  commentId: N:Hexalith.Infrastructure.Emails.MailKit.Helpers
+  fullName: Hexalith.Infrastructure.Emails.MailKit.Helpers
+  nameWithType: Hexalith.Infrastructure.Emails.MailKit.Helpers
+- uid: Hexalith.Infrastructure.Emails.MailKit.Helpers.MailKitHelper
+  name: MailKitHelper
+  href: api/Hexalith.Infrastructure.Emails.MailKit.Helpers.MailKitHelper.html
+  commentId: T:Hexalith.Infrastructure.Emails.MailKit.Helpers.MailKitHelper
+  fullName: Hexalith.Infrastructure.Emails.MailKit.Helpers.MailKitHelper
+  nameWithType: MailKitHelper
+- uid: Hexalith.Infrastructure.Emails.MailKit.Helpers.MailKitHelper.AddMailKitEmail(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
+  name: AddMailKitEmail(IServiceCollection, IConfiguration)
+  href: api/Hexalith.Infrastructure.Emails.MailKit.Helpers.MailKitHelper.html#Hexalith_Infrastructure_Emails_MailKit_Helpers_MailKitHelper_AddMailKitEmail_Microsoft_Extensions_DependencyInjection_IServiceCollection_Microsoft_Extensions_Configuration_IConfiguration_
+  commentId: M:Hexalith.Infrastructure.Emails.MailKit.Helpers.MailKitHelper.AddMailKitEmail(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
+  fullName: Hexalith.Infrastructure.Emails.MailKit.Helpers.MailKitHelper.AddMailKitEmail(Microsoft.Extensions.DependencyInjection.IServiceCollection, Microsoft.Extensions.Configuration.IConfiguration)
+  nameWithType: MailKitHelper.AddMailKitEmail(IServiceCollection, IConfiguration)
+- uid: Hexalith.Infrastructure.Emails.MailKit.Helpers.MailKitHelper.AddMailKitEmail*
+  name: AddMailKitEmail
+  href: api/Hexalith.Infrastructure.Emails.MailKit.Helpers.MailKitHelper.html#Hexalith_Infrastructure_Emails_MailKit_Helpers_MailKitHelper_AddMailKitEmail_
+  commentId: Overload:Hexalith.Infrastructure.Emails.MailKit.Helpers.MailKitHelper.AddMailKitEmail
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Emails.MailKit.Helpers.MailKitHelper.AddMailKitEmail
+  nameWithType: MailKitHelper.AddMailKitEmail
+- uid: Hexalith.Infrastructure.Emails.Mailkit.Services
+  name: Hexalith.Infrastructure.Emails.Mailkit.Services
+  href: api/Hexalith.Infrastructure.Emails.Mailkit.Services.html
+  commentId: N:Hexalith.Infrastructure.Emails.Mailkit.Services
+  fullName: Hexalith.Infrastructure.Emails.Mailkit.Services
+  nameWithType: Hexalith.Infrastructure.Emails.Mailkit.Services
+- uid: Hexalith.Infrastructure.Emails.Mailkit.Services.MailKitEmailService
+  name: MailKitEmailService
+  href: api/Hexalith.Infrastructure.Emails.Mailkit.Services.MailKitEmailService.html
+  commentId: T:Hexalith.Infrastructure.Emails.Mailkit.Services.MailKitEmailService
+  fullName: Hexalith.Infrastructure.Emails.Mailkit.Services.MailKitEmailService
+  nameWithType: MailKitEmailService
+- uid: Hexalith.Infrastructure.Emails.Mailkit.Services.MailKitEmailService.#ctor(Microsoft.Extensions.Options.IOptions{Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings})
+  name: MailKitEmailService(IOptions<EmailServerSettings>)
+  href: api/Hexalith.Infrastructure.Emails.Mailkit.Services.MailKitEmailService.html#Hexalith_Infrastructure_Emails_Mailkit_Services_MailKitEmailService__ctor_Microsoft_Extensions_Options_IOptions_Hexalith_Infrastructure_Emails_Abstractions_Configurations_EmailServerSettings__
+  commentId: M:Hexalith.Infrastructure.Emails.Mailkit.Services.MailKitEmailService.#ctor(Microsoft.Extensions.Options.IOptions{Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings})
+  name.vb: MailKitEmailService(IOptions(Of EmailServerSettings))
+  fullName: Hexalith.Infrastructure.Emails.Mailkit.Services.MailKitEmailService.MailKitEmailService(Microsoft.Extensions.Options.IOptions<Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings>)
+  fullName.vb: Hexalith.Infrastructure.Emails.Mailkit.Services.MailKitEmailService.MailKitEmailService(Microsoft.Extensions.Options.IOptions(Of Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings))
+  nameWithType: MailKitEmailService.MailKitEmailService(IOptions<EmailServerSettings>)
+  nameWithType.vb: MailKitEmailService.MailKitEmailService(IOptions(Of EmailServerSettings))
+- uid: Hexalith.Infrastructure.Emails.Mailkit.Services.MailKitEmailService.#ctor*
+  name: MailKitEmailService
+  href: api/Hexalith.Infrastructure.Emails.Mailkit.Services.MailKitEmailService.html#Hexalith_Infrastructure_Emails_Mailkit_Services_MailKitEmailService__ctor_
+  commentId: Overload:Hexalith.Infrastructure.Emails.Mailkit.Services.MailKitEmailService.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Emails.Mailkit.Services.MailKitEmailService.MailKitEmailService
+  nameWithType: MailKitEmailService.MailKitEmailService
+- uid: Hexalith.Infrastructure.Emails.Mailkit.Services.MailKitEmailService.SendAsync(System.String,System.String,System.String,System.String,System.String,System.String,System.Threading.CancellationToken)
+  name: SendAsync(String, String, String, String, String, String, CancellationToken)
+  href: api/Hexalith.Infrastructure.Emails.Mailkit.Services.MailKitEmailService.html#Hexalith_Infrastructure_Emails_Mailkit_Services_MailKitEmailService_SendAsync_System_String_System_String_System_String_System_String_System_String_System_String_System_Threading_CancellationToken_
+  commentId: M:Hexalith.Infrastructure.Emails.Mailkit.Services.MailKitEmailService.SendAsync(System.String,System.String,System.String,System.String,System.String,System.String,System.Threading.CancellationToken)
+  fullName: Hexalith.Infrastructure.Emails.Mailkit.Services.MailKitEmailService.SendAsync(System.String, System.String, System.String, System.String, System.String, System.String, System.Threading.CancellationToken)
+  nameWithType: MailKitEmailService.SendAsync(String, String, String, String, String, String, CancellationToken)
+- uid: Hexalith.Infrastructure.Emails.Mailkit.Services.MailKitEmailService.SendAsync*
+  name: SendAsync
+  href: api/Hexalith.Infrastructure.Emails.Mailkit.Services.MailKitEmailService.html#Hexalith_Infrastructure_Emails_Mailkit_Services_MailKitEmailService_SendAsync_
+  commentId: Overload:Hexalith.Infrastructure.Emails.Mailkit.Services.MailKitEmailService.SendAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Emails.Mailkit.Services.MailKitEmailService.SendAsync
+  nameWithType: MailKitEmailService.SendAsync
+- uid: Hexalith.Infrastructure.Emails.SendGrid.Helpers
+  name: Hexalith.Infrastructure.Emails.SendGrid.Helpers
+  href: api/Hexalith.Infrastructure.Emails.SendGrid.Helpers.html
+  commentId: N:Hexalith.Infrastructure.Emails.SendGrid.Helpers
+  fullName: Hexalith.Infrastructure.Emails.SendGrid.Helpers
+  nameWithType: Hexalith.Infrastructure.Emails.SendGrid.Helpers
+- uid: Hexalith.Infrastructure.Emails.SendGrid.Helpers.SendGridHelper
+  name: SendGridHelper
+  href: api/Hexalith.Infrastructure.Emails.SendGrid.Helpers.SendGridHelper.html
+  commentId: T:Hexalith.Infrastructure.Emails.SendGrid.Helpers.SendGridHelper
+  fullName: Hexalith.Infrastructure.Emails.SendGrid.Helpers.SendGridHelper
+  nameWithType: SendGridHelper
+- uid: Hexalith.Infrastructure.Emails.SendGrid.Helpers.SendGridHelper.AddSendGridEmail(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
+  name: AddSendGridEmail(IServiceCollection, IConfiguration)
+  href: api/Hexalith.Infrastructure.Emails.SendGrid.Helpers.SendGridHelper.html#Hexalith_Infrastructure_Emails_SendGrid_Helpers_SendGridHelper_AddSendGridEmail_Microsoft_Extensions_DependencyInjection_IServiceCollection_Microsoft_Extensions_Configuration_IConfiguration_
+  commentId: M:Hexalith.Infrastructure.Emails.SendGrid.Helpers.SendGridHelper.AddSendGridEmail(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
+  fullName: Hexalith.Infrastructure.Emails.SendGrid.Helpers.SendGridHelper.AddSendGridEmail(Microsoft.Extensions.DependencyInjection.IServiceCollection, Microsoft.Extensions.Configuration.IConfiguration)
+  nameWithType: SendGridHelper.AddSendGridEmail(IServiceCollection, IConfiguration)
+- uid: Hexalith.Infrastructure.Emails.SendGrid.Helpers.SendGridHelper.AddSendGridEmail*
+  name: AddSendGridEmail
+  href: api/Hexalith.Infrastructure.Emails.SendGrid.Helpers.SendGridHelper.html#Hexalith_Infrastructure_Emails_SendGrid_Helpers_SendGridHelper_AddSendGridEmail_
+  commentId: Overload:Hexalith.Infrastructure.Emails.SendGrid.Helpers.SendGridHelper.AddSendGridEmail
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Emails.SendGrid.Helpers.SendGridHelper.AddSendGridEmail
+  nameWithType: SendGridHelper.AddSendGridEmail
+- uid: Hexalith.Infrastructure.Emails.SendGrid.Services
+  name: Hexalith.Infrastructure.Emails.SendGrid.Services
+  href: api/Hexalith.Infrastructure.Emails.SendGrid.Services.html
+  commentId: N:Hexalith.Infrastructure.Emails.SendGrid.Services
+  fullName: Hexalith.Infrastructure.Emails.SendGrid.Services
+  nameWithType: Hexalith.Infrastructure.Emails.SendGrid.Services
+- uid: Hexalith.Infrastructure.Emails.SendGrid.Services.SendGridEmailService
+  name: SendGridEmailService
+  href: api/Hexalith.Infrastructure.Emails.SendGrid.Services.SendGridEmailService.html
+  commentId: T:Hexalith.Infrastructure.Emails.SendGrid.Services.SendGridEmailService
+  fullName: Hexalith.Infrastructure.Emails.SendGrid.Services.SendGridEmailService
+  nameWithType: SendGridEmailService
+- uid: Hexalith.Infrastructure.Emails.SendGrid.Services.SendGridEmailService.#ctor(Microsoft.Extensions.Options.IOptions{Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings})
+  name: SendGridEmailService(IOptions<EmailServerSettings>)
+  href: api/Hexalith.Infrastructure.Emails.SendGrid.Services.SendGridEmailService.html#Hexalith_Infrastructure_Emails_SendGrid_Services_SendGridEmailService__ctor_Microsoft_Extensions_Options_IOptions_Hexalith_Infrastructure_Emails_Abstractions_Configurations_EmailServerSettings__
+  commentId: M:Hexalith.Infrastructure.Emails.SendGrid.Services.SendGridEmailService.#ctor(Microsoft.Extensions.Options.IOptions{Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings})
+  name.vb: SendGridEmailService(IOptions(Of EmailServerSettings))
+  fullName: Hexalith.Infrastructure.Emails.SendGrid.Services.SendGridEmailService.SendGridEmailService(Microsoft.Extensions.Options.IOptions<Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings>)
+  fullName.vb: Hexalith.Infrastructure.Emails.SendGrid.Services.SendGridEmailService.SendGridEmailService(Microsoft.Extensions.Options.IOptions(Of Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings))
+  nameWithType: SendGridEmailService.SendGridEmailService(IOptions<EmailServerSettings>)
+  nameWithType.vb: SendGridEmailService.SendGridEmailService(IOptions(Of EmailServerSettings))
+- uid: Hexalith.Infrastructure.Emails.SendGrid.Services.SendGridEmailService.#ctor*
+  name: SendGridEmailService
+  href: api/Hexalith.Infrastructure.Emails.SendGrid.Services.SendGridEmailService.html#Hexalith_Infrastructure_Emails_SendGrid_Services_SendGridEmailService__ctor_
+  commentId: Overload:Hexalith.Infrastructure.Emails.SendGrid.Services.SendGridEmailService.#ctor
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Emails.SendGrid.Services.SendGridEmailService.SendGridEmailService
+  nameWithType: SendGridEmailService.SendGridEmailService
+- uid: Hexalith.Infrastructure.Emails.SendGrid.Services.SendGridEmailService.SendAsync(System.String,System.String,System.String,System.String,System.String,System.String,CancellationToken)
+  name: SendAsync(String, String, String, String, String, String, CancellationToken)
+  href: api/Hexalith.Infrastructure.Emails.SendGrid.Services.SendGridEmailService.html#Hexalith_Infrastructure_Emails_SendGrid_Services_SendGridEmailService_SendAsync_System_String_System_String_System_String_System_String_System_String_System_String_CancellationToken_
+  commentId: M:Hexalith.Infrastructure.Emails.SendGrid.Services.SendGridEmailService.SendAsync(System.String,System.String,System.String,System.String,System.String,System.String,CancellationToken)
+  fullName: Hexalith.Infrastructure.Emails.SendGrid.Services.SendGridEmailService.SendAsync(System.String, System.String, System.String, System.String, System.String, System.String, CancellationToken)
+  nameWithType: SendGridEmailService.SendAsync(String, String, String, String, String, String, CancellationToken)
+- uid: Hexalith.Infrastructure.Emails.SendGrid.Services.SendGridEmailService.SendAsync*
+  name: SendAsync
+  href: api/Hexalith.Infrastructure.Emails.SendGrid.Services.SendGridEmailService.html#Hexalith_Infrastructure_Emails_SendGrid_Services_SendGridEmailService_SendAsync_
+  commentId: Overload:Hexalith.Infrastructure.Emails.SendGrid.Services.SendGridEmailService.SendAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.Emails.SendGrid.Services.SendGridEmailService.SendAsync
+  nameWithType: SendGridEmailService.SendAsync
 - uid: Hexalith.Infrastructure.Security.Abstractions
   name: Hexalith.Infrastructure.Security.Abstractions
   href: api/Hexalith.Infrastructure.Security.Abstractions.html
@@ -32253,3 +32662,122 @@ references:
   isSpec: "True"
   fullName: Hexalith.TestMocks.SerializationTestBase.ToSerializeObject
   nameWithType: SerializationTestBase.ToSerializeObject
+- uid: HexalithApplication.Client
+  name: HexalithApplication.Client
+  href: api/HexalithApplication.Client.html
+  commentId: N:HexalithApplication.Client
+  fullName: HexalithApplication.Client
+  nameWithType: HexalithApplication.Client
+- uid: HexalithApplication.Client.UserInfo
+  name: UserInfo
+  href: api/HexalithApplication.Client.UserInfo.html
+  commentId: T:HexalithApplication.Client.UserInfo
+  fullName: HexalithApplication.Client.UserInfo
+  nameWithType: UserInfo
+- uid: HexalithApplication.Data
+  name: HexalithApplication.Data
+  href: api/HexalithApplication.Data.html
+  commentId: N:HexalithApplication.Data
+  fullName: HexalithApplication.Data
+  nameWithType: HexalithApplication.Data
+- uid: HexalithApplication.Data.ApplicationDbContext
+  name: ApplicationDbContext
+  href: api/HexalithApplication.Data.ApplicationDbContext.html
+  commentId: T:HexalithApplication.Data.ApplicationDbContext
+  fullName: HexalithApplication.Data.ApplicationDbContext
+  nameWithType: ApplicationDbContext
+- uid: HexalithApplication.Data.ApplicationUser
+  name: ApplicationUser
+  href: api/HexalithApplication.Data.ApplicationUser.html
+  commentId: T:HexalithApplication.Data.ApplicationUser
+  fullName: HexalithApplication.Data.ApplicationUser
+  nameWithType: ApplicationUser
+- uid: HexalithApplication.Migrations
+  name: HexalithApplication.Migrations
+  href: api/HexalithApplication.Migrations.html
+  commentId: N:HexalithApplication.Migrations
+  fullName: HexalithApplication.Migrations
+  nameWithType: HexalithApplication.Migrations
+- uid: HexalithApplication.Migrations.CreateIdentitySchema
+  name: CreateIdentitySchema
+  href: api/HexalithApplication.Migrations.CreateIdentitySchema.html
+  commentId: T:HexalithApplication.Migrations.CreateIdentitySchema
+  fullName: HexalithApplication.Migrations.CreateIdentitySchema
+  nameWithType: CreateIdentitySchema
+- uid: HexalithApplication.Migrations.CreateIdentitySchema.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)
+  name: BuildTargetModel(ModelBuilder)
+  href: api/HexalithApplication.Migrations.CreateIdentitySchema.html#HexalithApplication_Migrations_CreateIdentitySchema_BuildTargetModel_Microsoft_EntityFrameworkCore_ModelBuilder_
+  commentId: M:HexalithApplication.Migrations.CreateIdentitySchema.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)
+  fullName: HexalithApplication.Migrations.CreateIdentitySchema.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)
+  nameWithType: CreateIdentitySchema.BuildTargetModel(ModelBuilder)
+- uid: HexalithApplication.Migrations.CreateIdentitySchema.BuildTargetModel*
+  name: BuildTargetModel
+  href: api/HexalithApplication.Migrations.CreateIdentitySchema.html#HexalithApplication_Migrations_CreateIdentitySchema_BuildTargetModel_
+  commentId: Overload:HexalithApplication.Migrations.CreateIdentitySchema.BuildTargetModel
+  isSpec: "True"
+  fullName: HexalithApplication.Migrations.CreateIdentitySchema.BuildTargetModel
+  nameWithType: CreateIdentitySchema.BuildTargetModel
+- uid: HexalithApplication.Migrations.CreateIdentitySchema.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)
+  name: Down(MigrationBuilder)
+  href: api/HexalithApplication.Migrations.CreateIdentitySchema.html#HexalithApplication_Migrations_CreateIdentitySchema_Down_Microsoft_EntityFrameworkCore_Migrations_MigrationBuilder_
+  commentId: M:HexalithApplication.Migrations.CreateIdentitySchema.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)
+  fullName: HexalithApplication.Migrations.CreateIdentitySchema.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)
+  nameWithType: CreateIdentitySchema.Down(MigrationBuilder)
+- uid: HexalithApplication.Migrations.CreateIdentitySchema.Down*
+  name: Down
+  href: api/HexalithApplication.Migrations.CreateIdentitySchema.html#HexalithApplication_Migrations_CreateIdentitySchema_Down_
+  commentId: Overload:HexalithApplication.Migrations.CreateIdentitySchema.Down
+  isSpec: "True"
+  fullName: HexalithApplication.Migrations.CreateIdentitySchema.Down
+  nameWithType: CreateIdentitySchema.Down
+- uid: HexalithApplication.Migrations.CreateIdentitySchema.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)
+  name: Up(MigrationBuilder)
+  href: api/HexalithApplication.Migrations.CreateIdentitySchema.html#HexalithApplication_Migrations_CreateIdentitySchema_Up_Microsoft_EntityFrameworkCore_Migrations_MigrationBuilder_
+  commentId: M:HexalithApplication.Migrations.CreateIdentitySchema.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)
+  fullName: HexalithApplication.Migrations.CreateIdentitySchema.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)
+  nameWithType: CreateIdentitySchema.Up(MigrationBuilder)
+- uid: HexalithApplication.Migrations.CreateIdentitySchema.Up*
+  name: Up
+  href: api/HexalithApplication.Migrations.CreateIdentitySchema.html#HexalithApplication_Migrations_CreateIdentitySchema_Up_
+  commentId: Overload:HexalithApplication.Migrations.CreateIdentitySchema.Up
+  isSpec: "True"
+  fullName: HexalithApplication.Migrations.CreateIdentitySchema.Up
+  nameWithType: CreateIdentitySchema.Up
+- uid: HexalithApplication.Services
+  name: HexalithApplication.Services
+  href: api/HexalithApplication.Services.html
+  commentId: N:HexalithApplication.Services
+  fullName: HexalithApplication.Services
+  nameWithType: HexalithApplication.Services
+- uid: HexalithApplication.Services.EmailSender
+  name: EmailSender
+  href: api/HexalithApplication.Services.EmailSender.html
+  commentId: T:HexalithApplication.Services.EmailSender
+  fullName: HexalithApplication.Services.EmailSender
+  nameWithType: EmailSender
+- uid: HexalithApplication.Services.EmailSender.#ctor(Hexalith.Application.Emails.IEmailService)
+  name: EmailSender(IEmailService)
+  href: api/HexalithApplication.Services.EmailSender.html#HexalithApplication_Services_EmailSender__ctor_Hexalith_Application_Emails_IEmailService_
+  commentId: M:HexalithApplication.Services.EmailSender.#ctor(Hexalith.Application.Emails.IEmailService)
+  fullName: HexalithApplication.Services.EmailSender.EmailSender(Hexalith.Application.Emails.IEmailService)
+  nameWithType: EmailSender.EmailSender(IEmailService)
+- uid: HexalithApplication.Services.EmailSender.#ctor*
+  name: EmailSender
+  href: api/HexalithApplication.Services.EmailSender.html#HexalithApplication_Services_EmailSender__ctor_
+  commentId: Overload:HexalithApplication.Services.EmailSender.#ctor
+  isSpec: "True"
+  fullName: HexalithApplication.Services.EmailSender.EmailSender
+  nameWithType: EmailSender.EmailSender
+- uid: HexalithApplication.Services.EmailSender.SendEmailAsync(System.String,System.String,System.String)
+  name: SendEmailAsync(String, String, String)
+  href: api/HexalithApplication.Services.EmailSender.html#HexalithApplication_Services_EmailSender_SendEmailAsync_System_String_System_String_System_String_
+  commentId: M:HexalithApplication.Services.EmailSender.SendEmailAsync(System.String,System.String,System.String)
+  fullName: HexalithApplication.Services.EmailSender.SendEmailAsync(System.String, System.String, System.String)
+  nameWithType: EmailSender.SendEmailAsync(String, String, String)
+- uid: HexalithApplication.Services.EmailSender.SendEmailAsync*
+  name: SendEmailAsync
+  href: api/HexalithApplication.Services.EmailSender.html#HexalithApplication_Services_EmailSender_SendEmailAsync_
+  commentId: Overload:HexalithApplication.Services.EmailSender.SendEmailAsync
+  isSpec: "True"
+  fullName: HexalithApplication.Services.EmailSender.SendEmailAsync
+  nameWithType: EmailSender.SendEmailAsync

@@ -12,7 +12,7 @@
           "hash": "mLQc0aFezA/VPN2W2F6C0EjR/QvGQeROZuCTQXJ/EiE="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -574,6 +574,30 @@
         ".html": {
           "relative_path": "api/Hexalith.Application.DataFragment.html",
           "hash": "qlz+THgmqjNiHL+EJEeRsR9WSm9x+Wf8OoeRUYXBPEc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Emails.IEmailService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Emails.IEmailService.html",
+          "hash": "xQjYQYHscJ4Ze/SNgyyNjt4wFiCAfCkU1h92LLyB+0Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Emails.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Emails.html",
+          "hash": "hHfb6gJ8+HOSjBAmnp37zI2KEtKvYMXbBLIIVfepATI="
         }
       },
       "is_incremental": false,
@@ -5093,6 +5117,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Handlers.AggregateActorCommandProcessor.html",
+          "hash": "sTnJWxTbbgGQp8GSlmM8AuacB1IEg4gUfZpx8uPsszo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Handlers.ConventionNamingCommandProcessor.yml",
       "output": {
         ".html": {
@@ -5121,7 +5157,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Handlers.html",
-          "hash": "8O7yhFtQX3FgAJ6iryfnh9ku/Fz3uUQkf9GuhGf+6eM="
+          "hash": "Tk0xIwhlb0kKGVmefnEDVdJD/IxdPezlKvdrbJZ21QY="
         }
       },
       "is_incremental": false,
@@ -5349,7 +5385,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Parties.Helpers.PartiesActorsHelper.html",
-          "hash": "zdYfySh7oQULO7a22ryYvSMwbLbTopfJYyzf/gJ4ltg="
+          "hash": "aPTBts149zhC5UTIpoBMLevseRx4QjixTGgMvcerwD8="
         }
       },
       "is_incremental": false,
@@ -5601,7 +5637,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.DaprRuntime.Tasks.DaprRetryCallbackManager.html",
-          "hash": "g3scOUqyGDv0BRtlBw4lApFau9O/ASW26iQNiH6Q5Tk="
+          "hash": "a54rXrDISMFS1hpUJ9NwQZffX3LONEQeyMZLyGBzWTc="
         }
       },
       "is_incremental": false,
@@ -6869,6 +6905,150 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Emails.Abstractions.Configurations.EmailServerSettings.html",
+          "hash": "EYdoSeC5ZazPelHR3JlJg5R0Ytq0fCYhv3KRk1oLrSg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Emails.Abstractions.Configurations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Emails.Abstractions.Configurations.html",
+          "hash": "FbMUsG0yJ3Vw8IHKcBDyuwJesGD9pI9PNol6rla1y+A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Emails.Abstractions.Services.EmailServiceBase.html",
+          "hash": "QpyCyJpIjB2F1vb8osBBwSMTomgF3Iyhj34Ypm3Zm3U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Emails.Abstractions.Services.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Emails.Abstractions.Services.html",
+          "hash": "8hxhwrNE7h3D4NnWqsKT8SnQ8IQc0LTqgDB1lzuMMGU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Emails.MailKit.Helpers.MailKitHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Emails.MailKit.Helpers.MailKitHelper.html",
+          "hash": "Tnve4ymWQczVVyBt2PQsI+TJhxgssVsG6c5PPm3B5qA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Emails.MailKit.Helpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Emails.MailKit.Helpers.html",
+          "hash": "bwZSaAyyakTMsC3o5FbGDwCEMjZ6tqPbKxz1bEGjpSg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Emails.Mailkit.Services.MailKitEmailService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Emails.Mailkit.Services.MailKitEmailService.html",
+          "hash": "kL665JpONt8olfpkeo3fl0zur0uqAYMSvqT7AUImfxA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Emails.Mailkit.Services.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Emails.Mailkit.Services.html",
+          "hash": "kLKJsII+H3oxytHeVqaoVW5pvjD2V0CwwiZn7UbWWho="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Emails.SendGrid.Helpers.SendGridHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Emails.SendGrid.Helpers.SendGridHelper.html",
+          "hash": "PC2pukMuBKW/d0TWzTShTTruZ0fAdLi2yT93LovuZwU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Emails.SendGrid.Helpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Emails.SendGrid.Helpers.html",
+          "hash": "lORfohqMWTy/yensZOeJK8Q7qLZLtEFoB5LivtoXHPU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Emails.SendGrid.Services.SendGridEmailService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Emails.SendGrid.Services.SendGridEmailService.html",
+          "hash": "IYQiY7kLlRQQHUnEB0nYhU3ZtKxbrTYSqDFs0XdE38c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Infrastructure.Emails.SendGrid.Services.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Infrastructure.Emails.SendGrid.Services.html",
+          "hash": "2xYNh7bvfrxexR7fc1Dwo0qeDhMwZ5JT02Q3KRIsc+k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Hexalith.Infrastructure.Security.Abstractions.IApplicationSecurityContext.yml",
       "output": {
         ".html": {
@@ -7972,6 +8152,114 @@
       "version": ""
     },
     {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HexalithApplication.Client.UserInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HexalithApplication.Client.UserInfo.html",
+          "hash": "iJ1CCoV8NIiCeAK9/q/A7rIJVp5rZ0sAaSnvcmwBuLA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HexalithApplication.Client.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HexalithApplication.Client.html",
+          "hash": "VWS6uJympcjuHCuEeQtWLwuiKSQ4WWw/X2P4CQdVu34="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HexalithApplication.Data.ApplicationDbContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HexalithApplication.Data.ApplicationDbContext.html",
+          "hash": "tPFnncyAM5evsiKqqW3az0wJWNUJYz0rgtHK/19NwV0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HexalithApplication.Data.ApplicationUser.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HexalithApplication.Data.ApplicationUser.html",
+          "hash": "5iMHXOhswo3T45U2GsakpHCIfbDJ2SoESuyssVkW9XI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HexalithApplication.Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HexalithApplication.Data.html",
+          "hash": "VOVLv6THuup0UDCxT3CvdwDHcFkfznr1N4kg1HBF4TQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HexalithApplication.Migrations.CreateIdentitySchema.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HexalithApplication.Migrations.CreateIdentitySchema.html",
+          "hash": "CJ3eDHPmZWE8EU+hZRMvQWSZt2baaLESyPigzLCp6Eo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HexalithApplication.Migrations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HexalithApplication.Migrations.html",
+          "hash": "PbfybvgGKqExEFS6za5GusnGGEapBZFSTLYO3JgdLyc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HexalithApplication.Services.EmailSender.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HexalithApplication.Services.EmailSender.html",
+          "hash": "77WLCk0973XSQ9hFVWz9kmxsEL/DdtvwLBRt9ng7Oso="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/HexalithApplication.Services.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/HexalithApplication.Services.html",
+          "hash": "rWVFZBhTFW3JUH+f57j+UG+3iUZ5ZQsz5j6lP0hz460="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
       "type": "Conceptual",
       "source_relative_path": "api/index.md",
       "output": {
@@ -7989,7 +8277,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "1q76CiqfzjEChEw2az5Nak+VXcI6jS+QHbWNhKxc3W4="
+          "hash": "ptz3OsXnDipXQs2KzfVxCmVRS10wOFJb1LdcLAbL52k="
         }
       },
       "is_incremental": false,
@@ -8004,7 +8292,7 @@
           "hash": "XREAr6iHtuka+aO7c3lTrh90rt0rybqw859u1tetgNM="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -8028,7 +8316,7 @@
           "hash": "vsW9ZvNJ7sOSf2pjIjuOSwvq6ulmUIdFPHc7lPEfC4Y="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -8047,23 +8335,25 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": true,
+        "can_incremental": false,
+        "details": "Disable incremental build by force rebuild option.",
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0
+        "skipped_file_count": 0,
+        "full_build_reason_code": "ForceRebuild"
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 4,
-          "skipped_file_count": 4
+          "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 663,
-          "skipped_file_count": 650
+          "total_file_count": 687,
+          "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
@@ -8076,8 +8366,8 @@
     },
     {
       "status": {
-        "can_incremental": true,
-        "details": "Can support incremental post processing.",
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0

@@ -26,6 +26,9 @@ using Hexalith.Infrastructure.DaprRuntime.Sales.Actors;
 
 using Moq;
 
+/// <summary>
+/// Class AggregateActorTest.
+/// </summary>
 public partial class AggregateActorTest
 {
     [Fact]

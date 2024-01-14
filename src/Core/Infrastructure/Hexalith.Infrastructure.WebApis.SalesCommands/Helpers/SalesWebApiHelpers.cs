@@ -44,9 +44,9 @@ public static class SalesWebApiHelpers
     {
         services
             .AddSalesCommandHandlers()
-            .TryAddSingleton((s) => new ConventionNamingCommandProcessor(
+            .TryAddSingleton((s) => new AggregateActorCommandProcessor(
                 ActorProxy.DefaultProxyFactory,
-                s.GetRequiredService<ILogger<ConventionNamingCommandProcessor>>()));
+                s.GetRequiredService<ILogger<AggregateActorCommandProcessor>>()));
 
         services.TryAddSingleton<IAggregateFactory, AggregateFactory>();
         services.TryAddSingleton<IAggregateProvider, AggregateProvider<SalesInvoice>>();
