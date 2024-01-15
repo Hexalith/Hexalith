@@ -20,7 +20,8 @@ using System.Diagnostics.CodeAnalysis;
 
 using Dapr.Actors.Runtime;
 
-using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Aggregates.Actors;
+using Hexalith.Domain.Aggregates;
+using Hexalith.Infrastructure.DaprRuntime.Sales.Actors;
 
 /// <summary>
 /// Class ExternalSystemsHelper.
@@ -35,7 +36,7 @@ public static class ExternalSystemsAggregatesHelper
     public static ActorRegistrationCollection AddExternalSystemsAggregates([NotNull] this ActorRegistrationCollection actors)
     {
         ArgumentNullException.ThrowIfNull(actors);
-        actors.RegisterActor<ExternalSystemReferenceAggregateActor>();
+        actors.RegisterActor<AggregateActor>(AggregateActor.GetAggregateActorName(ExternalSystemReference.GetAggregateName()));
         return actors;
     }
 }

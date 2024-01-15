@@ -111,7 +111,6 @@ public static class HexalithWebApi
         builder.Services.TryAddScoped<IAggregateStateManager, AggregateStateManager>();
         builder.Services.TryAddScoped<IStateStoreProvider, DaprClientStateStoreProvider>();
         builder.Services.TryAddScoped<ICommandDispatcher, DependencyInjectionCommandDispatcher>();
-        builder.Services.TryAddScoped<ICommandProcessor, BusCommandProcessor>();
         builder.Services.TryAddScoped<IProjectionUpdateProcessor, DependencyInjectionProjectionUpdateProcessor>();
 
         return builder;

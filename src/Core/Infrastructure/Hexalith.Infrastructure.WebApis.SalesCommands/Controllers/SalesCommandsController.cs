@@ -18,9 +18,9 @@ namespace Hexalith.Infrastructure.WebApis.SalesCommands.Controllers;
 
 using Dapr;
 
+using Hexalith.Application.Commands;
 using Hexalith.Application.States;
 using Hexalith.Domain.Aggregates;
-using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.WebApis.Controllers;
 
 using Microsoft.AspNetCore.Mvc;
@@ -40,7 +40,7 @@ using Microsoft.Extensions.Logging;
 /// <param name="logger">The logger.</param>
 [ApiController]
 public class SalesCommandsController(
-    ConventionNamingCommandProcessor commandProcessor,
+    ICommandProcessor commandProcessor,
     IHostEnvironment hostEnvironment,
     ILogger<SalesCommandsController> logger) : CommandSubmissionController(commandProcessor, hostEnvironment, logger)
 {

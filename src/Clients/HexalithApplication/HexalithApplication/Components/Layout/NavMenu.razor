@@ -7,10 +7,9 @@
     <nav class="sitenav" aria-labelledby="main-menu" onclick="document.getElementById('navmenu-toggle').click();">
         <FluentNavMenu Id="main-menu" Collapsible="true" Width="250" Title="Navigation menu" @bind-Expanded="expanded">
             <FluentNavLink Href="/" Match="NavLinkMatch.All" Icon="@(new Icons.Regular.Size20.Home())" IconColor="Color.Accent">Home</FluentNavLink>
-			<FluentNavLink Href="Customer" Icon="@(new Icons.Regular.Size20.NumberSymbolSquare())" IconColor="Color.Accent">Customer</FluentNavLink>
-			<FluentNavLink Href="auth" Icon="@(new Icons.Regular.Size20.LockClosedKey())" IconColor="Color.Accent">Auth Required</FluentNavLink>
 			<AuthorizeView>
 				<Authorized>
+					<FluentNavLink Href="Customer" Icon="@(new Icons.Regular.Size20.Person())" IconColor="Color.Accent">Customer</FluentNavLink>
 					<FluentNavLink Href="Account/Manage">@context.User.Identity?.Name</FluentNavLink>
 					<form action="Account/Logout" method="post">
 						<AntiforgeryToken />

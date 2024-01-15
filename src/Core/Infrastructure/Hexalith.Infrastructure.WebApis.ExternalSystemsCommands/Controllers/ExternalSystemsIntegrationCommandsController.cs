@@ -18,9 +18,9 @@ namespace Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Controllers;
 
 using Dapr;
 
+using Hexalith.Application.Commands;
 using Hexalith.Application.States;
 using Hexalith.Domain.Aggregates;
-using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.WebApis.Controllers;
 
 using Microsoft.AspNetCore.Mvc;
@@ -42,7 +42,7 @@ public class ExternalSystemsIntegrationCommandsController : CommandSubmissionCon
     /// <param name="hostEnvironment">The host environment.</param>
     /// <param name="logger">The logger.</param>
     public ExternalSystemsIntegrationCommandsController(
-        ConventionNamingCommandProcessor commandProcessor,
+        ICommandProcessor commandProcessor,
         IHostEnvironment hostEnvironment,
         ILogger<ExternalSystemsIntegrationCommandsController> logger)
         : base(commandProcessor, hostEnvironment, logger)
