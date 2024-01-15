@@ -14,5 +14,6 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.WebApis.ExternalSystemsCommands\Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.csproj" />
+		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Aggregates\Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Aggregates.csproj" />
 	</ItemGroup>
 </Project>
