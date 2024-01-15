@@ -8,8 +8,4 @@
 	  <Folder Include="Components\Pages\" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <PackageReference Update="Microsoft.AspNetCore.Components.Web" Version="8.0.0" />
-	</ItemGroup>
-
 </Project>
