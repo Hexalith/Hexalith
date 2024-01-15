@@ -24,6 +24,7 @@ using Microsoft.Extensions.Logging;
 /// Implements the <see cref="ICommandProcessor" />.
 /// </summary>
 /// <seealso cref="ICommandProcessor" />
+[Obsolete("Use AggregateActorCommandProcessor instead.", true)]
 public abstract partial class ActorsCommandProcessor : ICommandProcessor
 {
     /// <summary>

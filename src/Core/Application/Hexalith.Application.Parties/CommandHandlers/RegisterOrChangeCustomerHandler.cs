@@ -59,7 +59,7 @@ public partial class RegisterOrChangeCustomerHandler : CommandHandler<RegisterOr
     public override async Task<IEnumerable<BaseMessage>> DoAsync([NotNull] RegisterOrChangeCustomer command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
-        if (aggregate is not null)
+        if (aggregate is not null && aggregate.IsInitialized())
         {
             Customer customer = (Customer)aggregate;
             CustomerInformationChanged changed = new(

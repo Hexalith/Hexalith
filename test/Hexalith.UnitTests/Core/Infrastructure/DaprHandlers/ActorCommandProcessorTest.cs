@@ -24,7 +24,6 @@ using Dapr.Actors.Client;
 
 using FluentAssertions;
 
-using Hexalith.Application.Commands;
 using Hexalith.Application.Metadatas;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.UnitTests.Core.Application.Commands;
@@ -77,7 +76,7 @@ public class ActorCommandProcessorTest
 /// Implements the <see cref="ActorsCommandProcessor" />.
 /// </summary>
 /// <seealso cref="ActorsCommandProcessor" />
-public class DummyActorsCommandProcessor : ActorsCommandProcessor
+public class DummyActorsCommandProcessor : AggregateActorCommandProcessor
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="DummyActorsCommandProcessor"/> class.
@@ -88,18 +87,4 @@ public class DummyActorsCommandProcessor : ActorsCommandProcessor
         : base(actorProxy, logger)
     {
     }
-
-    /// <summary>
-    /// Gets the name of the actor method.
-    /// </summary>
-    /// <param name="command">The command.</param>
-    /// <returns>string.</returns>
-    protected override string GetActorMethodName(ICommand command) => "TotoAsync";
-
-    /// <summary>
-    /// Gets the name of the actor.
-    /// </summary>
-    /// <param name="command">The command.</param>
-    /// <returns>string.</returns>
-    protected override string GetActorName(ICommand command) => "Titi";
 }

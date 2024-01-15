@@ -125,7 +125,9 @@ public record Customer(
             },
             IntercompanyDropshipDeliveryForCustomerSelected => this with { IntercompanyDropship = true },
             IntercompanyDropshipDeliveryForCustomerDeselected => this with { IntercompanyDropship = false },
-            CustomerRegistered => throw new InvalidAggregateEventException(this, domainEvent, true),
+            CustomerRegistered registered => IsInitialized()
+                ? throw new InvalidAggregateEventException(this, domainEvent, true)
+                : new Customer(registered),
             _ => throw new InvalidAggregateEventException(this, domainEvent, false),
         };
     }

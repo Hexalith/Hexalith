@@ -48,9 +48,9 @@ public static class ExternalSystemsWebApiHelpers
         services.TryAddSingleton<IAggregateFactory, AggregateFactory>();
         services.TryAddSingleton<IAggregateProvider, AggregateProvider<ExternalSystemReference>>();
         services.TryAddSingleton<ICommandProcessor>(service =>
-            new ConventionNamingCommandProcessor(
+            new AggregateActorCommandProcessor(
                 ActorProxy.DefaultProxyFactory,
-                service.GetRequiredService<ILogger<ConventionNamingCommandProcessor>>()));
+                service.GetRequiredService<ILogger<AggregateActorCommandProcessor>>()));
 
         _ = services
          .AddControllers()

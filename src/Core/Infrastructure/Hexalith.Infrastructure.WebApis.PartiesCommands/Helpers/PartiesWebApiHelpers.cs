@@ -45,9 +45,9 @@ public static class PartiesWebApiHelpers
     {
         services
             .AddPartiesCommandHandlers()
-            .TryAddSingleton<ICommandProcessor>((s) => new ConventionNamingCommandProcessor(
+            .TryAddSingleton<ICommandProcessor>((s) => new AggregateActorCommandProcessor(
                 ActorProxy.DefaultProxyFactory,
-                s.GetRequiredService<ILogger<ConventionNamingCommandProcessor>>()));
+                s.GetRequiredService<ILogger<AggregateActorCommandProcessor>>()));
 
         services.TryAddSingleton<IAggregateFactory, AggregateFactory>();
         services.TryAddSingleton<IAggregateProvider, AggregateProvider<Customer>>();

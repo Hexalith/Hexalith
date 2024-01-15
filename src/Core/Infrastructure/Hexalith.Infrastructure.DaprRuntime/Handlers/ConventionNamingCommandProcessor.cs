@@ -19,6 +19,7 @@ using Microsoft.Extensions.Logging;
 /// Implements the <see cref="ActorsCommandProcessor" />.
 /// </summary>
 /// <seealso cref="ActorsCommandProcessor" />
+[Obsolete("Use AggregateActorCommandProcessor instead.", true)]
 public class ConventionNamingCommandProcessor : ActorsCommandProcessor, IConventionNamingCommandProcessor
 {
     /// <summary>
