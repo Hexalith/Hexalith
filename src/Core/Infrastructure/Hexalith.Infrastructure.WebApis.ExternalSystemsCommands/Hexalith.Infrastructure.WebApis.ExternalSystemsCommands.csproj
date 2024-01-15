@@ -8,7 +8,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\Domain\Hexalith.Domain.Parties\Hexalith.Domain.Parties.csproj" />
+	  <ProjectReference Include="..\..\Application\Hexalith.Application.ExternalSystems\Hexalith.Application.ExternalSystems.csproj" />
 	  <ProjectReference Include="..\Hexalith.Infrastructure.WebApis\Hexalith.Infrastructure.WebApis.csproj" />
 	</ItemGroup>
 </Project>
