@@ -70,7 +70,7 @@ public static class TypeMapper<TMapped>
     public static Dictionary<string, TMapped> GetMap()
 #pragma warning restore CA1000 // Do not declare static members on generic types
     {
-        Dictionary<string, TMapped> map =[];
+        Dictionary<string, TMapped> map = [];
         foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies().Where(a => !a.IsDynamic))
         {
             try

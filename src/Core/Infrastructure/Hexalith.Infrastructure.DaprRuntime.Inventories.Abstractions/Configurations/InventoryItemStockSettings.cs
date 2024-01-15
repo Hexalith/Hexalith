@@ -17,7 +17,6 @@
 namespace Hexalith.Infrastructure.DaprRuntime.Inventories.Configurations;
 
 using Hexalith.Application.Configurations;
-using Hexalith.Application.Tasks;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Extensions.Configuration;
 

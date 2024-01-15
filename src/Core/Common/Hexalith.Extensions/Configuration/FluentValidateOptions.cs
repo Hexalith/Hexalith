@@ -88,7 +88,7 @@ public partial class FluentValidateOptions<TOptions>
             return ValidateOptionsResult.Success;
         }
 
-        List<string> errors =[];
+        List<string> errors = [];
         string typeName = options.GetType().Name;
         foreach (FluentValidation.Results.ValidationFailure? result in results.Errors)
         {
