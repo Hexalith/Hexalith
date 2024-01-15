@@ -13,4 +13,10 @@
 		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime.Sales\Hexalith.Infrastructure.DaprRuntime.Sales.csproj" />
 		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.WebApis.SalesCommands\Hexalith.Infrastructure.WebApis.SalesCommands.csproj" />
 	</ItemGroup>
+	<ItemGroup>
+	  <None Update="README.md">
+	    <PackagePath>\</PackagePath>
+	    <Pack>true</Pack>
+	  </None>
+	</ItemGroup>
 </Project>

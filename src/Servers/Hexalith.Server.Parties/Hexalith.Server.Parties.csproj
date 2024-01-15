@@ -12,4 +12,10 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.WebApis.PartiesCommands\Hexalith.Infrastructure.WebApis.PartiesCommands.csproj" />
 	</ItemGroup>
+	<ItemGroup>
+	  <None Update="README.md">
+	    <PackagePath>\</PackagePath>
+	    <Pack>true</Pack>
+	  </None>
+	</ItemGroup>
 </Project>
