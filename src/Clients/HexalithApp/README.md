@@ -1,1 +1,0 @@
-# Hexalith Client Application

@@ -1,23 +1,28 @@
 ﻿@inherits LayoutComponentBase
-
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
-
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
-
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
-</div>
-
+<FluentLayout>
+	<FluentHeader>
+		Hexalith
+	</FluentHeader>
+	<FluentStack Class="main" Orientation="Orientation.Horizontal" Width="100%">
+		<NavMenu />
+		<FluentBodyContent>
+			<div class="content">
+				@Body
+			</div>
+		</FluentBodyContent>
+	</FluentStack>
+	<FluentFooter>
+		<div class="link1">
+			<a href="https://github.com/Hexalith/Hexalith" target="_blank">Hexalith Github</a>
+		</div>
+	</FluentFooter>
+</FluentLayout>
+<FluentToastProvider />
+<FluentDialogProvider />
+<FluentTooltipProvider />
+<FluentMessageBarProvider />
 <div id="blazor-error-ui">
-    An unhandled error has occurred.
-    <a href="" class="reload">Reload</a>
-    <a class="dismiss">🗙</a>
+	An unhandled error has occurred.
+	<a href="" class="reload">Reload</a>
+	<a class="dismiss">🗙</a>
 </div>

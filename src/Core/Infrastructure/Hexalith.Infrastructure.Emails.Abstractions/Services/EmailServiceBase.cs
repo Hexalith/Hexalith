@@ -65,7 +65,7 @@ public abstract class EmailServiceBase : IEmailService
     {
         if (string.IsNullOrWhiteSpace(DefaultFromEmail))
         {
-            throw new InvalidOperationException($"Default sender email is not defined. Set application settings : {EmailServerSettings.ConfigurationName}.{new EmailServerSettings().FromEmail}.");
+            throw new InvalidOperationException($"Default sender email is not defined. Set application settings : {EmailServerSettings.ConfigurationName()}.{new EmailServerSettings().FromEmail}.");
         }
 
         await SendAsync(DefaultFromEmail, DefaultFromName ?? DefaultFromEmail, toEmail, subject, plainTextContent, htmlContent, cancellationToken)
