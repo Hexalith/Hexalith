@@ -9,17 +9,22 @@
             <FluentNavLink Href="/" Match="NavLinkMatch.All" Icon="@(new Icons.Regular.Size20.Home())" IconColor="Color.Accent">Home</FluentNavLink>
 			<AuthorizeView>
 				<Authorized>
-					<FluentNavLink Href="Customer" Icon="@(new Icons.Regular.Size20.Person())" IconColor="Color.Accent">Customer</FluentNavLink>
-					<FluentNavLink Href="Account/Manage">@context.User.Identity?.Name</FluentNavLink>
+					<FluentNavGroup Title="Customers" Icon="@(new Icons.Regular.Size20.LayerDiagonalPerson())" IconColor="Color.Accent">
+						<FluentNavLink Href="Customer/Search" Icon="@(new Icons.Regular.Size20.PersonSearch())" IconColor="Color.Accent">Search</FluentNavLink>
+						<FluentNavLink Href="Customer/Register" Icon="@(new Icons.Regular.Size20.PersonAdd())" IconColor="Color.Accent">Register</FluentNavLink>
+						<FluentNavLink Href="Customer/RecentlyRegistered" Icon="@(new Icons.Regular.Size20.DocumentPerson())" IconColor="Color.Accent">Recently registered</FluentNavLink>
+						<FluentNavLink Href="Customer/RecentlyChanged" Icon="@(new Icons.Regular.Size20.NotepadPerson())" IconColor="Color.Accent">Recently changed</FluentNavLink>
+					</FluentNavGroup>
+					<FluentNavLink Href="Account/Manage" Icon="@(new Icons.Regular.Size20.PersonAccounts())" IconColor="Color.Accent">@context.User.Identity?.Name</FluentNavLink>
 					<form action="Account/Logout" method="post">
 						<AntiforgeryToken />
 						<input type="hidden" name="ReturnUrl" value="@currentUrl" />
-						<FluentButton Type="ButtonType.Submit" Style="width: 100%;">Logout</FluentButton>
+						<FluentButton Type="ButtonType.Submit" IconStart="@(new Icons.Regular.Size20.PersonArrowBack())" IconColor="Color.Accent">Logout</FluentButton>
 					</form>
 				</Authorized>
 				<NotAuthorized>
-						<FluentNavLink Href="Account/Register" Icon="@(new Icons.Regular.Size20.Person())">Register</FluentNavLink>
-						<FluentNavLink Href="Account/Login" Icon="@(new Icons.Regular.Size20.Person())">Login</FluentNavLink>
+						<FluentNavLink Href="Account/Register" Icon="@(new Icons.Regular.Size20.PersonAdd())" IconColor="Color.Accent">Register</FluentNavLink>
+						<FluentNavLink Href="Account/Login" Icon="@(new Icons.Regular.Size20.PersonKey())" IconColor="Color.Accent">Login</FluentNavLink>
 				</NotAuthorized>
 			</AuthorizeView>
 		</FluentNavMenu>
