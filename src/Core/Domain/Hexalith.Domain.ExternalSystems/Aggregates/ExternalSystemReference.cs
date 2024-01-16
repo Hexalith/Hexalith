@@ -86,9 +86,6 @@ public record ExternalSystemReference(
         };
     }
 
-    /// <inheritdoc/>
-    protected override string DefaultAggregateId() => GetAggregateId(PartitionId, CompanyId, SystemId, ReferenceAggregateName, ExternalId);
-
     /// <summary>
     /// Gets the aggregate identifier.
     /// </summary>
@@ -123,4 +120,7 @@ public record ExternalSystemReference(
 #pragma warning restore CA1024 // Use properties where appropriate
     /// <inheritdoc/>
     public override bool IsInitialized() => !string.IsNullOrWhiteSpace(ReferenceAggregateName);
+
+    /// <inheritdoc/>
+    protected override string DefaultAggregateId() => GetAggregateId(PartitionId, CompanyId, SystemId, ReferenceAggregateName, ExternalId);
 }

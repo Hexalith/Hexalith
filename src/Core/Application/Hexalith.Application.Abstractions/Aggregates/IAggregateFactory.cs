@@ -13,11 +13,11 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using Hexalith.Domain.Aggregates;
-
 namespace Hexalith.Application.Aggregates;
 
 using System;
+
+using Hexalith.Domain.Aggregates;
 
 /// <summary>
 /// Interface IAggregateFactory.

@@ -15,7 +15,7 @@ using Microsoft.Identity.Client;
 /// <summary>
 /// The Azure Active Directory security context.
 /// </summary>
-public abstract class AzureActiveDirectoryApplicationSecurityContext : IApplicationSecurityContext
+public abstract partial class AzureActiveDirectoryApplicationSecurityContext : IApplicationSecurityContext
 {
     private readonly AzureActiveDirectoryApplicationSecurityContextConfiguration _configuration;
     private readonly ILogger _logger;
@@ -73,13 +73,14 @@ public abstract class AzureActiveDirectoryApplicationSecurityContext : IApplicat
         }
         catch (Exception e)
         {
-            _logger.LogError(
-                e,
-                "Error while acquiring Token.\nScopes={Scope}\nAuthority={Authority}\nClientId={ClientId}",
-                string.Join(';', scopes),
-                Application.Authority,
-                _configuration.ApplicationId);
+            LogAcquireTokenError(e, string.Join(';', scopes), Application.Authority, _configuration.ApplicationId);
             throw;
         }
     }
+
+    [LoggerMessage(
+        EventId = 1,
+        Level = Microsoft.Extensions.Logging.LogLevel.Error,
+        Message = "Error while acquiring Token.\nScopes={Scope}\nAuthority={Authority}\nClientId={ClientId}.")]
+    public partial void LogAcquireTokenError(Exception ex, string scope, string authority, string clientId);
 }

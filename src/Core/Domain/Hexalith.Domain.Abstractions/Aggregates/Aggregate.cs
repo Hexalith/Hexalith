@@ -61,18 +61,6 @@ public abstract record Aggregate : IAggregate
     public abstract bool IsInitialized();
 
     /// <summary>
-    /// Get the aggregate identifier.
-    /// </summary>
-    /// <returns>The identifier.</returns>
-    protected virtual string DefaultAggregateId() => DefaultAggregateName();
-
-    /// <summary>
-    /// Get the aggregate name.
-    /// </summary>
-    /// <returns>The name.</returns>
-    protected virtual string DefaultAggregateName() => GetType().Name;
-
-    /// <summary>
     /// Normalizes the specified identifier.
     /// </summary>
     /// <param name="id">The identifier.</param>
@@ -94,4 +82,16 @@ public abstract record Aggregate : IAggregate
         //    id
         //    .Replace(' ', SpaceSubstitutionCharacter);
     }
+
+    /// <summary>
+    /// Get the aggregate identifier.
+    /// </summary>
+    /// <returns>The identifier.</returns>
+    protected virtual string DefaultAggregateId() => DefaultAggregateName();
+
+    /// <summary>
+    /// Get the aggregate name.
+    /// </summary>
+    /// <returns>The name.</returns>
+    protected virtual string DefaultAggregateName() => GetType().Name;
 }

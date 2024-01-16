@@ -78,6 +78,7 @@ public record ConversationThread(string Owner, DateTimeOffset StartedDate, DateT
 #pragma warning disable CA1024 // Use properties where appropriate
     public static string GetAggregateName() => nameof(ConversationThread);
 #pragma warning restore CA1024 // Use properties where appropriate
+
     /// <inheritdoc/>
     public override bool IsInitialized() => !string.IsNullOrWhiteSpace(Owner);
 }

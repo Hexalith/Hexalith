@@ -132,9 +132,6 @@ public record Customer(
         };
     }
 
-    /// <inheritdoc/>
-    protected override string DefaultAggregateId() => GetAggregateId(PartitionId, CompanyId, OriginId, Id);
-
     /// <summary>
     /// Gets the aggregate identifier.
     /// </summary>
@@ -160,19 +157,6 @@ public record Customer(
 #pragma warning disable CA1024 // Use properties where appropriate
     public static string GetAggregateName() => nameof(Customer);
 #pragma warning restore CA1024 // Use properties where appropriate
-
-    private void CheckEvent(CustomerEvent customerEvent, [CallerArgumentExpression(nameof(customerEvent))] string? paramName = null)
-    {
-        if (AggregateName != customerEvent.AggregateName)
-        {
-            throw new ArgumentException($"{customerEvent.TypeName} can not be applied to aggregate {AggregateName}.", paramName);
-        }
-
-        if (AggregateId != customerEvent.AggregateId)
-        {
-            throw new ArgumentException($"{customerEvent.TypeName} aggregate aggregate Id '{customerEvent.AggregateId}' is invalid. Expected : '{AggregateId}'.", paramName);
-        }
-    }
 
     /// <summary>
     /// Converts to change customer information event.
@@ -218,4 +202,20 @@ public record Customer(
 
     /// <inheritdoc/>
     public override bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);
+
+    /// <inheritdoc/>
+    protected override string DefaultAggregateId() => GetAggregateId(PartitionId, CompanyId, OriginId, Id);
+
+    private void CheckEvent(CustomerEvent customerEvent, [CallerArgumentExpression(nameof(customerEvent))] string? paramName = null)
+    {
+        if (AggregateName != customerEvent.AggregateName)
+        {
+            throw new ArgumentException($"{customerEvent.TypeName} can not be applied to aggregate {AggregateName}.", paramName);
+        }
+
+        if (AggregateId != customerEvent.AggregateId)
+        {
+            throw new ArgumentException($"{customerEvent.TypeName} aggregate aggregate Id '{customerEvent.AggregateId}' is invalid. Expected : '{AggregateId}'.", paramName);
+        }
+    }
 }

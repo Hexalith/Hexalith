@@ -6,8 +6,10 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 01-10-2024
 // ***********************************************************************
-// <copyright file="IAggregateProvider - Copy.cs" company="Fiveforty SAS Paris France">
+// <copyright file="IAggregateProvider.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -17,7 +19,7 @@ namespace Hexalith.Application.Aggregates;
 using Hexalith.Domain.Aggregates;
 
 /// <summary>
-/// Interface IAggregateProvider
+/// Interface IAggregateProvider.
 /// </summary>
 public interface IAggregateProvider
 {

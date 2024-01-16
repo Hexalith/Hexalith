@@ -222,7 +222,9 @@ public class ResiliencyPolicy
         }
 
         long previousPeriod = EvaluatePeriod(retry - 1).Ticks;
-        if (maximumPeriod - previousPeriod <= period) // Check for overflow
+
+        // Check for overflow
+        if (maximumPeriod - previousPeriod <= period)
         {
             period = maximumPeriod;
         }
