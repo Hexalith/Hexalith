@@ -33,7 +33,7 @@ public partial class Dynamics365FinanceIntegrationEventProcessor : DependencyInj
     /// <summary>
     /// The command processor.
     /// </summary>
-    private readonly ICommandProcessor _commandProcessor;
+    private readonly ICommandBus _commandBus;
 
     /// <summary>
     /// The date time service.
@@ -46,24 +46,24 @@ public partial class Dynamics365FinanceIntegrationEventProcessor : DependencyInj
     /// <summary>
     /// Initializes a new instance of the <see cref="Dynamics365FinanceIntegrationEventProcessor"/> class.
     /// </summary>
-    /// <param name="commandProcessor">The command processor.</param>
+    /// <param name="commandBus">The command processor.</param>
     /// <param name="dateTimeService">The date time service.</param>
     /// <param name="serviceProvider">The service provider.</param>
     /// <param name="notificationBus">The notification bus.</param>
     /// <param name="logger">The logger.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
     public Dynamics365FinanceIntegrationEventProcessor(
-        ICommandProcessor commandProcessor,
+        ICommandBus commandBus,
         IDateTimeService dateTimeService,
         IServiceProvider serviceProvider,
         INotificationBus notificationBus,
         ILogger<Dynamics365FinanceIntegrationEventProcessor> logger)
         : base(serviceProvider, logger)
     {
-        ArgumentNullException.ThrowIfNull(commandProcessor);
+        ArgumentNullException.ThrowIfNull(commandBus);
         ArgumentNullException.ThrowIfNull(dateTimeService);
         ArgumentNullException.ThrowIfNull(notificationBus);
-        _commandProcessor = commandProcessor;
+        _commandBus = commandBus;
         _dateTimeService = dateTimeService;
         _notificationBus = notificationBus;
         _logger = logger;
@@ -73,7 +73,7 @@ public partial class Dynamics365FinanceIntegrationEventProcessor : DependencyInj
         EventId = 1,
         Level = LogLevel.Debug,
         Message = "Dispatching event with name '{EventName}', identifier '{AggregateId}' on AggregateName '{AggregateName}'.")]
-    public new partial void DispatchingEvent(string? eventName, string? aggregateName, string? aggregateId);
+    public partial void LogDispatchingEventDebugInformation(string? eventName, string? aggregateName, string? aggregateId);
 
     /// <inheritdoc/>
     public async Task SubmitAsync(Dynamics365BusinessEventBase @event, CancellationToken cancellationToken)
@@ -81,19 +81,19 @@ public partial class Dynamics365FinanceIntegrationEventProcessor : DependencyInj
         ArgumentNullException.ThrowIfNull(@event);
         try
         {
-            DispatchingEvent(@event.BusinessEventId, @event.AggregateName, @event.AggregateId);
+            LogDispatchingEventDebugInformation(@event.BusinessEventId, @event.AggregateName, @event.AggregateId);
             List<BaseCommand> commands = (await ApplyAsync(@event, cancellationToken)
                 .ConfigureAwait(false))
                 .SelectMany(p => p)
                 .Union(@event.ToCommands())
                 .ToList();
-            if (commands.Count != 0)
+            foreach (BaseCommand cmd in commands)
             {
-                await _commandProcessor.SubmitAsync(
-                    commands,
-                    Metadata.CreateNew(commands.First(), @event, _dateTimeService.UtcNow),
-                    cancellationToken).ConfigureAwait(false);
-                return;
+                await _commandBus.PublishAsync(
+                    cmd,
+                    Metadata.CreateNew(cmd, @event, _dateTimeService.UtcNow),
+                    cancellationToken)
+                    .ConfigureAwait(false);
             }
         }
         catch (Exception ex)
