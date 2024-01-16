@@ -9,7 +9,7 @@
             <FluentNavLink Href="/" Match="NavLinkMatch.All" Icon="@(new Icons.Regular.Size20.Home())" IconColor="Color.Accent">Home</FluentNavLink>
 			<AuthorizeView>
 				<Authorized>
-					<FluentNavGroup Title="Customers" Icon="@(new Icons.Regular.Size20.LayerDiagonalPerson())" IconColor="Color.Accent">
+					<FluentNavGroup Expanded="true" Title="Customers" Icon="@(new Icons.Regular.Size20.LayerDiagonalPerson())" IconColor="Color.Accent">
 						<FluentNavLink Href="Customer/Search" Icon="@(new Icons.Regular.Size20.PersonSearch())" IconColor="Color.Accent">Search</FluentNavLink>
 						<FluentNavLink Href="Customer/Register" Icon="@(new Icons.Regular.Size20.PersonAdd())" IconColor="Color.Accent">Register</FluentNavLink>
 						<FluentNavLink Href="Customer/RecentlyRegistered" Icon="@(new Icons.Regular.Size20.DocumentPerson())" IconColor="Color.Accent">Recently registered</FluentNavLink>

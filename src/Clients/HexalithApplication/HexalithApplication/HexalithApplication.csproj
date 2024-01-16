@@ -1,15 +1,36 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<UserSecretsId>hexalith-application</UserSecretsId>
 		<NoDefaultLaunchSettingsFile Condition="'$(ExcludeLaunchSettings)' == 'True'">True</NoDefaultLaunchSettingsFile>
 		<RootNamespace Condition="'$(name)' != '$(name{-VALUE-FORMS-}safe_namespace)'">HexalithApplication</RootNamespace>
 		<AssemblyName Condition="'$(name)' != '$(name{-VALUE-FORMS-}safe_namespace)'">$(AssemblyName.Replace(' ', '_'))</AssemblyName>
+		<ContainerRepository>hexalith-application</ContainerRepository>
+		<UserSecretsId>$(ContainerRepository)</UserSecretsId>
+		<EnableSdkContainerSupport>true</EnableSdkContainerSupport>
+		<IsPackable>false</IsPackable>
+		<PlatformTarget>AnyCPU</PlatformTarget>
 	</PropertyGroup>
 	<ItemGroup>
+		<ContainerEnvironmentVariable Include="Statestore__Name" Value="application-statestore" />
+		<ContainerEnvironmentVariable Include="Organization__DefaultPartitionId" Value="FFY" />
+		<ContainerEnvironmentVariable Include="Organization__DefaultCompanyId" Value="FRRT" />
+		<ContainerEnvironmentVariable Include="Organization__DefaultOriginId" Value="APP" />
+		<ContainerEnvironmentVariable Include="DAPRSIDEKICK_ENABLED" Value="false" />
+		<ContainerEnvironmentVariable Include="DaprCommandBus__Name" Value="command-bus" />
+		<ContainerEnvironmentVariable Include="DaprEventBus__Name" Value="event-bus" />
+		<ContainerEnvironmentVariable Include="DaprNotificationBus__Name" Value="notification-bus" />
+		<ContainerEnvironmentVariable Include="DaprRequestBus__Name" Value="request-bus" />
+		<ContainerEnvironmentVariable Include="DOTNET_URLS" Value="http://+:80" />
+		<ContainerEnvironmentVariable Include="ASPNETCORE_URLS" Value="http://+:80" />
+		<ContainerEnvironmentVariable Include="ASPNETCORE_ENVIRONMENT" Value="Production" />
+		<ContainerEnvironmentVariable Include="ASPNETCORE_DETAILEDERRORS" Value="false" />
+		<ContainerEnvironmentVariable Include="ASPNETCORE_SHUTDOWNTIMEOUTSECONDS" Value="600" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<ProjectReference Include="..\..\..\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime\Hexalith.Infrastructure.DaprRuntime.csproj" />
 		<ProjectReference Include="..\..\..\Core\Infrastructure\Hexalith.Infrastructure.Emails.SendGrid\Hexalith.Infrastructure.Emails.SendGrid.csproj" />
 		<ProjectReference Include="..\HexalithApplication.Client\HexalithApplication.Client.csproj" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="8.0.1" />
@@ -20,5 +41,11 @@
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.1" />
 		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="$(MicrosoftFluentUIVersion)" />
 		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="$(MicrosoftFluentUIVersion)" />
+		<PackageReference Include="Dapr.AspNetCore" Version="$(DaprVersion)" />
 	</ItemGroup>
+	<Target Name="MyTarget" AfterTargets="MinVer" Condition="'$(MinVerBuildMetadata)' != ''">
+		<PropertyGroup>
+			<ContainerImageTag>$(PackageVersion)</ContainerImageTag>
+		</PropertyGroup>
+	</Target>
 </Project>

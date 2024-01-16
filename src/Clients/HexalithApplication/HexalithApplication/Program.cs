@@ -4,6 +4,8 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
+using Hexalith.Application.Commands;
+using Hexalith.Infrastructure.DaprRuntime.Buses;
 using Hexalith.Infrastructure.Emails.SendGrid.Helpers;
 
 using HexalithApplication.Components;
@@ -33,6 +35,8 @@ builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddScoped<IdentityUserAccessor>();
 builder.Services.AddScoped<IdentityRedirectManager>();
 builder.Services.AddScoped<AuthenticationStateProvider, PersistingRevalidatingAuthenticationStateProvider>();
+builder.Services.AddSingleton<ICommandBus, DaprCommandBus>();
+builder.Services.AddDaprClient();
 
 builder.Services.AddAuthentication(options =>
     {

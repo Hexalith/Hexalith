@@ -157,6 +157,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Domain.Organizations", "src\Core\Domain\Hexalith.Domain.Organizations\Hexalith.Domain.Organizations.csproj", "{71564D94-DA05-4FCA-985F-E5574EFF2723}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{1ED57683-8967-462C-A901-F121DCAD4DC1}"
+	ProjectSection(SolutionItems) = preProject
+		src\Clients\publish_container.ps1 = src\Clients\publish_container.ps1
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Server.Dynamics365Finance", "src\Servers\Hexalith.Server.Dynamics365Finance\Hexalith.Server.Dynamics365Finance.csproj", "{744C91DA-97BE-4C23-9C86-61A559E52ABE}"
 EndProject

@@ -1,8 +1,42 @@
 ﻿@page "/Customer/Register"
-@rendermode InteractiveServer
+@using Microsoft.Extensions.Options
+@using Hexalith.Domain.ValueObjets
+@inject ICommandBus CommandBus
+@inject IOptions<OrganizationSettings> OrganizationSettings
+
 <PageTitle>Register customer</PageTitle>
 <h3>Register customer</h3>
 
-@code {
+<EditForm Model="@Model" OnValidSubmit="@Submit" FormName="RegisterCustomer">
+    <DataAnnotationsValidator />
+    <FluentValidationSummary />
+    <FluentStack>
+        <FluentTextField @bind-Value="Model!.FirstName" style="width: 100%;" />
+        <FluentTextField @bind-Value="Model!.LastName" style="width: 100%;" />
+        <FluentTextField @bind-Value="Model!.Email" style="width: 100%;" />
+        <FluentTextField @bind-Value="Model!.PhoneNumber" style="width: 100%;" />
+        <FluentTextField @bind-Value="Model!.MobilePhoneNumber" style="width: 100%;" />
+        <FluentTextField @bind-Value="Model!.Address" style="width: 100%;" />
+        <FluentTextField @bind-Value="Model!.ZipCode" style="width: 100%;" />
+        <FluentTextField @bind-Value="Model!.City" style="width: 100%;" />
+        <FluentTextField @bind-Value="Model!.CountryId" style="width: 100%;" />
+        <FluentButton type="submit">Submit</FluentButton>
+    </FluentStack>
+</EditForm>
 
+@code {
+    [SupplyParameterFromForm]
+    private RegisterCustomerModel? Model { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Model ??= new RegisterCustomerModel();
+    }
+    private void Submit()
+    {
+        var originId = OrganizationSettings.Value.DefaultOriginId;
+        var companyId = OrganizationSettings.Value.DefaultCompanyId;
+        var partitionId = OrganizationSettings.Value.DefaultPartitionId;
+        RegisterCustomer command = Model!.ToCommand(partitionId!, companyId!, originId!);
+    }
 }

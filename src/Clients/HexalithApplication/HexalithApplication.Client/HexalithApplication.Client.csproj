@@ -17,4 +17,8 @@
 		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="$(MicrosoftFluentUIVersion)" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\Core\Application\Hexalith.Application.Parties\Hexalith.Application.Parties.csproj" />
+	</ItemGroup>
+
 </Project>
