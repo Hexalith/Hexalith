@@ -1,20 +1,12 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Infrastructure.WebApis
-// Author           : Jérôme Piquot
-// Created          : 09-12-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 10-16-2023
-// ***********************************************************************
-// <copyright file="HexalithWebApi.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="HexalithWebApi.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
-namespace Hexalith.Infrastructure.WebApis.Helpers;
+using Hexalith.Infrastructure.WebApis.Helpers;
+
+namespace HexalithApplication.Helpers;
 
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
@@ -26,18 +18,12 @@ using FluentValidation;
 using Hexalith.Application.Aggregates;
 using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
-using Hexalith.Application.Events;
-using Hexalith.Application.Notifications;
 using Hexalith.Application.Projection;
-using Hexalith.Application.Requests;
 using Hexalith.Application.States;
 using Hexalith.Application.Tasks;
 using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Common;
-using Hexalith.Extensions.Configuration;
-using Hexalith.Infrastructure.DaprRuntime.Buses;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
-using Hexalith.Infrastructure.DaprRuntime.States;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -49,7 +35,7 @@ using Serilog;
 /// <summary>
 /// Class HexalithWebApi.
 /// </summary>
-public static class HexalithWebApi
+public static class HexalithWebApplicationHelper
 {
     /// <summary>
     /// Creates the Hexalith application.
@@ -60,7 +46,7 @@ public static class HexalithWebApi
     /// <param name="registerActors">Used to register application actors.</param>
     /// <param name="args">The program arguments.</param>
     /// <returns>WebApplicationBuilder.</returns>
-    public static WebApplicationBuilder CreateApplication(
+    public static WebApplicationBuilder CreateWebApplication(
         string applicationName,
         string version,
         bool debugInVisualStudio,
@@ -70,7 +56,7 @@ public static class HexalithWebApi
         Activity.DefaultIdFormat = ActivityIdFormat.W3C;
 
         WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-        Serilog.ILogger startupLogger = builder.AddSerilogLogger();
+        ILogger startupLogger = builder.AddSerilogLogger();
 
         startupLogger.Information("Configuring {AppName} ...", applicationName);
         builder.Services
@@ -95,6 +81,7 @@ public static class HexalithWebApi
             // When debugging, we want to be able to run the application inside Visual Studio to see the technical details.
             _ = builder.Services.AddDaprSidekick(builder.Configuration);
         }
+
         _ = builder.Services.AddValidatorsFromAssemblyContaining<CommandBusSettingsValidator>(ServiceLifetime.Singleton);
         builder.Services.TryAddSingleton<IDateTimeService, DateTimeService>();
         builder.Services.TryAddSingleton<IResiliencyPolicyProvider, ResiliencyPolicyProvider>();
@@ -110,7 +97,7 @@ public static class HexalithWebApi
     /// </summary>
     /// <param name="app">The application.</param>
     /// <returns>IApplicationBuilder.</returns>
-    /// <exception cref="System.ArgumentNullException">null.</exception>
+    /// <exception cref="ArgumentNullException">null.</exception>
     public static IApplicationBuilder UseHexalith([NotNull] this WebApplication app)
     {
         ArgumentNullException.ThrowIfNull(app);

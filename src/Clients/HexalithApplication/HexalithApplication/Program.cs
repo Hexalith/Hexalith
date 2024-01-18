@@ -4,13 +4,15 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-using Hexalith.Application.Commands;
-using Hexalith.Infrastructure.DaprRuntime.Buses;
+using Hexalith.Application.Organizations.Configurations;
+using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.Emails.SendGrid.Helpers;
+using Hexalith.Infrastructure.WebApis.Helpers;
 
 using HexalithApplication.Components;
 using HexalithApplication.Components.Account;
 using HexalithApplication.Data;
+using HexalithApplication.Helpers;
 using HexalithApplication.Services;
 
 using Microsoft.AspNetCore.Components.Authorization;
@@ -19,7 +21,22 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.FluentUI.AspNetCore.Components;
 
-WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+using Serilog;
+
+const string appName = "Hexalith Application";
+
+#if DEBUG
+bool debugInVisualStudio = true;
+#else
+bool debugInVisualStudio = false;
+#endif
+
+WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
+    appName,
+    "v1",
+    debugInVisualStudio,
+    (actors) => { },
+    args);
 
 // Add email services for sending authentication emails.
 builder.Services.AddSendGridEmail(builder.Configuration);
@@ -35,14 +52,14 @@ builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddScoped<IdentityUserAccessor>();
 builder.Services.AddScoped<IdentityRedirectManager>();
 builder.Services.AddScoped<AuthenticationStateProvider, PersistingRevalidatingAuthenticationStateProvider>();
-builder.Services.AddSingleton<ICommandBus, DaprCommandBus>();
-builder.Services.AddDaprClient();
+builder.Services.ConfigureSettings<OrganizationSettings>(builder.Configuration);
 
 builder.Services.AddAuthentication(options =>
     {
         options.DefaultScheme = IdentityConstants.ApplicationScheme;
         options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
     })
+    .AddBearerToken(IdentityConstants.BearerScheme)
     .AddMicrosoftAccount(microsoftOptions =>
     {
         string? clientId = builder.Configuration["Authentication:Microsoft:ClientId"];
@@ -62,6 +79,13 @@ builder.Services.AddAuthentication(options =>
     })
     .AddIdentityCookies();
 
+builder.Services.AddAuthorizationBuilder()
+    .AddPolicy("api", p =>
+    {
+        p.RequireAuthenticatedUser();
+        p.AddAuthenticationSchemes(IdentityConstants.BearerScheme);
+    });
+
 string connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
@@ -70,7 +94,8 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddSignInManager()
-    .AddDefaultTokenProviders();
+    .AddDefaultTokenProviders()
+    .AddApiEndpoints();
 
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityEmailSender>();
 
@@ -82,18 +107,13 @@ if (app.Environment.IsDevelopment())
     app.UseWebAssemblyDebugging();
     _ = app.UseMigrationsEndPoint();
 }
-else
-{
-    _ = app.UseExceptionHandler("/Error", createScopeForErrors: true);
-
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    _ = app.UseHsts();
-}
 
 app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseAntiforgery();
+
+app.UseHexalith();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
@@ -103,4 +123,20 @@ app.MapRazorComponents<App>()
 // Add additional endpoints required by the Identity /Account Razor components.
 app.MapAdditionalIdentityEndpoints();
 
-app.Run();
+app.MapGroup("api/auth").MapIdentityApi<ApplicationUser>();
+
+Log.Logger.Information("Starting {AppName}.", appName);
+
+try
+{
+    await app.RunAsync().ConfigureAwait(false);
+}
+catch (Exception ex)
+{
+    Log.Logger.Fatal(ex, "Error starting {AppName}.", appName);
+    throw;
+}
+finally
+{
+    Log.Logger.Information("{AppName}, is stopped.", appName);
+}

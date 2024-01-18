@@ -60,7 +60,6 @@ internal class RegisterCustomerModel
     /// Gets or sets the first name.
     /// </summary>
     /// <value>The first name.</value>
-    [Required]
     [Display(Description = "Contact person first name", Name = "First Name")]
     public string? FirstName { get; set; }
 
@@ -75,7 +74,6 @@ internal class RegisterCustomerModel
     /// Gets or sets the last name.
     /// </summary>
     /// <value>The last name.</value>
-    [Required]
     [Display(Description = "Contact person last name", Name = "Last Name")]
     public string? LastName { get; set; }
 
@@ -129,12 +127,12 @@ internal class RegisterCustomerModel
                 null,
                 Address,
                 null,
-                ZipCode,
-                City,
+                "75001",
                 null,
                 null,
                 null,
-                CountryId,
+                null,
+                "FRA",
                 null,
                 null),
             Email,
