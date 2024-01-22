@@ -2,7 +2,6 @@
 	<PropertyGroup>
 		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
 		<ContainerRepository>hexalith-sales</ContainerRepository>
-		<ContainerImageName>$(ContainerRepository)</ContainerImageName>
 		<UserSecretsId>$(ContainerRepository)</UserSecretsId>
 		<EnableSdkContainerSupport>true</EnableSdkContainerSupport>
 	</PropertyGroup>
