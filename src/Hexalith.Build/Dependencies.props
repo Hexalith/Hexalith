@@ -11,6 +11,7 @@
 		<AzureResourceManagerKeyVaultVersion>1.2.0</AzureResourceManagerKeyVaultVersion>
 		<AzureResourceManagerLogicVersion>1.1.0</AzureResourceManagerLogicVersion>
 		<AzureSecurityKeyVaultSecretsVersion>4.5.0</AzureSecurityKeyVaultSecretsVersion>
+		<BlazorGeolocationVersion>8.0.0</BlazorGeolocationVersion>
 		<CoconaVersion>2.2.0</CoconaVersion>
 		<CompareNETObjectsVersion>4.83.0</CompareNETObjectsVersion>
 		<CoverletCollectorVersion>6.0.0</CoverletCollectorVersion>
@@ -18,15 +19,17 @@
 		<FluentAssertionsVersion>6.12.0</FluentAssertionsVersion>
 		<FluentValidationVersion>11.9.0</FluentValidationVersion>
 		<GitHubActionsTestLoggerVersion>2.3.3</GitHubActionsTestLoggerVersion>
+		<GoogleApiVersion>5.3.1</GoogleApiVersion>
+		<ISO3166Version>1.0.4</ISO3166Version>
 		<HumanizerVersion>2.14.1</HumanizerVersion>
 		<MailKitVersion>4.3.0</MailKitVersion>
 		<ManDaprSidekickVersion>1.2.2</ManDaprSidekickVersion>
 		<MicrosoftBotBuilderVersion>4.21.2</MicrosoftBotBuilderVersion>
 		<MicrosoftFluentUIVersion>4.3.1</MicrosoftFluentUIVersion>
-		<MicrosoftIdentityClientVersion>4.58.1</MicrosoftIdentityClientVersion>
+		<MicrosoftIdentityClientVersion>4.59.0</MicrosoftIdentityClientVersion>
 		<MicrosoftIdentityWebVersion>2.16.1</MicrosoftIdentityWebVersion>
 		<MicrosoftNETTestSdkVersion>17.8.0</MicrosoftNETTestSdkVersion>
-		<MicrosoftSemanticKernelVersion>1.0.1</MicrosoftSemanticKernelVersion>
+		<MicrosoftSemanticKernelVersion>1.1.0</MicrosoftSemanticKernelVersion>
 		<MicrosoftTeamsFxVersion>2.4.0</MicrosoftTeamsFxVersion>
 		<MicrosoftTypescriptMSBuild>5.3.3</MicrosoftTypescriptMSBuild>
 		<MicrosoftGraphVersion>5.12.*</MicrosoftGraphVersion>
@@ -42,6 +45,6 @@
 		<SwashbuckleAspNetCoreVersion>6.5.*</SwashbuckleAspNetCoreVersion>
 		<XUnitRunnerVisualStudioVersion>2.5.6</XUnitRunnerVisualStudioVersion>
 		<XUnitVersion>2.6.6</XUnitVersion>
-		<DaprVersion>1.11.*</DaprVersion>
+		<DaprVersion>1.12.*</DaprVersion>
 	</PropertyGroup>
 </Project>

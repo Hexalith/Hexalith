@@ -86,5 +86,9 @@ public static class DummyPartiesDomainHelper
             "London City",
             "GBR",
             "Great Britain",
-            "GB");
+            "GB",
+            null,
+            null,
+            null,
+            null);
 }

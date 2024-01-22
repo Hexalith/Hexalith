@@ -131,97 +131,6 @@ public class CustomerHandlersTest
                     options.Excluding(p => p.CustomerAccount));
     }
 
-    /*
-    [Fact]
-    public async Task CheckCanUpdateCustomerInDynamics365Finance()
-    {
-        using HttpClient client = new();
-        IDynamics365FinanceClient<CustomerBase> customerBaseService = new Dynamics365FinanceClientBuilder<CustomerBase>()
-          .WithValueFromConfiguration<CustomerHandlersTest>()
-          .Build(client);
-        IDynamics365FinanceClient<CustomerV3> customerV3Service = new Dynamics365FinanceClientBuilder<CustomerV3>()
-          .WithValueFromConfiguration<CustomerHandlersTest>()
-          .Build(client);
-        IDynamics365FinanceClient<CustomerExternalSystemCode> externalCustomer = new Dynamics365FinanceClientBuilder<CustomerExternalSystemCode>()
-          .WithValueFromConfiguration<CustomerHandlersTest>()
-          .Build(client);
-        IExternalReferenceMapperService mapper = Mock.Of<IExternalReferenceMapperService>();
-        Microsoft.Extensions.Options.IOptions<OrganizationSettings> options = new OptionsBuilder<OrganizationSettings>()
-            .WithValue(new OrganizationSettings { DefaultCompanyId = "frrt", DefaultOriginId = "FinOps", DefaultPartitionId = "TEST" })
-            .Build();
-        ILogger<CustomerInformationChangedHandler> logger = new LoggerBuilder<CustomerInformationChangedHandler>().Build();
-        CustomerInformationChangedHandler handler = new(
-            customerBaseService,
-            customerV3Service,
-            logger);
-        CustomerV3 registered = GetCustomerRegisteredTestEvent().ToDynamics365FinanceCustomer();
-        registered = await customerV3Service.PostAsync(registered, CancellationToken.None);
-        _ = registered.CustomerAccount.Should().NotBeNullOrEmpty();
-        CustomerInformationChanged changed = GetCustomerChangedTestEvent(registered.CustomerAccount);
-
-        IEnumerable<Application.Commands.BaseCommand> commands = await handler.ApplyAsync(changed, CancellationToken.None);
-        _ = commands.Should().BeEmpty();
-
-        IEnumerable<CustomerV3> customers = await customerV3Service.GetAsync(
-            new CustomerByAccountFilter(
-                changed.CompanyId,
-                changed.Id),
-            CancellationToken.None);
-        _ = customers.Should().NotBeNull();
-        _ = customers.Should().HaveCount(1);
-        _ = customers.First().Should().NotBeNull();
-
-        CustomerV3 expectedCustomer = changed.ToDynamics365FinanceCustomer();
-        _ = expectedCustomer
-            .Should()
-            .BeEquivalentTo(
-                expectedCustomer,
-                options =>
-                    options.Excluding(p => p.CustomerAccount));
-    }
-    */
-
-    private static CustomerInformationChanged GetCustomerChangedTestEvent(string customerId)
-    {
-        return new(
-            "TEST",
-            "frrt",
-            "MyOrigin",
-            customerId,
-            "John Doe Modified",
-            PartyType.Person,
-            new Contact(
-                new Person(
-                    "John Doe Modified",
-                    "John Modified",
-                    "Doe Modified",
-                    "Mr2",
-                    new DateTimeOffset(2002, 03, 11, 0, 0, 0, TimeSpan.Zero),
-                    Gender.Male),
-                new PostalAddress(
-                    "Test Modified",
-                    "Test address Modified",
-                    "126",
-                    "Rue de Madrid modified",
-                    "5684M",
-                    "74801",
-                    "Shawnee",
-                    null,
-                    "OK",
-                    null,
-                    "USA",
-                    null,
-                    "US"),
-                "jdoe-modified@mail.com",
-                "+33456859999",
-                "+33682246599"),
-            "Nice",
-            string.Empty,
-            string.Empty,
-            "YEN",
-            DateTimeOffset.Now);
-    }
-
     private static CustomerRegistered GetCustomerRegisteredTestEvent()
     {
         string id = UniqueIdHelper.GenerateUniqueStringId();
@@ -253,7 +162,11 @@ public class CustomerHandlersTest
                     null,
                     "FRA",
                     "France",
-                    "FR"),
+                    "FR",
+                    null,
+                    null,
+                    null,
+                    null),
                 "jdoe@mail.com",
                 "+33256851255",
                 "+33682246555"),

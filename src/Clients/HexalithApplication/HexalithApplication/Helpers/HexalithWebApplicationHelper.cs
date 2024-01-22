@@ -6,10 +6,10 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 01-18-2024
 // ***********************************************************************
-// <copyright file="HexalithWebApi.cs" company="Fiveforty SAS Paris France">
+// <copyright file="HexalithWebApplicationHelper.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
-// Licensed under the MIT license.
-//    See LICENSE file in the project root for full license information.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -59,16 +59,19 @@ using Serilog;
 public static class HexalithWebApplicationHelper
 {
     /// <summary>
-    /// Creates the Hexalith application.
+    /// Creates the web application.
     /// </summary>
     /// <param name="applicationName">Name of the application.</param>
-    /// <param name="version">The API version, for example 'v1'.</param>
-    /// <param name="debugInVisualStudio">If true, runs the application inside Visual Studio to simplify debugging.</param>
-    /// <param name="registerActors">Used to register application actors.</param>
-    /// <param name="args">The program arguments.</param>
+    /// <param name="sessionCookieName">Name of the session cookie.</param>
+    /// <param name="version">The version.</param>
+    /// <param name="debugInVisualStudio">if set to <c>true</c> [debug in visual studio].</param>
+    /// <param name="registerActors">The register actors.</param>
+    /// <param name="args">The arguments.</param>
     /// <returns>WebApplicationBuilder.</returns>
+    /// <exception cref="System.InvalidOperationException">Connection string 'DefaultConnection' not found.</exception>
     public static WebApplicationBuilder CreateWebApplication(
         string applicationName,
+        string sessionCookieName,
         string version,
         bool debugInVisualStudio,
         Action<ActorRegistrationCollection> registerActors,
@@ -101,7 +104,10 @@ public static class HexalithWebApplicationHelper
         // Add email services for sending authentication emails.
         _ = builder.Services
             .AddSendGridEmail(builder.Configuration)
+            .AddLocalization()
+            .AddGeolocationServices()
             .AddSingleton<IEmailSender, EmailSender>();
+
         // Add services to the container.
         _ = builder.Services.AddRazorComponents()
             .AddInteractiveServerComponents()
@@ -142,12 +148,9 @@ public static class HexalithWebApplicationHelper
 
         _ = builder.Services
             .AddAuthorizationBuilder()
-            .AddPolicy("api", p =>
-            {
-                _ = p
+            .AddPolicy("api", p => _ = p
                     .RequireAuthenticatedUser()
-                    .AddAuthenticationSchemes(IdentityConstants.BearerScheme);
-            });
+                    .AddAuthenticationSchemes(IdentityConstants.BearerScheme));
 
         string connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
         _ = builder.Services
@@ -172,6 +175,16 @@ public static class HexalithWebApplicationHelper
         builder.Services.TryAddScoped<ICommandDispatcher, DependencyInjectionCommandDispatcher>();
         builder.Services.TryAddScoped<IProjectionUpdateProcessor, DependencyInjectionProjectionUpdateProcessor>();
 
+        _ = builder.Services
+            .AddDistributedMemoryCache()
+            .AddSession(options =>
+            {
+                options.Cookie.Name = sessionCookieName;
+                options.IdleTimeout = TimeSpan.FromMinutes(3);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
         return builder;
     }
 
@@ -180,7 +193,7 @@ public static class HexalithWebApplicationHelper
     /// </summary>
     /// <param name="app">The application.</param>
     /// <returns>IApplicationBuilder.</returns>
-    /// <exception cref="System.ArgumentNullException">null</exception>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
     public static IApplicationBuilder UseHexalithWebApplication([NotNull] this WebApplication app)
     {
         ArgumentNullException.ThrowIfNull(app);
@@ -200,15 +213,17 @@ public static class HexalithWebApplicationHelper
                 .UseMigrationsEndPoint()
                 .UseWebAssemblyDebugging();
         }
+
         _ = app
             .UseStaticFiles()
-            .UseAuthentication()
-            .UseAuthorization()
             .UseSwagger()
             .UseSwaggerUI()
             .UseRouting()
-            .UseAntiforgery();
-        _ = app.MapActorsHandlers();
+            .UseAuthentication()
+            .UseAuthorization()
+            .UseSession()
+            .UseAntiforgery()
+            .UseRequestLocalization();
 
         _ = app
             .MapRazorComponents<App>()
@@ -219,7 +234,8 @@ public static class HexalithWebApplicationHelper
         // Add additional endpoints required by the Identity /Account Razor components.
         _ = app.MapAdditionalIdentityEndpoints();
 
-        _ = app.MapGroup("api/auth").MapIdentityApi<ApplicationUser>();
+        // _ = app.MapGroup("api/auth").MapIdentityApi<ApplicationUser>();
+        _ = app.MapActorsHandlers();
 
         return app;
     }

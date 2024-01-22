@@ -16,7 +16,6 @@
 
 namespace HexalithApplication.Components.Customer;
 
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 using Hexalith.Application.Parties.Commands;
@@ -27,28 +26,6 @@ using Hexalith.Domain.ValueObjets;
 /// </summary>
 internal class RegisterCustomerModel
 {
-    /// <summary>
-    /// Gets or sets the address.
-    /// </summary>
-    /// <value>The address.</value>
-    [Display(Description = "Address lines", Name = nameof(Address))]
-    public string? Address { get; set; }
-
-    /// <summary>
-    /// Gets or sets the city.
-    /// </summary>
-    /// <value>The city.</value>
-    [DisplayName]
-    public string? City { get; set; }
-
-    /// <summary>
-    /// Gets or sets the country identifier.
-    /// </summary>
-    /// <value>The country identifier.</value>
-    [Display(Description = "Country ISO 3166-A3 three letters code (USA,FRA,GIB,DEU,...)", Name = "Country")]
-    [System.ComponentModel.DataAnnotations.Length(3, 3)]
-    public string? CountryId { get; set; }
-
     /// <summary>
     /// Gets or sets the email address.
     /// </summary>
@@ -99,11 +76,11 @@ internal class RegisterCustomerModel
     public string? PhoneNumber { get; set; }
 
     /// <summary>
-    /// Gets or sets the zip code.
+    /// Gets or sets the address.
     /// </summary>
-    /// <value>The zip code.</value>
-    [Display(Description = "Postal address zip code", Name = "ZipCode")]
-    public string? ZipCode { get; set; }
+    /// <value>The address.</value>
+    [Display(Description = "Customer postal address", Name = "Address")]
+    public PostalAddress PostalAddress { get; set; } = new PostalAddress();
 
     /// <summary>
     /// Converts to command.
@@ -121,20 +98,7 @@ internal class RegisterCustomerModel
         PartyType.Person,
         new Contact(
             new Person(Name, FirstName, LastName, null, null, null),
-            new PostalAddress(
-                Name,
-                Name,
-                null,
-                Address,
-                null,
-                "75001",
-                null,
-                null,
-                null,
-                null,
-                "FRA",
-                null,
-                null),
+            PostalAddress,
             Email,
             PhoneNumber,
             MobilePhoneNumber),

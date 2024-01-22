@@ -145,7 +145,11 @@ public static class CustomerConverterHelper
                     stateName,
                     customer.AddressCountryRegionId,
                     countryName,
-                    customer.AddressCountryRegionISOCode),
+                    customer.AddressCountryRegionISOCode,
+                    null,
+                    null,
+                    null,
+                    null),
                 customer.PrimaryContactEmail,
                 customer.PrimaryContactPhoneIsMobile != "Yes" ? customer.PrimaryContactPhone : phone,
                 customer.PrimaryContactPhoneIsMobile == "Yes" ? customer.PrimaryContactPhone : mobile),
@@ -220,7 +224,11 @@ public static class CustomerConverterHelper
                     stateName,
                     customer.AddressCountryRegionId,
                     countryName,
-                    customer.AddressCountryRegionISOCode),
+                    customer.AddressCountryRegionISOCode,
+                    null,
+                    null,
+                    null,
+                    null),
                 customer.PrimaryContactEmail,
                 customer.PrimaryContactPhoneIsMobile != "Yes" ? customer.PrimaryContactPhone : phone,
                 customer.PrimaryContactPhoneIsMobile == "Yes" ? customer.PrimaryContactPhone : mobile),
@@ -295,7 +303,11 @@ public static class CustomerConverterHelper
                     stateName,
                     customer.AddressCountryRegionId,
                     countryName,
-                    customer.AddressCountryRegionISOCode),
+                    customer.AddressCountryRegionISOCode,
+                    null,
+                    null,
+                    null,
+                    null),
                 customer.PrimaryContactEmail,
                 customer.PrimaryContactPhoneIsMobile != "Yes" ? customer.PrimaryContactPhone : phone,
                 customer.PrimaryContactPhoneIsMobile == "Yes" ? customer.PrimaryContactPhone : mobile),
@@ -444,6 +456,9 @@ public static class CustomerConverterHelper
         {
             Gender.Male => nameof(Gender.Male),
             Gender.Female => nameof(Gender.Female),
+            Gender.NonSpecific => throw new NotImplementedException(),
+            Gender.Unknown => throw new NotImplementedException(),
+            null => throw new NotImplementedException(),
             _ => nameof(Gender.Unknown),
         };
     }
@@ -459,6 +474,7 @@ public static class CustomerConverterHelper
         {
             PartyType.Person => nameof(PartyType.Person),
             PartyType.Organisation => nameof(PartyType.Organisation),
+            PartyType.Other => throw new NotImplementedException(),
             _ => nameof(PartyType.Other),
         };
     }
@@ -556,7 +572,11 @@ public static class CustomerConverterHelper
                     stateName,
                     customer.AddressCountryRegionId,
                     countryName,
-                    customer.AddressCountryRegionISOCode),
+                    customer.AddressCountryRegionISOCode,
+                    null,
+                    null,
+                    null,
+                    null),
                 customer.PrimaryContactEmail,
                 customer.PrimaryContactPhoneIsMobile != "Yes" ? customer.PrimaryContactPhone : phone,
                 customer.PrimaryContactPhoneIsMobile == "Yes" ? customer.PrimaryContactPhone : mobile),
@@ -580,7 +600,7 @@ public static class CustomerConverterHelper
         this Dictionary<string, (object? OldValue, object? NewValue)> changes,
         object? oldValue,
         object? newValue,
-        [CallerArgumentExpression("oldValue")] string? fieldName = null)
+        [CallerArgumentExpression(nameof(oldValue))] string? fieldName = null)
     {
         ArgumentException.ThrowIfNullOrEmpty(fieldName);
         if (oldValue == null && newValue == null)

@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+		<RootNamespace>Hexalith.Infrastructure.GoogleMaps</RootNamespace>
+	</PropertyGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Application\Hexalith.Application.Abstractions\Hexalith.Application.Abstractions.csproj" />
+	  <ProjectReference Include="..\..\Domain\Hexalith.Domain.Parties\Hexalith.Domain.Parties.csproj" />
+	</ItemGroup>
+</Project>

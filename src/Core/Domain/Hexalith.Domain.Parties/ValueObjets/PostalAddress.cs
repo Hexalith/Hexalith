@@ -1,16 +1,24 @@
-﻿// <copyright file="PostalAddress.cs" company="Fiveforty SAS Paris France">
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Domain.Parties
+// Author           : Jérôme Piquot
+// Created          : 09-12-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 12-20-2023
+// ***********************************************************************
+// <copyright file="PostalAddress.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Hexalith.Domain.ValueObjets;
 
 using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
-
-using Hexalith.Extensions;
 
 /// <summary>
 /// Class PostalAddress.
@@ -35,7 +43,10 @@ public class PostalAddress
     /// <param name="countryId">The country identifier.</param>
     /// <param name="countryName">Name of the country.</param>
     /// <param name="countryIso2">The country iso2.</param>
-    [JsonConstructor]
+    /// <param name="latitude">The latitude.</param>
+    /// <param name="longitude">The longitude.</param>
+    /// <param name="placeId">The place identifier.</param>
+    /// <param name="formattedAddress">The formatted address.</param>
     public PostalAddress(
             string? name,
             string? description,
@@ -49,7 +60,11 @@ public class PostalAddress
             string? stateName,
             string? countryId,
             string? countryName,
-            string? countryIso2)
+            string? countryIso2,
+            double? latitude,
+            double? longitude,
+            string? placeId,
+            string? formattedAddress)
     {
         Name = name;
         Description = description;
@@ -64,18 +79,21 @@ public class PostalAddress
         CountryId = countryId;
         CountryName = countryName;
         CountryIso2 = countryIso2;
+        Longitude = longitude;
+        Latitude = latitude;
+        PlaceId = placeId;
+        FormattedAddress = formattedAddress;
     }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="PostalAddress" /> class.
     /// </summary>
-    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public PostalAddress()
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="PostalAddress"/> class.
+    /// Initializes a new instance of the <see cref="PostalAddress" /> class.
     /// </summary>
     /// <param name="address">The address.</param>
     public PostalAddress(PostalAddress address)
@@ -92,7 +110,11 @@ public class PostalAddress
               address.StateName,
               address.CountryId,
               address.CountryName,
-              address.CountryIso2)
+              address.CountryIso2,
+              address.Latitude,
+              address.Longitude,
+              address.PlaceId,
+              address.FormattedAddress)
     {
     }
 
@@ -145,12 +167,44 @@ public class PostalAddress
     public string? Description { get; set; }
 
     /// <summary>
+    /// Gets or sets the formatted address.
+    /// </summary>
+    /// <value>The formatted address.</value>
+    [DataMember(Order = 17)]
+    [JsonPropertyOrder(17)]
+    public string? FormattedAddress { get; set; }
+
+    /// <summary>
+    /// Gets or sets the latitude.
+    /// </summary>
+    /// <value>The latitude.</value>
+    [DataMember(Order = 14)]
+    [JsonPropertyOrder(14)]
+    public double? Latitude { get; set; }
+
+    /// <summary>
+    /// Gets or sets the longitude.
+    /// </summary>
+    /// <value>The longitude.</value>
+    [DataMember(Order = 15)]
+    [JsonPropertyOrder(15)]
+    public double? Longitude { get; set; }
+
+    /// <summary>
     /// Gets or sets the name.
     /// </summary>
     /// <value>The name.</value>
     [DataMember(Order = 1)]
     [JsonPropertyOrder(1)]
     public string? Name { get; set; }
+
+    /// <summary>
+    /// Gets or sets the place identifier.
+    /// </summary>
+    /// <value>The place identifier.</value>
+    [DataMember(Order = 16)]
+    [JsonPropertyOrder(16)]
+    public string? PlaceId { get; set; }
 
     /// <summary>
     /// Gets or sets the post box.
@@ -223,6 +277,9 @@ public class PostalAddress
                 a.StateName == b?.StateName &&
                 a.CountryId == b?.CountryId &&
                 a.CountryName == b?.CountryName &&
-                a.CountryIso2 == b?.CountryIso2);
+                a.CountryIso2 == b?.CountryIso2 &&
+                a.Latitude == b.Latitude &&
+                a.Longitude == b.Longitude &&
+                a.PlaceId == b.PlaceId);
     }
 }

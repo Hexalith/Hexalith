@@ -29,9 +29,11 @@
 		<ContainerEnvironmentVariable Include="ASPNETCORE_SHUTDOWNTIMEOUTSECONDS" Value="600" />
 	</ItemGroup>
 	<ItemGroup>
+		<PackageReference Include="Blazor.Geolocation" Version="$(BlazorGeolocationVersion)" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<ProjectReference Include="..\..\..\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime\Hexalith.Infrastructure.DaprRuntime.csproj" />
 		<ProjectReference Include="..\..\..\Core\Infrastructure\Hexalith.Infrastructure.Emails.SendGrid\Hexalith.Infrastructure.Emails.SendGrid.csproj" />
+		<ProjectReference Include="..\..\..\Core\Infrastructure\Hexalith.Infrastructure.GoogleMaps\Hexalith.Infrastructure.GoogleMaps.csproj" />
 		<ProjectReference Include="..\..\..\Core\Infrastructure\Hexalith.Infrastructure.WebApis\Hexalith.Infrastructure.WebApis.csproj" />
 		<ProjectReference Include="..\HexalithApplication.Client\HexalithApplication.Client.csproj" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="8.0.1" />
@@ -42,7 +44,11 @@
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.1" />
 		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="$(MicrosoftFluentUIVersion)" />
 		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="$(MicrosoftFluentUIVersion)" />
-		<PackageReference Include="Dapr.AspNetCore" Version="$(DaprVersion)" />
+		<PackageReference Include="Dapr.AspNetCore" Version="1.12.0" />
+
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Services\Emails\" />
 	</ItemGroup>
 	<Target Name="MyTarget" AfterTargets="MinVer" Condition="'$(MinVerBuildMetadata)' != ''">
 		<PropertyGroup>

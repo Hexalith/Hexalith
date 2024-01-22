@@ -51,7 +51,11 @@ public class CustomerConverterTest
             "London City",
             "GBR",
             "Great Britain",
-            "GB");
+            "GB",
+            null,
+            null,
+            null,
+            null);
 
     /// <summary>
     /// Defines the test method CustomerInformationChangedCheckAggregateId.
