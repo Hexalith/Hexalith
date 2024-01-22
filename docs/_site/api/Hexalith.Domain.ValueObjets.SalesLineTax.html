@@ -236,8 +236,11 @@ public SalesLineTax(string taxId, string name, decimal amount)</code></pre>
     <pre><code class="lang-csharp hljs">[DataMember(Order = 3)]
 [JsonPropertyOrder(3)]
 public decimal Amount { get;
+
     [Obsolete(&quot;This constructor is only for serialization purposes.&quot;, false)]
+
     set;
+
 }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -273,8 +276,11 @@ public decimal Amount { get;
     <pre><code class="lang-csharp hljs">[DataMember(Order = 2)]
 [JsonPropertyOrder(2)]
 public string Name { get;
+
     [Obsolete(&quot;This constructor is only for serialization purposes.&quot;, false)]
+
     set;
+
 }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -310,8 +316,11 @@ public string Name { get;
     <pre><code class="lang-csharp hljs">[DataMember(Order = 1)]
 [JsonPropertyOrder(1)]
 public string TaxId { get;
+
     [Obsolete(&quot;This constructor is only for serialization purposes.&quot;, false)]
+
     set;
+
 }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>

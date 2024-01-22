@@ -410,6 +410,9 @@ Implements the <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase</span>
       <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.ValidationProblem(System.String, System.String, System.Nullable&lt;System.Int32&gt;, System.String, System.String, Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary)</span>
     </div>
     <div>
+      <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Created()</span>
+    </div>
+    <div>
       <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase.Created(System.String, System.Object)</span>
     </div>
     <div>
@@ -784,6 +787,7 @@ public static void MessageReceivedInformation(ILogger logger, string messageName
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected BadRequestObjectResult MessageValidation&lt;TMessageType&gt;(IMessageState messageState, string aggregateType)
+
     where TMessageType : IMessageState</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>

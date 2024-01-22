@@ -3,7 +3,7 @@
 
 	<!-- Default values to use when building and packaging -->
 	<PropertyGroup>
-		<DNVersion>7</DNVersion>
+		<DNVersion>8</DNVersion>
 		<!-- Framework version used when coding in Visual Studio and when creating templates -->
 		<DefaultTargetFramework>net$(DNVersion).0</DefaultTargetFramework>
 
