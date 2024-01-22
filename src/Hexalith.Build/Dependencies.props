@@ -45,6 +45,6 @@
 		<SwashbuckleAspNetCoreVersion>6.5.*</SwashbuckleAspNetCoreVersion>
 		<XUnitRunnerVisualStudioVersion>2.5.6</XUnitRunnerVisualStudioVersion>
 		<XUnitVersion>2.6.6</XUnitVersion>
-		<DaprVersion>1.12.*</DaprVersion>
+		<DaprVersion>1.11.*</DaprVersion>
 	</PropertyGroup>
 </Project>
