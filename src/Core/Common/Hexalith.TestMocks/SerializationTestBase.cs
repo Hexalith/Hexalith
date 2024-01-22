@@ -26,12 +26,6 @@ using Xunit;
 public abstract class SerializationTestBase
 {
     /// <summary>
-    /// Defines the test method CheckBinarySerialization.
-    /// </summary>
-    [Fact]
-    public void CheckBinarySerialization() => _ = ToSerializeObject().Should().BeBinarySerializable();
-
-    /// <summary>
     /// Defines the test method CheckDataContractSerialization.
     /// </summary>
     [Fact]

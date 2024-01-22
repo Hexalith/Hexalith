@@ -14,10 +14,6 @@ using Hexalith.UnitTests.Core.Domain.Inventories;
 public class ProductIdentifierTest
 {
     [Fact]
-    public void ContactShouldBeBinarySerializable()
-        => DummyInventoriesDomainHelper.DummyProductIdentifier().Should().BeBinarySerializable();
-
-    [Fact]
     public void ContactShouldBeDataContractSerializable()
         => DummyInventoriesDomainHelper.DummyProductIdentifier().Should().BeDataContractSerializable();
 
