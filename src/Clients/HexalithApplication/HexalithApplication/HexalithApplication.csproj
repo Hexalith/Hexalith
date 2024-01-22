@@ -9,10 +9,13 @@
 		<ContainerRepository>hexalith-application</ContainerRepository>
 		<UserSecretsId>$(ContainerRepository)</UserSecretsId>
 		<EnableSdkContainerSupport>true</EnableSdkContainerSupport>
+		<ContainerBaseImage>mcr.microsoft.com/dotnet/aspnet:$(DNVersion).0</ContainerBaseImage>
+		<ContainerRuntimeIdentifier>linux-x64</ContainerRuntimeIdentifier>
 		<IsPackable>false</IsPackable>
 		<PlatformTarget>AnyCPU</PlatformTarget>
 	</PropertyGroup>
 	<ItemGroup>
+		<ContainerPort Include="8080" Type="tcp" />
 		<ContainerEnvironmentVariable Include="Statestore__Name" Value="application-statestore" />
 		<ContainerEnvironmentVariable Include="Organization__DefaultPartitionId" Value="FFY" />
 		<ContainerEnvironmentVariable Include="Organization__DefaultCompanyId" Value="FRRT" />
@@ -22,8 +25,7 @@
 		<ContainerEnvironmentVariable Include="DaprEventBus__Name" Value="event-bus" />
 		<ContainerEnvironmentVariable Include="DaprNotificationBus__Name" Value="notification-bus" />
 		<ContainerEnvironmentVariable Include="DaprRequestBus__Name" Value="request-bus" />
-		<ContainerEnvironmentVariable Include="DOTNET_URLS" Value="http://+:8080" />
-		<ContainerEnvironmentVariable Include="ASPNETCORE_URLS" Value="http://+:8080" />
+		<ContainerEnvironmentVariable Include="ASPNETCORE_HTTP_PORTS" Value="8080" />
 		<ContainerEnvironmentVariable Include="ASPNETCORE_ENVIRONMENT" Value="Production" />
 		<ContainerEnvironmentVariable Include="ASPNETCORE_DETAILEDERRORS" Value="false" />
 		<ContainerEnvironmentVariable Include="ASPNETCORE_SHUTDOWNTIMEOUTSECONDS" Value="600" />

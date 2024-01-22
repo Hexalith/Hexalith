@@ -23,32 +23,49 @@
 else
 {
     <EditForm Enhance Model="@Model" OnValidSubmit="@Submit" FormName="RegisterCustomer">
+        <FluentStack Orientation="Orientation.Vertical" VerticalGap="20">
         <DataAnnotationsValidator />
         <FluentValidationSummary />
-        <FluentStack Orientation="Orientation.Vertical">
-            <FluentTextField @bind-Value="Model!.FirstName" Placeholder="John" Label="First Name" style="width: 100%;">
-                <FluentIcon Value="@(new Icons.Regular.Size16.Person())" Slot="start" Color="Color.Accent" />
-            </FluentTextField>
+        <FluentGrid Spacing="3" Style="background-color: var(--neutral-layer-3);">
+            <FluentGridItem xs="12" sm="6" >
+                <FluentTextField @bind-Value="Model!.FirstName" Placeholder="John" Label="First Name" style="width: 100%;">
+                    <FluentIcon Value="@(new Icons.Regular.Size16.Person())" Slot="start" Color="Color.Accent" />
+                </FluentTextField>
+            </FluentGridItem>
+            <FluentGridItem xs="12" sm="6">
             <FluentTextField @bind-Value="Model!.LastName" Placeholder="Doe" Label="Last Name" style="width: 100%;">
                 <FluentIcon Value="@(new Icons.Regular.Size16.Person())" Slot="start" Color="Color.Accent" />
             </FluentTextField>
+            </FluentGridItem>
+            <FluentGridItem xs="12" sm="4">
             <FluentTextField @bind-Value="Model!.Email" Placeholder="jdoe@contoso.com" Label="Email" style="width: 100%;">
                 <FluentIcon Value="@(new Icons.Regular.Size16.Mail())" Slot="start" Color="Color.Accent" />
             </FluentTextField>
+            </FluentGridItem>
+            <FluentGridItem xs="12" sm="4">
             <FluentTextField @bind-Value="Model!.PhoneNumber" Placeholder="+33 1 22 22 22 22" Label="Phone" style="width: 100%;">
                 <FluentIcon Value="@(new Icons.Regular.Size16.Call())" Slot="start" Color="Color.Accent" />
             </FluentTextField>
+            </FluentGridItem>
+            <FluentGridItem xs="12" sm="4">
             <FluentTextField @bind-Value="Model!.MobilePhoneNumber" Placeholder="+33 6 22 22 22 22" Label="Mobile" style="width: 100%;">
                 <FluentIcon Value="@(new Icons.Regular.Size16.Phone())" Slot="start" Color="Color.Accent" />
             </FluentTextField>
-            <FluentPostalAdressWithGooglePlaces @bind-Value="Model!.PostalAddress" Placeholder="10, place de la tour Eiffel 75001 Paris, France" Label="Address" style="width: 100%;">
+            </FluentGridItem>
+            <FluentGridItem xs="12">
+            <FluentPostalAdressWithGooglePlaces 
+                @bind-Value="Model!.PostalAddress" 
+                Placeholder="10, place de la tour Eiffel 75001 Paris, France" 
+                Label="Address" 
+                style="width: 100%;">
                 <FluentIcon Value="@(new Icons.Regular.Size16.Location())" Slot="start" Color="Color.Accent" />
             </FluentPostalAdressWithGooglePlaces>
-            <FluentButton 
-                Appearance="Appearance.Accent"                 
-                Loading="@_submitting"
-                IconStart="@((_submitting)?new Icons.Regular.Size16.ArrowClockwise():new Icons.Regular.Size16.Save())"
-                Type="ButtonType.Submit">Save</FluentButton>
+            </FluentGridItem>
+        </FluentGrid>
+        <FluentButton Appearance="Appearance.Accent"
+                      Loading="@_submitting"
+                      IconStart="@((_submitting)?new Icons.Regular.Size16.ArrowClockwise():new Icons.Regular.Size16.Save())"
+                      Type="ButtonType.Submit">Save</FluentButton>
         </FluentStack>
     </EditForm>
 }

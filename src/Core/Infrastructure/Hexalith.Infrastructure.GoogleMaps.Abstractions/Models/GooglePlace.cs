@@ -18,8 +18,6 @@ namespace Hexalith.Infrastructure.GoogleMaps.Models;
 
 using System.Runtime.Serialization;
 
-using Hexalith.Domain.ValueObjets;
-
 /// <summary>
 /// Class GooglePlace.
 /// </summary>
@@ -27,13 +25,6 @@ using Hexalith.Domain.ValueObjets;
 [DataContract]
 public class GooglePlace
 {
-    /// <summary>
-    /// Gets or sets the postal address.
-    /// </summary>
-    /// <value>The postal address.</value>
-    [DataMember]
-    public string? Address { get; set; }
-
     /// <summary>
     /// Gets or sets the description.
     /// </summary>

@@ -12,6 +12,7 @@ using GoogleApi;
 using GoogleApi.Entities.Common;
 using GoogleApi.Entities.Common.Enums;
 using GoogleApi.Entities.Maps.Geocoding;
+using GoogleApi.Entities.Maps.Geocoding.Common;
 using GoogleApi.Entities.Maps.Geocoding.Place.Request;
 using GoogleApi.Entities.Places.AutoComplete.Request;
 using GoogleApi.Entities.Places.AutoComplete.Response;
@@ -100,18 +101,15 @@ public class GooglePlaceService : IGooglePlaceService
             throw new InvalidOperationException("The postal address cannot be retrieved from Google services : " + result.ErrorMessage);
         }
 
-        GoogleApi.Entities.Maps.Geocoding.Common.Result? address = result.Results.FirstOrDefault();
-        if (address is null)
-        {
-            throw new InvalidOperationException("The postal address was not found by Google services.");
-        }
+        Result? address = result.Results.FirstOrDefault()
+            ?? throw new InvalidOperationException("The postal address was not found by Google services.");
 
         string? iso2 = address.AddressComponents.FirstOrDefault(p => p.Types.Contains(AddressComponentType.Country))?.ShortName;
         return new Domain.ValueObjets.PostalAddress(
             null,
             null,
             address.AddressComponents.FirstOrDefault(p => p.Types.Contains(AddressComponentType.Street_Number))?.LongName,
-            address.AddressComponents.FirstOrDefault(p => p.Types.Contains(AddressComponentType.Street_Address))?.LongName,
+            address.AddressComponents.FirstOrDefault(p => p.Types.Contains(AddressComponentType.Route))?.LongName,
             address.AddressComponents.FirstOrDefault(p => p.Types.Contains(AddressComponentType.Post_Box))?.LongName,
             address.AddressComponents.FirstOrDefault(p => p.Types.Contains(AddressComponentType.Postal_Code))?.LongName,
             address.AddressComponents.FirstOrDefault(p => p.Types.Contains(AddressComponentType.Locality))?.LongName,
@@ -141,10 +139,18 @@ public class GooglePlaceService : IGooglePlaceService
             double? latitude,
             CancellationToken cancellationToken)
     {
+        if (string.IsNullOrWhiteSpace(search))
+        {
+            return [];
+        }
+
+        Language language = cultureCode.Equals("fr", StringComparison.OrdinalIgnoreCase)
+            ? Language.French
+            : Language.English;
         PlacesAutoCompleteRequest placesRequest = new()
         {
             Input = search,
-            Language = Enum.Parse<Language>(cultureCode, true),
+            Language = language,
             Key = _apiKey,
         };
         if (longitude != null && latitude != null)
@@ -161,7 +167,6 @@ public class GooglePlaceService : IGooglePlaceService
         {
             Id = p.PlaceId,
             Description = p.Description,
-            Address = p.StructuredFormatting.MainText,
         });
     }
 }

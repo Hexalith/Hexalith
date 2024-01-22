@@ -8,42 +8,55 @@
 @inject IGeolocationService _locationService ﻿
 @inject IGooglePlaceService _googlePlaceService
 
-<FluentStack>
-    <FluentLabel Id="@(_childIdPrefix+"-label")">@Label</FluentLabel>
-    <FluentAutocomplete 
-        Id="@(_childIdPrefix+"-auto-complete")"
-        @bind-SelectedOptions="@GooglePlaces"
-        MaximumSelectedOptions="@MaximumSelectedOptions"
-        Placeholder="@Placeholder"
-        OnOptionsSearch="@OnSearchAsync"
-        OptionStyle="min-height: 40px;"
-        OptionText="(item => item.Description)"
-        TOption="GooglePlace"
-        Width="100%">
-    </FluentAutocomplete>
-    <FluentTextField Label="Name" @bind-Value="@PostalAddressName"></FluentTextField>
-    <FluentTextField Label="Description" @bind-Value="@PostalAddressDescription"></FluentTextField>
-    <FluentTextField Label="Zip code" @bind-Value="@Value!.ZipCode"></FluentTextField>
-    <FluentTextField Label="City" @bind-Value="@Value!.City"></FluentTextField>
-    <FluentTextField Label="Country" @bind-Value="@Value!.CountryName"></FluentTextField>
-    
-</FluentStack>
+<FluentGrid>
+    <FluentGridItem xs="12">
+        <FluentLabel Id="@(_childIdPrefix+"-label")">@Label</FluentLabel>
+        <FluentAutocomplete 
+            AutoComplete="on"
+            Id="@(_childIdPrefix+"-auto-complete")"
+            @bind-SelectedOptions="@GooglePlaces"
+            MaximumSelectedOptions="@_maximumSelectedOptions"
+            Placeholder="@Placeholder"
+            OnOptionsSearch="@OnSearchAsync"
+            OptionStyle="min-height: 40px;"
+            OptionText="(item => item.Description)"
+            ValueChanged="@OnValueChangedAsync"
+            Multiple="true"
+            TOption="GooglePlace"
+            Width="100%">
+        </FluentAutocomplete>
+    </FluentGridItem>
+    <FluentGridItem xs="12" sm="4">
+    <FluentTextField Label="Name" @bind-Value="@PostalAddressName" style="width: 100%;"></FluentTextField>
+    </FluentGridItem>
+    <FluentGridItem xs="12" sm="8">
+    <FluentTextField Label="Description" @bind-Value="@PostalAddressDescription" style="width: 100%;"></FluentTextField>
+    </FluentGridItem>
+    <FluentGridItem xs="12" sm="3">
+    <FluentTextField Label="Zip code" @bind-Value="@Value!.ZipCode" style="width: 100%;"></FluentTextField>
+    </FluentGridItem>
+    <FluentGridItem xs="12" sm="5">
+    <FluentTextField Label="City" @bind-Value="@Value!.City" style="width: 100%;"></FluentTextField>
+    </FluentGridItem>
+    <FluentGridItem xs="12" sm="4">
+    <FluentTextField Label="Country" @bind-Value="@Value!.CountryName" style="width: 100%;"></FluentTextField>
+    </FluentGridItem>    
+</FluentGrid>
 
 
 @code {
-    [Parameter]
-    public int MaximumSelectedOptions { get; set; } = 10;
+    public int _maximumSelectedOptions = 1;
 
     private string? _childIdPrefix;
 
     [Parameter]
-    public string? PostalAddressDescription { get; set; }
+    public string? PostalAddressDescription { get; set; } = "Customer primary address";
 
     [Parameter]
     [Required]
-    public string? PostalAddressName { get; set; }
+    public string? PostalAddressName { get; set; } = "Primary";
 
-    IEnumerable<GooglePlace> GooglePlaces { get; set; } = Array.Empty<GooglePlace>();
+    IEnumerable<GooglePlace>? GooglePlaces { get; set; }
 
     double? _latitude;
     double? _longitude;
@@ -65,14 +78,33 @@
     protected virtual async Task OnSearchAsync(OptionsSearchEventArgs<GooglePlace> searchArgs)
     {
         ArgumentNullException.ThrowIfNull(searchArgs);
-        searchArgs.Items = await _googlePlaceService.GetAutocompleteOptionsAsync(
+        if (searchArgs.Text.Length < 3)
+        {
+            return;
+        }
+        searchArgs.Items = (await _googlePlaceService.GetAutocompleteOptionsAsync(
                 searchArgs.Text,
                 CultureInfo.CurrentCulture.TwoLetterISOLanguageName,
                 10,
                 _latitude,
                 _longitude,
                 CancellationToken.None)
-            .ConfigureAwait(false);
+            .ConfigureAwait(false)).ToList();
+    }
+    protected virtual async Task OnValueChangedAsync (string? value)
+    {
+        var placeId = GooglePlaces?.FirstOrDefault()?.Id;
+        if (string.IsNullOrWhiteSpace(placeId))
+        {
+            Value = new PostalAddress();
+            return;
+        }
+        Value = await _googlePlaceService.GetPostalAddressAsync(placeId, CancellationToken.None) ?? new PostalAddress();
+        if (value != null)
+        {
+            Value.Name = PostalAddressName;
+            Value.Description = PostalAddressDescription;
+        }
     }
     void OnLocationFound(GeolocationPosition coordinates)
     {
@@ -86,10 +118,10 @@
     }
     protected override bool TryParseValueFromString(string? value, out PostalAddress? result, out string validationErrorMessage)
     {
-        if (Value is null)
+        if (Value == null || string.IsNullOrWhiteSpace(value))
         {
             result = null;
-            validationErrorMessage = $"The selected value {value} is not a valid postal address.";
+            validationErrorMessage = "Address not found";
             return false;
         }
         result = Value;
