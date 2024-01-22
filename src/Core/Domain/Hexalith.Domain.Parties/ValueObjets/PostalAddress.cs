@@ -278,8 +278,8 @@ public class PostalAddress
                 a.CountryId == b?.CountryId &&
                 a.CountryName == b?.CountryName &&
                 a.CountryIso2 == b?.CountryIso2 &&
-                a.Latitude == b.Latitude &&
-                a.Longitude == b.Longitude &&
-                a.PlaceId == b.PlaceId);
+                a.Latitude == b?.Latitude &&
+                a.Longitude == b?.Longitude &&
+                a.PlaceId == b?.PlaceId);
     }
 }
