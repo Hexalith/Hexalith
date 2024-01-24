@@ -1,45 +1,68 @@
 ﻿@inherits FluentInputBase<PostalAddress>
-@rendermode InteractiveServer
+@rendermode InteractiveAuto
 @using Hexalith.Domain.ValueObjets
 @using Hexalith.Infrastructure.GoogleMaps.Models
 @using Hexalith.Infrastructure.GoogleMaps.Services
 @using System.ComponentModel.DataAnnotations
 @using System.Globalization
+@using System.Text.Json
 @inject IGeolocationService _locationService ﻿
 @inject IGooglePlaceService _googlePlaceService
-
 <FluentGrid>
     <FluentGridItem xs="12">
         <FluentLabel Id="@(_childIdPrefix+"-label")">@Label</FluentLabel>
         <FluentAutocomplete 
+            @bind-SelectedOptions="@_selectedPlaces"
+            ValueChanged="@OnAutocompleteValueChanged"
             AutoComplete="on"
             Id="@(_childIdPrefix+"-auto-complete")"
-            @bind-SelectedOptions="@GooglePlaces"
             MaximumSelectedOptions="@_maximumSelectedOptions"
             Placeholder="@Placeholder"
             OnOptionsSearch="@OnSearchAsync"
             OptionStyle="min-height: 40px;"
-            OptionText="(item => item.Description)"
-            ValueChanged="@OnValueChangedAsync"
-            Multiple="true"
+            OptionText="(item => item.Description)" 
             TOption="GooglePlace"
             Width="100%">
         </FluentAutocomplete>
     </FluentGridItem>
     <FluentGridItem xs="12" sm="4">
-    <FluentTextField Label="Name" @bind-Value="@PostalAddressName" style="width: 100%;"></FluentTextField>
+        <FluentTextField Label="Name" @bind-Value="@PostalAddressName" style="width: 100%;"></FluentTextField>
     </FluentGridItem>
     <FluentGridItem xs="12" sm="8">
-    <FluentTextField Label="Description" @bind-Value="@PostalAddressDescription" style="width: 100%;"></FluentTextField>
+        <FluentTextField Label="Description" @bind-Value="@PostalAddressDescription" style="width: 100%;"></FluentTextField>
     </FluentGridItem>
-    <FluentGridItem xs="12" sm="3">
-    <FluentTextField Label="Zip code" @bind-Value="@Value!.ZipCode" style="width: 100%;"></FluentTextField>
+    <FluentGridItem xs="4">
+        <FluentTextField Label="Number" @bind-Value="@Value!.StreetNumber" style="width: 100%;"></FluentTextField>
     </FluentGridItem>
-    <FluentGridItem xs="12" sm="5">
-    <FluentTextField Label="City" @bind-Value="@Value!.City" style="width: 100%;"></FluentTextField>
+    <FluentGridItem xs="8">
+        <FluentTextField Label="Street" @bind-Value="@Value!.Street" style="width: 100%;"></FluentTextField>
     </FluentGridItem>
     <FluentGridItem xs="12" sm="4">
-    <FluentTextField Label="Country" @bind-Value="@Value!.CountryName" style="width: 100%;"></FluentTextField>
+        <FluentTextField Label="Zip code" @bind-Value="@Value!.ZipCode" style="width: 100%;"></FluentTextField>
+    </FluentGridItem>
+    <FluentGridItem xs="12" sm="8">
+        <FluentTextField Label="City" @bind-Value="@Value!.City" style="width: 100%;"></FluentTextField>
+    </FluentGridItem>
+    <FluentGridItem xs="12" sm="4">
+            <FluentTextField Label="State Id" @bind-Value="@Value!.StateId" style="width: 100%;"></FluentTextField>
+    </FluentGridItem>
+    <FluentGridItem xs="12" sm="8">
+            <FluentTextField Label="State Name" @bind-Value="@Value!.StateName" style="width: 100%;"></FluentTextField>
+    </FluentGridItem>
+    <FluentGridItem xs="6" sm="3">
+            <FluentTextField Label="Iso3" @bind-Value="@Value!.CountryId" style="width: 100%;"></FluentTextField>
+    </FluentGridItem>
+    <FluentGridItem xs="6" sm="3">
+            <FluentTextField Label="Iso2" @bind-Value="@Value!.CountryIso2" style="width: 100%;"></FluentTextField>
+    </FluentGridItem>
+    <FluentGridItem xs="12" sm="6">
+            <FluentTextField Label="Name" @bind-Value="@Value!.CountryName" style="width: 100%;"></FluentTextField>
+    </FluentGridItem>    
+    <FluentGridItem xs="6">
+            <FluentNumberField  Label="Latitude" @bind-Value="@Value!.Latitude" style="width: 100%;"></FluentNumberField>
+    </FluentGridItem>
+    <FluentGridItem xs="6">
+            <FluentNumberField  Label="Longitude" @bind-Value="@Value!.Longitude" style="width: 100%;"></FluentNumberField>
     </FluentGridItem>    
 </FluentGrid>
 
@@ -53,18 +76,54 @@
     public string? PostalAddressDescription { get; set; } = "Customer primary address";
 
     [Parameter]
+    public int MinimumSearchTextLengthForAutocomplete { get; set; } = 5;
+
+    [Parameter]
     [Required]
     public string? PostalAddressName { get; set; } = "Primary";
 
-    IEnumerable<GooglePlace>? GooglePlaces { get; set; }
+    public IEnumerable<GooglePlace> _selectedPlaces = [];
 
     double? _latitude;
     double? _longitude;
 
+    FluentAutocomplete<GooglePlace>? _addressAutocomplete;
+
     protected override async Task OnInitializedAsync()
     {
-        Value = Value ?? new PostalAddress();
         _childIdPrefix = this.Id;
+        await SetPostalAddressAsync();
+    }
+
+    protected override string FormatValueAsString(PostalAddress? value) 
+        => value == null ? string.Empty : JsonSerializer.Serialize(value);
+
+    private async Task SetPostalAddressAsync()
+	{
+        var placeId = _selectedPlaces?.FirstOrDefault()?.Id;
+       if (!string.IsNullOrWhiteSpace(placeId) && Value?.PlaceId != placeId)
+		{
+			Value = await _googlePlaceService.GetPostalAddressAsync(placeId, CancellationToken.None) ?? new PostalAddress();
+			if (Value != null)
+			{
+				Value.Name = PostalAddressName;
+				Value.Description = PostalAddressDescription;
+			}
+            StateHasChanged();
+		}
+ 	}
+
+    private async Task OnAutocompleteValueChanged(string? value)
+	{
+        await SetPostalAddressAsync();
+	}    
+
+    private async Task<IEnumerable<GooglePlace>> GetOptionsAsync(string search, int maxResults)
+    {
+        if (string.IsNullOrWhiteSpace(search) || search.Length < MinimumSearchTextLengthForAutocomplete)
+        {
+            return[];
+        }
         if (_latitude == null || _longitude == null)
         {
             await _locationService
@@ -73,39 +132,29 @@
                     Timeout = 5000,
                 });
         }
-    }
 
-    protected virtual async Task OnSearchAsync(OptionsSearchEventArgs<GooglePlace> searchArgs)
-    {
-        ArgumentNullException.ThrowIfNull(searchArgs);
-        if (searchArgs.Text.Length < 3)
-        {
-            return;
-        }
-        searchArgs.Items = (await _googlePlaceService.GetAutocompleteOptionsAsync(
-                searchArgs.Text,
+        return await _googlePlaceService.GetAutocompleteOptionsAsync(
+                search,
                 CultureInfo.CurrentCulture.TwoLetterISOLanguageName,
-                10,
+                maxResults,
                 _latitude,
                 _longitude,
                 CancellationToken.None)
-            .ConfigureAwait(false)).ToList();
+            .ConfigureAwait(false);
     }
-    protected virtual async Task OnValueChangedAsync (string? value)
+    protected virtual async Task OnSearchAsync(OptionsSearchEventArgs<GooglePlace> searchArgs)
     {
-        var placeId = GooglePlaces?.FirstOrDefault()?.Id;
-        if (string.IsNullOrWhiteSpace(placeId))
-        {
-            Value = new PostalAddress();
-            return;
-        }
-        Value = await _googlePlaceService.GetPostalAddressAsync(placeId, CancellationToken.None) ?? new PostalAddress();
-        if (value != null)
-        {
-            Value.Name = PostalAddressName;
-            Value.Description = PostalAddressDescription;
-        }
+        ArgumentNullException.ThrowIfNull(searchArgs);
+
+        searchArgs.Items = await GetOptionsAsync(searchArgs.Text, 10);
     }
+    
+    protected override async Task OnParametersSetAsync()
+    {
+        await SetPostalAddressAsync();
+    }
+    
+
     void OnLocationFound(GeolocationPosition coordinates)
     {
         _latitude=coordinates.Coords.Latitude;
@@ -113,20 +162,19 @@
     }
     void OnLocationNotFound(GeolocationPositionError error)
     {
-        _latitude =null;
-        _longitude =null;
+        _latitude =0;
+        _longitude =0;
     }
     protected override bool TryParseValueFromString(string? value, out PostalAddress? result, out string validationErrorMessage)
     {
         if (Value == null || string.IsNullOrWhiteSpace(value))
         {
             result = null;
-            validationErrorMessage = "Address not found";
+            validationErrorMessage = string.Empty;
             return false;
         }
-        result = Value;
+        result = JsonSerializer.Deserialize<PostalAddress>(value);
         validationErrorMessage = string.Empty;
         return true;
     }
-
 }

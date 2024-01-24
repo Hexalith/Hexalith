@@ -45,8 +45,8 @@ public class Contact
         string? phone,
         string? mobile)
     {
-        Person = person;
-        PostalAddress = postalAddress;
+        Person = (person == null) ? null : new Person(person);
+        PostalAddress = (postalAddress == null) ? null : new PostalAddress(postalAddress);
         Email = email;
         Phone = phone;
         Mobile = mobile;

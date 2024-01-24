@@ -14,7 +14,7 @@
 
 <PageTitle>Register customer</PageTitle>
 <h3>Register customer</h3>
-@if (string.IsNullOrWhiteSpace(_sessionId))
+@if (Model == null)
 {
     <FluentStack>
         <FluentProgressRing></FluentProgressRing>
@@ -81,26 +81,23 @@ else
         Model ??= new RegisterCustomerModel();
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+
+    private async Task<string> GetSessionIdAsync()
     {
-        if (firstRender)
+        if (string.IsNullOrWhiteSpace(_sessionId))
         {
-            await LoadStateAsync();
-            StateHasChanged();
+            var result = await SessionStore.GetAsync<string>(nameof(_sessionId));
+            if (result.Success && !string.IsNullOrWhiteSpace(result.Value))
+            {
+                _sessionId = result.Value;
+            }
+            else
+            {
+                _sessionId = UniqueIdHelper.GenerateUniqueStringId();
+                await SessionStore.SetAsync(nameof(_sessionId), _sessionId);
+            }
         }
-    }
-    private async Task LoadStateAsync()
-    {
-        var result = await SessionStore.GetAsync<string>(nameof(_sessionId));
-        if (result.Success && !string.IsNullOrWhiteSpace(result.Value))
-        {
-            _sessionId = result.Value;
-        }
-        else
-        {
-            _sessionId = UniqueIdHelper.GenerateUniqueStringId();
-            await SessionStore.SetAsync(nameof(_sessionId), _sessionId);
-        }
+        return _sessionId;
     }
     private async Task Submit()
     {
@@ -119,14 +116,13 @@ else
             messageId,
             command,
             date,
-            new ContextMetadata(messageId, userId, date, null, _sessionId),
+            new ContextMetadata(messageId, userId, date, null, await GetSessionIdAsync()),
             []);
 
         _submitting = true;
         try
         {
             await CommandBus.PublishAsync(new CommandState(date, command, metadata), CancellationToken.None);
-            Model = null;
         }
         finally
         {

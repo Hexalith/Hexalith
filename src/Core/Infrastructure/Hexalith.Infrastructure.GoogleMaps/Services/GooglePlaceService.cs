@@ -21,6 +21,7 @@ using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.GoogleMaps.Abstractions.Configurations;
 using Hexalith.Infrastructure.GoogleMaps.Models;
 
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
 
 /// <summary>
@@ -36,27 +37,30 @@ public class GooglePlaceService : IGooglePlaceService
 {
     private readonly string _apiKey;
     private readonly GooglePlaces.AutoCompleteApi _autoCompleteService;
+    private readonly IMemoryCache _cache;
     private readonly GoogleMaps.Geocode.PlaceGeocodeApi _geocodeService;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="GooglePlaceService"/> class.
     /// </summary>
-    /// <param name="addressValidationService">The address validation service.</param>
+    /// <param name="cache">The cache.</param>
     /// <param name="autoCompleteService">The automatic complete service.</param>
-    /// <param name="queryAutoCompleteService">The query automatic complete service.</param>
     /// <param name="geocodeService">The geocode service.</param>
     /// <param name="settings">The settings.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
     public GooglePlaceService(
+        IMemoryCache cache,
         GooglePlaces.AutoCompleteApi autoCompleteService,
         GoogleMaps.Geocode.PlaceGeocodeApi geocodeService,
         IOptions<GoogleSettings> settings)
     {
+        ArgumentNullException.ThrowIfNull(cache);
         ArgumentNullException.ThrowIfNull(autoCompleteService);
         ArgumentNullException.ThrowIfNull(geocodeService);
         ArgumentNullException.ThrowIfNull(settings);
         SettingsException<GoogleSettings>.ThrowIfNullOrEmpty(settings.Value.ApiKey);
         _apiKey = settings.Value.ApiKey;
+        _cache = cache;
         _autoCompleteService = autoCompleteService;
         _geocodeService = geocodeService;
     }
@@ -69,7 +73,13 @@ public class GooglePlaceService : IGooglePlaceService
         double? latitude,
         double? longitude,
         CancellationToken cancellationToken)
-        => await GetPlacesAutocompleteAsync(search, cultureCode, longitude, latitude, cancellationToken).ConfigureAwait(false);
+        => await GetPlacesAutocompleteAsync(
+                search,
+                cultureCode ?? throw new ArgumentNullException(nameof(cultureCode)),
+                latitude,
+                longitude,
+                cancellationToken)
+            .ConfigureAwait(false);
 
     /// <inheritdoc/>
     public async Task<string> GetAutocompleteTextAsync(
@@ -79,7 +89,14 @@ public class GooglePlaceService : IGooglePlaceService
         double? latitude,
         double? longitude,
         CancellationToken cancellationToken)
-        => (await GetPlacesAutocompleteAsync(search, cultureCode, longitude, latitude, cancellationToken).ConfigureAwait(false)).FirstOrDefault()?.Description ?? "No results";
+        => (await GetPlacesAutocompleteAsync(
+                search,
+                cultureCode ?? throw new ArgumentNullException(nameof(cultureCode)),
+                latitude,
+                longitude,
+                cancellationToken)
+        .ConfigureAwait(false))
+        .FirstOrDefault()?.Description ?? "No results";
 
     /// <summary>
     /// Get postal address as an asynchronous operation.
@@ -92,6 +109,14 @@ public class GooglePlaceService : IGooglePlaceService
     public async Task<Domain.ValueObjets.PostalAddress> GetPostalAddressAsync(string placeId, CancellationToken cancellationToken)
     {
         ArgumentException.ThrowIfNullOrEmpty(placeId);
+        if (_cache.TryGetValue(placeId, out Domain.ValueObjets.PostalAddress? postalAddress))
+        {
+            if (postalAddress != null)
+            {
+                return postalAddress;
+            }
+        }
+
         GeocodeResponse result = await _geocodeService
             .QueryAsync(new PlaceGeocodeRequest { PlaceId = placeId, Key = _apiKey }, cancellationToken)
             .ConfigureAwait(false);
@@ -105,7 +130,7 @@ public class GooglePlaceService : IGooglePlaceService
             ?? throw new InvalidOperationException("The postal address was not found by Google services.");
 
         string? iso2 = address.AddressComponents.FirstOrDefault(p => p.Types.Contains(AddressComponentType.Country))?.ShortName;
-        return new Domain.ValueObjets.PostalAddress(
+        postalAddress = new Domain.ValueObjets.PostalAddress(
             null,
             null,
             address.AddressComponents.FirstOrDefault(p => p.Types.Contains(AddressComponentType.Street_Number))?.LongName,
@@ -123,6 +148,7 @@ public class GooglePlaceService : IGooglePlaceService
             address.Geometry.Location.Longitude,
             address.PlaceId,
             address.FormattedAddress);
+        return _cache.Set(placeId, postalAddress, TimeSpan.FromDays(1));
     }
 
     private static string? ConvertToIso3(string? countryIso2)
@@ -132,16 +158,36 @@ public class GooglePlaceService : IGooglePlaceService
             ?.ThreeLetterCode;
     }
 
+    private static string GetSearchCacheId(string search, string cultureCode, double? latitude, double? longitude)
+    {
+        string id = $"{search}/{cultureCode}";
+        if (latitude != null && latitude.Value != 0 && longitude != null && longitude.Value != 0)
+        {
+            id += $"/{latitude}-{longitude}";
+        }
+
+        return id;
+    }
+
     private async Task<IEnumerable<GooglePlace>> GetPlacesAutocompleteAsync(
-            string search,
-            string cultureCode,
-            double? longitude,
-            double? latitude,
-            CancellationToken cancellationToken)
+                string search,
+                string cultureCode,
+                double? latitude,
+                double? longitude,
+                CancellationToken cancellationToken)
     {
         if (string.IsNullOrWhiteSpace(search))
         {
             return [];
+        }
+
+        string cacheId = GetSearchCacheId(search, cultureCode, latitude, longitude);
+        if (_cache.TryGetValue(cacheId, out IEnumerable<GooglePlace>? places))
+        {
+            if (places != null)
+            {
+                return places;
+            }
         }
 
         Language language = cultureCode.Equals("fr", StringComparison.OrdinalIgnoreCase)
@@ -163,10 +209,11 @@ public class GooglePlaceService : IGooglePlaceService
             .ConfigureAwait(false);
 
         // Initialize the Google Places client
-        return result.Predictions.Select(p => new GooglePlace
+        places = result.Predictions.Select(p => new GooglePlace
         {
             Id = p.PlaceId,
             Description = p.Description,
         });
+        return _cache.Set(cacheId, places, TimeSpan.FromDays(1));
     }
 }

@@ -5,6 +5,7 @@
 	<ItemGroup>
 		<PackageReference Include="GoogleApi" Version="$(GoogleApiVersion)" />
 		<PackageReference Include="ISO3166" Version="1.0.4" />
+		<PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="$(MicrosoftExtensionsPackagesVersion)" />
 	</ItemGroup>
 	<ItemGroup>

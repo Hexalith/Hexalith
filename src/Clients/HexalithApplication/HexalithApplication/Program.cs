@@ -4,8 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-using Hexalith.Infrastructure.GoogleMaps.Helpers;
-
+using HexalithApplication.Client.Helpers;
 using HexalithApplication.Helpers;
 
 using Serilog;
@@ -26,7 +25,7 @@ WebApplicationBuilder builder = HexalithWebApplicationHelper.CreateWebApplicatio
     (actors) => { },
     args);
 
-builder.Services.AddGooglePlacesServices(builder.Configuration);
+builder.Services.AddCommonServices(builder.Configuration);
 
 WebApplication app = builder.Build();
 app.UseHexalithWebApplication();
