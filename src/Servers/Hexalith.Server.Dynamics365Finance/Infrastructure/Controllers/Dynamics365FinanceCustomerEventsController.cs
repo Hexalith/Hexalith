@@ -24,30 +24,35 @@ using Microsoft.Extensions.Options;
 /// Implements the <see cref="Dynamics365FinanceBindingController" />.
 /// </summary>
 /// <seealso cref="Dynamics365FinanceBindingController" />
+/// <remarks>
+/// Initializes a new instance of the <see cref="Dynamics365FinanceCustomerEventsController"/> class.
+/// </remarks>
+/// <param name="metadataValidator">The metadata validator.</param>
+/// <param name="registeredValidator">The registered validator.</param>
+/// <param name="changedValidator">The changed validator.</param>
+/// <param name="eventProcessor">The event processor.</param>
+/// <param name="hostEnvironment">The host environment.</param>
+/// <param name="organizationSettings">The organization settings.</param>
+/// <param name="partiesSettings">The parties settings.</param>
+/// <param name="logger">The logger.</param>
 [ApiController]
-public class Dynamics365FinanceCustomerEventsController : Dynamics365FinanceCustomerBindingController
+public class Dynamics365FinanceCustomerEventsController(
+    IValidator<Dynamics365BusinessEventBase> metadataValidator,
+    IValidator<Dynamics365FinanceCustomerRegistered> registeredValidator,
+    IValidator<Dynamics365FinanceCustomerChanged> changedValidator,
+    IDynamics365FinanceIntegrationEventProcessor eventProcessor,
+    IHostEnvironment hostEnvironment,
+    IOptions<OrganizationSettings> organizationSettings,
+    IOptions<Dynamics365FinancePartiesSettings> partiesSettings,
+    ILogger<Dynamics365FinanceCustomerBindingController> logger)
+    : Dynamics365FinanceCustomerBindingController(
+        metadataValidator,
+        registeredValidator,
+        changedValidator,
+        eventProcessor,
+        hostEnvironment,
+        organizationSettings,
+        partiesSettings,
+        logger)
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Dynamics365FinanceCustomerEventsController"/> class.
-    /// </summary>
-    /// <param name="metadataValidator">The metadata validator.</param>
-    /// <param name="registeredValidator">The registered validator.</param>
-    /// <param name="changedValidator">The changed validator.</param>
-    /// <param name="eventProcessor">The event processor.</param>
-    /// <param name="hostEnvironment">The host environment.</param>
-    /// <param name="organizationSettings">The organization settings.</param>
-    /// <param name="partiesSettings">The parties settings.</param>
-    /// <param name="logger">The logger.</param>
-    public Dynamics365FinanceCustomerEventsController(
-        IValidator<Dynamics365BusinessEventBase> metadataValidator,
-        IValidator<Dynamics365FinanceCustomerRegistered> registeredValidator,
-        IValidator<Dynamics365FinanceCustomerChanged> changedValidator,
-        IDynamics365FinanceIntegrationEventProcessor eventProcessor,
-        IHostEnvironment hostEnvironment,
-        IOptions<OrganizationSettings> organizationSettings,
-        IOptions<Dynamics365FinancePartiesSettings> partiesSettings,
-        ILogger<Dynamics365FinanceCustomerBindingController> logger)
-        : base(metadataValidator, registeredValidator, changedValidator, eventProcessor, hostEnvironment, organizationSettings, partiesSettings, logger)
-    {
-    }
 }

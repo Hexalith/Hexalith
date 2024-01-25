@@ -27,22 +27,23 @@ using Microsoft.AspNetCore.Mvc;
 /// Implements the <see cref="ExternalSystemsIntegrationEventsController" />.
 /// </summary>
 /// <seealso cref="ExternalSystemsIntegrationEventsController" />
+/// <remarks>
+/// Initializes a new instance of the <see cref="ExternalSystemReferenceController" /> class.
+/// </remarks>
+/// <param name="eventProcessor">The event processor.</param>
+/// <param name="projectionProcessor">The projection processor.</param>
+/// <param name="hostEnvironment">The host environment.</param>
+/// <param name="logger">The logger.</param>
 [ApiController]
-public class ExternalSystemReferenceController : ExternalSystemsIntegrationEventsController
+public class ExternalSystemReferenceController(
+    IIntegrationEventProcessor eventProcessor,
+    IProjectionUpdateProcessor projectionProcessor,
+    IHostEnvironment hostEnvironment,
+    ILogger<ExternalSystemReferenceController> logger)
+    : ExternalSystemsIntegrationEventsController(
+        eventProcessor,
+        projectionProcessor,
+        hostEnvironment,
+        logger)
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ExternalSystemReferenceController" /> class.
-    /// </summary>
-    /// <param name="eventProcessor">The event processor.</param>
-    /// <param name="projectionProcessor">The projection processor.</param>
-    /// <param name="hostEnvironment">The host environment.</param>
-    /// <param name="logger">The logger.</param>
-    public ExternalSystemReferenceController(
-        IIntegrationEventProcessor eventProcessor,
-        IProjectionUpdateProcessor projectionProcessor,
-        IHostEnvironment hostEnvironment,
-        ILogger<ExternalSystemReferenceController> logger)
-        : base(eventProcessor, projectionProcessor, hostEnvironment, logger)
-    {
-    }
 }
