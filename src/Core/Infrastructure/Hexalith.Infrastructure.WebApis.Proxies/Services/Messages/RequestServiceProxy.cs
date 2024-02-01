@@ -1,0 +1,43 @@
+﻿// <copyright file="RequestServiceProxy.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+
+namespace Hexalith.Infrastructure.WebApis.Proxies.Services.Messages;
+
+using System;
+using System.Net.Http.Json;
+using System.Threading;
+using System.Threading.Tasks;
+
+using Hexalith.Application.Requests;
+using Hexalith.Application.States;
+
+using Microsoft.Extensions.Logging;
+
+/// <summary>
+/// Represents a proxy for the request service.
+/// </summary>
+public class RequestServiceProxy : ServiceApiProxy, IRequestService
+{
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RequestServiceProxy"/> class.
+    /// </summary>
+    /// <param name="httpClient">The HTTP client.</param>
+    /// <param name="logger">The logger.</param>
+    public RequestServiceProxy(HttpClient httpClient, ILogger<RequestServiceProxy> logger)
+        : base(httpClient, logger)
+    {
+    }
+
+    /// <inheritdoc/>
+    public async Task SubmitRequestAsync(RequestState request, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+        HttpResponseMessage response = await HttpClient
+            .PostAsJsonAsync("/Request/Submit", request, cancellationToken)
+            .ConfigureAwait(false);
+        _ = response.EnsureSuccessStatusCode();
+    }
+}

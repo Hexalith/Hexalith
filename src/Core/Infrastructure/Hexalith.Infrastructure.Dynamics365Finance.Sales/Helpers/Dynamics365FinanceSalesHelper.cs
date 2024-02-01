@@ -25,7 +25,11 @@ using Hexalith.Application.Events;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.Dynamics365Finance.Client;
 using Hexalith.Infrastructure.Dynamics365Finance.Helpers;
+using Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Entities;
 using Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesInvoices.Configuration;
+using Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesInvoices.Controller;
+using Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesInvoices.Entities;
+using Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesInvoices.IntegrationEvents;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -83,8 +87,8 @@ public static class Dynamics365FinanceSalesHelper
         ArgumentException.ThrowIfNullOrEmpty(applicationName);
         services
             .AddDynamics365FinanceBusinessEvents(configuration)
-        services.TryAddSingleton<IValidator<Dynamics365FinanceSalesInvoiceRegistered>, Dynamics365FinanceSalesInvoiceRegisteredValidator>();
-        services.TryAddScoped<IIntegrationEventHandler<Dynamics365FinanceSalesInvoiceRegistered>, Dynamics365FinanceSalesInvoiceRegisteredHandler>();
+            .TryAddSingleton<IValidator<SalesInvoicePostedBusinessEvent>, SalesInvoicePostedValidator>();
+        services.TryAddScoped<IIntegrationEventHandler<SalesInvoicePostedBusinessEvent>, SalesInvoicePostedHandler>();
         _ = services.ConfigureSettings<Dynamics365FinanceSalesSettings>(configuration);
         _ = services
             .AddControllers()
@@ -108,7 +112,6 @@ public static class Dynamics365FinanceSalesHelper
         _ = services
             .AddDynamics365FinanceClient(configuration)
             .AddHttpClient<IDynamics365FinanceClient<SalesInvoiceExternalSystemCode>, Dynamics365FinanceClient<SalesInvoiceExternalSystemCode>>();
-        services.TryAddScoped<IDynamics365FinanceSalesInvoiceService, Dynamics365FinanceSalesInvoiceService>();
         _ = services.AddHttpClient<IDynamics365FinanceClient<SalesInvoiceV3>, Dynamics365FinanceClient<SalesInvoiceV3>>();
         _ = services.AddHttpClient<IDynamics365FinanceClient<SalesInvoiceBase>, Dynamics365FinanceClient<SalesInvoiceBase>>();
         _ = services.AddHttpClient<IDynamics365FinanceClient<RetailStore>, Dynamics365FinanceClient<RetailStore>>();

@@ -65,11 +65,6 @@ public class SalesInvoicePostedHandler : IntegrationEventHandler<SalesInvoicePos
     public override Task<IEnumerable<BaseCommand>> ApplyAsync(SalesInvoicePostedBusinessEvent @event, CancellationToken cancellationToken)
         => Task.FromResult<IEnumerable<BaseCommand>>(Array.Empty<BaseCommand>());
 
-    /// <inheritdoc/>
-    public override Task<IEnumerable<BaseCommand>> ApplyAsync(SalesInvoicePostedBusinessEvent @event, CancellationToken cancellationToken)
-    {
-    }
-
     /*
         ArgumentNullException.ThrowIfNull(@event);
         ArgumentNullException.ThrowIfNull(@event.Contact);

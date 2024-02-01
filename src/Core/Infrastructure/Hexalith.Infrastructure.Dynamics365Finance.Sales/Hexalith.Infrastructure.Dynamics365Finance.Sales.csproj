@@ -6,7 +6,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\Application\Hexalith.Application.Sales\Hexalith.Application.Sales.csproj" />
 		<ProjectReference Include="..\..\Application\Hexalith.Application.ExternalSystems\Hexalith.Application.ExternalSystems.csproj" />
-		<ProjectReference Include="..\Hexalith.Infrastructure.Dynamics365Finance\Hexalith.Infrastructure.Dynamics365Finance.csproj" />
+		<ProjectReference Include="..\Hexalith.Infrastructure.Dynamics365Finance.Retail\Hexalith.Infrastructure.Dynamics365Finance.Retail.csproj" />
 	</ItemGroup>
 
 </Project>

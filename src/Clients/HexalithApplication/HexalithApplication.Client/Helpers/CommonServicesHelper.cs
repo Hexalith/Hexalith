@@ -8,8 +8,17 @@ namespace HexalithApplication.Client.Helpers;
 
 using Hexalith.Infrastructure.GoogleMaps.Helpers;
 
+/// <summary>
+/// Helper class for adding common services to the service collection.
+/// </summary>
 public static class CommonServicesHelper
 {
+    /// <summary>
+    /// Adds common services to the service collection.
+    /// </summary>
+    /// <param name="services">The service collection.</param>
+    /// <param name="configuration">The configuration.</param>
+    /// <returns>The updated service collection.</returns>
     public static IServiceCollection AddCommonServices(this IServiceCollection services, IConfiguration configuration)
     {
         return services

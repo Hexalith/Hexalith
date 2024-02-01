@@ -1,0 +1,6 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+		<RootNamespace>Hexalith.Infrastructure.WebApis</RootNamespace>
+	</PropertyGroup>
+</Project>
