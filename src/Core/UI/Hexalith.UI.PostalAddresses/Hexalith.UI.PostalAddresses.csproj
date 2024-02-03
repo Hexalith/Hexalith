@@ -9,4 +9,7 @@
 	<ItemGroup>
 	  <Folder Include="wwwroot\" />
 	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="Blazor.Geolocation.WebAssembly" Version="8.0.0" />
+	</ItemGroup>
 </Project>

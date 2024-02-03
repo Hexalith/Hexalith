@@ -16,7 +16,7 @@ bool debugInVisualStudio = true;
 bool debugInVisualStudio = false;
 #endif
 
-WebApplicationBuilder builder = ServerSideClientAppHelper.CreateWebApplication(
+WebApplicationBuilder builder = ServerSideClientAppHelper.CreateServerSideClientApplication(
     appName,
     $".{nameof(Hexalith)}.Application",
     "v1",

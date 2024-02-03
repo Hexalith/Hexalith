@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 01-18-2024
 // ***********************************************************************
-// <copyright file="HexalithWebApplicationHelper.cs" company="Fiveforty SAS Paris France">
+// <copyright file="ServerSideClientAppHelper.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -31,7 +31,6 @@ using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Common;
 using Hexalith.Infrastructure.ClientApp.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
-using Hexalith.Infrastructure.Emails.SendGrid.Helpers;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -49,7 +48,7 @@ using Microsoft.FluentUI.AspNetCore.Components;
 /// </summary>
 public static class ServerSideClientAppHelper
 {
-    public static IServiceCollection AddHexalithServerSideClientApp(IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddHexalithServerSideClientApp(this IServiceCollection services, IConfiguration configuration)
             => services.AddHexalithClientApp(configuration);
 
     /// <summary>
@@ -63,7 +62,7 @@ public static class ServerSideClientAppHelper
     /// <param name="args">The arguments.</param>
     /// <returns>WebApplicationBuilder.</returns>
     /// <exception cref="InvalidOperationException">Connection string 'DefaultConnection' not found.</exception>
-    public static WebApplicationBuilder CreateWebApplication(
+    public static WebApplicationBuilder CreateServerSideClientApplication(
         string applicationName,
         string sessionCookieName,
         string version,
@@ -76,7 +75,7 @@ public static class ServerSideClientAppHelper
         WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
         ILogger startupLogger = builder.AddSerilogLogger();
 
-        startupLogger.Information("Configuring {AppName} ...", applicationName);
+        startupLogger.LogInformation("Configuring {AppName} ...", applicationName);
         builder.Services
             .AddEndpointsApiExplorer()
             .AddSwaggerGen(c => c.SwaggerDoc("v1", new() { Title = applicationName, Version = version, }))
@@ -96,12 +95,8 @@ public static class ServerSideClientAppHelper
 
         // Add email services for sending authentication emails.
         _ = builder.Services
-            .AddSendGridEmail(builder.Configuration)
-            .AddLocalization()
-            .AddHexalithServerSideClientApp();
-
-        // Add services to the container.
-        _ = builder.Services.AddRazorComponents()
+            .AddHexalithServerSideClientApp(builder.Configuration)
+            .AddRazorComponents()
             .AddInteractiveServerComponents()
             .AddInteractiveWebAssemblyComponents();
 
@@ -161,7 +156,6 @@ public static class ServerSideClientAppHelper
         }
 
         _ = builder.Services.AddValidatorsFromAssemblyContaining<CommandBusSettingsValidator>(ServiceLifetime.Singleton);
-        builder.Services.TryAddSingleton<IDateTimeService, DateTimeService>();
         builder.Services.TryAddSingleton<IResiliencyPolicyProvider, ResiliencyPolicyProvider>();
         builder.Services.TryAddScoped<IAggregateStateManager, AggregateStateManager>();
         builder.Services.TryAddScoped<ICommandDispatcher, DependencyInjectionCommandDispatcher>();

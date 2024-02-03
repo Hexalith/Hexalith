@@ -6,8 +6,16 @@
 
 using HexalithApplication.Client;
 
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+
 WebAssemblyHostBuilder builder = WebAssemblyHostBuilder.CreateDefault(args);
 
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .Enrich.WithProperty("InstanceId", Guid.NewGuid().ToString("n"))
+    .WriteTo.BrowserHttp(endpointUrl: $"{builder.HostEnvironment.BaseAddress}ingest", controlLevelSwitch: levelSwitch)
+    .CreateLogger();
+builder.services.AddLogging(loggingBuilder => loggingBuilder.AddSerilog(dispose: true));
 builder.Services.AddAuthorizationCore();
 builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddSingleton<AuthenticationStateProvider, PersistentAuthenticationStateProvider>();

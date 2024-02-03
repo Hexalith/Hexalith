@@ -31,7 +31,9 @@
 		<ContainerEnvironmentVariable Include="ASPNETCORE_SHUTDOWNTIMEOUTSECONDS" Value="600" />
 	</ItemGroup>
 	<ItemGroup>
+		<ProjectReference Include="..\..\..\Core\Application\Hexalith.Application.Parties\Hexalith.Application.Parties.csproj" />
 		<ProjectReference Include="..\..\..\Core\Infrastructure\Hexalith.Infrastructure.ClientAppOnServer\Hexalith.Infrastructure.ClientAppOnServer.csproj" />
+		<ProjectReference Include="..\..\..\Core\UI\Hexalith.UI.Parties\Hexalith.UI.Parties.csproj" />
 		<ProjectReference Include="..\HexalithApplication.Client\HexalithApplication.Client.csproj" />
 	</ItemGroup>
 	<Target Name="MyTarget" AfterTargets="MinVer" Condition="'$(MinVerBuildMetadata)' != ''">

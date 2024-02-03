@@ -4,10 +4,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<FrameworkReference Include="Microsoft.AspNetCore.App" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="$(MicrosoftExtensionsPackagesVersion)" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="$(MicrosoftExtensionsPackagesVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Localization" Version="$(MicrosoftExtensionsPackagesVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="$(MicrosoftExtensionsPackagesVersion)" />
 		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="$(MicrosoftFluentUIVersion)" />
 		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="$(MicrosoftFluentUIVersion)" />

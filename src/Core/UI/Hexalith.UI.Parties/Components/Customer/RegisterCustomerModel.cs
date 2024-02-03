@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace HexalithApplication.Components.Customer;
+namespace Hexalith.UI.Parties.Components.Customer;
 
 using System.ComponentModel.DataAnnotations;
 
@@ -46,7 +46,7 @@ internal class RegisterCustomerModel
     /// </summary>
     /// <value>The identifier.</value>
     [Display(Description = "Customer identifier", Name = "Identifier")]
-    public string Id => (FirstName?[..Math.Min(FirstName.Length, 3)] + LastName?[..Math.Min(LastName.Length, 7)]) ?? string.Empty;
+    public string Id => FirstName?[..Math.Min(FirstName.Length, 3)] + LastName?[..Math.Min(LastName.Length, 7)] ?? string.Empty;
 
     /// <summary>
     /// Gets or sets the last name.
@@ -81,7 +81,7 @@ internal class RegisterCustomerModel
     /// </summary>
     /// <value>The address.</value>
     [Display(Description = "Customer postal address", Name = "Address")]
-    public PostalAddress PostalAddress { get; set; } = new PostalAddress();
+    public PostalAddressViewModel PostalAddress { get; set; } = new PostalAddressViewModel();
 
     /// <summary>
     /// Converts to command.
@@ -99,7 +99,7 @@ internal class RegisterCustomerModel
         PartyType.Person,
         new Contact(
             new Person(Name, FirstName, LastName, null, null, null),
-            PostalAddress,
+            PostalAddress.ToPostalAddress(),
             Email,
             PhoneNumber,
             MobilePhoneNumber),

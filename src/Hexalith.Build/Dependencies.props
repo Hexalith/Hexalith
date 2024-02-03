@@ -25,7 +25,7 @@
 		<MailKitVersion>4.3.0</MailKitVersion>
 		<ManDaprSidekickVersion>1.2.2</ManDaprSidekickVersion>
 		<MicrosoftBotBuilderVersion>4.21.2</MicrosoftBotBuilderVersion>
-		<MicrosoftFluentUIVersion>4.3.1</MicrosoftFluentUIVersion>
+		<MicrosoftFluentUIVersion>4.4.0</MicrosoftFluentUIVersion>
 		<MicrosoftIdentityClientVersion>4.59.0</MicrosoftIdentityClientVersion>
 		<MicrosoftIdentityWebVersion>2.16.1</MicrosoftIdentityWebVersion>
 		<MicrosoftNETTestSdkVersion>17.8.0</MicrosoftNETTestSdkVersion>

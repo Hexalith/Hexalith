@@ -13,20 +13,20 @@ using Hexalith.Domain.ValueObjets;
 /// <summary>
 /// Postal address model.
 /// </summary>
-public class PostalAddressModel
+public class PostalAddressViewModel
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="PostalAddressModel"/> class.
+    /// Initializes a new instance of the <see cref="PostalAddressViewModel"/> class.
     /// </summary>
-    public PostalAddressModel()
+    public PostalAddressViewModel()
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="PostalAddressModel"/> class.
+    /// Initializes a new instance of the <see cref="PostalAddressViewModel"/> class.
     /// </summary>
     /// <param name="postalAddress">The postal address.</param>
-    public PostalAddressModel(PostalAddress postalAddress)
+    public PostalAddressViewModel(PostalAddress postalAddress)
     {
         if (postalAddress is null)
         {

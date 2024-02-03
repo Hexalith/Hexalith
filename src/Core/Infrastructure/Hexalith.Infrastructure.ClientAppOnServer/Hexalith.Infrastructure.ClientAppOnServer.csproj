@@ -3,6 +3,8 @@
 		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
 	</PropertyGroup>
 	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+		<PackageReference Include="Serilog.Extensions.Logging" Version="$(SerilogVersion)"/>
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="$(AspNetCorePackagesVersion)" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="$(AspNetCorePackagesVersion)" />
 		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="$(AspNetCorePackagesVersion)" />

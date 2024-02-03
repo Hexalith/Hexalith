@@ -1,10 +1,11 @@
-﻿@inherits FluentInputBase<PostalAddressModel>
+﻿@inherits FluentInputBase<PostalAddressViewModel>
 @rendermode InteractiveAutoRenderMode
 @using Hexalith.Domain.ValueObjets
 @using Hexalith.Application.Geolocations.Services
 @using System.ComponentModel.DataAnnotations
 @using System.Globalization
 @using System.Text.Json
+
 
 @inject IPlaceService _placeService ﻿
 @inject IGeolocationService _locationService
@@ -95,7 +96,7 @@
         await SetPostalAddressAsync();
     }
 
-    protected override string FormatValueAsString(PostalAddressModel? value) 
+    protected override string FormatValueAsString(PostalAddressViewModel? value) 
         => value == null ? string.Empty : JsonSerializer.Serialize(value);
 
     private async Task SetPostalAddressAsync()
@@ -104,7 +105,7 @@
        if (!string.IsNullOrWhiteSpace(placeId) && Value?.PlaceId != placeId)
 		{
 			var value = await _placeService.GetPostalAddressAsync(placeId, CancellationToken.None) ?? new PostalAddress();
-            Value = new PostalAddressModel(value);
+            Value = new PostalAddressViewModel(value);
 			if (value != null)
 			{
 				Value.Name = PostalAddressName;
@@ -127,8 +128,8 @@
         }
         if (_latitude == null || _longitude == null)
         {
-            await _locationService
-                .GetCurrentPositionAsync(OnLocationFound, OnLocationNotFound, new PositionOptions()
+            _locationService
+                .GetCurrentPosition(OnLocationFound, OnLocationNotFound, new PositionOptions()
                 {
                     Timeout = 5000,
                 });
@@ -166,7 +167,7 @@
         _latitude =0;
         _longitude =0;
     }
-    protected override bool TryParseValueFromString(string? value, out PostalAddressModel? result, out string validationErrorMessage)
+    protected override bool TryParseValueFromString(string? value, out PostalAddressViewModel? result, out string validationErrorMessage)
     {
         if (Value == null || string.IsNullOrWhiteSpace(value))
         {
@@ -174,7 +175,7 @@
             validationErrorMessage = string.Empty;
             return false;
         }
-        result = JsonSerializer.Deserialize<PostalAddressModel>(value);
+        result = JsonSerializer.Deserialize<PostalAddressViewModel>(value);
         validationErrorMessage = string.Empty;
         return true;
     }

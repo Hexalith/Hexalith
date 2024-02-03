@@ -7,6 +7,7 @@
 namespace Hexalith.Infrastructure.ClientApp.Helpers;
 
 using Hexalith.Application.Organizations.Helpers;
+using Hexalith.Extensions.Common;
 using Hexalith.Infrastructure.Emails.SendGrid.Helpers;
 using Hexalith.Infrastructure.GoogleMaps.Helpers;
 
@@ -29,9 +30,12 @@ public static class CommonServicesHelper
     {
         return services
             .AddMemoryCache()
+            .AddLocalization()
             .AddOrganizations(configuration)
             .AddGooglePlacesServices(configuration)
             .AddSendGridEmail(configuration)
+            .AddSingleton<TimeProvider>()
+            .AddSingleton<IDateTimeService, DateTimeService>()
             .AddFluentUIComponents();
     }
 }
