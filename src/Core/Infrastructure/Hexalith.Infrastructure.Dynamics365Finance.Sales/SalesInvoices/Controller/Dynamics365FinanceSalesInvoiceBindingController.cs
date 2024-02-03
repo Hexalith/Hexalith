@@ -28,6 +28,7 @@ using Hexalith.Infrastructure.Dynamics365Finance.Controllers;
 using Hexalith.Infrastructure.Dynamics365Finance.Dispatchers;
 using Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesInvoices.Configuration;
 using Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesInvoices.IntegrationEvents;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -54,7 +55,6 @@ public abstract partial class Dynamics365FinanceSalesInvoiceBindingController : 
     /// </summary>
     /// <param name="metadataValidator">The metadata validator.</param>
     /// <param name="registeredValidator">The registered validator.</param>
-    /// <param name="changedValidator">The changed validator.</param>
     /// <param name="eventProcessor">The event processor.</param>
     /// <param name="hostEnvironment">The host environment.</param>
     /// <param name="organizationSettings">The organization settings.</param>

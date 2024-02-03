@@ -31,22 +31,8 @@
 		<ContainerEnvironmentVariable Include="ASPNETCORE_SHUTDOWNTIMEOUTSECONDS" Value="600" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Blazor.Geolocation" Version="$(BlazorGeolocationVersion)" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<ProjectReference Include="..\..\..\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime\Hexalith.Infrastructure.DaprRuntime.csproj" />
-		<ProjectReference Include="..\..\..\Core\Infrastructure\Hexalith.Infrastructure.WebApis\Hexalith.Infrastructure.WebApis.csproj" />
+		<ProjectReference Include="..\..\..\Core\Infrastructure\Hexalith.Infrastructure.ClientAppOnServer\Hexalith.Infrastructure.ClientAppOnServer.csproj" />
 		<ProjectReference Include="..\HexalithApplication.Client\HexalithApplication.Client.csproj" />
-		<PackageReference Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="$(AspNetCorePackagesVersion)" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="$(AspNetCorePackagesVersion)" />
-		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="$(AspNetCorePackagesVersion)" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(AspNetCorePackagesVersion)" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="$(AspNetCorePackagesVersion)" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="$(AspNetCorePackagesVersion)" />
-		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="$(MicrosoftFluentUIVersion)" />
-		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="$(MicrosoftFluentUIVersion)" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Services\Emails\" />
 	</ItemGroup>
 	<Target Name="MyTarget" AfterTargets="MinVer" Condition="'$(MinVerBuildMetadata)' != ''">
 		<PropertyGroup>

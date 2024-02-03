@@ -20,6 +20,7 @@ using System.ComponentModel.DataAnnotations;
 
 using Hexalith.Application.Parties.Commands;
 using Hexalith.Domain.ValueObjets;
+using Hexalith.UI.PostalAddresses.Models;
 
 /// <summary>
 /// Class RegisterCustomerModel.

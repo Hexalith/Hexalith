@@ -40,7 +40,7 @@ public static class GoogleMapServiceHelper
     {
         return services
             .ConfigureSettings<GoogleSettings>(configuration)
-            .AddTransient<IGooglePlaceService, GooglePlaceService>()
+            .AddTransient<IPlaceService, GooglePlaceService>()
             .AddGoogleApiClients();
     }
 }

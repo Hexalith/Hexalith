@@ -17,9 +17,10 @@ using GoogleApi.Entities.Maps.Geocoding.Place.Request;
 using GoogleApi.Entities.Places.AutoComplete.Request;
 using GoogleApi.Entities.Places.AutoComplete.Response;
 
+using Hexalith.Application.Geolocations.Services;
+using Hexalith.Domain.ValueObjets;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.GoogleMaps.Abstractions.Configurations;
-using Hexalith.Infrastructure.GoogleMaps.Models;
 
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
@@ -33,7 +34,7 @@ using Microsoft.Extensions.Options;
 /// Initializes a new instance of the <see cref="GooglePlaceService" /> class.
 /// </remarks>
 /// <param name="jsRuntime">The js runtime.</param>
-public class GooglePlaceService : IGooglePlaceService
+public class GooglePlaceService : IPlaceService
 {
     private readonly string _apiKey;
     private readonly GooglePlaces.AutoCompleteApi _autoCompleteService;
@@ -66,7 +67,7 @@ public class GooglePlaceService : IGooglePlaceService
     }
 
     /// <inheritdoc/>
-    public async Task<IEnumerable<GooglePlace>> GetAutocompleteOptionsAsync(
+    public async Task<IEnumerable<PlaceDescription>> GetAutocompleteOptionsAsync(
         string search,
         string cultureCode,
         int maxResultCount,
@@ -169,7 +170,7 @@ public class GooglePlaceService : IGooglePlaceService
         return id;
     }
 
-    private async Task<IEnumerable<GooglePlace>> GetPlacesAutocompleteAsync(
+    private async Task<IEnumerable<PlaceDescription>> GetPlacesAutocompleteAsync(
                 string search,
                 string cultureCode,
                 double? latitude,
@@ -182,7 +183,7 @@ public class GooglePlaceService : IGooglePlaceService
         }
 
         string cacheId = GetSearchCacheId(search, cultureCode, latitude, longitude);
-        if (_cache.TryGetValue(cacheId, out IEnumerable<GooglePlace>? places))
+        if (_cache.TryGetValue(cacheId, out IEnumerable<PlaceDescription>? places))
         {
             if (places != null)
             {
@@ -209,7 +210,7 @@ public class GooglePlaceService : IGooglePlaceService
             .ConfigureAwait(false);
 
         // Initialize the Google Places client
-        places = result.Predictions.Select(p => new GooglePlace
+        places = result.Predictions.Select(p => new PlaceDescription
         {
             Id = p.PlaceId,
             Description = p.Description,

@@ -6,6 +6,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\Common\Hexalith.Extensions\Hexalith.Extensions.csproj" />
 		<ProjectReference Include="..\Hexalith.Domain.Abstractions\Hexalith.Domain.Abstractions.csproj" />
+		<ProjectReference Include="..\Hexalith.Domain.Geolocations\Hexalith.Domain.Geolocations.csproj" />
 		<ProjectReference Include="..\Hexalith.Domain.Organizations\Hexalith.Domain.Organizations.csproj" />
 	</ItemGroup>
 </Project>

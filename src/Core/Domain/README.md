@@ -1,3 +1,2 @@
-# Hexalith.Domain
+# Hexalith.Domain.Users
 
-* [Domain.Abstractions](Domain.Abstractions/README.md)

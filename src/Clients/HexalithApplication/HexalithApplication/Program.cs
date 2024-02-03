@@ -4,8 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-using HexalithApplication.Client.Helpers;
-using HexalithApplication.Helpers;
+using Hexalith.Infrastructure.ClientAppOnServer.Helpers;
 
 using Serilog;
 
@@ -17,7 +16,7 @@ bool debugInVisualStudio = true;
 bool debugInVisualStudio = false;
 #endif
 
-WebApplicationBuilder builder = HexalithWebApplicationHelper.CreateWebApplication(
+WebApplicationBuilder builder = ServerSideClientAppHelper.CreateWebApplication(
     appName,
     $".{nameof(Hexalith)}.Application",
     "v1",
@@ -25,7 +24,7 @@ WebApplicationBuilder builder = HexalithWebApplicationHelper.CreateWebApplicatio
     (actors) => { },
     args);
 
-builder.Services.AddCommonServices(builder.Configuration);
+builder.Services.AddHexalithServerSideClientApp(builder.Configuration);
 
 WebApplication app = builder.Build();
 app.UseHexalithWebApplication();
