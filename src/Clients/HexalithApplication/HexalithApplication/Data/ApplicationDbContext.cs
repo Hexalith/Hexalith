@@ -15,14 +15,15 @@
 // ***********************************************************************
 namespace HexalithApplication.Data;
 
+using Hexalith.Infrastructure.ClientApp.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 /// <summary>
 /// Class ApplicationDbContext.
-/// Implements the <see cref="Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext{HexalithApplication.Data.ApplicationUser}" />.
+/// Implements the <see cref="Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext{ApplicationUser}" />.
 /// </summary>
-/// <seealso cref="Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext{HexalithApplication.Data.ApplicationUser}" />
+/// <seealso cref="Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext{ApplicationUser}" />
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext<ApplicationUser>(options)
 {
 }

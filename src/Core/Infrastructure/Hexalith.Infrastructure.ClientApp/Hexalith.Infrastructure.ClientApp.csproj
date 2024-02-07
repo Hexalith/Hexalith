@@ -8,6 +8,8 @@
 		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="$(MicrosoftExtensionsPackagesVersion)" />
 		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="$(MicrosoftFluentUIVersion)" />
 		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="$(MicrosoftFluentUIVersion)" />
+		<PackageReference Include="Serilog.Extensions.Logging" Version="$(SerilogVersion)" />
+		<PackageReference Include="Serilog.Settings.Configuration" Version="$(SerilogVersion)" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\Application\Hexalith.Application.Geolocations\Hexalith.Application.Geolocations.csproj" />

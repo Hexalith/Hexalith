@@ -15,8 +15,7 @@
 // ***********************************************************************
 namespace HexalithApplication.Components.Account;
 
-using HexalithApplication.Data;
-
+using Hexalith.Infrastructure.ClientApp.Models;
 using Microsoft.AspNetCore.Identity;
 
 /// <summary>

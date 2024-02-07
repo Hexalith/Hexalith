@@ -4,7 +4,6 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
-		<PackageReference Include="Serilog.Extensions.Logging" Version="$(SerilogVersion)"/>
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="$(AspNetCorePackagesVersion)" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="$(AspNetCorePackagesVersion)" />
 		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="$(AspNetCorePackagesVersion)" />
@@ -15,6 +14,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\Core\Infrastructure\Hexalith.Infrastructure.WebApis\Hexalith.Infrastructure.WebApis.csproj" />
 		<ProjectReference Include="..\..\..\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime\Hexalith.Infrastructure.DaprRuntime.csproj" />
-		<ProjectReference Include="..\Hexalith.Infrastructure.ClientApp\Hexalith.Infrastructure.ClientApp.csproj" />
+		<ProjectReference Include="..\Hexalith.Infrastructure.ClientAppOnWasm\Hexalith.Infrastructure.ClientAppOnWasm.csproj" />
 	</ItemGroup>
 </Project>

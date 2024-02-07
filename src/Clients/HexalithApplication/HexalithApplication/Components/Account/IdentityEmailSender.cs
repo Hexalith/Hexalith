@@ -16,8 +16,7 @@
 
 namespace HexalithApplication.Components.Account;
 
-using HexalithApplication.Data;
-
+using Hexalith.Infrastructure.ClientApp.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 
@@ -25,9 +24,9 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 
 /// <summary>
 /// Class IdentityNoOpEmailSender. This class cannot be inherited.
-/// Implements the <see cref="Microsoft.AspNetCore.Identity.IEmailSender{HexalithApplication.Data.ApplicationUser}" />.
+/// Implements the <see cref="Microsoft.AspNetCore.Identity.IEmailSender{ApplicationUser}" />.
 /// </summary>
-/// <seealso cref="Microsoft.AspNetCore.Identity.IEmailSender{HexalithApplication.Data.ApplicationUser}" />
+/// <seealso cref="Microsoft.AspNetCore.Identity.IEmailSender{ApplicationUser}" />
 internal sealed class IdentityEmailSender : IEmailSender<ApplicationUser>
 {
     /// <summary>

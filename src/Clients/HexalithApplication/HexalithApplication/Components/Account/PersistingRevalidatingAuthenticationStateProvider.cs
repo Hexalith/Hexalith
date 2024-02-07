@@ -17,11 +17,10 @@ namespace HexalithApplication.Components.Account;
 
 using System.Diagnostics;
 using System.Security.Claims;
-
+using Hexalith.Infrastructure.ClientApp.Models;
 using Hexalith.Infrastructure.ClientApp.Security;
 
 using HexalithApplication.Client;
-using HexalithApplication.Data;
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;

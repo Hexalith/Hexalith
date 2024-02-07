@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace HexalithApplication.Data;
+namespace Hexalith.Infrastructure.ClientApp.Models;
 
 using Microsoft.AspNetCore.Identity;
 

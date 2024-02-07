@@ -48,8 +48,44 @@ using Microsoft.FluentUI.AspNetCore.Components;
 /// </summary>
 public static class ServerSideClientAppHelper
 {
+    public static IServiceCollection AddHexalithSecurity(IServiceCollection services, IConfiguration configuration)
+    {
+        services
+        .AddCascadingAuthenticationState()
+        .AddScoped<IdentityUserAccessor>()
+        .AddScoped<IdentityRedirectManager>()
+        .AddScoped<AuthenticationStateProvider, PersistingRevalidatingAuthenticationStateProvider>()
+        .AddAuthentication(options =>
+        {
+            options.DefaultScheme = IdentityConstants.ApplicationScheme;
+            options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
+        })
+        .AddBearerToken(IdentityConstants.BearerScheme)
+        .AddMicrosoftAccount(microsoftOptions =>
+        {
+            string? clientId = configuration["Authentication:Microsoft:ClientId"];
+            string? clientSecret = configuration["Authentication:Microsoft:ClientSecret"];
+            if (string.IsNullOrWhiteSpace(clientId))
+            {
+                throw new InvalidOperationException("Authentication:Microsoft:ClientId must be set in the application settings.");
+            }
+
+            if (string.IsNullOrWhiteSpace(clientSecret))
+            {
+                throw new InvalidOperationException("Authentication:Microsoft:ClientSecret must be set in the application settings.");
+            }
+
+            microsoftOptions.ClientId = clientId;
+            microsoftOptions.ClientSecret = clientSecret;
+        })
+        .AddIdentityCookies();
+        services.TryAddSingleton<IEmailSender<ApplicationUser>, IdentityEmailSender>();
+
+        return services;
+    }
+
     public static IServiceCollection AddHexalithServerSideClientApp(this IServiceCollection services, IConfiguration configuration)
-            => services.AddHexalithClientApp(configuration);
+                => services.AddHexalithClientApp(configuration);
 
     /// <summary>
     /// Creates the web application.
@@ -102,36 +138,7 @@ public static class ServerSideClientAppHelper
 
         _ = builder.Services
             .AddHttpClient()
-            .AddFluentUIComponents()
-            .AddCascadingAuthenticationState()
-            .AddScoped<IdentityUserAccessor>()
-            .AddScoped<IdentityRedirectManager>()
-            .AddScoped<AuthenticationStateProvider, PersistingRevalidatingAuthenticationStateProvider>()
-            .AddSingleton<IEmailSender<ApplicationUser>, IdentityEmailSender>()
-            .AddAuthentication(options =>
-            {
-                options.DefaultScheme = IdentityConstants.ApplicationScheme;
-                options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
-            })
-            .AddBearerToken(IdentityConstants.BearerScheme)
-            .AddMicrosoftAccount(microsoftOptions =>
-            {
-                string? clientId = builder.Configuration["Authentication:Microsoft:ClientId"];
-                string? clientSecret = builder.Configuration["Authentication:Microsoft:ClientSecret"];
-                if (string.IsNullOrWhiteSpace(clientId))
-                {
-                    throw new InvalidOperationException("Authentication:Microsoft:ClientId must be set in the application settings.");
-                }
-
-                if (string.IsNullOrWhiteSpace(clientSecret))
-                {
-                    throw new InvalidOperationException("Authentication:Microsoft:ClientSecret must be set in the application settings.");
-                }
-
-                microsoftOptions.ClientId = clientId;
-                microsoftOptions.ClientSecret = clientSecret;
-            })
-            .AddIdentityCookies();
+            .AddFluentUIComponents();
 
         _ = builder.Services
             .AddAuthorizationBuilder()

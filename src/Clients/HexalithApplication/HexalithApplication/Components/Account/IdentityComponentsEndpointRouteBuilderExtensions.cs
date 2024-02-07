@@ -17,10 +17,9 @@ namespace HexalithApplication.Components.Account;
 
 using System.Security.Claims;
 using System.Text.Json;
-
+using Hexalith.Infrastructure.ClientApp.Models;
 using HexalithApplication.Components.Account.Pages;
 using HexalithApplication.Components.Account.Pages.Manage;
-using HexalithApplication.Data;
 
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Components.Authorization;
