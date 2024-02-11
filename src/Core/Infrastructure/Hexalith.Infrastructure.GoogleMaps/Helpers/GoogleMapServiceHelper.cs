@@ -18,6 +18,7 @@ namespace Hexalith.Infrastructure.GoogleMaps.Helpers;
 
 using GoogleApi.Extensions;
 
+using Hexalith.Application.Geolocations.Services;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.GoogleMaps.Abstractions.Configurations;
 using Hexalith.Infrastructure.GoogleMaps.Services;
