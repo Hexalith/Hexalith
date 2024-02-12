@@ -24,7 +24,10 @@ WebApplicationBuilder builder = ServerSideClientAppHelper.CreateServerSideClient
     (actors) => { },
     args);
 
-builder.Services.AddHexalithServerSideClientApp(builder.Configuration);
+builder.Services
+    .AddHexalithServerSideClientApp(
+        builder.Configuration,
+        typeof(HexalithApplication.Client._Imports).Assembly);
 
 WebApplication app = builder.Build();
 app.UseHexalithWebApplication();

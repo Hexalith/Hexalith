@@ -18,8 +18,11 @@ namespace Hexalith.Infrastructure.ClientAppOnServer.Helpers;
 
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 
 using Dapr.Actors.Runtime;
+
+using FluentValidation;
 
 using Hexalith.Application.Aggregates;
 using Hexalith.Application.Buses;
@@ -28,12 +31,12 @@ using Hexalith.Application.Projection;
 using Hexalith.Application.States;
 using Hexalith.Application.Tasks;
 using Hexalith.Domain.Messages;
-using Hexalith.Extensions.Common;
 using Hexalith.Infrastructure.ClientApp.Helpers;
+using Hexalith.Infrastructure.ClientAppOnServer.Security;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
+using Hexalith.Infrastructure.Security.Abstractions.Models;
 
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -43,48 +46,16 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.FluentUI.AspNetCore.Components;
 
+using Serilog;
+
 /// <summary>
 /// Class HexalithWebApi.
 /// </summary>
 public static class ServerSideClientAppHelper
 {
-    public static IServiceCollection AddHexalithSecurity(IServiceCollection services, IConfiguration configuration)
-    {
-        services
-        .AddCascadingAuthenticationState()
-        .AddScoped<IdentityUserAccessor>()
-        .AddScoped<IdentityRedirectManager>()
-        .AddScoped<AuthenticationStateProvider, PersistingRevalidatingAuthenticationStateProvider>()
-        .AddAuthentication(options =>
-        {
-            options.DefaultScheme = IdentityConstants.ApplicationScheme;
-            options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
-        })
-        .AddBearerToken(IdentityConstants.BearerScheme)
-        .AddMicrosoftAccount(microsoftOptions =>
-        {
-            string? clientId = configuration["Authentication:Microsoft:ClientId"];
-            string? clientSecret = configuration["Authentication:Microsoft:ClientSecret"];
-            if (string.IsNullOrWhiteSpace(clientId))
-            {
-                throw new InvalidOperationException("Authentication:Microsoft:ClientId must be set in the application settings.");
-            }
-
-            if (string.IsNullOrWhiteSpace(clientSecret))
-            {
-                throw new InvalidOperationException("Authentication:Microsoft:ClientSecret must be set in the application settings.");
-            }
-
-            microsoftOptions.ClientId = clientId;
-            microsoftOptions.ClientSecret = clientSecret;
-        })
-        .AddIdentityCookies();
-        services.TryAddSingleton<IEmailSender<ApplicationUser>, IdentityEmailSender>();
-
-        return services;
-    }
-
-    public static IServiceCollection AddHexalithServerSideClientApp(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddHexalithServerSideClientApp(
+        this IServiceCollection services,
+        IConfiguration configuration)
                 => services.AddHexalithClientApp(configuration);
 
     /// <summary>
@@ -187,7 +158,7 @@ public static class ServerSideClientAppHelper
     /// <param name="app">The application.</param>
     /// <returns>IApplicationBuilder.</returns>
     /// <exception cref="ArgumentNullException">null.</exception>
-    public static IApplicationBuilder UseHexalithWebApplication([NotNull] this WebApplication app)
+    public static IApplicationBuilder UseHexalithWebApplication([NotNull] this WebApplication app, Assembly wasmClientAssembly)
     {
         ArgumentNullException.ThrowIfNull(app);
         _ = app
@@ -222,7 +193,7 @@ public static class ServerSideClientAppHelper
             .MapRazorComponents<App>()
             .AddInteractiveServerRenderMode()
             .AddInteractiveWebAssemblyRenderMode()
-            .AddAdditionalAssemblies(typeof(HexalithApplication.Client._Imports).Assembly);
+            .AddAdditionalAssemblies(wasmClientAssembly);
 
         // Add additional endpoints required by the Identity /Account Razor components.
         _ = app.MapAdditionalIdentityEndpoints();

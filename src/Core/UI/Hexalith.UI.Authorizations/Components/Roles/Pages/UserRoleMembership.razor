@@ -1,0 +1,14 @@
+﻿@attribute [Route(UserRoleMembershipAction.Path)]
+@attribute [Route(UserRoleMembershipAction.Path + $"/{{{nameof(UserId)}:string}}")]
+@attribute [Authorize(Roles = @RoleRoles.ViewUserRoles)]
+@rendermode InteractiveAutoRenderMode
+<title>Register a new role</title>
+<FluentHeader>
+	 a new role
+</FluentHeader>
+@code {
+	[Parameter]
+	public string? UserId { get; set; }
+	[Parameter]
+	public string? RoleId { get; set; }
+}

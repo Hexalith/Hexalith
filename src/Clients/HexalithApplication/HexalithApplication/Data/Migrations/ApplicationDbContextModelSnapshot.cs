@@ -4,7 +4,7 @@
 namespace HexalithApplication.Migrations;
 using System;
 
-using HexalithApplication.Data;
+using Hexalith.Infrastructure.ClientAppOnServer.Security;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
