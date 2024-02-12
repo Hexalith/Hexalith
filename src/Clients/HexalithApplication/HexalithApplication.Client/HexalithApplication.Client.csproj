@@ -12,6 +12,11 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\..\Core\Infrastructure\Hexalith.Infrastructure.ClientAppOnWasm\Hexalith.Infrastructure.ClientAppOnWasm.csproj" />
+	  <ProjectReference Include="..\..\..\Core\UI\Hexalith.UI.ApplicationLayout\Hexalith.UI.ApplicationLayout.csproj" />
+	  <ProjectReference Include="..\..\..\Core\UI\Hexalith.UI.Authorizations\Hexalith.UI.Authorizations.csproj" />
+	  <ProjectReference Include="..\..\..\Core\UI\Hexalith.UI.Parties\Hexalith.UI.Parties.csproj" />
+	  <ProjectReference Include="..\..\..\Core\UI\Hexalith.UI.PostalAddresses\Hexalith.UI.PostalAddresses.csproj" />
+	  <ProjectReference Include="..\..\..\Core\UI\Hexalith.UI.Users\Hexalith.UI.Users.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -5,11 +5,12 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\..\Application\Hexalith.Application.Geolocations\Hexalith.Application.Geolocations.csproj" />
 	  <ProjectReference Include="..\..\Domain\Hexalith.Domain.Geolocations\Hexalith.Domain.Geolocations.csproj" />
+	  <ProjectReference Include="..\..\Infrastructure\Hexalith.Infrastructure.GoogleMaps\Hexalith.Infrastructure.GoogleMaps.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="wwwroot\" />
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Include="Blazor.Geolocation.WebAssembly" Version="8.0.0" />
+	  <PackageReference Include="Blazor.Geolocation" Version="$(BlazorGeolocationVersion)" />
 	</ItemGroup>
 </Project>

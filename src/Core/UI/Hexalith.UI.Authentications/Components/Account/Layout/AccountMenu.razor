@@ -1,0 +1,54 @@
+﻿@implements IDisposable
+
+@inject NavigationManager NavigationManager
+<div class="navmenu">
+    <input type="checkbox" title="Menu expand/collapse toggle" id="navmenu-toggle" class="navmenu-icon" />
+    <label for="navmenu-toggle" class="navmenu-icon"><FluentIcon Value="@(new Icons.Regular.Size20.Navigation())" Color="Color.Fill" /></label>
+    <nav class="sitenav" aria-labelledby="main-menu" onclick="document.getElementById('navmenu-toggle').click();">
+        <FluentNavMenu Id="main-menu" Collapsible="true" Width="250" Title="Navigation menu" @bind-Expanded="expanded">
+            <FluentNavLink Href="/" Match="NavLinkMatch.All" Icon="@(new Icons.Regular.Size20.Home())" IconColor="Color.Accent">Home</FluentNavLink>
+			<AuthorizeView>
+				<Authorized>
+					<FluentNavGroup Expanded="true" Title="Customers" Icon="@(new Icons.Regular.Size20.LayerDiagonalPerson())" IconColor="Color.Accent">
+						<FluentNavLink Href="Customer/Search" Icon="@(new Icons.Regular.Size20.PersonSearch())" IconColor="Color.Accent">Search</FluentNavLink>
+						<FluentNavLink Href="Customer/Register" Icon="@(new Icons.Regular.Size20.PersonAdd())" IconColor="Color.Accent">Register</FluentNavLink>
+						<FluentNavLink Href="Customer/RecentlyRegistered" Icon="@(new Icons.Regular.Size20.DocumentPerson())" IconColor="Color.Accent">Recently registered</FluentNavLink>
+						<FluentNavLink Href="Customer/RecentlyChanged" Icon="@(new Icons.Regular.Size20.NotepadPerson())" IconColor="Color.Accent">Recently changed</FluentNavLink>
+					</FluentNavGroup>
+					<FluentNavLink Href="Account/Manage" Icon="@(new Icons.Regular.Size20.PersonAccounts())" IconColor="Color.Accent">@context.User.Identity?.Name</FluentNavLink>
+					<form action="Account/Logout" method="post">
+						<AntiforgeryToken />
+						<input type="hidden" name="ReturnUrl" value="@currentUrl" />
+						<FluentButton Type="ButtonType.Submit" IconStart="@(new Icons.Regular.Size20.PersonArrowBack())" IconColor="Color.Accent">Logout</FluentButton>
+					</form>
+				</Authorized>
+				<NotAuthorized>
+						<FluentNavLink Href="Account/Register" Icon="@(new Icons.Regular.Size20.PersonAdd())" IconColor="Color.Accent">Register</FluentNavLink>
+						<FluentNavLink Href="Account/Login" Icon="@(new Icons.Regular.Size20.PersonKey())" IconColor="Color.Accent">Login</FluentNavLink>
+				</NotAuthorized>
+			</AuthorizeView>
+		</FluentNavMenu>
+	</nav>
+</div>
+@code {
+	private bool expanded = true; 
+	
+	private string? currentUrl;
+
+	protected override void OnInitialized()
+	{
+		currentUrl = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
+		NavigationManager.LocationChanged += OnLocationChanged;
+	}
+
+	private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
+	{
+		currentUrl = NavigationManager.ToBaseRelativePath(e.Location);
+		StateHasChanged();
+	}
+
+	public void Dispose()
+	{
+		NavigationManager.LocationChanged -= OnLocationChanged;
+	}
+}

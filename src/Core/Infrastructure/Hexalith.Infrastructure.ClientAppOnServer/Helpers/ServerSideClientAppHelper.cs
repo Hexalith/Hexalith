@@ -1,18 +1,8 @@
-﻿// ***********************************************************************
-// Assembly         : HexalithApplication
-// Author           : Jérôme Piquot
-// Created          : 01-18-2024
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 01-18-2024
-// ***********************************************************************
-// <copyright file="ServerSideClientAppHelper.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="ServerSideClientAppHelper.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Infrastructure.ClientAppOnServer.Helpers;
 
@@ -34,16 +24,19 @@ using Hexalith.Domain.Messages;
 using Hexalith.Infrastructure.ClientApp.Helpers;
 using Hexalith.Infrastructure.ClientAppOnServer.Security;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
+using Hexalith.Infrastructure.GoogleMaps.Helpers;
 using Hexalith.Infrastructure.Security.Abstractions.Models;
+using Hexalith.Infrastructure.WebApis.Helpers;
+using Hexalith.UI.Authentications.Helpers;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.FluentUI.AspNetCore.Components;
 
 using Serilog;
@@ -53,22 +46,27 @@ using Serilog;
 /// </summary>
 public static class ServerSideClientAppHelper
 {
+    /// <summary>
+    /// Adds Hexalith server-side client application services to the service collection.
+    /// </summary>
+    /// <param name="services">The service collection.</param>
+    /// <param name="configuration">The configuration.</param>
+    /// <returns>The updated service collection.</returns>
     public static IServiceCollection AddHexalithServerSideClientApp(
         this IServiceCollection services,
-        IConfiguration configuration)
-                => services.AddHexalithClientApp(configuration);
+        IConfiguration configuration) => services.AddHexalithClientApp(configuration);
 
     /// <summary>
-    /// Creates the web application.
+    /// Creates the server-side client application.
     /// </summary>
-    /// <param name="applicationName">Name of the application.</param>
-    /// <param name="sessionCookieName">Name of the session cookie.</param>
-    /// <param name="version">The version.</param>
-    /// <param name="debugInVisualStudio">if set to <c>true</c> [debug in visual studio].</param>
-    /// <param name="registerActors">The register actors.</param>
-    /// <param name="args">The arguments.</param>
-    /// <returns>WebApplicationBuilder.</returns>
-    /// <exception cref="InvalidOperationException">Connection string 'DefaultConnection' not found.</exception>
+    /// <param name="applicationName">The name of the application.</param>
+    /// <param name="sessionCookieName">The name of the session cookie.</param>
+    /// <param name="version">The version of the application.</param>
+    /// <param name="debugInVisualStudio">Indicates whether the application is being debugged in Visual Studio.</param>
+    /// <param name="registerActors">The action to register actors.</param>
+    /// <param name="args">The command-line arguments.</param>
+    /// <returns>The web application builder.</returns>
+    /// <exception cref="InvalidOperationException">Thrown when the connection string 'DefaultConnection' is not found.</exception>
     public static WebApplicationBuilder CreateServerSideClientApplication(
         string applicationName,
         string sessionCookieName,
@@ -80,27 +78,23 @@ public static class ServerSideClientAppHelper
         Activity.DefaultIdFormat = ActivityIdFormat.W3C;
 
         WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-        ILogger startupLogger = builder.AddSerilogLogger();
+        Serilog.ILogger startupLogger = builder.AddSerilogLogger();
 
-        startupLogger.LogInformation("Configuring {AppName} ...", applicationName);
+        startupLogger.Information("Configuring {AppName} ...", applicationName);
         builder.Services
             .AddEndpointsApiExplorer()
             .AddSwaggerGen(c => c.SwaggerDoc("v1", new() { Title = applicationName, Version = version, }))
             .AddDaprBuses(builder.Configuration)
             .AddDaprStateStore(builder.Configuration)
-            .AddActors(options =>
-
-            // Register actor types and configure actor settings
-            registerActors(options.Actors));
+            .AddActors(options => registerActors(options.Actors));
         _ = builder
             .Services
             .AddHttpContextAccessor()
             .AddControllers()
-            .AddApplicationPart(typeof(BaseCommand).Assembly) // Issue with MapControllers() throwing a type not found exception for BaseCommand
-            .AddApplicationPart(typeof(BaseMessage).Assembly) // Issue with MapControllers() throwing a type not found exception for BaseCommand
+            .AddApplicationPart(typeof(BaseCommand).Assembly)
+            .AddApplicationPart(typeof(BaseMessage).Assembly)
             .AddDapr();
 
-        // Add email services for sending authentication emails.
         _ = builder.Services
             .AddHexalithServerSideClientApp(builder.Configuration)
             .AddRazorComponents()
@@ -113,7 +107,7 @@ public static class ServerSideClientAppHelper
 
         _ = builder.Services
             .AddAuthorizationBuilder()
-            .AddPolicy("api", p => _ = p
+            .AddPolicy("api", p => p
                     .RequireAuthenticatedUser()
                     .AddAuthenticationSchemes(IdentityConstants.BearerScheme));
 
@@ -129,7 +123,6 @@ public static class ServerSideClientAppHelper
 
         if (debugInVisualStudio)
         {
-            // When debugging, we want to be able to run the application inside Visual Studio to see the technical details.
             _ = builder.Services.AddDaprSidekick(builder.Configuration);
         }
 
@@ -148,17 +141,23 @@ public static class ServerSideClientAppHelper
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
-
+        _ = builder.Services
+            .AddAuthenticationUI(builder.Configuration)
+            .AddGeolocationServices()
+            .AddGooglePlacesServices(builder.Configuration);
         return builder;
     }
 
     /// <summary>
-    /// Uses the Hexalith framework.
+    /// Uses the Hexalith framework for the server-side client application.
     /// </summary>
-    /// <param name="app">The application.</param>
-    /// <returns>IApplicationBuilder.</returns>
-    /// <exception cref="ArgumentNullException">null.</exception>
-    public static IApplicationBuilder UseHexalithWebApplication([NotNull] this WebApplication app, Assembly wasmClientAssembly)
+    /// <typeparam name="TApp">The type of the application.</typeparam>
+    /// <param name="app">The web application.</param>
+    /// <param name="additionalAssemblies">The assembly containing the WebAssembly client.</param>
+    /// <returns>The updated web application.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when the web application is null.</exception>
+    public static IApplicationBuilder UseHexalithWebApplication<TApp, TUser>([NotNull] this WebApplication app, Assembly[] additionalAssemblies)
+        where TUser : class, new()
     {
         ArgumentNullException.ThrowIfNull(app);
         _ = app
@@ -190,15 +189,13 @@ public static class ServerSideClientAppHelper
             .UseRequestLocalization();
 
         _ = app
-            .MapRazorComponents<App>()
+            .MapRazorComponents<TApp>()
             .AddInteractiveServerRenderMode()
             .AddInteractiveWebAssemblyRenderMode()
-            .AddAdditionalAssemblies(wasmClientAssembly);
+            .AddAdditionalAssemblies(additionalAssemblies);
 
-        // Add additional endpoints required by the Identity /Account Razor components.
-        _ = app.MapAdditionalIdentityEndpoints();
+        _ = app.MapIdentityApi<TUser>();
 
-        // _ = app.MapGroup("api/auth").MapIdentityApi<ApplicationUser>();
         _ = app.MapActorsHandlers();
 
         return app;

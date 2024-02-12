@@ -4,10 +4,10 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-using HexalithApplication.Client;
+using Hexalith.Infrastructure.ClientAppOnWasm.Helpers;
 
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
-WebAssemblyHostBuilder builder = WebAssemblyHostBuilder.CreateDefault(args);
+WebAssemblyHostBuilder builder = WebAssemblyClientHelper.CreateHexalithWasmClient(args);
 
 await builder.Build().RunAsync().ConfigureAwait(false);

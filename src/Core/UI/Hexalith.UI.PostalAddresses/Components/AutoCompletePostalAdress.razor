@@ -1,5 +1,5 @@
 ﻿@inherits FluentInputBase<PostalAddressViewModel>
-@rendermode InteractiveAutoRenderMode
+@rendermode RenderMode.InteractiveServer
 @using Hexalith.Domain.ValueObjets
 @using Hexalith.Application.Geolocations.Services
 @using System.ComponentModel.DataAnnotations
@@ -14,7 +14,6 @@
         <FluentLabel Id="@(_childIdPrefix+"-label")">@Label</FluentLabel>
         <FluentAutocomplete 
             @bind-SelectedOptions="@_selectedPlaces"
-            ValueChanged="@OnAutocompleteValueChanged"
             AutoComplete="on"
             Id="@(_childIdPrefix+"-auto-complete")"
             MaximumSelectedOptions="@_maximumSelectedOptions"
@@ -90,10 +89,14 @@
 
     FluentAutocomplete<PlaceDescription>? _addressAutocomplete;
 
-    protected override async Task OnInitializedAsync()
+     protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await SetPostalAddressAsync();
+    }
+
+    protected override void OnInitialized()
     {
         _childIdPrefix = this.Id;
-        await SetPostalAddressAsync();
     }
 
     protected override string FormatValueAsString(PostalAddressViewModel? value) 
@@ -102,7 +105,7 @@
     private async Task SetPostalAddressAsync()
 	{
         var placeId = _selectedPlaces?.FirstOrDefault()?.Id;
-       if (!string.IsNullOrWhiteSpace(placeId) && Value?.PlaceId != placeId)
+        if (!string.IsNullOrWhiteSpace(placeId) && Value?.PlaceId != placeId)
 		{
 			var value = await _placeService.GetPostalAddressAsync(placeId, CancellationToken.None) ?? new PostalAddress();
             Value = new PostalAddressViewModel(value);
@@ -128,8 +131,8 @@
         }
         if (_latitude == null || _longitude == null)
         {
-            _locationService
-                .GetCurrentPosition(OnLocationFound, OnLocationNotFound, new PositionOptions()
+            await _locationService
+                .GetCurrentPositionAsync(OnLocationFound, OnLocationNotFound, new PositionOptions()
                 {
                     Timeout = 5000,
                 });

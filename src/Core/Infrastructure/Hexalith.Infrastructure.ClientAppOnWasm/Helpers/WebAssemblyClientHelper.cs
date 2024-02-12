@@ -38,9 +38,9 @@ public static class WebAssemblyClientHelper
         return services;
     }
 
-    public static WebAssemblyHostBuilder CreateHexalithWasmClient()
+    public static WebAssemblyHostBuilder CreateHexalithWasmClient(string[]? args = null)
     {
-        WebAssemblyHostBuilder builder = WebAssemblyHostBuilder.CreateDefault();
+        WebAssemblyHostBuilder builder = WebAssemblyHostBuilder.CreateDefault(args);
         Log.Logger = new LoggerConfiguration()
             .ReadFrom.Configuration(builder.Configuration)
             .Enrich.WithProperty("InstanceId", Guid.NewGuid().ToString("n"))
@@ -49,5 +49,6 @@ public static class WebAssemblyClientHelper
         _ = builder.Services
             .AddLogging(loggingBuilder => loggingBuilder.AddSerilog(dispose: true))
             .AddHexalithWasmClientApp(builder.Configuration, new Uri(builder.HostEnvironment.BaseAddress));
+        return builder;
     }
 }

@@ -1,12 +1,11 @@
 ﻿@page "/Customer/Register"
 @using System.Security.Claims
-@using HexalithApplication.Components.Google
+@using Hexalith.UI.PostalAddresses.Components
+@rendermode RenderMode.InteractiveServer
 
 @attribute [Authorize]
-@rendermode InteractiveServer
 
-@inject ProtectedSessionStorage SessionStore
-@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject Blazored.SessionStorage.ISessionStorageService SessionStore
 @inject ICommandBus CommandBus
 @inject IDateTimeService DateTimeService
 @inject IOptions<OrganizationSettings> OrganizationSettings
@@ -53,13 +52,15 @@ else
             </FluentTextField>
             </FluentGridItem>
             <FluentGridItem xs="12">
-            <FluentPostalAdressWithGooglePlaces 
+            <AutoCompletePostalAdress 
+                PostalAddressName="Primary"
+                PostalAddressDescription="Customer primary address"
                 @bind-Value="Model!.PostalAddress" 
                 Placeholder="10, place de la tour Eiffel 75001 Paris, France" 
                 Label="Address" 
                 style="width: 100%;">
                 <FluentIcon Value="@(new Icons.Regular.Size16.Location())" Slot="start" Color="Color.Accent" />
-            </FluentPostalAdressWithGooglePlaces>
+            </AutoCompletePostalAdress>
             </FluentGridItem>
         </FluentGrid>
         <FluentButton Appearance="Appearance.Accent"
@@ -72,6 +73,13 @@ else
 @code {
     [SupplyParameterFromForm]
     private RegisterCustomerModel? Model { get; set; }
+
+    [CascadingParameter] 
+    public string? SessionId { get; set; }
+
+    [CascadingParameter]
+    private Task<AuthenticationState>? authenticationState { get; set; }
+
 
     private string? _sessionId { get; set; }
     bool _submitting = false;
@@ -86,15 +94,11 @@ else
     {
         if (string.IsNullOrWhiteSpace(_sessionId))
         {
-            var result = await SessionStore.GetAsync<string>(nameof(_sessionId));
-            if (result.Success && !string.IsNullOrWhiteSpace(result.Value))
-            {
-                _sessionId = result.Value;
-            }
-            else
+            _sessionId = await SessionStore.GetItemAsync<string>(nameof(_sessionId));
+            if (string.IsNullOrWhiteSpace(_sessionId))
             {
                 _sessionId = UniqueIdHelper.GenerateUniqueStringId();
-                await SessionStore.SetAsync(nameof(_sessionId), _sessionId);
+                await SessionStore.SetItemAsync(nameof(_sessionId), _sessionId);
             }
         }
         return _sessionId;
@@ -109,8 +113,7 @@ else
         RegisterCustomer command = Model!.ToCommand(partitionId!, companyId!, originId!);
 
         var date = DateTimeService.Now;
-        AuthenticationState authenticationState = (await AuthenticationStateProvider.GetAuthenticationStateAsync());
-        var userId = authenticationState.User.Identity?.Name ?? throw new InvalidOperationException("User identity is undefined");
+        var userId = (await (authenticationState ?? throw new InvalidOperationException("Authentication state not defined"))).User.Identity?.Name ?? throw new InvalidOperationException("User identity is undefined");
         var messageId = UniqueIdHelper.GenerateUniqueStringId();
         var metadata = new Metadata(
             messageId,

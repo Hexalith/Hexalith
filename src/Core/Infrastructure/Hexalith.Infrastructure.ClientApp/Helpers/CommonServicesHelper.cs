@@ -6,6 +6,8 @@
 
 namespace Hexalith.Infrastructure.ClientApp.Helpers;
 
+using Blazored.SessionStorage;
+
 using Hexalith.Application.Organizations.Helpers;
 using Hexalith.Extensions.Common;
 using Hexalith.Infrastructure.Emails.SendGrid.Helpers;
@@ -32,10 +34,10 @@ public static class CommonServicesHelper
             .AddMemoryCache()
             .AddLocalization()
             .AddOrganizations(configuration)
-            .AddGooglePlacesServices(configuration)
             .AddSendGridEmail(configuration)
-            .AddSingleton<TimeProvider>()
+            .AddSingleton(TimeProvider.System)
             .AddSingleton<IDateTimeService, DateTimeService>()
+            .AddBlazoredSessionStorage()
             .AddFluentUIComponents();
     }
 }

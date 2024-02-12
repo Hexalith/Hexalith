@@ -10,6 +10,7 @@
 		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="$(MicrosoftFluentUIVersion)" />
 		<PackageReference Include="Serilog.Extensions.Logging" Version="$(SerilogVersion)" />
 		<PackageReference Include="Serilog.Settings.Configuration" Version="$(SerilogVersion)" />
+		<PackageReference Include="Blazored.SessionStorage" Version="$(BlazoredSessionStorageVersion)" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\Application\Hexalith.Application.Geolocations\Hexalith.Application.Geolocations.csproj" />
@@ -17,5 +18,8 @@
 		<ProjectReference Include="..\..\Domain\Hexalith.Domain.Users\Hexalith.Domain.Users.csproj" />
 		<ProjectReference Include="..\Hexalith.Infrastructure.Emails.SendGrid\Hexalith.Infrastructure.Emails.SendGrid.csproj" />
 		<ProjectReference Include="..\Hexalith.Infrastructure.GoogleMaps\Hexalith.Infrastructure.GoogleMaps.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
 	</ItemGroup>
 </Project>

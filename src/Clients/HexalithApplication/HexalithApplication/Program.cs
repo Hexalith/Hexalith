@@ -5,6 +5,7 @@
 // </copyright>
 
 using Hexalith.Infrastructure.ClientAppOnServer.Helpers;
+using Hexalith.Infrastructure.Security.Abstractions.Models;
 
 using Serilog;
 
@@ -24,13 +25,18 @@ WebApplicationBuilder builder = ServerSideClientAppHelper.CreateServerSideClient
     (actors) => { },
     args);
 
-builder.Services
-    .AddHexalithServerSideClientApp(
-        builder.Configuration,
-        typeof(HexalithApplication.Client._Imports).Assembly);
+builder.Services.AddHexalithServerSideClientApp(builder.Configuration);
 
 WebApplication app = builder.Build();
-app.UseHexalithWebApplication();
+app.UseHexalithWebApplication<HexalithApplication.Components.App, ApplicationUser>([
+        typeof(HexalithApplication.Client._Imports).Assembly,
+        typeof(Hexalith.UI.ApplicationLayout.Components.Layouts.Component1).Assembly,
+        typeof(Hexalith.UI.Authentications.Components.Account.Pages.ConfirmEmail).Assembly,
+        typeof(Hexalith.UI.Authorizations.Components._Imports).Assembly,
+        typeof(Hexalith.UI.Parties.Components.Customer.Pages.Register).Assembly,
+        typeof(Hexalith.UI.PostalAddresses._Imports).Assembly,
+        typeof(Hexalith.UI.Users._Imports).Assembly,
+    ]);
 
 Log.Logger.Information("Starting {AppName}.", appName);
 
