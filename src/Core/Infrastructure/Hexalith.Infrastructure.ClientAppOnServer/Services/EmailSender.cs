@@ -14,12 +14,14 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Infrastructure.ClientApp.Services;
+namespace Hexalith.Infrastructure.ClientAppOnServer.Services;
 
 using System.Threading.Tasks;
 
 using Hexalith.Application.Emails;
+using Hexalith.Infrastructure.Security.Abstractions.Models;
 
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 
 /// <summary>
@@ -27,7 +29,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 /// Implements the <see cref="IEmailSender" />.
 /// </summary>
 /// <seealso cref="IEmailSender" />
-public class EmailSender : IEmailSender
+public class EmailSender : IEmailSender<ApplicationUser>, IEmailSender
 {
     /// <summary>
     /// The email service.
@@ -46,6 +48,17 @@ public class EmailSender : IEmailSender
     }
 
     /// <inheritdoc/>
+    public async Task SendConfirmationLinkAsync(ApplicationUser user, string email, string confirmationLink)
+    {
+        ArgumentNullException.ThrowIfNull(user);
+        ArgumentException.ThrowIfNullOrWhiteSpace(email);
+        ArgumentException.ThrowIfNullOrWhiteSpace(confirmationLink);
+        string subject = "Confirm your email";
+        string message = $"Please confirm your account by clicking this link: <a href='{confirmationLink}'>link</a>";
+        await SendEmailAsync(email, subject, message).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
     public async Task SendEmailAsync(string email, string subject, string htmlMessage)
         => await _emailService
         .SendAsync(
@@ -55,4 +68,27 @@ public class EmailSender : IEmailSender
             htmlMessage,
             CancellationToken.None)
         .ConfigureAwait(false);
+
+    /// <inheritdoc/>
+    public async Task SendPasswordResetCodeAsync(ApplicationUser user, string email, string resetCode)
+    {
+        ArgumentNullException.ThrowIfNull(user);
+        ArgumentException.ThrowIfNullOrWhiteSpace(email);
+        ArgumentException.ThrowIfNullOrWhiteSpace(resetCode);
+        string subject = "Reset password";
+        string message = $"Please reset your password by using this code: <b>{resetCode}</b>";
+
+        await SendEmailAsync(email, subject, message).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task SendPasswordResetLinkAsync(ApplicationUser user, string email, string resetLink)
+    {
+        ArgumentNullException.ThrowIfNull(user);
+        ArgumentException.ThrowIfNullOrWhiteSpace(email);
+        ArgumentException.ThrowIfNullOrWhiteSpace(resetLink);
+        string subject = "Reset password";
+        string message = $"Please reset your password by clicking this link: <a href='{resetLink}'>link</a>";
+        await SendEmailAsync(email, subject, message).ConfigureAwait(false);
+    }
 }

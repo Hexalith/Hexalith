@@ -1,5 +1,8 @@
 ﻿@page "/Account/Manage/TwoFactorAuthentication"
+
 @using Microsoft.AspNetCore.Http.Features
+@using Microsoft.AspNetCore.Identity
+@using Hexalith.UI.Authentications.ViewModels
 
 @inject UserManager<ApplicationUser> UserManager
 @inject SignInManager<ApplicationUser> SignInManager
@@ -44,8 +47,8 @@
             </form>
         }
 
-        <FluentAnchor Href="Account/Manage/Disable2fa">Disable 2FA</FluentAnchor>
-        <FluentAnchor Href="Account/Manage/GenerateRecoveryCodes">Reset recovery codes</FluentAnchor>
+        <FluentAnchor Href="Account/Manage/Disable2fa" >Disable 2FA</FluentAnchor>
+        <FluentAnchor Href="Account/Manage/GenerateRecoveryCodes" >Reset recovery codes</FluentAnchor>
     }
 
     <h4>Authenticator app</h4>
@@ -55,8 +58,8 @@
     }
     else
     {
-        <FluentAnchor Href="Account/Manage/EnableAuthenticator">Set up authenticator app</FluentAnchor>
-        <FluentAnchor Href="Account/Manage/ResetAuthenticator">Reset authenticator app</FluentAnchor>
+        <FluentAnchor Href="Account/Manage/EnableAuthenticator" >Set up authenticator app</FluentAnchor>
+        <FluentAnchor Href="Account/Manage/ResetAuthenticator" >Reset authenticator app</FluentAnchor>
     }
 }
 else

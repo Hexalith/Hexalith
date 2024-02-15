@@ -1,5 +1,9 @@
 ﻿@page "/Account/Login"
 
+@using System.ComponentModel.DataAnnotations
+@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Identity
+@using Hexalith.UI.Authentications.ViewModels
 
 @inject SignInManager<ApplicationUser> SignInManager
 @inject ILogger<Login> Logger
@@ -44,7 +48,6 @@
         <ExternalLoginPicker />
     </FluentGridItem>
 </FluentGrid>
-
 
 @code {
     private string? errorMessage;

@@ -1,18 +1,9 @@
-// ***********************************************************************
-// Assembly         : HexalithApplication
-// Author           : Jérôme Piquot
-// Created          : 01-14-2024
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 01-14-2024
-// ***********************************************************************
 // <copyright file="IdentityComponentsEndpointRouteBuilderExtensions.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
+
 namespace Hexalith.UI.Authentications.Components.Account;
 
 using System.Security.Claims;
@@ -34,18 +25,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Primitives;
 
-/// <summary>
-/// Class IdentityComponentsEndpointRouteBuilderExtensions.
-/// </summary>
-internal static class IdentityComponentsEndpointRouteBuilderExtensions
+public static class IdentityComponentsEndpointRouteBuilderExtensions
 {
     // These endpoints are required by the Identity Razor components defined in the /Components/Account/Pages directory of this project.
-
-    /// <summary>
-    /// Maps the additional identity endpoints.
-    /// </summary>
-    /// <param name="endpoints">The endpoints.</param>
-    /// <returns>Microsoft.AspNetCore.Builder.IEndpointConventionBuilder.</returns>
     public static IEndpointConventionBuilder MapAdditionalIdentityEndpoints(this IEndpointRouteBuilder endpoints)
     {
         ArgumentNullException.ThrowIfNull(endpoints);

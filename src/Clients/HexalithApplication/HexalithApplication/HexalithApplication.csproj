@@ -34,6 +34,11 @@
 		<ProjectReference Include="..\..\..\Core\Infrastructure\Hexalith.Infrastructure.ClientAppOnServer\Hexalith.Infrastructure.ClientAppOnServer.csproj" />
 		<ProjectReference Include="..\HexalithApplication.Client\HexalithApplication.Client.csproj" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Content Update="Components\_Imports.razor">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	  </Content>
+	</ItemGroup>
 	<Target Name="MyTarget" AfterTargets="MinVer" Condition="'$(MinVerBuildMetadata)' != ''">
 		<PropertyGroup>
 			<ContainerImageTag>$(PackageVersion)</ContainerImageTag>

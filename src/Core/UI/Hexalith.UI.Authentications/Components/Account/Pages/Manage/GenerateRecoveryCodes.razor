@@ -1,5 +1,8 @@
 ﻿@page "/Account/Manage/GenerateRecoveryCodes"
 
+@using Microsoft.AspNetCore.Identity
+@using Hexalith.UI.Authentications.ViewModels
+
 @inject UserManager<ApplicationUser> UserManager
 @inject IdentityUserAccessor UserAccessor
 @inject IdentityRedirectManager RedirectManager
@@ -34,7 +37,6 @@ else
         </form>
     </div>
 }
-
 
 @code {
     private string? message;

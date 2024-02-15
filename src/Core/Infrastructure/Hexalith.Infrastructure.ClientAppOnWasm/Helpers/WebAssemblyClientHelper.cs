@@ -19,8 +19,18 @@ using Microsoft.Extensions.DependencyInjection;
 
 using Serilog;
 
+/// <summary>
+/// Helper class for configuring and creating a WebAssembly client for Hexalith application.
+/// </summary>
 public static class WebAssemblyClientHelper
 {
+    /// <summary>
+    /// Adds the Hexalith WebAssembly client application services to the specified service collection.
+    /// </summary>
+    /// <param name="services">The service collection to add the services to.</param>
+    /// <param name="configuration">The configuration for the client application.</param>
+    /// <param name="baseAddress">The base address of the client application.</param>
+    /// <returns>The modified service collection.</returns>
     public static IServiceCollection AddHexalithWasmClientApp(this IServiceCollection services, IConfiguration configuration, Uri baseAddress)
     {
         _ = services.AddHexalithClientApp(configuration);
@@ -38,6 +48,11 @@ public static class WebAssemblyClientHelper
         return services;
     }
 
+    /// <summary>
+    /// Creates a WebAssembly host builder for the Hexalith WebAssembly client.
+    /// </summary>
+    /// <param name="args">The command-line arguments.</param>
+    /// <returns>The WebAssembly host builder.</returns>
     public static WebAssemblyHostBuilder CreateHexalithWasmClient(string[]? args = null)
     {
         WebAssemblyHostBuilder builder = WebAssemblyHostBuilder.CreateDefault(args);

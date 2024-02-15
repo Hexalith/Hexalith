@@ -1,4 +1,7 @@
-﻿
+﻿@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Identity
+@using Hexalith.UI.Authentications.ViewModels
+
 @inject SignInManager<ApplicationUser> SignInManager
 @inject IdentityRedirectManager RedirectManager
 
@@ -6,10 +9,8 @@
 {
     <div>
         <p>
-            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">
-                article
-                about setting up this ASP.NET application to support logging in via external services
-            </a>.
+            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
+            about setting up this ASP.NET application to support logging in via external services</a>.
         </p>
     </div>
 }
@@ -22,7 +23,7 @@ else
             <p>
                 @foreach (var provider in externalLogins)
                 {
-                    <FluentButton Type="ButtonType.Submit" Appearance="Appearance.Accent" name="provider" Value="@provider.Name" Title="@($"Log in using your {provider.DisplayName} account")">@provider.DisplayName</FluentButton>
+                    <FluentButton Type="ButtonType.Submit" Appearance="Appearance.Accent"  name="provider" Value="@provider.Name" Title="@($"Log in using your {provider.DisplayName} account")">@provider.DisplayName</FluentButton>
                 }
             </p>
         </div>
