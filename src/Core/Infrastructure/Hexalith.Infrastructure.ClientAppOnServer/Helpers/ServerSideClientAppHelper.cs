@@ -131,9 +131,6 @@ public static class ServerSideClientAppHelper
             .TryAddSingleton<IEmailSender<ApplicationUser>, EmailSender>();
         builder.Services.TryAddSingleton<IEmailSender, EmailSender>();
 
-        _ = builder.Services.AddSendGridEmail(builder.Configuration);
-        _ = builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityEmailSender>();
-
         if (debugInVisualStudio)
         {
             _ = builder.Services.AddDaprSidekick(builder.Configuration);
