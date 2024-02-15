@@ -23,10 +23,12 @@ using Hexalith.Application.Tasks;
 using Hexalith.Domain.Messages;
 using Hexalith.Infrastructure.ClientApp.Helpers;
 using Hexalith.Infrastructure.ClientAppOnServer.Security;
+using Hexalith.Infrastructure.ClientAppOnServer.Services;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.GoogleMaps.Helpers;
 using Hexalith.Infrastructure.Security.Abstractions.Models;
 using Hexalith.Infrastructure.WebApis.Helpers;
+using Hexalith.UI.Authentications.Components.Account;
 using Hexalith.UI.Authentications.Helpers;
 
 using Microsoft.AspNetCore.Builder;
@@ -82,6 +84,7 @@ public static class ServerSideClientAppHelper
 
         startupLogger.Information("Configuring {AppName} ...", applicationName);
         builder.Services
+            .AddCascadingAuthenticationState()
             .AddEndpointsApiExplorer()
             .AddSwaggerGen(c => c.SwaggerDoc("v1", new() { Title = applicationName, Version = version, }))
             .AddDaprBuses(builder.Configuration)
@@ -120,6 +123,7 @@ public static class ServerSideClientAppHelper
             .AddSignInManager()
             .AddDefaultTokenProviders()
             .AddApiEndpoints();
+        builder.Services.TryAddSingleton<IEmailSender<ApplicationUser>, EmailSender>();
 
         if (debugInVisualStudio)
         {
@@ -178,6 +182,8 @@ public static class ServerSideClientAppHelper
         }
 
         _ = app
+            .UseExceptionHandler("/Error", createScopeForErrors: true)
+            .UseHsts()
             .UseStaticFiles()
             .UseSwagger()
             .UseSwaggerUI()
@@ -197,6 +203,9 @@ public static class ServerSideClientAppHelper
         _ = app.MapIdentityApi<TUser>();
 
         _ = app.MapActorsHandlers();
+
+        // Add additional endpoints required by the Identity /Account Razor components.
+        _ = app.MapAdditionalIdentityEndpoints();
 
         return app;
     }

@@ -16,7 +16,7 @@
             @bind-SelectedOptions="@_selectedPlaces"
             AutoComplete="on"
             Id="@(_childIdPrefix+"-auto-complete")"
-            MaximumSelectedOptions="@_maximumSelectedOptions"
+            MaximumSelectedOptions="1"
             Placeholder="@Placeholder"
             OnOptionsSearch="@OnSearchAsync"
             OptionStyle="min-height: 40px;"
@@ -68,8 +68,6 @@
 
 
 @code {
-    public int _maximumSelectedOptions = 1;
-
     private string? _childIdPrefix;
 
     [Parameter]
@@ -79,7 +77,6 @@
     public int MinimumSearchTextLengthForAutocomplete { get; set; } = 5;
 
     [Parameter]
-    [EditorRequired]
     public string? PostalAddressName { get; set; } = "Primary";
 
     public IEnumerable<PlaceDescription> _selectedPlaces = [];
@@ -87,7 +84,7 @@
     double? _latitude;
     double? _longitude;
 
-    FluentAutocomplete<PlaceDescription>? _addressAutocomplete;
+    //FluentAutocomplete<PlaceDescription>? _addressAutocomplete;
 
      protected override async Task OnAfterRenderAsync(bool firstRender)
     {

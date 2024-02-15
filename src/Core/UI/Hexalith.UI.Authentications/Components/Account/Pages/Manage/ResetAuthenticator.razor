@@ -1,5 +1,8 @@
 ﻿@page "/Account/Manage/ResetAuthenticator"
 
+@using Microsoft.AspNetCore.Identity
+@using Hexalith.UI.Authentications.ViewModels
+
 @inject UserManager<ApplicationUser> UserManager
 @inject SignInManager<ApplicationUser> SignInManager
 @inject IdentityUserAccessor UserAccessor

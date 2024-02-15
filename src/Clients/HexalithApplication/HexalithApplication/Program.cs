@@ -29,14 +29,15 @@ builder.Services.AddHexalithServerSideClientApp(builder.Configuration);
 
 WebApplication app = builder.Build();
 app.UseHexalithWebApplication<HexalithApplication.Components.App, ApplicationUser>([
-        typeof(HexalithApplication.Client._Imports).Assembly,
-        typeof(Hexalith.UI.ApplicationLayout.Components.Layouts.Component1).Assembly,
-        typeof(Hexalith.UI.Authentications.Components.Account.Pages.ConfirmEmail).Assembly,
-        typeof(Hexalith.UI.Authorizations.Components._Imports).Assembly,
-        typeof(Hexalith.UI.Parties.Components.Customer.Pages.Register).Assembly,
-        typeof(Hexalith.UI.PostalAddresses._Imports).Assembly,
-        typeof(Hexalith.UI.Users._Imports).Assembly,
-    ]);
+    typeof(HexalithApplication.Client._Imports).Assembly,
+    typeof(Hexalith.UI.ApplicationLayout.Components.Layouts.Component1).Assembly,
+    typeof(Hexalith.UI.Authentications.Components.Account.Pages.ConfirmEmail).Assembly,
+    typeof(Hexalith.UI.Authorizations.ViewModels.RoleViewModel).Assembly,
+    typeof(Hexalith.UI.Parties.Components.Customer.Pages.Register).Assembly
+/*    typeof(Hexalith.UI.PostalAddresses.Components.AutoCompletePostalAdress).Assembly,
+    typeof(Hexalith.UI.Users.ViewModels.RoleViewModel).Assembly,
+*/
+]);
 
 Log.Logger.Information("Starting {AppName}.", appName);
 

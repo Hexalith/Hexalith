@@ -8,21 +8,18 @@ namespace Hexalith.UI.Authentications.Helpers;
 
 using System;
 
-using Hexalith.Infrastructure.Security.Abstractions.Models;
 using Hexalith.UI.Authentications.Components.Account;
 
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 
 public static class AuthenticationUIHelper
 {
     public static IServiceCollection AddAuthenticationUI(this IServiceCollection services, IConfiguration configuration)
     {
         _ = services
-        .AddCascadingAuthenticationState()
         .AddScoped<IdentityUserAccessor>()
         .AddScoped<IdentityRedirectManager>()
         .AddScoped<AuthenticationStateProvider, PersistingRevalidatingAuthenticationStateProvider>()
@@ -50,7 +47,6 @@ public static class AuthenticationUIHelper
             microsoftOptions.ClientSecret = clientSecret;
         })
         .AddIdentityCookies();
-        services.TryAddSingleton<IEmailSender<ApplicationUser>, IdentityEmailSender>();
 
         return services;
     }

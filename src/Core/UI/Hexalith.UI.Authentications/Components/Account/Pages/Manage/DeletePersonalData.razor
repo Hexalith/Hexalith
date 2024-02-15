@@ -1,5 +1,9 @@
 ﻿@page "/Account/Manage/DeletePersonalData"
 
+@using System.ComponentModel.DataAnnotations
+@using Microsoft.AspNetCore.Identity
+@using Hexalith.UI.Authentications.ViewModels
+
 @inject UserManager<ApplicationUser> UserManager
 @inject SignInManager<ApplicationUser> SignInManager
 @inject IdentityUserAccessor UserAccessor
@@ -21,7 +25,7 @@
         </div>
         <EditForm Model="Input" FormName="delete-user" OnValidSubmit="OnValidSubmitAsync" method="post">
             <DataAnnotationsValidator />
-            <ValidationSummary class="text-danger" role="alert" />
+            <FluentValidationSummary class="text-danger" role="alert" />
             @if (requirePassword)
             {
                 <FluentTextField type="password" Name="Input.Password" @bind-Value="Input.Password" AutoComplete="new-password" Required="true" Placeholder="Please enter your password." Label="Password" Style="width: 100%" />
@@ -31,7 +35,6 @@
         </EditForm>
     </FluentGridItem>
 </FluentGrid>
-
 @code {
     private string? message;
     private ApplicationUser user = default!;
