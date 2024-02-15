@@ -25,6 +25,7 @@ using Hexalith.Infrastructure.ClientApp.Helpers;
 using Hexalith.Infrastructure.ClientAppOnServer.Security;
 using Hexalith.Infrastructure.ClientAppOnServer.Services;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
+using Hexalith.Infrastructure.Emails.SendGrid.Helpers;
 using Hexalith.Infrastructure.GoogleMaps.Helpers;
 using Hexalith.Infrastructure.Security.Abstractions.Models;
 using Hexalith.Infrastructure.WebApis.Helpers;
@@ -33,6 +34,7 @@ using Hexalith.UI.Authentications.Helpers;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -123,7 +125,11 @@ public static class ServerSideClientAppHelper
             .AddSignInManager()
             .AddDefaultTokenProviders()
             .AddApiEndpoints();
-        builder.Services.TryAddSingleton<IEmailSender<ApplicationUser>, EmailSender>();
+
+        builder.Services
+            .AddSendGridEmail(builder.Configuration)
+            .TryAddSingleton<IEmailSender<ApplicationUser>, EmailSender>();
+        builder.Services.TryAddSingleton<IEmailSender, EmailSender>();
 
         if (debugInVisualStudio)
         {

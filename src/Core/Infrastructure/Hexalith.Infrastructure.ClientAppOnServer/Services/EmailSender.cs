@@ -53,9 +53,7 @@ public class EmailSender : IEmailSender<ApplicationUser>, IEmailSender
         ArgumentNullException.ThrowIfNull(user);
         ArgumentException.ThrowIfNullOrWhiteSpace(email);
         ArgumentException.ThrowIfNullOrWhiteSpace(confirmationLink);
-        string subject = "Confirm your email";
-        string message = $"Please confirm your account by clicking this link: <a href='{confirmationLink}'>link</a>";
-        await SendEmailAsync(email, subject, message).ConfigureAwait(false);
+        await SendEmailAsync(email, "Confirm your email", $"Please confirm your account by <a href='{confirmationLink}'>clicking here</a>.").ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -75,10 +73,7 @@ public class EmailSender : IEmailSender<ApplicationUser>, IEmailSender
         ArgumentNullException.ThrowIfNull(user);
         ArgumentException.ThrowIfNullOrWhiteSpace(email);
         ArgumentException.ThrowIfNullOrWhiteSpace(resetCode);
-        string subject = "Reset password";
-        string message = $"Please reset your password by using this code: <b>{resetCode}</b>";
-
-        await SendEmailAsync(email, subject, message).ConfigureAwait(false);
+        await SendEmailAsync(email, "Reset your password", $"Please reset your password using the following code: {resetCode}").ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -87,8 +82,6 @@ public class EmailSender : IEmailSender<ApplicationUser>, IEmailSender
         ArgumentNullException.ThrowIfNull(user);
         ArgumentException.ThrowIfNullOrWhiteSpace(email);
         ArgumentException.ThrowIfNullOrWhiteSpace(resetLink);
-        string subject = "Reset password";
-        string message = $"Please reset your password by clicking this link: <a href='{resetLink}'>link</a>";
-        await SendEmailAsync(email, subject, message).ConfigureAwait(false);
+        await SendEmailAsync(email, "Reset your password", $"Please reset your password by <a href='{resetLink}'>clicking here</a>.").ConfigureAwait(false);
     }
 }
