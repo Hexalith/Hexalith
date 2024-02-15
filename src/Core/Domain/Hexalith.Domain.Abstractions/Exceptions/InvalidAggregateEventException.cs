@@ -31,88 +31,88 @@ using Hexalith.Extensions.Errors;
 /// <seealso cref="InvalidOperationException" />
 public class InvalidAggregateEventException : ApplicationErrorException
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="InvalidAggregateEventException"/> class.
-    /// </summary>
-    public InvalidAggregateEventException()
-    {
-    }
+	/// <summary>
+	/// Initializes a new instance of the <see cref="InvalidAggregateEventException"/> class.
+	/// </summary>
+	public InvalidAggregateEventException()
+	{
+	}
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="InvalidAggregateEventException"/> class.
-    /// </summary>
-    /// <param name="message">The message that describes the error.</param>
-    public InvalidAggregateEventException(string? message)
-        : base(message)
-    {
-    }
+	/// <summary>
+	/// Initializes a new instance of the <see cref="InvalidAggregateEventException"/> class.
+	/// </summary>
+	/// <param name="message">The message that describes the error.</param>
+	public InvalidAggregateEventException(string? message)
+		: base(message)
+	{
+	}
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="InvalidAggregateEventException"/> class.
-    /// </summary>
-    /// <param name="aggregate">The aggregate.</param>
-    /// <param name="domainEvent">The domain event.</param>
-    /// <param name="isInitializerEvent">if set to <c>true</c> [is initializer event].</param>
-    public InvalidAggregateEventException(IAggregate aggregate, BaseEvent domainEvent, bool isInitializerEvent)
-        : base(GetError(aggregate, domainEvent, isInitializerEvent), null)
-    {
-        Aggregate = aggregate;
-        DomainEvent = domainEvent;
-        IsInitializerEvent = isInitializerEvent;
-    }
+	/// <summary>
+	/// Initializes a new instance of the <see cref="InvalidAggregateEventException"/> class.
+	/// </summary>
+	/// <param name="aggregate">The aggregate.</param>
+	/// <param name="domainEvent">The domain event.</param>
+	/// <param name="isInitializerEvent">if set to <c>true</c> [is initializer event].</param>
+	public InvalidAggregateEventException(IAggregate aggregate, BaseEvent domainEvent, bool isInitializerEvent)
+		: base(GetError(aggregate, domainEvent, isInitializerEvent), null)
+	{
+		Aggregate = aggregate;
+		DomainEvent = domainEvent;
+		IsInitializerEvent = isInitializerEvent;
+	}
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="InvalidAggregateEventException"/> class.
-    /// </summary>
-    /// <param name="message">The error message that explains the reason for the exception.</param>
-    /// <param name="innerException">The exception that is the cause of the current exception. If the <paramref name="innerException" /> parameter is not a null reference (<see langword="Nothing" /> in Visual Basic), the current exception is raised in a <see langword="catch" /> block that handles the inner exception.</param>
-    public InvalidAggregateEventException(string? message, Exception? innerException)
-        : base(message, innerException)
-    {
-    }
+	/// <summary>
+	/// Initializes a new instance of the <see cref="InvalidAggregateEventException"/> class.
+	/// </summary>
+	/// <param name="message">The error message that explains the reason for the exception.</param>
+	/// <param name="innerException">The exception that is the cause of the current exception. If the <paramref name="innerException" /> parameter is not a null reference (<see langword="Nothing" /> in Visual Basic), the current exception is raised in a <see langword="catch" /> block that handles the inner exception.</param>
+	public InvalidAggregateEventException(string? message, Exception? innerException)
+		: base(message, innerException)
+	{
+	}
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="InvalidAggregateEventException"/> class.
-    /// </summary>
-    /// <param name="info">The object that holds the serialized object data.</param>
-    /// <param name="context">The contextual information about the source or destination.</param>
-    protected InvalidAggregateEventException(SerializationInfo info, StreamingContext context)
-        : base(info, context)
-    {
-    }
+	/// <summary>
+	/// Initializes a new instance of the <see cref="InvalidAggregateEventException"/> class.
+	/// </summary>
+	/// <param name="info">The object that holds the serialized object data.</param>
+	/// <param name="context">The contextual information about the source or destination.</param>
+	protected InvalidAggregateEventException(SerializationInfo info, StreamingContext context)
+		: base(info, context)
+	{
+	}
 
-    /// <summary>
-    /// Gets the aggregate.
-    /// </summary>
-    /// <value>The aggregate.</value>
-    public IAggregate? Aggregate { get; }
+	/// <summary>
+	/// Gets the aggregate.
+	/// </summary>
+	/// <value>The aggregate.</value>
+	public IAggregate? Aggregate { get; }
 
-    /// <summary>
-    /// Gets the domain event.
-    /// </summary>
-    /// <value>The domain event.</value>
-    public BaseEvent? DomainEvent { get; }
+	/// <summary>
+	/// Gets the domain event.
+	/// </summary>
+	/// <value>The domain event.</value>
+	public BaseEvent? DomainEvent { get; }
 
-    /// <summary>
-    /// Gets a value indicating whether this instance is initializer event.
-    /// </summary>
-    /// <value><c>true</c> if this instance is initializer event; otherwise, <c>false</c>.</value>
-    public bool IsInitializerEvent { get; }
+	/// <summary>
+	/// Gets a value indicating whether this instance is initializer event.
+	/// </summary>
+	/// <value><c>true</c> if this instance is initializer event; otherwise, <c>false</c>.</value>
+	public bool IsInitializerEvent { get; }
 
-    private static ApplicationError GetError(IAggregate aggregate, BaseEvent domainEvent, bool isInitializerEvent)
-        => isInitializerEvent
-            ? new ApplicationError
-            {
-                Title = "Error applying event",
-                Detail = "The Event '{MessageType}' cannot be applied to the aggregate '{AggregateName}' with id '{AggregateId}'.",
-                Arguments = new[] { domainEvent.TypeName, domainEvent.AggregateName, domainEvent.AggregateId },
-                Category = ErrorCategory.Functional,
-            }
-            : new ApplicationError
-            {
-                Title = "Error applying event",
-                Detail = "The event '{MessageType}' can only be used for initialization. The aggregate '{AggregateName}' with ID '{aggregateId}' is already initialized.",
-                Arguments = new[] { domainEvent.TypeName, domainEvent.AggregateName, domainEvent.AggregateId },
-                Category = ErrorCategory.Functional,
-            };
+	private static ApplicationError GetError(IAggregate aggregate, BaseEvent domainEvent, bool isInitializerEvent)
+		=> isInitializerEvent
+			? new ApplicationError
+			{
+				Title = "Error applying event",
+				Detail = "The Event '{MessageType}' cannot be applied to the aggregate '{AggregateName}' with id '{AggregateId}'.",
+				Arguments = new[] { domainEvent.TypeName, domainEvent.AggregateName, domainEvent.AggregateId },
+				Category = ErrorCategory.Functional,
+			}
+			: new ApplicationError
+			{
+				Title = "Error applying event",
+				Detail = "The event '{MessageType}' can only be used for initialization. The aggregate '{AggregateName}' with ID '{aggregateId}' is already initialized.",
+				Arguments = new[] { domainEvent.TypeName, domainEvent.AggregateName, domainEvent.AggregateId },
+				Category = ErrorCategory.Functional,
+			};
 }

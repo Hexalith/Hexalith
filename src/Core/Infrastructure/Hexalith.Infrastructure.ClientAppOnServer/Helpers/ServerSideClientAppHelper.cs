@@ -117,8 +117,13 @@ public static class ServerSideClientAppHelper
                     .AddAuthenticationSchemes(IdentityConstants.BearerScheme));
 
         string connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+        string migrationAssembly = typeof(ApplicationDbContext).Assembly.GetName().Name
+            ?? throw new InvalidOperationException($"{nameof(ApplicationDbContext)} assembly name not found");
         _ = builder.Services
-            .AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString))
+            .AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(
+                    connectionString,
+                    x => x.MigrationsAssembly(migrationAssembly)))
             .AddDatabaseDeveloperPageExceptionFilter()
             .AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
             .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -159,17 +164,24 @@ public static class ServerSideClientAppHelper
     }
 
     /// <summary>
-    /// Uses the Hexalith framework for the server-side client application.
+    /// Uses the hexalith web application.
     /// </summary>
-    /// <typeparam name="TApp">The type of the application.</typeparam>
-    /// <param name="app">The web application.</param>
-    /// <param name="additionalAssemblies">The assembly containing the WebAssembly client.</param>
-    /// <returns>The updated web application.</returns>
-    /// <exception cref="ArgumentNullException">Thrown when the web application is null.</exception>
+    /// <typeparam name="TApp">The type of the t application.</typeparam>
+    /// <typeparam name="TUser">The type of the t user.</typeparam>
+    /// <param name="app">The application.</param>
+    /// <param name="additionalAssemblies">The additional assemblies.</param>
+    /// <returns>IApplicationBuilder.</returns>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
     public static IApplicationBuilder UseHexalithWebApplication<TApp, TUser>([NotNull] this WebApplication app, Assembly[] additionalAssemblies)
         where TUser : class, new()
     {
         ArgumentNullException.ThrowIfNull(app);
+        using (IServiceScope scope = app.Services.CreateScope())
+        {
+            using ApplicationDbContext context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            context.Database.Migrate();
+        }
+
         _ = app
             .UseCors()
             .UseSerilogRequestLogging()
@@ -179,17 +191,21 @@ public static class ServerSideClientAppHelper
 
         _ = app.MapSubscribeHandler();
 
-        if (app.Environment.IsDevelopment())
+        if (!app.Environment.IsProduction())
         {
             app
-                .UseDeveloperExceptionPage()
-                .UseMigrationsEndPoint()
-                .UseWebAssemblyDebugging();
+                 .UseDeveloperExceptionPage()
+                 .UseMigrationsEndPoint()
+                 .UseWebAssemblyDebugging();
+        }
+        else
+        {
+            _ = app
+                .UseExceptionHandler("/Error", createScopeForErrors: true)
+                .UseHsts();
         }
 
         _ = app
-            .UseExceptionHandler("/Error", createScopeForErrors: true)
-            .UseHsts()
             .UseStaticFiles()
             .UseSwagger()
             .UseSwaggerUI()

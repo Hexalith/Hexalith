@@ -25,51 +25,51 @@ using Hexalith.Domain.Events;
 /// </summary>
 public interface IAggregate
 {
-    /// <summary>
-    /// Gets the aggregate identifier.
-    /// </summary>
-    /// <value>The aggregate identifier.</value>
-    string AggregateId { get; }
+	/// <summary>
+	/// Gets the aggregate identifier.
+	/// </summary>
+	/// <value>The aggregate identifier.</value>
+	string AggregateId { get; }
 
-    /// <summary>
-    /// Gets the name of the aggregate.
-    /// </summary>
-    /// <value>The name of the aggregate.</value>
-    string AggregateName { get; }
+	/// <summary>
+	/// Gets the name of the aggregate.
+	/// </summary>
+	/// <value>The name of the aggregate.</value>
+	string AggregateName { get; }
 
-    /// <summary>
-    /// Applies the specified domain event.
-    /// </summary>
-    /// <param name="domainEvent">The domain event.</param>
-    /// <returns>IAggregate.</returns>
-    IAggregate Apply(BaseEvent domainEvent);
+	/// <summary>
+	/// Applies the specified domain event.
+	/// </summary>
+	/// <param name="domainEvent">The domain event.</param>
+	/// <returns>IAggregate.</returns>
+	IAggregate Apply(BaseEvent domainEvent);
 
-    /// <summary>
-    /// Applies the specified domain event.
-    /// </summary>
-    /// <param name="events">The domain events.</param>
-    /// <returns>IAggregate.</returns>
-    IAggregate Apply([NotNull] IEnumerable<BaseEvent> events)
-    {
-        ArgumentNullException.ThrowIfNull(events);
-        IAggregate aggregate = this;
-        foreach (BaseEvent e in events)
-        {
-            if (e.AggregateName != aggregate.AggregateName || (IsInitialized() && e.AggregateId != aggregate.AggregateId))
-            {
-                string aggregateId = IsInitialized() ? $"/{e.AggregateId}" : string.Empty;
-                throw new InvalidOperationException($"The event '{e.TypeName}' can only be applied to aggregate '{e.AggregateName}' with Id {e.AggregateId}. It cannot be applied to aggregate {aggregate.AggregateName}{aggregateId}.");
-            }
+	/// <summary>
+	/// Applies the specified domain event.
+	/// </summary>
+	/// <param name="events">The domain events.</param>
+	/// <returns>IAggregate.</returns>
+	IAggregate Apply([NotNull] IEnumerable<BaseEvent> events)
+	{
+		ArgumentNullException.ThrowIfNull(events);
+		IAggregate aggregate = this;
+		foreach (BaseEvent e in events)
+		{
+			if (e.AggregateName != aggregate.AggregateName || (IsInitialized() && e.AggregateId != aggregate.AggregateId))
+			{
+				string aggregateId = IsInitialized() ? $"/{e.AggregateId}" : string.Empty;
+				throw new InvalidOperationException($"The event '{e.TypeName}' can only be applied to aggregate '{e.AggregateName}' with Id {e.AggregateId}. It cannot be applied to aggregate {aggregate.AggregateName}{aggregateId}.");
+			}
 
-            aggregate = aggregate.Apply(e);
-        }
+			aggregate = aggregate.Apply(e);
+		}
 
-        return aggregate;
-    }
+		return aggregate;
+	}
 
-    /// <summary>
-    /// Determines whether this instance is initialized.
-    /// </summary>
-    /// <returns><c>true</c> if this instance is initialized; otherwise, <c>false</c>.</returns>
-    bool IsInitialized();
+	/// <summary>
+	/// Determines whether this instance is initialized.
+	/// </summary>
+	/// <returns><c>true</c> if this instance is initialized; otherwise, <c>false</c>.</returns>
+	bool IsInitialized();
 }

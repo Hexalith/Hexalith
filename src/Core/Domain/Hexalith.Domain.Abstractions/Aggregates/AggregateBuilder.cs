@@ -27,66 +27,66 @@ using Hexalith.Domain.Events;
 /// </summary>
 public class AggregateBuilder
 {
-    /// <summary>
-    /// The events.
-    /// </summary>
-    private BaseEvent[]? _events;
+	/// <summary>
+	/// The events.
+	/// </summary>
+	private BaseEvent[]? _events;
 
-    /// <summary>
-    /// The initializer.
-    /// </summary>
-    private Func<BaseEvent, IAggregate>? _initializer;
+	/// <summary>
+	/// The initializer.
+	/// </summary>
+	private Func<BaseEvent, IAggregate>? _initializer;
 
-    /// <summary>
-    /// Builds this instance.
-    /// </summary>
-    /// <returns>IAggregate.</returns>
-    /// <exception cref="InvalidOperationException">Events are not set.</exception>
-    /// <exception cref="InvalidOperationException">Initializer is not set.</exception>
-    public IAggregate Build()
-    {
-        if (_events is null || _events.Length == 0)
-        {
-            throw new InvalidOperationException("The event list is null or empty.");
-        }
+	/// <summary>
+	/// Builds this instance.
+	/// </summary>
+	/// <returns>IAggregate.</returns>
+	/// <exception cref="InvalidOperationException">Events are not set.</exception>
+	/// <exception cref="InvalidOperationException">Initializer is not set.</exception>
+	public IAggregate Build()
+	{
+		if (_events is null || _events.Length == 0)
+		{
+			throw new InvalidOperationException("The event list is null or empty.");
+		}
 
-        if (_initializer is null)
-        {
-            throw new InvalidOperationException("Initializer is not set.");
-        }
+		if (_initializer is null)
+		{
+			throw new InvalidOperationException("Initializer is not set.");
+		}
 
-        IAggregate aggregate = _initializer(_events[0]);
-        foreach (BaseEvent @event in _events[1..])
-        {
-            aggregate = aggregate.Apply(@event);
-        }
+		IAggregate aggregate = _initializer(_events[0]);
+		foreach (BaseEvent @event in _events[1..])
+		{
+			aggregate = aggregate.Apply(@event);
+		}
 
-        return aggregate;
-    }
+		return aggregate;
+	}
 
-    /// <summary>
-    /// Events the specified events.
-    /// </summary>
-    /// <param name="events">The events.</param>
-    /// <returns>AggregateBuilder.</returns>
-    /// <exception cref="ArgumentNullException">Null.</exception>
-    public AggregateBuilder Events(IEnumerable<BaseEvent> events)
-    {
-        ArgumentNullException.ThrowIfNull(events);
-        _events = events.ToArray();
-        return this;
-    }
+	/// <summary>
+	/// Events the specified events.
+	/// </summary>
+	/// <param name="events">The events.</param>
+	/// <returns>AggregateBuilder.</returns>
+	/// <exception cref="ArgumentNullException">Null.</exception>
+	public AggregateBuilder Events(IEnumerable<BaseEvent> events)
+	{
+		ArgumentNullException.ThrowIfNull(events);
+		_events = events.ToArray();
+		return this;
+	}
 
-    /// <summary>
-    /// Initializers the specified initializer.
-    /// </summary>
-    /// <param name="initializer">The initializer.</param>
-    /// <returns>AggregateBuilder.</returns>
-    /// <exception cref="ArgumentNullException">Null.</exception>
-    public AggregateBuilder Initializer(Func<BaseEvent, IAggregate> initializer)
-    {
-        ArgumentNullException.ThrowIfNull(initializer);
-        _initializer = initializer;
-        return this;
-    }
+	/// <summary>
+	/// Initializers the specified initializer.
+	/// </summary>
+	/// <param name="initializer">The initializer.</param>
+	/// <returns>AggregateBuilder.</returns>
+	/// <exception cref="ArgumentNullException">Null.</exception>
+	public AggregateBuilder Initializer(Func<BaseEvent, IAggregate> initializer)
+	{
+		ArgumentNullException.ThrowIfNull(initializer);
+		_initializer = initializer;
+		return this;
+	}
 }

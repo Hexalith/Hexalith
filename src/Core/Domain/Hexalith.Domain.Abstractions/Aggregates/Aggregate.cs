@@ -34,64 +34,64 @@ using Hexalith.Domain.Events;
 [Serializable]
 public abstract record Aggregate : IAggregate
 {
-    ///// <summary>
-    ///// The space substitution.
-    ///// </summary>
-    // public const char SpaceSubstitutionCharacter = '~';
+	///// <summary>
+	///// The space substitution.
+	///// </summary>
+	// public const char SpaceSubstitutionCharacter = '~';
 
-    /// <summary>
-    /// Default string used for separating natural keys to compose the aggregate identifier.
-    /// </summary>
-    public const string Separator = "-";
+	/// <summary>
+	/// Default string used for separating natural keys to compose the aggregate identifier.
+	/// </summary>
+	public const string Separator = "-";
 
-    /// <inheritdoc/>
-    [IgnoreDataMember]
-    [JsonIgnore]
-    public string AggregateId => DefaultAggregateId();
+	/// <inheritdoc/>
+	[IgnoreDataMember]
+	[JsonIgnore]
+	public string AggregateId => DefaultAggregateId();
 
-    /// <inheritdoc/>
-    [IgnoreDataMember]
-    [JsonIgnore]
-    public string AggregateName => DefaultAggregateName();
+	/// <inheritdoc/>
+	[IgnoreDataMember]
+	[JsonIgnore]
+	public string AggregateName => DefaultAggregateName();
 
-    /// <inheritdoc/>
-    public abstract IAggregate Apply(BaseEvent domainEvent);
+	/// <inheritdoc/>
+	public abstract IAggregate Apply(BaseEvent domainEvent);
 
-    /// <inheritdoc/>
-    public abstract bool IsInitialized();
+	/// <inheritdoc/>
+	public abstract bool IsInitialized();
 
-    /// <summary>
-    /// Normalizes the specified identifier.
-    /// </summary>
-    /// <param name="id">The identifier.</param>
-    /// <returns>System.String.</returns>
-    /// <exception cref="System.InvalidOperationException">The specified character '{SpaceSubstitution}' cannot be used in an aggregate identifier ({id}). It conflicts with the system's designated replacement for white spaces.</exception>
-    public static string Normalize([NotNull] string id)
-    {
-        return string.IsNullOrWhiteSpace(id)
-            ? throw new ArgumentException("The specified identifier cannot be empty or white space.", nameof(id))
-            : id;
+	/// <summary>
+	/// Normalizes the specified identifier.
+	/// </summary>
+	/// <param name="id">The identifier.</param>
+	/// <returns>System.String.</returns>
+	/// <exception cref="System.InvalidOperationException">The specified character '{SpaceSubstitution}' cannot be used in an aggregate identifier ({id}). It conflicts with the system's designated replacement for white spaces.</exception>
+	public static string Normalize([NotNull] string id)
+	{
+		return string.IsNullOrWhiteSpace(id)
+			? throw new ArgumentException("The specified identifier cannot be empty or white space.", nameof(id))
+			: id;
 
-        // if (id.Contains(SpaceSubstitutionCharacter, StringComparison.OrdinalIgnoreCase))
-        // {
-        //    throw new InvalidOperationException($"The specified character '{SpaceSubstitutionCharacter}' cannot be used in an aggregate identifier ({id}). It conflicts with the system's designated replacement for white spaces.");
-        // }
+		// if (id.Contains(SpaceSubstitutionCharacter, StringComparison.OrdinalIgnoreCase))
+		// {
+		//    throw new InvalidOperationException($"The specified character '{SpaceSubstitutionCharacter}' cannot be used in an aggregate identifier ({id}). It conflicts with the system's designated replacement for white spaces.");
+		// }
 
-        //// replace spaces by a special character to avoid incompatibility with the space
-        // return
-        //    id
-        //    .Replace(' ', SpaceSubstitutionCharacter);
-    }
+		//// replace spaces by a special character to avoid incompatibility with the space
+		// return
+		//    id
+		//    .Replace(' ', SpaceSubstitutionCharacter);
+	}
 
-    /// <summary>
-    /// Get the aggregate identifier.
-    /// </summary>
-    /// <returns>The identifier.</returns>
-    protected virtual string DefaultAggregateId() => DefaultAggregateName();
+	/// <summary>
+	/// Get the aggregate identifier.
+	/// </summary>
+	/// <returns>The identifier.</returns>
+	protected virtual string DefaultAggregateId() => DefaultAggregateName();
 
-    /// <summary>
-    /// Get the aggregate name.
-    /// </summary>
-    /// <returns>The name.</returns>
-    protected virtual string DefaultAggregateName() => GetType().Name;
+	/// <summary>
+	/// Get the aggregate name.
+	/// </summary>
+	/// <returns>The name.</returns>
+	protected virtual string DefaultAggregateName() => GetType().Name;
 }
