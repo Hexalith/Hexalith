@@ -34,6 +34,7 @@ using Hexalith.UI.Authentications.Helpers;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -124,7 +125,11 @@ public static class ServerSideClientAppHelper
             .AddSignInManager()
             .AddDefaultTokenProviders()
             .AddApiEndpoints();
-        builder.Services.TryAddSingleton<IEmailSender<ApplicationUser>, EmailSender>();
+
+        builder.Services
+            .AddSendGridEmail(builder.Configuration)
+            .TryAddSingleton<IEmailSender<ApplicationUser>, EmailSender>();
+        builder.Services.TryAddSingleton<IEmailSender, EmailSender>();
 
         _ = builder.Services.AddSendGridEmail(builder.Configuration);
         _ = builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityEmailSender>();

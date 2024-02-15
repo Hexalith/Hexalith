@@ -34,7 +34,7 @@ app.UseHexalithWebApplication<HexalithApplication.Components.App, ApplicationUse
     typeof(Hexalith.UI.Authentications.Components.Account.Pages.ConfirmEmail).Assembly,
     typeof(Hexalith.UI.Authorizations.ViewModels.RoleViewModel).Assembly,
     typeof(Hexalith.UI.Parties.Components.Customer.Pages.Register).Assembly
-/*    typeof(Hexalith.UI.PostalAddresses.Components.AutoCompletePostalAdress).Assembly,
+/*    typeof(Hexalith.UI.PostalAddresses.Components.AutoCompletePostalAddress).Assembly,
     typeof(Hexalith.UI.Users.ViewModels.RoleViewModel).Assembly,
 */
 ]);
