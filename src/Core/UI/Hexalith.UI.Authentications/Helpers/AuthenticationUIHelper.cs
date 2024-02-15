@@ -8,9 +8,6 @@ namespace Hexalith.UI.Authentications.Helpers;
 
 using System;
 
-using Hexalith.UI.Authentications.Components.Account;
-
-using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,9 +17,6 @@ public static class AuthenticationUIHelper
     public static IServiceCollection AddAuthenticationUI(this IServiceCollection services, IConfiguration configuration)
     {
         _ = services
-        .AddScoped<IdentityUserAccessor>()
-        .AddScoped<IdentityRedirectManager>()
-        .AddScoped<AuthenticationStateProvider, PersistingRevalidatingAuthenticationStateProvider>()
         .AddAuthentication(options =>
         {
             options.DefaultScheme = IdentityConstants.ApplicationScheme;

@@ -33,6 +33,7 @@ using Hexalith.UI.Authentications.Components.Account;
 using Hexalith.UI.Authentications.Helpers;
 
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Routing;
@@ -86,6 +87,7 @@ public static class ServerSideClientAppHelper
 
         startupLogger.Information("Configuring {AppName} ...", applicationName);
         builder.Services
+            .AddAuthenticationUI(builder.Configuration)
             .AddCascadingAuthenticationState()
             .AddEndpointsApiExplorer()
             .AddSwaggerGen(c => c.SwaggerDoc("v1", new() { Title = applicationName, Version = version, }))
@@ -134,7 +136,8 @@ public static class ServerSideClientAppHelper
         builder.Services
             .AddSendGridEmail(builder.Configuration)
             .TryAddSingleton<IEmailSender<ApplicationUser>, EmailSender>();
-        builder.Services.TryAddSingleton<IEmailSender, EmailSender>();
+        builder.Services
+            .TryAddSingleton<IEmailSender, EmailSender>();
 
         if (debugInVisualStudio)
         {
@@ -157,9 +160,11 @@ public static class ServerSideClientAppHelper
                 options.Cookie.IsEssential = true;
             });
         _ = builder.Services
-            .AddAuthenticationUI(builder.Configuration)
             .AddGeolocationServices()
-            .AddGooglePlacesServices(builder.Configuration);
+            .AddGooglePlacesServices(builder.Configuration)
+            .AddScoped<AuthenticationStateProvider, PersistingRevalidatingAuthenticationStateProvider>()
+            .AddScoped<IdentityUserAccessor>()
+            .AddScoped<IdentityRedirectManager>();
         return builder;
     }
 

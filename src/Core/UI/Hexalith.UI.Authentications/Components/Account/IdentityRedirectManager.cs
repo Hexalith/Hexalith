@@ -11,7 +11,7 @@ using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Http;
 
-internal sealed class IdentityRedirectManager(NavigationManager navigationManager)
+public sealed class IdentityRedirectManager(NavigationManager navigationManager)
 {
     public const string StatusCookieName = "Identity.StatusMessage";
 
@@ -48,6 +48,16 @@ internal sealed class IdentityRedirectManager(NavigationManager navigationManage
         string uriWithoutQuery = navigationManager.ToAbsoluteUri(uri).GetLeftPart(UriPartial.Path);
         string newUri = navigationManager.GetUriWithQueryParameters(uriWithoutQuery, queryParameters);
         RedirectTo(newUri);
+    }
+
+    public void RedirectTo(Uri uri)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void RedirectTo(Uri uri, Dictionary<string, object?> queryParameters)
+    {
+        throw new NotImplementedException();
     }
 
     [DoesNotReturn]

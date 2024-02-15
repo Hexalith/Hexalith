@@ -16,7 +16,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 /// Implements the <see cref="AuthenticationStateProvider" />.
 /// </summary>
 /// <seealso cref="AuthenticationStateProvider" />
-public class PersistentAuthenticationStateProvider : AuthenticationStateProvider
+public class PersistingRevalidatingAuthenticationStateProvider : AuthenticationStateProvider
 {
     /// <summary>
     /// The default unauthenticated task.
@@ -30,10 +30,10 @@ public class PersistentAuthenticationStateProvider : AuthenticationStateProvider
     private readonly Task<AuthenticationState> _authenticationStateTask = _defaultUnauthenticatedTask;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="PersistentAuthenticationStateProvider"/> class.
+    /// Initializes a new instance of the <see cref="PersistingRevalidatingAuthenticationStateProvider"/> class.
     /// </summary>
     /// <param name="state">The state.</param>
-    public PersistentAuthenticationStateProvider(PersistentComponentState state)
+    public PersistingRevalidatingAuthenticationStateProvider(PersistentComponentState state)
     {
         ArgumentNullException.ThrowIfNull(state);
         if (!state.TryTakeFromJson(nameof(UserInfo), out UserInfo? userInfo) || userInfo is null)
@@ -49,7 +49,7 @@ public class PersistentAuthenticationStateProvider : AuthenticationStateProvider
         _authenticationStateTask = Task.FromResult(
             new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity(
                 claims,
-                authenticationType: nameof(PersistentAuthenticationStateProvider)))));
+                authenticationType: nameof(PersistingRevalidatingAuthenticationStateProvider)))));
     }
 
     /// <summary>

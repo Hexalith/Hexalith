@@ -7,7 +7,6 @@
 namespace Hexalith.Infrastructure.ClientAppOnWasm.Helpers;
 
 using Hexalith.Infrastructure.ClientApp.Helpers;
-using Hexalith.Infrastructure.ClientApp.Security;
 
 using HexalithApplication.Client;
 
@@ -37,14 +36,15 @@ public static class WebAssemblyClientHelper
         _ = services
             .AddAuthorizationCore()
             .AddCascadingAuthenticationState()
-            .AddSingleton<AuthenticationStateProvider, PersistentAuthenticationStateProvider>()
             .AddHttpClient(
                 ClientConstants.FrontApiName,
                 client => client.BaseAddress = baseAddress)
             .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
         _ = services
             .AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>()
-            .CreateClient(ClientConstants.FrontApiName));
+            .CreateClient(ClientConstants.FrontApiName))
+            .AddSingleton<AuthenticationStateProvider, PersistentAuthenticationStateProvider>();
+
         return services;
     }
 

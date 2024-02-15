@@ -11,7 +11,7 @@ using Hexalith.Infrastructure.Security.Abstractions.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 
-internal sealed class IdentityUserAccessor(UserManager<ApplicationUser> userManager, IdentityRedirectManager redirectManager)
+public sealed class IdentityUserAccessor(UserManager<ApplicationUser> userManager, IdentityRedirectManager redirectManager)
 {
     public async Task<ApplicationUser> GetRequiredUserAsync(HttpContext context)
     {

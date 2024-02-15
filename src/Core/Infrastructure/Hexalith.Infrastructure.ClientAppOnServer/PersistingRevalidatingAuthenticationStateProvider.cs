@@ -4,7 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.UI.Authentications.Components.Account;
+namespace Hexalith.Infrastructure.ClientAppOnServer;
 
 using System.Diagnostics;
 using System.Security.Claims;
@@ -87,9 +87,11 @@ internal sealed class PersistingRevalidatingAuthenticationStateProvider : Revali
             throw new UnreachableException($"Authentication state not set in {nameof(OnPersistingAsync)}().");
         }
 
+#pragma warning disable CA2007 // Consider calling ConfigureAwait on the awaited task
 #pragma warning disable VSTHRD003 // Avoid awaiting foreign Tasks
-        AuthenticationState authenticationState = await _authenticationStateTask.ConfigureAwait(false);
+        AuthenticationState authenticationState = await _authenticationStateTask;
 #pragma warning restore VSTHRD003 // Avoid awaiting foreign Tasks
+#pragma warning restore CA2007 // Consider calling ConfigureAwait on the awaited task
         ClaimsPrincipal principal = authenticationState.User;
 
         if (principal.Identity?.IsAuthenticated == true)
