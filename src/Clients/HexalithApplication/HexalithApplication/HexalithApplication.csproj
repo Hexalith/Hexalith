@@ -35,9 +35,15 @@
 		<ProjectReference Include="..\HexalithApplication.Client\HexalithApplication.Client.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Content Update="Components\_Imports.razor">
-	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-	  </Content>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="$(AspNetCorePackagesVersion)">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+	</ItemGroup>
+	<ItemGroup>
+		<Content Update="Components\_Imports.razor">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+		</Content>
 	</ItemGroup>
 	<Target Name="MyTarget" AfterTargets="MinVer" Condition="'$(MinVerBuildMetadata)' != ''">
 		<PropertyGroup>

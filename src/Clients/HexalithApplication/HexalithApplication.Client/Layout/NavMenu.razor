@@ -21,7 +21,7 @@
                         <FluentNavLink Href="Customer/RecentlyRegistered" Icon="@(new Icons.Regular.Size20.DocumentPerson())" IconColor="Color.Accent">Recently registered</FluentNavLink>
                         <FluentNavLink Href="Customer/RecentlyChanged" Icon="@(new Icons.Regular.Size20.NotepadPerson())" IconColor="Color.Accent">Recently changed</FluentNavLink>
                     </FluentNavGroup>
-                    <FluentNavLink Href="Account/Manage">@context.User.Identity?.Name</FluentNavLink>
+                    <FluentNavLink Href="Account/Manage" Icon="@(new Icons.Regular.Size20.PersonAccounts())">@context.User.Identity?.Name</FluentNavLink>
                     <form action="Account/Logout" method="post">
                         <AntiforgeryToken />
                         <input type="hidden" name="ReturnUrl" value="@currentUrl" />
@@ -29,8 +29,8 @@
                     </form>
                 </Authorized>
                 <NotAuthorized>
-                    <FluentNavLink Href="Account/Register">Register</FluentNavLink>
-                    <FluentNavLink Href="Account/Login">Login</FluentNavLink>
+                    <FluentNavLink Href="Account/Register" Icon="@(new Icons.Regular.Size20.PersonAdd())">Register</FluentNavLink>
+                    <FluentNavLink Href="Account/Login" Icon="@(new Icons.Regular.Size20.PersonKey())">Login</FluentNavLink>
                 </NotAuthorized>
             </AuthorizeView>
         </FluentNavMenu>
