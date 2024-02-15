@@ -11,7 +11,6 @@ using Blazored.SessionStorage;
 using Hexalith.Application.Organizations.Helpers;
 using Hexalith.Extensions.Common;
 using Hexalith.Infrastructure.Emails.SendGrid.Helpers;
-using Hexalith.Infrastructure.GoogleMaps.Helpers;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

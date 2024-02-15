@@ -28,7 +28,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 /// Implements the <see cref="IEmailSender{ApplicationUser}" />.
 /// </summary>
 /// <seealso cref="IEmailSender{ApplicationUser}" />
-internal sealed class IdentityEmailSender : IEmailSender<ApplicationUser>
+public sealed class IdentityEmailSender : IEmailSender<ApplicationUser>
 {
     /// <summary>
     /// The email sender.
