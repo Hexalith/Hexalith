@@ -1,6 +1,7 @@
 ﻿@page "/Customer/Register"
 @using System.Security.Claims
 @using Hexalith.UI.PostalAddresses.Components
+@using System.Globalization
 @rendermode RenderMode.InteractiveServer
 
 @attribute [Authorize]
@@ -15,121 +16,163 @@
 <h3>Register customer</h3>
 @if (Model == null)
 {
-    <FluentStack>
-        <FluentProgressRing></FluentProgressRing>
-    </FluentStack>
+	<FluentStack>
+		<FluentProgressRing></FluentProgressRing>
+	</FluentStack>
 }
 else
 {
-    <EditForm Enhance Model="@Model" OnValidSubmit="@Submit" FormName="RegisterCustomer">
-        <FluentStack Orientation="Orientation.Vertical" VerticalGap="20">
-        <DataAnnotationsValidator />
-        <FluentValidationSummary />
-        <FluentGrid Spacing="3" Style="background-color: var(--neutral-layer-3);">
-            <FluentGridItem xs="12" sm="6" >
-                <FluentTextField @bind-Value="Model!.FirstName" Placeholder="John" Label="First Name" style="width: 100%;">
-                    <FluentIcon Value="@(new Icons.Regular.Size16.Person())" Slot="start" Color="Color.Accent" />
-                </FluentTextField>
-            </FluentGridItem>
-            <FluentGridItem xs="12" sm="6">
-            <FluentTextField @bind-Value="Model!.LastName" Placeholder="Doe" Label="Last Name" style="width: 100%;">
-                <FluentIcon Value="@(new Icons.Regular.Size16.Person())" Slot="start" Color="Color.Accent" />
-            </FluentTextField>
-            </FluentGridItem>
-            <FluentGridItem xs="12" sm="4">
-            <FluentTextField @bind-Value="Model!.Email" Placeholder="jdoe@contoso.com" Label="Email" style="width: 100%;">
-                <FluentIcon Value="@(new Icons.Regular.Size16.Mail())" Slot="start" Color="Color.Accent" />
-            </FluentTextField>
-            </FluentGridItem>
-            <FluentGridItem xs="12" sm="4">
-            <FluentTextField @bind-Value="Model!.PhoneNumber" Placeholder="+33 1 22 22 22 22" Label="Phone" style="width: 100%;">
-                <FluentIcon Value="@(new Icons.Regular.Size16.Call())" Slot="start" Color="Color.Accent" />
-            </FluentTextField>
-            </FluentGridItem>
-            <FluentGridItem xs="12" sm="4">
-            <FluentTextField @bind-Value="Model!.MobilePhoneNumber" Placeholder="+33 6 22 22 22 22" Label="Mobile" style="width: 100%;">
-                <FluentIcon Value="@(new Icons.Regular.Size16.Phone())" Slot="start" Color="Color.Accent" />
-            </FluentTextField>
-            </FluentGridItem>
-            <FluentGridItem xs="12">
-            <AutoCompletePostalAdress 
-                PostalAddressName="Primary"
-                PostalAddressDescription="Customer primary address"
-                @bind-Value="Model!.PostalAddress" 
-                Placeholder="10, place de la tour Eiffel 75001 Paris, France" 
-                Label="Address" 
-                style="width: 100%;">
-                <FluentIcon Value="@(new Icons.Regular.Size16.Location())" Slot="start" Color="Color.Accent" />
-            </AutoCompletePostalAdress>
-            </FluentGridItem>
-        </FluentGrid>
-        <FluentButton Appearance="Appearance.Accent"
-                      Loading="@_submitting"
-                      IconStart="@((_submitting)?new Icons.Regular.Size16.ArrowClockwise():new Icons.Regular.Size16.Save())"
-                      Type="ButtonType.Submit">Save</FluentButton>
-        </FluentStack>
-    </EditForm>
+	<EditForm Enhance Model="@Model" OnValidSubmit="@Submit" FormName="RegisterCustomer">
+		<FluentStack Orientation="Orientation.Vertical" VerticalGap="20">
+			<DataAnnotationsValidator />
+			<FluentValidationSummary />
+			<FluentGrid Spacing="3" Style="background-color: var(--neutral-layer-3);">
+				<FluentGridItem xs="12" sm="4">
+					<FluentRadioGroup Name="Title" @bind-Value="Model!.Title" Label="Title">
+						<FluentRadio Value="Title.Undefined">@nameof(Title.Undefined)</FluentRadio>
+						<FluentRadio Value="Title.Mr">@nameof(Title.Mr)</FluentRadio>
+						<FluentRadio Value="Title.Mrs">@nameof(Title.Mrs)</FluentRadio>
+						<FluentRadio Value="Title.Other">@nameof(Title.Other)</FluentRadio>
+					</FluentRadioGroup>
+				</FluentGridItem>
+				<FluentGridItem xs="12" sm="4">
+					<FluentTextField @bind-Value="Model!.FirstName" Placeholder="John" Label="First Name" style="width: 100%;">
+						<FluentIcon Value="@(new Icons.Regular.Size16.Person())" Slot="start" Color="Color.Accent" />
+					</FluentTextField>
+				</FluentGridItem>
+				<FluentGridItem xs="12" sm="4">
+					<FluentTextField @bind-Value="Model!.LastName" Placeholder="Doe" Label="Last Name" style="width: 100%;">
+						<FluentIcon Value="@(new Icons.Regular.Size16.Person())" Slot="start" Color="Color.Accent" />
+					</FluentTextField>
+				</FluentGridItem>
+				<FluentGridItem xs="12" sm="4">
+					<FluentTextField @bind-Value="Model!.Email" Placeholder="jdoe@contoso.com" Label="Email" style="width: 100%;">
+						<FluentIcon Value="@(new Icons.Regular.Size16.Mail())" Slot="start" Color="Color.Accent" />
+					</FluentTextField>
+				</FluentGridItem>
+				<FluentGridItem xs="12" sm="4">
+					<FluentTextField @bind-Value="Model!.PhoneNumber" Placeholder="+33 1 22 22 22 22" Label="Phone" style="width: 100%;">
+						<FluentIcon Value="@(new Icons.Regular.Size16.Call())" Slot="start" Color="Color.Accent" />
+					</FluentTextField>
+				</FluentGridItem>
+				<FluentGridItem xs="12" sm="4">
+					<FluentTextField @bind-Value="Model!.MobilePhoneNumber" Placeholder="+33 6 22 22 22 22" Label="Mobile" style="width: 100%;">
+						<FluentIcon Value="@(new Icons.Regular.Size16.Phone())" Slot="start" Color="Color.Accent" />
+					</FluentTextField>
+				</FluentGridItem>
+				<FluentGridItem xs="12" sm="4">
+					<FluentSelect Label="Language" Items="@_languages" @bind-Value="@Model!.Language" OptionValue="@(p => p.Code)" OptionText="@(p => p.Name)" Height="200px" Width="100%" />
+				</FluentGridItem>
+				<FluentGridItem xs="12" sm="12">
+					<FluentLabel>Comment souhaitez vous être contacté(e)?</FluentLabel>
+				</FluentGridItem>
+				<FluentGridItem xs="6" sm="3">
+					<FluentCheckbox @bind-Value="Model!.CanContactByPost" Label="Courrier" />
+				</FluentGridItem>
+				<FluentGridItem xs="6" sm="3">
+					<FluentCheckbox @bind-Value="Model!.CanContactByEmail" Label="Courriel" />
+				</FluentGridItem>
+				<FluentGridItem xs="6" sm="3">
+					<FluentCheckbox @bind-Value="Model!.CanContactByPhone" Label="Téléphone" />
+				</FluentGridItem>
+				<FluentGridItem xs="6" sm="3">
+					<FluentCheckbox @bind-Value="Model!.CanContactByMobilePhone" Label="Mobile" />
+				</FluentGridItem>
+				<FluentGridItem xs="6" sm="3">
+					<FluentCheckbox @bind-Value="Model!.CanContactBySms" Label="SMS" />
+				</FluentGridItem>
+				<FluentGridItem xs="6" sm="3">
+					<FluentCheckbox @bind-Value="Model!.CanContactByWhatsapp" Label="WhatsApp" />
+				</FluentGridItem>
+				<FluentGridItem xs="6" sm="3">
+					<FluentCheckbox @bind-Value="Model!.CanContactByWeChat" Label="WeChat" />
+				</FluentGridItem>
+				<FluentGridItem xs="12">
+					<AutoCompletePostalAdress PostalAddressName="Primary"
+											  PostalAddressDescription="Customer primary address"
+											  @bind-Value="Model!.PostalAddress"
+											  Placeholder="10, place de la tour Eiffel 75001 Paris, France"
+											  Label="Address"
+											  style="width: 100%;">
+						<FluentIcon Value="@(new Icons.Regular.Size16.Location())" Slot="start" Color="Color.Accent" />
+					</AutoCompletePostalAdress>
+				</FluentGridItem>
+			</FluentGrid>
+			<FluentButton Appearance="Appearance.Accent"
+						  Loading="@_submitting"
+						  IconStart="@((_submitting)?new Icons.Regular.Size16.ArrowClockwise():new Icons.Regular.Size16.Save())"
+						  Type="ButtonType.Submit">Save</FluentButton>
+		</FluentStack>
+	</EditForm>
 }
 @code {
-    [SupplyParameterFromForm]
-    private RegisterCustomerModel? Model { get; set; }
+	[SupplyParameterFromForm]
+	private RegisterCustomerModel? Model { get; set; }
 
-    [CascadingParameter] 
-    public string? SessionId { get; set; }
+	[CascadingParameter]
+	public string? SessionId { get; set; }
 
-    [CascadingParameter]
-    private Task<AuthenticationState>? authenticationState { get; set; }
+	[CascadingParameter]
+	private Task<AuthenticationState>? authenticationState { get; set; }
+
+	private IEnumerable<(string Code,string Name)>? _languages;
+
+	private string? _sessionId { get; set; }
+	bool _submitting = false;
+
+	protected override void OnInitialized()
+	{
+		Model ??= new RegisterCustomerModel();
+		if (_languages == null)
+		{
+			_languages = CultureInfo
+				.GetCultures(CultureTypes.AllCultures)
+				.Select(c => (c.Name, c.DisplayName))
+				.OrderBy(c => c.DisplayName);
+		}
+	}
 
 
-    private string? _sessionId { get; set; }
-    bool _submitting = false;
+	private async Task<string> GetSessionIdAsync()
+	{
+		if (string.IsNullOrWhiteSpace(_sessionId))
+		{
+			_sessionId = await SessionStore.GetItemAsync<string>(nameof(_sessionId));
+			if (string.IsNullOrWhiteSpace(_sessionId))
+			{
+				_sessionId = UniqueIdHelper.GenerateUniqueStringId();
+				await SessionStore.SetItemAsync(nameof(_sessionId), _sessionId);
+			}
+		}
+		return _sessionId;
+	}
+	private async Task Submit()
+	{
+		if (Model is null || _submitting)
+			return;
+		var originId = OrganizationSettings.Value.DefaultOriginId;
+		var companyId = OrganizationSettings.Value.DefaultCompanyId;
+		var partitionId = OrganizationSettings.Value.DefaultPartitionId;
+		RegisterCustomer command = Model!.ToCommand(partitionId!, companyId!, originId!);
 
-    protected override void OnInitialized()
-    {
-        Model ??= new RegisterCustomerModel();
-    }
+		var date = DateTimeService.Now;
+		var userId = (await (authenticationState ?? throw new InvalidOperationException("Authentication state not defined"))).User.Identity?.Name ?? throw new InvalidOperationException("User identity is undefined");
+		var messageId = UniqueIdHelper.GenerateUniqueStringId();
+		var metadata = new Metadata(
+			messageId,
+			command,
+			date,
+			new ContextMetadata(messageId, userId, date, null, await GetSessionIdAsync()),
+			[]);
 
-
-    private async Task<string> GetSessionIdAsync()
-    {
-        if (string.IsNullOrWhiteSpace(_sessionId))
-        {
-            _sessionId = await SessionStore.GetItemAsync<string>(nameof(_sessionId));
-            if (string.IsNullOrWhiteSpace(_sessionId))
-            {
-                _sessionId = UniqueIdHelper.GenerateUniqueStringId();
-                await SessionStore.SetItemAsync(nameof(_sessionId), _sessionId);
-            }
-        }
-        return _sessionId;
-    }
-    private async Task Submit()
-    {
-        if (Model is null || _submitting)
-            return;
-        var originId = OrganizationSettings.Value.DefaultOriginId;
-        var companyId = OrganizationSettings.Value.DefaultCompanyId;
-        var partitionId = OrganizationSettings.Value.DefaultPartitionId;
-        RegisterCustomer command = Model!.ToCommand(partitionId!, companyId!, originId!);
-
-        var date = DateTimeService.Now;
-        var userId = (await (authenticationState ?? throw new InvalidOperationException("Authentication state not defined"))).User.Identity?.Name ?? throw new InvalidOperationException("User identity is undefined");
-        var messageId = UniqueIdHelper.GenerateUniqueStringId();
-        var metadata = new Metadata(
-            messageId,
-            command,
-            date,
-            new ContextMetadata(messageId, userId, date, null, await GetSessionIdAsync()),
-            []);
-
-        _submitting = true;
-        try
-        {
-            await CommandBus.PublishAsync(new CommandState(date, command, metadata), CancellationToken.None);
-        }
-        finally
-        {
+		_submitting = true;
+		try
+		{
+			await CommandBus.PublishAsync(new CommandState(date, command, metadata), CancellationToken.None);
+		}
+		finally
+		{
 			_submitting = false;
 		}
-    }
+	}
 }

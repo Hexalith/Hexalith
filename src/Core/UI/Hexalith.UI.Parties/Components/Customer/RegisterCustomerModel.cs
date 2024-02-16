@@ -28,6 +28,41 @@ using Hexalith.UI.PostalAddresses.Models;
 internal class RegisterCustomerModel
 {
     /// <summary>
+    /// Gets or sets a value indicating whether the customer can be contacted by email.
+    /// </summary>
+    public bool CanContactByEmail { get; set; }
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the customer can be contacted by mobile phone.
+    /// </summary>
+    public bool CanContactByMobilePhone { get; set; }
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the customer can be contacted by phone.
+    /// </summary>
+    public bool CanContactByPhone { get; set; }
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the customer can be contacted by post.
+    /// </summary>
+    public bool CanContactByPost { get; set; }
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the customer can be contacted by SMS.
+    /// </summary>
+    public bool CanContactBySms { get; set; }
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the customer can be contacted by WeChat.
+    /// </summary>
+    public bool CanContactByWeChat { get; set; }
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the customer can be contacted by WhatsApp.
+    /// </summary>
+    public bool CanContactByWhatsapp { get; set; }
+
+    /// <summary>
     /// Gets or sets the email address.
     /// </summary>
     /// <value>The email address.</value>
@@ -47,6 +82,12 @@ internal class RegisterCustomerModel
     /// <value>The identifier.</value>
     [Display(Description = "Customer identifier", Name = "Identifier")]
     public string Id => FirstName?[..Math.Min(FirstName.Length, 3)] + LastName?[..Math.Min(LastName.Length, 7)] ?? string.Empty;
+
+    /// <summary>
+    /// Gets or sets the language.
+    /// </summary>
+    /// <value>The language.</value>
+    public string? Language { get; set; }
 
     /// <summary>
     /// Gets or sets the last name.
@@ -84,12 +125,18 @@ internal class RegisterCustomerModel
     public PostalAddressViewModel PostalAddress { get; set; } = new PostalAddressViewModel();
 
     /// <summary>
-    /// Converts to command.
+    /// Gets or sets the title.
+    /// </summary>
+    /// <value>The title.</value>
+    public Title Title { get; set; } = Title.Undefined;
+
+    /// <summary>
+    /// Converts the model to a RegisterCustomer command.
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
     /// <param name="originId">The origin identifier.</param>
-    /// <returns>RegisterCustomer.</returns>
+    /// <returns>A RegisterCustomer command.</returns>
     public RegisterCustomer ToCommand(string partitionId, string companyId, string originId) => new(
         partitionId,
         companyId,
