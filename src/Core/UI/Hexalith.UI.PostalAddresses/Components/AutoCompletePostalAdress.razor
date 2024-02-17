@@ -1,5 +1,4 @@
 ﻿@inherits FluentInputBase<PostalAddressViewModel>
-@rendermode RenderMode.InteractiveServer
 @using Hexalith.Domain.ValueObjets
 @using Hexalith.Application.Geolocations.Services
 @using System.ComponentModel.DataAnnotations
@@ -9,9 +8,8 @@
 
 @inject IPlaceService _placeService ﻿
 @inject IGeolocationService _locationService
-<FluentGrid>
-    <FluentGridItem xs="12">
-        <FluentLabel Id="@(_childIdPrefix+"-label")">@Label</FluentLabel>
+<FluentTabs>
+    <FluentTab Label="Address">
         <FluentAutocomplete 
             @bind-SelectedOptions="@_selectedPlaces"
             AutoComplete="on"
@@ -24,47 +22,54 @@
             TOption="PlaceDescription"
             Width="100%">
         </FluentAutocomplete>
-    </FluentGridItem>
-    <FluentGridItem xs="12" sm="4">
-        <FluentTextField Label="Name" @bind-Value="@PostalAddressName" style="width: 100%;"></FluentTextField>
-    </FluentGridItem>
-    <FluentGridItem xs="12" sm="8">
-        <FluentTextField Label="Description" @bind-Value="@PostalAddressDescription" style="width: 100%;"></FluentTextField>
-    </FluentGridItem>
-    <FluentGridItem xs="4">
-        <FluentTextField Label="Number" @bind-Value="@Value!.StreetNumber" style="width: 100%;"></FluentTextField>
-    </FluentGridItem>
-    <FluentGridItem xs="8">
-        <FluentTextField Label="Street" @bind-Value="@Value!.Street" style="width: 100%;"></FluentTextField>
-    </FluentGridItem>
-    <FluentGridItem xs="12" sm="4">
-        <FluentTextField Label="Zip code" @bind-Value="@Value!.ZipCode" style="width: 100%;"></FluentTextField>
-    </FluentGridItem>
-    <FluentGridItem xs="12" sm="8">
-        <FluentTextField Label="City" @bind-Value="@Value!.City" style="width: 100%;"></FluentTextField>
-    </FluentGridItem>
-    <FluentGridItem xs="12" sm="4">
-            <FluentTextField Label="State Id" @bind-Value="@Value!.StateId" style="width: 100%;"></FluentTextField>
-    </FluentGridItem>
-    <FluentGridItem xs="12" sm="8">
-            <FluentTextField Label="State Name" @bind-Value="@Value!.StateName" style="width: 100%;"></FluentTextField>
-    </FluentGridItem>
-    <FluentGridItem xs="6" sm="3">
-            <FluentTextField Label="Iso3" @bind-Value="@Value!.CountryId" style="width: 100%;"></FluentTextField>
-    </FluentGridItem>
-    <FluentGridItem xs="6" sm="3">
-            <FluentTextField Label="Iso2" @bind-Value="@Value!.CountryIso2" style="width: 100%;"></FluentTextField>
-    </FluentGridItem>
-    <FluentGridItem xs="12" sm="6">
-            <FluentTextField Label="Name" @bind-Value="@Value!.CountryName" style="width: 100%;"></FluentTextField>
-    </FluentGridItem>    
-    <FluentGridItem xs="6">
-            <FluentNumberField  Label="Latitude" @bind-Value="@Value!.Latitude" style="width: 100%;"></FluentNumberField>
-    </FluentGridItem>
-    <FluentGridItem xs="6">
-            <FluentNumberField  Label="Longitude" @bind-Value="@Value!.Longitude" style="width: 100%;"></FluentNumberField>
-    </FluentGridItem>    
-</FluentGrid>
+    </FluentTab> 
+    <FluentTab Label="Details">
+        <FluentGrid>
+            <FluentGridItem xs="12">
+                <FluentLabel Id="@(_childIdPrefix+"-label")">@Label</FluentLabel>
+            </FluentGridItem>
+            <FluentGridItem xs="12" sm="4">
+                <FluentTextField Label="Name" @bind-Value="@PostalAddressName" style="width: 100%;"></FluentTextField>
+            </FluentGridItem>
+            <FluentGridItem xs="12" sm="8">
+                <FluentTextField Label="Description" @bind-Value="@PostalAddressDescription" style="width: 100%;"></FluentTextField>
+            </FluentGridItem>
+            <FluentGridItem xs="4">
+                <FluentTextField Label="Number" @bind-Value="@Value!.StreetNumber" style="width: 100%;"></FluentTextField>
+            </FluentGridItem>
+            <FluentGridItem xs="8">
+                <FluentTextField Label="Street" @bind-Value="@Value!.Street" style="width: 100%;"></FluentTextField>
+            </FluentGridItem>
+            <FluentGridItem xs="12" sm="4">
+                <FluentTextField Label="Zip code" @bind-Value="@Value!.ZipCode" style="width: 100%;"></FluentTextField>
+            </FluentGridItem>
+            <FluentGridItem xs="12" sm="8">
+                <FluentTextField Label="City" @bind-Value="@Value!.City" style="width: 100%;"></FluentTextField>
+            </FluentGridItem>
+            <FluentGridItem xs="12" sm="4">
+                    <FluentTextField Label="State Id" @bind-Value="@Value!.StateId" style="width: 100%;"></FluentTextField>
+            </FluentGridItem>
+            <FluentGridItem xs="12" sm="8">
+                    <FluentTextField Label="State Name" @bind-Value="@Value!.StateName" style="width: 100%;"></FluentTextField>
+            </FluentGridItem>
+            <FluentGridItem xs="6" sm="3">
+                    <FluentTextField Label="Iso3" @bind-Value="@Value!.CountryId" style="width: 100%;"></FluentTextField>
+            </FluentGridItem>
+            <FluentGridItem xs="6" sm="3">
+                    <FluentTextField Label="Iso2" @bind-Value="@Value!.CountryIso2" style="width: 100%;"></FluentTextField>
+            </FluentGridItem>
+            <FluentGridItem xs="12" sm="6">
+                    <FluentTextField Label="Name" @bind-Value="@Value!.CountryName" style="width: 100%;"></FluentTextField>
+            </FluentGridItem>    
+            <FluentGridItem xs="6">
+                    <FluentNumberField  Label="Latitude" @bind-Value="@Value!.Latitude" style="width: 100%;"></FluentNumberField>
+            </FluentGridItem>
+            <FluentGridItem xs="6">
+                    <FluentNumberField  Label="Longitude" @bind-Value="@Value!.Longitude" style="width: 100%;"></FluentNumberField>
+            </FluentGridItem>    
+        </FluentGrid>
+    </FluentTab> 
+</FluentTabs>
 
 
 @code {
