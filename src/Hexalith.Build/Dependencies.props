@@ -10,7 +10,7 @@
 		<AzureResourceManagerContainerRegistryVersion>1.2.0</AzureResourceManagerContainerRegistryVersion>
 		<AzureResourceManagerKeyVaultVersion>1.2.0</AzureResourceManagerKeyVaultVersion>
 		<AzureResourceManagerLogicVersion>1.1.0</AzureResourceManagerLogicVersion>
-		<AzureSecurityKeyVaultSecretsVersion>4.5.0</AzureSecurityKeyVaultSecretsVersion>
+		<AzureSecurityKeyVaultSecretsVersion>4.6.0</AzureSecurityKeyVaultSecretsVersion>
 		<BlazorGeolocationVersion>8.0.0</BlazorGeolocationVersion>
 		<BlazoredSessionStorageVersion>2.4.0</BlazoredSessionStorageVersion>
 		<CoconaVersion>2.2.0</CoconaVersion>
@@ -25,13 +25,13 @@
 		<HumanizerVersion>2.14.1</HumanizerVersion>
 		<MailKitVersion>4.3.0</MailKitVersion>
 		<ManDaprSidekickVersion>1.2.2</ManDaprSidekickVersion>
-		<MicrosoftBotBuilderVersion>4.22.1</MicrosoftBotBuilderVersion>
+		<MicrosoftBotBuilderVersion>4.22.2</MicrosoftBotBuilderVersion>
 		<MicrosoftFluentUIComponentsVersion>4.4.1</MicrosoftFluentUIComponentsVersion>
 		<MicrosoftFluentUIComponentsIconsVersion>4.4.0</MicrosoftFluentUIComponentsIconsVersion>
 		<MicrosoftIdentityClientVersion>4.59.0</MicrosoftIdentityClientVersion>
 		<MicrosoftIdentityWebVersion>2.17.0</MicrosoftIdentityWebVersion>
 		<MicrosoftNETTestSdkVersion>17.9.0</MicrosoftNETTestSdkVersion>
-		<MicrosoftSemanticKernelVersion>1.3.1</MicrosoftSemanticKernelVersion>
+		<MicrosoftSemanticKernelVersion>1.4.0</MicrosoftSemanticKernelVersion>
 		<MicrosoftTeamsFxVersion>2.4.0</MicrosoftTeamsFxVersion>
 		<MicrosoftTypescriptMSBuild>5.3.3</MicrosoftTypescriptMSBuild>
 		<MicrosoftGraphVersion>5.12.*</MicrosoftGraphVersion>
@@ -45,8 +45,8 @@
 		<SerilogEnrichersEnvironmentVersion>2.3.0</SerilogEnrichersEnvironmentVersion>
 		<StyleCopAnalyzersVersion>1.2.0-beta.556</StyleCopAnalyzersVersion>
 		<SwashbuckleAspNetCoreVersion>6.5.*</SwashbuckleAspNetCoreVersion>
-		<XUnitRunnerVisualStudioVersion>2.5.6</XUnitRunnerVisualStudioVersion>
-		<XUnitVersion>2.6.6</XUnitVersion>
+		<XUnitRunnerVisualStudioVersion>2.5.7</XUnitRunnerVisualStudioVersion>
+		<XUnitVersion>2.7.0</XUnitVersion>
 		<DaprVersion>1.12.*</DaprVersion>
 	</PropertyGroup>
 </Project>
