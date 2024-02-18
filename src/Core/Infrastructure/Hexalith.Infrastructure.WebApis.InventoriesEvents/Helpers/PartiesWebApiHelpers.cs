@@ -14,13 +14,14 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers;
+namespace Hexalith.Infrastructure.WebApis.InventoriesEvents.Helpers;
 
+using Hexalith.Application.Inventories.InventoryItems.Projections;
 using Hexalith.Application.Projection;
-using Hexalith.Domain.Events;
+using Hexalith.Domain.InventoryItems.Events;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
-using Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers;
-using Hexalith.Infrastructure.WebApis.PartiesEvents.Projections;
+using Hexalith.Infrastructure.WebApis.InventoriesEvents.Controllers;
+using Hexalith.Infrastructure.WebApis.InventoriesEvents.Projections;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -28,7 +29,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 /// <summary>
 /// Class PartiesWebApiHelpers.
 /// </summary>
-public static class PartiesWebApiHelpers
+public static class InventoriesWebApiHelpers
 {
     /// <summary>
     /// Adds the customer projections.
@@ -36,19 +37,17 @@ public static class PartiesWebApiHelpers
     /// <param name="services">The services.</param>
     /// <param name="appName">Name of the application.</param>
     /// <returns>IServiceCollection.</returns>
-    /// <exception cref="System.ArgumentNullException">null.</exception>
-    public static IServiceCollection AddCustomerProjections(this IServiceCollection services, string appName)
+    /// <exception cref="ArgumentNullException">null.</exception>
+    public static IServiceCollection AddInventoryItemProjections(this IServiceCollection services, string appName)
     {
         ArgumentNullException.ThrowIfNull(services);
         ArgumentException.ThrowIfNullOrEmpty(appName);
-        services.TryAddScoped<IProjectionUpdateHandler<CustomerInformationChanged>, CustomerInformationChangedProjectionUpdateHandler>();
-        services.TryAddScoped<IProjectionUpdateHandler<CustomerRegistered>, CustomerRegisteredProjectionUpdateHandler>();
-        services.TryAddScoped<IProjectionUpdateHandler<IntercompanyDropshipDeliveryForCustomerDeselected>, IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler>();
-        services.TryAddScoped<IProjectionUpdateHandler<IntercompanyDropshipDeliveryForCustomerSelected>, IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler>();
-        _ = services.AddActorProjectionFactory<CustomerRegistered>(appName);
+        services.TryAddScoped<IProjectionUpdateHandler<InventoryItemInformationChanged>, InventoryItemInformationChangedProjectionUpdateHandler>();
+        services.TryAddScoped<IProjectionUpdateHandler<InventoryItemAdded>, InventoryItemAddedProjectionUpdateHandler>();
+        _ = services.AddActorProjectionFactory<InventoryItemDetailsProjection>(appName);
         _ = services
          .AddControllers()
-         .AddApplicationPart(typeof(CustomerIntegrationEventsController).Assembly)
+         .AddApplicationPart(typeof(InventoryItemIntegrationEventsController).Assembly)
          .AddDapr();
         return services;
     }

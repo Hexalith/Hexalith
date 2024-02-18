@@ -252,6 +252,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.Web
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.WebApis.InventoriesEvents", "src\Core\Infrastructure\Hexalith.Infrastructure.WebApis.InventoriesEvents\Hexalith.Infrastructure.WebApis.InventoriesEvents.csproj", "{8777BCA9-9F3E-4243-8C16-05DB30A9813B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{0C33EF90-FE14-49B0-B2EF-2DEE0B69EA33}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hierarchies", "Hierarchies", "{7DC670C5-4B9A-4DFB-A595-5298AE7121E9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NumberSequences", "NumberSequences", "{A54100D0-7C1C-4E6C-BC8C-07A6C162DEE0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{2486D779-1E8F-459F-8145-5FC73AB0923D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.NumberSequences.Abstractions", "src\Modules\NumberSequences\Hexalith.NumberSequences.Abstractions\Hexalith.NumberSequences.Abstractions.csproj", "{AFA3C20D-0736-4925-826E-348EAD4CACFB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -590,6 +600,10 @@ Global
 		{8777BCA9-9F3E-4243-8C16-05DB30A9813B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8777BCA9-9F3E-4243-8C16-05DB30A9813B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8777BCA9-9F3E-4243-8C16-05DB30A9813B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFA3C20D-0736-4925-826E-348EAD4CACFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFA3C20D-0736-4925-826E-348EAD4CACFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFA3C20D-0736-4925-826E-348EAD4CACFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFA3C20D-0736-4925-826E-348EAD4CACFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -687,6 +701,11 @@ Global
 		{3B624A74-5F48-41C4-A1FD-043C6604C61B} = {AA983AFF-9CBC-4F2A-98E3-3CACA5039C61}
 		{339AFDAD-AE25-4BF1-91D7-C54F2B2EF9B0} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{8777BCA9-9F3E-4243-8C16-05DB30A9813B} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
+		{0C33EF90-FE14-49B0-B2EF-2DEE0B69EA33} = {D2DA3040-462E-4E0E-9CFE-3EA95FA3D014}
+		{7DC670C5-4B9A-4DFB-A595-5298AE7121E9} = {0C33EF90-FE14-49B0-B2EF-2DEE0B69EA33}
+		{A54100D0-7C1C-4E6C-BC8C-07A6C162DEE0} = {0C33EF90-FE14-49B0-B2EF-2DEE0B69EA33}
+		{2486D779-1E8F-459F-8145-5FC73AB0923D} = {A54100D0-7C1C-4E6C-BC8C-07A6C162DEE0}
+		{AFA3C20D-0736-4925-826E-348EAD4CACFB} = {2486D779-1E8F-459F-8145-5FC73AB0923D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09CBB595-8996-4C7F-9C48-4C58AD9293AC}

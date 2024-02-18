@@ -14,24 +14,24 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers;
+namespace Hexalith.Infrastructure.WebApis.InventoriesEvents.Controllers;
 
-using Hexalith.Domain.Aggregates;
+using Hexalith.Domain.InventoryItems.Aggregates;
 using Hexalith.Infrastructure.WebApis.Buses;
 
 /// <summary>
-/// Class CustomerEventsBusTopicAttribute. This class cannot be inherited.
+/// Class InventoryItemEventsBusTopicAttribute. This class cannot be inherited.
 /// Implements the <see cref="EventBusTopicAttribute" />.
 /// </summary>
 /// <seealso cref="EventBusTopicAttribute" />
 [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
-public sealed class CustomerEventsBusTopicAttribute : EventBusTopicAttribute
+public sealed class InventoryItemEventsBusTopicAttribute : EventBusTopicAttribute
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="CustomerEventsBusTopicAttribute"/> class.
+    /// Initializes a new instance of the <see cref="InventoryItemEventsBusTopicAttribute"/> class.
     /// </summary>
-    public CustomerEventsBusTopicAttribute()
-        : base(Customer.GetAggregateName())
+    public InventoryItemEventsBusTopicAttribute()
+        : base(InventoryItem.GetAggregateName())
     {
     }
 }

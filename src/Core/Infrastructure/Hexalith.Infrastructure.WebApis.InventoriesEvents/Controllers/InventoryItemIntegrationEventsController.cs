@@ -14,14 +14,14 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers;
+namespace Hexalith.Infrastructure.WebApis.InventoriesEvents.Controllers;
 
 using Dapr;
 
 using Hexalith.Application.Events;
 using Hexalith.Application.Projection;
 using Hexalith.Application.States;
-using Hexalith.Domain.Aggregates;
+using Hexalith.Domain.InventoryItems.Aggregates;
 using Hexalith.Infrastructure.WebApis.Controllers;
 
 using Microsoft.AspNetCore.Mvc;
@@ -34,16 +34,16 @@ using Microsoft.Extensions.Logging;
 /// </summary>
 /// <seealso cref="EventIntegrationController" />
 [ApiController]
-public abstract class CustomerIntegrationEventsController : EventIntegrationController
+public abstract class InventoryItemIntegrationEventsController : EventIntegrationController
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="CustomerIntegrationEventsController"/> class.
+    /// Initializes a new instance of the <see cref="InventoryItemIntegrationEventsController"/> class.
     /// </summary>
     /// <param name="eventProcessor">The event processor.</param>
     /// <param name="projectionProcessor">The projection processor.</param>
     /// <param name="hostEnvironment">The host environment.</param>
     /// <param name="logger">The logger.</param>
-    protected CustomerIntegrationEventsController(
+    protected InventoryItemIntegrationEventsController(
         IIntegrationEventProcessor eventProcessor,
         IProjectionUpdateProcessor projectionProcessor,
         IHostEnvironment hostEnvironment,
@@ -57,15 +57,15 @@ public abstract class CustomerIntegrationEventsController : EventIntegrationCont
     /// </summary>
     /// <param name="eventState">State of the event.</param>
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
-    [CustomerEventsBusTopic]
+    [InventoryItemEventsBusTopic]
     [TopicMetadata("requireSessions", "true")]
     [TopicMetadata("sessionIdleTimeoutInSec ", "2")]
     [TopicMetadata("maxConcurrentSessions", "8")]
-    [HttpPost("/handle-customer-events")]
-    public async Task<ActionResult> HandleCustomerEventsAsync(EventState eventState)
+    [HttpPost("/handle-inventory-item-events")]
+    public async Task<ActionResult> HandleInventoryItemEventsAsync(EventState eventState)
          => await HandleEventAsync(
                 eventState,
-                Customer.GetAggregateName(),
+                InventoryItem.GetAggregateName(),
                 CancellationToken.None)
              .ConfigureAwait(false);
 }
