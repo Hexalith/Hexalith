@@ -1,10 +1,10 @@
 ﻿// ***********************************************************************
-// Assembly         : BspkBridge.Invoices
+// Assembly         :
 // Author           : Jérôme Piquot
-// Created          : 02-01-2023
+// Created          : 12-23-2023
 //
 // Last Modified By : Jérôme Piquot
-// Last Modified On : 09-02-2023
+// Last Modified On : 02-18-2024
 // ***********************************************************************
 // <copyright file="InventoryItemStockSettings.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
@@ -21,7 +21,7 @@ using Hexalith.Domain.InventoryItemStocks.Aggregates;
 using Hexalith.Extensions.Configuration;
 
 /// <summary>
-/// Class InvoiceSettings.
+/// Class InventoryItemStockSettings.
 /// Implements the <see cref="ISettings" />.
 /// </summary>
 /// <seealso cref="ISettings" />

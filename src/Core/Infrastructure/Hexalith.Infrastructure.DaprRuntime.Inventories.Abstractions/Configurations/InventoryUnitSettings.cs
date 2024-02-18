@@ -1,31 +1,21 @@
-﻿// ***********************************************************************
-// Assembly         :
-// Author           : Jérôme Piquot
-// Created          : 12-23-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 02-18-2024
-// ***********************************************************************
-// <copyright file="InventoryItemSettings.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="InventoryUnitSettings.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Infrastructure.DaprRuntime.Inventories.Configurations;
 
 using Hexalith.Application.Configurations;
-using Hexalith.Domain.InventoryItems.Aggregates;
+using Hexalith.Domain.InventoryUnits.Aggregates;
 using Hexalith.Extensions.Configuration;
 
 /// <summary>
-/// Class InventoryItemSettings.
+/// Class InventoryUnitSettings.
 /// Implements the <see cref="ISettings" />.
 /// </summary>
 /// <seealso cref="ISettings" />
-public class InventoryItemSettings : ISettings
+public class InventoryUnitSettings : ISettings
 {
     /// <summary>
     /// Gets or sets the command processor.
@@ -37,5 +27,5 @@ public class InventoryItemSettings : ISettings
     /// The configuration section name of the settings.
     /// </summary>
     /// <returns>The name.</returns>
-    public static string ConfigurationName() => nameof(InventoryItem);
+    public static string ConfigurationName() => nameof(InventoryUnit);
 }
