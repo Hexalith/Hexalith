@@ -16,7 +16,7 @@
 
 namespace Hexalith.Application.Inventories.Services;
 
-using Hexalith.Domain.Events;
+using Hexalith.Domain.InventoryItems.Events;
 
 /// <summary>
 /// Interface IInventoryItemQueryService.

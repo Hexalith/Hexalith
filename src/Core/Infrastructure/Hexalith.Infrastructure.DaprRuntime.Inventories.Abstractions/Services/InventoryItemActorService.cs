@@ -23,7 +23,7 @@ using Dapr.Actors;
 using Dapr.Actors.Client;
 
 using Hexalith.Application.Inventories.Services;
-using Hexalith.Domain.Events;
+using Hexalith.Domain.InventoryItems.Events;
 using Hexalith.Infrastructure.DaprRuntime.Inventories.Actors;
 
 /// <summary>

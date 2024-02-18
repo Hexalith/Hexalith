@@ -17,7 +17,7 @@
 namespace Hexalith.Infrastructure.DaprRuntime.Inventories.Configurations;
 
 using Hexalith.Application.Configurations;
-using Hexalith.Domain.Aggregates;
+using Hexalith.Domain.InventoryItemStocks.Aggregates;
 using Hexalith.Extensions.Configuration;
 
 /// <summary>

@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 
 using Dapr.Actors;
 
-using Hexalith.Domain.Events;
+using Hexalith.Domain.InventoryItems.Events;
 
 /// <summary>
 /// Interface IInventoryOnHandAggregateActor
