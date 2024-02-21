@@ -83,8 +83,8 @@ public partial class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageB
     {
         ArgumentNullException.ThrowIfNull(daprClient);
         ArgumentNullException.ThrowIfNull(dateTimeService);
-        ArgumentException.ThrowIfNullOrEmpty(name);
-        ArgumentException.ThrowIfNullOrEmpty(topicSuffix);
+        ArgumentException.ThrowIfNullOrWhiteSpace(name);
+        ArgumentException.ThrowIfNullOrWhiteSpace(topicSuffix);
         ArgumentNullException.ThrowIfNull(logger);
         _daprClient = daprClient;
         _name = name;

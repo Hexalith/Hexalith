@@ -144,9 +144,9 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
         ArgumentNullException.ThrowIfNull(@event);
         ArgumentNullException.ThrowIfNull(@event.Contact);
         ArgumentNullException.ThrowIfNull(@event.Contact.PostalAddress);
-        ArgumentException.ThrowIfNullOrEmpty(@event.Account);
-        ArgumentException.ThrowIfNullOrEmpty(@event.Name);
-        ArgumentException.ThrowIfNullOrEmpty(@event.BusinessEventLegalEntity);
+        ArgumentException.ThrowIfNullOrWhiteSpace(@event.Account);
+        ArgumentException.ThrowIfNullOrWhiteSpace(@event.Name);
+        ArgumentException.ThrowIfNullOrWhiteSpace(@event.BusinessEventLegalEntity);
 
         string? aggregateId = @event
             .ExternalReferences?
@@ -331,8 +331,8 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
         CustomerV3 customerV3,
         CancellationToken cancellationToken)
     {
-        ArgumentException.ThrowIfNullOrEmpty(@event.BusinessEventLegalEntity);
-        ArgumentException.ThrowIfNullOrEmpty(@event.Account);
+        ArgumentException.ThrowIfNullOrWhiteSpace(@event.BusinessEventLegalEntity);
+        ArgumentException.ThrowIfNullOrWhiteSpace(@event.Account);
         int year = (customerBase.PersonBirthYear == null) ? 0 : customerBase.PersonBirthYear.Value;
         int month = (customerBase.PersonBirthMonth == null) ? 0 : (int)customerBase.PersonBirthMonth.Value;
         int day = (customerBase.PersonBirthDay == null) ? 0 : customerBase.PersonBirthDay.Value;

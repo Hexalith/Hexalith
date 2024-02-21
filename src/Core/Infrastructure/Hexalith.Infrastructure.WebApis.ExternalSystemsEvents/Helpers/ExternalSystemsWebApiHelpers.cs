@@ -46,7 +46,7 @@ public static class ExternalSystemsWebApiHelpers
         [NotNull] IEnumerable<string> aggregateNames)
     {
         ArgumentNullException.ThrowIfNull(services);
-        ArgumentException.ThrowIfNullOrEmpty(applicationName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(applicationName);
         ArgumentNullException.ThrowIfNull(aggregateNames);
 
         services.TryAddScoped<IProjectionUpdateHandler<ExternalSystemReferenceAdded>>(s => new ExternalSystemReferenceAddedMapperUpdateHandler(applicationName, aggregateNames));

@@ -27,7 +27,7 @@ public record ODataElement : ODataCommon
     protected ODataElement(string? etag, string dataAreaId)
         : base(etag)
     {
-        ArgumentException.ThrowIfNullOrEmpty(dataAreaId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(dataAreaId);
         DataAreaId = dataAreaId;
     }
 

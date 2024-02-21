@@ -106,10 +106,10 @@ public record SurveyCategory(
     /// <returns>System.String.</returns>
     public static string GetAggregateId([NotNull] string partitionId, [NotNull] string companyId, [NotNull] string originId, [NotNull] string id)
     {
-        ArgumentException.ThrowIfNullOrEmpty(partitionId);
-        ArgumentException.ThrowIfNullOrEmpty(companyId);
-        ArgumentException.ThrowIfNullOrEmpty(originId);
-        ArgumentException.ThrowIfNullOrEmpty(id);
+        ArgumentException.ThrowIfNullOrWhiteSpace(partitionId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(companyId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(originId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(id);
 
         return Normalize(GetAggregateName() + Separator + partitionId + Separator + companyId + Separator + originId + Separator + id);
     }

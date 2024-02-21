@@ -40,7 +40,7 @@ public static class PartiesWebApiHelpers
     public static IServiceCollection AddCustomerProjections(this IServiceCollection services, string appName)
     {
         ArgumentNullException.ThrowIfNull(services);
-        ArgumentException.ThrowIfNullOrEmpty(appName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(appName);
         services.TryAddScoped<IProjectionUpdateHandler<CustomerInformationChanged>, CustomerInformationChangedProjectionUpdateHandler>();
         services.TryAddScoped<IProjectionUpdateHandler<CustomerRegistered>, CustomerRegisteredProjectionUpdateHandler>();
         services.TryAddScoped<IProjectionUpdateHandler<IntercompanyDropshipDeliveryForCustomerDeselected>, IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler>();

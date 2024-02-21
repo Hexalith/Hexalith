@@ -65,8 +65,8 @@
 //        DateTimeOffset? birthDate = null)
 //    {
 //        ArgumentNullException.ThrowIfNull(customer);
-//        ArgumentException.ThrowIfNullOrEmpty(customer.SalesInvoiceAccount);
-//        ArgumentException.ThrowIfNullOrEmpty(customer.OrganizationName);
+//        ArgumentException.ThrowIfNullOrWhiteSpace(customer.SalesInvoiceAccount);
+//        ArgumentException.ThrowIfNullOrWhiteSpace(customer.OrganizationName);
 //        SalesInvoicePostedBusinessEvent registered = new(
 //            partitionId,
 //            companyId,

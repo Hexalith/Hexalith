@@ -115,8 +115,8 @@ public static class CustomerConverterHelper
             DateTimeOffset? birthDate = null)
     {
         ArgumentNullException.ThrowIfNull(customer);
-        ArgumentException.ThrowIfNullOrEmpty(customer.CustomerAccount);
-        ArgumentException.ThrowIfNullOrEmpty(customer.OrganizationName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(customer.CustomerAccount);
+        ArgumentException.ThrowIfNullOrWhiteSpace(customer.OrganizationName);
         ChangeCustomerInformation changed = new(
             partitionId,
             companyId,
@@ -194,8 +194,8 @@ public static class CustomerConverterHelper
         DateTimeOffset? birthDate = null)
     {
         ArgumentNullException.ThrowIfNull(customer);
-        ArgumentException.ThrowIfNullOrEmpty(customer.CustomerAccount);
-        ArgumentException.ThrowIfNullOrEmpty(customer.OrganizationName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(customer.CustomerAccount);
+        ArgumentException.ThrowIfNullOrWhiteSpace(customer.OrganizationName);
         CustomerInformationChanged changed = new(
             partitionId,
             companyId,
@@ -273,8 +273,8 @@ public static class CustomerConverterHelper
         DateTimeOffset? birthDate = null)
     {
         ArgumentNullException.ThrowIfNull(customer);
-        ArgumentException.ThrowIfNullOrEmpty(customer.CustomerAccount);
-        ArgumentException.ThrowIfNullOrEmpty(customer.OrganizationName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(customer.CustomerAccount);
+        ArgumentException.ThrowIfNullOrWhiteSpace(customer.OrganizationName);
         CustomerRegistered registered = new(
             partitionId,
             companyId,
@@ -542,8 +542,8 @@ public static class CustomerConverterHelper
             DateTimeOffset? birthDate = null)
     {
         ArgumentNullException.ThrowIfNull(customer);
-        ArgumentException.ThrowIfNullOrEmpty(customer.CustomerAccount);
-        ArgumentException.ThrowIfNullOrEmpty(customer.OrganizationName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(customer.CustomerAccount);
+        ArgumentException.ThrowIfNullOrWhiteSpace(customer.OrganizationName);
         RegisterOrChangeCustomer changed = new(
             partitionId,
             companyId,
@@ -602,7 +602,7 @@ public static class CustomerConverterHelper
         object? newValue,
         [CallerArgumentExpression(nameof(oldValue))] string? fieldName = null)
     {
-        ArgumentException.ThrowIfNullOrEmpty(fieldName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(fieldName);
         if (oldValue == null && newValue == null)
         {
             return;

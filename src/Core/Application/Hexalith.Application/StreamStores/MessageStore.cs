@@ -37,7 +37,7 @@ public class MessageStore<TMessage>
     public MessageStore([NotNull] IStateStoreProvider stateManager, [NotNull] string streamName)
     {
         ArgumentNullException.ThrowIfNull(stateManager);
-        ArgumentException.ThrowIfNullOrEmpty(streamName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(streamName);
         _stateManager = stateManager;
         StreamName = streamName;
     }

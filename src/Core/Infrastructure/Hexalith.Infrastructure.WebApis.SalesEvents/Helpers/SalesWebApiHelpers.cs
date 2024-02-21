@@ -41,7 +41,7 @@ public static class SalesWebApiHelpers
     public static IServiceCollection AddSalesInvoiceProjections(this IServiceCollection services, string appName)
     {
         ArgumentNullException.ThrowIfNull(services);
-        ArgumentException.ThrowIfNullOrEmpty(appName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(appName);
         services.TryAddScoped<IProjectionUpdateHandler<SalesInvoiceIssued>, SalesInvoiceIssuedProjectionUpdateHandler>();
         _ = services.AddActorProjectionFactory<SalesInvoiceState>(appName);
         _ = services

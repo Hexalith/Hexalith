@@ -4,7 +4,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\Domain\Hexalith.Domain.Inventories\Hexalith.Domain.Inventories.csproj" />
+		<ProjectReference Include="..\..\Application\Hexalith.Application.Inventories\Hexalith.Application.Inventories.csproj" />
 		<ProjectReference Include="..\Hexalith.Infrastructure.Dynamics365Finance\Hexalith.Infrastructure.Dynamics365Finance.csproj" />
 	</ItemGroup>
 

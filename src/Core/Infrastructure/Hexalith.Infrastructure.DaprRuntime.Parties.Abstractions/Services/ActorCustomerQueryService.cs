@@ -37,7 +37,7 @@ public class ActorCustomerQueryService : ICustomerQueryService
     /// <inheritdoc/>
     public async Task<CustomerInformationChanged?> CreateInformationChangedEventAsync(string aggregateId, CancellationToken cancellationToken)
     {
-        ArgumentException.ThrowIfNullOrEmpty(aggregateId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(aggregateId);
         return await GetActor(aggregateId)
             .CreateInformationChangedEventAsync()
             .ConfigureAwait(false);
@@ -46,7 +46,7 @@ public class ActorCustomerQueryService : ICustomerQueryService
     /// <inheritdoc/>
     public async Task<bool> ExistAsync(string aggregateId, CancellationToken cancellationToken)
     {
-        ArgumentException.ThrowIfNullOrEmpty(aggregateId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(aggregateId);
         return await GetActor(aggregateId)
             .ExistAsync()
             .ConfigureAwait(false);
@@ -64,7 +64,7 @@ public class ActorCustomerQueryService : ICustomerQueryService
     /// <inheritdoc/>
     public async Task<bool> IsIntercompanyDirectDeliveryAsync(string aggregateId, CancellationToken cancellationToken)
     {
-        ArgumentException.ThrowIfNullOrEmpty(aggregateId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(aggregateId);
         return await GetActor(aggregateId)
             .IsIntercompanyDirectDeliveryAsync()
             .ConfigureAwait(false);

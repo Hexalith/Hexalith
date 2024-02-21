@@ -47,16 +47,16 @@ public class SendGridEmailService : EmailServiceBase
     public SendGridEmailService(IOptions<EmailServerSettings> settings)
         : base(settings)
     {
-        ArgumentException.ThrowIfNullOrEmpty(settings.Value.ApplicationSecret);
+        ArgumentException.ThrowIfNullOrWhiteSpace(settings.Value.ApplicationSecret);
         _apiKey = settings.Value.ApplicationSecret;
     }
 
     /// <inheritdoc/>
     public override async Task SendAsync(string fromEmail, string fromName, string toEmail, string subject, string? plainTextContent, string? htmlContent, CancellationToken cancellationToken)
     {
-        ArgumentException.ThrowIfNullOrEmpty(fromEmail);
-        ArgumentException.ThrowIfNullOrEmpty(toEmail);
-        ArgumentException.ThrowIfNullOrEmpty(subject);
+        ArgumentException.ThrowIfNullOrWhiteSpace(fromEmail);
+        ArgumentException.ThrowIfNullOrWhiteSpace(toEmail);
+        ArgumentException.ThrowIfNullOrWhiteSpace(subject);
         SendGridClient client = new(_apiKey);
         EmailAddress from = new(fromEmail, fromName);
         EmailAddress to = new(toEmail);

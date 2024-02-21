@@ -102,11 +102,11 @@ public record ExternalSystemReference(
         [NotNull] string referenceAggregateName,
         [NotNull] string externalId)
     {
-        ArgumentException.ThrowIfNullOrEmpty(partitionId);
-        ArgumentException.ThrowIfNullOrEmpty(companyId);
-        ArgumentException.ThrowIfNullOrEmpty(systemId);
-        ArgumentException.ThrowIfNullOrEmpty(referenceAggregateName);
-        ArgumentException.ThrowIfNullOrEmpty(externalId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(partitionId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(companyId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(systemId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(referenceAggregateName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(externalId);
         return Normalize(GetAggregateName() + Separator + partitionId + Separator + companyId + Separator + systemId + Separator + referenceAggregateName + Separator + externalId);
     }
 

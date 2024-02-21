@@ -41,8 +41,8 @@ public class ExternalReferenceMapperUpdateService
     /// <param name="aggregateName">Name of the aggregate.</param>
     public ExternalReferenceMapperUpdateService(string applicationName, string aggregateName)
     {
-        ArgumentException.ThrowIfNullOrEmpty(applicationName);
-        ArgumentException.ThrowIfNullOrEmpty(aggregateName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(applicationName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(aggregateName);
         _applicationName = applicationName;
         _aggregateName = aggregateName;
     }

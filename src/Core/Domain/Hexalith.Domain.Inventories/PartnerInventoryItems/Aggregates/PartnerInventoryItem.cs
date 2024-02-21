@@ -1,18 +1,8 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Domain.Parties
-// Author           : Jérôme Piquot
-// Created          : 08-21-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 08-29-2023
-// ***********************************************************************
-// <copyright file="PartnerInventoryItem.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="PartnerInventoryItem.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Domain.PartnerInventoryItems.Aggregates;
 
@@ -41,13 +31,32 @@ public record PartnerInventoryItem(
     string Id,
     string InventoryItemId,
     string UnitId,
+    string? Name,
+    decimal? Price,
+    string? CountryOfOriginId,
+    string? HarmonizedTariffScheduleCode,
+    string? ProductType,
     bool Disabled) : Aggregate
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="PartnerInventoryItem"/> class.
+    /// Initializes a new instance of the <see cref="PartnerInventoryItem" /> class.
     /// </summary>
     public PartnerInventoryItem()
-        : this(string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, false)
+        : this(
+              string.Empty,
+              string.Empty,
+              string.Empty,
+              string.Empty,
+              string.Empty,
+              string.Empty,
+              string.Empty,
+              string.Empty,
+              null,
+              null,
+              null,
+              null,
+              null,
+              false)
     {
     }
 
@@ -65,6 +74,11 @@ public record PartnerInventoryItem(
               inventoryItem.Id,
               inventoryItem.InventoryItemId,
               inventoryItem.UnitId,
+              inventoryItem.Name,
+              inventoryItem.Price,
+              inventoryItem.CountryOfOriginId,
+              inventoryItem.HarmonizedTariffScheduleCode,
+              inventoryItem.ProductType,
               false)
     {
     }
@@ -83,6 +97,11 @@ public record PartnerInventoryItem(
             inventoryItem.Id,
             inventoryItem.InventoryItemId,
             inventoryItem.UnitId,
+            inventoryItem.Name,
+            inventoryItem.Price,
+            inventoryItem.CountryOfOriginId,
+            inventoryItem.HarmonizedTariffScheduleCode,
+            inventoryItem.ProductType,
             false)
     {
     }

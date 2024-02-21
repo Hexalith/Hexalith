@@ -73,7 +73,7 @@ public partial class CustomerRegisteredHandler : IntegrationEventHandler<Custome
         ArgumentNullException.ThrowIfNull(organizationSettings);
         ArgumentNullException.ThrowIfNull(logger);
 
-        ArgumentException.ThrowIfNullOrEmpty(organizationSettings.Value.DefaultOriginId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(organizationSettings.Value.DefaultOriginId);
 
         _customerService = customerService;
         _partiesSettings = partiesSettings;

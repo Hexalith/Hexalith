@@ -62,7 +62,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     public async Task<HttpResponseMessage> SendPostAsync<TCreate>(string company, TCreate value, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(value);
-        ArgumentException.ThrowIfNullOrEmpty(company);
+        ArgumentException.ThrowIfNullOrWhiteSpace(company);
         string crossCompany = string.Equals(DefaultCompany, company, StringComparison.OrdinalIgnoreCase) ? string.Empty : "/?" + _crossCompanyQuery;
         Uri url = new(_instance, $"{_dataPath}/{TEntity.EntityName()}{crossCompany}");
         HttpResponseMessage? response = null;

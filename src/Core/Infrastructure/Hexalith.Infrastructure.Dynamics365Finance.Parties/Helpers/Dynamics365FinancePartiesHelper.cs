@@ -53,7 +53,7 @@ public static class Dynamics365FinancePartiesHelper
     {
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
-        ArgumentException.ThrowIfNullOrEmpty(applicationName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(applicationName);
         _ = services.ConfigureSettings<Dynamics365FinancePartiesSettings>(configuration);
         return services
             .AddDynamics365FinanceCustomersClient(configuration)
@@ -72,7 +72,7 @@ public static class Dynamics365FinancePartiesHelper
     {
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
-        ArgumentException.ThrowIfNullOrEmpty(applicationName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(applicationName);
         services
             .AddDynamics365FinanceBusinessEvents(configuration)
             .TryAddSingleton<IValidator<Dynamics365FinanceCustomerChanged>, Dynamics365FinanceCustomerChangedValidator>();

@@ -1,26 +1,36 @@
-﻿// <copyright file="PartnerInventoryItemAdded.cs" company="Fiveforty SAS Paris France">
+﻿// ***********************************************************************
+// Assembly         :
+// Author           : Jérôme Piquot
+// Created          : 02-18-2024
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 02-18-2024
+// ***********************************************************************
+// <copyright file="AddOrChangePartnerInventoryItem.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
-namespace Hexalith.Domain.PartnerInventoryItems.Events;
+namespace Hexalith.Application.Inventories.PartnerInventoryItems.Commands;
 
 using System.Runtime.Serialization;
 
 using Hexalith.Extensions;
 
 /// <summary>
-/// Class PartnerInventoryItemAdded.
-/// Implements the <see cref="PartnerInventoryItemEvent" />.
+/// Class AddOrChangePartnerInventoryItem.
+/// Implements the <see cref="PartnerInventoryItemCommand" />.
 /// </summary>
-/// <seealso cref="PartnerInventoryItemEvent" />
+/// <seealso cref="PartnerInventoryItemCommand" />
 [DataContract]
 [Serializable]
-public class PartnerInventoryItemAdded : PartnerInventoryItemEvent
+public class AddOrChangePartnerInventoryItem : PartnerInventoryItemCommand
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="PartnerInventoryItemAdded" /> class.
+    /// Initializes a new instance of the <see cref="AddOrChangePartnerInventoryItem" /> class.
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
@@ -35,7 +45,7 @@ public class PartnerInventoryItemAdded : PartnerInventoryItemEvent
     /// <param name="countryOfOriginId">The country of origin identifier.</param>
     /// <param name="harmonizedTariffScheduleCode">The harmonized tariff schedule code.</param>
     /// <param name="productType">Type of the product.</param>
-    public PartnerInventoryItemAdded(
+    public AddOrChangePartnerInventoryItem(
         string partitionId,
         string companyId,
         string originId,
@@ -52,19 +62,17 @@ public class PartnerInventoryItemAdded : PartnerInventoryItemEvent
         : base(partitionId, companyId, originId, partnerType, partnerId, id)
     {
         InventoryItemId = inventoryItemId;
-        Name = name;
         UnitId = unitId;
-        Price = price;
         CountryOfOriginId = countryOfOriginId;
         HarmonizedTariffScheduleCode = harmonizedTariffScheduleCode;
         ProductType = productType;
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="PartnerInventoryItemAdded" /> class.
+    /// Initializes a new instance of the <see cref="AddOrChangePartnerInventoryItem" /> class.
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    public PartnerInventoryItemAdded() => InventoryItemId = UnitId = string.Empty;
+    public AddOrChangePartnerInventoryItem() => InventoryItemId = UnitId = string.Empty;
 
     /// <summary>
     /// Gets or sets the country of origin identifier.
@@ -84,22 +92,22 @@ public class PartnerInventoryItemAdded : PartnerInventoryItemEvent
     /// Gets or sets the date.
     /// </summary>
     /// <value>The date.</value>
-    [DataMember(Order = 21)]
+    [DataMember(Order = 20)]
     public string InventoryItemId { get; set; }
 
     /// <summary>
-    /// Gets the name.
+    /// Gets or sets the date.
     /// </summary>
-    /// <value>The name.</value>
-    [DataMember(Order = 20)]
-    public string? Name { get; }
+    /// <value>The date.</value>
+    [DataMember(Order = 21)]
+    public string? Name { get; set; }
 
     /// <summary>
-    /// Gets the price.
+    /// Gets or sets the name.
     /// </summary>
-    /// <value>The price.</value>
+    /// <value>The name.</value>
     [DataMember(Order = 23)]
-    public decimal? Price { get; }
+    public decimal? Price { get; set; }
 
     /// <summary>
     /// Gets or sets the type of the product.

@@ -55,7 +55,7 @@ public class DaprClientStateStoreProvider : IStateStoreProvider
     public DaprClientStateStoreProvider(DaprClient daprClient, string stateStoreName)
     {
         ArgumentNullException.ThrowIfNull(daprClient);
-        ArgumentException.ThrowIfNullOrEmpty(stateStoreName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(stateStoreName);
         DaprClient = daprClient;
         StateStoreName = stateStoreName;
     }

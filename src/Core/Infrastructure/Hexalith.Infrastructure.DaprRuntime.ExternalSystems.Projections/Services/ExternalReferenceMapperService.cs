@@ -41,7 +41,7 @@ public class ExternalReferenceMapperService : IExternalReferenceMapperService
     /// <param name="applicationName">Name of the application.</param>
     public ExternalReferenceMapperService(string applicationName)
     {
-        ArgumentException.ThrowIfNullOrEmpty(applicationName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(applicationName);
         _applicationName = applicationName;
     }
 

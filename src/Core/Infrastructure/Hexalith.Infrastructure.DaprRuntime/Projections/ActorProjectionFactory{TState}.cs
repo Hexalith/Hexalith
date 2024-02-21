@@ -43,7 +43,7 @@ public class ActorProjectionFactory<TState> : IActorProjectionFactory<TState>
     public ActorProjectionFactory(IActorProxyFactory actorFactory, string applicationName)
     {
         ArgumentNullException.ThrowIfNull(actorFactory);
-        ArgumentException.ThrowIfNullOrEmpty(applicationName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(applicationName);
         ActorFactory = actorFactory;
         AplicationName = applicationName;
     }
@@ -69,7 +69,7 @@ public class ActorProjectionFactory<TState> : IActorProjectionFactory<TState>
     /// <inheritdoc/>
     public IKeyValueActor GetProjectionActor(string aggregateId)
     {
-        ArgumentException.ThrowIfNullOrEmpty(aggregateId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(aggregateId);
         return ActorFactory.CreateActorProxy<IKeyValueActor>(new ActorId(aggregateId), ProjectionActorName);
     }
 
@@ -81,7 +81,7 @@ public class ActorProjectionFactory<TState> : IActorProjectionFactory<TState>
     /// <returns>A Task&lt;TState&gt; representing the asynchronous operation.</returns>
     public async Task<TState?> GetStateAsync(string aggregateId, CancellationToken cancellationToken)
     {
-        ArgumentException.ThrowIfNullOrEmpty(aggregateId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(aggregateId);
         string? result = await GetProjectionActor(aggregateId)
             .GetAsync()
             .ConfigureAwait(false);
@@ -91,7 +91,7 @@ public class ActorProjectionFactory<TState> : IActorProjectionFactory<TState>
     /// <inheritdoc/>
     public async Task SetStateAsync(string aggregateId, TState state, CancellationToken cancellationToken)
     {
-        ArgumentException.ThrowIfNullOrEmpty(aggregateId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(aggregateId);
         await GetProjectionActor(aggregateId)
             .SetAsync(JsonSerializer.Serialize(state))
             .ConfigureAwait(false);

@@ -230,7 +230,7 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
     /// <inheritdoc/>
     public async Task<CustomerV3> GetStoreDefaultCustomerTemplateAsync(string warehouseId, CancellationToken cancellationToken)
     {
-        ArgumentException.ThrowIfNullOrEmpty(warehouseId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(warehouseId);
 
         // Get customer default values from the store and it's related customer template.
         RetailStore[] stores = (await _storeService

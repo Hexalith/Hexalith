@@ -41,7 +41,7 @@ public static class InventoriesWebApiHelpers
     public static IServiceCollection AddInventoryItemProjections(this IServiceCollection services, string appName)
     {
         ArgumentNullException.ThrowIfNull(services);
-        ArgumentException.ThrowIfNullOrEmpty(appName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(appName);
         services.TryAddScoped<IProjectionUpdateHandler<InventoryItemInformationChanged>, InventoryItemInformationChangedProjectionUpdateHandler>();
         services.TryAddScoped<IProjectionUpdateHandler<InventoryItemAdded>, InventoryItemAddedProjectionUpdateHandler>();
         _ = services.AddActorProjectionFactory<InventoryItemDetailsProjection>(appName);

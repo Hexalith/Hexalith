@@ -65,7 +65,7 @@ public static class Dynamics365FinanceSalesHelper
     {
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
-        ArgumentException.ThrowIfNullOrEmpty(applicationName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(applicationName);
         _ = services.ConfigureSettings<Dynamics365FinanceSalesSettings>(configuration);
         return services
             .AddDynamics365FinanceSalesInvoicesClient(configuration)
@@ -84,7 +84,7 @@ public static class Dynamics365FinanceSalesHelper
     {
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
-        ArgumentException.ThrowIfNullOrEmpty(applicationName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(applicationName);
         services
             .AddDynamics365FinanceBusinessEvents(configuration)
             .TryAddSingleton<IValidator<SalesInvoicePostedBusinessEvent>, SalesInvoicePostedValidator>();

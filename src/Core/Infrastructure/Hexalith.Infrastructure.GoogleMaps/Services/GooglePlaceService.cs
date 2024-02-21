@@ -109,7 +109,7 @@ public class GooglePlaceService : IPlaceService
     /// <exception cref="System.InvalidOperationException">The postal address was not found by Google services.</exception>
     public async Task<Domain.ValueObjets.PostalAddress> GetPostalAddressAsync(string placeId, CancellationToken cancellationToken)
     {
-        ArgumentException.ThrowIfNullOrEmpty(placeId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(placeId);
         if (_cache.TryGetValue(placeId, out Domain.ValueObjets.PostalAddress? postalAddress))
         {
             if (postalAddress != null)

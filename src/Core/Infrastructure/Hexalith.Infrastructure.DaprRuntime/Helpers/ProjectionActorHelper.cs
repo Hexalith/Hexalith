@@ -43,7 +43,7 @@ public static class ProjectionActorHelper
     public static IServiceCollection AddActorProjectionFactory<TState>(this IServiceCollection services, string applicationName)
     {
         ArgumentNullException.ThrowIfNull(services);
-        ArgumentException.ThrowIfNullOrEmpty(applicationName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(applicationName);
         services.TryAddScoped<IActorProjectionFactory<TState>>(s
             => new ActorProjectionFactory<TState>(s.GetRequiredService<IActorProxyFactory>(), applicationName));
         return services;
@@ -72,7 +72,7 @@ public static class ProjectionActorHelper
     public static void RegisterProjectionActor<TState>(this ActorRegistrationCollection actorRegistrationCollection, string applicationName)
     {
         ArgumentNullException.ThrowIfNull(actorRegistrationCollection);
-        ArgumentException.ThrowIfNullOrEmpty(applicationName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(applicationName);
         actorRegistrationCollection.RegisterActor<KeyValueActor>(GetProjectionActorName<TState>(applicationName));
     }
 }

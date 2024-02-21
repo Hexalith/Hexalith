@@ -52,7 +52,7 @@ public record ProductBarcode(
     /// <returns>ProductIdentifier.</returns>
     public ProductIdentifier ToProductIdentifier(string systemId)
     {
-        ArgumentException.ThrowIfNullOrEmpty(systemId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(systemId);
         return new ProductIdentifier
         {
             Barcode = Barcode,

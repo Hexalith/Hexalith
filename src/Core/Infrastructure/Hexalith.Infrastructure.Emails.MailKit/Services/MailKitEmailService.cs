@@ -79,9 +79,9 @@ public class MailKitEmailService : EmailServiceBase
     /// <inheritdoc/>
     public override async Task SendAsync(string fromEmail, string fromName, string toEmail, string subject, string? plainTextContent, string? htmlContent, CancellationToken cancellationToken)
     {
-        ArgumentException.ThrowIfNullOrEmpty(fromEmail);
-        ArgumentException.ThrowIfNullOrEmpty(toEmail);
-        ArgumentException.ThrowIfNullOrEmpty(subject);
+        ArgumentException.ThrowIfNullOrWhiteSpace(fromEmail);
+        ArgumentException.ThrowIfNullOrWhiteSpace(toEmail);
+        ArgumentException.ThrowIfNullOrWhiteSpace(subject);
 
         // create message
         using MimeMessage email = new()

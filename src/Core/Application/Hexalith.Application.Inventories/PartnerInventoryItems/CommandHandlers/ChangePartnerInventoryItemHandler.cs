@@ -47,8 +47,13 @@ public class ChangePartnerInventoryItemHandler : CommandHandler<ChangePartnerInv
                     command.PartnerType,
                     command.PartnerId,
                     command.Id,
+                    command.Name,
                     command.InventoryItemId,
-                    command.UnitId)
+                    command.UnitId,
+                    command.Price,
+                    command.CountryOfOriginId,
+                    command.HarmonizedTariffScheduleCode,
+                    command.ProductType)
                     .IntoArray<BaseMessage>());
     }
 

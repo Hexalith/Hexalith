@@ -58,7 +58,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     {
         ArgumentNullException.ThrowIfNull(key);
         ArgumentNullException.ThrowIfNull(value);
-        ArgumentException.ThrowIfNullOrEmpty(company);
+        ArgumentException.ThrowIfNullOrWhiteSpace(company);
         _ = await SendPatchAsync(company, key, value, cancellationToken).ConfigureAwait(false);
     }
 
@@ -82,7 +82,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     {
         ArgumentNullException.ThrowIfNull(key);
         ArgumentNullException.ThrowIfNull(value);
-        ArgumentException.ThrowIfNullOrEmpty(company);
+        ArgumentException.ThrowIfNullOrWhiteSpace(company);
         string crossCompany = string.Equals(DefaultCompany, company, StringComparison.OrdinalIgnoreCase) ? string.Empty : "?" + _crossCompanyQuery;
         Uri url = new(_instance, $"{_dataPath}/{TEntity.EntityName()}({HttpUtility.UrlEncode(GetEntityFilter(company, key))}){crossCompany}");
         HttpResponseMessage? response = null;

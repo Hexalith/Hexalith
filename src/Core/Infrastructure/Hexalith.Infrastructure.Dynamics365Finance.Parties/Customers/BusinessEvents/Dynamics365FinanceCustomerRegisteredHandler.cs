@@ -70,9 +70,9 @@ public class Dynamics365FinanceCustomerRegisteredHandler : IntegrationEventHandl
         ArgumentNullException.ThrowIfNull(@event);
         ArgumentNullException.ThrowIfNull(@event.Contact);
         ArgumentNullException.ThrowIfNull(@event.Contact.PostalAddress);
-        ArgumentException.ThrowIfNullOrEmpty(@event.Account);
-        ArgumentException.ThrowIfNullOrEmpty(@event.Name);
-        ArgumentException.ThrowIfNullOrEmpty(@event.BusinessEventLegalEntity);
+        ArgumentException.ThrowIfNullOrWhiteSpace(@event.Account);
+        ArgumentException.ThrowIfNullOrWhiteSpace(@event.Name);
+        ArgumentException.ThrowIfNullOrWhiteSpace(@event.BusinessEventLegalEntity);
         string? aggregateId = @event
             .ExternalReferences?
             .Where(p => p.SystemId == nameof(Hexalith))

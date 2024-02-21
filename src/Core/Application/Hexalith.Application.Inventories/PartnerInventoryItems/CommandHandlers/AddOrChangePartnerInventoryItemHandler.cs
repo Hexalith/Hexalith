@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 08-29-2023
 // ***********************************************************************
-// <copyright file="AddPartnerInventoryItemHandler.cs" company="Fiveforty SAS Paris France">
+// <copyright file="AddOrChangePartnerInventoryItemHandler.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -34,21 +34,37 @@ using Hexalith.Extensions.Helpers;
 /// Implements the <see cref="CommandHandler{Parties.Commands.ChangeCustomerInformation}" />.
 /// </summary>
 /// <seealso cref="CommandHandler{Parties.Commands.ChangeCustomerInformation}" />
-public class AddPartnerInventoryItemHandler : CommandHandler<AddPartnerInventoryItem>
+public class AddOrChangePartnerInventoryItemHandler : CommandHandler<AddOrChangePartnerInventoryItem>
 {
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] AddPartnerInventoryItem command, IAggregate? aggregate, CancellationToken cancellationToken)
+    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] AddOrChangePartnerInventoryItem command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
-        return Task.FromResult<IEnumerable<BaseMessage>>(new PartnerInventoryItemAdded(
+        return aggregate == null || !aggregate.IsInitialized()
+            ? Task.FromResult<IEnumerable<BaseMessage>>(new PartnerInventoryItemAdded(
+                        command.PartitionId,
+                        command.CompanyId,
+                        command.OriginId,
+                        command.PartnerType,
+                        command.PartnerId,
+                        command.Id,
+                        command.Name,
+                        command.InventoryItemId,
+                        command.UnitId,
+                        command.Price,
+                        command.CountryOfOriginId,
+                        command.HarmonizedTariffScheduleCode,
+                        command.ProductType)
+                        .IntoArray<BaseMessage>())
+            : Task.FromResult<IEnumerable<BaseMessage>>(new PartnerInventoryItemChanged(
                     command.PartitionId,
                     command.CompanyId,
                     command.OriginId,
                     command.PartnerType,
                     command.PartnerId,
                     command.Id,
-                    command.InventoryItemId,
                     command.Name,
+                    command.InventoryItemId,
                     command.UnitId,
                     command.Price,
                     command.CountryOfOriginId,
@@ -58,6 +74,6 @@ public class AddPartnerInventoryItemHandler : CommandHandler<AddPartnerInventory
     }
 
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> UndoAsync(AddPartnerInventoryItem command, IAggregate? aggregate, CancellationToken cancellationToken)
+    public override Task<IEnumerable<BaseMessage>> UndoAsync(AddOrChangePartnerInventoryItem command, IAggregate? aggregate, CancellationToken cancellationToken)
         => throw new NotSupportedException();
 }

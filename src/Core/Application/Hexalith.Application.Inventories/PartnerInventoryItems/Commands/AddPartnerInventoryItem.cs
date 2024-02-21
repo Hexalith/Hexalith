@@ -30,7 +30,7 @@ using Hexalith.Extensions;
 public class AddPartnerInventoryItem : PartnerInventoryItemCommand
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="AddPartnerInventoryItem" /> class.
+    /// Initializes a new instance of the <see cref="AddPartnerInventoryItem"/> class.
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
@@ -40,6 +40,11 @@ public class AddPartnerInventoryItem : PartnerInventoryItemCommand
     /// <param name="id">The identifier.</param>
     /// <param name="inventoryItemId">The inventory item identifier.</param>
     /// <param name="unitId">The unit identifier.</param>
+    /// <param name="name">The name.</param>
+    /// <param name="price">The price.</param>
+    /// <param name="countryOfOriginId">The country of origin identifier.</param>
+    /// <param name="harmonizedTariffScheduleCode">The harmonized tariff schedule code.</param>
+    /// <param name="productType">Type of the product.</param>
     public AddPartnerInventoryItem(
         string partitionId,
         string companyId,
@@ -48,11 +53,19 @@ public class AddPartnerInventoryItem : PartnerInventoryItemCommand
         string partnerId,
         string id,
         string inventoryItemId,
-        string unitId)
+        string unitId,
+        string? name,
+        decimal? price,
+        string? countryOfOriginId,
+        string? harmonizedTariffScheduleCode,
+        string? productType)
         : base(partitionId, companyId, originId, partnerType, partnerId, id)
     {
         InventoryItemId = inventoryItemId;
         UnitId = unitId;
+        CountryOfOriginId = countryOfOriginId;
+        HarmonizedTariffScheduleCode = harmonizedTariffScheduleCode;
+        ProductType = productType;
     }
 
     /// <summary>
@@ -62,6 +75,20 @@ public class AddPartnerInventoryItem : PartnerInventoryItemCommand
     public AddPartnerInventoryItem() => InventoryItemId = UnitId = string.Empty;
 
     /// <summary>
+    /// Gets or sets the country of origin identifier.
+    /// </summary>
+    /// <value>The country of origin identifier.</value>
+    [DataMember(Order = 24)]
+    public string? CountryOfOriginId { get; set; }
+
+    /// <summary>
+    /// Gets or sets the harmonized tariff schedule code.
+    /// </summary>
+    /// <value>The harmonized tariff schedule code.</value>
+    [DataMember(Order = 25)]
+    public string? HarmonizedTariffScheduleCode { get; set; }
+
+    /// <summary>
     /// Gets or sets the date.
     /// </summary>
     /// <value>The date.</value>
@@ -69,9 +96,30 @@ public class AddPartnerInventoryItem : PartnerInventoryItemCommand
     public string InventoryItemId { get; set; }
 
     /// <summary>
+    /// Gets or sets the date.
+    /// </summary>
+    /// <value>The date.</value>
+    [DataMember(Order = 21)]
+    public string? Name { get; set; }
+
+    /// <summary>
     /// Gets or sets the name.
     /// </summary>
     /// <value>The name.</value>
-    [DataMember(Order = 21)]
+    [DataMember(Order = 23)]
+    public decimal? Price { get; set; }
+
+    /// <summary>
+    /// Gets or sets the type of the product.
+    /// </summary>
+    /// <value>The type of the product.</value>
+    [DataMember(Order = 26)]
+    public string? ProductType { get; set; }
+
+    /// <summary>
+    /// Gets or sets the name.
+    /// </summary>
+    /// <value>The name.</value>
+    [DataMember(Order = 22)]
     public string UnitId { get; set; }
 }
