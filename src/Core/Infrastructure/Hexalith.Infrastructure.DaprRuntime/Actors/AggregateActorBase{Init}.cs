@@ -49,16 +49,16 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
     private readonly ICommandBus _commandBus;
     private readonly ICommandDispatcher _commandDispatcher;
     private readonly IDateTimeService _dateTimeService;
+    private readonly TimeSpan _defaultTimerDueTime = TimeSpan.FromMilliseconds(1);
     private readonly IEventBus _eventBus;
     private readonly ActorHost _host;
+    private readonly TimeSpan _maxTimerDueTime = new(0, 1, 0);
     private readonly INotificationBus _notificationBus;
     private readonly IRequestBus _requestBus;
     private readonly IResiliencyPolicyProvider _resiliencyPolicyProvider;
     private IAggregate? _aggregate;
     private MessageStore<CommandState>? _commandStore;
-    private TimeSpan _defaultTimerDueTime = TimeSpan.FromMilliseconds(1);
     private MessageStore<EventState>? _eventSourceStore;
-    private TimeSpan _maxTimerDueTime = new(0, 1, 0);
     private MessageStore<MessageState>? _messageStore;
     private ActorTimer? _processTimer;
     private ActorTimer? _publishTimer;
@@ -160,13 +160,37 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
     public static partial void LogProcessedCommandInformation(ILogger logger, string commandType, string commandId, string aggregateName, string aggregateId);
 
     [LoggerMessage(
-            EventId = 1,
+            EventId = 2,
+            Level = LogLevel.Error,
+            Message = "Actor {ActorType} ({ActorId}) failed processing {CommandProcessed}/{CommandCount} command in a timer or reminder callback. Resetting state.")]
+    public static partial void LogProcessingCallbackError(ILogger logger, Exception ex, string actorId, string actorType, long commandCount, long commandProcessed);
+
+    [LoggerMessage(
+                EventId = 1,
             Level = LogLevel.Information,
             Message = "Actor {ActorType} ({ActorId}) is processing commands. {LastCommandProcessed} commands processed on a total of {CommandCount}")]
     public static partial void LogProcessingCommandsInformation(ILogger logger, string actorId, string actorType, long commandCount, long lastCommandProcessed);
 
     /// <inheritdoc/>
-    public async Task ProcessCallbackAsync() => await ProcessNextCommandAsync().ConfigureAwait(false);
+    public async Task ProcessCallbackAsync()
+    {
+        try
+        {
+            _ = await ProcessNextCommandAsync().ConfigureAwait(false);
+        }
+        catch (Exception ex)
+        {
+            LogProcessingCallbackError(
+                Logger,
+                ex,
+                Id.GetId(),
+                Host.ActorTypeInfo.ActorTypeName,
+                (_state?.LastCommandProcessed ?? 0L) + 1L,
+                _state?.CommandCount ?? 0L);
+            _state = null;
+            throw;
+        }
+    }
 
     /// <inheritdoc/>
     public async Task PublishCallbackAsync() => await PublishNextMessageAsync().ConfigureAwait(false);
@@ -243,7 +267,7 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
         TimeSpan reminderWaitTime = state.RetryOnFailurePeriod ?? _maxTimerDueTime;
         reminderWaitTime = reminderWaitTime < _maxTimerDueTime ? _maxTimerDueTime : reminderWaitTime;
 
-        if (_processTimer != null && (_processTimer.DueTime != timerWaitTime || state.LastCommandProcessed >= state.CommandCount))
+        if ((_processTimer != null && _processTimer.DueTime != timerWaitTime) || state.LastCommandProcessed >= state.CommandCount)
         {
             await UnregisterTimerAsync(ActorConstants.ProcessTimerName).ConfigureAwait(false);
             _processTimer = null;
@@ -276,7 +300,7 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
         TimeSpan timerWaitTime = timerWaitTime = state.PublishFailed ? _maxTimerDueTime : _defaultTimerDueTime;
         TimeSpan reminderWaitTime = _maxTimerDueTime;
 
-        if (_publishTimer != null && (_publishTimer.DueTime != timerWaitTime || state.LastMessagePublished >= state.MessageCount))
+        if ((_publishTimer != null && _publishTimer.DueTime != timerWaitTime) || state.LastMessagePublished >= state.MessageCount)
         {
             await UnregisterTimerAsync(ActorConstants.PublishTimerName).ConfigureAwait(false);
             _publishTimer = null;

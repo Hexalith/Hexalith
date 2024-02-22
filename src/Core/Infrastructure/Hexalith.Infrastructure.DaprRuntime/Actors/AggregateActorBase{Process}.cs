@@ -41,7 +41,7 @@ using Microsoft.Extensions.Logging;
 /// </summary>
 public abstract partial class AggregateActorBase
 {
-    private TimeSpan _minimumDuplicateNotificationPeriod = TimeSpan.FromMinutes(15);
+    private readonly TimeSpan _minimumDuplicateNotificationPeriod = TimeSpan.FromMinutes(15);
 
     /// <inheritdoc/>
     public async Task<bool> ProcessNextCommandAsync()
@@ -94,6 +94,19 @@ public abstract partial class AggregateActorBase
         int nextRetryNumber,
         TimeSpan retryDueTime,
         DateTimeOffset nextRetryDateTime);
+
+    [LoggerMessage(
+            EventId = 8,
+        Level = LogLevel.Error,
+        Message = "Unhandled command processing error. Command handlers should throw application error exceptions. Processing command number {CommandSequence}, type '{CommandType}', correlationId '{CorrelationId}' for aggregate '{AggregateName}/{AggregateId}'.")]
+    private static partial void LogUnhandledCommandProcessingError(
+        ILogger logger,
+        Exception exception,
+        long commandSequence,
+        string commandType,
+        string aggregateName,
+        string aggregateId,
+        string correlationId);
 
     private async Task<TaskProcessor> GetTaskProcessorAsync(long commandSequence, CancellationToken cancellationToken)
     {
@@ -279,6 +292,19 @@ public abstract partial class AggregateActorBase
                 command,
                 ex,
                 cancellationToken).ConfigureAwait(false);
+        }
+        catch (Exception e)
+        {
+            LogUnhandledCommandProcessingError(
+                Logger,
+                e,
+                commandNumber,
+                command.TypeName,
+                command.AggregateName,
+                command.AggregateId,
+                metadata.Context.CorrelationId);
+
+            throw;
         }
 
         await PersistTaskProcessorAsync(commandNumber, taskProcessor, cancellationToken).ConfigureAwait(false);

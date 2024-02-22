@@ -10,6 +10,8 @@ using System;
 using System.Runtime.Serialization;
 using System.Text.Json;
 
+using Hexalith.Extensions.Common;
+using Hexalith.Extensions.Errors;
 using Hexalith.Infrastructure.Dynamics365Finance.Models;
 
 /// <summary>
@@ -20,7 +22,7 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 /// <typeparam name="TUpdate">The type of the create.</typeparam>
 /// <seealso cref="Exception" />
 [DataContract]
-public class Dynamics365FinancePatchException<TEntity, TUpdate> : Exception
+public class Dynamics365FinancePatchException<TEntity, TUpdate> : ApplicationErrorException
     where TEntity : class, IODataCommon
 {
     /// <summary>
@@ -59,7 +61,14 @@ public class Dynamics365FinancePatchException<TEntity, TUpdate> : Exception
     /// <param name="message">The message.</param>
     /// <param name="responseContent">Content of the response.</param>
     /// <param name="innerException">The inner exception.</param>
-    public Dynamics365FinancePatchException(Uri url, string company, TUpdate? value, ErrorResponse? error, string? message, string? responseContent, Exception? innerException)
+    public Dynamics365FinancePatchException(
+        Uri url,
+        string company,
+        TUpdate? value,
+        ErrorResponse? error,
+        string? message,
+        string? responseContent,
+        Exception? innerException)
         : base(
             CreateMessage(url, company, value, error, message, responseContent),
             innerException)
@@ -68,7 +77,7 @@ public class Dynamics365FinancePatchException<TEntity, TUpdate> : Exception
         Company = company;
         Value = value;
         ResponseContent = responseContent;
-        Error = error;
+        Dynamics365Error = error;
     }
 
     /// <summary>
@@ -91,7 +100,7 @@ public class Dynamics365FinancePatchException<TEntity, TUpdate> : Exception
     /// Gets the content of the response.
     /// </summary>
     /// <value>The content of the response.</value>
-    public ErrorResponse? Error { get; private set; }
+    public ErrorResponse? Dynamics365Error { get; private set; }
 
     /// <summary>
     /// Gets the content of the response.
@@ -109,25 +118,37 @@ public class Dynamics365FinancePatchException<TEntity, TUpdate> : Exception
     /// <value>The value.</value>
     public TUpdate? Value { get; private set; }
 
-    private static string CreateMessage(Uri url, string company, TUpdate? value, ErrorResponse? error, string? message, string? responseContent)
+    private static ApplicationError CreateMessage(Uri url, string company, TUpdate? value, ErrorResponse? error, string? message, string? responseContent)
     {
-        string msg = $"Error while Patching {typeof(TEntity).Name} to company {company}. Url : {url.AbsoluteUri}.";
-        if (!string.IsNullOrWhiteSpace(message))
+        string errorMessage = message + error?.Error?.Message ?? string.Empty;
+        InnerErrorMessage? err = error?.Error?.InnerError;
+        while (err != null)
         {
-            msg += "\n" + message;
+            errorMessage += err.Message;
+            err = err.InternalException;
         }
 
-        msg += error != null && error.Error != null && !string.IsNullOrWhiteSpace(error.Error.Message) ? $"\n{error.Error.Message}\n{error.Error.InnerError?.Message}" : $"\nResponse content:\n{responseContent}";
-
-        if (!object.Equals(value, default(TUpdate)))
+        return new ApplicationError
         {
-            string v = JsonSerializer.Serialize(value, new JsonSerializerOptions { WriteIndented = true });
-            if (!string.IsNullOrWhiteSpace(v))
-            {
-                msg += $"\nValue:\n{v}";
-            }
-        }
-
-        return msg;
+            Title = $"Error while updating {typeof(TEntity).Name} to company {company}.",
+            Detail = string.IsNullOrWhiteSpace(errorMessage)
+                ? message
+                : string.IsNullOrWhiteSpace(message)
+                    ? errorMessage
+                    : message + "\n" + errorMessage,
+            TechnicalDetail = "Error while Patching entity {Entity} to company {Company}. Message: {Message} {ErrorMessage}\nInnerError : {InnerError}\nCode : {ErrorCode}\nUrl : {Url}.\nPatched value : {Body}\nResponseContent : \n{ResponseContent}",
+            TechnicalArguments = [
+                typeof(TEntity).Name,
+                company,
+                message ?? string.Empty,
+                errorMessage,
+                error?.Error?.InnerError?.Message ?? string.Empty,
+                error?.Error?.Code ?? string.Empty,
+                url.AbsoluteUri,
+                (value == null) ? string.Empty : JsonSerializer.Serialize(value, new JsonSerializerOptions { WriteIndented = true }),
+                responseContent ?? string.Empty],
+            Type = "Interface",
+            Category = ErrorCategory.Unknown,
+        };
     }
 }

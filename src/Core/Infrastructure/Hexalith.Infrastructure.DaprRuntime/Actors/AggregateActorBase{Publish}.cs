@@ -69,13 +69,14 @@ public abstract partial class AggregateActorBase
                     state.LastMessagePublished + 1,
                     cancellationToken)
                 .ConfigureAwait(false);
-            await SetPublishCallbackAsync(cancellationToken)
-                .ConfigureAwait(false);
-            await SaveAggregateStateAsync(cancellationToken)
-                .ConfigureAwait(false);
-            await SaveStateAsync()
-                .ConfigureAwait(false);
         }
+
+        await SetPublishCallbackAsync(cancellationToken)
+            .ConfigureAwait(false);
+        await SaveAggregateStateAsync(cancellationToken)
+            .ConfigureAwait(false);
+        await SaveStateAsync()
+            .ConfigureAwait(false);
 
         return state.LastMessagePublished < state.MessageCount;
     }
