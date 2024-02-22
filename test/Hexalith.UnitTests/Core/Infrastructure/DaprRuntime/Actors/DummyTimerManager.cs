@@ -50,9 +50,10 @@ internal class DummyTimerManager : ActorTimerManager
         if (Timers.ContainsKey(timer.Name))
         {
             _ = Timers.Remove(timer.Name);
-            return Task.CompletedTask;
         }
 
-        return Task.FromException(new ArgumentException($"Timer {timer.Name} does not exist."));
+        return Task.CompletedTask;
+
+        // return Task.FromException(new ArgumentException($"Timer {timer.Name} does not exist."));
     }
 }
