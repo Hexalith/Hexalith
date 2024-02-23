@@ -26,19 +26,15 @@ using FluentValidation;
 using Hexalith.Application.Aggregates;
 using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
-using Hexalith.Application.Events;
-using Hexalith.Application.Notifications;
 using Hexalith.Application.Projection;
-using Hexalith.Application.Requests;
 using Hexalith.Application.States;
 using Hexalith.Application.Tasks;
 using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Common;
-using Hexalith.Extensions.Configuration;
-using Hexalith.Infrastructure.DaprRuntime.Buses;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
-using Hexalith.Infrastructure.DaprRuntime.States;
 
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -90,18 +86,21 @@ public static class HexalithWebApi
             .AddApplicationPart(typeof(BaseMessage).Assembly) // Issue with MapControllers() throwing a type not found exception for BaseCommand
             .AddDapr();
 
-        if (debugInVisualStudio == true)
+        _ = builder.Services.AddAuthentication().AddDapr(); // Adds Dapr authentication
+        _ = builder.Services.AddAuthorization(options => options.AddDapr());
+
+        if (debugInVisualStudio)
         {
             // When debugging, we want to be able to run the application inside Visual Studio to see the technical details.
             _ = builder.Services.AddDaprSidekick(builder.Configuration);
         }
+
         _ = builder.Services.AddValidatorsFromAssemblyContaining<CommandBusSettingsValidator>(ServiceLifetime.Singleton);
         builder.Services.TryAddSingleton<IDateTimeService, DateTimeService>();
         builder.Services.TryAddSingleton<IResiliencyPolicyProvider, ResiliencyPolicyProvider>();
         builder.Services.TryAddScoped<IAggregateStateManager, AggregateStateManager>();
         builder.Services.TryAddScoped<ICommandDispatcher, DependencyInjectionCommandDispatcher>();
         builder.Services.TryAddScoped<IProjectionUpdateProcessor, DependencyInjectionProjectionUpdateProcessor>();
-
         return builder;
     }
 
@@ -132,7 +131,8 @@ public static class HexalithWebApi
         _ = app.UseSwaggerUI();
 
         _ = app.UseRouting();
-
+        _ = app.UseAuthentication();
+        _ = app.UseAuthorization();
         _ = app.MapActorsHandlers();
         return app;
     }
