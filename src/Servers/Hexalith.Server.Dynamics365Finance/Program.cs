@@ -14,6 +14,7 @@ using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEv
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Helpers;
 using Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Helpers;
 using Hexalith.Infrastructure.WebApis.Helpers;
+using Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers;
 using Hexalith.Server.Dynamics365Finance;
 
 using Serilog;
@@ -40,6 +41,7 @@ WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
     args);
 
 builder.Services
+    .AddCustomerProjections(Dynamics365FinanceConstants.ApplicationName)
     .AddExternalSystemsMapperSubscription(Dynamics365FinanceConstants.ApplicationName, aggregateNames)
     .AddDynamics365FinanceCustomers(builder.Configuration, Dynamics365FinanceConstants.ApplicationName)
     .AddOrganizations(builder.Configuration)
