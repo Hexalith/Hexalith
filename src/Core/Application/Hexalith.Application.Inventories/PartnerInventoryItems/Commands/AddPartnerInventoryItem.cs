@@ -63,6 +63,8 @@ public class AddPartnerInventoryItem : PartnerInventoryItemCommand
     {
         InventoryItemId = inventoryItemId;
         UnitId = unitId;
+        Name = name;
+        Price = price;
         CountryOfOriginId = countryOfOriginId;
         HarmonizedTariffScheduleCode = harmonizedTariffScheduleCode;
         ProductType = productType;

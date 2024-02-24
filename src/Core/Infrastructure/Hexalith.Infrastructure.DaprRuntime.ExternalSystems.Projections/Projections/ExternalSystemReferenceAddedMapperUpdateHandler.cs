@@ -22,15 +22,15 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Hexalith.Application.Metadatas;
-using Hexalith.Application.Projection;
+using Hexalith.Application.Projections;
 using Hexalith.Domain.Events;
 using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services;
 
 /// <summary>
 /// Class ExternalSystemReferenceAddedMapperUpdateHandler.
-/// Implements the <see cref="Hexalith.Application.Projection.IProjectionUpdateHandler{Hexalith.Domain.Events.ExternalSystemReferenceAdded}" />.
+/// Implements the <see cref="Application.Projections.IProjectionUpdateHandler{Hexalith.Domain.Events.ExternalSystemReferenceAdded}" />.
 /// </summary>
-/// <seealso cref="Hexalith.Application.Projection.IProjectionUpdateHandler{Hexalith.Domain.Events.ExternalSystemReferenceAdded}" />
+/// <seealso cref="Application.Projections.IProjectionUpdateHandler{Hexalith.Domain.Events.ExternalSystemReferenceAdded}" />
 public class ExternalSystemReferenceAddedMapperUpdateHandler : IProjectionUpdateHandler<ExternalSystemReferenceAdded>
 {
     /// <summary>

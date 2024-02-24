@@ -123,5 +123,5 @@ public class SalesLineItem : IEquatableObject
 
     /// <inheritdoc/>
     public IEnumerable<object?> GetEqualityComponents()
-        => new object?[] { ItemId, Quantity, UnitId, Price };
+        => [ItemId, Quantity, UnitId, Price];
 }

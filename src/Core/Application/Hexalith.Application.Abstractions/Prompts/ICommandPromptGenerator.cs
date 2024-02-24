@@ -36,7 +36,7 @@ public interface ICommandPromptGenerator
     /// <param name="language">The language.</param>
     /// <param name="correlationId">The correlation identifier.</param>
     /// <returns>Task&lt;System.String&gt;.</returns>
-    public Task<string> GeneratePromptAsync<TCommand>(
+    Task<string> GeneratePromptAsync<TCommand>(
         string assistantEmail,
         string assistantName,
         string userEmail,

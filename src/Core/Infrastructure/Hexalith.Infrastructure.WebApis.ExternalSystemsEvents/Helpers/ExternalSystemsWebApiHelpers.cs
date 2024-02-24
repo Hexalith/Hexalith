@@ -19,7 +19,7 @@ namespace Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Helpers;
 using System.Diagnostics.CodeAnalysis;
 
 using Hexalith.Application.ExternalSystems.Services;
-using Hexalith.Application.Projection;
+using Hexalith.Application.Projections;
 using Hexalith.Domain.Events;
 using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Projections;
 using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services;

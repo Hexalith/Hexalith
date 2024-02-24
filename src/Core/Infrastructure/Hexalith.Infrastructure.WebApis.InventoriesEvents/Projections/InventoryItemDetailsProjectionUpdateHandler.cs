@@ -22,7 +22,6 @@ using System.Threading.Tasks;
 
 using Hexalith.Application.Inventories.InventoryItems.Projections;
 using Hexalith.Application.Metadatas;
-using Hexalith.Domain.InventoryItem.Events;
 using Hexalith.Domain.InventoryItems.Events;
 using Hexalith.Infrastructure.DaprRuntime.Projections;
 

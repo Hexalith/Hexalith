@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 10-28-2023
 // ***********************************************************************
-// <copyright file="IKeyValueActor - Copy.cs" company="Fiveforty SAS Paris France">
+// <copyright file="INumberSequenceActor.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -20,7 +20,7 @@ using Dapr.Actors;
 
 /// <summary>
 /// Interface INumberSequenceActor
-/// Extends the <see cref="IActor" />
+/// Extends the <see cref="IActor" />.
 /// </summary>
 /// <seealso cref="IActor" />
 public interface INumberSequenceActor : IActor
@@ -29,5 +29,5 @@ public interface INumberSequenceActor : IActor
     /// Gets the asynchronous.
     /// </summary>
     /// <returns>Task&lt;System.Nullable&lt;System.String&gt;&gt;.</returns>
-    public Task<long> NextAsync();
+    Task<long> NextAsync();
 }

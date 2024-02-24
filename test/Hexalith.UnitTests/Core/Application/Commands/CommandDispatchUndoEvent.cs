@@ -8,7 +8,7 @@ namespace Hexalith.UnitTests.Core.Application.Commands;
 
 using Hexalith.Domain.Events;
 
-internal class CommandDispatchUndoEvent : BaseEvent
+internal sealed class CommandDispatchUndoEvent : BaseEvent
 {
     public CommandDispatchUndoEvent()
     {

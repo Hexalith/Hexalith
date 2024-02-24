@@ -17,7 +17,6 @@
 namespace Hexalith.Domain.Exceptions;
 
 using System;
-using System.Runtime.Serialization;
 
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
@@ -72,16 +71,6 @@ public class InvalidAggregateEventException : ApplicationErrorException
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="InvalidAggregateEventException"/> class.
-    /// </summary>
-    /// <param name="info">The object that holds the serialized object data.</param>
-    /// <param name="context">The contextual information about the source or destination.</param>
-    protected InvalidAggregateEventException(SerializationInfo info, StreamingContext context)
-        : base(info, context)
-    {
-    }
-
-    /// <summary>
     /// Gets the aggregate.
     /// </summary>
     /// <value>The aggregate.</value>
@@ -106,7 +95,7 @@ public class InvalidAggregateEventException : ApplicationErrorException
                 Title = "Error applying event",
                 Detail = "The Event '{MessageType}' cannot be applied to the aggregate '{AggregateName}' with id '{AggregateId}'."
                     + (string.IsNullOrWhiteSpace(message) ? string.Empty : "\n" + message),
-                Arguments = new[] { domainEvent.TypeName, domainEvent.AggregateName, domainEvent.AggregateId },
+                Arguments = new[] { domainEvent.TypeName, aggregate?.AggregateName ?? domainEvent.AggregateName, aggregate?.AggregateId ?? domainEvent.AggregateId },
                 Category = ErrorCategory.Functional,
             }
             : new ApplicationError

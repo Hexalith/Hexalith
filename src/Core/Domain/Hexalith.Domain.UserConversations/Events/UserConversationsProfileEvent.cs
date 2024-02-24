@@ -24,19 +24,17 @@ using Hexalith.Domain.UserConversationProfiles.Aggregates;
 /// Implements the <see cref="BaseEvent" />.
 /// </summary>
 /// <seealso cref="BaseEvent" />
-public class UserConversationsProfileEvent : BaseEvent
+/// <remarks>
+/// Initializes a new instance of the <see cref="UserConversationsProfileEvent" /> class.
+/// </remarks>
+/// <param name="userId">The user identifier.</param>
+public class UserConversationsProfileEvent(string userId) : BaseEvent
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="UserConversationsProfileEvent" /> class.
-    /// </summary>
-    /// <param name="userId">The user identifier.</param>
-    public UserConversationsProfileEvent(string userId) => UserId = userId;
-
     /// <summary>
     /// Gets the user identifier.
     /// </summary>
     /// <value>The user identifier.</value>
-    public string UserId { get; }
+    public string UserId { get; } = userId;
 
     /// <inheritdoc/>
     protected override string DefaultAggregateId() => UserId;

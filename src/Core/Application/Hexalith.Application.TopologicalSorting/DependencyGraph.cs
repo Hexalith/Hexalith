@@ -28,12 +28,12 @@ public class DependencyGraph
     /// <summary>
     /// The processes.
     /// </summary>
-    private readonly HashSet<OrderedProcess> _processes = new();
+    private readonly HashSet<OrderedProcess> _processes = [];
 
     /// <summary>
     /// The resources.
     /// </summary>
-    private readonly HashSet<Resource> _resources = new();
+    private readonly HashSet<Resource> _resources = [];
 
     /// <summary>
     /// Gets the process count.
@@ -68,6 +68,7 @@ public class DependencyGraph
     /// <exception cref="System.InvalidOperationException">Cannot order this set of processes.</exception>
     public TopologicalSort CalculateSort(TopologicalSort instance)
     {
+        ArgumentNullException.ThrowIfNull(instance);
         HashSet<OrderedProcess> unused = new(_processes);
 
         do
@@ -149,7 +150,7 @@ public class DependencyGraph
         }
         else
         {
-            HashSet<HashSet<OrderedProcess>> result = new();
+            HashSet<HashSet<OrderedProcess>> result = [];
 
             foreach (OrderedProcess process in processes)
             {
@@ -167,7 +168,7 @@ public class DependencyGraph
                 if (agreeableSets.IsEmpty())
                 {
                     // no sets can hold this process, create a new one
-                    agreeableSet = new HashSet<OrderedProcess>();
+                    agreeableSet = [];
                     _ = result.Add(agreeableSet);
                 }
                 else

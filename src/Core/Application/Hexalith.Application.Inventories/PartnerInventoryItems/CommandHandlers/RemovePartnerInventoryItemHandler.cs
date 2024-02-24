@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 08-29-2023
 // ***********************************************************************
-// <copyright file="AddPartnerInventoryItemHandler - Copy.cs" company="Fiveforty SAS Paris France">
+// <copyright file="RemovePartnerInventoryItemHandler.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -27,7 +27,6 @@ using Hexalith.Application.Inventories.PartnerInventoryItems.Commands;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Messages;
 using Hexalith.Domain.PartnerInventoryItems.Events;
-using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class ChangeCustomerInformationHandler.
@@ -37,20 +36,23 @@ using Hexalith.Extensions.Helpers;
 public class RemovePartnerInventoryItemHandler : CommandHandler<RemovePartnerInventoryItem>
 {
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] RemovePartnerInventoryItem command, IAggregate? aggregate, CancellationToken cancellationToken)
+    public override async Task<IEnumerable<BaseMessage>> DoAsync([NotNull] RemovePartnerInventoryItem command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
-        return Task.FromResult<IEnumerable<BaseMessage>>(new PartnerInventoryItemRemoved(
+        return await Task.FromResult<IEnumerable<BaseMessage>>([new PartnerInventoryItemRemoved(
                     command.PartitionId,
                     command.CompanyId,
                     command.OriginId,
                     command.PartnerType,
                     command.PartnerId,
                     command.Id)
-                    .IntoArray<BaseMessage>());
+                    ]).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> UndoAsync(RemovePartnerInventoryItem command, IAggregate? aggregate, CancellationToken cancellationToken)
-        => throw new NotSupportedException();
+    public override async Task<IEnumerable<BaseMessage>> UndoAsync(RemovePartnerInventoryItem command, IAggregate? aggregate, CancellationToken cancellationToken)
+    {
+        await Task.CompletedTask.ConfigureAwait(false);
+        throw new NotSupportedException();
+    }
 }

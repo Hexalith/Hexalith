@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Domain.InventoryItemStock.Events;
+namespace Hexalith.Domain.InventoryItemStocks.Events;
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;

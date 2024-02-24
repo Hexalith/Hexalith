@@ -25,9 +25,8 @@ using System.Threading.Tasks;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Inventories.InventoryItemStocks.Commands;
 using Hexalith.Domain.Aggregates;
-using Hexalith.Domain.InventoryItemStock.Events;
+using Hexalith.Domain.InventoryItemStocks.Events;
 using Hexalith.Domain.Messages;
-using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class ChangeCustomerInformationHandler.
@@ -37,10 +36,10 @@ using Hexalith.Extensions.Helpers;
 public class DecreaseInventoryItemStockHandler : CommandHandler<DecreaseInventoryItemStock>
 {
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] DecreaseInventoryItemStock command, IAggregate? aggregate, CancellationToken cancellationToken)
+    public override async Task<IEnumerable<BaseMessage>> DoAsync([NotNull] DecreaseInventoryItemStock command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
-        return Task.FromResult<IEnumerable<BaseMessage>>(new InventoryItemStockDecreased(
+        return await Task.FromResult<IEnumerable<BaseMessage>>([new InventoryItemStockDecreased(
                     command.PartitionId,
                     command.CompanyId,
                     command.OriginId,
@@ -48,10 +47,13 @@ public class DecreaseInventoryItemStockHandler : CommandHandler<DecreaseInventor
                     command.Id,
                     command.Quantity,
                     command.Date)
-                    .IntoArray<BaseMessage>());
+                    ]).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> UndoAsync(DecreaseInventoryItemStock command, IAggregate? aggregate, CancellationToken cancellationToken)
-        => throw new NotSupportedException();
+    public override async Task<IEnumerable<BaseMessage>> UndoAsync(DecreaseInventoryItemStock command, IAggregate? aggregate, CancellationToken cancellationToken)
+    {
+        await Task.CompletedTask.ConfigureAwait(false);
+        throw new NotSupportedException();
+    }
 }

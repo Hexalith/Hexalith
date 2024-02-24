@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Infrastructure.DaprRuntime.Actors;
+namespace Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 
 using Dapr.Actors;
 
@@ -29,18 +29,18 @@ public interface IKeyValueActor : IActor
     /// Gets the asynchronous.
     /// </summary>
     /// <returns>Task&lt;System.Nullable&lt;System.String&gt;&gt;.</returns>
-    public Task<string?> GetAsync();
+    Task<string?> GetAsync();
 
     /// <summary>
     /// Removes the asynchronous.
     /// </summary>
     /// <returns>Task.</returns>
-    public Task RemoveAsync();
+    Task RemoveAsync();
 
     /// <summary>
     /// Sets the asynchronous.
     /// </summary>
     /// <param name="value">The value.</param>
     /// <returns>Task.</returns>
-    public Task SetAsync(string? value);
+    Task SetAsync(string? value);
 }

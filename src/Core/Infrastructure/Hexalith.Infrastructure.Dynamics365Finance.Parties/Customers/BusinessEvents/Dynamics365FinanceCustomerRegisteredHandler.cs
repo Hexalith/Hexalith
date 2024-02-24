@@ -26,10 +26,10 @@ using Microsoft.Extensions.Options;
 
 /// <summary>
 /// Class CustomerEventHandler.
-/// Implements the <see cref="Application.Events.IntegrationEventHandler{Bspk.Customers.Infrastructure.IntegrationEvents.FFYCustomerRegisteredBusinessEvent}" />.
+/// Implements the <see cref="Application.Events.IntegrationEventHandlerBase{Bspk.Customers.Infrastructure.IntegrationEvents.FFYCustomerRegisteredBusinessEvent}" />.
 /// </summary>
-/// <seealso cref="Application.Events.IntegrationEventHandler{Bspk.Customers.Infrastructure.IntegrationEvents.FFYCustomerRegisteredBusinessEvent}" />
-public class Dynamics365FinanceCustomerRegisteredHandler : IntegrationEventHandler<Dynamics365FinanceCustomerRegistered>
+/// <seealso cref="Application.Events.IntegrationEventHandlerBase{Bspk.Customers.Infrastructure.IntegrationEvents.FFYCustomerRegisteredBusinessEvent}" />
+public class Dynamics365FinanceCustomerRegisteredHandler : IntegrationEventHandlerBase<Dynamics365FinanceCustomerRegistered>
 {
     private readonly IDateTimeService _dateTimeService;
     private readonly ILogger<Dynamics365FinanceCustomerRegisteredHandler> _logger;
@@ -63,8 +63,8 @@ public class Dynamics365FinanceCustomerRegisteredHandler : IntegrationEventHandl
     }
 
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseCommand>> ApplyAsync(Dynamics365FinanceCustomerRegistered @event, CancellationToken cancellationToken)
-        => Task.FromResult<IEnumerable<BaseCommand>>(Array.Empty<BaseCommand>());
+    public override async Task<IEnumerable<BaseCommand>> ApplyAsync(Dynamics365FinanceCustomerRegistered baseEvent, CancellationToken cancellationToken)
+        => await Task.FromResult<IEnumerable<BaseCommand>>(Array.Empty<BaseCommand>()).ConfigureAwait(false);
 
     /*
         ArgumentNullException.ThrowIfNull(@event);

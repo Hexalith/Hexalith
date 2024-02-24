@@ -27,7 +27,6 @@ using Hexalith.Application.Inventories.PartnerInventoryItems.Commands;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Messages;
 using Hexalith.Domain.PartnerInventoryItems.Events;
-using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class ChangeCustomerInformationHandler.
@@ -37,43 +36,46 @@ using Hexalith.Extensions.Helpers;
 public class AddOrChangePartnerInventoryItemHandler : CommandHandler<AddOrChangePartnerInventoryItem>
 {
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] AddOrChangePartnerInventoryItem command, IAggregate? aggregate, CancellationToken cancellationToken)
+    public override async Task<IEnumerable<BaseMessage>> DoAsync([NotNull] AddOrChangePartnerInventoryItem command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
         return aggregate == null || !aggregate.IsInitialized()
-            ? Task.FromResult<IEnumerable<BaseMessage>>(new PartnerInventoryItemAdded(
+            ? await Task.FromResult<IEnumerable<BaseMessage>>([new PartnerInventoryItemAdded(
                         command.PartitionId,
                         command.CompanyId,
                         command.OriginId,
                         command.PartnerType,
                         command.PartnerId,
                         command.Id,
-                        command.Name,
                         command.InventoryItemId,
                         command.UnitId,
+                        command.Name,
                         command.Price,
                         command.CountryOfOriginId,
                         command.HarmonizedTariffScheduleCode,
                         command.ProductType)
-                        .IntoArray<BaseMessage>())
-            : Task.FromResult<IEnumerable<BaseMessage>>(new PartnerInventoryItemChanged(
+                        ]).ConfigureAwait(false)
+            : await Task.FromResult<IEnumerable<BaseMessage>>([new PartnerInventoryItemChanged(
                     command.PartitionId,
                     command.CompanyId,
                     command.OriginId,
                     command.PartnerType,
                     command.PartnerId,
                     command.Id,
-                    command.Name,
                     command.InventoryItemId,
                     command.UnitId,
+                    command.Name,
                     command.Price,
                     command.CountryOfOriginId,
                     command.HarmonizedTariffScheduleCode,
                     command.ProductType)
-                    .IntoArray<BaseMessage>());
+                    ]).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> UndoAsync(AddOrChangePartnerInventoryItem command, IAggregate? aggregate, CancellationToken cancellationToken)
-        => throw new NotSupportedException();
+    public override async Task<IEnumerable<BaseMessage>> UndoAsync(AddOrChangePartnerInventoryItem command, IAggregate? aggregate, CancellationToken cancellationToken)
+    {
+        await Task.CompletedTask.ConfigureAwait(false);
+        throw new NotSupportedException();
+    }
 }

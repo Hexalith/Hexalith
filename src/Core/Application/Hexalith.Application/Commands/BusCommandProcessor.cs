@@ -33,7 +33,6 @@ using Hexalith.Extensions.Common;
 public class BusCommandProcessor : ICommandProcessor
 {
     private readonly ICommandBus _bus;
-    private readonly IDateTimeService _dateTimeService;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="BusCommandProcessor"/> class.
@@ -46,7 +45,6 @@ public class BusCommandProcessor : ICommandProcessor
         ArgumentNullException.ThrowIfNull(bus);
         ArgumentNullException.ThrowIfNull(dateTimeService);
         _bus = bus;
-        _dateTimeService = dateTimeService;
     }
 
     /// <inheritdoc/>

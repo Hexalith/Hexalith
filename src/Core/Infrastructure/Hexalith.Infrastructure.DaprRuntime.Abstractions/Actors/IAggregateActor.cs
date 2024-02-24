@@ -30,30 +30,30 @@ public interface IAggregateActor : IActor
     /// Processes the callback asynchronous.
     /// </summary>
     /// <returns>Task.</returns>
-    public Task ProcessCallbackAsync();
+    Task ProcessCallbackAsync();
 
     /// <summary>
     /// Processes the commands asynchronous.
     /// </summary>
     /// <returns>Task.</returns>
-    public Task<bool> ProcessNextCommandAsync();
+    Task<bool> ProcessNextCommandAsync();
 
     /// <summary>
     /// Publishes the callback.
     /// </summary>
     /// <returns>Task.</returns>
-    public Task PublishCallbackAsync();
+    Task PublishCallbackAsync();
 
     /// <summary>
     /// Publishes the messages asynchronous.
     /// </summary>
     /// <returns>Task.</returns>
-    public Task<bool> PublishNextMessageAsync();
+    Task<bool> PublishNextMessageAsync();
 
     /// <summary>
     /// Submits the command asynchronous.
     /// </summary>
     /// <param name="envelope">The envelope.</param>
     /// <returns>Task.</returns>
-    public Task SubmitCommandAsync(ActorCommandEnvelope envelope);
+    Task SubmitCommandAsync(ActorCommandEnvelope envelope);
 }

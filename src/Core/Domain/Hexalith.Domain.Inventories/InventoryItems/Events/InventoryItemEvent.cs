@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Domain.InventoryItem.Events;
+namespace Hexalith.Domain.InventoryItems.Events;
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
@@ -25,9 +25,9 @@ using Hexalith.Extensions;
 
 /// <summary>
 /// Class InventoryItemEvent.
-/// Implements the <see cref="Domain.Events.CompanyEntityEvent" />.
+/// Implements the <see cref="CompanyEntityEvent" />.
 /// </summary>
-/// <seealso cref="Domain.Events.CompanyEntityEvent" />
+/// <seealso cref="CompanyEntityEvent" />
 [DataContract]
 [Serializable]
 public abstract class InventoryItemEvent : CompanyEntityEvent

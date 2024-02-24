@@ -26,43 +26,36 @@ using Microsoft.Extensions.Logging;
 /// Class ResourceBuilder.
 /// </summary>
 /// <typeparam name="TArmResource">The type of the t arm resource.</typeparam>
-public abstract class ResourceGroupItemBuilder<TArmResource, TData> : ResourceBuilder<TArmResource>
+/// <remarks>
+/// Initializes a new instance of the <see cref="ResourceGroupItemBuilder{TArmResource, TData}"/> class.
+/// </remarks>
+/// <param name="azureBuilder">The azure builder.</param>
+/// <param name="resourceGroup">The resource group.</param>
+/// <param name="resourceTypeName">Name of the resource type.</param>
+/// <param name="uniqueId">The unique identifier.</param>
+/// <param name="data">The data.</param>
+/// <param name="existing">if set to <c>true</c> [existing].</param>
+public abstract class ResourceGroupItemBuilder<TArmResource, TData>(
+    AzureBuilder azureBuilder,
+    ResourceGroupBuilder resourceGroup,
+    string resourceTypeName,
+    string uniqueId,
+    TData? data,
+    bool existing = false) : ResourceBuilder<TArmResource>(azureBuilder, resourceGroup, resourceTypeName, uniqueId, existing)
     where TArmResource : ArmResource
     where TData : class
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="ResourceGroupItemBuilder{TArmResource, TData}"/> class.
-    /// </summary>
-    /// <param name="azureBuilder">The azure builder.</param>
-    /// <param name="resourceGroup">The resource group.</param>
-    /// <param name="resourceTypeName">Name of the resource type.</param>
-    /// <param name="uniqueId">The unique identifier.</param>
-    /// <param name="data">The data.</param>
-    /// <param name="existing">if set to <c>true</c> [existing].</param>
-    protected ResourceGroupItemBuilder(
-        AzureBuilder azureBuilder,
-        ResourceGroupBuilder resourceGroup,
-        string resourceTypeName,
-        string uniqueId,
-        TData? data,
-        bool existing = false)
-        : base(azureBuilder, resourceGroup, resourceTypeName, uniqueId, existing)
-    {
-        ResourceGroup = resourceGroup;
-        Data = data;
-    }
-
-    /// <summary>
     /// Gets the data.
     /// </summary>
     /// <value>The data.</value>
-    public TData? Data { get; }
+    public TData? Data { get; } = data;
 
     /// <summary>
     /// Gets the resource group.
     /// </summary>
     /// <value>The resource group.</value>
-    public ResourceGroupBuilder ResourceGroup { get; }
+    public ResourceGroupBuilder ResourceGroup { get; } = resourceGroup;
 
     /// <inheritdoc/>
     public override async Task<TArmResource> BuildAsync(CancellationToken cancellationToken)

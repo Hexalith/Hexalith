@@ -54,7 +54,7 @@ public static partial class LoggerHelper
             ? null
             : StringHelper.FormatWithNamedPlaceholders(CultureInfo.InvariantCulture, applicationError.TechnicalDetail, applicationError.TechnicalArguments);
         logger.LogApplicationError(
-            null,
+            exception,
             applicationError.Title,
             details,
             technicalDetails);

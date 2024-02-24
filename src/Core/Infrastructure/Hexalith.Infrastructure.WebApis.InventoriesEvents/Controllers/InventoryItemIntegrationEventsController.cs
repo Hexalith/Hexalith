@@ -19,7 +19,7 @@ namespace Hexalith.Infrastructure.WebApis.InventoriesEvents.Controllers;
 using Dapr;
 
 using Hexalith.Application.Events;
-using Hexalith.Application.Projection;
+using Hexalith.Application.Projections;
 using Hexalith.Application.States;
 using Hexalith.Domain.InventoryItems.Aggregates;
 using Hexalith.Infrastructure.WebApis.Controllers;

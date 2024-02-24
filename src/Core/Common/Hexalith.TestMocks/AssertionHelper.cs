@@ -45,7 +45,7 @@ public static class AssertionHelper
         string json = JsonSerializer.Serialize(assertions.Subject);
         object? result = JsonSerializer.Deserialize(json, assertions.Subject.GetType());
         _ = result.Should().NotBeNull();
-        _ = assertions.Subject.Should().BeEquivalentTo(result);
+        _ = assertions.Subject.Should().BeEquivalentTo(result, because, becauseArgs);
         return new AndConstraint<ObjectAssertions>(assertions);
     }
 }

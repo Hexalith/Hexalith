@@ -24,17 +24,17 @@ public class OrderedProcess
     /// <summary>
     /// The followers.
     /// </summary>
-    private readonly HashSet<OrderedProcess> _followers = new();
+    private readonly HashSet<OrderedProcess> _followers = [];
 
     /// <summary>
     /// The predecessors.
     /// </summary>
-    private readonly HashSet<OrderedProcess> _predecessors = new();
+    private readonly HashSet<OrderedProcess> _predecessors = [];
 
     /// <summary>
     /// The resources.
     /// </summary>
-    private readonly HashSet<Resource> _resources = new();
+    private readonly HashSet<Resource> _resources = [];
 
     /// <summary>
     /// Initializes a new instance of the <see cref="OrderedProcess" /> class.
@@ -90,6 +90,7 @@ public class OrderedProcess
     /// <returns>returns this process.</returns>
     public OrderedProcess After(OrderedProcess predecessor)
     {
+        ArgumentNullException.ThrowIfNull(predecessor);
         DependencyGraph.CheckGraph(this, predecessor);
 
         if (_predecessors.Add(predecessor))
@@ -114,6 +115,7 @@ public class OrderedProcess
     /// <returns>the predecessors.</returns>
     public IEnumerable<OrderedProcess> After(IEnumerable<OrderedProcess> predecessors)
     {
+        ArgumentNullException.ThrowIfNull(predecessors);
         foreach (OrderedProcess predecessor in predecessors)
         {
             _ = After(predecessor);
@@ -129,6 +131,7 @@ public class OrderedProcess
     /// <returns>returns this process.</returns>
     public OrderedProcess Before(OrderedProcess follower)
     {
+        ArgumentNullException.ThrowIfNull(follower);
         DependencyGraph.CheckGraph(this, follower);
 
         if (_followers.Add(follower))
@@ -153,6 +156,7 @@ public class OrderedProcess
     /// <returns>the followers.</returns>
     public IEnumerable<OrderedProcess> Before(IEnumerable<OrderedProcess> followers)
     {
+        ArgumentNullException.ThrowIfNull(followers);
         foreach (OrderedProcess ancestor in followers)
         {
             _ = Before(ancestor);
@@ -167,6 +171,7 @@ public class OrderedProcess
     /// <param name="resource">The resource.</param>
     public void Requires(Resource resource)
     {
+        ArgumentNullException.ThrowIfNull(resource);
         DependencyGraph.CheckGraph(resource, this);
 
         if (_resources.Add(resource))

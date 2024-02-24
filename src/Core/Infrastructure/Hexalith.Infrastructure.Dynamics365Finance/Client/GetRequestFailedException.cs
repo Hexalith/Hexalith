@@ -24,7 +24,6 @@ using System.Text.Json;
 /// </summary>
 /// <typeparam name="T">Type of the returned entity.</typeparam>
 [DataContract]
-[Serializable]
 public sealed class GetRequestFailedException<T> : Exception
 {
     /// <summary>
@@ -70,7 +69,7 @@ public sealed class GetRequestFailedException<T> : Exception
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="GetRequestFailedException{T}"/> class.
+    /// Initializes a new instance of the <see cref="GetRequestFailedException{T}" /> class.
     /// </summary>
     /// <param name="entityName">Name of the entity.</param>
     /// <param name="url">The URL.</param>
@@ -84,16 +83,6 @@ public sealed class GetRequestFailedException<T> : Exception
         Filter = null;
         ResponseContent = responseContent;
         Url = url;
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="GetRequestFailedException{T}"/> class.
-    /// </summary>
-    /// <param name="info">The <see cref="SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
-    /// <param name="context">The <see cref="StreamingContext" /> that contains contextual information about the source or destination.</param>
-    private GetRequestFailedException(SerializationInfo info, StreamingContext context)
-        : base(info, context)
-    {
     }
 
     /// <summary>
@@ -117,9 +106,10 @@ public sealed class GetRequestFailedException<T> : Exception
     [DataMember]
     public string? ResponseContent { get; set; }
 
+    /// <summary>
+    /// Gets or sets the URL.
+    /// </summary>
+    /// <value>The URL.</value>
     [DataMember]
     public Uri? Url { get; set; }
-
-    /// <inheritdoc/>
-    public override void GetObjectData(SerializationInfo info, StreamingContext context) => base.GetObjectData(info, context);
 }

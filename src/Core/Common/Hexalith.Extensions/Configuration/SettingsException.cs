@@ -19,7 +19,6 @@ namespace Hexalith.Extensions.Configuration;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
-using System.Runtime.Serialization;
 
 /// <summary>
 /// Class SettingsException.
@@ -78,16 +77,6 @@ public class SettingsException<TSettings> : ArgumentException
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="SettingsException{TSettings}"/> class.
-    /// </summary>
-    /// <param name="info">The object that holds the serialized object data.</param>
-    /// <param name="context">The contextual information about the source or destination.</param>
-    protected SettingsException(SerializationInfo info, StreamingContext context)
-        : base(info, context)
-    {
-    }
-
-    /// <summary>
     /// Throws if undefined.
     /// </summary>
     /// <param name="argument">The argument.</param>
@@ -96,7 +85,7 @@ public class SettingsException<TSettings> : ArgumentException
 
     public static void ThrowIfUndefined(
         [NotNull] object? argument,
-        [CallerArgumentExpression("argument")] string? paramName = null)
+        [CallerArgumentExpression(nameof(argument))] string? paramName = null)
     {
         if (argument is null || (argument is string str && string.IsNullOrWhiteSpace(str)))
         {

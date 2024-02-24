@@ -27,7 +27,6 @@ using Hexalith.Application.Inventories.PartnerInventoryItems.Commands;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Messages;
 using Hexalith.Domain.PartnerInventoryItems.Events;
-using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class ChangeCustomerInformationHandler.
@@ -37,10 +36,10 @@ using Hexalith.Extensions.Helpers;
 public class AddPartnerInventoryItemHandler : CommandHandler<AddPartnerInventoryItem>
 {
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] AddPartnerInventoryItem command, IAggregate? aggregate, CancellationToken cancellationToken)
+    public override async Task<IEnumerable<BaseMessage>> DoAsync([NotNull] AddPartnerInventoryItem command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
-        return Task.FromResult<IEnumerable<BaseMessage>>(new PartnerInventoryItemAdded(
+        return await Task.FromResult<IEnumerable<BaseMessage>>([new PartnerInventoryItemAdded(
                     command.PartitionId,
                     command.CompanyId,
                     command.OriginId,
@@ -48,16 +47,19 @@ public class AddPartnerInventoryItemHandler : CommandHandler<AddPartnerInventory
                     command.PartnerId,
                     command.Id,
                     command.InventoryItemId,
-                    command.Name,
                     command.UnitId,
+                    command.Name,
                     command.Price,
                     command.CountryOfOriginId,
                     command.HarmonizedTariffScheduleCode,
                     command.ProductType)
-                    .IntoArray<BaseMessage>());
+                    ]).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> UndoAsync(AddPartnerInventoryItem command, IAggregate? aggregate, CancellationToken cancellationToken)
-        => throw new NotSupportedException();
+    public override async Task<IEnumerable<BaseMessage>> UndoAsync(AddPartnerInventoryItem command, IAggregate? aggregate, CancellationToken cancellationToken)
+    {
+        await Task.CompletedTask.ConfigureAwait(false);
+        throw new NotSupportedException();
+    }
 }

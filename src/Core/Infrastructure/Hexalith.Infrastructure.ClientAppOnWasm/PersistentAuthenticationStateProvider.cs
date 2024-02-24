@@ -47,5 +47,6 @@ internal class PersistentAuthenticationStateProvider : AuthenticationStateProvid
     }
 
     /// <inheritdoc/>
-    public override Task<AuthenticationState> GetAuthenticationStateAsync() => _authenticationStateTask;
+    public override Task<AuthenticationState> GetAuthenticationStateAsync()
+        => _authenticationStateTask;
 }

@@ -1,4 +1,4 @@
-﻿// <copyright file="IntegrationEventHandler.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="IntegrationEventHandlerBase{TEvent}.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -18,11 +18,11 @@ using Hexalith.Domain.Events;
 /// </summary>
 /// <typeparam name="TEvent">The type of the t event.</typeparam>
 /// <seealso cref="Abstractions.Events.IEventHandler{TEvent}" />
-public abstract class IntegrationEventHandler<TEvent> : IIntegrationEventHandler<TEvent>
+public abstract class IntegrationEventHandlerBase<TEvent> : IIntegrationEventHandler<TEvent>
     where TEvent : IEvent
 {
     /// <inheritdoc/>
-    public abstract Task<IEnumerable<BaseCommand>> ApplyAsync(TEvent @event, CancellationToken cancellationToken);
+    public abstract Task<IEnumerable<BaseCommand>> ApplyAsync(TEvent baseEvent, CancellationToken cancellationToken);
 
     /// <inheritdoc/>
     Task<IEnumerable<BaseCommand>> IIntegrationEventHandler.ApplyAsync(IEvent @event, CancellationToken cancellationToken) => ApplyAsync(ToEvent(@event), cancellationToken);

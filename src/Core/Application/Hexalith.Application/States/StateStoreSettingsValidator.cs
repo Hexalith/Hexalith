@@ -28,8 +28,5 @@ public class StateStoreSettingsValidator : AbstractValidator<StateStoreSettings>
     /// <summary>
     /// Initializes a new instance of the <see cref="StateStoreSettingsValidator" /> class.
     /// </summary>
-    public StateStoreSettingsValidator()
-    {
-        _ = RuleFor(c => c.Name).NotEmpty();
-    }
+    public StateStoreSettingsValidator() => _ = RuleFor(c => c.Name).NotEmpty();
 }

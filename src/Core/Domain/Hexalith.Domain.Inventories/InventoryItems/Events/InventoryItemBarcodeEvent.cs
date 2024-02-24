@@ -19,7 +19,6 @@ namespace Hexalith.Domain.InventoryItems.Events;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Domain.InventoryItem.Events;
 using Hexalith.Extensions;
 
 /// <summary>

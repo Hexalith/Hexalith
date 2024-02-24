@@ -10,7 +10,6 @@ using System.Runtime.Serialization;
 
 using Hexalith.Application.Commands;
 using Hexalith.Application.Inventories.PartnerInventoryItems.Commands;
-using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.Dynamics365Finance.Inventories;
 
 /// <summary>
@@ -31,14 +30,14 @@ public class Dynamics365LogisticsPartnerCatalogItemRemoved : Dynamics365Logistic
         ArgumentException.ThrowIfNullOrWhiteSpace(PartitionId);
         ArgumentException.ThrowIfNullOrWhiteSpace(OriginId);
 
-        return new RemovePartnerInventoryItem(
+        return [new RemovePartnerInventoryItem(
             PartitionId,
             BusinessEventLegalEntity,
             OriginId,
             Dynamics365FinanceInventoriesConstants.PartnerType,
             LogisticsPartnerId,
             BarCode)
-            .IntoArray();
+            ];
     }
 
     /// <inheritdoc/>

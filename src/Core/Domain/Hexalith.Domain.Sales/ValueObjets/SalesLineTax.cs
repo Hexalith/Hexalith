@@ -106,5 +106,5 @@ public class SalesLineTax : IEquatableObject
 
     /// <inheritdoc/>
     public IEnumerable<object?> GetEqualityComponents()
-        => new object?[] { TaxId, Name, Amount };
+        => [TaxId, Name, Amount];
 }

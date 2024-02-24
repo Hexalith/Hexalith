@@ -36,21 +36,24 @@ using Hexalith.Domain.Messages;
 public class AddExternalSystemReferenceHandler : CommandHandler<AddExternalSystemReference>
 {
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] AddExternalSystemReference command, IAggregate? aggregate, CancellationToken cancellationToken)
+    public override async Task<IEnumerable<BaseMessage>> DoAsync([NotNull] AddExternalSystemReference command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
         return aggregate is not null and ExternalSystemReference external && external.ReferenceAggregateId == command.ReferenceAggregateId
-            ? Task.FromResult<IEnumerable<BaseMessage>>([])
-            : Task.FromResult<IEnumerable<BaseMessage>>([new ExternalSystemReferenceAdded(
+            ? []
+            : await Task.FromResult<IEnumerable<BaseMessage>>([new ExternalSystemReferenceAdded(
             command.PartitionId,
             command.CompanyId,
             command.SystemId,
             command.ReferenceAggregateName,
             command.ExternalId,
-            command.ReferenceAggregateId)]);
+            command.ReferenceAggregateId)]).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> UndoAsync(AddExternalSystemReference command, IAggregate? aggregate, CancellationToken cancellationToken)
-        => throw new NotSupportedException();
+    public override async Task<IEnumerable<BaseMessage>> UndoAsync(AddExternalSystemReference command, IAggregate? aggregate, CancellationToken cancellationToken)
+    {
+        await Task.CompletedTask.ConfigureAwait(false);
+        throw new NotSupportedException();
+    }
 }

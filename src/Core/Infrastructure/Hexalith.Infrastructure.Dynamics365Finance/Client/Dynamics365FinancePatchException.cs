@@ -81,16 +81,6 @@ public class Dynamics365FinancePatchException<TEntity, TUpdate> : ApplicationErr
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Dynamics365FinancePatchException{TEntity, TUpdate}"/> class.
-    /// </summary>
-    /// <param name="info">The <see cref="SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
-    /// <param name="context">The <see cref="StreamingContext" /> that contains contextual information about the source or destination.</param>
-    protected Dynamics365FinancePatchException(SerializationInfo info, StreamingContext context)
-        : base(info, context)
-    {
-    }
-
-    /// <summary>
     /// Gets the company.
     /// </summary>
     /// <value>The company.</value>

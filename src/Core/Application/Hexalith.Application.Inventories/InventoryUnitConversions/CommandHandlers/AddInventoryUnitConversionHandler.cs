@@ -27,7 +27,6 @@ using Hexalith.Application.Inventories.InventoryUnitConversions.Commands;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.InventoryUnitConversions.Events;
 using Hexalith.Domain.Messages;
-using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class ChangeCustomerInformationHandler.
@@ -37,10 +36,10 @@ using Hexalith.Extensions.Helpers;
 public class AddInventoryUnitConversionHandler : CommandHandler<AddInventoryUnitConversion>
 {
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] AddInventoryUnitConversion command, IAggregate? aggregate, CancellationToken cancellationToken)
+    public override async Task<IEnumerable<BaseMessage>> DoAsync([NotNull] AddInventoryUnitConversion command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
-        return Task.FromResult<IEnumerable<BaseMessage>>(new InventoryUnitConversionAdded(
+        return await Task.FromResult<IEnumerable<BaseMessage>>([new InventoryUnitConversionAdded(
                     command.PartitionId,
                     command.CompanyId,
                     command.OriginId,
@@ -49,10 +48,13 @@ public class AddInventoryUnitConversionHandler : CommandHandler<AddInventoryUnit
                     command.InventoryItemId,
                     command.Factor,
                     command.RoundDecimals)
-                    .IntoArray<BaseMessage>());
+                    ]).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> UndoAsync(AddInventoryUnitConversion command, IAggregate? aggregate, CancellationToken cancellationToken)
-        => throw new NotSupportedException();
+    public override async Task<IEnumerable<BaseMessage>> UndoAsync(AddInventoryUnitConversion command, IAggregate? aggregate, CancellationToken cancellationToken)
+    {
+        await Task.CompletedTask.ConfigureAwait(false);
+        throw new NotSupportedException();
+    }
 }

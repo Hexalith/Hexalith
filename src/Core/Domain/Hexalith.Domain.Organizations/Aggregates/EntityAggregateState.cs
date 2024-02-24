@@ -59,5 +59,5 @@ public abstract class EntityAggregateState : IEquatableObject
 
     /// <inheritdoc/>
     public virtual IEnumerable<object?> GetEqualityComponents()
-        => new object?[] { PartitionId, CompanyId, OriginId, Id };
+        => [PartitionId, CompanyId, OriginId, Id];
 }

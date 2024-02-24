@@ -28,8 +28,5 @@ public class EventBusSettingsValidator : AbstractValidator<EventBusSettings>
     /// <summary>
     /// Initializes a new instance of the <see cref="EventBusSettingsValidator" /> class.
     /// </summary>
-    public EventBusSettingsValidator()
-    {
-        _ = RuleFor(c => c.Name).NotEmpty();
-    }
+    public EventBusSettingsValidator() => _ = RuleFor(c => c.Name).NotEmpty();
 }

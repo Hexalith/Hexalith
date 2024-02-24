@@ -26,7 +26,6 @@ using System.Threading.Tasks;
 using Hexalith.Application.Commands;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Messages;
-using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class DummyCommandDispatcher.
@@ -42,7 +41,7 @@ internal class DummyCommandDispatcher : ICommandDispatcher
     /// <param name="aggregate">The aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;IEnumerable&lt;BaseMessage&gt;&gt;.</returns>
-    public Task<IEnumerable<BaseMessage>> DoAsync(ICommand command, IAggregate? aggregate, CancellationToken cancellationToken) => Task.FromResult<IEnumerable<BaseMessage>>(new CommandDispatchDoEvent().IntoArray());
+    public async Task<IEnumerable<BaseMessage>> DoAsync(ICommand command, IAggregate? aggregate, CancellationToken cancellationToken) => await Task.FromResult<IEnumerable<BaseMessage>>([new CommandDispatchDoEvent()]);
 
     /// <summary>
     /// Uns the do asynchronous.
@@ -51,5 +50,5 @@ internal class DummyCommandDispatcher : ICommandDispatcher
     /// <param name="aggregate">The aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;IEnumerable&lt;BaseMessage&gt;&gt;.</returns>
-    public Task<IEnumerable<BaseMessage>> UnDoAsync(ICommand command, IAggregate? aggregate, CancellationToken cancellationToken) => Task.FromResult<IEnumerable<BaseMessage>>(new CommandDispatchUndoEvent().IntoArray());
+    public async Task<IEnumerable<BaseMessage>> UnDoAsync(ICommand command, IAggregate? aggregate, CancellationToken cancellationToken) => await Task.FromResult<IEnumerable<BaseMessage>>([new CommandDispatchUndoEvent()]);
 }

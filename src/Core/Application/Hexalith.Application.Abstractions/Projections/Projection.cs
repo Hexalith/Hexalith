@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Projection;
+namespace Hexalith.Application.Projections;
 
 using System.Runtime.Serialization;
 using System.Threading;

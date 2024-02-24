@@ -19,7 +19,6 @@ namespace Hexalith.Application.Inventories.InventoryItems.Projections;
 using System;
 using System.Runtime.Serialization;
 
-using Hexalith.Domain.InventoryItem.Events;
 using Hexalith.Domain.InventoryItems.Events;
 
 /// <summary>

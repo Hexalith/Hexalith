@@ -14,10 +14,11 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Domain.InventoryItemStock.Events;
+namespace Hexalith.Domain.InventoryItemStocks.Events;
 
 using System.Runtime.Serialization;
-using Hexalith.Domain.InventoryItem.Events;
+
+using Hexalith.Domain.InventoryItems.Events;
 
 using Hexalith.Extensions;
 

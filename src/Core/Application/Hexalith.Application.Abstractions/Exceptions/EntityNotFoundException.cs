@@ -31,10 +31,7 @@ public class EntityNotFoundException<TEntity> : Exception
     /// </summary>
     /// <param name="key">The key.</param>
     public EntityNotFoundException(object key)
-       : base($"Entity '{typeof(TEntity).Name}' not found for key: {JsonSerializer.Serialize(key)}")
-    {
-        Key = key;
-    }
+       : base($"Entity '{typeof(TEntity).Name}' not found for key: {JsonSerializer.Serialize(key)}") => Key = key;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="EntityNotFoundException{TEntity}"/> class.
@@ -54,16 +51,6 @@ public class EntityNotFoundException<TEntity> : Exception
     /// </param>
     public EntityNotFoundException(string? message, Exception? innerException)
         : base(message, innerException)
-    {
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="EntityNotFoundException{TEntity}"/> class.
-    /// </summary>
-    /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
-    /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
-    protected EntityNotFoundException(SerializationInfo info, StreamingContext context)
-        : base(info, context)
     {
     }
 

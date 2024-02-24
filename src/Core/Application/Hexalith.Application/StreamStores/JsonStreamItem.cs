@@ -96,6 +96,7 @@ public class JsonStreamItem : IStreamItem
         IDataFragment data,
         JsonSerializerOptions? options)
     {
+        ArgumentNullException.ThrowIfNull(data);
         return new JsonStreamItem(
             sequence,
             data.Data.GetType().AssemblyQualifiedName!,
@@ -114,6 +115,7 @@ public class JsonStreamItem : IStreamItem
         long sequence,
         IDataFragment data)
     {
+        ArgumentNullException.ThrowIfNull(data);
         return new JsonStreamItem(
             sequence,
             data.Data.GetType().AssemblyQualifiedName!,
@@ -122,7 +124,7 @@ public class JsonStreamItem : IStreamItem
             JsonSerializer.Serialize(data.Metadata));
     }
 
-    private IDataFragment CreateDataFragment()
+    private DataFragment CreateDataFragment()
     {
         Type dataType = Type.GetType(DataType) ?? throw new InvalidOperationException($"Type {DataType} not found.");
         Type metaType = Type.GetType(MetaType) ?? throw new InvalidOperationException($"Type {MetaType} not found.");

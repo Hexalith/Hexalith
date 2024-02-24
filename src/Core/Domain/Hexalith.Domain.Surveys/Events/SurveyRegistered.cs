@@ -73,8 +73,8 @@ public class SurveyRegistered : SurveyEvent
         Name = string.Empty;
         StartDate = EndDate = DateTimeOffset.MinValue;
         Period = SurveyPeriod.Once;
-        Categories = Enumerable.Empty<SurveyCategory>();
-        Users = Enumerable.Empty<SurveyUser>();
+        Categories = [];
+        Users = [];
     }
 
     /// <summary>

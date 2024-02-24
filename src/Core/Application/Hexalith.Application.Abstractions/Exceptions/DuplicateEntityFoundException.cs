@@ -31,10 +31,7 @@ public class DuplicateEntityFoundException<TEntity> : Exception
     /// </summary>
     /// <param name="key">The key.</param>
     public DuplicateEntityFoundException(object key)
-        : base($"Duplicate entity '{typeof(TEntity).Name}' found for key: {JsonSerializer.Serialize(key)}")
-    {
-        Key = key;
-    }
+        : base($"Duplicate entity '{typeof(TEntity).Name}' found for key: {JsonSerializer.Serialize(key)}") => Key = key;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="DuplicateEntityFoundException{TEntity}"/> class.
@@ -54,16 +51,6 @@ public class DuplicateEntityFoundException<TEntity> : Exception
     /// </param>
     public DuplicateEntityFoundException(string? message, Exception? innerException)
         : base(message, innerException)
-    {
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="DuplicateEntityFoundException{TEntity}"/> class.
-    /// </summary>
-    /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
-    /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
-    protected DuplicateEntityFoundException(SerializationInfo info, StreamingContext context)
-        : base(info, context)
     {
     }
 

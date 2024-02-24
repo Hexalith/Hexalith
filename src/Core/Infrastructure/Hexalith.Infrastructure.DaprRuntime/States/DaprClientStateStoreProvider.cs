@@ -92,7 +92,7 @@ public class DaprClientStateStoreProvider : IStateStoreProvider
     public async Task<T> GetStateAsync<T>(string key, CancellationToken cancellationToken) => await DaprClient.GetStateAsync<T>(StateStoreName, key, null, null, cancellationToken).ConfigureAwait(false);
 
     /// <inheritdoc/>
-    public Task SaveChangesAsync(CancellationToken cancellationToken) => Task.CompletedTask;
+    public async Task SaveChangesAsync(CancellationToken cancellationToken) => await Task.CompletedTask.ConfigureAwait(false);
 
     /// <inheritdoc/>
     public async Task SetStateAsync<T>(string key, T value, CancellationToken cancellationToken) => await DaprClient.SaveStateAsync(StateStoreName, key, value, null, null, cancellationToken).ConfigureAwait(false);

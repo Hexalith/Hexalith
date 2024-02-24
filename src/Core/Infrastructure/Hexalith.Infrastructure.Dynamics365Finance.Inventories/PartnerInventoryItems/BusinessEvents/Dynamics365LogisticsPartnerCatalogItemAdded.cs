@@ -10,7 +10,6 @@ using System.Runtime.Serialization;
 
 using Hexalith.Application.Commands;
 using Hexalith.Application.Inventories.PartnerInventoryItems.Commands;
-using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// This event is sent each time a new item is added to the external logistics partner catalog.
@@ -82,7 +81,7 @@ public class Dynamics365LogisticsPartnerCatalogItemAdded : Dynamics365LogisticsP
         ArgumentException.ThrowIfNullOrWhiteSpace(HarmonizedTariffScheduleCode);
         ArgumentException.ThrowIfNullOrWhiteSpace(PartitionId);
         ArgumentException.ThrowIfNullOrWhiteSpace(OriginId);
-        return new AddOrChangePartnerInventoryItem(
+        return [new AddOrChangePartnerInventoryItem(
             PartitionId,
             BusinessEventLegalEntity,
             OriginId,
@@ -95,7 +94,7 @@ public class Dynamics365LogisticsPartnerCatalogItemAdded : Dynamics365LogisticsP
             Price,
             CountryOfOriginCode,
             HarmonizedTariffScheduleCode,
-            ProductType).IntoArray();
+            ProductType)];
     }
 
     /// <inheritdoc/>

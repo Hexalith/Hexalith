@@ -44,12 +44,9 @@ public static class BusinessEventTypeMapper
     {
         get
         {
-            if (_map == null)
+            lock (_syncMap)
             {
-                lock (_syncMap)
-                {
-                    _map ??= GetMap();
-                }
+                _map ??= GetMap();
             }
 
             return _map;
@@ -107,11 +104,11 @@ public static class BusinessEventTypeMapper
             ApplicationError error = new()
             {
                 Category = ErrorCategory.Technical,
-                Arguments = new object[] { name, majorVersion, minorVersion },
+                Arguments = [name, majorVersion, minorVersion],
                 Detail = "The business event '{name}' v'{majorVersion}.{minorVersion}' not supported.",
                 Title = "Business event not supported",
                 Type = "BusinessEventNotSupported",
-                TechnicalArguments = new object[] { name, majorVersion, minorVersion },
+                TechnicalArguments = [name, majorVersion, minorVersion],
                 TechnicalDetail = $"Business event class with MessageName='{name}' and Version='{majorVersion}.{minorVersion}' not found.",
             };
             throw new ApplicationErrorException(error, ex);

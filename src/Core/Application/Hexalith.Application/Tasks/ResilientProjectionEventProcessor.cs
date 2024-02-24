@@ -19,7 +19,7 @@ namespace Hexalith.Application.Tasks;
 using System;
 using System.Threading;
 
-using Hexalith.Application.Projection;
+using Hexalith.Application.Projections;
 using Hexalith.Application.States;
 using Hexalith.Domain.Events;
 using Hexalith.Extensions.Common;

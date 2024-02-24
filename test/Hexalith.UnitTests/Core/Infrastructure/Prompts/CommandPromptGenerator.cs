@@ -34,7 +34,7 @@ public class CommandPromptGenerator : ICommandPromptGenerator
     private static readonly ConcurrentDictionary<Type, string> _prompts = new();
 
     /// <inheritdoc/>
-    public Task<string> GeneratePromptAsync<TCommand>(
+    public async Task<string> GeneratePromptAsync<TCommand>(
         string assistantEmail,
         string assistantName,
         string userEmail,
@@ -45,11 +45,11 @@ public class CommandPromptGenerator : ICommandPromptGenerator
     {
         if (_prompts.TryGetValue(typeof(TCommand), out string prompt))
         {
-            return Task.FromResult(prompt);
+            return prompt;
         }
 
         TCommand command = ExampleHelper.CreateExample<TCommand>();
-        return Task.FromResult($$"""
+        return await Task.FromResult($$"""
         You are {{assistantName}} an AI assistant. Your email is {{assistantEmail}}.
         You can help {{userName}} generate a command in the JSON format.
         {{userName}} email is {{userEmail}}.

@@ -66,7 +66,7 @@ public partial class DependencyInjectionEventDispatcher : IIntegrationEventDispa
     /// </summary>
     /// <param name="event">The event to handle.</param>
     /// <returns>IEventHandler list.</returns>
-    private IEnumerable<IIntegrationEventHandler> GetHandlers(IEvent @event)
+    private List<IIntegrationEventHandler> GetHandlers(IEvent @event)
     {
         Type eventType = @event.GetType();
         Type eventHandlerType = typeof(IIntegrationEventHandler<>).MakeGenericType(eventType);

@@ -47,9 +47,9 @@ public class Dynamics365FinanceSecurityContext : AzureActiveDirectoryApplication
                 nameof(settings));
         }
 
-        _scopes = new[] { $"{s.Instance.OriginalString}/.default" };
+        _scopes = [$"{s.Instance.OriginalString}/.default"];
     }
 
     /// <inheritdoc/>
-    public Task<string> AcquireTokenAsync(CancellationToken cancellationToken) => AcquireTokenAsync(_scopes, cancellationToken);
+    public async Task<string> AcquireTokenAsync(CancellationToken cancellationToken) => await AcquireTokenAsync(_scopes, cancellationToken).ConfigureAwait(false);
 }

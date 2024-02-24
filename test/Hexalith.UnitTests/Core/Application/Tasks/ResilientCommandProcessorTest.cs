@@ -14,7 +14,6 @@ using Hexalith.Application.Commands;
 using Hexalith.Application.States;
 using Hexalith.Application.Tasks;
 using Hexalith.Domain.Messages;
-using Hexalith.Extensions.Helpers;
 using Hexalith.UnitTests.Core.Application.Commands;
 using Hexalith.UnitTests.Core.Domain.Events;
 
@@ -30,7 +29,7 @@ public class ResilientCommandProcessorTest
         Mock<ICommandDispatcher> dispatcher = new();
         _ = dispatcher
             .Setup(p => p.DoAsync(It.IsAny<ICommand>(), null, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new DummyEvent1("My test response", 123).IntoArray());
+            .ReturnsAsync([new DummyEvent1("My test response", 123)]);
         MemoryStateProvider stateProvider = new();
         ResilientCommandProcessor processor = new(
             ResiliencyPolicy.None,

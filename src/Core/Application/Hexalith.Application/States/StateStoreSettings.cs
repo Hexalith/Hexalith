@@ -35,8 +35,5 @@ public class StateStoreSettings : ISettings
     /// The configuration section name of the settings.
     /// </summary>
     /// <returns>The name.</returns>
-    public static string ConfigurationName()
-    {
-        return "StateStore";
-    }
+    public static string ConfigurationName() => "StateStore";
 }

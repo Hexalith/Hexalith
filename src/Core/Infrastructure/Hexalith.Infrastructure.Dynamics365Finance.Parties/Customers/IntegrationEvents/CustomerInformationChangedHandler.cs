@@ -30,7 +30,7 @@ using Microsoft.Extensions.Options;
 /// Implements the <see cref="CustomerEventsHandler{CustomerInformationChanged}" />.
 /// </summary>
 /// <seealso cref="CustomerEventsHandler{CustomerInformationChanged}" />
-public partial class CustomerInformationChangedHandler : IntegrationEventHandler<CustomerInformationChanged>
+public partial class CustomerInformationChangedHandler : IntegrationEventHandlerBase<CustomerInformationChanged>
 {
     /// <summary>
     /// The customer service.

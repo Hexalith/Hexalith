@@ -27,7 +27,6 @@ using Hexalith.Application.Inventories.PartnerInventoryItems.Commands;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Messages;
 using Hexalith.Domain.PartnerInventoryItems.Events;
-using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class ChangeCustomerInformationHandler.
@@ -37,10 +36,10 @@ using Hexalith.Extensions.Helpers;
 public class ChangePartnerInventoryItemNameHandler : CommandHandler<ChangePartnerInventoryItemName>
 {
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] ChangePartnerInventoryItemName command, IAggregate? aggregate, CancellationToken cancellationToken)
+    public override async Task<IEnumerable<BaseMessage>> DoAsync([NotNull] ChangePartnerInventoryItemName command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
-        return Task.FromResult<IEnumerable<BaseMessage>>(new PartnerInventoryItemNameChanged(
+        return await Task.FromResult<IEnumerable<BaseMessage>>([new PartnerInventoryItemNameChanged(
                     command.PartitionId,
                     command.CompanyId,
                     command.OriginId,
@@ -48,10 +47,13 @@ public class ChangePartnerInventoryItemNameHandler : CommandHandler<ChangePartne
                     command.PartnerId,
                     command.Id,
                     command.Name)
-                    .IntoArray<BaseMessage>());
+                    ]).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> UndoAsync(ChangePartnerInventoryItemName command, IAggregate? aggregate, CancellationToken cancellationToken)
-        => throw new NotSupportedException();
+    public override async Task<IEnumerable<BaseMessage>> UndoAsync(ChangePartnerInventoryItemName command, IAggregate? aggregate, CancellationToken cancellationToken)
+    {
+        await Task.CompletedTask.ConfigureAwait(false);
+        throw new NotSupportedException();
+    }
 }

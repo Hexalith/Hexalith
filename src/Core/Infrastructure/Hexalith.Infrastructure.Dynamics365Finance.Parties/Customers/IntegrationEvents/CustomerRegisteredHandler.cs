@@ -33,7 +33,7 @@ using Microsoft.Extensions.Options;
 /// Implements the <see cref="CustomerEventsHandler{CustomerRegistered}" />.
 /// </summary>
 /// <seealso cref="CustomerEventsHandler{CustomerRegistered}" />
-public partial class CustomerRegisteredHandler : IntegrationEventHandler<CustomerRegistered>
+public partial class CustomerRegisteredHandler : IntegrationEventHandlerBase<CustomerRegistered>
 {
     private readonly IDynamics365FinanceCustomerService _customerService;
 

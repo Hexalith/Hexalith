@@ -15,7 +15,6 @@ using Dapr.Actors.Client;
 
 using Hexalith.Application.Commands;
 using Hexalith.Application.Metadatas;
-using Hexalith.Extensions.Helpers;
 
 using Microsoft.Extensions.Logging;
 
@@ -50,7 +49,7 @@ public abstract partial class ActorsCommandProcessor : ICommandProcessor
 
     /// <inheritdoc/>
     public async Task SubmitAsync(BaseCommand command, BaseMetadata metadata, CancellationToken cancellationToken)
-        => await SubmitAsync(command.IntoArray(), metadata, cancellationToken).ConfigureAwait(false);
+        => await SubmitAsync([command], metadata, cancellationToken).ConfigureAwait(false);
 
     /// <inheritdoc/>
     public async Task SubmitAsync(IEnumerable<BaseCommand> commands, BaseMetadata metadata, CancellationToken cancellationToken)

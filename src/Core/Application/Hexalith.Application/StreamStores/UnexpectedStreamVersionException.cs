@@ -74,16 +74,6 @@ public class UnexpectedStreamVersionException : Exception
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="UnexpectedStreamVersionException"/> class.
-    /// </summary>
-    /// <param name="info">Serialization information.</param>
-    /// <param name="context">Streaming context.</param>
-    protected UnexpectedStreamVersionException(SerializationInfo info, StreamingContext context)
-        : base(info, context)
-    {
-    }
-
-    /// <summary>
     /// Gets the actual version of the stream.
     /// </summary>
     public long ActualVersion { get; private set; }

@@ -24,7 +24,7 @@ public class Resource
     /// <summary>
     /// The users.
     /// </summary>
-    private readonly HashSet<OrderedProcess> _users = new();
+    private readonly HashSet<OrderedProcess> _users = [];
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Resource" /> class.
@@ -67,6 +67,7 @@ public class Resource
     /// <param name="process">The process.</param>
     public void UsedBy(OrderedProcess process)
     {
+        ArgumentNullException.ThrowIfNull(process);
         DependencyGraph.CheckGraph(this, process);
 
         if (_users.Add(process))
@@ -87,6 +88,7 @@ public class Resource
     /// <param name="processes">The processes.</param>
     public void UsedBy(IEnumerable<OrderedProcess> processes)
     {
+        ArgumentNullException.ThrowIfNull(processes);
         foreach (OrderedProcess process in processes)
         {
             UsedBy(process);

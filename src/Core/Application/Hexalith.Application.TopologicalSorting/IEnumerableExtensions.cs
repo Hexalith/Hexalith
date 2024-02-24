@@ -29,6 +29,8 @@ public static class IEnumerableExtensions
     /// <returns>the predecessor.</returns>
     public static OrderedProcess After(this IEnumerable<OrderedProcess> followers, OrderedProcess predecessor)
     {
+        ArgumentNullException.ThrowIfNull(followers);
+        ArgumentNullException.ThrowIfNull(predecessor);
         _ = predecessor.Before(followers);
 
         return predecessor;
@@ -50,6 +52,8 @@ public static class IEnumerableExtensions
     /// <returns>the predecessors.</returns>
     public static IEnumerable<OrderedProcess> After(this IEnumerable<OrderedProcess> followers, IEnumerable<OrderedProcess> predecessors)
     {
+        ArgumentNullException.ThrowIfNull(followers);
+        ArgumentNullException.ThrowIfNull(predecessors);
         foreach (OrderedProcess predecessor in predecessors)
         {
             _ = predecessor.Before(followers);
@@ -66,6 +70,8 @@ public static class IEnumerableExtensions
     /// <returns>the followers.</returns>
     public static OrderedProcess Before(this IEnumerable<OrderedProcess> predecessors, OrderedProcess follower)
     {
+        ArgumentNullException.ThrowIfNull(predecessors);
+        ArgumentNullException.ThrowIfNull(follower);
         _ = follower.After(predecessors);
 
         return follower;
@@ -87,6 +93,8 @@ public static class IEnumerableExtensions
     /// <returns>the followers.</returns>
     public static IEnumerable<OrderedProcess> Before(this IEnumerable<OrderedProcess> predecessors, IEnumerable<OrderedProcess> followers)
     {
+        ArgumentNullException.ThrowIfNull(predecessors);
+        ArgumentNullException.ThrowIfNull(followers);
         foreach (OrderedProcess follower in followers)
         {
             _ = follower.After(predecessors);

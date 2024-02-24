@@ -91,5 +91,5 @@ public class SalesLineOrigin : IEquatableObject
 
     /// <inheritdoc/>
     public IEnumerable<object?> GetEqualityComponents()
-        => new object?[] { LocationId, VendorId };
+        => [LocationId, VendorId];
 }

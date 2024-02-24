@@ -36,8 +36,8 @@ public record EventValidationFailed : ApplicationError
         Title = "Event validation failed";
         Type = nameof(EventValidationFailed);
         Detail = "Could not validate event : {Message}";
-        Arguments = new object[] { exception.Message };
+        Arguments = [exception.Message];
         TechnicalDetail = "Event validation failed for data:\n{SerializationData}\n{ErrorMessage}\n{StackTrace}";
-        TechnicalArguments = new object[] { data, exception.FullMessage(), exception.StackTrace ?? string.Empty };
+        TechnicalArguments = [data, exception.FullMessage(), exception.StackTrace ?? string.Empty];
     }
 }

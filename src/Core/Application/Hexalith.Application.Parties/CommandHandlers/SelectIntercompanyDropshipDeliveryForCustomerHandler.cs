@@ -57,5 +57,9 @@ public class SelectIntercompanyDropshipDeliveryForCustomerHandler : CommandHandl
     }
 
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> UndoAsync(SelectIntercompanyDropshipDeliveryForCustomer command, IAggregate? aggregate, CancellationToken cancellationToken) => throw new NotImplementedException();
+    public override async Task<IEnumerable<BaseMessage>> UndoAsync(SelectIntercompanyDropshipDeliveryForCustomer command, IAggregate? aggregate, CancellationToken cancellationToken)
+    {
+        await Task.CompletedTask.ConfigureAwait(false);
+        throw new NotSupportedException();
+    }
 }

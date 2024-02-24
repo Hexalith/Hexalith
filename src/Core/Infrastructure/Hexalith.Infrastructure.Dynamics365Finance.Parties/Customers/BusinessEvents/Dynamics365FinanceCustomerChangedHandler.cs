@@ -38,10 +38,10 @@ using Microsoft.Extensions.Options;
 
 /// <summary>
 /// Class CustomerEventHandler.
-/// Implements the <see cref="Application.Events.IntegrationEventHandler{Customers.Infrastructure.IntegrationEvents.FFYCustomerChangedBusinessEvent}" />.
+/// Implements the <see cref="Application.Events.IntegrationEventHandlerBase{Customers.Infrastructure.IntegrationEvents.FFYCustomerChangedBusinessEvent}" />.
 /// </summary>
-/// <seealso cref="Application.Events.IntegrationEventHandler{Customers.Infrastructure.IntegrationEvents.FFYCustomerChangedBusinessEvent}" />
-public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEventHandler<Dynamics365FinanceCustomerChanged>
+/// <seealso cref="Application.Events.IntegrationEventHandlerBase{Customers.Infrastructure.IntegrationEvents.FFYCustomerChangedBusinessEvent}" />
+public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEventHandlerBase<Dynamics365FinanceCustomerChanged>
 {
     /// <summary>
     /// The customer service.

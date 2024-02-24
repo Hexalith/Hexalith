@@ -20,7 +20,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Hexalith.Application.Metadatas;
-using Hexalith.Application.Projection;
+using Hexalith.Application.Projections;
 using Hexalith.Domain.Events;
 
 /// <summary>

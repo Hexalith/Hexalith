@@ -19,7 +19,7 @@ namespace Hexalith.Domain.InventoryItemStocks.Aggregates;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Exceptions;
-using Hexalith.Domain.InventoryItemStock.Events;
+using Hexalith.Domain.InventoryItemStocks.Events;
 
 /// <summary>
 /// Class InventoryItemStock.
@@ -92,10 +92,6 @@ public record InventoryItemStock(
         }, []);
     }
 
-    /// <inheritdoc/>
-    protected override string DefaultAggregateId()
-        => GetAggregateId(PartitionId, OriginId, CompanyId, LocationId, Id);
-
     /// <summary>
     /// Gets the aggregate identifier.
     /// </summary>
@@ -116,4 +112,8 @@ public record InventoryItemStock(
 
     /// <inheritdoc/>
     public override bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);
+
+    /// <inheritdoc/>
+    protected override string DefaultAggregateId()
+        => GetAggregateId(PartitionId, OriginId, CompanyId, LocationId, Id);
 }

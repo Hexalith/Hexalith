@@ -12,11 +12,37 @@ using Moq;
 using Moq.Protected;
 
 /// <summary>
-/// Helper class to build a <see cref="IHttpClientFactory"/> mock.
+/// Helper class to build a <see cref="IHttpClientFactory" /> mock.
 /// </summary>
-public class HttpClientFactoryBuilder
+public class HttpClientFactoryBuilder : IDisposable
 {
+    /// <summary>
+    /// The disposed value.
+    /// </summary>
+    private bool _disposedValue;
+
+    /// <summary>
+    /// The HTTP client.
+    /// </summary>
+    private HttpClient? _httpClient;
+
+    /// <summary>
+    /// The HTTP handler.
+    /// </summary>
     private HttpMessageHandler? _httpHandler;
+
+    private HttpResponseMessage? _httpResponse;
+
+    /// <summary>
+    /// Gets the HTTP client.
+    /// </summary>
+    /// <value>The HTTP client.</value>
+    private HttpClient HttpClient => _httpClient ??= new(HttpHandler)
+    {
+        BaseAddress = new Uri("http://test.hexalith.com/"),
+    };
+
+    private HttpMessageHandler HttpHandler => _httpHandler ?? new HttpClientHandler();
 
     /// <summary>
     /// Builds this instance.
@@ -25,29 +51,40 @@ public class HttpClientFactoryBuilder
     public IHttpClientFactory Build() => BuildMock().Object;
 
     /// <summary>
-    /// Build a <see cref="Mock{IHttpClientFactory}"/> with the specified <see cref="HttpMessageHandler"/>.
+    /// Build a <see cref="Mock{IHttpClientFactory}" /> with the specified <see cref="HttpMessageHandler" />.
     /// </summary>
     /// <returns>A HTTP client factory with mocked dependencies if handler is defined, else a mock of the factory.</returns>
     /// <exception cref="InvalidOperationException">HttpMessageHandler already set.</exception>
     public Mock<IHttpClientFactory> BuildMock()
     {
-        HttpClient httpClient = new(_httpHandler ?? new HttpClientHandler())
-        {
-            BaseAddress = new Uri("http://test.hexalith.com/"),
-        };
         Mock<IHttpClientFactory> mockHttpClientFactory = new();
         _ = mockHttpClientFactory
             .Setup(_ => _.CreateClient(It.IsAny<string>()))
-            .Returns(httpClient);
+            .Returns(HttpClient);
         return mockHttpClientFactory;
     }
 
+    // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
+    // ~HttpClientFactoryBuilder()
+    // {
+    //     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+    //     Dispose(disposing: false);
+    // }
+
+    /// <inheritdoc/>
+    public void Dispose()
+    {
+        // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        Dispose(disposing: true);
+        GC.SuppressFinalize(this);
+    }
+
     /// <summary>
-    /// Define the <see cref="HttpMessageHandler"/> to use.
+    /// Define the <see cref="HttpMessageHandler" /> to use.
     /// </summary>
     /// <param name="httpHandler">HTTP handler instance.</param>
     /// <returns>The factory builder.</returns>
-    /// <exception cref="InvalidOperationException">HttpMessageHandler already set.</exception>
+    /// <exception cref="System.InvalidOperationException">HttpMessageHandler already set.</exception>
     public HttpClientFactoryBuilder SetHttpMessageHandler(HttpMessageHandler httpHandler)
     {
         if (_httpHandler != null)
@@ -60,13 +97,30 @@ public class HttpClientFactoryBuilder
     }
 
     /// <summary>
-    /// Define a mocked <see cref="HttpMessageHandler"/> to use. The mock will return a <see cref="HttpResponseMessage"/> with the specified content.
+    /// Define a mocked <see cref="HttpMessageHandler" /> to use. The mock will return a <see cref="HttpResponseMessage" /> with the specified content.
     /// </summary>
     /// <param name="response">The content to return.</param>
     /// <returns>The factory builder.</returns>
     public HttpClientFactoryBuilder SetMockHttpMessageHandler(string response)
     {
+        if (_httpHandler != null)
+        {
+            throw new InvalidOperationException("HttpMessageHandler already set.");
+        }
+
+        if (_httpResponse != null)
+        {
+            throw new InvalidOperationException("Response already set.");
+        }
+
         Mock<HttpMessageHandler> handlerMock = new(MockBehavior.Strict);
+
+        _httpResponse = new()
+        {
+            StatusCode = HttpStatusCode.OK,
+            Content = new StringContent(
+                    response),
+        };
         handlerMock
            .Protected()
 
@@ -77,12 +131,7 @@ public class HttpClientFactoryBuilder
               ItExpr.IsAny<CancellationToken>())
 
            // prepare the expected response of the mocked HTTP call
-           .ReturnsAsync(new HttpResponseMessage
-           {
-               StatusCode = HttpStatusCode.OK,
-               Content = new StringContent(
-                    response),
-           })
+           .ReturnsAsync(_httpResponse)
            .Verifiable();
         handlerMock
            .Protected()
@@ -94,5 +143,24 @@ public class HttpClientFactoryBuilder
 
            .Verifiable();
         return SetHttpMessageHandler(handlerMock.Object);
+    }
+
+    /// <summary>
+    /// Releases unmanaged and - optionally - managed resources.
+    /// </summary>
+    /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!_disposedValue)
+        {
+            if (disposing)
+            {
+                _httpResponse?.Dispose();
+                _httpHandler?.Dispose();
+                _httpClient?.Dispose();
+            }
+
+            _disposedValue = true;
+        }
     }
 }

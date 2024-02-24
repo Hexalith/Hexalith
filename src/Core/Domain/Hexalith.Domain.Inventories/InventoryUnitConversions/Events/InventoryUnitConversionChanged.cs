@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 08-30-2023
 // ***********************************************************************
-// <copyright file="InventoryUnitConversionInformationChanged.cs" company="Fiveforty SAS Paris France">
+// <copyright file="InventoryUnitConversionChanged.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -30,14 +30,16 @@ using Hexalith.Extensions;
 public class InventoryUnitConversionChanged : InventoryUnitConversionEvent
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="InventoryUnitConversionChanged"/> class.
+    /// Initializes a new instance of the <see cref="InventoryUnitConversionChanged" /> class.
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
     /// <param name="originId">The origin identifier.</param>
     /// <param name="id">The identifier.</param>
-    /// <param name="name">The name.</param>
-    /// <param name="date">The date.</param>
+    /// <param name="toUnitId">To unit identifier.</param>
+    /// <param name="inventoryItemId">The inventory item identifier.</param>
+    /// <param name="factor">The factor.</param>
+    /// <param name="roundDecimals">The round decimals.</param>
     public InventoryUnitConversionChanged(
         string partitionId,
         string companyId,
@@ -50,7 +52,7 @@ public class InventoryUnitConversionChanged : InventoryUnitConversionEvent
         : base(partitionId, companyId, originId, id, toUnitId, inventoryItemId)
     {
         Factor = factor;
-        this.RoundDecimals = roundDecimals;
+        RoundDecimals = roundDecimals;
     }
 
     /// <summary>

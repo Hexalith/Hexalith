@@ -28,8 +28,5 @@ public class RequestBusSettingsValidator : AbstractValidator<RequestBusSettings>
     /// <summary>
     /// Initializes a new instance of the <see cref="RequestBusSettingsValidator" /> class.
     /// </summary>
-    public RequestBusSettingsValidator()
-    {
-        _ = RuleFor(c => c.Name).NotEmpty();
-    }
+    public RequestBusSettingsValidator() => _ = RuleFor(c => c.Name).NotEmpty();
 }

@@ -42,6 +42,12 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     where TEntity : class, IODataCommon
 {
     /// <summary>
+    /// Gets the logger.
+    /// </summary>
+    /// <value>The logger.</value>
+    protected ILogger _logger;
+
+    /// <summary>
     /// The cross company query.
     /// </summary>
     private const string _crossCompanyQuery = "cross-company=true";
@@ -62,17 +68,17 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     private readonly Uri _instance;
 
     /// <summary>
+    /// The is per company.
+    /// </summary>
+    private readonly bool _isPerCompany = typeof(IODataElement).IsAssignableFrom(typeof(TEntity));
+
+    /// <summary>
     /// The security context.
     /// </summary>
     private readonly IDynamics365FinanceSecurityContext _securityContext;
 
     /// <summary>
-    /// The is per company.
-    /// </summary>
-    private readonly bool IsPerCompany = typeof(IODataElement).IsAssignableFrom(typeof(TEntity));
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Dynamics365FinanceClient{TEntity}"/> class.
+    /// Initializes a new instance of the <see cref="Dynamics365FinanceClient{TEntity}" /> class.
     /// </summary>
     /// <param name="httpClientFactory">The HTTP client factory.</param>
     /// <param name="securityContext">The security context.</param>
@@ -80,8 +86,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     /// <param name="organizationSettings">The organization settings.</param>
     /// <param name="logger">The logger.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
-    /// <exception cref="System.ArgumentException">The {nameof(s.Instance)} setting is not defined. - finOpsSettings.</exception>
-    /// <exception cref="System.ArgumentException">The {nameof(s.Company)} setting is not defined. - finOpsSettings.</exception>
+    /// <exception cref="System.ArgumentException">The {nameof(finOpsSettings.Value.Instance)} setting is not defined. - finOpsSettings.</exception>
     public Dynamics365FinanceClient(
         HttpClient httpClientFactory,
         IDynamics365FinanceSecurityContext securityContext,
@@ -100,7 +105,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
 
         _httpClientFactory = httpClientFactory;
         _securityContext = securityContext;
-        Logger = logger;
+        _logger = logger;
         if (string.IsNullOrWhiteSpace(finOpsSettings.Value.Instance?.OriginalString))
         {
             throw new ArgumentException(
@@ -116,6 +121,8 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     /// Gets the json options.
     /// </summary>
     /// <value>The json options.</value>
+#pragma warning disable CA1000 // Do not declare static members on generic types
+
     public static JsonSerializerOptions JsonOptions => new()
     {
         PropertyNameCaseInsensitive = false,
@@ -126,30 +133,43 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
         },
     };
 
+#pragma warning restore CA1000 // Do not declare static members on generic types
+
     /// <inheritdoc/>
     public string DefaultCompany { get; }
 
-    /// <summary>
-    /// Gets the logger.
-    /// </summary>
-    /// <value>The logger.</value>
-    protected ILogger Logger { get; }
-
     /// <inheritdoc/>
-    public Task DoActionAsync(string action, IDictionary<string, object?> parameters, CancellationToken cancellationToken)
-        => throw new NotSupportedException();
+    public async Task DoActionAsync(string action, IDictionary<string, object?> parameters, CancellationToken cancellationToken)
+    {
+        await Task.CompletedTask.ConfigureAwait(false);
+        throw new NotSupportedException();
+    }
 
-    public Task<IEnumerable<TEntity>> GetAsync(string company, IDictionary<string, object?> filter, CancellationToken cancellationToken) => throw new NotImplementedException();
+    /// <summary>
+    /// Get as an asynchronous operation.
+    /// </summary>
+    /// <param name="company">The company.</param>
+    /// <param name="filter">The filter.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>A Task&lt;IEnumerable`1&gt; representing the asynchronous operation.</returns>
+    /// <exception cref="System.NotImplementedException">null.</exception>
+    public async Task<IEnumerable<TEntity>> GetAsync(string company, IDictionary<string, object?> filter, CancellationToken cancellationToken)
+    {
+        await Task.CompletedTask.ConfigureAwait(false);
+        throw new NotImplementedException();
+    }
 
     /// <summary>
     /// Per company filters to dictionary.
     /// </summary>
     /// <param name="filter">The key.</param>
     /// <returns>System.ValueTuple&lt;System.String, IDictionary&lt;System.String, System.Nullable&lt;System.Object&gt;&gt;&gt;.</returns>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
+    /// <exception cref="System.ArgumentException">The filter must have at least one property other than the DataAreaId. - filter.</exception>
     protected virtual (string DataAreaId, IDictionary<string, object?> Values) FilterToDictionary(IPerCompanyFilter filter)
     {
         ArgumentNullException.ThrowIfNull(filter);
-        IDictionary<string, object?> dict = ToDictionary(filter);
+        Dictionary<string, object?> dict = ToDictionary(filter);
         if (dict.Count < 2)
         {
             throw new ArgumentException(
@@ -167,10 +187,12 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     /// </summary>
     /// <param name="filter">The filter.</param>
     /// <returns>IDictionary&lt;System.String, System.Nullable&lt;System.Object&gt;&gt;.</returns>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
+    /// <exception cref="System.ArgumentException">The filter must have at least one property. - filter.</exception>
     protected virtual IDictionary<string, object?> FilterToDictionary(ICommonFilter filter)
     {
         ArgumentNullException.ThrowIfNull(filter);
-        IDictionary<string, object?> dict = ToDictionary(filter);
+        Dictionary<string, object?> dict = ToDictionary(filter);
         return dict.Count < 1
             ? throw new ArgumentException(
                 "The filter must have at least one property.",
@@ -183,10 +205,12 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     /// </summary>
     /// <param name="key">The key.</param>
     /// <returns>System.ValueTuple&lt;System.String, IDictionary&lt;System.String, System.Nullable&lt;System.Object&gt;&gt;&gt;.</returns>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
+    /// <exception cref="System.ArgumentException">The key must have at least one property other than the DataAreaId. - key.</exception>
     protected virtual (string DataAreaId, IDictionary<string, object?> Values) KeyToDictionary(IPerCompanyPrimaryKey key)
     {
         ArgumentNullException.ThrowIfNull(key);
-        IDictionary<string, object?> dict = ToDictionary(key);
+        Dictionary<string, object?> dict = ToDictionary(key);
         if (dict.Count < 2)
         {
             throw new ArgumentException(
@@ -204,6 +228,8 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     /// </summary>
     /// <param name="key">The key.</param>
     /// <returns>IDictionary&lt;System.String, System.Nullable&lt;System.Object&gt;&gt;.</returns>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
+    /// <exception cref="System.ArgumentException">The key must have at least one property. - key.</exception>
     protected virtual IDictionary<string, object?> KeyToDictionary(ICommonPrimaryKey key)
     {
         ArgumentNullException.ThrowIfNull(key);
@@ -215,6 +241,10 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
             : dict;
     }
 
+    /// <summary>
+    /// Gets the debugger display.
+    /// </summary>
+    /// <returns>System.String.</returns>
     private static string GetDebuggerDisplay() => typeof(TEntity).Name;
 
     /// <summary>
@@ -249,7 +279,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     /// <summary>
     /// Gets the query filter.
     /// </summary>
-    /// <param name="company">The company.</param>
+    /// <param name="filter">The filter.</param>
     /// <returns>System.String.</returns>
     private static string GetQueryFilter(IDictionary<string, object?> filter)
     {
@@ -273,6 +303,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     /// <typeparam name="T">Value type.</typeparam>
     /// <param name="obj">The object.</param>
     /// <returns>IDictionary&lt;System.String, System.Nullable&lt;System.Object&gt;&gt;.</returns>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
     private static Dictionary<string, object?> ToDictionary<T>(T obj)
     {
         ArgumentNullException.ThrowIfNull(obj);

@@ -26,30 +26,24 @@ using Microsoft.TeamsFx.Conversation;
 /// Implements the <see cref="ControllerBase" />.
 /// </summary>
 /// <seealso cref="ControllerBase" />
+/// <remarks>
+/// Initializes a new instance of the <see cref="TeamsBotController" /> class.
+/// </remarks>
+/// <param name="conversation">The conversation.</param>
+/// <param name="bot">The bot.</param>
 [Route("api/messages")]
 [ApiController]
-public class TeamsBotController : ControllerBase
+public class TeamsBotController(ConversationBot conversation, IBot bot) : ControllerBase
 {
     /// <summary>
     /// The bot.
     /// </summary>
-    private readonly IBot _bot;
+    private readonly IBot _bot = bot;
 
     /// <summary>
     /// The conversation.
     /// </summary>
-    private readonly ConversationBot _conversation;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="TeamsBotController" /> class.
-    /// </summary>
-    /// <param name="conversation">The conversation.</param>
-    /// <param name="bot">The bot.</param>
-    public TeamsBotController(ConversationBot conversation, IBot bot)
-    {
-        _conversation = conversation;
-        _bot = bot;
-    }
+    private readonly ConversationBot _conversation = conversation;
 
     /// <summary>
     /// Post as an asynchronous operation.

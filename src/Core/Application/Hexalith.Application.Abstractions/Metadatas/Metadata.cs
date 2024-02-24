@@ -24,6 +24,8 @@ using Hexalith.Domain.Messages;
 using Hexalith.Extensions;
 using Hexalith.Extensions.Helpers;
 
+#pragma warning disable CA1724 // Type names should not match namespaces
+
 /// <summary>
 /// Class Metadata.
 /// Implements the <see cref="IMetadata" />.

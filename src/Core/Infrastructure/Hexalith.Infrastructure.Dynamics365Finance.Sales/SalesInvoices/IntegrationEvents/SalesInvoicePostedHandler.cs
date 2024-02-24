@@ -25,10 +25,10 @@ using Microsoft.Extensions.Options;
 
 /// <summary>
 /// Class SalesInvoiceEventHandler.
-/// Implements the <see cref="IntegrationEventHandler{Bspk.SalesInvoices.Infrastructure.IntegrationEvents.FFYSalesInvoiceRegisteredBusinessEvent}" />.
+/// Implements the <see cref="IntegrationEventHandlerBase{Bspk.SalesInvoices.Infrastructure.IntegrationEvents.FFYSalesInvoiceRegisteredBusinessEvent}" />.
 /// </summary>
-/// <seealso cref="IntegrationEventHandler{Bspk.SalesInvoices.Infrastructure.IntegrationEvents.FFYSalesInvoiceRegisteredBusinessEvent}" />
-public class SalesInvoicePostedHandler : IntegrationEventHandler<SalesInvoicePostedBusinessEvent>
+/// <seealso cref="IntegrationEventHandlerBase{Bspk.SalesInvoices.Infrastructure.IntegrationEvents.FFYSalesInvoiceRegisteredBusinessEvent}" />
+public class SalesInvoicePostedHandler : IntegrationEventHandlerBase<SalesInvoicePostedBusinessEvent>
 {
     private readonly IDateTimeService _dateTimeService;
     private readonly ILogger<SalesInvoicePostedHandler> _logger;
@@ -62,8 +62,8 @@ public class SalesInvoicePostedHandler : IntegrationEventHandler<SalesInvoicePos
     }
 
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseCommand>> ApplyAsync(SalesInvoicePostedBusinessEvent @event, CancellationToken cancellationToken)
-        => Task.FromResult<IEnumerable<BaseCommand>>(Array.Empty<BaseCommand>());
+    public override async Task<IEnumerable<BaseCommand>> ApplyAsync(SalesInvoicePostedBusinessEvent baseEvent, CancellationToken cancellationToken)
+        => await Task.FromResult<IEnumerable<BaseCommand>>(Array.Empty<BaseCommand>()).ConfigureAwait(false);
 
     /*
         ArgumentNullException.ThrowIfNull(@event);

@@ -17,7 +17,7 @@
 namespace Hexalith.Infrastructure.WebApis.InventoriesEvents.Helpers;
 
 using Hexalith.Application.Inventories.InventoryItems.Projections;
-using Hexalith.Application.Projection;
+using Hexalith.Application.Projections;
 using Hexalith.Domain.InventoryItems.Events;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.WebApis.InventoriesEvents.Controllers;

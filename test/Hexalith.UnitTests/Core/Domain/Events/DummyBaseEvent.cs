@@ -35,7 +35,7 @@ public abstract class DummyBaseEvent : BaseEvent
                     DateTimeOffset.UtcNow.AddMinutes(-1),
                     1,
                     "Test session"),
-                "TestScope".IntoArray());
+                ["TestScope"]);
     }
 
     protected override string DefaultAggregateName() => "Test";

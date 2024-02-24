@@ -29,23 +29,21 @@ using Hexalith.Extensions.Common;
 /// Implements the <see cref="IMessageBus{TMessage, TMetadata}" />.
 /// </summary>
 /// <seealso cref="IMessageBus{TMessage, TMetadata}" />
-public class MemoryCommandBus : ICommandBus
+/// <remarks>
+/// Initializes a new instance of the <see cref="MemoryCommandBus"/> class.
+/// </remarks>
+/// <param name="dateTimeService">The date time service.</param>
+public class MemoryCommandBus(IDateTimeService dateTimeService) : ICommandBus
 {
     /// <summary>
     /// The date time service.
     /// </summary>
-    private readonly IDateTimeService _dateTimeService;
+    private readonly IDateTimeService _dateTimeService = dateTimeService;
 
     /// <summary>
     /// The stream.
     /// </summary>
-    private readonly List<CommandState> _stream = new();
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="MemoryCommandBus"/> class.
-    /// </summary>
-    /// <param name="dateTimeService">The date time service.</param>
-    public MemoryCommandBus(IDateTimeService dateTimeService) => _dateTimeService = dateTimeService;
+    private readonly List<CommandState> _stream = [];
 
     /// <summary>
     /// Gets the stream.
@@ -54,15 +52,25 @@ public class MemoryCommandBus : ICommandBus
     public IEnumerable<CommandState> Stream => _stream;
 
     /// <inheritdoc/>
-    public Task PublishAsync(IEnvelope<BaseCommand, BaseMetadata> envelope, CancellationToken cancellationToken) => PublishAsync(envelope.Message, envelope.Metadata, cancellationToken);
-
-    /// <inheritdoc/>
-    public Task PublishAsync(BaseCommand message, BaseMetadata metadata, CancellationToken cancellationToken) => PublishAsync(new CommandState(_dateTimeService.UtcNow, message, metadata), cancellationToken);
-
-    /// <inheritdoc/>
-    public Task PublishAsync(CommandState state, CancellationToken cancellationToken)
+    public async Task PublishAsync(IEnvelope<BaseCommand, BaseMetadata> envelope, CancellationToken cancellationToken)
     {
-        _stream.Add(state);
-        return Task.CompletedTask;
+        ArgumentNullException.ThrowIfNull(envelope);
+        await PublishAsync(envelope.Message, envelope.Metadata, cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task PublishAsync(BaseCommand message, BaseMetadata metadata, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(message);
+        ArgumentNullException.ThrowIfNull(metadata);
+        await PublishAsync(new CommandState(_dateTimeService.UtcNow, message, metadata), cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task PublishAsync(CommandState envelope, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(envelope);
+        _stream.Add(envelope);
+        await Task.CompletedTask.ConfigureAwait(false);
     }
 }

@@ -25,7 +25,7 @@ public class TopologicalSort
     /// <summary>
     /// The collections.
     /// </summary>
-    private readonly List<ISet<OrderedProcess>> _collections = new();
+    private readonly List<ISet<OrderedProcess>> _collections = [];
 
     /// <summary>
     /// Initializes a new instance of the <see cref="TopologicalSort" /> class.
@@ -39,7 +39,11 @@ public class TopologicalSort
     /// </summary>
     /// <param name="g">The graph to fill this sort with.</param>
     public TopologicalSort(DependencyGraph g)
-        : this() => _ = g.CalculateSort(this);
+        : this()
+    {
+        ArgumentNullException.ThrowIfNull(g);
+        _ = g.CalculateSort(this);
+    }
 
     /// <summary>
     /// Returns an enumerator that iterates through the processes.

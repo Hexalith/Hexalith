@@ -16,7 +16,7 @@
 
 namespace Hexalith.Infrastructure.WebApis.SalesEvents.Helpers;
 
-using Hexalith.Application.Projection;
+using Hexalith.Application.Projections;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;

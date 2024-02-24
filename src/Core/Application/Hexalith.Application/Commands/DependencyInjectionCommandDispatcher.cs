@@ -22,7 +22,7 @@ using Microsoft.Extensions.Logging;
 /// Implements the <see cref="ICommandDispatcher" />.
 /// </summary>
 /// <seealso cref="ICommandDispatcher" />
-public class DependencyInjectionCommandDispatcher : ICommandDispatcher
+public partial class DependencyInjectionCommandDispatcher : ICommandDispatcher
 {
     /// <summary>
     /// The logger.
@@ -50,24 +50,35 @@ public class DependencyInjectionCommandDispatcher : ICommandDispatcher
     /// <inheritdoc/>
     public async Task<IEnumerable<BaseMessage>> DoAsync(ICommand command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
+        ArgumentNullException.ThrowIfNull(command);
         try
         {
-            _logger.LogDebug("Dispatching command {CommandType} with aggregate id {AggregateName}-{AggregateId}", command.TypeName, command.AggregateName, command.AggregateId);
+            LogDispatchingCommandDebugInformation(command.TypeName, command.AggregateName, command.AggregateId);
             IEnumerable<BaseMessage> events = await GetHandler(command).DoAsync(command, aggregate, cancellationToken).ConfigureAwait(false);
 
             return events;
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error while dispatching command {CommandType} with aggregate id {AggregateName}-{AggregateId} : {ErrorMessage}", command.TypeName, command.AggregateName, command.AggregateId, ex.FullMessage());
+            LogDispatchingCommandErrorInformation(ex, command.TypeName, command.AggregateName, command.AggregateId, ex.FullMessage());
             throw;
         }
     }
 
+    [LoggerMessage(EventId = 0, Level = LogLevel.Debug, Message = "Dispatching command {CommandType} with aggregate id {AggregateName}-{AggregateId}")]
+    public partial void LogDispatchingCommandDebugInformation(string CommandType, string AggregateName, string AggregateId);
+
+    [LoggerMessage(EventId = 2, Level = LogLevel.Error, Message = "Error while dispatching command {CommandType} with aggregate id {AggregateName}-{AggregateId} : {ErrorMessage}")]
+    public partial void LogDispatchingCommandErrorInformation(Exception ex, string CommandType, string AggregateName, string AggregateId, string ErrorMessage);
+
+    [LoggerMessage(EventId = 1, Level = LogLevel.Debug, Message = "Dispatching command {CommandType} undo with aggregate id {AggregateName}-{AggregateId}")]
+    public partial void LogDispatchingCommandUndoDebugInformation(string CommandType, string AggregateName, string AggregateId);
+
     /// <inheritdoc/>
     public async Task<IEnumerable<BaseMessage>> UnDoAsync(ICommand command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
-        _logger.LogDebug("Dispatching command {CommandType} undo with aggregate id {AggregateName}-{AggregateId}", command.TypeName, command.AggregateName, command.AggregateId);
+        ArgumentNullException.ThrowIfNull(command);
+        LogDispatchingCommandUndoDebugInformation(command.TypeName, command.AggregateName, command.AggregateId);
         IEnumerable<BaseMessage> events = await GetHandler(command).UndoAsync(command, aggregate, cancellationToken).ConfigureAwait(false);
         return events;
     }

@@ -57,11 +57,11 @@ public class StringStateProvider : IStateStoreProvider
     public IReadOnlyDictionary<string, string> UncommittedState => _uncommittedState;
 
     /// <inheritdoc/>
-    public Task AddStateAsync<T>(string key, T value, CancellationToken cancellationToken)
+    public async Task AddStateAsync<T>(string key, T value, CancellationToken cancellationToken)
     {
         string v = JsonSerializer.Serialize(value);
         _uncommittedState.Add(key, v);
-        return Task.CompletedTask;
+        await Task.CompletedTask.ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -88,7 +88,7 @@ public class StringStateProvider : IStateStoreProvider
     }
 
     /// <inheritdoc/>
-    public Task SaveChangesAsync(CancellationToken cancellationToken)
+    public async Task SaveChangesAsync(CancellationToken cancellationToken)
     {
         foreach (KeyValuePair<string, string> entry in _uncommittedState.ToList())
         {
@@ -101,11 +101,11 @@ public class StringStateProvider : IStateStoreProvider
             _ = _uncommittedState.Remove(entry.Key);
         }
 
-        return Task.CompletedTask;
+        await Task.CompletedTask.ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public Task SetStateAsync<T>(string key, T value, CancellationToken cancellationToken)
+    public async Task SetStateAsync<T>(string key, T value, CancellationToken cancellationToken)
     {
         if (_uncommittedState.ContainsKey(key))
         {
@@ -114,28 +114,28 @@ public class StringStateProvider : IStateStoreProvider
 
         string v = JsonSerializer.Serialize(value);
         _uncommittedState.Add(key, v);
-        return Task.CompletedTask;
+        await Task.CompletedTask.ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public Task<ConditionalValue<T>> TryGetStateAsync<T>(string key, CancellationToken cancellationToken)
+    public async Task<ConditionalValue<T>> TryGetStateAsync<T>(string key, CancellationToken cancellationToken)
     {
         if (_uncommittedState.TryGetValue(key, out string? uncommitted))
         {
             T? value = JsonSerializer.Deserialize<T>(uncommitted);
             return value is null
-                ? Task.FromException<ConditionalValue<T>>(new InvalidOperationException($"The key '{key}' was found in the uncommitted state store but the value is null."))
-                : Task.FromResult(new ConditionalValue<T>(value));
+                ? throw new InvalidOperationException($"The key '{key}' was found in the uncommitted state store but the value is null.")
+                : new ConditionalValue<T>(value);
         }
 
         if (_state.TryGetValue(key, out string? committed))
         {
             T? value = JsonSerializer.Deserialize<T>(committed);
             return value is null
-                ? Task.FromException<ConditionalValue<T>>(new InvalidOperationException($"The key '{key}' was found in the state store but the value is null."))
-                : Task.FromResult(new ConditionalValue<T>(value));
+                ? throw new InvalidOperationException($"The key '{key}' was found in the state store but the value is null.")
+                : new ConditionalValue<T>(value);
         }
 
-        return Task.FromResult(new ConditionalValue<T>());
+        return await Task.FromResult(new ConditionalValue<T>()).ConfigureAwait(false);
     }
 }

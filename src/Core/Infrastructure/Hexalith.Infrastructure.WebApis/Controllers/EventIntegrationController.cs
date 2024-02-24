@@ -16,7 +16,7 @@
 namespace Hexalith.Infrastructure.WebApis.Controllers;
 
 using Hexalith.Application.Events;
-using Hexalith.Application.Projection;
+using Hexalith.Application.Projections;
 using Hexalith.Application.States;
 using Hexalith.Extensions.Errors;
 

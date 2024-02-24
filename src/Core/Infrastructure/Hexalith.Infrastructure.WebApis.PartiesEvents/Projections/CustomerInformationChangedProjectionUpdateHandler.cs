@@ -24,9 +24,9 @@ using Microsoft.Extensions.Logging;
 
 /// <summary>
 /// Class CustomerInformationChangedHandler.
-/// Implements the <see cref="IntegrationEventHandler{CustomerInformationChanged}" />.
+/// Implements the <see cref="IntegrationEventHandlerBase{CustomerInformationChanged}" />.
 /// </summary>
-/// <seealso cref="IntegrationEventHandler{CustomerInformationChanged}" />
+/// <seealso cref="IntegrationEventHandlerBase{CustomerInformationChanged}" />
 public class CustomerInformationChangedProjectionUpdateHandler : CustomerProjectionUpdateHandler<CustomerInformationChanged>
 {
     /// <summary>

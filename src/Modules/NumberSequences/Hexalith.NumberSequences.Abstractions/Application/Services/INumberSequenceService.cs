@@ -30,7 +30,7 @@ public interface INumberSequenceService
     /// <param name="id">The identifier.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;System.String&gt;.</returns>
-    public Task<string> GetNextAsync(
+    Task<string> GetNextAsync(
         string partitionId,
         string companyId,
         string id,

@@ -64,8 +64,8 @@ public record Survey(
               string.Empty,
               string.Empty,
               string.Empty,
-              Enumerable.Empty<SurveyCategory>(),
-              Enumerable.Empty<SurveyUser>(),
+              [],
+              [],
               SurveyPeriod.Once,
               DateTimeOffset.MinValue,
               DateTimeOffset.MinValue)
@@ -104,9 +104,6 @@ public record Survey(
             _ => throw new InvalidAggregateEventException(this, domainEvent, false),
         }, []);
     }
-
-    /// <inheritdoc/>
-    protected override string DefaultAggregateId() => GetAggregateId(PartitionId, CompanyId, OriginId, Id);
 
     /// <summary>
     /// Gets the aggregate identifier.
@@ -147,6 +144,12 @@ public record Survey(
         return Name != changed.Name;
     }
 
+    /// <inheritdoc/>
+    public override bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);
+
+    /// <inheritdoc/>
+    protected override string DefaultAggregateId() => GetAggregateId(PartitionId, CompanyId, OriginId, Id);
+
     private void CheckEvent(SurveyEvent customerEvent, [CallerArgumentExpression(nameof(customerEvent))] string? paramName = null)
     {
         if (AggregateName != customerEvent.AggregateName)
@@ -159,7 +162,4 @@ public record Survey(
             throw new ArgumentException($"{customerEvent.TypeName} aggregate aggregate Id '{customerEvent.AggregateId}' is invalid. Expected : '{AggregateId}'.", paramName);
         }
     }
-
-    /// <inheritdoc/>
-    public override bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);
 }

@@ -97,7 +97,11 @@ public partial class RegisterOrChangeCustomerHandler : CommandHandler<RegisterOr
     }
 
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> UndoAsync(RegisterOrChangeCustomer command, IAggregate? aggregate, CancellationToken cancellationToken) => throw new NotSupportedException();
+    public override async Task<IEnumerable<BaseMessage>> UndoAsync(RegisterOrChangeCustomer command, IAggregate? aggregate, CancellationToken cancellationToken)
+    {
+        await Task.CompletedTask.ConfigureAwait(false);
+        throw new NotSupportedException();
+    }
 
     /// <summary>
     /// Determines whether the specified current has changes.

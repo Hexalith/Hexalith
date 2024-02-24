@@ -67,7 +67,7 @@ public class IssueSalesInvoice : SalesInvoiceCommand
     public IssueSalesInvoice()
     {
         CustomerId = CurrencyId = string.Empty;
-        Lines = new List<SalesInvoiceLine>();
+        Lines = [];
     }
 
     /// <summary>

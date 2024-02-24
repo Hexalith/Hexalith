@@ -73,5 +73,9 @@ public partial class IssueSalesInvoiceHandler : CommandHandler<IssueSalesInvoice
     }
 
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> UndoAsync(IssueSalesInvoice command, IAggregate? aggregate, CancellationToken cancellationToken) => throw new NotSupportedException();
+    public override async Task<IEnumerable<BaseMessage>> UndoAsync(IssueSalesInvoice command, IAggregate? aggregate, CancellationToken cancellationToken)
+    {
+        await Task.CompletedTask.ConfigureAwait(false);
+        throw new NotSupportedException();
+    }
 }

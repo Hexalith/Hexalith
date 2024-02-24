@@ -62,18 +62,26 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     public async Task<bool> ExistsAsync(ICommonFilter filter, CancellationToken cancellationToken) => await CountAsync(filter, cancellationToken).ConfigureAwait(false) > 0;
 
     /// <inheritdoc/>
-    public Task<IEnumerable<TEntity>> GetAsync(IDictionary<string, object?> filter, CancellationToken cancellationToken)
-        => IsPerCompany
-            ? GetPerCompanyAsync(DefaultCompany, filter, cancellationToken)
-            : GetCommonAsync(filter, cancellationToken);
+    public async Task<IEnumerable<TEntity>> GetAsync(IDictionary<string, object?> filter, CancellationToken cancellationToken)
+        => _isPerCompany
+            ? await GetPerCompanyAsync(DefaultCompany, filter, cancellationToken).ConfigureAwait(false)
+            : await GetCommonAsync(filter, cancellationToken).ConfigureAwait(false);
 
+    /// <summary>
+    /// Get as an asynchronous operation.
+    /// </summary>
+    /// <param name="url">The URL.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>A Task&lt;System.Collections.Generic.IEnumerable.<TEntity>&gt; representing the asynchronous operation.</returns>
+    /// <exception cref="HttpRequestException">$"The request to '{url.AbsoluteUri}' failed with status code '{response.StatusCode}'.</exception>
+    /// <exception cref="HttpRequestException">$"The request to '{url.AbsoluteUri}' failed to deserialize :\n{await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false)}</exception>
     public async Task<IEnumerable<TEntity>> GetAsync(Uri url, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(url);
         HttpResponseMessage? response = null;
         try
         {
-            Logger.LogInformation("Calling Dynamics 365 Finance ODATA endpoint : {Path}.", url.AbsoluteUri);
+            LogDynamicsOdataCallInformation(url.AbsoluteUri);
 
             HttpClient client = await GetClientAsync(cancellationToken).ConfigureAwait(false);
             response = await client.GetAsync(url, cancellationToken).ConfigureAwait(false);
@@ -91,7 +99,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
                     .ConfigureAwait(false);
             if (content != null && !string.IsNullOrWhiteSpace(content.Context))
             {
-                Logger.LogTrace("The method call to '{Path}' was successful.", url.AbsoluteUri);
+                LogMethodCallSuccessfulDebugInformation(url.AbsoluteUri);
                 return content.Values ?? Enumerable.Empty<TEntity>();
             }
 
@@ -101,9 +109,9 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
         catch (Exception ex)
         {
             string? responseContent = (response == null) ? null : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-            Logger.LogError(
-                "Can't get {EntityName} list with filter {Filter}. The method call to '{Path}' failed. response content :\n{ResponseContent}",
-                typeof(TEntity).Name,
+            LogCantGetEntityWithFilterError(
+                ex,
+                TEntity.EntityName(),
                 string.Empty,
                 url.AbsoluteUri,
                 responseContent ?? "No response");
@@ -112,15 +120,15 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     }
 
     /// <inheritdoc/>
-    public Task<IEnumerable<TEntity>> GetAsync(IPerCompanyFilter filter, CancellationToken cancellationToken)
+    public async Task<IEnumerable<TEntity>> GetAsync(IPerCompanyFilter filter, CancellationToken cancellationToken)
     {
         (string dataAreaId, IDictionary<string, object?> dict) = FilterToDictionary(filter);
-        return GetPerCompanyAsync(dataAreaId, dict, cancellationToken);
+        return await GetPerCompanyAsync(dataAreaId, dict, cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public Task<IEnumerable<TEntity>> GetAsync(ICommonFilter filter, CancellationToken cancellationToken)
-        => GetCommonAsync(FilterToDictionary(filter), cancellationToken);
+    public async Task<IEnumerable<TEntity>> GetAsync(ICommonFilter filter, CancellationToken cancellationToken)
+        => await GetCommonAsync(FilterToDictionary(filter), cancellationToken).ConfigureAwait(false);
 
     /// <inheritdoc/>
     public async Task<IEnumerable<TEntity>> GetCommonAsync([NotNull] IDictionary<string, object?> filter, CancellationToken cancellationToken)
@@ -165,18 +173,18 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     }
 
     /// <inheritdoc/>
-    public Task<TEntity> GetSingleAsync(IPerCompanyPrimaryKey key, CancellationToken cancellationToken)
+    public async Task<TEntity> GetSingleAsync(IPerCompanyPrimaryKey key, CancellationToken cancellationToken)
     {
         (string dataAreaId, IDictionary<string, object?> dict) = KeyToDictionary(key);
-        return GetSingleAsync(dataAreaId, dict, cancellationToken);
+        return await GetSingleAsync(dataAreaId, dict, cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public Task<TEntity> GetSingleAsync(ICommonPrimaryKey key, CancellationToken cancellationToken) => GetSingleAsync(DefaultCompany, KeyToDictionary(key), cancellationToken);
+    public async Task<TEntity> GetSingleAsync(ICommonPrimaryKey key, CancellationToken cancellationToken) => await GetSingleAsync(DefaultCompany, KeyToDictionary(key), cancellationToken).ConfigureAwait(false);
 
     /// <inheritdoc/>
-    public Task<TEntity> GetSingleAsync(IDictionary<string, object?> keys, CancellationToken cancellationToken)
-        => GetSingleAsync(DefaultCompany, keys, cancellationToken);
+    public async Task<TEntity> GetSingleAsync(IDictionary<string, object?> keys, CancellationToken cancellationToken)
+        => await GetSingleAsync(DefaultCompany, keys, cancellationToken).ConfigureAwait(false);
 
     /// <inheritdoc/>
     public async Task<TEntity> GetSingleAsync(string company, [NotNull] IDictionary<string, object?> keys, CancellationToken cancellationToken)
@@ -201,20 +209,62 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
                     .ReadFromJsonAsync<TEntity>(
                     options: JsonOptions,
                     cancellationToken).ConfigureAwait(false) ?? throw new HttpRequestException($"Empty content response on request to '{url.AbsoluteUri}'.");
-            Logger.LogDebug("The method call to '{Path}' was successful.", url.AbsoluteUri);
+            LogMethodCallSuccessfulDebugInformation(url.AbsoluteUri);
             return content;
         }
         catch (Exception ex)
         {
             string? responseContent = (response == null) ? null : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-            Logger.LogError(
-                "Can't get {EntityName} with keys {Keys}. The method call to '{Path}' failed. response content :\n{ResponseContent}",
-                typeof(TEntity).Name,
+            LogCantGetEntityWithKeyError(
+                ex,
+                TEntity.EntityName(),
                 string.Join('\n', keys.Select(s => $"{s.Key}='{s.Value}'")),
                 url.AbsoluteUri,
-                responseContent ?? "No response",
-                ex);
+                responseContent ?? "No response");
             throw new GetSingleRequestFailedException<TEntity>(TEntity.EntityName(), keys, responseContent, message: null, ex);
         }
     }
+
+    /// <summary>
+    /// Logs the cant get entity with filter error.
+    /// </summary>
+    /// <param name="e">The e.</param>
+    /// <param name="entityName">Name of the entity.</param>
+    /// <param name="filter">The filter.</param>
+    /// <param name="path">The path.</param>
+    /// <param name="responseContent">Content of the response.</param>
+    [LoggerMessage(EventId = 2, Level = LogLevel.Error, Message = "Can't get {EntityName} list with filter {Filter}. The method call to '{Path}' failed. response content :\n{ResponseContent}")]
+    public partial void LogCantGetEntityWithFilterError(Exception e, string entityName, string filter, string path, string responseContent);
+
+    /// <summary>
+    /// Logs the cant get entity with key error.
+    /// </summary>
+    /// <param name="e">The e.</param>
+    /// <param name="entityName">Name of the entity.</param>
+    /// <param name="keys">The keys.</param>
+    /// <param name="path">The path.</param>
+    /// <param name="responseContent">Content of the response.</param>
+    [LoggerMessage(EventId = 3, Level = LogLevel.Error, Message = "Can't get {EntityName} with keys {Keys}. The method call to '{Path}' failed. response content :\n{ResponseContent}")]
+    public partial void LogCantGetEntityWithKeyError(Exception e, string entityName, string keys, string path, string responseContent);
+
+    /// <summary>
+    /// Logs the dynamics odata call information.
+    /// </summary>
+    /// <param name="path">The path.</param>
+    [LoggerMessage(EventId = 1, Level = LogLevel.Information, Message = "Calling Dynamics 365 Finance ODATA endpoint : {Path}.")]
+    public partial void LogDynamicsOdataCallInformation(string path);
+
+    /// <summary>
+    /// Logs the method call successful debug information.
+    /// </summary>
+    /// <param name="path">The path.</param>
+    [LoggerMessage(EventId = 4, Level = LogLevel.Debug, Message = "The method call to '{Path}' was successful.")]
+    public partial void LogMethodCallSuccessfulDebugInformation(string path);
+
+    /// <summary>
+    /// Logs the method call to path was successful trace information.
+    /// </summary>
+    /// <param name="path">The path.</param>
+    [LoggerMessage(EventId = 0, Level = LogLevel.Debug, Message = "Calling Dynamics 365 Finance ODATA endpoint : {Path}.")]
+    public partial void LogTheMethodCallToPathWasSuccessfulTraceInformation(string path);
 }

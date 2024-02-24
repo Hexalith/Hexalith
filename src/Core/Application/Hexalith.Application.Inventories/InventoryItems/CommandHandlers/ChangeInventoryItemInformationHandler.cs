@@ -27,7 +27,6 @@ using Hexalith.Application.Inventories.InventoryItems.Commands;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.InventoryItems.Events;
 using Hexalith.Domain.Messages;
-using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class ChangeCustomerInformationHandler.
@@ -37,20 +36,23 @@ using Hexalith.Extensions.Helpers;
 public class ChangeInventoryItemInformationHandler : CommandHandler<ChangeInventoryItemInformation>
 {
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] ChangeInventoryItemInformation command, IAggregate? aggregate, CancellationToken cancellationToken)
+    public override async Task<IEnumerable<BaseMessage>> DoAsync([NotNull] ChangeInventoryItemInformation command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
-        return Task.FromResult<IEnumerable<BaseMessage>>(new InventoryItemInformationChanged(
+        return await Task.FromResult<IEnumerable<BaseMessage>>([new InventoryItemInformationChanged(
                     command.PartitionId,
                     command.CompanyId,
                     command.OriginId,
                     command.Id,
                     command.Name,
                     command.Description)
-                    .IntoArray<BaseMessage>());
+                    ]).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> UndoAsync(ChangeInventoryItemInformation command, IAggregate? aggregate, CancellationToken cancellationToken)
-        => throw new NotSupportedException();
+    public override async Task<IEnumerable<BaseMessage>> UndoAsync(ChangeInventoryItemInformation command, IAggregate? aggregate, CancellationToken cancellationToken)
+    {
+        await Task.CompletedTask.ConfigureAwait(false);
+        throw new NotSupportedException();
+    }
 }

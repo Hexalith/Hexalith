@@ -78,8 +78,8 @@ public partial class ChangeCustomerInformationHandler : CommandHandler<ChangeCus
             if (aggregate is Customer customer)
             {
                 return HasChanges(customer.ToCustomerInformationChanged(), changed)
-                    ? await Task.FromResult<IEnumerable<BaseMessage>>(new BaseMessage[] { changed }).ConfigureAwait(false)
-                    : await Task.FromResult<IEnumerable<BaseMessage>>(Array.Empty<BaseMessage>()).ConfigureAwait(false);
+                    ? await Task.FromResult<IEnumerable<BaseMessage>>([changed]).ConfigureAwait(false)
+                    : await Task.FromResult<IEnumerable<BaseMessage>>([]).ConfigureAwait(false);
             }
         }
 
@@ -87,7 +87,11 @@ public partial class ChangeCustomerInformationHandler : CommandHandler<ChangeCus
     }
 
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> UndoAsync(ChangeCustomerInformation command, IAggregate? aggregate, CancellationToken cancellationToken) => throw new NotSupportedException();
+    public override async Task<IEnumerable<BaseMessage>> UndoAsync(ChangeCustomerInformation command, IAggregate? aggregate, CancellationToken cancellationToken)
+    {
+        await Task.CompletedTask.ConfigureAwait(false);
+        throw new NotSupportedException();
+    }
 
     /// <summary>
     /// Determines whether the specified current has changes.

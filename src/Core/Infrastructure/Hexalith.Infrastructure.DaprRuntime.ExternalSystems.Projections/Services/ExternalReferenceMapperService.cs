@@ -23,7 +23,7 @@ using Dapr.Actors;
 using Dapr.Actors.Client;
 
 using Hexalith.Application.ExternalSystems.Services;
-using Hexalith.Infrastructure.DaprRuntime.Actors;
+using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers;
 
 /// <summary>

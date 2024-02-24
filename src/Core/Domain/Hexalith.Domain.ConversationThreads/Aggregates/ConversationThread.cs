@@ -43,7 +43,7 @@ public record ConversationThread(string Owner, DateTimeOffset StartedDate, DateT
               (startedEvent ?? throw new ArgumentNullException(nameof(startedEvent))).Owner,
               startedEvent.StartedDate,
               null,
-              Array.Empty<ConversationItem>())
+              [])
     {
     }
 

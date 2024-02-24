@@ -87,7 +87,7 @@ public class SalesInvoiceState : EntityAggregateState
     /// <value>The lines.</value>
     [DataMember(Order = 20)]
     [JsonPropertyOrder(20)]
-    public IEnumerable<SalesInvoiceLine> Lines { get; set; } = new List<SalesInvoiceLine>();
+    public IEnumerable<SalesInvoiceLine> Lines { get; set; } = [];
 
     /// <inheritdoc/>
     public override IEnumerable<object?> GetEqualityComponents() => base.GetEqualityComponents().Union([CreatedDate, CurrencyId, CustomerId, Lines]);

@@ -15,6 +15,8 @@ using Hexalith.Extensions.Helpers;
 [DataContract]
 public class DummyCommand1 : DummyBaseCommand
 {
+    private static readonly string[] _scopes = ["sc01", "sc02"];
+
     [JsonConstructor]
     public DummyCommand1(string baseValue, int value1)
         : base(baseValue) => Value1 = value1;
@@ -26,8 +28,6 @@ public class DummyCommand1 : DummyBaseCommand
     [DataMember(Order = 2)]
     [JsonPropertyOrder(2)]
     public int Value1 { get; private set; }
-
-    private static readonly string[] Scopes = new[] { "sc01", "sc02" };
 
     public static DummyCommand1 Create() => new("Test123", 35453);
 
@@ -43,7 +43,7 @@ public class DummyCommand1 : DummyBaseCommand
                 DateTimeOffset.UtcNow,
                 10,
                 "SES2132"),
-            Scopes);
+            _scopes);
     }
 
     protected override string DefaultAggregateId() => BaseValue + "-" + Value1.ToInvariantString();

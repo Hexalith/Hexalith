@@ -49,9 +49,9 @@ public record EventDeserializationFailed : ApplicationError
         Title = "Event deserialization failed";
         Type = nameof(EventDeserializationFailed);
         Detail = "Could not deserialize data : {Message}";
-        Arguments = new object[] { exception.Message };
+        Arguments = [exception.Message];
         TechnicalDetail = "Event deserialization failed for data:\n{SerializationData}\n{ErrorMessage}\n{StackTrace}";
-        TechnicalArguments = new object[] { data ?? string.Empty, exception.FullMessage(), exception.StackTrace ?? string.Empty };
+        TechnicalArguments = [data ?? string.Empty, exception.FullMessage(), exception.StackTrace ?? string.Empty];
     }
 
     /// <summary>
@@ -69,8 +69,8 @@ public record EventDeserializationFailed : ApplicationError
         Title = "Event deserialization failed";
         Type = nameof(EventDeserializationFailed);
         Detail = "Could not deserialize data : {Message}";
-        Arguments = new object[] { exception.Message };
+        Arguments = [exception.Message];
         TechnicalDetail = "Event deserialization failed for data:\n{SerializationData}\n{ErrorMessage}\n{StackTrace}";
-        TechnicalArguments = new object[] { data ?? string.Empty, exception.FullMessage(), exception.StackTrace ?? string.Empty };
+        TechnicalArguments = [data ?? string.Empty, exception.FullMessage(), exception.StackTrace ?? string.Empty];
     }
 }

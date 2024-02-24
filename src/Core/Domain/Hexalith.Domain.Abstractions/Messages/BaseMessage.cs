@@ -31,74 +31,74 @@ using Hexalith.Extensions.Serialization;
 [DebuggerDisplay("{AggregateName}/{AggregateId}/{TypeName}/v{MajorVersion}/{MinorVersion}")]
 public class BaseMessage : IMessage, IPolymorphicSerializable
 {
-	/// <summary>
-	/// Default string used for separating natural keys to compose the aggregate identifier.
-	/// </summary>
-	protected const string Separator = "-";
+    /// <summary>
+    /// Default string used for separating natural keys to compose the aggregate identifier.
+    /// </summary>
+    protected const string Separator = "-";
 
-	/// <inheritdoc/>
-	[IgnoreDataMember]
-	[JsonIgnore]
-	public string AggregateId => DefaultAggregateId();
+    /// <inheritdoc/>
+    [IgnoreDataMember]
+    [JsonIgnore]
+    public string AggregateId => DefaultAggregateId();
 
-	/// <inheritdoc/>
-	[IgnoreDataMember]
-	[JsonIgnore]
-	public string AggregateName => DefaultAggregateName();
+    /// <inheritdoc/>
+    [IgnoreDataMember]
+    [JsonIgnore]
+    public string AggregateName => DefaultAggregateName();
 
-	/// <inheritdoc/>
-	[IgnoreDataMember]
-	[JsonIgnore]
-	public bool IsPrivateToAggregate => DefaultIsPrivateToAggregate();
+    /// <inheritdoc/>
+    [IgnoreDataMember]
+    [JsonIgnore]
+    public bool IsPrivateToAggregate => DefaultIsPrivateToAggregate();
 
-	/// <inheritdoc/>
-	[IgnoreDataMember]
-	[JsonIgnore]
-	public int MajorVersion => DefaultMajorVersion();
+    /// <inheritdoc/>
+    [IgnoreDataMember]
+    [JsonIgnore]
+    public int MajorVersion => DefaultMajorVersion();
 
-	/// <inheritdoc/>
-	[IgnoreDataMember]
-	[JsonIgnore]
-	public int MinorVersion => DefaultMinorVersion();
+    /// <inheritdoc/>
+    [IgnoreDataMember]
+    [JsonIgnore]
+    public int MinorVersion => DefaultMinorVersion();
 
-	/// <inheritdoc/>
-	[IgnoreDataMember]
-	[JsonIgnore]
-	public string TypeName => DefaultTypeName();
+    /// <inheritdoc/>
+    [IgnoreDataMember]
+    [JsonIgnore]
+    public string TypeName => DefaultTypeName();
 
-	/// <summary>
-	/// Get the aggregate identifier.
-	/// </summary>
-	/// <returns>The identifier.</returns>
-	protected virtual string DefaultAggregateId() => DefaultAggregateName();
+    /// <summary>
+    /// Get the aggregate identifier.
+    /// </summary>
+    /// <returns>The identifier.</returns>
+    protected virtual string DefaultAggregateId() => DefaultAggregateName();
 
-	/// <summary>
-	/// Get the aggregate name.
-	/// </summary>
-	/// <returns>The name.</returns>
-	protected virtual string DefaultAggregateName() => string.Empty;
+    /// <summary>
+    /// Get the aggregate name.
+    /// </summary>
+    /// <returns>The name.</returns>
+    protected virtual string DefaultAggregateName() => string.Empty;
 
-	/// <summary>
-	/// Defaults the is private to aggregate.
-	/// </summary>
-	/// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-	protected virtual bool DefaultIsPrivateToAggregate() => false;
+    /// <summary>
+    /// Defaults the is private to aggregate.
+    /// </summary>
+    /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+    protected virtual bool DefaultIsPrivateToAggregate() => false;
 
-	/// <summary>
-	/// Get the message major version.
-	/// </summary>
-	/// <returns>The major version.</returns>
-	protected virtual int DefaultMajorVersion() => 0;
+    /// <summary>
+    /// Get the message major version.
+    /// </summary>
+    /// <returns>The major version.</returns>
+    protected virtual int DefaultMajorVersion() => 0;
 
-	/// <summary>
-	/// Gets the message minor version.
-	/// </summary>
-	/// <returns>The minor version.</returns>
-	protected virtual int DefaultMinorVersion() => 0;
+    /// <summary>
+    /// Gets the message minor version.
+    /// </summary>
+    /// <returns>The minor version.</returns>
+    protected virtual int DefaultMinorVersion() => 0;
 
-	/// <summary>
-	/// Get the message name.
-	/// </summary>
-	/// <returns>The name.</returns>
-	protected virtual string DefaultTypeName() => GetType().Name;
+    /// <summary>
+    /// Get the message name.
+    /// </summary>
+    /// <returns>The name.</returns>
+    protected virtual string DefaultTypeName() => GetType().Name;
 }

@@ -36,8 +36,8 @@ public class MessageStoreTest
         DummyCommand2 command2 = new("AAAABBCC", 960);
         CommandState original1 = new(DateTimeOffset.UtcNow, command1, command1.CreateMetadata());
         CommandState original2 = new(DateTimeOffset.UtcNow, command2, command2.CreateMetadata());
-        _ = await store.AddAsync(original1.IntoArray(), 0, CancellationToken.None);
-        _ = await store.AddAsync(original2.IntoArray(), 1, CancellationToken.None);
+        _ = await store.AddAsync([original1], 0, CancellationToken.None);
+        _ = await store.AddAsync([original2], 1, CancellationToken.None);
         CommandState result1 = await store.GetAsync(1, CancellationToken.None);
         CommandState result2 = await store.GetAsync(2, CancellationToken.None);
         _ = result1.Should().BeEquivalentTo(original1);
@@ -50,7 +50,7 @@ public class MessageStoreTest
         StringStateProvider provider = new();
         MessageStore<DummyState> store = new(provider, _streamName);
         DummyState state = new("5354323", 123, "one two three");
-        _ = await store.AddAsync(state.IntoArray(), 0, CancellationToken.None);
+        _ = await store.AddAsync([state], 0, CancellationToken.None);
         DummyState result = await store.GetAsync(1, CancellationToken.None);
         _ = result.Should().BeEquivalentTo(state);
     }
@@ -61,7 +61,7 @@ public class MessageStoreTest
         MemoryStateProvider provider = new();
         MessageStore<DummyState> store = new(provider, _streamName);
         DummyState state = new("5354323", 123, "one two three");
-        _ = await store.AddAsync(state.IntoArray(), 0, CancellationToken.None);
+        _ = await store.AddAsync([state], 0, CancellationToken.None);
         _ = provider.UncommittedState.Should().HaveCount(3);
         _ = provider.UncommittedState[_stateName].Should().Be(1L);
         _ = provider.UncommittedState[_stateName + "1"].Should().Be(state);

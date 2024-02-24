@@ -27,7 +27,6 @@ using Hexalith.Application.Inventories.PartnerInventoryItems.Commands;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Messages;
 using Hexalith.Domain.PartnerInventoryItems.Events;
-using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class ChangeCustomerInformationHandler.
@@ -37,10 +36,10 @@ using Hexalith.Extensions.Helpers;
 public class ChangePartnerInventoryItemPriceHandler : CommandHandler<ChangePartnerInventoryItemPrice>
 {
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] ChangePartnerInventoryItemPrice command, IAggregate? aggregate, CancellationToken cancellationToken)
+    public override async Task<IEnumerable<BaseMessage>> DoAsync([NotNull] ChangePartnerInventoryItemPrice command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
-        return Task.FromResult<IEnumerable<BaseMessage>>(new PartnerInventoryItemPriceChanged(
+        return await Task.FromResult<IEnumerable<BaseMessage>>([new PartnerInventoryItemPriceChanged(
                     command.PartitionId,
                     command.CompanyId,
                     command.OriginId,
@@ -48,10 +47,13 @@ public class ChangePartnerInventoryItemPriceHandler : CommandHandler<ChangePartn
                     command.PartnerId,
                     command.Id,
                     command.Price)
-                    .IntoArray<BaseMessage>());
+                    ]).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> UndoAsync(ChangePartnerInventoryItemPrice command, IAggregate? aggregate, CancellationToken cancellationToken)
-        => throw new NotSupportedException();
+    public override async Task<IEnumerable<BaseMessage>> UndoAsync(ChangePartnerInventoryItemPrice command, IAggregate? aggregate, CancellationToken cancellationToken)
+    {
+        await Task.CompletedTask.ConfigureAwait(false);
+        throw new NotSupportedException();
+    }
 }

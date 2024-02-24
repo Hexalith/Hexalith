@@ -27,7 +27,6 @@ using Hexalith.Application.Inventories.InventoryItems.Commands;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.InventoryItems.Events;
 using Hexalith.Domain.Messages;
-using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Class ChangeCustomerInformationHandler.
@@ -37,19 +36,22 @@ using Hexalith.Extensions.Helpers;
 public class ClearInventoryItemDefaultBarcodeHandler : CommandHandler<ClearInventoryItemDefaultBarcode>
 {
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> DoAsync([NotNull] ClearInventoryItemDefaultBarcode command, IAggregate? aggregate, CancellationToken cancellationToken)
+    public override async Task<IEnumerable<BaseMessage>> DoAsync([NotNull] ClearInventoryItemDefaultBarcode command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
-        return Task.FromResult<IEnumerable<BaseMessage>>(new InventoryItemDefaultBarcodeCleared(
+        return await Task.FromResult<IEnumerable<BaseMessage>>([new InventoryItemDefaultBarcodeCleared(
                     command.PartitionId,
                     command.CompanyId,
                     command.OriginId,
                     command.Id,
                     command.Barcode)
-                    .IntoArray<BaseMessage>());
+                    ]).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public override Task<IEnumerable<BaseMessage>> UndoAsync(ClearInventoryItemDefaultBarcode command, IAggregate? aggregate, CancellationToken cancellationToken)
-        => throw new NotSupportedException();
+    public override async Task<IEnumerable<BaseMessage>> UndoAsync(ClearInventoryItemDefaultBarcode command, IAggregate? aggregate, CancellationToken cancellationToken)
+    {
+        await Task.CompletedTask.ConfigureAwait(false);
+        throw new NotSupportedException();
+    }
 }

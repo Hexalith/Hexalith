@@ -28,8 +28,5 @@ public class NotificationBusSettingsValidator : AbstractValidator<NotificationBu
     /// <summary>
     /// Initializes a new instance of the <see cref="NotificationBusSettingsValidator" /> class.
     /// </summary>
-    public NotificationBusSettingsValidator()
-    {
-        _ = RuleFor(c => c.Name).NotEmpty();
-    }
+    public NotificationBusSettingsValidator() => _ = RuleFor(c => c.Name).NotEmpty();
 }

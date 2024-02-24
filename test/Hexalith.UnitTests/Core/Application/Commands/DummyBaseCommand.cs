@@ -37,7 +37,7 @@ public class DummyBaseCommand : BaseCommand
                     DateTimeOffset.UtcNow.AddMinutes(-1),
                     1,
                     "Test session"),
-                "TestScope".IntoArray());
+                ["TestScope"]);
     }
 
     protected override string DefaultAggregateName() => "Test";

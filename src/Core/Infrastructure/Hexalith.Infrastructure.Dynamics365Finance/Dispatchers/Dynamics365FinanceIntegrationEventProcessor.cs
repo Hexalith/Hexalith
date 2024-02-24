@@ -40,7 +40,7 @@ public partial class Dynamics365FinanceIntegrationEventProcessor : DependencyInj
     /// </summary>
     private readonly IDateTimeService _dateTimeService;
 
-    private readonly ILogger<Dynamics365FinanceIntegrationEventProcessor> _logger;
+    private readonly ILogger _logger;
     private readonly INotificationBus _notificationBus;
 
     /// <summary>
@@ -135,11 +135,14 @@ public partial class Dynamics365FinanceIntegrationEventProcessor : DependencyInj
     }
 
     /// <inheritdoc/>
-    public Task SubmitAsync(IEvent baseEvent, IMetadata metadata, CancellationToken cancellationToken)
+    public async Task SubmitAsync(IEvent baseEvent, IMetadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(baseEvent);
-        return baseEvent is Dynamics365BusinessEventBase businessEvent
-            ? SubmitAsync(businessEvent, cancellationToken)
-            : throw new ApplicationErrorException(new EventNotSupportedByDispatcher(nameof(Dynamics365FinanceIntegrationEventProcessor)));
+        if (baseEvent is Dynamics365BusinessEventBase businessEvent)
+        {
+            await SubmitAsync(businessEvent, cancellationToken).ConfigureAwait(false);
+        }
+
+        throw new ApplicationErrorException(new EventNotSupportedByDispatcher(nameof(Dynamics365FinanceIntegrationEventProcessor)));
     }
 }

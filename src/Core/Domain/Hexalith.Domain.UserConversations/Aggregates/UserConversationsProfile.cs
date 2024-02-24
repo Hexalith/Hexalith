@@ -47,7 +47,7 @@ public record UserConversationsProfile(string UserId, IEnumerable<DateTimeOffset
     public UserConversationsProfile(UserConversationsProfileAdded startedEvent)
         : this(
               (startedEvent ?? throw new ArgumentNullException(nameof(startedEvent))).UserId,
-              Array.Empty<DateTimeOffset>())
+              [])
     {
     }
 

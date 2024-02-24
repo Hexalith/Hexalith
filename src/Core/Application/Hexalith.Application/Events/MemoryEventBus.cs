@@ -31,24 +31,21 @@ using Hexalith.Extensions.Common;
 /// Implements the <see cref="IMessageBus{TMessage, TMetadata}" />.
 /// </summary>
 /// <seealso cref="IMessageBus{TMessage, TMetadata}" />
-public class MemoryEventBus : IEventBus
+/// <remarks>
+/// Initializes a new instance of the <see cref="MemoryEventBus"/> class.
+/// </remarks>
+/// <param name="dateTimeService">The date time service.</param>
+public class MemoryEventBus(IDateTimeService dateTimeService) : IEventBus
 {
     /// <summary>
     /// The date time service.
     /// </summary>
-    private readonly IDateTimeService _dateTimeService;
+    private readonly IDateTimeService _dateTimeService = dateTimeService;
 
     /// <summary>
     /// The stream.
     /// </summary>
     private readonly List<EventState> _stream = [];
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="MemoryEventBus"/> class.
-    /// </summary>
-    /// <param name="dateTimeService">The date time service.</param>
-    public MemoryEventBus(IDateTimeService dateTimeService)
-        => _dateTimeService = dateTimeService;
 
     /// <summary>
     /// Gets the stream.
@@ -64,12 +61,18 @@ public class MemoryEventBus : IEventBus
     }
 
     /// <inheritdoc/>
-    public Task PublishAsync(BaseEvent message, BaseMetadata metadata, CancellationToken cancellationToken) => PublishAsync(new EventState(_dateTimeService.UtcNow, message, metadata), cancellationToken);
+    public async Task PublishAsync(BaseEvent message, BaseMetadata metadata, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(message);
+        ArgumentNullException.ThrowIfNull(metadata);
+        await PublishAsync(new EventState(_dateTimeService.UtcNow, message, metadata), cancellationToken).ConfigureAwait(false);
+    }
 
     /// <inheritdoc/>
-    public Task PublishAsync(EventState state, CancellationToken cancellationToken)
+    public async Task PublishAsync(EventState state, CancellationToken cancellationToken)
     {
+        ArgumentNullException.ThrowIfNull(state);
         _stream.Add(state);
-        return Task.CompletedTask;
+        await Task.CompletedTask.ConfigureAwait(false);
     }
 }

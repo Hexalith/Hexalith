@@ -21,7 +21,7 @@ using System.Threading;
 
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.Notifications;
-using Hexalith.Application.Projection;
+using Hexalith.Application.Projections;
 using Hexalith.Application.StreamStores;
 using Hexalith.Application.Tasks;
 using Hexalith.Domain.Events;
@@ -270,7 +270,8 @@ public class ProjectionStateManager : IProjectionStateManager
     private static async Task SetReminderAsync(
         TimeSpan next,
         TimeSpan retry,
-        Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder) => await registerReminder(_reminderName, Array.Empty<byte>(), next, retry).ConfigureAwait(false);
+        Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder)
+        => await registerReminder(_reminderName, [], next, retry).ConfigureAwait(false);
 
     /// <summary>
     /// Get state as an asynchronous operation.

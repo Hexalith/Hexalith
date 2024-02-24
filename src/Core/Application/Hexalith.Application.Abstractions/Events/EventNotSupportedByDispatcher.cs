@@ -42,5 +42,6 @@ public record EventNotSupportedByDispatcher : ApplicationError
         Type = nameof(EventNotSupportedByDispatcher);
         Detail = "The event could not be handled. It has an unsupported format.";
         TechnicalDetail = "The event is unsupported by {DispatcherName}.";
+        TechnicalArguments = [dispatcher];
     }
 }

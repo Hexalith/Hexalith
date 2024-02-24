@@ -93,9 +93,6 @@ public record SurveyCategory(
         }, []);
     }
 
-    /// <inheritdoc/>
-    protected override string DefaultAggregateId() => GetAggregateId(PartitionId, CompanyId, OriginId, Id);
-
     /// <summary>
     /// Gets the aggregate identifier.
     /// </summary>
@@ -121,6 +118,7 @@ public record SurveyCategory(
 #pragma warning disable CA1024 // Use properties where appropriate
     public static string GetAggregateName() => nameof(Survey);
 #pragma warning restore CA1024 // Use properties where appropriate
+
     /// <summary>
     /// Determines whether the specified changed has changes.
     /// </summary>
@@ -134,6 +132,12 @@ public record SurveyCategory(
         return Name != changed.Name;
     }
 
+    /// <inheritdoc/>
+    public override bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);
+
+    /// <inheritdoc/>
+    protected override string DefaultAggregateId() => GetAggregateId(PartitionId, CompanyId, OriginId, Id);
+
     private void CheckEvent(SurveyEvent customerEvent, [CallerArgumentExpression(nameof(customerEvent))] string? paramName = null)
     {
         if (AggregateName != customerEvent.AggregateName)
@@ -146,7 +150,4 @@ public record SurveyCategory(
             throw new ArgumentException($"{customerEvent.TypeName} aggregate aggregate Id '{customerEvent.AggregateId}' is invalid. Expected : '{AggregateId}'.", paramName);
         }
     }
-
-    /// <inheritdoc/>
-    public override bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);
 }

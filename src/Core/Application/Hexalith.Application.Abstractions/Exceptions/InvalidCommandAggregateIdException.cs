@@ -17,7 +17,6 @@
 namespace Hexalith.Application.Exceptions;
 
 using System;
-using System.Runtime.Serialization;
 
 using Hexalith.Application.Commands;
 
@@ -63,16 +62,6 @@ public class InvalidCommandAggregateIdException : InvalidOperationException
     /// <param name="innerException">The exception that is the cause of the current exception. If the <paramref name="innerException" /> parameter is not a null reference (<see langword="Nothing" /> in Visual Basic), the current exception is raised in a <see langword="catch" /> block that handles the inner exception.</param>
     public InvalidCommandAggregateIdException(string? message, Exception? innerException)
         : base(message, innerException)
-    {
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="InvalidCommandAggregateIdException" /> class.
-    /// </summary>
-    /// <param name="info">The object that holds the serialized object data.</param>
-    /// <param name="context">The contextual information about the source or destination.</param>
-    protected InvalidCommandAggregateIdException(SerializationInfo info, StreamingContext context)
-        : base(info, context)
     {
     }
 

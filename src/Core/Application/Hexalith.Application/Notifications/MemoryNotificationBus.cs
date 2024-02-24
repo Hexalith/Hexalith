@@ -29,26 +29,21 @@ using Hexalith.Extensions.Common;
 /// Implements the <see cref="IMessageBus{TMessage, TMetadata}" />.
 /// </summary>
 /// <seealso cref="IMessageBus{TMessage, TMetadata}" />
-public class MemoryNotificationBus : INotificationBus
+/// <remarks>
+/// Initializes a new instance of the <see cref="MemoryNotificationBus"/> class.
+/// </remarks>
+/// <param name="dateTimeService">The date time service.</param>
+public class MemoryNotificationBus(IDateTimeService dateTimeService) : INotificationBus
 {
     /// <summary>
     /// The date time service.
     /// </summary>
-    private readonly IDateTimeService _dateTimeService;
+    private readonly IDateTimeService _dateTimeService = dateTimeService;
 
     /// <summary>
     /// The stream.
     /// </summary>
-    private readonly List<NotificationState> _stream = new();
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="MemoryNotificationBus"/> class.
-    /// </summary>
-    /// <param name="dateTimeService">The date time service.</param>
-    public MemoryNotificationBus(IDateTimeService dateTimeService)
-    {
-        _dateTimeService = dateTimeService;
-    }
+    private readonly List<NotificationState> _stream = [];
 
     /// <summary>
     /// Gets the stream.
@@ -57,21 +52,24 @@ public class MemoryNotificationBus : INotificationBus
     public IEnumerable<NotificationState> Stream => _stream;
 
     /// <inheritdoc/>
-    public Task PublishAsync(IEnvelope<BaseNotification, BaseMetadata> envelope, CancellationToken cancellationToken)
+    public async Task PublishAsync(IEnvelope<BaseNotification, BaseMetadata> envelope, CancellationToken cancellationToken)
     {
-        return PublishAsync(envelope.Message, envelope.Metadata, cancellationToken);
+        ArgumentNullException.ThrowIfNull(envelope);
+        await PublishAsync(envelope.Message, envelope.Metadata, cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public Task PublishAsync(BaseNotification message, BaseMetadata metadata, CancellationToken cancellationToken)
+    public async Task PublishAsync(BaseNotification message, BaseMetadata metadata, CancellationToken cancellationToken)
     {
-        return PublishAsync(new NotificationState(_dateTimeService.UtcNow, message, metadata), cancellationToken);
+        ArgumentNullException.ThrowIfNull(message);
+        await PublishAsync(new NotificationState(_dateTimeService.UtcNow, message, metadata), cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public Task PublishAsync(NotificationState state, CancellationToken cancellationToken)
+    public async Task PublishAsync(NotificationState envelope, CancellationToken cancellationToken)
     {
-        _stream.Add(state);
-        return Task.CompletedTask;
+        ArgumentNullException.ThrowIfNull(envelope);
+        _stream.Add(envelope);
+        await Task.CompletedTask.ConfigureAwait(false);
     }
 }

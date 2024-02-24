@@ -21,18 +21,13 @@ namespace Hexalith.Domain.UserConversationProfiles.Events;
 /// Implements the <see cref="UserConversationsProfileEvent" />.
 /// </summary>
 /// <seealso cref="UserConversationsProfileEvent" />
-public class UserConversationsProfileAdded : UserConversationsProfileEvent
+/// <remarks>
+/// Initializes a new instance of the <see cref="UserConversationsProfileAdded" /> class.
+/// </remarks>
+/// <param name="userId">The user identifier.</param>
+/// <param name="date">The date.</param>
+public class UserConversationsProfileAdded(string userId) : UserConversationsProfileEvent(userId)
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="UserConversationsProfileAdded" /> class.
-    /// </summary>
-    /// <param name="userId">The user identifier.</param>
-    /// <param name="date">The date.</param>
-    public UserConversationsProfileAdded(string userId)
-        : base(userId)
-    {
-    }
-
     /// <summary>
     /// Get the message name.
     /// </summary>

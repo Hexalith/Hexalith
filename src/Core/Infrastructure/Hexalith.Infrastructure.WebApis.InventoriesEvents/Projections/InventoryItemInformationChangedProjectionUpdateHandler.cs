@@ -26,9 +26,9 @@ using Microsoft.Extensions.Logging;
 
 /// <summary>
 /// Class InventoryItemInformationChangedHandler.
-/// Implements the <see cref="IntegrationEventHandler{InventoryItemInformationChanged}" />.
+/// Implements the <see cref="IntegrationEventHandlerBase{InventoryItemInformationChanged}" />.
 /// </summary>
-/// <seealso cref="IntegrationEventHandler{InventoryItemInformationChanged}" />
+/// <seealso cref="IntegrationEventHandlerBase{InventoryItemInformationChanged}" />
 public class InventoryItemInformationChangedProjectionUpdateHandler : InventoryItemDetailsProjectionUpdateHandler<InventoryItemInformationChanged>
 {
     /// <summary>

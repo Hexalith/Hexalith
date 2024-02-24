@@ -17,6 +17,7 @@
 namespace Hexalith.Application.Inventories.InventoryItemStocks.Commands;
 
 using System.Runtime.Serialization;
+
 using Hexalith.Application.Inventories.InventoryItems.Commands;
 using Hexalith.Extensions;
 

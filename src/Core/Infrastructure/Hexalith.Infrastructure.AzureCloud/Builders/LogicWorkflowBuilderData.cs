@@ -21,19 +21,13 @@ using System;
 /// <summary>
 /// Class LogicWorkflowData.
 /// </summary>
-public abstract class LogicWorkflowBuilderData
+/// <remarks>
+/// Initializes a new instance of the <see cref="LogicWorkflowBuilderData"/> class.
+/// </remarks>
+/// <param name="name">The name.</param>
+/// <param name="location">The location.</param>
+public abstract class LogicWorkflowBuilderData(string name, string? location)
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="LogicWorkflowBuilderData"/> class.
-    /// </summary>
-    /// <param name="name">The name.</param>
-    /// <param name="location">The location.</param>
-    public LogicWorkflowBuilderData(string name, string? location)
-    {
-        Name = name;
-        Location = location;
-    }
-
     /// <summary>
     /// Gets the definition.
     /// </summary>
@@ -44,13 +38,13 @@ public abstract class LogicWorkflowBuilderData
     /// Gets or sets the location.
     /// </summary>
     /// <value>The location.</value>
-    public string? Location { get; set; }
+    public string? Location { get; set; } = location;
 
     /// <summary>
     /// Gets or sets the name.
     /// </summary>
     /// <value>The name.</value>
-    public string? Name { get; set; }
+    public string? Name { get; set; } = name;
 
     /// <summary>
     /// Gets the definition.

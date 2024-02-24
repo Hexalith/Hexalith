@@ -20,17 +20,11 @@ public class LoggerBuilder<T> : IMockBuilder<ILogger<T>>
     /// Build a <see cref="ILogger{T}"/>.
     /// </summary>
     /// <returns>The mocked logger.</returns>
-    public ILogger<T> Build()
-    {
-        return BuildMock().Object;
-    }
+    public ILogger<T> Build() => BuildMock().Object;
 
     /// <summary>
     /// Build a <see cref="Mock{ILogger{T}}"/>.
     /// </summary>
     /// <returns>The mock of ILogger.</returns>
-    public IMock<ILogger<T>> BuildMock()
-    {
-        return new Mock<ILogger<T>>();
-    }
+    public IMock<ILogger<T>> BuildMock() => new Mock<ILogger<T>>();
 }

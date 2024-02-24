@@ -29,10 +29,12 @@ using Hexalith.Extensions.Helpers;
 
 using Microsoft.Extensions.Logging;
 
+#pragma warning disable CA1031 // Do not catch general exception types
+
 /// <summary>
 /// Class ResilientCommandProcessor.
 /// </summary>
-public class ResilientCommandProcessor
+public partial class ResilientCommandProcessor
 {
     /// <summary>
     /// The command dispatcher.
@@ -78,6 +80,9 @@ public class ResilientCommandProcessor
         _logger = logger;
     }
 
+    [LoggerMessage(EventId = 0, Level = LogLevel.Error, Message = "An error occurred when executing command {CommandType} on {AggregateName}/{AggregateId}: {Message}")]
+    public partial void LogCommandExecutionError(Exception e, string commandType, string aggregateName, string aggregateId, string message);
+
     /// <summary>
     /// Process as an asynchronous operation.
     /// </summary>
@@ -110,7 +115,7 @@ public class ResilientCommandProcessor
 
                     case RetryStatus.Stopped:
                         taskProcessor = taskProcessor.Cancel();
-                        return (taskProcessor, new CommandProcessingFailed(string.Empty, command, taskProcessor).IntoArray());
+                        return (taskProcessor, [new CommandProcessingFailed(string.Empty, command, taskProcessor)]);
                 }
 
                 break;
@@ -119,7 +124,7 @@ public class ResilientCommandProcessor
                 break;
 
             case TaskProcessorStatus.Canceled:
-                return (taskProcessor, new CommandProcessingFailed(string.Empty, command, taskProcessor).IntoArray());
+                return (taskProcessor, [new CommandProcessingFailed(string.Empty, command, taskProcessor)]);
 
             case TaskProcessorStatus.Completed:
                 return (taskProcessor, Array.Empty<BaseMessage>());
@@ -134,14 +139,14 @@ public class ResilientCommandProcessor
             }
             else
             {
-                messages = new CommandProcessingFailed(string.Empty, command, taskProcessor).IntoArray();
+                messages = [new CommandProcessingFailed(string.Empty, command, taskProcessor)];
             }
         }
         catch (Exception e)
         {
             taskProcessor = taskProcessor.Fail($"An error occurred when executing command {command.TypeName} on {command.AggregateName}/{command.AggregateId}: {e.Message}", e.FullMessage());
-            messages = new CommandProcessingFailed(string.Empty, command, taskProcessor).IntoArray();
-            _logger.LogError(e, "An error occured when executing command {CommandType} on {AggregateName}/{AggregateId}: {Message}", command.TypeName, command.AggregateName, command.AggregateId, e.FullMessage());
+            messages = [new CommandProcessingFailed(string.Empty, command, taskProcessor)];
+            LogCommandExecutionError(e, command.TypeName, command.AggregateName, command.AggregateId, e.FullMessage());
         }
 
         await _stateStoreProvider.SetStateAsync(nameof(TaskProcessor) + id, taskProcessor, cancellationToken).ConfigureAwait(false);

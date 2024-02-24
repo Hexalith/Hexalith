@@ -18,8 +18,6 @@ namespace Hexalith.Domain.InventoryItems.Events;
 
 using System.Runtime.Serialization;
 
-using Hexalith.Domain.InventoryItem.Events;
-
 using Hexalith.Extensions;
 
 /// <summary>
@@ -46,7 +44,7 @@ public class InventoryItemInformationChanged : InventoryItemEvent
         string originId,
         string id,
         string name,
-        string description)
+        string? description)
         : base(partitionId, companyId, originId, id)
     {
         Name = name;
@@ -64,7 +62,7 @@ public class InventoryItemInformationChanged : InventoryItemEvent
     /// </summary>
     /// <value>The description.</value>
     [DataMember(Order = 21)]
-    public string Description { get; }
+    public string? Description { get; }
 
     /// <summary>
     /// Gets or sets the name.

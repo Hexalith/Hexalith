@@ -10,7 +10,6 @@ using System.Runtime.Serialization;
 
 using Hexalith.Application.Commands;
 using Hexalith.Application.Inventories.PartnerInventoryItems.Commands;
-using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.Dynamics365Finance.Inventories;
 
 /// <summary>
@@ -42,7 +41,7 @@ public class Dynamics365LogisticsPartnerCatalogItemNameChanged : Dynamics365Logi
         ArgumentException.ThrowIfNullOrWhiteSpace(NewName);
         ArgumentException.ThrowIfNullOrWhiteSpace(PartitionId);
         ArgumentException.ThrowIfNullOrWhiteSpace(OriginId);
-        return new ChangePartnerInventoryItemName(
+        return [new ChangePartnerInventoryItemName(
             PartitionId,
             BusinessEventLegalEntity,
             OriginId,
@@ -50,7 +49,7 @@ public class Dynamics365LogisticsPartnerCatalogItemNameChanged : Dynamics365Logi
             LogisticsPartnerId,
             BarCode,
             NewName)
-            .IntoArray();
+            ];
     }
 
     /// <inheritdoc/>

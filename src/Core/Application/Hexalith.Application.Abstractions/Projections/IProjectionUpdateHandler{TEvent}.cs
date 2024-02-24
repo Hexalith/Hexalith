@@ -12,7 +12,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 // ***********************************************************************
-namespace Hexalith.Application.Projection;
+namespace Hexalith.Application.Projections;
 
 using System.Threading.Tasks;
 
@@ -42,7 +42,7 @@ public interface IProjectionUpdateHandler<TEvent> : IProjectionUpdateHandler
     /// <param name="metadata">The metadata.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task representing the asynchronous operation.</returns>
-    /// <exception cref="System.InvalidCastException">Could not cast event {ev.GetType().Name} to {typeof(TEvent).Name} in projection update handler : {GetType().Name}.</exception>
+    /// <exception cref="InvalidCastException">Could not cast event {ev.GetType().Name} to {typeof(TEvent).Name} in projection update handler : {GetType().Name}.</exception>
     async Task IProjectionUpdateHandler.ApplyAsync(IEvent ev, IMetadata metadata, CancellationToken cancellationToken)
     {
         if (ev is TEvent e)

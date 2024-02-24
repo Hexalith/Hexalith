@@ -29,26 +29,21 @@ using Hexalith.Extensions.Common;
 /// Implements the <see cref="IMessageBus{TMessage, TMetadata}" />.
 /// </summary>
 /// <seealso cref="IMessageBus{TMessage, TMetadata}" />
-public class MemoryRequestBus : IRequestBus
+/// <remarks>
+/// Initializes a new instance of the <see cref="MemoryRequestBus"/> class.
+/// </remarks>
+/// <param name="dateTimeService">The date time service.</param>
+public class MemoryRequestBus(IDateTimeService dateTimeService) : IRequestBus
 {
     /// <summary>
     /// The date time service.
     /// </summary>
-    private readonly IDateTimeService _dateTimeService;
+    private readonly IDateTimeService _dateTimeService = dateTimeService;
 
     /// <summary>
     /// The stream.
     /// </summary>
-    private readonly List<RequestState> _stream = new();
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="MemoryRequestBus"/> class.
-    /// </summary>
-    /// <param name="dateTimeService">The date time service.</param>
-    public MemoryRequestBus(IDateTimeService dateTimeService)
-    {
-        _dateTimeService = dateTimeService;
-    }
+    private readonly List<RequestState> _stream = [];
 
     /// <summary>
     /// Gets the stream.
@@ -57,21 +52,25 @@ public class MemoryRequestBus : IRequestBus
     public IEnumerable<RequestState> Stream => _stream;
 
     /// <inheritdoc/>
-    public Task PublishAsync(IEnvelope<BaseRequest, BaseMetadata> envelope, CancellationToken cancellationToken)
+    public async Task PublishAsync(IEnvelope<BaseRequest, BaseMetadata> envelope, CancellationToken cancellationToken)
     {
-        return PublishAsync(envelope.Message, envelope.Metadata, cancellationToken);
+        ArgumentNullException.ThrowIfNull(envelope);
+        await PublishAsync(envelope.Message, envelope.Metadata, cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public Task PublishAsync(BaseRequest message, BaseMetadata metadata, CancellationToken cancellationToken)
+    public async Task PublishAsync(BaseRequest message, BaseMetadata metadata, CancellationToken cancellationToken)
     {
-        return PublishAsync(new RequestState(_dateTimeService.UtcNow, message, metadata), cancellationToken);
+        ArgumentNullException.ThrowIfNull(message);
+        ArgumentNullException.ThrowIfNull(metadata);
+        await PublishAsync(new RequestState(_dateTimeService.UtcNow, message, metadata), cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public Task PublishAsync(RequestState state, CancellationToken cancellationToken)
+    public async Task PublishAsync(RequestState requestState, CancellationToken cancellationToken)
     {
-        _stream.Add(state);
-        return Task.CompletedTask;
+        ArgumentNullException.ThrowIfNull(requestState);
+        _stream.Add(requestState);
+        await Task.CompletedTask.ConfigureAwait(false);
     }
 }

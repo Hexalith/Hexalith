@@ -32,5 +32,5 @@ public class Ask
     /// Gets or sets the variables.
     /// </summary>
     /// <value>The variables.</value>
-    public IEnumerable<KeyValuePair<string, string>> Variables { get; set; } = Enumerable.Empty<KeyValuePair<string, string>>();
+    public IEnumerable<KeyValuePair<string, string>> Variables { get; set; } = [];
 }

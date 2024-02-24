@@ -28,8 +28,5 @@ public class CommandBusSettingsValidator : AbstractValidator<CommandBusSettings>
     /// <summary>
     /// Initializes a new instance of the <see cref="CommandBusSettingsValidator" /> class.
     /// </summary>
-    public CommandBusSettingsValidator()
-    {
-        _ = RuleFor(c => c.Name).NotEmpty();
-    }
+    public CommandBusSettingsValidator() => _ = RuleFor(c => c.Name).NotEmpty();
 }

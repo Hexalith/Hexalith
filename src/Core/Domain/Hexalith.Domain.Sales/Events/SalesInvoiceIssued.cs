@@ -67,7 +67,7 @@ public class SalesInvoiceIssued : SalesInvoiceEvent
     public SalesInvoiceIssued()
     {
         CustomerId = CurrencyId = string.Empty;
-        Lines = new List<SalesInvoiceLine>();
+        Lines = [];
     }
 
     /// <summary>

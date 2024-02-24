@@ -21,15 +21,15 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Hexalith.Application.Metadatas;
-using Hexalith.Application.Projection;
+using Hexalith.Application.Projections;
 using Hexalith.Domain.Events;
 using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Services;
 
 /// <summary>
 /// Class ExternalSystemReferenceRemovedMapperUpdateHandler.
-/// Implements the <see cref="Hexalith.Application.Projection.IProjectionUpdateHandler{Hexalith.Domain.Events.ExternalSystemReferenceRemoved}" />.
+/// Implements the <see cref="Application.Projections.IProjectionUpdateHandler{Hexalith.Domain.Events.ExternalSystemReferenceRemoved}" />.
 /// </summary>
-/// <seealso cref="Hexalith.Application.Projection.IProjectionUpdateHandler{Hexalith.Domain.Events.ExternalSystemReferenceRemoved}" />
+/// <seealso cref="Application.Projections.IProjectionUpdateHandler{Hexalith.Domain.Events.ExternalSystemReferenceRemoved}" />
 public class ExternalSystemReferenceRemovedMapperUpdateHandler : IProjectionUpdateHandler<ExternalSystemReferenceRemoved>
 {
     /// <summary>

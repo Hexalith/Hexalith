@@ -68,9 +68,6 @@ public record SalesInvoice(
         }, []);
     }
 
-    /// <inheritdoc/>
-    protected override string DefaultAggregateId() => GetAggregateId(State.PartitionId, State.CompanyId, State.OriginId, State.Id);
-
     /// <summary>
     /// Gets the aggregate identifier.
     /// </summary>
@@ -89,6 +86,9 @@ public record SalesInvoice(
         return Normalize(GetAggregateName() + Separator + partitionId + Separator + companyId + Separator + originId + Separator + id);
     }
 
+    /// <inheritdoc/>
+    public override bool IsInitialized() => !string.IsNullOrEmpty(State.Id);
+
     /// <summary>
     /// Gets the name of the aggregate.
     /// </summary>
@@ -96,6 +96,9 @@ public record SalesInvoice(
 #pragma warning disable CA1024 // Use properties where appropriate
     public static string GetAggregateName() => nameof(SalesInvoice);
 #pragma warning restore CA1024 // Use properties where appropriate
+
+    /// <inheritdoc/>
+    protected override string DefaultAggregateId() => GetAggregateId(State.PartitionId, State.CompanyId, State.OriginId, State.Id);
 
     private void CheckEvent(SalesInvoiceEvent customerEvent, [CallerArgumentExpression(nameof(customerEvent))] string? paramName = null)
     {
@@ -109,7 +112,4 @@ public record SalesInvoice(
             throw new ArgumentException($"{customerEvent.TypeName} aggregate aggregate Id '{customerEvent.AggregateId}' is invalid. Expected : '{AggregateId}'.", paramName);
         }
     }
-
-    /// <inheritdoc/>
-    public override bool IsInitialized() => !string.IsNullOrEmpty(State.Id);
 }

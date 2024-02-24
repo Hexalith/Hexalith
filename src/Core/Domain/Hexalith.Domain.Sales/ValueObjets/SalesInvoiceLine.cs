@@ -57,7 +57,7 @@ public class SalesInvoiceLine : IEquatableObject
     {
         Item = new SalesLineItem();
         Origin = new SalesLineOrigin();
-        Taxes = new List<SalesLineTax>();
+        Taxes = [];
         Id = string.Empty;
     }
 
@@ -128,5 +128,5 @@ public class SalesInvoiceLine : IEquatableObject
 
     /// <inheritdoc/>
     public IEnumerable<object?> GetEqualityComponents()
-        => new object?[] { Id, Item, Origin, Taxes };
+        => [Id, Item, Origin, Taxes];
 }
