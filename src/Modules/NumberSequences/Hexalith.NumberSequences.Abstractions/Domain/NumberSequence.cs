@@ -12,7 +12,7 @@ using Hexalith.Domain.Events;
 public record NumberSequence : Aggregate
 {
     /// <inheritdoc/>
-    public override IAggregate Apply(BaseEvent domainEvent) => throw new NotImplementedException();
+    public override (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent) => throw new NotImplementedException();
 
     /// <inheritdoc/>
     public override bool IsInitialized() => throw new NotImplementedException();

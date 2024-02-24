@@ -71,7 +71,8 @@ public abstract partial class CustomerProjectionUpdateHandler<TCustomerEvent> : 
         }
 
         customer = new Customer(existingCustomer);
-        customer = (Customer)customer.Apply(baseEvent);
+        (IAggregate? aggregate, _) = customer.Apply(baseEvent);
+        customer = (Customer)aggregate;
         await SaveProjectionAsync(baseEvent.AggregateId, customer.ToCustomerRegistered(), cancellationToken).ConfigureAwait(false);
     }
 

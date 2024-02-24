@@ -83,15 +83,15 @@ public record InventoryItem(
     }
 
     /// <inheritdoc/>
-    public override IAggregate Apply(BaseEvent domainEvent)
+    public override (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent)
     {
-        return domainEvent switch
+        return (domainEvent switch
         {
             InventoryItemBarcodeEvent barcodeEvent => this.ApplyBarcodeEvent(barcodeEvent),
             InventoryItemInformationChanged changed => new InventoryItem(changed),
             InventoryItemAdded => throw new InvalidAggregateEventException(this, domainEvent, true),
             _ => throw new InvalidAggregateEventException(this, domainEvent, false),
-        };
+        }, []);
     }
 
     /// <summary>

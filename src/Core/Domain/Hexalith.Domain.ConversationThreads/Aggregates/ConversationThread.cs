@@ -52,14 +52,14 @@ public record ConversationThread(string Owner, DateTimeOffset StartedDate, DateT
     /// </summary>
     /// <param name="domainEvent">The domain event.</param>
     /// <returns>IAggregate.</returns>
-    public override IAggregate Apply(BaseEvent domainEvent)
+    public override (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent)
     {
-        return domainEvent switch
+        return (domainEvent switch
         {
             ConversationItemAdded add => this with { Items = Items.Append(new ConversationItem(add.ItemDate, add.Content, add.Participant)) },
             ConversationThreadStarted => throw new InvalidAggregateEventException(this, domainEvent, true),
             _ => throw new InvalidAggregateEventException(this, domainEvent, false),
-        };
+        }, []);
     }
 
     /// <summary>

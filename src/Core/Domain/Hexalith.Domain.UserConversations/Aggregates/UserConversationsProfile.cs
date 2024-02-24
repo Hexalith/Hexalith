@@ -62,14 +62,14 @@ public record UserConversationsProfile(string UserId, IEnumerable<DateTimeOffset
     /// </summary>
     /// <param name="domainEvent">The domain event.</param>
     /// <returns>IAggregate.</returns>
-    public IAggregate Apply(BaseEvent domainEvent)
+    public (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent)
     {
-        return domainEvent switch
+        return (domainEvent switch
         {
             UserConversationAdded add => this with { Conversations = Conversations.Append(add.StartedDate) },
             UserConversationsProfileAdded => throw new InvalidAggregateEventException(this, domainEvent, true),
             _ => throw new InvalidAggregateEventException(this, domainEvent, false),
-        };
+        }, []);
     }
 
     /// <inheritdoc/>

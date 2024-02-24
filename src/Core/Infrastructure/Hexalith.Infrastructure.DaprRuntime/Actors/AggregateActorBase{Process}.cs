@@ -232,6 +232,7 @@ public abstract partial class AggregateActorBase
             .ConfigureAwait(false);
 
         IEnumerable<BaseMessage> messages;
+        IEnumerable<BaseEvent> integrationEvents = [];
         TaskProcessor taskProcessor = await GetTaskProcessorAsync(
             commandNumber,
             CancellationToken.None)
@@ -265,7 +266,7 @@ public abstract partial class AggregateActorBase
                 .ToArray();
 
             // Apply events to aggregate
-            _aggregate = aggregate.Apply(aggregateEvents);
+            (_aggregate, integrationEvents) = aggregate.Apply(aggregateEvents);
             EventState[] aggregateEventStates = aggregateEvents
                 .Select(p => new EventState(_dateTimeService.UtcNow, p, Metadata.CreateNew(p, metadata)))
                 .ToArray();
@@ -313,6 +314,7 @@ public abstract partial class AggregateActorBase
         MessageState[] integrationMessages = messages
             .OfType<BaseMessage>()
             .Where(p => !p.IsPrivateToAggregate)
+            .Union(integrationEvents)
             .Select(p => new MessageState(_dateTimeService.UtcNow, p, Metadata.CreateNew(p, metadata)))
             .ToArray();
 

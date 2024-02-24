@@ -24,13 +24,13 @@ public record DummyAggregate(string Id) : Aggregate
 
     protected override string DefaultAggregateName() => GetAggregateName();
 
-    public override IAggregate Apply(BaseEvent domainEvent)
+    public override (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent)
     {
         return domainEvent is DummyAggregateEvent1 dummyEvent
-            ? (IAggregate)(this with
+            ? (this with
             {
                 Id = dummyEvent.Id,
-            })
+            }, [domainEvent])
             : throw new NotImplementedException();
     }
 

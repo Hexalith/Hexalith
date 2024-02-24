@@ -19,8 +19,8 @@ namespace Hexalith.Domain.Products.Aggregates;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Exceptions;
-using Hexalith.Domain.InventoryItems.Entities;
-using Hexalith.Domain.InventoryItems.Events;
+using Hexalith.Domain.Products.Events;
+using Hexalith.Domain.Products.ValueObjects;
 
 /// <summary>
 /// Class InventoryItem.
@@ -35,26 +35,28 @@ using Hexalith.Domain.InventoryItems.Events;
 /// <seealso cref="IEquatable{InventoryItem}" />
 public record Product(
     string PartitionId,
-    string CompanyId,
     string OriginId,
     string Id,
     string Name,
     string? Description,
-    IEnumerable<InventoryItemBarcode> Barcodes) : Aggregate
+    bool Disabled,
+    IEnumerable<ProductDimension>? Dimensions,
+    IEnumerable<IEnumerable<string>>? ExcludedDimensionCombinaisons) : CommonEntityAggregate(PartitionId, OriginId, Id)
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="Product" /> class.
     /// </summary>
-    /// <param name="inventoryItem">The InventoryItem.</param>
-    public Product(InventoryItemAdded inventoryItem)
+    /// <param name="added">The InventoryItem.</param>
+    public Product(ProductAdded added)
         : this(
-              (inventoryItem ?? throw new ArgumentNullException(nameof(inventoryItem))).PartitionId,
-              inventoryItem.CompanyId,
-              inventoryItem.OriginId,
-              inventoryItem.Id,
-              inventoryItem.Name,
-              inventoryItem.Description,
-              [])
+              (added ?? throw new ArgumentNullException(nameof(added))).PartitionId,
+              added.OriginId,
+              added.Id,
+              added.Name,
+              added.Description,
+              false,
+              null,
+              null)
     {
     }
 
@@ -62,48 +64,37 @@ public record Product(
     /// Initializes a new instance of the <see cref="Product"/> class.
     /// </summary>
     public Product()
-        : this(string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, [])
-    {
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Product" /> class.
-    /// </summary>
-    /// <param name="inventoryItem">The InventoryItem.</param>
-    public Product(InventoryItemInformationChanged inventoryItem)
-        : this(
-              (inventoryItem ?? throw new ArgumentNullException(nameof(inventoryItem))).PartitionId,
-              inventoryItem.CompanyId,
-              inventoryItem.OriginId,
-              inventoryItem.Id,
-              inventoryItem.Name,
-              inventoryItem.Description,
-              [])
+        : this(string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, false, null, null)
     {
     }
 
     /// <inheritdoc/>
-    public override IAggregate Apply(BaseEvent domainEvent)
+    public override (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent)
     {
-        return domainEvent switch
+        return (domainEvent switch
         {
-            InventoryItemBarcodeEvent barcodeEvent => this.ApplyBarcodeEvent(barcodeEvent),
-            InventoryItemInformationChanged changed => new Product(changed),
-            InventoryItemAdded => throw new InvalidAggregateEventException(this, domainEvent, true),
+            ProductEnabled => this with { Disabled = false },
+            ProductDisabled => this with { Disabled = true },
+            ProductDescriptionChanged changed => this with { Name = changed.Name, Description = changed.Name },
+            ProductDimensionsChanged changed => this with
+            {
+                Dimensions = changed.ProductDimensions,
+                ExcludedDimensionCombinaisons = changed.ExcludedDimensionCombinaisons,
+            },
+            ProductAdded => throw new InvalidAggregateEventException(this, domainEvent, true),
             _ => throw new InvalidAggregateEventException(this, domainEvent, false),
-        };
+        }, [domainEvent]);
     }
 
     /// <summary>
     /// Gets the aggregate identifier.
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
-    /// <param name="companyId">The company identifier.</param>
     /// <param name="originId">The origin identifier.</param>
     /// <param name="id">The identifier.</param>
     /// <returns>string.</returns>
-    public static string GetAggregateId(string partitionId, string companyId, string originId, string id)
-        => Normalize(GetAggregateName() + Separator + partitionId + Separator + companyId + Separator + originId + Separator + id);
+    public static string GetAggregateId(string partitionId, string originId, string id)
+        => Normalize(GetAggregateName() + Separator + partitionId + Separator + originId + Separator + id);
 
     /// <summary>
     /// Gets the name of the aggregate.
@@ -115,5 +106,5 @@ public record Product(
     public override bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateId() => GetAggregateId(PartitionId, CompanyId, OriginId, Id);
+    protected override string DefaultAggregateId() => GetAggregateId(PartitionId, OriginId, Id);
 }

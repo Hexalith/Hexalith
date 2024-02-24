@@ -229,7 +229,7 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
                     throw new InvalidOperationException($"Event {i} for {Id} has an invalid aggregate id : {ev.Message.AggregateId}.");
                 }
 
-                _aggregate = _aggregate.Apply(ev.Message);
+                (_aggregate, _) = _aggregate.Apply(ev.Message);
             }
         }
 

@@ -92,9 +92,9 @@ public record Survey(
     }
 
     /// <inheritdoc/>
-    public override IAggregate Apply(BaseEvent domainEvent)
+    public override (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent)
     {
-        return domainEvent switch
+        return (domainEvent switch
         {
             SurveyInformationChanged changed => this with
             {
@@ -102,7 +102,7 @@ public record Survey(
             },
             SurveyRegistered => throw new InvalidAggregateEventException(this, domainEvent, true),
             _ => throw new InvalidAggregateEventException(this, domainEvent, false),
-        };
+        }, []);
     }
 
     /// <inheritdoc/>

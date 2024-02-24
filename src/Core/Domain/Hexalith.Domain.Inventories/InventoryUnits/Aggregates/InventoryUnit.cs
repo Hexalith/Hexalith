@@ -82,14 +82,14 @@ public record InventoryUnit(
     }
 
     /// <inheritdoc/>
-    public override IAggregate Apply(BaseEvent domainEvent)
+    public override (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent)
     {
-        return domainEvent switch
+        return (domainEvent switch
         {
             InventoryUnitChanged changed => new InventoryUnit(changed),
             InventoryUnitAdded => throw new InvalidAggregateEventException(this, domainEvent, true),
             _ => throw new InvalidAggregateEventException(this, domainEvent, false),
-        };
+        }, []);
     }
 
     /// <summary>

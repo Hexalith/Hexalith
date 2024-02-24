@@ -82,14 +82,14 @@ public record InventoryItemStock(
     }
 
     /// <inheritdoc/>
-    public override IAggregate Apply(BaseEvent domainEvent)
+    public override (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent)
     {
-        return domainEvent switch
+        return (domainEvent switch
         {
             InventoryItemStockIncreased increased => this with { Quantity = Quantity + increased.Quantity },
             InventoryItemStockDecreased decreased => this with { Quantity = Quantity - decreased.Quantity },
             _ => throw new InvalidAggregateEventException(this, domainEvent, false),
-        };
+        }, []);
     }
 
     /// <inheritdoc/>

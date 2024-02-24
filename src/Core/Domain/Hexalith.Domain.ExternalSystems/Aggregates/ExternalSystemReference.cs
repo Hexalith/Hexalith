@@ -75,15 +75,15 @@ public record ExternalSystemReference(
     }
 
     /// <inheritdoc/>
-    public override IAggregate Apply(BaseEvent domainEvent)
+    public override (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent)
     {
         ArgumentNullException.ThrowIfNull(domainEvent);
-        return domainEvent switch
+        return (domainEvent switch
         {
             ExternalSystemReferenceRemoved => this with { ReferenceAggregateId = null },
             ExternalSystemReferenceAdded added => this with { ReferenceAggregateId = added.ReferenceAggregateId },
             _ => throw new InvalidAggregateEventException(this, domainEvent, false),
-        };
+        }, []);
     }
 
     /// <summary>

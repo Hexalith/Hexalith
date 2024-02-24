@@ -1,0 +1,6 @@
+<Project>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Core\Common\Hexalith.Extensions\Hexalith.Extensions.csproj" />
+		<ProjectReference Include="..\..\..\Core\Domain\Hexalith.Domain.Abstractions\Hexalith.Domain.Abstractions.csproj" />
+	</ItemGroup>
+</Project>

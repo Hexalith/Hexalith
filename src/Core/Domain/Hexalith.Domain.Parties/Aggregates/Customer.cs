@@ -108,9 +108,9 @@ public record Customer(
         : this(customer) => IntercompanyDropship = intercompanyDropship;
 
     /// <inheritdoc/>
-    public override IAggregate Apply(BaseEvent domainEvent)
+    public override (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent)
     {
-        return domainEvent switch
+        return (domainEvent switch
         {
             CustomerInformationChanged changed => this with
             {
@@ -129,7 +129,7 @@ public record Customer(
                 ? throw new InvalidAggregateEventException(this, domainEvent, true)
                 : new Customer(registered),
             _ => throw new InvalidAggregateEventException(this, domainEvent, false),
-        };
+        }, []);
     }
 
     /// <summary>

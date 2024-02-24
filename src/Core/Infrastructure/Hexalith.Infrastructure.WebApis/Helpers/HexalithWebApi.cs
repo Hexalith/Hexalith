@@ -23,11 +23,9 @@ using Dapr.Actors.Runtime;
 
 using FluentValidation;
 
-using Hexalith.Application.Aggregates;
 using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Projection;
-using Hexalith.Application.States;
 using Hexalith.Application.Tasks;
 using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Common;
@@ -98,7 +96,6 @@ public static class HexalithWebApi
         _ = builder.Services.AddValidatorsFromAssemblyContaining<CommandBusSettingsValidator>(ServiceLifetime.Singleton);
         builder.Services.TryAddSingleton<IDateTimeService, DateTimeService>();
         builder.Services.TryAddSingleton<IResiliencyPolicyProvider, ResiliencyPolicyProvider>();
-        builder.Services.TryAddScoped<IAggregateStateManager, AggregateStateManager>();
         builder.Services.TryAddScoped<ICommandDispatcher, DependencyInjectionCommandDispatcher>();
         builder.Services.TryAddScoped<IProjectionUpdateProcessor, DependencyInjectionProjectionUpdateProcessor>();
         return builder;

@@ -18,7 +18,7 @@ using Hexalith.Domain.Users.Models;
 public record User(string Id, string Name, string Email) : Aggregate, IUser
 {
     /// <inheritdoc/>
-    public override IAggregate Apply(BaseEvent domainEvent) => throw new NotImplementedException();
+    public override (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent) => throw new NotImplementedException();
 
     /// <inheritdoc/>
     public override bool IsInitialized() => throw new NotImplementedException();

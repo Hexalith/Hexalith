@@ -107,15 +107,15 @@ public record PartnerInventoryItem(
     }
 
     /// <inheritdoc/>
-    public override IAggregate Apply(BaseEvent domainEvent)
+    public override (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent)
     {
-        return domainEvent switch
+        return (domainEvent switch
         {
             PartnerInventoryItemChanged changed => new PartnerInventoryItem(changed),
             PartnerInventoryItemRemoved => this with { Disabled = true },
             PartnerInventoryItemAdded => throw new InvalidAggregateEventException(this, domainEvent, true),
             _ => throw new InvalidAggregateEventException(this, domainEvent, false),
-        };
+        }, []);
     }
 
     /// <summary>

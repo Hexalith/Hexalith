@@ -4,7 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Domain.Dimensions.Aggregates;
+namespace Hexalith.Domain.Dimensions.DimensionHIerarchies;
 
 using System;
 
@@ -17,7 +17,7 @@ using Hexalith.Domain.Events;
 public record DimensionHierarchy(string Id, string Name, string Description, IEnumerable<string> DimensionsIds) : Aggregate
 {
     /// <inheritdoc/>
-    public override IAggregate Apply(BaseEvent domainEvent) => throw new NotImplementedException();
+    public override (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent) => throw new NotImplementedException();
 
     /// <inheritdoc/>
     public override bool IsInitialized() => throw new NotImplementedException();
