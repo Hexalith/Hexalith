@@ -29,4 +29,17 @@ using System.Runtime.Serialization;
 public abstract record CommonEntityAggregate(string PartitionId, string OriginId, string Id)
     : PartitionedAggregate(PartitionId)
 {
+    /// <summary>
+    /// Gets the origin identifier.
+    /// </summary>
+    /// <value>The origin identifier.</value>
+    [DataMember(Order = 2)]
+    public string OriginId { get; init; } = OriginId;
+
+    /// <summary>
+    /// Gets the identifier.
+    /// </summary>
+    /// <value>The identifier.</value>
+    [DataMember(Order = 3)]
+    public string Id { get; init; } = Id;
 }

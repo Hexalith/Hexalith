@@ -17,6 +17,7 @@
 namespace Hexalith.Infrastructure.WebApis.Helpers;
 
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 
 using Microsoft.AspNetCore.Builder;
 
@@ -40,7 +41,7 @@ public static class WebApiHelper
             .Enrich
                 .FromLogContext()
             .WriteTo
-                .Console()
+                .Console(formatProvider: CultureInfo.InvariantCulture)
             .CreateBootstrapLogger();
 
         _ = builder.Host.UseSerilog(
@@ -54,7 +55,7 @@ public static class WebApiHelper
                 .Enrich.WithThreadId()
                 .Enrich.WithThreadName()
                 .Enrich.WithEnvironmentUserName()
-                .WriteTo.Console()
+                .WriteTo.Console(formatProvider: CultureInfo.InvariantCulture)
                 .ReadFrom.Services(services));
         return startupLogger;
     }

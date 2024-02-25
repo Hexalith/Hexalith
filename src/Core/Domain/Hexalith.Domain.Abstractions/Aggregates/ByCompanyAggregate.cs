@@ -29,4 +29,10 @@ using System.Runtime.Serialization;
 public abstract record ByCompanyAggregate(string PartitionId, string CompanyId)
     : PartitionedAggregate(PartitionId)
 {
+    /// <summary>
+    /// Gets the company identifier.
+    /// </summary>
+    /// <value>The company identifier.</value>
+    [DataMember(Order = 2)]
+    public string CompanyId { get; init; } = CompanyId;
 }

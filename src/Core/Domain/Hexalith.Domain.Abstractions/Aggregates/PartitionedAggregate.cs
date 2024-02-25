@@ -28,4 +28,10 @@ using System.Runtime.Serialization;
 [Serializable]
 public abstract record PartitionedAggregate(string PartitionId) : Aggregate
 {
+    /// <summary>
+    /// Gets the partition identifier.
+    /// </summary>
+    /// <value>The partition identifier.</value>
+    [DataMember(Order = 1)]
+    public string PartitionId { get; init; } = PartitionId;
 }
