@@ -7,6 +7,7 @@
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
 	</ItemGroup>
 	<ItemGroup>
+		<ProjectReference Include="..\Hexalith.Infrastructure.AspireService.Defaults\Hexalith.Infrastructure.AspireService.Defaults.csproj" />
 		<ProjectReference Include="..\Hexalith.Infrastructure.WebApis.Abstractions\Hexalith.Infrastructure.WebApis.Abstractions.csproj" />
 		<ProjectReference Include="..\Hexalith.Infrastructure.DaprRuntime\Hexalith.Infrastructure.DaprRuntime.csproj" />
 		<ProjectReference Include="..\Hexalith.Infrastructure.Security.Abstractions\Hexalith.Infrastructure.Security.Abstractions.csproj" />
@@ -20,9 +21,9 @@
 		<PackageReference Include="Dapr.Actors.AspNetCore" Version="$(DaprVersion)" />
 		<PackageReference Include="Dapr.AspNetCore" Version="$(DaprVersion)" />
 		<PackageReference Include="Dapr.Extensions.Configuration" Version="$(DaprVersion)" />
-		<PackageReference Include="Man.Dapr.Sidekick" Version="$(ManDaprSidekickVersion)" />
+		<!--<PackageReference Include="Man.Dapr.Sidekick" Version="$(ManDaprSidekickVersion)" />
 		<PackageReference Include="Man.Dapr.Sidekick.AspNetCore" Version="$(ManDaprSidekickVersion)" />
-		<PackageReference Include="Man.Dapr.Sidekick.Extensions.Logging" Version="$(ManDaprSidekickVersion)" />
+		<PackageReference Include="Man.Dapr.Sidekick.Extensions.Logging" Version="$(ManDaprSidekickVersion)" />-->
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Serilog.AspNetCore" Version="$(SerilogVersion)" />

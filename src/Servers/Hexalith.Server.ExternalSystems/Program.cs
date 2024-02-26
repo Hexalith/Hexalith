@@ -4,6 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
+using Hexalith.Infrastructure.AspireService.Defaults;
 using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Aggregates.Helpers;
 using Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Helpers;
 using Hexalith.Infrastructure.WebApis.Helpers;
@@ -25,6 +26,8 @@ WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
     args);
 
 builder.Services.AddExternalSystemsCommandsSubmission();
+
+builder.AddServiceDefaults();
 
 WebApplication app = builder.Build();
 

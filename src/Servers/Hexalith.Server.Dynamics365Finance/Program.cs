@@ -8,6 +8,7 @@ using Hexalith.Application.Events;
 using Hexalith.Application.Organizations.Helpers;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
+using Hexalith.Infrastructure.AspireService.Defaults;
 using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Parties.Helpers;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.IntegrationEvents;
@@ -49,8 +50,11 @@ builder.Services
     .AddScoped<IIntegrationEventHandler<CustomerInformationChanged>, CustomerInformationChangedHandler>()
     .AddScoped<IIntegrationEventProcessor, IntegrationEventProcessor>()
     .AddScoped<IIntegrationEventDispatcher, DependencyInjectionEventDispatcher>();
+builder.AddServiceDefaults();
 
 WebApplication app = builder.Build();
+
+app.MapDefaultEndpoints();
 
 app.UseHexalith();
 

@@ -17,7 +17,6 @@ using FluentValidation;
 using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Projections;
-using Hexalith.Application.Projections;
 using Hexalith.Application.Tasks;
 using Hexalith.Domain.Messages;
 using Hexalith.Infrastructure.ClientApp.Helpers;
@@ -138,11 +137,10 @@ public static class ServerSideClientAppHelper
         builder.Services
             .TryAddSingleton<IEmailSender, EmailSender>();
 
-        if (debugInVisualStudio)
-        {
-            _ = builder.Services.AddDaprSidekick(builder.Configuration);
-        }
-
+        // if (debugInVisualStudio)
+        // {
+        //    _ = builder.Services.AddDaprSidekick(builder.Configuration);
+        // }
         _ = builder.Services.AddValidatorsFromAssemblyContaining<CommandBusSettingsValidator>(ServiceLifetime.Singleton);
         builder.Services.TryAddSingleton<IResiliencyPolicyProvider, ResiliencyPolicyProvider>();
         builder.Services.TryAddScoped<ICommandDispatcher, DependencyInjectionCommandDispatcher>();

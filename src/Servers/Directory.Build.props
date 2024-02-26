@@ -25,6 +25,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="$(MSBuildThisFileDirectory)..\Core\Infrastructure\Hexalith.Infrastructure.WebApis\Hexalith.Infrastructure.WebApis.csproj" />
+		<ProjectReference Include="$(MSBuildThisFileDirectory)..\Core\Infrastructure\Hexalith.Infrastructure.AspireService.Defaults\Hexalith.Infrastructure.AspireService.Defaults.csproj" />
 	</ItemGroup>
 	<Target Name="MyTarget" AfterTargets="MinVer" Condition="'$(MinVerBuildMetadata)' != ''">
 		<PropertyGroup>

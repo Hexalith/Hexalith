@@ -358,3 +358,4 @@ nuget.config
 #Coverity results
 cov-int.zip
 cov-int/
+.azure

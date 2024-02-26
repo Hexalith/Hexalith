@@ -78,6 +78,7 @@ public static class HexalithWebApi
             registerActors(options.Actors));
         _ = builder
             .Services
+            .AddProblemDetails()
             .AddHttpContextAccessor()
             .AddControllers()
             .AddApplicationPart(typeof(BaseCommand).Assembly) // Issue with MapControllers() throwing a type not found exception for BaseCommand
@@ -87,12 +88,11 @@ public static class HexalithWebApi
         _ = builder.Services.AddAuthentication().AddDapr(); // Adds Dapr authentication
         _ = builder.Services.AddAuthorization(options => options.AddDapr());
 
-        if (debugInVisualStudio)
-        {
-            // When debugging, we want to be able to run the application inside Visual Studio to see the technical details.
-            _ = builder.Services.AddDaprSidekick(builder.Configuration);
-        }
-
+        // if (debugInVisualStudio)
+        // {
+        //    // When debugging, we want to be able to run the application inside Visual Studio to see the technical details.
+        //    _ = builder.Services.AddDaprSidekick(builder.Configuration);
+        // }
         _ = builder.Services.AddValidatorsFromAssemblyContaining<CommandBusSettingsValidator>(ServiceLifetime.Singleton);
         builder.Services.TryAddSingleton<IDateTimeService, DateTimeService>();
         builder.Services.TryAddSingleton<IResiliencyPolicyProvider, ResiliencyPolicyProvider>();
@@ -124,6 +124,7 @@ public static class HexalithWebApi
             _ = app.UseDeveloperExceptionPage();
         }
 
+        _ = app.UseExceptionHandler();
         _ = app.UseSwagger();
         _ = app.UseSwaggerUI();
 
