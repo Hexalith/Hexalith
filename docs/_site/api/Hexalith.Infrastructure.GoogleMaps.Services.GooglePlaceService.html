@@ -84,7 +84,7 @@ Implements the <see cref="!:FluentUILocation.IGooglePlaceService"></see>.</p>
   </div>
   <div class="implements">
     <h5>Implements</h5>
-    <div><a class="xref" href="Hexalith.Infrastructure.GoogleMaps.Services.IGooglePlaceService.html">IGooglePlaceService</a></div>
+    <div><a class="xref" href="Hexalith.Application.Geolocations.Services.IPlaceService.html">IPlaceService</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -114,7 +114,7 @@ Implements the <see cref="!:FluentUILocation.IGooglePlaceService"></see>.</p>
   <h6><strong>Assembly</strong>: Hexalith.Infrastructure.GoogleMaps.dll</h6>
   <h5 id="Hexalith_Infrastructure_GoogleMaps_Services_GooglePlaceService_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class GooglePlaceService : IGooglePlaceService</code></pre>
+    <pre><code class="lang-csharp hljs">public class GooglePlaceService : IPlaceService</code></pre>
   </div>
   <h5 id="Hexalith_Infrastructure_GoogleMaps_Services_GooglePlaceService_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Infrastructure.GoogleMaps.Services.GooglePlaceService.html">GooglePlaceService</a> class.</p>
@@ -123,19 +123,19 @@ Implements the <see cref="!:FluentUILocation.IGooglePlaceService"></see>.</p>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_GoogleMaps_Services_GooglePlaceService__ctor_GoogleApi_GooglePlaces_AutoCompleteApi_GoogleApi_GoogleMaps_Geocode_PlaceGeocodeApi_Microsoft_Extensions_Options_IOptions_Hexalith_Infrastructure_GoogleMaps_Abstractions_Configurations_GoogleSettings__.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.GoogleMaps.Services.GooglePlaceService.%23ctor(GoogleApi.GooglePlaces.AutoCompleteApi%2CGoogleApi.GoogleMaps.Geocode.PlaceGeocodeApi%2CMicrosoft.Extensions.Options.IOptions%7BHexalith.Infrastructure.GoogleMaps.Abstractions.Configurations.GoogleSettings%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_GoogleMaps_Services_GooglePlaceService__ctor_Microsoft_Extensions_Caching_Memory_IMemoryCache_GoogleApi_GooglePlaces_AutoCompleteApi_GoogleApi_GoogleMaps_Geocode_PlaceGeocodeApi_Microsoft_Extensions_Options_IOptions_Hexalith_Infrastructure_GoogleMaps_Abstractions_Configurations_GoogleSettings__.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.GoogleMaps.Services.GooglePlaceService.%23ctor(Microsoft.Extensions.Caching.Memory.IMemoryCache%2CGoogleApi.GooglePlaces.AutoCompleteApi%2CGoogleApi.GoogleMaps.Geocode.PlaceGeocodeApi%2CMicrosoft.Extensions.Options.IOptions%7BHexalith.Infrastructure.GoogleMaps.Abstractions.Configurations.GoogleSettings%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.GoogleMaps/Services/GooglePlaceService.cs/#L49">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.GoogleMaps/Services/GooglePlaceService.cs/#L52">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_GoogleMaps_Services_GooglePlaceService__ctor_" data-uid="Hexalith.Infrastructure.GoogleMaps.Services.GooglePlaceService.#ctor*"></a>
-  <h4 id="Hexalith_Infrastructure_GoogleMaps_Services_GooglePlaceService__ctor_GoogleApi_GooglePlaces_AutoCompleteApi_GoogleApi_GoogleMaps_Geocode_PlaceGeocodeApi_Microsoft_Extensions_Options_IOptions_Hexalith_Infrastructure_GoogleMaps_Abstractions_Configurations_GoogleSettings__" data-uid="Hexalith.Infrastructure.GoogleMaps.Services.GooglePlaceService.#ctor(GoogleApi.GooglePlaces.AutoCompleteApi,GoogleApi.GoogleMaps.Geocode.PlaceGeocodeApi,Microsoft.Extensions.Options.IOptions{Hexalith.Infrastructure.GoogleMaps.Abstractions.Configurations.GoogleSettings})">GooglePlaceService(GooglePlaces.AutoCompleteApi, GoogleMaps.Geocode.PlaceGeocodeApi, IOptions&lt;GoogleSettings&gt;)</h4>
+  <h4 id="Hexalith_Infrastructure_GoogleMaps_Services_GooglePlaceService__ctor_Microsoft_Extensions_Caching_Memory_IMemoryCache_GoogleApi_GooglePlaces_AutoCompleteApi_GoogleApi_GoogleMaps_Geocode_PlaceGeocodeApi_Microsoft_Extensions_Options_IOptions_Hexalith_Infrastructure_GoogleMaps_Abstractions_Configurations_GoogleSettings__" data-uid="Hexalith.Infrastructure.GoogleMaps.Services.GooglePlaceService.#ctor(Microsoft.Extensions.Caching.Memory.IMemoryCache,GoogleApi.GooglePlaces.AutoCompleteApi,GoogleApi.GoogleMaps.Geocode.PlaceGeocodeApi,Microsoft.Extensions.Options.IOptions{Hexalith.Infrastructure.GoogleMaps.Abstractions.Configurations.GoogleSettings})">GooglePlaceService(IMemoryCache, GooglePlaces.AutoCompleteApi, GoogleMaps.Geocode.PlaceGeocodeApi, IOptions&lt;GoogleSettings&gt;)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Infrastructure.GoogleMaps.Services.GooglePlaceService.html">GooglePlaceService</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GooglePlaceService(GooglePlaces.AutoCompleteApi autoCompleteService, GoogleMaps.Geocode.PlaceGeocodeApi geocodeService, IOptions&lt;GoogleSettings&gt; settings)</code></pre>
+    <pre><code class="lang-csharp hljs">public GooglePlaceService(IMemoryCache cache, GooglePlaces.AutoCompleteApi autoCompleteService, GoogleMaps.Geocode.PlaceGeocodeApi geocodeService, IOptions&lt;GoogleSettings&gt; settings)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -147,6 +147,12 @@ Implements the <see cref="!:FluentUILocation.IGooglePlaceService"></see>.</p>
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Caching.Memory.IMemoryCache</span></td>
+        <td><span class="parametername">cache</span></td>
+        <td><p>The cache.</p>
+</td>
+      </tr>
       <tr>
         <td><span class="xref">GoogleApi.GooglePlaces.AutoCompleteApi</span></td>
         <td><span class="parametername">autoCompleteService</span></td>
@@ -190,7 +196,7 @@ Implements the <see cref="!:FluentUILocation.IGooglePlaceService"></see>.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_GoogleMaps_Services_GooglePlaceService_GetAutocompleteOptionsAsync_System_String_System_String_System_Int32_System_Nullable_System_Double__System_Nullable_System_Double__CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.GoogleMaps.Services.GooglePlaceService.GetAutocompleteOptionsAsync(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Nullable%7BSystem.Double%7D%2CSystem.Nullable%7BSystem.Double%7D%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.GoogleMaps/Services/GooglePlaceService.cs/#L64">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.GoogleMaps/Services/GooglePlaceService.cs/#L70">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_GoogleMaps_Services_GooglePlaceService_GetAutocompleteOptionsAsync_" data-uid="Hexalith.Infrastructure.GoogleMaps.Services.GooglePlaceService.GetAutocompleteOptionsAsync*"></a>
   <h4 id="Hexalith_Infrastructure_GoogleMaps_Services_GooglePlaceService_GetAutocompleteOptionsAsync_System_String_System_String_System_Int32_System_Nullable_System_Double__System_Nullable_System_Double__CancellationToken_" data-uid="Hexalith.Infrastructure.GoogleMaps.Services.GooglePlaceService.GetAutocompleteOptionsAsync(System.String,System.String,System.Int32,System.Nullable{System.Double},System.Nullable{System.Double},CancellationToken)">GetAutocompleteOptionsAsync(String, String, Int32, Nullable&lt;Double&gt;, Nullable&lt;Double&gt;, CancellationToken)</h4>
@@ -198,7 +204,7 @@ Implements the <see cref="!:FluentUILocation.IGooglePlaceService"></see>.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;GooglePlace&gt;&gt; GetAutocompleteOptionsAsync(string search, string cultureCode, int maxResultCount, double? latitude, double? longitude, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;PlaceDescription&gt;&gt; GetAutocompleteOptionsAsync(string search, string cultureCode, int maxResultCount, double? latitude, double? longitude, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -252,7 +258,7 @@ Implements the <see cref="!:FluentUILocation.IGooglePlaceService"></see>.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IEnumerable</span>&lt;<a class="xref" href="Hexalith.Infrastructure.GoogleMaps.Models.GooglePlace.html">GooglePlace</a>&gt;&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IEnumerable</span>&lt;<a class="xref" href="Hexalith.Domain.ValueObjets.PlaceDescription.html">PlaceDescription</a>&gt;&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -262,7 +268,7 @@ Implements the <see cref="!:FluentUILocation.IGooglePlaceService"></see>.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_GoogleMaps_Services_GooglePlaceService_GetAutocompleteTextAsync_System_String_System_String_System_Int32_System_Nullable_System_Double__System_Nullable_System_Double__CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.GoogleMaps.Services.GooglePlaceService.GetAutocompleteTextAsync(System.String%2CSystem.String%2CSystem.Int32%2CSystem.Nullable%7BSystem.Double%7D%2CSystem.Nullable%7BSystem.Double%7D%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.GoogleMaps/Services/GooglePlaceService.cs/#L74">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.GoogleMaps/Services/GooglePlaceService.cs/#L86">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_GoogleMaps_Services_GooglePlaceService_GetAutocompleteTextAsync_" data-uid="Hexalith.Infrastructure.GoogleMaps.Services.GooglePlaceService.GetAutocompleteTextAsync*"></a>
   <h4 id="Hexalith_Infrastructure_GoogleMaps_Services_GooglePlaceService_GetAutocompleteTextAsync_System_String_System_String_System_Int32_System_Nullable_System_Double__System_Nullable_System_Double__CancellationToken_" data-uid="Hexalith.Infrastructure.GoogleMaps.Services.GooglePlaceService.GetAutocompleteTextAsync(System.String,System.String,System.Int32,System.Nullable{System.Double},System.Nullable{System.Double},CancellationToken)">GetAutocompleteTextAsync(String, String, Int32, Nullable&lt;Double&gt;, Nullable&lt;Double&gt;, CancellationToken)</h4>
@@ -334,7 +340,7 @@ Implements the <see cref="!:FluentUILocation.IGooglePlaceService"></see>.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_GoogleMaps_Services_GooglePlaceService_GetPostalAddressAsync_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.GoogleMaps.Services.GooglePlaceService.GetPostalAddressAsync(System.String%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.GoogleMaps/Services/GooglePlaceService.cs/#L91">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.GoogleMaps/Services/GooglePlaceService.cs/#L110">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_GoogleMaps_Services_GooglePlaceService_GetPostalAddressAsync_" data-uid="Hexalith.Infrastructure.GoogleMaps.Services.GooglePlaceService.GetPostalAddressAsync*"></a>
   <h4 id="Hexalith_Infrastructure_GoogleMaps_Services_GooglePlaceService_GetPostalAddressAsync_System_String_CancellationToken_" data-uid="Hexalith.Infrastructure.GoogleMaps.Services.GooglePlaceService.GetPostalAddressAsync(System.String,CancellationToken)">GetPostalAddressAsync(String, CancellationToken)</h4>
@@ -408,15 +414,9 @@ Implements the <see cref="!:FluentUILocation.IGooglePlaceService"></see>.</p>
   </table>
   <h3 id="implements">Implements</h3>
   <div>
-      <a class="xref" href="Hexalith.Infrastructure.GoogleMaps.Services.IGooglePlaceService.html">IGooglePlaceService</a>
+      <a class="xref" href="Hexalith.Application.Geolocations.Services.IPlaceService.html">IPlaceService</a>
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
-  <div>
-      <a class="xref" href="Hexalith.Extensions.Helpers.CollectionHelper.html#Hexalith_Extensions_Helpers_CollectionHelper_IntoArray__1___0_">CollectionHelper.IntoArray&lt;T&gt;(T)</a>
-  </div>
-  <div>
-      <a class="xref" href="Hexalith.Extensions.Helpers.CollectionHelper.html#Hexalith_Extensions_Helpers_CollectionHelper_IntoEnumerable__1___0_">CollectionHelper.IntoEnumerable&lt;T&gt;(T)</a>
-  </div>
   <div>
       <a class="xref" href="Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSame_System_Object_System_Object_">EquatableHelper.AreSame(Object, Object)</a>
   </div>
@@ -434,7 +434,7 @@ Implements the <see cref="!:FluentUILocation.IGooglePlaceService"></see>.</p>
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_GoogleMaps_Services_GooglePlaceService.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.GoogleMaps.Services.GooglePlaceService%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.GoogleMaps/Services/GooglePlaceService.cs/#L34" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.GoogleMaps/Services/GooglePlaceService.cs/#L37" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

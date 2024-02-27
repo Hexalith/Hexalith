@@ -225,7 +225,8 @@ Implements the <see cref="!:IEquatable&lt;UserConversations>"></see>.</p>
   </span>
   <a id="Hexalith_Domain_UserConversationProfiles_Aggregates_UserConversationsProfile_AggregateId_" data-uid="Hexalith.Domain.UserConversationProfiles.Aggregates.UserConversationsProfile.AggregateId*"></a>
   <h4 id="Hexalith_Domain_UserConversationProfiles_Aggregates_UserConversationsProfile_AggregateId" data-uid="Hexalith.Domain.UserConversationProfiles.Aggregates.UserConversationsProfile.AggregateId">AggregateId</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the aggregate identifier.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -242,7 +243,8 @@ Implements the <see cref="!:IEquatable&lt;UserConversations>"></see>.</p>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>The aggregate identifier.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -255,7 +257,8 @@ Implements the <see cref="!:IEquatable&lt;UserConversations>"></see>.</p>
   </span>
   <a id="Hexalith_Domain_UserConversationProfiles_Aggregates_UserConversationsProfile_AggregateName_" data-uid="Hexalith.Domain.UserConversationProfiles.Aggregates.UserConversationsProfile.AggregateName*"></a>
   <h4 id="Hexalith_Domain_UserConversationProfiles_Aggregates_UserConversationsProfile_AggregateName" data-uid="Hexalith.Domain.UserConversationProfiles.Aggregates.UserConversationsProfile.AggregateName">AggregateName</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the name of the aggregate.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -272,7 +275,8 @@ Implements the <see cref="!:IEquatable&lt;UserConversations>"></see>.</p>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>The name of the aggregate.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -352,7 +356,7 @@ Implements the <see cref="!:IEquatable&lt;UserConversations>"></see>.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IAggregate Apply(BaseEvent domainEvent)</code></pre>
+    <pre><code class="lang-csharp hljs">public (IAggregate Aggregate, IEnumerable&lt;BaseEvent&gt; Events) Apply(BaseEvent domainEvent)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -382,7 +386,7 @@ Implements the <see cref="!:IEquatable&lt;UserConversations>"></see>.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Hexalith.Domain.Aggregates.IAggregate.html">IAggregate</a></td>
+        <td><span class="xref">System.ValueTuple</span>&lt;<a class="xref" href="Hexalith.Domain.Aggregates.IAggregate.html">IAggregate</a>, <span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">BaseEvent</a>&gt;&gt;</td>
         <td><p>IAggregate.</p>
 </td>
       </tr>
@@ -397,7 +401,8 @@ Implements the <see cref="!:IEquatable&lt;UserConversations>"></see>.</p>
   </span>
   <a id="Hexalith_Domain_UserConversationProfiles_Aggregates_UserConversationsProfile_IsInitialized_" data-uid="Hexalith.Domain.UserConversationProfiles.Aggregates.UserConversationsProfile.IsInitialized*"></a>
   <h4 id="Hexalith_Domain_UserConversationProfiles_Aggregates_UserConversationsProfile_IsInitialized" data-uid="Hexalith.Domain.UserConversationProfiles.Aggregates.UserConversationsProfile.IsInitialized">IsInitialized()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Determines whether this instance is initialized.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -414,7 +419,8 @@ Implements the <see cref="!:IEquatable&lt;UserConversations>"></see>.</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p><code>true</code> if this instance is initialized; otherwise, <code>false</code>.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -426,12 +432,6 @@ Implements the <see cref="!:IEquatable&lt;UserConversations>"></see>.</p>
       <span class="xref">System.IEquatable&lt;T&gt;</span>
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
-  <div>
-      <a class="xref" href="Hexalith.Extensions.Helpers.CollectionHelper.html#Hexalith_Extensions_Helpers_CollectionHelper_IntoArray__1___0_">CollectionHelper.IntoArray&lt;T&gt;(T)</a>
-  </div>
-  <div>
-      <a class="xref" href="Hexalith.Extensions.Helpers.CollectionHelper.html#Hexalith_Extensions_Helpers_CollectionHelper_IntoEnumerable__1___0_">CollectionHelper.IntoEnumerable&lt;T&gt;(T)</a>
-  </div>
   <div>
       <a class="xref" href="Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSame_System_Object_System_Object_">EquatableHelper.AreSame(Object, Object)</a>
   </div>

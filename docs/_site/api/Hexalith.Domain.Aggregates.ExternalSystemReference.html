@@ -452,11 +452,12 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
   </span>
   <a id="Hexalith_Domain_Aggregates_ExternalSystemReference_Apply_" data-uid="Hexalith.Domain.Aggregates.ExternalSystemReference.Apply*"></a>
   <h4 id="Hexalith_Domain_Aggregates_ExternalSystemReference_Apply_Hexalith_Domain_Events_BaseEvent_" data-uid="Hexalith.Domain.Aggregates.ExternalSystemReference.Apply(Hexalith.Domain.Events.BaseEvent)">Apply(BaseEvent)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Applies the specified domain event.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override IAggregate Apply(BaseEvent domainEvent)</code></pre>
+    <pre><code class="lang-csharp hljs">public override (IAggregate Aggregate, IEnumerable&lt;BaseEvent&gt; Events) Apply(BaseEvent domainEvent)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -471,7 +472,8 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
       <tr>
         <td><a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">BaseEvent</a></td>
         <td><span class="parametername">domainEvent</span></td>
-        <td></td>
+        <td><p>The domain event.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -485,8 +487,9 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Hexalith.Domain.Aggregates.IAggregate.html">IAggregate</a></td>
-        <td></td>
+        <td><span class="xref">System.ValueTuple</span>&lt;<a class="xref" href="Hexalith.Domain.Aggregates.IAggregate.html">IAggregate</a>, <span class="xref">IEnumerable</span>&lt;<a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">BaseEvent</a>&gt;&gt;</td>
+        <td><p>IAggregate.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -501,7 +504,8 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
   </span>
   <a id="Hexalith_Domain_Aggregates_ExternalSystemReference_DefaultAggregateId_" data-uid="Hexalith.Domain.Aggregates.ExternalSystemReference.DefaultAggregateId*"></a>
   <h4 id="Hexalith_Domain_Aggregates_ExternalSystemReference_DefaultAggregateId" data-uid="Hexalith.Domain.Aggregates.ExternalSystemReference.DefaultAggregateId">DefaultAggregateId()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Get the aggregate identifier.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -518,7 +522,8 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>The identifier.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -639,7 +644,8 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
   </span>
   <a id="Hexalith_Domain_Aggregates_ExternalSystemReference_IsInitialized_" data-uid="Hexalith.Domain.Aggregates.ExternalSystemReference.IsInitialized*"></a>
   <h4 id="Hexalith_Domain_Aggregates_ExternalSystemReference_IsInitialized" data-uid="Hexalith.Domain.Aggregates.ExternalSystemReference.IsInitialized">IsInitialized()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Determines whether this instance is initialized.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -656,7 +662,8 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p><code>true</code> if this instance is initialized; otherwise, <code>false</code>.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -673,12 +680,6 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
       <span class="xref">System.IEquatable&lt;T&gt;</span>
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
-  <div>
-      <a class="xref" href="Hexalith.Extensions.Helpers.CollectionHelper.html#Hexalith_Extensions_Helpers_CollectionHelper_IntoArray__1___0_">CollectionHelper.IntoArray&lt;T&gt;(T)</a>
-  </div>
-  <div>
-      <a class="xref" href="Hexalith.Extensions.Helpers.CollectionHelper.html#Hexalith_Extensions_Helpers_CollectionHelper_IntoEnumerable__1___0_">CollectionHelper.IntoEnumerable&lt;T&gt;(T)</a>
-  </div>
   <div>
       <a class="xref" href="Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSame_System_Object_System_Object_">EquatableHelper.AreSame(Object, Object)</a>
   </div>

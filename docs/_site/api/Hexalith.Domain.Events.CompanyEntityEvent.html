@@ -74,7 +74,7 @@
   <h1 id="Hexalith_Domain_Events_CompanyEntityEvent" data-uid="Hexalith.Domain.Events.CompanyEntityEvent" class="text-break">Class CompanyEntityEvent
   </h1>
   <div class="markdown level0 summary"><p>Class CompanyEntityEvent.
-Implements the <a class="xref" href="Hexalith.Domain.Events.CompanyEvent.html">CompanyEvent</a>.</p>
+Implements the <see cref="!:CompanyEvent"></see>.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -82,11 +82,17 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.CompanyEvent.html">C
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html">BaseMessage</a></div>
     <div class="level2"><a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">BaseEvent</a></div>
-    <div class="level3"><a class="xref" href="Hexalith.Domain.Events.PartitionedEvent.html">PartitionedEvent</a></div>
-    <div class="level4"><a class="xref" href="Hexalith.Domain.Events.CompanyEvent.html">CompanyEvent</a></div>
+    <div class="level3"><a class="xref" href="Hexalith.Domain.Organizations.Events.PartitionedEvent.html">PartitionedEvent</a></div>
+    <div class="level4"><a class="xref" href="Hexalith.Domain.Events.CommonEntityEvent.html">CommonEntityEvent</a></div>
     <div class="level5"><span class="xref">CompanyEntityEvent</span></div>
       <div class="level6"><a class="xref" href="Hexalith.Domain.Events.CustomerEvent.html">CustomerEvent</a></div>
-      <div class="level6"><a class="xref" href="Hexalith.Domain.Events.InventoryItemEvent.html">InventoryItemEvent</a></div>
+      <div class="level6"><a class="xref" href="Hexalith.Domain.Events.SalesInvoiceEvent.html">SalesInvoiceEvent</a></div>
+      <div class="level6"><a class="xref" href="Hexalith.Domain.Events.SurveyEvent.html">SurveyEvent</a></div>
+      <div class="level6"><a class="xref" href="Hexalith.Domain.InventoryItems.Events.InventoryItemEvent.html">InventoryItemEvent</a></div>
+      <div class="level6"><a class="xref" href="Hexalith.Domain.InventoryItemStocks.Events.InventoryItemStockEvent.html">InventoryItemStockEvent</a></div>
+      <div class="level6"><a class="xref" href="Hexalith.Domain.InventoryUnitConversions.Events.InventoryUnitConversionEvent.html">InventoryUnitConversionEvent</a></div>
+      <div class="level6"><a class="xref" href="Hexalith.Domain.InventoryUnits.Events.InventoryUnitEvent.html">InventoryUnitEvent</a></div>
+      <div class="level6"><a class="xref" href="Hexalith.Domain.PartnerInventoryItems.Events.PartnerInventoryItemEvent.html">PartnerInventoryItemEvent</a></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
@@ -98,10 +104,13 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.CompanyEvent.html">C
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Hexalith.Domain.Events.CompanyEvent.html#Hexalith_Domain_Events_CompanyEvent_CompanyId">CompanyEvent.CompanyId</a>
+      <a class="xref" href="Hexalith.Domain.Events.CommonEntityEvent.html#Hexalith_Domain_Events_CommonEntityEvent_Id">CommonEntityEvent.Id</a>
     </div>
     <div>
-      <a class="xref" href="Hexalith.Domain.Events.PartitionedEvent.html#Hexalith_Domain_Events_PartitionedEvent_PartitionId">PartitionedEvent.PartitionId</a>
+      <a class="xref" href="Hexalith.Domain.Events.CommonEntityEvent.html#Hexalith_Domain_Events_CommonEntityEvent_OriginId">CommonEntityEvent.OriginId</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Domain.Organizations.Events.PartitionedEvent.html#Hexalith_Domain_Organizations_Events_PartitionedEvent_PartitionId">PartitionedEvent.PartitionId</a>
     </div>
     <div>
       <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_Separator">BaseMessage.Separator</a>
@@ -111,6 +120,9 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.CompanyEvent.html">C
     </div>
     <div>
       <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_AggregateName">BaseMessage.AggregateName</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_IsPrivateToAggregate">BaseMessage.IsPrivateToAggregate</a>
     </div>
     <div>
       <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_MajorVersion">BaseMessage.MajorVersion</a>
@@ -126,6 +138,9 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.CompanyEvent.html">C
     </div>
     <div>
       <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_DefaultAggregateName">BaseMessage.DefaultAggregateName()</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_DefaultIsPrivateToAggregate">BaseMessage.DefaultIsPrivateToAggregate()</a>
     </div>
     <div>
       <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_DefaultMajorVersion">BaseMessage.DefaultMajorVersion()</a>
@@ -163,7 +178,8 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.CompanyEvent.html">C
   <h5 id="Hexalith_Domain_Events_CompanyEntityEvent_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataContract]
-public abstract class CompanyEntityEvent : CompanyEvent, IPolymorphicSerializable, IMappableType, IEvent, IMessage</code></pre>
+[Serializable]
+public abstract class CompanyEntityEvent : CommonEntityEvent, IPolymorphicSerializable, IMappableType, IEvent, IMessage</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -172,7 +188,7 @@ public abstract class CompanyEntityEvent : CompanyEvent, IPolymorphicSerializabl
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_CompanyEntityEvent__ctor.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.CompanyEntityEvent.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Events/CompanyEntityEvent.cs/#L47">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Events/CompanyEntityEvent.cs/#L49">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_CompanyEntityEvent__ctor_" data-uid="Hexalith.Domain.Events.CompanyEntityEvent.#ctor*"></a>
   <h4 id="Hexalith_Domain_Events_CompanyEntityEvent__ctor" data-uid="Hexalith.Domain.Events.CompanyEntityEvent.#ctor">CompanyEntityEvent()</h4>
@@ -186,20 +202,20 @@ protected CompanyEntityEvent()</code></pre>
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_CompanyEntityEvent__ctor_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.CompanyEntityEvent.%23ctor(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_CompanyEntityEvent__ctor_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.CompanyEntityEvent.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Events/CompanyEntityEvent.cs/#L39">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Events/CompanyEntityEvent.cs/#L41">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_CompanyEntityEvent__ctor_" data-uid="Hexalith.Domain.Events.CompanyEntityEvent.#ctor*"></a>
-  <h4 id="Hexalith_Domain_Events_CompanyEntityEvent__ctor_System_String_System_String_System_String_" data-uid="Hexalith.Domain.Events.CompanyEntityEvent.#ctor(System.String,System.String,System.String)">CompanyEntityEvent(String, String, String)</h4>
+  <h4 id="Hexalith_Domain_Events_CompanyEntityEvent__ctor_System_String_System_String_System_String_System_String_" data-uid="Hexalith.Domain.Events.CompanyEntityEvent.#ctor(System.String,System.String,System.String,System.String)">CompanyEntityEvent(String, String, String, String)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Domain.Events.CompanyEntityEvent.html">CompanyEntityEvent</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonConstructor]
-protected CompanyEntityEvent(string partitionId, string companyId, string id)</code></pre>
+protected CompanyEntityEvent(string partitionId, string companyId, string originId, string id)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -225,6 +241,12 @@ protected CompanyEntityEvent(string partitionId, string companyId, string id)</c
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">originId</span></td>
+        <td><p>The origin identifier.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
         <td><p>The identifier.</p>
 </td>
@@ -235,21 +257,21 @@ protected CompanyEntityEvent(string partitionId, string companyId, string id)</c
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_CompanyEntityEvent_Id.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.CompanyEntityEvent.Id%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_CompanyEntityEvent_CompanyId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.CompanyEntityEvent.CompanyId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Events/CompanyEntityEvent.cs/#L54">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Events/CompanyEntityEvent.cs/#L56">View Source</a>
   </span>
-  <a id="Hexalith_Domain_Events_CompanyEntityEvent_Id_" data-uid="Hexalith.Domain.Events.CompanyEntityEvent.Id*"></a>
-  <h4 id="Hexalith_Domain_Events_CompanyEntityEvent_Id" data-uid="Hexalith.Domain.Events.CompanyEntityEvent.Id">Id</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the identifier.</p>
+  <a id="Hexalith_Domain_Events_CompanyEntityEvent_CompanyId_" data-uid="Hexalith.Domain.Events.CompanyEntityEvent.CompanyId*"></a>
+  <h4 id="Hexalith_Domain_Events_CompanyEntityEvent_CompanyId" data-uid="Hexalith.Domain.Events.CompanyEntityEvent.CompanyId">CompanyId</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the company identifier.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember(Order = 3)]
-[JsonPropertyOrder(3)]
-public string Id { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 4)]
+[JsonPropertyOrder(4)]
+public string CompanyId { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -262,7 +284,7 @@ public string Id { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><p>The identifier.</p>
+        <td><p>The company identifier.</p>
 </td>
       </tr>
     </tbody>
@@ -282,14 +304,10 @@ public string Id { get; set; }</code></pre>
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="Hexalith.Extensions.Helpers.CollectionHelper.html#Hexalith_Extensions_Helpers_CollectionHelper_IntoArray__1___0_">CollectionHelper.IntoArray&lt;T&gt;(T)</a>
+      <a class="xref" href="Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSame_System_Object_System_Object_">EquatableHelper.AreSame(Object, Object)</a>
   </div>
   <div>
-      <a class="xref" href="Hexalith.Extensions.Helpers.CollectionHelper.html#Hexalith_Extensions_Helpers_CollectionHelper_IntoEnumerable__1___0_">CollectionHelper.IntoEnumerable&lt;T&gt;(T)</a>
-  </div>
-  <h3 id="seealso">See Also</h3>
-  <div class="seealso">
-      <div><a class="xref" href="Hexalith.Domain.Events.CompanyEvent.html">CompanyEvent</a></div>
+      <a class="xref" href="Hexalith.Extensions.Reflections.ObjectDifferenceHelper.html#Hexalith_Extensions_Reflections_ObjectDifferenceHelper_GetDifferenceInformation_System_Object_System_Object_">ObjectDifferenceHelper.GetDifferenceInformation(Object, Object)</a>
   </div>
 </article>
           </div>

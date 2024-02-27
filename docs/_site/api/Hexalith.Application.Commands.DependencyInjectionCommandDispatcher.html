@@ -219,10 +219,149 @@ Implements the <a class="xref" href="Hexalith.Application.Commands.ICommandDispa
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Commands_DependencyInjectionCommandDispatcher_UnDoAsync_Hexalith_Application_Commands_ICommand_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.UnDoAsync(Hexalith.Application.Commands.ICommand%2CHexalith.Domain.Aggregates.IAggregate%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Commands_DependencyInjectionCommandDispatcher_LogDispatchingCommandDebugInformation_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.LogDispatchingCommandDebugInformation(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/Commands/DependencyInjectionCommandDispatcher.cs/#L68">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Commands_DependencyInjectionCommandDispatcher_LogDispatchingCommandDebugInformation_" data-uid="Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.LogDispatchingCommandDebugInformation*"></a>
+  <h4 id="Hexalith_Application_Commands_DependencyInjectionCommandDispatcher_LogDispatchingCommandDebugInformation_System_String_System_String_System_String_" data-uid="Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.LogDispatchingCommandDebugInformation(System.String,System.String,System.String)">LogDispatchingCommandDebugInformation(String, String, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[LoggerMessage(EventId = 0, Level = LogLevel.Debug, Message = &quot;Dispatching command {CommandType} with aggregate id {AggregateName}-{AggregateId}&quot;)]
+public void LogDispatchingCommandDebugInformation(string CommandType, string AggregateName, string AggregateId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">CommandType</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">AggregateName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">AggregateId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Commands_DependencyInjectionCommandDispatcher_LogDispatchingCommandErrorInformation_System_Exception_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.LogDispatchingCommandErrorInformation(System.Exception%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/Commands/DependencyInjectionCommandDispatcher.cs/#L71">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Commands_DependencyInjectionCommandDispatcher_LogDispatchingCommandErrorInformation_" data-uid="Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.LogDispatchingCommandErrorInformation*"></a>
+  <h4 id="Hexalith_Application_Commands_DependencyInjectionCommandDispatcher_LogDispatchingCommandErrorInformation_System_Exception_System_String_System_String_System_String_System_String_" data-uid="Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.LogDispatchingCommandErrorInformation(System.Exception,System.String,System.String,System.String,System.String)">LogDispatchingCommandErrorInformation(Exception, String, String, String, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[LoggerMessage(EventId = 2, Level = LogLevel.Error, Message = &quot;Error while dispatching command {CommandType} with aggregate id {AggregateName}-{AggregateId} : {ErrorMessage}&quot;)]
+public void LogDispatchingCommandErrorInformation(Exception ex, string CommandType, string AggregateName, string AggregateId, string ErrorMessage)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Exception</span></td>
+        <td><span class="parametername">ex</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">CommandType</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">AggregateName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">AggregateId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">ErrorMessage</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Commands_DependencyInjectionCommandDispatcher_LogDispatchingCommandUndoDebugInformation_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.LogDispatchingCommandUndoDebugInformation(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/Commands/DependencyInjectionCommandDispatcher.cs/#L74">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Commands_DependencyInjectionCommandDispatcher_LogDispatchingCommandUndoDebugInformation_" data-uid="Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.LogDispatchingCommandUndoDebugInformation*"></a>
+  <h4 id="Hexalith_Application_Commands_DependencyInjectionCommandDispatcher_LogDispatchingCommandUndoDebugInformation_System_String_System_String_System_String_" data-uid="Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.LogDispatchingCommandUndoDebugInformation(System.String,System.String,System.String)">LogDispatchingCommandUndoDebugInformation(String, String, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[LoggerMessage(EventId = 1, Level = LogLevel.Debug, Message = &quot;Dispatching command {CommandType} undo with aggregate id {AggregateName}-{AggregateId}&quot;)]
+public void LogDispatchingCommandUndoDebugInformation(string CommandType, string AggregateName, string AggregateId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">CommandType</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">AggregateName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">AggregateId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Commands_DependencyInjectionCommandDispatcher_UnDoAsync_Hexalith_Application_Commands_ICommand_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.UnDoAsync(Hexalith.Application.Commands.ICommand%2CHexalith.Domain.Aggregates.IAggregate%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/Commands/DependencyInjectionCommandDispatcher.cs/#L78">View Source</a>
   </span>
   <a id="Hexalith_Application_Commands_DependencyInjectionCommandDispatcher_UnDoAsync_" data-uid="Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.UnDoAsync*"></a>
   <h4 id="Hexalith_Application_Commands_DependencyInjectionCommandDispatcher_UnDoAsync_Hexalith_Application_Commands_ICommand_Hexalith_Domain_Aggregates_IAggregate_System_Threading_CancellationToken_" data-uid="Hexalith.Application.Commands.DependencyInjectionCommandDispatcher.UnDoAsync(Hexalith.Application.Commands.ICommand,Hexalith.Domain.Aggregates.IAggregate,System.Threading.CancellationToken)">UnDoAsync(ICommand, IAggregate, CancellationToken)</h4>
@@ -279,12 +418,6 @@ Implements the <a class="xref" href="Hexalith.Application.Commands.ICommandDispa
       <a class="xref" href="Hexalith.Application.Commands.ICommandDispatcher.html">ICommandDispatcher</a>
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
-  <div>
-      <a class="xref" href="Hexalith.Extensions.Helpers.CollectionHelper.html#Hexalith_Extensions_Helpers_CollectionHelper_IntoArray__1___0_">CollectionHelper.IntoArray&lt;T&gt;(T)</a>
-  </div>
-  <div>
-      <a class="xref" href="Hexalith.Extensions.Helpers.CollectionHelper.html#Hexalith_Extensions_Helpers_CollectionHelper_IntoEnumerable__1___0_">CollectionHelper.IntoEnumerable&lt;T&gt;(T)</a>
-  </div>
   <div>
       <a class="xref" href="Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSame_System_Object_System_Object_">EquatableHelper.AreSame(Object, Object)</a>
   </div>

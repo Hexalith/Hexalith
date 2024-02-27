@@ -138,7 +138,7 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1__ctor_HttpClient_Hexalith_Infrastructure_Dynamics365Finance_Security_IDynamics365FinanceSecurityContext_Microsoft_Extensions_Options_IOptions_Hexalith_Infrastructure_Dynamics365Finance_Configurations_Dynamics365FinanceClientSettings__Microsoft_Extensions_Options_IOptions_Hexalith_Application_Organizations_Configurations_OrganizationSettings__Microsoft_Extensions_Logging_ILogger_Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient__0___.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%601.%23ctor(HttpClient%2CHexalith.Infrastructure.Dynamics365Finance.Security.IDynamics365FinanceSecurityContext%2CMicrosoft.Extensions.Options.IOptions%7BHexalith.Infrastructure.Dynamics365Finance.Configurations.Dynamics365FinanceClientSettings%7D%2CMicrosoft.Extensions.Options.IOptions%7BHexalith.Application.Organizations.Configurations.OrganizationSettings%7D%2CMicrosoft.Extensions.Logging.ILogger%7BHexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%7B%600%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient.cs/#L85">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient.cs/#L90">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1__ctor_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.#ctor*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1__ctor_HttpClient_Hexalith_Infrastructure_Dynamics365Finance_Security_IDynamics365FinanceSecurityContext_Microsoft_Extensions_Options_IOptions_Hexalith_Infrastructure_Dynamics365Finance_Configurations_Dynamics365FinanceClientSettings__Microsoft_Extensions_Options_IOptions_Hexalith_Application_Organizations_Configurations_OrganizationSettings__Microsoft_Extensions_Logging_ILogger_Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient__0___" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.#ctor(HttpClient,Hexalith.Infrastructure.Dynamics365Finance.Security.IDynamics365FinanceSecurityContext,Microsoft.Extensions.Options.IOptions{Hexalith.Infrastructure.Dynamics365Finance.Configurations.Dynamics365FinanceClientSettings},Microsoft.Extensions.Options.IOptions{Hexalith.Application.Organizations.Configurations.OrganizationSettings},Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient{`0}})">Dynamics365FinanceClient(HttpClient, IDynamics365FinanceSecurityContext, IOptions&lt;Dynamics365FinanceClientSettings&gt;, IOptions&lt;OrganizationSettings&gt;, ILogger&lt;Dynamics365FinanceClient&lt;TEntity&gt;&gt;)</h4>
@@ -207,12 +207,40 @@
       </tr>
       <tr>
         <td><span class="xref">System.ArgumentException</span></td>
-        <td><p>The {nameof(s.Instance)} setting is not defined. - finOpsSettings.</p>
+        <td><p>The {nameof(finOpsSettings.Value.Instance)} setting is not defined. - finOpsSettings.</p>
 </td>
       </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1__logger.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%601._logger%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient.cs/#L48">View Source</a>
+  </span>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1__logger" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1._logger">_logger</h4>
+  <div class="markdown level1 summary"><p>Gets the logger.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ILogger _logger</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
       <tr>
-        <td><span class="xref">System.ArgumentException</span></td>
-        <td><p>The {nameof(s.Company)} setting is not defined. - finOpsSettings.</p>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Logging.ILogger</span></td>
+        <td><p>The logger.</p>
 </td>
       </tr>
     </tbody>
@@ -224,11 +252,12 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_DefaultCompany.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%601.DefaultCompany%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient.cs/#L130">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient.cs/#L139">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_DefaultCompany_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.DefaultCompany*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_DefaultCompany" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.DefaultCompany">DefaultCompany</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the connection default company.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -245,7 +274,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>The connection default company.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -254,7 +284,7 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_JsonOptions.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%601.JsonOptions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient.cs/#L119">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient.cs/#L126">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_JsonOptions_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.JsonOptions*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_JsonOptions" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.JsonOptions">JsonOptions</h4>
@@ -281,38 +311,6 @@
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_Logger.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%601.Logger%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient.cs/#L136">View Source</a>
-  </span>
-  <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_Logger_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.Logger*"></a>
-  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_Logger" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.Logger">Logger</h4>
-  <div class="markdown level1 summary"><p>Gets the logger.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected ILogger Logger { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Microsoft.Extensions.Logging.ILogger</span></td>
-        <td><p>The logger.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
@@ -324,7 +322,8 @@
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_CountAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.CountAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_CountAsync_Hexalith_Infrastructure_Dynamics365Finance_Models_ICommonFilter_CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.CountAsync(Hexalith.Infrastructure.Dynamics365Finance.Models.ICommonFilter,CancellationToken)">CountAsync(ICommonFilter, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Counts the asynchronous.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -343,12 +342,14 @@
       <tr>
         <td><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.ICommonFilter.html">ICommonFilter</a></td>
         <td><span class="parametername">filter</span></td>
-        <td></td>
+        <td><p>The filter.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -363,7 +364,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
-        <td></td>
+        <td><p>Task&lt;System.Int32&gt;.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -376,7 +378,8 @@
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_CountAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.CountAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_CountAsync_Hexalith_Infrastructure_Dynamics365Finance_Models_IPerCompanyFilter_CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.CountAsync(Hexalith.Infrastructure.Dynamics365Finance.Models.IPerCompanyFilter,CancellationToken)">CountAsync(IPerCompanyFilter, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Counts the number of occurrences.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -395,12 +398,14 @@
       <tr>
         <td><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.IPerCompanyFilter.html">IPerCompanyFilter</a></td>
         <td><span class="parametername">filter</span></td>
-        <td></td>
+        <td><p>The filter.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -415,7 +420,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
-        <td></td>
+        <td><p>Task&lt;System.Int32&gt;.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -424,15 +430,16 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_DoActionAsync_System_String_IDictionary_System_String_System_Object__CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%601.DoActionAsync(System.String%2CIDictionary%7BSystem.String%2CSystem.Object%7D%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient.cs/#L139">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient.cs/#L142">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_DoActionAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.DoActionAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_DoActionAsync_System_String_IDictionary_System_String_System_Object__CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.DoActionAsync(System.String,IDictionary{System.String,System.Object},CancellationToken)">DoActionAsync(String, IDictionary&lt;String, Object&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Execute an action on a Dynamics 365 Finance and Operations entity.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task DoActionAsync(string action, IDictionary&lt;string, object&gt; parameters, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task DoActionAsync(string action, IDictionary&lt;string, object&gt; parameters, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -447,17 +454,20 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">action</span></td>
-        <td></td>
+        <td><p>Action name.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">parameters</span></td>
-        <td></td>
+        <td><p>Action parameters.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>Cancellation token.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -472,7 +482,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span></td>
-        <td></td>
+        <td><p>Task.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -485,7 +496,8 @@
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_ExistsAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.ExistsAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_ExistsAsync_Hexalith_Infrastructure_Dynamics365Finance_Models_ICommonFilter_CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.ExistsAsync(Hexalith.Infrastructure.Dynamics365Finance.Models.ICommonFilter,CancellationToken)">ExistsAsync(ICommonFilter, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Counts the number of occurrences.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -504,12 +516,14 @@
       <tr>
         <td><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.ICommonFilter.html">ICommonFilter</a></td>
         <td><span class="parametername">filter</span></td>
-        <td></td>
+        <td><p>The filter.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -524,7 +538,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
-        <td></td>
+        <td><p>Task&lt;System.Boolean&gt;.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -537,7 +552,8 @@
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_ExistsAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.ExistsAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_ExistsAsync_Hexalith_Infrastructure_Dynamics365Finance_Models_ICommonPrimaryKey_CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.ExistsAsync(Hexalith.Infrastructure.Dynamics365Finance.Models.ICommonPrimaryKey,CancellationToken)">ExistsAsync(ICommonPrimaryKey, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Check if entity exists.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -556,12 +572,14 @@
       <tr>
         <td><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.ICommonPrimaryKey.html">ICommonPrimaryKey</a></td>
         <td><span class="parametername">key</span></td>
-        <td></td>
+        <td><p>The key.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -576,7 +594,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
-        <td></td>
+        <td><p>Task&lt;System.Boolean&gt;.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -589,7 +608,8 @@
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_ExistsAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.ExistsAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_ExistsAsync_Hexalith_Infrastructure_Dynamics365Finance_Models_IPerCompanyFilter_CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.ExistsAsync(Hexalith.Infrastructure.Dynamics365Finance.Models.IPerCompanyFilter,CancellationToken)">ExistsAsync(IPerCompanyFilter, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Check if entity exists.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -608,12 +628,14 @@
       <tr>
         <td><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.IPerCompanyFilter.html">IPerCompanyFilter</a></td>
         <td><span class="parametername">filter</span></td>
-        <td></td>
+        <td><p>The filter.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -628,7 +650,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
-        <td></td>
+        <td><p>Task&lt;System.Boolean&gt;.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -641,7 +664,8 @@
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_ExistsAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.ExistsAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_ExistsAsync_Hexalith_Infrastructure_Dynamics365Finance_Models_IPerCompanyPrimaryKey_CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.ExistsAsync(Hexalith.Infrastructure.Dynamics365Finance.Models.IPerCompanyPrimaryKey,CancellationToken)">ExistsAsync(IPerCompanyPrimaryKey, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Check if entity exists.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -660,12 +684,14 @@
       <tr>
         <td><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.IPerCompanyPrimaryKey.html">IPerCompanyPrimaryKey</a></td>
         <td><span class="parametername">key</span></td>
-        <td></td>
+        <td><p>The key.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -680,7 +706,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
-        <td></td>
+        <td><p>Task&lt;System.Boolean&gt;.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -689,7 +716,7 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_FilterToDictionary_Hexalith_Infrastructure_Dynamics365Finance_Models_ICommonFilter_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%601.FilterToDictionary(Hexalith.Infrastructure.Dynamics365Finance.Models.ICommonFilter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient.cs/#L170">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient.cs/#L192">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_FilterToDictionary_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.FilterToDictionary*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_FilterToDictionary_Hexalith_Infrastructure_Dynamics365Finance_Models_ICommonFilter_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.FilterToDictionary(Hexalith.Infrastructure.Dynamics365Finance.Models.ICommonFilter)">FilterToDictionary(ICommonFilter)</h4>
@@ -734,12 +761,33 @@
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p>The filter must have at least one property. - filter.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_FilterToDictionary_Hexalith_Infrastructure_Dynamics365Finance_Models_IPerCompanyFilter_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%601.FilterToDictionary(Hexalith.Infrastructure.Dynamics365Finance.Models.IPerCompanyFilter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient.cs/#L149">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient.cs/#L169">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_FilterToDictionary_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.FilterToDictionary*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_FilterToDictionary_Hexalith_Infrastructure_Dynamics365Finance_Models_IPerCompanyFilter_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.FilterToDictionary(Hexalith.Infrastructure.Dynamics365Finance.Models.IPerCompanyFilter)">FilterToDictionary(IPerCompanyFilter)</h4>
@@ -784,20 +832,42 @@
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p>The filter must have at least one property other than the DataAreaId. - filter.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetAsync_Hexalith_Infrastructure_Dynamics365Finance_Models_ICommonFilter_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%601.GetAsync(Hexalith.Infrastructure.Dynamics365Finance.Models.ICommonFilter%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient{Get}.cs/#L122">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient{Get}.cs/#L130">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetAsync_Hexalith_Infrastructure_Dynamics365Finance_Models_ICommonFilter_CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetAsync(Hexalith.Infrastructure.Dynamics365Finance.Models.ICommonFilter,CancellationToken)">GetAsync(ICommonFilter, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the asynchronous.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;TEntity&gt;&gt; GetAsync(ICommonFilter filter, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;TEntity&gt;&gt; GetAsync(ICommonFilter filter, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -817,7 +887,8 @@
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -832,7 +903,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<span class="xref">IEnumerable</span>&lt;TEntity&gt;&gt;</td>
-        <td></td>
+        <td><p>Task&lt;IEnumerable&lt;TODataElement&gt;&gt;.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -841,15 +913,16 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetAsync_Hexalith_Infrastructure_Dynamics365Finance_Models_IPerCompanyFilter_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%601.GetAsync(Hexalith.Infrastructure.Dynamics365Finance.Models.IPerCompanyFilter%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient{Get}.cs/#L115">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient{Get}.cs/#L123">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetAsync_Hexalith_Infrastructure_Dynamics365Finance_Models_IPerCompanyFilter_CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetAsync(Hexalith.Infrastructure.Dynamics365Finance.Models.IPerCompanyFilter,CancellationToken)">GetAsync(IPerCompanyFilter, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the asynchronous.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;TEntity&gt;&gt; GetAsync(IPerCompanyFilter filter, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;TEntity&gt;&gt; GetAsync(IPerCompanyFilter filter, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -869,7 +942,8 @@
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -884,7 +958,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<span class="xref">IEnumerable</span>&lt;TEntity&gt;&gt;</td>
-        <td></td>
+        <td><p>Task&lt;IEnumerable&lt;TODataElement&gt;&gt;.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -897,11 +972,12 @@
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetAsync_IDictionary_System_String_System_Object__CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetAsync(IDictionary{System.String,System.Object},CancellationToken)">GetAsync(IDictionary&lt;String, Object&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Get a filtered entity object list.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;TEntity&gt;&gt; GetAsync(IDictionary&lt;string, object&gt; filter, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;TEntity&gt;&gt; GetAsync(IDictionary&lt;string, object&gt; filter, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -916,12 +992,14 @@
       <tr>
         <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">filter</span></td>
-        <td></td>
+        <td><p>Filter values.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>Cancellation token.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -936,7 +1014,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<span class="xref">IEnumerable</span>&lt;TEntity&gt;&gt;</td>
-        <td></td>
+        <td><p>List of entity objects.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -945,15 +1024,16 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetAsync_System_String_IDictionary_System_String_System_Object__CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%601.GetAsync(System.String%2CIDictionary%7BSystem.String%2CSystem.Object%7D%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient.cs/#L142">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient.cs/#L156">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetAsync_System_String_IDictionary_System_String_System_Object__CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetAsync(System.String,IDictionary{System.String,System.Object},CancellationToken)">GetAsync(String, IDictionary&lt;String, Object&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Get as an asynchronous operation.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;TEntity&gt;&gt; GetAsync(string company, IDictionary&lt;string, object&gt; filter, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;TEntity&gt;&gt; GetAsync(string company, IDictionary&lt;string, object&gt; filter, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -968,17 +1048,20 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">company</span></td>
-        <td></td>
+        <td><p>The company.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">filter</span></td>
-        <td></td>
+        <td><p>The filter.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -993,7 +1076,24 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<span class="xref">IEnumerable</span>&lt;TEntity&gt;&gt;</td>
-        <td></td>
+        <td><p>A Task&lt;IEnumerable`1&gt; representing the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.NotImplementedException</span></td>
+        <td><p>null.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1002,7 +1102,7 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetAsync_Uri_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%601.GetAsync(Uri%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient{Get}.cs/#L70">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient{Get}.cs/#L78">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetAsync_Uri_CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetAsync(Uri,CancellationToken)">GetAsync(Uri, CancellationToken)</h4>
@@ -1054,11 +1154,12 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetCommonAsync_IDictionary_System_String_System_Object__CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%601.GetCommonAsync(IDictionary%7BSystem.String%2CSystem.Object%7D%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient{Get}.cs/#L126">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient{Get}.cs/#L134">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetCommonAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetCommonAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetCommonAsync_IDictionary_System_String_System_Object__CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetCommonAsync(IDictionary{System.String,System.Object},CancellationToken)">GetCommonAsync(IDictionary&lt;String, Object&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the common asynchronous.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -1077,12 +1178,14 @@
       <tr>
         <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">filter</span></td>
-        <td></td>
+        <td><p>The filter.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1097,7 +1200,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<span class="xref">IEnumerable</span>&lt;TEntity&gt;&gt;</td>
-        <td></td>
+        <td><p>Task&lt;IEnumerable&lt;TODataCommon&gt;&gt;.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1106,11 +1210,12 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetPerCompanyAsync_System_String_IDictionary_System_String_System_Object__CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%601.GetPerCompanyAsync(System.String%2CIDictionary%7BSystem.String%2CSystem.Object%7D%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient{Get}.cs/#L134">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient{Get}.cs/#L142">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetPerCompanyAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetPerCompanyAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetPerCompanyAsync_System_String_IDictionary_System_String_System_Object__CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetPerCompanyAsync(System.String,IDictionary{System.String,System.Object},CancellationToken)">GetPerCompanyAsync(String, IDictionary&lt;String, Object&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the per company asynchronous.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -1129,17 +1234,20 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">company</span></td>
-        <td></td>
+        <td><p>The company.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">filter</span></td>
-        <td></td>
+        <td><p>The filter.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1154,7 +1262,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<span class="xref">IEnumerable</span>&lt;TEntity&gt;&gt;</td>
-        <td></td>
+        <td><p>Task&lt;IEnumerable&lt;TODataCommon&gt;&gt;.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1163,11 +1272,12 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetSingleAsync_Hexalith_Infrastructure_Dynamics365Finance_Models_ICommonFilter_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%601.GetSingleAsync(Hexalith.Infrastructure.Dynamics365Finance.Models.ICommonFilter%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient{Get}.cs/#L156">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient{Get}.cs/#L164">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetSingleAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetSingleAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetSingleAsync_Hexalith_Infrastructure_Dynamics365Finance_Models_ICommonFilter_CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetSingleAsync(Hexalith.Infrastructure.Dynamics365Finance.Models.ICommonFilter,CancellationToken)">GetSingleAsync(ICommonFilter, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the single asynchronous.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -1186,12 +1296,14 @@
       <tr>
         <td><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.ICommonFilter.html">ICommonFilter</a></td>
         <td><span class="parametername">key</span></td>
-        <td></td>
+        <td><p>The key.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1206,7 +1318,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;TEntity&gt;</td>
-        <td></td>
+        <td><p>Task&lt;TODataElement&gt;.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1215,15 +1328,16 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetSingleAsync_Hexalith_Infrastructure_Dynamics365Finance_Models_ICommonPrimaryKey_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%601.GetSingleAsync(Hexalith.Infrastructure.Dynamics365Finance.Models.ICommonPrimaryKey%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient{Get}.cs/#L175">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient{Get}.cs/#L183">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetSingleAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetSingleAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetSingleAsync_Hexalith_Infrastructure_Dynamics365Finance_Models_ICommonPrimaryKey_CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetSingleAsync(Hexalith.Infrastructure.Dynamics365Finance.Models.ICommonPrimaryKey,CancellationToken)">GetSingleAsync(ICommonPrimaryKey, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Get entity object by it's primary key.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;TEntity&gt; GetSingleAsync(ICommonPrimaryKey key, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;TEntity&gt; GetSingleAsync(ICommonPrimaryKey key, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1238,12 +1352,14 @@
       <tr>
         <td><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.ICommonPrimaryKey.html">ICommonPrimaryKey</a></td>
         <td><span class="parametername">key</span></td>
-        <td></td>
+        <td><p>The key.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1258,7 +1374,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;TEntity&gt;</td>
-        <td></td>
+        <td><p>Entity object.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1267,11 +1384,12 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetSingleAsync_Hexalith_Infrastructure_Dynamics365Finance_Models_IPerCompanyFilter_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%601.GetSingleAsync(Hexalith.Infrastructure.Dynamics365Finance.Models.IPerCompanyFilter%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient{Get}.cs/#L144">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient{Get}.cs/#L152">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetSingleAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetSingleAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetSingleAsync_Hexalith_Infrastructure_Dynamics365Finance_Models_IPerCompanyFilter_CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetSingleAsync(Hexalith.Infrastructure.Dynamics365Finance.Models.IPerCompanyFilter,CancellationToken)">GetSingleAsync(IPerCompanyFilter, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the single asynchronous.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -1290,12 +1408,14 @@
       <tr>
         <td><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.IPerCompanyFilter.html">IPerCompanyFilter</a></td>
         <td><span class="parametername">key</span></td>
-        <td></td>
+        <td><p>The key.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1310,7 +1430,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;TEntity&gt;</td>
-        <td></td>
+        <td><p>Task&lt;TODataElement&gt;.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1319,15 +1440,16 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetSingleAsync_Hexalith_Infrastructure_Dynamics365Finance_Models_IPerCompanyPrimaryKey_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%601.GetSingleAsync(Hexalith.Infrastructure.Dynamics365Finance.Models.IPerCompanyPrimaryKey%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient{Get}.cs/#L168">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient{Get}.cs/#L176">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetSingleAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetSingleAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetSingleAsync_Hexalith_Infrastructure_Dynamics365Finance_Models_IPerCompanyPrimaryKey_CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetSingleAsync(Hexalith.Infrastructure.Dynamics365Finance.Models.IPerCompanyPrimaryKey,CancellationToken)">GetSingleAsync(IPerCompanyPrimaryKey, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Get per company entity object by it's primary key.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;TEntity&gt; GetSingleAsync(IPerCompanyPrimaryKey key, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;TEntity&gt; GetSingleAsync(IPerCompanyPrimaryKey key, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1342,12 +1464,14 @@
       <tr>
         <td><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.IPerCompanyPrimaryKey.html">IPerCompanyPrimaryKey</a></td>
         <td><span class="parametername">key</span></td>
-        <td></td>
+        <td><p>The per company key.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1362,7 +1486,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;TEntity&gt;</td>
-        <td></td>
+        <td><p>Entity object.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1371,15 +1496,16 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetSingleAsync_IDictionary_System_String_System_Object__CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%601.GetSingleAsync(IDictionary%7BSystem.String%2CSystem.Object%7D%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient{Get}.cs/#L178">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient{Get}.cs/#L186">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetSingleAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetSingleAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetSingleAsync_IDictionary_System_String_System_Object__CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetSingleAsync(IDictionary{System.String,System.Object},CancellationToken)">GetSingleAsync(IDictionary&lt;String, Object&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Get entity object by it's primary key.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;TEntity&gt; GetSingleAsync(IDictionary&lt;string, object&gt; keys, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;TEntity&gt; GetSingleAsync(IDictionary&lt;string, object&gt; keys, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1394,12 +1520,14 @@
       <tr>
         <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">keys</span></td>
-        <td></td>
+        <td><p>Primary key values.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>Cancellation token.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1414,7 +1542,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;TEntity&gt;</td>
-        <td></td>
+        <td><p>Entity object.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1423,11 +1552,12 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetSingleAsync_System_String_IDictionary_System_String_System_Object__CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%601.GetSingleAsync(System.String%2CIDictionary%7BSystem.String%2CSystem.Object%7D%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient{Get}.cs/#L182">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient{Get}.cs/#L190">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetSingleAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetSingleAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_GetSingleAsync_System_String_IDictionary_System_String_System_Object__CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.GetSingleAsync(System.String,IDictionary{System.String,System.Object},CancellationToken)">GetSingleAsync(String, IDictionary&lt;String, Object&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Get entity object by it's primary key.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -1446,17 +1576,20 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">company</span></td>
-        <td></td>
+        <td><p>Company identifier.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">keys</span></td>
-        <td></td>
+        <td><p>Primary key values.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>Cancellation token.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1471,7 +1604,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;TEntity&gt;</td>
-        <td></td>
+        <td><p>Entity object.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1480,7 +1614,7 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_KeyToDictionary_Hexalith_Infrastructure_Dynamics365Finance_Models_ICommonPrimaryKey_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%601.KeyToDictionary(Hexalith.Infrastructure.Dynamics365Finance.Models.ICommonPrimaryKey)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient.cs/#L207">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient.cs/#L233">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_KeyToDictionary_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.KeyToDictionary*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_KeyToDictionary_Hexalith_Infrastructure_Dynamics365Finance_Models_ICommonPrimaryKey_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.KeyToDictionary(Hexalith.Infrastructure.Dynamics365Finance.Models.ICommonPrimaryKey)">KeyToDictionary(ICommonPrimaryKey)</h4>
@@ -1525,12 +1659,33 @@
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p>The key must have at least one property. - key.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_KeyToDictionary_Hexalith_Infrastructure_Dynamics365Finance_Models_IPerCompanyPrimaryKey_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%601.KeyToDictionary(Hexalith.Infrastructure.Dynamics365Finance.Models.IPerCompanyPrimaryKey)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient.cs/#L186">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient.cs/#L210">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_KeyToDictionary_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.KeyToDictionary*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_KeyToDictionary_Hexalith_Infrastructure_Dynamics365Finance_Models_IPerCompanyPrimaryKey_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.KeyToDictionary(Hexalith.Infrastructure.Dynamics365Finance.Models.IPerCompanyPrimaryKey)">KeyToDictionary(IPerCompanyPrimaryKey)</h4>
@@ -1575,6 +1730,232 @@
       </tr>
     </tbody>
   </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p>The key must have at least one property other than the DataAreaId. - key.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_LogCantGetEntityWithFilterError_Exception_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%601.LogCantGetEntityWithFilterError(Exception%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient{Get}.cs/#L236">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_LogCantGetEntityWithFilterError_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.LogCantGetEntityWithFilterError*"></a>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_LogCantGetEntityWithFilterError_Exception_System_String_System_String_System_String_System_String_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.LogCantGetEntityWithFilterError(Exception,System.String,System.String,System.String,System.String)">LogCantGetEntityWithFilterError(Exception, String, String, String, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[LoggerMessage(EventId = 2, Level = LogLevel.Error, Message = &quot;Can't get {EntityName} list with filter {Filter}. The method call to '{Path}' failed. response content :\n{ResponseContent}&quot;)]
+public void LogCantGetEntityWithFilterError(Exception e, string entityName, string filter, string path, string responseContent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Exception</span></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">entityName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">filter</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">path</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">responseContent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_LogCantGetEntityWithKeyError_Exception_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%601.LogCantGetEntityWithKeyError(Exception%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient{Get}.cs/#L247">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_LogCantGetEntityWithKeyError_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.LogCantGetEntityWithKeyError*"></a>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_LogCantGetEntityWithKeyError_Exception_System_String_System_String_System_String_System_String_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.LogCantGetEntityWithKeyError(Exception,System.String,System.String,System.String,System.String)">LogCantGetEntityWithKeyError(Exception, String, String, String, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[LoggerMessage(EventId = 3, Level = LogLevel.Error, Message = &quot;Can't get {EntityName} with keys {Keys}. The method call to '{Path}' failed. response content :\n{ResponseContent}&quot;)]
+public void LogCantGetEntityWithKeyError(Exception e, string entityName, string keys, string path, string responseContent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Exception</span></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">entityName</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">keys</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">path</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">responseContent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_LogDynamicsOdataCallInformation_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%601.LogDynamicsOdataCallInformation(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient{Get}.cs/#L254">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_LogDynamicsOdataCallInformation_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.LogDynamicsOdataCallInformation*"></a>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_LogDynamicsOdataCallInformation_System_String_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.LogDynamicsOdataCallInformation(System.String)">LogDynamicsOdataCallInformation(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[LoggerMessage(EventId = 1, Level = LogLevel.Information, Message = &quot;Calling Dynamics 365 Finance ODATA endpoint : {Path}.&quot;)]
+public void LogDynamicsOdataCallInformation(string path)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">path</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_LogMethodCallSuccessfulDebugInformation_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%601.LogMethodCallSuccessfulDebugInformation(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient{Get}.cs/#L261">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_LogMethodCallSuccessfulDebugInformation_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.LogMethodCallSuccessfulDebugInformation*"></a>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_LogMethodCallSuccessfulDebugInformation_System_String_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.LogMethodCallSuccessfulDebugInformation(System.String)">LogMethodCallSuccessfulDebugInformation(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[LoggerMessage(EventId = 4, Level = LogLevel.Debug, Message = &quot;The method call to '{Path}' was successful.&quot;)]
+public void LogMethodCallSuccessfulDebugInformation(string path)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">path</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_LogTheMethodCallToPathWasSuccessfulTraceInformation_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%601.LogTheMethodCallToPathWasSuccessfulTraceInformation(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Client/Dynamics365FinanceClient{Get}.cs/#L268">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_LogTheMethodCallToPathWasSuccessfulTraceInformation_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.LogTheMethodCallToPathWasSuccessfulTraceInformation*"></a>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_LogTheMethodCallToPathWasSuccessfulTraceInformation_System_String_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.LogTheMethodCallToPathWasSuccessfulTraceInformation(System.String)">LogTheMethodCallToPathWasSuccessfulTraceInformation(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[LoggerMessage(EventId = 0, Level = LogLevel.Debug, Message = &quot;Calling Dynamics 365 Finance ODATA endpoint : {Path}.&quot;)]
+public void LogTheMethodCallToPathWasSuccessfulTraceInformation(string path)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">path</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_PatchAsync__1_Hexalith_Infrastructure_Dynamics365Finance_Models_ICommonPrimaryKey___0_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient%601.PatchAsync%60%601(Hexalith.Infrastructure.Dynamics365Finance.Models.ICommonPrimaryKey%2C%60%600%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
@@ -1584,7 +1965,8 @@
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_PatchAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.PatchAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_PatchAsync__1_Hexalith_Infrastructure_Dynamics365Finance_Models_ICommonPrimaryKey___0_CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.PatchAsync``1(Hexalith.Infrastructure.Dynamics365Finance.Models.ICommonPrimaryKey,``0,CancellationToken)">PatchAsync&lt;TUpdate&gt;(ICommonPrimaryKey, TUpdate, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Patch a common entity object.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -1603,17 +1985,20 @@
       <tr>
         <td><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.ICommonPrimaryKey.html">ICommonPrimaryKey</a></td>
         <td><span class="parametername">key</span></td>
-        <td></td>
+        <td><p>The key.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">TUpdate</span></td>
         <td><span class="parametername">value</span></td>
-        <td></td>
+        <td><p>The value.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1628,7 +2013,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span></td>
-        <td></td>
+        <td><p>Task.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1643,7 +2029,8 @@
     <tbody>
       <tr>
         <td><span class="parametername">TUpdate</span></td>
-        <td></td>
+        <td><p>The type of the t update.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1656,7 +2043,8 @@
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_PatchAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.PatchAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_PatchAsync__1_Hexalith_Infrastructure_Dynamics365Finance_Models_IPerCompanyPrimaryKey___0_CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.PatchAsync``1(Hexalith.Infrastructure.Dynamics365Finance.Models.IPerCompanyPrimaryKey,``0,CancellationToken)">PatchAsync&lt;TUpdate&gt;(IPerCompanyPrimaryKey, TUpdate, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Patch a per company entity object.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -1675,17 +2063,20 @@
       <tr>
         <td><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.IPerCompanyPrimaryKey.html">IPerCompanyPrimaryKey</a></td>
         <td><span class="parametername">key</span></td>
-        <td></td>
+        <td><p>The key.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">TUpdate</span></td>
         <td><span class="parametername">value</span></td>
-        <td></td>
+        <td><p>The value.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1700,7 +2091,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span></td>
-        <td></td>
+        <td><p>Task.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1715,7 +2107,8 @@
     <tbody>
       <tr>
         <td><span class="parametername">TUpdate</span></td>
-        <td></td>
+        <td><p>The type of the t update.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1728,7 +2121,8 @@
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_PatchAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.PatchAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_PatchAsync__1_IDictionary_System_String_System_Object____0_CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.PatchAsync``1(IDictionary{System.String,System.Object},``0,CancellationToken)">PatchAsync&lt;TUpdate&gt;(IDictionary&lt;String, Object&gt;, TUpdate, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Patch an entity object.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -1747,17 +2141,20 @@
       <tr>
         <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">key</span></td>
-        <td></td>
+        <td><p>Primary key values.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">TUpdate</span></td>
         <td><span class="parametername">value</span></td>
-        <td></td>
+        <td><p>Values to update.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>Cancellation token.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1772,7 +2169,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span></td>
-        <td></td>
+        <td><p>The entity valued task.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1787,7 +2185,8 @@
     <tbody>
       <tr>
         <td><span class="parametername">TUpdate</span></td>
-        <td></td>
+        <td><p>Type of the update entity model.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1800,7 +2199,8 @@
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_PatchAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.PatchAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_PatchAsync__1_System_String_IDictionary_System_String_System_Object____0_CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.PatchAsync``1(System.String,IDictionary{System.String,System.Object},``0,CancellationToken)">PatchAsync&lt;TUpdate&gt;(String, IDictionary&lt;String, Object&gt;, TUpdate, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Patch an entity object.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -1819,22 +2219,26 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">company</span></td>
-        <td></td>
+        <td><p>Company identifier.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">key</span></td>
-        <td></td>
+        <td><p>Primary key values.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">TUpdate</span></td>
         <td><span class="parametername">value</span></td>
-        <td></td>
+        <td><p>Values to update.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>Cancellation token.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1849,7 +2253,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span></td>
-        <td></td>
+        <td><p>The entity valued task.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1864,7 +2269,8 @@
     <tbody>
       <tr>
         <td><span class="parametername">TUpdate</span></td>
-        <td></td>
+        <td><p>Type of the update entity model.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1877,7 +2283,8 @@
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_PostAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.PostAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_PostAsync__1___0_CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.PostAsync``1(``0,CancellationToken)">PostAsync&lt;TCreate&gt;(TCreate, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Post a new entity object.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -1896,12 +2303,14 @@
       <tr>
         <td><span class="xref">TCreate</span></td>
         <td><span class="parametername">value</span></td>
-        <td></td>
+        <td><p>New entity value to create.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>Cancellation token.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1916,7 +2325,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;TEntity&gt;</td>
-        <td></td>
+        <td><p>Http response to the post request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1931,7 +2341,8 @@
     <tbody>
       <tr>
         <td><span class="parametername">TCreate</span></td>
-        <td></td>
+        <td><p>Type of the create entity model.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1944,7 +2355,8 @@
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_PostAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.PostAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_PostAsync__1_System_String___0_CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.PostAsync``1(System.String,``0,CancellationToken)">PostAsync&lt;TCreate&gt;(String, TCreate, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Post a new entity object.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -1963,17 +2375,20 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">company</span></td>
-        <td></td>
+        <td><p>Company identifier.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">TCreate</span></td>
         <td><span class="parametername">value</span></td>
-        <td></td>
+        <td><p>New entity value to create.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>Cancellation token.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1988,7 +2403,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;TEntity&gt;</td>
-        <td></td>
+        <td><p>Http response to the post request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -2003,7 +2419,8 @@
     <tbody>
       <tr>
         <td><span class="parametername">TCreate</span></td>
-        <td></td>
+        <td><p>Type of the create entity model.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -2016,7 +2433,8 @@
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_SendPatchAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.SendPatchAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_SendPatchAsync__1_IDictionary_System_String_System_Object____0_CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.SendPatchAsync``1(IDictionary{System.String,System.Object},``0,CancellationToken)">SendPatchAsync&lt;TUpdate&gt;(IDictionary&lt;String, Object&gt;, TUpdate, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Patch an entity object.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -2035,17 +2453,20 @@
       <tr>
         <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">key</span></td>
-        <td></td>
+        <td><p>Primary key values.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">TUpdate</span></td>
         <td><span class="parametername">value</span></td>
-        <td></td>
+        <td><p>Values to update.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>Cancellation token.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -2060,7 +2481,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<span class="xref">HttpResponseMessage</span>&gt;</td>
-        <td></td>
+        <td><p>The response message valued task.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -2075,7 +2497,8 @@
     <tbody>
       <tr>
         <td><span class="parametername">TUpdate</span></td>
-        <td></td>
+        <td><p>Type of the update entity model.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -2088,7 +2511,8 @@
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_SendPatchAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.SendPatchAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_SendPatchAsync__1_System_String_IDictionary_System_String_System_Object____0_CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.SendPatchAsync``1(System.String,IDictionary{System.String,System.Object},``0,CancellationToken)">SendPatchAsync&lt;TUpdate&gt;(String, IDictionary&lt;String, Object&gt;, TUpdate, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Patch an entity object.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -2107,22 +2531,26 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">company</span></td>
-        <td></td>
+        <td><p>Company identifier.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">key</span></td>
-        <td></td>
+        <td><p>Primary key values.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">TUpdate</span></td>
         <td><span class="parametername">value</span></td>
-        <td></td>
+        <td><p>Values to update.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>Cancellation token.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -2137,7 +2565,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<span class="xref">HttpResponseMessage</span>&gt;</td>
-        <td></td>
+        <td><p>The response message valued task.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -2152,7 +2581,8 @@
     <tbody>
       <tr>
         <td><span class="parametername">TUpdate</span></td>
-        <td></td>
+        <td><p>Type of the update entity model.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -2165,11 +2595,12 @@
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_SendPostAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.SendPostAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_SendPostAsync__1___0_CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.SendPostAsync``1(``0,CancellationToken)">SendPostAsync&lt;TCreate&gt;(TCreate, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Post a new entity object.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;HttpResponseMessage&gt; SendPostAsync&lt;TCreate&gt;(TCreate value, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;HttpResponseMessage&gt; SendPostAsync&lt;TCreate&gt;(TCreate value, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2184,12 +2615,14 @@
       <tr>
         <td><span class="xref">TCreate</span></td>
         <td><span class="parametername">value</span></td>
-        <td></td>
+        <td><p>New entity value to create.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>Cancellation token.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -2204,7 +2637,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<span class="xref">HttpResponseMessage</span>&gt;</td>
-        <td></td>
+        <td><p>Http response to the post request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -2219,7 +2653,8 @@
     <tbody>
       <tr>
         <td><span class="parametername">TCreate</span></td>
-        <td></td>
+        <td><p>Type of the create entity model.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -2232,7 +2667,8 @@
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_SendPostAsync_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.SendPostAsync*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Client_Dynamics365FinanceClient_1_SendPostAsync__1_System_String___0_CancellationToken_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Client.Dynamics365FinanceClient`1.SendPostAsync``1(System.String,``0,CancellationToken)">SendPostAsync&lt;TCreate&gt;(String, TCreate, CancellationToken)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Post a new entity object.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -2251,17 +2687,20 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">company</span></td>
-        <td></td>
+        <td><p>Company identifier.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">TCreate</span></td>
         <td><span class="parametername">value</span></td>
-        <td></td>
+        <td><p>New entity value to create.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
+        <td><p>Cancellation token.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -2276,7 +2715,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Task</span>&lt;<span class="xref">HttpResponseMessage</span>&gt;</td>
-        <td></td>
+        <td><p>Http response to the post request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -2291,7 +2731,8 @@
     <tbody>
       <tr>
         <td><span class="parametername">TCreate</span></td>
-        <td></td>
+        <td><p>Type of the create entity model.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -2300,12 +2741,6 @@
       <a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Client.IDynamics365FinanceClient-1.html">IDynamics365FinanceClient&lt;TODataCommon&gt;</a>
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
-  <div>
-      <a class="xref" href="Hexalith.Extensions.Helpers.CollectionHelper.html#Hexalith_Extensions_Helpers_CollectionHelper_IntoArray__1___0_">CollectionHelper.IntoArray&lt;T&gt;(T)</a>
-  </div>
-  <div>
-      <a class="xref" href="Hexalith.Extensions.Helpers.CollectionHelper.html#Hexalith_Extensions_Helpers_CollectionHelper_IntoEnumerable__1___0_">CollectionHelper.IntoEnumerable&lt;T&gt;(T)</a>
-  </div>
   <div>
       <a class="xref" href="Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSame_System_Object_System_Object_">EquatableHelper.AreSame(Object, Object)</a>
   </div>

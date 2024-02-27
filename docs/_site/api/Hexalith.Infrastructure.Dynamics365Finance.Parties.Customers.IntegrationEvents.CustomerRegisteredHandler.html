@@ -80,7 +80,7 @@ Implements the <see cref="!:CustomerEventsHandler&lt;CustomerRegistered>"></see>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="Hexalith.Application.Events.IntegrationEventHandler-1.html">IntegrationEventHandler</a>&lt;<a class="xref" href="Hexalith.Domain.Events.CustomerRegistered.html">CustomerRegistered</a>&gt;</div>
+    <div class="level1"><a class="xref" href="Hexalith.Application.Events.IntegrationEventHandlerBase-1.html">IntegrationEventHandlerBase</a>&lt;<a class="xref" href="Hexalith.Domain.Events.CustomerRegistered.html">CustomerRegistered</a>&gt;</div>
     <div class="level2"><span class="xref">CustomerRegisteredHandler</span></div>
   </div>
   <div class="implements">
@@ -91,7 +91,7 @@ Implements the <see cref="!:CustomerEventsHandler&lt;CustomerRegistered>"></see>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Hexalith.Application.Events.IntegrationEventHandler-1.html#Hexalith_Application_Events_IntegrationEventHandler_1_ApplyAsync__0_CancellationToken_">IntegrationEventHandler&lt;CustomerRegistered&gt;.ApplyAsync(CustomerRegistered, CancellationToken)</a>
+      <a class="xref" href="Hexalith.Application.Events.IntegrationEventHandlerBase-1.html#Hexalith_Application_Events_IntegrationEventHandlerBase_1_ApplyAsync__0_CancellationToken_">IntegrationEventHandlerBase&lt;CustomerRegistered&gt;.ApplyAsync(CustomerRegistered, CancellationToken)</a>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
@@ -119,7 +119,7 @@ Implements the <see cref="!:CustomerEventsHandler&lt;CustomerRegistered>"></see>
   <h6><strong>Assembly</strong>: Hexalith.Infrastructure.Dynamics365Finance.Parties.dll</h6>
   <h5 id="Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_IntegrationEvents_CustomerRegisteredHandler_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class CustomerRegisteredHandler : IntegrationEventHandler&lt;CustomerRegistered&gt;, IIntegrationEventHandler&lt;CustomerRegistered&gt;, IIntegrationEventHandler</code></pre>
+    <pre><code class="lang-csharp hljs">public class CustomerRegisteredHandler : IntegrationEventHandlerBase&lt;CustomerRegistered&gt;, IIntegrationEventHandler&lt;CustomerRegistered&gt;, IIntegrationEventHandler</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -252,12 +252,6 @@ Implements the <see cref="!:CustomerEventsHandler&lt;CustomerRegistered>"></see>
       <a class="xref" href="Hexalith.Application.Events.IIntegrationEventHandler.html">IIntegrationEventHandler</a>
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
-  <div>
-      <a class="xref" href="Hexalith.Extensions.Helpers.CollectionHelper.html#Hexalith_Extensions_Helpers_CollectionHelper_IntoArray__1___0_">CollectionHelper.IntoArray&lt;T&gt;(T)</a>
-  </div>
-  <div>
-      <a class="xref" href="Hexalith.Extensions.Helpers.CollectionHelper.html#Hexalith_Extensions_Helpers_CollectionHelper_IntoEnumerable__1___0_">CollectionHelper.IntoEnumerable&lt;T&gt;(T)</a>
-  </div>
   <div>
       <a class="xref" href="Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSame_System_Object_System_Object_">EquatableHelper.AreSame(Object, Object)</a>
   </div>

@@ -74,13 +74,13 @@
   <h1 id="Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_BusinessEvents_Dynamics365FinanceCustomerRegisteredHandler" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegisteredHandler" class="text-break">Class Dynamics365FinanceCustomerRegisteredHandler
   </h1>
   <div class="markdown level0 summary"><p>Class CustomerEventHandler.
-Implements the <a class="xref" href="Hexalith.Application.Events.IntegrationEventHandler-1.html">IntegrationEventHandler&lt;TEvent&gt;</a>.</p>
+Implements the <a class="xref" href="Hexalith.Application.Events.IntegrationEventHandlerBase-1.html">IntegrationEventHandlerBase&lt;TEvent&gt;</a>.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="Hexalith.Application.Events.IntegrationEventHandler-1.html">IntegrationEventHandler</a>&lt;<a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegistered.html">Dynamics365FinanceCustomerRegistered</a>&gt;</div>
+    <div class="level1"><a class="xref" href="Hexalith.Application.Events.IntegrationEventHandlerBase-1.html">IntegrationEventHandlerBase</a>&lt;<a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegistered.html">Dynamics365FinanceCustomerRegistered</a>&gt;</div>
     <div class="level2"><span class="xref">Dynamics365FinanceCustomerRegisteredHandler</span></div>
   </div>
   <div class="implements">
@@ -116,7 +116,7 @@ Implements the <a class="xref" href="Hexalith.Application.Events.IntegrationEven
   <h6><strong>Assembly</strong>: Hexalith.Infrastructure.Dynamics365Finance.Parties.dll</h6>
   <h5 id="Hexalith_Infrastructure_Dynamics365Finance_Parties_Customers_BusinessEvents_Dynamics365FinanceCustomerRegisteredHandler_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Dynamics365FinanceCustomerRegisteredHandler : IntegrationEventHandler&lt;Dynamics365FinanceCustomerRegistered&gt;, IIntegrationEventHandler&lt;Dynamics365FinanceCustomerRegistered&gt;, IIntegrationEventHandler</code></pre>
+    <pre><code class="lang-csharp hljs">public class Dynamics365FinanceCustomerRegisteredHandler : IntegrationEventHandlerBase&lt;Dynamics365FinanceCustomerRegistered&gt;, IIntegrationEventHandler&lt;Dynamics365FinanceCustomerRegistered&gt;, IIntegrationEventHandler</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -197,7 +197,7 @@ Implements the <a class="xref" href="Hexalith.Application.Events.IntegrationEven
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override Task&lt;IEnumerable&lt;BaseCommand&gt;&gt; ApplyAsync(Dynamics365FinanceCustomerRegistered event, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public override async Task&lt;IEnumerable&lt;BaseCommand&gt;&gt; ApplyAsync(Dynamics365FinanceCustomerRegistered baseEvent, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -211,7 +211,7 @@ Implements the <a class="xref" href="Hexalith.Application.Events.IntegrationEven
     <tbody>
       <tr>
         <td><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents.Dynamics365FinanceCustomerRegistered.html">Dynamics365FinanceCustomerRegistered</a></td>
-        <td><span class="parametername">event</span></td>
+        <td><span class="parametername">baseEvent</span></td>
         <td></td>
       </tr>
       <tr>
@@ -245,12 +245,6 @@ Implements the <a class="xref" href="Hexalith.Application.Events.IntegrationEven
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="Hexalith.Extensions.Helpers.CollectionHelper.html#Hexalith_Extensions_Helpers_CollectionHelper_IntoArray__1___0_">CollectionHelper.IntoArray&lt;T&gt;(T)</a>
-  </div>
-  <div>
-      <a class="xref" href="Hexalith.Extensions.Helpers.CollectionHelper.html#Hexalith_Extensions_Helpers_CollectionHelper_IntoEnumerable__1___0_">CollectionHelper.IntoEnumerable&lt;T&gt;(T)</a>
-  </div>
-  <div>
       <a class="xref" href="Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSame_System_Object_System_Object_">EquatableHelper.AreSame(Object, Object)</a>
   </div>
   <div>
@@ -258,7 +252,7 @@ Implements the <a class="xref" href="Hexalith.Application.Events.IntegrationEven
   </div>
   <h3 id="seealso">See Also</h3>
   <div class="seealso">
-      <div><a class="xref" href="Hexalith.Application.Events.IntegrationEventHandler-1.html">IntegrationEventHandler</a>&lt;TEvent&gt;</div>
+      <div><a class="xref" href="Hexalith.Application.Events.IntegrationEventHandlerBase-1.html">IntegrationEventHandlerBase</a>&lt;TEvent&gt;</div>
   </div>
 </article>
           </div>

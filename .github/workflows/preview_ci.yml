@@ -21,6 +21,9 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 8.0.x
+    - name: Add Aspire Workloads
+      run: |
+        dotnet workload install Aspire
     - name: Build Version
       run: |
         dotnet tool install --global minver-cli --version 4.3.0

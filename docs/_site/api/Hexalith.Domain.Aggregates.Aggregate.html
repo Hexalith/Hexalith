@@ -82,16 +82,24 @@ Implements the <a class="xref" href="Hexalith.Domain.Aggregates.IAggregate.html"
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">Aggregate</span></div>
       <div class="level2"><a class="xref" href="Hexalith.Domain.Aggregates.Customer.html">Customer</a></div>
-      <div class="level2"><a class="xref" href="Hexalith.Domain.Aggregates.ExternalCustomer.html">ExternalCustomer</a></div>
       <div class="level2"><a class="xref" href="Hexalith.Domain.Aggregates.ExternalSystemReference.html">ExternalSystemReference</a></div>
-      <div class="level2"><a class="xref" href="Hexalith.Domain.Aggregates.InventoryItem.html">InventoryItem</a></div>
-      <div class="level2"><a class="xref" href="Hexalith.Domain.Aggregates.InventoryItemStock.html">InventoryItemStock</a></div>
+      <div class="level2"><a class="xref" href="Hexalith.Domain.Aggregates.PartitionedAggregate.html">PartitionedAggregate</a></div>
       <div class="level2"><a class="xref" href="Hexalith.Domain.Aggregates.SalesInvoice.html">SalesInvoice</a></div>
       <div class="level2"><a class="xref" href="Hexalith.Domain.Aggregates.Survey.html">Survey</a></div>
       <div class="level2"><a class="xref" href="Hexalith.Domain.Aggregates.SurveyCampaign.html">SurveyCampaign</a></div>
       <div class="level2"><a class="xref" href="Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.html">ConversationThread</a></div>
+      <div class="level2"><a class="xref" href="Hexalith.Domain.Dimensions.DimensionDefinitions.Aggregates.DimensionDefinition.html">DimensionDefinition</a></div>
+      <div class="level2"><a class="xref" href="Hexalith.Domain.Dimensions.DimensionHIerarchies.DimensionHierarchy.html">DimensionHierarchy</a></div>
       <div class="level2"><a class="xref" href="Hexalith.Domain.Entities.SurveyCategory.html">SurveyCategory</a></div>
       <div class="level2"><a class="xref" href="Hexalith.Domain.Entities.SurveyUser.html">SurveyUser</a></div>
+      <div class="level2"><a class="xref" href="Hexalith.Domain.InventoryItems.Aggregates.InventoryItem.html">InventoryItem</a></div>
+      <div class="level2"><a class="xref" href="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.html">InventoryItemStock</a></div>
+      <div class="level2"><a class="xref" href="Hexalith.Domain.InventoryUnitConversions.Aggregates.InventoryUnitConversion.html">InventoryUnitConversion</a></div>
+      <div class="level2"><a class="xref" href="Hexalith.Domain.InventoryUnits.Aggregates.InventoryUnit.html">InventoryUnit</a></div>
+      <div class="level2"><a class="xref" href="Hexalith.Domain.PartnerInventoryItems.Aggregates.PartnerInventoryItem.html">PartnerInventoryItem</a></div>
+      <div class="level2"><a class="xref" href="Hexalith.Domain.Users.Aggregates.Role.html">Role</a></div>
+      <div class="level2"><a class="xref" href="Hexalith.Domain.Users.Aggregates.User.html">User</a></div>
+      <div class="level2"><a class="xref" href="Hexalith.NumberSequences.Abstractions.Domain.NumberSequence.html">NumberSequence</a></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
@@ -173,7 +181,8 @@ public abstract class Aggregate : IAggregate, IEquatable&lt;Aggregate&gt;</code>
   </span>
   <a id="Hexalith_Domain_Aggregates_Aggregate_AggregateId_" data-uid="Hexalith.Domain.Aggregates.Aggregate.AggregateId*"></a>
   <h4 id="Hexalith_Domain_Aggregates_Aggregate_AggregateId" data-uid="Hexalith.Domain.Aggregates.Aggregate.AggregateId">AggregateId</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the aggregate identifier.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -192,7 +201,8 @@ public string AggregateId { get; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>The aggregate identifier.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -205,7 +215,8 @@ public string AggregateId { get; }</code></pre>
   </span>
   <a id="Hexalith_Domain_Aggregates_Aggregate_AggregateName_" data-uid="Hexalith.Domain.Aggregates.Aggregate.AggregateName*"></a>
   <h4 id="Hexalith_Domain_Aggregates_Aggregate_AggregateName" data-uid="Hexalith.Domain.Aggregates.Aggregate.AggregateName">AggregateName</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the name of the aggregate.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -224,7 +235,8 @@ public string AggregateName { get; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>The name of the aggregate.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -239,11 +251,12 @@ public string AggregateName { get; }</code></pre>
   </span>
   <a id="Hexalith_Domain_Aggregates_Aggregate_Apply_" data-uid="Hexalith.Domain.Aggregates.Aggregate.Apply*"></a>
   <h4 id="Hexalith_Domain_Aggregates_Aggregate_Apply_Hexalith_Domain_Events_BaseEvent_" data-uid="Hexalith.Domain.Aggregates.Aggregate.Apply(Hexalith.Domain.Events.BaseEvent)">Apply(BaseEvent)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Applies the specified domain event.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract IAggregate Apply(BaseEvent domainEvent)</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract (IAggregate Aggregate, IEnumerable&lt;BaseEvent&gt; Events) Apply(BaseEvent domainEvent)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -258,7 +271,8 @@ public string AggregateName { get; }</code></pre>
       <tr>
         <td><a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">BaseEvent</a></td>
         <td><span class="parametername">domainEvent</span></td>
-        <td></td>
+        <td><p>The domain event.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -272,8 +286,9 @@ public string AggregateName { get; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Hexalith.Domain.Aggregates.IAggregate.html">IAggregate</a></td>
-        <td></td>
+        <td><span class="xref">System.ValueTuple</span>&lt;<a class="xref" href="Hexalith.Domain.Aggregates.IAggregate.html">IAggregate</a>, <span class="xref">IEnumerable</span>&lt;<a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">BaseEvent</a>&gt;&gt;</td>
+        <td><p>IAggregate.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -350,7 +365,8 @@ public string AggregateName { get; }</code></pre>
   </span>
   <a id="Hexalith_Domain_Aggregates_Aggregate_IsInitialized_" data-uid="Hexalith.Domain.Aggregates.Aggregate.IsInitialized*"></a>
   <h4 id="Hexalith_Domain_Aggregates_Aggregate_IsInitialized" data-uid="Hexalith.Domain.Aggregates.Aggregate.IsInitialized">IsInitialized()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Determines whether this instance is initialized.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -367,7 +383,8 @@ public string AggregateName { get; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p><code>true</code> if this instance is initialized; otherwise, <code>false</code>.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -445,12 +462,6 @@ public string AggregateName { get; }</code></pre>
       <span class="xref">System.IEquatable&lt;T&gt;</span>
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
-  <div>
-      <a class="xref" href="Hexalith.Extensions.Helpers.CollectionHelper.html#Hexalith_Extensions_Helpers_CollectionHelper_IntoArray__1___0_">CollectionHelper.IntoArray&lt;T&gt;(T)</a>
-  </div>
-  <div>
-      <a class="xref" href="Hexalith.Extensions.Helpers.CollectionHelper.html#Hexalith_Extensions_Helpers_CollectionHelper_IntoEnumerable__1___0_">CollectionHelper.IntoEnumerable&lt;T&gt;(T)</a>
-  </div>
   <div>
       <a class="xref" href="Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSame_System_Object_System_Object_">EquatableHelper.AreSame(Object, Object)</a>
   </div>

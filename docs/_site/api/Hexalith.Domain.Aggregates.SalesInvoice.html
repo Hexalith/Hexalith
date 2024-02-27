@@ -276,11 +276,12 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
   </span>
   <a id="Hexalith_Domain_Aggregates_SalesInvoice_Apply_" data-uid="Hexalith.Domain.Aggregates.SalesInvoice.Apply*"></a>
   <h4 id="Hexalith_Domain_Aggregates_SalesInvoice_Apply_Hexalith_Domain_Events_BaseEvent_" data-uid="Hexalith.Domain.Aggregates.SalesInvoice.Apply(Hexalith.Domain.Events.BaseEvent)">Apply(BaseEvent)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Applies the specified domain event.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override IAggregate Apply(BaseEvent domainEvent)</code></pre>
+    <pre><code class="lang-csharp hljs">public override (IAggregate Aggregate, IEnumerable&lt;BaseEvent&gt; Events) Apply(BaseEvent domainEvent)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -295,7 +296,8 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
       <tr>
         <td><a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">BaseEvent</a></td>
         <td><span class="parametername">domainEvent</span></td>
-        <td></td>
+        <td><p>The domain event.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -309,8 +311,9 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Hexalith.Domain.Aggregates.IAggregate.html">IAggregate</a></td>
-        <td></td>
+        <td><span class="xref">System.ValueTuple</span>&lt;<a class="xref" href="Hexalith.Domain.Aggregates.IAggregate.html">IAggregate</a>, <span class="xref">IEnumerable</span>&lt;<a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">BaseEvent</a>&gt;&gt;</td>
+        <td><p>IAggregate.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -321,11 +324,12 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_SalesInvoice_DefaultAggregateId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.SalesInvoice.DefaultAggregateId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Sales/Aggregates/SalesInvoice.cs/#L72">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Sales/Aggregates/SalesInvoice.cs/#L101">View Source</a>
   </span>
   <a id="Hexalith_Domain_Aggregates_SalesInvoice_DefaultAggregateId_" data-uid="Hexalith.Domain.Aggregates.SalesInvoice.DefaultAggregateId*"></a>
   <h4 id="Hexalith_Domain_Aggregates_SalesInvoice_DefaultAggregateId" data-uid="Hexalith.Domain.Aggregates.SalesInvoice.DefaultAggregateId">DefaultAggregateId()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Get the aggregate identifier.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -342,7 +346,8 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>The identifier.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -353,7 +358,7 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_SalesInvoice_GetAggregateId_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.SalesInvoice.GetAggregateId(System.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Sales/Aggregates/SalesInvoice.cs/#L82">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Sales/Aggregates/SalesInvoice.cs/#L79">View Source</a>
   </span>
   <a id="Hexalith_Domain_Aggregates_SalesInvoice_GetAggregateId_" data-uid="Hexalith.Domain.Aggregates.SalesInvoice.GetAggregateId*"></a>
   <h4 id="Hexalith_Domain_Aggregates_SalesInvoice_GetAggregateId_System_String_System_String_System_String_System_String_" data-uid="Hexalith.Domain.Aggregates.SalesInvoice.GetAggregateId(System.String,System.String,System.String,System.String)">GetAggregateId(String, String, String, String)</h4>
@@ -453,11 +458,12 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_SalesInvoice_IsInitialized.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.SalesInvoice.IsInitialized%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Sales/Aggregates/SalesInvoice.cs/#L114">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Sales/Aggregates/SalesInvoice.cs/#L90">View Source</a>
   </span>
   <a id="Hexalith_Domain_Aggregates_SalesInvoice_IsInitialized_" data-uid="Hexalith.Domain.Aggregates.SalesInvoice.IsInitialized*"></a>
   <h4 id="Hexalith_Domain_Aggregates_SalesInvoice_IsInitialized" data-uid="Hexalith.Domain.Aggregates.SalesInvoice.IsInitialized">IsInitialized()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Determines whether this instance is initialized.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -474,7 +480,8 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p><code>true</code> if this instance is initialized; otherwise, <code>false</code>.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -491,12 +498,6 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
       <span class="xref">System.IEquatable&lt;T&gt;</span>
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
-  <div>
-      <a class="xref" href="Hexalith.Extensions.Helpers.CollectionHelper.html#Hexalith_Extensions_Helpers_CollectionHelper_IntoArray__1___0_">CollectionHelper.IntoArray&lt;T&gt;(T)</a>
-  </div>
-  <div>
-      <a class="xref" href="Hexalith.Extensions.Helpers.CollectionHelper.html#Hexalith_Extensions_Helpers_CollectionHelper_IntoEnumerable__1___0_">CollectionHelper.IntoEnumerable&lt;T&gt;(T)</a>
-  </div>
   <div>
       <a class="xref" href="Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSame_System_Object_System_Object_">EquatableHelper.AreSame(Object, Object)</a>
   </div>
