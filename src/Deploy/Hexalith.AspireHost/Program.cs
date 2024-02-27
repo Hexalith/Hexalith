@@ -8,24 +8,14 @@ using Hexalith.AspireHost.Helpers;
 
 IDistributedApplicationBuilder builder = DistributedApplication.CreateBuilder(args);
 
-builder.AddHexalithProject<Projects.Hexalith_Server_Dynamics365Finance>(
-    "Hexalith.Server.Dynamics365Finance",
-    1);
+builder.AddHexalithProject<Projects.Hexalith_Server_Dynamics365Finance>();
 
-builder.AddHexalithProject<Projects.Hexalith_Server_Dynamics365Finance>(
-    "Hexalith.Server.ExternalSystems",
-    2);
+builder.AddHexalithProject<Projects.Hexalith_Server_ExternalSystems>();
 
-builder.AddHexalithProject<Projects.Hexalith_Server_Dynamics365Finance>(
-    "Hexalith.Server.FrontApi",
-    3);
+builder.AddHexalithProject<Projects.Hexalith_Server_FrontApi>();
 
-builder.AddHexalithProject<Projects.Hexalith_Server_Dynamics365Finance>(
-    "Hexalith.Server.Parties",
-    4);
+builder.AddHexalithProject<Projects.Hexalith_Server_Parties>();
 
-builder.AddHexalithProject<Projects.Hexalith_Server_Dynamics365Finance>(
-    "Hexalith.Server.Sales",
-    5);
+builder.AddHexalithProject<Projects.Hexalith_Server_Sales>();
 
 builder.Build().Run();

@@ -20,38 +20,38 @@ public static class HexalithProjectHelper
     /// </summary>
     /// <typeparam name="TProject">The type of the t project.</typeparam>
     /// <param name="builder">The builder.</param>
-    /// <param name="name">The name.</param>
     /// <param name="index">The index.</param>
     /// <returns>IResourceBuilder&lt;ProjectResource&gt;.</returns>
-    /// <exception cref="System.ArgumentNullException">null.</exception>
+    /// <exception cref="ArgumentNullException"></exception>
     public static IResourceBuilder<ProjectResource> AddHexalithProject<TProject>(
-        this IDistributedApplicationBuilder builder,
-        string name,
-        int index)
+        this IDistributedApplicationBuilder builder)
         where TProject : IProjectMetadata, new()
     {
         ArgumentNullException.ThrowIfNull(builder);
-        ArgumentException.ThrowIfNullOrWhiteSpace(name);
-        int appPort = 8080 + index;
+
+        // _ = 8080 + index;
+        TProject project = new();
 #pragma warning disable CA1308 // Normalize strings to uppercase
-        string appName = name.Split('.').Last().ToLowerInvariant();
+        string appName = project.ProjectPath.Split('.').Skip(1).Last().ToLowerInvariant();
 #pragma warning restore CA1308 // Normalize strings to uppercase
         return builder
-            .AddProject<Projects.Hexalith_Server_Dynamics365Finance>(appName)
-            .WithHttpEndpoint(
-                8080,
-                appPort,
-                appName)
+            .AddProject<TProject>(appName)
+
+             // .WithHttpEndpoint(
+             //    8080,
+             //    appPort,
+             //    appName)
              .WithDaprSidecar(new DaprSidecarOptions
              {
-                 AppId = appName,
-                 AppProtocol = "http",
-                 ResourcesPaths = ImmutableHashSet.Create($"../../Servers/{name}/Infrastructure/Components"),
-                 Config = $"../../Servers/{name}/Infrastructure/Components/config.yaml",
-                 MetricsPort = 9090 + index,
-                 DaprHttpPort = 3500 + index,
-                 DaprGrpcPort = 50000 + index,
-                 AppPort = appPort,
+                 // AppId = appName,
+                 // AppProtocol = "http",
+                 ResourcesPaths = ImmutableHashSet.Create($"{project.ProjectPath}/Infrastructure/Components"),
+                 Config = $"{project.ProjectPath}/Infrastructure/Components/config.yaml",
+
+                 // MetricsPort = 9090 + index,
+                 // DaprHttpPort = 3500 + index,
+                 // DaprGrpcPort = 50000 + index,
+                 // AppPort = appPort,
              });
     }
 }
