@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Hexalith.Server.Sales": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:51866;http://localhost:51867"
+    }
+  }
+}

@@ -41,6 +41,9 @@ WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
     },
     args);
 
+// Add service defaults & Aspire components.
+builder.AddServiceDefaults();
+
 builder.Services
     .AddCustomerProjections(Dynamics365FinanceConstants.ApplicationName)
     .AddExternalSystemsMapperSubscription(Dynamics365FinanceConstants.ApplicationName, aggregateNames)
@@ -50,7 +53,6 @@ builder.Services
     .AddScoped<IIntegrationEventHandler<CustomerInformationChanged>, CustomerInformationChangedHandler>()
     .AddScoped<IIntegrationEventProcessor, IntegrationEventProcessor>()
     .AddScoped<IIntegrationEventDispatcher, DependencyInjectionEventDispatcher>();
-builder.AddServiceDefaults();
 
 WebApplication app = builder.Build();
 

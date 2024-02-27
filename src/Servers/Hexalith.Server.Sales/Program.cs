@@ -26,9 +26,10 @@ WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
     (actors) => actors.AddSalesAggregates(),
     args);
 
-builder.Services.AddSalesCommandsSubmission();
-
+// Add service defaults & Aspire components.
 builder.AddServiceDefaults();
+
+builder.Services.AddSalesCommandsSubmission();
 
 WebApplication app = builder.Build();
 

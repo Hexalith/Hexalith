@@ -25,9 +25,10 @@ WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
     (actors) => actors.AddExternalSystemsAggregates(),
     args);
 
-builder.Services.AddExternalSystemsCommandsSubmission();
-
+// Add service defaults & Aspire components.
 builder.AddServiceDefaults();
+
+builder.Services.AddExternalSystemsCommandsSubmission();
 
 WebApplication app = builder.Build();
 
