@@ -8,7 +8,6 @@
 		<EnableSdkContainerSupport>true</EnableSdkContainerSupport>
 	</PropertyGroup>
 	<ItemGroup>
-		<ContainerPort Include="8080" Type="tcp" />
 		<ContainerEnvironmentVariable Include="Organization__DefaultPartitionId" Value="FFY" />
 		<ContainerEnvironmentVariable Include="Organization__DefaultCompanyId" Value="FRRT" />
 		<ContainerEnvironmentVariable Include="DAPRSIDEKICK_ENABLED" Value="false" />
@@ -22,6 +21,7 @@
 		<ContainerEnvironmentVariable Include="ASPNETCORE_DETAILEDERRORS" Value="false" />
 		<ContainerEnvironmentVariable Include="ASPNETCORE_SHUTDOWNTIMEOUTSECONDS" Value="600" />
 		<ContainerEnvironmentVariable Include="DAPR_API_TOKEN" Value="Hexalith" />
+		<ContainerPort Include="8080" Type="tcp" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="$(MSBuildThisFileDirectory)..\Core\Infrastructure\Hexalith.Infrastructure.WebApis\Hexalith.Infrastructure.WebApis.csproj" />
