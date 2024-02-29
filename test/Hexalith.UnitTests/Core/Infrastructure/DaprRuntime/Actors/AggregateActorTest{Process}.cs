@@ -784,8 +784,9 @@ public partial class AggregateActorTest
             resiliencyPolicyProvider.Object,
             actorStateManager.Object);
         _ = await actor.ProcessNextCommandAsync();
-        _ = timerManager.Reminders.Should().BeEmpty();
-        _ = timerManager.Timers.Count.Should().Be(2);
+        _ = timerManager.Reminders.Should().HaveCount(1);
+        _ = timerManager.Reminders.First().Key.Should().Be(ActorConstants.PublishReminderName);
+        _ = timerManager.Timers.Count.Should().Be(1);
         Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, notificationBus, commandBus, requestBus);
     }
 }

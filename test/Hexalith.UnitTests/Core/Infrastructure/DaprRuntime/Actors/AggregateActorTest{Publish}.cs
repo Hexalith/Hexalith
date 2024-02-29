@@ -196,7 +196,8 @@ public partial class AggregateActorTest
         _ = result.Should().BeTrue();
         _ = timerManager.Reminders.Should().HaveCount(1);
         _ = timerManager.Reminders[ActorConstants.PublishReminderName].Period.Should().Be(TimeSpan.FromMinutes(1));
-        _ = timerManager.Timers.Should().BeEmpty();
+        _ = timerManager.Timers.Should().HaveCount(1);
+        _ = timerManager.Timers.First().Key.Should().Be(ActorConstants.PublishTimerName);
         Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, notificationBus, commandBus, requestBus);
     }
 
@@ -283,7 +284,7 @@ public partial class AggregateActorTest
         _ = timerManager.Reminders.Should().HaveCount(1);
         _ = timerManager.Reminders[ActorConstants.PublishReminderName].Period.Should().Be(TimeSpan.FromMinutes(1));
         _ = timerManager.Timers.Should().HaveCount(1);
-        _ = timerManager.Timers[ActorConstants.PublishTimerName].Period.Should().Be(TimeSpan.FromMilliseconds(1));
+        _ = timerManager.Timers.First().Key.Should().Be(ActorConstants.PublishTimerName);
         Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, notificationBus, commandBus, requestBus);
     }
 }

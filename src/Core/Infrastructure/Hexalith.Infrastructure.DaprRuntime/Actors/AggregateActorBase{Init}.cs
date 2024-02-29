@@ -253,8 +253,11 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
         }
         else
         {
-            await UnregisterReminderAsync(ActorConstants.ProcessReminderName).ConfigureAwait(false);
-            state.ProcessReminderDueTime = null;
+            if (state.ProcessReminderDueTime is not null)
+            {
+                await UnregisterReminderAsync(ActorConstants.ProcessReminderName).ConfigureAwait(false);
+                state.ProcessReminderDueTime = null;
+            }
         }
     }
 }
