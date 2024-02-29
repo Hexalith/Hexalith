@@ -60,8 +60,6 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
     private MessageStore<CommandState>? _commandStore;
     private MessageStore<EventState>? _eventSourceStore;
     private MessageStore<MessageState>? _messageStore;
-    private ActorTimer? _processTimer;
-    private ActorTimer? _publishTimer;
     private ResiliencyPolicy? _resiliencyPolicy;
     private AggregateActorState? _state;
 
@@ -172,30 +170,6 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
     public static partial void LogProcessingCommandsInformation(ILogger logger, string actorId, string actorType, long commandCount, long lastCommandProcessed);
 
     /// <inheritdoc/>
-    public async Task ProcessCallbackAsync()
-    {
-        try
-        {
-            _ = await ProcessNextCommandAsync().ConfigureAwait(false);
-        }
-        catch (Exception ex)
-        {
-            LogProcessingCallbackError(
-                Logger,
-                ex,
-                Id.GetId(),
-                Host.ActorTypeInfo.ActorTypeName,
-                (_state?.LastCommandProcessed ?? 0L) + 1L,
-                _state?.CommandCount ?? 0L);
-            _state = null;
-            throw;
-        }
-    }
-
-    /// <inheritdoc/>
-    public async Task PublishCallbackAsync() => await PublishNextMessageAsync().ConfigureAwait(false);
-
-    /// <inheritdoc/>
     public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period)
     {
         if (reminderName == ActorConstants.ProcessReminderName)
@@ -267,62 +241,22 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
         TimeSpan reminderWaitTime = state.RetryOnFailurePeriod ?? _maxTimerDueTime;
         reminderWaitTime = reminderWaitTime < _maxTimerDueTime ? _maxTimerDueTime : reminderWaitTime;
 
-        if ((_processTimer != null && _processTimer.DueTime != timerWaitTime) || state.LastCommandProcessed >= state.CommandCount)
-        {
-            await UnregisterTimerAsync(ActorConstants.ProcessTimerName).ConfigureAwait(false);
-            _processTimer = null;
-        }
-
-        if (state.ProcessReminderDueTime != null && (state.ProcessReminderDueTime != reminderWaitTime || state.LastCommandProcessed >= state.CommandCount))
-        {
-            await UnregisterReminderAsync(ActorConstants.ProcessReminderName).ConfigureAwait(false);
-            state.ProcessReminderDueTime = null;
-        }
-
         if (state.LastCommandProcessed < state.CommandCount)
         {
-            if (_processTimer == null && timerWaitTime < _maxTimerDueTime)
-            {
-                _processTimer = await RegisterTimerAsync(ActorConstants.ProcessTimerName, nameof(ProcessCallbackAsync), null, timerWaitTime, timerWaitTime).ConfigureAwait(false);
-            }
-
             if (state.ProcessReminderDueTime == null)
             {
                 _ = await RegisterReminderAsync(ActorConstants.ProcessReminderName, null, reminderWaitTime, reminderWaitTime).ConfigureAwait(false);
                 state.ProcessReminderDueTime = reminderWaitTime;
             }
+
+            _ = await RegisterTimerAsync(ActorConstants.ProcessTimerName, nameof(ProcessCallbackAsync), null, timerWaitTime, TimeSpan.FromMilliseconds(-1)).ConfigureAwait(false);
         }
-    }
-
-    private async Task SetPublishCallbackAsync(CancellationToken cancellationToken)
-    {
-        AggregateActorState state = await GetAggregateStateAsync(cancellationToken).ConfigureAwait(false);
-        TimeSpan timerWaitTime = timerWaitTime = state.PublishFailed ? _maxTimerDueTime : _defaultTimerDueTime;
-        TimeSpan reminderWaitTime = _maxTimerDueTime;
-
-        if ((_publishTimer != null && _publishTimer.DueTime != timerWaitTime) || state.LastMessagePublished >= state.MessageCount)
+        else
         {
-            await UnregisterTimerAsync(ActorConstants.PublishTimerName).ConfigureAwait(false);
-            _publishTimer = null;
-        }
-
-        if (state.PublishReminderDueTime != null && (state.PublishReminderDueTime != reminderWaitTime || state.LastMessagePublished >= state.MessageCount))
-        {
-            await UnregisterReminderAsync(ActorConstants.PublishReminderName).ConfigureAwait(false);
-            state.PublishReminderDueTime = null;
-        }
-
-        if (state.LastMessagePublished < state.MessageCount)
-        {
-            if (_publishTimer == null && timerWaitTime < _maxTimerDueTime)
+            if (state.ProcessReminderDueTime is not null)
             {
-                _publishTimer = await RegisterTimerAsync(ActorConstants.PublishTimerName, nameof(PublishCallbackAsync), null, timerWaitTime, timerWaitTime).ConfigureAwait(false);
-            }
-
-            if (state.PublishReminderDueTime == null)
-            {
-                _ = await RegisterReminderAsync(ActorConstants.PublishReminderName, null, reminderWaitTime, reminderWaitTime).ConfigureAwait(false);
-                state.PublishReminderDueTime = reminderWaitTime;
+                await UnregisterReminderAsync(ActorConstants.ProcessReminderName).ConfigureAwait(false);
+                state.ProcessReminderDueTime = null;
             }
         }
     }

@@ -20,8 +20,6 @@ using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Extensions;
-
 /// <summary>
 /// Class Contact.
 /// </summary>
@@ -69,7 +67,6 @@ public class Contact
     /// <summary>
     /// Initializes a new instance of the <see cref="Contact" /> class.
     /// </summary>
-    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public Contact()
     {
     }

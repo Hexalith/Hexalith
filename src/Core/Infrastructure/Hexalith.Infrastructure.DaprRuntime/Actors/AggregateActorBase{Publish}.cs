@@ -26,6 +26,7 @@ using Hexalith.Application.Requests;
 using Hexalith.Application.States;
 using Hexalith.Domain.Events;
 using Hexalith.Extensions.Helpers;
+using Hexalith.Infrastructure.DaprRuntime.Abstractions;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 
 using Microsoft.Extensions.Logging;
@@ -53,6 +54,9 @@ public abstract partial class AggregateActorBase
             Level = LogLevel.Warning,
             Message = "Publish message {MessageSequence} (Id={MessageId}; CorrelationId={CorrelationId}) operation failed on actor {ActorType}/{ActorId}. Error : {ErrorMessage}")]
     public static partial void LogPublishError(ILogger logger, Exception exception, long messageSequence, string? messageId, string? correlationId, string actorId, string actorType, string errorMessage);
+
+    /// <inheritdoc/>
+    public async Task PublishCallbackAsync() => await PublishNextMessageAsync().ConfigureAwait(false);
 
     /// <inheritdoc/>
     public async Task<bool> PublishNextMessageAsync()
@@ -140,5 +144,31 @@ public abstract partial class AggregateActorBase
             messageState.Metadata?.Message.Name,
             messageState.Metadata?.Context.CorrelationId,
             messageState.Metadata?.Message.Aggregate.Id);
+    }
+
+    private async Task SetPublishCallbackAsync(CancellationToken cancellationToken)
+    {
+        AggregateActorState state = await GetAggregateStateAsync(cancellationToken).ConfigureAwait(false);
+        TimeSpan timerWaitTime = timerWaitTime = state.PublishFailed ? _maxTimerDueTime : _defaultTimerDueTime;
+        TimeSpan reminderWaitTime = _maxTimerDueTime;
+
+        if (state.LastMessagePublished < state.MessageCount)
+        {
+            if (state.PublishReminderDueTime == null)
+            {
+                _ = await RegisterReminderAsync(ActorConstants.PublishReminderName, null, reminderWaitTime, reminderWaitTime).ConfigureAwait(false);
+                state.PublishReminderDueTime = reminderWaitTime;
+            }
+
+            _ = await RegisterTimerAsync(ActorConstants.PublishTimerName, nameof(PublishCallbackAsync), null, timerWaitTime, TimeSpan.FromMilliseconds(-1)).ConfigureAwait(false);
+        }
+        else
+        {
+            if (state.PublishReminderDueTime is not null)
+            {
+                await UnregisterReminderAsync(ActorConstants.PublishReminderName).ConfigureAwait(false);
+                state.PublishReminderDueTime = null;
+            }
+        }
     }
 }

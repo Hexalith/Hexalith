@@ -1,20 +1,17 @@
-﻿namespace Hexalith.UnitTests.Core.Domain.Surveys;
+﻿// <copyright file="SurveyAggregateTest.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
 
-using Hexalith.Domain.Aggregates;
-using Hexalith.Domain.Events;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+namespace Hexalith.UnitTests.Core.Domain.Surveys;
 
 public class SurveyAggregateTest
 {
     [Fact]
     public void PerDaySurveyShouldReturnDailyAverage()
     {
-//        SurveyRegistered registered = new SurveyRegistered("FFY", "FRRT", "TEST", "Survey1", "Test survey");
-//        Survey survey = new Survey(registered); 
+        // SurveyRegistered registered = new SurveyRegistered("FFY", "FRRT", "TEST", "Survey1", "Test survey");
+        //        Survey survey = new Survey(registered);
     }
 }
