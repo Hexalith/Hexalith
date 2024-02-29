@@ -103,6 +103,11 @@ public partial class IntegrationEventProcessor : IIntegrationEventProcessor
         }
         catch (Exception ex)
         {
+            if (ex is ApplicationErrorException)
+            {
+                throw;
+            }
+
             ApplicationErrorException appException = new(new EventDispatchFailed(baseEvent, ex), ex);
             ApplicationExceptionNotification notification = new(
                 metadata.Message.Id,
