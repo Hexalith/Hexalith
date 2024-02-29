@@ -456,9 +456,9 @@ public static class CustomerConverterHelper
         {
             Gender.Male => nameof(Gender.Male),
             Gender.Female => nameof(Gender.Female),
-            Gender.NonSpecific => throw new NotImplementedException(),
-            Gender.Unknown => throw new NotImplementedException(),
-            null => throw new NotImplementedException(),
+            Gender.NonSpecific => nameof(Gender.Unknown),
+            Gender.Unknown => nameof(Gender.Unknown),
+            null => nameof(Gender.Unknown),
             _ => nameof(Gender.Unknown),
         };
     }
@@ -474,7 +474,7 @@ public static class CustomerConverterHelper
         {
             PartyType.Person => nameof(PartyType.Person),
             PartyType.Organisation => nameof(PartyType.Organisation),
-            PartyType.Other => throw new NotImplementedException(),
+            PartyType.Other => nameof(PartyType.Other),
             _ => nameof(PartyType.Other),
         };
     }
