@@ -103,8 +103,12 @@ public partial class IntegrationEventProcessor : IIntegrationEventProcessor
         }
         catch (Exception ex)
         {
-            ApplicationErrorException appException = new(new EventDispatchFailed(baseEvent, ex));
-            ApplicationExceptionNotification notification = new(metadata.Message.Id, baseEvent.AggregateName, baseEvent.AggregateId, appException);
+            ApplicationErrorException appException = new(new EventDispatchFailed(baseEvent, ex), ex);
+            ApplicationExceptionNotification notification = new(
+                metadata.Message.Id,
+                baseEvent.AggregateName,
+                baseEvent.AggregateId,
+                appException);
             DateTimeOffset date = _dateTimeService.UtcNow;
             try
             {
