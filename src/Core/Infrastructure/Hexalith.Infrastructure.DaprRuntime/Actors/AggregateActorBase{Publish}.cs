@@ -164,7 +164,11 @@ public abstract partial class AggregateActorBase
         }
         else
         {
-            await UnregisterReminderAsync(ActorConstants.PublishReminderName).ConfigureAwait(false);
+            if (state.PublishReminderDueTime is not null)
+            {
+                await UnregisterReminderAsync(ActorConstants.PublishReminderName).ConfigureAwait(false);
+                state.PublishReminderDueTime = null;
+            }
         }
     }
 }

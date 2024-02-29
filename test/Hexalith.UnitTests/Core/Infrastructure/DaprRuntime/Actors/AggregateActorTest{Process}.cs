@@ -181,7 +181,7 @@ public partial class AggregateActorTest
 
         // Retry period should be 10 minutes for the first retry plus 3 minutes for the second retry : 13 minutes
         _ = timerManager.Reminders[ActorConstants.ProcessReminderName].DueTime.Should().BeCloseTo(TimeSpan.FromMinutes(13), TimeSpan.FromSeconds(5));
-        _ = timerManager.Timers.Should().BeEmpty();
+        _ = timerManager.Timers.Should().HaveCount(1);
         Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, notificationBus, commandBus, requestBus);
     }
 
@@ -586,7 +586,7 @@ public partial class AggregateActorTest
         _ = await actor.ProcessNextCommandAsync();
         _ = await actor.ProcessNextCommandAsync();
         _ = timerManager.Reminders.Count.Should().Be(1);
-        _ = timerManager.Timers.Count.Should().Be(1);
+        _ = timerManager.Timers.Count.Should().Be(2);
         _ = timerManager.Reminders[ActorConstants.PublishReminderName].DueTime.Should().Be(TimeSpan.FromMinutes(1));
         _ = timerManager.Timers[ActorConstants.PublishTimerName].DueTime.Should().Be(TimeSpan.FromMilliseconds(1));
         Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, notificationBus, commandBus, requestBus);
@@ -784,10 +784,8 @@ public partial class AggregateActorTest
             resiliencyPolicyProvider.Object,
             actorStateManager.Object);
         _ = await actor.ProcessNextCommandAsync();
-        _ = timerManager.Reminders.Count.Should().Be(1);
-        _ = timerManager.Timers.Count.Should().Be(1);
-        _ = timerManager.Reminders[ActorConstants.PublishReminderName].DueTime.Should().Be(TimeSpan.FromMinutes(1));
-        _ = timerManager.Timers[ActorConstants.PublishTimerName].DueTime.Should().Be(TimeSpan.FromMilliseconds(1));
+        _ = timerManager.Reminders.Should().BeEmpty();
+        _ = timerManager.Timers.Count.Should().Be(2);
         Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, notificationBus, commandBus, requestBus);
     }
 }

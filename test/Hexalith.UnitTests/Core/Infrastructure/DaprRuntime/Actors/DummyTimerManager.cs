@@ -32,34 +32,21 @@ internal class DummyTimerManager : ActorTimerManager
 
     public override async Task RegisterTimerAsync(ActorTimer timer)
     {
-        if (!Timers.TryAdd(timer.Name, timer))
-        {
-            throw new ArgumentException($"Timer {timer.Name} already exists.");
-        }
-
+        Timers[timer.Name] = timer;
         await Task.CompletedTask;
     }
 
-    public override async Task UnregisterReminderAsync(ActorReminderToken reminder)
+    public override Task UnregisterReminderAsync(ActorReminderToken reminder)
     {
         if (Reminders.ContainsKey(reminder.Name))
         {
             _ = Reminders.Remove(reminder.Name);
-            return;
+            return Task.CompletedTask;
         }
 
-        await Task.FromException(new ArgumentException($"Reminder {reminder.Name} does not exist."));
+        return Task.FromException(new ArgumentException($"Reminder {reminder.Name} does not exist."));
     }
 
-    public override async Task UnregisterTimerAsync(ActorTimerToken timer)
-    {
-        if (Timers.ContainsKey(timer.Name))
-        {
-            _ = Timers.Remove(timer.Name);
-        }
-
-        await Task.CompletedTask;
-
-        // return Task.FromException(new ArgumentException($"Timer {timer.Name} does not exist."));
-    }
+    public override Task UnregisterTimerAsync(ActorTimerToken timer)
+        => Task.FromException(new ArgumentException($"Timer should not be unregistered : Name={timer.Name}."));
 }
