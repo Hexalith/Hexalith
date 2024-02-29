@@ -26,7 +26,6 @@ using System.Runtime.Serialization;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Exceptions;
 using Hexalith.Domain.ValueObjets;
-using Hexalith.Extensions;
 
 /// <summary>
 /// Class Customer.
@@ -58,7 +57,6 @@ public record Customer(
     /// <summary>
     /// Initializes a new instance of the <see cref="Customer"/> class.
     /// </summary>
-    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public Customer()
         : this(
               string.Empty,
@@ -125,11 +123,9 @@ public record Customer(
             },
             IntercompanyDropshipDeliveryForCustomerSelected => this with { IntercompanyDropship = true },
             IntercompanyDropshipDeliveryForCustomerDeselected => this with { IntercompanyDropship = false },
-            CustomerRegistered registered => IsInitialized()
-                ? throw new InvalidAggregateEventException(this, domainEvent, true)
-                : new Customer(registered),
+            CustomerRegistered registered => new Customer(registered),
             _ => throw new InvalidAggregateEventException(this, domainEvent, false),
-        }, []);
+        }, [domainEvent]);
     }
 
     /// <summary>

@@ -44,6 +44,27 @@ public abstract partial class AggregateActorBase
     private readonly TimeSpan _minimumDuplicateNotificationPeriod = TimeSpan.FromMinutes(15);
 
     /// <inheritdoc/>
+    public async Task ProcessCallbackAsync()
+    {
+        try
+        {
+            _ = await ProcessNextCommandAsync().ConfigureAwait(false);
+        }
+        catch (Exception ex)
+        {
+            LogProcessingCallbackError(
+                Logger,
+                ex,
+                Id.GetId(),
+                Host.ActorTypeInfo.ActorTypeName,
+                (_state?.LastCommandProcessed ?? 0L) + 1L,
+                _state?.CommandCount ?? 0L);
+            _state = null;
+            throw;
+        }
+    }
+
+    /// <inheritdoc/>
     public async Task<bool> ProcessNextCommandAsync()
     {
         CancellationToken cancellationToken = CancellationToken.None;

@@ -71,11 +71,8 @@ public partial class RegisterCustomerHandler : CommandHandler<RegisterCustomer>
                 command.GroupId,
                 command.SalesCurrencyId,
                 command.Date);
-        return await (aggregate is null
-            ? Task.FromResult<IEnumerable<BaseMessage>>([registered])
-            : Task.FromException<IEnumerable<BaseMessage>>(
-                new InvalidOperationException(
-                    $"The event {command.TypeName} with id '{command.AggregateId}' cannot be applied on an existing customer."))).ConfigureAwait(false);
+        (_, IEnumerable<BaseEvent>? events) = (aggregate ?? new Customer()).Apply(registered);
+        return await Task.FromResult(events).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
