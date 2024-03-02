@@ -141,6 +141,7 @@ public partial class Dynamics365FinanceIntegrationEventProcessor : DependencyInj
         if (baseEvent is Dynamics365BusinessEventBase businessEvent)
         {
             await SubmitAsync(businessEvent, cancellationToken).ConfigureAwait(false);
+            return;
         }
 
         throw new ApplicationErrorException(new EventNotSupportedByDispatcher(nameof(Dynamics365FinanceIntegrationEventProcessor)));
