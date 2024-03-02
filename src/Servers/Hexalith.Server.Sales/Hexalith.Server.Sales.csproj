@@ -6,7 +6,7 @@
 		<EnableSdkContainerSupport>true</EnableSdkContainerSupport>
 	</PropertyGroup>
 	<ItemGroup>
-		<ContainerEnvironmentVariable Include="Statestore__Name" Value="$(ContainerRepository)-statestore" />
+		<ContainerEnvironmentVariable Include="Statestore__Name" Value="sales-statestore" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime.Sales\Hexalith.Infrastructure.DaprRuntime.Sales.csproj" />

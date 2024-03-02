@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 	<PropertyGroup>
 		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
-		<ContainerRepository>hexalith-frontapi</ContainerRepository>
+		<ContainerRepository>hexalith-front-api</ContainerRepository>
 		<UserSecretsId>$(ContainerRepository)</UserSecretsId>
 		<EnableSdkContainerSupport>true</EnableSdkContainerSupport>
 	</PropertyGroup>
 	<ItemGroup>
-		<ContainerEnvironmentVariable Include="Statestore__Name" Value="$(ContainerRepository)-statestore" />
+		<ContainerEnvironmentVariable Include="Statestore__Name" Value="front-api-statestore" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime.Parties\Hexalith.Infrastructure.DaprRuntime.Parties.csproj" />

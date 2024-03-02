@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 	<PropertyGroup>
 		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
-		<ContainerRepository>hexalith-dynamics365finance</ContainerRepository>
+		<ContainerRepository>hexalith-dynamics-365-finance</ContainerRepository>
 		<UserSecretsId>$(ContainerRepository)</UserSecretsId>
 		<EnableSdkContainerSupport>true</EnableSdkContainerSupport>
 	</PropertyGroup>
 	<ItemGroup>
-		<ContainerEnvironmentVariable Include="Statestore__Name" Value="dynamics365finance-statestore" />
+		<ContainerEnvironmentVariable Include="Statestore__Name" Value="dynamics-365-finance-statestore" />
 		<ContainerEnvironmentVariable Include="Dynamics365Finance__Parties__ReceiveCustomersFromErpEnabled" Value="false" />
 		<ContainerEnvironmentVariable Include="Dynamics365Finance__Parties__SendCustomersToErpEnabled" Value="false" />
 		<ContainerEnvironmentVariable Include="Dynamics365Finance__Identity__Tenant" Value="fiveforty.fr" />
