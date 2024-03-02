@@ -69,7 +69,17 @@ public static class HexalithWebApi
         startupLogger.Information("Configuring {AppName} ...", applicationName);
         builder.Services
             .AddEndpointsApiExplorer()
-            .AddSwaggerGen(c => c.SwaggerDoc("v1", new() { Title = applicationName, Version = version, }))
+            .AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc(
+                "v1",
+                new()
+                {
+                    Title = applicationName,
+                    Version = version,
+                });
+                c.OperationFilter<DaprTokenOperationFilter>();
+            })
         .AddDaprBuses(builder.Configuration)
         .AddDaprStateStore(builder.Configuration)
         .AddActors(options =>
@@ -125,13 +135,13 @@ public static class HexalithWebApi
         }
 
         _ = app.UseExceptionHandler();
-        _ = app.UseSwagger();
-        _ = app.UseSwaggerUI();
 
         _ = app.UseRouting();
         _ = app.UseAuthentication();
         _ = app.UseAuthorization();
         _ = app.MapActorsHandlers();
+        _ = app.UseSwagger();
+        _ = app.UseSwaggerUI();
         return app;
     }
 }

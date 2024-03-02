@@ -30,7 +30,8 @@ builder.AddProject<Projects.Hexalith_Server_Parties>("parties")
     .WithReference(commands)
     .WithReference(requests)
     .WithReference(notifications)
-    .WithReference(partiesStatestore);
+    .WithReference(partiesStatestore)
+    .WithEnvironment("APP_API_TOKEN", "Hexalith");
 
 // builder.AddHexalithProject<Projects.Hexalith_Server_Sales>();
 builder.Build().Run();

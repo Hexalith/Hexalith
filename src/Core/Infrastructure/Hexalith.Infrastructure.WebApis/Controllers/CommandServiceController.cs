@@ -21,7 +21,7 @@ using Microsoft.Extensions.Logging;
 /// </remarks>
 [ApiController]
 [Route(ServicesRoutes.CommandService)]
-[Authorize]
+[Authorize("Dapr")]
 public partial class CommandServiceController : ControllerBase
 {
     private readonly ICommandBus _commandBus;
