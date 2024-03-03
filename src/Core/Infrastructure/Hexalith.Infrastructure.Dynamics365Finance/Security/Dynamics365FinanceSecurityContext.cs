@@ -51,5 +51,6 @@ public class Dynamics365FinanceSecurityContext : AzureActiveDirectoryApplication
     }
 
     /// <inheritdoc/>
-    public async Task<string> AcquireTokenAsync(CancellationToken cancellationToken) => await AcquireTokenAsync(_scopes, cancellationToken).ConfigureAwait(false);
+    public async Task<string> AcquireTokenAsync(CancellationToken cancellationToken)
+        => await AcquireTokenAsync(_scopes, cancellationToken).ConfigureAwait(false);
 }

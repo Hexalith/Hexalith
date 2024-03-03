@@ -73,7 +73,11 @@ public abstract partial class AzureActiveDirectoryApplicationSecurityContext : I
         }
         catch (Exception e)
         {
-            LogAcquireTokenError(e, string.Join(';', scopes), Application.Authority, _configuration.ApplicationId);
+            LogAcquireTokenError(
+                e,
+                string.Join(';', scopes),
+                Application.Authority,
+                _configuration.ApplicationId ?? "Unknown");
             throw;
         }
     }
