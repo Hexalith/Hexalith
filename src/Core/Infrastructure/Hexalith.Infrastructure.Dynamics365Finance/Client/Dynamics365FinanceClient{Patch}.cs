@@ -88,7 +88,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
         HttpResponseMessage? response = null;
         try
         {
-            HttpClient client = await GetClientAsync(cancellationToken).ConfigureAwait(false);
+            using HttpClient client = await GetClientAsync(cancellationToken).ConfigureAwait(false);
             response = await client
                 .PatchAsJsonAsync(
                     url,

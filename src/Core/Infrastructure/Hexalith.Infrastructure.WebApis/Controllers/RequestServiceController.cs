@@ -9,7 +9,6 @@ namespace Hexalith.Infrastructure.WebApis.Controllers;
 using Hexalith.Application.Requests;
 using Hexalith.Application.States;
 
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -21,7 +20,6 @@ using Microsoft.Extensions.Logging;
 /// </remarks>
 [ApiController]
 [Route(ServicesRoutes.RequestService)]
-[Authorize]
 public partial class RequestServiceController : ControllerBase
 {
     private readonly ILogger<RequestServiceController> _logger;

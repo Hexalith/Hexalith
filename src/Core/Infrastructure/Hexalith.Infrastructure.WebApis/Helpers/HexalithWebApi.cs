@@ -95,8 +95,8 @@ public static class HexalithWebApi
             .AddApplicationPart(typeof(BaseMessage).Assembly) // Issue with MapControllers() throwing a type not found exception for BaseCommand
             .AddDapr();
 
-        _ = builder.Services.AddAuthentication().AddDapr(); // Adds Dapr authentication
-        _ = builder.Services.AddAuthorization(options => options.AddDapr());
+        _ = builder.Services.AddAuthentication(); // .AddDapr(); // Adds Dapr authentication
+        _ = builder.Services.AddAuthorization(); // options => options.AddDapr());
 
         // if (debugInVisualStudio)
         // {
