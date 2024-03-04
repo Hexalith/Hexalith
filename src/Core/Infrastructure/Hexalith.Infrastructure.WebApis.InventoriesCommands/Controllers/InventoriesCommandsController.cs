@@ -53,9 +53,9 @@ public class InventoriesCommandsController(
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
     [InventoryItemCommandsBusTopic]
     [TopicMetadata("requireSessions", "true")]
-    [TopicMetadata("sessionIdleTimeoutInSec ", "2")]
-    [TopicMetadata("maxConcurrentSessions", "8")]
-    [HttpPost("/handle-inventory-item-commands")]
+    [TopicMetadata("sessionIdleTimeoutInSec ", "60")]
+    [TopicMetadata("maxConcurrentSessions", "32")]
+    [HttpPost("/handle-inventoryitem-commands")]
     public async Task<ActionResult> SubmitInventoryItemCommandsAsync(CommandState commandState)
         => await HandleCommandAsync(
                 commandState,
@@ -70,9 +70,9 @@ public class InventoriesCommandsController(
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
     [InventoryItemStockCommandsBusTopic]
     [TopicMetadata("requireSessions", "true")]
-    [TopicMetadata("sessionIdleTimeoutInSec ", "2")]
-    [TopicMetadata("maxConcurrentSessions", "8")]
-    [HttpPost("/handle-inventory-item-stock-commands")]
+    [TopicMetadata("sessionIdleTimeoutInSec ", "60")]
+    [TopicMetadata("maxConcurrentSessions", "32")]
+    [HttpPost("/handle-inventoryitemstock-commands")]
     public async Task<ActionResult> SubmitInventoryItemStockCommandsAsync(CommandState commandState)
         => await HandleCommandAsync(
                 commandState,
@@ -87,9 +87,9 @@ public class InventoriesCommandsController(
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
     [InventoryUnitCommandsBusTopic]
     [TopicMetadata("requireSessions", "true")]
-    [TopicMetadata("sessionIdleTimeoutInSec ", "2")]
-    [TopicMetadata("maxConcurrentSessions", "8")]
-    [HttpPost("/handle-inventory-unit-commands")]
+    [TopicMetadata("sessionIdleTimeoutInSec ", "60")]
+    [TopicMetadata("maxConcurrentSessions", "32")]
+    [HttpPost("/handle-inventoryunitcommands")]
     public async Task<ActionResult> SubmitInventoryUnitCommandsAsync(CommandState commandState)
     => await HandleCommandAsync(
             commandState,
@@ -104,9 +104,9 @@ public class InventoriesCommandsController(
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
     [InventoryUnitConversionCommandsBusTopic]
     [TopicMetadata("requireSessions", "true")]
-    [TopicMetadata("sessionIdleTimeoutInSec ", "2")]
-    [TopicMetadata("maxConcurrentSessions", "8")]
-    [HttpPost("/handle-inventory-unit-conversion-commands")]
+    [TopicMetadata("sessionIdleTimeoutInSec ", "60")]
+    [TopicMetadata("maxConcurrentSessions", "32")]
+    [HttpPost("/handle-inventoryunitconversion-commands")]
     public async Task<ActionResult> SubmitInventoryUnitConversionCommandsAsync(CommandState commandState)
     => await HandleCommandAsync(
             commandState,
@@ -121,9 +121,9 @@ public class InventoriesCommandsController(
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
     [PartnerInventoryItemCommandsBusTopic]
     [TopicMetadata("requireSessions", "true")]
-    [TopicMetadata("sessionIdleTimeoutInSec ", "2")]
-    [TopicMetadata("maxConcurrentSessions", "8")]
-    [HttpPost("/handle--partner-inventory-item-commands")]
+    [TopicMetadata("sessionIdleTimeoutInSec ", "60")]
+    [TopicMetadata("maxConcurrentSessions", "32")]
+    [HttpPost("/handle-partnerinventoryitem-commands")]
     public async Task<ActionResult> SubmitPartnerInventoryItemCommandsAsync(CommandState commandState)
     => await HandleCommandAsync(
             commandState,

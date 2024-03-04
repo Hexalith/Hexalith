@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 10-27-2023
 // ***********************************************************************
-// <copyright file="CustomerIntegrationEventsController.cs" company="Fiveforty SAS Paris France">
+// <copyright file="InventoryItemIntegrationEventsController.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -59,9 +59,9 @@ public abstract class InventoryItemIntegrationEventsController : EventIntegratio
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
     [InventoryItemEventsBusTopic]
     [TopicMetadata("requireSessions", "true")]
-    [TopicMetadata("sessionIdleTimeoutInSec ", "2")]
-    [TopicMetadata("maxConcurrentSessions", "8")]
-    [HttpPost("/handle-inventory-item-events")]
+    [TopicMetadata("sessionIdleTimeoutInSec ", "60")]
+    [TopicMetadata("maxConcurrentSessions", "32")]
+    [HttpPost("/handle-inventoryitem-events")]
     public async Task<ActionResult> HandleInventoryItemEventsAsync(EventState eventState)
          => await HandleEventAsync(
                 eventState,

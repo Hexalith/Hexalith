@@ -56,9 +56,9 @@ public class ExternalSystemsIntegrationCommandsController : CommandSubmissionCon
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
     [ExternalSystemReferenceCommandsBusTopic]
     [TopicMetadata("requireSessions", "true")]
-    [TopicMetadata("sessionIdleTimeoutInSec ", "2")]
-    [TopicMetadata("maxConcurrentSessions", "8")]
-    [HttpPost("/handle-external-system-reference-commands")]
+    [TopicMetadata("sessionIdleTimeoutInSec ", "60")]
+    [TopicMetadata("maxConcurrentSessions", "32")]
+    [HttpPost("/handle-externalsystemreference-commands")]
     public async Task<ActionResult> HandleExternalSystemsCommandsAsync(CommandState commandState)
     {
         return await HandleCommandAsync(

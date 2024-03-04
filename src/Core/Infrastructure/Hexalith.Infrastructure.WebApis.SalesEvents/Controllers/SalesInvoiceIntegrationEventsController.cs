@@ -59,9 +59,9 @@ public abstract class SalesInvoiceIntegrationEventsController : EventIntegration
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
     [SalesInvoiceEventsBusTopic]
     [TopicMetadata("requireSessions", "true")]
-    [TopicMetadata("sessionIdleTimeoutInSec ", "2")]
-    [TopicMetadata("maxConcurrentSessions", "8")]
-    [HttpPost("/handle-sales-invoice-events")]
+    [TopicMetadata("sessionIdleTimeoutInSec ", "60")]
+    [TopicMetadata("maxConcurrentSessions", "32")]
+    [HttpPost("/handle-salesinvoice-events")]
     public async Task<ActionResult> HandleSalesInvoiceEventsAsync(EventState eventState)
          => await HandleEventAsync(
                 eventState,

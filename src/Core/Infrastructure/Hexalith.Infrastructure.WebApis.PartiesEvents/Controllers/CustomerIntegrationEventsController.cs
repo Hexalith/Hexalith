@@ -55,7 +55,7 @@ public abstract class CustomerIntegrationEventsController(
     [CustomerEventsBusTopic]
     [TopicMetadata("requireSessions", "true")]
     [TopicMetadata("sessionIdleTimeoutInSec ", "15")]
-    [TopicMetadata("maxConcurrentSessions", "8")]
+    [TopicMetadata("maxConcurrentSessions", "32")]
     [HttpPost("/handle-customer-events")]
     public async Task<ActionResult> HandleCustomerEventsAsync(EventState eventState)
          => await HandleEventAsync(

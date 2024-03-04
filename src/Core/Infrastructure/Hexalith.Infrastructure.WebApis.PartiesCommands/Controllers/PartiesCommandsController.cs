@@ -51,8 +51,8 @@ public class PartiesCommandsController(
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
     [CustomerCommandsBusTopic]
     [TopicMetadata("requireSessions", "true")]
-    [TopicMetadata("sessionIdleTimeoutInSec ", "2")]
-    [TopicMetadata("maxConcurrentSessions", "8")]
+    [TopicMetadata("sessionIdleTimeoutInSec ", "60")]
+    [TopicMetadata("maxConcurrentSessions", "32")]
     [HttpPost("/handle-customer-commands")]
     public async Task<ActionResult> SubmitCustomerCommandsAsync(CommandState commandState)
         => await HandleCommandAsync(

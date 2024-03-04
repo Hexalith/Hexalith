@@ -51,9 +51,9 @@ public class SalesCommandsController(
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
     [SalesInvoiceCommandsBusTopic]
     [TopicMetadata("requireSessions", "true")]
-    [TopicMetadata("sessionIdleTimeoutInSec ", "2")]
-    [TopicMetadata("maxConcurrentSessions", "8")]
-    [HttpPost("/handle-sales-invoice-commands")]
+    [TopicMetadata("sessionIdleTimeoutInSec ", "60")]
+    [TopicMetadata("maxConcurrentSessions", "32")]
+    [HttpPost("/handle-salesinvoice-commands")]
     public async Task<ActionResult> SubmitSalesInvoiceCommandsAsync(CommandState commandState)
         => await HandleCommandAsync(
                 commandState,
