@@ -60,7 +60,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     /// <summary>
     /// The HTTP client factory.
     /// </summary>
-    private readonly HttpClient _httpClientFactory;
+    private readonly HttpClient _httpClient;
 
     /// <summary>
     /// The instance.
@@ -77,10 +77,12 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     /// </summary>
     private readonly IDynamics365FinanceSecurityContext _securityContext;
 
+    private bool _httpClientInitialized;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="Dynamics365FinanceClient{TEntity}" /> class.
     /// </summary>
-    /// <param name="httpClientFactory">The HTTP client factory.</param>
+    /// <param name="httpClient">The HTTP client factory.</param>
     /// <param name="securityContext">The security context.</param>
     /// <param name="finOpsSettings">The fin ops settings.</param>
     /// <param name="organizationSettings">The organization settings.</param>
@@ -88,7 +90,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     /// <exception cref="System.ArgumentNullException">null.</exception>
     /// <exception cref="System.ArgumentException">The {nameof(finOpsSettings.Value.Instance)} setting is not defined. - finOpsSettings.</exception>
     public Dynamics365FinanceClient(
-        HttpClient httpClientFactory,
+        HttpClient httpClient,
         IDynamics365FinanceSecurityContext securityContext,
         IOptions<Dynamics365FinanceClientSettings> finOpsSettings,
         IOptions<OrganizationSettings> organizationSettings,
@@ -96,14 +98,14 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     {
         ArgumentNullException.ThrowIfNull(finOpsSettings);
         ArgumentNullException.ThrowIfNull(organizationSettings);
-        ArgumentNullException.ThrowIfNull(httpClientFactory);
+        ArgumentNullException.ThrowIfNull(httpClient);
         ArgumentNullException.ThrowIfNull(securityContext);
         ArgumentNullException.ThrowIfNull(logger);
 
         SettingsException<OrganizationSettings>.ThrowIfNullOrEmpty(organizationSettings.Value.DefaultCompanyId);
         SettingsException<Dynamics365FinanceClientSettings>.ThrowIfUndefined(finOpsSettings.Value.Instance);
 
-        _httpClientFactory = httpClientFactory;
+        _httpClient = httpClient;
         _securityContext = securityContext;
         _logger = logger;
         if (string.IsNullOrWhiteSpace(finOpsSettings.Value.Instance?.OriginalString))
@@ -324,6 +326,11 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     /// <exception cref="System.InvalidOperationException">The acquired token is null or empty.</exception>
     private async Task<HttpClient> GetClientAsync(CancellationToken cancellationToken)
     {
+        if (_httpClientInitialized)
+        {
+            return _httpClient;
+        }
+
         string token = await _securityContext
             .AcquireTokenAsync(cancellationToken)
             .ConfigureAwait(false);
@@ -333,16 +340,15 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
             throw new InvalidOperationException("The acquired token is null or empty.");
         }
 
-        HttpClient client = _httpClientFactory;
-        client.DefaultRequestHeaders.Clear();
-        client.DefaultRequestHeaders.Add("OData-MaxVersion", "4.0");
-        client.DefaultRequestHeaders.Add("OData-Version", "4.0");
-        client.DefaultRequestHeaders.Add("Prefer", "odata.include-annotations = *");
-        client.DefaultRequestHeaders.Accept.Add(
+        _httpClient.DefaultRequestHeaders.Add("OData-MaxVersion", "4.0");
+        _httpClient.DefaultRequestHeaders.Add("OData-Version", "4.0");
+        _httpClient.DefaultRequestHeaders.Add("Prefer", "odata.include-annotations = *");
+        _httpClient.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("application/json"));
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
+        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
             "Bearer",
             token);
-        return client;
+        _httpClientInitialized = true;
+        return _httpClient;
     }
 }
