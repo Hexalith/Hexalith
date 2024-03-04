@@ -33,25 +33,20 @@ using Microsoft.Extensions.Logging;
 /// Implements the <see cref="EventIntegrationController" />.
 /// </summary>
 /// <seealso cref="EventIntegrationController" />
+/// <remarks>
+/// Initializes a new instance of the <see cref="SalesInvoiceIntegrationEventsController"/> class.
+/// </remarks>
+/// <param name="eventProcessor">The event processor.</param>
+/// <param name="projectionProcessor">The projection processor.</param>
+/// <param name="hostEnvironment">The host environment.</param>
+/// <param name="logger">The logger.</param>
 [ApiController]
-public abstract class SalesInvoiceIntegrationEventsController : EventIntegrationController
+public abstract class SalesInvoiceIntegrationEventsController(
+    IIntegrationEventProcessor eventProcessor,
+    IProjectionUpdateProcessor projectionProcessor,
+    IHostEnvironment hostEnvironment,
+    ILogger logger) : EventIntegrationController(eventProcessor, projectionProcessor, hostEnvironment, logger)
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="SalesInvoiceIntegrationEventsController"/> class.
-    /// </summary>
-    /// <param name="eventProcessor">The event processor.</param>
-    /// <param name="projectionProcessor">The projection processor.</param>
-    /// <param name="hostEnvironment">The host environment.</param>
-    /// <param name="logger">The logger.</param>
-    protected SalesInvoiceIntegrationEventsController(
-        IIntegrationEventProcessor eventProcessor,
-        IProjectionUpdateProcessor projectionProcessor,
-        IHostEnvironment hostEnvironment,
-        ILogger logger)
-        : base(eventProcessor, projectionProcessor, hostEnvironment, logger)
-    {
-    }
-
     /// <summary>
     /// Handle aggregate external reference events as an asynchronous operation.
     /// </summary>
