@@ -38,35 +38,32 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 
-using Serilog;
-
 /// <summary>
 /// Class HexalithWebApi.
 /// </summary>
 public static class HexalithWebApi
 {
     /// <summary>
-    /// Creates the Hexalith application.
+    /// Creates the application.
     /// </summary>
     /// <param name="applicationName">Name of the application.</param>
-    /// <param name="version">The API version, for example 'v1'.</param>
-    /// <param name="debugInVisualStudio">If true, runs the application inside Visual Studio to simplify debugging.</param>
-    /// <param name="registerActors">Used to register application actors.</param>
-    /// <param name="args">The program arguments.</param>
+    /// <param name="version">The version.</param>
+    /// <param name="registerActors">The register actors.</param>
+    /// <param name="args">The arguments.</param>
     /// <returns>WebApplicationBuilder.</returns>
     public static WebApplicationBuilder CreateApplication(
         string applicationName,
         string version,
-        bool debugInVisualStudio,
         Action<ActorRegistrationCollection> registerActors,
         string[] args)
     {
         Activity.DefaultIdFormat = ActivityIdFormat.W3C;
 
         WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-        Serilog.ILogger startupLogger = builder.AddSerilogLogger();
 
-        startupLogger.Information("Configuring {AppName} ...", applicationName);
+        // Serilog.ILogger startupLogger = builder.AddSerilogLogger();
+
+        // startupLogger.Information("Configuring {AppName} ...", applicationName);
         builder.Services
             .AddEndpointsApiExplorer()
             .AddSwaggerGen(c =>
@@ -122,7 +119,8 @@ public static class HexalithWebApi
         ArgumentNullException.ThrowIfNull(app);
         _ = app
             .UseCors()
-            .UseSerilogRequestLogging()
+
+            // .UseSerilogRequestLogging()
             .UseCloudEvents();
 
         _ = app.MapControllers();

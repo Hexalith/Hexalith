@@ -18,26 +18,17 @@ using Hexalith.Infrastructure.WebApis.Helpers;
 using Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers;
 using Hexalith.Server.Dynamics365Finance;
 
-using Serilog;
-
 const string applicationDescription = "Hexalith Dynamics 365 Finance and Operations";
-
-#if DEBUG
-bool debugInVisualStudio = true;
-#else
-bool debugInVisualStudio = false;
-#endif
 
 IEnumerable<string> aggregateNames = [Customer.GetAggregateName()];
 WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
     applicationDescription,
     "v1",
-    debugInVisualStudio,
     (actors) =>
     {
-        actors.AddExternalSystemsMapper(Dynamics365FinanceConstants.ApplicationName, aggregateNames);
-        actors.AddPartiesProjections(Dynamics365FinanceConstants.ApplicationName);
-        actors.AddDynamics365FinanceProjections(Dynamics365FinanceConstants.ApplicationName);
+        _ = actors.AddExternalSystemsMapper(Dynamics365FinanceConstants.ApplicationName, aggregateNames);
+        _ = actors.AddPartiesProjections(Dynamics365FinanceConstants.ApplicationName);
+        _ = actors.AddDynamics365FinanceProjections(Dynamics365FinanceConstants.ApplicationName);
     },
     args);
 
@@ -60,20 +51,22 @@ app.MapDefaultEndpoints();
 
 app.UseHexalith();
 
-Log.Logger.Information("Starting {AppName}.", applicationDescription);
+ILogger<Program> logger = app.Services.GetRequiredService<ILogger<Program>>();
+#pragma warning disable CA1848 // Use the LoggerMessage delegates
 
 try
 {
+    logger.LogInformation("Starting {AppName}.", Dynamics365FinanceConstants.ApplicationName);
     await app.RunAsync().ConfigureAwait(false);
 }
 catch (Exception ex)
 {
-    Log.Logger.Fatal(ex, "Error starting {AppName}.", applicationDescription);
+    logger.LogError(ex, "Error starting {AppName}.", Dynamics365FinanceConstants.ApplicationName);
     throw;
 }
 finally
 {
-    Log.Logger.Information("{AppName}, is stopped.", applicationDescription);
+    logger.LogInformation("{AppName}, is stopped.", Dynamics365FinanceConstants.ApplicationName);
 }
 
 /* Dynamics Customers Business Event sample

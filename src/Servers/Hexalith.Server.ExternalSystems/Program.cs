@@ -9,19 +9,11 @@ using Hexalith.Infrastructure.DaprRuntime.ExternalSystems.Aggregates.Helpers;
 using Hexalith.Infrastructure.WebApis.ExternalSystemsCommands.Helpers;
 using Hexalith.Infrastructure.WebApis.Helpers;
 
-using Serilog;
-
-const string appDescription = "Hexalith External Systems";
-#if DEBUG
-bool debugInVisualStudio = true;
-#else
-bool debugInVisualStudio = false;
-#endif
+const string appName = "Hexalith External Systems";
 
 WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
-    appDescription,
+    appName,
     "v1",
-    debugInVisualStudio,
     (actors) => actors.AddExternalSystemsAggregates(),
     args);
 
@@ -34,18 +26,19 @@ WebApplication app = builder.Build();
 
 app.UseHexalith();
 
-Log.Logger.Information("Starting {AppName}.", appDescription);
-
+ILogger<Program> logger = app.Services.GetRequiredService<ILogger<Program>>();
+#pragma warning disable CA1848 // Use the LoggerMessage delegates
 try
 {
+    logger.LogInformation("Starting {AppName}.", appName);
     await app.RunAsync().ConfigureAwait(false);
 }
 catch (Exception ex)
 {
-    Log.Logger.Fatal(ex, "Error starting {AppName}.", appDescription);
+    logger.LogError(ex, "Error starting {AppName}.", appName);
     throw;
 }
 finally
 {
-    Log.Logger.Information("{AppName}, is stopped.", appDescription);
+    logger.LogInformation("{AppName}, is stopped.", appName);
 }

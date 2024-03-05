@@ -9,20 +9,11 @@ using Hexalith.Infrastructure.DaprRuntime.Parties.Helpers;
 using Hexalith.Infrastructure.WebApis.Helpers;
 using Hexalith.Infrastructure.WebApis.PartiesCommands.Helpers;
 
-using Serilog;
-
 const string appName = "Hexalith Parties";
-
-#if DEBUG
-bool debugInVisualStudio = true;
-#else
-bool debugInVisualStudio = false;
-#endif
 
 WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
     appName,
     "v1",
-    debugInVisualStudio,
     (actors) => actors.AddPartiesAggregates(),
     args);
 
@@ -35,18 +26,19 @@ WebApplication app = builder.Build();
 
 app.UseHexalith();
 
-Log.Logger.Information("Starting {AppName}.", appName);
-
+ILogger<Program> logger = app.Services.GetRequiredService<ILogger<Program>>();
+#pragma warning disable CA1848 // Use the LoggerMessage delegates
 try
 {
+    logger.LogInformation("Starting {AppName}.", appName);
     await app.RunAsync().ConfigureAwait(false);
 }
 catch (Exception ex)
 {
-    Log.Logger.Fatal(ex, "Error starting {AppName}.", appName);
+    logger.LogError(ex, "Error starting {AppName}.", appName);
     throw;
 }
 finally
 {
-    Log.Logger.Information("{AppName}, is stopped.", appName);
+    logger.LogInformation("{AppName}, is stopped.", appName);
 }
