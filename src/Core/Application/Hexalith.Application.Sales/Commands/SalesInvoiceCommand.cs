@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 using Hexalith.Application.Organizations.Commands;
+using Hexalith.Application.Organizations.Notifications;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Extensions;
