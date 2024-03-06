@@ -19,12 +19,16 @@ namespace Hexalith.Infrastructure.Dynamics365Finance.Client;
 using System.Runtime.Serialization;
 using System.Text.Json;
 
+using Hexalith.Extensions.Common;
+using Hexalith.Extensions.Errors;
+using Hexalith.Extensions.Helpers;
+
 /// <summary>
 /// Exception thrown when a single request failed.
 /// </summary>
 /// <typeparam name="T">Type of the returned entity.</typeparam>
 [DataContract]
-public sealed class GetRequestFailedException<T> : Exception
+public sealed class GetRequestFailedException<T> : ApplicationErrorException
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="GetRequestFailedException{T}" /> class.
@@ -61,7 +65,23 @@ public sealed class GetRequestFailedException<T> : Exception
     /// <param name="message">The error message.</param>
     /// <param name="innerException">The inner exception.</param>
     public GetRequestFailedException(string entityName, IDictionary<string, object?> filter, string? responseContent, string? message, Exception? innerException)
-        : base($"Failed to retrieve {typeof(T).Name} with filter {JsonSerializer.Serialize(filter)} on entity {entityName}. " + message, innerException)
+        : base(
+            new ApplicationError
+            {
+                Title = "Dynamics 365 finance get request failed",
+                Detail = "Failed to retrieve {Name} with filter {Filter} on entity {EntityName}. {Message}",
+                Category = ErrorCategory.Technical,
+                Arguments = new[]
+                {
+                    typeof(T).Name,
+                    JsonSerializer.Serialize(filter) ?? string.Empty,
+                    entityName,
+                    message ?? string.Empty,
+                },
+                TechnicalDetail = "{TechnicalMessage}",
+                TechnicalArguments = new[] { innerException?.FullMessage() ?? string.Empty },
+            },
+            innerException)
     {
         EntityName = entityName;
         Filter = filter;
@@ -77,7 +97,23 @@ public sealed class GetRequestFailedException<T> : Exception
     /// <param name="message">The message.</param>
     /// <param name="innerException">The inner exception.</param>
     public GetRequestFailedException(string entityName, Uri url, string? responseContent, string? message, Exception? innerException)
-        : base($"Failed to retrieve {typeof(T).Name} with url '{url}' on entity {entityName}. " + message, innerException)
+        : base(
+            new ApplicationError
+            {
+                Title = "Dynamics 365 finance get request failed",
+                Detail = "Failed to retrieve {Name} on entity {EntityName}. {Message}",
+                Category = ErrorCategory.Technical,
+                Arguments = new[]
+                {
+                    typeof(T).Name,
+                    url.AbsoluteUri,
+                    entityName,
+                    message ?? string.Empty,
+                },
+                TechnicalDetail = "Failed on HTTP GET call. Url : {Url}. {TechnicalMessage}",
+                TechnicalArguments = new[] { url.AbsoluteUri, innerException?.FullMessage() ?? string.Empty },
+            },
+            innerException)
     {
         EntityName = entityName;
         Filter = null;

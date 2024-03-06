@@ -57,7 +57,7 @@ public static class Dynamics365FinanceHelper
             .AddHttpClient()
             .ConfigureSettings<Dynamics365FinanceClientSettings>(configuration);
         services.TryAddSingleton<IDynamics365FinanceSecurityContext, Dynamics365FinanceSecurityContext>();
-        services.TryAddSingleton(typeof(IDynamics365FinanceClient<>), typeof(Dynamics365FinanceClient<>));
+        services.TryAddTransient(typeof(IDynamics365FinanceClient<>), typeof(Dynamics365FinanceClient<>));
         return services;
     }
 }

@@ -340,6 +340,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
             throw new InvalidOperationException("The acquired token is null or empty.");
         }
 
+        _httpClient.BaseAddress = _instance;
         _httpClient.DefaultRequestHeaders.Add("OData-MaxVersion", "4.0");
         _httpClient.DefaultRequestHeaders.Add("OData-Version", "4.0");
         _httpClient.DefaultRequestHeaders.Add("Prefer", "odata.include-annotations = *");
