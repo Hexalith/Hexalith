@@ -21,9 +21,9 @@
 		<ContainerEnvironmentVariable Include="ASPNETCORE_DETAILEDERRORS" Value="false" />
 		<ContainerEnvironmentVariable Include="ASPNETCORE_SHUTDOWNTIMEOUTSECONDS" Value="600" />
 		<ContainerEnvironmentVariable Include="Logging__LogLevel__Default" Value="Information" />
-		<ContainerEnvironmentVariable Include="Logging__LogLevel__Default__Microsoft" Value="Warning" />
-		<ContainerEnvironmentVariable Include="Logging__LogLevel__Default__Aspire" Value="Warning" />
-		<ContainerEnvironmentVariable Include="Logging__LogLevel__Default__Dapr" Value="Warning" />
+		<ContainerEnvironmentVariable Include="Logging__LogLevel__Microsoft" Value="Warning" />
+		<ContainerEnvironmentVariable Include="Logging__LogLevel__Aspire" Value="Warning" />
+		<ContainerEnvironmentVariable Include="Logging__LogLevel__Dapr" Value="Warning" />
 		<ContainerPort Include="8080" Type="tcp" />
 	</ItemGroup>
 	<ItemGroup>
