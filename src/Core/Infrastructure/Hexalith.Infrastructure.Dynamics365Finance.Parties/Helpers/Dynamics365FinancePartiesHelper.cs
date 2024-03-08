@@ -100,12 +100,13 @@ public static class Dynamics365FinancePartiesHelper
         ArgumentNullException.ThrowIfNull(configuration);
 
         _ = services
-            .AddDynamics365FinanceClient(configuration)
-            .AddHttpClient<IDynamics365FinanceClient<CustomerExternalSystemCode>, Dynamics365FinanceClient<CustomerExternalSystemCode>>();
-        services.TryAddScoped<IDynamics365FinanceCustomerService, Dynamics365FinanceCustomerService>();
+            .AddDynamics365FinanceClient(configuration);
+        _ = services.AddHttpClient<IDynamics365FinanceClient<CustomerExternalSystemCode>, Dynamics365FinanceClient<CustomerExternalSystemCode>>();
         _ = services.AddHttpClient<IDynamics365FinanceClient<CustomerV3>, Dynamics365FinanceClient<CustomerV3>>();
         _ = services.AddHttpClient<IDynamics365FinanceClient<CustomerBase>, Dynamics365FinanceClient<CustomerBase>>();
         _ = services.AddHttpClient<IDynamics365FinanceClient<RetailStore>, Dynamics365FinanceClient<RetailStore>>();
+        _ = services.AddHttpClient<IDynamics365FinanceClient<CustomerExternalSystemCode>, Dynamics365FinanceClient<CustomerExternalSystemCode>>();
+        services.TryAddTransient<IDynamics365FinanceCustomerService, Dynamics365FinanceCustomerService>();
 
         return services;
     }

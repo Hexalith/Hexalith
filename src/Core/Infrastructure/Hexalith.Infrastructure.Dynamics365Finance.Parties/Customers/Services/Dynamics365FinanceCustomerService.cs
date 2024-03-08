@@ -40,6 +40,7 @@ using Microsoft.Extensions.Options;
 /// </summary>
 public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCustomerService
 {
+    private readonly string _companyId;
     private readonly IDynamics365FinanceClient<CustomerBase> _customerBaseService;
 
     /// <summary>
@@ -52,6 +53,8 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
     private readonly ILogger<Dynamics365FinanceCustomerService> _logger;
     private readonly string _originId;
     private readonly IOptions<Dynamics365FinancePartiesSettings> _partiesSettings;
+
+    private readonly string _partitionId;
 
     /// <summary>
     /// The store service.
@@ -89,8 +92,12 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
         ArgumentNullException.ThrowIfNull(organizationSettings);
         ArgumentNullException.ThrowIfNull(logger);
 
+        SettingsException<OrganizationSettings>.ThrowIfNullOrEmpty(organizationSettings.Value.DefaultPartitionId);
+        SettingsException<OrganizationSettings>.ThrowIfNullOrEmpty(organizationSettings.Value.DefaultCompanyId);
         SettingsException<OrganizationSettings>.ThrowIfNullOrEmpty(organizationSettings.Value.DefaultOriginId);
 
+        _partitionId = organizationSettings.Value.DefaultPartitionId;
+        _companyId = organizationSettings.Value.DefaultCompanyId;
         _originId = organizationSettings.Value.DefaultOriginId;
         _customerBaseService = customerBaseService;
         _customerService = customerService;
@@ -128,7 +135,7 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
             CustomerAccountKey customerKey;
             if (string.IsNullOrWhiteSpace(customerAccount))
             {
-                // No incompleted customer found in Dynamics 365 Finance.
+                // No customer found in Dynamics 365 Finance.
                 if (string.IsNullOrWhiteSpace(hexalithExternalCodeCustomer) && string.IsNullOrWhiteSpace(originExternalCodeCustomer))
                 {
                     CustomerV3 customer = await CreateCustomerV3Async(registered, tempName, cancellationToken)
@@ -225,6 +232,32 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
         {
             throw new InvalidOperationException($"Error while creating customer {registered.AggregateId}.", ex);
         }
+    }
+
+    /// <inheritdoc/>
+    public async Task<CustomerV3?> FindCustomerByExternalIdAsync(string companyId, string system, string externalId, CancellationToken cancellationToken)
+    {
+        List<CustomerExternalSystemCode> codes = (await _externalCodeService.GetAsync(
+            new CustomerExternalCodeFilter(
+                _companyId,
+                companyId,
+                system),
+            cancellationToken).ConfigureAwait(false))
+            .ToList();
+        if (codes.Count < 1)
+        {
+            return null;
+        }
+
+        if (codes.Count > 1)
+        {
+            throw new InvalidOperationException($"Duplicate external code found for {companyId} and {system} in Dynamics 365 for Finance company {_companyId} : {string.Join(';', codes.Select(c => c.CustomerAccountNumber))}");
+        }
+
+        string? code = codes[0].CustomerAccountNumber;
+        return string.IsNullOrEmpty(code)
+            ? null
+            : await _customerService.GetSingleAsync(new CustomerAccountKey(_companyId, code), cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -344,6 +377,13 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
         }
     }
 
+    private static string GetChangeInformation(Dictionary<string, (object? OldValue, object? NewValue)> values)
+    {
+        return string.Join('\n', values
+            .Select(p =>
+                $"{p.Key}:'{p.Value.OldValue ?? "<null>"}' => '{p.Value.NewValue ?? "<null>"}"));
+    }
+
     /// <summary>
     /// Find as an asynchronous operation.
     /// </summary>
@@ -383,13 +423,6 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
         }
 
         return customerId;
-    }
-
-    private string GetChangeInformation(Dictionary<string, (object? OldValue, object? NewValue)> values)
-    {
-        return string.Join('\n', values
-            .Select(p =>
-                $"{p.Key}:'{p.Value.OldValue ?? "<null>"}' => '{p.Value.NewValue ?? "<null>"}"));
     }
 
     [LoggerMessage(

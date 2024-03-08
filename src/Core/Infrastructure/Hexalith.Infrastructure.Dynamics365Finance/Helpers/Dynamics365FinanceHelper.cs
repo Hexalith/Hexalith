@@ -18,7 +18,6 @@ using FluentValidation;
 
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents;
-using Hexalith.Infrastructure.Dynamics365Finance.Client;
 using Hexalith.Infrastructure.Dynamics365Finance.Configurations;
 using Hexalith.Infrastructure.Dynamics365Finance.Dispatchers;
 using Hexalith.Infrastructure.Dynamics365Finance.Security;
@@ -57,7 +56,6 @@ public static class Dynamics365FinanceHelper
             .AddHttpClient()
             .ConfigureSettings<Dynamics365FinanceClientSettings>(configuration);
         services.TryAddSingleton<IDynamics365FinanceSecurityContext, Dynamics365FinanceSecurityContext>();
-        services.TryAddTransient(typeof(IDynamics365FinanceClient<>), typeof(Dynamics365FinanceClient<>));
         return services;
     }
 }

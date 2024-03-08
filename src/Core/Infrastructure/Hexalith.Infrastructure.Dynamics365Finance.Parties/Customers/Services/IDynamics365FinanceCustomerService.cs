@@ -41,6 +41,16 @@ public interface IDynamics365FinanceCustomerService
     Task<CustomerV3> CreateCustomerV3Async(CustomerRegistered registered, string? temporaryName, CancellationToken cancellationToken);
 
     /// <summary>
+    /// Finds the customer by external identifier asynchronous.
+    /// </summary>
+    /// <param name="companyId">The company identifier.</param>
+    /// <param name="system">The system.</param>
+    /// <param name="externalId">The external identifier.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task&lt;System.ValueTuple&lt;System.Nullable&lt;CustomerV3&gt;, System.Nullable&lt;System.String&gt;&gt;&gt;.</returns>
+    Task<CustomerV3?> FindCustomerByExternalIdAsync(string companyId, string system, string externalId, CancellationToken cancellationToken);
+
+    /// <summary>
     /// Get template customer as an asynchronous operation.
     /// </summary>
     /// <param name="warehouseId">The warehouse identifier.</param>
