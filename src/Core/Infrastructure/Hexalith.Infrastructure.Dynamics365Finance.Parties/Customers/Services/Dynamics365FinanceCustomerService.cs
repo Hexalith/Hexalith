@@ -235,6 +235,22 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
     }
 
     /// <inheritdoc/>
+    public async Task<CustomerV3?> FindCustomerAsync(string companyId, string id, CancellationToken cancellationToken)
+    {
+        List<CustomerV3> codes = (await _customerService.GetAsync(
+            new CustomerByAccountFilter(
+                companyId,
+                id),
+            cancellationToken).ConfigureAwait(false))
+            .ToList();
+        return codes.Count < 1
+            ? null
+            : codes.Count > 1
+            ? throw new InvalidOperationException($"Duplicate customer Id {id} in Dynamics 365 for Finance company {companyId}.")
+            : codes.First();
+    }
+
+    /// <inheritdoc/>
     public async Task<CustomerV3?> FindCustomerByExternalIdAsync(string companyId, string system, string externalId, CancellationToken cancellationToken)
     {
         List<CustomerExternalSystemCode> codes = (await _externalCodeService.GetAsync(
