@@ -225,7 +225,7 @@ public abstract partial class AggregateActorBase
             return;
         }
 
-        LogProcessingCommandsInformation(Logger, Id.ToString(), Host.ActorTypeInfo.ActorTypeName, state.CommandCount, state.LastCommandProcessed);
+        LogProcessingCommandsInformation(Logger, Id.ToString(), Host.ActorTypeInfo.ActorTypeName, state.LastCommandProcessed, state.CommandCount, );
 
         long commandNumber = state.LastCommandProcessed + 1;
 

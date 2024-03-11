@@ -161,13 +161,13 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
             EventId = 2,
             Level = LogLevel.Error,
             Message = "Actor {ActorType} ({ActorId}) failed processing {CommandProcessed}/{CommandCount} command in a timer or reminder callback. Resetting state.")]
-    public static partial void LogProcessingCallbackError(ILogger logger, Exception ex, string actorId, string actorType, long commandCount, long commandProcessed);
+    public static partial void LogProcessingCallbackError(ILogger logger, Exception ex, string actorId, string actorType, long commandProcessed, long commandCount);
 
     [LoggerMessage(
                 EventId = 1,
             Level = LogLevel.Information,
             Message = "Actor {ActorType} ({ActorId}) is processing commands. {LastCommandProcessed} commands processed on a total of {CommandCount}")]
-    public static partial void LogProcessingCommandsInformation(ILogger logger, string actorId, string actorType, long commandCount, long lastCommandProcessed);
+    public static partial void LogProcessingCommandsInformation(ILogger logger, string actorId, string actorType, long lastCommandProcessed, long commandCount);
 
     /// <inheritdoc/>
     public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period)
