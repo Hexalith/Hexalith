@@ -18,6 +18,7 @@ using Hexalith.Domain.Events;
 using Hexalith.Domain.ValueObjets;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.Dynamics365Finance.Client;
+using Hexalith.Infrastructure.Dynamics365Finance.Parties.Configuration;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Configuration;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters;
@@ -57,7 +58,7 @@ public class CustomerHandlersTest
         Microsoft.Extensions.Options.IOptions<Dynamics365FinancePartiesSettings> partiesOptions = new OptionsBuilder<Dynamics365FinancePartiesSettings>()
             .WithValue(new Dynamics365FinancePartiesSettings
             {
-                Parties = new PartiesSettings
+                Customers = new CustomersSettings
                 {
                     SendCustomersToErpEnabled = true,
                     ReceiveCustomersFromErpEnabled = true,
