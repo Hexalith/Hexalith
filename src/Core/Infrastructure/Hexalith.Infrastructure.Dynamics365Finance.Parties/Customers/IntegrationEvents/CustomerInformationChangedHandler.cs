@@ -19,7 +19,7 @@ namespace Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Integrati
 using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
 using Hexalith.Domain.Events;
-using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Configuration;
+using Hexalith.Infrastructure.Dynamics365Finance.Parties.Configuration;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services;
 
 using Microsoft.Extensions.Logging;
@@ -65,12 +65,12 @@ public partial class CustomerInformationChangedHandler : IntegrationEventHandler
     }
 
     /// <inheritdoc/>
-    public override async Task<IEnumerable<BaseCommand>> ApplyAsync(CustomerInformationChanged @event, CancellationToken cancellationToken)
+    public override async Task<IEnumerable<BaseCommand>> ApplyAsync(CustomerInformationChanged baseEvent, CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(@event);
-        if (_partiesSettings.Value.Parties?.SendCustomersToErpEnabled == true)
+        ArgumentNullException.ThrowIfNull(baseEvent);
+        if (_partiesSettings.Value.Customers?.SendCustomersToErpEnabled == true)
         {
-            await _customerService.UpdateCustomerAsync(@event, cancellationToken).ConfigureAwait(false);
+            await _customerService.UpdateCustomerAsync(baseEvent, cancellationToken).ConfigureAwait(false);
         }
         else
         {

@@ -25,7 +25,7 @@ using Hexalith.Domain.Events;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.Dynamics365Finance.Client;
-using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Configuration;
+using Hexalith.Infrastructure.Dynamics365Finance.Parties.Configuration;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Helpers;
@@ -112,7 +112,7 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
     public async Task<string> CreateCustomerAsync(CustomerRegistered registered, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(registered);
-        if (_partiesSettings.Value.Parties?.SendCustomersToErpEnabled != true)
+        if (_partiesSettings.Value.Customers?.SendCustomersToErpEnabled != true)
         {
             throw new InvalidOperationException("Sending customers to Dynamics 365 for Finance is disabled.");
         }
@@ -207,7 +207,7 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
     public async Task<CustomerV3> CreateCustomerV3Async(CustomerRegistered registered, string? temporaryName, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(registered);
-        if (_partiesSettings.Value.Parties?.SendCustomersToErpEnabled != true)
+        if (_partiesSettings.Value.Customers?.SendCustomersToErpEnabled != true)
         {
             throw new InvalidOperationException("Sending customers to Dynamics 365 for Finance is disabled.");
         }

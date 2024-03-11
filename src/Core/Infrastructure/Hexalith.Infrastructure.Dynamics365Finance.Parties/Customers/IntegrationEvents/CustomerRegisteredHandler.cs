@@ -22,7 +22,7 @@ using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
 using Hexalith.Application.Organizations.Configurations;
 using Hexalith.Domain.Events;
-using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Configuration;
+using Hexalith.Infrastructure.Dynamics365Finance.Parties.Configuration;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Services;
 
 using Microsoft.Extensions.Logging;
@@ -83,17 +83,17 @@ public partial class CustomerRegisteredHandler : IntegrationEventHandlerBase<Cus
     }
 
     /// <inheritdoc/>
-    public override async Task<IEnumerable<BaseCommand>> ApplyAsync(CustomerRegistered @event, CancellationToken cancellationToken)
+    public override async Task<IEnumerable<BaseCommand>> ApplyAsync(CustomerRegistered baseEvent, CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(@event);
-        if (@event.OriginId.Equals(_originId, StringComparison.OrdinalIgnoreCase))
+        ArgumentNullException.ThrowIfNull(baseEvent);
+        if (baseEvent.OriginId.Equals(_originId, StringComparison.OrdinalIgnoreCase))
         {
             return [];
         }
 
-        if (_partiesSettings.Value.Parties?.SendCustomersToErpEnabled == true)
+        if (_partiesSettings.Value.Customers?.SendCustomersToErpEnabled == true)
         {
-            _ = await _customerService.CreateCustomerAsync(@event, cancellationToken).ConfigureAwait(false);
+            _ = await _customerService.CreateCustomerAsync(baseEvent, cancellationToken).ConfigureAwait(false);
         }
         else
         {

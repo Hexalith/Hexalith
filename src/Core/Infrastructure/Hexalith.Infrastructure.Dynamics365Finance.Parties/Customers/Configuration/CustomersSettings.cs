@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 12-22-2023
 // ***********************************************************************
-// <copyright file="PartiesSettings.cs" company="Fiveforty SAS Paris France">
+// <copyright file="CustomersSettings.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -23,7 +23,7 @@ using System.Runtime.Serialization;
 /// </summary>
 [Serializable]
 [DataContract]
-public class PartiesSettings
+public class CustomersSettings
 {
     /// <summary>
     /// Gets or sets a value indicating whether [receive customers from erp enabled].

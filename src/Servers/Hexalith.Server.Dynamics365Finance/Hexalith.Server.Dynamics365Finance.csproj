@@ -7,8 +7,8 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<ContainerEnvironmentVariable Include="Statestore__Name" Value="dynamics-365-finance-statestore" />
-		<ContainerEnvironmentVariable Include="Dynamics365Finance__Parties__ReceiveCustomersFromErpEnabled" Value="false" />
-		<ContainerEnvironmentVariable Include="Dynamics365Finance__Parties__SendCustomersToErpEnabled" Value="false" />
+		<ContainerEnvironmentVariable Include="Dynamics365Finance__Customers__ReceiveCustomersFromErpEnabled" Value="true" />
+		<ContainerEnvironmentVariable Include="Dynamics365Finance__Customers__SendCustomersToErpEnabled" Value="true" />
 		<ContainerEnvironmentVariable Include="Dynamics365Finance__Identity__Tenant" Value="fiveforty.fr" />
 	</ItemGroup>
 	<ItemGroup>

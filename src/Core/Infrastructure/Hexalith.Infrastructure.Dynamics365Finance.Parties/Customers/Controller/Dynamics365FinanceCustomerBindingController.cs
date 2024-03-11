@@ -26,8 +26,8 @@ using Hexalith.Application.Organizations.Configurations;
 using Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents;
 using Hexalith.Infrastructure.Dynamics365Finance.Controllers;
 using Hexalith.Infrastructure.Dynamics365Finance.Dispatchers;
+using Hexalith.Infrastructure.Dynamics365Finance.Parties.Configuration;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents;
-using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Configuration;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
@@ -98,7 +98,7 @@ public abstract partial class Dynamics365FinanceCustomerBindingController : Dyna
        [SwaggerRequestBody(Description ="Dynamics 365 finance customer business event", Required = true)]
        [FromBody] JsonElement message)
     {
-        if (_partiesSettings.Value.Parties?.ReceiveCustomersFromErpEnabled == true)
+        if (_partiesSettings.Value.Customers?.ReceiveCustomersFromErpEnabled == true)
         {
             return await HandleEventAsync(message, CancellationToken.None)
                 .ConfigureAwait(false);
