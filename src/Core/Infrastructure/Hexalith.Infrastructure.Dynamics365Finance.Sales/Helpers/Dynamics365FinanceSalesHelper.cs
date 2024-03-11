@@ -26,6 +26,7 @@ using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.Dynamics365Finance.Client;
 using Hexalith.Infrastructure.Dynamics365Finance.Helpers;
 using Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Entities;
+using Hexalith.Infrastructure.Dynamics365Finance.Sales.PackingSlips.Models;
 using Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesInvoices.Configuration;
 using Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesInvoices.Controller;
 using Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesInvoices.Entities;
@@ -45,10 +46,9 @@ public static class Dynamics365FinanceSalesHelper
     /// Adds the dynamics365 finance projections.
     /// </summary>
     /// <param name="actors">The actors.</param>
-    /// <param name="applicationName">Name of the application.</param>
     /// <returns>ActorRegistrationCollection.</returns>
     /// <exception cref="System.ArgumentNullException">Thrown when <paramref name="actors"/> is null.</exception>
-    public static ActorRegistrationCollection AddDynamics365FinanceProjections([NotNull] this ActorRegistrationCollection actors, string applicationName)
+    public static ActorRegistrationCollection AddDynamics365FinanceProjections([NotNull] this ActorRegistrationCollection actors)
     {
         ArgumentNullException.ThrowIfNull(actors);
         return actors;
@@ -59,19 +59,17 @@ public static class Dynamics365FinanceSalesHelper
     /// </summary>
     /// <param name="services">The services.</param>
     /// <param name="configuration">The configuration.</param>
-    /// <param name="applicationName">Name of the application.</param>
     /// <returns>IServiceCollection.</returns>
     /// <exception cref="System.ArgumentNullException">Thrown when <paramref name="services"/> or <paramref name="configuration"/> is null.</exception>
     /// <exception cref="System.ArgumentException">Thrown when <paramref name="applicationName"/> is null or whitespace.</exception>
-    public static IServiceCollection AddDynamics365FinanceSalesInvoices(this IServiceCollection services, IConfiguration configuration, string applicationName)
+    public static IServiceCollection AddDynamics365FinanceSalesInvoices(this IServiceCollection services, IConfiguration configuration)
     {
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
-        ArgumentException.ThrowIfNullOrWhiteSpace(applicationName);
         _ = services.ConfigureSettings<Dynamics365FinanceSalesSettings>(configuration);
         return services
             .AddDynamics365FinanceSalesInvoicesClient(configuration)
-            .AddDynamics365FinanceSalesInvoicesBusinessEvents(configuration, applicationName);
+            .AddDynamics365FinanceSalesInvoicesBusinessEvents(configuration);
     }
 
     /// <summary>
@@ -79,15 +77,13 @@ public static class Dynamics365FinanceSalesHelper
     /// </summary>
     /// <param name="services">The services.</param>
     /// <param name="configuration">The configuration.</param>
-    /// <param name="applicationName">Name of the application.</param>
     /// <returns>IServiceCollection.</returns>
     /// <exception cref="System.ArgumentNullException">Thrown when <paramref name="services"/> or <paramref name="configuration"/> is null.</exception>
     /// <exception cref="System.ArgumentException">Thrown when <paramref name="applicationName"/> is null or whitespace.</exception>
-    public static IServiceCollection AddDynamics365FinanceSalesInvoicesBusinessEvents(this IServiceCollection services, IConfiguration configuration, string applicationName)
+    public static IServiceCollection AddDynamics365FinanceSalesInvoicesBusinessEvents(this IServiceCollection services, IConfiguration configuration)
     {
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
-        ArgumentException.ThrowIfNullOrWhiteSpace(applicationName);
         services
             .AddDynamics365FinanceBusinessEvents(configuration)
             .TryAddSingleton<IValidator<SalesInvoicePostedBusinessEvent>, SalesInvoicePostedValidator>();
@@ -142,6 +138,25 @@ public static class Dynamics365FinanceSalesHelper
         _ = services.AddHttpClient<IDynamics365FinanceClient<SalesOrderHeaderEdiInformation>, Dynamics365FinanceClient<SalesOrderHeaderEdiInformation>>();
         _ = services.AddHttpClient<IDynamics365FinanceClient<SalesOrderLine>, Dynamics365FinanceClient<SalesOrderLine>>();
         _ = services.AddHttpClient<IDynamics365FinanceClient<SalesOrderLineAdditional>, Dynamics365FinanceClient<SalesOrderLineAdditional>>();
+
+        return services;
+    }
+
+    /// <summary>
+    /// Adds the dynamics365 finance sales packing slips client.
+    /// </summary>
+    /// <param name="services">The services.</param>
+    /// <param name="configuration">The configuration.</param>
+    /// <returns>IServiceCollection.</returns>
+    /// <exception cref="System.ArgumentNullException">Thrown when <paramref name="services"/> or <paramref name="configuration"/> is null.</exception>
+    public static IServiceCollection AddDynamics365FinanceSalesPackingSlipsClient(this IServiceCollection services, IConfiguration configuration)
+    {
+        ArgumentNullException.ThrowIfNull(services);
+        ArgumentNullException.ThrowIfNull(configuration);
+
+        _ = services
+            .AddDynamics365FinanceClient(configuration);
+        _ = services.AddHttpClient<IDynamics365FinanceClient<PackingSlipTrackingInformation>, Dynamics365FinanceClient<PackingSlipTrackingInformation>>();
 
         return services;
     }
