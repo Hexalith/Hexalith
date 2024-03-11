@@ -113,6 +113,7 @@ public static class Dynamics365FinanceSalesHelper
             .AddHttpClient<IDynamics365FinanceClient<SalesInvoiceExternalSystemCode>, Dynamics365FinanceClient<SalesInvoiceExternalSystemCode>>();
         _ = services.AddHttpClient<IDynamics365FinanceClient<SalesInvoiceV3>, Dynamics365FinanceClient<SalesInvoiceV3>>();
         _ = services.AddHttpClient<IDynamics365FinanceClient<SalesInvoiceBase>, Dynamics365FinanceClient<SalesInvoiceBase>>();
+        _ = services.AddHttpClient<IDynamics365FinanceClient<SalesInvoices.Models.SalesInvoiceLine>, Dynamics365FinanceClient<SalesInvoices.Models.SalesInvoiceLine>>();
         _ = services.AddHttpClient<IDynamics365FinanceClient<RetailStore>, Dynamics365FinanceClient<RetailStore>>();
 
         return services;
