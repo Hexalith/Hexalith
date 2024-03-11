@@ -84,7 +84,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
             LogDynamicsOdataCallInformation(url.AbsoluteUri);
 
             HttpClient client = await GetClientAsync(cancellationToken).ConfigureAwait(false);
-            response = await client.GetAsync(url, cancellationToken).ConfigureAwait(false);
+            response = await client.GetAsync(url.AbsoluteUri, cancellationToken).ConfigureAwait(false);
             if (!response.IsSuccessStatusCode)
             {
                 throw new HttpRequestException(
@@ -197,7 +197,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
         try
         {
             HttpClient client = await GetClientAsync(cancellationToken).ConfigureAwait(false);
-            response = await client.GetAsync(url, cancellationToken).ConfigureAwait(false);
+            response = await client.GetAsync(url.AbsoluteUri, cancellationToken).ConfigureAwait(false);
             if (!response.IsSuccessStatusCode)
             {
                 throw new HttpRequestException(

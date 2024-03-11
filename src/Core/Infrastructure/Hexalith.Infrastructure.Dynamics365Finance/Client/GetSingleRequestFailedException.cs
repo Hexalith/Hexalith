@@ -14,14 +14,15 @@
 
 namespace Hexalith.Infrastructure.Dynamics365Finance.Client;
 
-using System.Runtime.Serialization;
+using Hexalith.Extensions.Common;
+using Hexalith.Extensions.Errors;
+using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Exception thrown when a single request failed.
 /// </summary>
 /// <typeparam name="T">Type of the returned entity.</typeparam>
-[DataContract]
-public sealed class GetSingleRequestFailedException<T> : Exception
+public sealed class GetSingleRequestFailedException<T> : ApplicationErrorException
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="GetSingleRequestFailedException{T}"/> class.
@@ -58,44 +59,56 @@ public sealed class GetSingleRequestFailedException<T> : Exception
     /// <param name="message">The error message.</param>
     /// <param name="innerException">The inner exception.</param>
     public GetSingleRequestFailedException(string entityName, IDictionary<string, object?> keys, string? responseContent, string? message, Exception? innerException)
-        : base(
-            $"Failed to retrieve {typeof(T).Name} with keys [{string.Join(';', keys.Select(s => $"{s.Key}='{s.Value}'"))}] on entity {entityName}. " + message,
-            innerException)
+        : base(CreateError(entityName, keys, responseContent, message, innerException), innerException)
     {
         EntityName = entityName;
         Keys = keys;
         ResponseContent = responseContent;
     }
 
-    private GetSingleRequestFailedException(SerializationInfo info, StreamingContext context)
-        : base(info, context)
-    {
-    }
-
     /// <summary>
-    /// Gets the entity name.
+    /// Gets or sets the entity name.
     /// </summary>
     /// <value>
     /// The entity name.
     /// </value>
-    public string? EntityName { get; private set; }
+    public string? EntityName { get; set; }
 
     /// <summary>
-    /// Gets the keys used to get the entity.
+    /// Gets or sets the keys used to get the entity.
     /// </summary>
     /// <value>
     /// The keys used to get the entity.
     /// </value>
-    public IDictionary<string, object?>? Keys { get; private set; }
+    public IDictionary<string, object?>? Keys { get; set; }
 
     /// <summary>
-    /// Gets the returned response.
+    /// Gets or sets the returned response.
     /// </summary>
     /// <value>
     /// The returned response.
     /// </value>
-    public string? ResponseContent { get; private set; }
+    public string? ResponseContent { get; set; }
 
-    /// <inheritdoc/>
-    public override void GetObjectData(SerializationInfo info, StreamingContext context) => base.GetObjectData(info, context);
+    private static ApplicationError CreateError(string entityName, IDictionary<string, object?> keys, string? responseContent, string? message, Exception? innerException)
+    {
+        return new ApplicationError
+        {
+            Title = "Failed to retrieve " + entityName,
+            Detail = "Failed to retrieve {Name} with keys [{EntityKeys}] on entity {EntityName}. {Message}",
+            Arguments =
+            [
+                typeof(T).Name,
+                string.Join(
+                    ';',
+                    keys.Select(s => $"{s.Key}='{s.Value}'")),
+                entityName,
+                message ?? string.Empty,
+            ],
+            TechnicalDetail = "Response content:\n{ResponseContent}\nError message:\n{ErrorMessage]",
+            TechnicalArguments = [responseContent ?? string.Empty, innerException?.FullMessage() ?? string.Empty],
+            Category = ErrorCategory.Unknown,
+            Type = "Dynamics365Finance",
+        };
+    }
 }
