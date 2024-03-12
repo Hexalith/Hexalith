@@ -6,36 +6,15 @@
 
 namespace Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents;
 
-using FluentValidation;
-
 /// <summary>
 /// The dynamics365 business event metadata validator.
 /// </summary>
-public class Dynamics365BusinessEventValidator : AbstractValidator<Dynamics365BusinessEventBase>
+public sealed class Dynamics365BusinessEventValidator : Dynamics365BusinessEventValidator<Dynamics365BusinessEventBase>
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="Dynamics365BusinessEventValidator" /> class.
+    /// Initializes a new instance of the <see cref="Dynamics365BusinessEventValidator"/> class.
     /// </summary>
     public Dynamics365BusinessEventValidator()
     {
-        _ = RuleFor(x => x.BusinessEventId)
-          .NotEmpty();
-        _ = RuleFor(x => x.InitiatingUserAzureActiveDirectoryObjectId)
-            .NotEmpty();
-        _ = RuleFor(x => x.EventId)
-            .NotEmpty();
-
-        RuleFor(x => x.EventTime)
-            .NotNull()
-            .WithMessage($"Message date and time must be defined using fields {nameof(Dynamics365BusinessEventBase.EventTime)} or {nameof(Dynamics365BusinessEventBase.EventTimeIso8601)}.")
-            .When(x => x.EventTimeIso8601 == null);
-
-        RuleFor(x => x.EventTimeIso8601)
-            .NotNull()
-            .WithMessage($"Message date and time must be defined using fields {nameof(Dynamics365BusinessEventBase.EventTime)} or {nameof(Dynamics365BusinessEventBase.EventTimeIso8601)}.")
-            .When(x => x.EventTime == null);
-
-        _ = RuleFor(x => x.BusinessEventLegalEntity)
-            .NotEmpty();
     }
 }
