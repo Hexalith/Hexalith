@@ -21,7 +21,6 @@ using Dapr.Actors.Runtime;
 
 using FluentValidation;
 
-using Hexalith.Application.Events;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.Dynamics365Finance.Client;
 using Hexalith.Infrastructure.Dynamics365Finance.Helpers;
@@ -87,7 +86,6 @@ public static class Dynamics365FinanceSalesHelper
         services
             .AddDynamics365FinanceBusinessEvents(configuration)
             .TryAddSingleton<IValidator<SalesInvoicePostedBusinessEvent>, SalesInvoicePostedValidator>();
-        services.TryAddScoped<IIntegrationEventHandler<SalesInvoicePostedBusinessEvent>, SalesInvoicePostedHandler>();
         _ = services.ConfigureSettings<Dynamics365FinanceSalesSettings>(configuration);
         _ = services
             .AddControllers()

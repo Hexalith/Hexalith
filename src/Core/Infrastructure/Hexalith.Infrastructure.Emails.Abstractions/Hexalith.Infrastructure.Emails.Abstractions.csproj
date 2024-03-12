@@ -4,5 +4,6 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\..\Application\Hexalith.Application.Abstractions\Hexalith.Application.Abstractions.csproj" />
+	  <ProjectReference Include="..\Hexalith.Infrastructure.Serialization\Hexalith.Infrastructure.Serialization.csproj" />
 	</ItemGroup>
 </Project>
