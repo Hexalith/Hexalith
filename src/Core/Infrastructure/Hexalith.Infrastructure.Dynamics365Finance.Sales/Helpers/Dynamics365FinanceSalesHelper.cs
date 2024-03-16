@@ -22,7 +22,6 @@ using Dapr.Actors.Runtime;
 using FluentValidation;
 
 using Hexalith.Extensions.Configuration;
-using Hexalith.Infrastructure.Dynamics365Finance.Client;
 using Hexalith.Infrastructure.Dynamics365Finance.Helpers;
 using Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Entities;
 using Hexalith.Infrastructure.Dynamics365Finance.Sales.PackingSlips.Models;
@@ -84,7 +83,7 @@ public static class Dynamics365FinanceSalesHelper
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
         services
-            .AddDynamics365FinanceBusinessEvents(configuration)
+            .AddDynamics365FinanceBusinessEvents()
             .TryAddSingleton<IValidator<SalesInvoicePostedBusinessEvent>, SalesInvoicePostedValidator>();
         _ = services.ConfigureSettings<Dynamics365FinanceSalesSettings>(configuration);
         _ = services
@@ -107,12 +106,11 @@ public static class Dynamics365FinanceSalesHelper
         ArgumentNullException.ThrowIfNull(configuration);
 
         _ = services
-            .AddDynamics365FinanceClient(configuration)
-            .AddHttpClient<IDynamics365FinanceClient<SalesInvoiceExternalSystemCode>, Dynamics365FinanceClient<SalesInvoiceExternalSystemCode>>();
-        _ = services.AddHttpClient<IDynamics365FinanceClient<SalesInvoiceV3>, Dynamics365FinanceClient<SalesInvoiceV3>>();
-        _ = services.AddHttpClient<IDynamics365FinanceClient<SalesInvoiceBase>, Dynamics365FinanceClient<SalesInvoiceBase>>();
-        _ = services.AddHttpClient<IDynamics365FinanceClient<SalesInvoices.Models.SalesInvoiceLine>, Dynamics365FinanceClient<SalesInvoices.Models.SalesInvoiceLine>>();
-        _ = services.AddHttpClient<IDynamics365FinanceClient<RetailStore>, Dynamics365FinanceClient<RetailStore>>();
+            .AddDynamics365FinanceClient<SalesInvoiceExternalSystemCode>(configuration);
+        _ = services.AddDynamics365FinanceClient<SalesInvoiceV3>(configuration);
+        _ = services.AddDynamics365FinanceClient<SalesInvoiceBase>(configuration);
+        _ = services.AddDynamics365FinanceClient<SalesInvoices.Models.SalesInvoiceLine>(configuration);
+        _ = services.AddDynamics365FinanceClient<RetailStore>(configuration);
 
         return services;
     }
@@ -129,14 +127,12 @@ public static class Dynamics365FinanceSalesHelper
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
 
-        _ = services
-            .AddDynamics365FinanceClient(configuration);
-        _ = services.AddHttpClient<IDynamics365FinanceClient<SalesOrderHeader>, Dynamics365FinanceClient<SalesOrderHeader>>();
-        _ = services.AddHttpClient<IDynamics365FinanceClient<SalesOrderHeaderAdditional>, Dynamics365FinanceClient<SalesOrderHeaderAdditional>>();
-        _ = services.AddHttpClient<IDynamics365FinanceClient<SalesOrderHeaderCharge>, Dynamics365FinanceClient<SalesOrderHeaderCharge>>();
-        _ = services.AddHttpClient<IDynamics365FinanceClient<SalesOrderHeaderEdiInformation>, Dynamics365FinanceClient<SalesOrderHeaderEdiInformation>>();
-        _ = services.AddHttpClient<IDynamics365FinanceClient<SalesOrderLine>, Dynamics365FinanceClient<SalesOrderLine>>();
-        _ = services.AddHttpClient<IDynamics365FinanceClient<SalesOrderLineAdditional>, Dynamics365FinanceClient<SalesOrderLineAdditional>>();
+        _ = services.AddDynamics365FinanceClient<SalesOrderHeader>(configuration);
+        _ = services.AddDynamics365FinanceClient<SalesOrderHeaderAdditional>(configuration);
+        _ = services.AddDynamics365FinanceClient<SalesOrderHeaderCharge>(configuration);
+        _ = services.AddDynamics365FinanceClient<SalesOrderHeaderEdiInformation>(configuration);
+        _ = services.AddDynamics365FinanceClient<SalesOrderLine>(configuration);
+        _ = services.AddDynamics365FinanceClient<SalesOrderLineAdditional>(configuration);
 
         return services;
     }
@@ -153,9 +149,7 @@ public static class Dynamics365FinanceSalesHelper
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
 
-        _ = services
-            .AddDynamics365FinanceClient(configuration);
-        _ = services.AddHttpClient<IDynamics365FinanceClient<PackingSlipTrackingInformation>, Dynamics365FinanceClient<PackingSlipTrackingInformation>>();
+        _ = services.AddDynamics365FinanceClient<PackingSlipTrackingInformation>(configuration);
 
         return services;
     }

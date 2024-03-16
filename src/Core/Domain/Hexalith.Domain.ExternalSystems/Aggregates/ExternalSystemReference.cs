@@ -38,12 +38,12 @@ using Hexalith.Domain.Exceptions;
 /// <seealso cref="System.IEquatable{Hexalith.Domain.Aggregates.ExternalSystemReference}" />
 [DataContract]
 public record ExternalSystemReference(
-    string PartitionId,
-    string CompanyId,
-    string SystemId,
-    string ReferenceAggregateName,
-    string ExternalId,
-    string? ReferenceAggregateId) : Aggregate
+    [property: DataMember] string PartitionId,
+    [property: DataMember] string CompanyId,
+    [property: DataMember] string SystemId,
+    [property: DataMember] string ReferenceAggregateName,
+    [property: DataMember] string ExternalId,
+    [property: DataMember] string? ReferenceAggregateId) : Aggregate
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="ExternalSystemReference" /> class.

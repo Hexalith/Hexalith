@@ -44,15 +44,15 @@ public record Customer(
     string CompanyId,
     string OriginId,
     string Id,
-    string Name,
-    PartyType PartyType,
-    Contact Contact,
-    string? WarehouseId,
-    string? CommissionSalesGroupId,
-    string? GroupId,
-    string? SalesCurrencyId,
-    bool IntercompanyDropship,
-    DateTimeOffset Date) : Aggregate
+    [property: DataMember(Order = 5)] string Name,
+    [property: DataMember(Order = 6)] PartyType PartyType,
+    [property: DataMember(Order = 7)] Contact Contact,
+    [property: DataMember(Order = 8)] string? WarehouseId,
+    [property: DataMember(Order = 9)] string? CommissionSalesGroupId,
+    [property: DataMember(Order = 10)] string? GroupId,
+    [property: DataMember(Order = 11)] string? SalesCurrencyId,
+    [property: DataMember(Order = 12)] bool IntercompanyDropship,
+    [property: DataMember(Order = 13)] DateTimeOffset Date) : EntityAggregate(PartitionId, CompanyId, OriginId, Id)
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="Customer"/> class.

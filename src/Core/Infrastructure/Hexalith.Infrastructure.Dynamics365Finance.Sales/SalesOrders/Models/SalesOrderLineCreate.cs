@@ -25,113 +25,17 @@ using System.Text.Json.Serialization;
 /// </summary>
 /// <seealso cref="IEquatable{SalesOrderLineCreate}" />
 [DataContract]
-public record SalesOrderLineCreate
+public record SalesOrderLineCreate(
+        [property: DataMember(Order = 1)][property: JsonPropertyName("dataAreaId")] string DataAreaId,
+        [property: DataMember(Order = 2)] string SalesOrderNumber,
+        [property: DataMember(Order = 3)] int? CustomersLineNumber,
+        [property: DataMember(Order = 4)] string ItemNumber,
+        [property: DataMember(Order = 5)] string? ProductStyleId,
+        [property: DataMember(Order = 6)] string? ProductColorId,
+        [property: DataMember(Order = 7)] string? ProductSizeId,
+        [property: DataMember(Order = 8)] decimal SalesPrice,
+        [property: DataMember(Order = 9)] decimal OrderedSalesQuantity,
+        [property: DataMember(Order = 10)] string? SalesUnitSymbol,
+        [property: DataMember(Order = 11)] string? GiftCardGiftMessage)
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="SalesOrderLineCreate"/> class.
-    /// </summary>
-    /// <param name="dataAreaId">The data area identifier.</param>
-    /// <param name="salesOrderNumber">The sales order number.</param>
-    /// <param name="customersLineNumber">The customers line number.</param>
-    /// <param name="itemNumber">The item number.</param>
-    /// <param name="productStyleId">The product style identifier.</param>
-    /// <param name="productColorId">The product color identifier.</param>
-    /// <param name="productSizeId">The product size identifier.</param>
-    /// <param name="salesPrice">The sales price.</param>
-    /// <param name="orderedSalesQuantity">The ordered sales quantity.</param>
-    /// <param name="salesUnitSymbol">The sales unit symbol.</param>
-    /// <param name="giftCardGiftMessage">The gift card gift message.</param>
-    [JsonConstructor]
-    public SalesOrderLineCreate(
-        string dataAreaId,
-        string salesOrderNumber,
-        int? customersLineNumber,
-        string itemNumber,
-        string? productStyleId,
-        string? productColorId,
-        string? productSizeId,
-        decimal salesPrice,
-        decimal orderedSalesQuantity,
-        string? salesUnitSymbol,
-        string? giftCardGiftMessage)
-    {
-        DataAreaId = dataAreaId;
-        SalesOrderNumber = salesOrderNumber;
-        CustomersLineNumber = customersLineNumber;
-        ItemNumber = itemNumber;
-        ProductStyleId = productStyleId;
-        ProductColorId = productColorId;
-        ProductSizeId = productSizeId;
-        SalesPrice = salesPrice;
-        OrderedSalesQuantity = orderedSalesQuantity;
-        SalesUnitSymbol = salesUnitSymbol;
-        GiftCardGiftMessage = giftCardGiftMessage;
-    }
-
-    /// <summary>
-    /// Gets the data area identifier.
-    /// </summary>
-    /// <value>The data area identifier.</value>
-    [JsonPropertyName("dataAreaId")]
-    public string DataAreaId { get; }
-
-    /// <summary>
-    /// Gets the sales order number.
-    /// </summary>
-    /// <value>The sales order number.</value>
-    public string SalesOrderNumber { get; }
-
-    /// <summary>
-    /// Gets the customers line number.
-    /// </summary>
-    /// <value>The customers line number.</value>
-    public int? CustomersLineNumber { get; }
-
-    /// <summary>
-    /// Gets the item number.
-    /// </summary>
-    /// <value>The item number.</value>
-    public string ItemNumber { get; }
-
-    /// <summary>
-    /// Gets the product style identifier.
-    /// </summary>
-    /// <value>The product style identifier.</value>
-    public string? ProductStyleId { get; }
-
-    /// <summary>
-    /// Gets the product color identifier.
-    /// </summary>
-    /// <value>The product color identifier.</value>
-    public string? ProductColorId { get; }
-
-    /// <summary>
-    /// Gets the product size identifier.
-    /// </summary>
-    /// <value>The product size identifier.</value>
-    public string? ProductSizeId { get; }
-
-    /// <summary>
-    /// Gets the sales price.
-    /// </summary>
-    /// <value>The sales price.</value>
-    public decimal SalesPrice { get; }
-
-    /// <summary>
-    /// Gets the ordered sales quantity.
-    /// </summary>
-    /// <value>The ordered sales quantity.</value>
-    public decimal OrderedSalesQuantity { get; }
-
-    /// <summary>
-    /// Gets the sales unit symbol.
-    /// </summary>
-    /// <value>The sales unit symbol.</value>
-    public string? SalesUnitSymbol { get; }
-
-    /// <summary>
-    /// Gets the gift card gift message.
-    /// </summary>
-    /// <value>The gift card gift message.</value>
-    public string? GiftCardGiftMessage { get; }
 }

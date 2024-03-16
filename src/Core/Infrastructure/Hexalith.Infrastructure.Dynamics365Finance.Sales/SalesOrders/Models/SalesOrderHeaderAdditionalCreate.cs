@@ -8,6 +8,8 @@
 // ***********************************************************************
 // <copyright file="SalesOrderHeaderAdditionalCreate.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -23,49 +25,10 @@ using System.Text.Json.Serialization;
 /// </summary>
 /// <seealso cref="IEquatable{SalesOrderHeaderAdditionalCreate}" />
 [DataContract]
-public record SalesOrderHeaderAdditionalCreate
+public record SalesOrderHeaderAdditionalCreate(
+    [property: JsonPropertyName("dataAreaId")] string DataAreaId,
+    [property: DataMember(Order = 2)] string SalesOrderNumber,
+    [property: DataMember(Order = 3)] DateTimeOffset? DeadLine,
+    [property: DataMember(Order = 4)] string? Phone)
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="SalesOrderHeaderAdditionalCreate"/> class.
-    /// </summary>
-    /// <param name="dataAreaId">The data area identifier.</param>
-    /// <param name="salesOrderNumber">The sales order number.</param>
-    /// <param name="deadLine">The dead line.</param>
-    /// <param name="phone">The phone.</param>
-    public SalesOrderHeaderAdditionalCreate(
-        string dataAreaId,
-        string salesOrderNumber,
-        DateTimeOffset? deadLine,
-        string? phone)
-    {
-        DataAreaId = dataAreaId;
-        SalesOrderNumber = salesOrderNumber;
-        DeadLine = deadLine;
-        Phone = phone;
-    }
-
-    /// <summary>
-    /// Gets the data area identifier.
-    /// </summary>
-    /// <value>The data area identifier.</value>
-    [JsonPropertyName("dataAreaId")]
-    public string DataAreaId { get; }
-
-    /// <summary>
-    /// Gets the sales order number.
-    /// </summary>
-    /// <value>The sales order number.</value>
-    public string SalesOrderNumber { get; }
-
-    /// <summary>
-    /// Gets the dead line.
-    /// </summary>
-    /// <value>The dead line.</value>
-    public DateTimeOffset? DeadLine { get; }
-
-    /// <summary>
-    /// Gets the phone.
-    /// </summary>
-    /// <value>The phone.</value>
-    public string? Phone { get; }
 }

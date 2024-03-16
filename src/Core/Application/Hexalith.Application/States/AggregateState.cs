@@ -15,9 +15,9 @@ using System.Runtime.Serialization;
 /// <seealso cref="IEquatable{AggregateActorState}" />
 [DataContract]
 public record AggregateState(
-    long CommandStreamVersion,
-    long EventStreamVersion,
-    long LastCommandDone,
-    long LastEventPublished)
+        [property: DataMember] long CommandStreamVersion,
+        [property: DataMember] long EventStreamVersion,
+        [property: DataMember] long LastCommandDone,
+        [property: DataMember] long LastEventPublished)
 {
 }

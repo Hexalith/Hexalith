@@ -46,12 +46,12 @@ public record Survey(
     string CompanyId,
     string OriginId,
     string Id,
-    string Name,
-    IEnumerable<SurveyCategory> Categories,
-    IEnumerable<SurveyUser> Users,
-    SurveyPeriod Period,
-    DateTimeOffset StartDate,
-    DateTimeOffset EndDate) : Aggregate
+    [property: DataMember(Order = 5)] string Name,
+    [property: DataMember(Order = 6)] IEnumerable<SurveyCategory> Categories,
+    [property: DataMember(Order = 7)] IEnumerable<SurveyUser> Users,
+    [property: DataMember(Order = 8)] SurveyPeriod Period,
+    [property: DataMember(Order = 9)] DateTimeOffset StartDate,
+    [property: DataMember(Order = 10)] DateTimeOffset EndDate) : EntityAggregate(PartitionId, CompanyId, OriginId, Id)
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="Survey"/> class.

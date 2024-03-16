@@ -16,6 +16,8 @@
 
 namespace Hexalith.Domain.Products.Aggregates;
 
+using System.Runtime.Serialization;
+
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Exceptions;
@@ -33,15 +35,16 @@ using Hexalith.Domain.Products.ValueObjects;
 /// <seealso cref="IAggregate" />
 /// <seealso cref="IEquatable{Aggregate}" />
 /// <seealso cref="IEquatable{InventoryItem}" />
+[DataContract]
 public record Product(
-    string PartitionId,
-    string OriginId,
-    string Id,
-    string Name,
-    string? Description,
-    bool Disabled,
-    IEnumerable<ProductDimension>? Dimensions,
-    IEnumerable<IEnumerable<string>>? ExcludedDimensionCombinaisons) : CommonEntityAggregate(PartitionId, OriginId, Id)
+    [property: DataMember] string PartitionId,
+    [property: DataMember] string OriginId,
+    [property: DataMember] string Id,
+    [property: DataMember] string Name,
+    [property: DataMember] string? Description,
+    [property: DataMember] bool Disabled,
+    [property: DataMember] IEnumerable<ProductDimension>? Dimensions,
+    [property: DataMember] IEnumerable<IEnumerable<string>>? ExcludedDimensionCombinaisons) : CommonEntityAggregate(PartitionId, OriginId, Id)
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="Product" /> class.

@@ -10,6 +10,9 @@ using System;
 using System.Runtime.Serialization;
 using System.Text.Json;
 
+using Hexalith.Extensions.Common;
+using Hexalith.Extensions.Errors;
+
 /// <summary>
 /// Class DuplicateEntityFoundException.
 /// Implements the <see cref="Exception" />.
@@ -17,7 +20,7 @@ using System.Text.Json;
 /// <typeparam name="TEntity">The type of the t entity.</typeparam>
 /// <seealso cref="Exception" />
 [DataContract]
-public class DuplicateEntityFoundException<TEntity> : Exception
+public class DuplicateEntityFoundException<TEntity> : ApplicationErrorException
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="DuplicateEntityFoundException{TEntity}"/> class.
@@ -30,8 +33,8 @@ public class DuplicateEntityFoundException<TEntity> : Exception
     /// Initializes a new instance of the <see cref="DuplicateEntityFoundException{TEntity}"/> class.
     /// </summary>
     /// <param name="key">The key.</param>
-    public DuplicateEntityFoundException(object key)
-        : base($"Duplicate entity '{typeof(TEntity).Name}' found for key: {JsonSerializer.Serialize(key)}") => Key = key;
+    public DuplicateEntityFoundException(object key, IEnumerable<TEntity> duplicates)
+        : base(CreateError(key, duplicates)) => Key = key;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="DuplicateEntityFoundException{TEntity}"/> class.
@@ -59,4 +62,19 @@ public class DuplicateEntityFoundException<TEntity> : Exception
     /// </summary>
     /// <value>The key.</value>
     public object? Key { get; private set; }
+
+    private static ApplicationError CreateError(object key, IEnumerable<TEntity> duplicates)
+    {
+        JsonSerializerOptions o = new() { WriteIndented = true, DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault };
+        string entityName = typeof(TEntity).Name;
+        string keyString = JsonSerializer.Serialize(key, o);
+        string valuesString = string.Join('\n', duplicates.Select(p => JsonSerializer.Serialize(p, o)));
+        return new ApplicationError
+        {
+            Title = $"Duplicate {entityName} found.",
+            Detail = "Duplicate {EntityName} values found for key {Key}. Values:\n{Values}",
+            Arguments = new[] { entityName, keyString, valuesString },
+            Category = ErrorCategory.Functional,
+        };
+    }
 }

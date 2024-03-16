@@ -26,12 +26,6 @@ using System.Runtime.Serialization;
 /// <seealso cref="IAggregate" />
 [DataContract]
 [Serializable]
-public abstract record PartitionedAggregate(string PartitionId) : Aggregate
+public abstract record PartitionedAggregate([property: DataMember(Order = 1)] string PartitionId) : Aggregate
 {
-    /// <summary>
-    /// Gets the partition identifier.
-    /// </summary>
-    /// <value>The partition identifier.</value>
-    [DataMember(Order = 1)]
-    public string PartitionId { get; init; } = PartitionId;
 }

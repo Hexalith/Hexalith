@@ -16,6 +16,8 @@
 
 namespace Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups;
 
+using System.Runtime.Serialization;
+
 using Hexalith.Infrastructure.Dynamics365Finance.Models;
 
 /// <summary>
@@ -29,19 +31,20 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 /// <seealso cref="System.IEquatable{Hexalith.Infrastructure.Dynamics365Finance.Models.ODataElement}" />
 /// <seealso cref="IODataElement" />
 /// <seealso cref="System.IEquatable{Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroup}" />
+[DataContract]
 public record CustomerGroup(
       string Etag,
       string DataAreaId,
-      string CustomerGroupId,
-      string ClearingPeriodPaymentTermName,
-      string DefaultDimensionDisplayValue,
-      string CustomerAccountNumberSequence,
-      string Description,
-      string IsSalesTaxIncludedInPrice,
-      string WriteOffReason,
-      string PaymentTermId,
-      string TaxGroupId,
-      string IsPublicSectorIT) : ODataElement(Etag, DataAreaId), IODataElement
+      [property: DataMember(Order = 3)] string CustomerGroupId,
+      [property: DataMember(Order = 4)] string ClearingPeriodPaymentTermName,
+      [property: DataMember(Order = 5)] string DefaultDimensionDisplayValue,
+      [property: DataMember(Order = 6)] string CustomerAccountNumberSequence,
+      [property: DataMember(Order = 7)] string Description,
+      [property: DataMember(Order = 8)] string IsSalesTaxIncludedInPrice,
+      [property: DataMember(Order = 9)] string WriteOffReason,
+      [property: DataMember(Order = 10)] string PaymentTermId,
+      [property: DataMember(Order = 11)] string TaxGroupId,
+      [property: DataMember(Order = 12)] string IsPublicSectorIT) : ODataElement(Etag, DataAreaId), IODataElement
 {
     /// <summary>
     /// Entities the name.

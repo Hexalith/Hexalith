@@ -16,11 +16,14 @@
 
 namespace Hexalith.Domain.UserConversationProfiles.Entities;
 
+using System.Runtime.Serialization;
+
 /// <summary>
 /// Class ConversationItem.
 /// Implements the <see cref="IEquatable{ConversationItem}" />.
 /// </summary>
 /// <seealso cref="IEquatable{ConversationItem}" />
-public record ConversationItem(DateTimeOffset Date, string Participant, string Content)
+[DataContract]
+public record ConversationItem([property: DataMember(Order = 1)] DateTimeOffset Date, [property: DataMember(Order = 2)] string Participant, [property: DataMember(Order = 3)] string Content)
 {
 }

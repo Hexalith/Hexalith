@@ -9,7 +9,6 @@ namespace Hexalith.UnitTests.Core.Infrastructure.Dynamics365Finance.Client;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Extensions;
 using Hexalith.Infrastructure.Dynamics365Finance.Models;
 
 [DataContract]
@@ -22,10 +21,6 @@ public record DummyEntity : ODataElement, IODataElement
         ArgumentException.ThrowIfNullOrEmpty(message);
         Message = message;
     }
-
-    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    public DummyEntity()
-        : base() => Message = string.Empty;
 
     [DataMember]
     [JsonPropertyName("message")]

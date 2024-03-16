@@ -15,7 +15,6 @@
 // ***********************************************************************
 namespace Hexalith.Infrastructure.Dynamics365Finance.Retail.Helpers;
 
-using Hexalith.Infrastructure.Dynamics365Finance.Client;
 using Hexalith.Infrastructure.Dynamics365Finance.Helpers;
 using Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Entities;
 
@@ -48,8 +47,7 @@ public static class RetailHelper
     public static IServiceCollection AddDynamics365FinanceRetailStoresClient(this IServiceCollection services, IConfiguration configuration)
     {
         _ = services
-            .AddDynamics365FinanceClient(configuration)
-            .AddHttpClient<IDynamics365FinanceClient<RetailStore>, Dynamics365FinanceClient<RetailStore>>();
+            .AddDynamics365FinanceClient<RetailStore>(configuration);
         return services;
     }
 }

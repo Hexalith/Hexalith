@@ -7,6 +7,7 @@
 namespace Hexalith.Domain.Dimensions.DimensionHIerarchies;
 
 using System;
+using System.Runtime.Serialization;
 
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
@@ -14,11 +15,17 @@ using Hexalith.Domain.Events;
 /// <summary>
 /// Represents a user.
 /// </summary>
-public record DimensionHierarchy(string Id, string Name, string Description, IEnumerable<string> DimensionsIds) : Aggregate
+[DataContract]
+public record DimensionHierarchy(
+    string PartitionId,
+    [property: DataMember(Order = 2)] string Id,
+    [property: DataMember(Order = 3)] string Name,
+    [property: DataMember(Order = 4)] string Description,
+    [property: DataMember(Order = 5)] IEnumerable<string> DimensionsIds) : PartitionedAggregate(PartitionId)
 {
     /// <inheritdoc/>
     public override (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent) => throw new NotImplementedException();
 
     /// <inheritdoc/>
-    public override bool IsInitialized() => throw new NotImplementedException();
+    public override bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);
 }

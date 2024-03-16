@@ -7,6 +7,7 @@
 namespace Hexalith.Domain.Dimensions.DimensionDefinitions.Entities;
 
 using System;
+using System.Runtime.Serialization;
 
 using Hexalith.Domain.Aggregates;
 
@@ -21,9 +22,10 @@ using Hexalith.Domain.Aggregates;
 /// <seealso cref="IAggregate" />
 /// <seealso cref="IEquatable{Aggregate}" />
 /// <seealso cref="IEquatable{Role}" />
+[DataContract]
 public record DimensionValue(
-    string Name,
-    string Description,
-    int OrderWeight)
+    [property: DataMember(Order = 1)] string Name,
+    [property: DataMember(Order = 2)] string Description,
+    [property: DataMember(Order = 3)] int OrderWeight)
 {
 }

@@ -7,6 +7,7 @@
 namespace Hexalith.Domain.Users.Aggregates;
 
 using System;
+using System.Runtime.Serialization;
 
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
@@ -23,7 +24,8 @@ using Hexalith.Domain.Users.Models;
 /// <seealso cref="IAggregate" />
 /// <seealso cref="System.IEquatable{Hexalith.Domain.Aggregates.Aggregate}" />
 /// <seealso cref="System.IEquatable{Hexalith.Domain.Users.Aggregates.Role}" />
-public record Role(string Id, string Name, string Description) : Aggregate, IRole
+[DataContract]
+public record Role([property: DataMember(Order = 1)] string Id, [property: DataMember(Order = 2)] string Name, [property: DataMember(Order = 3)] string Description) : Aggregate, IRole
 {
     /// <inheritdoc/>
     public override (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent) => throw new NotImplementedException();

@@ -16,6 +16,8 @@
 
 namespace Hexalith.Domain.InventoryItems.Entities;
 
+using System.Runtime.Serialization;
+
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Exceptions;
 using Hexalith.Domain.InventoryItems.Aggregates;
@@ -32,11 +34,12 @@ using Hexalith.Domain.InventoryItems.Events;
 /// <seealso cref="IAggregate" />
 /// <seealso cref="IEquatable{Aggregate}" />
 /// <seealso cref="IEquatable{InventoryUnitConversion}" />
+[DataContract]
 public record InventoryItemBarcode(
-    string Id,
-    string UnitId,
-    decimal Quantity,
-    bool IsDefaultBarcode)
+    [property: DataMember] string Id,
+    [property: DataMember] string UnitId,
+    [property: DataMember] decimal Quantity,
+    [property: DataMember] bool IsDefaultBarcode)
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="InventoryItemBarcode" /> class.

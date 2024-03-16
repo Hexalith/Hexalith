@@ -6,6 +6,8 @@
 
 namespace Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups;
 
+using System.Runtime.Serialization;
+
 using Hexalith.Infrastructure.Dynamics365Finance.Models;
 
 /// <summary>
@@ -21,8 +23,9 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 /// <seealso cref="IPrimaryKey" />
 /// <seealso cref="System.IEquatable{Hexalith.Infrastructure.Dynamics365Finance.Models.PerCompanyPrimaryKey}" />
 /// <seealso cref="System.IEquatable{Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups.CustomerGroupKey}" />
+[DataContract]
 public record CustomerGroupKey(
       string? DataAreaId = null,
-      string? CustomerGroupId = null) : PerCompanyPrimaryKey(DataAreaId)
+      [property: DataMember(Order = 1)] string? CustomerGroupId = null) : PerCompanyPrimaryKey(DataAreaId)
 {
 }

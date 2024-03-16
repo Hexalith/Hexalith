@@ -9,6 +9,6 @@ namespace Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models;
 using System.Runtime.Serialization;
 
 [DataContract]
-public record SalesOrderOriginUpdate(string SalesOrderOriginCode)
+public record SalesOrderOriginUpdate([property: DataMember(Order = 1)] string SalesOrderOriginCode)
 {
 }

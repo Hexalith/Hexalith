@@ -16,6 +16,8 @@
 
 namespace Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Entities;
 
+using System.Runtime.Serialization;
+
 using Hexalith.Infrastructure.Dynamics365Finance.Models;
 
 /// <summary>
@@ -27,7 +29,8 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 /// <seealso cref="ICommonPrimaryKey" />
 /// <seealso cref="IPrimaryKey" />
 /// <seealso cref="System.IEquatable{Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Entities.RetailStoreKey}" />
-public record RetailStoreKey(string RetailChannelId)
+[DataContract]
+public record RetailStoreKey([property: DataMember(Order = 1)] string RetailChannelId)
     : ICommonPrimaryKey
 {
 }

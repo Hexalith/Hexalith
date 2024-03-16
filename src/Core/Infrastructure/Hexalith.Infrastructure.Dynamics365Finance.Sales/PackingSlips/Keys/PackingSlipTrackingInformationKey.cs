@@ -1,4 +1,10 @@
-﻿namespace Hexalith.Infrastructure.Dynamics365Finance.Sales.PackingSlips.Keys;
+﻿// <copyright file="PackingSlipTrackingInformationKey.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+
+namespace Hexalith.Infrastructure.Dynamics365Finance.Sales.PackingSlips.Keys;
 
 using System.Runtime.Serialization;
 
@@ -20,10 +26,10 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 [DataContract]
 public record PackingSlipTrackingInformationKey(
     string? DataAreaId,
-    string? PackingSlipNumber,
-    string? SalesOrderNumber,
-    DateTimeOffset? DeliveryDate,
-    string? TrackingNumber)
+    [property: DataMember(Order = 3)] string? PackingSlipNumber,
+    [property: DataMember(Order = 3)] string? SalesOrderNumber,
+    [property: DataMember(Order = 3)] DateTimeOffset? DeliveryDate,
+    [property: DataMember(Order = 3)] string? TrackingNumber)
     : PerCompanyPrimaryKey(DataAreaId)
 {
 }

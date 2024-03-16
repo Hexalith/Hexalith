@@ -6,6 +6,8 @@
 
 namespace Hexalith.Infrastructure.Dynamics365Finance.Inventories.Inventory;
 
+using System.Runtime.Serialization;
+
 using Hexalith.Domain.ValueObjets;
 using Hexalith.Infrastructure.Dynamics365Finance.Models;
 
@@ -20,23 +22,24 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 /// <seealso cref="IEquatable{ODataElement}" />
 /// <seealso cref="IODataElement" />
 /// <seealso cref="IEquatable{ProductBarcode}" />
+[DataContract]
 public record ProductBarcode(
         string Etag,
         string DataAreaId,
-        string ItemNumber,
-        string ProductConfigurationId,
-        string ProductColorId,
-        string ProductSizeId,
-        string ProductStyleId,
-        string ProductVersionId,
-        string ProductQuantityUnitSymbol,
-        string BarcodeSetupId,
-        string Barcode,
-        string ProductDescription,
-        string IsDefaultScannedBarcode,
-        string IsDefaultDisplayedBarcode,
-        string IsDefaultPrintedBarcode,
-        decimal ProductQuantity)
+        [property: DataMember(Order = 3)] string ItemNumber,
+        [property: DataMember(Order = 4)] string ProductConfigurationId,
+        [property: DataMember(Order = 5)] string ProductColorId,
+        [property: DataMember(Order = 6)] string ProductSizeId,
+        [property: DataMember(Order = 7)] string ProductStyleId,
+        [property: DataMember(Order = 8)] string ProductVersionId,
+        [property: DataMember(Order = 9)] string ProductQuantityUnitSymbol,
+        [property: DataMember(Order = 10)] string BarcodeSetupId,
+        [property: DataMember(Order = 11)] string Barcode,
+        [property: DataMember(Order = 12)] string ProductDescription,
+        [property: DataMember(Order = 13)] string IsDefaultScannedBarcode,
+        [property: DataMember(Order = 14)] string IsDefaultDisplayedBarcode,
+        [property: DataMember(Order = 15)] string IsDefaultPrintedBarcode,
+        [property: DataMember(Order = 16)] decimal ProductQuantity)
     : ODataElement(Etag, DataAreaId), IODataElement
 {
     /// <summary>

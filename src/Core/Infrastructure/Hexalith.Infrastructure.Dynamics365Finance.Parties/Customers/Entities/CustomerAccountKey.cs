@@ -16,6 +16,8 @@
 
 namespace Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities;
 
+using System.Runtime.Serialization;
+
 using Hexalith.Infrastructure.Dynamics365Finance.Models;
 
 /// <summary>
@@ -31,7 +33,8 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 /// <seealso cref="IPrimaryKey" />
 /// <seealso cref="System.IEquatable{Hexalith.Infrastructure.Dynamics365Finance.Models.PerCompanyPrimaryKey}" />
 /// <seealso cref="System.IEquatable{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerAccountKey}" />
-public record CustomerAccountKey(string DataAreaId, string CustomerAccount)
+[DataContract]
+public record CustomerAccountKey(string DataAreaId, [property: DataMember(Order = 2)] string CustomerAccount)
     : PerCompanyPrimaryKey(DataAreaId)
 {
 }

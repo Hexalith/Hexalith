@@ -6,14 +6,20 @@
 
 namespace Hexalith.NumberSequences.Abstractions.Domain;
 
+using System.Runtime.Serialization;
+
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 
-public record NumberSequence : Aggregate
+[DataContract]
+public record NumberSequence(
+    string PartitionId,
+    [property: DataMember(Order = 2)] string CompanyId,
+    [property: DataMember(Order = 3)] string Id) : PartitionedAggregate(PartitionId)
 {
     /// <inheritdoc/>
     public override (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent) => throw new NotImplementedException();
 
     /// <inheritdoc/>
-    public override bool IsInitialized() => throw new NotImplementedException();
+    public override bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);
 }

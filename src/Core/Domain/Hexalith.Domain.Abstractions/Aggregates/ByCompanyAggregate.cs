@@ -16,7 +16,6 @@
 
 namespace Hexalith.Domain.Aggregates;
 
-using System;
 using System.Runtime.Serialization;
 
 /// <summary>
@@ -25,14 +24,7 @@ using System.Runtime.Serialization;
 /// </summary>
 /// <seealso cref="IAggregate" />
 [DataContract]
-[Serializable]
-public abstract record ByCompanyAggregate(string PartitionId, string CompanyId)
+public abstract record ByCompanyAggregate(string PartitionId, [property: DataMember(Order = 2)] string CompanyId)
     : PartitionedAggregate(PartitionId)
 {
-    /// <summary>
-    /// Gets the company identifier.
-    /// </summary>
-    /// <value>The company identifier.</value>
-    [DataMember(Order = 2)]
-    public string CompanyId { get; init; } = CompanyId;
 }

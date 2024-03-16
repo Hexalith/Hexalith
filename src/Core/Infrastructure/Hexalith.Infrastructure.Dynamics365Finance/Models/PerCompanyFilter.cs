@@ -20,14 +20,12 @@ public record PerCompanyFilter : IPerCompanyFilter
     /// </summary>
     /// <param name="dataAreaId">The company identifier.</param>
     [JsonConstructor]
-    protected PerCompanyFilter(string? dataAreaId)
-    {
-        DataAreaId = dataAreaId;
-    }
+    protected PerCompanyFilter(string? dataAreaId) => DataAreaId = dataAreaId;
 
     /// <summary>
     /// Gets the company.
     /// </summary>
     [JsonPropertyName("dataAreaId")]
+    [DataMember]
     public string? DataAreaId { get; }
 }

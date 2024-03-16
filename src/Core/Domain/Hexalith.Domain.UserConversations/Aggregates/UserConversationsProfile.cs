@@ -17,6 +17,7 @@
 namespace Hexalith.Domain.UserConversationProfiles.Aggregates;
 
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
@@ -30,6 +31,7 @@ using Hexalith.Domain.UserConversationProfiles.Events;
 /// </summary>
 /// <seealso cref="IAggregate" />
 /// <seealso cref="IEquatable{UserConversations}" />
+[DataContract]
 public record UserConversationsProfile(string UserId, IEnumerable<DateTimeOffset> Conversations) : IAggregate
 {
     /// <summary>

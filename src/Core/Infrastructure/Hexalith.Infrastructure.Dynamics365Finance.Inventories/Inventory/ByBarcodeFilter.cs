@@ -16,6 +16,8 @@
 
 namespace Hexalith.Infrastructure.Dynamics365Finance.Inventories.Inventory;
 
+using System.Runtime.Serialization;
+
 using Hexalith.Infrastructure.Dynamics365Finance.Models;
 
 /// <summary>
@@ -31,10 +33,11 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 /// <seealso cref="IFilter" />
 /// <seealso cref="IEquatable{PerCompanyFilter}" />
 /// <seealso cref="IEquatable{ByBarcodeFilter}" />
+[DataContract]
 public record ByBarcodeFilter
 (
     string DataAreaId,
-    string Barcode)
+    [property: DataMember(Order = 2)] string Barcode)
     : PerCompanyFilter(DataAreaId)
 {
 }

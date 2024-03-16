@@ -6,8 +6,10 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 01-25-2023
 // ***********************************************************************
-// <copyright file="SalesOrderHeader.cs" company="Fiveforty SAS Paris France">
+// <copyright file="PackingSlipTrackingInformation.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -33,19 +35,16 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 public record PackingSlipTrackingInformation(
     string Etag,
     string DataAreaId,
-    string SalesOrderNumber,
-    string PackingSlipNumber,
-    DateTimeOffset DeliveryDate,
-    string TrackingNumber,
-    string TrackingURL)
+    [property: DataMember(Order = 3)] string SalesOrderNumber,
+    [property: DataMember(Order = 4)] string PackingSlipNumber,
+    [property: DataMember(Order = 5)] DateTimeOffset DeliveryDate,
+    [property: DataMember(Order = 6)] string TrackingNumber,
+    [property: DataMember(Order = 7)] string TrackingURL)
     : ODataElement(Etag, DataAreaId), IODataElement
 {
     /// <summary>
     /// Entities the name.
     /// </summary>
     /// <returns>System.String.</returns>
-    public static string EntityName()
-    {
-        return "PackingSlipTrackingInformation";
-    }
+    public static string EntityName() => "PackingSlipTrackingInformation";
 }

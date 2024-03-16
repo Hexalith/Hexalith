@@ -17,6 +17,7 @@
 namespace Hexalith.Extensions.Common;
 
 using System;
+using System.Runtime.Serialization;
 
 using Hexalith.Extensions.Helpers;
 
@@ -25,6 +26,7 @@ using Hexalith.Extensions.Helpers;
 /// Implements the <see cref="ErrorCategory" />.
 /// </summary>
 /// <seealso cref="ErrorCategory" />
+[DataContract]
 public record ApplicationError
 {
     /// <summary>
@@ -43,36 +45,42 @@ public record ApplicationError
     /// Gets a human-readable explanation specific to this occurrence of the problem.
     /// </summary>
     /// <value>The detail.</value>
+    [DataMember]
     public string? Detail { get; init; }
 
     /// <summary>
     /// Gets more information on the technical reason on the error.
     /// </summary>
     /// <value>The technical detail.</value>
+    [DataMember]
     public string? TechnicalDetail { get; init; }
 
     /// <summary>
     /// Gets the inner error.
     /// </summary>
     /// <value>The inner error.</value>
+    [DataMember]
     public ApplicationError? InnerError { get; init; }
 
     /// <summary>
     /// Gets the error type.
     /// </summary>
     /// <value>The type.</value>
+    [DataMember]
     public string? Type { get; init; }
 
     /// <summary>
     /// Gets the error type.
     /// </summary>
     /// <value>The category.</value>
+    [DataMember]
     public ErrorCategory Category { get; init; }
 
     /// <summary>
     /// Gets error type.
     /// </summary>
     /// <value>The title.</value>
+    [DataMember]
     public string? Title { get; init; }
 
     /// <summary>

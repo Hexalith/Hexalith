@@ -4,9 +4,11 @@
 		<RootNamespace>Hexalith.Domain</RootNamespace>
 	</PropertyGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\..\Common\Hexalith.Extensions\Hexalith.Extensions.csproj" />
+	  <Compile Remove="ValueObject\**" />
+	  <EmbeddedResource Remove="ValueObject\**" />
+	  <None Remove="ValueObject\**" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="ValueObject\" />
+	  <ProjectReference Include="..\..\Common\Hexalith.Extensions\Hexalith.Extensions.csproj" />
 	</ItemGroup>
 </Project>

@@ -4,39 +4,39 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models;
+// namespace Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models;
 
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
+// using System.Runtime.Serialization;
+// using System.Text.Json.Serialization;
 
-[DataContract]
-public record SalesOrderExternalCodeCreate
-{
-    /// <summary>
-    /// Initializes a new instance of the <see cref="SalesOrderExternalCodeCreate"/> class.
-    /// </summary>
-    /// <param name="dataAreaId"></param>
-    /// <param name="sourceId"></param>
-    /// <param name="salesOrderNumber"></param>
-    /// <param name="externalId"></param>
-    public SalesOrderExternalCodeCreate(
-        string dataAreaId,
-        string sourceId,
-        string salesOrderNumber,
-        string externalId)
-    {
-        DataAreaId = dataAreaId;
-        SourceId = sourceId;
-        SalesOrderNumber = salesOrderNumber;
-        ExternalId = externalId;
-    }
+// [DataContract]
+// public record SalesOrderExternalCodeCreate
+// {
+//    /// <summary>
+//    /// Initializes a new instance of the <see cref="SalesOrderExternalCodeCreate"/> class.
+//    /// </summary>
+//    /// <param name="dataAreaId"></param>
+//    /// <param name="sourceId"></param>
+//    /// <param name="salesOrderNumber"></param>
+//    /// <param name="externalId"></param>
+//    public SalesOrderExternalCodeCreate(
+//        string dataAreaId,
+//        string sourceId,
+//        string salesOrderNumber,
+//        string externalId)
+//    {
+//        DataAreaId = dataAreaId;
+//        SourceId = sourceId;
+//        SalesOrderNumber = salesOrderNumber;
+//        ExternalId = externalId;
+//    }
 
-    [JsonPropertyName("dataAreaId")]
-    public string DataAreaId { get; }
+// [JsonPropertyName("dataAreaId")]
+//    public string DataAreaId { get; }
 
-    public string SourceId { get; }
+// public string SourceId { get; }
 
-    public string SalesOrderNumber { get; }
+// public string SalesOrderNumber { get; }
 
-    public string ExternalId { get; }
-}
+// public string ExternalId { get; }
+// }

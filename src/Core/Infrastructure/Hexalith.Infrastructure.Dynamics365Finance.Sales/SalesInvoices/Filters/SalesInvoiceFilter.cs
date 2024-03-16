@@ -35,7 +35,7 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 [DataContract]
 public record SalesInvoiceFilter(
     string DataAreaId,
-    string InvoiceNumber)
+    [property: DataMember(Order = 2)] string InvoiceNumber)
     : PerCompanyFilter(DataAreaId)
 {
 }

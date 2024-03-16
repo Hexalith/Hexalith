@@ -33,17 +33,16 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 /// <seealso cref="IODataElement" />
 /// <seealso cref="IEquatable{CustomerExternalCode}" />
 [DataContract]
-[Serializable]
 public record CustomerBase
 (
     string DataAreaId,
-    string? CustomerAccount,
+    [property: DataMember(Order = 3)] string? CustomerAccount,
     string? Etag,
-    string? NameAlias,
-    string? PersonPersonalTitle = null,
-    int? PersonBirthDay = null,
-    Month? PersonBirthMonth = null,
-    int? PersonBirthYear = null)
+    [property: DataMember(Order = 4)] string? NameAlias,
+    [property: DataMember(Order = 5)] string? PersonPersonalTitle = null,
+    [property: DataMember(Order = 6)] int? PersonBirthDay = null,
+    [property: DataMember(Order = 7)] Month? PersonBirthMonth = null,
+    [property: DataMember(Order = 8)] int? PersonBirthYear = null)
 
 : ODataElement(Etag, DataAreaId), IODataElement
 {

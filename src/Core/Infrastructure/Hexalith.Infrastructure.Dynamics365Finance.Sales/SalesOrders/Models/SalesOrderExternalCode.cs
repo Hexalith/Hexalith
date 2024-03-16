@@ -11,7 +11,12 @@ using System.Runtime.Serialization;
 using Hexalith.Infrastructure.Dynamics365Finance.Models;
 
 [DataContract]
-public record SalesOrderExternalCode(string Etag, string DataAreaId, string SourceId, string SalesOrderNumber, string ExternalId)
+public record SalesOrderExternalCode(
+    string Etag,
+    string DataAreaId,
+    [property: DataMember(Order = 3)] string SourceId,
+    [property: DataMember(Order = 4)] string SalesOrderNumber,
+    [property: DataMember(Order = 5)] string ExternalId)
     : ODataElement(Etag, DataAreaId)
 {
 }

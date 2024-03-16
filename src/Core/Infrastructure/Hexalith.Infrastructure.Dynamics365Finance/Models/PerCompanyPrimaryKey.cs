@@ -27,5 +27,6 @@ public record PerCompanyPrimaryKey : IPerCompanyPrimaryKey
     /// Gets the company.
     /// </summary>
     [JsonPropertyName("dataAreaId")]
+    [DataMember]
     public string? DataAreaId { get; }
 }

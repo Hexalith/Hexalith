@@ -9,36 +9,10 @@ namespace Hexalith.Infrastructure.Dynamics365Finance.Models;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Extensions;
-
 /// <summary>
 /// Dynamics 365 Finance and Operations entity base class.
 /// </summary>
 [DataContract]
-[Serializable]
-public record ODataCommon
+public record ODataCommon([property: DataMember(Order = 1)][property: JsonPropertyName("@odata.etag")] string? Etag)
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ODataCommon"/> class.
-    /// </summary>
-    /// <param name="etag">The Etag.</param>
-    /// <param name="dataAreaId">The company identifier.</param>
-    [JsonConstructor]
-    protected ODataCommon(string? etag) => Etag = etag;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ODataCommon"/> class.
-    /// </summary>
-    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    protected ODataCommon()
-        : this(etag: null)
-    {
-    }
-
-    /// <summary>
-    /// Gets or sets the record Etag for concurrency checks.
-    /// </summary>
-    [JsonPropertyName("@odata.etag")]
-    [DataMember]
-    public string? Etag { get; set; }
 }

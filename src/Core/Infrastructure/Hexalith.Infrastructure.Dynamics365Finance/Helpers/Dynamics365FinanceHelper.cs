@@ -14,12 +14,16 @@
 
 namespace Hexalith.Infrastructure.Dynamics365Finance.Helpers;
 
+using System.Net.Http.Headers;
+
 using FluentValidation;
 
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents;
+using Hexalith.Infrastructure.Dynamics365Finance.Client;
 using Hexalith.Infrastructure.Dynamics365Finance.Configurations;
 using Hexalith.Infrastructure.Dynamics365Finance.Dispatchers;
+using Hexalith.Infrastructure.Dynamics365Finance.Models;
 using Hexalith.Infrastructure.Dynamics365Finance.Security;
 
 using Microsoft.Extensions.Configuration;
@@ -35,9 +39,8 @@ public static class Dynamics365FinanceHelper
     /// Adds the dynamics365 finance and operations business events services.
     /// </summary>
     /// <param name="services">The services.</param>
-    /// <param name="configuration">The configuration.</param>
     /// <returns>IServiceCollection.</returns>
-    public static IServiceCollection AddDynamics365FinanceBusinessEvents(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddDynamics365FinanceBusinessEvents(this IServiceCollection services)
     {
         services.TryAddScoped<IDynamics365FinanceIntegrationEventProcessor, Dynamics365FinanceIntegrationEventProcessor>();
         services.TryAddSingleton<IValidator<Dynamics365BusinessEventBase>, Dynamics365BusinessEventValidator>();
@@ -45,16 +48,30 @@ public static class Dynamics365FinanceHelper
     }
 
     /// <summary>
-    /// Adds a Dynamics 365 Finance and Operations client to the service collection.
+    /// Adds the dynamics365 finance client.
     /// </summary>
-    /// <param name="services">Service collection.</param>
-    /// <param name="configuration">Configuration containing the client settings values.</param>
-    /// <returns>The services collection.</returns>
-    public static IServiceCollection AddDynamics365FinanceClient(this IServiceCollection services, IConfiguration configuration)
+    /// <typeparam name="TEntity">The type of the t entity.</typeparam>
+    /// <param name="services">The services.</param>
+    /// <param name="configuration">The configuration.</param>
+    /// <returns>IServiceCollection.</returns>
+    public static IServiceCollection AddDynamics365FinanceClient<TEntity>(this IServiceCollection services, IConfiguration configuration)
+        where TEntity : class, IODataCommon
     {
         _ = services
-            .AddHttpClient()
             .ConfigureSettings<Dynamics365FinanceClientSettings>(configuration);
+        _ = services.AddHttpClient<IDynamics365FinanceClient<TEntity>, Dynamics365FinanceClient<TEntity>>(client =>
+        {
+            string settingsName = Dynamics365FinanceClientSettings.ConfigurationName();
+            string? instance = configuration[$"{settingsName}:{nameof(Dynamics365FinanceClientSettings.Instance)}"];
+            SettingsException<Dynamics365FinanceClientSettings>.ThrowIfNullOrWhiteSpace(instance, nameof(Dynamics365FinanceClientSettings.Instance));
+            client.BaseAddress = new Uri(instance);
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Add("OData-MaxVersion", "4.0");
+            client.DefaultRequestHeaders.Add("OData-Version", "4.0");
+            client.DefaultRequestHeaders.Add("Prefer", "odata.include-annotations = *");
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+        });
         services.TryAddSingleton<IDynamics365FinanceSecurityContext, Dynamics365FinanceSecurityContext>();
         return services;
     }

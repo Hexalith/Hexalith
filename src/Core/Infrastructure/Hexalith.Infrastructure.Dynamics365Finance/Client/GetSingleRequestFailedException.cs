@@ -59,7 +59,7 @@ public sealed class GetSingleRequestFailedException<T> : ApplicationErrorExcepti
     /// <param name="message">The error message.</param>
     /// <param name="innerException">The inner exception.</param>
     public GetSingleRequestFailedException(string entityName, IDictionary<string, object?> keys, string? responseContent, string? message, Exception? innerException)
-        : base(CreateError(entityName, keys, responseContent, message, innerException), innerException)
+        : base(CreateError(entityName, keys, responseContent ?? string.Empty, message ?? string.Empty, innerException), innerException)
     {
         EntityName = entityName;
         Keys = keys;
@@ -80,7 +80,7 @@ public sealed class GetSingleRequestFailedException<T> : ApplicationErrorExcepti
     /// <value>
     /// The keys used to get the entity.
     /// </value>
-    public IDictionary<string, object?>? Keys { get; set; }
+    public IDictionary<string, object?> Keys { get; set; }
 
     /// <summary>
     /// Gets or sets the returned response.
@@ -90,7 +90,7 @@ public sealed class GetSingleRequestFailedException<T> : ApplicationErrorExcepti
     /// </value>
     public string? ResponseContent { get; set; }
 
-    private static ApplicationError CreateError(string entityName, IDictionary<string, object?> keys, string? responseContent, string? message, Exception? innerException)
+    private static ApplicationError CreateError(string entityName, IDictionary<string, object?> keys, string responseContent, string message, Exception? innerException)
     {
         return new ApplicationError
         {
@@ -105,7 +105,7 @@ public sealed class GetSingleRequestFailedException<T> : ApplicationErrorExcepti
                 entityName,
                 message ?? string.Empty,
             ],
-            TechnicalDetail = "Response content:\n{ResponseContent}\nError message:\n{ErrorMessage]",
+            TechnicalDetail = "Response content:\n{ResponseContent}\nError message:\n{ErrorMessage}",
             TechnicalArguments = [responseContent ?? string.Empty, innerException?.FullMessage() ?? string.Empty],
             Category = ErrorCategory.Unknown,
             Type = "Dynamics365Finance",

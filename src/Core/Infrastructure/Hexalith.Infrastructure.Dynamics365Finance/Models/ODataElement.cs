@@ -9,41 +9,14 @@ namespace Hexalith.Infrastructure.Dynamics365Finance.Models;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Extensions;
-
 /// <summary>
 /// Dynamics 365 Finance and Operations entity base class.
 /// </summary>
 [DataContract]
-[Serializable]
-public record ODataElement : ODataCommon
+public record ODataElement(
+    string? Etag,
+    [property: DataMember(Order = 2)]
+    [property: JsonPropertyName("dataAreaId")]
+    string DataAreaId) : ODataCommon(Etag)
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ODataElement"/> class.
-    /// </summary>
-    /// <param name="etag">The Etag.</param>
-    /// <param name="dataAreaId">The company identifier.</param>
-    [JsonConstructor]
-    protected ODataElement(string? etag, string dataAreaId)
-        : base(etag)
-    {
-        ArgumentException.ThrowIfNullOrWhiteSpace(dataAreaId);
-        DataAreaId = dataAreaId;
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ODataElement"/> class.
-    /// </summary>
-    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    protected ODataElement()
-        : this(null, DefaultLabels.ForSerializationOnly)
-    {
-    }
-
-    /// <summary>
-    /// Gets or sets the company.
-    /// </summary>
-    [JsonPropertyName("dataAreaId")]
-    [DataMember]
-    public string DataAreaId { get; set; }
 }

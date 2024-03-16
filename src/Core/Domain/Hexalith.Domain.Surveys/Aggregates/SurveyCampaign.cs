@@ -44,8 +44,8 @@ public record SurveyCampaign(
     string CompanyId,
     string OriginId,
     string Id,
-    string Name,
-    DateTimeOffset Date) : Aggregate
+    [property: DataMember(Order = 5)] string Name,
+    [property: DataMember(Order = 6)] DateTimeOffset Date) : EntityAggregate(PartitionId, CompanyId, OriginId, Id)
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="SurveyCampaign"/> class.

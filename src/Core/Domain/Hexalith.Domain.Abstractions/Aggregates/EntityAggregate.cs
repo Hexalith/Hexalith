@@ -25,21 +25,7 @@ using System.Runtime.Serialization;
 /// </summary>
 /// <seealso cref="IAggregate" />
 [DataContract]
-[Serializable]
-public abstract record EntityAggregate(string PartitionId, string CompanyId, string OriginId, string Id)
+public abstract record EntityAggregate(string PartitionId, string CompanyId, [property: DataMember(Order = 3)] string OriginId, [property: DataMember(Order = 4)] string Id)
     : ByCompanyAggregate(PartitionId, CompanyId)
 {
-    /// <summary>
-    /// Gets the origin identifier.
-    /// </summary>
-    /// <value>The origin identifier.</value>
-    [DataMember(Order = 3)]
-    public string OriginId { get; init; } = OriginId;
-
-    /// <summary>
-    /// Gets the identifier.
-    /// </summary>
-    /// <value>The identifier.</value>
-    [DataMember(Order = 4)]
-    public string Id { get; init; } = Id;
 }

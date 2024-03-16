@@ -18,6 +18,7 @@ namespace Hexalith.Domain.ConversationThreads.Aggregates;
 
 using System.Collections.Generic;
 using System.Globalization;
+using System.Runtime.Serialization;
 
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.ConversationThreads.Entities;
@@ -32,7 +33,12 @@ using Hexalith.Domain.Exceptions;
 /// </summary>
 /// <seealso cref="IAggregate" />
 /// <seealso cref="IEquatable{ConversationThread}" />
-public record ConversationThread(string Owner, DateTimeOffset StartedDate, DateTimeOffset? EndedDate, IEnumerable<ConversationItem> Items) : Aggregate
+[DataContract]
+public record ConversationThread(
+    [property: DataMember] string Owner,
+    [property: DataMember] DateTimeOffset StartedDate,
+    [property: DataMember] DateTimeOffset? EndedDate,
+    [property: DataMember] IEnumerable<ConversationItem> Items) : Aggregate
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="ConversationThread" /> class.

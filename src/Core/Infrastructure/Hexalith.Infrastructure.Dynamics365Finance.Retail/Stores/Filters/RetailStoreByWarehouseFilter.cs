@@ -16,6 +16,8 @@
 
 namespace Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Filters;
 
+using System.Runtime.Serialization;
+
 using Hexalith.Infrastructure.Dynamics365Finance.Models;
 
 /// <summary>
@@ -25,7 +27,8 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 /// </summary>
 /// <seealso cref="IFilter" />
 /// <seealso cref="System.IEquatable{Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Filters.RetailStoreByWarehouseFilter}" />
-public record RetailStoreByWarehouseFilter(string WarehouseId)
+[DataContract]
+public record RetailStoreByWarehouseFilter([property: DataMember(Order = 1)] string WarehouseId)
     : ICommonFilter
 {
 }

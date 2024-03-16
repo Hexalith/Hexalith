@@ -1,4 +1,10 @@
-﻿namespace Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models;
+﻿// <copyright file="SalesOrderHeaderAdditional.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+
+namespace Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models;
 
 using System.Runtime.Serialization;
 
@@ -19,18 +25,15 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 public record SalesOrderHeaderAdditional(
     string Etag,
     string DataAreaId,
-    string SalesOrderNumber,
-    string Phone,
-    DateTimeOffset? Deadline,
-    string SalesOriginId)
+    [property: DataMember(Order = 3)] string SalesOrderNumber,
+    [property: DataMember(Order = 4)] string Phone,
+    [property: DataMember(Order = 5)] DateTimeOffset? Deadline,
+    [property: DataMember(Order = 6)] string SalesOriginId)
     : ODataElement(Etag, DataAreaId), IODataElement
 {
     /// <summary>
     /// Entities the name.
     /// </summary>
     /// <returns>System.String.</returns>
-    public static string EntityName()
-    {
-        return "FFYSalesOrderHeaderAdditionals";
-    }
+    public static string EntityName() => "FFYSalesOrderHeaderAdditionals";
 }

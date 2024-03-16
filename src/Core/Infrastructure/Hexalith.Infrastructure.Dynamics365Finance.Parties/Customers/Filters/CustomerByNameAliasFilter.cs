@@ -16,6 +16,8 @@
 
 namespace Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters;
 
+using System.Runtime.Serialization;
+
 using Hexalith.Infrastructure.Dynamics365Finance.Models;
 
 /// <summary>
@@ -31,10 +33,11 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 /// <seealso cref="IFilter" />
 /// <seealso cref="System.IEquatable{Hexalith.Infrastructure.Dynamics365Finance.Models.PerCompanyFilter}" />
 /// <seealso cref="System.IEquatable{Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerByNameAliasFilter}" />
+[DataContract]
 public record CustomerByNameAliasFilter
 (
     string DataAreaId,
-    string NameAlias)
+    [property: DataMember(Order = 2)] string NameAlias)
     : PerCompanyFilter(DataAreaId)
 {
 }

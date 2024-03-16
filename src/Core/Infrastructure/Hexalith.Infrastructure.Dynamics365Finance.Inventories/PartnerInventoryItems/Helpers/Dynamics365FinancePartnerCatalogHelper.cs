@@ -22,7 +22,6 @@ using Dapr.Actors.Runtime;
 using FluentValidation;
 
 using Hexalith.Extensions.Configuration;
-using Hexalith.Infrastructure.Dynamics365Finance.Helpers;
 using Hexalith.Infrastructure.Dynamics365Finance.Inventories.Configuration;
 using Hexalith.Infrastructure.Dynamics365Finance.Inventories.PartnerInventoryItems.BusinessEvents;
 using Hexalith.Infrastructure.Dynamics365Finance.Inventories.PartnerInventoryItems.Validators;
@@ -65,7 +64,6 @@ public static class Dynamics365FinancePartnerCatalogHelper
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
         _ = services
-            .AddDynamics365FinanceBusinessEvents(configuration)
             .ConfigureSettings<Dynamics365FinanceInventoriesSettings>(configuration);
         services.TryAddSingleton<IValidator<Dynamics365LogisticsPartnerCatalogItemAdded>, Dynamics365LogisticsPartnerCatalogItemAddedValidator>();
         services.TryAddSingleton<IValidator<Dynamics365LogisticsPartnerCatalogItemRemoved>, Dynamics365LogisticsPartnerCatalogItemRemovedValidator>();
@@ -90,9 +88,6 @@ public static class Dynamics365FinancePartnerCatalogHelper
     {
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
-
-        _ = services
-            .AddDynamics365FinanceClient(configuration);
 
         return services;
     }

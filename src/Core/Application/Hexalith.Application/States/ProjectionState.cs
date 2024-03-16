@@ -25,7 +25,7 @@ using System.Runtime.Serialization;
 /// <seealso cref="IEquatable{ProjectionActorState}" />
 [DataContract]
 public record ProjectionState(
-    long EventStreamVersion,
-    long LastEventDone)
+    [property: DataMember] long EventStreamVersion,
+    [property: DataMember] long LastEventDone)
 {
 }

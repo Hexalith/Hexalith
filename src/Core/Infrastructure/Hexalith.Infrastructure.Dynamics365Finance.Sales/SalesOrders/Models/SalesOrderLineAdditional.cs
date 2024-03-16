@@ -6,8 +6,10 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 10-08-2023
 // ***********************************************************************
-// <copyright file="SalesOrderLineAdditional.cs" company="Fiveforty">
-//     Copyright (c) Fiveforty S.A.S.. All rights reserved.
+// <copyright file="SalesOrderLineAdditional.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -32,18 +34,15 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 public record SalesOrderLineAdditional(
     string Etag,
     string DataAreaId,
-    long SalesLineRecId,
-    string SalesId,
-    decimal LineNum,
-    string DeliveryType)
+    [property: DataMember(Order = 3)] long SalesLineRecId,
+    [property: DataMember(Order = 4)] string SalesId,
+    [property: DataMember(Order = 5)] decimal LineNum,
+    [property: DataMember(Order = 6)] string DeliveryType)
     : ODataElement(Etag, DataAreaId), IODataElement
 {
     /// <summary>
     /// Entities the name.
     /// </summary>
     /// <returns>System.String.</returns>
-    public static string EntityName()
-    {
-        return "FFYSalesLinesAdditional";
-    }
+    public static string EntityName() => "FFYSalesLinesAdditional";
 }

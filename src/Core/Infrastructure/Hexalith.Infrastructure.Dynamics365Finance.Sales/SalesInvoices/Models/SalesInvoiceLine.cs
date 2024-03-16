@@ -8,6 +8,8 @@
 // ***********************************************************************
 // <copyright file="SalesInvoiceLine.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -33,39 +35,36 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 public record SalesInvoiceLine(
     string Etag,
     string DataAreaId,
-    string InvoiceNumber,
-    int LineCreationSequenceNumber,
-    DateTimeOffset InvoiceDate,
-    decimal InvoicedQuantity,
-    string ProductName,
-    decimal SalesPrice,
-    decimal LineTotalTaxAmount,
-    decimal LineAmount,
-    string CurrencyCode,
-    string SalesUnitSymbol,
-    string ProductNumber,
-    string? ProductSizeId,
-    string? ProductColorId,
-    string? ProductVersionId,
-    string? ProductStyleId,
-    decimal? LineTotalChargeAmount,
-    decimal? LineTotalDiscountAmount,
-    string? InventorySiteId,
-    string? DimensionNumber,
-    string? ItemBatchNumber,
-    string? ProductConfigurationId,
-    string? OrderedInventoryStatusId,
-    DateTimeOffset? ConfirmedShippingDate,
-    string? InventoryWarehouseId,
-    string? ProductDescription)
+    [property: DataMember(Order = 3)] string InvoiceNumber,
+    [property: DataMember(Order = 4)] int LineCreationSequenceNumber,
+    [property: DataMember(Order = 5)] DateTimeOffset InvoiceDate,
+    [property: DataMember(Order = 6)] decimal InvoicedQuantity,
+    [property: DataMember(Order = 7)] string ProductName,
+    [property: DataMember(Order = 8)] decimal SalesPrice,
+    [property: DataMember(Order = 9)] decimal LineTotalTaxAmount,
+    [property: DataMember(Order = 10)] decimal LineAmount,
+    [property: DataMember(Order = 11)] string CurrencyCode,
+    [property: DataMember(Order = 12)] string SalesUnitSymbol,
+    [property: DataMember(Order = 13)] string ProductNumber,
+    [property: DataMember(Order = 14)] string? ProductSizeId,
+    [property: DataMember(Order = 15)] string? ProductColorId,
+    [property: DataMember(Order = 16)] string? ProductVersionId,
+    [property: DataMember(Order = 17)] string? ProductStyleId,
+    [property: DataMember(Order = 18)] decimal? LineTotalChargeAmount,
+    [property: DataMember(Order = 19)] decimal? LineTotalDiscountAmount,
+    [property: DataMember(Order = 20)] string? InventorySiteId,
+    [property: DataMember(Order = 21)] string? DimensionNumber,
+    [property: DataMember(Order = 22)] string? ItemBatchNumber,
+    [property: DataMember(Order = 23)] string? ProductConfigurationId,
+    [property: DataMember(Order = 24)] string? OrderedInventoryStatusId,
+    [property: DataMember(Order = 25)] DateTimeOffset? ConfirmedShippingDate,
+    [property: DataMember(Order = 26)] string? InventoryWarehouseId,
+    [property: DataMember(Order = 27)] string? ProductDescription)
     : ODataElement(Etag, DataAreaId), IODataElement
 {
     /// <summary>
     /// Entities the name.
     /// </summary>
     /// <returns>System.String.</returns>
-    public static string EntityName()
-    {
-        return "SalesInvoiceLines";
-    }
+    public static string EntityName() => "SalesInvoiceLines";
 }

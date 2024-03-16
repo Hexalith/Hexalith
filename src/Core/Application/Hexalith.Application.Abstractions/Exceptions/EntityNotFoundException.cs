@@ -10,6 +10,9 @@ using System;
 using System.Runtime.Serialization;
 using System.Text.Json;
 
+using Hexalith.Extensions.Common;
+using Hexalith.Extensions.Errors;
+
 /// <summary>
 /// Class EntityNotFoundException.
 /// Implements the <see cref="Exception" />.
@@ -17,7 +20,7 @@ using System.Text.Json;
 /// <typeparam name="TEntity">The type of the t entity.</typeparam>
 /// <seealso cref="Exception" />
 [DataContract]
-public class EntityNotFoundException<TEntity> : Exception
+public class EntityNotFoundException<TEntity> : ApplicationErrorException
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="EntityNotFoundException{TEntity}"/> class.
@@ -31,7 +34,9 @@ public class EntityNotFoundException<TEntity> : Exception
     /// </summary>
     /// <param name="key">The key.</param>
     public EntityNotFoundException(object key)
-       : base($"Entity '{typeof(TEntity).Name}' not found for key: {JsonSerializer.Serialize(key)}") => Key = key;
+       : base(CreateError(key))
+    {
+    }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="EntityNotFoundException{TEntity}"/> class.
@@ -59,4 +64,19 @@ public class EntityNotFoundException<TEntity> : Exception
     /// </summary>
     /// <value>The key.</value>
     public object? Key { get; private set; }
+
+    private static ApplicationError CreateError(object key)
+    {
+        string entityName = typeof(TEntity).Name;
+#pragma warning disable CA1869 // Cache and reuse 'JsonSerializerOptions' instances
+        _ = JsonSerializer.Serialize(key, new JsonSerializerOptions { WriteIndented = true, DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault });
+#pragma warning restore CA1869 // Cache and reuse 'JsonSerializerOptions' instances
+        return new()
+        {
+            Title = entityName + " not found.",
+            Detail = "Entity {EntityName} not found with key:\n{Key}",
+            Arguments = [entityName, key],
+            Category = ErrorCategory.Functional,
+        };
+    }
 }

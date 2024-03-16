@@ -4,14 +4,17 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities;
+namespace Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters;
+
+using System.Runtime.Serialization;
 
 using Hexalith.Infrastructure.Dynamics365Finance.Models;
 
+[DataContract]
 public record CustomerByAccountFilter
 (
     string DataAreaId,
-    string CustomerAccount)
+    [property: DataMember(Order = 2)] string CustomerAccount)
     : PerCompanyFilter(DataAreaId)
 {
 }

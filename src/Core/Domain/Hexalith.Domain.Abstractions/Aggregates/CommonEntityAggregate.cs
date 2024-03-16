@@ -26,20 +26,7 @@ using System.Runtime.Serialization;
 /// <seealso cref="IAggregate" />
 [DataContract]
 [Serializable]
-public abstract record CommonEntityAggregate(string PartitionId, string OriginId, string Id)
+public abstract record CommonEntityAggregate([property: DataMember] string PartitionId, [property: DataMember(Order = 2)] string OriginId, [property: DataMember(Order = 3)] string Id)
     : PartitionedAggregate(PartitionId)
 {
-    /// <summary>
-    /// Gets the origin identifier.
-    /// </summary>
-    /// <value>The origin identifier.</value>
-    [DataMember(Order = 2)]
-    public string OriginId { get; init; } = OriginId;
-
-    /// <summary>
-    /// Gets the identifier.
-    /// </summary>
-    /// <value>The identifier.</value>
-    [DataMember(Order = 3)]
-    public string Id { get; init; } = Id;
 }

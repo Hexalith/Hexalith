@@ -21,6 +21,7 @@ namespace Hexalith.Domain.Aggregates;
 
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
 
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Exceptions;
@@ -36,8 +37,9 @@ using Hexalith.Domain.Exceptions;
 /// <seealso cref="Hexalith.Domain.Aggregates.IAggregate" />
 /// <seealso cref="System.IEquatable{Hexalith.Domain.Aggregates.Aggregate}" />
 /// <seealso cref="System.IEquatable{Hexalith.Domain.Aggregates.SalesInvoice}" />
+[DataContract]
 public record SalesInvoice(
-    SalesInvoiceState State) : Aggregate
+    [property: DataMember(Order = 1)] SalesInvoiceState State) : Aggregate
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="SalesInvoice"/> class.

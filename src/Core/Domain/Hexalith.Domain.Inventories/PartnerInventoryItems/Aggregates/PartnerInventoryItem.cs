@@ -6,6 +6,8 @@
 
 namespace Hexalith.Domain.PartnerInventoryItems.Aggregates;
 
+using System.Runtime.Serialization;
+
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Exceptions;
@@ -22,21 +24,22 @@ using Hexalith.Domain.PartnerInventoryItems.Events;
 /// <seealso cref="IAggregate" />
 /// <seealso cref="IEquatable{Aggregate}" />
 /// <seealso cref="IEquatable{PartnerInventoryItem}" />
+[DataContract]
 public record PartnerInventoryItem(
-    string PartitionId,
-    string CompanyId,
-    string OriginId,
-    string PartnerType,
-    string PartnerId,
-    string Id,
-    string InventoryItemId,
-    string UnitId,
-    string? Name,
-    decimal? Price,
-    string? CountryOfOriginId,
-    string? HarmonizedTariffScheduleCode,
-    string? ProductType,
-    bool Disabled) : Aggregate
+    [property: DataMember] string PartitionId,
+    [property: DataMember] string CompanyId,
+    [property: DataMember] string OriginId,
+    [property: DataMember] string PartnerType,
+    [property: DataMember] string PartnerId,
+    [property: DataMember] string Id,
+    [property: DataMember] string InventoryItemId,
+    [property: DataMember] string UnitId,
+    [property: DataMember] string? Name,
+    [property: DataMember] decimal? Price,
+    [property: DataMember] string? CountryOfOriginId,
+    [property: DataMember] string? HarmonizedTariffScheduleCode,
+    [property: DataMember] string? ProductType,
+    [property: DataMember] bool Disabled) : Aggregate
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="PartnerInventoryItem" /> class.

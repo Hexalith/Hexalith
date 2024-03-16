@@ -7,6 +7,7 @@
 namespace Hexalith.Domain.Users.Aggregates;
 
 using System;
+using System.Runtime.Serialization;
 
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
@@ -15,7 +16,8 @@ using Hexalith.Domain.Users.Models;
 /// <summary>
 /// Represents a user.
 /// </summary>
-public record User(string Id, string Name, string Email) : Aggregate, IUser
+[DataContract]
+public record User([property: DataMember(Order = 1)] string Id, [property: DataMember(Order = 2)] string Name, [property: DataMember(Order = 3)] string Email) : Aggregate, IUser
 {
     /// <inheritdoc/>
     public override (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent) => throw new NotImplementedException();

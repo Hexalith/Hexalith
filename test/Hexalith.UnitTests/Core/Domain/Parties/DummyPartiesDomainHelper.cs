@@ -6,18 +6,25 @@
 
 namespace Hexalith.UnitTests.Core.Domain.Parties;
 
+using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.ValueObjets;
 
 public static class DummyPartiesDomainHelper
 {
     public static Contact DummyContact()
-        => new(
+            => new(
             DummyPerson(),
             DummyPostalAddress(),
             "jdoe@mymail.com",
             "+33321563",
             "+33652952");
+
+    public static Customer DummyCustomer()
+    {
+        (IAggregate cus, _) = new Customer(DummyCustomerRegistered()).Apply(DummyIntercompanyDropshipDeliveryForCustomerSelected());
+        return (Customer)cus;
+    }
 
     public static CustomerInformationChanged DummyCustomerInformationChanged()
         => new(

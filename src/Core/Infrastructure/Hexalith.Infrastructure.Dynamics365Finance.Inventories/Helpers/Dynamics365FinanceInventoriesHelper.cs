@@ -20,7 +20,6 @@ using System.Diagnostics.CodeAnalysis;
 using Dapr.Actors.Runtime;
 
 using Hexalith.Extensions.Configuration;
-using Hexalith.Infrastructure.Dynamics365Finance.Client;
 using Hexalith.Infrastructure.Dynamics365Finance.Helpers;
 using Hexalith.Infrastructure.Dynamics365Finance.Inventories.Configuration;
 using Hexalith.Infrastructure.Dynamics365Finance.Inventories.Inventory;
@@ -66,7 +65,6 @@ public static class Dynamics365FinanceInventoriesHelper
         ArgumentNullException.ThrowIfNull(configuration);
         ArgumentException.ThrowIfNullOrWhiteSpace(applicationName);
         _ = services
-            .AddDynamics365FinanceBusinessEvents(configuration)
             .ConfigureSettings<Dynamics365FinanceInventoriesSettings>(configuration);
         _ = services
             .AddControllers()
@@ -88,9 +86,7 @@ public static class Dynamics365FinanceInventoriesHelper
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
 
-        _ = services
-            .AddDynamics365FinanceClient(configuration);
-        _ = services.AddHttpClient<IDynamics365FinanceClient<ProductBarcode>, Dynamics365FinanceClient<ProductBarcode>>();
+        _ = services.AddDynamics365FinanceClient<ProductBarcode>(configuration);
 
         return services;
     }

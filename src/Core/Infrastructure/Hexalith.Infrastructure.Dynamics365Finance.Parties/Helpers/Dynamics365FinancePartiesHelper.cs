@@ -23,7 +23,6 @@ using FluentValidation;
 
 using Hexalith.Application.Events;
 using Hexalith.Extensions.Configuration;
-using Hexalith.Infrastructure.Dynamics365Finance.Client;
 using Hexalith.Infrastructure.Dynamics365Finance.Helpers;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Configuration;
 using Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.BusinessEvents;
@@ -74,7 +73,7 @@ public static class Dynamics365FinancePartiesHelper
         ArgumentNullException.ThrowIfNull(configuration);
         ArgumentException.ThrowIfNullOrWhiteSpace(applicationName);
         services
-            .AddDynamics365FinanceBusinessEvents(configuration)
+            .AddDynamics365FinanceBusinessEvents()
             .TryAddSingleton<IValidator<Dynamics365FinanceCustomerChanged>, Dynamics365FinanceCustomerChangedValidator>();
         services.TryAddSingleton<IValidator<Dynamics365FinanceCustomerRegistered>, Dynamics365FinanceCustomerRegisteredValidator>();
         services.TryAddScoped<IIntegrationEventHandler<Dynamics365FinanceCustomerChanged>, Dynamics365FinanceCustomerChangedHandler>();
@@ -99,13 +98,11 @@ public static class Dynamics365FinancePartiesHelper
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
 
-        _ = services
-            .AddDynamics365FinanceClient(configuration);
-        _ = services.AddHttpClient<IDynamics365FinanceClient<CustomerExternalSystemCode>, Dynamics365FinanceClient<CustomerExternalSystemCode>>();
-        _ = services.AddHttpClient<IDynamics365FinanceClient<CustomerV3>, Dynamics365FinanceClient<CustomerV3>>();
-        _ = services.AddHttpClient<IDynamics365FinanceClient<CustomerBase>, Dynamics365FinanceClient<CustomerBase>>();
-        _ = services.AddHttpClient<IDynamics365FinanceClient<RetailStore>, Dynamics365FinanceClient<RetailStore>>();
-        _ = services.AddHttpClient<IDynamics365FinanceClient<CustomerExternalSystemCode>, Dynamics365FinanceClient<CustomerExternalSystemCode>>();
+        _ = services.AddDynamics365FinanceClient<CustomerExternalSystemCode>(configuration);
+        _ = services.AddDynamics365FinanceClient<CustomerV3>(configuration);
+        _ = services.AddDynamics365FinanceClient<CustomerBase>(configuration);
+        _ = services.AddDynamics365FinanceClient<RetailStore>(configuration);
+        _ = services.AddDynamics365FinanceClient<CustomerExternalSystemCode>(configuration);
         services.TryAddTransient<IDynamics365FinanceCustomerService, Dynamics365FinanceCustomerService>();
 
         return services;

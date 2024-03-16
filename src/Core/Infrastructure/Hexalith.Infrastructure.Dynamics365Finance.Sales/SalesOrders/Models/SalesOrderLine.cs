@@ -8,6 +8,8 @@
 // ***********************************************************************
 // <copyright file="SalesOrderLine.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -33,28 +35,25 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 public record SalesOrderLine(
     string Etag,
     string DataAreaId,
-    string SalesOrderNumber,
-    decimal LineNumber,
-    int CustomersLineNumber,
-    string ItemNumber,
-    string ProductStyleId,
-    string ProductColorId,
-    string ProductSizeId,
-    string ProductConfigurationId,
-    string ProductVersionId,
-    decimal SalesPrice,
-    decimal OrderedSalesQuantity,
-    string SalesUnitSymbol,
-    string GiftCardGiftMessage,
-    string InventoryLotId)
+    [property: DataMember(Order = 3)] string SalesOrderNumber,
+    [property: DataMember(Order = 4)] decimal LineNumber,
+    [property: DataMember(Order = 5)] int CustomersLineNumber,
+    [property: DataMember(Order = 6)] string ItemNumber,
+    [property: DataMember(Order = 7)] string ProductStyleId,
+    [property: DataMember(Order = 8)] string ProductColorId,
+    [property: DataMember(Order = 9)] string ProductSizeId,
+    [property: DataMember(Order = 10)] string ProductConfigurationId,
+    [property: DataMember(Order = 11)] string ProductVersionId,
+    [property: DataMember(Order = 12)] decimal SalesPrice,
+    [property: DataMember(Order = 13)] decimal OrderedSalesQuantity,
+    [property: DataMember(Order = 14)] string SalesUnitSymbol,
+    [property: DataMember(Order = 15)] string GiftCardGiftMessage,
+    [property: DataMember(Order = 16)] string InventoryLotId)
     : ODataElement(Etag, DataAreaId), IODataElement
 {
     /// <summary>
     /// Entities the name.
     /// </summary>
     /// <returns>System.String.</returns>
-    public static string EntityName()
-    {
-        return "SalesOrderLines";
-    }
+    public static string EntityName() => "SalesOrderLines";
 }

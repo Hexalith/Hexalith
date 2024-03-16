@@ -16,6 +16,8 @@
 
 namespace Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities;
 
+using System.Runtime.Serialization;
+
 using Hexalith.Infrastructure.Dynamics365Finance.Models;
 
 /// <summary>
@@ -29,13 +31,14 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 /// <seealso cref="IEquatable{ODataElement}" />
 /// <seealso cref="IODataElement" />
 /// <seealso cref="IEquatable{CustomerExternalCode}" />
+[DataContract]
 public record CustomerExternalSystemCode
 (
     string? Etag,
     string DataAreaId,
-    string? System,
-    string? CustomerAccountNumber,
-    string? ExternalCode)
+    [property: DataMember(Order = 3)] string? System,
+    [property: DataMember(Order = 4)] string? CustomerAccountNumber,
+    [property: DataMember(Order = 5)] string? ExternalCode)
 
 : ODataElement(Etag, DataAreaId), IODataElement
 {

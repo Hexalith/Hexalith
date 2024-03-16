@@ -16,6 +16,8 @@
 
 namespace Hexalith.Domain.InventoryUnits.Aggregates;
 
+using System.Runtime.Serialization;
+
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Exceptions;
@@ -32,14 +34,15 @@ using Hexalith.Domain.InventoryUnits.Events;
 /// <seealso cref="IAggregate" />
 /// <seealso cref="IEquatable{Aggregate}" />
 /// <seealso cref="IEquatable{InventoryUnitConversion}" />
+[DataContract]
 public record InventoryUnit(
-    string PartitionId,
-    string CompanyId,
-    string OriginId,
-    string Id,
-    string Name,
-    string? Description,
-    int RoundDecimals) : Aggregate
+    [property: DataMember] string PartitionId,
+    [property: DataMember] string CompanyId,
+    [property: DataMember] string OriginId,
+    [property: DataMember] string Id,
+    [property: DataMember] string Name,
+    [property: DataMember] string? Description,
+    [property: DataMember] int RoundDecimals) : Aggregate
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="InventoryUnit" /> class.

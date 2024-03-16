@@ -32,16 +32,15 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 /// <seealso cref="IODataElement" />
 /// <seealso cref="System.IEquatable{Hexalith.Infrastructure.Dynamics365Finance.Retail.Stores.Entities.RetailStore}" />
 [DataContract]
-[Serializable]
 public record RetailStore
 (
-    string? RetailChannelId = null,
-    string? DefaultCustomerAccount = null,
-    string? DefaultCustomerLegalEntity = null,
-    string? WareHouseId = null,
-    string? WarehouseLegalEntity = null,
-    string? Currency = null)
-: ODataCommon(etag: null), IODataCommon
+    [property: DataMember(Order = 2)] string? RetailChannelId = null,
+    [property: DataMember(Order = 3)] string? DefaultCustomerAccount = null,
+    [property: DataMember(Order = 4)] string? DefaultCustomerLegalEntity = null,
+    [property: DataMember(Order = 5)] string? WareHouseId = null,
+    [property: DataMember(Order = 6)] string? WarehouseLegalEntity = null,
+    [property: DataMember(Order = 7)] string? Currency = null)
+: ODataCommon(Etag: null), IODataCommon
 {
     /// <summary>
     /// Entities the name.

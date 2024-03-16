@@ -16,6 +16,8 @@
 
 namespace Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand;
 
+using System.Runtime.Serialization;
+
 using Hexalith.Infrastructure.Dynamics365Finance.Models;
 
 /// <summary>
@@ -25,10 +27,11 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 /// </summary>
 /// <seealso cref="PerCompanyFilter" />
 /// <seealso cref="IEquatable{WarehouseOnHandFilter}" />
+[DataContract]
 public record WarehouseOnHandFilter
 (
     string DataAreaId,
-    string InventoryWarehouseId)
+    [property: DataMember(Order = 1)] string InventoryWarehouseId)
     : PerCompanyFilter(DataAreaId)
 {
 }

@@ -16,6 +16,8 @@
 
 namespace Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters;
 
+using System.Runtime.Serialization;
+
 using Hexalith.Infrastructure.Dynamics365Finance.Models;
 
 /// <summary>
@@ -31,11 +33,12 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 /// <seealso cref="IFilter" />
 /// <seealso cref="IEquatable{PerCompanyFilter}" />
 /// <seealso cref="IEquatable{CustomerExternalCodeByAccountFilter}" />
+[DataContract]
 public record CustomerExternalCodeByAccountFilter
 (
     string DataAreaId,
-    string System,
-    string CustomerAccountNumber)
+    [property: DataMember(Order = 2)] string System,
+    [property: DataMember(Order = 3)] string CustomerAccountNumber)
     : PerCompanyFilter(DataAreaId)
 {
 }

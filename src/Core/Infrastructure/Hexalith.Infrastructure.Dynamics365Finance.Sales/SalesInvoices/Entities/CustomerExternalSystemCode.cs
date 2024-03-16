@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 02-08-2023
 // ***********************************************************************
-// <copyright file="SalesInvoiceExternalSystemCode.cs" company="Fiveforty SAS Paris France">
+// <copyright file="CustomerExternalSystemCode.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -15,6 +15,9 @@
 // ***********************************************************************
 
 namespace Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesInvoices.Entities;
+
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.DataContracts;
 
 using Hexalith.Infrastructure.Dynamics365Finance.Models;
 
@@ -29,13 +32,14 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 /// <seealso cref="IEquatable{ODataElement}" />
 /// <seealso cref="IODataElement" />
 /// <seealso cref="IEquatable{SalesInvoiceExternalCode}" />
+[DataContract]
 public record SalesInvoiceExternalSystemCode
 (
     string? Etag,
     string DataAreaId,
-    string? System,
-    string? SalesInvoiceAccountNumber,
-    string? ExternalCode)
+    [property: DataMember(Order = 3)] string? System,
+    [property: DataMember(Order = 4)] string? SalesInvoiceAccountNumber,
+    [property: DataMember(Order = 5)] string? ExternalCode)
 
 : ODataElement(Etag, DataAreaId), IODataElement
 {

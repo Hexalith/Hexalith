@@ -84,7 +84,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
             LogDynamicsOdataCallInformation(url.AbsoluteUri);
 
             HttpClient client = await GetClientAsync(cancellationToken).ConfigureAwait(false);
-            response = await client.GetAsync(url.AbsoluteUri, cancellationToken).ConfigureAwait(false);
+            response = await client.GetAsync(url, cancellationToken).ConfigureAwait(false);
             if (!response.IsSuccessStatusCode)
             {
                 throw new HttpRequestException(
@@ -156,7 +156,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
         {
             0 => throw new EntityNotFoundException<TEntity>(key),
             1 => result.First(),
-            _ => throw new DuplicateEntityFoundException<TEntity>(key),
+            _ => throw new DuplicateEntityFoundException<TEntity>(key, result),
         };
     }
 
@@ -168,7 +168,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
         {
             0 => throw new EntityNotFoundException<TEntity>(key),
             1 => result.First(),
-            _ => throw new DuplicateEntityFoundException<TEntity>(key),
+            _ => throw new DuplicateEntityFoundException<TEntity>(key, result),
         };
     }
 
@@ -197,7 +197,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
         try
         {
             HttpClient client = await GetClientAsync(cancellationToken).ConfigureAwait(false);
-            response = await client.GetAsync(url.AbsoluteUri, cancellationToken).ConfigureAwait(false);
+            response = await client.GetAsync(url, cancellationToken).ConfigureAwait(false);
             if (!response.IsSuccessStatusCode)
             {
                 throw new HttpRequestException(

@@ -77,8 +77,6 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     /// </summary>
     private readonly IDynamics365FinanceSecurityContext _securityContext;
 
-    private bool _httpClientInitialized;
-
     /// <summary>
     /// Initializes a new instance of the <see cref="Dynamics365FinanceClient{TEntity}" /> class.
     /// </summary>
@@ -326,30 +324,17 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     /// <exception cref="System.InvalidOperationException">The acquired token is null or empty.</exception>
     private async Task<HttpClient> GetClientAsync(CancellationToken cancellationToken)
     {
-        if (_httpClientInitialized)
+        if (_httpClient.DefaultRequestHeaders.Authorization == null || string.IsNullOrWhiteSpace(_httpClient.DefaultRequestHeaders.Authorization.Parameter))
         {
-            return _httpClient;
+            string token = await _securityContext
+                .AcquireTokenAsync(cancellationToken)
+                .ConfigureAwait(false);
+            _httpClient.DefaultRequestHeaders.Authorization =
+            new AuthenticationHeaderValue(
+               "Bearer",
+               token);
         }
 
-        string token = await _securityContext
-            .AcquireTokenAsync(cancellationToken)
-            .ConfigureAwait(false);
-
-        if (string.IsNullOrWhiteSpace(token))
-        {
-            throw new InvalidOperationException("The acquired token is null or empty.");
-        }
-
-        _httpClient.BaseAddress = _instance;
-        _httpClient.DefaultRequestHeaders.Add("OData-MaxVersion", "4.0");
-        _httpClient.DefaultRequestHeaders.Add("OData-Version", "4.0");
-        _httpClient.DefaultRequestHeaders.Add("Prefer", "odata.include-annotations = *");
-        _httpClient.DefaultRequestHeaders.Accept.Add(
-            new MediaTypeWithQualityHeaderValue("application/json"));
-        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
-            "Bearer",
-            token);
-        _httpClientInitialized = true;
         return _httpClient;
     }
 }
