@@ -169,8 +169,8 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
     [LoggerMessage(
                 EventId = 1,
             Level = LogLevel.Information,
-            Message = "Actor {ActorType} ({ActorId}) is processing commands. {LastCommandProcessed} commands processed on a total of {CommandCount}")]
-    public static partial void LogProcessingCommandsInformation(ILogger logger, string actorId, string actorType, long commandCount, long lastCommandProcessed);
+            Message = "Actor {ActorType} ({ActorId}) is processing command {CurrentCommandProcessed} on a total of {CommandCount}")]
+    public static partial void LogProcessingCommandsInformation(ILogger logger, string actorId, string actorType, long commandCount, long currentCommandProcessed);
 
     /// <inheritdoc/>
     public async Task ClearCommandsAsync()

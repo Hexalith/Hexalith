@@ -225,9 +225,9 @@ public abstract partial class AggregateActorBase
             return;
         }
 
-        LogProcessingCommandsInformation(Logger, Id.ToString(), Host.ActorTypeInfo.ActorTypeName, state.CommandCount, state.LastCommandProcessed);
-
         long commandNumber = state.LastCommandProcessed + 1;
+
+        LogProcessingCommandsInformation(Logger, Id.ToString(), Host.ActorTypeInfo.ActorTypeName, state.CommandCount, commandNumber);
 
         // Get the next command to process
         CommandState commandState = await CommandStore
