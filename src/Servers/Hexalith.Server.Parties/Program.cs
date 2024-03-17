@@ -4,7 +4,9 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
+using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.AspireService.Defaults;
+using Hexalith.Infrastructure.CosmosDb.Configurations;
 using Hexalith.Infrastructure.DaprRuntime.Parties.Helpers;
 using Hexalith.Infrastructure.WebApis.Helpers;
 using Hexalith.Infrastructure.WebApis.PartiesCommands.Helpers;
@@ -21,6 +23,7 @@ WebApplicationBuilder builder = HexalithWebApi.CreateApplication(
 builder.AddServiceDefaults();
 
 builder.Services.AddPartiesCommandsSubmission();
+builder.Services.ConfigureSettings<CosmosDbSettings>(builder.Configuration);
 
 WebApplication app = builder.Build();
 

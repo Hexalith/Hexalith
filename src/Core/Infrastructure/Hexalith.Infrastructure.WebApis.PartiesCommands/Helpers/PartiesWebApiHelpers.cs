@@ -24,6 +24,7 @@ using Hexalith.Application.Aggregates;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Parties.Helpers;
 using Hexalith.Domain.Aggregates;
+using Hexalith.Infrastructure.DaprRuntime.CosmosDatabases.Maintenances;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.WebApis.PartiesCommands.Controllers;
 
@@ -51,6 +52,7 @@ public static class PartiesWebApiHelpers
 
         services.TryAddSingleton<IAggregateFactory, AggregateFactory>();
         services.TryAddSingleton<IAggregateProvider, AggregateProvider<Customer>>();
+        services.TryAddTransient<IAggregateMaintenance<Customer>, DaprCosmosAggregateMaintenance<Customer>>();
         _ = services
          .AddControllers()
          .AddApplicationPart(typeof(PartiesCommandsController).Assembly)

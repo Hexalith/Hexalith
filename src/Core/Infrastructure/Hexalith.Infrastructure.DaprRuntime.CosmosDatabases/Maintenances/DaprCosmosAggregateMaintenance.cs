@@ -4,11 +4,12 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Infrastructure.DaprRuntime.CosmosDatabases.Queries;
+namespace Hexalith.Infrastructure.DaprRuntime.CosmosDatabases.Maintenances;
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Dapr.Actors.Client;
@@ -16,9 +17,11 @@ using Dapr.Client;
 
 using Hexalith.Application.Aggregates;
 using Hexalith.Domain.Aggregates;
+using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.CosmosDb.Configurations;
 using Hexalith.Infrastructure.CosmosDb.Providers;
 using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
+using Hexalith.Infrastructure.DaprRuntime.CosmosDatabases.Models;
 
 using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Options;
@@ -31,11 +34,14 @@ using Microsoft.Extensions.Options;
 /// <seealso cref="CosmosDbProvider" />
 /// <seealso cref="IAggregateMaintenance{TAggregate}" />
 public class DaprCosmosAggregateMaintenance<TAggregate> :
-    CosmosDbProvider,
-    IAggregateMaintenance<TAggregate>
+    IAggregateMaintenance<TAggregate>, IDisposable
     where TAggregate : IAggregate, new()
 {
+    private readonly string _connectionString;
     private readonly DaprClient _daprClient;
+    private readonly string _databaseName;
+    private string? _containerName;
+    private CosmosDbProvider? _cosmosDbProvider;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="DaprCosmosAggregateMaintenance{TAggregate}"/> class.
@@ -43,18 +49,31 @@ public class DaprCosmosAggregateMaintenance<TAggregate> :
     /// <param name="settings">The Cosmos DB settings.</param>
     /// <param name="daprClient">The Dapr client.</param>
     public DaprCosmosAggregateMaintenance(IOptions<CosmosDbSettings> settings, DaprClient daprClient)
-        : base(settings)
     {
         ArgumentNullException.ThrowIfNull(daprClient);
+        ArgumentNullException.ThrowIfNull(settings);
+        SettingsException<CosmosDbSettings>.ThrowIfNullOrWhiteSpace(settings.Value.ConnectionString);
+        SettingsException<CosmosDbSettings>.ThrowIfNullOrWhiteSpace(settings.Value.DatabaseName);
+        _connectionString = settings.Value.ConnectionString;
+        _databaseName = settings.Value.DatabaseName;
+        _containerName = settings.Value.ContainerName;
         _daprClient = daprClient;
+    }
+
+    /// <summary>
+    /// Finalizes an instance of the <see cref="DaprCosmosAggregateMaintenance{TAggregate}"/> class.
+    /// </summary>
+    ~DaprCosmosAggregateMaintenance()
+    {
+        Dispose(false);
     }
 
     /// <inheritdoc/>
     public async Task ClearAllCommandsAsync(CancellationToken cancellationToken)
     {
+        CosmosDbProvider cosmos = await GetCosmosProviderAsync(cancellationToken).ConfigureAwait(false);
         (string? applicationId, string actorType) = await GetActorNameAsync(cancellationToken).ConfigureAwait(false);
-        List<string> ids = GetAllAggregateIds(applicationId, actorType);
-        foreach (string id in ids)
+        await foreach (string id in GetAllAggregateIdsAsync(cosmos, applicationId, actorType, cancellationToken))
         {
             await ClearCommandsAsync(applicationId, actorType, id, cancellationToken).ConfigureAwait(false);
         }
@@ -74,19 +93,26 @@ public class DaprCosmosAggregateMaintenance<TAggregate> :
     public Task ClearStateAsync(string aggregateId, CancellationToken cancellationToken) => throw new NotImplementedException();
 
     /// <inheritdoc/>
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    /// <inheritdoc/>
     public async Task<IEnumerable<string>> GetAllActorIdsAsync(CancellationToken cancellationToken)
     {
+        CosmosDbProvider cosmos = await GetCosmosProviderAsync(cancellationToken).ConfigureAwait(false);
         (string appId, string actorType) = await GetActorNameAsync(cancellationToken).ConfigureAwait(false);
-
-        return GetAllAggregateIds(appId, actorType);
+        return GetAllAggregateIdsAsync(cosmos, appId, actorType, cancellationToken).ToBlockingEnumerable(cancellationToken);
     }
 
     /// <inheritdoc/>
     public async Task SendAllSnapshotsAsync(CancellationToken cancellationToken)
     {
+        CosmosDbProvider cosmos = await GetCosmosProviderAsync(cancellationToken).ConfigureAwait(false);
         (string appId, string actorType) = await GetActorNameAsync(cancellationToken).ConfigureAwait(false);
-        IEnumerable<string> ids = GetAllAggregateIds(appId, actorType);
-        foreach (string id in ids)
+        await foreach (string id in GetAllAggregateIdsAsync(cosmos, appId, actorType, cancellationToken))
         {
             cancellationToken.ThrowIfCancellationRequested();
             IAggregateActor actor = ActorProxy.Create<IAggregateActor>(new Dapr.Actors.ActorId(id), actorType);
@@ -103,6 +129,25 @@ public class DaprCosmosAggregateMaintenance<TAggregate> :
         await actor.SendSnapshotEventAsync().ConfigureAwait(false);
     }
 
+    /// <inheritdoc/>
+    Task<IEnumerable<string>> IAggregateMaintenance<TAggregate>.GetAllActorIdsAsync(CancellationToken cancellationToken) => throw new NotImplementedException();
+
+    /// <summary>
+    /// Releases unmanaged and - optionally - managed resources.
+    /// </summary>
+    /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+    protected virtual void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            if (_cosmosDbProvider != null)
+            {
+                _cosmosDbProvider.Dispose();
+                _cosmosDbProvider = null;
+            }
+        }
+    }
+
     /// <summary>
     /// Get actor id from the state store item id.
     /// State id format:. <appId>||<actorType>||<actorId>||<stateName>
@@ -111,16 +156,63 @@ public class DaprCosmosAggregateMaintenance<TAggregate> :
     /// <returns>Actor id</returns>
     private static string GetActorId(string stateId) => stateId.Split("||").Skip(2).FirstOrDefault() ?? string.Empty;
 
+    private static async IAsyncEnumerable<string> GetAllAggregateIdsAsync(
+        CosmosDbProvider cosmos,
+        string applicationId,
+        string actorType,
+        CancellationToken cancellationToken)
+    {
+        QueryDefinition queryDefinition = new QueryDefinition($"Select c.id From c Where StartWith(c.id,@actorType) and EndsWith(c.id, @state)")
+            .WithParameter("@actorType", $"{applicationId}||{actorType}||")
+            .WithParameter("@state", $"||State");
+        FeedIterator<string> feedIterator = cosmos
+            .Container
+            .GetItemQueryIterator<string>(queryDefinition);
+        while (feedIterator.HasMoreResults)
+        {
+            FeedResponse<string> results = await feedIterator.ReadNextAsync(cancellationToken).ConfigureAwait(false);
+            foreach (string id in results)
+            {
+                yield return GetActorId(id);
+            }
+        }
+    }
+
+    private static async IAsyncEnumerable<string> GetCommandStreamStateIdsAsync(
+        CosmosDbProvider cosmos,
+        string applicationId,
+        string actorType,
+        string aggregateId,
+        CancellationToken cancellationToken)
+    {
+        QueryDefinition queryDefinition = new QueryDefinition($"Select c.id From c Where StartWith(c.id,@aggregateId)")
+            .WithParameter("@aggregateId", $"{applicationId}||{actorType}||{aggregateId}||CommandStream");
+        FeedIterator<string> feedIterator = cosmos
+            .Container
+            .GetItemQueryIterator<string>(queryDefinition);
+        while (feedIterator.HasMoreResults)
+        {
+            FeedResponse<string> results = await feedIterator.ReadNextAsync(cancellationToken).ConfigureAwait(false);
+            foreach (string id in results)
+            {
+                yield return id;
+            }
+        }
+    }
+
     private async Task ClearCommandsAsync(string applicationId, string actorType, string aggregateId, CancellationToken cancellationToken)
     {
+        CosmosDbProvider cosmos = await GetCosmosProviderAsync(cancellationToken).ConfigureAwait(false);
         IAggregateActor actor = ActorProxy.Create<IAggregateActor>(new Dapr.Actors.ActorId(aggregateId), actorType);
         cancellationToken.ThrowIfCancellationRequested();
         await actor.ClearCommandsAsync().ConfigureAwait(false);
-        IEnumerable<string> ids = GetCommandStreamStateIds(applicationId, actorType, aggregateId);
-        foreach (string id in ids)
+        await foreach (string id in GetCommandStreamStateIdsAsync(cosmos, applicationId, actorType, aggregateId, cancellationToken))
         {
             cancellationToken.ThrowIfCancellationRequested();
-            _ = await Container.DeleteItemAsync<DaprStateItem>(id, new PartitionKey(id), cancellationToken: cancellationToken).ConfigureAwait(false);
+            _ = await cosmos
+                .Container
+                .DeleteItemAsync<DaprStateItem>(id, new PartitionKey(id), cancellationToken: cancellationToken)
+                .ConfigureAwait(false);
         }
     }
 
@@ -135,24 +227,18 @@ public class DaprCosmosAggregateMaintenance<TAggregate> :
             : (appId, actorType);
     }
 
-    private List<string> GetAllAggregateIds(string applicationId, string actorType)
+    private async Task<CosmosDbProvider> GetCosmosProviderAsync(CancellationToken cancellationToken)
     {
-        IOrderedQueryable<DaprStateItem> feedIterator = Container.GetItemLinqQueryable<DaprStateItem>();
-        List<string> ids = [.. feedIterator
-            .Where(x => x.Id.StartsWith($"{applicationId}||{actorType}") && x.Id.EndsWith("||State"))
-            .Select(p => p.Id)];
-        return [.. ids
-            .Select(GetActorId)
-            .Where(p => !string.IsNullOrWhiteSpace(p))
-            .Distinct()
-            .OrderBy(p => p)];
-    }
+        if (_cosmosDbProvider is not null)
+        {
+            return _cosmosDbProvider;
+        }
 
-    private List<string> GetCommandStreamStateIds(string applicationId, string actorType, string aggredateId)
-    {
-        IOrderedQueryable<DaprStateItem> feedIterator = Container.GetItemLinqQueryable<DaprStateItem>();
-        return [.. feedIterator
-            .Where(x => x.Id.StartsWith($"{applicationId}||{actorType}||{aggredateId}||CommandStream"))
-            .Select(p => p.Id)];
+        if (string.IsNullOrWhiteSpace(_containerName))
+        {
+            _containerName = (await _daprClient.GetMetadataAsync(cancellationToken).ConfigureAwait(false)).Id;
+        }
+
+        return new CosmosDbProvider(_connectionString, _databaseName, _containerName);
     }
 }

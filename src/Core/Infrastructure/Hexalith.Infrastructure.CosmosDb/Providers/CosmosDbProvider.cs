@@ -65,22 +65,38 @@ public class CosmosDbProvider : IDisposable
     }
 
     /// <summary>
+    /// Initializes a new instance of the <see cref="CosmosDbProvider"/> class.
+    /// </summary>
+    /// <param name="connectionString">The connection string.</param>
+    /// <param name="databaseName">The database name.</param>
+    /// <param name="containerName">The container name.</param>
+    public CosmosDbProvider(string connectionString, string databaseName, string containerName)
+    {
+        ArgumentNullException.ThrowIfNullOrWhiteSpace(connectionString);
+        ArgumentNullException.ThrowIfNullOrWhiteSpace(databaseName);
+        ArgumentNullException.ThrowIfNullOrWhiteSpace(containerName);
+        _connectionString = connectionString;
+        _databaseName = databaseName;
+        _containerName = containerName;
+    }
+
+    /// <summary>
     /// Gets the client.
     /// </summary>
     /// <value>The client.</value>
-    protected CosmosClient Client => _cosmosClient ??= new CosmosClient(_connectionString);
+    public CosmosClient Client => _cosmosClient ??= new CosmosClient(_connectionString);
 
     /// <summary>
     /// Gets the container.
     /// </summary>
     /// <value>The container.</value>
-    protected Container Container => _container ??= Database.GetContainer(_containerName);
+    public Container Container => _container ??= Database.GetContainer(_containerName);
 
     /// <summary>
     /// Gets the database.
     /// </summary>
     /// <value>The database.</value>
-    protected Database Database => _database ??= Client.GetDatabase(_databaseName);
+    public Database Database => _database ??= Client.GetDatabase(_databaseName);
 
     /// <inheritdoc/>
     public void Dispose()

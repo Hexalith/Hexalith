@@ -4,7 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Infrastructure.DaprRuntime.CosmosDatabases.Queries;
+namespace Hexalith.Infrastructure.DaprRuntime.CosmosDatabases.Models;
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;

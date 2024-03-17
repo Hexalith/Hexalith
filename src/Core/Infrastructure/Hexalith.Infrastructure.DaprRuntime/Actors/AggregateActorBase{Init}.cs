@@ -253,11 +253,16 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
     {
         string aggregateName = Host.ActorTypeInfo.ActorTypeName.Split(nameof(Aggregate)).First();
         IAggregate aggregate = await GetAggregateAsync(aggregateName, cancellationToken).ConfigureAwait(false);
+        if (!aggregate.IsInitialized())
+        {
+            return null;
+        }
+
         SnapshotEvent e = new(aggregate);
         return new EventState(
             _dateTimeService.UtcNow,
             e,
-            new BaseMetadata(
+            new Metadata(
                 new MessageMetadata(
                     UniqueIdHelper.GenerateUniqueStringId(),
                     _dateTimeService.UtcNow,
