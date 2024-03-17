@@ -16,6 +16,7 @@
 
 namespace Hexalith.Infrastructure.WebApis.PartiesEvents.Projections;
 
+using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Infrastructure.DaprRuntime.Projections;
 
@@ -32,7 +33,7 @@ public class IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHa
     /// Initializes a new instance of the <see cref="IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler" /> class.
     /// </summary>
     /// <param name="stateStoreProvider">The state store provider.</param>
-    public IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler(IActorProjectionFactory<CustomerRegistered> factory, ILogger<IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler> logger)
+    public IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler(IActorProjectionFactory<Customer> factory, ILogger<IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler> logger)
         : base(factory, logger)
     {
     }

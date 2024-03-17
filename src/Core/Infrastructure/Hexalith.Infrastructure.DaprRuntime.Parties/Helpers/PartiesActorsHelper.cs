@@ -21,7 +21,6 @@ using System.Diagnostics.CodeAnalysis;
 using Dapr.Actors.Runtime;
 
 using Hexalith.Domain.Aggregates;
-using Hexalith.Domain.Events;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Sales.Actors;
 
@@ -53,7 +52,7 @@ public static class PartiesActorsHelper
     public static ActorRegistrationCollection AddPartiesProjections([NotNull] this ActorRegistrationCollection actors, string applicationName)
     {
         ArgumentNullException.ThrowIfNull(actors);
-        actors.RegisterProjectionActor<CustomerRegistered>(applicationName);
+        actors.RegisterProjectionActor<Customer>(applicationName);
         return actors;
     }
 }

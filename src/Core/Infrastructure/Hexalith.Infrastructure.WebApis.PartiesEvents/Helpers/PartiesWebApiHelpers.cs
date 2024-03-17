@@ -17,6 +17,7 @@
 namespace Hexalith.Infrastructure.WebApis.PartiesEvents.Helpers;
 
 using Hexalith.Application.Projections;
+using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers;
@@ -45,7 +46,7 @@ public static class PartiesWebApiHelpers
         services.TryAddScoped<IProjectionUpdateHandler<CustomerRegistered>, CustomerRegisteredProjectionUpdateHandler>();
         services.TryAddScoped<IProjectionUpdateHandler<IntercompanyDropshipDeliveryForCustomerDeselected>, IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler>();
         services.TryAddScoped<IProjectionUpdateHandler<IntercompanyDropshipDeliveryForCustomerSelected>, IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler>();
-        _ = services.AddActorProjectionFactory<CustomerRegistered>(appName);
+        _ = services.AddActorProjectionFactory<Customer>(appName);
         _ = services
          .AddControllers()
          .AddApplicationPart(typeof(CustomerIntegrationEventsController).Assembly)

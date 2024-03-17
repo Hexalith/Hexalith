@@ -25,13 +25,16 @@ using Dapr.Actors.Runtime;
 using Hexalith.Application.Aggregates;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
+using Hexalith.Application.Metadatas;
 using Hexalith.Application.Notifications;
 using Hexalith.Application.Requests;
 using Hexalith.Application.States;
 using Hexalith.Application.StreamStores;
 using Hexalith.Application.Tasks;
 using Hexalith.Domain.Aggregates;
+using Hexalith.Domain.Events;
 using Hexalith.Extensions.Common;
+using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Abstractions;
 using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
@@ -170,6 +173,18 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
     public static partial void LogProcessingCommandsInformation(ILogger logger, string actorId, string actorType, long commandCount, long lastCommandProcessed);
 
     /// <inheritdoc/>
+    public async Task ClearCommandsAsync()
+    {
+        AggregateActorState state = await GetAggregateStateAsync(CancellationToken.None).ConfigureAwait(false);
+        state.CommandCount = 0;
+        state.LastCommandProcessed = 0;
+        await SaveAggregateStateAsync(CancellationToken.None).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task<EventState?> GetSnapshotEventAsync() => await GetSnapshotEventAsync(CancellationToken.None).ConfigureAwait(false);
+
+    /// <inheritdoc/>
     public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period)
     {
         if (reminderName == ActorConstants.ProcessReminderName)
@@ -180,6 +195,17 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
         if (reminderName == ActorConstants.PublishReminderName)
         {
             await PublishCallbackAsync().ConfigureAwait(false);
+        }
+    }
+
+    /// <inheritdoc/>
+    public async Task SendSnapshotEventAsync()
+    {
+        EventState? eventState = await GetSnapshotEventAsync(CancellationToken.None)
+            .ConfigureAwait(false);
+        if (eventState is not null)
+        {
+            await _eventBus.PublishAsync(eventState, CancellationToken.None).ConfigureAwait(false);
         }
     }
 
@@ -221,6 +247,26 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
         }
 
         return _state;
+    }
+
+    private async Task<EventState?> GetSnapshotEventAsync(CancellationToken cancellationToken)
+    {
+        string aggregateName = Host.ActorTypeInfo.ActorTypeName.Split(nameof(Aggregate)).First();
+        IAggregate aggregate = await GetAggregateAsync(aggregateName, cancellationToken).ConfigureAwait(false);
+        SnapshotEvent e = new(aggregate);
+        return new EventState(
+            _dateTimeService.UtcNow,
+            e,
+            new BaseMetadata(
+                new MessageMetadata(
+                    UniqueIdHelper.GenerateUniqueStringId(),
+                    _dateTimeService.UtcNow,
+                    e),
+                new ContextMetadata(
+                    UniqueIdHelper.GenerateUniqueStringId(),
+                    "system",
+                    _dateTimeService.UtcNow),
+                null));
     }
 
     private async Task SaveAggregateStateAsync(CancellationToken cancellationToken)

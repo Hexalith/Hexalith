@@ -16,6 +16,7 @@
 
 namespace Hexalith.Infrastructure.WebApis.PartiesEvents.Projections;
 
+using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Infrastructure.DaprRuntime.Projections;
 
@@ -33,7 +34,7 @@ public class CustomerRegisteredProjectionUpdateHandler : CustomerProjectionUpdat
     /// </summary>
     /// <param name="factory">The factory.</param>
     /// <param name="logger">The logger.</param>
-    public CustomerRegisteredProjectionUpdateHandler(IActorProjectionFactory<CustomerRegistered> factory, ILogger<CustomerRegisteredProjectionUpdateHandler> logger)
+    public CustomerRegisteredProjectionUpdateHandler(IActorProjectionFactory<Customer> factory, ILogger<CustomerRegisteredProjectionUpdateHandler> logger)
         : base(factory, logger)
     {
     }

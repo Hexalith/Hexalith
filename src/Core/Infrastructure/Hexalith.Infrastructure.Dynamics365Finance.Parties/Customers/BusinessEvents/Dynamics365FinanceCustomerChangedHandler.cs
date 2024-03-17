@@ -23,7 +23,6 @@ using Hexalith.Application.Organizations.Configurations;
 using Hexalith.Application.Parties.Commands;
 using Hexalith.Application.Parties.Helpers;
 using Hexalith.Domain.Aggregates;
-using Hexalith.Domain.Events;
 using Hexalith.Domain.ValueObjets;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Configuration;
@@ -46,7 +45,7 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
     /// <summary>
     /// The customer service.
     /// </summary>
-    private readonly IActorProjectionFactory<CustomerRegistered> _customerService;
+    private readonly IActorProjectionFactory<Customer> _customerService;
 
     /// <summary>
     /// The date time service.
@@ -79,19 +78,19 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
     private readonly ILogger<Dynamics365FinanceCustomerChangedHandler> _logger;
 
     /// <summary>
-    /// The settings.
-    /// </summary>
-    private readonly IOptions<OrganizationSettings> _settings;
-
-    /// <summary>
     /// The origin identifier.
     /// </summary>
-    private string _originId;
+    private readonly string _originId;
 
     /// <summary>
     /// The partition identifier.
     /// </summary>
-    private string _partitionId;
+    private readonly string _partitionId;
+
+    /// <summary>
+    /// The settings.
+    /// </summary>
+    private readonly IOptions<OrganizationSettings> _settings;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Dynamics365FinanceCustomerChangedHandler" /> class.
@@ -106,7 +105,7 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
     /// <param name="logger">The logger.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
     public Dynamics365FinanceCustomerChangedHandler(
-        IActorProjectionFactory<CustomerRegistered> customerService,
+        IActorProjectionFactory<Customer> customerService,
         IDynamics365FinanceClient<CustomerV3> erpCustomerV3Service,
         IDynamics365FinanceClient<CustomerBase> erpCustomerBaseService,
         IDynamics365FinanceClient<CustomerExternalSystemCode> erpExternalCodeService,
@@ -139,23 +138,23 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
     }
 
     /// <inheritdoc/>
-    public override async Task<IEnumerable<BaseCommand>> ApplyAsync(Dynamics365FinanceCustomerChanged @event, CancellationToken cancellationToken)
+    public override async Task<IEnumerable<BaseCommand>> ApplyAsync(Dynamics365FinanceCustomerChanged baseEvent, CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(@event);
-        ArgumentNullException.ThrowIfNull(@event.Contact);
-        ArgumentNullException.ThrowIfNull(@event.Contact.PostalAddress);
-        ArgumentException.ThrowIfNullOrWhiteSpace(@event.Account);
-        ArgumentException.ThrowIfNullOrWhiteSpace(@event.Name);
-        ArgumentException.ThrowIfNullOrWhiteSpace(@event.BusinessEventLegalEntity);
+        ArgumentNullException.ThrowIfNull(baseEvent);
+        ArgumentNullException.ThrowIfNull(baseEvent.Contact);
+        ArgumentNullException.ThrowIfNull(baseEvent.Contact.PostalAddress);
+        ArgumentException.ThrowIfNullOrWhiteSpace(baseEvent.Account);
+        ArgumentException.ThrowIfNullOrWhiteSpace(baseEvent.Name);
+        ArgumentException.ThrowIfNullOrWhiteSpace(baseEvent.BusinessEventLegalEntity);
 
-        string? aggregateId = @event
+        string? aggregateId = baseEvent
             .ExternalReferences?
             .Where(p => p.SystemId == nameof(Hexalith))
             .FirstOrDefault()?
             .ExternalId;
         CustomerBase customerBase = await _erpCustomerBaseService
             .GetSingleAsync(
-                new CustomerAccountKey(@event.BusinessEventLegalEntity, @event.Account),
+                new CustomerAccountKey(baseEvent.BusinessEventLegalEntity, baseEvent.Account),
                 cancellationToken).ConfigureAwait(false);
         bool externalReferenceFound = true;
         if (string.IsNullOrWhiteSpace(aggregateId))
@@ -165,17 +164,17 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
                 .NameAlias
                 .StartsWith(Dynamics365FinancePartiesConstants.CreatingCustomerStamp, StringComparison.OrdinalIgnoreCase))
             {
-                // Ignore events comming from the Hexalith customer creation process.
-                LogMessageFromHexalithCustomerCreation(@event.TypeName, @event.BusinessEventLegalEntity, @event.Account, customerBase.NameAlias);
+                // Ignore events coming from the Hexalith customer creation process.
+                LogMessageFromHexalithCustomerCreation(baseEvent.TypeName, baseEvent.BusinessEventLegalEntity, baseEvent.Account, customerBase.NameAlias);
                 return [];
             }
 
             IEnumerable<CustomerExternalSystemCode> ids = await _erpExternalCodeService
                 .GetAsync(
                     new CustomerExternalCodeByAccountFilter(
-                        @event.BusinessEventLegalEntity,
+                        baseEvent.BusinessEventLegalEntity,
                         nameof(Hexalith),
-                        @event.Account),
+                        baseEvent.Account),
                     cancellationToken)
                 .ConfigureAwait(false);
 
@@ -187,9 +186,9 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
                     .GetAggregateIdAsync(
                         Customer.GetAggregateName(),
                         _partitionId,
-                        @event.BusinessEventLegalEntity.ToUpperInvariant(),
+                        baseEvent.BusinessEventLegalEntity.ToUpperInvariant(),
                         _originId,
-                        @event.Account,
+                        baseEvent.Account,
                         cancellationToken)
                     .ConfigureAwait(false);
             }
@@ -198,19 +197,19 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
             {
                 aggregateId = Customer.GetAggregateId(
                     _partitionId,
-                    @event.BusinessEventLegalEntity.ToUpperInvariant(),
+                    baseEvent.BusinessEventLegalEntity.ToUpperInvariant(),
                     _originId,
-                    @event.Account);
+                    baseEvent.Account);
             }
         }
 
         CustomerV3 customerV3 = await _erpCustomerV3Service
             .GetSingleAsync(
-                new CustomerAccountKey(@event.BusinessEventLegalEntity, @event.Account),
+                new CustomerAccountKey(baseEvent.BusinessEventLegalEntity, baseEvent.Account),
                 cancellationToken).ConfigureAwait(false);
 
-        CustomerRegistered? lastState = await _customerService
-            .GetStateAsync(@event.AggregateId, cancellationToken)
+        Customer? lastState = await _customerService
+            .GetStateAsync(baseEvent.AggregateId, cancellationToken)
             .ConfigureAwait(false);
 
         string partitionId;
@@ -241,9 +240,9 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
             _ = await _erpExternalCodeService.PostAsync(
                     new CustomerExternalSystemCode(
                         null,
-                        @event.BusinessEventLegalEntity,
+                        baseEvent.BusinessEventLegalEntity,
                         nameof(Hexalith),
-                        @event.Account,
+                        baseEvent.Account,
                         aggregateId),
                     cancellationToken)
                 .ConfigureAwait(false);
@@ -255,23 +254,39 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
                 originId,
                 customerId,
                 lastState,
-                @event,
+                baseEvent,
                 customerBase,
-                customerV3,
-                cancellationToken);
+                customerV3);
 
-        string? hasChanges = (lastState == null) ? $"No current state found for '{aggregateId}', applying changes." : changeCustomer.HasChanges(lastState);
-        if (hasChanges == null)
-        {
-            return [];
-        }
-
-        LogEventHasChangesInformation(@event.BusinessEventLegalEntity, @event.Account, hasChanges);
+        string? hasChanges = (lastState == null)
+            ? $"No current state found for '{aggregateId}', applying changes."
+            : changeCustomer.HasChanges(lastState.ToCustomerRegistered());
 
         List<BaseCommand> commands = [];
-        if (@event.ExternalReferences != null)
+
+        if (hasChanges != null)
         {
-            foreach (ExternalReference reference in @event.ExternalReferences)
+            LogEventHasChangesInformation(baseEvent.BusinessEventLegalEntity, baseEvent.Account, hasChanges);
+            commands.Add(changeCustomer);
+        }
+
+        bool directDelivery = baseEvent.InterCompanyDirectDelivery == "Yes";
+        if (directDelivery != lastState?.IntercompanyDropship)
+        {
+            LogEventHasChangesInformation(baseEvent.BusinessEventLegalEntity, baseEvent.Account, $"DirectDelivery = {directDelivery}");
+            if (directDelivery)
+            {
+                commands.Add(new SelectIntercompanyDropshipDeliveryForCustomer(partitionId, companyId, originId, customerId));
+            }
+            else
+            {
+                commands.Add(new DeselectIntercompanyDropshipDeliveryForCustomer(partitionId, companyId, originId, customerId));
+            }
+        }
+
+        if (baseEvent.ExternalReferences != null)
+        {
+            foreach (ExternalReference reference in baseEvent.ExternalReferences)
             {
                 AddExternalSystemReference mapExternalSystemReference = new(
                         partitionId,
@@ -289,22 +304,47 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
                 companyId,
                 _originId,
                 changeCustomer.AggregateName,
-                @event.Account,
+                baseEvent.Account,
                 changeCustomer.AggregateId));
 
-        commands.Add(changeCustomer);
-
-        bool directDelivery = @event.InterCompanyDirectDelivery == "Yes";
-        if (directDelivery)
-        {
-            commands.Add(new SelectIntercompanyDropshipDeliveryForCustomer(partitionId, companyId, originId, customerId));
-        }
-        else
-        {
-            commands.Add(new DeselectIntercompanyDropshipDeliveryForCustomer(partitionId, companyId, originId, customerId));
-        }
-
         return commands;
+    }
+
+    /// <summary>
+    /// Gets the postal address.
+    /// </summary>
+    /// <param name="previousAddress">The previous address.</param>
+    /// <param name="newAddress">The new address.</param>
+    /// <returns>Hexalith.Domain.ValueObjets.PostalAddress?.</returns>
+    private static PostalAddress? GetPostalAddress(PostalAddress? previousAddress, PostalAddress? newAddress)
+    {
+        if (previousAddress == null)
+        {
+            return (newAddress == null) ? null : new PostalAddress(newAddress);
+        }
+
+        if (newAddress == null)
+        {
+            return previousAddress;
+        }
+
+        PostalAddress address = new(newAddress)
+        {
+            CountyId = newAddress.CountyId ?? previousAddress.CountyId,
+            StateId = newAddress.StateId ?? previousAddress.StateId,
+            CountryId = newAddress.CountryId ?? previousAddress.CountryId,
+            City = newAddress.City ?? previousAddress.City,
+            Street = newAddress.Street ?? previousAddress.Street,
+            ZipCode = newAddress.ZipCode ?? previousAddress.ZipCode,
+            StreetNumber = newAddress.StreetNumber ?? previousAddress.StreetNumber,
+            CountryName = newAddress.CountryName ?? previousAddress.CountryName,
+            StateName = newAddress.StateName ?? previousAddress.StateName,
+            Name = newAddress.Name ?? previousAddress.Name,
+            CountryIso2 = newAddress.CountryIso2 ?? previousAddress.CountryIso2,
+            Description = newAddress.Description ?? previousAddress.Description,
+            PostBox = newAddress.PostBox ?? previousAddress.PostBox,
+        };
+        return address;
     }
 
     /// <summary>
@@ -325,11 +365,10 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
         string companyId,
         string originId,
         string customerId,
-        CustomerRegistered? lastState,
+        Customer? lastState,
         Dynamics365FinanceCustomerChanged @event,
         CustomerBase customerBase,
-        CustomerV3 customerV3,
-        CancellationToken cancellationToken)
+        CustomerV3 customerV3)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(@event.BusinessEventLegalEntity);
         ArgumentException.ThrowIfNullOrWhiteSpace(@event.Account);
@@ -359,43 +398,6 @@ public partial class Dynamics365FinanceCustomerChangedHandler : IntegrationEvent
                 lastState?.Contact?.Mobile,
                 customerBase.PersonPersonalTitle,
                 birthDate);
-    }
-
-    /// <summary>
-    /// Gets the postal address.
-    /// </summary>
-    /// <param name="previousAddress">The previous address.</param>
-    /// <param name="newAddress">The new address.</param>
-    /// <returns>Hexalith.Domain.ValueObjets.PostalAddress?.</returns>
-    private PostalAddress? GetPostalAddress(PostalAddress? previousAddress, PostalAddress? newAddress)
-    {
-        if (previousAddress == null)
-        {
-            return (newAddress == null) ? null : new PostalAddress(newAddress);
-        }
-
-        if (newAddress == null)
-        {
-            return previousAddress;
-        }
-
-        PostalAddress address = new(newAddress)
-        {
-            CountyId = newAddress.CountyId ?? previousAddress.CountyId,
-            StateId = newAddress.StateId ?? previousAddress.StateId,
-            CountryId = newAddress.CountryId ?? previousAddress.CountryId,
-            City = newAddress.City ?? previousAddress.City,
-            Street = newAddress.Street ?? previousAddress.Street,
-            ZipCode = newAddress.ZipCode ?? previousAddress.ZipCode,
-            StreetNumber = newAddress.StreetNumber ?? previousAddress.StreetNumber,
-            CountryName = newAddress.CountryName ?? previousAddress.CountryName,
-            StateName = newAddress.StateName ?? previousAddress.StateName,
-            Name = newAddress.Name ?? previousAddress.Name,
-            CountryIso2 = newAddress.CountryIso2 ?? previousAddress.CountryIso2,
-            Description = newAddress.Description ?? previousAddress.Description,
-            PostBox = newAddress.PostBox ?? previousAddress.PostBox,
-        };
-        return address;
     }
 
     /// <summary>

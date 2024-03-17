@@ -17,6 +17,7 @@
 namespace Hexalith.Infrastructure.WebApis.PartiesEvents.Projections;
 
 using Hexalith.Application.Events;
+using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Infrastructure.DaprRuntime.Projections;
 
@@ -27,15 +28,12 @@ using Microsoft.Extensions.Logging;
 /// Implements the <see cref="IntegrationEventHandlerBase{CustomerInformationChanged}" />.
 /// </summary>
 /// <seealso cref="IntegrationEventHandlerBase{CustomerInformationChanged}" />
-public class CustomerInformationChangedProjectionUpdateHandler : CustomerProjectionUpdateHandler<CustomerInformationChanged>
+/// <remarks>
+/// Initializes a new instance of the <see cref="CustomerInformationChangedProjectionUpdateHandler"/> class.
+/// </remarks>
+/// <param name="factory">The factory.</param>
+/// <param name="logger">The logger.</param>
+public class CustomerInformationChangedProjectionUpdateHandler(IActorProjectionFactory<Customer> factory, ILogger<CustomerInformationChangedProjectionUpdateHandler> logger)
+    : CustomerProjectionUpdateHandler<CustomerInformationChanged>(factory, logger)
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="CustomerInformationChangedProjectionUpdateHandler"/> class.
-    /// </summary>
-    /// <param name="factory">The factory.</param>
-    /// <param name="logger">The logger.</param>
-    public CustomerInformationChangedProjectionUpdateHandler(IActorProjectionFactory<CustomerRegistered> factory, ILogger<CustomerInformationChangedProjectionUpdateHandler> logger)
-        : base(factory, logger)
-    {
-    }
 }

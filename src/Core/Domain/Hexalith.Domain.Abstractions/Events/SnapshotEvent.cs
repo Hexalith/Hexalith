@@ -7,6 +7,7 @@
 namespace Hexalith.Domain.Events;
 
 using System.Runtime.Serialization;
+using System.Text.Json;
 
 using Hexalith.Domain.Aggregates;
 using Hexalith.Extensions;
@@ -15,34 +16,66 @@ using Hexalith.Extensions;
 /// Class SnapshotEvent.
 /// Implements the <see cref="Hexalith.Domain.Events.BaseEvent" />.
 /// </summary>
-/// <typeparam name="TAggregate">The type of the t aggregate.</typeparam>
 /// <seealso cref="Hexalith.Domain.Events.BaseEvent" />
 [DataContract]
-public abstract class SnapshotEvent<TAggregate> : BaseEvent
-    where TAggregate : Aggregate, new()
+public class SnapshotEvent : BaseEvent
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="SnapshotEvent{TAggregate}" /> class.
+    /// Initializes a new instance of the <see cref="SnapshotEvent" /> class.
     /// </summary>
-    /// <param name="aggregate">The aggregate.</param>
-    protected SnapshotEvent(TAggregate aggregate) => Aggregate = aggregate;
+    /// <param name="sourceAggregateName">Name of the source aggregate.</param>
+    /// <param name="sourceAggregateId">The source aggregate identifier.</param>
+    /// <param name="snapshot">The snapshot.</param>
+    public SnapshotEvent(string sourceAggregateName, string sourceAggregateId, string snapshot)
+    {
+        SourceAggregateName = sourceAggregateName;
+        SourceAggregateId = sourceAggregateId;
+        Snapshot = snapshot;
+    }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="SnapshotEvent{TAggregate}" /> class.
+    /// Initializes a new instance of the <see cref="SnapshotEvent" /> class.
+    /// </summary>
+    /// <param name="aggregate">The aggregate.</param>
+    public SnapshotEvent(IAggregate aggregate)
+        : this(
+              (aggregate ?? throw new ArgumentNullException(nameof(aggregate))).AggregateName,
+              aggregate.AggregateId,
+              JsonSerializer.Serialize(aggregate))
+    {
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="SnapshotEvent" /> class.
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    protected SnapshotEvent() => Aggregate = new();
+    protected SnapshotEvent() => SourceAggregateId = SourceAggregateName = Snapshot = string.Empty;
 
     /// <summary>
     /// Gets or sets the aggregate.
     /// </summary>
     /// <value>The aggregate.</value>
+    [DataMember(Order = 12)]
+    public string Snapshot { get; set; }
+
+    /// <summary>
+    /// Gets or sets the source aggregate identifier.
+    /// </summary>
+    /// <value>The source aggregate identifier.</value>
+    [DataMember(Order = 11)]
+    public string SourceAggregateId { get; set; }
+
+    /// <summary>
+    /// Gets or sets the name of the source aggregate.
+    /// </summary>
+    /// <value>The name of the source aggregate.</value>
     [DataMember(Order = 10)]
-    public TAggregate Aggregate { get; set; }
+    public string SourceAggregateName { get; set; }
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateId() => Aggregate.AggregateId;
+    protected override string DefaultAggregateId() => SourceAggregateId;
 
     /// <inheritdoc/>
-    protected override string DefaultAggregateName() => Aggregate.AggregateName;
+    protected override string DefaultAggregateName() => SourceAggregateName;
+    public T GetAggregate<T>() => throw new NotImplementedException();
 }

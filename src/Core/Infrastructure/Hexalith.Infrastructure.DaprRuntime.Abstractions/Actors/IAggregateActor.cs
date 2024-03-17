@@ -17,6 +17,7 @@ namespace Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 
 using Dapr.Actors;
 
+using Hexalith.Application.States;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 
 /// <summary>
@@ -26,6 +27,14 @@ using Hexalith.Infrastructure.DaprRuntime.Handlers;
 /// <seealso cref="IActor" />
 public interface IAggregateActor : IActor
 {
+    Task ClearCommandsAsync();
+
+    /// <summary>
+    /// Gets the snapshot event asynchronous.
+    /// </summary>
+    /// <returns>Task&lt;System.Nullable&lt;EventState&gt;&gt;.</returns>
+    Task<EventState?> GetSnapshotEventAsync();
+
     /// <summary>
     /// Processes the callback asynchronous.
     /// </summary>
@@ -49,6 +58,12 @@ public interface IAggregateActor : IActor
     /// </summary>
     /// <returns>Task.</returns>
     Task<bool> PublishNextMessageAsync();
+
+    /// <summary>
+    /// Gets the snapshot event asynchronous.
+    /// </summary>
+    /// <returns>Task&lt;System.Nullable&lt;EventState&gt;&gt;.</returns>
+    Task SendSnapshotEventAsync();
 
     /// <summary>
     /// Submits the command asynchronous.
