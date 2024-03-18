@@ -29,6 +29,6 @@ public class ExceptionHelperTest
                     msg3,
                     new Exception(msg4))));
         string message = ex.FullMessage();
-        _ = message.Should().Be($"{msg1}\n{msg2}\n{msg3}\n{msg4}");
+        _ = message.Should().Be($"{msg1} {msg2} {msg3} {msg4}");
     }
 }

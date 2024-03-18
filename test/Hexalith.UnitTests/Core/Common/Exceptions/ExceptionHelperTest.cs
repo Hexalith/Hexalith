@@ -18,7 +18,7 @@ public class ExceptionHelperTest
     public void RetreiveMessageFromExceptionWithInnerShouldSucceed()
     {
         Exception ex = new("Test 1", new Exception("Test 2", new Exception("Test 3")));
-        _ = ex.FullMessage().Should().Be("Test 1\nTest 2\nTest 3");
+        _ = ex.FullMessage().Should().Be("Test 1 Test 2 Test 3");
     }
 
     [Fact]
