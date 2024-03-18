@@ -7,6 +7,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<ContainerEnvironmentVariable Include="Statestore__Name" Value="parties-statestore" />
+		<ContainerEnvironmentVariable Include="Cosmos__ContainerName" Value="parties" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.WebApis.PartiesCommands\Hexalith.Infrastructure.WebApis.PartiesCommands.csproj" />

@@ -7,6 +7,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<ContainerEnvironmentVariable Include="Statestore__Name" Value="external-systems-statestore" />
+		<ContainerEnvironmentVariable Include="Cosmos__ContainerName" Value="external-systems" />
 	</ItemGroup>
 	<ItemGroup>
 	  <_WebToolingArtifacts Remove="Properties\PublishProfiles\christofle.pubxml" />

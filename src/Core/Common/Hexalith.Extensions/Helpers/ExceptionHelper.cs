@@ -31,7 +31,7 @@ public static class ExceptionHelper
         while ((inner = inner.InnerException) != null)
         {
             _ = message
-                .Append('\n')
+                .Append(' ')
                 .Append(inner.Message);
         }
 

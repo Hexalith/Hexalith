@@ -7,6 +7,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<ContainerEnvironmentVariable Include="Statestore__Name" Value="dynamics-365-finance-statestore" />
+		<ContainerEnvironmentVariable Include="Cosmos__ContainerName" Value="dynamics-365-finance" />
 		<ContainerEnvironmentVariable Include="Dynamics365Finance__Customers__ReceiveCustomersFromErpEnabled" Value="true" />
 		<ContainerEnvironmentVariable Include="Dynamics365Finance__Customers__SendCustomersToErpEnabled" Value="true" />
 		<ContainerEnvironmentVariable Include="Dynamics365Finance__Identity__Tenant" Value="fiveforty.fr" />

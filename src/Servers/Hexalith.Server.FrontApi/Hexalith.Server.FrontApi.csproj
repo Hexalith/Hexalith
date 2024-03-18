@@ -7,6 +7,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<ContainerEnvironmentVariable Include="Statestore__Name" Value="front-api-statestore" />
+		<ContainerEnvironmentVariable Include="Cosmos__ContainerName" Value="front-api-finance" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime.Parties\Hexalith.Infrastructure.DaprRuntime.Parties.csproj" />
