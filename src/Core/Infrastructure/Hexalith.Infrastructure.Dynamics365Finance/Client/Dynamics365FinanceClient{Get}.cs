@@ -23,6 +23,49 @@ using Microsoft.Extensions.Logging;
 public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClient<TEntity>
     where TEntity : class, IODataCommon
 {
+    /// <summary>
+    /// Logs the cant get entity with filter error.
+    /// </summary>
+    /// <param name="e">The e.</param>
+    /// <param name="entityName">Name of the entity.</param>
+    /// <param name="filter">The filter.</param>
+    /// <param name="path">The path.</param>
+    /// <param name="responseContent">Content of the response.</param>
+    [LoggerMessage(EventId = 2, Level = LogLevel.Error, Message = "Can't get {EntityName} list with filter {Filter}. The method call to '{Path}' failed. response content :\n{ResponseContent}")]
+    public static partial void LogCantGetEntityWithFilterError(ILogger logger, Exception e, string entityName, string filter, string path, string responseContent);
+
+    /// <summary>
+    /// Logs the cant get entity with key error.
+    /// </summary>
+    /// <param name="e">The e.</param>
+    /// <param name="entityName">Name of the entity.</param>
+    /// <param name="keys">The keys.</param>
+    /// <param name="path">The path.</param>
+    /// <param name="responseContent">Content of the response.</param>
+    [LoggerMessage(EventId = 3, Level = LogLevel.Error, Message = "Can't get {EntityName} with keys {Keys}. The method call to '{Path}' failed. response content :\n{ResponseContent}")]
+    public static partial void LogCantGetEntityWithKeyError(ILogger logger, Exception e, string entityName, string keys, string path, string responseContent);
+
+    /// <summary>
+    /// Logs the dynamics odata call information.
+    /// </summary>
+    /// <param name="path">The path.</param>
+    [LoggerMessage(EventId = 1, Level = LogLevel.Information, Message = "Calling Dynamics 365 Finance ODATA endpoint : {Path}.")]
+    public static partial void LogDynamicsOdataCallInformation(ILogger logger, string path);
+
+    /// <summary>
+    /// Logs the method call successful debug information.
+    /// </summary>
+    /// <param name="path">The path.</param>
+    [LoggerMessage(EventId = 4, Level = LogLevel.Debug, Message = "The method call to '{Path}' was successful.")]
+    public static partial void LogMethodCallSuccessfulDebugInformation(ILogger logger, string path);
+
+    /// <summary>
+    /// Logs the method call to path was successful trace information.
+    /// </summary>
+    /// <param name="path">The path.</param>
+    [LoggerMessage(EventId = 0, Level = LogLevel.Debug, Message = "Calling Dynamics 365 Finance ODATA endpoint : {Path}.")]
+    public static partial void LogTheMethodCallToPathWasSuccessfulTraceInformation(ILogger logger, string path);
+
     /// <inheritdoc/>
     public async Task<int> CountAsync(IPerCompanyFilter filter, CancellationToken cancellationToken)
     {
@@ -81,7 +124,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
         HttpResponseMessage? response = null;
         try
         {
-            LogDynamicsOdataCallInformation(url.AbsoluteUri);
+            LogDynamicsOdataCallInformation(_logger, url.AbsoluteUri);
 
             HttpClient client = await GetClientAsync(cancellationToken).ConfigureAwait(false);
             response = await client.GetAsync(url, cancellationToken).ConfigureAwait(false);
@@ -99,7 +142,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
                     .ConfigureAwait(false);
             if (content != null && !string.IsNullOrWhiteSpace(content.Context))
             {
-                LogMethodCallSuccessfulDebugInformation(url.AbsoluteUri);
+                LogMethodCallSuccessfulDebugInformation(_logger, url.AbsoluteUri);
                 return content.Values ?? Enumerable.Empty<TEntity>();
             }
 
@@ -110,6 +153,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
         {
             string? responseContent = (response == null) ? null : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
             LogCantGetEntityWithFilterError(
+                _logger,
                 ex,
                 TEntity.EntityName(),
                 string.Empty,
@@ -209,13 +253,14 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
                     .ReadFromJsonAsync<TEntity>(
                     options: JsonOptions,
                     cancellationToken).ConfigureAwait(false) ?? throw new HttpRequestException($"Empty content response on request to '{url.AbsoluteUri}'.");
-            LogMethodCallSuccessfulDebugInformation(url.AbsoluteUri);
+            LogMethodCallSuccessfulDebugInformation(_logger, url.AbsoluteUri);
             return content;
         }
         catch (Exception ex)
         {
             string? responseContent = (response == null) ? null : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
             LogCantGetEntityWithKeyError(
+                _logger,
                 ex,
                 TEntity.EntityName(),
                 string.Join('\n', keys.Select(s => $"{s.Key}='{s.Value}'")),
@@ -224,47 +269,4 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
             throw new GetSingleRequestFailedException<TEntity>(TEntity.EntityName(), keys, responseContent, message: null, ex);
         }
     }
-
-    /// <summary>
-    /// Logs the cant get entity with filter error.
-    /// </summary>
-    /// <param name="e">The e.</param>
-    /// <param name="entityName">Name of the entity.</param>
-    /// <param name="filter">The filter.</param>
-    /// <param name="path">The path.</param>
-    /// <param name="responseContent">Content of the response.</param>
-    [LoggerMessage(EventId = 2, Level = LogLevel.Error, Message = "Can't get {EntityName} list with filter {Filter}. The method call to '{Path}' failed. response content :\n{ResponseContent}")]
-    public partial void LogCantGetEntityWithFilterError(Exception e, string entityName, string filter, string path, string responseContent);
-
-    /// <summary>
-    /// Logs the cant get entity with key error.
-    /// </summary>
-    /// <param name="e">The e.</param>
-    /// <param name="entityName">Name of the entity.</param>
-    /// <param name="keys">The keys.</param>
-    /// <param name="path">The path.</param>
-    /// <param name="responseContent">Content of the response.</param>
-    [LoggerMessage(EventId = 3, Level = LogLevel.Error, Message = "Can't get {EntityName} with keys {Keys}. The method call to '{Path}' failed. response content :\n{ResponseContent}")]
-    public partial void LogCantGetEntityWithKeyError(Exception e, string entityName, string keys, string path, string responseContent);
-
-    /// <summary>
-    /// Logs the dynamics odata call information.
-    /// </summary>
-    /// <param name="path">The path.</param>
-    [LoggerMessage(EventId = 1, Level = LogLevel.Information, Message = "Calling Dynamics 365 Finance ODATA endpoint : {Path}.")]
-    public partial void LogDynamicsOdataCallInformation(string path);
-
-    /// <summary>
-    /// Logs the method call successful debug information.
-    /// </summary>
-    /// <param name="path">The path.</param>
-    [LoggerMessage(EventId = 4, Level = LogLevel.Debug, Message = "The method call to '{Path}' was successful.")]
-    public partial void LogMethodCallSuccessfulDebugInformation(string path);
-
-    /// <summary>
-    /// Logs the method call to path was successful trace information.
-    /// </summary>
-    /// <param name="path">The path.</param>
-    [LoggerMessage(EventId = 0, Level = LogLevel.Debug, Message = "Calling Dynamics 365 Finance ODATA endpoint : {Path}.")]
-    public partial void LogTheMethodCallToPathWasSuccessfulTraceInformation(string path);
 }

@@ -37,14 +37,15 @@ using Hexalith.Domain.Products.ValueObjects;
 /// <seealso cref="IEquatable{InventoryItem}" />
 [DataContract]
 public record Product(
-    [property: DataMember] string PartitionId,
-    [property: DataMember] string OriginId,
-    [property: DataMember] string Id,
+    string PartitionId,
+    string OriginId,
+    string Id,
     [property: DataMember] string Name,
     [property: DataMember] string? Description,
     [property: DataMember] bool Disabled,
     [property: DataMember] IEnumerable<ProductDimension>? Dimensions,
-    [property: DataMember] IEnumerable<IEnumerable<string>>? ExcludedDimensionCombinaisons) : CommonEntityAggregate(PartitionId, OriginId, Id)
+    [property: DataMember] IEnumerable<IEnumerable<string>>? ExcludedDimensionCombinaisons)
+    : CommonEntityAggregate(PartitionId, OriginId, Id)
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="Product" /> class.

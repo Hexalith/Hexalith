@@ -78,7 +78,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
 
             if (response.IsSuccessStatusCode)
             {
-                LogPostSucceededInformation(url.AbsolutePath);
+                LogPostSucceededInformation(_logger, url.AbsolutePath);
                 return response;
             }
 
@@ -88,14 +88,14 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
         {
             string? responseContent = response == null ? null : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
             ErrorResponse? error = (responseContent == null) ? null : JsonSerializer.Deserialize<ErrorResponse>(responseContent);
-            LogPostError(e, url.AbsoluteUri, responseContent);
+            LogPostError(_logger, e, url.AbsoluteUri, responseContent);
             throw new Dynamics365FinancePostException<TEntity, TCreate>(url, company, value, error, $"The post failed.", responseContent, e);
         }
     }
 
     [LoggerMessage(EventId = 3, Level = LogLevel.Error, Message = "The post call to '{Path}' failed. response content :\n{ResponseContent}")]
-    private partial void LogPostError(Exception e, string path, string? responseContent);
+    private static partial void LogPostError(ILogger logger, Exception e, string path, string? responseContent);
 
     [LoggerMessage(EventId = 4, Level = LogLevel.Information, Message = "The post method call to '{Path}' succeeded.")]
-    private partial void LogPostSucceededInformation(string Path);
+    private static partial void LogPostSucceededInformation(ILogger logger, string Path);
 }

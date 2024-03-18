@@ -26,7 +26,7 @@ using System.Runtime.Serialization;
 /// <seealso cref="IAggregate" />
 [DataContract]
 [Serializable]
-public abstract record CommonEntityAggregate([property: DataMember] string PartitionId, [property: DataMember(Order = 2)] string OriginId, [property: DataMember(Order = 3)] string Id)
+public abstract record CommonEntityAggregate(string PartitionId, [property: DataMember(Order = 2)] string OriginId, [property: DataMember(Order = 3)] string Id)
     : PartitionedAggregate(PartitionId)
 {
 }

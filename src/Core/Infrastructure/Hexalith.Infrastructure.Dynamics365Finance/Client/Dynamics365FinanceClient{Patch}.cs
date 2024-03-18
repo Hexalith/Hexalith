@@ -104,7 +104,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
 
             if (response.IsSuccessStatusCode)
             {
-                LogPatchSucceededInformation(url.AbsolutePath);
+                LogPatchSucceededInformation(_logger, url.AbsolutePath);
                 return response;
             }
 
@@ -114,14 +114,14 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
         {
             string? responseContent = response == null ? null : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
             ErrorResponse? error = (responseContent == null) ? null : JsonSerializer.Deserialize<ErrorResponse>(responseContent);
-            LogPatchError(e, url.AbsoluteUri, responseContent);
+            LogPatchError(_logger, e, url.AbsoluteUri, responseContent);
             throw new Dynamics365FinancePatchException<TEntity, TUpdate>(url, company, value, error, $"The patch failed.", responseContent, e);
         }
     }
 
     [LoggerMessage(EventId = 1, Level = LogLevel.Error, Message = "The patch call to '{Path}' failed. response content :\n{ResponseContent}")]
-    private partial void LogPatchError(Exception e, string path, string? responseContent);
+    private static partial void LogPatchError(ILogger logger, Exception e, string path, string? responseContent);
 
     [LoggerMessage(EventId = 2, Level = LogLevel.Information, Message = "The patch method call to '{Path}' succeeded.")]
-    private partial void LogPatchSucceededInformation(string Path);
+    private static partial void LogPatchSucceededInformation(ILogger logger, string Path);
 }
