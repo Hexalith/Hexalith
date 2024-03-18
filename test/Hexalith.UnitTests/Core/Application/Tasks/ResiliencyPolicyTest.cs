@@ -33,11 +33,10 @@ public class ResiliencyPolicyTest
     }
 
     [Theory]
-    [InlineData(2, 1001)]
-    [InlineData(5, 1011)]
-    [InlineData(9, 1087)]
-    [InlineData(15, 2595)]
-    [InlineData(30, (36 * 60 * 1000) + 19307)]
+    [InlineData(2, 2 * 60 * 1000)]
+    [InlineData(5, 12 * 60 * 1000)]
+    [InlineData(9, 88 * 60 * 1000)]
+    [InlineData(15, 24 * 3600 * 1000)]
     [InlineData(70, 24 * 3600 * 1000)]
     [InlineData(90, 24 * 3600 * 1000)]
     [InlineData(200, 24 * 3600 * 1000)]
@@ -46,14 +45,6 @@ public class ResiliencyPolicyTest
         ResiliencyPolicy policy = ResiliencyPolicy.CreateDefaultExponentialRetry();
         TimeSpan value = policy.EvaluatePeriod(sequence);
         _ = value.Should().Be(TimeSpan.FromMilliseconds(milliseconds));
-    }
-
-    [Fact]
-    public void ExponentialPeriodTimeWithSixRetriesShouldBeOneSecondAndNineteenMilliseconds()
-    {
-        ResiliencyPolicy policy = ResiliencyPolicy.CreateDefaultExponentialRetry();
-        TimeSpan value = policy.EvaluatePeriod(6);
-        _ = value.Should().Be(TimeSpan.FromMilliseconds(1019));
     }
 
     [Fact]

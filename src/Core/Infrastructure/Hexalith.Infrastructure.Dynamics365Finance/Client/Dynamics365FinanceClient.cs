@@ -45,7 +45,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     /// Gets the logger.
     /// </summary>
     /// <value>The logger.</value>
-    protected ILogger _logger;
+    protected ILogger Logger;
 
     /// <summary>
     /// The cross company query.
@@ -105,7 +105,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
 
         _httpClient = httpClient;
         _securityContext = securityContext;
-        _logger = logger;
+        Logger = logger;
         if (string.IsNullOrWhiteSpace(finOpsSettings.Value.Instance?.OriginalString))
         {
             throw new ArgumentException(

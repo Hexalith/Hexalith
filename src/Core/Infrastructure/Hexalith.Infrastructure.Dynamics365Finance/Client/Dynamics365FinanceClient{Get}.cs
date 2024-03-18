@@ -124,7 +124,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
         HttpResponseMessage? response = null;
         try
         {
-            LogDynamicsOdataCallInformation(_logger, url.AbsoluteUri);
+            LogDynamicsOdataCallInformation(Logger, url.AbsoluteUri);
 
             HttpClient client = await GetClientAsync(cancellationToken).ConfigureAwait(false);
             response = await client.GetAsync(url, cancellationToken).ConfigureAwait(false);
@@ -142,7 +142,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
                     .ConfigureAwait(false);
             if (content != null && !string.IsNullOrWhiteSpace(content.Context))
             {
-                LogMethodCallSuccessfulDebugInformation(_logger, url.AbsoluteUri);
+                LogMethodCallSuccessfulDebugInformation(Logger, url.AbsoluteUri);
                 return content.Values ?? Enumerable.Empty<TEntity>();
             }
 
@@ -153,7 +153,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
         {
             string? responseContent = (response == null) ? null : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
             LogCantGetEntityWithFilterError(
-                _logger,
+                Logger,
                 ex,
                 TEntity.EntityName(),
                 string.Empty,
@@ -253,14 +253,14 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
                     .ReadFromJsonAsync<TEntity>(
                     options: JsonOptions,
                     cancellationToken).ConfigureAwait(false) ?? throw new HttpRequestException($"Empty content response on request to '{url.AbsoluteUri}'.");
-            LogMethodCallSuccessfulDebugInformation(_logger, url.AbsoluteUri);
+            LogMethodCallSuccessfulDebugInformation(Logger, url.AbsoluteUri);
             return content;
         }
         catch (Exception ex)
         {
             string? responseContent = (response == null) ? null : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
             LogCantGetEntityWithKeyError(
-                _logger,
+                Logger,
                 ex,
                 TEntity.EntityName(),
                 string.Join('\n', keys.Select(s => $"{s.Key}='{s.Value}'")),

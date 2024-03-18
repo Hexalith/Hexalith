@@ -78,7 +78,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
 
             if (response.IsSuccessStatusCode)
             {
-                LogPostSucceededInformation(_logger, url.AbsolutePath);
+                LogPostSucceededInformation(Logger, url.AbsolutePath);
                 return response;
             }
 
@@ -88,7 +88,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
         {
             string? responseContent = response == null ? null : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
             ErrorResponse? error = (responseContent == null) ? null : JsonSerializer.Deserialize<ErrorResponse>(responseContent);
-            LogPostError(_logger, e, url.AbsoluteUri, responseContent);
+            LogPostError(Logger, e, url.AbsoluteUri, responseContent);
             throw new Dynamics365FinancePostException<TEntity, TCreate>(url, company, value, error, $"The post failed.", responseContent, e);
         }
     }

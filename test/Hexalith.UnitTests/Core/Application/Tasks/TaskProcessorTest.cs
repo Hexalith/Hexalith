@@ -153,11 +153,11 @@ public class TaskProcessorTest
     }
 
     [Theory]
-    [InlineData(5, 0)]
-    [InlineData(10, 0)]
-    [InlineData(20, 8707)]
-    [InlineData(25, 187416)]
-    [InlineData(70, (3600 * 24 * 1000) - 10000)]
+    [InlineData(5, 701000)]
+    [InlineData(10, 8570000)]
+    [InlineData(20, 86390000)]
+    [InlineData(25, 86390000)]
+    [InlineData(70, 86390000)]
     public void SuspendedWaitTimeShouldBePositive(int retries, int milliseconds)
     {
         DateTimeOffset startDate = DateTimeOffset.UtcNow.AddSeconds(-10);

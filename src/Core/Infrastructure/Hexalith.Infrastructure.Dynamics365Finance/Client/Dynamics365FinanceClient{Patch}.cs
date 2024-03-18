@@ -104,7 +104,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
 
             if (response.IsSuccessStatusCode)
             {
-                LogPatchSucceededInformation(_logger, url.AbsolutePath);
+                LogPatchSucceededInformation(Logger, url.AbsolutePath);
                 return response;
             }
 
@@ -114,7 +114,7 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
         {
             string? responseContent = response == null ? null : await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
             ErrorResponse? error = (responseContent == null) ? null : JsonSerializer.Deserialize<ErrorResponse>(responseContent);
-            LogPatchError(_logger, e, url.AbsoluteUri, responseContent);
+            LogPatchError(Logger, e, url.AbsoluteUri, responseContent);
             throw new Dynamics365FinancePatchException<TEntity, TUpdate>(url, company, value, error, $"The patch failed.", responseContent, e);
         }
     }
