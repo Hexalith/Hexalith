@@ -59,7 +59,9 @@ public static class Dynamics365FinanceHelper
     {
         _ = services
             .ConfigureSettings<Dynamics365FinanceClientSettings>(configuration);
-        _ = services.AddHttpClient<IDynamics365FinanceClient<TEntity>, Dynamics365FinanceClient<TEntity>>(client =>
+        _ = services.AddHttpClient<IDynamics365FinanceClient<TEntity>, Dynamics365FinanceClient<TEntity>>(
+            $"{nameof(Dynamics365Finance)}",
+            client =>
         {
             string settingsName = Dynamics365FinanceClientSettings.ConfigurationName();
             string? instance = configuration[$"{settingsName}:{nameof(Dynamics365FinanceClientSettings.Instance)}"];
@@ -72,6 +74,18 @@ public static class Dynamics365FinanceHelper
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
         });
+
+        // .AddResilienceHandler(
+        // "no-retry",
+        // b => b.AddFallback(new FallbackStrategyOptions<HttpResponseMessage>()
+        // {
+        //    FallbackAction = _ => Outcome.FromResultAsValueTask(
+        //        new HttpResponseMessage(HttpStatusCode.ServiceUnavailable)),
+        // })
+        // .AddConcurrencyLimiter(1000)
+        // .AddRetry(new HttpRetryStrategyOptions { MaxRetryAttempts = 1 })
+        // .AddCircuitBreaker(new HttpCircuitBreakerStrategyOptions())
+        // .AddTimeout(new HttpTimeoutStrategyOptions { Timeout = TimeSpan.FromSeconds(20) }));
         services.TryAddSingleton<IDynamics365FinanceSecurityContext, Dynamics365FinanceSecurityContext>();
         return services;
     }

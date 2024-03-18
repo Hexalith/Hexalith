@@ -19,6 +19,7 @@ namespace Hexalith.Infrastructure.WebApis.Helpers;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
+using Dapr.Actors;
 using Dapr.Actors.Runtime;
 
 using FluentValidation;
@@ -80,9 +81,13 @@ public static class HexalithWebApi
         .AddDaprBuses(builder.Configuration)
         .AddDaprStateStore(builder.Configuration)
         .AddActors(options =>
-
+        {
             // Register actor types and configure actor settings
-            registerActors(options.Actors));
+            registerActors(options.Actors);
+            options.DrainOngoingCallTimeout = TimeSpan.FromMinutes(10);
+            options.ReentrancyConfig = new ActorReentrancyConfig { Enabled = true };
+            options.RemindersStoragePartitions = 10;
+        });
         _ = builder
             .Services
             .AddProblemDetails()
