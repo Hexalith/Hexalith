@@ -24,10 +24,12 @@ using System.Threading.Tasks;
 
 using Hexalith.Application.Commands;
 using Hexalith.Application.Parties.Commands;
+using Hexalith.Application.Parties.Errors;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Messages;
 using Hexalith.Domain.ValueObjets;
+using Hexalith.Extensions.Errors;
 
 using KellermanSoftware.CompareNetObjects;
 
@@ -73,17 +75,11 @@ public partial class ChangeCustomerInformationHandler : CommandHandler<ChangeCus
                 command.GroupId,
                 command.SalesCurrencyId,
                 command.Date);
-        if (aggregate is not null)
-        {
-            if (aggregate is Customer customer)
-            {
-                return HasChanges(customer.ToCustomerInformationChanged(), changed)
-                    ? await Task.FromResult<IEnumerable<BaseMessage>>([changed]).ConfigureAwait(false)
-                    : await Task.FromResult<IEnumerable<BaseMessage>>([]).ConfigureAwait(false);
-            }
-        }
-
-        throw new InvalidOperationException($"The event {command.TypeName} with id '{command.AggregateId}' can only be applied on an existing customer.");
+        return aggregate is null || aggregate is not Customer customer
+            ? throw new ApplicationErrorException(CustomerNotRegisteredError.Create(command.TypeName, command.AggregateId))
+            : HasChanges(customer.ToCustomerInformationChanged(), changed)
+            ? await Task.FromResult<IEnumerable<BaseMessage>>([changed]).ConfigureAwait(false)
+            : await Task.FromResult<IEnumerable<BaseMessage>>([]).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>

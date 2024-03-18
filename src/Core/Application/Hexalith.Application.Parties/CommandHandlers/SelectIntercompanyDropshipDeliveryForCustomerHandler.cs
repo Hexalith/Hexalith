@@ -24,9 +24,11 @@ using System.Threading.Tasks;
 
 using Hexalith.Application.Commands;
 using Hexalith.Application.Parties.Commands;
+using Hexalith.Application.Parties.Errors;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Messages;
+using Hexalith.Extensions.Errors;
 
 /// <summary>
 /// Class SetCustomerIntercompanyDeliveryToIndirectHandler.
@@ -44,16 +46,12 @@ public class SelectIntercompanyDropshipDeliveryForCustomerHandler : CommandHandl
              command.CompanyId,
              command.OriginId,
              command.Id);
-        if (aggregate is not null)
-        {
-            Customer customer = (Customer)aggregate;
-            if (customer.IntercompanyDropship)
-            {
-                return await Task.FromResult<IEnumerable<BaseMessage>>([]).ConfigureAwait(false);
-            }
-        }
 
-        return await Task.FromResult<IEnumerable<BaseMessage>>([selected]).ConfigureAwait(false);
+        return aggregate is null || aggregate is not Customer customer
+           ? throw new ApplicationErrorException(CustomerNotRegisteredError.Create(command.TypeName, command.AggregateId))
+           : customer.IntercompanyDropship
+           ? await Task.FromResult<IEnumerable<BaseMessage>>([]).ConfigureAwait(false)
+           : await Task.FromResult<IEnumerable<BaseMessage>>([selected]).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
