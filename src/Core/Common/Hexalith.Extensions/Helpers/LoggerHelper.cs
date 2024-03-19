@@ -42,6 +42,7 @@ public static partial class LoggerHelper
     /// </summary>
     /// <param name="applicationError">The application error.</param>
     /// <param name="logger">The logger.</param>
+    /// <param name="exception">The exception.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
     public static void LogApplicationErrorDetails(this ApplicationError applicationError, ILogger logger, Exception? exception)
     {

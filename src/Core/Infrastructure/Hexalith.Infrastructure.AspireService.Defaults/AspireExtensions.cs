@@ -8,6 +8,7 @@ namespace Hexalith.Infrastructure.AspireService.Defaults;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
@@ -46,6 +47,11 @@ public static class AspireExtensions
     public static IHostApplicationBuilder AddServiceDefaults(this IHostApplicationBuilder builder)
     {
         ArgumentNullException.ThrowIfNull(builder);
+        if (!builder.Configuration.GetValue<bool>("Aspire:Enabled"))
+        {
+            return builder;
+        }
+
         _ = builder.ConfigureOpenTelemetry();
 
         _ = builder.AddDefaultHealthChecks();

@@ -9,6 +9,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<ContainerEnvironmentVariable Include="Cosmos__DatabaseName" Value="production" />
+		<ContainerEnvironmentVariable Include="Aspire__Enabled" Value="false" />
 		<ContainerEnvironmentVariable Include="Organization__DefaultPartitionId" Value="FFY" />
 		<ContainerEnvironmentVariable Include="Organization__DefaultCompanyId" Value="FRRT" />
 		<ContainerEnvironmentVariable Include="DAPRSIDEKICK_ENABLED" Value="false" />

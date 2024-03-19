@@ -60,20 +60,19 @@ public static class Dynamics365FinanceHelper
         _ = services
             .ConfigureSettings<Dynamics365FinanceClientSettings>(configuration);
         _ = services.AddHttpClient<IDynamics365FinanceClient<TEntity>, Dynamics365FinanceClient<TEntity>>(
-            $"{nameof(Dynamics365Finance)}",
-            client =>
-        {
-            string settingsName = Dynamics365FinanceClientSettings.ConfigurationName();
-            string? instance = configuration[$"{settingsName}:{nameof(Dynamics365FinanceClientSettings.Instance)}"];
-            SettingsException<Dynamics365FinanceClientSettings>.ThrowIfNullOrWhiteSpace(instance, nameof(Dynamics365FinanceClientSettings.Instance));
-            client.BaseAddress = new Uri(instance);
-            client.DefaultRequestHeaders.Clear();
-            client.DefaultRequestHeaders.Add("OData-MaxVersion", "4.0");
-            client.DefaultRequestHeaders.Add("OData-Version", "4.0");
-            client.DefaultRequestHeaders.Add("Prefer", "odata.include-annotations = *");
-            client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-        });
+                client =>
+            {
+                string settingsName = Dynamics365FinanceClientSettings.ConfigurationName();
+                string? instance = configuration[$"{settingsName}:{nameof(Dynamics365FinanceClientSettings.Instance)}"];
+                SettingsException<Dynamics365FinanceClientSettings>.ThrowIfNullOrWhiteSpace(instance, nameof(Dynamics365FinanceClientSettings.Instance));
+                client.BaseAddress = new Uri(instance);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Add("OData-MaxVersion", "4.0");
+                client.DefaultRequestHeaders.Add("OData-Version", "4.0");
+                client.DefaultRequestHeaders.Add("Prefer", "odata.include-annotations = *");
+                client.DefaultRequestHeaders.Accept.Add(
+                    new MediaTypeWithQualityHeaderValue("application/json"));
+            });
 
         // .AddResilienceHandler(
         // "no-retry",

@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Messages;
+using Hexalith.Extensions.Errors;
 using Hexalith.Extensions.Helpers;
 
 using Microsoft.Extensions.Logging;
@@ -58,9 +59,20 @@ public partial class DependencyInjectionCommandDispatcher : ICommandDispatcher
 
             return events;
         }
+        catch (ApplicationErrorException ex)
+        {
+            LogDispatchingCommandErrorInformation(command.TypeName, command.AggregateName, command.AggregateId);
+            ex?.Error?.LogApplicationErrorDetails(_logger, ex);
+            throw;
+        }
         catch (Exception ex)
         {
-            LogDispatchingCommandErrorInformation(ex, command.TypeName, command.AggregateName, command.AggregateId, ex.FullMessage());
+            LogDispatchingCommandErrorInformation(
+                ex,
+                command.TypeName,
+                command.AggregateName,
+                command.AggregateId,
+                ex.FullMessage());
             throw;
         }
     }
@@ -70,6 +82,9 @@ public partial class DependencyInjectionCommandDispatcher : ICommandDispatcher
 
     [LoggerMessage(EventId = 2, Level = LogLevel.Error, Message = "Error while dispatching command {CommandType} with aggregate id {AggregateName}-{AggregateId} : {ErrorMessage}")]
     public partial void LogDispatchingCommandErrorInformation(Exception ex, string CommandType, string AggregateName, string AggregateId, string ErrorMessage);
+
+    [LoggerMessage(EventId = 3, Level = LogLevel.Error, Message = "Error while dispatching command {CommandType} with aggregate id {AggregateName}-{AggregateId}")]
+    public partial void LogDispatchingCommandErrorInformation(string CommandType, string AggregateName, string AggregateId);
 
     [LoggerMessage(EventId = 1, Level = LogLevel.Debug, Message = "Dispatching command {CommandType} undo with aggregate id {AggregateName}-{AggregateId}")]
     public partial void LogDispatchingCommandUndoDebugInformation(string CommandType, string AggregateName, string AggregateId);
