@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Http.Resilience;
 using Microsoft.Extensions.Logging;
 
 using OpenTelemetry.Logs;
@@ -61,7 +62,8 @@ public static class AspireExtensions
         _ = builder.Services.ConfigureHttpClientDefaults(http =>
         {
             // Turn on resilience by default
-            _ = http.AddStandardResilienceHandler();
+            _ = http.AddStandardResilienceHandler()
+                .Configure(o => o.AttemptTimeout = new HttpTimeoutStrategyOptions { Timeout = TimeSpan.FromMinutes(1) });
 
             // Turn on service discovery by default
             _ = http.UseServiceDiscovery();

@@ -3,6 +3,7 @@
 		<!-- Detect if the solution is opened in VS to add local repository for packages -->
 		<AdaptiveCardsVersion>3.1.0</AdaptiveCardsVersion>
 		<AdaptiveCardsTemplatingVersion>1.5.0</AdaptiveCardsTemplatingVersion>
+		<AspireVersion>8.0.0-preview.4.24156.9</AspireVersion>
 		<AzureIdentityVersion>1.10.4</AzureIdentityVersion>
 		<AzureBicepCoreVersion>0.25.53</AzureBicepCoreVersion>
 		<AzureResourceManagerVersion>1.10.1</AzureResourceManagerVersion>
@@ -37,9 +38,10 @@
 		<MicrosoftTypescriptMSBuild>5.3.3</MicrosoftTypescriptMSBuild>
 		<MicrosoftGraphVersion>5.12.*</MicrosoftGraphVersion>
 		<MicrosoftVisualStudioThreadingAnalyzersVersion>17.9.28</MicrosoftVisualStudioThreadingAnalyzersVersion>
-		<MinverVersion>4.3.0</MinverVersion>
+		<MinverVersion>5.0.0</MinverVersion>
 		<MoqVersion>4.20.70</MoqVersion>
 		<MoqContribHttpClientVersion>1.4.0</MoqContribHttpClientVersion>
+		<OpenTelemetryVersion>1.*</OpenTelemetryVersion>
 		<RadzenBlazorVersion>4.23.4</RadzenBlazorVersion>
 		<SendGridExtensionsDependencyInjectionVersion>1.0.1</SendGridExtensionsDependencyInjectionVersion>
 		<SerilogVersion>8.0.*</SerilogVersion>
