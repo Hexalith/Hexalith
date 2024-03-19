@@ -60,6 +60,7 @@ public static class Dynamics365FinanceHelper
         _ = services
             .ConfigureSettings<Dynamics365FinanceClientSettings>(configuration);
         _ = services.AddHttpClient<IDynamics365FinanceClient<TEntity>, Dynamics365FinanceClient<TEntity>>(
+                "Dynamics365FinanceClient",
                 client =>
             {
                 string settingsName = Dynamics365FinanceClientSettings.ConfigurationName();

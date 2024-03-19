@@ -11,6 +11,9 @@
 		<ContainerEnvironmentVariable Include="Dynamics365Finance__Customers__ReceiveCustomersFromErpEnabled" Value="true" />
 		<ContainerEnvironmentVariable Include="Dynamics365Finance__Customers__SendCustomersToErpEnabled" Value="true" />
 		<ContainerEnvironmentVariable Include="Dynamics365Finance__Identity__Tenant" Value="fiveforty.fr" />
+		<ContainerEnvironmentVariable Include="Dynamics365FinanceClient-standard__AttemptTimeout__Timeout" Value="00:00:30" />
+		<ContainerEnvironmentVariable Include="Dynamics365FinanceClient-standard__TotalRequestTimeout__Timeout" Value="00:02:00" />
+		<ContainerEnvironmentVariable Include="Dynamics365FinanceClient-standard__CircuitBreaker__SamplingDuration" Value="00:03:00" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\Core\Application\Hexalith.Application.Sales\Hexalith.Application.Sales.csproj" />

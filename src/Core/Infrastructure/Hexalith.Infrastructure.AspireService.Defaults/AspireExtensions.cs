@@ -6,13 +6,13 @@
 
 namespace Hexalith.Infrastructure.AspireService.Defaults;
 
+using Azure.Monitor.OpenTelemetry.AspNetCore;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Http.Resilience;
 using Microsoft.Extensions.Logging;
 
 using OpenTelemetry.Logs;
@@ -48,10 +48,6 @@ public static class AspireExtensions
     public static IHostApplicationBuilder AddServiceDefaults(this IHostApplicationBuilder builder)
     {
         ArgumentNullException.ThrowIfNull(builder);
-        if (!builder.Configuration.GetValue<bool>("Aspire:Enabled"))
-        {
-            return builder;
-        }
 
         _ = builder.ConfigureOpenTelemetry();
 
@@ -62,8 +58,7 @@ public static class AspireExtensions
         _ = builder.Services.ConfigureHttpClientDefaults(http =>
         {
             // Turn on resilience by default
-            _ = http.AddStandardResilienceHandler()
-                .Configure(o => o.AttemptTimeout = new HttpTimeoutStrategyOptions { Timeout = TimeSpan.FromMinutes(1) });
+            _ = http.AddStandardResilienceHandler();
 
             // Turn on service discovery by default
             _ = http.UseServiceDiscovery();
@@ -148,13 +143,11 @@ public static class AspireExtensions
             _ = builder.Services.ConfigureOpenTelemetryTracerProvider(tracing => tracing.AddOtlpExporter());
         }
 
-        // Uncomment the following lines to enable the Prometheus exporter (requires the OpenTelemetry.Exporter.Prometheus.AspNetCore package)
-        // builder.Services.AddOpenTelemetry()
-        //    .WithMetrics(metrics => metrics.AddPrometheusExporter());
+        if (!string.IsNullOrEmpty(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]))
+        {
+            _ = builder.Services.AddOpenTelemetry().UseAzureMonitor();
+        }
 
-        // Uncomment the following lines to enable the Azure Monitor exporter (requires the Azure.Monitor.OpenTelemetry.AspNetCore package)
-        // builder.Services.AddOpenTelemetry()
-        //    .UseAzureMonitor();
         return builder;
     }
 }
