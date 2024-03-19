@@ -5,8 +5,8 @@
 		<AdaptiveCardsTemplatingVersion>1.5.0</AdaptiveCardsTemplatingVersion>
 		<AspireVersion>8.0.0-preview.4.24156.9</AspireVersion>
 		<AzureIdentityVersion>1.10.4</AzureIdentityVersion>
-		<AzureBicepCoreVersion>0.25.53</AzureBicepCoreVersion>
-		<AzureResourceManagerVersion>1.10.1</AzureResourceManagerVersion>
+		<AzureBicepCoreVersion>0.26.54</AzureBicepCoreVersion>
+		<AzureResourceManagerVersion>1.10.2</AzureResourceManagerVersion>
 		<AzureResourceManagerCognitiveServicesVersion>1.3.1</AzureResourceManagerCognitiveServicesVersion>
 		<AzureResourceManagerContainerRegistryVersion>1.2.0</AzureResourceManagerContainerRegistryVersion>
 		<AzureResourceManagerKeyVaultVersion>1.2.0</AzureResourceManagerKeyVaultVersion>
@@ -16,7 +16,7 @@
 		<BlazoredSessionStorageVersion>2.4.0</BlazoredSessionStorageVersion>
 		<CoconaVersion>2.2.0</CoconaVersion>
 		<CompareNETObjectsVersion>4.83.0</CompareNETObjectsVersion>
-		<CoverletCollectorVersion>6.0.1</CoverletCollectorVersion>
+		<CoverletCollectorVersion>6.0.2</CoverletCollectorVersion>
 		<DocFxConsoleVersion>2.59.4</DocFxConsoleVersion>
 		<FluentAssertionsVersion>6.12.0</FluentAssertionsVersion>
 		<FluentValidationVersion>11.9.0</FluentValidationVersion>
@@ -24,18 +24,18 @@
 		<GoogleApiVersion>5.3.1</GoogleApiVersion>
 		<ISO3166Version>1.0.4</ISO3166Version>
 		<HumanizerVersion>2.14.1</HumanizerVersion>
-		<MailKitVersion>4.3.0</MailKitVersion>
+		<MailKitVersion>4.4.0</MailKitVersion>
 		<ManDaprSidekickVersion>1.2.2</ManDaprSidekickVersion>
 		<MicrosoftAzureCosmosVersion>3.38.1</MicrosoftAzureCosmosVersion>
 		<MicrosoftBotBuilderVersion>4.22.2</MicrosoftBotBuilderVersion>
-		<MicrosoftFluentUIComponentsVersion>4.4.1</MicrosoftFluentUIComponentsVersion>
-		<MicrosoftFluentUIComponentsIconsVersion>4.4.0</MicrosoftFluentUIComponentsIconsVersion>
+		<MicrosoftFluentUIComponentsVersion>4.5.0</MicrosoftFluentUIComponentsVersion>
+		<MicrosoftFluentUIComponentsIconsVersion>4.5.0</MicrosoftFluentUIComponentsIconsVersion>
 		<MicrosoftIdentityClientVersion>4.59.0</MicrosoftIdentityClientVersion>
-		<MicrosoftIdentityWebVersion>2.17.0</MicrosoftIdentityWebVersion>
+		<MicrosoftIdentityWebVersion>2.17.2</MicrosoftIdentityWebVersion>
 		<MicrosoftNETTestSdkVersion>17.9.0</MicrosoftNETTestSdkVersion>
-		<MicrosoftSemanticKernelVersion>1.4.0</MicrosoftSemanticKernelVersion>
+		<MicrosoftSemanticKernelVersion>1.6.2</MicrosoftSemanticKernelVersion>
 		<MicrosoftTeamsFxVersion>2.4.0</MicrosoftTeamsFxVersion>
-		<MicrosoftTypescriptMSBuild>5.3.3</MicrosoftTypescriptMSBuild>
+		<MicrosoftTypescriptMSBuild>5.4.2</MicrosoftTypescriptMSBuild>
 		<MicrosoftGraphVersion>5.12.*</MicrosoftGraphVersion>
 		<MicrosoftVisualStudioThreadingAnalyzersVersion>17.9.28</MicrosoftVisualStudioThreadingAnalyzersVersion>
 		<MinverVersion>5.0.0</MinverVersion>
@@ -50,6 +50,6 @@
 		<SwashbuckleAspNetCoreVersion>6.5.*</SwashbuckleAspNetCoreVersion>
 		<XUnitRunnerVisualStudioVersion>2.5.7</XUnitRunnerVisualStudioVersion>
 		<XUnitVersion>2.7.0</XUnitVersion>
-		<DaprVersion>1.12.*</DaprVersion>
+		<DaprVersion>1.13.*</DaprVersion>
 	</PropertyGroup>
 </Project>
