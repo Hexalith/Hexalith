@@ -75,7 +75,7 @@ public partial class ChangeCustomerInformationHandler : CommandHandler<ChangeCus
                 command.GroupId,
                 command.SalesCurrencyId,
                 command.Date);
-        return aggregate is null || aggregate is not Customer customer
+        return aggregate is null || aggregate is not Customer customer || !customer.IsInitialized()
             ? throw new ApplicationErrorException(CustomerNotRegisteredError.Create(command.TypeName, command.AggregateId))
             : HasChanges(customer.ToCustomerInformationChanged(), changed)
             ? await Task.FromResult<IEnumerable<BaseMessage>>([changed]).ConfigureAwait(false)
