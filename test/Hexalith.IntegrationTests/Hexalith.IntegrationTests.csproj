@@ -4,6 +4,11 @@
 		<UserSecretsId>16985a23-56f5-4511-9b9b-38c8a672583a</UserSecretsId>
 	</PropertyGroup>
 	<ItemGroup>
+	  <Compile Remove="Dynamics365Finance\Parties\Entities\**" />
+	  <EmbeddedResource Remove="Dynamics365Finance\Parties\Entities\**" />
+	  <None Remove="Dynamics365Finance\Parties\Entities\**" />
+	</ItemGroup>
+	<ItemGroup>
 		<None Include="..\..\.editorconfig" Link=".editorconfig" />
 	</ItemGroup>
 	<ItemGroup>
@@ -20,8 +25,5 @@
 		<None Update="appsettings.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Dynamics365Finance\Parties\Entities\" />
 	</ItemGroup>
 </Project>
