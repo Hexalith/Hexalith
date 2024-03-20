@@ -245,9 +245,7 @@ public static class CustomerConverterHelper
     /// </summary>
     /// <param name="customer">The customer.</param>
     /// <param name="partitionId">The partition identifier.</param>
-    /// <param name="companyId">The company identifier.</param>
     /// <param name="originId">The origin identifier.</param>
-    /// <param name="customerId">The customer identifier.</param>
     /// <param name="date">The date.</param>
     /// <param name="postBox">The post box.</param>
     /// <param name="stateName">Name of the state.</param>
@@ -260,9 +258,7 @@ public static class CustomerConverterHelper
     public static CustomerRegistered ToCustomerRegisteredEvent(
         [NotNull] this CustomerV3 customer,
         string partitionId,
-        string companyId,
         string originId,
-        string customerId,
         DateTimeOffset date,
         string? postBox = null,
         string? stateName = null,
@@ -277,9 +273,9 @@ public static class CustomerConverterHelper
         ArgumentException.ThrowIfNullOrWhiteSpace(customer.OrganizationName);
         CustomerRegistered registered = new(
             partitionId,
-            companyId,
+            customer.DataAreaId,
             originId,
-            customerId,
+            customer.CustomerAccount,
             customer.OrganizationName,
             ToPartyType(customer.PartyType ?? string.Empty),
             new Contact(

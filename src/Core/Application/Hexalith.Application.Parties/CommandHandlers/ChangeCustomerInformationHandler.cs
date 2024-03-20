@@ -24,12 +24,11 @@ using System.Threading.Tasks;
 
 using Hexalith.Application.Commands;
 using Hexalith.Application.Parties.Commands;
-using Hexalith.Application.Parties.Errors;
+using Hexalith.Application.Parties.Helpers;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Messages;
 using Hexalith.Domain.ValueObjets;
-using Hexalith.Extensions.Errors;
 
 using KellermanSoftware.CompareNetObjects;
 
@@ -75,12 +74,22 @@ public partial class ChangeCustomerInformationHandler : CommandHandler<ChangeCus
                 command.GroupId,
                 command.SalesCurrencyId,
                 command.Date);
-        return aggregate is null || aggregate is not Customer customer || !customer.IsInitialized()
-            ? throw new ApplicationErrorException(CustomerNotRegisteredError.Create(command.TypeName, command.AggregateId))
-            : HasChanges(customer.ToCustomerInformationChanged(), changed)
+
+        if (aggregate is null || aggregate is not Customer customer || !customer.IsInitialized())
+        {
+            LogFailedToUpdateCustomerError(command.AggregateId);
+
+            // The customer update failed. The customer is not registered. We need to register it.
+            return await Task.FromResult<IEnumerable<BaseMessage>>([command.ToCustomer(false).ToCustomerRegistered()]).ConfigureAwait(false);
+        }
+
+        return HasChanges(customer.ToCustomerInformationChanged(), changed)
             ? await Task.FromResult<IEnumerable<BaseMessage>>([changed]).ConfigureAwait(false)
             : await Task.FromResult<IEnumerable<BaseMessage>>([]).ConfigureAwait(false);
     }
+
+    [LoggerMessage(EventId = 1, Level = LogLevel.Error, Message = "Failed to update customer {AggregateId} : Customer not found. Registering as a new customer.")]
+    public partial void LogFailedToUpdateCustomerError(string aggregateId);
 
     /// <inheritdoc/>
     public override async Task<IEnumerable<BaseMessage>> UndoAsync(ChangeCustomerInformation command, IAggregate? aggregate, CancellationToken cancellationToken)
