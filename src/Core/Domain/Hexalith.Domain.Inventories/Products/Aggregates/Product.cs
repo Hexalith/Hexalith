@@ -22,7 +22,7 @@ using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Exceptions;
 using Hexalith.Domain.Products.Events;
-using Hexalith.Domain.Products.ValueObjects;
+using Hexalith.Domain.ValueObjects;
 
 /// <summary>
 /// Class InventoryItem.
@@ -43,7 +43,7 @@ public record Product(
     [property: DataMember] string Name,
     [property: DataMember] string? Description,
     [property: DataMember] bool Disabled,
-    [property: DataMember] IEnumerable<ProductDimension>? Dimensions,
+    [property: DataMember] IEnumerable<DimensionValue>? Dimensions,
     [property: DataMember] IEnumerable<IEnumerable<string>>? ExcludedDimensionCombinaisons)
     : CommonEntityAggregate(PartitionId, OriginId, Id)
 {

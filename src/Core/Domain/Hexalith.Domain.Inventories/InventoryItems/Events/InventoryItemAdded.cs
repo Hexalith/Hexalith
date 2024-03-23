@@ -18,6 +18,7 @@ namespace Hexalith.Domain.InventoryItems.Events;
 
 using System.Runtime.Serialization;
 
+using Hexalith.Domain.ValueObjects;
 using Hexalith.Extensions;
 
 /// <summary>
@@ -36,17 +37,20 @@ public class InventoryItemAdded : InventoryItemEvent
     /// <param name="companyId">The company identifier.</param>
     /// <param name="originId">The origin identifier.</param>
     /// <param name="id">The identifier.</param>
+    /// <param name="dimensions">The dimensions.</param>
     /// <param name="name">The name.</param>
-    /// <param name="date">The date.</param>
+    /// <param name="description">The description.</param>
     public InventoryItemAdded(
         string partitionId,
         string companyId,
         string originId,
         string id,
+        IEnumerable<DimensionValue>? dimensions,
         string name,
         string? description)
         : base(partitionId, companyId, originId, id)
     {
+        Dimensions = dimensions;
         Name = name;
         Description = description;
     }
@@ -58,11 +62,18 @@ public class InventoryItemAdded : InventoryItemEvent
     public InventoryItemAdded() => Name = Description = string.Empty;
 
     /// <summary>
-    /// Gets the description.
+    /// Gets or sets the description.
     /// </summary>
     /// <value>The description.</value>
+    [DataMember(Order = 22)]
+    public string? Description { get; set; }
+
+    /// <summary>
+    /// Gets or sets the dimensions.
+    /// </summary>
+    /// <value>The dimensions.</value>
     [DataMember(Order = 21)]
-    public string? Description { get; }
+    public IEnumerable<DimensionValue>? Dimensions { get; set; }
 
     /// <summary>
     /// Gets or sets the name.

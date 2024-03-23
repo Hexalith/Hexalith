@@ -14,13 +14,12 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Domain.Organizations.Events;
+namespace Hexalith.Domain.Events;
 
 using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Domain.Events;
 using Hexalith.Extensions;
 
 /// <summary>

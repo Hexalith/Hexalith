@@ -59,7 +59,7 @@ public abstract partial class InventoryItemDetailsProjectionUpdateHandler<TInven
         InventoryItemDetailsProjection? existingInventoryItem = await GetProjectionAsync(baseEvent.AggregateId, cancellationToken).ConfigureAwait(false);
         if (existingInventoryItem == null)
         {
-            if (baseEvent is InventoryItemInformationChanged changed)
+            if (baseEvent is InventoryItemDescriptionChanged changed)
             {
                 await SaveProjectionAsync(baseEvent.AggregateId, new InventoryItemDetailsProjection(changed), cancellationToken).ConfigureAwait(false);
             }

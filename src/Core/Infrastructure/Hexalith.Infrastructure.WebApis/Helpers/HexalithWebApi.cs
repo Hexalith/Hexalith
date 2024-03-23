@@ -30,6 +30,7 @@ using Hexalith.Application.Projections;
 using Hexalith.Application.Tasks;
 using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Common;
+using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 
 using Microsoft.AspNetCore.Authentication;
@@ -38,11 +39,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 /// <summary>
 /// Class HexalithWebApi.
 /// </summary>
-public static class HexalithWebApi
+public static partial class HexalithWebApi
 {
     /// <summary>
     /// Creates the application.
@@ -65,7 +67,12 @@ public static class HexalithWebApi
         // Serilog.ILogger startupLogger = builder.AddSerilogLogger();
 
         // startupLogger.Information("Configuring {AppName} ...", applicationName);
-        builder.Services
+        _ = builder.AddAspireServiceDefaults()
+            .Services
+            .ConfigureSettings<Hexalith.Infrastructure.CosmosDb.Configurations.CosmosDbSettings>(builder.Configuration);
+
+        builder
+            .Services
             .AddEndpointsApiExplorer()
             .AddSwaggerGen(c =>
             {
@@ -113,13 +120,19 @@ public static class HexalithWebApi
         return builder;
     }
 
+    [LoggerMessage(
+            LogLevel.Information,
+            Message = "Starting application {ApplicationName}")]
+    public static partial void LogProgramStartingInformation(ILogger logger, string applicationName);
+
     /// <summary>
     /// Uses the Hexalith framework.
     /// </summary>
     /// <param name="app">The application.</param>
+    /// <param name="applicationName">The application name.</param>
     /// <returns>IApplicationBuilder.</returns>
     /// <exception cref="System.ArgumentNullException">null.</exception>
-    public static IApplicationBuilder UseHexalith([NotNull] this WebApplication app)
+    public static WebApplication UseHexalith<TProgram>([NotNull] this WebApplication app, string applicationName)
     {
         ArgumentNullException.ThrowIfNull(app);
         _ = app
@@ -145,6 +158,11 @@ public static class HexalithWebApi
         _ = app.MapActorsHandlers();
         _ = app.UseSwagger();
         _ = app.UseSwaggerUI();
+
+        ILogger<TProgram> logger = app
+            .Services
+            .GetRequiredService<ILogger<TProgram>>();
+        LogProgramStartingInformation(logger, applicationName);
         return app;
     }
 }

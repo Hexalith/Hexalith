@@ -3,7 +3,4 @@
 	<PropertyGroup>
 		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
 	</PropertyGroup>
-	<ItemGroup>
-	  <Folder Include="DimensionDefinitions\Events\" />
-	</ItemGroup>
 </Project>

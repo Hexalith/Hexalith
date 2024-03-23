@@ -29,7 +29,7 @@ public interface IInventoryItemQueryService
     /// <param name="aggregateId">The aggregate identifier.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;System.Nullable&lt;InventoryItemInformationChanged&gt;&gt;.</returns>
-    Task<InventoryItemInformationChanged?> CreateInformationChangedEventAsync(string aggregateId, CancellationToken cancellationToken);
+    Task<InventoryItemDescriptionChanged?> CreateInformationChangedEventAsync(string aggregateId, CancellationToken cancellationToken);
 
     /// <summary>
     /// Exists the asynchronous.
@@ -53,5 +53,5 @@ public interface IInventoryItemQueryService
     /// <param name="change">The change.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;System.Boolean&gt;.</returns>
-    Task<bool> HasChangesAsync(InventoryItemInformationChanged change, CancellationToken cancellationToken);
+    Task<bool> HasChangesAsync(InventoryItemDescriptionChanged change, CancellationToken cancellationToken);
 }

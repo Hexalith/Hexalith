@@ -25,27 +25,11 @@ using OpenTelemetry.Trace;
 public static class AspireExtensions
 {
     /// <summary>
-    /// Adds default health checks to the host application builder.
-    /// </summary>
-    /// <param name="builder">The host application builder.</param>
-    /// <returns>The host application builder reference.</returns>
-    public static IHostApplicationBuilder AddDefaultHealthChecks(this IHostApplicationBuilder builder)
-    {
-        ArgumentNullException.ThrowIfNull(builder);
-        _ = builder.Services.AddHealthChecks()
-
-            // Add a default liveness check to ensure app is responsive
-            .AddCheck("self", () => HealthCheckResult.Healthy(), ["live"]);
-
-        return builder;
-    }
-
-    /// <summary>
     /// Adds default services to the host application builder.
     /// </summary>
     /// <param name="builder">The host application builder.</param>
     /// <returns>The host application builder reference.</returns>
-    public static IHostApplicationBuilder AddServiceDefaults(this IHostApplicationBuilder builder)
+    public static IHostApplicationBuilder AddAspireServiceDefaults(this IHostApplicationBuilder builder)
     {
         ArgumentNullException.ThrowIfNull(builder);
 
@@ -63,6 +47,22 @@ public static class AspireExtensions
             // Turn on service discovery by default
             _ = http.UseServiceDiscovery();
         });
+
+        return builder;
+    }
+
+    /// <summary>
+    /// Adds default health checks to the host application builder.
+    /// </summary>
+    /// <param name="builder">The host application builder.</param>
+    /// <returns>The host application builder reference.</returns>
+    public static IHostApplicationBuilder AddDefaultHealthChecks(this IHostApplicationBuilder builder)
+    {
+        ArgumentNullException.ThrowIfNull(builder);
+        _ = builder.Services.AddHealthChecks()
+
+            // Add a default liveness check to ensure app is responsive
+            .AddCheck("self", () => HealthCheckResult.Healthy(), ["live"]);
 
         return builder;
     }

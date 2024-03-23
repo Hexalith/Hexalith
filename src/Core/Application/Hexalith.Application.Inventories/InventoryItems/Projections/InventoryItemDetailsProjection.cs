@@ -51,7 +51,7 @@ public class InventoryItemDetailsProjection
     /// </summary>
     /// <param name="changed">The changed.</param>
     /// <exception cref="ArgumentNullException"></exception>
-    public InventoryItemDetailsProjection(InventoryItemInformationChanged changed)
+    public InventoryItemDetailsProjection(InventoryItemDescriptionChanged changed)
     {
         ArgumentNullException.ThrowIfNull(changed);
         Id = changed.Id;
@@ -90,7 +90,7 @@ public class InventoryItemDetailsProjection
     {
         return ev switch
         {
-            InventoryItemInformationChanged changed => new InventoryItemDetailsProjection()
+            InventoryItemDescriptionChanged changed => new InventoryItemDetailsProjection()
             {
                 Id = changed.Id,
                 Name = changed.Name,

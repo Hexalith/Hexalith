@@ -23,16 +23,16 @@ using Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents;
 using Hexalith.Infrastructure.Dynamics365Finance.Inventories.PartnerInventoryItems.BusinessEvents;
 
 /// <summary>
-/// Class Dynamics365LogisticsPartnerCatalogItemChangeNameValidator.
-/// Implements the <see cref="Dynamics365LogisticsPartnerCatalogCommandValidator{Dynamics365LogisticsPartnerCatalogItemChangeName}" />.
+/// Class Dynamics365FinancePartnerInventoryItemChangeNameValidator.
+/// Implements the <see cref="Dynamics365LogisticsPartnerCatalogCommandValidator{Dynamics365FinancePartnerInventoryItemChangeName}" />.
 /// </summary>
-/// <seealso cref="Dynamics365LogisticsPartnerCatalogCommandValidator{Dynamics365LogisticsPartnerCatalogItemChangeName}" />
-public class Dynamics365LogisticsPartnerCatalogItemNameChangedValidator : Dynamics365BusinessEventValidator<Dynamics365LogisticsPartnerCatalogItemNameChanged>
+/// <seealso cref="Dynamics365LogisticsPartnerCatalogCommandValidator{Dynamics365FinancePartnerInventoryItemChangeName}" />
+public class Dynamics365FinancePartnerInventoryItemNameChangedValidator : Dynamics365BusinessEventValidator<Dynamics365FinancePartnerInventoryItemNameChanged>
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="Dynamics365LogisticsPartnerCatalogItemNameChangedValidator" /> class.
+    /// Initializes a new instance of the <see cref="Dynamics365FinancePartnerInventoryItemNameChangedValidator" /> class.
     /// </summary>
-    public Dynamics365LogisticsPartnerCatalogItemNameChangedValidator()
+    public Dynamics365FinancePartnerInventoryItemNameChangedValidator()
     {
         _ = RuleFor(x => x.NewName)
             .NotEmpty()

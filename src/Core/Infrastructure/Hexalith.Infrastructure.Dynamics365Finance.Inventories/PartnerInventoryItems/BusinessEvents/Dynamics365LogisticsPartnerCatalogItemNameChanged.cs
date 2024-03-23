@@ -1,4 +1,4 @@
-﻿// <copyright file="Dynamics365LogisticsPartnerCatalogItemNameChanged.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="Dynamics365FinancePartnerInventoryItemNameChanged.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -16,7 +16,7 @@ using Hexalith.Infrastructure.Dynamics365Finance.Inventories;
 /// This event is sent each time the item name changes in Dynamics 365 for finance and operations.
 /// </summary>
 [DataContract]
-public class Dynamics365LogisticsPartnerCatalogItemNameChanged : Dynamics365LogisticsPartnerCatalogItemEvent
+public class Dynamics365FinancePartnerInventoryItemNameChanged : Dynamics365FinancePartnerInventoryItemEvent
 {
     /// <summary>
     /// Gets or sets the new item name.

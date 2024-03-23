@@ -21,7 +21,7 @@ namespace Hexalith.Domain.Products.Events;
 
 using System.Runtime.Serialization;
 
-using Hexalith.Domain.Products.ValueObjects;
+using Hexalith.Domain.ValueObjects;
 using Hexalith.Extensions;
 
 /// <summary>
@@ -45,7 +45,7 @@ public class ProductDimensionsChanged : ProductEvent
         string partitionId,
         string originId,
         string id,
-        IEnumerable<ProductDimension>? productDimensions,
+        IEnumerable<DimensionValue>? productDimensions,
         IEnumerable<IEnumerable<string>>? excludedDimensionCombinaisons)
         : base(partitionId, originId, id)
     {
@@ -73,5 +73,5 @@ public class ProductDimensionsChanged : ProductEvent
     /// </summary>
     /// <value>The product dimensions.</value>
     [DataMember(Order = 20)]
-    public IEnumerable<ProductDimension>? ProductDimensions { get; set; }
+    public IEnumerable<DimensionValue>? ProductDimensions { get; set; }
 }

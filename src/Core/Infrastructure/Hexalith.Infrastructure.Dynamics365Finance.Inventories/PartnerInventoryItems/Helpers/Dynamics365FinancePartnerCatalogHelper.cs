@@ -1,29 +1,18 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Infrastructure.Dynamics365Finance.Inventories
-// Author           : Jérôme Piquot
-// Created          : 10-09-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 10-31-2023
-// ***********************************************************************
-// <copyright file="Dynamics365FinancePartnerCatalogHelper.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="Dynamics365FinancePartnerCatalogHelper.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
+
 namespace Hexalith.Infrastructure.Dynamics365Finance.Inventories.PartnerInventoryItems.Helpers;
-
-using System.Diagnostics.CodeAnalysis;
-
-using Dapr.Actors.Runtime;
 
 using FluentValidation;
 
 using Hexalith.Extensions.Configuration;
+using Hexalith.Infrastructure.Dynamics365Finance.Helpers;
 using Hexalith.Infrastructure.Dynamics365Finance.Inventories.Configuration;
 using Hexalith.Infrastructure.Dynamics365Finance.Inventories.PartnerInventoryItems.BusinessEvents;
+using Hexalith.Infrastructure.Dynamics365Finance.Inventories.PartnerInventoryItems.Controllers;
 using Hexalith.Infrastructure.Dynamics365Finance.Inventories.PartnerInventoryItems.Validators;
 
 using Microsoft.Extensions.Configuration;
@@ -31,76 +20,61 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
 /// <summary>
-/// Class InventoriesHelper.
+/// Class Dynamics365FinancePartnerCatalogHelper.
 /// </summary>
 public static class Dynamics365FinancePartnerCatalogHelper
 {
     /// <summary>
-    /// Adds the dynamics365 finance partner catalog items.
+    /// Adds the necessary services for Dynamics 365 Finance partner inventory items.
     /// </summary>
-    /// <param name="services">The services.</param>
-    /// <param name="configuration">The configuration.</param>
-    /// <returns>IServiceCollection.</returns>
-    /// <exception cref="System.ArgumentNullException"></exception>
-    public static IServiceCollection AddDynamics365FinancePartnerCatalogItems(this IServiceCollection services, IConfiguration configuration)
+    /// <param name="services">The <see cref="IServiceCollection"/> to add the services to.</param>
+    /// <param name="configuration">The <see cref="IConfiguration"/> containing the configuration settings.</param>
+    /// <returns>The updated <see cref="IServiceCollection"/>.</returns>
+    public static IServiceCollection AddDynamics365FinancePartnerInventoryItems(this IServiceCollection services, IConfiguration configuration)
     {
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
         _ = services.ConfigureSettings<Dynamics365FinanceInventoriesSettings>(configuration);
         return services
-            .AddDynamics365FinancePartnerCatalogItemsClient(configuration)
-            .AddDynamics365FinancePartnerCatalogItemsBusinessEvents(configuration);
+            .AddDynamics365FinancePartnerInventoryItemsClient(configuration)
+            .AddDynamics365FinancePartnerInventoryItemsBusinessEvents(configuration);
     }
 
     /// <summary>
-    /// Adds the dynamics365 finance partner catalog items business events.
+    /// Adds the necessary services for Dynamics 365 Finance partner inventory item business events.
     /// </summary>
-    /// <param name="services">The services.</param>
-    /// <param name="configuration">The configuration.</param>
-    /// <returns>IServiceCollection.</returns>
-    /// <exception cref="System.ArgumentNullException"></exception>
-    public static IServiceCollection AddDynamics365FinancePartnerCatalogItemsBusinessEvents(this IServiceCollection services, IConfiguration configuration)
+    /// <param name="services">The <see cref="IServiceCollection"/> to add the services to.</param>
+    /// <param name="configuration">The <see cref="IConfiguration"/> containing the configuration settings.</param>
+    /// <returns>The updated <see cref="IServiceCollection"/>.</returns>
+    public static IServiceCollection AddDynamics365FinancePartnerInventoryItemsBusinessEvents(this IServiceCollection services, IConfiguration configuration)
     {
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
-        _ = services
-            .ConfigureSettings<Dynamics365FinanceInventoriesSettings>(configuration);
-        services.TryAddSingleton<IValidator<Dynamics365LogisticsPartnerCatalogItemAdded>, Dynamics365LogisticsPartnerCatalogItemAddedValidator>();
-        services.TryAddSingleton<IValidator<Dynamics365LogisticsPartnerCatalogItemRemoved>, Dynamics365LogisticsPartnerCatalogItemRemovedValidator>();
-        services.TryAddSingleton<IValidator<Dynamics365LogisticsPartnerCatalogItemNameChanged>, Dynamics365LogisticsPartnerCatalogItemNameChangedValidator>();
-        services.TryAddSingleton<IValidator<Dynamics365LogisticsPartnerCatalogItemPriceChanged>, Dynamics365LogisticsPartnerCatalogItemPriceChangedValidator>();
+        services
+            .AddDynamics365FinanceBusinessEvents()
+            .TryAddSingleton<IValidator<Dynamics365FinancePartnerInventoryItemAdded>, Dynamics365FinancePartnerInventoryItemAddedValidator>();
+        services.TryAddSingleton<IValidator<Dynamics365FinancePartnerInventoryItemPriceChanged>, Dynamics365FinancePartnerInventoryItemPriceChangedValidator>();
+        services.TryAddSingleton<IValidator<Dynamics365FinancePartnerInventoryItemNameChanged>, Dynamics365FinancePartnerInventoryItemNameChangedValidator>();
+        services.TryAddSingleton<IValidator<Dynamics365FinancePartnerInventoryItemRemoved>, Dynamics365FinancePartnerInventoryItemRemovedValidator>();
+        _ = services.ConfigureSettings<Dynamics365FinanceInventoriesSettings>(configuration);
         _ = services
             .AddControllers()
-
-            // .AddApplicationPart(typeof(Dynamics365FinanceProductBarcodeBindingController).Assembly)
+            .AddApplicationPart(typeof(Dynamics365FinancePartnerInventoryItemBindingController).Assembly)
             .AddDapr();
         return services;
     }
 
     /// <summary>
-    /// Adds the dynamics365 finance partner catalog items client.
+    /// Adds the necessary services for Dynamics 365 Finance partner inventory item client.
     /// </summary>
-    /// <param name="services">The services.</param>
-    /// <param name="configuration">The configuration.</param>
-    /// <returns>IServiceCollection.</returns>
-    /// <exception cref="System.ArgumentNullException"></exception>
-    public static IServiceCollection AddDynamics365FinancePartnerCatalogItemsClient(this IServiceCollection services, IConfiguration configuration)
+    /// <param name="services">The <see cref="IServiceCollection"/> to add the services to.</param>
+    /// <param name="configuration">The <see cref="IConfiguration"/> containing the configuration settings.</param>
+    /// <returns>The updated <see cref="IServiceCollection"/>.</returns>
+    public static IServiceCollection AddDynamics365FinancePartnerInventoryItemsClient(this IServiceCollection services, IConfiguration configuration)
     {
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
 
         return services;
-    }
-
-    /// <summary>
-    /// Adds the dynamics365 finance projections.
-    /// </summary>
-    /// <param name="actors">The actors.</param>
-    /// <returns>ActorRegistrationCollection.</returns>
-    /// <exception cref="System.ArgumentNullException"></exception>
-    public static ActorRegistrationCollection AddDynamics365FinanceProjections([NotNull] this ActorRegistrationCollection actors)
-    {
-        ArgumentNullException.ThrowIfNull(actors);
-        return actors;
     }
 }

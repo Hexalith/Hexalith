@@ -35,19 +35,19 @@ public static class PartiesWebApiHelpers
     /// Adds the customer projections.
     /// </summary>
     /// <param name="services">The services.</param>
-    /// <param name="appName">Name of the application.</param>
+    /// <param name="applicationId">Name of the application.</param>
     /// <returns>IServiceCollection.</returns>
     /// <exception cref="System.ArgumentNullException">null.</exception>
-    public static IServiceCollection AddCustomerProjections(this IServiceCollection services, string appName)
+    public static IServiceCollection AddCustomerProjections(this IServiceCollection services, string applicationId)
     {
         ArgumentNullException.ThrowIfNull(services);
-        ArgumentException.ThrowIfNullOrWhiteSpace(appName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(applicationId);
         services.TryAddScoped<IProjectionUpdateHandler<SnapshotEvent>, PartiesSnapshotHandler>();
         services.TryAddScoped<IProjectionUpdateHandler<CustomerInformationChanged>, CustomerInformationChangedProjectionUpdateHandler>();
         services.TryAddScoped<IProjectionUpdateHandler<CustomerRegistered>, CustomerRegisteredProjectionUpdateHandler>();
         services.TryAddScoped<IProjectionUpdateHandler<IntercompanyDropshipDeliveryForCustomerDeselected>, IntercompanyDropshipDeliveryForCustomerDeselectedProjectionUpdateHandler>();
         services.TryAddScoped<IProjectionUpdateHandler<IntercompanyDropshipDeliveryForCustomerSelected>, IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler>();
-        _ = services.AddActorProjectionFactory<Customer>(appName);
+        _ = services.AddActorProjectionFactory<Customer>(applicationId);
         _ = services
          .AddControllers()
          .AddApplicationPart(typeof(CustomerIntegrationEventsController).Assembly)

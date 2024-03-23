@@ -23,16 +23,16 @@ using Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents;
 using Hexalith.Infrastructure.Dynamics365Finance.Inventories.PartnerInventoryItems.BusinessEvents;
 
 /// <summary>
-/// Class Dynamics365LogisticsPartnerCatalogItemChangePriceValidator.
-/// Implements the <see cref="Dynamics365LogisticsPartnerCatalogCommandValidator{Dynamics365LogisticsPartnerCatalogItemChangePrice}" />.
+/// Class Dynamics365FinancePartnerInventoryItemChangePriceValidator.
+/// Implements the <see cref="Dynamics365LogisticsPartnerCatalogCommandValidator{Dynamics365FinancePartnerInventoryItemChangePrice}" />.
 /// </summary>
-/// <seealso cref="Dynamics365LogisticsPartnerCatalogCommandValidator{Dynamics365LogisticsPartnerCatalogItemChangePrice}" />
-public class Dynamics365LogisticsPartnerCatalogItemPriceChangedValidator : Dynamics365BusinessEventValidator<Dynamics365LogisticsPartnerCatalogItemPriceChanged>
+/// <seealso cref="Dynamics365LogisticsPartnerCatalogCommandValidator{Dynamics365FinancePartnerInventoryItemChangePrice}" />
+public class Dynamics365FinancePartnerInventoryItemPriceChangedValidator : Dynamics365BusinessEventValidator<Dynamics365FinancePartnerInventoryItemPriceChanged>
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="Dynamics365LogisticsPartnerCatalogItemPriceChangedValidator" /> class.
+    /// Initializes a new instance of the <see cref="Dynamics365FinancePartnerInventoryItemPriceChangedValidator" /> class.
     /// </summary>
-    public Dynamics365LogisticsPartnerCatalogItemPriceChangedValidator()
+    public Dynamics365FinancePartnerInventoryItemPriceChangedValidator()
     {
         _ = RuleFor(x => x.NewPrice)
            .GreaterThanOrEqualTo(0);

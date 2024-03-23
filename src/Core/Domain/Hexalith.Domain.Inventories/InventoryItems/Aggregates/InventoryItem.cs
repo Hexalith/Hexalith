@@ -23,6 +23,7 @@ using Hexalith.Domain.Events;
 using Hexalith.Domain.Exceptions;
 using Hexalith.Domain.InventoryItems.Entities;
 using Hexalith.Domain.InventoryItems.Events;
+using Hexalith.Domain.ValueObjects;
 
 /// <summary>
 /// Class InventoryItem.
@@ -41,9 +42,10 @@ public record InventoryItem(
     [property: DataMember] string CompanyId,
     [property: DataMember] string OriginId,
     [property: DataMember] string Id,
+    [property: DataMember] IEnumerable<DimensionValue>? Dimensions,
     [property: DataMember] string Name,
     [property: DataMember] string? Description,
-    [property: DataMember] IEnumerable<InventoryItemBarcode> Barcodes) : Aggregate
+    [property: DataMember] IEnumerable<InventoryItemBarcode>? Barcodes) : Aggregate
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="InventoryItem" /> class.
@@ -55,6 +57,7 @@ public record InventoryItem(
               inventoryItem.CompanyId,
               inventoryItem.OriginId,
               inventoryItem.Id,
+              inventoryItem.Dimensions,
               inventoryItem.Name,
               inventoryItem.Description,
               [])
@@ -65,23 +68,7 @@ public record InventoryItem(
     /// Initializes a new instance of the <see cref="InventoryItem"/> class.
     /// </summary>
     public InventoryItem()
-        : this(string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, [])
-    {
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="InventoryItem" /> class.
-    /// </summary>
-    /// <param name="inventoryItem">The InventoryItem.</param>
-    public InventoryItem(InventoryItemInformationChanged inventoryItem)
-        : this(
-              (inventoryItem ?? throw new ArgumentNullException(nameof(inventoryItem))).PartitionId,
-              inventoryItem.CompanyId,
-              inventoryItem.OriginId,
-              inventoryItem.Id,
-              inventoryItem.Name,
-              inventoryItem.Description,
-              [])
+        : this(string.Empty, string.Empty, string.Empty, string.Empty, null, string.Empty, null, null)
     {
     }
 
@@ -91,7 +78,7 @@ public record InventoryItem(
         return (domainEvent switch
         {
             InventoryItemBarcodeEvent barcodeEvent => this.ApplyBarcodeEvent(barcodeEvent),
-            InventoryItemInformationChanged changed => new InventoryItem(changed),
+            InventoryItemDescriptionChanged changed => this with { Name = changed.Name, Description = changed.Description },
             InventoryItemAdded => throw new InvalidAggregateEventException(this, domainEvent, true),
             _ => throw new InvalidAggregateEventException(this, domainEvent, false),
         }, []);

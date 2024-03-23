@@ -39,7 +39,7 @@ public class ChangeInventoryItemInformationHandler : CommandHandler<ChangeInvent
     public override async Task<IEnumerable<BaseMessage>> DoAsync([NotNull] ChangeInventoryItemInformation command, IAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
-        return await Task.FromResult<IEnumerable<BaseMessage>>([new InventoryItemInformationChanged(
+        return await Task.FromResult<IEnumerable<BaseMessage>>([new InventoryItemDescriptionChanged(
                     command.PartitionId,
                     command.CompanyId,
                     command.OriginId,

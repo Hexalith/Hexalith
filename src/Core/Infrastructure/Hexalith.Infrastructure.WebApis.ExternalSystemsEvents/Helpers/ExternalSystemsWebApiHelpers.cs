@@ -37,21 +37,21 @@ public static class ExternalSystemsWebApiHelpers
     /// Adds the external systems mapper subscription.
     /// </summary>
     /// <param name="services">The services.</param>
-    /// <param name="applicationName">Name of the application.</param>
+    /// <param name="applicationId">Name of the application.</param>
     /// <param name="aggregateNames">The aggregate names.</param>
     /// <returns>IServiceCollection.</returns>
     public static IServiceCollection AddExternalSystemsMapperSubscription(
         this IServiceCollection services,
-        [NotNull] string applicationName,
+        [NotNull] string applicationId,
         [NotNull] IEnumerable<string> aggregateNames)
     {
         ArgumentNullException.ThrowIfNull(services);
-        ArgumentException.ThrowIfNullOrWhiteSpace(applicationName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(applicationId);
         ArgumentNullException.ThrowIfNull(aggregateNames);
 
-        services.TryAddScoped<IProjectionUpdateHandler<ExternalSystemReferenceAdded>>(s => new ExternalSystemReferenceAddedMapperUpdateHandler(applicationName, aggregateNames));
-        services.TryAddScoped<IProjectionUpdateHandler<ExternalSystemReferenceRemoved>>(s => new ExternalSystemReferenceRemovedMapperUpdateHandler(applicationName, aggregateNames));
-        services.TryAddScoped<IExternalReferenceMapperService>(s => new ExternalReferenceMapperService(applicationName));
+        services.TryAddScoped<IProjectionUpdateHandler<ExternalSystemReferenceAdded>>(s => new ExternalSystemReferenceAddedMapperUpdateHandler(applicationId, aggregateNames));
+        services.TryAddScoped<IProjectionUpdateHandler<ExternalSystemReferenceRemoved>>(s => new ExternalSystemReferenceRemovedMapperUpdateHandler(applicationId, aggregateNames));
+        services.TryAddScoped<IExternalReferenceMapperService>(s => new ExternalReferenceMapperService(applicationId));
         _ = services
          .AddControllers()
          .AddApplicationPart(typeof(ExternalSystemsIntegrationEventsController).Assembly)

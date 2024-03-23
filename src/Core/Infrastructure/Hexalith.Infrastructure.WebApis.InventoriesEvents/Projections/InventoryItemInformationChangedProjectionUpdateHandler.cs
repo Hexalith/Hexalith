@@ -29,7 +29,7 @@ using Microsoft.Extensions.Logging;
 /// Implements the <see cref="IntegrationEventHandlerBase{InventoryItemInformationChanged}" />.
 /// </summary>
 /// <seealso cref="IntegrationEventHandlerBase{InventoryItemInformationChanged}" />
-public class InventoryItemInformationChangedProjectionUpdateHandler : InventoryItemDetailsProjectionUpdateHandler<InventoryItemInformationChanged>
+public class InventoryItemInformationChangedProjectionUpdateHandler : InventoryItemDetailsProjectionUpdateHandler<InventoryItemDescriptionChanged>
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="InventoryItemInformationChangedProjectionUpdateHandler"/> class.

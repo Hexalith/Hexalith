@@ -42,7 +42,7 @@ public static class InventoriesWebApiHelpers
     {
         ArgumentNullException.ThrowIfNull(services);
         ArgumentException.ThrowIfNullOrWhiteSpace(appName);
-        services.TryAddScoped<IProjectionUpdateHandler<InventoryItemInformationChanged>, InventoryItemInformationChangedProjectionUpdateHandler>();
+        services.TryAddScoped<IProjectionUpdateHandler<InventoryItemDescriptionChanged>, InventoryItemInformationChangedProjectionUpdateHandler>();
         services.TryAddScoped<IProjectionUpdateHandler<InventoryItemAdded>, InventoryItemAddedProjectionUpdateHandler>();
         _ = services.AddActorProjectionFactory<InventoryItemDetailsProjection>(appName);
         _ = services

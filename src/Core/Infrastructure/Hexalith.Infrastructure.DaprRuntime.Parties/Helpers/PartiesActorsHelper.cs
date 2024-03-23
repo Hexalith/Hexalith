@@ -46,13 +46,13 @@ public static class PartiesActorsHelper
     /// Adds the parties projections.
     /// </summary>
     /// <param name="actors">The actors.</param>
-    /// <param name="applicationName">Name of the application.</param>
+    /// <param name="applicationId">Name of the application.</param>
     /// <returns>ActorRegistrationCollection.</returns>
     /// <exception cref="System.ArgumentNullException">null.</exception>
-    public static ActorRegistrationCollection AddPartiesProjections([NotNull] this ActorRegistrationCollection actors, string applicationName)
+    public static ActorRegistrationCollection AddPartiesProjections([NotNull] this ActorRegistrationCollection actors, string applicationId)
     {
         ArgumentNullException.ThrowIfNull(actors);
-        actors.RegisterProjectionActor<Customer>(applicationName);
+        actors.RegisterProjectionActor<Customer>(applicationId);
         return actors;
     }
 }

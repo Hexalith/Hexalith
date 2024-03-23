@@ -44,6 +44,7 @@ public class AddInventoryItemHandler : CommandHandler<AddInventoryItem>
                     command.CompanyId,
                     command.OriginId,
                     command.Id,
+                    command.Dimensions,
                     command.Name,
                     command.Description)
                     ]).ConfigureAwait(false);

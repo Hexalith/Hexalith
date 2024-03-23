@@ -18,13 +18,12 @@ namespace Hexalith.Application.Inventories.InventoryItems.Commands;
 
 using System.Runtime.Serialization;
 
+using Hexalith.Domain.ValueObjects;
 using Hexalith.Extensions;
 
 /// <summary>
-/// Class InventoryItemAdded.
-/// Implements the <see cref="InventoryItemCommand" />.
+/// Represents a command to add an inventory item.
 /// </summary>
-/// <seealso cref="InventoryItemCommand" />
 [DataContract]
 [Serializable]
 public class AddInventoryItem : InventoryItemCommand
@@ -36,18 +35,20 @@ public class AddInventoryItem : InventoryItemCommand
     /// <param name="companyId">The company identifier.</param>
     /// <param name="originId">The origin identifier.</param>
     /// <param name="id">The identifier.</param>
+    /// <param name="dimensions">The dimensions.</param>
     /// <param name="name">The name.</param>
     /// <param name="description">The description.</param>
-    /// <param name="date">The date.</param>
     public AddInventoryItem(
         string partitionId,
         string companyId,
         string originId,
         string id,
+        IEnumerable<DimensionValue>? dimensions,
         string name,
         string? description)
         : base(partitionId, companyId, originId, id)
     {
+        Dimensions = dimensions;
         Name = name;
         Description = description;
     }
@@ -59,16 +60,23 @@ public class AddInventoryItem : InventoryItemCommand
     public AddInventoryItem() => Name = Description = string.Empty;
 
     /// <summary>
-    /// Gets the description.
+    /// Gets or sets the description of the inventory item.
     /// </summary>
     /// <value>The description.</value>
-    [DataMember(Order = 21)]
-    public string? Description { get; }
+    [DataMember(Order = 22)]
+    public string? Description { get; set; }
 
     /// <summary>
-    /// Gets or sets the name.
+    /// Gets or sets the dimensions of the inventory item.
+    /// </summary>
+    /// <value>The dimensions.</value>
+    [DataMember(Order = 20)]
+    public IEnumerable<DimensionValue>? Dimensions { get; set; }
+
+    /// <summary>
+    /// Gets or sets the name of the inventory item.
     /// </summary>
     /// <value>The name.</value>
-    [DataMember(Order = 20)]
+    [DataMember(Order = 21)]
     public string Name { get; set; }
 }

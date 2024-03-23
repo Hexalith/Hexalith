@@ -18,6 +18,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\Core\Application\Hexalith.Application.Sales\Hexalith.Application.Sales.csproj" />
 		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime.Parties.Abstractions\Hexalith.Infrastructure.DaprRuntime.Parties.Abstractions.csproj" />
+		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365Finance.Inventories\Hexalith.Infrastructure.Dynamics365Finance.Inventories.csproj" />
 		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365Finance.Parties\Hexalith.Infrastructure.Dynamics365Finance.Parties.csproj" />
 		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.WebApis.ExternalSystemsEvents\Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.csproj" />
 		<ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.WebApis.PartiesEvents\Hexalith.Infrastructure.WebApis.PartiesEvents.csproj" />

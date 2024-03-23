@@ -20,10 +20,10 @@ using Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents;
 using Hexalith.Infrastructure.Dynamics365Finance.Inventories.PartnerInventoryItems.BusinessEvents;
 
 /// <summary>
-/// Class Dynamics365LogisticsPartnerCatalogItemRemoveValidator.
-/// Implements the <see cref="Dynamics365LogisticsPartnerCatalogCommandValidator{Dynamics365LogisticsPartnerCatalogItemRemove}" />.
+/// Class Dynamics365FinancePartnerInventoryItemRemoveValidator.
+/// Implements the <see cref="Dynamics365LogisticsPartnerCatalogCommandValidator{Dynamics365FinancePartnerInventoryItemRemove}" />.
 /// </summary>
-/// <seealso cref="Dynamics365LogisticsPartnerCatalogCommandValidator{Dynamics365LogisticsPartnerCatalogItemRemove}" />
-public class Dynamics365LogisticsPartnerCatalogItemRemovedValidator : Dynamics365BusinessEventValidator<Dynamics365LogisticsPartnerCatalogItemRemoved>
+/// <seealso cref="Dynamics365LogisticsPartnerCatalogCommandValidator{Dynamics365FinancePartnerInventoryItemRemove}" />
+public class Dynamics365FinancePartnerInventoryItemRemovedValidator : Dynamics365BusinessEventValidator<Dynamics365FinancePartnerInventoryItemRemoved>
 {
 }

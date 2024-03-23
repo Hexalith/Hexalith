@@ -1,4 +1,4 @@
-﻿// <copyright file="Dynamics365LogisticsPartnerCatalogItemRemoved.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="Dynamics365FinancePartnerInventoryItemRemoved.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -17,7 +17,7 @@ using Hexalith.Infrastructure.Dynamics365Finance.Inventories;
 /// Dynamics 365 for finance and operations.
 /// </summary>
 [DataContract]
-public class Dynamics365LogisticsPartnerCatalogItemRemoved : Dynamics365LogisticsPartnerCatalogItemEvent
+public class Dynamics365FinancePartnerInventoryItemRemoved : Dynamics365FinancePartnerInventoryItemEvent
 {
     /// <inheritdoc/>
     public override IEnumerable<BaseCommand> ToCommands()

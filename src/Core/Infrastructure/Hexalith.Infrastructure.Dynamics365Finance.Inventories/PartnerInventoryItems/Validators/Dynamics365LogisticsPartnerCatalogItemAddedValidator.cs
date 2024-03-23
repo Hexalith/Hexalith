@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 01-13-2023
 // ***********************************************************************
-// <copyright file="Dynamics365LogisticsPartnerCatalogItemAddedValidator.cs" company="Fiveforty SAS Paris France">
+// <copyright file="Dynamics365FinancePartnerInventoryItemAddedValidator.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -22,16 +22,16 @@ using Hexalith.Infrastructure.Dynamics365Finance.BusinessEvents;
 using Hexalith.Infrastructure.Dynamics365Finance.Inventories.PartnerInventoryItems.BusinessEvents;
 
 /// <summary>
-/// Class Dynamics365LogisticsPartnerCatalogItemAddValidator.
-/// Implements the <see cref="Dynamics365LogisticsPartnerCatalogCommandValidator{Dynamics365LogisticsPartnerCatalogItemAdd}" />.
+/// Class Dynamics365FinancePartnerInventoryItemAddValidator.
+/// Implements the <see cref="Dynamics365LogisticsPartnerCatalogCommandValidator{Dynamics365FinancePartnerInventoryItemAdd}" />.
 /// </summary>
-/// <seealso cref="Dynamics365LogisticsPartnerCatalogCommandValidator{Dynamics365LogisticsPartnerCatalogItemAdd}" />
-public class Dynamics365LogisticsPartnerCatalogItemAddedValidator : Dynamics365BusinessEventValidator<Dynamics365LogisticsPartnerCatalogItemAdded>
+/// <seealso cref="Dynamics365LogisticsPartnerCatalogCommandValidator{Dynamics365FinancePartnerInventoryItemAdd}" />
+public class Dynamics365FinancePartnerInventoryItemAddedValidator : Dynamics365BusinessEventValidator<Dynamics365FinancePartnerInventoryItemAdded>
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="Dynamics365LogisticsPartnerCatalogItemAddedValidator"/> class.
+    /// Initializes a new instance of the <see cref="Dynamics365FinancePartnerInventoryItemAddedValidator"/> class.
     /// </summary>
-    public Dynamics365LogisticsPartnerCatalogItemAddedValidator()
+    public Dynamics365FinancePartnerInventoryItemAddedValidator()
     {
         _ = RuleFor(x => x.LogisticsPartnerId)
            .NotEmpty();

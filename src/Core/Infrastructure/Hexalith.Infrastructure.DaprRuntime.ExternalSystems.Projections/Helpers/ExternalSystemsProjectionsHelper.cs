@@ -44,20 +44,20 @@ public static class ExternalSystemsProjectionsHelper
     /// </summary>
     /// <param name="services">The services.</param>
     /// <param name="configuration">The configuration.</param>
-    /// <param name="applicationName">Name of the application.</param>
+    /// <param name="applicationId">Name of the application.</param>
     /// <param name="aggregateNames">The aggregate names.</param>
     /// <returns>IServiceCollection.</returns>
     /// <exception cref="System.ArgumentNullException">null.</exception>
     public static IServiceCollection AddDaprExternalSystemsMapper(
         [NotNull] this IServiceCollection services,
         [NotNull] IConfiguration configuration,
-        [NotNull] string applicationName)
+        [NotNull] string applicationId)
     {
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
         services
             .ConfigureSettings<ExternalSystemsProjectionsSettings>(configuration)
-            .TryAddScoped<IExternalReferenceMapperService>(s => new ExternalReferenceMapperService(applicationName));
+            .TryAddScoped<IExternalReferenceMapperService>(s => new ExternalReferenceMapperService(applicationId));
         return services;
     }
 
@@ -65,21 +65,21 @@ public static class ExternalSystemsProjectionsHelper
     /// Adds the external systems mapper.
     /// </summary>
     /// <param name="actors">The actors.</param>
-    /// <param name="applicationName">Name of the application.</param>
+    /// <param name="applicationId">Name of the application.</param>
     /// <param name="aggregateNames">The aggregate names.</param>
     /// <returns>ActorRegistrationCollection.</returns>
     /// <exception cref="System.ArgumentNullException">null.</exception>
     public static ActorRegistrationCollection AddExternalSystemsMapper(
         [NotNull] this ActorRegistrationCollection actors,
-        [NotNull] string applicationName,
+        [NotNull] string applicationId,
         [NotNull] IEnumerable<string> aggregateNames)
     {
         ArgumentNullException.ThrowIfNull(actors);
         ArgumentNullException.ThrowIfNull(aggregateNames);
         foreach (string aggregateName in aggregateNames)
         {
-            actors.RegisterActor<KeyValueActor>(GetAggregateToExternalReferenceActorName(applicationName, aggregateName));
-            actors.RegisterActor<KeyValueActor>(GetExternalReferenceToAggregateActorName(applicationName, aggregateName));
+            actors.RegisterActor<KeyValueActor>(GetAggregateToExternalReferenceActorName(applicationId, aggregateName));
+            actors.RegisterActor<KeyValueActor>(GetExternalReferenceToAggregateActorName(applicationId, aggregateName));
         }
 
         return actors;
@@ -108,49 +108,49 @@ public static class ExternalSystemsProjectionsHelper
     /// <summary>
     /// Gets the aggregate to external reference actor.
     /// </summary>
-    /// <param name="applicationName">Name of the application.</param>
+    /// <param name="applicationId">Name of the application.</param>
     /// <param name="aggregateName">Name of the aggregate.</param>
     /// <param name="aggregateId">The aggregate identifier.</param>
     /// <param name="systemId">The system identifier.</param>
     /// <returns>IKeyValueActor.</returns>
-    public static IKeyValueActor GetAggregateToExternalReferenceActor(string applicationName, string aggregateName, string aggregateId, string systemId)
+    public static IKeyValueActor GetAggregateToExternalReferenceActor(string applicationId, string aggregateName, string aggregateId, string systemId)
     {
         return ActorProxy.Create<IKeyValueActor>(
             new ActorId(CreateExternalReferenceMapperId(aggregateId, systemId)),
-            GetAggregateToExternalReferenceActorName(applicationName, aggregateName));
+            GetAggregateToExternalReferenceActorName(applicationId, aggregateName));
     }
 
     /// <summary>
     /// Gets the name of the aggregate to external reference actor.
     /// </summary>
-    /// <param name="applicationName">Name of the application.</param>
+    /// <param name="applicationId">Name of the application.</param>
     /// <param name="aggregateName">Name of the aggregate.</param>
     /// <returns>System.String.</returns>
-    public static string GetAggregateToExternalReferenceActorName(string applicationName, string aggregateName) => applicationName + aggregateName + "ToExternalReference";
+    public static string GetAggregateToExternalReferenceActorName(string applicationId, string aggregateName) => applicationId + aggregateName + "ToExternalReference";
 
     /// <summary>
     /// Gets the external reference to aggregate actor.
     /// </summary>
-    /// <param name="applicationName">Name of the application.</param>
+    /// <param name="applicationId">Name of the application.</param>
     /// <param name="aggregateName">Name of the aggregate.</param>
     /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
     /// <param name="systemId">The system identifier.</param>
     /// <param name="externalId">The external identifier.</param>
     /// <returns>IKeyValueActor.</returns>
-    public static IKeyValueActor GetExternalReferenceToAggregateActor(string applicationName, string aggregateName, string partitionId, string companyId, string systemId, string externalId)
+    public static IKeyValueActor GetExternalReferenceToAggregateActor(string applicationId, string aggregateName, string partitionId, string companyId, string systemId, string externalId)
     {
         return ActorProxy.Create<IKeyValueActor>(
             new ActorId(CreateExternalReferenceMapperId(partitionId, companyId, systemId, externalId)),
-            GetAggregateToExternalReferenceActorName(applicationName, aggregateName));
+            GetAggregateToExternalReferenceActorName(applicationId, aggregateName));
     }
 
     /// <summary>
     /// Gets the name of the external reference to aggregate actor.
     /// </summary>
-    /// <param name="applicationName">Name of the application.</param>
+    /// <param name="applicationId">Name of the application.</param>
     /// <param name="aggregateName">Name of the aggregate.</param>
     /// <returns>System.String.</returns>
-    public static string GetExternalReferenceToAggregateActorName(string applicationName, string aggregateName)
-        => applicationName + "ExternalReferenceTo" + aggregateName;
+    public static string GetExternalReferenceToAggregateActorName(string applicationId, string aggregateName)
+        => applicationId + "ExternalReferenceTo" + aggregateName;
 }

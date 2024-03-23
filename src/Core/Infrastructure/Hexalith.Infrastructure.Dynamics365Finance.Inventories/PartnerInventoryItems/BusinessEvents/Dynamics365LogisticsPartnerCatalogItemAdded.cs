@@ -15,7 +15,7 @@ using Hexalith.Application.Inventories.PartnerInventoryItems.Commands;
 /// This event is sent each time a new item is added to the external logistics partner catalog.
 /// </summary>
 [DataContract]
-public class Dynamics365LogisticsPartnerCatalogItemAdded : Dynamics365LogisticsPartnerCatalogItemEvent
+public class Dynamics365FinancePartnerInventoryItemAdded : Dynamics365FinancePartnerInventoryItemEvent
 {
     /// <summary>
     /// Gets or sets the item color.
