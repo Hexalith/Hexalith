@@ -7,16 +7,16 @@
 		<Nullable>enable</Nullable>
 		<IsAspireHost>true</IsAspireHost>
 	</PropertyGroup>
-
 	<ItemGroup>
-		<PackageReference Include="Aspire.Hosting" Version="8.0.0-preview.3.24105.21" />
-		<PackageReference Include="Aspire.Hosting.Dapr" Version="8.0.0-preview.3.24105.21" />
+		<PackageReference Include="Hexalith.Infrastructure.AspireService.Hosting" Version="$(HexalithVersion)" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\..\Core\Infrastructure\Hexalith.Infrastructure.AspireService.Hosting\Hexalith.Infrastructure.AspireService.Hosting.csproj" />
 	  <ProjectReference Include="..\..\Servers\Hexalith.Server.Dynamics365Finance\Hexalith.Server.Dynamics365Finance.csproj" />
 	  <ProjectReference Include="..\..\Servers\Hexalith.Server.ExternalSystems\Hexalith.Server.ExternalSystems.csproj" />
 	  <ProjectReference Include="..\..\Servers\Hexalith.Server.FrontApi\Hexalith.Server.FrontApi.csproj" />
+	  <ProjectReference Include="..\..\Servers\Hexalith.Server.Inventories\Hexalith.Server.Inventories.csproj" />
 	  <ProjectReference Include="..\..\Servers\Hexalith.Server.Parties\Hexalith.Server.Parties.csproj" />
 	  <ProjectReference Include="..\..\Servers\Hexalith.Server.Sales\Hexalith.Server.Sales.csproj" />
 	</ItemGroup>
