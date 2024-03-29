@@ -32,3 +32,4 @@
 // {
 //    _ = app.AddProject<Projects.Hexalith_Server_Inventories>("inventories");
 // }
+Console.WriteLine("Dummy");
