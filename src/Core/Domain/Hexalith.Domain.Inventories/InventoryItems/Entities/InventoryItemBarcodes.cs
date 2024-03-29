@@ -36,12 +36,17 @@ using Hexalith.Domain.InventoryItems.Events;
 /// <seealso cref="IEquatable{InventoryUnitConversion}" />
 public static class InventoryItemBarcodes
 {
-    /// <inheritdoc/>
+    /// <summary>
+    /// Applies a barcode event to the inventory item aggregate.
+    /// </summary>
+    /// <param name="aggregate">The inventory item aggregate.</param>
+    /// <param name="barcodeEvent">The barcode event to apply.</param>
+    /// <returns>The updated inventory item aggregate.</returns>
     public static InventoryItem ApplyBarcodeEvent(this InventoryItem aggregate, InventoryItemBarcodeEvent barcodeEvent)
     {
         ArgumentNullException.ThrowIfNull(barcodeEvent);
         ArgumentNullException.ThrowIfNull(aggregate);
-        ImmutableList<InventoryItemBarcode> barcodesWithoutCurrent = aggregate.Barcodes.Where(p => p.Id == barcodeEvent.Barcode).ToImmutableList();
+        ImmutableList<InventoryItemBarcode> barcodesWithoutCurrent = aggregate.Barcodes?.Where(p => p.Id == barcodeEvent.Barcode).ToImmutableList() ?? [];
         if (barcodeEvent is InventoryItemBarcodeDisassociated)
         {
             return aggregate with
@@ -58,7 +63,7 @@ public static class InventoryItemBarcodes
             };
         }
 
-        InventoryItemBarcode? current = aggregate.Barcodes.FirstOrDefault(p => p.Id == barcodeEvent.Barcode);
+        InventoryItemBarcode? current = aggregate.Barcodes?.FirstOrDefault(p => p.Id == barcodeEvent.Barcode);
         return current is null
             ? throw new InvalidAggregateEventException(
                 aggregate,

@@ -11,7 +11,6 @@
     <ProjectReference Include="..\..\src\Core\Domain\Hexalith.Domain.Inventories\Hexalith.Domain.Inventories.csproj" />
     <ProjectReference Include="..\..\src\Core\Domain\Hexalith.Domain.Sales\Hexalith.Domain.Sales.csproj" />
     <ProjectReference Include="..\..\src\Core\Domain\Hexalith.Domain.Surveys\Hexalith.Domain.Surveys.csproj" />
-    <ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.AzureCloud\Hexalith.Infrastructure.AzureCloud.csproj" />
     <ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365Finance.Parties\Hexalith.Infrastructure.Dynamics365Finance.Parties.csproj" />
     <ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365Finance.TestMocks\Hexalith.Infrastructure.Dynamics365Finance.TestMocks.csproj" />
     <ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365Finance\Hexalith.Infrastructure.Dynamics365Finance.csproj" />

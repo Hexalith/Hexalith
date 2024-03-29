@@ -15,7 +15,7 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 public record DummyEntity : ODataElement, IODataElement
 {
     [JsonConstructor]
-    public DummyEntity(string? etag, string dataAreaId, string message)
+    public DummyEntity(string etag, string dataAreaId, string message)
         : base(etag, dataAreaId)
     {
         ArgumentException.ThrowIfNullOrEmpty(message);

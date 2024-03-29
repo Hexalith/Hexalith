@@ -116,6 +116,9 @@ public partial class ResilientCommandProcessor
                     case RetryStatus.Stopped:
                         taskProcessor = taskProcessor.Cancel();
                         return (taskProcessor, [new CommandProcessingFailed(string.Empty, command, taskProcessor)]);
+
+                    default:
+                        throw new NotSupportedException($"Task processor can retry option {taskProcessor.CanRetry} not supported.");
                 }
 
                 break;
@@ -128,6 +131,9 @@ public partial class ResilientCommandProcessor
 
             case TaskProcessorStatus.Completed:
                 return (taskProcessor, Array.Empty<BaseMessage>());
+
+            default:
+                throw new NotSupportedException($"Task processor status option {taskProcessor.Status} not supported.");
         }
 
         try

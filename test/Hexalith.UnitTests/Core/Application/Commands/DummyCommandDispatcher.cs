@@ -41,7 +41,8 @@ internal class DummyCommandDispatcher : ICommandDispatcher
     /// <param name="aggregate">The aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;IEnumerable&lt;BaseMessage&gt;&gt;.</returns>
-    public async Task<IEnumerable<BaseMessage>> DoAsync(ICommand command, IAggregate? aggregate, CancellationToken cancellationToken) => await Task.FromResult<IEnumerable<BaseMessage>>([new CommandDispatchDoEvent()]);
+    public async Task<IEnumerable<BaseMessage>> DoAsync(ICommand command, IAggregate aggregate, CancellationToken cancellationToken)
+        => await Task.FromResult<IEnumerable<BaseMessage>>([new CommandDispatchDoEvent()]);
 
     /// <summary>
     /// Uns the do asynchronous.
@@ -50,5 +51,6 @@ internal class DummyCommandDispatcher : ICommandDispatcher
     /// <param name="aggregate">The aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;IEnumerable&lt;BaseMessage&gt;&gt;.</returns>
-    public async Task<IEnumerable<BaseMessage>> UnDoAsync(ICommand command, IAggregate? aggregate, CancellationToken cancellationToken) => await Task.FromResult<IEnumerable<BaseMessage>>([new CommandDispatchUndoEvent()]);
+    public async Task<IEnumerable<BaseMessage>> UnDoAsync(ICommand command, IAggregate aggregate, CancellationToken cancellationToken)
+        => await Task.FromResult<IEnumerable<BaseMessage>>([new CommandDispatchUndoEvent()]);
 }

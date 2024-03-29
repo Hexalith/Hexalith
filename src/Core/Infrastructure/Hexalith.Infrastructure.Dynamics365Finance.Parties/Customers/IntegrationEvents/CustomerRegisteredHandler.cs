@@ -40,7 +40,9 @@ public partial class CustomerRegisteredHandler : IntegrationEventHandlerBase<Cus
     /// <summary>
     /// The logger.
     /// </summary>
+#pragma warning disable IDE0052 // Remove unread private members
     private readonly ILogger<CustomerRegisteredHandler> _logger;
+#pragma warning restore IDE0052 // Remove unread private members
 
     /// <summary>
     /// The organization settings.
@@ -61,7 +63,7 @@ public partial class CustomerRegisteredHandler : IntegrationEventHandlerBase<Cus
     /// <param name="partiesSettings">The parties settings.</param>
     /// <param name="organizationSettings">The organization settings.</param>
     /// <param name="logger">The logger.</param>
-    /// <exception cref="System.ArgumentNullException"></exception>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
     public CustomerRegisteredHandler(
         IDynamics365FinanceCustomerService customerService,
         IOptions<Dynamics365FinancePartiesSettings> partiesSettings,

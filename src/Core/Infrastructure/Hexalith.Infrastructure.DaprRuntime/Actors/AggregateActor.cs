@@ -33,36 +33,31 @@ using Microsoft.Extensions.Logging;
 /// Logistics partner catalog item aggregate actor interface <see cref="BspkSalesInvoice" />.
 /// Extends the <see cref="IActor" />.
 /// </summary>
-public partial class AggregateActor : AggregateActorBase, IAggregateActor
+/// <remarks>
+/// Initializes a new instance of the <see cref="AggregateActor"/> class.
+/// </remarks>
+/// <param name="host">The host.</param>
+/// <param name="commandDispatcher">The command dispatcher.</param>
+/// <param name="aggregateFactory">The aggregate factory.</param>
+/// <param name="dateTimeService">The date time service.</param>
+/// <param name="eventBus">The event bus.</param>
+/// <param name="notificationBus">The notification bus.</param>
+/// <param name="commandBus">The command bus.</param>
+/// <param name="requestBus">The request bus.</param>
+/// <param name="resiliencyPolicyProvider">The resiliency policy provider.</param>
+/// <param name="actorStateManager">The actor state manager.</param>
+public partial class AggregateActor(
+    ActorHost host,
+    ICommandDispatcher commandDispatcher,
+    IAggregateFactory aggregateFactory,
+    IDateTimeService dateTimeService,
+    IEventBus eventBus,
+    INotificationBus notificationBus,
+    ICommandBus commandBus,
+    IRequestBus requestBus,
+    IResiliencyPolicyProvider resiliencyPolicyProvider,
+    IActorStateManager? actorStateManager = null) : AggregateActorBase(host, commandDispatcher, aggregateFactory, dateTimeService, eventBus, notificationBus, commandBus, requestBus, resiliencyPolicyProvider, actorStateManager), IAggregateActor
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="AggregateActor"/> class.
-    /// </summary>
-    /// <param name="host">The host.</param>
-    /// <param name="commandDispatcher">The command dispatcher.</param>
-    /// <param name="aggregateFactory">The aggregate factory.</param>
-    /// <param name="dateTimeService">The date time service.</param>
-    /// <param name="eventBus">The event bus.</param>
-    /// <param name="notificationBus">The notification bus.</param>
-    /// <param name="commandBus">The command bus.</param>
-    /// <param name="requestBus">The request bus.</param>
-    /// <param name="resiliencyPolicyProvider">The resiliency policy provider.</param>
-    /// <param name="actorStateManager">The actor state manager.</param>
-    public AggregateActor(
-        ActorHost host,
-        ICommandDispatcher commandDispatcher,
-        IAggregateFactory aggregateFactory,
-        IDateTimeService dateTimeService,
-        IEventBus eventBus,
-        INotificationBus notificationBus,
-        ICommandBus commandBus,
-        IRequestBus requestBus,
-        IResiliencyPolicyProvider resiliencyPolicyProvider,
-        IActorStateManager? actorStateManager = null)
-        : base(host, commandDispatcher, aggregateFactory, dateTimeService, eventBus, notificationBus, commandBus, requestBus, resiliencyPolicyProvider, actorStateManager)
-    {
-    }
-
     /// <summary>
     /// Logs the processing commands information.
     /// </summary>

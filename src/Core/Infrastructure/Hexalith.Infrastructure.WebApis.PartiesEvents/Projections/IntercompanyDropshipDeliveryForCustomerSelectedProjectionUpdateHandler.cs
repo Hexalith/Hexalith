@@ -27,14 +27,10 @@ using Microsoft.Extensions.Logging;
 /// Implements the <see cref="Application.Events.IntegrationEventProjectionUpdateHandler{CustomerRegistered}" />.
 /// </summary>
 /// <seealso cref="Application.Events.IntegrationEventProjectionUpdateHandler{CustomerRegistered}" />
-public class IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler : CustomerProjectionUpdateHandler<IntercompanyDropshipDeliveryForCustomerSelected>
+/// <remarks>
+/// Initializes a new instance of the <see cref="IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler" /> class.
+/// </remarks>
+/// <param name="stateStoreProvider">The state store provider.</param>
+public class IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler(IActorProjectionFactory<Customer> factory, ILogger<IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler> logger) : CustomerProjectionUpdateHandler<IntercompanyDropshipDeliveryForCustomerSelected>(factory, logger)
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler" /> class.
-    /// </summary>
-    /// <param name="stateStoreProvider">The state store provider.</param>
-    public IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler(IActorProjectionFactory<Customer> factory, ILogger<IntercompanyDropshipDeliveryForCustomerSelectedProjectionUpdateHandler> logger)
-        : base(factory, logger)
-    {
-    }
 }

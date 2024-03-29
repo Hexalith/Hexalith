@@ -94,6 +94,9 @@ public class ResilientProjectionEventProcessor
                     case RetryStatus.Stopped:
                         taskProcessor = taskProcessor.Cancel();
                         return null;
+
+                    default:
+                        throw new NotSupportedException($"Task processor can retry option {taskProcessor.CanRetry} not supported.");
                 }
 
                 break;
@@ -104,8 +107,12 @@ public class ResilientProjectionEventProcessor
             case TaskProcessorStatus.Canceled:
             case TaskProcessorStatus.Completed:
                 return null;
+
+            default:
+                throw new NotSupportedException($"Task processor status option {taskProcessor.Status} not supported.");
         }
 
+#pragma warning disable CA1031 // Do not catch general exception types
         try
         {
             if (taskProcessor.Status == TaskProcessorStatus.Active)
@@ -118,6 +125,7 @@ public class ResilientProjectionEventProcessor
         {
             taskProcessor = taskProcessor.Fail($"An error occurred when executing command {baseEvent.TypeName} on {baseEvent.AggregateName}/{baseEvent.AggregateId}: {e.Message}", e.FullMessage());
         }
+#pragma warning restore CA1031 // Do not catch general exception types
 
         await _stateStoreProvider.SetStateAsync(nameof(TaskProcessor) + id, taskProcessor, cancellationToken).ConfigureAwait(false);
         return (taskProcessor.Status is TaskProcessorStatus.Completed or TaskProcessorStatus.Canceled) ? null : taskProcessor.RetryDate;

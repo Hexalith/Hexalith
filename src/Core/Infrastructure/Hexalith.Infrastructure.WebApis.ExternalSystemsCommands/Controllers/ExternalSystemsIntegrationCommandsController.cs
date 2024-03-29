@@ -32,23 +32,18 @@ using Microsoft.Extensions.Logging;
 /// Implements the <see cref="CommandIntegrationController" />.
 /// </summary>
 /// <seealso cref="CommandIntegrationController" />
+/// <remarks>
+/// Initializes a new instance of the <see cref="ExternalSystemsIntegrationCommandsController" /> class.
+/// </remarks>
+/// <param name="commandProcessor">The command processor.</param>
+/// <param name="hostEnvironment">The host environment.</param>
+/// <param name="logger">The logger.</param>
 [ApiController]
-public class ExternalSystemsIntegrationCommandsController : CommandSubmissionController
+public class ExternalSystemsIntegrationCommandsController(
+    ICommandProcessor commandProcessor,
+    IHostEnvironment hostEnvironment,
+    ILogger<ExternalSystemsIntegrationCommandsController> logger) : CommandSubmissionController(commandProcessor, hostEnvironment, logger)
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ExternalSystemsIntegrationCommandsController" /> class.
-    /// </summary>
-    /// <param name="commandProcessor">The command processor.</param>
-    /// <param name="hostEnvironment">The host environment.</param>
-    /// <param name="logger">The logger.</param>
-    public ExternalSystemsIntegrationCommandsController(
-        ICommandProcessor commandProcessor,
-        IHostEnvironment hostEnvironment,
-        ILogger<ExternalSystemsIntegrationCommandsController> logger)
-        : base(commandProcessor, hostEnvironment, logger)
-    {
-    }
-
     /// <summary>
     /// Handle external systems commands as an asynchronous operation.
     /// </summary>

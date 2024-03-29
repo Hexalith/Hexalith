@@ -98,7 +98,10 @@ public static class Dynamics365FinanceInventoriesHelper
     /// <param name="applicationName">Name of the application.</param>
     /// <returns>ActorRegistrationCollection.</returns>
     /// <exception cref="ArgumentNullException">null.</exception>
+#pragma warning disable IDE0060 // Remove unused parameter
+
     public static ActorRegistrationCollection AddDynamics365FinanceProjections([NotNull] this ActorRegistrationCollection actors, string applicationName)
+#pragma warning restore IDE0060 // Remove unused parameter
     {
         ArgumentNullException.ThrowIfNull(actors);
         return actors;

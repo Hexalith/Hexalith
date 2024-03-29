@@ -8,6 +8,8 @@
 // ***********************************************************************
 // <copyright file="SalesInvoiceV3Create.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -94,13 +96,6 @@ public class SalesInvoiceV3Create
     /// <value>The commission sales group identifier.</value>
     [DataMember]
     public string? CommissionSalesGroupId { get; set; }
-
-    /// <summary>
-    /// Gets or sets the customer group identifier.
-    /// </summary>
-    /// <value>The customer group identifier.</value>
-    [DataMember]
-    public string? SalesInvoiceGroupId { get; set; }
 
     /// <summary>
     /// Gets or sets the data area identifier.
@@ -221,6 +216,13 @@ public class SalesInvoiceV3Create
     /// <value>The sales currency code.</value>
     [DataMember]
     public string? SalesCurrencyCode { get; set; }
+
+    /// <summary>
+    /// Gets or sets the customer group identifier.
+    /// </summary>
+    /// <value>The customer group identifier.</value>
+    [DataMember]
+    public string? SalesInvoiceGroupId { get; set; }
 
     /// <summary>
     /// Gets or sets the sales tax group.

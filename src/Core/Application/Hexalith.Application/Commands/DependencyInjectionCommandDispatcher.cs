@@ -62,7 +62,7 @@ public partial class DependencyInjectionCommandDispatcher : ICommandDispatcher
         catch (ApplicationErrorException ex)
         {
             LogDispatchingCommandErrorInformation(command.TypeName, command.AggregateName, command.AggregateId);
-            ex?.Error?.LogApplicationErrorDetails(_logger, ex);
+            ex.Error?.LogApplicationErrorDetails(_logger, ex);
             throw;
         }
         catch (Exception ex)

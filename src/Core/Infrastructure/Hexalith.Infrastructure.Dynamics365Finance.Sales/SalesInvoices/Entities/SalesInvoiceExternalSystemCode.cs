@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 02-08-2023
 // ***********************************************************************
-// <copyright file="CustomerBase.cs" company="Fiveforty SAS Paris France">
+// <copyright file="SalesInvoiceExternalSystemCode.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -17,8 +17,8 @@
 namespace Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesInvoices.Entities;
 
 using System.Runtime.Serialization;
+using System.Runtime.Serialization.DataContracts;
 
-using Hexalith.Extensions.Common;
 using Hexalith.Infrastructure.Dynamics365Finance.Models;
 
 /// <summary>
@@ -33,16 +33,13 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 /// <seealso cref="IODataElement" />
 /// <seealso cref="IEquatable{SalesInvoiceExternalCode}" />
 [DataContract]
-public record SalesInvoiceBase
+public record SalesInvoiceExternalSystemCode
 (
-    string DataAreaId,
-    [property: DataMember(Order = 3)] string? SalesInvoiceAccount,
     string? Etag,
-    [property: DataMember(Order = 4)] string? NameAlias,
-    [property: DataMember(Order = 5)] string? PersonPersonalTitle = null,
-    [property: DataMember(Order = 6)] int? PersonBirthDay = null,
-    [property: DataMember(Order = 7)] Month? PersonBirthMonth = null,
-    [property: DataMember(Order = 8)] int? PersonBirthYear = null)
+    string DataAreaId,
+    [property: DataMember(Order = 3)] string? System,
+    [property: DataMember(Order = 4)] string? SalesInvoiceAccountNumber,
+    [property: DataMember(Order = 5)] string? ExternalCode)
 
 : ODataElement(Etag, DataAreaId), IODataElement
 {
@@ -50,5 +47,5 @@ public record SalesInvoiceBase
     /// Entities the name.
     /// </summary>
     /// <returns>System.String.</returns>
-    public static string EntityName() => "SalesInvoicesBase";
+    public static string EntityName() => "FFYSalesInvoiceExternalSystemCodes";
 }

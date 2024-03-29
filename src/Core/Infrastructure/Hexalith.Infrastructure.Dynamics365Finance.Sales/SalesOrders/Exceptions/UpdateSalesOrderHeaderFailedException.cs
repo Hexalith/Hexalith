@@ -7,12 +7,13 @@
 namespace Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Exceptions;
 
 using System;
-using System.Runtime.Serialization;
 
 /// <summary>
-/// Exception thrown when creating a sales order header failed.
+/// Class UpdateSalesOrderHeaderFailedException. This class cannot be inherited.
+/// Implements the <see cref="Exception" />.
 /// </summary>
-
+/// <typeparam name="TUpdate">The type of the t update.</typeparam>
+/// <seealso cref="Exception" />
 public sealed class UpdateSalesOrderHeaderFailedException<TUpdate> : Exception
 {
     /// <summary>
@@ -44,24 +45,12 @@ public sealed class UpdateSalesOrderHeaderFailedException<TUpdate> : Exception
     /// <summary>
     /// Initializes a new instance of the <see cref="UpdateSalesOrderHeaderFailedException{TUpdate}"/> class.
     /// </summary>
-    /// <param name="update">The sales order that failed to create.</param>
-    /// <param name="message">The error message.</param>
-    /// <param name="innerException">Inner exception.</param>
+    /// <param name="salesId">The sales identifier.</param>
+    /// <param name="update">The update.</param>
+    /// <param name="message">The message.</param>
+    /// <param name="innerException">The inner exception.</param>
     public UpdateSalesOrderHeaderFailedException(string salesId, TUpdate update, string? message, Exception? innerException)
-        : this($"Failed to update {typeof(TUpdate).Name} for sales order '{salesId}'." + message, innerException)
-    {
-        SalesOrderUpdate = update;
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="UpdateSalesOrderHeaderFailedException{TUpdate}"/> class.
-    /// </summary>
-    /// <param name="info">Serialization information.</param>
-    /// <param name="context">Streaming context.</param>
-    private UpdateSalesOrderHeaderFailedException(SerializationInfo info, StreamingContext context)
-        : base(info, context)
-    {
-    }
+        : this($"Failed to update {typeof(TUpdate).Name} for sales order '{salesId}'." + message, innerException) => SalesOrderUpdate = update;
 
     /// <summary>
     /// Gets the update values that failed to be created.

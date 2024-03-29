@@ -29,8 +29,6 @@ using Hexalith.Domain.Events;
 using Hexalith.Domain.Messages;
 using Hexalith.Domain.ValueObjets;
 
-using Microsoft.Extensions.Logging;
-
 /// <summary>
 /// Class RegisterCustomerHandler.
 /// Implements the <see cref="Hexalith.Application.Commands.CommandHandler{Hexalith.Application.Parties.Commands.RegisterCustomer}" />.
@@ -38,21 +36,6 @@ using Microsoft.Extensions.Logging;
 /// <seealso cref="Hexalith.Application.Commands.CommandHandler{Hexalith.Application.Parties.Commands.RegisterCustomer}" />
 public partial class RegisterCustomerHandler : CommandHandler<RegisterCustomer>
 {
-    /// <summary>
-    /// The logger.
-    /// </summary>
-    private readonly ILogger<RegisterCustomerHandler> _logger;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="RegisterCustomerHandler"/> class.
-    /// </summary>
-    /// <param name="logger">The logger.</param>
-    public RegisterCustomerHandler(ILogger<RegisterCustomerHandler> logger)
-    {
-        ArgumentNullException.ThrowIfNull(logger);
-        _logger = logger;
-    }
-
     /// <inheritdoc/>
     public override async Task<IEnumerable<BaseMessage>> DoAsync([NotNull] RegisterCustomer command, IAggregate? aggregate, CancellationToken cancellationToken)
     {

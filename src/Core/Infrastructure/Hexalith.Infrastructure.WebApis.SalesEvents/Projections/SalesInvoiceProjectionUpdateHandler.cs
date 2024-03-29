@@ -31,20 +31,15 @@ using Hexalith.Infrastructure.DaprRuntime.Projections;
 /// </summary>
 /// <typeparam name="TSalesInvoiceEvent">The type of the t customer event.</typeparam>
 /// <seealso cref="ProjectionUpdateHandler{TSalesInvoiceEvent}" />
-public abstract partial class SalesInvoiceProjectionUpdateHandler<TSalesInvoiceEvent>
-    : KeyValueActorProjectionUpdateEventHandlerBase<TSalesInvoiceEvent, SalesInvoiceState>
+/// <remarks>
+/// Initializes a new instance of the <see cref="SalesInvoiceProjectionUpdateHandler{TSalesInvoiceEvent}"/> class.
+/// </remarks>
+/// <param name="factory">The factory.</param>
+/// <param name="logger">The logger.</param>
+public abstract partial class SalesInvoiceProjectionUpdateHandler<TSalesInvoiceEvent>(IActorProjectionFactory<SalesInvoiceState> factory)
+    : KeyValueActorProjectionUpdateEventHandlerBase<TSalesInvoiceEvent, SalesInvoiceState>(factory)
     where TSalesInvoiceEvent : SalesInvoiceEvent
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="SalesInvoiceProjectionUpdateHandler{TSalesInvoiceEvent}"/> class.
-    /// </summary>
-    /// <param name="factory">The factory.</param>
-    /// <param name="logger">The logger.</param>
-    protected SalesInvoiceProjectionUpdateHandler(IActorProjectionFactory<SalesInvoiceState> factory)
-        : base(factory)
-    {
-    }
-
     /// <inheritdoc/>
     public override async Task ApplyAsync([NotNull] TSalesInvoiceEvent baseEvent, IMetadata metadata, CancellationToken cancellationToken)
     {

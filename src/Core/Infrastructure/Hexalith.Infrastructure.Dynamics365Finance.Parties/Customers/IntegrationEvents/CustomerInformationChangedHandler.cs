@@ -40,7 +40,9 @@ public partial class CustomerInformationChangedHandler : IntegrationEventHandler
     /// <summary>
     /// The logger.
     /// </summary>
+#pragma warning disable IDE0052 // Remove unread private members
     private readonly ILogger<CustomerInformationChangedHandler> _logger;
+#pragma warning restore IDE0052 // Remove unread private members
 
     private readonly IOptions<Dynamics365FinancePartiesSettings> _partiesSettings;
 
@@ -50,7 +52,7 @@ public partial class CustomerInformationChangedHandler : IntegrationEventHandler
     /// <param name="customerService">The customer service.</param>
     /// <param name="partiesSettings">The parties settings.</param>
     /// <param name="logger">The logger.</param>
-    /// <exception cref="System.ArgumentNullException"></exception>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
     public CustomerInformationChangedHandler(
         IDynamics365FinanceCustomerService customerService,
         IOptions<Dynamics365FinancePartiesSettings> partiesSettings,

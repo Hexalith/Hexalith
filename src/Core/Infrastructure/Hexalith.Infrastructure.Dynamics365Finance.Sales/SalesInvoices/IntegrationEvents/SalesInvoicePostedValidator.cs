@@ -6,7 +6,7 @@
 // Last Modified By : jpiquot
 // Last Modified On : 02-26-2023
 // ***********************************************************************
-// <copyright file="SalesInvoicePostedBusinessEventValidator.cs" company="Fiveforty SAS Paris France">
+// <copyright file="SalesInvoicePostedValidator.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.

@@ -36,22 +36,18 @@ using Microsoft.Extensions.Options;
 /// </summary>
 /// <seealso cref="DaprBus.DaprApplicationBus{Abstractions.Requests.BaseRequest, Metadata}" />
 /// <seealso cref="IRequestBus" />
-public class DaprRequestBus : DaprApplicationBus<BaseRequest, BaseMetadata, RequestState>, IRequestBus
+/// <remarks>
+/// Initializes a new instance of the <see cref="DaprRequestBus"/> class.
+/// </remarks>
+/// <param name="client">The client.</param>
+/// <param name="dateTimeService">The date time service.</param>
+/// <param name="settings">The settings.</param>
+/// <param name="logger">The logger.</param>
+public class DaprRequestBus(DaprClient client, IDateTimeService dateTimeService, IOptions<RequestBusSettings> settings, ILogger<DaprRequestBus> logger) : DaprApplicationBus<BaseRequest, BaseMetadata, RequestState>(
+    client,
+    dateTimeService,
+    string.IsNullOrWhiteSpace(settings?.Value.Name) ? throw new ArgumentException($"The name of the request bus is not defined in settings ({RequestBusSettings.ConfigurationName()}.{nameof(RequestBusSettings.Name)}).", nameof(settings)) : settings.Value.Name,
+    "-requests",
+    logger), IRequestBus
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="DaprRequestBus"/> class.
-    /// </summary>
-    /// <param name="client">The client.</param>
-    /// <param name="dateTimeService">The date time service.</param>
-    /// <param name="settings">The settings.</param>
-    /// <param name="logger">The logger.</param>
-    public DaprRequestBus(DaprClient client, IDateTimeService dateTimeService, IOptions<RequestBusSettings> settings, ILogger<DaprRequestBus> logger)
-         : base(
-        client,
-        dateTimeService,
-        string.IsNullOrWhiteSpace(settings?.Value.Name) ? throw new ArgumentException($"The name of the request bus is not defined in settings ({RequestBusSettings.ConfigurationName()}.{nameof(RequestBusSettings.Name)}).", nameof(settings)) : settings.Value.Name,
-        "-requests",
-        logger)
-    {
-    }
 }

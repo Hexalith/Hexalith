@@ -27,15 +27,11 @@ using Microsoft.Extensions.Logging;
 /// Implements the <see cref="Application.Events.IntegrationEventProjectionUpdateHandler{CustomerRegistered}" />.
 /// </summary>
 /// <seealso cref="Application.Events.IntegrationEventProjectionUpdateHandler{CustomerRegistered}" />
-public class CustomerRegisteredProjectionUpdateHandler : CustomerProjectionUpdateHandler<CustomerRegistered>
+/// <remarks>
+/// Initializes a new instance of the <see cref="CustomerRegisteredProjectionUpdateHandler"/> class.
+/// </remarks>
+/// <param name="factory">The factory.</param>
+/// <param name="logger">The logger.</param>
+public class CustomerRegisteredProjectionUpdateHandler(IActorProjectionFactory<Customer> factory, ILogger<CustomerRegisteredProjectionUpdateHandler> logger) : CustomerProjectionUpdateHandler<CustomerRegistered>(factory, logger)
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="CustomerRegisteredProjectionUpdateHandler"/> class.
-    /// </summary>
-    /// <param name="factory">The factory.</param>
-    /// <param name="logger">The logger.</param>
-    public CustomerRegisteredProjectionUpdateHandler(IActorProjectionFactory<Customer> factory, ILogger<CustomerRegisteredProjectionUpdateHandler> logger)
-        : base(factory, logger)
-    {
-    }
 }

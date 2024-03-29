@@ -40,7 +40,9 @@ public partial class IssueSalesInvoiceHandler : CommandHandler<IssueSalesInvoice
     /// <summary>
     /// The logger.
     /// </summary>
+#pragma warning disable IDE0052 // Remove unread private members
     private readonly ILogger<IssueSalesInvoiceHandler> _logger;
+#pragma warning restore IDE0052 // Remove unread private members
 
     /// <summary>
     /// Initializes a new instance of the <see cref="IssueSalesInvoiceHandler"/> class.

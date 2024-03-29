@@ -37,22 +37,18 @@ using Microsoft.Extensions.Options;
 /// </summary>
 /// <seealso cref="DaprBus.DaprApplicationBus{BaseEvent, Hexalith.Application.Abstractions.Metadatas.Metadata}" />
 /// <seealso cref="IEventBus" />
-public class DaprEventBus : DaprApplicationBus<BaseEvent, BaseMetadata, EventState>, IEventBus
+/// <remarks>
+/// Initializes a new instance of the <see cref="DaprEventBus"/> class.
+/// </remarks>
+/// <param name="client">The client.</param>
+/// <param name="dateTimeService">The date time service.</param>
+/// <param name="settings">The settings.</param>
+/// <param name="logger">The logger.</param>
+public class DaprEventBus(DaprClient client, IDateTimeService dateTimeService, IOptions<EventBusSettings> settings, ILogger<DaprEventBus> logger) : DaprApplicationBus<BaseEvent, BaseMetadata, EventState>(
+    client,
+    dateTimeService,
+    string.IsNullOrWhiteSpace(settings?.Value.Name) ? throw new ArgumentException($"The name of the event bus is not defined in settings ({EventBusSettings.ConfigurationName()}.{nameof(EventBusSettings.Name)}).", nameof(settings)) : settings.Value.Name,
+    "-events",
+    logger), IEventBus
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="DaprEventBus"/> class.
-    /// </summary>
-    /// <param name="client">The client.</param>
-    /// <param name="dateTimeService">The date time service.</param>
-    /// <param name="settings">The settings.</param>
-    /// <param name="logger">The logger.</param>
-    public DaprEventBus(DaprClient client, IDateTimeService dateTimeService, IOptions<EventBusSettings> settings, ILogger<DaprEventBus> logger)
-         : base(
-        client,
-        dateTimeService,
-        string.IsNullOrWhiteSpace(settings?.Value.Name) ? throw new ArgumentException($"The name of the event bus is not defined in settings ({EventBusSettings.ConfigurationName()}.{nameof(EventBusSettings.Name)}).", nameof(settings)) : settings.Value.Name,
-        "-events",
-        logger)
-    {
-    }
 }
