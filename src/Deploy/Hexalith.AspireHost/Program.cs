@@ -4,34 +4,32 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-IDistributedApplicationBuilder builder = DistributedApplication
-    .CreateBuilder(args)
-    .AddDapr();
+// HexalithDistributedApplication app = new(args);
 
-IResourceBuilder<Aspire.Hosting.Dapr.IDaprComponentResource> events = builder
-    .AddDaprPubSub("event-bus");
-IResourceBuilder<Aspire.Hosting.Dapr.IDaprComponentResource> commands = builder
-    .AddDaprPubSub("command-bus");
-IResourceBuilder<Aspire.Hosting.Dapr.IDaprComponentResource> requests = builder
-    .AddDaprPubSub("request-bus");
-IResourceBuilder<Aspire.Hosting.Dapr.IDaprComponentResource> notifications = builder
-    .AddDaprPubSub("notification-bus");
-IResourceBuilder<Aspire.Hosting.Dapr.IDaprComponentResource> partiesStatestore = builder
-    .AddDaprStateStore("parties-statestore");
+// app.Builder.Configuration.AddUserSecrets<Program>();
 
-// builder.AddHexalithProject<Projects.Hexalith_Server_Dynamics365Finance>();
+// if (app.IsProjectEnabled<Projects.Hexalith_Server_ExternalSystems>())
+// {
+//    _ = app.AddProject<Projects.Hexalith_Server_ExternalSystems>("externalsystems");
+// }
 
-// builder.AddHexalithProject<Projects.Hexalith_Server_ExternalSystems>();
+// if (app.IsProjectEnabled<Projects.Hexalith_Server_FrontApi>())
+// {
+//    _ = app.AddProject<Projects.Hexalith_Server_FrontApi>("front-api");
+// }
 
-// builder.AddHexalithProject<Projects.Hexalith_Server_FrontApi>();
-builder.AddProject<Projects.Hexalith_Server_Parties>("parties")
-    .WithDaprSidecar()
-    .WithReference(events)
-    .WithReference(commands)
-    .WithReference(requests)
-    .WithReference(notifications)
-    .WithReference(partiesStatestore)
-    .WithEnvironment("APP_API_TOKEN", "Hexalith");
+// if (app.IsProjectEnabled<Projects.Hexalith_Server_Parties>())
+// {
+//    _ = app.AddProject<Projects.Hexalith_Server_Parties>("parties");
+// }
 
-// builder.AddHexalithProject<Projects.Hexalith_Server_Sales>();
-builder.Build().Run();
+// if (app.IsProjectEnabled<Projects.Hexalith_Server_Sales>())
+// {
+//    _ = app.AddProject<Projects.Hexalith_Server_Sales>("sales");
+// }
+
+// if (app.IsProjectEnabled<Projects.Hexalith_Server_Inventories>())
+// {
+//    _ = app.AddProject<Projects.Hexalith_Server_Inventories>("inventories");
+// }
+Console.WriteLine("Dummy");
