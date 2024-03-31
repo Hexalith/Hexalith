@@ -359,3 +359,4 @@ nuget.config
 cov-int.zip
 cov-int/
 .azure
+manifests

@@ -6,6 +6,8 @@
 
 namespace Hexalith.Extensions.Helpers;
 
+using System.Diagnostics.CodeAnalysis;
+
 using Hexalith.Extensions.Configuration;
 
 using Microsoft.Extensions.Configuration;
@@ -22,10 +24,10 @@ public static class SettingsHelper
     /// <param name="configuration">The configuration.</param>
     /// <returns>The settings object.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the configuration is null.</exception>
-    public static TSettings? GetSettings<TSettings>(this IConfiguration configuration)
+    public static TSettings GetSettings<TSettings>([NotNull] this IConfiguration configuration)
         where TSettings : ISettings, new()
     {
         ArgumentNullException.ThrowIfNull(configuration);
-        return configuration.GetSection(TSettings.ConfigurationName()).Get<TSettings>();
+        return configuration.GetSection(TSettings.ConfigurationName()).Get<TSettings>() ?? new TSettings();
     }
 }
