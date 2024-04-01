@@ -13,10 +13,10 @@
 		<ContainerEnvironmentVariable Include="Organization__DefaultPartitionId" Value="FFY" />
 		<ContainerEnvironmentVariable Include="Organization__DefaultCompanyId" Value="FRRT" />
 		<ContainerEnvironmentVariable Include="DAPRSIDEKICK_ENABLED" Value="false" />
-		<ContainerEnvironmentVariable Include="DaprCommandBus__Name" Value="command-bus" />
-		<ContainerEnvironmentVariable Include="DaprEventBus__Name" Value="event-bus" />
-		<ContainerEnvironmentVariable Include="DaprNotificationBus__Name" Value="notification-bus" />
-		<ContainerEnvironmentVariable Include="DaprRequestBus__Name" Value="request-bus" />
+		<ContainerEnvironmentVariable Include="DaprCommandBus__Name" Value="commands" />
+		<ContainerEnvironmentVariable Include="DaprEventBus__Name" Value="events" />
+		<ContainerEnvironmentVariable Include="DaprNotificationBus__Name" Value="notifications" />
+		<ContainerEnvironmentVariable Include="DaprRequestBus__Name" Value="requests" />
 		<ContainerEnvironmentVariable Include="ASPNETCORE_URLS" Value="http://*:8080" />
 		<ContainerEnvironmentVariable Include="ASPNETCORE_HTTP_PORTS" Value="8080" />
 		<ContainerEnvironmentVariable Include="ASPNETCORE_ENVIRONMENT" Value="Production" />
