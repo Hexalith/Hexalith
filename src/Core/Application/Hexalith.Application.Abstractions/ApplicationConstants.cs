@@ -24,7 +24,7 @@ public static class ApplicationConstants
     /// <summary>
     /// The command bus name.
     /// </summary>
-    public const string CommandBus = "command-bus";
+    public const string CommandBus = "commands";
 
     /// <summary>
     /// The command bus suffixe.
@@ -34,7 +34,7 @@ public static class ApplicationConstants
     /// <summary>
     /// The event bus name.
     /// </summary>
-    public const string EventBus = "event-bus";
+    public const string EventBus = "events";
 
     /// <summary>
     /// The event bus suffixe.
@@ -49,7 +49,7 @@ public static class ApplicationConstants
     /// <summary>
     /// The notification bus name.
     /// </summary>
-    public const string NotificationBus = "notification-bus";
+    public const string NotificationBus = "notifications";
 
     /// <summary>
     /// The notification bus suffixe.
@@ -64,7 +64,7 @@ public static class ApplicationConstants
     /// <summary>
     /// The request bus name.
     /// </summary>
-    public const string RequestBus = "request-bus";
+    public const string RequestBus = "requests";
 
     /// <summary>
     /// The request bus suffixe.

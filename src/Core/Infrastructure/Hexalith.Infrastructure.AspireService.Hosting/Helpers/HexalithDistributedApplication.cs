@@ -75,10 +75,10 @@ public class HexalithDistributedApplication
         if (Builder.Environment.IsDevelopment())
         {
             project = project.WithDaprSidecar(name)
-                .WithReference(_eventBus ??= Builder.AddDaprPubSub("event-bus"))
-                .WithReference(_requestBus ??= Builder.AddDaprPubSub("request-bus"))
-                .WithReference(_commandBus ??= Builder.AddDaprPubSub("command-bus"))
-                .WithReference(_notificationBus ??= Builder.AddDaprPubSub("notification-bus"))
+                .WithReference(_eventBus ??= Builder.AddDaprPubSub(AspireHostConstants.EventBusComponentName))
+                .WithReference(_requestBus ??= Builder.AddDaprPubSub(AspireHostConstants.RequestBusComponentName))
+                .WithReference(_commandBus ??= Builder.AddDaprPubSub(AspireHostConstants.CommandBusComponentName))
+                .WithReference(_notificationBus ??= Builder.AddDaprPubSub(AspireHostConstants.NotificationBusComponentName))
                 .WithReference(Builder.AddDaprStateStore(statestore));
         }
         else

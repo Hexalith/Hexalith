@@ -14,7 +14,7 @@ internal static class AspireHostConstants
     /// <summary>
     /// The command bus component name.
     /// </summary>
-    public const string CommandBusComponentName = "command-bus";
+    public const string CommandBusComponentName = "commands";
 
     /// <summary>
     /// The deployment name.
@@ -24,7 +24,7 @@ internal static class AspireHostConstants
     /// <summary>
     /// The event bus component name.
     /// </summary>
-    public const string EventBusComponentName = "event-bus";
+    public const string EventBusComponentName = "events";
 
     /// <summary>
     /// The global secret store connection string name.
@@ -34,12 +34,12 @@ internal static class AspireHostConstants
     /// <summary>
     /// The notification bus component name.
     /// </summary>
-    public const string NotificationBusComponentName = "notification-bus";
+    public const string NotificationBusComponentName = "notifications";
 
     /// <summary>
     /// The request bus component name.
     /// </summary>
-    public const string RequestBusComponentName = "request-bus";
+    public const string RequestBusComponentName = "requests";
 
     /// <summary>
     /// The secret store component name.
