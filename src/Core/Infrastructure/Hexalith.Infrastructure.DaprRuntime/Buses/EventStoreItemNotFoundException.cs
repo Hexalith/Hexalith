@@ -58,16 +58,6 @@ public class EventStoreItemNotFoundException : Exception
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="EventStoreItemNotFoundException"/> class.
-    /// </summary>
-    /// <param name="info">The serialization information.</param>
-    /// <param name="context">The streaming context.</param>
-    protected EventStoreItemNotFoundException(SerializationInfo info, StreamingContext context)
-        : base(info, context)
-    {
-    }
-
-    /// <summary>
     /// Gets the stream name.
     /// </summary>
     public string? StreamName { get; private set; }

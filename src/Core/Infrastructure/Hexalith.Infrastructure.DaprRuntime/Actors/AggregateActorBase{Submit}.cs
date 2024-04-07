@@ -24,8 +24,8 @@ using Dapr.Actors;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.States;
+using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
-using Hexalith.Infrastructure.DaprRuntime.Handlers;
 
 /// <summary>
 /// Logistics partner catalog item aggregate actor interface <see cref="BspkSalesInvoice" />.

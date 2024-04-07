@@ -36,22 +36,19 @@ using Microsoft.Extensions.Options;
 /// </summary>
 /// <seealso cref="DaprBus.DaprApplicationBus{Abstractions.Notifications.BaseNotification, Metadata}" />
 /// <seealso cref="INotificationBus" />
-public class DaprNotificationBus : DaprApplicationBus<BaseNotification, BaseMetadata, NotificationState>, INotificationBus
+/// <remarks>
+/// Initializes a new instance of the <see cref="DaprNotificationBus"/> class.
+/// </remarks>
+/// <param name="client">The client.</param>
+/// <param name="dateTimeService">The date time service.</param>
+/// <param name="settings">The settings.</param>
+/// <param name="logger">The logger.</param>
+public class DaprNotificationBus(DaprClient client, IDateTimeService dateTimeService, IOptions<NotificationBusSettings> settings, ILogger<DaprNotificationBus> logger)
+    : DaprApplicationBus<BaseNotification, BaseMetadata, NotificationState>(
+    client,
+    dateTimeService,
+    string.IsNullOrWhiteSpace(settings?.Value.Name) ? throw new ArgumentException($"The name of the notification bus is not defined in settings ({NotificationBusSettings.ConfigurationName()}.{nameof(NotificationBusSettings.Name)}).", nameof(settings)) : settings.Value.Name,
+    "-notifications",
+    logger), INotificationBus
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="DaprNotificationBus"/> class.
-    /// </summary>
-    /// <param name="client">The client.</param>
-    /// <param name="dateTimeService">The date time service.</param>
-    /// <param name="settings">The settings.</param>
-    /// <param name="logger">The logger.</param>
-    public DaprNotificationBus(DaprClient client, IDateTimeService dateTimeService, IOptions<NotificationBusSettings> settings, ILogger<DaprNotificationBus> logger)
-         : base(
-        client,
-        dateTimeService,
-        string.IsNullOrWhiteSpace(settings?.Value.Name) ? throw new ArgumentException($"The name of the notification bus is not defined in settings ({NotificationBusSettings.ConfigurationName()}.{nameof(NotificationBusSettings.Name)}).", nameof(settings)) : settings.Value.Name,
-        "-notifications",
-        logger)
-    {
-    }
 }

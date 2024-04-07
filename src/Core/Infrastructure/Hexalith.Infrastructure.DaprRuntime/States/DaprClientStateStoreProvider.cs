@@ -42,7 +42,9 @@ public class DaprClientStateStoreProvider : IStateStoreProvider
     /// <param name="settings">The settings.</param>
     [ActivatorUtilitiesConstructor]
     public DaprClientStateStoreProvider(DaprClient daprClient, IOptions<StateStoreSettings> settings)
-        : this(daprClient, settings.Value.Name)
+        : this(
+              daprClient,
+              (settings ?? throw new ArgumentNullException(nameof(settings))).Value.Name)
     {
     }
 
@@ -78,8 +80,15 @@ public class DaprClientStateStoreProvider : IStateStoreProvider
     /// <inheritdoc/>
     public async Task<T> GetOrAddStateAsync<T>(string key, T value, CancellationToken cancellationToken)
     {
-        T? result = await DaprClient.GetStateAsync<T>(StateStoreName, key, null, null, cancellationToken).ConfigureAwait(false);
-        if (result == null || result.Equals(default(T)))
+        T? result = await DaprClient
+            .GetStateAsync<T>(
+                StateStoreName,
+                key,
+                null,
+                null,
+                cancellationToken)
+            .ConfigureAwait(false);
+        if (result is null)
         {
             await DaprClient.SaveStateAsync(StateStoreName, key, value, null, null, cancellationToken).ConfigureAwait(false);
             return value;

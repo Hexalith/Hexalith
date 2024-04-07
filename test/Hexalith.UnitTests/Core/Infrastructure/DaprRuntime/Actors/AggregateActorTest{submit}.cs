@@ -33,8 +33,8 @@ using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Abstractions;
+using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
-using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.DaprRuntime.Sales.Actors;
 
 using Moq;

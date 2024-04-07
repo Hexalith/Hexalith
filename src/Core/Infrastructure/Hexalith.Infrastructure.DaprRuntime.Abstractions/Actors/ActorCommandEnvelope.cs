@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Infrastructure.DaprRuntime.Handlers;
+namespace Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 
 using System.Runtime.Serialization;
 using System.Text.Json;
@@ -22,6 +22,8 @@ using System.Text.Json.Serialization;
 
 using Hexalith.Application.Commands;
 using Hexalith.Application.Metadatas;
+
+#pragma warning disable IDE0301 // Simplify collection initialization
 
 /// <summary>
 /// Actor method object uses Data Contract Serialization that can't serialize and deserialize complex polymorphic objects. This class is used to serialize and deserialize commands and metadatas into JSON strings before the actor proxy serialization.
@@ -64,10 +66,10 @@ public class ActorCommandEnvelope : IJsonOnSerializing, IJsonOnDeserialized
     /// </summary>
     /// <param name="commands">The commands.</param>
     /// <param name="metadatas">The metadatas.</param>
-    /// <exception cref="System.ArgumentException">Command and Metadata arrays must have the same number of elements. - metadatas.</exception>
-    /// <exception cref="System.ArgumentException">The command array must contain elements. - commands.</exception>
-    /// <exception cref="System.ArgumentException">All commands must be for the same aggregate. - commands.</exception>
-    /// <exception cref="System.ArgumentException">All commands must be for the same aggregate identifier. - commands.</exception>
+    /// <exception cref="ArgumentException">Command and Metadata arrays must have the same number of elements. - metadatas.</exception>
+    /// <exception cref="ArgumentException">The command array must contain elements. - commands.</exception>
+    /// <exception cref="ArgumentException">All commands must be for the same aggregate. - commands.</exception>
+    /// <exception cref="ArgumentException">All commands must be for the same aggregate identifier. - commands.</exception>
     public ActorCommandEnvelope(IEnumerable<BaseCommand> commands, IEnumerable<BaseMetadata> metadatas)
     {
         CommandsJson = Array.Empty<string>();

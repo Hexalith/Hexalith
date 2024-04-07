@@ -37,22 +37,19 @@ using Microsoft.Extensions.Options;
 /// </summary>
 /// <seealso cref="DaprBus.DaprApplicationBus{Hexalith.Domain.Abstractions.Commands.BaseCommand, Hexalith.Application.Abstractions.Metadatas.Metadata}" />
 /// <seealso cref="ICommandBus" />
-public class DaprCommandBus : DaprApplicationBus<BaseCommand, BaseMetadata, CommandState>, ICommandBus
+/// <remarks>
+/// Initializes a new instance of the <see cref="DaprCommandBus"/> class.
+/// </remarks>
+/// <param name="client">The client.</param>
+/// <param name="dateTimeService">The date time service.</param>
+/// <param name="settings">The settings.</param>
+/// <param name="logger">The logger.</param>
+public class DaprCommandBus(DaprClient client, IDateTimeService dateTimeService, IOptions<CommandBusSettings> settings, ILogger<DaprCommandBus> logger)
+    : DaprApplicationBus<BaseCommand, BaseMetadata, CommandState>(
+    client,
+    dateTimeService,
+    string.IsNullOrWhiteSpace(settings?.Value.Name) ? throw new ArgumentException($"The name of the command bus is not defined in settings ({CommandBusSettings.ConfigurationName()}.{nameof(CommandBusSettings.Name)}).", nameof(settings)) : settings.Value.Name,
+    ApplicationConstants.CommandBusSuffix,
+    logger), ICommandBus
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="DaprCommandBus"/> class.
-    /// </summary>
-    /// <param name="client">The client.</param>
-    /// <param name="dateTimeService">The date time service.</param>
-    /// <param name="settings">The settings.</param>
-    /// <param name="logger">The logger.</param>
-    public DaprCommandBus(DaprClient client, IDateTimeService dateTimeService, IOptions<CommandBusSettings> settings, ILogger<DaprCommandBus> logger)
-         : base(
-        client,
-        dateTimeService,
-        string.IsNullOrWhiteSpace(settings?.Value.Name) ? throw new ArgumentException($"The name of the command bus is not defined in settings ({CommandBusSettings.ConfigurationName()}.{nameof(CommandBusSettings.Name)}).", nameof(settings)) : settings.Value.Name,
-        ApplicationConstants.CommandBusSuffix,
-        logger)
-    {
-    }
 }

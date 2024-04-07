@@ -20,6 +20,8 @@ using System.Threading.Tasks;
 
 using Dapr.Actors;
 
+using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
+
 /// <summary>
 /// Interface ICommandProcessorActor
 /// Extends the <see cref="IActor" />.

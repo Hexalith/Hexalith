@@ -18,7 +18,6 @@ namespace Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 using Dapr.Actors;
 
 using Hexalith.Application.States;
-using Hexalith.Infrastructure.DaprRuntime.Handlers;
 
 /// <summary>
 /// Interface IAggregateActor

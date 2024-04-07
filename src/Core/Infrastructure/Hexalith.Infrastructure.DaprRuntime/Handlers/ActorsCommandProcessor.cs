@@ -15,6 +15,7 @@ using Dapr.Actors.Client;
 
 using Hexalith.Application.Commands;
 using Hexalith.Application.Metadatas;
+using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 
 using Microsoft.Extensions.Logging;
 

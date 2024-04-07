@@ -16,6 +16,7 @@
 namespace Hexalith.Infrastructure.Serialization.Serialization;
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -23,7 +24,7 @@ using System.Text.RegularExpressions;
 
 /// <summary>
 /// Class UnixEpochDateTimeConverter. This class cannot be inherited.
-/// Implements the <see cref="System.Text.Json.Serialization.JsonConverter{System.DateTime}" />
+/// Implements the <see cref="System.Text.Json.Serialization.JsonConverter{System.DateTime}" />.
 /// </summary>
 /// <seealso cref="System.Text.Json.Serialization.JsonConverter{System.DateTime}" />
 public sealed partial class UnixEpochDateTimeConverter : JsonConverter<DateTime>
@@ -40,20 +41,16 @@ public sealed partial class UnixEpochDateTimeConverter : JsonConverter<DateTime>
     /// <param name="typeToConvert">The type to convert.</param>
     /// <param name="options">An object that specifies serialization options to use.</param>
     /// <returns>The converted value.</returns>
-    /// <exception cref="System.Text.Json.JsonException">"Could not parse epoch date"</exception>
+    /// <exception cref="System.Text.Json.JsonException">"Could not parse epoch date".</exception>
     public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         string formatted = reader.GetString()!;
         Match match = EpochRegex().Match(formatted);
 
-        if (
-                !match.Success
-                || !long.TryParse(match.Groups[1].Value, NumberStyles.Integer, CultureInfo.InvariantCulture, out long unixTime))
-        {
-            throw new JsonException("Could not parse epoch date");
-        }
-
-        return _epoch.AddMilliseconds(unixTime);
+        return !match.Success
+                || !long.TryParse(match.Groups[1].Value, NumberStyles.Integer, CultureInfo.InvariantCulture, out long unixTime)
+            ? throw new JsonException("Could not parse epoch date")
+            : _epoch.AddMilliseconds(unixTime);
     }
 
     /// <summary>
@@ -62,8 +59,10 @@ public sealed partial class UnixEpochDateTimeConverter : JsonConverter<DateTime>
     /// <param name="writer">The writer to write to.</param>
     /// <param name="value">The value to convert to JSON.</param>
     /// <param name="options">An object that specifies serialization options to use.</param>
-    public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
+    public override void Write([NotNull] Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
     {
+        ArgumentNullException.ThrowIfNull(writer);
+
         long unixTime = Convert.ToInt64((value.ToUniversalTime() - _epoch).TotalMilliseconds);
 
         string formatted = FormattableString.Invariant($"/Date({unixTime})/");
@@ -71,7 +70,7 @@ public sealed partial class UnixEpochDateTimeConverter : JsonConverter<DateTime>
     }
 
     /// <summary>
-    /// Epoches the regex.
+    /// Epoc regex.
     /// </summary>
     /// <returns>Regex.</returns>
     [GeneratedRegex("^/Date\\(([+-]*\\d+)\\)/$", RegexOptions.CultureInvariant)]

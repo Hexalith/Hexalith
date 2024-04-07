@@ -28,7 +28,7 @@
 //    IOptionsMonitor<ApiKeyAuthenticationSchemeOptions> options,
 //    ILoggerFactory loggerFactory,
 //    UrlEncoder encoder,
-//    ISystemClock clock) : AuthenticationHandler<ApiKeyAuthenticationSchemeOptions>(options, loggerFactory, encoder, clock)
+//    TimeProvider clock) : AuthenticationHandler<ApiKeyAuthenticationSchemeOptions>(options, loggerFactory, encoder, clock)
 // {
 //    public const string ApiKeyHeaderName = "x-sk-api-key";
 //    public const string AuthenticationScheme = "ApiKey";

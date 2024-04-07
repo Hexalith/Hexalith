@@ -10,4 +10,7 @@
     <ProjectReference Include="..\Hexalith.Infrastructure.DaprRuntime.Abstractions\Hexalith.Infrastructure.DaprRuntime.Abstractions.csproj" />
     <ProjectReference Include="..\Hexalith.Infrastructure.Serialization\Hexalith.Infrastructure.Serialization.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tasks\" />
+  </ItemGroup>
 </Project>

@@ -13,6 +13,7 @@ using System.Runtime.Serialization;
 /// </summary>
 [DataContract]
 public record DimensionValue(
+
     /// <summary>
     /// Gets or sets the type of the dimension.
     /// </summary>

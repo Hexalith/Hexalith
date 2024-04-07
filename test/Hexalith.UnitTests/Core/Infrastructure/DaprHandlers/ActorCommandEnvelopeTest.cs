@@ -22,7 +22,7 @@ using FluentAssertions;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Metadatas;
 using Hexalith.Extensions.Helpers;
-using Hexalith.Infrastructure.DaprRuntime.Handlers;
+using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 using Hexalith.UnitTests.Core.Application.Commands;
 
 /// <summary>

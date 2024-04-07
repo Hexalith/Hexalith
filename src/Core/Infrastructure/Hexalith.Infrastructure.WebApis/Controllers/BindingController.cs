@@ -103,9 +103,9 @@ public abstract class BindingController : ReceiveMessageController
     /// <summary>
     /// Posts the handle event process.
     /// </summary>
-    /// <param name="event">The event.</param>
+    /// <param name="ievent">The event.</param>
     /// <param name="metadata">The metadata.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
-    protected virtual Task PostHandleEventProcessAsync(IEvent @event, IMetadata metadata, CancellationToken cancellationToken) => Task.CompletedTask;
+    protected virtual Task PostHandleEventProcessAsync(IEvent ievent, IMetadata metadata, CancellationToken cancellationToken) => Task.CompletedTask;
 }

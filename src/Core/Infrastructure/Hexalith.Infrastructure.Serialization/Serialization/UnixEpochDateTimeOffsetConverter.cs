@@ -16,6 +16,7 @@
 namespace Hexalith.Infrastructure.Serialization.Serialization;
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -67,8 +68,9 @@ public sealed partial class UnixEpochDateTimeOffsetConverter : JsonConverter<Dat
     /// <param name="writer">The writer to write to.</param>
     /// <param name="value">The value to convert to JSON.</param>
     /// <param name="options">An object that specifies serialization options to use.</param>
-    public override void Write(Utf8JsonWriter writer, DateTimeOffset value, JsonSerializerOptions options)
+    public override void Write([NotNull] Utf8JsonWriter writer, DateTimeOffset value, JsonSerializerOptions options)
     {
+        ArgumentNullException.ThrowIfNull(writer);
         long unixTime = Convert.ToInt64((value - _epoch).TotalMilliseconds);
 
         TimeSpan utcOffset = value.Offset;

@@ -19,19 +19,14 @@ using Microsoft.Extensions.Logging;
 /// Implements the <see cref="ActorsCommandProcessor" />.
 /// </summary>
 /// <seealso cref="ActorsCommandProcessor" />
+/// <remarks>
+/// Initializes a new instance of the <see cref="ConventionNamingCommandProcessor"/> class.
+/// </remarks>
+/// <param name="actorProxy">The actor proxy.</param>
+/// <param name="logger">The logger.</param>
 [Obsolete("Use AggregateActorCommandProcessor instead.", true)]
-public class ConventionNamingCommandProcessor : ActorsCommandProcessor, IConventionNamingCommandProcessor
+public class ConventionNamingCommandProcessor(IActorProxyFactory actorProxy, ILogger<ConventionNamingCommandProcessor> logger) : ActorsCommandProcessor(actorProxy, logger), IConventionNamingCommandProcessor
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ConventionNamingCommandProcessor"/> class.
-    /// </summary>
-    /// <param name="actorProxy">The actor proxy.</param>
-    /// <param name="logger">The logger.</param>
-    public ConventionNamingCommandProcessor(IActorProxyFactory actorProxy, ILogger<ConventionNamingCommandProcessor> logger)
-        : base(actorProxy, logger)
-    {
-    }
-
     /// <inheritdoc/>
     protected override string GetActorMethodName(ICommand command)
     {
