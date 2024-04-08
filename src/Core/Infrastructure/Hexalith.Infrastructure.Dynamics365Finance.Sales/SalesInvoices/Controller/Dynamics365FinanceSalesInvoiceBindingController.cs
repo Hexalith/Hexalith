@@ -84,7 +84,7 @@ public abstract partial class Dynamics365FinanceSalesInvoiceBindingController : 
     /// <param name="message">The message.</param>
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
     [Produces("application/json")]
-    [HttpPost("d365fno-sales-invoices-binding")]
+    [HttpPost("d365fnosalesinvoicesbinding")]
     public async Task<ActionResult> ReceiveSalesInvoiceEventAsync(
        [SwaggerRequestBody(Description ="Dynamics 365 finance customer business event", Required = true)]
        [FromBody] JsonElement message)

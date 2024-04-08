@@ -93,7 +93,7 @@ public abstract partial class Dynamics365FinanceCustomerBindingController : Dyna
     /// <param name="message">The message.</param>
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
     [Produces("application/json")]
-    [HttpPost("d365fno-customers-binding")]
+    [HttpPost("d365fnocustomersbinding")]
     public async Task<ActionResult> ReceiveCustomerEventAsync(
        [SwaggerRequestBody(Description ="Dynamics 365 finance customer business event", Required = true)]
        [FromBody] JsonElement message)

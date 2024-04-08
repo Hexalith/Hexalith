@@ -6,6 +6,8 @@
 
 namespace Hexalith.Infrastructure.ClientAppOnWasm.Helpers;
 
+using System.Globalization;
+
 using Hexalith.Infrastructure.ClientApp.Helpers;
 
 using HexalithApplication.Client;
@@ -59,7 +61,7 @@ public static class WebAssemblyClientHelper
         Log.Logger = new LoggerConfiguration()
             .ReadFrom.Configuration(builder.Configuration)
             .Enrich.WithProperty("InstanceId", Guid.NewGuid().ToString("n"))
-            .WriteTo.BrowserConsole()
+            .WriteTo.BrowserConsole(formatProvider: CultureInfo.InvariantCulture)
             .CreateLogger();
         _ = builder.Services
             .AddLogging(loggingBuilder => loggingBuilder.AddSerilog(dispose: true))

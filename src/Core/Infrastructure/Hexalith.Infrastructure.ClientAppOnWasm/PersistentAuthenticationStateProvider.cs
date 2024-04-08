@@ -21,6 +21,12 @@ using Microsoft.AspNetCore.Components.Authorization;
 // This only provides a user name and email for display purposes. It does not actually include any tokens
 // that authenticate to the server when making subsequent requests. That works separately using a
 // cookie that will be included on HttpClient requests to the server.
+
+/// <summary>
+/// Persistent authentication state provider.
+/// Implements the <see cref="AuthenticationStateProvider" />
+/// </summary>
+/// <seealso cref="AuthenticationStateProvider" />
 internal class PersistentAuthenticationStateProvider : AuthenticationStateProvider
 {
     private static readonly Task<AuthenticationState> DefaultUnauthenticatedTask =

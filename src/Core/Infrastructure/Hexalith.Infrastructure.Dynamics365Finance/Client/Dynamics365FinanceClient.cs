@@ -324,16 +324,13 @@ public partial class Dynamics365FinanceClient<TEntity> : IDynamics365FinanceClie
     /// <exception cref="System.InvalidOperationException">The acquired token is null or empty.</exception>
     private async Task<HttpClient> GetClientAsync(CancellationToken cancellationToken)
     {
-        if (_httpClient.DefaultRequestHeaders.Authorization == null || string.IsNullOrWhiteSpace(_httpClient.DefaultRequestHeaders.Authorization.Parameter))
-        {
-            string token = await _securityContext
-                .AcquireTokenAsync(cancellationToken)
-                .ConfigureAwait(false);
-            _httpClient.DefaultRequestHeaders.Authorization =
-            new AuthenticationHeaderValue(
-               "Bearer",
-               token);
-        }
+        string token = await _securityContext
+            .AcquireTokenAsync(cancellationToken)
+            .ConfigureAwait(false);
+        _httpClient.DefaultRequestHeaders.Authorization =
+        new AuthenticationHeaderValue(
+           "Bearer",
+           token);
 
         return _httpClient;
     }

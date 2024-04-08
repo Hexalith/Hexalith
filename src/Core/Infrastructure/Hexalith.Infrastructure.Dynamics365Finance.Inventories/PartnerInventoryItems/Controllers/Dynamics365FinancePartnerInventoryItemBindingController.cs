@@ -102,7 +102,7 @@ public abstract class Dynamics365FinancePartnerInventoryItemBindingController : 
     /// <param name="message">The message.</param>
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
     [Produces("application/json")]
-    [HttpPost("d365fno-partner-inventory-items-binding")]
+    [HttpPost("d365fnopartnerinventoryitemsbinding")]
     public async Task<ActionResult> ReceiveCustomerEventAsync(
        [SwaggerRequestBody(Description ="Dynamics 365 finance partner inventory item business event", Required = true)]
        [FromBody] JsonElement message)

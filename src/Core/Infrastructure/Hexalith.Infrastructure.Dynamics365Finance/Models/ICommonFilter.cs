@@ -9,6 +9,9 @@ namespace Hexalith.Infrastructure.Dynamics365Finance.Models;
 /// <summary>
 /// Common entity filter interface.
 /// </summary>
+#pragma warning disable CA1040 // Avoid empty interfaces
+
 public interface ICommonFilter : IFilter
+#pragma warning restore CA1040 // Avoid empty interfaces
 {
 }

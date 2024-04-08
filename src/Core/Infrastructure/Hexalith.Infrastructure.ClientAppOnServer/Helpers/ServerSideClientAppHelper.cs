@@ -65,7 +65,6 @@ public static class ServerSideClientAppHelper
     /// <param name="applicationName">The name of the application.</param>
     /// <param name="sessionCookieName">The name of the session cookie.</param>
     /// <param name="version">The version of the application.</param>
-    /// <param name="debugInVisualStudio">Indicates whether the application is being debugged in Visual Studio.</param>
     /// <param name="registerActors">The action to register actors.</param>
     /// <param name="args">The command-line arguments.</param>
     /// <returns>The web application builder.</returns>
@@ -74,7 +73,6 @@ public static class ServerSideClientAppHelper
         string applicationName,
         string sessionCookieName,
         string version,
-        bool debugInVisualStudio,
         Action<ActorRegistrationCollection> registerActors,
         string[] args)
     {
