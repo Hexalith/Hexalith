@@ -9,56 +9,81 @@ namespace Hexalith.Infrastructure.Dynamics365Finance.Services.CustomerGroups;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+/// <summary>
+/// Represents a customer group creation request.
+/// </summary>
+/// <remarks>
+/// This class is used to create a new customer group in the Dynamics 365 Finance system.
+/// </remarks>
 [DataContract]
-public class CustomerGroupCreate
+[method: JsonConstructor]
+public class CustomerGroupCreate(
+  string dataAreaId,
+  string customerGroupId,
+  string? clearingPeriodPaymentTermName,
+  string? defaultDimensionDisplayValue,
+  string? customerAccountNumberSequence,
+  string? description,
+  string? isSalesTaxIncludedInPrice,
+  string? writeOffReason,
+  string? paymentTermId,
+  string? taxGroupId,
+  string? isPublicSector)
 {
-    [JsonConstructor]
-    public CustomerGroupCreate(
-      string dataAreaId,
-      string customerGroupId,
-      string? clearingPeriodPaymentTermName,
-      string? defaultDimensionDisplayValue,
-      string? customerAccountNumberSequence,
-      string? description,
-      string? isSalesTaxIncludedInPrice,
-      string? writeOffReason,
-      string? paymentTermId,
-      string? taxGroupId,
-      string? isPublicSector_IT)
-    {
-        DataAreaId = dataAreaId;
-        CustomerGroupId = customerGroupId;
-        ClearingPeriodPaymentTermName = clearingPeriodPaymentTermName;
-        DefaultDimensionDisplayValue = defaultDimensionDisplayValue;
-        CustomerAccountNumberSequence = customerAccountNumberSequence;
-        Description = description;
-        IsSalesTaxIncludedInPrice = isSalesTaxIncludedInPrice;
-        WriteOffReason = writeOffReason;
-        PaymentTermId = paymentTermId;
-        TaxGroupId = taxGroupId;
-        IsPublicSector_IT = isPublicSector_IT;
-    }
+    /// <summary>
+    /// Gets the clearing period payment term name.
+    /// </summary>
+    public string? ClearingPeriodPaymentTermName { get; } = clearingPeriodPaymentTermName;
 
-    public string? ClearingPeriodPaymentTermName { get; }
+    /// <summary>
+    /// Gets the customer account number sequence.
+    /// </summary>
+    public string? CustomerAccountNumberSequence { get; } = customerAccountNumberSequence;
 
-    public string? CustomerAccountNumberSequence { get; }
+    /// <summary>
+    /// Gets the customer group ID.
+    /// </summary>
+    public string CustomerGroupId { get; } = customerGroupId;
 
-    public string CustomerGroupId { get; }
-
+    /// <summary>
+    /// Gets the data area ID.
+    /// </summary>
     [JsonPropertyName("dataAreaId")]
-    public string DataAreaId { get; }
+    public string DataAreaId { get; } = dataAreaId;
 
-    public string? DefaultDimensionDisplayValue { get; }
+    /// <summary>
+    /// Gets the default dimension display value.
+    /// </summary>
+    public string? DefaultDimensionDisplayValue { get; } = defaultDimensionDisplayValue;
 
-    public string? Description { get; }
+    /// <summary>
+    /// Gets the description.
+    /// </summary>
+    public string? Description { get; } = description;
 
-    public string? IsPublicSector_IT { get; }
+    /// <summary>
+    /// Gets the flag indicating whether the customer group is for the public sector IT.
+    /// </summary>
+    [JsonPropertyName("IsPublicSector_IT")]
+    public string? IsPublicSector { get; } = isPublicSector;
 
-    public string? IsSalesTaxIncludedInPrice { get; }
+    /// <summary>
+    /// Gets the flag indicating whether sales tax is included in the price.
+    /// </summary>
+    public string? IsSalesTaxIncludedInPrice { get; } = isSalesTaxIncludedInPrice;
 
-    public string? PaymentTermId { get; }
+    /// <summary>
+    /// Gets the payment term ID.
+    /// </summary>
+    public string? PaymentTermId { get; } = paymentTermId;
 
-    public string? TaxGroupId { get; }
+    /// <summary>
+    /// Gets the tax group ID.
+    /// </summary>
+    public string? TaxGroupId { get; } = taxGroupId;
 
-    public string? WriteOffReason { get; }
+    /// <summary>
+    /// Gets the write-off reason.
+    /// </summary>
+    public string? WriteOffReason { get; } = writeOffReason;
 }

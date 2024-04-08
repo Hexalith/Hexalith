@@ -231,7 +231,7 @@ public class MessageStoreTest
         return list;
     }
 
-    private record DummyState(string IdempotencyId, int Id, string Name) : IIdempotent
+    private sealed record DummyState(string IdempotencyId, int Id, string Name) : IIdempotent
     {
     }
 }

@@ -1,4 +1,4 @@
-﻿// <copyright file="DummyEquatable.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="DummyNonEquatable.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -6,11 +6,7 @@
 
 namespace Hexalith.UnitTests.Core.Common.Common;
 
-using System.Collections.Generic;
-
-using Hexalith.Extensions.Common;
-
-public class DummyNonEquatable 
+public class DummyNonEquatable
 {
     public string Property1 { get; set; } = "Prop1";
 

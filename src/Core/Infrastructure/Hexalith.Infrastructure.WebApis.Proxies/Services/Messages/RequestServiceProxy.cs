@@ -19,18 +19,13 @@ using Microsoft.Extensions.Logging;
 /// <summary>
 /// Represents a proxy for the request service.
 /// </summary>
-public class RequestServiceProxy : ServiceApiProxy, IRequestService
+/// <remarks>
+/// Initializes a new instance of the <see cref="RequestServiceProxy"/> class.
+/// </remarks>
+/// <param name="httpClient">The HTTP client.</param>
+/// <param name="logger">The logger.</param>
+public class RequestServiceProxy(HttpClient httpClient, ILogger<RequestServiceProxy> logger) : ServiceApiProxy(httpClient, logger), IRequestService
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="RequestServiceProxy"/> class.
-    /// </summary>
-    /// <param name="httpClient">The HTTP client.</param>
-    /// <param name="logger">The logger.</param>
-    public RequestServiceProxy(HttpClient httpClient, ILogger<RequestServiceProxy> logger)
-        : base(httpClient, logger)
-    {
-    }
-
     /// <inheritdoc/>
     public async Task SubmitRequestAsync(RequestState request, CancellationToken cancellationToken)
     {

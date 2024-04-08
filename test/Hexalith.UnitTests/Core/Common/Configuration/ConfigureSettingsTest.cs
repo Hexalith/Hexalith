@@ -8,7 +8,6 @@ namespace Hexalith.UnitTests.Core.Common.Configuration;
 
 using FluentAssertions;
 
-using Hexalith.Extensions.Configuration;
 using Hexalith.TestMocks;
 
 public class ConfigureSettingsTest
@@ -32,23 +31,5 @@ public class ConfigureSettingsTest
             .WithValueFromConfiguration<ConfigureSettingsTest>()
             .Build();
         _ = settings.Value.Should().BeEquivalentTo(expected);
-    }
-
-    public class TestClassValue
-    {
-        public long TestLong { get; set; }
-
-        public string TestString { get; set; }
-    }
-
-    public class TestSettings : ISettings
-    {
-        public TestClassValue TestClass { get; set; }
-
-        public long TestLong { get; set; }
-
-        public string TestString { get; set; }
-
-        public static string ConfigurationName() => "Test";
     }
 }

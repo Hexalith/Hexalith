@@ -197,10 +197,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.Web
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.DaprRuntime.Abstractions", "src\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime.Abstractions\Hexalith.Infrastructure.DaprRuntime.Abstractions.csproj", "{552814D4-6853-4384-A270-47C7741D1332}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HexalithApplication", "src\Clients\HexalithApplication\HexalithApplication\HexalithApplication.csproj", "{56690F0A-C30B-4239-9C98-865C8854FE88}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HexalithApplication.Client", "src\Clients\HexalithApplication\HexalithApplication.Client\HexalithApplication.Client.csproj", "{08B092F8-82EB-43C7-A42C-F2570BE44C93}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.Emails.MailKit", "src\Core\Infrastructure\Hexalith.Infrastructure.Emails.MailKit\Hexalith.Infrastructure.Emails.MailKit.csproj", "{A836AC21-33CC-479C-862D-99D6EB36917E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.Emails.SendGrid", "src\Core\Infrastructure\Hexalith.Infrastructure.Emails.SendGrid\Hexalith.Infrastructure.Emails.SendGrid.csproj", "{96BFBAF8-A4DB-41E1-B73E-6B44D775488B}"
@@ -270,6 +266,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.CosmosDb", "src\Core\Infrastructure\Hexalith.Infrastructure.CosmosDb\Hexalith.Infrastructure.CosmosDb.csproj", "{A9D47971-C5E1-4EE0-B355-23D0B0EE00BC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.AspireService.Hosting", "src\Core\Infrastructure\Hexalith.Infrastructure.AspireService.Hosting\Hexalith.Infrastructure.AspireService.Hosting.csproj", "{7FAFB6B4-B084-4F20-A046-8692CD504B67}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Server.Inventories", "src\Servers\Hexalith.Server.Inventories\Hexalith.Server.Inventories.csproj", "{4BE7A460-88C0-479F-AB6F-0B9F5BB2B4DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -501,14 +499,6 @@ Global
 		{552814D4-6853-4384-A270-47C7741D1332}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{552814D4-6853-4384-A270-47C7741D1332}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{552814D4-6853-4384-A270-47C7741D1332}.Release|Any CPU.Build.0 = Release|Any CPU
-		{56690F0A-C30B-4239-9C98-865C8854FE88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{56690F0A-C30B-4239-9C98-865C8854FE88}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{56690F0A-C30B-4239-9C98-865C8854FE88}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{56690F0A-C30B-4239-9C98-865C8854FE88}.Release|Any CPU.Build.0 = Release|Any CPU
-		{08B092F8-82EB-43C7-A42C-F2570BE44C93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{08B092F8-82EB-43C7-A42C-F2570BE44C93}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{08B092F8-82EB-43C7-A42C-F2570BE44C93}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{08B092F8-82EB-43C7-A42C-F2570BE44C93}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A836AC21-33CC-479C-862D-99D6EB36917E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A836AC21-33CC-479C-862D-99D6EB36917E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A836AC21-33CC-479C-862D-99D6EB36917E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -621,6 +611,10 @@ Global
 		{7FAFB6B4-B084-4F20-A046-8692CD504B67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FAFB6B4-B084-4F20-A046-8692CD504B67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FAFB6B4-B084-4F20-A046-8692CD504B67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BE7A460-88C0-479F-AB6F-0B9F5BB2B4DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BE7A460-88C0-479F-AB6F-0B9F5BB2B4DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BE7A460-88C0-479F-AB6F-0B9F5BB2B4DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BE7A460-88C0-479F-AB6F-0B9F5BB2B4DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -690,8 +684,6 @@ Global
 		{5505FB73-1508-41D9-9426-2E8A83ABD77E} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{F0C9080E-3B5A-4992-B961-3C28686CDA2C} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{552814D4-6853-4384-A270-47C7741D1332} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
-		{56690F0A-C30B-4239-9C98-865C8854FE88} = {1ED57683-8967-462C-A901-F121DCAD4DC1}
-		{08B092F8-82EB-43C7-A42C-F2570BE44C93} = {1ED57683-8967-462C-A901-F121DCAD4DC1}
 		{A836AC21-33CC-479C-862D-99D6EB36917E} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{96BFBAF8-A4DB-41E1-B73E-6B44D775488B} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{93BDAAEA-DCF3-4A19-844B-7B699DF52EC7} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
@@ -725,6 +717,7 @@ Global
 		{0D3A0C8C-15F2-4A0C-8A1C-BD54BCB8FEE1} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{A9D47971-C5E1-4EE0-B355-23D0B0EE00BC} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{7FAFB6B4-B084-4F20-A046-8692CD504B67} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
+		{4BE7A460-88C0-479F-AB6F-0B9F5BB2B4DD} = {7BB19707-E9C5-4FF6-B4D9-8464CF328CC0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09CBB595-8996-4C7F-9C48-4C58AD9293AC}

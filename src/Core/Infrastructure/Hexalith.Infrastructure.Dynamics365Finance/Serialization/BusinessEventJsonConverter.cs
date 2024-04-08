@@ -81,6 +81,9 @@ public class BusinessEventJsonConverter : JsonConverter<Dynamics365BusinessEvent
     /// <exception cref="NotSupportedException">Cannot create JSON object.</exception>
     public override void Write(Utf8JsonWriter writer, Dynamics365BusinessEventBase value, JsonSerializerOptions options)
     {
+        ArgumentNullException.ThrowIfNull(value);
+        ArgumentNullException.ThrowIfNull(writer);
+
         if (value.GetType() == typeof(Dynamics365BusinessEventBase))
         {
             throw new InvalidOperationException("The serialized value type can't be the same as the polymorphic base class : " + value.GetType().Name);

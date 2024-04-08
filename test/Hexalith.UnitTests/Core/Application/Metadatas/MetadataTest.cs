@@ -14,6 +14,8 @@ using Hexalith.Application.Metadatas;
 
 public class MetadataTest
 {
+    private static readonly string[] _scopes = ["scope1", "scope9"];
+
     [Fact]
     public void MetadataShouldBeEqualAfterSerializeDeserialize()
     {
@@ -33,8 +35,6 @@ public class MetadataTest
         _ = json.Should().Contain(meta.Message.Id);
     }
 
-    private static readonly string[] Scopes = new[] { "scope1", "scope9" };
-
     private static Metadata GetMetadata()
     {
         return new(
@@ -45,6 +45,6 @@ public class MetadataTest
                 new MessageVersion(4, 6),
                 new AggregateMetadata("123-AG", "TestAggregate")),
             new ContextMetadata("COR-6589", "TestUser", DateTimeOffset.UtcNow, 101, "session-6987"),
-            Scopes);
+            _scopes);
     }
 }

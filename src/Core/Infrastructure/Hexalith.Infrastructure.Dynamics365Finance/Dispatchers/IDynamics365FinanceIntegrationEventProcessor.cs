@@ -19,8 +19,8 @@ public interface IDynamics365FinanceIntegrationEventProcessor : IIntegrationEven
     /// <summary>
     /// Submit the event.
     /// </summary>
-    /// <param name="event">The event.</param>
+    /// <param name="ievent">The event.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
-    Task SubmitAsync(Dynamics365BusinessEventBase @event, CancellationToken cancellationToken);
+    Task SubmitAsync(Dynamics365BusinessEventBase ievent, CancellationToken cancellationToken);
 }

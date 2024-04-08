@@ -115,9 +115,12 @@ public static class Dynamics365FinancePartiesHelper
     /// <param name="applicationName">Name of the application.</param>
     /// <returns>ActorRegistrationCollection.</returns>
     /// <exception cref="System.ArgumentNullException">null.</exception>
-    public static ActorRegistrationCollection AddDynamics365FinanceProjections([NotNull] this ActorRegistrationCollection actors, string applicationName)
+    public static ActorRegistrationCollection AddDynamics365FinanceProjections(
+        [NotNull] this ActorRegistrationCollection actors,
+        string applicationName)
     {
         ArgumentNullException.ThrowIfNull(actors);
+        ArgumentException.ThrowIfNullOrWhiteSpace(applicationName);
         return actors;
     }
 }

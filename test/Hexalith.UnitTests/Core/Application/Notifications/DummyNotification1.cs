@@ -12,18 +12,15 @@ using System.Text.Json.Serialization;
 using Hexalith.Extensions.Helpers;
 
 [DataContract]
-public class DummyNotification1 : DummyBaseNotification
+[method: JsonConstructor]
+public class DummyNotification1(string baseValue, int value1) : DummyBaseNotification(baseValue)
 {
-    [JsonConstructor]
-    public DummyNotification1(string baseValue, int value1)
-        : base(baseValue) => Value1 = value1;
-
     public DummyNotification1()
         : this("Test Value", 99)
     {
     }
 
-    public int Value1 { get; }
+    public int Value1 { get; } = value1;
 
     protected override string DefaultAggregateId() => BaseValue + "-" + Value1.ToInvariantString();
 }

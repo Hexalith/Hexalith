@@ -20,7 +20,9 @@ public record DummyAggregate(string Id) : Aggregate
 
     public static string GetAggregateId(string id) => GetAggregateName() + Separator + id;
 
+#pragma warning disable CA1024 // Use properties where appropriate
     public static string GetAggregateName() => "Dummy";
+#pragma warning restore CA1024 // Use properties where appropriate
 
     protected override string DefaultAggregateName() => GetAggregateName();
 

@@ -167,7 +167,7 @@ public abstract class Dynamics365BusinessEventBase : IMetadata, IEvent
     /// </summary>
     [IgnoreDataMember]
     [JsonIgnore]
-    public IEnumerable<string>? Scopes => Array.Empty<string>();
+    public IEnumerable<string>? Scopes => [];
 
     /// <inheritdoc/>
     [IgnoreDataMember]
@@ -185,7 +185,7 @@ public abstract class Dynamics365BusinessEventBase : IMetadata, IEvent
     /// Gets the business command.
     /// </summary>
     /// <returns>The command.</returns>
-    public virtual IEnumerable<BaseCommand> ToCommands() => Enumerable.Empty<BaseCommand>();
+    public virtual IEnumerable<BaseCommand> ToCommands() => [];
 
     /// <summary>
     /// Get the message major version.
