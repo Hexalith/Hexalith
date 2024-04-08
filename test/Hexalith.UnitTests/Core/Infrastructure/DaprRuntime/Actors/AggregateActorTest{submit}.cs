@@ -322,7 +322,7 @@ public partial class AggregateActorTest
     /// </summary>
     /// <param name="command">The command.</param>
     /// <returns>Hexalith.Infrastructure.DaprRuntime.Handlers.ActorCommandEnvelope.</returns>
-    private ActorCommandEnvelope CreateEnvelope(DummyAggregateCommand1 command)
+    private static ActorCommandEnvelope CreateEnvelope(DummyAggregateCommand1 command)
                 => new([command], [CreateMetadata(command)]);
 
     /// <summary>
@@ -330,7 +330,7 @@ public partial class AggregateActorTest
     /// </summary>
     /// <param name="message">The message.</param>
     /// <returns>Hexalith.Application.Metadatas.Metadata.</returns>
-    private Metadata CreateMetadata(BaseMessage message)
+    private static Metadata CreateMetadata(BaseMessage message)
         => new(
             UniqueIdHelper.GenerateUniqueStringId(),
             message,

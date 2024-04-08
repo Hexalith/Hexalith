@@ -16,16 +16,6 @@ public record DummyAggregate(string Id) : Aggregate
     {
     }
 
-    protected override string DefaultAggregateId() => GetAggregateId(Id);
-
-    public static string GetAggregateId(string id) => GetAggregateName() + Separator + id;
-
-#pragma warning disable CA1024 // Use properties where appropriate
-    public static string GetAggregateName() => "Dummy";
-#pragma warning restore CA1024 // Use properties where appropriate
-
-    protected override string DefaultAggregateName() => GetAggregateName();
-
     public override (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent)
     {
         return domainEvent is DummyAggregateEvent1 dummyEvent
@@ -37,4 +27,14 @@ public record DummyAggregate(string Id) : Aggregate
     }
 
     public override bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);
+
+    public static string GetAggregateId(string id) => GetAggregateName() + Separator + id;
+
+#pragma warning disable CA1024 // Use properties where appropriate
+    public static string GetAggregateName() => "Dummy";
+#pragma warning restore CA1024 // Use properties where appropriate
+
+    protected override string DefaultAggregateName() => GetAggregateName();
+
+    protected override string DefaultAggregateId() => GetAggregateId(Id);
 }
