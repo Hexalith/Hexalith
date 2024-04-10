@@ -29,14 +29,14 @@
 		<ManDaprSidekickVersion>1.2.2</ManDaprSidekickVersion>
 		<MicrosoftAzureCosmosVersion>3.38.1</MicrosoftAzureCosmosVersion>
 		<MicrosoftBotBuilderVersion>4.22.2</MicrosoftBotBuilderVersion>
-		<MicrosoftFluentUIComponentsVersion>4.5.0</MicrosoftFluentUIComponentsVersion>
-		<MicrosoftFluentUIComponentsIconsVersion>4.5.0</MicrosoftFluentUIComponentsIconsVersion>
-		<MicrosoftIdentityClientVersion>4.59.0</MicrosoftIdentityClientVersion>
-		<MicrosoftIdentityWebVersion>2.17.2</MicrosoftIdentityWebVersion>
+		<MicrosoftFluentUIComponentsVersion>4.6.0</MicrosoftFluentUIComponentsVersion>
+		<MicrosoftFluentUIComponentsIconsVersion>4.6.0</MicrosoftFluentUIComponentsIconsVersion>
+		<MicrosoftIdentityClientVersion>4.60.2</MicrosoftIdentityClientVersion>
+		<MicrosoftIdentityWebVersion>2.17.4</MicrosoftIdentityWebVersion>
 		<MicrosoftNETTestSdkVersion>17.9.0</MicrosoftNETTestSdkVersion>
-		<MicrosoftSemanticKernelVersion>1.6.2</MicrosoftSemanticKernelVersion>
+		<MicrosoftSemanticKernelVersion>1.7.1</MicrosoftSemanticKernelVersion>
 		<MicrosoftTeamsFxVersion>2.4.0</MicrosoftTeamsFxVersion>
-		<MicrosoftTypescriptMSBuild>5.4.2</MicrosoftTypescriptMSBuild>
+		<MicrosoftTypescriptMSBuild>5.4.4</MicrosoftTypescriptMSBuild>
 		<MicrosoftGraphVersion>5.12.*</MicrosoftGraphVersion>
 		<MicrosoftVisualStudioThreadingAnalyzersVersion>17.9.28</MicrosoftVisualStudioThreadingAnalyzersVersion>
 		<MinverVersion>5.0.0</MinverVersion>
