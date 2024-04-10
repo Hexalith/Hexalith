@@ -3,7 +3,7 @@
 		<!-- Detect if the solution is opened in VS to add local repository for packages -->
 		<AdaptiveCardsVersion>3.1.0</AdaptiveCardsVersion>
 		<AdaptiveCardsTemplatingVersion>1.5.0</AdaptiveCardsTemplatingVersion>
-		<AspireVersion>8.0.0-preview.4.24156.9</AspireVersion>
+		<AspireVersion>8.0.0-preview.5.24201.12</AspireVersion>
 		<AzureIdentityVersion>1.10.4</AzureIdentityVersion>
 		<AzureBicepCoreVersion>0.26.54</AzureBicepCoreVersion>
 		<AzureMonitorOpenTelemetryAspNetCoreVersion>1.1.0</AzureMonitorOpenTelemetryAspNetCoreVersion>
@@ -21,6 +21,7 @@
 		<DocFxConsoleVersion>2.59.4</DocFxConsoleVersion>
 		<FluentAssertionsVersion>6.12.0</FluentAssertionsVersion>
 		<FluentValidationVersion>11.9.0</FluentValidationVersion>
+		<FluentValidationAspNetCoreVersion>11.3.0</FluentValidationAspNetCoreVersion>
 		<GitHubActionsTestLoggerVersion>2.3.3</GitHubActionsTestLoggerVersion>
 		<GoogleApiVersion>5.3.1</GoogleApiVersion>
 		<ISO3166Version>1.0.4</ISO3166Version>
@@ -43,6 +44,7 @@
 		<MoqVersion>4.20.70</MoqVersion>
 		<MoqContribHttpClientVersion>1.4.0</MoqContribHttpClientVersion>
 		<OpenTelemetryVersion>1.*</OpenTelemetryVersion>
+		<OpenTelemetryBetaVersion>1.8.0-beta.1</OpenTelemetryBetaVersion>
 		<RadzenBlazorVersion>4.23.4</RadzenBlazorVersion>
 		<SendGridExtensionsDependencyInjectionVersion>1.0.1</SendGridExtensionsDependencyInjectionVersion>
 		<SerilogVersion>8.0.*</SerilogVersion>

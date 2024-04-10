@@ -7,7 +7,7 @@
 namespace Hexalith.Infrastructure.AspireService.Hosting.Helpers;
 
 using Aspire.Hosting;
-using Aspire.Hosting.Azure;
+using Aspire.Hosting.ApplicationModel;
 using Aspire.Hosting.Dapr;
 
 using Hexalith.Infrastructure.AspireService.Hosting;
@@ -19,13 +19,7 @@ using Microsoft.Extensions.Hosting;
 /// </summary>
 public class HexalithDistributedApplication
 {
-    private readonly IResourceBuilder<AzureApplicationInsightsResource>? _applicationInsights;
     private readonly string _deploymentName;
-    private readonly IResourceBuilder<AzureKeyVaultResource>? _keyVault;
-    private IResourceBuilder<IDaprComponentResource>? _commandBus;
-    private IResourceBuilder<IDaprComponentResource>? _eventBus;
-    private IResourceBuilder<IDaprComponentResource>? _notificationBus;
-    private IResourceBuilder<IDaprComponentResource>? _requestBus;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="HexalithDistributedApplication"/> class.
@@ -46,16 +40,6 @@ public class HexalithDistributedApplication
     /// <value>The builder.</value>
     public IDistributedApplicationBuilder Builder { get; }
 
-    private IResourceBuilder<AzureApplicationInsightsResource> ApplicationInsights
-        => _applicationInsights
-            ?? Builder
-                .AddAzureApplicationInsights(_deploymentName + "-telemetry");
-
-    private IResourceBuilder<AzureKeyVaultResource> KeyVault
-        => _keyVault
-            ?? Builder
-                .AddAzureKeyVault(_deploymentName + "-secrets");
-
     /// <summary>
     /// Adds the project.
     /// </summary>
@@ -75,10 +59,6 @@ public class HexalithDistributedApplication
         if (Builder.Environment.IsDevelopment())
         {
             project = project.WithDaprSidecar(name)
-                .WithReference(_eventBus ??= Builder.AddDaprPubSub(AspireHostConstants.EventBusComponentName))
-                .WithReference(_requestBus ??= Builder.AddDaprPubSub(AspireHostConstants.RequestBusComponentName))
-                .WithReference(_commandBus ??= Builder.AddDaprPubSub(AspireHostConstants.CommandBusComponentName))
-                .WithReference(_notificationBus ??= Builder.AddDaprPubSub(AspireHostConstants.NotificationBusComponentName))
                 .WithReference(Builder.AddDaprStateStore(statestore));
         }
         else
@@ -88,11 +68,11 @@ public class HexalithDistributedApplication
 
             project = project.WithDaprSidecar(new DaprSidecarOptions { AppId = name, ResourcesPaths = [commonComponentPath, projectComponentPath] });
 
-            if (Builder.ExecutionContext.IsPublishMode)
-            {
-                _ = project.WithReference(ApplicationInsights);
-                _ = project.WithReference(KeyVault);
-            }
+            // if (Builder.ExecutionContext.IsPublishMode)
+            // {
+            //    _ = project.WithReference(ApplicationInsights);
+            //    _ = project.WithReference(KeyVault);
+            // }
         }
 
         project = project

@@ -6,10 +6,9 @@
 
 namespace Hexalith.Infrastructure.AspireService.Defaults;
 
-using Azure.Monitor.OpenTelemetry.AspNetCore;
-
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
@@ -40,13 +39,9 @@ public static class AspireExtensions
         _ = builder.Services.AddServiceDiscovery();
 
         _ = builder.Services.ConfigureHttpClientDefaults(http =>
-        {
-            // Turn on resilience by default
-            _ = http.AddStandardResilienceHandler();
 
-            // Turn on service discovery by default
-            _ = http.UseServiceDiscovery();
-        });
+            // Turn on resilience by default
+            _ = http.AddStandardResilienceHandler());
 
         return builder;
     }
@@ -145,7 +140,7 @@ public static class AspireExtensions
 
         if (!string.IsNullOrEmpty(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]))
         {
-            _ = builder.Services.AddOpenTelemetry().UseAzureMonitor();
+            _ = builder.Services.AddOpenTelemetry();
         }
 
         return builder;

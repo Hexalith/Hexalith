@@ -34,8 +34,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-using Swashbuckle.AspNetCore.Annotations;
-
 /// <summary>
 /// Class SalesInvoicePostedBindingController.
 /// Implements the <see cref="Dynamics365FinanceBindingController" />.
@@ -104,7 +102,7 @@ public abstract class Dynamics365FinancePartnerInventoryItemBindingController : 
     [Produces("application/json")]
     [HttpPost("d365fnopartnerinventoryitemsbinding")]
     public async Task<ActionResult> ReceiveCustomerEventAsync(
-       [SwaggerRequestBody(Description ="Dynamics 365 finance partner inventory item business event", Required = true)]
+       [Swashbuckle.AspNetCore.Annotations.SwaggerRequestBody(Description ="Dynamics 365 finance partner inventory item business event", Required = true)]
        [FromBody] JsonElement message)
     {
         return await HandleEventAsync(message, CancellationToken.None)

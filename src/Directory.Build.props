@@ -5,6 +5,8 @@
 		<MinVerTagPrefix>v</MinVerTagPrefix>
 		<MinVerSkip Condition="'$(Configuration)' == 'Debug'">true</MinVerSkip>
 		<Deterministic>true</Deterministic>
+		<EnableConfigurationBindingGenerator>true</EnableConfigurationBindingGenerator>
+		<PublishAot Condition="'$(EnableAotPublishing)' == 'true'">true</PublishAot>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
 		<DebugSymbols>true</DebugSymbols>
