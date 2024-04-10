@@ -135,7 +135,8 @@
   <h6><strong>Assembly</strong>: Hexalith.Domain.Users.dll</h6>
   <h5 id="Hexalith_Domain_Users_Aggregates_User_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class User : Aggregate, IAggregate, IEquatable&lt;Aggregate&gt;, IUser, IEquatable&lt;User&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">[DataContract]
+public class User : Aggregate, IAggregate, IEquatable&lt;Aggregate&gt;, IUser, IEquatable&lt;User&gt;</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -144,7 +145,7 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Users_Aggregates_User__ctor_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Users.Aggregates.User.%23ctor(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Users/Aggregates/User.cs/#L18">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Users/Aggregates/User.cs/#L19">View Source</a>
   </span>
   <a id="Hexalith_Domain_Users_Aggregates_User__ctor_" data-uid="Hexalith.Domain.Users.Aggregates.User.#ctor*"></a>
   <h4 id="Hexalith_Domain_Users_Aggregates_User__ctor_System_String_System_String_System_String_" data-uid="Hexalith.Domain.Users.Aggregates.User.#ctor(System.String,System.String,System.String)">User(String, String, String)</h4>
@@ -189,7 +190,7 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Users_Aggregates_User_Email.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Users.Aggregates.User.Email%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Users/Aggregates/User.cs/#L18">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Users/Aggregates/User.cs/#L20">View Source</a>
   </span>
   <a id="Hexalith_Domain_Users_Aggregates_User_Email_" data-uid="Hexalith.Domain.Users.Aggregates.User.Email*"></a>
   <h4 id="Hexalith_Domain_Users_Aggregates_User_Email" data-uid="Hexalith.Domain.Users.Aggregates.User.Email">Email</h4>
@@ -197,7 +198,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Email { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 3)]
+public string Email { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -219,7 +221,7 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Users_Aggregates_User_Id.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Users.Aggregates.User.Id%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Users/Aggregates/User.cs/#L18">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Users/Aggregates/User.cs/#L20">View Source</a>
   </span>
   <a id="Hexalith_Domain_Users_Aggregates_User_Id_" data-uid="Hexalith.Domain.Users.Aggregates.User.Id*"></a>
   <h4 id="Hexalith_Domain_Users_Aggregates_User_Id" data-uid="Hexalith.Domain.Users.Aggregates.User.Id">Id</h4>
@@ -227,7 +229,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Id { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 1)]
+public string Id { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -249,7 +252,7 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Users_Aggregates_User_Name.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Users.Aggregates.User.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Users/Aggregates/User.cs/#L18">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Users/Aggregates/User.cs/#L20">View Source</a>
   </span>
   <a id="Hexalith_Domain_Users_Aggregates_User_Name_" data-uid="Hexalith.Domain.Users.Aggregates.User.Name*"></a>
   <h4 id="Hexalith_Domain_Users_Aggregates_User_Name" data-uid="Hexalith.Domain.Users.Aggregates.User.Name">Name</h4>
@@ -257,7 +260,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Name { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 2)]
+public string Name { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -281,7 +285,7 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Users_Aggregates_User_Apply_Hexalith_Domain_Events_BaseEvent_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Users.Aggregates.User.Apply(Hexalith.Domain.Events.BaseEvent)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Users/Aggregates/User.cs/#L21">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Users/Aggregates/User.cs/#L23">View Source</a>
   </span>
   <a id="Hexalith_Domain_Users_Aggregates_User_Apply_" data-uid="Hexalith.Domain.Users.Aggregates.User.Apply*"></a>
   <h4 id="Hexalith_Domain_Users_Aggregates_User_Apply_Hexalith_Domain_Events_BaseEvent_" data-uid="Hexalith.Domain.Users.Aggregates.User.Apply(Hexalith.Domain.Events.BaseEvent)">Apply(BaseEvent)</h4>
@@ -333,7 +337,7 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Users_Aggregates_User_IsInitialized.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Users.Aggregates.User.IsInitialized%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Users/Aggregates/User.cs/#L24">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Users/Aggregates/User.cs/#L26">View Source</a>
   </span>
   <a id="Hexalith_Domain_Users_Aggregates_User_IsInitialized_" data-uid="Hexalith.Domain.Users.Aggregates.User.IsInitialized*"></a>
   <h4 id="Hexalith_Domain_Users_Aggregates_User_IsInitialized" data-uid="Hexalith.Domain.Users.Aggregates.User.IsInitialized">IsInitialized()</h4>
@@ -393,7 +397,7 @@
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Users_Aggregates_User.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Users.Aggregates.User%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Users/Aggregates/User.cs/#L18" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Users/Aggregates/User.cs/#L19" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

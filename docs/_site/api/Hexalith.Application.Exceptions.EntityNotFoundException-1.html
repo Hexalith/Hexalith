@@ -81,7 +81,8 @@ Implements the <span class="xref">System.Exception</span>.</p>
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">System.Exception</span></div>
-    <div class="level2"><span class="xref">EntityNotFoundException&lt;TEntity&gt;</span></div>
+    <div class="level2"><a class="xref" href="Hexalith.Extensions.Errors.ApplicationErrorException.html">ApplicationErrorException</a></div>
+    <div class="level3"><span class="xref">EntityNotFoundException&lt;TEntity&gt;</span></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
@@ -89,6 +90,9 @@ Implements the <span class="xref">System.Exception</span>.</p>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Hexalith.Extensions.Errors.ApplicationErrorException.html#Hexalith_Extensions_Errors_ApplicationErrorException_Error">ApplicationErrorException.Error</a>
+    </div>
     <div>
       <span class="xref">System.Exception.GetBaseException()</span>
     </div>
@@ -146,7 +150,7 @@ Implements the <span class="xref">System.Exception</span>.</p>
   <h5 id="Hexalith_Application_Exceptions_EntityNotFoundException_1_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataContract]
-public class EntityNotFoundException&lt;TEntity&gt; : Exception, ISerializable</code></pre>
+public class EntityNotFoundException&lt;TEntity&gt; : ApplicationErrorException, ISerializable</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -171,7 +175,7 @@ public class EntityNotFoundException&lt;TEntity&gt; : Exception, ISerializable</
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Exceptions_EntityNotFoundException_1__ctor.md&amp;value=---%0Auid%3A%20Hexalith.Application.Exceptions.EntityNotFoundException%601.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Exceptions/EntityNotFoundException.cs/#L25">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Exceptions/EntityNotFoundException.cs/#L28">View Source</a>
   </span>
   <a id="Hexalith_Application_Exceptions_EntityNotFoundException_1__ctor_" data-uid="Hexalith.Application.Exceptions.EntityNotFoundException`1.#ctor*"></a>
   <h4 id="Hexalith_Application_Exceptions_EntityNotFoundException_1__ctor" data-uid="Hexalith.Application.Exceptions.EntityNotFoundException`1.#ctor">EntityNotFoundException()</h4>
@@ -187,7 +191,7 @@ public class EntityNotFoundException&lt;TEntity&gt; : Exception, ISerializable</
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Exceptions_EntityNotFoundException_1__ctor_System_Object_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Exceptions.EntityNotFoundException%601.%23ctor(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Exceptions/EntityNotFoundException.cs/#L33">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Exceptions/EntityNotFoundException.cs/#L36">View Source</a>
   </span>
   <a id="Hexalith_Application_Exceptions_EntityNotFoundException_1__ctor_" data-uid="Hexalith.Application.Exceptions.EntityNotFoundException`1.#ctor*"></a>
   <h4 id="Hexalith_Application_Exceptions_EntityNotFoundException_1__ctor_System_Object_" data-uid="Hexalith.Application.Exceptions.EntityNotFoundException`1.#ctor(System.Object)">EntityNotFoundException(Object)</h4>
@@ -221,7 +225,7 @@ public class EntityNotFoundException&lt;TEntity&gt; : Exception, ISerializable</
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Exceptions_EntityNotFoundException_1__ctor_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Exceptions.EntityNotFoundException%601.%23ctor(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Exceptions/EntityNotFoundException.cs/#L40">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Exceptions/EntityNotFoundException.cs/#L45">View Source</a>
   </span>
   <a id="Hexalith_Application_Exceptions_EntityNotFoundException_1__ctor_" data-uid="Hexalith.Application.Exceptions.EntityNotFoundException`1.#ctor*"></a>
   <h4 id="Hexalith_Application_Exceptions_EntityNotFoundException_1__ctor_System_String_" data-uid="Hexalith.Application.Exceptions.EntityNotFoundException`1.#ctor(System.String)">EntityNotFoundException(String)</h4>
@@ -255,7 +259,7 @@ public class EntityNotFoundException&lt;TEntity&gt; : Exception, ISerializable</
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Exceptions_EntityNotFoundException_1__ctor_System_String_System_Exception_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Exceptions.EntityNotFoundException%601.%23ctor(System.String%2CSystem.Exception)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Exceptions/EntityNotFoundException.cs/#L52">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Exceptions/EntityNotFoundException.cs/#L57">View Source</a>
   </span>
   <a id="Hexalith_Application_Exceptions_EntityNotFoundException_1__ctor_" data-uid="Hexalith.Application.Exceptions.EntityNotFoundException`1.#ctor*"></a>
   <h4 id="Hexalith_Application_Exceptions_EntityNotFoundException_1__ctor_System_String_System_Exception_" data-uid="Hexalith.Application.Exceptions.EntityNotFoundException`1.#ctor(System.String,System.Exception)">EntityNotFoundException(String, Exception)</h4>
@@ -297,7 +301,7 @@ public class EntityNotFoundException&lt;TEntity&gt; : Exception, ISerializable</
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Exceptions_EntityNotFoundException_1_Key.md&amp;value=---%0Auid%3A%20Hexalith.Application.Exceptions.EntityNotFoundException%601.Key%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Exceptions/EntityNotFoundException.cs/#L61">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Exceptions/EntityNotFoundException.cs/#L66">View Source</a>
   </span>
   <a id="Hexalith_Application_Exceptions_EntityNotFoundException_1_Key_" data-uid="Hexalith.Application.Exceptions.EntityNotFoundException`1.Key*"></a>
   <h4 id="Hexalith_Application_Exceptions_EntityNotFoundException_1_Key" data-uid="Hexalith.Application.Exceptions.EntityNotFoundException`1.Key">Key</h4>
@@ -353,7 +357,7 @@ public class EntityNotFoundException&lt;TEntity&gt; : Exception, ISerializable</
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Exceptions_EntityNotFoundException_1.md&amp;value=---%0Auid%3A%20Hexalith.Application.Exceptions.EntityNotFoundException%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Exceptions/EntityNotFoundException.cs/#L19" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Exceptions/EntityNotFoundException.cs/#L22" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

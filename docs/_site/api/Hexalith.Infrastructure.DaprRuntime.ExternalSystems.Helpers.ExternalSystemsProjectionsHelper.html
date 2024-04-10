@@ -127,7 +127,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IServiceCollection AddDaprExternalSystemsMapper(this IServiceCollection services, IConfiguration configuration, string applicationName)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IServiceCollection AddDaprExternalSystemsMapper(this IServiceCollection services, IConfiguration configuration, string applicationId)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -153,7 +153,7 @@
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">applicationName</span></td>
+        <td><span class="parametername">applicationId</span></td>
         <td><p>Name of the application.</p>
 </td>
       </tr>
@@ -205,7 +205,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static ActorRegistrationCollection AddExternalSystemsMapper(this ActorRegistrationCollection actors, string applicationName, IEnumerable&lt;string&gt; aggregateNames)</code></pre>
+    <pre><code class="lang-csharp hljs">public static ActorRegistrationCollection AddExternalSystemsMapper(this ActorRegistrationCollection actors, string applicationId, IEnumerable&lt;string&gt; aggregateNames)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -225,7 +225,7 @@
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">applicationName</span></td>
+        <td><span class="parametername">applicationId</span></td>
         <td><p>Name of the application.</p>
 </td>
       </tr>
@@ -407,7 +407,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IKeyValueActor GetAggregateToExternalReferenceActor(string applicationName, string aggregateName, string aggregateId, string systemId)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IKeyValueActor GetAggregateToExternalReferenceActor(string applicationId, string aggregateName, string aggregateId, string systemId)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -421,7 +421,7 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">applicationName</span></td>
+        <td><span class="parametername">applicationId</span></td>
         <td><p>Name of the application.</p>
 </td>
       </tr>
@@ -475,7 +475,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string GetAggregateToExternalReferenceActorName(string applicationName, string aggregateName)</code></pre>
+    <pre><code class="lang-csharp hljs">public static string GetAggregateToExternalReferenceActorName(string applicationId, string aggregateName)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -489,7 +489,7 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">applicationName</span></td>
+        <td><span class="parametername">applicationId</span></td>
         <td><p>Name of the application.</p>
 </td>
       </tr>
@@ -531,7 +531,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IKeyValueActor GetExternalReferenceToAggregateActor(string applicationName, string aggregateName, string partitionId, string companyId, string systemId, string externalId)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IKeyValueActor GetExternalReferenceToAggregateActor(string applicationId, string aggregateName, string partitionId, string companyId, string systemId, string externalId)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -545,7 +545,7 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">applicationName</span></td>
+        <td><span class="parametername">applicationId</span></td>
         <td><p>Name of the application.</p>
 </td>
       </tr>
@@ -611,7 +611,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string GetExternalReferenceToAggregateActorName(string applicationName, string aggregateName)</code></pre>
+    <pre><code class="lang-csharp hljs">public static string GetExternalReferenceToAggregateActorName(string applicationId, string aggregateName)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -625,7 +625,7 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">applicationName</span></td>
+        <td><span class="parametername">applicationId</span></td>
         <td><p>Name of the application.</p>
 </td>
       </tr>

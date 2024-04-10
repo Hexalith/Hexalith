@@ -817,7 +817,7 @@ public abstract class BindingController : ReceiveMessageController</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual Task PostHandleEventProcessAsync(IEvent event, IMetadata metadata, CancellationToken cancellationToken)</code></pre>
+    <pre><code class="lang-csharp hljs">protected virtual Task PostHandleEventProcessAsync(IEvent ievent, IMetadata metadata, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -831,7 +831,7 @@ public abstract class BindingController : ReceiveMessageController</code></pre>
     <tbody>
       <tr>
         <td><a class="xref" href="Hexalith.Domain.Events.IEvent.html">IEvent</a></td>
-        <td><span class="parametername">event</span></td>
+        <td><span class="parametername">ievent</span></td>
         <td><p>The event.</p>
 </td>
       </tr>

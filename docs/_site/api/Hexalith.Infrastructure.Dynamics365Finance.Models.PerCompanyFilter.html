@@ -83,16 +83,20 @@
       <div class="level2"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Inventories.Inventory.ByBarcodeFilter.html">ByBarcodeFilter</a></div>
       <div class="level2"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Inventories.Inventory.ByItemFilter.html">ByItemFilter</a></div>
       <div class="level2"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Inventories.InventoryOnHand.WarehouseOnHandFilter.html">WarehouseOnHandFilter</a></div>
-      <div class="level2"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerByAccountFilter.html">CustomerByAccountFilter</a></div>
-      <div class="level2"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Entities.CustomerByNameFilter.html">CustomerByNameFilter</a></div>
+      <div class="level2"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerByAccountFilter.html">CustomerByAccountFilter</a></div>
       <div class="level2"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerByNameAliasFilter.html">CustomerByNameAliasFilter</a></div>
+      <div class="level2"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerByNameFilter.html">CustomerByNameFilter</a></div>
       <div class="level2"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerExternalCodeByAccountFilter.html">CustomerExternalCodeByAccountFilter</a></div>
       <div class="level2"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Parties.Customers.Filters.CustomerExternalCodeFilter.html">CustomerExternalCodeFilter</a></div>
-      <div class="level2"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesInvoices.Entities.SalesInvoiceByAccountFilter.html">SalesInvoiceByAccountFilter</a></div>
-      <div class="level2"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesInvoices.Entities.SalesInvoiceByNameFilter.html">SalesInvoiceByNameFilter</a></div>
+      <div class="level2"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Sales.PackingSlips.Filters.PackingSlipTrackingInformationBySalesOrderFilter.html">PackingSlipTrackingInformationBySalesOrderFilter</a></div>
+      <div class="level2"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Sales.PackingSlips.Filters.PackingSlipTrackingInformationFilter.html">PackingSlipTrackingInformationFilter</a></div>
       <div class="level2"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesInvoices.Filters.SalesInvoiceByNameAliasFilter.html">SalesInvoiceByNameAliasFilter</a></div>
-      <div class="level2"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesInvoices.Filters.SalesInvoiceExternalCodeByAccountFilter.html">SalesInvoiceExternalCodeByAccountFilter</a></div>
-      <div class="level2"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesInvoices.Filters.SalesInvoiceExternalCodeFilter.html">SalesInvoiceExternalCodeFilter</a></div>
+      <div class="level2"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesInvoices.Filters.SalesInvoiceFilter.html">SalesInvoiceFilter</a></div>
+      <div class="level2"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Filters.ByCustomersLineNumberAdditionalFilter.html">ByCustomersLineNumberAdditionalFilter</a></div>
+      <div class="level2"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Filters.ByCustomersLineNumberFilter.html">ByCustomersLineNumberFilter</a></div>
+      <div class="level2"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Filters.SalesOrderFilter.html">SalesOrderFilter</a></div>
+      <div class="level2"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Filters.SalesOrderLineIdFilter.html">SalesOrderLineIdFilter</a></div>
+      <div class="level2"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Filters.SalesOrdersChargesFilter.html">SalesOrdersChargesFilter</a></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
@@ -175,7 +179,7 @@ protected PerCompanyFilter(string dataAreaId)</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Models_PerCompanyFilter_DataAreaId.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Models.PerCompanyFilter.DataAreaId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Models/PerCompanyFilter.cs/#L31">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance/Models/PerCompanyFilter.cs/#L28">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_Dynamics365Finance_Models_PerCompanyFilter_DataAreaId_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Models.PerCompanyFilter.DataAreaId*"></a>
   <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Models_PerCompanyFilter_DataAreaId" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Models.PerCompanyFilter.DataAreaId">DataAreaId</h4>
@@ -185,6 +189,7 @@ protected PerCompanyFilter(string dataAreaId)</code></pre>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;dataAreaId&quot;)]
+[DataMember]
 public string DataAreaId { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>

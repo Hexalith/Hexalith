@@ -80,29 +80,11 @@ Implements the <see cref="!:Application.Events.IntegrationEventProjectionUpdateH
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Projections.KeyValueActorProjectionUpdateEventHandlerBase-2.html">KeyValueActorProjectionUpdateEventHandlerBase</a>&lt;<a class="xref" href="Hexalith.Domain.Events.SalesInvoiceIssued.html">SalesInvoiceIssued</a>, <a class="xref" href="Hexalith.Domain.Aggregates.SalesInvoiceState.html">SalesInvoiceState</a>&gt;</div>
-    <div class="level2"><a class="xref" href="Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceProjectionUpdateHandler-1.html">SalesInvoiceProjectionUpdateHandler</a>&lt;<a class="xref" href="Hexalith.Domain.Events.SalesInvoiceIssued.html">SalesInvoiceIssued</a>&gt;</div>
-    <div class="level3"><span class="xref">SalesInvoiceIssuedProjectionUpdateHandler</span></div>
-  </div>
-  <div class="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="Hexalith.Application.Projections.IProjectionUpdateHandler-1.html">IProjectionUpdateHandler</a>&lt;<a class="xref" href="Hexalith.Domain.Events.SalesInvoiceIssued.html">SalesInvoiceIssued</a>&gt;</div>
-    <div><a class="xref" href="Hexalith.Application.Projections.IProjectionUpdateHandler.html">IProjectionUpdateHandler</a></div>
+    <div class="level1"><a class="xref" href="Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceProjectionUpdateHandler-1.html">SalesInvoiceProjectionUpdateHandler</a>&lt;<a class="xref" href="Hexalith.Domain.Events.SalesInvoiceIssued.html">SalesInvoiceIssued</a>&gt;</div>
+    <div class="level2"><span class="xref">SalesInvoiceIssuedProjectionUpdateHandler</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
-    <div>
-      <a class="xref" href="Hexalith.Infrastructure.WebApis.SalesEvents.Projections.SalesInvoiceProjectionUpdateHandler-1.html#Hexalith_Infrastructure_WebApis_SalesEvents_Projections_SalesInvoiceProjectionUpdateHandler_1_ApplyAsync__0_Hexalith_Application_Metadatas_IMetadata_System_Threading_CancellationToken_">SalesInvoiceProjectionUpdateHandler&lt;SalesInvoiceIssued&gt;.ApplyAsync(SalesInvoiceIssued, IMetadata, CancellationToken)</a>
-    </div>
-    <div>
-      <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Projections.KeyValueActorProjectionUpdateEventHandlerBase-2.html#Hexalith_Infrastructure_DaprRuntime_Projections_KeyValueActorProjectionUpdateEventHandlerBase_2_ApplyAsync__0_Hexalith_Application_Metadatas_IMetadata_System_Threading_CancellationToken_">KeyValueActorProjectionUpdateEventHandlerBase&lt;SalesInvoiceIssued, SalesInvoiceState&gt;.ApplyAsync(SalesInvoiceIssued, IMetadata, CancellationToken)</a>
-    </div>
-    <div>
-      <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Projections.KeyValueActorProjectionUpdateEventHandlerBase-2.html#Hexalith_Infrastructure_DaprRuntime_Projections_KeyValueActorProjectionUpdateEventHandlerBase_2_GetProjectionAsync_System_String_System_Threading_CancellationToken_">KeyValueActorProjectionUpdateEventHandlerBase&lt;SalesInvoiceIssued, SalesInvoiceState&gt;.GetProjectionAsync(String, CancellationToken)</a>
-    </div>
-    <div>
-      <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Projections.KeyValueActorProjectionUpdateEventHandlerBase-2.html#Hexalith_Infrastructure_DaprRuntime_Projections_KeyValueActorProjectionUpdateEventHandlerBase_2_SaveProjectionAsync_System_String__1_System_Threading_CancellationToken_">KeyValueActorProjectionUpdateEventHandlerBase&lt;SalesInvoiceIssued, SalesInvoiceState&gt;.SaveProjectionAsync(String, SalesInvoiceState, CancellationToken)</a>
-    </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
@@ -129,7 +111,7 @@ Implements the <see cref="!:Application.Events.IntegrationEventProjectionUpdateH
   <h6><strong>Assembly</strong>: Hexalith.Infrastructure.WebApis.SalesEvents.dll</h6>
   <h5 id="Hexalith_Infrastructure_WebApis_SalesEvents_Projections_SalesInvoiceIssuedProjectionUpdateHandler_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class SalesInvoiceIssuedProjectionUpdateHandler : SalesInvoiceProjectionUpdateHandler&lt;SalesInvoiceIssued&gt;, IProjectionUpdateHandler&lt;SalesInvoiceIssued&gt;, IProjectionUpdateHandler</code></pre>
+    <pre><code class="lang-csharp hljs">public class SalesInvoiceIssuedProjectionUpdateHandler : SalesInvoiceProjectionUpdateHandler&lt;SalesInvoiceIssued&gt;</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -167,13 +149,6 @@ Implements the <see cref="!:Application.Events.IntegrationEventProjectionUpdateH
       </tr>
     </tbody>
   </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="Hexalith.Application.Projections.IProjectionUpdateHandler-1.html">IProjectionUpdateHandler&lt;TEvent&gt;</a>
-  </div>
-  <div>
-      <a class="xref" href="Hexalith.Application.Projections.IProjectionUpdateHandler.html">IProjectionUpdateHandler</a>
-  </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSame_System_Object_System_Object_">EquatableHelper.AreSame(Object, Object)</a>

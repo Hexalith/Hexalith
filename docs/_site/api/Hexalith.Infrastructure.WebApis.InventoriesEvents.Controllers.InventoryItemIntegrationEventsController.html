@@ -720,11 +720,10 @@ public abstract class InventoryItemIntegrationEventsController : EventIntegratio
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[InventoryItemEventsBusTopic]
-[TopicMetadata(&quot;requireSessions&quot;, &quot;true&quot;)]
-[TopicMetadata(&quot;sessionIdleTimeoutInSec &quot;, &quot;2&quot;)]
-[TopicMetadata(&quot;maxConcurrentSessions&quot;, &quot;8&quot;)]
-[HttpPost(&quot;/handle-inventory-item-events&quot;)]
+    <pre><code class="lang-csharp hljs">[TopicMetadata(&quot;requireSessions&quot;, &quot;true&quot;)]
+[TopicMetadata(&quot;sessionIdleTimeoutInSec &quot;, &quot;60&quot;)]
+[TopicMetadata(&quot;maxConcurrentSessions&quot;, &quot;32&quot;)]
+[HttpPost(&quot;/handle-inventoryitem-events&quot;)]
 public async Task&lt;ActionResult&gt; HandleInventoryItemEventsAsync(EventState eventState)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
