@@ -52,6 +52,7 @@ public class InvalidAggregateEventException : ApplicationErrorException
     /// <param name="aggregate">The aggregate.</param>
     /// <param name="domainEvent">The domain event.</param>
     /// <param name="isInitializerEvent">if set to <c>true</c> [is initializer event].</param>
+    /// <param name="message">The message.</param>
     public InvalidAggregateEventException(IAggregate aggregate, BaseEvent domainEvent, bool isInitializerEvent, string? message = null)
         : base(GetError(aggregate, domainEvent, isInitializerEvent, message), null)
     {
@@ -95,14 +96,14 @@ public class InvalidAggregateEventException : ApplicationErrorException
                 Title = "Error applying event",
                 Detail = "The Event '{MessageType}' cannot be applied to the aggregate '{AggregateName}' with id '{AggregateId}'."
                     + (string.IsNullOrWhiteSpace(message) ? string.Empty : "\n" + message),
-                Arguments = new[] { domainEvent.TypeName, aggregate?.AggregateName ?? domainEvent.AggregateName, aggregate?.AggregateId ?? domainEvent.AggregateId },
+                Arguments = [domainEvent.TypeName, aggregate?.AggregateName ?? domainEvent.AggregateName, aggregate?.AggregateId ?? domainEvent.AggregateId],
                 Category = ErrorCategory.Functional,
             }
             : new ApplicationError
             {
                 Title = "Error applying event",
                 Detail = "The event '{MessageType}' can only be used for initialization. The aggregate '{AggregateName}' with ID '{aggregateId}' is already initialized.",
-                Arguments = new[] { domainEvent.TypeName, domainEvent.AggregateName, domainEvent.AggregateId },
+                Arguments = [domainEvent.TypeName, domainEvent.AggregateName, domainEvent.AggregateId],
                 Category = ErrorCategory.Functional,
             };
 }
