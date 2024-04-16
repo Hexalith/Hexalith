@@ -31,6 +31,7 @@ using Hexalith.Application.Tasks;
 using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Configuration;
+using Hexalith.Infrastructure.AspireService.Defaults;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 
 using Microsoft.AspNetCore.Authentication;
@@ -67,7 +68,7 @@ public static partial class HexalithWebApi
         // Serilog.ILogger startupLogger = builder.AddSerilogLogger();
 
         // startupLogger.Information("Configuring {AppName} ...", applicationName);
-        _ = builder.AddAspireServiceDefaults()
+        _ = builder.AddServiceDefaults()
             .Services
             .ConfigureSettings<Hexalith.Infrastructure.CosmosDb.Configurations.CosmosDbSettings>(builder.Configuration);
 
