@@ -78,22 +78,24 @@ public static class AspireExtensions
             logging.IncludeScopes = true;
         });
 
-        _ = builder.Services.AddOpenTelemetry()
-            .WithMetrics(metrics => metrics.AddAspNetCoreInstrumentation()
-                    .AddHttpClientInstrumentation()
-                    .AddRuntimeInstrumentation())
-            .WithTracing(tracing =>
-            {
-                if (builder.Environment.IsDevelopment())
-                {
-                    // We want to view all traces in development
-                    _ = tracing.SetSampler(new AlwaysOnSampler());
-                }
+        builder.Services.AddOpenTelemetry()
+           .WithMetrics(metrics =>
+           {
+               metrics.AddRuntimeInstrumentation()
+                      .AddBuiltInMeters();
+           })
+           .WithTracing(tracing =>
+           {
+               if (builder.Environment.IsDevelopment())
+               {
+                   // We want to view all traces in development
+                   tracing.SetSampler(new AlwaysOnSampler());
+               }
 
-                _ = tracing.AddAspNetCoreInstrumentation()
-                       .AddGrpcClientInstrumentation()
-                       .AddHttpClientInstrumentation();
-            });
+               tracing.AddAspNetCoreInstrumentation()
+                      .AddGrpcClientInstrumentation()
+                      .AddHttpClientInstrumentation();
+           });
 
         _ = builder.AddOpenTelemetryExporters();
 
@@ -125,6 +127,12 @@ public static class AspireExtensions
 
         return app;
     }
+
+    private static MeterProviderBuilder AddBuiltInMeters(this MeterProviderBuilder meterProviderBuilder) =>
+         meterProviderBuilder.AddMeter(
+             "Microsoft.AspNetCore.Hosting",
+             "Microsoft.AspNetCore.Server.Kestrel",
+             "System.Net.Http");
 
     private static IHostApplicationBuilder AddOpenTelemetryExporters(this IHostApplicationBuilder builder)
     {
