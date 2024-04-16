@@ -14,4 +14,8 @@
 		<PackageReference Include="Aspire.Hosting.Azure" Version="$(AspireVersion)" />
 		<PackageReference Include="Aspire.Azure.Security.KeyVault" Version="$(AspireVersion)" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Helpers\" />
+	</ItemGroup>
 </Project>

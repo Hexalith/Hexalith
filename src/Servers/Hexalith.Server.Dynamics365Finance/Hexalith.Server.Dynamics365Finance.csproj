@@ -6,6 +6,9 @@
 		<EnableSdkContainerSupport>true</EnableSdkContainerSupport>
 	</PropertyGroup>
 	<ItemGroup>
+		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="$(AspNetCorePackagesVersion)" />
+	</ItemGroup>
+	<ItemGroup>
 		<ContainerEnvironmentVariable Include="Statestore__Name" Value="$(ContainerRepository)statestore" />
 		<ContainerEnvironmentVariable Include="Cosmos__ContainerName" Value="$(ContainerRepository)" />
 		<ContainerEnvironmentVariable Include="Dynamics365Finance__Customers__ReceiveCustomersFromErpEnabled" Value="true" />

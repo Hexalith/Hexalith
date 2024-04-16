@@ -80,160 +80,22 @@ Implements the <span class="xref">Dapr.TopicAttribute</span>.</p>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">System.Attribute</span></div>
-    <div class="level2"><span class="xref">Dapr.TopicAttribute</span></div>
-    <div class="level3"><span class="xref">BusTopicAttribute</span></div>
-      <div class="level4"><a class="xref" href="Hexalith.Infrastructure.WebApis.Buses.CommandBusTopicAttribute.html">CommandBusTopicAttribute</a></div>
-      <div class="level4"><a class="xref" href="Hexalith.Infrastructure.WebApis.Buses.EventBusTopicAttribute.html">EventBusTopicAttribute</a></div>
-      <div class="level4"><a class="xref" href="Hexalith.Infrastructure.WebApis.Buses.NotificationBusTopicAttribute.html">NotificationBusTopicAttribute</a></div>
-      <div class="level4"><a class="xref" href="Hexalith.Infrastructure.WebApis.Buses.RequestBusTopicAttribute.html">RequestBusTopicAttribute</a></div>
-  </div>
-  <div class="implements">
-    <h5>Implements</h5>
-    <div><span class="xref">Dapr.ITopicMetadata</span></div>
-    <div><span class="xref">Dapr.IRawTopicMetadata</span></div>
-    <div><span class="xref">Dapr.IOwnedOriginalTopicMetadata</span></div>
-    <div><span class="xref">Dapr.IDeadLetterTopicMetadata</span></div>
+    <div class="level1"><span class="xref">BusTopicAttribute</span></div>
+      <div class="level2"><a class="xref" href="Hexalith.Infrastructure.WebApis.Buses.CommandBusTopicAttribute.html">CommandBusTopicAttribute</a></div>
+      <div class="level2"><a class="xref" href="Hexalith.Infrastructure.WebApis.Buses.EventBusTopicAttribute.html">EventBusTopicAttribute</a></div>
+      <div class="level2"><a class="xref" href="Hexalith.Infrastructure.WebApis.Buses.NotificationBusTopicAttribute.html">NotificationBusTopicAttribute</a></div>
+      <div class="level2"><a class="xref" href="Hexalith.Infrastructure.WebApis.Buses.RequestBusTopicAttribute.html">RequestBusTopicAttribute</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">Dapr.TopicAttribute.Name</span>
-    </div>
-    <div>
-      <span class="xref">Dapr.TopicAttribute.PubsubName</span>
-    </div>
-    <div>
-      <span class="xref">Dapr.TopicAttribute.EnableRawPayload</span>
-    </div>
-    <div>
-      <span class="xref">Dapr.TopicAttribute.Match</span>
-    </div>
-    <div>
-      <span class="xref">Dapr.TopicAttribute.Priority</span>
-    </div>
-    <div>
-      <span class="xref">Dapr.TopicAttribute.OwnedMetadatas</span>
-    </div>
-    <div>
-      <span class="xref">Dapr.TopicAttribute.MetadataSeparator</span>
-    </div>
-    <div>
-      <span class="xref">Dapr.TopicAttribute.DeadLetterTopic</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.Equals(System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.GetCustomAttribute(System.Reflection.Assembly, System.Type)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.GetCustomAttribute(System.Reflection.Assembly, System.Type, System.Boolean)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo, System.Type)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo, System.Type, System.Boolean)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.GetCustomAttribute(System.Reflection.Module, System.Type)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.GetCustomAttribute(System.Reflection.Module, System.Type, System.Boolean)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo, System.Type)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo, System.Type, System.Boolean)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.Assembly)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.Assembly, System.Boolean)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.Assembly, System.Type)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.Assembly, System.Type, System.Boolean)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo, System.Boolean)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo, System.Type)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo, System.Type, System.Boolean)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.Module)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.Module, System.Boolean)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.Module, System.Type)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.Module, System.Type, System.Boolean)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo, System.Boolean)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo, System.Type)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo, System.Type, System.Boolean)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.GetHashCode()</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.IsDefaultAttribute()</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.IsDefined(System.Reflection.Assembly, System.Type)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.IsDefined(System.Reflection.Assembly, System.Type, System.Boolean)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.IsDefined(System.Reflection.MemberInfo, System.Type)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.IsDefined(System.Reflection.MemberInfo, System.Type, System.Boolean)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.IsDefined(System.Reflection.Module, System.Type)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.IsDefined(System.Reflection.Module, System.Type, System.Boolean)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.IsDefined(System.Reflection.ParameterInfo, System.Type)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.IsDefined(System.Reflection.ParameterInfo, System.Type, System.Boolean)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.Match(System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Attribute.TypeId</span>
+      <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
     </div>
     <div>
       <span class="xref">System.Object.GetType()</span>
@@ -252,63 +114,11 @@ Implements the <span class="xref">Dapr.TopicAttribute</span>.</p>
   <h6><strong>Assembly</strong>: Hexalith.Infrastructure.WebApis.dll</h6>
   <h5 id="Hexalith_Infrastructure_WebApis_Buses_BusTopicAttribute_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class BusTopicAttribute : TopicAttribute, ITopicMetadata, IRawTopicMetadata, IOwnedOriginalTopicMetadata, IDeadLetterTopicMetadata</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class BusTopicAttribute</code></pre>
   </div>
-  <h3 id="constructors">Constructors
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_Buses_BusTopicAttribute__ctor_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.Buses.BusTopicAttribute.%23ctor(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Buses/BusTopicAttribute.cs/#L36">View Source</a>
-  </span>
-  <a id="Hexalith_Infrastructure_WebApis_Buses_BusTopicAttribute__ctor_" data-uid="Hexalith.Infrastructure.WebApis.Buses.BusTopicAttribute.#ctor*"></a>
-  <h4 id="Hexalith_Infrastructure_WebApis_Buses_BusTopicAttribute__ctor_System_String_System_String_" data-uid="Hexalith.Infrastructure.WebApis.Buses.BusTopicAttribute.#ctor(System.String,System.String)">BusTopicAttribute(String, String)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Infrastructure.WebApis.Buses.BusTopicAttribute.html">BusTopicAttribute</a> class.</p>
+  <h5 id="Hexalith_Infrastructure_WebApis_Buses_BusTopicAttribute_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Infrastructure.WebApis.Buses.BusTopicAttribute.html">BusTopicAttribute</a> class.</p>
 </div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected BusTopicAttribute(string pubsubName, string name)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">pubsubName</span></td>
-        <td><p>Name of the pubsub.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">name</span></td>
-        <td><p>The name.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <span class="xref">Dapr.ITopicMetadata</span>
-  </div>
-  <div>
-      <span class="xref">Dapr.IRawTopicMetadata</span>
-  </div>
-  <div>
-      <span class="xref">Dapr.IOwnedOriginalTopicMetadata</span>
-  </div>
-  <div>
-      <span class="xref">Dapr.IDeadLetterTopicMetadata</span>
-  </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSame_System_Object_System_Object_">EquatableHelper.AreSame(Object, Object)</a>
@@ -331,7 +141,7 @@ Implements the <span class="xref">Dapr.TopicAttribute</span>.</p>
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_Buses_BusTopicAttribute.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.Buses.BusTopicAttribute%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Buses/BusTopicAttribute.cs/#L28" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Buses/BusTopicAttribute.cs/#L33" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

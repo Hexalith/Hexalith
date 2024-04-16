@@ -139,7 +139,8 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
   <h6><strong>Assembly</strong>: Hexalith.Domain.Users.dll</h6>
   <h5 id="Hexalith_Domain_Users_Aggregates_Role_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Role : Aggregate, IAggregate, IEquatable&lt;Aggregate&gt;, IRole, IEquatable&lt;Role&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">[DataContract]
+public class Role : Aggregate, IAggregate, IEquatable&lt;Aggregate&gt;, IRole, IEquatable&lt;Role&gt;</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -148,7 +149,7 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Users_Aggregates_Role__ctor_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Users.Aggregates.Role.%23ctor(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Users/Aggregates/Role.cs/#L26">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Users/Aggregates/Role.cs/#L27">View Source</a>
   </span>
   <a id="Hexalith_Domain_Users_Aggregates_Role__ctor_" data-uid="Hexalith.Domain.Users.Aggregates.Role.#ctor*"></a>
   <h4 id="Hexalith_Domain_Users_Aggregates_Role__ctor_System_String_System_String_System_String_" data-uid="Hexalith.Domain.Users.Aggregates.Role.#ctor(System.String,System.String,System.String)">Role(String, String, String)</h4>
@@ -204,7 +205,7 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Users_Aggregates_Role_Description.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Users.Aggregates.Role.Description%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Users/Aggregates/Role.cs/#L26">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Users/Aggregates/Role.cs/#L28">View Source</a>
   </span>
   <a id="Hexalith_Domain_Users_Aggregates_Role_Description_" data-uid="Hexalith.Domain.Users.Aggregates.Role.Description*"></a>
   <h4 id="Hexalith_Domain_Users_Aggregates_Role_Description" data-uid="Hexalith.Domain.Users.Aggregates.Role.Description">Description</h4>
@@ -212,7 +213,8 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Description { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 3)]
+public string Description { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -234,7 +236,7 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Users_Aggregates_Role_Id.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Users.Aggregates.Role.Id%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Users/Aggregates/Role.cs/#L26">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Users/Aggregates/Role.cs/#L28">View Source</a>
   </span>
   <a id="Hexalith_Domain_Users_Aggregates_Role_Id_" data-uid="Hexalith.Domain.Users.Aggregates.Role.Id*"></a>
   <h4 id="Hexalith_Domain_Users_Aggregates_Role_Id" data-uid="Hexalith.Domain.Users.Aggregates.Role.Id">Id</h4>
@@ -242,7 +244,8 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Id { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 1)]
+public string Id { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -264,7 +267,7 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Users_Aggregates_Role_Name.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Users.Aggregates.Role.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Users/Aggregates/Role.cs/#L26">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Users/Aggregates/Role.cs/#L28">View Source</a>
   </span>
   <a id="Hexalith_Domain_Users_Aggregates_Role_Name_" data-uid="Hexalith.Domain.Users.Aggregates.Role.Name*"></a>
   <h4 id="Hexalith_Domain_Users_Aggregates_Role_Name" data-uid="Hexalith.Domain.Users.Aggregates.Role.Name">Name</h4>
@@ -272,7 +275,8 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Name { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 2)]
+public string Name { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -296,7 +300,7 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Users_Aggregates_Role_Apply_Hexalith_Domain_Events_BaseEvent_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Users.Aggregates.Role.Apply(Hexalith.Domain.Events.BaseEvent)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Users/Aggregates/Role.cs/#L29">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Users/Aggregates/Role.cs/#L31">View Source</a>
   </span>
   <a id="Hexalith_Domain_Users_Aggregates_Role_Apply_" data-uid="Hexalith.Domain.Users.Aggregates.Role.Apply*"></a>
   <h4 id="Hexalith_Domain_Users_Aggregates_Role_Apply_Hexalith_Domain_Events_BaseEvent_" data-uid="Hexalith.Domain.Users.Aggregates.Role.Apply(Hexalith.Domain.Events.BaseEvent)">Apply(BaseEvent)</h4>
@@ -348,7 +352,7 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Users_Aggregates_Role_IsInitialized.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Users.Aggregates.Role.IsInitialized%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Users/Aggregates/Role.cs/#L32">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Users/Aggregates/Role.cs/#L34">View Source</a>
   </span>
   <a id="Hexalith_Domain_Users_Aggregates_Role_IsInitialized_" data-uid="Hexalith.Domain.Users.Aggregates.Role.IsInitialized*"></a>
   <h4 id="Hexalith_Domain_Users_Aggregates_Role_IsInitialized" data-uid="Hexalith.Domain.Users.Aggregates.Role.IsInitialized">IsInitialized()</h4>
@@ -415,7 +419,7 @@ Implements the <span class="xref">System.IEquatable&lt;T&gt;</span>.</p>
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Users_Aggregates_Role.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Users.Aggregates.Role%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Users/Aggregates/Role.cs/#L26" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Users/Aggregates/Role.cs/#L27" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

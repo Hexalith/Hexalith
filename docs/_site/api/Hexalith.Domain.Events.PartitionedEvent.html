@@ -83,7 +83,8 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">Base
     <div class="level1"><a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html">BaseMessage</a></div>
     <div class="level2"><a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">BaseEvent</a></div>
     <div class="level3"><span class="xref">PartitionedEvent</span></div>
-      <div class="level4"><a class="xref" href="Hexalith.Domain.Events.CompanyEvent.html">CompanyEvent</a></div>
+      <div class="level4"><a class="xref" href="Hexalith.Domain.Events.CommonEntityEvent.html">CommonEntityEvent</a></div>
+      <div class="level4"><a class="xref" href="Hexalith.Domain.Events.ExternalSystemEvent.html">ExternalSystemEvent</a></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
@@ -104,6 +105,9 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">Base
       <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_AggregateName">BaseMessage.AggregateName</a>
     </div>
     <div>
+      <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_IsPrivateToAggregate">BaseMessage.IsPrivateToAggregate</a>
+    </div>
+    <div>
       <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_MajorVersion">BaseMessage.MajorVersion</a>
     </div>
     <div>
@@ -117,6 +121,9 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">Base
     </div>
     <div>
       <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_DefaultAggregateName">BaseMessage.DefaultAggregateName()</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_DefaultIsPrivateToAggregate">BaseMessage.DefaultIsPrivateToAggregate()</a>
     </div>
     <div>
       <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_DefaultMajorVersion">BaseMessage.DefaultMajorVersion()</a>
@@ -154,6 +161,7 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">Base
   <h5 id="Hexalith_Domain_Events_PartitionedEvent_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataContract]
+[Serializable]
 public abstract class PartitionedEvent : BaseEvent, IPolymorphicSerializable, IMappableType, IEvent, IMessage</code></pre>
   </div>
   <h3 id="constructors">Constructors
@@ -163,7 +171,7 @@ public abstract class PartitionedEvent : BaseEvent, IPolymorphicSerializable, IM
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_PartitionedEvent__ctor.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.PartitionedEvent.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Events/PartitionedEvent.cs/#L43">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Events/PartitionedEvent.cs/#L44">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_PartitionedEvent__ctor_" data-uid="Hexalith.Domain.Events.PartitionedEvent.#ctor*"></a>
   <h4 id="Hexalith_Domain_Events_PartitionedEvent__ctor" data-uid="Hexalith.Domain.Events.PartitionedEvent.#ctor">PartitionedEvent()</h4>
@@ -180,7 +188,7 @@ protected PartitionedEvent()</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_PartitionedEvent__ctor_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.PartitionedEvent.%23ctor(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Events/PartitionedEvent.cs/#L37">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Events/PartitionedEvent.cs/#L38">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_PartitionedEvent__ctor_" data-uid="Hexalith.Domain.Events.PartitionedEvent.#ctor*"></a>
   <h4 id="Hexalith_Domain_Events_PartitionedEvent__ctor_System_String_" data-uid="Hexalith.Domain.Events.PartitionedEvent.#ctor(System.String)">PartitionedEvent(String)</h4>
@@ -217,7 +225,7 @@ protected PartitionedEvent(string partitionId)</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_PartitionedEvent_PartitionId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.PartitionedEvent.PartitionId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Events/PartitionedEvent.cs/#L50">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Events/PartitionedEvent.cs/#L51">View Source</a>
   </span>
   <a id="Hexalith_Domain_Events_PartitionedEvent_PartitionId_" data-uid="Hexalith.Domain.Events.PartitionedEvent.PartitionId*"></a>
   <h4 id="Hexalith_Domain_Events_PartitionedEvent_PartitionId" data-uid="Hexalith.Domain.Events.PartitionedEvent.PartitionId">PartitionId</h4>
@@ -261,10 +269,10 @@ public string PartitionId { get; set; }</code></pre>
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="Hexalith.Extensions.Helpers.CollectionHelper.html#Hexalith_Extensions_Helpers_CollectionHelper_IntoArray__1___0_">CollectionHelper.IntoArray&lt;T&gt;(T)</a>
+      <a class="xref" href="Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSame_System_Object_System_Object_">EquatableHelper.AreSame(Object, Object)</a>
   </div>
   <div>
-      <a class="xref" href="Hexalith.Extensions.Helpers.CollectionHelper.html#Hexalith_Extensions_Helpers_CollectionHelper_IntoEnumerable__1___0_">CollectionHelper.IntoEnumerable&lt;T&gt;(T)</a>
+      <a class="xref" href="Hexalith.Extensions.Reflections.ObjectDifferenceHelper.html#Hexalith_Extensions_Reflections_ObjectDifferenceHelper_GetDifferenceInformation_System_Object_System_Object_">ObjectDifferenceHelper.GetDifferenceInformation(Object, Object)</a>
   </div>
   <h3 id="seealso">See Also</h3>
   <div class="seealso">

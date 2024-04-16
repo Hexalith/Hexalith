@@ -81,31 +81,10 @@ Implements the <a class="xref" href="Hexalith.Application.Events.IEventBus.html"
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus-3.html">DaprApplicationBus</a>&lt;<a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">BaseEvent</a>, <a class="xref" href="Hexalith.Application.Metadatas.BaseMetadata.html">BaseMetadata</a>, <a class="xref" href="Hexalith.Application.States.EventState.html">EventState</a>&gt;</div>
-    <div class="level2"><span class="xref">DaprEventBus</span></div>
-  </div>
-  <div class="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="Hexalith.Application.Events.IEventBus.html">IEventBus</a></div>
-    <div><a class="xref" href="Hexalith.Application.Envelopes.IMessageBus-3.html">IMessageBus</a>&lt;<a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">BaseEvent</a>, <a class="xref" href="Hexalith.Application.Metadatas.BaseMetadata.html">BaseMetadata</a>, <a class="xref" href="Hexalith.Application.States.EventState.html">EventState</a>&gt;</div>
+    <div class="level1"><span class="xref">DaprEventBus</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
-    <div>
-      <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus-3.html#Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_LogErrorWhileSendingMessage_Exception_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_">DaprApplicationBus&lt;BaseEvent, BaseMetadata, EventState&gt;.LogErrorWhileSendingMessage(Exception, String, String, String, String, String, String, String, String, String)</a>
-    </div>
-    <div>
-      <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus-3.html#Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_LogMessageSent_System_String_System_String_System_String_System_String_System_String_">DaprApplicationBus&lt;BaseEvent, BaseMetadata, EventState&gt;.LogMessageSent(String, String, String, String, String)</a>
-    </div>
-    <div>
-      <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus-3.html#Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_PublishAsync_Hexalith_Application_Envelopes_IEnvelope__0__1__CancellationToken_">DaprApplicationBus&lt;BaseEvent, BaseMetadata, EventState&gt;.PublishAsync(IEnvelope&lt;BaseEvent, BaseMetadata&gt;, CancellationToken)</a>
-    </div>
-    <div>
-      <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus-3.html#Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_PublishAsync__0__1_CancellationToken_">DaprApplicationBus&lt;BaseEvent, BaseMetadata, EventState&gt;.PublishAsync(BaseEvent, BaseMetadata, CancellationToken)</a>
-    </div>
-    <div>
-      <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Buses.DaprApplicationBus-3.html#Hexalith_Infrastructure_DaprRuntime_Buses_DaprApplicationBus_3_PublishAsync__2_CancellationToken_">DaprApplicationBus&lt;BaseEvent, BaseMetadata, EventState&gt;.PublishAsync(EventState, CancellationToken)</a>
-    </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
@@ -132,69 +111,11 @@ Implements the <a class="xref" href="Hexalith.Application.Events.IEventBus.html"
   <h6><strong>Assembly</strong>: Hexalith.Infrastructure.DaprRuntime.dll</h6>
   <h5 id="Hexalith_Infrastructure_DaprRuntime_Buses_DaprEventBus_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class DaprEventBus : DaprApplicationBus&lt;BaseEvent, BaseMetadata, EventState&gt;, IEventBus, IMessageBus&lt;BaseEvent, BaseMetadata, EventState&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public class DaprEventBus</code></pre>
   </div>
-  <h3 id="constructors">Constructors
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_Buses_DaprEventBus__ctor_Dapr_Client_DaprClient_Hexalith_Extensions_Common_IDateTimeService_Microsoft_Extensions_Options_IOptions_Hexalith_Application_Buses_EventBusSettings__Microsoft_Extensions_Logging_ILogger_Hexalith_Infrastructure_DaprRuntime_Buses_DaprEventBus__.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.Buses.DaprEventBus.%23ctor(Dapr.Client.DaprClient%2CHexalith.Extensions.Common.IDateTimeService%2CMicrosoft.Extensions.Options.IOptions%7BHexalith.Application.Buses.EventBusSettings%7D%2CMicrosoft.Extensions.Logging.ILogger%7BHexalith.Infrastructure.DaprRuntime.Buses.DaprEventBus%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/Buses/DaprEventBus.cs/#L49">View Source</a>
-  </span>
-  <a id="Hexalith_Infrastructure_DaprRuntime_Buses_DaprEventBus__ctor_" data-uid="Hexalith.Infrastructure.DaprRuntime.Buses.DaprEventBus.#ctor*"></a>
-  <h4 id="Hexalith_Infrastructure_DaprRuntime_Buses_DaprEventBus__ctor_Dapr_Client_DaprClient_Hexalith_Extensions_Common_IDateTimeService_Microsoft_Extensions_Options_IOptions_Hexalith_Application_Buses_EventBusSettings__Microsoft_Extensions_Logging_ILogger_Hexalith_Infrastructure_DaprRuntime_Buses_DaprEventBus__" data-uid="Hexalith.Infrastructure.DaprRuntime.Buses.DaprEventBus.#ctor(Dapr.Client.DaprClient,Hexalith.Extensions.Common.IDateTimeService,Microsoft.Extensions.Options.IOptions{Hexalith.Application.Buses.EventBusSettings},Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.DaprRuntime.Buses.DaprEventBus})">DaprEventBus(DaprClient, IDateTimeService, IOptions&lt;EventBusSettings&gt;, ILogger&lt;DaprEventBus&gt;)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Buses.DaprEventBus.html">DaprEventBus</a> class.</p>
+  <h5 id="Hexalith_Infrastructure_DaprRuntime_Buses_DaprEventBus_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Buses.DaprEventBus.html">DaprEventBus</a> class.</p>
 </div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DaprEventBus(DaprClient client, IDateTimeService dateTimeService, IOptions&lt;EventBusSettings&gt; settings, ILogger&lt;DaprEventBus&gt; logger)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Dapr.Client.DaprClient</span></td>
-        <td><span class="parametername">client</span></td>
-        <td><p>The client.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Hexalith.Extensions.Common.IDateTimeService.html">IDateTimeService</a></td>
-        <td><span class="parametername">dateTimeService</span></td>
-        <td><p>The date time service.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">Microsoft.Extensions.Options.IOptions</span>&lt;<a class="xref" href="Hexalith.Application.Buses.EventBusSettings.html">EventBusSettings</a>&gt;</td>
-        <td><span class="parametername">settings</span></td>
-        <td><p>The settings.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">Microsoft.Extensions.Logging.ILogger</span>&lt;<a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Buses.DaprEventBus.html">DaprEventBus</a>&gt;</td>
-        <td><span class="parametername">logger</span></td>
-        <td><p>The logger.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="Hexalith.Application.Events.IEventBus.html">IEventBus</a>
-  </div>
-  <div>
-      <a class="xref" href="Hexalith.Application.Envelopes.IMessageBus-3.html">IMessageBus&lt;TMessage, TMetadata, TState&gt;</a>
-  </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSame_System_Object_System_Object_">EquatableHelper.AreSame(Object, Object)</a>
@@ -217,7 +138,7 @@ Implements the <a class="xref" href="Hexalith.Application.Events.IEventBus.html"
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_Buses_DaprEventBus.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.Buses.DaprEventBus%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/Buses/DaprEventBus.cs/#L40" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/Buses/DaprEventBus.cs/#L47" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

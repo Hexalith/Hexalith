@@ -84,16 +84,34 @@ Implements the <see cref="!:IEquatable&lt;Survey>"></see>.</p>
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="Hexalith.Domain.Aggregates.Aggregate.html">Aggregate</a></div>
-    <div class="level2"><span class="xref">SurveyCategory</span></div>
+    <div class="level2"><a class="xref" href="Hexalith.Domain.Aggregates.PartitionedAggregate.html">PartitionedAggregate</a></div>
+    <div class="level3"><a class="xref" href="Hexalith.Domain.Aggregates.ByCompanyAggregate.html">ByCompanyAggregate</a></div>
+    <div class="level4"><a class="xref" href="Hexalith.Domain.Aggregates.EntityAggregate.html">EntityAggregate</a></div>
+    <div class="level5"><span class="xref">SurveyCategory</span></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="Hexalith.Domain.Aggregates.IAggregate.html">IAggregate</a></div>
     <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="Hexalith.Domain.Aggregates.Aggregate.html">Aggregate</a>&gt;</div>
+    <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="Hexalith.Domain.Aggregates.PartitionedAggregate.html">PartitionedAggregate</a>&gt;</div>
+    <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="Hexalith.Domain.Aggregates.ByCompanyAggregate.html">ByCompanyAggregate</a>&gt;</div>
+    <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="Hexalith.Domain.Aggregates.EntityAggregate.html">EntityAggregate</a>&gt;</div>
     <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="Hexalith.Domain.Entities.SurveyCategory.html">SurveyCategory</a>&gt;</div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Hexalith.Domain.Aggregates.EntityAggregate.html#Hexalith_Domain_Aggregates_EntityAggregate_OriginId">EntityAggregate.OriginId</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Domain.Aggregates.EntityAggregate.html#Hexalith_Domain_Aggregates_EntityAggregate_Id">EntityAggregate.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Domain.Aggregates.ByCompanyAggregate.html#Hexalith_Domain_Aggregates_ByCompanyAggregate_CompanyId">ByCompanyAggregate.CompanyId</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Domain.Aggregates.PartitionedAggregate.html#Hexalith_Domain_Aggregates_PartitionedAggregate_PartitionId">PartitionedAggregate.PartitionId</a>
+    </div>
     <div>
       <a class="xref" href="Hexalith.Domain.Aggregates.Aggregate.html#Hexalith_Domain_Aggregates_Aggregate_Separator">Aggregate.Separator</a>
     </div>
@@ -136,7 +154,7 @@ Implements the <see cref="!:IEquatable&lt;Survey>"></see>.</p>
   <h5 id="Hexalith_Domain_Entities_SurveyCategory_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataContract]
-public class SurveyCategory : Aggregate, IAggregate, IEquatable&lt;Aggregate&gt;, IEquatable&lt;SurveyCategory&gt;</code></pre>
+public class SurveyCategory : EntityAggregate, IAggregate, IEquatable&lt;Aggregate&gt;, IEquatable&lt;PartitionedAggregate&gt;, IEquatable&lt;ByCompanyAggregate&gt;, IEquatable&lt;EntityAggregate&gt;, IEquatable&lt;SurveyCategory&gt;</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -261,36 +279,6 @@ Implements the <see cref="!:IEquatable&lt;Survey>"></see>.</p>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Entities_SurveyCategory_CompanyId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Entities.SurveyCategory.CompanyId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Surveys/Entities/SurveyCategory.cs/#L46">View Source</a>
-  </span>
-  <a id="Hexalith_Domain_Entities_SurveyCategory_CompanyId_" data-uid="Hexalith.Domain.Entities.SurveyCategory.CompanyId*"></a>
-  <h4 id="Hexalith_Domain_Entities_SurveyCategory_CompanyId" data-uid="Hexalith.Domain.Entities.SurveyCategory.CompanyId">CompanyId</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string CompanyId { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Entities_SurveyCategory_Date.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Entities.SurveyCategory.Date%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
@@ -302,7 +290,8 @@ Implements the <see cref="!:IEquatable&lt;Survey>"></see>.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DateTimeOffset Date { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 6)]
+public DateTimeOffset Date { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -321,36 +310,6 @@ Implements the <see cref="!:IEquatable&lt;Survey>"></see>.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Entities_SurveyCategory_Id.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Entities.SurveyCategory.Id%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Surveys/Entities/SurveyCategory.cs/#L48">View Source</a>
-  </span>
-  <a id="Hexalith_Domain_Entities_SurveyCategory_Id_" data-uid="Hexalith.Domain.Entities.SurveyCategory.Id*"></a>
-  <h4 id="Hexalith_Domain_Entities_SurveyCategory_Id" data-uid="Hexalith.Domain.Entities.SurveyCategory.Id">Id</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Id { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Entities_SurveyCategory_Name.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Entities.SurveyCategory.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
@@ -362,67 +321,8 @@ Implements the <see cref="!:IEquatable&lt;Survey>"></see>.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Name { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Entities_SurveyCategory_OriginId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Entities.SurveyCategory.OriginId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Surveys/Entities/SurveyCategory.cs/#L47">View Source</a>
-  </span>
-  <a id="Hexalith_Domain_Entities_SurveyCategory_OriginId_" data-uid="Hexalith.Domain.Entities.SurveyCategory.OriginId*"></a>
-  <h4 id="Hexalith_Domain_Entities_SurveyCategory_OriginId" data-uid="Hexalith.Domain.Entities.SurveyCategory.OriginId">OriginId</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string OriginId { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Entities_SurveyCategory_PartitionId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Entities.SurveyCategory.PartitionId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Surveys/Entities/SurveyCategory.cs/#L45">View Source</a>
-  </span>
-  <a id="Hexalith_Domain_Entities_SurveyCategory_PartitionId_" data-uid="Hexalith.Domain.Entities.SurveyCategory.PartitionId*"></a>
-  <h4 id="Hexalith_Domain_Entities_SurveyCategory_PartitionId" data-uid="Hexalith.Domain.Entities.SurveyCategory.PartitionId">PartitionId</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string PartitionId { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 5)]
+public string Name { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -714,6 +614,15 @@ Implements the <see cref="!:IEquatable&lt;Survey>"></see>.</p>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="Hexalith.Domain.Aggregates.IAggregate.html">IAggregate</a>
+  </div>
+  <div>
+      <span class="xref">System.IEquatable&lt;T&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.IEquatable&lt;T&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.IEquatable&lt;T&gt;</span>
   </div>
   <div>
       <span class="xref">System.IEquatable&lt;T&gt;</span>
