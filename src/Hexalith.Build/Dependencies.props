@@ -24,6 +24,7 @@
 		<FluentValidationAspNetCoreVersion>11.3.0</FluentValidationAspNetCoreVersion>
 		<GitHubActionsTestLoggerVersion>2.3.3</GitHubActionsTestLoggerVersion>
 		<GoogleApiVersion>5.3.1</GoogleApiVersion>
+		<GrpcVersion>2.62.0</GrpcVersion>
 		<ISO3166Version>1.0.4</ISO3166Version>
 		<HumanizerVersion>2.14.1</HumanizerVersion>
 		<MailKitVersion>4.4.0</MailKitVersion>

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>Library</OutputType>
@@ -22,6 +22,9 @@
 		<PackageReference Include="OpenTelemetry.Instrumentation.GrpcNetClient" Version="$(OpenTelemetryBetaVersion)" />
 		<PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="$(OpenTelemetryVersion)" />
 		<PackageReference Include="OpenTelemetry.Instrumentation.Runtime" Version="$(OpenTelemetryVersion)" />
+		<PackageReference Include="AspNetCore.HealthChecks.Uris" Version="$(AspNetCorePackagesVersion)" />
+		<PackageReference Include="Grpc.HealthCheck" Version="$(GrpcVersion)" />
+		<PackageReference Include="Grpc.Net.ClientFactory" Version="$(GrpcVersion)"/>
 	</ItemGroup>
 
 </Project>
