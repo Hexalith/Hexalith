@@ -49,18 +49,18 @@ public static class InventoriesActorsHelper
     /// Adds the parties projections.
     /// </summary>
     /// <param name="actors">The actors.</param>
-    /// <param name="applicationName">Name of the application.</param>
+    /// <param name="applicationId">Name of the application.</param>
     /// <returns>ActorRegistrationCollection.</returns>
     /// <exception cref="System.ArgumentNullException">null.</exception>
-    public static ActorRegistrationCollection AddInventoriesProjections([NotNull] this ActorRegistrationCollection actors, string applicationName)
+    public static ActorRegistrationCollection AddInventoriesProjections([NotNull] this ActorRegistrationCollection actors, string applicationId)
     {
         ArgumentNullException.ThrowIfNull(actors);
-        actors.RegisterProjectionActor<InventoryItemDetailsProjection>(applicationName);
-        actors.RegisterProjectionActor<InventoryItemStockProjection>(applicationName);
-        actors.RegisterProjectionActor<InventoryUnitConversionDetailsProjection>(applicationName);
-        actors.RegisterProjectionActor<InventoryUnitDetailsProjection>(applicationName);
-        actors.RegisterProjectionActor<InventoryItemToPartnerItemProjection>(applicationName);
-        actors.RegisterProjectionActor<PartnerInventoryItemProjection>(applicationName);
+        actors.RegisterProjectionActor<InventoryItemDetailsProjection>(applicationId);
+        actors.RegisterProjectionActor<InventoryItemStockProjection>(applicationId);
+        actors.RegisterProjectionActor<InventoryUnitConversionDetailsProjection>(applicationId);
+        actors.RegisterProjectionActor<InventoryUnitDetailsProjection>(applicationId);
+        actors.RegisterProjectionActor<InventoryItemToPartnerItemProjection>(applicationId);
+        actors.RegisterProjectionActor<PartnerInventoryItemProjection>(applicationId);
         return actors;
     }
 }

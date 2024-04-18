@@ -1,12 +1,13 @@
 {
-  "profiles": {
-    "Hexalith.Server.Dynamics365Finance": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "https://localhost:51864;http://localhost:51865"
-    }
-  }
+	"profiles": {
+		"Hexalith.Server.Dynamics365Finance": {
+			"commandName": "Project",
+			"launchBrowser": true,
+			"environmentVariables": {
+				"ASPNETCORE_ENVIRONMENT": "Development"
+			},
+			"launchUrl": "swagger",
+			"applicationUrl": "https://localhost:51864;http://localhost:51865"
+		}
+	}
 }

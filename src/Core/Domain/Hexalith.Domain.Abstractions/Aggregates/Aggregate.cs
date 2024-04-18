@@ -23,6 +23,7 @@ using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 using Hexalith.Domain.Events;
+using Hexalith.Domain.Exceptions;
 
 /// <summary>
 /// Class Aggregate.
@@ -54,7 +55,18 @@ public abstract record Aggregate : IAggregate
     public string AggregateName => DefaultAggregateName();
 
     /// <inheritdoc/>
-    public abstract (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent);
+    public virtual (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent)
+    {
+        if (domainEvent is SnapshotEvent s)
+        {
+            // if the snapshot is for this aggregate, we initialize it
+            return s.AggregateId == AggregateId && s.AggregateName == AggregateName
+                ? ((IAggregate Aggregate, IEnumerable<BaseEvent> Events))(s.GetAggregate(GetType()), [domainEvent])
+                : throw new InvalidAggregateEventException(this, domainEvent, false, "Invalid snapshot aggregate id");
+        }
+
+        throw new InvalidAggregateEventException(this, domainEvent, false);
+    }
 
     /// <inheritdoc/>
     public abstract bool IsInitialized();

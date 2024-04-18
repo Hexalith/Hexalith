@@ -24,7 +24,6 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 
 using Hexalith.Domain.Events;
-using Hexalith.Domain.Exceptions;
 using Hexalith.Domain.ValueObjets;
 
 /// <summary>
@@ -108,9 +107,9 @@ public record Customer(
     /// <inheritdoc/>
     public override (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent)
     {
-        return (domainEvent switch
+        return domainEvent switch
         {
-            CustomerInformationChanged changed => this with
+            CustomerInformationChanged changed => (this with
             {
                 Name = changed.Name,
                 Contact = new Contact(changed.Contact),
@@ -120,12 +119,12 @@ public record Customer(
                 PartyType = changed.PartyType,
                 GroupId = changed.GroupId,
                 SalesCurrencyId = changed.SalesCurrencyId,
-            },
-            IntercompanyDropshipDeliveryForCustomerSelected => this with { IntercompanyDropship = true },
-            IntercompanyDropshipDeliveryForCustomerDeselected => this with { IntercompanyDropship = false },
-            CustomerRegistered registered => new Customer(registered),
-            _ => throw new InvalidAggregateEventException(this, domainEvent, false),
-        }, [domainEvent]);
+            }, [domainEvent]),
+            IntercompanyDropshipDeliveryForCustomerSelected => (this with { IntercompanyDropship = true }, [domainEvent]),
+            IntercompanyDropshipDeliveryForCustomerDeselected => (this with { IntercompanyDropship = false }, [domainEvent]),
+            CustomerRegistered registered => (new Customer(registered), [domainEvent]),
+            _ => base.Apply(domainEvent),
+        };
     }
 
     /// <summary>

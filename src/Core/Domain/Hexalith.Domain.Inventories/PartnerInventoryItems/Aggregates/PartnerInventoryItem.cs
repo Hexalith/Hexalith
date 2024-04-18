@@ -112,13 +112,15 @@ public record PartnerInventoryItem(
     /// <inheritdoc/>
     public override (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent)
     {
-        return (domainEvent switch
+        return domainEvent switch
         {
-            PartnerInventoryItemChanged changed => new PartnerInventoryItem(changed),
-            PartnerInventoryItemRemoved => this with { Disabled = true },
-            PartnerInventoryItemAdded => throw new InvalidAggregateEventException(this, domainEvent, true),
-            _ => throw new InvalidAggregateEventException(this, domainEvent, false),
-        }, []);
+            PartnerInventoryItemChanged changed => (new PartnerInventoryItem(changed), [domainEvent]),
+            PartnerInventoryItemRemoved => (this with { Disabled = true }, [domainEvent]),
+            PartnerInventoryItemAdded added => (IsInitialized()
+                ? throw new InvalidAggregateEventException(this, domainEvent, true)
+                : new PartnerInventoryItem(added), [domainEvent]),
+            _ => base.Apply(domainEvent),
+        };
     }
 
     /// <summary>
@@ -147,7 +149,7 @@ public record PartnerInventoryItem(
     public static string GetAggregateName() => nameof(PartnerInventoryItem);
 
     /// <inheritdoc/>
-    public override bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);
+    public override bool IsInitialized() => !string.IsNullOrWhiteSpace(Id) && Disabled;
 
     /// <inheritdoc/>
     protected override string DefaultAggregateId()

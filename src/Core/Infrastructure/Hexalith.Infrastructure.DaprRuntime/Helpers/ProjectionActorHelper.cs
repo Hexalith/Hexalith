@@ -37,15 +37,15 @@ public static class ProjectionActorHelper
     /// </summary>
     /// <typeparam name="TState">The type of the t state.</typeparam>
     /// <param name="services">The services.</param>
-    /// <param name="applicationName">Name of the application.</param>
+    /// <param name="applicationId">Name of the application.</param>
     /// <returns>IServiceCollection.</returns>
     /// <exception cref="ArgumentNullException">null.</exception>
-    public static IServiceCollection AddActorProjectionFactory<TState>(this IServiceCollection services, string applicationName)
+    public static IServiceCollection AddActorProjectionFactory<TState>(this IServiceCollection services, string applicationId)
     {
         ArgumentNullException.ThrowIfNull(services);
-        ArgumentException.ThrowIfNullOrWhiteSpace(applicationName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(applicationId);
         services.TryAddScoped<IActorProjectionFactory<TState>>(s
-            => new ActorProjectionFactory<TState>(s.GetRequiredService<IActorProxyFactory>(), applicationName));
+            => new ActorProjectionFactory<TState>(s.GetRequiredService<IActorProxyFactory>(), applicationId));
         return services;
     }
 
@@ -67,12 +67,12 @@ public static class ProjectionActorHelper
     /// </summary>
     /// <typeparam name="TState">The type of the t state.</typeparam>
     /// <param name="actorRegistrationCollection">The actor registration collection.</param>
-    /// <param name="applicationName">Name of the application.</param>
+    /// <param name="applicationId">Name of the application.</param>
     /// <exception cref="ArgumentNullException">null.</exception>
-    public static void RegisterProjectionActor<TState>(this ActorRegistrationCollection actorRegistrationCollection, string applicationName)
+    public static void RegisterProjectionActor<TState>(this ActorRegistrationCollection actorRegistrationCollection, string applicationId)
     {
         ArgumentNullException.ThrowIfNull(actorRegistrationCollection);
-        ArgumentException.ThrowIfNullOrWhiteSpace(applicationName);
-        actorRegistrationCollection.RegisterActor<KeyValueActor>(GetProjectionActorName<TState>(applicationName));
+        ArgumentException.ThrowIfNullOrWhiteSpace(applicationId);
+        actorRegistrationCollection.RegisterActor<KeyValueActor>(GetProjectionActorName<TState>(applicationId));
     }
 }

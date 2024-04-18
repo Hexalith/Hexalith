@@ -6,6 +6,7 @@
 
 namespace Hexalith.Domain.Events;
 
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using System.Text.Json;
 
@@ -13,10 +14,8 @@ using Hexalith.Domain.Aggregates;
 using Hexalith.Extensions;
 
 /// <summary>
-/// Class SnapshotEvent.
-/// Implements the <see cref="Hexalith.Domain.Events.BaseEvent" />.
+/// Represents a snapshot event in the domain.
 /// </summary>
-/// <seealso cref="Hexalith.Domain.Events.BaseEvent" />
 [DataContract]
 public class SnapshotEvent : BaseEvent
 {
@@ -52,35 +51,47 @@ public class SnapshotEvent : BaseEvent
     public SnapshotEvent() => SourceAggregateId = SourceAggregateName = Snapshot = string.Empty;
 
     /// <summary>
-    /// Gets or sets the aggregate.
+    /// Gets or sets the snapshot.
     /// </summary>
-    /// <value>The aggregate.</value>
     [DataMember(Order = 12)]
     public string Snapshot { get; set; }
 
     /// <summary>
     /// Gets or sets the source aggregate identifier.
     /// </summary>
-    /// <value>The source aggregate identifier.</value>
     [DataMember(Order = 11)]
     public string SourceAggregateId { get; set; }
 
     /// <summary>
     /// Gets or sets the name of the source aggregate.
     /// </summary>
-    /// <value>The name of the source aggregate.</value>
     [DataMember(Order = 10)]
     public string SourceAggregateName { get; set; }
 
     /// <summary>
-    /// Gets the aggregate.
+    /// Gets the aggregate of the specified type.
     /// </summary>
-    /// <typeparam name="TAggregate">Aggregate type.</typeparam>
-    /// <returns>T.</returns>
-    /// <exception cref="InvalidDataContractException">Could not deserialize to {typeof(T).Name} : \n{Snapshot}.</exception>
+    /// <typeparam name="TAggregate">The type of the aggregate.</typeparam>
+    /// <returns>The aggregate of the specified type.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
+    /// <exception cref="InvalidDataContractException">Thrown when the snapshot cannot be deserialized to the specified type.</exception>
     public TAggregate GetAggregate<TAggregate>()
         where TAggregate : IAggregate
-        => JsonSerializer.Deserialize<TAggregate>(Snapshot) ?? throw new InvalidDataContractException($"Could not deserialize to {typeof(TAggregate).Name} : \n{Snapshot}");
+        => (TAggregate)GetAggregate(typeof(TAggregate));
+
+    /// <summary>
+    /// Gets the aggregate of the specified type.
+    /// </summary>
+    /// <param name="type">The type of the aggregate.</param>
+    /// <returns>The aggregate of the specified type.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
+    /// <exception cref="InvalidDataContractException">Thrown when the snapshot cannot be deserialized to the specified type.</exception>
+    public IAggregate GetAggregate([NotNull] Type type)
+    {
+        ArgumentNullException.ThrowIfNull(type);
+        return (IAggregate)(JsonSerializer.Deserialize(Snapshot, type)
+            ?? throw new InvalidDataContractException($"Could not deserialize to {type.Name} : \n{Snapshot}"));
+    }
 
     /// <inheritdoc/>
     protected override string DefaultAggregateId() => SourceAggregateId;
