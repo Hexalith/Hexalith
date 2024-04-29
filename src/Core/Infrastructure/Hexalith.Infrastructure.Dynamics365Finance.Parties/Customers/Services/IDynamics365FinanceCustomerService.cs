@@ -50,7 +50,7 @@ public interface IDynamics365FinanceCustomerService
     Task<CustomerV3?> FindCustomerAsync(string companyId, string id, CancellationToken cancellationToken);
 
     /// <summary>
-    /// Finds the customer by external identifier asynchronous.
+    /// Finds the customer by external identifier in the specified company.
     /// </summary>
     /// <param name="companyId">The company identifier.</param>
     /// <param name="system">The system.</param>
@@ -58,6 +58,15 @@ public interface IDynamics365FinanceCustomerService
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;System.ValueTuple&lt;System.Nullable&lt;CustomerV3&gt;, System.Nullable&lt;System.String&gt;&gt;&gt;.</returns>
     Task<CustomerV3?> FindCustomerByExternalIdAsync(string companyId, string system, string externalId, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Finds the customer by external identifier in any company.
+    /// </summary>
+    /// <param name="system">The system.</param>
+    /// <param name="externalId">The external identifier.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>Task&lt;System.ValueTuple&lt;System.Nullable&lt;CustomerV3&gt;, System.Nullable&lt;System.String&gt;&gt;&gt;.</returns>
+    Task<CustomerV3?> FindCustomerByExternalIdAsync(string system, string externalId, CancellationToken cancellationToken);
 
     /// <summary>
     /// Get template customer as an asynchronous operation.

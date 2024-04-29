@@ -6,7 +6,7 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 09-07-2023
 // ***********************************************************************
-// <copyright file="CustomerExternalCodeFilter.cs" company="Fiveforty SAS Paris France">
+// <copyright file="CrossCompanyCustomerExternalCodeFilter.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -34,11 +34,10 @@ using Hexalith.Infrastructure.Dynamics365Finance.Models;
 /// <seealso cref="IEquatable{PerCompanyFilter}" />
 /// <seealso cref="IEquatable{CustomerExternalCodeFilter}" />
 [DataContract]
-public record CompanyCustomerExternalCodeFilter
+public record CrossCompanyCustomerExternalCodeFilter
 (
-    string DataAreaId,
     [property: DataMember(Order = 2)] string System,
     [property: DataMember(Order = 3)] string ExternalCode)
-    : PerCompanyFilter(DataAreaId)
+    : ICommonFilter
 {
 }
