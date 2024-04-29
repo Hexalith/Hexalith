@@ -84,7 +84,7 @@ public class CustomerHandlersTest
         CustomerRegistered registered = GetCustomerRegisteredTestEvent();
         IEnumerable<Application.Commands.BaseCommand> commands = await handler.ApplyAsync(registered, CancellationToken.None);
         IEnumerable<CustomerExternalSystemCode> externalCodes = await externalCustomerService.GetAsync(
-            new CustomerExternalCodeFilter(registered.CompanyId, registered.OriginId, registered.Id),
+            new CompanyCustomerExternalCodeFilter(registered.CompanyId, registered.OriginId, registered.Id),
             CancellationToken.None);
         _ = commands.Should().HaveCount(1);
         _ = commands.First().Should().BeOfType<AddExternalSystemReference>();

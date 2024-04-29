@@ -254,9 +254,9 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
     public async Task<CustomerV3?> FindCustomerByExternalIdAsync(string companyId, string system, string externalId, CancellationToken cancellationToken)
     {
         List<CustomerExternalSystemCode> codes = (await _externalCodeService.GetAsync(
-            new CustomerExternalCodeFilter(
-                _companyId,
+            new CompanyCustomerExternalCodeFilter(
                 companyId,
+                _originId,
                 system),
             cancellationToken).ConfigureAwait(false))
             .ToList();
@@ -274,6 +274,30 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
         return string.IsNullOrEmpty(code)
             ? null
             : await _customerService.GetSingleAsync(new CustomerAccountKey(_companyId, code), cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task<CustomerV3?> FindCustomerByExternalIdAsync(string system, string externalId, CancellationToken cancellationToken)
+    {
+        List<CustomerExternalSystemCode> codes = (await _externalCodeService.GetAsync(
+            new CrossCompanyCustomerExternalCodeFilter(system, externalId),
+            cancellationToken).ConfigureAwait(false))
+            .ToList();
+        if (codes.Count < 1)
+        {
+            return null;
+        }
+
+        if (codes.Count > 1)
+        {
+            throw new InvalidOperationException($"Duplicate external code found for {system}/{externalId} in Dynamics 365 for Finance : {string.Join(';', codes.Select(c => $"{c.DataAreaId}-{c.CustomerAccountNumber}"))}");
+        }
+
+        string? code = codes[0].CustomerAccountNumber;
+        string? company = codes[0].DataAreaId;
+        return string.IsNullOrEmpty(code)
+            ? null
+            : await _customerService.GetSingleAsync(new CustomerAccountKey(company, code), cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -427,7 +451,7 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
     {
         IEnumerable<CustomerExternalSystemCode> externalCodes = await _externalCodeService
              .GetAsync(
-                 new CustomerExternalCodeFilter(
+                 new CompanyCustomerExternalCodeFilter(
                  companyId,
                  originId,
                  externalId),
@@ -436,6 +460,30 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
         if (customerId != null)
         {
             LogDynamicsExternalCodeFoundInformation(companyId, customerId, originId, externalId);
+        }
+
+        return customerId;
+    }
+
+    /// <summary>
+    /// Find external code as an asynchronous operation.
+    /// </summary>
+    /// <param name="originId">The origin identifier.</param>
+    /// <param name="externalId">The external identifier.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>A Task&lt;string?&gt; representing the asynchronous operation.</returns>
+    private async Task<string?> FindExternalCodeAsync(string originId, string externalId, CancellationToken cancellationToken)
+    {
+        IEnumerable<CustomerExternalSystemCode> externalCodes = await _externalCodeService
+             .GetAsync(
+                 new CrossCompanyCustomerExternalCodeFilter(
+                 originId,
+                 externalId),
+                 cancellationToken).ConfigureAwait(false);
+        string? customerId = externalCodes.FirstOrDefault()?.CustomerAccountNumber;
+        if (customerId != null)
+        {
+            LogDynamicsExternalCodeFoundInformation(customerId, originId, externalId);
         }
 
         return customerId;
@@ -452,6 +500,12 @@ public partial class Dynamics365FinanceCustomerService : IDynamics365FinanceCust
         Level = LogLevel.Information,
         Message = "Customer '{CustomerId}' found for system '{OriginId}' and code '{ExternalId}' in Dynamics 365 for Finance company '{CompanyId}'.")]
     private partial void LogDynamicsExternalCodeFoundInformation(string companyId, string customerId, string originId, string externalId);
+
+    [LoggerMessage(
+        EventId = 3,
+        Level = LogLevel.Information,
+        Message = "Customer '{CustomerId}' found for system '{OriginId}' and code '{ExternalId}' in Dynamics 365 for Finance'.")]
+    private partial void LogDynamicsExternalCodeFoundInformation(string customerId, string originId, string externalId);
 
     [LoggerMessage(
             EventId = 1,

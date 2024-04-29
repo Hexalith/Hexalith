@@ -1,0 +1,31 @@
+﻿<FluentProfileMenu Image="@UserInformation.Picture"
+                   Status="@_presence"
+                   HeaderLabel="@UserInformation.Company"
+                   Initials="@UserInformation.Initials"
+                   FullName="@UserInformation.Name"
+                   EMail="@UserInformation.Email"
+                   Style="min-width: 330px;" />
+
+@code {
+    private PresenceStatus _presence => UserInformation.Presence switch
+    {
+        UserPresence.Available => PresenceStatus.Available,
+        UserPresence.Away => PresenceStatus.Away,
+        UserPresence.Busy => PresenceStatus.Busy,
+        UserPresence.DoNotDisturb => PresenceStatus.DoNotDisturb,
+        UserPresence.Offline => PresenceStatus.Offline,
+        UserPresence.OutOfOffice => PresenceStatus.OutOfOffice,
+        UserPresence.Unknown => PresenceStatus.Unknown,
+        _ => PresenceStatus.Unknown
+    };
+    [CascadingParameter]
+    public UserInformation UserInformation { get; set; } = new UserInformation(
+        string.Empty, 
+        "Anonymous",
+        "A",
+        string.Empty,
+        UserPresence.Unknown,
+        null, 
+        null);
+
+}

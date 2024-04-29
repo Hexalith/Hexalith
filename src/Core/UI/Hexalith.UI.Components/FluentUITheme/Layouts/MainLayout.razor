@@ -1,0 +1,31 @@
+﻿@inherits LayoutComponentBase
+@using Hexalith.UI.Components.FluentUITheme
+
+<FluentToastProvider />
+<FluentDialogProvider />
+<FluentTooltipProvider />
+<FluentMessageBarProvider />
+<FluentHeader>
+	<HexApplicationTitle/>
+	<FluentSpacer/>
+	<HexProfileMenu/>
+</FluentHeader>
+<FluentBodyContent>
+	@Body
+</FluentBodyContent>
+
+<div id="blazor-error-ui">
+	An unhandled error has occurred.
+	<a href="" class="reload">Reload</a>
+	<a class="dismiss">🗙</a>
+</div>
+
+@code {
+	public DesignThemeModes Mode { get; set; }
+	public OfficeColor? OfficeColor { get; set; }
+
+	void PickRandomColor()
+	{
+		OfficeColor = OfficeColorUtilities.GetRandom();
+	}
+}

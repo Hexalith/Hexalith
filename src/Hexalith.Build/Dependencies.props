@@ -31,8 +31,7 @@
 		<ManDaprSidekickVersion>1.2.2</ManDaprSidekickVersion>
 		<MicrosoftAzureCosmosVersion>3.38.1</MicrosoftAzureCosmosVersion>
 		<MicrosoftBotBuilderVersion>4.22.2</MicrosoftBotBuilderVersion>
-		<MicrosoftFluentUIComponentsVersion>4.6.0</MicrosoftFluentUIComponentsVersion>
-		<MicrosoftFluentUIComponentsIconsVersion>4.6.0</MicrosoftFluentUIComponentsIconsVersion>
+		<MicrosoftFluentUIComponentsVersion>4.*</MicrosoftFluentUIComponentsVersion>
 		<MicrosoftIdentityClientVersion>4.60.2</MicrosoftIdentityClientVersion>
 		<MicrosoftIdentityWebVersion>2.17.4</MicrosoftIdentityWebVersion>
 		<MicrosoftNETTestSdkVersion>17.9.0</MicrosoftNETTestSdkVersion>
