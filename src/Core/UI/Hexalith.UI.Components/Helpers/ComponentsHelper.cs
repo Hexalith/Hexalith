@@ -1,0 +1,30 @@
+﻿// <copyright file="ComponentsHelper.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+
+namespace Hexalith.UI.Components.Helpers;
+
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.FluentUI.AspNetCore.Components;
+
+/// <summary>
+/// Helper class for adding Fluent UI theme to the service collection.
+/// </summary>
+public static class ComponentsHelper
+{
+    /// <summary>
+    /// Adds Fluent UI theme to the service collection.
+    /// </summary>
+    /// <param name="services">The service collection.</param>
+    /// <returns>The updated service collection.</returns>
+    public static IServiceCollection AddFluentUITheme(this IServiceCollection services)
+    {
+        _ = services.AddLocalization(options => options.ResourcesPath = "Resources");
+        _ = services.AddHttpClient();
+        _ = services.AddFluentUIComponents();
+        _ = services.AddCascadingValue(v => v.GetRequiredService<ApplicationInformation>());
+        return services;
+    }
+}

@@ -6,7 +6,8 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="$(MicrosoftFluentUIComponentsVersion)" />
-		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="$(MicrosoftFluentUIComponentsIconsVersion)" />
+		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="$(MicrosoftFluentUIComponentsVersion)" />
+		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Emoji" Version="$(MicrosoftFluentUIComponentsVersion)" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\Application\Hexalith.Application\Hexalith.Application.csproj" />
