@@ -20,23 +20,23 @@
 		<CoverletCollectorVersion>6.0.2</CoverletCollectorVersion>
 		<DocFxConsoleVersion>2.59.4</DocFxConsoleVersion>
 		<FluentAssertionsVersion>6.12.0</FluentAssertionsVersion>
-		<FluentValidationVersion>11.9.0</FluentValidationVersion>
+		<FluentValidationVersion>11.9.1</FluentValidationVersion>
 		<FluentValidationAspNetCoreVersion>11.3.0</FluentValidationAspNetCoreVersion>
 		<GitHubActionsTestLoggerVersion>2.3.3</GitHubActionsTestLoggerVersion>
-		<GoogleApiVersion>5.3.1</GoogleApiVersion>
+		<GoogleApiVersion>5.4.1</GoogleApiVersion>
 		<GrpcVersion>2.62.0</GrpcVersion>
 		<ISO3166Version>1.0.4</ISO3166Version>
 		<HumanizerVersion>2.14.1</HumanizerVersion>
-		<MailKitVersion>4.4.0</MailKitVersion>
+		<MailKitVersion>4.5.0</MailKitVersion>
 		<ManDaprSidekickVersion>1.2.2</ManDaprSidekickVersion>
-		<MicrosoftAzureCosmosVersion>3.38.1</MicrosoftAzureCosmosVersion>
-		<MicrosoftBotBuilderVersion>4.22.2</MicrosoftBotBuilderVersion>
+		<MicrosoftAzureCosmosVersion>3.39.1</MicrosoftAzureCosmosVersion>
+		<MicrosoftBotBuilderVersion>4.22.3</MicrosoftBotBuilderVersion>
 		<MicrosoftFluentUIComponentsVersion>4.*</MicrosoftFluentUIComponentsVersion>
-		<MicrosoftIdentityClientVersion>4.60.2</MicrosoftIdentityClientVersion>
-		<MicrosoftIdentityWebVersion>2.17.4</MicrosoftIdentityWebVersion>
+		<MicrosoftIdentityClientVersion>4.60.3</MicrosoftIdentityClientVersion>
+		<MicrosoftIdentityWebVersion>2.18.1</MicrosoftIdentityWebVersion>
 		<MicrosoftNETTestSdkVersion>17.9.0</MicrosoftNETTestSdkVersion>
-		<MicrosoftSemanticKernelVersion>1.7.1</MicrosoftSemanticKernelVersion>
-		<MicrosoftTeamsFxVersion>2.4.0</MicrosoftTeamsFxVersion>
+		<MicrosoftSemanticKernelVersion>1.9.0</MicrosoftSemanticKernelVersion>
+		<MicrosoftTeamsFxVersion>2.4.1</MicrosoftTeamsFxVersion>
 		<MicrosoftTypescriptMSBuild>5.4.4</MicrosoftTypescriptMSBuild>
 		<MicrosoftGraphVersion>5.12.*</MicrosoftGraphVersion>
 		<MicrosoftVisualStudioThreadingAnalyzersVersion>17.9.28</MicrosoftVisualStudioThreadingAnalyzersVersion>
@@ -51,8 +51,8 @@
 		<SerilogEnrichersEnvironmentVersion>2.3.0</SerilogEnrichersEnvironmentVersion>
 		<StyleCopAnalyzersVersion>1.2.0-beta.556</StyleCopAnalyzersVersion>
 		<SwashbuckleAspNetCoreVersion>6.5.*</SwashbuckleAspNetCoreVersion>
-		<XUnitRunnerVisualStudioVersion>2.5.7</XUnitRunnerVisualStudioVersion>
-		<XUnitVersion>2.7.0</XUnitVersion>
+		<XUnitRunnerVisualStudioVersion>2.8.0</XUnitRunnerVisualStudioVersion>
+		<XUnitVersion>2.8.0</XUnitVersion>
 		<DaprVersion>1.13.*</DaprVersion>
 	</PropertyGroup>
 </Project>
