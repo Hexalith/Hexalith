@@ -23,7 +23,7 @@
 		<FluentValidationVersion>11.9.1</FluentValidationVersion>
 		<FluentValidationAspNetCoreVersion>11.3.0</FluentValidationAspNetCoreVersion>
 		<GitHubActionsTestLoggerVersion>2.3.3</GitHubActionsTestLoggerVersion>
-		<GoogleApiVersion>5.4.1</GoogleApiVersion>
+		<GoogleApiVersion>5.4.2</GoogleApiVersion>
 		<GrpcVersion>2.62.0</GrpcVersion>
 		<ISO3166Version>1.0.4</ISO3166Version>
 		<HumanizerVersion>2.14.1</HumanizerVersion>
@@ -35,11 +35,11 @@
 		<MicrosoftIdentityClientVersion>4.60.3</MicrosoftIdentityClientVersion>
 		<MicrosoftIdentityWebVersion>2.18.1</MicrosoftIdentityWebVersion>
 		<MicrosoftNETTestSdkVersion>17.9.0</MicrosoftNETTestSdkVersion>
-		<MicrosoftSemanticKernelVersion>1.9.0</MicrosoftSemanticKernelVersion>
+		<MicrosoftSemanticKernelVersion>1.10.0</MicrosoftSemanticKernelVersion>
 		<MicrosoftTeamsFxVersion>2.4.1</MicrosoftTeamsFxVersion>
 		<MicrosoftTypescriptMSBuild>5.4.4</MicrosoftTypescriptMSBuild>
 		<MicrosoftGraphVersion>5.12.*</MicrosoftGraphVersion>
-		<MicrosoftVisualStudioThreadingAnalyzersVersion>17.9.28</MicrosoftVisualStudioThreadingAnalyzersVersion>
+		<MicrosoftVisualStudioThreadingAnalyzersVersion>17.10.48</MicrosoftVisualStudioThreadingAnalyzersVersion>
 		<MinverVersion>5.0.0</MinverVersion>
 		<MoqVersion>4.20.70</MoqVersion>
 		<MoqContribHttpClientVersion>1.4.0</MoqContribHttpClientVersion>

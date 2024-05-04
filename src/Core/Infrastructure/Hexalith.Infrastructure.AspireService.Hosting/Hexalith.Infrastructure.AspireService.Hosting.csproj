@@ -1,13 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
 	<PropertyGroup>
-		<OutputType>Library</OutputType>
-		<TargetFramework>net8.0</TargetFramework>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
+		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
 		<IsAspireSharedProject>true</IsAspireSharedProject>
 	</PropertyGroup>
-
 	<ItemGroup>
 		<PackageReference Include="Aspire.Hosting" Version="$(AspireVersion)" />
 		<PackageReference Include="Aspire.Hosting.Dapr" Version="$(AspireVersion)" />
@@ -17,13 +12,10 @@
 		<PackageReference Include="Aspire.Hosting.AppHost" Version="$(AspireVersion)" />
 		<PackageReference Include="Aspire.Hosting.Redis" Version="$(AspireVersion)" />
 		<PackageReference Include="Aspire.Hosting.Azure.CosmosDB" Version="$(AspireVersion)" />
-		<PackageReference Include="Aspire.Hosting.Dapr" Version="$(AspireVersion)" />
-		<PackageReference Include="Aspire.Hosting.Azure" Version="$(AspireVersion)" />
 		<PackageReference Include="Aspire.Azure.Security.KeyVault" Version="$(AspireVersion)" />
 		<PackageReference Include="Aspire.Microsoft.Azure.Cosmos" Version="$(AspireVersion)" />
 	</ItemGroup>
-
 	<ItemGroup>
-	  <ProjectReference Include="..\..\Application\Hexalith.Application\Hexalith.Application.csproj" />
+		<ProjectReference Include="..\..\Application\Hexalith.Application\Hexalith.Application.csproj" />
 	</ItemGroup>
 </Project>

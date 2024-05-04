@@ -8,7 +8,7 @@
 		<PackageReference Include="Microsoft.Extensions.Localization" Version="$(MicrosoftExtensionsPackagesVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="$(MicrosoftExtensionsPackagesVersion)" />
 		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="$(MicrosoftFluentUIComponentsVersion)" />
-		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="$(MicrosoftFluentUIComponentsIconsVersion)" />
+		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="$(MicrosoftFluentUIComponentsVersion)" />
 		<PackageReference Include="Serilog.Extensions.Logging" Version="$(SerilogVersion)" />
 		<PackageReference Include="Serilog.Settings.Configuration" Version="$(SerilogVersion)" />
 		<PackageReference Include="Blazored.SessionStorage" Version="$(BlazoredSessionStorageVersion)" />
