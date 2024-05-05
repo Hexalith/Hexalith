@@ -6,7 +6,6 @@
 		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="$(SwashbuckleAspNetCoreVersion)" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\..\Application\Hexalith.Application.Inventories\Hexalith.Application.Inventories.csproj" />
 		<ProjectReference Include="..\Hexalith.Infrastructure.Dynamics365Finance\Hexalith.Infrastructure.Dynamics365Finance.csproj" />
 	</ItemGroup>
 
