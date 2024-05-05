@@ -1,1 +1,0 @@
-# Hexalith.Server.Dynamics365Finance
