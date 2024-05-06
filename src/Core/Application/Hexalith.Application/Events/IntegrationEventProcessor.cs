@@ -21,9 +21,9 @@ using Microsoft.Extensions.Logging;
 
 /// <summary>
 /// Class Dynamics365FinanceIntegrationEventDispatcher.
-/// Implements the <see cref="Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.IDynamics365FinanceIntegrationEventProcessor" />.
+/// Implements the <see cref="Hexalith.Dynamics365Finance.Dispatchers.IDynamics365FinanceIntegrationEventProcessor" />.
 /// </summary>
-/// <seealso cref="Hexalith.Infrastructure.Dynamics365Finance.Dispatchers.IDynamics365FinanceIntegrationEventProcessor" />
+/// <seealso cref="Hexalith.Dynamics365Finance.Dispatchers.IDynamics365FinanceIntegrationEventProcessor" />
 public partial class IntegrationEventProcessor : IIntegrationEventProcessor
 {
     /// <summary>
