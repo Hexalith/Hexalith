@@ -48,9 +48,6 @@ jobs:
         registry: ${{ vars.AZURE_REGISTRY }}
         username: ${{ secrets.AZURE_APPLICATIONID }}
         password: ${{ secrets.AZURE_APPLICATIONSECRET }}
-    - name: Publish and push the Dynamics365Finance server container images to the container registry
-      run: |
-          dotnet publish './src/Servers/Hexalith.Server.Dynamics365Finance/Hexalith.Server.Dynamics365Finance.csproj' /t:PublishContainer --configuration Release --os linux --arch x64 -p:ContainerImageTags='"${{ env.VERSION }};latest"' -p:ContainerRegistry=${{ vars.AZURE_REGISTRY }}
     - name: Publish and push the ExternalSystems server container images to the container registry
       run: |
           dotnet publish './src/Servers/Hexalith.Server.ExternalSystems/Hexalith.Server.ExternalSystems.csproj' --configuration Release --os linux --arch x64 /t:PublishContainer -p:ContainerImageTags='"${{ env.VERSION }};latest"' -p:ContainerRegistry=${{ vars.AZURE_REGISTRY }}
