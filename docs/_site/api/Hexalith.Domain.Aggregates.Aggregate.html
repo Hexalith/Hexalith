@@ -85,11 +85,6 @@ Implements the <a class="xref" href="Hexalith.Domain.Aggregates.IAggregate.html"
       <div class="level2"><a class="xref" href="Hexalith.Domain.Aggregates.PartitionedAggregate.html">PartitionedAggregate</a></div>
       <div class="level2"><a class="xref" href="Hexalith.Domain.Aggregates.SalesInvoice.html">SalesInvoice</a></div>
       <div class="level2"><a class="xref" href="Hexalith.Domain.ConversationThreads.Aggregates.ConversationThread.html">ConversationThread</a></div>
-      <div class="level2"><a class="xref" href="Hexalith.Domain.InventoryItems.Aggregates.InventoryItem.html">InventoryItem</a></div>
-      <div class="level2"><a class="xref" href="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.html">InventoryItemStock</a></div>
-      <div class="level2"><a class="xref" href="Hexalith.Domain.InventoryUnitConversions.Aggregates.InventoryUnitConversion.html">InventoryUnitConversion</a></div>
-      <div class="level2"><a class="xref" href="Hexalith.Domain.InventoryUnits.Aggregates.InventoryUnit.html">InventoryUnit</a></div>
-      <div class="level2"><a class="xref" href="Hexalith.Domain.PartnerInventoryItems.Aggregates.PartnerInventoryItem.html">PartnerInventoryItem</a></div>
       <div class="level2"><a class="xref" href="Hexalith.Domain.Users.Aggregates.Role.html">Role</a></div>
       <div class="level2"><a class="xref" href="Hexalith.Domain.Users.Aggregates.User.html">User</a></div>
   </div>
@@ -136,7 +131,7 @@ public abstract class Aggregate : IAggregate, IEquatable&lt;Aggregate&gt;</code>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_Aggregate_Separator.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.Aggregate.Separator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Aggregates/Aggregate.cs/#L44">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Aggregates/Aggregate.cs/#L45">View Source</a>
   </span>
   <h4 id="Hexalith_Domain_Aggregates_Aggregate_Separator" data-uid="Hexalith.Domain.Aggregates.Aggregate.Separator">Separator</h4>
   <div class="markdown level1 summary"><p>Default string used for separating natural keys to compose the aggregate identifier.</p>
@@ -168,7 +163,7 @@ public abstract class Aggregate : IAggregate, IEquatable&lt;Aggregate&gt;</code>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_Aggregate_AggregateId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.Aggregate.AggregateId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Aggregates/Aggregate.cs/#L47">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Aggregates/Aggregate.cs/#L48">View Source</a>
   </span>
   <a id="Hexalith_Domain_Aggregates_Aggregate_AggregateId_" data-uid="Hexalith.Domain.Aggregates.Aggregate.AggregateId*"></a>
   <h4 id="Hexalith_Domain_Aggregates_Aggregate_AggregateId" data-uid="Hexalith.Domain.Aggregates.Aggregate.AggregateId">AggregateId</h4>
@@ -202,7 +197,7 @@ public string AggregateId { get; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_Aggregate_AggregateName.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.Aggregate.AggregateName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Aggregates/Aggregate.cs/#L52">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Aggregates/Aggregate.cs/#L53">View Source</a>
   </span>
   <a id="Hexalith_Domain_Aggregates_Aggregate_AggregateName_" data-uid="Hexalith.Domain.Aggregates.Aggregate.AggregateName*"></a>
   <h4 id="Hexalith_Domain_Aggregates_Aggregate_AggregateName" data-uid="Hexalith.Domain.Aggregates.Aggregate.AggregateName">AggregateName</h4>
@@ -238,7 +233,7 @@ public string AggregateName { get; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_Aggregate_Apply_Hexalith_Domain_Events_BaseEvent_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.Aggregate.Apply(Hexalith.Domain.Events.BaseEvent)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Aggregates/Aggregate.cs/#L57">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Aggregates/Aggregate.cs/#L58">View Source</a>
   </span>
   <a id="Hexalith_Domain_Aggregates_Aggregate_Apply_" data-uid="Hexalith.Domain.Aggregates.Aggregate.Apply*"></a>
   <h4 id="Hexalith_Domain_Aggregates_Aggregate_Apply_Hexalith_Domain_Events_BaseEvent_" data-uid="Hexalith.Domain.Aggregates.Aggregate.Apply(Hexalith.Domain.Events.BaseEvent)">Apply(BaseEvent)</h4>
@@ -247,7 +242,7 @@ public string AggregateName { get; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract (IAggregate Aggregate, IEnumerable&lt;BaseEvent&gt; Events) Apply(BaseEvent domainEvent)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual (IAggregate Aggregate, IEnumerable&lt;BaseEvent&gt; Events) Apply(BaseEvent domainEvent)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -288,7 +283,7 @@ public string AggregateName { get; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_Aggregate_DefaultAggregateId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.Aggregate.DefaultAggregateId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Aggregates/Aggregate.cs/#L89">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Aggregates/Aggregate.cs/#L101">View Source</a>
   </span>
   <a id="Hexalith_Domain_Aggregates_Aggregate_DefaultAggregateId_" data-uid="Hexalith.Domain.Aggregates.Aggregate.DefaultAggregateId*"></a>
   <h4 id="Hexalith_Domain_Aggregates_Aggregate_DefaultAggregateId" data-uid="Hexalith.Domain.Aggregates.Aggregate.DefaultAggregateId">DefaultAggregateId()</h4>
@@ -320,7 +315,7 @@ public string AggregateName { get; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_Aggregate_DefaultAggregateName.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.Aggregate.DefaultAggregateName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Aggregates/Aggregate.cs/#L95">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Aggregates/Aggregate.cs/#L107">View Source</a>
   </span>
   <a id="Hexalith_Domain_Aggregates_Aggregate_DefaultAggregateName_" data-uid="Hexalith.Domain.Aggregates.Aggregate.DefaultAggregateName*"></a>
   <h4 id="Hexalith_Domain_Aggregates_Aggregate_DefaultAggregateName" data-uid="Hexalith.Domain.Aggregates.Aggregate.DefaultAggregateName">DefaultAggregateName()</h4>
@@ -352,7 +347,7 @@ public string AggregateName { get; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_Aggregate_IsInitialized.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.Aggregate.IsInitialized%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Aggregates/Aggregate.cs/#L60">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Aggregates/Aggregate.cs/#L72">View Source</a>
   </span>
   <a id="Hexalith_Domain_Aggregates_Aggregate_IsInitialized_" data-uid="Hexalith.Domain.Aggregates.Aggregate.IsInitialized*"></a>
   <h4 id="Hexalith_Domain_Aggregates_Aggregate_IsInitialized" data-uid="Hexalith.Domain.Aggregates.Aggregate.IsInitialized">IsInitialized()</h4>
@@ -384,7 +379,7 @@ public string AggregateName { get; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_Aggregate_Normalize_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.Aggregate.Normalize(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Aggregates/Aggregate.cs/#L68">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Aggregates/Aggregate.cs/#L80">View Source</a>
   </span>
   <a id="Hexalith_Domain_Aggregates_Aggregate_Normalize_" data-uid="Hexalith.Domain.Aggregates.Aggregate.Normalize*"></a>
   <h4 id="Hexalith_Domain_Aggregates_Aggregate_Normalize_System_String_" data-uid="Hexalith.Domain.Aggregates.Aggregate.Normalize(System.String)">Normalize(String)</h4>
@@ -474,7 +469,7 @@ public string AggregateName { get; }</code></pre>
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Aggregates_Aggregate.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Aggregates.Aggregate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Aggregates/Aggregate.cs/#L32" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Aggregates/Aggregate.cs/#L33" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

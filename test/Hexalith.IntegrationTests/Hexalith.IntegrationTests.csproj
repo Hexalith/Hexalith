@@ -4,11 +4,6 @@
 		<UserSecretsId>16985a23-56f5-4511-9b9b-38c8a672583a</UserSecretsId>
 	</PropertyGroup>
 	<ItemGroup>
-	  <Compile Remove="Dynamics365Finance\Parties\Entities\**" />
-	  <EmbeddedResource Remove="Dynamics365Finance\Parties\Entities\**" />
-	  <None Remove="Dynamics365Finance\Parties\Entities\**" />
-	</ItemGroup>
-	<ItemGroup>
 		<None Include="..\..\.editorconfig" Link=".editorconfig" />
 	</ItemGroup>
 	<ItemGroup>
@@ -16,10 +11,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\src\Core\Application\Hexalith.Application\Hexalith.Application.csproj" />
-		<ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365Finance.TestMocks\Hexalith.Infrastructure.Dynamics365Finance.TestMocks.csproj" />
-		<ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Dynamics365Finance\Hexalith.Infrastructure.Dynamics365Finance.csproj" />
 		<ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Serialization\Hexalith.Infrastructure.Serialization.csproj" />
-		<ProjectReference Include="..\..\src\Servers\Hexalith.Server.Dynamics365Finance\Hexalith.Server.Dynamics365Finance.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Update="appsettings.json">

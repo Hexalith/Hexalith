@@ -11,8 +11,7 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Grpc.Core;
-
+using Hexalith.Application.Metadatas;
 using Hexalith.Application.States;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Extensions.Serialization;
