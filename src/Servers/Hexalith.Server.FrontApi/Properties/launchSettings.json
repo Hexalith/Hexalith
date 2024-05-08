@@ -1,12 +1,13 @@
 {
-  "profiles": {
-    "Hexalith.Server.FrontApi": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "https://localhost:51860;http://localhost:51861"
-    }
-  }
+	"profiles": {
+		"Hexalith.Server.FrontApi": {
+			"commandName": "Project",
+			"launchBrowser": true,
+			"environmentVariables": {
+				"ASPNETCORE_ENVIRONMENT": "Development"
+			},
+			"launchUrl": "swagger",
+			"applicationUrl": "http://localhost:51861"
+		}
+	}
 }
