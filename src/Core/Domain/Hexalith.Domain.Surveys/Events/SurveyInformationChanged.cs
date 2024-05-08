@@ -36,9 +36,6 @@ public class SurveyInformationChanged : SurveyEvent
     /// <param name="originId">The origin identifier.</param>
     /// <param name="id">The identifier.</param>
     /// <param name="name">The name.</param>
-    /// <param name="contact">The contact.</param>
-    /// <param name="warehouseId">The warehouse identifier.</param>
-    /// <param name="commissionSalesGroupId">The commission sales group identifier.</param>
     /// <param name="date">The date.</param>
     public SurveyInformationChanged(
         string partitionId,

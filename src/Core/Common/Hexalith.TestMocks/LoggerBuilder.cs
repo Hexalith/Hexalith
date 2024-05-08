@@ -13,7 +13,7 @@ using Moq;
 /// <summary>
 /// Helper class to build a <see cref="ILogger"/> mock.
 /// </summary>
-/// <typeparam name="T">The type of logger (ILogger<typeparamref name="T"/>).</typeparam>
+/// <typeparam name="T">The type of logger (ILogger&lt;typeparamref name="T"/>&gt;).</typeparam>
 public class LoggerBuilder<T> : IMockBuilder<ILogger<T>>
 {
     /// <summary>
@@ -23,7 +23,7 @@ public class LoggerBuilder<T> : IMockBuilder<ILogger<T>>
     public ILogger<T> Build() => BuildMock().Object;
 
     /// <summary>
-    /// Build a <see cref="Mock{ILogger{T}}"/>.
+    /// Build.
     /// </summary>
     /// <returns>The mock of ILogger.</returns>
     public IMock<ILogger<T>> BuildMock() => new Mock<ILogger<T>>();

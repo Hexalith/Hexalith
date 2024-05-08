@@ -16,7 +16,6 @@
 
 namespace Hexalith.Domain.Aggregates;
 
-using System;
 using System.Runtime.Serialization;
 
 /// <summary>

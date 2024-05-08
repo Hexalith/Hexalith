@@ -78,10 +78,10 @@ public static class AspireExtensions
             logging.IncludeScopes = true;
         });
 
-        builder.Services.AddOpenTelemetry()
+        _ = builder.Services.AddOpenTelemetry()
            .WithMetrics(metrics =>
            {
-               metrics.AddRuntimeInstrumentation()
+               _ = metrics.AddRuntimeInstrumentation()
                       .AddBuiltInMeters();
            })
            .WithTracing(tracing =>
@@ -89,10 +89,10 @@ public static class AspireExtensions
                if (builder.Environment.IsDevelopment())
                {
                    // We want to view all traces in development
-                   tracing.SetSampler(new AlwaysOnSampler());
+                   _ = tracing.SetSampler(new AlwaysOnSampler());
                }
 
-               tracing.AddAspNetCoreInstrumentation()
+               _ = tracing.AddAspNetCoreInstrumentation()
                       .AddGrpcClientInstrumentation()
                       .AddHttpClientInstrumentation();
            });

@@ -20,9 +20,7 @@ using FluentValidation;
 
 /// <summary>
 /// Class SalesInvoiceRegisteredValidator.
-/// Implements the <see cref="FluentValidation.AbstractValidator{Hexalith.Domain.Events.SalesInvoiceRegistered}" />.
 /// </summary>
-/// <seealso cref="FluentValidation.AbstractValidator{Hexalith.Domain.Events.SalesInvoiceRegistered}" />
 public class SalesInvoiceIssuedValidator : AbstractValidator<SalesInvoiceIssued>
 {
     /// <summary>

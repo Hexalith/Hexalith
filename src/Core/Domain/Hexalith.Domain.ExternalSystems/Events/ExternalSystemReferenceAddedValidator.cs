@@ -20,9 +20,7 @@ using FluentValidation;
 
 /// <summary>
 /// Class ExternalSystemReferenceAddedValidator.
-/// Implements the <see cref="FluentValidation.AbstractValidator{Hexalith.Domain.Events.ExternalSystemReferenceAdded}" />.
 /// </summary>
-/// <seealso cref="FluentValidation.AbstractValidator{Hexalith.Domain.Events.ExternalSystemReferenceAdded}" />
 public class ExternalSystemReferenceAddedValidator : AbstractValidator<ExternalSystemReferenceAdded>
 {
     /// <summary>

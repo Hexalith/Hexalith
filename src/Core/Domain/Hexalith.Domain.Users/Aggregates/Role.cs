@@ -16,14 +16,10 @@ using Hexalith.Domain.Users.Models;
 /// <summary>
 /// Represents a role.
 /// Implements the <see cref="Aggregate" />
-/// Implements the <see cref="IAggregate" />
-/// Implements the <see cref="System.IEquatable{Hexalith.Domain.Aggregates.Aggregate}" />
-/// Implements the <see cref="System.IEquatable{Hexalith.Domain.Users.Aggregates.Role}" />.
+/// Implements the <see cref="IAggregate" />.
 /// </summary>
 /// <seealso cref="Aggregate" />
 /// <seealso cref="IAggregate" />
-/// <seealso cref="System.IEquatable{Hexalith.Domain.Aggregates.Aggregate}" />
-/// <seealso cref="System.IEquatable{Hexalith.Domain.Users.Aggregates.Role}" />
 [DataContract]
 public record Role([property: DataMember(Order = 1)] string Id, [property: DataMember(Order = 2)] string Name, [property: DataMember(Order = 3)] string Description) : Aggregate, IRole
 {

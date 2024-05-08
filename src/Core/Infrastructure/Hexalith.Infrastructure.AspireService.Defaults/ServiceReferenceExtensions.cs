@@ -11,6 +11,9 @@ using Grpc.Health.V1;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
+/// <summary>
+/// Provides extension methods for adding service references to the <see cref="IServiceCollection"/>.
+/// </summary>
 public static class ServiceReferenceExtensions
 {
     /// <summary>

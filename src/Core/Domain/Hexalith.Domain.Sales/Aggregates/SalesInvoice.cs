@@ -14,9 +14,6 @@
 // <summary></summary>
 // ***********************************************************************
 
-/// <summary>
-/// The Aggregates namespace.
-/// </summary>
 namespace Hexalith.Domain.Aggregates;
 
 using System.Diagnostics.CodeAnalysis;
@@ -29,14 +26,10 @@ using Hexalith.Domain.Exceptions;
 /// <summary>
 /// Class SalesInvoice.
 /// Implements the <see cref="Hexalith.Domain.Aggregates.Aggregate" />
-/// Implements the <see cref="Hexalith.Domain.Aggregates.IAggregate" />
-/// Implements the <see cref="System.IEquatable{Hexalith.Domain.Aggregates.Aggregate}" />
-/// Implements the <see cref="System.IEquatable{Hexalith.Domain.Aggregates.SalesInvoice}" />.
+/// Implements the <see cref="Hexalith.Domain.Aggregates.IAggregate" />.
 /// </summary>
 /// <seealso cref="Hexalith.Domain.Aggregates.Aggregate" />
 /// <seealso cref="Hexalith.Domain.Aggregates.IAggregate" />
-/// <seealso cref="System.IEquatable{Hexalith.Domain.Aggregates.Aggregate}" />
-/// <seealso cref="System.IEquatable{Hexalith.Domain.Aggregates.SalesInvoice}" />
 [DataContract]
 public record SalesInvoice(
     [property: DataMember(Order = 1)] SalesInvoiceState State) : Aggregate

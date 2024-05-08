@@ -34,7 +34,7 @@ public class OptionsBuilder<T> : IMockBuilder<IOptions<T>>
     public IOptions<T> Build() => BuildMock().Object;
 
     /// <summary>
-    /// Build a <see cref="Mock{IOptions{TOptions}}"/>.
+    /// Build.
     /// </summary>
     /// <returns>The options mock instance.</returns>
     public IMock<IOptions<T>> BuildMock()

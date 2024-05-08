@@ -36,7 +36,6 @@ public class ConversationItemAdded : ConversationThreadEvent
     /// <param name="itemDate">The date.</param>
     /// <param name="participant">The participant.</param>
     /// <param name="content">The content.</param>
-    /// <param name="authorRole">The author role.</param>
     public ConversationItemAdded(string owner, DateTimeOffset startedDate, DateTimeOffset itemDate, string participant, string content)
         : base(owner, startedDate)
     {

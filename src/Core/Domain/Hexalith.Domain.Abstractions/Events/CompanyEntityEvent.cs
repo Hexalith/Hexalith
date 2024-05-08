@@ -24,9 +24,9 @@ using Hexalith.Extensions;
 
 /// <summary>
 /// Class CompanyEntityEvent.
-/// Implements the <see cref="CompanyEvent" />.
+/// Implements the <see cref="CompanyEntityEvent" />.
 /// </summary>
-/// <seealso cref="CompanyEvent" />
+/// <seealso cref="CompanyEntityEvent" />
 [DataContract]
 [Serializable]
 public abstract class CompanyEntityEvent : CommonEntityEvent

@@ -16,14 +16,10 @@ using Hexalith.Domain.Events;
 /// <summary>
 /// Class DimensionDefinition.
 /// Implements the <see cref="Aggregate" />
-/// Implements the <see cref="IAggregate" />
-/// Implements the <see cref="System.IEquatable{Hexalith.Domain.Aggregates.Aggregate}" />
-/// Implements the <see cref="System.IEquatable{Hexalith.Domain.Dimensions.DimensionDefinitions.Aggregates.DimensionCollectionDefinition}" />.
+/// Implements the <see cref="IAggregate" />.
 /// </summary>
 /// <seealso cref="Aggregate" />
 /// <seealso cref="IAggregate" />
-/// <seealso cref="System.IEquatable{Hexalith.Domain.Aggregates.Aggregate}" />
-/// <seealso cref="System.IEquatable{Hexalith.Domain.Dimensions.DimensionDefinitions.Aggregates.DimensionCollectionDefinition}" />
 [DataContract]
 public record DimensionCollectionDefinition(
     string PartitionId,

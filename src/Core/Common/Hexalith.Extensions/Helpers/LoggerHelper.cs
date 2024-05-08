@@ -32,8 +32,10 @@ public static partial class LoggerHelper
     /// Logs the application technical error.
     /// </summary>
     /// <param name="logger">The logger.</param>
+    /// <param name="exception">The exception.</param>
     /// <param name="title">The title.</param>
     /// <param name="message">The message.</param>
+    /// <param name="technicalMessage">The message.</param>
     [LoggerMessage(2, LogLevel.Error, "{Title}: {Message}\n{TechnicalMessage}")]
     public static partial void LogApplicationError(this ILogger logger, Exception? exception, string? title, string? message, string? technicalMessage);
 

@@ -19,9 +19,7 @@ using FluentValidation;
 
 /// <summary>
 /// Class SurveyInformationChangedValidator.
-/// Implements the <see cref="FluentValidation.AbstractValidator{Hexalith.Domain.Events.SurveyInformationChanged}" />.
 /// </summary>
-/// <seealso cref="FluentValidation.AbstractValidator{Hexalith.Domain.Events.SurveyInformationChanged}" />
 public class SurveyInformationChangedValidator : AbstractValidator<SurveyInformationChanged>
 {
     /// <summary>

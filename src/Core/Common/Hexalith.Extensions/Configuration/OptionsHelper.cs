@@ -29,7 +29,7 @@ public static class OptionsHelper
         _ = configuration ?? throw new ArgumentNullException(nameof(configuration));
         _ = services
             .AddOptions<T>()
-            .Bind(configuration.GetSection(T.ConfigurationName()))
+            .Bind<T>(configuration.GetSection(T.ConfigurationName()))
             .ValidateDataAnnotations();
         services.TryAddSingleton<IValidateOptions<T>>((s) =>
             new FluentValidateOptions<T>(

@@ -14,9 +14,6 @@
 // <summary></summary>
 // ***********************************************************************
 
-/// <summary>
-/// The Aggregates namespace.
-/// </summary>
 namespace Hexalith.Domain.Entities;
 
 using System.Diagnostics.CodeAnalysis;

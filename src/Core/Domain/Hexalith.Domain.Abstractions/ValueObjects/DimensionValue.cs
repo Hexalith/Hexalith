@@ -13,22 +13,10 @@ using System.Runtime.Serialization;
 /// </summary>
 [DataContract]
 public record DimensionValue(
-
-    /// <summary>
-    /// Gets or sets the type of the dimension.
-    /// </summary>
     [property:DataMember(Order = 1)]
     string Type,
-
-    /// <summary>
-    /// Gets or sets the value of the dimension.
-    /// </summary>
     [property:DataMember(Order = 2)]
     string Value,
-
-    /// <summary>
-    /// Gets or sets the name of the dimension.
-    /// </summary>
     [property:DataMember(Order = 3)]
     string Name)
 {

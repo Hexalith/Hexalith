@@ -11,6 +11,9 @@ using System.Runtime.Serialization;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 
+/// <summary>
+/// Represents a number sequence.
+/// </summary>
 [DataContract]
 public record NumberSequence(
     string PartitionId,

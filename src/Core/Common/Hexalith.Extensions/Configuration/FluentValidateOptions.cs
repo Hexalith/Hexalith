@@ -38,7 +38,7 @@ public partial class FluentValidateOptions<TOptions>
     private readonly IValidator<TOptions>? _validator;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="FluentValidateOptions{}"/> class.
+    /// Initializes a new instance of the <see cref="FluentValidateOptions{T}"/> class.
     /// Constructor.
     /// </summary>
     /// <param name="name">The name of the option.</param>
@@ -98,6 +98,10 @@ public partial class FluentValidateOptions<TOptions>
         return ValidateOptionsResult.Fail(errors);
     }
 
+    /// <summary>
+    /// Logs a warning message when the validator is not found in the dependency injection container.
+    /// </summary>
+    /// <param name="validatorName">The name of the validator.</param>
     [LoggerMessage(
     EventId = 1,
     Level = LogLevel.Warning,
