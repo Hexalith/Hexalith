@@ -13,8 +13,9 @@
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="$(AspNetCorePackagesVersion)" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\Core\Infrastructure\Hexalith.Infrastructure.WebApis\Hexalith.Infrastructure.WebApis.csproj" />
-		<ProjectReference Include="..\..\..\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime\Hexalith.Infrastructure.DaprRuntime.csproj" />
+		<ProjectReference Include="..\Hexalith.Infrastructure.WebApis\Hexalith.Infrastructure.WebApis.csproj" />
+		<ProjectReference Include="..\Hexalith.Infrastructure.DaprRuntime\Hexalith.Infrastructure.DaprRuntime.csproj" />
+		<ProjectReference Include="..\..\UI\Hexalith.UI.Authentications\Hexalith.UI.Authentications.csproj" />
 		<ProjectReference Include="..\Hexalith.Infrastructure.ClientAppOnWasm\Hexalith.Infrastructure.ClientAppOnWasm.csproj" />
 		<ProjectReference Include="..\Hexalith.Infrastructure.GoogleMaps\Hexalith.Infrastructure.GoogleMaps.csproj" />
 	</ItemGroup>
