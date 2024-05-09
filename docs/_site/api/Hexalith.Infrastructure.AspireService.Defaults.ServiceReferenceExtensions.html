@@ -129,6 +129,7 @@ with an address. The client name will be set to the type name of <code data-dev-
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static IHttpClientBuilder AddGrpcServiceReference&lt;TClient&gt;(this IServiceCollection services, string address)
+
     where TClient : class</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -204,6 +205,7 @@ with an address and gRPC-based health check. The client name will be set to the 
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static IHttpClientBuilder AddGrpcServiceReference&lt;TClient&gt;(this IServiceCollection services, string address, string healthCheckName = null, HealthStatus failureStatus = HealthStatus.Unhealthy)
+
     where TClient : class</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -294,6 +296,7 @@ with a base address. The client name will be set to the type name of <code data-
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static IHttpClientBuilder AddHttpServiceReference&lt;TClient&gt;(this IServiceCollection services, string baseAddress)
+
     where TClient : class</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -369,6 +372,7 @@ with a base address and health check. The client name will be set to the type na
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static IHttpClientBuilder AddHttpServiceReference&lt;TClient&gt;(this IServiceCollection services, string baseAddress, string healthRelativePath, string healthCheckName = null, HealthStatus failureStatus = HealthStatus.Unhealthy)
+
     where TClient : class</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
