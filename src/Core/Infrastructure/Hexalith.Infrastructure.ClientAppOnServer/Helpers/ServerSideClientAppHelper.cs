@@ -20,27 +20,16 @@ using Hexalith.Application.Projections;
 using Hexalith.Application.Tasks;
 using Hexalith.Domain.Messages;
 using Hexalith.Infrastructure.ClientApp.Helpers;
-using Hexalith.Infrastructure.ClientAppOnServer.Security;
-using Hexalith.Infrastructure.ClientAppOnServer.Services;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
-using Hexalith.Infrastructure.Emails.SendGrid.Helpers;
-using Hexalith.Infrastructure.GoogleMaps.Helpers;
-using Hexalith.Infrastructure.Security.Abstractions.Models;
 using Hexalith.Infrastructure.WebApis.Helpers;
-using Hexalith.UI.Authentications.Components.Account;
-using Hexalith.UI.Authentications.Helpers;
 
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Routing;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
-using Microsoft.FluentUI.AspNetCore.Components;
 
 using Serilog;
 
@@ -83,7 +72,8 @@ public static class ServerSideClientAppHelper
 
         startupLogger.Information("Configuring {AppName} ...", applicationName);
         builder.Services
-            .AddAuthenticationUI(builder.Configuration)
+
+            // .AddAuthenticationUI(builder.Configuration)
             .AddCascadingAuthenticationState()
             .AddEndpointsApiExplorer()
             .AddSwaggerGen(c => c.SwaggerDoc("v1", new() { Title = applicationName, Version = version, }))
@@ -105,35 +95,14 @@ public static class ServerSideClientAppHelper
             .AddInteractiveWebAssemblyComponents();
 
         _ = builder.Services
-            .AddHttpClient()
-            .AddFluentUIComponents();
+            .AddHttpClient();
 
+        // .AddFluentUIComponents();
         _ = builder.Services
             .AddAuthorizationBuilder()
             .AddPolicy("api", p => p
                     .RequireAuthenticatedUser()
                     .AddAuthenticationSchemes(IdentityConstants.BearerScheme));
-
-        string connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-        string migrationAssembly = typeof(ApplicationDbContext).Assembly.GetName().Name
-            ?? throw new InvalidOperationException($"{nameof(ApplicationDbContext)} assembly name not found");
-        _ = builder.Services
-            .AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    connectionString,
-                    x => x.MigrationsAssembly(migrationAssembly)))
-            .AddDatabaseDeveloperPageExceptionFilter()
-            .AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            .AddEntityFrameworkStores<ApplicationDbContext>()
-            .AddSignInManager()
-            .AddDefaultTokenProviders()
-            .AddApiEndpoints();
-
-        builder.Services
-            .AddSendGridEmail(builder.Configuration)
-            .TryAddSingleton<IEmailSender<ApplicationUser>, EmailSender>();
-        builder.Services
-            .TryAddSingleton<IEmailSender, EmailSender>();
 
         // if (debugInVisualStudio)
         // {
@@ -153,12 +122,10 @@ public static class ServerSideClientAppHelper
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
-        _ = builder.Services
-            .AddGeolocationServices()
-            .AddGooglePlacesServices(builder.Configuration)
-            .AddScoped<AuthenticationStateProvider, PersistingRevalidatingAuthenticationStateProvider>()
-            .AddScoped<IdentityUserAccessor>()
-            .AddScoped<IdentityRedirectManager>();
+
+        // _ = builder.Services
+        //    .AddGeolocationServices()
+        //    .AddGooglePlacesServices(builder.Configuration);
         return builder;
     }
 
@@ -175,11 +142,6 @@ public static class ServerSideClientAppHelper
         where TUser : class, new()
     {
         ArgumentNullException.ThrowIfNull(app);
-        using (IServiceScope scope = app.Services.CreateScope())
-        {
-            using ApplicationDbContext context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-            context.Database.Migrate();
-        }
 
         _ = app
             .UseCors()
@@ -224,9 +186,6 @@ public static class ServerSideClientAppHelper
         _ = app.MapIdentityApi<TUser>();
 
         _ = app.MapActorsHandlers();
-
-        // Add additional endpoints required by the Identity /Account Razor components.
-        _ = app.MapAdditionalIdentityEndpoints();
 
         return app;
     }

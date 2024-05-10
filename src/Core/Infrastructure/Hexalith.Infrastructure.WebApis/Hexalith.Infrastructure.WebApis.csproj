@@ -11,7 +11,6 @@
 		<ProjectReference Include="..\Hexalith.Infrastructure.CosmosDb\Hexalith.Infrastructure.CosmosDb.csproj" />
 		<ProjectReference Include="..\Hexalith.Infrastructure.WebApis.Abstractions\Hexalith.Infrastructure.WebApis.Abstractions.csproj" />
 		<ProjectReference Include="..\Hexalith.Infrastructure.DaprRuntime\Hexalith.Infrastructure.DaprRuntime.csproj" />
-		<ProjectReference Include="..\Hexalith.Infrastructure.Security.Abstractions\Hexalith.Infrastructure.Security.Abstractions.csproj" />
 	</ItemGroup>
 	
 	<ItemGroup>

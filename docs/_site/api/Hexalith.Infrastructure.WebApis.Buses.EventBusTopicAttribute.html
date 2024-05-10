@@ -80,22 +80,157 @@ Implements the <span class="xref">Dapr.TopicAttribute</span>.</p>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="Hexalith.Infrastructure.WebApis.Buses.BusTopicAttribute.html">BusTopicAttribute</a></div>
-    <div class="level2"><span class="xref">EventBusTopicAttribute</span></div>
-      <div class="level3"><a class="xref" href="Hexalith.Infrastructure.WebApis.ExternalSystemsEvents.Controllers.ExternalSystemReferenceEventsBusTopicAttribute.html">ExternalSystemReferenceEventsBusTopicAttribute</a></div>
-      <div class="level3"><a class="xref" href="Hexalith.Infrastructure.WebApis.PartiesEvents.Controllers.CustomerEventsBusTopicAttribute.html">CustomerEventsBusTopicAttribute</a></div>
-      <div class="level3"><a class="xref" href="Hexalith.Infrastructure.WebApis.SalesEvents.Controllers.SalesInvoiceEventsBusTopicAttribute.html">SalesInvoiceEventsBusTopicAttribute</a></div>
+    <div class="level1"><span class="xref">System.Attribute</span></div>
+    <div class="level2"><span class="xref">Dapr.TopicAttribute</span></div>
+    <div class="level3"><a class="xref" href="Hexalith.Infrastructure.WebApis.Buses.BusTopicAttribute.html">BusTopicAttribute</a></div>
+    <div class="level4"><span class="xref">EventBusTopicAttribute</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">Dapr.ITopicMetadata</span></div>
+    <div><span class="xref">Dapr.IRawTopicMetadata</span></div>
+    <div><span class="xref">Dapr.IOwnedOriginalTopicMetadata</span></div>
+    <div><span class="xref">Dapr.IDeadLetterTopicMetadata</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
+      <span class="xref">Dapr.TopicAttribute.Name</span>
+    </div>
+    <div>
+      <span class="xref">Dapr.TopicAttribute.PubsubName</span>
+    </div>
+    <div>
+      <span class="xref">Dapr.TopicAttribute.EnableRawPayload</span>
+    </div>
+    <div>
+      <span class="xref">Dapr.TopicAttribute.Match</span>
+    </div>
+    <div>
+      <span class="xref">Dapr.TopicAttribute.Priority</span>
+    </div>
+    <div>
+      <span class="xref">Dapr.TopicAttribute.OwnedMetadatas</span>
+    </div>
+    <div>
+      <span class="xref">Dapr.TopicAttribute.MetadataSeparator</span>
+    </div>
+    <div>
+      <span class="xref">Dapr.TopicAttribute.DeadLetterTopic</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.GetCustomAttribute(System.Reflection.Assembly, System.Type)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.GetCustomAttribute(System.Reflection.Assembly, System.Type, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo, System.Type)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.GetCustomAttribute(System.Reflection.MemberInfo, System.Type, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.GetCustomAttribute(System.Reflection.Module, System.Type)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.GetCustomAttribute(System.Reflection.Module, System.Type, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo, System.Type)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.GetCustomAttribute(System.Reflection.ParameterInfo, System.Type, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.Assembly)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.Assembly, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.Assembly, System.Type)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.Assembly, System.Type, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo, System.Type)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.MemberInfo, System.Type, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.Module)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.Module, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.Module, System.Type)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.Module, System.Type, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo, System.Type)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.GetCustomAttributes(System.Reflection.ParameterInfo, System.Type, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.IsDefaultAttribute()</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.IsDefined(System.Reflection.Assembly, System.Type)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.IsDefined(System.Reflection.Assembly, System.Type, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.IsDefined(System.Reflection.MemberInfo, System.Type)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.IsDefined(System.Reflection.MemberInfo, System.Type, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.IsDefined(System.Reflection.Module, System.Type)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.IsDefined(System.Reflection.Module, System.Type, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.IsDefined(System.Reflection.ParameterInfo, System.Type)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.IsDefined(System.Reflection.ParameterInfo, System.Type, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.Match(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Attribute.TypeId</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetHashCode()</span>
     </div>
     <div>
       <span class="xref">System.Object.GetType()</span>
@@ -114,7 +249,7 @@ Implements the <span class="xref">Dapr.TopicAttribute</span>.</p>
   <h6><strong>Assembly</strong>: Hexalith.Infrastructure.WebApis.dll</h6>
   <h5 id="Hexalith_Infrastructure_WebApis_Buses_EventBusTopicAttribute_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class EventBusTopicAttribute : BusTopicAttribute</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class EventBusTopicAttribute : BusTopicAttribute, ITopicMetadata, IRawTopicMetadata, IOwnedOriginalTopicMetadata, IDeadLetterTopicMetadata</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -186,6 +321,19 @@ Implements the <span class="xref">Dapr.TopicAttribute</span>.</p>
       </tr>
     </tbody>
   </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">Dapr.ITopicMetadata</span>
+  </div>
+  <div>
+      <span class="xref">Dapr.IRawTopicMetadata</span>
+  </div>
+  <div>
+      <span class="xref">Dapr.IOwnedOriginalTopicMetadata</span>
+  </div>
+  <div>
+      <span class="xref">Dapr.IDeadLetterTopicMetadata</span>
+  </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSame_System_Object_System_Object_">EquatableHelper.AreSame(Object, Object)</a>
