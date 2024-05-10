@@ -29,12 +29,12 @@ Application blocks based on Dapr
 
 Stable (version tag): 
 
-[![Build status](https://github.com/Hexalith/Hexalith/actions/workflows/release_ci.yml/badge.svg)](https://github.com/Hexalith/Hexalith/actions?query=workflow%3A%22Release+-+CI%22)
+[![Build status](https://github.com/Hexalith/Hexalith/actions/workflows/hexalith_build.yml/badge.svg)](https://github.com/Hexalith/Hexalith/actions?query=workflow%3A%22Release+-+CI%22)
 [![NuGet](https://img.shields.io/nuget/v/Hexalith.Extensions.svg)](https://www.nuget.org/packages/Hexalith.Extensions)
 
 Nightly (main): 
 
-[![Build status](https://github.com/Hexalith/Hexalith/actions/workflows/preview_ci.yml/badge.svg)](https://github.com/Hexalith/Hexalith/actions?query=workflow%3A%22Preview+-+CI%22)
+[![Build status](https://github.com/Hexalith/Hexalith/actions/workflows/hexalith_build.yml/badge.svg)](https://github.com/Hexalith/Hexalith/actions?query=workflow%3A%22Preview+-+CI%22)
 
 ## Status
 
