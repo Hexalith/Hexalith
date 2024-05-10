@@ -111,6 +111,9 @@ public class BaseMetadata : IMetadata, IPolymorphicSerializable
     public IEnumerable<string>? Scopes { get; private set; }
 
     /// <inheritdoc/>
+    public string TypeMapName => IPolymorphicSerializable.GetTypeMapName(TypeName, MajorVersion, MinorVersion);
+
+    /// <inheritdoc/>
     [IgnoreDataMember]
     [JsonIgnore]
     public string TypeName => DefaultTypeName();

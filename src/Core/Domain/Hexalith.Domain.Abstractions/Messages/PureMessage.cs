@@ -66,6 +66,9 @@ public record PureMessage : IMessage, IPolymorphicSerializable
     [JsonIgnore]
     public string TypeName => DefaultTypeName();
 
+    /// <inheritdoc/>
+    public string TypeMapName => IPolymorphicSerializable.GetTypeMapName(TypeName, MajorVersion, MinorVersion);
+
     /// <summary>
     /// Get the aggregate identifier.
     /// </summary>

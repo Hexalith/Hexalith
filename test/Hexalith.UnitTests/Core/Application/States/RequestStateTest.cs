@@ -42,8 +42,8 @@ public class RequestStateTest
         RequestState state = new(DateTimeOffset.UtcNow, request, meta);
         string json = JsonSerializer.Serialize(state);
         _ = json.Should().NotBeNullOrEmpty();
-        _ = json.Should().Contain($"\"{PolymorphicJsonConverter<DummyRequest1>.TypeNamePropertyName}\":\"{nameof(DummyRequest1)}\"");
-        _ = json.Should().Contain($"\"{PolymorphicJsonConverter<DummyRequest1>.TypeNamePropertyName}\":\"{nameof(Metadata)}\"");
+        _ = json.Should().Contain($"\"{IPolymorphicSerializable.TypeNamePropertyName}\":\"{nameof(DummyRequest1)}\"");
+        _ = json.Should().Contain($"\"{IPolymorphicSerializable.TypeNamePropertyName}\":\"{nameof(Metadata)}\"");
         _ = json.Should().Contain($"\"{nameof(meta.Message.Id)}\":\"{meta.Message.Id}\"");
         _ = json.Should().Contain($"\"{nameof(request.Value1)}\":{request.Value1.ToInvariantString()}");
         _ = json.Should().Contain($"\"{nameof(request.BaseValue)}\":\"{request.BaseValue}\"");

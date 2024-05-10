@@ -42,8 +42,8 @@ public class CommandStateTest
         CommandState state = new(DateTimeOffset.UtcNow, command, meta);
         string json = JsonSerializer.Serialize(state);
         _ = json.Should().NotBeNullOrEmpty();
-        _ = json.Should().Contain($"\"{PolymorphicJsonConverter<DummyCommand1>.TypeNamePropertyName}\":\"{nameof(DummyCommand1)}\"");
-        _ = json.Should().Contain($"\"{PolymorphicJsonConverter<DummyCommand1>.TypeNamePropertyName}\":\"{nameof(Metadata)}\"");
+        _ = json.Should().Contain($"\"{IPolymorphicSerializable.TypeNamePropertyName}\":\"{nameof(DummyCommand1)}\"");
+        _ = json.Should().Contain($"\"{IPolymorphicSerializable.TypeNamePropertyName}\":\"{nameof(Metadata)}\"");
         _ = json.Should().Contain($"\"{nameof(meta.Message.Id)}\":\"{meta.Message.Id}\"");
         _ = json.Should().Contain($"\"{nameof(command.Value1)}\":{command.Value1.ToInvariantString()}");
         _ = json.Should().Contain($"\"{nameof(command.BaseValue)}\":\"{command.BaseValue}\"");

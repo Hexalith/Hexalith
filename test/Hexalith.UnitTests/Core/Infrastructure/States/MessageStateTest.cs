@@ -88,8 +88,8 @@ public class MessageStateTest
                 null));
         string json = JsonSerializer.Serialize(messageState);
         _ = json.Should().NotBeEmpty();
-        _ = json.Should().Contain($"\"{PolymorphicJsonConverter<DummyCommand1>.TypeNamePropertyName}\":\"{nameof(DummyCommand1)}\"");
-        _ = json.Should().Contain($"\"{PolymorphicJsonConverter<DummyCommand1>.TypeNamePropertyName}\":\"{nameof(Metadata)}\"");
+        _ = json.Should().Contain($"\"{IPolymorphicSerializable.TypeNamePropertyName}\":\"{nameof(DummyCommand1)}\"");
+        _ = json.Should().Contain($"\"{IPolymorphicSerializable.TypeNamePropertyName}\":\"{nameof(Metadata)}\"");
         _ = json.Should().Contain($"\"CorrelationId\":\"{messageId}\"");
         _ = json.Should().Contain("\"Value1\":123456");
         _ = json.Should().Contain("\"BaseValue\":\"Test\"");

@@ -33,21 +33,6 @@ public class PolymorphicJsonConverter<T> : JsonConverter<T>
     where T : class, IPolymorphicSerializable, new()
 {
     /// <summary>
-    /// The major version property name.
-    /// </summary>
-    public const string MajorVersionPropertyName = "$version_major";
-
-    /// <summary>
-    /// The minor version property name.
-    /// </summary>
-    public const string MinorVersionPropertyName = "$version_minor";
-
-    /// <summary>
-    /// The type name property name.
-    /// </summary>
-    public const string TypeNamePropertyName = "$type_name";
-
-    /// <summary>
     /// Reads and converts the JSON to type <typeparamref name="T" />.
     /// </summary>
     /// <param name="reader">The reader.</param>
@@ -64,20 +49,20 @@ public class PolymorphicJsonConverter<T> : JsonConverter<T>
         // Get the "$type" property value and create a new instance of the appropriate type
         bool hasTypeName = jsonDoc
             .RootElement
-            .TryGetProperty(TypeNamePropertyName, out JsonElement typeNameElement);
+            .TryGetProperty(IPolymorphicSerializable.TypeNamePropertyName, out JsonElement typeNameElement);
         string? typeName = hasTypeName ? typeNameElement.GetString() : null;
         if (string.IsNullOrWhiteSpace(typeName))
         {
-            throw new InvalidOperationException($"The type name property '{TypeNamePropertyName}' is empty or missing. JSON:\n{jsonDoc.RootElement.GetRawText()}");
+            throw new InvalidOperationException($"The type name property '{IPolymorphicSerializable.TypeNamePropertyName}' is empty or missing. JSON:\n{jsonDoc.RootElement.GetRawText()}");
         }
 
         bool hasMajorVersion = jsonDoc
             .RootElement
-            .TryGetProperty(MajorVersionPropertyName, out JsonElement majorVersionElement);
+            .TryGetProperty(IPolymorphicSerializable.MajorVersionPropertyName, out JsonElement majorVersionElement);
         int majorVersion = hasMajorVersion ? majorVersionElement.GetInt32() : 0;
         bool hasMinorVersion = jsonDoc
             .RootElement
-            .TryGetProperty(MinorVersionPropertyName, out JsonElement minorVersionElement);
+            .TryGetProperty(IPolymorphicSerializable.MinorVersionPropertyName, out JsonElement minorVersionElement);
         int minorVersion = hasMinorVersion ? minorVersionElement.GetInt32() : 0;
 
         // Deserialize the remaining properties
@@ -104,13 +89,13 @@ public class PolymorphicJsonConverter<T> : JsonConverter<T>
         }
 
         JsonDocument jsonDoc = JsonDocument.Parse(JsonSerializer.Serialize<object?>(value, options));
-        JsonObject json = JsonObject.Create(jsonDoc.RootElement, null)
+        JsonObject json = JsonObject.Create(jsonDoc.RootElement)
             ?? throw new NotSupportedException($"Cannot create JSON object from :\n" + jsonDoc.RootElement.GetRawText());
         if (value != null)
         {
-            json.Add(TypeNamePropertyName, value.TypeName);
-            json.Add(MajorVersionPropertyName, value.MajorVersion);
-            json.Add(MinorVersionPropertyName, value.MinorVersion);
+            json.Add(IPolymorphicSerializable.TypeNamePropertyName, value.TypeName);
+            json.Add(IPolymorphicSerializable.MajorVersionPropertyName, value.MajorVersion);
+            json.Add(IPolymorphicSerializable.MinorVersionPropertyName, value.MinorVersion);
         }
 
         json.WriteTo(writer, options);

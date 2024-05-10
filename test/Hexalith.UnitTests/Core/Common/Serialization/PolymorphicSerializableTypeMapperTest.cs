@@ -63,6 +63,9 @@ public class PolymorphicSerializableTypeMapperTest
         /// <value>The name.</value>
         public string Name { get; set; } = "Test";
 
+        /// <inheritdoc/>
+        public string TypeMapName => IPolymorphicSerializable.GetTypeMapName(TypeName, MajorVersion, MinorVersion);
+
         /// <summary>
         /// Gets the name of the type.
         /// </summary>

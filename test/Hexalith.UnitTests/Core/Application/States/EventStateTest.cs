@@ -42,8 +42,8 @@ public class EventStateTest
         EventState state = new(DateTimeOffset.UtcNow, @event, meta);
         string json = JsonSerializer.Serialize(state);
         _ = json.Should().NotBeNullOrEmpty();
-        _ = json.Should().Contain($"\"{PolymorphicJsonConverter<DummyEvent1>.TypeNamePropertyName}\":\"{nameof(DummyEvent1)}\"");
-        _ = json.Should().Contain($"\"{PolymorphicJsonConverter<DummyEvent1>.TypeNamePropertyName}\":\"{nameof(Metadata)}\"");
+        _ = json.Should().Contain($"\"{IPolymorphicSerializable.TypeNamePropertyName}\":\"{nameof(DummyEvent1)}\"");
+        _ = json.Should().Contain($"\"{IPolymorphicSerializable.TypeNamePropertyName}\":\"{nameof(Metadata)}\"");
         _ = json.Should().Contain($"\"{nameof(meta.Message.Id)}\":\"{meta.Message.Id}\"");
         _ = json.Should().Contain($"\"{nameof(@event.Value1)}\":{@event.Value1.ToInvariantString()}");
         _ = json.Should().Contain($"\"{nameof(@event.BaseValue)}\":\"{@event.BaseValue}\"");

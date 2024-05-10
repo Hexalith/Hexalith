@@ -24,6 +24,21 @@ using Hexalith.Extensions.Reflections;
 public interface IPolymorphicSerializable : IMappableType
 {
     /// <summary>
+    /// Gets the major version property name.
+    /// </summary>
+    public static string MajorVersionPropertyName => "$version_major";
+
+    /// <summary>
+    /// Gets the minor version property name.
+    /// </summary>
+    public static string MinorVersionPropertyName => "$version_minor";
+
+    /// <summary>
+    /// Gets the type name property name.
+    /// </summary>
+    public static string TypeNamePropertyName => "$type_name";
+
+    /// <summary>
     /// Gets the major version.
     /// </summary>
     /// <value>The major version.</value>
@@ -40,11 +55,6 @@ public interface IPolymorphicSerializable : IMappableType
     /// </summary>
     /// <value>The name of the type.</value>
     string TypeName { get; }
-
-    /// <inheritdoc/>
-#pragma warning disable CA1033 // Interface methods should be callable by child types
-    string IMappableType.TypeMapName => GetTypeMapName(TypeName, MajorVersion, MinorVersion);
-#pragma warning restore CA1033 // Interface methods should be callable by child types
 
     /// <summary>
     /// Gets the name of the type map.

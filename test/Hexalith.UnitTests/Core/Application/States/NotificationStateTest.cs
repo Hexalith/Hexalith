@@ -42,8 +42,8 @@ public class NotificationStateTest
         NotificationState state = new(DateTimeOffset.UtcNow, notification, meta);
         string json = JsonSerializer.Serialize(state);
         _ = json.Should().NotBeNullOrEmpty();
-        _ = json.Should().Contain($"\"{PolymorphicJsonConverter<DummyNotification1>.TypeNamePropertyName}\":\"{nameof(DummyNotification1)}\"");
-        _ = json.Should().Contain($"\"{PolymorphicJsonConverter<DummyNotification1>.TypeNamePropertyName}\":\"{nameof(Metadata)}\"");
+        _ = json.Should().Contain($"\"{IPolymorphicSerializable.TypeNamePropertyName}\":\"{nameof(DummyNotification1)}\"");
+        _ = json.Should().Contain($"\"{IPolymorphicSerializable.TypeNamePropertyName}\":\"{nameof(Metadata)}\"");
         _ = json.Should().Contain($"\"{nameof(meta.Message.Id)}\":\"{meta.Message.Id}\"");
         _ = json.Should().Contain($"\"{nameof(notification.Value1)}\":{notification.Value1.ToInvariantString()}");
         _ = json.Should().Contain($"\"{nameof(notification.BaseValue)}\":\"{notification.BaseValue}\"");

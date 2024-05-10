@@ -42,8 +42,8 @@ public class MessageStateTest
         MessageState state = new(DateTimeOffset.UtcNow, message, meta);
         string json = JsonSerializer.Serialize(state);
         _ = json.Should().NotBeNullOrEmpty();
-        _ = json.Should().Contain($"\"{PolymorphicJsonConverter<DummyMessage1>.TypeNamePropertyName}\":\"{nameof(DummyMessage1)}\"");
-        _ = json.Should().Contain($"\"{PolymorphicJsonConverter<DummyMessage1>.TypeNamePropertyName}\":\"{nameof(Metadata)}\"");
+        _ = json.Should().Contain($"\"{IPolymorphicSerializable.TypeNamePropertyName}\":\"{nameof(DummyMessage1)}\"");
+        _ = json.Should().Contain($"\"{IPolymorphicSerializable.TypeNamePropertyName}\":\"{nameof(Metadata)}\"");
         _ = json.Should().Contain($"\"{nameof(meta.Message.Id)}\":\"{meta.Message.Id}\"");
         _ = json.Should().Contain($"\"{nameof(message.Value1)}\":{message.Value1.ToInvariantString()}");
         _ = json.Should().Contain($"\"{nameof(message.BaseValue)}\":\"{message.BaseValue}\"");

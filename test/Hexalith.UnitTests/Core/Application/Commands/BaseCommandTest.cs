@@ -40,9 +40,9 @@ public class BaseCommandTest
         DummyCommand1 original = new("IB2343213FR", 655463);
         string json = JsonSerializer.Serialize<BaseCommand>(original);
         _ = json.Should().NotBeNull();
-        _ = json.Should().Contain($"\"{PolymorphicJsonConverter<BaseCommand>.TypeNamePropertyName}\":\"{nameof(DummyCommand1)}\"");
-        _ = json.Should().Contain($"\"{PolymorphicJsonConverter<BaseCommand>.MajorVersionPropertyName}\":{original.MajorVersion.ToInvariantString()}");
-        _ = json.Should().Contain($"\"{PolymorphicJsonConverter<BaseCommand>.MinorVersionPropertyName}\":{original.MinorVersion.ToInvariantString()}");
+        _ = json.Should().Contain($"\"{IPolymorphicSerializable.TypeNamePropertyName}\":\"{nameof(DummyCommand1)}\"");
+        _ = json.Should().Contain($"\"{IPolymorphicSerializable.MajorVersionPropertyName}\":{original.MajorVersion.ToInvariantString()}");
+        _ = json.Should().Contain($"\"{IPolymorphicSerializable.MinorVersionPropertyName}\":{original.MinorVersion.ToInvariantString()}");
     }
 
     [Fact]

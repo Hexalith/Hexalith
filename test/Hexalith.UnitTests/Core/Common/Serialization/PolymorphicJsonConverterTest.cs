@@ -28,6 +28,9 @@ public class TestBase : IPolymorphicSerializable
     [JsonIgnore]
     public int MinorVersion => DefaultMinorVersion();
 
+    /// <inheritdoc/>
+    public string TypeMapName => IPolymorphicSerializable.GetTypeMapName(TypeName, MajorVersion, MinorVersion);
+
     [IgnoreDataMember]
     [JsonIgnore]
     public string TypeName => DefaultTypeName();
