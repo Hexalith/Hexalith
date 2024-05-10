@@ -26,13 +26,18 @@ using Dapr;
 /// <remarks>
 /// Initializes a new instance of the <see cref="BusTopicAttribute" /> class.
 /// </remarks>
-/// <param name="pubsubName">Name of the pubsub.</param>
-/// <param name="name">The name.</param>
-#pragma warning disable CA1308 // Normalize strings to uppercase
-
 [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
-public abstract class BusTopicAttribute(string pubsubName, string name) : TopicAttribute(
-        (pubsubName ?? throw new ArgumentNullException(nameof(pubsubName))).ToLowerInvariant(),
-        (name ?? throw new ArgumentNullException(nameof(name))).ToLowerInvariant())
+public abstract class BusTopicAttribute : TopicAttribute
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="BusTopicAttribute" /> class.
+    /// </summary>
+    /// <param name="pubsubName">The name of the pubsub.</param>
+    /// <param name="name">The name of the topic.</param>
+    protected BusTopicAttribute(string pubsubName, string name)
+        : base(
+            (pubsubName ?? throw new ArgumentNullException(nameof(pubsubName))).ToLowerInvariant(),
+            (name ?? throw new ArgumentNullException(nameof(name))).ToLowerInvariant())
+    {
+    }
 }
