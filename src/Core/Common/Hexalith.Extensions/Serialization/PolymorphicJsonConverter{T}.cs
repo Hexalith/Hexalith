@@ -69,7 +69,7 @@ public class PolymorphicJsonConverter<T> : JsonConverter<T>
         return JsonSerializer
             .Deserialize(
                 jsonDoc.RootElement.GetRawText(),
-                TypeMapper<IPolymorphicSerializable>.GetType(IPolymorphicSerializable.GetTypeMapName(typeName, majorVersion, minorVersion)),
+                TypeMapper.GetType<IPolymorphicSerializable>(IPolymorphicSerializable.GetTypeMapName(typeName, majorVersion, minorVersion)),
                 options) as T
                 ?? throw new NotSupportedException($"Deserialized object is null:\n" + jsonDoc.RootElement.GetRawText());
     }
