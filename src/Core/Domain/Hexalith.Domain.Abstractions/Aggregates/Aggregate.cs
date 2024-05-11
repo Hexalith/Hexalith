@@ -34,25 +34,20 @@ using Hexalith.Domain.Exceptions;
 [DebuggerDisplay("{AggregateName}/{AggregateId}")]
 public abstract record Aggregate : IAggregate
 {
-    ///// <summary>
-    ///// The space substitution.
-    ///// </summary>
-    // public const char SpaceSubstitutionCharacter = '~';
-
     /// <summary>
-    /// Default string used for separating natural keys to compose the aggregate identifier.
+    /// Gets default string used for separating natural keys to compose the aggregate identifier.
     /// </summary>
-    public const string Separator = "-";
+    public static string Separator => "-";
 
     /// <inheritdoc/>
     [IgnoreDataMember]
     [JsonIgnore]
-    public string AggregateId => DefaultAggregateId();
+    public virtual string AggregateId => DefaultAggregateId();
 
     /// <inheritdoc/>
     [IgnoreDataMember]
     [JsonIgnore]
-    public string AggregateName => DefaultAggregateName();
+    public virtual string AggregateName => DefaultAggregateName();
 
     /// <inheritdoc/>
     public virtual (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent)
