@@ -7,8 +7,5 @@
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="$(AspNetCorePackagesVersion)" />
 		<PackageReference Include="Microsoft.Identity.Web.UI" Version="$(MicrosoftIdentityWebVersion)" />
 	</ItemGroup>
-	<ItemGroup>
-	  <ProjectReference Include="..\..\Infrastructure\Hexalith.Infrastructure.Security.Abstractions\Hexalith.Infrastructure.Security.Abstractions.csproj" />
-	</ItemGroup>
 
 </Project>
