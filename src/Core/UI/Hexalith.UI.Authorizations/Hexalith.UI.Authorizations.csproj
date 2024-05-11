@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+	<PropertyGroup>
+		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Folder Include="Components\Roles\Shared\" />
+	  <Folder Include="wwwroot\" />
+	</ItemGroup>
+
+</Project>

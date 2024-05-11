@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="GoogleApi" Version="$(GoogleApiVersion)" />
+		<PackageReference Include="ISO3166" Version="1.0.4" />
+		<PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="$(MicrosoftExtensionsPackagesVersion)" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Application\Hexalith.Application.Abstractions\Hexalith.Application.Abstractions.csproj" />
+	  <ProjectReference Include="..\..\Application\Hexalith.Application.Geolocations\Hexalith.Application.Geolocations.csproj" />
+	</ItemGroup>
+</Project>
