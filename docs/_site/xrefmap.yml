@@ -8576,7 +8576,14 @@ references:
 - uid: Hexalith.Domain.Aggregates.Aggregate.Separator
   name: Separator
   href: api/Hexalith.Domain.Aggregates.Aggregate.html#Hexalith_Domain_Aggregates_Aggregate_Separator
-  commentId: F:Hexalith.Domain.Aggregates.Aggregate.Separator
+  commentId: P:Hexalith.Domain.Aggregates.Aggregate.Separator
+  fullName: Hexalith.Domain.Aggregates.Aggregate.Separator
+  nameWithType: Aggregate.Separator
+- uid: Hexalith.Domain.Aggregates.Aggregate.Separator*
+  name: Separator
+  href: api/Hexalith.Domain.Aggregates.Aggregate.html#Hexalith_Domain_Aggregates_Aggregate_Separator_
+  commentId: Overload:Hexalith.Domain.Aggregates.Aggregate.Separator
+  isSpec: "True"
   fullName: Hexalith.Domain.Aggregates.Aggregate.Separator
   nameWithType: Aggregate.Separator
 - uid: Hexalith.Domain.Aggregates.ByCompanyAggregate
@@ -13667,66 +13674,92 @@ references:
   isSpec: "True"
   fullName: Hexalith.Extensions.Reflections.ObjectDifferenceHelper.GetDifferenceInformation
   nameWithType: ObjectDifferenceHelper.GetDifferenceInformation
-- uid: Hexalith.Extensions.Reflections.TypeMapper`1
-  name: TypeMapper<TMapped>
-  href: api/Hexalith.Extensions.Reflections.TypeMapper-1.html
-  commentId: T:Hexalith.Extensions.Reflections.TypeMapper`1
-  name.vb: TypeMapper(Of TMapped)
-  fullName: Hexalith.Extensions.Reflections.TypeMapper<TMapped>
-  fullName.vb: Hexalith.Extensions.Reflections.TypeMapper(Of TMapped)
-  nameWithType: TypeMapper<TMapped>
-  nameWithType.vb: TypeMapper(Of TMapped)
-- uid: Hexalith.Extensions.Reflections.TypeMapper`1.GetMap
-  name: GetMap()
-  href: api/Hexalith.Extensions.Reflections.TypeMapper-1.html#Hexalith_Extensions_Reflections_TypeMapper_1_GetMap
-  commentId: M:Hexalith.Extensions.Reflections.TypeMapper`1.GetMap
-  fullName: Hexalith.Extensions.Reflections.TypeMapper<TMapped>.GetMap()
-  fullName.vb: Hexalith.Extensions.Reflections.TypeMapper(Of TMapped).GetMap()
-  nameWithType: TypeMapper<TMapped>.GetMap()
-  nameWithType.vb: TypeMapper(Of TMapped).GetMap()
-- uid: Hexalith.Extensions.Reflections.TypeMapper`1.GetMap*
+- uid: Hexalith.Extensions.Reflections.TypeMapper
+  name: TypeMapper
+  href: api/Hexalith.Extensions.Reflections.TypeMapper.html
+  commentId: T:Hexalith.Extensions.Reflections.TypeMapper
+  fullName: Hexalith.Extensions.Reflections.TypeMapper
+  nameWithType: TypeMapper
+- uid: Hexalith.Extensions.Reflections.TypeMapper.CanCreateMappableType*
+  name: CanCreateMappableType
+  href: api/Hexalith.Extensions.Reflections.TypeMapper.html#Hexalith_Extensions_Reflections_TypeMapper_CanCreateMappableType_
+  commentId: Overload:Hexalith.Extensions.Reflections.TypeMapper.CanCreateMappableType
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Reflections.TypeMapper.CanCreateMappableType
+  nameWithType: TypeMapper.CanCreateMappableType
+- uid: Hexalith.Extensions.Reflections.TypeMapper.CanCreateMappableType``1(System.Type)
+  name: CanCreateMappableType<TMappable>(Type)
+  href: api/Hexalith.Extensions.Reflections.TypeMapper.html#Hexalith_Extensions_Reflections_TypeMapper_CanCreateMappableType__1_System_Type_
+  commentId: M:Hexalith.Extensions.Reflections.TypeMapper.CanCreateMappableType``1(System.Type)
+  name.vb: CanCreateMappableType(Of TMappable)(Type)
+  fullName: Hexalith.Extensions.Reflections.TypeMapper.CanCreateMappableType<TMappable>(System.Type)
+  fullName.vb: Hexalith.Extensions.Reflections.TypeMapper.CanCreateMappableType(Of TMappable)(System.Type)
+  nameWithType: TypeMapper.CanCreateMappableType<TMappable>(Type)
+  nameWithType.vb: TypeMapper.CanCreateMappableType(Of TMappable)(Type)
+- uid: Hexalith.Extensions.Reflections.TypeMapper.GetMap*
   name: GetMap
-  href: api/Hexalith.Extensions.Reflections.TypeMapper-1.html#Hexalith_Extensions_Reflections_TypeMapper_1_GetMap_
-  commentId: Overload:Hexalith.Extensions.Reflections.TypeMapper`1.GetMap
+  href: api/Hexalith.Extensions.Reflections.TypeMapper.html#Hexalith_Extensions_Reflections_TypeMapper_GetMap_
+  commentId: Overload:Hexalith.Extensions.Reflections.TypeMapper.GetMap
   isSpec: "True"
-  fullName: Hexalith.Extensions.Reflections.TypeMapper<TMapped>.GetMap
-  fullName.vb: Hexalith.Extensions.Reflections.TypeMapper(Of TMapped).GetMap
-  nameWithType: TypeMapper<TMapped>.GetMap
-  nameWithType.vb: TypeMapper(Of TMapped).GetMap
-- uid: Hexalith.Extensions.Reflections.TypeMapper`1.GetObject(System.String)
-  name: GetObject(String)
-  href: api/Hexalith.Extensions.Reflections.TypeMapper-1.html#Hexalith_Extensions_Reflections_TypeMapper_1_GetObject_System_String_
-  commentId: M:Hexalith.Extensions.Reflections.TypeMapper`1.GetObject(System.String)
-  fullName: Hexalith.Extensions.Reflections.TypeMapper<TMapped>.GetObject(System.String)
-  fullName.vb: Hexalith.Extensions.Reflections.TypeMapper(Of TMapped).GetObject(System.String)
-  nameWithType: TypeMapper<TMapped>.GetObject(String)
-  nameWithType.vb: TypeMapper(Of TMapped).GetObject(String)
-- uid: Hexalith.Extensions.Reflections.TypeMapper`1.GetObject*
+  fullName: Hexalith.Extensions.Reflections.TypeMapper.GetMap
+  nameWithType: TypeMapper.GetMap
+- uid: Hexalith.Extensions.Reflections.TypeMapper.GetMap``1
+  name: GetMap<TMappable>()
+  href: api/Hexalith.Extensions.Reflections.TypeMapper.html#Hexalith_Extensions_Reflections_TypeMapper_GetMap__1
+  commentId: M:Hexalith.Extensions.Reflections.TypeMapper.GetMap``1
+  name.vb: GetMap(Of TMappable)()
+  fullName: Hexalith.Extensions.Reflections.TypeMapper.GetMap<TMappable>()
+  fullName.vb: Hexalith.Extensions.Reflections.TypeMapper.GetMap(Of TMappable)()
+  nameWithType: TypeMapper.GetMap<TMappable>()
+  nameWithType.vb: TypeMapper.GetMap(Of TMappable)()
+- uid: Hexalith.Extensions.Reflections.TypeMapper.GetMappableTypes*
+  name: GetMappableTypes
+  href: api/Hexalith.Extensions.Reflections.TypeMapper.html#Hexalith_Extensions_Reflections_TypeMapper_GetMappableTypes_
+  commentId: Overload:Hexalith.Extensions.Reflections.TypeMapper.GetMappableTypes
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Reflections.TypeMapper.GetMappableTypes
+  nameWithType: TypeMapper.GetMappableTypes
+- uid: Hexalith.Extensions.Reflections.TypeMapper.GetMappableTypes``1
+  name: GetMappableTypes<TMappable>()
+  href: api/Hexalith.Extensions.Reflections.TypeMapper.html#Hexalith_Extensions_Reflections_TypeMapper_GetMappableTypes__1
+  commentId: M:Hexalith.Extensions.Reflections.TypeMapper.GetMappableTypes``1
+  name.vb: GetMappableTypes(Of TMappable)()
+  fullName: Hexalith.Extensions.Reflections.TypeMapper.GetMappableTypes<TMappable>()
+  fullName.vb: Hexalith.Extensions.Reflections.TypeMapper.GetMappableTypes(Of TMappable)()
+  nameWithType: TypeMapper.GetMappableTypes<TMappable>()
+  nameWithType.vb: TypeMapper.GetMappableTypes(Of TMappable)()
+- uid: Hexalith.Extensions.Reflections.TypeMapper.GetObject*
   name: GetObject
-  href: api/Hexalith.Extensions.Reflections.TypeMapper-1.html#Hexalith_Extensions_Reflections_TypeMapper_1_GetObject_
-  commentId: Overload:Hexalith.Extensions.Reflections.TypeMapper`1.GetObject
+  href: api/Hexalith.Extensions.Reflections.TypeMapper.html#Hexalith_Extensions_Reflections_TypeMapper_GetObject_
+  commentId: Overload:Hexalith.Extensions.Reflections.TypeMapper.GetObject
   isSpec: "True"
-  fullName: Hexalith.Extensions.Reflections.TypeMapper<TMapped>.GetObject
-  fullName.vb: Hexalith.Extensions.Reflections.TypeMapper(Of TMapped).GetObject
-  nameWithType: TypeMapper<TMapped>.GetObject
-  nameWithType.vb: TypeMapper(Of TMapped).GetObject
-- uid: Hexalith.Extensions.Reflections.TypeMapper`1.GetType(System.String)
-  name: GetType(String)
-  href: api/Hexalith.Extensions.Reflections.TypeMapper-1.html#Hexalith_Extensions_Reflections_TypeMapper_1_GetType_System_String_
-  commentId: M:Hexalith.Extensions.Reflections.TypeMapper`1.GetType(System.String)
-  fullName: Hexalith.Extensions.Reflections.TypeMapper<TMapped>.GetType(System.String)
-  fullName.vb: Hexalith.Extensions.Reflections.TypeMapper(Of TMapped).GetType(System.String)
-  nameWithType: TypeMapper<TMapped>.GetType(String)
-  nameWithType.vb: TypeMapper(Of TMapped).GetType(String)
-- uid: Hexalith.Extensions.Reflections.TypeMapper`1.GetType*
+  fullName: Hexalith.Extensions.Reflections.TypeMapper.GetObject
+  nameWithType: TypeMapper.GetObject
+- uid: Hexalith.Extensions.Reflections.TypeMapper.GetObject``1(System.String)
+  name: GetObject<TMappable>(String)
+  href: api/Hexalith.Extensions.Reflections.TypeMapper.html#Hexalith_Extensions_Reflections_TypeMapper_GetObject__1_System_String_
+  commentId: M:Hexalith.Extensions.Reflections.TypeMapper.GetObject``1(System.String)
+  name.vb: GetObject(Of TMappable)(String)
+  fullName: Hexalith.Extensions.Reflections.TypeMapper.GetObject<TMappable>(System.String)
+  fullName.vb: Hexalith.Extensions.Reflections.TypeMapper.GetObject(Of TMappable)(System.String)
+  nameWithType: TypeMapper.GetObject<TMappable>(String)
+  nameWithType.vb: TypeMapper.GetObject(Of TMappable)(String)
+- uid: Hexalith.Extensions.Reflections.TypeMapper.GetType*
   name: GetType
-  href: api/Hexalith.Extensions.Reflections.TypeMapper-1.html#Hexalith_Extensions_Reflections_TypeMapper_1_GetType_
-  commentId: Overload:Hexalith.Extensions.Reflections.TypeMapper`1.GetType
+  href: api/Hexalith.Extensions.Reflections.TypeMapper.html#Hexalith_Extensions_Reflections_TypeMapper_GetType_
+  commentId: Overload:Hexalith.Extensions.Reflections.TypeMapper.GetType
   isSpec: "True"
-  fullName: Hexalith.Extensions.Reflections.TypeMapper<TMapped>.GetType
-  fullName.vb: Hexalith.Extensions.Reflections.TypeMapper(Of TMapped).GetType
-  nameWithType: TypeMapper<TMapped>.GetType
-  nameWithType.vb: TypeMapper(Of TMapped).GetType
+  fullName: Hexalith.Extensions.Reflections.TypeMapper.GetType
+  nameWithType: TypeMapper.GetType
+- uid: Hexalith.Extensions.Reflections.TypeMapper.GetType``1(System.String)
+  name: GetType<TMappable>(String)
+  href: api/Hexalith.Extensions.Reflections.TypeMapper.html#Hexalith_Extensions_Reflections_TypeMapper_GetType__1_System_String_
+  commentId: M:Hexalith.Extensions.Reflections.TypeMapper.GetType``1(System.String)
+  name.vb: GetType(Of TMappable)(String)
+  fullName: Hexalith.Extensions.Reflections.TypeMapper.GetType<TMappable>(System.String)
+  fullName.vb: Hexalith.Extensions.Reflections.TypeMapper.GetType(Of TMappable)(System.String)
+  nameWithType: TypeMapper.GetType<TMappable>(String)
+  nameWithType.vb: TypeMapper.GetType(Of TMappable)(String)
 - uid: Hexalith.Extensions.Serialization
   name: Hexalith.Extensions.Serialization
   href: api/Hexalith.Extensions.Serialization.html

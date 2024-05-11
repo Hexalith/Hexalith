@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "D:/Fiveforty/InfraFiveforty/Hexalith/docs",
+  "source_base_path": "D:/Hexalith/Hexalith/docs",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -2397,7 +2397,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Domain.Aggregates.Aggregate.html",
-          "hash": "s53o9eIW81oy199KeK/ZdVW+JZxHZ4qufL0jMSe4e3o="
+          "hash": "zHHm8YnlDB9ylyriK1D04vZPhzWy4Kqq1xHr0adeDYk="
         }
       },
       "is_incremental": false,
@@ -3701,11 +3701,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Extensions.Reflections.TypeMapper-1.yml",
+      "source_relative_path": "api/Hexalith.Extensions.Reflections.TypeMapper.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Hexalith.Extensions.Reflections.TypeMapper-1.html",
-          "hash": "ZLo4gR9x5OIxpBOYstcXc+2Xdbss2hBjmjbUyFzBayg="
+          "relative_path": "api/Hexalith.Extensions.Reflections.TypeMapper.html",
+          "hash": "+8iy6yFJJBdoeGN9as5ivAtCZ5j7D6y+RHaoJoEkuaE="
         }
       },
       "is_incremental": false,
@@ -3717,7 +3717,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Extensions.Reflections.html",
-          "hash": "xR1rHXGnRI6ZYxQ65OqNnQjQKtIJjSqxkkWcmqtZf2M="
+          "hash": "C07fiWCSMrWHRK8wUC4HnSOWz3x3lBmMHZlfokQwsLY="
         }
       },
       "is_incremental": false,
@@ -5589,7 +5589,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "lISt8cwXDeipt7RC8XXJa1eKeMCPo5vsSTksIc8+Z8w="
+          "hash": "KICIdx0FqU4VNM6l8wjWUl3ad/7i40Eeq9bZYkui5Gg="
         }
       },
       "is_incremental": false,

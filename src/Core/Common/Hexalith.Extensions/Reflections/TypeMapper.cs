@@ -26,7 +26,7 @@ public static class TypeMapper
     public static bool CanCreateMappableType<TMappable>([NotNull] Type type)
     {
         return IsMappableConcreteClass<TMappable>(type)
-            && type.GetConstructor(BindingFlags.Public, []) != null;
+            && type.GetConstructor(Type.EmptyTypes)?.IsPublic == true;
     }
 
     /// <summary>
@@ -120,7 +120,13 @@ public static class TypeMapper
         where TMappable : IMappableType
         => GetObject<TMappable>(name).GetType();
 
-    private static bool IsMappableConcreteClass<TMappable>([NotNull] Type type)
+    /// <summary>
+    /// Determines whether the specified type is a mappable concrete class.
+    /// </summary>
+    /// <typeparam name="TMappable">The type of the mappable object.</typeparam>
+    /// <param name="type">The type.</param>
+    /// <returns>True if the specified type is a mappable concrete class; otherwise, false.</returns>
+    public static bool IsMappableConcreteClass<TMappable>([NotNull] Type type)
     {
         ArgumentNullException.ThrowIfNull(type);
         return type != typeof(TMappable)
