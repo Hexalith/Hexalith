@@ -12,7 +12,6 @@ using Hexalith.Infrastructure.ClientApp.Helpers;
 
 using HexalithApplication.Client;
 
-using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -44,9 +43,9 @@ public static class WebAssemblyClientHelper
             .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
         _ = services
             .AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>()
-            .CreateClient(ClientConstants.FrontApiName))
-            .AddSingleton<AuthenticationStateProvider, PersistentAuthenticationStateProvider>();
+            .CreateClient(ClientConstants.FrontApiName));
 
+        // .AddSingleton<AuthenticationStateProvider, PersistentAuthenticationStateProvider>();
         return services;
     }
 

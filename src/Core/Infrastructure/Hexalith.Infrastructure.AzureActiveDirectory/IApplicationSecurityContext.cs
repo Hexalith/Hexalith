@@ -4,7 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Infrastructure.Security.Abstractions;
+namespace Hexalith.Infrastructure.AzureActiveDirectory;
 
 /// <summary>
 /// Interface for the application security context.

@@ -83,7 +83,6 @@ Implements the <a class="xref" href="Hexalith.Application.Commands.BaseCommand.h
     <div class="level1"><a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html">BaseMessage</a></div>
     <div class="level2"><a class="xref" href="Hexalith.Application.Commands.BaseCommand.html">BaseCommand</a></div>
     <div class="level3"><span class="xref">PartitionedCommand</span></div>
-      <div class="level4"><a class="xref" href="Hexalith.Application.ExternalSystems.Commands.ExternalSystemReferenceCommand.html">ExternalSystemReferenceCommand</a></div>
       <div class="level4"><a class="xref" href="Hexalith.Application.Organizations.Commands.EntityCommand.html">EntityCommand</a></div>
   </div>
   <div class="implements">
@@ -112,6 +111,9 @@ Implements the <a class="xref" href="Hexalith.Application.Commands.BaseCommand.h
     </div>
     <div>
       <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_MinorVersion">BaseMessage.MinorVersion</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_TypeMapName">BaseMessage.TypeMapName</a>
     </div>
     <div>
       <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_TypeName">BaseMessage.TypeName</a>
@@ -262,7 +264,8 @@ public string PartitionId { get; set; }</code></pre>
   </span>
   <a id="Hexalith_Application_Organizations_Commands_PartitionedCommand_DefaultAggregateId_" data-uid="Hexalith.Application.Organizations.Commands.PartitionedCommand.DefaultAggregateId*"></a>
   <h4 id="Hexalith_Application_Organizations_Commands_PartitionedCommand_DefaultAggregateId" data-uid="Hexalith.Application.Organizations.Commands.PartitionedCommand.DefaultAggregateId">DefaultAggregateId()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Get the aggregate identifier.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -279,7 +282,8 @@ public string PartitionId { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>The identifier.</p>
+</td>
       </tr>
     </tbody>
   </table>

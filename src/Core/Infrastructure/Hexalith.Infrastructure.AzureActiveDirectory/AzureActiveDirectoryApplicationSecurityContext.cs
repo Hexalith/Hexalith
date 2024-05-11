@@ -7,7 +7,6 @@
 namespace Hexalith.Infrastructure.AzureActiveDirectory;
 
 using Hexalith.Infrastructure.AzureActiveDirectory.Configurations;
-using Hexalith.Infrastructure.Security.Abstractions;
 
 using Microsoft.Extensions.Logging;
 using Microsoft.Identity.Client;
