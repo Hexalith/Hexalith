@@ -10,6 +10,5 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\..\Application\Hexalith.Application.Abstractions\Hexalith.Application.Abstractions.csproj" />
-	  <ProjectReference Include="..\..\Application\Hexalith.Application.Geolocations\Hexalith.Application.Geolocations.csproj" />
 	</ItemGroup>
 </Project>
