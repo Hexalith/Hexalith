@@ -13,6 +13,5 @@
     <ProjectReference Include="..\..\Common\Hexalith.Extensions\Hexalith.Extensions.csproj" />
     <ProjectReference Include="..\..\Domain\Hexalith.Domain.Abstractions\Hexalith.Domain.Abstractions.csproj" />
     <ProjectReference Include="..\..\Domain\Hexalith.Domain.ConversationThreads\Hexalith.Domain.ConversationThreads.csproj" />
-    <ProjectReference Include="..\..\Domain\Hexalith.Domain.Parties\Hexalith.Domain.Parties.csproj" />
   </ItemGroup>
 </Project>

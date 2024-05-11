@@ -16,7 +16,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\Application\Hexalith.Application.Geolocations\Hexalith.Application.Geolocations.csproj" />
 		<ProjectReference Include="..\..\Application\Hexalith.Application.Organizations\Hexalith.Application.Organizations.csproj" />
-		<ProjectReference Include="..\..\Domain\Hexalith.Domain.Users\Hexalith.Domain.Users.csproj" />
 		<ProjectReference Include="..\Hexalith.Infrastructure.Emails.SendGrid\Hexalith.Infrastructure.Emails.SendGrid.csproj" />
 		<ProjectReference Include="..\Hexalith.Infrastructure.GoogleMaps\Hexalith.Infrastructure.GoogleMaps.csproj" />
 		<ProjectReference Include="..\Hexalith.Infrastructure.Security.Abstractions\Hexalith.Infrastructure.Security.Abstractions.csproj" />
