@@ -140,10 +140,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.Web
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.WebApis.Abstractions", "src\Core\Infrastructure\Hexalith.Infrastructure.WebApis.Abstractions\Hexalith.Infrastructure.WebApis.Abstractions.csproj", "{2CF8A627-8BB7-4762-ABE7-51B9A3560774}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Application.Geolocations", "src\Core\Application\Hexalith.Application.Geolocations\Hexalith.Application.Geolocations.csproj", "{F84318FB-8A2D-4164-A562-BD8B32D1C294}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Domain.Geolocations", "src\Core\Domain\Hexalith.Domain.Geolocations\Hexalith.Domain.Geolocations.csproj", "{63090FD3-DE6F-4A5B-986F-A4FDD8E0F06F}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.ClientAppOnServer", "src\Core\Infrastructure\Hexalith.Infrastructure.ClientAppOnServer\Hexalith.Infrastructure.ClientAppOnServer.csproj", "{E0F6C228-71C2-4610-B8EA-2A4DCA9DDE2C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.ClientApp", "src\Core\Infrastructure\Hexalith.Infrastructure.ClientApp\Hexalith.Infrastructure.ClientApp.csproj", "{85FA9E9F-A3CC-4DF9-94BA-CB0011954DC3}"
@@ -304,14 +300,6 @@ Global
 		{2CF8A627-8BB7-4762-ABE7-51B9A3560774}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CF8A627-8BB7-4762-ABE7-51B9A3560774}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CF8A627-8BB7-4762-ABE7-51B9A3560774}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F84318FB-8A2D-4164-A562-BD8B32D1C294}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F84318FB-8A2D-4164-A562-BD8B32D1C294}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F84318FB-8A2D-4164-A562-BD8B32D1C294}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F84318FB-8A2D-4164-A562-BD8B32D1C294}.Release|Any CPU.Build.0 = Release|Any CPU
-		{63090FD3-DE6F-4A5B-986F-A4FDD8E0F06F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{63090FD3-DE6F-4A5B-986F-A4FDD8E0F06F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{63090FD3-DE6F-4A5B-986F-A4FDD8E0F06F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{63090FD3-DE6F-4A5B-986F-A4FDD8E0F06F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E0F6C228-71C2-4610-B8EA-2A4DCA9DDE2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E0F6C228-71C2-4610-B8EA-2A4DCA9DDE2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0F6C228-71C2-4610-B8EA-2A4DCA9DDE2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -409,8 +397,6 @@ Global
 		{93BDAAEA-DCF3-4A19-844B-7B699DF52EC7} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{2EA76081-D72D-4AE9-A10F-094FDC57FA44} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{2CF8A627-8BB7-4762-ABE7-51B9A3560774} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
-		{F84318FB-8A2D-4164-A562-BD8B32D1C294} = {AA983AFF-9CBC-4F2A-98E3-3CACA5039C61}
-		{63090FD3-DE6F-4A5B-986F-A4FDD8E0F06F} = {5A9735A3-CEE9-4E50-B2FD-54F0BF402002}
 		{E0F6C228-71C2-4610-B8EA-2A4DCA9DDE2C} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{85FA9E9F-A3CC-4DF9-94BA-CB0011954DC3} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{3B624A74-5F48-41C4-A1FD-043C6604C61B} = {AA983AFF-9CBC-4F2A-98E3-3CACA5039C61}
