@@ -18,11 +18,22 @@ using Microsoft.AspNetCore.Mvc;
 /// </summary>
 /// <typeparam name="TAggregate">The type of the aggregate.</typeparam>
 [ApiController]
-[Route("aggregate/maintenance")]
-public abstract class AggregateMaintenanceController<TAggregate>(IAggregateMaintenance<TAggregate> aggregateMaintenance)
-    : ControllerBase
+[Route("api/maintenance")]
+public class AggregateMaintenanceController<TAggregate> : ControllerBase
     where TAggregate : IAggregate, new()
 {
+    private readonly IAggregateMaintenance<TAggregate> _aggregateMaintenance;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="AggregateMaintenanceController{TAggregate}"/> class.
+    /// </summary>
+    /// <param name="aggregateMaintenance">Aggregate maintenance service.</param>
+    protected AggregateMaintenanceController(IAggregateMaintenance<TAggregate> aggregateMaintenance)
+    {
+        ArgumentNullException.ThrowIfNull(_aggregateMaintenance);
+        _aggregateMaintenance = aggregateMaintenance;
+    }
+
     /// <summary>
     /// Clears the commands of all aggregates.
     /// </summary>
@@ -31,7 +42,7 @@ public abstract class AggregateMaintenanceController<TAggregate>(IAggregateMaint
     [HttpPost("commands/clear")]
     public async Task<ActionResult> ClearAllCommandsAsync(CancellationToken cancellationToken)
     {
-        await aggregateMaintenance.ClearAllCommandsAsync(cancellationToken).ConfigureAwait(false);
+        await _aggregateMaintenance.ClearAllCommandsAsync(cancellationToken).ConfigureAwait(false);
         return Ok();
     }
 
@@ -49,7 +60,7 @@ public abstract class AggregateMaintenanceController<TAggregate>(IAggregateMaint
             return BadRequest("AggregateId is required.");
         }
 
-        await aggregateMaintenance.ClearCommandsAsync(aggregateId, cancellationToken).ConfigureAwait(false);
+        await _aggregateMaintenance.ClearCommandsAsync(aggregateId, cancellationToken).ConfigureAwait(false);
         return Ok();
     }
 
@@ -61,7 +72,7 @@ public abstract class AggregateMaintenanceController<TAggregate>(IAggregateMaint
     [HttpPost("snapshot")]
     public async Task<ActionResult> SendAllSnapshotsAsync(CancellationToken cancellationToken)
     {
-        await aggregateMaintenance.SendAllSnapshotsAsync(cancellationToken).ConfigureAwait(false);
+        await _aggregateMaintenance.SendAllSnapshotsAsync(cancellationToken).ConfigureAwait(false);
         return Ok();
     }
 
@@ -79,7 +90,7 @@ public abstract class AggregateMaintenanceController<TAggregate>(IAggregateMaint
             return BadRequest("AggregateId is required.");
         }
 
-        await aggregateMaintenance.SendSnapshotAsync(aggregateId, cancellationToken).ConfigureAwait(false);
+        await _aggregateMaintenance.SendSnapshotAsync(aggregateId, cancellationToken).ConfigureAwait(false);
         return Ok();
     }
 }
