@@ -14,13 +14,12 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Organizations.Commands;
+namespace Hexalith.Application.Commands;
 
 using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Application.Commands;
 using Hexalith.Extensions;
 
 /// <summary>
@@ -30,7 +29,7 @@ using Hexalith.Extensions;
 /// <seealso cref="BaseCommand" />
 [DataContract]
 [Serializable]
-public abstract class PartitionedCommand : BaseCommand
+public class PartitionedCommand : BaseCommand
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="PartitionedCommand" /> class.

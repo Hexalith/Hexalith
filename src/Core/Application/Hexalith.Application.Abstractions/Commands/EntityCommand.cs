@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Organizations.Commands;
+namespace Hexalith.Application.Commands;
 
 using System;
 using System.Runtime.Serialization;
@@ -28,8 +28,7 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="Domain.Commands.PartitionedCommand" />
 [DataContract]
-[Serializable]
-public abstract class EntityCommand : PartitionedCommand
+public abstract class EntityCommand : BaseCommand
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="EntityCommand" /> class.
@@ -39,8 +38,8 @@ public abstract class EntityCommand : PartitionedCommand
     /// <param name="id">The identifier.</param>
     [JsonConstructor]
     protected EntityCommand(string partitionId, string originId, string id)
-        : base(partitionId)
     {
+        PartitionId = partitionId;
         OriginId = originId;
         Id = id;
     }
@@ -49,7 +48,7 @@ public abstract class EntityCommand : PartitionedCommand
     /// Initializes a new instance of the <see cref="EntityCommand" /> class.
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    protected EntityCommand() => OriginId = Id = string.Empty;
+    protected EntityCommand() => PartitionId = OriginId = Id = string.Empty;
 
     /// <summary>
     /// Gets or sets the identifier.
@@ -66,6 +65,14 @@ public abstract class EntityCommand : PartitionedCommand
     [DataMember(Order = 2)]
     [JsonPropertyOrder(2)]
     public string OriginId { get; set; }
+
+    /// <summary>
+    /// Gets or sets the partition identifier.
+    /// </summary>
+    /// <value>The partition identifier.</value>
+    [DataMember(Order = 1)]
+    [JsonPropertyOrder(1)]
+    public string PartitionId { get; set; }
 
     /// <inheritdoc/>
     protected override string DefaultAggregateId()

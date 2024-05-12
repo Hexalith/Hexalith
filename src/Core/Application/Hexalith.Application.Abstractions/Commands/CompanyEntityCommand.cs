@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Organizations.Commands;
+namespace Hexalith.Application.Commands;
 
 using System;
 using System.Runtime.Serialization;
@@ -23,13 +23,10 @@ using System.Text.Json.Serialization;
 using Hexalith.Extensions;
 
 /// <summary>
-/// Class CompanyEntityCommand.
-/// Implements the <see cref="Domain.Commands.CompanyCommand" />.
+/// Company entity command base class.
 /// </summary>
-/// <seealso cref="Domain.Commands.CompanyCommand" />
 [DataContract]
-[Serializable]
-public abstract class CompanyEntityCommand : EntityCommand
+public class CompanyEntityCommand : BaseCommand
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="CompanyEntityCommand"/> class.
@@ -40,14 +37,18 @@ public abstract class CompanyEntityCommand : EntityCommand
     /// <param name="id">The identifier.</param>
     [JsonConstructor]
     protected CompanyEntityCommand(string partitionId, string companyId, string originId, string id)
-        : base(partitionId, originId, id)
-            => CompanyId = companyId;
+    {
+        PartitionId = partitionId;
+        OriginId = originId;
+        Id = id;
+        CompanyId = companyId;
+    }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CompanyEntityCommand"/> class.
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    protected CompanyEntityCommand() => CompanyId = string.Empty;
+    protected CompanyEntityCommand() => PartitionId = OriginId = Id = CompanyId = string.Empty;
 
     /// <summary>
     /// Gets or sets the company identifier.
@@ -56,6 +57,30 @@ public abstract class CompanyEntityCommand : EntityCommand
     [DataMember(Order = 4)]
     [JsonPropertyOrder(4)]
     public string CompanyId { get; set; }
+
+    /// <summary>
+    /// Gets or sets the identifier.
+    /// </summary>
+    /// <value>The identifier.</value>
+    [DataMember(Order = 3)]
+    [JsonPropertyOrder(3)]
+    public string Id { get; set; }
+
+    /// <summary>
+    /// Gets or sets the company identifier.
+    /// </summary>
+    /// <value>The company identifier.</value>
+    [DataMember(Order = 2)]
+    [JsonPropertyOrder(2)]
+    public string OriginId { get; set; }
+
+    /// <summary>
+    /// Gets or sets the partition identifier.
+    /// </summary>
+    /// <value>The partition identifier.</value>
+    [DataMember(Order = 1)]
+    [JsonPropertyOrder(1)]
+    public string PartitionId { get; set; }
 
     /// <inheritdoc/>
     protected override string DefaultAggregateId()
