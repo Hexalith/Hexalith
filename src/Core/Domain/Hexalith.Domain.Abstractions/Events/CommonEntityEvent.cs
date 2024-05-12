@@ -29,7 +29,7 @@ using Hexalith.Extensions;
 /// <seealso cref="PartitionedEvent" />
 [DataContract]
 [Serializable]
-public abstract class CommonEntityEvent : PartitionedEvent
+public class CommonEntityEvent : BaseEvent
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="CommonEntityEvent" /> class.
@@ -39,8 +39,8 @@ public abstract class CommonEntityEvent : PartitionedEvent
     /// <param name="id">The identifier.</param>
     [JsonConstructor]
     protected CommonEntityEvent(string partitionId, string originId, string id)
-        : base(partitionId)
     {
+        PartitionId = partitionId;
         OriginId = originId;
         Id = id;
     }
@@ -49,7 +49,7 @@ public abstract class CommonEntityEvent : PartitionedEvent
     /// Initializes a new instance of the <see cref="CommonEntityEvent" /> class.
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    protected CommonEntityEvent() => OriginId = Id = string.Empty;
+    protected CommonEntityEvent() => PartitionId = OriginId = Id = string.Empty;
 
     /// <summary>
     /// Gets or sets the identifier.
@@ -66,4 +66,12 @@ public abstract class CommonEntityEvent : PartitionedEvent
     [DataMember(Order = 2)]
     [JsonPropertyOrder(2)]
     public string OriginId { get; set; }
+
+    /// <summary>
+    /// Gets or sets the partition identifier.
+    /// </summary>
+    /// <value>The partition identifier.</value>
+    [DataMember(Order = 1)]
+    [JsonPropertyOrder(1)]
+    public string PartitionId { get; set; }
 }

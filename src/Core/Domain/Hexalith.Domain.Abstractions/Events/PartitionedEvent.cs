@@ -28,8 +28,7 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="BaseEvent" />
 [DataContract]
-[Serializable]
-public abstract class PartitionedEvent : BaseEvent
+public class PartitionedEvent : BaseEvent
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="PartitionedEvent" /> class.
