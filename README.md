@@ -11,8 +11,7 @@ Application blocks based on Dapr
   <img alt="Coverity Scan Build Status"
        src="https://scan.coverity.com/projects/27051/badge.svg"/>
 </a>
-
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/11d3f1af6b0f4d168552c2626d588294)](https://www.codacy.com/gh/Hexalith/Hexalith/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Hexalith/Hexalith&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/11d3f1af6b0f4d168552c2626d588294)](https://app.codacy.com/gh/Hexalith/Hexalith/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith)
