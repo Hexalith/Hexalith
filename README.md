@@ -35,31 +35,31 @@ Stable (version tag):
 
 ## Microservices
 
-### [Hexalith.ExternalSystems](https://github.com/Hexalith/Hexalith/Hexalith.ExternalSystems)
+### [Hexalith.ExternalSystems](https://github.com/Hexalith/Hexalith.ExternalSystems)
 Hexalith external systems microservice
 <br/>
 [![Build status](https://github.com/Hexalith/Hexalith.ExternalSystems/actions/workflows/hexalith_build.yml/badge.svg)](https://github.com/Hexalith/Hexalith.ExternalSystems/actions)
 [![NuGet](https://img.shields.io/nuget/v/Hexalith.ExternalSystems.Domain.Abstractions.svg)](https://www.nuget.org/packages/Hexalith.ExternalSystems.Domain.Abstractions)
 
-### [Hexalith.Parties](https://github.com/Hexalith/Hexalith/Hexalith.Parties)
+### [Hexalith.Parties](https://github.com/Hexalith/Hexalith.Parties)
 Hexalith parties microservice
 <br/>
 [![Build status](https://github.com/Hexalith/Hexalith.Parties/actions/workflows/hexalith_build.yml/badge.svg)](https://github.com/Hexalith/Hexalith.Parties/actions)
 [![NuGet](https://img.shields.io/nuget/v/Hexalith.Parties.Domain.Abstractions.svg)](https://www.nuget.org/packages/Hexalith.Parties.Domain.Abstractions)
 
-### [Hexalith.Inventories](https://github.com/Hexalith/Hexalith/Hexalith.Inventories)
+### [Hexalith.Inventories](https://github.com/Hexalith/Hexalith.Inventories)
 Hexalith inventories microservice
 <br/>
 [![Build status](https://github.com/Hexalith/Hexalith.Inventories/actions/workflows/hexalith_build.yml/badge.svg)](https://github.com/Hexalith/Hexalith.Inventories/actions)
 [![NuGet](https://img.shields.io/nuget/v/Hexalith.Inventories.Domain.Abstractions.svg)](https://www.nuget.org/packages/Hexalith.Inventories.Domain.Abstractions)
 
-### [Hexalith.Sales](https://github.com/Hexalith/Hexalith/Hexalith.Sales)
+### [Hexalith.Sales](https://github.com/Hexalith/Hexalith.Sales)
 Hexalith sales microservice
 <br/>
 [![Build status](https://github.com/Hexalith/Hexalith.Sales/actions/workflows/hexalith_build.yml/badge.svg)](https://github.com/Hexalith/Hexalith.Sales/actions)
 [![NuGet](https://img.shields.io/nuget/v/Hexalith.Sales.Domain.Abstractions.svg)](https://www.nuget.org/packages/Hexalith.Sales.Domain.Abstractions)
 
-### [Hexalith.Dynamics365Finance](https://github.com/Hexalith/Hexalith/Hexalith.Dynamics365Finance)
+### [Hexalith.Dynamics365Finance](https://github.com/Hexalith/Hexalith.Dynamics365Finance)
 Hexalith Dynamics 365 Finance and Operations connector microservice
 <br/>
 [![Build status](https://github.com/Hexalith/Hexalith.Dynamics365Finance/actions/workflows/hexalith_build.yml/badge.svg)](https://github.com/Hexalith/Hexalith.Dynamics365Finance/actions)
