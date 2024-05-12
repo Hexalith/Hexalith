@@ -25,13 +25,8 @@ using Hexalith.Application.States;
 using Hexalith.Extensions.Common;
 
 /// <summary>
-/// Class MemoryMessageBus.
-/// Implements the <see cref="IMessageBus{TMessage, TMetadata}" />.
+/// Memory Notification Bus.
 /// </summary>
-/// <seealso cref="IMessageBus{TMessage, TMetadata}" />
-/// <remarks>
-/// Initializes a new instance of the <see cref="MemoryNotificationBus"/> class.
-/// </remarks>
 /// <param name="dateTimeService">The date time service.</param>
 public class MemoryNotificationBus(IDateTimeService dateTimeService) : INotificationBus
 {
@@ -59,17 +54,17 @@ public class MemoryNotificationBus(IDateTimeService dateTimeService) : INotifica
     }
 
     /// <inheritdoc/>
-    public async Task PublishAsync(BaseNotification message, BaseMetadata metadata, CancellationToken cancellationToken)
+    public async Task PublishAsync(BaseNotification notification, BaseMetadata metadata, CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(message);
-        await PublishAsync(new NotificationState(_dateTimeService.UtcNow, message, metadata), cancellationToken).ConfigureAwait(false);
+        ArgumentNullException.ThrowIfNull(notification);
+        await PublishAsync(new NotificationState(_dateTimeService.UtcNow, notification, metadata), cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public async Task PublishAsync(NotificationState envelope, CancellationToken cancellationToken)
+    public async Task PublishAsync(NotificationState notificationState, CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(envelope);
-        _stream.Add(envelope);
+        ArgumentNullException.ThrowIfNull(notificationState);
+        _stream.Add(notificationState);
         await Task.CompletedTask.ConfigureAwait(false);
     }
 }

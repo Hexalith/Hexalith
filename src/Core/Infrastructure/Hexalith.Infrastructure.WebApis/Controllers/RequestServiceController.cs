@@ -67,6 +67,7 @@ public partial class RequestServiceController : ControllerBase
             .PublishAsync(request, CancellationToken.None)
             .ConfigureAwait(false);
         LogRequestSubmittedDebugInformation(
+            _logger,
             request.Metadata.Message.Id,
             request.Metadata.Context.CorrelationId,
             request.Message.TypeName,
@@ -80,5 +81,5 @@ public partial class RequestServiceController : ControllerBase
         LogLevel.Debug,
         "Request {MessageType} submitted. MessageId={MessageId}; CorrelationId={CorrelationId}; AggregateName={AggregateName}; AggregateId={AggregateId}.",
         EventName = "RequestSubmitted")]
-    private partial void LogRequestSubmittedDebugInformation(string messageId, string correlationId, string messageType, string aggregateName, string aggregateId);
+    private static partial void LogRequestSubmittedDebugInformation(ILogger logger, string messageId, string correlationId, string messageType, string aggregateName, string aggregateId);
 }

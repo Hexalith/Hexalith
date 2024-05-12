@@ -19,7 +19,6 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Dapr.Actors;
 using Dapr.Actors.Runtime;
 
 using Hexalith.Application.Aggregates;
@@ -40,12 +39,6 @@ using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.Infrastructure.DaprRuntime.States;
 
-using Microsoft.Extensions.Logging;
-
-/// <summary>
-/// Logistics partner catalog item aggregate actor interface <see cref="BspkSalesInvoice" />.
-/// Extends the <see cref="IActor" />.
-/// </summary>
 public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregateActor
 {
     private readonly IAggregateFactory _aggregateFactory;
@@ -141,36 +134,6 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
     /// <param name="aggregateName">Name of the aggregate.</param>
     /// <returns>string.</returns>
     public static string GetAggregateActorName(string aggregateName) => aggregateName + nameof(Aggregate);
-
-    [LoggerMessage(
-                    EventId = 2,
-                Level = LogLevel.Information,
-                Message = "Accepted command {CommandType} ({CommandId}) for aggregate {AggregateName}:{AggregateId}.")]
-    public static partial void LogAcceptedCommandInformation(ILogger logger, string commandType, string commandId, string aggregateName, string aggregateId);
-
-    [LoggerMessage(
-                EventId = 3,
-                Level = LogLevel.Warning,
-                Message = "The command envelope submitted to {ActorType} ({ActorId}), has no commands to process.")]
-    public static partial void LogNoCommandsToSubmitWarning(ILogger logger, string actorId, string actorType);
-
-    [LoggerMessage(
-                    EventId = 4,
-                Level = LogLevel.Information,
-                Message = "Processed command {CommandType} ({CommandId}) for aggregate {AggregateName}:{AggregateId}.")]
-    public static partial void LogProcessedCommandInformation(ILogger logger, string commandType, string commandId, string aggregateName, string aggregateId);
-
-    [LoggerMessage(
-            EventId = 2,
-            Level = LogLevel.Error,
-            Message = "Actor {ActorType} ({ActorId}) failed processing {CommandProcessed}/{CommandCount} command in a timer or reminder callback. Resetting state.")]
-    public static partial void LogProcessingCallbackError(ILogger logger, Exception ex, string actorId, string actorType, long commandCount, long commandProcessed);
-
-    [LoggerMessage(
-                EventId = 1,
-            Level = LogLevel.Information,
-            Message = "Actor {ActorType} ({ActorId}) is processing command {CurrentCommandProcessed} on a total of {CommandCount}")]
-    public static partial void LogProcessingCommandsInformation(ILogger logger, string actorId, string actorType, long commandCount, long currentCommandProcessed);
 
     /// <inheritdoc/>
     public async Task ClearCommandsAsync()

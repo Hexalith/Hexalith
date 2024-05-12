@@ -6,33 +6,39 @@
 
 namespace Hexalith.Infrastructure.WebApis;
 
+using System.Diagnostics.CodeAnalysis;
+
 /// <summary>
 /// Represents the routes for the services.
 /// </summary>
+[SuppressMessage(
+    "Critical Code Smell",
+    "S2339:Public constant members should not be used",
+    Justification = "Attribute values need constant values")]
 public static class ServicesRoutes
 {
     /// <summary>
     /// Represents the route for the command service.
     /// </summary>
-    public const string CommandService = "/Command";
-
-    /// <summary>
-    /// Represents the route for submitting a command.
-    /// </summary>
-    public const string PublishCommand = "/Command/Publish";
+    public const string CommandService = "api/command";
 
     /// <summary>
     /// Represents the route for publishing a request.
     /// </summary>
-    public const string PublishRequest = "/Request/Publish";
+    public const string PublishRequest = "publish";
 
     /// <summary>
     /// Represents the route for the request service.
     /// </summary>
-    public const string RequestService = "/Request";
+    public const string RequestService = "api/request";
+
+    /// <summary>
+    /// Represents the route for submitting a command.
+    /// </summary>
+    public const string SubmitCommand = "submit";
 
     /// <summary>
     /// Represents the route for submitting a request.
     /// </summary>
-    public const string SubmitRequest = "/Request/Submit";
+    public const string SubmitRequest = "submit";
 }

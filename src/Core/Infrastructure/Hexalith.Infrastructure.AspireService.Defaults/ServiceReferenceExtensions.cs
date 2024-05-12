@@ -1,4 +1,4 @@
-﻿// <copyright file="ServiceReferenceExtension.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="ServiceReferenceExtensions.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -60,7 +60,7 @@ public static class ServiceReferenceExtensions
     /// <param name="failureStatus">The <see cref="HealthStatus"/> that should be reported if the health check fails. Defaults to <see cref="HealthStatus.Unhealthy"/>.</param>
     /// <returns>An <see cref="IHttpClientBuilder"/> that can be used to configure the client.</returns>
     /// <exception cref="ArgumentException">Thrown when <paramref name="address"/> is not a valid URI value.</exception>
-    public static IHttpClientBuilder AddGrpcServiceReference<TClient>(this IServiceCollection services, string address, string? healthCheckName = null, HealthStatus failureStatus = default)
+    public static IHttpClientBuilder AddGrpcServiceReference<TClient>(this IServiceCollection services, string address, string? healthCheckName, HealthStatus failureStatus)
         where TClient : class
     {
         ArgumentNullException.ThrowIfNull(services);
@@ -115,7 +115,12 @@ public static class ServiceReferenceExtensions
     /// <param name="failureStatus">The <see cref="HealthStatus"/> that should be reported if the health check fails. Defaults to <see cref="HealthStatus.Unhealthy"/>.</param>
     /// <returns>An <see cref="IHttpClientBuilder"/> that can be used to configure the client.</returns>
     /// <exception cref="ArgumentException">Thrown when <paramref name="baseAddress"/> or <paramref name="healthRelativePath"/> are not valid URI values.</exception>
-    public static IHttpClientBuilder AddHttpServiceReference<TClient>(this IServiceCollection services, string baseAddress, string healthRelativePath, string? healthCheckName = default, HealthStatus failureStatus = default)
+    public static IHttpClientBuilder AddHttpServiceReference<TClient>(
+        this IServiceCollection services,
+        string baseAddress,
+        string healthRelativePath,
+        string? healthCheckName,
+        HealthStatus failureStatus)
         where TClient : class
     {
         ArgumentNullException.ThrowIfNull(services);
@@ -160,9 +165,9 @@ public static class ServiceReferenceExtensions
             return response.Status switch
             {
                 HealthCheckResponse.Types.ServingStatus.Serving => HealthCheckResult.Healthy(),
-                HealthCheckResponse.Types.ServingStatus.Unknown => throw new NotImplementedException(),
-                HealthCheckResponse.Types.ServingStatus.NotServing => throw new NotImplementedException(),
-                HealthCheckResponse.Types.ServingStatus.ServiceUnknown => throw new NotImplementedException(),
+                HealthCheckResponse.Types.ServingStatus.Unknown => throw new NotSupportedException(),
+                HealthCheckResponse.Types.ServingStatus.NotServing => throw new NotSupportedException(),
+                HealthCheckResponse.Types.ServingStatus.ServiceUnknown => throw new NotSupportedException(),
                 _ => HealthCheckResult.Unhealthy(),
             };
         }

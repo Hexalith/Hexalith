@@ -13,11 +13,9 @@ using Hexalith.Application.Commands;
 using Hexalith.Domain.Events;
 
 /// <summary>
-/// Class EventHandler.
-/// Implements the <see cref="Abstractions.Events.IEventHandler{TEvent}" />.
+/// Integration event handler base class.
 /// </summary>
 /// <typeparam name="TEvent">The type of the t event.</typeparam>
-/// <seealso cref="Abstractions.Events.IEventHandler{TEvent}" />
 public abstract class IntegrationEventHandlerBase<TEvent> : IIntegrationEventHandler<TEvent>
     where TEvent : IEvent
 {
@@ -25,7 +23,8 @@ public abstract class IntegrationEventHandlerBase<TEvent> : IIntegrationEventHan
     public abstract Task<IEnumerable<BaseCommand>> ApplyAsync(TEvent baseEvent, CancellationToken cancellationToken);
 
     /// <inheritdoc/>
-    Task<IEnumerable<BaseCommand>> IIntegrationEventHandler.ApplyAsync(IEvent @event, CancellationToken cancellationToken) => ApplyAsync(ToEvent(@event), cancellationToken);
+    Task<IEnumerable<BaseCommand>> IIntegrationEventHandler.ApplyAsync(IEvent baseEvent, CancellationToken cancellationToken)
+        => ApplyAsync(ToEvent(baseEvent), cancellationToken);
 
     /// <summary>
     /// Converts to event.

@@ -1,18 +1,8 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Application
-// Author           : Jérôme Piquot
-// Created          : 02-04-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 02-04-2023
-// ***********************************************************************
-// <copyright file="MemoryEventBus.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="MemoryEventBus.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Application.Events;
 
@@ -27,13 +17,8 @@ using Hexalith.Domain.Events;
 using Hexalith.Extensions.Common;
 
 /// <summary>
-/// Class MemoryMessageBus.
-/// Implements the <see cref="IMessageBus{TMessage, TMetadata}" />.
+/// Memory Event Bus.
 /// </summary>
-/// <seealso cref="IMessageBus{TMessage, TMetadata}" />
-/// <remarks>
-/// Initializes a new instance of the <see cref="MemoryEventBus"/> class.
-/// </remarks>
 /// <param name="dateTimeService">The date time service.</param>
 public class MemoryEventBus(IDateTimeService dateTimeService) : IEventBus
 {
@@ -61,11 +46,11 @@ public class MemoryEventBus(IDateTimeService dateTimeService) : IEventBus
     }
 
     /// <inheritdoc/>
-    public async Task PublishAsync(BaseEvent message, BaseMetadata metadata, CancellationToken cancellationToken)
+    public async Task PublishAsync(BaseEvent baseEvent, BaseMetadata metadata, CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(message);
+        ArgumentNullException.ThrowIfNull(baseEvent);
         ArgumentNullException.ThrowIfNull(metadata);
-        await PublishAsync(new EventState(_dateTimeService.UtcNow, message, metadata), cancellationToken).ConfigureAwait(false);
+        await PublishAsync(new EventState(_dateTimeService.UtcNow, baseEvent, metadata), cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>

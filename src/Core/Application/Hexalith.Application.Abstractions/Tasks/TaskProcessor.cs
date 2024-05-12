@@ -143,7 +143,10 @@ public class TaskProcessor : ITaskProcessor
     {
         get => Ended ? null : ResiliencyPolicy.NextRetryTime(History.CreatedDate, Failure?.Count ?? 0);
         [Obsolete("Setter used only for serialization purposes.", false)]
-        set { }
+        set
+        {
+            // Method intentionally left empty.
+        }
     }
 
     /// <summary>
@@ -156,7 +159,10 @@ public class TaskProcessor : ITaskProcessor
     {
         get => ResiliencyPolicy.EvaluatePeriod(Failure?.Count ?? 0);
         [Obsolete("Setter used only for serialization purposes.", false)]
-        set { }
+        set
+        {
+            // Method intentionally left empty.
+        }
     }
 
     /// <inheritdoc/>

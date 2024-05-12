@@ -43,7 +43,7 @@ public partial class CommandServiceController : ControllerBase
     /// </summary>
     /// <param name="command">The command to publish.</param>
     /// <returns>A <see cref="Task{TResult}"/> representing the result of the asynchronous operation.</returns>
-    [HttpPost(ServicesRoutes.PublishCommand)]
+    [HttpPost(ServicesRoutes.SubmitCommand)]
     public async Task<ActionResult> PublishCommandAsync(CommandState command)
     {
         if (command is null)
@@ -66,6 +66,7 @@ public partial class CommandServiceController : ControllerBase
             .ConfigureAwait(false);
 
         LogCommandSubmittedDebugInformation(
+            _logger,
             command.Metadata.Message.Id,
             command.Metadata.Context.CorrelationId,
             command.Message.TypeName,
@@ -80,5 +81,5 @@ public partial class CommandServiceController : ControllerBase
       LogLevel.Debug,
       "Command {MessageType} on aggregate {AggregateName} with identifier {AggregateId} submitted. MessageId={MessageId}; CorrelationId={CorrelationId}.",
       EventName = "CommandSubmitted")]
-    private partial void LogCommandSubmittedDebugInformation(string messageId, string correlationId, string messageType, string aggregateName, string aggregateId);
+    private static partial void LogCommandSubmittedDebugInformation(ILogger logger, string messageId, string correlationId, string messageType, string aggregateName, string aggregateId);
 }

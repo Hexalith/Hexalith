@@ -1,18 +1,8 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Application
-// Author           : Jérôme Piquot
-// Created          : 02-04-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 05-01-2023
-// ***********************************************************************
-// <copyright file="ProjectionStateManager.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="ProjectionStateManager.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Application.States;
 
@@ -29,10 +19,8 @@ using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 
 /// <summary>
-/// Class ProjectionActorState.
-/// Implements the <see cref="Christofle.Infrastructure.Dynamics365Finance.DaprCloud.ProjectionActors.IProjectionActorState" />.
+/// Projection State Manager.
 /// </summary>
-/// <seealso cref="Christofle.Infrastructure.Dynamics365Finance.DaprCloud.ProjectionActors.IProjectionActorState" />
 public class ProjectionStateManager : IProjectionStateManager
 {
     /// <summary>
@@ -44,11 +32,6 @@ public class ProjectionStateManager : IProjectionStateManager
     /// The date time service.
     /// </summary>
     private readonly IDateTimeService _dateTimeService;
-
-    /// <summary>
-    /// The notification bus.
-    /// </summary>
-    private readonly INotificationBus _notificationBus;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ProjectionStateManager" /> class.
@@ -63,7 +46,7 @@ public class ProjectionStateManager : IProjectionStateManager
         ArgumentNullException.ThrowIfNull(dateTimeService);
         ArgumentNullException.ThrowIfNull(notificationBus);
         _dateTimeService = dateTimeService;
-        _notificationBus = notificationBus;
+        NotificationBus = notificationBus;
     }
 
     /// <summary>
@@ -89,6 +72,11 @@ public class ProjectionStateManager : IProjectionStateManager
     /// </summary>
     /// <value>The name of the state.</value>
     public virtual string StateName => "State";
+
+    /// <summary>
+    /// Gets the notification bus.
+    /// </summary>
+    protected INotificationBus NotificationBus { get; }
 
     /// <summary>
     /// Add command as an asynchronous operation.
@@ -284,13 +272,6 @@ public class ProjectionStateManager : IProjectionStateManager
         ConditionalValue<ProjectionState> result = await stateProvider.TryGetStateAsync<ProjectionState>(StateName, cancellationToken).ConfigureAwait(false);
         return result.HasValue ? result.Value : new ProjectionState(0, 0);
     }
-
-    /// <summary>
-    /// Gets the name of the task processor state.
-    /// </summary>
-    /// <param name="version">The version.</param>
-    /// <returns>System.String.</returns>
-    private string GetTaskProcessorStateName(long version) => nameof(TaskProcessor) + version.ToInvariantString();
 
     /// <summary>
     /// Set state as an asynchronous operation.

@@ -13,8 +13,7 @@ using System.Threading.Tasks;
 using Hexalith.Extensions.Common;
 
 /// <summary>
-/// Class MemoryStateProvider.
-/// Implements the <see cref="IStateStoreProvider" />.
+/// Memory State Provider.
 /// </summary>
 /// <seealso cref="IStateStoreProvider" />
 public class MemoryStateProvider : IStateStoreProvider

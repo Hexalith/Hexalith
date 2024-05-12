@@ -25,13 +25,8 @@ using Hexalith.Application.States;
 using Hexalith.Extensions.Common;
 
 /// <summary>
-/// Class MemoryMessageBus.
-/// Implements the <see cref="IMessageBus{TMessage, TMetadata}" />.
+/// Memory Command Bus.
 /// </summary>
-/// <seealso cref="IMessageBus{TMessage, TMetadata}" />
-/// <remarks>
-/// Initializes a new instance of the <see cref="MemoryCommandBus"/> class.
-/// </remarks>
 /// <param name="dateTimeService">The date time service.</param>
 public class MemoryCommandBus(IDateTimeService dateTimeService) : ICommandBus
 {
@@ -59,18 +54,18 @@ public class MemoryCommandBus(IDateTimeService dateTimeService) : ICommandBus
     }
 
     /// <inheritdoc/>
-    public async Task PublishAsync(BaseCommand message, BaseMetadata metadata, CancellationToken cancellationToken)
+    public async Task PublishAsync(BaseCommand command, BaseMetadata metadata, CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(message);
+        ArgumentNullException.ThrowIfNull(command);
         ArgumentNullException.ThrowIfNull(metadata);
-        await PublishAsync(new CommandState(_dateTimeService.UtcNow, message, metadata), cancellationToken).ConfigureAwait(false);
+        await PublishAsync(new CommandState(_dateTimeService.UtcNow, command, metadata), cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public async Task PublishAsync(CommandState envelope, CancellationToken cancellationToken)
+    public async Task PublishAsync(CommandState commandState, CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(envelope);
-        _stream.Add(envelope);
+        ArgumentNullException.ThrowIfNull(commandState);
+        _stream.Add(commandState);
         await Task.CompletedTask.ConfigureAwait(false);
     }
 }

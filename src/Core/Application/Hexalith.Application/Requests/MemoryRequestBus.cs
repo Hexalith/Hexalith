@@ -25,13 +25,8 @@ using Hexalith.Application.States;
 using Hexalith.Extensions.Common;
 
 /// <summary>
-/// Class MemoryMessageBus.
-/// Implements the <see cref="IMessageBus{TMessage, TMetadata}" />.
+/// Memory Request Bus.
 /// </summary>
-/// <seealso cref="IMessageBus{TMessage, TMetadata}" />
-/// <remarks>
-/// Initializes a new instance of the <see cref="MemoryRequestBus"/> class.
-/// </remarks>
 /// <param name="dateTimeService">The date time service.</param>
 public class MemoryRequestBus(IDateTimeService dateTimeService) : IRequestBus
 {
@@ -59,11 +54,11 @@ public class MemoryRequestBus(IDateTimeService dateTimeService) : IRequestBus
     }
 
     /// <inheritdoc/>
-    public async Task PublishAsync(BaseRequest message, BaseMetadata metadata, CancellationToken cancellationToken)
+    public async Task PublishAsync(BaseRequest request, BaseMetadata metadata, CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(message);
+        ArgumentNullException.ThrowIfNull(request);
         ArgumentNullException.ThrowIfNull(metadata);
-        await PublishAsync(new RequestState(_dateTimeService.UtcNow, message, metadata), cancellationToken).ConfigureAwait(false);
+        await PublishAsync(new RequestState(_dateTimeService.UtcNow, request, metadata), cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
