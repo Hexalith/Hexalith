@@ -38,7 +38,7 @@ public abstract class CommandBusTopicAttribute : BusTopicAttribute
     protected CommandBusTopicAttribute(string aggregateName)
         : base(ApplicationConstants.CommandBus, aggregateName + ApplicationConstants.CommandBusSuffix)
     {
-        ArgumentNullException.ThrowIfNull(aggregateName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(aggregateName);
         AggregateName = aggregateName.ToLowerInvariant();
     }
 

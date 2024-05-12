@@ -30,7 +30,8 @@ using Microsoft.Extensions.Logging;
 /// </summary>
 /// <seealso cref="ControllerBase" />
 [ApiController]
-public abstract partial class EventIntegrationController : ReceiveMessageController
+[Route("api/events")]
+public class EventIntegrationController : ReceiveMessageController
 {
     /// <summary>
     /// The processor.
@@ -70,6 +71,7 @@ public abstract partial class EventIntegrationController : ReceiveMessageControl
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
     protected async Task<ActionResult> HandleEventAsync(EventState eventState, string validAggregateName, CancellationToken cancellationToken)
     {
+        ArgumentNullException.ThrowIfNull(eventState);
         ActionResult? badRequest = MessageValidation<EventState>(eventState, validAggregateName);
         if (badRequest != null)
         {

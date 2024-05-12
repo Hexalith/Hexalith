@@ -18,6 +18,9 @@ namespace Hexalith.Infrastructure.WebApis.Buses;
 
 using Dapr;
 
+#pragma warning disable S1694 // An abstract class should have both abstract and concrete methods
+#pragma warning disable CA1308 // Normalize strings to uppercase
+
 /// <summary>
 /// Class BusTopicAttribute. This class cannot be inherited.
 /// Implements the <see cref="TopicAttribute" />.

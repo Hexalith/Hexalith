@@ -43,7 +43,6 @@ public abstract partial class ReceiveMessageController : ControllerBase
     /// <summary>
     /// Initializes a new instance of the <see cref="ReceiveMessageController" /> class.
     /// </summary>
-    /// <param name="eventProcessor">The event processor.</param>
     /// <param name="hostEnvironment">The host environment.</param>
     /// <param name="logger">The logger.</param>
     protected ReceiveMessageController(

@@ -29,7 +29,8 @@ using Microsoft.Extensions.Logging;
 /// </summary>
 /// <seealso cref="ControllerBase" />
 [ApiController]
-public abstract partial class CommandSubmissionController : ReceiveMessageController
+[Route("api/commands")]
+public class CommandSubmissionController : ReceiveMessageController
 {
     /// <summary>
     /// The command processor.

@@ -20,6 +20,9 @@ using Dapr;
 
 using Hexalith.Application;
 
+#pragma warning disable S1694 // An abstract class should have both abstract and concrete methods
+#pragma warning disable CA1308 // Normalize strings to uppercase
+
 /// <summary>
 /// Class BusTopicAttribute. This class cannot be inherited.
 /// Implements the <see cref="TopicAttribute" />.
@@ -35,8 +38,8 @@ public abstract class EventBusTopicAttribute : BusTopicAttribute
     protected EventBusTopicAttribute(string aggregateName)
         : base(ApplicationConstants.EventBus, aggregateName + ApplicationConstants.EventBusSuffix)
     {
-        ArgumentNullException.ThrowIfNull(aggregateName);
-        AggregateName = aggregateName;
+        ArgumentException.ThrowIfNullOrWhiteSpace(aggregateName);
+        AggregateName = aggregateName.ToLowerInvariant();
     }
 
     /// <summary>
