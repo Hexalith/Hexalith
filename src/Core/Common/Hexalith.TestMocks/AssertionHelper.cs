@@ -37,7 +37,7 @@ public static class AssertionHelper
     /// <exception cref="System.ArgumentNullException">null.</exception>
     public static AndConstraint<ObjectAssertions> BeJsonSerializable(
         this ObjectAssertions assertions,
-        string because = "",
+        string because,
         params object[] becauseArgs)
     {
         ArgumentNullException.ThrowIfNull(assertions);

@@ -233,7 +233,9 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
                 new ContextMetadata(
                     UniqueIdHelper.GenerateUniqueStringId(),
                     "system",
-                    _dateTimeService.UtcNow),
+                    _dateTimeService.UtcNow,
+                    null,
+                    null),
                 null));
     }
 

@@ -14,19 +14,19 @@ using System.Collections.Generic;
 public class RoleRoles : IRoleProvider
 {
     /// <summary>
-    /// The assign role to user role name.
+    /// Gets the assign role to user role name.
     /// </summary>
-    public const string AssignRoleToUser = nameof(AssignRoleToUser);
+    public static string AssignRoleToUser => nameof(AssignRoleToUser);
 
     /// <summary>
-    /// The remove user role role name.
+    /// Gets the remove user role role name.
     /// </summary>
-    public const string RemoveUserRole = nameof(RemoveUserRole);
+    public static string RemoveUserRole => nameof(RemoveUserRole);
 
     /// <summary>
-    /// The role management role name.
+    /// Gets the role management role name.
     /// </summary>
-    public const string ViewUserRoles = nameof(ViewUserRoles);
+    public static string ViewUserRoles => nameof(ViewUserRoles);
 
     /// <summary>
     /// Gets the collection of role management roles.

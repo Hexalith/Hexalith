@@ -22,42 +22,42 @@ namespace Hexalith.Infrastructure.DaprRuntime.Abstractions;
 public static class ActorConstants
 {
     /// <summary>
-    /// The aggregate state store name.
+    /// Gets the aggregate state store name.
     /// </summary>
-    public const string AggregateStateStoreName = "State";
+    public static string AggregateStateStoreName => "State";
 
     /// <summary>
-    /// The command store name.
+    /// Gets the command store name.
     /// </summary>
-    public const string CommandStoreName = "Command";
+    public static string CommandStoreName => "Command";
 
     /// <summary>
-    /// The event state name.
+    /// Gets the event state name.
     /// </summary>
-    public const string EventSourcingName = "EventSource";
+    public static string EventSourcingName => "EventSource";
 
     /// <summary>
-    /// The message store name.
+    /// Gets the message store name.
     /// </summary>
-    public const string MessageStoreName = "Message";
+    public static string MessageStoreName => "Message";
 
     /// <summary>
-    /// The process reminder name.
+    /// Gets the process reminder name.
     /// </summary>
-    public const string ProcessReminderName = "ContinueProcess";
+    public static string ProcessReminderName => "ContinueProcess";
 
     /// <summary>
-    /// The process timer name.
+    /// Gets the process timer name.
     /// </summary>
-    public const string ProcessTimerName = "ContinueProcess";
+    public static string ProcessTimerName => "ContinueProcess";
 
     /// <summary>
-    /// The publish reminder name.
+    /// Gets the publish reminder name.
     /// </summary>
-    public const string PublishReminderName = "ContinuePublish";
+    public static string PublishReminderName => "ContinuePublish";
 
     /// <summary>
-    /// The publish timer name.
+    /// Gets the publish timer name.
     /// </summary>
-    public const string PublishTimerName = "ContinuePublish";
+    public static string PublishTimerName => "ContinuePublish";
 }

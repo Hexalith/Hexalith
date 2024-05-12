@@ -14,14 +14,14 @@ using System.Collections.Generic;
 public class SystemRoles : IRoleProvider
 {
     /// <summary>
-    /// Administrator role.
+    /// Gets administrator role.
     /// </summary>
-    public const string Administrator = nameof(Administrator);
+    public static string Administrator => nameof(Administrator);
 
     /// <summary>
-    /// System role.
+    /// Gets system role.
     /// </summary>
-    public const string System = nameof(System);
+    public static string System => nameof(System);
 
     /// <summary>
     /// Gets the collection of roles.

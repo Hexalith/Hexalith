@@ -34,8 +34,8 @@ public class ContextMetadata : IContextMetadata
         string correlationId,
         string userId,
         DateTimeOffset? receivedDate,
-        long? sequenceNumber = null,
-        string? sessionId = null)
+        long? sequenceNumber,
+        string? sessionId)
     {
         CorrelationId = correlationId;
         UserId = userId;

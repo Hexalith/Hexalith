@@ -53,7 +53,7 @@ public class InvalidAggregateEventException : ApplicationErrorException
     /// <param name="domainEvent">The domain event.</param>
     /// <param name="isInitializerEvent">if set to <c>true</c> [is initializer event].</param>
     /// <param name="message">The message.</param>
-    public InvalidAggregateEventException(IAggregate aggregate, BaseEvent domainEvent, bool isInitializerEvent, string? message = null)
+    public InvalidAggregateEventException(IAggregate aggregate, BaseEvent domainEvent, bool isInitializerEvent, string? message)
         : base(GetError(aggregate, domainEvent, isInitializerEvent, message), null)
     {
         Aggregate = aggregate;
@@ -64,8 +64,26 @@ public class InvalidAggregateEventException : ApplicationErrorException
     /// <summary>
     /// Initializes a new instance of the <see cref="InvalidAggregateEventException"/> class.
     /// </summary>
+    /// <param name="aggregate">The aggregate.</param>
+    /// <param name="domainEvent">The domain event.</param>
+    /// <param name="isInitializerEvent">if set to <c>true</c> [is initializer event].</param>
+    public InvalidAggregateEventException(IAggregate aggregate, BaseEvent domainEvent, bool isInitializerEvent)
+        : base(GetError(aggregate, domainEvent, isInitializerEvent, null), null)
+    {
+        Aggregate = aggregate;
+        DomainEvent = domainEvent;
+        IsInitializerEvent = isInitializerEvent;
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="InvalidAggregateEventException"/> class.
+    /// </summary>
     /// <param name="message">The error message that explains the reason for the exception.</param>
-    /// <param name="innerException">The exception that is the cause of the current exception. If the <paramref name="innerException" /> parameter is not a null reference (<see langword="Nothing" /> in Visual Basic), the current exception is raised in a <see langword="catch" /> block that handles the inner exception.</param>
+    /// <param name="innerException">
+    /// The exception that is the cause of the current exception.
+    /// If the <paramref name="innerException" /> parameter is not a null reference (<see langword="Nothing" /> in Visual Basic),
+    /// the current exception is raised in a <see langword="catch" /> block that handles the inner exception.
+    /// </param>
     public InvalidAggregateEventException(string? message, Exception? innerException)
         : base(message, innerException)
     {
@@ -95,7 +113,10 @@ public class InvalidAggregateEventException : ApplicationErrorException
             {
                 Title = "Error applying event",
                 Detail = "The Event '{MessageType}' cannot be applied to the aggregate '{AggregateName}' with id '{AggregateId}'."
-                    + (string.IsNullOrWhiteSpace(message) ? string.Empty : "\n" + message),
+                    + (
+                string.IsNullOrWhiteSpace(message)
+                        ? string.Empty
+                        : "\n" + message),
                 Arguments = [domainEvent.TypeName, aggregate?.AggregateName ?? domainEvent.AggregateName, aggregate?.AggregateId ?? domainEvent.AggregateId],
                 Category = ErrorCategory.Functional,
             }

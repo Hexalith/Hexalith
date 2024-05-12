@@ -14,9 +14,9 @@ using System.Collections.Generic;
 public class UserRoles : IRoleProvider
 {
     /// <summary>
-    /// The constant representing the User Management role.
+    /// Gets the constant representing the User Management role.
     /// </summary>
-    public const string UserManagement = nameof(UserManagement);
+    public static string UserManagement => nameof(UserManagement);
 
     /// <summary>
     /// Gets the collection of roles.

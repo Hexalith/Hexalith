@@ -15,9 +15,15 @@
 // ***********************************************************************
 namespace Hexalith.Extensions;
 
+using System.Diagnostics.CodeAnalysis;
+
 /// <summary>
 /// Class DefaultLabels.
 /// </summary>
+[SuppressMessage(
+    "Critical Code Smell",
+    "S2339:Public constant members should not be used",
+    Justification = "Used in attributes that need constant values")]
 public static class DefaultLabels
 {
     /// <summary>

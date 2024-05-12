@@ -1,88 +1,78 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Application.Abstractions
-// Author           : Jérôme Piquot
-// Created          : 10-26-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 11-04-2023
-// ***********************************************************************
-// <copyright file="ApplicationConstants.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="ApplicationConstants.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Application;
 
 /// <summary>
-/// Class ApplicationConstants.
+/// Application constants.
 /// </summary>
 public static class ApplicationConstants
 {
     /// <summary>
-    /// The command bus name.
+    /// Gets the command bus name.
     /// </summary>
-    public const string CommandBus = "commands";
+    public static string CommandBus => "commands";
 
     /// <summary>
-    /// The command bus suffixe.
+    /// Gets the command bus suffixe.
     /// </summary>
-    public const string CommandBusSuffix = "-commands";
+    public static string CommandBusSuffix => "-commands";
 
     /// <summary>
-    /// The event bus name.
+    /// Gets the event bus name.
     /// </summary>
-    public const string EventBus = "events";
+    public static string EventBus => "events";
 
     /// <summary>
-    /// The event bus suffixe.
+    /// Gets the event bus suffixe.
     /// </summary>
-    public const string EventBusSuffix = "-events";
+    public static string EventBusSuffix => "-events";
 
     /// <summary>
-    /// The identifier part separator.
+    /// Gets the identifier part separator.
     /// </summary>
-    public const string IdPartSeparator = "-";
+    public static string IdPartSeparator => "-";
 
     /// <summary>
-    /// The notification bus name.
+    /// Gets the notification bus name.
     /// </summary>
-    public const string NotificationBus = "notifications";
+    public static string NotificationBus => "notifications";
 
     /// <summary>
-    /// The notification bus suffixe.
+    /// Gets the notification bus suffixe.
     /// </summary>
-    public const string NotificationBusSuffix = "-notifications";
+    public static string NotificationBusSuffix => "-notifications";
 
     /// <summary>
-    /// The notification default aggregate name.
+    /// Gets the notification default aggregate name.
     /// </summary>
-    public const string NotificationDefaultAggregateName = "Global";
+    public static string NotificationDefaultAggregateName => "Global";
 
     /// <summary>
-    /// The request bus name.
+    /// Gets the request bus name.
     /// </summary>
-    public const string RequestBus = "requests";
+    public static string RequestBus => "requests";
 
     /// <summary>
-    /// The request bus suffixe.
+    /// Gets the request bus suffixe.
     /// </summary>
-    public const string RequestBusSuffix = "-requests";
+    public static string RequestBusSuffix => "-requests";
 
     /// <summary>
-    /// The state name.
+    /// Gets the state name.
     /// </summary>
-    public const string StateName = "state";
+    public static string StateName => "state";
 
     /// <summary>
-    /// The system user name.
+    /// Gets the system user name.
     /// </summary>
-    public const string SystemUser = "system";
+    public static string SystemUser => "system";
 
     /// <summary>
-    /// The require sessions.
+    /// Gets the require sessions.
     /// </summary>
-    public const string TopicRequireSessions = "requireSessions=true";
+    public static string TopicRequireSessions => "requireSessions=true";
 }

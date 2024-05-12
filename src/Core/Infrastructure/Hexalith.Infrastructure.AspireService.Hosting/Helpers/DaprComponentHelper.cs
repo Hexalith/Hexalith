@@ -31,7 +31,10 @@ public static class DaprComponentHelper
     /// <param name="name">The name of the bus.</param>
     /// <param name="applicationName">The application name of the bus.</param>
     /// <returns>The resource builder for the bus.</returns>
-    public static IResourceBuilder<IDaprComponentResource> AddBus([NotNull] this IDistributedApplicationBuilder builder, string name, string? applicationName = null)
+    public static IResourceBuilder<IDaprComponentResource> AddBus(
+        [NotNull] this IDistributedApplicationBuilder builder,
+        [NotNull] string name,
+        string? applicationName)
     {
         ArgumentNullException.ThrowIfNull(builder);
         ArgumentException.ThrowIfNullOrWhiteSpace(name);
@@ -49,7 +52,10 @@ public static class DaprComponentHelper
     /// <param name="name">The name of the cron binding.</param>
     /// <param name="applicationName">The application name of the bus.</param>
     /// <returns>The resource builder for the cron binding.</returns>
-    public static IResourceBuilder<IDaprComponentResource> AddCronBinding([NotNull] this IDistributedApplicationBuilder builder, string name, string? applicationName = null)
+    public static IResourceBuilder<IDaprComponentResource> AddCronBinding(
+        [NotNull] this IDistributedApplicationBuilder builder,
+        [NotNull] string name,
+        string? applicationName = null)
     {
         ArgumentNullException.ThrowIfNull(builder);
         ArgumentException.ThrowIfNullOrWhiteSpace(name);
@@ -66,7 +72,9 @@ public static class DaprComponentHelper
     /// <param name="builder">The distributed application builder.</param>
     /// <param name="applicationName">The application name of the bus.</param>
     /// <returns>The resource builder for Dapr commands.</returns>
-    public static IResourceBuilder<IDaprComponentResource> AddDaprCommands([NotNull] this IDistributedApplicationBuilder builder, string? applicationName = null)
+    public static IResourceBuilder<IDaprComponentResource> AddDaprCommands(
+        [NotNull] this IDistributedApplicationBuilder builder,
+        string? applicationName)
     {
         ArgumentNullException.ThrowIfNull(builder);
         CommandBusSettings settings = builder.Configuration.GetSettings<CommandBusSettings>();
@@ -79,7 +87,9 @@ public static class DaprComponentHelper
     /// <param name="builder">The distributed application builder.</param>
     /// <param name="applicationName">The application name of the bus.</param>
     /// <returns>The resource builder for Dapr events.</returns>
-    public static IResourceBuilder<IDaprComponentResource> AddDaprEvents([NotNull] this IDistributedApplicationBuilder builder, string? applicationName = null)
+    public static IResourceBuilder<IDaprComponentResource> AddDaprEvents(
+        [NotNull] this IDistributedApplicationBuilder builder,
+        string? applicationName)
     {
         ArgumentNullException.ThrowIfNull(builder);
         EventBusSettings settings = builder.Configuration.GetSettings<EventBusSettings>();
@@ -92,7 +102,9 @@ public static class DaprComponentHelper
     /// <param name="builder">The distributed application builder.</param>
     /// <param name="applicationName">The application name of the bus.</param>
     /// <returns>The resource builder for Dapr notifications.</returns>
-    public static IResourceBuilder<IDaprComponentResource> AddDaprNotifications([NotNull] this IDistributedApplicationBuilder builder, string? applicationName = null)
+    public static IResourceBuilder<IDaprComponentResource> AddDaprNotifications(
+        [NotNull] this IDistributedApplicationBuilder builder,
+        string? applicationName)
     {
         ArgumentNullException.ThrowIfNull(builder);
         NotificationBusSettings settings = builder.Configuration.GetSettings<NotificationBusSettings>();
@@ -105,7 +117,9 @@ public static class DaprComponentHelper
     /// <param name="builder">The distributed application builder.</param>
     /// <param name="applicationName">The application name of the bus.</param>
     /// <returns>The resource builder for Dapr requests.</returns>
-    public static IResourceBuilder<IDaprComponentResource> AddDaprRequests([NotNull] this IDistributedApplicationBuilder builder, string? applicationName = null)
+    public static IResourceBuilder<IDaprComponentResource> AddDaprRequests(
+        [NotNull] this IDistributedApplicationBuilder builder,
+        string? applicationName)
     {
         ArgumentNullException.ThrowIfNull(builder);
         RequestBusSettings settings = builder.Configuration.GetSettings<RequestBusSettings>();
@@ -119,7 +133,10 @@ public static class DaprComponentHelper
     /// <param name="name">The name of the queue binding.</param>
     /// <param name="applicationName">The application name of the bus.</param>
     /// <returns>The resource builder for the queue binding.</returns>
-    public static IResourceBuilder<IDaprComponentResource> AddQueueBinding([NotNull] this IDistributedApplicationBuilder builder, string name, string? applicationName = null)
+    public static IResourceBuilder<IDaprComponentResource> AddQueueBinding(
+        [NotNull] this IDistributedApplicationBuilder builder,
+        [NotNull] string name,
+        string? applicationName)
     {
         ArgumentNullException.ThrowIfNull(builder);
         ArgumentException.ThrowIfNullOrWhiteSpace(name);
@@ -137,7 +154,10 @@ public static class DaprComponentHelper
     /// <param name="name">The name of the secret store.</param>
     /// <param name="applicationName">The application name of the bus.</param>
     /// <returns>The resource builder for the secret store.</returns>
-    public static IResourceBuilder<IDaprComponentResource> AddSecretStore([NotNull] this IDistributedApplicationBuilder builder, string name, string? applicationName = null)
+    public static IResourceBuilder<IDaprComponentResource> AddSecretStore(
+        [NotNull] this IDistributedApplicationBuilder builder,
+        [NotNull] string name,
+        string? applicationName)
     {
         ArgumentNullException.ThrowIfNull(builder);
         ArgumentException.ThrowIfNullOrWhiteSpace(name);
@@ -154,7 +174,9 @@ public static class DaprComponentHelper
     /// <param name="builder">The distributed application builder.</param>
     /// <param name="applicationName">The name of the application.</param>
     /// <returns>The resource builder for the state store.</returns>
-    public static IResourceBuilder<IDaprComponentResource> AddStateStore([NotNull] this IDistributedApplicationBuilder builder, string applicationName)
+    public static IResourceBuilder<IDaprComponentResource> AddStateStore(
+        [NotNull] this IDistributedApplicationBuilder builder,
+        [NotNull] string applicationName)
     {
         ArgumentNullException.ThrowIfNull(builder);
         ArgumentException.ThrowIfNullOrWhiteSpace(applicationName);
@@ -192,7 +214,10 @@ public static class DaprComponentHelper
                 }));
     }
 
-    private static string GetComponentLocalPath(this IDistributedApplicationBuilder builder, string name, string? applicationName = null)
+    private static string GetComponentLocalPath(
+        this IDistributedApplicationBuilder builder,
+        string name,
+        string? applicationName = null)
     {
         string subdirectory = builder.ExecutionContext.IsPublishMode
             ? AspireApplicationConstants.PublishPath

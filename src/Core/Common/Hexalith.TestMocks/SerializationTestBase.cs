@@ -35,7 +35,7 @@ public abstract class SerializationTestBase
     /// Defines the test method CheckJsonSerialization.
     /// </summary>
     [Fact]
-    public void CheckJsonSerialization() => _ = ToSerializeObject().Should().BeJsonSerializable();
+    public void CheckJsonSerialization() => _ = ToSerializeObject().Should().BeJsonSerializable(string.Empty);
 
     /// <summary>
     /// Converts to serialize object.
