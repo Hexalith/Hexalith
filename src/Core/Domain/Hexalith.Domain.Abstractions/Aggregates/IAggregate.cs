@@ -54,7 +54,7 @@ public interface IAggregate
     {
         ArgumentNullException.ThrowIfNull(events);
         IAggregate aggregate = this;
-        List<BaseEvent> newEvents = [];
+        List<BaseMessage> newMessages = [];
         foreach (BaseEvent e in events)
         {
             if (e.AggregateName != aggregate.AggregateName || (IsInitialized() && e.AggregateId != aggregate.AggregateId))
@@ -66,10 +66,10 @@ public interface IAggregate
             }
 
             (aggregate, IEnumerable<BaseMessage>? messages) = aggregate.Apply(e);
-            newEvents.AddRange((IEnumerable<BaseEvent>)messages);
+            newMessages.AddRange(messages);
         }
 
-        return (aggregate, newEvents);
+        return (aggregate, newMessages);
     }
 
     /// <summary>
