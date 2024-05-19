@@ -8,6 +8,7 @@ namespace Hexalith.UnitTests.Core.Infrastructure.DaprRuntime.Actors;
 
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
+using Hexalith.Domain.Messages;
 
 public record DummyAggregate(string Id) : Aggregate
 {
@@ -16,7 +17,7 @@ public record DummyAggregate(string Id) : Aggregate
     {
     }
 
-    public override (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent)
+    public override (IAggregate Aggregate, IEnumerable<BaseMessage> Messages) Apply(BaseEvent domainEvent)
     {
         return domainEvent is DummyAggregateEvent1 dummyEvent
             ? (this with

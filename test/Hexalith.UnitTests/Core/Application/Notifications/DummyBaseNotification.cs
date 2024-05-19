@@ -11,6 +11,7 @@ using System.Text.Json.Serialization;
 
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.Notifications;
+using Hexalith.Domain.Notifications;
 using Hexalith.Extensions.Helpers;
 
 [DataContract]
@@ -18,11 +19,11 @@ public abstract class DummyBaseNotification : BaseNotification
 {
     [Obsolete("For serialization only", true)]
     protected DummyBaseNotification()
-        : base("1233", "Customer", "Cust353", "Test", "Dummy message", NotificationSeverity.Information, "Dummy technical description") => BaseValue = string.Empty;
+        : base("Customer", "Cust353", "Test", "Dummy message", NotificationSeverity.Information, "Dummy technical description") => BaseValue = string.Empty;
 
     [JsonConstructor]
     protected DummyBaseNotification(string baseValue)
-        : base("1233", "Customer", "Cust353", "Test", "Dummy message", NotificationSeverity.Information, "Dummy technical description") => BaseValue = baseValue;
+        : base("Customer", "Cust353", "Test", "Dummy message", NotificationSeverity.Information, "Dummy technical description") => BaseValue = baseValue;
 
     public string BaseValue { get; }
 

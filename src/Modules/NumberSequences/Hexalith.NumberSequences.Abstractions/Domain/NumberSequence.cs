@@ -10,6 +10,7 @@ using System.Runtime.Serialization;
 
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
+using Hexalith.Domain.Messages;
 
 /// <summary>
 /// Represents a number sequence.
@@ -21,7 +22,7 @@ public record NumberSequence(
     [property: DataMember(Order = 3)] string Id) : PartitionedAggregate(PartitionId)
 {
     /// <inheritdoc/>
-    public override (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent) => throw new NotImplementedException();
+    public override (IAggregate Aggregate, IEnumerable<BaseMessage> Messages) Apply(BaseEvent domainEvent) => throw new NotImplementedException();
 
     /// <inheritdoc/>
     public override bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);

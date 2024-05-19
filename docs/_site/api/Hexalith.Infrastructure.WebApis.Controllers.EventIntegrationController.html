@@ -644,7 +644,8 @@ Implements the <span class="xref">Microsoft.AspNetCore.Mvc.ControllerBase</span>
   <h5 id="Hexalith_Infrastructure_WebApis_Controllers_EventIntegrationController_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ApiController]
-public abstract class EventIntegrationController : ReceiveMessageController</code></pre>
+[Route(&quot;api/events&quot;)]
+public class EventIntegrationController : ReceiveMessageController</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -653,7 +654,7 @@ public abstract class EventIntegrationController : ReceiveMessageController</cod
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_Controllers_EventIntegrationController__ctor_Hexalith_Application_Events_IIntegrationEventProcessor_Hexalith_Application_Projections_IProjectionUpdateProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Logging_ILogger_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.Controllers.EventIntegrationController.%23ctor(Hexalith.Application.Events.IIntegrationEventProcessor%2CHexalith.Application.Projections.IProjectionUpdateProcessor%2CMicrosoft.Extensions.Hosting.IHostEnvironment%2CMicrosoft.Extensions.Logging.ILogger)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/EventIntegrationController.cs/#L50">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/EventIntegrationController.cs/#L51">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_WebApis_Controllers_EventIntegrationController__ctor_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.EventIntegrationController.#ctor*"></a>
   <h4 id="Hexalith_Infrastructure_WebApis_Controllers_EventIntegrationController__ctor_Hexalith_Application_Events_IIntegrationEventProcessor_Hexalith_Application_Projections_IProjectionUpdateProcessor_Microsoft_Extensions_Hosting_IHostEnvironment_Microsoft_Extensions_Logging_ILogger_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.EventIntegrationController.#ctor(Hexalith.Application.Events.IIntegrationEventProcessor,Hexalith.Application.Projections.IProjectionUpdateProcessor,Microsoft.Extensions.Hosting.IHostEnvironment,Microsoft.Extensions.Logging.ILogger)">EventIntegrationController(IIntegrationEventProcessor, IProjectionUpdateProcessor, IHostEnvironment, ILogger)</h4>
@@ -723,7 +724,7 @@ public abstract class EventIntegrationController : ReceiveMessageController</cod
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_WebApis_Controllers_EventIntegrationController_HandleEventAsync_Hexalith_Application_States_EventState_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.WebApis.Controllers.EventIntegrationController.HandleEventAsync(Hexalith.Application.States.EventState%2CSystem.String%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/EventIntegrationController.cs/#L71">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.WebApis/Controllers/EventIntegrationController.cs/#L72">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_WebApis_Controllers_EventIntegrationController_HandleEventAsync_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.EventIntegrationController.HandleEventAsync*"></a>
   <h4 id="Hexalith_Infrastructure_WebApis_Controllers_EventIntegrationController_HandleEventAsync_Hexalith_Application_States_EventState_System_String_CancellationToken_" data-uid="Hexalith.Infrastructure.WebApis.Controllers.EventIntegrationController.HandleEventAsync(Hexalith.Application.States.EventState,System.String,CancellationToken)">HandleEventAsync(EventState, String, CancellationToken)</h4>

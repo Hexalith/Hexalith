@@ -12,6 +12,7 @@ using System.Runtime.Serialization;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Dimensions.DimensionDefinitions.Entities;
 using Hexalith.Domain.Events;
+using Hexalith.Domain.Messages;
 
 /// <summary>
 /// Class DimensionDefinition.
@@ -30,7 +31,7 @@ public record DimensionCollectionDefinition(
     [property: DataMember(Order = 5)] IEnumerable<DimensionDefinition> Values) : CommonEntityAggregate(PartitionId, OriginId, Id)
 {
     /// <inheritdoc/>
-    public override (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent) => throw new NotImplementedException();
+    public override (IAggregate Aggregate, IEnumerable<BaseMessage> Messages) Apply(BaseEvent domainEvent) => throw new NotImplementedException();
 
     /// <inheritdoc/>
     public override bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);

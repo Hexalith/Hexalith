@@ -630,7 +630,7 @@
   <h5 id="Hexalith_Infrastructure_WebApis_Controllers_CommandServiceController_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ApiController]
-[Route(&quot;/Command&quot;)]
+[Route(&quot;api/command&quot;)]
 public class CommandServiceController : ControllerBase</code></pre>
   </div>
   <h5 id="Hexalith_Infrastructure_WebApis_Controllers_CommandServiceController_remarks"><strong>Remarks</strong></h5>
@@ -694,7 +694,7 @@ public class CommandServiceController : ControllerBase</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[HttpPost(&quot;/Command/Publish&quot;)]
+    <pre><code class="lang-csharp hljs">[HttpPost(&quot;submit&quot;)]
 public async Task&lt;ActionResult&gt; PublishCommandAsync(CommandState command)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>

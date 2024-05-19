@@ -11,6 +11,7 @@ using System.Runtime.Serialization;
 
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
+using Hexalith.Domain.Messages;
 
 /// <summary>
 /// Represents a user.
@@ -24,7 +25,7 @@ public record DimensionHierarchy(
     [property: DataMember(Order = 5)] IEnumerable<string> DimensionsIds) : PartitionedAggregate(PartitionId)
 {
     /// <inheritdoc/>
-    public override (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent) => throw new NotImplementedException();
+    public override (IAggregate Aggregate, IEnumerable<BaseMessage> Messages) Apply(BaseEvent domainEvent) => throw new NotImplementedException();
 
     /// <inheritdoc/>
     public override bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);

@@ -74,14 +74,14 @@
   <h1 id="Hexalith_Application_Organizations_Notifications_PartitionedNotification" data-uid="Hexalith.Application.Organizations.Notifications.PartitionedNotification" class="text-break">Class PartitionedNotification
   </h1>
   <div class="markdown level0 summary"><p>Class PartitionedNotification.
-Implements the <a class="xref" href="Hexalith.Application.Notifications.BaseNotification.html">BaseNotification</a>.</p>
+Implements the <a class="xref" href="Hexalith.Domain.Notifications.BaseNotification.html">BaseNotification</a>.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html">BaseMessage</a></div>
-    <div class="level2"><a class="xref" href="Hexalith.Application.Notifications.BaseNotification.html">BaseNotification</a></div>
+    <div class="level2"><a class="xref" href="Hexalith.Domain.Notifications.BaseNotification.html">BaseNotification</a></div>
     <div class="level3"><span class="xref">PartitionedNotification</span></div>
       <div class="level4"><a class="xref" href="Hexalith.Application.Organizations.Notifications.EntityNotification.html">EntityNotification</a></div>
   </div>
@@ -95,28 +95,43 @@ Implements the <a class="xref" href="Hexalith.Application.Notifications.BaseNoti
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Hexalith.Application.Notifications.BaseNotification.html#Hexalith_Application_Notifications_BaseNotification_CorrelationId">BaseNotification.CorrelationId</a>
+      <a class="xref" href="Hexalith.Domain.Notifications.BaseNotification.html#Hexalith_Domain_Notifications_BaseNotification_UndefinedAggregateId">BaseNotification.UndefinedAggregateId</a>
     </div>
     <div>
-      <a class="xref" href="Hexalith.Application.Notifications.BaseNotification.html#Hexalith_Application_Notifications_BaseNotification_Message">BaseNotification.Message</a>
+      <a class="xref" href="Hexalith.Domain.Notifications.BaseNotification.html#Hexalith_Domain_Notifications_BaseNotification_UndefinedAggregateName">BaseNotification.UndefinedAggregateName</a>
     </div>
     <div>
-      <a class="xref" href="Hexalith.Application.Notifications.BaseNotification.html#Hexalith_Application_Notifications_BaseNotification_Severity">BaseNotification.Severity</a>
+      <a class="xref" href="Hexalith.Domain.Notifications.BaseNotification.html#Hexalith_Domain_Notifications_BaseNotification_Message">BaseNotification.Message</a>
     </div>
     <div>
-      <a class="xref" href="Hexalith.Application.Notifications.BaseNotification.html#Hexalith_Application_Notifications_BaseNotification_SourceAggregateId">BaseNotification.SourceAggregateId</a>
+      <a class="xref" href="Hexalith.Domain.Notifications.BaseNotification.html#Hexalith_Domain_Notifications_BaseNotification_Severity">BaseNotification.Severity</a>
     </div>
     <div>
-      <a class="xref" href="Hexalith.Application.Notifications.BaseNotification.html#Hexalith_Application_Notifications_BaseNotification_SourceAggregateName">BaseNotification.SourceAggregateName</a>
+      <a class="xref" href="Hexalith.Domain.Notifications.BaseNotification.html#Hexalith_Domain_Notifications_BaseNotification_SourceAggregateId">BaseNotification.SourceAggregateId</a>
     </div>
     <div>
-      <a class="xref" href="Hexalith.Application.Notifications.BaseNotification.html#Hexalith_Application_Notifications_BaseNotification_TechnicalDescription">BaseNotification.TechnicalDescription</a>
+      <a class="xref" href="Hexalith.Domain.Notifications.BaseNotification.html#Hexalith_Domain_Notifications_BaseNotification_SourceAggregateName">BaseNotification.SourceAggregateName</a>
     </div>
     <div>
-      <a class="xref" href="Hexalith.Application.Notifications.BaseNotification.html#Hexalith_Application_Notifications_BaseNotification_Title">BaseNotification.Title</a>
+      <a class="xref" href="Hexalith.Domain.Notifications.BaseNotification.html#Hexalith_Domain_Notifications_BaseNotification_TechnicalDescription">BaseNotification.TechnicalDescription</a>
     </div>
     <div>
-      <a class="xref" href="Hexalith.Application.Notifications.BaseNotification.html#Hexalith_Application_Notifications_BaseNotification_DefaultAggregateName">BaseNotification.DefaultAggregateName()</a>
+      <a class="xref" href="Hexalith.Domain.Notifications.BaseNotification.html#Hexalith_Domain_Notifications_BaseNotification_Title">BaseNotification.Title</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Domain.Notifications.BaseNotification.html#Hexalith_Domain_Notifications_BaseNotification_Create_Hexalith_Domain_Aggregates_IAggregate_System_String_System_String_Hexalith_Application_Notifications_NotificationSeverity_System_String_">BaseNotification.Create(IAggregate, String, String, NotificationSeverity, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Domain.Notifications.BaseNotification.html#Hexalith_Domain_Notifications_BaseNotification_CreateError_Hexalith_Domain_Aggregates_IAggregate_System_String_System_String_System_String_">BaseNotification.CreateError(IAggregate, String, String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Domain.Notifications.BaseNotification.html#Hexalith_Domain_Notifications_BaseNotification_CreateInformation_Hexalith_Domain_Aggregates_IAggregate_System_String_System_String_System_String_">BaseNotification.CreateInformation(IAggregate, String, String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Domain.Notifications.BaseNotification.html#Hexalith_Domain_Notifications_BaseNotification_CreateWarning_Hexalith_Domain_Aggregates_IAggregate_System_String_System_String_System_String_">BaseNotification.CreateWarning(IAggregate, String, String, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Domain.Notifications.BaseNotification.html#Hexalith_Domain_Notifications_BaseNotification_DefaultAggregateName">BaseNotification.DefaultAggregateName()</a>
     </div>
     <div>
       <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_Separator">BaseMessage.Separator</a>
@@ -191,7 +206,7 @@ public abstract class PartitionedNotification : BaseNotification, IPolymorphicSe
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Organizations_Notifications_PartitionedNotification__ctor.md&amp;value=---%0Auid%3A%20Hexalith.Application.Organizations.Notifications.PartitionedNotification.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Organizations/Notifications/PartitionedNotification.cs/#L69">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Organizations/Notifications/PartitionedNotification.cs/#L68">View Source</a>
   </span>
   <a id="Hexalith_Application_Organizations_Notifications_PartitionedNotification__ctor_" data-uid="Hexalith.Application.Organizations.Notifications.PartitionedNotification.#ctor*"></a>
   <h4 id="Hexalith_Application_Organizations_Notifications_PartitionedNotification__ctor" data-uid="Hexalith.Application.Organizations.Notifications.PartitionedNotification.#ctor">PartitionedNotification()</h4>
@@ -205,20 +220,20 @@ protected PartitionedNotification()</code></pre>
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Organizations_Notifications_PartitionedNotification__ctor_System_String_System_String_System_String_System_String_System_String_System_String_Hexalith_Application_Notifications_NotificationSeverity_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Organizations.Notifications.PartitionedNotification.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CHexalith.Application.Notifications.NotificationSeverity%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Organizations_Notifications_PartitionedNotification__ctor_System_String_System_String_System_String_System_String_System_String_Hexalith_Application_Notifications_NotificationSeverity_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Organizations.Notifications.PartitionedNotification.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CHexalith.Application.Notifications.NotificationSeverity%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Organizations/Notifications/PartitionedNotification.cs/#L46">View Source</a>
   </span>
   <a id="Hexalith_Application_Organizations_Notifications_PartitionedNotification__ctor_" data-uid="Hexalith.Application.Organizations.Notifications.PartitionedNotification.#ctor*"></a>
-  <h4 id="Hexalith_Application_Organizations_Notifications_PartitionedNotification__ctor_System_String_System_String_System_String_System_String_System_String_System_String_Hexalith_Application_Notifications_NotificationSeverity_System_String_" data-uid="Hexalith.Application.Organizations.Notifications.PartitionedNotification.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,Hexalith.Application.Notifications.NotificationSeverity,System.String)">PartitionedNotification(String, String, String, String, String, String, NotificationSeverity, String)</h4>
+  <h4 id="Hexalith_Application_Organizations_Notifications_PartitionedNotification__ctor_System_String_System_String_System_String_System_String_System_String_Hexalith_Application_Notifications_NotificationSeverity_System_String_" data-uid="Hexalith.Application.Organizations.Notifications.PartitionedNotification.#ctor(System.String,System.String,System.String,System.String,System.String,Hexalith.Application.Notifications.NotificationSeverity,System.String)">PartitionedNotification(String, String, String, String, String, NotificationSeverity, String)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Application.Organizations.Notifications.PartitionedNotification.html">PartitionedNotification</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonConstructor]
-protected PartitionedNotification(string partitionId, string correlationId, string sourceAggregateName, string sourceAggregateId, string title, string message, NotificationSeverity severity, string technicalDescription)</code></pre>
+protected PartitionedNotification(string correlationId, string sourceAggregateName, string sourceAggregateId, string title, string message, NotificationSeverity severity, string technicalDescription)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -230,12 +245,6 @@ protected PartitionedNotification(string partitionId, string correlationId, stri
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">partitionId</span></td>
-        <td><p>The partition identifier.</p>
-</td>
-      </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">correlationId</span></td>
@@ -287,7 +296,7 @@ protected PartitionedNotification(string partitionId, string correlationId, stri
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Organizations_Notifications_PartitionedNotification_PartitionId.md&amp;value=---%0Auid%3A%20Hexalith.Application.Organizations.Notifications.PartitionedNotification.PartitionId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Organizations/Notifications/PartitionedNotification.cs/#L76">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Organizations/Notifications/PartitionedNotification.cs/#L75">View Source</a>
   </span>
   <a id="Hexalith_Application_Organizations_Notifications_PartitionedNotification_PartitionId_" data-uid="Hexalith.Application.Organizations.Notifications.PartitionedNotification.PartitionId*"></a>
   <h4 id="Hexalith_Application_Organizations_Notifications_PartitionedNotification_PartitionId" data-uid="Hexalith.Application.Organizations.Notifications.PartitionedNotification.PartitionId">PartitionId</h4>
@@ -323,7 +332,7 @@ public string PartitionId { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Organizations_Notifications_PartitionedNotification_DefaultAggregateId.md&amp;value=---%0Auid%3A%20Hexalith.Application.Organizations.Notifications.PartitionedNotification.DefaultAggregateId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Organizations/Notifications/PartitionedNotification.cs/#L81">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Organizations/Notifications/PartitionedNotification.cs/#L80">View Source</a>
   </span>
   <a id="Hexalith_Application_Organizations_Notifications_PartitionedNotification_DefaultAggregateId_" data-uid="Hexalith.Application.Organizations.Notifications.PartitionedNotification.DefaultAggregateId*"></a>
   <h4 id="Hexalith_Application_Organizations_Notifications_PartitionedNotification_DefaultAggregateId" data-uid="Hexalith.Application.Organizations.Notifications.PartitionedNotification.DefaultAggregateId">DefaultAggregateId()</h4>
@@ -351,7 +360,7 @@ public string PartitionId { get; set; }</code></pre>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Hexalith.Application.Notifications.BaseNotification.html#Hexalith_Application_Notifications_BaseNotification_DefaultAggregateId">BaseNotification.DefaultAggregateId()</a></div>
+  <div><a class="xref" href="Hexalith.Domain.Notifications.BaseNotification.html#Hexalith_Domain_Notifications_BaseNotification_DefaultAggregateId">BaseNotification.DefaultAggregateId()</a></div>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="Hexalith.Extensions.Serialization.IPolymorphicSerializable.html">IPolymorphicSerializable</a>
@@ -374,7 +383,7 @@ public string PartitionId { get; set; }</code></pre>
   </div>
   <h3 id="seealso">See Also</h3>
   <div class="seealso">
-      <div><a class="xref" href="Hexalith.Application.Notifications.BaseNotification.html">BaseNotification</a></div>
+      <div><a class="xref" href="Hexalith.Domain.Notifications.BaseNotification.html">BaseNotification</a></div>
   </div>
 </article>
           </div>
@@ -387,7 +396,7 @@ public string PartitionId { get; set; }</code></pre>
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Organizations_Notifications_PartitionedNotification.md&amp;value=---%0Auid%3A%20Hexalith.Application.Organizations.Notifications.PartitionedNotification%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Organizations/Notifications/PartitionedNotification.cs/#L31" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Organizations/Notifications/PartitionedNotification.cs/#L32" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

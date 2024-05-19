@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class CompanyEntityEvent
+    <title>Class CompanyEntityCommand
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class CompanyEntityEvent
+    <meta name="title" content="Class CompanyEntityCommand
    ">
     <meta name="generator" content="docfx 2.59.4.0">
     
@@ -68,28 +68,26 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Hexalith.Domain.Events.CompanyEntityEvent">
+            <article class="content wrap" id="_content" data-uid="Hexalith.Application.Commands.CompanyEntityCommand">
   
   
-  <h1 id="Hexalith_Domain_Events_CompanyEntityEvent" data-uid="Hexalith.Domain.Events.CompanyEntityEvent" class="text-break">Class CompanyEntityEvent
+  <h1 id="Hexalith_Application_Commands_CompanyEntityCommand" data-uid="Hexalith.Application.Commands.CompanyEntityCommand" class="text-break">Class CompanyEntityCommand
   </h1>
-  <div class="markdown level0 summary"><p>Class CompanyEntityEvent.
-Implements the <a class="xref" href="Hexalith.Domain.Events.CompanyEntityEvent.html">CompanyEntityEvent</a>.</p>
+  <div class="markdown level0 summary"><p>Company entity command base class.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html">BaseMessage</a></div>
-    <div class="level2"><a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">BaseEvent</a></div>
-    <div class="level3"><span class="xref">CompanyEntityEvent</span></div>
-      <div class="level4"><a class="xref" href="Hexalith.Domain.Events.SurveyEvent.html">SurveyEvent</a></div>
+    <div class="level2"><a class="xref" href="Hexalith.Application.Commands.BaseCommand.html">BaseCommand</a></div>
+    <div class="level3"><span class="xref">CompanyEntityCommand</span></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="Hexalith.Extensions.Serialization.IPolymorphicSerializable.html">IPolymorphicSerializable</a></div>
     <div><a class="xref" href="Hexalith.Extensions.Reflections.IMappableType.html">IMappableType</a></div>
-    <div><a class="xref" href="Hexalith.Domain.Events.IEvent.html">IEvent</a></div>
+    <div><a class="xref" href="Hexalith.Application.Commands.ICommand.html">ICommand</a></div>
     <div><a class="xref" href="Hexalith.Domain.Messages.IMessage.html">IMessage</a></div>
   </div>
   <div class="inheritedMembers">
@@ -117,9 +115,6 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.CompanyEntityEvent.h
     </div>
     <div>
       <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_TypeName">BaseMessage.TypeName</a>
-    </div>
-    <div>
-      <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_DefaultAggregateId">BaseMessage.DefaultAggregateId()</a>
     </div>
     <div>
       <a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_DefaultAggregateName">BaseMessage.DefaultAggregateName()</a>
@@ -158,48 +153,48 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.CompanyEntityEvent.h
       <span class="xref">System.Object.ToString()</span>
     </div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Hexalith.Domain.Events.html">Hexalith.Domain.Events</a></h6>
-  <h6><strong>Assembly</strong>: Hexalith.Domain.Abstractions.dll</h6>
-  <h5 id="Hexalith_Domain_Events_CompanyEntityEvent_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Hexalith.Application.Commands.html">Hexalith.Application.Commands</a></h6>
+  <h6><strong>Assembly</strong>: Hexalith.Application.Abstractions.dll</h6>
+  <h5 id="Hexalith_Application_Commands_CompanyEntityCommand_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataContract]
-public class CompanyEntityEvent : BaseEvent, IPolymorphicSerializable, IMappableType, IEvent, IMessage</code></pre>
+public class CompanyEntityCommand : BaseCommand, IPolymorphicSerializable, IMappableType, ICommand, IMessage</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_CompanyEntityEvent__ctor.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.CompanyEntityEvent.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Commands_CompanyEntityCommand__ctor.md&amp;value=---%0Auid%3A%20Hexalith.Application.Commands.CompanyEntityCommand.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Events/CompanyEntityEvent.cs/#L52">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Commands/CompanyEntityCommand.cs/#L50">View Source</a>
   </span>
-  <a id="Hexalith_Domain_Events_CompanyEntityEvent__ctor_" data-uid="Hexalith.Domain.Events.CompanyEntityEvent.#ctor*"></a>
-  <h4 id="Hexalith_Domain_Events_CompanyEntityEvent__ctor" data-uid="Hexalith.Domain.Events.CompanyEntityEvent.#ctor">CompanyEntityEvent()</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Domain.Events.CompanyEntityEvent.html">CompanyEntityEvent</a> class.</p>
+  <a id="Hexalith_Application_Commands_CompanyEntityCommand__ctor_" data-uid="Hexalith.Application.Commands.CompanyEntityCommand.#ctor*"></a>
+  <h4 id="Hexalith_Application_Commands_CompanyEntityCommand__ctor" data-uid="Hexalith.Application.Commands.CompanyEntityCommand.#ctor">CompanyEntityCommand()</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Application.Commands.CompanyEntityCommand.html">CompanyEntityCommand</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[Obsolete(&quot;This constructor is only for serialization purposes.&quot;, true)]
-protected CompanyEntityEvent()</code></pre>
+protected CompanyEntityCommand()</code></pre>
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_CompanyEntityEvent__ctor_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.CompanyEntityEvent.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Commands_CompanyEntityCommand__ctor_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Commands.CompanyEntityCommand.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Events/CompanyEntityEvent.cs/#L40">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Commands/CompanyEntityCommand.cs/#L38">View Source</a>
   </span>
-  <a id="Hexalith_Domain_Events_CompanyEntityEvent__ctor_" data-uid="Hexalith.Domain.Events.CompanyEntityEvent.#ctor*"></a>
-  <h4 id="Hexalith_Domain_Events_CompanyEntityEvent__ctor_System_String_System_String_System_String_System_String_" data-uid="Hexalith.Domain.Events.CompanyEntityEvent.#ctor(System.String,System.String,System.String,System.String)">CompanyEntityEvent(String, String, String, String)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Domain.Events.CompanyEntityEvent.html">CompanyEntityEvent</a> class.</p>
+  <a id="Hexalith_Application_Commands_CompanyEntityCommand__ctor_" data-uid="Hexalith.Application.Commands.CompanyEntityCommand.#ctor*"></a>
+  <h4 id="Hexalith_Application_Commands_CompanyEntityCommand__ctor_System_String_System_String_System_String_System_String_" data-uid="Hexalith.Application.Commands.CompanyEntityCommand.#ctor(System.String,System.String,System.String,System.String)">CompanyEntityCommand(String, String, String, String)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Application.Commands.CompanyEntityCommand.html">CompanyEntityCommand</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonConstructor]
-protected CompanyEntityEvent(string partitionId, string companyId, string originId, string id)</code></pre>
+protected CompanyEntityCommand(string partitionId, string companyId, string originId, string id)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -241,13 +236,13 @@ protected CompanyEntityEvent(string partitionId, string companyId, string origin
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_CompanyEntityEvent_CompanyId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.CompanyEntityEvent.CompanyId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Commands_CompanyEntityCommand_CompanyId.md&amp;value=---%0Auid%3A%20Hexalith.Application.Commands.CompanyEntityCommand.CompanyId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Events/CompanyEntityEvent.cs/#L59">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Commands/CompanyEntityCommand.cs/#L57">View Source</a>
   </span>
-  <a id="Hexalith_Domain_Events_CompanyEntityEvent_CompanyId_" data-uid="Hexalith.Domain.Events.CompanyEntityEvent.CompanyId*"></a>
-  <h4 id="Hexalith_Domain_Events_CompanyEntityEvent_CompanyId" data-uid="Hexalith.Domain.Events.CompanyEntityEvent.CompanyId">CompanyId</h4>
+  <a id="Hexalith_Application_Commands_CompanyEntityCommand_CompanyId_" data-uid="Hexalith.Application.Commands.CompanyEntityCommand.CompanyId*"></a>
+  <h4 id="Hexalith_Application_Commands_CompanyEntityCommand_CompanyId" data-uid="Hexalith.Application.Commands.CompanyEntityCommand.CompanyId">CompanyId</h4>
   <div class="markdown level1 summary"><p>Gets or sets the company identifier.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -275,13 +270,13 @@ public string CompanyId { get; set; }</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_CompanyEntityEvent_Id.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.CompanyEntityEvent.Id%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Commands_CompanyEntityCommand_Id.md&amp;value=---%0Auid%3A%20Hexalith.Application.Commands.CompanyEntityCommand.Id%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Events/CompanyEntityEvent.cs/#L67">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Commands/CompanyEntityCommand.cs/#L65">View Source</a>
   </span>
-  <a id="Hexalith_Domain_Events_CompanyEntityEvent_Id_" data-uid="Hexalith.Domain.Events.CompanyEntityEvent.Id*"></a>
-  <h4 id="Hexalith_Domain_Events_CompanyEntityEvent_Id" data-uid="Hexalith.Domain.Events.CompanyEntityEvent.Id">Id</h4>
+  <a id="Hexalith_Application_Commands_CompanyEntityCommand_Id_" data-uid="Hexalith.Application.Commands.CompanyEntityCommand.Id*"></a>
+  <h4 id="Hexalith_Application_Commands_CompanyEntityCommand_Id" data-uid="Hexalith.Application.Commands.CompanyEntityCommand.Id">Id</h4>
   <div class="markdown level1 summary"><p>Gets or sets the identifier.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -309,13 +304,13 @@ public string Id { get; set; }</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_CompanyEntityEvent_OriginId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.CompanyEntityEvent.OriginId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Commands_CompanyEntityCommand_OriginId.md&amp;value=---%0Auid%3A%20Hexalith.Application.Commands.CompanyEntityCommand.OriginId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Events/CompanyEntityEvent.cs/#L75">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Commands/CompanyEntityCommand.cs/#L73">View Source</a>
   </span>
-  <a id="Hexalith_Domain_Events_CompanyEntityEvent_OriginId_" data-uid="Hexalith.Domain.Events.CompanyEntityEvent.OriginId*"></a>
-  <h4 id="Hexalith_Domain_Events_CompanyEntityEvent_OriginId" data-uid="Hexalith.Domain.Events.CompanyEntityEvent.OriginId">OriginId</h4>
+  <a id="Hexalith_Application_Commands_CompanyEntityCommand_OriginId_" data-uid="Hexalith.Application.Commands.CompanyEntityCommand.OriginId*"></a>
+  <h4 id="Hexalith_Application_Commands_CompanyEntityCommand_OriginId" data-uid="Hexalith.Application.Commands.CompanyEntityCommand.OriginId">OriginId</h4>
   <div class="markdown level1 summary"><p>Gets or sets the company identifier.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -343,13 +338,13 @@ public string OriginId { get; set; }</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_CompanyEntityEvent_PartitionId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.CompanyEntityEvent.PartitionId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Commands_CompanyEntityCommand_PartitionId.md&amp;value=---%0Auid%3A%20Hexalith.Application.Commands.CompanyEntityCommand.PartitionId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Events/CompanyEntityEvent.cs/#L83">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Commands/CompanyEntityCommand.cs/#L81">View Source</a>
   </span>
-  <a id="Hexalith_Domain_Events_CompanyEntityEvent_PartitionId_" data-uid="Hexalith.Domain.Events.CompanyEntityEvent.PartitionId*"></a>
-  <h4 id="Hexalith_Domain_Events_CompanyEntityEvent_PartitionId" data-uid="Hexalith.Domain.Events.CompanyEntityEvent.PartitionId">PartitionId</h4>
+  <a id="Hexalith_Application_Commands_CompanyEntityCommand_PartitionId_" data-uid="Hexalith.Application.Commands.CompanyEntityCommand.PartitionId*"></a>
+  <h4 id="Hexalith_Application_Commands_CompanyEntityCommand_PartitionId" data-uid="Hexalith.Application.Commands.CompanyEntityCommand.PartitionId">PartitionId</h4>
   <div class="markdown level1 summary"><p>Gets or sets the partition identifier.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -375,6 +370,42 @@ public string PartitionId { get; set; }</code></pre>
       </tr>
     </tbody>
   </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Commands_CompanyEntityCommand_DefaultAggregateId.md&amp;value=---%0Auid%3A%20Hexalith.Application.Commands.CompanyEntityCommand.DefaultAggregateId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Commands/CompanyEntityCommand.cs/#L86">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Commands_CompanyEntityCommand_DefaultAggregateId_" data-uid="Hexalith.Application.Commands.CompanyEntityCommand.DefaultAggregateId*"></a>
+  <h4 id="Hexalith_Application_Commands_CompanyEntityCommand_DefaultAggregateId" data-uid="Hexalith.Application.Commands.CompanyEntityCommand.DefaultAggregateId">DefaultAggregateId()</h4>
+  <div class="markdown level1 summary"><p>Get the aggregate identifier.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override string DefaultAggregateId()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The identifier.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Hexalith.Domain.Messages.BaseMessage.html#Hexalith_Domain_Messages_BaseMessage_DefaultAggregateId">BaseMessage.DefaultAggregateId()</a></div>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="Hexalith.Extensions.Serialization.IPolymorphicSerializable.html">IPolymorphicSerializable</a>
@@ -383,7 +414,7 @@ public string PartitionId { get; set; }</code></pre>
       <a class="xref" href="Hexalith.Extensions.Reflections.IMappableType.html">IMappableType</a>
   </div>
   <div>
-      <a class="xref" href="Hexalith.Domain.Events.IEvent.html">IEvent</a>
+      <a class="xref" href="Hexalith.Application.Commands.ICommand.html">ICommand</a>
   </div>
   <div>
       <a class="xref" href="Hexalith.Domain.Messages.IMessage.html">IMessage</a>
@@ -395,10 +426,6 @@ public string PartitionId { get; set; }</code></pre>
   <div>
       <a class="xref" href="Hexalith.Extensions.Reflections.ObjectDifferenceHelper.html#Hexalith_Extensions_Reflections_ObjectDifferenceHelper_GetDifferenceInformation_System_Object_System_Object_">ObjectDifferenceHelper.GetDifferenceInformation(Object, Object)</a>
   </div>
-  <h3 id="seealso">See Also</h3>
-  <div class="seealso">
-      <div><a class="xref" href="Hexalith.Domain.Events.CompanyEntityEvent.html">CompanyEntityEvent</a></div>
-  </div>
 </article>
           </div>
           
@@ -407,10 +434,10 @@ public string PartitionId { get; set; }</code></pre>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Events_CompanyEntityEvent.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Events.CompanyEntityEvent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Commands_CompanyEntityCommand.md&amp;value=---%0Auid%3A%20Hexalith.Application.Commands.CompanyEntityCommand%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Events/CompanyEntityEvent.cs/#L30" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Commands/CompanyEntityCommand.cs/#L28" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
