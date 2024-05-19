@@ -34,7 +34,8 @@ using Hexalith.Domain.Events;
 /// Initializes a new instance of the <see cref="AggregateProjectionUpdateEventHandler{TEvent, TState}"/> class.
 /// </remarks>
 /// <param name="factory">state factory.</param>
-public class AggregateProjectionUpdateEventHandler<TEvent, TState>(IActorProjectionFactory<TState> factory) :
+public class AggregateProjectionUpdateEventHandler<TEvent, TState>(
+    IActorProjectionFactory<TState> factory) :
     KeyValueActorProjectionUpdateEventHandlerBase<TEvent, TState>(factory)
     where TEvent : IEvent
     where TState : class, IAggregate, new()

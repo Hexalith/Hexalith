@@ -16,20 +16,22 @@ public class RoleRoles : IRoleProvider
     /// <summary>
     /// Gets the assign role to user role name.
     /// </summary>
-    public static string AssignRoleToUser => nameof(AssignRoleToUser);
+    public const string AssignRoleToUser = nameof(AssignRoleToUser);
 
     /// <summary>
     /// Gets the remove user role role name.
     /// </summary>
-    public static string RemoveUserRole => nameof(RemoveUserRole);
+    public const string RemoveUserRole = nameof(RemoveUserRole);
 
     /// <summary>
     /// Gets the role management role name.
     /// </summary>
-    public static string ViewUserRoles => nameof(ViewUserRoles);
+    public const string ViewUserRoles = nameof(ViewUserRoles);
 
     /// <summary>
     /// Gets the collection of role management roles.
     /// </summary>
-    public IEnumerable<string> Roles => [ViewUserRoles, AssignRoleToUser, RemoveUserRole];
+    public static IEnumerable<string> Roles = [ViewUserRoles, AssignRoleToUser, RemoveUserRole];
+
+    IEnumerable<string> IRoleProvider.Roles { get; }
 }
