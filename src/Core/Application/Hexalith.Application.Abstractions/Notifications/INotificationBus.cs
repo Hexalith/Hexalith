@@ -19,6 +19,7 @@ namespace Hexalith.Application.Notifications;
 using Hexalith.Application.Envelopes;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.States;
+using Hexalith.Domain.Notifications;
 
 /// <summary>
 /// A notification bus is a component that allows to send notifications.

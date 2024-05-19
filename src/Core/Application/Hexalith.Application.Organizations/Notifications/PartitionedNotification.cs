@@ -21,6 +21,7 @@ using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 using Hexalith.Application.Notifications;
+using Hexalith.Domain.Notifications;
 using Hexalith.Extensions;
 
 /// <summary>
@@ -42,10 +43,8 @@ public abstract class PartitionedNotification : BaseNotification
     /// <param name="message">The message.</param>
     /// <param name="severity">The severity.</param>
     /// <param name="technicalDescription">The technical description.</param>
-    /// <param name="partitionId">The partition identifier.</param>
     [JsonConstructor]
     protected PartitionedNotification(
-        string partitionId,
         string correlationId,
         string sourceAggregateName,
         string sourceAggregateId,
@@ -54,14 +53,14 @@ public abstract class PartitionedNotification : BaseNotification
         NotificationSeverity severity,
         string? technicalDescription)
         : base(
-            correlationId,
             sourceAggregateName,
             sourceAggregateId,
             title,
             message,
             severity,
             technicalDescription)
-        => PartitionId = partitionId;
+    {
+    }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="PartitionedNotification" /> class.

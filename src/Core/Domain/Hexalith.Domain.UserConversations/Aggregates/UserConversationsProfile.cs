@@ -22,6 +22,7 @@ using System.Runtime.Serialization;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Exceptions;
+using Hexalith.Domain.Messages;
 using Hexalith.Domain.UserConversationProfiles.Events;
 
 /// <summary>
@@ -64,7 +65,7 @@ public record UserConversationsProfile(string UserId, IEnumerable<DateTimeOffset
     /// </summary>
     /// <param name="domainEvent">The domain event.</param>
     /// <returns>IAggregate.</returns>
-    public (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent)
+    public (IAggregate Aggregate, IEnumerable<BaseMessage> Messages) Apply(BaseEvent domainEvent)
     {
         return (domainEvent switch
         {

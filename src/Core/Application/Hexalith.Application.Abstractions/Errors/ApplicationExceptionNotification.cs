@@ -20,6 +20,7 @@ using System.Globalization;
 using System.Text.Json.Serialization;
 
 using Hexalith.Application.Notifications;
+using Hexalith.Domain.Notifications;
 using Hexalith.Extensions.Errors;
 using Hexalith.Extensions.Helpers;
 
@@ -41,7 +42,6 @@ public class ApplicationExceptionNotification : BaseNotification
     /// <summary>
     /// Initializes a new instance of the <see cref="ApplicationExceptionNotification"/> class.
     /// </summary>
-    /// <param name="correlationId">The correlation identifier.</param>
     /// <param name="sourceAggregateName">Name of the source aggregate.</param>
     /// <param name="sourceAggregateId">The source aggregate identifier.</param>
     /// <param name="title">The title.</param>
@@ -49,33 +49,30 @@ public class ApplicationExceptionNotification : BaseNotification
     /// <param name="technicalDescription">The technical description.</param>
     [JsonConstructor]
     public ApplicationExceptionNotification(
-        string correlationId,
         string sourceAggregateName,
         string sourceAggregateId,
         string title,
         string message,
         string? technicalDescription)
-        : base(correlationId, sourceAggregateName, sourceAggregateId, title, message, NotificationSeverity.Error, technicalDescription)
+        : base(sourceAggregateName, sourceAggregateId, title, message, NotificationSeverity.Error, technicalDescription)
     {
     }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ApplicationExceptionNotification"/> class.
     /// </summary>
-    /// <param name="correlationId">The correlation identifier.</param>
     /// <param name="sourceAggregateName">Name of the source aggregate.</param>
     /// <param name="sourceAggregateId">The source aggregate identifier.</param>
     /// <param name="title">The title.</param>
     /// <param name="message">The message.</param>
     /// <param name="e">The e.</param>
     public ApplicationExceptionNotification(
-        string correlationId,
         string sourceAggregateName,
         string sourceAggregateId,
         string title,
         string message,
         Exception e)
-        : this(correlationId, sourceAggregateName, sourceAggregateId, title, message, e?.FullMessage())
+        : this(sourceAggregateName, sourceAggregateId, title, message, e?.FullMessage())
     {
     }
 
@@ -92,7 +89,6 @@ public class ApplicationExceptionNotification : BaseNotification
         string sourceAggregateId,
         ApplicationErrorException exception)
         : this(
-              correlationId,
               sourceAggregateName,
               sourceAggregateId,
               (exception ?? throw new ArgumentNullException(nameof(exception))).Error?.Title ?? "Error",

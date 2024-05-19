@@ -35,7 +35,6 @@ public abstract class EntityNotification : PartitionedNotification
     /// <summary>
     /// Initializes a new instance of the <see cref="EntityNotification" /> class.
     /// </summary>
-    /// <param name="partitionId">The partition identifier.</param>
     /// <param name="originId">The origin identifier.</param>
     /// <param name="id">The identifier.</param>
     /// <param name="correlationId">The correlation identifier.</param>
@@ -47,7 +46,6 @@ public abstract class EntityNotification : PartitionedNotification
     /// <param name="technicalDescription">The technical description.</param>
     [JsonConstructor]
     protected EntityNotification(
-        string partitionId,
         string originId,
         string id,
         string correlationId,
@@ -58,7 +56,6 @@ public abstract class EntityNotification : PartitionedNotification
         NotificationSeverity severity,
         string? technicalDescription)
         : base(
-            partitionId,
             correlationId,
             sourceAggregateName,
             sourceAggregateId,

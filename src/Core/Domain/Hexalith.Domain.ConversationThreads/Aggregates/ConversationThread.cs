@@ -25,6 +25,7 @@ using Hexalith.Domain.ConversationThreads.Entities;
 using Hexalith.Domain.ConversationThreads.Events;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Exceptions;
+using Hexalith.Domain.Messages;
 
 /// <summary>
 /// Class ConversationThread.
@@ -58,11 +59,17 @@ public record ConversationThread(
     /// </summary>
     /// <param name="domainEvent">The domain event.</param>
     /// <returns>IAggregate.</returns>
-    public override (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent)
+    public override (IAggregate Aggregate, IEnumerable<BaseMessage> Messages) Apply(BaseEvent domainEvent)
     {
         return (domainEvent switch
         {
-            ConversationItemAdded add => this with { Items = Items.Append(new ConversationItem(add.ItemDate, add.Content, add.Participant)) },
+            ConversationItemAdded add => this with
+            {
+                Items = Items.Append(new ConversationItem(
+                    add.ItemDate,
+                    add.Participant,
+                    add.Content)),
+            },
             ConversationThreadStarted => throw new InvalidAggregateEventException(this, domainEvent, true),
             _ => throw new InvalidAggregateEventException(this, domainEvent, false),
         }, []);

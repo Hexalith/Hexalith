@@ -253,7 +253,7 @@ public abstract partial class AggregateActorBase
             .ConfigureAwait(false);
 
         IEnumerable<BaseMessage> messages;
-        IEnumerable<BaseEvent> integrationEvents = [];
+        IEnumerable<BaseMessage> integrationMessages = [];
         TaskProcessor taskProcessor = await GetTaskProcessorAsync(
             commandNumber,
             CancellationToken.None)
@@ -287,7 +287,7 @@ public abstract partial class AggregateActorBase
                 .ToArray();
 
             // Apply events to aggregate
-            (_aggregate, integrationEvents) = aggregate.Apply(aggregateEvents);
+            (_aggregate, integrationMessages) = aggregate.Apply(aggregateEvents);
             EventState[] aggregateEventStates = aggregateEvents
                 .Select(p => new EventState(_dateTimeService.UtcNow, p, Metadata.CreateNew(p, metadata)))
                 .ToArray();
@@ -332,16 +332,16 @@ public abstract partial class AggregateActorBase
         await PersistTaskProcessorAsync(commandNumber, taskProcessor, cancellationToken).ConfigureAwait(false);
 
         // Get integration messages to persist in the message store
-        MessageState[] integrationMessages = messages
+        MessageState[] messagesToSend = messages
             .OfType<BaseMessage>()
             .Where(p => !p.IsPrivateToAggregate)
-            .Union(integrationEvents)
+            .Union(integrationMessages)
             .Select(p => new MessageState(_dateTimeService.UtcNow, p, Metadata.CreateNew(p, metadata)))
             .ToArray();
 
-        if (integrationMessages.Length > 0)
+        if (messagesToSend.Length > 0)
         {
-            state.MessageCount = await MessageStore.AddAsync(integrationMessages, state.MessageCount, cancellationToken).ConfigureAwait(false);
+            state.MessageCount = await MessageStore.AddAsync(messagesToSend, state.MessageCount, cancellationToken).ConfigureAwait(false);
         }
     }
 }

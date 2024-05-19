@@ -21,6 +21,7 @@ using System.Text.Json.Serialization;
 
 using Hexalith.Application.Notifications;
 using Hexalith.Application.Tasks;
+using Hexalith.Domain.Notifications;
 
 /// <summary>
 /// Class CommandProcessingStalled.
@@ -39,7 +40,6 @@ public class CommandProcessingFailed : BaseNotification
     [JsonConstructor]
     public CommandProcessingFailed(string correlationId, BaseCommand command, TaskProcessor taskProcessor)
         : base(
-            correlationId,
             (command ?? throw new ArgumentNullException(nameof(command))).AggregateName,
             command.AggregateId,
             $"Command {command.TypeName} failed.",

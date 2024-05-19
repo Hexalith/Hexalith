@@ -24,6 +24,7 @@ using Hexalith.Application.Buses;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.Notifications;
 using Hexalith.Application.States;
+using Hexalith.Domain.Notifications;
 using Hexalith.Extensions.Common;
 
 using Microsoft.Extensions.Logging;

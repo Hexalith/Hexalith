@@ -24,6 +24,7 @@ using Hexalith.Application.Metadatas;
 using Hexalith.Application.Notifications;
 using Hexalith.Application.Requests;
 using Hexalith.Domain.Events;
+using Hexalith.Domain.Notifications;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 

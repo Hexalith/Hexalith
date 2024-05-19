@@ -35,7 +35,6 @@ public abstract class CompanyEntityNotification : EntityNotification
     /// <summary>
     /// Initializes a new instance of the <see cref="CompanyEntityNotification" /> class.
     /// </summary>
-    /// <param name="partitionId">The partition identifier.</param>
     /// <param name="companyId">The company identifier.</param>
     /// <param name="originId">The origin identifier.</param>
     /// <param name="id">The identifier.</param>
@@ -48,7 +47,6 @@ public abstract class CompanyEntityNotification : EntityNotification
     /// <param name="technicalDescription">The technical description.</param>
     [JsonConstructor]
     protected CompanyEntityNotification(
-        string partitionId,
         string companyId,
         string originId,
         string id,
@@ -60,7 +58,6 @@ public abstract class CompanyEntityNotification : EntityNotification
         NotificationSeverity severity,
         string? technicalDescription)
         : base(
-            partitionId,
             originId,
             id,
             correlationId,

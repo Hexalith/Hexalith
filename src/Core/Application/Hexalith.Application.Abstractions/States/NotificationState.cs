@@ -21,7 +21,7 @@ using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 using Hexalith.Application.Metadatas;
-using Hexalith.Application.Notifications;
+using Hexalith.Domain.Notifications;
 
 /// <summary>
 /// Class NotificationState.

@@ -19,6 +19,7 @@ namespace Hexalith.Domain.Aggregates;
 using System.Diagnostics.CodeAnalysis;
 
 using Hexalith.Domain.Events;
+using Hexalith.Domain.Messages;
 
 /// <summary>
 /// Interface IAggregate.
@@ -42,14 +43,14 @@ public interface IAggregate
     /// </summary>
     /// <param name="domainEvent">The domain event.</param>
     /// <returns>IAggregate.</returns>
-    (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply(BaseEvent domainEvent);
+    (IAggregate Aggregate, IEnumerable<BaseMessage> Messages) Apply(BaseEvent domainEvent);
 
     /// <summary>
     /// Applies the specified domain event.
     /// </summary>
     /// <param name="events">The domain events.</param>
     /// <returns>IAggregate.</returns>
-    (IAggregate Aggregate, IEnumerable<BaseEvent> Events) Apply([NotNull] IEnumerable<BaseEvent> events)
+    (IAggregate Aggregate, IEnumerable<BaseMessage> Messages) Apply([NotNull] IEnumerable<BaseEvent> events)
     {
         ArgumentNullException.ThrowIfNull(events);
         IAggregate aggregate = this;
@@ -59,11 +60,13 @@ public interface IAggregate
             if (e.AggregateName != aggregate.AggregateName || (IsInitialized() && e.AggregateId != aggregate.AggregateId))
             {
                 string aggregateId = IsInitialized() ? $"/{e.AggregateId}" : string.Empty;
-                throw new InvalidOperationException($"The event '{e.TypeName}' can only be applied to aggregate '{e.AggregateName}' with Id {e.AggregateId}. It cannot be applied to aggregate {aggregate.AggregateName}{aggregateId}.");
+                throw new InvalidOperationException(
+                    $"The event '{e.TypeName}' can only be applied to aggregate '{e.AggregateName}' with Id {e.AggregateId}. " +
+                    $"It cannot be applied to aggregate {aggregate.AggregateName}{aggregateId}.");
             }
 
-            (aggregate, IEnumerable<BaseEvent>? es) = aggregate.Apply(e);
-            newEvents.AddRange(es);
+            (aggregate, IEnumerable<BaseMessage>? messages) = aggregate.Apply(e);
+            newEvents.AddRange((IEnumerable<BaseEvent>)messages);
         }
 
         return (aggregate, newEvents);

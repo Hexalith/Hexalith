@@ -16,9 +16,9 @@
 
 namespace Hexalith.Application.Projections;
 
-using Hexalith.Application.Notifications;
 using Hexalith.Application.Requests;
 using Hexalith.Domain.Events;
+using Hexalith.Domain.Notifications;
 
 /// <summary>
 /// Interface IProjection.

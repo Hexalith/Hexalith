@@ -22,6 +22,7 @@ using System.Threading.Tasks;
 using Hexalith.Application.Envelopes;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.States;
+using Hexalith.Domain.Notifications;
 using Hexalith.Extensions.Common;
 
 /// <summary>

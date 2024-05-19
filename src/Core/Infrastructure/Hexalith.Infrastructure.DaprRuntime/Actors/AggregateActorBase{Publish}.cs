@@ -21,10 +21,10 @@ using System.Threading.Tasks;
 using Dapr.Actors;
 
 using Hexalith.Application.Commands;
-using Hexalith.Application.Notifications;
 using Hexalith.Application.Requests;
 using Hexalith.Application.States;
 using Hexalith.Domain.Events;
+using Hexalith.Domain.Notifications;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Abstractions;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
