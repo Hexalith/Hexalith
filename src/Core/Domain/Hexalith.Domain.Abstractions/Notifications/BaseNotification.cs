@@ -33,16 +33,6 @@ using Hexalith.Extensions.Serialization;
 public class BaseNotification : BaseMessage, INotification
 {
     /// <summary>
-    /// The undefined aggregate identifier.
-    /// </summary>
-    public static string UndefinedAggregateId = "Undefined";
-
-    /// <summary>
-    /// The undefined aggregate name.
-    /// </summary>
-    public static string UndefinedAggregateName = "Undefined";
-
-    /// <summary>
     /// Initializes a new instance of the <see cref="BaseNotification"/> class.
     /// </summary>
     /// <param name="sourceAggregateName">The name of the source aggregate.</param>
@@ -73,6 +63,16 @@ public class BaseNotification : BaseMessage, INotification
     /// </summary>
     [Obsolete("For serialization only", true)]
     public BaseNotification() => SourceAggregateId = SourceAggregateName = Title = Message = string.Empty;
+
+    /// <summary>
+    /// Gets the undefined aggregate identifier.
+    /// </summary>
+    public static string UndefinedAggregateId => "Undefined";
+
+    /// <summary>
+    /// Gets the undefined aggregate name.
+    /// </summary>
+    public static string UndefinedAggregateName => "Undefined";
 
     /// <summary>
     /// Gets or sets the message of the notification.

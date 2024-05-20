@@ -6,6 +6,9 @@
 
 namespace Hexalith.Application.Modules;
 
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
 /// <summary>
 /// Represents a module in the application.
 /// </summary>
@@ -34,4 +37,11 @@ public interface IApplicationModule
     /// Gets the version of the module.
     /// </summary>
     string Version { get; }
+
+    /// <summary>
+    /// Adds the application shared services.
+    /// </summary>
+    /// <param name="services">The services.</param>
+    /// <param name="configuration">The configuration.</param>
+    void AddSharedServices(IServiceCollection services, IConfiguration configuration);
 }
