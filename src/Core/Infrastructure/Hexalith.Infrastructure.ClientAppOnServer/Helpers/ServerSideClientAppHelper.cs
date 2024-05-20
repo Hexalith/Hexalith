@@ -16,6 +16,7 @@ using FluentValidation;
 
 using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
+using Hexalith.Application.Modules.Helpers;
 using Hexalith.Application.Projections;
 using Hexalith.Application.Tasks;
 using Hexalith.Domain.Messages;
@@ -72,6 +73,7 @@ public static class ServerSideClientAppHelper
 
         startupLogger.Information("Configuring {AppName} ...", applicationName);
         builder.Services
+            .AddModuleServerServices(builder.Configuration)
 
             // .AddAuthenticationUI(builder.Configuration)
             .AddCascadingAuthenticationState()

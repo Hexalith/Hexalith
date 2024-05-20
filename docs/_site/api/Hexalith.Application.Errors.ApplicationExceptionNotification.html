@@ -219,19 +219,19 @@ Implements the <a class="xref" href="Hexalith.Domain.Notifications.BaseNotificat
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Errors_ApplicationExceptionNotification__ctor_System_String_System_String_System_String_Hexalith_Extensions_Errors_ApplicationErrorException_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Errors.ApplicationExceptionNotification.%23ctor(System.String%2CSystem.String%2CSystem.String%2CHexalith.Extensions.Errors.ApplicationErrorException)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Errors_ApplicationExceptionNotification__ctor_System_String_System_String_Hexalith_Extensions_Errors_ApplicationErrorException_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Errors.ApplicationExceptionNotification.%23ctor(System.String%2CSystem.String%2CHexalith.Extensions.Errors.ApplicationErrorException)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Errors/ApplicationExceptionNotification.cs/#L86">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/Errors/ApplicationExceptionNotification.cs/#L85">View Source</a>
   </span>
   <a id="Hexalith_Application_Errors_ApplicationExceptionNotification__ctor_" data-uid="Hexalith.Application.Errors.ApplicationExceptionNotification.#ctor*"></a>
-  <h4 id="Hexalith_Application_Errors_ApplicationExceptionNotification__ctor_System_String_System_String_System_String_Hexalith_Extensions_Errors_ApplicationErrorException_" data-uid="Hexalith.Application.Errors.ApplicationExceptionNotification.#ctor(System.String,System.String,System.String,Hexalith.Extensions.Errors.ApplicationErrorException)">ApplicationExceptionNotification(String, String, String, ApplicationErrorException)</h4>
+  <h4 id="Hexalith_Application_Errors_ApplicationExceptionNotification__ctor_System_String_System_String_Hexalith_Extensions_Errors_ApplicationErrorException_" data-uid="Hexalith.Application.Errors.ApplicationExceptionNotification.#ctor(System.String,System.String,Hexalith.Extensions.Errors.ApplicationErrorException)">ApplicationExceptionNotification(String, String, ApplicationErrorException)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Application.Errors.ApplicationExceptionNotification.html">ApplicationExceptionNotification</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ApplicationExceptionNotification(string correlationId, string sourceAggregateName, string sourceAggregateId, ApplicationErrorException exception)</code></pre>
+    <pre><code class="lang-csharp hljs">public ApplicationExceptionNotification(string sourceAggregateName, string sourceAggregateId, ApplicationErrorException exception)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -243,12 +243,6 @@ Implements the <a class="xref" href="Hexalith.Domain.Notifications.BaseNotificat
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">correlationId</span></td>
-        <td><p>The correlation identifier.</p>
-</td>
-      </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">sourceAggregateName</span></td>

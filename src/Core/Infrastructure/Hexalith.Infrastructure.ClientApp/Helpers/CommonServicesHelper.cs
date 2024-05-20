@@ -8,8 +8,9 @@ namespace Hexalith.Infrastructure.ClientApp.Helpers;
 
 using Blazored.SessionStorage;
 
+using Hexalith.Application.Modules.Helpers;
+using Hexalith.Application.Modules.Routes;
 using Hexalith.Application.Organizations.Helpers;
-using Hexalith.Application.Routes;
 using Hexalith.Extensions.Common;
 using Hexalith.Infrastructure.Emails.SendGrid.Helpers;
 
@@ -39,6 +40,7 @@ public static class CommonServicesHelper
             .AddSingleton<IDateTimeService, DateTimeService>()
             .AddSingleton<IRouteManager, RouteManager>()
             .AddBlazoredSessionStorage()
-            .AddFluentUIComponents();
+            .AddFluentUIComponents()
+            .AddModuleSharedServices(configuration);
     }
 }

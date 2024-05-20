@@ -2480,12 +2480,12 @@ references:
   commentId: M:Hexalith.Application.Errors.ApplicationExceptionNotification.#ctor
   fullName: Hexalith.Application.Errors.ApplicationExceptionNotification.ApplicationExceptionNotification()
   nameWithType: ApplicationExceptionNotification.ApplicationExceptionNotification()
-- uid: Hexalith.Application.Errors.ApplicationExceptionNotification.#ctor(System.String,System.String,System.String,Hexalith.Extensions.Errors.ApplicationErrorException)
-  name: ApplicationExceptionNotification(String, String, String, ApplicationErrorException)
-  href: api/Hexalith.Application.Errors.ApplicationExceptionNotification.html#Hexalith_Application_Errors_ApplicationExceptionNotification__ctor_System_String_System_String_System_String_Hexalith_Extensions_Errors_ApplicationErrorException_
-  commentId: M:Hexalith.Application.Errors.ApplicationExceptionNotification.#ctor(System.String,System.String,System.String,Hexalith.Extensions.Errors.ApplicationErrorException)
-  fullName: Hexalith.Application.Errors.ApplicationExceptionNotification.ApplicationExceptionNotification(System.String, System.String, System.String, Hexalith.Extensions.Errors.ApplicationErrorException)
-  nameWithType: ApplicationExceptionNotification.ApplicationExceptionNotification(String, String, String, ApplicationErrorException)
+- uid: Hexalith.Application.Errors.ApplicationExceptionNotification.#ctor(System.String,System.String,Hexalith.Extensions.Errors.ApplicationErrorException)
+  name: ApplicationExceptionNotification(String, String, ApplicationErrorException)
+  href: api/Hexalith.Application.Errors.ApplicationExceptionNotification.html#Hexalith_Application_Errors_ApplicationExceptionNotification__ctor_System_String_System_String_Hexalith_Extensions_Errors_ApplicationErrorException_
+  commentId: M:Hexalith.Application.Errors.ApplicationExceptionNotification.#ctor(System.String,System.String,Hexalith.Extensions.Errors.ApplicationErrorException)
+  fullName: Hexalith.Application.Errors.ApplicationExceptionNotification.ApplicationExceptionNotification(System.String, System.String, Hexalith.Extensions.Errors.ApplicationErrorException)
+  nameWithType: ApplicationExceptionNotification.ApplicationExceptionNotification(String, String, ApplicationErrorException)
 - uid: Hexalith.Application.Errors.ApplicationExceptionNotification.#ctor(System.String,System.String,System.String,System.String,Exception)
   name: ApplicationExceptionNotification(String, String, String, String, Exception)
   href: api/Hexalith.Application.Errors.ApplicationExceptionNotification.html#Hexalith_Application_Errors_ApplicationExceptionNotification__ctor_System_String_System_String_System_String_System_String_Exception_
@@ -4145,135 +4145,557 @@ references:
   commentId: N:Hexalith.Application.Modules
   fullName: Hexalith.Application.Modules
   nameWithType: Hexalith.Application.Modules
-- uid: Hexalith.Application.Modules.IApplicationAction
+- uid: Hexalith.Application.Modules.ApplicationConstants
+  name: ApplicationConstants
+  href: api/Hexalith.Application.Modules.ApplicationConstants.html
+  commentId: T:Hexalith.Application.Modules.ApplicationConstants
+  fullName: Hexalith.Application.Modules.ApplicationConstants
+  nameWithType: ApplicationConstants
+- uid: Hexalith.Application.Modules.ApplicationConstants.CommandBus
+  name: CommandBus
+  href: api/Hexalith.Application.Modules.ApplicationConstants.html#Hexalith_Application_Modules_ApplicationConstants_CommandBus
+  commentId: P:Hexalith.Application.Modules.ApplicationConstants.CommandBus
+  fullName: Hexalith.Application.Modules.ApplicationConstants.CommandBus
+  nameWithType: ApplicationConstants.CommandBus
+- uid: Hexalith.Application.Modules.ApplicationConstants.CommandBus*
+  name: CommandBus
+  href: api/Hexalith.Application.Modules.ApplicationConstants.html#Hexalith_Application_Modules_ApplicationConstants_CommandBus_
+  commentId: Overload:Hexalith.Application.Modules.ApplicationConstants.CommandBus
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.ApplicationConstants.CommandBus
+  nameWithType: ApplicationConstants.CommandBus
+- uid: Hexalith.Application.Modules.ApplicationConstants.CommandBusSuffix
+  name: CommandBusSuffix
+  href: api/Hexalith.Application.Modules.ApplicationConstants.html#Hexalith_Application_Modules_ApplicationConstants_CommandBusSuffix
+  commentId: P:Hexalith.Application.Modules.ApplicationConstants.CommandBusSuffix
+  fullName: Hexalith.Application.Modules.ApplicationConstants.CommandBusSuffix
+  nameWithType: ApplicationConstants.CommandBusSuffix
+- uid: Hexalith.Application.Modules.ApplicationConstants.CommandBusSuffix*
+  name: CommandBusSuffix
+  href: api/Hexalith.Application.Modules.ApplicationConstants.html#Hexalith_Application_Modules_ApplicationConstants_CommandBusSuffix_
+  commentId: Overload:Hexalith.Application.Modules.ApplicationConstants.CommandBusSuffix
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.ApplicationConstants.CommandBusSuffix
+  nameWithType: ApplicationConstants.CommandBusSuffix
+- uid: Hexalith.Application.Modules.ApplicationConstants.EventBus
+  name: EventBus
+  href: api/Hexalith.Application.Modules.ApplicationConstants.html#Hexalith_Application_Modules_ApplicationConstants_EventBus
+  commentId: P:Hexalith.Application.Modules.ApplicationConstants.EventBus
+  fullName: Hexalith.Application.Modules.ApplicationConstants.EventBus
+  nameWithType: ApplicationConstants.EventBus
+- uid: Hexalith.Application.Modules.ApplicationConstants.EventBus*
+  name: EventBus
+  href: api/Hexalith.Application.Modules.ApplicationConstants.html#Hexalith_Application_Modules_ApplicationConstants_EventBus_
+  commentId: Overload:Hexalith.Application.Modules.ApplicationConstants.EventBus
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.ApplicationConstants.EventBus
+  nameWithType: ApplicationConstants.EventBus
+- uid: Hexalith.Application.Modules.ApplicationConstants.EventBusSuffix
+  name: EventBusSuffix
+  href: api/Hexalith.Application.Modules.ApplicationConstants.html#Hexalith_Application_Modules_ApplicationConstants_EventBusSuffix
+  commentId: P:Hexalith.Application.Modules.ApplicationConstants.EventBusSuffix
+  fullName: Hexalith.Application.Modules.ApplicationConstants.EventBusSuffix
+  nameWithType: ApplicationConstants.EventBusSuffix
+- uid: Hexalith.Application.Modules.ApplicationConstants.EventBusSuffix*
+  name: EventBusSuffix
+  href: api/Hexalith.Application.Modules.ApplicationConstants.html#Hexalith_Application_Modules_ApplicationConstants_EventBusSuffix_
+  commentId: Overload:Hexalith.Application.Modules.ApplicationConstants.EventBusSuffix
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.ApplicationConstants.EventBusSuffix
+  nameWithType: ApplicationConstants.EventBusSuffix
+- uid: Hexalith.Application.Modules.ApplicationConstants.IdPartSeparator
+  name: IdPartSeparator
+  href: api/Hexalith.Application.Modules.ApplicationConstants.html#Hexalith_Application_Modules_ApplicationConstants_IdPartSeparator
+  commentId: P:Hexalith.Application.Modules.ApplicationConstants.IdPartSeparator
+  fullName: Hexalith.Application.Modules.ApplicationConstants.IdPartSeparator
+  nameWithType: ApplicationConstants.IdPartSeparator
+- uid: Hexalith.Application.Modules.ApplicationConstants.IdPartSeparator*
+  name: IdPartSeparator
+  href: api/Hexalith.Application.Modules.ApplicationConstants.html#Hexalith_Application_Modules_ApplicationConstants_IdPartSeparator_
+  commentId: Overload:Hexalith.Application.Modules.ApplicationConstants.IdPartSeparator
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.ApplicationConstants.IdPartSeparator
+  nameWithType: ApplicationConstants.IdPartSeparator
+- uid: Hexalith.Application.Modules.ApplicationConstants.NotificationBus
+  name: NotificationBus
+  href: api/Hexalith.Application.Modules.ApplicationConstants.html#Hexalith_Application_Modules_ApplicationConstants_NotificationBus
+  commentId: P:Hexalith.Application.Modules.ApplicationConstants.NotificationBus
+  fullName: Hexalith.Application.Modules.ApplicationConstants.NotificationBus
+  nameWithType: ApplicationConstants.NotificationBus
+- uid: Hexalith.Application.Modules.ApplicationConstants.NotificationBus*
+  name: NotificationBus
+  href: api/Hexalith.Application.Modules.ApplicationConstants.html#Hexalith_Application_Modules_ApplicationConstants_NotificationBus_
+  commentId: Overload:Hexalith.Application.Modules.ApplicationConstants.NotificationBus
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.ApplicationConstants.NotificationBus
+  nameWithType: ApplicationConstants.NotificationBus
+- uid: Hexalith.Application.Modules.ApplicationConstants.NotificationBusSuffix
+  name: NotificationBusSuffix
+  href: api/Hexalith.Application.Modules.ApplicationConstants.html#Hexalith_Application_Modules_ApplicationConstants_NotificationBusSuffix
+  commentId: P:Hexalith.Application.Modules.ApplicationConstants.NotificationBusSuffix
+  fullName: Hexalith.Application.Modules.ApplicationConstants.NotificationBusSuffix
+  nameWithType: ApplicationConstants.NotificationBusSuffix
+- uid: Hexalith.Application.Modules.ApplicationConstants.NotificationBusSuffix*
+  name: NotificationBusSuffix
+  href: api/Hexalith.Application.Modules.ApplicationConstants.html#Hexalith_Application_Modules_ApplicationConstants_NotificationBusSuffix_
+  commentId: Overload:Hexalith.Application.Modules.ApplicationConstants.NotificationBusSuffix
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.ApplicationConstants.NotificationBusSuffix
+  nameWithType: ApplicationConstants.NotificationBusSuffix
+- uid: Hexalith.Application.Modules.ApplicationConstants.NotificationDefaultAggregateName
+  name: NotificationDefaultAggregateName
+  href: api/Hexalith.Application.Modules.ApplicationConstants.html#Hexalith_Application_Modules_ApplicationConstants_NotificationDefaultAggregateName
+  commentId: P:Hexalith.Application.Modules.ApplicationConstants.NotificationDefaultAggregateName
+  fullName: Hexalith.Application.Modules.ApplicationConstants.NotificationDefaultAggregateName
+  nameWithType: ApplicationConstants.NotificationDefaultAggregateName
+- uid: Hexalith.Application.Modules.ApplicationConstants.NotificationDefaultAggregateName*
+  name: NotificationDefaultAggregateName
+  href: api/Hexalith.Application.Modules.ApplicationConstants.html#Hexalith_Application_Modules_ApplicationConstants_NotificationDefaultAggregateName_
+  commentId: Overload:Hexalith.Application.Modules.ApplicationConstants.NotificationDefaultAggregateName
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.ApplicationConstants.NotificationDefaultAggregateName
+  nameWithType: ApplicationConstants.NotificationDefaultAggregateName
+- uid: Hexalith.Application.Modules.ApplicationConstants.RequestBus
+  name: RequestBus
+  href: api/Hexalith.Application.Modules.ApplicationConstants.html#Hexalith_Application_Modules_ApplicationConstants_RequestBus
+  commentId: P:Hexalith.Application.Modules.ApplicationConstants.RequestBus
+  fullName: Hexalith.Application.Modules.ApplicationConstants.RequestBus
+  nameWithType: ApplicationConstants.RequestBus
+- uid: Hexalith.Application.Modules.ApplicationConstants.RequestBus*
+  name: RequestBus
+  href: api/Hexalith.Application.Modules.ApplicationConstants.html#Hexalith_Application_Modules_ApplicationConstants_RequestBus_
+  commentId: Overload:Hexalith.Application.Modules.ApplicationConstants.RequestBus
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.ApplicationConstants.RequestBus
+  nameWithType: ApplicationConstants.RequestBus
+- uid: Hexalith.Application.Modules.ApplicationConstants.RequestBusSuffix
+  name: RequestBusSuffix
+  href: api/Hexalith.Application.Modules.ApplicationConstants.html#Hexalith_Application_Modules_ApplicationConstants_RequestBusSuffix
+  commentId: P:Hexalith.Application.Modules.ApplicationConstants.RequestBusSuffix
+  fullName: Hexalith.Application.Modules.ApplicationConstants.RequestBusSuffix
+  nameWithType: ApplicationConstants.RequestBusSuffix
+- uid: Hexalith.Application.Modules.ApplicationConstants.RequestBusSuffix*
+  name: RequestBusSuffix
+  href: api/Hexalith.Application.Modules.ApplicationConstants.html#Hexalith_Application_Modules_ApplicationConstants_RequestBusSuffix_
+  commentId: Overload:Hexalith.Application.Modules.ApplicationConstants.RequestBusSuffix
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.ApplicationConstants.RequestBusSuffix
+  nameWithType: ApplicationConstants.RequestBusSuffix
+- uid: Hexalith.Application.Modules.ApplicationConstants.StateName
+  name: StateName
+  href: api/Hexalith.Application.Modules.ApplicationConstants.html#Hexalith_Application_Modules_ApplicationConstants_StateName
+  commentId: P:Hexalith.Application.Modules.ApplicationConstants.StateName
+  fullName: Hexalith.Application.Modules.ApplicationConstants.StateName
+  nameWithType: ApplicationConstants.StateName
+- uid: Hexalith.Application.Modules.ApplicationConstants.StateName*
+  name: StateName
+  href: api/Hexalith.Application.Modules.ApplicationConstants.html#Hexalith_Application_Modules_ApplicationConstants_StateName_
+  commentId: Overload:Hexalith.Application.Modules.ApplicationConstants.StateName
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.ApplicationConstants.StateName
+  nameWithType: ApplicationConstants.StateName
+- uid: Hexalith.Application.Modules.ApplicationConstants.SystemUser
+  name: SystemUser
+  href: api/Hexalith.Application.Modules.ApplicationConstants.html#Hexalith_Application_Modules_ApplicationConstants_SystemUser
+  commentId: P:Hexalith.Application.Modules.ApplicationConstants.SystemUser
+  fullName: Hexalith.Application.Modules.ApplicationConstants.SystemUser
+  nameWithType: ApplicationConstants.SystemUser
+- uid: Hexalith.Application.Modules.ApplicationConstants.SystemUser*
+  name: SystemUser
+  href: api/Hexalith.Application.Modules.ApplicationConstants.html#Hexalith_Application_Modules_ApplicationConstants_SystemUser_
+  commentId: Overload:Hexalith.Application.Modules.ApplicationConstants.SystemUser
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.ApplicationConstants.SystemUser
+  nameWithType: ApplicationConstants.SystemUser
+- uid: Hexalith.Application.Modules.ApplicationConstants.TopicRequireSessions
+  name: TopicRequireSessions
+  href: api/Hexalith.Application.Modules.ApplicationConstants.html#Hexalith_Application_Modules_ApplicationConstants_TopicRequireSessions
+  commentId: P:Hexalith.Application.Modules.ApplicationConstants.TopicRequireSessions
+  fullName: Hexalith.Application.Modules.ApplicationConstants.TopicRequireSessions
+  nameWithType: ApplicationConstants.TopicRequireSessions
+- uid: Hexalith.Application.Modules.ApplicationConstants.TopicRequireSessions*
+  name: TopicRequireSessions
+  href: api/Hexalith.Application.Modules.ApplicationConstants.html#Hexalith_Application_Modules_ApplicationConstants_TopicRequireSessions_
+  commentId: Overload:Hexalith.Application.Modules.ApplicationConstants.TopicRequireSessions
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.ApplicationConstants.TopicRequireSessions
+  nameWithType: ApplicationConstants.TopicRequireSessions
+- uid: Hexalith.Application.Modules.Helpers
+  name: Hexalith.Application.Modules.Helpers
+  href: api/Hexalith.Application.Modules.Helpers.html
+  commentId: N:Hexalith.Application.Modules.Helpers
+  fullName: Hexalith.Application.Modules.Helpers
+  nameWithType: Hexalith.Application.Modules.Helpers
+- uid: Hexalith.Application.Modules.Helpers.ModuleHelper
+  name: ModuleHelper
+  href: api/Hexalith.Application.Modules.Helpers.ModuleHelper.html
+  commentId: T:Hexalith.Application.Modules.Helpers.ModuleHelper
+  fullName: Hexalith.Application.Modules.Helpers.ModuleHelper
+  nameWithType: ModuleHelper
+- uid: Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleClientServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
+  name: AddModuleClientServices(IServiceCollection, IConfiguration)
+  href: api/Hexalith.Application.Modules.Helpers.ModuleHelper.html#Hexalith_Application_Modules_Helpers_ModuleHelper_AddModuleClientServices_Microsoft_Extensions_DependencyInjection_IServiceCollection_Microsoft_Extensions_Configuration_IConfiguration_
+  commentId: M:Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleClientServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
+  fullName: Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleClientServices(Microsoft.Extensions.DependencyInjection.IServiceCollection, Microsoft.Extensions.Configuration.IConfiguration)
+  nameWithType: ModuleHelper.AddModuleClientServices(IServiceCollection, IConfiguration)
+- uid: Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleClientServices*
+  name: AddModuleClientServices
+  href: api/Hexalith.Application.Modules.Helpers.ModuleHelper.html#Hexalith_Application_Modules_Helpers_ModuleHelper_AddModuleClientServices_
+  commentId: Overload:Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleClientServices
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleClientServices
+  nameWithType: ModuleHelper.AddModuleClientServices
+- uid: Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleServerServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
+  name: AddModuleServerServices(IServiceCollection, IConfiguration)
+  href: api/Hexalith.Application.Modules.Helpers.ModuleHelper.html#Hexalith_Application_Modules_Helpers_ModuleHelper_AddModuleServerServices_Microsoft_Extensions_DependencyInjection_IServiceCollection_Microsoft_Extensions_Configuration_IConfiguration_
+  commentId: M:Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleServerServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
+  fullName: Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleServerServices(Microsoft.Extensions.DependencyInjection.IServiceCollection, Microsoft.Extensions.Configuration.IConfiguration)
+  nameWithType: ModuleHelper.AddModuleServerServices(IServiceCollection, IConfiguration)
+- uid: Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleServerServices*
+  name: AddModuleServerServices
+  href: api/Hexalith.Application.Modules.Helpers.ModuleHelper.html#Hexalith_Application_Modules_Helpers_ModuleHelper_AddModuleServerServices_
+  commentId: Overload:Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleServerServices
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleServerServices
+  nameWithType: ModuleHelper.AddModuleServerServices
+- uid: Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Hexalith.Application.Modules.Modules.ModuleType)
+  name: AddModuleServices(IServiceCollection, IConfiguration, ModuleType)
+  href: api/Hexalith.Application.Modules.Helpers.ModuleHelper.html#Hexalith_Application_Modules_Helpers_ModuleHelper_AddModuleServices_Microsoft_Extensions_DependencyInjection_IServiceCollection_Microsoft_Extensions_Configuration_IConfiguration_Hexalith_Application_Modules_Modules_ModuleType_
+  commentId: M:Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Hexalith.Application.Modules.Modules.ModuleType)
+  fullName: Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleServices(Microsoft.Extensions.DependencyInjection.IServiceCollection, Microsoft.Extensions.Configuration.IConfiguration, Hexalith.Application.Modules.Modules.ModuleType)
+  nameWithType: ModuleHelper.AddModuleServices(IServiceCollection, IConfiguration, ModuleType)
+- uid: Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleServices*
+  name: AddModuleServices
+  href: api/Hexalith.Application.Modules.Helpers.ModuleHelper.html#Hexalith_Application_Modules_Helpers_ModuleHelper_AddModuleServices_
+  commentId: Overload:Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleServices
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleServices
+  nameWithType: ModuleHelper.AddModuleServices
+- uid: Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleSharedServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
+  name: AddModuleSharedServices(IServiceCollection, IConfiguration)
+  href: api/Hexalith.Application.Modules.Helpers.ModuleHelper.html#Hexalith_Application_Modules_Helpers_ModuleHelper_AddModuleSharedServices_Microsoft_Extensions_DependencyInjection_IServiceCollection_Microsoft_Extensions_Configuration_IConfiguration_
+  commentId: M:Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleSharedServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
+  fullName: Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleSharedServices(Microsoft.Extensions.DependencyInjection.IServiceCollection, Microsoft.Extensions.Configuration.IConfiguration)
+  nameWithType: ModuleHelper.AddModuleSharedServices(IServiceCollection, IConfiguration)
+- uid: Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleSharedServices*
+  name: AddModuleSharedServices
+  href: api/Hexalith.Application.Modules.Helpers.ModuleHelper.html#Hexalith_Application_Modules_Helpers_ModuleHelper_AddModuleSharedServices_
+  commentId: Overload:Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleSharedServices
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleSharedServices
+  nameWithType: ModuleHelper.AddModuleSharedServices
+- uid: Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleStoreAppServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
+  name: AddModuleStoreAppServices(IServiceCollection, IConfiguration)
+  href: api/Hexalith.Application.Modules.Helpers.ModuleHelper.html#Hexalith_Application_Modules_Helpers_ModuleHelper_AddModuleStoreAppServices_Microsoft_Extensions_DependencyInjection_IServiceCollection_Microsoft_Extensions_Configuration_IConfiguration_
+  commentId: M:Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleStoreAppServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
+  fullName: Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleStoreAppServices(Microsoft.Extensions.DependencyInjection.IServiceCollection, Microsoft.Extensions.Configuration.IConfiguration)
+  nameWithType: ModuleHelper.AddModuleStoreAppServices(IServiceCollection, IConfiguration)
+- uid: Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleStoreAppServices*
+  name: AddModuleStoreAppServices
+  href: api/Hexalith.Application.Modules.Helpers.ModuleHelper.html#Hexalith_Application_Modules_Helpers_ModuleHelper_AddModuleStoreAppServices_
+  commentId: Overload:Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleStoreAppServices
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.Helpers.ModuleHelper.AddModuleStoreAppServices
+  nameWithType: ModuleHelper.AddModuleStoreAppServices
+- uid: Hexalith.Application.Modules.ModuleManager
+  name: ModuleManager
+  href: api/Hexalith.Application.Modules.ModuleManager.html
+  commentId: T:Hexalith.Application.Modules.ModuleManager
+  fullName: Hexalith.Application.Modules.ModuleManager
+  nameWithType: ModuleManager
+- uid: Hexalith.Application.Modules.ModuleManager.Modules
+  name: Modules
+  href: api/Hexalith.Application.Modules.ModuleManager.html#Hexalith_Application_Modules_ModuleManager_Modules
+  commentId: P:Hexalith.Application.Modules.ModuleManager.Modules
+  fullName: Hexalith.Application.Modules.ModuleManager.Modules
+  nameWithType: ModuleManager.Modules
+- uid: Hexalith.Application.Modules.ModuleManager.Modules*
+  name: Modules
+  href: api/Hexalith.Application.Modules.ModuleManager.html#Hexalith_Application_Modules_ModuleManager_Modules_
+  commentId: Overload:Hexalith.Application.Modules.ModuleManager.Modules
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.ModuleManager.Modules
+  nameWithType: ModuleManager.Modules
+- uid: Hexalith.Application.Modules.Modules
+  name: Hexalith.Application.Modules.Modules
+  href: api/Hexalith.Application.Modules.Modules.html
+  commentId: N:Hexalith.Application.Modules.Modules
+  fullName: Hexalith.Application.Modules.Modules
+  nameWithType: Hexalith.Application.Modules.Modules
+- uid: Hexalith.Application.Modules.Modules.IApplicationAction
   name: IApplicationAction
-  href: api/Hexalith.Application.Modules.IApplicationAction.html
-  commentId: T:Hexalith.Application.Modules.IApplicationAction
-  fullName: Hexalith.Application.Modules.IApplicationAction
+  href: api/Hexalith.Application.Modules.Modules.IApplicationAction.html
+  commentId: T:Hexalith.Application.Modules.Modules.IApplicationAction
+  fullName: Hexalith.Application.Modules.Modules.IApplicationAction
   nameWithType: IApplicationAction
-- uid: Hexalith.Application.Modules.IApplicationAction.Description
+- uid: Hexalith.Application.Modules.Modules.IApplicationAction.Description
   name: Description
-  href: api/Hexalith.Application.Modules.IApplicationAction.html#Hexalith_Application_Modules_IApplicationAction_Description
-  commentId: P:Hexalith.Application.Modules.IApplicationAction.Description
-  fullName: Hexalith.Application.Modules.IApplicationAction.Description
+  href: api/Hexalith.Application.Modules.Modules.IApplicationAction.html#Hexalith_Application_Modules_Modules_IApplicationAction_Description
+  commentId: P:Hexalith.Application.Modules.Modules.IApplicationAction.Description
+  fullName: Hexalith.Application.Modules.Modules.IApplicationAction.Description
   nameWithType: IApplicationAction.Description
-- uid: Hexalith.Application.Modules.IApplicationAction.Description*
+- uid: Hexalith.Application.Modules.Modules.IApplicationAction.Description*
   name: Description
-  href: api/Hexalith.Application.Modules.IApplicationAction.html#Hexalith_Application_Modules_IApplicationAction_Description_
-  commentId: Overload:Hexalith.Application.Modules.IApplicationAction.Description
+  href: api/Hexalith.Application.Modules.Modules.IApplicationAction.html#Hexalith_Application_Modules_Modules_IApplicationAction_Description_
+  commentId: Overload:Hexalith.Application.Modules.Modules.IApplicationAction.Description
   isSpec: "True"
-  fullName: Hexalith.Application.Modules.IApplicationAction.Description
+  fullName: Hexalith.Application.Modules.Modules.IApplicationAction.Description
   nameWithType: IApplicationAction.Description
-- uid: Hexalith.Application.Modules.IApplicationAction.Name
+- uid: Hexalith.Application.Modules.Modules.IApplicationAction.Name
   name: Name
-  href: api/Hexalith.Application.Modules.IApplicationAction.html#Hexalith_Application_Modules_IApplicationAction_Name
-  commentId: P:Hexalith.Application.Modules.IApplicationAction.Name
-  fullName: Hexalith.Application.Modules.IApplicationAction.Name
+  href: api/Hexalith.Application.Modules.Modules.IApplicationAction.html#Hexalith_Application_Modules_Modules_IApplicationAction_Name
+  commentId: P:Hexalith.Application.Modules.Modules.IApplicationAction.Name
+  fullName: Hexalith.Application.Modules.Modules.IApplicationAction.Name
   nameWithType: IApplicationAction.Name
-- uid: Hexalith.Application.Modules.IApplicationAction.Name*
+- uid: Hexalith.Application.Modules.Modules.IApplicationAction.Name*
   name: Name
-  href: api/Hexalith.Application.Modules.IApplicationAction.html#Hexalith_Application_Modules_IApplicationAction_Name_
-  commentId: Overload:Hexalith.Application.Modules.IApplicationAction.Name
+  href: api/Hexalith.Application.Modules.Modules.IApplicationAction.html#Hexalith_Application_Modules_Modules_IApplicationAction_Name_
+  commentId: Overload:Hexalith.Application.Modules.Modules.IApplicationAction.Name
   isSpec: "True"
-  fullName: Hexalith.Application.Modules.IApplicationAction.Name
+  fullName: Hexalith.Application.Modules.Modules.IApplicationAction.Name
   nameWithType: IApplicationAction.Name
-- uid: Hexalith.Application.Modules.IApplicationAction.ParentModule
+- uid: Hexalith.Application.Modules.Modules.IApplicationAction.ParentModule
   name: ParentModule
-  href: api/Hexalith.Application.Modules.IApplicationAction.html#Hexalith_Application_Modules_IApplicationAction_ParentModule
-  commentId: P:Hexalith.Application.Modules.IApplicationAction.ParentModule
-  fullName: Hexalith.Application.Modules.IApplicationAction.ParentModule
+  href: api/Hexalith.Application.Modules.Modules.IApplicationAction.html#Hexalith_Application_Modules_Modules_IApplicationAction_ParentModule
+  commentId: P:Hexalith.Application.Modules.Modules.IApplicationAction.ParentModule
+  fullName: Hexalith.Application.Modules.Modules.IApplicationAction.ParentModule
   nameWithType: IApplicationAction.ParentModule
-- uid: Hexalith.Application.Modules.IApplicationAction.ParentModule*
+- uid: Hexalith.Application.Modules.Modules.IApplicationAction.ParentModule*
   name: ParentModule
-  href: api/Hexalith.Application.Modules.IApplicationAction.html#Hexalith_Application_Modules_IApplicationAction_ParentModule_
-  commentId: Overload:Hexalith.Application.Modules.IApplicationAction.ParentModule
+  href: api/Hexalith.Application.Modules.Modules.IApplicationAction.html#Hexalith_Application_Modules_Modules_IApplicationAction_ParentModule_
+  commentId: Overload:Hexalith.Application.Modules.Modules.IApplicationAction.ParentModule
   isSpec: "True"
-  fullName: Hexalith.Application.Modules.IApplicationAction.ParentModule
+  fullName: Hexalith.Application.Modules.Modules.IApplicationAction.ParentModule
   nameWithType: IApplicationAction.ParentModule
-- uid: Hexalith.Application.Modules.IApplicationAction.Path
+- uid: Hexalith.Application.Modules.Modules.IApplicationAction.Path
   name: Path
-  href: api/Hexalith.Application.Modules.IApplicationAction.html#Hexalith_Application_Modules_IApplicationAction_Path
-  commentId: P:Hexalith.Application.Modules.IApplicationAction.Path
-  fullName: Hexalith.Application.Modules.IApplicationAction.Path
+  href: api/Hexalith.Application.Modules.Modules.IApplicationAction.html#Hexalith_Application_Modules_Modules_IApplicationAction_Path
+  commentId: P:Hexalith.Application.Modules.Modules.IApplicationAction.Path
+  fullName: Hexalith.Application.Modules.Modules.IApplicationAction.Path
   nameWithType: IApplicationAction.Path
-- uid: Hexalith.Application.Modules.IApplicationAction.Path*
+- uid: Hexalith.Application.Modules.Modules.IApplicationAction.Path*
   name: Path
-  href: api/Hexalith.Application.Modules.IApplicationAction.html#Hexalith_Application_Modules_IApplicationAction_Path_
-  commentId: Overload:Hexalith.Application.Modules.IApplicationAction.Path
+  href: api/Hexalith.Application.Modules.Modules.IApplicationAction.html#Hexalith_Application_Modules_Modules_IApplicationAction_Path_
+  commentId: Overload:Hexalith.Application.Modules.Modules.IApplicationAction.Path
   isSpec: "True"
-  fullName: Hexalith.Application.Modules.IApplicationAction.Path
+  fullName: Hexalith.Application.Modules.Modules.IApplicationAction.Path
   nameWithType: IApplicationAction.Path
-- uid: Hexalith.Application.Modules.IApplicationAction.Role
+- uid: Hexalith.Application.Modules.Modules.IApplicationAction.Role
   name: Role
-  href: api/Hexalith.Application.Modules.IApplicationAction.html#Hexalith_Application_Modules_IApplicationAction_Role
-  commentId: P:Hexalith.Application.Modules.IApplicationAction.Role
-  fullName: Hexalith.Application.Modules.IApplicationAction.Role
+  href: api/Hexalith.Application.Modules.Modules.IApplicationAction.html#Hexalith_Application_Modules_Modules_IApplicationAction_Role
+  commentId: P:Hexalith.Application.Modules.Modules.IApplicationAction.Role
+  fullName: Hexalith.Application.Modules.Modules.IApplicationAction.Role
   nameWithType: IApplicationAction.Role
-- uid: Hexalith.Application.Modules.IApplicationAction.Role*
+- uid: Hexalith.Application.Modules.Modules.IApplicationAction.Role*
   name: Role
-  href: api/Hexalith.Application.Modules.IApplicationAction.html#Hexalith_Application_Modules_IApplicationAction_Role_
-  commentId: Overload:Hexalith.Application.Modules.IApplicationAction.Role
+  href: api/Hexalith.Application.Modules.Modules.IApplicationAction.html#Hexalith_Application_Modules_Modules_IApplicationAction_Role_
+  commentId: Overload:Hexalith.Application.Modules.Modules.IApplicationAction.Role
   isSpec: "True"
-  fullName: Hexalith.Application.Modules.IApplicationAction.Role
+  fullName: Hexalith.Application.Modules.Modules.IApplicationAction.Role
   nameWithType: IApplicationAction.Role
-- uid: Hexalith.Application.Modules.IApplicationModule
+- uid: Hexalith.Application.Modules.Modules.IApplicationModule
   name: IApplicationModule
-  href: api/Hexalith.Application.Modules.IApplicationModule.html
-  commentId: T:Hexalith.Application.Modules.IApplicationModule
-  fullName: Hexalith.Application.Modules.IApplicationModule
+  href: api/Hexalith.Application.Modules.Modules.IApplicationModule.html
+  commentId: T:Hexalith.Application.Modules.Modules.IApplicationModule
+  fullName: Hexalith.Application.Modules.Modules.IApplicationModule
   nameWithType: IApplicationModule
-- uid: Hexalith.Application.Modules.IApplicationModule.Description
+- uid: Hexalith.Application.Modules.Modules.IApplicationModule.AddServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
+  name: AddServices(IServiceCollection, IConfiguration)
+  href: api/Hexalith.Application.Modules.Modules.IApplicationModule.html#Hexalith_Application_Modules_Modules_IApplicationModule_AddServices_Microsoft_Extensions_DependencyInjection_IServiceCollection_Microsoft_Extensions_Configuration_IConfiguration_
+  commentId: M:Hexalith.Application.Modules.Modules.IApplicationModule.AddServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
+  fullName: Hexalith.Application.Modules.Modules.IApplicationModule.AddServices(Microsoft.Extensions.DependencyInjection.IServiceCollection, Microsoft.Extensions.Configuration.IConfiguration)
+  nameWithType: IApplicationModule.AddServices(IServiceCollection, IConfiguration)
+- uid: Hexalith.Application.Modules.Modules.IApplicationModule.AddServices*
+  name: AddServices
+  href: api/Hexalith.Application.Modules.Modules.IApplicationModule.html#Hexalith_Application_Modules_Modules_IApplicationModule_AddServices_
+  commentId: Overload:Hexalith.Application.Modules.Modules.IApplicationModule.AddServices
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.Modules.IApplicationModule.AddServices
+  nameWithType: IApplicationModule.AddServices
+- uid: Hexalith.Application.Modules.Modules.IApplicationModule.Dependencies
+  name: Dependencies
+  href: api/Hexalith.Application.Modules.Modules.IApplicationModule.html#Hexalith_Application_Modules_Modules_IApplicationModule_Dependencies
+  commentId: P:Hexalith.Application.Modules.Modules.IApplicationModule.Dependencies
+  fullName: Hexalith.Application.Modules.Modules.IApplicationModule.Dependencies
+  nameWithType: IApplicationModule.Dependencies
+- uid: Hexalith.Application.Modules.Modules.IApplicationModule.Dependencies*
+  name: Dependencies
+  href: api/Hexalith.Application.Modules.Modules.IApplicationModule.html#Hexalith_Application_Modules_Modules_IApplicationModule_Dependencies_
+  commentId: Overload:Hexalith.Application.Modules.Modules.IApplicationModule.Dependencies
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.Modules.IApplicationModule.Dependencies
+  nameWithType: IApplicationModule.Dependencies
+- uid: Hexalith.Application.Modules.Modules.IApplicationModule.Description
   name: Description
-  href: api/Hexalith.Application.Modules.IApplicationModule.html#Hexalith_Application_Modules_IApplicationModule_Description
-  commentId: P:Hexalith.Application.Modules.IApplicationModule.Description
-  fullName: Hexalith.Application.Modules.IApplicationModule.Description
+  href: api/Hexalith.Application.Modules.Modules.IApplicationModule.html#Hexalith_Application_Modules_Modules_IApplicationModule_Description
+  commentId: P:Hexalith.Application.Modules.Modules.IApplicationModule.Description
+  fullName: Hexalith.Application.Modules.Modules.IApplicationModule.Description
   nameWithType: IApplicationModule.Description
-- uid: Hexalith.Application.Modules.IApplicationModule.Description*
+- uid: Hexalith.Application.Modules.Modules.IApplicationModule.Description*
   name: Description
-  href: api/Hexalith.Application.Modules.IApplicationModule.html#Hexalith_Application_Modules_IApplicationModule_Description_
-  commentId: Overload:Hexalith.Application.Modules.IApplicationModule.Description
+  href: api/Hexalith.Application.Modules.Modules.IApplicationModule.html#Hexalith_Application_Modules_Modules_IApplicationModule_Description_
+  commentId: Overload:Hexalith.Application.Modules.Modules.IApplicationModule.Description
   isSpec: "True"
-  fullName: Hexalith.Application.Modules.IApplicationModule.Description
+  fullName: Hexalith.Application.Modules.Modules.IApplicationModule.Description
   nameWithType: IApplicationModule.Description
-- uid: Hexalith.Application.Modules.IApplicationModule.Name
+- uid: Hexalith.Application.Modules.Modules.IApplicationModule.Id
+  name: Id
+  href: api/Hexalith.Application.Modules.Modules.IApplicationModule.html#Hexalith_Application_Modules_Modules_IApplicationModule_Id
+  commentId: P:Hexalith.Application.Modules.Modules.IApplicationModule.Id
+  fullName: Hexalith.Application.Modules.Modules.IApplicationModule.Id
+  nameWithType: IApplicationModule.Id
+- uid: Hexalith.Application.Modules.Modules.IApplicationModule.Id*
+  name: Id
+  href: api/Hexalith.Application.Modules.Modules.IApplicationModule.html#Hexalith_Application_Modules_Modules_IApplicationModule_Id_
+  commentId: Overload:Hexalith.Application.Modules.Modules.IApplicationModule.Id
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.Modules.IApplicationModule.Id
+  nameWithType: IApplicationModule.Id
+- uid: Hexalith.Application.Modules.Modules.IApplicationModule.ModuleType
+  name: ModuleType
+  href: api/Hexalith.Application.Modules.Modules.IApplicationModule.html#Hexalith_Application_Modules_Modules_IApplicationModule_ModuleType
+  commentId: P:Hexalith.Application.Modules.Modules.IApplicationModule.ModuleType
+  fullName: Hexalith.Application.Modules.Modules.IApplicationModule.ModuleType
+  nameWithType: IApplicationModule.ModuleType
+- uid: Hexalith.Application.Modules.Modules.IApplicationModule.ModuleType*
+  name: ModuleType
+  href: api/Hexalith.Application.Modules.Modules.IApplicationModule.html#Hexalith_Application_Modules_Modules_IApplicationModule_ModuleType_
+  commentId: Overload:Hexalith.Application.Modules.Modules.IApplicationModule.ModuleType
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.Modules.IApplicationModule.ModuleType
+  nameWithType: IApplicationModule.ModuleType
+- uid: Hexalith.Application.Modules.Modules.IApplicationModule.Name
   name: Name
-  href: api/Hexalith.Application.Modules.IApplicationModule.html#Hexalith_Application_Modules_IApplicationModule_Name
-  commentId: P:Hexalith.Application.Modules.IApplicationModule.Name
-  fullName: Hexalith.Application.Modules.IApplicationModule.Name
+  href: api/Hexalith.Application.Modules.Modules.IApplicationModule.html#Hexalith_Application_Modules_Modules_IApplicationModule_Name
+  commentId: P:Hexalith.Application.Modules.Modules.IApplicationModule.Name
+  fullName: Hexalith.Application.Modules.Modules.IApplicationModule.Name
   nameWithType: IApplicationModule.Name
-- uid: Hexalith.Application.Modules.IApplicationModule.Name*
+- uid: Hexalith.Application.Modules.Modules.IApplicationModule.Name*
   name: Name
-  href: api/Hexalith.Application.Modules.IApplicationModule.html#Hexalith_Application_Modules_IApplicationModule_Name_
-  commentId: Overload:Hexalith.Application.Modules.IApplicationModule.Name
+  href: api/Hexalith.Application.Modules.Modules.IApplicationModule.html#Hexalith_Application_Modules_Modules_IApplicationModule_Name_
+  commentId: Overload:Hexalith.Application.Modules.Modules.IApplicationModule.Name
   isSpec: "True"
-  fullName: Hexalith.Application.Modules.IApplicationModule.Name
+  fullName: Hexalith.Application.Modules.Modules.IApplicationModule.Name
   nameWithType: IApplicationModule.Name
-- uid: Hexalith.Application.Modules.IApplicationModule.Path
-  name: Path
-  href: api/Hexalith.Application.Modules.IApplicationModule.html#Hexalith_Application_Modules_IApplicationModule_Path
-  commentId: P:Hexalith.Application.Modules.IApplicationModule.Path
-  fullName: Hexalith.Application.Modules.IApplicationModule.Path
-  nameWithType: IApplicationModule.Path
-- uid: Hexalith.Application.Modules.IApplicationModule.Path*
-  name: Path
-  href: api/Hexalith.Application.Modules.IApplicationModule.html#Hexalith_Application_Modules_IApplicationModule_Path_
-  commentId: Overload:Hexalith.Application.Modules.IApplicationModule.Path
+- uid: Hexalith.Application.Modules.Modules.IApplicationModule.OrderWeight
+  name: OrderWeight
+  href: api/Hexalith.Application.Modules.Modules.IApplicationModule.html#Hexalith_Application_Modules_Modules_IApplicationModule_OrderWeight
+  commentId: P:Hexalith.Application.Modules.Modules.IApplicationModule.OrderWeight
+  fullName: Hexalith.Application.Modules.Modules.IApplicationModule.OrderWeight
+  nameWithType: IApplicationModule.OrderWeight
+- uid: Hexalith.Application.Modules.Modules.IApplicationModule.OrderWeight*
+  name: OrderWeight
+  href: api/Hexalith.Application.Modules.Modules.IApplicationModule.html#Hexalith_Application_Modules_Modules_IApplicationModule_OrderWeight_
+  commentId: Overload:Hexalith.Application.Modules.Modules.IApplicationModule.OrderWeight
   isSpec: "True"
-  fullName: Hexalith.Application.Modules.IApplicationModule.Path
+  fullName: Hexalith.Application.Modules.Modules.IApplicationModule.OrderWeight
+  nameWithType: IApplicationModule.OrderWeight
+- uid: Hexalith.Application.Modules.Modules.IApplicationModule.Path
+  name: Path
+  href: api/Hexalith.Application.Modules.Modules.IApplicationModule.html#Hexalith_Application_Modules_Modules_IApplicationModule_Path
+  commentId: P:Hexalith.Application.Modules.Modules.IApplicationModule.Path
+  fullName: Hexalith.Application.Modules.Modules.IApplicationModule.Path
   nameWithType: IApplicationModule.Path
-- uid: Hexalith.Application.Modules.IApplicationModule.Version
-  name: Version
-  href: api/Hexalith.Application.Modules.IApplicationModule.html#Hexalith_Application_Modules_IApplicationModule_Version
-  commentId: P:Hexalith.Application.Modules.IApplicationModule.Version
-  fullName: Hexalith.Application.Modules.IApplicationModule.Version
-  nameWithType: IApplicationModule.Version
-- uid: Hexalith.Application.Modules.IApplicationModule.Version*
-  name: Version
-  href: api/Hexalith.Application.Modules.IApplicationModule.html#Hexalith_Application_Modules_IApplicationModule_Version_
-  commentId: Overload:Hexalith.Application.Modules.IApplicationModule.Version
+- uid: Hexalith.Application.Modules.Modules.IApplicationModule.Path*
+  name: Path
+  href: api/Hexalith.Application.Modules.Modules.IApplicationModule.html#Hexalith_Application_Modules_Modules_IApplicationModule_Path_
+  commentId: Overload:Hexalith.Application.Modules.Modules.IApplicationModule.Path
   isSpec: "True"
-  fullName: Hexalith.Application.Modules.IApplicationModule.Version
+  fullName: Hexalith.Application.Modules.Modules.IApplicationModule.Path
+  nameWithType: IApplicationModule.Path
+- uid: Hexalith.Application.Modules.Modules.IApplicationModule.Version
+  name: Version
+  href: api/Hexalith.Application.Modules.Modules.IApplicationModule.html#Hexalith_Application_Modules_Modules_IApplicationModule_Version
+  commentId: P:Hexalith.Application.Modules.Modules.IApplicationModule.Version
+  fullName: Hexalith.Application.Modules.Modules.IApplicationModule.Version
   nameWithType: IApplicationModule.Version
+- uid: Hexalith.Application.Modules.Modules.IApplicationModule.Version*
+  name: Version
+  href: api/Hexalith.Application.Modules.Modules.IApplicationModule.html#Hexalith_Application_Modules_Modules_IApplicationModule_Version_
+  commentId: Overload:Hexalith.Application.Modules.Modules.IApplicationModule.Version
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.Modules.IApplicationModule.Version
+  nameWithType: IApplicationModule.Version
+- uid: Hexalith.Application.Modules.Modules.ModuleType
+  name: ModuleType
+  href: api/Hexalith.Application.Modules.Modules.ModuleType.html
+  commentId: T:Hexalith.Application.Modules.Modules.ModuleType
+  fullName: Hexalith.Application.Modules.Modules.ModuleType
+  nameWithType: ModuleType
+- uid: Hexalith.Application.Modules.Modules.ModuleType.Client
+  name: Client
+  href: api/Hexalith.Application.Modules.Modules.ModuleType.html#Hexalith_Application_Modules_Modules_ModuleType_Client
+  commentId: F:Hexalith.Application.Modules.Modules.ModuleType.Client
+  fullName: Hexalith.Application.Modules.Modules.ModuleType.Client
+  nameWithType: ModuleType.Client
+- uid: Hexalith.Application.Modules.Modules.ModuleType.Server
+  name: Server
+  href: api/Hexalith.Application.Modules.Modules.ModuleType.html#Hexalith_Application_Modules_Modules_ModuleType_Server
+  commentId: F:Hexalith.Application.Modules.Modules.ModuleType.Server
+  fullName: Hexalith.Application.Modules.Modules.ModuleType.Server
+  nameWithType: ModuleType.Server
+- uid: Hexalith.Application.Modules.Modules.ModuleType.Shared
+  name: Shared
+  href: api/Hexalith.Application.Modules.Modules.ModuleType.html#Hexalith_Application_Modules_Modules_ModuleType_Shared
+  commentId: F:Hexalith.Application.Modules.Modules.ModuleType.Shared
+  fullName: Hexalith.Application.Modules.Modules.ModuleType.Shared
+  nameWithType: ModuleType.Shared
+- uid: Hexalith.Application.Modules.Modules.ModuleType.StoreApp
+  name: StoreApp
+  href: api/Hexalith.Application.Modules.Modules.ModuleType.html#Hexalith_Application_Modules_Modules_ModuleType_StoreApp
+  commentId: F:Hexalith.Application.Modules.Modules.ModuleType.StoreApp
+  fullName: Hexalith.Application.Modules.Modules.ModuleType.StoreApp
+  nameWithType: ModuleType.StoreApp
+- uid: Hexalith.Application.Modules.Routes
+  name: Hexalith.Application.Modules.Routes
+  href: api/Hexalith.Application.Modules.Routes.html
+  commentId: N:Hexalith.Application.Modules.Routes
+  fullName: Hexalith.Application.Modules.Routes
+  nameWithType: Hexalith.Application.Modules.Routes
+- uid: Hexalith.Application.Modules.Routes.IRouteManager
+  name: IRouteManager
+  href: api/Hexalith.Application.Modules.Routes.IRouteManager.html
+  commentId: T:Hexalith.Application.Modules.Routes.IRouteManager
+  fullName: Hexalith.Application.Modules.Routes.IRouteManager
+  nameWithType: IRouteManager
+- uid: Hexalith.Application.Modules.Routes.IRouteManager.MapPath(System.String)
+  name: MapPath(String)
+  href: api/Hexalith.Application.Modules.Routes.IRouteManager.html#Hexalith_Application_Modules_Routes_IRouteManager_MapPath_System_String_
+  commentId: M:Hexalith.Application.Modules.Routes.IRouteManager.MapPath(System.String)
+  fullName: Hexalith.Application.Modules.Routes.IRouteManager.MapPath(System.String)
+  nameWithType: IRouteManager.MapPath(String)
+- uid: Hexalith.Application.Modules.Routes.IRouteManager.MapPath*
+  name: MapPath
+  href: api/Hexalith.Application.Modules.Routes.IRouteManager.html#Hexalith_Application_Modules_Routes_IRouteManager_MapPath_
+  commentId: Overload:Hexalith.Application.Modules.Routes.IRouteManager.MapPath
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.Routes.IRouteManager.MapPath
+  nameWithType: IRouteManager.MapPath
+- uid: Hexalith.Application.Modules.Routes.IRouteProvider
+  name: IRouteProvider
+  href: api/Hexalith.Application.Modules.Routes.IRouteProvider.html
+  commentId: T:Hexalith.Application.Modules.Routes.IRouteProvider
+  fullName: Hexalith.Application.Modules.Routes.IRouteProvider
+  nameWithType: IRouteProvider
+- uid: Hexalith.Application.Modules.Routes.IRouteProvider.MapPath(System.String)
+  name: MapPath(String)
+  href: api/Hexalith.Application.Modules.Routes.IRouteProvider.html#Hexalith_Application_Modules_Routes_IRouteProvider_MapPath_System_String_
+  commentId: M:Hexalith.Application.Modules.Routes.IRouteProvider.MapPath(System.String)
+  fullName: Hexalith.Application.Modules.Routes.IRouteProvider.MapPath(System.String)
+  nameWithType: IRouteProvider.MapPath(String)
+- uid: Hexalith.Application.Modules.Routes.IRouteProvider.MapPath*
+  name: MapPath
+  href: api/Hexalith.Application.Modules.Routes.IRouteProvider.html#Hexalith_Application_Modules_Routes_IRouteProvider_MapPath_
+  commentId: Overload:Hexalith.Application.Modules.Routes.IRouteProvider.MapPath
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.Routes.IRouteProvider.MapPath
+  nameWithType: IRouteProvider.MapPath
+- uid: Hexalith.Application.Modules.Routes.RouteManager
+  name: RouteManager
+  href: api/Hexalith.Application.Modules.Routes.RouteManager.html
+  commentId: T:Hexalith.Application.Modules.Routes.RouteManager
+  fullName: Hexalith.Application.Modules.Routes.RouteManager
+  nameWithType: RouteManager
 - uid: Hexalith.Application.Notifications
   name: Hexalith.Application.Notifications
   href: api/Hexalith.Application.Notifications.html
@@ -11447,13 +11869,27 @@ references:
 - uid: Hexalith.Domain.Notifications.BaseNotification.UndefinedAggregateId
   name: UndefinedAggregateId
   href: api/Hexalith.Domain.Notifications.BaseNotification.html#Hexalith_Domain_Notifications_BaseNotification_UndefinedAggregateId
-  commentId: F:Hexalith.Domain.Notifications.BaseNotification.UndefinedAggregateId
+  commentId: P:Hexalith.Domain.Notifications.BaseNotification.UndefinedAggregateId
+  fullName: Hexalith.Domain.Notifications.BaseNotification.UndefinedAggregateId
+  nameWithType: BaseNotification.UndefinedAggregateId
+- uid: Hexalith.Domain.Notifications.BaseNotification.UndefinedAggregateId*
+  name: UndefinedAggregateId
+  href: api/Hexalith.Domain.Notifications.BaseNotification.html#Hexalith_Domain_Notifications_BaseNotification_UndefinedAggregateId_
+  commentId: Overload:Hexalith.Domain.Notifications.BaseNotification.UndefinedAggregateId
+  isSpec: "True"
   fullName: Hexalith.Domain.Notifications.BaseNotification.UndefinedAggregateId
   nameWithType: BaseNotification.UndefinedAggregateId
 - uid: Hexalith.Domain.Notifications.BaseNotification.UndefinedAggregateName
   name: UndefinedAggregateName
   href: api/Hexalith.Domain.Notifications.BaseNotification.html#Hexalith_Domain_Notifications_BaseNotification_UndefinedAggregateName
-  commentId: F:Hexalith.Domain.Notifications.BaseNotification.UndefinedAggregateName
+  commentId: P:Hexalith.Domain.Notifications.BaseNotification.UndefinedAggregateName
+  fullName: Hexalith.Domain.Notifications.BaseNotification.UndefinedAggregateName
+  nameWithType: BaseNotification.UndefinedAggregateName
+- uid: Hexalith.Domain.Notifications.BaseNotification.UndefinedAggregateName*
+  name: UndefinedAggregateName
+  href: api/Hexalith.Domain.Notifications.BaseNotification.html#Hexalith_Domain_Notifications_BaseNotification_UndefinedAggregateName_
+  commentId: Overload:Hexalith.Domain.Notifications.BaseNotification.UndefinedAggregateName
+  isSpec: "True"
   fullName: Hexalith.Domain.Notifications.BaseNotification.UndefinedAggregateName
   nameWithType: BaseNotification.UndefinedAggregateName
 - uid: Hexalith.Domain.Organizations.Aggregates

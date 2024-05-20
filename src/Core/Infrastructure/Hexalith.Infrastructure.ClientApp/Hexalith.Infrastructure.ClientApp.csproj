@@ -14,6 +14,7 @@
 		<PackageReference Include="Blazored.SessionStorage" Version="$(BlazoredSessionStorageVersion)" />
 	</ItemGroup>
 	<ItemGroup>
+		<ProjectReference Include="..\..\Application\Hexalith.Application.Modules\Hexalith.Application.Modules.csproj" />
 		<ProjectReference Include="..\..\Application\Hexalith.Application.Organizations\Hexalith.Application.Organizations.csproj" />
 		<ProjectReference Include="..\Hexalith.Infrastructure.Emails.SendGrid\Hexalith.Infrastructure.Emails.SendGrid.csproj" />
 	</ItemGroup>
