@@ -4,7 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Application.Routes;
+namespace Hexalith.Application.Modules.Routes;
 
 /// <summary>
 /// Represents a route alias manager.

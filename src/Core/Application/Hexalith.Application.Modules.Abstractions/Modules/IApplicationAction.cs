@@ -4,8 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Application.Modules;
-
+namespace Hexalith.Application.Modules.Modules;
 /// <summary>
 /// Represents a module action.
 /// </summary>

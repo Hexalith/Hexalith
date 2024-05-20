@@ -4,7 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Application.Modules;
+namespace Hexalith.Application.Modules.Modules;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,14 +19,36 @@ using Microsoft.Extensions.DependencyInjection;
 public interface IApplicationModule
 {
     /// <summary>
+    /// Gets the dependencies.
+    /// </summary>
+    /// <value>The dependencies.</value>
+    IEnumerable<string> Dependencies { get; }
+
+    /// <summary>
     /// Gets the description of the module.
     /// </summary>
     string Description { get; }
 
     /// <summary>
+    /// Gets the unique identifier of the module.
+    /// </summary>
+    string Id { get; }
+
+    /// <summary>
+    /// Gets the type of the module.
+    /// </summary>
+    ModuleType ModuleType { get; }
+
+    /// <summary>
     /// Gets the name of the module.
     /// </summary>
     string Name { get; }
+
+    /// <summary>
+    /// Gets or sets the order weight.
+    /// </summary>
+    /// <value>The order weight.</value>
+    int OrderWeight { get; set; }
 
     /// <summary>
     /// Gets the path of the module.
@@ -39,9 +61,9 @@ public interface IApplicationModule
     string Version { get; }
 
     /// <summary>
-    /// Adds the application shared services.
+    /// Adds the application services.
     /// </summary>
     /// <param name="services">The services.</param>
     /// <param name="configuration">The configuration.</param>
-    void AddSharedServices(IServiceCollection services, IConfiguration configuration);
+    void AddServices(IServiceCollection services, IConfiguration configuration);
 }
