@@ -39,6 +39,13 @@ using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.Infrastructure.DaprRuntime.States;
 
+/// <summary>
+/// The aggregate manager actor class.
+/// Implements the <see cref="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase" />
+/// Implements the <see cref="IAggregateActor" />.
+/// </summary>
+/// <seealso cref="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase" />
+/// <seealso cref="IAggregateActor" />
 public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregateActor
 {
     private readonly IAggregateFactory _aggregateFactory;

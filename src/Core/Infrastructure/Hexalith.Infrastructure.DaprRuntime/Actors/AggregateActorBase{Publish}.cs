@@ -15,10 +15,9 @@
 // ***********************************************************************
 namespace Hexalith.Infrastructure.DaprRuntime.Sales.Actors;
 
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
-
-using Dapr.Actors;
 
 using Hexalith.Application.Commands;
 using Hexalith.Application.Requests;
@@ -27,16 +26,29 @@ using Hexalith.Domain.Events;
 using Hexalith.Domain.Notifications;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Abstractions;
+using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 
 using Microsoft.Extensions.Logging;
 
 /// <summary>
-/// Logistics partner catalog item aggregate actor interface <see cref="BspkSalesInvoice" />.
-/// Extends the <see cref="IActor" />.
+/// The aggregate manager actor class.
+/// Implements the <see cref="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase" />
+/// Implements the <see cref="IAggregateActor" />.
 /// </summary>
+/// <seealso cref="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase" />
+/// <seealso cref="IAggregateActor" />
 public abstract partial class AggregateActorBase
 {
+    /// <summary>
+    /// Logs the invalid publish message error.
+    /// </summary>
+    /// <param name="logger">The logger.</param>
+    /// <param name="sequence">The sequence.</param>
+    /// <param name="messageId">The message identifier.</param>
+    /// <param name="messageType">Type of the message.</param>
+    /// <param name="correlationId">The correlation identifier.</param>
+    /// <param name="aggregateId">The aggregate identifier.</param>
     [LoggerMessage(
         EventId = 5,
         Level = LogLevel.Error,
@@ -49,11 +61,34 @@ public abstract partial class AggregateActorBase
             string? correlationId,
             string? aggregateId);
 
+    /// <summary>
+    /// Logs the publish error.
+    /// </summary>
+    /// <param name="logger">The logger.</param>
+    /// <param name="exception">The exception.</param>
+    /// <param name="messageSequence">The message sequence.</param>
+    /// <param name="messageId">The message identifier.</param>
+    /// <param name="correlationId">The correlation identifier.</param>
+    /// <param name="actorId">The actor identifier.</param>
+    /// <param name="actorType">Type of the actor.</param>
+    /// <param name="errorMessage">The error message.</param>
     [LoggerMessage(
             EventId = 6,
             Level = LogLevel.Warning,
             Message = "Publish message {MessageSequence} (Id={MessageId}; CorrelationId={CorrelationId}) operation failed on actor {ActorType}/{ActorId}. Error : {ErrorMessage}")]
-    public static partial void LogPublishError(ILogger logger, Exception exception, long messageSequence, string? messageId, string? correlationId, string actorId, string actorType, string errorMessage);
+    [SuppressMessage(
+        "Major Code Smell",
+        "S107:Methods should not have too many parameters",
+        Justification = "Ignore for logging")]
+    public static partial void LogPublishError(
+        ILogger logger,
+        Exception exception,
+        long messageSequence,
+        string? messageId,
+        string? correlationId,
+        string actorId,
+        string actorType,
+        string errorMessage);
 
     /// <inheritdoc/>
     public async Task PublishCallbackAsync() => await PublishNextMessageAsync().ConfigureAwait(false);
@@ -85,11 +120,14 @@ public abstract partial class AggregateActorBase
         return state.LastMessagePublished < state.MessageCount;
     }
 
+    [SuppressMessage(
+        "Design",
+        "CA1031:Do not catch general exception types",
+        Justification = "All errors must be caught to avoid actor transaction rollback. The message will be republished later.")]
     private async Task PublishNextEmittedMessageAsync(MessageState messageState, long sequence, CancellationToken cancellationToken)
     {
         AggregateActorState state = await GetAggregateStateAsync(cancellationToken).ConfigureAwait(false);
         state.PublishFailed = false;
-#pragma warning disable CA1031 // Do not catch general exception types
         try
         {
             if (messageState.Message is BaseEvent ev)
@@ -134,7 +172,6 @@ public abstract partial class AggregateActorBase
                 ex.FullMessage());
             return;
         }
-#pragma warning restore CA1031 // Do not catch general exception types
 
         state.LastMessagePublished = sequence;
         LogInvalidPublishMessageError(

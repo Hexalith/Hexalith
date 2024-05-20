@@ -24,12 +24,8 @@ using Hexalith.Application;
 using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 
 /// <summary>
-/// Class NumberSequenceActor.
-/// Implements the <see cref="Actor" />
-/// Implements the <see cref="Hexalith.Infrastructure.DaprRuntime.Actors.INumberSequenceActor" />.
+/// Number sequence actor class.
 /// </summary>
-/// <seealso cref="Actor" />
-/// <seealso cref="Hexalith.Infrastructure.DaprRuntime.Actors.INumberSequenceActor" />
 public class NumberSequenceActor : Actor, INumberSequenceActor
 {
     /// <summary>

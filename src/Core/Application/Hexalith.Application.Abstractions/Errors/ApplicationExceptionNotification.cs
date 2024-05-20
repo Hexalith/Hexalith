@@ -79,21 +79,42 @@ public class ApplicationExceptionNotification : BaseNotification
     /// <summary>
     /// Initializes a new instance of the <see cref="ApplicationExceptionNotification"/> class.
     /// </summary>
-    /// <param name="correlationId">The correlation identifier.</param>
     /// <param name="sourceAggregateName">Name of the source aggregate.</param>
     /// <param name="sourceAggregateId">The source aggregate identifier.</param>
     /// <param name="exception">The exception.</param>
     public ApplicationExceptionNotification(
-        string correlationId,
         string sourceAggregateName,
         string sourceAggregateId,
         ApplicationErrorException exception)
         : this(
               sourceAggregateName,
               sourceAggregateId,
-              (exception ?? throw new ArgumentNullException(nameof(exception))).Error?.Title ?? "Error",
-              (exception.Error == null || string.IsNullOrWhiteSpace(exception.Error.Detail)) ? exception.FullMessage() : StringHelper.FormatWithNamedPlaceholders(CultureInfo.InvariantCulture, exception.Error.Detail, exception.Error.Arguments),
-              (exception.Error == null || string.IsNullOrWhiteSpace(exception.Error.TechnicalDetail)) ? exception.FullMessage() : StringHelper.FormatWithNamedPlaceholders(CultureInfo.InvariantCulture, exception.Error.TechnicalDetail, exception.Error.TechnicalArguments))
+              GetTitle(exception),
+              GetMessage(exception),
+              GetTechnicalDescription(exception))
     {
     }
+
+    private static string GetMessage(ApplicationErrorException exception)
+    {
+        return exception.Error == null || string.IsNullOrWhiteSpace(exception.Error.Detail)
+            ? exception.FullMessage()
+            : StringHelper.FormatWithNamedPlaceholders(
+            CultureInfo.InvariantCulture,
+            exception.Error.Detail,
+            exception.Error.Arguments);
+    }
+
+    private static string GetTechnicalDescription(ApplicationErrorException exception)
+    {
+        return exception.Error == null || string.IsNullOrWhiteSpace(exception.Error.TechnicalDetail)
+            ? exception.FullMessage()
+            : StringHelper.FormatWithNamedPlaceholders(
+                CultureInfo.InvariantCulture,
+                exception.Error.TechnicalDetail,
+                exception.Error.TechnicalArguments);
+    }
+
+    private static string GetTitle(ApplicationErrorException exception)
+            => exception?.Error?.Title ?? "Error";
 }

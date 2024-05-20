@@ -1,21 +1,11 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Infrastructure.DaprRuntime.Sales
-// Author           : Jérôme Piquot
-// Created          : 01-02-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 01-03-2024
-// ***********************************************************************
-// <copyright file="AggregateActor.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="AggregateActor.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
+
 namespace Hexalith.Infrastructure.DaprRuntime.Sales.Actors;
 
-using Dapr.Actors;
 using Dapr.Actors.Runtime;
 
 using Hexalith.Application.Aggregates;
@@ -30,22 +20,12 @@ using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 using Microsoft.Extensions.Logging;
 
 /// <summary>
-/// Logistics partner catalog item aggregate actor interface <see cref="BspkSalesInvoice" />.
-/// Extends the <see cref="IActor" />.
+/// The aggregate manager actor class.
+/// Implements the <see cref="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase" />
+/// Implements the <see cref="IAggregateActor" />.
 /// </summary>
-/// <remarks>
-/// Initializes a new instance of the <see cref="AggregateActor"/> class.
-/// </remarks>
-/// <param name="host">The host.</param>
-/// <param name="commandDispatcher">The command dispatcher.</param>
-/// <param name="aggregateFactory">The aggregate factory.</param>
-/// <param name="dateTimeService">The date time service.</param>
-/// <param name="eventBus">The event bus.</param>
-/// <param name="notificationBus">The notification bus.</param>
-/// <param name="commandBus">The command bus.</param>
-/// <param name="requestBus">The request bus.</param>
-/// <param name="resiliencyPolicyProvider">The resiliency policy provider.</param>
-/// <param name="actorStateManager">The actor state manager.</param>
+/// <seealso cref="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase" />
+/// <seealso cref="IAggregateActor" />
 public partial class AggregateActor(
     ActorHost host,
     ICommandDispatcher commandDispatcher,
@@ -56,14 +36,15 @@ public partial class AggregateActor(
     ICommandBus commandBus,
     IRequestBus requestBus,
     IResiliencyPolicyProvider resiliencyPolicyProvider,
-    IActorStateManager? actorStateManager = null) : AggregateActorBase(host, commandDispatcher, aggregateFactory, dateTimeService, eventBus, notificationBus, commandBus, requestBus, resiliencyPolicyProvider, actorStateManager), IAggregateActor
+    IActorStateManager? actorStateManager = null)
+    : AggregateActorBase(host, commandDispatcher, aggregateFactory, dateTimeService, eventBus, notificationBus, commandBus, requestBus, resiliencyPolicyProvider, actorStateManager)
 {
     /// <summary>
-    /// Logs the processing commands information.
+    /// Logs information about processing commands for the actor.
     /// </summary>
-    /// <param name="logger">The logger.</param>
-    /// <param name="actorId">The actor identifier.</param>
-    /// <param name="actorType">Type of the actor.</param>
+    /// <param name="logger">The logger instance.</param>
+    /// <param name="actorId">The ID of the actor.</param>
+    /// <param name="actorType">The type of the actor.</param>
     [LoggerMessage(
             EventId = 1,
             Level = LogLevel.Information,

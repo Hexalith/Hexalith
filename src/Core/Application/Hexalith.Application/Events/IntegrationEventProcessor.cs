@@ -110,7 +110,6 @@ public partial class IntegrationEventProcessor : IIntegrationEventProcessor
 
             ApplicationErrorException appException = new(new EventDispatchFailed(baseEvent, ex), ex);
             ApplicationExceptionNotification notification = new(
-                metadata.Message.Id,
                 baseEvent.AggregateName,
                 baseEvent.AggregateId,
                 appException);

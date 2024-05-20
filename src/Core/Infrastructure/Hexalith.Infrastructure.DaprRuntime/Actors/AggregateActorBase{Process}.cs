@@ -20,8 +20,6 @@ using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Dapr.Actors;
-
 using Hexalith.Application.Commands;
 using Hexalith.Application.Errors;
 using Hexalith.Application.Metadatas;
@@ -31,14 +29,18 @@ using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Errors;
+using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 
 using Microsoft.Extensions.Logging;
 
 /// <summary>
-/// Logistics partner catalog item aggregate actor interface <see cref="BspkSalesInvoice" />.
-/// Extends the <see cref="IActor" />.
+/// The aggregate manager actor class.
+/// Implements the <see cref="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase" />
+/// Implements the <see cref="IAggregateActor" />.
 /// </summary>
+/// <seealso cref="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase" />
+/// <seealso cref="IAggregateActor" />
 public abstract partial class AggregateActorBase
 {
     private readonly TimeSpan _minimumDuplicateNotificationPeriod = TimeSpan.FromMinutes(15);
@@ -163,7 +165,6 @@ public abstract partial class AggregateActorBase
             state.RetryOnFailurePeriod = null;
             state.RetryOnFailureDateTime = null;
             messages = [new ApplicationExceptionNotification(
-                correlationId,
                 command.AggregateName,
                 command.AggregateId,
                 ex)];
@@ -173,7 +174,6 @@ public abstract partial class AggregateActorBase
             if (previousFailure == null || _dateTimeService.UtcNow.Subtract(previousFailure.Date) > _minimumDuplicateNotificationPeriod)
             {
                 messages = [new ApplicationExceptionNotification(
-                correlationId,
                 command.AggregateName,
                 command.AggregateId,
                 ex)];

@@ -17,12 +17,17 @@
 namespace Hexalith.Infrastructure.DaprRuntime.Actors;
 
 using System.Runtime.Serialization;
-using System.Runtime.Serialization.DataContracts;
 using System.Text.Json.Serialization;
 
+using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
+
 /// <summary>
-/// Class CommandProcessingState.
+/// The aggregate state class.
+/// Implements the <see cref="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase" />
+/// Implements the <see cref="IAggregateActor" />.
 /// </summary>
+/// <seealso cref="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase" />
+/// <seealso cref="IAggregateActor" />
 [Serializable]
 [DataContract]
 public class AggregateActorState

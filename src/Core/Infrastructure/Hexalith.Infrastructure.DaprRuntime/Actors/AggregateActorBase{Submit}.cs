@@ -19,8 +19,6 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Dapr.Actors;
-
 using Hexalith.Application.Commands;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.States;
@@ -28,9 +26,12 @@ using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 
 /// <summary>
-/// Logistics partner catalog item aggregate actor interface <see cref="BspkSalesInvoice" />.
-/// Extends the <see cref="IActor" />.
+/// The aggregate manager actor class.
+/// Implements the <see cref="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase" />
+/// Implements the <see cref="IAggregateActor" />.
 /// </summary>
+/// <seealso cref="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase" />
+/// <seealso cref="IAggregateActor" />
 public abstract partial class AggregateActorBase
 {
     /// <inheritdoc/>

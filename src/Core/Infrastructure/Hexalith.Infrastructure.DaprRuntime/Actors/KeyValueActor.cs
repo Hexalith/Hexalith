@@ -24,7 +24,7 @@ using Hexalith.Application;
 using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 
 /// <summary>
-/// Class KeyValueActor.
+/// Key value actor class.
 /// Implements the <see cref="Actor" />
 /// Implements the <see cref="Abstractions.Actors.IKeyValueActor" />.
 /// </summary>
