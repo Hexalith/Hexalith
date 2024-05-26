@@ -16,6 +16,7 @@ using FluentValidation;
 
 using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
+using Hexalith.Application.Modules;
 using Hexalith.Application.Modules.Helpers;
 using Hexalith.Application.Projections;
 using Hexalith.Application.Tasks;
@@ -26,7 +27,6 @@ using Hexalith.Infrastructure.WebApis.Helpers;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -76,7 +76,6 @@ public static class ServerSideClientAppHelper
             .AddModuleServerServices(builder.Configuration)
 
             // .AddAuthenticationUI(builder.Configuration)
-            .AddCascadingAuthenticationState()
             .AddEndpointsApiExplorer()
             .AddSwaggerGen(c => c.SwaggerDoc("v1", new() { Title = applicationName, Version = version, }))
             .AddDaprBuses(builder.Configuration)
@@ -124,10 +123,6 @@ public static class ServerSideClientAppHelper
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
-
-        // _ = builder.Services
-        //    .AddGeolocationServices()
-        //    .AddGooglePlacesServices(builder.Configuration);
         return builder;
     }
 
@@ -137,11 +132,9 @@ public static class ServerSideClientAppHelper
     /// <typeparam name="TApp">The type of the t application.</typeparam>
     /// <typeparam name="TUser">The type of the t user.</typeparam>
     /// <param name="app">The application.</param>
-    /// <param name="additionalAssemblies">The additional assemblies.</param>
     /// <returns>IApplicationBuilder.</returns>
     /// <exception cref="System.ArgumentNullException">null.</exception>
-    public static IApplicationBuilder UseHexalithWebApplication<TApp, TUser>([NotNull] this WebApplication app, Assembly[] additionalAssemblies)
-        where TUser : class, new()
+    public static IApplicationBuilder UseHexalithWebApplication<TApp>([NotNull] this WebApplication app)
     {
         ArgumentNullException.ThrowIfNull(app);
 
@@ -178,14 +171,16 @@ public static class ServerSideClientAppHelper
             .UseSession()
             .UseAntiforgery()
             .UseRequestLocalization();
-
+        Assembly[] assemblies = ModuleManager
+            .Modules
+            .SelectMany(p => p.Value.PresentationAssemblies)
+            .Distinct()
+            .ToArray();
         _ = app
             .MapRazorComponents<TApp>()
             .AddInteractiveServerRenderMode()
             .AddInteractiveWebAssemblyRenderMode()
-            .AddAdditionalAssemblies(additionalAssemblies);
-
-        _ = app.MapIdentityApi<TUser>();
+            .AddAdditionalAssemblies(assemblies);
 
         _ = app.MapActorsHandlers();
 

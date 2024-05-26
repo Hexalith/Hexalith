@@ -6,6 +6,8 @@
 
 namespace Hexalith.Application.Modules.Modules;
 
+using System.Reflection;
+
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -45,15 +47,21 @@ public interface IApplicationModule
     string Name { get; }
 
     /// <summary>
-    /// Gets or sets the order weight.
+    /// Gets the order weight.
     /// </summary>
     /// <value>The order weight.</value>
-    int OrderWeight { get; set; }
+    int OrderWeight { get; }
 
     /// <summary>
     /// Gets the path of the module.
     /// </summary>
     string Path { get; }
+
+    /// <summary>
+    /// Gets the module UI assemblies.
+    /// </summary>
+    /// <value>The UI assemblies.</value>
+    IEnumerable<Assembly> PresentationAssemblies { get; }
 
     /// <summary>
     /// Gets the version of the module.

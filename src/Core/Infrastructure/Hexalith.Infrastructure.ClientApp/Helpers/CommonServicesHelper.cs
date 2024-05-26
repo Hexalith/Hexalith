@@ -34,6 +34,7 @@ public static class CommonServicesHelper
         return services
             .AddMemoryCache()
             .AddLocalization()
+            .AddCascadingAuthenticationState()
             .AddOrganizations(configuration)
             .AddSendGridEmail(configuration)
             .AddSingleton(TimeProvider.System)

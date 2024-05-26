@@ -38,7 +38,6 @@ public static class WebAssemblyClientHelper
         _ = services
             .AddModuleClientServices(configuration)
             .AddAuthorizationCore()
-            .AddCascadingAuthenticationState()
             .AddHttpClient(
                 ClientConstants.FrontApiName,
                 client => client.BaseAddress = baseAddress)
@@ -46,8 +45,6 @@ public static class WebAssemblyClientHelper
         _ = services
             .AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>()
             .CreateClient(ClientConstants.FrontApiName));
-
-        // .AddSingleton<AuthenticationStateProvider, PersistentAuthenticationStateProvider>();
         return services;
     }
 
