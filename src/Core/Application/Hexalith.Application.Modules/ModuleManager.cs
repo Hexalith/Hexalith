@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 
@@ -54,6 +55,21 @@ public static class ModuleManager
         }
     }
 
+    /// <summary>
+    /// Checks if the specified type is a valid module.
+    /// </summary>
+    /// <typeparam name="TModule">The module type.</typeparam>
+    /// <param name="type">The type to check.</param>
+    /// <returns><c>true</c> if the type is a valid module; otherwise, <c>false</c>.</returns>
+    public static bool IsModule<TModule>([NotNull] Type type)
+    {
+        ArgumentNullException.ThrowIfNull(type);
+        return type.IsClass
+            && !type.IsAbstract
+            && typeof(TModule).IsAssignableFrom(type)
+            && type.GetConstructor(Type.EmptyTypes)?.IsPublic == true;
+    }
+
     private static void AddModule(this Dictionary<string, IApplicationModule> modules, Type type)
     {
         // create an instance of the module
@@ -66,13 +82,5 @@ public static class ModuleManager
         }
 
         Trace.TraceInformation($"Application module {module.Name} (Id:{module.Id};Type:{module.ModuleType}).");
-    }
-
-    private static bool IsModule<TModule>(Type type)
-    {
-        return type.IsClass
-            && !type.IsAbstract
-            && typeof(TModule).IsAssignableFrom(type)
-            && type.GetConstructor(Type.EmptyTypes)?.IsPublic == true;
     }
 }
