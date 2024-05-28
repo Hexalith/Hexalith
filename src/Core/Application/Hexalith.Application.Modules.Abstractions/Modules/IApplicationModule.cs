@@ -37,11 +37,6 @@ public interface IApplicationModule
     string Id { get; }
 
     /// <summary>
-    /// Gets the type of the module.
-    /// </summary>
-    ModuleType ModuleType { get; }
-
-    /// <summary>
     /// Gets the name of the module.
     /// </summary>
     string Name { get; }

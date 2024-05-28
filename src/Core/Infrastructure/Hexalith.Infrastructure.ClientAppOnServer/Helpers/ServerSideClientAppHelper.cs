@@ -17,7 +17,6 @@ using FluentValidation;
 using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Modules;
-using Hexalith.Application.Modules.Helpers;
 using Hexalith.Application.Projections;
 using Hexalith.Application.Tasks;
 using Hexalith.Domain.Messages;
@@ -73,7 +72,8 @@ public static class ServerSideClientAppHelper
 
         startupLogger.Information("Configuring {AppName} ...", applicationName);
         builder.Services
-            .AddModuleServerServices(builder.Configuration)
+
+            // .AddHexalithServerServices(builder.Configuration)
 
             // .AddAuthenticationUI(builder.Configuration)
             .AddEndpointsApiExplorer()
@@ -171,9 +171,10 @@ public static class ServerSideClientAppHelper
             .UseSession()
             .UseAntiforgery()
             .UseRequestLocalization();
-        Assembly[] assemblies = ModuleManager
-            .Modules
-            .SelectMany(p => p.Value.PresentationAssemblies)
+        ModuleManager moduleManager = app.Services.GetRequiredService<ModuleManager>();
+        Assembly[] assemblies = moduleManager
+            .ClientPresentationAssemblies
+            .Where(p => p != typeof(TApp).Assembly) // Do not add the server assembly that is already added
             .Distinct()
             .ToArray();
         _ = app

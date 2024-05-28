@@ -8,7 +8,6 @@ namespace Hexalith.Infrastructure.ClientAppOnWasm.Helpers;
 
 using System.Globalization;
 
-using Hexalith.Application.Modules.Helpers;
 using Hexalith.Infrastructure.ClientApp.Helpers;
 
 using HexalithApplication.Client;
@@ -36,7 +35,6 @@ public static class WebAssemblyClientHelper
     {
         _ = services.AddHexalithClientApp(configuration);
         _ = services
-            .AddModuleClientServices(configuration)
             .AddAuthorizationCore()
             .AddHttpClient(
                 ClientConstants.FrontApiName,

@@ -8,7 +8,7 @@ namespace Hexalith.Infrastructure.ClientApp.Helpers;
 
 using Blazored.SessionStorage;
 
-using Hexalith.Application.Modules.Helpers;
+using Hexalith.Application.Modules;
 using Hexalith.Application.Modules.Routes;
 using Hexalith.Application.Organizations.Helpers;
 using Hexalith.Extensions.Common;
@@ -40,8 +40,8 @@ public static class CommonServicesHelper
             .AddSingleton(TimeProvider.System)
             .AddSingleton<IDateTimeService, DateTimeService>()
             .AddSingleton<IRouteManager, RouteManager>()
+            .AddSingleton<ModuleManager>()
             .AddBlazoredSessionStorage()
-            .AddFluentUIComponents()
-            .AddModuleSharedServices(configuration);
+            .AddFluentUIComponents();
     }
 }
