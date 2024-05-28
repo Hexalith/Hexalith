@@ -48,6 +48,20 @@ public class ModuleManagerTest
             .BeOfType<DummyStoreAppModule>();
 
     [Fact]
+    public void ModuleManagerShouldReturnClientAssemby()
+    {
+        ILogger<ModuleManager> logger = Mock.Of<ILogger<ModuleManager>>();
+        IOptions<ModuleSettings> options = Options.Create(new ModuleSettings());
+
+        ModuleManager manager = new([], options, logger);
+        _ = ModuleManager.ClientModuleTypes.Should().HaveCount(1);
+        _ = manager
+            .ClientPresentationAssemblies
+            .Should()
+            .Contain(typeof(DummyClientModule).Assembly);
+    }
+
+    [Fact]
     public void ModuleManagerShouldReturnClientModule()
     {
         ILogger<ModuleManager> logger = Mock.Of<ILogger<ModuleManager>>();
@@ -61,6 +75,20 @@ public class ModuleManagerTest
             .OfType<DummyClientModule>()
             .Should()
             .HaveCount(1);
+    }
+
+    [Fact]
+    public void ModuleManagerShouldReturnServerAssemby()
+    {
+        ILogger<ModuleManager> logger = Mock.Of<ILogger<ModuleManager>>();
+        IOptions<ModuleSettings> options = Options.Create(new ModuleSettings());
+
+        ModuleManager manager = new([], options, logger);
+        _ = ModuleManager.ServerModuleTypes.Should().HaveCount(1);
+        _ = manager
+            .ServerPresentationAssemblies
+            .Should()
+            .Contain(typeof(DummyServerModule).Assembly);
     }
 
     [Fact]
@@ -93,6 +121,20 @@ public class ModuleManagerTest
             .OfType<DummySharedModule>()
             .Should()
             .HaveCount(1);
+    }
+
+    [Fact]
+    public void ModuleManagerShouldReturnStoreAppAssemby()
+    {
+        ILogger<ModuleManager> logger = Mock.Of<ILogger<ModuleManager>>();
+        IOptions<ModuleSettings> options = Options.Create(new ModuleSettings());
+
+        ModuleManager manager = new([], options, logger);
+        _ = ModuleManager.StoreAppModuleTypes.Should().HaveCount(1);
+        _ = manager
+            .StoreAppPresentationAssemblies
+            .Should()
+            .Contain(typeof(DummyStoreAppModule).Assembly);
     }
 
     [Fact]
