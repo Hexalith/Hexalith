@@ -9,10 +9,108 @@ namespace Hexalith.UnitTests.Core.Application.Modules;
 using FluentAssertions;
 
 using Hexalith.Application.Modules;
+using Hexalith.Application.Modules.Configurations;
 using Hexalith.Application.Modules.Modules;
+
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+
+using Moq;
 
 public class ModuleManagerTest
 {
+    [Fact]
+    public void ModuleManagerShouldInstanciateClientModule()
+        => ModuleManager
+            .GetModule<IClientApplicationModule>(typeof(DummyClientModule))
+            .Should()
+            .BeOfType<DummyClientModule>();
+
+    [Fact]
+    public void ModuleManagerShouldInstanciateServerModule()
+        => ModuleManager
+            .GetModule<IServerApplicationModule>(typeof(DummyServerModule))
+            .Should()
+            .BeOfType<DummyServerModule>();
+
+    [Fact]
+    public void ModuleManagerShouldInstanciateSharedModule()
+        => ModuleManager
+            .GetModule<ISharedApplicationModule>(typeof(DummySharedModule))
+            .Should()
+            .BeOfType<DummySharedModule>();
+
+    [Fact]
+    public void ModuleManagerShouldInstanciateStoreAppModule()
+        => ModuleManager
+            .GetModule<IStoreAppApplicationModule>(typeof(DummyStoreAppModule))
+            .Should()
+            .BeOfType<DummyStoreAppModule>();
+
+    [Fact]
+    public void ModuleManagerShouldReturnClientModule()
+    {
+        ILogger<ModuleManager> logger = Mock.Of<ILogger<ModuleManager>>();
+        IOptions<ModuleSettings> options = Options.Create(new ModuleSettings());
+
+        ModuleManager manager = new([], options, logger);
+        _ = ModuleManager.ClientModuleTypes.Should().HaveCount(1);
+        _ = manager
+            .ClientModules
+            .Select(p => p.Value)
+            .OfType<DummyClientModule>()
+            .Should()
+            .HaveCount(1);
+    }
+
+    [Fact]
+    public void ModuleManagerShouldReturnServerModule()
+    {
+        ILogger<ModuleManager> logger = Mock.Of<ILogger<ModuleManager>>();
+        IOptions<ModuleSettings> options = Options.Create(new ModuleSettings());
+
+        ModuleManager manager = new([], options, logger);
+        _ = ModuleManager.ServerModuleTypes.Should().HaveCount(1);
+        _ = manager
+            .ServerModules
+            .Select(p => p.Value)
+            .OfType<DummyServerModule>()
+            .Should()
+            .HaveCount(1);
+    }
+
+    [Fact]
+    public void ModuleManagerShouldReturnSharedModule()
+    {
+        ILogger<ModuleManager> logger = Mock.Of<ILogger<ModuleManager>>();
+        IOptions<ModuleSettings> options = Options.Create(new ModuleSettings());
+
+        ModuleManager manager = new([], options, logger);
+        _ = ModuleManager.SharedModuleTypes.Should().HaveCount(1);
+        _ = manager
+            .SharedModules
+            .Select(p => p.Value)
+            .OfType<DummySharedModule>()
+            .Should()
+            .HaveCount(1);
+    }
+
+    [Fact]
+    public void ModuleManagerShouldReturnStoreAppModule()
+    {
+        ILogger<ModuleManager> logger = Mock.Of<ILogger<ModuleManager>>();
+        IOptions<ModuleSettings> options = Options.Create(new ModuleSettings());
+
+        ModuleManager manager = new([], options, logger);
+        _ = ModuleManager.StoreAppModuleTypes.Should().HaveCount(1);
+        _ = manager
+            .StoreAppModules
+            .Select(p => p.Value)
+            .OfType<DummyStoreAppModule>()
+            .Should()
+            .HaveCount(1);
+    }
+
     [Fact]
     public void ReflectionShouldFindClientModuleType()
     {
