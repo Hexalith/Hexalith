@@ -1,4 +1,4 @@
-﻿// <copyright file="TestModule.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="DummyServerModule.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -14,17 +14,15 @@ using Hexalith.Application.Modules.Modules;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-internal class TestModule : IApplicationModule
+internal class DummyServerModule : IServerApplicationModule
 {
     public IEnumerable<string> Dependencies => [];
 
     public string Description => "Test module description";
 
-    public string Id => "Test1";
+    public string Id => "ServerTest";
 
-    public ModuleType ModuleType => ModuleType.Shared;
-
-    public string Name => "Test";
+    public string Name => "Server Test";
 
     public int OrderWeight => 66;
 

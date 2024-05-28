@@ -12,7 +12,7 @@
           "hash": "mLQc0aFezA/VPN2W2F6C0EjR/QvGQeROZuCTQXJ/EiE="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1301,11 +1301,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Application.Modules.Helpers.ModuleHelper.yml",
+      "source_relative_path": "api/Hexalith.Application.Modules.Configurations.ModuleSettings.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Hexalith.Application.Modules.Helpers.ModuleHelper.html",
-          "hash": "cBD6VFnqJxEK4JMs1j8pDONQUAgygA4sz3gHAj6MyP0="
+          "relative_path": "api/Hexalith.Application.Modules.Configurations.ModuleSettings.html",
+          "hash": "S/Azc9pj0qMPOqYDNZH/+Z5HKcdvx2BkQF89uc21c5Q="
         }
       },
       "is_incremental": false,
@@ -1313,11 +1313,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Application.Modules.Helpers.yml",
+      "source_relative_path": "api/Hexalith.Application.Modules.Configurations.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Hexalith.Application.Modules.Helpers.html",
-          "hash": "BMI5i/DSsROkQjnuDlI4hV9A5WTeeeZfkLBHcTajvP4="
+          "relative_path": "api/Hexalith.Application.Modules.Configurations.html",
+          "hash": "OYu5sJe3jWIymZOfTFEq4MQVsIOLlOMLzkIPh+NrM/c="
         }
       },
       "is_incremental": false,
@@ -1329,7 +1329,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Modules.ModuleManager.html",
-          "hash": "UpDnJXWI+sHnS1KDeu+zYJa06EoVyWKyoDkjGmgSMIE="
+          "hash": "N3WTf//Ras9CBq+Z0vnWoOq2cjEy4vc0QbqEFqpIOrU="
         }
       },
       "is_incremental": false,
@@ -1353,7 +1353,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Modules.Modules.IApplicationModule.html",
-          "hash": "OKv5jtHOf1uZm4IgOf4HnhKEdTmfOUHFOwhTghetjZA="
+          "hash": "kNHOtrvXvpBvvyKTGV5FYrVp3TvkEJmx8+C8oZewRRQ="
         }
       },
       "is_incremental": false,
@@ -1361,11 +1361,47 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Hexalith.Application.Modules.Modules.ModuleType.yml",
+      "source_relative_path": "api/Hexalith.Application.Modules.Modules.IClientApplicationModule.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Hexalith.Application.Modules.Modules.ModuleType.html",
-          "hash": "syjE+CP7HcZslc1n12hTydxfnqYfISgZWDFHW7+bfFg="
+          "relative_path": "api/Hexalith.Application.Modules.Modules.IClientApplicationModule.html",
+          "hash": "nu2P3q6IyPlzN+daWEM5JVsSr33eCMsabDQiL/oe1m0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Modules.Modules.IServerApplicationModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Modules.Modules.IServerApplicationModule.html",
+          "hash": "OiF4gdJJKJQ+sP2T60kxASdDC07vC9yBYmG9arSkxPU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Modules.Modules.ISharedApplicationModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Modules.Modules.ISharedApplicationModule.html",
+          "hash": "egErgrTRm0BBgsujvuTdLixqoxb7szS/YxOssrq0zgM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.Application.Modules.Modules.IStoreAppApplicationModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.Application.Modules.Modules.IStoreAppApplicationModule.html",
+          "hash": "X3Aw/XVYX3QMb+qL6rkvuUaPkeBIxdYMQ1hBjunU3Rs="
         }
       },
       "is_incremental": false,
@@ -1377,7 +1413,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Modules.Modules.html",
-          "hash": "hY1Qh4Pfsm0Buzvw4HJKU2gF2tFk1xqUn+Lh3a6cMXQ="
+          "hash": "46v7wFHuhcV+5/RmxxVq6vrAgZuq2xfopXoGzgx0HV0="
         }
       },
       "is_incremental": false,
@@ -3873,7 +3909,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.ClientApp.Helpers.CommonServicesHelper.html",
-          "hash": "sxi00Rz0KyY4MLt1KFPbdFSU7inc9lI9XVqPhlXdZmw="
+          "hash": "CdeLicJBYhcDp9k9084pD5qiDaL6WiIeIWJH/XqiDec="
         }
       },
       "is_incremental": false,
@@ -3897,7 +3933,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.ClientAppOnServer.Helpers.ServerSideClientAppHelper.html",
-          "hash": "ntVW58ouN9IooAI4KrsBbPoj4CBIEy84xAHux4sHdoM="
+          "hash": "U77ONaZoRUhRRFaGvZRNwLdTheY8NEwkL74BnKA3V6A="
         }
       },
       "is_incremental": false,
@@ -3921,7 +3957,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.ClientAppOnWasm.Helpers.WebAssemblyClientHelper.html",
-          "hash": "QUBGArGaTzWCLNv2G/8AqUm/euiswP3Ix/LIiox7JNI="
+          "hash": "YFHen5X57eqDqMCx/7wcF2wj5QAsWyN84ef+mC/dTOs="
         }
       },
       "is_incremental": false,
@@ -5517,7 +5553,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "GsiVN7UjPHR56Mc6xfxAQxoCUqqQyp/g5t5nBGx5sg0="
+          "hash": "Y6xtDXUe6yf8IohxyysQjdnWvL+FSh+LbWZQcTOX6SI="
         }
       },
       "is_incremental": false,
@@ -5532,7 +5568,7 @@
           "hash": "XREAr6iHtuka+aO7c3lTrh90rt0rybqw859u1tetgNM="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -5556,7 +5592,7 @@
           "hash": "vsW9ZvNJ7sOSf2pjIjuOSwvq6ulmUIdFPHc7lPEfC4Y="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -5575,23 +5611,25 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": true,
+        "can_incremental": false,
+        "details": "Disable incremental build by force rebuild option.",
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0
+        "skipped_file_count": 0,
+        "full_build_reason_code": "ForceRebuild"
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 4,
-          "skipped_file_count": 4
+          "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 457,
-          "skipped_file_count": 432
+          "total_file_count": 460,
+          "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
@@ -5604,8 +5642,8 @@
     },
     {
       "status": {
-        "can_incremental": true,
-        "details": "Can support incremental post processing.",
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0

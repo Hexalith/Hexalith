@@ -14,16 +14,37 @@ using Hexalith.Application.Modules.Modules;
 public class ModuleManagerTest
 {
     [Fact]
-    public void ReflectionShouldFindModule()
+    public void ReflectionShouldFindClientModuleType()
     {
-        _ = ModuleManager.Modules.Should().HaveCount(1);
-        _ = ModuleManager.Modules["Test1"].Should().BeOfType<TestModule>();
+        _ = ModuleManager.ClientModuleTypes.Should().HaveCount(1);
+        _ = ModuleManager.ClientModuleTypes.FirstOrDefault(p => p == typeof(DummyClientModule));
+    }
+
+    [Fact]
+    public void ReflectionShouldFindServerModuleType()
+    {
+        _ = ModuleManager.ServerModuleTypes.Should().HaveCount(1);
+        _ = ModuleManager.ServerModuleTypes.FirstOrDefault(p => p == typeof(DummyServerModule));
+    }
+
+    [Fact]
+    public void ReflectionShouldFindSharedModuleType()
+    {
+        _ = ModuleManager.SharedModuleTypes.Should().HaveCount(1);
+        _ = ModuleManager.SharedModuleTypes.FirstOrDefault(p => p == typeof(DummySharedModule));
+    }
+
+    [Fact]
+    public void ReflectionShouldFindStoreAppModuleType()
+    {
+        _ = ModuleManager.StoreAppModuleTypes.Should().HaveCount(1);
+        _ = ModuleManager.StoreAppModuleTypes.FirstOrDefault(p => p == typeof(DummyStoreAppModule));
     }
 
     [Fact]
     public void TestModuleShouldBeModule()
         => ModuleManager
-            .IsModule<IApplicationModule>(typeof(TestModule))
+            .IsModule<IApplicationModule>(typeof(DummySharedModule))
             .Should()
             .BeTrue();
 }

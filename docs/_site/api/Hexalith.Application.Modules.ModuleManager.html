@@ -109,25 +109,73 @@
   <h6><strong>Assembly</strong>: Hexalith.Application.Modules.dll</h6>
   <h5 id="Hexalith_Application_Modules_ModuleManager_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class ModuleManager</code></pre>
+    <pre><code class="lang-csharp hljs">public class ModuleManager</code></pre>
   </div>
-  <h3 id="properties">Properties
+  <h3 id="constructors">Constructors
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Modules_ModuleManager_Modules.md&amp;value=---%0Auid%3A%20Hexalith.Application.Modules.ModuleManager.Modules%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Modules_ModuleManager__ctor_System_Collections_Generic_IEnumerable_Hexalith_Application_Modules_Routes_IRouteProvider__Microsoft_Extensions_Options_IOptions_Hexalith_Application_Modules_Configurations_ModuleSettings__Microsoft_Extensions_Logging_ILogger_Hexalith_Application_Modules_ModuleManager__.md&amp;value=---%0Auid%3A%20Hexalith.Application.Modules.ModuleManager.%23ctor(System.Collections.Generic.IEnumerable%7BHexalith.Application.Modules.Routes.IRouteProvider%7D%2CMicrosoft.Extensions.Options.IOptions%7BHexalith.Application.Modules.Configurations.ModuleSettings%7D%2CMicrosoft.Extensions.Logging.ILogger%7BHexalith.Application.Modules.ModuleManager%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Modules/ModuleManager.cs/#L28">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Modules/ModuleManager.cs/#L50">View Source</a>
   </span>
-  <a id="Hexalith_Application_Modules_ModuleManager_Modules_" data-uid="Hexalith.Application.Modules.ModuleManager.Modules*"></a>
-  <h4 id="Hexalith_Application_Modules_ModuleManager_Modules" data-uid="Hexalith.Application.Modules.ModuleManager.Modules">Modules</h4>
-  <div class="markdown level1 summary"><p>Gets the collection of application modules.</p>
+  <a id="Hexalith_Application_Modules_ModuleManager__ctor_" data-uid="Hexalith.Application.Modules.ModuleManager.#ctor*"></a>
+  <h4 id="Hexalith_Application_Modules_ModuleManager__ctor_System_Collections_Generic_IEnumerable_Hexalith_Application_Modules_Routes_IRouteProvider__Microsoft_Extensions_Options_IOptions_Hexalith_Application_Modules_Configurations_ModuleSettings__Microsoft_Extensions_Logging_ILogger_Hexalith_Application_Modules_ModuleManager__" data-uid="Hexalith.Application.Modules.ModuleManager.#ctor(System.Collections.Generic.IEnumerable{Hexalith.Application.Modules.Routes.IRouteProvider},Microsoft.Extensions.Options.IOptions{Hexalith.Application.Modules.Configurations.ModuleSettings},Microsoft.Extensions.Logging.ILogger{Hexalith.Application.Modules.ModuleManager})">ModuleManager(IEnumerable&lt;IRouteProvider&gt;, IOptions&lt;ModuleSettings&gt;, ILogger&lt;ModuleManager&gt;)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Application.Modules.ModuleManager.html">ModuleManager</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IDictionary&lt;string, IApplicationModule&gt; Modules { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public ModuleManager(IEnumerable&lt;IRouteProvider&gt; routes, IOptions&lt;ModuleSettings&gt; options, ILogger&lt;ModuleManager&gt; logger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Hexalith.Application.Modules.Routes.IRouteProvider.html">IRouteProvider</a>&gt;</td>
+        <td><span class="parametername">routes</span></td>
+        <td><p>The collection of route providers.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Options.IOptions</span>&lt;<a class="xref" href="Hexalith.Application.Modules.Configurations.ModuleSettings.html">ModuleSettings</a>&gt;</td>
+        <td><span class="parametername">options</span></td>
+        <td><p>The module settings options.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Logging.ILogger</span>&lt;<a class="xref" href="Hexalith.Application.Modules.ModuleManager.html">ModuleManager</a>&gt;</td>
+        <td><span class="parametername">logger</span></td>
+        <td><p>The logger.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Modules_ModuleManager_ClientModules.md&amp;value=---%0Auid%3A%20Hexalith.Application.Modules.ModuleManager.ClientModules%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Modules/ModuleManager.cs/#L96">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Modules_ModuleManager_ClientModules_" data-uid="Hexalith.Application.Modules.ModuleManager.ClientModules*"></a>
+  <h4 id="Hexalith_Application_Modules_ModuleManager_ClientModules" data-uid="Hexalith.Application.Modules.ModuleManager.ClientModules">ClientModules</h4>
+  <div class="markdown level1 summary"><p>Gets the client application module types.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDictionary&lt;string, IClientApplicationModule&gt; ClientModules { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -139,11 +187,603 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="Hexalith.Application.Modules.Modules.IApplicationModule.html">IApplicationModule</a>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="Hexalith.Application.Modules.Modules.IClientApplicationModule.html">IClientApplicationModule</a>&gt;</td>
+        <td><p>The module types.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Modules_ModuleManager_ClientModuleTypes.md&amp;value=---%0Auid%3A%20Hexalith.Application.Modules.ModuleManager.ClientModuleTypes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Modules/ModuleManager.cs/#L68">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Modules_ModuleManager_ClientModuleTypes_" data-uid="Hexalith.Application.Modules.ModuleManager.ClientModuleTypes*"></a>
+  <h4 id="Hexalith_Application_Modules_ModuleManager_ClientModuleTypes" data-uid="Hexalith.Application.Modules.ModuleManager.ClientModuleTypes">ClientModuleTypes</h4>
+  <div class="markdown level1 summary"><p>Gets the application module types.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;Type&gt; ClientModuleTypes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Type</span>&gt;</td>
+        <td><p>The module types.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Modules_ModuleManager_ClientPresentationAssemblies.md&amp;value=---%0Auid%3A%20Hexalith.Application.Modules.ModuleManager.ClientPresentationAssemblies%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Modules/ModuleManager.cs/#L104">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Modules_ModuleManager_ClientPresentationAssemblies_" data-uid="Hexalith.Application.Modules.ModuleManager.ClientPresentationAssemblies*"></a>
+  <h4 id="Hexalith_Application_Modules_ModuleManager_ClientPresentationAssemblies" data-uid="Hexalith.Application.Modules.ModuleManager.ClientPresentationAssemblies">ClientPresentationAssemblies</h4>
+  <div class="markdown level1 summary"><p>Gets the collection of client presentation assemblies.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;Assembly&gt; ClientPresentationAssemblies { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Reflection.Assembly</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Modules_ModuleManager_HomePageModule.md&amp;value=---%0Auid%3A%20Hexalith.Application.Modules.ModuleManager.HomePageModule%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Modules/ModuleManager.cs/#L112">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Modules_ModuleManager_HomePageModule_" data-uid="Hexalith.Application.Modules.ModuleManager.HomePageModule*"></a>
+  <h4 id="Hexalith_Application_Modules_ModuleManager_HomePageModule" data-uid="Hexalith.Application.Modules.ModuleManager.HomePageModule">HomePageModule</h4>
+  <div class="markdown level1 summary"><p>Gets the home page module.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IApplicationModule HomePageModule { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.Modules.Modules.IApplicationModule.html">IApplicationModule</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Modules_ModuleManager_HomeRoute.md&amp;value=---%0Auid%3A%20Hexalith.Application.Modules.ModuleManager.HomeRoute%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Modules/ModuleManager.cs/#L142">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Modules_ModuleManager_HomeRoute_" data-uid="Hexalith.Application.Modules.ModuleManager.HomeRoute*"></a>
+  <h4 id="Hexalith_Application_Modules_ModuleManager_HomeRoute" data-uid="Hexalith.Application.Modules.ModuleManager.HomeRoute">HomeRoute</h4>
+  <div class="markdown level1 summary"><p>Gets the home route.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string HomeRoute { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Modules_ModuleManager_Routes.md&amp;value=---%0Auid%3A%20Hexalith.Application.Modules.ModuleManager.Routes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Modules/ModuleManager.cs/#L158">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Modules_ModuleManager_Routes_" data-uid="Hexalith.Application.Modules.ModuleManager.Routes*"></a>
+  <h4 id="Hexalith_Application_Modules_ModuleManager_Routes" data-uid="Hexalith.Application.Modules.ModuleManager.Routes">Routes</h4>
+  <div class="markdown level1 summary"><p>Gets the collection of route providers.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;IRouteProvider&gt; Routes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Hexalith.Application.Modules.Routes.IRouteProvider.html">IRouteProvider</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Modules_ModuleManager_ServerModules.md&amp;value=---%0Auid%3A%20Hexalith.Application.Modules.ModuleManager.ServerModules%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Modules/ModuleManager.cs/#L164">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Modules_ModuleManager_ServerModules_" data-uid="Hexalith.Application.Modules.ModuleManager.ServerModules*"></a>
+  <h4 id="Hexalith_Application_Modules_ModuleManager_ServerModules" data-uid="Hexalith.Application.Modules.ModuleManager.ServerModules">ServerModules</h4>
+  <div class="markdown level1 summary"><p>Gets the server application module types.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDictionary&lt;string, IServerApplicationModule&gt; ServerModules { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="Hexalith.Application.Modules.Modules.IServerApplicationModule.html">IServerApplicationModule</a>&gt;</td>
+        <td><p>The module types.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Modules_ModuleManager_ServerModuleTypes.md&amp;value=---%0Auid%3A%20Hexalith.Application.Modules.ModuleManager.ServerModuleTypes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Modules/ModuleManager.cs/#L75">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Modules_ModuleManager_ServerModuleTypes_" data-uid="Hexalith.Application.Modules.ModuleManager.ServerModuleTypes*"></a>
+  <h4 id="Hexalith_Application_Modules_ModuleManager_ServerModuleTypes" data-uid="Hexalith.Application.Modules.ModuleManager.ServerModuleTypes">ServerModuleTypes</h4>
+  <div class="markdown level1 summary"><p>Gets the application module types.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;Type&gt; ServerModuleTypes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Type</span>&gt;</td>
+        <td><p>The module types.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Modules_ModuleManager_ServerPresentationAssemblies.md&amp;value=---%0Auid%3A%20Hexalith.Application.Modules.ModuleManager.ServerPresentationAssemblies%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Modules/ModuleManager.cs/#L172">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Modules_ModuleManager_ServerPresentationAssemblies_" data-uid="Hexalith.Application.Modules.ModuleManager.ServerPresentationAssemblies*"></a>
+  <h4 id="Hexalith_Application_Modules_ModuleManager_ServerPresentationAssemblies" data-uid="Hexalith.Application.Modules.ModuleManager.ServerPresentationAssemblies">ServerPresentationAssemblies</h4>
+  <div class="markdown level1 summary"><p>Gets the collection of server presentation assemblies.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;Assembly&gt; ServerPresentationAssemblies { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Reflection.Assembly</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Modules_ModuleManager_SharedModules.md&amp;value=---%0Auid%3A%20Hexalith.Application.Modules.ModuleManager.SharedModules%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Modules/ModuleManager.cs/#L181">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Modules_ModuleManager_SharedModules_" data-uid="Hexalith.Application.Modules.ModuleManager.SharedModules*"></a>
+  <h4 id="Hexalith_Application_Modules_ModuleManager_SharedModules" data-uid="Hexalith.Application.Modules.ModuleManager.SharedModules">SharedModules</h4>
+  <div class="markdown level1 summary"><p>Gets the shared application module types.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDictionary&lt;string, ISharedApplicationModule&gt; SharedModules { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="Hexalith.Application.Modules.Modules.ISharedApplicationModule.html">ISharedApplicationModule</a>&gt;</td>
+        <td><p>The module types.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Modules_ModuleManager_SharedModuleTypes.md&amp;value=---%0Auid%3A%20Hexalith.Application.Modules.ModuleManager.SharedModuleTypes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Modules/ModuleManager.cs/#L82">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Modules_ModuleManager_SharedModuleTypes_" data-uid="Hexalith.Application.Modules.ModuleManager.SharedModuleTypes*"></a>
+  <h4 id="Hexalith_Application_Modules_ModuleManager_SharedModuleTypes" data-uid="Hexalith.Application.Modules.ModuleManager.SharedModuleTypes">SharedModuleTypes</h4>
+  <div class="markdown level1 summary"><p>Gets the application module types.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;Type&gt; SharedModuleTypes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Type</span>&gt;</td>
+        <td><p>The module types.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Modules_ModuleManager_StoreAppModules.md&amp;value=---%0Auid%3A%20Hexalith.Application.Modules.ModuleManager.StoreAppModules%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Modules/ModuleManager.cs/#L190">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Modules_ModuleManager_StoreAppModules_" data-uid="Hexalith.Application.Modules.ModuleManager.StoreAppModules*"></a>
+  <h4 id="Hexalith_Application_Modules_ModuleManager_StoreAppModules" data-uid="Hexalith.Application.Modules.ModuleManager.StoreAppModules">StoreAppModules</h4>
+  <div class="markdown level1 summary"><p>Gets the store application module types.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDictionary&lt;string, IStoreAppApplicationModule&gt; StoreAppModules { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="Hexalith.Application.Modules.Modules.IStoreAppApplicationModule.html">IStoreAppApplicationModule</a>&gt;</td>
+        <td><p>The module types.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Modules_ModuleManager_StoreAppModuleTypes.md&amp;value=---%0Auid%3A%20Hexalith.Application.Modules.ModuleManager.StoreAppModuleTypes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Modules/ModuleManager.cs/#L89">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Modules_ModuleManager_StoreAppModuleTypes_" data-uid="Hexalith.Application.Modules.ModuleManager.StoreAppModuleTypes*"></a>
+  <h4 id="Hexalith_Application_Modules_ModuleManager_StoreAppModuleTypes" data-uid="Hexalith.Application.Modules.ModuleManager.StoreAppModuleTypes">StoreAppModuleTypes</h4>
+  <div class="markdown level1 summary"><p>Gets the application module types.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;Type&gt; StoreAppModuleTypes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Type</span>&gt;</td>
+        <td><p>The module types.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Modules_ModuleManager_StoreAppPresentationAssemblies.md&amp;value=---%0Auid%3A%20Hexalith.Application.Modules.ModuleManager.StoreAppPresentationAssemblies%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Modules/ModuleManager.cs/#L198">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Modules_ModuleManager_StoreAppPresentationAssemblies_" data-uid="Hexalith.Application.Modules.ModuleManager.StoreAppPresentationAssemblies*"></a>
+  <h4 id="Hexalith_Application_Modules_ModuleManager_StoreAppPresentationAssemblies" data-uid="Hexalith.Application.Modules.ModuleManager.StoreAppPresentationAssemblies">StoreAppPresentationAssemblies</h4>
+  <div class="markdown level1 summary"><p>Gets the collection of server presentation assemblies.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;Assembly&gt; StoreAppPresentationAssemblies { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Reflection.Assembly</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Modules_ModuleManager_GetModule__1_System_Type_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Modules.ModuleManager.GetModule%60%601(System.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Modules/ModuleManager.cs/#L209">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Modules_ModuleManager_GetModule_" data-uid="Hexalith.Application.Modules.ModuleManager.GetModule*"></a>
+  <h4 id="Hexalith_Application_Modules_ModuleManager_GetModule__1_System_Type_" data-uid="Hexalith.Application.Modules.ModuleManager.GetModule``1(System.Type)">GetModule&lt;TModule&gt;(Type)</h4>
+  <div class="markdown level1 summary"><p>Gets the store application module types.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TModule GetModule&lt;TModule&gt;(Type type)
+    where TModule : IApplicationModule</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td><span class="parametername">type</span></td>
+        <td><p>The type to check if it's a module.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TModule</span></td>
+        <td><p>The module.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TModule</span></td>
+        <td><p>The module type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Modules_ModuleManager_IsModule__1_System_Type_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Modules.ModuleManager.IsModule%60%601(System.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Modules/ModuleManager.cs/#L233">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Modules_ModuleManager_IsModule_" data-uid="Hexalith.Application.Modules.ModuleManager.IsModule*"></a>
+  <h4 id="Hexalith_Application_Modules_ModuleManager_IsModule__1_System_Type_" data-uid="Hexalith.Application.Modules.ModuleManager.IsModule``1(System.Type)">IsModule&lt;TModule&gt;(Type)</h4>
+  <div class="markdown level1 summary"><p>Checks if the specified type is a valid module.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsModule&lt;TModule&gt;(Type type)
+    where TModule : IApplicationModule</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td><span class="parametername">type</span></td>
+        <td><p>The type to check.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><code>true</code> if the type is a valid module; otherwise, <code>false</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TModule</span></td>
+        <td><p>The module type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Modules_ModuleManager_LogModuleListDebugInformation_System_Int32_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Modules.ModuleManager.LogModuleListDebugInformation(System.Int32%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Modules/ModuleManager.cs/#L258">View Source</a>
+  </span>
+  <a id="Hexalith_Application_Modules_ModuleManager_LogModuleListDebugInformation_" data-uid="Hexalith.Application.Modules.ModuleManager.LogModuleListDebugInformation*"></a>
+  <h4 id="Hexalith_Application_Modules_ModuleManager_LogModuleListDebugInformation_System_Int32_System_String_" data-uid="Hexalith.Application.Modules.ModuleManager.LogModuleListDebugInformation(System.Int32,System.String)">LogModuleListDebugInformation(Int32, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[LoggerMessage(LogLevel.Debug, Message = &quot;Found {ModuleCount} application modules: {ModuleList}.&quot;)]
+public void LogModuleListDebugInformation(int moduleCount, string moduleList)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">moduleCount</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">moduleList</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSame_System_Object_System_Object_">EquatableHelper.AreSame(Object, Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hexalith.Extensions.Reflections.ObjectDifferenceHelper.html#Hexalith_Extensions_Reflections_ObjectDifferenceHelper_GetDifferenceInformation_System_Object_System_Object_">ObjectDifferenceHelper.GetDifferenceInformation(Object, Object)</a>
+  </div>
 </article>
           </div>
           
@@ -155,7 +795,7 @@
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Modules_ModuleManager.md&amp;value=---%0Auid%3A%20Hexalith.Application.Modules.ModuleManager%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Modules/ModuleManager.cs/#L21" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Modules/ModuleManager.cs/#L28" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
