@@ -1329,7 +1329,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Modules.ModuleManager.html",
-          "hash": "N3WTf//Ras9CBq+Z0vnWoOq2cjEy4vc0QbqEFqpIOrU="
+          "hash": "Qn6g4SAyCul5hx2RXwwllHbsM/oZrm1vXgRW0UHiOGA="
         }
       },
       "is_incremental": false,
@@ -1353,7 +1353,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Modules.Modules.IApplicationModule.html",
-          "hash": "kNHOtrvXvpBvvyKTGV5FYrVp3TvkEJmx8+C8oZewRRQ="
+          "hash": "vHsSlzK7CF0L0tJBela3VB2B8oEr45V3nxntkFoNRnU="
         }
       },
       "is_incremental": false,
@@ -1365,7 +1365,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Modules.Modules.IClientApplicationModule.html",
-          "hash": "nu2P3q6IyPlzN+daWEM5JVsSr33eCMsabDQiL/oe1m0="
+          "hash": "kTdBc5j6NoasxQ02PhjZuNWT7Y1PIUvUScpVvgRQTJE="
         }
       },
       "is_incremental": false,
@@ -1377,7 +1377,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Modules.Modules.IServerApplicationModule.html",
-          "hash": "OiF4gdJJKJQ+sP2T60kxASdDC07vC9yBYmG9arSkxPU="
+          "hash": "Jm2P12Z9tHNZoHmxaN+B2sxOLs8Og37ijn/CYD3zNEk="
         }
       },
       "is_incremental": false,
@@ -1389,7 +1389,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Modules.Modules.ISharedApplicationModule.html",
-          "hash": "egErgrTRm0BBgsujvuTdLixqoxb7szS/YxOssrq0zgM="
+          "hash": "j1b3ePPy4It2WHBN8unl2xPJhQRAte5RbHoZ1CULALg="
         }
       },
       "is_incremental": false,
@@ -1401,7 +1401,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.Modules.Modules.IStoreAppApplicationModule.html",
-          "hash": "X3Aw/XVYX3QMb+qL6rkvuUaPkeBIxdYMQ1hBjunU3Rs="
+          "hash": "vLO7wpUaxaveuwd2jRB6LQyyM7NUvruehg0TzZDqMJ8="
         }
       },
       "is_incremental": false,
@@ -5345,11 +5345,35 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.UI.Components.Configurations.FluentUIThemeSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.UI.Components.Configurations.FluentUIThemeSettings.html",
+          "hash": "a+GCxQC/Q2PBLZZ42p1GZ4LDBR6ajZHUDRilQT1kiiQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.UI.Components.Configurations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.UI.Components.Configurations.html",
+          "hash": "DG5sFM1IycWwFSuA6U4uHorqN4i8q7xCxlIfIYRn068="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Hexalith.UI.Components.Helpers.ComponentsHelper.yml",
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.UI.Components.Helpers.ComponentsHelper.html",
-          "hash": "YLk87sBRESSZ7hQ4+3u7U0QiOiy1CpCV7Kpd4lxpaK8="
+          "hash": "oJmz8i84kzAUAFPBDVg0mv7nG+rXcVJ5dHGe42A450k="
         }
       },
       "is_incremental": false,
@@ -5374,6 +5398,30 @@
         ".html": {
           "relative_path": "api/Hexalith.UI.Components.ModuleInformation.html",
           "hash": "AN4oM9uvXdR2wwM1tqe2vNme/vuJdvsv+j5W+zB2gKc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.UI.Components.Modules.HexalithUIComponentsSharedModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.UI.Components.Modules.HexalithUIComponentsSharedModule.html",
+          "hash": "ftFobEvytgVgl2GFYHf974fBJK9g0LhpGx52eJa2Je0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.UI.Components.Modules.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.UI.Components.Modules.html",
+          "hash": "+CTWwLpwl4Sc07duWPIWyyoOuIxvYPVXlPvbvHnGVK0="
         }
       },
       "is_incremental": false,
@@ -5553,7 +5601,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "Y6xtDXUe6yf8IohxyysQjdnWvL+FSh+LbWZQcTOX6SI="
+          "hash": "pawQDyGp/UJesdDiySwHoXo/jzgtN+O6rGDcYSHzgH0="
         }
       },
       "is_incremental": false,
@@ -5628,7 +5676,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 460,
+          "total_file_count": 464,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {

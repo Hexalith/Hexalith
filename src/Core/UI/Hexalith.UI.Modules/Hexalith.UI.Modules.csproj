@@ -9,6 +9,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\Hexalith.UI.Components\Hexalith.UI.Components.csproj" />
 	  <ProjectReference Include="..\Hexalith.UI.Modules.Abstractions\Hexalith.UI.Modules.Abstractions.csproj" />
 	</ItemGroup>
 

@@ -12,6 +12,8 @@ using Hexalith.Application.Modules;
 using Hexalith.Application.Modules.Configurations;
 using Hexalith.Application.Modules.Modules;
 
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -19,6 +21,20 @@ using Moq;
 
 public class ModuleManagerTest
 {
+    [Fact]
+    public void DummyServicesFromModulesShouldBeAdded()
+    {
+        ServiceCollection services = [];
+        Mock<IConfiguration> configurationMock = new();
+
+        ModuleManager.AddSharedModulesServices(services, configurationMock.Object);
+
+        // Check that the services have been added
+        _ = services
+            .Should()
+            .HaveCount(1);
+    }
+
     [Fact]
     public void ModuleManagerShouldInstanciateClientModule()
         => ModuleManager
@@ -121,20 +137,6 @@ public class ModuleManagerTest
             .OfType<DummySharedModule>()
             .Should()
             .HaveCount(1);
-    }
-
-    [Fact]
-    public void ModuleManagerShouldReturnStoreAppAssemby()
-    {
-        ILogger<ModuleManager> logger = Mock.Of<ILogger<ModuleManager>>();
-        IOptions<ModuleSettings> options = Options.Create(new ModuleSettings());
-
-        ModuleManager manager = new([], options, logger);
-        _ = ModuleManager.StoreAppModuleTypes.Should().HaveCount(1);
-        _ = manager
-            .StoreAppPresentationAssemblies
-            .Should()
-            .Contain(typeof(DummyStoreAppModule).Assembly);
     }
 
     [Fact]
