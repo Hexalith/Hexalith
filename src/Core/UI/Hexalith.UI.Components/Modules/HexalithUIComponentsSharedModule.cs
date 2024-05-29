@@ -45,7 +45,11 @@ public class HexalithUIComponentsSharedModule : ISharedApplicationModule
     /// <inheritdoc/>
     public string Version => "1.0.0";
 
-    /// <inheritdoc/>
-    public void AddServices(IServiceCollection services, IConfiguration configuration)
-        => _ = services.AddFluentUITheme(configuration);
+    /// <summary>
+    /// Adds the shared modules services.
+    /// </summary>
+    /// <param name="services">The services.</param>
+    /// <param name="configuration">The configuration.</param>
+    public static void AddSharedModulesServices(IServiceCollection services, IConfiguration configuration)
+            => _ = services.AddFluentUITheme(configuration);
 }
