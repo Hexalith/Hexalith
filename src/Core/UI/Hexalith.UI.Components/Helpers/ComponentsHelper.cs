@@ -6,6 +6,10 @@
 
 namespace Hexalith.UI.Components.Helpers;
 
+using Hexalith.Extensions.Configuration;
+using Hexalith.UI.Components.Configurations;
+
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.FluentUI.AspNetCore.Components;
 
@@ -18,9 +22,11 @@ public static class ComponentsHelper
     /// Adds Fluent UI theme to the service collection.
     /// </summary>
     /// <param name="services">The service collection.</param>
+    /// <param name="configuration">The configuration properties.</param>
     /// <returns>The updated service collection.</returns>
-    public static IServiceCollection AddFluentUITheme(this IServiceCollection services)
+    public static IServiceCollection AddFluentUITheme(this IServiceCollection services, IConfiguration configuration)
     {
+        _ = services.ConfigureSettings<FluentUIThemeSettings>(configuration);
         _ = services.AddLocalization(options => options.ResourcesPath = "Resources");
         _ = services.AddHttpClient();
         _ = services.AddFluentUIComponents();

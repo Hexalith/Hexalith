@@ -8,9 +8,6 @@ namespace Hexalith.Application.Modules.Modules;
 
 using System.Reflection;
 
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-
 /// <summary>
 /// Represents a module in the application.
 /// </summary>
@@ -62,11 +59,4 @@ public interface IApplicationModule
     /// Gets the version of the module.
     /// </summary>
     string Version { get; }
-
-    /// <summary>
-    /// Adds the application services.
-    /// </summary>
-    /// <param name="services">The services.</param>
-    /// <param name="configuration">The configuration.</param>
-    void AddServices(IServiceCollection services, IConfiguration configuration);
 }

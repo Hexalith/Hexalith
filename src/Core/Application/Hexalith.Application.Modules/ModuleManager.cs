@@ -18,7 +18,10 @@ using Hexalith.Application.Modules.Configurations;
 using Hexalith.Application.Modules.Modules;
 using Hexalith.Application.Modules.Routes;
 using Hexalith.Extensions.Configuration;
+using Hexalith.Extensions.Helpers;
 
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -34,10 +37,11 @@ public partial class ModuleManager
 
     private readonly string _homePageModule;
     private readonly ILogger _logger;
-
     private IDictionary<string, IClientApplicationModule>? _clientModules;
+    private IEnumerable<Assembly>? _clientPresentationAssemblies;
     private string? _homeRoute;
     private IDictionary<string, IServerApplicationModule>? _serverModules;
+    private IEnumerable<Assembly>? _serverPresentationAssemblies;
     private IDictionary<string, ISharedApplicationModule>? _sharedModules;
     private IDictionary<string, IStoreAppApplicationModule>? _storeAppModules;
 
@@ -102,9 +106,11 @@ public partial class ModuleManager
     /// Gets the collection of client presentation assemblies.
     /// </summary>
     public IEnumerable<Assembly> ClientPresentationAssemblies
-        => ClientModules
+        => _clientPresentationAssemblies ??= [.. ClientModules
         .SelectMany(p => p.Value.PresentationAssemblies)
-        .ToImmutableList();
+        .Union(SharedModules.SelectMany(p => p.Value.PresentationAssemblies))
+        .Distinct()
+        .OrderBy(p => p.GetName().Name)];
 
     /// <summary>
     /// Gets the home page module.
@@ -169,10 +175,12 @@ public partial class ModuleManager
     /// <summary>
     /// Gets the collection of server presentation assemblies.
     /// </summary>
-    public IEnumerable<Assembly> ServerPresentationAssemblies => ServerModules
-        .Values
-        .SelectMany(p => p.PresentationAssemblies)
-        .ToImmutableList();
+    public IEnumerable<Assembly> ServerPresentationAssemblies
+        => _serverPresentationAssemblies ??= [.. ServerModules
+        .SelectMany(p => p.Value.PresentationAssemblies)
+        .Union(ClientPresentationAssemblies)
+        .Distinct()
+        .OrderBy(p => p.GetName().Name)];
 
     /// <summary>
     /// Gets the shared application module types.
@@ -193,12 +201,132 @@ public partial class ModuleManager
         .ToImmutableDictionary(p => p.Id);
 
     /// <summary>
-    /// Gets the collection of server presentation assemblies.
+    /// Add the client modules services.
     /// </summary>
-    public IEnumerable<Assembly> StoreAppPresentationAssemblies => StoreAppModules
-        .Values
-        .SelectMany(p => p.PresentationAssemblies)
-        .ToImmutableList();
+    /// <param name="services">The service collection.</param>
+    /// <param name="configuration">The configuration properties.</param>
+    public static void AddClientModulesServices(IServiceCollection services, IConfiguration configuration)
+    {
+        ArgumentNullException.ThrowIfNull(services);
+        ArgumentNullException.ThrowIfNull(configuration);
+
+        foreach (Type type in ClientModuleTypes)
+        {
+            MethodInfo? moduleMethod = type.GetMethod(
+                nameof(AddClientModulesServices),
+                BindingFlags.Public | BindingFlags.Static,
+                null,
+                [typeof(IServiceCollection), typeof(IConfiguration)],
+                null);
+            if (moduleMethod == null)
+            {
+                Debug.WriteLine(
+                    $"The services for module {type.Name} are not added. The module does not have the following static method:"
+                    + $" {nameof(AddClientModulesServices)}(IServiceCollection services, IConfiguration configuration).");
+            }
+            else
+            {
+                _ = moduleMethod.Invoke(null, [services, configuration]);
+                Debug.WriteLine($"The services for module {type.Name} are have been added.");
+            }
+        }
+    }
+
+    /// <summary>
+    /// Add the Server modules services.
+    /// </summary>
+    /// <param name="services">The service collection.</param>
+    /// <param name="configuration">The configuration properties.</param>
+    public static void AddServerModulesServices(IServiceCollection services, IConfiguration configuration)
+    {
+        ArgumentNullException.ThrowIfNull(services);
+        ArgumentNullException.ThrowIfNull(configuration);
+
+        foreach (Type type in ServerModuleTypes)
+        {
+            MethodInfo? moduleMethod = type.GetMethod(
+                nameof(AddServerModulesServices),
+                BindingFlags.Public | BindingFlags.Static,
+                null,
+                [typeof(IServiceCollection), typeof(IConfiguration)],
+                null);
+            if (moduleMethod == null)
+            {
+                Debug.WriteLine(
+                    $"The services for module {type.Name} are not added. The module does not have the following static method:"
+                    + $" {nameof(AddServerModulesServices)}(IServiceCollection services, IConfiguration configuration).");
+            }
+            else
+            {
+                _ = moduleMethod.Invoke(null, [services, configuration]);
+                Debug.WriteLine($"The services for module {type.Name} are have been added.");
+            }
+        }
+    }
+
+    /// <summary>
+    /// Add the shared modules services.
+    /// </summary>
+    /// <param name="services">The service collection.</param>
+    /// <param name="configuration">The configuration properties.</param>
+    public static void AddSharedModulesServices(IServiceCollection services, IConfiguration configuration)
+    {
+        ArgumentNullException.ThrowIfNull(services);
+        ArgumentNullException.ThrowIfNull(configuration);
+
+        foreach (Type type in SharedModuleTypes)
+        {
+            MethodInfo? moduleMethod = type.GetMethod(
+                nameof(AddSharedModulesServices),
+                BindingFlags.Public | BindingFlags.Static,
+                null,
+                [typeof(IServiceCollection), typeof(IConfiguration)],
+                null);
+            if (moduleMethod == null)
+            {
+                Debug.WriteLine(
+                    $"The services for module {type.Name} are not added. The module does not have the following static method:"
+                    + $" {nameof(AddSharedModulesServices)}(IServiceCollection services, IConfiguration configuration).");
+            }
+            else
+            {
+                _ = moduleMethod.Invoke(null, [services, configuration]);
+                Debug.WriteLine($"The services for module {type.Name} are have been added.");
+            }
+        }
+    }
+
+    /// <summary>
+    /// Add the StoreApp modules services.
+    /// </summary>
+    /// <param name="services">The service collection.</param>
+    /// <param name="configuration">The configuration properties.</param>
+    public static void AddStoreAppModulesServices(IServiceCollection services, IConfiguration configuration)
+    {
+        ArgumentNullException.ThrowIfNull(services);
+        ArgumentNullException.ThrowIfNull(configuration);
+
+        foreach (Type type in StoreAppModuleTypes)
+        {
+            MethodInfo? moduleMethod = type.GetMethod(
+                nameof(AddStoreAppModulesServices),
+                BindingFlags.Public | BindingFlags.Static,
+                null,
+                [typeof(IServiceCollection), typeof(IConfiguration)],
+                null);
+            if (moduleMethod == null)
+            {
+                Debug.WriteLine(
+                    $"The services for module {type.Name} are not added. The module does not have the following static method:"
+                    + $" {nameof(AddStoreAppModulesServices)}(IServiceCollection services, IConfiguration configuration).");
+            }
+            else
+            {
+                _ = moduleMethod.Invoke(null, [services, configuration]);
+                Debug.WriteLine($"The services for module {type.Name} are have been added.");
+            }
+        }
+    }
 
     /// <summary>
     /// Gets the store application module types.
@@ -234,6 +362,7 @@ public partial class ModuleManager
         where TModule : IApplicationModule
     {
         ArgumentNullException.ThrowIfNull(type);
+
         if (!typeof(TModule).IsAssignableFrom(type) || !type.IsClass)
         {
             return false;
@@ -269,16 +398,14 @@ public partial class ModuleManager
         Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
         foreach (Assembly assembly in assemblies)
         {
-            // try
-            // {
-            modules.AddRange(assembly.GetTypes().Where(IsModule<TModule>));
-
-            // }
-            // catch (ReflectionTypeLoadException)
-            // {
-            //    // ignore types that cannot be loaded
-
-            // }
+            try
+            {
+                modules.AddRange(assembly.GetTypes().Where(IsModule<TModule>));
+            }
+            catch (ReflectionTypeLoadException ex)
+            {
+                Debug.WriteLine($"{ex.FullMessage}");
+            }
         }
 
         return [.. modules];
