@@ -94,7 +94,12 @@ public static class ServerSideClientAppHelper
             .AddRazorComponents()
             .AddInteractiveServerComponents()
             .AddInteractiveWebAssemblyComponents();
+#if DEBUG
 
+        // Show detailed errors on Circuit exceptions
+        builder.Services.AddServerSideBlazor().AddCircuitOptions(option => option.DetailedErrors = true);
+
+#endif
         _ = builder.Services
             .AddHttpClient();
 

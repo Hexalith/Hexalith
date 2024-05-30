@@ -3,16 +3,36 @@
 @inherits HexBase
 @inject IStringLocalizer<SharedResources> SharedLocalizer
 
-<FluentLabel Typo="@Typo">@_title</FluentLabel>
+@if (string.IsNullOrWhiteSpace(LocalizedTitle))
+{
+	<FluentLabel Typo="@Typo">@ChildContent</FluentLabel>
+}
+else
+{
+	if (ChildContent is null)
+	{
+		<FluentLabel Typo="@Typo">@_title</FluentLabel>
+	}
+	else
+	{
+		<FluentLabel Typo="@Typo">@ChildContent</FluentLabel>
+	}
+}
 @code {
 	[Parameter]
-	public Typography Typo { get; set; } = Typography.PageTitle;
-	private string? _title;
+	public RenderFragment? ChildContent { get; set; }
 
+	[Parameter]
+	public Typography Typo { get; set; } = Typography.PageTitle;
+
+	[Parameter]
+	public string? LocalizedTitle { get; set; }
+
+	private string? _title;
 
 	protected override void OnParametersSet()
 	{
-		if (!string.IsNullOrEmpty(PageInformation?.Name))
+		if (_title is null && !string.IsNullOrEmpty(PageInformation?.Name))
 		{
 			_title = SharedLocalizer[PageInformation.Name];
 		}
