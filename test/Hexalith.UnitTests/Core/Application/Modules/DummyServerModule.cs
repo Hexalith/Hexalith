@@ -32,7 +32,13 @@ internal class DummyServerModule : IServerApplicationModule
 
     public string Version => "2.1";
 
-    public void AddServices(IServiceCollection services, IConfiguration configuration)
+    public static void AddServerModulesServices(IServiceCollection services, IConfiguration configuration)
     {
+        if (configuration == null)
+        {
+            return;
+        }
+
+        _ = services.AddSingleton<IServerApplicationModule, DummyServerModule>();
     }
 }

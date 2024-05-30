@@ -22,7 +22,35 @@ using Moq;
 public class ModuleManagerTest
 {
     [Fact]
-    public void DummyServicesFromModulesShouldBeAdded()
+    public void DummyServicesFromClientModulesShouldBeAdded()
+    {
+        ServiceCollection services = [];
+        Mock<IConfiguration> configurationMock = new();
+
+        ModuleManager.AddClientModulesServices(services, configurationMock.Object);
+
+        // Check that the services have been added
+        _ = services.Where(p => p.ImplementationType == typeof(DummyClientModule))
+            .Should()
+            .HaveCount(1);
+    }
+
+    [Fact]
+    public void DummyServicesFromServerModulesShouldBeAdded()
+    {
+        ServiceCollection services = [];
+        Mock<IConfiguration> configurationMock = new();
+
+        ModuleManager.AddServerModulesServices(services, configurationMock.Object);
+
+        // Check that the services have been added
+        _ = services.Where(p => p.ImplementationType == typeof(DummyServerModule))
+            .Should()
+            .HaveCount(1);
+    }
+
+    [Fact]
+    public void DummyServicesFromSharedModulesShouldBeAdded()
     {
         ServiceCollection services = [];
         Mock<IConfiguration> configurationMock = new();
@@ -30,7 +58,21 @@ public class ModuleManagerTest
         ModuleManager.AddSharedModulesServices(services, configurationMock.Object);
 
         // Check that the services have been added
-        _ = services
+        _ = services.Where(p => p.ImplementationType == typeof(DummySharedModule))
+            .Should()
+            .HaveCount(1);
+    }
+
+    [Fact]
+    public void DummyServicesFromStoreAppModulesShouldBeAdded()
+    {
+        ServiceCollection services = [];
+        Mock<IConfiguration> configurationMock = new();
+
+        ModuleManager.AddStoreAppModulesServices(services, configurationMock.Object);
+
+        // Check that the services have been added
+        _ = services.Where(p => p.ImplementationType == typeof(DummyStoreAppModule))
             .Should()
             .HaveCount(1);
     }

@@ -32,7 +32,10 @@ internal class DummySharedModule : ISharedApplicationModule
 
     public string Version => "2.1";
 
-    public void AddServices(IServiceCollection services, IConfiguration configuration)
+    public static void AddSharedModulesServices(IServiceCollection services, IConfiguration configuration)
     {
+        if (configuration == null)
+            return;
+        services.AddSingleton<ISharedApplicationModule, DummySharedModule>();
     }
 }

@@ -32,7 +32,13 @@ internal class DummyStoreAppModule : IStoreAppApplicationModule
 
     public string Version => "2.1";
 
-    public void AddServices(IServiceCollection services, IConfiguration configuration)
+    public static void AddStoreAppModulesServices(IServiceCollection services, IConfiguration configuration)
     {
+        if (configuration == null)
+        {
+            return;
+        }
+
+        _ = services.AddSingleton<IStoreAppApplicationModule, DummyStoreAppModule>();
     }
 }

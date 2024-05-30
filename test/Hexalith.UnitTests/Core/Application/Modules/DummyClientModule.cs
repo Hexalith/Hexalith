@@ -32,7 +32,13 @@ internal class DummyClientModule : IClientApplicationModule
 
     public string Version => "2.1";
 
-    public void AddServices(IServiceCollection services, IConfiguration configuration)
+    public static void AddClientModulesServices(IServiceCollection services, IConfiguration configuration)
     {
+        if (configuration == null)
+        {
+            return;
+        }
+
+        _ = services.AddSingleton<IClientApplicationModule, DummyClientModule>();
     }
 }
