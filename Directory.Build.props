@@ -1,4 +1,8 @@
 <Project>
+	<PropertyGroup>
+		<UseProjectReference Condition="'$(UseProjectReference)' == '' and '$(BuildingByReSharper)' == 'true'">true</UseProjectReference>
+		<UseProjectReference Condition="'$(UseProjectReference)' == '' and '$(BuildingInsideVisualStudio)' == 'true'">true</UseProjectReference>
+	</PropertyGroup>
 	<Import Project="src/Hexalith.Build/Project.Common.props" />
 	<PropertyGroup>
 		<Authors>Jérôme Piquot</Authors>
@@ -24,7 +28,8 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<None Include="README.md" Pack="true" PackagePath="\" />
-		<PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="$(MicrosoftVisualStudioThreadingAnalyzersVersion)">
+		<PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers"
+			Version="$(MicrosoftVisualStudioThreadingAnalyzersVersion)">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
 		</PackageReference>
@@ -37,6 +42,8 @@
 		<CodeAnalysisRuleSet>$(MSBuildThisFileDirectory).stylecop.ruleset</CodeAnalysisRuleSet>
 	</PropertyGroup>
 	<ItemGroup>
-		<AdditionalFiles Include="$([MSBuild]::GetPathOfFileAbove('.stylecop.json', '$(MSBuildThisFileDirectory)'))" Link="Properties\.stylecop.json" />
+		<AdditionalFiles
+			Include="$([MSBuild]::GetPathOfFileAbove('.stylecop.json', '$(MSBuildThisFileDirectory)'))"
+			Link="Properties\.stylecop.json" />
 	</ItemGroup>
 </Project>
