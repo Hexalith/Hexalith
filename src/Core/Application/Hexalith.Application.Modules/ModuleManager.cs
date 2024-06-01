@@ -30,6 +30,7 @@ using Microsoft.Extensions.Options;
 /// </summary>
 public partial class ModuleManager
 {
+    private static Assembly[]? _applicationAssemblies;
     private static IEnumerable<Type>? _clientModuleTypes;
     private static IEnumerable<Type>? _serverModuleTypes;
     private static IEnumerable<Type>? _sharedModuleTypes;
@@ -200,6 +201,8 @@ public partial class ModuleManager
         .Select(GetModule<IStoreAppApplicationModule>)
         .ToImmutableDictionary(p => p.Id);
 
+    private static Assembly[] ApplicationAssemblies => _applicationAssemblies ??= LoadAssemblies();
+
     /// <summary>
     /// Add the client modules services.
     /// </summary>
@@ -368,7 +371,8 @@ public partial class ModuleManager
             return false;
         }
 
-        if (type.IsAbstract || type.GetConstructor(Type.EmptyTypes)?.IsPublic != true)
+        ConstructorInfo? constructor = type.GetConstructor(Type.EmptyTypes);
+        if (type.IsAbstract || constructor == null || !constructor.IsPublic)
         {
             Debug.WriteLine($"Application module '{type.Name}' ignored. It may be abstract or lack a parameterless public constructor.");
             return false;
@@ -395,8 +399,7 @@ public partial class ModuleManager
         where TModule : IApplicationModule
     {
         List<Type> modules = [];
-        Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
-        foreach (Assembly assembly in assemblies)
+        foreach (Assembly assembly in ApplicationAssemblies)
         {
             try
             {
@@ -409,5 +412,30 @@ public partial class ModuleManager
         }
 
         return [.. modules];
+    }
+
+    private static Assembly[] LoadAssemblies()
+    {
+        // Get the application base directory
+        string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+        // Get all DLL files in the base directory
+        string[] dllFiles = Directory.GetFiles(baseDirectory, "*.dll");
+
+        // Load each DLL file
+        foreach (string dll in dllFiles)
+        {
+            try
+            {
+                Assembly loadedAssembly = Assembly.LoadFrom(dll);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error loading assembly {dll}: {ex.Message}");
+            }
+        }
+
+        // List all assemblies currently loaded in the AppDomain
+        return [.. AppDomain.CurrentDomain.GetAssemblies().OrderBy(p => p.FullName)];
     }
 }
