@@ -2,6 +2,11 @@
 	<PropertyGroup>
 		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
 	</PropertyGroup>
+	<ItemGroup>
+	  <Compile Remove="Services\**" />
+	  <EmbeddedResource Remove="Services\**" />
+	  <None Remove="Services\**" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="$(MicrosoftExtensionsPackagesVersion)" />
@@ -20,8 +25,5 @@
 	</ItemGroup>
 	<ItemGroup>
 		<SupportedPlatform Include="browser" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Services\" />
 	</ItemGroup>
 </Project>

@@ -8,7 +8,6 @@ namespace Hexalith.Infrastructure.ClientAppOnServer.Helpers;
 
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Reflection;
 
 using Dapr.Actors.Runtime;
 
@@ -16,7 +15,7 @@ using FluentValidation;
 
 using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
-using Hexalith.Application.Modules;
+using Hexalith.Application.Modules.Applications;
 using Hexalith.Application.Projections;
 using Hexalith.Application.Tasks;
 using Hexalith.Domain.Messages;
@@ -103,17 +102,12 @@ public static class ServerSideClientAppHelper
         _ = builder.Services
             .AddHttpClient();
 
-        // .AddFluentUIComponents();
         _ = builder.Services
             .AddAuthorizationBuilder()
             .AddPolicy("api", p => p
                     .RequireAuthenticatedUser()
                     .AddAuthenticationSchemes(IdentityConstants.BearerScheme));
 
-        // if (debugInVisualStudio)
-        // {
-        //    _ = builder.Services.AddDaprSidekick(builder.Configuration);
-        // }
         _ = builder.Services.AddValidatorsFromAssemblyContaining<CommandBusSettingsValidator>(ServiceLifetime.Singleton);
         builder.Services.TryAddSingleton<IResiliencyPolicyProvider, ResiliencyPolicyProvider>();
         builder.Services.TryAddScoped<ICommandDispatcher, DependencyInjectionCommandDispatcher>();
@@ -176,17 +170,11 @@ public static class ServerSideClientAppHelper
             .UseSession()
             .UseAntiforgery()
             .UseRequestLocalization();
-        ModuleManager moduleManager = app.Services.GetRequiredService<ModuleManager>();
-        Assembly[] assemblies = moduleManager
-            .ClientPresentationAssemblies
-            .Where(p => p != typeof(TApp).Assembly) // Do not add the server assembly that is already added
-            .Distinct()
-            .ToArray();
         _ = app
             .MapRazorComponents<TApp>()
             .AddInteractiveServerRenderMode()
             .AddInteractiveWebAssemblyRenderMode()
-            .AddAdditionalAssemblies(assemblies);
+            .AddAdditionalAssemblies([.. HexalithApplication.Server.PresentationAssemblies]);
 
         _ = app.MapActorsHandlers();
 

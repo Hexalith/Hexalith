@@ -36,7 +36,7 @@ public class HexalithUIComponentsSharedModule : ISharedApplicationModule
     public int OrderWeight => 0;
 
     /// <inheritdoc/>
-    public string Path => "hexalith/ui";
+    public string Path => "hexalith";
 
     /// <inheritdoc/>
     public IEnumerable<Assembly> PresentationAssemblies
@@ -46,10 +46,14 @@ public class HexalithUIComponentsSharedModule : ISharedApplicationModule
     public string Version => "1.0.0";
 
     /// <summary>
-    /// Adds the shared modules services.
+    /// Adds services to the service collection.
     /// </summary>
-    /// <param name="services">The services.</param>
+    /// <param name="services">The service collection.</param>
     /// <param name="configuration">The configuration.</param>
-    public static void AddSharedModulesServices(IServiceCollection services, IConfiguration configuration)
-            => _ = services.AddFluentUITheme(configuration);
+    public static void AddServices(IServiceCollection services, IConfiguration configuration)
+    {
+        services
+            .AddFluentUITheme(configuration)
+            .AddDataGridEntityFrameworkAdapter();
+    }
 }

@@ -1,9 +1,10 @@
 @using System.ComponentModel
+@inject IApplication Application
 
 @inherits HexBase 
 @inject IStringLocalizer<SharedResources> SharedLocalizer
-
-<FluentLabel Typo="@Typo">@_title</FluentLabel>
+<title>@_title</title>
+<FluentLabel Typo="@Typo" Color="Color.Disabled">@_title</FluentLabel>
 @code {
 	[Parameter]
 	public Typography Typo { get; set; } = Typography.HeroTitle;
@@ -12,9 +13,9 @@
 
 	protected override void OnParametersSet()
 	{
-		if (!string.IsNullOrEmpty(ApplicationInformation?.Name))
+		if (!string.IsNullOrEmpty(Application.Name))
 		{
-			_title = SharedLocalizer[ApplicationInformation.Name];
+			_title = SharedLocalizer[Application.Name];
 		}
 	}
 

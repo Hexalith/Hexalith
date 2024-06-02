@@ -1,31 +1,20 @@
-﻿<FluentProfileMenu Image="@UserInformation.Picture"
-                   Status="@_presence"
-                   HeaderLabel="@UserInformation.Company"
-                   Initials="@UserInformation.Initials"
-                   FullName="@UserInformation.Name"
-                   EMail="@UserInformation.Email"
-                   Style="min-width: 330px;" />
+﻿@inject IApplication Application
+@inject NavigationManager NavigationManager
+<AuthorizeView>
+    <Authorized>
+        <FluentProfileMenu 
+            Status="PresenceStatus.Available" 
+            FullName="@context.User.Identity?.Name"
+            />
+    </Authorized>
+    <NotAuthorized>
+        <FluentButton OnClick="OnLoginClick" IconStart="@(new Icons.Regular.Size16.PersonLock())">Login</FluentButton>
+    </NotAuthorized>
+</AuthorizeView>
 
 @code {
-    private PresenceStatus _presence => UserInformation.Presence switch
+    private void OnLoginClick()
     {
-        UserPresence.Available => PresenceStatus.Available,
-        UserPresence.Away => PresenceStatus.Away,
-        UserPresence.Busy => PresenceStatus.Busy,
-        UserPresence.DoNotDisturb => PresenceStatus.DoNotDisturb,
-        UserPresence.Offline => PresenceStatus.Offline,
-        UserPresence.OutOfOffice => PresenceStatus.OutOfOffice,
-        UserPresence.Unknown => PresenceStatus.Unknown,
-        _ => PresenceStatus.Unknown
-    };
-    [CascadingParameter]
-    public UserInformation UserInformation { get; set; } = new UserInformation(
-        string.Empty, 
-        "Anonymous",
-        "A",
-        string.Empty,
-        UserPresence.Unknown,
-        null, 
-        null);
-
+        NavigationManager.NavigateTo($"{Application.LoginPath}?returnUrl={Uri.EscapeDataString(NavigationManager.Uri)}", forceLoad: true);
+    }
 }
