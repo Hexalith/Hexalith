@@ -1,10 +1,10 @@
-﻿// <copyright file="DummySharedModule.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="DummyServerModule.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.UnitTests.Core.Application.Modules;
+namespace Hexalith.UnitTests.Core.Application.Applications;
 
 using System.Collections.Generic;
 using System.Reflection;
@@ -14,15 +14,15 @@ using Hexalith.Application.Modules.Modules;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-internal class DummySharedModule : ISharedApplicationModule
+internal class DummyServerModule : IServerApplicationModule
 {
     public IEnumerable<string> Dependencies => [];
 
     public string Description => "Test module description";
 
-    public string Id => "SharedTest";
+    public string Id => "ServerTest";
 
-    public string Name => "Shared Test";
+    public string Name => "Server Test";
 
     public int OrderWeight => 66;
 
@@ -32,10 +32,13 @@ internal class DummySharedModule : ISharedApplicationModule
 
     public string Version => "2.1";
 
-    public static void AddSharedModulesServices(IServiceCollection services, IConfiguration configuration)
+    public static void AddServices(IServiceCollection services, IConfiguration configuration)
     {
         if (configuration == null)
+        {
             return;
-        services.AddSingleton<ISharedApplicationModule, DummySharedModule>();
+        }
+
+        _ = services.AddSingleton<DummyServerService>();
     }
 }

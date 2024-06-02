@@ -15,6 +15,7 @@ using System.Reflection;
 /// </summary>
 public abstract class HexalithSharedApplication : HexalithApplication, ISharedApplication
 {
+    private IEnumerable<Type>? _modules;
     private IEnumerable<Assembly>? _presentationAssemblies;
 
     /// <inheritdoc/>
@@ -22,6 +23,12 @@ public abstract class HexalithSharedApplication : HexalithApplication, ISharedAp
 
     /// <inheritdoc/>
     public override bool IsServer => false;
+
+    /// <inheritdoc/>
+    public override IEnumerable<Type> Modules => _modules ??=
+        [.. SharedModules
+        .Distinct()
+        .OrderBy(p => p.FullName)];
 
     /// <inheritdoc/>
     public IEnumerable<Assembly> PresentationAssemblies

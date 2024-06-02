@@ -1,10 +1,10 @@
-﻿// <copyright file="DummyServerModule.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="DummyStoreAppModule.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.UnitTests.Core.Application.Modules;
+namespace Hexalith.UnitTests.Core.Application.Applications;
 
 using System.Collections.Generic;
 using System.Reflection;
@@ -14,15 +14,15 @@ using Hexalith.Application.Modules.Modules;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-internal class DummyServerModule : IServerApplicationModule
+internal class DummyStoreAppModule : IStoreAppApplicationModule
 {
     public IEnumerable<string> Dependencies => [];
 
     public string Description => "Test module description";
 
-    public string Id => "ServerTest";
+    public string Id => "StoreAppTest";
 
-    public string Name => "Server Test";
+    public string Name => "StoreApp Test";
 
     public int OrderWeight => 66;
 
@@ -32,13 +32,13 @@ internal class DummyServerModule : IServerApplicationModule
 
     public string Version => "2.1";
 
-    public static void AddServerModulesServices(IServiceCollection services, IConfiguration configuration)
+    public static void AddStoreAppModulesServices(IServiceCollection services, IConfiguration configuration)
     {
         if (configuration == null)
         {
             return;
         }
 
-        _ = services.AddSingleton<IServerApplicationModule, DummyServerModule>();
+        _ = services.AddSingleton<IStoreAppApplicationModule, DummyStoreAppModule>();
     }
 }

@@ -15,6 +15,7 @@ using System.Reflection;
 /// </summary>
 public abstract class HexalithServerApplication : HexalithApplication, IServerApplication
 {
+    private IEnumerable<Type>? _modules;
     private IEnumerable<Assembly>? _presentationAssemblies;
 
     /// <summary>
@@ -41,6 +42,13 @@ public abstract class HexalithServerApplication : HexalithApplication, IServerAp
     public override string LogoutPath => Shared.LogoutPath;
 
     /// <inheritdoc/>
+    public override IEnumerable<Type> Modules => _modules ??=
+        [.. ServerModules
+        .Union(Shared.SharedModules)
+        .Distinct()
+        .OrderBy(p => p.FullName)];
+
+    /// <inheritdoc/>
     public override string Name => Shared.Name;
 
     /// <inheritdoc/>
@@ -55,6 +63,5 @@ public abstract class HexalithServerApplication : HexalithApplication, IServerAp
     public abstract IEnumerable<Type> ServerModules { get; }
 
     /// <inheritdoc/>
-
     public abstract Type SharedApplicationType { get; }
 }

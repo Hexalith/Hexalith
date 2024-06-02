@@ -4,7 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.UnitTests.Core.Application.Modules;
+namespace Hexalith.UnitTests.Core.Application.Applications;
 
 using System.Collections.Generic;
 using System.Reflection;
@@ -32,13 +32,13 @@ internal class DummyClientModule : IClientApplicationModule
 
     public string Version => "2.1";
 
-    public static void AddClientModulesServices(IServiceCollection services, IConfiguration configuration)
+    public static void AddServices(IServiceCollection services, IConfiguration configuration)
     {
         if (configuration == null)
         {
             return;
         }
 
-        _ = services.AddSingleton<IClientApplicationModule, DummyClientModule>();
+        _ = services.AddSingleton<DummyClientService>();
     }
 }

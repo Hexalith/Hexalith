@@ -26,7 +26,6 @@ public abstract class HexalithApplication : IApplication
     private static IClientApplication? _clientApplication;
     private static IServerApplication? _serverApplication;
     private static ISharedApplication? _sharedApplication;
-    private IEnumerable<Type>? _modules;
 
     /// <summary>
     /// Gets the client application.
@@ -68,12 +67,8 @@ public abstract class HexalithApplication : IApplication
     public abstract string LogoutPath { get; }
 
     /// <inheritdoc/>
-    public IEnumerable<Type> Modules => _modules ??=
-        [.. (SharedApplication?.SharedModules ?? [])
-        .Union(ClientApplication?.ClientModules ?? [])
-        .Union(ServerApplication?.ServerModules ?? [])
-        .Distinct()
-        .OrderBy(p => p.FullName)];
+
+    public abstract IEnumerable<Type> Modules { get; }
 
     /// <inheritdoc/>
     public abstract string Name { get; }
@@ -178,7 +173,7 @@ public abstract class HexalithApplication : IApplication
 
         foreach (Type module in Modules)
         {
-            services.TryAddSingleton(typeof(IApplicationModule), module);
+            _ = services.AddScoped(typeof(IApplicationModule), module);
             MethodInfo? moduleMethod = module.GetMethod(
                 nameof(AddServices),
                 BindingFlags.Public | BindingFlags.Static,
