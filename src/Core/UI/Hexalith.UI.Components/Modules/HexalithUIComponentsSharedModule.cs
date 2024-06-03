@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Reflection;
 
 using Hexalith.Application.Modules.Modules;
+using Hexalith.Extensions.Configuration;
+using Hexalith.UI.Components.Configurations;
 using Hexalith.UI.Components.Helpers;
 
 using Microsoft.Extensions.Configuration;
@@ -54,6 +56,7 @@ public class HexalithUIComponentsSharedModule : ISharedApplicationModule
     {
         services
             .AddFluentUITheme(configuration)
+            .ConfigureSettings<FluentUIThemeSettings>(configuration)
             .AddDataGridEntityFrameworkAdapter();
     }
 }

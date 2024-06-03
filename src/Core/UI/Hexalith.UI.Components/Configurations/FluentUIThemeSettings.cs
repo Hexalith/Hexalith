@@ -6,16 +6,37 @@
 
 namespace Hexalith.UI.Components.Configurations;
 
+using System.Runtime.Serialization;
+
 using Hexalith.Extensions.Configuration;
 
 /// <summary>
 /// Represents the Fluent UI theme settings.
 /// </summary>
-public record FluentUIThemeSettings : ISettings
+[DataContract]
+public class FluentUIThemeSettings : ISettings
 {
+    /// <summary>
+    /// Gets or sets the accent base color.
+    /// </summary>
+    [DataMember]
+    public string? AccentBaseColor { get; set; }
+
+    /// <summary>
+    /// Gets or sets the fill color.
+    /// </summary>
+    [DataMember]
+    public string? FillColor { get; set; }
+
+    /// <summary>
+    /// Gets or sets the stroke width.
+    /// </summary>
+    [DataMember]
+    public int StrokeWidth { get; set; } = 2;
+
     /// <summary>
     /// Gets the configuration name for Fluent UI theme.
     /// </summary>
     /// <returns>The configuration name.</returns>
-    public static string ConfigurationName() => "Hexalith:FluentUITheme";
+    public static string ConfigurationName() => "FluentUITheme";
 }

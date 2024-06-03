@@ -6,6 +6,8 @@
 
 namespace Hexalith.UI.Components;
 
+using System.Runtime.Serialization;
+
 /// <summary>
 /// Represents the information of a module.
 /// </summary>
@@ -16,11 +18,11 @@ namespace Hexalith.UI.Components;
 /// <param name="Name">The name of the module.</param>
 /// <param name="Description">The description of the module.</param>
 /// <param name="Version">The version of the module.</param>
-
+[DataContract]
 public record ModuleInformation(
-    string Id,
-    string Name,
-    string Description,
-    string Version)
+    [property: DataMember] string Id,
+    [property: DataMember] string Name,
+    [property: DataMember] string Description,
+    [property: DataMember] string Version)
 {
 }

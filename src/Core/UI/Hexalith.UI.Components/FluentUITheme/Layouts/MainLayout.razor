@@ -1,19 +1,63 @@
 ﻿@inherits LayoutComponentBase
+@using Hexalith.UI.Components.Configurations
 @using Hexalith.UI.Components.FluentUITheme
+@using Microsoft.AspNetCore.Components.Sections
+@using Microsoft.Extensions.Options
+@using Hexalith.UI.Components.Helpers
+@inject IOptions<FluentUIThemeSettings> ThemeSettings
+@inject IEnumerable<MenuItemInformation> MenuItems
 
 <FluentToastProvider />
 <FluentDialogProvider />
 <FluentTooltipProvider />
 <FluentMessageBarProvider />
-<FluentHeader>
-	<HexApplicationTitle/>
-	<FluentSpacer/>
-	<HexProfileMenu/>
-</FluentHeader>
-<FluentBodyContent>
-	@Body
-</FluentBodyContent>
+<FluentDesignSystemProvider AccentBaseColor="@ThemeSettings.Value.AccentBaseColor" StrokeWidth="@ThemeSettings.Value.StrokeWidth" FillColor="@ThemeSettings.Value.FillColor">
+	<FluentMainLayout>
+		<Header>
+			<HexApplicationTitle />
+			<FluentSpacer />
+			<SectionOutlet SectionName="ApplicationHeaderContent" />
+			<FluentSpacer />
+			<HexProfileMenu />
+		</Header>
+		<SubHeader>
+			<SectionOutlet SectionName="ModuleHeaderContent" />
+		</SubHeader>
+		<Body>
+			@Body
+			<FluentFooter>
+				<SectionOutlet SectionName="ApplicationFooterContent" />
+			</FluentFooter>
+		</Body>
+		<NavMenuContent>
+			@foreach (var menuItem in MenuItems)
+			{
 
+				void addItems(MenuItemInformation menuItem)
+				{
+					
+					if (menuItem.SubItems.Any())
+					{
+						<FluentNavGroup Expanded="true"
+										Title="@menuItem.Name"
+										Icon="@menuItem.Icon.ToFluentIcon()"
+										IconColor="Color.Accent">
+							@foreach (var subItem in menuItem.SubItems)
+							{
+								addItems(subItem);
+							}
+						</FluentNavGroup>
+					}
+					else
+					{
+						<FluentMenuItem MenuItemInformation="menuItem" />
+					}
+				}
+			}
+			<SectionOutlet SectionName="ApplicationMenuContent" />
+		</NavMenuContent>
+	</FluentMainLayout>
+</FluentDesignSystemProvider>
 <div id="blazor-error-ui">
 	An unhandled error has occurred.
 	<a href="" class="reload">Reload</a>
@@ -21,11 +65,4 @@
 </div>
 
 @code {
-	public DesignThemeModes Mode { get; set; }
-	public OfficeColor? OfficeColor { get; set; }
-
-	void PickRandomColor()
-	{
-		OfficeColor = OfficeColorUtilities.GetRandom();
-	}
 }
