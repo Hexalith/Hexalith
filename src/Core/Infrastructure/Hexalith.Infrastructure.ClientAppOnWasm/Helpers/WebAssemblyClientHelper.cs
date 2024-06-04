@@ -8,6 +8,8 @@ namespace Hexalith.Infrastructure.ClientAppOnWasm.Helpers;
 
 using System.Globalization;
 
+using Blazored.SessionStorage;
+
 using Hexalith.Infrastructure.ClientApp.Helpers;
 
 using HexalithApplication.Client;
@@ -40,7 +42,9 @@ public static class WebAssemblyClientHelper
                 ClientConstants.FrontApiName,
                 client => client.BaseAddress = baseAddress)
             .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
+
         _ = services
+            .AddBlazoredSessionStorage()
             .AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>()
             .CreateClient(ClientConstants.FrontApiName));
         return services;

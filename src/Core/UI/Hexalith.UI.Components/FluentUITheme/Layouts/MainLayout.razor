@@ -11,8 +11,10 @@
 <FluentDialogProvider />
 <FluentTooltipProvider />
 <FluentMessageBarProvider />
-<FluentDesignSystemProvider AccentBaseColor="@ThemeSettings.Value.AccentBaseColor" StrokeWidth="@ThemeSettings.Value.StrokeWidth" FillColor="@ThemeSettings.Value.FillColor">
-	<FluentMainLayout>
+<FluentDesignSystemProvider AccentBaseColor="@ThemeSettings.Value.AccentBaseColor"
+							StrokeWidth="@ThemeSettings.Value.StrokeWidth"
+							FillColor="@ThemeSettings.Value.FillColor">
+	<FluentMainLayout NavMenuWidth="250">
 		<Header>
 			<HexApplicationTitle />
 			<FluentSpacer />
@@ -25,38 +27,40 @@
 		</SubHeader>
 		<Body>
 			@Body
-			<FluentFooter>
-				<SectionOutlet SectionName="ApplicationFooterContent" />
-			</FluentFooter>
 		</Body>
 		<NavMenuContent>
-			@foreach (var menuItem in MenuItems)
+			@foreach (MenuItemInformation menuItem in MenuItems)
 			{
-
-				void addItems(MenuItemInformation menuItem)
+				if (menuItem.SubItems.Any())
 				{
-					
-					if (menuItem.SubItems.Any())
-					{
-						<FluentNavGroup Expanded="true"
-										Title="@menuItem.Name"
-										Icon="@menuItem.Icon.ToFluentIcon()"
-										IconColor="Color.Accent">
-							@foreach (var subItem in menuItem.SubItems)
+					<FluentNavGroup Expanded="true"
+									Title="@menuItem.Name"
+									Icon="@menuItem.Icon.ToFluentIcon()"
+									IconColor="Color.Accent">
+						@foreach (var subItem in menuItem.SubItems)
+						{
+							<FluentNavLink Icon="@subItem.Icon.ToFluentIcon()" Href="@subItem.Path">@subItem.Name</FluentNavLink>
+							if (subItem.DividerAfter)
 							{
-								addItems(subItem);
+								<FluentDivider />
 							}
-						</FluentNavGroup>
-					}
-					else
+						}
+					</FluentNavGroup>
+				}
+				else
+				{
+					<FluentNavLink Icon="@menuItem.Icon.ToFluentIcon()" Href="@menuItem.Path">@menuItem.Name</FluentNavLink>
+					if (menuItem.DividerAfter)
 					{
-						<FluentMenuItem MenuItemInformation="menuItem" />
+						<FluentDivider />
 					}
 				}
 			}
-			<SectionOutlet SectionName="ApplicationMenuContent" />
 		</NavMenuContent>
 	</FluentMainLayout>
+	<FluentFooter>
+		<SectionOutlet SectionName="ApplicationFooterContent" />
+	</FluentFooter>
 </FluentDesignSystemProvider>
 <div id="blazor-error-ui">
 	An unhandled error has occurred.
