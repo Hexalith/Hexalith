@@ -10,6 +10,7 @@ using System.Globalization;
 
 using Blazored.SessionStorage;
 
+using Hexalith.Application.Modules.Applications;
 using Hexalith.Infrastructure.ClientApp.Helpers;
 
 using HexalithApplication.Client;
@@ -66,6 +67,7 @@ public static class WebAssemblyClientHelper
         _ = builder.Services
             .AddLogging(loggingBuilder => loggingBuilder.AddSerilog(dispose: true))
             .AddHexalithWasmClientApp(builder.Configuration, new Uri(builder.HostEnvironment.BaseAddress));
+        HexalithApplication.AddClientServices(builder.Services, builder.Configuration);
         return builder;
     }
 }

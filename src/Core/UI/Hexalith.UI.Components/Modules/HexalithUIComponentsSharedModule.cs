@@ -59,4 +59,9 @@ public class HexalithUIComponentsSharedModule : ISharedApplicationModule
             .ConfigureSettings<FluentUIThemeSettings>(configuration)
             .AddDataGridEntityFrameworkAdapter();
     }
+
+    /// <inheritdoc/>
+    public void UseModule(object builder)
+    {
+    }
 }

@@ -16,6 +16,7 @@ using FluentValidation;
 using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Modules.Applications;
+using Hexalith.Application.Modules.Modules;
 using Hexalith.Application.Projections;
 using Hexalith.Application.Tasks;
 using Hexalith.Domain.Messages;
@@ -122,14 +123,34 @@ public static class ServerSideClientAppHelper
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
+        HexalithApplication.AddServerServices(builder.Services, builder.Configuration);
         return builder;
+    }
+
+    /// <summary>
+    /// Configures the application to use the modules.
+    /// </summary>
+    /// <param name="application">The application.</param>
+    public static void UseHexalithModules([NotNull] this IHost application)
+    {
+        ArgumentNullException.ThrowIfNull(application);
+
+        // initialize modules
+        using IServiceScope scope = application.Services.CreateScope();
+
+        IEnumerable<IApplicationModule>? modules = scope
+            .ServiceProvider
+            .GetServices<IApplicationModule>();
+        foreach (IApplicationModule module in modules)
+        {
+            module.UseModule(application);
+        }
     }
 
     /// <summary>
     /// Uses the hexalith web application.
     /// </summary>
     /// <typeparam name="TApp">The type of the t application.</typeparam>
-    /// <typeparam name="TUser">The type of the t user.</typeparam>
     /// <param name="app">The application.</param>
     /// <returns>IApplicationBuilder.</returns>
     /// <exception cref="System.ArgumentNullException">null.</exception>
@@ -177,6 +198,7 @@ public static class ServerSideClientAppHelper
             .AddAdditionalAssemblies([.. HexalithApplication.Server.PresentationAssemblies]);
 
         _ = app.MapActorsHandlers();
+        app.UseHexalithModules();
 
         return app;
     }

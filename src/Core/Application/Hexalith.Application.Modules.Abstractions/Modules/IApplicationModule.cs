@@ -59,4 +59,10 @@ public interface IApplicationModule
     /// Gets the version of the module.
     /// </summary>
     string Version { get; }
+
+    /// <summary>
+    /// Setup the module in the application. For example, maps routes, etc.
+    /// </summary>
+    /// <param name="builder">The host application.</param>
+    void UseModule(object builder);
 }

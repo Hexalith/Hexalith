@@ -67,7 +67,6 @@ public abstract class HexalithApplication : IApplication
     public abstract string LogoutPath { get; }
 
     /// <inheritdoc/>
-
     public abstract IEnumerable<Type> Modules { get; }
 
     /// <inheritdoc/>
