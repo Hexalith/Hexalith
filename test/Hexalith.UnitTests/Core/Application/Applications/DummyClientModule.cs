@@ -41,4 +41,6 @@ internal class DummyClientModule : IClientApplicationModule
 
         _ = services.AddSingleton<DummyClientService>();
     }
+
+    public void UseModule(object builder) => throw new NotImplementedException();
 }

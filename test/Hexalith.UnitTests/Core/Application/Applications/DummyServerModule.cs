@@ -41,4 +41,6 @@ internal class DummyServerModule : IServerApplicationModule
 
         _ = services.AddSingleton<DummyServerService>();
     }
+
+    public void UseModule(object builder) => throw new NotImplementedException();
 }

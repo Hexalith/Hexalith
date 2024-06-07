@@ -41,4 +41,6 @@ internal class DummySharedModule : ISharedApplicationModule
 
         _ = services.AddSingleton<DummySharedService>();
     }
+
+    public void UseModule(object builder) => throw new NotImplementedException();
 }
