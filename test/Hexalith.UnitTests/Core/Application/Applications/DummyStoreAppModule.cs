@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 internal class DummyStoreAppModule : IStoreAppApplicationModule
 {
+    public static int OrderWeight => 66;
     public IEnumerable<string> Dependencies => [];
 
     public string Description => "Test module description";
@@ -23,14 +24,13 @@ internal class DummyStoreAppModule : IStoreAppApplicationModule
     public string Id => "StoreAppTest";
 
     public string Name => "StoreApp Test";
-
-    public int OrderWeight => 66;
-
     public string Path { get; }
 
     public IEnumerable<Assembly> PresentationAssemblies => [GetType().Assembly];
 
     public string Version => "2.1";
+
+    int IApplicationModule.OrderWeight { get; set; }
 
     public static void AddStoreAppModulesServices(IServiceCollection services, IConfiguration configuration)
     {
@@ -41,4 +41,6 @@ internal class DummyStoreAppModule : IStoreAppApplicationModule
 
         _ = services.AddSingleton<IStoreAppApplicationModule, DummyStoreAppModule>();
     }
+
+    public void AddServices(IServiceCollection services, IConfiguration configuration) => throw new NotImplementedException();
 }
