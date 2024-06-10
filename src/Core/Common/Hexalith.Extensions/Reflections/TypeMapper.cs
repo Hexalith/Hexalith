@@ -9,6 +9,7 @@ namespace Hexalith.Extensions.Reflections;
 using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
@@ -53,6 +54,13 @@ public static class TypeMapper
             string key = obj.TypeMapName;
             try
             {
+                if (map.TryGetValue(key, out TMappable? value))
+                {
+                    Debug.WriteLine($"Type {type.AssemblyQualifiedName} could not be added to the serialization mapper."
+                        + $" Name '{obj.TypeMapName}' already exists and is associated with '{value.GetType().AssemblyQualifiedName}'.");
+                    continue;
+                }
+
                 map.Add(key, obj);
             }
             catch (ArgumentException ex)
