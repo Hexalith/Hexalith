@@ -10,8 +10,6 @@ using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Extensions;
-
 /// <summary>
 /// The task processing history information.
 /// </summary>
@@ -22,16 +20,11 @@ public class TaskProcessingHistory
     /// Initializes a new instance of the <see cref="TaskProcessingHistory"/> class.
     /// </summary>
     /// <param name="createdDate">The created date.</param>
-    public TaskProcessingHistory(DateTimeOffset createdDate) =>
-#pragma warning disable CS0618 // Type or member is obsolete
-        CreatedDate = createdDate;
-
-#pragma warning restore CS0618 // Type or member is obsolete
+    public TaskProcessingHistory(DateTimeOffset createdDate) => CreatedDate = createdDate;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="TaskProcessingHistory"/> class.
     /// </summary>
-    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public TaskProcessingHistory() => CreatedDate = DateTimeOffset.MinValue;
 
     /// <summary>
@@ -50,13 +43,11 @@ public class TaskProcessingHistory
         DateTimeOffset? completedDate,
         DateTimeOffset? canceledDate)
     {
-#pragma warning disable CS0618 // Type or member is obsolete
         CreatedDate = createdDate;
         SuspendedDate = suspendedDate;
         ProcessingStartDate = processingStartDate;
         CompletedDate = completedDate;
         CanceledDate = canceledDate;
-#pragma warning restore CS0618 // Type or member is obsolete
     }
 
     /// <summary>
@@ -67,7 +58,6 @@ public class TaskProcessingHistory
     public DateTimeOffset? CanceledDate
     {
         get;
-        [Obsolete("Setter used only for serialization purposes.", false)]
         set;
     }
 
@@ -79,7 +69,6 @@ public class TaskProcessingHistory
     public DateTimeOffset? CompletedDate
     {
         get;
-        [Obsolete("Setter used only for serialization purposes.", false)]
         set;
     }
 
@@ -91,7 +80,6 @@ public class TaskProcessingHistory
     public DateTimeOffset CreatedDate
     {
         get;
-        [Obsolete("Setter used only for serialization purposes.", false)]
         set;
     }
 
@@ -103,7 +91,6 @@ public class TaskProcessingHistory
     public DateTimeOffset? ProcessingStartDate
     {
         get;
-        [Obsolete("Setter used only for serialization purposes.", false)]
         set;
     }
 
@@ -115,7 +102,6 @@ public class TaskProcessingHistory
     public DateTimeOffset? SuspendedDate
     {
         get;
-        [Obsolete("Setter used only for serialization purposes.", false)]
         set;
     }
 

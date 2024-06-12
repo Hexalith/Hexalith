@@ -31,6 +31,19 @@ using Hexalith.Extensions.Helpers;
 public class TaskProcessorTest
 {
     /// <summary>
+    /// Defines the test method CompleteRunningProcessShouldBeCompleted.
+    /// </summary>
+    [Fact]
+    public void CompleteCancelledProcessShouldStayCancelled()
+    {
+        TaskProcessor processor = new TaskProcessor(DateTimeOffset.UtcNow, ResiliencyPolicy.None)
+            .Start()
+            .Cancel()
+            .Complete();
+        _ = processor.Status.Should().Be(TaskProcessorStatus.Canceled);
+    }
+
+    /// <summary>
     /// Defines the test method CompleteProcessingTaskShouldHaveCompleteDate.
     /// </summary>
     [Fact]

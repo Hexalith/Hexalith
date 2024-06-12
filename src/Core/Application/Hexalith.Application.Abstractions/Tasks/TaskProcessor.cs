@@ -12,7 +12,6 @@ using System.Globalization;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Extensions;
 using Hexalith.Extensions.Errors;
 using Hexalith.Extensions.Helpers;
 
@@ -26,7 +25,6 @@ public class TaskProcessor : ITaskProcessor
     /// Initializes a new instance of the <see cref="TaskProcessor" /> class.
     /// Initialize the task processor.
     /// </summary>
-    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public TaskProcessor()
     {
         Status = TaskProcessorStatus.New;
@@ -41,11 +39,9 @@ public class TaskProcessor : ITaskProcessor
     /// <param name="policy">The policy.</param>
     public TaskProcessor(DateTimeOffset createdDate, ResiliencyPolicy policy)
     {
-#pragma warning disable CS0618 // Type or member is obsolete
         Status = TaskProcessorStatus.New;
         History = new TaskProcessingHistory(createdDate);
         ResiliencyPolicy = policy;
-#pragma warning restore CS0618 // Type or member is obsolete
     }
 
     /// <summary>
@@ -62,12 +58,10 @@ public class TaskProcessor : ITaskProcessor
             ResiliencyPolicy resiliencyPolicy,
             TaskProcessingFailure? failure)
     {
-#pragma warning disable CS0618 // Type or member is obsolete
         Status = status;
         History = history;
         Failure = failure;
         ResiliencyPolicy = resiliencyPolicy;
-#pragma warning restore CS0618 // Type or member is obsolete
     }
 
     /// <summary>
@@ -78,12 +72,10 @@ public class TaskProcessor : ITaskProcessor
     public TaskProcessor(ITaskProcessor processor)
     {
         _ = processor ?? throw new ArgumentNullException(nameof(processor));
-#pragma warning disable CS0618 // Type or member is obsolete
         Status = processor.Status;
         History = processor.History;
         Failure = processor.Failure;
         ResiliencyPolicy = processor.ResiliencyPolicy;
-#pragma warning restore CS0618 // Type or member is obsolete
     }
 
     /// <inheritdoc/>
@@ -109,7 +101,6 @@ public class TaskProcessor : ITaskProcessor
     public TaskProcessingFailure? Failure
     {
         get;
-        [Obsolete("Setter used only for serialization purposes.", false)]
         set;
     }
 
@@ -119,7 +110,6 @@ public class TaskProcessor : ITaskProcessor
     public TaskProcessingHistory History
     {
         get;
-        [Obsolete("Setter used only for serialization purposes.", false)]
         set;
     }
 
@@ -129,23 +119,22 @@ public class TaskProcessor : ITaskProcessor
     public ResiliencyPolicy ResiliencyPolicy
     {
         get;
-        [Obsolete("Setter used only for serialization purposes.", false)]
         set;
     }
 
     /// <summary>
-    /// Gets or sets the retry wait time.
+    /// Gets or sets the retry date.
     /// </summary>
     /// <value>The retry wait time.</value>
     [DataMember(Order = 5)]
     [JsonPropertyOrder(5)]
+    [SuppressMessage("Blocker Code Smell", "S3237:\"value\" contextual keyword should be used", Justification = "Dummy property setter used for serialization only.")]
     public DateTimeOffset? RetryDate
     {
         get => Ended ? null : ResiliencyPolicy.NextRetryTime(History.CreatedDate, Failure?.Count ?? 0);
-        [Obsolete("Setter used only for serialization purposes.", false)]
         set
         {
-            // Method intentionally left empty.
+            // Added for serialization purpose
         }
     }
 
@@ -155,13 +144,13 @@ public class TaskProcessor : ITaskProcessor
     /// <value>The retry wait time.</value>
     [DataMember(Order = 6)]
     [JsonPropertyOrder(6)]
+    [SuppressMessage("Blocker Code Smell", "S3237:\"value\" contextual keyword should be used", Justification = "Dummy property setter used for serialization only.")]
     public TimeSpan RetryPeriod
     {
         get => ResiliencyPolicy.EvaluatePeriod(Failure?.Count ?? 0);
-        [Obsolete("Setter used only for serialization purposes.", false)]
         set
         {
-            // Method intentionally left empty.
+            // Added for serialization purpose
         }
     }
 
@@ -172,7 +161,6 @@ public class TaskProcessor : ITaskProcessor
     public TaskProcessorStatus Status
     {
         get;
-        [Obsolete("Setter used only for serialization purposes.", false)]
         set;
     }
 
@@ -184,7 +172,7 @@ public class TaskProcessor : ITaskProcessor
     public TaskProcessor Cancel()
     {
         return Ended
-            ? throw new InvalidStatusChangeException(currentStatus: Status, newStatus: TaskProcessorStatus.Canceled, "Cannot cancel a terminated task.")
+            ? this
             : new TaskProcessor(TaskProcessorStatus.Canceled, History.Canceled(), ResiliencyPolicy, Failure);
     }
 
@@ -199,7 +187,7 @@ public class TaskProcessor : ITaskProcessor
     public TaskProcessor Complete()
     {
         return Ended
-            ? throw new InvalidStatusChangeException(currentStatus: Status, newStatus: TaskProcessorStatus.Completed, "Cannot complete a terminated task.")
+            ? this
             : new TaskProcessor(TaskProcessorStatus.Completed, History.Completed(), ResiliencyPolicy, Failure);
     }
 
@@ -256,9 +244,12 @@ public class TaskProcessor : ITaskProcessor
         TaskProcessingFailure newFailure = Failure == null ? new TaskProcessingFailure(1, DateTimeOffset.UtcNow, message, technicalError) : Failure.Fail(message, technicalError);
         bool canRetry = ResiliencyPolicy
             .CanRetry(History.ProcessingStartDate ?? History.CreatedDate, newFailure.Count) != RetryStatus.Stopped;
-        return Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed
-            ? throw new InvalidStatusChangeException(currentStatus: Status, newStatus: TaskProcessorStatus.Suspended, "Cannot fail a terminated task.")
-            : canRetry
+        if (Status is TaskProcessorStatus.Canceled or TaskProcessorStatus.Completed)
+        {
+            return this;
+        }
+
+        return canRetry
                 ? new TaskProcessor(TaskProcessorStatus.Suspended, History.Suspended(), ResiliencyPolicy, newFailure)
                 : new TaskProcessor(TaskProcessorStatus.Canceled, History.Canceled(), ResiliencyPolicy, newFailure);
     }
