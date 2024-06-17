@@ -19,9 +19,6 @@
 		<PackageReference Include="Dapr.Actors.AspNetCore" Version="$(DaprVersion)" />
 		<PackageReference Include="Dapr.AspNetCore" Version="$(DaprVersion)" />
 		<PackageReference Include="Dapr.Extensions.Configuration" Version="$(DaprVersion)" />
-		<PackageReference Include="Man.Dapr.Sidekick" Version="$(ManDaprSidekickVersion)" />
-		<PackageReference Include="Man.Dapr.Sidekick.AspNetCore" Version="$(ManDaprSidekickVersion)" />
-		<PackageReference Include="Man.Dapr.Sidekick.Extensions.Logging" Version="$(ManDaprSidekickVersion)" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Serilog.AspNetCore" Version="$(SerilogVersion)" />
