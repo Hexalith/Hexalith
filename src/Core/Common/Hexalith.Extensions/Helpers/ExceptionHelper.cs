@@ -18,7 +18,7 @@ public static class ExceptionHelper
     /// Gets the innermost exception.
     /// </summary>
     /// <param name="ex">The exception to get message from.</param>
-    /// <returns>A message containing the exception and it's inner exceptions messages.</returns>
+    /// <returns>A message containing the exception and its inner exceptions messages.</returns>
     public static string FullMessage(this Exception ex)
     {
         if (ex == null)
@@ -36,5 +36,31 @@ public static class ExceptionHelper
         }
 
         return message.ToString();
+    }
+
+    /// <summary>
+    /// Get inner exception of type T.
+    /// </summary>
+    /// <typeparam name="T">The type of the inner exception.</typeparam>
+    /// <param name="ex">The exception to get the inner exception from.</param>
+    /// <returns>The inner exception of type T, or null if not found.</returns>
+    public static T? GetInnerException<T>(this Exception ex)
+        where T : Exception
+    {
+        if (ex == null)
+        {
+            return null;
+        }
+
+        Exception? inner = ex;
+        while ((inner = inner.InnerException) != null)
+        {
+            if (inner is T t)
+            {
+                return t;
+            }
+        }
+
+        return null;
     }
 }
