@@ -59,11 +59,11 @@ Hexalith sales microservice
 [![Build status](https://github.com/Hexalith/Hexalith.Sales/actions/workflows/hexalith_build.yml/badge.svg)](https://github.com/Hexalith/Hexalith.Sales/actions)
 [![NuGet](https://img.shields.io/nuget/v/Hexalith.Sales.Domain.Abstractions.svg)](https://www.nuget.org/packages/Hexalith.Sales.Domain.Abstractions)
 
-### [Hexalith.Identities](https://github.com/Hexalith/Hexalith.Identities)
+### [Hexalith.Oidc](https://github.com/Hexalith/Hexalith.Oidc)
 Hexalith identity and security microservice
 <br/>
-[![Build status](https://github.com/Hexalith/Hexalith.Identities/actions/workflows/hexalith_build.yml/badge.svg)](https://github.com/Hexalith/Hexalith.Identities/actions)
-[![NuGet](https://img.shields.io/nuget/v/Hexalith.Identities.Domain.Abstractions.svg)](https://www.nuget.org/packages/Hexalith.Identities.Domain.Abstractions)
+[![Build status](https://github.com/Hexalith/Hexalith.Oidc/actions/workflows/hexalith_build.yml/badge.svg)](https://github.com/Hexalith/Hexalith.Oidc/actions)
+[![NuGet](https://img.shields.io/nuget/v/Hexalith.Oidc.Shared.svg)](https://www.nuget.org/packages/Hexalith.Oidc.Shared)
 
 ### [Hexalith.Dynamics365Finance](https://github.com/Hexalith/Hexalith.Dynamics365Finance)
 Hexalith Dynamics 365 Finance and Operations connector microservice
@@ -74,8 +74,6 @@ Hexalith Dynamics 365 Finance and Operations connector microservice
 ### [HexalithApp](https://github.com/Hexalith/HexalithApp)
 Hexalith Application
 <br/>
-[![Build status](https://github.com/Hexalith/HexalithApp/actions/workflows/hexalith_build.yml/badge.svg)](https://github.com/Hexalith/HexalithApp/actions)
-[![NuGet](https://img.shields.io/nuget/v/HexalithApp.Shared.svg)](https://www.nuget.org/packages/HexalithApp.Shared)
 
 ## Status
 
