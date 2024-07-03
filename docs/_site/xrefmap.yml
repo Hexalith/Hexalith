@@ -4691,6 +4691,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Modules.Applications.HexalithClientApplication.LogoutPath
   nameWithType: HexalithClientApplication.LogoutPath
+- uid: Hexalith.Application.Modules.Applications.HexalithClientApplication.Modules
+  name: Modules
+  href: api/Hexalith.Application.Modules.Applications.HexalithClientApplication.html#Hexalith_Application_Modules_Applications_HexalithClientApplication_Modules
+  commentId: P:Hexalith.Application.Modules.Applications.HexalithClientApplication.Modules
+  fullName: Hexalith.Application.Modules.Applications.HexalithClientApplication.Modules
+  nameWithType: HexalithClientApplication.Modules
+- uid: Hexalith.Application.Modules.Applications.HexalithClientApplication.Modules*
+  name: Modules
+  href: api/Hexalith.Application.Modules.Applications.HexalithClientApplication.html#Hexalith_Application_Modules_Applications_HexalithClientApplication_Modules_
+  commentId: Overload:Hexalith.Application.Modules.Applications.HexalithClientApplication.Modules
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.Applications.HexalithClientApplication.Modules
+  nameWithType: HexalithClientApplication.Modules
 - uid: Hexalith.Application.Modules.Applications.HexalithClientApplication.Name
   name: Name
   href: api/Hexalith.Application.Modules.Applications.HexalithClientApplication.html#Hexalith_Application_Modules_Applications_HexalithClientApplication_Name
@@ -4827,6 +4840,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Modules.Applications.HexalithServerApplication.LogoutPath
   nameWithType: HexalithServerApplication.LogoutPath
+- uid: Hexalith.Application.Modules.Applications.HexalithServerApplication.Modules
+  name: Modules
+  href: api/Hexalith.Application.Modules.Applications.HexalithServerApplication.html#Hexalith_Application_Modules_Applications_HexalithServerApplication_Modules
+  commentId: P:Hexalith.Application.Modules.Applications.HexalithServerApplication.Modules
+  fullName: Hexalith.Application.Modules.Applications.HexalithServerApplication.Modules
+  nameWithType: HexalithServerApplication.Modules
+- uid: Hexalith.Application.Modules.Applications.HexalithServerApplication.Modules*
+  name: Modules
+  href: api/Hexalith.Application.Modules.Applications.HexalithServerApplication.html#Hexalith_Application_Modules_Applications_HexalithServerApplication_Modules_
+  commentId: Overload:Hexalith.Application.Modules.Applications.HexalithServerApplication.Modules
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.Applications.HexalithServerApplication.Modules
+  nameWithType: HexalithServerApplication.Modules
 - uid: Hexalith.Application.Modules.Applications.HexalithServerApplication.Name
   name: Name
   href: api/Hexalith.Application.Modules.Applications.HexalithServerApplication.html#Hexalith_Application_Modules_Applications_HexalithServerApplication_Name
@@ -4911,6 +4937,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Modules.Applications.HexalithSharedApplication.IsServer
   nameWithType: HexalithSharedApplication.IsServer
+- uid: Hexalith.Application.Modules.Applications.HexalithSharedApplication.Modules
+  name: Modules
+  href: api/Hexalith.Application.Modules.Applications.HexalithSharedApplication.html#Hexalith_Application_Modules_Applications_HexalithSharedApplication_Modules
+  commentId: P:Hexalith.Application.Modules.Applications.HexalithSharedApplication.Modules
+  fullName: Hexalith.Application.Modules.Applications.HexalithSharedApplication.Modules
+  nameWithType: HexalithSharedApplication.Modules
+- uid: Hexalith.Application.Modules.Applications.HexalithSharedApplication.Modules*
+  name: Modules
+  href: api/Hexalith.Application.Modules.Applications.HexalithSharedApplication.html#Hexalith_Application_Modules_Applications_HexalithSharedApplication_Modules_
+  commentId: Overload:Hexalith.Application.Modules.Applications.HexalithSharedApplication.Modules
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.Applications.HexalithSharedApplication.Modules
+  nameWithType: HexalithSharedApplication.Modules
 - uid: Hexalith.Application.Modules.Applications.HexalithSharedApplication.PresentationAssemblies
   name: PresentationAssemblies
   href: api/Hexalith.Application.Modules.Applications.HexalithSharedApplication.html#Hexalith_Application_Modules_Applications_HexalithSharedApplication_PresentationAssemblies
@@ -5481,6 +5520,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.Modules.Modules.IApplicationModule.PresentationAssemblies
   nameWithType: IApplicationModule.PresentationAssemblies
+- uid: Hexalith.Application.Modules.Modules.IApplicationModule.UseModule(System.Object)
+  name: UseModule(Object)
+  href: api/Hexalith.Application.Modules.Modules.IApplicationModule.html#Hexalith_Application_Modules_Modules_IApplicationModule_UseModule_System_Object_
+  commentId: M:Hexalith.Application.Modules.Modules.IApplicationModule.UseModule(System.Object)
+  fullName: Hexalith.Application.Modules.Modules.IApplicationModule.UseModule(System.Object)
+  nameWithType: IApplicationModule.UseModule(Object)
+- uid: Hexalith.Application.Modules.Modules.IApplicationModule.UseModule*
+  name: UseModule
+  href: api/Hexalith.Application.Modules.Modules.IApplicationModule.html#Hexalith_Application_Modules_Modules_IApplicationModule_UseModule_
+  commentId: Overload:Hexalith.Application.Modules.Modules.IApplicationModule.UseModule
+  isSpec: "True"
+  fullName: Hexalith.Application.Modules.Modules.IApplicationModule.UseModule
+  nameWithType: IApplicationModule.UseModule
 - uid: Hexalith.Application.Modules.Modules.IApplicationModule.Version
   name: Version
   href: api/Hexalith.Application.Modules.Modules.IApplicationModule.html#Hexalith_Application_Modules_Modules_IApplicationModule_Version
@@ -14125,6 +14177,22 @@ references:
   isSpec: "True"
   fullName: Hexalith.Extensions.Helpers.ExceptionHelper.FullMessage
   nameWithType: ExceptionHelper.FullMessage
+- uid: Hexalith.Extensions.Helpers.ExceptionHelper.GetInnerException*
+  name: GetInnerException
+  href: api/Hexalith.Extensions.Helpers.ExceptionHelper.html#Hexalith_Extensions_Helpers_ExceptionHelper_GetInnerException_
+  commentId: Overload:Hexalith.Extensions.Helpers.ExceptionHelper.GetInnerException
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Helpers.ExceptionHelper.GetInnerException
+  nameWithType: ExceptionHelper.GetInnerException
+- uid: Hexalith.Extensions.Helpers.ExceptionHelper.GetInnerException``1(System.Exception)
+  name: GetInnerException<T>(Exception)
+  href: api/Hexalith.Extensions.Helpers.ExceptionHelper.html#Hexalith_Extensions_Helpers_ExceptionHelper_GetInnerException__1_System_Exception_
+  commentId: M:Hexalith.Extensions.Helpers.ExceptionHelper.GetInnerException``1(System.Exception)
+  name.vb: GetInnerException(Of T)(Exception)
+  fullName: Hexalith.Extensions.Helpers.ExceptionHelper.GetInnerException<T>(System.Exception)
+  fullName.vb: Hexalith.Extensions.Helpers.ExceptionHelper.GetInnerException(Of T)(System.Exception)
+  nameWithType: ExceptionHelper.GetInnerException<T>(Exception)
+  nameWithType.vb: ExceptionHelper.GetInnerException(Of T)(Exception)
 - uid: Hexalith.Extensions.Helpers.FibonacciSequence
   name: FibonacciSequence
   href: api/Hexalith.Extensions.Helpers.FibonacciSequence.html
@@ -15385,6 +15453,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.ClientAppOnServer.Helpers.ServerSideClientAppHelper.CreateServerSideClientApplication
   nameWithType: ServerSideClientAppHelper.CreateServerSideClientApplication
+- uid: Hexalith.Infrastructure.ClientAppOnServer.Helpers.ServerSideClientAppHelper.UseHexalithModules(Microsoft.Extensions.Hosting.IHost)
+  name: UseHexalithModules(IHost)
+  href: api/Hexalith.Infrastructure.ClientAppOnServer.Helpers.ServerSideClientAppHelper.html#Hexalith_Infrastructure_ClientAppOnServer_Helpers_ServerSideClientAppHelper_UseHexalithModules_Microsoft_Extensions_Hosting_IHost_
+  commentId: M:Hexalith.Infrastructure.ClientAppOnServer.Helpers.ServerSideClientAppHelper.UseHexalithModules(Microsoft.Extensions.Hosting.IHost)
+  fullName: Hexalith.Infrastructure.ClientAppOnServer.Helpers.ServerSideClientAppHelper.UseHexalithModules(Microsoft.Extensions.Hosting.IHost)
+  nameWithType: ServerSideClientAppHelper.UseHexalithModules(IHost)
+- uid: Hexalith.Infrastructure.ClientAppOnServer.Helpers.ServerSideClientAppHelper.UseHexalithModules*
+  name: UseHexalithModules
+  href: api/Hexalith.Infrastructure.ClientAppOnServer.Helpers.ServerSideClientAppHelper.html#Hexalith_Infrastructure_ClientAppOnServer_Helpers_ServerSideClientAppHelper_UseHexalithModules_
+  commentId: Overload:Hexalith.Infrastructure.ClientAppOnServer.Helpers.ServerSideClientAppHelper.UseHexalithModules
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.ClientAppOnServer.Helpers.ServerSideClientAppHelper.UseHexalithModules
+  nameWithType: ServerSideClientAppHelper.UseHexalithModules
 - uid: Hexalith.Infrastructure.ClientAppOnServer.Helpers.ServerSideClientAppHelper.UseHexalithWebApplication*
   name: UseHexalithWebApplication
   href: api/Hexalith.Infrastructure.ClientAppOnServer.Helpers.ServerSideClientAppHelper.html#Hexalith_Infrastructure_ClientAppOnServer_Helpers_ServerSideClientAppHelper_UseHexalithWebApplication_
@@ -20057,6 +20138,19 @@ references:
   commentId: T:Hexalith.UI.Components.Configurations.FluentUIThemeSettings
   fullName: Hexalith.UI.Components.Configurations.FluentUIThemeSettings
   nameWithType: FluentUIThemeSettings
+- uid: Hexalith.UI.Components.Configurations.FluentUIThemeSettings.AccentBaseColor
+  name: AccentBaseColor
+  href: api/Hexalith.UI.Components.Configurations.FluentUIThemeSettings.html#Hexalith_UI_Components_Configurations_FluentUIThemeSettings_AccentBaseColor
+  commentId: P:Hexalith.UI.Components.Configurations.FluentUIThemeSettings.AccentBaseColor
+  fullName: Hexalith.UI.Components.Configurations.FluentUIThemeSettings.AccentBaseColor
+  nameWithType: FluentUIThemeSettings.AccentBaseColor
+- uid: Hexalith.UI.Components.Configurations.FluentUIThemeSettings.AccentBaseColor*
+  name: AccentBaseColor
+  href: api/Hexalith.UI.Components.Configurations.FluentUIThemeSettings.html#Hexalith_UI_Components_Configurations_FluentUIThemeSettings_AccentBaseColor_
+  commentId: Overload:Hexalith.UI.Components.Configurations.FluentUIThemeSettings.AccentBaseColor
+  isSpec: "True"
+  fullName: Hexalith.UI.Components.Configurations.FluentUIThemeSettings.AccentBaseColor
+  nameWithType: FluentUIThemeSettings.AccentBaseColor
 - uid: Hexalith.UI.Components.Configurations.FluentUIThemeSettings.ConfigurationName
   name: ConfigurationName()
   href: api/Hexalith.UI.Components.Configurations.FluentUIThemeSettings.html#Hexalith_UI_Components_Configurations_FluentUIThemeSettings_ConfigurationName
@@ -20070,6 +20164,32 @@ references:
   isSpec: "True"
   fullName: Hexalith.UI.Components.Configurations.FluentUIThemeSettings.ConfigurationName
   nameWithType: FluentUIThemeSettings.ConfigurationName
+- uid: Hexalith.UI.Components.Configurations.FluentUIThemeSettings.FillColor
+  name: FillColor
+  href: api/Hexalith.UI.Components.Configurations.FluentUIThemeSettings.html#Hexalith_UI_Components_Configurations_FluentUIThemeSettings_FillColor
+  commentId: P:Hexalith.UI.Components.Configurations.FluentUIThemeSettings.FillColor
+  fullName: Hexalith.UI.Components.Configurations.FluentUIThemeSettings.FillColor
+  nameWithType: FluentUIThemeSettings.FillColor
+- uid: Hexalith.UI.Components.Configurations.FluentUIThemeSettings.FillColor*
+  name: FillColor
+  href: api/Hexalith.UI.Components.Configurations.FluentUIThemeSettings.html#Hexalith_UI_Components_Configurations_FluentUIThemeSettings_FillColor_
+  commentId: Overload:Hexalith.UI.Components.Configurations.FluentUIThemeSettings.FillColor
+  isSpec: "True"
+  fullName: Hexalith.UI.Components.Configurations.FluentUIThemeSettings.FillColor
+  nameWithType: FluentUIThemeSettings.FillColor
+- uid: Hexalith.UI.Components.Configurations.FluentUIThemeSettings.StrokeWidth
+  name: StrokeWidth
+  href: api/Hexalith.UI.Components.Configurations.FluentUIThemeSettings.html#Hexalith_UI_Components_Configurations_FluentUIThemeSettings_StrokeWidth
+  commentId: P:Hexalith.UI.Components.Configurations.FluentUIThemeSettings.StrokeWidth
+  fullName: Hexalith.UI.Components.Configurations.FluentUIThemeSettings.StrokeWidth
+  nameWithType: FluentUIThemeSettings.StrokeWidth
+- uid: Hexalith.UI.Components.Configurations.FluentUIThemeSettings.StrokeWidth*
+  name: StrokeWidth
+  href: api/Hexalith.UI.Components.Configurations.FluentUIThemeSettings.html#Hexalith_UI_Components_Configurations_FluentUIThemeSettings_StrokeWidth_
+  commentId: Overload:Hexalith.UI.Components.Configurations.FluentUIThemeSettings.StrokeWidth
+  isSpec: "True"
+  fullName: Hexalith.UI.Components.Configurations.FluentUIThemeSettings.StrokeWidth
+  nameWithType: FluentUIThemeSettings.StrokeWidth
 - uid: Hexalith.UI.Components.Helpers
   name: Hexalith.UI.Components.Helpers
   href: api/Hexalith.UI.Components.Helpers.html
@@ -20095,6 +20215,207 @@ references:
   isSpec: "True"
   fullName: Hexalith.UI.Components.Helpers.ComponentsHelper.AddFluentUITheme
   nameWithType: ComponentsHelper.AddFluentUITheme
+- uid: Hexalith.UI.Components.Helpers.IconHelper
+  name: IconHelper
+  href: api/Hexalith.UI.Components.Helpers.IconHelper.html
+  commentId: T:Hexalith.UI.Components.Helpers.IconHelper
+  fullName: Hexalith.UI.Components.Helpers.IconHelper
+  nameWithType: IconHelper
+- uid: Hexalith.UI.Components.Helpers.IconHelper.ToFluentIcon(Hexalith.UI.Components.Icons.IconInformation)
+  name: ToFluentIcon(IconInformation)
+  href: api/Hexalith.UI.Components.Helpers.IconHelper.html#Hexalith_UI_Components_Helpers_IconHelper_ToFluentIcon_Hexalith_UI_Components_Icons_IconInformation_
+  commentId: M:Hexalith.UI.Components.Helpers.IconHelper.ToFluentIcon(Hexalith.UI.Components.Icons.IconInformation)
+  fullName: Hexalith.UI.Components.Helpers.IconHelper.ToFluentIcon(Hexalith.UI.Components.Icons.IconInformation)
+  nameWithType: IconHelper.ToFluentIcon(IconInformation)
+- uid: Hexalith.UI.Components.Helpers.IconHelper.ToFluentIcon*
+  name: ToFluentIcon
+  href: api/Hexalith.UI.Components.Helpers.IconHelper.html#Hexalith_UI_Components_Helpers_IconHelper_ToFluentIcon_
+  commentId: Overload:Hexalith.UI.Components.Helpers.IconHelper.ToFluentIcon
+  isSpec: "True"
+  fullName: Hexalith.UI.Components.Helpers.IconHelper.ToFluentIcon
+  nameWithType: IconHelper.ToFluentIcon
+- uid: Hexalith.UI.Components.Icons
+  name: Hexalith.UI.Components.Icons
+  href: api/Hexalith.UI.Components.Icons.html
+  commentId: N:Hexalith.UI.Components.Icons
+  fullName: Hexalith.UI.Components.Icons
+  nameWithType: Hexalith.UI.Components.Icons
+- uid: Hexalith.UI.Components.Icons.IconInformation
+  name: IconInformation
+  href: api/Hexalith.UI.Components.Icons.IconInformation.html
+  commentId: T:Hexalith.UI.Components.Icons.IconInformation
+  fullName: Hexalith.UI.Components.Icons.IconInformation
+  nameWithType: IconInformation
+- uid: Hexalith.UI.Components.Icons.IconInformation.#ctor(System.String,System.Int32,Hexalith.UI.Components.Icons.IconStyle)
+  name: IconInformation(String, Int32, IconStyle)
+  href: api/Hexalith.UI.Components.Icons.IconInformation.html#Hexalith_UI_Components_Icons_IconInformation__ctor_System_String_System_Int32_Hexalith_UI_Components_Icons_IconStyle_
+  commentId: M:Hexalith.UI.Components.Icons.IconInformation.#ctor(System.String,System.Int32,Hexalith.UI.Components.Icons.IconStyle)
+  fullName: Hexalith.UI.Components.Icons.IconInformation.IconInformation(System.String, System.Int32, Hexalith.UI.Components.Icons.IconStyle)
+  nameWithType: IconInformation.IconInformation(String, Int32, IconStyle)
+- uid: Hexalith.UI.Components.Icons.IconInformation.#ctor*
+  name: IconInformation
+  href: api/Hexalith.UI.Components.Icons.IconInformation.html#Hexalith_UI_Components_Icons_IconInformation__ctor_
+  commentId: Overload:Hexalith.UI.Components.Icons.IconInformation.#ctor
+  isSpec: "True"
+  fullName: Hexalith.UI.Components.Icons.IconInformation.IconInformation
+  nameWithType: IconInformation.IconInformation
+- uid: Hexalith.UI.Components.Icons.IconInformation.Name
+  name: Name
+  href: api/Hexalith.UI.Components.Icons.IconInformation.html#Hexalith_UI_Components_Icons_IconInformation_Name
+  commentId: P:Hexalith.UI.Components.Icons.IconInformation.Name
+  fullName: Hexalith.UI.Components.Icons.IconInformation.Name
+  nameWithType: IconInformation.Name
+- uid: Hexalith.UI.Components.Icons.IconInformation.Name*
+  name: Name
+  href: api/Hexalith.UI.Components.Icons.IconInformation.html#Hexalith_UI_Components_Icons_IconInformation_Name_
+  commentId: Overload:Hexalith.UI.Components.Icons.IconInformation.Name
+  isSpec: "True"
+  fullName: Hexalith.UI.Components.Icons.IconInformation.Name
+  nameWithType: IconInformation.Name
+- uid: Hexalith.UI.Components.Icons.IconInformation.Size
+  name: Size
+  href: api/Hexalith.UI.Components.Icons.IconInformation.html#Hexalith_UI_Components_Icons_IconInformation_Size
+  commentId: P:Hexalith.UI.Components.Icons.IconInformation.Size
+  fullName: Hexalith.UI.Components.Icons.IconInformation.Size
+  nameWithType: IconInformation.Size
+- uid: Hexalith.UI.Components.Icons.IconInformation.Size*
+  name: Size
+  href: api/Hexalith.UI.Components.Icons.IconInformation.html#Hexalith_UI_Components_Icons_IconInformation_Size_
+  commentId: Overload:Hexalith.UI.Components.Icons.IconInformation.Size
+  isSpec: "True"
+  fullName: Hexalith.UI.Components.Icons.IconInformation.Size
+  nameWithType: IconInformation.Size
+- uid: Hexalith.UI.Components.Icons.IconInformation.Style
+  name: Style
+  href: api/Hexalith.UI.Components.Icons.IconInformation.html#Hexalith_UI_Components_Icons_IconInformation_Style
+  commentId: P:Hexalith.UI.Components.Icons.IconInformation.Style
+  fullName: Hexalith.UI.Components.Icons.IconInformation.Style
+  nameWithType: IconInformation.Style
+- uid: Hexalith.UI.Components.Icons.IconInformation.Style*
+  name: Style
+  href: api/Hexalith.UI.Components.Icons.IconInformation.html#Hexalith_UI_Components_Icons_IconInformation_Style_
+  commentId: Overload:Hexalith.UI.Components.Icons.IconInformation.Style
+  isSpec: "True"
+  fullName: Hexalith.UI.Components.Icons.IconInformation.Style
+  nameWithType: IconInformation.Style
+- uid: Hexalith.UI.Components.Icons.IconStyle
+  name: IconStyle
+  href: api/Hexalith.UI.Components.Icons.IconStyle.html
+  commentId: T:Hexalith.UI.Components.Icons.IconStyle
+  fullName: Hexalith.UI.Components.Icons.IconStyle
+  nameWithType: IconStyle
+- uid: Hexalith.UI.Components.Icons.IconStyle.Filled
+  name: Filled
+  href: api/Hexalith.UI.Components.Icons.IconStyle.html#Hexalith_UI_Components_Icons_IconStyle_Filled
+  commentId: F:Hexalith.UI.Components.Icons.IconStyle.Filled
+  fullName: Hexalith.UI.Components.Icons.IconStyle.Filled
+  nameWithType: IconStyle.Filled
+- uid: Hexalith.UI.Components.Icons.IconStyle.Regular
+  name: Regular
+  href: api/Hexalith.UI.Components.Icons.IconStyle.html#Hexalith_UI_Components_Icons_IconStyle_Regular
+  commentId: F:Hexalith.UI.Components.Icons.IconStyle.Regular
+  fullName: Hexalith.UI.Components.Icons.IconStyle.Regular
+  nameWithType: IconStyle.Regular
+- uid: Hexalith.UI.Components.MenuItemInformation
+  name: MenuItemInformation
+  href: api/Hexalith.UI.Components.MenuItemInformation.html
+  commentId: T:Hexalith.UI.Components.MenuItemInformation
+  fullName: Hexalith.UI.Components.MenuItemInformation
+  nameWithType: MenuItemInformation
+- uid: Hexalith.UI.Components.MenuItemInformation.#ctor(System.String,System.String,Hexalith.UI.Components.Icons.IconInformation,System.Boolean,System.Int32,System.Collections.Generic.IEnumerable{Hexalith.UI.Components.MenuItemInformation})
+  name: MenuItemInformation(String, String, IconInformation, Boolean, Int32, IEnumerable<MenuItemInformation>)
+  href: api/Hexalith.UI.Components.MenuItemInformation.html#Hexalith_UI_Components_MenuItemInformation__ctor_System_String_System_String_Hexalith_UI_Components_Icons_IconInformation_System_Boolean_System_Int32_System_Collections_Generic_IEnumerable_Hexalith_UI_Components_MenuItemInformation__
+  commentId: M:Hexalith.UI.Components.MenuItemInformation.#ctor(System.String,System.String,Hexalith.UI.Components.Icons.IconInformation,System.Boolean,System.Int32,System.Collections.Generic.IEnumerable{Hexalith.UI.Components.MenuItemInformation})
+  name.vb: MenuItemInformation(String, String, IconInformation, Boolean, Int32, IEnumerable(Of MenuItemInformation))
+  fullName: Hexalith.UI.Components.MenuItemInformation.MenuItemInformation(System.String, System.String, Hexalith.UI.Components.Icons.IconInformation, System.Boolean, System.Int32, System.Collections.Generic.IEnumerable<Hexalith.UI.Components.MenuItemInformation>)
+  fullName.vb: Hexalith.UI.Components.MenuItemInformation.MenuItemInformation(System.String, System.String, Hexalith.UI.Components.Icons.IconInformation, System.Boolean, System.Int32, System.Collections.Generic.IEnumerable(Of Hexalith.UI.Components.MenuItemInformation))
+  nameWithType: MenuItemInformation.MenuItemInformation(String, String, IconInformation, Boolean, Int32, IEnumerable<MenuItemInformation>)
+  nameWithType.vb: MenuItemInformation.MenuItemInformation(String, String, IconInformation, Boolean, Int32, IEnumerable(Of MenuItemInformation))
+- uid: Hexalith.UI.Components.MenuItemInformation.#ctor*
+  name: MenuItemInformation
+  href: api/Hexalith.UI.Components.MenuItemInformation.html#Hexalith_UI_Components_MenuItemInformation__ctor_
+  commentId: Overload:Hexalith.UI.Components.MenuItemInformation.#ctor
+  isSpec: "True"
+  fullName: Hexalith.UI.Components.MenuItemInformation.MenuItemInformation
+  nameWithType: MenuItemInformation.MenuItemInformation
+- uid: Hexalith.UI.Components.MenuItemInformation.DividerAfter
+  name: DividerAfter
+  href: api/Hexalith.UI.Components.MenuItemInformation.html#Hexalith_UI_Components_MenuItemInformation_DividerAfter
+  commentId: P:Hexalith.UI.Components.MenuItemInformation.DividerAfter
+  fullName: Hexalith.UI.Components.MenuItemInformation.DividerAfter
+  nameWithType: MenuItemInformation.DividerAfter
+- uid: Hexalith.UI.Components.MenuItemInformation.DividerAfter*
+  name: DividerAfter
+  href: api/Hexalith.UI.Components.MenuItemInformation.html#Hexalith_UI_Components_MenuItemInformation_DividerAfter_
+  commentId: Overload:Hexalith.UI.Components.MenuItemInformation.DividerAfter
+  isSpec: "True"
+  fullName: Hexalith.UI.Components.MenuItemInformation.DividerAfter
+  nameWithType: MenuItemInformation.DividerAfter
+- uid: Hexalith.UI.Components.MenuItemInformation.Icon
+  name: Icon
+  href: api/Hexalith.UI.Components.MenuItemInformation.html#Hexalith_UI_Components_MenuItemInformation_Icon
+  commentId: P:Hexalith.UI.Components.MenuItemInformation.Icon
+  fullName: Hexalith.UI.Components.MenuItemInformation.Icon
+  nameWithType: MenuItemInformation.Icon
+- uid: Hexalith.UI.Components.MenuItemInformation.Icon*
+  name: Icon
+  href: api/Hexalith.UI.Components.MenuItemInformation.html#Hexalith_UI_Components_MenuItemInformation_Icon_
+  commentId: Overload:Hexalith.UI.Components.MenuItemInformation.Icon
+  isSpec: "True"
+  fullName: Hexalith.UI.Components.MenuItemInformation.Icon
+  nameWithType: MenuItemInformation.Icon
+- uid: Hexalith.UI.Components.MenuItemInformation.Name
+  name: Name
+  href: api/Hexalith.UI.Components.MenuItemInformation.html#Hexalith_UI_Components_MenuItemInformation_Name
+  commentId: P:Hexalith.UI.Components.MenuItemInformation.Name
+  fullName: Hexalith.UI.Components.MenuItemInformation.Name
+  nameWithType: MenuItemInformation.Name
+- uid: Hexalith.UI.Components.MenuItemInformation.Name*
+  name: Name
+  href: api/Hexalith.UI.Components.MenuItemInformation.html#Hexalith_UI_Components_MenuItemInformation_Name_
+  commentId: Overload:Hexalith.UI.Components.MenuItemInformation.Name
+  isSpec: "True"
+  fullName: Hexalith.UI.Components.MenuItemInformation.Name
+  nameWithType: MenuItemInformation.Name
+- uid: Hexalith.UI.Components.MenuItemInformation.OrderWeigth
+  name: OrderWeigth
+  href: api/Hexalith.UI.Components.MenuItemInformation.html#Hexalith_UI_Components_MenuItemInformation_OrderWeigth
+  commentId: P:Hexalith.UI.Components.MenuItemInformation.OrderWeigth
+  fullName: Hexalith.UI.Components.MenuItemInformation.OrderWeigth
+  nameWithType: MenuItemInformation.OrderWeigth
+- uid: Hexalith.UI.Components.MenuItemInformation.OrderWeigth*
+  name: OrderWeigth
+  href: api/Hexalith.UI.Components.MenuItemInformation.html#Hexalith_UI_Components_MenuItemInformation_OrderWeigth_
+  commentId: Overload:Hexalith.UI.Components.MenuItemInformation.OrderWeigth
+  isSpec: "True"
+  fullName: Hexalith.UI.Components.MenuItemInformation.OrderWeigth
+  nameWithType: MenuItemInformation.OrderWeigth
+- uid: Hexalith.UI.Components.MenuItemInformation.Path
+  name: Path
+  href: api/Hexalith.UI.Components.MenuItemInformation.html#Hexalith_UI_Components_MenuItemInformation_Path
+  commentId: P:Hexalith.UI.Components.MenuItemInformation.Path
+  fullName: Hexalith.UI.Components.MenuItemInformation.Path
+  nameWithType: MenuItemInformation.Path
+- uid: Hexalith.UI.Components.MenuItemInformation.Path*
+  name: Path
+  href: api/Hexalith.UI.Components.MenuItemInformation.html#Hexalith_UI_Components_MenuItemInformation_Path_
+  commentId: Overload:Hexalith.UI.Components.MenuItemInformation.Path
+  isSpec: "True"
+  fullName: Hexalith.UI.Components.MenuItemInformation.Path
+  nameWithType: MenuItemInformation.Path
+- uid: Hexalith.UI.Components.MenuItemInformation.SubItems
+  name: SubItems
+  href: api/Hexalith.UI.Components.MenuItemInformation.html#Hexalith_UI_Components_MenuItemInformation_SubItems
+  commentId: P:Hexalith.UI.Components.MenuItemInformation.SubItems
+  fullName: Hexalith.UI.Components.MenuItemInformation.SubItems
+  nameWithType: MenuItemInformation.SubItems
+- uid: Hexalith.UI.Components.MenuItemInformation.SubItems*
+  name: SubItems
+  href: api/Hexalith.UI.Components.MenuItemInformation.html#Hexalith_UI_Components_MenuItemInformation_SubItems_
+  commentId: Overload:Hexalith.UI.Components.MenuItemInformation.SubItems
+  isSpec: "True"
+  fullName: Hexalith.UI.Components.MenuItemInformation.SubItems
+  nameWithType: MenuItemInformation.SubItems
 - uid: Hexalith.UI.Components.ModuleInformation
   name: ModuleInformation
   href: api/Hexalith.UI.Components.ModuleInformation.html
@@ -20282,6 +20603,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.UI.Components.Modules.HexalithUIComponentsSharedModule.PresentationAssemblies
   nameWithType: HexalithUIComponentsSharedModule.PresentationAssemblies
+- uid: Hexalith.UI.Components.Modules.HexalithUIComponentsSharedModule.UseModule(System.Object)
+  name: UseModule(Object)
+  href: api/Hexalith.UI.Components.Modules.HexalithUIComponentsSharedModule.html#Hexalith_UI_Components_Modules_HexalithUIComponentsSharedModule_UseModule_System_Object_
+  commentId: M:Hexalith.UI.Components.Modules.HexalithUIComponentsSharedModule.UseModule(System.Object)
+  fullName: Hexalith.UI.Components.Modules.HexalithUIComponentsSharedModule.UseModule(System.Object)
+  nameWithType: HexalithUIComponentsSharedModule.UseModule(Object)
+- uid: Hexalith.UI.Components.Modules.HexalithUIComponentsSharedModule.UseModule*
+  name: UseModule
+  href: api/Hexalith.UI.Components.Modules.HexalithUIComponentsSharedModule.html#Hexalith_UI_Components_Modules_HexalithUIComponentsSharedModule_UseModule_
+  commentId: Overload:Hexalith.UI.Components.Modules.HexalithUIComponentsSharedModule.UseModule
+  isSpec: "True"
+  fullName: Hexalith.UI.Components.Modules.HexalithUIComponentsSharedModule.UseModule
+  nameWithType: HexalithUIComponentsSharedModule.UseModule
 - uid: Hexalith.UI.Components.Modules.HexalithUIComponentsSharedModule.Version
   name: Version
   href: api/Hexalith.UI.Components.Modules.HexalithUIComponentsSharedModule.html#Hexalith_UI_Components_Modules_HexalithUIComponentsSharedModule_Version
