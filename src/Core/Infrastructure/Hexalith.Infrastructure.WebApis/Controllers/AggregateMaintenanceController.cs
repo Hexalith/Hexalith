@@ -30,7 +30,7 @@ public class AggregateMaintenanceController<TAggregate> : ControllerBase
     /// <param name="aggregateMaintenance">Aggregate maintenance service.</param>
     protected AggregateMaintenanceController(IAggregateMaintenance<TAggregate> aggregateMaintenance)
     {
-        ArgumentNullException.ThrowIfNull(_aggregateMaintenance);
+        ArgumentNullException.ThrowIfNull(aggregateMaintenance);
         _aggregateMaintenance = aggregateMaintenance;
     }
 

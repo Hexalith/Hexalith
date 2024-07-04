@@ -20,6 +20,22 @@ using Microsoft.Extensions.Configuration;
 public static class HexalithDistributedApplicationHelper
 {
     /// <summary>
+    /// Get application identifier.
+    /// </summary>
+    /// <param name="project">The project.</param>
+    /// <param name="defaultAppId">The default application identifier.</param>
+    /// <returns>The application identifier if exists in the configuration, else the default identifier.</returns>
+    public static string GetAppId([NotNull] this IResourceBuilder<ProjectResource> project, string defaultAppId)
+    {
+        ArgumentNullException.ThrowIfNull(project);
+        string name = project.Resource.Name;
+        return project
+                .ApplicationBuilder
+                .Configuration
+                .GetValue<string?>($"{project.ApplicationBuilder.GetEnvironmentName()}:{name}:AppId") ?? defaultAppId;
+    }
+
+    /// <summary>
     /// Gets the application component path.
     /// </summary>
     /// <param name="builder">The builder.</param>
