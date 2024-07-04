@@ -113,7 +113,8 @@
   <h6><strong>Assembly</strong>: Hexalith.UI.Components.Abstractions.dll</h6>
   <h5 id="Hexalith_UI_Components_ModuleInformation_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ModuleInformation : IEquatable&lt;ModuleInformation&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">[DataContract]
+public class ModuleInformation : IEquatable&lt;ModuleInformation&gt;</code></pre>
   </div>
   <h5 id="Hexalith_UI_Components_ModuleInformation_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>This class contains properties to store the module's ID, name, description, and version.</p>
@@ -125,7 +126,7 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_UI_Components_ModuleInformation__ctor_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.UI.Components.ModuleInformation.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/ModuleInformation.cs/#L20">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/ModuleInformation.cs/#L21">View Source</a>
   </span>
   <a id="Hexalith_UI_Components_ModuleInformation__ctor_" data-uid="Hexalith.UI.Components.ModuleInformation.#ctor*"></a>
   <h4 id="Hexalith_UI_Components_ModuleInformation__ctor_System_String_System_String_System_String_System_String_" data-uid="Hexalith.UI.Components.ModuleInformation.#ctor(System.String,System.String,System.String,System.String)">ModuleInformation(String, String, String, String)</h4>
@@ -182,7 +183,7 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_UI_Components_ModuleInformation_Description.md&amp;value=---%0Auid%3A%20Hexalith.UI.Components.ModuleInformation.Description%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/ModuleInformation.cs/#L23">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/ModuleInformation.cs/#L25">View Source</a>
   </span>
   <a id="Hexalith_UI_Components_ModuleInformation_Description_" data-uid="Hexalith.UI.Components.ModuleInformation.Description*"></a>
   <h4 id="Hexalith_UI_Components_ModuleInformation_Description" data-uid="Hexalith.UI.Components.ModuleInformation.Description">Description</h4>
@@ -190,7 +191,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Description { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DataMember]
+public string Description { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -212,7 +214,7 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_UI_Components_ModuleInformation_Id.md&amp;value=---%0Auid%3A%20Hexalith.UI.Components.ModuleInformation.Id%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/ModuleInformation.cs/#L21">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/ModuleInformation.cs/#L23">View Source</a>
   </span>
   <a id="Hexalith_UI_Components_ModuleInformation_Id_" data-uid="Hexalith.UI.Components.ModuleInformation.Id*"></a>
   <h4 id="Hexalith_UI_Components_ModuleInformation_Id" data-uid="Hexalith.UI.Components.ModuleInformation.Id">Id</h4>
@@ -220,7 +222,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Id { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DataMember]
+public string Id { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -242,7 +245,7 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_UI_Components_ModuleInformation_Name.md&amp;value=---%0Auid%3A%20Hexalith.UI.Components.ModuleInformation.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/ModuleInformation.cs/#L22">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/ModuleInformation.cs/#L24">View Source</a>
   </span>
   <a id="Hexalith_UI_Components_ModuleInformation_Name_" data-uid="Hexalith.UI.Components.ModuleInformation.Name*"></a>
   <h4 id="Hexalith_UI_Components_ModuleInformation_Name" data-uid="Hexalith.UI.Components.ModuleInformation.Name">Name</h4>
@@ -250,7 +253,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Name { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DataMember]
+public string Name { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -272,7 +276,7 @@
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_UI_Components_ModuleInformation_Version.md&amp;value=---%0Auid%3A%20Hexalith.UI.Components.ModuleInformation.Version%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/ModuleInformation.cs/#L24">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/ModuleInformation.cs/#L26">View Source</a>
   </span>
   <a id="Hexalith_UI_Components_ModuleInformation_Version_" data-uid="Hexalith.UI.Components.ModuleInformation.Version*"></a>
   <h4 id="Hexalith_UI_Components_ModuleInformation_Version" data-uid="Hexalith.UI.Components.ModuleInformation.Version">Version</h4>
@@ -280,7 +284,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Version { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DataMember]
+public string Version { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -319,7 +324,7 @@
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_UI_Components_ModuleInformation.md&amp;value=---%0Auid%3A%20Hexalith.UI.Components.ModuleInformation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/ModuleInformation.cs/#L20" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/ModuleInformation.cs/#L21" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

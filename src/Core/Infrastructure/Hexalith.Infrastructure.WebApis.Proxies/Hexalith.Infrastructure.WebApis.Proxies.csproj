@@ -23,16 +23,16 @@
 	<ItemGroup>
 		<PackageReference Include="Serilog.AspNetCore" Version="$(SerilogVersion)" />
 		<PackageReference Include="Serilog.Enrichers.Environment" Version="$(SerilogEnrichersEnvironmentVersion)" />
-		<PackageReference Include="Serilog.Enrichers.Thread" Version="3.1.0" />
-		<PackageReference Include="Serilog.Enrichers.Process" Version="2.0.2" />
+		<PackageReference Include="Serilog.Enrichers.Thread" Version="$(SerilogEnrichersThreadVersion)" />
+		<PackageReference Include="Serilog.Enrichers.Process" Version="$(SerilogEnrichersProcessVersion)" />
 		<PackageReference Include="Serilog.Exceptions" Version="8.4.0" />
 		<PackageReference Include="Serilog.Extensions.Hosting" Version="$(SerilogVersion)" />
 		<PackageReference Include="Serilog.Extensions.Logging" Version="$(SerilogVersion)" />
-		<PackageReference Include="Serilog.Formatting.Compact" Version="2.0.0" />
+		<PackageReference Include="Serilog.Formatting.Compact" Version="$(SerilogFormattingCompactVersion)" />
 		<PackageReference Include="Serilog.Settings.AppSettings" Version="2.2.2" />
 		<PackageReference Include="Serilog.Settings.Configuration" Version="$(SerilogVersion)" />
-		<PackageReference Include="Serilog.Sinks.Console" Version="5.0.1" />
-		<PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0" />
-		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+		<PackageReference Include="Serilog.Sinks.Console" Version="$(SerilogSinksConsoleVersion)" />
+		<PackageReference Include="Serilog.Sinks.Debug" Version="$(SerilogSinksDebugVersion)" />
+		<PackageReference Include="Serilog.Sinks.File" Version="$(SerilogSinksFileVersion)" />
 	</ItemGroup>
 </Project>

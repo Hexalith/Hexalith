@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class FluentUIThemeSettings
+    <title>Class IconInformation
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class FluentUIThemeSettings
+    <meta name="title" content="Class IconInformation
    ">
     <meta name="generator" content="docfx 2.59.4.0">
     
@@ -68,22 +68,22 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Hexalith.UI.Components.Configurations.FluentUIThemeSettings">
+            <article class="content wrap" id="_content" data-uid="Hexalith.UI.Components.Icons.IconInformation">
   
   
-  <h1 id="Hexalith_UI_Components_Configurations_FluentUIThemeSettings" data-uid="Hexalith.UI.Components.Configurations.FluentUIThemeSettings" class="text-break">Class FluentUIThemeSettings
+  <h1 id="Hexalith_UI_Components_Icons_IconInformation" data-uid="Hexalith.UI.Components.Icons.IconInformation" class="text-break">Class IconInformation
   </h1>
-  <div class="markdown level0 summary"><p>Represents the Fluent UI theme settings.</p>
+  <div class="markdown level0 summary"><p>Represents the information of an icon.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">FluentUIThemeSettings</span></div>
+    <div class="level1"><span class="xref">IconInformation</span></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
-    <div><a class="xref" href="Hexalith.Extensions.Configuration.ISettings.html">ISettings</a></div>
+    <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="Hexalith.UI.Components.Icons.IconInformation.html">IconInformation</a>&gt;</div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -109,31 +109,78 @@
       <span class="xref">System.Object.ToString()</span>
     </div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Hexalith.UI.Components.Configurations.html">Hexalith.UI.Components.Configurations</a></h6>
-  <h6><strong>Assembly</strong>: Hexalith.UI.Components.dll</h6>
-  <h5 id="Hexalith_UI_Components_Configurations_FluentUIThemeSettings_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Hexalith.UI.Components.Icons.html">Hexalith.UI.Components.Icons</a></h6>
+  <h6><strong>Assembly</strong>: Hexalith.UI.Components.Abstractions.dll</h6>
+  <h5 id="Hexalith_UI_Components_Icons_IconInformation_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataContract]
-public class FluentUIThemeSettings : ISettings</code></pre>
+public class IconInformation : IEquatable&lt;IconInformation&gt;</code></pre>
   </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_UI_Components_Icons_IconInformation__ctor_System_String_System_Int32_Hexalith_UI_Components_Icons_IconStyle_.md&amp;value=---%0Auid%3A%20Hexalith.UI.Components.Icons.IconInformation.%23ctor(System.String%2CSystem.Int32%2CHexalith.UI.Components.Icons.IconStyle)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/Icons/IconInformation.cs/#L17">View Source</a>
+  </span>
+  <a id="Hexalith_UI_Components_Icons_IconInformation__ctor_" data-uid="Hexalith.UI.Components.Icons.IconInformation.#ctor*"></a>
+  <h4 id="Hexalith_UI_Components_Icons_IconInformation__ctor_System_String_System_Int32_Hexalith_UI_Components_Icons_IconStyle_" data-uid="Hexalith.UI.Components.Icons.IconInformation.#ctor(System.String,System.Int32,Hexalith.UI.Components.Icons.IconStyle)">IconInformation(String, Int32, IconStyle)</h4>
+  <div class="markdown level1 summary"><p>Represents the information of an icon.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IconInformation(string Name, int Size, IconStyle Style)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">Name</span></td>
+        <td><p>The icon name.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">Size</span></td>
+        <td><p>The icon size.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.UI.Components.Icons.IconStyle.html">IconStyle</a></td>
+        <td><span class="parametername">Style</span></td>
+        <td><p>The icon style.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_UI_Components_Configurations_FluentUIThemeSettings_AccentBaseColor.md&amp;value=---%0Auid%3A%20Hexalith.UI.Components.Configurations.FluentUIThemeSettings.AccentBaseColor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_UI_Components_Icons_IconInformation_Name.md&amp;value=---%0Auid%3A%20Hexalith.UI.Components.Icons.IconInformation.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components/Configurations/FluentUIThemeSettings.cs/#L22">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/Icons/IconInformation.cs/#L19">View Source</a>
   </span>
-  <a id="Hexalith_UI_Components_Configurations_FluentUIThemeSettings_AccentBaseColor_" data-uid="Hexalith.UI.Components.Configurations.FluentUIThemeSettings.AccentBaseColor*"></a>
-  <h4 id="Hexalith_UI_Components_Configurations_FluentUIThemeSettings_AccentBaseColor" data-uid="Hexalith.UI.Components.Configurations.FluentUIThemeSettings.AccentBaseColor">AccentBaseColor</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the accent base color.</p>
-</div>
+  <a id="Hexalith_UI_Components_Icons_IconInformation_Name_" data-uid="Hexalith.UI.Components.Icons.IconInformation.Name*"></a>
+  <h4 id="Hexalith_UI_Components_Icons_IconInformation_Name" data-uid="Hexalith.UI.Components.Icons.IconInformation.Name">Name</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataMember]
-public string AccentBaseColor { get; set; }</code></pre>
+public string Name { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -152,52 +199,19 @@ public string AccentBaseColor { get; set; }</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_UI_Components_Configurations_FluentUIThemeSettings_FillColor.md&amp;value=---%0Auid%3A%20Hexalith.UI.Components.Configurations.FluentUIThemeSettings.FillColor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_UI_Components_Icons_IconInformation_Size.md&amp;value=---%0Auid%3A%20Hexalith.UI.Components.Icons.IconInformation.Size%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components/Configurations/FluentUIThemeSettings.cs/#L28">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/Icons/IconInformation.cs/#L20">View Source</a>
   </span>
-  <a id="Hexalith_UI_Components_Configurations_FluentUIThemeSettings_FillColor_" data-uid="Hexalith.UI.Components.Configurations.FluentUIThemeSettings.FillColor*"></a>
-  <h4 id="Hexalith_UI_Components_Configurations_FluentUIThemeSettings_FillColor" data-uid="Hexalith.UI.Components.Configurations.FluentUIThemeSettings.FillColor">FillColor</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the fill color.</p>
-</div>
+  <a id="Hexalith_UI_Components_Icons_IconInformation_Size_" data-uid="Hexalith.UI.Components.Icons.IconInformation.Size*"></a>
+  <h4 id="Hexalith_UI_Components_Icons_IconInformation_Size" data-uid="Hexalith.UI.Components.Icons.IconInformation.Size">Size</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataMember]
-public string FillColor { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_UI_Components_Configurations_FluentUIThemeSettings_StrokeWidth.md&amp;value=---%0Auid%3A%20Hexalith.UI.Components.Configurations.FluentUIThemeSettings.StrokeWidth%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components/Configurations/FluentUIThemeSettings.cs/#L34">View Source</a>
-  </span>
-  <a id="Hexalith_UI_Components_Configurations_FluentUIThemeSettings_StrokeWidth_" data-uid="Hexalith.UI.Components.Configurations.FluentUIThemeSettings.StrokeWidth*"></a>
-  <h4 id="Hexalith_UI_Components_Configurations_FluentUIThemeSettings_StrokeWidth" data-uid="Hexalith.UI.Components.Configurations.FluentUIThemeSettings.StrokeWidth">StrokeWidth</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the stroke width.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember]
-public int StrokeWidth { get; set; }</code></pre>
+public int Size { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -214,25 +228,23 @@ public int StrokeWidth { get; set; }</code></pre>
       </tr>
     </tbody>
   </table>
-  <h3 id="methods">Methods
-  </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_UI_Components_Configurations_FluentUIThemeSettings_ConfigurationName.md&amp;value=---%0Auid%3A%20Hexalith.UI.Components.Configurations.FluentUIThemeSettings.ConfigurationName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_UI_Components_Icons_IconInformation_Style.md&amp;value=---%0Auid%3A%20Hexalith.UI.Components.Icons.IconInformation.Style%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components/Configurations/FluentUIThemeSettings.cs/#L41">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/Icons/IconInformation.cs/#L21">View Source</a>
   </span>
-  <a id="Hexalith_UI_Components_Configurations_FluentUIThemeSettings_ConfigurationName_" data-uid="Hexalith.UI.Components.Configurations.FluentUIThemeSettings.ConfigurationName*"></a>
-  <h4 id="Hexalith_UI_Components_Configurations_FluentUIThemeSettings_ConfigurationName" data-uid="Hexalith.UI.Components.Configurations.FluentUIThemeSettings.ConfigurationName">ConfigurationName()</h4>
-  <div class="markdown level1 summary"><p>Gets the configuration name for Fluent UI theme.</p>
-</div>
+  <a id="Hexalith_UI_Components_Icons_IconInformation_Style_" data-uid="Hexalith.UI.Components.Icons.IconInformation.Style*"></a>
+  <h4 id="Hexalith_UI_Components_Icons_IconInformation_Style" data-uid="Hexalith.UI.Components.Icons.IconInformation.Style">Style</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string ConfigurationName()</code></pre>
+    <pre><code class="lang-csharp hljs">[DataMember]
+public IconStyle Style { get; set; }</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -242,15 +254,14 @@ public int StrokeWidth { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><p>The configuration name.</p>
-</td>
+        <td><a class="xref" href="Hexalith.UI.Components.Icons.IconStyle.html">IconStyle</a></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="implements">Implements</h3>
   <div>
-      <a class="xref" href="Hexalith.Extensions.Configuration.ISettings.html">ISettings</a>
+      <span class="xref">System.IEquatable&lt;T&gt;</span>
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
@@ -258,6 +269,9 @@ public int StrokeWidth { get; set; }</code></pre>
   </div>
   <div>
       <a class="xref" href="Hexalith.Extensions.Reflections.ObjectDifferenceHelper.html#Hexalith_Extensions_Reflections_ObjectDifferenceHelper_GetDifferenceInformation_System_Object_System_Object_">ObjectDifferenceHelper.GetDifferenceInformation(Object, Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hexalith.UI.Components.Helpers.IconHelper.html#Hexalith_UI_Components_Helpers_IconHelper_ToFluentIcon_Hexalith_UI_Components_Icons_IconInformation_">IconHelper.ToFluentIcon(IconInformation)</a>
   </div>
 </article>
           </div>
@@ -267,10 +281,10 @@ public int StrokeWidth { get; set; }</code></pre>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_UI_Components_Configurations_FluentUIThemeSettings.md&amp;value=---%0Auid%3A%20Hexalith.UI.Components.Configurations.FluentUIThemeSettings%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_UI_Components_Icons_IconInformation.md&amp;value=---%0Auid%3A%20Hexalith.UI.Components.Icons.IconInformation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components/Configurations/FluentUIThemeSettings.cs/#L16" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/Icons/IconInformation.cs/#L17" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
