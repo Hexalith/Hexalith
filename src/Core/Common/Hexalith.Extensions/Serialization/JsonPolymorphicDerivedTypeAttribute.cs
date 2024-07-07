@@ -1,4 +1,4 @@
-﻿// <copyright file="JsonPolymorphicTypeAttribute.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="JsonPolymorphicDerivedTypeAttribute.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -14,26 +14,26 @@ using System.Reflection;
 /// Attribute to mark a class as a polymorphic type.
 /// </summary>
 /// <remarks>
-/// Initializes a new instance of the <see cref="JsonPolymorphicTypeAttribute"/> class.
+/// Initializes a new instance of the <see cref="JsonPolymorphicDerivedTypeAttribute"/> class.
 /// </remarks>
 /// <param name="typeName">The name of the type.</param>
 /// <param name="version">The version number.</param>
-[AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
-public sealed class JsonPolymorphicTypeAttribute(string typeName, int version) : Attribute
+[AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
+public sealed class JsonPolymorphicDerivedTypeAttribute(string typeName, int version) : Attribute
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="JsonPolymorphicTypeAttribute"/> class.
+    /// Initializes a new instance of the <see cref="JsonPolymorphicDerivedTypeAttribute"/> class.
     /// </summary>
     /// <param name="typeName">The name of the type.</param>
-    public JsonPolymorphicTypeAttribute(string typeName)
+    public JsonPolymorphicDerivedTypeAttribute(string typeName)
         : this(typeName, 1)
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="JsonPolymorphicTypeAttribute"/> class.
+    /// Initializes a new instance of the <see cref="JsonPolymorphicDerivedTypeAttribute"/> class.
     /// </summary>
-    public JsonPolymorphicTypeAttribute()
+    public JsonPolymorphicDerivedTypeAttribute()
         : this(string.Empty, 1)
     {
     }
@@ -47,6 +47,17 @@ public sealed class JsonPolymorphicTypeAttribute(string typeName, int version) :
     /// Gets the version number.
     /// </summary>
     public int Version { get; } = version;
+
+    /// <summary>
+    /// Gets the default type map name.
+    /// </summary>
+    /// <param name="type">Type of the derived instance.</param>
+    /// <returns>The type name.</returns>
+    public static string GetDefaultTypeMapName([NotNull] MemberInfo type)
+    {
+        ArgumentNullException.ThrowIfNull(type);
+        return $"{type.Name}|V1";
+    }
 
     /// <summary>
     /// Gets the type map name.

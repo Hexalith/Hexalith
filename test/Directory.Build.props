@@ -4,7 +4,7 @@
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<IsPackable>false</IsPackable>
 		<Nullable>disable</Nullable>
-		<NoWarn>$(NoWarn);SA1600;VSTHRD200;SA1402;CA2007;CS1591;CA1034;</NoWarn>
+		<NoWarn>$(NoWarn);SA1600;VSTHRD200;SA1402;CA2007;CS1591;CA1034;CA1707;</NoWarn>
 		<OutputPath>$(RepoRoot)bin\$(Configuration)\test\$(MSBuildProjectName)\</OutputPath>
 	</PropertyGroup>
 	<ItemGroup>
