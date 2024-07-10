@@ -17,6 +17,30 @@ using Hexalith.TestMocks;
 public class ResiliencyPolicyTest
 {
     [Fact]
+    public void CanRetryShouldReturnCompletedIfExceedsTimeout()
+    {
+        ResiliencyPolicy policy = ResiliencyPolicy.CreateDefaultExponentialRetry();
+        RetryStatus value = policy.CanRetry(DateTimeOffset.Now.Add(-policy.Timeout).AddSeconds(-1), 1);
+        _ = value.Should().Be(RetryStatus.Stopped);
+    }
+
+    [Fact]
+    public void CanRetryShouldReturnEnabledWhenExceedingRetryPeriod()
+    {
+        ResiliencyPolicy policy = ResiliencyPolicy.CreateDefaultExponentialRetry();
+        RetryStatus value = policy.CanRetry(DateTimeOffset.Now.AddSeconds(-100), 1);
+        _ = value.Should().Be(RetryStatus.Enabled);
+    }
+
+    [Fact]
+    public void CanRetryShouldReturnSuspendedWhenNotExceedingRetryPeriod()
+    {
+        ResiliencyPolicy policy = ResiliencyPolicy.CreateDefaultExponentialRetry();
+        RetryStatus value = policy.CanRetry(DateTimeOffset.Now.AddSeconds(-10), 1);
+        _ = value.Should().Be(RetryStatus.Suspended);
+    }
+
+    [Fact]
     public void DataContractSerializeSerializeShouldReturnSameValue()
     {
         // Serialize resiliency policy

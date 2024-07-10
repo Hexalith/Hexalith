@@ -187,6 +187,15 @@ public class TaskProcessorTest
         _ = waitTime.TotalMilliseconds.Should().BeApproximately(milliseconds, 10d);
     }
 
+    [Fact]
+    public void TimeoutFailShouldBeCanceled()
+    {
+        TaskProcessor processor = new TaskProcessor(DateTimeOffset.UtcNow.AddMonths(-2), ResiliencyPolicy.CreateDefaultExponentialRetry())
+            .Start()
+            .Fail("fail", "error");
+        _ = processor.CanRetry.Should().Be(RetryStatus.Stopped);
+    }
+
     /*
         /// <summary>
         /// Defines the test method XmlSerializeAndDeserializeTaskShouldReturnSame.

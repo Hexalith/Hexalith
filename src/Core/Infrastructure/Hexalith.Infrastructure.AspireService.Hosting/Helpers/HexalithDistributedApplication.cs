@@ -48,9 +48,10 @@ public class HexalithDistributedApplication(string[] args)
         string subFolder = Builder.ExecutionContext.IsPublishMode
             ? AspireApplicationConstants.PublishPath
             : AspireApplicationConstants.RunPath;
+        string appId = project.GetAppId(projectName);
         project = project.WithDaprSidecar(new DaprSidecarOptions
         {
-            AppId = name,
+            AppId = appId,
             Config = Path.Combine(Builder.GetApplicationComponentPath(name), "config.yaml"),
             ResourcesPaths = [
                 Path.Combine(Builder.GetApplicationComponentPath(name), subFolder),
@@ -58,17 +59,6 @@ public class HexalithDistributedApplication(string[] args)
             ],
         });
 
-        // _ = project
-        //    .WithReference(Builder.AddDaprEvents())
-        //    .WithReference(Builder.AddDaprCommands())
-        //    .WithReference(Builder.AddDaprRequests())
-        //    .WithReference(Builder.AddDaprNotifications())
-        //    .WithReference(Builder.AddStateStore(name));
-
-        // if (Builder.ExecutionContext.IsPublishMode)
-        // {
-        //    _ = project.WithReference(ApplicationInsights);
-        // }
         string environmentName = Builder.GetEnvironmentName();
         project = project
             .WithEnvironment("ASPNETCORE_ENVIRONMENT", environmentName)
