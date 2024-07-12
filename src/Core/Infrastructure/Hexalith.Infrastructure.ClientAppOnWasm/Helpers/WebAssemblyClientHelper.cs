@@ -11,9 +11,8 @@ using System.Globalization;
 using Blazored.SessionStorage;
 
 using Hexalith.Application.Modules.Applications;
+using Hexalith.Infrastructure.ClientApp;
 using Hexalith.Infrastructure.ClientApp.Helpers;
-
-using HexalithApplication.Client;
 
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;

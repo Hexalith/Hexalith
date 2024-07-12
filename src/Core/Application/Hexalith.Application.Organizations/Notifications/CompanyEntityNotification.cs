@@ -20,7 +20,7 @@ using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Application.Notifications;
+using Hexalith.Domain.Notifications;
 using Hexalith.Extensions;
 
 /// <summary>

@@ -4,7 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace HexalithApplication.Client;
+namespace Hexalith.Infrastructure.ClientApp;
 
 /// <summary>
 /// Class ClientConstants.

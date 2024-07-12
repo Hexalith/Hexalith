@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Application.Notifications;
+namespace Hexalith.Domain.Notifications;
 
 /// <summary>
 /// Enum NotificationSeverity.

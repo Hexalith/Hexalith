@@ -19,7 +19,6 @@ namespace Hexalith.Application.Errors;
 using System.Globalization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Application.Notifications;
 using Hexalith.Domain.Notifications;
 using Hexalith.Extensions.Errors;
 using Hexalith.Extensions.Helpers;
