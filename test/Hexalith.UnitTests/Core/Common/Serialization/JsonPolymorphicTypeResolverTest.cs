@@ -21,6 +21,13 @@ public class JsonPolymorphicTypeResolverTest
     {
         // Arrange
         Mock<IJsonPolymorphicTypeRegistry> registry = new(MockBehavior.Strict);
+        _ = registry.Setup(r
+            => r.AddDerivedTypesToList(It.IsAny<Type>(), It.IsAny<IList<JsonDerivedType>>()));
+
+        _ = registry.Setup(r
+            => r.GetDerivedTypes(It.Is<Type>((t) => t == typeof(TestMessageBase))))
+            .Returns(() => [new JsonDerivedType(typeof(TestMessage1))]);
+
         JsonPolymorphicTypeResolver resolver = new(registry.Object);
 
         // Act
@@ -28,7 +35,7 @@ public class JsonPolymorphicTypeResolverTest
 
         // Assert
         _ = result.Should().NotBeNull();
-        _ = result.Type.Should().Be(typeof(TimeSpan));
+        _ = result.Type.Should().Be(typeof(TestMessage1));
         _ = result.Options.Should().NotBeNull();
         _ = result.PolymorphismOptions.Should().NotBeNull();
     }

@@ -21,45 +21,6 @@ public static class JsonPolymorphicSerializationTest
     };
 
     [Fact]
-    public static void Deserialize_polymorphic_no_types_registered_using_base_type_should_throw_an_exception()
-    {
-        // Arrange
-        TestMessage1 message = new("id123", "name123", "value1-123");
-
-        // Act
-        Action serialize = () => _ = JsonSerializer.Serialize(message);
-
-        // Assert
-        _ = serialize
-            .Should()
-            .Throw<InvalidOperationException>()
-            .Where(p => p.Message.Contains(nameof(TestMessageBase)));
-    }
-
-    [Fact]
-    public static void Deserialize_polymorphic_type_not_registered_using_base_type_should_throw_an_exception()
-    {
-        // Arrange
-        TestMessage1 message = new("id123", "name123", "value1-123");
-        JsonPolymorphicTypeRegistry registry = new();
-        registry.RegisterJsonDerivedType<TestMessage2>();
-        JsonSerializerOptions options = new()
-        {
-            WriteIndented = true,
-            TypeInfoResolver = new JsonPolymorphicTypeResolver(registry),
-        };
-
-        // Act
-        Action serialize = () => _ = JsonSerializer.Serialize(message, options);
-
-        // Assert
-        _ = serialize
-            .Should()
-            .Throw<InvalidOperationException>()
-            .Where(p => p.Message.Contains(nameof(TestMessageBase)));
-    }
-
-    [Fact]
     public static void Serialize_and_deserialize_registered_polymorphic_custom_name_type_not_registered_should_succeed()
     {
         // Arrange
@@ -87,10 +48,17 @@ public static class JsonPolymorphicSerializationTest
     {
         // Arrange
         TestMessage1 message = new("id123", "name123", "value1-123");
+        JsonPolymorphicTypeRegistry registry = new();
+        registry.RegisterJsonDerivedType<TestMessage1>();
+        JsonSerializerOptions options = new()
+        {
+            WriteIndented = true,
+            TypeInfoResolver = new JsonPolymorphicTypeResolver(registry),
+        };
 
         // Act
-        string json = JsonSerializer.Serialize(message, Options);
-        TestMessage1 result = JsonSerializer.Deserialize<TestMessage1>(json, Options);
+        string json = JsonSerializer.Serialize(message, options);
+        TestMessage1 result = JsonSerializer.Deserialize<TestMessage1>(json, options);
 
         // Assert
         _ = result.Should().BeEquivalentTo(message);
@@ -101,21 +69,12 @@ public static class JsonPolymorphicSerializationTest
     {
         // Arrange
         TestMessage1 message = new("id123", "name123", "value1-123");
-        string json = """
-            {
-              "$type": "TestMessage1|V1",
-              "Value1": "value1-123",
-              "Id": "id123",
-              "Name": "name123"
-            }
-            """;
 
         // Act
-        _ = JsonSerializer.Serialize(message, Options);
+        Action serialize = () => JsonSerializer.Serialize<TestMessageBase>(message, Options);
 
         // Assert
-        _ = json.Should().NotBeNullOrEmpty();
-        _ = json.Should().NotContain("$type");
+        _ = serialize.Should().Throw<InvalidOperationException>();
     }
 
     [Fact]
@@ -141,19 +100,5 @@ public static class JsonPolymorphicSerializationTest
         _ = json.Should().Contain("name123");
         _ = json.Should().Contain("value1-123");
         _ = json.Should().Contain("$type");
-    }
-
-    [Fact]
-    public static void SerializePolymorphicTypeNotRegisteredShouldSerializeWithoutTypeDefinition()
-    {
-        // Arrange
-        TestMessage1 message = new("id123", "name123", "value1-123");
-
-        // Act
-        string json = JsonSerializer.Serialize(message, Options);
-
-        // Assert
-        _ = json.Should().NotBeNullOrEmpty();
-        _ = json.Should().NotContain("$type");
     }
 }
