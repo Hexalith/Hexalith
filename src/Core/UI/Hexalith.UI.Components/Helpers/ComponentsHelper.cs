@@ -27,6 +27,7 @@ public static class ComponentsHelper
     public static IServiceCollection AddFluentUITheme(this IServiceCollection services, IConfiguration configuration)
     {
         _ = services.ConfigureSettings<FluentUIThemeSettings>(configuration);
+
         _ = services.AddLocalization(options => options.ResourcesPath = "Resources");
         _ = services.AddHttpClient();
         _ = services.AddFluentUIComponents();
