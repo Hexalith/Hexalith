@@ -546,6 +546,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.ApplicationConstants.TopicRequireSessions
   nameWithType: ApplicationConstants.TopicRequireSessions
+- uid: Hexalith.Application.ApplicationConstants.UserDefinedCulturePropertyName
+  name: UserDefinedCulturePropertyName
+  href: api/Hexalith.Application.ApplicationConstants.html#Hexalith_Application_ApplicationConstants_UserDefinedCulturePropertyName
+  commentId: P:Hexalith.Application.ApplicationConstants.UserDefinedCulturePropertyName
+  fullName: Hexalith.Application.ApplicationConstants.UserDefinedCulturePropertyName
+  nameWithType: ApplicationConstants.UserDefinedCulturePropertyName
+- uid: Hexalith.Application.ApplicationConstants.UserDefinedCulturePropertyName*
+  name: UserDefinedCulturePropertyName
+  href: api/Hexalith.Application.ApplicationConstants.html#Hexalith_Application_ApplicationConstants_UserDefinedCulturePropertyName_
+  commentId: Overload:Hexalith.Application.ApplicationConstants.UserDefinedCulturePropertyName
+  isSpec: "True"
+  fullName: Hexalith.Application.ApplicationConstants.UserDefinedCulturePropertyName
+  nameWithType: ApplicationConstants.UserDefinedCulturePropertyName
 - uid: Hexalith.Application.ArtificialIntelligence
   name: Hexalith.Application.ArtificialIntelligence
   href: api/Hexalith.Application.ArtificialIntelligence.html
@@ -5626,64 +5639,6 @@ references:
   commentId: N:Hexalith.Application.Notifications
   fullName: Hexalith.Application.Notifications
   nameWithType: Hexalith.Application.Notifications
-- uid: Hexalith.Application.Notifications.INotification
-  name: INotification
-  href: api/Hexalith.Application.Notifications.INotification.html
-  commentId: T:Hexalith.Application.Notifications.INotification
-  fullName: Hexalith.Application.Notifications.INotification
-  nameWithType: INotification
-- uid: Hexalith.Application.Notifications.INotification.Message
-  name: Message
-  href: api/Hexalith.Application.Notifications.INotification.html#Hexalith_Application_Notifications_INotification_Message
-  commentId: P:Hexalith.Application.Notifications.INotification.Message
-  fullName: Hexalith.Application.Notifications.INotification.Message
-  nameWithType: INotification.Message
-- uid: Hexalith.Application.Notifications.INotification.Message*
-  name: Message
-  href: api/Hexalith.Application.Notifications.INotification.html#Hexalith_Application_Notifications_INotification_Message_
-  commentId: Overload:Hexalith.Application.Notifications.INotification.Message
-  isSpec: "True"
-  fullName: Hexalith.Application.Notifications.INotification.Message
-  nameWithType: INotification.Message
-- uid: Hexalith.Application.Notifications.INotification.Severity
-  name: Severity
-  href: api/Hexalith.Application.Notifications.INotification.html#Hexalith_Application_Notifications_INotification_Severity
-  commentId: P:Hexalith.Application.Notifications.INotification.Severity
-  fullName: Hexalith.Application.Notifications.INotification.Severity
-  nameWithType: INotification.Severity
-- uid: Hexalith.Application.Notifications.INotification.Severity*
-  name: Severity
-  href: api/Hexalith.Application.Notifications.INotification.html#Hexalith_Application_Notifications_INotification_Severity_
-  commentId: Overload:Hexalith.Application.Notifications.INotification.Severity
-  isSpec: "True"
-  fullName: Hexalith.Application.Notifications.INotification.Severity
-  nameWithType: INotification.Severity
-- uid: Hexalith.Application.Notifications.INotification.TechnicalDescription
-  name: TechnicalDescription
-  href: api/Hexalith.Application.Notifications.INotification.html#Hexalith_Application_Notifications_INotification_TechnicalDescription
-  commentId: P:Hexalith.Application.Notifications.INotification.TechnicalDescription
-  fullName: Hexalith.Application.Notifications.INotification.TechnicalDescription
-  nameWithType: INotification.TechnicalDescription
-- uid: Hexalith.Application.Notifications.INotification.TechnicalDescription*
-  name: TechnicalDescription
-  href: api/Hexalith.Application.Notifications.INotification.html#Hexalith_Application_Notifications_INotification_TechnicalDescription_
-  commentId: Overload:Hexalith.Application.Notifications.INotification.TechnicalDescription
-  isSpec: "True"
-  fullName: Hexalith.Application.Notifications.INotification.TechnicalDescription
-  nameWithType: INotification.TechnicalDescription
-- uid: Hexalith.Application.Notifications.INotification.Title
-  name: Title
-  href: api/Hexalith.Application.Notifications.INotification.html#Hexalith_Application_Notifications_INotification_Title
-  commentId: P:Hexalith.Application.Notifications.INotification.Title
-  fullName: Hexalith.Application.Notifications.INotification.Title
-  nameWithType: INotification.Title
-- uid: Hexalith.Application.Notifications.INotification.Title*
-  name: Title
-  href: api/Hexalith.Application.Notifications.INotification.html#Hexalith_Application_Notifications_INotification_Title_
-  commentId: Overload:Hexalith.Application.Notifications.INotification.Title
-  isSpec: "True"
-  fullName: Hexalith.Application.Notifications.INotification.Title
-  nameWithType: INotification.Title
 - uid: Hexalith.Application.Notifications.INotificationBus
   name: INotificationBus
   href: api/Hexalith.Application.Notifications.INotificationBus.html
@@ -5724,30 +5679,6 @@ references:
   commentId: T:Hexalith.Application.Notifications.MemoryNotificationBus
   fullName: Hexalith.Application.Notifications.MemoryNotificationBus
   nameWithType: MemoryNotificationBus
-- uid: Hexalith.Application.Notifications.NotificationSeverity
-  name: NotificationSeverity
-  href: api/Hexalith.Application.Notifications.NotificationSeverity.html
-  commentId: T:Hexalith.Application.Notifications.NotificationSeverity
-  fullName: Hexalith.Application.Notifications.NotificationSeverity
-  nameWithType: NotificationSeverity
-- uid: Hexalith.Application.Notifications.NotificationSeverity.Error
-  name: Error
-  href: api/Hexalith.Application.Notifications.NotificationSeverity.html#Hexalith_Application_Notifications_NotificationSeverity_Error
-  commentId: F:Hexalith.Application.Notifications.NotificationSeverity.Error
-  fullName: Hexalith.Application.Notifications.NotificationSeverity.Error
-  nameWithType: NotificationSeverity.Error
-- uid: Hexalith.Application.Notifications.NotificationSeverity.Information
-  name: Information
-  href: api/Hexalith.Application.Notifications.NotificationSeverity.html#Hexalith_Application_Notifications_NotificationSeverity_Information
-  commentId: F:Hexalith.Application.Notifications.NotificationSeverity.Information
-  fullName: Hexalith.Application.Notifications.NotificationSeverity.Information
-  nameWithType: NotificationSeverity.Information
-- uid: Hexalith.Application.Notifications.NotificationSeverity.Warning
-  name: Warning
-  href: api/Hexalith.Application.Notifications.NotificationSeverity.html#Hexalith_Application_Notifications_NotificationSeverity_Warning
-  commentId: F:Hexalith.Application.Notifications.NotificationSeverity.Warning
-  fullName: Hexalith.Application.Notifications.NotificationSeverity.Warning
-  nameWithType: NotificationSeverity.Warning
 - uid: Hexalith.Application.NumberSequences
   name: Hexalith.Application.NumberSequences
   href: api/Hexalith.Application.NumberSequences.html
@@ -5880,11 +5811,11 @@ references:
   commentId: M:Hexalith.Application.Organizations.Notifications.CompanyEntityNotification.#ctor
   fullName: Hexalith.Application.Organizations.Notifications.CompanyEntityNotification.CompanyEntityNotification()
   nameWithType: CompanyEntityNotification.CompanyEntityNotification()
-- uid: Hexalith.Application.Organizations.Notifications.CompanyEntityNotification.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,Hexalith.Application.Notifications.NotificationSeverity,System.String)
+- uid: Hexalith.Application.Organizations.Notifications.CompanyEntityNotification.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,Hexalith.Domain.Notifications.NotificationSeverity,System.String)
   name: CompanyEntityNotification(String, String, String, String, String, String, String, String, NotificationSeverity, String)
-  href: api/Hexalith.Application.Organizations.Notifications.CompanyEntityNotification.html#Hexalith_Application_Organizations_Notifications_CompanyEntityNotification__ctor_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_Hexalith_Application_Notifications_NotificationSeverity_System_String_
-  commentId: M:Hexalith.Application.Organizations.Notifications.CompanyEntityNotification.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,Hexalith.Application.Notifications.NotificationSeverity,System.String)
-  fullName: Hexalith.Application.Organizations.Notifications.CompanyEntityNotification.CompanyEntityNotification(System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String, Hexalith.Application.Notifications.NotificationSeverity, System.String)
+  href: api/Hexalith.Application.Organizations.Notifications.CompanyEntityNotification.html#Hexalith_Application_Organizations_Notifications_CompanyEntityNotification__ctor_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_Hexalith_Domain_Notifications_NotificationSeverity_System_String_
+  commentId: M:Hexalith.Application.Organizations.Notifications.CompanyEntityNotification.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,Hexalith.Domain.Notifications.NotificationSeverity,System.String)
+  fullName: Hexalith.Application.Organizations.Notifications.CompanyEntityNotification.CompanyEntityNotification(System.String, System.String, System.String, System.String, System.String, System.String, System.String, System.String, Hexalith.Domain.Notifications.NotificationSeverity, System.String)
   nameWithType: CompanyEntityNotification.CompanyEntityNotification(String, String, String, String, String, String, String, String, NotificationSeverity, String)
 - uid: Hexalith.Application.Organizations.Notifications.CompanyEntityNotification.#ctor*
   name: CompanyEntityNotification
@@ -5931,11 +5862,11 @@ references:
   commentId: M:Hexalith.Application.Organizations.Notifications.EntityNotification.#ctor
   fullName: Hexalith.Application.Organizations.Notifications.EntityNotification.EntityNotification()
   nameWithType: EntityNotification.EntityNotification()
-- uid: Hexalith.Application.Organizations.Notifications.EntityNotification.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,Hexalith.Application.Notifications.NotificationSeverity,System.String)
+- uid: Hexalith.Application.Organizations.Notifications.EntityNotification.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,Hexalith.Domain.Notifications.NotificationSeverity,System.String)
   name: EntityNotification(String, String, String, String, String, String, String, NotificationSeverity, String)
-  href: api/Hexalith.Application.Organizations.Notifications.EntityNotification.html#Hexalith_Application_Organizations_Notifications_EntityNotification__ctor_System_String_System_String_System_String_System_String_System_String_System_String_System_String_Hexalith_Application_Notifications_NotificationSeverity_System_String_
-  commentId: M:Hexalith.Application.Organizations.Notifications.EntityNotification.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,Hexalith.Application.Notifications.NotificationSeverity,System.String)
-  fullName: Hexalith.Application.Organizations.Notifications.EntityNotification.EntityNotification(System.String, System.String, System.String, System.String, System.String, System.String, System.String, Hexalith.Application.Notifications.NotificationSeverity, System.String)
+  href: api/Hexalith.Application.Organizations.Notifications.EntityNotification.html#Hexalith_Application_Organizations_Notifications_EntityNotification__ctor_System_String_System_String_System_String_System_String_System_String_System_String_System_String_Hexalith_Domain_Notifications_NotificationSeverity_System_String_
+  commentId: M:Hexalith.Application.Organizations.Notifications.EntityNotification.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,Hexalith.Domain.Notifications.NotificationSeverity,System.String)
+  fullName: Hexalith.Application.Organizations.Notifications.EntityNotification.EntityNotification(System.String, System.String, System.String, System.String, System.String, System.String, System.String, Hexalith.Domain.Notifications.NotificationSeverity, System.String)
   nameWithType: EntityNotification.EntityNotification(String, String, String, String, String, String, String, NotificationSeverity, String)
 - uid: Hexalith.Application.Organizations.Notifications.EntityNotification.#ctor*
   name: EntityNotification
@@ -5995,11 +5926,11 @@ references:
   commentId: M:Hexalith.Application.Organizations.Notifications.PartitionedNotification.#ctor
   fullName: Hexalith.Application.Organizations.Notifications.PartitionedNotification.PartitionedNotification()
   nameWithType: PartitionedNotification.PartitionedNotification()
-- uid: Hexalith.Application.Organizations.Notifications.PartitionedNotification.#ctor(System.String,System.String,System.String,System.String,System.String,Hexalith.Application.Notifications.NotificationSeverity,System.String)
+- uid: Hexalith.Application.Organizations.Notifications.PartitionedNotification.#ctor(System.String,System.String,System.String,System.String,System.String,Hexalith.Domain.Notifications.NotificationSeverity,System.String)
   name: PartitionedNotification(String, String, String, String, String, NotificationSeverity, String)
-  href: api/Hexalith.Application.Organizations.Notifications.PartitionedNotification.html#Hexalith_Application_Organizations_Notifications_PartitionedNotification__ctor_System_String_System_String_System_String_System_String_System_String_Hexalith_Application_Notifications_NotificationSeverity_System_String_
-  commentId: M:Hexalith.Application.Organizations.Notifications.PartitionedNotification.#ctor(System.String,System.String,System.String,System.String,System.String,Hexalith.Application.Notifications.NotificationSeverity,System.String)
-  fullName: Hexalith.Application.Organizations.Notifications.PartitionedNotification.PartitionedNotification(System.String, System.String, System.String, System.String, System.String, Hexalith.Application.Notifications.NotificationSeverity, System.String)
+  href: api/Hexalith.Application.Organizations.Notifications.PartitionedNotification.html#Hexalith_Application_Organizations_Notifications_PartitionedNotification__ctor_System_String_System_String_System_String_System_String_System_String_Hexalith_Domain_Notifications_NotificationSeverity_System_String_
+  commentId: M:Hexalith.Application.Organizations.Notifications.PartitionedNotification.#ctor(System.String,System.String,System.String,System.String,System.String,Hexalith.Domain.Notifications.NotificationSeverity,System.String)
+  fullName: Hexalith.Application.Organizations.Notifications.PartitionedNotification.PartitionedNotification(System.String, System.String, System.String, System.String, System.String, Hexalith.Domain.Notifications.NotificationSeverity, System.String)
   nameWithType: PartitionedNotification.PartitionedNotification(String, String, String, String, String, NotificationSeverity, String)
 - uid: Hexalith.Application.Organizations.Notifications.PartitionedNotification.#ctor*
   name: PartitionedNotification
@@ -11649,6 +11580,25 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Events.CompanyEntityEvent.PartitionId
   nameWithType: CompanyEntityEvent.PartitionId
+- uid: Hexalith.Domain.Events.IBusinessEvent
+  name: IBusinessEvent
+  href: api/Hexalith.Domain.Events.IBusinessEvent.html
+  commentId: T:Hexalith.Domain.Events.IBusinessEvent
+  fullName: Hexalith.Domain.Events.IBusinessEvent
+  nameWithType: IBusinessEvent
+- uid: Hexalith.Domain.Events.IBusinessEvent.IsBehavior
+  name: IsBehavior
+  href: api/Hexalith.Domain.Events.IBusinessEvent.html#Hexalith_Domain_Events_IBusinessEvent_IsBehavior
+  commentId: P:Hexalith.Domain.Events.IBusinessEvent.IsBehavior
+  fullName: Hexalith.Domain.Events.IBusinessEvent.IsBehavior
+  nameWithType: IBusinessEvent.IsBehavior
+- uid: Hexalith.Domain.Events.IBusinessEvent.IsBehavior*
+  name: IsBehavior
+  href: api/Hexalith.Domain.Events.IBusinessEvent.html#Hexalith_Domain_Events_IBusinessEvent_IsBehavior_
+  commentId: Overload:Hexalith.Domain.Events.IBusinessEvent.IsBehavior
+  isSpec: "True"
+  fullName: Hexalith.Domain.Events.IBusinessEvent.IsBehavior
+  nameWithType: IBusinessEvent.IsBehavior
 - uid: Hexalith.Domain.Events.IEvent
   name: IEvent
   href: api/Hexalith.Domain.Events.IEvent.html
@@ -11693,12 +11643,6 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Events.PartitionedEvent.PartitionId
   nameWithType: PartitionedEvent.PartitionId
-- uid: Hexalith.Domain.Events.PureEvent
-  name: PureEvent
-  href: api/Hexalith.Domain.Events.PureEvent.html
-  commentId: T:Hexalith.Domain.Events.PureEvent
-  fullName: Hexalith.Domain.Events.PureEvent
-  nameWithType: PureEvent
 - uid: Hexalith.Domain.Events.SnapshotEvent
   name: SnapshotEvent
   href: api/Hexalith.Domain.Events.SnapshotEvent.html
@@ -12338,6 +12282,25 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Messages.BaseMessage.TypeName
   nameWithType: BaseMessage.TypeName
+- uid: Hexalith.Domain.Messages.IBusinessMessage
+  name: IBusinessMessage
+  href: api/Hexalith.Domain.Messages.IBusinessMessage.html
+  commentId: T:Hexalith.Domain.Messages.IBusinessMessage
+  fullName: Hexalith.Domain.Messages.IBusinessMessage
+  nameWithType: IBusinessMessage
+- uid: Hexalith.Domain.Messages.IBusinessMessage.IsIntegrationMessage
+  name: IsIntegrationMessage
+  href: api/Hexalith.Domain.Messages.IBusinessMessage.html#Hexalith_Domain_Messages_IBusinessMessage_IsIntegrationMessage
+  commentId: P:Hexalith.Domain.Messages.IBusinessMessage.IsIntegrationMessage
+  fullName: Hexalith.Domain.Messages.IBusinessMessage.IsIntegrationMessage
+  nameWithType: IBusinessMessage.IsIntegrationMessage
+- uid: Hexalith.Domain.Messages.IBusinessMessage.IsIntegrationMessage*
+  name: IsIntegrationMessage
+  href: api/Hexalith.Domain.Messages.IBusinessMessage.html#Hexalith_Domain_Messages_IBusinessMessage_IsIntegrationMessage_
+  commentId: Overload:Hexalith.Domain.Messages.IBusinessMessage.IsIntegrationMessage
+  isSpec: "True"
+  fullName: Hexalith.Domain.Messages.IBusinessMessage.IsIntegrationMessage
+  nameWithType: IBusinessMessage.IsIntegrationMessage
 - uid: Hexalith.Domain.Messages.IMessage
   name: IMessage
   href: api/Hexalith.Domain.Messages.IMessage.html
@@ -12422,187 +12385,6 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Messages.IMessage.TypeName
   nameWithType: IMessage.TypeName
-- uid: Hexalith.Domain.Messages.PureMessage
-  name: PureMessage
-  href: api/Hexalith.Domain.Messages.PureMessage.html
-  commentId: T:Hexalith.Domain.Messages.PureMessage
-  fullName: Hexalith.Domain.Messages.PureMessage
-  nameWithType: PureMessage
-- uid: Hexalith.Domain.Messages.PureMessage.AggregateId
-  name: AggregateId
-  href: api/Hexalith.Domain.Messages.PureMessage.html#Hexalith_Domain_Messages_PureMessage_AggregateId
-  commentId: P:Hexalith.Domain.Messages.PureMessage.AggregateId
-  fullName: Hexalith.Domain.Messages.PureMessage.AggregateId
-  nameWithType: PureMessage.AggregateId
-- uid: Hexalith.Domain.Messages.PureMessage.AggregateId*
-  name: AggregateId
-  href: api/Hexalith.Domain.Messages.PureMessage.html#Hexalith_Domain_Messages_PureMessage_AggregateId_
-  commentId: Overload:Hexalith.Domain.Messages.PureMessage.AggregateId
-  isSpec: "True"
-  fullName: Hexalith.Domain.Messages.PureMessage.AggregateId
-  nameWithType: PureMessage.AggregateId
-- uid: Hexalith.Domain.Messages.PureMessage.AggregateName
-  name: AggregateName
-  href: api/Hexalith.Domain.Messages.PureMessage.html#Hexalith_Domain_Messages_PureMessage_AggregateName
-  commentId: P:Hexalith.Domain.Messages.PureMessage.AggregateName
-  fullName: Hexalith.Domain.Messages.PureMessage.AggregateName
-  nameWithType: PureMessage.AggregateName
-- uid: Hexalith.Domain.Messages.PureMessage.AggregateName*
-  name: AggregateName
-  href: api/Hexalith.Domain.Messages.PureMessage.html#Hexalith_Domain_Messages_PureMessage_AggregateName_
-  commentId: Overload:Hexalith.Domain.Messages.PureMessage.AggregateName
-  isSpec: "True"
-  fullName: Hexalith.Domain.Messages.PureMessage.AggregateName
-  nameWithType: PureMessage.AggregateName
-- uid: Hexalith.Domain.Messages.PureMessage.DefaultAggregateId
-  name: DefaultAggregateId()
-  href: api/Hexalith.Domain.Messages.PureMessage.html#Hexalith_Domain_Messages_PureMessage_DefaultAggregateId
-  commentId: M:Hexalith.Domain.Messages.PureMessage.DefaultAggregateId
-  fullName: Hexalith.Domain.Messages.PureMessage.DefaultAggregateId()
-  nameWithType: PureMessage.DefaultAggregateId()
-- uid: Hexalith.Domain.Messages.PureMessage.DefaultAggregateId*
-  name: DefaultAggregateId
-  href: api/Hexalith.Domain.Messages.PureMessage.html#Hexalith_Domain_Messages_PureMessage_DefaultAggregateId_
-  commentId: Overload:Hexalith.Domain.Messages.PureMessage.DefaultAggregateId
-  isSpec: "True"
-  fullName: Hexalith.Domain.Messages.PureMessage.DefaultAggregateId
-  nameWithType: PureMessage.DefaultAggregateId
-- uid: Hexalith.Domain.Messages.PureMessage.DefaultAggregateName
-  name: DefaultAggregateName()
-  href: api/Hexalith.Domain.Messages.PureMessage.html#Hexalith_Domain_Messages_PureMessage_DefaultAggregateName
-  commentId: M:Hexalith.Domain.Messages.PureMessage.DefaultAggregateName
-  fullName: Hexalith.Domain.Messages.PureMessage.DefaultAggregateName()
-  nameWithType: PureMessage.DefaultAggregateName()
-- uid: Hexalith.Domain.Messages.PureMessage.DefaultAggregateName*
-  name: DefaultAggregateName
-  href: api/Hexalith.Domain.Messages.PureMessage.html#Hexalith_Domain_Messages_PureMessage_DefaultAggregateName_
-  commentId: Overload:Hexalith.Domain.Messages.PureMessage.DefaultAggregateName
-  isSpec: "True"
-  fullName: Hexalith.Domain.Messages.PureMessage.DefaultAggregateName
-  nameWithType: PureMessage.DefaultAggregateName
-- uid: Hexalith.Domain.Messages.PureMessage.DefaultIsPrivateToAggregate
-  name: DefaultIsPrivateToAggregate()
-  href: api/Hexalith.Domain.Messages.PureMessage.html#Hexalith_Domain_Messages_PureMessage_DefaultIsPrivateToAggregate
-  commentId: M:Hexalith.Domain.Messages.PureMessage.DefaultIsPrivateToAggregate
-  fullName: Hexalith.Domain.Messages.PureMessage.DefaultIsPrivateToAggregate()
-  nameWithType: PureMessage.DefaultIsPrivateToAggregate()
-- uid: Hexalith.Domain.Messages.PureMessage.DefaultIsPrivateToAggregate*
-  name: DefaultIsPrivateToAggregate
-  href: api/Hexalith.Domain.Messages.PureMessage.html#Hexalith_Domain_Messages_PureMessage_DefaultIsPrivateToAggregate_
-  commentId: Overload:Hexalith.Domain.Messages.PureMessage.DefaultIsPrivateToAggregate
-  isSpec: "True"
-  fullName: Hexalith.Domain.Messages.PureMessage.DefaultIsPrivateToAggregate
-  nameWithType: PureMessage.DefaultIsPrivateToAggregate
-- uid: Hexalith.Domain.Messages.PureMessage.DefaultMajorVersion
-  name: DefaultMajorVersion()
-  href: api/Hexalith.Domain.Messages.PureMessage.html#Hexalith_Domain_Messages_PureMessage_DefaultMajorVersion
-  commentId: M:Hexalith.Domain.Messages.PureMessage.DefaultMajorVersion
-  fullName: Hexalith.Domain.Messages.PureMessage.DefaultMajorVersion()
-  nameWithType: PureMessage.DefaultMajorVersion()
-- uid: Hexalith.Domain.Messages.PureMessage.DefaultMajorVersion*
-  name: DefaultMajorVersion
-  href: api/Hexalith.Domain.Messages.PureMessage.html#Hexalith_Domain_Messages_PureMessage_DefaultMajorVersion_
-  commentId: Overload:Hexalith.Domain.Messages.PureMessage.DefaultMajorVersion
-  isSpec: "True"
-  fullName: Hexalith.Domain.Messages.PureMessage.DefaultMajorVersion
-  nameWithType: PureMessage.DefaultMajorVersion
-- uid: Hexalith.Domain.Messages.PureMessage.DefaultMinorVersion
-  name: DefaultMinorVersion()
-  href: api/Hexalith.Domain.Messages.PureMessage.html#Hexalith_Domain_Messages_PureMessage_DefaultMinorVersion
-  commentId: M:Hexalith.Domain.Messages.PureMessage.DefaultMinorVersion
-  fullName: Hexalith.Domain.Messages.PureMessage.DefaultMinorVersion()
-  nameWithType: PureMessage.DefaultMinorVersion()
-- uid: Hexalith.Domain.Messages.PureMessage.DefaultMinorVersion*
-  name: DefaultMinorVersion
-  href: api/Hexalith.Domain.Messages.PureMessage.html#Hexalith_Domain_Messages_PureMessage_DefaultMinorVersion_
-  commentId: Overload:Hexalith.Domain.Messages.PureMessage.DefaultMinorVersion
-  isSpec: "True"
-  fullName: Hexalith.Domain.Messages.PureMessage.DefaultMinorVersion
-  nameWithType: PureMessage.DefaultMinorVersion
-- uid: Hexalith.Domain.Messages.PureMessage.DefaultTypeName
-  name: DefaultTypeName()
-  href: api/Hexalith.Domain.Messages.PureMessage.html#Hexalith_Domain_Messages_PureMessage_DefaultTypeName
-  commentId: M:Hexalith.Domain.Messages.PureMessage.DefaultTypeName
-  fullName: Hexalith.Domain.Messages.PureMessage.DefaultTypeName()
-  nameWithType: PureMessage.DefaultTypeName()
-- uid: Hexalith.Domain.Messages.PureMessage.DefaultTypeName*
-  name: DefaultTypeName
-  href: api/Hexalith.Domain.Messages.PureMessage.html#Hexalith_Domain_Messages_PureMessage_DefaultTypeName_
-  commentId: Overload:Hexalith.Domain.Messages.PureMessage.DefaultTypeName
-  isSpec: "True"
-  fullName: Hexalith.Domain.Messages.PureMessage.DefaultTypeName
-  nameWithType: PureMessage.DefaultTypeName
-- uid: Hexalith.Domain.Messages.PureMessage.IsPrivateToAggregate
-  name: IsPrivateToAggregate
-  href: api/Hexalith.Domain.Messages.PureMessage.html#Hexalith_Domain_Messages_PureMessage_IsPrivateToAggregate
-  commentId: P:Hexalith.Domain.Messages.PureMessage.IsPrivateToAggregate
-  fullName: Hexalith.Domain.Messages.PureMessage.IsPrivateToAggregate
-  nameWithType: PureMessage.IsPrivateToAggregate
-- uid: Hexalith.Domain.Messages.PureMessage.IsPrivateToAggregate*
-  name: IsPrivateToAggregate
-  href: api/Hexalith.Domain.Messages.PureMessage.html#Hexalith_Domain_Messages_PureMessage_IsPrivateToAggregate_
-  commentId: Overload:Hexalith.Domain.Messages.PureMessage.IsPrivateToAggregate
-  isSpec: "True"
-  fullName: Hexalith.Domain.Messages.PureMessage.IsPrivateToAggregate
-  nameWithType: PureMessage.IsPrivateToAggregate
-- uid: Hexalith.Domain.Messages.PureMessage.MajorVersion
-  name: MajorVersion
-  href: api/Hexalith.Domain.Messages.PureMessage.html#Hexalith_Domain_Messages_PureMessage_MajorVersion
-  commentId: P:Hexalith.Domain.Messages.PureMessage.MajorVersion
-  fullName: Hexalith.Domain.Messages.PureMessage.MajorVersion
-  nameWithType: PureMessage.MajorVersion
-- uid: Hexalith.Domain.Messages.PureMessage.MajorVersion*
-  name: MajorVersion
-  href: api/Hexalith.Domain.Messages.PureMessage.html#Hexalith_Domain_Messages_PureMessage_MajorVersion_
-  commentId: Overload:Hexalith.Domain.Messages.PureMessage.MajorVersion
-  isSpec: "True"
-  fullName: Hexalith.Domain.Messages.PureMessage.MajorVersion
-  nameWithType: PureMessage.MajorVersion
-- uid: Hexalith.Domain.Messages.PureMessage.MinorVersion
-  name: MinorVersion
-  href: api/Hexalith.Domain.Messages.PureMessage.html#Hexalith_Domain_Messages_PureMessage_MinorVersion
-  commentId: P:Hexalith.Domain.Messages.PureMessage.MinorVersion
-  fullName: Hexalith.Domain.Messages.PureMessage.MinorVersion
-  nameWithType: PureMessage.MinorVersion
-- uid: Hexalith.Domain.Messages.PureMessage.MinorVersion*
-  name: MinorVersion
-  href: api/Hexalith.Domain.Messages.PureMessage.html#Hexalith_Domain_Messages_PureMessage_MinorVersion_
-  commentId: Overload:Hexalith.Domain.Messages.PureMessage.MinorVersion
-  isSpec: "True"
-  fullName: Hexalith.Domain.Messages.PureMessage.MinorVersion
-  nameWithType: PureMessage.MinorVersion
-- uid: Hexalith.Domain.Messages.PureMessage.Separator
-  name: Separator
-  href: api/Hexalith.Domain.Messages.PureMessage.html#Hexalith_Domain_Messages_PureMessage_Separator
-  commentId: F:Hexalith.Domain.Messages.PureMessage.Separator
-  fullName: Hexalith.Domain.Messages.PureMessage.Separator
-  nameWithType: PureMessage.Separator
-- uid: Hexalith.Domain.Messages.PureMessage.TypeMapName
-  name: TypeMapName
-  href: api/Hexalith.Domain.Messages.PureMessage.html#Hexalith_Domain_Messages_PureMessage_TypeMapName
-  commentId: P:Hexalith.Domain.Messages.PureMessage.TypeMapName
-  fullName: Hexalith.Domain.Messages.PureMessage.TypeMapName
-  nameWithType: PureMessage.TypeMapName
-- uid: Hexalith.Domain.Messages.PureMessage.TypeMapName*
-  name: TypeMapName
-  href: api/Hexalith.Domain.Messages.PureMessage.html#Hexalith_Domain_Messages_PureMessage_TypeMapName_
-  commentId: Overload:Hexalith.Domain.Messages.PureMessage.TypeMapName
-  isSpec: "True"
-  fullName: Hexalith.Domain.Messages.PureMessage.TypeMapName
-  nameWithType: PureMessage.TypeMapName
-- uid: Hexalith.Domain.Messages.PureMessage.TypeName
-  name: TypeName
-  href: api/Hexalith.Domain.Messages.PureMessage.html#Hexalith_Domain_Messages_PureMessage_TypeName
-  commentId: P:Hexalith.Domain.Messages.PureMessage.TypeName
-  fullName: Hexalith.Domain.Messages.PureMessage.TypeName
-  nameWithType: PureMessage.TypeName
-- uid: Hexalith.Domain.Messages.PureMessage.TypeName*
-  name: TypeName
-  href: api/Hexalith.Domain.Messages.PureMessage.html#Hexalith_Domain_Messages_PureMessage_TypeName_
-  commentId: Overload:Hexalith.Domain.Messages.PureMessage.TypeName
-  isSpec: "True"
-  fullName: Hexalith.Domain.Messages.PureMessage.TypeName
-  nameWithType: PureMessage.TypeName
 - uid: Hexalith.Domain.Notifications
   name: Hexalith.Domain.Notifications
   href: api/Hexalith.Domain.Notifications.html
@@ -12621,11 +12403,11 @@ references:
   commentId: M:Hexalith.Domain.Notifications.BaseNotification.#ctor
   fullName: Hexalith.Domain.Notifications.BaseNotification.BaseNotification()
   nameWithType: BaseNotification.BaseNotification()
-- uid: Hexalith.Domain.Notifications.BaseNotification.#ctor(System.String,System.String,System.String,System.String,Hexalith.Application.Notifications.NotificationSeverity,System.String)
+- uid: Hexalith.Domain.Notifications.BaseNotification.#ctor(System.String,System.String,System.String,System.String,Hexalith.Domain.Notifications.NotificationSeverity,System.String)
   name: BaseNotification(String, String, String, String, NotificationSeverity, String)
-  href: api/Hexalith.Domain.Notifications.BaseNotification.html#Hexalith_Domain_Notifications_BaseNotification__ctor_System_String_System_String_System_String_System_String_Hexalith_Application_Notifications_NotificationSeverity_System_String_
-  commentId: M:Hexalith.Domain.Notifications.BaseNotification.#ctor(System.String,System.String,System.String,System.String,Hexalith.Application.Notifications.NotificationSeverity,System.String)
-  fullName: Hexalith.Domain.Notifications.BaseNotification.BaseNotification(System.String, System.String, System.String, System.String, Hexalith.Application.Notifications.NotificationSeverity, System.String)
+  href: api/Hexalith.Domain.Notifications.BaseNotification.html#Hexalith_Domain_Notifications_BaseNotification__ctor_System_String_System_String_System_String_System_String_Hexalith_Domain_Notifications_NotificationSeverity_System_String_
+  commentId: M:Hexalith.Domain.Notifications.BaseNotification.#ctor(System.String,System.String,System.String,System.String,Hexalith.Domain.Notifications.NotificationSeverity,System.String)
+  fullName: Hexalith.Domain.Notifications.BaseNotification.BaseNotification(System.String, System.String, System.String, System.String, Hexalith.Domain.Notifications.NotificationSeverity, System.String)
   nameWithType: BaseNotification.BaseNotification(String, String, String, String, NotificationSeverity, String)
 - uid: Hexalith.Domain.Notifications.BaseNotification.#ctor*
   name: BaseNotification
@@ -12634,11 +12416,11 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Notifications.BaseNotification.BaseNotification
   nameWithType: BaseNotification.BaseNotification
-- uid: Hexalith.Domain.Notifications.BaseNotification.Create(Hexalith.Domain.Aggregates.IAggregate,System.String,System.String,Hexalith.Application.Notifications.NotificationSeverity,System.String)
+- uid: Hexalith.Domain.Notifications.BaseNotification.Create(Hexalith.Domain.Aggregates.IAggregate,System.String,System.String,Hexalith.Domain.Notifications.NotificationSeverity,System.String)
   name: Create(IAggregate, String, String, NotificationSeverity, String)
-  href: api/Hexalith.Domain.Notifications.BaseNotification.html#Hexalith_Domain_Notifications_BaseNotification_Create_Hexalith_Domain_Aggregates_IAggregate_System_String_System_String_Hexalith_Application_Notifications_NotificationSeverity_System_String_
-  commentId: M:Hexalith.Domain.Notifications.BaseNotification.Create(Hexalith.Domain.Aggregates.IAggregate,System.String,System.String,Hexalith.Application.Notifications.NotificationSeverity,System.String)
-  fullName: Hexalith.Domain.Notifications.BaseNotification.Create(Hexalith.Domain.Aggregates.IAggregate, System.String, System.String, Hexalith.Application.Notifications.NotificationSeverity, System.String)
+  href: api/Hexalith.Domain.Notifications.BaseNotification.html#Hexalith_Domain_Notifications_BaseNotification_Create_Hexalith_Domain_Aggregates_IAggregate_System_String_System_String_Hexalith_Domain_Notifications_NotificationSeverity_System_String_
+  commentId: M:Hexalith.Domain.Notifications.BaseNotification.Create(Hexalith.Domain.Aggregates.IAggregate,System.String,System.String,Hexalith.Domain.Notifications.NotificationSeverity,System.String)
+  fullName: Hexalith.Domain.Notifications.BaseNotification.Create(Hexalith.Domain.Aggregates.IAggregate, System.String, System.String, Hexalith.Domain.Notifications.NotificationSeverity, System.String)
   nameWithType: BaseNotification.Create(IAggregate, String, String, NotificationSeverity, String)
 - uid: Hexalith.Domain.Notifications.BaseNotification.Create*
   name: Create
@@ -12816,6 +12598,88 @@ references:
   isSpec: "True"
   fullName: Hexalith.Domain.Notifications.BaseNotification.UndefinedAggregateName
   nameWithType: BaseNotification.UndefinedAggregateName
+- uid: Hexalith.Domain.Notifications.INotification
+  name: INotification
+  href: api/Hexalith.Domain.Notifications.INotification.html
+  commentId: T:Hexalith.Domain.Notifications.INotification
+  fullName: Hexalith.Domain.Notifications.INotification
+  nameWithType: INotification
+- uid: Hexalith.Domain.Notifications.INotification.Message
+  name: Message
+  href: api/Hexalith.Domain.Notifications.INotification.html#Hexalith_Domain_Notifications_INotification_Message
+  commentId: P:Hexalith.Domain.Notifications.INotification.Message
+  fullName: Hexalith.Domain.Notifications.INotification.Message
+  nameWithType: INotification.Message
+- uid: Hexalith.Domain.Notifications.INotification.Message*
+  name: Message
+  href: api/Hexalith.Domain.Notifications.INotification.html#Hexalith_Domain_Notifications_INotification_Message_
+  commentId: Overload:Hexalith.Domain.Notifications.INotification.Message
+  isSpec: "True"
+  fullName: Hexalith.Domain.Notifications.INotification.Message
+  nameWithType: INotification.Message
+- uid: Hexalith.Domain.Notifications.INotification.Severity
+  name: Severity
+  href: api/Hexalith.Domain.Notifications.INotification.html#Hexalith_Domain_Notifications_INotification_Severity
+  commentId: P:Hexalith.Domain.Notifications.INotification.Severity
+  fullName: Hexalith.Domain.Notifications.INotification.Severity
+  nameWithType: INotification.Severity
+- uid: Hexalith.Domain.Notifications.INotification.Severity*
+  name: Severity
+  href: api/Hexalith.Domain.Notifications.INotification.html#Hexalith_Domain_Notifications_INotification_Severity_
+  commentId: Overload:Hexalith.Domain.Notifications.INotification.Severity
+  isSpec: "True"
+  fullName: Hexalith.Domain.Notifications.INotification.Severity
+  nameWithType: INotification.Severity
+- uid: Hexalith.Domain.Notifications.INotification.TechnicalDescription
+  name: TechnicalDescription
+  href: api/Hexalith.Domain.Notifications.INotification.html#Hexalith_Domain_Notifications_INotification_TechnicalDescription
+  commentId: P:Hexalith.Domain.Notifications.INotification.TechnicalDescription
+  fullName: Hexalith.Domain.Notifications.INotification.TechnicalDescription
+  nameWithType: INotification.TechnicalDescription
+- uid: Hexalith.Domain.Notifications.INotification.TechnicalDescription*
+  name: TechnicalDescription
+  href: api/Hexalith.Domain.Notifications.INotification.html#Hexalith_Domain_Notifications_INotification_TechnicalDescription_
+  commentId: Overload:Hexalith.Domain.Notifications.INotification.TechnicalDescription
+  isSpec: "True"
+  fullName: Hexalith.Domain.Notifications.INotification.TechnicalDescription
+  nameWithType: INotification.TechnicalDescription
+- uid: Hexalith.Domain.Notifications.INotification.Title
+  name: Title
+  href: api/Hexalith.Domain.Notifications.INotification.html#Hexalith_Domain_Notifications_INotification_Title
+  commentId: P:Hexalith.Domain.Notifications.INotification.Title
+  fullName: Hexalith.Domain.Notifications.INotification.Title
+  nameWithType: INotification.Title
+- uid: Hexalith.Domain.Notifications.INotification.Title*
+  name: Title
+  href: api/Hexalith.Domain.Notifications.INotification.html#Hexalith_Domain_Notifications_INotification_Title_
+  commentId: Overload:Hexalith.Domain.Notifications.INotification.Title
+  isSpec: "True"
+  fullName: Hexalith.Domain.Notifications.INotification.Title
+  nameWithType: INotification.Title
+- uid: Hexalith.Domain.Notifications.NotificationSeverity
+  name: NotificationSeverity
+  href: api/Hexalith.Domain.Notifications.NotificationSeverity.html
+  commentId: T:Hexalith.Domain.Notifications.NotificationSeverity
+  fullName: Hexalith.Domain.Notifications.NotificationSeverity
+  nameWithType: NotificationSeverity
+- uid: Hexalith.Domain.Notifications.NotificationSeverity.Error
+  name: Error
+  href: api/Hexalith.Domain.Notifications.NotificationSeverity.html#Hexalith_Domain_Notifications_NotificationSeverity_Error
+  commentId: F:Hexalith.Domain.Notifications.NotificationSeverity.Error
+  fullName: Hexalith.Domain.Notifications.NotificationSeverity.Error
+  nameWithType: NotificationSeverity.Error
+- uid: Hexalith.Domain.Notifications.NotificationSeverity.Information
+  name: Information
+  href: api/Hexalith.Domain.Notifications.NotificationSeverity.html#Hexalith_Domain_Notifications_NotificationSeverity_Information
+  commentId: F:Hexalith.Domain.Notifications.NotificationSeverity.Information
+  fullName: Hexalith.Domain.Notifications.NotificationSeverity.Information
+  nameWithType: NotificationSeverity.Information
+- uid: Hexalith.Domain.Notifications.NotificationSeverity.Warning
+  name: Warning
+  href: api/Hexalith.Domain.Notifications.NotificationSeverity.html#Hexalith_Domain_Notifications_NotificationSeverity_Warning
+  commentId: F:Hexalith.Domain.Notifications.NotificationSeverity.Warning
+  fullName: Hexalith.Domain.Notifications.NotificationSeverity.Warning
+  nameWithType: NotificationSeverity.Warning
 - uid: Hexalith.Domain.Organizations.Aggregates
   name: Hexalith.Domain.Organizations.Aggregates
   href: api/Hexalith.Domain.Organizations.Aggregates.html
@@ -14675,6 +14539,59 @@ references:
   commentId: N:Hexalith.Extensions.Serialization
   fullName: Hexalith.Extensions.Serialization
   nameWithType: Hexalith.Extensions.Serialization
+- uid: Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry
+  name: IJsonPolymorphicTypeRegistry
+  href: api/Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry.html
+  commentId: T:Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry
+  fullName: Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry
+  nameWithType: IJsonPolymorphicTypeRegistry
+- uid: Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry.AddDerivedTypesToList(System.Type,System.Collections.Generic.IList{System.Text.Json.Serialization.Metadata.JsonDerivedType})
+  name: AddDerivedTypesToList(Type, IList<JsonDerivedType>)
+  href: api/Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry.html#Hexalith_Extensions_Serialization_IJsonPolymorphicTypeRegistry_AddDerivedTypesToList_System_Type_System_Collections_Generic_IList_System_Text_Json_Serialization_Metadata_JsonDerivedType__
+  commentId: M:Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry.AddDerivedTypesToList(System.Type,System.Collections.Generic.IList{System.Text.Json.Serialization.Metadata.JsonDerivedType})
+  name.vb: AddDerivedTypesToList(Type, IList(Of JsonDerivedType))
+  fullName: Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry.AddDerivedTypesToList(System.Type, System.Collections.Generic.IList<System.Text.Json.Serialization.Metadata.JsonDerivedType>)
+  fullName.vb: Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry.AddDerivedTypesToList(System.Type, System.Collections.Generic.IList(Of System.Text.Json.Serialization.Metadata.JsonDerivedType))
+  nameWithType: IJsonPolymorphicTypeRegistry.AddDerivedTypesToList(Type, IList<JsonDerivedType>)
+  nameWithType.vb: IJsonPolymorphicTypeRegistry.AddDerivedTypesToList(Type, IList(Of JsonDerivedType))
+- uid: Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry.AddDerivedTypesToList*
+  name: AddDerivedTypesToList
+  href: api/Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry.html#Hexalith_Extensions_Serialization_IJsonPolymorphicTypeRegistry_AddDerivedTypesToList_
+  commentId: Overload:Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry.AddDerivedTypesToList
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry.AddDerivedTypesToList
+  nameWithType: IJsonPolymorphicTypeRegistry.AddDerivedTypesToList
+- uid: Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry.AddDerivedTypesToList``1(System.Collections.Generic.IList{System.Text.Json.Serialization.Metadata.JsonDerivedType})
+  name: AddDerivedTypesToList<TPolymorphicBase>(IList<JsonDerivedType>)
+  href: api/Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry.html#Hexalith_Extensions_Serialization_IJsonPolymorphicTypeRegistry_AddDerivedTypesToList__1_System_Collections_Generic_IList_System_Text_Json_Serialization_Metadata_JsonDerivedType__
+  commentId: M:Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry.AddDerivedTypesToList``1(System.Collections.Generic.IList{System.Text.Json.Serialization.Metadata.JsonDerivedType})
+  name.vb: AddDerivedTypesToList(Of TPolymorphicBase)(IList(Of JsonDerivedType))
+  fullName: Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry.AddDerivedTypesToList<TPolymorphicBase>(System.Collections.Generic.IList<System.Text.Json.Serialization.Metadata.JsonDerivedType>)
+  fullName.vb: Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry.AddDerivedTypesToList(Of TPolymorphicBase)(System.Collections.Generic.IList(Of System.Text.Json.Serialization.Metadata.JsonDerivedType))
+  nameWithType: IJsonPolymorphicTypeRegistry.AddDerivedTypesToList<TPolymorphicBase>(IList<JsonDerivedType>)
+  nameWithType.vb: IJsonPolymorphicTypeRegistry.AddDerivedTypesToList(Of TPolymorphicBase)(IList(Of JsonDerivedType))
+- uid: Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry.GetDerivedTypes(System.Type)
+  name: GetDerivedTypes(Type)
+  href: api/Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry.html#Hexalith_Extensions_Serialization_IJsonPolymorphicTypeRegistry_GetDerivedTypes_System_Type_
+  commentId: M:Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry.GetDerivedTypes(System.Type)
+  fullName: Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry.GetDerivedTypes(System.Type)
+  nameWithType: IJsonPolymorphicTypeRegistry.GetDerivedTypes(Type)
+- uid: Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry.GetDerivedTypes*
+  name: GetDerivedTypes
+  href: api/Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry.html#Hexalith_Extensions_Serialization_IJsonPolymorphicTypeRegistry_GetDerivedTypes_
+  commentId: Overload:Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry.GetDerivedTypes
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry.GetDerivedTypes
+  nameWithType: IJsonPolymorphicTypeRegistry.GetDerivedTypes
+- uid: Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry.GetDerivedTypes``1
+  name: GetDerivedTypes<TPolymorphicBase>()
+  href: api/Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry.html#Hexalith_Extensions_Serialization_IJsonPolymorphicTypeRegistry_GetDerivedTypes__1
+  commentId: M:Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry.GetDerivedTypes``1
+  name.vb: GetDerivedTypes(Of TPolymorphicBase)()
+  fullName: Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry.GetDerivedTypes<TPolymorphicBase>()
+  fullName.vb: Hexalith.Extensions.Serialization.IJsonPolymorphicTypeRegistry.GetDerivedTypes(Of TPolymorphicBase)()
+  nameWithType: IJsonPolymorphicTypeRegistry.GetDerivedTypes<TPolymorphicBase>()
+  nameWithType.vb: IJsonPolymorphicTypeRegistry.GetDerivedTypes(Of TPolymorphicBase)()
 - uid: Hexalith.Extensions.Serialization.IPolymorphicSerializable
   name: IPolymorphicSerializable
   href: api/Hexalith.Extensions.Serialization.IPolymorphicSerializable.html
@@ -14772,6 +14689,103 @@ references:
   isSpec: "True"
   fullName: Hexalith.Extensions.Serialization.IPolymorphicSerializable.TypeNamePropertyName
   nameWithType: IPolymorphicSerializable.TypeNamePropertyName
+- uid: Hexalith.Extensions.Serialization.JsonPolymorphicBaseTypeAttribute
+  name: JsonPolymorphicBaseTypeAttribute
+  href: api/Hexalith.Extensions.Serialization.JsonPolymorphicBaseTypeAttribute.html
+  commentId: T:Hexalith.Extensions.Serialization.JsonPolymorphicBaseTypeAttribute
+  fullName: Hexalith.Extensions.Serialization.JsonPolymorphicBaseTypeAttribute
+  nameWithType: JsonPolymorphicBaseTypeAttribute
+- uid: Hexalith.Extensions.Serialization.JsonPolymorphicDerivedTypeAttribute
+  name: JsonPolymorphicDerivedTypeAttribute
+  href: api/Hexalith.Extensions.Serialization.JsonPolymorphicDerivedTypeAttribute.html
+  commentId: T:Hexalith.Extensions.Serialization.JsonPolymorphicDerivedTypeAttribute
+  fullName: Hexalith.Extensions.Serialization.JsonPolymorphicDerivedTypeAttribute
+  nameWithType: JsonPolymorphicDerivedTypeAttribute
+- uid: Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry
+  name: JsonPolymorphicTypeRegistry
+  href: api/Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.html
+  commentId: T:Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry
+  fullName: Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry
+  nameWithType: JsonPolymorphicTypeRegistry
+- uid: Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.AddDerivedTypesToList(System.Type,System.Collections.Generic.IList{System.Text.Json.Serialization.Metadata.JsonDerivedType})
+  name: AddDerivedTypesToList(Type, IList<JsonDerivedType>)
+  href: api/Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.html#Hexalith_Extensions_Serialization_JsonPolymorphicTypeRegistry_AddDerivedTypesToList_System_Type_System_Collections_Generic_IList_System_Text_Json_Serialization_Metadata_JsonDerivedType__
+  commentId: M:Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.AddDerivedTypesToList(System.Type,System.Collections.Generic.IList{System.Text.Json.Serialization.Metadata.JsonDerivedType})
+  name.vb: AddDerivedTypesToList(Type, IList(Of JsonDerivedType))
+  fullName: Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.AddDerivedTypesToList(System.Type, System.Collections.Generic.IList<System.Text.Json.Serialization.Metadata.JsonDerivedType>)
+  fullName.vb: Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.AddDerivedTypesToList(System.Type, System.Collections.Generic.IList(Of System.Text.Json.Serialization.Metadata.JsonDerivedType))
+  nameWithType: JsonPolymorphicTypeRegistry.AddDerivedTypesToList(Type, IList<JsonDerivedType>)
+  nameWithType.vb: JsonPolymorphicTypeRegistry.AddDerivedTypesToList(Type, IList(Of JsonDerivedType))
+- uid: Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.AddDerivedTypesToList*
+  name: AddDerivedTypesToList
+  href: api/Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.html#Hexalith_Extensions_Serialization_JsonPolymorphicTypeRegistry_AddDerivedTypesToList_
+  commentId: Overload:Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.AddDerivedTypesToList
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.AddDerivedTypesToList
+  nameWithType: JsonPolymorphicTypeRegistry.AddDerivedTypesToList
+- uid: Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.GetDerivedTypes(System.Type)
+  name: GetDerivedTypes(Type)
+  href: api/Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.html#Hexalith_Extensions_Serialization_JsonPolymorphicTypeRegistry_GetDerivedTypes_System_Type_
+  commentId: M:Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.GetDerivedTypes(System.Type)
+  fullName: Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.GetDerivedTypes(System.Type)
+  nameWithType: JsonPolymorphicTypeRegistry.GetDerivedTypes(Type)
+- uid: Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.GetDerivedTypes*
+  name: GetDerivedTypes
+  href: api/Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.html#Hexalith_Extensions_Serialization_JsonPolymorphicTypeRegistry_GetDerivedTypes_
+  commentId: Overload:Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.GetDerivedTypes
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.GetDerivedTypes
+  nameWithType: JsonPolymorphicTypeRegistry.GetDerivedTypes
+- uid: Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.GetPolymorphicBaseType(System.Type)
+  name: GetPolymorphicBaseType(Type)
+  href: api/Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.html#Hexalith_Extensions_Serialization_JsonPolymorphicTypeRegistry_GetPolymorphicBaseType_System_Type_
+  commentId: M:Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.GetPolymorphicBaseType(System.Type)
+  fullName: Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.GetPolymorphicBaseType(System.Type)
+  nameWithType: JsonPolymorphicTypeRegistry.GetPolymorphicBaseType(Type)
+- uid: Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.GetPolymorphicBaseType*
+  name: GetPolymorphicBaseType
+  href: api/Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.html#Hexalith_Extensions_Serialization_JsonPolymorphicTypeRegistry_GetPolymorphicBaseType_
+  commentId: Overload:Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.GetPolymorphicBaseType
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.GetPolymorphicBaseType
+  nameWithType: JsonPolymorphicTypeRegistry.GetPolymorphicBaseType
+- uid: Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.GetPolymorphicBaseType``1
+  name: GetPolymorphicBaseType<T>()
+  href: api/Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.html#Hexalith_Extensions_Serialization_JsonPolymorphicTypeRegistry_GetPolymorphicBaseType__1
+  commentId: M:Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.GetPolymorphicBaseType``1
+  name.vb: GetPolymorphicBaseType(Of T)()
+  fullName: Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.GetPolymorphicBaseType<T>()
+  fullName.vb: Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.GetPolymorphicBaseType(Of T)()
+  nameWithType: JsonPolymorphicTypeRegistry.GetPolymorphicBaseType<T>()
+  nameWithType.vb: JsonPolymorphicTypeRegistry.GetPolymorphicBaseType(Of T)()
+- uid: Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.RegisterJsonDerivedType(System.Type)
+  name: RegisterJsonDerivedType(Type)
+  href: api/Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.html#Hexalith_Extensions_Serialization_JsonPolymorphicTypeRegistry_RegisterJsonDerivedType_System_Type_
+  commentId: M:Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.RegisterJsonDerivedType(System.Type)
+  fullName: Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.RegisterJsonDerivedType(System.Type)
+  nameWithType: JsonPolymorphicTypeRegistry.RegisterJsonDerivedType(Type)
+- uid: Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.RegisterJsonDerivedType*
+  name: RegisterJsonDerivedType
+  href: api/Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.html#Hexalith_Extensions_Serialization_JsonPolymorphicTypeRegistry_RegisterJsonDerivedType_
+  commentId: Overload:Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.RegisterJsonDerivedType
+  isSpec: "True"
+  fullName: Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.RegisterJsonDerivedType
+  nameWithType: JsonPolymorphicTypeRegistry.RegisterJsonDerivedType
+- uid: Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.RegisterJsonDerivedType``1
+  name: RegisterJsonDerivedType<T>()
+  href: api/Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.html#Hexalith_Extensions_Serialization_JsonPolymorphicTypeRegistry_RegisterJsonDerivedType__1
+  commentId: M:Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.RegisterJsonDerivedType``1
+  name.vb: RegisterJsonDerivedType(Of T)()
+  fullName: Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.RegisterJsonDerivedType<T>()
+  fullName.vb: Hexalith.Extensions.Serialization.JsonPolymorphicTypeRegistry.RegisterJsonDerivedType(Of T)()
+  nameWithType: JsonPolymorphicTypeRegistry.RegisterJsonDerivedType<T>()
+  nameWithType.vb: JsonPolymorphicTypeRegistry.RegisterJsonDerivedType(Of T)()
+- uid: Hexalith.Extensions.Serialization.JsonPolymorphicTypeResolver
+  name: JsonPolymorphicTypeResolver
+  href: api/Hexalith.Extensions.Serialization.JsonPolymorphicTypeResolver.html
+  commentId: T:Hexalith.Extensions.Serialization.JsonPolymorphicTypeResolver
+  fullName: Hexalith.Extensions.Serialization.JsonPolymorphicTypeResolver
+  nameWithType: JsonPolymorphicTypeResolver
 - uid: Hexalith.Extensions.Serialization.PolymorphicJsonConverter`1
   name: PolymorphicJsonConverter<T>
   href: api/Hexalith.Extensions.Serialization.PolymorphicJsonConverter-1.html
@@ -15118,6 +15132,22 @@ references:
   commentId: T:Hexalith.Infrastructure.AspireService.Hosting.Helpers.HexalithDistributedApplicationHelper
   fullName: Hexalith.Infrastructure.AspireService.Hosting.Helpers.HexalithDistributedApplicationHelper
   nameWithType: HexalithDistributedApplicationHelper
+- uid: Hexalith.Infrastructure.AspireService.Hosting.Helpers.HexalithDistributedApplicationHelper.GetAppId(Aspire.Hosting.ApplicationModel.IResourceBuilder{Aspire.Hosting.ApplicationModel.ProjectResource},System.String)
+  name: GetAppId(IResourceBuilder<ProjectResource>, String)
+  href: api/Hexalith.Infrastructure.AspireService.Hosting.Helpers.HexalithDistributedApplicationHelper.html#Hexalith_Infrastructure_AspireService_Hosting_Helpers_HexalithDistributedApplicationHelper_GetAppId_Aspire_Hosting_ApplicationModel_IResourceBuilder_Aspire_Hosting_ApplicationModel_ProjectResource__System_String_
+  commentId: M:Hexalith.Infrastructure.AspireService.Hosting.Helpers.HexalithDistributedApplicationHelper.GetAppId(Aspire.Hosting.ApplicationModel.IResourceBuilder{Aspire.Hosting.ApplicationModel.ProjectResource},System.String)
+  name.vb: GetAppId(IResourceBuilder(Of ProjectResource), String)
+  fullName: Hexalith.Infrastructure.AspireService.Hosting.Helpers.HexalithDistributedApplicationHelper.GetAppId(Aspire.Hosting.ApplicationModel.IResourceBuilder<Aspire.Hosting.ApplicationModel.ProjectResource>, System.String)
+  fullName.vb: Hexalith.Infrastructure.AspireService.Hosting.Helpers.HexalithDistributedApplicationHelper.GetAppId(Aspire.Hosting.ApplicationModel.IResourceBuilder(Of Aspire.Hosting.ApplicationModel.ProjectResource), System.String)
+  nameWithType: HexalithDistributedApplicationHelper.GetAppId(IResourceBuilder<ProjectResource>, String)
+  nameWithType.vb: HexalithDistributedApplicationHelper.GetAppId(IResourceBuilder(Of ProjectResource), String)
+- uid: Hexalith.Infrastructure.AspireService.Hosting.Helpers.HexalithDistributedApplicationHelper.GetAppId*
+  name: GetAppId
+  href: api/Hexalith.Infrastructure.AspireService.Hosting.Helpers.HexalithDistributedApplicationHelper.html#Hexalith_Infrastructure_AspireService_Hosting_Helpers_HexalithDistributedApplicationHelper_GetAppId_
+  commentId: Overload:Hexalith.Infrastructure.AspireService.Hosting.Helpers.HexalithDistributedApplicationHelper.GetAppId
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.AspireService.Hosting.Helpers.HexalithDistributedApplicationHelper.GetAppId
+  nameWithType: HexalithDistributedApplicationHelper.GetAppId
 - uid: Hexalith.Infrastructure.AspireService.Hosting.Helpers.HexalithDistributedApplicationHelper.GetApplicationComponentPath(Aspire.Hosting.IDistributedApplicationBuilder,System.String)
   name: GetApplicationComponentPath(IDistributedApplicationBuilder, String)
   href: api/Hexalith.Infrastructure.AspireService.Hosting.Helpers.HexalithDistributedApplicationHelper.html#Hexalith_Infrastructure_AspireService_Hosting_Helpers_HexalithDistributedApplicationHelper_GetApplicationComponentPath_Aspire_Hosting_IDistributedApplicationBuilder_System_String_
@@ -15387,6 +15417,24 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.AzureActiveDirectory.IApplicationSecurityContext.AcquireTokenAsync
   nameWithType: IApplicationSecurityContext.AcquireTokenAsync
+- uid: Hexalith.Infrastructure.ClientApp
+  name: Hexalith.Infrastructure.ClientApp
+  href: api/Hexalith.Infrastructure.ClientApp.html
+  commentId: N:Hexalith.Infrastructure.ClientApp
+  fullName: Hexalith.Infrastructure.ClientApp
+  nameWithType: Hexalith.Infrastructure.ClientApp
+- uid: Hexalith.Infrastructure.ClientApp.ClientConstants
+  name: ClientConstants
+  href: api/Hexalith.Infrastructure.ClientApp.ClientConstants.html
+  commentId: T:Hexalith.Infrastructure.ClientApp.ClientConstants
+  fullName: Hexalith.Infrastructure.ClientApp.ClientConstants
+  nameWithType: ClientConstants
+- uid: Hexalith.Infrastructure.ClientApp.ClientConstants.FrontApiName
+  name: FrontApiName
+  href: api/Hexalith.Infrastructure.ClientApp.ClientConstants.html#Hexalith_Infrastructure_ClientApp_ClientConstants_FrontApiName
+  commentId: F:Hexalith.Infrastructure.ClientApp.ClientConstants.FrontApiName
+  fullName: Hexalith.Infrastructure.ClientApp.ClientConstants.FrontApiName
+  nameWithType: ClientConstants.FrontApiName
 - uid: Hexalith.Infrastructure.ClientApp.Helpers
   name: Hexalith.Infrastructure.ClientApp.Helpers
   href: api/Hexalith.Infrastructure.ClientApp.Helpers.html
@@ -15523,6 +15571,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Infrastructure.ClientAppOnWasm.Helpers.WebAssemblyClientHelper.CreateHexalithWasmClient
   nameWithType: WebAssemblyClientHelper.CreateHexalithWasmClient
+- uid: Hexalith.Infrastructure.ClientAppOnWasm.Helpers.WebAssemblyClientHelper.UseHexalithUserDefinedCultureAsync(Microsoft.AspNetCore.Components.WebAssembly.Hosting.WebAssemblyHost)
+  name: UseHexalithUserDefinedCultureAsync(WebAssemblyHost)
+  href: api/Hexalith.Infrastructure.ClientAppOnWasm.Helpers.WebAssemblyClientHelper.html#Hexalith_Infrastructure_ClientAppOnWasm_Helpers_WebAssemblyClientHelper_UseHexalithUserDefinedCultureAsync_Microsoft_AspNetCore_Components_WebAssembly_Hosting_WebAssemblyHost_
+  commentId: M:Hexalith.Infrastructure.ClientAppOnWasm.Helpers.WebAssemblyClientHelper.UseHexalithUserDefinedCultureAsync(Microsoft.AspNetCore.Components.WebAssembly.Hosting.WebAssemblyHost)
+  fullName: Hexalith.Infrastructure.ClientAppOnWasm.Helpers.WebAssemblyClientHelper.UseHexalithUserDefinedCultureAsync(Microsoft.AspNetCore.Components.WebAssembly.Hosting.WebAssemblyHost)
+  nameWithType: WebAssemblyClientHelper.UseHexalithUserDefinedCultureAsync(WebAssemblyHost)
+- uid: Hexalith.Infrastructure.ClientAppOnWasm.Helpers.WebAssemblyClientHelper.UseHexalithUserDefinedCultureAsync*
+  name: UseHexalithUserDefinedCultureAsync
+  href: api/Hexalith.Infrastructure.ClientAppOnWasm.Helpers.WebAssemblyClientHelper.html#Hexalith_Infrastructure_ClientAppOnWasm_Helpers_WebAssemblyClientHelper_UseHexalithUserDefinedCultureAsync_
+  commentId: Overload:Hexalith.Infrastructure.ClientAppOnWasm.Helpers.WebAssemblyClientHelper.UseHexalithUserDefinedCultureAsync
+  isSpec: "True"
+  fullName: Hexalith.Infrastructure.ClientAppOnWasm.Helpers.WebAssemblyClientHelper.UseHexalithUserDefinedCultureAsync
+  nameWithType: WebAssemblyClientHelper.UseHexalithUserDefinedCultureAsync
 - uid: Hexalith.Infrastructure.CosmosDb.Configurations
   name: Hexalith.Infrastructure.CosmosDb.Configurations
   href: api/Hexalith.Infrastructure.CosmosDb.Configurations.html
@@ -21070,24 +21131,6 @@ references:
   isSpec: "True"
   fullName: Hexalith.UI.Modules.Abstractions.ITheme.Version
   nameWithType: ITheme.Version
-- uid: HexalithApplication.Client
-  name: HexalithApplication.Client
-  href: api/HexalithApplication.Client.html
-  commentId: N:HexalithApplication.Client
-  fullName: HexalithApplication.Client
-  nameWithType: HexalithApplication.Client
-- uid: HexalithApplication.Client.ClientConstants
-  name: ClientConstants
-  href: api/HexalithApplication.Client.ClientConstants.html
-  commentId: T:HexalithApplication.Client.ClientConstants
-  fullName: HexalithApplication.Client.ClientConstants
-  nameWithType: ClientConstants
-- uid: HexalithApplication.Client.ClientConstants.FrontApiName
-  name: FrontApiName
-  href: api/HexalithApplication.Client.ClientConstants.html#HexalithApplication_Client_ClientConstants_FrontApiName
-  commentId: F:HexalithApplication.Client.ClientConstants.FrontApiName
-  fullName: HexalithApplication.Client.ClientConstants.FrontApiName
-  nameWithType: ClientConstants.FrontApiName
 - uid: Projects
   name: Projects
   href: api/Projects.html

@@ -92,9 +92,6 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.CompanyEntityEvent.h
       <section><p>Class PartitionedEvent.
 Implements the <a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">BaseEvent</a>.</p>
 </section>
-      <h4><a class="xref" href="Hexalith.Domain.Events.PureEvent.html">PureEvent</a></h4>
-      <section><p>Base class for business events.</p>
-</section>
       <h4><a class="xref" href="Hexalith.Domain.Events.SnapshotEvent.html">SnapshotEvent</a></h4>
       <section><p>Represents a snapshot event in the domain.</p>
 </section>
@@ -118,6 +115,10 @@ Implements the <a class="xref" href="Hexalith.Domain.Events.SurveyEvent.html">Su
 </section>
     <h3 id="interfaces">Interfaces
   </h3>
+      <h4><a class="xref" href="Hexalith.Domain.Events.IBusinessEvent.html">IBusinessEvent</a></h4>
+      <section><p>Domain Event represents something significant that has happened within a specific Bounded Context.
+These events are named in the past tense to clearly indicate that they’ve already occurred.</p>
+</section>
       <h4><a class="xref" href="Hexalith.Domain.Events.IEvent.html">IEvent</a></h4>
       <section><p>Interface for all events.</p>
 </section>

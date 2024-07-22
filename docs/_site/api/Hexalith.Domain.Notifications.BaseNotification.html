@@ -89,7 +89,7 @@
     <h5>Implements</h5>
     <div><a class="xref" href="Hexalith.Extensions.Serialization.IPolymorphicSerializable.html">IPolymorphicSerializable</a></div>
     <div><a class="xref" href="Hexalith.Extensions.Reflections.IMappableType.html">IMappableType</a></div>
-    <div><a class="xref" href="Hexalith.Application.Notifications.INotification.html">INotification</a></div>
+    <div><a class="xref" href="Hexalith.Domain.Notifications.INotification.html">INotification</a></div>
     <div><a class="xref" href="Hexalith.Domain.Messages.IMessage.html">IMessage</a></div>
   </div>
   <div class="inheritedMembers">
@@ -167,7 +167,7 @@ public class BaseNotification : BaseMessage, IPolymorphicSerializable, IMappable
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Notifications_BaseNotification__ctor.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Notifications.BaseNotification.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L64">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L63">View Source</a>
   </span>
   <a id="Hexalith_Domain_Notifications_BaseNotification__ctor_" data-uid="Hexalith.Domain.Notifications.BaseNotification.#ctor*"></a>
   <h4 id="Hexalith_Domain_Notifications_BaseNotification__ctor" data-uid="Hexalith.Domain.Notifications.BaseNotification.#ctor">BaseNotification()</h4>
@@ -180,13 +180,13 @@ public class BaseNotification : BaseMessage, IPolymorphicSerializable, IMappable
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Notifications_BaseNotification__ctor_System_String_System_String_System_String_System_String_Hexalith_Application_Notifications_NotificationSeverity_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Notifications.BaseNotification.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CHexalith.Application.Notifications.NotificationSeverity%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Notifications_BaseNotification__ctor_System_String_System_String_System_String_System_String_Hexalith_Domain_Notifications_NotificationSeverity_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Notifications.BaseNotification.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CHexalith.Domain.Notifications.NotificationSeverity%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L44">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L43">View Source</a>
   </span>
   <a id="Hexalith_Domain_Notifications_BaseNotification__ctor_" data-uid="Hexalith.Domain.Notifications.BaseNotification.#ctor*"></a>
-  <h4 id="Hexalith_Domain_Notifications_BaseNotification__ctor_System_String_System_String_System_String_System_String_Hexalith_Application_Notifications_NotificationSeverity_System_String_" data-uid="Hexalith.Domain.Notifications.BaseNotification.#ctor(System.String,System.String,System.String,System.String,Hexalith.Application.Notifications.NotificationSeverity,System.String)">BaseNotification(String, String, String, String, NotificationSeverity, String)</h4>
+  <h4 id="Hexalith_Domain_Notifications_BaseNotification__ctor_System_String_System_String_System_String_System_String_Hexalith_Domain_Notifications_NotificationSeverity_System_String_" data-uid="Hexalith.Domain.Notifications.BaseNotification.#ctor(System.String,System.String,System.String,System.String,Hexalith.Domain.Notifications.NotificationSeverity,System.String)">BaseNotification(String, String, String, String, NotificationSeverity, String)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Domain.Notifications.BaseNotification.html">BaseNotification</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -230,7 +230,7 @@ public BaseNotification(string sourceAggregateName, string sourceAggregateId, st
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="Hexalith.Application.Notifications.NotificationSeverity.html">NotificationSeverity</a></td>
+        <td><a class="xref" href="Hexalith.Domain.Notifications.NotificationSeverity.html">NotificationSeverity</a></td>
         <td><span class="parametername">severity</span></td>
         <td><p>The severity of the notification.</p>
 </td>
@@ -250,7 +250,7 @@ public BaseNotification(string sourceAggregateName, string sourceAggregateId, st
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Notifications_BaseNotification_Message.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Notifications.BaseNotification.Message%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L80">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L79">View Source</a>
   </span>
   <a id="Hexalith_Domain_Notifications_BaseNotification_Message_" data-uid="Hexalith.Domain.Notifications.BaseNotification.Message*"></a>
   <h4 id="Hexalith_Domain_Notifications_BaseNotification_Message" data-uid="Hexalith.Domain.Notifications.BaseNotification.Message">Message</h4>
@@ -283,7 +283,7 @@ public string Message { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Notifications_BaseNotification_Severity.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Notifications.BaseNotification.Severity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L87">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L86">View Source</a>
   </span>
   <a id="Hexalith_Domain_Notifications_BaseNotification_Severity_" data-uid="Hexalith.Domain.Notifications.BaseNotification.Severity*"></a>
   <h4 id="Hexalith_Domain_Notifications_BaseNotification_Severity" data-uid="Hexalith.Domain.Notifications.BaseNotification.Severity">Severity</h4>
@@ -306,7 +306,7 @@ public NotificationSeverity Severity { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Hexalith.Application.Notifications.NotificationSeverity.html">NotificationSeverity</a></td>
+        <td><a class="xref" href="Hexalith.Domain.Notifications.NotificationSeverity.html">NotificationSeverity</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -316,7 +316,7 @@ public NotificationSeverity Severity { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Notifications_BaseNotification_SourceAggregateId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Notifications.BaseNotification.SourceAggregateId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L94">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L93">View Source</a>
   </span>
   <a id="Hexalith_Domain_Notifications_BaseNotification_SourceAggregateId_" data-uid="Hexalith.Domain.Notifications.BaseNotification.SourceAggregateId*"></a>
   <h4 id="Hexalith_Domain_Notifications_BaseNotification_SourceAggregateId" data-uid="Hexalith.Domain.Notifications.BaseNotification.SourceAggregateId">SourceAggregateId</h4>
@@ -349,7 +349,7 @@ public string SourceAggregateId { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Notifications_BaseNotification_SourceAggregateName.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Notifications.BaseNotification.SourceAggregateName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L101">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L100">View Source</a>
   </span>
   <a id="Hexalith_Domain_Notifications_BaseNotification_SourceAggregateName_" data-uid="Hexalith.Domain.Notifications.BaseNotification.SourceAggregateName*"></a>
   <h4 id="Hexalith_Domain_Notifications_BaseNotification_SourceAggregateName" data-uid="Hexalith.Domain.Notifications.BaseNotification.SourceAggregateName">SourceAggregateName</h4>
@@ -382,7 +382,7 @@ public string SourceAggregateName { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Notifications_BaseNotification_TechnicalDescription.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Notifications.BaseNotification.TechnicalDescription%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L108">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L107">View Source</a>
   </span>
   <a id="Hexalith_Domain_Notifications_BaseNotification_TechnicalDescription_" data-uid="Hexalith.Domain.Notifications.BaseNotification.TechnicalDescription*"></a>
   <h4 id="Hexalith_Domain_Notifications_BaseNotification_TechnicalDescription" data-uid="Hexalith.Domain.Notifications.BaseNotification.TechnicalDescription">TechnicalDescription</h4>
@@ -415,7 +415,7 @@ public string TechnicalDescription { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Notifications_BaseNotification_Title.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Notifications.BaseNotification.Title%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L115">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L114">View Source</a>
   </span>
   <a id="Hexalith_Domain_Notifications_BaseNotification_Title_" data-uid="Hexalith.Domain.Notifications.BaseNotification.Title*"></a>
   <h4 id="Hexalith_Domain_Notifications_BaseNotification_Title" data-uid="Hexalith.Domain.Notifications.BaseNotification.Title">Title</h4>
@@ -448,7 +448,7 @@ public string Title { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Notifications_BaseNotification_UndefinedAggregateId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Notifications.BaseNotification.UndefinedAggregateId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L70">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L69">View Source</a>
   </span>
   <a id="Hexalith_Domain_Notifications_BaseNotification_UndefinedAggregateId_" data-uid="Hexalith.Domain.Notifications.BaseNotification.UndefinedAggregateId*"></a>
   <h4 id="Hexalith_Domain_Notifications_BaseNotification_UndefinedAggregateId" data-uid="Hexalith.Domain.Notifications.BaseNotification.UndefinedAggregateId">UndefinedAggregateId</h4>
@@ -479,7 +479,7 @@ public string Title { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Notifications_BaseNotification_UndefinedAggregateName.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Notifications.BaseNotification.UndefinedAggregateName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L75">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L74">View Source</a>
   </span>
   <a id="Hexalith_Domain_Notifications_BaseNotification_UndefinedAggregateName_" data-uid="Hexalith.Domain.Notifications.BaseNotification.UndefinedAggregateName*"></a>
   <h4 id="Hexalith_Domain_Notifications_BaseNotification_UndefinedAggregateName" data-uid="Hexalith.Domain.Notifications.BaseNotification.UndefinedAggregateName">UndefinedAggregateName</h4>
@@ -509,13 +509,13 @@ public string Title { get; set; }</code></pre>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Notifications_BaseNotification_Create_Hexalith_Domain_Aggregates_IAggregate_System_String_System_String_Hexalith_Application_Notifications_NotificationSeverity_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Notifications.BaseNotification.Create(Hexalith.Domain.Aggregates.IAggregate%2CSystem.String%2CSystem.String%2CHexalith.Application.Notifications.NotificationSeverity%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Notifications_BaseNotification_Create_Hexalith_Domain_Aggregates_IAggregate_System_String_System_String_Hexalith_Domain_Notifications_NotificationSeverity_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Notifications.BaseNotification.Create(Hexalith.Domain.Aggregates.IAggregate%2CSystem.String%2CSystem.String%2CHexalith.Domain.Notifications.NotificationSeverity%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L128">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L127">View Source</a>
   </span>
   <a id="Hexalith_Domain_Notifications_BaseNotification_Create_" data-uid="Hexalith.Domain.Notifications.BaseNotification.Create*"></a>
-  <h4 id="Hexalith_Domain_Notifications_BaseNotification_Create_Hexalith_Domain_Aggregates_IAggregate_System_String_System_String_Hexalith_Application_Notifications_NotificationSeverity_System_String_" data-uid="Hexalith.Domain.Notifications.BaseNotification.Create(Hexalith.Domain.Aggregates.IAggregate,System.String,System.String,Hexalith.Application.Notifications.NotificationSeverity,System.String)">Create(IAggregate, String, String, NotificationSeverity, String)</h4>
+  <h4 id="Hexalith_Domain_Notifications_BaseNotification_Create_Hexalith_Domain_Aggregates_IAggregate_System_String_System_String_Hexalith_Domain_Notifications_NotificationSeverity_System_String_" data-uid="Hexalith.Domain.Notifications.BaseNotification.Create(Hexalith.Domain.Aggregates.IAggregate,System.String,System.String,Hexalith.Domain.Notifications.NotificationSeverity,System.String)">Create(IAggregate, String, String, NotificationSeverity, String)</h4>
   <div class="markdown level1 summary"><p>Creates a notification message for the specified aggregate.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -552,7 +552,7 @@ public string Title { get; set; }</code></pre>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="Hexalith.Application.Notifications.NotificationSeverity.html">NotificationSeverity</a></td>
+        <td><a class="xref" href="Hexalith.Domain.Notifications.NotificationSeverity.html">NotificationSeverity</a></td>
         <td><span class="parametername">severity</span></td>
         <td><p>The severity.</p>
 </td>
@@ -586,7 +586,7 @@ public string Title { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Notifications_BaseNotification_CreateError_Hexalith_Domain_Aggregates_IAggregate_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Notifications.BaseNotification.CreateError(Hexalith.Domain.Aggregates.IAggregate%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L152">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L151">View Source</a>
   </span>
   <a id="Hexalith_Domain_Notifications_BaseNotification_CreateError_" data-uid="Hexalith.Domain.Notifications.BaseNotification.CreateError*"></a>
   <h4 id="Hexalith_Domain_Notifications_BaseNotification_CreateError_Hexalith_Domain_Aggregates_IAggregate_System_String_System_String_System_String_" data-uid="Hexalith.Domain.Notifications.BaseNotification.CreateError(Hexalith.Domain.Aggregates.IAggregate,System.String,System.String,System.String)">CreateError(IAggregate, String, String, String)</h4>
@@ -654,7 +654,7 @@ public string Title { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Notifications_BaseNotification_CreateInformation_Hexalith_Domain_Aggregates_IAggregate_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Notifications.BaseNotification.CreateInformation(Hexalith.Domain.Aggregates.IAggregate%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L174">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L173">View Source</a>
   </span>
   <a id="Hexalith_Domain_Notifications_BaseNotification_CreateInformation_" data-uid="Hexalith.Domain.Notifications.BaseNotification.CreateInformation*"></a>
   <h4 id="Hexalith_Domain_Notifications_BaseNotification_CreateInformation_Hexalith_Domain_Aggregates_IAggregate_System_String_System_String_System_String_" data-uid="Hexalith.Domain.Notifications.BaseNotification.CreateInformation(Hexalith.Domain.Aggregates.IAggregate,System.String,System.String,System.String)">CreateInformation(IAggregate, String, String, String)</h4>
@@ -722,7 +722,7 @@ public string Title { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Notifications_BaseNotification_CreateWarning_Hexalith_Domain_Aggregates_IAggregate_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Notifications.BaseNotification.CreateWarning(Hexalith.Domain.Aggregates.IAggregate%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L196">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L195">View Source</a>
   </span>
   <a id="Hexalith_Domain_Notifications_BaseNotification_CreateWarning_" data-uid="Hexalith.Domain.Notifications.BaseNotification.CreateWarning*"></a>
   <h4 id="Hexalith_Domain_Notifications_BaseNotification_CreateWarning_Hexalith_Domain_Aggregates_IAggregate_System_String_System_String_System_String_" data-uid="Hexalith.Domain.Notifications.BaseNotification.CreateWarning(Hexalith.Domain.Aggregates.IAggregate,System.String,System.String,System.String)">CreateWarning(IAggregate, String, String, String)</h4>
@@ -790,7 +790,7 @@ public string Title { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Notifications_BaseNotification_DefaultAggregateId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Notifications.BaseNotification.DefaultAggregateId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L211">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L210">View Source</a>
   </span>
   <a id="Hexalith_Domain_Notifications_BaseNotification_DefaultAggregateId_" data-uid="Hexalith.Domain.Notifications.BaseNotification.DefaultAggregateId*"></a>
   <h4 id="Hexalith_Domain_Notifications_BaseNotification_DefaultAggregateId" data-uid="Hexalith.Domain.Notifications.BaseNotification.DefaultAggregateId">DefaultAggregateId()</h4>
@@ -824,7 +824,7 @@ public string Title { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Notifications_BaseNotification_DefaultAggregateName.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Notifications.BaseNotification.DefaultAggregateName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L215">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L214">View Source</a>
   </span>
   <a id="Hexalith_Domain_Notifications_BaseNotification_DefaultAggregateName_" data-uid="Hexalith.Domain.Notifications.BaseNotification.DefaultAggregateName*"></a>
   <h4 id="Hexalith_Domain_Notifications_BaseNotification_DefaultAggregateName" data-uid="Hexalith.Domain.Notifications.BaseNotification.DefaultAggregateName">DefaultAggregateName()</h4>
@@ -861,7 +861,7 @@ public string Title { get; set; }</code></pre>
       <a class="xref" href="Hexalith.Extensions.Reflections.IMappableType.html">IMappableType</a>
   </div>
   <div>
-      <a class="xref" href="Hexalith.Application.Notifications.INotification.html">INotification</a>
+      <a class="xref" href="Hexalith.Domain.Notifications.INotification.html">INotification</a>
   </div>
   <div>
       <a class="xref" href="Hexalith.Domain.Messages.IMessage.html">IMessage</a>
@@ -884,7 +884,7 @@ public string Title { get; set; }</code></pre>
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_Notifications_BaseNotification.md&amp;value=---%0Auid%3A%20Hexalith.Domain.Notifications.BaseNotification%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L31" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Abstractions/Notifications/BaseNotification.cs/#L30" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
