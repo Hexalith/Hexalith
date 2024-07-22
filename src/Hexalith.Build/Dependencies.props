@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<!-- Detect if the solution is opened in VS to add local repository for packages -->
 		<AdaptiveCardsVersion>3.1.0</AdaptiveCardsVersion>
-		<AdaptiveCardsTemplatingVersion>1.5.0</AdaptiveCardsTemplatingVersion>
+		<AdaptiveCardsTemplatingVersion>2.0.2</AdaptiveCardsTemplatingVersion>
 		<AspireVersion>8.*</AspireVersion>
 		<AzureIdentityVersion>1.10.4</AzureIdentityVersion>
 		<AzureBicepCoreVersion>0.26.54</AzureBicepCoreVersion>
@@ -24,18 +24,18 @@
 		<FluentValidationAspNetCoreVersion>11.3.0</FluentValidationAspNetCoreVersion>
 		<GitHubActionsTestLoggerVersion>2.4.1</GitHubActionsTestLoggerVersion>
 		<GoogleApiVersion>5.4.2</GoogleApiVersion>
-		<GrpcVersion>2.63.0</GrpcVersion>
+		<GrpcVersion>2.64.0</GrpcVersion>
 		<ISO3166Version>1.0.4</ISO3166Version>
 		<HumanizerVersion>2.14.1</HumanizerVersion>
-		<MailKitVersion>4.7.0</MailKitVersion>
+		<MailKitVersion>4.7.1.1</MailKitVersion>
 		<MicrosoftAzureCosmosVersion>3.41.0</MicrosoftAzureCosmosVersion>
 		<MicrosoftBotBuilderVersion>4.22.7</MicrosoftBotBuilderVersion>
 		<MicrosoftFluentUIComponentsVersion>4.*</MicrosoftFluentUIComponentsVersion>
 		<MicrosoftIdentityClientVersion>4.61.3</MicrosoftIdentityClientVersion>
-		<MicrosoftIdentityWebVersion>2.18.1</MicrosoftIdentityWebVersion>
+		<MicrosoftIdentityWebVersion>3.0.0</MicrosoftIdentityWebVersion>
 		<MicrosoftNETTestSdkVersion>17.10.0</MicrosoftNETTestSdkVersion>
-		<MicrosoftSemanticKernelVersion>1.15.0</MicrosoftSemanticKernelVersion>
-		<MicrosoftTeamsFxVersion>2.4.1</MicrosoftTeamsFxVersion>
+		<MicrosoftSemanticKernelVersion>1.16.0</MicrosoftSemanticKernelVersion>
+		<MicrosoftTeamsFxVersion>2.5.0</MicrosoftTeamsFxVersion>
 		<MicrosoftTypescriptMSBuild>5.5.3</MicrosoftTypescriptMSBuild>
 		<MicrosoftGraphVersion>5.12.*</MicrosoftGraphVersion>
 		<MicrosoftVisualStudioThreadingAnalyzersVersion>17.10.48</MicrosoftVisualStudioThreadingAnalyzersVersion>
@@ -48,17 +48,18 @@
 		<RadzenBlazorVersion>4.23.4</RadzenBlazorVersion>
 		<SendGridExtensionsDependencyInjectionVersion>1.0.1</SendGridExtensionsDependencyInjectionVersion>
 		<SerilogVersion>8.0.*</SerilogVersion>
-		<SerilogEnrichersEnvironmentVersion>3.0.1</SerilogEnrichersEnvironmentVersion>
-		<SerilogEnrichersProcessVersion>3.0.0</SerilogEnrichersProcessVersion>
+		<SerilogEnrichersEnvironmentVersion>3.0.*</SerilogEnrichersEnvironmentVersion>
+		<SerilogEnrichersProcessVersion>3.0.*</SerilogEnrichersProcessVersion>
 		<SerilogEnrichersThreadVersion>4.0.0</SerilogEnrichersThreadVersion>
-		<SerilogFormattingCompactVersion>3.0.0</SerilogFormattingCompactVersion>
+		<SerilogFormattingCompactVersion>3.0.*</SerilogFormattingCompactVersion>
 		<SerilogSinksFileVersion>6.0.0</SerilogSinksFileVersion>
 		<SerilogSinksConsoleVersion>6.0.0</SerilogSinksConsoleVersion>
-		<SerilogSinksDebugVersion>3.0.0</SerilogSinksDebugVersion>
+		<SerilogSinksBrowserVersion>8.0.0</SerilogSinksBrowserVersion>
+		<SerilogSinksDebugVersion>3.0.*</SerilogSinksDebugVersion>
 		<StyleCopAnalyzersVersion>1.2.0-beta.556</StyleCopAnalyzersVersion>
 		<SwashbuckleAspNetCoreVersion>6.6.2</SwashbuckleAspNetCoreVersion>
-		<XUnitRunnerVisualStudioVersion>2.8.1</XUnitRunnerVisualStudioVersion>
-		<XUnitVersion>2.8.1</XUnitVersion>
+		<XUnitRunnerVisualStudioVersion>2.8.2</XUnitRunnerVisualStudioVersion>
+		<XUnitVersion>2.9.0</XUnitVersion>
 		<DaprVersion>1.13.*</DaprVersion>
 	</PropertyGroup>
 </Project>

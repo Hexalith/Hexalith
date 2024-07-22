@@ -11,7 +11,8 @@
 		<PackageReference Include="Microsoft.Identity.Client" Version="$(MicrosoftIdentityClientVersion)" />
 		<PackageReference Include="AdaptiveCards" Version="$(AdaptiveCardsVersion)" />
 		<PackageReference Include="AdaptiveCards.Templating" Version="$(AdaptiveCardsTemplatingVersion)" />
-		<PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="4.21.1" />
+		<PackageReference Include="System.Text.Json" Version="$(MicrosoftExtensionsPackagesVersion)" />
+		<PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="$(MicrosoftBotBuilderVersion)" />
 		<!-- Use Bot 4.21.1 for TeamsFx 2.4.1 -->
 		<PackageReference Include="Microsoft.TeamsFx" Version="$(MicrosoftTeamsFxVersion)" />
 	</ItemGroup>
