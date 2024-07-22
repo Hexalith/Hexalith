@@ -75,4 +75,9 @@ public static class ApplicationConstants
     /// Gets the require sessions.
     /// </summary>
     public static string TopicRequireSessions => "requireSessions=true";
+
+    /// <summary>
+    /// Gets the user defined culture property name.
+    /// </summary>
+    public static string UserDefinedCulturePropertyName => "hexalithCulture";
 }
