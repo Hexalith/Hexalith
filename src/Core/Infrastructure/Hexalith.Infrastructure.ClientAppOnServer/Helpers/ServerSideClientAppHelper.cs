@@ -72,10 +72,7 @@ public static class ServerSideClientAppHelper
 
         startupLogger.Information("Configuring {AppName} ...", applicationName);
         builder.Services
-
-            // .AddHexalithServerServices(builder.Configuration)
-
-            // .AddAuthenticationUI(builder.Configuration)
+            .AddHexalithServerSideClientApp(builder.Configuration)
             .AddEndpointsApiExplorer()
             .AddSwaggerGen(c => c.SwaggerDoc("v1", new() { Title = applicationName, Version = version, }))
             .AddDaprBuses(builder.Configuration)
@@ -90,7 +87,6 @@ public static class ServerSideClientAppHelper
             .AddDapr();
 
         _ = builder.Services
-            .AddHexalithServerSideClientApp(builder.Configuration)
             .AddRazorComponents()
             .AddInteractiveServerComponents()
             .AddInteractiveWebAssemblyComponents();
