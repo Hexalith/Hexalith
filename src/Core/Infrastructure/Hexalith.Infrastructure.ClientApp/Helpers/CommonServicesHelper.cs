@@ -32,7 +32,7 @@ public static class CommonServicesHelper
     {
         return services
             .AddMemoryCache()
-            .AddLocalization(options => options.ResourcesPath = "Resources")
+            .AddLocalization()
             .AddCascadingAuthenticationState()
             .AddOrganizations(configuration)
             .AddSendGridEmail(configuration)
