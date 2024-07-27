@@ -24,14 +24,21 @@ public static class IconHelper
     /// <returns>The converted <see cref="Icon"/>.</returns>
     public static Icon? ToFluentIcon(this IconInformation? icon)
     {
-        return icon == null
-            ? null
-            : (Icon)Icons.GetInstance(new IconInfo
+        if (icon == null)
+        {
+            return null;
+        }
+        return icon.Source switch
+        {
+            IconSource.Fluent => Icons.GetInstance(new IconInfo
             {
                 Name = icon.Name,
                 Size = GetIconSize(icon.Size),
                 Variant = GetIconStyle(icon.Style),
-            });
+            }),
+            IconSource.FontAwesome => FontAwesomeIcons.GetIcon(icon),
+            _ => throw new ArgumentOutOfRangeException(nameof(icon), icon.Source, $"Invalid icon source : {icon.Source}"),
+        };
     }
 
     /// <summary>
@@ -39,7 +46,7 @@ public static class IconHelper
     /// </summary>
     /// <param name="size">The size of the icon.</param>
     /// <returns>The corresponding <see cref="IconSize"/>.</returns>
-    private static IconSize GetIconSize(int size)
+    public static IconSize GetIconSize(int size)
     {
         return size < (int)IconSize.Size12
             ? IconSize.Size10

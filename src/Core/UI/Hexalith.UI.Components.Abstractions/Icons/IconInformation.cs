@@ -14,10 +14,14 @@ using System.Runtime.Serialization;
 /// <param name="Name">The icon name.</param>
 /// <param name="Size">The icon size.</param>
 /// <param name="Style">The icon style.</param>
+/// <param name="Source">The icon source.</param>
+/// <param name="Aspect">The icon aspect.</param>
 [DataContract]
 public record IconInformation(
     [property: DataMember] string Name,
     [property: DataMember] int Size,
-    [property: DataMember] IconStyle Style)
+    [property: DataMember] IconStyle Style,
+    [property: DataMember] IconSource Source,
+    [property: DataMember] IconAspect Aspect)
 {
 }

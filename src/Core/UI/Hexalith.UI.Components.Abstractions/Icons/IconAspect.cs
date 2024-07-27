@@ -1,4 +1,4 @@
-﻿// <copyright file="IconStyle.cs" company="Fiveforty SAS Paris France">
+﻿// <copyright file="IconAspect.cs" company="Fiveforty SAS Paris France">
 //     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
 //     Licensed under the MIT license.
 //     See LICENSE file in the project root for full license information.
@@ -7,27 +7,27 @@
 namespace Hexalith.UI.Components.Icons;
 
 /// <summary>
-/// Represents the style of an icon.
+/// Represents the different aspects of an icon.
 /// </summary>
-public enum IconStyle
+public enum IconAspect
 {
     /// <summary>
-    /// The icon is filled.
+    /// The icon is classic.
     /// </summary>
-    Filled,
+    Classic,
 
     /// <summary>
-    /// The icon is regular.
+    /// The icon is duotone.
     /// </summary>
-    Regular,
+    Duotone,
 
     /// <summary>
-    /// The icon is light.
+    /// The icon is sharp.
     /// </summary>
-    Light,
+    Sharp,
 
     /// <summary>
-    /// The icon is thin.
+    /// The icon is sharp duotone.
     /// </summary>
-    Thin,
+    SharpDuotone,
 }
