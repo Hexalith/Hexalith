@@ -8,34 +8,29 @@ public static class FontAwesomeIcons
 {
     public static Icon GetIcon(IconInformation info)
     {
-        return new Icon(
+        ArgumentNullException.ThrowIfNull(info);
+        string content = $"""
+            <svg class="fluent-nav-icon" style="width: {info.Size}px; fill: var(--accent-fill-rest);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <use href="./_content/{info.IconLibraryName}/fontawesome/sprites/{GetStylePath(info.Style)}.svg#{info.Name.ToLowerInvariant()}"></use>
+            </svg>
+            """;
+        Icon icon = new Icon(
             info.Name,
             info.Style switch { IconStyle.Regular => IconVariant.Regular, IconStyle.Filled => IconVariant.Filled, IconStyle.Light => IconVariant.Light, IconStyle.Thin => IconVariant.Light, _ => IconVariant.Regular },
             IconHelper.GetIconSize(info.Size),
-            $"<span class=\"{GetAspectClassName(info.Aspect)}{GetStyleClassName(info.Style)}fa-{info.Name.ToLowerInvariant()} {GetSizeClassName(info.Size)}\"></span>"
-            );
+            content);
+        return icon;
     }
 
-    private static string GetStyleClassName(IconStyle style)
+    private static string GetStylePath(IconStyle style)
     {
         return style switch
         {
-            IconStyle.Regular => "fa-regular",
-            IconStyle.Filled => "fa-solid",
-            IconStyle.Light => "fa-light",
-            IconStyle.Thin => "fa-thin",
-            _ => "fa-regular",
-        };
-    }
-
-    private static string GetAspectClassName(IconAspect aspect)
-    {
-        return aspect switch
-        {
-            IconAspect.Duotone => "fa-duotone ",
-            IconAspect.Sharp => "fa-sharp ",
-            IconAspect.SharpDuotone => "fa-sharp-duotone ",
-            _ => string.Empty,
+            IconStyle.Regular => "regular",
+            IconStyle.Filled => "solid",
+            IconStyle.Light => "light",
+            IconStyle.Thin => "thin",
+            _ => throw new ArgumentOutOfRangeException(nameof(style), style, "Unsupported style for Fontawesome icons."),
         };
     }
 

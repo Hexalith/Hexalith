@@ -16,12 +16,14 @@ using System.Runtime.Serialization;
 /// <param name="Style">The icon style.</param>
 /// <param name="Source">The icon source.</param>
 /// <param name="Aspect">The icon aspect.</param>
+/// <param name="IconLibraryName">The razor component namespace of the icon library.</param>
 [DataContract]
 public record IconInformation(
     [property: DataMember] string Name,
     [property: DataMember] int Size,
     [property: DataMember] IconStyle Style,
     [property: DataMember] IconSource Source,
-    [property: DataMember] IconAspect Aspect)
+    [property: DataMember] string? IconLibraryName
+    )
 {
 }
