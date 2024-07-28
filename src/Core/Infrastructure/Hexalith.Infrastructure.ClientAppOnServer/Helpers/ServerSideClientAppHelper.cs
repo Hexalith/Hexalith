@@ -159,10 +159,6 @@ public static class ServerSideClientAppHelper
             .UseSerilogRequestLogging()
             .UseCloudEvents();
 
-        _ = app.MapControllers();
-
-        _ = app.MapSubscribeHandler();
-
         if (!app.Environment.IsProduction())
         {
             app
@@ -179,14 +175,16 @@ public static class ServerSideClientAppHelper
 
         _ = app
             .UseStaticFiles()
-            .UseSwagger()
-            .UseSwaggerUI()
             .UseRouting()
+            .UseRequestLocalization()
             .UseAuthentication()
             .UseAuthorization()
+            .UseSwagger()
+            .UseSwaggerUI()
             .UseSession()
-            .UseAntiforgery()
-            .UseRequestLocalization();
+            .UseAntiforgery();
+        _ = app.MapControllers();
+        _ = app.MapSubscribeHandler();
         _ = app
             .MapRazorComponents<TApp>()
             .AddInteractiveServerRenderMode()
