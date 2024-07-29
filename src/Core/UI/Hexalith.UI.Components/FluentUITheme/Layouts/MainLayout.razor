@@ -30,28 +30,24 @@
 		</Body>
 		<NavMenuContent>
 			@{
-				int menuItemId = 0;
 				foreach (MenuItemInformation menuItem in MenuItems)
 				{
-					menuItemId++;
 					if (menuItem.SubItems.Any())
 					{
 						<FluentNavGroup Title="@menuItem.Name"
 										Icon="@menuItem.Icon.ToFluentIcon()"
 										IconColor="Color.Accent"
-										@bind-Expanded="Expanded[menuItemId]">
+										@bind-Expanded="Expanded[GetMenuItemId(menuItem)]">
 							@foreach (var subItem in menuItem.SubItems)
 							{
-								menuItemId++;
 								if (subItem.SubItems.Any())
 								{
 									<FluentNavGroup Title="@subItem.Name"
 													Icon="@subItem.Icon.ToFluentIcon()"
 													IconColor="Color.Accent"
-													@bind-Expanded="Expanded[menuItemId]">
+													@bind-Expanded="Expanded[GetMenuItemId(subItem)]">
 										@foreach (var subSubItem in subItem.SubItems)
 										{
-											menuItemId++;
 											<FluentNavLink Icon="@subSubItem.Icon.ToFluentIcon()" Href="@subSubItem.Path">@subSubItem.Name</FluentNavLink>
 											if (subSubItem.DividerAfter)
 											{
@@ -119,4 +115,18 @@
 		}
 	}
 	private ExpandedMenuItems Expanded = new();
+
+	private int GetMenuItemId(MenuItemInformation menuItem)
+	{
+		int index = 0;
+		foreach (MenuItemInformation mi in MenuItems)
+		{
+			(bool found, index) = mi.GetMenuItemIndex(index, menuItem);
+			if (found)
+			{
+				return index;
+			}
+		}
+		throw new InvalidOperationException("MenuItem not found");
+	}
 }
