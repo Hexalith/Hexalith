@@ -12,7 +12,7 @@ using System.Runtime.Serialization;
 using Hexalith.UI.Components.Icons;
 
 /// <summary>
-/// Reprsents the information of a menu item.
+/// Represents the information of a menu item.
 /// </summary>
 /// <param name="Name">The menu item name.</param>
 /// <param name="Path">The url path.</param>
@@ -29,4 +29,29 @@ public record MenuItemInformation(
     [property: DataMember] int OrderWeigth,
     [property: DataMember] IEnumerable<MenuItemInformation> SubItems)
 {
+    /// <summary>
+    /// Finds the index of a menu item in the sub items list.
+    /// </summary>
+    /// <param name="start">The starting index.</param>
+    /// <param name="menuItem">The menu item to find.</param>
+    /// <returns>A tuple indicating whether the menu item was found and the last index.</returns>
+    public (bool Found, int Last) GetMenuItemIndex(int start, MenuItemInformation menuItem)
+    {
+        start++;
+        if (ReferenceEquals(menuItem, this))
+        {
+            return (true, start);
+        }
+
+        foreach (MenuItemInformation subItem in SubItems)
+        {
+            (bool found, start) = GetMenuItemIndex(start, menuItem);
+            if (found)
+            {
+                return (true, start);
+            }
+        }
+
+        return (false, start);
+    }
 }

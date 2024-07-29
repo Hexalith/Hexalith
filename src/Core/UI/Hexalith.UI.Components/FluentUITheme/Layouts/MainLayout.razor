@@ -29,39 +29,64 @@
 			@Body
 		</Body>
 		<NavMenuContent>
-			@foreach (MenuItemInformation menuItem in MenuItems)
-			{
-				if (menuItem.SubItems.Any())
+			@{
+				int menuItemId = 0;
+				foreach (MenuItemInformation menuItem in MenuItems)
 				{
-					<FluentNavGroup Expanded="true"
-									Title="@menuItem.Name"
-									Icon="@menuItem.Icon.ToFluentIcon()"
-									IconColor="Color.Accent">
-						@foreach (var subItem in menuItem.SubItems)
-						{
-							<FluentNavLink Icon="@subItem.Icon.ToFluentIcon()" Href="@subItem.Path">@subItem.Name</FluentNavLink>
-							if (subItem.DividerAfter)
-							{
-								<FluentDivider />
-							}
-						}
-					</FluentNavGroup>
-				}
-				else
-				{
-					<FluentNavLink Icon="@menuItem.Icon.ToFluentIcon()" Href="@menuItem.Path">@menuItem.Name</FluentNavLink>
-					if (menuItem.DividerAfter)
+					menuItemId++;
+					if (menuItem.SubItems.Any())
 					{
-						<FluentDivider />
+						<FluentNavGroup Title="@menuItem.Name"
+										Icon="@menuItem.Icon.ToFluentIcon()"
+										IconColor="Color.Accent"
+										@bind-Expanded="Expanded[menuItemId]">
+							@foreach (var subItem in menuItem.SubItems)
+							{
+								menuItemId++;
+								if (subItem.SubItems.Any())
+								{
+									<FluentNavGroup Title="@subItem.Name"
+													Icon="@subItem.Icon.ToFluentIcon()"
+													IconColor="Color.Accent"
+													@bind-Expanded="Expanded[menuItemId]">
+										@foreach (var subSubItem in subItem.SubItems)
+										{
+											menuItemId++;
+											<FluentNavLink Icon="@subSubItem.Icon.ToFluentIcon()" Href="@subSubItem.Path">@subSubItem.Name</FluentNavLink>
+											if (subSubItem.DividerAfter)
+											{
+												<FluentDivider />
+											}
+										}
+									</FluentNavGroup>
+								}
+								else
+								{
+									<FluentNavLink Icon="@subItem.Icon.ToFluentIcon()" Href="@subItem.Path">@subItem.Name</FluentNavLink>
+									if (subItem.DividerAfter)
+									{
+										<FluentDivider />
+									}
+								}
+							}
+						</FluentNavGroup>
+					}
+					else
+					{
+						<FluentNavLink Icon="@menuItem.Icon.ToFluentIcon()" Href="@menuItem.Path">@menuItem.Name</FluentNavLink>
+						if (menuItem.DividerAfter)
+						{
+							<FluentDivider />
+						}
 					}
 				}
 			}
 		</NavMenuContent>
 	</FluentMainLayout>
-@* 	<FluentFooter>
-		<SectionOutlet SectionName="ApplicationFooterContent" />
+	@* 	<FluentFooter>
+	<SectionOutlet SectionName="ApplicationFooterContent" />
 	</FluentFooter>
- *@
+	*@
 </FluentDesignSystemProvider>
 <div id="blazor-error-ui">
 	An unhandled error has occurred.
@@ -70,4 +95,28 @@
 </div>
 
 @code {
+	class ExpandedMenuItems
+	{
+		// Dictionary of all expanded item states
+		private Dictionary<int, bool> Data = [];
+
+		// Define the indexer to allow client code to use [] notation.
+		public bool this[int i]
+		{
+			get
+			{
+				if (Data.TryGetValue(i, out bool expanded))
+					return expanded;
+				return false;
+			}
+			set
+			{
+				if (!Data.TryAdd(i, value))
+				{
+					Data[i] = value;
+				}
+			}
+		}
+	}
+	private ExpandedMenuItems Expanded = new();
 }
