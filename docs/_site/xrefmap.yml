@@ -20282,6 +20282,19 @@ references:
   commentId: T:Hexalith.UI.Components.Helpers.IconHelper
   fullName: Hexalith.UI.Components.Helpers.IconHelper
   nameWithType: IconHelper
+- uid: Hexalith.UI.Components.Helpers.IconHelper.GetIconSize(System.Int32)
+  name: GetIconSize(Int32)
+  href: api/Hexalith.UI.Components.Helpers.IconHelper.html#Hexalith_UI_Components_Helpers_IconHelper_GetIconSize_System_Int32_
+  commentId: M:Hexalith.UI.Components.Helpers.IconHelper.GetIconSize(System.Int32)
+  fullName: Hexalith.UI.Components.Helpers.IconHelper.GetIconSize(System.Int32)
+  nameWithType: IconHelper.GetIconSize(Int32)
+- uid: Hexalith.UI.Components.Helpers.IconHelper.GetIconSize*
+  name: GetIconSize
+  href: api/Hexalith.UI.Components.Helpers.IconHelper.html#Hexalith_UI_Components_Helpers_IconHelper_GetIconSize_
+  commentId: Overload:Hexalith.UI.Components.Helpers.IconHelper.GetIconSize
+  isSpec: "True"
+  fullName: Hexalith.UI.Components.Helpers.IconHelper.GetIconSize
+  nameWithType: IconHelper.GetIconSize
 - uid: Hexalith.UI.Components.Helpers.IconHelper.ToFluentIcon(Hexalith.UI.Components.Icons.IconInformation)
   name: ToFluentIcon(IconInformation)
   href: api/Hexalith.UI.Components.Helpers.IconHelper.html#Hexalith_UI_Components_Helpers_IconHelper_ToFluentIcon_Hexalith_UI_Components_Icons_IconInformation_
@@ -20301,18 +20314,37 @@ references:
   commentId: N:Hexalith.UI.Components.Icons
   fullName: Hexalith.UI.Components.Icons
   nameWithType: Hexalith.UI.Components.Icons
+- uid: Hexalith.UI.Components.Icons.FontAwesomeIcons
+  name: FontAwesomeIcons
+  href: api/Hexalith.UI.Components.Icons.FontAwesomeIcons.html
+  commentId: T:Hexalith.UI.Components.Icons.FontAwesomeIcons
+  fullName: Hexalith.UI.Components.Icons.FontAwesomeIcons
+  nameWithType: FontAwesomeIcons
+- uid: Hexalith.UI.Components.Icons.FontAwesomeIcons.GetIcon(Hexalith.UI.Components.Icons.IconInformation)
+  name: GetIcon(IconInformation)
+  href: api/Hexalith.UI.Components.Icons.FontAwesomeIcons.html#Hexalith_UI_Components_Icons_FontAwesomeIcons_GetIcon_Hexalith_UI_Components_Icons_IconInformation_
+  commentId: M:Hexalith.UI.Components.Icons.FontAwesomeIcons.GetIcon(Hexalith.UI.Components.Icons.IconInformation)
+  fullName: Hexalith.UI.Components.Icons.FontAwesomeIcons.GetIcon(Hexalith.UI.Components.Icons.IconInformation)
+  nameWithType: FontAwesomeIcons.GetIcon(IconInformation)
+- uid: Hexalith.UI.Components.Icons.FontAwesomeIcons.GetIcon*
+  name: GetIcon
+  href: api/Hexalith.UI.Components.Icons.FontAwesomeIcons.html#Hexalith_UI_Components_Icons_FontAwesomeIcons_GetIcon_
+  commentId: Overload:Hexalith.UI.Components.Icons.FontAwesomeIcons.GetIcon
+  isSpec: "True"
+  fullName: Hexalith.UI.Components.Icons.FontAwesomeIcons.GetIcon
+  nameWithType: FontAwesomeIcons.GetIcon
 - uid: Hexalith.UI.Components.Icons.IconInformation
   name: IconInformation
   href: api/Hexalith.UI.Components.Icons.IconInformation.html
   commentId: T:Hexalith.UI.Components.Icons.IconInformation
   fullName: Hexalith.UI.Components.Icons.IconInformation
   nameWithType: IconInformation
-- uid: Hexalith.UI.Components.Icons.IconInformation.#ctor(System.String,System.Int32,Hexalith.UI.Components.Icons.IconStyle)
-  name: IconInformation(String, Int32, IconStyle)
-  href: api/Hexalith.UI.Components.Icons.IconInformation.html#Hexalith_UI_Components_Icons_IconInformation__ctor_System_String_System_Int32_Hexalith_UI_Components_Icons_IconStyle_
-  commentId: M:Hexalith.UI.Components.Icons.IconInformation.#ctor(System.String,System.Int32,Hexalith.UI.Components.Icons.IconStyle)
-  fullName: Hexalith.UI.Components.Icons.IconInformation.IconInformation(System.String, System.Int32, Hexalith.UI.Components.Icons.IconStyle)
-  nameWithType: IconInformation.IconInformation(String, Int32, IconStyle)
+- uid: Hexalith.UI.Components.Icons.IconInformation.#ctor(System.String,System.Int32,Hexalith.UI.Components.Icons.IconStyle,Hexalith.UI.Components.Icons.IconSource,System.String)
+  name: IconInformation(String, Int32, IconStyle, IconSource, String)
+  href: api/Hexalith.UI.Components.Icons.IconInformation.html#Hexalith_UI_Components_Icons_IconInformation__ctor_System_String_System_Int32_Hexalith_UI_Components_Icons_IconStyle_Hexalith_UI_Components_Icons_IconSource_System_String_
+  commentId: M:Hexalith.UI.Components.Icons.IconInformation.#ctor(System.String,System.Int32,Hexalith.UI.Components.Icons.IconStyle,Hexalith.UI.Components.Icons.IconSource,System.String)
+  fullName: Hexalith.UI.Components.Icons.IconInformation.IconInformation(System.String, System.Int32, Hexalith.UI.Components.Icons.IconStyle, Hexalith.UI.Components.Icons.IconSource, System.String)
+  nameWithType: IconInformation.IconInformation(String, Int32, IconStyle, IconSource, String)
 - uid: Hexalith.UI.Components.Icons.IconInformation.#ctor*
   name: IconInformation
   href: api/Hexalith.UI.Components.Icons.IconInformation.html#Hexalith_UI_Components_Icons_IconInformation__ctor_
@@ -20320,6 +20352,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.UI.Components.Icons.IconInformation.IconInformation
   nameWithType: IconInformation.IconInformation
+- uid: Hexalith.UI.Components.Icons.IconInformation.IconLibraryName
+  name: IconLibraryName
+  href: api/Hexalith.UI.Components.Icons.IconInformation.html#Hexalith_UI_Components_Icons_IconInformation_IconLibraryName
+  commentId: P:Hexalith.UI.Components.Icons.IconInformation.IconLibraryName
+  fullName: Hexalith.UI.Components.Icons.IconInformation.IconLibraryName
+  nameWithType: IconInformation.IconLibraryName
+- uid: Hexalith.UI.Components.Icons.IconInformation.IconLibraryName*
+  name: IconLibraryName
+  href: api/Hexalith.UI.Components.Icons.IconInformation.html#Hexalith_UI_Components_Icons_IconInformation_IconLibraryName_
+  commentId: Overload:Hexalith.UI.Components.Icons.IconInformation.IconLibraryName
+  isSpec: "True"
+  fullName: Hexalith.UI.Components.Icons.IconInformation.IconLibraryName
+  nameWithType: IconInformation.IconLibraryName
 - uid: Hexalith.UI.Components.Icons.IconInformation.Name
   name: Name
   href: api/Hexalith.UI.Components.Icons.IconInformation.html#Hexalith_UI_Components_Icons_IconInformation_Name
@@ -20346,6 +20391,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.UI.Components.Icons.IconInformation.Size
   nameWithType: IconInformation.Size
+- uid: Hexalith.UI.Components.Icons.IconInformation.Source
+  name: Source
+  href: api/Hexalith.UI.Components.Icons.IconInformation.html#Hexalith_UI_Components_Icons_IconInformation_Source
+  commentId: P:Hexalith.UI.Components.Icons.IconInformation.Source
+  fullName: Hexalith.UI.Components.Icons.IconInformation.Source
+  nameWithType: IconInformation.Source
+- uid: Hexalith.UI.Components.Icons.IconInformation.Source*
+  name: Source
+  href: api/Hexalith.UI.Components.Icons.IconInformation.html#Hexalith_UI_Components_Icons_IconInformation_Source_
+  commentId: Overload:Hexalith.UI.Components.Icons.IconInformation.Source
+  isSpec: "True"
+  fullName: Hexalith.UI.Components.Icons.IconInformation.Source
+  nameWithType: IconInformation.Source
 - uid: Hexalith.UI.Components.Icons.IconInformation.Style
   name: Style
   href: api/Hexalith.UI.Components.Icons.IconInformation.html#Hexalith_UI_Components_Icons_IconInformation_Style
@@ -20359,6 +20417,24 @@ references:
   isSpec: "True"
   fullName: Hexalith.UI.Components.Icons.IconInformation.Style
   nameWithType: IconInformation.Style
+- uid: Hexalith.UI.Components.Icons.IconSource
+  name: IconSource
+  href: api/Hexalith.UI.Components.Icons.IconSource.html
+  commentId: T:Hexalith.UI.Components.Icons.IconSource
+  fullName: Hexalith.UI.Components.Icons.IconSource
+  nameWithType: IconSource
+- uid: Hexalith.UI.Components.Icons.IconSource.Fluent
+  name: Fluent
+  href: api/Hexalith.UI.Components.Icons.IconSource.html#Hexalith_UI_Components_Icons_IconSource_Fluent
+  commentId: F:Hexalith.UI.Components.Icons.IconSource.Fluent
+  fullName: Hexalith.UI.Components.Icons.IconSource.Fluent
+  nameWithType: IconSource.Fluent
+- uid: Hexalith.UI.Components.Icons.IconSource.FontAwesome
+  name: FontAwesome
+  href: api/Hexalith.UI.Components.Icons.IconSource.html#Hexalith_UI_Components_Icons_IconSource_FontAwesome
+  commentId: F:Hexalith.UI.Components.Icons.IconSource.FontAwesome
+  fullName: Hexalith.UI.Components.Icons.IconSource.FontAwesome
+  nameWithType: IconSource.FontAwesome
 - uid: Hexalith.UI.Components.Icons.IconStyle
   name: IconStyle
   href: api/Hexalith.UI.Components.Icons.IconStyle.html
@@ -20371,12 +20447,24 @@ references:
   commentId: F:Hexalith.UI.Components.Icons.IconStyle.Filled
   fullName: Hexalith.UI.Components.Icons.IconStyle.Filled
   nameWithType: IconStyle.Filled
+- uid: Hexalith.UI.Components.Icons.IconStyle.Light
+  name: Light
+  href: api/Hexalith.UI.Components.Icons.IconStyle.html#Hexalith_UI_Components_Icons_IconStyle_Light
+  commentId: F:Hexalith.UI.Components.Icons.IconStyle.Light
+  fullName: Hexalith.UI.Components.Icons.IconStyle.Light
+  nameWithType: IconStyle.Light
 - uid: Hexalith.UI.Components.Icons.IconStyle.Regular
   name: Regular
   href: api/Hexalith.UI.Components.Icons.IconStyle.html#Hexalith_UI_Components_Icons_IconStyle_Regular
   commentId: F:Hexalith.UI.Components.Icons.IconStyle.Regular
   fullName: Hexalith.UI.Components.Icons.IconStyle.Regular
   nameWithType: IconStyle.Regular
+- uid: Hexalith.UI.Components.Icons.IconStyle.Thin
+  name: Thin
+  href: api/Hexalith.UI.Components.Icons.IconStyle.html#Hexalith_UI_Components_Icons_IconStyle_Thin
+  commentId: F:Hexalith.UI.Components.Icons.IconStyle.Thin
+  fullName: Hexalith.UI.Components.Icons.IconStyle.Thin
+  nameWithType: IconStyle.Thin
 - uid: Hexalith.UI.Components.MenuItemInformation
   name: MenuItemInformation
   href: api/Hexalith.UI.Components.MenuItemInformation.html
@@ -20412,6 +20500,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.UI.Components.MenuItemInformation.DividerAfter
   nameWithType: MenuItemInformation.DividerAfter
+- uid: Hexalith.UI.Components.MenuItemInformation.GetMenuItemIndex(System.Int32,Hexalith.UI.Components.MenuItemInformation)
+  name: GetMenuItemIndex(Int32, MenuItemInformation)
+  href: api/Hexalith.UI.Components.MenuItemInformation.html#Hexalith_UI_Components_MenuItemInformation_GetMenuItemIndex_System_Int32_Hexalith_UI_Components_MenuItemInformation_
+  commentId: M:Hexalith.UI.Components.MenuItemInformation.GetMenuItemIndex(System.Int32,Hexalith.UI.Components.MenuItemInformation)
+  fullName: Hexalith.UI.Components.MenuItemInformation.GetMenuItemIndex(System.Int32, Hexalith.UI.Components.MenuItemInformation)
+  nameWithType: MenuItemInformation.GetMenuItemIndex(Int32, MenuItemInformation)
+- uid: Hexalith.UI.Components.MenuItemInformation.GetMenuItemIndex*
+  name: GetMenuItemIndex
+  href: api/Hexalith.UI.Components.MenuItemInformation.html#Hexalith_UI_Components_MenuItemInformation_GetMenuItemIndex_
+  commentId: Overload:Hexalith.UI.Components.MenuItemInformation.GetMenuItemIndex
+  isSpec: "True"
+  fullName: Hexalith.UI.Components.MenuItemInformation.GetMenuItemIndex
+  nameWithType: MenuItemInformation.GetMenuItemIndex
 - uid: Hexalith.UI.Components.MenuItemInformation.Icon
   name: Icon
   href: api/Hexalith.UI.Components.MenuItemInformation.html#Hexalith_UI_Components_MenuItemInformation_Icon

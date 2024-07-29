@@ -120,19 +120,19 @@ public class IconInformation : IEquatable&lt;IconInformation&gt;</code></pre>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_UI_Components_Icons_IconInformation__ctor_System_String_System_Int32_Hexalith_UI_Components_Icons_IconStyle_.md&amp;value=---%0Auid%3A%20Hexalith.UI.Components.Icons.IconInformation.%23ctor(System.String%2CSystem.Int32%2CHexalith.UI.Components.Icons.IconStyle)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_UI_Components_Icons_IconInformation__ctor_System_String_System_Int32_Hexalith_UI_Components_Icons_IconStyle_Hexalith_UI_Components_Icons_IconSource_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.UI.Components.Icons.IconInformation.%23ctor(System.String%2CSystem.Int32%2CHexalith.UI.Components.Icons.IconStyle%2CHexalith.UI.Components.Icons.IconSource%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/Icons/IconInformation.cs/#L17">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/Icons/IconInformation.cs/#L20">View Source</a>
   </span>
   <a id="Hexalith_UI_Components_Icons_IconInformation__ctor_" data-uid="Hexalith.UI.Components.Icons.IconInformation.#ctor*"></a>
-  <h4 id="Hexalith_UI_Components_Icons_IconInformation__ctor_System_String_System_Int32_Hexalith_UI_Components_Icons_IconStyle_" data-uid="Hexalith.UI.Components.Icons.IconInformation.#ctor(System.String,System.Int32,Hexalith.UI.Components.Icons.IconStyle)">IconInformation(String, Int32, IconStyle)</h4>
+  <h4 id="Hexalith_UI_Components_Icons_IconInformation__ctor_System_String_System_Int32_Hexalith_UI_Components_Icons_IconStyle_Hexalith_UI_Components_Icons_IconSource_System_String_" data-uid="Hexalith.UI.Components.Icons.IconInformation.#ctor(System.String,System.Int32,Hexalith.UI.Components.Icons.IconStyle,Hexalith.UI.Components.Icons.IconSource,System.String)">IconInformation(String, Int32, IconStyle, IconSource, String)</h4>
   <div class="markdown level1 summary"><p>Represents the information of an icon.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IconInformation(string Name, int Size, IconStyle Style)</code></pre>
+    <pre><code class="lang-csharp hljs">public IconInformation(string Name, int Size, IconStyle Style, IconSource Source, string IconLibraryName)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -162,16 +162,59 @@ public class IconInformation : IEquatable&lt;IconInformation&gt;</code></pre>
         <td><p>The icon style.</p>
 </td>
       </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.UI.Components.Icons.IconSource.html">IconSource</a></td>
+        <td><span class="parametername">Source</span></td>
+        <td><p>The icon source.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">IconLibraryName</span></td>
+        <td><p>The razor component namespace of the icon library.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_UI_Components_Icons_IconInformation_IconLibraryName.md&amp;value=---%0Auid%3A%20Hexalith.UI.Components.Icons.IconInformation.IconLibraryName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/Icons/IconInformation.cs/#L26">View Source</a>
+  </span>
+  <a id="Hexalith_UI_Components_Icons_IconInformation_IconLibraryName_" data-uid="Hexalith.UI.Components.Icons.IconInformation.IconLibraryName*"></a>
+  <h4 id="Hexalith_UI_Components_Icons_IconInformation_IconLibraryName" data-uid="Hexalith.UI.Components.Icons.IconInformation.IconLibraryName">IconLibraryName</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember]
+public string IconLibraryName { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_UI_Components_Icons_IconInformation_Name.md&amp;value=---%0Auid%3A%20Hexalith.UI.Components.Icons.IconInformation.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/Icons/IconInformation.cs/#L19">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/Icons/IconInformation.cs/#L22">View Source</a>
   </span>
   <a id="Hexalith_UI_Components_Icons_IconInformation_Name_" data-uid="Hexalith.UI.Components.Icons.IconInformation.Name*"></a>
   <h4 id="Hexalith_UI_Components_Icons_IconInformation_Name" data-uid="Hexalith.UI.Components.Icons.IconInformation.Name">Name</h4>
@@ -202,7 +245,7 @@ public string Name { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_UI_Components_Icons_IconInformation_Size.md&amp;value=---%0Auid%3A%20Hexalith.UI.Components.Icons.IconInformation.Size%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/Icons/IconInformation.cs/#L20">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/Icons/IconInformation.cs/#L23">View Source</a>
   </span>
   <a id="Hexalith_UI_Components_Icons_IconInformation_Size_" data-uid="Hexalith.UI.Components.Icons.IconInformation.Size*"></a>
   <h4 id="Hexalith_UI_Components_Icons_IconInformation_Size" data-uid="Hexalith.UI.Components.Icons.IconInformation.Size">Size</h4>
@@ -230,10 +273,41 @@ public int Size { get; set; }</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_UI_Components_Icons_IconInformation_Source.md&amp;value=---%0Auid%3A%20Hexalith.UI.Components.Icons.IconInformation.Source%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/Icons/IconInformation.cs/#L25">View Source</a>
+  </span>
+  <a id="Hexalith_UI_Components_Icons_IconInformation_Source_" data-uid="Hexalith.UI.Components.Icons.IconInformation.Source*"></a>
+  <h4 id="Hexalith_UI_Components_Icons_IconInformation_Source" data-uid="Hexalith.UI.Components.Icons.IconInformation.Source">Source</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember]
+public IconSource Source { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.UI.Components.Icons.IconSource.html">IconSource</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_UI_Components_Icons_IconInformation_Style.md&amp;value=---%0Auid%3A%20Hexalith.UI.Components.Icons.IconInformation.Style%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/Icons/IconInformation.cs/#L21">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/Icons/IconInformation.cs/#L24">View Source</a>
   </span>
   <a id="Hexalith_UI_Components_Icons_IconInformation_Style_" data-uid="Hexalith.UI.Components.Icons.IconInformation.Style*"></a>
   <h4 id="Hexalith_UI_Components_Icons_IconInformation_Style" data-uid="Hexalith.UI.Components.Icons.IconInformation.Style">Style</h4>
@@ -284,7 +358,7 @@ public IconStyle Style { get; set; }</code></pre>
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_UI_Components_Icons_IconInformation.md&amp;value=---%0Auid%3A%20Hexalith.UI.Components.Icons.IconInformation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/Icons/IconInformation.cs/#L17" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/UI/Hexalith.UI.Components.Abstractions/Icons/IconInformation.cs/#L20" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

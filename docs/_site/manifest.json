@@ -4125,7 +4125,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Infrastructure.ClientAppOnServer.Helpers.ServerSideClientAppHelper.html",
-          "hash": "zk+P3nNI6LUOKXHQSd40UGoQqRTedrMYkXPgmiTxTy8="
+          "hash": "iJyV4/AJeaquxzGf5R8VLz7ZeAhk9R5hEBwAw871d7Y="
         }
       },
       "is_incremental": false,
@@ -5565,7 +5565,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.UI.Components.Helpers.IconHelper.html",
-          "hash": "QNqnzQFtnbRxCGBtUd0I492ogrbI6zxX2Df1VKdPBH0="
+          "hash": "YDteU+d3MNSxtwBmxKIDbDQiNXrjJPUPZ3gMaoUTBnc="
         }
       },
       "is_incremental": false,
@@ -5585,11 +5585,35 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.UI.Components.Icons.FontAwesomeIcons.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.UI.Components.Icons.FontAwesomeIcons.html",
+          "hash": "IOVcns0qrPN0KXF/EZHFfKum0P2wRARLWBw6Uuv0wEs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Hexalith.UI.Components.Icons.IconInformation.yml",
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.UI.Components.Icons.IconInformation.html",
-          "hash": "0iBoa/rDijEzrUdAxjKWWwCM3dKkW2b3+4BqRQRJDso="
+          "hash": "lejGkHWSCSalDNrHJDX/0rtvFpYJjVYKVbxz8y7YFrU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Hexalith.UI.Components.Icons.IconSource.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Hexalith.UI.Components.Icons.IconSource.html",
+          "hash": "8rZ7DS4/2oXFH9Ze3ZwJdhOYAwFDuf2yj7teZ+PRZVE="
         }
       },
       "is_incremental": false,
@@ -5601,7 +5625,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.UI.Components.Icons.IconStyle.html",
-          "hash": "TbGhEoDp2lCw/lzcBlUhU9uZInJjjp0NJ0od5E9MqBU="
+          "hash": "YeqojQiF3LcH7DKo1ZsnuCAFs3PJ56L5Hh5Oig2lDAc="
         }
       },
       "is_incremental": false,
@@ -5613,7 +5637,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.UI.Components.Icons.html",
-          "hash": "N0JdRW/j4c2ueokUxsyvJE3unKXfKw7n98W5FjZK+3w="
+          "hash": "muJZwGTvYTYB11tGrj3OyvtFxFIPBX2F0DeQHUEHEEA="
         }
       },
       "is_incremental": false,
@@ -5625,7 +5649,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.UI.Components.MenuItemInformation.html",
-          "hash": "PwabAd5yeCFnZ/4Hy+f+G/d7dMYSp7LYino2wMcBvZQ="
+          "hash": "OvXUW16v+1WpJnJ8lcTxHQtQSrJs4qWeFhD5/hYpmso="
         }
       },
       "is_incremental": false,
@@ -5721,7 +5745,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.UI.Components.html",
-          "hash": "FNefW3vgmTJXXgtCtAwFnlo9m3iqsK/LaEHOeCB5G2A="
+          "hash": "RBZoRvHFRelPbUDcDjMpLitQcKg4To1dqeRJ5F9CBvw="
         }
       },
       "is_incremental": false,
@@ -5817,7 +5841,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "L04Pjgz7z1TY/FY0FGBVSee+YFvgInJPXsSSRrhYo4U="
+          "hash": "E6tgu4BOo0odUUdM52WOC1W5V6EZd1s4rFftZvInHpA="
         }
       },
       "is_incremental": false,
@@ -5892,7 +5916,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 482,
+          "total_file_count": 484,
           "skipped_file_count": 0
         },
         "TocDocumentProcessor": {

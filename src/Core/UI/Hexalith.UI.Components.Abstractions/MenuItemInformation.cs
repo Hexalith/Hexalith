@@ -45,7 +45,7 @@ public record MenuItemInformation(
 
         foreach (MenuItemInformation subItem in SubItems)
         {
-            (bool found, start) = GetMenuItemIndex(start, menuItem);
+            (bool found, start) = subItem.GetMenuItemIndex(start, menuItem);
             if (found)
             {
                 return (true, start);
