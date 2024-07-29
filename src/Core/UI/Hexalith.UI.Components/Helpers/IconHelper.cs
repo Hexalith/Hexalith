@@ -18,27 +18,47 @@ using Microsoft.FluentUI.AspNetCore.Components;
 public static class IconHelper
 {
     /// <summary>
-    /// Converts an <see cref="IconInformation"/> to a <see cref="Icon"/>.
+    /// Converts an <see cref="IconInformation"/> to a Tab <see cref="Icon"/>.
     /// </summary>
     /// <param name="icon">The <see cref="IconInformation"/> to convert.</param>
     /// <returns>The converted <see cref="Icon"/>.</returns>
-    public static Icon? ToFluentIcon(this IconInformation? icon)
+    public static Icon? ToFluentTabIcon(this IconInformation? icon)
     {
-        if (icon == null)
-        {
-            return null;
-        }
-        return icon.Source switch
-        {
-            IconSource.Fluent => Icons.GetInstance(new IconInfo
+        return icon == null
+            ? null
+            : icon.Source switch
             {
-                Name = icon.Name,
-                Size = GetIconSize(icon.Size),
-                Variant = GetIconStyle(icon.Style),
-            }),
-            IconSource.FontAwesome => FontAwesomeIcons.GetIcon(icon),
-            _ => throw new ArgumentOutOfRangeException(nameof(icon), icon.Source, $"Invalid icon source : {icon.Source}"),
-        };
+                IconSource.Fluent => Icons.GetInstance(new IconInfo
+                {
+                    Name = icon.Name,
+                    Size = GetIconSize(icon.Size),
+                    Variant = GetIconStyle(icon.Style),
+                }),
+                IconSource.FontAwesome => FontAwesomeIcons.GetTabIcon(icon),
+                _ => throw new ArgumentOutOfRangeException(nameof(icon), icon.Source, $"Invalid icon source : {icon.Source}"),
+            };
+    }
+
+    /// <summary>
+    /// Converts an <see cref="IconInformation"/> to a Nav <see cref="Icon"/>.
+    /// </summary>
+    /// <param name="icon">The <see cref="IconInformation"/> to convert.</param>
+    /// <returns>The converted <see cref="Icon"/>.</returns>
+    public static Icon? ToFluentNavIcon(this IconInformation? icon)
+    {
+        return icon == null
+            ? null
+            : icon.Source switch
+            {
+                IconSource.Fluent => Icons.GetInstance(new IconInfo
+                {
+                    Name = icon.Name,
+                    Size = GetIconSize(icon.Size),
+                    Variant = GetIconStyle(icon.Style),
+                }),
+                IconSource.FontAwesome => FontAwesomeIcons.GetNavIcon(icon),
+                _ => throw new ArgumentOutOfRangeException(nameof(icon), icon.Source, $"Invalid icon source : {icon.Source}"),
+            };
     }
 
     /// <summary>
@@ -70,6 +90,8 @@ public static class IconHelper
     {
         IconStyle.Filled => IconVariant.Filled,
         IconStyle.Regular => IconVariant.Regular,
+        IconStyle.Light => throw new NotImplementedException(),
+        IconStyle.Thin => throw new NotImplementedException(),
         _ => throw new ArgumentOutOfRangeException(nameof(style), style, $"Invalid style : {style}"),
     };
 }

@@ -1,20 +1,34 @@
-﻿namespace Hexalith.UI.Components.Icons;
+﻿// <copyright file="FontAwesomeIcons.cs" company="Fiveforty SAS Paris France">
+//     Copyright (c) Fiveforty SAS Paris France. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+
+namespace Hexalith.UI.Components.Icons;
 
 using Hexalith.UI.Components.Helpers;
 
 using Microsoft.FluentUI.AspNetCore.Components;
 
+/// <summary>
+/// Provides methods to get Font Awesome icons.
+/// </summary>
 public static class FontAwesomeIcons
 {
-    public static Icon GetIcon(IconInformation info)
+    /// <summary>
+    /// Gets the Font Awesome navigation icon based on the provided information.
+    /// </summary>
+    /// <param name="info">The icon information.</param>
+    /// <returns>The Font Awesome icon.</returns>
+    public static Icon GetNavIcon(IconInformation info)
     {
         ArgumentNullException.ThrowIfNull(info);
-        string content = $"""
-            <svg class="fluent-nav-icon" style="width: {info.Size}px; fill: var(--accent-fill-rest);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-              <use href="./_content/{info.IconLibraryName}/fontawesome/sprites/{GetStylePath(info.Style)}.svg#{info.Name.ToLowerInvariant()}"></use>
+        string content = $@"
+            <svg class=""fluent-nav-icon"" style=""width: {info.Size}px; fill: var(--accent-fill-rest);"" xmlns=""http://www.w3.org/2000/svg"" viewBox=""0 0 512 512"">
+              <use href=""./_content/{info.IconLibraryName}/fontawesome/sprites/{GetStylePath(info.Style)}.svg#{info.Name.ToLowerInvariant()}""></use>
             </svg>
-            """;
-        Icon icon = new Icon(
+            ";
+        Icon icon = new(
             info.Name,
             info.Style switch { IconStyle.Regular => IconVariant.Regular, IconStyle.Filled => IconVariant.Filled, IconStyle.Light => IconVariant.Light, IconStyle.Thin => IconVariant.Light, _ => IconVariant.Regular },
             IconHelper.GetIconSize(info.Size),
@@ -22,6 +36,34 @@ public static class FontAwesomeIcons
         return icon;
     }
 
+    /// <summary>
+    /// Gets the Font Awesome Tab icon based on the provided information.
+    /// </summary>
+    /// <param name="info">The icon information.</param>
+    /// <returns>The Font Awesome icon.</returns>
+    public static Icon GetTabIcon(IconInformation info)
+    {
+        ArgumentNullException.ThrowIfNull(info);
+
+        // <svg class=""fluent-tab-icon"" style=""width: {info.Size - 2}px; fill: var(--accent-fill-rest);"" xmlns=""http://www.w3.org/2000/svg"" focusable=""false"" viewBox=""0 0 512 512"">
+        string content = $@"
+            <svg style=""padding:2px; padding-bottom:0px;"" xmlns=""http://www.w3.org/2000/svg"" focusable=""false"" viewBox=""0 0 512 512"">
+              <use href=""./_content/{info.IconLibraryName}/fontawesome/sprites/{GetStylePath(info.Style)}.svg#{info.Name.ToLowerInvariant()}""></use>
+            </svg>
+            ";
+        Icon icon = new(
+            info.Name,
+            info.Style switch { IconStyle.Regular => IconVariant.Regular, IconStyle.Filled => IconVariant.Filled, IconStyle.Light => IconVariant.Light, IconStyle.Thin => IconVariant.Light, _ => IconVariant.Regular },
+            IconHelper.GetIconSize(info.Size),
+            content);
+        return icon;
+    }
+
+    /// <summary>
+    /// Gets the style path for the specified icon style.
+    /// </summary>
+    /// <param name="style">The icon style.</param>
+    /// <returns>The style path.</returns>
     private static string GetStylePath(IconStyle style)
     {
         return style switch
@@ -31,20 +73,6 @@ public static class FontAwesomeIcons
             IconStyle.Light => "light",
             IconStyle.Thin => "thin",
             _ => throw new ArgumentOutOfRangeException(nameof(style), style, "Unsupported style for Fontawesome icons."),
-        };
-    }
-
-    private static string GetSizeClassName(int size)
-    {
-        return size switch
-        {
-            <= 10 => "fa-2xs",
-            <= 12 => "fa-xs",
-            <= 14 => "fa-sm",
-            <= 20 => "fa-lg",
-            <= 24 => "fa-xl",
-            <= 32 => "fa-2xl",
-            _ => "fa-2xl",
         };
     }
 }

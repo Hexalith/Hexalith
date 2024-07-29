@@ -35,7 +35,7 @@
 					if (menuItem.SubItems.Any())
 					{
 						<FluentNavGroup Title="@menuItem.Name"
-										Icon="@menuItem.Icon.ToFluentIcon()"
+										Icon="@menuItem.Icon.ToFluentNavIcon()"
 										IconColor="Color.Accent"
 										@bind-Expanded="Expanded[GetMenuItemId(menuItem)]">
 							@foreach (var subItem in menuItem.SubItems)
@@ -43,12 +43,12 @@
 								if (subItem.SubItems.Any())
 								{
 									<FluentNavGroup Title="@subItem.Name"
-													Icon="@subItem.Icon.ToFluentIcon()"
+													Icon="@subItem.Icon.ToFluentNavIcon()"
 													IconColor="Color.Accent"
 													@bind-Expanded="Expanded[GetMenuItemId(subItem)]">
 										@foreach (var subSubItem in subItem.SubItems)
 										{
-											<FluentNavLink Icon="@subSubItem.Icon.ToFluentIcon()" Href="@subSubItem.Path">@subSubItem.Name</FluentNavLink>
+											<FluentNavLink Icon="@subSubItem.Icon.ToFluentNavIcon()" Href="@subSubItem.Path">@subSubItem.Name</FluentNavLink>
 											if (subSubItem.DividerAfter)
 											{
 												<FluentDivider />
@@ -58,7 +58,7 @@
 								}
 								else
 								{
-									<FluentNavLink Icon="@subItem.Icon.ToFluentIcon()" Href="@subItem.Path">@subItem.Name</FluentNavLink>
+									<FluentNavLink Icon="@subItem.Icon.ToFluentNavIcon()" Href="@subItem.Path">@subItem.Name</FluentNavLink>
 									if (subItem.DividerAfter)
 									{
 										<FluentDivider />
@@ -69,7 +69,7 @@
 					}
 					else
 					{
-						<FluentNavLink Icon="@menuItem.Icon.ToFluentIcon()" Href="@menuItem.Path">@menuItem.Name</FluentNavLink>
+						<FluentNavLink Icon="@menuItem.Icon.ToFluentNavIcon()" Href="@menuItem.Path">@menuItem.Name</FluentNavLink>
 						if (menuItem.DividerAfter)
 						{
 							<FluentDivider />
