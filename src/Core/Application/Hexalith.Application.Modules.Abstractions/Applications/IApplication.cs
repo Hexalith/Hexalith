@@ -61,6 +61,11 @@ public interface IApplication
     public string Name { get; }
 
     /// <summary>
+    /// Gets the version of the application.
+    /// </summary>
+    public string Version { get; }
+
+    /// <summary>
     /// Gets the server application.
     /// </summary>
     /// <returns>The application instance.</returns>

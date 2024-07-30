@@ -55,6 +55,9 @@ public abstract class HexalithApplication : IApplication
     public abstract string Id { get; }
 
     /// <inheritdoc/>
+    public abstract string Version { get; }
+
+    /// <inheritdoc/>
     public abstract bool IsClient { get; }
 
     /// <inheritdoc/>

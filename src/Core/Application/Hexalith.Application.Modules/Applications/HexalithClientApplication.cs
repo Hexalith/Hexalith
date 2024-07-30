@@ -40,6 +40,9 @@ public abstract class HexalithClientApplication : HexalithApplication, IClientAp
     public override string LogoutPath => Shared.LogoutPath;
 
     /// <inheritdoc/>
+    public override string Version => Shared.Version;
+
+    /// <inheritdoc/>
     public override IEnumerable<Type> Modules => _modules ??=
         [.. ClientModules
         .Union(Shared.SharedModules)

@@ -81,10 +81,8 @@
 			</FluentBodyContent>
 		</FluentStack>
 		<FluentFooter Style="@("height: 40px; color: white; text-align: center; font-size: var(--type-ramp-minus-1-font-size); line-height: var(--type-ramp-base-line-height);")">
-			<div class="version">
-				Version: @(Assembly.GetExecutingAssembly()?.GetName()?.Version?.ToString())
-			</div>
-			<FluentSpacer></FluentSpacer>
+			<HexVersion/>
+			<FluentSpacer/>
 			<div class="copy">
 				Fiveforty © 2024. 
 			</div>
