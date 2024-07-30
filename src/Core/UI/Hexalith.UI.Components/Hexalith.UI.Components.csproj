@@ -5,6 +5,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="wwwroot\FluentUITheme\Fontawesome\**" />
+	  <Content Remove="wwwroot\FluentUITheme\Fontawesome\**" />
+	  <EmbeddedResource Remove="wwwroot\FluentUITheme\Fontawesome\**" />
+	  <None Remove="wwwroot\FluentUITheme\Fontawesome\**" />
+	  <TypeScriptCompile Remove="wwwroot\FluentUITheme\Fontawesome\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <ProjectReference Include="..\Hexalith.UI.Components.Abstractions\Hexalith.UI.Components.Abstractions.csproj" />
 	</ItemGroup>
 	<ItemGroup>
@@ -17,8 +25,5 @@
 	</ItemGroup>
 	<ItemGroup>
 		<SupportedPlatform Include="browser" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="wwwroot\FluentUITheme\Fontawesome\" />
 	</ItemGroup>
 </Project>
