@@ -23,5 +23,7 @@ public class DummySharedApplication : HexalithSharedApplication
 
     public override string Name => "Dummy";
 
+    public override string Version => "?.?.?";
+
     public override IEnumerable<Type> SharedModules => [typeof(DummySharedModule)];
 }
