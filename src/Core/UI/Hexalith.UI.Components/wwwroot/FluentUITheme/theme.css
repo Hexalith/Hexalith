@@ -1,6 +1,5 @@
 @import '/_content/Microsoft.FluentUI.AspNetCore.Components/css/reboot.css';
-
-body {
+/*body {
     --body-font: "Segoe UI Variable", "Segoe UI", sans-serif;
     font-family: var(--body-font);
     font-size: var(--type-ramp-base-font-size);
@@ -59,8 +58,7 @@ footer {
     border: 1px dashed var(--accent-fill-rest);
     padding: 5px;
 }
-
-
+*/
 #blazor-error-ui {
     background: lightyellow;
     bottom: 0;
@@ -90,7 +88,7 @@ footer {
     .blazor-error-boundary::before {
         content: "An error has occurred. "
     }
-
+/*
 .loading-progress {
     position: relative;
     display: block;
@@ -175,3 +173,4 @@ code {
         border: none;
     }
 }
+*/
