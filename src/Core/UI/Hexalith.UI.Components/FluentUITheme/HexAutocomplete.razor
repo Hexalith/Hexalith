@@ -37,6 +37,10 @@
 		{
 			_selectedOptions = new[] { Service.GetIdDescriptionAsync(Id, CancellationToken.None).Result };
 		}
+		else
+		{
+			_selectedOptions = null;
+		}
 		await base.OnParametersSetAsync();
 	}
 
