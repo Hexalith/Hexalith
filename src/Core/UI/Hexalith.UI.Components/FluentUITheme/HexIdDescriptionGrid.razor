@@ -4,8 +4,8 @@
 	OnRowClick="OnRowClick"
 	ResizableColumns="true"
 	ShowHover="true">
-	<PropertyColumn Title="@IdLabel" Property="@(p => p.Id)" Sortable="true" />
-	<PropertyColumn Title="@DescriptionLabel" Property="@(p => p.Description)" Sortable="true" />
+	<PropertyColumn Width="25%" Title="@IdLabel" Property="@(p => p.Id)" Sortable="true" />
+	<PropertyColumn Width="75%" Title="@DescriptionLabel" Property="@(p => p.Description)" Sortable="true" />
 </FluentDataGrid>
 @code
 {
