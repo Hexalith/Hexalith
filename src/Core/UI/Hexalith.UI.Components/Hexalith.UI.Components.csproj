@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+	<PropertyGroup>
+		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="wwwroot\FluentUITheme\Fontawesome\**" />
+	  <Content Remove="wwwroot\FluentUITheme\Fontawesome\**" />
+	  <EmbeddedResource Remove="wwwroot\FluentUITheme\Fontawesome\**" />
+	  <None Remove="wwwroot\FluentUITheme\Fontawesome\**" />
+	  <TypeScriptCompile Remove="wwwroot\FluentUITheme\Fontawesome\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Hexalith.UI.Components.Abstractions\Hexalith.UI.Components.Abstractions.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="$(AspNetCorePackagesVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Localization" Version="$(MicrosoftExtensionsPackagesVersion)" />
+		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="$(MicrosoftFluentUIComponentsVersion)" />
+		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="$(MicrosoftFluentUIComponentsVersion)" />
+		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Emoji" Version="$(MicrosoftFluentUIComponentsVersion)" />
+		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.DataGrid.EntityFrameworkAdapter" Version="$(MicrosoftFluentUIComponentsVersion)" />
+	</ItemGroup>
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
+</Project>

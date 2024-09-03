@@ -1,0 +1,29 @@
+<Project>
+	<Import Project="Dependencies.props" />
+
+	<!-- Default values to use when building and packaging -->
+	<PropertyGroup>
+		<DNVersion>8</DNVersion>
+		<!-- Framework version used when coding in Visual Studio and when creating templates -->
+		<DefaultTargetFramework>net$(DNVersion).0</DefaultTargetFramework>
+
+		<!-- TFMs used to build the abstractions and modules-->
+		<CommonTargetFrameworks Condition="'$(CommonTargetFrameworks)' == ''">net$(DNVersion).0</CommonTargetFrameworks>
+	</PropertyGroup>
+
+	<!-- Enable Deterministic Builds for github actions -->
+	<PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true' or '$(TF_BUILD)' == 'true'">
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+	</PropertyGroup>
+
+	<!-- Detect if the solution is opened in VS to limit the versions that are analyzed by Roslyn for performance reasons and set a local repository for packages -->
+	<PropertyGroup Condition="'$(BuildingInsideVisualStudio)' == 'true' or '$(BuildingByReSharper)' == 'true'">
+		<CommonTargetFrameworks>$(DefaultTargetFramework)</CommonTargetFrameworks>
+	</PropertyGroup>
+
+	<!-- These versions are used for the NuGet packages that are dependent on the current .NET version -->
+	<PropertyGroup>
+		<AspNetCorePackagesVersion>$(DNVersion).*</AspNetCorePackagesVersion>
+		<MicrosoftExtensionsPackagesVersion>$(DNVersion).*</MicrosoftExtensionsPackagesVersion>
+	</PropertyGroup>
+</Project>

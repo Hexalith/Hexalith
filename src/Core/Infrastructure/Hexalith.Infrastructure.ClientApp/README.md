@@ -1,0 +1,1 @@
+# Hexalith.Infrastructure.Emails.Abstractions

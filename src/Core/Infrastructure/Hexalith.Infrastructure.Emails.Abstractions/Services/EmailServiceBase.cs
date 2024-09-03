@@ -1,0 +1,74 @@
+﻿// ***********************************************************************
+// Assembly         : Hexalith.Infrastructure.Emails.Abstractions
+// Author           : Jérôme Piquot
+// Created          : 01-14-2024
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 01-14-2024
+// ***********************************************************************
+// <copyright file="EmailServiceBase.cs" company="Jérôme Piquot">
+//     Copyright (c) Jérôme Piquot. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
+namespace Hexalith.Infrastructure.Emails.Abstractions.Services;
+
+using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks;
+
+using Hexalith.Application.Emails;
+using Hexalith.Infrastructure.Emails.Abstractions.Configurations;
+
+using Microsoft.Extensions.Options;
+
+/// <summary>
+/// Class EmailServiceBase.
+/// Implements the <see cref="IEmailService" />.
+/// </summary>
+/// <seealso cref="IEmailService" />
+public abstract class EmailServiceBase : IEmailService
+{
+    /// <summary>
+    /// Initializes a new instance of the <see cref="EmailServiceBase" /> class.
+    /// </summary>
+    /// <param name="settings">The settings.</param>
+    /// <exception cref="System.ArgumentNullException">null.</exception>
+    protected EmailServiceBase([NotNull] IOptions<EmailServerSettings> settings)
+    {
+        ArgumentNullException.ThrowIfNull(settings);
+        ArgumentNullException.ThrowIfNull(settings.Value);
+        DefaultFromEmail = settings.Value.FromEmail;
+        DefaultFromName = settings.Value.FromName;
+    }
+
+    /// <summary>
+    /// Gets the default from email.
+    /// </summary>
+    /// <value>The default from email.</value>
+    public string? DefaultFromEmail { get; }
+
+    /// <summary>
+    /// Gets the default from name.
+    /// </summary>
+    /// <value>The default from name.</value>
+    public string? DefaultFromName { get; }
+
+    /// <inheritdoc/>
+    public abstract Task SendAsync(string fromEmail, string fromName, string toEmail, string subject, string? plainTextContent, string? htmlContent, CancellationToken cancellationToken);
+
+    /// <inheritdoc/>
+    public virtual async Task SendAsync(string toEmail, string subject, string? plainTextContent, string? htmlContent, CancellationToken cancellationToken)
+    {
+        if (string.IsNullOrWhiteSpace(DefaultFromEmail))
+        {
+            throw new InvalidOperationException($"Default sender email is not defined. Set application settings : {EmailServerSettings.ConfigurationName()}.{new EmailServerSettings().FromEmail}.");
+        }
+
+        await SendAsync(DefaultFromEmail, DefaultFromName ?? DefaultFromEmail, toEmail, subject, plainTextContent, htmlContent, cancellationToken)
+            .ConfigureAwait(false);
+    }
+}

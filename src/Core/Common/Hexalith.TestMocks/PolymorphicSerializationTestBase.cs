@@ -1,0 +1,49 @@
+﻿// ***********************************************************************
+// Assembly         : Hexalith.TestMocks
+// Author           : Jérôme Piquot
+// Created          : 12-07-2023
+//
+// Last Modified By : Jérôme Piquot
+// Last Modified On : 12-07-2023
+// ***********************************************************************
+// <copyright file="PolymorphicSerializationTestBase.cs" company="Jérôme Piquot">
+//     Copyright (c) Jérôme Piquot. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
+namespace Hexalith.TestMocks;
+
+using System.Text.Json;
+
+using FluentAssertions;
+
+using Xunit;
+
+/// <summary>
+/// Class PolymorphicSerializationTestBase.
+/// Implements the <see cref="Hexalith.TestMocks.SerializationTestBase" />.
+/// </summary>
+/// <typeparam name="TObject">The type of the t object.</typeparam>
+/// <typeparam name="TBase">The type of the t base.</typeparam>
+/// <seealso cref="Hexalith.TestMocks.SerializationTestBase" />
+public abstract class PolymorphicSerializationTestBase<TObject, TBase> : SerializationTestBase
+    where TObject : class, TBase
+    where TBase : class
+{
+    /// <summary>
+    /// Defines the test method PolymorphicSerializeAndDeserializeShouldReturnSameObject.
+    /// </summary>
+    [Fact]
+    public void PolymorphicSerializeAndDeserializeShouldReturnSameObject()
+    {
+        TObject original = (TObject)ToSerializeObject();
+        string json = JsonSerializer.Serialize<TBase>(original);
+        TBase? result = JsonSerializer.Deserialize<TBase>(json);
+        _ = result.Should().NotBeNull();
+        _ = result.Should().BeOfType<TObject>();
+        _ = result.Should().BeEquivalentTo(original);
+    }
+}

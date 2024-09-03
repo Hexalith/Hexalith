@@ -1,0 +1,52 @@
+@using System.ComponentModel
+
+@inherits HexBase
+@inject IStringLocalizer<SharedResources> SharedLocalizer
+
+<FluentDesignTheme @bind-Mode="@Mode"
+                   @bind-OfficeColor="@OfficeColor"
+                   OnLoaded="@OnLoaded"
+                   OnLuminanceChanged="@OnLuminanceChanged"
+                   StorageName="theme" />
+
+<FluentStack>
+    <FluentSelect Label="Theme"
+                  Width="100%"
+                  Items="@(Enum.GetValues<DesignThemeModes>())"
+                  @bind-SelectedOption="@Mode" />
+    <FluentSelect Label="Color"
+                  Items="@(Enum.GetValues<OfficeColor>().Select(i => (OfficeColor?)i))"
+                  Height="200px"
+                  Width="250px"
+                  @bind-SelectedOption="@OfficeColor">
+        <OptionTemplate>
+            <FluentStack>
+                <FluentIcon Value="@(new Icons.Filled.Size20.RectangleLandscape())"
+                            Color="Color.Custom"
+                            CustomColor="@(@context.ToAttributeValue() != "default" ? context.ToAttributeValue() : "#036ac4" )" />
+                <FluentLabel>@context</FluentLabel>
+            </FluentStack>
+        </OptionTemplate>
+    </FluentSelect>
+    <FluentButton Appearance="Appearance.Accent" OnClick="PickRandomColor">Feeling lucky?</FluentButton>
+</FluentStack>
+@code {
+    public DesignThemeModes Mode { get; set; }
+
+    public OfficeColor? OfficeColor { get; set; }
+
+    void PickRandomColor()
+    {
+        OfficeColor = OfficeColorUtilities.GetRandom();
+    }
+
+    void OnLoaded(LoadedEventArgs e)
+    {
+        // Todo: Save the theme in the user settings
+    }
+
+    void OnLuminanceChanged(LuminanceChangedEventArgs e)
+    {
+        // Todo: implement        
+    }
+}

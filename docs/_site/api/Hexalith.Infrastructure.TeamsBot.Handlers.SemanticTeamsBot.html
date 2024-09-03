@@ -1,0 +1,517 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class SemanticTeamsBot
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class SemanticTeamsBot
+   ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Hexalith.Infrastructure.TeamsBot.Handlers.SemanticTeamsBot">
+  
+  
+  <h1 id="Hexalith_Infrastructure_TeamsBot_Handlers_SemanticTeamsBot" data-uid="Hexalith.Infrastructure.TeamsBot.Handlers.SemanticTeamsBot" class="text-break">Class SemanticTeamsBot
+  </h1>
+  <div class="markdown level0 summary"><p>An empty bot handler.
+You can add your customization code here to extend your bot logic if needed.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Microsoft.Bot.Builder.ActivityHandler</span></div>
+    <div class="level2"><span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler</span></div>
+    <div class="level3"><span class="xref">SemanticTeamsBot</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">Microsoft.Bot.Builder.IBot</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnInvokeActivityAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInvokeActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsCardActionInvokeAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInvokeActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnSignInInvokeAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInvokeActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsSigninVerifyStateAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInvokeActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsFileConsentAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInvokeActivity&gt;, Microsoft.Bot.Schema.Teams.FileConsentCardResponse, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsFileConsentAcceptAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInvokeActivity&gt;, Microsoft.Bot.Schema.Teams.FileConsentCardResponse, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsFileConsentDeclineAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInvokeActivity&gt;, Microsoft.Bot.Schema.Teams.FileConsentCardResponse, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsMessagingExtensionQueryAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInvokeActivity&gt;, Microsoft.Bot.Schema.Teams.MessagingExtensionQuery, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsO365ConnectorCardActionAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInvokeActivity&gt;, Microsoft.Bot.Schema.Teams.O365ConnectorCardActionQuery, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsAppBasedLinkQueryAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInvokeActivity&gt;, Microsoft.Bot.Schema.Teams.AppBasedLinkQuery, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsAnonymousAppBasedLinkQueryAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInvokeActivity&gt;, Microsoft.Bot.Schema.Teams.AppBasedLinkQuery, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsMessagingExtensionSelectItemAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInvokeActivity&gt;, Newtonsoft.Json.Linq.JObject, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsMessagingExtensionFetchTaskAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInvokeActivity&gt;, Microsoft.Bot.Schema.Teams.MessagingExtensionAction, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsMessagingExtensionSubmitActionDispatchAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInvokeActivity&gt;, Microsoft.Bot.Schema.Teams.MessagingExtensionAction, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsMessagingExtensionSubmitActionAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInvokeActivity&gt;, Microsoft.Bot.Schema.Teams.MessagingExtensionAction, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsMessagingExtensionBotMessagePreviewEditAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInvokeActivity&gt;, Microsoft.Bot.Schema.Teams.MessagingExtensionAction, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsMessagingExtensionBotMessagePreviewSendAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInvokeActivity&gt;, Microsoft.Bot.Schema.Teams.MessagingExtensionAction, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsMessagingExtensionConfigurationQuerySettingUrlAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInvokeActivity&gt;, Microsoft.Bot.Schema.Teams.MessagingExtensionQuery, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsMessagingExtensionConfigurationSettingAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInvokeActivity&gt;, Newtonsoft.Json.Linq.JObject, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsMessagingExtensionCardButtonClickedAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInvokeActivity&gt;, Newtonsoft.Json.Linq.JObject, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsTaskModuleFetchAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInvokeActivity&gt;, Microsoft.Bot.Schema.Teams.TaskModuleRequest, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsTaskModuleSubmitAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInvokeActivity&gt;, Microsoft.Bot.Schema.Teams.TaskModuleRequest, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsTabFetchAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInvokeActivity&gt;, Microsoft.Bot.Schema.Teams.TabRequest, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsTabSubmitAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInvokeActivity&gt;, Microsoft.Bot.Schema.Teams.TabSubmit, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnConversationUpdateActivityAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IConversationUpdateActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsMembersAddedDispatchAsync(System.Collections.Generic.IList&lt;Microsoft.Bot.Schema.ChannelAccount&gt;, Microsoft.Bot.Schema.Teams.TeamInfo, Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IConversationUpdateActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsMembersRemovedDispatchAsync(System.Collections.Generic.IList&lt;Microsoft.Bot.Schema.ChannelAccount&gt;, Microsoft.Bot.Schema.Teams.TeamInfo, Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IConversationUpdateActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsMembersAddedAsync(System.Collections.Generic.IList&lt;Microsoft.Bot.Schema.Teams.TeamsChannelAccount&gt;, Microsoft.Bot.Schema.Teams.TeamInfo, Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IConversationUpdateActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsMembersRemovedAsync(System.Collections.Generic.IList&lt;Microsoft.Bot.Schema.Teams.TeamsChannelAccount&gt;, Microsoft.Bot.Schema.Teams.TeamInfo, Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IConversationUpdateActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsChannelCreatedAsync(Microsoft.Bot.Schema.Teams.ChannelInfo, Microsoft.Bot.Schema.Teams.TeamInfo, Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IConversationUpdateActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsChannelDeletedAsync(Microsoft.Bot.Schema.Teams.ChannelInfo, Microsoft.Bot.Schema.Teams.TeamInfo, Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IConversationUpdateActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsChannelRenamedAsync(Microsoft.Bot.Schema.Teams.ChannelInfo, Microsoft.Bot.Schema.Teams.TeamInfo, Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IConversationUpdateActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsChannelRestoredAsync(Microsoft.Bot.Schema.Teams.ChannelInfo, Microsoft.Bot.Schema.Teams.TeamInfo, Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IConversationUpdateActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsTeamArchivedAsync(Microsoft.Bot.Schema.Teams.TeamInfo, Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IConversationUpdateActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsTeamDeletedAsync(Microsoft.Bot.Schema.Teams.TeamInfo, Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IConversationUpdateActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsTeamHardDeletedAsync(Microsoft.Bot.Schema.Teams.TeamInfo, Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IConversationUpdateActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsTeamRenamedAsync(Microsoft.Bot.Schema.Teams.TeamInfo, Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IConversationUpdateActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsTeamRestoredAsync(Microsoft.Bot.Schema.Teams.TeamInfo, Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IConversationUpdateActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsTeamUnarchivedAsync(Microsoft.Bot.Schema.Teams.TeamInfo, Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IConversationUpdateActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnEventActivityAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IEventActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsMeetingStartAsync(Microsoft.Bot.Schema.Teams.MeetingStartEventDetails, Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IEventActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsMeetingEndAsync(Microsoft.Bot.Schema.Teams.MeetingEndEventDetails, Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IEventActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsReadReceiptAsync(Microsoft.Bot.Schema.Teams.ReadReceiptInfo, Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IEventActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnMessageUpdateActivityAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IMessageUpdateActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnMessageDeleteActivityAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IMessageDeleteActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsMessageEditAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IMessageUpdateActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsMessageUndeleteAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IMessageUpdateActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.Teams.TeamsActivityHandler.OnTeamsMessageSoftDeleteAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IMessageDeleteActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.ActivityHandler.OnTurnAsync(Microsoft.Bot.Builder.ITurnContext, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.ActivityHandler.CreateInvokeResponse(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.ActivityHandler.OnMessageActivityAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IMessageActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.ActivityHandler.OnMembersAddedAsync(System.Collections.Generic.IList&lt;Microsoft.Bot.Schema.ChannelAccount&gt;, Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IConversationUpdateActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.ActivityHandler.OnMembersRemovedAsync(System.Collections.Generic.IList&lt;Microsoft.Bot.Schema.ChannelAccount&gt;, Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IConversationUpdateActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.ActivityHandler.OnMessageReactionActivityAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IMessageReactionActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.ActivityHandler.OnReactionsAddedAsync(System.Collections.Generic.IList&lt;Microsoft.Bot.Schema.MessageReaction&gt;, Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IMessageReactionActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.ActivityHandler.OnReactionsRemovedAsync(System.Collections.Generic.IList&lt;Microsoft.Bot.Schema.MessageReaction&gt;, Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IMessageReactionActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.ActivityHandler.OnTokenResponseEventAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IEventActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.ActivityHandler.OnEventAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IEventActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.ActivityHandler.OnAdaptiveCardInvokeAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInvokeActivity&gt;, Microsoft.Bot.Schema.AdaptiveCardInvokeValue, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.ActivityHandler.OnSearchInvokeAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInvokeActivity&gt;, Microsoft.Bot.Schema.SearchInvokeValue, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.ActivityHandler.OnEndOfConversationActivityAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IEndOfConversationActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.ActivityHandler.OnTypingActivityAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.ITypingActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.ActivityHandler.OnInstallationUpdateActivityAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInstallationUpdateActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.ActivityHandler.OnInstallationUpdateAddAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInstallationUpdateActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.ActivityHandler.OnInstallationUpdateRemoveAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.IInstallationUpdateActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.ActivityHandler.OnCommandActivityAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.ICommandActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.ActivityHandler.OnCommandResultActivityAsync(Microsoft.Bot.Builder.ITurnContext&lt;Microsoft.Bot.Schema.ICommandResultActivity&gt;, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">Microsoft.Bot.Builder.ActivityHandler.OnUnrecognizedActivityTypeAsync(Microsoft.Bot.Builder.ITurnContext, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Hexalith.Infrastructure.TeamsBot.Handlers.html">Hexalith.Infrastructure.TeamsBot.Handlers</a></h6>
+  <h6><strong>Assembly</strong>: Hexalith.Infrastructure.TeamsBot.dll</h6>
+  <h5 id="Hexalith_Infrastructure_TeamsBot_Handlers_SemanticTeamsBot_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class SemanticTeamsBot : TeamsActivityHandler, IBot</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_TeamsBot_Handlers_SemanticTeamsBot__ctor_Hexalith_Infrastructure_MicrosoftSemanticKernel_Services_ArtificialIntelligenceService_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.TeamsBot.Handlers.SemanticTeamsBot.%23ctor(Hexalith.Infrastructure.MicrosoftSemanticKernel.Services.ArtificialIntelligenceService)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.TeamsBot/Handlers/SemanticTeamsBot.cs/#L47">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_TeamsBot_Handlers_SemanticTeamsBot__ctor_" data-uid="Hexalith.Infrastructure.TeamsBot.Handlers.SemanticTeamsBot.#ctor*"></a>
+  <h4 id="Hexalith_Infrastructure_TeamsBot_Handlers_SemanticTeamsBot__ctor_Hexalith_Infrastructure_MicrosoftSemanticKernel_Services_ArtificialIntelligenceService_" data-uid="Hexalith.Infrastructure.TeamsBot.Handlers.SemanticTeamsBot.#ctor(Hexalith.Infrastructure.MicrosoftSemanticKernel.Services.ArtificialIntelligenceService)">SemanticTeamsBot(ArtificialIntelligenceService)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Infrastructure.TeamsBot.Handlers.SemanticTeamsBot.html">SemanticTeamsBot</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SemanticTeamsBot(ArtificialIntelligenceService artificialIntelligenceService)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Infrastructure.MicrosoftSemanticKernel.Services.ArtificialIntelligenceService.html">ArtificialIntelligenceService</a></td>
+        <td><span class="parametername">artificialIntelligenceService</span></td>
+        <td><p>The artificial intelligence service.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_TeamsBot_Handlers_SemanticTeamsBot_OnMessageActivityAsync_Microsoft_Bot_Builder_ITurnContext_Microsoft_Bot_Schema_IMessageActivity__CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.TeamsBot.Handlers.SemanticTeamsBot.OnMessageActivityAsync(Microsoft.Bot.Builder.ITurnContext%7BMicrosoft.Bot.Schema.IMessageActivity%7D%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.TeamsBot/Handlers/SemanticTeamsBot.cs/#L58">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_TeamsBot_Handlers_SemanticTeamsBot_OnMessageActivityAsync_" data-uid="Hexalith.Infrastructure.TeamsBot.Handlers.SemanticTeamsBot.OnMessageActivityAsync*"></a>
+  <h4 id="Hexalith_Infrastructure_TeamsBot_Handlers_SemanticTeamsBot_OnMessageActivityAsync_Microsoft_Bot_Builder_ITurnContext_Microsoft_Bot_Schema_IMessageActivity__CancellationToken_" data-uid="Hexalith.Infrastructure.TeamsBot.Handlers.SemanticTeamsBot.OnMessageActivityAsync(Microsoft.Bot.Builder.ITurnContext{Microsoft.Bot.Schema.IMessageActivity},CancellationToken)">OnMessageActivityAsync(ITurnContext&lt;IMessageActivity&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override async Task OnMessageActivityAsync(ITurnContext&lt;IMessageActivity&gt; turnContext, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Bot.Builder.ITurnContext</span>&lt;<span class="xref">Microsoft.Bot.Schema.IMessageActivity</span>&gt;</td>
+        <td><span class="parametername">turnContext</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_TeamsBot_Handlers_SemanticTeamsBot_OnTurnAsync_Microsoft_Bot_Builder_ITurnContext_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.TeamsBot.Handlers.SemanticTeamsBot.OnTurnAsync(Microsoft.Bot.Builder.ITurnContext%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.TeamsBot/Handlers/SemanticTeamsBot.cs/#L54">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_TeamsBot_Handlers_SemanticTeamsBot_OnTurnAsync_" data-uid="Hexalith.Infrastructure.TeamsBot.Handlers.SemanticTeamsBot.OnTurnAsync*"></a>
+  <h4 id="Hexalith_Infrastructure_TeamsBot_Handlers_SemanticTeamsBot_OnTurnAsync_Microsoft_Bot_Builder_ITurnContext_CancellationToken_" data-uid="Hexalith.Infrastructure.TeamsBot.Handlers.SemanticTeamsBot.OnTurnAsync(Microsoft.Bot.Builder.ITurnContext,CancellationToken)">OnTurnAsync(ITurnContext, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Bot.Builder.ITurnContext</span></td>
+        <td><span class="parametername">turnContext</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">Microsoft.Bot.Builder.IBot</span>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Hexalith.Extensions.Helpers.ArrayHelper.html#Hexalith_Extensions_Helpers_ArrayHelper_IntoArray__1___0_">ArrayHelper.IntoArray&lt;T&gt;(T)</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_TeamsBot_Handlers_SemanticTeamsBot.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.TeamsBot.Handlers.SemanticTeamsBot%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.TeamsBot/Handlers/SemanticTeamsBot.cs/#L34" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+SELECT 
+    c.id, 
+    c['value']['failure']['message'], 
+    c['value']['failure']['technicalError'], 
+    c['value']['history']['createdDate'],
+    c['value']['status']
+FROM c 
+WHERE 
+    c.id like "%Task%" 
+    and not c['value']['status'] = "Completed"

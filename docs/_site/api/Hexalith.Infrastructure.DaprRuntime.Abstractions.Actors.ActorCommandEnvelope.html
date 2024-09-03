@@ -1,0 +1,451 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ActorCommandEnvelope
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ActorCommandEnvelope
+   ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope">
+  
+  
+  <h1 id="Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope" data-uid="Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope" class="text-break">Class ActorCommandEnvelope
+  </h1>
+  <div class="markdown level0 summary"><p>Actor method object uses Data Contract Serialization that can't serialize and deserialize complex polymorphic objects. This class is used to serialize and deserialize commands and metadatas into JSON strings before the actor proxy serialization.
+Implements the <see cref="!:IEquatable&lt;ActorCommandEnvelope>"></see>.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ActorCommandEnvelope</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.Text.Json.Serialization.IJsonOnSerializing</span></div>
+    <div><span class="xref">System.Text.Json.Serialization.IJsonOnDeserialized</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.html">Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors</a></h6>
+  <h6><strong>Assembly</strong>: Hexalith.Infrastructure.DaprRuntime.Abstractions.dll</h6>
+  <h5 id="Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataContract]
+public class ActorCommandEnvelope : IJsonOnSerializing, IJsonOnDeserialized</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope__ctor.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime.Abstractions/Actors/ActorCommandEnvelope.cs/#L55">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope__ctor_" data-uid="Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.#ctor*"></a>
+  <h4 id="Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope__ctor" data-uid="Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.#ctor">ActorCommandEnvelope()</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.html">ActorCommandEnvelope</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActorCommandEnvelope()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope__ctor_IEnumerable_Hexalith_Application_Commands_BaseCommand__IEnumerable_Hexalith_Application_Metadatas_BaseMetadata__.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.%23ctor(IEnumerable%7BHexalith.Application.Commands.BaseCommand%7D%2CIEnumerable%7BHexalith.Application.Metadatas.BaseMetadata%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime.Abstractions/Actors/ActorCommandEnvelope.cs/#L73">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope__ctor_" data-uid="Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.#ctor*"></a>
+  <h4 id="Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope__ctor_IEnumerable_Hexalith_Application_Commands_BaseCommand__IEnumerable_Hexalith_Application_Metadatas_BaseMetadata__" data-uid="Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.#ctor(IEnumerable{Hexalith.Application.Commands.BaseCommand},IEnumerable{Hexalith.Application.Metadatas.BaseMetadata})">ActorCommandEnvelope(IEnumerable&lt;BaseCommand&gt;, IEnumerable&lt;BaseMetadata&gt;)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.html">ActorCommandEnvelope</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActorCommandEnvelope(IEnumerable&lt;BaseCommand&gt; commands, IEnumerable&lt;BaseMetadata&gt; metadatas)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="Hexalith.Application.Commands.BaseCommand.html">BaseCommand</a>&gt;</td>
+        <td><span class="parametername">commands</span></td>
+        <td><p>The commands.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="Hexalith.Application.Metadatas.BaseMetadata.html">BaseMetadata</a>&gt;</td>
+        <td><span class="parametername">metadatas</span></td>
+        <td><p>The metadatas.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope__ctor_IEnumerable_System_String__IEnumerable_System_String__.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.%23ctor(IEnumerable%7BSystem.String%7D%2CIEnumerable%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime.Abstractions/Actors/ActorCommandEnvelope.cs/#L42">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope__ctor_" data-uid="Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.#ctor*"></a>
+  <h4 id="Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope__ctor_IEnumerable_System_String__IEnumerable_System_String__" data-uid="Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.#ctor(IEnumerable{System.String},IEnumerable{System.String})">ActorCommandEnvelope(IEnumerable&lt;String&gt;, IEnumerable&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.html">ActorCommandEnvelope</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonConstructor]
+public ActorCommandEnvelope(IEnumerable&lt;string&gt; commandsJson, IEnumerable&lt;string&gt; metadatasJson)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">commandsJson</span></td>
+        <td><p>The commands json.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">metadatasJson</span></td>
+        <td><p>The metadatas json.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope_Commands.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.Commands%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime.Abstractions/Actors/ActorCommandEnvelope.cs/#L109">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope_Commands_" data-uid="Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.Commands*"></a>
+  <h4 id="Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope_Commands" data-uid="Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.Commands">Commands</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the command.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonIgnore]
+[IgnoreDataMember]
+public IEnumerable&lt;BaseCommand&gt; Commands { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="Hexalith.Application.Commands.BaseCommand.html">BaseCommand</a>&gt;</td>
+        <td><p>The command.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope_CommandsJson.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.CommandsJson%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime.Abstractions/Actors/ActorCommandEnvelope.cs/#L117">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope_CommandsJson_" data-uid="Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.CommandsJson*"></a>
+  <h4 id="Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope_CommandsJson" data-uid="Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.CommandsJson">CommandsJson</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the commands json.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Name = &quot;&quot;)]
+[JsonPropertyName(&quot;&quot;)]
+public IEnumerable&lt;string&gt; CommandsJson { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><p>The commands json.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope_Metadatas.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.Metadatas%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime.Abstractions/Actors/ActorCommandEnvelope.cs/#L125">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope_Metadatas_" data-uid="Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.Metadatas*"></a>
+  <h4 id="Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope_Metadatas" data-uid="Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.Metadatas">Metadatas</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the metadata.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonIgnore]
+[IgnoreDataMember]
+public IEnumerable&lt;BaseMetadata&gt; Metadatas { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="Hexalith.Application.Metadatas.BaseMetadata.html">BaseMetadata</a>&gt;</td>
+        <td><p>The metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope_MetadatasJson.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.MetadatasJson%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime.Abstractions/Actors/ActorCommandEnvelope.cs/#L133">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope_MetadatasJson_" data-uid="Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.MetadatasJson*"></a>
+  <h4 id="Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope_MetadatasJson" data-uid="Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.MetadatasJson">MetadatasJson</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the metadatas json.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Name = &quot;&quot;)]
+[JsonPropertyName(&quot;&quot;)]
+public IEnumerable&lt;string&gt; MetadatasJson { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><p>The metadatas json.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope_OnDeserialized.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.OnDeserialized%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime.Abstractions/Actors/ActorCommandEnvelope.cs/#L140">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope_OnDeserialized_" data-uid="Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.OnDeserialized*"></a>
+  <h4 id="Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope_OnDeserialized" data-uid="Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.OnDeserialized">OnDeserialized()</h4>
+  <div class="markdown level1 summary"><p>The method that is called after deserialization.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void OnDeserialized()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope_OnSerializing.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.OnSerializing%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime.Abstractions/Actors/ActorCommandEnvelope.cs/#L153">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope_OnSerializing_" data-uid="Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.OnSerializing*"></a>
+  <h4 id="Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope_OnSerializing" data-uid="Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope.OnSerializing">OnSerializing()</h4>
+  <div class="markdown level1 summary"><p>The method that is called before serialization.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void OnSerializing()</code></pre>
+  </div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.Text.Json.Serialization.IJsonOnSerializing</span>
+  </div>
+  <div>
+      <span class="xref">System.Text.Json.Serialization.IJsonOnDeserialized</span>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSame_System_Object_System_Object_">EquatableHelper.AreSame(Object, Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hexalith.Extensions.Helpers.VersionHelper.html#Hexalith_Extensions_Helpers_VersionHelper_ProductVersion_System_Object_">VersionHelper.ProductVersion(Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hexalith.Extensions.Reflections.ObjectDifferenceHelper.html#Hexalith_Extensions_Reflections_ObjectDifferenceHelper_GetDifferenceInformation_System_Object_System_Object_">ObjectDifferenceHelper.GetDifferenceInformation(Object, Object)</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorCommandEnvelope.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorCommandEnvelope%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime.Abstractions/Actors/ActorCommandEnvelope.cs/#L33" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+﻿Hexalith.UnitTests.Core.Common.Extensions.ArrayHelperTest
+Hexalith.UnitTests.Core.Common.Extensions.ArrayHelperTest.ArrayHelperTest() -> void
+Hexalith.UnitTests.Core.Common.Extensions.ArrayHelperTest.Interger_into_array_should_contain_value() -> void
+Hexalith.UnitTests.Core.Common.Extensions.ArrayHelperTest.List_into_array_should_contain_integer_value() -> void
+Hexalith.UnitTests.Core.Common.Extensions.ArrayHelperTest.Object_into_array_should_contain_value() -> void
+Hexalith.UnitTests.Core.Common.Extensions.ArrayHelperTest.String_into_array_should_contain_value() -> void
+Hexalith.UnitTests.Core.Common.Extensions.UniqueHelperTest
+Hexalith.UnitTests.Core.Common.Extensions.UniqueHelperTest.Get_a_hundred_concurrent_date_time_id_string_without_any_duplicatesAsync() -> System.Threading.Tasks.Task
+Hexalith.UnitTests.Core.Common.Extensions.UniqueHelperTest.Get_a_hundred_date_time_id_string_without_any_duplicates() -> void
+Hexalith.UnitTests.Core.Common.Extensions.UniqueHelperTest.Get_a_thousand_unique_id_string_without_any_duplicates() -> void
+Hexalith.UnitTests.Core.Common.Extensions.UniqueHelperTest.Get_date_time_id_string_returns_17_chars() -> void
+Hexalith.UnitTests.Core.Common.Extensions.UniqueHelperTest.Get_unique_id_string_returns_22_chars() -> void
+Hexalith.UnitTests.Core.Common.Extensions.UniqueHelperTest.UniqueHelperTest() -> void
+Hexalith.UnitTests.Core.Infrastructure.Client.Dynamics365FinanceClientMockTest
+Hexalith.UnitTests.Core.Infrastructure.Client.Dynamics365FinanceClientMockTest.Build_client_with_mocked_response_should_succeed() -> void
+Hexalith.UnitTests.Core.Infrastructure.Client.Dynamics365FinanceClientMockTest.Dynamics365FinanceClientMockTest() -> void
+Hexalith.UnitTests.Core.Infrastructure.Client.Dynamics365FinanceClientTest
+Hexalith.UnitTests.Core.Infrastructure.Client.Dynamics365FinanceClientTest.Dynamics365FinanceClientTest() -> void
+Hexalith.UnitTests.Core.Infrastructure.Client.Dynamics365FinanceClientTest.Get_should_return_helloAsync() -> System.Threading.Tasks.Task
+Hexalith.UnitTests.Core.Infrastructure.Client.Dynamics365FinanceClientTest.Hello
+Hexalith.UnitTests.Core.Infrastructure.Client.Dynamics365FinanceClientTest.Hello.Hello() -> void
+Hexalith.UnitTests.Core.Infrastructure.Client.Dynamics365FinanceClientTest.Hello.Message.get -> string
+Hexalith.UnitTests.Core.Infrastructure.Client.Dynamics365FinanceClientTest.Hello.Message.init -> void

@@ -1,0 +1,20 @@
+﻿Hexalith.TestMocks.HttpClientFactoryBuilder
+Hexalith.TestMocks.HttpClientFactoryBuilder.Build() -> System.Net.Http.IHttpClientFactory!
+Hexalith.TestMocks.HttpClientFactoryBuilder.BuildMock() -> Moq.Mock<System.Net.Http.IHttpClientFactory!>!
+Hexalith.TestMocks.HttpClientFactoryBuilder.HttpClientFactoryBuilder() -> void
+Hexalith.TestMocks.HttpClientFactoryBuilder.SetHttpMessageHandler(System.Net.Http.HttpMessageHandler! httpHandler) -> Hexalith.TestMocks.HttpClientFactoryBuilder!
+Hexalith.TestMocks.HttpClientFactoryBuilder.SetMockHttpMessageHandler(string! response) -> Hexalith.TestMocks.HttpClientFactoryBuilder!
+Hexalith.TestMocks.IMockBuilder<T>
+Hexalith.TestMocks.IMockBuilder<T>.Build() -> T!
+Hexalith.TestMocks.IMockBuilder<T>.BuildMock() -> Moq.IMock<T!>!
+Hexalith.TestMocks.LoggerBuilder<T>
+Hexalith.TestMocks.LoggerBuilder<T>.Build() -> Microsoft.Extensions.Logging.ILogger<T>!
+Hexalith.TestMocks.LoggerBuilder<T>.BuildMock() -> Moq.IMock<Microsoft.Extensions.Logging.ILogger<T>!>!
+Hexalith.TestMocks.LoggerBuilder<T>.LoggerBuilder() -> void
+Hexalith.TestMocks.OptionsBuilder<T>
+Hexalith.TestMocks.OptionsBuilder<T>.Build() -> Microsoft.Extensions.Options.IOptions<T!>!
+Hexalith.TestMocks.OptionsBuilder<T>.BuildMock() -> Moq.IMock<Microsoft.Extensions.Options.IOptions<T!>!>!
+Hexalith.TestMocks.OptionsBuilder<T>.HasValue.get -> bool
+Hexalith.TestMocks.OptionsBuilder<T>.OptionsBuilder() -> void
+Hexalith.TestMocks.OptionsBuilder<T>.WithValue(T! value) -> Hexalith.TestMocks.OptionsBuilder<T!>!
+Hexalith.TestMocks.OptionsBuilder<T>.WithValueFromConfiguration<TProgram>() -> Hexalith.TestMocks.OptionsBuilder<T!>!

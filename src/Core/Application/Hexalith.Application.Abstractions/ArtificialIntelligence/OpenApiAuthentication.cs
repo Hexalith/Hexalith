@@ -1,0 +1,14 @@
+﻿// <copyright file="OpenApiAuthentication.cs" company="Jérôme Piquot">
+//     Copyright (c) Jérôme Piquot. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+
+namespace Hexalith.Application.ArtificialIntelligence;
+
+/// /// <summary>
+/// Represents the authentication headers for imported OpenAPI Plugin Skills.
+/// </summary>
+public class OpenApiAuthentication : Dictionary<string, string>
+{
+}

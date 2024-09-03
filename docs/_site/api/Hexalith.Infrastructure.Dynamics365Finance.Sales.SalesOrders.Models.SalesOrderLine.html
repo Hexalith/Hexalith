@@ -1,0 +1,794 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class SalesOrderLine
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class SalesOrderLine
+   ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine">
+  
+  
+  <h1 id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine" class="text-break">Class SalesOrderLine
+  </h1>
+  <div class="markdown level0 summary"><p>Class SalesOrderLine.
+Implements the <a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.ODataElement.html">ODataElement</a>
+Implements the <see cref="!:IEquatable&lt;ODataElement>"></see>
+Implements the <a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.IODataElement.html">IODataElement</a>
+Implements the <see cref="!:IEquatable&lt;SalesOrderLine>"></see>.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.ODataCommon.html">ODataCommon</a></div>
+    <div class="level2"><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.ODataElement.html">ODataElement</a></div>
+    <div class="level3"><span class="xref">SalesOrderLine</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.ODataCommon.html">ODataCommon</a>&gt;</div>
+    <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.ODataElement.html">ODataElement</a>&gt;</div>
+    <div><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.IODataElement.html">IODataElement</a></div>
+    <div><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.IODataCommon.html">IODataCommon</a></div>
+    <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.html">SalesOrderLine</a>&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.ODataElement.html#Hexalith_Infrastructure_Dynamics365Finance_Models_ODataElement_DataAreaId">ODataElement.DataAreaId</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.ODataCommon.html#Hexalith_Infrastructure_Dynamics365Finance_Models_ODataCommon_Etag">ODataCommon.Etag</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.html">Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models</a></h6>
+  <h6><strong>Assembly</strong>: Hexalith.Infrastructure.Dynamics365Finance.Sales.dll</h6>
+  <h5 id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataContract]
+public class SalesOrderLine : ODataElement, IEquatable&lt;ODataCommon&gt;, IEquatable&lt;ODataElement&gt;, IODataElement, IODataCommon, IEquatable&lt;SalesOrderLine&gt;</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine__ctor_System_String_System_String_System_String_System_Decimal_System_Int32_System_String_System_String_System_String_System_String_System_String_System_String_System_Decimal_System_Decimal_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.Decimal%2CSystem.Int32%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Decimal%2CSystem.Decimal%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance.Sales/SalesOrders/Models/SalesOrderLine.cs/#L34">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine__ctor_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.#ctor*"></a>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine__ctor_System_String_System_String_System_String_System_Decimal_System_Int32_System_String_System_String_System_String_System_String_System_String_System_String_System_Decimal_System_Decimal_System_String_System_String_System_String_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.#ctor(System.String,System.String,System.String,System.Decimal,System.Int32,System.String,System.String,System.String,System.String,System.String,System.String,System.Decimal,System.Decimal,System.String,System.String,System.String)">SalesOrderLine(String, String, String, Decimal, Int32, String, String, String, String, String, String, Decimal, Decimal, String, String, String)</h4>
+  <div class="markdown level1 summary"><p>Class SalesOrderLine.
+Implements the <a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.ODataElement.html">ODataElement</a>
+Implements the <see cref="!:IEquatable&lt;ODataElement>"></see>
+Implements the <a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.IODataElement.html">IODataElement</a>
+Implements the <see cref="!:IEquatable&lt;SalesOrderLine>"></see>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SalesOrderLine(string Etag, string DataAreaId, string SalesOrderNumber, decimal LineNumber, int CustomersLineNumber, string ItemNumber, string ProductStyleId, string ProductColorId, string ProductSizeId, string ProductConfigurationId, string ProductVersionId, decimal SalesPrice, decimal OrderedSalesQuantity, string SalesUnitSymbol, string GiftCardGiftMessage, string InventoryLotId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">Etag</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">DataAreaId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">SalesOrderNumber</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Decimal</span></td>
+        <td><span class="parametername">LineNumber</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">CustomersLineNumber</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">ItemNumber</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">ProductStyleId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">ProductColorId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">ProductSizeId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">ProductConfigurationId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">ProductVersionId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Decimal</span></td>
+        <td><span class="parametername">SalesPrice</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Decimal</span></td>
+        <td><span class="parametername">OrderedSalesQuantity</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">SalesUnitSymbol</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">GiftCardGiftMessage</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">InventoryLotId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine__ctor_System_String_System_String_System_String_System_Decimal_System_Int32_System_String_System_String_System_String_System_String_System_String_System_String_System_Decimal_System_Decimal_System_String_System_String_System_String__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.ODataElement.html">ODataElement</a></div>
+      <div><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.IODataElement.html">IODataElement</a></div>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_CustomersLineNumber.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.CustomersLineNumber%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance.Sales/SalesOrders/Models/SalesOrderLine.cs/#L40">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_CustomersLineNumber_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.CustomersLineNumber*"></a>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_CustomersLineNumber" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.CustomersLineNumber">CustomersLineNumber</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 5)]
+public int CustomersLineNumber { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_GiftCardGiftMessage.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.GiftCardGiftMessage%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance.Sales/SalesOrders/Models/SalesOrderLine.cs/#L50">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_GiftCardGiftMessage_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.GiftCardGiftMessage*"></a>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_GiftCardGiftMessage" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.GiftCardGiftMessage">GiftCardGiftMessage</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 15)]
+public string GiftCardGiftMessage { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_InventoryLotId.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.InventoryLotId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance.Sales/SalesOrders/Models/SalesOrderLine.cs/#L51">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_InventoryLotId_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.InventoryLotId*"></a>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_InventoryLotId" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.InventoryLotId">InventoryLotId</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 16)]
+public string InventoryLotId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_ItemNumber.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.ItemNumber%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance.Sales/SalesOrders/Models/SalesOrderLine.cs/#L41">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_ItemNumber_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.ItemNumber*"></a>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_ItemNumber" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.ItemNumber">ItemNumber</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 6)]
+public string ItemNumber { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_LineNumber.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.LineNumber%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance.Sales/SalesOrders/Models/SalesOrderLine.cs/#L39">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_LineNumber_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.LineNumber*"></a>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_LineNumber" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.LineNumber">LineNumber</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 4)]
+public decimal LineNumber { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Decimal</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_OrderedSalesQuantity.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.OrderedSalesQuantity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance.Sales/SalesOrders/Models/SalesOrderLine.cs/#L48">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_OrderedSalesQuantity_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.OrderedSalesQuantity*"></a>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_OrderedSalesQuantity" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.OrderedSalesQuantity">OrderedSalesQuantity</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 13)]
+public decimal OrderedSalesQuantity { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Decimal</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_ProductColorId.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.ProductColorId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance.Sales/SalesOrders/Models/SalesOrderLine.cs/#L43">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_ProductColorId_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.ProductColorId*"></a>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_ProductColorId" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.ProductColorId">ProductColorId</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 8)]
+public string ProductColorId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_ProductConfigurationId.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.ProductConfigurationId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance.Sales/SalesOrders/Models/SalesOrderLine.cs/#L45">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_ProductConfigurationId_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.ProductConfigurationId*"></a>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_ProductConfigurationId" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.ProductConfigurationId">ProductConfigurationId</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 10)]
+public string ProductConfigurationId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_ProductSizeId.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.ProductSizeId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance.Sales/SalesOrders/Models/SalesOrderLine.cs/#L44">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_ProductSizeId_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.ProductSizeId*"></a>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_ProductSizeId" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.ProductSizeId">ProductSizeId</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 9)]
+public string ProductSizeId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_ProductStyleId.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.ProductStyleId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance.Sales/SalesOrders/Models/SalesOrderLine.cs/#L42">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_ProductStyleId_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.ProductStyleId*"></a>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_ProductStyleId" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.ProductStyleId">ProductStyleId</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 7)]
+public string ProductStyleId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_ProductVersionId.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.ProductVersionId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance.Sales/SalesOrders/Models/SalesOrderLine.cs/#L46">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_ProductVersionId_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.ProductVersionId*"></a>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_ProductVersionId" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.ProductVersionId">ProductVersionId</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 11)]
+public string ProductVersionId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_SalesOrderNumber.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.SalesOrderNumber%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance.Sales/SalesOrders/Models/SalesOrderLine.cs/#L38">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_SalesOrderNumber_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.SalesOrderNumber*"></a>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_SalesOrderNumber" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.SalesOrderNumber">SalesOrderNumber</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 3)]
+public string SalesOrderNumber { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_SalesPrice.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.SalesPrice%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance.Sales/SalesOrders/Models/SalesOrderLine.cs/#L47">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_SalesPrice_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.SalesPrice*"></a>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_SalesPrice" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.SalesPrice">SalesPrice</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 12)]
+public decimal SalesPrice { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Decimal</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_SalesUnitSymbol.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.SalesUnitSymbol%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance.Sales/SalesOrders/Models/SalesOrderLine.cs/#L49">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_SalesUnitSymbol_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.SalesUnitSymbol*"></a>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_SalesUnitSymbol" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.SalesUnitSymbol">SalesUnitSymbol</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 14)]
+public string SalesUnitSymbol { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_EntityName.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.EntityName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance.Sales/SalesOrders/Models/SalesOrderLine.cs/#L58">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_EntityName_" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.EntityName*"></a>
+  <h4 id="Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine_EntityName" data-uid="Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine.EntityName">EntityName()</h4>
+  <div class="markdown level1 summary"><p>Entities the name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string EntityName()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>System.String.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IEquatable&lt;T&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.IEquatable&lt;T&gt;</span>
+  </div>
+  <div>
+      <a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.IODataElement.html">IODataElement</a>
+  </div>
+  <div>
+      <a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.IODataCommon.html">IODataCommon</a>
+  </div>
+  <div>
+      <span class="xref">System.IEquatable&lt;T&gt;</span>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSame_System_Object_System_Object_">EquatableHelper.AreSame(Object, Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hexalith.Extensions.Reflections.ObjectDifferenceHelper.html#Hexalith_Extensions_Reflections_ObjectDifferenceHelper_GetDifferenceInformation_System_Object_System_Object_">ObjectDifferenceHelper.GetDifferenceInformation(Object, Object)</a>
+  </div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.ODataElement.html">ODataElement</a></div>
+      <div><a class="xref" href="Hexalith.Infrastructure.Dynamics365Finance.Models.IODataElement.html">IODataElement</a></div>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_Dynamics365Finance_Sales_SalesOrders_Models_SalesOrderLine.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.Dynamics365Finance.Sales.SalesOrders.Models.SalesOrderLine%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.Dynamics365Finance.Sales/SalesOrders/Models/SalesOrderLine.cs/#L34" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,774 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ProjectionStateManager
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ProjectionStateManager
+   ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Hexalith.Application.States.ProjectionStateManager">
+  
+  
+  <h1 id="Hexalith_Application_States_ProjectionStateManager" data-uid="Hexalith.Application.States.ProjectionStateManager" class="text-break">Class ProjectionStateManager
+  </h1>
+  <div class="markdown level0 summary"><p>Projection State Manager.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ProjectionStateManager</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Hexalith.Application.Projections.IProjectionStateManager.html">IProjectionStateManager</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Hexalith.Application.States.html">Hexalith.Application.States</a></h6>
+  <h6><strong>Assembly</strong>: Hexalith.Application.dll</h6>
+  <h5 id="Hexalith_Application_States_ProjectionStateManager_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ProjectionStateManager : IProjectionStateManager</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_States_ProjectionStateManager__ctor_Hexalith_Application_Notifications_INotificationBus_Hexalith_Extensions_Common_IDateTimeService_.md&amp;value=---%0Auid%3A%20Hexalith.Application.States.ProjectionStateManager.%23ctor(Hexalith.Application.Notifications.INotificationBus%2CHexalith.Extensions.Common.IDateTimeService)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/States/ProjectionStateManager.cs/#L42">View Source</a>
+  </span>
+  <a id="Hexalith_Application_States_ProjectionStateManager__ctor_" data-uid="Hexalith.Application.States.ProjectionStateManager.#ctor*"></a>
+  <h4 id="Hexalith_Application_States_ProjectionStateManager__ctor_Hexalith_Application_Notifications_INotificationBus_Hexalith_Extensions_Common_IDateTimeService_" data-uid="Hexalith.Application.States.ProjectionStateManager.#ctor(Hexalith.Application.Notifications.INotificationBus,Hexalith.Extensions.Common.IDateTimeService)">ProjectionStateManager(INotificationBus, IDateTimeService)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Application.States.ProjectionStateManager.html">ProjectionStateManager</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ProjectionStateManager(INotificationBus notificationBus, IDateTimeService dateTimeService)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.Notifications.INotificationBus.html">INotificationBus</a></td>
+        <td><span class="parametername">notificationBus</span></td>
+        <td><p>The notification bus.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.Extensions.Common.IDateTimeService.html">IDateTimeService</a></td>
+        <td><span class="parametername">dateTimeService</span></td>
+        <td><p>The date time service.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_States_ProjectionStateManager_EventsStreamName.md&amp;value=---%0Auid%3A%20Hexalith.Application.States.ProjectionStateManager.EventsStreamName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/States/ProjectionStateManager.cs/#L56">View Source</a>
+  </span>
+  <a id="Hexalith_Application_States_ProjectionStateManager_EventsStreamName_" data-uid="Hexalith.Application.States.ProjectionStateManager.EventsStreamName*"></a>
+  <h4 id="Hexalith_Application_States_ProjectionStateManager_EventsStreamName" data-uid="Hexalith.Application.States.ProjectionStateManager.EventsStreamName">EventsStreamName</h4>
+  <div class="markdown level1 summary"><p>Gets to do state name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual string EventsStreamName { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The name of to do state.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_States_ProjectionStateManager_NotificationBus.md&amp;value=---%0Auid%3A%20Hexalith.Application.States.ProjectionStateManager.NotificationBus%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/States/ProjectionStateManager.cs/#L79">View Source</a>
+  </span>
+  <a id="Hexalith_Application_States_ProjectionStateManager_NotificationBus_" data-uid="Hexalith.Application.States.ProjectionStateManager.NotificationBus*"></a>
+  <h4 id="Hexalith_Application_States_ProjectionStateManager_NotificationBus" data-uid="Hexalith.Application.States.ProjectionStateManager.NotificationBus">NotificationBus</h4>
+  <div class="markdown level1 summary"><p>Gets the notification bus.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected INotificationBus NotificationBus { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.Notifications.INotificationBus.html">INotificationBus</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_States_ProjectionStateManager_ResiliencyPolicyStateName.md&amp;value=---%0Auid%3A%20Hexalith.Application.States.ProjectionStateManager.ResiliencyPolicyStateName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/States/ProjectionStateManager.cs/#L62">View Source</a>
+  </span>
+  <a id="Hexalith_Application_States_ProjectionStateManager_ResiliencyPolicyStateName_" data-uid="Hexalith.Application.States.ProjectionStateManager.ResiliencyPolicyStateName*"></a>
+  <h4 id="Hexalith_Application_States_ProjectionStateManager_ResiliencyPolicyStateName" data-uid="Hexalith.Application.States.ProjectionStateManager.ResiliencyPolicyStateName">ResiliencyPolicyStateName</h4>
+  <div class="markdown level1 summary"><p>Gets the name of the resiliency policy state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual string ResiliencyPolicyStateName { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The name of the resiliency policy state.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_States_ProjectionStateManager_Separator.md&amp;value=---%0Auid%3A%20Hexalith.Application.States.ProjectionStateManager.Separator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/States/ProjectionStateManager.cs/#L68">View Source</a>
+  </span>
+  <a id="Hexalith_Application_States_ProjectionStateManager_Separator_" data-uid="Hexalith.Application.States.ProjectionStateManager.Separator*"></a>
+  <h4 id="Hexalith_Application_States_ProjectionStateManager_Separator" data-uid="Hexalith.Application.States.ProjectionStateManager.Separator">Separator</h4>
+  <div class="markdown level1 summary"><p>Gets the separator.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual string Separator { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The separator.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_States_ProjectionStateManager_StateName.md&amp;value=---%0Auid%3A%20Hexalith.Application.States.ProjectionStateManager.StateName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/States/ProjectionStateManager.cs/#L74">View Source</a>
+  </span>
+  <a id="Hexalith_Application_States_ProjectionStateManager_StateName_" data-uid="Hexalith.Application.States.ProjectionStateManager.StateName*"></a>
+  <h4 id="Hexalith_Application_States_ProjectionStateManager_StateName" data-uid="Hexalith.Application.States.ProjectionStateManager.StateName">StateName</h4>
+  <div class="markdown level1 summary"><p>Gets the name of the state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual string StateName { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The name of the state.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_States_ProjectionStateManager_AddEventAsync_Hexalith_Application_States_IStateStoreProvider_Hexalith_Domain_Events_BaseEvent___Hexalith_Application_Metadatas_BaseMetadata___System_Func_System_String_System_Byte___System_TimeSpan_System_TimeSpan_Task__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.States.ProjectionStateManager.AddEventAsync(Hexalith.Application.States.IStateStoreProvider%2CHexalith.Domain.Events.BaseEvent%5B%5D%2CHexalith.Application.Metadatas.BaseMetadata%5B%5D%2CSystem.Func%7BSystem.String%2CSystem.Byte%5B%5D%2CSystem.TimeSpan%2CSystem.TimeSpan%2CTask%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/States/ProjectionStateManager.cs/#L91">View Source</a>
+  </span>
+  <a id="Hexalith_Application_States_ProjectionStateManager_AddEventAsync_" data-uid="Hexalith.Application.States.ProjectionStateManager.AddEventAsync*"></a>
+  <h4 id="Hexalith_Application_States_ProjectionStateManager_AddEventAsync_Hexalith_Application_States_IStateStoreProvider_Hexalith_Domain_Events_BaseEvent___Hexalith_Application_Metadatas_BaseMetadata___System_Func_System_String_System_Byte___System_TimeSpan_System_TimeSpan_Task__System_Threading_CancellationToken_" data-uid="Hexalith.Application.States.ProjectionStateManager.AddEventAsync(Hexalith.Application.States.IStateStoreProvider,Hexalith.Domain.Events.BaseEvent[],Hexalith.Application.Metadatas.BaseMetadata[],System.Func{System.String,System.Byte[],System.TimeSpan,System.TimeSpan,Task},System.Threading.CancellationToken)">AddEventAsync(IStateStoreProvider, BaseEvent[], BaseMetadata[], Func&lt;String, Byte[], TimeSpan, TimeSpan, Task&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Add command as an asynchronous operation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task AddEventAsync(IStateStoreProvider stateProvider, BaseEvent[] events, BaseMetadata[] metadatas, Func&lt;string, byte[], TimeSpan, TimeSpan, Task&gt; registerReminder, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.States.IStateStoreProvider.html">IStateStoreProvider</a></td>
+        <td><span class="parametername">stateProvider</span></td>
+        <td><p>The state provider.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">BaseEvent</a>[]</td>
+        <td><span class="parametername">events</span></td>
+        <td><p>The events.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.Metadatas.BaseMetadata.html">BaseMetadata</a>[]</td>
+        <td><span class="parametername">metadatas</span></td>
+        <td><p>The metadatas.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Byte</span>[], <span class="xref">System.TimeSpan</span>, <span class="xref">System.TimeSpan</span>, <span class="xref">Task</span>&gt;</td>
+        <td><span class="parametername">registerReminder</span></td>
+        <td><p>The register reminder.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td><p>A Task representing the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_States_ProjectionStateManager_ContinueAsync_Hexalith_Application_States_IStateStoreProvider_Hexalith_Application_Tasks_ResiliencyPolicy_Hexalith_Application_Projections_IProjection_System_Func_System_String_System_Byte___System_TimeSpan_System_TimeSpan_Task__System_Func_System_String_Task__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.States.ProjectionStateManager.ContinueAsync(Hexalith.Application.States.IStateStoreProvider%2CHexalith.Application.Tasks.ResiliencyPolicy%2CHexalith.Application.Projections.IProjection%2CSystem.Func%7BSystem.String%2CSystem.Byte%5B%5D%2CSystem.TimeSpan%2CSystem.TimeSpan%2CTask%7D%2CSystem.Func%7BSystem.String%2CTask%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/States/ProjectionStateManager.cs/#L134">View Source</a>
+  </span>
+  <a id="Hexalith_Application_States_ProjectionStateManager_ContinueAsync_" data-uid="Hexalith.Application.States.ProjectionStateManager.ContinueAsync*"></a>
+  <h4 id="Hexalith_Application_States_ProjectionStateManager_ContinueAsync_Hexalith_Application_States_IStateStoreProvider_Hexalith_Application_Tasks_ResiliencyPolicy_Hexalith_Application_Projections_IProjection_System_Func_System_String_System_Byte___System_TimeSpan_System_TimeSpan_Task__System_Func_System_String_Task__System_Threading_CancellationToken_" data-uid="Hexalith.Application.States.ProjectionStateManager.ContinueAsync(Hexalith.Application.States.IStateStoreProvider,Hexalith.Application.Tasks.ResiliencyPolicy,Hexalith.Application.Projections.IProjection,System.Func{System.String,System.Byte[],System.TimeSpan,System.TimeSpan,Task},System.Func{System.String,Task},System.Threading.CancellationToken)">ContinueAsync(IStateStoreProvider, ResiliencyPolicy, IProjection, Func&lt;String, Byte[], TimeSpan, TimeSpan, Task&gt;, Func&lt;String, Task&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Continue as an asynchronous operation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task ContinueAsync(IStateStoreProvider stateProvider, ResiliencyPolicy resiliencyPolicy, IProjection projection, Func&lt;string, byte[], TimeSpan, TimeSpan, Task&gt; registerReminder, Func&lt;string, Task&gt; unregisterReminder, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.States.IStateStoreProvider.html">IStateStoreProvider</a></td>
+        <td><span class="parametername">stateProvider</span></td>
+        <td><p>The state provider.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.Tasks.ResiliencyPolicy.html">ResiliencyPolicy</a></td>
+        <td><span class="parametername">resiliencyPolicy</span></td>
+        <td><p>The resiliency policy.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.Projections.IProjection.html">IProjection</a></td>
+        <td><span class="parametername">projection</span></td>
+        <td><p>The projection.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Byte</span>[], <span class="xref">System.TimeSpan</span>, <span class="xref">System.TimeSpan</span>, <span class="xref">Task</span>&gt;</td>
+        <td><span class="parametername">registerReminder</span></td>
+        <td><p>The register reminder.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.String</span>, <span class="xref">Task</span>&gt;</td>
+        <td><span class="parametername">unregisterReminder</span></td>
+        <td><p>The remove reminder.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td><p>A Task&lt;IProjection&gt; representing the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_States_ProjectionStateManager_ExecuteEventsAsync_Hexalith_Application_States_IStateStoreProvider_Hexalith_Application_Projections_IProjection_Hexalith_Application_Tasks_ResiliencyPolicy_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.States.ProjectionStateManager.ExecuteEventsAsync(Hexalith.Application.States.IStateStoreProvider%2CHexalith.Application.Projections.IProjection%2CHexalith.Application.Tasks.ResiliencyPolicy%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/States/ProjectionStateManager.cs/#L206">View Source</a>
+  </span>
+  <a id="Hexalith_Application_States_ProjectionStateManager_ExecuteEventsAsync_" data-uid="Hexalith.Application.States.ProjectionStateManager.ExecuteEventsAsync*"></a>
+  <h4 id="Hexalith_Application_States_ProjectionStateManager_ExecuteEventsAsync_Hexalith_Application_States_IStateStoreProvider_Hexalith_Application_Projections_IProjection_Hexalith_Application_Tasks_ResiliencyPolicy_System_Threading_CancellationToken_" data-uid="Hexalith.Application.States.ProjectionStateManager.ExecuteEventsAsync(Hexalith.Application.States.IStateStoreProvider,Hexalith.Application.Projections.IProjection,Hexalith.Application.Tasks.ResiliencyPolicy,System.Threading.CancellationToken)">ExecuteEventsAsync(IStateStoreProvider, IProjection, ResiliencyPolicy, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Execute events as an asynchronous operation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected async Task&lt;DateTimeOffset?&gt; ExecuteEventsAsync(IStateStoreProvider stateProvider, IProjection projection, ResiliencyPolicy resiliencyPolicy, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.States.IStateStoreProvider.html">IStateStoreProvider</a></td>
+        <td><span class="parametername">stateProvider</span></td>
+        <td><p>The state provider.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.Projections.IProjection.html">IProjection</a></td>
+        <td><span class="parametername">projection</span></td>
+        <td><p>The aggregate.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.Tasks.ResiliencyPolicy.html">ResiliencyPolicy</a></td>
+        <td><span class="parametername">resiliencyPolicy</span></td>
+        <td><p>The resiliency policy.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTimeOffset</span>&gt;&gt;</td>
+        <td><p>A Task&lt;System.ValueTuple&gt; representing the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>Event {nextEvent} content is null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>Event {nextEvent} metadata is null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_States_ProjectionStateManager_GetEventCountAsync_Hexalith_Application_States_IStateStoreProvider_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.States.ProjectionStateManager.GetEventCountAsync(Hexalith.Application.States.IStateStoreProvider%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/States/ProjectionStateManager.cs/#L173">View Source</a>
+  </span>
+  <a id="Hexalith_Application_States_ProjectionStateManager_GetEventCountAsync_" data-uid="Hexalith.Application.States.ProjectionStateManager.GetEventCountAsync*"></a>
+  <h4 id="Hexalith_Application_States_ProjectionStateManager_GetEventCountAsync_Hexalith_Application_States_IStateStoreProvider_System_Threading_CancellationToken_" data-uid="Hexalith.Application.States.ProjectionStateManager.GetEventCountAsync(Hexalith.Application.States.IStateStoreProvider,System.Threading.CancellationToken)">GetEventCountAsync(IStateStoreProvider, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;long&gt; GetEventCountAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.States.IStateStoreProvider.html">IStateStoreProvider</a></td>
+        <td><span class="parametername">stateProvider</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">System.Int64</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_States_ProjectionStateManager_GetEventsAsync_Hexalith_Application_States_IStateStoreProvider_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Application.States.ProjectionStateManager.GetEventsAsync(Hexalith.Application.States.IStateStoreProvider%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/States/ProjectionStateManager.cs/#L181">View Source</a>
+  </span>
+  <a id="Hexalith_Application_States_ProjectionStateManager_GetEventsAsync_" data-uid="Hexalith.Application.States.ProjectionStateManager.GetEventsAsync*"></a>
+  <h4 id="Hexalith_Application_States_ProjectionStateManager_GetEventsAsync_Hexalith_Application_States_IStateStoreProvider_System_Threading_CancellationToken_" data-uid="Hexalith.Application.States.ProjectionStateManager.GetEventsAsync(Hexalith.Application.States.IStateStoreProvider,System.Threading.CancellationToken)">GetEventsAsync(IStateStoreProvider, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;IEnumerable&lt;BaseEvent&gt;&gt; GetEventsAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.States.IStateStoreProvider.html">IStateStoreProvider</a></td>
+        <td><span class="parametername">stateProvider</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">IEnumerable</span>&lt;<a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">BaseEvent</a>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Hexalith.Application.Projections.IProjectionStateManager.html">IProjectionStateManager</a>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSame_System_Object_System_Object_">EquatableHelper.AreSame(Object, Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hexalith.Extensions.Helpers.VersionHelper.html#Hexalith_Extensions_Helpers_VersionHelper_ProductVersion_System_Object_">VersionHelper.ProductVersion(Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hexalith.Extensions.Reflections.ObjectDifferenceHelper.html#Hexalith_Extensions_Reflections_ObjectDifferenceHelper_GetDifferenceInformation_System_Object_System_Object_">ObjectDifferenceHelper.GetDifferenceInformation(Object, Object)</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_States_ProjectionStateManager.md&amp;value=---%0Auid%3A%20Hexalith.Application.States.ProjectionStateManager%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/States/ProjectionStateManager.cs/#L24" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

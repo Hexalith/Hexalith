@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SourceGeneratorDebug": {
+      "commandName": "DebugRoslynComponent",
+      "targetProject": "..\\..\\..\\..\\..\\src\\Domain\\Manhole.Events\\Manhole.Events.csproj"
+    }
+  }
+}

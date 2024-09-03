@@ -1,0 +1,80 @@
+﻿<FluentAutocomplete TOption="ViewModels.IdDescription"
+					OnOptionsSearch="@OnSearchAsync"
+					SelectedOptionsChanged="OnSelectedOptionsChanged"
+					SelectedOptions="_selectedOptions"
+					MaximumSelectedOptions="1"
+					MaximumOptionsSearch="MaximumOptionsSearch"
+					Multiple="true"
+					Label="@Label"
+					Placeholder="@Placeholder"
+					Width="@Width"
+					OptionText="@(item => item.Description)" />
+
+@code
+{
+	[Parameter, EditorRequired]
+	public Services.IIdDescriptionService? Service { get; set; }
+
+	IEnumerable<ViewModels.IdDescription>? _selectedOptions;
+
+	[Parameter]
+	public string? Id { get; set; }
+
+	[Parameter]
+	public EventCallback<string?> IdChanged { get; set; }
+
+	[Parameter]
+	public string? Width { get; set; } = "100%";
+
+	[Parameter]
+	public string? Label { get; set; }
+
+	[Parameter]
+	public string? Placeholder { get; set; }
+
+	[Parameter]
+	public int MaximumOptionsSearch { get; set; } = 100;
+
+	protected async override Task OnParametersSetAsync()
+	{
+		if (!string.IsNullOrWhiteSpace(Id) && Service is not null)
+		{
+			try
+			{
+				var value = await Service.GetIdDescriptionAsync(Id, CancellationToken.None);
+				_selectedOptions = [value];
+			}
+			catch (Exception e)
+			{
+				_selectedOptions = null;
+				var values = (await Service.GetIdDescriptionsAsync(CancellationToken.None)).Select(p => p.Id).ToList();
+				throw new InvalidOperationException($"Error while getting the value for {Id} for {Label}. Available options : {string.Join(" ,", values)}", e);
+			}
+		}
+		else
+		{
+			_selectedOptions = null;
+		}
+		await base.OnParametersSetAsync();
+	}
+
+	private async Task OnSearchAsync(OptionsSearchEventArgs<ViewModels.IdDescription> e)
+	{
+		if (Service is not null)
+		{
+			e.Items = await Service.SearchIdDescriptionsAsync(e.Text, 0, MaximumOptionsSearch, CancellationToken.None);
+		}
+	}
+	private async Task OnSelectedOptionsChanged(IEnumerable<ViewModels.IdDescription>? options)
+	{
+		if (options is null || !options.Any())
+		{
+			_selectedOptions = null;
+			Id = null;
+			return;
+		}
+		_selectedOptions = options.Take(1);
+		Id = _selectedOptions.First().Id;
+		await IdChanged.InvokeAsync(Id);
+	}
+}

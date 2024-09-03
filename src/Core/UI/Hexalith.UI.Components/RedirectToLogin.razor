@@ -1,0 +1,12 @@
+﻿@inject NavigationManager NavigationManager
+@inject IApplication Application
+
+@code {
+    protected override void OnInitialized()
+    {
+        NavigationManager
+            .NavigateTo(
+                $"{Application.LoginPath}?returnUrl={Uri.EscapeDataString(NavigationManager.Uri)}", 
+                forceLoad: true);
+    }
+}

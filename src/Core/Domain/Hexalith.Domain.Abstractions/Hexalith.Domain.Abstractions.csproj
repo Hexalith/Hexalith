@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+		<RootNamespace>Hexalith.Domain</RootNamespace>
+	</PropertyGroup>
+	<ItemGroup>
+	  <Compile Remove="ValueObject\**" />
+	  <EmbeddedResource Remove="ValueObject\**" />
+	  <None Remove="ValueObject\**" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Common\Hexalith.Extensions\Hexalith.Extensions.csproj" />
+	</ItemGroup>
+</Project>

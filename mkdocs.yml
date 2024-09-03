@@ -1,0 +1,11 @@
+site_name: Hexalith
+nav:
+    - Home: index.md
+    - Getting Started:
+        - Create Hexalith application: getting-started/create-application.md
+        - getting-started/preview-package-source.md
+    - Hexalith Core:
+        - Hexalith.Extensions: ../src/Core/Hexalith.Extensions/README.md
+        
+theme: readthedocs
+repo_url: https://github.com/Hexalith/Hexalith/

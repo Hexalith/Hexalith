@@ -1,0 +1,553 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ApplicationError
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ApplicationError
+   ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Hexalith.Extensions.Common.ApplicationError">
+  
+  
+  <h1 id="Hexalith_Extensions_Common_ApplicationError" data-uid="Hexalith.Extensions.Common.ApplicationError" class="text-break">Class ApplicationError
+  </h1>
+  <div class="markdown level0 summary"><p>Event deserialization error.
+Implements the <a class="xref" href="Hexalith.Extensions.Common.ErrorCategory.html">ErrorCategory</a>.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ApplicationError</span></div>
+      <div class="level2"><a class="xref" href="Hexalith.Application.Events.EventDeserializationFailed.html">EventDeserializationFailed</a></div>
+      <div class="level2"><a class="xref" href="Hexalith.Application.Events.EventDispatchFailed.html">EventDispatchFailed</a></div>
+      <div class="level2"><a class="xref" href="Hexalith.Application.Events.EventNotSupportedByDispatcher.html">EventNotSupportedByDispatcher</a></div>
+      <div class="level2"><a class="xref" href="Hexalith.Application.Events.EventValidationFailed.html">EventValidationFailed</a></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="Hexalith.Extensions.Common.ApplicationError.html">ApplicationError</a>&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Hexalith.Extensions.Common.html">Hexalith.Extensions.Common</a></h6>
+  <h6><strong>Assembly</strong>: Hexalith.Extensions.dll</h6>
+  <h5 id="Hexalith_Extensions_Common_ApplicationError_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataContract]
+public class ApplicationError : IEquatable&lt;ApplicationError&gt;</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Extensions_Common_ApplicationError_Arguments.md&amp;value=---%0Auid%3A%20Hexalith.Extensions.Common.ApplicationError.Arguments%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Common/Hexalith.Extensions/Common/ApplicationError.cs/#L26">View Source</a>
+  </span>
+  <a id="Hexalith_Extensions_Common_ApplicationError_Arguments_" data-uid="Hexalith.Extensions.Common.ApplicationError.Arguments*"></a>
+  <h4 id="Hexalith_Extensions_Common_ApplicationError_Arguments" data-uid="Hexalith.Extensions.Common.ApplicationError.Arguments">Arguments</h4>
+  <div class="markdown level1 summary"><p>Gets a the explanation arguments.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;object&gt;? Arguments { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">IEnumerable</span>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
+        <td><p>The arguments.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Extensions_Common_ApplicationError_Category.md&amp;value=---%0Auid%3A%20Hexalith.Extensions.Common.ApplicationError.Category%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Common/Hexalith.Extensions/Common/ApplicationError.cs/#L66">View Source</a>
+  </span>
+  <a id="Hexalith_Extensions_Common_ApplicationError_Category_" data-uid="Hexalith.Extensions.Common.ApplicationError.Category*"></a>
+  <h4 id="Hexalith_Extensions_Common_ApplicationError_Category" data-uid="Hexalith.Extensions.Common.ApplicationError.Category">Category</h4>
+  <div class="markdown level1 summary"><p>Gets the error type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember]
+public ErrorCategory Category { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Extensions.Common.ErrorCategory.html">ErrorCategory</a></td>
+        <td><p>The category.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Extensions_Common_ApplicationError_Detail.md&amp;value=---%0Auid%3A%20Hexalith.Extensions.Common.ApplicationError.Detail%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Common/Hexalith.Extensions/Common/ApplicationError.cs/#L38">View Source</a>
+  </span>
+  <a id="Hexalith_Extensions_Common_ApplicationError_Detail_" data-uid="Hexalith.Extensions.Common.ApplicationError.Detail*"></a>
+  <h4 id="Hexalith_Extensions_Common_ApplicationError_Detail" data-uid="Hexalith.Extensions.Common.ApplicationError.Detail">Detail</h4>
+  <div class="markdown level1 summary"><p>Gets a human-readable explanation specific to this occurrence of the problem.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember]
+public string Detail { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The detail.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Extensions_Common_ApplicationError_InnerError.md&amp;value=---%0Auid%3A%20Hexalith.Extensions.Common.ApplicationError.InnerError%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Common/Hexalith.Extensions/Common/ApplicationError.cs/#L52">View Source</a>
+  </span>
+  <a id="Hexalith_Extensions_Common_ApplicationError_InnerError_" data-uid="Hexalith.Extensions.Common.ApplicationError.InnerError*"></a>
+  <h4 id="Hexalith_Extensions_Common_ApplicationError_InnerError" data-uid="Hexalith.Extensions.Common.ApplicationError.InnerError">InnerError</h4>
+  <div class="markdown level1 summary"><p>Gets the inner error.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember]
+public ApplicationError InnerError { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Extensions.Common.ApplicationError.html">ApplicationError</a></td>
+        <td><p>The inner error.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Extensions_Common_ApplicationError_TechnicalArguments.md&amp;value=---%0Auid%3A%20Hexalith.Extensions.Common.ApplicationError.TechnicalArguments%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Common/Hexalith.Extensions/Common/ApplicationError.cs/#L32">View Source</a>
+  </span>
+  <a id="Hexalith_Extensions_Common_ApplicationError_TechnicalArguments_" data-uid="Hexalith.Extensions.Common.ApplicationError.TechnicalArguments*"></a>
+  <h4 id="Hexalith_Extensions_Common_ApplicationError_TechnicalArguments" data-uid="Hexalith.Extensions.Common.ApplicationError.TechnicalArguments">TechnicalArguments</h4>
+  <div class="markdown level1 summary"><p>Gets a the technical explanation arguments.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;object&gt;? TechnicalArguments { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">IEnumerable</span>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
+        <td><p>The technical arguments.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Extensions_Common_ApplicationError_TechnicalDetail.md&amp;value=---%0Auid%3A%20Hexalith.Extensions.Common.ApplicationError.TechnicalDetail%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Common/Hexalith.Extensions/Common/ApplicationError.cs/#L45">View Source</a>
+  </span>
+  <a id="Hexalith_Extensions_Common_ApplicationError_TechnicalDetail_" data-uid="Hexalith.Extensions.Common.ApplicationError.TechnicalDetail*"></a>
+  <h4 id="Hexalith_Extensions_Common_ApplicationError_TechnicalDetail" data-uid="Hexalith.Extensions.Common.ApplicationError.TechnicalDetail">TechnicalDetail</h4>
+  <div class="markdown level1 summary"><p>Gets more information on the technical reason on the error.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember]
+public string TechnicalDetail { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The technical detail.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Extensions_Common_ApplicationError_Title.md&amp;value=---%0Auid%3A%20Hexalith.Extensions.Common.ApplicationError.Title%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Common/Hexalith.Extensions/Common/ApplicationError.cs/#L73">View Source</a>
+  </span>
+  <a id="Hexalith_Extensions_Common_ApplicationError_Title_" data-uid="Hexalith.Extensions.Common.ApplicationError.Title*"></a>
+  <h4 id="Hexalith_Extensions_Common_ApplicationError_Title" data-uid="Hexalith.Extensions.Common.ApplicationError.Title">Title</h4>
+  <div class="markdown level1 summary"><p>Gets error type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember]
+public string Title { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The title.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Extensions_Common_ApplicationError_Type.md&amp;value=---%0Auid%3A%20Hexalith.Extensions.Common.ApplicationError.Type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Common/Hexalith.Extensions/Common/ApplicationError.cs/#L59">View Source</a>
+  </span>
+  <a id="Hexalith_Extensions_Common_ApplicationError_Type_" data-uid="Hexalith.Extensions.Common.ApplicationError.Type*"></a>
+  <h4 id="Hexalith_Extensions_Common_ApplicationError_Type" data-uid="Hexalith.Extensions.Common.ApplicationError.Type">Type</h4>
+  <div class="markdown level1 summary"><p>Gets the error type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember]
+public string Type { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Extensions_Common_ApplicationError_GetDetailMessage_System_IFormatProvider_.md&amp;value=---%0Auid%3A%20Hexalith.Extensions.Common.ApplicationError.GetDetailMessage(System.IFormatProvider)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Common/Hexalith.Extensions/Common/ApplicationError.cs/#L81">View Source</a>
+  </span>
+  <a id="Hexalith_Extensions_Common_ApplicationError_GetDetailMessage_" data-uid="Hexalith.Extensions.Common.ApplicationError.GetDetailMessage*"></a>
+  <h4 id="Hexalith_Extensions_Common_ApplicationError_GetDetailMessage_System_IFormatProvider_" data-uid="Hexalith.Extensions.Common.ApplicationError.GetDetailMessage(System.IFormatProvider)">GetDetailMessage(IFormatProvider)</h4>
+  <div class="markdown level1 summary"><p>Gets the detail message.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetDetailMessage(IFormatProvider formatProvider)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IFormatProvider</span></td>
+        <td><span class="parametername">formatProvider</span></td>
+        <td><p>The format provider.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>System.String.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Extensions_Common_ApplicationError_GetTechnicalMessage_System_IFormatProvider_.md&amp;value=---%0Auid%3A%20Hexalith.Extensions.Common.ApplicationError.GetTechnicalMessage(System.IFormatProvider)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Common/Hexalith.Extensions/Common/ApplicationError.cs/#L89">View Source</a>
+  </span>
+  <a id="Hexalith_Extensions_Common_ApplicationError_GetTechnicalMessage_" data-uid="Hexalith.Extensions.Common.ApplicationError.GetTechnicalMessage*"></a>
+  <h4 id="Hexalith_Extensions_Common_ApplicationError_GetTechnicalMessage_System_IFormatProvider_" data-uid="Hexalith.Extensions.Common.ApplicationError.GetTechnicalMessage(System.IFormatProvider)">GetTechnicalMessage(IFormatProvider)</h4>
+  <div class="markdown level1 summary"><p>Gets the technical message.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetTechnicalMessage(IFormatProvider formatProvider)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IFormatProvider</span></td>
+        <td><span class="parametername">formatProvider</span></td>
+        <td><p>The format provider.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>System.Nullable&lt;System.String&gt;.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IEquatable&lt;T&gt;</span>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSame_System_Object_System_Object_">EquatableHelper.AreSame(Object, Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hexalith.Extensions.Helpers.LoggerHelper.html#Hexalith_Extensions_Helpers_LoggerHelper_LogApplicationErrorDetails_Hexalith_Extensions_Common_ApplicationError_Microsoft_Extensions_Logging_ILogger_System_Exception_">LoggerHelper.LogApplicationErrorDetails(ApplicationError, ILogger, Exception)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hexalith.Extensions.Helpers.VersionHelper.html#Hexalith_Extensions_Helpers_VersionHelper_ProductVersion_System_Object_">VersionHelper.ProductVersion(Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hexalith.Extensions.Reflections.ObjectDifferenceHelper.html#Hexalith_Extensions_Reflections_ObjectDifferenceHelper_GetDifferenceInformation_System_Object_System_Object_">ObjectDifferenceHelper.GetDifferenceInformation(Object, Object)</a>
+  </div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><a class="xref" href="Hexalith.Extensions.Common.ErrorCategory.html">ErrorCategory</a></div>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Extensions_Common_ApplicationError.md&amp;value=---%0Auid%3A%20Hexalith.Extensions.Common.ApplicationError%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Common/Hexalith.Extensions/Common/ApplicationError.cs/#L19" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+﻿// <copyright file="ErrorCategory.cs">
+//     Copyright (c) Jérôme Piquot. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+
+namespace Hexalith.Extensions.Common;
+
+/// <summary>
+/// Enum ErrorType.
+/// </summary>
+public enum ErrorCategory
+{
+    /// <summary>
+    /// Unknown error type.
+    /// </summary>
+    Unknown,
+
+    /// <summary>
+    /// Functional error type.
+    /// </summary>
+    Functional,
+
+    /// <summary>
+    /// Technical error type.
+    /// </summary>
+    Technical,
+}

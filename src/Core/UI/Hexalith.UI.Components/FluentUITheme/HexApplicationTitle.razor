@@ -1,0 +1,22 @@
+@using System.ComponentModel
+@inject IApplication Application
+
+@inherits HexBase 
+@inject IStringLocalizer<SharedResources> SharedLocalizer
+<title>@_title</title>
+<FluentLabel Typo="@Typo" Color="Color.Disabled">@_title</FluentLabel>
+@code {
+	[Parameter]
+	public Typography Typo { get; set; } = Typography.PageTitle;
+	private string? _title;
+
+
+	protected override void OnParametersSet()
+	{
+		if (!string.IsNullOrEmpty(Application.Name))
+		{
+			_title = SharedLocalizer[Application.Name];
+		}
+	}
+
+}

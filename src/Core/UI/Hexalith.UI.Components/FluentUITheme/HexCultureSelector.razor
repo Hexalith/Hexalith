@@ -1,0 +1,63 @@
+﻿@using System.Globalization
+@inject IJSRuntime JS
+@inject NavigationManager Navigation
+
+<FluentCombobox 
+    TOption="Option<CultureInfo>"
+    Label="Language" 
+    Items="@supportedCultures"
+    OptionText="@(i => i.Text)"
+    OptionSelected="@(i => i.Selected)"
+    Autocomplete="@ComboboxAutocomplete.List"
+    SelectedOptionChanged="x => ApplySelectedCultureAsync(x.Value)" 
+    Height="200px">
+</FluentCombobox>
+@* <p>
+    <label>
+        Select your locale:
+        <select @bind="selectedCulture" @bind:after="ApplySelectedCultureAsync">
+            @foreach (var culture in supportedCultures)
+            {
+                <option value="@culture">@culture.DisplayName</option>
+            }
+        </select>
+    </label>
+</p>
+ *@
+@code
+{
+    // TODO: Move to a configuration service
+    private Option<CultureInfo>[] supportedCultures => [
+        CreateCultureOption("en-US"),
+        CreateCultureOption("fr-FR"),
+    ];
+
+    private Option<CultureInfo> CreateCultureOption(string cultureName)
+    {
+        var culture = new CultureInfo(cultureName);
+        return new Option<CultureInfo>
+		{
+			Value = culture,
+			Text = culture.EnglishName,
+            Selected = culture.Name == CultureInfo.CurrentCulture.Name
+		};
+	}
+
+    private CultureInfo? selectedCulture;
+
+    protected override void OnInitialized()
+    {
+        selectedCulture = CultureInfo.CurrentCulture;
+    }
+
+    private async Task ApplySelectedCultureAsync(CultureInfo culture)
+    {
+        selectedCulture = culture;
+        if (CultureInfo.CurrentCulture != selectedCulture)
+        {
+            await JS.InvokeVoidAsync(Application.ApplicationConstants.UserDefinedCulturePropertyName+".set", selectedCulture!.Name);
+
+            Navigation.NavigateTo(Navigation.Uri, forceLoad: true);
+        }
+    }
+}

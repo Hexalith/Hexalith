@@ -1,0 +1,28 @@
+﻿<FluentDataGrid TGridItem="ViewModels.IdDescription"
+	GenerateHeader="GenerateHeaderOption.Sticky"
+	Items="@Items"
+	OnRowClick="OnRowClick"
+	ResizableColumns="true"
+	ShowHover="true">
+	<PropertyColumn Width="25%" Title="@IdLabel" Property="@(p => p.Id)" Sortable="true" />
+	<PropertyColumn Width="75%" Title="@DescriptionLabel" Property="@(p => p.Description)" Sortable="true" />
+</FluentDataGrid>
+@code
+{
+	[Parameter]
+	public IQueryable<ViewModels.IdDescription>? Items { get; set; }
+
+	[Parameter]
+	public string? IdLabel { get; set; } = "Id";
+
+	[Parameter]
+	public string? DescriptionLabel { get; set; } = "Description";
+
+	private void OnRowClick(FluentDataGridRow<ViewModels.IdDescription> row)
+	{
+		if (row.Item is not null)
+		{
+			// Do something with the selected item
+		}
+	}
+}

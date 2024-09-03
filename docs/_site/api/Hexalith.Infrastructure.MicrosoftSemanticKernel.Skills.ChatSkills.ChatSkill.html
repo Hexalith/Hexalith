@@ -1,0 +1,452 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ChatSkill
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ChatSkill
+   ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.ChatSkill">
+  
+  
+  <h1 id="Hexalith_Infrastructure_MicrosoftSemanticKernel_Skills_ChatSkills_ChatSkill" data-uid="Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.ChatSkill" class="text-break">Class ChatSkill
+  </h1>
+  <div class="markdown level0 summary"><p>ChatSkill offers a more coherent chat experience by using memories
+to extract conversation history and user intentions.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ChatSkill</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.html">Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills</a></h6>
+  <h6><strong>Assembly</strong>: Hexalith.Infrastructure.MicrosoftSemanticKernel.dll</h6>
+  <h5 id="Hexalith_Infrastructure_MicrosoftSemanticKernel_Skills_ChatSkills_ChatSkill_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ChatSkill</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_MicrosoftSemanticKernel_Skills_ChatSkills_ChatSkill__ctor_Microsoft_SemanticKernel_IKernel_Hexalith_Application_ConversationThreads_IConversationThreadService_Microsoft_Extensions_Options_IOptions_Hexalith_Infrastructure_MicrosoftSemanticKernel_Configurations_ArtificialIntelligenceServiceSettings__Hexalith_Infrastructure_MicrosoftSemanticKernel_Skills_ChatSkills_CopilotChatPlanner_Hexalith_Extensions_Common_IDateTimeService_Microsoft_Extensions_Logging_ILogger_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.ChatSkill.%23ctor(Microsoft.SemanticKernel.IKernel%2CHexalith.Application.ConversationThreads.IConversationThreadService%2CMicrosoft.Extensions.Options.IOptions%7BHexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.ArtificialIntelligenceServiceSettings%7D%2CHexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.CopilotChatPlanner%2CHexalith.Extensions.Common.IDateTimeService%2CMicrosoft.Extensions.Logging.ILogger)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.MicrosoftSemanticKernel/Skills/ChatSkills/ChatSkill.cs/#L94">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_MicrosoftSemanticKernel_Skills_ChatSkills_ChatSkill__ctor_" data-uid="Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.ChatSkill.#ctor*"></a>
+  <h4 id="Hexalith_Infrastructure_MicrosoftSemanticKernel_Skills_ChatSkills_ChatSkill__ctor_Microsoft_SemanticKernel_IKernel_Hexalith_Application_ConversationThreads_IConversationThreadService_Microsoft_Extensions_Options_IOptions_Hexalith_Infrastructure_MicrosoftSemanticKernel_Configurations_ArtificialIntelligenceServiceSettings__Hexalith_Infrastructure_MicrosoftSemanticKernel_Skills_ChatSkills_CopilotChatPlanner_Hexalith_Extensions_Common_IDateTimeService_Microsoft_Extensions_Logging_ILogger_" data-uid="Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.ChatSkill.#ctor(Microsoft.SemanticKernel.IKernel,Hexalith.Application.ConversationThreads.IConversationThreadService,Microsoft.Extensions.Options.IOptions{Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.ArtificialIntelligenceServiceSettings},Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.CopilotChatPlanner,Hexalith.Extensions.Common.IDateTimeService,Microsoft.Extensions.Logging.ILogger)">ChatSkill(IKernel, IConversationThreadService, IOptions&lt;ArtificialIntelligenceServiceSettings&gt;, CopilotChatPlanner, IDateTimeService, ILogger)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.ChatSkill.html">ChatSkill</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ChatSkill(IKernel kernel, IConversationThreadService conversationThreadService, IOptions&lt;ArtificialIntelligenceServiceSettings&gt; artificialIntelligenceSettings, CopilotChatPlanner planner, IDateTimeService dateTimeService, ILogger logger)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.SemanticKernel.IKernel</span></td>
+        <td><span class="parametername">kernel</span></td>
+        <td><p>The kernel.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.ConversationThreads.IConversationThreadService.html">IConversationThreadService</a></td>
+        <td><span class="parametername">conversationThreadService</span></td>
+        <td><p>The conversation thread service.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Options.IOptions</span>&lt;<a class="xref" href="Hexalith.Infrastructure.MicrosoftSemanticKernel.Configurations.ArtificialIntelligenceServiceSettings.html">ArtificialIntelligenceServiceSettings</a>&gt;</td>
+        <td><span class="parametername">artificialIntelligenceSettings</span></td>
+        <td><p>The artificial intelligence settings.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.CopilotChatPlanner.html">CopilotChatPlanner</a></td>
+        <td><span class="parametername">planner</span></td>
+        <td><p>The planner.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.Extensions.Common.IDateTimeService.html">IDateTimeService</a></td>
+        <td><span class="parametername">dateTimeService</span></td>
+        <td><p>The date time service.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Logging.ILogger</span></td>
+        <td><span class="parametername">logger</span></td>
+        <td><p>The logger.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_MicrosoftSemanticKernel_Skills_ChatSkills_ChatSkill_ChatAsync_System_String_Microsoft_SemanticKernel_Orchestration_SKContext_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.ChatSkill.ChatAsync(System.String%2CMicrosoft.SemanticKernel.Orchestration.SKContext)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.MicrosoftSemanticKernel/Skills/ChatSkills/ChatSkill.cs/#L129">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_MicrosoftSemanticKernel_Skills_ChatSkills_ChatSkill_ChatAsync_" data-uid="Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.ChatSkill.ChatAsync*"></a>
+  <h4 id="Hexalith_Infrastructure_MicrosoftSemanticKernel_Skills_ChatSkills_ChatSkill_ChatAsync_System_String_Microsoft_SemanticKernel_Orchestration_SKContext_" data-uid="Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.ChatSkill.ChatAsync(System.String,Microsoft.SemanticKernel.Orchestration.SKContext)">ChatAsync(String, SKContext)</h4>
+  <div class="markdown level1 summary"><p>This is the entry point for getting a chat response. It manages the token limit, saves
+messages to memory, and fill in the necessary context variables for completing the
+prompt that will be rendered by the template engine.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[SKFunction(&quot;Get chat response&quot;, false)]
+[SKFunctionName(&quot;Chat&quot;)]
+[SKFunctionInput(Description = &quot;The new message&quot;)]
+[SKFunctionContextParameter(Name = &quot;userId&quot;, Description = &quot;Unique and persistent identifier for the user&quot;)]
+[SKFunctionContextParameter(Name = &quot;userName&quot;, Description = &quot;Name of the user&quot;)]
+[SKFunctionContextParameter(Name = &quot;chatId&quot;, Description = &quot;Unique and persistent identifier for the chat&quot;)]
+[SKFunctionContextParameter(Name = &quot;proposedPlan&quot;, Description = &quot;Previously proposed plan that is approved&quot;)]
+public async Task&lt;SKContext&gt; ChatAsync(string message, SKContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>The message.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Microsoft.SemanticKernel.Orchestration.SKContext</span></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Contains the 'tokenLimit' and the 'contextTokenLimit' controlling the length of the prompt.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">Microsoft.SemanticKernel.Orchestration.SKContext</span>&gt;</td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> representing the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_MicrosoftSemanticKernel_Skills_ChatSkills_ChatSkill_ExtractChatHistoryAsync_Microsoft_SemanticKernel_Orchestration_SKContext_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.ChatSkill.ExtractChatHistoryAsync(Microsoft.SemanticKernel.Orchestration.SKContext)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.MicrosoftSemanticKernel/Skills/ChatSkills/ChatSkill.cs/#L199">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_MicrosoftSemanticKernel_Skills_ChatSkills_ChatSkill_ExtractChatHistoryAsync_" data-uid="Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.ChatSkill.ExtractChatHistoryAsync*"></a>
+  <h4 id="Hexalith_Infrastructure_MicrosoftSemanticKernel_Skills_ChatSkills_ChatSkill_ExtractChatHistoryAsync_Microsoft_SemanticKernel_Orchestration_SKContext_" data-uid="Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.ChatSkill.ExtractChatHistoryAsync(Microsoft.SemanticKernel.Orchestration.SKContext)">ExtractChatHistoryAsync(SKContext)</h4>
+  <div class="markdown level1 summary"><p>Extract chat history.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[SKFunction(&quot;Extract chat history&quot;, false)]
+[SKFunctionName(&quot;ExtractChatHistory&quot;)]
+[SKFunctionContextParameter(Name = &quot;chatId&quot;, Description = &quot;Chat ID to extract history from&quot;)]
+[SKFunctionContextParameter(Name = &quot;tokenLimit&quot;, Description = &quot;Maximum number of tokens&quot;)]
+public async Task&lt;string&gt; ExtractChatHistoryAsync(SKContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.SemanticKernel.Orchestration.SKContext</span></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>Contains the 'tokenLimit' controlling the length of the prompt.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> representing the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_MicrosoftSemanticKernel_Skills_ChatSkills_ChatSkill_ExtractUserIntentAsync_Microsoft_SemanticKernel_Orchestration_SKContext_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.ChatSkill.ExtractUserIntentAsync(Microsoft.SemanticKernel.Orchestration.SKContext)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.MicrosoftSemanticKernel/Skills/ChatSkills/ChatSkill.cs/#L238">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_MicrosoftSemanticKernel_Skills_ChatSkills_ChatSkill_ExtractUserIntentAsync_" data-uid="Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.ChatSkill.ExtractUserIntentAsync*"></a>
+  <h4 id="Hexalith_Infrastructure_MicrosoftSemanticKernel_Skills_ChatSkills_ChatSkill_ExtractUserIntentAsync_Microsoft_SemanticKernel_Orchestration_SKContext_" data-uid="Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.ChatSkill.ExtractUserIntentAsync(Microsoft.SemanticKernel.Orchestration.SKContext)">ExtractUserIntentAsync(SKContext)</h4>
+  <div class="markdown level1 summary"><p>Extract user intent from the conversation history.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[SKFunction(&quot;Extract user intent&quot;, false)]
+[SKFunctionName(&quot;ExtractUserIntent&quot;)]
+[SKFunctionContextParameter(Name = &quot;chatId&quot;, Description = &quot;Chat ID to extract history from&quot;)]
+[SKFunctionContextParameter(Name = &quot;audience&quot;, Description = &quot;The audience the chat bot is interacting with.&quot;)]
+public async Task&lt;string&gt; ExtractUserIntentAsync(SKContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.SemanticKernel.Orchestration.SKContext</span></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The SKContext.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> representing the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_MicrosoftSemanticKernel_Skills_ChatSkills_ChatSkill_ToFormattedString_Hexalith_Domain_ConversationThreads_Entities_ConversationItem_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.ChatSkill.ToFormattedString(Hexalith.Domain.ConversationThreads.Entities.ConversationItem)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.MicrosoftSemanticKernel/Skills/ChatSkills/ChatSkill.cs/#L284">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_MicrosoftSemanticKernel_Skills_ChatSkills_ChatSkill_ToFormattedString_" data-uid="Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.ChatSkill.ToFormattedString*"></a>
+  <h4 id="Hexalith_Infrastructure_MicrosoftSemanticKernel_Skills_ChatSkills_ChatSkill_ToFormattedString_Hexalith_Domain_ConversationThreads_Entities_ConversationItem_" data-uid="Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.ChatSkill.ToFormattedString(Hexalith.Domain.ConversationThreads.Entities.ConversationItem)">ToFormattedString(ConversationItem)</h4>
+  <div class="markdown level1 summary"><p>Converts to formattedstring.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ToFormattedString(ConversationItem conversationItem)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Domain.ConversationThreads.Entities.ConversationItem.html">ConversationItem</a></td>
+        <td><span class="parametername">conversationItem</span></td>
+        <td><p>The conversation item.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>System.String.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Hexalith.Extensions.Helpers.ArrayHelper.html#Hexalith_Extensions_Helpers_ArrayHelper_IntoArray__1___0_">ArrayHelper.IntoArray&lt;T&gt;(T)</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_MicrosoftSemanticKernel_Skills_ChatSkills_ChatSkill.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.MicrosoftSemanticKernel.Skills.ChatSkills.ChatSkill%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.MicrosoftSemanticKernel/Skills/ChatSkills/ChatSkill.cs/#L42" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

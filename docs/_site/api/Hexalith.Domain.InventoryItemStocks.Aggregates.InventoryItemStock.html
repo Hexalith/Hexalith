@@ -1,0 +1,810 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class InventoryItemStock
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class InventoryItemStock
+   ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock">
+  
+  
+  <h1 id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock" class="text-break">Class InventoryItemStock
+  </h1>
+  <div class="markdown level0 summary"><p>Class InventoryItemStock.
+Implements the <a class="xref" href="Hexalith.Domain.Aggregates.Aggregate.html">Aggregate</a>
+Implements the <a class="xref" href="Hexalith.Domain.Aggregates.IAggregate.html">IAggregate</a>
+Implements the <see cref="!:IEquatable&lt;Aggregate>"></see>
+Implements the <see cref="!:IEquatable&lt;InventoryItemStock>"></see>.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="Hexalith.Domain.Aggregates.Aggregate.html">Aggregate</a></div>
+    <div class="level2"><span class="xref">InventoryItemStock</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Hexalith.Domain.Aggregates.IAggregate.html">IAggregate</a></div>
+    <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="Hexalith.Domain.Aggregates.Aggregate.html">Aggregate</a>&gt;</div>
+    <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.html">InventoryItemStock</a>&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Hexalith.Domain.Aggregates.Aggregate.html#Hexalith_Domain_Aggregates_Aggregate_Separator">Aggregate.Separator</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Domain.Aggregates.Aggregate.html#Hexalith_Domain_Aggregates_Aggregate_AggregateId">Aggregate.AggregateId</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Domain.Aggregates.Aggregate.html#Hexalith_Domain_Aggregates_Aggregate_AggregateName">Aggregate.AggregateName</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Domain.Aggregates.Aggregate.html#Hexalith_Domain_Aggregates_Aggregate_Normalize_System_String_">Aggregate.Normalize(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Hexalith.Domain.Aggregates.Aggregate.html#Hexalith_Domain_Aggregates_Aggregate_DefaultAggregateName">Aggregate.DefaultAggregateName()</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Hexalith.Domain.InventoryItemStocks.Aggregates.html">Hexalith.Domain.InventoryItemStocks.Aggregates</a></h6>
+  <h6><strong>Assembly</strong>: Hexalith.Domain.Inventories.dll</h6>
+  <h5 id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataContract]
+public class InventoryItemStock : Aggregate, IAggregate, IEquatable&lt;Aggregate&gt;, IEquatable&lt;InventoryItemStock&gt;</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock__ctor.md&amp;value=---%0Auid%3A%20Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/InventoryItemStocks/Aggregates/InventoryItemStock.cs/#L66">View Source</a>
+  </span>
+  <a id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock__ctor_" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.#ctor*"></a>
+  <h4 id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock__ctor" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.#ctor">InventoryItemStock()</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.html">InventoryItemStock</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public InventoryItemStock()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock__ctor_Hexalith_Domain_InventoryItemStocks_Events_InventoryItemStockDecreased_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.%23ctor(Hexalith.Domain.InventoryItemStocks.Events.InventoryItemStockDecreased)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/InventoryItemStocks/Aggregates/InventoryItemStock.cs/#L75">View Source</a>
+  </span>
+  <a id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock__ctor_" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.#ctor*"></a>
+  <h4 id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock__ctor_Hexalith_Domain_InventoryItemStocks_Events_InventoryItemStockDecreased_" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.#ctor(Hexalith.Domain.InventoryItemStocks.Events.InventoryItemStockDecreased)">InventoryItemStock(InventoryItemStockDecreased)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.html">InventoryItemStock</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public InventoryItemStock(InventoryItemStockDecreased decreased)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Domain.InventoryItemStocks.Events.InventoryItemStockDecreased.html">InventoryItemStockDecreased</a></td>
+        <td><span class="parametername">decreased</span></td>
+        <td><p>The decreased.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock__ctor_Hexalith_Domain_InventoryItemStocks_Events_InventoryItemStockIncreased_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.%23ctor(Hexalith.Domain.InventoryItemStocks.Events.InventoryItemStockIncreased)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/InventoryItemStocks/Aggregates/InventoryItemStock.cs/#L51">View Source</a>
+  </span>
+  <a id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock__ctor_" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.#ctor*"></a>
+  <h4 id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock__ctor_Hexalith_Domain_InventoryItemStocks_Events_InventoryItemStockIncreased_" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.#ctor(Hexalith.Domain.InventoryItemStocks.Events.InventoryItemStockIncreased)">InventoryItemStock(InventoryItemStockIncreased)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.html">InventoryItemStock</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public InventoryItemStock(InventoryItemStockIncreased increased)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Domain.InventoryItemStocks.Events.InventoryItemStockIncreased.html">InventoryItemStockIncreased</a></td>
+        <td><span class="parametername">increased</span></td>
+        <td><p>The increased.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock__ctor_System_String_System_String_System_String_System_String_System_String_System_Decimal_DateTimeOffset_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Decimal%2CDateTimeOffset)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/InventoryItemStocks/Aggregates/InventoryItemStock.cs/#L37">View Source</a>
+  </span>
+  <a id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock__ctor_" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.#ctor*"></a>
+  <h4 id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock__ctor_System_String_System_String_System_String_System_String_System_String_System_Decimal_DateTimeOffset_" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.#ctor(System.String,System.String,System.String,System.String,System.String,System.Decimal,DateTimeOffset)">InventoryItemStock(String, String, String, String, String, Decimal, DateTimeOffset)</h4>
+  <div class="markdown level1 summary"><p>Class InventoryItemStock.
+Implements the <a class="xref" href="Hexalith.Domain.Aggregates.Aggregate.html">Aggregate</a>
+Implements the <a class="xref" href="Hexalith.Domain.Aggregates.IAggregate.html">IAggregate</a>
+Implements the <see cref="!:IEquatable&lt;Aggregate>"></see>
+Implements the <see cref="!:IEquatable&lt;InventoryItemStock>"></see>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public InventoryItemStock(string PartitionId, string CompanyId, string OriginId, string LocationId, string Id, decimal Quantity, DateTimeOffset Date)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">PartitionId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">CompanyId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">OriginId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">LocationId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">Id</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Decimal</span></td>
+        <td><span class="parametername">Quantity</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">DateTimeOffset</span></td>
+        <td><span class="parametername">Date</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock__ctor_System_String_System_String_System_String_System_String_System_String_System_Decimal_DateTimeOffset__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="Hexalith.Domain.Aggregates.Aggregate.html">Aggregate</a></div>
+      <div><a class="xref" href="Hexalith.Domain.Aggregates.IAggregate.html">IAggregate</a></div>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_CompanyId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.CompanyId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/InventoryItemStocks/Aggregates/InventoryItemStock.cs/#L40">View Source</a>
+  </span>
+  <a id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_CompanyId_" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.CompanyId*"></a>
+  <h4 id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_CompanyId" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.CompanyId">CompanyId</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember]
+public string CompanyId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_Date.md&amp;value=---%0Auid%3A%20Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.Date%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/InventoryItemStocks/Aggregates/InventoryItemStock.cs/#L45">View Source</a>
+  </span>
+  <a id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_Date_" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.Date*"></a>
+  <h4 id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_Date" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.Date">Date</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember]
+public DateTimeOffset Date { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DateTimeOffset</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_Id.md&amp;value=---%0Auid%3A%20Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.Id%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/InventoryItemStocks/Aggregates/InventoryItemStock.cs/#L43">View Source</a>
+  </span>
+  <a id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_Id_" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.Id*"></a>
+  <h4 id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_Id" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.Id">Id</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember]
+public string Id { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_LocationId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.LocationId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/InventoryItemStocks/Aggregates/InventoryItemStock.cs/#L42">View Source</a>
+  </span>
+  <a id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_LocationId_" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.LocationId*"></a>
+  <h4 id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_LocationId" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.LocationId">LocationId</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember]
+public string LocationId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_OriginId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.OriginId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/InventoryItemStocks/Aggregates/InventoryItemStock.cs/#L41">View Source</a>
+  </span>
+  <a id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_OriginId_" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.OriginId*"></a>
+  <h4 id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_OriginId" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.OriginId">OriginId</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember]
+public string OriginId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_PartitionId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.PartitionId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/InventoryItemStocks/Aggregates/InventoryItemStock.cs/#L39">View Source</a>
+  </span>
+  <a id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_PartitionId_" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.PartitionId*"></a>
+  <h4 id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_PartitionId" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.PartitionId">PartitionId</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember]
+public string PartitionId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_Quantity.md&amp;value=---%0Auid%3A%20Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.Quantity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/InventoryItemStocks/Aggregates/InventoryItemStock.cs/#L44">View Source</a>
+  </span>
+  <a id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_Quantity_" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.Quantity*"></a>
+  <h4 id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_Quantity" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.Quantity">Quantity</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember]
+public decimal Quantity { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Decimal</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_Apply_Hexalith_Domain_Events_BaseEvent_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.Apply(Hexalith.Domain.Events.BaseEvent)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/InventoryItemStocks/Aggregates/InventoryItemStock.cs/#L88">View Source</a>
+  </span>
+  <a id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_Apply_" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.Apply*"></a>
+  <h4 id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_Apply_Hexalith_Domain_Events_BaseEvent_" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.Apply(Hexalith.Domain.Events.BaseEvent)">Apply(BaseEvent)</h4>
+  <div class="markdown level1 summary"><p>Applies the specified domain event.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override (IAggregate Aggregate, IEnumerable&lt;BaseEvent&gt; Events) Apply(BaseEvent domainEvent)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">BaseEvent</a></td>
+        <td><span class="parametername">domainEvent</span></td>
+        <td><p>The domain event.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ValueTuple</span>&lt;<a class="xref" href="Hexalith.Domain.Aggregates.IAggregate.html">IAggregate</a>, <span class="xref">IEnumerable</span>&lt;<a class="xref" href="Hexalith.Domain.Events.BaseEvent.html">BaseEvent</a>&gt;&gt;</td>
+        <td><p>IAggregate.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Hexalith.Domain.Aggregates.Aggregate.html#Hexalith_Domain_Aggregates_Aggregate_Apply_Hexalith_Domain_Events_BaseEvent_">Aggregate.Apply(BaseEvent)</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_DefaultAggregateId.md&amp;value=---%0Auid%3A%20Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.DefaultAggregateId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/InventoryItemStocks/Aggregates/InventoryItemStock.cs/#L120">View Source</a>
+  </span>
+  <a id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_DefaultAggregateId_" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.DefaultAggregateId*"></a>
+  <h4 id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_DefaultAggregateId" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.DefaultAggregateId">DefaultAggregateId()</h4>
+  <div class="markdown level1 summary"><p>Get the aggregate identifier.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override string DefaultAggregateId()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The identifier.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Hexalith.Domain.Aggregates.Aggregate.html#Hexalith_Domain_Aggregates_Aggregate_DefaultAggregateId">Aggregate.DefaultAggregateId()</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_GetAggregateId_System_String_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.GetAggregateId(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/InventoryItemStocks/Aggregates/InventoryItemStock.cs/#L107">View Source</a>
+  </span>
+  <a id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_GetAggregateId_" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.GetAggregateId*"></a>
+  <h4 id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_GetAggregateId_System_String_System_String_System_String_System_String_System_String_" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.GetAggregateId(System.String,System.String,System.String,System.String,System.String)">GetAggregateId(String, String, String, String, String)</h4>
+  <div class="markdown level1 summary"><p>Gets the aggregate identifier.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string GetAggregateId(string partitionId, string companyId, string originId, string locationId, string id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">partitionId</span></td>
+        <td><p>The partition identifier.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">companyId</span></td>
+        <td><p>The company identifier.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">originId</span></td>
+        <td><p>The origin identifier.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">locationId</span></td>
+        <td><p>The location identifier.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The identifier.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>System.String.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_GetAggregateName.md&amp;value=---%0Auid%3A%20Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.GetAggregateName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/InventoryItemStocks/Aggregates/InventoryItemStock.cs/#L114">View Source</a>
+  </span>
+  <a id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_GetAggregateName_" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.GetAggregateName*"></a>
+  <h4 id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_GetAggregateName" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.GetAggregateName">GetAggregateName()</h4>
+  <div class="markdown level1 summary"><p>Gets the name of the aggregate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string GetAggregateName()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>System.String.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_IsInitialized.md&amp;value=---%0Auid%3A%20Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.IsInitialized%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/InventoryItemStocks/Aggregates/InventoryItemStock.cs/#L117">View Source</a>
+  </span>
+  <a id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_IsInitialized_" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.IsInitialized*"></a>
+  <h4 id="Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock_IsInitialized" data-uid="Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock.IsInitialized">IsInitialized()</h4>
+  <div class="markdown level1 summary"><p>Determines whether this instance is initialized.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool IsInitialized()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><code>true</code> if this instance is initialized; otherwise, <code>false</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Hexalith.Domain.Aggregates.Aggregate.html#Hexalith_Domain_Aggregates_Aggregate_IsInitialized">Aggregate.IsInitialized()</a></div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Hexalith.Domain.Aggregates.IAggregate.html">IAggregate</a>
+  </div>
+  <div>
+      <span class="xref">System.IEquatable&lt;T&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.IEquatable&lt;T&gt;</span>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSame_System_Object_System_Object_">EquatableHelper.AreSame(Object, Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hexalith.Extensions.Reflections.ObjectDifferenceHelper.html#Hexalith_Extensions_Reflections_ObjectDifferenceHelper_GetDifferenceInformation_System_Object_System_Object_">ObjectDifferenceHelper.GetDifferenceInformation(Object, Object)</a>
+  </div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><a class="xref" href="Hexalith.Domain.Aggregates.Aggregate.html">Aggregate</a></div>
+      <div><a class="xref" href="Hexalith.Domain.Aggregates.IAggregate.html">IAggregate</a></div>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Domain_InventoryItemStocks_Aggregates_InventoryItemStock.md&amp;value=---%0Auid%3A%20Hexalith.Domain.InventoryItemStocks.Aggregates.InventoryItemStock%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Domain/Hexalith.Domain.Inventories/InventoryItemStocks/Aggregates/InventoryItemStock.cs/#L37" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

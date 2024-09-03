@@ -1,0 +1,34 @@
+﻿@inject IApplication Application
+@inject NavigationManager NavigationManager
+@inject HttpClient HttpClient
+<AuthorizeView>
+	<Authorized>
+		<FluentProfileMenu 
+			Status="PresenceStatus.Available" 
+			FullName="@context.User.Identity?.Name"
+			OnFooterLinkClick="OnAccountClick"
+			OnHeaderButtonClick="OnLogoutClickAsync"/>
+	</Authorized>
+	<NotAuthorized>
+		<FluentButton OnClick="OnLoginClick" IconStart="@(new Icons.Regular.Size16.PersonLock())">Login</FluentButton>
+	</NotAuthorized>
+</AuthorizeView>
+
+@code {
+	private void OnAccountClick()
+	{
+		NavigationManager.NavigateTo($"{Application.HomePath}", forceLoad: false);
+	}
+	private void OnLoginClick()
+	{
+		NavigationManager.NavigateTo($"{Application.LoginPath}?returnUrl={Uri.EscapeDataString(NavigationManager.Uri)}", forceLoad: true);
+	}
+	private async Task OnLogoutClickAsync()
+	{
+		var url = $"{NavigationManager.BaseUri}{Application.LogoutPath}";
+		await HttpClient
+			.PostAsync(url, new StringContent(""))
+			.ConfigureAwait(false);
+		NavigationManager.NavigateTo($"{Application.HomePath}", forceLoad: true);
+	}
+}

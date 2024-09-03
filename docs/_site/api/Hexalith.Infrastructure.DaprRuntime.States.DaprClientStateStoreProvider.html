@@ -1,0 +1,743 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class DaprClientStateStoreProvider
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class DaprClientStateStoreProvider
+   ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider">
+  
+  
+  <h1 id="Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider" data-uid="Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider" class="text-break">Class DaprClientStateStoreProvider
+  </h1>
+  <div class="markdown level0 summary"><p>Class DaprClientStateStoreProvider.
+Implements the <a class="xref" href="Hexalith.Application.States.IStateStoreProvider.html">IStateStoreProvider</a>.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">DaprClientStateStoreProvider</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Hexalith.Application.States.IStateStoreProvider.html">IStateStoreProvider</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.States.html">Hexalith.Infrastructure.DaprRuntime.States</a></h6>
+  <h6><strong>Assembly</strong>: Hexalith.Infrastructure.DaprRuntime.dll</h6>
+  <h5 id="Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class DaprClientStateStoreProvider : IStateStoreProvider</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider__ctor_Dapr_Client_DaprClient_Microsoft_Extensions_Options_IOptions_Hexalith_Application_States_StateStoreSettings__.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.%23ctor(Dapr.Client.DaprClient%2CMicrosoft.Extensions.Options.IOptions%7BHexalith.Application.States.StateStoreSettings%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/States/DaprClientStateStoreProvider.cs/#L43">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider__ctor_" data-uid="Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.#ctor*"></a>
+  <h4 id="Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider__ctor_Dapr_Client_DaprClient_Microsoft_Extensions_Options_IOptions_Hexalith_Application_States_StateStoreSettings__" data-uid="Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.#ctor(Dapr.Client.DaprClient,Microsoft.Extensions.Options.IOptions{Hexalith.Application.States.StateStoreSettings})">DaprClientStateStoreProvider(DaprClient, IOptions&lt;StateStoreSettings&gt;)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.html">DaprClientStateStoreProvider</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ActivatorUtilitiesConstructor]
+public DaprClientStateStoreProvider(DaprClient daprClient, IOptions&lt;StateStoreSettings&gt; settings)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dapr.Client.DaprClient</span></td>
+        <td><span class="parametername">daprClient</span></td>
+        <td><p>The dapr client.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Options.IOptions</span>&lt;<a class="xref" href="Hexalith.Application.States.StateStoreSettings.html">StateStoreSettings</a>&gt;</td>
+        <td><span class="parametername">settings</span></td>
+        <td><p>The settings.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider__ctor_Dapr_Client_DaprClient_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.%23ctor(Dapr.Client.DaprClient%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/States/DaprClientStateStoreProvider.cs/#L57">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider__ctor_" data-uid="Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.#ctor*"></a>
+  <h4 id="Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider__ctor_Dapr_Client_DaprClient_System_String_" data-uid="Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.#ctor(Dapr.Client.DaprClient,System.String)">DaprClientStateStoreProvider(DaprClient, String)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.html">DaprClientStateStoreProvider</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DaprClientStateStoreProvider(DaprClient daprClient, string stateStoreName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dapr.Client.DaprClient</span></td>
+        <td><span class="parametername">daprClient</span></td>
+        <td><p>The dapr client.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">stateStoreName</span></td>
+        <td><p>Name of the state store.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>Null argument.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider_DaprClient.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.DaprClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/States/DaprClientStateStoreProvider.cs/#L69">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider_DaprClient_" data-uid="Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.DaprClient*"></a>
+  <h4 id="Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider_DaprClient" data-uid="Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.DaprClient">DaprClient</h4>
+  <div class="markdown level1 summary"><p>Gets the dapr client.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected DaprClient DaprClient { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dapr.Client.DaprClient</span></td>
+        <td><p>The dapr client.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider_StateStoreName.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.StateStoreName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/States/DaprClientStateStoreProvider.cs/#L75">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider_StateStoreName_" data-uid="Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.StateStoreName*"></a>
+  <h4 id="Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider_StateStoreName" data-uid="Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.StateStoreName">StateStoreName</h4>
+  <div class="markdown level1 summary"><p>Gets the name of the state store.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected string StateStoreName { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The name of the state store.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider_AddStateAsync__1_System_String___0_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.AddStateAsync%60%601(System.String%2C%60%600%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/States/DaprClientStateStoreProvider.cs/#L78">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider_AddStateAsync_" data-uid="Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.AddStateAsync*"></a>
+  <h4 id="Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider_AddStateAsync__1_System_String___0_System_Threading_CancellationToken_" data-uid="Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.AddStateAsync``1(System.String,``0,System.Threading.CancellationToken)">AddStateAsync&lt;T&gt;(String, T, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task AddStateAsync&lt;T&gt;(string key, T value, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider_GetOrAddStateAsync__1_System_String___0_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.GetOrAddStateAsync%60%601(System.String%2C%60%600%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/States/DaprClientStateStoreProvider.cs/#L81">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider_GetOrAddStateAsync_" data-uid="Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.GetOrAddStateAsync*"></a>
+  <h4 id="Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider_GetOrAddStateAsync__1_System_String___0_System_Threading_CancellationToken_" data-uid="Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.GetOrAddStateAsync``1(System.String,``0,System.Threading.CancellationToken)">GetOrAddStateAsync&lt;T&gt;(String, T, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;T&gt; GetOrAddStateAsync&lt;T&gt;(string key, T value, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider_GetStateAsync__1_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.GetStateAsync%60%601(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/States/DaprClientStateStoreProvider.cs/#L101">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider_GetStateAsync_" data-uid="Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.GetStateAsync*"></a>
+  <h4 id="Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider_GetStateAsync__1_System_String_System_Threading_CancellationToken_" data-uid="Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.GetStateAsync``1(System.String,System.Threading.CancellationToken)">GetStateAsync&lt;T&gt;(String, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;T&gt; GetStateAsync&lt;T&gt;(string key, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider_SaveChangesAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.SaveChangesAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/States/DaprClientStateStoreProvider.cs/#L104">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider_SaveChangesAsync_" data-uid="Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.SaveChangesAsync*"></a>
+  <h4 id="Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider_SaveChangesAsync_System_Threading_CancellationToken_" data-uid="Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.SaveChangesAsync(System.Threading.CancellationToken)">SaveChangesAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task SaveChangesAsync(CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider_SetStateAsync__1_System_String___0_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.SetStateAsync%60%601(System.String%2C%60%600%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/States/DaprClientStateStoreProvider.cs/#L107">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider_SetStateAsync_" data-uid="Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.SetStateAsync*"></a>
+  <h4 id="Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider_SetStateAsync__1_System_String___0_System_Threading_CancellationToken_" data-uid="Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.SetStateAsync``1(System.String,``0,System.Threading.CancellationToken)">SetStateAsync&lt;T&gt;(String, T, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task SetStateAsync&lt;T&gt;(string key, T value, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider_TryGetStateAsync__1_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.TryGetStateAsync%60%601(System.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/States/DaprClientStateStoreProvider.cs/#L110">View Source</a>
+  </span>
+  <a id="Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider_TryGetStateAsync_" data-uid="Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.TryGetStateAsync*"></a>
+  <h4 id="Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider_TryGetStateAsync__1_System_String_System_Threading_CancellationToken_" data-uid="Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider.TryGetStateAsync``1(System.String,System.Threading.CancellationToken)">TryGetStateAsync&lt;T&gt;(String, CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;ConditionalValue&lt;T&gt;&gt; TryGetStateAsync&lt;T&gt;(string key, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Hexalith.Extensions.Common.ConditionalValue-1.html">ConditionalValue</a>&lt;T&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Hexalith.Application.States.IStateStoreProvider.html">IStateStoreProvider</a>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSame_System_Object_System_Object_">EquatableHelper.AreSame(Object, Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hexalith.Extensions.Helpers.VersionHelper.html#Hexalith_Extensions_Helpers_VersionHelper_ProductVersion_System_Object_">VersionHelper.ProductVersion(Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Hexalith.Extensions.Reflections.ObjectDifferenceHelper.html#Hexalith_Extensions_Reflections_ObjectDifferenceHelper_GetDifferenceInformation_System_Object_System_Object_">ObjectDifferenceHelper.GetDifferenceInformation(Object, Object)</a>
+  </div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><a class="xref" href="Hexalith.Application.States.IStateStoreProvider.html">IStateStoreProvider</a></div>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_States_DaprClientStateStoreProvider.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.States.DaprClientStateStoreProvider%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/States/DaprClientStateStoreProvider.cs/#L36" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

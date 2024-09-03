@@ -1,0 +1,8 @@
+name: Hexalith
+channels:
+    - conda-forge
+    - bioconda
+dependencies:
+    - python=3.8
+    - pycountry=18.12.8
+    - snakemake-minimal=6.1.1

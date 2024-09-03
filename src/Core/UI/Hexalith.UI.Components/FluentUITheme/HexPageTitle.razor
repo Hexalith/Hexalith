@@ -1,0 +1,41 @@
+@using System.ComponentModel
+
+@inherits HexBase
+@inject IStringLocalizer<SharedResources> SharedLocalizer
+
+@if (string.IsNullOrWhiteSpace(LocalizedTitle))
+{
+	<FluentLabel Typo="@Typo">@ChildContent</FluentLabel>
+}
+else
+{
+	if (ChildContent is null)
+	{
+		<FluentLabel Typo="@Typo">@_title</FluentLabel>
+	}
+	else
+	{
+		<FluentLabel Typo="@Typo">@ChildContent</FluentLabel>
+	}
+}
+@code {
+	[Parameter]
+	public RenderFragment? ChildContent { get; set; }
+
+	[Parameter]
+	public Typography Typo { get; set; } = Typography.PageTitle;
+
+	[Parameter]
+	public string? LocalizedTitle { get; set; }
+
+	private string? _title;
+
+	protected override void OnParametersSet()
+	{
+		if (_title is null && !string.IsNullOrEmpty(PageInformation?.Name))
+		{
+			_title = SharedLocalizer[PageInformation.Name];
+		}
+	}
+
+}

@@ -1,0 +1,66 @@
+﻿// <copyright file="IAggregateMaintenance.cs" company="Jérôme Piquot">
+//     Copyright (c) Jérôme Piquot. All rights reserved.
+//     Licensed under the MIT license.
+//     See LICENSE file in the project root for full license information.
+// </copyright>
+
+namespace Hexalith.Application.Aggregates;
+
+/// <summary>
+/// Represents an interface for maintaining aggregates.
+/// </summary>
+/// <typeparam name="TAggregate">The type of the aggregate.</typeparam>
+public interface IAggregateMaintenance<TAggregate>
+{
+    /// <summary>
+    /// Clears all commands for the aggregate.
+    /// </summary>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A task representing the asynchronous operation.</returns>
+    public Task ClearAllCommandsAsync(CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Clears all states for the aggregate.
+    /// </summary>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A task representing the asynchronous operation.</returns>
+    public Task ClearAllStatesAsync(CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Clears the commands for the specified aggregate.
+    /// </summary>
+    /// <param name="aggregateId">The ID of the aggregate.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A task representing the asynchronous operation.</returns>
+    public Task ClearCommandsAsync(string aggregateId, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Clears the state for the specified aggregate.
+    /// </summary>
+    /// <param name="aggregateId">The ID of the aggregate.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A task representing the asynchronous operation.</returns>
+    public Task ClearStateAsync(string aggregateId, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Gets all actor IDs.
+    /// </summary>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A task representing the asynchronous operation.</returns>
+    public Task<IEnumerable<string>> GetAllActorIdsAsync(CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Sends all snapshots for the aggregate.
+    /// </summary>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A task representing the asynchronous operation.</returns>
+    public Task SendAllSnapshotsAsync(CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Sends a snapshot for the specified aggregate.
+    /// </summary>
+    /// <param name="aggregateId">The ID of the aggregate.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A task representing the asynchronous operation.</returns>
+    public Task SendSnapshotAsync(string aggregateId, CancellationToken cancellationToken);
+}

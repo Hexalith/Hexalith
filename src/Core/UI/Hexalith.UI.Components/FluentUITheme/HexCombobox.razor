@@ -1,0 +1,51 @@
+﻿<FluentCombobox TOption="ViewModels.IdDescription"
+					SelectedOptionsChanged="OnSelectedOptionsChanged"
+					SelectedOptions="_selectedOptions"
+					Multiple="true"
+					Label="@Label"
+					Placeholder="@Placeholder"
+					Width="@Width"
+					OptionText="@(item => item.Description)" />
+
+@code
+{
+	[Parameter, EditorRequired]
+	public Services.IIdDescriptionService? Service { get; set; }
+
+	IEnumerable<ViewModels.IdDescription>? _selectedOptions;
+
+	[Parameter]
+	public string? Id { get; set; }
+
+	[Parameter]
+	public EventCallback<string?> IdChanged { get; set; }
+
+	[Parameter]
+	public string? Width { get; set; }
+
+	[Parameter]
+	public string? Label { get; set; }
+
+	[Parameter]
+	public string? Placeholder { get; set; }
+
+	protected async override Task OnParametersSetAsync()
+	{
+		if (Id is not null && Service is not null)
+		{
+			_selectedOptions = new[] { await Service.GetIdDescriptionAsync(Id, CancellationToken.None) };
+		}
+		else
+		{
+			_selectedOptions = null;
+		}
+		await base.OnParametersSetAsync();
+	}
+
+	private async Task OnSelectedOptionsChanged(IEnumerable<ViewModels.IdDescription>? options)
+	{
+		_selectedOptions = options;
+		Id = _selectedOptions?.FirstOrDefault()?.Id;
+		await IdChanged.InvokeAsync(Id);
+	}
+}
