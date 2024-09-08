@@ -1,18 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Application
-// Author           : Jérôme Piquot
-// Created          : 01-10-2024
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 01-10-2024
-// ***********************************************************************
-// <copyright file="AggregateProvider{TAggregate}.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="AggregateProvider{TAggregate}.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Application.Aggregates;
 
@@ -26,6 +14,7 @@ using Hexalith.Domain.Aggregates;
 /// </summary>
 /// <typeparam name="TAggregate">The type of the t aggregate.</typeparam>
 /// <seealso cref="Hexalith.Application.Aggregates.IAggregateProvider{TAggregate}" />
+[Obsolete]
 public class AggregateProvider<TAggregate> : IAggregateProvider<TAggregate>
     where TAggregate : IAggregate, new()
 {
@@ -44,5 +33,6 @@ public class AggregateProvider<TAggregate> : IAggregateProvider<TAggregate>
     public TAggregate Create() => new();
 
     /// <inheritdoc/>
+    [Obsolete]
     IAggregate IAggregateProvider.Create() => Create();
 }

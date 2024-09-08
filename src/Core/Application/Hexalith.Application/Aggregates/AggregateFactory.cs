@@ -1,18 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Application
-// Author           : Jérôme Piquot
-// Created          : 01-10-2024
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 01-10-2024
-// ***********************************************************************
-// <copyright file="AggregateFactory.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="AggregateFactory.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Application.Aggregates;
 
@@ -44,6 +32,7 @@ public class AggregateFactory : IAggregateFactory
     }
 
     /// <inheritdoc/>
+    [Obsolete]
     public IAggregate Create(string aggregateName) => GetProvider(aggregateName).Create();
 
     /// <inheritdoc/>

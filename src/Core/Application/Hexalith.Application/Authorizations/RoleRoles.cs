@@ -1,7 +1,5 @@
-﻿// <copyright file="RoleRoles.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="RoleRoles.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace Hexalith.Application.Authorizations;
@@ -33,5 +31,6 @@ public class RoleRoles : IRoleProvider
     /// </summary>
     public static IEnumerable<string> Roles = [ViewUserRoles, AssignRoleToUser, RemoveUserRole];
 
-    IEnumerable<string> IRoleProvider.Roles { get; }
+    /// <inheritdoc/>
+    IEnumerable<string>? IRoleProvider.Roles { get; }
 }

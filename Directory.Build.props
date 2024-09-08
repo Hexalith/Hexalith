@@ -23,7 +23,7 @@
 		<AnalysisMode>AllEnabledByDefault</AnalysisMode>
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 		<AnalysisLevel>preview-all</AnalysisLevel>
-		<NoWarn>$(NoWarn);S1309;MA0101;S1451;S4055;S113;SA1609;MA0104;S4018;SA1010;NU5104;S4040;</NoWarn>
+		<NoWarn>$(NoWarn);S1309;MA0101;S1451;S4055;S113;SA1609;MA0104;S4018;SA1010;NU5104;S4040;CA1041;</NoWarn>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
 	<ItemGroup>

@@ -7,17 +7,17 @@
 
 	"$schema": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
 	"settings": {
-		"documentationRules": {
-			"copyrightText": "    Copyright (c) Jérôme Piquot. All rights reserved.\n    Licensed under the {licenseName} license.\n    See {licenseFile} file in the project root for full license information.",
-			"variables": {
-				"licenseName": "MIT",
-				"licenseFile": "LICENSE"
-			}
-		},
 		"indentation": {
 			"indentationSize": 4,
 			"tabSize": 4,
 			"useTabs": false
+		},
+		"documentationRules": {
+			"companyName": "Hexalith",
+			"copyrightText": "Copyright (c) {companyName}. All rights reserved.\nLicensed under the {licenseName} license. See {licenseFile} file in the project root for full license information.",
+			"variables": {
+				"licenseName": "MIT",
+				"licenseFile": "LICENSE"
+			}
 		}
 	}
-}

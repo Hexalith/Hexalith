@@ -37,7 +37,7 @@
 		<MicrosoftIdentityClientVersion>4.64.0</MicrosoftIdentityClientVersion>
 		<MicrosoftIdentityWebVersion>3.0.1</MicrosoftIdentityWebVersion>
 		<MicrosoftNETTestSdkVersion>17.11.0</MicrosoftNETTestSdkVersion>
-		<MicrosoftSemanticKernelVersion>1.17.2</MicrosoftSemanticKernelVersion>
+		<MicrosoftSemanticKernelVersion>1.18.2</MicrosoftSemanticKernelVersion>
 		<MicrosoftTeamsFxVersion>2.5.0</MicrosoftTeamsFxVersion>
 		<MicrosoftTypescriptMSBuild>5.5.3</MicrosoftTypescriptMSBuild>
 		<MicrosoftGraphVersion>5.12.*</MicrosoftGraphVersion>
