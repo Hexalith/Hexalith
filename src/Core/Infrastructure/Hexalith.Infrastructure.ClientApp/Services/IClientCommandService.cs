@@ -1,4 +1,4 @@
-﻿// <copyright file="ICommandService.cs" company="PlaceholderCompany">
+﻿// <copyright file="IClientCommandService.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -11,7 +11,7 @@ using Hexalith.Application.MessageMetadatas;
 /// <summary>
 /// Represents a service for sending commands asynchronously.
 /// </summary>
-public interface ICommandService
+public interface IClientCommandService
 {
     /// <summary>
     /// Sends a command asynchronously.

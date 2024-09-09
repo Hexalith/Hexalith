@@ -1,7 +1,5 @@
-﻿// <copyright file="PolymorphicSerializationAttribute.cs">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="PolymorphicSerializationAttribute.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace Hexalith.PolymorphicSerialization;
@@ -18,7 +16,7 @@ using System;
 /// <param name="version">The version of the message.</param>
 /// <param name="baseType">The base type of the message.</param>
 [AttributeUsage(AttributeTargets.Class, Inherited = false)]
-public sealed class PolymorphicSerializationAttribute(string name, int version, Type? baseType = null) : Attribute
+public sealed class PolymorphicSerializationAttribute(string? name = null, int version = 1, Type? baseType = null) : Attribute
 {
     /// <summary>
     /// Gets the base type.
@@ -28,12 +26,7 @@ public sealed class PolymorphicSerializationAttribute(string name, int version, 
     /// <summary>
     /// Gets the name of the message.
     /// </summary>
-    public string Name { get; } = name;
-
-    /// <summary>
-    /// Gets the type name.
-    /// </summary>
-    public string TypeName => GetTypeName(Name, Version);
+    public string? Name { get; } = name;
 
     /// <summary>
     /// Gets the version of the message.
@@ -41,10 +34,11 @@ public sealed class PolymorphicSerializationAttribute(string name, int version, 
     public int Version { get; } = version;
 
     /// <summary>
-    /// Gets the type name for the specified name and version.
+    /// Gets the polymorphic type name.
     /// </summary>
-    /// <param name="name">The name of the message.</param>
-    /// <param name="version">The version of the message.</param>
-    /// <returns>The type name.</returns>
-    public static string GetTypeName(string name, int version) => name + "V" + version;
+    /// <param name="type">The type.</param>
+    /// <returns>The polymorphic type name.</returns>
+    /// <exception cref="ArgumentNullException">The type is null.</exception>
+    public string GetTypeName(Type type)
+        => type == null ? throw new ArgumentNullException(nameof(type)) : $"{Name ?? type.Name}V{Version}";
 }

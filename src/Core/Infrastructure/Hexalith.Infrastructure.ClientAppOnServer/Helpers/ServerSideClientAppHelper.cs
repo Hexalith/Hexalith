@@ -1,7 +1,5 @@
-﻿// <copyright file="ServerSideClientAppHelper.cs">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="ServerSideClientAppHelper.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace Hexalith.Infrastructure.ClientAppOnServer.Helpers;
@@ -21,6 +19,8 @@ using Hexalith.Application.Projections;
 using Hexalith.Application.Tasks;
 using Hexalith.Domain.Messages;
 using Hexalith.Infrastructure.ClientApp.Helpers;
+using Hexalith.Infrastructure.ClientApp.Services;
+using Hexalith.Infrastructure.ClientAppOnServer.Services;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.WebApis.Helpers;
 
@@ -46,7 +46,13 @@ public static class ServerSideClientAppHelper
     /// <returns>The updated service collection.</returns>
     public static IServiceCollection AddHexalithServerSideClientApp(
         this IServiceCollection services,
-        IConfiguration configuration) => services.AddHexalithClientApp(configuration);
+        IConfiguration configuration)
+    {
+        _ = services.AddScoped<IClientCommandService, ClientCommandService>();
+        _ = services.AddScoped<IUserService, UserService>();
+        _ = services.AddScoped<ISessionService, SessionService>();
+        return services.AddHexalithClientApp(configuration);
+    }
 
     /// <summary>
     /// Creates the server-side client application.
@@ -78,6 +84,7 @@ public static class ServerSideClientAppHelper
             .AddDaprBuses(builder.Configuration)
             .AddDaprStateStore(builder.Configuration)
             .AddActors(options => registerActors(options.Actors));
+
         _ = builder
             .Services
             .AddHttpContextAccessor()

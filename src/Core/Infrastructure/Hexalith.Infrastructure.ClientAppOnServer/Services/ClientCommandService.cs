@@ -1,8 +1,8 @@
-﻿// <copyright file="CommandService.cs" company="PlaceholderCompany">
+﻿// <copyright file="ClientCommandService.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace Hexalith.Infrastructure.ClientAppOnWasm.Services;
+namespace Hexalith.Infrastructure.ClientAppOnServer.Services;
 
 using System;
 using System.Diagnostics.CodeAnalysis;
@@ -18,7 +18,7 @@ using Hexalith.Infrastructure.ClientApp.Services;
 /// <summary>
 /// Represents a service for sending commands asynchronously.
 /// </summary>
-public class CommandService : ICommandService
+public class ClientCommandService : IClientCommandService
 {
     private readonly HttpClient _client;
     private readonly ISessionService _sessionService;
@@ -26,13 +26,13 @@ public class CommandService : ICommandService
     private readonly IUserService _userService;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="CommandService"/> class.
+    /// Initializes a new instance of the <see cref="ClientCommandService"/> class.
     /// </summary>
     /// <param name="client">The HTTP client.</param>
     /// <param name="timeProvider">The time provider.</param>
     /// <param name="userService">The user service.</param>
     /// <param name="sessionService">The session service.</param>
-    public CommandService([NotNull] HttpClient client, [NotNull] TimeProvider timeProvider, [NotNull] IUserService userService, [NotNull] ISessionService sessionService)
+    public ClientCommandService([NotNull] HttpClient client, [NotNull] TimeProvider timeProvider, [NotNull] IUserService userService, [NotNull] ISessionService sessionService)
     {
         ArgumentNullException.ThrowIfNull(timeProvider);
         ArgumentNullException.ThrowIfNull(userService);

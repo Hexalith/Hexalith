@@ -31,10 +31,11 @@ public abstract record InvalidEventApplied(string AggregateName, string Aggregat
     {
         ArgumentNullException.ThrowIfNull(@event);
         ArgumentNullException.ThrowIfNull(create);
+        Type eventType = @event.GetType();
 
-        string eventName = (Attribute.GetCustomAttribute(typeof(TInvalidEvent), typeof(PolymorphicSerializationAttribute)) is not PolymorphicSerializationAttribute attribute)
-            ? @event.GetType().Name :
-            attribute.TypeName;
+        string eventName = (Attribute.GetCustomAttribute(eventType, typeof(PolymorphicSerializationAttribute)) is not PolymorphicSerializationAttribute attribute)
+            ? eventType.Name ?? throw new InvalidOperationException("The event type name is null.")
+            : attribute.GetTypeName(eventType);
 
         return create(aggregateName, aggregateId, eventName, JsonSerializer.Serialize(@event));
     }
