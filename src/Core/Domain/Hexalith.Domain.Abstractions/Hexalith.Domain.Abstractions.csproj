@@ -10,5 +10,6 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\..\Common\Hexalith.Extensions\Hexalith.Extensions.csproj" />
+	  <ProjectReference Include="..\..\Common\Hexalith.PolymorphicSerialization\Hexalith.PolymorphicSerialization.csproj" />
 	</ItemGroup>
 </Project>

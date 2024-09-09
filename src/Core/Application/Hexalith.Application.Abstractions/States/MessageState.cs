@@ -6,10 +6,8 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 02-05-2023
 // ***********************************************************************
-// <copyright file="MessageState.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+// <copyright file="MessageState.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -30,6 +28,7 @@ using Hexalith.Extensions.Common;
 /// </summary>
 /// <seealso cref="IIdempotent" />
 [DataContract]
+[Obsolete("This interface is obsolete. Use Hexalith.Application.MessageMetadatas.ApplicationMessageState instead.", false)]
 public class MessageState : MessageState<BaseMessage, BaseMetadata>
 {
     /// <summary>

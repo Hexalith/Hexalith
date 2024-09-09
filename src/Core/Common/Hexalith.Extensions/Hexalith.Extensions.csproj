@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
-		<NoWarn>$(NoWarn);S6354;RS0016</NoWarn>
+		<NoWarn>$(NoWarn);S6354;RS0016;</NoWarn>
 		<!--<EnableConfigurationBindingGenerator>false</EnableConfigurationBindingGenerator>-->
 		<!--EnableConfigurationBindingGenerator: https://github.com/dotnet/runtime/issues/89273-->
 	</PropertyGroup>
