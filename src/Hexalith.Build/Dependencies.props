@@ -42,7 +42,7 @@
 		<MicrosoftTypescriptMSBuild>5.5.3</MicrosoftTypescriptMSBuild>
 		<MicrosoftGraphVersion>5.12.*</MicrosoftGraphVersion>
 		<MicrosoftVisualStudioThreadingAnalyzersVersion>17.11.20</MicrosoftVisualStudioThreadingAnalyzersVersion>
-		<MinverVersion>6.0.0</MinverVersion>
+		<MinverVersion>5.0.0</MinverVersion>
 		<MoqVersion>4.20.72</MoqVersion>
 		<MoqContribHttpClientVersion>1.4.0</MoqContribHttpClientVersion>
 		<OpenTelemetryVersion>1.*</OpenTelemetryVersion>
