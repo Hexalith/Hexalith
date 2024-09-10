@@ -50,16 +50,38 @@ public record AggregateMetadata(
         // Get the type of the instance object
         Type type = instance.GetType();
 
-        // Use reflection to get the Id and Name properties
-        PropertyInfo? idProperty = type.GetProperty(nameof(IDomainAggregate.AggregateId));
-        PropertyInfo? nameProperty = type.GetProperty(nameof(IDomainAggregate.AggregateName));
+        // Function to get property value (instance or static, including base classes)
+        string? GetPropertyValue(string propertyName)
+        {
+            // Check for instance property
+            PropertyInfo? instanceProperty = type.GetProperty(propertyName);
+            if (instanceProperty != null)
+            {
+                return instanceProperty.GetValue(instance)?.ToString();
+            }
 
-        // Get the values of the properties from the instance object
-        string? id = idProperty?.GetValue(instance)?.ToString();
-        string? name = nameProperty?.GetValue(instance)?.ToString();
+            // Check for static property (including base classes)
+            Type? currentType = type;
+            while (currentType != null)
+            {
+                PropertyInfo? staticProperty = currentType.GetProperty(propertyName, BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy);
+                if (staticProperty != null)
+                {
+                    return staticProperty.GetValue(null)?.ToString();
+                }
+
+                currentType = currentType.BaseType;
+            }
+
+            return null;
+        }
+
+        // Get the values of the properties
+        string? id = GetPropertyValue(nameof(IDomainAggregate.AggregateId));
+        string? name = GetPropertyValue(nameof(IDomainAggregate.AggregateName));
 
         return id == null || name == null
-            ? throw new InvalidOperationException($"Invalid aggregate instance the {nameof(IDomainAggregate.AggregateName)} or {nameof(IDomainAggregate.AggregateId)} properties are missing or undefined. {JsonSerializer.Serialize(instance)}")
+            ? throw new InvalidOperationException($"Invalid aggregate instance: the {nameof(IDomainAggregate.AggregateName)} or {nameof(IDomainAggregate.AggregateId)} properties are missing or undefined. {JsonSerializer.Serialize(instance)}")
             : new AggregateMetadata(id, name);
     }
 }

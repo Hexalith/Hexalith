@@ -34,7 +34,9 @@ public class UserService : IUserService
     {
         // Get the user ID from the authentication state.
         AuthenticationState state = await _authenticationStateProvider.GetAuthenticationStateAsync().ConfigureAwait(false);
-        return state.User?.FindFirst("sub")?.Value
-        ?? throw new InvalidOperationException("User ID not found in the authentication state.");
+        return
+            state.User?.FindFirst("sub")?.Value
+            ?? state.User?.FindFirst("preferred_username")?.Value
+            ?? throw new InvalidOperationException("User ID not found in the authentication state.");
     }
 }
