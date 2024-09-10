@@ -30,9 +30,11 @@ public class UserService : IUserService
     }
 
     /// <inheritdoc/>
-    public async Task<string> GetUserIdAsync(CancellationToken cancellationToken) =>
-
+    public async Task<string> GetUserIdAsync(CancellationToken cancellationToken)
+    {
         // Get the user ID from the authentication state.
-        (await _authenticationStateProvider.GetAuthenticationStateAsync().ConfigureAwait(false)).User?.FindFirst("sub")?.Value
+        AuthenticationState state = await _authenticationStateProvider.GetAuthenticationStateAsync().ConfigureAwait(false);
+        return state.User?.FindFirst("sub")?.Value
         ?? throw new InvalidOperationException("User ID not found in the authentication state.");
+    }
 }
