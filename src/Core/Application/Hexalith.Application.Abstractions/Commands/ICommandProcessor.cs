@@ -41,7 +41,7 @@ public interface ICommandProcessor
     /// <param name="metadata">The command metadata.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
-    Task SubmitAsync(object command, Metadata metadata, CancellationToken cancellationToken);
+    Task SubmitAsync(object command, MessageMetadatas.Metadata metadata, CancellationToken cancellationToken);
 
     /// <summary>
     /// Submits the asynchronous.
