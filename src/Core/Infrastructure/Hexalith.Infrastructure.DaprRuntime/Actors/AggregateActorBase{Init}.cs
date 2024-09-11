@@ -187,6 +187,9 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
         }
     }
 
+    /// <inheritdoc/>
+    public Task SubmitCommandAsync(ActorMessageEnvelope envelope) => throw new NotImplementedException();
+
     [Obsolete]
     private async Task<IAggregate> GetAggregateAsync(string aggregateName, CancellationToken cancellationToken)
     {
