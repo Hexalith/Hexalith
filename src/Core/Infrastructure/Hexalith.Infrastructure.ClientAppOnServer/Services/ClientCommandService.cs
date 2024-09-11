@@ -19,7 +19,7 @@ using Hexalith.Infrastructure.ClientApp.Services;
 /// </summary>
 public class ClientCommandService : IClientCommandService
 {
-    private readonly ICommandProcessor _commandProcessor;
+    private readonly IDomainCommandProcessor _commandProcessor;
     private readonly ISessionService _sessionService;
     private readonly TimeProvider _timeProvider;
     private readonly IUserService _userService;
@@ -27,11 +27,15 @@ public class ClientCommandService : IClientCommandService
     /// <summary>
     /// Initializes a new instance of the <see cref="ClientCommandService"/> class.
     /// </summary>
-    /// <param name="commandProcessor"></param>
+    /// <param name="commandProcessor">The command processor.</param>
     /// <param name="timeProvider">The time provider.</param>
     /// <param name="userService">The user service.</param>
     /// <param name="sessionService">The session service.</param>
-    public ClientCommandService([NotNull] ICommandProcessor commandProcessor, [NotNull] TimeProvider timeProvider, [NotNull] IUserService userService, [NotNull] ISessionService sessionService)
+    public ClientCommandService(
+        [NotNull] IDomainCommandProcessor commandProcessor,
+        [NotNull] TimeProvider timeProvider,
+        [NotNull] IUserService userService,
+        [NotNull] ISessionService sessionService)
     {
         ArgumentNullException.ThrowIfNull(timeProvider);
         ArgumentNullException.ThrowIfNull(userService);

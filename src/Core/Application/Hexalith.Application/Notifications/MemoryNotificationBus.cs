@@ -77,4 +77,12 @@ public class MemoryNotificationBus(IDateTimeService dateTimeService) : INotifica
         _messageStream.Add((message, metadata));
         return Task.CompletedTask;
     }
+
+    /// <inheritdoc/>
+    public Task PublishAsync(MessageMetadatas.MessageState message, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(message);
+        _messageStream.Add((message.Message, message.Metadata));
+        return Task.CompletedTask;
+    }
 }

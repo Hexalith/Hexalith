@@ -34,11 +34,20 @@ public sealed class PolymorphicSerializationAttribute(string? name = null, int v
     public int Version { get; } = version;
 
     /// <summary>
+    /// Gets the type name.
+    /// </summary>
+    /// <param name="name">The name.</param>
+    /// <param name="version">The version.</param>
+    /// <returns>The type name.</returns>
+    public static string GetTypeName(string name, int version)
+            => $"{name}V{version}";
+
+    /// <summary>
     /// Gets the polymorphic type name.
     /// </summary>
     /// <param name="type">The type.</param>
     /// <returns>The polymorphic type name.</returns>
     /// <exception cref="ArgumentNullException">The type is null.</exception>
     public string GetTypeName(Type type)
-        => type == null ? throw new ArgumentNullException(nameof(type)) : $"{Name ?? type.Name}V{Version}";
+        => type == null ? throw new ArgumentNullException(nameof(type)) : GetTypeName(Name ?? type.Name, Version);
 }

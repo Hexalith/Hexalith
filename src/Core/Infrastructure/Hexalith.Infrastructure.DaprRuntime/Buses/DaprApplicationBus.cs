@@ -183,6 +183,13 @@ public partial class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageB
     }
 
     /// <inheritdoc/>
+    public async Task PublishAsync(Application.MessageMetadatas.MessageState message, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(message);
+        await PublishAsync(message.Message, message.Metadata, cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
     public async Task PublishAsync(object message, Application.MessageMetadatas.Metadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(message);

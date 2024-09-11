@@ -8,6 +8,8 @@ using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 using Hexalith.Extensions;
+using Hexalith.Extensions.Helpers;
+using Hexalith.PolymorphicSerialization;
 
 /// <summary>
 /// Represents the metadata of a message.
@@ -42,5 +44,18 @@ public record MessageMetadata(
     public MessageMetadata()
         : this(string.Empty, string.Empty, 0, new AggregateMetadata(), DateTimeOffset.MinValue)
     {
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MessageMetadata"/> class.
+    /// </summary>
+    /// <param name="message">The message.</param>
+    /// <param name="dateTimeOffset">The creation date of the message.</param>
+    public MessageMetadata(object message, DateTimeOffset dateTimeOffset)
+        : this(UniqueIdHelper.GenerateUniqueStringId(), string.Empty, 1, new AggregateMetadata(message), dateTimeOffset)
+    {
+        (string name, string _, int version) = this.GetPolymorphicTypeDiscriminator();
+        Name = name;
+        Version = version;
     }
 }

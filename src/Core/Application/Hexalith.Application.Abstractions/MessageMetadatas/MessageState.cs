@@ -1,7 +1,5 @@
-﻿// <copyright file="MessageState.cs">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="MessageState.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace Hexalith.Application.MessageMetadatas;
@@ -9,6 +7,13 @@ namespace Hexalith.Application.MessageMetadatas;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using Hexalith.Extensions.Common;
+
+/// <summary>
+/// Represents the state of a message.
+/// </summary>
+/// <param name="Message">The message.</param>
+/// <param name="Metadata">The metadata.</param>
 [DataContract]
 public record MessageState(
     [property: DataMember(Order = 1)]
@@ -16,6 +21,10 @@ public record MessageState(
     object Message,
     [property: DataMember(Order = 2)]
     [property: JsonPropertyOrder(2)]
-    Metadata Metadata)
+    Metadata Metadata) : IIdempotent
 {
+    /// <inheritdoc/>
+    [JsonIgnore]
+    [IgnoreDataMember]
+    public string IdempotencyId => Metadata.Message.Id;
 }

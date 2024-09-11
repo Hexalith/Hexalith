@@ -55,4 +55,12 @@ public interface IMessageBus<in TMessage, in TMetadata, in TState>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
     Task PublishAsync(object message, MessageMetadatas.Metadata metadata, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Publishes a domain message asynchronously.
+    /// </summary>
+    /// <param name="message">The domain message to publish.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A task representing the asynchronous operation.</returns>
+    Task PublishAsync(MessageMetadatas.MessageState message, CancellationToken cancellationToken);
 }

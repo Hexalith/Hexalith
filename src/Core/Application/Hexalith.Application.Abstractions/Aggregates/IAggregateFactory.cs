@@ -6,10 +6,8 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 01-04-2024
 // ***********************************************************************
-// <copyright file="IAggregateFactory.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+// <copyright file="IAggregateFactory.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -22,6 +20,7 @@ using Hexalith.Domain.Aggregates;
 /// <summary>
 /// Interface IAggregateFactory.
 /// </summary>
+[Obsolete("This interface is obsolete. Use Hexalith.Application.Abstractions.Aggregates.IDomainAggregateFactory instead.", false)]
 public interface IAggregateFactory
 {
     /// <summary>

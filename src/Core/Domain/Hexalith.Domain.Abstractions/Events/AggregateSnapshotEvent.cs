@@ -1,4 +1,4 @@
-﻿// <copyright file="SnapshotEvent.cs" company="PlaceholderCompany">
+﻿// <copyright file="SnapshotEvent - Copy.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -15,27 +15,13 @@ using Hexalith.Extensions;
 /// Represents a snapshot event in the domain.
 /// </summary>
 [DataContract]
-[Obsolete("This class is obsolete. Use Hexalith.Domain.Abstractions.Events.AggregateSnapshotEvent instead.", false)]
-public class SnapshotEvent : BaseEvent
+public record AggregateSnapshotEvent(string SourceAggregateName, string SourceAggregateId, string Snapshot)
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="SnapshotEvent" /> class.
-    /// </summary>
-    /// <param name="sourceAggregateName">Name of the source aggregate.</param>
-    /// <param name="sourceAggregateId">The source aggregate identifier.</param>
-    /// <param name="snapshot">The snapshot.</param>
-    public SnapshotEvent(string sourceAggregateName, string sourceAggregateId, string snapshot)
-    {
-        SourceAggregateName = sourceAggregateName;
-        SourceAggregateId = sourceAggregateId;
-        Snapshot = snapshot;
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="SnapshotEvent" /> class.
+    /// Initializes a new instance of the <see cref="AggregateSnapshotEvent"/> class.
     /// </summary>
     /// <param name="aggregate">The aggregate.</param>
-    public SnapshotEvent(IAggregate aggregate)
+    public AggregateSnapshotEvent(IDomainAggregate aggregate)
         : this(
               (aggregate ?? throw new ArgumentNullException(nameof(aggregate))).AggregateName,
               aggregate.AggregateId,
@@ -44,28 +30,13 @@ public class SnapshotEvent : BaseEvent
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="SnapshotEvent" /> class.
+    /// Initializes a new instance of the <see cref="AggregateSnapshotEvent"/> class.
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    public SnapshotEvent() => SourceAggregateId = SourceAggregateName = Snapshot = string.Empty;
-
-    /// <summary>
-    /// Gets or sets the snapshot.
-    /// </summary>
-    [DataMember(Order = 12)]
-    public string Snapshot { get; set; }
-
-    /// <summary>
-    /// Gets or sets the source aggregate identifier.
-    /// </summary>
-    [DataMember(Order = 11)]
-    public string SourceAggregateId { get; set; }
-
-    /// <summary>
-    /// Gets or sets the name of the source aggregate.
-    /// </summary>
-    [DataMember(Order = 10)]
-    public string SourceAggregateName { get; set; }
+    public AggregateSnapshotEvent()
+        : this(string.Empty, string.Empty, string.Empty)
+    {
+    }
 
     /// <summary>
     /// Gets the aggregate of the specified type.
@@ -75,7 +46,7 @@ public class SnapshotEvent : BaseEvent
     /// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
     /// <exception cref="InvalidDataContractException">Thrown when the snapshot cannot be deserialized to the specified type.</exception>
     public TAggregate GetAggregate<TAggregate>()
-        where TAggregate : IAggregate
+        where TAggregate : IDomainAggregate
         => (TAggregate)GetAggregate(typeof(TAggregate));
 
     /// <summary>
@@ -85,16 +56,10 @@ public class SnapshotEvent : BaseEvent
     /// <returns>The aggregate of the specified type.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
     /// <exception cref="InvalidDataContractException">Thrown when the snapshot cannot be deserialized to the specified type.</exception>
-    public IAggregate GetAggregate([NotNull] Type type)
+    public IDomainAggregate GetAggregate([NotNull] Type type)
     {
         ArgumentNullException.ThrowIfNull(type);
-        return (IAggregate)(JsonSerializer.Deserialize(Snapshot, type)
+        return (IDomainAggregate)(JsonSerializer.Deserialize(Snapshot, type)
             ?? throw new InvalidDataContractException($"Could not deserialize to {type.Name} : \n{Snapshot}"));
     }
-
-    /// <inheritdoc/>
-    protected override string DefaultAggregateId() => SourceAggregateId;
-
-    /// <inheritdoc/>
-    protected override string DefaultAggregateName() => SourceAggregateName;
 }

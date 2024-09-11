@@ -1,4 +1,4 @@
-﻿// <copyright file="DependencyInjectionCommandDispatcher.cs" company="PlaceholderCompany">
+﻿// <copyright file="DependencyInjectionDomainCommandDispatcher.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -9,24 +9,19 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Hexalith.Application.MessageMetadatas;
 using Hexalith.Domain.Aggregates;
-using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Errors;
 using Hexalith.Extensions.Helpers;
 
 using Microsoft.Extensions.Logging;
 
-/// <summary>
-/// Class DependencyInjectionCommandDispatcher.
-/// Implements the <see cref="ICommandDispatcher" />.
-/// </summary>
-/// <seealso cref="ICommandDispatcher" />
-[Obsolete("Use DependencyInjectionDomainCommandDispatcher instead", false)]
-public partial class DependencyInjectionCommandDispatcher : ICommandDispatcher
+public partial class DependencyInjectionDomainCommandDispatcher : IDomainCommandDispatcher
 {
     /// <summary>
     /// The logger.
     /// </summary>
+    [Obsolete]
     private readonly ILogger<DependencyInjectionCommandDispatcher> _logger;
 
     /// <summary>
@@ -35,11 +30,12 @@ public partial class DependencyInjectionCommandDispatcher : ICommandDispatcher
     private readonly IServiceProvider _serviceProvider;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="DependencyInjectionCommandDispatcher" /> class.
+    /// Initializes a new instance of the <see cref="DependencyInjectionDomainCommandDispatcher"/> class.
     /// </summary>
     /// <param name="serviceProvider">The service provider.</param>
     /// <param name="logger">The logger.</param>
-    public DependencyInjectionCommandDispatcher(IServiceProvider serviceProvider, ILogger<DependencyInjectionCommandDispatcher> logger)
+    [Obsolete]
+    public DependencyInjectionDomainCommandDispatcher(IServiceProvider serviceProvider, ILogger<DependencyInjectionCommandDispatcher> logger)
     {
         ArgumentNullException.ThrowIfNull(serviceProvider);
         ArgumentNullException.ThrowIfNull(logger);
@@ -48,19 +44,20 @@ public partial class DependencyInjectionCommandDispatcher : ICommandDispatcher
     }
 
     /// <inheritdoc/>
-    public async Task<IEnumerable<BaseMessage>> DoAsync(ICommand command, IAggregate? aggregate, CancellationToken cancellationToken)
+    public async Task<IEnumerable<object>> DoAsync(object command, Metadata metadata, IDomainAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
+        ArgumentNullException.ThrowIfNull(metadata);
         try
         {
-            LogDispatchingCommandDebugInformation(command.TypeName, command.AggregateName, command.AggregateId);
-            IEnumerable<BaseMessage> events = await GetHandler(command).DoAsync(command, aggregate, cancellationToken).ConfigureAwait(false);
+            LogDispatchingCommandDebugInformation(metadata.Message.Name, metadata.Message.Aggregate.Name, metadata.Message.Aggregate.Id);
+            IEnumerable<object> events = await GetHandler(command).DoAsync(command, aggregate, cancellationToken).ConfigureAwait(false);
 
             return events;
         }
         catch (ApplicationErrorException ex)
         {
-            LogDispatchingCommandErrorInformation(command.TypeName, command.AggregateName, command.AggregateId);
+            LogDispatchingCommandErrorInformation(metadata.Message.Name, metadata.Message.Aggregate.Name, metadata.Message.Aggregate.Id);
             ex.Error?.LogApplicationErrorDetails(_logger, ex);
             throw;
         }
@@ -68,9 +65,9 @@ public partial class DependencyInjectionCommandDispatcher : ICommandDispatcher
         {
             LogDispatchingCommandErrorInformation(
                 ex,
-                command.TypeName,
-                command.AggregateName,
-                command.AggregateId,
+                metadata.Message.Name,
+                metadata.Message.Aggregate.Name,
+                metadata.Message.Aggregate.Id,
                 ex.FullMessage());
             throw;
         }
@@ -89,11 +86,13 @@ public partial class DependencyInjectionCommandDispatcher : ICommandDispatcher
     public partial void LogDispatchingCommandUndoDebugInformation(string CommandType, string AggregateName, string AggregateId);
 
     /// <inheritdoc/>
-    public async Task<IEnumerable<BaseMessage>> UnDoAsync(ICommand command, IAggregate? aggregate, CancellationToken cancellationToken)
+    public async Task<IEnumerable<object>> UnDoAsync(object command, Metadata metadata, IDomainAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
-        LogDispatchingCommandUndoDebugInformation(command.TypeName, command.AggregateName, command.AggregateId);
-        IEnumerable<BaseMessage> events = await GetHandler(command).UndoAsync(command, aggregate, cancellationToken).ConfigureAwait(false);
+        ArgumentNullException.ThrowIfNull(metadata);
+        ArgumentNullException.ThrowIfNull(aggregate);
+        LogDispatchingCommandUndoDebugInformation(metadata.Message.Name, metadata.Message.Aggregate.Name, metadata.Message.Aggregate.Id);
+        IEnumerable<object> events = await GetHandler(command).UndoAsync(command, aggregate, cancellationToken).ConfigureAwait(false);
         return events;
     }
 
@@ -103,11 +102,11 @@ public partial class DependencyInjectionCommandDispatcher : ICommandDispatcher
     /// <param name="command">The command to handle.</param>
     /// <returns>ICommandHandler<Command>.</returns>
     /// <exception cref="System.InvalidOperationException">No handler found for command {commandType.Name}. Please add a ICommandHandler.<{commandType.Name}> to the service collection.</exception>
-    private ICommandHandler GetHandler(ICommand command)
+    private IDomainCommandHandler GetHandler(object command)
     {
         Type commandType = command.GetType();
-        Type commandHandlerType = typeof(ICommandHandler<>).MakeGenericType(commandType);
-        return _serviceProvider.GetService(commandHandlerType) is not ICommandHandler commandHandler
+        Type commandHandlerType = typeof(IDomainCommandHandler<>).MakeGenericType(commandType);
+        return _serviceProvider.GetService(commandHandlerType) is not IDomainCommandHandler commandHandler
             ? throw new InvalidOperationException($"No handler found for command {commandType.Name}. Please add a ICommandHandler<{commandType.Name}> to the service collection.")
             : commandHandler;
     }

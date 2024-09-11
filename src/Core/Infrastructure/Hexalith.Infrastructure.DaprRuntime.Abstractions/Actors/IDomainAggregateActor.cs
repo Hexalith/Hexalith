@@ -1,37 +1,31 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Infrastructure.DaprRuntime.Sales
-// Author           : Jérôme Piquot
-// Created          : 01-02-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 01-04-2024
-// ***********************************************************************
-// <copyright file="IAggregateActor.cs" company="PlaceholderCompany">
+﻿// <copyright file="IDomainAggregateActor.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
+
 namespace Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 
 using Dapr.Actors;
 
-using Hexalith.Application.States;
+using Hexalith.Application.MessageMetadatas;
 
 /// <summary>
 /// Interface IAggregateActor
 /// Extends the <see cref="IActor" />.
 /// </summary>
 /// <seealso cref="IActor" />
-[Obsolete("This interface is not used anymore. Use Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.IDomainAggregateActor instead.", false)]
-public interface IAggregateActor : IActor
+public interface IDomainAggregateActor : IActor
 {
+    /// <summary>
+    /// Clear all commands.
+    /// </summary>
+    /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
     Task ClearCommandsAsync();
 
     /// <summary>
     /// Gets the snapshot event asynchronous.
     /// </summary>
-    /// <returns>Task&lt;System.Nullable&lt;EventState&gt;&gt;.</returns>
-    Task<EventState?> GetSnapshotEventAsync();
+    /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+    Task<MessageState?> GetSnapshotEventAsync();
 
     /// <summary>
     /// Processes the callback asynchronous.
@@ -68,5 +62,5 @@ public interface IAggregateActor : IActor
     /// </summary>
     /// <param name="envelope">The envelope.</param>
     /// <returns>Task.</returns>
-    Task SubmitCommandAsync(ActorCommandEnvelope envelope);
+    Task SubmitCommandAsync(ActorMessageEnvelope envelope);
 }

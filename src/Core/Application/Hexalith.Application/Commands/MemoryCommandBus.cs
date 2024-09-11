@@ -77,4 +77,12 @@ public class MemoryCommandBus(IDateTimeService dateTimeService) : ICommandBus
         _messagestream.Add((command, metadata));
         await Task.CompletedTask.ConfigureAwait(false);
     }
+
+    /// <inheritdoc/>
+    public async Task PublishAsync(MessageMetadatas.MessageState message, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(message);
+        _messagestream.Add((message.Message, message.Metadata));
+        await Task.CompletedTask.ConfigureAwait(false);
+    }
 }
