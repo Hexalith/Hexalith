@@ -6,10 +6,8 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 01-14-2024
 // ***********************************************************************
-// <copyright file="AggregateActorCommandProcessor.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+// <copyright file="AggregateActorCommandProcessor.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -62,10 +60,12 @@ public partial class AggregateActorCommandProcessor : ICommandProcessor
     }
 
     /// <inheritdoc/>
+    [Obsolete]
     public async Task SubmitAsync(BaseCommand command, BaseMetadata metadata, CancellationToken cancellationToken)
         => await SubmitAsync([command], metadata, cancellationToken).ConfigureAwait(false);
 
     /// <inheritdoc/>
+    [Obsolete]
     public async Task SubmitAsync(IEnumerable<BaseCommand> commands, BaseMetadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(commands);
@@ -106,6 +106,25 @@ public partial class AggregateActorCommandProcessor : ICommandProcessor
         }
     }
 
+    /// <inheritdoc/>
+    [Obsolete]
+    public async Task SubmitAsync(object command, Hexalith.Application.MessageMetadatas.Metadata metadata, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(command);
+        ArgumentNullException.ThrowIfNull(metadata);
+        string actorName = AggregateActorBase.GetAggregateActorName(metadata.Message.Aggregate.Name);
+        try
+        {
+            LogSendingCommandsToActor(metadata.Message.Name, metadata.Message.Aggregate.Id, actorName);
+            IAggregateActor actor = _actorProxy.CreateActorProxy<IAggregateActor>(new ActorId(metadata.Message.Aggregate.Id), actorName);
+            await actor.SubmitCommandAsync(new ActorMessageEnvelope(command, metadata)).ConfigureAwait(false);
+        }
+        catch (Exception e)
+        {
+            throw new InvalidOperationException($"Fail to call actor {actorName} method '{nameof(IAggregateActor.SubmitCommandAsync)}'.", e);
+        }
+    }
+
     /// <summary>
     /// Logs the sending commands to actor.
     /// </summary>
@@ -117,4 +136,16 @@ public partial class AggregateActorCommandProcessor : ICommandProcessor
         Level = LogLevel.Information,
         Message = "Sending commands {CommandNames} to actor {ActorName} for aggregate {AggregateId}.")]
     private partial void LogSendingCommandsToActor(string commandNames, string aggregateId, string actorName);
+
+    /// <summary>
+    /// Logs the sending commands to actor.
+    /// </summary>
+    /// <param name="commandName"></param>
+    /// <param name="aggregateId">The aggregate identifier.</param>
+    /// <param name="actorName">Name of the actor.</param>
+    [LoggerMessage(
+                EventId = 2,
+        Level = LogLevel.Information,
+        Message = "Sending command {CommandName} to actor {ActorName} for aggregate {AggregateId}.")]
+    private partial void LogSendingCommandToActor(string commandName, string aggregateId, string actorName);
 }

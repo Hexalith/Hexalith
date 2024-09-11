@@ -6,10 +6,8 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 01-03-2024
 // ***********************************************************************
-// <copyright file="AggregateActorBase{Init}.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+// <copyright file="AggregateActorBase{Init}.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -59,10 +57,16 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
     private readonly INotificationBus _notificationBus;
     private readonly IRequestBus _requestBus;
     private readonly IResiliencyPolicyProvider _resiliencyPolicyProvider;
+
+    [Obsolete]
     private IAggregate? _aggregate;
+
     private MessageStore<CommandState>? _commandStore;
     private MessageStore<EventState>? _eventSourceStore;
+
+    [Obsolete]
     private MessageStore<MessageState>? _messageStore;
+
     private ResiliencyPolicy? _resiliencyPolicy;
     private AggregateActorState? _state;
 
@@ -127,6 +131,7 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
             new ActorStateStoreProvider(StateManager),
             ActorConstants.EventSourcingName);
 
+    [Obsolete]
     private MessageStore<MessageState> MessageStore
         => _messageStore ??= new MessageStore<MessageState>(
             new ActorStateStoreProvider(StateManager),
@@ -140,6 +145,7 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
     /// </summary>
     /// <param name="aggregateName">Name of the aggregate.</param>
     /// <returns>string.</returns>
+    [Obsolete]
     public static string GetAggregateActorName(string aggregateName) => aggregateName + nameof(Aggregate);
 
     /// <inheritdoc/>
@@ -152,6 +158,7 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
     }
 
     /// <inheritdoc/>
+    [Obsolete]
     public async Task<EventState?> GetSnapshotEventAsync() => await GetSnapshotEventAsync(CancellationToken.None).ConfigureAwait(false);
 
     /// <inheritdoc/>
@@ -169,6 +176,7 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
     }
 
     /// <inheritdoc/>
+    [Obsolete]
     public async Task SendSnapshotEventAsync()
     {
         EventState? eventState = await GetSnapshotEventAsync(CancellationToken.None)
@@ -179,6 +187,7 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
         }
     }
 
+    [Obsolete]
     private async Task<IAggregate> GetAggregateAsync(string aggregateName, CancellationToken cancellationToken)
     {
         if (_aggregate is null)
@@ -219,6 +228,7 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
         return _state;
     }
 
+    [Obsolete]
     private async Task<EventState?> GetSnapshotEventAsync(CancellationToken cancellationToken)
     {
         string aggregateName = Host.ActorTypeInfo.ActorTypeName.Split(nameof(Aggregate)).First();

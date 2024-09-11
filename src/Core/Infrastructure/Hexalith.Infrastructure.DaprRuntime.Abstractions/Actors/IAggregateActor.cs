@@ -6,10 +6,8 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 01-04-2024
 // ***********************************************************************
-// <copyright file="IAggregateActor.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+// <copyright file="IAggregateActor.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -69,5 +67,13 @@ public interface IAggregateActor : IActor
     /// </summary>
     /// <param name="envelope">The envelope.</param>
     /// <returns>Task.</returns>
+    [Obsolete("Use SubmitCommandAsync(ActorMessageEnvelope envelope) instead.", false)]
     Task SubmitCommandAsync(ActorCommandEnvelope envelope);
+
+    /// <summary>
+    /// Submits the command asynchronous.
+    /// </summary>
+    /// <param name="envelope">The envelope.</param>
+    /// <returns>Task.</returns>
+    Task SubmitCommandAsync(ActorMessageEnvelope envelope);
 }
