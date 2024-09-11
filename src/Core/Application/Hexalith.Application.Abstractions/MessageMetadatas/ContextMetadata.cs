@@ -1,13 +1,13 @@
-﻿// <copyright file="ContextMetadata.cs">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="ContextMetadata.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace Hexalith.Application.MessageMetadatas;
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
+
+using Hexalith.Extensions;
 
 /// <summary>
 /// The context metadata.
@@ -39,4 +39,12 @@ public record ContextMetadata(
     [property: JsonPropertyOrder(6)]
     IEnumerable<string> Scopes)
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ContextMetadata"/> class.
+    /// </summary>
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
+    public ContextMetadata()
+        : this(string.Empty, string.Empty, null, null, string.Empty, [])
+    {
+    }
 }

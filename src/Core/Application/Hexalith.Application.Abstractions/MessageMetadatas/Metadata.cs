@@ -1,13 +1,13 @@
-﻿// <copyright file="Metadata.cs">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="Metadata.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace Hexalith.Application.MessageMetadatas;
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
+
+using Hexalith.Extensions;
 
 /// <summary>
 /// Represents the metadata of a message.
@@ -23,4 +23,12 @@ public record Metadata(
     [property: JsonPropertyOrder(2)]
     ContextMetadata Context)
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Metadata"/> class.
+    /// </summary>
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
+    public Metadata()
+        : this(new MessageMetadata(), new ContextMetadata())
+    {
+    }
 }

@@ -6,10 +6,8 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 02-05-2023
 // ***********************************************************************
-// <copyright file="DaprApplicationBus.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+// <copyright file="DaprApplicationBus.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -134,16 +132,15 @@ public partial class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageB
     /// <inheritdoc/>
     public async Task PublishAsync(TState envelope, CancellationToken cancellationToken)
     {
-        {
-            ArgumentNullException.ThrowIfNull(envelope);
-            ArgumentNullException.ThrowIfNull(envelope.Message);
-            ArgumentNullException.ThrowIfNull(envelope.Metadata);
+        ArgumentNullException.ThrowIfNull(envelope);
+        ArgumentNullException.ThrowIfNull(envelope.Message);
+        ArgumentNullException.ThrowIfNull(envelope.Metadata);
 #pragma warning disable CA1308 // Normalize strings to uppercase
-            string topicName = !string.IsNullOrEmpty(envelope.Message.AggregateName)
-                ? envelope.Message.AggregateName.ToLowerInvariant() + _topicSuffix
-                : throw new InvalidOperationException("Event aggregate name is not defined.");
+        string topicName = !string.IsNullOrEmpty(envelope.Message.AggregateName)
+            ? envelope.Message.AggregateName.ToLowerInvariant() + _topicSuffix
+            : throw new InvalidOperationException("Event aggregate name is not defined.");
 #pragma warning restore CA1308 // Normalize strings to uppercase
-            Dictionary<string, string> m = new(StringComparer.Ordinal)
+        Dictionary<string, string> m = new(StringComparer.Ordinal)
                     {
                         { "ContentType", "application/json" },
                         { "Label", envelope.Metadata.Message.Name + ' ' + envelope.Message.AggregateId },
@@ -153,36 +150,87 @@ public partial class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageB
                         { "SessionId", envelope.Metadata.Context.SessionId ?? envelope.Message.AggregateId },
                         { "PartitionKey", envelope.Message.AggregateId },
                     };
-            try
-            {
-                await _daprClient.PublishEventAsync(
-                    _name,
-                    topicName,
-                    envelope,
-                    m,
-                    cancellationToken).ConfigureAwait(false);
-                LogMessageSent(
-                    envelope.Metadata.Message.Name,
-                    envelope.Metadata.Message.Id,
-                    envelope.Metadata.Context.CorrelationId,
-                    topicName,
-                    _name);
-            }
-            catch (Exception ex)
-            {
-                LogErrorWhileSendingMessage(
-                    ex,
-                    envelope.Metadata.Message.Name,
-                    envelope.Metadata.Message.Id,
-                    envelope.Metadata.Context.CorrelationId,
-                    topicName,
-                    _name,
-                    GetType().Name,
-                    ex.FullMessage(),
-                    string.Join("\n", m.Select(p => $"{p.Key}={p.Value}")),
-                    JsonSerializer.Serialize(envelope));
-                throw;
-            }
+        try
+        {
+            await _daprClient.PublishEventAsync(
+                _name,
+                topicName,
+                envelope,
+                m,
+                cancellationToken).ConfigureAwait(false);
+            LogMessageSent(
+                envelope.Metadata.Message.Name,
+                envelope.Metadata.Message.Id,
+                envelope.Metadata.Context.CorrelationId,
+                topicName,
+                _name);
+        }
+        catch (Exception ex)
+        {
+            LogErrorWhileSendingMessage(
+                ex,
+                envelope.Metadata.Message.Name,
+                envelope.Metadata.Message.Id,
+                envelope.Metadata.Context.CorrelationId,
+                topicName,
+                _name,
+                GetType().Name,
+                ex.FullMessage(),
+                string.Join("\n", m.Select(p => $"{p.Key}={p.Value}")),
+                JsonSerializer.Serialize(envelope));
+            throw;
+        }
+    }
+
+    /// <inheritdoc/>
+    public async Task PublishAsync(object message, Application.MessageMetadatas.Metadata metadata, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(message);
+        ArgumentNullException.ThrowIfNull(metadata);
+#pragma warning disable CA1308 // Normalize strings to uppercase
+        string topicName = !string.IsNullOrEmpty(metadata.Message.Aggregate.Name)
+            ? metadata.Message.Aggregate.Name.ToLowerInvariant() + _topicSuffix
+            : throw new InvalidOperationException("Event aggregate name is not defined.");
+#pragma warning restore CA1308 // Normalize strings to uppercase
+        Dictionary<string, string> m = new(StringComparer.Ordinal)
+                    {
+                        { "ContentType", "application/json" },
+                        { "Label", metadata.Message.Name + ' ' + metadata.Message.Aggregate.Name },
+                        { "MessageName", metadata.Message.Name },
+                        { "MessageId", metadata.Message.Id },
+                        { "CorrelationId", metadata.Context.CorrelationId },
+                        { "SessionId", metadata.Context.SessionId ?? metadata.Message.Aggregate.Name },
+                        { "PartitionKey", metadata.Message.Aggregate.Id },
+                    };
+        Application.MessageMetadatas.MessageState state = new(message, metadata);
+        try
+        {
+            await _daprClient.PublishEventAsync(
+                _name,
+                topicName,
+                state,
+                cancellationToken).ConfigureAwait(false);
+            LogMessageSent(
+                metadata.Message.Name,
+                metadata.Message.Id,
+                metadata.Context.CorrelationId,
+                topicName,
+                _name);
+        }
+        catch (Exception ex)
+        {
+            LogErrorWhileSendingMessage(
+                ex,
+                metadata.Message.Name,
+                metadata.Message.Id,
+                metadata.Context.CorrelationId,
+                topicName,
+                _name,
+                GetType().Name,
+                ex.FullMessage(),
+                string.Join("\n", m.Select(p => $"{p.Key}={p.Value}")),
+                JsonSerializer.Serialize(state));
+            throw;
         }
     }
 }

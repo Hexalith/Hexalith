@@ -1,7 +1,5 @@
-﻿// <copyright file="ActorsCommandProcessor.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="ActorsCommandProcessor.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace Hexalith.Infrastructure.DaprRuntime.Handlers;
@@ -14,7 +12,7 @@ using Dapr.Actors;
 using Dapr.Actors.Client;
 
 using Hexalith.Application.Commands;
-using Hexalith.Application.Metadatas;
+using Hexalith.Application.MessageMetadatas;
 using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 
 using Microsoft.Extensions.Logging;
@@ -49,11 +47,11 @@ public abstract partial class ActorsCommandProcessor : ICommandProcessor
     }
 
     /// <inheritdoc/>
-    public async Task SubmitAsync(BaseCommand command, BaseMetadata metadata, CancellationToken cancellationToken)
+    public async Task SubmitAsync(BaseCommand command, Application.Metadatas.BaseMetadata metadata, CancellationToken cancellationToken)
         => await SubmitAsync([command], metadata, cancellationToken).ConfigureAwait(false);
 
     /// <inheritdoc/>
-    public async Task SubmitAsync(IEnumerable<BaseCommand> commands, BaseMetadata metadata, CancellationToken cancellationToken)
+    public async Task SubmitAsync(IEnumerable<BaseCommand> commands, Application.Metadatas.BaseMetadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(commands);
         ArgumentNullException.ThrowIfNull(metadata);
@@ -71,7 +69,7 @@ public abstract partial class ActorsCommandProcessor : ICommandProcessor
 
             BaseCommand cmd = aggregateCommands[0];
             string actorName = GetActorName(cmd);
-            Metadata[] metadatas = aggregateCommands.Select(p => Metadata.CreateNew(p, metadata)).ToArray();
+            Application.Metadatas.Metadata[] metadatas = aggregateCommands.Select(p => Application.Metadatas.Metadata.CreateNew(p, metadata)).ToArray();
 
             ActorCommandEnvelope envelope = new(aggregateCommands, metadatas);
 
@@ -88,6 +86,31 @@ public abstract partial class ActorsCommandProcessor : ICommandProcessor
         }
     }
 
+    /// <inheritdoc/>
+    public async Task SubmitAsync(object command, Metadata metadata, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(command);
+        ArgumentNullException.ThrowIfNull(metadata);
+
+        string actorName = GetActorName(metadata.Message.Aggregate);
+
+        try
+        {
+            LogSendingCommandsToActor(metadata.Message.Name, metadata.Message.Aggregate.Id, actorName);
+            ICommandProcessorActor actor = _actorProxy.CreateActorProxy<ICommandProcessorActor>(new ActorId(metadata.Message.Aggregate.Id), actorName);
+            ActorMessageEnvelope envelope = new(command, metadata);
+            await actor.DoAsync(envelope).ConfigureAwait(false);
+        }
+        catch (Exception e)
+        {
+            throw new InvalidOperationException($"Fail to call actor {actorName} method '{nameof(ICommandProcessorActor.DoAsync)}'.", e);
+        }
+    }
+
+    /// <inheritdoc/>
+
+    public Task SubmitAsync(object command, Application.Metadatas.Metadata metadata, CancellationToken cancellationToken) => throw new NotImplementedException();
+
     /// <summary>
     /// Gets the name of the actor method.
     /// </summary>
@@ -100,11 +123,25 @@ public abstract partial class ActorsCommandProcessor : ICommandProcessor
     /// </summary>
     /// <param name="command">The command.</param>
     /// <returns>string.</returns>
+    [Obsolete("Use GetActorName(AggregateMetadata metadata) instead.", true)]
     protected abstract string GetActorName(ICommand command);
 
+    /// <summary>
+    /// Gets the name of the actor.
+    /// </summary>
+    /// <param name="metadata">The metadata.</param>
+    /// <returns>The actor name.</returns>
+    protected abstract string GetActorName(AggregateMetadata metadata);
+
     [LoggerMessage(
-                EventId = 1,
+        EventId = 1,
         Level = LogLevel.Information,
         Message = "Sending commands {CommandNames} to actor {ActorName} for aggregate {AggregateId}.")]
     private partial void LogSendingCommandsToActor(string commandNames, string aggregateId, string actorName);
+
+    [LoggerMessage(
+        EventId = 2,
+        Level = LogLevel.Information,
+        Message = "Sending command {CommandName} to actor {ActorName} for aggregate {AggregateId}.")]
+    private partial void LogSendingCommandToActor(string commandName, string aggregateId, string actorName);
 }

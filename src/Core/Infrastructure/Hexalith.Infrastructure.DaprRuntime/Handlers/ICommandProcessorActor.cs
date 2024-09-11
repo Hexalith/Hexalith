@@ -6,10 +6,8 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 02-12-2023
 // ***********************************************************************
-// <copyright file="ICommandProcessorActor.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+// <copyright file="ICommandProcessorActor.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -40,7 +38,15 @@ public interface ICommandProcessorActor : IActor
     /// </summary>
     /// <param name="envelope">The envelope.</param>
     /// <returns>Task.</returns>
+    [Obsolete("Use DoAsync(ActorMessageEnvelope) instead", true)]
     Task DoAsync(ActorCommandEnvelope envelope);
+
+    /// <summary>
+    /// Does a command execution.
+    /// </summary>
+    /// <param name="envelope">The envelope containing the command.</param>
+    /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+    Task DoAsync(ActorMessageEnvelope envelope);
 
     /// <summary>
     /// Determines whether has commands.

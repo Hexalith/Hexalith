@@ -1,7 +1,5 @@
-﻿// <copyright file="MemoryEventBus.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="MemoryEventBus.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace Hexalith.Application.Events;
@@ -26,6 +24,8 @@ public class MemoryEventBus(IDateTimeService dateTimeService) : IEventBus
     /// The date time service.
     /// </summary>
     private readonly IDateTimeService _dateTimeService = dateTimeService;
+
+    private readonly List<(object, MessageMetadatas.Metadata)> _messageStream = [];
 
     /// <summary>
     /// The stream.
@@ -59,5 +59,14 @@ public class MemoryEventBus(IDateTimeService dateTimeService) : IEventBus
         ArgumentNullException.ThrowIfNull(state);
         _stream.Add(state);
         await Task.CompletedTask.ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public Task PublishAsync(object message, MessageMetadatas.Metadata metadata, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(message);
+        ArgumentNullException.ThrowIfNull(metadata);
+        _messageStream.Add((message, metadata));
+        return Task.CompletedTask;
     }
 }

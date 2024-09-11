@@ -6,10 +6,8 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 02-04-2023
 // ***********************************************************************
-// <copyright file="MemoryRequestBus.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+// <copyright file="MemoryRequestBus.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -34,6 +32,8 @@ public class MemoryRequestBus(IDateTimeService dateTimeService) : IRequestBus
     /// The date time service.
     /// </summary>
     private readonly IDateTimeService _dateTimeService = dateTimeService;
+
+    private readonly List<(object, MessageMetadatas.Metadata)> _messageStream = [];
 
     /// <summary>
     /// The stream.
@@ -67,5 +67,14 @@ public class MemoryRequestBus(IDateTimeService dateTimeService) : IRequestBus
         ArgumentNullException.ThrowIfNull(requestState);
         _stream.Add(requestState);
         await Task.CompletedTask.ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public Task PublishAsync(object message, MessageMetadatas.Metadata metadata, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(message);
+        ArgumentNullException.ThrowIfNull(metadata);
+        _messageStream.Add((message, metadata));
+        return Task.CompletedTask;
     }
 }

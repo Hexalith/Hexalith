@@ -6,10 +6,8 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 02-06-2023
 // ***********************************************************************
-// <copyright file="ICommandProcessor.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+// <copyright file="ICommandProcessor.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -33,7 +31,17 @@ public interface ICommandProcessor
     /// <param name="metadata">The command metadata.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
+    [Obsolete("Use SubmitAsync with object type commands instead")]
     Task SubmitAsync(BaseCommand command, BaseMetadata metadata, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Submits commands.
+    /// </summary>
+    /// <param name="command">The command.</param>
+    /// <param name="metadata">The command metadata.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+    Task SubmitAsync(object command, Metadata metadata, CancellationToken cancellationToken);
 
     /// <summary>
     /// Submits the asynchronous.
@@ -42,5 +50,6 @@ public interface ICommandProcessor
     /// <param name="metadata">The metadata.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
+    [Obsolete("Use SubmitAsync with object type commands instead")]
     Task SubmitAsync(IEnumerable<BaseCommand> commands, BaseMetadata metadata, CancellationToken cancellationToken);
 }

@@ -11,6 +11,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 
 using Hexalith.Domain.Aggregates;
+using Hexalith.Extensions;
 
 /// <summary>
 /// Represents the metadata of an aggregate.
@@ -26,6 +27,15 @@ public record AggregateMetadata(
     [property:JsonPropertyOrder(2)]
     string Name)
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="AggregateMetadata"/> class.
+    /// </summary>
+    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
+    public AggregateMetadata()
+        : this(string.Empty, string.Empty)
+    {
+    }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="AggregateMetadata"/> class.
     /// </summary>

@@ -6,12 +6,11 @@ namespace Hexalith.Infrastructure.ClientAppOnServer.Services;
 
 using System;
 using System.Diagnostics.CodeAnalysis;
-using System.Net.Http.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Hexalith.Application.Commands;
 using Hexalith.Application.MessageMetadatas;
-using Hexalith.Application.States;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.ClientApp.Services;
 
@@ -20,7 +19,7 @@ using Hexalith.Infrastructure.ClientApp.Services;
 /// </summary>
 public class ClientCommandService : IClientCommandService
 {
-    private readonly HttpClient _client;
+    private readonly ICommandProcessor _commandProcessor;
     private readonly ISessionService _sessionService;
     private readonly TimeProvider _timeProvider;
     private readonly IUserService _userService;
@@ -28,17 +27,17 @@ public class ClientCommandService : IClientCommandService
     /// <summary>
     /// Initializes a new instance of the <see cref="ClientCommandService"/> class.
     /// </summary>
-    /// <param name="client">The HTTP client.</param>
+    /// <param name="commandProcessor"></param>
     /// <param name="timeProvider">The time provider.</param>
     /// <param name="userService">The user service.</param>
     /// <param name="sessionService">The session service.</param>
-    public ClientCommandService([NotNull] HttpClient client, [NotNull] TimeProvider timeProvider, [NotNull] IUserService userService, [NotNull] ISessionService sessionService)
+    public ClientCommandService([NotNull] ICommandProcessor commandProcessor, [NotNull] TimeProvider timeProvider, [NotNull] IUserService userService, [NotNull] ISessionService sessionService)
     {
         ArgumentNullException.ThrowIfNull(timeProvider);
         ArgumentNullException.ThrowIfNull(userService);
         ArgumentNullException.ThrowIfNull(sessionService);
-        ArgumentNullException.ThrowIfNull(client);
-        _client = client;
+        ArgumentNullException.ThrowIfNull(commandProcessor);
+        _commandProcessor = commandProcessor;
         _timeProvider = timeProvider;
         _userService = userService;
         _sessionService = sessionService;
@@ -50,7 +49,7 @@ public class ClientCommandService : IClientCommandService
         ArgumentNullException.ThrowIfNull(command);
         ArgumentNullException.ThrowIfNull(metadata);
 
-        return _client.PostAsJsonAsync("api/commands", new ApplicationMessageState(command, metadata), cancellationToken);
+        return _commandProcessor.SubmitAsync(command, metadata, cancellationToken);
     }
 
     /// <inheritdoc/>

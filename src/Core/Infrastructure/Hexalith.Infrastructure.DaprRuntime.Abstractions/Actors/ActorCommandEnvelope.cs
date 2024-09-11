@@ -6,10 +6,8 @@
 // Last Modified By : jpiquot
 // Last Modified On : 03-11-2023
 // ***********************************************************************
-// <copyright file="ActorCommandEnvelope.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+// <copyright file="ActorCommandEnvelope.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -32,6 +30,7 @@ using Hexalith.Application.Metadatas;
 /// <seealso cref="IEquatable{ActorCommandEnvelope}" />
 [DataContract]
 [Serializable]
+[Obsolete("Use ActorMessageEnvelope", false)]
 public class ActorCommandEnvelope : IJsonOnSerializing, IJsonOnDeserialized
 {
     /// <summary>
