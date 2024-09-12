@@ -21,8 +21,7 @@ public partial class DependencyInjectionDomainCommandDispatcher : IDomainCommand
     /// <summary>
     /// The logger.
     /// </summary>
-    [Obsolete]
-    private readonly ILogger<DependencyInjectionCommandDispatcher> _logger;
+    private readonly ILogger<DependencyInjectionDomainCommandDispatcher> _logger;
 
     /// <summary>
     /// The service provider.
@@ -34,8 +33,7 @@ public partial class DependencyInjectionDomainCommandDispatcher : IDomainCommand
     /// </summary>
     /// <param name="serviceProvider">The service provider.</param>
     /// <param name="logger">The logger.</param>
-    [Obsolete]
-    public DependencyInjectionDomainCommandDispatcher(IServiceProvider serviceProvider, ILogger<DependencyInjectionCommandDispatcher> logger)
+    public DependencyInjectionDomainCommandDispatcher(IServiceProvider serviceProvider, ILogger<DependencyInjectionDomainCommandDispatcher> logger)
     {
         ArgumentNullException.ThrowIfNull(serviceProvider);
         ArgumentNullException.ThrowIfNull(logger);
@@ -44,7 +42,6 @@ public partial class DependencyInjectionDomainCommandDispatcher : IDomainCommand
     }
 
     /// <inheritdoc/>
-    [Obsolete]
     public async Task<ExecuteCommandResult> DoAsync(object command, Metadata metadata, IDomainAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
