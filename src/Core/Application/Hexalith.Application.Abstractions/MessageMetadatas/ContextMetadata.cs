@@ -47,4 +47,21 @@ public record ContextMetadata(
         : this(string.Empty, string.Empty, null, null, string.Empty, [])
     {
     }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ContextMetadata"/> class.
+    /// </summary>
+    /// <param name="context">The context.</param>
+    /// <param name="receivedDate">The received date.</param>
+    /// <exception cref="ArgumentNullException">context is null.</exception>
+    public ContextMetadata(ContextMetadata context, DateTimeOffset receivedDate)
+        : this(
+              (context ?? throw new ArgumentNullException(nameof(context))).CorrelationId,
+              context.UserId,
+              receivedDate,
+              context.SequenceNumber,
+              context.SessionId,
+              context.Scopes)
+    {
+    }
 }

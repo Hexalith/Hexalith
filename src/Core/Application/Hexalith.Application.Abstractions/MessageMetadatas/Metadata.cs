@@ -4,6 +4,7 @@
 
 namespace Hexalith.Application.MessageMetadatas;
 
+using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
@@ -30,5 +31,12 @@ public record Metadata(
     public Metadata()
         : this(new MessageMetadata(), new ContextMetadata())
     {
+    }
+
+    public static Metadata CreateNew(object message, Metadata metadata, DateTimeOffset dateTime)
+    {
+        ArgumentNullException.ThrowIfNull(message);
+        ArgumentNullException.ThrowIfNull(metadata);
+        return new Metadata(new MessageMetadata(message, dateTime), metadata.Context);
     }
 }

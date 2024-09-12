@@ -44,16 +44,17 @@ public partial class DependencyInjectionDomainCommandDispatcher : IDomainCommand
     }
 
     /// <inheritdoc/>
-    public async Task<IEnumerable<object>> DoAsync(object command, Metadata metadata, IDomainAggregate? aggregate, CancellationToken cancellationToken)
+    [Obsolete]
+    public async Task<ExecuteCommandResult> DoAsync(object command, Metadata metadata, IDomainAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
         ArgumentNullException.ThrowIfNull(metadata);
         try
         {
             LogDispatchingCommandDebugInformation(metadata.Message.Name, metadata.Message.Aggregate.Name, metadata.Message.Aggregate.Id);
-            IEnumerable<object> events = await GetHandler(command).DoAsync(command, aggregate, cancellationToken).ConfigureAwait(false);
+            IEnumerable<object> events = (IEnumerable<object>)await GetHandler(command).DoAsync(command, aggregate, cancellationToken).ConfigureAwait(false);
 
-            return events;
+            return (ExecuteCommandResult)events;
         }
         catch (ApplicationErrorException ex)
         {
@@ -86,14 +87,14 @@ public partial class DependencyInjectionDomainCommandDispatcher : IDomainCommand
     public partial void LogDispatchingCommandUndoDebugInformation(string CommandType, string AggregateName, string AggregateId);
 
     /// <inheritdoc/>
-    public async Task<IEnumerable<object>> UnDoAsync(object command, Metadata metadata, IDomainAggregate? aggregate, CancellationToken cancellationToken)
+    public async Task<ExecuteCommandResult> UnDoAsync(object command, Metadata metadata, IDomainAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
         ArgumentNullException.ThrowIfNull(metadata);
         ArgumentNullException.ThrowIfNull(aggregate);
         LogDispatchingCommandUndoDebugInformation(metadata.Message.Name, metadata.Message.Aggregate.Name, metadata.Message.Aggregate.Id);
-        IEnumerable<object> events = await GetHandler(command).UndoAsync(command, aggregate, cancellationToken).ConfigureAwait(false);
-        return events;
+        IEnumerable<object> events = (IEnumerable<object>)await GetHandler(command).UndoAsync(command, aggregate, cancellationToken).ConfigureAwait(false);
+        return (ExecuteCommandResult)events;
     }
 
     /// <summary>

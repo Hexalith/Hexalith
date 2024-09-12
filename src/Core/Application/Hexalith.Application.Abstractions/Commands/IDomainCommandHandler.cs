@@ -1,10 +1,9 @@
-﻿// <copyright file="ICommandHandler - Copy.cs" company="PlaceholderCompany">
+﻿// <copyright file="IDomainCommandHandler.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace Hexalith.Application.Commands;
 
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -22,7 +21,7 @@ public interface IDomainCommandHandler
     /// <param name="aggregate">The aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;IEnumerable&lt;BaseMessage&gt;&gt;.</returns>
-    Task<IEnumerable<object>> DoAsync(object command, IDomainAggregate? aggregate, CancellationToken cancellationToken);
+    Task<ExecuteCommandResult> DoAsync(object command, IDomainAggregate? aggregate, CancellationToken cancellationToken);
 
     /// <summary>
     /// Undoes the asynchronous.
@@ -31,7 +30,7 @@ public interface IDomainCommandHandler
     /// <param name="aggregate">The aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;IEnumerable&lt;BaseMessage&gt;&gt;.</returns>
-    Task<IEnumerable<object>> UndoAsync(object command, IDomainAggregate? aggregate, CancellationToken cancellationToken);
+    Task<ExecuteCommandResult> UndoAsync(object command, IDomainAggregate? aggregate, CancellationToken cancellationToken);
 }
 
 /// <summary>
@@ -50,7 +49,7 @@ public interface IDomainCommandHandler<TCommand> : ICommandHandler
     /// <param name="aggregate">The aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;IEnumerable&lt;BaseMessage&gt;&gt;.</returns>
-    Task<IEnumerable<object>> DoAsync(object command, IDomainAggregate? aggregate, CancellationToken cancellationToken);
+    Task<ExecuteCommandResult> DoAsync(object command, IDomainAggregate? aggregate, CancellationToken cancellationToken);
 
     /// <summary>
     /// Undoes the asynchronous.
@@ -59,5 +58,5 @@ public interface IDomainCommandHandler<TCommand> : ICommandHandler
     /// <param name="aggregate">The aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;IEnumerable&lt;BaseMessage&gt;&gt;.</returns>
-    Task<IEnumerable<object>> UndoAsync(object command, IDomainAggregate? aggregate, CancellationToken cancellationToken);
+    Task<ExecuteCommandResult> UndoAsync(object command, IDomainAggregate? aggregate, CancellationToken cancellationToken);
 }
