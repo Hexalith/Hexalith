@@ -9,6 +9,7 @@
 		<ProjectReference Include="..\..\src\Core\Application\Hexalith.Application.Modules\Hexalith.Application.Modules.csproj" />
 		<ProjectReference Include="..\..\src\Core\Application\Hexalith.Application.TopologicalSorting\Hexalith.Application.TopologicalSorting.csproj" />
 		<ProjectReference Include="..\..\src\Core\Application\Hexalith.Application\Hexalith.Application.csproj" />
+		<ProjectReference Include="..\..\src\Core\CodeGenerators\Hexalith.CodeGenerators.SerializationMappers\Hexalith.CodeGenerators.SerializationMappers.csproj" />
 		<ProjectReference Include="..\..\src\Core\Common\Hexalith.TestMocks\Hexalith.TestMocks.csproj" />
 		<ProjectReference Include="..\..\src\Core\Domain\Hexalith.Domain.Surveys\Hexalith.Domain.Surveys.csproj" />
 		<ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Serialization\Hexalith.Infrastructure.Serialization.csproj" />

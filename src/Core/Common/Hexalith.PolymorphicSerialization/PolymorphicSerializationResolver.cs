@@ -1,7 +1,5 @@
-﻿// <copyright file="PolymorphicSerializationResolver.cs">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="PolymorphicSerializationResolver.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace Hexalith.PolymorphicSerialization;

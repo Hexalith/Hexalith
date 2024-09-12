@@ -6,10 +6,8 @@
 // Last Modified By : jpiquot
 // Last Modified On : 02-15-2023
 // ***********************************************************************
-// <copyright file="ActorCommandEnvelopeTest.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+// <copyright file="ActorCommandEnvelopeTest.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -28,12 +26,13 @@ using Hexalith.UnitTests.Core.Application.Commands;
 /// <summary>
 /// Class ActorCommandEnvelopeTest.
 /// </summary>
-public class ActorCommandEnvelopeTest
+public class ActorMessageEnvelopeTest
 {
     /// <summary>
     /// Defines the test method Envelope_serialization_deserialization_should_return_same.
     /// </summary>
     [Fact]
+    [Obsolete]
     public void EnvelopeSerializationDeserializationShouldReturnSame()
     {
         DummyCommand1 c1 = DummyCommand1.Create();
@@ -50,6 +49,7 @@ public class ActorCommandEnvelopeTest
     /// Defines the test method Envelope_should_be_data_contract_serializable.
     /// </summary>
     [Fact]
+    [Obsolete]
     public void EnvelopeShouldBeDataContractSerializable()
     {
         DummyCommand1 c1 = DummyCommand1.Create();
@@ -64,6 +64,7 @@ public class ActorCommandEnvelopeTest
     /// Defines the test method Serialized_envelope_should_contain_commands.
     /// </summary>
     [Fact]
+    [Obsolete]
     public void SerializedEnvelopeShouldContainCommands()
     {
         DummyCommand1 c1 = DummyCommand1.Create();

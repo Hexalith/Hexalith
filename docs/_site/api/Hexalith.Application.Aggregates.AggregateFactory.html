@@ -123,7 +123,7 @@ Implements the <a class="xref" href="Hexalith.Application.Aggregates.IAggregateF
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Aggregates_AggregateFactory__ctor_IEnumerable_Hexalith_Application_Aggregates_IAggregateProvider__.md&amp;value=---%0Auid%3A%20Hexalith.Application.Aggregates.AggregateFactory.%23ctor(IEnumerable%7BHexalith.Application.Aggregates.IAggregateProvider%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/Aggregates/AggregateFactory.cs/#L40">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/Aggregates/AggregateFactory.cs/#L28">View Source</a>
   </span>
   <a id="Hexalith_Application_Aggregates_AggregateFactory__ctor_" data-uid="Hexalith.Application.Aggregates.AggregateFactory.#ctor*"></a>
   <h4 id="Hexalith_Application_Aggregates_AggregateFactory__ctor_IEnumerable_Hexalith_Application_Aggregates_IAggregateProvider__" data-uid="Hexalith.Application.Aggregates.AggregateFactory.#ctor(IEnumerable{Hexalith.Application.Aggregates.IAggregateProvider})">AggregateFactory(IEnumerable&lt;IAggregateProvider&gt;)</h4>
@@ -175,7 +175,7 @@ Implements the <a class="xref" href="Hexalith.Application.Aggregates.IAggregateF
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Aggregates_AggregateFactory_Create_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Aggregates.AggregateFactory.Create(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/Aggregates/AggregateFactory.cs/#L47">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/Aggregates/AggregateFactory.cs/#L35">View Source</a>
   </span>
   <a id="Hexalith_Application_Aggregates_AggregateFactory_Create_" data-uid="Hexalith.Application.Aggregates.AggregateFactory.Create*"></a>
   <h4 id="Hexalith_Application_Aggregates_AggregateFactory_Create_System_String_" data-uid="Hexalith.Application.Aggregates.AggregateFactory.Create(System.String)">Create(String)</h4>
@@ -184,7 +184,8 @@ Implements the <a class="xref" href="Hexalith.Application.Aggregates.IAggregateF
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IAggregate Create(string aggregateName)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete]
+public IAggregate Create(string aggregateName)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -225,7 +226,7 @@ Implements the <a class="xref" href="Hexalith.Application.Aggregates.IAggregateF
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Aggregates_AggregateFactory_GetAggregateType_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Application.Aggregates.AggregateFactory.GetAggregateType(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/Aggregates/AggregateFactory.cs/#L50">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/Aggregates/AggregateFactory.cs/#L39">View Source</a>
   </span>
   <a id="Hexalith_Application_Aggregates_AggregateFactory_GetAggregateType_" data-uid="Hexalith.Application.Aggregates.AggregateFactory.GetAggregateType*"></a>
   <h4 id="Hexalith_Application_Aggregates_AggregateFactory_GetAggregateType_System_String_" data-uid="Hexalith.Application.Aggregates.AggregateFactory.GetAggregateType(System.String)">GetAggregateType(String)</h4>
@@ -276,6 +277,9 @@ Implements the <a class="xref" href="Hexalith.Application.Aggregates.IAggregateF
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
+      <a class="xref" href="Hexalith.PolymorphicSerialization.PolymorphicHelper.html#Hexalith_PolymorphicSerialization_PolymorphicHelper_GetPolymorphicTypeDiscriminator_System_Object_">PolymorphicHelper.GetPolymorphicTypeDiscriminator(Object)</a>
+  </div>
+  <div>
       <a class="xref" href="Hexalith.Extensions.Helpers.EquatableHelper.html#Hexalith_Extensions_Helpers_EquatableHelper_AreSame_System_Object_System_Object_">EquatableHelper.AreSame(Object, Object)</a>
   </div>
   <div>
@@ -299,7 +303,7 @@ Implements the <a class="xref" href="Hexalith.Application.Aggregates.IAggregateF
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_Aggregates_AggregateFactory.md&amp;value=---%0Auid%3A%20Hexalith.Application.Aggregates.AggregateFactory%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/Aggregates/AggregateFactory.cs/#L28" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application/Aggregates/AggregateFactory.cs/#L16" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
