@@ -1,4 +1,4 @@
-﻿// <copyright file="AggregateActor - Copy.cs" company="PlaceholderCompany">
+﻿// <copyright file="DomainAggregateActor.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -27,7 +27,7 @@ using Microsoft.Extensions.Logging;
 public partial class DomainAggregateActor(
     ActorHost host,
     IDomainCommandDispatcher commandDispatcher,
-    IAggregateFactory aggregateFactory,
+    IDomainAggregateFactory aggregateFactory,
     TimeProvider dateTimeService,
     IEventBus eventBus,
     INotificationBus notificationBus,
@@ -35,7 +35,7 @@ public partial class DomainAggregateActor(
     IRequestBus requestBus,
     IResiliencyPolicyProvider resiliencyPolicyProvider,
     IActorStateManager? actorStateManager = null)
-    : DomainAggregateActorBase(host, commandDispatcher, (IDomainAggregateFactory)aggregateFactory, dateTimeService, eventBus, notificationBus, commandBus, requestBus, resiliencyPolicyProvider, actorStateManager)
+    : DomainAggregateActorBase(host, commandDispatcher, aggregateFactory, dateTimeService, eventBus, notificationBus, commandBus, requestBus, resiliencyPolicyProvider, actorStateManager)
 {
     /// <summary>
     /// Logs information about processing commands for the actor.
