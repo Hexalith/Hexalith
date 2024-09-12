@@ -30,6 +30,9 @@ using Hexalith.Infrastructure.DaprRuntime.States;
 
 using Microsoft.Extensions.Logging;
 
+/// <summary>
+/// The domain aggregate actor base class.
+/// </summary>
 public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDomainAggregateActor
 {
     private const string ActorSuffix = "Aggregate";
