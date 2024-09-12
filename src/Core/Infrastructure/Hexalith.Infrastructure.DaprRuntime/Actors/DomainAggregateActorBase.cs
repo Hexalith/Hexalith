@@ -1,16 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Infrastructure.DaprRuntime.Sales
-// Author           : Jérôme Piquot
-// Created          : 01-02-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 01-03-2024
-// ***********************************************************************
-// <copyright file="DomainAggregateActorBase{Init}.cs" company="PlaceholderCompany">
+﻿// <copyright file="DomainAggregateActorBase.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
+
 namespace Hexalith.Infrastructure.DaprRuntime.Actors;
 
 using System;
@@ -35,18 +26,10 @@ using Hexalith.Extensions.Errors;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Abstractions;
 using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
-using Hexalith.Infrastructure.DaprRuntime.Sales.Actors;
 using Hexalith.Infrastructure.DaprRuntime.States;
 
 using Microsoft.Extensions.Logging;
 
-/// <summary>
-/// The aggregate manager actor class.
-/// Implements the <see cref="AggregateActorBase" />
-/// Implements the <see cref="IAggregateActor" />.
-/// </summary>
-/// <seealso cref="AggregateActorBase" />
-/// <seealso cref="IAggregateActor" />
 public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDomainAggregateActor
 {
     private const string ActorSuffix = "Aggregate";
@@ -275,7 +258,6 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     public async Task<Application.MessageMetadatas.MessageState?> GetSnapshotEventAsync() => await GetSnapshotEventAsync(CancellationToken.None).ConfigureAwait(false);
 
     /// <inheritdoc/>
-    [Obsolete]
     public async Task ProcessCallbackAsync()
     {
         try
@@ -297,7 +279,6 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     }
 
     /// <inheritdoc/>
-    [Obsolete]
     public async Task<bool> ProcessNextCommandAsync()
     {
         CancellationToken cancellationToken = CancellationToken.None;
@@ -351,7 +332,6 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     }
 
     /// <inheritdoc/>
-    [Obsolete]
     public async Task ReceiveReminderAsync(string reminderName, byte[] state, TimeSpan dueTime, TimeSpan period)
     {
         if (reminderName == ActorConstants.ProcessReminderName)
@@ -382,7 +362,6 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         CancellationToken cancellationToken = CancellationToken.None;
         ArgumentNullException.ThrowIfNull(envelope);
 
-        List<MessageState> commandStates = [];
         object command = envelope.Message;
         Metadata metadata = envelope.Metadata;
         if (GetAggregateActorName(metadata.Message.Aggregate.Name) != Host.ActorTypeInfo.ActorTypeName)
@@ -395,8 +374,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             throw new InvalidOperationException($"Submitted command to {Host.ActorTypeInfo.ActorTypeName}/{Id} has an invalid aggregate id : {metadata.Message.Aggregate.Id}.");
         }
 
-        MessageState commandState = new(command, metadata);
-        commandStates.Add(commandState);
+        List<MessageState> commandStates = [new(command, metadata)];
         LogAcceptedCommandInformation(
             Logger,
             metadata.Message.Name,
@@ -596,7 +574,6 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             .ConfigureAwait(false);
     }
 
-    [Obsolete]
     private async Task ProcessNextSubmittedCommandAsync(CancellationToken cancellationToken)
     {
         AggregateActorState state = await GetAggregateStateAsync(cancellationToken)
@@ -658,7 +635,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             state.RetryOnFailureDateTime = null;
 
             // Execute the commands
-            commandResult = await _commandDispatcher
+            commandResult = (ExecuteCommandResult?)await _commandDispatcher
                     .DoAsync(command, metadata, aggregate, cancellationToken)
                     .ConfigureAwait(false);
 

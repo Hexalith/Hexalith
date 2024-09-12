@@ -33,6 +33,13 @@ public record Metadata(
     {
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Metadata"/> class.
+    /// </summary>
+    /// <param name="message">The message metadata.</param>
+    /// <param name="metadata">The metadata.</param>
+    /// <param name="dateTime">The created date.</param>
+    /// <returns>A new instance of the <see cref="Metadata"/> class.</returns>
     public static Metadata CreateNew(object message, Metadata metadata, DateTimeOffset dateTime)
     {
         ArgumentNullException.ThrowIfNull(message);
