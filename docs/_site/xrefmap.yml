@@ -4019,6 +4019,12 @@ references:
   commentId: T:Hexalith.Application.MessageMetadatas.MessageState
   fullName: Hexalith.Application.MessageMetadatas.MessageState
   nameWithType: MessageState
+- uid: Hexalith.Application.MessageMetadatas.MessageState.#ctor(Hexalith.PolymorphicSerialization.PolymorphicRecordBase,Hexalith.PolymorphicSerialization.PolymorphicClassBase,Hexalith.Application.MessageMetadatas.Metadata)
+  name: MessageState(PolymorphicRecordBase, PolymorphicClassBase, Metadata)
+  href: api/Hexalith.Application.MessageMetadatas.MessageState.html#Hexalith_Application_MessageMetadatas_MessageState__ctor_Hexalith_PolymorphicSerialization_PolymorphicRecordBase_Hexalith_PolymorphicSerialization_PolymorphicClassBase_Hexalith_Application_MessageMetadatas_Metadata_
+  commentId: M:Hexalith.Application.MessageMetadatas.MessageState.#ctor(Hexalith.PolymorphicSerialization.PolymorphicRecordBase,Hexalith.PolymorphicSerialization.PolymorphicClassBase,Hexalith.Application.MessageMetadatas.Metadata)
+  fullName: Hexalith.Application.MessageMetadatas.MessageState.MessageState(Hexalith.PolymorphicSerialization.PolymorphicRecordBase, Hexalith.PolymorphicSerialization.PolymorphicClassBase, Hexalith.Application.MessageMetadatas.Metadata)
+  nameWithType: MessageState.MessageState(PolymorphicRecordBase, PolymorphicClassBase, Metadata)
 - uid: Hexalith.Application.MessageMetadatas.MessageState.#ctor(System.Object,Hexalith.Application.MessageMetadatas.Metadata)
   name: MessageState(Object, Metadata)
   href: api/Hexalith.Application.MessageMetadatas.MessageState.html#Hexalith_Application_MessageMetadatas_MessageState__ctor_System_Object_Hexalith_Application_MessageMetadatas_Metadata_
@@ -4032,6 +4038,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.MessageMetadatas.MessageState.MessageState
   nameWithType: MessageState.MessageState
+- uid: Hexalith.Application.MessageMetadatas.MessageState.ClassObject
+  name: ClassObject
+  href: api/Hexalith.Application.MessageMetadatas.MessageState.html#Hexalith_Application_MessageMetadatas_MessageState_ClassObject
+  commentId: P:Hexalith.Application.MessageMetadatas.MessageState.ClassObject
+  fullName: Hexalith.Application.MessageMetadatas.MessageState.ClassObject
+  nameWithType: MessageState.ClassObject
+- uid: Hexalith.Application.MessageMetadatas.MessageState.ClassObject*
+  name: ClassObject
+  href: api/Hexalith.Application.MessageMetadatas.MessageState.html#Hexalith_Application_MessageMetadatas_MessageState_ClassObject_
+  commentId: Overload:Hexalith.Application.MessageMetadatas.MessageState.ClassObject
+  isSpec: "True"
+  fullName: Hexalith.Application.MessageMetadatas.MessageState.ClassObject
+  nameWithType: MessageState.ClassObject
 - uid: Hexalith.Application.MessageMetadatas.MessageState.IdempotencyId
   name: IdempotencyId
   href: api/Hexalith.Application.MessageMetadatas.MessageState.html#Hexalith_Application_MessageMetadatas_MessageState_IdempotencyId
@@ -4071,6 +4090,19 @@ references:
   isSpec: "True"
   fullName: Hexalith.Application.MessageMetadatas.MessageState.Metadata
   nameWithType: MessageState.Metadata
+- uid: Hexalith.Application.MessageMetadatas.MessageState.RecordObject
+  name: RecordObject
+  href: api/Hexalith.Application.MessageMetadatas.MessageState.html#Hexalith_Application_MessageMetadatas_MessageState_RecordObject
+  commentId: P:Hexalith.Application.MessageMetadatas.MessageState.RecordObject
+  fullName: Hexalith.Application.MessageMetadatas.MessageState.RecordObject
+  nameWithType: MessageState.RecordObject
+- uid: Hexalith.Application.MessageMetadatas.MessageState.RecordObject*
+  name: RecordObject
+  href: api/Hexalith.Application.MessageMetadatas.MessageState.html#Hexalith_Application_MessageMetadatas_MessageState_RecordObject_
+  commentId: Overload:Hexalith.Application.MessageMetadatas.MessageState.RecordObject
+  isSpec: "True"
+  fullName: Hexalith.Application.MessageMetadatas.MessageState.RecordObject
+  nameWithType: MessageState.RecordObject
 - uid: Hexalith.Application.MessageMetadatas.Metadata
   name: Metadata
   href: api/Hexalith.Application.MessageMetadatas.Metadata.html

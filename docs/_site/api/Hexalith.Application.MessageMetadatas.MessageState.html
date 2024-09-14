@@ -121,19 +121,65 @@ public class MessageState : IIdempotent, IEquatable&lt;MessageState&gt;</code></
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_MessageMetadatas_MessageState__ctor_System_Object_Hexalith_Application_MessageMetadatas_Metadata_.md&amp;value=---%0Auid%3A%20Hexalith.Application.MessageMetadatas.MessageState.%23ctor(System.Object%2CHexalith.Application.MessageMetadatas.Metadata)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_MessageMetadatas_MessageState__ctor_Hexalith_PolymorphicSerialization_PolymorphicRecordBase_Hexalith_PolymorphicSerialization_PolymorphicClassBase_Hexalith_Application_MessageMetadatas_Metadata_.md&amp;value=---%0Auid%3A%20Hexalith.Application.MessageMetadatas.MessageState.%23ctor(Hexalith.PolymorphicSerialization.PolymorphicRecordBase%2CHexalith.PolymorphicSerialization.PolymorphicClassBase%2CHexalith.Application.MessageMetadatas.Metadata)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/MessageMetadatas/MessageState.cs/#L17">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/MessageMetadatas/MessageState.cs/#L19">View Source</a>
   </span>
   <a id="Hexalith_Application_MessageMetadatas_MessageState__ctor_" data-uid="Hexalith.Application.MessageMetadatas.MessageState.#ctor*"></a>
-  <h4 id="Hexalith_Application_MessageMetadatas_MessageState__ctor_System_Object_Hexalith_Application_MessageMetadatas_Metadata_" data-uid="Hexalith.Application.MessageMetadatas.MessageState.#ctor(System.Object,Hexalith.Application.MessageMetadatas.Metadata)">MessageState(Object, Metadata)</h4>
+  <h4 id="Hexalith_Application_MessageMetadatas_MessageState__ctor_Hexalith_PolymorphicSerialization_PolymorphicRecordBase_Hexalith_PolymorphicSerialization_PolymorphicClassBase_Hexalith_Application_MessageMetadatas_Metadata_" data-uid="Hexalith.Application.MessageMetadatas.MessageState.#ctor(Hexalith.PolymorphicSerialization.PolymorphicRecordBase,Hexalith.PolymorphicSerialization.PolymorphicClassBase,Hexalith.Application.MessageMetadatas.Metadata)">MessageState(PolymorphicRecordBase, PolymorphicClassBase, Metadata)</h4>
   <div class="markdown level1 summary"><p>Represents the state of a message.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public MessageState(object Message, Metadata Metadata)</code></pre>
+    <pre><code class="lang-csharp hljs">public MessageState(PolymorphicRecordBase RecordObject, PolymorphicClassBase ClassObject, Metadata Metadata)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.PolymorphicSerialization.PolymorphicRecordBase.html">PolymorphicRecordBase</a></td>
+        <td><span class="parametername">RecordObject</span></td>
+        <td><p>The record object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.PolymorphicSerialization.PolymorphicClassBase.html">PolymorphicClassBase</a></td>
+        <td><span class="parametername">ClassObject</span></td>
+        <td><p>The class object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Hexalith.Application.MessageMetadatas.Metadata.html">Metadata</a></td>
+        <td><span class="parametername">Metadata</span></td>
+        <td><p>The metadata.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_MessageMetadatas_MessageState__ctor_System_Object_Hexalith_Application_MessageMetadatas_Metadata_.md&amp;value=---%0Auid%3A%20Hexalith.Application.MessageMetadatas.MessageState.%23ctor(System.Object%2CHexalith.Application.MessageMetadatas.Metadata)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/MessageMetadatas/MessageState.cs/#L37">View Source</a>
+  </span>
+  <a id="Hexalith_Application_MessageMetadatas_MessageState__ctor_" data-uid="Hexalith.Application.MessageMetadatas.MessageState.#ctor*"></a>
+  <h4 id="Hexalith_Application_MessageMetadatas_MessageState__ctor_System_Object_Hexalith_Application_MessageMetadatas_Metadata_" data-uid="Hexalith.Application.MessageMetadatas.MessageState.#ctor(System.Object,Hexalith.Application.MessageMetadatas.Metadata)">MessageState(Object, Metadata)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Application.MessageMetadatas.MessageState.html">MessageState</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MessageState(object data, Metadata metadata)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -147,13 +193,13 @@ public class MessageState : IIdempotent, IEquatable&lt;MessageState&gt;</code></
     <tbody>
       <tr>
         <td><span class="xref">System.Object</span></td>
-        <td><span class="parametername">Message</span></td>
-        <td><p>The message.</p>
+        <td><span class="parametername">data</span></td>
+        <td><p>The data.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="Hexalith.Application.MessageMetadatas.Metadata.html">Metadata</a></td>
-        <td><span class="parametername">Metadata</span></td>
+        <td><span class="parametername">metadata</span></td>
         <td><p>The metadata.</p>
 </td>
       </tr>
@@ -163,10 +209,42 @@ public class MessageState : IIdempotent, IEquatable&lt;MessageState&gt;</code></
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_MessageMetadatas_MessageState_ClassObject.md&amp;value=---%0Auid%3A%20Hexalith.Application.MessageMetadatas.MessageState.ClassObject%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/MessageMetadatas/MessageState.cs/#L25">View Source</a>
+  </span>
+  <a id="Hexalith_Application_MessageMetadatas_MessageState_ClassObject_" data-uid="Hexalith.Application.MessageMetadatas.MessageState.ClassObject*"></a>
+  <h4 id="Hexalith_Application_MessageMetadatas_MessageState_ClassObject" data-uid="Hexalith.Application.MessageMetadatas.MessageState.ClassObject">ClassObject</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyOrder(2)]
+[DataMember(Order = 2)]
+public PolymorphicClassBase ClassObject { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.PolymorphicSerialization.PolymorphicClassBase.html">PolymorphicClassBase</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_MessageMetadatas_MessageState_IdempotencyId.md&amp;value=---%0Auid%3A%20Hexalith.Application.MessageMetadatas.MessageState.IdempotencyId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/MessageMetadatas/MessageState.cs/#L27">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/MessageMetadatas/MessageState.cs/#L43">View Source</a>
   </span>
   <a id="Hexalith_Application_MessageMetadatas_MessageState_IdempotencyId_" data-uid="Hexalith.Application.MessageMetadatas.MessageState.IdempotencyId*"></a>
   <h4 id="Hexalith_Application_MessageMetadatas_MessageState_IdempotencyId" data-uid="Hexalith.Application.MessageMetadatas.MessageState.IdempotencyId">IdempotencyId</h4>
@@ -200,17 +278,18 @@ public string IdempotencyId { get; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_MessageMetadatas_MessageState_Message.md&amp;value=---%0Auid%3A%20Hexalith.Application.MessageMetadatas.MessageState.Message%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/MessageMetadatas/MessageState.cs/#L19">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/MessageMetadatas/MessageState.cs/#L50">View Source</a>
   </span>
   <a id="Hexalith_Application_MessageMetadatas_MessageState_Message_" data-uid="Hexalith.Application.MessageMetadatas.MessageState.Message*"></a>
   <h4 id="Hexalith_Application_MessageMetadatas_MessageState_Message" data-uid="Hexalith.Application.MessageMetadatas.MessageState.Message">Message</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the message.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember(Order = 1)]
-[JsonPropertyOrder(1)]
-public object Message { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonIgnore]
+[IgnoreDataMember]
+public object Message { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -232,7 +311,7 @@ public object Message { get; set; }</code></pre>
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_MessageMetadatas_MessageState_Metadata.md&amp;value=---%0Auid%3A%20Hexalith.Application.MessageMetadatas.MessageState.Metadata%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/MessageMetadatas/MessageState.cs/#L22">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/MessageMetadatas/MessageState.cs/#L28">View Source</a>
   </span>
   <a id="Hexalith_Application_MessageMetadatas_MessageState_Metadata_" data-uid="Hexalith.Application.MessageMetadatas.MessageState.Metadata*"></a>
   <h4 id="Hexalith_Application_MessageMetadatas_MessageState_Metadata" data-uid="Hexalith.Application.MessageMetadatas.MessageState.Metadata">Metadata</h4>
@@ -240,8 +319,8 @@ public object Message { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DataMember(Order = 2)]
-[JsonPropertyOrder(2)]
+    <pre><code class="lang-csharp hljs">[DataMember(Order = 3)]
+[JsonPropertyOrder(3)]
 public Metadata Metadata { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -255,6 +334,38 @@ public Metadata Metadata { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><a class="xref" href="Hexalith.Application.MessageMetadatas.Metadata.html">Metadata</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_MessageMetadatas_MessageState_RecordObject.md&amp;value=---%0Auid%3A%20Hexalith.Application.MessageMetadatas.MessageState.RecordObject%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/MessageMetadatas/MessageState.cs/#L22">View Source</a>
+  </span>
+  <a id="Hexalith_Application_MessageMetadatas_MessageState_RecordObject_" data-uid="Hexalith.Application.MessageMetadatas.MessageState.RecordObject*"></a>
+  <h4 id="Hexalith_Application_MessageMetadatas_MessageState_RecordObject" data-uid="Hexalith.Application.MessageMetadatas.MessageState.RecordObject">RecordObject</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyOrder(1)]
+[DataMember(Order = 1)]
+public PolymorphicRecordBase RecordObject { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Hexalith.PolymorphicSerialization.PolymorphicRecordBase.html">PolymorphicRecordBase</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -290,7 +401,7 @@ public Metadata Metadata { get; set; }</code></pre>
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Application_MessageMetadatas_MessageState.md&amp;value=---%0Auid%3A%20Hexalith.Application.MessageMetadatas.MessageState%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/MessageMetadatas/MessageState.cs/#L17" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Application/Hexalith.Application.Abstractions/MessageMetadatas/MessageState.cs/#L19" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

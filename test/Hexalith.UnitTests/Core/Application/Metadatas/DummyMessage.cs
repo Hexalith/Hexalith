@@ -8,7 +8,7 @@ using Hexalith.Extensions.Helpers;
 using Hexalith.PolymorphicSerialization;
 
 [PolymorphicSerialization]
-public partial record DummyMessage(int Value1, string Value2) : PolymorphicRecordBase
+public record DummyMessage(int Value1, string Value2) : PolymorphicRecordBase
 {
     public string AggregateId => Value1.ToInvariantString();
 

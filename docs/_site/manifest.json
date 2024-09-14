@@ -1293,7 +1293,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.Application.MessageMetadatas.MessageState.html",
-          "hash": "zBrMLU99kxJPdOyi43yScetlL26g1LUgRcMyY4tGXr4="
+          "hash": "bCpk/cynpDPljuD/Ne71pr1spqKsMchAYt23CFeA4d0="
         }
       },
       "is_incremental": false,
@@ -5889,7 +5889,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Hexalith.PolymorphicSerialization.PolymorphicSerializationResolver.html",
-          "hash": "SXW262IrX32BzlLoWZ9QKI1ZgxDvjIc8bPkGUknUVWI="
+          "hash": "m77BdaBmCANw+jp6ZZ8WYqEDWiXcVa3iUjenoOHRnC4="
         }
       },
       "is_incremental": false,
