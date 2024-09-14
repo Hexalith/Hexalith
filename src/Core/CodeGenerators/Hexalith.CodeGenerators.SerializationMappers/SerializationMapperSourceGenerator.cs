@@ -108,6 +108,11 @@ public class SerializationMapperSourceGenerator : IIncrementalGenerator
         TypedConstant versionParam = syntax.Data.ConstructorArguments[1];
         TypedConstant typeParam = syntax.Data.ConstructorArguments[2];
         string? name = (string?)nameParam.Value;
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            name = classSymbol.MetadataName;
+        }
+
         int? version = (int?)versionParam.Value;
         Type? baseType = (Type?)typeParam.Value;
         string typeDiscriminator = name + "V" + version;
