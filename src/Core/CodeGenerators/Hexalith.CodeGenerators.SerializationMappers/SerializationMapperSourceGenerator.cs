@@ -18,6 +18,8 @@ using Microsoft.CodeAnalysis.Text;
 [Generator(LanguageNames.CSharp)]
 public class SerializationMapperSourceGenerator : IIncrementalGenerator
 {
+    private const string _classBaseTypeName = "PolymorphicClassBase";
+    private const string _recordBaseTypeName = "PolymorphicRecordBase";
     private const string _serializationMapperAttributeFullName = "Hexalith.PolymorphicSerialization.PolymorphicSerializationAttribute";
     private const string _serializationMapperAttributeName = "PolymorphicSerializationAttribute";
 
@@ -59,7 +61,7 @@ public class SerializationMapperSourceGenerator : IIncrementalGenerator
             context.AddSource(
                 $"{domainName}Mapper.g.cs",
                 SourceText.From(
-                    GenerateMapperClass(classOrRecord, symbol, namespaceName),
+                    GenerateMapperClass(classOrRecord, symbol, namespaceName, context),
                     Encoding.UTF8));
         }
 
@@ -74,7 +76,7 @@ public class SerializationMapperSourceGenerator : IIncrementalGenerator
         string usings = symbols
             .Select(s => s.ContainingNamespace.ToDisplayString())
             .Distinct()
-            .Select(n => $"using {n}.PolymorphicMappers;")
+            .Select(n => $"using {n};")
             .Aggregate((a, b) => $"{a}\n{b}");
         string addSingletonMappers = symbols
             .Select(s => $"        services.TryAddSingleton<IPolymorphicSerializationMapper, {s.MetadataName}Mapper>();")
@@ -94,19 +96,63 @@ public class SerializationMapperSourceGenerator : IIncrementalGenerator
                     public static IServiceCollection Add{{project}}Mappers(this IServiceCollection services)
                     {
                         services.TryAddSingleton<PolymorphicSerializationResolver>();
-                {{addSingletonMappers}}
+                        {{addSingletonMappers}}
                         return services;
                     }
                 }
                 """;
     }
 
-    private static string GenerateMapperClass((TypeDeclarationSyntax Type, AttributeData Data) syntax, INamedTypeSymbol classSymbol, string? namespaceName)
+    private static string GenerateMapperClass((TypeDeclarationSyntax Type, AttributeData Data) syntax, INamedTypeSymbol classSymbol, string? namespaceName, SourceProductionContext context)
     {
+        string baseTypeName = classSymbol.IsRecord
+                ? _recordBaseTypeName
+                : _classBaseTypeName;
+
+        INamedTypeSymbol? baseTypeSymbol = classSymbol.BaseType;
+
+        bool hasParent = baseTypeSymbol != null && baseTypeSymbol.SpecialType != SpecialType.System_Object;
+        bool validBaseType = false;
+
+        while (baseTypeSymbol != null && baseTypeSymbol.SpecialType != SpecialType.System_Object)
+        {
+            if (baseTypeSymbol.Name is _recordBaseTypeName or _classBaseTypeName)
+            {
+                validBaseType = true;
+                break;
+            }
+
+            // Check if the base type has the PolymorphicSerialization attribute
+            if (baseTypeSymbol
+                .GetAttributes()
+                .Any(a =>
+                    a.AttributeClass?.ToDisplayString() is _serializationMapperAttributeFullName))
+            {
+                validBaseType = true;
+                break;
+            }
+
+            baseTypeSymbol = baseTypeSymbol.BaseType;
+        }
+
+        if (hasParent && !validBaseType)
+        {
+            // Emit an error
+            context.ReportDiagnostic(Diagnostic.Create(
+                new DiagnosticDescriptor(
+                    "HM001",
+                    "Invalid Inheritance",
+                    (classSymbol.IsRecord ? "Record" : "Class") + "{0} has a parent but does not inherit from " + baseTypeName + " .",
+                    "CodeGeneration",
+                    DiagnosticSeverity.Error,
+                    true),
+                syntax.Type.GetLocation(),
+                syntax.Type.Identifier.Text));
+        }
+
         // get the name and the version from the attribute
         TypedConstant nameParam = syntax.Data.ConstructorArguments[0];
         TypedConstant versionParam = syntax.Data.ConstructorArguments[1];
-        TypedConstant typeParam = syntax.Data.ConstructorArguments[2];
         string? name = (string?)nameParam.Value;
         if (string.IsNullOrWhiteSpace(name))
         {
@@ -114,23 +160,18 @@ public class SerializationMapperSourceGenerator : IIncrementalGenerator
         }
 
         int? version = (int?)versionParam.Value;
-        Type? baseType = (Type?)typeParam.Value;
         string typeDiscriminator = name + "V" + version;
-        string baseTypeName = baseType == null
-            ? classSymbol.IsRecord
-                ? "PolymorphicRecordBase"
-                : "PolymorphicClassBase"
-            : baseType.FullName;
+        string inheritance = hasParent ? string.Empty : $" : {baseTypeName}";
 
         return $$"""
-                namespace {{namespaceName}}.PolymorphicMappers;
+                namespace {{namespaceName}};
 
                 using Microsoft.Extensions.DependencyInjection;
                 using Hexalith.PolymorphicSerialization;
                 using System.Runtime.Serialization;
 
                 [DataContract]
-                public sealed partial {{(classSymbol.IsRecord ? "record" : "class")}} {{classSymbol.MetadataName}} : {{baseTypeName}} {}
+                public partial {{(classSymbol.IsRecord ? "record" : "class")}} {{classSymbol.MetadataName}}{{inheritance}} {}
 
                 public sealed record {{classSymbol.MetadataName}}Mapper() : PolymorphicSerializationMapper<{{classSymbol.MetadataName}},{{baseTypeName}}>("{{typeDiscriminator}}")
                 {

@@ -1,10 +1,10 @@
-﻿// <copyright file="CommonServicesHelper.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="CommonServicesHelper.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace Hexalith.Infrastructure.ClientApp.Helpers;
+
+using System.Text.Json;
 
 using Blazored.SessionStorage;
 
@@ -12,6 +12,7 @@ using Hexalith.Application.Modules.Routes;
 using Hexalith.Application.Organizations.Helpers;
 using Hexalith.Extensions.Common;
 using Hexalith.Infrastructure.Emails.SendGrid.Helpers;
+using Hexalith.PolymorphicSerialization;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -39,6 +40,12 @@ public static class CommonServicesHelper
             .AddSingleton(TimeProvider.System)
             .AddSingleton<IDateTimeService, DateTimeService>()
             .AddSingleton<IRouteManager, RouteManager>()
+            .AddSingleton(services =>
+                new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true,
+                    TypeInfoResolver = new PolymorphicSerializationResolver(services.GetServices<IPolymorphicSerializationMapper>()),
+                })
             .AddBlazoredSessionStorage()
             .AddFluentUIComponents();
     }

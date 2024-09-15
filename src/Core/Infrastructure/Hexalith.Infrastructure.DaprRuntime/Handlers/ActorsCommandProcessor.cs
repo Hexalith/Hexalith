@@ -22,7 +22,7 @@ using Microsoft.Extensions.Logging;
 /// Implements the <see cref="ICommandProcessor" />.
 /// </summary>
 /// <seealso cref="ICommandProcessor" />
-[Obsolete("Use AggregateActorCommandProcessor instead.", true)]
+[Obsolete("Use DomainActorCommandProcessor instead.", true)]
 public abstract partial class ActorsCommandProcessor : ICommandProcessor
 {
     /// <summary>
@@ -85,31 +85,6 @@ public abstract partial class ActorsCommandProcessor : ICommandProcessor
             }
         }
     }
-
-    /// <inheritdoc/>
-    public async Task SubmitAsync(object command, Metadata metadata, CancellationToken cancellationToken)
-    {
-        ArgumentNullException.ThrowIfNull(command);
-        ArgumentNullException.ThrowIfNull(metadata);
-
-        string actorName = GetActorName(metadata.Message.Aggregate);
-
-        try
-        {
-            LogSendingCommandsToActor(metadata.Message.Name, metadata.Message.Aggregate.Id, actorName);
-            ICommandProcessorActor actor = _actorProxy.CreateActorProxy<ICommandProcessorActor>(new ActorId(metadata.Message.Aggregate.Id), actorName);
-            ActorMessageEnvelope envelope = new(command, metadata);
-            await actor.DoAsync(envelope).ConfigureAwait(false);
-        }
-        catch (Exception e)
-        {
-            throw new InvalidOperationException($"Fail to call actor {actorName} method '{nameof(ICommandProcessorActor.DoAsync)}'.", e);
-        }
-    }
-
-    /// <inheritdoc/>
-
-    public Task SubmitAsync(object command, Application.Metadatas.Metadata metadata, CancellationToken cancellationToken) => throw new NotImplementedException();
 
     /// <summary>
     /// Gets the name of the actor method.

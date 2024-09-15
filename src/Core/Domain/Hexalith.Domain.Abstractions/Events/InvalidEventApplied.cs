@@ -15,7 +15,7 @@ using Hexalith.PolymorphicSerialization;
 /// <param name="AggregateId">The aggregate identifier.</param>
 /// <param name="EventName">The event name.</param>
 /// <param name="EventContent">The event content serialized in JSON.</param>
-public abstract record InvalidEventApplied(string AggregateName, string AggregateId, string EventName, string EventContent)
+public abstract record InvalidEventApplied(string AggregateName, string AggregateId, string EventName, string EventContent) : PolymorphicRecordBase
 {
     /// <summary>
     /// Creates an instance of InvalidEventApplied.

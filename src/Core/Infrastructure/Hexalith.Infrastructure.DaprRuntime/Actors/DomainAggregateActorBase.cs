@@ -7,6 +7,7 @@ namespace Hexalith.Infrastructure.DaprRuntime.Actors;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -43,16 +44,16 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     private readonly TimeSpan _defaultTimerDueTime = TimeSpan.FromMilliseconds(1);
     private readonly IEventBus _eventBus;
     private readonly ActorHost _host;
+    private readonly JsonSerializerOptions _jsonOptions;
     private readonly TimeSpan _maxTimerDueTime = new(0, 1, 0);
     private readonly INotificationBus _notificationBus;
     private readonly IRequestBus _requestBus;
     private readonly IResiliencyPolicyProvider _resiliencyPolicyProvider;
-
     private IDomainAggregate? _aggregate;
 
-    private MessageStore<Application.MessageMetadatas.MessageState>? _commandStore;
-    private MessageStore<Application.MessageMetadatas.MessageState>? _eventSourceStore;
-    private MessageStore<Application.MessageMetadatas.MessageState>? _messageStore;
+    private MessageStore<MessageState>? _commandStore;
+    private MessageStore<MessageState>? _eventSourceStore;
+    private MessageStore<MessageState>? _messageStore;
 
     private ResiliencyPolicy? _resiliencyPolicy;
     private AggregateActorState? _state;
@@ -69,6 +70,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     /// <param name="commandBus">The command bus.</param>
     /// <param name="requestBus">The request bus.</param>
     /// <param name="resiliencyPolicyProvider">The resiliency policy provider.</param>
+    /// <param name="jsonOptions">The json serializer options.</param>
     /// <param name="actorStateManager">The actor state manager.</param>
     /// <exception cref="ArgumentNullException">null.</exception>
     protected DomainAggregateActorBase(
@@ -81,6 +83,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         ICommandBus commandBus,
         IRequestBus requestBus,
         IResiliencyPolicyProvider resiliencyPolicyProvider,
+        JsonSerializerOptions jsonOptions,
         IActorStateManager? actorStateManager = null)
        : base(host)
     {
@@ -102,6 +105,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         _commandBus = commandBus;
         _requestBus = requestBus;
         _resiliencyPolicyProvider = resiliencyPolicyProvider;
+        _jsonOptions = jsonOptions;
         if (actorStateManager is not null)
         {
             StateManager = actorStateManager;
@@ -365,8 +369,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         CancellationToken cancellationToken = CancellationToken.None;
         ArgumentNullException.ThrowIfNull(envelope);
 
-        object command = envelope.Message;
-        Metadata metadata = envelope.Metadata;
+        (object command, Metadata metadata) = envelope.Deserialize(_jsonOptions);
         if (GetAggregateActorName(metadata.Message.Aggregate.Name) != Host.ActorTypeInfo.ActorTypeName)
         {
             throw new InvalidOperationException($"Submitted command to {Host.ActorTypeInfo.ActorTypeName}/{Id} has an invalid aggregate name : {metadata.Message.Aggregate.Name}.");

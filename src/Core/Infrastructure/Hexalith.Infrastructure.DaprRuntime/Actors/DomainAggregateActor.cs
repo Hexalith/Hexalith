@@ -4,6 +4,8 @@
 
 namespace Hexalith.Infrastructure.DaprRuntime.Actors;
 
+using System.Text.Json;
+
 using Dapr.Actors.Runtime;
 
 using Hexalith.Application.Aggregates;
@@ -34,8 +36,9 @@ public partial class DomainAggregateActor(
     ICommandBus commandBus,
     IRequestBus requestBus,
     IResiliencyPolicyProvider resiliencyPolicyProvider,
+    JsonSerializerOptions jsonOptions,
     IActorStateManager? actorStateManager = null)
-    : DomainAggregateActorBase(host, commandDispatcher, aggregateFactory, dateTimeService, eventBus, notificationBus, commandBus, requestBus, resiliencyPolicyProvider, actorStateManager)
+    : DomainAggregateActorBase(host, commandDispatcher, aggregateFactory, dateTimeService, eventBus, notificationBus, commandBus, requestBus, resiliencyPolicyProvider, jsonOptions, actorStateManager)
 {
     /// <summary>
     /// Logs information about processing commands for the actor.

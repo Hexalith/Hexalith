@@ -10,69 +10,30 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 
 using Hexalith.Application.MessageMetadatas;
+using Hexalith.PolymorphicSerialization;
 
 /// <summary>
 /// Actor method object uses Data Contract Serialization that can't serialize and deserialize complex polymorphic objects. This class is used to serialize and deserialize messages and metadatas into JSON strings before the actor proxy serialization.
 /// Implements the <see cref="IEquatable{ActorMessageEnvelope}" />.
 /// </summary>
 /// <seealso cref="IEquatable{ActorMessageEnvelope}" />
+/// <remarks>
+/// Initializes a new instance of the <see cref="ActorMessageEnvelope"/> class.
+/// </remarks>
+/// <param name="messageJson">The message in JSON.</param>
+/// <param name="metadataJson">The metadata in JSON.</param>
+/// <param name="isRecord">Indicates whether the message is a record or a class.</param>
 [DataContract]
-public class ActorMessageEnvelope : IJsonOnSerializing, IJsonOnDeserialized
+[method: JsonConstructor]
+public class ActorMessageEnvelope(string messageJson, string metadataJson, bool isRecord)
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="ActorMessageEnvelope"/> class.
+    /// Gets or sets a value indicating whether the message is a record or a class.
     /// </summary>
-    /// <param name="messageJson">The message in JSON.</param>
-    /// <param name="metadataJson">The metadata in JSON.</param>
-    [Obsolete("Only used for serialization", true)]
-    [JsonConstructor]
-    public ActorMessageEnvelope(string messageJson, string metadataJson)
-    {
-        MessageJson = messageJson;
-        MetadataJson = metadataJson;
-        Message = string.Empty;
-        Metadata = new();
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ActorMessageEnvelope" /> class.
-    /// </summary>
-    [Obsolete("Only used for serialization", true)]
-    public ActorMessageEnvelope()
-    {
-        MessageJson = string.Empty;
-        MetadataJson = string.Empty;
-        Message = string.Empty;
-        Metadata = new();
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ActorMessageEnvelope" /> class.
-    /// </summary>
-    /// <param name="message">The message.</param>
-    /// <param name="metadata">The metadata.</param>
-    public ActorMessageEnvelope([NotNull] object message, [NotNull] Metadata metadata)
-    {
-        ArgumentNullException.ThrowIfNull(message);
-        ArgumentNullException.ThrowIfNull(metadata);
-        MessageJson = string.Empty;
-        MetadataJson = string.Empty;
-        Message = message;
-        Metadata = metadata;
-        AggregateMetadata messageAggregate = new(message);
-        if (metadata.Message.Aggregate.Name != messageAggregate.Name || metadata.Message.Aggregate.Id != messageAggregate.Id)
-        {
-            throw new ArgumentException($"Metadata and message aggregate details don't match. Metadata: {metadata.Message.Aggregate.Name}/{metadata.Message.Aggregate.Id}, Message: {messageAggregate.Name}/{messageAggregate.Id}", nameof(metadata));
-        }
-    }
-
-    /// <summary>
-    /// Gets or sets the message.
-    /// </summary>
-    /// <value>The message.</value>
-    [JsonIgnore]
-    [IgnoreDataMember]
-    public object Message { get; set; }
+    /// <value>Is a record or not.</value>
+    [DataMember(Name = nameof(IsRecord))]
+    [JsonPropertyName(nameof(IsRecord))]
+    public bool IsRecord { get; set; } = isRecord;
 
     /// <summary>
     /// Gets or sets the messages json.
@@ -80,15 +41,7 @@ public class ActorMessageEnvelope : IJsonOnSerializing, IJsonOnDeserialized
     /// <value>The messages json.</value>
     [DataMember(Name = nameof(Message))]
     [JsonPropertyName(nameof(Message))]
-    public string MessageJson { get; set; }
-
-    /// <summary>
-    /// Gets or sets the metadata.
-    /// </summary>
-    /// <value>The metadata.</value>
-    [JsonIgnore]
-    [IgnoreDataMember]
-    public Metadata Metadata { get; set; }
+    public string Message { get; set; } = messageJson;
 
     /// <summary>
     /// Gets or sets the metadatas json.
@@ -96,37 +49,55 @@ public class ActorMessageEnvelope : IJsonOnSerializing, IJsonOnDeserialized
     /// <value>The metadatas json.</value>
     [DataMember(Name = nameof(Metadata))]
     [JsonPropertyName(nameof(Metadata))]
-    public string MetadataJson { get; set; }
+    public string Metadata { get; set; } = metadataJson;
 
     /// <summary>
-    /// The method that is called after deserialization.
+    /// Creates a new instance of the <see cref="ActorMessageEnvelope"/> class.
     /// </summary>
-    public void OnDeserialized()
+    /// <param name="message">The message.</param>
+    /// <param name="metadata">The metadata.</param>
+    /// <param name="serializerOptions">The serializer options.</param>
+    /// <returns>A new instance of the <see cref="ActorMessageEnvelope"/> class.</returns>
+    public static ActorMessageEnvelope Create([NotNull] object message, [NotNull] Metadata metadata, JsonSerializerOptions serializerOptions)
     {
-        Metadata = JsonSerializer.Deserialize<Metadata>(MetadataJson) ?? throw new InvalidOperationException($"Metadata property contains invalid JSON: {MetadataJson}");
-        Message = JsonSerializer.Deserialize<object>(MessageJson) ?? throw new InvalidOperationException($"Message property contains invalid JSON: {MessageJson}");
+        ArgumentNullException.ThrowIfNull(message);
+        ArgumentNullException.ThrowIfNull(metadata);
+        bool isRecord = false;
+        if (message is PolymorphicRecordBase)
+        {
+            isRecord = true;
+        }
+        else
+        if (message is not PolymorphicClassBase)
+        {
+            throw new ArgumentException(
+                $"Only objects derived from {nameof(PolymorphicRecordBase)} or {nameof(PolymorphicClassBase)} can be serialized by the {nameof(ActorMessageEnvelope)}.",
+                nameof(message));
+        }
+
+        AggregateMetadata messageAggregate = new(message);
+        return metadata.Message.Aggregate.Name != messageAggregate.Name || metadata.Message.Aggregate.Id != messageAggregate.Id
+            ? throw new ArgumentException($"Metadata and message aggregate details don't match. Metadata: {metadata.Message.Aggregate.Name}/{metadata.Message.Aggregate.Id}, Message: {messageAggregate.Name}/{messageAggregate.Id}", nameof(metadata))
+            : new ActorMessageEnvelope(
+            JsonSerializer.Serialize(message, serializerOptions),
+            JsonSerializer.Serialize(metadata, serializerOptions),
+            isRecord);
     }
 
     /// <summary>
-    /// The method that is called before serialization.
+    /// Deserializes the message and metadata.
     /// </summary>
-    public void OnSerializing()
+    /// <param name="serializerOptions">The serializer options with the polymorphic type resolver.</param>
+    /// <returns>The message and metadata.</returns>
+    public (object Message, Metadata Metadata) Deserialize(JsonSerializerOptions serializerOptions)
     {
-        MessageJson = JsonSerializer.Serialize(Message);
-        MetadataJson = JsonSerializer.Serialize(Metadata);
+        Metadata? metadata = JsonSerializer.Deserialize<Metadata>(Metadata, serializerOptions)
+            ?? throw new InvalidOperationException("The message metadata could not be deserialized. JSON : " + Metadata);
+        object? message = (IsRecord
+            ? JsonSerializer.Deserialize<PolymorphicRecordBase>(Message, serializerOptions) as object
+            : JsonSerializer.Deserialize<PolymorphicClassBase>(Message, serializerOptions))
+            ?? throw new InvalidOperationException("The message could not be deserialized. JSON : " + Message + " Metadata : " + Metadata);
+
+        return (message, metadata);
     }
-
-    /// <summary>
-    /// Called when [deserialized].
-    /// </summary>
-    /// <param name="context">The context.</param>
-    [OnDeserialized]
-    private void OnDeserialized(StreamingContext context) => OnDeserialized();
-
-    /// <summary>
-    /// Called when [serializing].
-    /// </summary>
-    /// <param name="context">The context.</param>
-    [OnSerializing]
-    private void OnSerializing(StreamingContext context) => OnSerializing();
 }

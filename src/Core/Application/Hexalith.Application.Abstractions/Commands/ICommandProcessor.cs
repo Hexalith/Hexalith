@@ -35,15 +35,6 @@ public interface ICommandProcessor
     Task SubmitAsync(BaseCommand command, BaseMetadata metadata, CancellationToken cancellationToken);
 
     /// <summary>
-    /// Submits commands.
-    /// </summary>
-    /// <param name="command">The command.</param>
-    /// <param name="metadata">The command metadata.</param>
-    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
-    Task SubmitAsync(object command, MessageMetadatas.Metadata metadata, CancellationToken cancellationToken);
-
-    /// <summary>
     /// Submits the asynchronous.
     /// </summary>
     /// <param name="commands">The command.</param>
