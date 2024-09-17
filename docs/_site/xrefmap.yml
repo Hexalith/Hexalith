@@ -2299,12 +2299,6 @@ references:
   fullName.vb: Hexalith.Application.Commands.ICommandProcessor.SubmitAsync(IEnumerable(Of Hexalith.Application.Commands.BaseCommand), Hexalith.Application.Metadatas.BaseMetadata, System.Threading.CancellationToken)
   nameWithType: ICommandProcessor.SubmitAsync(IEnumerable<BaseCommand>, BaseMetadata, CancellationToken)
   nameWithType.vb: ICommandProcessor.SubmitAsync(IEnumerable(Of BaseCommand), BaseMetadata, CancellationToken)
-- uid: Hexalith.Application.Commands.ICommandProcessor.SubmitAsync(System.Object,Hexalith.Application.MessageMetadatas.Metadata,System.Threading.CancellationToken)
-  name: SubmitAsync(Object, Metadata, CancellationToken)
-  href: api/Hexalith.Application.Commands.ICommandProcessor.html#Hexalith_Application_Commands_ICommandProcessor_SubmitAsync_System_Object_Hexalith_Application_MessageMetadatas_Metadata_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Application.Commands.ICommandProcessor.SubmitAsync(System.Object,Hexalith.Application.MessageMetadatas.Metadata,System.Threading.CancellationToken)
-  fullName: Hexalith.Application.Commands.ICommandProcessor.SubmitAsync(System.Object, Hexalith.Application.MessageMetadatas.Metadata, System.Threading.CancellationToken)
-  nameWithType: ICommandProcessor.SubmitAsync(Object, Metadata, CancellationToken)
 - uid: Hexalith.Application.Commands.ICommandProcessor.SubmitAsync*
   name: SubmitAsync
   href: api/Hexalith.Application.Commands.ICommandProcessor.html#Hexalith_Application_Commands_ICommandProcessor_SubmitAsync_
@@ -17785,109 +17779,6 @@ references:
   commentId: T:Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope
   fullName: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope
   nameWithType: ActorMessageEnvelope
-- uid: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.#ctor
-  name: ActorMessageEnvelope()
-  href: api/Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.html#Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorMessageEnvelope__ctor
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.#ctor
-  fullName: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.ActorMessageEnvelope()
-  nameWithType: ActorMessageEnvelope.ActorMessageEnvelope()
-- uid: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.#ctor(System.Object,Hexalith.Application.MessageMetadatas.Metadata)
-  name: ActorMessageEnvelope(Object, Metadata)
-  href: api/Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.html#Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorMessageEnvelope__ctor_System_Object_Hexalith_Application_MessageMetadatas_Metadata_
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.#ctor(System.Object,Hexalith.Application.MessageMetadatas.Metadata)
-  fullName: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.ActorMessageEnvelope(System.Object, Hexalith.Application.MessageMetadatas.Metadata)
-  nameWithType: ActorMessageEnvelope.ActorMessageEnvelope(Object, Metadata)
-- uid: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.#ctor(System.String,System.String)
-  name: ActorMessageEnvelope(String, String)
-  href: api/Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.html#Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorMessageEnvelope__ctor_System_String_System_String_
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.#ctor(System.String,System.String)
-  fullName: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.ActorMessageEnvelope(System.String, System.String)
-  nameWithType: ActorMessageEnvelope.ActorMessageEnvelope(String, String)
-- uid: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.#ctor*
-  name: ActorMessageEnvelope
-  href: api/Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.html#Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorMessageEnvelope__ctor_
-  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.#ctor
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.ActorMessageEnvelope
-  nameWithType: ActorMessageEnvelope.ActorMessageEnvelope
-- uid: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.Message
-  name: Message
-  href: api/Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.html#Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorMessageEnvelope_Message
-  commentId: P:Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.Message
-  fullName: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.Message
-  nameWithType: ActorMessageEnvelope.Message
-- uid: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.Message*
-  name: Message
-  href: api/Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.html#Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorMessageEnvelope_Message_
-  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.Message
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.Message
-  nameWithType: ActorMessageEnvelope.Message
-- uid: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.MessageJson
-  name: MessageJson
-  href: api/Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.html#Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorMessageEnvelope_MessageJson
-  commentId: P:Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.MessageJson
-  fullName: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.MessageJson
-  nameWithType: ActorMessageEnvelope.MessageJson
-- uid: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.MessageJson*
-  name: MessageJson
-  href: api/Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.html#Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorMessageEnvelope_MessageJson_
-  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.MessageJson
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.MessageJson
-  nameWithType: ActorMessageEnvelope.MessageJson
-- uid: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.Metadata
-  name: Metadata
-  href: api/Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.html#Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorMessageEnvelope_Metadata
-  commentId: P:Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.Metadata
-  fullName: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.Metadata
-  nameWithType: ActorMessageEnvelope.Metadata
-- uid: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.Metadata*
-  name: Metadata
-  href: api/Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.html#Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorMessageEnvelope_Metadata_
-  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.Metadata
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.Metadata
-  nameWithType: ActorMessageEnvelope.Metadata
-- uid: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.MetadataJson
-  name: MetadataJson
-  href: api/Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.html#Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorMessageEnvelope_MetadataJson
-  commentId: P:Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.MetadataJson
-  fullName: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.MetadataJson
-  nameWithType: ActorMessageEnvelope.MetadataJson
-- uid: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.MetadataJson*
-  name: MetadataJson
-  href: api/Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.html#Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorMessageEnvelope_MetadataJson_
-  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.MetadataJson
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.MetadataJson
-  nameWithType: ActorMessageEnvelope.MetadataJson
-- uid: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.OnDeserialized
-  name: OnDeserialized()
-  href: api/Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.html#Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorMessageEnvelope_OnDeserialized
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.OnDeserialized
-  fullName: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.OnDeserialized()
-  nameWithType: ActorMessageEnvelope.OnDeserialized()
-- uid: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.OnDeserialized*
-  name: OnDeserialized
-  href: api/Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.html#Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorMessageEnvelope_OnDeserialized_
-  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.OnDeserialized
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.OnDeserialized
-  nameWithType: ActorMessageEnvelope.OnDeserialized
-- uid: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.OnSerializing
-  name: OnSerializing()
-  href: api/Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.html#Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorMessageEnvelope_OnSerializing
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.OnSerializing
-  fullName: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.OnSerializing()
-  nameWithType: ActorMessageEnvelope.OnSerializing()
-- uid: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.OnSerializing*
-  name: OnSerializing
-  href: api/Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.html#Hexalith_Infrastructure_DaprRuntime_Abstractions_Actors_ActorMessageEnvelope_OnSerializing_
-  commentId: Overload:Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.OnSerializing
-  isSpec: "True"
-  fullName: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.ActorMessageEnvelope.OnSerializing
-  nameWithType: ActorMessageEnvelope.OnSerializing
 - uid: Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.IAggregateActor
   name: IAggregateActor
   href: api/Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors.IAggregateActor.html
@@ -18326,12 +18217,12 @@ references:
   commentId: T:Hexalith.Infrastructure.DaprRuntime.Actors.DomainAggregateActorBase
   fullName: Hexalith.Infrastructure.DaprRuntime.Actors.DomainAggregateActorBase
   nameWithType: DomainAggregateActorBase
-- uid: Hexalith.Infrastructure.DaprRuntime.Actors.DomainAggregateActorBase.#ctor(Dapr.Actors.Runtime.ActorHost,Hexalith.Application.Commands.IDomainCommandDispatcher,Hexalith.Application.Aggregates.IDomainAggregateFactory,System.TimeProvider,Hexalith.Application.Events.IEventBus,Hexalith.Application.Notifications.INotificationBus,Hexalith.Application.Commands.ICommandBus,Hexalith.Application.Requests.IRequestBus,Hexalith.Application.Tasks.IResiliencyPolicyProvider,Dapr.Actors.Runtime.IActorStateManager)
-  name: DomainAggregateActorBase(ActorHost, IDomainCommandDispatcher, IDomainAggregateFactory, TimeProvider, IEventBus, INotificationBus, ICommandBus, IRequestBus, IResiliencyPolicyProvider, IActorStateManager)
-  href: api/Hexalith.Infrastructure.DaprRuntime.Actors.DomainAggregateActorBase.html#Hexalith_Infrastructure_DaprRuntime_Actors_DomainAggregateActorBase__ctor_Dapr_Actors_Runtime_ActorHost_Hexalith_Application_Commands_IDomainCommandDispatcher_Hexalith_Application_Aggregates_IDomainAggregateFactory_System_TimeProvider_Hexalith_Application_Events_IEventBus_Hexalith_Application_Notifications_INotificationBus_Hexalith_Application_Commands_ICommandBus_Hexalith_Application_Requests_IRequestBus_Hexalith_Application_Tasks_IResiliencyPolicyProvider_Dapr_Actors_Runtime_IActorStateManager_
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.Actors.DomainAggregateActorBase.#ctor(Dapr.Actors.Runtime.ActorHost,Hexalith.Application.Commands.IDomainCommandDispatcher,Hexalith.Application.Aggregates.IDomainAggregateFactory,System.TimeProvider,Hexalith.Application.Events.IEventBus,Hexalith.Application.Notifications.INotificationBus,Hexalith.Application.Commands.ICommandBus,Hexalith.Application.Requests.IRequestBus,Hexalith.Application.Tasks.IResiliencyPolicyProvider,Dapr.Actors.Runtime.IActorStateManager)
-  fullName: Hexalith.Infrastructure.DaprRuntime.Actors.DomainAggregateActorBase.DomainAggregateActorBase(Dapr.Actors.Runtime.ActorHost, Hexalith.Application.Commands.IDomainCommandDispatcher, Hexalith.Application.Aggregates.IDomainAggregateFactory, System.TimeProvider, Hexalith.Application.Events.IEventBus, Hexalith.Application.Notifications.INotificationBus, Hexalith.Application.Commands.ICommandBus, Hexalith.Application.Requests.IRequestBus, Hexalith.Application.Tasks.IResiliencyPolicyProvider, Dapr.Actors.Runtime.IActorStateManager)
-  nameWithType: DomainAggregateActorBase.DomainAggregateActorBase(ActorHost, IDomainCommandDispatcher, IDomainAggregateFactory, TimeProvider, IEventBus, INotificationBus, ICommandBus, IRequestBus, IResiliencyPolicyProvider, IActorStateManager)
+- uid: Hexalith.Infrastructure.DaprRuntime.Actors.DomainAggregateActorBase.#ctor(Dapr.Actors.Runtime.ActorHost,Hexalith.Application.Commands.IDomainCommandDispatcher,Hexalith.Application.Aggregates.IDomainAggregateFactory,System.TimeProvider,Hexalith.Application.Events.IEventBus,Hexalith.Application.Notifications.INotificationBus,Hexalith.Application.Commands.ICommandBus,Hexalith.Application.Requests.IRequestBus,Hexalith.Application.Tasks.IResiliencyPolicyProvider,System.Text.Json.JsonSerializerOptions,Dapr.Actors.Runtime.IActorStateManager)
+  name: DomainAggregateActorBase(ActorHost, IDomainCommandDispatcher, IDomainAggregateFactory, TimeProvider, IEventBus, INotificationBus, ICommandBus, IRequestBus, IResiliencyPolicyProvider, JsonSerializerOptions, IActorStateManager)
+  href: api/Hexalith.Infrastructure.DaprRuntime.Actors.DomainAggregateActorBase.html#Hexalith_Infrastructure_DaprRuntime_Actors_DomainAggregateActorBase__ctor_Dapr_Actors_Runtime_ActorHost_Hexalith_Application_Commands_IDomainCommandDispatcher_Hexalith_Application_Aggregates_IDomainAggregateFactory_System_TimeProvider_Hexalith_Application_Events_IEventBus_Hexalith_Application_Notifications_INotificationBus_Hexalith_Application_Commands_ICommandBus_Hexalith_Application_Requests_IRequestBus_Hexalith_Application_Tasks_IResiliencyPolicyProvider_System_Text_Json_JsonSerializerOptions_Dapr_Actors_Runtime_IActorStateManager_
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Actors.DomainAggregateActorBase.#ctor(Dapr.Actors.Runtime.ActorHost,Hexalith.Application.Commands.IDomainCommandDispatcher,Hexalith.Application.Aggregates.IDomainAggregateFactory,System.TimeProvider,Hexalith.Application.Events.IEventBus,Hexalith.Application.Notifications.INotificationBus,Hexalith.Application.Commands.ICommandBus,Hexalith.Application.Requests.IRequestBus,Hexalith.Application.Tasks.IResiliencyPolicyProvider,System.Text.Json.JsonSerializerOptions,Dapr.Actors.Runtime.IActorStateManager)
+  fullName: Hexalith.Infrastructure.DaprRuntime.Actors.DomainAggregateActorBase.DomainAggregateActorBase(Dapr.Actors.Runtime.ActorHost, Hexalith.Application.Commands.IDomainCommandDispatcher, Hexalith.Application.Aggregates.IDomainAggregateFactory, System.TimeProvider, Hexalith.Application.Events.IEventBus, Hexalith.Application.Notifications.INotificationBus, Hexalith.Application.Commands.ICommandBus, Hexalith.Application.Requests.IRequestBus, Hexalith.Application.Tasks.IResiliencyPolicyProvider, System.Text.Json.JsonSerializerOptions, Dapr.Actors.Runtime.IActorStateManager)
+  nameWithType: DomainAggregateActorBase.DomainAggregateActorBase(ActorHost, IDomainCommandDispatcher, IDomainAggregateFactory, TimeProvider, IEventBus, INotificationBus, ICommandBus, IRequestBus, IResiliencyPolicyProvider, JsonSerializerOptions, IActorStateManager)
 - uid: Hexalith.Infrastructure.DaprRuntime.Actors.DomainAggregateActorBase.#ctor*
   name: DomainAggregateActorBase
   href: api/Hexalith.Infrastructure.DaprRuntime.Actors.DomainAggregateActorBase.html#Hexalith_Infrastructure_DaprRuntime_Actors_DomainAggregateActorBase__ctor_
@@ -19160,18 +19051,6 @@ references:
   fullName.vb: Hexalith.Infrastructure.DaprRuntime.Handlers.ActorsCommandProcessor.SubmitAsync(IEnumerable(Of Hexalith.Application.Commands.BaseCommand), Hexalith.Application.Metadatas.BaseMetadata, System.Threading.CancellationToken)
   nameWithType: ActorsCommandProcessor.SubmitAsync(IEnumerable<BaseCommand>, BaseMetadata, CancellationToken)
   nameWithType.vb: ActorsCommandProcessor.SubmitAsync(IEnumerable(Of BaseCommand), BaseMetadata, CancellationToken)
-- uid: Hexalith.Infrastructure.DaprRuntime.Handlers.ActorsCommandProcessor.SubmitAsync(System.Object,Hexalith.Application.MessageMetadatas.Metadata,System.Threading.CancellationToken)
-  name: SubmitAsync(Object, Metadata, CancellationToken)
-  href: api/Hexalith.Infrastructure.DaprRuntime.Handlers.ActorsCommandProcessor.html#Hexalith_Infrastructure_DaprRuntime_Handlers_ActorsCommandProcessor_SubmitAsync_System_Object_Hexalith_Application_MessageMetadatas_Metadata_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.Handlers.ActorsCommandProcessor.SubmitAsync(System.Object,Hexalith.Application.MessageMetadatas.Metadata,System.Threading.CancellationToken)
-  fullName: Hexalith.Infrastructure.DaprRuntime.Handlers.ActorsCommandProcessor.SubmitAsync(System.Object, Hexalith.Application.MessageMetadatas.Metadata, System.Threading.CancellationToken)
-  nameWithType: ActorsCommandProcessor.SubmitAsync(Object, Metadata, CancellationToken)
-- uid: Hexalith.Infrastructure.DaprRuntime.Handlers.ActorsCommandProcessor.SubmitAsync(System.Object,Hexalith.Application.Metadatas.Metadata,System.Threading.CancellationToken)
-  name: SubmitAsync(Object, Metadata, CancellationToken)
-  href: api/Hexalith.Infrastructure.DaprRuntime.Handlers.ActorsCommandProcessor.html#Hexalith_Infrastructure_DaprRuntime_Handlers_ActorsCommandProcessor_SubmitAsync_System_Object_Hexalith_Application_Metadatas_Metadata_System_Threading_CancellationToken_
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.Handlers.ActorsCommandProcessor.SubmitAsync(System.Object,Hexalith.Application.Metadatas.Metadata,System.Threading.CancellationToken)
-  fullName: Hexalith.Infrastructure.DaprRuntime.Handlers.ActorsCommandProcessor.SubmitAsync(System.Object, Hexalith.Application.Metadatas.Metadata, System.Threading.CancellationToken)
-  nameWithType: ActorsCommandProcessor.SubmitAsync(Object, Metadata, CancellationToken)
 - uid: Hexalith.Infrastructure.DaprRuntime.Handlers.ActorsCommandProcessor.SubmitAsync*
   name: SubmitAsync
   href: api/Hexalith.Infrastructure.DaprRuntime.Handlers.ActorsCommandProcessor.html#Hexalith_Infrastructure_DaprRuntime_Handlers_ActorsCommandProcessor_SubmitAsync_
@@ -19185,15 +19064,15 @@ references:
   commentId: T:Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor
   fullName: Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor
   nameWithType: DomainActorCommandProcessor
-- uid: Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor.#ctor(Dapr.Actors.Client.IActorProxyFactory,Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor})
-  name: DomainActorCommandProcessor(IActorProxyFactory, ILogger<DomainActorCommandProcessor>)
-  href: api/Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor.html#Hexalith_Infrastructure_DaprRuntime_Handlers_DomainActorCommandProcessor__ctor_Dapr_Actors_Client_IActorProxyFactory_Microsoft_Extensions_Logging_ILogger_Hexalith_Infrastructure_DaprRuntime_Handlers_DomainActorCommandProcessor__
-  commentId: M:Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor.#ctor(Dapr.Actors.Client.IActorProxyFactory,Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor})
-  name.vb: DomainActorCommandProcessor(IActorProxyFactory, ILogger(Of DomainActorCommandProcessor))
-  fullName: Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor.DomainActorCommandProcessor(Dapr.Actors.Client.IActorProxyFactory, Microsoft.Extensions.Logging.ILogger<Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor>)
-  fullName.vb: Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor.DomainActorCommandProcessor(Dapr.Actors.Client.IActorProxyFactory, Microsoft.Extensions.Logging.ILogger(Of Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor))
-  nameWithType: DomainActorCommandProcessor.DomainActorCommandProcessor(IActorProxyFactory, ILogger<DomainActorCommandProcessor>)
-  nameWithType.vb: DomainActorCommandProcessor.DomainActorCommandProcessor(IActorProxyFactory, ILogger(Of DomainActorCommandProcessor))
+- uid: Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor.#ctor(Dapr.Actors.Client.IActorProxyFactory,System.Text.Json.JsonSerializerOptions,Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor})
+  name: DomainActorCommandProcessor(IActorProxyFactory, JsonSerializerOptions, ILogger<DomainActorCommandProcessor>)
+  href: api/Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor.html#Hexalith_Infrastructure_DaprRuntime_Handlers_DomainActorCommandProcessor__ctor_Dapr_Actors_Client_IActorProxyFactory_System_Text_Json_JsonSerializerOptions_Microsoft_Extensions_Logging_ILogger_Hexalith_Infrastructure_DaprRuntime_Handlers_DomainActorCommandProcessor__
+  commentId: M:Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor.#ctor(Dapr.Actors.Client.IActorProxyFactory,System.Text.Json.JsonSerializerOptions,Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor})
+  name.vb: DomainActorCommandProcessor(IActorProxyFactory, JsonSerializerOptions, ILogger(Of DomainActorCommandProcessor))
+  fullName: Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor.DomainActorCommandProcessor(Dapr.Actors.Client.IActorProxyFactory, System.Text.Json.JsonSerializerOptions, Microsoft.Extensions.Logging.ILogger<Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor>)
+  fullName.vb: Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor.DomainActorCommandProcessor(Dapr.Actors.Client.IActorProxyFactory, System.Text.Json.JsonSerializerOptions, Microsoft.Extensions.Logging.ILogger(Of Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor))
+  nameWithType: DomainActorCommandProcessor.DomainActorCommandProcessor(IActorProxyFactory, JsonSerializerOptions, ILogger<DomainActorCommandProcessor>)
+  nameWithType.vb: DomainActorCommandProcessor.DomainActorCommandProcessor(IActorProxyFactory, JsonSerializerOptions, ILogger(Of DomainActorCommandProcessor))
 - uid: Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor.#ctor*
   name: DomainActorCommandProcessor
   href: api/Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor.html#Hexalith_Infrastructure_DaprRuntime_Handlers_DomainActorCommandProcessor__ctor_

@@ -15,6 +15,7 @@ namespace Hexalith.UnitTests.Core.Infrastructure.DaprHandlers;
 
 using System;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 using Dapr.Actors;
@@ -24,11 +25,19 @@ using FluentAssertions;
 
 using Hexalith.Application.MessageMetadatas;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
-using Hexalith.UnitTests.Core.Application.Commands;
+using Hexalith.PolymorphicSerialization;
 
 using Microsoft.Extensions.Logging;
 
 using Moq;
+
+[PolymorphicSerialization]
+public partial record TestCommand(string Id, string Value)
+{
+    public static string AggregateName => "Test";
+
+    public string AggregateId => AggregateName + "-" + Id;
+}
 
 /// <summary>
 /// Class ActorCommandProcessorTest.
@@ -44,8 +53,9 @@ public class ActorCommandProcessorTest
         Mock<ActorProxy> actor = new();
         _ = factory.Setup(x => x.Create(It.IsAny<ActorId>(), It.IsAny<string>(), It.IsAny<ActorProxyOptions>()))
             .Returns(actor.Object);
-        DomainActorCommandProcessor processor = new(factory.Object, new Mock<ILogger<DomainActorCommandProcessor>>().Object);
-        DummyCommand1 command = new();
+        JsonSerializerOptions jsonOptions = new() { TypeInfoResolver = new PolymorphicSerializationResolver([new TestCommandMapper()]) };
+        DomainActorCommandProcessor processor = new(factory.Object, jsonOptions, new Mock<ILogger<DomainActorCommandProcessor>>().Object);
+        TestCommand command = new("123", "Hello");
 
         Func<Task> submit = async () => await processor.SubmitAsync(
             command,

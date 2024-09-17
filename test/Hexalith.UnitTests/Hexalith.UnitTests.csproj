@@ -15,6 +15,7 @@
 		<ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.Serialization\Hexalith.Infrastructure.Serialization.csproj" />
 		<ProjectReference Include="..\..\src\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime\Hexalith.Infrastructure.DaprRuntime.csproj" />
 		<ProjectReference Include="..\..\src\Core\UI\Hexalith.UI.Components\Hexalith.UI.Components.csproj" />
+		<ProjectReference Include="..\..\src\Core\CodeGenerators\Hexalith.CodeGenerators.SerializationMappers\Hexalith.CodeGenerators.SerializationMappers.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Update="appsettings.json">

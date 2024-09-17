@@ -1,7 +1,5 @@
-﻿// <copyright file="DummyCommand1.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="DummyCommand1.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace Hexalith.UnitTests.Core.Application.Commands;
@@ -12,7 +10,6 @@ using System.Text.Json.Serialization;
 using Hexalith.Application.Metadatas;
 using Hexalith.Extensions.Helpers;
 
-[DataContract]
 public class DummyCommand1 : DummyBaseCommand
 {
     private static readonly string[] _scopes = ["sc01", "sc02"];
@@ -27,7 +24,7 @@ public class DummyCommand1 : DummyBaseCommand
 
     [DataMember(Order = 2)]
     [JsonPropertyOrder(2)]
-    public int Value1 { get; private set; }
+    public int Value1 { get; set; }
 
     public static DummyCommand1 Create() => new("Test123", 35453);
 

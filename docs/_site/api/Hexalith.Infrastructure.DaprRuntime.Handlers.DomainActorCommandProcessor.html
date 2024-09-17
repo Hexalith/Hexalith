@@ -120,19 +120,19 @@ Implements the <a class="xref" href="Hexalith.Application.Commands.ICommandProce
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_Handlers_DomainActorCommandProcessor__ctor_Dapr_Actors_Client_IActorProxyFactory_Microsoft_Extensions_Logging_ILogger_Hexalith_Infrastructure_DaprRuntime_Handlers_DomainActorCommandProcessor__.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor.%23ctor(Dapr.Actors.Client.IActorProxyFactory%2CMicrosoft.Extensions.Logging.ILogger%7BHexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_Handlers_DomainActorCommandProcessor__ctor_Dapr_Actors_Client_IActorProxyFactory_System_Text_Json_JsonSerializerOptions_Microsoft_Extensions_Logging_ILogger_Hexalith_Infrastructure_DaprRuntime_Handlers_DomainActorCommandProcessor__.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor.%23ctor(Dapr.Actors.Client.IActorProxyFactory%2CSystem.Text.Json.JsonSerializerOptions%2CMicrosoft.Extensions.Logging.ILogger%7BHexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/Handlers/DomainActorCommandProcessor.cs/#L52">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/Handlers/DomainActorCommandProcessor.cs/#L56">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_DaprRuntime_Handlers_DomainActorCommandProcessor__ctor_" data-uid="Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor.#ctor*"></a>
-  <h4 id="Hexalith_Infrastructure_DaprRuntime_Handlers_DomainActorCommandProcessor__ctor_Dapr_Actors_Client_IActorProxyFactory_Microsoft_Extensions_Logging_ILogger_Hexalith_Infrastructure_DaprRuntime_Handlers_DomainActorCommandProcessor__" data-uid="Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor.#ctor(Dapr.Actors.Client.IActorProxyFactory,Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor})">DomainActorCommandProcessor(IActorProxyFactory, ILogger&lt;DomainActorCommandProcessor&gt;)</h4>
+  <h4 id="Hexalith_Infrastructure_DaprRuntime_Handlers_DomainActorCommandProcessor__ctor_Dapr_Actors_Client_IActorProxyFactory_System_Text_Json_JsonSerializerOptions_Microsoft_Extensions_Logging_ILogger_Hexalith_Infrastructure_DaprRuntime_Handlers_DomainActorCommandProcessor__" data-uid="Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor.#ctor(Dapr.Actors.Client.IActorProxyFactory,System.Text.Json.JsonSerializerOptions,Microsoft.Extensions.Logging.ILogger{Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor})">DomainActorCommandProcessor(IActorProxyFactory, JsonSerializerOptions, ILogger&lt;DomainActorCommandProcessor&gt;)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor.html">DomainActorCommandProcessor</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DomainActorCommandProcessor(IActorProxyFactory actorProxy, ILogger&lt;DomainActorCommandProcessor&gt; logger)</code></pre>
+    <pre><code class="lang-csharp hljs">public DomainActorCommandProcessor(IActorProxyFactory actorProxy, JsonSerializerOptions jsonOptions, ILogger&lt;DomainActorCommandProcessor&gt; logger)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -148,6 +148,12 @@ Implements the <a class="xref" href="Hexalith.Application.Commands.ICommandProce
         <td><span class="xref">Dapr.Actors.Client.IActorProxyFactory</span></td>
         <td><span class="parametername">actorProxy</span></td>
         <td><p>The actor proxy.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Text.Json.JsonSerializerOptions</span></td>
+        <td><span class="parametername">jsonOptions</span></td>
+        <td><p>The serializer options.</p>
 </td>
       </tr>
       <tr>
@@ -181,7 +187,7 @@ Implements the <a class="xref" href="Hexalith.Application.Commands.ICommandProce
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_Handlers_DomainActorCommandProcessor_LogSendingCommandToActor_Microsoft_Extensions_Logging_ILogger_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor.LogSendingCommandToActor(Microsoft.Extensions.Logging.ILogger%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/Handlers/DomainActorCommandProcessor.cs/#L67">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/Handlers/DomainActorCommandProcessor.cs/#L72">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_DaprRuntime_Handlers_DomainActorCommandProcessor_LogSendingCommandToActor_" data-uid="Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor.LogSendingCommandToActor*"></a>
   <h4 id="Hexalith_Infrastructure_DaprRuntime_Handlers_DomainActorCommandProcessor_LogSendingCommandToActor_Microsoft_Extensions_Logging_ILogger_System_String_System_String_System_String_" data-uid="Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor.LogSendingCommandToActor(Microsoft.Extensions.Logging.ILogger,System.String,System.String,System.String)">LogSendingCommandToActor(ILogger, String, String, String)</h4>
@@ -229,7 +235,7 @@ public static void LogSendingCommandToActor(ILogger logger, string commandName, 
     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_Handlers_DomainActorCommandProcessor_SubmitAsync_System_Object_Hexalith_Application_MessageMetadatas_Metadata_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor.SubmitAsync(System.Object%2CHexalith.Application.MessageMetadatas.Metadata%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/Handlers/DomainActorCommandProcessor.cs/#L74">View Source</a>
+    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/Handlers/DomainActorCommandProcessor.cs/#L79">View Source</a>
   </span>
   <a id="Hexalith_Infrastructure_DaprRuntime_Handlers_DomainActorCommandProcessor_SubmitAsync_" data-uid="Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor.SubmitAsync*"></a>
   <h4 id="Hexalith_Infrastructure_DaprRuntime_Handlers_DomainActorCommandProcessor_SubmitAsync_System_Object_Hexalith_Application_MessageMetadatas_Metadata_System_Threading_CancellationToken_" data-uid="Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor.SubmitAsync(System.Object,Hexalith.Application.MessageMetadatas.Metadata,System.Threading.CancellationToken)">SubmitAsync(Object, Metadata, CancellationToken)</h4>
@@ -318,7 +324,7 @@ public static void LogSendingCommandToActor(ILogger logger, string commandName, 
                     <a href="https://github.com/Hexalith/Hexalith/new/main/apiSpec/new?filename=Hexalith_Infrastructure_DaprRuntime_Handlers_DomainActorCommandProcessor.md&amp;value=---%0Auid%3A%20Hexalith.Infrastructure.DaprRuntime.Handlers.DomainActorCommandProcessor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/Handlers/DomainActorCommandProcessor.cs/#L34" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Hexalith/Hexalith/blob/main/src/Core/Infrastructure/Hexalith.Infrastructure.DaprRuntime/Handlers/DomainActorCommandProcessor.cs/#L35" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

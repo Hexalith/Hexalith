@@ -50,7 +50,7 @@ public partial class DomainActorCommandProcessor : IDomainCommandProcessor
     /// Initializes a new instance of the <see cref="DomainActorCommandProcessor"/> class.
     /// </summary>
     /// <param name="actorProxy">The actor proxy.</param>
-    /// <param name="jsonOptions"></param>
+    /// <param name="jsonOptions">The serializer options.</param>
     /// <param name="logger">The logger.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
     public DomainActorCommandProcessor(IActorProxyFactory actorProxy, JsonSerializerOptions jsonOptions, ILogger<DomainActorCommandProcessor> logger)

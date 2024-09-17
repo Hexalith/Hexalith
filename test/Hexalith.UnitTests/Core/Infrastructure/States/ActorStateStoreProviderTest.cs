@@ -1,7 +1,5 @@
-﻿// <copyright file="ActorStateStoreProviderTest.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="ActorStateStoreProviderTest.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace Hexalith.UnitTests.Core.Infrastructure.States;
@@ -31,7 +29,7 @@ public class ActorStateStoreProviderTest
                 command));
         Mock<ICommandDispatcher> dispatcher = new();
         ActorStateStoreProvider storeProvider = new(actorStateManager.Object);
-        Extensions.Common.ConditionalValue<BaseCommand> result = await storeProvider.TryGetStateAsync<BaseCommand>("State", CancellationToken.None);
+        Hexalith.Extensions.Common.ConditionalValue<BaseCommand> result = await storeProvider.TryGetStateAsync<BaseCommand>("State", CancellationToken.None);
         _ = result.HasValue.Should().BeTrue();
         _ = result.Value.Should().BeEquivalentTo(command);
     }

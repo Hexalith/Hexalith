@@ -1,7 +1,5 @@
-﻿// <copyright file="DummyBaseCommand.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="DummyBaseCommand.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace Hexalith.UnitTests.Core.Application.Commands;
@@ -13,7 +11,6 @@ using Hexalith.Application.Commands;
 using Hexalith.Application.Metadatas;
 using Hexalith.Extensions.Helpers;
 
-[DataContract]
 public class DummyBaseCommand : BaseCommand
 {
     public DummyBaseCommand() => BaseValue = string.Empty;
@@ -23,7 +20,7 @@ public class DummyBaseCommand : BaseCommand
 
     [DataMember(Order = 2)]
     [JsonPropertyOrder(2)]
-    public string BaseValue { get; private set; }
+    public string BaseValue { get; set; }
 
     public Metadata CreateMetadata()
     {
