@@ -72,7 +72,7 @@ public partial class DomainActorCommandProcessor : IDomainCommandProcessor
     [LoggerMessage(
                 EventId = 2,
                 Level = LogLevel.Information,
-                Message = "Sending command {CommandName} to actor {ActorName} for aggregate {AggregateId}.")]
+                Message = "Sending command {CommandName} to aSystem.NotSupportedException: 'Runtime type 'Manhole.Commands.Factories.AddFactory' is not supported by polymorphic type 'Hexalith.PolymorphicSerialization.PolymorphicRecoctor {ActorName} for aggregate {AggregateId}.")]
     public static partial void LogSendingCommandToActor(ILogger logger, string commandName, string aggregateId, string actorName);
 
     /// <inheritdoc/>

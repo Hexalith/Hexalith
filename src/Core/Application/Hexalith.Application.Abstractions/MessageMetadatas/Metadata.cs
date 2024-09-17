@@ -46,4 +46,20 @@ public record Metadata(
         ArgumentNullException.ThrowIfNull(metadata);
         return new Metadata(new MessageMetadata(message, dateTime), metadata.Context);
     }
+
+    /// <summary>
+    /// Creates a new instance of the <see cref="Metadata"/> class.
+    /// </summary>
+    /// <param name="message">The message.</param>
+    /// <param name="userId">The user identifier.</param>
+    /// <param name="dateTime">The created date.</param>
+    /// <returns>A new instance of the <see cref="Metadata"/> class.</returns>
+    public static Metadata CreateNew(object message, string userId, DateTimeOffset dateTime)
+    {
+        ArgumentNullException.ThrowIfNull(message);
+        MessageMetadata msgMeta = new(message, dateTime);
+        return new Metadata(
+            msgMeta,
+            new ContextMetadata(msgMeta.Id, userId, dateTime, null, null, []));
+    }
 }

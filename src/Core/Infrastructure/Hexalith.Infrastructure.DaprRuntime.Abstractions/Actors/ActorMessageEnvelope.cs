@@ -7,7 +7,6 @@ namespace Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 
 using Hexalith.Application.MessageMetadatas;
 using Hexalith.PolymorphicSerialization;
@@ -20,37 +19,18 @@ using Hexalith.PolymorphicSerialization;
 /// <remarks>
 /// Initializes a new instance of the <see cref="ActorMessageEnvelope"/> class.
 /// </remarks>
-/// <param name="messageJson">The message in JSON.</param>
-/// <param name="metadataJson">The metadata in JSON.</param>
-/// <param name="isRecord">Indicates whether the message is a record or a class.</param>
+/// <param name="Message">The message in JSON format.</param>
+/// <param name="Metadata">The metadata in JSON format.</param>
+/// <param name="IsRecord">Indicates if the message is a record.</param>
 [DataContract]
-[method: JsonConstructor]
-public class ActorMessageEnvelope(string messageJson, string metadataJson, bool isRecord)
+public record ActorMessageEnvelope(
+    [property:DataMember(Order =1)]
+    string Message,
+    [property: DataMember(Order =2)]
+    string Metadata,
+    [property: DataMember(Order =3)]
+    bool IsRecord)
 {
-    /// <summary>
-    /// Gets or sets a value indicating whether the message is a record or a class.
-    /// </summary>
-    /// <value>Is a record or not.</value>
-    [DataMember(Name = nameof(IsRecord))]
-    [JsonPropertyName(nameof(IsRecord))]
-    public bool IsRecord { get; set; } = isRecord;
-
-    /// <summary>
-    /// Gets or sets the messages json.
-    /// </summary>
-    /// <value>The messages json.</value>
-    [DataMember(Name = nameof(Message))]
-    [JsonPropertyName(nameof(Message))]
-    public string Message { get; set; } = messageJson;
-
-    /// <summary>
-    /// Gets or sets the metadatas json.
-    /// </summary>
-    /// <value>The metadatas json.</value>
-    [DataMember(Name = nameof(Metadata))]
-    [JsonPropertyName(nameof(Metadata))]
-    public string Metadata { get; set; } = metadataJson;
-
     /// <summary>
     /// Creates a new instance of the <see cref="ActorMessageEnvelope"/> class.
     /// </summary>
