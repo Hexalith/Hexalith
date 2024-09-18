@@ -5,7 +5,6 @@
 namespace Hexalith.Application.Commands;
 
 using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -16,6 +15,9 @@ using Hexalith.Extensions.Helpers;
 
 using Microsoft.Extensions.Logging;
 
+/// <summary>
+/// Command dispatcher that uses dependency injection to resolve command handlers.
+/// </summary>
 public partial class DependencyInjectionDomainCommandDispatcher : IDomainCommandDispatcher
 {
     /// <summary>
@@ -49,9 +51,7 @@ public partial class DependencyInjectionDomainCommandDispatcher : IDomainCommand
         try
         {
             LogDispatchingCommandDebugInformation(metadata.Message.Name, metadata.Message.Aggregate.Name, metadata.Message.Aggregate.Id);
-            IEnumerable<object> events = (IEnumerable<object>)await GetHandler(command).DoAsync(command, aggregate, cancellationToken).ConfigureAwait(false);
-
-            return (ExecuteCommandResult)events;
+            return await GetHandler(command).DoAsync(command, metadata, aggregate, cancellationToken).ConfigureAwait(false);
         }
         catch (ApplicationErrorException ex)
         {
@@ -90,22 +90,15 @@ public partial class DependencyInjectionDomainCommandDispatcher : IDomainCommand
         ArgumentNullException.ThrowIfNull(metadata);
         ArgumentNullException.ThrowIfNull(aggregate);
         LogDispatchingCommandUndoDebugInformation(metadata.Message.Name, metadata.Message.Aggregate.Name, metadata.Message.Aggregate.Id);
-        IEnumerable<object> events = (IEnumerable<object>)await GetHandler(command).UndoAsync(command, aggregate, cancellationToken).ConfigureAwait(false);
-        return (ExecuteCommandResult)events;
+        return await GetHandler(command).UndoAsync(command, metadata, aggregate, cancellationToken).ConfigureAwait(false);
     }
 
-    /// <summary>
-    /// Gets the command handler of type ICommandHandler.<MyCommand>.
-    /// </summary>
-    /// <param name="command">The command to handle.</param>
-    /// <returns>ICommandHandler<Command>.</returns>
-    /// <exception cref="System.InvalidOperationException">No handler found for command {commandType.Name}. Please add a ICommandHandler.<{commandType.Name}> to the service collection.</exception>
     private IDomainCommandHandler GetHandler(object command)
     {
         Type commandType = command.GetType();
         Type commandHandlerType = typeof(IDomainCommandHandler<>).MakeGenericType(commandType);
         return _serviceProvider.GetService(commandHandlerType) is not IDomainCommandHandler commandHandler
-            ? throw new InvalidOperationException($"No handler found for command {commandType.Name}. Please add a ICommandHandler<{commandType.Name}> to the service collection.")
+            ? throw new InvalidOperationException($"No handler found for command {commandType.Name}. Please add a IDomainCommandHandler<{commandType.Name}> to the service collection.")
             : commandHandler;
     }
 }

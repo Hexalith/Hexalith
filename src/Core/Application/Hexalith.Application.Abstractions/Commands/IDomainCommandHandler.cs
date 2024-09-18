@@ -7,6 +7,7 @@ namespace Hexalith.Application.Commands;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Hexalith.Application.MessageMetadatas;
 using Hexalith.Domain.Aggregates;
 
 /// <summary>
@@ -18,45 +19,48 @@ public interface IDomainCommandHandler
     /// Does the asynchronous.
     /// </summary>
     /// <param name="command">The command.</param>
+    /// <param name="metadata">The metadata.</param>
     /// <param name="aggregate">The aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;IEnumerable&lt;BaseMessage&gt;&gt;.</returns>
-    Task<ExecuteCommandResult> DoAsync(object command, IDomainAggregate? aggregate, CancellationToken cancellationToken);
+    Task<ExecuteCommandResult> DoAsync(object command, Metadata metadata, IDomainAggregate? aggregate, CancellationToken cancellationToken);
 
     /// <summary>
     /// Undoes the asynchronous.
     /// </summary>
     /// <param name="command">The command.</param>
+    /// <param name="metadata">The metadata.</param>
     /// <param name="aggregate">The aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;IEnumerable&lt;BaseMessage&gt;&gt;.</returns>
-    Task<ExecuteCommandResult> UndoAsync(object command, IDomainAggregate? aggregate, CancellationToken cancellationToken);
+    Task<ExecuteCommandResult> UndoAsync(object command, Metadata metadata, IDomainAggregate? aggregate, CancellationToken cancellationToken);
 }
 
 /// <summary>
-/// Interface ICommandHandler
-/// Extends the <see cref="ICommandHandler" />.
+/// Interface IDomainCommandHandler
+/// Extends the <see cref="IDomainCommandHandler" />.
 /// </summary>
 /// <typeparam name="TCommand">The type of the t command.</typeparam>
-/// <seealso cref="ICommandHandler" />
-public interface IDomainCommandHandler<TCommand> : ICommandHandler
-    where TCommand : ICommand
+/// <seealso cref="IDomainCommandHandler" />
+public interface IDomainCommandHandler<TCommand> : IDomainCommandHandler
 {
     /// <summary>
     /// Does the asynchronous.
     /// </summary>
     /// <param name="command">The command.</param>
+    /// <param name="metadata">The metadata.</param>
     /// <param name="aggregate">The aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;IEnumerable&lt;BaseMessage&gt;&gt;.</returns>
-    Task<ExecuteCommandResult> DoAsync(object command, IDomainAggregate? aggregate, CancellationToken cancellationToken);
+    Task<ExecuteCommandResult> DoAsync(TCommand command, Metadata metadata, IDomainAggregate? aggregate, CancellationToken cancellationToken);
 
     /// <summary>
     /// Undoes the asynchronous.
     /// </summary>
     /// <param name="command">The command.</param>
+    /// <param name="metadata">The metadata.</param>
     /// <param name="aggregate">The aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;IEnumerable&lt;BaseMessage&gt;&gt;.</returns>
-    Task<ExecuteCommandResult> UndoAsync(object command, IDomainAggregate? aggregate, CancellationToken cancellationToken);
+    Task<ExecuteCommandResult> UndoAsync(TCommand command, Metadata metadata, IDomainAggregate? aggregate, CancellationToken cancellationToken);
 }
