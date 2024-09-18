@@ -11,17 +11,27 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
 
+using Microsoft.Extensions.DependencyInjection;
+
 /// <summary>
 /// Resolves the polymorphic serialization for JSON.
 /// </summary>
 public class PolymorphicSerializationResolver : DefaultJsonTypeInfoResolver
 {
-    private readonly Dictionary<Type, IEnumerable<IPolymorphicSerializationMapper>> _serializationMappers;
+    private Dictionary<Type, IEnumerable<IPolymorphicSerializationMapper>>? _serializationMappers;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="PolymorphicSerializationResolver"/> class.
+    /// </summary>
+    public PolymorphicSerializationResolver()
+    {
+    }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="PolymorphicSerializationResolver"/> class.
     /// </summary>
     /// <param name="serializationMappers">The collection of serialization mappers.</param>
+    [ActivatorUtilitiesConstructor]
     public PolymorphicSerializationResolver(IEnumerable<IPolymorphicSerializationMapper> serializationMappers)
     {
         if (serializationMappers == null)
@@ -34,12 +44,22 @@ public class PolymorphicSerializationResolver : DefaultJsonTypeInfoResolver
             .ToDictionary(g => g.Key, g => g.AsEnumerable());
     }
 
+    /// <summary>
+    /// Gets the default mappers.
+    /// </summary>
+    public static ICollection<IPolymorphicSerializationMapper> DefaultMappers { get; set; } = [];
+
+    private Dictionary<Type, IEnumerable<IPolymorphicSerializationMapper>> SerializationMappers
+                    => _serializationMappers ??= DefaultMappers
+            .GroupBy(m => m.Base)
+            .ToDictionary(g => g.Key, g => g.AsEnumerable());
+
     /// <inheritdoc/>
     public override JsonTypeInfo GetTypeInfo(Type type, JsonSerializerOptions options)
     {
         JsonTypeInfo jsonTypeInfo = base.GetTypeInfo(type, options);
 
-        if (_serializationMappers.TryGetValue(jsonTypeInfo.Type, out IEnumerable<IPolymorphicSerializationMapper>? mappers))
+        if (SerializationMappers.TryGetValue(jsonTypeInfo.Type, out IEnumerable<IPolymorphicSerializationMapper>? mappers))
         {
             jsonTypeInfo.PolymorphismOptions = new JsonPolymorphismOptions
             {
