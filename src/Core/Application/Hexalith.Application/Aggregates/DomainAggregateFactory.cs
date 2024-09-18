@@ -41,6 +41,6 @@ public class DomainAggregateFactory : IDomainAggregateFactory
     {
         return _aggregateProviders.TryGetValue(aggregateName, out IDomainAggregateProvider? value)
             ? value
-            : throw new InvalidOperationException($"Provider for aggregate {aggregateName} not found in the service collection. Add the IAggregateProvider singleton to the dependency injection.");
+            : throw new InvalidOperationException($"Provider for aggregate {aggregateName} not found in the service collection. Add the IDomainAggregateProvider singleton to the dependency injection.");
     }
 }

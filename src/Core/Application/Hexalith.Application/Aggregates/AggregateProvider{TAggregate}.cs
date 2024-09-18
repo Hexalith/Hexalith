@@ -14,7 +14,7 @@ using Hexalith.Domain.Aggregates;
 /// </summary>
 /// <typeparam name="TAggregate">The type of the t aggregate.</typeparam>
 /// <seealso cref="Hexalith.Application.Aggregates.IAggregateProvider{TAggregate}" />
-[Obsolete]
+[Obsolete("This interface is not used anymore. Use DomainAggregateProvider instead.", true)]
 public class AggregateProvider<TAggregate> : IAggregateProvider<TAggregate>
     where TAggregate : IAggregate, new()
 {

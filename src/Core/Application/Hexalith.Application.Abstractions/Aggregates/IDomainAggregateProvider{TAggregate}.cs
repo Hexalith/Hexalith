@@ -7,7 +7,7 @@ namespace Hexalith.Application.Aggregates;
 using Hexalith.Domain.Aggregates;
 
 /// <summary>
-/// Interface IAggregateProvider.
+/// Interface IDomainAggregateProvider.
 /// </summary>
 /// <typeparam name="TAggregate">The type of the t aggregate.</typeparam>
 public interface IDomainAggregateProvider<TAggregate> : IDomainAggregateProvider

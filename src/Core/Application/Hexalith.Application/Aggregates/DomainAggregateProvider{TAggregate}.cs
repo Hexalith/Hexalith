@@ -10,10 +10,10 @@ using Hexalith.Domain.Aggregates;
 
 /// <summary>
 /// Class AggregateProvider.
-/// Implements the <see cref="Hexalith.Application.Aggregates.IAggregateProvider{TAggregate}" />.
+/// Implements the <see cref="Hexalith.Application.Aggregates.IDomainAggregateProvider{TAggregate}" />.
 /// </summary>
 /// <typeparam name="TAggregate">The type of the t aggregate.</typeparam>
-/// <seealso cref="Hexalith.Application.Aggregates.IAggregateProvider{TAggregate}" />
+/// <seealso cref="Hexalith.Application.Aggregates.IDomainAggregateProvider{TAggregate}" />
 public class DomainAggregateProvider<TAggregate> : IDomainAggregateProvider<TAggregate>
     where TAggregate : IDomainAggregate, new()
 {

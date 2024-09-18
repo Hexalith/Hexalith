@@ -7,7 +7,7 @@ namespace Hexalith.Application.Aggregates;
 using Hexalith.Domain.Aggregates;
 
 /// <summary>
-/// Interface IAggregateProvider.
+/// Interface IDomainAggregateProvider.
 /// </summary>
 public interface IDomainAggregateProvider
 {

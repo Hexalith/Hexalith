@@ -6,10 +6,8 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 01-10-2024
 // ***********************************************************************
-// <copyright file="IAggregateProvider.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+// <copyright file="IAggregateProvider.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -21,6 +19,7 @@ using Hexalith.Domain.Aggregates;
 /// <summary>
 /// Interface IAggregateProvider.
 /// </summary>
+[Obsolete("This interface is not used anymore. Use IDomainAggregateProvider instead.", true)]
 public interface IAggregateProvider
 {
     /// <summary>

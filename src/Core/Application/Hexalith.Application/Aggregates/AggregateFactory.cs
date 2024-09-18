@@ -13,6 +13,7 @@ using Hexalith.Domain.Aggregates;
 /// Implements the <see cref="Hexalith.Application.Aggregates.IAggregateFactory" />.
 /// </summary>
 /// <seealso cref="Hexalith.Application.Aggregates.IAggregateFactory" />
+[Obsolete("This interface is not used anymore. Use DomainAggregateFactory instead.", true)]
 public class AggregateFactory : IAggregateFactory
 {
     /// <summary>
