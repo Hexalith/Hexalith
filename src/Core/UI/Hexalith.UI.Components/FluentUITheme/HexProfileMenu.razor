@@ -27,7 +27,7 @@
 	{
 		var url = $"{NavigationManager.BaseUri}{Application.LogoutPath}";
 		await HttpClient
-			.PostAsync(url, new StringContent(""))
+			.GetAsync(url)
 			.ConfigureAwait(false);
 		NavigationManager.NavigateTo($"{Application.HomePath}", forceLoad: true);
 	}
