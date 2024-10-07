@@ -13,8 +13,10 @@
 		<PackageReference Include="Aspire.Hosting.Redis" Version="$(AspireVersion)" />
 		<PackageReference Include="Aspire.Hosting.Azure.CosmosDB" Version="$(AspireVersion)" />
 		<PackageReference Include="Aspire.Azure.Security.KeyVault" Version="$(AspireVersion)" />
-		<PackageReference Include="Aspire.Microsoft.Azure.Cosmos" Version="$(AspireVersion)" />
-	</ItemGroup>
+    <PackageReference Include="Aspire.Microsoft.Azure.Cosmos" Version="$(AspireVersion)" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="$(MicrosoftExtensionsPackagesVersion)" />
+    <PackageReference Include="System.Text.Json" Version="$(MicrosoftExtensionsPackagesVersion)" />
+  </ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\Application\Hexalith.Application\Hexalith.Application.csproj" />
 	</ItemGroup>
