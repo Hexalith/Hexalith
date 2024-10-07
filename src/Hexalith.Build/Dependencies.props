@@ -3,7 +3,7 @@
 		<!-- Detect if the solution is opened in VS to add local repository for packages -->
 		<AdaptiveCardsVersion>3.1.0</AdaptiveCardsVersion>
 		<AdaptiveCardsTemplatingVersion>2.0.2</AdaptiveCardsTemplatingVersion>
-		<AspireVersion>8.*</AspireVersion>
+		<AspireVersion>8.2.1</AspireVersion>
 		<AzureIdentityVersion>1.10.4</AzureIdentityVersion>
 		<AzureBicepCoreVersion>0.26.54</AzureBicepCoreVersion>
 		<AzureMonitorOpenTelemetryAspNetCoreVersion>1.1.0</AzureMonitorOpenTelemetryAspNetCoreVersion>
@@ -20,26 +20,26 @@
 		<CoverletCollectorVersion>6.0.2</CoverletCollectorVersion>
 		<DaprVersion>1.14.*</DaprVersion>
 		<DocFxConsoleVersion>2.59.4</DocFxConsoleVersion>
-		<FluentAssertionsVersion>6.12.0</FluentAssertionsVersion>
-		<FluentValidationVersion>11.9.2</FluentValidationVersion>
+		<FluentAssertionsVersion>6.12.1</FluentAssertionsVersion>
+		<FluentValidationVersion>11.10.0</FluentValidationVersion>
 		<FluentValidationAspNetCoreVersion>11.3.0</FluentValidationAspNetCoreVersion>
 		<GitHubActionsTestLoggerVersion>2.4.1</GitHubActionsTestLoggerVersion>
 		<GoogleApiVersion>5.4.2</GoogleApiVersion>
-		<GrpcVersion>2.65.0</GrpcVersion>
+		<GrpcVersion>2.66.0</GrpcVersion>
 		<ISO3166Version>1.0.4</ISO3166Version>
 		<HumanizerVersion>2.14.1</HumanizerVersion>
-		<MailKitVersion>4.7.1.1</MailKitVersion>
-		<MicrosoftAzureCosmosVersion>3.43.0</MicrosoftAzureCosmosVersion>
+		<MailKitVersion>4.8.0</MailKitVersion>
+		<MicrosoftAzureCosmosVersion>3.43.1</MicrosoftAzureCosmosVersion>
 		<MicrosoftBotBuilderVersion>4.22.7</MicrosoftBotBuilderVersion>
 		<MicrosoftCodeAnalysisCSharpVersion>4.11.0</MicrosoftCodeAnalysisCSharpVersion>
-		<MicrosoftCodeAnalysisAnalyzersVersion>3.3.4</MicrosoftCodeAnalysisAnalyzersVersion>
+		<MicrosoftCodeAnalysisAnalyzersVersion>3.11.0</MicrosoftCodeAnalysisAnalyzersVersion>
 		<MicrosoftFluentUIComponentsVersion>4.*</MicrosoftFluentUIComponentsVersion>
-		<MicrosoftIdentityClientVersion>4.64.0</MicrosoftIdentityClientVersion>
-		<MicrosoftIdentityWebVersion>3.0.1</MicrosoftIdentityWebVersion>
+		<MicrosoftIdentityClientVersion>4.65.0</MicrosoftIdentityClientVersion>
+		<MicrosoftIdentityWebVersion>3.2.1</MicrosoftIdentityWebVersion>
 		<MicrosoftNETTestSdkVersion>17.11.1</MicrosoftNETTestSdkVersion>
-		<MicrosoftSemanticKernelVersion>1.18.2</MicrosoftSemanticKernelVersion>
+		<MicrosoftSemanticKernelVersion>1.21.1</MicrosoftSemanticKernelVersion>
 		<MicrosoftTeamsFxVersion>2.5.0</MicrosoftTeamsFxVersion>
-		<MicrosoftTypescriptMSBuild>5.5.3</MicrosoftTypescriptMSBuild>
+		<MicrosoftTypescriptMSBuild>5.6.2</MicrosoftTypescriptMSBuild>
 		<MicrosoftGraphVersion>5.12.*</MicrosoftGraphVersion>
 		<MicrosoftVisualStudioThreadingAnalyzersVersion>17.11.20</MicrosoftVisualStudioThreadingAnalyzersVersion>
 		<MinverVersion>5.0.0</MinverVersion>
@@ -60,8 +60,8 @@
 		<SerilogSinksBrowserVersion>8.0.0</SerilogSinksBrowserVersion>
 		<SerilogSinksDebugVersion>3.0.*</SerilogSinksDebugVersion>
 		<StyleCopAnalyzersVersion>1.2.0-beta.556</StyleCopAnalyzersVersion>
-		<SwashbuckleAspNetCoreVersion>6.7.3</SwashbuckleAspNetCoreVersion>
+		<SwashbuckleAspNetCoreVersion>6.8.1</SwashbuckleAspNetCoreVersion>
 		<XUnitRunnerVisualStudioVersion>2.8.2</XUnitRunnerVisualStudioVersion>
-		<XUnitVersion>2.9.0</XUnitVersion>
+		<XUnitVersion>2.9.2</XUnitVersion>
 	</PropertyGroup>
 </Project>
