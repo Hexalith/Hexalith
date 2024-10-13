@@ -52,14 +52,15 @@ public record Metadata(
     /// </summary>
     /// <param name="message">The message.</param>
     /// <param name="userId">The user identifier.</param>
+    /// <param name="partitionId">The partition identifier.</param>
     /// <param name="dateTime">The created date.</param>
     /// <returns>A new instance of the <see cref="Metadata"/> class.</returns>
-    public static Metadata CreateNew(object message, string userId, DateTimeOffset dateTime)
+    public static Metadata CreateNew(object message, string userId, string partitionId, DateTimeOffset dateTime)
     {
         ArgumentNullException.ThrowIfNull(message);
         MessageMetadata msgMeta = new(message, dateTime);
         return new Metadata(
             msgMeta,
-            new ContextMetadata(msgMeta.Id, userId, dateTime, null, null, []));
+            new ContextMetadata(msgMeta.Id, userId, partitionId, dateTime, null, null, []));
     }
 }

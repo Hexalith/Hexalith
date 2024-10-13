@@ -260,7 +260,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     }
 
     /// <inheritdoc/>
-    public async Task<Application.MessageMetadatas.MessageState?> GetSnapshotEventAsync() => await GetSnapshotEventAsync(CancellationToken.None).ConfigureAwait(false);
+    public async Task<MessageState?> GetSnapshotEventAsync() => await GetSnapshotEventAsync(CancellationToken.None).ConfigureAwait(false);
 
     /// <inheritdoc/>
     public async Task ProcessCallbackAsync()
@@ -449,22 +449,15 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         {
             AggregateActorState state = await GetAggregateStateAsync(cancellationToken).ConfigureAwait(false);
 
-            _aggregate = _aggregateFactory.Create(aggregateName);
+            IDomainAggregate aggregate = _aggregateFactory.Create(aggregateName);
             for (int i = 1; i <= state.EventSourceCount; i++)
             {
-                Application.MessageMetadatas.MessageState ev = await EventSourceStore.GetAsync(i, cancellationToken).ConfigureAwait(false);
-                if (ev.Message is null)
-                {
-                    throw new InvalidOperationException($"Event {i} for {Id} is null.");
-                }
+                MessageState ev = await EventSourceStore.GetAsync(i, cancellationToken).ConfigureAwait(false);
 
-                if (ev.Metadata.Message.Aggregate.Id != Id.ToString())
-                {
-                    throw new InvalidOperationException($"Event {i} for {Id} has an invalid aggregate id : {ev.Metadata.Message.Aggregate.Id}.");
-                }
-
-                _ = _aggregate.Apply(ev.Message);
+                aggregate = aggregate.Apply(ev.Message).Aggregate;
             }
+
+            _aggregate = aggregate;
         }
 
         return _aggregate;
@@ -474,7 +467,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     {
         if (_state is null)
         {
-            Dapr.Actors.Runtime.ConditionalValue<AggregateActorState> result = await StateManager
+            ConditionalValue<AggregateActorState> result = await StateManager
                 .TryGetStateAsync<AggregateActorState>(ActorConstants.AggregateStateStoreName, cancellationToken)
                 .ConfigureAwait(false);
             _state = result.HasValue ? result.Value : new AggregateActorState();
@@ -483,24 +476,36 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         return _state;
     }
 
-    private async Task<Application.MessageMetadatas.MessageState?> GetSnapshotEventAsync(CancellationToken cancellationToken)
+    private async Task<MessageState?> GetSnapshotEventAsync(CancellationToken cancellationToken)
     {
         string aggregateName = Host.ActorTypeInfo.ActorTypeName.Split(nameof(ActorSuffix)).First();
-        IDomainAggregate aggregate = await GetAggregateAsync(aggregateName, cancellationToken).ConfigureAwait(false);
-        if (!aggregate.IsInitialized())
+        AggregateActorState state = await GetAggregateStateAsync(cancellationToken).ConfigureAwait(false);
+
+        IDomainAggregate aggregate = _aggregateFactory.Create(aggregateName);
+        Metadata? metadata = null;
+        for (int i = 1; i <= state.EventSourceCount; i++)
+        {
+            MessageState ev = await EventSourceStore.GetAsync(i, cancellationToken).ConfigureAwait(false);
+            ApplyResult applyResult = aggregate.Apply(ev.Message);
+            metadata = ev.Metadata;
+            aggregate = applyResult.Aggregate;
+        }
+
+        if (!aggregate.IsInitialized() || metadata == null)
         {
             return null;
         }
 
         AggregateSnapshotEvent e = new(aggregate);
-        Application.MessageMetadatas.MessageMetadata messageMetadata = new(e, _dateTimeService.GetUtcNow());
+        MessageMetadata messageMetadata = new(e, _dateTimeService.GetUtcNow());
         return MessageState.Create(
             e,
-            new Application.MessageMetadatas.Metadata(
+            new Metadata(
                 messageMetadata,
-                new Application.MessageMetadatas.ContextMetadata(
+                new ContextMetadata(
                     messageMetadata.Id,
                     "system",
+                    metadata.Context.PartitionId,
                     messageMetadata.CreatedDate,
                     null,
                     null,

@@ -69,9 +69,10 @@ public class ClientCommandService : IClientCommandService
         }
 
         string sessionId = await _sessionService.GetSessionIdAsync(cancellationToken).ConfigureAwait(false);
+        string partitionId = await _sessionService.GetPartitionIdAsync(cancellationToken).ConfigureAwait(false);
         Metadata metadata = new(
             new MessageMetadata(command, _timeProvider.GetLocalNow()),
-            new ContextMetadata(messageId, userId, null, null, sessionId, []));
+            new ContextMetadata(messageId, userId, partitionId, null, null, sessionId, []));
 
         await SendCommandAsync(command, metadata, cancellationToken).ConfigureAwait(false);
     }

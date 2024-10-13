@@ -14,6 +14,7 @@ using Hexalith.Extensions;
 /// </summary>
 /// <param name="CorrelationId">The correlation identifier.</param>
 /// <param name="UserId">The user identifier.</param>
+/// <param name="PartitionId">The partition identifier.</param>
 /// <param name="ReceivedDate">The received date.</param>
 /// <param name="SequenceNumber">The sequence number.</param>
 /// <param name="SessionId">The session identifier.</param>
@@ -26,6 +27,9 @@ public record ContextMetadata(
     [property:DataMember(Order = 2)]
     [property:JsonPropertyOrder(2)]
     string UserId,
+    [property:DataMember(Order = 2)]
+    [property:JsonPropertyOrder(2)]
+    string PartitionId,
     [property:DataMember(Order = 3)]
     [property:JsonPropertyOrder(3)]
     DateTimeOffset? ReceivedDate,
@@ -44,7 +48,7 @@ public record ContextMetadata(
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public ContextMetadata()
-        : this(string.Empty, string.Empty, null, null, string.Empty, [])
+        : this(string.Empty, string.Empty, string.Empty, null, null, string.Empty, [])
     {
     }
 
@@ -58,6 +62,7 @@ public record ContextMetadata(
         : this(
               (context ?? throw new ArgumentNullException(nameof(context))).CorrelationId,
               context.UserId,
+              context.PartitionId,
               receivedDate,
               context.SequenceNumber,
               context.SessionId,

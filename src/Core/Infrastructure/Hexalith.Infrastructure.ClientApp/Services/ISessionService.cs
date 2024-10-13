@@ -14,6 +14,8 @@ using System.Threading.Tasks;
 /// </remarks>
 public interface ISessionService
 {
+    Task<string> GetPartitionIdAsync(CancellationToken cancellationToken);
+
     /// <summary>
     /// Retrieves the session.
     /// </summary>

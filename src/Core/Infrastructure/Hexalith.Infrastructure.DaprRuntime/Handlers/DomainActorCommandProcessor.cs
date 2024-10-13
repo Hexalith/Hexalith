@@ -12,6 +12,7 @@ using Dapr.Actors;
 using Dapr.Actors.Client;
 
 using Hexalith.Application.Commands;
+using Hexalith.Application.MessageMetadatas;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 
 using Microsoft.Extensions.Logging;
@@ -65,7 +66,7 @@ public partial class DomainActorCommandProcessor : IDomainCommandProcessor
     public static partial void LogSendingCommandToActor(ILogger logger, string commandName, string aggregateId, string actorName);
 
     /// <inheritdoc/>
-    public async Task SubmitAsync(object command, Hexalith.Application.MessageMetadatas.Metadata metadata, CancellationToken cancellationToken)
+    public async Task SubmitAsync(object command, Metadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
         ArgumentNullException.ThrowIfNull(metadata);
@@ -74,7 +75,8 @@ public partial class DomainActorCommandProcessor : IDomainCommandProcessor
         {
             LogSendingCommandToActor(_logger, metadata.Message.Name, metadata.Message.Aggregate.Id, actorName);
             IDomainAggregateActor actor = _actorProxy.CreateActorProxy<IDomainAggregateActor>(new ActorId(metadata.Message.Aggregate.Id), actorName);
-            await actor.SubmitCommandAsync(ActorMessageEnvelope.Create(command, metadata, _jsonOptions)).ConfigureAwait(false);
+            ActorMessageEnvelope envelope = ActorMessageEnvelope.Create(command, metadata, _jsonOptions);
+            await actor.SubmitCommandAsync(envelope).ConfigureAwait(false);
         }
         catch (Exception e)
         {

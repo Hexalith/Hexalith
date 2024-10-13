@@ -17,4 +17,6 @@ public class SessionService : ISessionService
 {
     /// <inheritdoc/>
     public Task<string> GetSessionIdAsync(CancellationToken cancellationToken) => Task.FromResult(UniqueIdHelper.GenerateUniqueStringId());
+    /// <inheritdoc/>
+    public Task<string> GetPartitionIdAsync(CancellationToken cancellationToken) => Task.FromResult("PART1");
 }
