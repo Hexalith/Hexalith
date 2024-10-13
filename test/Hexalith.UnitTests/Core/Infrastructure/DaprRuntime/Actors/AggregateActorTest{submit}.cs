@@ -6,10 +6,8 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 01-10-2024
 // ***********************************************************************
-// <copyright file="AggregateActorTest{submit}.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+// <copyright file="AggregateActorTest{submit}.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -32,8 +30,7 @@ using Hexalith.Application.Tasks;
 using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
-using Hexalith.Infrastructure.DaprRuntime.Abstractions;
-using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
+using Hexalith.Infrastructure.DaprRuntime;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Sales.Actors;
 
@@ -49,6 +46,7 @@ public partial class AggregateActorTest
     /// </summary>
     /// <returns>System.Threading.Tasks.Task.</returns>
     [Fact]
+    [Obsolete]
     public async Task SubmitCommandToActorWithCommandShouldStoreCommand()
     {
         DummyAggregateCommand1 command = new() { Id = "123456" };
@@ -156,6 +154,7 @@ public partial class AggregateActorTest
     /// </summary>
     /// <returns>System.Threading.Tasks.Task.</returns>
     [Fact]
+    [Obsolete]
     public async Task SubmitCommandToActorWithIdMismatchShouldThrowException()
     {
         DummyAggregateCommand1 command = new() { Id = "123456" };
@@ -194,6 +193,7 @@ public partial class AggregateActorTest
     /// </summary>
     /// <returns>System.Threading.Tasks.Task.</returns>
     [Fact]
+    [Obsolete]
     public async Task SubmitCommandToActorWithNameMismatchShouldThrowException()
     {
         DummyAggregateCommand1 command = new() { Id = "123456" };
@@ -235,6 +235,7 @@ public partial class AggregateActorTest
     /// </summary>
     /// <returns>System.Threading.Tasks.Task.</returns>
     [Fact]
+    [Obsolete]
     public async Task SubmitCommandToNewActorShouldStoreCommand()
     {
         DummyAggregateCommand1 command = new() { Id = "123456" };
@@ -322,6 +323,7 @@ public partial class AggregateActorTest
     /// </summary>
     /// <param name="command">The command.</param>
     /// <returns>Hexalith.Infrastructure.DaprRuntime.Handlers.ActorCommandEnvelope.</returns>
+    [Obsolete]
     private static ActorCommandEnvelope CreateEnvelope(DummyAggregateCommand1 command)
                 => new([command], [CreateMetadata(command)]);
 
