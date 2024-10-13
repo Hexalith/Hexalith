@@ -56,8 +56,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.Azu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.TestMocks", "src\Core\Common\Hexalith.TestMocks\Hexalith.TestMocks.csproj", "{BE07B798-CBB1-4DA7-B80D-7628F1E67894}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{CC7DC9FC-8CA1-4145-909F-6702A1D2FB08}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{FC1CDC0D-CB64-4639-AE5B-3944F558AB4E}"
 	ProjectSection(SolutionItems) = preProject
 		src\Hexalith.Build\Dependencies.props = src\Hexalith.Build\Dependencies.props
@@ -67,8 +65,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{FC1CDC0D
 		.github\workflows\semgrep.yml = .github\workflows\semgrep.yml
 		.github\workflows\sonarqube.yml = .github\workflows\sonarqube.yml
 	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Docs", "docs\Hexalith.Docs.csproj", "{2F42F417-7296-4791-8582-E824732A803F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Application", "src\Core\Application\Hexalith.Application\Hexalith.Application.csproj", "{735CE2B7-2572-4E3F-8B57-C55F9A69448E}"
 EndProject
@@ -206,10 +202,6 @@ Global
 		{BE07B798-CBB1-4DA7-B80D-7628F1E67894}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE07B798-CBB1-4DA7-B80D-7628F1E67894}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE07B798-CBB1-4DA7-B80D-7628F1E67894}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2F42F417-7296-4791-8582-E824732A803F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2F42F417-7296-4791-8582-E824732A803F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2F42F417-7296-4791-8582-E824732A803F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2F42F417-7296-4791-8582-E824732A803F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{735CE2B7-2572-4E3F-8B57-C55F9A69448E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{735CE2B7-2572-4E3F-8B57-C55F9A69448E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{735CE2B7-2572-4E3F-8B57-C55F9A69448E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -383,7 +375,6 @@ Global
 		{1959557F-5EAF-4B1E-BF3F-313AC68EFA49} = {4BF53A8A-B344-4C1A-AE24-1FC41E2188E9}
 		{E6204AB7-62EC-41C2-9DEC-7727D3B87B08} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{BE07B798-CBB1-4DA7-B80D-7628F1E67894} = {4BF53A8A-B344-4C1A-AE24-1FC41E2188E9}
-		{2F42F417-7296-4791-8582-E824732A803F} = {CC7DC9FC-8CA1-4145-909F-6702A1D2FB08}
 		{735CE2B7-2572-4E3F-8B57-C55F9A69448E} = {AA983AFF-9CBC-4F2A-98E3-3CACA5039C61}
 		{155E85F0-978B-4916-AB3C-741266DE7BE3} = {AA983AFF-9CBC-4F2A-98E3-3CACA5039C61}
 		{8CE66AE1-932A-4E2C-B8E5-4FA627ACA2D7} = {5A9735A3-CEE9-4E50-B2FD-54F0BF402002}
