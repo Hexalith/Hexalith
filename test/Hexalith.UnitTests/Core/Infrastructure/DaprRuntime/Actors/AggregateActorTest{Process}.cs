@@ -32,7 +32,7 @@ using Hexalith.Application.Tasks;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Errors;
-using Hexalith.Infrastructure.DaprRuntime.Abstractions;
+using Hexalith.Infrastructure.DaprRuntime;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Sales.Actors;
 
