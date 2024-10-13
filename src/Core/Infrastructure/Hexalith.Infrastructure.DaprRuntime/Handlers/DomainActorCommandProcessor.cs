@@ -1,16 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Infrastructure.DaprRuntime
-// Author           : Jérôme Piquot
-// Created          : 01-14-2024
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 01-14-2024
-// ***********************************************************************
-// <copyright file="DomainActorCommandProcessor.cs" company="PlaceholderCompany">
+﻿// <copyright file="DomainActorCommandProcessor.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Infrastructure.DaprRuntime.Handlers;
 

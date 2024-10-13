@@ -1,7 +1,5 @@
-﻿// <copyright file="HexalithDistributedApplicationHelper.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="HexalithDistributedApplicationHelper.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace Hexalith.Infrastructure.AspireService.Hosting.Helpers;
@@ -150,7 +148,6 @@ public static class HexalithDistributedApplicationHelper
     /// <summary>
     /// Adds environment settings to the project resource.
     /// </summary>
-    /// <typeparam name="TType">The type of the project resource.</typeparam>
     /// <param name="project">The project resource builder.</param>
     /// <param name="name">The name of the environment setting.</param>
     /// <param name="required">Indicates whether the setting is required.</param>
@@ -167,6 +164,27 @@ public static class HexalithDistributedApplicationHelper
         return string.IsNullOrWhiteSpace(value)
             ? required ? throw new InvalidOperationException($"The setting {settingName} is required.") : project
             : project.WithEnvironment(name, value);
+    }
+
+    /// <summary>
+    /// Adds environment settings to the project resource.
+    /// </summary>
+    /// <param name="project">The project resource builder.</param>
+    /// <param name="name">The name of the environment setting.</param>
+    /// <param name="required">Indicates whether the setting is required.</param>
+    /// <returns>The project resource builder reference.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when the project is null.</exception>
+    /// <exception cref="ArgumentException">Thrown when the name is null or whitespace.</exception>
+    /// <exception cref="InvalidOperationException">Thrown when the setting is required but not found.</exception>
+    public static IResourceBuilder<ProjectResource> WithSecretFromConfiguration(this IResourceBuilder<ProjectResource> project, string name, bool required = true)
+    {
+        ArgumentNullException.ThrowIfNull(project);
+        ArgumentException.ThrowIfNullOrWhiteSpace(name);
+        string settingName = (project.ApplicationBuilder.GetEnvironmentName() + "__" + name).Replace("__", ":", StringComparison.OrdinalIgnoreCase);
+        string? value = project.ApplicationBuilder.Configuration[settingName];
+        return string.IsNullOrWhiteSpace(value)
+            ? required ? throw new InvalidOperationException($"The setting {settingName} is required.") : project
+            : project.WithEnvironment("SEC_" + name, value);
     }
 
     /// <summary>

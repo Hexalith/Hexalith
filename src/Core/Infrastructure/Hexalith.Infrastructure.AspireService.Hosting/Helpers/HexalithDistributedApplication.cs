@@ -1,7 +1,5 @@
-﻿// <copyright file="HexalithDistributedApplication.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="HexalithDistributedApplication.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace Hexalith.Infrastructure.AspireService.Hosting.Helpers;
@@ -64,10 +62,13 @@ public class HexalithDistributedApplication(string[] args)
             .WithEnvironment("ASPNETCORE_ENVIRONMENT", environmentName)
             .WithEnvironment("ASPNETCORE_DETAILEDERRORS", environmentName == "Production" ? "false" : "true")
             .WithEnvironment("ASPNETCORE_SHUTDOWNTIMEOUTSECONDS", "60")
-            .WithEnvironment("Statestore__Name", name + "statestore");
-        _ = project
+            .WithEnvironment("Statestore__Name", name + "statestore")
             .WithEnvironmentFromConfiguration("Cosmos__ConnectionString")
-            .WithEnvironmentFromConfiguration("Cosmos__DatabaseName");
+            .WithEnvironmentFromConfiguration("Cosmos__DatabaseName")
+            .WithSecretFromConfiguration("CommandBus__Password", false)
+            .WithSecretFromConfiguration("RequestBus__Password", false)
+            .WithSecretFromConfiguration("NotificationBus__Password", false)
+            .WithSecretFromConfiguration("EventBus__Password", false);
         return project;
     }
 }
