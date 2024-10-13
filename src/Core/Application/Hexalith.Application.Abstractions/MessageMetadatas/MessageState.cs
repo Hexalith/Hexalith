@@ -11,13 +11,12 @@ using Hexalith.Extensions.Common;
 using Hexalith.PolymorphicSerialization;
 
 /// <summary>
-/// Represents the state of a message.
+/// Represents the state of a message, including its content and metadata.
 /// </summary>
-/// <param name="RecordObject">The record object.</param>
-/// <param name="ClassObject">The class object.</param>
-/// <param name="Metadata">The metadata.</param>
+/// <param name="RecordObject">The record object representing the message content.</param>
+/// <param name="ClassObject">The class object representing the message content.</param>
+/// <param name="Metadata">The metadata associated with the message.</param>
 [DataContract]
-[method: JsonConstructor]
 public record MessageState(
     [property:JsonPropertyOrder(1)]
     [property: DataMember(Order = 1)]
@@ -29,25 +28,29 @@ public record MessageState(
     [property: JsonPropertyOrder(3)]
     Metadata Metadata) : IIdempotent
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="MessageState"/> class.
-    /// </summary>
-    /// <param name="data">The data.</param>
-    /// <param name="metadata">The metadata.</param>
-    public MessageState(object data, Metadata metadata)
-        : this(data as PolymorphicRecordBase, data as PolymorphicClassBase, metadata)
-    {
-    }
-
     /// <inheritdoc/>
     [JsonIgnore]
     [IgnoreDataMember]
     public string IdempotencyId => Metadata.Message.Id;
 
     /// <summary>
-    /// Gets the message.
+    /// Gets the message content.
     /// </summary>
+    /// <remarks>
+    /// This property returns the RecordObject if it's not null, otherwise it returns the ClassObject.
+    /// If both are null, it throws an InvalidOperationException.
+    /// </remarks>
+    /// <exception cref="InvalidOperationException">Thrown when both RecordObject and ClassObject are null.</exception>
     [JsonIgnore]
     [IgnoreDataMember]
     public object Message => (object?)RecordObject ?? ClassObject ?? throw new InvalidOperationException("The polymorphic class and record objects are null.");
+
+    /// <summary>
+    /// Creates a new instance of the MessageState class.
+    /// </summary>
+    /// <param name="data">The message data, which can be either a PolymorphicRecordBase or a PolymorphicClassBase.</param>
+    /// <param name="metadata">The metadata associated with the message.</param>
+    /// <returns>A new MessageState instance.</returns>
+    public static MessageState Create(object data, Metadata metadata)
+        => new(data as PolymorphicRecordBase, data as PolymorphicClassBase, metadata);
 }

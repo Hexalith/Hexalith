@@ -135,11 +135,9 @@ public partial class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageB
         ArgumentNullException.ThrowIfNull(envelope);
         ArgumentNullException.ThrowIfNull(envelope.Message);
         ArgumentNullException.ThrowIfNull(envelope.Metadata);
-#pragma warning disable CA1308 // Normalize strings to uppercase
         string topicName = !string.IsNullOrEmpty(envelope.Message.AggregateName)
             ? envelope.Message.AggregateName.ToLowerInvariant() + _topicSuffix
             : throw new InvalidOperationException("Event aggregate name is not defined.");
-#pragma warning restore CA1308 // Normalize strings to uppercase
         Dictionary<string, string> m = new(StringComparer.Ordinal)
                     {
                         { "ContentType", "application/json" },
@@ -194,11 +192,9 @@ public partial class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageB
     {
         ArgumentNullException.ThrowIfNull(message);
         ArgumentNullException.ThrowIfNull(metadata);
-#pragma warning disable CA1308 // Normalize strings to uppercase
         string topicName = !string.IsNullOrEmpty(metadata.Message.Aggregate.Name)
             ? metadata.Message.Aggregate.Name.ToLowerInvariant() + _topicSuffix
             : throw new InvalidOperationException("Event aggregate name is not defined.");
-#pragma warning restore CA1308 // Normalize strings to uppercase
         Dictionary<string, string> m = new(StringComparer.Ordinal)
                     {
                         { "ContentType", "application/json" },
@@ -209,7 +205,7 @@ public partial class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageB
                         { "SessionId", metadata.Context.SessionId ?? metadata.Message.Aggregate.Name },
                         { "PartitionKey", metadata.Message.Aggregate.Id },
                     };
-        Application.MessageMetadatas.MessageState state = new(message, metadata);
+        Application.MessageMetadatas.MessageState state = Application.MessageMetadatas.MessageState.Create(message, metadata);
         try
         {
             await _daprClient.PublishEventAsync(

@@ -5,7 +5,6 @@
 namespace Hexalith.Infrastructure.DaprRuntime.Actors;
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Text.Json;
 using System.Threading;
@@ -379,7 +378,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             throw new InvalidOperationException($"Submitted command to {Host.ActorTypeInfo.ActorTypeName}/{Id} has an invalid aggregate id : {metadata.Message.Aggregate.Id}.");
         }
 
-        List<MessageState> commandStates = [new(command, metadata)];
+        List<MessageState> commandStates = [MessageState.Create(command, metadata)];
         LogAcceptedCommandInformation(
             Logger,
             metadata.Message.Name,
@@ -495,7 +494,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
 
         AggregateSnapshotEvent e = new(aggregate);
         Application.MessageMetadatas.MessageMetadata messageMetadata = new(e, _dateTimeService.GetUtcNow());
-        return new MessageState(
+        return MessageState.Create(
             e,
             new Application.MessageMetadatas.Metadata(
                 messageMetadata,
@@ -646,7 +645,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
 
             // Get aggregate events to persist in the event sourcing store
             MessageState[] aggregateEventStates = commandResult.SourceEvents
-                .Select(p => new MessageState(p, Metadata.CreateNew(p, metadata, _dateTimeService.GetUtcNow())))
+                .Select(p => MessageState.Create(p, Metadata.CreateNew(p, metadata, _dateTimeService.GetUtcNow())))
                 .ToArray();
 
             // Persist events and messages
@@ -693,7 +692,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             // Get integration messages to persist in the message store
             MessageState[] messagesToSend = commandResult.SourceEvents
                 .Union(commandResult.IntegrationEvents)
-                .Select(p => new MessageState(p, Metadata.CreateNew(p, metadata, _dateTimeService.GetUtcNow())))
+                .Select(p => MessageState.Create(p, Metadata.CreateNew(p, metadata, _dateTimeService.GetUtcNow())))
                 .ToArray();
 
             if (messagesToSend.Length > 0)
@@ -705,10 +704,6 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         }
     }
 
-    [SuppressMessage(
-        "Design",
-        "CA1031:Do not catch general exception types",
-        Justification = "All errors must be caught to avoid actor transaction rollback. The message will be republished later.")]
     private async Task PublishNextEmittedMessageAsync(MessageState messageState, long sequence, CancellationToken cancellationToken)
     {
         AggregateActorState state = await GetAggregateStateAsync(cancellationToken).ConfigureAwait(false);

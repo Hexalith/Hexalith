@@ -6,18 +6,19 @@ namespace Hexalith.Infrastructure.ClientAppOnServer.Helpers;
 
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Text.Json;
 
 using Dapr.Actors.Runtime;
 
 using FluentValidation;
 
+using Hexalith.Application;
 using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Modules.Applications;
 using Hexalith.Application.Modules.Modules;
 using Hexalith.Application.Projections;
 using Hexalith.Application.Tasks;
-using Hexalith.Domain.Messages;
 using Hexalith.Infrastructure.ClientApp.Helpers;
 using Hexalith.Infrastructure.ClientApp.Services;
 using Hexalith.Infrastructure.ClientAppOnServer.Services;
@@ -34,7 +35,7 @@ using Microsoft.Extensions.Hosting;
 using Serilog;
 
 /// <summary>
-/// Class HexalithWebApi.
+/// Server-side client application helper.
 /// </summary>
 public static class ServerSideClientAppHelper
 {
@@ -55,6 +56,40 @@ public static class ServerSideClientAppHelper
     }
 
     /// <summary>
+    /// Sets the default JSON options.
+    /// </summary>
+    /// <param name="options">The json options to default.</param>
+    /// <returns>The defaulted JSON options.</returns>
+    public static JsonSerializerOptions SetDefault(this JsonSerializerOptions options)
+    {
+        options.AllowTrailingCommas = ApplicationConstants.DefaultJsonSerializerOptions.AllowTrailingCommas;
+        foreach (System.Text.Json.Serialization.JsonConverter converter in ApplicationConstants.DefaultJsonSerializerOptions.Converters)
+        {
+            options.Converters.Add(converter);
+        }
+
+        options.DefaultBufferSize = ApplicationConstants.DefaultJsonSerializerOptions.DefaultBufferSize;
+        options.DefaultIgnoreCondition = ApplicationConstants.DefaultJsonSerializerOptions.DefaultIgnoreCondition;
+        options.DictionaryKeyPolicy = ApplicationConstants.DefaultJsonSerializerOptions.DictionaryKeyPolicy;
+        options.Encoder = ApplicationConstants.DefaultJsonSerializerOptions.Encoder;
+        options.IgnoreReadOnlyFields = ApplicationConstants.DefaultJsonSerializerOptions.IgnoreReadOnlyFields;
+        options.IgnoreReadOnlyProperties = ApplicationConstants.DefaultJsonSerializerOptions.IgnoreReadOnlyProperties;
+        options.IncludeFields = ApplicationConstants.DefaultJsonSerializerOptions.IncludeFields;
+        options.MaxDepth = ApplicationConstants.DefaultJsonSerializerOptions.MaxDepth;
+        options.NumberHandling = ApplicationConstants.DefaultJsonSerializerOptions.NumberHandling;
+        options.PreferredObjectCreationHandling = ApplicationConstants.DefaultJsonSerializerOptions.PreferredObjectCreationHandling;
+        options.PropertyNameCaseInsensitive = ApplicationConstants.DefaultJsonSerializerOptions.PropertyNameCaseInsensitive;
+        options.PropertyNamingPolicy = ApplicationConstants.DefaultJsonSerializerOptions.PropertyNamingPolicy;
+        options.ReadCommentHandling = ApplicationConstants.DefaultJsonSerializerOptions.ReadCommentHandling;
+        options.ReferenceHandler = ApplicationConstants.DefaultJsonSerializerOptions.ReferenceHandler;
+        options.TypeInfoResolver = ApplicationConstants.DefaultJsonSerializerOptions.TypeInfoResolver;
+        options.UnknownTypeHandling = ApplicationConstants.DefaultJsonSerializerOptions.UnknownTypeHandling;
+        options.UnmappedMemberHandling = ApplicationConstants.DefaultJsonSerializerOptions.UnmappedMemberHandling;
+        options.WriteIndented = ApplicationConstants.DefaultJsonSerializerOptions.WriteIndented;
+        return options;
+    }
+
+    /// <summary>
     /// Creates the server-side client application.
     /// </summary>
     /// <param name="applicationName">The name of the application.</param>
@@ -64,6 +99,7 @@ public static class ServerSideClientAppHelper
     /// <param name="args">The command-line arguments.</param>
     /// <returns>The web application builder.</returns>
     /// <exception cref="InvalidOperationException">Thrown when the connection string 'DefaultConnection' is not found.</exception>
+    [Obsolete]
     public static WebApplicationBuilder CreateServerSideClientApplication(
         string applicationName,
         string sessionCookieName,
@@ -83,15 +119,27 @@ public static class ServerSideClientAppHelper
             .AddSwaggerGen(c => c.SwaggerDoc("v1", new() { Title = applicationName, Version = version, }))
             .AddDaprBuses(builder.Configuration)
             .AddDaprStateStore(builder.Configuration)
-            .AddActors(options => registerActors(options.Actors));
+            .AddActors(options =>
+            {
+                registerActors(options.Actors);
+                options.UseJsonSerialization = true;
+                options.JsonSerializerOptions = ApplicationConstants.DefaultJsonSerializerOptions;
+            });
 
         _ = builder
             .Services
+            .ConfigureHttpJsonOptions(options => options.SerializerOptions.SetDefault())
             .AddHttpContextAccessor()
             .AddControllers()
-            .AddApplicationPart(typeof(BaseCommand).Assembly)
-            .AddApplicationPart(typeof(BaseMessage).Assembly)
-            .AddDapr();
+            .AddJsonOptions(options => options.JsonSerializerOptions.SetDefault())
+            .AddDapr(dapr =>
+            {
+                dapr.UseJsonSerializationOptions(ApplicationConstants.DefaultJsonSerializerOptions);
+                if (builder.Environment.IsDevelopment())
+                {
+                    dapr.UseTimeout(TimeSpan.FromMinutes(3));
+                }
+            });
 
         _ = builder.Services
             .AddRazorComponents()

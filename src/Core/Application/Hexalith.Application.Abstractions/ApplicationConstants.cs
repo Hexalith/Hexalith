@@ -1,16 +1,31 @@
-﻿// <copyright file="ApplicationConstants.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="ApplicationConstants.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace Hexalith.Application;
+
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
+using Hexalith.PolymorphicSerialization;
 
 /// <summary>
 /// Application constants.
 /// </summary>
 public static class ApplicationConstants
 {
+    /// <summary>
+    /// Gets the default JSON serializer options.
+    /// </summary>
+    public static JsonSerializerOptions DefaultJsonSerializerOptions
+        => new()
+        {
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,
+            TypeInfoResolver = new PolymorphicSerializationResolver(),
+            NumberHandling = JsonNumberHandling.AllowReadingFromString,
+        };
+
     /// <summary>
     /// Gets the command bus name.
     /// </summary>

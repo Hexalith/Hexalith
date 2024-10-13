@@ -40,12 +40,13 @@ public static class CommonServicesHelper
             .AddSingleton(TimeProvider.System)
             .AddSingleton<IDateTimeService, DateTimeService>()
             .AddSingleton<IRouteManager, RouteManager>()
-            .AddSingleton(services =>
-                new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true,
-                    TypeInfoResolver = new PolymorphicSerializationResolver(services.GetServices<IPolymorphicSerializationMapper>()),
-                })
+            .AddSingleton(services => new JsonSerializerOptions
+            {
+                WriteIndented = true,
+                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault,
+                PropertyNameCaseInsensitive = true,
+                TypeInfoResolver = new PolymorphicSerializationResolver(services.GetServices<IPolymorphicSerializationMapper>()),
+            })
             .AddBlazoredSessionStorage()
             .AddFluentUIComponents();
     }
