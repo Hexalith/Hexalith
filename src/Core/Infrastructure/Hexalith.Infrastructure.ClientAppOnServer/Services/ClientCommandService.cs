@@ -63,14 +63,14 @@ public class ClientCommandService : IClientCommandService
 
         string messageId = UniqueIdHelper.GenerateUniqueStringId();
         string userId = await _userService.GetUserIdAsync(cancellationToken).ConfigureAwait(false);
+        if (string.IsNullOrWhiteSpace(userId))
+        {
+            throw new InvalidOperationException("User not authenticated. User ID is empty.");
+        }
+
         string sessionId = await _sessionService.GetSessionIdAsync(cancellationToken).ConfigureAwait(false);
         Metadata metadata = new(
-            new MessageMetadata(
-            messageId,
-            string.Empty,
-            1,
-            new AggregateMetadata(command),
-            _timeProvider.GetLocalNow()),
+            new MessageMetadata(command, _timeProvider.GetLocalNow()),
             new ContextMetadata(messageId, userId, null, null, sessionId, []));
 
         await SendCommandAsync(command, metadata, cancellationToken).ConfigureAwait(false);
