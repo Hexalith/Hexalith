@@ -1,7 +1,5 @@
-﻿// <copyright file="MetadataTest.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="MetadataTest.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace Hexalith.UnitTests.Core.Application.Metadatas;
@@ -10,7 +8,7 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Application.MessageMetadatas;
 
 public class MetadataTest
 {
@@ -27,7 +25,7 @@ public class MetadataTest
     }
 
     [Fact]
-    public void MetadataShouldSerializeSuccessfuly()
+    public void MetadataShouldSerializeSuccessfully()
     {
         Metadata meta = GetMetadata();
         string json = JsonSerializer.Serialize(meta);
@@ -41,10 +39,15 @@ public class MetadataTest
             new MessageMetadata(
                 "123-456-789",
                 "TestMessage",
-                DateTimeOffset.UtcNow.AddSeconds(-1),
-                new MessageVersion(4, 6),
-                new AggregateMetadata("123-AG", "TestAggregate")),
-            new ContextMetadata("COR-6589", "TestUser", DateTimeOffset.UtcNow, 101, "session-6987"),
-            _scopes);
+                10,
+                new AggregateMetadata("123356", "TestAggregate"),
+                DateTimeOffset.UtcNow.AddSeconds(-1)),
+            new ContextMetadata(
+                "COR-123-456-789",
+                "USER123",
+                DateTimeOffset.UtcNow,
+                25686L,
+                "SESS-4566",
+                _scopes));
     }
 }

@@ -54,7 +54,7 @@ public record MessageMetadata(
     public MessageMetadata(object message, DateTimeOffset dateTimeOffset)
         : this(UniqueIdHelper.GenerateUniqueStringId(), string.Empty, 1, new AggregateMetadata(message), dateTimeOffset)
     {
-        (string name, string _, int version) = this.GetPolymorphicTypeDiscriminator();
+        (string name, string _, int version) = message.GetPolymorphicTypeDiscriminator();
         Name = name;
         Version = version;
     }

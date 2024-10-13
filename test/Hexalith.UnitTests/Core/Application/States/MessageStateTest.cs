@@ -1,7 +1,5 @@
-﻿// <copyright file="MessageStateTest.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="MessageStateTest.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace Hexalith.UnitTests.Core.Application.States;
@@ -11,11 +9,12 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Application.Metadatas;
-using Hexalith.Application.States;
+using Hexalith.Application;
+using Hexalith.Application.MessageMetadatas;
 using Hexalith.Extensions.Helpers;
-using Hexalith.Extensions.Serialization;
+using Hexalith.PolymorphicSerialization;
 using Hexalith.UnitTests.Core.Domain.Messages;
+using Hexalith.UnitTests.Extensions;
 
 using Xunit;
 
@@ -24,28 +23,132 @@ public class MessageStateTest
     [Fact]
     public void StateSerializationAndDeserializationShouldReturnSameObject()
     {
-        DummyMessage1 message = new();
-        Hexalith.Application.Metadatas.Metadata meta = message.CreateMetadata();
-        MessageState state = new(DateTimeOffset.UtcNow, message, meta);
-        string json = JsonSerializer.Serialize(state);
+        if (!PolymorphicSerializationResolver.DefaultMappers.Any(p => p.JsonDerivedType.DerivedType == typeof(MyDummyMessage)))
+        {
+            PolymorphicSerializationResolver.DefaultMappers = PolymorphicSerializationResolver.DefaultMappers.AddHexalithUnitTestsMappers();
+        }
+
+        MyDummyMessage message = new("ID21", "My 21 dummies", 21);
+        Metadata meta = new(
+            new MessageMetadata(message, DateTimeOffset.UtcNow),
+            new ContextMetadata(
+                "COR-144662",
+                "USER123",
+                DateTimeOffset.UtcNow,
+                25686L,
+                "SESS-4566",
+                ["scope1", "scope9"]));
+        MessageState state = MessageState.Create(message, meta);
+        string json = JsonSerializer.Serialize(state, ApplicationConstants.DefaultJsonSerializerOptions);
         _ = json.Should().NotBeNullOrEmpty();
-        MessageState result = JsonSerializer.Deserialize<MessageState>(json);
+        MessageState result = JsonSerializer.Deserialize<MessageState>(json, ApplicationConstants.DefaultJsonSerializerOptions);
         _ = result.Should().NotBeNull();
         _ = result.Should().BeEquivalentTo(state);
     }
 
     [Fact]
-    public void StateSerializationShouldSucceed()
+    public void StateWithVersionSerializationAndDeserializationShouldReturnSameObject()
     {
-        DummyMessage1 message = new();
-        Hexalith.Application.Metadatas.Metadata meta = message.CreateMetadata();
-        MessageState state = new(DateTimeOffset.UtcNow, message, meta);
-        string json = JsonSerializer.Serialize(state);
+        if (!PolymorphicSerializationResolver.DefaultMappers.Any(p => p.JsonDerivedType.DerivedType == typeof(MyDummyMessage2)))
+        {
+            PolymorphicSerializationResolver.DefaultMappers = PolymorphicSerializationResolver.DefaultMappers.AddHexalithUnitTestsMappers();
+        }
+
+        MyDummyMessage2 message = new("ID21", "My 21 dummies", 21);
+        Metadata meta = new(
+            new MessageMetadata(message, DateTimeOffset.UtcNow),
+            new ContextMetadata(
+                "COR-144662",
+                "USER123",
+                DateTimeOffset.UtcNow,
+                25686L,
+                "SESS-4566",
+                ["scope1", "scope9"]));
+        MessageState state = MessageState.Create(message, meta);
+        string json = JsonSerializer.Serialize(state, ApplicationConstants.DefaultJsonSerializerOptions);
         _ = json.Should().NotBeNullOrEmpty();
-        _ = json.Should().Contain($"\"{IPolymorphicSerializable.TypeNamePropertyName}\":\"{nameof(DummyMessage1)}\"");
-        _ = json.Should().Contain($"\"{IPolymorphicSerializable.TypeNamePropertyName}\":\"{nameof(Metadata)}\"");
-        _ = json.Should().Contain($"\"{nameof(meta.Message.Id)}\":\"{meta.Message.Id}\"");
-        _ = json.Should().Contain($"\"{nameof(message.Value1)}\":{message.Value1.ToInvariantString()}");
-        _ = json.Should().Contain($"\"{nameof(message.BaseValue)}\":\"{message.BaseValue}\"");
+        MessageState result = JsonSerializer.Deserialize<MessageState>(json, ApplicationConstants.DefaultJsonSerializerOptions);
+        _ = result.Should().NotBeNull();
+        _ = result.Should().BeEquivalentTo(state);
+    }
+
+    [Fact]
+    public void StateWithVersionAndNameSerializationAndDeserializationShouldReturnSameObject()
+    {
+        if (!PolymorphicSerializationResolver.DefaultMappers.Any(p => p.JsonDerivedType.DerivedType == typeof(MyDummyMessage3)))
+        {
+            PolymorphicSerializationResolver.DefaultMappers = PolymorphicSerializationResolver.DefaultMappers.AddHexalithUnitTestsMappers();
+        }
+
+        MyDummyMessage3 message = new("ID21", "My 21 dummies", 21);
+        Metadata meta = new(
+            new MessageMetadata(message, DateTimeOffset.UtcNow),
+            new ContextMetadata(
+                "COR-144662",
+                "USER123",
+                DateTimeOffset.UtcNow,
+                25686L,
+                "SESS-4566",
+                ["scope1", "scope9"]));
+        MessageState state = MessageState.Create(message, meta);
+        string json = JsonSerializer.Serialize(state, ApplicationConstants.DefaultJsonSerializerOptions);
+        _ = json.Should().NotBeNullOrEmpty();
+        MessageState result = JsonSerializer.Deserialize<MessageState>(json, ApplicationConstants.DefaultJsonSerializerOptions);
+        _ = result.Should().NotBeNull();
+        _ = result.Should().BeEquivalentTo(state);
+    }
+
+    [Fact]
+    public void StateSerializationWithVersionAttributeShouldSucceed()
+    {
+        if (!PolymorphicSerializationResolver.DefaultMappers.Any(p => p.JsonDerivedType.DerivedType == typeof(MyDummyMessage2)))
+        {
+            PolymorphicSerializationResolver.DefaultMappers = PolymorphicSerializationResolver.DefaultMappers.AddHexalithUnitTestsMappers();
+        }
+
+        MyDummyMessage2 message = new("ID22", "My 22 dummies", 22);
+        Metadata meta = new(
+            new MessageMetadata(message, DateTimeOffset.UtcNow),
+            new ContextMetadata(
+                "COR-144662",
+                "USER123",
+                DateTimeOffset.UtcNow,
+                25686L,
+                "SESS-4566",
+                ["scope1", "scope9"]));
+        MessageState state = MessageState.Create(message, meta);
+        string json = JsonSerializer.Serialize(state, ApplicationConstants.DefaultJsonSerializerOptions);
+        _ = json.Should().NotBeNullOrEmpty();
+        _ = json.Should().Contain($"\"$type\": \"MyDummyMessage2V2\"");
+        _ = json.Should().Contain($"\"{nameof(meta.Message.Id)}\": \"{meta.Message.Id}\"");
+        _ = json.Should().Contain($"\"{nameof(message.Name)}\": \"{message.Name}");
+        _ = json.Should().Contain($"\"{nameof(message.Value)}\": {message.Value.ToInvariantString()}");
+    }
+
+    [Fact]
+    public void StateSerializationWithNameAndVersionAttributeShouldSucceed()
+    {
+        if (!PolymorphicSerializationResolver.DefaultMappers.Any(p => p.JsonDerivedType.DerivedType == typeof(MyDummyMessage3)))
+        {
+            PolymorphicSerializationResolver.DefaultMappers = PolymorphicSerializationResolver.DefaultMappers.AddHexalithUnitTestsMappers();
+        }
+
+        MyDummyMessage3 message = new("ID22", "My 22 dummies", 22);
+        Metadata meta = new(
+            new MessageMetadata(message, DateTimeOffset.UtcNow),
+            new ContextMetadata(
+                "COR-144662",
+                "USER123",
+                DateTimeOffset.UtcNow,
+                25686L,
+                "SESS-4566",
+                ["scope1", "scope9"]));
+        MessageState state = MessageState.Create(message, meta);
+        string json = JsonSerializer.Serialize(state, ApplicationConstants.DefaultJsonSerializerOptions);
+        _ = json.Should().NotBeNullOrEmpty();
+        _ = json.Should().Contain($"\"$type\": \"MyMessageV3\"");
+        _ = json.Should().Contain($"\"{nameof(meta.Message.Id)}\": \"{meta.Message.Id}\"");
+        _ = json.Should().Contain($"\"{nameof(message.Name)}\": \"{message.Name}");
+        _ = json.Should().Contain($"\"{nameof(message.Value)}\": {message.Value.ToInvariantString()}");
     }
 }
