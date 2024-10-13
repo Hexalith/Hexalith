@@ -25,8 +25,7 @@ using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 using Hexalith.Extensions.Errors;
 using Hexalith.Extensions.Helpers;
-using Hexalith.Infrastructure.DaprRuntime.Abstractions;
-using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
+using Hexalith.Infrastructure.DaprRuntime;
 using Hexalith.Infrastructure.DaprRuntime.States;
 
 using Microsoft.Extensions.Logging;

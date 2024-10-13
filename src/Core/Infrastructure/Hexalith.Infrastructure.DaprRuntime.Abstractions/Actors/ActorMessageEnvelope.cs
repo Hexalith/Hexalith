@@ -2,7 +2,7 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-namespace Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
+namespace Hexalith.Infrastructure.DaprRuntime.Actors;
 
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;

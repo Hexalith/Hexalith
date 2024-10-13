@@ -13,7 +13,7 @@ using Dapr.Actors.Client;
 
 using Hexalith.Application.Commands;
 using Hexalith.Application.MessageMetadatas;
-using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
+using Hexalith.Infrastructure.DaprRuntime.Actors;
 
 using Microsoft.Extensions.Logging;
 

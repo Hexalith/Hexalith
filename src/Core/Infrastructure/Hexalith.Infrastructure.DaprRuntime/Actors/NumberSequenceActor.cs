@@ -21,7 +21,6 @@ using System;
 using Dapr.Actors.Runtime;
 
 using Hexalith.Application;
-using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 
 /// <summary>
 /// Number sequence actor class.

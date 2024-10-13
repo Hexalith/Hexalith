@@ -21,15 +21,14 @@ using System;
 using Dapr.Actors.Runtime;
 
 using Hexalith.Application;
-using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 
 /// <summary>
 /// Key value actor class.
 /// Implements the <see cref="Actor" />
-/// Implements the <see cref="Abstractions.Actors.IKeyValueActor" />.
+/// Implements the <see cref="Actors.IKeyValueActor" />.
 /// </summary>
 /// <seealso cref="Actor" />
-/// <seealso cref="Abstractions.Actors.IKeyValueActor" />
+/// <seealso cref="Actors.IKeyValueActor" />
 public class KeyValueActor : Actor, IKeyValueActor
 {
     /// <summary>

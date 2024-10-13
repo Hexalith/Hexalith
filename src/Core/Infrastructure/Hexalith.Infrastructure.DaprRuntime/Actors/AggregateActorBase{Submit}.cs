@@ -22,7 +22,6 @@ using System.Threading.Tasks;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.States;
-using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 
 /// <summary>
