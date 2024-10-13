@@ -34,6 +34,7 @@ public class MessageStateTest
             new ContextMetadata(
                 "COR-144662",
                 "USER123",
+                "PART1",
                 DateTimeOffset.UtcNow,
                 25686L,
                 "SESS-4566",
@@ -60,6 +61,7 @@ public class MessageStateTest
             new ContextMetadata(
                 "COR-144662",
                 "USER123",
+                "PART1",
                 DateTimeOffset.UtcNow,
                 25686L,
                 "SESS-4566",
@@ -86,6 +88,7 @@ public class MessageStateTest
             new ContextMetadata(
                 "COR-144662",
                 "USER123",
+                "PART1",
                 DateTimeOffset.UtcNow,
                 25686L,
                 "SESS-4566",
@@ -112,6 +115,7 @@ public class MessageStateTest
             new ContextMetadata(
                 "COR-144662",
                 "USER123",
+                "PART1",
                 DateTimeOffset.UtcNow,
                 25686L,
                 "SESS-4566",
@@ -139,6 +143,7 @@ public class MessageStateTest
             new ContextMetadata(
                 "COR-144662",
                 "USER123",
+                "PART1",
                 DateTimeOffset.UtcNow,
                 25686L,
                 "SESS-4566",

@@ -45,6 +45,7 @@ public class MetadataTest
             new ContextMetadata(
                 "COR-123-456-789",
                 "USER123",
+                "PART1",
                 DateTimeOffset.UtcNow,
                 25686L,
                 "SESS-4566",

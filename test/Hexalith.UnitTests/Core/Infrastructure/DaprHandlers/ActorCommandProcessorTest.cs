@@ -66,6 +66,7 @@ public class ActorCommandProcessorTest
                 new ContextMetadata(
                     "325431",
                     "user123",
+                    "PART1",
                     DateTimeOffset.UtcNow,
                     null,
                     null,
