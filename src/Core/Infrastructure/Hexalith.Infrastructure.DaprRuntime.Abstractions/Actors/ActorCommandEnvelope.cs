@@ -12,7 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
+namespace Hexalith.Infrastructure.DaprRuntime.Actors;
 
 using System.Runtime.Serialization;
 using System.Text.Json;

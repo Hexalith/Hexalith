@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
       <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+      <RootNamespace>Hexalith.Infrastructure.DaprRuntime</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
       <PackageReference Include="Dapr.Actors.AspNetCore" Version="$(DaprVersion)" />

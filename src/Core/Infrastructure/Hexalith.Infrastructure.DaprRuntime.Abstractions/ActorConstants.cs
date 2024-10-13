@@ -14,7 +14,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace Hexalith.Infrastructure.DaprRuntime.Abstractions;
+namespace Hexalith.Infrastructure.DaprRuntime;
 
 /// <summary>
 /// Class ActorConstants.

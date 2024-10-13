@@ -20,7 +20,7 @@ using Hexalith.Domain.Aggregates;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.CosmosDb.Configurations;
 using Hexalith.Infrastructure.CosmosDb.Providers;
-using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
+using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.Infrastructure.DaprRuntime.CosmosDatabases.Models;
 
 using Microsoft.Azure.Cosmos;

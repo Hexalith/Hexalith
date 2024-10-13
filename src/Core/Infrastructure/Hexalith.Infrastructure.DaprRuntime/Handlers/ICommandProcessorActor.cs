@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 
 using Dapr.Actors;
 
-using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
+using Hexalith.Infrastructure.DaprRuntime.Actors;
 
 /// <summary>
 /// Interface ICommandProcessorActor

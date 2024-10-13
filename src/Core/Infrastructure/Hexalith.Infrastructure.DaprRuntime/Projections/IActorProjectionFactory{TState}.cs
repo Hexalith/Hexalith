@@ -16,7 +16,7 @@
 
 namespace Hexalith.Infrastructure.DaprRuntime.Projections;
 
-using Hexalith.Infrastructure.DaprRuntime.Abstractions.Actors;
+using Hexalith.Infrastructure.DaprRuntime.Actors;
 
 /// <summary>
 /// Interface IActorProjectionFactory
