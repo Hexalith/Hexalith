@@ -1,7 +1,5 @@
-﻿// <copyright file="DaprApplicationBusTest.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="DaprApplicationBusTest.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace Hexalith.UnitTests.Core.Infrastructure.DaprBus;
@@ -11,7 +9,6 @@ using Dapr.Client;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.States;
 using Hexalith.Domain.Events;
-using Hexalith.Extensions.Common;
 using Hexalith.Infrastructure.DaprRuntime.Buses;
 using Hexalith.UnitTests.Core.Application.Metadatas;
 using Hexalith.UnitTests.Core.Domain.Events;
@@ -23,6 +20,7 @@ using Moq;
 public class DaprApplicationBusTest
 {
     [Fact]
+    [Obsolete]
     public async Task VerifyPublishCallsDaprPublishWithCompliantValues()
     {
         const string busName = "TestBus";
@@ -32,7 +30,7 @@ public class DaprApplicationBusTest
 
         Mock<DaprClient> client = new();
         Mock<ILogger> logger = new();
-        DaprApplicationBus<BaseEvent, BaseMetadata, EventState> bus = new(client.Object, new DateTimeService(), busName, topicSuffix, logger.Object);
+        DaprApplicationBus<BaseEvent, BaseMetadata, EventState> bus = new(client.Object, TimeProvider.System, busName, topicSuffix, logger.Object);
         await bus.PublishAsync(@event, meta, CancellationToken.None);
         client.Verify(
             p => p.PublishEventAsync(

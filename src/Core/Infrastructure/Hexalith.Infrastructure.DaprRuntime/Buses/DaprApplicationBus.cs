@@ -45,7 +45,6 @@ public partial class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageB
     /// <summary>
     /// The date time service.
     /// </summary>
-    [Obsolete]
     private readonly TimeProvider _dateTimeService;
 
     /// <summary>
@@ -115,7 +114,6 @@ public partial class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageB
     public partial void LogMessageSent(string messageName, string messageId, string correlationId, string topicName, string busName);
 
     /// <inheritdoc/>
-    [Obsolete]
     public async Task PublishAsync(IEnvelope<TMessage, TMetadata> envelope, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(envelope);
@@ -123,7 +121,6 @@ public partial class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageB
     }
 
     /// <inheritdoc/>
-    [Obsolete]
     public async Task PublishAsync(TMessage message, TMetadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(message);

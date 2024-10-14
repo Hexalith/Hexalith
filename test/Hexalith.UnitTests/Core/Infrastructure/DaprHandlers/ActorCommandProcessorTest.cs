@@ -1,16 +1,8 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.UnitTests
-// Author           : Jérôme Piquot
-// Created          : 01-22-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 01-22-2023
-// ***********************************************************************
-// <copyright file="ActorCommandProcessorTest.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="ActorCommandProcessorTest.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
+
 namespace Hexalith.UnitTests.Core.Infrastructure.DaprHandlers;
 
 using System;
@@ -54,7 +46,7 @@ public class ActorCommandProcessorTest
         _ = factory.Setup(x => x.Create(It.IsAny<ActorId>(), It.IsAny<string>(), It.IsAny<ActorProxyOptions>()))
             .Returns(actor.Object);
         JsonSerializerOptions jsonOptions = new() { TypeInfoResolver = new PolymorphicSerializationResolver([new TestCommandMapper()]) };
-        DomainActorCommandProcessor processor = new(factory.Object, jsonOptions, new Mock<ILogger<DomainActorCommandProcessor>>().Object);
+        DomainActorCommandProcessor processor = new(factory.Object, new Mock<ILogger<DomainActorCommandProcessor>>().Object);
         TestCommand command = new("123", "Hello");
 
         Func<Task> submit = async () => await processor.SubmitAsync(
