@@ -22,7 +22,7 @@ using Hexalith.Domain.Aggregates;
 /// <typeparam name="TAggregate">The type of the t aggregate.</typeparam>
 [Obsolete("This interface is not used anymore. Use IDomainAggregateProvider instead.", true)]
 public interface IAggregateProvider<TAggregate> : IAggregateProvider
-    where TAggregate : IAggregate, new()
+    where TAggregate : IDomainAggregate, new()
 {
     /// <summary>
     /// Creates this instance.

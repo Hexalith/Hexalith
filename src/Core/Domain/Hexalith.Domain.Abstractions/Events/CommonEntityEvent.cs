@@ -1,18 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Domain.Organizations
-// Author           : Jérôme Piquot
-// Created          : 11-21-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 11-21-2023
-// ***********************************************************************
-// <copyright file="CommonEntityEvent.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="CommonEntityEvent.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Domain.Events;
 
@@ -29,6 +18,7 @@ using Hexalith.Extensions;
 /// <seealso cref="PartitionedEvent" />
 [DataContract]
 [Serializable]
+[Obsolete]
 public class CommonEntityEvent : BaseEvent
 {
     /// <summary>

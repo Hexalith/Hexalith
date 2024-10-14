@@ -1,25 +1,14 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Infrastructure.DaprRuntime
-// Author           : Jérôme Piquot
-// Created          : 12-19-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 12-19-2023
-// ***********************************************************************
-// <copyright file="AggregateProjectionUpdateEventHandler{TEvent,TState}.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="AggregateProjectionUpdateEventHandler{TEvent,TState}.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Infrastructure.DaprRuntime.Projections;
 
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Application.MessageMetadatas;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 
@@ -37,11 +26,12 @@ using Hexalith.Domain.Events;
 public class AggregateProjectionUpdateEventHandler<TEvent, TState>(
     IActorProjectionFactory<TState> factory) :
     KeyValueActorProjectionUpdateEventHandlerBase<TEvent, TState>(factory)
-    where TEvent : IEvent
-    where TState : class, IAggregate, new()
+    where TEvent : class
+    where TState : class, IDomainAggregate, new()
 {
     /// <inheritdoc/>
-    public override async Task ApplyAsync(TEvent baseEvent, IMetadata metadata, CancellationToken cancellationToken)
+    [Obsolete]
+    public override async Task ApplyAsync(TEvent baseEvent, Metadata metadata, CancellationToken cancellationToken)
     {
         TState? aggregate;
 
@@ -60,11 +50,11 @@ public class AggregateProjectionUpdateEventHandler<TEvent, TState>(
         else
         {
             // If the event is not a snapshot, we load the aggregate from the store
-            aggregate = await GetProjectionAsync(baseEvent.AggregateId, cancellationToken)
+            aggregate = await GetProjectionAsync(metadata.Message.Aggregate.Id, cancellationToken)
                 .ConfigureAwait(false) ?? new TState();
         }
 
-        (IAggregate newAggregate, _) = aggregate.Apply((IEnumerable<BaseEvent>)baseEvent);
-        await SaveProjectionAsync(baseEvent.AggregateId, (TState)newAggregate, cancellationToken).ConfigureAwait(false);
+        ApplyResult result = aggregate.Apply(baseEvent);
+        await SaveProjectionAsync(metadata.Message.Aggregate.Id, (TState)result.Aggregate, cancellationToken).ConfigureAwait(false);
     }
 }

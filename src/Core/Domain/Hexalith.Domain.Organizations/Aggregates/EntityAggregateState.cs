@@ -1,18 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Domain.Organizations
-// Author           : Jérôme Piquot
-// Created          : 01-02-2024
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 01-02-2024
-// ***********************************************************************
-// <copyright file="EntityAggregateState.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="EntityAggregateState.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Domain.Organizations.Aggregates;
 

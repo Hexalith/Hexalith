@@ -1,18 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Domain.Abstractions
-// Author           : Jérôme Piquot
-// Created          : 04-28-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 04-28-2023
-// ***********************************************************************
-// <copyright file="InvalidAggregateEventException.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="InvalidAggregateEventException.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Domain.Exceptions;
 
@@ -53,7 +42,8 @@ public class InvalidAggregateEventException : ApplicationErrorException
     /// <param name="domainEvent">The domain event.</param>
     /// <param name="isInitializerEvent">if set to <c>true</c> [is initializer event].</param>
     /// <param name="message">The message.</param>
-    public InvalidAggregateEventException(IAggregate aggregate, BaseEvent domainEvent, bool isInitializerEvent, string? message)
+    [Obsolete]
+    public InvalidAggregateEventException(IDomainAggregate aggregate, BaseEvent domainEvent, bool isInitializerEvent, string? message)
         : base(GetError(aggregate, domainEvent, isInitializerEvent, message), null)
     {
         Aggregate = aggregate;
@@ -67,7 +57,8 @@ public class InvalidAggregateEventException : ApplicationErrorException
     /// <param name="aggregate">The aggregate.</param>
     /// <param name="domainEvent">The domain event.</param>
     /// <param name="isInitializerEvent">if set to <c>true</c> [is initializer event].</param>
-    public InvalidAggregateEventException(IAggregate aggregate, BaseEvent domainEvent, bool isInitializerEvent)
+    [Obsolete]
+    public InvalidAggregateEventException(IDomainAggregate aggregate, BaseEvent domainEvent, bool isInitializerEvent)
         : base(GetError(aggregate, domainEvent, isInitializerEvent, null), null)
     {
         Aggregate = aggregate;
@@ -93,12 +84,14 @@ public class InvalidAggregateEventException : ApplicationErrorException
     /// Gets the aggregate.
     /// </summary>
     /// <value>The aggregate.</value>
-    public IAggregate? Aggregate { get; }
+    [Obsolete]
+    public IDomainAggregate? Aggregate { get; }
 
     /// <summary>
     /// Gets the domain event.
     /// </summary>
     /// <value>The domain event.</value>
+    [Obsolete]
     public BaseEvent? DomainEvent { get; }
 
     /// <summary>
@@ -107,7 +100,8 @@ public class InvalidAggregateEventException : ApplicationErrorException
     /// <value><c>true</c> if this instance is initializer event; otherwise, <c>false</c>.</value>
     public bool IsInitializerEvent { get; }
 
-    private static ApplicationError GetError(IAggregate? aggregate, BaseEvent domainEvent, bool isInitializerEvent, string? message)
+    [Obsolete]
+    private static ApplicationError GetError(IDomainAggregate? aggregate, BaseEvent domainEvent, bool isInitializerEvent, string? message)
         => isInitializerEvent
             ? new ApplicationError
             {

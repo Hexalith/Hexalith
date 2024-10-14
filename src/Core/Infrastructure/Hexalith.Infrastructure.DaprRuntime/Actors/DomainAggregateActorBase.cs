@@ -671,13 +671,13 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
                     .ConfigureAwait(false);
 
             // Get aggregate events to persist in the event sourcing store
-            MessageState[] aggregateEventStates = commandResult.SourceEvents
+            MessageState[] aggregateMessageStates = commandResult.SourceEvents
                 .Select(p => MessageState.Create(p, Metadata.CreateNew(p, metadata, _dateTimeService.GetUtcNow())))
                 .ToArray();
 
             // Persist events and messages
             state.EventSourceCount = await EventSourceStore
-                .AddAsync(aggregateEventStates, state.EventSourceCount, cancellationToken)
+                .AddAsync(aggregateMessageStates, state.EventSourceCount, cancellationToken)
                 .ConfigureAwait(false);
             taskProcessor = taskProcessor.Complete();
             state.LastCommandProcessed = commandNumber;

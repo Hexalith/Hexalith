@@ -1,80 +1,25 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Domain.Abstractions
-// Author           : Jérôme Piquot
-// Created          : 05-01-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 05-01-2023
-// ***********************************************************************
-// <copyright file="Projection.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="Projection.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Application.Projections;
 
-using System.Runtime.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Metadatas;
-using Hexalith.Application.Notifications;
-using Hexalith.Application.Requests;
-using Hexalith.Domain.Events;
-using Hexalith.Domain.Notifications;
-using Hexalith.Extensions.Helpers;
-
 /// <summary>
-/// Class Projection.
-/// Implements the <see cref="Abstractions.Projections.IProjection" />.
+/// Represents an abstract base class for projections in the application.
 /// </summary>
-/// <seealso cref="Abstractions.Projections.IProjection" />
-[DataContract]
+/// <remarks>
+/// This class implements the <see cref="IProjection"/> interface and provides
+/// abstract methods for executing projections and handling domain events.
+/// </remarks>
 public abstract class Projection : IProjection
 {
-    private readonly TimeProvider _dateTimeService;
-
-    /// <summary>
-    /// The notification bus.
-    /// </summary>
-    private readonly INotificationBus _notificationBus;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Projection"/> class.
-    /// </summary>
-    /// <param name="notificationBus">The notification bus.</param>
-    /// <param name="dateTimeService">The date time service.</param>
-    /// <exception cref="ArgumentNullException">null.</exception>
-    protected Projection(INotificationBus notificationBus, TimeProvider dateTimeService)
-    {
-        ArgumentNullException.ThrowIfNull(notificationBus);
-        ArgumentNullException.ThrowIfNull(dateTimeService);
-        _notificationBus = notificationBus;
-        _dateTimeService = dateTimeService;
-    }
+    /// <inheritdoc/>
+    public abstract Task<object> ExecuteAsync(object request, CancellationToken cancellationToken);
 
     /// <inheritdoc/>
-    public abstract Task<BaseNotification> ExecuteAsync(BaseRequest request, CancellationToken cancellationToken);
-
-    /// <inheritdoc/>
-    public abstract Task HandleAsync(BaseEvent domainEvent, CancellationToken cancellationToken);
-
-    /// <inheritdoc/>
-    public async Task SubmitAsync(BaseRequest request, string correlationId, string userId, string sessionId, CancellationToken cancellationToken)
-    {
-        BaseNotification result = await ExecuteAsync(request, cancellationToken)
-            .ConfigureAwait(false);
-        await _notificationBus
-            .PublishAsync(
-                result,
-                new Metadata(
-                    UniqueIdHelper.GenerateUniqueStringId(),
-                    result,
-                    _dateTimeService.GetLocalNow(),
-                    new ContextMetadata(correlationId, userId, _dateTimeService.GetLocalNow(), null, sessionId),
-                    null),
-                cancellationToken)
-            .ConfigureAwait(false);
-    }
+    public abstract Task HandleAsync(object domainEvent, CancellationToken cancellationToken);
 }

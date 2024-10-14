@@ -1,61 +1,45 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Domain.Parties
-// Author           : Jérôme Piquot
-// Created          : 08-21-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 08-21-2023
-// ***********************************************************************
-// <copyright file="SurveyEvent.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="SurveyEvent.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Domain.Events;
 
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-
-using Hexalith.Domain.Aggregates;
-using Hexalith.Extensions;
+using Hexalith.PolymorphicSerialization;
 
 /// <summary>
-/// Class SurveyEvent.
-/// Implements the <see cref="Hexalith.Domain.Events.CompanyEntityEvent" />.
+/// Represents an abstract base class for survey events.
 /// </summary>
+/// <param name="Id">The unique identifier of the survey.</param>
+/// <remarks>
+/// This class serves as a base for all survey-related events in the domain.
+/// It implements the <see cref="Hexalith.Domain.Events.CompanyEntityEvent" /> interface.
+/// </remarks>
 /// <seealso cref="Hexalith.Domain.Events.CompanyEntityEvent" />
-[DataContract]
-public abstract class SurveyEvent : CompanyEntityEvent
+[PolymorphicSerialization]
+public abstract record SurveyEvent(string Id)
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="SurveyEvent"/> class.
+    /// Gets the aggregate identifier for the survey.
     /// </summary>
-    /// <param name="partitionId">The partition identifier.</param>
-    /// <param name="companyId">The company identifier.</param>
-    /// <param name="originId">The origin identifier.</param>
-    /// <param name="id">The identifier.</param>
-    [JsonConstructor]
-    protected SurveyEvent(string partitionId, string companyId, string originId, string id)
-        : base(partitionId, companyId, originId, id)
-    {
-    }
+    /// <value>
+    /// A string representing the unique aggregate identifier for the survey.
+    /// </value>
+    /// <remarks>
+    /// This property uses the <see cref="SurveyDomainHelper.BuildSurveyAggregateId"/> method to construct the aggregate ID.
+    /// </remarks>
+    public string AggregateId
+        => SurveyDomainHelper.BuildSurveyAggregateId(Id);
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="SurveyEvent" /> class.
+    /// Gets the name of the aggregate for surveys.
     /// </summary>
-    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    protected SurveyEvent()
-    {
-    }
-
-    /// <inheritdoc/>
-    protected override string DefaultAggregateId()
-        => Survey.GetAggregateId(PartitionId, CompanyId, OriginId, Id);
-
-    /// <inheritdoc/>
-    protected override string DefaultAggregateName()
-        => Survey.GetAggregateName();
+    /// <value>
+    /// A string representing the name of the survey aggregate.
+    /// </value>
+    /// <remarks>
+    /// This property returns the constant value defined in <see cref="SurveyDomainHelper.SurveyAggregateName"/>.
+    /// </remarks>
+    public string AggregateName
+        => SurveyDomainHelper.SurveyAggregateName;
 }

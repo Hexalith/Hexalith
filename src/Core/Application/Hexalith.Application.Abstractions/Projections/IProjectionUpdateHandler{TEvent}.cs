@@ -1,30 +1,20 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Application.Abstractions
-// Author           : Jérôme Piquot
-// Created          : 10-27-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 10-27-2023
-// ***********************************************************************
-// <copyright file="IProjectionUpdateHandler{TEvent}.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="IProjectionUpdateHandler{TEvent}.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// ***********************************************************************
+
 namespace Hexalith.Application.Projections;
 
 using System.Threading.Tasks;
 
-using Hexalith.Application.Metadatas;
-using Hexalith.Domain.Events;
+using Hexalith.Application.MessageMetadatas;
 
 /// <summary>
 /// Interface IProjectionUpdateHandler.
 /// </summary>
 /// <typeparam name="TEvent">The type of the t event.</typeparam>
-public interface IProjectionUpdateHandler<TEvent> : IProjectionUpdateHandler
-    where TEvent : IEvent
+public interface IProjectionUpdateHandler<in TEvent> : IProjectionUpdateHandler
+    where TEvent : class
 {
     /// <summary>
     /// Applies the specified event.
@@ -33,7 +23,7 @@ public interface IProjectionUpdateHandler<TEvent> : IProjectionUpdateHandler
     /// <param name="metadata">The metadata.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
-    Task ApplyAsync(TEvent baseEvent, IMetadata metadata, CancellationToken cancellationToken);
+    Task ApplyAsync(TEvent baseEvent, Metadata metadata, CancellationToken cancellationToken);
 
     /// <summary>
     /// Apply as an asynchronous operation.
@@ -43,7 +33,7 @@ public interface IProjectionUpdateHandler<TEvent> : IProjectionUpdateHandler
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task representing the asynchronous operation.</returns>
     /// <exception cref="InvalidCastException">Could not cast event {ev.GetType().Name} to {typeof(TEvent).Name} in projection update handler : {GetType().Name}.</exception>
-    async Task IProjectionUpdateHandler.ApplyAsync(IEvent ev, IMetadata metadata, CancellationToken cancellationToken)
+    async Task IProjectionUpdateHandler.ApplyAsync(object ev, Metadata metadata, CancellationToken cancellationToken)
     {
         if (ev is TEvent e)
         {

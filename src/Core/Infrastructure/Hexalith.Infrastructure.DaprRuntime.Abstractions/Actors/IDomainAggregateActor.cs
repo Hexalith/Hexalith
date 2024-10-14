@@ -55,7 +55,7 @@ public interface IDomainAggregateActor : IActor
     /// <summary>
     /// Gets the snapshot event asynchronous.
     /// </summary>
-    /// <returns>Task&lt;System.Nullable&lt;EventState&gt;&gt;.</returns>
+    /// <returns>Task&lt;System.Nullable&lt;MessageState&gt;&gt;.</returns>
     Task SendSnapshotEventAsync();
 
     /// <summary>

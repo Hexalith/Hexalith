@@ -1,42 +1,24 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Domain.Conversations
-// Author           : Jérôme Piquot
-// Created          : 05-25-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 05-25-2023
-// ***********************************************************************
-// <copyright file="UserConversationAdded.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="UserConversationAdded.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Domain.UserConversationProfiles.Events;
 
-/// <summary>
-/// Class AddConversationItem.
-/// Implements the <see cref="UserConversationsProfileEvent" />.
-/// </summary>
-/// <seealso cref="UserConversationsProfileEvent" />
-/// <remarks>
-/// Initializes a new instance of the <see cref="UserConversationAdded"/> class.
-/// </remarks>
-/// <param name="userId">The user identifier.</param>
-/// <param name="startedDate">The started date.</param>
-public class UserConversationAdded(string userId, DateTimeOffset startedDate) : UserConversationsProfileEvent(userId)
-{
-    /// <summary>
-    /// Gets the started date.
-    /// </summary>
-    /// <value>The started date.</value>
-    public DateTimeOffset StartedDate { get; } = startedDate;
+using Hexalith.PolymorphicSerialization;
 
-    /// <summary>
-    /// Get the message name.
-    /// </summary>
-    /// <returns>The name.</returns>
-    protected override string DefaultTypeName() => nameof(UserConversationsProfileAdded);
+/// <summary>
+/// Represents an event that occurs when a new user conversation is added.
+/// </summary>
+/// <param name="UserId">The unique identifier of the user associated with the conversation.</param>
+/// <param name="Participant">The identifier or name of the participant in the conversation.</param>
+/// <param name="Date">The date and time when the conversation entry was added.</param>
+/// <param name="Content">The content of the conversation entry.</param>
+[PolymorphicSerialization]
+public record UserConversationAdded(
+    string UserId,
+    string Participant,
+    DateTimeOffset Date,
+    string Content) : UserConversationsProfileEvent(UserId)
+{
 }

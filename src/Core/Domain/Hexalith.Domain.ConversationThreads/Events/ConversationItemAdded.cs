@@ -1,80 +1,28 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Domain.Conversations
-// Author           : Jérôme Piquot
-// Created          : 05-25-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 05-31-2023
-// ***********************************************************************
-// <copyright file="ConversationItemAdded.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="ConversationItemAdded.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Domain.ConversationThreads.Events;
 
 using System;
-using System.Runtime.Serialization;
+
+using Hexalith.PolymorphicSerialization;
 
 /// <summary>
-/// Class AddConversationItem.
-/// Implements the <see cref="ConversationThreadEvent" />.
+/// Represents an event that occurs when a new item (message or interaction) is added to a conversation thread.
+/// This event captures the details of the added item, including who added it, when it was added, and its content.
 /// </summary>
-/// <seealso cref="ConversationThreadEvent" />
-[DataContract]
-[Serializable]
-public class ConversationItemAdded : ConversationThreadEvent
-{
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ConversationItemAdded" /> class.
-    /// </summary>
-    /// <param name="owner">The owner.</param>
-    /// <param name="startedDate">The started date.</param>
-    /// <param name="itemDate">The date.</param>
-    /// <param name="participant">The participant.</param>
-    /// <param name="content">The content.</param>
-    public ConversationItemAdded(string owner, DateTimeOffset startedDate, DateTimeOffset itemDate, string participant, string content)
-        : base(owner, startedDate)
-    {
-        ItemDate = itemDate;
-        Participant = participant;
-        Content = content;
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ConversationItemAdded" /> class.
-    /// </summary>
-    [Obsolete("For serialization purpose only", true)]
-    public ConversationItemAdded()
-    {
-        Participant = Content = string.Empty;
-        ItemDate = DateTimeOffset.MinValue;
-    }
-
-    /// <summary>
-    /// Gets or sets the content.
-    /// </summary>
-    /// <value>The content.</value>
-    public string Content { get; set; }
-
-    /// <summary>
-    /// Gets or sets the date.
-    /// </summary>
-    /// <value>The date.</value>
-    public DateTimeOffset ItemDate { get; set; }
-
-    /// <summary>
-    /// Gets or sets the participant.
-    /// </summary>
-    /// <value>The participant.</value>
-    public string Participant { get; set; }
-
-    /// <summary>
-    /// Get the message name.
-    /// </summary>
-    /// <returns>The name.</returns>
-    protected override string DefaultTypeName() => nameof(ConversationItemAdded);
-}
+/// <param name="Owner">The owner or initiator of the conversation thread. This helps identify the specific thread to which the item is being added.</param>
+/// <param name="StartedDate">The date and time when the conversation thread was initially started. This, along with the Owner, helps uniquely identify the thread.</param>
+/// <param name="ItemDate">The specific date and time when this item was added to the conversation. This allows for precise chronological ordering of items within the thread.</param>
+/// <param name="Participant">The identifier of the participant who added this item to the conversation. This could be a user ID, username, or any other unique identifier for the participant.</param>
+/// <param name="Content">The actual content of the added conversation item. This could be text, a reference to an attachment, or any other relevant data representing the item's content.</param>
+[PolymorphicSerialization]
+public partial record ConversationItemAdded(
+    string Owner,
+    DateTimeOffset StartedDate,
+    DateTimeOffset ItemDate,
+    string Participant,
+    string Content)
+    : ConversationThreadEvent(Owner, StartedDate);

@@ -1,5 +1,6 @@
-﻿// <copyright file="AggregateProvider{TAggregate}.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="AggregateProvider{TAggregate}.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Application.Aggregates;
@@ -16,7 +17,7 @@ using Hexalith.Domain.Aggregates;
 /// <seealso cref="Hexalith.Application.Aggregates.IAggregateProvider{TAggregate}" />
 [Obsolete("This interface is not used anymore. Use DomainAggregateProvider instead.", true)]
 public class AggregateProvider<TAggregate> : IAggregateProvider<TAggregate>
-    where TAggregate : IAggregate, new()
+    where TAggregate : IDomainAggregate, new()
 {
     /// <summary>
     /// The aggregate name.
@@ -34,5 +35,5 @@ public class AggregateProvider<TAggregate> : IAggregateProvider<TAggregate>
 
     /// <inheritdoc/>
     [Obsolete]
-    IAggregate IAggregateProvider.Create() => Create();
+    IDomainAggregate IAggregateProvider.Create() => Create();
 }

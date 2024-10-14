@@ -28,7 +28,7 @@ public interface IAggregateFactory
     /// </summary>
     /// <param name="aggregateName">Name of the aggregate.</param>
     /// <returns>IAggregate.</returns>
-    IAggregate Create(string aggregateName);
+    IDomainAggregate Create(string aggregateName);
 
     /// <summary>
     /// Gets the type of the aggregate.

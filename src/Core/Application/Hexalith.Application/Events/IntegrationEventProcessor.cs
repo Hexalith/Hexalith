@@ -1,5 +1,6 @@
-﻿// <copyright file="IntegrationEventProcessor.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="IntegrationEventProcessor.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Application.Events;
@@ -9,9 +10,7 @@ using System.Threading.Tasks;
 
 using Hexalith.Application.Commands;
 using Hexalith.Application.Errors;
-using Hexalith.Application.Metadatas;
-using Hexalith.Application.Notifications;
-using Hexalith.Domain.Events;
+using Hexalith.Application.MessageMetadatas;
 using Hexalith.Extensions.Errors;
 
 using Microsoft.Extensions.Logging;
@@ -35,34 +34,29 @@ public partial class IntegrationEventProcessor : IIntegrationEventProcessor
 
     private readonly IIntegrationEventDispatcher _dispatcher;
     private readonly ILogger<IntegrationEventProcessor> _logger;
-    private readonly INotificationBus _notificationBus;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="IntegrationEventProcessor"/> class.
     /// </summary>
     /// <param name="dispatcher">The dispatcher.</param>
     /// <param name="commandBus">The command bus.</param>
-    /// <param name="notificationBus">The notification bus.</param>
     /// <param name="dateTimeService">The date time service.</param>
     /// <param name="logger">The logger.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
     public IntegrationEventProcessor(
         IIntegrationEventDispatcher dispatcher,
         ICommandBus commandBus,
-        INotificationBus notificationBus,
         TimeProvider dateTimeService,
         ILogger<IntegrationEventProcessor> logger)
     {
         ArgumentNullException.ThrowIfNull(dispatcher);
         ArgumentNullException.ThrowIfNull(commandBus);
         ArgumentNullException.ThrowIfNull(dateTimeService);
-        ArgumentNullException.ThrowIfNull(notificationBus);
         ArgumentNullException.ThrowIfNull(logger);
 
         _dispatcher = dispatcher;
         _commandBus = commandBus;
         _dateTimeService = dateTimeService;
-        _notificationBus = notificationBus;
         _logger = logger;
     }
 
@@ -73,13 +67,13 @@ public partial class IntegrationEventProcessor : IIntegrationEventProcessor
     public partial void LogNoCommandGeneratedInformation(string? eventName, string? aggregateId, string? correlationId);
 
     /// <inheritdoc/>
-    public async Task SubmitAsync(IEvent baseEvent, IMetadata metadata, CancellationToken cancellationToken)
+    public async Task SubmitAsync(object baseEvent, Metadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(baseEvent);
         ArgumentNullException.ThrowIfNull(metadata);
         try
         {
-            List<BaseCommand> commands = (await _dispatcher
+            List<object> commands = (await _dispatcher
                     .ApplyAsync(baseEvent, cancellationToken)
                     .ConfigureAwait(false))
                 .SelectMany(p => p)

@@ -25,7 +25,7 @@ public interface ICommandHandler
     /// <param name="aggregate">The aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;IEnumerable&lt;BaseMessage&gt;&gt;.</returns>
-    Task<IEnumerable<BaseMessage>> DoAsync(ICommand command, IAggregate? aggregate, CancellationToken cancellationToken);
+    Task<IEnumerable<BaseMessage>> DoAsync(ICommand command, IDomainAggregate? aggregate, CancellationToken cancellationToken);
 
     /// <summary>
     /// Undoes the asynchronous.
@@ -34,7 +34,7 @@ public interface ICommandHandler
     /// <param name="aggregate">The aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;IEnumerable&lt;BaseMessage&gt;&gt;.</returns>
-    Task<IEnumerable<BaseMessage>> UndoAsync(ICommand command, IAggregate? aggregate, CancellationToken cancellationToken);
+    Task<IEnumerable<BaseMessage>> UndoAsync(ICommand command, IDomainAggregate? aggregate, CancellationToken cancellationToken);
 }
 
 /// <summary>
@@ -53,7 +53,7 @@ public interface ICommandHandler<TCommand> : ICommandHandler
     /// <param name="aggregate">The aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;IEnumerable&lt;BaseMessage&gt;&gt;.</returns>
-    Task<IEnumerable<BaseMessage>> DoAsync(TCommand command, IAggregate? aggregate, CancellationToken cancellationToken);
+    Task<IEnumerable<BaseMessage>> DoAsync(TCommand command, IDomainAggregate? aggregate, CancellationToken cancellationToken);
 
     /// <summary>
     /// Undoes the asynchronous.
@@ -62,5 +62,5 @@ public interface ICommandHandler<TCommand> : ICommandHandler
     /// <param name="aggregate">The aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;IEnumerable&lt;BaseMessage&gt;&gt;.</returns>
-    Task<IEnumerable<BaseMessage>> UndoAsync(TCommand command, IAggregate? aggregate, CancellationToken cancellationToken);
+    Task<IEnumerable<BaseMessage>> UndoAsync(TCommand command, IDomainAggregate? aggregate, CancellationToken cancellationToken);
 }

@@ -22,8 +22,8 @@ public interface IAggregateActor : IActor
     /// <summary>
     /// Gets the snapshot event asynchronous.
     /// </summary>
-    /// <returns>Task&lt;System.Nullable&lt;EventState&gt;&gt;.</returns>
-    Task<EventState?> GetSnapshotEventAsync();
+    /// <returns>Task&lt;System.Nullable&lt;MessageState&gt;&gt;.</returns>
+    Task<MessageState?> GetSnapshotEventAsync();
 
     /// <summary>
     /// Processes the callback asynchronous.
@@ -52,7 +52,7 @@ public interface IAggregateActor : IActor
     /// <summary>
     /// Gets the snapshot event asynchronous.
     /// </summary>
-    /// <returns>Task&lt;System.Nullable&lt;EventState&gt;&gt;.</returns>
+    /// <returns>Task&lt;System.Nullable&lt;MessageState&gt;&gt;.</returns>
     Task SendSnapshotEventAsync();
 
     /// <summary>

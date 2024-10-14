@@ -25,12 +25,15 @@ public static class OptionsHelper
     public static IServiceCollection ConfigureSettings<T>(this IServiceCollection services, IConfiguration configuration)
         where T : class, ISettings
     {
+        ArgumentNullException.ThrowIfNull(services);
+        ArgumentNullException.ThrowIfNull(configuration);
+
         _ = configuration ?? throw new ArgumentNullException(nameof(configuration));
         IConfigurationSection? section = configuration.GetSection(T.ConfigurationName())
                                          ?? throw new InvalidOperationException($"Could not load settings section '{T.ConfigurationName()}'");
         _ = services
             .AddOptions<T>()
-            .Bind<T>(section)
+            .Bind(section)
             .ValidateDataAnnotations();
         services.TryAddSingleton<IValidateOptions<T>>((s) =>
             new FluentValidateOptions<T>(

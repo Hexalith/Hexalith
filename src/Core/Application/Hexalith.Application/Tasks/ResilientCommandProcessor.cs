@@ -92,7 +92,7 @@ public partial class ResilientCommandProcessor
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task&lt;System.ValueTuple&gt; representing the asynchronous operation.</returns>
     /// <exception cref="System.ArgumentNullException">null.</exception>
-    public async Task<(TaskProcessor Processor, IEnumerable<BaseMessage> Events)> ProcessAsync(string id, [NotNull] BaseCommand command, IAggregate? aggregate, CancellationToken cancellationToken)
+    public async Task<(TaskProcessor Processor, IEnumerable<BaseMessage> Events)> ProcessAsync(string id, [NotNull] BaseCommand command, IDomainAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
         IEnumerable<BaseMessage> messages;

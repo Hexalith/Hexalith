@@ -1,7 +1,6 @@
-﻿// <copyright file="DependencyInjectionProjectionUpdateProcessor.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="DependencyInjectionProjectionUpdateProcessor.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Application.Projections;
@@ -14,8 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Hexalith.Application.Events;
-using Hexalith.Application.Metadatas;
-using Hexalith.Domain.Events;
+using Hexalith.Application.MessageMetadatas;
 
 using Microsoft.Extensions.Logging;
 
@@ -52,7 +50,7 @@ public class DependencyInjectionProjectionUpdateProcessor : IProjectionUpdatePro
     protected ILogger Logger { get; }
 
     /// <inheritdoc/>
-    public async Task ApplyAsync([NotNull] IEvent ev, IMetadata metadata, CancellationToken cancellationToken)
+    public async Task ApplyAsync([NotNull] object ev, Metadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(ev);
         await Task.WhenAll(
@@ -66,7 +64,7 @@ public class DependencyInjectionProjectionUpdateProcessor : IProjectionUpdatePro
     /// </summary>
     /// <param name="event">The event to handle.</param>
     /// <returns>IEventHandler list.</returns>
-    private List<IProjectionUpdateHandler> GetHandlers(IEvent @event)
+    private List<IProjectionUpdateHandler> GetHandlers(object @event)
     {
         Type eventType = @event.GetType();
         Type eventHandlerType = typeof(IProjectionUpdateHandler<>).MakeGenericType(eventType);

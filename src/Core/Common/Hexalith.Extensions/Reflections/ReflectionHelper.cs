@@ -55,7 +55,8 @@ public static class ReflectionHelper
     public static IEnumerable<Type> GetInstantiableTypesOf<TType>(IEnumerable<Type>? excludedTypes)
     {
         Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
-        List<Type> intantiableTypes = [];
+        List<Type> instantiableTypes = [];
+        List<Type>? excluded = excludedTypes?.ToList();
         foreach (Assembly assembly in assemblies)
         {
             Type[] types;
@@ -71,14 +72,14 @@ public static class ReflectionHelper
 
             foreach (Type type in types)
             {
-                if (IsValidType<TType>(type, null))
+                if (IsValidType<TType>(type, excluded))
                 {
-                    intantiableTypes.Add(type);
+                    instantiableTypes.Add(type);
                 }
             }
         }
 
-        return intantiableTypes;
+        return instantiableTypes;
     }
 
     private static bool IsValidType<TType>(Type type, IEnumerable<Type>? excludedTypes)
@@ -86,5 +87,5 @@ public static class ReflectionHelper
         (excludedTypes is null || !excludedTypes.Any(p => p.IsAssignableFrom(type)));
 
     private static bool IsValidType<TType>(Type type)
-        => !type.IsAbstract && !type.IsInterface && typeof(TType).IsAssignableFrom(type);
+        => type is { IsAbstract: false, IsInterface: false } && typeof(TType).IsAssignableFrom(type);
 }

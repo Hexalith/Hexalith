@@ -49,7 +49,7 @@ public partial class DependencyInjectionCommandDispatcher : ICommandDispatcher
     }
 
     /// <inheritdoc/>
-    public async Task<IEnumerable<BaseMessage>> DoAsync(ICommand command, IAggregate? aggregate, CancellationToken cancellationToken)
+    public async Task<IEnumerable<BaseMessage>> DoAsync(ICommand command, IDomainAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
         try
@@ -90,7 +90,7 @@ public partial class DependencyInjectionCommandDispatcher : ICommandDispatcher
     public partial void LogDispatchingCommandUndoDebugInformation(string CommandType, string AggregateName, string AggregateId);
 
     /// <inheritdoc/>
-    public async Task<IEnumerable<BaseMessage>> UnDoAsync(ICommand command, IAggregate? aggregate, CancellationToken cancellationToken)
+    public async Task<IEnumerable<BaseMessage>> UnDoAsync(ICommand command, IDomainAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
         LogDispatchingCommandUndoDebugInformation(command.TypeName, command.AggregateName, command.AggregateId);

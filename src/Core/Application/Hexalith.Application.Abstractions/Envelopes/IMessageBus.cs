@@ -1,66 +1,29 @@
-﻿// <copyright file="IMessageBus.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="IMessageBus.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Application.Envelopes;
 
-using Hexalith.Application.Metadatas;
-using Hexalith.Application.States;
-using Hexalith.Domain.Messages;
-
 /// <summary>
-/// A message bus is a component that allows to send messages.
+/// Defines the contract for a message bus that can publish messages asynchronously.
 /// </summary>
-/// <typeparam name="TMessage">The type of the t message.</typeparam>
-/// <typeparam name="TMetadata">The type of the t metadata.</typeparam>
-/// <typeparam name="TState">The type of the t state.</typeparam>
-public interface IMessageBus<in TMessage, in TMetadata, in TState>
-    where TMessage : BaseMessage
-    where TMetadata : BaseMetadata
-    where TState : MessageState<TMessage, TMetadata>
+public interface IMessageBus
 {
     /// <summary>
-    /// Publishes the asynchronous.
+    /// Publishes a message asynchronously with the specified metadata.
     /// </summary>
-    /// <param name="envelope">The envelope.</param>
-    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>Task.</returns>
-    [Obsolete("Use PublishAsync with object message and metadata instead")]
-    Task PublishAsync(IEnvelope<TMessage, TMetadata> envelope, CancellationToken cancellationToken);
-
-    /// <summary>
-    /// Publishes the asynchronous.
-    /// </summary>
-    /// <param name="envelope">The envelope.</param>
-    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>Task.</returns>
-    [Obsolete("Use PublishAsync with object message and metadata instead")]
-    Task PublishAsync(TState envelope, CancellationToken cancellationToken);
-
-    /// <summary>
-    /// Publishes the asynchronous.
-    /// </summary>
-    /// <param name="message">The message.</param>
-    /// <param name="metadata">The metadata.</param>
-    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>Task.</returns>
-    [Obsolete("Use PublishAsync with object message and metadata instead")]
-    Task PublishAsync(TMessage message, TMetadata metadata, CancellationToken cancellationToken);
-
-    /// <summary>
-    /// Publishes a domain message asynchronously.
-    /// </summary>
-    /// <param name="message">The domain message to publish.</param>
+    /// <param name="message">The message to be published.</param>
     /// <param name="metadata">The metadata associated with the message.</param>
-    /// <param name="cancellationToken">The cancellation token.</param>
-    /// <returns>A task representing the asynchronous operation.</returns>
+    /// <param name="cancellationToken">A cancellation token that can be used to cancel the publish operation.</param>
+    /// <returns>A task that represents the asynchronous publish operation.</returns>
     Task PublishAsync(object message, MessageMetadatas.Metadata metadata, CancellationToken cancellationToken);
 
     /// <summary>
-    /// Publishes a domain message asynchronously.
+    /// Publishes a message state asynchronously.
     /// </summary>
-    /// <param name="message">The domain message to publish.</param>
-    /// <param name="cancellationToken">The cancellation token.</param>
-    /// <returns>A task representing the asynchronous operation.</returns>
+    /// <param name="message">The message state to be published.</param>
+    /// <param name="cancellationToken">A cancellation token that can be used to cancel the publish operation.</param>
+    /// <returns>A task that represents the asynchronous publish operation.</returns>
     Task PublishAsync(MessageMetadatas.MessageState message, CancellationToken cancellationToken);
 }

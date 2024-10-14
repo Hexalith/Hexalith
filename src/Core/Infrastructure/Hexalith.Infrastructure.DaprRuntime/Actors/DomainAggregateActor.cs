@@ -1,5 +1,6 @@
-﻿// <copyright file="DomainAggregateActor.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="DomainAggregateActor.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Infrastructure.DaprRuntime.Actors;
@@ -14,7 +15,6 @@ using Hexalith.Application.Events;
 using Hexalith.Application.Notifications;
 using Hexalith.Application.Requests;
 using Hexalith.Application.Tasks;
-using Hexalith.Infrastructure.DaprRuntime.Sales.Actors;
 
 using Microsoft.Extensions.Logging;
 
@@ -25,6 +25,7 @@ using Microsoft.Extensions.Logging;
 /// </summary>
 /// <seealso cref="AggregateActorBase" />
 /// <seealso cref="IAggregateActor" />
+[Obsolete]
 public partial class DomainAggregateActor(
     ActorHost host,
     IDomainCommandDispatcher commandDispatcher,

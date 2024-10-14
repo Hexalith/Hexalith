@@ -1,18 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Domain.Abstractions
-// Author           : Jérôme Piquot
-// Created          : 01-13-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 03-10-2023
-// ***********************************************************************
-// <copyright file="BaseMessage.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="BaseMessage.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Domain.Messages;
 
@@ -29,6 +18,7 @@ using Hexalith.Extensions.Serialization;
 [Serializable]
 [JsonConverter(typeof(PolymorphicJsonConverter<BaseMessage>))]
 [DebuggerDisplay("{AggregateName}/{AggregateId}/{TypeName}/v{MajorVersion}/{MinorVersion}")]
+[Obsolete]
 public class BaseMessage : IMessage, IPolymorphicSerializable
 {
     /// <summary>
@@ -67,6 +57,7 @@ public class BaseMessage : IMessage, IPolymorphicSerializable
     /// <inheritdoc/>
     [IgnoreDataMember]
     [JsonIgnore]
+    [Obsolete]
     public string TypeName => DefaultTypeName();
 
     /// <summary>

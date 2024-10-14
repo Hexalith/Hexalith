@@ -6,10 +6,9 @@
 // Last Modified By : JérômePiquot
 // Last Modified On : 10-26-2023
 // ***********************************************************************
-// <copyright file="EventIntegrationController.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+// <copyright file="EventIntegrationController.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -17,7 +16,6 @@ namespace Hexalith.Infrastructure.WebApis.Controllers;
 
 using Hexalith.Application.Events;
 using Hexalith.Application.Projections;
-using Hexalith.Application.States;
 using Hexalith.Extensions.Errors;
 
 using Microsoft.AspNetCore.Mvc;
@@ -69,10 +67,10 @@ public class EventIntegrationController : ReceiveMessageController
     /// <param name="validAggregateName">Name of the valid aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
-    protected async Task<ActionResult> HandleEventAsync(EventState eventState, string validAggregateName, CancellationToken cancellationToken)
+    protected async Task<ActionResult> HandleEventAsync(MessageState eventState, string validAggregateName, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(eventState);
-        ActionResult? badRequest = MessageValidation<EventState>(eventState, validAggregateName);
+        ActionResult? badRequest = MessageValidation<MessageState>(eventState, validAggregateName);
         if (badRequest != null)
         {
             return badRequest;

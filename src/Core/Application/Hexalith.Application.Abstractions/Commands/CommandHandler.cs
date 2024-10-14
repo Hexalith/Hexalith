@@ -33,16 +33,16 @@ public abstract class CommandHandler<TCommand> : ICommandHandler<TCommand>
     where TCommand : ICommand
 {
     /// <inheritdoc/>
-    public abstract Task<IEnumerable<BaseMessage>> DoAsync(TCommand command, IAggregate? aggregate, CancellationToken cancellationToken);
+    public abstract Task<IEnumerable<BaseMessage>> DoAsync(TCommand command, IDomainAggregate? aggregate, CancellationToken cancellationToken);
 
     /// <inheritdoc/>
-    public abstract Task<IEnumerable<BaseMessage>> UndoAsync(TCommand command, IAggregate? aggregate, CancellationToken cancellationToken);
+    public abstract Task<IEnumerable<BaseMessage>> UndoAsync(TCommand command, IDomainAggregate? aggregate, CancellationToken cancellationToken);
 
     /// <inheritdoc/>
-    Task<IEnumerable<BaseMessage>> ICommandHandler.DoAsync(ICommand command, IAggregate? aggregate, CancellationToken cancellationToken) => DoAsync(ToCommand(command), aggregate, cancellationToken);
+    Task<IEnumerable<BaseMessage>> ICommandHandler.DoAsync(ICommand command, IDomainAggregate? aggregate, CancellationToken cancellationToken) => DoAsync(ToCommand(command), aggregate, cancellationToken);
 
     /// <inheritdoc/>
-    Task<IEnumerable<BaseMessage>> ICommandHandler.UndoAsync(ICommand command, IAggregate? aggregate, CancellationToken cancellationToken) => DoAsync(ToCommand(command), aggregate, cancellationToken);
+    Task<IEnumerable<BaseMessage>> ICommandHandler.UndoAsync(ICommand command, IDomainAggregate? aggregate, CancellationToken cancellationToken) => DoAsync(ToCommand(command), aggregate, cancellationToken);
 
     /// <summary>
     /// Converts to command.

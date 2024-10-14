@@ -35,7 +35,7 @@ public class AggregateFactory : IAggregateFactory
 
     /// <inheritdoc/>
     [Obsolete]
-    public IAggregate Create(string aggregateName) => GetProvider(aggregateName).Create();
+    public IDomainAggregate Create(string aggregateName) => GetProvider(aggregateName).Create();
 
     /// <inheritdoc/>
     public Type GetAggregateType(string aggregateName) => GetProvider(aggregateName).AggregateType;

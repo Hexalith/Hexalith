@@ -44,7 +44,7 @@ using Microsoft.Extensions.Options;
 /// <param name="dateTimeService">The date time service.</param>
 /// <param name="settings">The settings.</param>
 /// <param name="logger">The logger.</param>
-public class DaprEventBus(DaprClient client, TimeProvider dateTimeService, IOptions<EventBusSettings> settings, ILogger<DaprEventBus> logger) : DaprApplicationBus<BaseEvent, BaseMetadata, EventState>(
+public class DaprEventBus(DaprClient client, TimeProvider dateTimeService, IOptions<EventBusSettings> settings, ILogger<DaprEventBus> logger) : DaprApplicationBus<BaseEvent, BaseMetadata, MessageState>(
     client,
     dateTimeService,
     string.IsNullOrWhiteSpace(settings?.Value.Name) ? throw new ArgumentException($"The name of the event bus is not defined in settings ({EventBusSettings.ConfigurationName()}.{nameof(EventBusSettings.Name)}).", nameof(settings)) : settings.Value.Name,

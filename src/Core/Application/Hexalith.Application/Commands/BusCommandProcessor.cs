@@ -28,7 +28,7 @@ using Hexalith.Application.MessageMetadatas;
 /// Implements the <see cref="Hexalith.Application.Commands.ICommandProcessor" />.
 /// </summary>
 /// <seealso cref="Hexalith.Application.Commands.ICommandProcessor" />
-public class BusCommandProcessor : ICommandProcessor
+public class BusCommandProcessor : IDomainCommandProcessor
 {
     private readonly ICommandBus _bus;
 

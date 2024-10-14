@@ -1,7 +1,6 @@
-﻿// <copyright file="OptionsBuilder.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="OptionsBuilder.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.TestMocks;
@@ -62,7 +61,7 @@ public class OptionsBuilder<T> : IMockBuilder<IOptions<T>>
     }
 
     /// <summary>
-    /// Defines the options value from appsettings.json file or .NET user secrets.
+    /// Defines the options value from application settings JSON file or .NET user secrets.
     /// </summary>
     /// <typeparam name="TProgram">The test class to define the .NET user secrets assembly.</typeparam>
     /// <returns>The options builder.</returns>

@@ -38,5 +38,5 @@ public interface IAggregateProvider
     /// Creates this instance.
     /// </summary>
     /// <returns>IAggregate.</returns>
-    IAggregate Create();
+    IDomainAggregate Create();
 }

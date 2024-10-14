@@ -1,18 +1,8 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Domain.Parties
-// Author           : Jérôme Piquot
-// Created          : 11-01-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 11-01-2023
-// ***********************************************************************
-// <copyright file="SurveyInformationChangedValidator.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="SurveyInformationChangedValidator.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
+
 namespace Hexalith.Domain.Events;
 
 using FluentValidation;
@@ -20,6 +10,7 @@ using FluentValidation;
 /// <summary>
 /// Class SurveyInformationChangedValidator.
 /// </summary>
+[Obsolete]
 public class SurveyInformationChangedValidator : AbstractValidator<SurveyInformationChanged>
 {
     /// <summary>
@@ -27,8 +18,6 @@ public class SurveyInformationChangedValidator : AbstractValidator<SurveyInforma
     /// </summary>
     public SurveyInformationChangedValidator()
     {
-        _ = RuleFor(x => x.PartitionId).NotEmpty();
-        _ = RuleFor(x => x.CompanyId).NotEmpty();
         _ = RuleFor(x => x.Id).NotEmpty();
     }
 }

@@ -1,12 +1,11 @@
-﻿// <copyright file="IRequestService.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="IRequestService.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Application.Requests;
 
-using Hexalith.Application.States;
+using Hexalith.Application.MessageMetadatas;
 
 /// <summary>
 /// Represents a service for submitting requests.
@@ -14,8 +13,6 @@ using Hexalith.Application.States;
 /// <remarks>
 /// This service is responsible for submitting requests and processing them asynchronously.
 /// </remarks>
-/// <param name="request">The request to be submitted.</param>
-/// <param name="cancellationToken">The cancellation token.</param>
 public interface IRequestService
 {
     /// <summary>
@@ -24,5 +21,5 @@ public interface IRequestService
     /// <param name="request">The request to be submitted.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>Task.</returns>
-    Task SubmitRequestAsync(RequestState request, CancellationToken cancellationToken);
+    Task SubmitRequestAsync(MessageState request, CancellationToken cancellationToken);
 }

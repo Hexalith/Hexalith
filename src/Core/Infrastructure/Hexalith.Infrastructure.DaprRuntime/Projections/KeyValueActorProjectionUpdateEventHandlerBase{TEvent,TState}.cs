@@ -1,27 +1,15 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Infrastructure.DaprRuntime
-// Author           : Jérôme Piquot
-// Created          : 12-19-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 12-19-2023
-// ***********************************************************************
-// <copyright file="KeyValueActorProjectionUpdateEventHandlerBase{TEvent,TState}.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="KeyValueActorProjectionUpdateEventHandlerBase{TEvent,TState}.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Infrastructure.DaprRuntime.Projections;
 
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Application.MessageMetadatas;
 using Hexalith.Application.Projections;
-using Hexalith.Domain.Events;
 
 /// <summary>
 /// Class KeyValueActorProjectionUpdateEventHandlerBase.
@@ -31,7 +19,7 @@ using Hexalith.Domain.Events;
 /// <typeparam name="TState">The type of the t state.</typeparam>
 /// <seealso cref="IProjectionUpdateHandler{TEvent}" />
 public abstract class KeyValueActorProjectionUpdateEventHandlerBase<TEvent, TState> : IProjectionUpdateHandler<TEvent>
-    where TEvent : IEvent
+    where TEvent : class
     where TState : class
 {
     /// <summary>
@@ -51,7 +39,7 @@ public abstract class KeyValueActorProjectionUpdateEventHandlerBase<TEvent, TSta
     }
 
     /// <inheritdoc/>
-    public abstract Task ApplyAsync(TEvent baseEvent, IMetadata metadata, CancellationToken cancellationToken);
+    public abstract Task ApplyAsync(TEvent baseEvent, Metadata metadata, CancellationToken cancellationToken);
 
     /// <summary>
     /// Get projection as an asynchronous operation.

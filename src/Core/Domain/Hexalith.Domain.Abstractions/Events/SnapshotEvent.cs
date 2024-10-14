@@ -1,5 +1,6 @@
-﻿// <copyright file="SnapshotEvent.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="SnapshotEvent.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Domain.Events;
@@ -9,92 +10,53 @@ using System.Runtime.Serialization;
 using System.Text.Json;
 
 using Hexalith.Domain.Aggregates;
-using Hexalith.Extensions;
 
 /// <summary>
-/// Represents a snapshot event in the domain.
+/// Represents a snapshot event in the domain, capturing the state of an aggregate at a specific point in time.
 /// </summary>
+/// <param name="AggregateName">The name of the aggregate.</param>
+/// <param name="AggregateId">The unique identifier of the aggregate.</param>
+/// <param name="Snapshot">A JSON serialized representation of the aggregate's state.</param>
 [DataContract]
-[Obsolete("This class is obsolete. Use Hexalith.Domain.Abstractions.Events.AggregateSnapshotEvent instead.", false)]
-public class SnapshotEvent : BaseEvent
+public record SnapshotEvent(
+    [property: DataMember(Order = 1)] string AggregateName,
+    [property: DataMember(Order = 2)] string AggregateId,
+    [property: DataMember(Order = 3)] string Snapshot)
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="SnapshotEvent" /> class.
+    /// Creates a new SnapshotEvent from the given aggregate.
     /// </summary>
-    /// <param name="sourceAggregateName">Name of the source aggregate.</param>
-    /// <param name="sourceAggregateId">The source aggregate identifier.</param>
-    /// <param name="snapshot">The snapshot.</param>
-    public SnapshotEvent(string sourceAggregateName, string sourceAggregateId, string snapshot)
-    {
-        SourceAggregateName = sourceAggregateName;
-        SourceAggregateId = sourceAggregateId;
-        Snapshot = snapshot;
-    }
+    /// <param name="aggregate">The aggregate to create a snapshot from.</param>
+    /// <returns>A new SnapshotEvent containing the serialized state of the aggregate.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when the aggregate is null.</exception>
+    public SnapshotEvent Create(IDomainAggregate aggregate)
+        => new(
+            (aggregate ?? throw new ArgumentNullException(nameof(aggregate))).AggregateName,
+            aggregate.AggregateId,
+            JsonSerializer.Serialize(aggregate, aggregate.GetType()));
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="SnapshotEvent" /> class.
+    /// Gets the aggregate of the specified type from the snapshot.
     /// </summary>
-    /// <param name="aggregate">The aggregate.</param>
-    public SnapshotEvent(IAggregate aggregate)
-        : this(
-              (aggregate ?? throw new ArgumentNullException(nameof(aggregate))).AggregateName,
-              aggregate.AggregateId,
-              JsonSerializer.Serialize(aggregate, aggregate.GetType()))
-    {
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="SnapshotEvent" /> class.
-    /// </summary>
-    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    public SnapshotEvent() => SourceAggregateId = SourceAggregateName = Snapshot = string.Empty;
-
-    /// <summary>
-    /// Gets or sets the snapshot.
-    /// </summary>
-    [DataMember(Order = 12)]
-    public string Snapshot { get; set; }
-
-    /// <summary>
-    /// Gets or sets the source aggregate identifier.
-    /// </summary>
-    [DataMember(Order = 11)]
-    public string SourceAggregateId { get; set; }
-
-    /// <summary>
-    /// Gets or sets the name of the source aggregate.
-    /// </summary>
-    [DataMember(Order = 10)]
-    public string SourceAggregateName { get; set; }
-
-    /// <summary>
-    /// Gets the aggregate of the specified type.
-    /// </summary>
-    /// <typeparam name="TAggregate">The type of the aggregate.</typeparam>
-    /// <returns>The aggregate of the specified type.</returns>
+    /// <typeparam name="TAggregate">The type of the aggregate to deserialize.</typeparam>
+    /// <returns>The deserialized aggregate of the specified type.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
     /// <exception cref="InvalidDataContractException">Thrown when the snapshot cannot be deserialized to the specified type.</exception>
     public TAggregate GetAggregate<TAggregate>()
-        where TAggregate : IAggregate
+        where TAggregate : IDomainAggregate
         => (TAggregate)GetAggregate(typeof(TAggregate));
 
     /// <summary>
-    /// Gets the aggregate of the specified type.
+    /// Gets the aggregate of the specified type from the snapshot.
     /// </summary>
-    /// <param name="type">The type of the aggregate.</param>
-    /// <returns>The aggregate of the specified type.</returns>
+    /// <param name="type">The type of the aggregate to deserialize.</param>
+    /// <returns>The deserialized aggregate of the specified type.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the type is null.</exception>
     /// <exception cref="InvalidDataContractException">Thrown when the snapshot cannot be deserialized to the specified type.</exception>
-    public IAggregate GetAggregate([NotNull] Type type)
+    public IDomainAggregate GetAggregate([NotNull] Type type)
     {
         ArgumentNullException.ThrowIfNull(type);
-        return (IAggregate)(JsonSerializer.Deserialize(Snapshot, type)
+        return (IDomainAggregate)(JsonSerializer.Deserialize(Snapshot, type)
             ?? throw new InvalidDataContractException($"Could not deserialize to {type.Name} : \n{Snapshot}"));
     }
-
-    /// <inheritdoc/>
-    protected override string DefaultAggregateId() => SourceAggregateId;
-
-    /// <inheritdoc/>
-    protected override string DefaultAggregateName() => SourceAggregateName;
 }

@@ -1,7 +1,6 @@
-﻿// <copyright file="ProjectionStateManager.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="ProjectionStateManager.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Application.States;
@@ -9,8 +8,7 @@ namespace Hexalith.Application.States;
 using System;
 using System.Threading;
 
-using Hexalith.Application.Metadatas;
-using Hexalith.Application.Notifications;
+using Hexalith.Application.MessageMetadatas;
 using Hexalith.Application.Projections;
 using Hexalith.Application.StreamStores;
 using Hexalith.Application.Tasks;
@@ -36,17 +34,13 @@ public class ProjectionStateManager : IProjectionStateManager
     /// <summary>
     /// Initializes a new instance of the <see cref="ProjectionStateManager" /> class.
     /// </summary>
-    /// <param name="notificationBus">The notification bus.</param>
     /// <param name="dateTimeService">The date time service.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
     public ProjectionStateManager(
-        INotificationBus notificationBus,
         TimeProvider dateTimeService)
     {
         ArgumentNullException.ThrowIfNull(dateTimeService);
-        ArgumentNullException.ThrowIfNull(notificationBus);
         _dateTimeService = dateTimeService;
-        NotificationBus = notificationBus;
     }
 
     /// <summary>
@@ -74,11 +68,6 @@ public class ProjectionStateManager : IProjectionStateManager
     public virtual string StateName => "State";
 
     /// <summary>
-    /// Gets the notification bus.
-    /// </summary>
-    protected INotificationBus NotificationBus { get; }
-
-    /// <summary>
     /// Add command as an asynchronous operation.
     /// </summary>
     /// <param name="stateProvider">The state provider.</param>
@@ -88,10 +77,11 @@ public class ProjectionStateManager : IProjectionStateManager
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task representing the asynchronous operation.</returns>
     /// <exception cref="System.ArgumentNullException">null.</exception>
+    [Obsolete]
     public async Task AddEventAsync(
         IStateStoreProvider stateProvider,
-        BaseEvent[] events,
-        BaseMetadata[] metadatas,
+        object[] events,
+        Metadata[] metadatas,
         Func<string, byte[], TimeSpan, TimeSpan, Task> registerReminder,
         CancellationToken cancellationToken)
     {
@@ -101,11 +91,11 @@ public class ProjectionStateManager : IProjectionStateManager
         ArgumentNullException.ThrowIfNull(registerReminder);
         await SetReminderAsync(TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(15), registerReminder).ConfigureAwait(false);
         ProjectionState state = await GetStateAsync(stateProvider, cancellationToken).ConfigureAwait(false);
-        MessageStore<EventState> eventStore = new(stateProvider, EventsStreamName);
-        List<EventState> states = [];
+        MessageStore<Hexalith.Application.MessageMetadatas.MessageState> eventStore = new(stateProvider, EventsStreamName);
+        List<Hexalith.Application.MessageMetadatas.MessageState> states = [];
         for (int i = 0; i < events.Length; i++)
         {
-            states.Add(new EventState(_dateTimeService.GetUtcNow(), events[i], metadatas[i]));
+            states.Add(Hexalith.Application.MessageMetadatas.MessageState.Create(events[i], metadatas[i]));
         }
 
         long version = await eventStore.AddAsync(
@@ -178,15 +168,16 @@ public class ProjectionStateManager : IProjectionStateManager
     }
 
     /// <inheritdoc/>
-    public async Task<IEnumerable<BaseEvent>> GetEventsAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken)
+    [Obsolete]
+    public async Task<IEnumerable<object>> GetEventsAsync(IStateStoreProvider stateProvider, CancellationToken cancellationToken)
     {
-        MessageStore<EventState> commandStore = new(stateProvider, EventsStreamName);
+        MessageStore<MessageState> commandStore = new(stateProvider, EventsStreamName);
         ProjectionState state = await GetStateAsync(stateProvider, cancellationToken).ConfigureAwait(false);
         List<BaseEvent> events = [];
         while (state.LastEventDone < state.EventStreamVersion)
         {
             long nextEvent = state.LastEventDone + 1;
-            EventState eventState = await commandStore.GetAsync(nextEvent, cancellationToken).ConfigureAwait(false);
+            MessageState eventState = await commandStore.GetAsync(nextEvent, cancellationToken).ConfigureAwait(false);
             events.Add(eventState.Message ?? throw new InvalidOperationException($"Event state {nextEvent} message is null."));
         }
 
@@ -209,13 +200,13 @@ public class ProjectionStateManager : IProjectionStateManager
         ResiliencyPolicy resiliencyPolicy,
         CancellationToken cancellationToken)
     {
-        MessageStore<EventState> commandStore = new(stateProvider, EventsStreamName);
-        _ = new MessageStore<EventState>(stateProvider, EventsStreamName);
+        MessageStore<MessageState> commandStore = new(stateProvider, EventsStreamName);
+        _ = new MessageStore<MessageState>(stateProvider, EventsStreamName);
         ProjectionState state = await GetStateAsync(stateProvider, cancellationToken).ConfigureAwait(false);
         while (state.LastEventDone < state.EventStreamVersion)
         {
             long nextEvent = state.LastEventDone + 1;
-            EventState command = await commandStore.GetAsync(nextEvent, cancellationToken).ConfigureAwait(false);
+            MessageState command = await commandStore.GetAsync(nextEvent, cancellationToken).ConfigureAwait(false);
             _ = command.Message ?? throw new InvalidOperationException($"Event {nextEvent} content is null.");
             _ = command.Metadata ?? throw new InvalidOperationException($"Event {nextEvent} metadata is null.");
             ResilientProjectionEventProcessor processor = new(

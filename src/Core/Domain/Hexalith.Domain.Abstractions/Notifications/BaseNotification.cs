@@ -1,18 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Application.Abstractions
-// Author           : Jérôme Piquot
-// Created          : 02-04-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 10-26-2023
-// ***********************************************************************
-// <copyright file="BaseNotification.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="BaseNotification.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Domain.Notifications;
 
@@ -29,6 +18,7 @@ using Hexalith.Extensions.Serialization;
 /// </summary>
 [DataContract]
 [JsonConverter(typeof(PolymorphicJsonConverter<BaseNotification>))]
+[Obsolete]
 public class BaseNotification : BaseMessage, INotification
 {
     /// <summary>
@@ -125,7 +115,7 @@ public class BaseNotification : BaseMessage, INotification
     /// <param name="technicalDescription">The technical description.</param>
     /// <returns>BaseNotification.</returns>
     public static BaseNotification Create(
-            [NotNull] IAggregate aggregate,
+            [NotNull] IDomainAggregate aggregate,
             string title,
             string message,
             NotificationSeverity severity,
@@ -149,7 +139,7 @@ public class BaseNotification : BaseMessage, INotification
     /// <param name="technicalDescription">The technical description.</param>
     /// <returns>BaseNotification.</returns>
     public static BaseNotification CreateError(
-            [NotNull] IAggregate aggregate,
+            [NotNull] IDomainAggregate aggregate,
             string title,
             string message,
             string? technicalDescription)
@@ -171,7 +161,7 @@ public class BaseNotification : BaseMessage, INotification
     /// <param name="technicalDescription">The technical description.</param>
     /// <returns>BaseNotification.</returns>
     public static BaseNotification CreateInformation(
-            [NotNull] IAggregate aggregate,
+            [NotNull] IDomainAggregate aggregate,
             string title,
             string message,
             string? technicalDescription)
@@ -193,7 +183,7 @@ public class BaseNotification : BaseMessage, INotification
     /// <param name="technicalDescription">The technical description.</param>
     /// <returns>BaseNotification.</returns>
     public static BaseNotification CreateWarning(
-            [NotNull] IAggregate aggregate,
+            [NotNull] IDomainAggregate aggregate,
             string title,
             string message,
             string? technicalDescription)

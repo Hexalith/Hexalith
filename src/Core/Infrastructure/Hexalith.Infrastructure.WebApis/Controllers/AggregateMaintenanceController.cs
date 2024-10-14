@@ -20,7 +20,7 @@ using Microsoft.AspNetCore.Mvc;
 [ApiController]
 [Route("api/maintenance")]
 public class AggregateMaintenanceController<TAggregate> : ControllerBase
-    where TAggregate : IAggregate, new()
+    where TAggregate : IDomainAggregate, new()
 {
     private readonly IAggregateMaintenance<TAggregate> _aggregateMaintenance;
 

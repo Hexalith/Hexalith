@@ -1,16 +1,7 @@
-﻿// <copyright file="BaseEvent.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="BaseEvent.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-
-/*
- * <Your-Product-Name>
- * Copyright (c) <Year-From>-<Year-To> <Your-Company-Name>
- *
- * Please configure this header in your SonarCloud/SonarQube quality profile.
- * You can also set it in SonarLint.xml additional file for SonarLint or standalone NuGet analyzer.
- */
 
 namespace Hexalith.Domain.Events;
 
@@ -26,6 +17,7 @@ using Hexalith.Extensions.Serialization;
 [DataContract]
 [Serializable]
 [JsonConverter(typeof(PolymorphicJsonConverter<BaseEvent>))]
+[Obsolete]
 public class BaseEvent : BaseMessage, IEvent
 {
 }

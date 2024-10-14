@@ -35,7 +35,7 @@ using Microsoft.Extensions.Options;
 /// <seealso cref="IAggregateMaintenance{TAggregate}" />
 public class DaprCosmosAggregateMaintenance<TAggregate> :
     IAggregateMaintenance<TAggregate>, IDisposable
-    where TAggregate : IAggregate, new()
+    where TAggregate : IDomainAggregate, new()
 {
     private readonly string _connectionString;
     private readonly DaprClient _daprClient;

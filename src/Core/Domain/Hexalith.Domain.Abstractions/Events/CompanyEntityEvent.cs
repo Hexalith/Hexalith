@@ -1,18 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Domain.Abstractions
-// Author           : Jérôme Piquot
-// Created          : 10-16-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 10-16-2023
-// ***********************************************************************
-// <copyright file="CompanyEntityEvent.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="CompanyEntityEvent.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Domain.Events;
 
@@ -28,6 +17,7 @@ using Hexalith.Extensions;
 /// </summary>
 /// <seealso cref="CompanyEntityEvent" />
 [DataContract]
+[Obsolete]
 public class CompanyEntityEvent : BaseEvent
 {
     /// <summary>
