@@ -1,13 +1,12 @@
-﻿// <copyright file="HexalithServerApplication.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="HexalithServerApplication.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace Hexalith.Application.Modules.Applications;
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Reflection;
 
 /// <summary>
@@ -67,4 +66,34 @@ public abstract class HexalithServerApplication : HexalithApplication, IServerAp
 
     /// <inheritdoc/>
     public override string Version => Shared.Version;
+
+    /// <summary>
+    /// Registers the actors associated with the application.
+    /// </summary>
+    /// <param name="actors">The actor collection.</param>
+    public void RegisterActors(object actors)
+    {
+        ArgumentNullException.ThrowIfNull(actors, nameof(actors));
+
+        foreach (Type module in ServerModules)
+        {
+            MethodInfo? moduleMethod = module.GetMethod(
+                nameof(RegisterActors),
+                BindingFlags.Public | BindingFlags.Static,
+                null,
+                [typeof(object)],
+                null);
+            if (moduleMethod == null)
+            {
+                Debug.WriteLine(
+                    $"The actors for module {module.Name} are not registered. The module does not have the following static method:"
+                    + $" {nameof(RegisterActors)}(object actors).");
+            }
+            else
+            {
+                _ = moduleMethod.Invoke(null, [actors]);
+                Debug.WriteLine($"The actors for module {module.Name} are have been added.");
+            }
+        }
+    }
 }

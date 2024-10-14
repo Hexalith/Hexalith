@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using Dapr.Actors;
 using Dapr.Actors.Client;
 
+using Hexalith.Application;
 using Hexalith.Application.Commands;
 using Hexalith.Application.MessageMetadatas;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
@@ -29,8 +30,6 @@ public partial class DomainActorCommandProcessor : IDomainCommandProcessor
     /// </summary>
     private readonly IActorProxyFactory _actorProxy;
 
-    private readonly JsonSerializerOptions _jsonOptions;
-
     /// <summary>
     /// The logger.
     /// </summary>
@@ -40,15 +39,13 @@ public partial class DomainActorCommandProcessor : IDomainCommandProcessor
     /// Initializes a new instance of the <see cref="DomainActorCommandProcessor"/> class.
     /// </summary>
     /// <param name="actorProxy">The actor proxy.</param>
-    /// <param name="jsonOptions">The serializer options.</param>
     /// <param name="logger">The logger.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
-    public DomainActorCommandProcessor(IActorProxyFactory actorProxy, JsonSerializerOptions jsonOptions, ILogger<DomainActorCommandProcessor> logger)
+    public DomainActorCommandProcessor(IActorProxyFactory actorProxy, ILogger<DomainActorCommandProcessor> logger)
     {
         ArgumentNullException.ThrowIfNull(actorProxy);
         ArgumentNullException.ThrowIfNull(logger);
         _actorProxy = actorProxy;
-        _jsonOptions = jsonOptions;
         _logger = logger;
     }
 
@@ -75,8 +72,9 @@ public partial class DomainActorCommandProcessor : IDomainCommandProcessor
         {
             LogSendingCommandToActor(_logger, metadata.Message.Name, metadata.Message.Aggregate.Id, actorName);
             IDomainAggregateActor actor = _actorProxy.CreateActorProxy<IDomainAggregateActor>(new ActorId(metadata.Message.Aggregate.Id), actorName);
-            ActorMessageEnvelope envelope = ActorMessageEnvelope.Create(command, metadata, _jsonOptions);
-            await actor.SubmitCommandAsync(envelope).ConfigureAwait(false);
+            ActorMessageEnvelope envelope = ActorMessageEnvelope.Create(command, metadata);
+            string json = JsonSerializer.Serialize(envelope, ApplicationConstants.DefaultJsonSerializerOptions);
+            await actor.SubmitCommandAsJsonAsync(json).ConfigureAwait(false);
         }
         catch (Exception e)
         {

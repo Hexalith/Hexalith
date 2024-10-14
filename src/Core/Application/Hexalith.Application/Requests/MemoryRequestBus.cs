@@ -26,12 +26,12 @@ using Hexalith.Extensions.Common;
 /// Memory Request Bus.
 /// </summary>
 /// <param name="dateTimeService">The date time service.</param>
-public class MemoryRequestBus(IDateTimeService dateTimeService) : IRequestBus
+public class MemoryRequestBus(TimeProvider dateTimeService) : IRequestBus
 {
     /// <summary>
     /// The date time service.
     /// </summary>
-    private readonly IDateTimeService _dateTimeService = dateTimeService;
+    private readonly TimeProvider _dateTimeService = dateTimeService;
 
     private readonly List<(object, MessageMetadatas.Metadata)> _messageStream = [];
 
@@ -58,7 +58,7 @@ public class MemoryRequestBus(IDateTimeService dateTimeService) : IRequestBus
     {
         ArgumentNullException.ThrowIfNull(request);
         ArgumentNullException.ThrowIfNull(metadata);
-        await PublishAsync(new RequestState(_dateTimeService.UtcNow, request, metadata), cancellationToken).ConfigureAwait(false);
+        await PublishAsync(new RequestState(_dateTimeService.GetUtcNow(), request, metadata), cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>

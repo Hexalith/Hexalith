@@ -44,7 +44,7 @@ using Microsoft.Extensions.Options;
 /// <param name="dateTimeService">The date time service.</param>
 /// <param name="settings">The settings.</param>
 /// <param name="logger">The logger.</param>
-public class DaprNotificationBus(DaprClient client, IDateTimeService dateTimeService, IOptions<NotificationBusSettings> settings, ILogger<DaprNotificationBus> logger)
+public class DaprNotificationBus(DaprClient client, TimeProvider dateTimeService, IOptions<NotificationBusSettings> settings, ILogger<DaprNotificationBus> logger)
     : DaprApplicationBus<BaseNotification, BaseMetadata, NotificationState>(
     client,
     dateTimeService,

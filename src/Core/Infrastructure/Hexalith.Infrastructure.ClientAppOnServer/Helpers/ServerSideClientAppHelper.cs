@@ -8,11 +8,13 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 
+using Dapr.Actors.Client;
 using Dapr.Actors.Runtime;
 
 using FluentValidation;
 
 using Hexalith.Application;
+using Hexalith.Application.Aggregates;
 using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Modules.Applications;
@@ -22,6 +24,7 @@ using Hexalith.Application.Tasks;
 using Hexalith.Infrastructure.ClientApp.Helpers;
 using Hexalith.Infrastructure.ClientApp.Services;
 using Hexalith.Infrastructure.ClientAppOnServer.Services;
+using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.WebApis.Helpers;
 
@@ -31,6 +34,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 using Serilog;
 
@@ -99,7 +103,6 @@ public static class ServerSideClientAppHelper
     /// <param name="args">The command-line arguments.</param>
     /// <returns>The web application builder.</returns>
     /// <exception cref="InvalidOperationException">Thrown when the connection string 'DefaultConnection' is not found.</exception>
-    [Obsolete]
     public static WebApplicationBuilder CreateServerSideClientApplication(
         string applicationName,
         string sessionCookieName,
@@ -137,7 +140,7 @@ public static class ServerSideClientAppHelper
                 dapr.UseJsonSerializationOptions(ApplicationConstants.DefaultJsonSerializerOptions);
                 if (builder.Environment.IsDevelopment())
                 {
-                    dapr.UseTimeout(TimeSpan.FromMinutes(3));
+                    dapr.UseTimeout(TimeSpan.FromMinutes(1));
                 }
             });
 
@@ -162,8 +165,13 @@ public static class ServerSideClientAppHelper
 
         _ = builder.Services.AddValidatorsFromAssemblyContaining<CommandBusSettingsValidator>(ServiceLifetime.Singleton);
         builder.Services.TryAddSingleton<IResiliencyPolicyProvider, ResiliencyPolicyProvider>();
-        builder.Services.TryAddScoped<ICommandDispatcher, DependencyInjectionCommandDispatcher>();
+        builder.Services.TryAddScoped<IDomainCommandDispatcher, DependencyInjectionDomainCommandDispatcher>();
         builder.Services.TryAddScoped<IProjectionUpdateProcessor, DependencyInjectionProjectionUpdateProcessor>();
+        builder.Services.TryAddSingleton<IDomainAggregateFactory, DomainAggregateFactory>();
+        builder.Services
+            .TryAddSingleton<IDomainCommandProcessor>((s) => new DomainActorCommandProcessor(
+            ActorProxy.DefaultProxyFactory,
+            s.GetRequiredService<ILogger<DomainActorCommandProcessor>>()));
 
         _ = builder.Services
             .AddDistributedMemoryCache()

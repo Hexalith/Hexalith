@@ -38,7 +38,7 @@ public class BusCommandProcessor : ICommandProcessor
     /// <param name="bus">The bus.</param>
     /// <param name="dateTimeService">The date time service.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
-    public BusCommandProcessor([NotNull] ICommandBus bus, [NotNull] IDateTimeService dateTimeService)
+    public BusCommandProcessor([NotNull] ICommandBus bus, [NotNull] TimeProvider dateTimeService)
     {
         ArgumentNullException.ThrowIfNull(bus);
         ArgumentNullException.ThrowIfNull(dateTimeService);

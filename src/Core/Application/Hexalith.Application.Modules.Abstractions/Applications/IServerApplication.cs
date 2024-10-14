@@ -1,7 +1,5 @@
-﻿// <copyright file="IServerApplication.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="IServerApplication.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 namespace Hexalith.Application.Modules.Applications;
 
@@ -33,4 +31,10 @@ public interface IServerApplication : IApplication
     /// Must be a type that implements <see cref="ISharedApplication"/>.
     /// </summary>
     Type SharedApplicationType { get; }
+
+    /// <summary>
+    /// Registers the actors associated with the application.
+    /// </summary>
+    /// <param name="actors">The actor collection.</param>
+    void RegisterActors(object actors);
 }

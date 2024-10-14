@@ -48,7 +48,7 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
     private readonly IAggregateFactory _aggregateFactory;
     private readonly ICommandBus _commandBus;
     private readonly ICommandDispatcher _commandDispatcher;
-    private readonly IDateTimeService _dateTimeService;
+    private readonly TimeProvider _dateTimeService;
     private readonly TimeSpan _defaultTimerDueTime = TimeSpan.FromMilliseconds(1);
     private readonly IEventBus _eventBus;
     private readonly ActorHost _host;
@@ -87,7 +87,7 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
         ActorHost host,
         ICommandDispatcher commandDispatcher,
         IAggregateFactory aggregateFactory,
-        IDateTimeService dateTimeService,
+        TimeProvider dateTimeService,
         IEventBus eventBus,
         INotificationBus notificationBus,
         ICommandBus commandBus,
@@ -242,17 +242,17 @@ public abstract partial class AggregateActorBase : Actor, IRemindable, IAggregat
 
         SnapshotEvent e = new(aggregate);
         return new EventState(
-            _dateTimeService.UtcNow,
+            _dateTimeService.GetUtcNow(),
             e,
             new Metadata(
                 new MessageMetadata(
                     UniqueIdHelper.GenerateUniqueStringId(),
-                    _dateTimeService.UtcNow,
+                    _dateTimeService.GetUtcNow(),
                     e),
                 new ContextMetadata(
                     UniqueIdHelper.GenerateUniqueStringId(),
                     "system",
-                    _dateTimeService.UtcNow,
+                    _dateTimeService.GetUtcNow(),
                     null,
                     null),
                 null));

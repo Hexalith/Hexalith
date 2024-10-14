@@ -27,12 +27,12 @@ using Hexalith.Extensions.Common;
 /// Memory Notification Bus.
 /// </summary>
 /// <param name="dateTimeService">The date time service.</param>
-public class MemoryNotificationBus(IDateTimeService dateTimeService) : INotificationBus
+public class MemoryNotificationBus(TimeProvider dateTimeService) : INotificationBus
 {
     /// <summary>
     /// The date time service.
     /// </summary>
-    private readonly IDateTimeService _dateTimeService = dateTimeService;
+    private readonly TimeProvider _dateTimeService = dateTimeService;
 
     private readonly List<(object, MessageMetadatas.Metadata)> _messageStream = [];
 
@@ -58,7 +58,7 @@ public class MemoryNotificationBus(IDateTimeService dateTimeService) : INotifica
     public async Task PublishAsync(BaseNotification notification, BaseMetadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(notification);
-        await PublishAsync(new NotificationState(_dateTimeService.UtcNow, notification, metadata), cancellationToken).ConfigureAwait(false);
+        await PublishAsync(new NotificationState(_dateTimeService.GetUtcNow(), notification, metadata), cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>

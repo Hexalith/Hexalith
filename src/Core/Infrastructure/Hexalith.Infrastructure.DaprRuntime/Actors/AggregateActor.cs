@@ -30,7 +30,7 @@ public partial class AggregateActor(
     ActorHost host,
     ICommandDispatcher commandDispatcher,
     IAggregateFactory aggregateFactory,
-    IDateTimeService dateTimeService,
+    TimeProvider dateTimeService,
     IEventBus eventBus,
     INotificationBus notificationBus,
     ICommandBus commandBus,

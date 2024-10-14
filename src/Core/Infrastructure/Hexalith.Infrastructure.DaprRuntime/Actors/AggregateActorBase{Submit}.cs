@@ -66,7 +66,7 @@ public abstract partial class AggregateActorBase
                 throw new InvalidOperationException($"Submitted command to {Host.ActorTypeInfo.ActorTypeName}/{Id} has an invalid aggregate id : {command.AggregateId}.");
             }
 
-            CommandState commandState = new(_dateTimeService.UtcNow, command, metadata);
+            CommandState commandState = new(_dateTimeService.GetUtcNow(), command, metadata);
             commandStates.Add(commandState);
             LogAcceptedCommandInformation(
                 Logger,

@@ -22,7 +22,6 @@ using Hexalith.Application.Envelopes;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.States;
 using Hexalith.Domain.Messages;
-using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 
 using Microsoft.Extensions.Logging;
@@ -46,7 +45,8 @@ public partial class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageB
     /// <summary>
     /// The date time service.
     /// </summary>
-    private readonly IDateTimeService _dateTimeService;
+    [Obsolete]
+    private readonly TimeProvider _dateTimeService;
 
     /// <summary>
     /// The logger.
@@ -72,9 +72,10 @@ public partial class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageB
     /// <param name="topicSuffix">The topic suffix.</param>
     /// <param name="logger">The logger.</param>
     /// <exception cref="ArgumentNullException">Argument null.</exception>
+    [Obsolete]
     public DaprApplicationBus(
         DaprClient daprClient,
-        IDateTimeService dateTimeService,
+        TimeProvider dateTimeService,
         string name,
         string topicSuffix,
         ILogger logger)
@@ -114,6 +115,7 @@ public partial class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageB
     public partial void LogMessageSent(string messageName, string messageId, string correlationId, string topicName, string busName);
 
     /// <inheritdoc/>
+    [Obsolete]
     public async Task PublishAsync(IEnvelope<TMessage, TMetadata> envelope, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(envelope);
@@ -121,11 +123,12 @@ public partial class DaprApplicationBus<TMessage, TMetadata, TState> : IMessageB
     }
 
     /// <inheritdoc/>
+    [Obsolete]
     public async Task PublishAsync(TMessage message, TMetadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(message);
         ArgumentNullException.ThrowIfNull(metadata);
-        TState state = new() { ReceivedDate = _dateTimeService.UtcNow, Message = message, Metadata = metadata };
+        TState state = new() { ReceivedDate = _dateTimeService.GetUtcNow(), Message = message, Metadata = metadata };
         await PublishAsync(state, cancellationToken).ConfigureAwait(false);
     }
 

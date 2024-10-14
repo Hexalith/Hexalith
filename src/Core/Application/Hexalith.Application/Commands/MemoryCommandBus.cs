@@ -20,18 +20,17 @@ using System.Threading.Tasks;
 using Hexalith.Application.Envelopes;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.States;
-using Hexalith.Extensions.Common;
 
 /// <summary>
 /// Memory Command Bus.
 /// </summary>
 /// <param name="dateTimeService">The date time service.</param>
-public class MemoryCommandBus(IDateTimeService dateTimeService) : ICommandBus
+public class MemoryCommandBus(TimeProvider dateTimeService) : ICommandBus
 {
     /// <summary>
     /// The date time service.
     /// </summary>
-    private readonly IDateTimeService _dateTimeService = dateTimeService;
+    private readonly TimeProvider _dateTimeService = dateTimeService;
 
     private readonly List<(object, MessageMetadatas.Metadata)> _messagestream = [];
 
@@ -58,7 +57,7 @@ public class MemoryCommandBus(IDateTimeService dateTimeService) : ICommandBus
     {
         ArgumentNullException.ThrowIfNull(command);
         ArgumentNullException.ThrowIfNull(metadata);
-        await PublishAsync(new CommandState(_dateTimeService.UtcNow, command, metadata), cancellationToken).ConfigureAwait(false);
+        await PublishAsync(new CommandState(_dateTimeService.GetUtcNow(), command, metadata), cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>

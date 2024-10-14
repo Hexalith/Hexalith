@@ -6,10 +6,8 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 05-01-2023
 // ***********************************************************************
-// <copyright file="Projection.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+// <copyright file="Projection.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -25,7 +23,6 @@ using Hexalith.Application.Notifications;
 using Hexalith.Application.Requests;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.Notifications;
-using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 
 /// <summary>
@@ -36,7 +33,7 @@ using Hexalith.Extensions.Helpers;
 [DataContract]
 public abstract class Projection : IProjection
 {
-    private readonly IDateTimeService _dateTimeService;
+    private readonly TimeProvider _dateTimeService;
 
     /// <summary>
     /// The notification bus.
@@ -49,7 +46,7 @@ public abstract class Projection : IProjection
     /// <param name="notificationBus">The notification bus.</param>
     /// <param name="dateTimeService">The date time service.</param>
     /// <exception cref="ArgumentNullException">null.</exception>
-    protected Projection(INotificationBus notificationBus, IDateTimeService dateTimeService)
+    protected Projection(INotificationBus notificationBus, TimeProvider dateTimeService)
     {
         ArgumentNullException.ThrowIfNull(notificationBus);
         ArgumentNullException.ThrowIfNull(dateTimeService);
@@ -74,8 +71,8 @@ public abstract class Projection : IProjection
                 new Metadata(
                     UniqueIdHelper.GenerateUniqueStringId(),
                     result,
-                    _dateTimeService.Now,
-                    new ContextMetadata(correlationId, userId, _dateTimeService.Now, null, sessionId),
+                    _dateTimeService.GetLocalNow(),
+                    new ContextMetadata(correlationId, userId, _dateTimeService.GetLocalNow(), null, sessionId),
                     null),
                 cancellationToken)
             .ConfigureAwait(false);

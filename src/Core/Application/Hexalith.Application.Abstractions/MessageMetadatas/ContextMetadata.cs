@@ -48,7 +48,7 @@ public record ContextMetadata(
     /// </summary>
     [Obsolete(DefaultLabels.ForSerializationOnly, true)]
     public ContextMetadata()
-        : this(string.Empty, string.Empty, string.Empty, null, null, string.Empty, [])
+        : this(string.Empty, string.Empty, string.Empty, null, null, null, [])
     {
     }
 

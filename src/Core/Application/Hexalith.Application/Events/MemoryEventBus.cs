@@ -18,12 +18,12 @@ using Hexalith.Extensions.Common;
 /// Memory Event Bus.
 /// </summary>
 /// <param name="dateTimeService">The date time service.</param>
-public class MemoryEventBus(IDateTimeService dateTimeService) : IEventBus
+public class MemoryEventBus(TimeProvider dateTimeService) : IEventBus
 {
     /// <summary>
     /// The date time service.
     /// </summary>
-    private readonly IDateTimeService _dateTimeService = dateTimeService;
+    private readonly TimeProvider _dateTimeService = dateTimeService;
 
     private readonly List<(object, MessageMetadatas.Metadata)> _messageStream = [];
 
@@ -50,7 +50,7 @@ public class MemoryEventBus(IDateTimeService dateTimeService) : IEventBus
     {
         ArgumentNullException.ThrowIfNull(baseEvent);
         ArgumentNullException.ThrowIfNull(metadata);
-        await PublishAsync(new EventState(_dateTimeService.UtcNow, baseEvent, metadata), cancellationToken).ConfigureAwait(false);
+        await PublishAsync(new EventState(_dateTimeService.GetUtcNow(), baseEvent, metadata), cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>

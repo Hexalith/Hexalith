@@ -14,11 +14,13 @@ using Hexalith.PolymorphicSerialization;
 /// </summary>
 public static class ApplicationConstants
 {
+    private static JsonSerializerOptions? _defaultJsonSerializerOptions;
+
     /// <summary>
     /// Gets the default JSON serializer options.
     /// </summary>
-    public static JsonSerializerOptions DefaultJsonSerializerOptions
-        => new()
+    public static JsonSerializerOptions DefaultJsonSerializerOptions => _defaultJsonSerializerOptions ??=
+        new()
         {
             WriteIndented = true,
             DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,

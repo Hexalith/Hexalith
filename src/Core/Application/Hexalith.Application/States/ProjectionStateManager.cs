@@ -31,7 +31,7 @@ public class ProjectionStateManager : IProjectionStateManager
     /// <summary>
     /// The date time service.
     /// </summary>
-    private readonly IDateTimeService _dateTimeService;
+    private readonly TimeProvider _dateTimeService;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ProjectionStateManager" /> class.
@@ -41,7 +41,7 @@ public class ProjectionStateManager : IProjectionStateManager
     /// <exception cref="System.ArgumentNullException">null.</exception>
     public ProjectionStateManager(
         INotificationBus notificationBus,
-        IDateTimeService dateTimeService)
+        TimeProvider dateTimeService)
     {
         ArgumentNullException.ThrowIfNull(dateTimeService);
         ArgumentNullException.ThrowIfNull(notificationBus);
@@ -105,7 +105,7 @@ public class ProjectionStateManager : IProjectionStateManager
         List<EventState> states = [];
         for (int i = 0; i < events.Length; i++)
         {
-            states.Add(new EventState(_dateTimeService.UtcNow, events[i], metadatas[i]));
+            states.Add(new EventState(_dateTimeService.GetUtcNow(), events[i], metadatas[i]));
         }
 
         long version = await eventStore.AddAsync(
@@ -152,7 +152,7 @@ public class ProjectionStateManager : IProjectionStateManager
         {
             if (retry != null)
             {
-                TimeSpan waitTime = retry.Value - _dateTimeService.Now;
+                TimeSpan waitTime = retry.Value - _dateTimeService.GetLocalNow();
                 if (waitTime < TimeSpan.Zero)
                 {
                     waitTime = TimeSpan.Zero;

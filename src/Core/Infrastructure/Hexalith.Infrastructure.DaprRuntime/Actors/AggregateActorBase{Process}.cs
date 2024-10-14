@@ -140,7 +140,7 @@ public abstract partial class AggregateActorBase
             return taskProcessorState.Value;
         }
 
-        TaskProcessor task = new(_dateTimeService.UtcNow, ResiliencyPolicy);
+        TaskProcessor task = new(_dateTimeService.GetUtcNow(), ResiliencyPolicy);
         return task.Start();
     }
 
@@ -170,7 +170,7 @@ public abstract partial class AggregateActorBase
         }
         else
         {
-            if (previousFailure == null || _dateTimeService.UtcNow.Subtract(previousFailure.Date) > _minimumDuplicateNotificationPeriod)
+            if (previousFailure == null || _dateTimeService.GetUtcNow().Subtract(previousFailure.Date) > _minimumDuplicateNotificationPeriod)
             {
                 messages = [new ApplicationExceptionNotification(
                 command.AggregateName,
@@ -179,7 +179,7 @@ public abstract partial class AggregateActorBase
             }
 
             state.RetryOnFailurePeriod = taskProcessor.RetryPeriod;
-            state.RetryOnFailureDateTime = _dateTimeService.UtcNow + taskProcessor.RetryPeriod;
+            state.RetryOnFailureDateTime = _dateTimeService.GetUtcNow() + taskProcessor.RetryPeriod;
             LogTaskProcessorRetryInformation(
                 Logger,
                 command.TypeName,
@@ -288,7 +288,7 @@ public abstract partial class AggregateActorBase
             // Apply events to aggregate
             (_aggregate, integrationMessages) = aggregate.Apply(aggregateEvents);
             EventState[] aggregateEventStates = aggregateEvents
-                .Select(p => new EventState(_dateTimeService.UtcNow, p, Metadata.CreateNew(p, metadata)))
+                .Select(p => new EventState(_dateTimeService.GetUtcNow(), p, Metadata.CreateNew(p, metadata)))
                 .ToArray();
 
             // Persist events and messages
@@ -335,7 +335,7 @@ public abstract partial class AggregateActorBase
             .OfType<BaseMessage>()
             .Where(p => !p.IsPrivateToAggregate)
             .Union(integrationMessages)
-            .Select(p => new MessageState(_dateTimeService.UtcNow, p, Metadata.CreateNew(p, metadata)))
+            .Select(p => new MessageState(_dateTimeService.GetUtcNow(), p, Metadata.CreateNew(p, metadata)))
             .ToArray();
 
         if (messagesToSend.Length > 0)

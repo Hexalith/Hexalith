@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 using Dapr.Actors.Runtime;
 
+using Hexalith.Application;
 using Hexalith.Application.Aggregates;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
@@ -362,12 +363,32 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     }
 
     /// <inheritdoc/>
+    public async Task SubmitCommandAsJsonAsync(string envelope)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(envelope);
+
+        ActorMessageEnvelope? e = JsonSerializer.Deserialize<ActorMessageEnvelope>(envelope, ApplicationConstants.DefaultJsonSerializerOptions)
+            ?? throw new InvalidOperationException("The specified command envelope is invalid : " + envelope);
+        await SubmitCommandAsync(e).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
     public async Task SubmitCommandAsync(ActorMessageEnvelope envelope)
+    {
+        ArgumentNullException.ThrowIfNull(envelope);
+
+        (object command, Metadata metadata) = envelope.Deserialize();
+        await SubmitCommandAsStateAsync(MessageState.Create(command, metadata)).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task SubmitCommandAsStateAsync(MessageState envelope)
     {
         CancellationToken cancellationToken = CancellationToken.None;
         ArgumentNullException.ThrowIfNull(envelope);
 
-        (object command, Metadata metadata) = envelope.Deserialize(_jsonOptions);
+        object command = envelope.Message;
+        Metadata metadata = envelope.Metadata;
         if (GetAggregateActorName(metadata.Message.Aggregate.Name) != Host.ActorTypeInfo.ActorTypeName)
         {
             throw new InvalidOperationException($"Submitted command to {Host.ActorTypeInfo.ActorTypeName}/{Id} has an invalid aggregate name : {metadata.Message.Aggregate.Name}.");

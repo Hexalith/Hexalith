@@ -44,7 +44,7 @@ using Microsoft.Extensions.Options;
 /// <param name="dateTimeService">The date time service.</param>
 /// <param name="settings">The settings.</param>
 /// <param name="logger">The logger.</param>
-public class DaprCommandBus(DaprClient client, IDateTimeService dateTimeService, IOptions<CommandBusSettings> settings, ILogger<DaprCommandBus> logger)
+public class DaprCommandBus(DaprClient client, TimeProvider dateTimeService, IOptions<CommandBusSettings> settings, ILogger<DaprCommandBus> logger)
     : DaprApplicationBus<BaseCommand, BaseMetadata, CommandState>(
     client,
     dateTimeService,

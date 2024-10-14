@@ -63,4 +63,18 @@ public interface IDomainAggregateActor : IActor
     /// <param name="envelope">The envelope.</param>
     /// <returns>Task.</returns>
     Task SubmitCommandAsync(ActorMessageEnvelope envelope);
+
+    /// <summary>
+    /// Submits the command asynchronous.
+    /// </summary>
+    /// <param name="envelope">The envelope.</param>
+    /// <returns>Task.</returns>
+    Task SubmitCommandAsJsonAsync(string envelope);
+
+    /// <summary>
+    /// Submits the command asynchronous.
+    /// </summary>
+    /// <param name="envelope">The envelope.</param>
+    /// <returns>Task.</returns>
+    Task SubmitCommandAsStateAsync(MessageState envelope);
 }

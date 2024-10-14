@@ -43,7 +43,7 @@ using Microsoft.Extensions.Options;
 /// <param name="dateTimeService">The date time service.</param>
 /// <param name="settings">The settings.</param>
 /// <param name="logger">The logger.</param>
-public class DaprRequestBus(DaprClient client, IDateTimeService dateTimeService, IOptions<RequestBusSettings> settings, ILogger<DaprRequestBus> logger) : DaprApplicationBus<BaseRequest, BaseMetadata, RequestState>(
+public class DaprRequestBus(DaprClient client, TimeProvider dateTimeService, IOptions<RequestBusSettings> settings, ILogger<DaprRequestBus> logger) : DaprApplicationBus<BaseRequest, BaseMetadata, RequestState>(
     client,
     dateTimeService,
     string.IsNullOrWhiteSpace(settings?.Value.Name) ? throw new ArgumentException($"The name of the request bus is not defined in settings ({RequestBusSettings.ConfigurationName()}.{nameof(RequestBusSettings.Name)}).", nameof(settings)) : settings.Value.Name,

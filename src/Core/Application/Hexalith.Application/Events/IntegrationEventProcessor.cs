@@ -1,7 +1,5 @@
-﻿// <copyright file="IntegrationEventProcessor.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="IntegrationEventProcessor.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace Hexalith.Application.Events;
@@ -14,7 +12,6 @@ using Hexalith.Application.Errors;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.Notifications;
 using Hexalith.Domain.Events;
-using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Errors;
 
 using Microsoft.Extensions.Logging;
@@ -34,7 +31,7 @@ public partial class IntegrationEventProcessor : IIntegrationEventProcessor
     /// <summary>
     /// The date time service.
     /// </summary>
-    private readonly IDateTimeService _dateTimeService;
+    private readonly TimeProvider _dateTimeService;
 
     private readonly IIntegrationEventDispatcher _dispatcher;
     private readonly ILogger<IntegrationEventProcessor> _logger;
@@ -53,7 +50,7 @@ public partial class IntegrationEventProcessor : IIntegrationEventProcessor
         IIntegrationEventDispatcher dispatcher,
         ICommandBus commandBus,
         INotificationBus notificationBus,
-        IDateTimeService dateTimeService,
+        TimeProvider dateTimeService,
         ILogger<IntegrationEventProcessor> logger)
     {
         ArgumentNullException.ThrowIfNull(dispatcher);
@@ -96,7 +93,7 @@ public partial class IntegrationEventProcessor : IIntegrationEventProcessor
             {
                 await _commandBus.PublishAsync(
                         command,
-                        Metadata.CreateNew(command, metadata, _dateTimeService.UtcNow),
+                        Metadata.CreateNew(command, metadata, _dateTimeService.GetUtcNow()),
                         cancellationToken)
                     .ConfigureAwait(false);
             }
@@ -113,7 +110,7 @@ public partial class IntegrationEventProcessor : IIntegrationEventProcessor
                 baseEvent.AggregateName,
                 baseEvent.AggregateId,
                 appException);
-            DateTimeOffset date = _dateTimeService.UtcNow;
+            DateTimeOffset date = _dateTimeService.GetUtcNow();
             try
             {
                 await _notificationBus.PublishAsync(

@@ -6,10 +6,8 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 10-16-2023
 // ***********************************************************************
-// <copyright file="HexalithWebApi.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+// <copyright file="HexalithWebApi.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -19,17 +17,16 @@ namespace Hexalith.Infrastructure.WebApis.Helpers;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
-using Dapr.Actors;
 using Dapr.Actors.Runtime;
 
 using FluentValidation;
 
+using Hexalith.Application;
 using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Projections;
 using Hexalith.Application.Tasks;
 using Hexalith.Domain.Messages;
-using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.AspireService.Defaults;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
@@ -55,6 +52,7 @@ public static partial class HexalithWebApi
     /// <param name="registerActors">The register actors.</param>
     /// <param name="args">The arguments.</param>
     /// <returns>WebApplicationBuilder.</returns>
+    [Obsolete]
     public static WebApplicationBuilder CreateApplication(
         string applicationName,
         string version,
@@ -92,9 +90,8 @@ public static partial class HexalithWebApi
         {
             // Register actor types and configure actor settings
             registerActors(options.Actors);
-            options.DrainOngoingCallTimeout = TimeSpan.FromMinutes(10);
-            options.ReentrancyConfig = new ActorReentrancyConfig { Enabled = true };
-            options.RemindersStoragePartitions = 10;
+            options.UseJsonSerialization = true;
+            options.JsonSerializerOptions = ApplicationConstants.DefaultJsonSerializerOptions;
         });
         _ = builder
             .Services
@@ -114,7 +111,7 @@ public static partial class HexalithWebApi
         //    _ = builder.Services.AddDaprSidekick(builder.Configuration);
         // }
         _ = builder.Services.AddValidatorsFromAssemblyContaining<CommandBusSettingsValidator>(ServiceLifetime.Singleton);
-        builder.Services.TryAddSingleton<IDateTimeService, DateTimeService>();
+        builder.Services.TryAddSingleton(TimeProvider.System);
         builder.Services.TryAddSingleton<IResiliencyPolicyProvider, ResiliencyPolicyProvider>();
         builder.Services.TryAddScoped<ICommandDispatcher, DependencyInjectionCommandDispatcher>();
         builder.Services.TryAddScoped<IProjectionUpdateProcessor, DependencyInjectionProjectionUpdateProcessor>();
