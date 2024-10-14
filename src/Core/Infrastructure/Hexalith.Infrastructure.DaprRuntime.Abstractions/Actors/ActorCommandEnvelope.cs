@@ -1,16 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Infrastructure.DaprRuntime
-// Author           : jpiquot
-// Created          : 02-15-2023
-//
-// Last Modified By : jpiquot
-// Last Modified On : 03-11-2023
-// ***********************************************************************
-// <copyright file="ActorCommandEnvelope.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="ActorCommandEnvelope.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Infrastructure.DaprRuntime.Actors;
 

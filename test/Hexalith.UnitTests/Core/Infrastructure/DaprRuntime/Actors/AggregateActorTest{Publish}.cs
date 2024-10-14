@@ -1,5 +1,6 @@
-﻿// <copyright file="AggregateActorTest{Publish}.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="AggregateActorTest{Publish}.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.UnitTests.Core.Infrastructure.DaprRuntime.Actors;
@@ -17,7 +18,6 @@ using Hexalith.Application.Notifications;
 using Hexalith.Application.Requests;
 using Hexalith.Application.States;
 using Hexalith.Application.Tasks;
-using Hexalith.Extensions.Common;
 using Hexalith.Infrastructure.DaprRuntime;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Sales.Actors;

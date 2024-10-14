@@ -1,16 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Infrastructure.DaprBus
-// Author           : Jérôme Piquot
-// Created          : 01-13-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 02-05-2023
-// ***********************************************************************
-// <copyright file="DaprApplicationBus.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="DaprApplicationBus.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Infrastructure.DaprRuntime.Buses;
 

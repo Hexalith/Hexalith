@@ -1,18 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.UnitTests
-// Author           : Jérôme Piquot
-// Created          : 01-06-2024
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 01-10-2024
-// ***********************************************************************
-// <copyright file="AggregateActorTest{Process}.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="AggregateActorTest{Process}.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.UnitTests.Core.Infrastructure.DaprRuntime.Actors;
 
@@ -30,7 +19,6 @@ using Hexalith.Application.Requests;
 using Hexalith.Application.States;
 using Hexalith.Application.Tasks;
 using Hexalith.Domain.Aggregates;
-using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Errors;
 using Hexalith.Infrastructure.DaprRuntime;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
@@ -48,6 +36,7 @@ public partial class AggregateActorTest
     /// </summary>
     /// <returns>System.Threading.Tasks.Task.</returns>
     [Fact]
+    [Obsolete]
     public async Task ProcessCommandWithOneErrorShouldSetReminderDueTimeForTwoRetries()
     {
         DummyAggregateCommand1 command = new() { Id = "123456" };
@@ -190,6 +179,7 @@ public partial class AggregateActorTest
     /// </summary>
     /// <returns>System.Threading.Tasks.Task.</returns>
     [Fact]
+    [Obsolete]
     public async Task ProcessManyCommandsShouldStoreEventsAndMessages()
     {
         DummyAggregateCommand1 command8 = new() { Id = "123456", Name = "Command8" };
@@ -597,6 +587,7 @@ public partial class AggregateActorTest
     /// </summary>
     /// <returns>System.Threading.Tasks.Task.</returns>
     [Fact]
+    [Obsolete]
     public async Task ProcessSecondCommandShouldStoreEventAndMessage()
     {
         DummyAggregateCommand1 command = new() { Id = "123456" };

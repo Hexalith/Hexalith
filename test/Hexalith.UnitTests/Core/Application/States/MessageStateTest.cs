@@ -1,5 +1,6 @@
-﻿// <copyright file="MessageStateTest.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="MessageStateTest.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.UnitTests.Core.Application.States;
@@ -23,7 +24,7 @@ public class MessageStateTest
     [Fact]
     public void StateSerializationAndDeserializationShouldReturnSameObject()
     {
-        if (!PolymorphicSerializationResolver.DefaultMappers.Any(p => p.JsonDerivedType.DerivedType == typeof(MyDummyMessage)))
+        if (PolymorphicSerializationResolver.DefaultMappers.All(p => p.JsonDerivedType.DerivedType != typeof(MyDummyMessage)))
         {
             PolymorphicSerializationResolver.DefaultMappers = PolymorphicSerializationResolver.DefaultMappers.AddHexalithUnitTestsMappers();
         }
