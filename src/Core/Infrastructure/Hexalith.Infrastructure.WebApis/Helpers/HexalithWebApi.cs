@@ -1,16 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Infrastructure.WebApis
-// Author           : Jérôme Piquot
-// Created          : 09-12-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 10-16-2023
-// ***********************************************************************
-// <copyright file="HexalithWebApi.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="HexalithWebApi.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Infrastructure.WebApis.Helpers;
 

@@ -1,18 +1,8 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Infrastructure.DaprRuntime
-// Author           : Jérôme Piquot
-// Created          : 01-17-2024
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 01-17-2024
-// ***********************************************************************
-// <copyright file="DaprServicesHelper.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="DaprServicesHelper.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
+
 namespace Hexalith.Infrastructure.DaprRuntime.Helpers;
 
 using Hexalith.Application.Buses;

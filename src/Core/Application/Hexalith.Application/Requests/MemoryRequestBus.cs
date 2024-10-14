@@ -6,8 +6,9 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 02-04-2023
 // ***********************************************************************
-// <copyright file="MemoryRequestBus.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+// <copyright file="MemoryRequestBus.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -20,7 +21,6 @@ using System.Threading.Tasks;
 using Hexalith.Application.Envelopes;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.States;
-using Hexalith.Extensions.Common;
 
 /// <summary>
 /// Memory Request Bus.

@@ -6,8 +6,9 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 10-26-2023
 // ***********************************************************************
-// <copyright file="BusCommandProcessor.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+// <copyright file="BusCommandProcessor.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -21,7 +22,6 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Hexalith.Application.MessageMetadatas;
-using Hexalith.Extensions.Common;
 
 /// <summary>
 /// Class BusCommandProcessor.

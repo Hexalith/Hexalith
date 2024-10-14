@@ -1,5 +1,6 @@
-﻿// <copyright file="PolymorphicSerializationResolver.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="PolymorphicSerializationResolver.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.PolymorphicSerialization;
@@ -45,7 +46,7 @@ public class PolymorphicSerializationResolver : DefaultJsonTypeInfoResolver
     }
 
     /// <summary>
-    /// Gets the default mappers.
+    /// Gets or sets the default mappers.
     /// </summary>
     public static ICollection<IPolymorphicSerializationMapper> DefaultMappers { get; set; } = [];
 

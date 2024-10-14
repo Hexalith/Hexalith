@@ -1,18 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Extensions
-// Author           : jpiquot
-// Created          : 02-18-2023
-//
-// Last Modified By : jpiquot
-// Last Modified On : 02-18-2023
-// ***********************************************************************
-// <copyright file="FluentValidateOptions.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="FluentValidateOptions.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Extensions.Configuration;
 

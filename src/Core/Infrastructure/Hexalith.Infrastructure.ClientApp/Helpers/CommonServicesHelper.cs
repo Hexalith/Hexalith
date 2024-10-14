@@ -1,5 +1,6 @@
-﻿// <copyright file="CommonServicesHelper.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="CommonServicesHelper.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Infrastructure.ClientApp.Helpers;
@@ -25,7 +26,9 @@ public static class CommonServicesHelper
     /// <param name="services">The service collection.</param>
     /// <param name="configuration">The configuration.</param>
     /// <returns>The updated service collection.</returns>
-    public static IServiceCollection AddHexalithClientApp(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddHexalithClientApp(
+        this IServiceCollection services,
+        IConfiguration configuration)
         => services
             .AddMemoryCache()
             .AddLocalization(options => options.ResourcesPath = "Resources")
