@@ -30,7 +30,7 @@ public class MemoryEventBus(TimeProvider dateTimeService) : IEventBus
     {
         ArgumentNullException.ThrowIfNull(message);
         ArgumentNullException.ThrowIfNull(metadata);
-        _messageStream.Add((message, metadata));
+        MessageStream.Add((message, metadata));
         return Task.CompletedTask;
     }
 
@@ -38,7 +38,7 @@ public class MemoryEventBus(TimeProvider dateTimeService) : IEventBus
     public Task PublishAsync(MessageState message, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(message);
-        _messageStream.Add((message.Message, message.Metadata));
+        MessageStream.Add((message.Message, message.Metadata));
         return Task.CompletedTask;
     }
 }
