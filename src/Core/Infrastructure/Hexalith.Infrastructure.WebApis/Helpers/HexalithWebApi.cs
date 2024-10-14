@@ -52,7 +52,6 @@ public static partial class HexalithWebApi
     /// <param name="registerActors">The register actors.</param>
     /// <param name="args">The arguments.</param>
     /// <returns>WebApplicationBuilder.</returns>
-    [Obsolete]
     public static WebApplicationBuilder CreateApplication(
         string applicationName,
         string version,
@@ -113,7 +112,7 @@ public static partial class HexalithWebApi
         _ = builder.Services.AddValidatorsFromAssemblyContaining<CommandBusSettingsValidator>(ServiceLifetime.Singleton);
         builder.Services.TryAddSingleton(TimeProvider.System);
         builder.Services.TryAddSingleton<IResiliencyPolicyProvider, ResiliencyPolicyProvider>();
-        builder.Services.TryAddScoped<ICommandDispatcher, DependencyInjectionCommandDispatcher>();
+        builder.Services.TryAddScoped<IDomainCommandDispatcher, DependencyInjectionDomainCommandDispatcher>();
         builder.Services.TryAddScoped<IProjectionUpdateProcessor, DependencyInjectionProjectionUpdateProcessor>();
         return builder;
     }
