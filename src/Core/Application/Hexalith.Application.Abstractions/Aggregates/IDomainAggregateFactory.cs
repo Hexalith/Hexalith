@@ -18,7 +18,7 @@ public interface IDomainAggregateFactory
     /// Creates the specified aggregate name.
     /// </summary>
     /// <param name="aggregateName">Name of the aggregate.</param>
-    /// <returns>IAggregate.</returns>
+    /// <returns>IDomainAggregate.</returns>
     IDomainAggregate Create(string aggregateName);
 
     /// <summary>

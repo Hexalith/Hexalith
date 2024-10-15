@@ -41,7 +41,7 @@ public class CommandPromptGenerator : ICommandPromptGenerator
         string userName,
         string language,
         string correlationId)
-        where TCommand : BaseCommand, new()
+        where TCommand : object, new()
     {
         if (_prompts.TryGetValue(typeof(TCommand), out string prompt))
         {

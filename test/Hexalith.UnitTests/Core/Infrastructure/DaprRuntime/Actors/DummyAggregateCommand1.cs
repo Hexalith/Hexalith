@@ -12,7 +12,7 @@ using Hexalith.Application.Commands;
 
 [DataContract]
 [Serializable]
-public class DummyAggregateCommand1 : BaseCommand
+public class DummyAggregateCommand1 : object
 {
     public string Id { get; set; }
 

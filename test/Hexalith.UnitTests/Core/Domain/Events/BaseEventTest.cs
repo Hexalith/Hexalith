@@ -18,8 +18,8 @@ public class BaseEventTest
     public void PolymorphicSerializeAndDeserializeShouldReturnSameObject()
     {
         DummyEvent1 original = new("IB2343213FR", 655463);
-        string json = JsonSerializer.Serialize<BaseEvent>(original);
-        BaseEvent result = JsonSerializer.Deserialize<BaseEvent>(json);
+        string json = JsonSerializer.Serialize<object>(original);
+        object result = JsonSerializer.Deserialize<object>(json);
         _ = result.Should().NotBeNull();
         _ = result.Should().BeOfType<DummyEvent1>();
         _ = result.Should().BeEquivalentTo(original);

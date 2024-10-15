@@ -13,7 +13,7 @@ using Hexalith.Application.Commands;
 using Hexalith.Extensions.Common;
 
 [Display(Name = "Add a country", Description = "Add a new country")]
-public class AddCountryCommand : BaseCommand
+public class AddCountryCommand : object
 {
     [JsonConstructor]
     public AddCountryCommand(string iso2, string iso3, int isoNumber, string name, string currencyName, string currencySymbol)

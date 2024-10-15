@@ -1,41 +1,37 @@
-﻿// <copyright file="DummyBaseCommand.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="DummyBaseCommand.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.UnitTests.Core.Application.Commands;
 
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-
-using Hexalith.Application.Commands;
-using Hexalith.Application.Metadatas;
+using Hexalith.Application.MessageMetadatas;
 using Hexalith.Extensions.Helpers;
+using Hexalith.PolymorphicSerialization;
 
-public class DummyBaseCommand : BaseCommand
+[PolymorphicSerialization]
+public partial record DummyBaseCommand(string BaseValue)
 {
-    public DummyBaseCommand() => BaseValue = string.Empty;
-
-    [JsonConstructor]
-    public DummyBaseCommand(string baseValue) => BaseValue = baseValue;
-
-    [DataMember(Order = 2)]
-    [JsonPropertyOrder(2)]
-    public string BaseValue { get; set; }
-
     public Metadata CreateMetadata()
     {
         return new Metadata(
+            new MessageMetadata(
                 UniqueIdHelper.GenerateUniqueStringId(),
-                this,
-                DateTimeOffset.UtcNow,
-                new ContextMetadata(
-                    UniqueIdHelper.GenerateUniqueStringId(),
-                    "Test user",
-                    DateTimeOffset.UtcNow.AddMinutes(-1),
-                    1,
-                    "Test session"),
-                ["TestScope"]);
+                nameof(DummyBaseCommand),
+                3,
+                new AggregateMetadata(AggregateName, AggregateId),
+                DateTimeOffset.UtcNow),
+            new ContextMetadata(
+                UniqueIdHelper.GenerateUniqueStringId(),
+                "Test user",
+                "PART1",
+                DateTimeOffset.UtcNow.AddMinutes(-1),
+                100,
+                "SESS222",
+                ["TestScope"]));
     }
 
-    protected override string DefaultAggregateName() => "Test";
+    public string AggregateName => "Test";
+
+    public string AggregateId => BaseValue;
 }

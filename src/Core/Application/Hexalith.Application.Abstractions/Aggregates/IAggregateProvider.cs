@@ -28,6 +28,6 @@ public interface IAggregateProvider
     /// <summary>
     /// Creates this instance.
     /// </summary>
-    /// <returns>IAggregate.</returns>
+    /// <returns>IDomainAggregate.</returns>
     IDomainAggregate Create();
 }

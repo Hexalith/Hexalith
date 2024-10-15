@@ -4,7 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Domain.Dimensions.DimensionDefinitions.Entities;
+namespace Hexalith.Domain.Dimensions.DimensionCollectionDefinitions.Entities;
 
 using System;
 using System.Runtime.Serialization;
@@ -14,12 +14,12 @@ using Hexalith.Domain.Aggregates;
 /// <summary>
 /// Represents a role.
 /// Implements the <see cref="Aggregate" />
-/// Implements the <see cref="IAggregate" />
+/// Implements the <see cref="IDomainAggregate" />
 /// Implements the <see cref="IEquatable{Aggregate}" />
 /// Implements the <see cref="IEquatable{Role}" />.
 /// </summary>
 /// <seealso cref="Aggregate" />
-/// <seealso cref="IAggregate" />
+/// <seealso cref="IDomainAggregate" />
 /// <seealso cref="IEquatable{Aggregate}" />
 /// <seealso cref="IEquatable{Role}" />
 [DataContract]

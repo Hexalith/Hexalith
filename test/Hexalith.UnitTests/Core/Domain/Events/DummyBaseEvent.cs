@@ -14,7 +14,7 @@ using Hexalith.Domain.Events;
 using Hexalith.Extensions.Helpers;
 
 [DataContract]
-public abstract class DummyBaseEvent : BaseEvent
+public abstract class DummyBaseEvent : object
 {
     protected DummyBaseEvent() => BaseValue = string.Empty;
 

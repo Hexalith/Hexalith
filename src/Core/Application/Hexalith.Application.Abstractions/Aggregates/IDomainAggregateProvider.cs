@@ -27,6 +27,6 @@ public interface IDomainAggregateProvider
     /// <summary>
     /// Creates this instance.
     /// </summary>
-    /// <returns>IAggregate.</returns>
+    /// <returns>IDomainAggregate.</returns>
     IDomainAggregate Create();
 }

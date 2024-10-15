@@ -17,7 +17,7 @@ public record DummyAggregate(string Id) : Aggregate
     {
     }
 
-    public override (IAggregate Aggregate, IEnumerable<BaseMessage> Messages) Apply(BaseEvent domainEvent)
+    public override (IDomainAggregate Aggregate, IEnumerable<object> Messages) Apply(object domainEvent)
     {
         return domainEvent is DummyAggregateEvent1 dummyEvent
             ? (this with

@@ -6,7 +6,7 @@
 namespace Hexalith.Domain.Aggregates;
 
 /// <summary>
-/// Interface IAggregate.
+/// Interface IDomainAggregate.
 /// </summary>
 public interface IDomainAggregate
 {
@@ -26,7 +26,7 @@ public interface IDomainAggregate
     /// Applies the specified domain event.
     /// </summary>
     /// <param name="domainEvent">The domain event.</param>
-    /// <returns>IAggregate.</returns>
+    /// <returns>IDomainAggregate.</returns>
     ApplyResult Apply(object domainEvent);
 
     /// <summary>

@@ -30,7 +30,7 @@ public class ActorMessageEnvelopeTest
         DummyCommand1 c1 = DummyCommand1.Create();
         DummyCommand2 c2 = DummyCommand2.Create();
         ActorCommandEnvelope envelope = new(
-            new BaseCommand[] { c1, c2 },
+            new object[] { c1, c2 },
             new Metadata[] { c1.CreateMetadata(), c2.CreateMetadata() });
         string json = JsonSerializer.Serialize(envelope);
         ActorCommandEnvelope result = JsonSerializer.Deserialize<ActorCommandEnvelope>(json);
@@ -47,7 +47,7 @@ public class ActorMessageEnvelopeTest
         DummyCommand1 c1 = DummyCommand1.Create();
         DummyCommand2 c2 = DummyCommand2.Create();
         ActorCommandEnvelope envelope = new(
-            new BaseCommand[] { c1, c2 },
+            new object[] { c1, c2 },
             new Metadata[] { c1.CreateMetadata(), c2.CreateMetadata() });
         _ = envelope.Should().BeDataContractSerializable();
     }
@@ -62,7 +62,7 @@ public class ActorMessageEnvelopeTest
         DummyCommand1 c1 = DummyCommand1.Create();
         DummyCommand2 c2 = DummyCommand2.Create();
         ActorCommandEnvelope envelope = new(
-            new BaseCommand[] { c1, c2 },
+            new object[] { c1, c2 },
             new Metadata[] { c1.CreateMetadata(), c2.CreateMetadata() });
         string json = JsonSerializer.Serialize(envelope);
         _ = json.Should().NotBeNullOrWhiteSpace();

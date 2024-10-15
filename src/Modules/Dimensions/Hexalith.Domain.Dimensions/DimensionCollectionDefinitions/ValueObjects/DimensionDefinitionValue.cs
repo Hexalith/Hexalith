@@ -4,7 +4,7 @@
 //     See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Domain.Dimensions.DimensionDefinitions.ValueObjects;
+namespace Hexalith.Domain.Dimensions.DimensionCollectionDefinitions.ValueObjects;
 
 using System.Runtime.Serialization;
 

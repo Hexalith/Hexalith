@@ -12,7 +12,7 @@ using Hexalith.Domain.Events;
 
 [DataContract]
 [Serializable]
-public class DummyAggregateEvent1 : BaseEvent
+public class DummyAggregateEvent1 : object
 {
     public string Id { get; set; }
 

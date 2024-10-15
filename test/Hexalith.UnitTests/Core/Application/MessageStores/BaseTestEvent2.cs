@@ -1,7 +1,6 @@
-﻿// <copyright file="BaseTestEvent2.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="BaseTestEvent2.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.UnitTests.Core.Application.MessageStores;
@@ -9,7 +8,5 @@ namespace Hexalith.UnitTests.Core.Application.MessageStores;
 using System.Runtime.Serialization;
 
 [DataContract]
-public class BaseTestEvent2 : BaseTestEvent
-{
-    public string Value2 { get; set; }
-}
+public partial record BaseTestEvent2(string Id, string IdempotencyId, string Message, string Value2)
+    : BaseTestEvent(Id, IdempotencyId, Message);

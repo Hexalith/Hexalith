@@ -74,8 +74,8 @@ public partial class AggregateActorTest
         Mock<IActorStateManager> actorStateManager = new(MockBehavior.Strict);
         Mock<IResiliencyPolicyProvider> resiliencyPolicyProvider = new(MockBehavior.Strict);
         commandDispatcher.Setup(s => s.DoAsync(
-            It.Is<ICommand>(c => c.AggregateId == command.AggregateId && c.TypeName == command.TypeName),
-            It.Is<IAggregate>(a => a.AggregateName == DummyAggregate.GetAggregateName()),
+            It.Is<object>(c => c.AggregateId == command.AggregateId && c.TypeName == command.TypeName),
+            It.Is<IDomainAggregate>(a => a.AggregateName == DummyAggregate.GetAggregateName()),
             It.IsAny<CancellationToken>()))
             .ThrowsAsync(new ApplicationErrorException("Dummy Error"))
             .Verifiable(Times.Once);
@@ -219,20 +219,20 @@ public partial class AggregateActorTest
         Mock<IActorStateManager> actorStateManager = new(MockBehavior.Strict);
         Mock<IResiliencyPolicyProvider> resiliencyPolicyProvider = new(MockBehavior.Strict);
         commandDispatcher.Setup(s => s.DoAsync(
-            It.Is<ICommand>(c => c.AggregateId == command8.AggregateId && c.TypeName == command8.TypeName && ((DummyAggregateCommand1)c).Name == command8.Name),
-            It.Is<IAggregate>(a => a.AggregateName == DummyAggregate.GetAggregateName()),
+            It.Is<object>(c => c.AggregateId == command8.AggregateId && c.TypeName == command8.TypeName && ((DummyAggregateCommand1)c).Name == command8.Name),
+            It.Is<IDomainAggregate>(a => a.AggregateName == DummyAggregate.GetAggregateName()),
             It.IsAny<CancellationToken>()))
             .ReturnsAsync([new DummyAggregateEvent1() { Id = command8.Id, Name = command8.Name }])
             .Verifiable(Times.Once);
         commandDispatcher.Setup(s => s.DoAsync(
-            It.Is<ICommand>(c => c.AggregateId == command9.AggregateId && c.TypeName == command9.TypeName && ((DummyAggregateCommand1)c).Name == command9.Name),
-            It.Is<IAggregate>(a => a.AggregateName == DummyAggregate.GetAggregateName()),
+            It.Is<object>(c => c.AggregateId == command9.AggregateId && c.TypeName == command9.TypeName && ((DummyAggregateCommand1)c).Name == command9.Name),
+            It.Is<IDomainAggregate>(a => a.AggregateName == DummyAggregate.GetAggregateName()),
             It.IsAny<CancellationToken>()))
             .ReturnsAsync([new DummyAggregateEvent1() { Id = command9.Id, Name = command9.Name }])
             .Verifiable(Times.Once);
         commandDispatcher.Setup(s => s.DoAsync(
-            It.Is<ICommand>(c => c.AggregateId == command10.AggregateId && c.TypeName == command10.TypeName && ((DummyAggregateCommand1)c).Name == command10.Name),
-            It.Is<IAggregate>(a => a.AggregateName == DummyAggregate.GetAggregateName()),
+            It.Is<object>(c => c.AggregateId == command10.AggregateId && c.TypeName == command10.TypeName && ((DummyAggregateCommand1)c).Name == command10.Name),
+            It.Is<IDomainAggregate>(a => a.AggregateName == DummyAggregate.GetAggregateName()),
             It.IsAny<CancellationToken>()))
             .ReturnsAsync([new DummyAggregateEvent1() { Id = command10.Id, Name = command10.Name }])
             .Verifiable(Times.Once);
@@ -625,8 +625,8 @@ public partial class AggregateActorTest
         Mock<IActorStateManager> actorStateManager = new(MockBehavior.Strict);
         Mock<IResiliencyPolicyProvider> resiliencyPolicyProvider = new(MockBehavior.Strict);
         commandDispatcher.Setup(s => s.DoAsync(
-            It.Is<ICommand>(c => c.AggregateId == command.AggregateId && c.TypeName == command.TypeName),
-            It.Is<IAggregate>(a => a.AggregateName == DummyAggregate.GetAggregateName()),
+            It.Is<object>(c => c.AggregateId == command.AggregateId && c.TypeName == command.TypeName),
+            It.Is<IDomainAggregate>(a => a.AggregateName == DummyAggregate.GetAggregateName()),
             It.IsAny<CancellationToken>()))
             .ReturnsAsync([ev])
             .Verifiable(Times.Once);

@@ -18,8 +18,8 @@ public class BaseMessageTest
     public void PolymorphicSerializeAndDeserializeShouldReturnSameObject()
     {
         DummyMessage1 original = new("IB2343213FR", 655463);
-        string json = JsonSerializer.Serialize<BaseMessage>(original);
-        BaseMessage result = JsonSerializer.Deserialize<BaseMessage>(json);
+        string json = JsonSerializer.Serialize<object>(original);
+        object result = JsonSerializer.Deserialize<object>(json);
         _ = result.Should().NotBeNull();
         _ = result.Should().BeOfType<DummyMessage1>();
         _ = result.Should().BeEquivalentTo(original);

@@ -1,7 +1,6 @@
-﻿// <copyright file="AddCountryCommand.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="AddCountryCommand.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.IntegrationTests.ArtificialIntelligence.CommandActivities;
@@ -9,12 +8,13 @@ namespace Hexalith.IntegrationTests.ArtificialIntelligence.CommandActivities;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-using Hexalith.Application.Commands;
 using Hexalith.Extensions.Common;
+using Hexalith.PolymorphicSerialization;
 
 [Display(Name = "Add a country", Description = "Add a new country")]
 [ExampleName("France")]
-public class AddCountryCommand : BaseCommand
+[PolymorphicSerialization]
+public record AddCountryCommand
 {
     [JsonConstructor]
     public AddCountryCommand(string iso2, string iso3, int isoNumber, string name, string currencyName, string currencySymbol, string currencyCode)
@@ -64,7 +64,7 @@ public class AddCountryCommand : BaseCommand
     [ExampleValue("France")]
     public string Name { get; set; }
 
-    protected override string DefaultAggregateId() => Iso3;
+    public string AggregateId => Iso3;
 
-    protected override string DefaultAggregateName() => "Country";
+    public string AggregateName => "Country";
 }

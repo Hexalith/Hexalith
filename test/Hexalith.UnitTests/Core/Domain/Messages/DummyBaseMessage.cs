@@ -14,7 +14,7 @@ using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Helpers;
 
 [DataContract]
-public abstract class DummyBaseMessage : BaseMessage
+public abstract class DummyBaseMessage : object
 {
     protected DummyBaseMessage() => BaseValue = string.Empty;
 

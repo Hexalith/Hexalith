@@ -23,13 +23,13 @@ public class ActorStateStoreProviderTest
         DummyCommand1 command = new("Test", 123456);
         Mock<IActorStateManager> actorStateManager = new();
         _ = actorStateManager
-            .Setup(p => p.TryGetStateAsync<BaseCommand>("State", It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<BaseCommand>(
+            .Setup(p => p.TryGetStateAsync<object>("State", It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ConditionalValue<object>(
                 true,
                 command));
         Mock<ICommandDispatcher> dispatcher = new();
         ActorStateStoreProvider storeProvider = new(actorStateManager.Object);
-        Hexalith.Extensions.Common.ConditionalValue<BaseCommand> result = await storeProvider.TryGetStateAsync<BaseCommand>("State", CancellationToken.None);
+        Hexalith.Extensions.Common.ConditionalValue<object> result = await storeProvider.TryGetStateAsync<object>("State", CancellationToken.None);
         _ = result.HasValue.Should().BeTrue();
         _ = result.Value.Should().BeEquivalentTo(command);
     }

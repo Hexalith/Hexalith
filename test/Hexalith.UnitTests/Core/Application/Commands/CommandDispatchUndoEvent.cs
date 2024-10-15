@@ -1,20 +1,16 @@
-﻿// <copyright file="CommandDispatchUndoEvent.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="CommandDispatchUndoEvent.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.UnitTests.Core.Application.Commands;
 
-using Hexalith.Domain.Events;
+using Hexalith.PolymorphicSerialization;
 
-internal sealed class CommandDispatchUndoEvent : BaseEvent
+[PolymorphicSerialization]
+public partial record CommandDispatchUndoEvent
 {
-    public CommandDispatchUndoEvent()
-    {
-    }
+    public string DefaultAggregateId => "123";
 
-    protected override string DefaultAggregateId() => "123";
-
-    protected override string DefaultAggregateName() => "Test";
+    public string DefaultAggregateName => "Test";
 }

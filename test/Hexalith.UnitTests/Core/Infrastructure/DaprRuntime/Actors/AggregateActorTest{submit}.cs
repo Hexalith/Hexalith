@@ -322,7 +322,7 @@ public partial class AggregateActorTest
     /// </summary>
     /// <param name="message">The message.</param>
     /// <returns>Hexalith.Application.Metadatas.Metadata.</returns>
-    private static Metadata CreateMetadata(BaseMessage message)
+    private static Metadata CreateMetadata(object message)
         => new(
             UniqueIdHelper.GenerateUniqueStringId(),
             message,
