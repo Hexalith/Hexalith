@@ -1,25 +1,14 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Infrastructure.WebApis
-// Author           : JérômePiquot
-// Created          : 01-13-2023
-//
-// Last Modified By : JérômePiquot
-// Last Modified On : 01-15-2023
-// ***********************************************************************
-// <copyright file="BindingController.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="BindingController.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
+
 namespace Hexalith.Infrastructure.WebApis.Controllers;
 
 using System.Text.Json;
 
 using Hexalith.Application.Events;
-using Hexalith.Application.Metadatas;
-using Hexalith.Domain.Events;
+using Hexalith.Application.MessageMetadatas;
 using Hexalith.Extensions.Errors;
 
 using Microsoft.AspNetCore.Mvc;
@@ -59,8 +48,8 @@ public abstract class BindingController : ReceiveMessageController
     /// Deserializes the and validate.
     /// </summary>
     /// <param name="message">The message.</param>
-    /// <returns>System.ValueTuple&lt;object, IMetadata&gt;.</returns>
-    protected abstract (object Event, IMetadata Metadata) DeserializeAndValidate(JsonElement message);
+    /// <returns>System.ValueTuple&lt;object, Metadata&gt;.</returns>
+    protected abstract (object Event, Metadata Metadata) DeserializeAndValidate(JsonElement message);
 
     /// <summary>
     /// Handle business event.
@@ -77,12 +66,12 @@ public abstract class BindingController : ReceiveMessageController
                 return BadRequest("Message received is null.");
             }
 
-            (object @event, IMetadata metadata) = DeserializeAndValidate(message);
+            (object @event, Metadata metadata) = DeserializeAndValidate(message);
             MessageReceivedInformation(
                 Logger,
-                @event.TypeName,
-                @event.AggregateName,
-                @event.AggregateId,
+                metadata.Message.Name,
+                metadata.Message.Aggregate.Name,
+                metadata.Message.Aggregate.Id,
                 metadata.Message.Id,
                 metadata.Context.CorrelationId);
             await _eventProcessor.SubmitAsync(@event, metadata, cancellationToken).ConfigureAwait(false);
@@ -107,5 +96,5 @@ public abstract class BindingController : ReceiveMessageController
     /// <param name="metadata">The metadata.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
-    protected virtual Task PostHandleEventProcessAsync(object ievent, IMetadata metadata, CancellationToken cancellationToken) => Task.CompletedTask;
+    protected virtual Task PostHandleEventProcessAsync(object ievent, Metadata metadata, CancellationToken cancellationToken) => Task.CompletedTask;
 }

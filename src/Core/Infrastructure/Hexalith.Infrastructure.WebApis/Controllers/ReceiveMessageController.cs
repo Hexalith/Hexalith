@@ -6,10 +6,9 @@
 // Last Modified By : JérômePiquot
 // Last Modified On : 01-15-2023
 // ***********************************************************************
-// <copyright file="ReceiveMessageController.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+// <copyright file="ReceiveMessageController.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -19,7 +18,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Net;
 
-using Hexalith.Application.States;
+using Hexalith.Application.MessageMetadatas;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 
@@ -80,8 +79,8 @@ public abstract partial class ReceiveMessageController : ControllerBase
     /// <param name="messageState">State of the message.</param>
     /// <param name="aggregateType">Type of the aggregate.</param>
     /// <returns>System.Nullable&lt;ActionResult&gt;.</returns>
-    protected BadRequestObjectResult? MessageValidation<TMessageType>(IMessageState messageState, string aggregateType)
-        where TMessageType : IMessageState
+    protected BadRequestObjectResult? MessageValidation<TMessageType>(MessageState messageState, string aggregateType)
+        where TMessageType : MessageState
     {
         BadRequestObjectResult? badRequest = messageState == null
             ? BadRequest("Invalid data : Message state received is null.")
@@ -89,14 +88,14 @@ public abstract partial class ReceiveMessageController : ControllerBase
             ? BadRequest($"Invalid data : Message metadata received is null. CorrelationId={messageState.IdempotencyId}.")
             : messageState.Message == null
             ? BadRequest($"Invalid data : Message received is null. MessageName={messageState.Metadata.Message.Name}; MessageId={messageState.Metadata.Message.Id}; CorrelationId={messageState.IdempotencyId}.")
-            : messageState.Message.AggregateName != aggregateType
-            ? BadRequest($"Invalid data : The message aggregate is {messageState.Message.AggregateName}, but {aggregateType} was expected. MessageName={messageState.Metadata.Message.Name}; MessageId={messageState.Metadata.Message.Id}; CorrelationId={messageState.IdempotencyId}.")
+            : messageState.Metadata.Message.Aggregate.Name != aggregateType
+            ? BadRequest($"Invalid data : The message aggregate is {messageState.Metadata.Message.Aggregate.Name}, but {aggregateType} was expected. MessageName={messageState.Metadata.Message.Name}; MessageId={messageState.Metadata.Message.Id}; CorrelationId={messageState.IdempotencyId}.")
             : messageState is not TMessageType
             ? BadRequest($"Invalid data : The message state received type is {messageState.GetType().Name}, but {typeof(TMessageType).Name} was expected. MessageName={messageState.Metadata.Message.Name}; MessageId={messageState.Metadata.Message.Id}; CorrelationId={messageState.IdempotencyId}.")
             : null;
         MessageReceivedInformation(
             Logger,
-            messageState?.Metadata?.Message.Name ?? messageState?.Message?.TypeName ?? "Unknown",
+            messageState?.Metadata?.Message.Name ?? "Unknown",
             messageState?.Metadata?.Message?.Aggregate.Name,
             messageState?.Metadata?.Message.Aggregate.Id,
             messageState?.Metadata?.Message.Id,

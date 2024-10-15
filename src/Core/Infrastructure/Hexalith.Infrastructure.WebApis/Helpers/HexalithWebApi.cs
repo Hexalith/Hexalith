@@ -17,7 +17,6 @@ using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Projections;
 using Hexalith.Application.Tasks;
-using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.AspireService.Defaults;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;

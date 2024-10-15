@@ -6,17 +6,16 @@
 // Last Modified By : JérômePiquot
 // Last Modified On : 10-26-2023
 // ***********************************************************************
-// <copyright file="CommandSubmissionController.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+// <copyright file="CommandSubmissionController.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
 namespace Hexalith.Infrastructure.WebApis.Controllers;
 
 using Hexalith.Application.Commands;
-using Hexalith.Application.States;
+using Hexalith.Application.MessageMetadatas;
 using Hexalith.Extensions.Errors;
 
 using Microsoft.AspNetCore.Mvc;
@@ -35,7 +34,7 @@ public class CommandSubmissionController : ReceiveMessageController
     /// <summary>
     /// The command processor.
     /// </summary>
-    private readonly ICommandProcessor _commandProcessor;
+    private readonly IDomainCommandProcessor _commandProcessor;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CommandSubmissionController"/> class.
@@ -45,7 +44,7 @@ public class CommandSubmissionController : ReceiveMessageController
     /// <param name="logger">The logger.</param>
     /// <exception cref="System.ArgumentNullException">null.</exception>
     protected CommandSubmissionController(
-        ICommandProcessor commandProcessor,
+        IDomainCommandProcessor commandProcessor,
         IHostEnvironment hostEnvironment,
         ILogger logger)
         : base(hostEnvironment, logger)

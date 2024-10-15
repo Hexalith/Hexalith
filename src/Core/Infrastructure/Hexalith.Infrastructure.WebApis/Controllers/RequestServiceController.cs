@@ -1,13 +1,12 @@
-﻿// <copyright file="RequestServiceController.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="RequestServiceController.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Infrastructure.WebApis.Controllers;
 
+using Hexalith.Application.MessageMetadatas;
 using Hexalith.Application.Requests;
-using Hexalith.Application.States;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -70,9 +69,9 @@ public partial class RequestServiceController : ControllerBase
             _logger,
             request.Metadata.Message.Id,
             request.Metadata.Context.CorrelationId,
-            request.Message.TypeName,
-            request.Message.AggregateName,
-            request.Message.AggregateId);
+            request.Metadata.Message.Name,
+            request.Metadata.Message.Aggregate.Name,
+            request.Metadata.Message.Aggregate.Id);
         return Ok();
     }
 

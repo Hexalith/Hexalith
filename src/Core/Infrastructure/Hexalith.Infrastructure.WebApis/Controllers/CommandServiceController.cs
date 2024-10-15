@@ -1,13 +1,12 @@
-﻿// <copyright file="CommandServiceController.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="CommandServiceController.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Infrastructure.WebApis.Controllers;
 
 using Hexalith.Application.Commands;
-using Hexalith.Application.States;
+using Hexalith.Application.MessageMetadatas;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -69,9 +68,9 @@ public partial class CommandServiceController : ControllerBase
             _logger,
             command.Metadata.Message.Id,
             command.Metadata.Context.CorrelationId,
-            command.Message.TypeName,
-            command.Message.AggregateName,
-            command.Message.AggregateId);
+            command.Metadata.Message.Name,
+            command.Metadata.Message.Aggregate.Name,
+            command.Metadata.Message.Aggregate.Id);
 
         return Ok();
     }

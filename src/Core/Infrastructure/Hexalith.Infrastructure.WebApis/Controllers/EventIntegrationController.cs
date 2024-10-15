@@ -15,6 +15,7 @@
 namespace Hexalith.Infrastructure.WebApis.Controllers;
 
 using Hexalith.Application.Events;
+using Hexalith.Application.MessageMetadatas;
 using Hexalith.Application.Projections;
 using Hexalith.Extensions.Errors;
 
