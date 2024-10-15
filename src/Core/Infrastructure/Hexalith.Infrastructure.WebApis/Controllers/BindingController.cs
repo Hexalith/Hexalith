@@ -59,8 +59,8 @@ public abstract class BindingController : ReceiveMessageController
     /// Deserializes the and validate.
     /// </summary>
     /// <param name="message">The message.</param>
-    /// <returns>System.ValueTuple&lt;IEvent, IMetadata&gt;.</returns>
-    protected abstract (IEvent Event, IMetadata Metadata) DeserializeAndValidate(JsonElement message);
+    /// <returns>System.ValueTuple&lt;object, IMetadata&gt;.</returns>
+    protected abstract (object Event, IMetadata Metadata) DeserializeAndValidate(JsonElement message);
 
     /// <summary>
     /// Handle business event.
@@ -77,7 +77,7 @@ public abstract class BindingController : ReceiveMessageController
                 return BadRequest("Message received is null.");
             }
 
-            (IEvent @event, IMetadata metadata) = DeserializeAndValidate(message);
+            (object @event, IMetadata metadata) = DeserializeAndValidate(message);
             MessageReceivedInformation(
                 Logger,
                 @event.TypeName,
@@ -107,5 +107,5 @@ public abstract class BindingController : ReceiveMessageController
     /// <param name="metadata">The metadata.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
-    protected virtual Task PostHandleEventProcessAsync(IEvent ievent, IMetadata metadata, CancellationToken cancellationToken) => Task.CompletedTask;
+    protected virtual Task PostHandleEventProcessAsync(object ievent, IMetadata metadata, CancellationToken cancellationToken) => Task.CompletedTask;
 }

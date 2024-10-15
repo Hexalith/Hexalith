@@ -63,9 +63,9 @@ public class CommandSubmissionController : ReceiveMessageController
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task&lt;ActionResult&gt; representing the asynchronous operation.</returns>
     /// <exception cref="System.ArgumentNullException">null.</exception>
-    protected async Task<ActionResult> HandleCommandAsync(CommandState commandState, string validAggregateName, CancellationToken cancellationToken)
+    protected async Task<ActionResult> HandleCommandAsync(MessageState commandState, string validAggregateName, CancellationToken cancellationToken)
     {
-        ActionResult? badRequest = MessageValidation<CommandState>(commandState, validAggregateName);
+        ActionResult? badRequest = MessageValidation<MessageState>(commandState, validAggregateName);
         if (badRequest is not null)
         {
             return badRequest;

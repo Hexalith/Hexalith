@@ -7,7 +7,7 @@ namespace Hexalith.Infrastructure.DaprRuntime.Actors;
 
 using Dapr.Actors;
 
-using Hexalith.Application.States;
+using Hexalith.Application.MessageMetadatas;
 
 /// <summary>
 /// Interface IAggregateActor

@@ -12,7 +12,6 @@ using Hexalith.Application.MessageMetadatas;
 using Hexalith.Application.Projections;
 using Hexalith.Application.StreamStores;
 using Hexalith.Application.Tasks;
-using Hexalith.Domain.Events;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 
@@ -173,7 +172,7 @@ public class ProjectionStateManager : IProjectionStateManager
     {
         MessageStore<MessageState> commandStore = new(stateProvider, EventsStreamName);
         ProjectionState state = await GetStateAsync(stateProvider, cancellationToken).ConfigureAwait(false);
-        List<BaseEvent> events = [];
+        List<object> events = [];
         while (state.LastEventDone < state.EventStreamVersion)
         {
             long nextEvent = state.LastEventDone + 1;
@@ -214,7 +213,7 @@ public class ProjectionStateManager : IProjectionStateManager
                 projection,
                 stateProvider);
 
-            DateTimeOffset? retry = await processor.ProcessAsync(nextEvent.ToInvariantString(), command.Message, cancellationToken).ConfigureAwait(false);
+            DateTimeOffset? retry = await processor.ProcessAsync(nextEvent.ToInvariantString(), command.Message, command.Metadata, cancellationToken).ConfigureAwait(false);
 
             state = new ProjectionState(
                     state.EventStreamVersion,

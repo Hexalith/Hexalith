@@ -12,7 +12,7 @@ using Dapr.Actors.Runtime;
 using Hexalith.Application.Aggregates;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
-using Hexalith.Application.Notifications;
+
 using Hexalith.Application.Requests;
 using Hexalith.Application.Tasks;
 
@@ -32,13 +32,12 @@ public partial class DomainAggregateActor(
     IDomainAggregateFactory aggregateFactory,
     TimeProvider dateTimeService,
     IEventBus eventBus,
-    INotificationBus notificationBus,
     ICommandBus commandBus,
     IRequestBus requestBus,
     IResiliencyPolicyProvider resiliencyPolicyProvider,
     JsonSerializerOptions jsonOptions,
     IActorStateManager? actorStateManager = null)
-    : DomainAggregateActorBase(host, commandDispatcher, aggregateFactory, dateTimeService, eventBus, notificationBus, commandBus, requestBus, resiliencyPolicyProvider, jsonOptions, actorStateManager)
+    : DomainAggregateActorBase(host, commandDispatcher, aggregateFactory, dateTimeService, eventBus, commandBus, requestBus, resiliencyPolicyProvider, jsonOptions, actorStateManager)
 {
     /// <summary>
     /// Logs information about processing commands for the actor.

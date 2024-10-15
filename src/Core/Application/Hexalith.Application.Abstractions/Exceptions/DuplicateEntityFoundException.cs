@@ -1,7 +1,6 @@
-﻿// <copyright file="DuplicateEntityFoundException.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="DuplicateEntityFoundException.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Application.Exceptions;
@@ -33,6 +32,7 @@ public class DuplicateEntityFoundException<TEntity> : ApplicationErrorException
     /// Initializes a new instance of the <see cref="DuplicateEntityFoundException{TEntity}"/> class.
     /// </summary>
     /// <param name="key">The key.</param>
+    /// <param name="duplicates"></param>
     public DuplicateEntityFoundException(object key, IEnumerable<TEntity> duplicates)
         : base(CreateError(key, duplicates)) => Key = key;
 

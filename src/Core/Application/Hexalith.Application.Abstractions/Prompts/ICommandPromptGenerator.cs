@@ -1,24 +1,11 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Application
-// Author           : Jérôme Piquot
-// Created          : 05-14-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 05-14-2023
-// ***********************************************************************
-// <copyright file="ICommandPromptGenerator.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="ICommandPromptGenerator.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Application.Prompts;
 
 using System.Threading.Tasks;
-
-using Hexalith.Application.Commands;
 
 /// <summary>
 /// Interface ICommandPromptGenerator.
@@ -43,5 +30,5 @@ public interface ICommandPromptGenerator
         string userName,
         string language,
         string correlationId)
-        where TCommand : BaseCommand, new();
+        where TCommand : class, new();
 }

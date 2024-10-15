@@ -1,27 +1,16 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Application.Abstractions
-// Author           : Jérôme Piquot
-// Created          : 01-30-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 05-01-2023
-// ***********************************************************************
-// <copyright file="ResilientProjectionEventProcessor.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="ResilientProjectionEventProcessor.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Application.Tasks;
 
 using System;
 using System.Threading;
 
+using Hexalith.Application.MessageMetadatas;
 using Hexalith.Application.Projections;
 using Hexalith.Application.States;
-using Hexalith.Domain.Events;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 
@@ -69,9 +58,10 @@ public class ResilientProjectionEventProcessor
     /// </summary>
     /// <param name="id">The identifier.</param>
     /// <param name="baseEvent">The command.</param>
+    /// <param name="metadata"></param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A <see cref="Task{TResult}" /> representing the result of the asynchronous operation.</returns>
-    public async Task<DateTimeOffset?> ProcessAsync(string id, BaseEvent baseEvent, CancellationToken cancellationToken)
+    public async Task<DateTimeOffset?> ProcessAsync(string id, object baseEvent, Metadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(baseEvent);
         TaskProcessor taskProcessor = await GetTaskProcessorAsync(id, cancellationToken).ConfigureAwait(false);
@@ -112,7 +102,6 @@ public class ResilientProjectionEventProcessor
                 throw new NotSupportedException($"Task processor status option {taskProcessor.Status} not supported.");
         }
 
-#pragma warning disable CA1031 // Do not catch general exception types
         try
         {
             if (taskProcessor.Status == TaskProcessorStatus.Active)
@@ -123,9 +112,8 @@ public class ResilientProjectionEventProcessor
         }
         catch (Exception e)
         {
-            taskProcessor = taskProcessor.Fail($"An error occurred when executing command {baseEvent.TypeName} on {baseEvent.AggregateName}/{baseEvent.AggregateId}: {e.Message}", e.FullMessage());
+            taskProcessor = taskProcessor.Fail($"An error occurred when executing command {metadata.Message.Name} on {metadata.Message.Aggregate.Name}/{metadata.Message.Aggregate.Id}: {e.Message}", e.FullMessage());
         }
-#pragma warning restore CA1031 // Do not catch general exception types
 
         await _stateStoreProvider.SetStateAsync(nameof(TaskProcessor) + id, taskProcessor, cancellationToken).ConfigureAwait(false);
         return (taskProcessor.Status is TaskProcessorStatus.Completed or TaskProcessorStatus.Canceled) ? null : taskProcessor.RetryDate;

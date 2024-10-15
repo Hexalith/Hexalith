@@ -20,7 +20,7 @@ using Hexalith.PolymorphicSerialization;
 /// <remarks>
 /// This class is marked as partial, allowing for potential extension in other partial class definitions.
 /// </remarks>
-/// <seealso cref="BaseEvent" />
+/// <seealso cref="object" />
 [PolymorphicSerialization]
 public partial record ConversationThreadEvent(string Owner, DateTimeOffset StartedDate)
 {

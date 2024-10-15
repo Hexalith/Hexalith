@@ -1,28 +1,18 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Domain.Abstractions
-// Author           : Jérôme Piquot
-// Created          : 04-28-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 08-30-2023
-// ***********************************************************************
-// <copyright file="InvalidCommandAggregateIdException.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="InvalidCommandAggregateIdException.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Application.Exceptions;
 
 using System;
+using System.Text.Json;
 
-using Hexalith.Application.Commands;
+using Hexalith.Application.MessageMetadatas;
 
 /// <summary>
-/// Class InvalidAggregateCommandException.
-/// Implements the <see cref="InvalidOperationException" />.
+/// Represents an exception that is thrown when a command is associated with an invalid aggregate identifier.
+/// This exception is used in domain-driven design contexts to ensure command-aggregate integrity.
 /// </summary>
 /// <seealso cref="InvalidOperationException" />
 public class InvalidCommandAggregateIdException : InvalidOperationException
@@ -44,15 +34,16 @@ public class InvalidCommandAggregateIdException : InvalidOperationException
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="InvalidCommandAggregateIdException" /> class.
+    /// Initializes a new instance of the <see cref="InvalidCommandAggregateIdException"/> class with detailed information about the invalid command.
     /// </summary>
-    /// <param name="aggregateId">The aggregate identifier.</param>
-    /// <param name="command">The domain command.</param>
-    public InvalidCommandAggregateIdException(string aggregateId, BaseCommand command)
-        : base($"Command '{command?.TypeName ?? "Unknown"}' has an invalid aggregate identifier '{command?.AggregateId}'. Expected : {aggregateId}.")
+    /// <param name="aggregateId">The expected aggregate identifier.</param>
+    /// <param name="command">The command object that caused the exception.</param>
+    /// <param name="metadata">The metadata associated with the command, containing information about the message and aggregate.</param>
+    public InvalidCommandAggregateIdException(string aggregateId, object command, Metadata metadata)
+        : base($"Command '{metadata?.Message.Name ?? "Unknown"}' has an invalid aggregate identifier '{metadata?.Message.Aggregate.Id}'. Expected : {aggregateId}.")
     {
         AggregateId = aggregateId;
-        DomainCommand = command;
+        Command = JsonSerializer.Serialize(command, ApplicationConstants.DefaultJsonSerializerOptions);
     }
 
     /// <summary>
@@ -66,14 +57,14 @@ public class InvalidCommandAggregateIdException : InvalidOperationException
     }
 
     /// <summary>
-    /// Gets the aggregate.
+    /// Gets the expected aggregate identifier that should have been associated with the command.
     /// </summary>
-    /// <value>The aggregate.</value>
+    /// <value>The expected aggregate identifier.</value>
     public string? AggregateId { get; }
 
     /// <summary>
-    /// Gets the domain command.
+    /// Gets the serialized representation of the domain command that caused the exception.
     /// </summary>
-    /// <value>The domain command.</value>
-    public BaseCommand? DomainCommand { get; }
+    /// <value>A JSON string representation of the command object.</value>
+    public string? Command { get; }
 }

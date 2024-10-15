@@ -46,7 +46,7 @@ public partial class RequestServiceController : ControllerBase
     /// <param name="request">The request to publish.</param>
     /// <returns>A <see cref="Task{TResult}"/> representing the result of the asynchronous operation.</returns>
     [HttpPost(ServicesRoutes.SubmitRequest)]
-    public async Task<ActionResult> SubmitRequestAsync(RequestState request)
+    public async Task<ActionResult> SubmitRequestAsync(MessageState request)
     {
         if (request is null)
         {

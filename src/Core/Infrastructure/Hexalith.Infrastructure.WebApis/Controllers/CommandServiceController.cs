@@ -44,7 +44,7 @@ public partial class CommandServiceController : ControllerBase
     /// <param name="command">The command to publish.</param>
     /// <returns>A <see cref="Task{TResult}"/> representing the result of the asynchronous operation.</returns>
     [HttpPost(ServicesRoutes.SubmitCommand)]
-    public async Task<ActionResult> PublishCommandAsync(CommandState command)
+    public async Task<ActionResult> PublishCommandAsync(MessageState command)
     {
         if (command is null)
         {

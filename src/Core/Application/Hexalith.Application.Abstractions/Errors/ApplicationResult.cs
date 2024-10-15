@@ -1,18 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Application.Abstractions
-// Author           : Jérôme Piquot
-// Created          : 01-07-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 01-07-2023
-// ***********************************************************************
-// <copyright file="ApplicationResult.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="ApplicationResult.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Application.Errors;
 

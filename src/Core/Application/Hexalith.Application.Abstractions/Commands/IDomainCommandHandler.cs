@@ -1,5 +1,6 @@
-﻿// <copyright file="IDomainCommandHandler.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="IDomainCommandHandler.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Application.Commands;
@@ -22,7 +23,7 @@ public interface IDomainCommandHandler
     /// <param name="metadata">The metadata.</param>
     /// <param name="aggregate">The aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>Task&lt;IEnumerable&lt;BaseMessage&gt;&gt;.</returns>
+    /// <returns>Task&lt;IEnumerable&lt;object&gt;&gt;.</returns>
     Task<ExecuteCommandResult> DoAsync(object command, Metadata metadata, IDomainAggregate? aggregate, CancellationToken cancellationToken);
 
     /// <summary>
@@ -32,7 +33,7 @@ public interface IDomainCommandHandler
     /// <param name="metadata">The metadata.</param>
     /// <param name="aggregate">The aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>Task&lt;IEnumerable&lt;BaseMessage&gt;&gt;.</returns>
+    /// <returns>Task&lt;IEnumerable&lt;object&gt;&gt;.</returns>
     Task<ExecuteCommandResult> UndoAsync(object command, Metadata metadata, IDomainAggregate? aggregate, CancellationToken cancellationToken);
 }
 
@@ -51,7 +52,7 @@ public interface IDomainCommandHandler<TCommand> : IDomainCommandHandler
     /// <param name="metadata">The metadata.</param>
     /// <param name="aggregate">The aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>Task&lt;IEnumerable&lt;BaseMessage&gt;&gt;.</returns>
+    /// <returns>Task&lt;IEnumerable&lt;object&gt;&gt;.</returns>
     Task<ExecuteCommandResult> DoAsync(TCommand command, Metadata metadata, IDomainAggregate? aggregate, CancellationToken cancellationToken);
 
     /// <summary>
@@ -61,6 +62,6 @@ public interface IDomainCommandHandler<TCommand> : IDomainCommandHandler
     /// <param name="metadata">The metadata.</param>
     /// <param name="aggregate">The aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>Task&lt;IEnumerable&lt;BaseMessage&gt;&gt;.</returns>
+    /// <returns>Task&lt;IEnumerable&lt;object&gt;&gt;.</returns>
     Task<ExecuteCommandResult> UndoAsync(TCommand command, Metadata metadata, IDomainAggregate? aggregate, CancellationToken cancellationToken);
 }

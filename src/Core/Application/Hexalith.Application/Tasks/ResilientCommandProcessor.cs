@@ -1,18 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Application.Abstractions
-// Author           : Jérôme Piquot
-// Created          : 01-30-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 10-29-2023
-// ***********************************************************************
-// <copyright file="ResilientCommandProcessor.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="ResilientCommandProcessor.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Application.Tasks;
 
@@ -21,52 +10,51 @@ using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 
 using Hexalith.Application.Commands;
+using Hexalith.Application.MessageMetadatas;
 using Hexalith.Application.States;
 using Hexalith.Domain.Aggregates;
-using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 
 using Microsoft.Extensions.Logging;
 
-#pragma warning disable CA1031 // Do not catch general exception types
-
 /// <summary>
-/// Class ResilientCommandProcessor.
+/// Represents a resilient command processor that handles command execution with retry policies and error handling.
+/// This class is responsible for managing the lifecycle of command processing, including starting, suspending, and completing tasks.
 /// </summary>
 public partial class ResilientCommandProcessor
 {
     /// <summary>
-    /// The command dispatcher.
+    /// The command dispatcher used to execute domain commands.
     /// </summary>
-    private readonly ICommandDispatcher _commandDispatcher;
+    private readonly IDomainCommandDispatcher _commandDispatcher;
 
     /// <summary>
-    /// The logger.
+    /// The logger used for logging errors and other important information.
     /// </summary>
     private readonly ILogger _logger;
 
     /// <summary>
-    /// The resiliency policy.
+    /// The resiliency policy that defines retry behavior and other resilience strategies.
     /// </summary>
     private readonly ResiliencyPolicy _resiliencyPolicy;
 
     /// <summary>
-    /// The state store provider.
+    /// The state store provider used to persist and retrieve task processor states.
     /// </summary>
     private readonly IStateStoreProvider _stateStoreProvider;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ResilientCommandProcessor" /> class.
     /// </summary>
-    /// <param name="resiliencyPolicy">The resiliency policy.</param>
-    /// <param name="commandDispatcher">The command dispatcher.</param>
-    /// <param name="stateStoreProvider">The state store provider.</param>
-    /// <param name="logger">The logger.</param>
-    /// <exception cref="System.ArgumentNullException">null.</exception>
+    /// <param name="resiliencyPolicy">The resiliency policy defining retry behavior.</param>
+    /// <param name="commandDispatcher">The command dispatcher for executing domain commands.</param>
+    /// <param name="stateStoreProvider">The state store provider for persisting task states.</param>
+    /// <param name="logger">The logger for error and information logging.</param>
+    /// <exception cref="System.ArgumentNullException">Thrown when any of the parameters are null.</exception>
     public ResilientCommandProcessor(
         ResiliencyPolicy resiliencyPolicy,
-        ICommandDispatcher commandDispatcher,
+        IDomainCommandDispatcher commandDispatcher,
         IStateStoreProvider stateStoreProvider,
         ILogger logger)
     {
@@ -80,22 +68,32 @@ public partial class ResilientCommandProcessor
         _logger = logger;
     }
 
+    /// <summary>
+    /// Logs an error that occurred during command execution.
+    /// </summary>
+    /// <param name="e">The exception that was thrown.</param>
+    /// <param name="commandType">The type of the command being executed.</param>
+    /// <param name="aggregateName">The name of the aggregate.</param>
+    /// <param name="aggregateId">The ID of the aggregate.</param>
+    /// <param name="message">The error message.</param>
     [LoggerMessage(EventId = 0, Level = LogLevel.Error, Message = "An error occurred when executing command {CommandType} on {AggregateName}/{AggregateId}: {Message}")]
     public partial void LogCommandExecutionError(Exception e, string commandType, string aggregateName, string aggregateId, string message);
 
     /// <summary>
-    /// Process as an asynchronous operation.
+    /// Processes a command asynchronously with resilience and error handling.
     /// </summary>
-    /// <param name="id">The identifier.</param>
-    /// <param name="command">The command.</param>
-    /// <param name="aggregate">The aggregate.</param>
-    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>A Task&lt;System.ValueTuple&gt; representing the asynchronous operation.</returns>
-    /// <exception cref="System.ArgumentNullException">null.</exception>
-    public async Task<(TaskProcessor Processor, IEnumerable<BaseMessage> Events)> ProcessAsync(string id, [NotNull] BaseCommand command, IDomainAggregate? aggregate, CancellationToken cancellationToken)
+    /// <param name="id">The unique identifier for this processing task.</param>
+    /// <param name="command">The command to be processed.</param>
+    /// <param name="metadata">The metadata associated with the command.</param>
+    /// <param name="aggregate">The domain aggregate, if any, associated with the command.</param>
+    /// <param name="cancellationToken">A cancellation token that can be used to cancel the operation.</param>
+    /// <returns>A tuple containing the updated TaskProcessor and the ExecuteCommandResult, if successful.</returns>
+    /// <exception cref="System.ArgumentNullException">Thrown when the command is null.</exception>
+    /// <exception cref="System.NotSupportedException">Thrown when an unsupported task processor status or retry status is encountered.</exception>
+    public async Task<(TaskProcessor Processor, ExecuteCommandResult? Result)> ProcessAsync(string id, [NotNull] object command, Metadata metadata, IDomainAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
-        IEnumerable<BaseMessage> messages;
+        ExecuteCommandResult? result = null;
         TaskProcessor taskProcessor = await GetTaskProcessorAsync(id, cancellationToken).ConfigureAwait(false);
         switch (taskProcessor.Status)
         {
@@ -111,11 +109,11 @@ public partial class ResilientCommandProcessor
                         break;
 
                     case RetryStatus.Suspended:
-                        return (taskProcessor, Array.Empty<BaseMessage>());
+                        return (taskProcessor, null);
 
                     case RetryStatus.Stopped:
                         taskProcessor = taskProcessor.Cancel();
-                        return (taskProcessor, [new CommandProcessingFailed(string.Empty, command, taskProcessor)]);
+                        break;
 
                     default:
                         throw new NotSupportedException($"Task processor can retry option {taskProcessor.CanRetry} not supported.");
@@ -127,45 +125,39 @@ public partial class ResilientCommandProcessor
                 break;
 
             case TaskProcessorStatus.Canceled:
-                return (taskProcessor, [new CommandProcessingFailed(string.Empty, command, taskProcessor)]);
+                return (taskProcessor, null);
 
             case TaskProcessorStatus.Completed:
-                return (taskProcessor, Array.Empty<BaseMessage>());
+                return (taskProcessor, null);
 
             default:
                 throw new NotSupportedException($"Task processor status option {taskProcessor.Status} not supported.");
         }
 
-        try
+        if (taskProcessor.Status == TaskProcessorStatus.Active)
         {
-            if (taskProcessor.Status == TaskProcessorStatus.Active)
+            try
             {
-                messages = await _commandDispatcher.DoAsync(command, aggregate, cancellationToken).ConfigureAwait(false);
+                result = await _commandDispatcher.DoAsync(command, metadata, aggregate, cancellationToken).ConfigureAwait(false);
                 taskProcessor = taskProcessor.Complete();
             }
-            else
+            catch (Exception e)
             {
-                messages = [new CommandProcessingFailed(string.Empty, command, taskProcessor)];
+                taskProcessor = taskProcessor.Fail($"An error occurred when executing command {metadata.Message.Name} on {metadata.Message.Aggregate.Name}/{metadata.Message.Aggregate.Id}: {e.Message}", e.FullMessage());
+                LogCommandExecutionError(e, metadata.Message.Name, metadata.Message.Aggregate.Name, metadata.Message.Aggregate.Id, e.FullMessage());
             }
-        }
-        catch (Exception e)
-        {
-            taskProcessor = taskProcessor.Fail($"An error occurred when executing command {command.TypeName} on {command.AggregateName}/{command.AggregateId}: {e.Message}", e.FullMessage());
-            messages = [new CommandProcessingFailed(string.Empty, command, taskProcessor)];
-            LogCommandExecutionError(e, command.TypeName, command.AggregateName, command.AggregateId, e.FullMessage());
         }
 
         await _stateStoreProvider.SetStateAsync(nameof(TaskProcessor) + id, taskProcessor, cancellationToken).ConfigureAwait(false);
-
-        return (taskProcessor, messages);
+        return (taskProcessor, result);
     }
 
     /// <summary>
-    /// Get task processor as an asynchronous operation.
+    /// Retrieves or creates a TaskProcessor for the given ID asynchronously.
     /// </summary>
-    /// <param name="id">The identifier.</param>
-    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>A Task&lt;TaskProcessor&gt; representing the asynchronous operation.</returns>
+    /// <param name="id">The unique identifier for the TaskProcessor.</param>
+    /// <param name="cancellationToken">A cancellation token that can be used to cancel the operation.</param>
+    /// <returns>The retrieved or newly created TaskProcessor.</returns>
     private async Task<TaskProcessor> GetTaskProcessorAsync(string id, CancellationToken cancellationToken)
     {
         ConditionalValue<TaskProcessor> result = await _stateStoreProvider

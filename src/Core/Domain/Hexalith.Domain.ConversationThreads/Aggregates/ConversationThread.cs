@@ -15,7 +15,6 @@ using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.ConversationThreads.Entities;
 using Hexalith.Domain.ConversationThreads.Events;
 using Hexalith.Domain.Events;
-using Hexalith.Domain.Exceptions;
 
 /// <summary>
 /// Represents a conversation thread in the domain, implementing the <see cref="IDomainAggregate"/> interface.
@@ -65,7 +64,6 @@ public record ConversationThread(
     /// <param name="domainEvent">The domain event to apply to the conversation thread.</param>
     /// <returns>An <see cref="ApplyResult"/> containing the updated state, any new events, and a success indicator.</returns>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="domainEvent"/> is null.</exception>
-    /// <exception cref="InvalidAggregateEventException">Thrown when the event is not applicable to the current state of the aggregate.</exception>
     public ApplyResult Apply([NotNull] object domainEvent)
     {
         ArgumentNullException.ThrowIfNull(domainEvent);

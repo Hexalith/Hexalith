@@ -20,14 +20,14 @@ namespace Hexalith.Infrastructure.DaprRuntime.Handlers;
 // public class ConventionNamingCommandProcessor(IActorProxyFactory actorProxy, ILogger<ConventionNamingCommandProcessor> logger) : ActorsCommandProcessor(actorProxy, logger), IConventionNamingCommandProcessor
 // {
 //    /// <inheritdoc/>
-//    protected override string GetActorMethodName(ICommand command)
+//    protected override string GetActorMethodName(object command)
 //    {
 //        ArgumentNullException.ThrowIfNull(command);
 //        return "Do" + command.GetType().Name + "Async";
 //    }
 
 // /// <inheritdoc/>
-//    protected override string GetActorName(ICommand command)
+//    protected override string GetActorName(object command)
 //    {
 //        ArgumentNullException.ThrowIfNull(command);
 //        return command.AggregateName + "AggregateActor";

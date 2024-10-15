@@ -1,7 +1,6 @@
-﻿// <copyright file="TaskProcessor.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="TaskProcessor.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Application.Tasks;
@@ -128,7 +127,6 @@ public class TaskProcessor : ITaskProcessor
     /// <value>The retry wait time.</value>
     [DataMember(Order = 5)]
     [JsonPropertyOrder(5)]
-    [SuppressMessage("Blocker Code Smell", "S3237:\"value\" contextual keyword should be used", Justification = "Dummy property setter used for serialization only.")]
     public DateTimeOffset? RetryDate
     {
         get => Ended ? null : ResiliencyPolicy.NextRetryTime(History.CreatedDate, Failure?.Count ?? 0);
@@ -144,7 +142,6 @@ public class TaskProcessor : ITaskProcessor
     /// <value>The retry wait time.</value>
     [DataMember(Order = 6)]
     [JsonPropertyOrder(6)]
-    [SuppressMessage("Blocker Code Smell", "S3237:\"value\" contextual keyword should be used", Justification = "Dummy property setter used for serialization only.")]
     public TimeSpan RetryPeriod
     {
         get => ResiliencyPolicy.EvaluatePeriod(Failure?.Count ?? 0);

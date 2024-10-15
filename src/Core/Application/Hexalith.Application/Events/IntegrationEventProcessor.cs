@@ -9,17 +9,10 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Hexalith.Application.Commands;
-using Hexalith.Application.Errors;
 using Hexalith.Application.MessageMetadatas;
-using Hexalith.Extensions.Errors;
 
 using Microsoft.Extensions.Logging;
 
-/// <summary>
-/// Class Dynamics365FinanceIntegrationEventDispatcher.
-/// Implements the <see cref="Hexalith.Dynamics365Finance.Dispatchers.IDynamics365FinanceIntegrationEventProcessor" />.
-/// </summary>
-/// <seealso cref="Hexalith.Dynamics365Finance.Dispatchers.IDynamics365FinanceIntegrationEventProcessor" />
 public partial class IntegrationEventProcessor : IIntegrationEventProcessor
 {
     /// <summary>
@@ -71,54 +64,23 @@ public partial class IntegrationEventProcessor : IIntegrationEventProcessor
     {
         ArgumentNullException.ThrowIfNull(baseEvent);
         ArgumentNullException.ThrowIfNull(metadata);
-        try
+        List<object> commands = (await _dispatcher
+                .ApplyAsync(baseEvent, metadata, cancellationToken)
+                .ConfigureAwait(false))
+            .SelectMany(p => p)
+            .ToList();
+        if (commands.Count <= 0)
         {
-            List<object> commands = (await _dispatcher
-                    .ApplyAsync(baseEvent, cancellationToken)
-                    .ConfigureAwait(false))
-                .SelectMany(p => p)
-                .ToList();
-            if (commands.Count <= 0)
-            {
-                LogNoCommandGeneratedInformation(metadata.Message.Name, baseEvent.AggregateId, metadata.Context.CorrelationId);
-            }
-
-            foreach (BaseCommand command in commands)
-            {
-                await _commandBus.PublishAsync(
-                        command,
-                        Metadata.CreateNew(command, metadata, _dateTimeService.GetUtcNow()),
-                        cancellationToken)
-                    .ConfigureAwait(false);
-            }
+            LogNoCommandGeneratedInformation(metadata.Message.Name, metadata.Message.Aggregate.Id, metadata.Context.CorrelationId);
         }
-        catch (Exception ex)
+
+        foreach (object command in commands)
         {
-            if (ex is ApplicationErrorException)
-            {
-                throw;
-            }
-
-            ApplicationErrorException appException = new(new EventDispatchFailed(baseEvent, ex), ex);
-            ApplicationExceptionNotification notification = new(
-                baseEvent.AggregateName,
-                baseEvent.AggregateId,
-                appException);
-            DateTimeOffset date = _dateTimeService.GetUtcNow();
-            try
-            {
-                await _notificationBus.PublishAsync(
-                    notification,
-                    Metadata.CreateNew(notification, metadata, date),
+            await _commandBus.PublishAsync(
+                    command,
+                    Metadata.CreateNew(command, metadata, _dateTimeService.GetUtcNow()),
                     cancellationToken)
-                    .ConfigureAwait(false);
-            }
-            catch
-            {
-                throw appException;
-            }
-
-            throw appException;
+                .ConfigureAwait(false);
         }
     }
 }

@@ -9,8 +9,7 @@ using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-using Hexalith.Application.Commands;
-using Hexalith.Application.Metadatas;
+using Hexalith.Application.MessageMetadatas;
 
 #pragma warning disable IDE0301 // Simplify collection initialization
 
@@ -35,7 +34,7 @@ public class ActorCommandEnvelope : IJsonOnSerializing, IJsonOnDeserialized
     {
         CommandsJson = commandsJson;
         MetadatasJson = metadatasJson;
-        Commands = Array.Empty<BaseCommand>();
+        Commands = Array.Empty<object>();
         Metadatas = Array.Empty<Metadata>();
     }
 
@@ -47,7 +46,7 @@ public class ActorCommandEnvelope : IJsonOnSerializing, IJsonOnDeserialized
     {
         CommandsJson = Array.Empty<string>();
         MetadatasJson = Array.Empty<string>();
-        Commands = Array.Empty<BaseCommand>();
+        Commands = Array.Empty<object>();
         Metadatas = Array.Empty<Metadata>();
     }
 
@@ -60,14 +59,14 @@ public class ActorCommandEnvelope : IJsonOnSerializing, IJsonOnDeserialized
     /// <exception cref="ArgumentException">The command array must contain elements. - commands.</exception>
     /// <exception cref="ArgumentException">All commands must be for the same aggregate. - commands.</exception>
     /// <exception cref="ArgumentException">All commands must be for the same aggregate identifier. - commands.</exception>
-    public ActorCommandEnvelope(IEnumerable<BaseCommand> commands, IEnumerable<BaseMetadata> metadatas)
+    public ActorCommandEnvelope(IEnumerable<object> commands, IEnumerable<Metadata> metadatas)
     {
         CommandsJson = Array.Empty<string>();
         MetadatasJson = Array.Empty<string>();
         Commands = commands;
         Metadatas = metadatas;
-        BaseCommand[] cmds = Commands.ToArray();
-        BaseMetadata[] metas = Metadatas.ToArray();
+        object[] cmds = Commands.ToArray();
+        Metadata[] metas = Metadatas.ToArray();
         if (cmds.Length != metas.Length)
         {
             throw new ArgumentException("Command and Metadata arrays must have the same number of elements.", nameof(metadatas));
@@ -78,14 +77,14 @@ public class ActorCommandEnvelope : IJsonOnSerializing, IJsonOnDeserialized
             throw new ArgumentException("The command array must contain elements.", nameof(commands));
         }
 
-        foreach (BaseCommand? command in cmds.Skip(1))
+        foreach (Metadata? meta in metas.Skip(1))
         {
-            if (command.AggregateName != cmds[0].AggregateName)
+            if (meta.Message.Aggregate.Name != metas[0].Message.Aggregate.Name)
             {
                 throw new ArgumentException("All commands must be for the same aggregate.", nameof(commands));
             }
 
-            if (command.AggregateId != cmds[0].AggregateId)
+            if (meta.Message.Aggregate.Id != metas[0].Message.Aggregate.Id)
             {
                 throw new ArgumentException("All commands must be for the same aggregate identifier.", nameof(commands));
             }
@@ -98,7 +97,7 @@ public class ActorCommandEnvelope : IJsonOnSerializing, IJsonOnDeserialized
     /// <value>The command.</value>
     [JsonIgnore]
     [IgnoreDataMember]
-    public IEnumerable<BaseCommand> Commands { get; set; }
+    public IEnumerable<object> Commands { get; set; }
 
     /// <summary>
     /// Gets or sets the commands json.
@@ -114,7 +113,7 @@ public class ActorCommandEnvelope : IJsonOnSerializing, IJsonOnDeserialized
     /// <value>The metadata.</value>
     [JsonIgnore]
     [IgnoreDataMember]
-    public IEnumerable<BaseMetadata> Metadatas { get; set; }
+    public IEnumerable<Metadata> Metadatas { get; set; }
 
     /// <summary>
     /// Gets or sets the metadatas json.
@@ -130,8 +129,8 @@ public class ActorCommandEnvelope : IJsonOnSerializing, IJsonOnDeserialized
     public void OnDeserialized()
     {
         Commands = CommandsJson == null
-            ? Array.Empty<BaseCommand>()
-            : CommandsJson.Select(p => JsonSerializer.Deserialize<BaseCommand>(p)!).ToArray();
+            ? Array.Empty<object>()
+            : CommandsJson.Select(p => JsonSerializer.Deserialize<object>(p)!).ToArray();
         Metadatas = MetadatasJson == null
             ? Array.Empty<Metadata>()
             : MetadatasJson.Select(p => JsonSerializer.Deserialize<Metadata>(p)!).ToArray();

@@ -8,7 +8,7 @@ namespace Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
-using Hexalith.Application.Notifications;
+
 using Hexalith.Application.Requests;
 using Hexalith.Application.States;
 using Hexalith.Extensions.Configuration;
@@ -34,7 +34,6 @@ public static class DaprServicesHelper
     {
         _ = services.AddDaprEventBus(configuration);
         _ = services.AddDaprCommandBus(configuration);
-        _ = services.AddDaprNotificationBus(configuration);
         _ = services.AddDaprRequestBus(configuration);
         return services;
     }
@@ -64,20 +63,6 @@ public static class DaprServicesHelper
         services.AddDaprClient();
         _ = services.ConfigureSettings<EventBusSettings>(configuration);
         services.TryAddSingleton<IEventBus, DaprEventBus>();
-        return services;
-    }
-
-    /// <summary>
-    /// Adds the dapr notification bus.
-    /// </summary>
-    /// <param name="services">The services.</param>
-    /// <param name="configuration">The configuration.</param>
-    /// <returns>IServiceCollection.</returns>
-    public static IServiceCollection AddDaprNotificationBus(this IServiceCollection services, IConfiguration configuration)
-    {
-        services.AddDaprClient();
-        _ = services.ConfigureSettings<NotificationBusSettings>(configuration);
-        services.TryAddSingleton<INotificationBus, DaprNotificationBus>();
         return services;
     }
 

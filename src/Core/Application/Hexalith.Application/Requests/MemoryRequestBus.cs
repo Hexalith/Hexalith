@@ -1,72 +1,37 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Application
-// Author           : Jérôme Piquot
-// Created          : 02-04-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 02-04-2023
-// ***********************************************************************
-// <copyright file="MemoryRequestBus.cs" company="ITANEO">
+﻿// <copyright file="MemoryRequestBus.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Application.Requests;
 
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Envelopes;
-using Hexalith.Application.Metadatas;
-using Hexalith.Application.States;
+using Hexalith.Application.MessageMetadatas;
 
 /// <summary>
-/// Memory Request Bus.
+/// Represents an in-memory implementation of the request bus.
+/// This class stores messages and their metadata in memory for processing.
 /// </summary>
-/// <param name="dateTimeService">The date time service.</param>
-public class MemoryRequestBus(TimeProvider dateTimeService) : IRequestBus
+public class MemoryRequestBus : IRequestBus
 {
     /// <summary>
-    /// The date time service.
+    /// The internal message stream storage.
     /// </summary>
-    private readonly TimeProvider _dateTimeService = dateTimeService;
-
-    private readonly List<(object, MessageMetadatas.Metadata)> _messageStream = [];
+    private readonly List<(object, MessageMetadatas.Metadata)>? _messageStream;
 
     /// <summary>
-    /// The stream.
+    /// Gets the message stream containing all published messages and their metadata.
     /// </summary>
-    private readonly List<RequestState> _stream = [];
-
-    /// <summary>
-    /// Gets the stream.
-    /// </summary>
-    /// <value>The stream.</value>
-    public IEnumerable<RequestState> Stream => _stream;
+    public List<(object Message, Metadata Metadata)> MessageStream => _messageStream ?? [];
 
     /// <inheritdoc/>
-    public async Task PublishAsync(IEnvelope<BaseRequest, BaseMetadata> envelope, CancellationToken cancellationToken)
+    public Task PublishAsync(MessageState requestState, CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(envelope);
-        await PublishAsync(envelope.Message, envelope.Metadata, cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
-    public async Task PublishAsync(BaseRequest request, BaseMetadata metadata, CancellationToken cancellationToken)
-    {
-        ArgumentNullException.ThrowIfNull(request);
-        ArgumentNullException.ThrowIfNull(metadata);
-        await PublishAsync(new RequestState(_dateTimeService.GetUtcNow(), request, metadata), cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
-    public async Task PublishAsync(RequestState requestState, CancellationToken cancellationToken)
-    {
-        ArgumentNullException.ThrowIfNull(requestState);
-        _stream.Add(requestState);
-        await Task.CompletedTask.ConfigureAwait(false);
+        return requestState is null
+            ? Task.FromException(new ArgumentNullException(nameof(requestState)))
+            : PublishAsync(requestState.Message, requestState.Metadata, cancellationToken);
     }
 
     /// <inheritdoc/>
@@ -74,15 +39,7 @@ public class MemoryRequestBus(TimeProvider dateTimeService) : IRequestBus
     {
         ArgumentNullException.ThrowIfNull(message);
         ArgumentNullException.ThrowIfNull(metadata);
-        _messageStream.Add((message, metadata));
-        return Task.CompletedTask;
-    }
-
-    /// <inheritdoc/>
-    public Task PublishAsync(MessageMetadatas.MessageState message, CancellationToken cancellationToken)
-    {
-        ArgumentNullException.ThrowIfNull(message);
-        _messageStream.Add((message.Message, message.Metadata));
+        MessageStream.Add((message, metadata));
         return Task.CompletedTask;
     }
 }

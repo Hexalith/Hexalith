@@ -1,7 +1,6 @@
-﻿// <copyright file="DependencyInjectionEventDispatcher.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="DependencyInjectionEventDispatcher.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Application.Events;
@@ -13,8 +12,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Commands;
-using Hexalith.Domain.Events;
+using Hexalith.Application.MessageMetadatas;
 
 using Microsoft.Extensions.Logging;
 
@@ -46,13 +44,13 @@ public partial class DependencyInjectionEventDispatcher : IIntegrationEventDispa
     }
 
     /// <inheritdoc/>
-    public async Task<IEnumerable<IEnumerable<BaseCommand>>> ApplyAsync([NotNull] IEvent baseEvent, CancellationToken cancellationToken)
+    public async Task<IEnumerable<IEnumerable<object>>> ApplyAsync([NotNull] object baseEvent, Metadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(baseEvent);
-        DispatchingEvent(baseEvent.TypeName, baseEvent.AggregateName, baseEvent.AggregateId);
+        DispatchingEvent(metadata.Message.Name, metadata.Message.Aggregate.Name, metadata.Message.Aggregate.Id);
         return await Task.WhenAll(
             GetHandlers(baseEvent)
-                .Select(p => p.ApplyAsync(baseEvent, cancellationToken))).ConfigureAwait(false);
+                .Select(p => p.ApplyAsync(baseEvent, metadata, cancellationToken))).ConfigureAwait(false);
     }
 
     [LoggerMessage(
@@ -66,7 +64,7 @@ public partial class DependencyInjectionEventDispatcher : IIntegrationEventDispa
     /// </summary>
     /// <param name="event">The event to handle.</param>
     /// <returns>IEventHandler list.</returns>
-    private List<IIntegrationEventHandler> GetHandlers(IEvent @event)
+    private List<IIntegrationEventHandler> GetHandlers(object @event)
     {
         Type eventType = @event.GetType();
         Type eventHandlerType = typeof(IIntegrationEventHandler<>).MakeGenericType(eventType);

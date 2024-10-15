@@ -1,7 +1,6 @@
-﻿// <copyright file="IntegrationEventHandlerBase{TEvent}.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="IntegrationEventHandlerBase{TEvent}.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Application.Events;
@@ -9,30 +8,29 @@ namespace Hexalith.Application.Events;
 using System;
 using System.Threading.Tasks;
 
-using Hexalith.Application.Commands;
-using Hexalith.Domain.Events;
+using Hexalith.Application.MessageMetadatas;
 
 /// <summary>
-/// Integration event handler base class.
+/// Represents a base class for integration event handlers.
 /// </summary>
-/// <typeparam name="TEvent">The type of the t event.</typeparam>
+/// <typeparam name="TEvent">The type of the event to be handled.</typeparam>
 public abstract class IntegrationEventHandlerBase<TEvent> : IIntegrationEventHandler<TEvent>
-    where TEvent : IEvent
+    where TEvent : class
 {
     /// <inheritdoc/>
-    public abstract Task<IEnumerable<BaseCommand>> ApplyAsync(TEvent baseEvent, CancellationToken cancellationToken);
+    Task<IEnumerable<object>> IIntegrationEventHandler.ApplyAsync(object baseEvent, Metadata metadata, CancellationToken cancellationToken)
+        => ApplyAsync(ToEvent(baseEvent), metadata, cancellationToken);
 
     /// <inheritdoc/>
-    Task<IEnumerable<BaseCommand>> IIntegrationEventHandler.ApplyAsync(IEvent baseEvent, CancellationToken cancellationToken)
-        => ApplyAsync(ToEvent(baseEvent), cancellationToken);
+    public abstract Task<IEnumerable<object>> ApplyAsync(TEvent baseEvent, Metadata metadata, CancellationToken cancellationToken);
 
     /// <summary>
-    /// Converts to event.
+    /// Converts the given object to the expected event type.
     /// </summary>
-    /// <param name="event">The event.</param>
-    /// <returns>TEvent.</returns>
-    /// <exception cref="ArgumentException">event.</exception>
-    private static TEvent ToEvent(IEvent @event)
+    /// <param name="event">The event object to convert.</param>
+    /// <returns>The event object cast to the expected type.</returns>
+    /// <exception cref="ArgumentException">Thrown when the event is not of the expected type.</exception>
+    private static TEvent ToEvent(object @event)
     {
         return @event is TEvent c
             ? c

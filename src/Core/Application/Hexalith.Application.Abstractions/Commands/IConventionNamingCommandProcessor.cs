@@ -5,6 +5,15 @@
 
 namespace Hexalith.Application.Commands;
 
+/// <summary>
+/// Defines the interface for a command processor that uses convention-based naming.
+/// </summary>
+/// <remarks>
+/// This interface extends <see cref="IDomainCommandProcessor"/> and is used to process commands
+/// based on naming conventions. Implementations of this interface should provide logic
+/// for handling commands where the naming follows specific conventions.
+/// </remarks>
 public interface IConventionNamingCommandProcessor : IDomainCommandProcessor
 {
+    // Interface members can be added here if needed in the future
 }

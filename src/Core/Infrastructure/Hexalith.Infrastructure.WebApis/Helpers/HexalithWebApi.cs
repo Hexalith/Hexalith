@@ -88,8 +88,8 @@ public static partial class HexalithWebApi
             .AddProblemDetails()
             .AddHttpContextAccessor()
             .AddControllers()
-            .AddApplicationPart(typeof(BaseCommand).Assembly) // Issue with MapControllers() throwing a type not found exception for BaseCommand
-            .AddApplicationPart(typeof(BaseMessage).Assembly) // Issue with MapControllers() throwing a type not found exception for BaseCommand
+            .AddApplicationPart(typeof(object).Assembly) // Issue with MapControllers() throwing a type not found exception for object
+            .AddApplicationPart(typeof(object).Assembly) // Issue with MapControllers() throwing a type not found exception for object
             .AddDapr();
 
         _ = builder.Services.AddAuthentication(); // .AddDapr(); // Adds Dapr authentication

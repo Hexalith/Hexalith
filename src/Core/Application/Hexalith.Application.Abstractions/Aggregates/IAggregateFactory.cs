@@ -1,16 +1,8 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Domain.Abstractions
-// Author           : Jérôme Piquot
-// Created          : 01-04-2024
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 01-04-2024
-// ***********************************************************************
-// <copyright file="IAggregateFactory.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="IAggregateFactory.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
+
 namespace Hexalith.Application.Aggregates;
 
 using System;

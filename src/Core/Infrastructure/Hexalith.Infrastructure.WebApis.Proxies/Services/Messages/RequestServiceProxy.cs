@@ -1,7 +1,6 @@
-﻿// <copyright file="RequestServiceProxy.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="RequestServiceProxy.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Infrastructure.WebApis.Proxies.Services.Messages;
@@ -11,8 +10,8 @@ using System.Net.Http.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Hexalith.Application.MessageMetadatas;
 using Hexalith.Application.Requests;
-using Hexalith.Application.States;
 
 using Microsoft.Extensions.Logging;
 
@@ -27,7 +26,7 @@ using Microsoft.Extensions.Logging;
 public class RequestServiceProxy(HttpClient httpClient, ILogger<RequestServiceProxy> logger) : ServiceApiProxy(httpClient, logger), IRequestService
 {
     /// <inheritdoc/>
-    public async Task SubmitRequestAsync(RequestState request, CancellationToken cancellationToken)
+    public async Task SubmitRequestAsync(MessageState request, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(request);
         HttpResponseMessage response = await HttpClient

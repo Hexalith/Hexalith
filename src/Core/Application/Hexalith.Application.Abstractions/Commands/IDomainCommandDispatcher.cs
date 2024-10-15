@@ -1,5 +1,6 @@
-﻿// <copyright file="IDomainCommandDispatcher.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="IDomainCommandDispatcher.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Application.Commands;
@@ -19,7 +20,7 @@ public interface IDomainCommandDispatcher
     /// <param name="metadata"> The message metadata.</param>
     /// <param name="aggregate">The aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>Task&lt;IEnumerable&lt;BaseMessage&gt;&gt;.</returns>
+    /// <returns>Task&lt;IEnumerable&lt;object&gt;&gt;.</returns>
     Task<ExecuteCommandResult> DoAsync(object command, Metadata metadata, IDomainAggregate? aggregate, CancellationToken cancellationToken);
 
     /// <summary>
@@ -29,6 +30,6 @@ public interface IDomainCommandDispatcher
     /// <param name="metadata"> The message metadata.</param>
     /// <param name="aggregate">The aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>Task&lt;IEnumerable&lt;BaseMessage&gt;&gt;.</returns>
+    /// <returns>Task&lt;IEnumerable&lt;object&gt;&gt;.</returns>
     Task<ExecuteCommandResult> UnDoAsync(object command, Metadata metadata, IDomainAggregate? aggregate, CancellationToken cancellationToken);
 }

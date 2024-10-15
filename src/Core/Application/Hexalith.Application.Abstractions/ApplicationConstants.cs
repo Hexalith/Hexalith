@@ -1,5 +1,6 @@
-﻿// <copyright file="ApplicationConstants.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="ApplicationConstants.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Application;
@@ -17,6 +18,16 @@ public static class ApplicationConstants
     private static JsonSerializerOptions? _defaultJsonSerializerOptions;
 
     /// <summary>
+    /// Gets the command bus name.
+    /// </summary>
+    public static string CommandBus => "commands";
+
+    /// <summary>
+    /// Gets the command bus suffixe.
+    /// </summary>
+    public static string CommandBusSuffix => "-commands";
+
+    /// <summary>
     /// Gets the default JSON serializer options.
     /// </summary>
     public static JsonSerializerOptions DefaultJsonSerializerOptions => _defaultJsonSerializerOptions ??=
@@ -27,16 +38,6 @@ public static class ApplicationConstants
             TypeInfoResolver = new PolymorphicSerializationResolver(),
             NumberHandling = JsonNumberHandling.AllowReadingFromString,
         };
-
-    /// <summary>
-    /// Gets the command bus name.
-    /// </summary>
-    public static string CommandBus => "commands";
-
-    /// <summary>
-    /// Gets the command bus suffixe.
-    /// </summary>
-    public static string CommandBusSuffix => "-commands";
 
     /// <summary>
     /// Gets the event bus name.

@@ -1,7 +1,6 @@
-﻿// <copyright file="CommandServiceProxy.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="CommandServiceProxy.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Infrastructure.WebApis.Proxies.Services.Messages;
@@ -11,7 +10,7 @@ using System.Net.Http.Json;
 using System.Threading.Tasks;
 
 using Hexalith.Application.Commands;
-using Hexalith.Application.States;
+using Hexalith.Application.MessageMetadatas;
 
 using Microsoft.Extensions.Logging;
 
@@ -31,7 +30,7 @@ public class CommandServiceProxy : ServiceApiProxy, ICommandService
     }
 
     /// <inheritdoc/>
-    public async Task SubmitCommandAsync(CommandState command, CancellationToken cancellationToken)
+    public async Task SubmitCommandAsync(MessageState command, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
         HttpResponseMessage response = await HttpClient

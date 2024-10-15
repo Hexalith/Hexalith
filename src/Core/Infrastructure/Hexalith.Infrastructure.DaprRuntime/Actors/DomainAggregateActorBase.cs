@@ -18,7 +18,7 @@ using Hexalith.Application.Aggregates;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
 using Hexalith.Application.MessageMetadatas;
-using Hexalith.Application.Notifications;
+
 using Hexalith.Application.Requests;
 using Hexalith.Application.StreamStores;
 using Hexalith.Application.Tasks;
@@ -46,7 +46,6 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     private readonly ActorHost _host;
     private readonly JsonSerializerOptions _jsonOptions;
     private readonly TimeSpan _maxTimerDueTime = new(0, 1, 0);
-    private readonly INotificationBus _notificationBus;
     private readonly IRequestBus _requestBus;
     private readonly IResiliencyPolicyProvider _resiliencyPolicyProvider;
     private IDomainAggregate? _aggregate;
@@ -66,7 +65,6 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     /// <param name="aggregateFactory">The aggregate factory.</param>
     /// <param name="dateTimeService">The date time service.</param>
     /// <param name="eventBus">The event bus.</param>
-    /// <param name="notificationBus">The notification bus.</param>
     /// <param name="commandBus">The command bus.</param>
     /// <param name="requestBus">The request bus.</param>
     /// <param name="resiliencyPolicyProvider">The resiliency policy provider.</param>
@@ -79,7 +77,6 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         IDomainAggregateFactory aggregateFactory,
         TimeProvider dateTimeService,
         IEventBus eventBus,
-        INotificationBus notificationBus,
         ICommandBus commandBus,
         IRequestBus requestBus,
         IResiliencyPolicyProvider resiliencyPolicyProvider,
@@ -92,7 +89,6 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         ArgumentNullException.ThrowIfNull(aggregateFactory);
         ArgumentNullException.ThrowIfNull(dateTimeService);
         ArgumentNullException.ThrowIfNull(eventBus);
-        ArgumentNullException.ThrowIfNull(notificationBus);
         ArgumentNullException.ThrowIfNull(commandBus);
         ArgumentNullException.ThrowIfNull(requestBus);
         ArgumentNullException.ThrowIfNull(resiliencyPolicyProvider);
@@ -101,7 +97,6 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         _aggregateFactory = aggregateFactory;
         _dateTimeService = dateTimeService;
         _eventBus = eventBus;
-        _notificationBus = notificationBus;
         _commandBus = commandBus;
         _requestBus = requestBus;
         _resiliencyPolicyProvider = resiliencyPolicyProvider;

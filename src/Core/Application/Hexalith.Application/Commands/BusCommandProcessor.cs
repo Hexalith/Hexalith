@@ -16,18 +16,13 @@
 namespace Hexalith.Application.Commands;
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 
 using Hexalith.Application.MessageMetadatas;
 
-/// <summary>
-/// Class BusCommandProcessor.
-/// Implements the <see cref="Hexalith.Application.Commands.ICommandProcessor" />.
-/// </summary>
-/// <seealso cref="Hexalith.Application.Commands.ICommandProcessor" />
+
 public class BusCommandProcessor : IDomainCommandProcessor
 {
     private readonly ICommandBus _bus;
@@ -46,27 +41,6 @@ public class BusCommandProcessor : IDomainCommandProcessor
     }
 
     /// <inheritdoc/>
-    public async Task SubmitAsync([NotNull] BaseCommand command, [NotNull] Metadatas.BaseMetadata metadata, CancellationToken cancellationToken)
-    {
-        ArgumentNullException.ThrowIfNull(command);
-        ArgumentNullException.ThrowIfNull(metadata);
-        await SubmitAsync([command], metadata, cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
-    public async Task SubmitAsync([NotNull] IEnumerable<BaseCommand> commands, [NotNull] Metadatas.BaseMetadata metadata, CancellationToken cancellationToken)
-    {
-        ArgumentNullException.ThrowIfNull(commands);
-        ArgumentNullException.ThrowIfNull(metadata);
-        foreach (BaseCommand command in commands)
-        {
-            await _bus
-                .PublishAsync(command, Metadatas.Metadata.CreateNew(command, metadata), cancellationToken)
-                .ConfigureAwait(false);
-        }
-    }
-
-    /// <inheritdoc/>
     public async Task SubmitAsync(object command, [NotNull] Metadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
@@ -75,6 +49,4 @@ public class BusCommandProcessor : IDomainCommandProcessor
             .PublishAsync(command, metadata, cancellationToken)
             .ConfigureAwait(false);
     }
-
-    public Task SubmitAsync(object command, Metadatas.Metadata metadata, CancellationToken cancellationToken) => throw new NotImplementedException();
 }

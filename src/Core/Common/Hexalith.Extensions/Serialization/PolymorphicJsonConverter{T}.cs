@@ -13,7 +13,7 @@ using System.Text.Json.Serialization;
 using Hexalith.Extensions.Reflections;
 
 /// <summary>
-/// Class BaseMessageConverterInner.
+/// Class objectConverterInner.
 /// Implements the <see cref="JsonConverter{T}" />.
 /// </summary>
 /// <typeparam name="T">Message type.</typeparam>
