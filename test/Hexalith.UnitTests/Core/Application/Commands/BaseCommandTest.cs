@@ -40,7 +40,7 @@ public class BaseCommandTest
         DummyCommand1 original = new("IB2343213FR", 655463);
         string json = JsonSerializer.Serialize<PolymorphicRecordBase>(original, ApplicationConstants.DefaultJsonSerializerOptions);
         _ = json.Should().NotBeNull();
-        _ = json.Should().Contain($"\"{PolymorphicHelper.Discriminator}\":\"{nameof(DummyCommand1)}\"");
+        _ = json.Should().Contain($"\"{PolymorphicHelper.Discriminator}\": \"{nameof(DummyCommand1)}\"");
     }
 
     [Fact]
