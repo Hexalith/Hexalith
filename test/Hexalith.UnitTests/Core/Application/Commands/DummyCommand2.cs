@@ -13,5 +13,5 @@ public partial record DummyCommand2(string BaseValue, int Value2) : DummyBaseCom
 {
     public static DummyCommand2 Create() => new("Test123", 35453);
 
-    public new string AggregateId => BaseValue + "-" + Value2.ToInvariantString();
+    public override string AggregateId => BaseValue + "-" + Value2.ToInvariantString();
 }

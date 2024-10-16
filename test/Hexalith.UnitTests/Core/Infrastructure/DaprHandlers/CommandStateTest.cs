@@ -21,12 +21,12 @@ public class CommandStateTest
     public void PolymorphicSerializeAndDeserializeShouldReturnSameObject()
     {
         DummyCommand1 command = DummyCommand1.Create();
-        CommandState original = new(
+        MessageState original = new(
             DateTimeOffset.Now,
             command,
             command.CreateMetadata());
         string json = JsonSerializer.Serialize(original);
-        CommandState result = JsonSerializer.Deserialize<CommandState>(json);
+        MessageState result = JsonSerializer.Deserialize<MessageState>(json);
         _ = result.Should().NotBeNull();
         _ = result.Message.Should().BeOfType<DummyCommand1>();
         _ = result.Should().BeEquivalentTo(original);

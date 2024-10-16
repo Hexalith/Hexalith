@@ -1,41 +1,41 @@
-﻿// <copyright file="DummyAggregate.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="DummyAggregate.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.UnitTests.Core.Infrastructure.DaprRuntime.Actors;
 
-using Hexalith.Domain.Aggregates;
-using Hexalith.Domain.Events;
-using Hexalith.Domain.Messages;
+using System.Runtime.Serialization;
 
-public record DummyAggregate(string Id) : Aggregate
+using Hexalith.Domain.Aggregates;
+
+[DataContract]
+public record DummyAggregate(string Id, string Name) : IDomainAggregate
 {
     public DummyAggregate()
-        : this(string.Empty)
+        : this(string.Empty, string.Empty)
     {
     }
 
-    public override (IDomainAggregate Aggregate, IEnumerable<object> Messages) Apply(object domainEvent)
-    {
-        return domainEvent is DummyAggregateEvent1 dummyEvent
-            ? (this with
-            {
-                Id = dummyEvent.Id,
-            }, [domainEvent])
-            : throw new NotImplementedException();
-    }
+    public bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);
 
-    public override bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);
+    public static string GetAggregateId(string id) => GetAggregateName() + "-" + id;
 
-    public static string GetAggregateId(string id) => GetAggregateName() + Separator + id;
-
-#pragma warning disable CA1024 // Use properties where appropriate
     public static string GetAggregateName() => "Dummy";
-#pragma warning restore CA1024 // Use properties where appropriate
 
-    protected override string DefaultAggregateName() => GetAggregateName();
+    public string AggregateName => GetAggregateName();
 
-    protected override string DefaultAggregateId() => GetAggregateId(Id);
+    public string AggregateId => GetAggregateId(Id);
+
+    ApplyResult IDomainAggregate.Apply(object domainEvent)
+        => domainEvent is DummyAggregateEvent1 dummyEvent
+            ? new ApplyResult(
+                this with
+                {
+                    Id = dummyEvent.Id,
+                    Name = dummyEvent.Name,
+                },
+                [domainEvent],
+                false)
+            : throw new NotImplementedException();
 }

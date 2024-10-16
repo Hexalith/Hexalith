@@ -13,16 +13,13 @@ using FluentAssertions;
 using Hexalith.Application.Aggregates;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
-using Hexalith.Application.Metadatas;
-using Hexalith.Application.Notifications;
+using Hexalith.Application.MessageMetadatas;
 using Hexalith.Application.Requests;
-using Hexalith.Application.States;
 using Hexalith.Application.Tasks;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Extensions.Errors;
 using Hexalith.Infrastructure.DaprRuntime;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
-using Hexalith.Infrastructure.DaprRuntime.Sales.Actors;
 
 using Moq;
 
@@ -39,7 +36,8 @@ public partial class AggregateActorTest
     [Obsolete]
     public async Task ProcessCommandWithOneErrorShouldSetReminderDueTimeForTwoRetries()
     {
-        DummyAggregateCommand1 command = new() { Id = "123456" };
+        DummyAggregateCommand1 command = new("123456", "Hello");
+
         AggregateActorState currentState = new()
         {
             CommandCount = 1,
@@ -56,25 +54,25 @@ public partial class AggregateActorTest
         ActorId actorId = new(command.AggregateId);
         DummyTimerManager timerManager = new();
         ActorHost host = ActorHost.CreateForTest(
-            typeof(AggregateActor),
-            AggregateActorBase.GetAggregateActorName(command.AggregateName),
+            typeof(DomainAggregateActor),
+            DomainAggregateActorBase.GetAggregateActorName(command.AggregateName),
             new ActorTestOptions
             {
                 ActorId = actorId,
                 TimerManager = timerManager,
             });
         Metadata metadata = CreateMetadata(command);
-        DummyAggregateEvent1 ev = new() { Id = command.Id };
-        Mock<ICommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
-        Mock<IAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
+        DummyAggregateEvent1 ev = new(command.Id, command.Name);
+        Mock<IDomainCommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
+        Mock<IDomainAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
         Mock<IEventBus> eventBus = new(MockBehavior.Strict);
-        Mock<INotificationBus> notificationBus = new(MockBehavior.Strict);
         Mock<ICommandBus> commandBus = new(MockBehavior.Strict);
         Mock<IRequestBus> requestBus = new(MockBehavior.Strict);
         Mock<IActorStateManager> actorStateManager = new(MockBehavior.Strict);
         Mock<IResiliencyPolicyProvider> resiliencyPolicyProvider = new(MockBehavior.Strict);
         commandDispatcher.Setup(s => s.DoAsync(
-            It.Is<object>(c => c.AggregateId == command.AggregateId && c.TypeName == command.TypeName),
+            It.IsAny<object>(),
+            It.Is<Metadata>(c => c.Message.Aggregate.Id == metadata.Message.Aggregate.Id && c.Message.Name == metadata.Message.Name),
             It.Is<IDomainAggregate>(a => a.AggregateName == DummyAggregate.GetAggregateName()),
             It.IsAny<CancellationToken>()))
             .ThrowsAsync(new ApplicationErrorException("Dummy Error"))
@@ -87,7 +85,7 @@ public partial class AggregateActorTest
             TimeSpan.FromDays(10),
             false);
         resiliencyPolicyProvider
-            .Setup(p => p.GetPolicy(It.Is<string>(s => s == AggregateActorBase.GetAggregateActorName(DummyAggregate.GetAggregateName()))))
+            .Setup(p => p.GetPolicy(It.Is<string>(s => s == DomainAggregateActorBase.GetAggregateActorName(DummyAggregate.GetAggregateName()))))
             .Returns(resiliencyPolicy)
             .Verifiable(Times.Once);
 
@@ -103,10 +101,10 @@ public partial class AggregateActorTest
             .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<AggregateActorState>(true, currentState))
             .Verifiable(Times.Once);
         actorStateManager
-            .Setup(s => s.TryGetStateAsync<CommandState>(
+            .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "CommandStream1"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<CommandState>(true, new CommandState(DateTimeOffset.Now, command, metadata)))
+            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<MessageState>(true, MessageState.Create(command, metadata)))
             .Verifiable(Times.Once);
 
         actorStateManager
@@ -153,13 +151,12 @@ public partial class AggregateActorTest
             .Setup(s => s.SaveStateAsync(It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);
-        AggregateActor actor = new(
+        DomainAggregateActor actor = new(
             host,
             commandDispatcher.Object,
             aggregateFactory.Object,
             TimeProvider.System,
             eventBus.Object,
-            notificationBus.Object,
             commandBus.Object,
             requestBus.Object,
             resiliencyPolicyProvider.Object,
@@ -171,7 +168,7 @@ public partial class AggregateActorTest
         // Retry period should be 10 minutes for the first retry plus 3 minutes for the second retry : 13 minutes
         _ = timerManager.Reminders[ActorConstants.ProcessReminderName].DueTime.Should().BeCloseTo(TimeSpan.FromMinutes(13), TimeSpan.FromSeconds(5));
         _ = timerManager.Timers.Should().HaveCount(1);
-        Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, notificationBus, commandBus, requestBus);
+        Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, commandBus, requestBus);
     }
 
     /// <summary>
@@ -182,11 +179,11 @@ public partial class AggregateActorTest
     [Obsolete]
     public async Task ProcessManyCommandsShouldStoreEventsAndMessages()
     {
-        DummyAggregateCommand1 command8 = new() { Id = "123456", Name = "Command8" };
-        DummyAggregateCommand1 command9 = new() { Id = "123456", Name = "Command9" };
-        DummyAggregateCommand1 command10 = new() { Id = "123456", Name = "Command10" };
-        DummyAggregateEvent1 event1 = new() { Id = "123456", Name = "Event1" };
-        DummyAggregateEvent1 event2 = new() { Id = "123456", Name = "Event2" };
+        DummyAggregateCommand1 command8 = new("123456", "Command8");
+        DummyAggregateCommand1 command9 = new("123456", "Command9");
+        DummyAggregateCommand1 command10 = new("123456", "Command10");
+        DummyAggregateEvent1 event1 = new("123456", "Event1");
+        DummyAggregateEvent1 event2 = new("123456", "Event2");
         AggregateActorState currentState = new()
         {
             CommandCount = 10,
@@ -202,43 +199,46 @@ public partial class AggregateActorTest
         };
         DummyTimerManager timerManager = new();
         ActorHost host = ActorHost.CreateForTest(
-            typeof(AggregateActor),
-            AggregateActorBase.GetAggregateActorName(command8.AggregateName),
+            typeof(DomainAggregateActor),
+            DomainAggregateActorBase.GetAggregateActorName(command8.AggregateName),
             new ActorTestOptions
             {
                 ActorId = new ActorId(command8.AggregateId),
                 TimerManager = timerManager,
             });
         Metadata metadata = CreateMetadata(command8);
-        Mock<ICommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
-        Mock<IAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
+        Mock<IDomainCommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
+        Mock<IDomainAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
         Mock<IEventBus> eventBus = new(MockBehavior.Strict);
-        Mock<INotificationBus> notificationBus = new(MockBehavior.Strict);
+
         Mock<ICommandBus> commandBus = new(MockBehavior.Strict);
         Mock<IRequestBus> requestBus = new(MockBehavior.Strict);
         Mock<IActorStateManager> actorStateManager = new(MockBehavior.Strict);
         Mock<IResiliencyPolicyProvider> resiliencyPolicyProvider = new(MockBehavior.Strict);
         commandDispatcher.Setup(s => s.DoAsync(
-            It.Is<object>(c => c.AggregateId == command8.AggregateId && c.TypeName == command8.TypeName && ((DummyAggregateCommand1)c).Name == command8.Name),
+            It.Is<object>(c => ((DummyAggregateCommand1)c).Name == command8.Name),
+            It.Is<Metadata>(c => c.Message.Aggregate.Id == metadata.Message.Aggregate.Id && c.Message.Name == metadata.Message.Name),
             It.Is<IDomainAggregate>(a => a.AggregateName == DummyAggregate.GetAggregateName()),
             It.IsAny<CancellationToken>()))
-            .ReturnsAsync([new DummyAggregateEvent1() { Id = command8.Id, Name = command8.Name }])
+            .ReturnsAsync(new ExecuteCommandResult(null, [new DummyAggregateEvent1(command8.Id, command8.Name)], []))
             .Verifiable(Times.Once);
         commandDispatcher.Setup(s => s.DoAsync(
-            It.Is<object>(c => c.AggregateId == command9.AggregateId && c.TypeName == command9.TypeName && ((DummyAggregateCommand1)c).Name == command9.Name),
+            It.Is<object>(c => ((DummyAggregateCommand1)c).Name == command8.Name),
+            It.Is<Metadata>(c => c.Message.Aggregate.Id == metadata.Message.Aggregate.Id && c.Message.Name == metadata.Message.Name),
             It.Is<IDomainAggregate>(a => a.AggregateName == DummyAggregate.GetAggregateName()),
             It.IsAny<CancellationToken>()))
-            .ReturnsAsync([new DummyAggregateEvent1() { Id = command9.Id, Name = command9.Name }])
+            .ReturnsAsync(new ExecuteCommandResult(null, [new DummyAggregateEvent1(command9.Id, command9.Name)], []))
             .Verifiable(Times.Once);
         commandDispatcher.Setup(s => s.DoAsync(
-            It.Is<object>(c => c.AggregateId == command10.AggregateId && c.TypeName == command10.TypeName && ((DummyAggregateCommand1)c).Name == command10.Name),
+            It.Is<object>(c => ((DummyAggregateCommand1)c).Name == command10.Name),
+            It.Is<Metadata>(c => c.Message.Aggregate.Id == metadata.Message.Aggregate.Id && c.Message.Name == metadata.Message.Name),
             It.Is<IDomainAggregate>(a => a.AggregateName == DummyAggregate.GetAggregateName()),
             It.IsAny<CancellationToken>()))
-            .ReturnsAsync([new DummyAggregateEvent1() { Id = command10.Id, Name = command10.Name }])
+            .ReturnsAsync(new ExecuteCommandResult(null, [new DummyAggregateEvent1(command10.Id, command10.Name)], []))
             .Verifiable(Times.Once);
 
         resiliencyPolicyProvider
-            .Setup(p => p.GetPolicy(It.Is<string>(s => s == AggregateActorBase.GetAggregateActorName(DummyAggregate.GetAggregateName()))))
+            .Setup(p => p.GetPolicy(It.Is<string>(s => s == DomainAggregateActorBase.GetAggregateActorName(DummyAggregate.GetAggregateName()))))
             .Returns(ResiliencyPolicy.None)
             .Verifiable(Times.Once);
 
@@ -254,24 +254,24 @@ public partial class AggregateActorTest
             .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<AggregateActorState>(true, currentState))
             .Verifiable(Times.Once);
         actorStateManager
-            .Setup(s => s.TryGetStateAsync<CommandState>(
+            .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "CommandStream8"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<CommandState>(true, new CommandState(DateTimeOffset.Now, command8, metadata)))
+            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<MessageState>(true, MessageState.Create(command8, metadata)))
             .Verifiable(Times.Once);
 
         actorStateManager
-            .Setup(s => s.TryGetStateAsync<CommandState>(
+            .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "CommandStream9"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<CommandState>(true, new CommandState(DateTimeOffset.Now, command9, metadata)))
+            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<MessageState>(true, MessageState.Create(command9, metadata)))
             .Verifiable(Times.Once);
 
         actorStateManager
-            .Setup(s => s.TryGetStateAsync<CommandState>(
+            .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "CommandStream10"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<CommandState>(true, new CommandState(DateTimeOffset.Now, command10, metadata)))
+            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<MessageState>(true, MessageState.Create(command10, metadata)))
             .Verifiable(Times.Once);
 
         _ = actorStateManager
@@ -284,17 +284,17 @@ public partial class AggregateActorTest
             .Throws(new InvalidOperationException());
 
         actorStateManager
-            .Setup(s => s.TryGetStateAsync<EventState>(
+            .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "EventSourceStream1"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<EventState>(true, new EventState(DateTimeOffset.Now, event1, metadata)))
+            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<MessageState>(true, MessageState.Create(event1, metadata)))
             .Verifiable(Times.Once);
 
         actorStateManager
-            .Setup(s => s.TryGetStateAsync<EventState>(
+            .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "EventSourceStream2"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<EventState>(true, new EventState(DateTimeOffset.Now, event2, metadata)))
+            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<MessageState>(true, MessageState.Create(event2, metadata)))
             .Verifiable(Times.Once);
 
         actorStateManager
@@ -405,33 +405,33 @@ public partial class AggregateActorTest
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);
         actorStateManager
-            .Setup(s => s.SetStateAsync<EventState>(
+            .Setup(s => s.SetStateAsync<MessageState>(
                         It.Is<string>(s => s == "EventSourceStream3"),
-                        It.Is<EventState>(s =>
-                            s.Message.AggregateId == command8.AggregateId &&
-                            s.Message.AggregateName == command8.AggregateName &&
+                        It.Is<MessageState>(s =>
+                            s.Metadata.Message.Aggregate.Id == command8.AggregateId &&
+                            s.Metadata.Message.Aggregate.Name == command8.AggregateName &&
                             ((DummyAggregateEvent1)s.Message).Name == command8.Name &&
                             s.Metadata.Context.CorrelationId == metadata.Context.CorrelationId),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);
         actorStateManager
-            .Setup(s => s.SetStateAsync<EventState>(
+            .Setup(s => s.SetStateAsync<MessageState>(
                         It.Is<string>(s => s == "EventSourceStream4"),
-                        It.Is<EventState>(s =>
-                            s.Message.AggregateId == command9.AggregateId &&
-                            s.Message.AggregateName == command9.AggregateName &&
+                        It.Is<MessageState>(s =>
+                            s.Metadata.Message.Aggregate.Id == command9.AggregateId &&
+                            s.Metadata.Message.Aggregate.Name == command9.AggregateName &&
                             ((DummyAggregateEvent1)s.Message).Name == command9.Name &&
                             s.Metadata.Context.CorrelationId == metadata.Context.CorrelationId),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);
         actorStateManager
-            .Setup(s => s.SetStateAsync<EventState>(
+            .Setup(s => s.SetStateAsync<MessageState>(
                         It.Is<string>(s => s == "EventSourceStream5"),
-                        It.Is<EventState>(s =>
-                            s.Message.AggregateId == command10.AggregateId &&
-                            s.Message.AggregateName == command10.AggregateName &&
+                        It.Is<MessageState>(s =>
+                            s.Metadata.Message.Aggregate.Id == command10.AggregateId &&
+                            s.Metadata.Message.Aggregate.Name == command10.AggregateName &&
                             ((DummyAggregateEvent1)s.Message).Name == command10.Name &&
                             s.Metadata.Context.CorrelationId == metadata.Context.CorrelationId),
                         It.IsAny<CancellationToken>()))
@@ -504,8 +504,8 @@ public partial class AggregateActorTest
             .Setup(s => s.SetStateAsync<MessageState>(
                         It.Is<string>(s => s == "MessageStream6"),
                         It.Is<MessageState>(s =>
-                            s.Message.AggregateId == command8.AggregateId &&
-                            s.Message.AggregateName == command8.AggregateName &&
+                            s.Metadata.Message.Aggregate.Id == command8.AggregateId &&
+                            s.Metadata.Message.Aggregate.Name == command8.AggregateName &&
                             ((DummyAggregateEvent1)s.Message).Name == command8.Name &&
                             s.Metadata.Context.CorrelationId == metadata.Context.CorrelationId),
                         It.IsAny<CancellationToken>()))
@@ -515,8 +515,8 @@ public partial class AggregateActorTest
             .Setup(s => s.SetStateAsync<MessageState>(
                         It.Is<string>(s => s == "MessageStream7"),
                         It.Is<MessageState>(s =>
-                            s.Message.AggregateId == command9.AggregateId &&
-                            s.Message.AggregateName == command9.AggregateName &&
+                            s.Metadata.Message.Aggregate.Id == command9.AggregateId &&
+                            s.Metadata.Message.Aggregate.Name == command9.AggregateName &&
                             ((DummyAggregateEvent1)s.Message).Name == command9.Name &&
                             s.Metadata.Context.CorrelationId == metadata.Context.CorrelationId),
                         It.IsAny<CancellationToken>()))
@@ -526,8 +526,8 @@ public partial class AggregateActorTest
             .Setup(s => s.SetStateAsync<MessageState>(
                         It.Is<string>(s => s == "MessageStream8"),
                         It.Is<MessageState>(s =>
-                            s.Message.AggregateId == command10.AggregateId &&
-                            s.Message.AggregateName == command10.AggregateName &&
+                            s.Metadata.Message.Aggregate.Id == command10.AggregateId &&
+                            s.Metadata.Message.Aggregate.Name == command10.AggregateName &&
                             ((DummyAggregateEvent1)s.Message).Name == command10.Name &&
                             s.Metadata.Context.CorrelationId == metadata.Context.CorrelationId),
                         It.IsAny<CancellationToken>()))
@@ -561,13 +561,12 @@ public partial class AggregateActorTest
             .Setup(s => s.SaveStateAsync(It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Exactly(3));
-        AggregateActor actor = new(
+        DomainAggregateActor actor = new(
             host,
             commandDispatcher.Object,
             aggregateFactory.Object,
             TimeProvider.System,
             eventBus.Object,
-            notificationBus.Object,
             commandBus.Object,
             requestBus.Object,
             resiliencyPolicyProvider.Object,
@@ -579,7 +578,7 @@ public partial class AggregateActorTest
         _ = timerManager.Timers.Count.Should().Be(2);
         _ = timerManager.Reminders[ActorConstants.PublishReminderName].DueTime.Should().Be(TimeSpan.FromMinutes(1));
         _ = timerManager.Timers[ActorConstants.PublishTimerName].DueTime.Should().Be(TimeSpan.FromMilliseconds(1));
-        Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, notificationBus, commandBus, requestBus);
+        Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, commandBus, requestBus);
     }
 
     /// <summary>
@@ -590,7 +589,7 @@ public partial class AggregateActorTest
     [Obsolete]
     public async Task ProcessSecondCommandShouldStoreEventAndMessage()
     {
-        DummyAggregateCommand1 command = new() { Id = "123456" };
+        DummyAggregateCommand1 command = new("123456", "Hello");
         AggregateActorState currentState = new()
         {
             CommandCount = 2,
@@ -607,32 +606,33 @@ public partial class AggregateActorTest
         ActorId actorId = new(command.AggregateId);
         DummyTimerManager timerManager = new();
         ActorHost host = ActorHost.CreateForTest(
-            typeof(AggregateActor),
-            AggregateActorBase.GetAggregateActorName(command.AggregateName),
+            typeof(DomainAggregateActor),
+            DomainAggregateActorBase.GetAggregateActorName(command.AggregateName),
             new ActorTestOptions
             {
                 ActorId = actorId,
                 TimerManager = timerManager,
             });
         Metadata metadata = CreateMetadata(command);
-        DummyAggregateEvent1 ev = new() { Id = command.Id };
-        Mock<ICommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
-        Mock<IAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
+        DummyAggregateEvent1 ev = new(command.Id, command.Name);
+        Mock<IDomainCommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
+        Mock<IDomainAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
         Mock<IEventBus> eventBus = new(MockBehavior.Strict);
-        Mock<INotificationBus> notificationBus = new(MockBehavior.Strict);
+
         Mock<ICommandBus> commandBus = new(MockBehavior.Strict);
         Mock<IRequestBus> requestBus = new(MockBehavior.Strict);
         Mock<IActorStateManager> actorStateManager = new(MockBehavior.Strict);
         Mock<IResiliencyPolicyProvider> resiliencyPolicyProvider = new(MockBehavior.Strict);
         commandDispatcher.Setup(s => s.DoAsync(
-            It.Is<object>(c => c.AggregateId == command.AggregateId && c.TypeName == command.TypeName),
+            It.IsAny<object>(),
+            It.Is<Metadata>(c => c.Message.Aggregate.Id == metadata.Message.Aggregate.Id && c.Message.Name == metadata.Message.Name),
             It.Is<IDomainAggregate>(a => a.AggregateName == DummyAggregate.GetAggregateName()),
             It.IsAny<CancellationToken>()))
-            .ReturnsAsync([ev])
+            .ReturnsAsync(new ExecuteCommandResult(null, [ev], []))
             .Verifiable(Times.Once);
 
         resiliencyPolicyProvider
-            .Setup(p => p.GetPolicy(It.Is<string>(s => s == AggregateActorBase.GetAggregateActorName(DummyAggregate.GetAggregateName()))))
+            .Setup(p => p.GetPolicy(It.Is<string>(s => s == DomainAggregateActorBase.GetAggregateActorName(DummyAggregate.GetAggregateName()))))
             .Returns(ResiliencyPolicy.None)
             .Verifiable(Times.Once);
 
@@ -648,10 +648,10 @@ public partial class AggregateActorTest
             .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<AggregateActorState>(true, currentState))
             .Verifiable(Times.Once);
         actorStateManager
-            .Setup(s => s.TryGetStateAsync<CommandState>(
+            .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "CommandStream2"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<CommandState>(true, new CommandState(DateTimeOffset.Now, command, metadata)))
+            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<MessageState>(true, MessageState.Create(command, metadata)))
             .Verifiable(Times.Once);
 
         actorStateManager
@@ -718,11 +718,11 @@ public partial class AggregateActorTest
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);
         actorStateManager
-            .Setup(s => s.SetStateAsync<EventState>(
+            .Setup(s => s.SetStateAsync<MessageState>(
                         It.Is<string>(s => s == "EventSourceStream1"),
-                        It.Is<EventState>(s =>
-                            s.Message.AggregateId == command.AggregateId &&
-                            s.Message.AggregateName == command.AggregateName &&
+                        It.Is<MessageState>(s =>
+                            s.Metadata.Message.Aggregate.Id == command.AggregateId &&
+                            s.Metadata.Message.Aggregate.Name == command.AggregateName &&
                             s.Metadata.Context.CorrelationId == metadata.Context.CorrelationId),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
@@ -745,8 +745,8 @@ public partial class AggregateActorTest
             .Setup(s => s.SetStateAsync<MessageState>(
                         It.Is<string>(s => s == "MessageStream1"),
                         It.Is<MessageState>(s =>
-                            s.Message.AggregateId == command.AggregateId &&
-                            s.Message.AggregateName == command.AggregateName &&
+                            s.Metadata.Message.Aggregate.Id == command.AggregateId &&
+                            s.Metadata.Message.Aggregate.Name == command.AggregateName &&
                             s.Metadata.Context.CorrelationId == metadata.Context.CorrelationId),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
@@ -763,13 +763,12 @@ public partial class AggregateActorTest
             .Setup(s => s.SaveStateAsync(It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);
-        AggregateActor actor = new(
+        DomainAggregateActor actor = new(
             host,
             commandDispatcher.Object,
             aggregateFactory.Object,
             TimeProvider.System,
             eventBus.Object,
-            notificationBus.Object,
             commandBus.Object,
             requestBus.Object,
             resiliencyPolicyProvider.Object,
@@ -778,6 +777,6 @@ public partial class AggregateActorTest
         _ = timerManager.Reminders.Should().HaveCount(1);
         _ = timerManager.Reminders.First().Key.Should().Be(ActorConstants.PublishReminderName);
         _ = timerManager.Timers.Count.Should().Be(1);
-        Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, notificationBus, commandBus, requestBus);
+        Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, commandBus, requestBus);
     }
 }

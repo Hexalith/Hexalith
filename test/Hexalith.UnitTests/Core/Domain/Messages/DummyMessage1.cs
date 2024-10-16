@@ -1,28 +1,15 @@
-﻿// <copyright file="DummyMessage1.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="DummyMessage1.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.UnitTests.Core.Domain.Messages;
 
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-
 using Hexalith.Extensions.Helpers;
+using Hexalith.PolymorphicSerialization;
 
-[DataContract]
-public class DummyMessage1 : DummyBaseMessage
+[PolymorphicSerialization]
+public partial record DummyMessage1(string BaseValue, int Value1) : DummyBaseMessage(BaseValue)
 {
-    [JsonConstructor]
-    public DummyMessage1(string baseValue, int value1)
-        : base(baseValue) => Value1 = value1;
-
-    public DummyMessage1()
-    {
-    }
-
-    public int Value1 { get; }
-
-    protected override string DefaultAggregateId() => BaseValue + "-" + Value1.ToInvariantString();
+    public override string AggregateId => base.AggregateId + "-" + Value1.ToInvariantString();
 }

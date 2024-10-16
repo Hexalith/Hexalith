@@ -5,8 +5,6 @@
 
 namespace Hexalith.Infrastructure.DaprRuntime.Actors;
 
-using System.Text.Json;
-
 using Dapr.Actors.Runtime;
 
 using Hexalith.Application.Aggregates;
@@ -19,13 +17,11 @@ using Hexalith.Application.Tasks;
 using Microsoft.Extensions.Logging;
 
 /// <summary>
-/// The aggregate manager actor class.
-/// Implements the <see cref="AggregateActorBase" />
-/// Implements the <see cref="IAggregateActor" />.
+/// Represents a domain aggregate actor.
 /// </summary>
-/// <seealso cref="AggregateActorBase" />
-/// <seealso cref="IAggregateActor" />
-[Obsolete]
+/// <remarks>
+/// This actor is responsible for processing commands and events related to a specific domain aggregate.
+/// </remarks>
 public partial class DomainAggregateActor(
     ActorHost host,
     IDomainCommandDispatcher commandDispatcher,
@@ -35,7 +31,6 @@ public partial class DomainAggregateActor(
     ICommandBus commandBus,
     IRequestBus requestBus,
     IResiliencyPolicyProvider resiliencyPolicyProvider,
-    JsonSerializerOptions jsonOptions,
     IActorStateManager? actorStateManager = null)
     : DomainAggregateActorBase(host, commandDispatcher, aggregateFactory, dateTimeService, eventBus, commandBus, requestBus, resiliencyPolicyProvider, jsonOptions, actorStateManager)
 {

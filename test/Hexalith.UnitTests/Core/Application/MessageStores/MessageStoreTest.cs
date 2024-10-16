@@ -31,15 +31,15 @@ public class MessageStoreTest
     public async Task AddAndGetFromSerializedCommandStateShouldReturnSame()
     {
         StringStateProvider provider = new();
-        MessageStore<CommandState> store = new(provider, _streamName);
+        MessageStore<MessageState> store = new(provider, _streamName);
         DummyCommand1 command1 = new("5354323", 123);
         DummyCommand2 command2 = new("AAAABBCC", 960);
-        CommandState original1 = new(DateTimeOffset.UtcNow, command1, command1.CreateMetadata());
-        CommandState original2 = new(DateTimeOffset.UtcNow, command2, command2.CreateMetadata());
+        MessageState original1 = new(DateTimeOffset.UtcNow, command1, command1.CreateMetadata());
+        MessageState original2 = new(DateTimeOffset.UtcNow, command2, command2.CreateMetadata());
         _ = await store.AddAsync([original1], 0, CancellationToken.None);
         _ = await store.AddAsync([original2], 1, CancellationToken.None);
-        CommandState result1 = await store.GetAsync(1, CancellationToken.None);
-        CommandState result2 = await store.GetAsync(2, CancellationToken.None);
+        MessageState result1 = await store.GetAsync(1, CancellationToken.None);
+        MessageState result2 = await store.GetAsync(2, CancellationToken.None);
         _ = result1.Should().BeEquivalentTo(original1);
         _ = result2.Should().BeEquivalentTo(original2);
     }

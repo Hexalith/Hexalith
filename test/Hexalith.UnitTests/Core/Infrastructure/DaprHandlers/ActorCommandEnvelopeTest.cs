@@ -9,8 +9,7 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Application.Commands;
-using Hexalith.Application.Metadatas;
+using Hexalith.Application.MessageMetadatas;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.UnitTests.Core.Application.Commands;

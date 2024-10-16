@@ -13,16 +13,12 @@ using FluentAssertions;
 using Hexalith.Application.Aggregates;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
-using Hexalith.Application.Metadatas;
-using Hexalith.Application.Notifications;
+using Hexalith.Application.MessageMetadatas;
 using Hexalith.Application.Requests;
-using Hexalith.Application.States;
 using Hexalith.Application.Tasks;
-using Hexalith.Domain.Messages;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
-using Hexalith.Infrastructure.DaprRuntime.Sales.Actors;
 
 using Moq;
 
@@ -36,10 +32,9 @@ public partial class AggregateActorTest
     /// </summary>
     /// <returns>System.Threading.Tasks.Task.</returns>
     [Fact]
-    [Obsolete]
     public async Task SubmitCommandToActorWithCommandShouldStoreCommand()
     {
-        DummyAggregateCommand1 command = new() { Id = "123456" };
+        DummyAggregateCommand1 command = new("123456", "Hello");
         AggregateActorState currentState = new()
         {
             CommandCount = 2,
@@ -50,19 +45,18 @@ public partial class AggregateActorTest
             ProcessReminderDueTime = null,
         };
         DummyTimerManager timerManager = new();
-        ActorHost host = ActorHost.CreateForTest(
-            typeof(AggregateActor),
-            AggregateActorBase.GetAggregateActorName(command.AggregateName),
+        ActorHost host = ActorHost.CreateForTest<DomainAggregateActor>(
+            DomainAggregateActorBase.GetAggregateActorName(command.AggregateName),
             new ActorTestOptions
             {
                 ActorId = new ActorId(command.AggregateId),
                 TimerManager = timerManager,
             });
-        Metadata metadata = CreateMetadata(command);
-        Mock<ICommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
-        Mock<IAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
+        Hexalith.Application.MessageMetadatas.Metadata metadata = CreateMetadata(command);
+        Mock<IDomainCommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
+        Mock<IDomainAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
         Mock<IEventBus> eventBus = new(MockBehavior.Strict);
-        Mock<INotificationBus> notificationBus = new(MockBehavior.Strict);
+
         Mock<ICommandBus> commandBus = new(MockBehavior.Strict);
         Mock<IRequestBus> requestBus = new(MockBehavior.Strict);
         Mock<IActorStateManager> actorStateManager = new(MockBehavior.Strict);
@@ -103,9 +97,9 @@ public partial class AggregateActorTest
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);
         actorStateManager
-            .Setup(s => s.SetStateAsync<CommandState>(
+            .Setup(s => s.SetStateAsync<MessageState>(
                         It.Is<string>(s => s.Contains('3') && s.Contains("Command")),
-                        It.Is<CommandState>(s => s.Message.AggregateId == command.AggregateId),
+                        It.Is<MessageState>(s => s.Metadata.Message.Aggregate.Id == command.AggregateId),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);
@@ -120,23 +114,22 @@ public partial class AggregateActorTest
             .Setup(s => s.SaveStateAsync(It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);
-        AggregateActor actor = new(
+        DomainAggregateActor actor = new(
             host,
             commandDispatcher.Object,
             aggregateFactory.Object,
             TimeProvider.System,
             eventBus.Object,
-            notificationBus.Object,
             commandBus.Object,
             requestBus.Object,
             resiliencyPolicyProvider.Object,
             actorStateManager.Object);
-        await actor.SubmitCommandAsync(new ActorCommandEnvelope([command], [metadata]));
+        await actor.SubmitCommandAsync(ActorMessageEnvelope.Create(command, metadata));
         _ = timerManager.Reminders.Count.Should().Be(1);
         _ = timerManager.Timers.Count.Should().Be(1);
         _ = timerManager.Reminders[ActorConstants.ProcessReminderName].DueTime.Should().Be(TimeSpan.FromMinutes(1));
         _ = timerManager.Timers[ActorConstants.ProcessTimerName].DueTime.Should().Be(TimeSpan.FromMilliseconds(1));
-        Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, notificationBus, commandBus, requestBus);
+        Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, commandBus, requestBus);
     }
 
     /// <summary>
@@ -144,35 +137,33 @@ public partial class AggregateActorTest
     /// </summary>
     /// <returns>System.Threading.Tasks.Task.</returns>
     [Fact]
-    [Obsolete]
     public async Task SubmitCommandToActorWithIdMismatchShouldThrowException()
     {
-        DummyAggregateCommand1 command = new() { Id = "123456" };
-        ActorHost host = ActorHost.CreateForTest(typeof(AggregateActor), AggregateActorBase.GetAggregateActorName(command.AggregateName), new ActorTestOptions
+        DummyAggregateCommand1 command = new("123456", "Hello");
+        ActorHost host = ActorHost.CreateForTest<DomainAggregateActor>(DomainAggregateActorBase.GetAggregateActorName(command.AggregateName), new ActorTestOptions
         {
             ActorId = new ActorId("2594223"),
         });
-        Mock<ICommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
-        Mock<IAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
+        Mock<IDomainCommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
+        Mock<IDomainAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
         Mock<IEventBus> eventBus = new(MockBehavior.Strict);
-        Mock<INotificationBus> notificationBus = new(MockBehavior.Strict);
+
         Mock<ICommandBus> commandBus = new(MockBehavior.Strict);
         Mock<IRequestBus> requestBus = new(MockBehavior.Strict);
         Mock<IActorStateManager> actorStateManager = new(MockBehavior.Strict);
         Mock<IResiliencyPolicyProvider> resiliencyPolicyProvider = new(MockBehavior.Strict);
-        AggregateActor actor = new(
+        DomainAggregateActor actor = new(
             host,
             commandDispatcher.Object,
             aggregateFactory.Object,
             TimeProvider.System,
             eventBus.Object,
-            notificationBus.Object,
             commandBus.Object,
             requestBus.Object,
             resiliencyPolicyProvider.Object,
             actorStateManager.Object);
         _ = await FluentActions
-            .Awaiting(() => actor.SubmitCommandAsync(CreateEnvelope(command)))
+            .Awaiting(() => actor.SubmitCommandAsync(ActorMessageEnvelope.Create(command, CreateMetadata(command))))
             .Should()
             .ThrowAsync<InvalidOperationException>()
             .Where(e => e.Message.Contains(command.Id) && e.Message.Contains(actor.Id.ToString()));
@@ -183,35 +174,33 @@ public partial class AggregateActorTest
     /// </summary>
     /// <returns>System.Threading.Tasks.Task.</returns>
     [Fact]
-    [Obsolete]
     public async Task SubmitCommandToActorWithNameMismatchShouldThrowException()
     {
-        DummyAggregateCommand1 command = new() { Id = "123456" };
-        ActorHost host = ActorHost.CreateForTest(typeof(AggregateActor), "TestActor", new ActorTestOptions
+        DummyAggregateCommand1 command = new("123456", "Hello");
+        ActorHost host = ActorHost.CreateForTest<DomainAggregateActor>("TestActor", new ActorTestOptions
         {
             ActorId = new ActorId(command.AggregateId),
         });
-        Mock<ICommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
-        Mock<IAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
+        Mock<IDomainCommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
+        Mock<IDomainAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
         Mock<IEventBus> eventBus = new(MockBehavior.Strict);
-        Mock<INotificationBus> notificationBus = new(MockBehavior.Strict);
+
         Mock<ICommandBus> commandBus = new(MockBehavior.Strict);
         Mock<IRequestBus> requestBus = new(MockBehavior.Strict);
         Mock<IActorStateManager> actorStateManager = new(MockBehavior.Strict);
         Mock<IResiliencyPolicyProvider> resiliencyPolicyProvider = new(MockBehavior.Strict);
-        AggregateActor actor = new(
+        DomainAggregateActor actor = new(
             host,
             commandDispatcher.Object,
             aggregateFactory.Object,
             TimeProvider.System,
             eventBus.Object,
-            notificationBus.Object,
             commandBus.Object,
             requestBus.Object,
             resiliencyPolicyProvider.Object,
             actorStateManager.Object);
         _ = await FluentActions
-            .Awaiting(() => actor.SubmitCommandAsync(CreateEnvelope(command)))
+            .Awaiting(() => actor.SubmitCommandAsync(ActorMessageEnvelope.Create(command, CreateMetadata(command))))
             .Should()
             .ThrowAsync<InvalidOperationException>()
             .Where(e =>
@@ -225,24 +214,22 @@ public partial class AggregateActorTest
     /// </summary>
     /// <returns>System.Threading.Tasks.Task.</returns>
     [Fact]
-    [Obsolete]
     public async Task SubmitCommandToNewActorShouldStoreCommand()
     {
-        DummyAggregateCommand1 command = new() { Id = "123456" };
+        DummyAggregateCommand1 command = new("123456", "Hello");
         DummyTimerManager timerManager = new();
-        ActorHost host = ActorHost.CreateForTest(
-            typeof(AggregateActor),
-            AggregateActorBase.GetAggregateActorName(command.AggregateName),
+        ActorHost host = ActorHost.CreateForTest<DomainAggregateActor>(
+            DomainAggregateActorBase.GetAggregateActorName(command.AggregateName),
             new ActorTestOptions
             {
                 ActorId = new ActorId(command.AggregateId),
                 TimerManager = timerManager,
             });
         Metadata metadata = CreateMetadata(command);
-        Mock<ICommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
-        Mock<IAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
+        Mock<IDomainCommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
+        Mock<IDomainAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
         Mock<IEventBus> eventBus = new(MockBehavior.Strict);
-        Mock<INotificationBus> notificationBus = new(MockBehavior.Strict);
+
         Mock<ICommandBus> commandBus = new(MockBehavior.Strict);
         Mock<IRequestBus> requestBus = new(MockBehavior.Strict);
         Mock<IActorStateManager> actorStateManager = new(MockBehavior.Strict);
@@ -274,9 +261,9 @@ public partial class AggregateActorTest
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);
         actorStateManager
-            .Setup(s => s.SetStateAsync<CommandState>(
+            .Setup(s => s.SetStateAsync<MessageState>(
                         It.Is<string>(s => s.Contains('1') && s.Contains("Command")),
-                        It.Is<CommandState>(s => s.Message.AggregateId == command.AggregateId),
+                        It.Is<MessageState>(s => s.Metadata.Message.Aggregate.Id == command.AggregateId),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);
@@ -291,31 +278,21 @@ public partial class AggregateActorTest
             .Setup(s => s.SaveStateAsync(It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);
-        AggregateActor actor = new(
+        DomainAggregateActor actor = new(
             host,
             commandDispatcher.Object,
             aggregateFactory.Object,
             TimeProvider.System,
             eventBus.Object,
-            notificationBus.Object,
             commandBus.Object,
             requestBus.Object,
             resiliencyPolicyProvider.Object,
             actorStateManager.Object);
-        await actor.SubmitCommandAsync(new ActorCommandEnvelope([command], [metadata]));
+        await actor.SubmitCommandAsync(ActorMessageEnvelope.Create(command, metadata));
         _ = timerManager.Reminders.Count.Should().Be(1);
         _ = timerManager.Timers.Count.Should().Be(1);
-        Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, notificationBus, commandBus, requestBus);
+        Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, commandBus, requestBus);
     }
-
-    /// <summary>
-    /// Creates the envelope.
-    /// </summary>
-    /// <param name="command">The command.</param>
-    /// <returns>Hexalith.Infrastructure.DaprRuntime.Handlers.ActorCommandEnvelope.</returns>
-    [Obsolete]
-    private static ActorCommandEnvelope CreateEnvelope(DummyAggregateCommand1 command)
-                => new([command], [CreateMetadata(command)]);
 
     /// <summary>
     /// Creates the metadata.
@@ -324,14 +301,13 @@ public partial class AggregateActorTest
     /// <returns>Hexalith.Application.Metadatas.Metadata.</returns>
     private static Metadata CreateMetadata(object message)
         => new(
-            UniqueIdHelper.GenerateUniqueStringId(),
-            message,
-            DateTimeOffset.Now,
+            new MessageMetadata(message, DateTimeOffset.Now),
             new ContextMetadata(
                 UniqueIdHelper.GenerateUniqueStringId(),
                 "test-user",
+                "test-partition",
                 DateTimeOffset.Now,
                 100,
-                "my session id"),
-            ["test", "actor"]);
+                "my session id",
+                ["test", "actor"]));
 }

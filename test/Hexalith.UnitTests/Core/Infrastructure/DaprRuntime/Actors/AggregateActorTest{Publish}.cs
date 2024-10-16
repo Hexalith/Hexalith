@@ -13,14 +13,11 @@ using FluentAssertions;
 using Hexalith.Application.Aggregates;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
-using Hexalith.Application.Metadatas;
-using Hexalith.Application.Notifications;
+using Hexalith.Application.MessageMetadatas;
 using Hexalith.Application.Requests;
-using Hexalith.Application.States;
 using Hexalith.Application.Tasks;
 using Hexalith.Infrastructure.DaprRuntime;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
-using Hexalith.Infrastructure.DaprRuntime.Sales.Actors;
 
 using Moq;
 
@@ -30,10 +27,9 @@ using Moq;
 public partial class AggregateActorTest
 {
     [Fact]
-    [Obsolete]
     public async Task PublishLastMessageShouldSendMessageAndRemoveCallback()
     {
-        DummyAggregateEvent1 message = new() { Id = "123456" };
+        DummyAggregateEvent1 message = new("123456", "Hello from test");
         AggregateActorState currentState = new()
         {
             CommandCount = 2,
@@ -45,18 +41,17 @@ public partial class AggregateActorTest
         };
         DummyTimerManager timerManager = new();
         ActorHost host = ActorHost.CreateForTest(
-            typeof(AggregateActor),
-            AggregateActorBase.GetAggregateActorName(message.AggregateName),
+            typeof(DomainAggregateActor),
+            DomainAggregateActorBase.GetAggregateActorName(message.AggregateName),
             new ActorTestOptions
             {
                 ActorId = new ActorId(message.AggregateId),
                 TimerManager = timerManager,
             });
         Metadata metadata = CreateMetadata(message);
-        Mock<ICommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
-        Mock<IAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
+        Mock<IDomainCommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
+        Mock<IDomainAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
         Mock<IEventBus> eventBus = new(MockBehavior.Strict);
-        Mock<INotificationBus> notificationBus = new(MockBehavior.Strict);
         Mock<ICommandBus> commandBus = new(MockBehavior.Strict);
         Mock<IRequestBus> requestBus = new(MockBehavior.Strict);
         Mock<IActorStateManager> actorStateManager = new(MockBehavior.Strict);
@@ -71,13 +66,15 @@ public partial class AggregateActorTest
             .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "MessageStream2"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<MessageState>(true, new MessageState(DateTimeOffset.Now, message, metadata)))
+            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<MessageState>(
+                true,
+                MessageState.Create(message, metadata)))
             .Verifiable(Times.Once);
 
         eventBus
             .Setup(s => s.PublishAsync(
-                It.Is<EventState>(e =>
-                    e.Message.AggregateId == message.AggregateId &&
+                It.Is<MessageState>(e =>
+                    e.Metadata.Message.Aggregate.Id == message.AggregateId &&
                     e.Metadata.Message.Id == metadata.Message.Id),
                 It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
@@ -94,13 +91,12 @@ public partial class AggregateActorTest
             .Setup(s => s.SaveStateAsync(It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);
-        AggregateActor actor = new(
+        DomainAggregateActor actor = new(
             host,
             commandDispatcher.Object,
             aggregateFactory.Object,
             TimeProvider.System,
             eventBus.Object,
-            notificationBus.Object,
             commandBus.Object,
             requestBus.Object,
             resiliencyPolicyProvider.Object,
@@ -109,14 +105,13 @@ public partial class AggregateActorTest
         _ = result.Should().BeFalse();
         _ = timerManager.Reminders.Should().BeEmpty();
         _ = timerManager.Timers.Should().BeEmpty();
-        Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, notificationBus, commandBus, requestBus);
+        Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, commandBus, requestBus);
     }
 
     [Fact]
-    [Obsolete]
     public async Task PublishNextMessageFailedShouldAddMinuteCallback()
     {
-        DummyAggregateEvent1 message = new() { Id = "123456" };
+        DummyAggregateEvent1 message = new("123456", "Hello from test");
         AggregateActorState currentState = new()
         {
             CommandCount = 2,
@@ -128,18 +123,17 @@ public partial class AggregateActorTest
         };
         DummyTimerManager timerManager = new();
         ActorHost host = ActorHost.CreateForTest(
-            typeof(AggregateActor),
-            AggregateActorBase.GetAggregateActorName(message.AggregateName),
+            typeof(DomainAggregateActor),
+            DomainAggregateActorBase.GetAggregateActorName(message.AggregateName),
             new ActorTestOptions
             {
                 ActorId = new ActorId(message.AggregateId),
                 TimerManager = timerManager,
             });
         Metadata metadata = CreateMetadata(message);
-        Mock<ICommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
-        Mock<IAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
+        Mock<IDomainCommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
+        Mock<IDomainAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
         Mock<IEventBus> eventBus = new(MockBehavior.Strict);
-        Mock<INotificationBus> notificationBus = new(MockBehavior.Strict);
         Mock<ICommandBus> commandBus = new(MockBehavior.Strict);
         Mock<IRequestBus> requestBus = new(MockBehavior.Strict);
         Mock<IActorStateManager> actorStateManager = new(MockBehavior.Strict);
@@ -154,13 +148,15 @@ public partial class AggregateActorTest
             .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "MessageStream2"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<MessageState>(true, new MessageState(DateTimeOffset.Now, message, metadata)))
+            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<MessageState>(
+                true,
+                MessageState.Create(message, metadata)))
             .Verifiable(Times.Once);
 
         eventBus
             .Setup(s => s.PublishAsync(
-                It.Is<EventState>(e =>
-                    e.Message.AggregateId == message.AggregateId &&
+                It.Is<MessageState>(e =>
+                    e.Metadata.Message.Aggregate.Id == message.AggregateId &&
                     e.Metadata.Message.Id == metadata.Message.Id),
                 It.IsAny<CancellationToken>()))
             .ThrowsAsync(new InvalidOperationException("Dummy error"))
@@ -181,13 +177,12 @@ public partial class AggregateActorTest
             .Setup(s => s.SaveStateAsync(It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);
-        AggregateActor actor = new(
+        DomainAggregateActor actor = new(
             host,
             commandDispatcher.Object,
             aggregateFactory.Object,
             TimeProvider.System,
             eventBus.Object,
-            notificationBus.Object,
             commandBus.Object,
             requestBus.Object,
             resiliencyPolicyProvider.Object,
@@ -198,14 +193,13 @@ public partial class AggregateActorTest
         _ = timerManager.Reminders[ActorConstants.PublishReminderName].Period.Should().Be(TimeSpan.FromMinutes(1));
         _ = timerManager.Timers.Should().HaveCount(1);
         _ = timerManager.Timers.First().Key.Should().Be(ActorConstants.PublishTimerName);
-        Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, notificationBus, commandBus, requestBus);
+        Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, commandBus, requestBus);
     }
 
     [Fact]
-    [Obsolete]
     public async Task PublishNextMessageShouldSendMessageAndAddCallback()
     {
-        DummyAggregateEvent1 message = new() { Id = "123456" };
+        DummyAggregateEvent1 message = new("123456", "Hello from test");
         AggregateActorState currentState = new()
         {
             CommandCount = 2,
@@ -217,18 +211,17 @@ public partial class AggregateActorTest
         };
         DummyTimerManager timerManager = new();
         ActorHost host = ActorHost.CreateForTest(
-            typeof(AggregateActor),
-            AggregateActorBase.GetAggregateActorName(message.AggregateName),
+            typeof(DomainAggregateActor),
+            DomainAggregateActorBase.GetAggregateActorName(message.AggregateName),
             new ActorTestOptions
             {
                 ActorId = new ActorId(message.AggregateId),
                 TimerManager = timerManager,
             });
         Metadata metadata = CreateMetadata(message);
-        Mock<ICommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
-        Mock<IAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
+        Mock<IDomainCommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
+        Mock<IDomainAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
         Mock<IEventBus> eventBus = new(MockBehavior.Strict);
-        Mock<INotificationBus> notificationBus = new(MockBehavior.Strict);
         Mock<ICommandBus> commandBus = new(MockBehavior.Strict);
         Mock<IRequestBus> requestBus = new(MockBehavior.Strict);
         Mock<IActorStateManager> actorStateManager = new(MockBehavior.Strict);
@@ -243,13 +236,13 @@ public partial class AggregateActorTest
             .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "MessageStream2"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<MessageState>(true, new MessageState(DateTimeOffset.Now, message, metadata)))
+            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<MessageState>(true, MessageState.Create(message, metadata)))
             .Verifiable(Times.Once);
 
         eventBus
             .Setup(s => s.PublishAsync(
-                It.Is<EventState>(e =>
-                    e.Message.AggregateId == message.AggregateId &&
+                It.Is<MessageState>(e =>
+                    e.Metadata.Message.Aggregate.Id == message.AggregateId &&
                     e.Metadata.Message.Id == metadata.Message.Id),
                 It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
@@ -269,13 +262,12 @@ public partial class AggregateActorTest
             .Setup(s => s.SaveStateAsync(It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);
-        AggregateActor actor = new(
+        DomainAggregateActor actor = new(
             host,
             commandDispatcher.Object,
             aggregateFactory.Object,
             TimeProvider.System,
             eventBus.Object,
-            notificationBus.Object,
             commandBus.Object,
             requestBus.Object,
             resiliencyPolicyProvider.Object,
@@ -286,6 +278,6 @@ public partial class AggregateActorTest
         _ = timerManager.Reminders[ActorConstants.PublishReminderName].Period.Should().Be(TimeSpan.FromMinutes(1));
         _ = timerManager.Timers.Should().HaveCount(1);
         _ = timerManager.Timers.First().Key.Should().Be(ActorConstants.PublishTimerName);
-        Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, notificationBus, commandBus, requestBus);
+        Mock.VerifyAll(actorStateManager, commandDispatcher, aggregateFactory, eventBus, commandBus, requestBus);
     }
 }

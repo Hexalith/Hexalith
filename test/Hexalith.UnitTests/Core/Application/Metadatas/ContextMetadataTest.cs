@@ -1,18 +1,8 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.UnitTests
-// Author           : JérômePiquot
-// Created          : 01-22-2023
-//
-// Last Modified By : JérômePiquot
-// Last Modified On : 01-22-2023
-// ***********************************************************************
-// <copyright file="ContextMetadataTest.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="ContextMetadataTest.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
+
 namespace Hexalith.UnitTests.Core.Application.Metadatas;
 
 using System;
@@ -20,7 +10,7 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Application.Metadatas;
+using Hexalith.Application.MessageMetadatas;
 
 /// <summary>
 /// Class ContextMetadataTest.
@@ -33,9 +23,11 @@ public class ContextMetadataTest
         ContextMetadata meta = new(
             "COR-6589",
             "TestUser",
+            "PART-123",
             DateTimeOffset.UtcNow,
             101,
-            "session-6987");
+            "session-6987",
+            []);
 
         string json = JsonSerializer.Serialize(meta);
         ContextMetadata result = JsonSerializer.Deserialize<ContextMetadata>(json);

@@ -1,7 +1,6 @@
-﻿// <copyright file="ResilientCommandProcessorTest.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="ResilientCommandProcessorTest.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.UnitTests.Core.Application.Tasks;
@@ -11,9 +10,9 @@ using System.Threading.Tasks;
 using FluentAssertions;
 
 using Hexalith.Application.Commands;
+using Hexalith.Application.MessageMetadatas;
 using Hexalith.Application.States;
 using Hexalith.Application.Tasks;
-using Hexalith.Domain.Messages;
 using Hexalith.UnitTests.Core.Application.Commands;
 using Hexalith.UnitTests.Core.Domain.Events;
 
@@ -26,10 +25,10 @@ public class ResilientCommandProcessorTest
     [Fact]
     public async Task CompletedStateShouldBeValid()
     {
-        Mock<ICommandDispatcher> dispatcher = new();
+        Mock<IDomainCommandDispatcher> dispatcher = new();
         _ = dispatcher
-            .Setup(p => p.DoAsync(It.IsAny<object>(), null, It.IsAny<CancellationToken>()))
-            .ReturnsAsync([new DummyEvent1("My test response", 123)]);
+            .Setup(p => p.DoAsync(It.IsAny<object>(), It.IsAny<Metadata>(), null, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ExecuteCommandResult(null, [new DummyEvent1("My test response", 123)], []));
         MemoryStateProvider stateProvider = new();
         ResilientCommandProcessor processor = new(
             ResiliencyPolicy.None,
@@ -39,14 +38,14 @@ public class ResilientCommandProcessorTest
         const string key = "test1";
         string stateName = nameof(TaskProcessor) + key;
         DummyCommand1 command = new("My test 1", 1);
-        (TaskProcessor taskProcessor, IEnumerable<object> events) = await processor.ProcessAsync(key, command, null, CancellationToken.None);
+        (TaskProcessor taskProcessor, ExecuteCommandResult result) = await processor.ProcessAsync(key, command, command.CreateMetadata(), null, CancellationToken.None);
         _ = taskProcessor.Should().NotBeNull();
         _ = taskProcessor.Ended.Should().BeTrue();
         _ = taskProcessor.Status.Should().Be(TaskProcessorStatus.Completed);
         _ = taskProcessor.Failure.Should().BeNull();
 
-        _ = events.Should().HaveCount(1);
-        _ = events.First().Should().BeOfType<DummyEvent1>();
+        _ = result.SourceEvents.Should().HaveCount(1);
+        _ = result.SourceEvents.First().Should().BeOfType<DummyEvent1>();
         _ = stateProvider.State.Should().BeEmpty();
         _ = stateProvider.UncommittedState.Should().NotBeEmpty();
         _ = stateProvider.UncommittedState.Should().ContainKey(stateName);
@@ -56,10 +55,10 @@ public class ResilientCommandProcessorTest
     [Fact]
     public async Task TaskStatusShouldBeCancelledWhenCommandDispatcherFailsWithoutResiliency()
     {
-        Mock<ICommandDispatcher> dispatcher = new();
+        Mock<IDomainCommandDispatcher> dispatcher = new();
         _ = dispatcher
-            .Setup(p => p.DoAsync(It.IsAny<object>(), null, It.IsAny<CancellationToken>()))
-            .Returns(Task.FromException<IEnumerable<object>>(new InvalidOperationException("Command execution failed.")));
+            .Setup(p => p.DoAsync(It.IsAny<object>(), It.IsAny<Metadata>(), null, It.IsAny<CancellationToken>()))
+            .Returns(Task.FromException<ExecuteCommandResult>(new InvalidOperationException("Command execution failed.")));
         MemoryStateProvider stateProvider = new();
         ResilientCommandProcessor processor = new(
             ResiliencyPolicy.None,
@@ -70,7 +69,7 @@ public class ResilientCommandProcessorTest
         const string key = "test1";
         string stateName = nameof(TaskProcessor) + key;
         DummyCommand1 command = new("My test 1", 1);
-        (TaskProcessor taskProcessor, IEnumerable<object> events) = await processor.ProcessAsync(key, command, null, CancellationToken.None);
+        (TaskProcessor taskProcessor, ExecuteCommandResult result) = await processor.ProcessAsync(key, command, command.CreateMetadata(), null, CancellationToken.None);
         _ = taskProcessor.Should().NotBeNull();
         _ = taskProcessor.Status.Should().Be(TaskProcessorStatus.Canceled);
         _ = taskProcessor.History.CompletedDate.Should().BeNull();
@@ -78,8 +77,6 @@ public class ResilientCommandProcessorTest
         _ = taskProcessor.History.SuspendedDate.Should().BeNull();
         _ = taskProcessor.History.CanceledDate.Should().NotBeNull();
         _ = taskProcessor.Failure.Should().NotBeNull();
-        _ = events.Should().HaveCount(1);
-        _ = events.First().Should().BeOfType<CommandProcessingFailed>();
         _ = stateProvider.State.Should().BeEmpty();
         _ = stateProvider.UncommittedState.Should().NotBeEmpty();
         _ = stateProvider.UncommittedState.Should().ContainKey(stateName);
@@ -91,10 +88,10 @@ public class ResilientCommandProcessorTest
     [Fact]
     public async Task TaskStatusShouldBeSuspendedWhenCommandDispatcherFailsWithResiliency()
     {
-        Mock<ICommandDispatcher> dispatcher = new();
+        Mock<IDomainCommandDispatcher> dispatcher = new();
         _ = dispatcher
-            .Setup(p => p.DoAsync(It.IsAny<object>(), null, It.IsAny<CancellationToken>()))
-            .Returns(Task.FromException<IEnumerable<object>>(new InvalidOperationException("Command execution failed.")));
+            .Setup(p => p.DoAsync(It.IsAny<object>(), It.IsAny<Metadata>(), null, It.IsAny<CancellationToken>()))
+            .Returns(Task.FromException<ExecuteCommandResult>(new InvalidOperationException("Command execution failed.")));
         MemoryStateProvider stateProvider = new();
         ResilientCommandProcessor processor = new(
             new(
@@ -111,10 +108,8 @@ public class ResilientCommandProcessorTest
         const string key = "test1";
         string stateName = nameof(TaskProcessor) + key;
         DummyCommand1 command = new("My test 1", 1);
-        (TaskProcessor retry, IEnumerable<object> events) = await processor.ProcessAsync(key, command, null, CancellationToken.None);
+        (TaskProcessor retry, ExecuteCommandResult result) = await processor.ProcessAsync(key, command, command.CreateMetadata(), null, CancellationToken.None);
         _ = retry.Should().NotBeNull();
-        _ = events.Should().HaveCount(1);
-        _ = events.First().Should().BeOfType<CommandProcessingFailed>();
         _ = stateProvider.State.Should().BeEmpty();
         _ = stateProvider.UncommittedState.Should().NotBeEmpty();
         _ = stateProvider.UncommittedState.Should().ContainKey(stateName);

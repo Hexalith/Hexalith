@@ -33,5 +33,5 @@ public partial record DummyBaseCommand(string BaseValue)
 
     public string AggregateName => "Test";
 
-    public string AggregateId => BaseValue;
+    public virtual string AggregateId => BaseValue;
 }

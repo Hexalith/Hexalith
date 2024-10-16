@@ -30,5 +30,5 @@ public partial record DummyCommand1(string BaseValue, int Value1) : DummyBaseCom
                 _scopes));
     }
 
-    public new string AggregateId => BaseValue + "-" + Value1.ToInvariantString();
+    public override string AggregateId => BaseValue + "-" + Value1.ToInvariantString();
 }

@@ -3,7 +3,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.UnitTests.Core.Application.States;
+namespace Hexalith.UnitTests.Core.Application.Metadatas;
 
 using System;
 using System.Text.Json;

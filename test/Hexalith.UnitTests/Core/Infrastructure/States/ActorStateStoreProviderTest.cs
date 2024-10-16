@@ -27,7 +27,7 @@ public class ActorStateStoreProviderTest
             .ReturnsAsync(new ConditionalValue<object>(
                 true,
                 command));
-        Mock<ICommandDispatcher> dispatcher = new();
+        Mock<IDomainCommandDispatcher> dispatcher = new();
         ActorStateStoreProvider storeProvider = new(actorStateManager.Object);
         Hexalith.Extensions.Common.ConditionalValue<object> result = await storeProvider.TryGetStateAsync<object>("State", CancellationToken.None);
         _ = result.HasValue.Should().BeTrue();

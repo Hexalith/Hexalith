@@ -1,47 +1,30 @@
-﻿// <copyright file="DummyMetadata.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="DummyMetadata.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.UnitTests.Core.Application.Metadatas;
 
 using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
 
-using Hexalith.Application.Metadatas;
-using Hexalith.Domain.Messages;
+using Hexalith.Application.MessageMetadatas;
 using Hexalith.Extensions.Helpers;
 
 [DataContract]
-public class DummyMetadata : Metadata
+public record DummyMetadata(MessageMetadata Message, ContextMetadata Context)
+    : Metadata(Message, Context)
 {
-    [JsonConstructor]
-    public DummyMetadata(
-        MessageMetadata message,
-        ContextMetadata context,
-        IEnumerable<string> scopes)
-        : base(message, context, scopes)
-    {
-    }
-
-    public DummyMetadata(IMessage message)
-        : base(
-        UniqueIdHelper.GenerateUniqueStringId(),
-        message,
-        DateTimeOffset.UtcNow,
-        new ContextMetadata(
-            UniqueIdHelper.GenerateUniqueStringId(),
-            "Test User",
-            DateTimeOffset.UtcNow,
-            102,
-            "GFD4565"),
-        null)
-    {
-    }
-
-    [Obsolete("Only for serialization")]
-    public DummyMetadata()
+    public DummyMetadata(object message)
+        : this(
+            new MessageMetadata(message, DateTimeOffset.UtcNow),
+            new ContextMetadata(
+                UniqueIdHelper.GenerateUniqueStringId(),
+                "Test User",
+                "PART1",
+                DateTimeOffset.UtcNow,
+                102,
+                "GFD4565",
+                []))
     {
     }
 }

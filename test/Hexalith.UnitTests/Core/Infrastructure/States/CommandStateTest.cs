@@ -52,7 +52,7 @@ public class CommandStateTest
     [Fact]
     public void DeserializeShouldSucceed()
     {
-        CommandState state = JsonSerializer.Deserialize<CommandState>(_json);
+        MessageState state = JsonSerializer.Deserialize<MessageState>(_json);
         _ = state.Should().NotBeNull();
         _ = state!.Message.Should().BeOfType<DummyCommand1>();
         _ = state.Message.As<DummyCommand1>().Value1.Should().Be(123456);
@@ -73,7 +73,7 @@ public class CommandStateTest
     {
         string messageId = UniqueIdHelper.GenerateDateTimeId();
         DummyCommand1 command = new("Test", 123456);
-        CommandState messageState = new(
+        MessageState messageState = new(
             DateTimeOffset.UtcNow,
             command,
             new Metadata(
