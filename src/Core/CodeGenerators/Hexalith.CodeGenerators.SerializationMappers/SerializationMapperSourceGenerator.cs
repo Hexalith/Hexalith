@@ -24,10 +24,9 @@ public class SerializationMapperSourceGenerator : IIncrementalGenerator
     private const string _classBaseTypeName = "PolymorphicClassBase";
     private const string _recordBaseTypeName = "PolymorphicRecordBase";
 
-    private const string _serializationMapperAttributeFullName =
-        "Hexalith.PolymorphicSerialization.PolymorphicSerializationAttribute";
+    private static string SerializationMapperAttributeFullName => typeof(PolymorphicSerializationAttribute).FullName!;
 
-    private const string _serializationMapperAttributeName = "PolymorphicSerializationAttribute";
+    private static string SerializationMapperAttributeName => nameof(PolymorphicSerializationAttribute);
 
     /// <inheritdoc/>
     public void Initialize(IncrementalGeneratorInitializationContext context)
@@ -35,7 +34,7 @@ public class SerializationMapperSourceGenerator : IIncrementalGenerator
         IncrementalValuesProvider<(TypeDeclarationSyntax?, AttributeData?)> classOrRecordDeclarations = context
             .SyntaxProvider
             .ForAttributeWithMetadataName(
-                _serializationMapperAttributeFullName,
+                SerializationMapperAttributeFullName,
                 predicate: static (node, _) => node is ClassDeclarationSyntax or RecordDeclarationSyntax,
                 transform: static (ctx, _) => GetSemanticTargetForGeneration(ctx))
             .Where(static m => m.Type is not null && m.Data is not null);
@@ -152,7 +151,7 @@ public class SerializationMapperSourceGenerator : IIncrementalGenerator
             if (baseTypeSymbol
                 .GetAttributes()
                 .Any(a =>
-                    a.AttributeClass?.ToDisplayString() is _serializationMapperAttributeFullName))
+                    a.AttributeClass?.ToDisplayString() == SerializationMapperAttributeFullName))
             {
                 validBaseType = true;
                 break;
@@ -215,7 +214,7 @@ public class SerializationMapperSourceGenerator : IIncrementalGenerator
         }
 
         AttributeData? attribute = context.Attributes
-            .FirstOrDefault(a => a.AttributeClass?.Name == _serializationMapperAttributeName);
+            .FirstOrDefault(a => a.AttributeClass?.Name == SerializationMapperAttributeName);
 
         return (classDeclaration, attribute);
     }
