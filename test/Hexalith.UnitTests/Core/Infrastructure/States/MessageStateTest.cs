@@ -1,7 +1,6 @@
-﻿// <copyright file="MessageStateTest.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="MessageStateTest.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.UnitTests.Core.Infrastructure.States;
@@ -11,9 +10,7 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Application.Metadatas;
-using Hexalith.Application.States;
-using Hexalith.Extensions.Helpers;
+using Hexalith.Application.MessageMetadatas;
 using Hexalith.Extensions.Serialization;
 using Hexalith.UnitTests.Core.Application.Commands;
 
@@ -63,36 +60,34 @@ public class MessageStateTest
         _ = state.Metadata.Message.Should().NotBeNull();
         _ = state.Metadata.Message.Id.Should().Be("20230125085001962");
         _ = state.Metadata.Message.Name.Should().Be("DummyCommand1");
-        _ = state.Metadata.Message.Version.Major.Should().Be(0);
-        _ = state.Metadata.Message.Version.Minor.Should().Be(0);
+        _ = state.Metadata.Message.Version.Should().Be(0);
     }
 
     [Fact]
     public void SerializeShouldSucceed()
     {
-        string messageId = UniqueIdHelper.GenerateDateTimeId();
         DummyCommand1 command = new("Test", 123456);
-        MessageState messageState = new(
-            DateTimeOffset.UtcNow,
+        MessageState messageState = MessageState.Create(
             command,
             new Metadata(
-                messageId,
-                command,
-                DateTimeOffset.UtcNow,
+                new MessageMetadata(
+                    command,
+                    DateTimeOffset.UtcNow),
                 new ContextMetadata(
-                        messageId,
+                        "COR1234566",
                         "TestUser",
-                        null,
-                        null,
-                        null),
-                null));
+                        "Part1",
+                        DateTimeOffset.UtcNow,
+                        100,
+                        "session-56",
+                        [])));
         string json = JsonSerializer.Serialize(messageState);
         _ = json.Should().NotBeEmpty();
         _ = json.Should().Contain($"\"{IPolymorphicSerializable.TypeNamePropertyName}\":\"{nameof(DummyCommand1)}\"");
         _ = json.Should().Contain($"\"{IPolymorphicSerializable.TypeNamePropertyName}\":\"{nameof(Metadata)}\"");
-        _ = json.Should().Contain($"\"CorrelationId\":\"{messageId}\"");
+        _ = json.Should().Contain($"\"CorrelationId\":\"{messageState.Metadata.Context.CorrelationId}\"");
         _ = json.Should().Contain("\"Value1\":123456");
         _ = json.Should().Contain("\"BaseValue\":\"Test\"");
-        _ = json.Should().Contain($"\"Id\":\"{messageId}\"");
+        _ = json.Should().Contain($"\"Id\":\"{messageState.Metadata.Message.Id}\"");
     }
 }

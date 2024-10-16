@@ -1,7 +1,6 @@
-﻿// <copyright file="MessageStoreTest.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="MessageStoreTest.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.UnitTests.Core.Application.MessageStores;
@@ -10,6 +9,7 @@ using System.Data;
 
 using FluentAssertions;
 
+using Hexalith.Application.MessageMetadatas;
 using Hexalith.Application.States;
 using Hexalith.Application.StreamStores;
 using Hexalith.Extensions.Common;
@@ -34,8 +34,8 @@ public class MessageStoreTest
         MessageStore<MessageState> store = new(provider, _streamName);
         DummyCommand1 command1 = new("5354323", 123);
         DummyCommand2 command2 = new("AAAABBCC", 960);
-        MessageState original1 = new(DateTimeOffset.UtcNow, command1, command1.CreateMetadata());
-        MessageState original2 = new(DateTimeOffset.UtcNow, command2, command2.CreateMetadata());
+        MessageState original1 = MessageState.Create(command1, command1.CreateMetadata());
+        MessageState original2 = MessageState.Create(command2, command2.CreateMetadata());
         _ = await store.AddAsync([original1], 0, CancellationToken.None);
         _ = await store.AddAsync([original2], 1, CancellationToken.None);
         MessageState result1 = await store.GetAsync(1, CancellationToken.None);
@@ -81,8 +81,8 @@ public class MessageStoreTest
     public async Task AddStateShouldPersistNewVersion(int events, long version)
     {
         MemoryStateProvider provider = new(new Dictionary<string, object> { { _stateName, version } });
-        MessageStore<BaseTestEvent> eventStore = new(provider, _streamName);
-        List<BaseTestEvent> list = GetEventList(events);
+        MessageStore<MessageState> eventStore = new(provider, _streamName);
+        List<MessageState> list = GetEventList(events);
         _ = await eventStore.AddAsync(
             list,
             version,
@@ -103,7 +103,7 @@ public class MessageStoreTest
     public async Task AddToStreamReturnsVersionPlusEventCount(int events, long version)
     {
         MemoryStateProvider provider = new(new Dictionary<string, object> { { _stateName, version } });
-        MessageStore<BaseTestEvent> eventStore = new(provider, _streamName);
+        MessageStore<MessageState> eventStore = new(provider, _streamName);
 
         long newVersion = await eventStore.AddAsync(
             GetEventList(events),
@@ -124,7 +124,7 @@ public class MessageStoreTest
     public async Task AddToStreamWithWrongVersionThrowDbConcurrencyException(int events, long version, long badVersion)
     {
         MemoryStateProvider provider = new(new Dictionary<string, object> { { _stateName, version } });
-        MessageStore<BaseTestEvent> eventStore = new(provider, _streamName);
+        MessageStore<MessageState> eventStore = new(provider, _streamName);
 
         async Task<long> Act() => await eventStore.AddAsync(
             GetEventList(events),
@@ -141,7 +141,7 @@ public class MessageStoreTest
     public void CheckEventStateName()
     {
         Mock<IStateStoreProvider> stateManager = new();
-        MessageStore<BaseTestEvent> store = new(stateManager.Object, _streamName);
+        MessageStore<MessageState> store = new(stateManager.Object, _streamName);
         _ = store.StreamName.Should().Be(_streamName);
         _ = store.GetStreamItemStateName(101).Should().Be(_stateName + "101");
     }
@@ -150,7 +150,7 @@ public class MessageStoreTest
     public void CheckStreamStateName()
     {
         Mock<IStateStoreProvider> stateManager = new();
-        MessageStore<BaseTestEvent> store = new(stateManager.Object, _streamName);
+        MessageStore<MessageState> store = new(stateManager.Object, _streamName);
         _ = store.StreamName.Should().Be(_streamName);
         _ = store.GetStreamStateName().Should().Be(_streamName + "Stream");
     }
@@ -164,7 +164,7 @@ public class MessageStoreTest
                     It.IsAny<string>(),
                     It.IsAny<CancellationToken>()))
             .ReturnsAsync(new ConditionalValue<long>());
-        MessageStore<BaseTestEvent> store = new(stateManager.Object, _streamName);
+        MessageStore<MessageState> store = new(stateManager.Object, _streamName);
         long version = await store.GetVersionAsync(CancellationToken.None);
         _ = version.Should().Be(0L);
     }
@@ -173,8 +173,8 @@ public class MessageStoreTest
     public async Task EventsAddedToStreamShouldBePersisted()
     {
         MemoryStateProvider provider = new();
-        MessageStore<BaseTestEvent> eventStore = new(provider, _streamName);
-        List<BaseTestEvent> list = GetEventList(2);
+        MessageStore<MessageState> eventStore = new(provider, _streamName);
+        List<MessageState> list = GetEventList(2);
         _ = await eventStore.AddAsync(
             list,
             0L,
@@ -188,44 +188,55 @@ public class MessageStoreTest
     [Fact]
     public async Task GetStreamShouldReturnEventValue()
     {
-        BaseTestEvent2 testEvent = new() { IdempotencyId = "554643", Id = "myId123", Message = "hello", Value2 = "463.33" };
+        BaseTestEvent2 testEvent = new("554643", "myId123", "hello", "463.33");
         MemoryStateProvider provider = new(new Dictionary<string, object>
         {
             { _stateName, 123L },
             { _streamItemId + testEvent.IdempotencyId, 123L },
             { _stateName + "123", testEvent },
         });
-        MessageStore<BaseTestEvent> eventStore = new(provider, _streamName);
+        MessageStore<MessageState> eventStore = new(provider, _streamName);
 
-        BaseTestEvent @event = await eventStore.GetAsync(123L, CancellationToken.None);
-        _ = @event.Should().NotBeNull();
-        _ = @event.Should().BeOfType<BaseTestEvent2>();
-        _ = @event.Should().BeEquivalentTo(testEvent);
+        MessageState @event = await eventStore.GetAsync(123L, CancellationToken.None);
+        _ = @event.Message.Should().NotBeNull();
+        _ = @event.Message.Should().BeOfType<BaseTestEvent2>();
+        _ = @event.Message.Should().BeEquivalentTo(testEvent);
     }
 
     [Fact]
     public async Task GetStreamVersionShouldReturnCorrectValue()
     {
         MemoryStateProvider provider = new(new Dictionary<string, object> { { "TestStream", 100L } });
-        MessageStore<BaseTestEvent> eventStore = new(provider, _streamName);
+        MessageStore<MessageState> eventStore = new(provider, _streamName);
         long version = await eventStore.GetVersionAsync(CancellationToken.None);
         _ = version.Should().Be(100L);
     }
 
-    private static List<BaseTestEvent> GetEventList(int count)
+    private static List<MessageState> GetEventList(int count)
     {
-        List<BaseTestEvent> list = new(count);
+        List<MessageState> list = new(count);
         for (int i = 1; i <= count; i++)
         {
             string id = i.ToInvariantString();
-            if (i % 2 == 0)
-            {
-                list.Add(new BaseTestEvent2 { IdempotencyId = id, Id = id, Message = _fakeMessageStart + $"two {id}", Value2 = _fakeValue2Start + id });
-            }
-            else
-            {
-                list.Add(new BaseTestEvent { IdempotencyId = id, Id = id, Message = _fakeMessageStart + $"base {id}" });
-            }
+            object e = i % 2 == 0
+                ? new BaseTestEvent2(
+                    id,
+                    id,
+                    _fakeMessageStart + $"two {id}",
+                    _fakeValue2Start + id)
+                : (object)new BaseTestEvent(id, id, _fakeMessageStart + $"base {id}");
+            list.Add(MessageState.Create(
+                e,
+                new Metadata(
+                 new MessageMetadata(e, DateTimeOffset.Now),
+                 new ContextMetadata(
+                     id,
+                     "TestUser",
+                     "Test",
+                     DateTimeOffset.Now,
+                     10,
+                     "SES2132",
+                     ["sc01", "sc02"]))));
         }
 
         return list;

@@ -68,7 +68,6 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     /// <param name="commandBus">The command bus.</param>
     /// <param name="requestBus">The request bus.</param>
     /// <param name="resiliencyPolicyProvider">The resiliency policy provider.</param>
-    /// <param name="jsonOptions">The json serializer options.</param>
     /// <param name="actorStateManager">The actor state manager.</param>
     /// <exception cref="ArgumentNullException">null.</exception>
     protected DomainAggregateActorBase(
@@ -80,7 +79,6 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         ICommandBus commandBus,
         IRequestBus requestBus,
         IResiliencyPolicyProvider resiliencyPolicyProvider,
-        JsonSerializerOptions jsonOptions,
         IActorStateManager? actorStateManager = null)
        : base(host)
     {
@@ -100,7 +98,6 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         _commandBus = commandBus;
         _requestBus = requestBus;
         _resiliencyPolicyProvider = resiliencyPolicyProvider;
-        _jsonOptions = jsonOptions;
         if (actorStateManager is not null)
         {
             StateManager = actorStateManager;

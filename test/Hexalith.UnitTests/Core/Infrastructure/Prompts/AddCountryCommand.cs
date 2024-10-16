@@ -1,63 +1,47 @@
-﻿// <copyright file="AddCountryCommand.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="AddCountryCommand.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.UnitTests.Core.Infrastructure.Prompts;
 
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
 
-using Hexalith.Application.Commands;
 using Hexalith.Extensions.Common;
+using Hexalith.PolymorphicSerialization;
 
+[PolymorphicSerialization]
 [Display(Name = "Add a country", Description = "Add a new country")]
-public class AddCountryCommand : object
+public partial record AddCountryCommand(
+    [property: Display(Name = "ISO2 Code", Description = "ISO 3166-1 alpha-2 code")]
+    [property: ExampleValue("FR")]
+    [property: StringLength(2)]
+    string Iso2,
+    [property: Required]
+    [property : Display(Name = "ISO3 Code", Description = "ISO 3166-1 alpha-3 code")]
+    [property : ExampleValue("FRA")]
+    [property : StringLength(3)]
+    string Iso3,
+    [property : Display(Name = "ISO Number", Description = "ISO 3166-1 numeric code")]
+    [property : ExampleValue(250)]
+    int IsoNumber,
+    [property : Required]
+    [property : ExampleValue("France")]
+    string Name,
+    [property: Display(Name = "Currency name", Description = "Currency name")]
+    [property: ExampleValue("Euro")]
+    string CurrencyName,
+    [property : Display(Name = "Currency symbol", Description = "Currency symbol")]
+    [property : ExampleValue("€")]
+    [property: Required]
+    string CurrencySymbol)
 {
-    [JsonConstructor]
-    public AddCountryCommand(string iso2, string iso3, int isoNumber, string name, string currencyName, string currencySymbol)
+    public AddCountryCommand()
+        : this(string.Empty, string.Empty, 0, string.Empty, string.Empty, string.Empty)
     {
-        Iso2 = iso2;
-        Iso3 = iso3;
-        IsoNumber = isoNumber;
-        Name = name;
-        CurrencyName = currencyName;
-        CurrencySymbol = currencySymbol;
     }
 
-    [Obsolete("For serialization only", error: true)]
-    public AddCountryCommand() => Iso2 = Iso3 = Name = CurrencyName = CurrencySymbol = string.Empty;
+    public string AggregateId => Iso3;
 
-    [Display(Name = "Currency name", Description = "Currency name")]
-    [ExampleValue("Euro")]
-    public string CurrencyName { get; set; }
-
-    [Display(Name = "Currency symbol", Description = "Currency symbol")]
-    [ExampleValue("€")]
-    [Required]
-    public string CurrencySymbol { get; set; }
-
-    [Display(Name = "ISO2 Code", Description = "ISO 3166-1 alpha-2 code")]
-    [ExampleValue("FR")]
-    [StringLength(2)]
-    public string Iso2 { get; set; }
-
-    [Required]
-    [Display(Name = "ISO3 Code", Description = "ISO 3166-1 alpha-3 code")]
-    [ExampleValue("FRA")]
-    [StringLength(3)]
-    public string Iso3 { get; set; }
-
-    [Display(Name = "ISO Number", Description = "ISO 3166-1 numeric code")]
-    [ExampleValue(250)]
-    public int IsoNumber { get; set; }
-
-    [Required]
-    [ExampleValue("France")]
-    public string Name { get; set; }
-
-    protected override string DefaultAggregateId() => Iso3;
-
-    protected override string DefaultAggregateName() => "Country";
+    public string AggregateName => "Country";
 }

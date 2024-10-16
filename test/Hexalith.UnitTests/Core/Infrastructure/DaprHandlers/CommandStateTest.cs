@@ -1,17 +1,15 @@
-﻿// <copyright file="CommandStateTest.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="CommandStateTest.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.UnitTests.Core.Infrastructure.DaprHandlers;
 
-using System;
 using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Application.States;
+using Hexalith.Application.MessageMetadatas;
 
 using Hexalith.UnitTests.Core.Application.Commands;
 
@@ -21,8 +19,7 @@ public class CommandStateTest
     public void PolymorphicSerializeAndDeserializeShouldReturnSameObject()
     {
         DummyCommand1 command = DummyCommand1.Create();
-        MessageState original = new(
-            DateTimeOffset.Now,
+        MessageState original = MessageState.Create(
             command,
             command.CreateMetadata());
         string json = JsonSerializer.Serialize(original);

@@ -32,7 +32,7 @@ public partial class DomainAggregateActor(
     IRequestBus requestBus,
     IResiliencyPolicyProvider resiliencyPolicyProvider,
     IActorStateManager? actorStateManager = null)
-    : DomainAggregateActorBase(host, commandDispatcher, aggregateFactory, dateTimeService, eventBus, commandBus, requestBus, resiliencyPolicyProvider, jsonOptions, actorStateManager)
+    : DomainAggregateActorBase(host, commandDispatcher, aggregateFactory, dateTimeService, eventBus, commandBus, requestBus, resiliencyPolicyProvider, actorStateManager)
 {
     /// <summary>
     /// Logs information about processing commands for the actor.
