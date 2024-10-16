@@ -9,12 +9,14 @@ using System.Text.Json;
 
 using FluentAssertions;
 
+using Hexalith.Application;
 using Hexalith.Application.MessageMetadatas;
-
 using Hexalith.UnitTests.Core.Application.Commands;
 
 public class CommandStateTest
 {
+    public CommandStateTest() => TestHelper.AddSerializationMappers();
+
     [Fact]
     public void PolymorphicSerializeAndDeserializeShouldReturnSameObject()
     {
@@ -22,9 +24,10 @@ public class CommandStateTest
         MessageState original = MessageState.Create(
             command,
             command.CreateMetadata());
-        string json = JsonSerializer.Serialize(original);
-        MessageState result = JsonSerializer.Deserialize<MessageState>(json);
+        string json = JsonSerializer.Serialize(original, ApplicationConstants.DefaultJsonSerializerOptions);
+        MessageState result = JsonSerializer.Deserialize<MessageState>(json, ApplicationConstants.DefaultJsonSerializerOptions);
         _ = result.Should().NotBeNull();
+        _ = result.Should().BeOfType<MessageState>();
         _ = result.Message.Should().BeOfType<DummyCommand1>();
         _ = result.Should().BeEquivalentTo(original);
     }

@@ -11,7 +11,7 @@ using System.Text.Json;
 using FluentAssertions;
 
 using Hexalith.Application.MessageMetadatas;
-using Hexalith.Extensions.Serialization;
+using Hexalith.PolymorphicSerialization;
 using Hexalith.UnitTests.Core.Application.Commands;
 
 public class MessageStateTest
@@ -20,9 +20,8 @@ public class MessageStateTest
     {
         "IdempotencyId":"20230125085001962",
         "Message":{
-            "$type_name":"DummyCommand1",
-            "$version_major":4,
-            "$version_minor":6,
+            "$type":"DummyCommand1",
+            "$version":4,
             "Value1":123456,
             "BaseValue":"Test"
         },
@@ -83,8 +82,7 @@ public class MessageStateTest
                         [])));
         string json = JsonSerializer.Serialize(messageState);
         _ = json.Should().NotBeEmpty();
-        _ = json.Should().Contain($"\"{IPolymorphicSerializable.TypeNamePropertyName}\":\"{nameof(DummyCommand1)}\"");
-        _ = json.Should().Contain($"\"{IPolymorphicSerializable.TypeNamePropertyName}\":\"{nameof(Metadata)}\"");
+        _ = json.Should().Contain($"\"{PolymorphicHelper.Discriminator}\":\"{nameof(DummyCommand1)}\"");
         _ = json.Should().Contain($"\"CorrelationId\":\"{messageState.Metadata.Context.CorrelationId}\"");
         _ = json.Should().Contain("\"Value1\":123456");
         _ = json.Should().Contain("\"BaseValue\":\"Test\"");

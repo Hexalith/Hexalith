@@ -12,6 +12,7 @@ using FluentAssertions;
 using Hexalith.Application.MessageMetadatas;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
+using Hexalith.PolymorphicSerialization;
 using Hexalith.UnitTests.Core.Application.Commands;
 
 /// <summary>
@@ -71,6 +72,6 @@ public class ActorMessageEnvelopeTest
         _ = json.Should().Contain(c2.Value2.ToInvariantString());
         _ = json.Should().Contain(nameof(DummyCommand1));
         _ = json.Should().Contain(nameof(DummyCommand2));
-        _ = json.Should().Contain("$type_name");
+        _ = json.Should().Contain(PolymorphicHelper.Discriminator);
     }
 }

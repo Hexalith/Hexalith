@@ -5,12 +5,17 @@
 
 namespace Hexalith.UnitTests.Core.Application.Commands;
 
+using System.Runtime.Serialization;
+
 using Hexalith.Application.MessageMetadatas;
 using Hexalith.Extensions.Helpers;
 using Hexalith.PolymorphicSerialization;
 
 [PolymorphicSerialization]
-public partial record DummyCommand1(string BaseValue, int Value1) : DummyBaseCommand(BaseValue)
+public partial record DummyCommand1(
+    string BaseValue,
+    [property: DataMember]
+    int Value1) : DummyBaseCommand(BaseValue)
 {
     private static readonly string[] _scopes = ["sc01", "sc02"];
 

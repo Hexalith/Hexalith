@@ -13,6 +13,10 @@ using System;
 public static class PolymorphicHelper
 {
     /// <summary>
+    /// Gets the discriminator for polymorphic serialization.
+    /// </summary>
+    public static string Discriminator => "$type";
+    /// <summary>
     /// Gets the name, type name and version of a polymorphic type.
     /// </summary>
     /// <param name="type">The type to get the name, type name and version.</param>

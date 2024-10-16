@@ -41,7 +41,7 @@ public sealed class PolymorphicSerializationAttribute(string? name = null, int v
     /// <param name="version">The version.</param>
     /// <returns>The type name.</returns>
     public static string GetTypeName(string name, int version)
-            => $"{name}V{version}";
+            => (version < 2) ? name : $"{name}V{version}";
 
     /// <summary>
     /// Gets the polymorphic type name.
@@ -50,5 +50,11 @@ public sealed class PolymorphicSerializationAttribute(string? name = null, int v
     /// <returns>The polymorphic type name.</returns>
     /// <exception cref="ArgumentNullException">The type is null.</exception>
     public string GetTypeName(Type type)
-        => type == null ? throw new ArgumentNullException(nameof(type)) : GetTypeName(Name ?? type.Name, Version);
+    {
+        string? name = string.IsNullOrWhiteSpace(Name) ? type.Name : Name;
+        _ = name ?? throw new InvalidOperationException("The type name is null.");
+        return GetTypeName(
+            name,
+            Version);
+    }
 }

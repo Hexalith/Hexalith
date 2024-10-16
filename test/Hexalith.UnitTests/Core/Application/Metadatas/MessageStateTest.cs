@@ -15,20 +15,16 @@ using Hexalith.Application.MessageMetadatas;
 using Hexalith.Extensions.Helpers;
 using Hexalith.PolymorphicSerialization;
 using Hexalith.UnitTests.Core.Domain.Messages;
-using Hexalith.UnitTests.Extensions;
 
 using Xunit;
 
 public class MessageStateTest
 {
+    public MessageStateTest() => TestHelper.AddSerializationMappers();
+
     [Fact]
     public void StateSerializationAndDeserializationShouldReturnSameObject()
     {
-        if (PolymorphicSerializationResolver.DefaultMappers.All(p => p.JsonDerivedType.DerivedType != typeof(MyDummyMessage)))
-        {
-            PolymorphicSerializationResolver.DefaultMappers = PolymorphicSerializationResolver.DefaultMappers.AddHexalithUnitTestsMappers();
-        }
-
         MyDummyMessage message = new("ID21", "My 21 dummies", 21);
         Metadata meta = new(
             new MessageMetadata(message, DateTimeOffset.UtcNow),
@@ -51,11 +47,6 @@ public class MessageStateTest
     [Fact]
     public void StateWithVersionSerializationAndDeserializationShouldReturnSameObject()
     {
-        if (!PolymorphicSerializationResolver.DefaultMappers.Any(p => p.JsonDerivedType.DerivedType == typeof(MyDummyMessage2)))
-        {
-            PolymorphicSerializationResolver.DefaultMappers = PolymorphicSerializationResolver.DefaultMappers.AddHexalithUnitTestsMappers();
-        }
-
         MyDummyMessage2 message = new("ID21", "My 21 dummies", 21);
         Metadata meta = new(
             new MessageMetadata(message, DateTimeOffset.UtcNow),
@@ -78,11 +69,6 @@ public class MessageStateTest
     [Fact]
     public void StateWithVersionAndNameSerializationAndDeserializationShouldReturnSameObject()
     {
-        if (!PolymorphicSerializationResolver.DefaultMappers.Any(p => p.JsonDerivedType.DerivedType == typeof(MyDummyMessage3)))
-        {
-            PolymorphicSerializationResolver.DefaultMappers = PolymorphicSerializationResolver.DefaultMappers.AddHexalithUnitTestsMappers();
-        }
-
         MyDummyMessage3 message = new("ID21", "My 21 dummies", 21);
         Metadata meta = new(
             new MessageMetadata(message, DateTimeOffset.UtcNow),
@@ -105,11 +91,6 @@ public class MessageStateTest
     [Fact]
     public void StateSerializationWithVersionAttributeShouldSucceed()
     {
-        if (!PolymorphicSerializationResolver.DefaultMappers.Any(p => p.JsonDerivedType.DerivedType == typeof(MyDummyMessage2)))
-        {
-            PolymorphicSerializationResolver.DefaultMappers = PolymorphicSerializationResolver.DefaultMappers.AddHexalithUnitTestsMappers();
-        }
-
         MyDummyMessage2 message = new("ID22", "My 22 dummies", 22);
         Metadata meta = new(
             new MessageMetadata(message, DateTimeOffset.UtcNow),
@@ -124,7 +105,7 @@ public class MessageStateTest
         MessageState state = MessageState.Create(message, meta);
         string json = JsonSerializer.Serialize(state, ApplicationConstants.DefaultJsonSerializerOptions);
         _ = json.Should().NotBeNullOrEmpty();
-        _ = json.Should().Contain($"\"$type\": \"MyDummyMessage2V2\"");
+        _ = json.Should().Contain($"\"{PolymorphicHelper.Discriminator}\": \"MyDummyMessage2V2\"");
         _ = json.Should().Contain($"\"{nameof(meta.Message.Id)}\": \"{meta.Message.Id}\"");
         _ = json.Should().Contain($"\"{nameof(message.Name)}\": \"{message.Name}");
         _ = json.Should().Contain($"\"{nameof(message.Value)}\": {message.Value.ToInvariantString()}");
@@ -133,11 +114,6 @@ public class MessageStateTest
     [Fact]
     public void StateSerializationWithNameAndVersionAttributeShouldSucceed()
     {
-        if (!PolymorphicSerializationResolver.DefaultMappers.Any(p => p.JsonDerivedType.DerivedType == typeof(MyDummyMessage3)))
-        {
-            PolymorphicSerializationResolver.DefaultMappers = PolymorphicSerializationResolver.DefaultMappers.AddHexalithUnitTestsMappers();
-        }
-
         MyDummyMessage3 message = new("ID22", "My 22 dummies", 22);
         Metadata meta = new(
             new MessageMetadata(message, DateTimeOffset.UtcNow),
@@ -152,7 +128,7 @@ public class MessageStateTest
         MessageState state = MessageState.Create(message, meta);
         string json = JsonSerializer.Serialize(state, ApplicationConstants.DefaultJsonSerializerOptions);
         _ = json.Should().NotBeNullOrEmpty();
-        _ = json.Should().Contain($"\"$type\": \"MyMessageV3\"");
+        _ = json.Should().Contain($"\"{PolymorphicHelper.Discriminator}\": \"MyMessageV3\"");
         _ = json.Should().Contain($"\"{nameof(meta.Message.Id)}\": \"{meta.Message.Id}\"");
         _ = json.Should().Contain($"\"{nameof(message.Name)}\": \"{message.Name}");
         _ = json.Should().Contain($"\"{nameof(message.Value)}\": {message.Value.ToInvariantString()}");

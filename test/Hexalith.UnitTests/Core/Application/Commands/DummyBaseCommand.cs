@@ -5,12 +5,16 @@
 
 namespace Hexalith.UnitTests.Core.Application.Commands;
 
+using System.Runtime.Serialization;
+
 using Hexalith.Application.MessageMetadatas;
 using Hexalith.Extensions.Helpers;
 using Hexalith.PolymorphicSerialization;
 
 [PolymorphicSerialization]
-public partial record DummyBaseCommand(string BaseValue)
+public partial record DummyBaseCommand(
+    [property: DataMember]
+    string BaseValue)
 {
     public Metadata CreateMetadata()
     {

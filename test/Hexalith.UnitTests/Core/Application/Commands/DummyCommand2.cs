@@ -5,11 +5,16 @@
 
 namespace Hexalith.UnitTests.Core.Application.Commands;
 
+using System.Runtime.Serialization;
+
 using Hexalith.Extensions.Helpers;
 using Hexalith.PolymorphicSerialization;
 
 [PolymorphicSerialization]
-public partial record DummyCommand2(string BaseValue, int Value2) : DummyBaseCommand(BaseValue)
+public partial record DummyCommand2(
+        string BaseValue,
+        [property: DataMember]
+        int Value2) : DummyBaseCommand(BaseValue)
 {
     public static DummyCommand2 Create() => new("Test123", 35453);
 

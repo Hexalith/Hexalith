@@ -1,7 +1,6 @@
-﻿// <copyright file="BaseCommandTest.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="BaseCommandTest.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.UnitTests.Core.Application.Commands;
@@ -10,13 +9,13 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Application.Commands;
-using Hexalith.Extensions.Helpers;
-using Hexalith.Extensions.Serialization;
+using Hexalith.Application;
 using Hexalith.PolymorphicSerialization;
 
 public class BaseCommandTest
 {
+    public BaseCommandTest() => TestHelper.AddSerializationMappers();
+
     [Fact]
     public void DataContractSerializeAndDeserializeShouldReturnSameObject()
     {
@@ -28,8 +27,8 @@ public class BaseCommandTest
     public void PolymorphicSerializeAndDeserializeShouldReturnSameObject()
     {
         DummyCommand1 original = new("IB2343213FR", 655463);
-        string json = JsonSerializer.Serialize<object>(original);
-        object result = JsonSerializer.Deserialize<object>(json);
+        string json = JsonSerializer.Serialize<PolymorphicRecordBase>(original, ApplicationConstants.DefaultJsonSerializerOptions);
+        object result = JsonSerializer.Deserialize<PolymorphicRecordBase>(json, ApplicationConstants.DefaultJsonSerializerOptions);
         _ = result.Should().NotBeNull();
         _ = result.Should().BeOfType<DummyCommand1>();
         _ = result.Should().BeEquivalentTo(original);
@@ -39,9 +38,9 @@ public class BaseCommandTest
     public void PolymorphicSerializeFirstFieldShouldBeType()
     {
         DummyCommand1 original = new("IB2343213FR", 655463);
-        string json = JsonSerializer.Serialize<object>(original);
+        string json = JsonSerializer.Serialize<PolymorphicRecordBase>(original, ApplicationConstants.DefaultJsonSerializerOptions);
         _ = json.Should().NotBeNull();
-        _ = json.Should().Contain($"\"{PolymorphicHelper.GetPolymorphicTypeDiscriminator(original)}\":\"{nameof(DummyCommand1)}\"");
+        _ = json.Should().Contain($"\"{PolymorphicHelper.Discriminator}\":\"{nameof(DummyCommand1)}\"");
     }
 
     [Fact]

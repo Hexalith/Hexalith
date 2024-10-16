@@ -9,6 +9,8 @@ using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 
+using Hexalith.PolymorphicSerialization;
+
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
@@ -181,11 +183,11 @@ public class SerializationMapperSourceGenerator : IIncrementalGenerator
         string? name = (string?)nameParam.Value;
         if (string.IsNullOrWhiteSpace(name))
         {
-            name = classSymbol.MetadataName;
+            name = classSymbol.MetadataName ?? string.Empty;
         }
 
-        int? version = (int?)versionParam.Value;
-        string typeDiscriminator = name + "V" + version;
+        int version = ((int?)versionParam.Value) ?? 1;
+        string typeDiscriminator = PolymorphicSerializationAttribute.GetTypeName(name, version);
         string inheritance = hasParent ? string.Empty : $" : {baseTypeName}";
 
         return $$"""

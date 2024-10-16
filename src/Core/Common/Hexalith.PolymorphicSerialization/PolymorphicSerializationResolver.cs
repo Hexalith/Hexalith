@@ -64,7 +64,7 @@ public class PolymorphicSerializationResolver : DefaultJsonTypeInfoResolver
         {
             jsonTypeInfo.PolymorphismOptions = new JsonPolymorphismOptions
             {
-                TypeDiscriminatorPropertyName = "$type",
+                TypeDiscriminatorPropertyName = PolymorphicHelper.Discriminator,
                 IgnoreUnrecognizedTypeDiscriminators = true,
                 UnknownDerivedTypeHandling = JsonUnknownDerivedTypeHandling.FailSerialization,
             };
