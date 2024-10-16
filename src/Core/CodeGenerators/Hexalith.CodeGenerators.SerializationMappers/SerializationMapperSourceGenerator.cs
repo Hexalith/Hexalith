@@ -9,8 +9,6 @@ using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 
-using Hexalith.PolymorphicSerialization;
-
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
@@ -24,9 +22,9 @@ public class SerializationMapperSourceGenerator : IIncrementalGenerator
     private const string _classBaseTypeName = "PolymorphicClassBase";
     private const string _recordBaseTypeName = "PolymorphicRecordBase";
 
-    private static string SerializationMapperAttributeFullName => typeof(PolymorphicSerializationAttribute).FullName!;
+    private const string _serializationMapperAttributeFullName = "Hexalith.PolymorphicSerialization.PolymorphicSerializationAttribute";
 
-    private static string SerializationMapperAttributeName => nameof(PolymorphicSerializationAttribute);
+    private const string _serializationMapperAttributeName = "PolymorphicSerializationAttribute";
 
     /// <inheritdoc/>
     public void Initialize(IncrementalGeneratorInitializationContext context)
@@ -34,7 +32,7 @@ public class SerializationMapperSourceGenerator : IIncrementalGenerator
         IncrementalValuesProvider<(TypeDeclarationSyntax?, AttributeData?)> classOrRecordDeclarations = context
             .SyntaxProvider
             .ForAttributeWithMetadataName(
-                SerializationMapperAttributeFullName,
+                _serializationMapperAttributeFullName,
                 predicate: static (node, _) => node is ClassDeclarationSyntax or RecordDeclarationSyntax,
                 transform: static (ctx, _) => GetSemanticTargetForGeneration(ctx))
             .Where(static m => m.Type is not null && m.Data is not null);
@@ -151,7 +149,7 @@ public class SerializationMapperSourceGenerator : IIncrementalGenerator
             if (baseTypeSymbol
                 .GetAttributes()
                 .Any(a =>
-                    a.AttributeClass?.ToDisplayString() == SerializationMapperAttributeFullName))
+                    a.AttributeClass?.ToDisplayString() == _serializationMapperAttributeFullName))
             {
                 validBaseType = true;
                 break;
@@ -179,14 +177,12 @@ public class SerializationMapperSourceGenerator : IIncrementalGenerator
         // get the name and the version from the attribute
         TypedConstant nameParam = syntax.Data.ConstructorArguments[0];
         TypedConstant versionParam = syntax.Data.ConstructorArguments[1];
-        string? name = (string?)nameParam.Value;
-        if (string.IsNullOrWhiteSpace(name))
-        {
-            name = classSymbol.MetadataName ?? string.Empty;
-        }
+        string name = (nameParam.Value == null || string.IsNullOrWhiteSpace((string?)nameParam.Value))
+            ? classSymbol.MetadataName
+            : (string)nameParam.Value;
 
         int version = ((int?)versionParam.Value) ?? 1;
-        string typeDiscriminator = PolymorphicSerializationAttribute.GetTypeName(name, version);
+        string typeDiscriminator = /*PolymorphicSerializationAttribute.*/GetTypeName(name, version);
         string inheritance = hasParent ? string.Empty : $" : {baseTypeName}";
 
         return $$"""
@@ -214,8 +210,11 @@ public class SerializationMapperSourceGenerator : IIncrementalGenerator
         }
 
         AttributeData? attribute = context.Attributes
-            .FirstOrDefault(a => a.AttributeClass?.Name == SerializationMapperAttributeName);
+            .FirstOrDefault(a => a.AttributeClass?.Name == _serializationMapperAttributeName);
 
         return (classDeclaration, attribute);
     }
+
+    private static string GetTypeName(string name, int version)
+            => (version < 2) ? name : $"{name}V{version}";
 }
