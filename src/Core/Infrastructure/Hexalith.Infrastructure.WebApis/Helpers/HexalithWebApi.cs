@@ -12,7 +12,6 @@ using Dapr.Actors.Runtime;
 
 using FluentValidation;
 
-using Hexalith.Application;
 using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Projections;
@@ -20,6 +19,7 @@ using Hexalith.Application.Tasks;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.AspireService.Defaults;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
+using Hexalith.PolymorphicSerialization;
 
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -80,7 +80,7 @@ public static partial class HexalithWebApi
             // Register actor types and configure actor settings
             registerActors(options.Actors);
             options.UseJsonSerialization = true;
-            options.JsonSerializerOptions = ApplicationConstants.DefaultJsonSerializerOptions;
+            options.JsonSerializerOptions = PolymorphicHelper.DefaultJsonSerializerOptions;
         });
         _ = builder
             .Services

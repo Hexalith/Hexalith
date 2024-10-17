@@ -12,10 +12,10 @@ using System.Threading.Tasks;
 using Dapr.Actors;
 using Dapr.Actors.Client;
 
-using Hexalith.Application;
 using Hexalith.Application.Commands;
 using Hexalith.Application.MessageMetadatas;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
+using Hexalith.PolymorphicSerialization;
 
 using Microsoft.Extensions.Logging;
 
@@ -74,7 +74,7 @@ public partial class DomainActorCommandProcessor : IDomainCommandProcessor
             LogSendingCommandToActor(_logger, metadata.Message.Name, metadata.Message.Aggregate.Id, actorName);
             IDomainAggregateActor actor = _actorProxy.CreateActorProxy<IDomainAggregateActor>(new ActorId(metadata.Message.Aggregate.Id), actorName);
             ActorMessageEnvelope envelope = ActorMessageEnvelope.Create(command, metadata);
-            string json = JsonSerializer.Serialize(envelope, ApplicationConstants.DefaultJsonSerializerOptions);
+            string json = JsonSerializer.Serialize(envelope, PolymorphicHelper.DefaultJsonSerializerOptions);
             await actor.SubmitCommandAsJsonAsync(json).ConfigureAwait(false);
         }
         catch (Exception e)

@@ -14,7 +14,6 @@ using Dapr.Actors.Runtime;
 
 using FluentValidation;
 
-using Hexalith.Application;
 using Hexalith.Application.Aggregates;
 using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
@@ -28,6 +27,7 @@ using Hexalith.Infrastructure.ClientAppOnServer.Services;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.WebApis.Helpers;
+using Hexalith.PolymorphicSerialization;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
@@ -67,30 +67,30 @@ public static class ServerSideClientAppHelper
     /// <returns>The defaulted JSON options.</returns>
     public static JsonSerializerOptions SetDefault(this JsonSerializerOptions options)
     {
-        options.AllowTrailingCommas = ApplicationConstants.DefaultJsonSerializerOptions.AllowTrailingCommas;
-        foreach (System.Text.Json.Serialization.JsonConverter converter in ApplicationConstants.DefaultJsonSerializerOptions.Converters)
+        options.AllowTrailingCommas = PolymorphicHelper.DefaultJsonSerializerOptions.AllowTrailingCommas;
+        foreach (System.Text.Json.Serialization.JsonConverter converter in PolymorphicHelper.DefaultJsonSerializerOptions.Converters)
         {
             options.Converters.Add(converter);
         }
 
-        options.DefaultBufferSize = ApplicationConstants.DefaultJsonSerializerOptions.DefaultBufferSize;
-        options.DefaultIgnoreCondition = ApplicationConstants.DefaultJsonSerializerOptions.DefaultIgnoreCondition;
-        options.DictionaryKeyPolicy = ApplicationConstants.DefaultJsonSerializerOptions.DictionaryKeyPolicy;
-        options.Encoder = ApplicationConstants.DefaultJsonSerializerOptions.Encoder;
-        options.IgnoreReadOnlyFields = ApplicationConstants.DefaultJsonSerializerOptions.IgnoreReadOnlyFields;
-        options.IgnoreReadOnlyProperties = ApplicationConstants.DefaultJsonSerializerOptions.IgnoreReadOnlyProperties;
-        options.IncludeFields = ApplicationConstants.DefaultJsonSerializerOptions.IncludeFields;
-        options.MaxDepth = ApplicationConstants.DefaultJsonSerializerOptions.MaxDepth;
-        options.NumberHandling = ApplicationConstants.DefaultJsonSerializerOptions.NumberHandling;
-        options.PreferredObjectCreationHandling = ApplicationConstants.DefaultJsonSerializerOptions.PreferredObjectCreationHandling;
-        options.PropertyNameCaseInsensitive = ApplicationConstants.DefaultJsonSerializerOptions.PropertyNameCaseInsensitive;
-        options.PropertyNamingPolicy = ApplicationConstants.DefaultJsonSerializerOptions.PropertyNamingPolicy;
-        options.ReadCommentHandling = ApplicationConstants.DefaultJsonSerializerOptions.ReadCommentHandling;
-        options.ReferenceHandler = ApplicationConstants.DefaultJsonSerializerOptions.ReferenceHandler;
-        options.TypeInfoResolver = ApplicationConstants.DefaultJsonSerializerOptions.TypeInfoResolver;
-        options.UnknownTypeHandling = ApplicationConstants.DefaultJsonSerializerOptions.UnknownTypeHandling;
-        options.UnmappedMemberHandling = ApplicationConstants.DefaultJsonSerializerOptions.UnmappedMemberHandling;
-        options.WriteIndented = ApplicationConstants.DefaultJsonSerializerOptions.WriteIndented;
+        options.DefaultBufferSize = PolymorphicHelper.DefaultJsonSerializerOptions.DefaultBufferSize;
+        options.DefaultIgnoreCondition = PolymorphicHelper.DefaultJsonSerializerOptions.DefaultIgnoreCondition;
+        options.DictionaryKeyPolicy = PolymorphicHelper.DefaultJsonSerializerOptions.DictionaryKeyPolicy;
+        options.Encoder = PolymorphicHelper.DefaultJsonSerializerOptions.Encoder;
+        options.IgnoreReadOnlyFields = PolymorphicHelper.DefaultJsonSerializerOptions.IgnoreReadOnlyFields;
+        options.IgnoreReadOnlyProperties = PolymorphicHelper.DefaultJsonSerializerOptions.IgnoreReadOnlyProperties;
+        options.IncludeFields = PolymorphicHelper.DefaultJsonSerializerOptions.IncludeFields;
+        options.MaxDepth = PolymorphicHelper.DefaultJsonSerializerOptions.MaxDepth;
+        options.NumberHandling = PolymorphicHelper.DefaultJsonSerializerOptions.NumberHandling;
+        options.PreferredObjectCreationHandling = PolymorphicHelper.DefaultJsonSerializerOptions.PreferredObjectCreationHandling;
+        options.PropertyNameCaseInsensitive = PolymorphicHelper.DefaultJsonSerializerOptions.PropertyNameCaseInsensitive;
+        options.PropertyNamingPolicy = PolymorphicHelper.DefaultJsonSerializerOptions.PropertyNamingPolicy;
+        options.ReadCommentHandling = PolymorphicHelper.DefaultJsonSerializerOptions.ReadCommentHandling;
+        options.ReferenceHandler = PolymorphicHelper.DefaultJsonSerializerOptions.ReferenceHandler;
+        options.TypeInfoResolver = PolymorphicHelper.DefaultJsonSerializerOptions.TypeInfoResolver;
+        options.UnknownTypeHandling = PolymorphicHelper.DefaultJsonSerializerOptions.UnknownTypeHandling;
+        options.UnmappedMemberHandling = PolymorphicHelper.DefaultJsonSerializerOptions.UnmappedMemberHandling;
+        options.WriteIndented = PolymorphicHelper.DefaultJsonSerializerOptions.WriteIndented;
         return options;
     }
 
@@ -127,7 +127,7 @@ public static class ServerSideClientAppHelper
             {
                 registerActors(options.Actors);
                 options.UseJsonSerialization = true;
-                options.JsonSerializerOptions = ApplicationConstants.DefaultJsonSerializerOptions;
+                options.JsonSerializerOptions = PolymorphicHelper.DefaultJsonSerializerOptions;
             });
 
         _ = builder
@@ -138,7 +138,7 @@ public static class ServerSideClientAppHelper
             .AddJsonOptions(options => options.JsonSerializerOptions.SetDefault())
             .AddDapr(dapr =>
             {
-                dapr.UseJsonSerializationOptions(ApplicationConstants.DefaultJsonSerializerOptions);
+                dapr.UseJsonSerializationOptions(PolymorphicHelper.DefaultJsonSerializerOptions);
                 if (builder.Environment.IsDevelopment())
                 {
                     dapr.UseTimeout(TimeSpan.FromMinutes(1));

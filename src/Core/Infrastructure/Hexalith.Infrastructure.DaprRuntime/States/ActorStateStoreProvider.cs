@@ -1,7 +1,6 @@
-﻿// <copyright file="ActorStateStoreProvider.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="ActorStateStoreProvider.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Infrastructure.DaprRuntime.States;
@@ -36,7 +35,8 @@ public class ActorStateStoreProvider : IStateStoreProvider
     }
 
     /// <inheritdoc/>
-    public async Task AddStateAsync<T>(string key, T value, CancellationToken cancellationToken) => await _actorStateManager.SetStateAsync(key, value, cancellationToken).ConfigureAwait(false);
+    public async Task AddStateAsync<T>(string key, T value, CancellationToken cancellationToken)
+        => await _actorStateManager.SetStateAsync(key, value, cancellationToken).ConfigureAwait(false);
 
     /// <inheritdoc/>
     public async Task<T> GetOrAddStateAsync<T>(string key, T value, CancellationToken cancellationToken) => await _actorStateManager.GetOrAddStateAsync(key, value, cancellationToken).ConfigureAwait(false);

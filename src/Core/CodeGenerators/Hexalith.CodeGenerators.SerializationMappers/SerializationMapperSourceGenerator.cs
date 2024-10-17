@@ -93,7 +93,7 @@ public class SerializationMapperSourceGenerator : IIncrementalGenerator
             .Aggregate((a, b) => $"{a}\n{b}");
         string addResolverMappers = symbols
             .Where(s => !s.IsAbstract)
-            .Select(s => $"        mappers.Add(new {s.MetadataName}Mapper());")
+            .Select(s => $"        PolymorphicSerializationResolver.TryAddDefaultMapper(new {s.MetadataName}Mapper());")
             .Aggregate((a, b) => $"{a}\n{b}");
         string project = namespaceName.Replace(".", string.Empty);
         return $$"""
@@ -113,10 +113,9 @@ public class SerializationMapperSourceGenerator : IIncrementalGenerator
                  {{addSingletonMappers}}
                          return services;
                      }
-                     public static ICollection<IPolymorphicSerializationMapper> Add{{project}}Mappers(this ICollection<IPolymorphicSerializationMapper> mappers)
+                     public static void Initialize()
                      {
                  {{addResolverMappers}}
-                         return mappers;
                      }
                  }
                  """;

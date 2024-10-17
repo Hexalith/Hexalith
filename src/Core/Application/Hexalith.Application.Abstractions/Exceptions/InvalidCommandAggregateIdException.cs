@@ -9,6 +9,7 @@ using System;
 using System.Text.Json;
 
 using Hexalith.Application.MessageMetadatas;
+using Hexalith.PolymorphicSerialization;
 
 /// <summary>
 /// Represents an exception that is thrown when a command is associated with an invalid aggregate identifier.
@@ -43,7 +44,7 @@ public class InvalidCommandAggregateIdException : InvalidOperationException
         : base($"Command '{metadata?.Message.Name ?? "Unknown"}' has an invalid aggregate identifier '{metadata?.Message.Aggregate.Id}'. Expected : {aggregateId}.")
     {
         AggregateId = aggregateId;
-        Command = JsonSerializer.Serialize(command, ApplicationConstants.DefaultJsonSerializerOptions);
+        Command = JsonSerializer.Serialize(command, PolymorphicHelper.DefaultJsonSerializerOptions);
     }
 
     /// <summary>

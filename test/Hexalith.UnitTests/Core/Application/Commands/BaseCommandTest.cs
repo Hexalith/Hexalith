@@ -9,12 +9,11 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Application;
 using Hexalith.PolymorphicSerialization;
 
 public class BaseCommandTest
 {
-    public BaseCommandTest() => TestHelper.AddSerializationMappers();
+    public BaseCommandTest() => Extensions.HexalithUnitTestsMapperExtension.Initialize();
 
     [Fact]
     public void DataContractSerializeAndDeserializeShouldReturnSameObject()
@@ -27,8 +26,8 @@ public class BaseCommandTest
     public void PolymorphicSerializeAndDeserializeShouldReturnSameObject()
     {
         DummyCommand1 original = new("IB2343213FR", 655463);
-        string json = JsonSerializer.Serialize<PolymorphicRecordBase>(original, ApplicationConstants.DefaultJsonSerializerOptions);
-        object result = JsonSerializer.Deserialize<PolymorphicRecordBase>(json, ApplicationConstants.DefaultJsonSerializerOptions);
+        string json = JsonSerializer.Serialize<PolymorphicRecordBase>(original, PolymorphicHelper.DefaultJsonSerializerOptions);
+        object result = JsonSerializer.Deserialize<PolymorphicRecordBase>(json, PolymorphicHelper.DefaultJsonSerializerOptions);
         _ = result.Should().NotBeNull();
         _ = result.Should().BeOfType<DummyCommand1>();
         _ = result.Should().BeEquivalentTo(original);
@@ -38,7 +37,7 @@ public class BaseCommandTest
     public void PolymorphicSerializeFirstFieldShouldBeType()
     {
         DummyCommand1 original = new("IB2343213FR", 655463);
-        string json = JsonSerializer.Serialize<PolymorphicRecordBase>(original, ApplicationConstants.DefaultJsonSerializerOptions);
+        string json = JsonSerializer.Serialize<PolymorphicRecordBase>(original, PolymorphicHelper.DefaultJsonSerializerOptions);
         _ = json.Should().NotBeNull();
         _ = json.Should().Contain($"\"{PolymorphicHelper.Discriminator}\": \"{nameof(DummyCommand1)}\"");
     }

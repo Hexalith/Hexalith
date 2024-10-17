@@ -6,61 +6,56 @@
 namespace Hexalith.PolymorphicSerialization;
 
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
 
-using Microsoft.Extensions.DependencyInjection;
-
 /// <summary>
-/// Resolves the polymorphic serialization for JSON.
+/// Resolves the polymorphic serialization for JSON by extending the DefaultJsonTypeInfoResolver.
+/// This class manages the mapping between base types and their derived types for JSON serialization.
 /// </summary>
 public class PolymorphicSerializationResolver : DefaultJsonTypeInfoResolver
 {
-    private Dictionary<Type, IEnumerable<IPolymorphicSerializationMapper>>? _serializationMappers;
+    private static readonly ConcurrentDictionary<Type, IEnumerable<IPolymorphicSerializationMapper>> _serializationMappers = new();
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="PolymorphicSerializationResolver"/> class.
-    /// </summary>
-    public PolymorphicSerializationResolver()
+    public static void TryAddDefaultMapper(IPolymorphicSerializationMapper mapper)
     {
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="PolymorphicSerializationResolver"/> class.
-    /// </summary>
-    /// <param name="serializationMappers">The collection of serialization mappers.</param>
-    [ActivatorUtilitiesConstructor]
-    public PolymorphicSerializationResolver(IEnumerable<IPolymorphicSerializationMapper> serializationMappers)
-    {
-        if (serializationMappers == null)
+        if (!_serializationMappers
+            .SelectMany(m => m.Value)
+            .Any(m => m.JsonDerivedType.DerivedType == mapper.JsonDerivedType.DerivedType))
         {
-            throw new ArgumentNullException(nameof(serializationMappers));
+            _serializationMappers[mapper.Base] = _serializationMappers.TryGetValue(mapper.Base, out IEnumerable<IPolymorphicSerializationMapper>? mappers)
+                ? mappers.Append(mapper)
+                : (IEnumerable<IPolymorphicSerializationMapper>)[mapper];
         }
-
-        _serializationMappers = serializationMappers
-            .GroupBy(m => m.Base)
-            .ToDictionary(g => g.Key, g => g.AsEnumerable());
     }
 
     /// <summary>
-    /// Gets or sets the default mappers.
+    /// Attempts to add multiple default mappers to the static collection of default mappers.
     /// </summary>
-    public static ICollection<IPolymorphicSerializationMapper> DefaultMappers { get; set; } = [];
+    /// <param name="mappers">The collection of mappers to be added to the default mappers.</param>
+    public static void TryAddDefaultMappers(IEnumerable<IPolymorphicSerializationMapper> mappers)
+    {
+        foreach (IPolymorphicSerializationMapper item in mappers)
+        {
+            TryAddDefaultMapper(item);
+        }
+    }
 
-    private Dictionary<Type, IEnumerable<IPolymorphicSerializationMapper>> SerializationMappers
-                    => _serializationMappers ??= DefaultMappers
-            .GroupBy(m => m.Base)
-            .ToDictionary(g => g.Key, g => g.AsEnumerable());
-
-    /// <inheritdoc/>
+    /// <summary>
+    /// Overrides the base GetTypeInfo method to provide custom type information for JSON serialization.
+    /// </summary>
+    /// <param name="type">The type for which to retrieve JSON type information.</param>
+    /// <param name="options">The JSON serializer options.</param>
+    /// <returns>A JsonTypeInfo object containing the type information for serialization.</returns>
     public override JsonTypeInfo GetTypeInfo(Type type, JsonSerializerOptions options)
     {
         JsonTypeInfo jsonTypeInfo = base.GetTypeInfo(type, options);
 
-        if (SerializationMappers.TryGetValue(jsonTypeInfo.Type, out IEnumerable<IPolymorphicSerializationMapper>? mappers))
+        if (_serializationMappers.TryGetValue(jsonTypeInfo.Type, out IEnumerable<IPolymorphicSerializationMapper>? mappers))
         {
             jsonTypeInfo.PolymorphismOptions = new JsonPolymorphismOptions
             {
@@ -68,9 +63,10 @@ public class PolymorphicSerializationResolver : DefaultJsonTypeInfoResolver
                 IgnoreUnrecognizedTypeDiscriminators = true,
                 UnknownDerivedTypeHandling = JsonUnknownDerivedTypeHandling.FailSerialization,
             };
-            foreach (IPolymorphicSerializationMapper mapper in mappers)
+            IEnumerable<JsonDerivedType> derivedTypes = mappers.Select(p => p.JsonDerivedType).Distinct();
+            foreach (JsonDerivedType derivedType in derivedTypes)
             {
-                jsonTypeInfo.PolymorphismOptions.DerivedTypes.Add(mapper.JsonDerivedType);
+                jsonTypeInfo.PolymorphismOptions.DerivedTypes.Add(derivedType);
             }
         }
 

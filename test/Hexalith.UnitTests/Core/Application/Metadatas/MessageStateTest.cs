@@ -10,7 +10,6 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Application;
 using Hexalith.Application.MessageMetadatas;
 using Hexalith.Extensions.Helpers;
 using Hexalith.PolymorphicSerialization;
@@ -20,7 +19,7 @@ using Xunit;
 
 public class MessageStateTest
 {
-    public MessageStateTest() => TestHelper.AddSerializationMappers();
+    public MessageStateTest() => Extensions.HexalithUnitTestsMapperExtension.Initialize();
 
     [Fact]
     public void StateSerializationAndDeserializationShouldReturnSameObject()
@@ -37,9 +36,9 @@ public class MessageStateTest
                 "SESS-4566",
                 ["scope1", "scope9"]));
         MessageState state = MessageState.Create(message, meta);
-        string json = JsonSerializer.Serialize(state, ApplicationConstants.DefaultJsonSerializerOptions);
+        string json = JsonSerializer.Serialize(state, PolymorphicHelper.DefaultJsonSerializerOptions);
         _ = json.Should().NotBeNullOrEmpty();
-        MessageState result = JsonSerializer.Deserialize<MessageState>(json, ApplicationConstants.DefaultJsonSerializerOptions);
+        MessageState result = JsonSerializer.Deserialize<MessageState>(json, PolymorphicHelper.DefaultJsonSerializerOptions);
         _ = result.Should().NotBeNull();
         _ = result.Should().BeEquivalentTo(state);
     }
@@ -59,9 +58,9 @@ public class MessageStateTest
                 "SESS-4566",
                 ["scope1", "scope9"]));
         MessageState state = MessageState.Create(message, meta);
-        string json = JsonSerializer.Serialize(state, ApplicationConstants.DefaultJsonSerializerOptions);
+        string json = JsonSerializer.Serialize(state, PolymorphicHelper.DefaultJsonSerializerOptions);
         _ = json.Should().NotBeNullOrEmpty();
-        MessageState result = JsonSerializer.Deserialize<MessageState>(json, ApplicationConstants.DefaultJsonSerializerOptions);
+        MessageState result = JsonSerializer.Deserialize<MessageState>(json, PolymorphicHelper.DefaultJsonSerializerOptions);
         _ = result.Should().NotBeNull();
         _ = result.Should().BeEquivalentTo(state);
     }
@@ -81,9 +80,9 @@ public class MessageStateTest
                 "SESS-4566",
                 ["scope1", "scope9"]));
         MessageState state = MessageState.Create(message, meta);
-        string json = JsonSerializer.Serialize(state, ApplicationConstants.DefaultJsonSerializerOptions);
+        string json = JsonSerializer.Serialize(state, PolymorphicHelper.DefaultJsonSerializerOptions);
         _ = json.Should().NotBeNullOrEmpty();
-        MessageState result = JsonSerializer.Deserialize<MessageState>(json, ApplicationConstants.DefaultJsonSerializerOptions);
+        MessageState result = JsonSerializer.Deserialize<MessageState>(json, PolymorphicHelper.DefaultJsonSerializerOptions);
         _ = result.Should().NotBeNull();
         _ = result.Should().BeEquivalentTo(state);
     }
@@ -103,7 +102,7 @@ public class MessageStateTest
                 "SESS-4566",
                 ["scope1", "scope9"]));
         MessageState state = MessageState.Create(message, meta);
-        string json = JsonSerializer.Serialize(state, ApplicationConstants.DefaultJsonSerializerOptions);
+        string json = JsonSerializer.Serialize(state, PolymorphicHelper.DefaultJsonSerializerOptions);
         _ = json.Should().NotBeNullOrEmpty();
         _ = json.Should().Contain($"\"{PolymorphicHelper.Discriminator}\": \"MyDummyMessage2V2\"");
         _ = json.Should().Contain($"\"{nameof(meta.Message.Id)}\": \"{meta.Message.Id}\"");
@@ -126,7 +125,7 @@ public class MessageStateTest
                 "SESS-4566",
                 ["scope1", "scope9"]));
         MessageState state = MessageState.Create(message, meta);
-        string json = JsonSerializer.Serialize(state, ApplicationConstants.DefaultJsonSerializerOptions);
+        string json = JsonSerializer.Serialize(state, PolymorphicHelper.DefaultJsonSerializerOptions);
         _ = json.Should().NotBeNullOrEmpty();
         _ = json.Should().Contain($"\"{PolymorphicHelper.Discriminator}\": \"MyMessageV3\"");
         _ = json.Should().Contain($"\"{nameof(meta.Message.Id)}\": \"{meta.Message.Id}\"");

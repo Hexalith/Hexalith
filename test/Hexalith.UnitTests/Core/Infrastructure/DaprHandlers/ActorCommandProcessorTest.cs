@@ -7,7 +7,6 @@ namespace Hexalith.UnitTests.Core.Infrastructure.DaprHandlers;
 
 using System;
 using System.Linq;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 using Dapr.Actors;
@@ -45,7 +44,7 @@ public class ActorCommandProcessorTest
         Mock<ActorProxy> actor = new();
         _ = factory.Setup(x => x.Create(It.IsAny<ActorId>(), It.IsAny<string>(), It.IsAny<ActorProxyOptions>()))
             .Returns(actor.Object);
-        JsonSerializerOptions jsonOptions = new() { TypeInfoResolver = new PolymorphicSerializationResolver([new TestCommandMapper()]) };
+        PolymorphicSerializationResolver.TryAddDefaultMapper(new TestCommandMapper());
         DomainActorCommandProcessor processor = new(factory.Object, new Mock<ILogger<DomainActorCommandProcessor>>().Object);
         TestCommand command = new("123", "Hello");
 

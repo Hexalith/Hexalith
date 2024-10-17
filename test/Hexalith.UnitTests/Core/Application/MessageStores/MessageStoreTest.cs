@@ -27,6 +27,8 @@ public class MessageStoreTest
     private const string _streamItemId = "TestStreamId-";
     private const string _streamName = "Test";
 
+    public MessageStoreTest() => Extensions.HexalithUnitTestsMapperExtension.Initialize();
+
     [Fact]
     public async Task AddAndGetFromSerializedCommandStateShouldReturnSame()
     {
@@ -38,6 +40,7 @@ public class MessageStoreTest
         MessageState original2 = MessageState.Create(command2, command2.CreateMetadata());
         _ = await store.AddAsync([original1], 0, CancellationToken.None);
         _ = await store.AddAsync([original2], 1, CancellationToken.None);
+        _ = provider.SaveChangesAsync(CancellationToken.None);
         MessageState result1 = await store.GetAsync(1, CancellationToken.None);
         MessageState result2 = await store.GetAsync(2, CancellationToken.None);
         _ = result1.Should().BeEquivalentTo(original1);
@@ -193,11 +196,12 @@ public class MessageStoreTest
         {
             { _stateName, 123L },
             { _streamItemId + testEvent.IdempotencyId, 123L },
-            { _stateName + "123", testEvent },
+            { _stateName + "123", MessageState.Create(testEvent, Metadata.CreateNew(testEvent, "user123", "part123", DateTimeOffset.Now)) },
         });
         MessageStore<MessageState> eventStore = new(provider, _streamName);
 
         MessageState @event = await eventStore.GetAsync(123L, CancellationToken.None);
+        _ = @event.Metadata.Should().NotBeNull();
         _ = @event.Message.Should().NotBeNull();
         _ = @event.Message.Should().BeOfType<BaseTestEvent2>();
         _ = @event.Message.Should().BeEquivalentTo(testEvent);

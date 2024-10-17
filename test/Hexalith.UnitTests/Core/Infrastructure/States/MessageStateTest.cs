@@ -19,14 +19,12 @@ public class MessageStateTest
     private const string _json = $$"""
     {
         "IdempotencyId":"20230125085001962",
-        "Message":{
+        "RecordObject":{
             "$type":"DummyCommand1",
-            "$version":4,
             "Value1":123456,
             "BaseValue":"Test"
         },
         "Metadata":{
-            "$type_name":"Metadata",
             "Context":{
                 "CorrelationId":"20230125085001962",
                 "UserId":"TestUser"
@@ -34,20 +32,21 @@ public class MessageStateTest
             "Message":{
                 "Id":"20230125085001962",
                 "Name":"DummyCommand1",
-                "Version":{"Major":0,"Minor":0},
+                "Version": 2,
                 "Aggregate":{"Id":"Test-123456","Name":"Test"},
                 "Date":"2023-01-25T08:50:01.9630826+00:00"
-            },
-            "Version":{"Major":0,"Minor":0}
+            }
         },
         "ReceivedDate":"2023-01-25T08:50:01.9630825+00:00"
     }
     """;
 
+    public MessageStateTest() => Extensions.HexalithUnitTestsMapperExtension.Initialize();
+
     [Fact]
     public void DeserializeShouldSucceed()
     {
-        MessageState state = JsonSerializer.Deserialize<MessageState>(_json);
+        MessageState state = JsonSerializer.Deserialize<MessageState>(_json, PolymorphicHelper.DefaultJsonSerializerOptions);
         _ = state.Should().NotBeNull();
         _ = state.Message.Should().BeOfType<DummyCommand1>();
         _ = state.Message.As<DummyCommand1>().Value1.Should().Be(123456);
@@ -59,7 +58,7 @@ public class MessageStateTest
         _ = state.Metadata.Message.Should().NotBeNull();
         _ = state.Metadata.Message.Id.Should().Be("20230125085001962");
         _ = state.Metadata.Message.Name.Should().Be("DummyCommand1");
-        _ = state.Metadata.Message.Version.Should().Be(0);
+        _ = state.Metadata.Message.Version.Should().Be(2);
     }
 
     [Fact]
@@ -80,12 +79,12 @@ public class MessageStateTest
                         100,
                         "session-56",
                         [])));
-        string json = JsonSerializer.Serialize(messageState);
+        string json = JsonSerializer.Serialize(messageState, PolymorphicHelper.DefaultJsonSerializerOptions);
         _ = json.Should().NotBeEmpty();
-        _ = json.Should().Contain($"\"{PolymorphicHelper.Discriminator}\":\"{nameof(DummyCommand1)}\"");
-        _ = json.Should().Contain($"\"CorrelationId\":\"{messageState.Metadata.Context.CorrelationId}\"");
-        _ = json.Should().Contain("\"Value1\":123456");
-        _ = json.Should().Contain("\"BaseValue\":\"Test\"");
-        _ = json.Should().Contain($"\"Id\":\"{messageState.Metadata.Message.Id}\"");
+        _ = json.Should().Contain($"\"{PolymorphicHelper.Discriminator}\": \"{nameof(DummyCommand1)}\"");
+        _ = json.Should().Contain($"\"CorrelationId\": \"{messageState.Metadata.Context.CorrelationId}\"");
+        _ = json.Should().Contain("\"Value1\": 123456");
+        _ = json.Should().Contain("\"BaseValue\": \"Test\"");
+        _ = json.Should().Contain($"\"Id\": \"{messageState.Metadata.Message.Id}\"");
     }
 }

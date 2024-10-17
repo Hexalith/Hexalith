@@ -60,5 +60,5 @@ public interface IAggregateActor : IActor
     /// </summary>
     /// <param name="envelope">The envelope.</param>
     /// <returns>Task.</returns>
-    Task SubmitCommandAsync(ActorCommandEnvelope envelope);
+    Task SubmitCommandAsync(ActorMessageEnvelope envelope);
 }

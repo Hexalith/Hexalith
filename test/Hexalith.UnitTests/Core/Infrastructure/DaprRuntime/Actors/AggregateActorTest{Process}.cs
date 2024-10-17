@@ -28,12 +28,13 @@ using Moq;
 /// </summary>
 public partial class AggregateActorTest
 {
+    public AggregateActorTest() => Extensions.HexalithUnitTestsMapperExtension.Initialize();
+
     /// <summary>
     /// Defines the test method ProcessWithCommandWithErrorShouldSetReminderDueTimeToPolicyDelay.
     /// </summary>
     /// <returns>System.Threading.Tasks.Task.</returns>
     [Fact]
-    [Obsolete]
     public async Task ProcessCommandWithOneErrorShouldSetReminderDueTimeForTwoRetries()
     {
         DummyAggregateCommand1 command = new("123456", "Hello");
@@ -98,20 +99,20 @@ public partial class AggregateActorTest
             .Setup(s => s.TryGetStateAsync<AggregateActorState>(
                         It.Is<string>(t => t == ActorConstants.AggregateStateStoreName),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<AggregateActorState>(true, currentState))
+            .ReturnsAsync(new ConditionalValue<AggregateActorState>(true, currentState))
             .Verifiable(Times.Once);
         actorStateManager
             .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "CommandStream1"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<MessageState>(true, MessageState.Create(command, metadata)))
+            .ReturnsAsync(new ConditionalValue<MessageState>(true, MessageState.Create(command, metadata)))
             .Verifiable(Times.Once);
 
         actorStateManager
             .Setup(s => s.TryGetStateAsync<TaskProcessor>(
                         It.Is<string>(s => s == "TaskProcessor-1"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<TaskProcessor>(true, new TaskProcessor(
+            .ReturnsAsync(new ConditionalValue<TaskProcessor>(true, new TaskProcessor(
                 TaskProcessorStatus.Suspended,
                 new TaskProcessingHistory(
                     DateTimeOffset.UtcNow.AddMinutes(-11),
@@ -176,7 +177,6 @@ public partial class AggregateActorTest
     /// </summary>
     /// <returns>System.Threading.Tasks.Task.</returns>
     [Fact]
-    [Obsolete]
     public async Task ProcessManyCommandsShouldStoreEventsAndMessages()
     {
         DummyAggregateCommand1 command8 = new("123456", "Command8");
@@ -251,94 +251,94 @@ public partial class AggregateActorTest
             .Setup(s => s.TryGetStateAsync<AggregateActorState>(
                         It.Is<string>(t => t == ActorConstants.AggregateStateStoreName),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<AggregateActorState>(true, currentState))
+            .ReturnsAsync(new ConditionalValue<AggregateActorState>(true, currentState))
             .Verifiable(Times.Once);
         actorStateManager
             .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "CommandStream8"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<MessageState>(true, MessageState.Create(command8, metadata)))
+            .ReturnsAsync(new ConditionalValue<MessageState>(true, MessageState.Create(command8, metadata)))
             .Verifiable(Times.Once);
 
         actorStateManager
             .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "CommandStream9"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<MessageState>(true, MessageState.Create(command9, metadata)))
+            .ReturnsAsync(new ConditionalValue<MessageState>(true, MessageState.Create(command9, metadata)))
             .Verifiable(Times.Once);
 
         actorStateManager
             .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "CommandStream10"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<MessageState>(true, MessageState.Create(command10, metadata)))
+            .ReturnsAsync(new ConditionalValue<MessageState>(true, MessageState.Create(command10, metadata)))
             .Verifiable(Times.Once);
 
         _ = actorStateManager
             .SetupSequence(s => s.TryGetStateAsync<long>(
                         It.Is<string>(s => s == "EventSourceStream"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<long>(true, 2L))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<long>(true, 3L))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<long>(true, 4L))
+            .ReturnsAsync(new ConditionalValue<long>(true, 2L))
+            .ReturnsAsync(new ConditionalValue<long>(true, 3L))
+            .ReturnsAsync(new ConditionalValue<long>(true, 4L))
             .Throws(new InvalidOperationException());
 
         actorStateManager
             .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "EventSourceStream1"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<MessageState>(true, MessageState.Create(event1, metadata)))
+            .ReturnsAsync(new ConditionalValue<MessageState>(true, MessageState.Create(event1, metadata)))
             .Verifiable(Times.Once);
 
         actorStateManager
             .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "EventSourceStream2"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<MessageState>(true, MessageState.Create(event2, metadata)))
+            .ReturnsAsync(new ConditionalValue<MessageState>(true, MessageState.Create(event2, metadata)))
             .Verifiable(Times.Once);
 
         actorStateManager
             .Setup(s => s.TryGetStateAsync<long>(
                         It.Is<string>(s => s.StartsWith("EventSourceStreamId-")),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(default(Dapr.Actors.Runtime.ConditionalValue<long>))
+            .ReturnsAsync(default(ConditionalValue<long>))
             .Verifiable(Times.Exactly(3));
 
         _ = actorStateManager
             .SetupSequence(s => s.TryGetStateAsync<long>(
                         It.Is<string>(s => s == "MessageStream"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<long>(true, 5))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<long>(true, 6))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<long>(true, 7))
+            .ReturnsAsync(new ConditionalValue<long>(true, 5))
+            .ReturnsAsync(new ConditionalValue<long>(true, 6))
+            .ReturnsAsync(new ConditionalValue<long>(true, 7))
             .Throws(new InvalidOperationException());
 
         actorStateManager
             .Setup(s => s.TryGetStateAsync<long>(
                         It.Is<string>(s => s.StartsWith("MessageStreamId-")),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(default(Dapr.Actors.Runtime.ConditionalValue<long>))
+            .ReturnsAsync(default(ConditionalValue<long>))
             .Verifiable(Times.Exactly(3));
 
         actorStateManager
             .Setup(s => s.TryGetStateAsync<TaskProcessor>(
                         It.Is<string>(s => s == "TaskProcessor-8"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(default(Dapr.Actors.Runtime.ConditionalValue<TaskProcessor>))
+            .ReturnsAsync(default(ConditionalValue<TaskProcessor>))
             .Verifiable(Times.Once);
 
         actorStateManager
             .Setup(s => s.TryGetStateAsync<TaskProcessor>(
                         It.Is<string>(s => s == "TaskProcessor-9"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(default(Dapr.Actors.Runtime.ConditionalValue<TaskProcessor>))
+            .ReturnsAsync(default(ConditionalValue<TaskProcessor>))
             .Verifiable(Times.Once);
 
         actorStateManager
             .Setup(s => s.TryGetStateAsync<TaskProcessor>(
                         It.Is<string>(s => s == "TaskProcessor-10"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(default(Dapr.Actors.Runtime.ConditionalValue<TaskProcessor>))
+            .ReturnsAsync(default(ConditionalValue<TaskProcessor>))
             .Verifiable(Times.Once);
 
         actorStateManager
@@ -410,7 +410,7 @@ public partial class AggregateActorTest
                         It.Is<MessageState>(s =>
                             s.Metadata.Message.Aggregate.Id == command8.AggregateId &&
                             s.Metadata.Message.Aggregate.Name == command8.AggregateName &&
-                            ((DummyAggregateEvent1)s.Message).Name == command8.Name &&
+                            ((DummyAggregateEvent1)s.Message).Name == event1.Name &&
                             s.Metadata.Context.CorrelationId == metadata.Context.CorrelationId),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
@@ -437,6 +437,9 @@ public partial class AggregateActorTest
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);
+        /*
+        quels sont les boitiers d'interphone qui permettent d'ouvrir à distance? Adaptables sur des interphones collectifs existants
+        */
         actorStateManager
             .Setup(s => s.SetStateAsync<long>(
                         It.Is<string>(s => s == "EventSourceStream"),
@@ -586,7 +589,6 @@ public partial class AggregateActorTest
     /// </summary>
     /// <returns>System.Threading.Tasks.Task.</returns>
     [Fact]
-    [Obsolete]
     public async Task ProcessSecondCommandShouldStoreEventAndMessage()
     {
         DummyAggregateCommand1 command = new("123456", "Hello");
@@ -645,48 +647,48 @@ public partial class AggregateActorTest
             .Setup(s => s.TryGetStateAsync<AggregateActorState>(
                         It.Is<string>(t => t == ActorConstants.AggregateStateStoreName),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<AggregateActorState>(true, currentState))
+            .ReturnsAsync(new ConditionalValue<AggregateActorState>(true, currentState))
             .Verifiable(Times.Once);
         actorStateManager
             .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "CommandStream2"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<MessageState>(true, MessageState.Create(command, metadata)))
+            .ReturnsAsync(new ConditionalValue<MessageState>(true, MessageState.Create(command, metadata)))
             .Verifiable(Times.Once);
 
         actorStateManager
             .Setup(s => s.TryGetStateAsync<long>(
                         It.Is<string>(s => s == "EventSourceStream"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(default(Dapr.Actors.Runtime.ConditionalValue<long>))
+            .ReturnsAsync(default(ConditionalValue<long>))
             .Verifiable(Times.Once);
 
         actorStateManager
             .Setup(s => s.TryGetStateAsync<long>(
                         It.Is<string>(s => s.StartsWith("EventSourceStreamId-")),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(default(Dapr.Actors.Runtime.ConditionalValue<long>))
+            .ReturnsAsync(default(ConditionalValue<long>))
             .Verifiable(Times.Once);
 
         actorStateManager
             .Setup(s => s.TryGetStateAsync<long>(
                         It.Is<string>(s => s == "MessageStream"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(default(Dapr.Actors.Runtime.ConditionalValue<long>))
+            .ReturnsAsync(default(ConditionalValue<long>))
             .Verifiable(Times.Once);
 
         actorStateManager
             .Setup(s => s.TryGetStateAsync<long>(
                         It.Is<string>(s => s.StartsWith("MessageStreamId-")),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(default(Dapr.Actors.Runtime.ConditionalValue<long>))
+            .ReturnsAsync(default(ConditionalValue<long>))
             .Verifiable(Times.Once);
 
         actorStateManager
             .Setup(s => s.TryGetStateAsync<TaskProcessor>(
                         It.Is<string>(s => s == "TaskProcessor-2"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(default(Dapr.Actors.Runtime.ConditionalValue<TaskProcessor>))
+            .ReturnsAsync(default(ConditionalValue<TaskProcessor>))
             .Verifiable(Times.Once);
 
         actorStateManager

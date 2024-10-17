@@ -18,27 +18,31 @@ using Moq;
 
 public class DaprApplicationBusTest
 {
+    public DaprApplicationBusTest() => Extensions.HexalithUnitTestsMapperExtension.Initialize();
+
     [Fact]
-    [Obsolete]
     public async Task VerifyPublishCallsDaprPublishWithCompliantValues()
     {
-        const string busName = "TestBus";
-        const string topicSuffix = "-event";
         DummyEvent2 @event = new("hello test base", 123456);
         DummyMetadata meta = new(@event);
+
+        const string busName = "TestBus";
+
+        const string topicName = "test-event";
+        const string topicSuffix = "-event";
 
         Mock<DaprClient> client = new();
         Mock<ILogger> logger = new();
         DaprApplicationBus bus = new(client.Object, TimeProvider.System, busName, topicSuffix, logger.Object);
         await bus.PublishAsync(@event, meta, CancellationToken.None);
         client.Verify(
-            p => p.PublishEventAsync(
-            It.Is<string>(p => p == busName),
-            It.Is<string>(p => p.Equals(@event.AggregateName + topicSuffix, StringComparison.OrdinalIgnoreCase)),
-            It.Is<MessageState>(
-                p => (DummyEvent2)p.Message == @event && p.Metadata == meta),
-            It.IsAny<Dictionary<string, string>>(),
-            It.IsAny<CancellationToken>()),
+            p => p.PublishEventAsync<MessageState>(
+             It.Is<string>(p => p == busName),
+             It.Is<string>(p => p == topicName),
+             It.Is<MessageState>(
+                p => p.Metadata == meta && (DummyEvent2)p.Message == @event),
+             It.IsAny<Dictionary<string, string>>(),
+             It.IsAny<CancellationToken>()),
             Times.Once);
     }
 }

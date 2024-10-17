@@ -9,13 +9,11 @@ using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Extensions;
-
 /// <summary>
-/// Represents the metadata of a message.
+/// Represents the metadata of a message, including both message-specific and context-related information.
 /// </summary>
-/// <param name="Message">The message metadata.</param>
-/// <param name="Context">The context metadata.</param>
+/// <param name="Message">The message-specific metadata.</param>
+/// <param name="Context">The context-related metadata.</param>
 [DataContract]
 public record Metadata(
     [property: DataMember(Order = 1)]
@@ -26,21 +24,21 @@ public record Metadata(
     ContextMetadata Context)
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="Metadata"/> class.
+    /// Gets the partition key, which is a combination of the partition ID, aggregate name, and aggregate ID.
     /// </summary>
-    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    public Metadata()
-        : this(new MessageMetadata(), new ContextMetadata())
-    {
-    }
+    /// <remarks>
+    /// The partition key is used to determine how data is distributed across partitions in a distributed system.
+    /// </remarks>
+    public string PartitionKey => $"{Context.PartitionId}-{Message.Aggregate.Name}-{Message.Aggregate.Id}";
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Metadata"/> class.
+    /// Creates a new instance of the <see cref="Metadata"/> class with updated message information.
     /// </summary>
-    /// <param name="message">The message metadata.</param>
-    /// <param name="metadata">The metadata.</param>
-    /// <param name="dateTime">The created date.</param>
+    /// <param name="message">The new message object.</param>
+    /// <param name="metadata">The existing metadata to derive context from.</param>
+    /// <param name="dateTime">The timestamp for the new message.</param>
     /// <returns>A new instance of the <see cref="Metadata"/> class.</returns>
+    /// <exception cref="ArgumentNullException">Thrown if <paramref name="message"/> or <paramref name="metadata"/> is null.</exception>
     public static Metadata CreateNew(object message, Metadata metadata, DateTimeOffset dateTime)
     {
         ArgumentNullException.ThrowIfNull(message);
@@ -49,13 +47,14 @@ public record Metadata(
     }
 
     /// <summary>
-    /// Creates a new instance of the <see cref="Metadata"/> class.
+    /// Creates a new instance of the <see cref="Metadata"/> class with new message and context information.
     /// </summary>
-    /// <param name="message">The message.</param>
-    /// <param name="userId">The user identifier.</param>
-    /// <param name="partitionId">The partition identifier.</param>
-    /// <param name="dateTime">The created date.</param>
+    /// <param name="message">The new message object.</param>
+    /// <param name="userId">The identifier of the user associated with this message.</param>
+    /// <param name="partitionId">The identifier of the partition this message belongs to.</param>
+    /// <param name="dateTime">The timestamp for the new message.</param>
     /// <returns>A new instance of the <see cref="Metadata"/> class.</returns>
+    /// <exception cref="ArgumentNullException">Thrown if <paramref name="message"/> is null.</exception>
     public static Metadata CreateNew(object message, string userId, string partitionId, DateTimeOffset dateTime)
     {
         ArgumentNullException.ThrowIfNull(message);

@@ -13,7 +13,6 @@ using System.Threading.Tasks;
 
 using Dapr.Actors.Runtime;
 
-using Hexalith.Application;
 using Hexalith.Application.Aggregates;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
@@ -28,6 +27,7 @@ using Hexalith.Extensions.Errors;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime;
 using Hexalith.Infrastructure.DaprRuntime.States;
+using Hexalith.PolymorphicSerialization;
 
 using Microsoft.Extensions.Logging;
 
@@ -360,7 +360,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(envelope);
 
-        ActorMessageEnvelope? e = JsonSerializer.Deserialize<ActorMessageEnvelope>(envelope, ApplicationConstants.DefaultJsonSerializerOptions)
+        ActorMessageEnvelope? e = JsonSerializer.Deserialize<ActorMessageEnvelope>(envelope, PolymorphicHelper.DefaultJsonSerializerOptions)
             ?? throw new InvalidOperationException("The specified command envelope is invalid : " + envelope);
         await SubmitCommandAsync(e).ConfigureAwait(false);
     }
@@ -658,7 +658,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             state.RetryOnFailureDateTime = null;
 
             // Execute the commands
-            commandResult = (ExecuteCommandResult?)await _commandDispatcher
+            commandResult = await _commandDispatcher
                     .DoAsync(command, metadata, aggregate, cancellationToken)
                     .ConfigureAwait(false);
 

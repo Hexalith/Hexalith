@@ -15,7 +15,6 @@ using Hexalith.PolymorphicSerialization;
 /// </summary>
 public static class ApplicationConstants
 {
-    private static JsonSerializerOptions? _defaultJsonSerializerOptions;
 
     /// <summary>
     /// Gets the command bus name.
@@ -26,18 +25,6 @@ public static class ApplicationConstants
     /// Gets the command bus suffixe.
     /// </summary>
     public static string CommandBusSuffix => "-commands";
-
-    /// <summary>
-    /// Gets the default JSON serializer options.
-    /// </summary>
-    public static JsonSerializerOptions DefaultJsonSerializerOptions => _defaultJsonSerializerOptions ??=
-        new()
-        {
-            WriteIndented = true,
-            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,
-            TypeInfoResolver = new PolymorphicSerializationResolver(),
-            NumberHandling = JsonNumberHandling.AllowReadingFromString,
-        };
 
     /// <summary>
     /// Gets the event bus name.

@@ -105,10 +105,10 @@ public partial class DaprApplicationBus(
             { "MessageId", metadata.Message.Id },
             { "CorrelationId", metadata.Context.CorrelationId },
             { "SessionId", metadata.Context.SessionId ?? metadata.Message.Aggregate.Name },
-            { "PartitionKey", metadata.Message.Aggregate.Id },
+            { "PartitionKey", metadata.PartitionKey },
         };
 
-        Application.MessageMetadatas.MessageState state = Application.MessageMetadatas.MessageState.Create(message, metadata);
+        MessageState state = MessageState.Create(message, metadata);
 
         try
         {
@@ -117,6 +117,7 @@ public partial class DaprApplicationBus(
                 _name,
                 topicName,
                 state,
+                m,
                 cancellationToken).ConfigureAwait(false);
 
             // Log successful message sending

@@ -64,9 +64,9 @@ public record ActorMessageEnvelope(
 
         // Serialize the message and metadata to JSON
         string messageJson = isRecord
-            ? JsonSerializer.Serialize((PolymorphicRecordBase)message, ApplicationConstants.DefaultJsonSerializerOptions)
-            : JsonSerializer.Serialize((PolymorphicClassBase)message, ApplicationConstants.DefaultJsonSerializerOptions);
-        string metadataJson = JsonSerializer.Serialize(metadata, ApplicationConstants.DefaultJsonSerializerOptions);
+            ? JsonSerializer.Serialize((PolymorphicRecordBase)message, PolymorphicHelper.DefaultJsonSerializerOptions)
+            : JsonSerializer.Serialize((PolymorphicClassBase)message, PolymorphicHelper.DefaultJsonSerializerOptions);
+        string metadataJson = JsonSerializer.Serialize(metadata, PolymorphicHelper.DefaultJsonSerializerOptions);
 
         // Encode the JSON strings to Base64
         string encodedMessage = Convert.ToBase64String(Encoding.UTF8.GetBytes(messageJson));
@@ -84,14 +84,14 @@ public record ActorMessageEnvelope(
     {
         // Decode the Base64 encoded metadata and deserialize it
         string decodedMetadataJson = Encoding.UTF8.GetString(Convert.FromBase64String(Metadata));
-        Metadata? metadata = JsonSerializer.Deserialize<Metadata>(decodedMetadataJson, ApplicationConstants.DefaultJsonSerializerOptions)
+        Metadata? metadata = JsonSerializer.Deserialize<Metadata>(decodedMetadataJson, PolymorphicHelper.DefaultJsonSerializerOptions)
             ?? throw new InvalidOperationException("The message metadata could not be deserialized. JSON : " + Metadata);
 
         // Decode the Base64 encoded message and deserialize it
         string decodedMessageJson = Encoding.UTF8.GetString(Convert.FromBase64String(Message));
         object? message = (IsRecord
-            ? JsonSerializer.Deserialize<PolymorphicRecordBase>(decodedMessageJson, ApplicationConstants.DefaultJsonSerializerOptions) as object
-            : JsonSerializer.Deserialize<PolymorphicClassBase>(decodedMessageJson, ApplicationConstants.DefaultJsonSerializerOptions))
+            ? JsonSerializer.Deserialize<PolymorphicRecordBase>(decodedMessageJson, PolymorphicHelper.DefaultJsonSerializerOptions) as object
+            : JsonSerializer.Deserialize<PolymorphicClassBase>(decodedMessageJson, PolymorphicHelper.DefaultJsonSerializerOptions))
             ?? throw new InvalidOperationException("The message could not be deserialized. JSON : " + Message + " Metadata : " + Metadata);
 
         return (message, metadata);

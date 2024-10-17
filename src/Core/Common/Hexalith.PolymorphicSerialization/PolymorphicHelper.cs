@@ -6,16 +6,33 @@
 namespace Hexalith.PolymorphicSerialization;
 
 using System;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 /// <summary>
 /// Provides helper methods for polymorphic serialization.
 /// </summary>
 public static class PolymorphicHelper
 {
+    private static JsonSerializerOptions? _defaultJsonSerializerOptions;
+
     /// <summary>
     /// Gets the discriminator for polymorphic serialization.
     /// </summary>
     public static string Discriminator => "$type";
+
+    /// <summary>
+    /// Gets the default JSON serializer options.
+    /// </summary>
+    public static JsonSerializerOptions DefaultJsonSerializerOptions => _defaultJsonSerializerOptions ??=
+        new()
+        {
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,
+            TypeInfoResolver = new PolymorphicSerializationResolver(),
+            NumberHandling = JsonNumberHandling.AllowReadingFromString,
+        };
+
     /// <summary>
     /// Gets the name, type name and version of a polymorphic type.
     /// </summary>

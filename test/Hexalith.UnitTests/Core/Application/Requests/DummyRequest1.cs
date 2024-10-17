@@ -5,11 +5,16 @@
 
 namespace Hexalith.UnitTests.Core.Application.Requests;
 
+using System.Runtime.Serialization;
+
 using Hexalith.Extensions.Helpers;
 using Hexalith.PolymorphicSerialization;
 
 [PolymorphicSerialization]
-public partial record DummyRequest1(string BaseValue, int Value1) : DummyBaseRequest(BaseValue)
+public partial record DummyRequest1(
+    string BaseValue,
+    [property: DataMember]
+    int Value1) : DummyBaseRequest(BaseValue)
 {
     public override string AggregateId => base.AggregateId + "-" + Value1.ToInvariantString();
 }

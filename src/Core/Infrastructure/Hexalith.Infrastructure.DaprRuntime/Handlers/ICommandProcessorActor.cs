@@ -6,8 +6,9 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 02-12-2023
 // ***********************************************************************
-// <copyright file="ICommandProcessorActor.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+// <copyright file="ICommandProcessorActor.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -32,14 +33,6 @@ public interface ICommandProcessorActor : IActor
     /// </summary>
     /// <returns>Task.</returns>
     Task ContinueAsync();
-
-    /// <summary>
-    /// Does the asynchronous.
-    /// </summary>
-    /// <param name="envelope">The envelope.</param>
-    /// <returns>Task.</returns>
-    [Obsolete("Use DoAsync(ActorMessageEnvelope) instead", true)]
-    Task DoAsync(ActorCommandEnvelope envelope);
 
     /// <summary>
     /// Does a command execution.

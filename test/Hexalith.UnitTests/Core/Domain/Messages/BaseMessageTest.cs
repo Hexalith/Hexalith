@@ -9,14 +9,19 @@ using System.Text.Json;
 
 using FluentAssertions;
 
+using Hexalith.PolymorphicSerialization;
+using Hexalith.UnitTests.Extensions;
+
 public class BaseMessageTest
 {
+    public BaseMessageTest() => HexalithUnitTestsMapperExtension.Initialize();
+
     [Fact]
     public void PolymorphicSerializeAndDeserializeShouldReturnSameObject()
     {
         DummyMessage1 original = new("IB2343213FR", 655463);
-        string json = JsonSerializer.Serialize<object>(original);
-        object result = JsonSerializer.Deserialize<object>(json);
+        string json = JsonSerializer.Serialize<PolymorphicRecordBase>(original, PolymorphicHelper.DefaultJsonSerializerOptions);
+        object result = JsonSerializer.Deserialize<PolymorphicRecordBase>(json, PolymorphicHelper.DefaultJsonSerializerOptions);
         _ = result.Should().NotBeNull();
         _ = result.Should().BeOfType<DummyMessage1>();
         _ = result.Should().BeEquivalentTo(original);
@@ -26,8 +31,8 @@ public class BaseMessageTest
     public void SerializeAndDeserializeShouldReturnSameObject()
     {
         DummyMessage1 original = new("IB2343213FR", 1256);
-        string json = JsonSerializer.Serialize(original);
-        DummyMessage1 result = JsonSerializer.Deserialize<DummyMessage1>(json);
+        string json = JsonSerializer.Serialize(original, PolymorphicHelper.DefaultJsonSerializerOptions);
+        DummyMessage1 result = JsonSerializer.Deserialize<DummyMessage1>(json, PolymorphicHelper.DefaultJsonSerializerOptions);
         _ = result.Should().NotBeNull();
         _ = result.Should().BeEquivalentTo(original);
     }
