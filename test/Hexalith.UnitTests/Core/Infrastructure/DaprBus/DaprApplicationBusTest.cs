@@ -18,7 +18,7 @@ using Moq;
 
 public class DaprApplicationBusTest
 {
-    public DaprApplicationBusTest() => Extensions.HexalithUnitTestsMapperExtension.Initialize();
+    public DaprApplicationBusTest() => Extensions.HexalithUnitTests.RegisterPolymorphicMappers();
 
     [Fact]
     public async Task VerifyPublishCallsDaprPublishWithCompliantValues()

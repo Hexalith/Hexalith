@@ -15,7 +15,7 @@ using Hexalith.UnitTests.Core.Application.Commands;
 
 public class CommandStateTest
 {
-    public CommandStateTest() => Extensions.HexalithUnitTestsMapperExtension.Initialize();
+    public CommandStateTest() => Extensions.HexalithUnitTests.RegisterPolymorphicMappers();
 
     [Fact]
     public void PolymorphicSerializeAndDeserializeShouldReturnSameObject()

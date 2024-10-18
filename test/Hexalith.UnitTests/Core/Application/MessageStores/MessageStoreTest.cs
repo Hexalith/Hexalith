@@ -27,7 +27,7 @@ public class MessageStoreTest
     private const string _streamItemId = "TestStreamId-";
     private const string _streamName = "Test";
 
-    public MessageStoreTest() => Extensions.HexalithUnitTestsMapperExtension.Initialize();
+    public MessageStoreTest() => Extensions.HexalithUnitTests.RegisterPolymorphicMappers();
 
     [Fact]
     public async Task AddAndGetFromSerializedCommandStateShouldReturnSame()

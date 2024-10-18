@@ -28,7 +28,7 @@ using Moq;
 /// </summary>
 public partial class AggregateActorTest
 {
-    public AggregateActorTest() => Extensions.HexalithUnitTestsMapperExtension.Initialize();
+    public AggregateActorTest() => Extensions.HexalithUnitTests.RegisterPolymorphicMappers();
 
     /// <summary>
     /// Defines the test method ProcessWithCommandWithErrorShouldSetReminderDueTimeToPolicyDelay.

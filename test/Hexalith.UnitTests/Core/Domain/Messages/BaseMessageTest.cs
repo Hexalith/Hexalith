@@ -14,7 +14,7 @@ using Hexalith.UnitTests.Extensions;
 
 public class BaseMessageTest
 {
-    public BaseMessageTest() => HexalithUnitTestsMapperExtension.Initialize();
+    public BaseMessageTest() => HexalithUnitTests.RegisterPolymorphicMappers();
 
     [Fact]
     public void PolymorphicSerializeAndDeserializeShouldReturnSameObject()

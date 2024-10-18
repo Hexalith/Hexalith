@@ -18,7 +18,7 @@ using Hexalith.UnitTests.Core.Application.Commands;
 /// </summary>
 public class ActorMessageEnvelopeTest
 {
-    public ActorMessageEnvelopeTest() => Extensions.HexalithUnitTestsMapperExtension.Initialize();
+    public ActorMessageEnvelopeTest() => Extensions.HexalithUnitTests.RegisterPolymorphicMappers();
 
     /// <summary>
     /// Defines the test method Envelope_serialization_deserialization_should_return_same.

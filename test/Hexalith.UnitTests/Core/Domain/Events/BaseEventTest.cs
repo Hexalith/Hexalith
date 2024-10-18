@@ -13,7 +13,7 @@ using Hexalith.PolymorphicSerialization;
 
 public class BaseEventTest
 {
-    public BaseEventTest() => Hexalith.UnitTests.Extensions.HexalithUnitTestsMapperExtension.Initialize();
+    public BaseEventTest() => Hexalith.UnitTests.Extensions.HexalithUnitTests.RegisterPolymorphicMappers();
 
     [Fact]
     public void PolymorphicSerializeAndDeserializeShouldReturnSameObject()

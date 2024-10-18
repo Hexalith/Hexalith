@@ -105,15 +105,15 @@ public class SerializationMapperSourceGenerator : IIncrementalGenerator
                  using System;
                  using Hexalith.PolymorphicSerialization;
 
-                 public static class {{project}}MapperExtension
+                 public static class {{project}}
                  {
-                     public static IServiceCollection Add{{project}}Mappers(this IServiceCollection services)
+                     public static IServiceCollection Add{{project}}PolymorphicMappers(this IServiceCollection services)
                      {
                          services.TryAddSingleton<PolymorphicSerializationResolver>();
                  {{addSingletonMappers}}
                          return services;
                      }
-                     public static void Initialize()
+                     public static void RegisterPolymorphicMappers()
                      {
                  {{addResolverMappers}}
                      }

@@ -41,7 +41,7 @@ public class MessageStateTest
     }
     """;
 
-    public MessageStateTest() => Extensions.HexalithUnitTestsMapperExtension.Initialize();
+    public MessageStateTest() => Extensions.HexalithUnitTests.RegisterPolymorphicMappers();
 
     [Fact]
     public void DeserializeShouldSucceed()
