@@ -179,11 +179,11 @@ public partial class AggregateActorTest
     [Fact]
     public async Task ProcessManyCommandsShouldStoreEventsAndMessages()
     {
-        DummyAggregateCommand1 command8 = new("123456", "Command8");
-        DummyAggregateCommand1 command9 = new("123456", "Command9");
-        DummyAggregateCommand1 command10 = new("123456", "Command10");
-        DummyAggregateEvent1 event1 = new("123456", "Event1");
-        DummyAggregateEvent1 event2 = new("123456", "Event2");
+        DummyAggregateCommand1 command8 = new("C8", "Command8");
+        DummyAggregateCommand1 command9 = new("C9", "Command9");
+        DummyAggregateCommand1 command10 = new("C10", "Command10");
+        DummyAggregateEvent1 event1 = new("E1", "Event1");
+        DummyAggregateEvent1 event2 = new("E2", "Event2");
         AggregateActorState currentState = new()
         {
             CommandCount = 10,
@@ -223,7 +223,7 @@ public partial class AggregateActorTest
             .ReturnsAsync(new ExecuteCommandResult(null, [new DummyAggregateEvent1(command8.Id, command8.Name)], []))
             .Verifiable(Times.Once);
         commandDispatcher.Setup(s => s.DoAsync(
-            It.Is<object>(c => ((DummyAggregateCommand1)c).Name == command8.Name),
+            It.Is<object>(c => ((DummyAggregateCommand1)c).Name == command9.Name),
             It.Is<Metadata>(c => c.Message.Aggregate.Id == metadata.Message.Aggregate.Id && c.Message.Name == metadata.Message.Name),
             It.Is<IDomainAggregate>(a => a.AggregateName == DummyAggregate.GetAggregateName()),
             It.IsAny<CancellationToken>()))
@@ -410,7 +410,7 @@ public partial class AggregateActorTest
                         It.Is<MessageState>(s =>
                             s.Metadata.Message.Aggregate.Id == command8.AggregateId &&
                             s.Metadata.Message.Aggregate.Name == command8.AggregateName &&
-                            ((DummyAggregateEvent1)s.Message).Name == event1.Name &&
+                            ((DummyAggregateEvent1)s.Message).Name == command8.Name &&
                             s.Metadata.Context.CorrelationId == metadata.Context.CorrelationId),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
