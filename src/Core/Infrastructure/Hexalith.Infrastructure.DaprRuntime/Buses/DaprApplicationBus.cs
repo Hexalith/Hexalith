@@ -10,8 +10,10 @@ using System.Text.Json;
 using Dapr.Client;
 
 using Hexalith.Application.Envelopes;
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
+using Hexalith.Application.States;
 using Hexalith.Extensions.Helpers;
+using Hexalith.PolymorphicSerialization;
 
 using Microsoft.Extensions.Logging;
 
@@ -108,7 +110,7 @@ public partial class DaprApplicationBus(
             { "PartitionKey", metadata.PartitionKey },
         };
 
-        MessageState state = MessageState.Create(message, metadata);
+        MessageState state = new((PolymorphicRecordBase)message, metadata);
 
         try
         {

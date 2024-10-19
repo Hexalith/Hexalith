@@ -3,7 +3,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Application.MessageMetadatas;
+namespace Hexalith.Application.Metadatas;
 
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;

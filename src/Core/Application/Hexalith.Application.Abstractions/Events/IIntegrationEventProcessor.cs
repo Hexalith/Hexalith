@@ -7,7 +7,7 @@ namespace Hexalith.Application.Events;
 
 using System.Threading.Tasks;
 
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
 
 /// <summary>
 /// The integration event handler interface.

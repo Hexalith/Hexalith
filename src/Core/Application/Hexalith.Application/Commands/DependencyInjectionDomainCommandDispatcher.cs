@@ -9,7 +9,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Extensions.Errors;
 using Hexalith.Extensions.Helpers;

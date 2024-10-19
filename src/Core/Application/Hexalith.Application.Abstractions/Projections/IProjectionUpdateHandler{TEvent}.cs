@@ -7,7 +7,7 @@ namespace Hexalith.Application.Projections;
 
 using System.Threading.Tasks;
 
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
 
 /// <summary>
 /// Interface IProjectionUpdateHandler.

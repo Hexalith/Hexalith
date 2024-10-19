@@ -21,6 +21,7 @@ using Hexalith.Application.Modules.Applications;
 using Hexalith.Application.Modules.Modules;
 using Hexalith.Application.Projections;
 using Hexalith.Application.Tasks;
+using Hexalith.Infrastructure.AspireService.Defaults;
 using Hexalith.Infrastructure.ClientApp.Helpers;
 using Hexalith.Infrastructure.ClientApp.Services;
 using Hexalith.Infrastructure.ClientAppOnServer.Services;
@@ -117,18 +118,29 @@ public static class ServerSideClientAppHelper
         Serilog.ILogger startupLogger = builder.AddSerilogLogger();
 
         startupLogger.Information("Configuring {AppName} ...", applicationName);
-        builder.Services
+        builder
+            .AddServiceDefaults()
+            .Services
+            .AddProblemDetails()
             .AddHexalithServerSideClientApp(builder.Configuration)
             .AddEndpointsApiExplorer()
             .AddSwaggerGen(c => c.SwaggerDoc("v1", new() { Title = applicationName, Version = version, }))
             .AddDaprBuses(builder.Configuration)
             .AddDaprStateStore(builder.Configuration)
-            .AddActors(options =>
+            .AddDaprClient(dapr =>
             {
-                registerActors(options.Actors);
-                options.UseJsonSerialization = true;
-                options.JsonSerializerOptions = PolymorphicHelper.DefaultJsonSerializerOptions;
+                dapr.UseJsonSerializationOptions(PolymorphicHelper.DefaultJsonSerializerOptions);
+                if (builder.Environment.IsDevelopment())
+                {
+                    dapr.UseTimeout(TimeSpan.FromMinutes(1));
+                }
             });
+
+        builder.Services.AddActors(options =>
+        {
+            registerActors(options.Actors);
+            options.JsonSerializerOptions = PolymorphicHelper.DefaultJsonSerializerOptions;
+        });
 
         _ = builder
             .Services

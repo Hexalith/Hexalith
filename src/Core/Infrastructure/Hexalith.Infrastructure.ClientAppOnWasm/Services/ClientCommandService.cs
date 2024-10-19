@@ -1,5 +1,6 @@
-﻿// <copyright file="ClientCommandService.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="ClientCommandService.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Infrastructure.ClientAppOnWasm.Services;
@@ -10,10 +11,11 @@ using System.Net.Http.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
 using Hexalith.Application.States;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.ClientApp.Services;
+using Hexalith.PolymorphicSerialization;
 
 /// <summary>
 /// Represents a service for sending commands asynchronously.
@@ -50,7 +52,7 @@ public class ClientCommandService : IClientCommandService
         ArgumentNullException.ThrowIfNull(command);
         ArgumentNullException.ThrowIfNull(metadata);
 
-        return _client.PostAsJsonAsync("api/commands", new ApplicationMessageState(command, metadata), cancellationToken);
+        return _client.PostAsJsonAsync("api/commands", new MessageState((PolymorphicRecordBase)command, metadata), cancellationToken);
     }
 
     /// <inheritdoc/>

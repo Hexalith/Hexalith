@@ -10,13 +10,13 @@ using System.Runtime.Serialization;
 using System.Text.Json;
 
 using Hexalith.Domain.Aggregates;
-using Hexalith.Extensions;
+using Hexalith.PolymorphicSerialization;
 
 /// <summary>
 /// Represents a snapshot event in the domain.
 /// </summary>
-[DataContract]
-public record AggregateSnapshotEvent(string SourceAggregateName, string SourceAggregateId, string Snapshot)
+[PolymorphicSerialization]
+public record AggregateSnapshotEvent(string SourceAggregateName, string SourceAggregateId, string Snapshot) : PolymorphicRecordBase
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="AggregateSnapshotEvent"/> class.
@@ -27,15 +27,6 @@ public record AggregateSnapshotEvent(string SourceAggregateName, string SourceAg
               (aggregate ?? throw new ArgumentNullException(nameof(aggregate))).AggregateName,
               aggregate.AggregateId,
               JsonSerializer.Serialize(aggregate, aggregate.GetType()))
-    {
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="AggregateSnapshotEvent"/> class.
-    /// </summary>
-    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    public AggregateSnapshotEvent()
-        : this(string.Empty, string.Empty, string.Empty)
     {
     }
 

@@ -5,7 +5,7 @@
 
 namespace Hexalith.Application.Events;
 
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
 
 /// <summary>
 /// Defines the contract for an integration event dispatcher.

@@ -8,7 +8,7 @@ namespace Hexalith.Infrastructure.WebApis.Controllers;
 using System.Text.Json;
 
 using Hexalith.Application.Events;
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
 using Hexalith.Extensions.Errors;
 
 using Microsoft.AspNetCore.Mvc;

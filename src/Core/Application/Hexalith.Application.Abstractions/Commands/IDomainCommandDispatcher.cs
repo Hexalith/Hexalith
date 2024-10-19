@@ -5,7 +5,7 @@
 
 namespace Hexalith.Application.Commands;
 
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
 using Hexalith.Domain.Aggregates;
 
 /// <summary>

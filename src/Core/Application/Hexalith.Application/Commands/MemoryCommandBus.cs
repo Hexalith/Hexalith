@@ -18,7 +18,8 @@ namespace Hexalith.Application.Commands;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
+using Hexalith.Application.States;
 
 /// <summary>
 /// Memory Command Bus.
@@ -43,7 +44,7 @@ public class MemoryCommandBus : ICommandBus
     }
 
     /// <inheritdoc/>
-    public async Task PublishAsync(object command, MessageMetadatas.Metadata metadata, CancellationToken cancellationToken)
+    public async Task PublishAsync(object command, Metadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
         ArgumentNullException.ThrowIfNull(metadata);

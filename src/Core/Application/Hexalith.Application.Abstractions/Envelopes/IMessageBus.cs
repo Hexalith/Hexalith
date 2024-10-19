@@ -5,7 +5,8 @@
 
 namespace Hexalith.Application.Envelopes;
 
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
+using Hexalith.Application.States;
 
 /// <summary>
 /// Defines the contract for a message bus that can publish messages asynchronously.

@@ -10,8 +10,8 @@ using System.Net.Http.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.MessageMetadatas;
 using Hexalith.Application.Requests;
+using Hexalith.Application.States;
 
 using Microsoft.Extensions.Logging;
 

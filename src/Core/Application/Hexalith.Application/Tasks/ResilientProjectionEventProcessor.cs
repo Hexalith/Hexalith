@@ -8,7 +8,7 @@ namespace Hexalith.Application.Tasks;
 using System;
 using System.Threading;
 
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
 using Hexalith.Application.Projections;
 using Hexalith.Application.States;
 using Hexalith.Extensions.Common;

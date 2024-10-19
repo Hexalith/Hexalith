@@ -8,7 +8,8 @@ namespace Hexalith.Application.Events;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
+using Hexalith.Application.States;
 
 /// <summary>
 /// Memory Event Bus.
@@ -26,7 +27,7 @@ public class MemoryEventBus(TimeProvider dateTimeService) : IEventBus
     public List<(object, Metadata)> MessageStream => _messageStream ?? [];
 
     /// <inheritdoc/>
-    public Task PublishAsync(object message, MessageMetadatas.Metadata metadata, CancellationToken cancellationToken)
+    public Task PublishAsync(object message, Metadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(message);
         ArgumentNullException.ThrowIfNull(metadata);

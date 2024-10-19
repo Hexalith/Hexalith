@@ -5,7 +5,7 @@
 
 namespace Hexalith.Application.Projections;
 
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
 using Hexalith.Application.States;
 using Hexalith.Application.Tasks;
 

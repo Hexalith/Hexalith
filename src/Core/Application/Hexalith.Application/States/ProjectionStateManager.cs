@@ -8,12 +8,13 @@ namespace Hexalith.Application.States;
 using System;
 using System.Threading;
 
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
 using Hexalith.Application.Projections;
 using Hexalith.Application.StreamStores;
 using Hexalith.Application.Tasks;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
+using Hexalith.PolymorphicSerialization;
 
 /// <summary>
 /// Projection State Manager.
@@ -76,7 +77,6 @@ public class ProjectionStateManager : IProjectionStateManager
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task representing the asynchronous operation.</returns>
     /// <exception cref="System.ArgumentNullException">null.</exception>
-    [Obsolete]
     public async Task AddEventAsync(
         IStateStoreProvider stateProvider,
         object[] events,
@@ -90,11 +90,11 @@ public class ProjectionStateManager : IProjectionStateManager
         ArgumentNullException.ThrowIfNull(registerReminder);
         await SetReminderAsync(TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(15), registerReminder).ConfigureAwait(false);
         ProjectionState state = await GetStateAsync(stateProvider, cancellationToken).ConfigureAwait(false);
-        MessageStore<Hexalith.Application.MessageMetadatas.MessageState> eventStore = new(stateProvider, EventsStreamName);
-        List<Hexalith.Application.MessageMetadatas.MessageState> states = [];
+        MessageStore<MessageState> eventStore = new(stateProvider, EventsStreamName);
+        List<MessageState> states = [];
         for (int i = 0; i < events.Length; i++)
         {
-            states.Add(Hexalith.Application.MessageMetadatas.MessageState.Create(events[i], metadatas[i]));
+            states.Add(new MessageState((PolymorphicRecordBase)events[i], metadatas[i]));
         }
 
         long version = await eventStore.AddAsync(

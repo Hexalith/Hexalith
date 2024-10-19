@@ -18,7 +18,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Net;
 
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.States;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 

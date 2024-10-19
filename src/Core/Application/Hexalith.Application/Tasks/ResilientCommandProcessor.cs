@@ -10,7 +10,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 
 using Hexalith.Application.Commands;
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
 using Hexalith.Application.States;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Extensions.Common;

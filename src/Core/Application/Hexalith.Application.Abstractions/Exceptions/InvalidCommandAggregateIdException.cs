@@ -8,7 +8,7 @@ namespace Hexalith.Application.Exceptions;
 using System;
 using System.Text.Json;
 
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
 using Hexalith.PolymorphicSerialization;
 
 /// <summary>

@@ -19,9 +19,6 @@ using Microsoft.CodeAnalysis.Text;
 [Generator(LanguageNames.CSharp)]
 public class SerializationMapperSourceGenerator : IIncrementalGenerator
 {
-    private const string _classBaseTypeName = "PolymorphicClassBase";
-    private const string _recordBaseTypeName = "PolymorphicRecordBase";
-
     private const string _serializationMapperAttributeFullName = "Hexalith.PolymorphicSerialization.PolymorphicSerializationAttribute";
 
     private const string _serializationMapperAttributeName = "PolymorphicSerializationAttribute";
@@ -127,10 +124,6 @@ public class SerializationMapperSourceGenerator : IIncrementalGenerator
         string? namespaceName,
         SourceProductionContext context)
     {
-        string baseTypeName = classSymbol.IsRecord
-            ? _recordBaseTypeName
-            : _classBaseTypeName;
-
         INamedTypeSymbol? baseTypeSymbol = classSymbol.BaseType;
 
         bool hasParent = baseTypeSymbol != null && baseTypeSymbol.SpecialType != SpecialType.System_Object;
@@ -138,7 +131,7 @@ public class SerializationMapperSourceGenerator : IIncrementalGenerator
 
         while (baseTypeSymbol != null && baseTypeSymbol.SpecialType != SpecialType.System_Object)
         {
-            if (baseTypeSymbol.Name is _recordBaseTypeName or _classBaseTypeName)
+            if (baseTypeSymbol.Name is "PolymorphicRecordBase")
             {
                 validBaseType = true;
                 break;
@@ -164,8 +157,7 @@ public class SerializationMapperSourceGenerator : IIncrementalGenerator
                 new DiagnosticDescriptor(
                     "HM001",
                     "Invalid Inheritance",
-                    (classSymbol.IsRecord ? "Record" : "Class") + "{0} has a parent but does not inherit from " +
-                    baseTypeName + " .",
+                    "Record {0} has a parent but does not inherit from PolymorphicRecordBase .",
                     "CodeGeneration",
                     DiagnosticSeverity.Error,
                     true),
@@ -182,7 +174,7 @@ public class SerializationMapperSourceGenerator : IIncrementalGenerator
 
         int version = ((int?)versionParam.Value) ?? 1;
         string typeDiscriminator = /*PolymorphicSerializationAttribute.*/GetTypeName(name, version);
-        string inheritance = hasParent ? string.Empty : $" : {baseTypeName}";
+        string inheritance = hasParent ? string.Empty : " : PolymorphicRecordBase";
 
         return $$"""
                  namespace {{namespaceName}};
@@ -192,9 +184,9 @@ public class SerializationMapperSourceGenerator : IIncrementalGenerator
                  using System.Runtime.Serialization;
 
                  [DataContract]
-                 public partial {{(classSymbol.IsRecord ? "record" : "class")}} {{classSymbol.MetadataName}}{{inheritance}} {}
+                 public partial record {{classSymbol.MetadataName}}{{inheritance}} {}
 
-                 public sealed record {{classSymbol.MetadataName}}Mapper() : PolymorphicSerializationMapper<{{classSymbol.MetadataName}},{{baseTypeName}}>("{{typeDiscriminator}}")
+                 public sealed record {{classSymbol.MetadataName}}Mapper() : PolymorphicSerializationMapper<{{classSymbol.MetadataName}},PolymorphicRecordBase>("{{typeDiscriminator}}")
                  {
                  }
                  """;

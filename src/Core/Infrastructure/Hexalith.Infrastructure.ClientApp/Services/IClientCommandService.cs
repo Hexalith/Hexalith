@@ -7,7 +7,7 @@ namespace Hexalith.Infrastructure.ClientApp.Services;
 
 using System.Threading.Tasks;
 
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
 
 /// <summary>
 /// Represents a service for sending commands asynchronously.

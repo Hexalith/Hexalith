@@ -5,7 +5,7 @@
 
 namespace Hexalith.Application.Commands;
 
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.States;
 
 /// <summary>
 /// Represents a service for submitting commands.

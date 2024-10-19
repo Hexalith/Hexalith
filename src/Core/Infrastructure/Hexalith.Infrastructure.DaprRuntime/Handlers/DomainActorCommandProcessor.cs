@@ -13,7 +13,7 @@ using Dapr.Actors;
 using Dapr.Actors.Client;
 
 using Hexalith.Application.Commands;
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.PolymorphicSerialization;
 

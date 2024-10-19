@@ -15,7 +15,7 @@
 namespace Hexalith.Infrastructure.WebApis.Controllers;
 
 using Hexalith.Application.Commands;
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.States;
 using Hexalith.Extensions.Errors;
 
 using Microsoft.AspNetCore.Mvc;

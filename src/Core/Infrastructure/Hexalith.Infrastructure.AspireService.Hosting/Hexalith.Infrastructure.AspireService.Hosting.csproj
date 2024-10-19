@@ -15,6 +15,7 @@
 		<PackageReference Include="Aspire.Azure.Security.KeyVault" Version="$(AspireVersion)" />
     <PackageReference Include="Aspire.Microsoft.Azure.Cosmos" Version="$(AspireVersion)" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="$(MicrosoftExtensionsPackagesVersion)" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
     <PackageReference Include="System.Text.Json" Version="$(MicrosoftExtensionsPackagesVersion)" />
   </ItemGroup>
 	<ItemGroup>

@@ -16,9 +16,9 @@ using Dapr.Actors.Runtime;
 using Hexalith.Application.Aggregates;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
-using Hexalith.Application.MessageMetadatas;
-
+using Hexalith.Application.Metadatas;
 using Hexalith.Application.Requests;
+using Hexalith.Application.States;
 using Hexalith.Application.StreamStores;
 using Hexalith.Application.Tasks;
 using Hexalith.Domain.Aggregates;
@@ -104,18 +104,18 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         }
     }
 
-    private MessageStore<Application.MessageMetadatas.MessageState> CommandStore
-        => _commandStore ??= new MessageStore<Application.MessageMetadatas.MessageState>(
+    private MessageStore<MessageState> CommandStore
+        => _commandStore ??= new MessageStore<MessageState>(
             new ActorStateStoreProvider(StateManager),
             ActorConstants.CommandStoreName);
 
-    private MessageStore<Application.MessageMetadatas.MessageState> EventSourceStore
-        => _eventSourceStore ??= new MessageStore<Application.MessageMetadatas.MessageState>(
+    private MessageStore<MessageState> EventSourceStore
+        => _eventSourceStore ??= new MessageStore<MessageState>(
             new ActorStateStoreProvider(StateManager),
             ActorConstants.EventSourcingName);
 
-    private MessageStore<Application.MessageMetadatas.MessageState> MessageStore
-        => _messageStore ??= new MessageStore<Application.MessageMetadatas.MessageState>(
+    private MessageStore<MessageState> MessageStore
+        => _messageStore ??= new MessageStore<MessageState>(
             new ActorStateStoreProvider(StateManager),
             ActorConstants.MessageStoreName);
 
@@ -371,7 +371,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         ArgumentNullException.ThrowIfNull(envelope);
 
         (object command, Metadata metadata) = envelope.Deserialize();
-        await SubmitCommandAsStateAsync(MessageState.Create(command, metadata)).ConfigureAwait(false);
+        await SubmitCommandAsStateAsync(new MessageState((PolymorphicRecordBase)command, metadata)).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
@@ -392,7 +392,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             throw new InvalidOperationException($"Submitted command to {Host.ActorTypeInfo.ActorTypeName}/{Id} has an invalid aggregate id : {metadata.Message.Aggregate.Id}.");
         }
 
-        List<MessageState> commandStates = [MessageState.Create(command, metadata)];
+        List<MessageState> commandStates = [new MessageState((PolymorphicRecordBase)command, metadata)];
         LogAcceptedCommandInformation(
             Logger,
             metadata.Message.Name,
@@ -512,8 +512,8 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
 
         AggregateSnapshotEvent e = new(aggregate);
         MessageMetadata messageMetadata = new(e, _dateTimeService.GetUtcNow());
-        return MessageState.Create(
-            e,
+        return new MessageState(
+            (PolymorphicRecordBase)e,
             new Metadata(
                 messageMetadata,
                 new ContextMetadata(
@@ -664,7 +664,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
 
             // Get aggregate events to persist in the event sourcing store
             MessageState[] aggregateMessageStates = commandResult.SourceEvents
-                .Select(p => MessageState.Create(p, Metadata.CreateNew(p, metadata, _dateTimeService.GetUtcNow())))
+                .Select(p => new MessageState((PolymorphicRecordBase)p, Metadata.CreateNew(p, metadata, _dateTimeService.GetUtcNow())))
                 .ToArray();
 
             // Persist events and messages
@@ -711,7 +711,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             // Get integration messages to persist in the message store
             MessageState[] messagesToSend = commandResult.SourceEvents
                 .Union(commandResult.IntegrationEvents)
-                .Select(p => MessageState.Create(p, Metadata.CreateNew(p, metadata, _dateTimeService.GetUtcNow())))
+                .Select(p => new MessageState((PolymorphicRecordBase)p, Metadata.CreateNew(p, metadata, _dateTimeService.GetUtcNow())))
                 .ToArray();
 
             if (messagesToSend.Length > 0)

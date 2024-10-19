@@ -8,7 +8,7 @@ namespace Hexalith.Application.Events;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
 
 #pragma warning disable CA1711 // Identifiers should not have incorrect suffix
 
