@@ -9,7 +9,7 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.States;
 using Hexalith.PolymorphicSerialization;
 using Hexalith.UnitTests.Core.Application.Commands;
 
@@ -21,7 +21,7 @@ public class CommandStateTest
     public void PolymorphicSerializeAndDeserializeShouldReturnSameObject()
     {
         DummyCommand1 command = DummyCommand1.Create();
-        MessageState original = MessageState.Create(
+        MessageState original = new(
             command,
             command.CreateMetadata());
         string json = JsonSerializer.Serialize(original, PolymorphicHelper.DefaultJsonSerializerOptions);

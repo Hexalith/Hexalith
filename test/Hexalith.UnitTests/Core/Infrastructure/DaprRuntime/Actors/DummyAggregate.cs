@@ -19,7 +19,7 @@ public record DummyAggregate(string Id, string Name) : IDomainAggregate
 
     public bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);
 
-    public static string GetAggregateId(string id) => GetAggregateName() + "-" + id;
+    public static string GetAggregateId(string id) => id;
 
     public static string GetAggregateName() => "Dummy";
 

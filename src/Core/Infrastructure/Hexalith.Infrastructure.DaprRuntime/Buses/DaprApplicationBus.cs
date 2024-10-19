@@ -81,36 +81,33 @@ public partial class DaprApplicationBus(
     public partial void LogMessageSent(string messageName, string messageId, string correlationId, string topicName, string busName);
 
     /// <inheritdoc/>
-    public async Task PublishAsync(MessageState message, CancellationToken cancellationToken)
-    {
-        ArgumentNullException.ThrowIfNull(message);
-        await PublishAsync(message.Message, message.Metadata, cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
     public async Task PublishAsync(object message, Metadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(message);
-        ArgumentNullException.ThrowIfNull(metadata);
+        await PublishAsync(new MessageState((PolymorphicRecordBase)message, metadata), cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task PublishAsync(MessageState message, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(message);
 
         // Determine the topic name based on the aggregate name
-        string topicName = !string.IsNullOrEmpty(metadata.Message.Aggregate.Name)
-            ? metadata.Message.Aggregate.Name.ToLowerInvariant() + _topicSuffix
+        string topicName = !string.IsNullOrEmpty(message.Metadata.Message.Aggregate.Name)
+            ? message.Metadata.Message.Aggregate.Name.ToLowerInvariant() + _topicSuffix
             : throw new InvalidOperationException("Event aggregate name is not defined.");
 
         // Prepare metadata dictionary
         Dictionary<string, string> m = new(StringComparer.Ordinal)
         {
             { "ContentType", "application/json" },
-            { "Label", metadata.Message.Name + ' ' + metadata.Message.Aggregate.Name },
-            { "MessageName", metadata.Message.Name },
-            { "MessageId", metadata.Message.Id },
-            { "CorrelationId", metadata.Context.CorrelationId },
-            { "SessionId", metadata.Context.SessionId ?? metadata.Message.Aggregate.Name },
-            { "PartitionKey", metadata.PartitionKey },
+            { "Label", message.Metadata.Message.Name + ' ' + message.Metadata.Message.Aggregate.Name },
+            { "MessageName", message.Metadata.Message.Name },
+            { "MessageId", message.Metadata.Message.Id },
+            { "CorrelationId", message.Metadata.Context.CorrelationId },
+            { "SessionId", message.Metadata.Context.SessionId ?? message.Metadata.Message.Aggregate.Name },
+            { "PartitionKey", message.Metadata.PartitionKey },
         };
-
-        MessageState state = new((PolymorphicRecordBase)message, metadata);
 
         try
         {
@@ -118,15 +115,15 @@ public partial class DaprApplicationBus(
             await _daprClient.PublishEventAsync(
                 _name,
                 topicName,
-                state,
+                message,
                 m,
                 cancellationToken).ConfigureAwait(false);
 
             // Log successful message sending
             LogMessageSent(
-                metadata.Message.Name,
-                metadata.Message.Id,
-                metadata.Context.CorrelationId,
+                message.Metadata.Message.Name,
+                message.Metadata.Message.Id,
+                message.Metadata.Context.CorrelationId,
                 topicName,
                 _name);
         }
@@ -135,15 +132,15 @@ public partial class DaprApplicationBus(
             // Log error details if message sending fails
             LogErrorWhileSendingMessage(
                 ex,
-                metadata.Message.Name,
-                metadata.Message.Id,
-                metadata.Context.CorrelationId,
+                message.Metadata.Message.Name,
+                message.Metadata.Message.Id,
+                message.Metadata.Context.CorrelationId,
                 topicName,
                 _name,
                 GetType().Name,
                 ex.FullMessage(),
                 string.Join("\n", m.Select(p => $"{p.Key}={p.Value}")),
-                JsonSerializer.Serialize(state));
+                JsonSerializer.Serialize(message, PolymorphicHelper.DefaultJsonSerializerOptions));
             throw;
         }
     }

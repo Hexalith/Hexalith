@@ -13,8 +13,9 @@ using FluentAssertions;
 using Hexalith.Application.Aggregates;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
 using Hexalith.Application.Requests;
+using Hexalith.Application.States;
 using Hexalith.Application.Tasks;
 using Hexalith.Infrastructure.DaprRuntime;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
@@ -68,7 +69,7 @@ public partial class AggregateActorTest
                         It.IsAny<CancellationToken>()))
             .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<MessageState>(
                 true,
-                MessageState.Create(message, metadata)))
+                new MessageState(message, metadata)))
             .Verifiable(Times.Once);
 
         eventBus
@@ -150,7 +151,7 @@ public partial class AggregateActorTest
                         It.IsAny<CancellationToken>()))
             .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<MessageState>(
                 true,
-                MessageState.Create(message, metadata)))
+                new MessageState(message, metadata)))
             .Verifiable(Times.Once);
 
         eventBus
@@ -236,7 +237,7 @@ public partial class AggregateActorTest
             .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "MessageStream2"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<MessageState>(true, MessageState.Create(message, metadata)))
+            .ReturnsAsync(new Dapr.Actors.Runtime.ConditionalValue<MessageState>(true, new MessageState(message, metadata)))
             .Verifiable(Times.Once);
 
         eventBus

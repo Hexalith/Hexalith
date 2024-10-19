@@ -46,7 +46,6 @@ public static class DaprServicesHelper
     /// <returns>IServiceCollection.</returns>
     public static IServiceCollection AddDaprCommandBus(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDaprClient();
         _ = services.ConfigureSettings<CommandBusSettings>(configuration);
         services.TryAddSingleton<ICommandBus, DaprCommandBus>();
         return services;
@@ -60,7 +59,6 @@ public static class DaprServicesHelper
     /// <returns>IServiceCollection.</returns>
     public static IServiceCollection AddDaprEventBus(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDaprClient();
         _ = services.ConfigureSettings<EventBusSettings>(configuration);
         services.TryAddSingleton<IEventBus, DaprEventBus>();
         return services;
@@ -74,7 +72,6 @@ public static class DaprServicesHelper
     /// <returns>IServiceCollection.</returns>
     public static IServiceCollection AddDaprRequestBus(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDaprClient();
         _ = services.ConfigureSettings<RequestBusSettings>(configuration);
         services.TryAddSingleton<IRequestBus, DaprRequestBus>();
         return services;
@@ -88,7 +85,6 @@ public static class DaprServicesHelper
     /// <returns>IServiceCollection.</returns>
     public static IServiceCollection AddDaprStateStore(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDaprClient();
         _ = services.ConfigureSettings<StateStoreSettings>(configuration);
         services.TryAddScoped<IStateStoreProvider, DaprClientStateStoreProvider>();
         return services;

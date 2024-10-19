@@ -10,7 +10,8 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
+using Hexalith.Application.States;
 using Hexalith.Extensions.Helpers;
 using Hexalith.PolymorphicSerialization;
 using Hexalith.UnitTests.Core.Domain.Messages;
@@ -35,7 +36,7 @@ public class MessageStateTest
                 25686L,
                 "SESS-4566",
                 ["scope1", "scope9"]));
-        MessageState state = MessageState.Create(message, meta);
+        MessageState state = new(message, meta);
         string json = JsonSerializer.Serialize(state, PolymorphicHelper.DefaultJsonSerializerOptions);
         _ = json.Should().NotBeNullOrEmpty();
         MessageState result = JsonSerializer.Deserialize<MessageState>(json, PolymorphicHelper.DefaultJsonSerializerOptions);
@@ -57,7 +58,7 @@ public class MessageStateTest
                 25686L,
                 "SESS-4566",
                 ["scope1", "scope9"]));
-        MessageState state = MessageState.Create(message, meta);
+        MessageState state = new(message, meta);
         string json = JsonSerializer.Serialize(state, PolymorphicHelper.DefaultJsonSerializerOptions);
         _ = json.Should().NotBeNullOrEmpty();
         MessageState result = JsonSerializer.Deserialize<MessageState>(json, PolymorphicHelper.DefaultJsonSerializerOptions);
@@ -79,7 +80,7 @@ public class MessageStateTest
                 25686L,
                 "SESS-4566",
                 ["scope1", "scope9"]));
-        MessageState state = MessageState.Create(message, meta);
+        MessageState state = new(message, meta);
         string json = JsonSerializer.Serialize(state, PolymorphicHelper.DefaultJsonSerializerOptions);
         _ = json.Should().NotBeNullOrEmpty();
         MessageState result = JsonSerializer.Deserialize<MessageState>(json, PolymorphicHelper.DefaultJsonSerializerOptions);
@@ -101,7 +102,7 @@ public class MessageStateTest
                 25686L,
                 "SESS-4566",
                 ["scope1", "scope9"]));
-        MessageState state = MessageState.Create(message, meta);
+        MessageState state = new(message, meta);
         string json = JsonSerializer.Serialize(state, PolymorphicHelper.DefaultJsonSerializerOptions);
         _ = json.Should().NotBeNullOrEmpty();
         _ = json.Should().Contain($"\"{PolymorphicHelper.Discriminator}\": \"MyDummyMessage2V2\"");
@@ -124,7 +125,7 @@ public class MessageStateTest
                 25686L,
                 "SESS-4566",
                 ["scope1", "scope9"]));
-        MessageState state = MessageState.Create(message, meta);
+        MessageState state = new(message, meta);
         string json = JsonSerializer.Serialize(state, PolymorphicHelper.DefaultJsonSerializerOptions);
         _ = json.Should().NotBeNullOrEmpty();
         _ = json.Should().Contain($"\"{PolymorphicHelper.Discriminator}\": \"MyMessageV3\"");

@@ -13,8 +13,9 @@ using FluentAssertions;
 using Hexalith.Application.Aggregates;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
 using Hexalith.Application.Requests;
+using Hexalith.Application.States;
 using Hexalith.Application.Tasks;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime;
@@ -52,7 +53,7 @@ public partial class AggregateActorTest
                 ActorId = new ActorId(command.AggregateId),
                 TimerManager = timerManager,
             });
-        Hexalith.Application.MessageMetadatas.Metadata metadata = CreateMetadata(command);
+        Metadata metadata = CreateMetadata(command);
         Mock<IDomainCommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
         Mock<IDomainAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
         Mock<IEventBus> eventBus = new(MockBehavior.Strict);
@@ -76,14 +77,14 @@ public partial class AggregateActorTest
 
         actorStateManager
             .Setup(s => s.TryGetStateAsync<long>(
-                        It.Is<string>(s => s == "CommandStreamId-" + metadata.Message.Id),
+                        It.Is<string>(s => s == "CommandStreamId-" + metadata.PartitionKey),
                         It.IsAny<CancellationToken>()))
             .ReturnsAsync(default(Dapr.Actors.Runtime.ConditionalValue<long>))
             .Verifiable(Times.Once);
 
         actorStateManager
-            .Setup(s => s.SetStateAsync<long>(
-                        It.Is<string>(s => s == "CommandStreamId-" + metadata.Message.Id),
+        .Setup(s => s.SetStateAsync<long>(
+                        It.Is<string>(s => s == "CommandStreamId-" + metadata.PartitionKey),
                         It.Is<long>(l => l == 3L),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
@@ -248,7 +249,7 @@ public partial class AggregateActorTest
             .Verifiable();
         actorStateManager
             .Setup(s => s.SetStateAsync<long>(
-                        It.Is<string>(s => s.Contains(metadata.Message.Id)),
+                        It.Is<string>(s => s.Contains(metadata.PartitionKey)),
                         It.Is<long>(l => l == 1),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)

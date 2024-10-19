@@ -10,7 +10,8 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
+using Hexalith.Application.States;
 using Hexalith.PolymorphicSerialization;
 using Hexalith.UnitTests.Core.Application.Commands;
 
@@ -19,7 +20,7 @@ public class MessageStateTest
     private const string _json = $$"""
     {
         "IdempotencyId":"20230125085001962",
-        "RecordObject":{
+        "Message":{
             "$type":"DummyCommand1",
             "Value1":123456,
             "BaseValue":"Test"
@@ -65,7 +66,7 @@ public class MessageStateTest
     public void SerializeShouldSucceed()
     {
         DummyCommand1 command = new("Test", 123456);
-        MessageState messageState = MessageState.Create(
+        MessageState messageState = new(
             command,
             new Metadata(
                 new MessageMetadata(

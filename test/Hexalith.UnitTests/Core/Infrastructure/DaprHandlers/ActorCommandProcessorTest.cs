@@ -14,7 +14,7 @@ using Dapr.Actors.Client;
 
 using FluentAssertions;
 
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.PolymorphicSerialization;
 

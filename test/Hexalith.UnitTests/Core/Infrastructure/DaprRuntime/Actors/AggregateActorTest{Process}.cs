@@ -13,13 +13,15 @@ using FluentAssertions;
 using Hexalith.Application.Aggregates;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
 using Hexalith.Application.Requests;
+using Hexalith.Application.States;
 using Hexalith.Application.Tasks;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Extensions.Errors;
 using Hexalith.Infrastructure.DaprRuntime;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
+using Hexalith.PolymorphicSerialization;
 
 using Moq;
 
@@ -105,7 +107,7 @@ public partial class AggregateActorTest
             .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "CommandStream1"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<MessageState>(true, MessageState.Create(command, metadata)))
+            .ReturnsAsync(new ConditionalValue<MessageState>(true, new MessageState((PolymorphicRecordBase)command, metadata)))
             .Verifiable(Times.Once);
 
         actorStateManager
@@ -257,21 +259,21 @@ public partial class AggregateActorTest
             .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "CommandStream8"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<MessageState>(true, MessageState.Create(command8, metadata)))
+            .ReturnsAsync(new ConditionalValue<MessageState>(true, new MessageState((PolymorphicRecordBase)command8, metadata)))
             .Verifiable(Times.Once);
 
         actorStateManager
             .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "CommandStream9"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<MessageState>(true, MessageState.Create(command9, metadata)))
+            .ReturnsAsync(new ConditionalValue<MessageState>(true, new MessageState((PolymorphicRecordBase)command9, metadata)))
             .Verifiable(Times.Once);
 
         actorStateManager
             .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "CommandStream10"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<MessageState>(true, MessageState.Create(command10, metadata)))
+            .ReturnsAsync(new ConditionalValue<MessageState>(true, new MessageState((PolymorphicRecordBase)command10, metadata)))
             .Verifiable(Times.Once);
 
         _ = actorStateManager
@@ -287,14 +289,14 @@ public partial class AggregateActorTest
             .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "EventSourceStream1"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<MessageState>(true, MessageState.Create(event1, metadata)))
+            .ReturnsAsync(new ConditionalValue<MessageState>(true, new MessageState((PolymorphicRecordBase)event1, metadata)))
             .Verifiable(Times.Once);
 
         actorStateManager
             .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "EventSourceStream2"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<MessageState>(true, MessageState.Create(event2, metadata)))
+            .ReturnsAsync(new ConditionalValue<MessageState>(true, new MessageState((PolymorphicRecordBase)event2, metadata)))
             .Verifiable(Times.Once);
 
         actorStateManager
@@ -653,7 +655,7 @@ public partial class AggregateActorTest
             .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "CommandStream2"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<MessageState>(true, MessageState.Create(command, metadata)))
+            .ReturnsAsync(new ConditionalValue<MessageState>(true, new MessageState((PolymorphicRecordBase)command, metadata)))
             .Verifiable(Times.Once);
 
         actorStateManager

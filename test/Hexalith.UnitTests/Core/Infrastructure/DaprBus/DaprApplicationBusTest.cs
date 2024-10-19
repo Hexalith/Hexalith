@@ -7,7 +7,7 @@ namespace Hexalith.UnitTests.Core.Infrastructure.DaprBus;
 
 using Dapr.Client;
 
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.States;
 using Hexalith.Infrastructure.DaprRuntime.Buses;
 using Hexalith.UnitTests.Core.Application.Metadatas;
 using Hexalith.UnitTests.Core.Domain.Events;

@@ -9,12 +9,13 @@ using System.Data;
 
 using FluentAssertions;
 
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
 using Hexalith.Application.States;
 using Hexalith.Application.StreamStores;
 using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.Serialization.States;
+using Hexalith.PolymorphicSerialization;
 using Hexalith.UnitTests.Core.Application.Commands;
 
 using Moq;
@@ -36,8 +37,8 @@ public class MessageStoreTest
         MessageStore<MessageState> store = new(provider, _streamName);
         DummyCommand1 command1 = new("5354323", 123);
         DummyCommand2 command2 = new("AAAABBCC", 960);
-        MessageState original1 = MessageState.Create(command1, command1.CreateMetadata());
-        MessageState original2 = MessageState.Create(command2, command2.CreateMetadata());
+        MessageState original1 = new(command1, command1.CreateMetadata());
+        MessageState original2 = new(command2, command2.CreateMetadata());
         _ = await store.AddAsync([original1], 0, CancellationToken.None);
         _ = await store.AddAsync([original2], 1, CancellationToken.None);
         _ = provider.SaveChangesAsync(CancellationToken.None);
@@ -196,7 +197,7 @@ public class MessageStoreTest
         {
             { _stateName, 123L },
             { _streamItemId + testEvent.IdempotencyId, 123L },
-            { _stateName + "123", MessageState.Create(testEvent, Metadata.CreateNew(testEvent, "user123", "part123", DateTimeOffset.Now)) },
+            { _stateName + "123", new MessageState(testEvent, Metadata.CreateNew(testEvent, "user123", "part123", DateTimeOffset.Now)) },
         });
         MessageStore<MessageState> eventStore = new(provider, _streamName);
 
@@ -229,8 +230,8 @@ public class MessageStoreTest
                     _fakeMessageStart + $"two {id}",
                     _fakeValue2Start + id)
                 : (object)new BaseTestEvent(id, id, _fakeMessageStart + $"base {id}");
-            list.Add(MessageState.Create(
-                e,
+            list.Add(new MessageState(
+                (PolymorphicRecordBase)e,
                 new Metadata(
                  new MessageMetadata(e, DateTimeOffset.Now),
                  new ContextMetadata(
