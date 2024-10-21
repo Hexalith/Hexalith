@@ -7,7 +7,6 @@ namespace Hexalith.UnitTests.Core.Infrastructure.DaprBus;
 
 using Dapr.Client;
 
-using Hexalith.Application.States;
 using Hexalith.Infrastructure.DaprRuntime.Buses;
 using Hexalith.UnitTests.Core.Application.Metadatas;
 using Hexalith.UnitTests.Core.Domain.Events;
@@ -36,11 +35,11 @@ public class DaprApplicationBusTest
         DaprApplicationBus bus = new(client.Object, TimeProvider.System, busName, topicSuffix, logger.Object);
         await bus.PublishAsync(@event, meta, CancellationToken.None);
         client.Verify(
-            p => p.PublishEventAsync<MessageState>(
+            p => p.PublishEventAsync<BusMessage>(
              It.Is<string>(p => p == busName),
              It.Is<string>(p => p == topicName),
-             It.Is<MessageState>(
-                p => p.Metadata == meta && (DummyEvent2)p.Message == @event),
+             It.Is<BusMessage>(
+                p => p.Metadata == meta && p.Message.Contains(@event.BaseValue)),
              It.IsAny<Dictionary<string, string>>(),
              It.IsAny<CancellationToken>()),
             Times.Once);

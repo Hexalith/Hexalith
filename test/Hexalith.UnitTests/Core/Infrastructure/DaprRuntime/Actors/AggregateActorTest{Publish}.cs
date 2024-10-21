@@ -74,9 +74,10 @@ public partial class AggregateActorTest
 
         eventBus
             .Setup(s => s.PublishAsync(
-                It.Is<MessageState>(e =>
-                    e.Metadata.Message.Aggregate.Id == message.AggregateId &&
-                    e.Metadata.Message.Id == metadata.Message.Id),
+                It.IsAny<object>(),
+                It.Is<Metadata>(e =>
+                    e.Message.Aggregate.Id == message.AggregateId &&
+                    e.Message.Id == metadata.Message.Id),
                 It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);
@@ -156,9 +157,10 @@ public partial class AggregateActorTest
 
         eventBus
             .Setup(s => s.PublishAsync(
-                It.Is<MessageState>(e =>
-                    e.Metadata.Message.Aggregate.Id == message.AggregateId &&
-                    e.Metadata.Message.Id == metadata.Message.Id),
+                It.IsAny<object>(),
+                It.Is<Metadata>(e =>
+                    e.Message.Aggregate.Id == message.AggregateId &&
+                    e.Message.Id == metadata.Message.Id),
                 It.IsAny<CancellationToken>()))
             .ThrowsAsync(new InvalidOperationException("Dummy error"))
             .Verifiable(Times.Once);
@@ -242,9 +244,10 @@ public partial class AggregateActorTest
 
         eventBus
             .Setup(s => s.PublishAsync(
-                It.Is<MessageState>(e =>
-                    e.Metadata.Message.Aggregate.Id == message.AggregateId &&
-                    e.Metadata.Message.Id == metadata.Message.Id),
+                It.IsAny<object>(),
+                It.Is<Metadata>(e =>
+                    e.Message.Aggregate.Id == message.AggregateId &&
+                    e.Message.Id == metadata.Message.Id),
                 It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);

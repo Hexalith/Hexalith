@@ -26,6 +26,7 @@ using Hexalith.Domain.Events;
 using Hexalith.Extensions.Errors;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime;
+using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.States;
 using Hexalith.PolymorphicSerialization;
 
@@ -606,9 +607,9 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         object command = commandState.Message ?? throw new InvalidOperationException("The specified command state is missing associated message.");
         Metadata metadata = commandState.Metadata ?? throw new InvalidOperationException("The specified command state is missing associated metadata.");
 
-        if (metadata.AggregateGlobalId != Id.ToString())
+        if (metadata.AggregateGlobalId != Id.ToUnescapeString())
         {
-            throw new InvalidOperationException($"Command {metadata.Message.Name} aggregate key '{metadata.AggregateGlobalId}' is invalid: Expected : {Id}.");
+            throw new InvalidOperationException($"Command {metadata.Message.Name} aggregate key '{metadata.AggregateGlobalId}' is invalid: Expected : {Id.ToUnescapeString()}.");
         }
 
         if (GetAggregateActorName(metadata.Message.Aggregate.Name) != Host.ActorTypeInfo.ActorTypeName)

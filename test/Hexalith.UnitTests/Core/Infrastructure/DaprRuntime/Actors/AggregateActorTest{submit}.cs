@@ -20,6 +20,7 @@ using Hexalith.Application.Tasks;
 using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
+using Hexalith.Infrastructure.DaprRuntime.Helpers;
 
 using Moq;
 
@@ -46,14 +47,14 @@ public partial class AggregateActorTest
             ProcessReminderDueTime = null,
         };
         DummyTimerManager timerManager = new();
+        Metadata metadata = CreateMetadata(command);
         ActorHost host = ActorHost.CreateForTest<DomainAggregateActor>(
             DomainAggregateActorBase.GetAggregateActorName(command.AggregateName),
             new ActorTestOptions
             {
-                ActorId = new ActorId(command.AggregateId),
+                ActorId = metadata.AggregateGlobalId.ToActorId(),
                 TimerManager = timerManager,
             });
-        Metadata metadata = CreateMetadata(command);
         Mock<IDomainCommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
         Mock<IDomainAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
         Mock<IEventBus> eventBus = new(MockBehavior.Strict);
@@ -77,14 +78,14 @@ public partial class AggregateActorTest
 
         actorStateManager
             .Setup(s => s.TryGetStateAsync<long>(
-                        It.Is<string>(s => s == "CommandStreamId-" + metadata.PartitionKey),
+                        It.Is<string>(s => s == "CommandStreamId-" + metadata.AggregateGlobalId),
                         It.IsAny<CancellationToken>()))
             .ReturnsAsync(default(Dapr.Actors.Runtime.ConditionalValue<long>))
             .Verifiable(Times.Once);
 
         actorStateManager
         .Setup(s => s.SetStateAsync<long>(
-                        It.Is<string>(s => s == "CommandStreamId-" + metadata.PartitionKey),
+                        It.Is<string>(s => s == "CommandStreamId-" + metadata.AggregateGlobalId),
                         It.Is<long>(l => l == 3L),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
@@ -219,14 +220,14 @@ public partial class AggregateActorTest
     {
         DummyAggregateCommand1 command = new("123456", "Hello");
         DummyTimerManager timerManager = new();
+        Metadata metadata = CreateMetadata(command);
         ActorHost host = ActorHost.CreateForTest<DomainAggregateActor>(
             DomainAggregateActorBase.GetAggregateActorName(command.AggregateName),
             new ActorTestOptions
             {
-                ActorId = new ActorId(command.AggregateId),
+                ActorId = metadata.AggregateGlobalId.ToActorId(),
                 TimerManager = timerManager,
             });
-        Metadata metadata = CreateMetadata(command);
         Mock<IDomainCommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
         Mock<IDomainAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
         Mock<IEventBus> eventBus = new(MockBehavior.Strict);
@@ -249,7 +250,7 @@ public partial class AggregateActorTest
             .Verifiable();
         actorStateManager
             .Setup(s => s.SetStateAsync<long>(
-                        It.Is<string>(s => s.Contains(metadata.PartitionKey)),
+                        It.Is<string>(s => s.Contains(metadata.AggregateGlobalId)),
                         It.Is<long>(l => l == 1),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)

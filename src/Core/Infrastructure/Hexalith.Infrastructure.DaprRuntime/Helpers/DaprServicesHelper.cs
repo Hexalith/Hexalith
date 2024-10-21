@@ -5,8 +5,6 @@
 
 namespace Hexalith.Infrastructure.DaprRuntime.Helpers;
 
-using Dapr.Actors;
-
 using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
@@ -107,26 +105,4 @@ public static class DaprServicesHelper
         services.TryAddScoped<IStateStoreProvider, DaprClientStateStoreProvider>();
         return services;
     }
-
-    /// <summary>
-    /// Converts a string identifier to an ActorId.
-    /// </summary>
-    /// <param name="id">The string identifier to convert.</param>
-    /// <returns>An <see cref="ActorId"/> created from the escaped string identifier.</returns>
-    /// <remarks>
-    /// This method escapes the input string to ensure it's a valid ActorId.
-    /// </remarks>
-    public static ActorId ToActorId(this string id)
-        => new(Uri.EscapeDataString(id));
-
-    /// <summary>
-    /// Converts an ActorId to its original, unescaped string representation.
-    /// </summary>
-    /// <param name="id">The ActorId to convert.</param>
-    /// <returns>The original, unescaped string representation of the ActorId.</returns>
-    /// <remarks>
-    /// This method reverses the escaping process performed by ToActorId.
-    /// </remarks>
-    public static string ToUnescapeString(this ActorId id)
-        => Uri.UnescapeDataString(id.ToString());
 }

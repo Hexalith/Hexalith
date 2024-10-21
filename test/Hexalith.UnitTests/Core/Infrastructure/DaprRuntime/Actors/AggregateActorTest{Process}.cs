@@ -21,7 +21,7 @@ using Hexalith.Domain.Aggregates;
 using Hexalith.Extensions.Errors;
 using Hexalith.Infrastructure.DaprRuntime;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
-using Hexalith.PolymorphicSerialization;
+using Hexalith.Infrastructure.DaprRuntime.Helpers;
 
 using Moq;
 
@@ -54,7 +54,8 @@ public partial class AggregateActorTest
             RetryOnFailurePeriod = null,
             PublishFailed = false,
         };
-        ActorId actorId = new(command.AggregateId);
+        Metadata metadata = CreateMetadata(command);
+        ActorId actorId = new(metadata.AggregateGlobalId);
         DummyTimerManager timerManager = new();
         ActorHost host = ActorHost.CreateForTest(
             typeof(DomainAggregateActor),
@@ -64,7 +65,6 @@ public partial class AggregateActorTest
                 ActorId = actorId,
                 TimerManager = timerManager,
             });
-        Metadata metadata = CreateMetadata(command);
         DummyAggregateEvent1 ev = new(command.Id, command.Name);
         Mock<IDomainCommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
         Mock<IDomainAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
@@ -107,7 +107,7 @@ public partial class AggregateActorTest
             .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "CommandStream1"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<MessageState>(true, new MessageState((PolymorphicRecordBase)command, metadata)))
+            .ReturnsAsync(new ConditionalValue<MessageState>(true, new MessageState(command, metadata)))
             .Verifiable(Times.Once);
 
         actorStateManager
@@ -200,15 +200,15 @@ public partial class AggregateActorTest
             RetryOnFailurePeriod = null,
         };
         DummyTimerManager timerManager = new();
+        Metadata metadata = CreateMetadata(command8);
         ActorHost host = ActorHost.CreateForTest(
             typeof(DomainAggregateActor),
             DomainAggregateActorBase.GetAggregateActorName(command8.AggregateName),
             new ActorTestOptions
             {
-                ActorId = new ActorId(command8.AggregateId),
+                ActorId = metadata.AggregateGlobalId.ToActorId(),
                 TimerManager = timerManager,
             });
-        Metadata metadata = CreateMetadata(command8);
         Mock<IDomainCommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
         Mock<IDomainAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
         Mock<IEventBus> eventBus = new(MockBehavior.Strict);
@@ -259,21 +259,21 @@ public partial class AggregateActorTest
             .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "CommandStream8"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<MessageState>(true, new MessageState((PolymorphicRecordBase)command8, metadata)))
+            .ReturnsAsync(new ConditionalValue<MessageState>(true, new MessageState(command8, metadata)))
             .Verifiable(Times.Once);
 
         actorStateManager
             .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "CommandStream9"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<MessageState>(true, new MessageState((PolymorphicRecordBase)command9, metadata)))
+            .ReturnsAsync(new ConditionalValue<MessageState>(true, new MessageState(command9, metadata)))
             .Verifiable(Times.Once);
 
         actorStateManager
             .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "CommandStream10"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<MessageState>(true, new MessageState((PolymorphicRecordBase)command10, metadata)))
+            .ReturnsAsync(new ConditionalValue<MessageState>(true, new MessageState(command10, metadata)))
             .Verifiable(Times.Once);
 
         _ = actorStateManager
@@ -289,14 +289,14 @@ public partial class AggregateActorTest
             .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "EventSourceStream1"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<MessageState>(true, new MessageState((PolymorphicRecordBase)event1, metadata)))
+            .ReturnsAsync(new ConditionalValue<MessageState>(true, new MessageState(event1, metadata)))
             .Verifiable(Times.Once);
 
         actorStateManager
             .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "EventSourceStream2"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<MessageState>(true, new MessageState((PolymorphicRecordBase)event2, metadata)))
+            .ReturnsAsync(new ConditionalValue<MessageState>(true, new MessageState(event2, metadata)))
             .Verifiable(Times.Once);
 
         actorStateManager
@@ -607,7 +607,8 @@ public partial class AggregateActorTest
             RetryOnFailureDateTime = null,
             RetryOnFailurePeriod = null,
         };
-        ActorId actorId = new(command.AggregateId);
+        Metadata metadata = CreateMetadata(command);
+        ActorId actorId = metadata.AggregateGlobalId.ToActorId();
         DummyTimerManager timerManager = new();
         ActorHost host = ActorHost.CreateForTest(
             typeof(DomainAggregateActor),
@@ -617,7 +618,6 @@ public partial class AggregateActorTest
                 ActorId = actorId,
                 TimerManager = timerManager,
             });
-        Metadata metadata = CreateMetadata(command);
         DummyAggregateEvent1 ev = new(command.Id, command.Name);
         Mock<IDomainCommandDispatcher> commandDispatcher = new(MockBehavior.Strict);
         Mock<IDomainAggregateFactory> aggregateFactory = new(MockBehavior.Strict);
@@ -655,7 +655,7 @@ public partial class AggregateActorTest
             .Setup(s => s.TryGetStateAsync<MessageState>(
                         It.Is<string>(s => s == "CommandStream2"),
                         It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<MessageState>(true, new MessageState((PolymorphicRecordBase)command, metadata)))
+            .ReturnsAsync(new ConditionalValue<MessageState>(true, new MessageState(command, metadata)))
             .Verifiable(Times.Once);
 
         actorStateManager
