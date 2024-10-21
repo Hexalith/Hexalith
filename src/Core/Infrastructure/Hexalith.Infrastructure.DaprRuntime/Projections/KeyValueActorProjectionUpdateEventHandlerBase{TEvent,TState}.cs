@@ -44,19 +44,19 @@ public abstract class KeyValueActorProjectionUpdateEventHandlerBase<TEvent, TSta
     /// <summary>
     /// Get projection as an asynchronous operation.
     /// </summary>
-    /// <param name="aggregateId">The aggregate identifier.</param>
+    /// <param name="aggregateKey"></param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task&lt;TState&gt; representing the asynchronous operation.</returns>
-    protected virtual async Task<TState?> GetProjectionAsync(string aggregateId, CancellationToken cancellationToken)
-            => await _factory.GetStateAsync(aggregateId, cancellationToken).ConfigureAwait(false);
+    protected virtual async Task<TState?> GetProjectionAsync(string aggregateKey, CancellationToken cancellationToken)
+            => await _factory.GetStateAsync(aggregateKey, cancellationToken).ConfigureAwait(false);
 
     /// <summary>
     /// Save projection as an asynchronous operation.
     /// </summary>
-    /// <param name="aggregateId">The aggregate identifier.</param>
+    /// <param name="aggregatekey"></param>
     /// <param name="state">The state.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task representing the asynchronous operation.</returns>
-    protected virtual async Task SaveProjectionAsync(string aggregateId, TState state, CancellationToken cancellationToken)
-        => await _factory.SetStateAsync(aggregateId, state, cancellationToken).ConfigureAwait(false);
+    protected virtual async Task SaveProjectionAsync(string aggregatekey, TState state, CancellationToken cancellationToken)
+        => await _factory.SetStateAsync(aggregatekey, state, cancellationToken).ConfigureAwait(false);
 }

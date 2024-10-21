@@ -61,7 +61,7 @@ public partial class CommandServiceController : ControllerBase
         }
 
         await _commandBus
-            .PublishAsync(command, CancellationToken.None)
+            .PublishAsync(command.Message, command.Metadata, CancellationToken.None)
             .ConfigureAwait(false);
 
         LogCommandSubmittedDebugInformation(
@@ -69,8 +69,7 @@ public partial class CommandServiceController : ControllerBase
             command.Metadata.Message.Id,
             command.Metadata.Context.CorrelationId,
             command.Metadata.Message.Name,
-            command.Metadata.Message.Aggregate.Name,
-            command.Metadata.Message.Aggregate.Id);
+            command.Metadata.PartitionKey);
 
         return Ok();
     }
@@ -78,7 +77,7 @@ public partial class CommandServiceController : ControllerBase
     [LoggerMessage(
       1,
       LogLevel.Debug,
-      "Command {MessageType} on aggregate {AggregateName} with identifier {AggregateId} submitted. MessageId={MessageId}; CorrelationId={CorrelationId}.",
+      "Command {MessageType} on aggregate {PartitionKey} submitted. MessageId={MessageId}; CorrelationId={CorrelationId}.",
       EventName = "CommandSubmitted")]
-    private static partial void LogCommandSubmittedDebugInformation(ILogger logger, string messageId, string correlationId, string messageType, string aggregateName, string aggregateId);
+    private static partial void LogCommandSubmittedDebugInformation(ILogger logger, string messageId, string correlationId, string messageType, string partitionKey);
 }

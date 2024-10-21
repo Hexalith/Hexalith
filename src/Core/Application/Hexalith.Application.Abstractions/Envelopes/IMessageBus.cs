@@ -6,7 +6,6 @@
 namespace Hexalith.Application.Envelopes;
 
 using Hexalith.Application.Metadatas;
-using Hexalith.Application.States;
 
 /// <summary>
 /// Defines the contract for a message bus that can publish messages asynchronously.
@@ -21,12 +20,4 @@ public interface IMessageBus
     /// <param name="cancellationToken">A cancellation token that can be used to cancel the publish operation.</param>
     /// <returns>A task that represents the asynchronous publish operation.</returns>
     Task PublishAsync(object message, Metadata metadata, CancellationToken cancellationToken);
-
-    /// <summary>
-    /// Publishes a message state asynchronously.
-    /// </summary>
-    /// <param name="message">The message state to be published.</param>
-    /// <param name="cancellationToken">A cancellation token that can be used to cancel the publish operation.</param>
-    /// <returns>A task that represents the asynchronous publish operation.</returns>
-    Task PublishAsync(MessageState message, CancellationToken cancellationToken);
 }

@@ -63,12 +63,11 @@ public abstract partial class ReceiveMessageController : ControllerBase
     [LoggerMessage(
         EventId = 1,
         Level = LogLevel.Information,
-        Message = "Received message {MessageName} with Id={MessageId}, AggregateName={AggregateName}, AggregateId={AggregateId} and CorrelationId={CorrelationId}.")]
+        Message = "Received message {MessageName} with Id={MessageId}, AggregateKey={AggregateKey} and CorrelationId={CorrelationId}.")]
     public static partial void MessageReceivedInformation(
         ILogger logger,
         string? messageName,
-        string? aggregateName,
-        string? aggregateId,
+        string? aggregateKey,
         string? messageId,
         string? correlationId);
 
@@ -96,8 +95,7 @@ public abstract partial class ReceiveMessageController : ControllerBase
         MessageReceivedInformation(
             Logger,
             messageState?.Metadata?.Message.Name ?? "Unknown",
-            messageState?.Metadata?.Message?.Aggregate.Name,
-            messageState?.Metadata?.Message.Aggregate.Id,
+            messageState?.Metadata?.PartitionKey,
             messageState?.Metadata?.Message.Id,
             messageState?.IdempotencyId);
         return badRequest;

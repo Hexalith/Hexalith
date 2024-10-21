@@ -21,7 +21,7 @@ using Hexalith.PolymorphicSerialization;
 public record MessageState(
     [property:JsonPropertyOrder(1)]
     [property: DataMember(Order = 1)]
-    PolymorphicRecordBase? Message,
+    PolymorphicRecordBase Message,
     [property: DataMember(Order = 2)]
     [property: JsonPropertyOrder(2)]
     Metadata Metadata) : IIdempotent

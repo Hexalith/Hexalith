@@ -49,12 +49,6 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     private readonly IRequestBus _requestBus;
     private readonly IResiliencyPolicyProvider _resiliencyPolicyProvider;
     private IDomainAggregate? _aggregate;
-
-    private MessageStore<MessageState>? _commandStore;
-    private MessageStore<MessageState>? _eventSourceStore;
-    private MessageStore<MessageState>? _messageStore;
-
-    private ResiliencyPolicy? _resiliencyPolicy;
     private AggregateActorState? _state;
 
     /// <summary>
@@ -105,22 +99,22 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     }
 
     private MessageStore<MessageState> CommandStore
-        => _commandStore ??= new MessageStore<MessageState>(
+        => field ??= new MessageStore<MessageState>(
             new ActorStateStoreProvider(StateManager),
             ActorConstants.CommandStoreName);
 
     private MessageStore<MessageState> EventSourceStore
-        => _eventSourceStore ??= new MessageStore<MessageState>(
+        => field ??= new MessageStore<MessageState>(
             new ActorStateStoreProvider(StateManager),
             ActorConstants.EventSourcingName);
 
     private MessageStore<MessageState> MessageStore
-        => _messageStore ??= new MessageStore<MessageState>(
+        => field ??= new MessageStore<MessageState>(
             new ActorStateStoreProvider(StateManager),
             ActorConstants.MessageStoreName);
 
     private ResiliencyPolicy ResiliencyPolicy
-                    => _resiliencyPolicy ??= _resiliencyPolicyProvider.GetPolicy(Host.ActorTypeInfo.ActorTypeName);
+                    => field ??= _resiliencyPolicyProvider.GetPolicy(Host.ActorTypeInfo.ActorTypeName);
 
     /// <summary>
     /// Gets the name of the aggregate actor.
@@ -135,13 +129,12 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     /// <param name="logger">The logger.</param>
     /// <param name="commandType">Type of the command.</param>
     /// <param name="commandId">The command identifier.</param>
-    /// <param name="aggregateName">Name of the aggregate.</param>
-    /// <param name="aggregateId">The aggregate identifier.</param>
+    /// <param name="partitionKey">Key of the aggregate.</param>
     [LoggerMessage(
                     EventId = 2,
                     Level = LogLevel.Information,
-                    Message = "Accepted command {CommandType} ({CommandId}) for aggregate {AggregateName}:{AggregateId}.")]
-    public static partial void LogAcceptedCommandInformation(ILogger logger, string commandType, string commandId, string aggregateName, string aggregateId);
+                    Message = "Accepted command {CommandType} ({CommandId}) for aggregate key {PartitionKey}.")]
+    public static partial void LogAcceptedCommandInformation(ILogger logger, string commandType, string commandId, string partitionKey);
 
     /// <summary>
     /// Logs the invalid publish message error.
@@ -182,13 +175,12 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     /// <param name="logger">The logger.</param>
     /// <param name="commandType">Type of the command.</param>
     /// <param name="commandId">The command identifier.</param>
-    /// <param name="aggregateName">Name of the aggregate.</param>
-    /// <param name="aggregateId">The aggregate identifier.</param>
+    /// <param name="partitionKey"></param>
     [LoggerMessage(
                     EventId = 4,
                     Level = LogLevel.Information,
-                    Message = "Processed command {CommandType} ({CommandId}) for aggregate {AggregateName}:{AggregateId}.")]
-    public static partial void LogProcessedCommandInformation(ILogger logger, string commandType, string commandId, string aggregateName, string aggregateId);
+                    Message = "Processed command {CommandType} ({CommandId}) for aggregate {PartitionKey}.")]
+    public static partial void LogProcessedCommandInformation(ILogger logger, string commandType, string commandId, string partitionKey);
 
     /// <summary>
     /// Logs the processing callback error.
@@ -351,7 +343,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             .ConfigureAwait(false);
         if (eventState is not null)
         {
-            await _eventBus.PublishAsync(eventState, CancellationToken.None).ConfigureAwait(false);
+            await _eventBus.PublishAsync(eventState.Message, eventState.Metadata, CancellationToken.None).ConfigureAwait(false);
         }
     }
 
@@ -387,9 +379,9 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             throw new InvalidOperationException($"Submitted command to {Host.ActorTypeInfo.ActorTypeName}/{Id} has an invalid aggregate name : {metadata.Message.Aggregate.Name}.");
         }
 
-        if (metadata.Message.Aggregate.Id != Id.ToString())
+        if (metadata.PartitionKey != Id.ToString())
         {
-            throw new InvalidOperationException($"Submitted command to {Host.ActorTypeInfo.ActorTypeName}/{Id} has an invalid aggregate id : {metadata.Message.Aggregate.Id}.");
+            throw new InvalidOperationException($"Submitted command to {Host.ActorTypeInfo.ActorTypeName}/{Id} has an invalid partition key : {metadata.PartitionKey}.");
         }
 
         List<MessageState> commandStates = [new MessageState((PolymorphicRecordBase)command, metadata)];
@@ -397,8 +389,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             Logger,
             metadata.Message.Name,
             metadata.Message.Id,
-            metadata.Message.Aggregate.Name,
-            metadata.Message.Aggregate.Id);
+            metadata.PartitionKey);
 
         AggregateActorState state = await GetAggregateStateAsync(cancellationToken)
             .ConfigureAwait(false);
@@ -418,13 +409,12 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     [LoggerMessage(
         EventId = 5,
         Level = LogLevel.Warning,
-        Message = "Application error while processing command number {CommandSequence}, type '{CommandType}', correlationId '{CorrelationId}' for aggregate '{AggregateName}/{AggregateId}' : {ErrorMessage}\n{TechnicalErrorMessage}")]
+        Message = "Application error while processing command number {CommandSequence}, type '{CommandType}', correlationId '{CorrelationId}' for aggregate key '{PartitionKey}' : {ErrorMessage}\n{TechnicalErrorMessage}")]
     private static partial void LogApplicationErrorWarning(
         ILogger logger,
         long commandSequence,
         string commandType,
-        string aggregateName,
-        string aggregateId,
+        string partitionKey,
         string correlationId,
         string errorMessage,
         string? technicalErrorMessage);
@@ -432,14 +422,13 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     [LoggerMessage(
         EventId = 7,
         Level = LogLevel.Information,
-        Message = "The command number {Sequence} '{MessageType}' cannot be processed on aggregate {AggregateName} with id {AggregateId}. The retry attempt {NextRetryNumber} will be executed in {RetryDueTime} at {NextRetryDateTime}. CorrelationId={CorrelationId}.")]
+        Message = "The command number {Sequence} '{MessageType}' cannot be processed on aggregate key {PartitionKey}. The retry attempt {NextRetryNumber} will be executed in {RetryDueTime} at {NextRetryDateTime}. CorrelationId={CorrelationId}.")]
     private static partial void LogTaskProcessorRetryInformation(
         ILogger logger,
         string messageType,
         long sequence,
         string correlationId,
-        string aggregateName,
-        string aggregateId,
+        string partitionKey,
         int nextRetryNumber,
         TimeSpan retryDueTime,
         DateTimeOffset nextRetryDateTime);
@@ -447,14 +436,13 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     [LoggerMessage(
             EventId = 8,
             Level = LogLevel.Error,
-            Message = "Unhandled command processing error. Command handlers should throw application error exceptions. Processing command number {CommandSequence}, type '{CommandType}', correlationId '{CorrelationId}' for aggregate '{AggregateName}/{AggregateId}'.")]
+            Message = "Unhandled command processing error. Command handlers should throw application error exceptions. Processing command number {CommandSequence}, type '{CommandType}', correlationId '{CorrelationId}' for aggregate key '{PartitionKey}'.")]
     private static partial void LogUnhandledCommandProcessingError(
         ILogger logger,
         Exception exception,
         long commandSequence,
         string commandType,
-        string aggregateName,
-        string aggregateId,
+        string partitionKey,
         string correlationId);
 
     private async Task<IDomainAggregate> GetAggregateAsync(string aggregateName, CancellationToken cancellationToken)
@@ -513,7 +501,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         AggregateSnapshotEvent e = new(aggregate);
         MessageMetadata messageMetadata = new(e, _dateTimeService.GetUtcNow());
         return new MessageState(
-            (PolymorphicRecordBase)e,
+            e,
             new Metadata(
                 messageMetadata,
                 new ContextMetadata(
@@ -569,8 +557,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
                 metadata.Message.Name,
                 commandSequence,
                 correlationId,
-                metadata.Message.Aggregate.Name,
-                metadata.Message.Aggregate.Id,
+                metadata.PartitionKey,
                 (taskProcessor.Failure?.Count ?? 0) + 1,
                 state.RetryOnFailurePeriod.Value,
                 state.RetryOnFailureDateTime.Value);
@@ -580,8 +567,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             Logger,
             commandSequence,
             metadata.Message.Name,
-            metadata.Message.Aggregate.Name,
-            metadata.Message.Aggregate.Id,
+            metadata.PartitionKey,
             correlationId,
             ex.Error?.GetDetailMessage(CultureInfo.InvariantCulture) ?? "Unknown application error.",
             ex.Error?.GetTechnicalMessage(CultureInfo.InvariantCulture));
@@ -620,14 +606,14 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         object command = commandState.Message ?? throw new InvalidOperationException("The specified command state is missing associated message.");
         Metadata metadata = commandState.Metadata ?? throw new InvalidOperationException("The specified command state is missing associated metadata.");
 
-        if (metadata.Message.Aggregate.Id != Id.ToString())
+        if (metadata.PartitionKey != Id.ToString())
         {
-            throw new InvalidOperationException($"Command {metadata.Message.Name} aggregate identifier '{metadata.Message.Aggregate.Id}' is invalid: Expected : {Id}.");
+            throw new InvalidOperationException($"Command {metadata.Message.Name} aggregate key '{metadata.PartitionKey}' is invalid: Expected : {Id}.");
         }
 
         if (GetAggregateActorName(metadata.Message.Aggregate.Name) != Host.ActorTypeInfo.ActorTypeName)
         {
-            throw new InvalidOperationException($"Command {metadata.Message.Name} for '{metadata.Message.Aggregate.Id}' has an invalid aggregate actor name '{GetAggregateActorName(metadata.Message.Aggregate.Name)}'. Expected : {Host.ActorTypeInfo.ActorTypeName}.");
+            throw new InvalidOperationException($"Command {metadata.Message.Name} for '{metadata.PartitionKey}' has an invalid aggregate actor name '{GetAggregateActorName(metadata.Message.Aggregate.Name)}'. Expected : {Host.ActorTypeInfo.ActorTypeName}.");
         }
 
         IDomainAggregate aggregate = await GetAggregateAsync(
@@ -677,8 +663,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
                 Logger,
                 metadata.Message.Name,
                 metadata.Message.Id,
-                metadata.Message.Aggregate.Name,
-                metadata.Message.Aggregate.Id);
+                metadata.PartitionKey);
         }
         catch (ApplicationErrorException ex)
         {
@@ -698,8 +683,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
                 e,
                 commandNumber,
                 metadata.Message.Name,
-                metadata.Message.Aggregate.Name,
-                metadata.Message.Aggregate.Id,
+                metadata.PartitionKey,
                 metadata.Context.CorrelationId);
 
             throw;
@@ -729,7 +713,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         state.PublishFailed = false;
         try
         {
-            await _eventBus.PublishAsync(messageState, cancellationToken).ConfigureAwait(false);
+            await _eventBus.PublishAsync(messageState.Message, messageState.Metadata, cancellationToken).ConfigureAwait(false);
             state.LastMessagePublished = sequence;
             return;
         }

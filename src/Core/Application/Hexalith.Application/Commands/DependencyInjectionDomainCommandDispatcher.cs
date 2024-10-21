@@ -63,12 +63,12 @@ public partial class DependencyInjectionDomainCommandDispatcher : IDomainCommand
         ArgumentNullException.ThrowIfNull(metadata);
         try
         {
-            LogDispatchingCommandDebugInformation(metadata.Message.Name, metadata.Message.Aggregate.Name, metadata.Message.Aggregate.Id);
+            LogDispatchingCommandDebugInformation(metadata.Message.Name, metadata.PartitionKey);
             return await GetHandler(command).DoAsync(command, metadata, aggregate, cancellationToken).ConfigureAwait(false);
         }
         catch (ApplicationErrorException ex)
         {
-            LogDispatchingCommandErrorInformation(metadata.Message.Name, metadata.Message.Aggregate.Name, metadata.Message.Aggregate.Id);
+            LogDispatchingCommandErrorInformation(metadata.Message.Name, metadata.PartitionKey);
             ex.Error?.LogApplicationErrorDetails(_logger, ex);
             throw;
         }
@@ -77,8 +77,7 @@ public partial class DependencyInjectionDomainCommandDispatcher : IDomainCommand
             LogDispatchingCommandErrorInformation(
                 ex,
                 metadata.Message.Name,
-                metadata.Message.Aggregate.Name,
-                metadata.Message.Aggregate.Id,
+                metadata.PartitionKey,
                 ex.FullMessage());
             throw;
         }
@@ -88,39 +87,35 @@ public partial class DependencyInjectionDomainCommandDispatcher : IDomainCommand
     /// Logs the debug information for the command being dispatched.
     /// </summary>
     /// <param name="commandType">The type of the command being dispatched.</param>
-    /// <param name="aggregateName">The name of the aggregate associated with the command.</param>
-    /// <param name="aggregateId">The ID of the aggregate associated with the command.</param>
-    [LoggerMessage(EventId = 0, Level = LogLevel.Debug, Message = "Dispatching command {CommandType} with aggregate id {AggregateName}-{AggregateId}")]
-    public partial void LogDispatchingCommandDebugInformation(string commandType, string aggregateName, string aggregateId);
+    /// <param name="aggregateKey">The key of the aggregate associated with the command.</param>
+    [LoggerMessage(EventId = 0, Level = LogLevel.Debug, Message = "Dispatching command {CommandType} with aggregate key {AggregateKey}")]
+    public partial void LogDispatchingCommandDebugInformation(string commandType, string aggregateKey);
 
     /// <summary>
     /// Logs the error information for the command being dispatched.
     /// </summary>
     /// <param name="ex">The exception that occurred during command dispatch.</param>
     /// <param name="commandType">The type of the command being dispatched.</param>
-    /// <param name="aggregateName">The name of the aggregate associated with the command.</param>
-    /// <param name="aggregateId">The ID of the aggregate associated with the command.</param>
+    /// <param name="aggregateKey">The key of the aggregate associated with the command.</param>
     /// <param name="errorMessage">The error message describing the exception.</param>
-    [LoggerMessage(EventId = 2, Level = LogLevel.Error, Message = "Error while dispatching command {CommandType} with aggregate id {AggregateName}-{AggregateId} : {ErrorMessage}")]
-    public partial void LogDispatchingCommandErrorInformation(Exception ex, string commandType, string aggregateName, string aggregateId, string errorMessage);
+    [LoggerMessage(EventId = 2, Level = LogLevel.Error, Message = "Error while dispatching command {CommandType} with aggregate id {AggregateKey} : {ErrorMessage}")]
+    public partial void LogDispatchingCommandErrorInformation(Exception ex, string commandType, string aggregateKey, string errorMessage);
 
     /// <summary>
     /// Logs the error information for the command being dispatched.
     /// </summary>
     /// <param name="commandType">The type of the command being dispatched.</param>
-    /// <param name="aggregateName">The name of the aggregate associated with the command.</param>
-    /// <param name="aggregateId">The ID of the aggregate associated with the command.</param>
-    [LoggerMessage(EventId = 3, Level = LogLevel.Error, Message = "Error while dispatching command {CommandType} with aggregate id {AggregateName}-{AggregateId}")]
-    public partial void LogDispatchingCommandErrorInformation(string commandType, string aggregateName, string aggregateId);
+    /// <param name="aggregateKey">The key of the aggregate associated with the command.</param>
+    [LoggerMessage(EventId = 3, Level = LogLevel.Error, Message = "Error while dispatching command {CommandType} with aggregate id {AggregateKey}")]
+    public partial void LogDispatchingCommandErrorInformation(string commandType, string aggregateKey);
 
     /// <summary>
     /// Logs the debug information for the command being undone.
     /// </summary>
     /// <param name="commandType">The type of the command being undone.</param>
-    /// <param name="aggregateName">The name of the aggregate associated with the command.</param>
-    /// <param name="aggregateId">The ID of the aggregate associated with the command.</param>
-    [LoggerMessage(EventId = 1, Level = LogLevel.Debug, Message = "Dispatching command {CommandType} undo with aggregate id {AggregateName}-{AggregateId}")]
-    public partial void LogDispatchingCommandUndoDebugInformation(string commandType, string aggregateName, string aggregateId);
+    /// <param name="aggregateKey">The key of the aggregate associated with the command.</param>
+    [LoggerMessage(EventId = 1, Level = LogLevel.Debug, Message = "Dispatching command {CommandType} undo with aggregate id {AggregateKey}")]
+    public partial void LogDispatchingCommandUndoDebugInformation(string commandType, string aggregateKey);
 
     /// <summary>
     /// Undoes the specified command asynchronously.
@@ -140,7 +135,7 @@ public partial class DependencyInjectionDomainCommandDispatcher : IDomainCommand
         ArgumentNullException.ThrowIfNull(command);
         ArgumentNullException.ThrowIfNull(metadata);
         ArgumentNullException.ThrowIfNull(aggregate);
-        LogDispatchingCommandUndoDebugInformation(metadata.Message.Name, metadata.Message.Aggregate.Name, metadata.Message.Aggregate.Id);
+        LogDispatchingCommandUndoDebugInformation(metadata.Message.Name, metadata.PartitionKey);
         return await GetHandler(command).UndoAsync(command, metadata, aggregate, cancellationToken).ConfigureAwait(false);
     }
 

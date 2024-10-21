@@ -73,11 +73,11 @@ public partial class ResilientCommandProcessor
     /// </summary>
     /// <param name="e">The exception that was thrown.</param>
     /// <param name="commandType">The type of the command being executed.</param>
-    /// <param name="aggregateName">The name of the aggregate.</param>
-    /// <param name="aggregateId">The ID of the aggregate.</param>
+    /// <param name="partitionKey"></param>
+    /// <param name="correlationId"></param>
     /// <param name="message">The error message.</param>
-    [LoggerMessage(EventId = 0, Level = LogLevel.Error, Message = "An error occurred when executing command {CommandType} on {AggregateName}/{AggregateId}: {Message}")]
-    public partial void LogCommandExecutionError(Exception e, string commandType, string aggregateName, string aggregateId, string message);
+    [LoggerMessage(EventId = 0, Level = LogLevel.Error, Message = "An error occurred when executing command {CommandType} on partition key {PartitionKey} with correlation id {CorrelationId}: {Message}")]
+    public partial void LogCommandExecutionError(Exception e, string commandType, string partitionKey, string correlationId, string message);
 
     /// <summary>
     /// Processes a command asynchronously with resilience and error handling.
@@ -144,7 +144,7 @@ public partial class ResilientCommandProcessor
             catch (Exception e)
             {
                 taskProcessor = taskProcessor.Fail($"An error occurred when executing command {metadata.Message.Name} on {metadata.Message.Aggregate.Name}/{metadata.Message.Aggregate.Id}: {e.Message}", e.FullMessage());
-                LogCommandExecutionError(e, metadata.Message.Name, metadata.Message.Aggregate.Name, metadata.Message.Aggregate.Id, e.FullMessage());
+                LogCommandExecutionError(e, metadata.Message.Name, metadata.PartitionKey, metadata.Context.CorrelationId, e.FullMessage());
             }
         }
 

@@ -51,12 +51,6 @@ public record ActorMessageEnvelope(
                 nameof(message));
         }
 
-        AggregateMetadata messageAggregate = new(message);
-        if (metadata.Message.Aggregate.Name != messageAggregate.Name || metadata.Message.Aggregate.Id != messageAggregate.Id)
-        {
-            throw new ArgumentException($"Metadata and message aggregate details don't match. Metadata: {metadata.Message.Aggregate.Name}/{metadata.Message.Aggregate.Id}, Message: {messageAggregate.Name}/{messageAggregate.Id}", nameof(metadata));
-        }
-
         // Serialize the message and metadata to JSON
         string messageJson = JsonSerializer.Serialize((PolymorphicRecordBase)message, PolymorphicHelper.DefaultJsonSerializerOptions);
         string metadataJson = JsonSerializer.Serialize(metadata, PolymorphicHelper.DefaultJsonSerializerOptions);

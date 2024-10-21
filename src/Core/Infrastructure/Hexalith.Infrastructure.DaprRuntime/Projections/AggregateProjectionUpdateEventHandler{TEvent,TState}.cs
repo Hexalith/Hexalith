@@ -50,11 +50,11 @@ public class AggregateProjectionUpdateEventHandler<TEvent, TState>(
         else
         {
             // If the event is not a snapshot, we load the aggregate from the store
-            aggregate = await GetProjectionAsync(metadata.Message.Aggregate.Id, cancellationToken)
+            aggregate = await GetProjectionAsync(metadata.PartitionKey, cancellationToken)
                 .ConfigureAwait(false) ?? new TState();
         }
 
         ApplyResult result = aggregate.Apply(baseEvent);
-        await SaveProjectionAsync(metadata.Message.Aggregate.Id, (TState)result.Aggregate, cancellationToken).ConfigureAwait(false);
+        await SaveProjectionAsync(metadata.PartitionKey, (TState)result.Aggregate, cancellationToken).ConfigureAwait(false);
     }
 }

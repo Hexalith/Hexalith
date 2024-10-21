@@ -55,13 +55,12 @@ public partial class DomainActorCommandProcessor : IDomainCommandProcessor
     /// </summary>
     /// <param name="logger"></param>
     /// <param name="commandName">Name of the command.</param>
-    /// <param name="aggregateId">The aggregate identifier.</param>
     /// <param name="actorName">Name of the actor.</param>
     [LoggerMessage(
                 EventId = 2,
                 Level = LogLevel.Information,
-                Message = "Sending command {CommandName} to aSystem.NotSupportedException: 'Runtime type 'Manhole.Commands.Factories.AddFactory' is not supported by polymorphic type 'Hexalith.PolymorphicSerialization.PolymorphicRecoctor {ActorName} for aggregate {AggregateId}.")]
-    public static partial void LogSendingCommandToActor(ILogger logger, string commandName, string aggregateId, string actorName);
+                Message = "Sending command {CommandName} to actor {ActorName} for aggregate {PartitionKey}.")]
+    public static partial void LogSendingCommandToActor(ILogger logger, string commandName, string partitionKey, string actorName);
 
     /// <inheritdoc/>
     public async Task SubmitAsync(object command, Metadata metadata, CancellationToken cancellationToken)
@@ -71,8 +70,8 @@ public partial class DomainActorCommandProcessor : IDomainCommandProcessor
         string actorName = DomainAggregateActorBase.GetAggregateActorName(metadata.Message.Aggregate.Name);
         try
         {
-            LogSendingCommandToActor(_logger, metadata.Message.Name, metadata.Message.Aggregate.Id, actorName);
-            IDomainAggregateActor actor = _actorProxy.CreateActorProxy<IDomainAggregateActor>(new ActorId(metadata.Message.Aggregate.Id), actorName);
+            LogSendingCommandToActor(_logger, metadata.Message.Name, metadata.PartitionKey, actorName);
+            IDomainAggregateActor actor = _actorProxy.CreateActorProxy<IDomainAggregateActor>(new ActorId(metadata.PartitionKey), actorName);
             ActorMessageEnvelope envelope = ActorMessageEnvelope.Create(command, metadata);
             string json = JsonSerializer.Serialize(envelope, PolymorphicHelper.DefaultJsonSerializerOptions);
             await actor.SubmitCommandAsJsonAsync(json).ConfigureAwait(false);

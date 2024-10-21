@@ -63,22 +63,21 @@ public partial class RequestServiceController : ControllerBase
         }
 
         await _requestBus
-            .PublishAsync(request, CancellationToken.None)
+            .PublishAsync(request.Message, request.Metadata, CancellationToken.None)
             .ConfigureAwait(false);
         LogRequestSubmittedDebugInformation(
             _logger,
             request.Metadata.Message.Id,
             request.Metadata.Context.CorrelationId,
             request.Metadata.Message.Name,
-            request.Metadata.Message.Aggregate.Name,
-            request.Metadata.Message.Aggregate.Id);
+            request.Metadata.PartitionKey);
         return Ok();
     }
 
     [LoggerMessage(
         1,
         LogLevel.Debug,
-        "Request {MessageType} submitted. MessageId={MessageId}; CorrelationId={CorrelationId}; AggregateName={AggregateName}; AggregateId={AggregateId}.",
+        "Request {MessageType} submitted. MessageId={MessageId}; CorrelationId={CorrelationId}; AggregateKey={PartitionKey}.",
         EventName = "RequestSubmitted")]
-    private static partial void LogRequestSubmittedDebugInformation(ILogger logger, string messageId, string correlationId, string messageType, string aggregateName, string aggregateId);
+    private static partial void LogRequestSubmittedDebugInformation(ILogger logger, string messageId, string correlationId, string messageType, string partitionKey);
 }

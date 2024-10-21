@@ -11,9 +11,7 @@ using Dapr.Client;
 
 using Hexalith.Application.Envelopes;
 using Hexalith.Application.Metadatas;
-using Hexalith.Application.States;
 using Hexalith.Extensions.Helpers;
-using Hexalith.PolymorphicSerialization;
 
 using Microsoft.Extensions.Logging;
 
@@ -81,13 +79,6 @@ public partial class DaprApplicationBus(
     public partial void LogMessageSent(string messageName, string messageId, string correlationId, string topicName, string busName);
 
     /// <inheritdoc/>
-    public async Task PublishAsync(MessageState message, CancellationToken cancellationToken)
-    {
-        ArgumentNullException.ThrowIfNull(message);
-        await PublishAsync(message.Message, message.Metadata, cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
     public async Task PublishAsync(object message, Metadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(message);
@@ -106,11 +97,11 @@ public partial class DaprApplicationBus(
             { "MessageName", metadata.Message.Name },
             { "MessageId", metadata.Message.Id },
             { "CorrelationId", metadata.Context.CorrelationId },
-            { "SessionId", metadata.Context.SessionId ?? metadata.Message.Aggregate.Name },
+            { "SessionId",  metadata.PartitionKey },
             { "PartitionKey", metadata.PartitionKey },
         };
 
-        MessageState state = new((PolymorphicRecordBase)message, metadata);
+        BusMessage state = BusMessage.Create(message, metadata);
 
         try
         {
