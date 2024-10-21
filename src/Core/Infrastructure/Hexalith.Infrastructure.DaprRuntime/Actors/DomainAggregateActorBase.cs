@@ -51,6 +51,12 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     private readonly IResiliencyPolicyProvider _resiliencyPolicyProvider;
     private IDomainAggregate? _aggregate;
     private AggregateActorState? _state;
+#if !EXPERIMENTAL_FEATURES
+    private MessageStore<MessageState>? _commandStore;
+    private MessageStore<MessageState>? _eventStore;
+    private MessageStore<MessageState>? _messageStore;
+    private ResiliencyPolicy? _resiliencyPolicy;
+#endif
 
     /// <summary>
     /// Initializes a new instance of the <see cref="DomainAggregateActorBase"/> class.
@@ -100,22 +106,42 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     }
 
     private MessageStore<MessageState> CommandStore
-        => field ??= new MessageStore<MessageState>(
+#if EXPERIMENTAL_FEATURES
+        => field 
+#else
+        => _commandStore
+#endif
+        ??= new MessageStore<MessageState>(
             new ActorStateStoreProvider(StateManager),
             ActorConstants.CommandStoreName);
 
     private MessageStore<MessageState> EventSourceStore
-        => field ??= new MessageStore<MessageState>(
+#if EXPERIMENTAL_FEATURES
+        => field 
+#else
+        => _eventStore
+#endif
+        ??= new MessageStore<MessageState>(
             new ActorStateStoreProvider(StateManager),
             ActorConstants.EventSourcingName);
 
     private MessageStore<MessageState> MessageStore
-        => field ??= new MessageStore<MessageState>(
+#if EXPERIMENTAL_FEATURES
+        => field 
+#else
+        => _messageStore
+#endif
+        ??= new MessageStore<MessageState>(
             new ActorStateStoreProvider(StateManager),
             ActorConstants.MessageStoreName);
 
     private ResiliencyPolicy ResiliencyPolicy
-                    => field ??= _resiliencyPolicyProvider.GetPolicy(Host.ActorTypeInfo.ActorTypeName);
+#if EXPERIMENTAL_FEATURES
+        => field 
+#else
+        => _resiliencyPolicy
+#endif
+        ??= _resiliencyPolicyProvider.GetPolicy(Host.ActorTypeInfo.ActorTypeName);
 
     /// <summary>
     /// Gets the name of the aggregate actor.
