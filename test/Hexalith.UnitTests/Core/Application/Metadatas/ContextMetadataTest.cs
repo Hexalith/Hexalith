@@ -10,7 +10,7 @@ using System.Text.Json;
 
 using FluentAssertions;
 
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
 
 /// <summary>
 /// Class ContextMetadataTest.

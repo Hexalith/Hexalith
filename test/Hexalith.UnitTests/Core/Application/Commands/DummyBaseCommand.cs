@@ -7,7 +7,7 @@ namespace Hexalith.UnitTests.Core.Application.Commands;
 
 using System.Runtime.Serialization;
 
-using Hexalith.Application.MessageMetadatas;
+using Hexalith.Application.Metadatas;
 using Hexalith.Extensions.Helpers;
 using Hexalith.PolymorphicSerialization;
 
