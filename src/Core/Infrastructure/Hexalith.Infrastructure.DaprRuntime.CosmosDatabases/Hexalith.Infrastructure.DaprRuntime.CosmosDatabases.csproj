@@ -8,7 +8,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Application\Hexalith.Application\Hexalith.Application.csproj" />
     <ProjectReference Include="..\Hexalith.Infrastructure.CosmosDb\Hexalith.Infrastructure.CosmosDb.csproj" />
-    <ProjectReference Include="..\Hexalith.Infrastructure.DaprRuntime.Abstractions\Hexalith.Infrastructure.DaprRuntime.Abstractions.csproj" />
+    <ProjectReference Include="..\Hexalith.Infrastructure.DaprRuntime\Hexalith.Infrastructure.DaprRuntime.csproj" />
     <ProjectReference Include="..\Hexalith.Infrastructure.Serialization\Hexalith.Infrastructure.Serialization.csproj" />
   </ItemGroup>
 </Project>

@@ -15,6 +15,7 @@ using Dapr.Actors.Client;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Metadatas;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
+using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.PolymorphicSerialization;
 
 using Microsoft.Extensions.Logging;
@@ -55,6 +56,7 @@ public partial class DomainActorCommandProcessor : IDomainCommandProcessor
     /// </summary>
     /// <param name="logger"></param>
     /// <param name="commandName">Name of the command.</param>
+    /// <param name="partitionKey"></param>
     /// <param name="actorName">Name of the actor.</param>
     [LoggerMessage(
                 EventId = 2,
@@ -70,8 +72,8 @@ public partial class DomainActorCommandProcessor : IDomainCommandProcessor
         string actorName = DomainAggregateActorBase.GetAggregateActorName(metadata.Message.Aggregate.Name);
         try
         {
-            LogSendingCommandToActor(_logger, metadata.Message.Name, metadata.PartitionKey, actorName);
-            IDomainAggregateActor actor = _actorProxy.CreateActorProxy<IDomainAggregateActor>(new ActorId(metadata.PartitionKey), actorName);
+            LogSendingCommandToActor(_logger, metadata.Message.Name, metadata.AggregateGlobalId, actorName);
+            IDomainAggregateActor actor = _actorProxy.CreateActorProxy<IDomainAggregateActor>(metadata.AggregateGlobalId.ToActorId(), actorName);
             ActorMessageEnvelope envelope = ActorMessageEnvelope.Create(command, metadata);
             string json = JsonSerializer.Serialize(envelope, PolymorphicHelper.DefaultJsonSerializerOptions);
             await actor.SubmitCommandAsJsonAsync(json).ConfigureAwait(false);

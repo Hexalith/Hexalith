@@ -54,7 +54,7 @@ public partial class DependencyInjectionEventDispatcher : IIntegrationEventDispa
     public async Task<IEnumerable<IEnumerable<object>>> ApplyAsync([NotNull] object baseEvent, Metadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(baseEvent);
-        LogDispatchingEvent(metadata.Message.Name, metadata.PartitionKey);
+        LogDispatchingEvent(metadata.Message.Name, metadata.AggregateGlobalId);
         return await Task.WhenAll(
             GetHandlers(baseEvent)
                 .Select(p => p.ApplyAsync(baseEvent, metadata, cancellationToken))).ConfigureAwait(false);

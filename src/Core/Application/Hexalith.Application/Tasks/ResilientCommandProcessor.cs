@@ -144,7 +144,7 @@ public partial class ResilientCommandProcessor
             catch (Exception e)
             {
                 taskProcessor = taskProcessor.Fail($"An error occurred when executing command {metadata.Message.Name} on {metadata.Message.Aggregate.Name}/{metadata.Message.Aggregate.Id}: {e.Message}", e.FullMessage());
-                LogCommandExecutionError(e, metadata.Message.Name, metadata.PartitionKey, metadata.Context.CorrelationId, e.FullMessage());
+                LogCommandExecutionError(e, metadata.Message.Name, metadata.AggregateGlobalId, metadata.Context.CorrelationId, e.FullMessage());
             }
         }
 

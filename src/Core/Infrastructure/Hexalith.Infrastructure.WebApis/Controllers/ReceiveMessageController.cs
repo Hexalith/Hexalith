@@ -95,7 +95,7 @@ public abstract partial class ReceiveMessageController : ControllerBase
         MessageReceivedInformation(
             Logger,
             messageState?.Metadata?.Message.Name ?? "Unknown",
-            messageState?.Metadata?.PartitionKey,
+            messageState?.Metadata?.AggregateGlobalId,
             messageState?.Metadata?.Message.Id,
             messageState?.IdempotencyId);
         return badRequest;

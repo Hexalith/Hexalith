@@ -69,7 +69,7 @@ public partial class CommandServiceController : ControllerBase
             command.Metadata.Message.Id,
             command.Metadata.Context.CorrelationId,
             command.Metadata.Message.Name,
-            command.Metadata.PartitionKey);
+            command.Metadata.AggregateGlobalId);
 
         return Ok();
     }

@@ -83,7 +83,7 @@ public partial class IntegrationEventProcessor : IIntegrationEventProcessor
 
         if (commands.Count <= 0)
         {
-            LogNoCommandGeneratedInformation(metadata.Message.Name, metadata.PartitionKey, metadata.Context.CorrelationId);
+            LogNoCommandGeneratedInformation(metadata.Message.Name, metadata.AggregateGlobalId, metadata.Context.CorrelationId);
         }
 
         // Publish each generated command

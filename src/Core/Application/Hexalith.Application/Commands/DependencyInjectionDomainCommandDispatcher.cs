@@ -63,12 +63,12 @@ public partial class DependencyInjectionDomainCommandDispatcher : IDomainCommand
         ArgumentNullException.ThrowIfNull(metadata);
         try
         {
-            LogDispatchingCommandDebugInformation(metadata.Message.Name, metadata.PartitionKey);
+            LogDispatchingCommandDebugInformation(metadata.Message.Name, metadata.AggregateGlobalId);
             return await GetHandler(command).DoAsync(command, metadata, aggregate, cancellationToken).ConfigureAwait(false);
         }
         catch (ApplicationErrorException ex)
         {
-            LogDispatchingCommandErrorInformation(metadata.Message.Name, metadata.PartitionKey);
+            LogDispatchingCommandErrorInformation(metadata.Message.Name, metadata.AggregateGlobalId);
             ex.Error?.LogApplicationErrorDetails(_logger, ex);
             throw;
         }
@@ -77,7 +77,7 @@ public partial class DependencyInjectionDomainCommandDispatcher : IDomainCommand
             LogDispatchingCommandErrorInformation(
                 ex,
                 metadata.Message.Name,
-                metadata.PartitionKey,
+                metadata.AggregateGlobalId,
                 ex.FullMessage());
             throw;
         }
@@ -135,7 +135,7 @@ public partial class DependencyInjectionDomainCommandDispatcher : IDomainCommand
         ArgumentNullException.ThrowIfNull(command);
         ArgumentNullException.ThrowIfNull(metadata);
         ArgumentNullException.ThrowIfNull(aggregate);
-        LogDispatchingCommandUndoDebugInformation(metadata.Message.Name, metadata.PartitionKey);
+        LogDispatchingCommandUndoDebugInformation(metadata.Message.Name, metadata.AggregateGlobalId);
         return await GetHandler(command).UndoAsync(command, metadata, aggregate, cancellationToken).ConfigureAwait(false);
     }
 

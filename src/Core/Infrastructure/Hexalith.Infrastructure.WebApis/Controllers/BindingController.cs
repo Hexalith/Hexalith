@@ -70,7 +70,7 @@ public abstract class BindingController : ReceiveMessageController
             MessageReceivedInformation(
                 Logger,
                 metadata.Message.Name,
-                metadata.PartitionKey,
+                metadata.AggregateGlobalId,
                 metadata.Message.Id,
                 metadata.Context.CorrelationId);
             await _eventProcessor.SubmitAsync(@event, metadata, cancellationToken).ConfigureAwait(false);

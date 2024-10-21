@@ -30,7 +30,7 @@ public record Metadata(
     /// The partition key is used to determine how data is distributed across partitions in a distributed system.
     /// It is constructed by escaping the combination of PartitionId, Aggregate Name, and Aggregate Id.
     /// </remarks>
-    public string PartitionKey => Uri.EscapeDataString($"{Context.PartitionId}-{Message.Aggregate.Name}-{Message.Aggregate.Id}");
+    public string AggregateGlobalId => $"{Context.PartitionId}-{Message.Aggregate.Name}-{Message.Aggregate.Id}";
 
     /// <summary>
     /// Creates a new instance of the <see cref="Metadata"/> class with updated message information.

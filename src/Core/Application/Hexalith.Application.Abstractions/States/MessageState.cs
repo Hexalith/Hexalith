@@ -29,5 +29,5 @@ public record MessageState(
     /// <inheritdoc/>
     [JsonIgnore]
     [IgnoreDataMember]
-    public string IdempotencyId => Metadata.PartitionKey;
+    public string IdempotencyId => Metadata.AggregateGlobalId;
 }

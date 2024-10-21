@@ -70,7 +70,7 @@ public partial class RequestServiceController : ControllerBase
             request.Metadata.Message.Id,
             request.Metadata.Context.CorrelationId,
             request.Metadata.Message.Name,
-            request.Metadata.PartitionKey);
+            request.Metadata.AggregateGlobalId);
         return Ok();
     }
 

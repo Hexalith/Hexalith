@@ -6,10 +6,9 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 12-19-2023
 // ***********************************************************************
-// <copyright file="ActorProjectionFactory{TState}.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+// <copyright file="ActorProjectionFactory{TState}.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -45,14 +44,14 @@ public class ActorProjectionFactory<TState> : IActorProjectionFactory<TState>
         ArgumentNullException.ThrowIfNull(actorFactory);
         ArgumentException.ThrowIfNullOrWhiteSpace(applicationName);
         ActorFactory = actorFactory;
-        AplicationName = applicationName;
+        ApplicationName = applicationName;
     }
 
     /// <summary>
     /// Gets the name of the projection actor.
     /// </summary>
     /// <value>The name of the projection actor.</value>
-    public string ProjectionActorName => ProjectionActorHelper.GetProjectionActorName<TState>(AplicationName);
+    public string ProjectionActorName => ProjectionActorHelper.GetProjectionActorName<TState>(ApplicationName);
 
     /// <summary>
     /// Gets the actor factory.
@@ -64,13 +63,13 @@ public class ActorProjectionFactory<TState> : IActorProjectionFactory<TState>
     /// Gets the name of the application.
     /// </summary>
     /// <value>The name of the application.</value>
-    protected string AplicationName { get; }
+    protected string ApplicationName { get; }
 
     /// <inheritdoc/>
-    public IKeyValueActor GetProjectionActor(string aggregateId)
+    public IKeyValueActor GetProjectionActor(string aggregateGlobalId)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(aggregateId);
-        return ActorFactory.CreateActorProxy<IKeyValueActor>(new ActorId(aggregateId), ProjectionActorName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(aggregateGlobalId);
+        return ActorFactory.CreateActorProxy<IKeyValueActor>(aggregateGlobalId.ToActorId(), ProjectionActorName);
     }
 
     /// <summary>

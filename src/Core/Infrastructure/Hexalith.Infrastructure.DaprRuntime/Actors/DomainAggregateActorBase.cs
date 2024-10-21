@@ -379,9 +379,9 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             throw new InvalidOperationException($"Submitted command to {Host.ActorTypeInfo.ActorTypeName}/{Id} has an invalid aggregate name : {metadata.Message.Aggregate.Name}.");
         }
 
-        if (metadata.PartitionKey != Id.ToString())
+        if (metadata.AggregateGlobalId != Id.ToString())
         {
-            throw new InvalidOperationException($"Submitted command to {Host.ActorTypeInfo.ActorTypeName}/{Id} has an invalid partition key : {metadata.PartitionKey}.");
+            throw new InvalidOperationException($"Submitted command to {Host.ActorTypeInfo.ActorTypeName}/{Id} has an invalid partition key : {metadata.AggregateGlobalId}.");
         }
 
         List<MessageState> commandStates = [new MessageState((PolymorphicRecordBase)command, metadata)];
@@ -389,7 +389,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             Logger,
             metadata.Message.Name,
             metadata.Message.Id,
-            metadata.PartitionKey);
+            metadata.AggregateGlobalId);
 
         AggregateActorState state = await GetAggregateStateAsync(cancellationToken)
             .ConfigureAwait(false);
@@ -557,7 +557,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
                 metadata.Message.Name,
                 commandSequence,
                 correlationId,
-                metadata.PartitionKey,
+                metadata.AggregateGlobalId,
                 (taskProcessor.Failure?.Count ?? 0) + 1,
                 state.RetryOnFailurePeriod.Value,
                 state.RetryOnFailureDateTime.Value);
@@ -567,7 +567,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             Logger,
             commandSequence,
             metadata.Message.Name,
-            metadata.PartitionKey,
+            metadata.AggregateGlobalId,
             correlationId,
             ex.Error?.GetDetailMessage(CultureInfo.InvariantCulture) ?? "Unknown application error.",
             ex.Error?.GetTechnicalMessage(CultureInfo.InvariantCulture));
@@ -606,14 +606,14 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         object command = commandState.Message ?? throw new InvalidOperationException("The specified command state is missing associated message.");
         Metadata metadata = commandState.Metadata ?? throw new InvalidOperationException("The specified command state is missing associated metadata.");
 
-        if (metadata.PartitionKey != Id.ToString())
+        if (metadata.AggregateGlobalId != Id.ToString())
         {
-            throw new InvalidOperationException($"Command {metadata.Message.Name} aggregate key '{metadata.PartitionKey}' is invalid: Expected : {Id}.");
+            throw new InvalidOperationException($"Command {metadata.Message.Name} aggregate key '{metadata.AggregateGlobalId}' is invalid: Expected : {Id}.");
         }
 
         if (GetAggregateActorName(metadata.Message.Aggregate.Name) != Host.ActorTypeInfo.ActorTypeName)
         {
-            throw new InvalidOperationException($"Command {metadata.Message.Name} for '{metadata.PartitionKey}' has an invalid aggregate actor name '{GetAggregateActorName(metadata.Message.Aggregate.Name)}'. Expected : {Host.ActorTypeInfo.ActorTypeName}.");
+            throw new InvalidOperationException($"Command {metadata.Message.Name} for '{metadata.AggregateGlobalId}' has an invalid aggregate actor name '{GetAggregateActorName(metadata.Message.Aggregate.Name)}'. Expected : {Host.ActorTypeInfo.ActorTypeName}.");
         }
 
         IDomainAggregate aggregate = await GetAggregateAsync(
@@ -663,7 +663,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
                 Logger,
                 metadata.Message.Name,
                 metadata.Message.Id,
-                metadata.PartitionKey);
+                metadata.AggregateGlobalId);
         }
         catch (ApplicationErrorException ex)
         {
@@ -683,7 +683,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
                 e,
                 commandNumber,
                 metadata.Message.Name,
-                metadata.PartitionKey,
+                metadata.AggregateGlobalId,
                 metadata.Context.CorrelationId);
 
             throw;

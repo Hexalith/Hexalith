@@ -97,8 +97,8 @@ public partial class DaprApplicationBus(
             { "MessageName", metadata.Message.Name },
             { "MessageId", metadata.Message.Id },
             { "CorrelationId", metadata.Context.CorrelationId },
-            { "SessionId",  metadata.PartitionKey },
-            { "PartitionKey", metadata.PartitionKey },
+            { "SessionId",  metadata.AggregateGlobalId },
+            { "PartitionKey", metadata.AggregateGlobalId },
         };
 
         BusMessage state = BusMessage.Create(message, metadata);

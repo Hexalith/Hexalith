@@ -41,7 +41,7 @@ public class InvalidCommandAggregateIdException : InvalidOperationException
     /// <param name="command">The command object that caused the exception.</param>
     /// <param name="metadata">The metadata associated with the command, containing information about the message and aggregate.</param>
     public InvalidCommandAggregateIdException(string expectedPartitionKey, object command, Metadata metadata)
-        : base($"Command '{metadata?.Message.Name ?? "Unknown"}' has an invalid partition key '{metadata?.PartitionKey}'. Expected : {expectedPartitionKey}.")
+        : base($"Command '{metadata?.Message.Name ?? "Unknown"}' has an invalid partition key '{metadata?.AggregateGlobalId}'. Expected : {expectedPartitionKey}.")
     {
         ExpectedPartitionKey = expectedPartitionKey;
         Command = JsonSerializer.Serialize(command, PolymorphicHelper.DefaultJsonSerializerOptions);

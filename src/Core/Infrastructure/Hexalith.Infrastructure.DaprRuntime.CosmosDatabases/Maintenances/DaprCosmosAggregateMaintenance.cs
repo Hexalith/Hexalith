@@ -1,7 +1,6 @@
-﻿// <copyright file="DaprCosmosAggregateMaintenance.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="DaprCosmosAggregateMaintenance.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Infrastructure.DaprRuntime.CosmosDatabases.Maintenances;
@@ -22,6 +21,7 @@ using Hexalith.Infrastructure.CosmosDb.Configurations;
 using Hexalith.Infrastructure.CosmosDb.Providers;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.Infrastructure.DaprRuntime.CosmosDatabases.Models;
+using Hexalith.Infrastructure.DaprRuntime.Helpers;
 
 using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Options;
@@ -83,14 +83,14 @@ public class DaprCosmosAggregateMaintenance<TAggregate> :
     public Task ClearAllStatesAsync(CancellationToken cancellationToken) => throw new NotImplementedException();
 
     /// <inheritdoc/>
-    public async Task ClearCommandsAsync(string aggregateId, CancellationToken cancellationToken)
+    public async Task ClearCommandsAsync(string aggregateGlobalId, CancellationToken cancellationToken)
     {
         (string? applicationId, string actorType) = await GetActorNameAsync(cancellationToken).ConfigureAwait(false);
-        await ClearCommandsAsync(applicationId, actorType, aggregateId, cancellationToken).ConfigureAwait(false);
+        await ClearCommandsAsync(applicationId, actorType, aggregateGlobalId, cancellationToken).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public Task ClearStateAsync(string aggregateId, CancellationToken cancellationToken) => throw new NotImplementedException();
+    public Task ClearStateAsync(string aggregateGlobalId, CancellationToken cancellationToken) => throw new NotImplementedException();
 
     /// <inheritdoc/>
     public void Dispose()
@@ -115,16 +115,16 @@ public class DaprCosmosAggregateMaintenance<TAggregate> :
         await foreach (string id in GetAllAggregateIdsAsync(cosmos, appId, actorType, cancellationToken))
         {
             cancellationToken.ThrowIfCancellationRequested();
-            IAggregateActor actor = ActorProxy.Create<IAggregateActor>(new Dapr.Actors.ActorId(id), actorType);
+            IDomainAggregateActor actor = ActorProxy.Create<IDomainAggregateActor>(new Dapr.Actors.ActorId(id), actorType);
             await actor.SendSnapshotEventAsync().ConfigureAwait(false);
         }
     }
 
     /// <inheritdoc/>
-    public async Task SendSnapshotAsync(string aggregateId, CancellationToken cancellationToken)
+    public async Task SendSnapshotAsync(string aggregateGlobalId, CancellationToken cancellationToken)
     {
         (_, string actorType) = await GetActorNameAsync(cancellationToken).ConfigureAwait(false);
-        IAggregateActor actor = ActorProxy.Create<IAggregateActor>(new Dapr.Actors.ActorId(aggregateId), actorType);
+        IDomainAggregateActor actor = ActorProxy.Create<IDomainAggregateActor>(aggregateGlobalId.ToActorId(), actorType);
         cancellationToken.ThrowIfCancellationRequested();
         await actor.SendSnapshotEventAsync().ConfigureAwait(false);
     }
@@ -182,11 +182,11 @@ public class DaprCosmosAggregateMaintenance<TAggregate> :
         CosmosDbProvider cosmos,
         string applicationId,
         string actorType,
-        string aggregateId,
+        string aggregateGlobalId,
         CancellationToken cancellationToken)
     {
-        QueryDefinition queryDefinition = new QueryDefinition($"Select c.id From c Where StartWith(c.id,@aggregateId)")
-            .WithParameter("@aggregateId", $"{applicationId}||{actorType}||{aggregateId}||CommandStream");
+        QueryDefinition queryDefinition = new QueryDefinition($"Select c.id From c Where StartWith(c.id,@aggregateGlobalId)")
+            .WithParameter("@aggregateGlobalId", $"{applicationId}||{actorType}||{aggregateGlobalId}||CommandStream");
         FeedIterator<string> feedIterator = cosmos
             .Container
             .GetItemQueryIterator<string>(queryDefinition);
@@ -200,13 +200,13 @@ public class DaprCosmosAggregateMaintenance<TAggregate> :
         }
     }
 
-    private async Task ClearCommandsAsync(string applicationId, string actorType, string aggregateId, CancellationToken cancellationToken)
+    private async Task ClearCommandsAsync(string applicationId, string actorType, string aggregateGlobalId, CancellationToken cancellationToken)
     {
         CosmosDbProvider cosmos = await GetCosmosProviderAsync(cancellationToken).ConfigureAwait(false);
-        IAggregateActor actor = ActorProxy.Create<IAggregateActor>(new Dapr.Actors.ActorId(aggregateId), actorType);
+        IDomainAggregateActor actor = ActorProxy.Create<IDomainAggregateActor>(aggregateGlobalId.ToActorId(), actorType);
         cancellationToken.ThrowIfCancellationRequested();
         await actor.ClearCommandsAsync().ConfigureAwait(false);
-        await foreach (string id in GetCommandStreamStateIdsAsync(cosmos, applicationId, actorType, aggregateId, cancellationToken))
+        await foreach (string id in GetCommandStreamStateIdsAsync(cosmos, applicationId, actorType, aggregateGlobalId, cancellationToken))
         {
             cancellationToken.ThrowIfCancellationRequested();
             _ = await cosmos
