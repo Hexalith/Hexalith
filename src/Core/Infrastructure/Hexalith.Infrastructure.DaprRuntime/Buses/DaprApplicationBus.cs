@@ -93,7 +93,7 @@ public partial class DaprApplicationBus(
         Dictionary<string, string> m = new(StringComparer.Ordinal)
         {
             { "ContentType", "application/json" },
-            { "Label", metadata.Message.Name + ' ' + metadata.Message.Aggregate.Name },
+            { "Label", metadata.Message.Name + ' ' + metadata.Message.Aggregate.Id },
             { "MessageName", metadata.Message.Name },
             { "MessageId", metadata.Message.Id },
             { "CorrelationId", metadata.Context.CorrelationId },
