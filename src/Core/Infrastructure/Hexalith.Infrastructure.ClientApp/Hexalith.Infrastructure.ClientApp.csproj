@@ -13,6 +13,7 @@
     <PackageReference Include="Serilog.Settings.Configuration" Version="$(SerilogVersion)" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
     <PackageReference Include="Blazored.SessionStorage" Version="$(BlazoredSessionStorageVersion)" />
+	  <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Application\Hexalith.Application.Modules\Hexalith.Application.Modules.csproj" />

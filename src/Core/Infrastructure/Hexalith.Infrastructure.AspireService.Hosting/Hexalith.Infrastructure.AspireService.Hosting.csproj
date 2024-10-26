@@ -17,6 +17,7 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="$(MicrosoftExtensionsPackagesVersion)" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
     <PackageReference Include="System.Text.Json" Version="$(MicrosoftExtensionsPackagesVersion)" />
+	  <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
   </ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\Application\Hexalith.Application\Hexalith.Application.csproj" />

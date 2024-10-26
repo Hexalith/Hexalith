@@ -3,7 +3,7 @@
 		<!-- Detect if the solution is opened in VS to add local repository for packages -->
 		<AdaptiveCardsVersion>3.1.0</AdaptiveCardsVersion>
 		<AdaptiveCardsTemplatingVersion>2.0.2</AdaptiveCardsTemplatingVersion>
-		<AspireVersion>8.2.1</AspireVersion>
+		<AspireVersion>8.2.2</AspireVersion>
 		<AzureIdentityVersion>1.10.4</AzureIdentityVersion>
 		<AzureBicepCoreVersion>0.26.54</AzureBicepCoreVersion>
 		<AzureMonitorOpenTelemetryAspNetCoreVersion>1.1.0</AzureMonitorOpenTelemetryAspNetCoreVersion>
@@ -29,15 +29,15 @@
 		<ISO3166Version>1.0.4</ISO3166Version>
 		<HumanizerVersion>2.14.1</HumanizerVersion>
 		<MailKitVersion>4.8.0</MailKitVersion>
-		<MicrosoftAzureCosmosVersion>3.44.0</MicrosoftAzureCosmosVersion>
+		<MicrosoftAzureCosmosVersion>3.45.0</MicrosoftAzureCosmosVersion>
 		<MicrosoftBotBuilderVersion>4.22.7</MicrosoftBotBuilderVersion>
 		<MicrosoftCodeAnalysisCSharpVersion>4.11.0</MicrosoftCodeAnalysisCSharpVersion>
 		<MicrosoftCodeAnalysisAnalyzersVersion>3.11.0</MicrosoftCodeAnalysisAnalyzersVersion>
 		<MicrosoftFluentUIComponentsVersion>4.*</MicrosoftFluentUIComponentsVersion>
-		<MicrosoftIdentityClientVersion>4.65.0</MicrosoftIdentityClientVersion>
+		<MicrosoftIdentityClientVersion>4.66.1</MicrosoftIdentityClientVersion>
 		<MicrosoftIdentityWebVersion>3.2.1</MicrosoftIdentityWebVersion>
 		<MicrosoftNETTestSdkVersion>17.11.1</MicrosoftNETTestSdkVersion>
-		<MicrosoftSemanticKernelVersion>1.22.0</MicrosoftSemanticKernelVersion>
+		<MicrosoftSemanticKernelVersion>1.25.0</MicrosoftSemanticKernelVersion>
 		<MicrosoftTeamsFxVersion>2.5.0</MicrosoftTeamsFxVersion>
 		<MicrosoftTypescriptMSBuild>5.6.2</MicrosoftTypescriptMSBuild>
 		<MicrosoftGraphVersion>5.12.*</MicrosoftGraphVersion>
@@ -60,7 +60,7 @@
 		<SerilogSinksBrowserVersion>8.0.0</SerilogSinksBrowserVersion>
 		<SerilogSinksDebugVersion>3.0.*</SerilogSinksDebugVersion>
 		<StyleCopAnalyzersVersion>1.2.0-beta.556</StyleCopAnalyzersVersion>
-		<SwashbuckleAspNetCoreVersion>6.8.1</SwashbuckleAspNetCoreVersion>
+		<SwashbuckleAspNetCoreVersion>6.9.0</SwashbuckleAspNetCoreVersion>
 		<XUnitRunnerVisualStudioVersion>2.8.2</XUnitRunnerVisualStudioVersion>
 		<XUnitVersion>2.9.2</XUnitVersion>
 	</PropertyGroup>
