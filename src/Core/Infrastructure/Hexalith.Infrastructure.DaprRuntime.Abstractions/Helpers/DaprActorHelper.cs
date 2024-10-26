@@ -27,7 +27,7 @@ public static class DaprActorHelper
     /// This is particularly useful when working with identifiers that may contain characters not allowed in ActorIds.
     /// </remarks>
     public static ActorId ToActorId(this string id)
-        => new(Uri.EscapeDataString(id));
+        => new(Uri.EscapeDataString(id.Trim()));
 
     /// <summary>
     /// Converts an ActorId to its original, unescaped string representation.

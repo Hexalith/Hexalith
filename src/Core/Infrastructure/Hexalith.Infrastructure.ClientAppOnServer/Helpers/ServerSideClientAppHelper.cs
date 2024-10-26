@@ -184,6 +184,7 @@ public static class ServerSideClientAppHelper
         builder.Services
             .TryAddSingleton<IDomainCommandProcessor>((s) => new DomainActorCommandProcessor(
             ActorProxy.DefaultProxyFactory,
+            true,
             s.GetRequiredService<ILogger<DomainActorCommandProcessor>>()));
 
         _ = builder.Services

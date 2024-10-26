@@ -45,7 +45,43 @@ public class ActorCommandProcessorTest
         _ = factory.Setup(x => x.Create(It.IsAny<ActorId>(), It.IsAny<string>(), It.IsAny<ActorProxyOptions>()))
             .Returns(actor.Object);
         PolymorphicSerializationResolver.TryAddDefaultMapper(new TestCommandMapper());
-        DomainActorCommandProcessor processor = new(factory.Object, new Mock<ILogger<DomainActorCommandProcessor>>().Object);
+        DomainActorCommandProcessor processor = new(factory.Object, false, new Mock<ILogger<DomainActorCommandProcessor>>().Object);
+        TestCommand command = new("123", "Hello");
+
+        Func<Task> submit = async () => await processor.SubmitAsync(
+            command,
+            new Metadata(
+                new MessageMetadata(
+                    command,
+                    DateTimeOffset.UtcNow),
+                new ContextMetadata(
+                    "325431",
+                    "user123",
+                    "PART1",
+                    DateTimeOffset.UtcNow,
+                    null,
+                    null,
+                    [])),
+            CancellationToken.None);
+
+        // The InvokeMethodAsync on the actor is not virtual and cannot be mocked to return a Task. The mock object returned task will be null.
+        _ = await submit
+            .Should()
+            .ThrowAsync<InvalidOperationException>()
+            .Where(p => p.InnerException is NullReferenceException);
+    }
+
+    /// <summary>Defines the test method Submitting_a_command_should_succeed.</summary>
+    /// <returns>Task.</returns>
+    [Fact]
+    public async Task SubmittingAPolymorphicCommandShouldSucceed()
+    {
+        Mock<IActorProxyFactory> factory = new();
+        Mock<ActorProxy> actor = new();
+        _ = factory.Setup(x => x.Create(It.IsAny<ActorId>(), It.IsAny<string>(), It.IsAny<ActorProxyOptions>()))
+            .Returns(actor.Object);
+        PolymorphicSerializationResolver.TryAddDefaultMapper(new TestCommandMapper());
+        DomainActorCommandProcessor processor = new(factory.Object, true, new Mock<ILogger<DomainActorCommandProcessor>>().Object);
         TestCommand command = new("123", "Hello");
 
         Func<Task> submit = async () => await processor.SubmitAsync(
