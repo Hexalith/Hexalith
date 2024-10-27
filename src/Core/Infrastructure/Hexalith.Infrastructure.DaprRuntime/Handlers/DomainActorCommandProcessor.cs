@@ -63,6 +63,11 @@ public partial class DomainActorCommandProcessor : IDomainCommandProcessor
         _actorProxy = actorProxy;
         _logger = logger;
         _actorPolymorphicSerialization = actorPolymorphicSerialization;
+        if (actorPolymorphicSerialization)
+        {
+            // Remove this exception when custom JSON serialization will be supported by DAPR actors.
+            throw new NotSupportedException("Polymorphic serialization by DAPR actors is not supported yet.");
+        }
     }
 
     /// <summary>
