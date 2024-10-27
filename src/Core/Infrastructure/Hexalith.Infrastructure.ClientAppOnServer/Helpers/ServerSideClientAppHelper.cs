@@ -127,21 +127,8 @@ public static class ServerSideClientAppHelper
             .AddSwaggerGen(c => c.SwaggerDoc("v1", new() { Title = applicationName, Version = version, }))
             .AddDaprBuses(builder.Configuration)
             .AddDaprStateStore(builder.Configuration)
-            .AddDaprClient(dapr =>
-            {
-                dapr.UseJsonSerializationOptions(PolymorphicHelper.DefaultJsonSerializerOptions);
-                if (builder.Environment.IsDevelopment())
-                {
-                    dapr.UseTimeout(TimeSpan.FromMinutes(1));
-                }
-            });
 
-        builder.Services.AddActors(options =>
-        {
-            registerActors(options.Actors);
-            options.UseJsonSerialization = true;
-            options.JsonSerializerOptions = PolymorphicHelper.DefaultJsonSerializerOptions;
-        });
+        builder.Services.AddActors(options => registerActors(options.Actors));
 
         _ = builder
             .Services
@@ -185,7 +172,7 @@ public static class ServerSideClientAppHelper
         builder.Services
             .TryAddSingleton<IDomainCommandProcessor>((s) => new DomainActorCommandProcessor(
             ActorProxy.DefaultProxyFactory,
-            true,
+            false,
             s.GetRequiredService<ILogger<DomainActorCommandProcessor>>()));
 
         _ = builder.Services
