@@ -19,6 +19,7 @@ using Hexalith.Application.Tasks;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.AspireService.Defaults;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
+using Hexalith.PolymorphicSerialization;
 
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -75,16 +76,18 @@ public static partial class HexalithWebApi
         .AddDaprBuses(builder.Configuration)
         .AddDaprStateStore(builder.Configuration)
         .AddActors(options =>
+        {
+            options.UseJsonSerialization = true;
+            options.JsonSerializerOptions = PolymorphicHelper.DefaultJsonSerializerOptions;
 
             // Register actor types and configure actor settings
-            registerActors(options.Actors));
+            registerActors(options.Actors);
+        });
         _ = builder
             .Services
             .AddProblemDetails()
             .AddHttpContextAccessor()
             .AddControllers()
-            .AddApplicationPart(typeof(object).Assembly) // Issue with MapControllers() throwing a type not found exception for object
-            .AddApplicationPart(typeof(object).Assembly) // Issue with MapControllers() throwing a type not found exception for object
             .AddDapr();
 
         _ = builder.Services.AddAuthentication(); // .AddDapr(); // Adds Dapr authentication

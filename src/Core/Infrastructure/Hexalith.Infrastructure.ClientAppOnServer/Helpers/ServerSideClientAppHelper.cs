@@ -139,6 +139,7 @@ public static class ServerSideClientAppHelper
         builder.Services.AddActors(options =>
         {
             registerActors(options.Actors);
+            options.UseJsonSerialization = true;
             options.JsonSerializerOptions = PolymorphicHelper.DefaultJsonSerializerOptions;
         });
 
