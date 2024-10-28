@@ -127,8 +127,7 @@ public static class ServerSideClientAppHelper
             .AddSwaggerGen(c => c.SwaggerDoc("v1", new() { Title = applicationName, Version = version, }))
             .AddDaprBuses(builder.Configuration)
             .AddDaprStateStore(builder.Configuration)
-
-        builder.Services.AddActors(options => registerActors(options.Actors));
+            .AddActors(options => registerActors(options.Actors));
 
         _ = builder
             .Services
