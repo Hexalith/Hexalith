@@ -11,6 +11,7 @@
 		<PackageReference Include="Microsoft.Extensions.Http" Version="$(MicrosoftExtensionsPackagesVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="$(MicrosoftExtensionsPackagesVersion)" />
+	  <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
 		<PackageReference Include="Moq" Version="$(MoqVersion)" />
 		<PackageReference Include="xunit" Version="$(XUnitVersion)" />
 	</ItemGroup>
