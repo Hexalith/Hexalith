@@ -14,7 +14,6 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Hexalith.UI.Components.Abstractions\Hexalith.UI.Components.Abstractions.csproj" />
-	  <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="$(AspNetCorePackagesVersion)" />
@@ -23,6 +22,7 @@
 		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="$(MicrosoftFluentUIComponentsVersion)" />
 		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Emoji" Version="$(MicrosoftFluentUIComponentsVersion)" />
 		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.DataGrid.EntityFrameworkAdapter" Version="$(MicrosoftFluentUIComponentsVersion)" />
+	  <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
 	</ItemGroup>
 	<ItemGroup>
 		<SupportedPlatform Include="browser" />
