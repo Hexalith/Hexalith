@@ -28,7 +28,6 @@ public static class OptionsHelper
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
 
-        _ = configuration ?? throw new ArgumentNullException(nameof(configuration));
         IConfigurationSection? section = configuration.GetSection(T.ConfigurationName())
                                          ?? throw new InvalidOperationException($"Could not load settings section '{T.ConfigurationName()}'");
         _ = services
