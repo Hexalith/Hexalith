@@ -8,10 +8,6 @@
 @inject IOptions<FluentUIThemeSettings> ThemeSettings
 @inject IEnumerable<MenuItemInformation> MenuItems
 
-<FluentToastProvider />
-<FluentDialogProvider />
-<FluentTooltipProvider />
-<FluentMessageBarProvider />
 <FluentDesignSystemProvider AccentBaseColor="@ThemeSettings.Value.AccentBaseColor"
 							StrokeWidth="@ThemeSettings.Value.StrokeWidth"
 							FillColor="@ThemeSettings.Value.FillColor">
@@ -98,6 +94,11 @@
 			</FluentNavMenu>
 			<FluentBodyContent Style="height: calc(100dvh - 100px);">
 				@Body
+				<FluentToastProvider />
+				<FluentDialogProvider />
+				<FluentTooltipProvider />
+				<FluentMessageBarProvider />
+				<FluentMenuProvider />
 			</FluentBodyContent>
 		</FluentStack>
 		<FluentFooter Style="@("height: 40px; color: white; text-align: center; font-size: var(--type-ramp-minus-1-font-size); line-height: var(--type-ramp-base-line-height);")">
