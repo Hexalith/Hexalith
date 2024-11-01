@@ -49,6 +49,8 @@ public static class WebAssemblyClientHelper
             .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
 
         _ = services
+            .AddScoped<CustomAuthenticationStateProvider>()
+            .AddScoped<ISessionManager, SessionManager>()
             .AddBlazoredSessionStorage()
             .AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>()
             .CreateClient(ClientConstants.FrontApiName));
