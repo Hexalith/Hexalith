@@ -1,0 +1,79 @@
+﻿@using Hexalith.Extensions.Helpers
+@inject Hexalith.Application.Services.IFileService FileService
+
+<FluentInputFile @ref="@fileByStream"
+AnchorId="UploadStream"
+Mode="InputFileMode.Stream"
+MultipledAsync="true"
+MaximumFileSized="@(50 * 1024 * 1024)"
+Accepted="audio/*, video/*, image/*"
+OnFileUploaded="@OnFileUploadedAsync"
+OnCompleted="@OnCompletedAsync" />
+
+<FluentProgress Min="0" Max="100" Value="@progressPercent" Visible="@(progressPercent > 0)" />
+<FluentLabel Alignment="HorizontalAlignment.Center">
+	@progressTitle
+</FluentLabel>
+
+<FluentButton Appearance="Appearance.Accent" Id="UploadStream">
+	Upload files
+</FluentButton>
+
+@if (Files.Any())
+{
+	<h4>File(s) uploaded:</h4>
+	<ul>
+		@foreach (var file in Files)
+		{
+			<li>
+				@file
+			</li>
+		}
+	</ul>
+}
+
+@code
+{
+	[CascadingParameter]
+	private Task<AuthenticationState>? AuthenticationStateTask { get; set; }
+
+	[Parameter]
+	public EventCallback<IEnumerable<string>> OnUploadCompletedEvent { get; set; }
+
+	[Parameter]
+	public IDictionary<string, string>? Tags { get; set; }
+
+	public List<string> _fileIds = [];
+
+	FluentInputFile? fileByStream = default!;
+
+	int? progressPercent;
+	string? progressTitle;
+
+	List<string> Files = new();
+
+	async Task OnFileUploadedAsync(FluentInputFileEventArgs file)
+	{
+		if (file.Stream is null)
+		{
+			throw new InvalidOperationException("An error occurred while uploading the file. Stream is null. "+file.ErrorMessage);
+		};
+		progressPercent = file.ProgressPercent;
+		progressTitle = file.ProgressTitle;
+
+		string fileId = UniqueIdHelper.GenerateUniqueStringId();
+		Dictionary<string, string> tags = (Tags == null) ? [] : new(Tags);
+		tags.Add("FileName", file.Name);
+		tags.Add("FileSize", file.Size.ToInvariantString());
+		await FileService.UploadAsync(fileId, file.Stream, tags);
+		_fileIds.Add(fileId);
+	}
+
+	async Task OnCompletedAsync(IEnumerable<FluentInputFileEventArgs> files)
+	{
+		progressPercent = fileByStream!.ProgressPercent;
+		progressTitle = fileByStream!.ProgressTitle;
+
+		await OnUploadCompletedEvent.InvokeAsync(_fileIds);
+	}
+}
