@@ -14,6 +14,17 @@ using System.Threading.Tasks;
 public interface IFileService
 {
     /// <summary>
+    /// Downloads a file asynchronously from the storage system.
+    /// </summary>
+    /// <param name="fileId">The unique identifier of the file to download. This should match an ID previously used during upload.</param>
+    /// <param name="writeStream">The stream where the downloaded file data will be written. The stream should be writable.</param>
+    /// <returns>A <see cref="Task{TResult}"/> containing a collection of tags associated with the downloaded file.</returns>
+    /// <remarks>
+    /// The stream will not be closed by this method. The caller is responsible for managing the stream's lifecycle.
+    /// </remarks>
+    Task<IDictionary<string, string>> DownloadAsync(string fileId, Stream writeStream);
+
+    /// <summary>
     /// Uploads a file asynchronously to the storage system.
     /// </summary>
     /// <param name="fileId">The unique identifier for the file. This ID can be used later to retrieve the file.</param>
@@ -24,15 +35,4 @@ public interface IFileService
     /// The stream will not be closed by this method. The caller is responsible for managing the stream's lifecycle.
     /// </remarks>
     Task UploadAsync(string fileId, Stream readStream, IDictionary<string, string> tags);
-
-    /// <summary>
-    /// Downloads a file asynchronously from the storage system.
-    /// </summary>
-    /// <param name="fileId">The unique identifier of the file to download. This should match an ID previously used during upload.</param>
-    /// <param name="writeStream">The stream where the downloaded file data will be written. The stream should be writable.</param>
-    /// <returns>A <see cref="Task{TResult}"/> containing a collection of tags associated with the downloaded file.</returns>
-    /// <remarks>
-    /// The stream will not be closed by this method. The caller is responsible for managing the stream's lifecycle.
-    /// </remarks>
-    Task<IDictionary<string, string>> DownloadAsync(string fileId, Stream writeStream);
 }

@@ -38,12 +38,12 @@ OnCompleted="@OnCompletedAsync" />
 	private Task<AuthenticationState>? AuthenticationStateTask { get; set; }
 
 	[Parameter]
-	public EventCallback<IEnumerable<string>> OnUploadCompletedEvent { get; set; }
+	public EventCallback<IEnumerable<ViewModels.FileInformation>> OnUploadCompletedEvent { get; set; }
 
 	[Parameter]
 	public IDictionary<string, string>? Tags { get; set; }
 
-	public List<string> _fileIds = [];
+	public List<ViewModels.FileInformation> _fileInformation = [];
 
 	FluentInputFile? fileByStream = default!;
 
@@ -63,10 +63,12 @@ OnCompleted="@OnCompletedAsync" />
 
 		string fileId = UniqueIdHelper.GenerateUniqueStringId();
 		Dictionary<string, string> tags = (Tags == null) ? [] : new(Tags);
-		tags.Add("FileName", file.Name);
-		tags.Add("FileSize", file.Size.ToInvariantString());
-		await FileService.UploadAsync(fileId, file.Stream, tags);
-		_fileIds.Add(fileId);
+		tags.Add("OriginalFileName", file.Name);
+		tags.Add("FileId", fileId);
+		tags.Add("ContentType", file.ContentType);
+		string fileName = $"{fileId}.{file.Name}";
+		await FileService.UploadAsync(fileName, file.Stream, tags);
+		_fileInformation.Add(new ViewModels.FileInformation(fileId, fileName, file.Name, file.ContentType));
 	}
 
 	async Task OnCompletedAsync(IEnumerable<FluentInputFileEventArgs> files)
@@ -74,6 +76,6 @@ OnCompleted="@OnCompletedAsync" />
 		progressPercent = fileByStream!.ProgressPercent;
 		progressTitle = fileByStream!.ProgressTitle;
 
-		await OnUploadCompletedEvent.InvokeAsync(_fileIds);
+		await OnUploadCompletedEvent.InvokeAsync(_fileInformation);
 	}
 }

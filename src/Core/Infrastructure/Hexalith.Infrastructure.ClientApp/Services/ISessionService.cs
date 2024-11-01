@@ -15,6 +15,8 @@ using System.Threading.Tasks;
 /// </remarks>
 public interface ISessionService
 {
+    Task<string> GetContactIdAsync(CancellationToken cancellationToken);
+
     Task<string> GetPartitionIdAsync(CancellationToken cancellationToken);
 
     /// <summary>
