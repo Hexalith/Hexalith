@@ -90,9 +90,6 @@ public static partial class HexalithWebApi
             .AddControllers()
             .AddDapr();
 
-        _ = builder.Services.AddAuthentication(); // .AddDapr(); // Adds Dapr authentication
-        _ = builder.Services.AddAuthorization(); // options => options.AddDapr());
-
         // if (debugInVisualStudio)
         // {
         //    // When debugging, we want to be able to run the application inside Visual Studio to see the technical details.
