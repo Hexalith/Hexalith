@@ -5,8 +5,6 @@
 
 namespace Hexalith.Application.Commands;
 
-using Hexalith.Application.States;
-
 /// <summary>
 /// Represents a service for submitting commands.
 /// </summary>
@@ -16,7 +14,8 @@ public interface ICommandService
     /// Submits a command asynchronously.
     /// </summary>
     /// <param name="command">The command to submit.</param>
+    /// <param name="sessionId">The current session id.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    Task SubmitCommandAsync(MessageState command, CancellationToken cancellationToken);
+    Task SubmitCommandAsync(object command, string sessionId, CancellationToken cancellationToken);
 }

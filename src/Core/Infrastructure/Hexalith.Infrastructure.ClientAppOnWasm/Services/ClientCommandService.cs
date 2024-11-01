@@ -11,6 +11,7 @@ using System.Net.Http.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Hexalith.Application.Commands;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.States;
 using Hexalith.Extensions.Helpers;
@@ -20,50 +21,37 @@ using Hexalith.PolymorphicSerialization;
 /// <summary>
 /// Represents a service for sending commands asynchronously.
 /// </summary>
-public class ClientCommandService : IClientCommandService
+public class ClientCommandService : ICommandService
 {
     private readonly HttpClient _client;
-    private readonly ISessionService _sessionService;
+    private readonly IUserSessionService _sessionService;
     private readonly TimeProvider _timeProvider;
-    private readonly IUserService _userService;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ClientCommandService"/> class.
     /// </summary>
     /// <param name="client">The HTTP client.</param>
+    /// <param name="sessionService">The user session service.</param>
     /// <param name="timeProvider">The time provider.</param>
-    /// <param name="userService">The user service.</param>
-    /// <param name="sessionService">The session service.</param>
-    public ClientCommandService([NotNull] HttpClient client, [NotNull] TimeProvider timeProvider, [NotNull] IUserService userService, [NotNull] ISessionService sessionService)
+    public ClientCommandService(
+        [NotNull] HttpClient client,
+        [NotNull] IUserSessionService sessionService,
+        [NotNull] TimeProvider timeProvider)
     {
         ArgumentNullException.ThrowIfNull(timeProvider);
-        ArgumentNullException.ThrowIfNull(userService);
-        ArgumentNullException.ThrowIfNull(sessionService);
         ArgumentNullException.ThrowIfNull(client);
         _client = client;
-        _timeProvider = timeProvider;
-        _userService = userService;
         _sessionService = sessionService;
+        _timeProvider = timeProvider;
     }
 
     /// <inheritdoc/>
-    public Task SendCommandAsync(object command, Metadata metadata, CancellationToken cancellationToken)
-    {
-        ArgumentNullException.ThrowIfNull(command);
-        ArgumentNullException.ThrowIfNull(metadata);
-
-        return _client.PostAsJsonAsync("api/commands", new MessageState((PolymorphicRecordBase)command, metadata), cancellationToken);
-    }
-
-    /// <inheritdoc/>
-    public async Task SendCommandAsync(object command, CancellationToken cancellationToken)
+    public async Task SubmitCommandAsync(object command, string sessionId, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
 
         string messageId = UniqueIdHelper.GenerateUniqueStringId();
-        string userId = await _userService.GetUserIdAsync(cancellationToken).ConfigureAwait(false);
-        string sessionId = await _sessionService.GetSessionIdAsync(cancellationToken).ConfigureAwait(false);
-        string partitionId = await _sessionService.GetPartitionIdAsync(cancellationToken).ConfigureAwait(false);
+        UserSession? session = await _sessionService.GetSessionAsync(sessionId).ConfigureAwait(false) ?? throw new InvalidOperationException("Session not found.");
         Metadata metadata = new(
             new MessageMetadata(
             messageId,
@@ -71,8 +59,30 @@ public class ClientCommandService : IClientCommandService
             1,
             new AggregateMetadata(command),
             _timeProvider.GetLocalNow()),
-            new ContextMetadata(messageId, userId, partitionId, null, null, sessionId, []));
+            new ContextMetadata(
+                messageId,
+                session.UserId,
+                session.PartitionId,
+                _timeProvider.GetLocalNow(),
+                null,
+                session.Id,
+                []));
 
-        await SendCommandAsync(command, metadata, cancellationToken).ConfigureAwait(false);
+        await SubmitCommandAsync(command, metadata, cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// Submits a command asynchronously with the provided metadata.
+    /// </summary>
+    /// <param name="command">The command to submit.</param>
+    /// <param name="metadata">The metadata associated with the command.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A task representing the asynchronous operation.</returns>
+    private Task SubmitCommandAsync(object command, Metadata metadata, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(command);
+        ArgumentNullException.ThrowIfNull(metadata);
+
+        return _client.PostAsJsonAsync("api/commands", new MessageState((PolymorphicRecordBase)command, metadata), cancellationToken);
     }
 }

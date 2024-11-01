@@ -1,5 +1,6 @@
-﻿// <copyright file="WebAssemblyClientHelper.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="WebAssemblyClientHelper.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Infrastructure.ClientAppOnWasm.Helpers;
@@ -10,10 +11,10 @@ using System.Globalization;
 using Blazored.SessionStorage;
 
 using Hexalith.Application;
+using Hexalith.Application.Commands;
 using Hexalith.Application.Modules.Applications;
 using Hexalith.Infrastructure.ClientApp;
 using Hexalith.Infrastructure.ClientApp.Helpers;
-using Hexalith.Infrastructure.ClientApp.Services;
 using Hexalith.Infrastructure.ClientAppOnWasm.Services;
 
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
@@ -39,9 +40,7 @@ public static class WebAssemblyClientHelper
     public static IServiceCollection AddHexalithWasmClientApp(this IServiceCollection services, IConfiguration configuration, Uri baseAddress)
     {
         _ = services.AddHexalithClientApp(configuration);
-        _ = services.AddScoped<IClientCommandService, ClientCommandService>();
-        _ = services.AddScoped<IUserService, UserService>();
-        _ = services.AddScoped<ISessionService, SessionService>();
+        _ = services.AddScoped<ICommandService, ClientCommandService>();
         _ = services
             .AddAuthorizationCore()
             .AddHttpClient(

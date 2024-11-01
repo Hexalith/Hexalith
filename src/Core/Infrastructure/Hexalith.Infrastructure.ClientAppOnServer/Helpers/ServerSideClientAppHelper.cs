@@ -23,7 +23,6 @@ using Hexalith.Application.Projections;
 using Hexalith.Application.Tasks;
 using Hexalith.Infrastructure.AspireService.Defaults;
 using Hexalith.Infrastructure.ClientApp.Helpers;
-using Hexalith.Infrastructure.ClientApp.Services;
 using Hexalith.Infrastructure.ClientAppOnServer.Services;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
@@ -55,9 +54,7 @@ public static class ServerSideClientAppHelper
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        _ = services.AddScoped<IClientCommandService, ClientCommandService>();
-        _ = services.AddScoped<IUserService, UserService>();
-        _ = services.AddScoped<ISessionService, SessionService>();
+        _ = services.AddScoped<ICommandService, ServerCommandService>();
         return services.AddHexalithClientApp(configuration);
     }
 

@@ -64,4 +64,23 @@ public record Metadata(
             msgMeta,
             new ContextMetadata(msgMeta.Id, userId, partitionId, dateTime, null, null, []));
     }
+
+    /// <summary>
+    /// Creates a new instance of the <see cref="Metadata"/> class with new message, context, and session information.
+    /// </summary>
+    /// <param name="message">The new message object to be included in the metadata.</param>
+    /// <param name="userId">The identifier of the user associated with this message.</param>
+    /// <param name="partitionId">The identifier of the partition this message belongs to.</param>
+    /// <param name="sessionId">The session identifier associated with this message.</param>
+    /// <param name="dateTime">The timestamp for the new message.</param>
+    /// <returns>A new instance of the <see cref="Metadata"/> class with new message, context, and session information.</returns>
+    /// <exception cref="ArgumentNullException">Thrown if <paramref name="message"/> is null.</exception>
+    public static Metadata CreateNew(object message, string userId, string partitionId, string sessionId, DateTimeOffset dateTime)
+    {
+        ArgumentNullException.ThrowIfNull(message);
+        MessageMetadata msgMeta = new(message, dateTime);
+        return new Metadata(
+            msgMeta,
+            new ContextMetadata(msgMeta.Id, userId, partitionId, dateTime, null, sessionId, []));
+    }
 }
