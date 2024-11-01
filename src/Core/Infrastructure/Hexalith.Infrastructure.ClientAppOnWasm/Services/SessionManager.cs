@@ -4,6 +4,7 @@ using System;
 using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using System.IdentityModel.Tokens.Jwt;
 
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 
