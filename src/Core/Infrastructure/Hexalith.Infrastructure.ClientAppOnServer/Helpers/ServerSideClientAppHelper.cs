@@ -30,7 +30,6 @@ using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.WebApis.Helpers;
 using Hexalith.PolymorphicSerialization;
 
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -60,40 +59,6 @@ public static class ServerSideClientAppHelper
         _ = services.AddScoped<IUserService, UserService>();
         _ = services.AddScoped<ISessionService, SessionService>();
         return services.AddHexalithClientApp(configuration);
-    }
-
-    /// <summary>
-    /// Sets the default JSON options.
-    /// </summary>
-    /// <param name="options">The json options to default.</param>
-    /// <returns>The defaulted JSON options.</returns>
-    public static JsonSerializerOptions SetDefault(this JsonSerializerOptions options)
-    {
-        options.AllowTrailingCommas = PolymorphicHelper.DefaultJsonSerializerOptions.AllowTrailingCommas;
-        foreach (System.Text.Json.Serialization.JsonConverter converter in PolymorphicHelper.DefaultJsonSerializerOptions.Converters)
-        {
-            options.Converters.Add(converter);
-        }
-
-        options.DefaultBufferSize = PolymorphicHelper.DefaultJsonSerializerOptions.DefaultBufferSize;
-        options.DefaultIgnoreCondition = PolymorphicHelper.DefaultJsonSerializerOptions.DefaultIgnoreCondition;
-        options.DictionaryKeyPolicy = PolymorphicHelper.DefaultJsonSerializerOptions.DictionaryKeyPolicy;
-        options.Encoder = PolymorphicHelper.DefaultJsonSerializerOptions.Encoder;
-        options.IgnoreReadOnlyFields = PolymorphicHelper.DefaultJsonSerializerOptions.IgnoreReadOnlyFields;
-        options.IgnoreReadOnlyProperties = PolymorphicHelper.DefaultJsonSerializerOptions.IgnoreReadOnlyProperties;
-        options.IncludeFields = PolymorphicHelper.DefaultJsonSerializerOptions.IncludeFields;
-        options.MaxDepth = PolymorphicHelper.DefaultJsonSerializerOptions.MaxDepth;
-        options.NumberHandling = PolymorphicHelper.DefaultJsonSerializerOptions.NumberHandling;
-        options.PreferredObjectCreationHandling = PolymorphicHelper.DefaultJsonSerializerOptions.PreferredObjectCreationHandling;
-        options.PropertyNameCaseInsensitive = PolymorphicHelper.DefaultJsonSerializerOptions.PropertyNameCaseInsensitive;
-        options.PropertyNamingPolicy = PolymorphicHelper.DefaultJsonSerializerOptions.PropertyNamingPolicy;
-        options.ReadCommentHandling = PolymorphicHelper.DefaultJsonSerializerOptions.ReadCommentHandling;
-        options.ReferenceHandler = PolymorphicHelper.DefaultJsonSerializerOptions.ReferenceHandler;
-        options.TypeInfoResolver = PolymorphicHelper.DefaultJsonSerializerOptions.TypeInfoResolver;
-        options.UnknownTypeHandling = PolymorphicHelper.DefaultJsonSerializerOptions.UnknownTypeHandling;
-        options.UnmappedMemberHandling = PolymorphicHelper.DefaultJsonSerializerOptions.UnmappedMemberHandling;
-        options.WriteIndented = PolymorphicHelper.DefaultJsonSerializerOptions.WriteIndented;
-        return options;
     }
 
     /// <summary>
@@ -189,6 +154,40 @@ public static class ServerSideClientAppHelper
     }
 
     /// <summary>
+    /// Sets the default JSON options.
+    /// </summary>
+    /// <param name="options">The json options to default.</param>
+    /// <returns>The defaulted JSON options.</returns>
+    public static JsonSerializerOptions SetDefault(this JsonSerializerOptions options)
+    {
+        options.AllowTrailingCommas = PolymorphicHelper.DefaultJsonSerializerOptions.AllowTrailingCommas;
+        foreach (System.Text.Json.Serialization.JsonConverter converter in PolymorphicHelper.DefaultJsonSerializerOptions.Converters)
+        {
+            options.Converters.Add(converter);
+        }
+
+        options.DefaultBufferSize = PolymorphicHelper.DefaultJsonSerializerOptions.DefaultBufferSize;
+        options.DefaultIgnoreCondition = PolymorphicHelper.DefaultJsonSerializerOptions.DefaultIgnoreCondition;
+        options.DictionaryKeyPolicy = PolymorphicHelper.DefaultJsonSerializerOptions.DictionaryKeyPolicy;
+        options.Encoder = PolymorphicHelper.DefaultJsonSerializerOptions.Encoder;
+        options.IgnoreReadOnlyFields = PolymorphicHelper.DefaultJsonSerializerOptions.IgnoreReadOnlyFields;
+        options.IgnoreReadOnlyProperties = PolymorphicHelper.DefaultJsonSerializerOptions.IgnoreReadOnlyProperties;
+        options.IncludeFields = PolymorphicHelper.DefaultJsonSerializerOptions.IncludeFields;
+        options.MaxDepth = PolymorphicHelper.DefaultJsonSerializerOptions.MaxDepth;
+        options.NumberHandling = PolymorphicHelper.DefaultJsonSerializerOptions.NumberHandling;
+        options.PreferredObjectCreationHandling = PolymorphicHelper.DefaultJsonSerializerOptions.PreferredObjectCreationHandling;
+        options.PropertyNameCaseInsensitive = PolymorphicHelper.DefaultJsonSerializerOptions.PropertyNameCaseInsensitive;
+        options.PropertyNamingPolicy = PolymorphicHelper.DefaultJsonSerializerOptions.PropertyNamingPolicy;
+        options.ReadCommentHandling = PolymorphicHelper.DefaultJsonSerializerOptions.ReadCommentHandling;
+        options.ReferenceHandler = PolymorphicHelper.DefaultJsonSerializerOptions.ReferenceHandler;
+        options.TypeInfoResolver = PolymorphicHelper.DefaultJsonSerializerOptions.TypeInfoResolver;
+        options.UnknownTypeHandling = PolymorphicHelper.DefaultJsonSerializerOptions.UnknownTypeHandling;
+        options.UnmappedMemberHandling = PolymorphicHelper.DefaultJsonSerializerOptions.UnmappedMemberHandling;
+        options.WriteIndented = PolymorphicHelper.DefaultJsonSerializerOptions.WriteIndented;
+        return options;
+    }
+
+    /// <summary>
     /// Configures the application to use the modules.
     /// </summary>
     /// <param name="application">The application.</param>
@@ -220,7 +219,8 @@ public static class ServerSideClientAppHelper
         ArgumentNullException.ThrowIfNull(app);
 
         _ = app
-            .UseCors()
+
+            // .UseCors()
             .UseSerilogRequestLogging()
             .UseCloudEvents();
 
