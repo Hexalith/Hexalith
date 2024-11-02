@@ -29,7 +29,7 @@ public class ServerCommandService : ICommandService
     /// Initializes a new instance of the <see cref="ServerCommandService"/> class.
     /// </summary>
     /// <param name="commandProcessor">The command processor.</param>
-    /// <param name="sessionIdService"></param>
+    /// <param name="sessionIdService">The session ID service.</param>
     /// <param name="timeProvider">The time provider.</param>
     /// <param name="sessionService">The session service.</param>
     public ServerCommandService(
