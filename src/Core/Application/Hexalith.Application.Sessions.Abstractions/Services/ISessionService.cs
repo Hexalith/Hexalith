@@ -18,21 +18,29 @@ public interface ISessionService
     /// Closes a session asynchronously.
     /// </summary>
     /// <param name="id">The unique identifier of the session to close.</param>
+    /// <param name="cancellationToken">A token to cancel the operation.</param>
     /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
-    Task CloseAsync(string id);
+    Task CloseAsync(string id, CancellationToken cancellationToken);
 
     /// <summary>
     /// Retrieves session information asynchronously.
     /// </summary>
     /// <param name="id">The unique identifier of the session to retrieve.</param>
-    /// <returns>A <see cref="Task{TResult}"/> that represents the asynchronous operation. The task result contains the <see cref="SessionInformation"/> if found; otherwise, null.</returns>
-    Task<SessionInformation?> GetAsync(string id);
+    /// <param name="cancellationToken">A token to cancel the operation.</param>
+    /// <returns>
+    /// A <see cref="Task{TResult}"/> that represents the asynchronous operation.
+    /// The task result contains the <see cref="SessionInformation"/> if found; otherwise, null.
+    /// </returns>
+    Task<SessionInformation?> GetAsync(string id, CancellationToken cancellationToken);
 
     /// <summary>
     /// Opens a new session asynchronously.
     /// </summary>
-    /// <param name="userId">The unique identifier of the user for whom to open the session.</param>
     /// <param name="partitionId">The partition identifier for the new session.</param>
-    /// <returns>A <see cref="Task{TResult}"/> that represents the asynchronous operation. The task result contains the newly created <see cref="SessionInformation"/>.</returns>
-    Task<SessionInformation> OpenAsync(string userId, string partitionId);
+    /// <param name="cancellationToken">A token to cancel the operation.</param>
+    /// <returns>
+    /// A <see cref="Task{TResult}"/> that represents the asynchronous operation.
+    /// The task result contains the newly created <see cref="SessionInformation"/>.
+    /// </returns>
+    Task<SessionInformation> OpenAsync(string partitionId, CancellationToken cancellationToken);
 }

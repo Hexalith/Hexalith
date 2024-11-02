@@ -11,10 +11,16 @@ using System.Runtime.Serialization;
 /// Represents user information including identity and roles.
 /// </summary>
 /// <param name="Id">The unique identifier of the user.</param>
+/// <param name="Name">The name of the user.</param>
+/// <param name="IsGlobalAdministrator">Indicates whether the user is a global administrator.</param>
 /// <param name="Roles">The roles associated with the user.</param>
 [DataContract]
 public record UserInformation(
     [property: DataMember(Order = 1)]
     string Id,
     [property: DataMember(Order = 2)]
+    string Name,
+    [property: DataMember(Order = 3)]
+    bool IsGlobalAdministrator,
+    [property: DataMember(Order = 4)]
     IEnumerable<string> Roles);

@@ -27,6 +27,4 @@ public record SessionInformation(
     [property: DataMember(Order = 4)]
     ContactInformation Contact,
     [property: DataMember(Order = 5)]
-    DateTimeOffset CreatedOn,
-    [property: DataMember(Order = 6)]
-    DateTimeOffset LastAccessedOn);
+    DateTimeOffset CreatedOn);
