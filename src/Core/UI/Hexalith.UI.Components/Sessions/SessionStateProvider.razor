@@ -1,0 +1,37 @@
+﻿@inject IUserSessionService SessionService
+@inject IHttpContextAccessor SessionService
+@implements IDisposable
+
+<CascadingValue Value="@_session">
+    @ChildContent
+</CascadingValue>
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    private UserSession _session;
+    private Timer _refreshTimer;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await RefreshSessionInfo();
+
+        // Optional: Set up periodic refresh
+        _refreshTimer = new Timer(async _ =>
+        {
+            await RefreshSessionInfo();
+            await InvokeAsync(StateHasChanged);
+        }, null, TimeSpan.FromMinutes(5), TimeSpan.FromMinutes(5));
+    }
+
+    private async Task RefreshSessionInfo()
+    {
+        _session = await SessionService.GetSessionAsync();
+    }
+
+    public void Dispose()
+    {
+        _refreshTimer?.Dispose();
+    }
+}

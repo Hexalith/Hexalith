@@ -6,6 +6,7 @@
 namespace Hexalith.Infrastructure.ClientApp.Services;
 
 using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -42,6 +43,9 @@ public class UserSessionService(IDistributedCache cache) : IUserSessionService
 
         return sessionId;
     }
+
+    /// <inheritdoc/>
+    public Task<IEnumerable<UserSession>> GetActiveSessionsAsync(string userId) => throw new NotImplementedException();
 
     /// <inheritdoc/>
     public async Task<UserSession?> GetSessionAsync(string sessionId)

@@ -15,6 +15,7 @@ using Hexalith.Application.Commands;
 using Hexalith.Application.Modules.Applications;
 using Hexalith.Infrastructure.ClientApp;
 using Hexalith.Infrastructure.ClientApp.Helpers;
+using Hexalith.Infrastructure.ClientApp.Services;
 using Hexalith.Infrastructure.ClientAppOnWasm.Services;
 
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
@@ -51,6 +52,7 @@ public static class WebAssemblyClientHelper
         _ = services
             .AddScoped<CustomAuthenticationStateProvider>()
             .AddScoped<ISessionManager, SessionManager>()
+            .AddScoped<ISessionIdService, SessionIdService>()
             .AddBlazoredSessionStorage()
             .AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>()
             .CreateClient(ClientConstants.FrontApiName));

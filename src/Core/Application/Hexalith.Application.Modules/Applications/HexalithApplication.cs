@@ -1,7 +1,6 @@
-﻿// <copyright file="HexalithApplication.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="HexalithApplication.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Application.Modules.Applications;
@@ -23,10 +22,6 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 /// </summary>
 public abstract class HexalithApplication : IApplication
 {
-    private static IClientApplication? _clientApplication;
-    private static IServerApplication? _serverApplication;
-    private static ISharedApplication? _sharedApplication;
-
     /// <summary>
     /// Gets the client application.
     /// </summary>
@@ -47,6 +42,9 @@ public abstract class HexalithApplication : IApplication
     public static ISharedApplication Shared
         => SharedApplication
             ?? throw new InvalidOperationException($"No shared application found. Please add a class implementing {nameof(ISharedApplication)}.");
+
+    /// <inheritdoc/>
+    IClientApplication IApplication.Client => Client;
 
     /// <inheritdoc/>
     public abstract string HomePath { get; }
@@ -73,16 +71,16 @@ public abstract class HexalithApplication : IApplication
     public abstract string Name { get; }
 
     /// <inheritdoc/>
-    public abstract string Version { get; }
-
-    /// <inheritdoc/>
-    IClientApplication IApplication.Client => Client;
-
-    /// <inheritdoc/>
     IServerApplication IApplication.Server => Server;
 
     /// <inheritdoc/>
+    public string SessionCookieName => $".{Shared.Id}.Session";
+
+    /// <inheritdoc/>
     ISharedApplication IApplication.Shared => Shared;
+
+    /// <inheritdoc/>
+    public abstract string Version { get; }
 
     /// <summary>
     /// Gets the client application.
@@ -90,7 +88,7 @@ public abstract class HexalithApplication : IApplication
     /// <returns>The application instance.</returns>
     /// <exception cref="InvalidOperationException">No application found.</exception>
     private static IClientApplication? ClientApplication
-        => _clientApplication ??= (ServerApplication is null)
+        => field ??= (ServerApplication is null)
                 ? GetApplication<IClientApplication>() :
                 (IClientApplication?)Activator.CreateInstance(Server.ClientApplicationType);
 
@@ -100,7 +98,7 @@ public abstract class HexalithApplication : IApplication
     /// <returns>The application instance.</returns>
     /// <exception cref="InvalidOperationException">No application found.</exception>
     private static IServerApplication? ServerApplication
-        => _serverApplication ??= GetApplication<IServerApplication>();
+        => field ??= GetApplication<IServerApplication>();
 
     /// <summary>
     /// Gets the shared application.
@@ -108,7 +106,7 @@ public abstract class HexalithApplication : IApplication
     /// <returns>The application instance.</returns>
     /// <exception cref="InvalidOperationException">No application found.</exception>
     private static ISharedApplication? SharedApplication
-        => _sharedApplication ??= (ServerApplication is null)
+        => field ??= (ServerApplication is null)
                 ? (ClientApplication is null)
                     ? GetApplication<ISharedApplication>()
                     : (ISharedApplication?)Activator.CreateInstance(Client.SharedApplicationType)

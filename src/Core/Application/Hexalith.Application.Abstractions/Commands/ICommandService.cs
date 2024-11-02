@@ -14,8 +14,7 @@ public interface ICommandService
     /// Submits a command asynchronously.
     /// </summary>
     /// <param name="command">The command to submit.</param>
-    /// <param name="sessionId">The current session id.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    Task SubmitCommandAsync(object command, string sessionId, CancellationToken cancellationToken);
+    Task SubmitCommandAsync(object command, CancellationToken cancellationToken);
 }

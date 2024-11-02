@@ -1,4 +1,4 @@
-﻿// <copyright file="ClientCommandService.cs" company="ITANEO">
+﻿// <copyright file="ServerCommandService.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -21,6 +21,7 @@ using Hexalith.Infrastructure.ClientApp.Services;
 public class ServerCommandService : ICommandService
 {
     private readonly IDomainCommandProcessor _commandProcessor;
+    private readonly ISessionIdService _sessionIdService;
     private readonly IUserSessionService _sessionService;
     private readonly TimeProvider _timeProvider;
 
@@ -28,30 +29,36 @@ public class ServerCommandService : ICommandService
     /// Initializes a new instance of the <see cref="ServerCommandService"/> class.
     /// </summary>
     /// <param name="commandProcessor">The command processor.</param>
+    /// <param name="sessionIdService">The session ID service.</param>
     /// <param name="timeProvider">The time provider.</param>
     /// <param name="sessionService">The session service.</param>
     public ServerCommandService(
         [NotNull] IDomainCommandProcessor commandProcessor,
+        [NotNull] ISessionIdService sessionIdService,
         [NotNull] TimeProvider timeProvider,
         [NotNull] IUserSessionService sessionService)
     {
         ArgumentNullException.ThrowIfNull(timeProvider);
         ArgumentNullException.ThrowIfNull(sessionService);
         ArgumentNullException.ThrowIfNull(commandProcessor);
+        ArgumentNullException.ThrowIfNull(sessionIdService);
         _commandProcessor = commandProcessor;
+        _sessionIdService = sessionIdService;
         _timeProvider = timeProvider;
         _sessionService = sessionService;
     }
 
     /// <inheritdoc/>
-    public async Task SubmitCommandAsync(object command, string sessionId, CancellationToken cancellationToken)
+    public async Task SubmitCommandAsync(object command, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
         _ = UniqueIdHelper.GenerateUniqueStringId();
+        string sessionId = await _sessionIdService.GetSessionIdAsync().ConfigureAwait(false)
+            ?? throw new InvalidOperationException("Session ID not found.");
         UserSession? session = await _sessionService.GetSessionAsync(sessionId).ConfigureAwait(false);
         if (session == null || string.IsNullOrWhiteSpace(session.Id))
         {
-            throw new InvalidOperationException("Session not found.");
+            throw new InvalidOperationException("Session not found or expired.");
         }
 
         if (string.IsNullOrWhiteSpace(session.UserId))

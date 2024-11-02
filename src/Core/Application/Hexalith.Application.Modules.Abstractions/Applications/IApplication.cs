@@ -1,7 +1,6 @@
-// <copyright file="IApplication.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+// <copyright file="IApplication.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 namespace Hexalith.Application.Modules.Applications;
 
@@ -61,11 +60,6 @@ public interface IApplication
     public string Name { get; }
 
     /// <summary>
-    /// Gets the version of the application.
-    /// </summary>
-    public string Version { get; }
-
-    /// <summary>
     /// Gets the server application.
     /// </summary>
     /// <returns>The application instance.</returns>
@@ -73,11 +67,21 @@ public interface IApplication
     public IServerApplication Server { get; }
 
     /// <summary>
+    /// Gets the session cookie name.
+    /// </summary>
+    public string SessionCookieName { get; }
+
+    /// <summary>
     /// Gets the shared application.
     /// </summary>
     /// <returns>The application instance.</returns>
     /// <exception cref="InvalidOperationException">No application found.</exception>
     public ISharedApplication Shared { get; }
+
+    /// <summary>
+    /// Gets the version of the application.
+    /// </summary>
+    public string Version { get; }
 
     /// <summary>
     /// Adds services to the application.
