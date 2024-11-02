@@ -24,6 +24,7 @@ using Hexalith.PolymorphicSerialization;
 public class ClientCommandService : ICommandService
 {
     private readonly HttpClient _client;
+    private readonly ISessionIdService _sessionIdService;
     private readonly IUserSessionService _sessionService;
     private readonly TimeProvider _timeProvider;
 
@@ -31,27 +32,34 @@ public class ClientCommandService : ICommandService
     /// Initializes a new instance of the <see cref="ClientCommandService"/> class.
     /// </summary>
     /// <param name="client">The HTTP client.</param>
+    /// <param name="sessionIdService"></param>
     /// <param name="sessionService">The user session service.</param>
     /// <param name="timeProvider">The time provider.</param>
     public ClientCommandService(
         [NotNull] HttpClient client,
+        [NotNull] ISessionIdService sessionIdService,
         [NotNull] IUserSessionService sessionService,
         [NotNull] TimeProvider timeProvider)
     {
         ArgumentNullException.ThrowIfNull(timeProvider);
         ArgumentNullException.ThrowIfNull(client);
+        ArgumentNullException.ThrowIfNull(sessionIdService);
         _client = client;
+        _sessionIdService = sessionIdService;
         _sessionService = sessionService;
         _timeProvider = timeProvider;
     }
 
     /// <inheritdoc/>
-    public async Task SubmitCommandAsync(object command, string sessionId, CancellationToken cancellationToken)
+    public async Task SubmitCommandAsync(object command, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
 
         string messageId = UniqueIdHelper.GenerateUniqueStringId();
-        UserSession? session = await _sessionService.GetSessionAsync(sessionId).ConfigureAwait(false) ?? throw new InvalidOperationException("Session not found.");
+        string? sessionId = await _sessionIdService.GetSessionIdAsync().ConfigureAwait(false)
+            ?? throw new InvalidOperationException("Session ID not found.");
+        UserSession session = await _sessionService.GetSessionAsync(sessionId).ConfigureAwait(false)
+            ?? throw new InvalidOperationException("Session not found or expired.");
         Metadata metadata = new(
             new MessageMetadata(
             messageId,
