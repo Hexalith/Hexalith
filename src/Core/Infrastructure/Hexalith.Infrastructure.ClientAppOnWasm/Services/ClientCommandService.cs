@@ -18,15 +18,13 @@ using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.ClientApp.Services;
 using Hexalith.PolymorphicSerialization;
 
-using Microsoft.AspNetCore.Components.Authorization;
-
 /// <summary>
 /// Represents a service for sending commands asynchronously.
 /// </summary>
 public class ClientCommandService : ICommandService
 {
-    private readonly AuthenticationStateProvider _authenticationProvider;
     private readonly HttpClient _client;
+    private readonly ISessionIdService _sessionIdService;
     private readonly IUserSessionService _sessionService;
     private readonly TimeProvider _timeProvider;
 
@@ -34,23 +32,21 @@ public class ClientCommandService : ICommandService
     /// Initializes a new instance of the <see cref="ClientCommandService"/> class.
     /// </summary>
     /// <param name="client">The HTTP client.</param>
+    /// <param name="sessionIdService"></param>
     /// <param name="sessionService">The user session service.</param>
-    /// <param name="authenticationProvider"></param>
     /// <param name="timeProvider">The time provider.</param>
     public ClientCommandService(
         [NotNull] HttpClient client,
+        [NotNull] ISessionIdService sessionIdService,
         [NotNull] IUserSessionService sessionService,
-        [NotNull] AuthenticationStateProvider authenticationProvider,
         [NotNull] TimeProvider timeProvider)
     {
         ArgumentNullException.ThrowIfNull(timeProvider);
         ArgumentNullException.ThrowIfNull(client);
-        ArgumentNullException.ThrowIfNull(sessionService);
-        ArgumentNullException.ThrowIfNull(authenticationProvider);
-
+        ArgumentNullException.ThrowIfNull(sessionIdService);
         _client = client;
+        _sessionIdService = sessionIdService;
         _sessionService = sessionService;
-        _authenticationProvider = authenticationProvider;
         _timeProvider = timeProvider;
     }
 
@@ -59,11 +55,11 @@ public class ClientCommandService : ICommandService
     {
         ArgumentNullException.ThrowIfNull(command);
 
-        AuthenticationState state = await _authenticationProvider.GetAuthenticationStateAsync().ConfigureAwait(false);
-        string sessionId = state.User.GetSessionId();
-
         string messageId = UniqueIdHelper.GenerateUniqueStringId();
-        UserSession? session = await _sessionService.GetSessionAsync(sessionId).ConfigureAwait(false) ?? throw new InvalidOperationException("Session not found.");
+        string? sessionId = await _sessionIdService.GetSessionIdAsync().ConfigureAwait(false)
+            ?? throw new InvalidOperationException("Session ID not found.");
+        UserSession session = await _sessionService.GetSessionAsync(sessionId).ConfigureAwait(false)
+            ?? throw new InvalidOperationException("Session not found or expired.");
         Metadata metadata = new(
             new MessageMetadata(
             messageId,
