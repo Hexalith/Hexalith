@@ -18,11 +18,14 @@ using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.ClientApp.Services;
 using Hexalith.PolymorphicSerialization;
 
+using Microsoft.AspNetCore.Components.Authorization;
+
 /// <summary>
 /// Represents a service for sending commands asynchronously.
 /// </summary>
 public class ClientCommandService : ICommandService
 {
+    private readonly AuthenticationStateProvider _authenticationProvider;
     private readonly HttpClient _client;
     private readonly IUserSessionService _sessionService;
     private readonly TimeProvider _timeProvider;
@@ -32,23 +35,32 @@ public class ClientCommandService : ICommandService
     /// </summary>
     /// <param name="client">The HTTP client.</param>
     /// <param name="sessionService">The user session service.</param>
+    /// <param name="authenticationProvider"></param>
     /// <param name="timeProvider">The time provider.</param>
     public ClientCommandService(
         [NotNull] HttpClient client,
         [NotNull] IUserSessionService sessionService,
+        [NotNull] AuthenticationStateProvider authenticationProvider,
         [NotNull] TimeProvider timeProvider)
     {
         ArgumentNullException.ThrowIfNull(timeProvider);
         ArgumentNullException.ThrowIfNull(client);
+        ArgumentNullException.ThrowIfNull(sessionService);
+        ArgumentNullException.ThrowIfNull(authenticationProvider);
+
         _client = client;
         _sessionService = sessionService;
+        _authenticationProvider = authenticationProvider;
         _timeProvider = timeProvider;
     }
 
     /// <inheritdoc/>
-    public async Task SubmitCommandAsync(object command, string sessionId, CancellationToken cancellationToken)
+    public async Task SubmitCommandAsync(object command, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
+
+        AuthenticationState state = await _authenticationProvider.GetAuthenticationStateAsync().ConfigureAwait(false);
+        string sessionId = state.User.GetSessionId();
 
         string messageId = UniqueIdHelper.GenerateUniqueStringId();
         UserSession? session = await _sessionService.GetSessionAsync(sessionId).ConfigureAwait(false) ?? throw new InvalidOperationException("Session not found.");
