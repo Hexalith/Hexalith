@@ -13,9 +13,10 @@ using System.Threading.Tasks;
 
 using Hexalith.Application.Commands;
 using Hexalith.Application.Metadatas;
+using Hexalith.Application.Sessions.Models;
+using Hexalith.Application.Sessions.Services;
 using Hexalith.Application.States;
 using Hexalith.Extensions.Helpers;
-using Hexalith.Infrastructure.ClientApp.Services;
 using Hexalith.PolymorphicSerialization;
 
 /// <summary>
@@ -25,7 +26,7 @@ public class ClientCommandService : ICommandService
 {
     private readonly HttpClient _client;
     private readonly ISessionIdService _sessionIdService;
-    private readonly IUserSessionService _sessionService;
+    private readonly ISessionService _sessionService;
     private readonly TimeProvider _timeProvider;
 
     /// <summary>
@@ -38,7 +39,7 @@ public class ClientCommandService : ICommandService
     public ClientCommandService(
         [NotNull] HttpClient client,
         [NotNull] ISessionIdService sessionIdService,
-        [NotNull] IUserSessionService sessionService,
+        [NotNull] ISessionService sessionService,
         [NotNull] TimeProvider timeProvider)
     {
         ArgumentNullException.ThrowIfNull(timeProvider);
@@ -58,7 +59,7 @@ public class ClientCommandService : ICommandService
         string messageId = UniqueIdHelper.GenerateUniqueStringId();
         string? sessionId = await _sessionIdService.GetSessionIdAsync().ConfigureAwait(false)
             ?? throw new InvalidOperationException("Session ID not found.");
-        UserSession session = await _sessionService.GetSessionAsync(sessionId).ConfigureAwait(false)
+        SessionInformation session = await _sessionService.GetAsync(sessionId, cancellationToken).ConfigureAwait(false)
             ?? throw new InvalidOperationException("Session not found or expired.");
         Metadata metadata = new(
             new MessageMetadata(
@@ -69,7 +70,7 @@ public class ClientCommandService : ICommandService
             _timeProvider.GetLocalNow()),
             new ContextMetadata(
                 messageId,
-                session.UserId,
+                session.User.Id,
                 session.PartitionId,
                 _timeProvider.GetLocalNow(),
                 null,

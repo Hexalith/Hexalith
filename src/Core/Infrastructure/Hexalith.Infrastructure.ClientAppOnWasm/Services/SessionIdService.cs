@@ -8,7 +8,7 @@ namespace Hexalith.Infrastructure.ClientAppOnWasm.Services;
 using System;
 using System.Threading.Tasks;
 
-using Hexalith.Infrastructure.ClientApp.Services;
+using Hexalith.Application.Sessions.Services;
 
 using Microsoft.JSInterop;
 

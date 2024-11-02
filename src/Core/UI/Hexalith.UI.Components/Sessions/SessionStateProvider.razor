@@ -1,8 +1,12 @@
-﻿@inject IUserSessionService SessionService
-@inject IHttpContextAccessor SessionService
+﻿@using Hexalith.Application.Services
+@using Hexalith.Application.Sessions.Models
+@using Hexalith.Application.Sessions.Services
+@inject ISessionIdService SessionIdService
+@inject ISessionService SessionService
+@inject NavigationManager NavigationManager
 @implements IDisposable
 
-<CascadingValue Value="@_session">
+<CascadingValue Name="Session" Value="@_session">
     @ChildContent
 </CascadingValue>
 
@@ -10,24 +14,29 @@
     [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private UserSession _session;
-    private Timer _refreshTimer;
+    private SessionInformation? _session;
+    private Timer? _refreshTimer;
 
     protected override async Task OnInitializedAsync()
     {
         await RefreshSessionInfo();
 
         // Optional: Set up periodic refresh
-        _refreshTimer = new Timer(async _ =>
-        {
-            await RefreshSessionInfo();
-            await InvokeAsync(StateHasChanged);
-        }, null, TimeSpan.FromMinutes(5), TimeSpan.FromMinutes(5));
+        _refreshTimer = new Timer(async _ => await RefreshSessionInfo(), null, TimeSpan.FromMinutes(5), TimeSpan.FromMinutes(5));
     }
 
     private async Task RefreshSessionInfo()
     {
-        _session = await SessionService.GetSessionAsync();
+        var sessionId = await SessionIdService.GetSessionIdAsync();
+        if (string.IsNullOrWhiteSpace(sessionId))
+        {
+            NavigationManager.NavigateTo("/session/open");
+        }
+        if (_session == null || _session.Id != sessionId)
+        {
+            _session = await SessionService.GetAsync(sessionId, CancellationToken.None);
+            await InvokeAsync(StateHasChanged);
+        }
     }
 
     public void Dispose()

@@ -1,18 +1,21 @@
-﻿// <copyright file="User.cs" company="ITANEO">
+﻿// <copyright file="Session.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Domain.Sessions.Aggregates;
-
-using System;
-using System.Runtime.Serialization;
+namespace Hexalith.Domain.Sessions;
 
 using Hexalith.Domain.Aggregates;
-using Hexalith.Domain.Sessions;
 
-[DataContract]
-public record User(string Id, string Name, string ContactId, IEnumerable<string> Roles) : IDomainAggregate
+public record Session(
+    string Id,
+    string UserId,
+    string PartitionId,
+    DateTimeOffset CreatedOn,
+    DateTimeOffset LastAccessedOn,
+    TimeSpan Timeout,
+    TimeSpan Lifetime)
+    : IDomainAggregate
 {
     /// <inheritdoc/>
     public string AggregateId => Id;

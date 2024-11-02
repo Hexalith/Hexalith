@@ -9,7 +9,6 @@ using Blazored.SessionStorage;
 
 using Hexalith.Application.Modules.Routes;
 using Hexalith.Application.Organizations.Helpers;
-using Hexalith.Infrastructure.ClientApp.Services;
 using Hexalith.Infrastructure.Emails.SendGrid.Helpers;
 
 using Microsoft.Extensions.Configuration;
@@ -35,7 +34,6 @@ public static class CommonServicesHelper
             .AddLocalization(options => options.ResourcesPath = "Resources")
             .AddCascadingAuthenticationState()
             .AddOrganizations(configuration)
-            .AddScoped<IUserSessionService, UserSessionService>()
             .AddSendGridEmail(configuration)
             .AddSingleton(TimeProvider.System)
             .AddSingleton<IRouteManager, RouteManager>()

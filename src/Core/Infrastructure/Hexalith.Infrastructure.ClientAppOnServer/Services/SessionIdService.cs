@@ -7,7 +7,7 @@ namespace Hexalith.Infrastructure.ClientAppOnServer.Services;
 
 using System.Threading.Tasks;
 
-using Hexalith.Infrastructure.ClientApp.Services;
+using Hexalith.Application.Sessions.Services;
 
 using Microsoft.AspNetCore.Http;
 
