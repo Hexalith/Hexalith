@@ -10,17 +10,11 @@ using System.Runtime.Serialization;
 /// <summary>
 /// Represents user information including identity and roles.
 /// </summary>
+/// <param name="Id">The unique identifier of the user.</param>
+/// <param name="Roles">The roles associated with the user.</param>
 [DataContract]
 public record UserInformation(
-    /// <summary>
-    /// Gets the unique identifier of the user.
-    /// </summary>
     [property: DataMember(Order = 1)]
     string Id,
-    /// <summary>
-    /// Gets the collection of roles assigned to the user.
-    /// </summary>
     [property: DataMember(Order = 2)]
-    IEnumerable<string> Roles)
-{
-}
+    IEnumerable<string> Roles);

@@ -10,20 +10,14 @@ using System.Runtime.Serialization;
 /// <summary>
 /// Represents contact information for a user.
 /// </summary>
+/// <param name="Id">The unique identifier of the contact.</param>
+/// <param name="Email">The email address of the contact.</param>
+/// <param name="Name">The name of the contact.</param>
 [DataContract]
 public record ContactInformation(
-    /// <summary>
-    /// Gets the unique identifier of the contact.
-    /// </summary>
     [property: DataMember(Order = 1)]
     string Id,
-    /// <summary>
-    /// Gets the email address of the contact.
-    /// </summary>
     [property: DataMember(Order = 2)]
     string Email,
-    /// <summary>
-    /// Gets the name of the contact.
-    /// </summary>
     [property: DataMember(Order = 3)]
     string Name);
