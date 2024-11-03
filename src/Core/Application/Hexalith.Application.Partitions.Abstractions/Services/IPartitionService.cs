@@ -17,5 +17,12 @@ public interface IPartitionService
     /// </summary>
     /// <param name="cancellationToken">A token to cancel the operation.</param>
     /// <returns>A task that represents the asynchronous operation. The task result contains a collection of partitions.</returns>
-    Task<IEnumerable<Partition>> GetAllAsync(CancellationToken cancellationToken);
+    IAsyncEnumerable<Partition> GetAllAsync(CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Gets all partition IDs asynchronously.
+    /// </summary>
+    /// <param name="cancellationToken">A token to cancel the operation.</param>
+    /// <returns>A task that represents the asynchronous operation. The task result contains a collection of partition IDs.</returns>
+    Task<IEnumerable<string>> GetAllIdsAsync(CancellationToken cancellationToken);
 }

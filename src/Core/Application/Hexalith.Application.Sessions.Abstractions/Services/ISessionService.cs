@@ -42,5 +42,5 @@ public interface ISessionService
     /// A <see cref="Task{TResult}"/> that represents the asynchronous operation.
     /// The task result contains the newly created <see cref="SessionInformation"/>.
     /// </returns>
-    Task<SessionInformation> OpenAsync(string partitionId, CancellationToken cancellationToken);
+    Task<SessionInformation?> OpenAsync(string? partitionId, CancellationToken cancellationToken);
 }

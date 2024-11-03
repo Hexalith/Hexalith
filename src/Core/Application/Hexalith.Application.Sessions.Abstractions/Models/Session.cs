@@ -15,7 +15,9 @@ using System.Runtime.Serialization;
 /// <param name="UserId">The unique identifier of the user associated with the session.</param>
 /// <param name="PartitionId">The partition identifier associated with the session.</param>
 /// <param name="CreatedAt">The date and time when the session was created.</param>
+/// <param name="Expiration">The duration after which the session will expire.</param>
 /// <param name="LastActivity">The date and time of the last activity in the session.</param>
+/// <param name="Disabled">Indicates whether the session is disabled.</param>
 [DataContract]
 public record Session(
     [property: DataMember(Order = 1)]
@@ -27,4 +29,8 @@ public record Session(
     [property: DataMember(Order = 4)]
     DateTimeOffset CreatedAt,
     [property: DataMember(Order = 5)]
-    DateTimeOffset LastActivity);
+    TimeSpan Expiration,
+    [property: DataMember(Order = 6)]
+    DateTimeOffset LastActivity,
+    [property: DataMember(Order = 7)]
+    bool Disabled);

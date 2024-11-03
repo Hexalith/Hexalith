@@ -15,7 +15,7 @@ using System.Runtime.Serialization;
 /// <param name="User">The user information associated with the session.</param>
 /// <param name="Contact">The contact information associated with the session.</param>
 /// <param name="CreatedOn">The date and time when the session was created.</param>
-/// <param name="LastAccessedOn">The date and time when the session was last accessed.</param>
+/// <param name="Expiration">The duration after which the session expires.</param>
 [DataContract]
 public record SessionInformation(
     [property: DataMember(Order = 1)]
@@ -27,4 +27,6 @@ public record SessionInformation(
     [property: DataMember(Order = 4)]
     ContactInformation Contact,
     [property: DataMember(Order = 5)]
-    DateTimeOffset CreatedOn);
+    DateTimeOffset CreatedOn,
+    [property: DataMember(Order = 6)]
+    TimeSpan Expiration);

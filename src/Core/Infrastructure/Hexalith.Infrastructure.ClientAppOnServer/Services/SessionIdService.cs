@@ -7,6 +7,8 @@ namespace Hexalith.Infrastructure.ClientAppOnServer.Services;
 
 using System.Threading.Tasks;
 
+using Hexalith.Application.Sessions;
+using Hexalith.Application.Sessions.Helpers;
 using Hexalith.Application.Sessions.Services;
 
 using Microsoft.AspNetCore.Http;
@@ -18,8 +20,21 @@ using Microsoft.AspNetCore.Http;
 /// Initializes a new instance of the <see cref="SessionIdService"/> class.
 /// </remarks>
 /// <param name="httpContextAccessor">The HTTP context accessor instance.</param>
-public class SessionIdService(IHttpContextAccessor httpContextAccessor) : ISessionIdService
+/// <param name="timeProvider">The time provider instance.</param>
+public class SessionIdService(IHttpContextAccessor httpContextAccessor, TimeProvider timeProvider) : ISessionIdService
 {
     /// <inheritdoc/>
-    public Task<string?> GetSessionIdAsync() => Task.FromResult(httpContextAccessor.HttpContext?.Session.Id);
+    public Task<string?> GetSessionIdAsync()
+    {
+        string? sessionId = httpContextAccessor.HttpContext?.Session.GetString(SessionConstants.SessionIdName);
+        if (string.IsNullOrWhiteSpace(sessionId))
+        {
+            return Task.FromResult<string?>(null);
+        }
+
+        int? expiration = httpContextAccessor.HttpContext?.Session.GetInt32(SessionConstants.SessionExpirationName);
+        return expiration.HasExpired(timeProvider.GetLocalNow())
+            ? Task.FromResult<string?>(null)
+            : Task.FromResult(httpContextAccessor.HttpContext?.Session.GetString(SessionConstants.SessionIdName));
+    }
 }

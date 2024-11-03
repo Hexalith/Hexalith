@@ -5,7 +5,6 @@
 
 namespace Hexalith.Infrastructure.DaprRuntime.Partitions.Actors;
 
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using Dapr.Actors;
@@ -14,6 +13,7 @@ using Dapr.Actors.Runtime;
 
 using Hexalith.Application.Partitions.Models;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
+using Hexalith.Infrastructure.DaprRuntime.Helpers;
 
 /// <summary>
 /// Represents an actor that manages partitions.
@@ -32,18 +32,19 @@ public class PartitionActor : Actor, IPartitionActor
         : base(host) => ArgumentNullException.ThrowIfNull(host);
 
     /// <inheritdoc/>
-    public async Task AddAsync(string id, string name)
+    public async Task AddAsync(string name)
     {
         IKeyListActor collection = ActorProxy.DefaultProxyFactory.CreateActorProxy<IKeyListActor>(
             new ActorId("Ids"),
             _collectionActorName);
-        await collection.AddAsync(id);
-        _partition = new Partition(id, name, false);
+        string sessionId = Id.ToUnescapeString();
+        await collection.AddAsync(sessionId);
+        _partition = new Partition(sessionId, name, false);
         await SaveAsync();
     }
 
     /// <inheritdoc/>
-    public async Task DisableAsync(string id)
+    public async Task DisableAsync()
     {
         Partition partition = _partition ??= await GetPartitionAsync();
         if (!partition.Disabled)
@@ -54,7 +55,7 @@ public class PartitionActor : Actor, IPartitionActor
     }
 
     /// <inheritdoc/>
-    public async Task EnableAsync(string id)
+    public async Task EnableAsync()
     {
         Partition partition = _partition ??= await GetPartitionAsync();
         if (partition.Disabled)
@@ -65,14 +66,11 @@ public class PartitionActor : Actor, IPartitionActor
     }
 
     /// <inheritdoc/>
-    public async Task<Partition> GetAsync(string id)
+    public async Task<Partition> GetAsync()
         => _partition ??= await GetPartitionAsync();
 
     /// <inheritdoc/>
-    public Task<IEnumerable<string>> GetIdsAsync() => throw new NotImplementedException();
-
-    /// <inheritdoc/>
-    public async Task RenameAsync(string id, string newName)
+    public async Task RenameAsync(string newName)
     {
         Partition partition = _partition ??= await GetPartitionAsync();
         if (partition.Name != newName)

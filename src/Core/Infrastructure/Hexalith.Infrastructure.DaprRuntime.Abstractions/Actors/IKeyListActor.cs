@@ -22,17 +22,17 @@ public interface IKeyListActor : IActor
     Task AddAsync(string value);
 
     /// <summary>
+    /// Gets all values from the list asynchronously.
+    /// </summary>
+    /// <returns>A task that represents the asynchronous operation. The task result contains an enumerable of strings representing the values in the list.</returns>
+    Task<IEnumerable<string>> AllAsync();
+
+    /// <summary>
     /// Checks if a value exists in the list asynchronously.
     /// </summary>
     /// <param name="value">The value to check for existence.</param>
     /// <returns>A task that represents the asynchronous operation. The task result contains a boolean indicating whether the value exists.</returns>
     Task<bool> ExistsAsync(string value);
-
-    /// <summary>
-    /// Gets all values from the list asynchronously.
-    /// </summary>
-    /// <returns>A task that represents the asynchronous operation. The task result contains an enumerable of strings representing the values in the list.</returns>
-    Task<IEnumerable<string>> GetAsync();
 
     /// <summary>
     /// Removes a value from the list asynchronously.

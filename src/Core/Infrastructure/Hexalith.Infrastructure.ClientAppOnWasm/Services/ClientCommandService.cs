@@ -33,7 +33,7 @@ public class ClientCommandService : ICommandService
     /// Initializes a new instance of the <see cref="ClientCommandService"/> class.
     /// </summary>
     /// <param name="client">The HTTP client.</param>
-    /// <param name="sessionIdService"></param>
+    /// <param name="sessionIdService">The session ID service.</param>
     /// <param name="sessionService">The user session service.</param>
     /// <param name="timeProvider">The time provider.</param>
     public ClientCommandService(

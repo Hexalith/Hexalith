@@ -58,6 +58,7 @@ public static class ServerSideClientAppHelper
         return services
              .AddScoped<ICommandService, ServerCommandService>()
              .AddScoped<ISessionIdService, SessionIdService>()
+             .AddScoped<ISessionService, SessionService>()
              .AddHexalithClientApp(configuration);
     }
 

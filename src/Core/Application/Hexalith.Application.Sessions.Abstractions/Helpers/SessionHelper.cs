@@ -41,6 +41,15 @@ public static class SessionHelper
         => ApplicationClaimPrefix + partitionId + "-contributor";
 
     /// <summary>
+    /// Calculates the total minutes from Unix epoch to the expiration time.
+    /// </summary>
+    /// <param name="started">The start time.</param>
+    /// <param name="expiration">The expiration time span.</param>
+    /// <returns>The total minutes from Unix epoch to the expiration time.</returns>
+    public static int ExpirationInEpochMinutes(this DateTimeOffset started, TimeSpan expiration)
+        => (int)(started.Add(expiration).UtcDateTime - DateTimeOffset.UnixEpoch.UtcDateTime).TotalMinutes;
+
+    /// <summary>
     /// Finds the partition ID claim value for the specified user.
     /// </summary>
     /// <param name="user">The user principal.</param>
@@ -109,8 +118,8 @@ public static class SessionHelper
     /// <exception cref="InvalidOperationException">Thrown if the user email is not found in user claims.</exception>
     public static string GetUserId(this ClaimsPrincipal user)
     {
-        string? email = user.GetUserEmail();
-        return string.IsNullOrWhiteSpace(email) ? throw new InvalidOperationException("User Email not found in user claims.") : email;
+        string? id = user.FindFirst(p => p.Type == ClaimTypes.NameIdentifier)?.Value;
+        return string.IsNullOrWhiteSpace(id) ? throw new InvalidOperationException("User id not found in user claims.") : id;
     }
 
     /// <summary>
@@ -124,6 +133,15 @@ public static class SessionHelper
         string? name = user.FindFirst(p => p.Type == ClaimTypes.Name)?.Value;
         return string.IsNullOrWhiteSpace(name) ? throw new InvalidOperationException("User Name not found in user claims.") : name;
     }
+
+    /// <summary>
+    /// Determines whether the session has expired based on the expiration time.
+    /// </summary>
+    /// <param name="expirationInEpochMinutes">The expiration time in minutes since Unix epoch.</param>
+    /// <param name="now"></param>
+    /// <returns>True if the session has expired; otherwise, false.</returns>
+    public static bool HasExpired(this int? expirationInEpochMinutes, DateTimeOffset now)
+        => (expirationInEpochMinutes is null) || DateTimeOffset.UnixEpoch.UtcDateTime.AddMinutes(expirationInEpochMinutes.Value) < now.UtcDateTime;
 
     /// <summary>
     /// Determines whether the specified user is a contributor.
