@@ -22,6 +22,12 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 /// </summary>
 public abstract class HexalithApplication : IApplication
 {
+    private static IClientApplication? _clientApplication;
+
+    private static IServerApplication? _serverApplication;
+
+    private static ISharedApplication? _sharedApplication;
+
     /// <summary>
     /// Gets the client application.
     /// </summary>
@@ -88,7 +94,7 @@ public abstract class HexalithApplication : IApplication
     /// <returns>The application instance.</returns>
     /// <exception cref="InvalidOperationException">No application found.</exception>
     private static IClientApplication? ClientApplication
-        => field ??= (ServerApplication is null)
+        => _clientApplication ??= (ServerApplication is null)
                 ? GetApplication<IClientApplication>() :
                 (IClientApplication?)Activator.CreateInstance(Server.ClientApplicationType);
 
@@ -98,7 +104,7 @@ public abstract class HexalithApplication : IApplication
     /// <returns>The application instance.</returns>
     /// <exception cref="InvalidOperationException">No application found.</exception>
     private static IServerApplication? ServerApplication
-        => field ??= GetApplication<IServerApplication>();
+        => _serverApplication ??= GetApplication<IServerApplication>();
 
     /// <summary>
     /// Gets the shared application.
@@ -106,7 +112,7 @@ public abstract class HexalithApplication : IApplication
     /// <returns>The application instance.</returns>
     /// <exception cref="InvalidOperationException">No application found.</exception>
     private static ISharedApplication? SharedApplication
-        => field ??= (ServerApplication is null)
+        => _sharedApplication ??= (ServerApplication is null)
                 ? (ClientApplication is null)
                     ? GetApplication<ISharedApplication>()
                     : (ISharedApplication?)Activator.CreateInstance(Client.SharedApplicationType)
