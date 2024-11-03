@@ -27,6 +27,7 @@ using Hexalith.Infrastructure.ClientApp.Helpers;
 using Hexalith.Infrastructure.ClientAppOnServer.Services;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
+using Hexalith.Infrastructure.DaprRuntime.Partitions.Helpers;
 using Hexalith.Infrastructure.WebApis.Helpers;
 using Hexalith.PolymorphicSerialization;
 
@@ -59,6 +60,7 @@ public static class ServerSideClientAppHelper
              .AddScoped<ICommandService, ServerCommandService>()
              .AddScoped<ISessionIdService, SessionIdService>()
              .AddScoped<ISessionService, SessionService>()
+             .AddPartitions()
              .AddHexalithClientApp(configuration);
     }
 
