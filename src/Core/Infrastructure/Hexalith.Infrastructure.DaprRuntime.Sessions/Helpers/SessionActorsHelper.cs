@@ -31,7 +31,7 @@ public static class SessionActorsHelper
     {
         ArgumentNullException.ThrowIfNull(services);
         _ = services.AddSingleton<ISessionService, SessionService>();
-        _ = services.AddSingleton<IUserIdentityService, IUserIdentityService>();
+        _ = services.AddSingleton<IUserIdentityService, UserIdentityService>();
         return services;
     }
 

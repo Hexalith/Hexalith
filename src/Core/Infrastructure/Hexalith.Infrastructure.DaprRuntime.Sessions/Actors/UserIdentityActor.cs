@@ -12,13 +12,14 @@ using Dapr.Actors.Runtime;
 using Hexalith.Application.Sessions.Models;
 
 /// <summary>
-/// Represents an actor that manages user identity state and operations.
+/// Represents an actor that manages user identity state and operations in a distributed actor system.
 /// </summary>
+/// <param name="host">The Dapr actor host that provides the runtime context for the actor.</param>
 /// <remarks>
 /// This actor provides functionality to manage user identity lifecycle including creation,
-/// enabling/disabling, and retrieval of user identity information.
+/// enabling/disabling, and retrieval of user identity information. It uses the Dapr actor
+/// state management to persist user identity data.
 /// </remarks>
-/// <param name="host">The Dapr actor host that provides the runtime context for the actor.</param>
 public class UserIdentityActor(ActorHost host) : Actor(host), IUserIdentityActor
 {
     /// <summary>
@@ -34,7 +35,7 @@ public class UserIdentityActor(ActorHost host) : Actor(host), IUserIdentityActor
     /// <inheritdoc/>
     public async Task AddAsync(string id, string provider, string name, string email)
     {
-        if (_user is not null || FindAsync() != null)
+        if (await ExistsAsync())
         {
             throw new InvalidOperationException("The user already exists.");
         }
@@ -96,6 +97,7 @@ public class UserIdentityActor(ActorHost host) : Actor(host), IUserIdentityActor
     /// Retrieves the user identity from the actor's state manager.
     /// </summary>
     /// <returns>A task that represents the asynchronous operation. The task result contains the user identity.</returns>
+    /// <exception cref="InvalidOperationException">Thrown when the user identity does not exist in the state manager.</exception>
     private async Task<UserIdentity> GetUserAsync()
         => await StateManager.GetStateAsync<UserIdentity>(_stateName);
 
