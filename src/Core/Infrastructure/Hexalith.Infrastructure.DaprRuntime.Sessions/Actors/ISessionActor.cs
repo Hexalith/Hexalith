@@ -6,8 +6,10 @@
 namespace Hexalith.Infrastructure.DaprRuntime.Sessions.Actors;
 
 using Dapr.Actors;
+using Dapr.Actors.Client;
 
 using Hexalith.Application.Sessions.Models;
+using Hexalith.Infrastructure.DaprRuntime.Helpers;
 
 /// <summary>
 /// Interface for session actor operations.
@@ -18,6 +20,14 @@ public interface ISessionActor : IActor
     /// Gets the name of the actor.
     /// </summary>
     public static string ActorName => "Session";
+
+    /// <summary>
+    /// Creates a session actor proxy.
+    /// </summary>
+    /// <param name="sessionId">The session identifier.</param>
+    /// <returns>A session actor proxy.</returns>
+    public static ISessionActor Actor(string sessionId)
+        => ActorProxy.Create<ISessionActor>(sessionId.ToActorId(), ActorName);
 
     /// <summary>
     /// Closes the session asynchronously.
@@ -36,7 +46,7 @@ public interface ISessionActor : IActor
     /// </summary>
     /// <param name="partitionId">The partition identifier.</param>
     /// <param name="userId">The user identifier.</param>
-    /// <param name="name">The session name.</param>
+    /// <param name="identityProviderName">The name of the user identity provider.</param>
     /// <returns>A task that represents the asynchronous open operation.</returns>
-    Task OpenAsync(string partitionId, string userId);
+    Task OpenAsync(string partitionId, string userId, string identityProviderName);
 }

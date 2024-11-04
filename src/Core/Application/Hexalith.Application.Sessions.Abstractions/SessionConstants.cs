@@ -9,6 +9,7 @@ using Hexalith.Application.Sessions.Models;
 
 public static class SessionConstants
 {
-    public const string SessionIdName = $"{nameof(Session)}{nameof(Session.Id)}";
+    public const string IdentityProviderClaimType = "idp";
     public const string SessionExpirationName = $"{nameof(Session)}{nameof(Session.Expiration)}";
+    public const string SessionIdName = $"{nameof(Session)}{nameof(Session.Id)}";
 }

@@ -13,6 +13,13 @@ using Hexalith.Application.Partitions.Models;
 public interface IPartitionService
 {
     /// <summary>
+    /// Gets the default partition asynchronously.
+    /// </summary>
+    /// <param name="cancellationToken">A token to cancel the operation.</param>
+    /// <returns>A task that represents the asynchronous operation. The task result contains the default partition.</returns>
+    Task<string> DefaultAsync(CancellationToken cancellationToken) => Task.FromResult("Default");
+
+    /// <summary>
     /// Gets all partitions asynchronously.
     /// </summary>
     /// <param name="cancellationToken">A token to cancel the operation.</param>

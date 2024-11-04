@@ -13,6 +13,7 @@ using System.Runtime.Serialization;
 /// </summary>
 /// <param name="Id">The unique identifier of the session.</param>
 /// <param name="UserId">The unique identifier of the user associated with the session.</param>
+/// <param name="IdentityProviderName">The name of the identity provider associated with the session user.</param>
 /// <param name="PartitionId">The partition identifier associated with the session.</param>
 /// <param name="CreatedAt">The date and time when the session was created.</param>
 /// <param name="Expiration">The duration after which the session will expire.</param>
@@ -25,12 +26,14 @@ public record Session(
     [property: DataMember(Order = 2)]
     string UserId,
     [property: DataMember(Order = 3)]
-    string PartitionId,
+    string IdentityProviderName,
     [property: DataMember(Order = 4)]
-    DateTimeOffset CreatedAt,
+    string PartitionId,
     [property: DataMember(Order = 5)]
-    TimeSpan Expiration,
+    DateTimeOffset CreatedAt,
     [property: DataMember(Order = 6)]
-    DateTimeOffset LastActivity,
+    TimeSpan Expiration,
     [property: DataMember(Order = 7)]
+    DateTimeOffset LastActivity,
+    [property: DataMember(Order = 8)]
     bool Disabled);

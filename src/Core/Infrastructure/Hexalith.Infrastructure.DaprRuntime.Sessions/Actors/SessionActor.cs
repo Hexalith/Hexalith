@@ -55,7 +55,7 @@ public class SessionActor : Actor, ISessionActor
     }
 
     /// <inheritdoc/>
-    public async Task OpenAsync(string partitionId, string userId)
+    public async Task OpenAsync(string partitionId, string userId, string identityProviderName)
     {
         if (_session is not null || (await StateManager.TryGetStateAsync<Session>(_stateName)).HasValue)
         {
@@ -66,6 +66,7 @@ public class SessionActor : Actor, ISessionActor
         _session = new Session(
              Id.GetId(),
              userId,
+             identityProviderName,
              partitionId,
              date,
              TimeSpan.FromDays(1),

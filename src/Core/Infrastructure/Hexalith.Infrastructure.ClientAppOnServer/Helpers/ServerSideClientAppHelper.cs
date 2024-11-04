@@ -28,6 +28,8 @@ using Hexalith.Infrastructure.ClientAppOnServer.Services;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Partitions.Helpers;
+using Hexalith.Infrastructure.DaprRuntime.Sessions.Helpers;
+using Hexalith.Infrastructure.DaprRuntime.Sessions.Services;
 using Hexalith.Infrastructure.WebApis.Helpers;
 using Hexalith.PolymorphicSerialization;
 
@@ -61,6 +63,7 @@ public static class ServerSideClientAppHelper
              .AddScoped<ISessionIdService, SessionIdService>()
              .AddScoped<ISessionService, SessionService>()
              .AddPartitions()
+             .AddSessions()
              .AddHexalithClientApp(configuration);
     }
 
@@ -96,7 +99,12 @@ public static class ServerSideClientAppHelper
             .AddSwaggerGen(c => c.SwaggerDoc("v1", new() { Title = applicationName, Version = version, }))
             .AddDaprBuses(builder.Configuration)
             .AddDaprStateStore(builder.Configuration)
-            .AddActors(options => registerActors(options.Actors));
+            .AddActors(options =>
+            {
+                options.Actors.RegisterPartitionActors();
+                options.Actors.RegisterSessionActors();
+                registerActors(options.Actors);
+            });
 
         _ = builder
             .Services

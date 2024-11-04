@@ -50,6 +50,13 @@ public static class SessionHelper
         => (int)(started.Add(expiration).UtcDateTime - DateTimeOffset.UnixEpoch.UtcDateTime).TotalMinutes;
 
     /// <summary>
+    /// Finds the identity provider claim value for the specified user.
+    /// </summary>
+    /// <param name="user">The user principal.</param>
+    /// <returns>The identity provider claim value, or null if not found.</returns>
+    public static string? FindIdentityProvider(this ClaimsPrincipal user) => user.FindFirst("idp")?.Value;
+
+    /// <summary>
     /// Finds the partition ID claim value for the specified user.
     /// </summary>
     /// <param name="user">The user principal.</param>
@@ -62,6 +69,15 @@ public static class SessionHelper
     /// <param name="user">The user principal.</param>
     /// <returns>The session ID claim value, or null if not found.</returns>
     public static string? FindSessionId(this ClaimsPrincipal user) => user.FindFirst(SessionIdClaimName)?.Value;
+
+    /// <summary>
+    /// Gets the identity provider claim value for the specified user.
+    /// </summary>
+    /// <param name="user">The user principal.</param>
+    /// <returns>The identity provider claim value.</returns>
+    /// <exception cref="InvalidOperationException">Thrown if the identity provider claim is not found.</exception>
+    public static string GetIdentityProvider(this ClaimsPrincipal user)
+        => user.FindIdentityProvider() ?? throw new InvalidOperationException("Identity provider (idp) claim not found in user principal.");
 
     /// <summary>
     /// Gets the partition ID claim value for the specified user.
@@ -138,7 +154,7 @@ public static class SessionHelper
     /// Determines whether the session has expired based on the expiration time.
     /// </summary>
     /// <param name="expirationInEpochMinutes">The expiration time in minutes since Unix epoch.</param>
-    /// <param name="now"></param>
+    /// <param name="now">The current date and time to check against.</param>
     /// <returns>True if the session has expired; otherwise, false.</returns>
     public static bool HasExpired(this int? expirationInEpochMinutes, DateTimeOffset now)
         => (expirationInEpochMinutes is null) || DateTimeOffset.UnixEpoch.UtcDateTime.AddMinutes(expirationInEpochMinutes.Value) < now.UtcDateTime;

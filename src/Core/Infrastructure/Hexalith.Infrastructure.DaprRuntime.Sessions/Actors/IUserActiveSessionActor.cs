@@ -6,8 +6,10 @@
 namespace Hexalith.Infrastructure.DaprRuntime.Sessions.Actors;
 
 using Dapr.Actors;
+using Dapr.Actors.Client;
 
 using Hexalith.Application.Sessions.Models;
+using Hexalith.Infrastructure.DaprRuntime.Helpers;
 
 /// <summary>
 /// Interface for user active sessions actor operations.
@@ -20,9 +22,18 @@ public interface IUserActiveSessionActor : IActor
     public static string ActorName => "UserActiveSession";
 
     /// <summary>
+    /// Creates a user active session actor proxy.
+    /// </summary>
+    /// <param name="userId">The user identifier.</param>
+    /// <returns>A user active session actor proxy.</returns>
+    public static IUserActiveSessionActor Actor(string userId)
+    => ActorProxy.Create<IUserActiveSessionActor>(userId.ToActorId(), ActorName);
+
+    /// <summary>
     /// Adds a new session asynchronously.
     /// </summary>
     /// <param name="sessionId">The ID of the session to add.</param>
+    /// <param name="expirationDate"></param>
     /// <returns>A task that represents the asynchronous operation.</returns>
     Task AddAsync(string sessionId, DateTimeOffset expirationDate);
 
