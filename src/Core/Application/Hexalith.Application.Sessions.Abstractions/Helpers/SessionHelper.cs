@@ -71,6 +71,14 @@ public static class SessionHelper
     public static string? FindSessionId(this ClaimsPrincipal user) => user.FindFirst(SessionIdClaimName)?.Value;
 
     /// <summary>
+    /// Finds the user email for the specified user.
+    /// </summary>
+    /// <param name="user">The user principal.</param>
+    /// <returns>The user email.</returns>
+    public static string? FindUserEmail(this ClaimsPrincipal user)
+        => user.FindFirst(p => p.Type == ClaimTypes.Email)?.Value;
+
+    /// <summary>
     /// Gets the identity provider claim value for the specified user.
     /// </summary>
     /// <param name="user">The user principal.</param>
@@ -117,14 +125,6 @@ public static class SessionHelper
     /// <exception cref="InvalidOperationException">Thrown if the session ID claim is not found.</exception>
     public static string GetSessionId(this ClaimsPrincipal user)
         => user.FindSessionId() ?? throw new InvalidOperationException($"Session ID ({SessionIdClaimName}) claim not found in user principal.");
-
-    /// <summary>
-    /// Gets the user email for the specified user.
-    /// </summary>
-    /// <param name="user">The user principal.</param>
-    /// <returns>The user email.</returns>
-    public static string? GetUserEmail(this ClaimsPrincipal user)
-        => user.FindFirst(p => p.Type == ClaimTypes.Email)?.Value;
 
     /// <summary>
     /// Gets the user ID (email) for the specified user.

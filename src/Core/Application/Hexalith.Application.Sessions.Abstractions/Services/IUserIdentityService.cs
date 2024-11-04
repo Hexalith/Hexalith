@@ -21,27 +21,34 @@ public interface IUserIdentityService
     /// <param name="provider">The identity provider.</param>
     /// <param name="name">The user name.</param>
     /// <param name="email">The user's email address.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>The created user identity.</returns>
-    Task<UserIdentity> AddAsync(string id, string provider, string name, string email);
+    Task<UserIdentity> AddAsync(string id, string provider, string name, string email, CancellationToken cancellationToken);
 
     /// <summary>
     /// Checks if a user identity exists.
     /// </summary>
     /// <param name="id">The user identifier.</param>
+    /// <param name="provider">The identity provider.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>True if the user identity exists; otherwise, false.</returns>
-    Task<bool> ExistsAsync(string id);
+    Task<bool> ExistsAsync(string id, string provider, CancellationToken cancellationToken);
 
     /// <summary>
     /// Finds a user identity by ID.
     /// </summary>
     /// <param name="id">The user identifier.</param>
+    /// <param name="provider">The identity provider.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>The user identity if found; otherwise, null.</returns>
-    Task<UserIdentity?> FindAsync(string id);
+    Task<UserIdentity?> FindAsync(string id, string provider, CancellationToken cancellationToken);
 
     /// <summary>
     /// Gets a user identity by ID.
     /// </summary>
     /// <param name="id">The user identifier.</param>
+    /// <param name="provider">The identity provider.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>The user identity.</returns>
-    Task<UserIdentity> GetAsync(string id);
+    Task<UserIdentity> GetAsync(string id, string provider, CancellationToken cancellationToken);
 }

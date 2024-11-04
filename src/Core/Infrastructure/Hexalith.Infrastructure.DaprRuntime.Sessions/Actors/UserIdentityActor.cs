@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using Dapr.Actors.Runtime;
 
 using Hexalith.Application.Sessions.Models;
+using Hexalith.Infrastructure.DaprRuntime.Helpers;
+using Hexalith.Infrastructure.DaprRuntime.Sessions.Helpers;
 
 /// <summary>
 /// Represents an actor that manages user identity state and operations in a distributed actor system.
@@ -40,11 +42,14 @@ public class UserIdentityActor(ActorHost host) : Actor(host), IUserIdentityActor
             throw new InvalidOperationException("The user already exists.");
         }
 
+        int count = await ActorProxyHelper.AllUserIdentityIdsActor.AddAsync(Id.ToUnescapeString());
+
         _user = new UserIdentity(
              id,
              provider,
              name,
              email,
+             count < 2,
              false);
         await StateManager.AddStateAsync(_stateName, _user);
     }

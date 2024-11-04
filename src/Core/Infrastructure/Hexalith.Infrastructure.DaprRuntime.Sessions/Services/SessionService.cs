@@ -15,7 +15,7 @@ using Hexalith.Application.Sessions.Helpers;
 using Hexalith.Application.Sessions.Models;
 using Hexalith.Application.Sessions.Services;
 using Hexalith.Extensions.Helpers;
-using Hexalith.Infrastructure.DaprRuntime.Sessions.Actors;
+using Hexalith.Infrastructure.DaprRuntime.Sessions.Helpers;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Caching.Distributed;
@@ -71,35 +71,45 @@ public class SessionService : ISessionService
     }
 
     /// <inheritdoc/>
-    public async Task<SessionInformation> OpenAsync(string? partitionId, CancellationToken cancellationToken)
+    public async Task<SessionInformation?> OpenAsync(string? partitionId, CancellationToken cancellationToken)
     {
         ClaimsPrincipal user = _httpContextAccessor.HttpContext?.User ?? throw new InvalidOperationException("User not found.");
         string userId = user.GetUserId();
-        string userName = user.GetUserName();
         string provider = user.GetIdentityProvider();
         string sessionId = UniqueIdHelper.GenerateUniqueStringId();
-        ISessionActor actor = ISessionActor.Actor(sessionId);
         if (string.IsNullOrWhiteSpace(partitionId))
         {
             partitionId = await _partitionService.DefaultAsync(cancellationToken);
         }
 
-        _ = await _userService.FindAsync(userId);
-        await actor.OpenAsync(partitionId, userId, userName);
+        UserIdentity? identity = await _userService.FindAsync(userId, provider, cancellationToken);
+        if (identity == null)
+        {
+            string? email = user.FindUserEmail();
+            if (email == null)
+            {
+                return null;
+            }
+
+            string userName = user.GetUserName();
+            identity = await _userService.AddAsync(userId, provider, userName, email, cancellationToken);
+        }
+
+        await sessionId.SessionActor().OpenAsync(partitionId, userId, provider);
 
         SessionInformation session = new(
             sessionId,
             partitionId,
             new UserInformation(
-                userId,
-                provider,
-                userName,
-                user.IsGlobalAdministrator(),
+                identity.Id,
+                identity.Provider,
+                identity.Name,
+                identity.IsGlobalAdministrator,
                 user.GetPartitionRoles()),
             new ContactInformation(
-                user.GetUserId(),
-                user.GetUserEmail() ?? string.Empty,
-                user.GetUserName()),
+                identity.Id,
+                identity.Email,
+                identity.Name),
             _timeProvider.GetLocalNow(),
             TimeSpan.FromDays(1));
 

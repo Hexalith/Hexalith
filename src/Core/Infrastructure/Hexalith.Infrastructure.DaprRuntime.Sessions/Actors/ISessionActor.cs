@@ -12,41 +12,32 @@ using Hexalith.Application.Sessions.Models;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 
 /// <summary>
-/// Interface for session actor operations.
+/// Represents an actor interface for managing individual user sessions in a distributed system.
+/// This actor handles session lifecycle operations including opening, closing, and retrieving
+/// session information for specific users within partitions.
 /// </summary>
 public interface ISessionActor : IActor
 {
     /// <summary>
-    /// Gets the name of the actor.
+    /// Closes the current session asynchronously.
+    /// This operation marks the session as terminated and performs necessary cleanup.
     /// </summary>
-    public static string ActorName => "Session";
-
-    /// <summary>
-    /// Creates a session actor proxy.
-    /// </summary>
-    /// <param name="sessionId">The session identifier.</param>
-    /// <returns>A session actor proxy.</returns>
-    public static ISessionActor Actor(string sessionId)
-        => ActorProxy.Create<ISessionActor>(sessionId.ToActorId(), ActorName);
-
-    /// <summary>
-    /// Closes the session asynchronously.
-    /// </summary>
-    /// <returns>A task that represents the asynchronous close operation.</returns>
+    /// <returns>A <see cref="Task"/> that represents the asynchronous close operation.</returns>
     Task CloseAsync();
 
     /// <summary>
-    /// Gets the session asynchronously.
+    /// Retrieves the current session's information asynchronously.
     /// </summary>
-    /// <returns>A task that represents the asynchronous get operation. The task result contains the session.</returns>
+    /// <returns>A <see cref="Task{TResult}"/> that represents the asynchronous operation.
+    /// The task result contains the <see cref="Session"/> with its current state and properties.</returns>
     Task<Session> GetAsync();
 
     /// <summary>
-    /// Opens the session asynchronously.
+    /// Opens a new session asynchronously with the specified parameters.
     /// </summary>
-    /// <param name="partitionId">The partition identifier.</param>
-    /// <param name="userId">The user identifier.</param>
-    /// <param name="identityProviderName">The name of the user identity provider.</param>
-    /// <returns>A task that represents the asynchronous open operation.</returns>
+    /// <param name="partitionId">The unique identifier of the partition this session belongs to.</param>
+    /// <param name="userId">The unique identifier of the user this session is created for.</param>
+    /// <param name="identityProviderName">The name of the authentication provider that verified the user's identity.</param>
+    /// <returns>A <see cref="Task"/> that represents the asynchronous open operation.</returns>
     Task OpenAsync(string partitionId, string userId, string identityProviderName);
 }

@@ -7,17 +7,16 @@ namespace Hexalith.Infrastructure.DaprRuntime.Sessions.Actors;
 
 using System.Threading.Tasks;
 
-using Dapr.Actors.Client;
 using Dapr.Actors.Runtime;
 
 using Hexalith.Application.Sessions.Models;
+using Hexalith.Infrastructure.DaprRuntime.Sessions.Helpers;
 
 /// <summary>
 /// Represents an actor that manages sessions.
 /// </summary>
 public class SessionActor : Actor, ISessionActor
 {
-    private const string _collectionActorName = nameof(Sessions);
     private const string _stateName = "State";
     private readonly TimeProvider _timeProvider;
     private Session? _session;
@@ -72,14 +71,14 @@ public class SessionActor : Actor, ISessionActor
              TimeSpan.FromDays(1),
              date,
              false);
-        await UserActiveSessionActor(_session.UserId).AddAsync(_session.Id, date.Add(_session.Expiration));
+        await _session.UserId.UserActiveSessionActor().AddAsync(_session.Id, date.Add(_session.Expiration));
         await SaveAsync();
     }
 
     private async Task CloseAndRemoveActiveSessionAsync()
     {
         _session = (_session ??= await GetSessionAsync()) with { Disabled = true };
-        await UserActiveSessionActor(_session.UserId).RemoveAsync(_session.Id);
+        await _session.UserId.UserActiveSessionActor().RemoveAsync(_session.Id);
     }
 
     private async Task<Session> GetSessionAsync()
@@ -94,9 +93,4 @@ public class SessionActor : Actor, ISessionActor
             { LastActivity = _timeProvider.GetLocalNow() });
         await StateManager.SaveStateAsync();
     }
-
-    private IUserActiveSessionActor UserActiveSessionActor(string userId)
-                                    => ActorProxy.Create<IUserActiveSessionActor>(
-                new Dapr.Actors.ActorId(userId),
-                IUserActiveSessionActor.ActorName);
 }

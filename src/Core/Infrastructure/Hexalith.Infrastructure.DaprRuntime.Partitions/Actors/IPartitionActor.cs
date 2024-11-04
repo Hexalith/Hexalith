@@ -10,49 +10,56 @@ using Dapr.Actors;
 using Hexalith.Application.Partitions.Models;
 
 /// <summary>
-/// Interface for partition actor operations.
+/// Represents an actor interface for managing partitions in a distributed system.
+/// This actor handles partition lifecycle operations including creation, enabling/disabling,
+/// retrieval, and renaming of partitions.
 /// </summary>
 public interface IPartitionActor : IActor
 {
     /// <summary>
     /// Gets the name of the partition collection actor.
+    /// This name is used to identify the collection of all partition actors in the system.
     /// </summary>
-    public static string ActorCollectionName => "Partitions";
+    internal static string ActorCollectionName => "Partitions";
 
     /// <summary>
     /// Gets the name of the partition actor.
+    /// This name is used to identify individual partition actor instances.
     /// </summary>
-    public static string ActorName => "Partition";
+    internal static string ActorName => "Partition";
 
     /// <summary>
-    /// Adds a new partition with the specified identifier and name.
+    /// Adds a new partition with the specified name asynchronously.
     /// </summary>
-    /// <param name="name">The name of the new partition.</param>
-    /// <returns>A task that represents the asynchronous operation.</returns>
+    /// <param name="name">The name to assign to the new partition. Must be unique within the system.</param>
+    /// <returns>A <see cref="Task"/> that represents the asynchronous operation.</returns>
     Task AddAsync(string name);
 
     /// <summary>
-    /// Disables the partition with the specified identifier.
+    /// Disables the current partition asynchronously.
+    /// A disabled partition remains in the system but is marked as inactive.
     /// </summary>
-    /// <returns>A task that represents the asynchronous operation.</returns>
+    /// <returns>A <see cref="Task"/> that represents the asynchronous operation.</returns>
     Task DisableAsync();
 
     /// <summary>
-    /// Enables the partition with the specified identifier.
+    /// Enables the current partition asynchronously.
+    /// An enabled partition is marked as active and can be used in the system.
     /// </summary>
-    /// <returns>A task that represents the asynchronous operation.</returns>
+    /// <returns>A <see cref="Task"/> that represents the asynchronous operation.</returns>
     Task EnableAsync();
 
     /// <summary>
-    /// Gets the partition with the specified identifier.
+    /// Retrieves the current partition's information asynchronously.
     /// </summary>
-    /// <returns>A task that represents the asynchronous operation. The task result contains the partition.</returns>
+    /// <returns>A <see cref="Task{TResult}"/> that represents the asynchronous operation. 
+    /// The task result contains the <see cref="Partition"/> with its current state and properties.</returns>
     Task<Partition> GetAsync();
 
     /// <summary>
-    /// Renames the partition with the specified identifier.
+    /// Renames the current partition asynchronously.
     /// </summary>
-    /// <param name="newName">The new name of the partition.</param>
-    /// <returns>A task that represents the asynchronous operation.</returns>
+    /// <param name="newName">The new name to assign to the partition. Must be unique within the system.</param>
+    /// <returns>A <see cref="Task"/> that represents the asynchronous operation.</returns>
     Task RenameAsync(string newName);
 }

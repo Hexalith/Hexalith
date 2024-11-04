@@ -18,11 +18,12 @@ public interface IFileService
     /// </summary>
     /// <param name="fileId">The unique identifier of the file to download. This should match an ID previously used during upload.</param>
     /// <param name="writeStream">The stream where the downloaded file data will be written. The stream should be writable.</param>
+    /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
     /// <returns>A <see cref="Task{TResult}"/> containing a collection of tags associated with the downloaded file.</returns>
     /// <remarks>
     /// The stream will not be closed by this method. The caller is responsible for managing the stream's lifecycle.
     /// </remarks>
-    Task<IDictionary<string, string>> DownloadAsync(string fileId, Stream writeStream);
+    Task<IDictionary<string, string>> DownloadAsync(string fileId, Stream writeStream, CancellationToken cancellationToken);
 
     /// <summary>
     /// Uploads a file asynchronously to the storage system.
@@ -30,9 +31,10 @@ public interface IFileService
     /// <param name="fileId">The unique identifier for the file. This ID can be used later to retrieve the file.</param>
     /// <param name="readStream">The stream containing the file data to upload. The stream should be readable and positioned at the beginning of the content.</param>
     /// <param name="tags">A collection of tags associated with the file for categorization and metadata purposes.</param>
+    /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
     /// <returns>A <see cref="Task"/> representing the asynchronous upload operation.</returns>
     /// <remarks>
     /// The stream will not be closed by this method. The caller is responsible for managing the stream's lifecycle.
     /// </remarks>
-    Task UploadAsync(string fileId, Stream readStream, IDictionary<string, string> tags);
+    Task UploadAsync(string fileId, Stream readStream, IDictionary<string, string> tags, CancellationToken cancellationToken);
 }

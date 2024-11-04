@@ -11,57 +11,63 @@ using System.Threading.Tasks;
 using Hexalith.Application.Sessions.Models;
 using Hexalith.Application.Sessions.Services;
 using Hexalith.Infrastructure.DaprRuntime.Sessions.Actors;
+using Hexalith.Infrastructure.DaprRuntime.Sessions.Helpers;
 
 /// <summary>
 /// Service for managing user identity operations using Dapr actors.
 /// </summary>
-/// <param name="provider">The identity provider name used for all operations.</param>
 /// <remarks>
 /// This service implements the IUserIdentityService interface using Dapr actors for state management
 /// and distributed operations. Each method delegates to a UserIdentityActor instance.
 /// </remarks>
-public class UserIdentityService(string provider) : IUserIdentityService
+public class UserIdentityService : IUserIdentityService
 {
     /// <inheritdoc/>
-    public async Task<UserIdentity> AddAsync(string id, string provider, string name, string email)
+    public async Task<UserIdentity> AddAsync(string id, string provider, string name, string email, CancellationToken cancellationToken)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(id);
         ArgumentException.ThrowIfNullOrWhiteSpace(provider);
         ArgumentException.ThrowIfNullOrWhiteSpace(name);
         ArgumentException.ThrowIfNullOrWhiteSpace(email);
 
-        IUserIdentityActor actor = IUserIdentityActor.Actor(id, provider);
-        await actor.AddAsync(id, provider, name, email);
-        return await actor.GetAsync();
+        IUserIdentityActor actor = (id, provider).UserIdentityActor();
+        await actor.AddAsync(id, provider, name, email).ConfigureAwait(false);
+        return await actor.GetAsync().ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public async Task<bool> ExistsAsync(string id)
+    public async Task<bool> ExistsAsync(string id, string provider, CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(id);
+        ArgumentException.ThrowIfNullOrWhiteSpace(id);
+        ArgumentException.ThrowIfNullOrWhiteSpace(provider);
 
-        return await IUserIdentityActor
-            .Actor(id, provider)
-            .ExistsAsync();
+        return await (id, provider)
+            .UserIdentityActor()
+            .ExistsAsync()
+            .ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public async Task<UserIdentity?> FindAsync(string id)
+    public async Task<UserIdentity?> FindAsync(string id, string provider, CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(id);
+        ArgumentException.ThrowIfNullOrWhiteSpace(id);
+        ArgumentException.ThrowIfNullOrWhiteSpace(provider);
 
-        return await IUserIdentityActor
-            .Actor(id, provider)
-            .FindAsync();
+        return await (id, provider)
+            .UserIdentityActor()
+            .FindAsync()
+            .ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
-    public async Task<UserIdentity> GetAsync(string id)
+    public async Task<UserIdentity> GetAsync(string id, string provider, CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(id);
+        ArgumentException.ThrowIfNullOrWhiteSpace(id);
+        ArgumentException.ThrowIfNullOrWhiteSpace(provider);
 
-        return await IUserIdentityActor
-            .Actor(id, provider)
-            .GetAsync();
+        return await (id, provider)
+            .UserIdentityActor()
+            .GetAsync()
+            .ConfigureAwait(false);
     }
 }

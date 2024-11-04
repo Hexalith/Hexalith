@@ -9,6 +9,7 @@ using Dapr.Actors;
 using Dapr.Actors.Client;
 
 using Hexalith.Application.Sessions.Models;
+using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 
 /// <summary>
@@ -16,25 +17,6 @@ using Hexalith.Infrastructure.DaprRuntime.Helpers;
 /// </summary>
 public interface IUserIdentityActor : IActor
 {
-    /// <summary>
-    /// Gets the name of the actor.
-    /// </summary>
-    public static string ActorName => "UserIdentity";
-
-    /// <summary>
-    /// Gets the name of the collection used to store user identities.
-    /// </summary>
-    public static string UserIdentityCollectionName => "UserIdentityCollection";
-
-    /// <summary>
-    /// Creates a proxy to interact with a user identity actor instance.
-    /// </summary>
-    /// <param name="id">The user identifier.</param>
-    /// <param name="provider">The identity provider identifier.</param>
-    /// <returns>A proxy instance to interact with the user identity actor.</returns>
-    public static IUserIdentityActor Actor(string id, string provider)
-        => ActorProxy.Create<IUserIdentityActor>($"{id}-{provider}".ToActorId(), ActorName);
-
     /// <summary>
     /// Adds a new user identity with the specified information.
     /// </summary>
