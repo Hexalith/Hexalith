@@ -33,7 +33,7 @@
     <MicrosoftBotBuilderVersion>4.22.7</MicrosoftBotBuilderVersion>
     <MicrosoftCodeAnalysisCSharpVersion>4.11.0</MicrosoftCodeAnalysisCSharpVersion>
     <MicrosoftCodeAnalysisAnalyzersVersion>3.11.0</MicrosoftCodeAnalysisAnalyzersVersion>
-    <MicrosoftFluentUIComponentsVersion>4.*</MicrosoftFluentUIComponentsVersion>
+    <MicrosoftFluentUIComponentsVersion>4.10.1</MicrosoftFluentUIComponentsVersion>
     <MicrosoftIdentityClientVersion>4.66.1</MicrosoftIdentityClientVersion>
     <MicrosoftIdentityWebVersion>3.2.1</MicrosoftIdentityWebVersion>
     <MicrosoftNETTestSdkVersion>17.11.1</MicrosoftNETTestSdkVersion>

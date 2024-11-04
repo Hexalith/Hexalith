@@ -21,7 +21,7 @@
 		<PackageReference Include="Microsoft.Extensions.Localization" Version="$(MicrosoftExtensionsPackagesVersion)" />
 		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="$(MicrosoftFluentUIComponentsVersion)" />
 		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="$(MicrosoftFluentUIComponentsVersion)" />
-		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Emoji" Version="$(MicrosoftFluentUIComponentsVersion)" />
+		<!--<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Emoji" Version="$(MicrosoftFluentUIComponentsVersion)" />-->
 		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.DataGrid.EntityFrameworkAdapter" Version="$(MicrosoftFluentUIComponentsVersion)" />
 	  <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
 	</ItemGroup>
