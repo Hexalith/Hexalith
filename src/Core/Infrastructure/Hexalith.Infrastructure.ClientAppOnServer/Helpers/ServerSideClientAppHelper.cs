@@ -264,7 +264,7 @@ public static class ServerSideClientAppHelper
             .MapRazorComponents<TApp>()
             .AddInteractiveServerRenderMode()
             .AddInteractiveWebAssemblyRenderMode()
-            .AddAdditionalAssemblies([.. HexalithApplication.Server.PresentationAssemblies]);
+            .AddAdditionalAssemblies([.. HexalithApplication.Client.PresentationAssemblies]);
 
         _ = app.MapActorsHandlers();
         app.UseHexalithModules();

@@ -56,6 +56,8 @@ public static class WebAssemblyClientHelper
             .AddBlazoredSessionStorage()
             .AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>()
             .CreateClient(ClientConstants.FrontApiName));
+        HexalithApplication.AddClientServices(services, configuration);
+
         return services;
     }
 
