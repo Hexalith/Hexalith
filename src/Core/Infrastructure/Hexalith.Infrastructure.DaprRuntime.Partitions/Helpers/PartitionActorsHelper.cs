@@ -43,6 +43,6 @@ public static class PartitionActorsHelper
     {
         ArgumentNullException.ThrowIfNull(actorRegistrationCollection);
         actorRegistrationCollection.RegisterActor<PartitionActor>(IPartitionActor.ActorName);
-        actorRegistrationCollection.RegisterActor<KeyListActor>(IPartitionActor.ActorCollectionName);
+        actorRegistrationCollection.RegisterActor<KeyHashActor>(IPartitionActor.ActorCollectionName);
     }
 }

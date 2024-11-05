@@ -36,8 +36,8 @@ public static class ActorProxyHelper
     /// <remarks>
     /// This actor maintains a list of all user identity IDs in the system for efficient querying and management.
     /// </remarks>
-    public static IKeyListActor AllUserIdentityIdsActor
-            => ActorProxy.Create<IKeyListActor>(AllIdsCollectionName.ToActorId(), UserIdentityCollectionName);
+    public static IKeyHashActor AllUserIdentityIdsActor
+            => ActorProxy.Create<IKeyHashActor>(AllIdsCollectionName.ToActorId(), UserIdentityCollectionName);
 
     /// <summary>
     /// Gets the name of the actor.
@@ -90,7 +90,7 @@ public static class ActorProxyHelper
     /// </summary>
     /// <param name="user">A tuple containing the user's ID and provider information. The tuple consists of:
     /// - Id: The unique identifier of the user
-    /// - Provider: The identity provider identifier</param>
+    /// - Provider: The identity provider identifier.</param>
     /// <returns>A proxy instance to interact with the user identity actor.</returns>
     public static IUserIdentityActor UserIdentityActor(this (string Id, string Provider) user)
         => ActorProxy.Create<IUserIdentityActor>($"{user.Id}-{user.Provider}".ToActorId(), UserIdentityActorName);

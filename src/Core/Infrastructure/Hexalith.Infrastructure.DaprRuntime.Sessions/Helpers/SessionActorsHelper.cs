@@ -44,7 +44,7 @@ public static class SessionActorsHelper
     {
         ArgumentNullException.ThrowIfNull(actorRegistrationCollection);
         actorRegistrationCollection.RegisterActor<UserIdentityActor>(ActorProxyHelper.UserIdentityActorName);
-        actorRegistrationCollection.RegisterActor<KeyListActor>(ActorProxyHelper.UserIdentityCollectionName);
+        actorRegistrationCollection.RegisterActor<KeyHashActor>(ActorProxyHelper.UserIdentityCollectionName);
         actorRegistrationCollection.RegisterActor<SessionActor>(ActorProxyHelper.SessionActorName);
         actorRegistrationCollection.RegisterActor<UserActiveSessionActor>(ActorProxyHelper.UserActiveSessionActorName);
     }

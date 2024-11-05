@@ -19,14 +19,16 @@ using Hexalith.Infrastructure.DaprRuntime.Sessions.Helpers;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Logging;
 
 /// <summary>
 /// Service for managing user sessions.
 /// </summary>
-public class SessionService : ISessionService
+public partial class SessionService : ISessionService
 {
     private readonly IDistributedCache _cache;
     private readonly IHttpContextAccessor _httpContextAccessor;
+    private readonly ILogger<SessionService> _logger;
     private readonly IPartitionService _partitionService;
     private readonly TimeProvider _timeProvider;
     private readonly IUserIdentityService _userService;
@@ -39,24 +41,39 @@ public class SessionService : ISessionService
     /// <param name="partitionService">The partition service.</param>
     /// <param name="userService">The user service.</param>
     /// <param name="timeProvider">The time provider.</param>
+    /// <param name="logger">The logger.</param>
     public SessionService(
         IDistributedCache cache,
         IHttpContextAccessor httpContextAccessor,
         IPartitionService partitionService,
         IUserIdentityService userService,
-        TimeProvider timeProvider)
+        TimeProvider timeProvider,
+        ILogger<SessionService> logger)
     {
         ArgumentNullException.ThrowIfNull(cache);
         ArgumentNullException.ThrowIfNull(httpContextAccessor);
         ArgumentNullException.ThrowIfNull(timeProvider);
         ArgumentNullException.ThrowIfNull(partitionService);
         ArgumentNullException.ThrowIfNull(userService);
+        ArgumentNullException.ThrowIfNull(logger);
         _cache = cache;
         _httpContextAccessor = httpContextAccessor;
         _partitionService = partitionService;
         _userService = userService;
         _timeProvider = timeProvider;
+        _logger = logger;
     }
+
+    /// <summary>
+    /// Logs a warning message when a user identity has no email.
+    /// This method is generated using the LoggerMessage attribute for high performance.
+    /// </summary>
+    /// <param name="logger">The logger instance.</param>
+    /// <param name="userId">The user ID.</param>
+    /// <param name="provider">The identity provider.</param>
+    /// <param name="name">The user name.</param>
+    [LoggerMessage(EventId = 1, Level = LogLevel.Warning, Message = "User identity '{Name}' with ID '{UserId}' and provider '{Provider}' has no email.")]
+    public static partial void LogUserIdentityNoEmailWarning(ILogger logger, string userId, string provider, string name);
 
     /// <inheritdoc/>
     public async Task CloseAsync(string id, CancellationToken cancellationToken)
@@ -86,17 +103,22 @@ public class SessionService : ISessionService
         if (identity == null)
         {
             string? email = user.FindUserEmail();
+            string userName = user.GetUserName();
             if (email == null)
             {
+                // Log a warning if the user identity has no email
+                LogUserIdentityNoEmailWarning(_logger, userId, provider, userName);
                 return null;
             }
 
-            string userName = user.GetUserName();
+            // Add a new user identity if not found
             identity = await _userService.AddAsync(userId, provider, userName, email, cancellationToken);
         }
 
+        // Open a new session actor
         await sessionId.SessionActor().OpenAsync(partitionId, userId, provider);
 
+        // Create session information
         SessionInformation session = new(
             sessionId,
             partitionId,
@@ -105,7 +127,7 @@ public class SessionService : ISessionService
                 identity.Provider,
                 identity.Name,
                 identity.IsGlobalAdministrator,
-                user.GetPartitionRoles()),
+                user.GetPartitionRoles(partitionId)),
             new ContactInformation(
                 identity.Id,
                 identity.Email,
@@ -113,12 +135,14 @@ public class SessionService : ISessionService
             _timeProvider.GetLocalNow(),
             TimeSpan.FromDays(1));
 
+        // Set cache options
         DistributedCacheEntryOptions options = new()
         {
             AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(24),
             SlidingExpiration = TimeSpan.FromMinutes(30),
         };
 
+        // Store session information in the cache
         await _cache.SetAsync(
             sessionId,
             JsonSerializer.SerializeToUtf8Bytes(session),

@@ -1,4 +1,4 @@
-﻿// <copyright file="IKeyListActor.cs" company="ITANEO">
+﻿// <copyright file="IKeyHashActor.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -13,7 +13,7 @@ using Dapr.Actors;
 /// in a thread-safe and distributed manner.
 /// </summary>
 /// <seealso cref="IActor" />
-public interface IKeyListActor : IActor
+public interface IKeyHashActor : IActor
 {
     /// <summary>
     /// Adds a new value to the list asynchronously. If the value already exists,

@@ -34,7 +34,7 @@ public class PartitionActor : Actor, IPartitionActor
     /// <inheritdoc/>
     public async Task AddAsync(string name)
     {
-        IKeyListActor collection = ActorProxy.DefaultProxyFactory.CreateActorProxy<IKeyListActor>(
+        IKeyHashActor collection = ActorProxy.DefaultProxyFactory.CreateActorProxy<IKeyHashActor>(
             new ActorId("Ids"),
             _collectionActorName);
         string sessionId = Id.ToUnescapeString();

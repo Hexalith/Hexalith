@@ -23,6 +23,21 @@ public static class SessionHelper
     public const string GlobalAdministratorRole = ApplicationClaimPrefix + "administrator";
 
     /// <summary>
+    /// The Hexalith authentication type.
+    /// </summary>
+    public const string HexalithAuthenticationType = "HexalithSession";
+
+    /// <summary>
+    /// The Hexalith issuer name.
+    /// </summary>
+    public const string HexalithIssuerName = "hexalith";
+
+    /// <summary>
+    /// The identity provider claim name.
+    /// </summary>
+    public const string IdentityProviderClaimName = "idp";
+
+    /// <summary>
     /// The partition ID claim name.
     /// </summary>
     public const string PartitionIdClaimName = ApplicationClaimPrefix + "partition-id";
@@ -54,7 +69,7 @@ public static class SessionHelper
     /// </summary>
     /// <param name="user">The user principal.</param>
     /// <returns>The identity provider claim value, or null if not found.</returns>
-    public static string? FindIdentityProvider(this ClaimsPrincipal user) => user.FindFirst("idp")?.Value;
+    public static string? FindIdentityProvider(this ClaimsPrincipal user) => user.FindFirst(IdentityProviderClaimName)?.Value;
 
     /// <summary>
     /// Finds the partition ID claim value for the specified user.
@@ -85,7 +100,7 @@ public static class SessionHelper
     /// <returns>The identity provider claim value.</returns>
     /// <exception cref="InvalidOperationException">Thrown if the identity provider claim is not found.</exception>
     public static string GetIdentityProvider(this ClaimsPrincipal user)
-        => user.FindIdentityProvider() ?? throw new InvalidOperationException("Identity provider (idp) claim not found in user principal.");
+        => user.FindIdentityProvider() ?? throw new InvalidOperationException($"Identity provider ({IdentityProviderClaimName}) claim not found in user principal.");
 
     /// <summary>
     /// Gets the partition ID claim value for the specified user.
@@ -100,10 +115,11 @@ public static class SessionHelper
     /// Partitions the roles for the specified user.
     /// </summary>
     /// <param name="user">The user principal.</param>
+    /// <param name="partitionId"></param>
     /// <returns>A collection of role names.</returns>
-    public static IEnumerable<string> GetPartitionRoles(this ClaimsPrincipal user)
+    public static IEnumerable<string> GetPartitionRoles(this ClaimsPrincipal user, string partitionId)
     {
-        string partitionPrefix = PartitionRolePrefix(user.GetPartitionId());
+        string partitionPrefix = PartitionRolePrefix(partitionId);
         return (user.GetRoles() ?? [])
                 .Where(p => p.StartsWith(partitionPrefix))
                 .Select(p => p[partitionPrefix.Length..]);

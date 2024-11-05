@@ -23,8 +23,8 @@ using Hexalith.Infrastructure.DaprRuntime.Partitions.Actors;
 /// </summary>
 internal class PartitionService : IPartitionService
 {
-    private IKeyListActor PartitionCollectionActor
-            => ActorProxy.Create<IKeyListActor>(
+    private IKeyHashActor PartitionCollectionActor
+            => ActorProxy.Create<IKeyHashActor>(
                 new Dapr.Actors.ActorId(IPartitionActor.ActorName),
                 IPartitionActor.ActorCollectionName);
 
