@@ -60,7 +60,8 @@ public class UserIdentityActor(ActorHost host) : Actor(host), IUserIdentityActor
         UserIdentity currentUser = await GetAsync();
         if (!currentUser.Disabled)
         {
-            _user = currentUser with { Disabled = true };
+            currentUser.Disabled = true;
+            _user = currentUser;
             await SaveAsync();
         }
     }
@@ -71,7 +72,8 @@ public class UserIdentityActor(ActorHost host) : Actor(host), IUserIdentityActor
         UserIdentity currentUser = await GetAsync();
         if (currentUser.Disabled)
         {
-            _user = currentUser with { Disabled = false };
+            currentUser.Disabled = false;
+            _user = currentUser;
             await SaveAsync();
         }
     }
