@@ -22,35 +22,35 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 /// </summary>
 public abstract class HexalithApplication : IApplication
 {
-    private static IClientApplication? _clientApplication;
+    private static IWebAppApplication? _clientApplication;
 
-    private static IServerApplication? _serverApplication;
+    private static IWebServerApplication? _serverApplication;
 
-    private static ISharedApplication? _sharedApplication;
+    private static ISharedAssetsApplication? _sharedApplication;
 
     /// <summary>
     /// Gets the client application.
     /// </summary>
-    public static IClientApplication Client
+    public static IWebAppApplication Client
         => ClientApplication
-            ?? throw new InvalidOperationException($"No client application found. Please add a class implementing {nameof(IClientApplication)}.");
+            ?? throw new InvalidOperationException($"No client application found. Please add a class implementing {nameof(IWebAppApplication)}.");
 
     /// <summary>
     /// Gets the server application.
     /// </summary>
-    public static IServerApplication Server
+    public static IWebServerApplication Server
         => ServerApplication
-            ?? throw new InvalidOperationException($"No server application found. Please check if you are server side or add a class implementing {nameof(IServerApplication)}.");
+            ?? throw new InvalidOperationException($"No server application found. Please check if you are server side or add a class implementing {nameof(IWebServerApplication)}.");
 
     /// <summary>
     /// Gets the shared application.
     /// </summary>
-    public static ISharedApplication Shared
+    public static ISharedAssetsApplication Shared
         => SharedApplication
-            ?? throw new InvalidOperationException($"No shared application found. Please add a class implementing {nameof(ISharedApplication)}.");
+            ?? throw new InvalidOperationException($"No shared application found. Please add a class implementing {nameof(ISharedAssetsApplication)}.");
 
     /// <inheritdoc/>
-    IClientApplication IApplication.Client => Client;
+    IWebAppApplication IApplication.Client => Client;
 
     /// <inheritdoc/>
     public abstract string HomePath { get; }
@@ -77,13 +77,13 @@ public abstract class HexalithApplication : IApplication
     public abstract string Name { get; }
 
     /// <inheritdoc/>
-    IServerApplication IApplication.Server => Server;
+    IWebServerApplication IApplication.Server => Server;
 
     /// <inheritdoc/>
     public string SessionCookieName => $".{Shared.Id}.Session";
 
     /// <inheritdoc/>
-    ISharedApplication IApplication.Shared => Shared;
+    ISharedAssetsApplication IApplication.Shared => Shared;
 
     /// <inheritdoc/>
     public abstract string Version { get; }
@@ -93,30 +93,30 @@ public abstract class HexalithApplication : IApplication
     /// </summary>
     /// <returns>The application instance.</returns>
     /// <exception cref="InvalidOperationException">No application found.</exception>
-    private static IClientApplication? ClientApplication
+    private static IWebAppApplication? ClientApplication
         => _clientApplication ??= (ServerApplication is null)
-                ? GetApplication<IClientApplication>() :
-                (IClientApplication?)Activator.CreateInstance(Server.ClientApplicationType);
+                ? GetApplication<IWebAppApplication>() :
+                (IWebAppApplication?)Activator.CreateInstance(Server.WebAppApplicationType);
 
     /// <summary>
     /// Gets the client application.
     /// </summary>
     /// <returns>The application instance.</returns>
     /// <exception cref="InvalidOperationException">No application found.</exception>
-    private static IServerApplication? ServerApplication
-        => _serverApplication ??= GetApplication<IServerApplication>();
+    private static IWebServerApplication? ServerApplication
+        => _serverApplication ??= GetApplication<IWebServerApplication>();
 
     /// <summary>
     /// Gets the shared application.
     /// </summary>
     /// <returns>The application instance.</returns>
     /// <exception cref="InvalidOperationException">No application found.</exception>
-    private static ISharedApplication? SharedApplication
+    private static ISharedAssetsApplication? SharedApplication
         => _sharedApplication ??= (ServerApplication is null)
                 ? (ClientApplication is null)
-                    ? GetApplication<ISharedApplication>()
-                    : (ISharedApplication?)Activator.CreateInstance(Client.SharedApplicationType)
-                : (ISharedApplication?)Activator.CreateInstance(Server.SharedApplicationType);
+                    ? GetApplication<ISharedAssetsApplication>()
+                    : (ISharedAssetsApplication?)Activator.CreateInstance(Client.SharedAssetsApplicationType)
+                : (ISharedAssetsApplication?)Activator.CreateInstance(Server.SharedAssetsApplicationType);
 
     /// <summary>
     /// Adds client services to the service collection.

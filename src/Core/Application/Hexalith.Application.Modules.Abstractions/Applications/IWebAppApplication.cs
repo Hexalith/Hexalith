@@ -1,7 +1,6 @@
-﻿// <copyright file="IClientApplication.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="IWebAppApplication.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 namespace Hexalith.Application.Modules.Applications;
 
@@ -10,7 +9,7 @@ using System.Reflection;
 /// <summary>
 /// Represents the definition of an application.
 /// </summary>
-public interface IClientApplication : IApplication
+public interface IWebAppApplication : IApplication
 {
     /// <summary>
     /// Gets the shared modules associated with the application.
@@ -24,7 +23,7 @@ public interface IClientApplication : IApplication
 
     /// <summary>
     /// Gets the shared application type.
-    /// Must be a type that implements <see cref="ISharedApplication"/>.
+    /// Must be a type that implements <see cref="ISharedAssetsApplication"/>.
     /// </summary>
-    Type SharedApplicationType { get; }
+    Type SharedAssetsApplicationType { get; }
 }

@@ -17,7 +17,7 @@ public interface IApplication
     /// </summary>
     /// <returns>The application instance.</returns>
     /// <exception cref="InvalidOperationException">No application found.</exception>
-    public IClientApplication Client { get; }
+    public IWebAppApplication Client { get; }
 
     /// <summary>
     /// Gets the home path of the application.
@@ -64,7 +64,7 @@ public interface IApplication
     /// </summary>
     /// <returns>The application instance.</returns>
     /// <exception cref="InvalidOperationException">No application found.</exception>
-    public IServerApplication Server { get; }
+    public IWebServerApplication Server { get; }
 
     /// <summary>
     /// Gets the session cookie name.
@@ -76,7 +76,7 @@ public interface IApplication
     /// </summary>
     /// <returns>The application instance.</returns>
     /// <exception cref="InvalidOperationException">No application found.</exception>
-    public ISharedApplication Shared { get; }
+    public ISharedAssetsApplication Shared { get; }
 
     /// <summary>
     /// Gets the version of the application.

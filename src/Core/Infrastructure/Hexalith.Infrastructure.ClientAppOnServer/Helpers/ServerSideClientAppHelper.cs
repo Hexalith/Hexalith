@@ -81,7 +81,6 @@ public static class ServerSideClientAppHelper
         string applicationName,
         string sessionCookieName,
         string version,
-        Action<ActorRegistrationCollection> registerActors,
         string[] args)
     {
         Activity.DefaultIdFormat = ActivityIdFormat.W3C;
@@ -98,13 +97,7 @@ public static class ServerSideClientAppHelper
             .AddEndpointsApiExplorer()
             .AddSwaggerGen(c => c.SwaggerDoc("v1", new() { Title = applicationName, Version = version, }))
             .AddDaprBuses(builder.Configuration)
-            .AddDaprStateStore(builder.Configuration)
-            .AddActors(options =>
-            {
-                options.Actors.RegisterPartitionActors();
-                options.Actors.RegisterSessionActors();
-                registerActors(options.Actors);
-            });
+            .AddDaprStateStore(builder.Configuration);
 
         _ = builder
             .Services

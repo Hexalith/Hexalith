@@ -1,5 +1,6 @@
-﻿// <copyright file="HexalithServerApplication.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="HexalithApiServerApplication.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Application.Modules.Applications;
@@ -12,15 +13,12 @@ using System.Reflection;
 /// <summary>
 /// Application definition base class.
 /// </summary>
-public abstract class HexalithServerApplication : HexalithApplication, IServerApplication
+public abstract class HexalithApiServerApplication : HexalithApplication, IApiServerApplication
 {
     private IEnumerable<Type>? _modules;
-    private IEnumerable<Assembly>? _presentationAssemblies;
 
-    /// <summary>
-    /// Gets the client application type.
-    /// </summary>
-    public abstract Type ClientApplicationType { get; }
+    /// <inheritdoc/>
+    public abstract IEnumerable<Type> ApiServerModules { get; }
 
     /// <inheritdoc/>
     public override string HomePath => Shared.HomePath;
@@ -42,7 +40,7 @@ public abstract class HexalithServerApplication : HexalithApplication, IServerAp
 
     /// <inheritdoc/>
     public override IEnumerable<Type> Modules => _modules ??=
-        [.. ServerModules
+        [.. ApiServerModules
         .Union(Shared.SharedModules)
         .Distinct()
         .OrderBy(p => p.FullName)];
@@ -51,18 +49,7 @@ public abstract class HexalithServerApplication : HexalithApplication, IServerAp
     public override string Name => Shared.Name;
 
     /// <inheritdoc/>
-    public IEnumerable<Assembly> PresentationAssemblies => _presentationAssemblies ??= [.. ServerModules
-        .Select(p => p.Assembly)
-        .Union(Shared.PresentationAssemblies)
-        .Union(Client.PresentationAssemblies)
-        .Distinct()
-        .OrderBy(p => p.FullName)];
-
-    /// <inheritdoc/>
-    public abstract IEnumerable<Type> ServerModules { get; }
-
-    /// <inheritdoc/>
-    public abstract Type SharedApplicationType { get; }
+    public abstract Type SharedAssetsApplicationType { get; }
 
     /// <inheritdoc/>
     public override string Version => Shared.Version;
@@ -75,7 +62,7 @@ public abstract class HexalithServerApplication : HexalithApplication, IServerAp
     {
         ArgumentNullException.ThrowIfNull(actors, nameof(actors));
 
-        foreach (Type module in ServerModules)
+        foreach (Type module in ApiServerModules)
         {
             MethodInfo? moduleMethod = module.GetMethod(
                 nameof(RegisterActors),

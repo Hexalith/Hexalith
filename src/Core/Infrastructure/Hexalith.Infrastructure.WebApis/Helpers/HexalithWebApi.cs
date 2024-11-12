@@ -19,7 +19,6 @@ using Hexalith.Application.Tasks;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.AspireService.Defaults;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
-using Hexalith.PolymorphicSerialization;
 
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -62,27 +61,20 @@ public static partial class HexalithWebApi
         builder
             .Services
             .AddEndpointsApiExplorer()
-            .AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc(
+            .AddSwaggerGen(c => c.SwaggerDoc(
                 "v1",
                 new()
                 {
                     Title = applicationName,
                     Version = version,
-                });
-                c.OperationFilter<DaprTokenOperationFilter>();
-            })
+                }))
         .AddDaprBuses(builder.Configuration)
         .AddDaprStateStore(builder.Configuration)
         .AddActors(options =>
-        {
-            options.UseJsonSerialization = true;
-            options.JsonSerializerOptions = PolymorphicHelper.DefaultJsonSerializerOptions;
 
             // Register actor types and configure actor settings
-            registerActors(options.Actors);
-        });
+            registerActors(options.Actors));
+
         _ = builder
             .Services
             .AddProblemDetails()
@@ -90,11 +82,6 @@ public static partial class HexalithWebApi
             .AddControllers()
             .AddDapr();
 
-        // if (debugInVisualStudio)
-        // {
-        //    // When debugging, we want to be able to run the application inside Visual Studio to see the technical details.
-        //    _ = builder.Services.AddDaprSidekick(builder.Configuration);
-        // }
         _ = builder.Services.AddValidatorsFromAssemblyContaining<CommandBusSettingsValidator>(ServiceLifetime.Singleton);
         builder.Services.TryAddSingleton(TimeProvider.System);
         builder.Services.TryAddSingleton<IResiliencyPolicyProvider, ResiliencyPolicyProvider>();
@@ -136,8 +123,6 @@ public static partial class HexalithWebApi
         _ = app.UseExceptionHandler();
 
         _ = app.UseRouting();
-        _ = app.UseAuthentication();
-        _ = app.UseAuthorization();
         _ = app.MapActorsHandlers();
         _ = app.UseSwagger();
         _ = app.UseSwaggerUI();

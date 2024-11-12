@@ -20,7 +20,7 @@ using Microsoft.Extensions.DependencyInjection;
 /// <summary>
 /// Represents the HexalithWeb module for customer management.
 /// </summary>
-public class HexalithUIComponentsSharedModule : ISharedApplicationModule
+public class HexalithUIComponentsSharedModule : ISharedAssetsApplicationModule
 {
     /// <inheritdoc/>
     public IEnumerable<string> Dependencies => [];
