@@ -4,7 +4,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Serilog.Extensions.Logging" Version="$(SerilogVersion)" />
-		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="$(AspNetCorePackagesVersion)" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="$(SystemIdentityModelTokensJwtVersion)" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="$(AspNetCorePackagesVersion)" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="$(AspNetCorePackagesVersion)" />
 		<PackageReference Include="Serilog.Sinks.BrowserConsole" Version="$(SerilogSinksBrowserVersion)" />

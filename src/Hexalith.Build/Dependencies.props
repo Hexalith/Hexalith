@@ -3,7 +3,7 @@
     <!-- Detect if the solution is opened in VS to add local repository for packages -->
     <AdaptiveCardsVersion>3.1.0</AdaptiveCardsVersion>
     <AdaptiveCardsTemplatingVersion>2.0.2</AdaptiveCardsTemplatingVersion>
-    <AspireVersion>8.2.2</AspireVersion>
+    <AspireVersion>9.0.0-*</AspireVersion>
     <AzureIdentityVersion>1.10.4</AzureIdentityVersion>
     <AzureBicepCoreVersion>0.26.54</AzureBicepCoreVersion>
     <AzureMonitorOpenTelemetryAspNetCoreVersion>1.1.0</AzureMonitorOpenTelemetryAspNetCoreVersion>
@@ -61,6 +61,7 @@
     <SerilogSinksDebugVersion>3.0.*</SerilogSinksDebugVersion>
     <StyleCopAnalyzersVersion>1.2.0-beta.556</StyleCopAnalyzersVersion>
     <SwashbuckleAspNetCoreVersion>6.9.0</SwashbuckleAspNetCoreVersion>
+    <SystemIdentityModelTokensJwtVersion>8.2.0</SystemIdentityModelTokensJwtVersion>
     <XUnitRunnerVisualStudioVersion>2.8.2</XUnitRunnerVisualStudioVersion>
     <XUnitVersion>2.9.2</XUnitVersion>
   </PropertyGroup>
