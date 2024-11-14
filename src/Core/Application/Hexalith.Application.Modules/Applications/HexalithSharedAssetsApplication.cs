@@ -25,17 +25,17 @@ public abstract class HexalithSharedAssetsApplication : HexalithApplication, ISh
 
     /// <inheritdoc/>
     public override IEnumerable<Type> Modules => _modules ??=
-        [.. SharedModules
+        [.. SharedAssetsModules
         .Distinct()
         .OrderBy(p => p.FullName)];
 
     /// <inheritdoc/>
     public IEnumerable<Assembly> PresentationAssemblies
-        => _presentationAssemblies ??= SharedModules
+        => _presentationAssemblies ??= SharedAssetsModules
             .Select(x => x.Assembly)
             .Distinct()
             .OrderBy(p => p.FullName);
 
     /// <inheritdoc/>
-    public abstract IEnumerable<Type> SharedModules { get; }
+    public abstract IEnumerable<Type> SharedAssetsModules { get; }
 }

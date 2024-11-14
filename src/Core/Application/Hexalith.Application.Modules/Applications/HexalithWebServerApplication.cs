@@ -38,7 +38,7 @@ public abstract class HexalithWebServerApplication : HexalithApplication, IWebSe
     /// <inheritdoc/>
     public override IEnumerable<Type> Modules => _modules ??=
         [.. WebServerModules
-        .Union(SharedAssetsApplication.SharedModules)
+        .Union(SharedAssetsApplication.SharedAssetsModules)
         .Distinct()
         .OrderBy(p => p.FullName)];
 

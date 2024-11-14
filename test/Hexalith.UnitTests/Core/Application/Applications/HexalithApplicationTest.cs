@@ -1,7 +1,6 @@
-﻿// <copyright file="HexalithApplicationTest.cs">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="HexalithApplicationTest.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.UnitTests.Core.Application.Applications;
@@ -23,7 +22,7 @@ public class HexalithApplicationTest
         ServiceCollection services = [];
         Mock<IConfiguration> configurationMock = new();
 
-        HexalithApplication.AddClientServices(services, configurationMock.Object);
+        HexalithApplication.AddWebAppServices(services, configurationMock.Object);
 
         // Check that the services have been added
         _ = services
@@ -46,7 +45,7 @@ public class HexalithApplicationTest
         ServiceCollection services = [];
         Mock<IConfiguration> configurationMock = new();
 
-        HexalithApplication.AddServerServices(services, configurationMock.Object);
+        HexalithApplication.AddWebServerServices(services, configurationMock.Object);
 
         // Check that the services have been added
         _ = services
@@ -69,7 +68,7 @@ public class HexalithApplicationTest
         ServiceCollection services = [];
         Mock<IConfiguration> configurationMock = new();
 
-        HexalithApplication.AddSharedServices(services, configurationMock.Object);
+        HexalithApplication.AddSharedAssetsServices(services, configurationMock.Object);
 
         // Check that the services have been added
         _ = services.Where(p => p.ImplementationType == typeof(DummySharedService))
@@ -86,26 +85,26 @@ public class HexalithApplicationTest
     }
 
     [Fact]
-    public void HexalithApplicationShouldInstanciateClientModule()
+    public void HexalithApplicationShredAssetsModuleShouldBeInstantiated()
         => HexalithApplication
-            .Client
-            .ClientModules
+            .SharedAssetsApplication
+            .SharedAssetsModules
+            .Should()
+            .Contain(typeof(DummySharedModule));
+
+    [Fact]
+    public void HexalithApplicationWebAppModuleShouldBeInstantiated()
+        => HexalithApplication
+            .WebAppApplication
+            .WebAppModules
             .Should()
             .Contain(typeof(DummyClientModule));
 
     [Fact]
-    public void HexalithApplicationShouldInstanciateServerModule()
+    public void HexalithApplicationWebServerModuleShouldBeInstantiated()
         => HexalithApplication
-            .Server
-            .ServerModules
+            .WebServerApplication
+            .WebServerModules
             .Should()
             .Contain(typeof(DummyServerModule));
-
-    [Fact]
-    public void HexalithApplicationShouldInstanciateSharedModule()
-        => HexalithApplication
-            .Shared
-            .SharedModules
-            .Should()
-            .Contain(typeof(DummySharedModule));
 }

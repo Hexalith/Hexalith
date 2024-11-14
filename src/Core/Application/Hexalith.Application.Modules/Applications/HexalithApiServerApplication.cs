@@ -41,7 +41,7 @@ public abstract class HexalithApiServerApplication : HexalithApplication, IApiSe
     /// <inheritdoc/>
     public override IEnumerable<Type> Modules => _modules ??=
         [.. ApiServerModules
-        .Union(SharedAssetsApplication.SharedModules)
+        .Union(SharedAssetsApplication.SharedAssetsModules)
         .Distinct()
         .OrderBy(p => p.FullName)];
 

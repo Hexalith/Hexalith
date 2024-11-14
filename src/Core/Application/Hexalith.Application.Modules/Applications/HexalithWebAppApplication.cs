@@ -18,9 +18,6 @@ public abstract class HexalithWebAppApplication : HexalithApplication, IWebAppAp
     private IEnumerable<Assembly>? _presentationAssemblies;
 
     /// <inheritdoc/>
-    public abstract IEnumerable<Type> WebAppModules { get; }
-
-    /// <inheritdoc/>
     public override string HomePath => SharedAssetsApplication.HomePath;
 
     /// <inheritdoc/>
@@ -41,7 +38,7 @@ public abstract class HexalithWebAppApplication : HexalithApplication, IWebAppAp
     /// <inheritdoc/>
     public override IEnumerable<Type> Modules => _modules ??=
         [.. WebAppModules
-        .Union(SharedAssetsApplication.SharedModules)
+        .Union(SharedAssetsApplication.SharedAssetsModules)
         .Distinct()
         .OrderBy(p => p.FullName)];
 
@@ -60,4 +57,7 @@ public abstract class HexalithWebAppApplication : HexalithApplication, IWebAppAp
 
     /// <inheritdoc/>
     public override string Version => SharedAssetsApplication.Version;
+
+    /// <inheritdoc/>
+    public abstract IEnumerable<Type> WebAppModules { get; }
 }

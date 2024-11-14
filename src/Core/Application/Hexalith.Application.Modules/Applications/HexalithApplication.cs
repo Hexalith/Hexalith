@@ -25,7 +25,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 public abstract class HexalithApplication : IApplication
 {
     private static IApiServerApplication? _apiServerApplication;
-    private static ISharedAssetsApplication? _sharedApplication;
+    private static ISharedAssetsApplication? _sharedAssetsApplication;
     private static IWebAppApplication? _webAppApplication;
     private static IWebServerApplication? _webServerApplication;
 
@@ -59,23 +59,23 @@ public abstract class HexalithApplication : IApplication
     {
         get
         {
-            if (_sharedApplication == null)
+            if (_sharedAssetsApplication == null)
             {
                 if (_webServerApplication is not null)
                 {
-                    _sharedApplication = Activator.CreateInstance(WebServerApplication.SharedAssetsApplicationType) as ISharedAssetsApplication;
+                    _sharedAssetsApplication = Activator.CreateInstance(WebServerApplication.SharedAssetsApplicationType) as ISharedAssetsApplication;
                 }
                 else if (_webAppApplication is not null)
                 {
-                    _sharedApplication = Activator.CreateInstance(WebAppApplication.SharedAssetsApplicationType) as ISharedAssetsApplication;
+                    _sharedAssetsApplication = Activator.CreateInstance(WebAppApplication.SharedAssetsApplicationType) as ISharedAssetsApplication;
                 }
                 else if (_apiServerApplication is not null)
                 {
-                    _sharedApplication = Activator.CreateInstance(ApiServerApplication.SharedAssetsApplicationType) as ISharedAssetsApplication;
+                    _sharedAssetsApplication = Activator.CreateInstance(ApiServerApplication.SharedAssetsApplicationType) as ISharedAssetsApplication;
                 }
             }
 
-            return _sharedApplication ??= GetApplication<ISharedAssetsApplication>() ?? throw new InvalidOperationException("No shared assets application implementation found. Ensure a class implementing ISharedAssetsApplication exists and is accessible.");
+            return _sharedAssetsApplication ??= GetApplication<ISharedAssetsApplication>() ?? throw new InvalidOperationException("No shared assets application implementation found. Ensure a class implementing ISharedAssetsApplication exists and is accessible.");
         }
     }
 
