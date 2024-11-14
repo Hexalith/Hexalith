@@ -257,7 +257,6 @@ public static class ServerSideClientAppHelper
             .AddInteractiveWebAssemblyRenderMode()
             .AddAdditionalAssemblies([.. HexalithApplication.WebAppApplication.PresentationAssemblies]);
 
-        _ = app.MapActorsHandlers();
         app.UseHexalithModules();
 
         return app;
