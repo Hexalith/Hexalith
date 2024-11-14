@@ -21,10 +21,10 @@ public abstract class HexalithApiServerApplication : HexalithApplication, IApiSe
     public abstract IEnumerable<Type> ApiServerModules { get; }
 
     /// <inheritdoc/>
-    public override string HomePath => Shared.HomePath;
+    public override string HomePath => SharedAssetsApplication.HomePath;
 
     /// <inheritdoc/>
-    public override string Id => Shared.Id;
+    public override string Id => SharedAssetsApplication.Id;
 
     /// <inheritdoc/>
     public override bool IsClient => false;
@@ -33,26 +33,26 @@ public abstract class HexalithApiServerApplication : HexalithApplication, IApiSe
     public override bool IsServer => true;
 
     /// <inheritdoc/>
-    public override string LoginPath => Shared.LoginPath;
+    public override string LoginPath => SharedAssetsApplication.LoginPath;
 
     /// <inheritdoc/>
-    public override string LogoutPath => Shared.LogoutPath;
+    public override string LogoutPath => SharedAssetsApplication.LogoutPath;
 
     /// <inheritdoc/>
     public override IEnumerable<Type> Modules => _modules ??=
         [.. ApiServerModules
-        .Union(Shared.SharedModules)
+        .Union(SharedAssetsApplication.SharedModules)
         .Distinct()
         .OrderBy(p => p.FullName)];
 
     /// <inheritdoc/>
-    public override string Name => Shared.Name;
+    public override string Name => SharedAssetsApplication.Name;
 
     /// <inheritdoc/>
     public abstract Type SharedAssetsApplicationType { get; }
 
     /// <inheritdoc/>
-    public override string Version => Shared.Version;
+    public override string Version => SharedAssetsApplication.Version;
 
     /// <summary>
     /// Registers the actors associated with the application.

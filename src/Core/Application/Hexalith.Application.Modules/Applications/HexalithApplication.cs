@@ -18,163 +18,269 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
 /// <summary>
-/// Application definition base class.
+/// Represents the base class for Hexalith applications, providing core functionality for application configuration,
+/// service registration, and module management. This abstract class serves as a foundation for different types of
+/// applications within the Hexalith framework, including API servers, web applications, and shared assets.
 /// </summary>
 public abstract class HexalithApplication : IApplication
 {
-    private static IWebAppApplication? _clientApplication;
-
-    private static IWebServerApplication? _serverApplication;
-
+    private static IApiServerApplication? _apiServerApplication;
     private static ISharedAssetsApplication? _sharedApplication;
+    private static IWebAppApplication? _webAppApplication;
+    private static IWebServerApplication? _webServerApplication;
 
     /// <summary>
-    /// Gets the client application.
+    /// Gets the singleton instance of the API server application.
     /// </summary>
-    public static IWebAppApplication Client
-        => ClientApplication
-            ?? throw new InvalidOperationException($"No client application found. Please add a class implementing {nameof(IWebAppApplication)}.");
+    /// <remarks>
+    /// The instance is created lazily upon first access. If no implementation is found,
+    /// an InvalidOperationException is thrown.
+    /// </remarks>
+    /// <exception cref="InvalidOperationException">
+    /// Thrown when no API server application implementation is found in the application domain.
+    /// </exception>
+    public static IApiServerApplication ApiServerApplication
+            => _apiServerApplication ??= GetApplication<IApiServerApplication>()
+                ?? throw new InvalidOperationException("No API server application implementation found. Ensure a class implementing IApiServerApplication exists and is accessible.");
 
     /// <summary>
-    /// Gets the server application.
+    /// Gets the singleton instance of the shared assets application.
     /// </summary>
-    public static IWebServerApplication Server
-        => ServerApplication
-            ?? throw new InvalidOperationException($"No server application found. Please check if you are server side or add a class implementing {nameof(IWebServerApplication)}.");
-
-    /// <summary>
-    /// Gets the shared application.
-    /// </summary>
-    public static ISharedAssetsApplication Shared
-        => SharedApplication
-            ?? throw new InvalidOperationException($"No shared application found. Please add a class implementing {nameof(ISharedAssetsApplication)}.");
-
-    /// <inheritdoc/>
-    IWebAppApplication IApplication.Client => Client;
-
-    /// <inheritdoc/>
-    public abstract string HomePath { get; }
-
-    /// <inheritdoc/>
-    public abstract string Id { get; }
-
-    /// <inheritdoc/>
-    public abstract bool IsClient { get; }
-
-    /// <inheritdoc/>
-    public abstract bool IsServer { get; }
-
-    /// <inheritdoc/>
-    public abstract string LoginPath { get; }
-
-    /// <inheritdoc/>
-    public abstract string LogoutPath { get; }
-
-    /// <inheritdoc/>
-    public abstract IEnumerable<Type> Modules { get; }
-
-    /// <inheritdoc/>
-    public abstract string Name { get; }
-
-    /// <inheritdoc/>
-    IWebServerApplication IApplication.Server => Server;
-
-    /// <inheritdoc/>
-    public string SessionCookieName => $".{Shared.Id}.Session";
-
-    /// <inheritdoc/>
-    ISharedAssetsApplication IApplication.Shared => Shared;
-
-    /// <inheritdoc/>
-    public abstract string Version { get; }
-
-    /// <summary>
-    /// Gets the client application.
-    /// </summary>
-    /// <returns>The application instance.</returns>
-    /// <exception cref="InvalidOperationException">No application found.</exception>
-    private static IWebAppApplication? ClientApplication
-        => _clientApplication ??= (ServerApplication is null)
-                ? GetApplication<IWebAppApplication>() :
-                (IWebAppApplication?)Activator.CreateInstance(Server.WebAppApplicationType);
-
-    /// <summary>
-    /// Gets the client application.
-    /// </summary>
-    /// <returns>The application instance.</returns>
-    /// <exception cref="InvalidOperationException">No application found.</exception>
-    private static IWebServerApplication? ServerApplication
-        => _serverApplication ??= GetApplication<IWebServerApplication>();
-
-    /// <summary>
-    /// Gets the shared application.
-    /// </summary>
-    /// <returns>The application instance.</returns>
-    /// <exception cref="InvalidOperationException">No application found.</exception>
-    private static ISharedAssetsApplication? SharedApplication
-        => _sharedApplication ??= (ServerApplication is null)
-                ? (ClientApplication is null)
-                    ? GetApplication<ISharedAssetsApplication>()
-                    : (ISharedAssetsApplication?)Activator.CreateInstance(Client.SharedAssetsApplicationType)
-                : (ISharedAssetsApplication?)Activator.CreateInstance(Server.SharedAssetsApplicationType);
-
-    /// <summary>
-    /// Adds client services to the service collection.
-    /// </summary>
-    /// <param name="services">The service collection.</param>
-    /// <param name="configuration">The configuration.</param>
-    public static void AddClientServices(IServiceCollection services, IConfiguration configuration)
-        => Client.AddServices(services, configuration);
-
-    /// <summary>
-    /// Adds server services to the service collection.
-    /// </summary>
-    /// <param name="services">The service collection.</param>
-    /// <param name="configuration">The configuration.</param>
-    public static void AddServerServices(IServiceCollection services, IConfiguration configuration)
-        => Server.AddServices(services, configuration);
-
-    /// <summary>
-    /// Adds shared services to the service collection.
-    /// </summary>
-    /// <param name="services">The service collection.</param>
-    /// <param name="configuration">The configuration.</param>
-    public static void AddSharedServices(IServiceCollection services, IConfiguration configuration)
-        => Shared.AddServices(services, configuration);
-
-    /// <summary>
-    /// Gets the application of the specified type.
-    /// </summary>
-    /// <typeparam name="TApplication">The application type.</typeparam>
-    /// <returns>The application instance.</returns>
-    /// <exception cref="InvalidOperationException">Found more than one application.</exception>
-    public static TApplication? GetApplication<TApplication>()
-            where TApplication : IApplication
+    /// <remarks>
+    /// The instance is created based on the following priority:
+    /// 1. If WebServerApplication exists, uses its SharedAssetsApplicationType
+    /// 2. If WebAppApplication exists, uses its SharedAssetsApplicationType
+    /// 3. Attempts to find a standalone implementation.
+    /// </remarks>
+    /// <exception cref="InvalidOperationException">
+    /// Thrown when no shared assets application implementation can be found or instantiated.
+    /// </exception>
+    public static ISharedAssetsApplication SharedAssetsApplication
     {
-        TApplication[] applications = [.. ReflectionHelper.GetInstantiableObjectsOf<TApplication>()];
-        return applications.Length > 1
-            ? throw new InvalidOperationException($"Found more than one application of type {nameof(TApplication)} : {string.Join("; ", applications.Select(p => p.GetType().Name))}.")
-            : applications.FirstOrDefault();
+        get
+        {
+            if (_sharedApplication == null)
+            {
+                if (_webServerApplication is not null)
+                {
+                    _sharedApplication = Activator.CreateInstance(WebServerApplication.SharedAssetsApplicationType) as ISharedAssetsApplication;
+                }
+                else if (_webAppApplication is not null)
+                {
+                    _sharedApplication = Activator.CreateInstance(WebAppApplication.SharedAssetsApplicationType) as ISharedAssetsApplication;
+                }
+                else if (_apiServerApplication is not null)
+                {
+                    _sharedApplication = Activator.CreateInstance(ApiServerApplication.SharedAssetsApplicationType) as ISharedAssetsApplication;
+                }
+            }
+
+            return _sharedApplication ??= GetApplication<ISharedAssetsApplication>() ?? throw new InvalidOperationException("No shared assets application implementation found. Ensure a class implementing ISharedAssetsApplication exists and is accessible.");
+        }
     }
 
+    /// <summary>
+    /// Gets the singleton instance of the web application.
+    /// </summary>
+    /// <remarks>
+    /// The instance is created based on the following priority:
+    /// 1. If WebServerApplication exists, uses its WebAppApplicationType
+    /// 2. Attempts to find a standalone implementation.
+    /// </remarks>
+    /// <exception cref="InvalidOperationException">
+    /// Thrown when no web application implementation can be found or instantiated.
+    /// </exception>
+    public static IWebAppApplication WebAppApplication
+    {
+        get
+        {
+            _webAppApplication ??= _webServerApplication is not null
+                    ? Activator.CreateInstance(WebServerApplication.WebAppApplicationType) as IWebAppApplication
+                    : GetApplication<IWebAppApplication>();
+
+            return _webAppApplication ??= GetApplication<IWebAppApplication>() ?? throw new InvalidOperationException("No web app implementation found. Ensure a class implementing ISharedAssetsApplication exists and is accessible.");
+        }
+    }
+
+    /// <summary>
+    /// Gets the singleton instance of the web server application.
+    /// </summary>
+    /// <remarks>
+    /// The instance is created lazily upon first access. If no implementation is found,
+    /// an InvalidOperationException is thrown.
+    /// </remarks>
+    /// <exception cref="InvalidOperationException">
+    /// Thrown when no web server application implementation is found in the application domain.
+    /// </exception>
+    public static IWebServerApplication WebServerApplication
+        => _webServerApplication ??= GetApplication<IWebServerApplication>()
+            ?? throw new InvalidOperationException("No web server application implementation found. Ensure a class implementing IWebServerApplication exists and is accessible.");
+
     /// <inheritdoc/>
+    IApiServerApplication IApplication.ApiServerApplication => ApiServerApplication;
+
+    /// <summary>
+    /// Gets the application's home path.
+    /// </summary>
+    /// <value>
+    /// The root URL path where the application is hosted.
+    /// </value>
+    public abstract string HomePath { get; }
+
+    /// <summary>
+    /// Gets the unique identifier for the application.
+    /// </summary>
+    /// <value>
+    /// A string that uniquely identifies this application instance.
+    /// </value>
+    public abstract string Id { get; }
+
+    /// <summary>
+    /// Gets a value indicating whether this is a client-side application.
+    /// </summary>
+    /// <value>
+    /// true if this is a client-side application; otherwise, false.
+    /// </value>
+    public abstract bool IsClient { get; }
+
+    /// <summary>
+    /// Gets a value indicating whether this is a server-side application.
+    /// </summary>
+    /// <value>
+    /// true if this is a server-side application; otherwise, false.
+    /// </value>
+    public abstract bool IsServer { get; }
+
+    /// <summary>
+    /// Gets the login path for the application.
+    /// </summary>
+    /// <value>
+    /// The URL path where users are redirected for authentication.
+    /// </value>
+    public abstract string LoginPath { get; }
+
+    /// <summary>
+    /// Gets the logout path for the application.
+    /// </summary>
+    /// <value>
+    /// The URL path where users are redirected to end their session.
+    /// </value>
+    public abstract string LogoutPath { get; }
+
+    /// <summary>
+    /// Gets the collection of module types that this application supports.
+    /// </summary>
+    /// <value>
+    /// An enumerable collection of Type objects representing the application modules.
+    /// </value>
+    public abstract IEnumerable<Type> Modules { get; }
+
+    /// <summary>
+    /// Gets the display name of the application.
+    /// </summary>
+    /// <value>
+    /// A human-readable name for the application.
+    /// </value>
+    public abstract string Name { get; }
+
+    /// <summary>
+    /// Gets the session cookie name for the application.
+    /// </summary>
+    /// <value>
+    /// A string in the format ".{SharedAssetsApplication.Id}.Session" used to identify the session cookie.
+    /// </value>
+    public string SessionCookieName => $".{SharedAssetsApplication.Id}.Session";
+
+    /// <inheritdoc/>
+    ISharedAssetsApplication IApplication.SharedAssetsApplication => SharedAssetsApplication;
+
+    /// <summary>
+    /// Gets the version of the application.
+    /// </summary>
+    /// <value>
+    /// A string representing the application's version number.
+    /// </value>
+    public abstract string Version { get; }
+
+    /// <inheritdoc/>
+    IWebAppApplication IApplication.WebAppApplication => WebAppApplication;
+
+    /// <inheritdoc/>
+    IWebServerApplication IApplication.WebServerApplication => WebServerApplication;
+
+    /// <summary>
+    /// Registers API server services with the dependency injection container.
+    /// </summary>
+    /// <param name="services">The service collection to add the services to.</param>
+    /// <param name="configuration">The configuration instance containing service settings.</param>
+    /// <remarks>
+    /// This method delegates the service registration to the ApiServerApplication instance.
+    /// </remarks>
+    public static void AddApiServerServices(IServiceCollection services, IConfiguration configuration)
+        => ApiServerApplication.AddServices(services, configuration);
+
+    /// <summary>
+    /// Registers shared assets services with the dependency injection container.
+    /// </summary>
+    /// <param name="services">The service collection to add the services to.</param>
+    /// <param name="configuration">The configuration instance containing service settings.</param>
+    /// <remarks>
+    /// This method delegates the service registration to the SharedAssetsApplication instance.
+    /// </remarks>
+    public static void AddSharedAssetsServices(IServiceCollection services, IConfiguration configuration)
+        => SharedAssetsApplication.AddServices(services, configuration);
+
+    /// <summary>
+    /// Registers web application services with the dependency injection container.
+    /// </summary>
+    /// <param name="services">The service collection to add the services to.</param>
+    /// <param name="configuration">The configuration instance containing service settings.</param>
+    /// <remarks>
+    /// This method delegates the service registration to the WebAppApplication instance.
+    /// </remarks>
+    public static void AddWebAppServices(IServiceCollection services, IConfiguration configuration)
+        => WebAppApplication.AddServices(services, configuration);
+
+    /// <summary>
+    /// Registers web server services with the dependency injection container.
+    /// </summary>
+    /// <param name="services">The service collection to add the services to.</param>
+    /// <param name="configuration">The configuration instance containing service settings.</param>
+    /// <remarks>
+    /// This method delegates the service registration to the WebServerApplication instance.
+    /// </remarks>
+    public static void AddWebServerServices(IServiceCollection services, IConfiguration configuration)
+        => WebServerApplication.AddServices(services, configuration);
+
+    /// <summary>
+    /// Registers application services with the dependency injection container.
+    /// </summary>
+    /// <param name="services">The service collection to add the services to.</param>
+    /// <param name="configuration">The configuration instance containing service settings.</param>
+    /// <remarks>
+    /// This method performs the following registrations:
+    /// 1. Registers web server application if available
+    /// 2. Registers web application if available
+    /// 3. Registers shared assets application if available
+    /// 4. Registers all application modules and their services.
+    /// </remarks>
     public virtual void AddServices(IServiceCollection services, IConfiguration configuration)
     {
-        if (ServerApplication is not null)
+        if (WebServerApplication is not null)
         {
-            services.TryAddSingleton<IApplication>(Server);
-            services.TryAddSingleton(Server);
+            services.TryAddSingleton<IApplication>(WebServerApplication);
+            services.TryAddSingleton(WebServerApplication);
         }
 
-        if (ClientApplication is not null)
+        if (WebAppApplication is not null)
         {
-            services.TryAddSingleton<IApplication>(Client);
-            services.TryAddSingleton(Client);
+            services.TryAddSingleton<IApplication>(WebAppApplication);
+            services.TryAddSingleton(WebAppApplication);
         }
 
-        if (SharedApplication is not null)
+        if (SharedAssetsApplication is not null)
         {
-            services.TryAddSingleton(Shared);
+            services.TryAddSingleton(SharedAssetsApplication);
         }
 
         foreach (Type module in Modules)
@@ -198,5 +304,26 @@ public abstract class HexalithApplication : IApplication
                 Debug.WriteLine($"The services for module {module.Name} are have been added.");
             }
         }
+    }
+
+    /// <summary>
+    /// Gets the application instance of the specified type.
+    /// </summary>
+    /// <typeparam name="TApplication">The type of application to retrieve.</typeparam>
+    /// <returns>An instance of the specified application type, or null if not found.</returns>
+    /// <remarks>
+    /// This method uses reflection to find and instantiate application implementations.
+    /// Only one implementation of each application type should exist in the application domain.
+    /// </remarks>
+    /// <exception cref="InvalidOperationException">
+    /// Thrown when multiple implementations of the specified application type are found.
+    /// </exception>
+    private static TApplication? GetApplication<TApplication>()
+            where TApplication : IApplication
+    {
+        TApplication[] applications = [.. ReflectionHelper.GetInstantiableObjectsOf<TApplication>()];
+        return applications.Length > 1
+            ? throw new InvalidOperationException($"Multiple implementations of {typeof(TApplication).Name} found: {string.Join("; ", applications.Select(p => p.GetType().Name))}. Only one implementation is allowed.")
+            : applications.FirstOrDefault();
     }
 }

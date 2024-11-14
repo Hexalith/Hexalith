@@ -56,7 +56,6 @@ public static class WebAssemblyClientHelper
             .AddBlazoredSessionStorage()
             .AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>()
             .CreateClient(ClientConstants.FrontApiName));
-        HexalithApplication.AddClientServices(services, configuration);
 
         return services;
     }
@@ -77,7 +76,7 @@ public static class WebAssemblyClientHelper
         _ = builder.Services
             .AddLogging(loggingBuilder => loggingBuilder.AddSerilog(dispose: true))
             .AddHexalithWasmClientApp(builder.Configuration, new Uri(builder.HostEnvironment.BaseAddress));
-        HexalithApplication.AddClientServices(builder.Services, builder.Configuration);
+        HexalithApplication.AddWebAppServices(builder.Services, builder.Configuration);
         return builder;
     }
 

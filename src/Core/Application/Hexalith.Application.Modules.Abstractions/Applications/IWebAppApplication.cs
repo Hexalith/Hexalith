@@ -14,7 +14,7 @@ public interface IWebAppApplication : IApplication
     /// <summary>
     /// Gets the shared modules associated with the application.
     /// </summary>
-    IEnumerable<Type> ClientModules { get; }
+    IEnumerable<Type> WebAppModules { get; }
 
     /// <summary>
     /// Gets the presentation assemblies associated with the application.

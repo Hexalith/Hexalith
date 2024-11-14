@@ -18,10 +18,10 @@ public abstract class HexalithWebServerApplication : HexalithApplication, IWebSe
     private IEnumerable<Assembly>? _presentationAssemblies;
 
     /// <inheritdoc/>
-    public override string HomePath => Shared.HomePath;
+    public override string HomePath => SharedAssetsApplication.HomePath;
 
     /// <inheritdoc/>
-    public override string Id => Shared.Id;
+    public override string Id => SharedAssetsApplication.Id;
 
     /// <inheritdoc/>
     public override bool IsClient => false;
@@ -30,26 +30,26 @@ public abstract class HexalithWebServerApplication : HexalithApplication, IWebSe
     public override bool IsServer => true;
 
     /// <inheritdoc/>
-    public override string LoginPath => Shared.LoginPath;
+    public override string LoginPath => SharedAssetsApplication.LoginPath;
 
     /// <inheritdoc/>
-    public override string LogoutPath => Shared.LogoutPath;
+    public override string LogoutPath => SharedAssetsApplication.LogoutPath;
 
     /// <inheritdoc/>
     public override IEnumerable<Type> Modules => _modules ??=
         [.. WebServerModules
-        .Union(Shared.SharedModules)
+        .Union(SharedAssetsApplication.SharedModules)
         .Distinct()
         .OrderBy(p => p.FullName)];
 
     /// <inheritdoc/>
-    public override string Name => Shared.Name;
+    public override string Name => SharedAssetsApplication.Name;
 
     /// <inheritdoc/>
     public IEnumerable<Assembly> PresentationAssemblies => _presentationAssemblies ??= [.. WebServerModules
         .Select(p => p.Assembly)
-        .Union(Shared.PresentationAssemblies)
-        .Union(Client.PresentationAssemblies)
+        .Union(SharedAssetsApplication.PresentationAssemblies)
+        .Union(WebAppApplication.PresentationAssemblies)
         .Distinct()
         .OrderBy(p => p.FullName)];
 
@@ -57,7 +57,7 @@ public abstract class HexalithWebServerApplication : HexalithApplication, IWebSe
     public abstract Type SharedAssetsApplicationType { get; }
 
     /// <inheritdoc/>
-    public override string Version => Shared.Version;
+    public override string Version => SharedAssetsApplication.Version;
 
     /// <summary>
     /// Gets the client application type.
@@ -66,7 +66,4 @@ public abstract class HexalithWebServerApplication : HexalithApplication, IWebSe
 
     /// <inheritdoc/>
     public abstract IEnumerable<Type> WebServerModules { get; }
-
-    /// <inheritdoc/>
-    public void RegisterActors(object actors) => throw new NotImplementedException();
 }
