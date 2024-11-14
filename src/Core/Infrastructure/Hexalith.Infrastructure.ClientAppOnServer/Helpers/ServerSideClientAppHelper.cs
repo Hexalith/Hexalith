@@ -10,7 +10,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 
 using Dapr.Actors.Client;
-using Dapr.Actors.Runtime;
 
 using FluentValidation;
 
@@ -73,7 +72,6 @@ public static class ServerSideClientAppHelper
     /// <param name="applicationName">The name of the application.</param>
     /// <param name="sessionCookieName">The name of the session cookie.</param>
     /// <param name="version">The version of the application.</param>
-    /// <param name="registerActors">The action to register actors.</param>
     /// <param name="args">The command-line arguments.</param>
     /// <returns>The web application builder.</returns>
     /// <exception cref="InvalidOperationException">Thrown when the connection string 'DefaultConnection' is not found.</exception>
@@ -153,7 +151,7 @@ public static class ServerSideClientAppHelper
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
-        HexalithApplication.AddServerServices(builder.Services, builder.Configuration);
+        HexalithApplication.AddWebServerServices(builder.Services, builder.Configuration);
         return builder;
     }
 
@@ -257,9 +255,8 @@ public static class ServerSideClientAppHelper
             .MapRazorComponents<TApp>()
             .AddInteractiveServerRenderMode()
             .AddInteractiveWebAssemblyRenderMode()
-            .AddAdditionalAssemblies([.. HexalithApplication.Client.PresentationAssemblies]);
+            .AddAdditionalAssemblies([.. HexalithApplication.WebAppApplication.PresentationAssemblies]);
 
-        _ = app.MapActorsHandlers();
         app.UseHexalithModules();
 
         return app;

@@ -29,7 +29,7 @@
   <ItemGroup>
     <None Include="README.md" Pack="true" PackagePath="\" />
     <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers"
-			Version="$(MicrosoftVisualStudioThreadingAnalyzersVersion)">
+      Version="$(MicrosoftVisualStudioThreadingAnalyzersVersion)">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
@@ -43,7 +43,7 @@
   </PropertyGroup>
   <ItemGroup>
     <AdditionalFiles
-			Include="$([MSBuild]::GetPathOfFileAbove('.stylecop.json', '$(MSBuildThisFileDirectory)'))"
-			Link="Properties\.stylecop.json" />
+      Include="$([MSBuild]::GetPathOfFileAbove('.stylecop.json', '$(MSBuildThisFileDirectory)'))"
+      Link="Properties\.stylecop.json" />
   </ItemGroup>
 </Project>

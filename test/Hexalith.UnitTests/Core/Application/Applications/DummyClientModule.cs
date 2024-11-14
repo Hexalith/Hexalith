@@ -1,7 +1,6 @@
-﻿// <copyright file="DummyClientModule.cs">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="DummyClientModule.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.UnitTests.Core.Application.Applications;
@@ -14,7 +13,7 @@ using Hexalith.Application.Modules.Modules;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-internal class DummyClientModule : IClientApplicationModule
+internal class DummyClientModule : IWebAppApplicationModule
 {
     public IEnumerable<string> Dependencies => [];
 

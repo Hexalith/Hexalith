@@ -18,13 +18,10 @@ public abstract class HexalithWebAppApplication : HexalithApplication, IWebAppAp
     private IEnumerable<Assembly>? _presentationAssemblies;
 
     /// <inheritdoc/>
-    public abstract IEnumerable<Type> ClientModules { get; }
+    public override string HomePath => SharedAssetsApplication.HomePath;
 
     /// <inheritdoc/>
-    public override string HomePath => Shared.HomePath;
-
-    /// <inheritdoc/>
-    public override string Id => Shared.Id;
+    public override string Id => SharedAssetsApplication.Id;
 
     /// <inheritdoc/>
     public override bool IsClient => true;
@@ -33,25 +30,25 @@ public abstract class HexalithWebAppApplication : HexalithApplication, IWebAppAp
     public override bool IsServer => false;
 
     /// <inheritdoc/>
-    public override string LoginPath => Shared.LoginPath;
+    public override string LoginPath => SharedAssetsApplication.LoginPath;
 
     /// <inheritdoc/>
-    public override string LogoutPath => Shared.LogoutPath;
+    public override string LogoutPath => SharedAssetsApplication.LogoutPath;
 
     /// <inheritdoc/>
     public override IEnumerable<Type> Modules => _modules ??=
-        [.. ClientModules
-        .Union(Shared.SharedModules)
+        [.. WebAppModules
+        .Union(SharedAssetsApplication.SharedAssetsModules)
         .Distinct()
         .OrderBy(p => p.FullName)];
 
     /// <inheritdoc/>
-    public override string Name => Shared.Name;
+    public override string Name => SharedAssetsApplication.Name;
 
     /// <inheritdoc/>
-    public IEnumerable<Assembly> PresentationAssemblies => _presentationAssemblies ??= [.. ClientModules
+    public IEnumerable<Assembly> PresentationAssemblies => _presentationAssemblies ??= [.. WebAppModules
         .Select(p => p.Assembly)
-        .Union(Shared.PresentationAssemblies)
+        .Union(SharedAssetsApplication.PresentationAssemblies)
         .Distinct()
         .OrderBy(p => p.FullName)];
 
@@ -59,5 +56,8 @@ public abstract class HexalithWebAppApplication : HexalithApplication, IWebAppAp
     public abstract Type SharedAssetsApplicationType { get; }
 
     /// <inheritdoc/>
-    public override string Version => Shared.Version;
+    public override string Version => SharedAssetsApplication.Version;
+
+    /// <inheritdoc/>
+    public abstract IEnumerable<Type> WebAppModules { get; }
 }

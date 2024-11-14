@@ -13,11 +13,11 @@ using Microsoft.Extensions.DependencyInjection;
 public interface IApplication
 {
     /// <summary>
-    /// Gets the client application.
+    /// Gets the server application.
     /// </summary>
     /// <returns>The application instance.</returns>
     /// <exception cref="InvalidOperationException">No application found.</exception>
-    public IWebAppApplication Client { get; }
+    public IApiServerApplication ApiServerApplication { get; }
 
     /// <summary>
     /// Gets the home path of the application.
@@ -60,13 +60,6 @@ public interface IApplication
     public string Name { get; }
 
     /// <summary>
-    /// Gets the server application.
-    /// </summary>
-    /// <returns>The application instance.</returns>
-    /// <exception cref="InvalidOperationException">No application found.</exception>
-    public IWebServerApplication Server { get; }
-
-    /// <summary>
     /// Gets the session cookie name.
     /// </summary>
     public string SessionCookieName { get; }
@@ -76,12 +69,26 @@ public interface IApplication
     /// </summary>
     /// <returns>The application instance.</returns>
     /// <exception cref="InvalidOperationException">No application found.</exception>
-    public ISharedAssetsApplication Shared { get; }
+    public ISharedAssetsApplication SharedAssetsApplication { get; }
 
     /// <summary>
     /// Gets the version of the application.
     /// </summary>
     public string Version { get; }
+
+    /// <summary>
+    /// Gets the client application.
+    /// </summary>
+    /// <returns>The application instance.</returns>
+    /// <exception cref="InvalidOperationException">No application found.</exception>
+    public IWebAppApplication WebAppApplication { get; }
+
+    /// <summary>
+    /// Gets the server application.
+    /// </summary>
+    /// <returns>The application instance.</returns>
+    /// <exception cref="InvalidOperationException">No application found.</exception>
+    public IWebServerApplication WebServerApplication { get; }
 
     /// <summary>
     /// Adds services to the application.

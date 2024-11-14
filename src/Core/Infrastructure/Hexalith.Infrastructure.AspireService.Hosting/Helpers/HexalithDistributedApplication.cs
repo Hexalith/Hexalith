@@ -68,7 +68,6 @@ public class HexalithDistributedApplication(string[] args)
             .WithEnvironmentFromConfiguration("Cosmos__DatabaseName")
             .WithSecretFromConfiguration("CommandBus__Password", false)
             .WithSecretFromConfiguration("RequestBus__Password", false)
-            .WithSecretFromConfiguration("NotificationBus__Password", false)
             .WithSecretFromConfiguration("EventBus__Password", false);
         return project;
     }
