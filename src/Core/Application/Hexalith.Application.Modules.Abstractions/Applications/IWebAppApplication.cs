@@ -23,7 +23,7 @@ public interface IWebAppApplication : IApplication
 
     /// <summary>
     /// Gets the shared application type.
-    /// Must be a type that implements <see cref="ISharedAssetsApplication"/>.
+    /// Must be a type that implements <see cref="ISharedUIElementsApplication"/>.
     /// </summary>
-    Type SharedAssetsApplicationType { get; }
+    Type SharedUIElementsApplicationType { get; }
 }

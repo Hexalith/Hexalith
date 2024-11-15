@@ -21,10 +21,10 @@ public abstract class HexalithApiServerApplication : HexalithApplication, IApiSe
     public abstract IEnumerable<Type> ApiServerModules { get; }
 
     /// <inheritdoc/>
-    public override string HomePath => SharedAssetsApplication.HomePath;
+    public override string HomePath => SharedUIElementsApplication.HomePath;
 
     /// <inheritdoc/>
-    public override string Id => SharedAssetsApplication.Id;
+    public override string Id => SharedUIElementsApplication.Id;
 
     /// <inheritdoc/>
     public override bool IsClient => false;
@@ -33,26 +33,26 @@ public abstract class HexalithApiServerApplication : HexalithApplication, IApiSe
     public override bool IsServer => true;
 
     /// <inheritdoc/>
-    public override string LoginPath => SharedAssetsApplication.LoginPath;
+    public override string LoginPath => SharedUIElementsApplication.LoginPath;
 
     /// <inheritdoc/>
-    public override string LogoutPath => SharedAssetsApplication.LogoutPath;
+    public override string LogoutPath => SharedUIElementsApplication.LogoutPath;
 
     /// <inheritdoc/>
     public override IEnumerable<Type> Modules => _modules ??=
         [.. ApiServerModules
-        .Union(SharedAssetsApplication.SharedAssetsModules)
+        .Union(SharedUIElementsApplication.SharedUIElementsModules)
         .Distinct()
         .OrderBy(p => p.FullName)];
 
     /// <inheritdoc/>
-    public override string Name => SharedAssetsApplication.Name;
+    public override string Name => SharedUIElementsApplication.Name;
 
     /// <inheritdoc/>
-    public abstract Type SharedAssetsApplicationType { get; }
+    public abstract Type SharedUIElementsApplicationType { get; }
 
     /// <inheritdoc/>
-    public override string Version => SharedAssetsApplication.Version;
+    public override string Version => SharedUIElementsApplication.Version;
 
     /// <summary>
     /// Registers the actors associated with the application.

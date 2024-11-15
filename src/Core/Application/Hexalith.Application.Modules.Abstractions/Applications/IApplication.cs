@@ -69,7 +69,7 @@ public interface IApplication
     /// </summary>
     /// <returns>The application instance.</returns>
     /// <exception cref="InvalidOperationException">No application found.</exception>
-    public ISharedAssetsApplication SharedAssetsApplication { get; }
+    public ISharedUIElementsApplication SharedUIElementsApplication { get; }
 
     /// <summary>
     /// Gets the version of the application.

@@ -25,7 +25,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 public abstract class HexalithApplication : IApplication
 {
     private static IApiServerApplication? _apiServerApplication;
-    private static ISharedAssetsApplication? _sharedAssetsApplication;
+    private static ISharedUIElementsApplication? _SharedUIElementsApplication;
     private static IWebAppApplication? _webAppApplication;
     private static IWebServerApplication? _webServerApplication;
 
@@ -48,34 +48,34 @@ public abstract class HexalithApplication : IApplication
     /// </summary>
     /// <remarks>
     /// The instance is created based on the following priority:
-    /// 1. If WebServerApplication exists, uses its SharedAssetsApplicationType
-    /// 2. If WebAppApplication exists, uses its SharedAssetsApplicationType
+    /// 1. If WebServerApplication exists, uses its SharedUIElementsApplicationType
+    /// 2. If WebAppApplication exists, uses its SharedUIElementsApplicationType
     /// 3. Attempts to find a standalone implementation.
     /// </remarks>
     /// <exception cref="InvalidOperationException">
     /// Thrown when no shared assets application implementation can be found or instantiated.
     /// </exception>
-    public static ISharedAssetsApplication SharedAssetsApplication
+    public static ISharedUIElementsApplication SharedUIElementsApplication
     {
         get
         {
-            if (_sharedAssetsApplication == null)
+            if (_SharedUIElementsApplication == null)
             {
                 if (_webServerApplication is not null)
                 {
-                    _sharedAssetsApplication = Activator.CreateInstance(WebServerApplication.SharedAssetsApplicationType) as ISharedAssetsApplication;
+                    _SharedUIElementsApplication = Activator.CreateInstance(WebServerApplication.SharedUIElementsApplicationType) as ISharedUIElementsApplication;
                 }
                 else if (_webAppApplication is not null)
                 {
-                    _sharedAssetsApplication = Activator.CreateInstance(WebAppApplication.SharedAssetsApplicationType) as ISharedAssetsApplication;
+                    _SharedUIElementsApplication = Activator.CreateInstance(WebAppApplication.SharedUIElementsApplicationType) as ISharedUIElementsApplication;
                 }
                 else if (_apiServerApplication is not null)
                 {
-                    _sharedAssetsApplication = Activator.CreateInstance(ApiServerApplication.SharedAssetsApplicationType) as ISharedAssetsApplication;
+                    _SharedUIElementsApplication = Activator.CreateInstance(ApiServerApplication.SharedUIElementsApplicationType) as ISharedUIElementsApplication;
                 }
             }
 
-            return _sharedAssetsApplication ??= GetApplication<ISharedAssetsApplication>() ?? throw new InvalidOperationException("No shared assets application implementation found. Ensure a class implementing ISharedAssetsApplication exists and is accessible.");
+            return _SharedUIElementsApplication ??= GetApplication<ISharedUIElementsApplication>() ?? throw new InvalidOperationException("No shared assets application implementation found. Ensure a class implementing ISharedUIElementsApplication exists and is accessible.");
         }
     }
 
@@ -98,7 +98,7 @@ public abstract class HexalithApplication : IApplication
                     ? Activator.CreateInstance(WebServerApplication.WebAppApplicationType) as IWebAppApplication
                     : GetApplication<IWebAppApplication>();
 
-            return _webAppApplication ??= GetApplication<IWebAppApplication>() ?? throw new InvalidOperationException("No web app implementation found. Ensure a class implementing ISharedAssetsApplication exists and is accessible.");
+            return _webAppApplication ??= GetApplication<IWebAppApplication>() ?? throw new InvalidOperationException("No web app implementation found. Ensure a class implementing ISharedUIElementsApplication exists and is accessible.");
         }
     }
 
@@ -187,12 +187,12 @@ public abstract class HexalithApplication : IApplication
     /// Gets the session cookie name for the application.
     /// </summary>
     /// <value>
-    /// A string in the format ".{SharedAssetsApplication.Id}.Session" used to identify the session cookie.
+    /// A string in the format ".{SharedUIElementsApplication.Id}.Session" used to identify the session cookie.
     /// </value>
-    public string SessionCookieName => $".{SharedAssetsApplication.Id}.Session";
+    public string SessionCookieName => $".{SharedUIElementsApplication.Id}.Session";
 
     /// <inheritdoc/>
-    ISharedAssetsApplication IApplication.SharedAssetsApplication => SharedAssetsApplication;
+    ISharedUIElementsApplication IApplication.SharedUIElementsApplication => SharedUIElementsApplication;
 
     /// <summary>
     /// Gets the version of the application.
@@ -225,10 +225,10 @@ public abstract class HexalithApplication : IApplication
     /// <param name="services">The service collection to add the services to.</param>
     /// <param name="configuration">The configuration instance containing service settings.</param>
     /// <remarks>
-    /// This method delegates the service registration to the SharedAssetsApplication instance.
+    /// This method delegates the service registration to the SharedUIElementsApplication instance.
     /// </remarks>
-    public static void AddSharedAssetsServices(IServiceCollection services, IConfiguration configuration)
-        => SharedAssetsApplication.AddServices(services, configuration);
+    public static void AddSharedUIElementsServices(IServiceCollection services, IConfiguration configuration)
+        => SharedUIElementsApplication.AddServices(services, configuration);
 
     /// <summary>
     /// Registers web application services with the dependency injection container.
@@ -278,9 +278,9 @@ public abstract class HexalithApplication : IApplication
             services.TryAddSingleton(WebAppApplication);
         }
 
-        if (SharedAssetsApplication is not null)
+        if (SharedUIElementsApplication is not null)
         {
-            services.TryAddSingleton(SharedAssetsApplication);
+            services.TryAddSingleton(SharedUIElementsApplication);
         }
 
         foreach (Type module in Modules)

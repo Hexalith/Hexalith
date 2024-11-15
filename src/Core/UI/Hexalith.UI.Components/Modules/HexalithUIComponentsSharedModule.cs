@@ -19,7 +19,7 @@ using Microsoft.Extensions.DependencyInjection;
 /// <summary>
 /// Represents the HexalithWeb module for customer management.
 /// </summary>
-public class HexalithUIComponentsSharedModule : ISharedAssetsApplicationModule
+public class HexalithUIComponentsSharedModule : ISharedUIElementsApplicationModule
 {
     /// <inheritdoc/>
     public IEnumerable<string> Dependencies => [];
@@ -28,7 +28,7 @@ public class HexalithUIComponentsSharedModule : ISharedAssetsApplicationModule
     public string Description => "Hexalith Fluent UI components shared assets module";
 
     /// <inheritdoc/>
-    public string Id => "Hexalith.UI.Components.SharedAssets";
+    public string Id => "Hexalith.UI.Components.SharedUIElements";
 
     /// <inheritdoc/>
     public string Name => "Hexalith Fluent UI";
