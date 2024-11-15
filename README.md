@@ -38,7 +38,7 @@ Stable (version tag):
 ## Microservices
 
 ### [Hexalith.Security](https://github.com/Hexalith/Hexalith.Security)
-Hexalith Easy Authentication microservice
+Hexalith Security microservice
 <br/>
 [![Build status](https://github.com/Hexalith/Hexalith.Security/actions/workflows/hexalith_build.yml/badge.svg)](https://github.com/Hexalith/Hexalith.Security/actions)
 [![NuGet](https://img.shields.io/nuget/v/Hexalith.Security.Shared.svg)](https://www.nuget.org/packages/Hexalith.Security.Shared)
