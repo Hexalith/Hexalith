@@ -25,7 +25,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 public abstract class HexalithApplication : IApplication
 {
     private static IApiServerApplication? _apiServerApplication;
-    private static ISharedUIElementsApplication? _SharedUIElementsApplication;
+    private static ISharedUIElementsApplication? _sharedUIElementsApplication;
     private static IWebAppApplication? _webAppApplication;
     private static IWebServerApplication? _webServerApplication;
 
@@ -59,23 +59,23 @@ public abstract class HexalithApplication : IApplication
     {
         get
         {
-            if (_SharedUIElementsApplication == null)
+            if (_sharedUIElementsApplication == null)
             {
                 if (_webServerApplication is not null)
                 {
-                    _SharedUIElementsApplication = Activator.CreateInstance(WebServerApplication.SharedUIElementsApplicationType) as ISharedUIElementsApplication;
+                    _sharedUIElementsApplication = Activator.CreateInstance(WebServerApplication.SharedUIElementsApplicationType) as ISharedUIElementsApplication;
                 }
                 else if (_webAppApplication is not null)
                 {
-                    _SharedUIElementsApplication = Activator.CreateInstance(WebAppApplication.SharedUIElementsApplicationType) as ISharedUIElementsApplication;
+                    _sharedUIElementsApplication = Activator.CreateInstance(WebAppApplication.SharedUIElementsApplicationType) as ISharedUIElementsApplication;
                 }
                 else if (_apiServerApplication is not null)
                 {
-                    _SharedUIElementsApplication = Activator.CreateInstance(ApiServerApplication.SharedUIElementsApplicationType) as ISharedUIElementsApplication;
+                    _sharedUIElementsApplication = Activator.CreateInstance(ApiServerApplication.SharedUIElementsApplicationType) as ISharedUIElementsApplication;
                 }
             }
 
-            return _SharedUIElementsApplication ??= GetApplication<ISharedUIElementsApplication>() ?? throw new InvalidOperationException("No shared assets application implementation found. Ensure a class implementing ISharedUIElementsApplication exists and is accessible.");
+            return _sharedUIElementsApplication ??= GetApplication<ISharedUIElementsApplication>() ?? throw new InvalidOperationException("No shared assets application implementation found. Ensure a class implementing ISharedUIElementsApplication exists and is accessible.");
         }
     }
 
