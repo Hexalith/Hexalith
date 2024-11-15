@@ -57,7 +57,7 @@
         {
             await JS.InvokeVoidAsync(Application.ApplicationConstants.UserDefinedCulturePropertyName+".set", selectedCulture!.Name);
 
-            Navigation.NavigateTo(Navigation.Uri, forceLoad: true);
+			StateHasChanged();
         }
     }
 }
