@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 using Hexalith.Application.Modules.Applications;
 
-public class DummySharedApplication : HexalithSharedAssetsApplication
+public class DummySharedApplication : HexalithSharedUIElementsApplication
 {
     public override string HomePath => "dummy";
 
@@ -22,7 +22,7 @@ public class DummySharedApplication : HexalithSharedAssetsApplication
 
     public override string Name => "Dummy";
 
-    public override IEnumerable<Type> SharedAssetsModules => [typeof(DummySharedModule)];
+    public override IEnumerable<Type> SharedUIElementsModules => [typeof(DummySharedModule)];
 
     public override string Version => "?.?.?";
 }

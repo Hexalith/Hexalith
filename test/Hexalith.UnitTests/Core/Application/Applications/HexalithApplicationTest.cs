@@ -68,7 +68,7 @@ public class HexalithApplicationTest
         ServiceCollection services = [];
         Mock<IConfiguration> configurationMock = new();
 
-        HexalithApplication.AddSharedAssetsServices(services, configurationMock.Object);
+        HexalithApplication.AddSharedUIElementsServices(services, configurationMock.Object);
 
         // Check that the services have been added
         _ = services.Where(p => p.ImplementationType == typeof(DummySharedService))
@@ -87,8 +87,8 @@ public class HexalithApplicationTest
     [Fact]
     public void HexalithApplicationShredAssetsModuleShouldBeInstantiated()
         => HexalithApplication
-            .SharedAssetsApplication
-            .SharedAssetsModules
+            .SharedUIElementsApplication
+            .SharedUIElementsModules
             .Should()
             .Contain(typeof(DummySharedModule));
 

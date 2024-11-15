@@ -12,7 +12,8 @@ using Hexalith.Application.Modules.Applications;
 
 internal class DummyServerApplication : HexalithWebServerApplication
 {
-    public override Type SharedAssetsApplicationType => typeof(DummySharedApplication);
+    public override Type SharedUIElementsApplicationType => typeof(DummySharedApplication);
+
     public override Type WebAppApplicationType => typeof(DummyWebAppApplication);
 
     public override IEnumerable<Type> WebServerModules => [typeof(DummyServerModule)];

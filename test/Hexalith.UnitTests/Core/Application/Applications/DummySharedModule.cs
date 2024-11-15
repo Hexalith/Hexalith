@@ -13,7 +13,7 @@ using Hexalith.Application.Modules.Modules;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-internal class DummySharedModule : ISharedAssetsApplicationModule
+internal class DummySharedModule : ISharedUIElementsApplicationModule
 {
     public IEnumerable<string> Dependencies => [];
 
