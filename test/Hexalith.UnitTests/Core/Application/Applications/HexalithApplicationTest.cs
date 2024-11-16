@@ -63,36 +63,6 @@ public class HexalithApplicationTest
     }
 
     [Fact]
-    public void DummyServicesFromSharedModulesShouldBeAdded()
-    {
-        ServiceCollection services = [];
-        Mock<IConfiguration> configurationMock = new();
-
-        HexalithApplication.AddSharedUIElementsServices(services, configurationMock.Object);
-
-        // Check that the services have been added
-        _ = services.Where(p => p.ImplementationType == typeof(DummySharedService))
-            .Should()
-            .HaveCount(1);
-        _ = services
-            .Where(p => p.ImplementationType == typeof(DummyClientService))
-            .Should()
-            .BeEmpty();
-        _ = services
-            .Where(p => p.ImplementationType == typeof(DummyServerService))
-            .Should()
-            .BeEmpty();
-    }
-
-    [Fact]
-    public void HexalithApplicationShredAssetsModuleShouldBeInstantiated()
-        => HexalithApplication
-            .SharedUIElementsApplication
-            .SharedUIElementsModules
-            .Should()
-            .Contain(typeof(DummySharedModule));
-
-    [Fact]
     public void HexalithApplicationWebAppModuleShouldBeInstantiated()
         => HexalithApplication
             .WebAppApplication

@@ -12,7 +12,14 @@ using Hexalith.Application.Modules.Applications;
 
 internal class DummyWebAppApplication : HexalithWebAppApplication
 {
-    public override Type SharedUIElementsApplicationType => typeof(DummySharedApplication);
+    /// <inheritdoc/>
+    public override string Id => $"Dummy.{ApplicationType}";
+
+    /// <inheritdoc/>
+    public override string Name => $"Dummy {ApplicationType}";
+
+    /// <inheritdoc/>
+    public override string ShortName => "Dummy";
 
     public override IEnumerable<Type> WebAppModules => [typeof(DummyClientModule)];
 }
