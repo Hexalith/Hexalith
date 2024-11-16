@@ -20,6 +20,16 @@ public interface IApplication
     public IApiServerApplication? ApiServerApplication { get; }
 
     /// <summary>
+    /// Gets the application type.
+    /// </summary>
+    public ApplicationType ApplicationType { get; }
+
+    /// <summary>
+    /// Gets the description of the application.
+    /// </summary>
+    public string Description { get; }
+
+    /// <summary>
     /// Gets the home path of the application.
     /// </summary>
     string HomePath { get; }
@@ -28,16 +38,6 @@ public interface IApplication
     /// Gets the unique identifier of the application.
     /// </summary>
     public string Id { get; }
-
-    /// <summary>
-    /// Gets a value indicating whether tHe application is a client.
-    /// </summary>
-    public bool IsClient { get; }
-
-    /// <summary>
-    /// Gets a value indicating whether the application is a server.
-    /// </summary>
-    public bool IsServer { get; }
 
     /// <summary>
     /// Gets the login path of the application.
@@ -65,11 +65,9 @@ public interface IApplication
     public string SessionCookieName { get; }
 
     /// <summary>
-    /// Gets the shared application.
+    /// Gets the short name of the application.
     /// </summary>
-    /// <returns>The application instance.</returns>
-    /// <exception cref="InvalidOperationException">No application found.</exception>
-    public ISharedUIElementsApplication? SharedUIElementsApplication { get; }
+    public string ShortName { get; }
 
     /// <summary>
     /// Gets the version of the application.

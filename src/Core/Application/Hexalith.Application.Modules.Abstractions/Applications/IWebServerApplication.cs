@@ -17,12 +17,6 @@ public interface IWebServerApplication : IApplication
     public IEnumerable<Assembly> PresentationAssemblies { get; }
 
     /// <summary>
-    /// Gets the shared application type.
-    /// Must be a type that implements <see cref="ISharedUIElementsApplication"/>.
-    /// </summary>
-    Type SharedUIElementsApplicationType { get; }
-
-    /// <summary>
     /// Gets the client application type.
     /// Must be a type that implements <see cref="IWebAppApplication"/>.
     /// </summary>

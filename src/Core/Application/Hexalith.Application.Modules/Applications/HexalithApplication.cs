@@ -24,8 +24,8 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 /// </summary>
 public abstract class HexalithApplication : IApplication
 {
+    private static readonly ISharedUIElementsApplication? _sharedUIElementsApplication;
     private static IApiServerApplication? _apiServerApplication;
-    private static ISharedUIElementsApplication? _sharedUIElementsApplication;
     private static IWebAppApplication? _webAppApplication;
     private static IWebServerApplication? _webServerApplication;
 
@@ -40,41 +40,7 @@ public abstract class HexalithApplication : IApplication
     /// Thrown when no API server application implementation is found in the application domain.
     /// </exception>
     public static IApiServerApplication? ApiServerApplication
-            => _apiServerApplication ??= GetApplication<IApiServerApplication>();
-
-    // ?? throw new InvalidOperationException("No API server application implementation found. Ensure a class implementing IApiServerApplication exists and is accessible.");
-
-    /// <summary>
-    /// Gets the singleton instance of the shared assets application.
-    /// </summary>
-    /// <remarks>
-    /// The instance is created based on the following priority:
-    /// 1. If WebServerApplication exists, uses its SharedUIElementsApplicationType
-    /// 2. If WebAppApplication exists, uses its SharedUIElementsApplicationType
-    /// 3. Attempts to find a standalone implementation.
-    /// </remarks>
-    /// <exception cref="InvalidOperationException">
-    /// Thrown when no shared assets application implementation can be found or instantiated.
-    /// </exception>
-    public static ISharedUIElementsApplication? SharedUIElementsApplication
-    {
-        get
-        {
-            if (_sharedUIElementsApplication is null)
-            {
-                if (WebServerApplication?.SharedUIElementsApplicationType is not null)
-                {
-                    _sharedUIElementsApplication = Activator.CreateInstance(WebServerApplication.SharedUIElementsApplicationType) as ISharedUIElementsApplication;
-                }
-                else if (WebAppApplication?.SharedUIElementsApplicationType is not null)
-                {
-                    _sharedUIElementsApplication = Activator.CreateInstance(WebAppApplication.SharedUIElementsApplicationType) as ISharedUIElementsApplication;
-                }
-            }
-
-            return _sharedUIElementsApplication ??= GetApplication<ISharedUIElementsApplication>(); // ?? throw new InvalidOperationException("No shared assets application implementation found. Ensure a class implementing ISharedUIElementsApplication exists and is accessible.");
-        }
-    }
+        => _apiServerApplication ??= GetApplication<IApiServerApplication>();
 
     /// <summary>
     /// Gets the singleton instance of the web application.
@@ -92,10 +58,10 @@ public abstract class HexalithApplication : IApplication
         get
         {
             _webAppApplication ??= WebServerApplication?.WebAppApplicationType is not null
-                    ? Activator.CreateInstance(WebServerApplication.WebAppApplicationType) as IWebAppApplication
-                    : GetApplication<IWebAppApplication>();
+                ? Activator.CreateInstance(WebServerApplication.WebAppApplicationType) as IWebAppApplication
+                : GetApplication<IWebAppApplication>();
 
-            return _webAppApplication ??= GetApplication<IWebAppApplication>(); // ?? throw new InvalidOperationException("No web app implementation found. Ensure a class implementing ISharedUIElementsApplication exists and is accessible.");
+            return _webAppApplication ??= GetApplication<IWebAppApplication>();
         }
     }
 
@@ -110,93 +76,43 @@ public abstract class HexalithApplication : IApplication
     /// Thrown when no web server application implementation is found in the application domain.
     /// </exception>
     public static IWebServerApplication? WebServerApplication
-        => _webServerApplication ??= GetApplication<IWebServerApplication>(); // ?? throw new InvalidOperationException("No web server application implementation found. Ensure a class implementing IWebServerApplication exists and is accessible.");
+        => _webServerApplication ??= GetApplication<IWebServerApplication>();
 
     /// <inheritdoc/>
     IApiServerApplication? IApplication.ApiServerApplication => ApiServerApplication;
 
-    /// <summary>
-    /// Gets the application's home path.
-    /// </summary>
-    /// <value>
-    /// The root URL path where the application is hosted.
-    /// </value>
-    public abstract string HomePath { get; }
-
-    /// <summary>
-    /// Gets the unique identifier for the application.
-    /// </summary>
-    /// <value>
-    /// A string that uniquely identifies this application instance.
-    /// </value>
-    public abstract string Id { get; }
-
-    /// <summary>
-    /// Gets a value indicating whether this is a client-side application.
-    /// </summary>
-    /// <value>
-    /// true if this is a client-side application; otherwise, false.
-    /// </value>
-    public abstract bool IsClient { get; }
-
-    /// <summary>
-    /// Gets a value indicating whether this is a server-side application.
-    /// </summary>
-    /// <value>
-    /// true if this is a server-side application; otherwise, false.
-    /// </value>
-    public abstract bool IsServer { get; }
-
-    /// <summary>
-    /// Gets the login path for the application.
-    /// </summary>
-    /// <value>
-    /// The URL path where users are redirected for authentication.
-    /// </value>
-    public abstract string LoginPath { get; }
-
-    /// <summary>
-    /// Gets the logout path for the application.
-    /// </summary>
-    /// <value>
-    /// The URL path where users are redirected to end their session.
-    /// </value>
-    public abstract string LogoutPath { get; }
-
-    /// <summary>
-    /// Gets the collection of module types that this application supports.
-    /// </summary>
-    /// <value>
-    /// An enumerable collection of Type objects representing the application modules.
-    /// </value>
-    public abstract IEnumerable<Type> Modules { get; }
-
-    /// <summary>
-    /// Gets the display name of the application.
-    /// </summary>
-    /// <value>
-    /// A human-readable name for the application.
-    /// </value>
-    public abstract string Name { get; }
-
-    /// <summary>
-    /// Gets the session cookie name for the application.
-    /// </summary>
-    /// <value>
-    /// A string in the format ".{SharedUIElementsApplication.Id}.Session" used to identify the session cookie.
-    /// </value>
-    public string SessionCookieName => $".{SharedUIElementsApplication?.Id}.Session";
+    /// <inheritdoc/>
+    public abstract ApplicationType ApplicationType { get; }
 
     /// <inheritdoc/>
-    ISharedUIElementsApplication? IApplication.SharedUIElementsApplication => SharedUIElementsApplication;
+    public virtual string Description => $"{Name} {ApplicationType} application";
 
-    /// <summary>
-    /// Gets the version of the application.
-    /// </summary>
-    /// <value>
-    /// A string representing the application's version number.
-    /// </value>
-    public abstract string Version { get; }
+    /// <inheritdoc/>
+    public virtual string HomePath => ShortName;
+
+    /// <inheritdoc/>
+    public abstract string Id { get; }
+
+    /// <inheritdoc/>
+    public virtual string LoginPath => ".auth/login";
+
+    /// <inheritdoc/>
+    public virtual string LogoutPath => ".auth/logout";
+
+    /// <inheritdoc/>
+    public abstract IEnumerable<Type> Modules { get; }
+
+    /// <inheritdoc/>
+    public abstract string Name { get; }
+
+    /// <inheritdoc/>
+    public virtual string SessionCookieName => $".{Id}.Session";
+
+    /// <inheritdoc/>
+    public abstract string ShortName { get; }
+
+    /// <inheritdoc/>
+    public virtual string Version => "1.0";
 
     /// <inheritdoc/>
     IWebAppApplication? IApplication.WebAppApplication => WebAppApplication;
@@ -209,31 +125,14 @@ public abstract class HexalithApplication : IApplication
     /// </summary>
     /// <param name="services">The service collection to add the services to.</param>
     /// <param name="configuration">The configuration instance containing service settings.</param>
-    /// <remarks>
-    /// This method delegates the service registration to the ApiServerApplication instance.
-    /// </remarks>
     public static void AddApiServerServices(IServiceCollection services, IConfiguration configuration)
         => ApiServerApplication?.AddServices(services, configuration);
-
-    /// <summary>
-    /// Registers shared assets services with the dependency injection container.
-    /// </summary>
-    /// <param name="services">The service collection to add the services to.</param>
-    /// <param name="configuration">The configuration instance containing service settings.</param>
-    /// <remarks>
-    /// This method delegates the service registration to the SharedUIElementsApplication instance.
-    /// </remarks>
-    public static void AddSharedUIElementsServices(IServiceCollection services, IConfiguration configuration)
-        => SharedUIElementsApplication?.AddServices(services, configuration);
 
     /// <summary>
     /// Registers web application services with the dependency injection container.
     /// </summary>
     /// <param name="services">The service collection to add the services to.</param>
     /// <param name="configuration">The configuration instance containing service settings.</param>
-    /// <remarks>
-    /// This method delegates the service registration to the WebAppApplication instance.
-    /// </remarks>
     public static void AddWebAppServices(IServiceCollection services, IConfiguration configuration)
         => WebAppApplication?.AddServices(services, configuration);
 
@@ -242,9 +141,6 @@ public abstract class HexalithApplication : IApplication
     /// </summary>
     /// <param name="services">The service collection to add the services to.</param>
     /// <param name="configuration">The configuration instance containing service settings.</param>
-    /// <remarks>
-    /// This method delegates the service registration to the WebServerApplication instance.
-    /// </remarks>
     public static void AddWebServerServices(IServiceCollection services, IConfiguration configuration)
         => WebServerApplication?.AddServices(services, configuration);
 
@@ -253,13 +149,6 @@ public abstract class HexalithApplication : IApplication
     /// </summary>
     /// <param name="services">The service collection to add the services to.</param>
     /// <param name="configuration">The configuration instance containing service settings.</param>
-    /// <remarks>
-    /// This method performs the following registrations:
-    /// 1. Registers web server application if available
-    /// 2. Registers web application if available
-    /// 3. Registers shared assets application if available
-    /// 4. Registers all application modules and their services.
-    /// </remarks>
     public virtual void AddServices(IServiceCollection services, IConfiguration configuration)
     {
         if (WebServerApplication is not null)
@@ -274,11 +163,6 @@ public abstract class HexalithApplication : IApplication
             services.TryAddSingleton(WebAppApplication);
         }
 
-        if (SharedUIElementsApplication is not null)
-        {
-            services.TryAddSingleton(SharedUIElementsApplication);
-        }
-
         foreach (Type module in Modules)
         {
             _ = services.AddScoped(typeof(IApplicationModule), module);
@@ -286,18 +170,18 @@ public abstract class HexalithApplication : IApplication
                 nameof(AddServices),
                 BindingFlags.Public | BindingFlags.Static,
                 null,
-                [typeof(IServiceCollection), typeof(IConfiguration)],
+                new[] { typeof(IServiceCollection), typeof(IConfiguration) },
                 null);
             if (moduleMethod == null)
             {
                 Debug.WriteLine(
-                    $"The services for module {module.Name} are not added. The module does not have the following static method:"
-                    + $" {nameof(AddServices)}(IServiceCollection services, IConfiguration configuration).");
+                    $"The services for module {module.Name} are not added. The module does not have the following static method:" +
+                    $" {nameof(AddServices)}(IServiceCollection services, IConfiguration configuration).");
             }
             else
             {
-                _ = moduleMethod.Invoke(null, [services, configuration]);
-                Debug.WriteLine($"The services for module {module.Name} are have been added.");
+                _ = moduleMethod.Invoke(null, new object[] { services, configuration });
+                Debug.WriteLine($"The services for module {module.Name} have been added.");
             }
         }
     }
@@ -307,15 +191,11 @@ public abstract class HexalithApplication : IApplication
     /// </summary>
     /// <typeparam name="TApplication">The type of application to retrieve.</typeparam>
     /// <returns>An instance of the specified application type, or null if not found.</returns>
-    /// <remarks>
-    /// This method uses reflection to find and instantiate application implementations.
-    /// Only one implementation of each application type should exist in the application domain.
-    /// </remarks>
     /// <exception cref="InvalidOperationException">
     /// Thrown when multiple implementations of the specified application type are found.
     /// </exception>
     private static TApplication? GetApplication<TApplication>()
-            where TApplication : IApplication
+        where TApplication : IApplication
     {
         TApplication[] applications = [.. ReflectionHelper.GetInstantiableObjectsOf<TApplication>()];
         return applications.Length > 1

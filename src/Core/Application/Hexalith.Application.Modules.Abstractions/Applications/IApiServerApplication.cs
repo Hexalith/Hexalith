@@ -15,12 +15,6 @@ public interface IApiServerApplication : IApplication
     IEnumerable<Type> ApiServerModules { get; }
 
     /// <summary>
-    /// Gets the shared application type.
-    /// Must be a type that implements <see cref="ISharedUIElementsApplication"/>.
-    /// </summary>
-    Type SharedUIElementsApplicationType { get; }
-
-    /// <summary>
     /// Registers the actors associated with the application.
     /// </summary>
     /// <param name="actors">The actor collection.</param>

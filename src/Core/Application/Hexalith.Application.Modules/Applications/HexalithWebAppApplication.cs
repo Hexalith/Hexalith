@@ -18,45 +18,19 @@ public abstract class HexalithWebAppApplication : HexalithApplication, IWebAppAp
     private IEnumerable<Assembly>? _presentationAssemblies;
 
     /// <inheritdoc/>
-    public override string HomePath => SharedUIElementsApplication.HomePath;
-
-    /// <inheritdoc/>
-    public override string Id => SharedUIElementsApplication.Id;
-
-    /// <inheritdoc/>
-    public override bool IsClient => true;
-
-    /// <inheritdoc/>
-    public override bool IsServer => false;
-
-    /// <inheritdoc/>
-    public override string LoginPath => SharedUIElementsApplication.LoginPath;
-
-    /// <inheritdoc/>
-    public override string LogoutPath => SharedUIElementsApplication.LogoutPath;
+    public override ApplicationType ApplicationType => ApplicationType.WebApp;
 
     /// <inheritdoc/>
     public override IEnumerable<Type> Modules => _modules ??=
         [.. WebAppModules
-        .Union(SharedUIElementsApplication.SharedUIElementsModules)
         .Distinct()
         .OrderBy(p => p.FullName)];
-
-    /// <inheritdoc/>
-    public override string Name => SharedUIElementsApplication.Name;
 
     /// <inheritdoc/>
     public IEnumerable<Assembly> PresentationAssemblies => _presentationAssemblies ??= [.. WebAppModules
         .Select(p => p.Assembly)
-        .Union(SharedUIElementsApplication.PresentationAssemblies)
         .Distinct()
         .OrderBy(p => p.FullName)];
-
-    /// <inheritdoc/>
-    public abstract Type SharedUIElementsApplicationType { get; }
-
-    /// <inheritdoc/>
-    public override string Version => SharedUIElementsApplication.Version;
 
     /// <inheritdoc/>
     public abstract IEnumerable<Type> WebAppModules { get; }

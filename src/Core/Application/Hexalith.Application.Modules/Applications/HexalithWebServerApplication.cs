@@ -18,50 +18,24 @@ public abstract class HexalithWebServerApplication : HexalithApplication, IWebSe
     private IEnumerable<Assembly>? _presentationAssemblies;
 
     /// <inheritdoc/>
-    public override string HomePath => SharedUIElementsApplication.HomePath;
-
-    /// <inheritdoc/>
-    public override string Id => SharedUIElementsApplication.Id;
-
-    /// <inheritdoc/>
-    public override bool IsClient => false;
-
-    /// <inheritdoc/>
-    public override bool IsServer => true;
-
-    /// <inheritdoc/>
-    public override string LoginPath => SharedUIElementsApplication.LoginPath;
-
-    /// <inheritdoc/>
-    public override string LogoutPath => SharedUIElementsApplication.LogoutPath;
+    public override ApplicationType ApplicationType => ApplicationType.WebServer;
 
     /// <inheritdoc/>
     public override IEnumerable<Type> Modules => _modules ??=
         [.. WebServerModules
-        .Union(SharedUIElementsApplication.SharedUIElementsModules)
+        .Union(WebAppApplication?.Modules ?? [])
         .Distinct()
         .OrderBy(p => p.FullName)];
 
     /// <inheritdoc/>
-    public override string Name => SharedUIElementsApplication.Name;
-
-    /// <inheritdoc/>
-    public IEnumerable<Assembly> PresentationAssemblies => _presentationAssemblies ??= [.. WebServerModules
+    public IEnumerable<Assembly> PresentationAssemblies => _presentationAssemblies
+        ??= [.. WebServerModules
         .Select(p => p.Assembly)
-        .Union(SharedUIElementsApplication.PresentationAssemblies)
-        .Union(WebAppApplication.PresentationAssemblies)
+        .Union(WebAppApplication?.PresentationAssemblies ?? [])
         .Distinct()
         .OrderBy(p => p.FullName)];
 
     /// <inheritdoc/>
-    public abstract Type SharedUIElementsApplicationType { get; }
-
-    /// <inheritdoc/>
-    public override string Version => SharedUIElementsApplication.Version;
-
-    /// <summary>
-    /// Gets the client application type.
-    /// </summary>
     public abstract Type WebAppApplicationType { get; }
 
     /// <inheritdoc/>
