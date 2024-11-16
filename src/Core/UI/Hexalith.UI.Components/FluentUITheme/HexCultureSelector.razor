@@ -36,12 +36,12 @@
     {
         var culture = new CultureInfo(cultureName);
         return new Option<CultureInfo>
-		{
-			Value = culture,
-			Text = culture.EnglishName,
+        {
+            Value = culture,
+            Text = culture.EnglishName,
             Selected = culture.Name == CultureInfo.CurrentCulture.Name
-		};
-	}
+        };
+    }
 
     private CultureInfo? selectedCulture;
 
@@ -57,7 +57,7 @@
         {
             await JS.InvokeVoidAsync(Application.ApplicationConstants.UserDefinedCulturePropertyName+".set", selectedCulture!.Name);
 
-			StateHasChanged();
+            StateHasChanged();
         }
     }
 }
