@@ -2,6 +2,7 @@
   <PropertyGroup>
     <UseProjectReference Condition="'$(UseProjectReference)' == '' and '$(BuildingByReSharper)' == 'true'">true</UseProjectReference>
     <UseProjectReference Condition="'$(UseProjectReference)' == '' and '$(BuildingInsideVisualStudio)' == 'true'">true</UseProjectReference>
+    <UseProjectReference Condition="'$(UseProjectReference)' == '' and ('$(TERM_PROGRAM)' == 'vscode' or '$(VSCODE_PID)' != '')">true</UseProjectReference>
   </PropertyGroup>
   <Import Project="src/Hexalith.Build/Project.Common.props" />
   <PropertyGroup>
