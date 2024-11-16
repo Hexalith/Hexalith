@@ -19,6 +19,8 @@ public partial record DummyCommand1(
 {
     private static readonly string[] _scopes = ["sc01", "sc02"];
 
+    public override string AggregateId => BaseValue + "-" + Value1.ToInvariantString();
+
     public static DummyCommand1 Create() => new("Test123", 35453);
 
     public new Metadata CreateMetadata()
@@ -34,6 +36,4 @@ public partial record DummyCommand1(
                 "SES2132",
                 _scopes));
     }
-
-    public override string AggregateId => BaseValue + "-" + Value1.ToInvariantString();
 }
