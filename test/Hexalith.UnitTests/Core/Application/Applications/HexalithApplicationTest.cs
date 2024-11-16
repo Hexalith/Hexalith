@@ -30,10 +30,6 @@ public class HexalithApplicationTest
             .Should()
             .HaveCount(1);
         _ = services
-            .Where(p => p.ImplementationType == typeof(DummySharedService))
-            .Should()
-            .HaveCount(1);
-        _ = services
             .Where(p => p.ImplementationType == typeof(DummyServerService))
             .Should()
             .BeEmpty();
@@ -50,10 +46,6 @@ public class HexalithApplicationTest
         // Check that the services have been added
         _ = services
             .Where(p => p.ImplementationType == typeof(DummyServerService))
-            .Should()
-            .HaveCount(1);
-        _ = services
-            .Where(p => p.ImplementationType == typeof(DummySharedService))
             .Should()
             .HaveCount(1);
         _ = services
