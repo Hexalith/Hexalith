@@ -17,7 +17,7 @@ public interface IApplication
     /// </summary>
     /// <returns>The application instance.</returns>
     /// <exception cref="InvalidOperationException">No application found.</exception>
-    public IApiServerApplication ApiServerApplication { get; }
+    public IApiServerApplication? ApiServerApplication { get; }
 
     /// <summary>
     /// Gets the home path of the application.
@@ -69,7 +69,7 @@ public interface IApplication
     /// </summary>
     /// <returns>The application instance.</returns>
     /// <exception cref="InvalidOperationException">No application found.</exception>
-    public ISharedUIElementsApplication SharedUIElementsApplication { get; }
+    public ISharedUIElementsApplication? SharedUIElementsApplication { get; }
 
     /// <summary>
     /// Gets the version of the application.
@@ -81,14 +81,14 @@ public interface IApplication
     /// </summary>
     /// <returns>The application instance.</returns>
     /// <exception cref="InvalidOperationException">No application found.</exception>
-    public IWebAppApplication WebAppApplication { get; }
+    public IWebAppApplication? WebAppApplication { get; }
 
     /// <summary>
     /// Gets the server application.
     /// </summary>
     /// <returns>The application instance.</returns>
     /// <exception cref="InvalidOperationException">No application found.</exception>
-    public IWebServerApplication WebServerApplication { get; }
+    public IWebServerApplication? WebServerApplication { get; }
 
     /// <summary>
     /// Adds services to the application.

@@ -39,9 +39,10 @@ public abstract class HexalithApplication : IApplication
     /// <exception cref="InvalidOperationException">
     /// Thrown when no API server application implementation is found in the application domain.
     /// </exception>
-    public static IApiServerApplication ApiServerApplication
-            => _apiServerApplication ??= GetApplication<IApiServerApplication>()
-                ?? throw new InvalidOperationException("No API server application implementation found. Ensure a class implementing IApiServerApplication exists and is accessible.");
+    public static IApiServerApplication? ApiServerApplication
+            => _apiServerApplication ??= GetApplication<IApiServerApplication>();
+
+    // ?? throw new InvalidOperationException("No API server application implementation found. Ensure a class implementing IApiServerApplication exists and is accessible.");
 
     /// <summary>
     /// Gets the singleton instance of the shared assets application.
@@ -55,27 +56,23 @@ public abstract class HexalithApplication : IApplication
     /// <exception cref="InvalidOperationException">
     /// Thrown when no shared assets application implementation can be found or instantiated.
     /// </exception>
-    public static ISharedUIElementsApplication SharedUIElementsApplication
+    public static ISharedUIElementsApplication? SharedUIElementsApplication
     {
         get
         {
-            if (_sharedUIElementsApplication == null)
+            if (_sharedUIElementsApplication is null)
             {
-                if (_webServerApplication is not null)
+                if (WebServerApplication?.SharedUIElementsApplicationType is not null)
                 {
                     _sharedUIElementsApplication = Activator.CreateInstance(WebServerApplication.SharedUIElementsApplicationType) as ISharedUIElementsApplication;
                 }
-                else if (_webAppApplication is not null)
+                else if (WebAppApplication?.SharedUIElementsApplicationType is not null)
                 {
                     _sharedUIElementsApplication = Activator.CreateInstance(WebAppApplication.SharedUIElementsApplicationType) as ISharedUIElementsApplication;
                 }
-                else if (_apiServerApplication is not null)
-                {
-                    _sharedUIElementsApplication = Activator.CreateInstance(ApiServerApplication.SharedUIElementsApplicationType) as ISharedUIElementsApplication;
-                }
             }
 
-            return _sharedUIElementsApplication ??= GetApplication<ISharedUIElementsApplication>() ?? throw new InvalidOperationException("No shared assets application implementation found. Ensure a class implementing ISharedUIElementsApplication exists and is accessible.");
+            return _sharedUIElementsApplication ??= GetApplication<ISharedUIElementsApplication>(); // ?? throw new InvalidOperationException("No shared assets application implementation found. Ensure a class implementing ISharedUIElementsApplication exists and is accessible.");
         }
     }
 
@@ -90,15 +87,15 @@ public abstract class HexalithApplication : IApplication
     /// <exception cref="InvalidOperationException">
     /// Thrown when no web application implementation can be found or instantiated.
     /// </exception>
-    public static IWebAppApplication WebAppApplication
+    public static IWebAppApplication? WebAppApplication
     {
         get
         {
-            _webAppApplication ??= _webServerApplication is not null
+            _webAppApplication ??= WebServerApplication?.WebAppApplicationType is not null
                     ? Activator.CreateInstance(WebServerApplication.WebAppApplicationType) as IWebAppApplication
                     : GetApplication<IWebAppApplication>();
 
-            return _webAppApplication ??= GetApplication<IWebAppApplication>() ?? throw new InvalidOperationException("No web app implementation found. Ensure a class implementing ISharedUIElementsApplication exists and is accessible.");
+            return _webAppApplication ??= GetApplication<IWebAppApplication>(); // ?? throw new InvalidOperationException("No web app implementation found. Ensure a class implementing ISharedUIElementsApplication exists and is accessible.");
         }
     }
 
@@ -112,12 +109,11 @@ public abstract class HexalithApplication : IApplication
     /// <exception cref="InvalidOperationException">
     /// Thrown when no web server application implementation is found in the application domain.
     /// </exception>
-    public static IWebServerApplication WebServerApplication
-        => _webServerApplication ??= GetApplication<IWebServerApplication>()
-            ?? throw new InvalidOperationException("No web server application implementation found. Ensure a class implementing IWebServerApplication exists and is accessible.");
+    public static IWebServerApplication? WebServerApplication
+        => _webServerApplication ??= GetApplication<IWebServerApplication>(); // ?? throw new InvalidOperationException("No web server application implementation found. Ensure a class implementing IWebServerApplication exists and is accessible.");
 
     /// <inheritdoc/>
-    IApiServerApplication IApplication.ApiServerApplication => ApiServerApplication;
+    IApiServerApplication? IApplication.ApiServerApplication => ApiServerApplication;
 
     /// <summary>
     /// Gets the application's home path.
@@ -189,10 +185,10 @@ public abstract class HexalithApplication : IApplication
     /// <value>
     /// A string in the format ".{SharedUIElementsApplication.Id}.Session" used to identify the session cookie.
     /// </value>
-    public string SessionCookieName => $".{SharedUIElementsApplication.Id}.Session";
+    public string SessionCookieName => $".{SharedUIElementsApplication?.Id}.Session";
 
     /// <inheritdoc/>
-    ISharedUIElementsApplication IApplication.SharedUIElementsApplication => SharedUIElementsApplication;
+    ISharedUIElementsApplication? IApplication.SharedUIElementsApplication => SharedUIElementsApplication;
 
     /// <summary>
     /// Gets the version of the application.
@@ -203,10 +199,10 @@ public abstract class HexalithApplication : IApplication
     public abstract string Version { get; }
 
     /// <inheritdoc/>
-    IWebAppApplication IApplication.WebAppApplication => WebAppApplication;
+    IWebAppApplication? IApplication.WebAppApplication => WebAppApplication;
 
     /// <inheritdoc/>
-    IWebServerApplication IApplication.WebServerApplication => WebServerApplication;
+    IWebServerApplication? IApplication.WebServerApplication => WebServerApplication;
 
     /// <summary>
     /// Registers API server services with the dependency injection container.
@@ -217,7 +213,7 @@ public abstract class HexalithApplication : IApplication
     /// This method delegates the service registration to the ApiServerApplication instance.
     /// </remarks>
     public static void AddApiServerServices(IServiceCollection services, IConfiguration configuration)
-        => ApiServerApplication.AddServices(services, configuration);
+        => ApiServerApplication?.AddServices(services, configuration);
 
     /// <summary>
     /// Registers shared assets services with the dependency injection container.
@@ -228,7 +224,7 @@ public abstract class HexalithApplication : IApplication
     /// This method delegates the service registration to the SharedUIElementsApplication instance.
     /// </remarks>
     public static void AddSharedUIElementsServices(IServiceCollection services, IConfiguration configuration)
-        => SharedUIElementsApplication.AddServices(services, configuration);
+        => SharedUIElementsApplication?.AddServices(services, configuration);
 
     /// <summary>
     /// Registers web application services with the dependency injection container.
@@ -239,7 +235,7 @@ public abstract class HexalithApplication : IApplication
     /// This method delegates the service registration to the WebAppApplication instance.
     /// </remarks>
     public static void AddWebAppServices(IServiceCollection services, IConfiguration configuration)
-        => WebAppApplication.AddServices(services, configuration);
+        => WebAppApplication?.AddServices(services, configuration);
 
     /// <summary>
     /// Registers web server services with the dependency injection container.
@@ -250,7 +246,7 @@ public abstract class HexalithApplication : IApplication
     /// This method delegates the service registration to the WebServerApplication instance.
     /// </remarks>
     public static void AddWebServerServices(IServiceCollection services, IConfiguration configuration)
-        => WebServerApplication.AddServices(services, configuration);
+        => WebServerApplication?.AddServices(services, configuration);
 
     /// <summary>
     /// Registers application services with the dependency injection container.
