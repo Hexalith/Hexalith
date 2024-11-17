@@ -156,11 +156,16 @@ public abstract class HexalithApplication : IApplication
             services.TryAddSingleton<IApplication>(WebServerApplication);
             services.TryAddSingleton(WebServerApplication);
         }
-
-        if (WebAppApplication is not null)
+        else if (WebAppApplication is not null)
         {
             services.TryAddSingleton<IApplication>(WebAppApplication);
             services.TryAddSingleton(WebAppApplication);
+        }
+
+        if (ApiServerApplication is not null)
+        {
+            services.TryAddSingleton<IApplication>(ApiServerApplication);
+            services.TryAddSingleton(ApiServerApplication);
         }
 
         foreach (Type module in Modules)

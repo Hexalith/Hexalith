@@ -9,6 +9,9 @@ using System.Collections.Generic;
 using System.Reflection;
 
 using Hexalith.Application.Modules.Modules;
+using Hexalith.Extensions.Configuration;
+using Hexalith.UI.Components.Configurations;
+using Hexalith.UI.Components.Helpers;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -50,6 +53,10 @@ public class HexalithUIComponentsWebServerModule : IWebServerApplicationModule
     /// <param name="configuration">The configuration.</param>
     public static void AddServices(IServiceCollection services, IConfiguration configuration)
     {
+        services
+           .AddFluentUITheme(configuration)
+           .ConfigureSettings<FluentUIThemeSettings>(configuration)
+           .AddDataGridEntityFrameworkAdapter();
     }
 
     /// <inheritdoc/>

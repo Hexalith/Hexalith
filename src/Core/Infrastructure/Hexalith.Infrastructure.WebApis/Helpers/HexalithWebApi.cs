@@ -14,6 +14,7 @@ using FluentValidation;
 
 using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
+using Hexalith.Application.Modules.Applications;
 using Hexalith.Application.Projections;
 using Hexalith.Application.Tasks;
 using Hexalith.Extensions.Configuration;
@@ -88,6 +89,7 @@ public static partial class HexalithWebApi
         builder.Services.TryAddSingleton<IResiliencyPolicyProvider, ResiliencyPolicyProvider>();
         builder.Services.TryAddScoped<IDomainCommandDispatcher, DependencyInjectionDomainCommandDispatcher>();
         builder.Services.TryAddScoped<IProjectionUpdateProcessor, DependencyInjectionProjectionUpdateProcessor>();
+        HexalithApplication.AddApiServerServices(builder.Services, builder.Configuration);
         return builder;
     }
 

@@ -46,6 +46,9 @@ using Serilog;
 /// </summary>
 public static class ServerSideClientAppHelper
 {
+    // TODO Move to a configuration file
+    private static readonly string[] _cultures = ["en-US", "fr-FR"];
+
     /// <summary>
     /// Adds Hexalith server-side client application services to the service collection.
     /// </summary>
@@ -228,10 +231,12 @@ public static class ServerSideClientAppHelper
                 .UseHsts();
         }
 
+        _ = app.UseRequestLocalization(new RequestLocalizationOptions()
+          .AddSupportedCultures(_cultures)
+          .AddSupportedUICultures(_cultures));
         _ = app
             .UseStaticFiles()
             .UseRouting()
-            .UseRequestLocalization()
             .UseAuthentication()
             .UseAuthorization()
             .UseSwagger()
