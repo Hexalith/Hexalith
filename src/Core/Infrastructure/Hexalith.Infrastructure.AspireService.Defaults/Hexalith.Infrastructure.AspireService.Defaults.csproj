@@ -18,6 +18,7 @@
 		<PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="$(OpenTelemetryVersion)" />
 		<PackageReference Include="OpenTelemetry.Instrumentation.GrpcNetClient" Version="$(OpenTelemetryBetaVersion)" />
 		<PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="$(OpenTelemetryVersion)" />
+		<PackageReference Include="Azure.Monitor.OpenTelemetry.AspNetCore" Version="$(OpenTelemetryVersion)" />
 		<PackageReference Include="OpenTelemetry.Instrumentation.Runtime" Version="$(OpenTelemetryVersion)" />
 		<PackageReference Include="Grpc.HealthCheck" Version="$(GrpcVersion)" />
 		<PackageReference Include="Grpc.Net.ClientFactory" Version="$(GrpcVersion)"/>

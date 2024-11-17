@@ -54,7 +54,8 @@ public static partial class HexalithWebApi
         // Serilog.ILogger startupLogger = builder.AddSerilogLogger();
 
         // startupLogger.Information("Configuring {AppName} ...", applicationName);
-        _ = builder.AddServiceDefaults()
+        _ = builder
+            .AddServiceDefaults()
             .Services
             .ConfigureSettings<Hexalith.Infrastructure.CosmosDb.Configurations.CosmosDbSettings>(builder.Configuration);
 

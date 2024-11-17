@@ -7,7 +7,6 @@ namespace Hexalith.Infrastructure.DaprRuntime.Sessions.Services;
 
 using System;
 using System.Security.Claims;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 using Hexalith.Application.Partitions.Services;
@@ -18,7 +17,7 @@ using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Sessions.Helpers;
 
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Caching.Hybrid;
 using Microsoft.Extensions.Logging;
 
 /// <summary>
@@ -26,7 +25,7 @@ using Microsoft.Extensions.Logging;
 /// </summary>
 public partial class SessionService : ISessionService
 {
-    private readonly IDistributedCache _cache;
+    private readonly HybridCache _cache;
     private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly ILogger<SessionService> _logger;
     private readonly IPartitionService _partitionService;
@@ -43,7 +42,7 @@ public partial class SessionService : ISessionService
     /// <param name="timeProvider">The time provider.</param>
     /// <param name="logger">The logger.</param>
     public SessionService(
-        IDistributedCache cache,
+        HybridCache cache,
         IHttpContextAccessor httpContextAccessor,
         IPartitionService partitionService,
         IUserIdentityService userService,
@@ -82,9 +81,17 @@ public partial class SessionService : ISessionService
     /// <inheritdoc/>
     public async Task<SessionInformation?> GetAsync(string id, CancellationToken cancellationToken)
     {
-        byte[]? data = await _cache.GetAsync(id, cancellationToken);
-        return data == null ? null :
-            JsonSerializer.Deserialize<SessionInformation>(data);
+        SessionInformation data = await _cache.GetOrCreateAsync(
+            id,
+            (token) => ValueTask.FromResult(new SessionInformation(
+                string.Empty,
+                string.Empty,
+                new UserInformation(string.Empty, string.Empty, string.Empty, false, []),
+                new ContactInformation(string.Empty, string.Empty, string.Empty),
+                DateTime.MinValue,
+                TimeSpan.Zero)),
+            cancellationToken: cancellationToken);
+        return data.Id != id ? null : data;
     }
 
     /// <inheritdoc/>
@@ -135,19 +142,11 @@ public partial class SessionService : ISessionService
             _timeProvider.GetLocalNow(),
             TimeSpan.FromDays(1));
 
-        // Set cache options
-        DistributedCacheEntryOptions options = new()
-        {
-            AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(24),
-            SlidingExpiration = TimeSpan.FromMinutes(30),
-        };
-
         // Store session information in the cache
         await _cache.SetAsync(
             sessionId,
-            JsonSerializer.SerializeToUtf8Bytes(session),
-            options,
-            cancellationToken);
+            session,
+            cancellationToken: cancellationToken);
 
         return session;
     }

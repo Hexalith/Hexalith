@@ -5,6 +5,8 @@
 
 namespace Hexalith.Infrastructure.AspireService.Defaults;
 
+using Azure.Monitor.OpenTelemetry.AspNetCore;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +24,21 @@ using OpenTelemetry.Trace;
 public static class AspireExtensions
 {
     /// <summary>
+    /// Adds default health checks to the application.
+    /// </summary>
+    /// <param name="builder">The <see cref="IHostApplicationBuilder"/> to configure.</param>
+    /// <returns>The configured <see cref="IHostApplicationBuilder"/>.</returns>
+    public static IHostApplicationBuilder AddDefaultHealthChecks(this IHostApplicationBuilder builder)
+    {
+        _ = builder.Services.AddHealthChecks()
+
+            // Add a default liveness check to ensure app is responsive
+            .AddCheck("self", () => HealthCheckResult.Healthy(), ["live"]);
+
+        return builder;
+    }
+
+    /// <summary>
     /// Adds default services to the Aspire application.
     /// </summary>
     /// <param name="builder">The <see cref="IHostApplicationBuilder"/> to configure.</param>
@@ -36,8 +53,10 @@ public static class AspireExtensions
 
         _ = builder.Services.ConfigureHttpClientDefaults(http =>
         {
-            // Configure resilience and service discovery for HTTP clients
+            // Turn on resilience by default
             _ = http.AddStandardResilienceHandler();
+
+            // Turn on service discovery by default
             _ = http.AddServiceDiscovery();
         });
 
@@ -65,43 +84,12 @@ public static class AspireExtensions
                 .AddHttpClientInstrumentation()
                 .AddRuntimeInstrumentation())
             .WithTracing(tracing => tracing
+                .AddSource(builder.Environment.ApplicationName)
                 .AddAspNetCoreInstrumentation()
                 .AddGrpcClientInstrumentation()
                 .AddHttpClientInstrumentation());
 
         _ = builder.AddOpenTelemetryExporters();
-
-        return builder;
-    }
-
-    /// <summary>
-    /// Adds OpenTelemetry exporters based on configuration.
-    /// </summary>
-    /// <param name="builder">The <see cref="IHostApplicationBuilder"/> to configure.</param>
-    /// <returns>The configured <see cref="IHostApplicationBuilder"/>.</returns>
-    private static IHostApplicationBuilder AddOpenTelemetryExporters(this IHostApplicationBuilder builder)
-    {
-        bool useOtlpExporter = !string.IsNullOrWhiteSpace(builder.Configuration["OTEL_EXPORTER_OTLP_ENDPOINT"]);
-
-        if (useOtlpExporter)
-        {
-            _ = builder.Services.AddOpenTelemetry().UseOtlpExporter();
-        }
-
-        return builder;
-    }
-
-    /// <summary>
-    /// Adds default health checks to the application.
-    /// </summary>
-    /// <param name="builder">The <see cref="IHostApplicationBuilder"/> to configure.</param>
-    /// <returns>The configured <see cref="IHostApplicationBuilder"/>.</returns>
-    public static IHostApplicationBuilder AddDefaultHealthChecks(this IHostApplicationBuilder builder)
-    {
-        _ = builder.Services.AddHealthChecks()
-
-            // Add a default liveness check to ensure app is responsive
-            .AddCheck("self", () => HealthCheckResult.Healthy(), ["live"]);
 
         return builder;
     }
@@ -117,18 +105,42 @@ public static class AspireExtensions
     /// </remarks>
     public static WebApplication MapDefaultEndpoints(this WebApplication app)
     {
-        if (app.Environment.IsDevelopment())
-        {
-            // Map health check endpoint for overall application health
-            _ = app.MapHealthChecks("/health");
+        // Map health check endpoint for overall application health
+        _ = app.MapHealthChecks("/health");
 
-            // Map health check endpoint for liveness probe
-            _ = app.MapHealthChecks("/alive", new HealthCheckOptions
-            {
-                Predicate = r => r.Tags.Contains("live"),
-            });
-        }
+        // Map health check endpoint for liveness probe
+        _ = app.MapHealthChecks("/alive", new HealthCheckOptions
+        {
+            Predicate = r => r.Tags.Contains("live"),
+        });
 
         return app;
+    }
+
+    /// <summary>
+    /// Adds OpenTelemetry exporters based on configuration.
+    /// </summary>
+    /// <param name="builder">The <see cref="IHostApplicationBuilder"/> to configure.</param>
+    /// <returns>The configured <see cref="IHostApplicationBuilder"/>.</returns>
+    private static IHostApplicationBuilder AddOpenTelemetryExporters(this IHostApplicationBuilder builder)
+    {
+        bool useOtlpExporter = !string.IsNullOrWhiteSpace(builder.Configuration["OTEL_EXPORTER_OTLP_ENDPOINT"]);
+
+        if (useOtlpExporter)
+        {
+            _ = builder
+                .Services
+                .AddOpenTelemetry()
+                .UseOtlpExporter();
+        }
+
+        if (!string.IsNullOrEmpty(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]))
+        {
+            _ = builder.Services
+                .AddOpenTelemetry()
+                .UseAzureMonitor();
+        }
+
+        return builder;
     }
 }

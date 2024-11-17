@@ -33,7 +33,6 @@ using Hexalith.Infrastructure.WebApis.Helpers;
 using Hexalith.PolymorphicSerialization;
 
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -87,7 +86,7 @@ public static class ServerSideClientAppHelper
         Serilog.ILogger startupLogger = builder.AddSerilogLogger();
 
         startupLogger.Information("Configuring {AppName} ...", applicationName);
-        builder
+        _ = builder
             .AddServiceDefaults()
             .Services
             .AddProblemDetails()
@@ -96,19 +95,16 @@ public static class ServerSideClientAppHelper
             .AddSwaggerGen(c => c.SwaggerDoc("v1", new() { Title = applicationName, Version = version, }))
             .AddDaprBuses(builder.Configuration)
             .AddDaprStateStore(builder.Configuration);
-
         _ = builder
             .Services
             .ConfigureHttpJsonOptions(options => options.SerializerOptions.SetDefault())
             .AddHttpContextAccessor()
             .AddControllers()
-            .AddJsonOptions(options => options.JsonSerializerOptions.SetDefault())
             .AddDapr(dapr =>
             {
-                dapr.UseJsonSerializationOptions(PolymorphicHelper.DefaultJsonSerializerOptions);
                 if (builder.Environment.IsDevelopment())
                 {
-                    dapr.UseTimeout(TimeSpan.FromMinutes(1));
+                    _ = dapr.UseTimeout(TimeSpan.FromMinutes(1));
                 }
             });
 
@@ -116,20 +112,9 @@ public static class ServerSideClientAppHelper
             .AddRazorComponents()
             .AddInteractiveServerComponents()
             .AddInteractiveWebAssemblyComponents();
-#if DEBUG
 
         // Show detailed errors on Circuit exceptions
-        builder.Services.AddServerSideBlazor().AddCircuitOptions(option => option.DetailedErrors = true);
-
-#endif
-        _ = builder.Services
-            .AddHttpClient();
-
-        _ = builder.Services
-            .AddAuthorizationBuilder()
-            .AddPolicy("api", p => p
-                    .RequireAuthenticatedUser()
-                    .AddAuthenticationSchemes(IdentityConstants.BearerScheme));
+        _ = builder.Services.AddServerSideBlazor().AddCircuitOptions(option => option.DetailedErrors = true);
 
         _ = builder.Services.AddValidatorsFromAssemblyContaining<CommandBusSettingsValidator>(ServiceLifetime.Singleton);
         builder.Services.TryAddSingleton<IResiliencyPolicyProvider, ResiliencyPolicyProvider>();
@@ -142,8 +127,12 @@ public static class ServerSideClientAppHelper
             false,
             s.GetRequiredService<ILogger<DomainActorCommandProcessor>>()));
 
+#pragma warning disable EXTEXP0018 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
         _ = builder.Services
             .AddDistributedMemoryCache()
+            .AddHybridCache();
+#pragma warning restore EXTEXP0018 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
+        _ = builder.Services
             .AddSession(options =>
             {
                 options.Cookie.Name = sessionCookieName;
@@ -251,11 +240,14 @@ public static class ServerSideClientAppHelper
             .UseAntiforgery();
         _ = app.MapControllers();
         _ = app.MapSubscribeHandler();
-        _ = app
+        RazorComponentsEndpointConventionBuilder razor = app
             .MapRazorComponents<TApp>()
             .AddInteractiveServerRenderMode()
-            .AddInteractiveWebAssemblyRenderMode()
-            .AddAdditionalAssemblies([.. HexalithApplication.WebAppApplication.PresentationAssemblies]);
+            .AddInteractiveWebAssemblyRenderMode();
+        if (HexalithApplication.WebAppApplication is not null && HexalithApplication.WebAppApplication.PresentationAssemblies.Any())
+        {
+            _ = razor.AddAdditionalAssemblies([.. HexalithApplication.WebAppApplication.PresentationAssemblies]);
+        }
 
         app.UseHexalithModules();
 

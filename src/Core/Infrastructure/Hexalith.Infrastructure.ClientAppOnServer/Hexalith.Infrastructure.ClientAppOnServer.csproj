@@ -6,6 +6,7 @@
 		<PackageReference Include="Blazor.Geolocation" Version="$(BlazorGeolocationVersion)" />
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="$(AspNetCorePackagesVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Caching.Hybrid" Version="9.*-*" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="$(AspNetCorePackagesVersion)" />
 	</ItemGroup>
 	<ItemGroup>
