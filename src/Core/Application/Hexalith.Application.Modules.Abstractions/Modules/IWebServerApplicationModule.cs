@@ -12,6 +12,6 @@ namespace Hexalith.Application.Modules.Modules;
 /// A module is a self-contained unit of functionality in the application.
 /// It provides a set of actions that can be performed and has a name, description, path, and version.
 /// </remarks>
-public interface IWebServerApplicationModule : IApplicationModule
+public interface IWebServerApplicationModule : IUIApplicationModule
 {
 }

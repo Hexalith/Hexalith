@@ -170,7 +170,7 @@ public abstract class HexalithApplication : IApplication
                 nameof(AddServices),
                 BindingFlags.Public | BindingFlags.Static,
                 null,
-                new[] { typeof(IServiceCollection), typeof(IConfiguration) },
+                [typeof(IServiceCollection), typeof(IConfiguration)],
                 null);
             if (moduleMethod == null)
             {
@@ -180,7 +180,7 @@ public abstract class HexalithApplication : IApplication
             }
             else
             {
-                _ = moduleMethod.Invoke(null, new object[] { services, configuration });
+                _ = moduleMethod.Invoke(null, [services, configuration]);
                 Debug.WriteLine($"The services for module {module.Name} have been added.");
             }
         }

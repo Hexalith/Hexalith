@@ -1,12 +1,9 @@
-﻿// <copyright file="IApplicationModule.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="IApplicationModule.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Application.Modules.Modules;
-
-using System.Reflection;
 
 /// <summary>
 /// Represents a module in the application.
@@ -48,12 +45,6 @@ public interface IApplicationModule
     /// Gets the path of the module.
     /// </summary>
     string Path { get; }
-
-    /// <summary>
-    /// Gets the module UI assemblies.
-    /// </summary>
-    /// <value>The UI assemblies.</value>
-    IEnumerable<Assembly> PresentationAssemblies { get; }
 
     /// <summary>
     /// Gets the version of the module.

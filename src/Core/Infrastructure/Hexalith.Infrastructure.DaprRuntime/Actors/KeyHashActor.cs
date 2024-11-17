@@ -71,11 +71,11 @@ public class KeyHashActor : Actor, IKeyHashActor
     }
 
     private async Task<HashSet<string>> GetStateAsync()
-        => new HashSet<string>(await StateManager.GetOrAddStateAsync(ApplicationConstants.StateName, Array.Empty<string>()));
+        => [.. await StateManager.GetOrAddStateAsync(ApplicationConstants.StateName, Array.Empty<string>())];
 
     private new async Task SaveStateAsync()
     {
-        await StateManager.AddStateAsync(ApplicationConstants.StateName, _state);
+        await StateManager.SetStateAsync(ApplicationConstants.StateName, _state?.ToArray() ?? [], CancellationToken.None);
         await StateManager.SaveStateAsync();
     }
 }
