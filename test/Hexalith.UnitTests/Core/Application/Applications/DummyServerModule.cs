@@ -41,5 +41,11 @@ internal class DummyServerModule : IWebServerApplicationModule
         _ = services.AddSingleton<DummyServerService>();
     }
 
-    public void UseModule(object builder) => throw new NotImplementedException();
+    public void UseModule(object application)
+    {
+    }
+
+    public void UseSecurity(object application)
+    {
+    }
 }

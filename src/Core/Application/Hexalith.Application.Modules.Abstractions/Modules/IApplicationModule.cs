@@ -54,6 +54,6 @@ public interface IApplicationModule
     /// <summary>
     /// Setup the module in the application. For example, maps routes, etc.
     /// </summary>
-    /// <param name="builder">The host application.</param>
-    void UseModule(object builder);
+    /// <param name="application">The host application.</param>
+    void UseModule(object application);
 }

@@ -45,7 +45,7 @@ jobs:
         dotnet build --configuration Release -p:Version=${{ env.VERSION }}
     - name: Unit Tests
       run: |
-        dotnet test -c Release --no-restore --no-build ./test/Hexalith.UnitTests/Hexalith.UnitTests.csproj 
+        dotnet test -c Release ./test/Hexalith.UnitTests/Hexalith.UnitTests.csproj 
     - name: Publish release packages to Nuget
       if: startswith(github.ref, 'refs/tags/v') 
       run: |
