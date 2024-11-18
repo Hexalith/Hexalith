@@ -40,12 +40,13 @@ jobs:
         echo "MINVERVERSIONOVERRIDE=$version" >> $GITHUB_ENV
         echo "VERSION=$version" >> $GITHUB_ENV
         echo "VERSION=$version"
-    - name: Build
-      run: |
-        dotnet build --configuration Release -p:Version=${{ env.VERSION }}
     - name: Unit Tests
       run: |
         dotnet test -c Release ./test/Hexalith.UnitTests/Hexalith.UnitTests.csproj 
+        dotnet clean
+    - name: Build
+      run: |
+        dotnet build --configuration Release -p:Version=${{ env.VERSION }}
     - name: Publish release packages to Nuget
       if: startswith(github.ref, 'refs/tags/v') 
       run: |
