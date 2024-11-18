@@ -14,4 +14,9 @@ namespace Hexalith.Application.Modules.Modules;
 /// </remarks>
 public interface IWebServerApplicationModule : IUIApplicationModule
 {
+    /// <summary>
+    /// Configures security for the application.
+    /// </summary>
+    /// <param name="application">The application to configure security for.</param>
+    void UseSecurity(object application);
 }

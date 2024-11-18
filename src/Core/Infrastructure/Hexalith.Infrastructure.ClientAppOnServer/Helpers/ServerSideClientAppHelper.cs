@@ -9,6 +9,8 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 
+using Blazored.SessionStorage;
+
 using Dapr.Actors.Client;
 
 using FluentValidation;
@@ -18,17 +20,19 @@ using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Modules.Applications;
 using Hexalith.Application.Modules.Modules;
+using Hexalith.Application.Modules.Routes;
+using Hexalith.Application.Organizations.Helpers;
 using Hexalith.Application.Projections;
 using Hexalith.Application.Sessions.Services;
 using Hexalith.Application.Tasks;
 using Hexalith.Infrastructure.AspireService.Defaults;
-using Hexalith.Infrastructure.ClientApp.Helpers;
 using Hexalith.Infrastructure.ClientAppOnServer.Services;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Partitions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Sessions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Sessions.Services;
+using Hexalith.Infrastructure.Emails.SendGrid.Helpers;
 using Hexalith.Infrastructure.WebApis.Helpers;
 using Hexalith.PolymorphicSerialization;
 
@@ -38,6 +42,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.FluentUI.AspNetCore.Components;
 
 using Serilog;
 
@@ -59,13 +64,28 @@ public static class ServerSideClientAppHelper
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        return services
-             .AddScoped<ICommandService, ServerCommandService>()
-             .AddScoped<ISessionIdService, SessionIdService>()
-             .AddScoped<ISessionService, SessionService>()
-             .AddPartitions()
-             .AddSessions()
-             .AddHexalithClientApp(configuration);
+        _ = services
+            .AddFluentUIComponents()
+            .AddOrganizations(configuration)
+            .AddSendGridEmail(configuration)
+            .AddSingleton(TimeProvider.System)
+            .AddSingleton<IRouteManager, RouteManager>()
+            .AddScoped<ICommandService, ServerCommandService>()
+            .AddScoped<ISessionIdService, SessionIdService>()
+            .AddScoped<ISessionService, SessionService>()
+            .AddPartitions()
+            .AddSessions();
+        _ = services.AddValidatorsFromAssemblyContaining<CommandBusSettingsValidator>(ServiceLifetime.Singleton);
+        services.TryAddSingleton<IResiliencyPolicyProvider, ResiliencyPolicyProvider>();
+        services.TryAddScoped<IDomainCommandDispatcher, DependencyInjectionDomainCommandDispatcher>();
+        services.TryAddScoped<IProjectionUpdateProcessor, DependencyInjectionProjectionUpdateProcessor>();
+        services.TryAddSingleton<IDomainAggregateFactory, DomainAggregateFactory>();
+        services
+            .TryAddSingleton<IDomainCommandProcessor>((s) => new DomainActorCommandProcessor(
+            ActorProxy.DefaultProxyFactory,
+            false,
+            s.GetRequiredService<ILogger<DomainActorCommandProcessor>>()));
+        return services;
     }
 
     /// <summary>
@@ -92,12 +112,15 @@ public static class ServerSideClientAppHelper
         _ = builder
             .AddServiceDefaults()
             .Services
+            .AddLocalization(options => options.ResourcesPath = "Resources")
+            .AddBlazoredSessionStorage()
             .AddProblemDetails()
             .AddHexalithServerSideClientApp(builder.Configuration)
             .AddEndpointsApiExplorer()
             .AddSwaggerGen(c => c.SwaggerDoc("v1", new() { Title = applicationName, Version = version, }))
             .AddDaprBuses(builder.Configuration)
             .AddDaprStateStore(builder.Configuration);
+
         _ = builder
             .Services
             .ConfigureHttpJsonOptions(options => options.SerializerOptions.SetDefault())
@@ -112,23 +135,16 @@ public static class ServerSideClientAppHelper
             });
 
         _ = builder.Services
+            .AddServerSideBlazor();
+        _ = builder.Services
+            .AddRazorPages();
+        _ = builder.Services
             .AddRazorComponents()
             .AddInteractiveServerComponents()
             .AddInteractiveWebAssemblyComponents();
 
         // Show detailed errors on Circuit exceptions
         _ = builder.Services.AddServerSideBlazor().AddCircuitOptions(option => option.DetailedErrors = true);
-
-        _ = builder.Services.AddValidatorsFromAssemblyContaining<CommandBusSettingsValidator>(ServiceLifetime.Singleton);
-        builder.Services.TryAddSingleton<IResiliencyPolicyProvider, ResiliencyPolicyProvider>();
-        builder.Services.TryAddScoped<IDomainCommandDispatcher, DependencyInjectionDomainCommandDispatcher>();
-        builder.Services.TryAddScoped<IProjectionUpdateProcessor, DependencyInjectionProjectionUpdateProcessor>();
-        builder.Services.TryAddSingleton<IDomainAggregateFactory, DomainAggregateFactory>();
-        builder.Services
-            .TryAddSingleton<IDomainCommandProcessor>((s) => new DomainActorCommandProcessor(
-            ActorProxy.DefaultProxyFactory,
-            false,
-            s.GetRequiredService<ILogger<DomainActorCommandProcessor>>()));
 
 #pragma warning disable EXTEXP0018 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
         _ = builder.Services
@@ -202,6 +218,26 @@ public static class ServerSideClientAppHelper
     }
 
     /// <summary>
+    /// Configures the application to use the modules.
+    /// </summary>
+    /// <param name="application">The application.</param>
+    public static void UseHexalithSecurity([NotNull] this IHost application)
+    {
+        ArgumentNullException.ThrowIfNull(application);
+
+        // initialize modules
+        using IServiceScope scope = application.Services.CreateScope();
+
+        IEnumerable<IApplicationModule>? modules = scope
+            .ServiceProvider
+            .GetServices<IApplicationModule>();
+        foreach (IWebServerApplicationModule module in modules.OfType<IWebServerApplicationModule>())
+        {
+            module.UseSecurity(application);
+        }
+    }
+
+    /// <summary>
     /// Uses the hexalith web application.
     /// </summary>
     /// <typeparam name="TApp">The type of the t application.</typeparam>
@@ -236,9 +272,9 @@ public static class ServerSideClientAppHelper
           .AddSupportedUICultures(_cultures));
         _ = app
             .UseStaticFiles()
-            .UseRouting()
-            .UseAuthentication()
-            .UseAuthorization()
+            .UseRouting();
+        app.UseHexalithSecurity();
+        _ = app
             .UseSwagger()
             .UseSwaggerUI()
             .UseSession()
@@ -249,12 +285,15 @@ public static class ServerSideClientAppHelper
             .MapRazorComponents<TApp>()
             .AddInteractiveServerRenderMode()
             .AddInteractiveWebAssemblyRenderMode();
-        if (HexalithApplication.WebAppApplication is not null && HexalithApplication.WebAppApplication.PresentationAssemblies.Any())
+        if (HexalithApplication.WebServerApplication is not null)
         {
-            _ = razor.AddAdditionalAssemblies([.. HexalithApplication.WebAppApplication.PresentationAssemblies]);
+            System.Reflection.Assembly[] assemblies = HexalithApplication.WebServerApplication.PresentationAssemblies.ToArray();
+            _ = razor.AddAdditionalAssemblies(assemblies);
         }
 
         app.UseHexalithModules();
+
+        _ = app.MapBlazorHub();
 
         return app;
     }

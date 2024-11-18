@@ -13,15 +13,18 @@ using Blazored.SessionStorage;
 using Hexalith.Application;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Modules.Applications;
+using Hexalith.Application.Modules.Routes;
+using Hexalith.Application.Organizations.Helpers;
 using Hexalith.Application.Sessions.Services;
 using Hexalith.Infrastructure.ClientApp;
-using Hexalith.Infrastructure.ClientApp.Helpers;
 using Hexalith.Infrastructure.ClientAppOnWasm.Services;
+using Hexalith.Infrastructure.Emails.SendGrid.Helpers;
 
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.FluentUI.AspNetCore.Components;
 using Microsoft.JSInterop;
 
 using Serilog;
@@ -36,27 +39,20 @@ public static class WebAssemblyClientHelper
     /// </summary>
     /// <param name="services">The service collection to add the services to.</param>
     /// <param name="configuration">The configuration for the client application.</param>
-    /// <param name="baseAddress">The base address of the client application.</param>
     /// <returns>The modified service collection.</returns>
-    public static IServiceCollection AddHexalithWasmClientApp(this IServiceCollection services, IConfiguration configuration, Uri baseAddress)
+    public static IServiceCollection AddHexalithWasmClientApp(this IServiceCollection services, IConfiguration configuration)
     {
-        _ = services.AddHexalithClientApp(configuration);
+        _ = services
+            .AddOrganizations(configuration)
+            .AddSendGridEmail(configuration)
+            .AddSingleton(TimeProvider.System)
+            .AddSingleton<IRouteManager, RouteManager>()
+            .AddFluentUIComponents();
         _ = services.AddScoped<ICommandService, ClientCommandService>();
-        _ = services
-            .AddAuthorizationCore()
-            .AddHttpClient(
-                ClientConstants.FrontApiName,
-                client => client.BaseAddress = baseAddress)
-            .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
 
         _ = services
-            .AddScoped<CustomAuthenticationStateProvider>()
             .AddScoped<ISessionManager, SessionManager>()
-            .AddScoped<ISessionIdService, SessionIdService>()
-            .AddBlazoredSessionStorage()
-            .AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>()
-            .CreateClient(ClientConstants.FrontApiName));
-
+            .AddScoped<ISessionIdService, SessionIdService>();
         return services;
     }
 
@@ -74,8 +70,25 @@ public static class WebAssemblyClientHelper
             .WriteTo.BrowserConsole(formatProvider: CultureInfo.InvariantCulture)
             .CreateLogger();
         _ = builder.Services
+            .AddMemoryCache()
+            .AddLocalization(options => options.ResourcesPath = "Resources")
+            .AddCascadingAuthenticationState()
             .AddLogging(loggingBuilder => loggingBuilder.AddSerilog(dispose: true))
-            .AddHexalithWasmClientApp(builder.Configuration, new Uri(builder.HostEnvironment.BaseAddress));
+            .AddHexalithWasmClientApp(builder.Configuration);
+
+        _ = builder.Services
+           .AddHttpClient(
+               ClientConstants.FrontApiName,
+               client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
+           .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
+        _ = builder.Services
+                    .AddBlazoredSessionStorage();
+
+        _ = builder.Services
+          .AddScoped(sp => sp
+                    .GetRequiredService<IHttpClientFactory>()
+                    .CreateClient(ClientConstants.FrontApiName));
+
         HexalithApplication.AddWebAppServices(builder.Services, builder.Configuration);
         return builder;
     }

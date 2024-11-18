@@ -24,7 +24,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 /// </summary>
 public abstract class HexalithApplication : IApplication
 {
-    private static readonly ISharedUIElementsApplication? _sharedUIElementsApplication;
+    private static readonly IUIApplication? _sharedUIElementsApplication;
     private static IApiServerApplication? _apiServerApplication;
     private static IWebAppApplication? _webAppApplication;
     private static IWebServerApplication? _webServerApplication;
@@ -153,13 +153,15 @@ public abstract class HexalithApplication : IApplication
     {
         if (WebServerApplication is not null)
         {
-            services.TryAddSingleton<IApplication>(WebServerApplication);
             services.TryAddSingleton(WebServerApplication);
+            services.TryAddSingleton<IUIApplication>(WebServerApplication);
+            services.TryAddSingleton<IApplication>(WebServerApplication);
         }
         else if (WebAppApplication is not null)
         {
-            services.TryAddSingleton<IApplication>(WebAppApplication);
             services.TryAddSingleton(WebAppApplication);
+            services.TryAddSingleton<IApplication>(WebAppApplication);
+            services.TryAddSingleton<IUIApplication>(WebAppApplication);
         }
 
         if (ApiServerApplication is not null)

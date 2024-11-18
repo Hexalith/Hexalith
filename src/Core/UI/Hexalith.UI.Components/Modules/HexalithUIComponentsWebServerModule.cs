@@ -63,4 +63,9 @@ public class HexalithUIComponentsWebServerModule : IWebServerApplicationModule
     public void UseModule(object builder)
     {
     }
+
+    /// <inheritdoc/>
+    public void UseSecurity(object application)
+    {
+    }
 }

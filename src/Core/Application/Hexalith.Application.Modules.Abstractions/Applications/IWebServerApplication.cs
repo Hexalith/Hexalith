@@ -4,18 +4,11 @@
 // </copyright>
 namespace Hexalith.Application.Modules.Applications;
 
-using System.Reflection;
-
 /// <summary>
 /// Represents the definition of an application.
 /// </summary>
-public interface IWebServerApplication : IApplication
+public interface IWebServerApplication : IUIApplication
 {
-    /// <summary>
-    /// Gets the presentation assemblies associated with the application.
-    /// </summary>
-    public IEnumerable<Assembly> PresentationAssemblies { get; }
-
     /// <summary>
     /// Gets the client application type.
     /// Must be a type that implements <see cref="IWebAppApplication"/>.
