@@ -6,10 +6,9 @@
 // Last Modified By : Jérôme Piquot
 // Last Modified On : 10-28-2023
 // ***********************************************************************
-// <copyright file="KeyValueActor.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+// <copyright file="KeyValueActor.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -45,8 +44,16 @@ public class KeyValueActor : Actor, IKeyValueActor
     /// Initializes a new instance of the <see cref="KeyValueActor" /> class.
     /// </summary>
     /// <param name="host">The <see cref="ActorHost" /> that will host this actor instance.</param>
-    public KeyValueActor(ActorHost host)
-        : base(host) => ArgumentNullException.ThrowIfNull(host);
+    /// <param name="stateManager">The state manager to be used for managing actor state.</param>
+    public KeyValueActor(ActorHost host, IActorStateManager? stateManager = null)
+        : base(host)
+    {
+        ArgumentNullException.ThrowIfNull(host);
+        if (stateManager is not null)
+        {
+            StateManager = stateManager;
+        }
+    }
 
     /// <inheritdoc/>
     public async Task<string?> GetAsync()

@@ -37,8 +37,16 @@ public class KeyHashActor : Actor, IKeyHashActor
     /// Initializes a new instance of the <see cref="KeyHashActor"/> class.
     /// </summary>
     /// <param name="host">The <see cref="ActorHost" /> that will host this actor instance.</param>
-    public KeyHashActor(ActorHost host)
-        : base(host) => ArgumentNullException.ThrowIfNull(host);
+    /// <param name="stateManager">The state manager to be used for managing actor state.</param>
+    public KeyHashActor(ActorHost host, IActorStateManager? stateManager = null)
+        : base(host)
+    {
+        ArgumentNullException.ThrowIfNull(host);
+        if (stateManager is not null)
+        {
+            StateManager = stateManager;
+        }
+    }
 
     /// <inheritdoc/>
     public async Task<int> AddAsync(string value)
