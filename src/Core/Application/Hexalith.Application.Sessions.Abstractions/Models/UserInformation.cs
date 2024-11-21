@@ -11,7 +11,7 @@ using System.Runtime.Serialization;
 /// Represents user information including identity and roles.
 /// </summary>
 /// <param name="Id">The unique identifier of the user.</param>
-/// <param name="IdentityProviderName"></param>
+/// <param name="IdentityProviderName">The name of the identity provider.</param>
 /// <param name="Name">The name of the user.</param>
 /// <param name="IsGlobalAdministrator">Indicates whether the user is a global administrator.</param>
 /// <param name="Roles">The roles associated with the user.</param>
