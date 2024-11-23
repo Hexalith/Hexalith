@@ -111,6 +111,8 @@ public static class ServerSideClientAppHelper
         WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
         Serilog.ILogger startupLogger = builder.AddSerilogLogger();
 
+        _ = builder.Services.AddRazorPages();
+        _ = builder.Services.AddServerSideBlazor();
         builder.Services.AddActors(options =>
 
             // Register actor types and configure actor settings
@@ -120,7 +122,6 @@ public static class ServerSideClientAppHelper
         _ = builder
             .AddServiceDefaults()
             .Services
-            .AddAntiforgery()
             .AddLocalization(options => options.ResourcesPath = "Resources")
             .AddBlazoredSessionStorage()
             .AddProblemDetails()
@@ -143,10 +144,6 @@ public static class ServerSideClientAppHelper
                 }
             });
 
-        _ = builder.Services
-            .AddServerSideBlazor();
-        _ = builder.Services
-            .AddRazorPages();
         _ = builder.Services
             .AddRazorComponents()
             .AddInteractiveServerComponents()
@@ -281,14 +278,15 @@ public static class ServerSideClientAppHelper
           .AddSupportedCultures(_cultures)
           .AddSupportedUICultures(_cultures));
         _ = app
-            .UseStaticFiles()
-            .UseRouting();
+            .MapStaticAssets();
+        _ = app
+            .UseRouting()
+            .UseAntiforgery();
         app.UseHexalithSecurity();
         _ = app
             .UseSwagger()
             .UseSwaggerUI()
-            .UseSession()
-            .UseAntiforgery();
+            .UseSession();
         _ = app.MapControllers();
         _ = app.MapSubscribeHandler();
         RazorComponentsEndpointConventionBuilder razor = app
@@ -297,8 +295,11 @@ public static class ServerSideClientAppHelper
             .AddInteractiveWebAssemblyRenderMode();
         if (HexalithApplication.WebServerApplication is not null)
         {
-            System.Reflection.Assembly[] assemblies = HexalithApplication.WebServerApplication.PresentationAssemblies.ToArray();
-            _ = razor.AddAdditionalAssemblies(assemblies);
+            System.Reflection.Assembly[]? assemblies = HexalithApplication.WebServerApplication?.PresentationAssemblies.ToArray();
+            if (assemblies != null)
+            {
+                _ = razor.AddAdditionalAssemblies(assemblies);
+            }
         }
 
         app.UseHexalithModules();

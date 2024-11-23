@@ -9,6 +9,8 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
+using Hexalith.Application.Modules.Modules;
+
 /// <summary>
 /// Application definition base class.
 /// </summary>
@@ -27,10 +29,31 @@ public abstract class HexalithWebAppApplication : HexalithApplication, IWebAppAp
         .OrderBy(p => p.FullName)];
 
     /// <inheritdoc/>
-    public IEnumerable<Assembly> PresentationAssemblies => _presentationAssemblies ??= [.. WebAppModules
-        .Select(p => p.Assembly)
-        .Distinct()
-        .OrderBy(p => p.FullName)];
+    public IEnumerable<Assembly> PresentationAssemblies
+    {
+        get
+        {
+            if (_presentationAssemblies is null)
+            {
+                List<Assembly> assemblies = [GetType().Assembly];
+                foreach (Type module in WebAppModules.Distinct())
+                {
+                    if (!typeof(IUIApplicationModule).IsAssignableFrom(module))
+                    {
+                        continue;
+                    }
+
+                    IUIApplicationModule uiModule = Activator.CreateInstance(module) as IUIApplicationModule
+                        ?? throw new InvalidOperationException($"Unable to create an instance of {module.FullName}");
+                    assemblies.AddRange(uiModule.PresentationAssemblies);
+                }
+
+                _presentationAssemblies = assemblies.Distinct();
+            }
+
+            return _presentationAssemblies;
+        }
+    }
 
     /// <inheritdoc/>
     public abstract IEnumerable<Type> WebAppModules { get; }

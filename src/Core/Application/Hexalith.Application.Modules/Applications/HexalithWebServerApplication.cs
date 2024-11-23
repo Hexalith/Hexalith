@@ -16,6 +16,8 @@ using Hexalith.Application.Modules.Modules;
 /// </summary>
 public abstract class HexalithWebServerApplication : HexalithApplication, IWebServerApplication
 {
+    private IEnumerable<Assembly>? _presentationAssemblies;
+
     /// <inheritdoc/>
     public override ApplicationType ApplicationType => ApplicationType.WebServer;
 
@@ -27,28 +29,25 @@ public abstract class HexalithWebServerApplication : HexalithApplication, IWebSe
     {
         get
         {
-            IEnumerable<Type> modules = WebServerModules;
-
-            if (WebAppApplication is not null)
+            if (_presentationAssemblies is null)
             {
-                modules = modules.Concat(WebAppApplication.Modules);
-            }
-
-            List<Assembly> assemblies = [];
-            foreach (Type module in modules.Distinct())
-            {
-                if (Activator.CreateInstance(module) is not IApplicationModule applicationModule)
+                List<Assembly> assemblies = [];
+                foreach (Type module in WebServerModules.Distinct())
                 {
-                    throw new InvalidOperationException($"The module {module.FullName} must implement {nameof(IApplicationModule)}.");
-                }
+                    if (!typeof(IUIApplicationModule).IsAssignableFrom(module))
+                    {
+                        continue;
+                    }
 
-                if (applicationModule is IUIApplicationModule uiModule)
-                {
+                    IUIApplicationModule uiModule = Activator.CreateInstance(module) as IUIApplicationModule
+                        ?? throw new InvalidOperationException($"Unable to create an instance of {module.FullName}");
                     assemblies.AddRange(uiModule.PresentationAssemblies);
                 }
+
+                _presentationAssemblies = assemblies.Distinct();
             }
 
-            return assemblies.Distinct();
+            return _presentationAssemblies.Concat(WebAppApplication?.PresentationAssemblies ?? []).Distinct();
         }
     }
 

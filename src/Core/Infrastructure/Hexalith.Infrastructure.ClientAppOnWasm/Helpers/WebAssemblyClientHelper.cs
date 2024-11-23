@@ -72,7 +72,6 @@ public static class WebAssemblyClientHelper
         _ = builder.Services
             .AddMemoryCache()
             .AddLocalization(options => options.ResourcesPath = "Resources")
-            .AddCascadingAuthenticationState()
             .AddLogging(loggingBuilder => loggingBuilder.AddSerilog(dispose: true))
             .AddHexalithWasmClientApp(builder.Configuration);
 

@@ -3,11 +3,14 @@
 @inject HttpClient HttpClient
 <AuthorizeView>
 	<Authorized>
-		<FluentProfileMenu 
+		@if(RendererInfo.IsInteractive)
+		{
+			<FluentProfileMenu @rendermode="InteractiveServer"
 			Status="PresenceStatus.Available" 
 			FullName="@context.User.Identity?.Name"
 			OnFooterLinkClick="OnAccountClick"
 			OnHeaderButtonClick="OnLogoutClickAsync"/>
+		}
 	</Authorized>
 	<NotAuthorized>
 		<FluentButton OnClick="OnLoginClick" IconStart="@(new Icons.Regular.Size16.PersonLock())">Login</FluentButton>
@@ -15,6 +18,10 @@
 </AuthorizeView>
 
 @code {
+	protected override void OnInitialized()
+	{
+		base.OnInitialized();
+	}
 	private void OnAccountClick()
 	{
 		NavigationManager.NavigateTo($"{Application.HomePath}", forceLoad: false);
