@@ -12,6 +12,7 @@ using System.Text.Json;
 using Blazored.SessionStorage;
 
 using Dapr.Actors.Client;
+using Dapr.Actors.Runtime;
 
 using FluentValidation;
 
@@ -92,6 +93,7 @@ public static class ServerSideClientAppHelper
     /// Creates the server-side client application.
     /// </summary>
     /// <param name="applicationName">The name of the application.</param>
+    /// <param name="registerActors">The register actors.</param>
     /// <param name="sessionCookieName">The name of the session cookie.</param>
     /// <param name="version">The version of the application.</param>
     /// <param name="args">The command-line arguments.</param>
@@ -99,6 +101,7 @@ public static class ServerSideClientAppHelper
     /// <exception cref="InvalidOperationException">Thrown when the connection string 'DefaultConnection' is not found.</exception>
     public static WebApplicationBuilder CreateServerSideClientApplication(
         string applicationName,
+        Action<ActorRegistrationCollection> registerActors,
         string sessionCookieName,
         string version,
         string[] args)
@@ -107,6 +110,11 @@ public static class ServerSideClientAppHelper
 
         WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
         Serilog.ILogger startupLogger = builder.AddSerilogLogger();
+
+        builder.Services.AddActors(options =>
+
+            // Register actor types and configure actor settings
+            registerActors(options.Actors));
 
         startupLogger.Information("Configuring {AppName} ...", applicationName);
         _ = builder
