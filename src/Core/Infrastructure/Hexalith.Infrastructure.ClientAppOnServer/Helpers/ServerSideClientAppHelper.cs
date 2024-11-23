@@ -120,6 +120,7 @@ public static class ServerSideClientAppHelper
         _ = builder
             .AddServiceDefaults()
             .Services
+            .AddAntiforgery()
             .AddLocalization(options => options.ResourcesPath = "Resources")
             .AddBlazoredSessionStorage()
             .AddProblemDetails()
@@ -149,7 +150,8 @@ public static class ServerSideClientAppHelper
         _ = builder.Services
             .AddRazorComponents()
             .AddInteractiveServerComponents()
-            .AddInteractiveWebAssemblyComponents();
+            .AddInteractiveWebAssemblyComponents()
+            .AddAuthenticationStateSerialization();
 
         // Show detailed errors on Circuit exceptions
         _ = builder.Services.AddServerSideBlazor().AddCircuitOptions(option => option.DetailedErrors = true);

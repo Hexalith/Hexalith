@@ -94,10 +94,10 @@ public abstract class HexalithApplication : IApplication
     public abstract string Id { get; }
 
     /// <inheritdoc/>
-    public virtual string LoginPath => "/login";
+    public virtual string LoginPath => "/account/login";
 
     /// <inheritdoc/>
-    public virtual string LogoutPath => "/logout";
+    public virtual string LogoutPath => "/account/logout";
 
     /// <inheritdoc/>
     public abstract IEnumerable<Type> Modules { get; }
