@@ -304,8 +304,7 @@ public static class ServerSideClientAppHelper
 
         app.UseHexalithModules();
 
-        _ = app.MapBlazorHub();
-
+        // _ = app.MapBlazorHub();
         return app;
     }
 }

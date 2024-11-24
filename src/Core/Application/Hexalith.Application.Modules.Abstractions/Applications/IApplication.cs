@@ -70,6 +70,11 @@ public interface IApplication
     public string ShortName { get; }
 
     /// <summary>
+    /// Gets the user account path of the application.
+    /// </summary>
+    public string UserAccountPath { get; }
+
+    /// <summary>
     /// Gets the version of the application.
     /// </summary>
     public string Version { get; }

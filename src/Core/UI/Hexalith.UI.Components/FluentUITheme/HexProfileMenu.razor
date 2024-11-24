@@ -1,30 +1,45 @@
-﻿@inject IApplication Application
+﻿@using System.Security.Claims
+@inject IApplication Application
 @inject NavigationManager NavigationManager
-@inject HttpClient HttpClient
 <AuthorizeView>
 	<Authorized>
-		@if(RendererInfo.IsInteractive)
-		{
 			<FluentProfileMenu @rendermode="InteractiveServer"
-			Status="PresenceStatus.Available" 
-			FullName="@context.User.Identity?.Name"
-			OnFooterLinkClick="OnAccountClick"
-			OnHeaderButtonClick="OnLogoutClickAsync"/>
-		}
+							   Status="PresenceStatus.Available"
+							   FullName="name"
+							   Email="email"
+							   OnFooterLinkClick="OnAccountClick"
+							   OnHeaderButtonClick="OnLogoutClickAsync" />
 	</Authorized>
 	<NotAuthorized>
-		<FluentButton OnClick="OnLoginClick" IconStart="@(new Icons.Regular.Size16.PersonLock())">Login</FluentButton>
+		<FluentButton OnClick="@OnLoginClick" IconStart="@(new Icons.Regular.Size16.PersonLock())">Login</FluentButton>
 	</NotAuthorized>
 </AuthorizeView>
 
+
 @code {
-	protected override void OnInitialized()
+
+	[CascadingParameter]
+	public Task<AuthenticationState>? AuthenticationState { get; set; }
+
+	string? name;
+	string? email;
+	protected override async Task OnInitializedAsync()
 	{
 		base.OnInitialized();
+		if (AuthenticationState is not null)
+		{
+			var authState = await AuthenticationState;
+			if (authState.User.Identity is not null)
+			{
+				name = authState.User.Identity.Name;
+				email = authState.User.FindFirst(ClaimTypes.Email)?.Value;
+				StateHasChanged();
+			}
+		}
 	}
 	private void OnAccountClick()
 	{
-		NavigationManager.NavigateTo($"{Application.HomePath}", forceLoad: false);
+		NavigationManager.NavigateTo($"{Application.UserAccountPath}", forceLoad: true);
 	}
 	private void OnLoginClick()
 	{
@@ -32,10 +47,6 @@
 	}
 	private async Task OnLogoutClickAsync()
 	{
-		var url = $"{NavigationManager.BaseUri}{Application.LogoutPath}";
-		await HttpClient
-			.GetAsync(url)
-			.ConfigureAwait(false);
-		NavigationManager.NavigateTo($"{Application.HomePath}", forceLoad: true);
+		NavigationManager.NavigateTo($"/logout", forceLoad: true);
 	}
 }

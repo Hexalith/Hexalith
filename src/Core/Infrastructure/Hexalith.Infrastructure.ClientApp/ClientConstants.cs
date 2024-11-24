@@ -13,5 +13,5 @@ public static class ClientConstants
     /// <summary>
     /// The name of the FrontApi.
     /// </summary>
-    public const string FrontApiName = "FrontApi";
+    public const string FrontApiName = "HexalithApp.Server";
 }

@@ -9,7 +9,7 @@
     OptionText="@(i => i.Text)"
     OptionSelected="@(i => i.Selected)"
     Autocomplete="@ComboboxAutocomplete.List"
-    SelectedOptionChanged="x => ApplySelectedCultureAsync(x.Value)" 
+    SelectedOptionChanged="x => ApplySelectedCultureAsync(x.Value ?? CultureInfo.CurrentCulture)" 
     Height="200px">
 </FluentCombobox>
 @* <p>

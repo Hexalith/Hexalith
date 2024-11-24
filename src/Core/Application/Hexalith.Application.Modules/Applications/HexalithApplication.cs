@@ -112,6 +112,9 @@ public abstract class HexalithApplication : IApplication
     public abstract string ShortName { get; }
 
     /// <inheritdoc/>
+    public virtual string UserAccountPath => "/account/manage";
+
+    /// <inheritdoc/>
     public virtual string Version => "1.0";
 
     /// <inheritdoc/>

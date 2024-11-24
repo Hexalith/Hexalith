@@ -1,0 +1,23 @@
+﻿@page "/logout"
+@inject NavigationManager NavigationManager
+@inject IApplication Application
+@rendermode InteractiveServer
+<h3>Logout</h3>
+
+<AuthorizeView>
+	<Authorized>
+		<p>Click on the button below to logout</p>
+		<form action="@Application.LogoutPath" method="post">
+			<AntiforgeryToken />
+			<FluentButton Type="ButtonType.Submit" Style="width: 100%;">Logout</FluentButton>
+		</form>
+	</Authorized>
+	<NotAuthorized>
+		<p>You are logout now</p>
+		<FluentNavLink Href="@Application.LoginPath">Login</FluentNavLink>
+	</NotAuthorized>
+</AuthorizeView>
+
+@code {
+
+}

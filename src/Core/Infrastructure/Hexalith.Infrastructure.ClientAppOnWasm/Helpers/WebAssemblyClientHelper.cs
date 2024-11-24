@@ -20,7 +20,6 @@ using Hexalith.Infrastructure.ClientApp;
 using Hexalith.Infrastructure.ClientAppOnWasm.Services;
 using Hexalith.Infrastructure.Emails.SendGrid.Helpers;
 
-using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -75,11 +74,17 @@ public static class WebAssemblyClientHelper
             .AddLogging(loggingBuilder => loggingBuilder.AddSerilog(dispose: true))
             .AddHexalithWasmClientApp(builder.Configuration);
 
-        _ = builder.Services
-           .AddHttpClient(
-               ClientConstants.FrontApiName,
-               client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
-           .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
+        //// Add authentication services
+        // _ = builder.Services.AddApiAuthorization(); // This registers the necessary authentication services
+        _ = builder.Services.AddAuthorizationCore()
+            .AddCascadingAuthenticationState()
+            .AddAuthenticationStateDeserialization();
+
+        // _ = builder.Services
+        //       .AddHttpClient(
+        //           ClientConstants.FrontApiName,
+        //           client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
+        //       .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
         _ = builder.Services
                     .AddBlazoredSessionStorage();
 
