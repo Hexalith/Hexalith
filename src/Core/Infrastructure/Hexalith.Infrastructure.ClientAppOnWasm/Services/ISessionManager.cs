@@ -8,10 +8,20 @@ namespace Hexalith.Infrastructure.ClientAppOnWasm.Services;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-// ISessionManager.cs (Client)
+/// <summary>
+/// Interface for managing user sessions.
+/// </summary>
 public interface ISessionManager
 {
+    /// <summary>
+    /// Gets the current session asynchronously.
+    /// </summary>
+    /// <returns>A task that represents the asynchronous operation. The task result contains the current <see cref="ClaimsPrincipal"/>.</returns>
     Task<ClaimsPrincipal> GetCurrentSessionAsync();
 
+    /// <summary>
+    /// Signs out the current user asynchronously.
+    /// </summary>
+    /// <returns>A task that represents the asynchronous sign-out operation.</returns>
     Task SignOutAsync();
 }

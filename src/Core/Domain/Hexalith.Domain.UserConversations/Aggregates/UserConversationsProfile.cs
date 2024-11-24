@@ -85,6 +85,9 @@ public record UserConversationsProfile(string UserId, IEnumerable<ConversationIt
         };
     }
 
+    /// <inheritdoc/>
+    public bool IsInitialized() => !string.IsNullOrWhiteSpace(UserId);
+
     /// <summary>
     /// Applies the UserConversationsProfileAdded event to create a new UserConversationsProfile.
     /// </summary>
@@ -106,7 +109,4 @@ public record UserConversationsProfile(string UserId, IEnumerable<ConversationIt
             },
             [added],
             false);
-
-    /// <inheritdoc/>
-    public bool IsInitialized() => !string.IsNullOrWhiteSpace(UserId);
 }

@@ -1,4 +1,4 @@
-﻿﻿// <copyright file="SurveyUser.cs" company="ITANEO">
+﻿// <copyright file="SurveyUser.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -8,16 +8,9 @@ namespace Hexalith.Domain.Entities;
 using System.Runtime.Serialization;
 
 /// <summary>
-/// Represents a user in the survey system.
+/// Represents a user participating in a survey.
 /// </summary>
+/// <param name="Id">The unique identifier of the survey user.</param>
+/// <param name="Name">The name of the survey user.</param>
 [DataContract]
-public record SurveyUser(
-    /// <summary>
-    /// Gets the unique identifier for the user.
-    /// </summary>
-    string Id,
-
-    /// <summary>
-    /// Gets the name of the user.
-    /// </summary>
-    string Name);
+public record SurveyUser(string Id, string Name);

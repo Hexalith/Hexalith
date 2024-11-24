@@ -115,7 +115,7 @@ public static class SessionHelper
     /// Partitions the roles for the specified user.
     /// </summary>
     /// <param name="user">The user principal.</param>
-    /// <param name="partitionId"></param>
+    /// <param name="partitionId">The partition ID.</param>
     /// <returns>A collection of role names.</returns>
     public static IEnumerable<string> GetPartitionRoles(this ClaimsPrincipal user, string partitionId)
     {

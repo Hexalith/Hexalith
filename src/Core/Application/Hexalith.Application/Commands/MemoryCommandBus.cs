@@ -1,17 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Application
-// Author           : Jérôme Piquot
-// Created          : 02-04-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 02-04-2023
-// ***********************************************************************
-// <copyright file="MemoryCommandBus.cs" company="ITANEO">
+﻿// <copyright file="MemoryCommandBus.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Application.Commands;
 
@@ -19,36 +9,32 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Hexalith.Application.Metadatas;
-using Hexalith.Application.States;
 
 /// <summary>
 /// Memory Command Bus.
 /// </summary>
 public class MemoryCommandBus : ICommandBus
 {
-    private readonly List<(object, Metadata)>? _messagestream;
+    private List<(object, Metadata)>? _messagestream;
 
     /// <summary>
-    /// The stream.
+    /// Gets the message stream.
     /// </summary>
-    private readonly List<MessageState> _stream = [];
+    public List<(object Message, Metadata Metadata)> MessageStream => _messagestream ??= [];
 
-    public List<(object, Metadata)> Messagestream => _messagestream ?? [];
-
-    /// <inheritdoc/>
-    public async Task PublishAsync(MessageState commandState, CancellationToken cancellationToken)
-    {
-        ArgumentNullException.ThrowIfNull(commandState);
-        Messagestream.Add((commandState.Message, commandState.Metadata));
-        await Task.CompletedTask.ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
+    /// <summary>
+    /// Publishes a command asynchronously with the specified metadata.
+    /// </summary>
+    /// <param name="command">The command to be published.</param>
+    /// <param name="metadata">The metadata associated with the command.</param>
+    /// <param name="cancellationToken">A cancellation token that can be used to cancel the publish operation.</param>
+    /// <returns>A task that represents the asynchronous publish operation.</returns>
+    /// <exception cref="ArgumentNullException">Thrown if <paramref name="command"/> or <paramref name="metadata"/> is null.</exception>
     public async Task PublishAsync(object command, Metadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
         ArgumentNullException.ThrowIfNull(metadata);
-        Messagestream.Add((command, metadata));
+        MessageStream.Add((command, metadata));
         await Task.CompletedTask.ConfigureAwait(false);
     }
 }

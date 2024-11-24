@@ -9,37 +9,32 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Hexalith.Application.Metadatas;
-using Hexalith.Application.States;
 
 /// <summary>
 /// Memory Event Bus.
 /// </summary>
-/// <param name="dateTimeService">The date time service.</param>
-public class MemoryEventBus(TimeProvider dateTimeService) : IEventBus
+public class MemoryEventBus : IEventBus
 {
+    private List<(object, Metadata)>? _messageStream;
+
     /// <summary>
-    /// The date time service.
+    /// Gets the message stream.
     /// </summary>
-    private readonly TimeProvider _dateTimeService = dateTimeService;
+    public List<(object Message, Metadata Metadata)> MessageStream => _messageStream ??= [];
 
-    private readonly List<(object, Metadata)>? _messageStream;
-
-    public List<(object, Metadata)> MessageStream => _messageStream ?? [];
-
-    /// <inheritdoc/>
+    /// <summary>
+    /// Publishes a message asynchronously with the specified metadata.
+    /// </summary>
+    /// <param name="message">The message to be published.</param>
+    /// <param name="metadata">The metadata associated with the message.</param>
+    /// <param name="cancellationToken">A cancellation token that can be used to cancel the publish operation.</param>
+    /// <returns>A task that represents the asynchronous publish operation.</returns>
+    /// <exception cref="ArgumentNullException">Thrown if <paramref name="message"/> or <paramref name="metadata"/> is null.</exception>
     public Task PublishAsync(object message, Metadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(message);
         ArgumentNullException.ThrowIfNull(metadata);
         MessageStream.Add((message, metadata));
-        return Task.CompletedTask;
-    }
-
-    /// <inheritdoc/>
-    public Task PublishAsync(MessageState message, CancellationToken cancellationToken)
-    {
-        ArgumentNullException.ThrowIfNull(message);
-        MessageStream.Add((message.Message, message.Metadata));
         return Task.CompletedTask;
     }
 }

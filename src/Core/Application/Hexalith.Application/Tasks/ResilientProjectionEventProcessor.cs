@@ -58,7 +58,7 @@ public class ResilientProjectionEventProcessor
     /// </summary>
     /// <param name="id">The identifier.</param>
     /// <param name="baseEvent">The command.</param>
-    /// <param name="metadata"></param>
+    /// <param name="metadata">The metadata.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A <see cref="Task{TResult}" /> representing the result of the asynchronous operation.</returns>
     public async Task<DateTimeOffset?> ProcessAsync(string id, object baseEvent, Metadata metadata, CancellationToken cancellationToken)

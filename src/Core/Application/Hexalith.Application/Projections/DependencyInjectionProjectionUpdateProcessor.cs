@@ -59,11 +59,6 @@ public class DependencyInjectionProjectionUpdateProcessor : IProjectionUpdatePro
             .ConfigureAwait(false);
     }
 
-    /// <summary>
-    /// Gets the event handler of type IEventHandler.<MyEvent>.
-    /// </summary>
-    /// <param name="event">The event to handle.</param>
-    /// <returns>IEventHandler list.</returns>
     private List<IProjectionUpdateHandler> GetHandlers(object @event)
     {
         Type eventType = @event.GetType();

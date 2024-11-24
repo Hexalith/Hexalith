@@ -12,7 +12,7 @@ using System.Globalization;
 /// </summary>
 public static class UniqueIdHelper
 {
-    private static readonly object _lock = new();
+    private static readonly Lock _lock = new();
     private static string? _previousDateTimeId;
 
     /// <summary>

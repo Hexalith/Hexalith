@@ -19,8 +19,15 @@ using System.Text.Json.Serialization.Metadata;
 /// </summary>
 public class PolymorphicSerializationResolver : DefaultJsonTypeInfoResolver
 {
+    /// <summary>
+    /// A thread-safe dictionary to store the mapping between base types and their serialization mappers.
+    /// </summary>
     private static readonly ConcurrentDictionary<Type, IEnumerable<IPolymorphicSerializationMapper>> _serializationMappers = new();
 
+    /// <summary>
+    /// Attempts to add a default mapper to the static collection of default mappers.
+    /// </summary>
+    /// <param name="mapper">The mapper to be added to the default mappers.</param>
     public static void TryAddDefaultMapper(IPolymorphicSerializationMapper mapper)
     {
         if (!_serializationMappers
@@ -29,7 +36,7 @@ public class PolymorphicSerializationResolver : DefaultJsonTypeInfoResolver
         {
             _serializationMappers[mapper.Base] = _serializationMappers.TryGetValue(mapper.Base, out IEnumerable<IPolymorphicSerializationMapper>? mappers)
                 ? mappers.Append(mapper)
-                : (IEnumerable<IPolymorphicSerializationMapper>)[mapper];
+                : [mapper];
         }
     }
 

@@ -80,6 +80,13 @@ public abstract partial class AzureActiveDirectoryApplicationSecurityContext : I
         }
     }
 
+    /// <summary>
+    /// Logs an error that occurred while acquiring a token.
+    /// </summary>
+    /// <param name="ex">The exception that was thrown.</param>
+    /// <param name="scope">The scope for which the token was requested.</param>
+    /// <param name="authority">The authority used for the token request.</param>
+    /// <param name="clientId">The client ID used for the token request.</param>
     [LoggerMessage(
         EventId = 1,
         Level = Microsoft.Extensions.Logging.LogLevel.Error,

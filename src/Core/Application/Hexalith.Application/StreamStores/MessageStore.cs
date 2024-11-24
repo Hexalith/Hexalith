@@ -1,5 +1,6 @@
-﻿// <copyright file="MessageStore.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="MessageStore.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Application.StreamStores;
@@ -14,10 +15,9 @@ using Hexalith.Extensions.Common;
 using Hexalith.Extensions.Helpers;
 
 /// <summary>
-/// This class is used to store messages state.
+/// Represents a store for messages that ensures idempotency and version control.
 /// </summary>
-/// <typeparam name="TMessage">The storage message type.
-/// Must have the JSON polymorphic base class attribute <see cref="JsonPolymorphicBaseClassAttribute" /> or one of it's base classes must have it.</typeparam>
+/// <typeparam name="TMessage">The type of the message.</typeparam>
 public class MessageStore<TMessage>
     where TMessage : IIdempotent
 {

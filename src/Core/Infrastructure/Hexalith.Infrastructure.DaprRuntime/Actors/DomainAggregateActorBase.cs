@@ -37,7 +37,7 @@ using Microsoft.Extensions.Logging;
 /// </summary>
 public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDomainAggregateActor
 {
-    private const string ActorSuffix = "Aggregate";
+    private const string _actorSuffix = "Aggregate";
     private readonly IDomainAggregateFactory _aggregateFactory;
     private readonly ICommandBus _commandBus;
     private readonly IDomainCommandDispatcher _commandDispatcher;
@@ -50,13 +50,11 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     private readonly IRequestBus _requestBus;
     private readonly IResiliencyPolicyProvider _resiliencyPolicyProvider;
     private IDomainAggregate? _aggregate;
-    private AggregateActorState? _state;
-#if !EXPERIMENTAL_FEATURES
     private MessageStore<MessageState>? _commandStore;
     private MessageStore<MessageState>? _eventStore;
     private MessageStore<MessageState>? _messageStore;
     private ResiliencyPolicy? _resiliencyPolicy;
-#endif
+    private AggregateActorState? _state;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="DomainAggregateActorBase"/> class.
@@ -107,7 +105,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
 
     private MessageStore<MessageState> CommandStore
 #if EXPERIMENTAL_FEATURES
-        => field 
+        => field
 #else
         => _commandStore
 #endif
@@ -117,7 +115,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
 
     private MessageStore<MessageState> EventSourceStore
 #if EXPERIMENTAL_FEATURES
-        => field 
+        => field
 #else
         => _eventStore
 #endif
@@ -127,7 +125,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
 
     private MessageStore<MessageState> MessageStore
 #if EXPERIMENTAL_FEATURES
-        => field 
+        => field
 #else
         => _messageStore
 #endif
@@ -137,7 +135,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
 
     private ResiliencyPolicy ResiliencyPolicy
 #if EXPERIMENTAL_FEATURES
-        => field 
+        => field
 #else
         => _resiliencyPolicy
 #endif
@@ -148,7 +146,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     /// </summary>
     /// <param name="aggregateName">Name of the aggregate.</param>
     /// <returns>string.</returns>
-    public static string GetAggregateActorName(string aggregateName) => aggregateName + ActorSuffix;
+    public static string GetAggregateActorName(string aggregateName) => aggregateName + _actorSuffix;
 
     /// <summary>
     /// Logs the accepted command information.
@@ -385,15 +383,6 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     }
 
     /// <inheritdoc/>
-    public async Task SubmitCommandAsync(ActorMessageEnvelope envelope)
-    {
-        ArgumentNullException.ThrowIfNull(envelope);
-
-        (object command, Metadata metadata) = envelope.Deserialize();
-        await SubmitCommandAsStateAsync(new MessageState((PolymorphicRecordBase)command, metadata)).ConfigureAwait(false);
-    }
-
-    /// <inheritdoc/>
     public async Task SubmitCommandAsStateAsync(MessageState envelope)
     {
         CancellationToken cancellationToken = CancellationToken.None;
@@ -431,6 +420,15 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         await SaveAggregateStateAsync(cancellationToken)
             .ConfigureAwait(false);
         await SaveStateAsync().ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task SubmitCommandAsync(ActorMessageEnvelope envelope)
+    {
+        ArgumentNullException.ThrowIfNull(envelope);
+
+        (object command, Metadata metadata) = envelope.Deserialize();
+        await SubmitCommandAsStateAsync(new MessageState((PolymorphicRecordBase)command, metadata)).ConfigureAwait(false);
     }
 
     [LoggerMessage(
@@ -507,7 +505,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
 
     private async Task<MessageState?> GetSnapshotEventAsync(CancellationToken cancellationToken)
     {
-        string aggregateName = Host.ActorTypeInfo.ActorTypeName.Split(nameof(ActorSuffix)).First();
+        string aggregateName = Host.ActorTypeInfo.ActorTypeName.Split(nameof(_actorSuffix)).First();
         AggregateActorState state = await GetAggregateStateAsync(cancellationToken).ConfigureAwait(false);
 
         IDomainAggregate aggregate = _aggregateFactory.Create(aggregateName);

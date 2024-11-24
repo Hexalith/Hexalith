@@ -1,18 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Application.TopologicalSorting
-// Author           : Jérôme Piquot
-// Created          : 04-04-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 04-04-2023
-// ***********************************************************************
-// <copyright file="DependencyGraph.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="DependencyGraph.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Application.TopologicalSorting;
 
@@ -69,12 +58,11 @@ public class DependencyGraph
     public TopologicalSort CalculateSort(TopologicalSort instance)
     {
         ArgumentNullException.ThrowIfNull(instance);
-        HashSet<OrderedProcess> unused = new(_processes);
+        HashSet<OrderedProcess> unused = [.. _processes];
 
         do
         {
-            HashSet<OrderedProcess> set = new(
-                unused.Where(p => !unused.Overlaps(p.Predecessors))); // select processes which have no predecessors in the unused set, which means that all their predecessors must either be used, or not exist, either way is fine
+            HashSet<OrderedProcess> set = [.. unused.Where(p => !unused.Overlaps(p.Predecessors))]; // select processes which have no predecessors in the unused set, which means that all their predecessors must either be used, or not exist, either way is fine
 
             if (set.Count == 0)
             {

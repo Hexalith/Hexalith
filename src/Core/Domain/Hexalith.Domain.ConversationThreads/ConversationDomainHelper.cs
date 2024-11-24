@@ -7,7 +7,16 @@ namespace Hexalith.Domain.ConversationThreads;
 
 using Hexalith.Domain.ConversationThreads.Aggregates;
 
+/// <summary>
+/// Provides helper methods and properties for conversation domain.
+/// </summary>
 public static class ConversationDomainHelper
 {
+    /// <summary>
+    /// Gets the name of the conversation thread aggregate.
+    /// </summary>
+    /// <value>
+    /// The name of the conversation thread aggregate.
+    /// </value>
     public static string ConversationThreadAggregateName => nameof(ConversationThread);
 }

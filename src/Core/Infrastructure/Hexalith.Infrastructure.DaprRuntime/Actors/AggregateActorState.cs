@@ -1,18 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Infrastructure.DaprRuntime
-// Author           : Jérôme Piquot
-// Created          : 01-04-2024
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 01-10-2024
-// ***********************************************************************
-// <copyright file="AggregateActorState.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="AggregateActorState.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Infrastructure.DaprRuntime.Actors;
 
@@ -20,12 +9,8 @@ using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 /// <summary>
-/// The aggregate state class.
-/// Implements the <see cref="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase" />
-/// Implements the <see cref="IAggregateActor" />.
+/// Represents the state of an aggregate actor.
 /// </summary>
-/// <seealso cref="Hexalith.Infrastructure.DaprRuntime.Sales.Actors.AggregateActorBase" />
-/// <seealso cref="IAggregateActor" />
 [Serializable]
 [DataContract]
 public class AggregateActorState

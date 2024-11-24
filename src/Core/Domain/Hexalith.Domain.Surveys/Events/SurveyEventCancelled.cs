@@ -8,20 +8,12 @@ namespace Hexalith.Domain.Events;
 using Hexalith.PolymorphicSerialization;
 
 /// <summary>
-/// Represents a cancelled conversation thread event in the domain.
+/// Represents an event that occurs when a survey is cancelled.
 /// </summary>
+/// <param name="Event">The survey event that is being cancelled.</param>
+/// <param name="Reason">The reason for the survey cancellation.</param>
 /// <remarks>
-/// This record is used to indicate that a previously scheduled or initiated conversation thread event
-/// has been cancelled. It contains information about the original event and the reason for cancellation.
+/// This event is used to indicate that a survey has been cancelled and provides the reason for the cancellation.
 /// </remarks>
 [PolymorphicSerialization]
-public partial record SurveyEventCancelled(
-    /// <summary>
-    /// The original conversation thread event that was cancelled.
-    /// </summary>
-    SurveyEvent Event,
-
-    /// <summary>
-    /// The reason for cancelling the event.
-    /// </summary>
-    string Reason) : SurveyEvent(Event.Id);
+public partial record SurveyEventCancelled(SurveyEvent Event, string Reason) : SurveyEvent(Event.Id);

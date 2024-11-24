@@ -1,7 +1,6 @@
-﻿// <copyright file="ModuleSettings.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="ModuleSettings.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Application.Modules.Configurations;
@@ -11,18 +10,14 @@ using System.Runtime.Serialization;
 using Hexalith.Extensions.Configuration;
 
 /// <summary>
-/// Hexalith modules settings.
+/// Represents the settings for modules in the Hexalith application.
 /// </summary>
+/// <param name="DisabledModules">The list of disabled modules.</param>
+/// <param name="HomePageModule">The module to be used as the home page.</param>
 [DataContract]
 public sealed record ModuleSettings(
-        /// <summary>
-        /// Gets the list of disabled modules.
-        /// </summary>
         [property: DataMember(Order = 1)]
         IEnumerable<string>? DisabledModules,
-        /// <summary>
-        /// Gets the name of the module containing the home page.
-        /// </summary>
         [property: DataMember(Order = 2)]
         string? HomePageModule = "Hexalith.Shared") : ISettings
 {

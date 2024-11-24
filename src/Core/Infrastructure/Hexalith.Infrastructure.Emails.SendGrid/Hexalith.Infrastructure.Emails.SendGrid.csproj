@@ -4,6 +4,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <PackageReference Include="SendGrid.Extensions.DependencyInjection" Version="$(SendGridExtensionsDependencyInjectionVersion)" />
+	  <PackageReference Include="SendGrid" Version="$(SendGridVersion)" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\Hexalith.Infrastructure.Emails.Abstractions\Hexalith.Infrastructure.Emails.Abstractions.csproj" />

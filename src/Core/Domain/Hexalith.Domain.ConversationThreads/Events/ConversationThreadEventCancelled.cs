@@ -8,20 +8,15 @@ namespace Hexalith.Domain.ConversationThreads.Events;
 using Hexalith.PolymorphicSerialization;
 
 /// <summary>
-/// Represents a cancelled conversation thread event in the domain.
+/// Represents an event that indicates the cancellation of a conversation thread event.
 /// </summary>
+/// <param name="Event">The original conversation thread event that is being cancelled.</param>
+/// <param name="Reason">The reason for the cancellation of the conversation thread event.</param>
 /// <remarks>
-/// This record is used to indicate that a previously scheduled or initiated conversation thread event
-/// has been cancelled. It contains information about the original event and the reason for cancellation.
+/// This record inherits from <see cref="ConversationThreadEvent"/> and adds additional context specific to the cancellation event.
 /// </remarks>
 [PolymorphicSerialization]
 public partial record ConversationThreadEventCancelled(
-    /// <summary>
-    /// The original conversation thread event that was cancelled.
-    /// </summary>
     ConversationThreadEvent Event,
-
-    /// <summary>
-    /// The reason for cancelling the event.
-    /// </summary>
-    string Reason) : ConversationThreadEvent(Event.Owner, Event.StartedDate);
+    string Reason)
+    : ConversationThreadEvent(Event.Owner, Event.StartedDate);

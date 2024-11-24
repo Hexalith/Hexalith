@@ -16,8 +16,5 @@ public class SurveyInformationChangedValidator : AbstractValidator<SurveyInforma
     /// <summary>
     /// Initializes a new instance of the <see cref="SurveyInformationChangedValidator"/> class.
     /// </summary>
-    public SurveyInformationChangedValidator()
-    {
-        _ = RuleFor(x => x.Id).NotEmpty();
-    }
+    public SurveyInformationChangedValidator() => _ = RuleFor(x => x.Id).NotEmpty();
 }

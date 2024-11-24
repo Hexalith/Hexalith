@@ -32,7 +32,7 @@ public class DuplicateEntityFoundException<TEntity> : ApplicationErrorException
     /// Initializes a new instance of the <see cref="DuplicateEntityFoundException{TEntity}"/> class.
     /// </summary>
     /// <param name="key">The key.</param>
-    /// <param name="duplicates"></param>
+    /// <param name="duplicates">The duplicates.</param>
     public DuplicateEntityFoundException(object key, IEnumerable<TEntity> duplicates)
         : base(CreateError(key, duplicates)) => Key = key;
 
@@ -73,7 +73,7 @@ public class DuplicateEntityFoundException<TEntity> : ApplicationErrorException
         {
             Title = $"Duplicate {entityName} found.",
             Detail = "Duplicate {EntityName} values found for key {Key}. Values:\n{Values}",
-            Arguments = new[] { entityName, keyString, valuesString },
+            Arguments = [entityName, keyString, valuesString],
             Category = ErrorCategory.Functional,
         };
     }

@@ -18,7 +18,6 @@ using Hexalith.Application.Organizations.Helpers;
 using Hexalith.Application.Sessions.Services;
 using Hexalith.Infrastructure.ClientApp;
 using Hexalith.Infrastructure.ClientAppOnWasm.Services;
-using Hexalith.Infrastructure.Emails.SendGrid.Helpers;
 
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -43,7 +42,6 @@ public static class WebAssemblyClientHelper
     {
         _ = services
             .AddOrganizations(configuration)
-            .AddSendGridEmail(configuration)
             .AddSingleton(TimeProvider.System)
             .AddSingleton<IRouteManager, RouteManager>()
             .AddFluentUIComponents();

@@ -1,5 +1,6 @@
-﻿// <copyright file="RoleRoles.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="RoleRoles.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Application.Authorizations;
@@ -29,8 +30,8 @@ public class RoleRoles : IRoleProvider
     /// <summary>
     /// Gets the collection of role management roles.
     /// </summary>
-    public static IEnumerable<string> Roles = [ViewUserRoles, AssignRoleToUser, RemoveUserRole];
+    public static IEnumerable<string> Roles => [ViewUserRoles, AssignRoleToUser, RemoveUserRole];
 
     /// <inheritdoc/>
-    IEnumerable<string>? IRoleProvider.Roles { get; }
+    IEnumerable<string> IRoleProvider.Roles => Roles;
 }

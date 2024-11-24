@@ -10,14 +10,9 @@ using System.Runtime.Serialization;
 /// <summary>
 /// Represents a category for surveys.
 /// </summary>
+/// <param name="Id">The unique identifier for the survey category.</param>
+/// <param name="Name">The name of the survey category.</param>
 [DataContract]
 public record SurveyCategory(
-    /// <summary>
-    /// Gets the unique identifier for the survey category.
-    /// </summary>
     string Id,
-
-    /// <summary>
-    /// Gets the name of the survey category.
-    /// </summary>
     string Name);

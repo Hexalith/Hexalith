@@ -6,7 +6,6 @@
 namespace Hexalith.Domain.ConversationThreads.Events;
 
 using Hexalith.Domain.ConversationThreads.Aggregates;
-using Hexalith.Domain.Events;
 using Hexalith.PolymorphicSerialization;
 
 /// <summary>

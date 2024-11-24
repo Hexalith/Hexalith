@@ -9,7 +9,6 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Hexalith.Application.Metadatas;
-using Hexalith.Application.States;
 
 /// <summary>
 /// Represents an in-memory implementation of the request bus.
@@ -20,20 +19,12 @@ public class MemoryRequestBus : IRequestBus
     /// <summary>
     /// The internal message stream storage.
     /// </summary>
-    private readonly List<(object, Metadata)>? _messageStream;
+    private List<(object, Metadata)>? _messageStream;
 
     /// <summary>
     /// Gets the message stream containing all published messages and their metadata.
     /// </summary>
-    public List<(object Message, Metadata Metadata)> MessageStream => _messageStream ?? [];
-
-    /// <inheritdoc/>
-    public Task PublishAsync(MessageState requestState, CancellationToken cancellationToken)
-    {
-        return requestState is null
-            ? Task.FromException(new ArgumentNullException(nameof(requestState)))
-            : PublishAsync(requestState.Message, requestState.Metadata, cancellationToken);
-    }
+    public List<(object Message, Metadata Metadata)> MessageStream => _messageStream ??= [];
 
     /// <inheritdoc/>
     public Task PublishAsync(object message, Metadata metadata, CancellationToken cancellationToken)

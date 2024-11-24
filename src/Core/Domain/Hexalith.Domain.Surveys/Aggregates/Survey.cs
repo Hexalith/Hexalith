@@ -13,6 +13,16 @@ using Hexalith.Domain.Entities;
 using Hexalith.Domain.Events;
 using Hexalith.Domain.ValueObjects;
 
+/// <summary>
+/// Represents a survey aggregate.
+/// </summary>
+/// <param name="Id">The unique identifier of the survey.</param>
+/// <param name="Name">The name of the survey.</param>
+/// <param name="Categories">The categories associated with the survey.</param>
+/// <param name="Users">The users associated with the survey.</param>
+/// <param name="Period">The period of the survey.</param>
+/// <param name="StartDate">The start date of the survey.</param>
+/// <param name="EndDate">The end date of the survey.</param>
 [DataContract]
 public record Survey(
     string Id,
@@ -26,7 +36,8 @@ public record Survey(
     /// <summary>
     /// Initializes a new instance of the <see cref="Survey" /> class.
     /// </summary>
-    /// <param name="registered">The customer.</param>
+    /// <param name="registered">The survey registered event.</param>
+    /// <exception cref="ArgumentNullException">Thrown when the registered event is null.</exception>
     public Survey(SurveyRegistered registered)
         : this(
               (registered ?? throw new ArgumentNullException(nameof(registered))).Id,
@@ -40,13 +51,13 @@ public record Survey(
     }
 
     /// <inheritdoc/>
-    public bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);
-
-    /// <inheritdoc/>
     public string AggregateId => SurveyDomainHelper.BuildSurveyAggregateId(Id);
 
     /// <inheritdoc/>
     public string AggregateName => SurveyDomainHelper.SurveyAggregateName;
+
+    /// <inheritdoc/>
+    public bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);
 
     /// <inheritdoc/>
     public ApplyResult Apply([NotNull] object domainEvent)
@@ -92,9 +103,19 @@ public record Survey(
         };
     }
 
+    /// <summary>
+    /// Applies the survey registered event.
+    /// </summary>
+    /// <param name="added">The survey registered event.</param>
+    /// <returns>The result of applying the event.</returns>
     private ApplyResult ApplyEvent(SurveyRegistered added)
         => new(new Survey(added), [added], false);
 
+    /// <summary>
+    /// Applies the survey information changed event.
+    /// </summary>
+    /// <param name="changed">The survey information changed event.</param>
+    /// <returns>The result of applying the event.</returns>
     private ApplyResult ApplyEvent(SurveyInformationChanged changed)
         => new(
             this with

@@ -24,7 +24,6 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 /// </summary>
 public abstract class HexalithApplication : IApplication
 {
-    private static readonly IUIApplication? _sharedUIElementsApplication;
     private static IApiServerApplication? _apiServerApplication;
     private static IWebAppApplication? _webAppApplication;
     private static IWebServerApplication? _webServerApplication;

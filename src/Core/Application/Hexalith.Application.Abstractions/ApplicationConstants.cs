@@ -5,24 +5,18 @@
 
 namespace Hexalith.Application;
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
-
-using Hexalith.PolymorphicSerialization;
-
 /// <summary>
 /// Application constants.
 /// </summary>
 public static class ApplicationConstants
 {
-
     /// <summary>
     /// Gets the command bus name.
     /// </summary>
     public static string CommandBus => "commands";
 
     /// <summary>
-    /// Gets the command bus suffixe.
+    /// Gets the command bus suffix.
     /// </summary>
     public static string CommandBusSuffix => "-commands";
 
@@ -32,7 +26,7 @@ public static class ApplicationConstants
     public static string EventBus => "events";
 
     /// <summary>
-    /// Gets the event bus suffixe.
+    /// Gets the event bus suffix.
     /// </summary>
     public static string EventBusSuffix => "-events";
 

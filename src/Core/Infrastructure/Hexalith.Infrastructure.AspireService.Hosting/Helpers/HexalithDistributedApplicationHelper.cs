@@ -1,5 +1,6 @@
-﻿// <copyright file="HexalithDistributedApplicationHelper.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="HexalithDistributedApplicationHelper.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Infrastructure.AspireService.Hosting.Helpers;
@@ -167,6 +168,22 @@ public static class HexalithDistributedApplicationHelper
     }
 
     /// <summary>
+    /// Adds organization settings to the project resource.
+    /// </summary>
+    /// <param name="project">The project resource builder.</param>
+    /// <param name="partitionId">The default partition ID.</param>
+    /// <param name="companyId">The default company ID.</param>
+    /// <param name="originId">The default origin ID.</param>
+    /// <returns>The project resource builder reference.</returns>
+    public static IResourceBuilder<ProjectResource> WithOrganization(this IResourceBuilder<ProjectResource> project, string partitionId, string companyId, string originId)
+    {
+        return project
+            .WithEnvironment("Organization__DefaultPartitionId", partitionId)
+            .WithEnvironment("Organization__DefaultCompanyId", companyId)
+            .WithEnvironment("Organization__DefaultOriginId", originId);
+    }
+
+    /// <summary>
     /// Adds environment settings to the project resource.
     /// </summary>
     /// <param name="project">The project resource builder.</param>
@@ -185,21 +202,5 @@ public static class HexalithDistributedApplicationHelper
         return string.IsNullOrWhiteSpace(value)
             ? required ? throw new InvalidOperationException($"The setting {settingName} is required.") : project
             : project.WithEnvironment("SEC_" + name, value);
-    }
-
-    /// <summary>
-    /// Adds organization settings to the project resource.
-    /// </summary>
-    /// <param name="project">The project resource builder.</param>
-    /// <param name="partitionId">The default partition ID.</param>
-    /// <param name="companyId">The default company ID.</param>
-    /// <param name="originId">The default origin ID.</param>
-    /// <returns>The project resource builder reference.</returns>
-    public static IResourceBuilder<ProjectResource> WithOrganization(this IResourceBuilder<ProjectResource> project, string partitionId, string companyId, string originId)
-    {
-        return project
-            .WithEnvironment("Organization__DefaultPartitionId", partitionId)
-            .WithEnvironment("Organization__DefaultCompanyId", companyId)
-            .WithEnvironment("Organization__DefaultOriginId", originId);
     }
 }

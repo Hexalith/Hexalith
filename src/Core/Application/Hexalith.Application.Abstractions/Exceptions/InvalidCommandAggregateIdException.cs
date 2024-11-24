@@ -37,7 +37,7 @@ public class InvalidCommandAggregateIdException : InvalidOperationException
     /// <summary>
     /// Initializes a new instance of the <see cref="InvalidCommandAggregateIdException"/> class with detailed information about the invalid command.
     /// </summary>
-    /// <param name="expectedPartitionKey"></param>
+    /// <param name="expectedPartitionKey">The expected partition key.</param>
     /// <param name="command">The command object that caused the exception.</param>
     /// <param name="metadata">The metadata associated with the command, containing information about the message and aggregate.</param>
     public InvalidCommandAggregateIdException(string expectedPartitionKey, object command, Metadata metadata)
@@ -58,14 +58,14 @@ public class InvalidCommandAggregateIdException : InvalidOperationException
     }
 
     /// <summary>
-    /// Gets the expected aggregate identifier that should have been associated with the command.
-    /// </summary>
-    /// <value>The expected aggregate identifier.</value>
-    public string? ExpectedPartitionKey { get; }
-
-    /// <summary>
     /// Gets the serialized representation of the domain command that caused the exception.
     /// </summary>
     /// <value>A JSON string representation of the command object.</value>
     public string? Command { get; }
+
+    /// <summary>
+    /// Gets the expected aggregate identifier that should have been associated with the command.
+    /// </summary>
+    /// <value>The expected aggregate identifier.</value>
+    public string? ExpectedPartitionKey { get; }
 }

@@ -10,12 +10,7 @@ using Hexalith.PolymorphicSerialization;
 /// <summary>
 /// Represents an abstract base class for survey events.
 /// </summary>
-/// <param name="Id">The unique identifier of the survey.</param>
-/// <remarks>
-/// This class serves as a base for all survey-related events in the domain.
-/// It implements the <see cref="Hexalith.Domain.Events.CompanyEntityEvent" /> interface.
-/// </remarks>
-/// <seealso cref="Hexalith.Domain.Events.CompanyEntityEvent" />
+/// <param name="Id">The unique identifier for the survey event.</param>
 [PolymorphicSerialization]
 public abstract record SurveyEvent(string Id)
 {
