@@ -1,18 +1,8 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Extensions
-// Author           : Jérôme Piquot
-// Created          : 01-25-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 01-25-2023
-// ***********************************************************************
-// <copyright file="UnixEpochDateTimeConverter.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="UnixEpochDateTimeConverter.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
+
 namespace Hexalith.Infrastructure.Serialization.Serialization;
 
 using System;
@@ -23,25 +13,23 @@ using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 
 /// <summary>
-/// Class UnixEpochDateTimeConverter. This class cannot be inherited.
-/// Implements the <see cref="System.Text.Json.Serialization.JsonConverter{System.DateTime}" />.
+/// Converts DateTime to and from Unix Epoch format in JSON.
 /// </summary>
-/// <seealso cref="System.Text.Json.Serialization.JsonConverter{System.DateTime}" />
 public sealed partial class UnixEpochDateTimeConverter : JsonConverter<DateTime>
 {
     /// <summary>
-    /// The epoch.
+    /// The epoch starting point (January 1, 1970, 00:00:00 UTC).
     /// </summary>
     private static readonly DateTime _epoch = new(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
     /// <summary>
-    /// Reads and converts the JSON to type <typeparamref name="T" />.
+    /// Reads and converts the JSON to DateTime.
     /// </summary>
-    /// <param name="reader">The reader.</param>
+    /// <param name="reader">The reader to read from.</param>
     /// <param name="typeToConvert">The type to convert.</param>
-    /// <param name="options">An object that specifies serialization options to use.</param>
-    /// <returns>The converted value.</returns>
-    /// <exception cref="System.Text.Json.JsonException">"Could not parse epoch date".</exception>
+    /// <param name="options">Options to control the conversion behavior.</param>
+    /// <returns>The converted DateTime value.</returns>
+    /// <exception cref="System.Text.Json.JsonException">Thrown when the JSON cannot be parsed to a valid DateTime.</exception>
     public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         string formatted = reader.GetString()!;
@@ -54,11 +42,11 @@ public sealed partial class UnixEpochDateTimeConverter : JsonConverter<DateTime>
     }
 
     /// <summary>
-    /// Writes a specified value as JSON.
+    /// Writes a DateTime value as JSON.
     /// </summary>
     /// <param name="writer">The writer to write to.</param>
-    /// <param name="value">The value to convert to JSON.</param>
-    /// <param name="options">An object that specifies serialization options to use.</param>
+    /// <param name="value">The DateTime value to convert to JSON.</param>
+    /// <param name="options">Options to control the conversion behavior.</param>
     public override void Write([NotNull] Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
     {
         ArgumentNullException.ThrowIfNull(writer);
@@ -70,9 +58,9 @@ public sealed partial class UnixEpochDateTimeConverter : JsonConverter<DateTime>
     }
 
     /// <summary>
-    /// Epoc regex.
+    /// Gets the regular expression for matching Unix Epoch date strings.
     /// </summary>
-    /// <returns>Regex.</returns>
+    /// <returns>A Regex object for matching Unix Epoch date strings.</returns>
     [GeneratedRegex("^/Date\\(([+-]*\\d+)\\)/$", RegexOptions.CultureInvariant)]
     private static partial Regex EpochRegex();
 }

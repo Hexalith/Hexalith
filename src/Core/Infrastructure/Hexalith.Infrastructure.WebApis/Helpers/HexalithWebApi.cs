@@ -101,6 +101,7 @@ public static partial class HexalithWebApi
     /// <summary>
     /// Uses the Hexalith framework.
     /// </summary>
+    /// <typeparam name="TProgram">The type of the program class.</typeparam>
     /// <param name="app">The application.</param>
     /// <param name="applicationName">The application name.</param>
     /// <returns>IApplicationBuilder.</returns>

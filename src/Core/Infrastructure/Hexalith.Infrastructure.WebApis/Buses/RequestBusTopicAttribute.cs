@@ -1,18 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Infrastructure.WebApis
-// Author           : Jérôme Piquot
-// Created          : 11-04-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 11-04-2023
-// ***********************************************************************
-// <copyright file="RequestBusTopicAttribute.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="RequestBusTopicAttribute.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Infrastructure.WebApis.Buses;
 

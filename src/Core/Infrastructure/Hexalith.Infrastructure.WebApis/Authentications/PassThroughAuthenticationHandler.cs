@@ -1,18 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Infrastructure.WebApis
-// Author           : Jérôme Piquot
-// Created          : 08-09-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 08-28-2023
-// ***********************************************************************
-// <copyright file="PassThroughAuthenticationHandler.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="PassThroughAuthenticationHandler.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Infrastructure.WebApis.Authentications;
 
@@ -34,7 +23,6 @@ using Microsoft.Extensions.Options;
 /// <param name="options">The options.</param>
 /// <param name="loggerFactory">The logger factory.</param>
 /// <param name="encoder">The encoder.</param>
-/// <param name="clock">The clock.</param>
 public class PassThroughAuthenticationHandler(
     IOptionsMonitor<AuthenticationSchemeOptions> options,
     ILoggerFactory loggerFactory,

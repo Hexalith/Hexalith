@@ -1,18 +1,8 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Extensions
-// Author           : Jérôme Piquot
-// Created          : 01-25-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 01-25-2023
-// ***********************************************************************
-// <copyright file="UnixEpochDateTimeOffsetConverter.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="UnixEpochDateTimeOffsetConverter.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
+
 namespace Hexalith.Infrastructure.Serialization.Serialization;
 
 using System;
@@ -35,7 +25,7 @@ public sealed partial class UnixEpochDateTimeOffsetConverter : JsonConverter<Dat
     private static readonly DateTimeOffset _epoch = new(1970, 1, 1, 0, 0, 0, TimeSpan.Zero);
 
     /// <summary>
-    /// Reads and converts the JSON to type <typeparamref name="T" />.
+    /// Reads and converts the JSON to type.
     /// </summary>
     /// <param name="reader">The reader.</param>
     /// <param name="typeToConvert">The type to convert.</param>
