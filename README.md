@@ -21,7 +21,6 @@ Application blocks based on Dapr
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith)
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith)
@@ -37,10 +36,16 @@ Stable (version tag):
 
 ## Microservices
 
+### [Hexalith.DaprIdentityStore](https://github.com/Hexalith/Hexalith.DaprIdentityStore)
+DaprIdentityStore microservice
+<br/>
+[![Build status](https://github.com/Hexalith/Hexalith.DaprIdentityStore/actions/workflows/hexalith.yml/badge.svg)](https://github.com/Hexalith/Hexalith.DaprIdentityStore/actions)
+[![NuGet](https://img.shields.io/nuget/v/Hexalith.DaprIdentityStore.Abstractions.svg)](https://www.nuget.org/packages/Hexalith.DaprIdentityStore.Abstractions)
+
 ### [Hexalith.Security](https://github.com/Hexalith/Hexalith.Security)
 Hexalith Security microservice
 <br/>
-[![Build status](https://github.com/Hexalith/Hexalith.Security/actions/workflows/hexalith_build.yml/badge.svg)](https://github.com/Hexalith/Hexalith.Security/actions)
+[![Build status](https://github.com/Hexalith/Hexalith.Security/actions/workflows/hexalith.yml/badge.svg)](https://github.com/Hexalith/Hexalith.Security/actions)
 [![NuGet](https://img.shields.io/nuget/v/Hexalith.Security.Shared.svg)](https://www.nuget.org/packages/Hexalith.Security.Shared)
 
 ### [Hexalith.ExternalSystems](https://github.com/Hexalith/Hexalith.ExternalSystems)
