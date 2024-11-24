@@ -12,7 +12,5 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Hexalith.Extensions\Hexalith.Extensions.csproj" />
     <ProjectReference Include="..\..\Domain\Hexalith.Domain.Abstractions\Hexalith.Domain.Abstractions.csproj" />
-    <!--<ProjectReference Include="..\..\Domain\Hexalith.Domain.ConversationThreads\Hexalith.Domain.ConversationThreads.csproj" />-->
-    <!--<ProjectReference Include="..\..\CodeGenerators\Hexalith.CodeGenerators.SerializationMappers\Hexalith.CodeGenerators.SerializationMappers.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />-->
   </ItemGroup>
 </Project>
