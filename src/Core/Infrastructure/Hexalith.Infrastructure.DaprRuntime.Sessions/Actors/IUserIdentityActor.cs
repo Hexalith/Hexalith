@@ -6,11 +6,8 @@
 namespace Hexalith.Infrastructure.DaprRuntime.Sessions.Actors;
 
 using Dapr.Actors;
-using Dapr.Actors.Client;
 
 using Hexalith.Application.Sessions.Models;
-using Hexalith.Infrastructure.DaprRuntime.Actors;
-using Hexalith.Infrastructure.DaprRuntime.Helpers;
 
 /// <summary>
 /// Represents a user identity actor interface for managing user state and operations in a distributed actor system.

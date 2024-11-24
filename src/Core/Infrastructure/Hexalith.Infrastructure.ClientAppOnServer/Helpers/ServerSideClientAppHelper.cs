@@ -280,9 +280,9 @@ public static class ServerSideClientAppHelper
         _ = app
             .MapStaticAssets();
         _ = app
-            .UseRouting()
-            .UseAntiforgery();
+            .UseRouting();
         app.UseHexalithSecurity();
+        _ = app.UseAntiforgery();
         _ = app
             .UseSwagger()
             .UseSwaggerUI()

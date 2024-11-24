@@ -3,12 +3,11 @@
 @inject NavigationManager NavigationManager
 <AuthorizeView>
 	<Authorized>
-			<FluentProfileMenu @rendermode="InteractiveServer"
-							   Status="PresenceStatus.Available"
-							   FullName="name"
-							   Email="email"
-							   OnFooterLinkClick="OnAccountClick"
-							   OnHeaderButtonClick="OnLogoutClickAsync" />
+		<FluentProfileMenu Status="PresenceStatus.Available"
+						   FullName="@name"
+						   Email="@email"
+						   OnFooterLinkClick="OnAccountClick"
+						   OnHeaderButtonClick="OnLogoutClickAsync" />
 	</Authorized>
 	<NotAuthorized>
 		<FluentButton OnClick="@OnLoginClick" IconStart="@(new Icons.Regular.Size16.PersonLock())">Login</FluentButton>
