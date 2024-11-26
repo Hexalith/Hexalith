@@ -14,7 +14,7 @@
     <AzureResourceManagerLogicVersion>1.1.0</AzureResourceManagerLogicVersion>
     <AzureSecurityKeyVaultSecretsVersion>4.6.0</AzureSecurityKeyVaultSecretsVersion>
     <AzureStorageBlobsVersion>12.23.0</AzureStorageBlobsVersion>
-    <BlazorGeolocationVersion>8.0.0</BlazorGeolocationVersion>
+    <BlazorGeolocationVersion>9.0.0</BlazorGeolocationVersion>
     <BlazoredSessionStorageVersion>2.4.0</BlazoredSessionStorageVersion>
     <CoconaVersion>2.2.0</CoconaVersion>
     <CompareNETObjectsVersion>4.83.0</CompareNETObjectsVersion>
@@ -22,11 +22,11 @@
     <DaprVersion>1.14.*</DaprVersion>
     <DocFxConsoleVersion>2.59.4</DocFxConsoleVersion>
     <FluentAssertionsVersion>6.12.2</FluentAssertionsVersion>
-    <FluentValidationVersion>11.10.0</FluentValidationVersion>
+    <FluentValidationVersion>11.11.0</FluentValidationVersion>
     <FluentValidationAspNetCoreVersion>11.3.0</FluentValidationAspNetCoreVersion>
     <GitHubActionsTestLoggerVersion>2.4.1</GitHubActionsTestLoggerVersion>
     <GoogleApiVersion>5.4.2</GoogleApiVersion>
-    <GrpcVersion>2.66.0</GrpcVersion>
+    <GrpcVersion>2.67.0</GrpcVersion>
     <ISO3166Version>1.0.4</ISO3166Version>
     <HumanizerVersion>2.14.1</HumanizerVersion>
     <MailKitVersion>4.8.0</MailKitVersion>
@@ -37,10 +37,10 @@
     <MicrosoftFluentUIComponentsVersion>4.10.4</MicrosoftFluentUIComponentsVersion>
     <MicrosoftIdentityClientVersion>4.66.2</MicrosoftIdentityClientVersion>
     <MicrosoftIdentityWebVersion>3.2.1</MicrosoftIdentityWebVersion>
-    <MicrosoftNETTestSdkVersion>17.11.1</MicrosoftNETTestSdkVersion>
-    <MicrosoftSemanticKernelVersion>1.29.0</MicrosoftSemanticKernelVersion>
+    <MicrosoftNETTestSdkVersion>17.12.0</MicrosoftNETTestSdkVersion>
+    <MicrosoftSemanticKernelVersion>1.30.0</MicrosoftSemanticKernelVersion>
     <MicrosoftTeamsFxVersion>2.5.0</MicrosoftTeamsFxVersion>
-    <MicrosoftTypescriptMSBuild>5.6.2</MicrosoftTypescriptMSBuild>
+    <MicrosoftTypescriptMSBuild>5.7.1</MicrosoftTypescriptMSBuild>
     <MicrosoftGraphVersion>5.12.*</MicrosoftGraphVersion>
     <MicrosoftVisualStudioThreadingAnalyzersVersion>17.12.19</MicrosoftVisualStudioThreadingAnalyzersVersion>
     <MinverVersion>5.0.0</MinverVersion>
@@ -63,8 +63,8 @@
     <SerilogSinksBrowserVersion>8.0.0</SerilogSinksBrowserVersion>
     <SerilogSinksDebugVersion>3.0.*</SerilogSinksDebugVersion>
     <StyleCopAnalyzersVersion>1.2.0-beta.556</StyleCopAnalyzersVersion>
-    <SwashbuckleAspNetCoreVersion>7.0.0</SwashbuckleAspNetCoreVersion>
-    <SystemIdentityModelTokensJwtVersion>8.2.0</SystemIdentityModelTokensJwtVersion>
+    <SwashbuckleAspNetCoreVersion>7.1.0</SwashbuckleAspNetCoreVersion>
+    <SystemIdentityModelTokensJwtVersion>8.2.1</SystemIdentityModelTokensJwtVersion>
     <XUnitRunnerVisualStudioVersion>2.8.2</XUnitRunnerVisualStudioVersion>
     <XUnitVersion>2.9.2</XUnitVersion>
   </PropertyGroup>
