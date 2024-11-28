@@ -1,0 +1,28 @@
+﻿@using FluentValidation
+@using FluentValidation.Results
+@using Microsoft.FluentUI.AspNetCore.Components
+
+@if (ValidationResult != null && !ValidationResult.IsValid)
+{
+    <FluentStack Orientation="Orientation.Vertical" Gap="4">
+        @foreach (ValidationFailure error in ValidationResult.Errors)
+        {
+            <FluentMessageBar Intent="@GetMessageIntent(error)">@error.ErrorMessage</FluentMessageBar>
+        }
+    </FluentStack>
+}
+
+@code {
+    [Parameter]
+    public ValidationResult? ValidationResult { get; set; }
+
+    private MessageIntent GetMessageIntent(ValidationFailure failure)
+    {
+        return failure.Severity switch
+        {
+            Severity.Error => MessageIntent.Error,
+            Severity.Warning => MessageIntent.Warning,
+            _ => MessageIntent.Info
+        };
+    }
+}

@@ -19,11 +19,14 @@ using Hexalith.Application.States;
 using Hexalith.Extensions.Helpers;
 using Hexalith.PolymorphicSerialization;
 
+using Microsoft.AspNetCore.Components.Authorization;
+
 /// <summary>
 /// Represents a service for sending commands asynchronously.
 /// </summary>
 public class ClientCommandService : ICommandService
 {
+    private readonly AuthenticationStateProvider _authenticationStateProvider;
     private readonly HttpClient _client;
     private readonly ISessionIdService _sessionIdService;
     private readonly ISessionService _sessionService;
@@ -33,11 +36,13 @@ public class ClientCommandService : ICommandService
     /// Initializes a new instance of the <see cref="ClientCommandService"/> class.
     /// </summary>
     /// <param name="client">The HTTP client.</param>
+    /// <param name="authenticationStateProvider">The authentication state provider.</param>
     /// <param name="sessionIdService">The session ID service.</param>
     /// <param name="sessionService">The user session service.</param>
     /// <param name="timeProvider">The time provider.</param>
     public ClientCommandService(
         [NotNull] HttpClient client,
+        [NotNull] AuthenticationStateProvider authenticationStateProvider,
         [NotNull] ISessionIdService sessionIdService,
         [NotNull] ISessionService sessionService,
         [NotNull] TimeProvider timeProvider)
@@ -46,6 +51,7 @@ public class ClientCommandService : ICommandService
         ArgumentNullException.ThrowIfNull(client);
         ArgumentNullException.ThrowIfNull(sessionIdService);
         _client = client;
+        _authenticationStateProvider = authenticationStateProvider;
         _sessionIdService = sessionIdService;
         _sessionService = sessionService;
         _timeProvider = timeProvider;
@@ -55,6 +61,18 @@ public class ClientCommandService : ICommandService
     public async Task SubmitCommandAsync(object command, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
+
+        AuthenticationState authenticationState = await _authenticationStateProvider.GetAuthenticationStateAsync();
+        if (authenticationState.User?.Identity?.IsAuthenticated != true)
+        {
+            throw new InvalidOperationException("User is not authenticated.");
+        }
+
+        string? userId = authenticationState.User.Identity.Name;
+        if (string.IsNullOrWhiteSpace(userId))
+        {
+            throw new InvalidOperationException("User is authenticated but user ID is not found.");
+        }
 
         string messageId = UniqueIdHelper.GenerateUniqueStringId();
         string? sessionId = await _sessionIdService.GetSessionIdAsync().ConfigureAwait(false)
@@ -70,7 +88,7 @@ public class ClientCommandService : ICommandService
             _timeProvider.GetLocalNow()),
             new ContextMetadata(
                 messageId,
-                session.User.Id,
+                userId,
                 session.PartitionId,
                 _timeProvider.GetLocalNow(),
                 null,
