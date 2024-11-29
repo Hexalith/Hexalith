@@ -5,6 +5,8 @@
 
 namespace Hexalith.Application.Modules.Modules;
 
+using Microsoft.AspNetCore.Authorization;
+
 /// <summary>
 /// Represents a module in the application.
 /// </summary>
@@ -14,6 +16,12 @@ namespace Hexalith.Application.Modules.Modules;
 /// </remarks>
 public interface IApplicationModule
 {
+    /// <summary>
+    /// Gets the authorization policies.
+    /// </summary>
+    /// <value>The authorization policies.</value>
+    IDictionary<string, AuthorizationPolicy> AuthorizationPolicies { get; }
+
     /// <summary>
     /// Gets the dependencies.
     /// </summary>

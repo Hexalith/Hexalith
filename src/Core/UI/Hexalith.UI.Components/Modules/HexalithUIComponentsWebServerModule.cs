@@ -13,6 +13,7 @@ using Hexalith.Extensions.Configuration;
 using Hexalith.UI.Components.Configurations;
 using Hexalith.UI.Components.Helpers;
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -21,6 +22,9 @@ using Microsoft.Extensions.DependencyInjection;
 /// </summary>
 public class HexalithUIComponentsWebServerModule : IWebServerApplicationModule
 {
+    /// <inheritdoc/>
+    public IDictionary<string, AuthorizationPolicy> AuthorizationPolicies => new Dictionary<string, AuthorizationPolicy>();
+
     /// <inheritdoc/>
     public IEnumerable<string> Dependencies => [];
 
