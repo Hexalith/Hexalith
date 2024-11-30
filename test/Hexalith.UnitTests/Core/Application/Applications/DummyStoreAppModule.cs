@@ -1,7 +1,6 @@
-﻿// <copyright file="DummyStoreAppModule.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="DummyStoreAppModule.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.UnitTests.Core.Application.Applications;
@@ -11,11 +10,14 @@ using System.Reflection;
 
 using Hexalith.Application.Modules.Modules;
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 internal class DummyStoreAppModule : IStoreAppApplicationModule
 {
+    public IDictionary<string, AuthorizationPolicy> AuthorizationPolicies => new Dictionary<string, AuthorizationPolicy>();
+
     public IEnumerable<string> Dependencies => [];
 
     public string Description => "Test module description";
