@@ -30,7 +30,6 @@ public class AggregateProjectionUpdateEventHandler<TEvent, TState>(
     where TState : class, IDomainAggregate, new()
 {
     /// <inheritdoc/>
-    [Obsolete]
     public override async Task ApplyAsync(TEvent baseEvent, Metadata metadata, CancellationToken cancellationToken)
     {
         TState? aggregate;
