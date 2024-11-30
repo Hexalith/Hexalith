@@ -13,6 +13,7 @@ using System.Reflection;
 using Hexalith.Application.Modules.Modules;
 using Hexalith.Extensions.Reflections;
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -194,6 +195,9 @@ public abstract class HexalithApplication : IApplication
             }
         }
     }
+
+    /// <inheritdoc/>
+    public abstract Action<AuthorizationOptions> ConfigureAuthorization();
 
     /// <summary>
     /// Gets the application instance of the specified type.

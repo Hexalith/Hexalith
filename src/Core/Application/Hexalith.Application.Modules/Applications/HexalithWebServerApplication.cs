@@ -11,6 +11,8 @@ using System.Reflection;
 
 using Hexalith.Application.Modules.Modules;
 
+using Microsoft.AspNetCore.Authorization;
+
 /// <summary>
 /// Application definition base class.
 /// </summary>
@@ -56,4 +58,26 @@ public abstract class HexalithWebServerApplication : HexalithApplication, IWebSe
 
     /// <inheritdoc/>
     public abstract IEnumerable<Type> WebServerModules { get; }
+
+    /// <inheritdoc/>
+    public override Action<AuthorizationOptions> ConfigureAuthorization()
+    {
+        return options =>
+        {
+            foreach (Type module in Modules)
+            {
+                if (!typeof(IWebServerApplicationModule).IsAssignableFrom(module))
+                {
+                    continue;
+                }
+
+                IWebServerApplicationModule webServerModule = Activator.CreateInstance(module) as IWebServerApplicationModule
+                    ?? throw new InvalidOperationException($"Unable to create an instance of {module.FullName}");
+                foreach (KeyValuePair<string, AuthorizationPolicy> policy in webServerModule.AuthorizationPolicies)
+                {
+                    options.AddPolicy(policy.Key, policy.Value);
+                }
+            }
+        };
+    }
 }

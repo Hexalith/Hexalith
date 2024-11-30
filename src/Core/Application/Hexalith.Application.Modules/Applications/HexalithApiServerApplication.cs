@@ -10,6 +10,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
 
+using Hexalith.Application.Modules.Modules;
+
+using Microsoft.AspNetCore.Authorization;
+
 /// <summary>
 /// Application definition base class.
 /// </summary>
@@ -28,6 +32,28 @@ public abstract class HexalithApiServerApplication : HexalithApplication, IApiSe
         [.. ApiServerModules
         .Distinct()
         .OrderBy(p => p.FullName)];
+
+    /// <inheritdoc/>
+    public override Action<AuthorizationOptions> ConfigureAuthorization()
+    {
+        return options =>
+        {
+            foreach (Type module in Modules)
+            {
+                if (!typeof(IApiServerApplicationModule).IsAssignableFrom(module))
+                {
+                    continue;
+                }
+
+                IApiServerApplicationModule webServerModule = Activator.CreateInstance(module) as IApiServerApplicationModule
+                    ?? throw new InvalidOperationException($"Unable to create an instance of {module.FullName}");
+                foreach (KeyValuePair<string, AuthorizationPolicy> policy in webServerModule.AuthorizationPolicies)
+                {
+                    options.AddPolicy(policy.Key, policy.Value);
+                }
+            }
+        };
+    }
 
     /// <summary>
     /// Registers the actors associated with the application.

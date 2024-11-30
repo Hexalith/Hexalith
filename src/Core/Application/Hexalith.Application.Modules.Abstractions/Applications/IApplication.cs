@@ -4,6 +4,7 @@
 // </copyright>
 namespace Hexalith.Application.Modules.Applications;
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -99,4 +100,10 @@ public interface IApplication
     /// <param name="services">The service collection.</param>
     /// <param name="configuration">The configuration properties.</param>
     public void AddServices(IServiceCollection services, IConfiguration configuration);
+
+    /// <summary>
+    /// Configures the authorization options for the application.
+    /// </summary>
+    /// <returns>An action to configure <see cref="AuthorizationOptions"/>.</returns>
+    public Action<AuthorizationOptions> ConfigureAuthorization();
 }
