@@ -29,6 +29,10 @@ public static class DaprActorHelper
     public static ActorId ToActorId(this string id)
     {
         ArgumentNullException.ThrowIfNull(id);
+        id = id
+            .Replace("!", "!0")
+            .Replace(" ", "!1")
+            .Replace("/", "!2");
         return new ActorId(Uri.EscapeDataString(id.Trim()));
     }
 
@@ -43,5 +47,12 @@ public static class DaprActorHelper
     /// This is useful when you need to retrieve the original identifier from an ActorId, especially for display or logging purposes.
     /// </remarks>
     public static string ToUnescapeString(this ActorId id)
-        => Uri.UnescapeDataString(id.ToString());
+    {
+        string identifier = Uri.UnescapeDataString(id.ToString());
+        identifier = identifier
+            .Replace("!2", "/")
+            .Replace("!1", " ")
+            .Replace("!0", "!");
+        return identifier;
+    }
 }

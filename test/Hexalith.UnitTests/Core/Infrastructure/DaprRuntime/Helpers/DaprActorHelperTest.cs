@@ -13,18 +13,20 @@ using Hexalith.Infrastructure.DaprRuntime.Helpers;
 
 public class DaprActorHelperTest
 {
-    [Fact]
-    public void ToActorId_ShouldEscapeSpecialCharacters()
+    [Theory]
+    [InlineData("123!4", "123%2104")]
+    [InlineData("123 4", "123%2114")]
+    [InlineData("123/4", "123%2124")]
+    [InlineData("123+4", "123%2B4")]
+    [InlineData("123@4", "123%404")]
+    public void ToActorId_ShouldEscapeSpecialCharacters(string id, string escapedString)
     {
-        // Arrange
-        string actorIdString = "123/4";
-
         // Act
-        Dapr.Actors.ActorId result = actorIdString.ToActorId();
+        Dapr.Actors.ActorId result = id.ToActorId();
 
         // Assert
         _ = result.Should().NotBeNull();
-        _ = result.ToString().Should().Be("123%2F4");
+        _ = result.ToString().Should().Be(escapedString);
     }
 
     [Fact]
@@ -67,18 +69,20 @@ public class DaprActorHelperTest
         _ = act.Should().Throw<ArgumentNullException>();
     }
 
-    [Fact]
-    public void ToUnescapeString_ShouldReturnOriginalString_WhenNoSpecialCharacters()
+    [Theory]
+    [InlineData("123!4", "123%2104")]
+    [InlineData("123 4", "123%2114")]
+    [InlineData("123/4", "123%2124")]
+    [InlineData("123+4", "123%2B4")]
+    [InlineData("123@4", "123%404")]
+    public void ToUnescapeString_ShouldReturnOriginalString_WhenNoSpecialCharacters(string id, string escapedString)
     {
-        // Arrange
-        string escapedString = "123";
-
         // Act
         string result = new ActorId(escapedString).ToUnescapeString();
 
         // Assert
         _ = result.Should().NotBeNull();
-        _ = result.Should().Be(escapedString);
+        _ = result.Should().Be(id);
     }
 
     [Fact]
@@ -106,5 +110,24 @@ public class DaprActorHelperTest
         // Assert
         _ = result.Should().NotBeNull();
         _ = result.Should().Be("123/4");
+    }
+
+    [Theory]
+    [InlineData("123")]
+    [InlineData("123/4")]
+    [InlineData("1 2 3")]
+    [InlineData("1!2 3/4")]
+    [InlineData("123@")]
+    public void ToUnescapeString_ShouldWorkWithToActorId(string actorIdString)
+    {
+        // Arrange
+        ActorId actorId = actorIdString.ToActorId();
+
+        // Act
+        string result = actorId.ToUnescapeString();
+
+        // Assert
+        _ = result.Should().NotBeNull();
+        _ = result.Should().Be(actorIdString);
     }
 }
