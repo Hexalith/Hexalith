@@ -8,6 +8,7 @@ namespace Hexalith.Infrastructure.ClientAppOnWasm.Services;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Http.Json;
+using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -28,7 +29,6 @@ public class ClientCommandService : ICommandService
 {
     private readonly AuthenticationStateProvider _authenticationStateProvider;
     private readonly HttpClient _client;
-    private readonly ISessionIdService _sessionIdService;
     private readonly ISessionService _sessionService;
     private readonly TimeProvider _timeProvider;
 
@@ -37,28 +37,24 @@ public class ClientCommandService : ICommandService
     /// </summary>
     /// <param name="client">The HTTP client.</param>
     /// <param name="authenticationStateProvider">The authentication state provider.</param>
-    /// <param name="sessionIdService">The session ID service.</param>
     /// <param name="sessionService">The user session service.</param>
     /// <param name="timeProvider">The time provider.</param>
     public ClientCommandService(
         [NotNull] HttpClient client,
         [NotNull] AuthenticationStateProvider authenticationStateProvider,
-        [NotNull] ISessionIdService sessionIdService,
         [NotNull] ISessionService sessionService,
         [NotNull] TimeProvider timeProvider)
     {
         ArgumentNullException.ThrowIfNull(timeProvider);
         ArgumentNullException.ThrowIfNull(client);
-        ArgumentNullException.ThrowIfNull(sessionIdService);
         _client = client;
         _authenticationStateProvider = authenticationStateProvider;
-        _sessionIdService = sessionIdService;
         _sessionService = sessionService;
         _timeProvider = timeProvider;
     }
 
     /// <inheritdoc/>
-    public async Task SubmitCommandAsync(object command, CancellationToken cancellationToken)
+    public async Task SubmitCommandAsync(ClaimsPrincipal user, object command, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
 
@@ -75,9 +71,7 @@ public class ClientCommandService : ICommandService
         }
 
         string messageId = UniqueIdHelper.GenerateUniqueStringId();
-        string? sessionId = await _sessionIdService.GetSessionIdAsync().ConfigureAwait(false)
-            ?? throw new InvalidOperationException("Session ID not found.");
-        SessionInformation session = await _sessionService.GetAsync(sessionId, cancellationToken).ConfigureAwait(false)
+        SessionInformation session = await _sessionService.GetAsync(userId, cancellationToken).ConfigureAwait(false)
             ?? throw new InvalidOperationException("Session not found or expired.");
         Metadata metadata = new(
             new MessageMetadata(
@@ -92,7 +86,7 @@ public class ClientCommandService : ICommandService
                 session.PartitionId,
                 _timeProvider.GetLocalNow(),
                 null,
-                session.Id,
+                session.SessionId,
                 []));
 
         await SubmitCommandAsync(command, metadata, cancellationToken).ConfigureAwait(false);

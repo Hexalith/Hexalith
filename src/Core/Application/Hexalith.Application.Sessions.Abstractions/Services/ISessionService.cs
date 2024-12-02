@@ -15,32 +15,19 @@ using Hexalith.Application.Sessions.Models;
 public interface ISessionService
 {
     /// <summary>
-    /// Closes a session asynchronously.
+    /// Gets the session information for a specific user.
     /// </summary>
-    /// <param name="id">The unique identifier of the session to close.</param>
-    /// <param name="cancellationToken">A token to cancel the operation.</param>
-    /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
-    Task CloseAsync(string id, CancellationToken cancellationToken);
+    /// <param name="userId">The user identifier.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A task that represents the asynchronous operation. The task result contains the session information.</returns>
+    Task<SessionInformation> GetAsync(string userId, CancellationToken cancellationToken);
 
     /// <summary>
-    /// Retrieves session information asynchronously.
+    /// Sets the current partition for a specific user.
     /// </summary>
-    /// <param name="id">The unique identifier of the session to retrieve.</param>
-    /// <param name="cancellationToken">A token to cancel the operation.</param>
-    /// <returns>
-    /// A <see cref="Task{TResult}"/> that represents the asynchronous operation.
-    /// The task result contains the <see cref="SessionInformation"/> if found; otherwise, null.
-    /// </returns>
-    Task<SessionInformation?> GetAsync(string id, CancellationToken cancellationToken);
-
-    /// <summary>
-    /// Opens a new session asynchronously.
-    /// </summary>
-    /// <param name="partitionId">The partition identifier for the new session.</param>
-    /// <param name="cancellationToken">A token to cancel the operation.</param>
-    /// <returns>
-    /// A <see cref="Task{TResult}"/> that represents the asynchronous operation.
-    /// The task result contains the newly created <see cref="SessionInformation"/>.
-    /// </returns>
-    Task<SessionInformation?> OpenAsync(string? partitionId, CancellationToken cancellationToken);
+    /// <param name="userId">The user identifier.</param>
+    /// <param name="partitionId">The partition identifier.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A task that represents the asynchronous operation.</returns>
+    Task SetCurrentPartitionAsync(string userId, string partitionId, CancellationToken cancellationToken);
 }

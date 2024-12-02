@@ -48,8 +48,9 @@ public static class WebAssemblyClientHelper
         _ = services.AddScoped<ICommandService, ClientCommandService>();
 
         _ = services
+            .AddScoped<IUserPartitionService, UserPartitionService>()
             .AddScoped<ISessionManager, SessionManager>()
-            .AddScoped<ISessionIdService, SessionIdService>();
+            .AddScoped<ISessionService, ClientSessionService>();
         return services;
     }
 

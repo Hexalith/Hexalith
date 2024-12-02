@@ -30,7 +30,6 @@ public static class SessionActorsHelper
     public static IServiceCollection AddSessions(this IServiceCollection services)
     {
         ArgumentNullException.ThrowIfNull(services);
-        _ = services.AddSingleton<ISessionService, SessionService>();
         _ = services.AddSingleton<IUserIdentityService, UserIdentityService>();
         return services;
     }

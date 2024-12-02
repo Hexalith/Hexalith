@@ -44,7 +44,7 @@
 	{
 		NavigationManager.NavigateTo($"{Application.LoginPath}?returnUrl={Uri.EscapeDataString(NavigationManager.Uri)}", forceLoad: true);
 	}
-	private async Task OnLogoutClickAsync()
+	private void OnLogoutClickAsync()
 	{
 		NavigationManager.NavigateTo($"/logout", forceLoad: true);
 	}

@@ -32,12 +32,15 @@ using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Partitions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Sessions.Helpers;
-using Hexalith.Infrastructure.DaprRuntime.Sessions.Services;
 using Hexalith.Infrastructure.Emails.SendGrid.Helpers;
 using Hexalith.Infrastructure.WebApis.Helpers;
 using Hexalith.PolymorphicSerialization;
 
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -72,8 +75,7 @@ public static class ServerSideClientAppHelper
             .AddSingleton(TimeProvider.System)
             .AddSingleton<IRouteManager, RouteManager>()
             .AddScoped<ICommandService, ServerCommandService>()
-            .AddScoped<ISessionIdService, SessionIdService>()
-            .AddScoped<ISessionService, SessionService>()
+            .AddScoped<ISessionService, ServerSessionService>()
             .AddPartitions()
             .AddSessions();
         _ = services.AddValidatorsFromAssemblyContaining<CommandBusSettingsValidator>(ServiceLifetime.Singleton);
@@ -162,12 +164,34 @@ public static class ServerSideClientAppHelper
             .AddSession(options =>
             {
                 options.Cookie.Name = sessionCookieName;
-                options.IdleTimeout = TimeSpan.FromMinutes(3);
+                options.IdleTimeout = TimeSpan.FromHours(1);
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
         HexalithApplication.AddWebServerServices(builder.Services, builder.Configuration);
         return builder;
+    }
+
+    public static IEndpointConventionBuilder MapUserPartitionServiceEndpoints(this IEndpointRouteBuilder endpoints)
+    {
+        ArgumentNullException.ThrowIfNull(endpoints);
+
+        RouteGroupBuilder api = endpoints.MapGroup("/api");
+
+        _ = api.MapGet($"{nameof(IUserPartitionService.GetDefaultPartitionAsync)}", async (
+            string userId,
+            [FromServices] IUserPartitionService userPartitionService) => TypedResults.Ok(await userPartitionService.GetDefaultPartitionAsync(userId, default)));
+
+        _ = api.MapGet($"{nameof(IUserPartitionService.GetPartitionsAsync)}", async (
+            string userId,
+            [FromServices] IUserPartitionService userPartitionService) => TypedResults.Ok(await userPartitionService.GetPartitionsAsync(userId, default)));
+
+        _ = api.MapGet($"{nameof(IUserPartitionService.InPartitionAsync)}", async (
+            string userId,
+            string partitionId,
+            [FromServices] IUserPartitionService userPartitionService) => TypedResults.Ok(await userPartitionService.InPartitionAsync(userId, partitionId, default)));
+
+        return api;
     }
 
     /// <summary>
