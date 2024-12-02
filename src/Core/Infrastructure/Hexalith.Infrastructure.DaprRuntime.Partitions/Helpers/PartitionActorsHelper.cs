@@ -6,11 +6,14 @@
 namespace Hexalith.Infrastructure.DaprRuntime.Partitions.Helpers;
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 
+using Dapr.Actors.Client;
 using Dapr.Actors.Runtime;
 
 using Hexalith.Application.Partitions.Services;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
+using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Partitions.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Partitions.Services;
 
@@ -22,6 +25,11 @@ using Microsoft.Extensions.DependencyInjection;
 public static class PartitionActorsHelper
 {
     /// <summary>
+    /// Gets the collection ID for all partitions.
+    /// </summary>
+    public static string AllPartitionsCollectionId => "All";
+
+    /// <summary>
     /// Adds partition services to the specified IServiceCollection.
     /// </summary>
     /// <param name="services">The IServiceCollection to add services to.</param>
@@ -32,6 +40,20 @@ public static class PartitionActorsHelper
         ArgumentNullException.ThrowIfNull(services);
         _ = services.AddSingleton<IPartitionService, PartitionService>();
         return services;
+    }
+
+    /// <summary>
+    /// Creates a proxy for the actor that handles all partitions.
+    /// </summary>
+    /// <param name="actorProxyFactory">The actor proxy factory to use for creating the proxy.</param>
+    /// <returns>A proxy for the actor that handles all partitions.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when actorProxyFactory is null.</exception>
+    public static IKeyHashActor CreateAllPartitionsProxy([NotNull] this IActorProxyFactory actorProxyFactory)
+    {
+        ArgumentNullException.ThrowIfNull(actorProxyFactory);
+        return actorProxyFactory.CreateActorProxy<IKeyHashActor>(
+            AllPartitionsCollectionId.ToActorId(),
+            IPartitionActor.ActorCollectionName);
     }
 
     /// <summary>

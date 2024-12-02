@@ -13,7 +13,6 @@ using Dapr.Actors.Runtime;
 
 using Hexalith.Application.Partitions.Models;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
-using Hexalith.Infrastructure.DaprRuntime.Helpers;
 
 /// <summary>
 /// Represents an actor that manages partitions.
@@ -32,14 +31,13 @@ public class PartitionActor : Actor, IPartitionActor
         : base(host) => ArgumentNullException.ThrowIfNull(host);
 
     /// <inheritdoc/>
-    public async Task AddAsync(string name)
+    public async Task AddAsync(Partition partition)
     {
         IKeyHashActor collection = ActorProxy.DefaultProxyFactory.CreateActorProxy<IKeyHashActor>(
             new ActorId("Ids"),
             _collectionActorName);
-        string sessionId = Id.ToUnescapeString();
-        await collection.AddAsync(sessionId);
-        _partition = new Partition(sessionId, name, false);
+        _ = await collection.AddAsync(partition.Id);
+        _partition = partition;
         await SaveAsync();
     }
 

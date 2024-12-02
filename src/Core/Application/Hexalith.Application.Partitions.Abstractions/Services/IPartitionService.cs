@@ -13,6 +13,14 @@ using Hexalith.Application.Partitions.Models;
 public interface IPartitionService
 {
     /// <summary>
+    /// Adds a new partition asynchronously.
+    /// </summary>
+    /// <param name="partition">The partition to add.</param>
+    /// <param name="cancellationToken">A token to cancel the operation.</param>
+    /// <returns>A task that represents the asynchronous operation.</returns>
+    Task AddAsync(Partition partition, CancellationToken cancellationToken);
+
+    /// <summary>
     /// Gets the default partition asynchronously.
     /// </summary>
     /// <param name="cancellationToken">A token to cancel the operation.</param>

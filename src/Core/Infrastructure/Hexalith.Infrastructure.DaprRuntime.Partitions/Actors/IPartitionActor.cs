@@ -31,9 +31,9 @@ public interface IPartitionActor : IActor
     /// <summary>
     /// Adds a new partition with the specified name asynchronously.
     /// </summary>
-    /// <param name="name">The name to assign to the new partition. Must be unique within the system.</param>
+    /// <param name="partition">The partition to add.</param>
     /// <returns>A <see cref="Task"/> that represents the asynchronous operation.</returns>
-    Task AddAsync(string name);
+    Task AddAsync(Partition partition);
 
     /// <summary>
     /// Disables the current partition asynchronously.
@@ -52,7 +52,7 @@ public interface IPartitionActor : IActor
     /// <summary>
     /// Retrieves the current partition's information asynchronously.
     /// </summary>
-    /// <returns>A <see cref="Task{TResult}"/> that represents the asynchronous operation. 
+    /// <returns>A <see cref="Task{TResult}"/> that represents the asynchronous operation.
     /// The task result contains the <see cref="Partition"/> with its current state and properties.</returns>
     Task<Partition> GetAsync();
 

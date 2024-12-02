@@ -8,6 +8,8 @@ namespace Hexalith.Infrastructure.ClientAppOnServer.Services;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Hexalith.Application.Partitions.Models;
+using Hexalith.Application.Partitions.Services;
 using Hexalith.Application.Sessions.Models;
 using Hexalith.Application.Sessions.Services;
 using Hexalith.Extensions.Helpers;
@@ -20,6 +22,7 @@ using Microsoft.AspNetCore.Http;
 public class ServerSessionService : ISessionService
 {
     private readonly IHttpContextAccessor _httpContextAccessor;
+    private readonly IPartitionService _partitionService;
     private readonly TimeProvider _timeProvider;
     private readonly IUserPartitionService _userPartitionService;
     private string? _partitionId;
@@ -31,17 +34,21 @@ public class ServerSessionService : ISessionService
     /// </summary>
     /// <param name="httpContextAccessor">The HTTP context accessor.</param>
     /// <param name="userPartitionService">The user partition service.</param>
+    /// <param name="partitionService"></param>
     /// <param name="timeProvider">The time provider.</param>
     public ServerSessionService(
         IHttpContextAccessor httpContextAccessor,
         IUserPartitionService userPartitionService,
+        IPartitionService partitionService,
         TimeProvider timeProvider)
     {
         ArgumentNullException.ThrowIfNull(httpContextAccessor);
         ArgumentNullException.ThrowIfNull(userPartitionService);
         ArgumentNullException.ThrowIfNull(timeProvider);
+        ArgumentNullException.ThrowIfNull(partitionService);
         _httpContextAccessor = httpContextAccessor;
         _userPartitionService = userPartitionService;
+        _partitionService = partitionService;
         _timeProvider = timeProvider;
     }
 
@@ -49,18 +56,27 @@ public class ServerSessionService : ISessionService
     public async Task<SessionInformation> GetAsync(string userId, CancellationToken cancellationToken)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(userId);
-        if (_httpContextAccessor.HttpContext is not null)
+        try
         {
-            await _httpContextAccessor.HttpContext.Session.LoadAsync(cancellationToken);
-            string? sessionId = _httpContextAccessor.HttpContext.Session.GetString(nameof(_sessionId));
-            string? user = _httpContextAccessor.HttpContext.Session.GetString(nameof(_userId));
-            string? partitionId = _httpContextAccessor.HttpContext.Session.GetString(nameof(_partitionId));
-            if (string.IsNullOrWhiteSpace(sessionId) && string.IsNullOrWhiteSpace(_partitionId) && _userId == userId)
+            if (_httpContextAccessor.HttpContext?.Session is ISession session)
             {
-                _sessionId = sessionId;
-                _userId = user;
-                _partitionId = partitionId;
+                await session.LoadAsync(cancellationToken);
+                string? sessionId = session.GetString(nameof(_sessionId));
+                string? user = session.GetString(nameof(_userId));
+                string? partitionId = session.GetString(nameof(_partitionId));
+                if (!string.IsNullOrWhiteSpace(sessionId) && !string.IsNullOrWhiteSpace(partitionId) && user == userId)
+                {
+                    _sessionId = sessionId;
+                    _userId = user;
+                    _partitionId = partitionId;
+                    return new SessionInformation(_sessionId, _userId, _partitionId, _timeProvider.GetLocalNow());
+                }
             }
+        }
+        catch (InvalidOperationException)
+        {
+            // Session is not available or response has already started
+            // Continue with in-memory values
         }
 
         if (string.IsNullOrWhiteSpace(_sessionId) || _userId != userId)
@@ -77,14 +93,30 @@ public class ServerSessionService : ISessionService
 
         if (string.IsNullOrWhiteSpace(_partitionId))
         {
-            throw new InvalidOperationException("No partition found for the user.");
+            await foreach (Partition partitionId in _partitionService.GetAllAsync(cancellationToken))
+            {
+                // Partitions exist in the system. The administrator must assign a partition to the user.
+                throw new InvalidOperationException("No partition found for the user. Ask the administrator to assign a partition to the user.");
+            }
+
+            // No partition found in the system. Create a new one with the user domain name.
+            await _partitionService.AddAsync(new Partition(nameof(Hexalith), nameof(Hexalith), false), cancellationToken);
+            _partitionId = nameof(Hexalith);
         }
 
-        if (_httpContextAccessor.HttpContext is not null)
+        try
         {
-            _httpContextAccessor.HttpContext.Session.SetString(nameof(_sessionId), _sessionId);
-            _httpContextAccessor.HttpContext.Session.SetString(nameof(_userId), _userId);
-            _httpContextAccessor.HttpContext.Session.SetString(nameof(_partitionId), _partitionId);
+            if (_httpContextAccessor.HttpContext?.Session is ISession session)
+            {
+                session.SetString(nameof(_sessionId), _sessionId);
+                session.SetString(nameof(_userId), _userId);
+                session.SetString(nameof(_partitionId), _partitionId);
+            }
+        }
+        catch (InvalidOperationException)
+        {
+            // Session is not available or response has already started
+            // Continue with in-memory values
         }
 
         return new SessionInformation(_sessionId, _userId, _partitionId, _timeProvider.GetLocalNow());
