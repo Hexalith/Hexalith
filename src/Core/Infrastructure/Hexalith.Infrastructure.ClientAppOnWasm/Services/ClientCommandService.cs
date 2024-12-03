@@ -88,11 +88,15 @@ public class ClientCommandService : ICommandService
     /// <param name="metadata">The metadata associated with the command.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    private Task SubmitCommandAsync(object command, Metadata metadata, CancellationToken cancellationToken)
+    private async Task SubmitCommandAsync(object command, Metadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
         ArgumentNullException.ThrowIfNull(metadata);
+        if (command is not PolymorphicRecordBase recordBase)
+        {
+            throw new ArgumentException($"The command should be of type {nameof(PolymorphicRecordBase)}");
+        }
 
-        return _client.PostAsJsonAsync("api/commands", new MessageState((PolymorphicRecordBase)command, metadata), cancellationToken);
+        _ = await _client.PostAsJsonAsync("api/commands", new MessageState(recordBase, metadata), cancellationToken);
     }
 }

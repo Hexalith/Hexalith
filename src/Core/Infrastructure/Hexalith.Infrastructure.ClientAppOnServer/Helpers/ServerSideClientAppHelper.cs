@@ -286,8 +286,6 @@ public static class ServerSideClientAppHelper
         ArgumentNullException.ThrowIfNull(app);
 
         _ = app
-
-            // .UseCors()
             .UseSerilogRequestLogging()
             .UseCloudEvents();
 
