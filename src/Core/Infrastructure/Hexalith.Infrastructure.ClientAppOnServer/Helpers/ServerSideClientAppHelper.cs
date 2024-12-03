@@ -172,6 +172,12 @@ public static class ServerSideClientAppHelper
         return builder;
     }
 
+    /// <summary>
+    /// Maps the user partition service endpoints.
+    /// </summary>
+    /// <param name="endpoints">The endpoint route builder.</param>
+    /// <returns>The endpoint convention builder.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when the endpoints parameter is null.</exception>
     public static IEndpointConventionBuilder MapUserPartitionServiceEndpoints(this IEndpointRouteBuilder endpoints)
     {
         ArgumentNullException.ThrowIfNull(endpoints);

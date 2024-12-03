@@ -77,28 +77,6 @@ public static class ServiceReferenceExtensions
         return builder;
     }
 
-    /// <summary>
-    /// Adds an HTTP service reference. Configures a binding between the <typeparamref name="TClient"/> type and a named <see cref="HttpClient"/>
-    /// with a base address. The client name will be set to the type name of <typeparamref name="TClient"/>.
-    /// </summary>
-    /// <typeparam name="TClient">
-    /// The type of the typed client. The type specified will be registered in the service collection as a transient service. See
-    /// <see cref="Microsoft.Extensions.Http.ITypedHttpClientFactory{TClient}"/> for more details about authoring typed clients.
-    /// </typeparam>
-    /// <param name="services">The <see cref="IServiceCollection"/>.</param>
-    /// <param name="baseAddress">The value to assign to the <see cref="HttpClient.BaseAddress"/> property of the typed client's injected <see cref="HttpClient"/> instance.</param>
-    /// <returns>Builder.</returns>
-    /// <exception cref="ArgumentException">Thrown when <paramref name="baseAddress"/> is not a valid URI value.</exception>
-    public static IHttpClientBuilder AddHttpServiceReference<TClient>(this IServiceCollection services, string baseAddress)
-        where TClient : class
-    {
-        ArgumentNullException.ThrowIfNull(services);
-
-        return !Uri.IsWellFormedUriString(baseAddress, UriKind.Absolute)
-            ? throw new ArgumentException("Base address must be a valid absolute URI.", nameof(baseAddress))
-            : services.AddHttpClient<TClient>(c => c.BaseAddress = new(baseAddress));
-    }
-
     private static void AddGrpcHealthChecks(IServiceCollection services, Uri uri, string healthCheckName, HealthStatus failureStatus = default)
     {
         _ = services.AddGrpcClient<Health.HealthClient>(o => o.Address = uri);

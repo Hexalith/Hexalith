@@ -53,8 +53,8 @@ internal class PartitionService : IPartitionService
         => await _actorProxyFactory.CreateAllPartitionsProxy()
             .AllAsync();
 
-    private IPartitionActor GetPartitionActor(string sessionId)
-                    => _actorProxyFactory.CreateActorProxy<IPartitionActor>(sessionId.ToActorId(), IPartitionActor.ActorCollectionName);
+    private IPartitionActor GetPartitionActor(string partitionId)
+        => _actorProxyFactory.CreateActorProxy<IPartitionActor>(partitionId.ToActorId(), IPartitionActor.ActorName);
 
     private async IAsyncEnumerable<Partition> GetPartitionsAsync(
         IEnumerable<string> ids,

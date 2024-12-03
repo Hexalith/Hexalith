@@ -8,18 +8,14 @@ namespace Hexalith.Infrastructure.ClientAppOnWasm.Helpers;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
-using Blazored.SessionStorage;
-
 using Hexalith.Application;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Modules.Applications;
 using Hexalith.Application.Modules.Routes;
 using Hexalith.Application.Organizations.Helpers;
 using Hexalith.Application.Sessions.Services;
-using Hexalith.Infrastructure.ClientApp;
 using Hexalith.Infrastructure.ClientAppOnWasm.Services;
 
-using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -73,25 +69,6 @@ public static class WebAssemblyClientHelper
             .AddLocalization(options => options.ResourcesPath = "Resources")
             .AddLogging(loggingBuilder => loggingBuilder.AddSerilog(dispose: true))
             .AddHexalithWasmClientApp(builder.Configuration);
-
-        //// Add authentication services
-        // _ = builder.Services.AddApiAuthorization(); // This registers the necessary authentication services
-        _ = builder.Services.AddAuthorizationCore()
-            .AddCascadingAuthenticationState()
-            .AddAuthenticationStateDeserialization();
-
-        _ = builder.Services
-               .AddHttpClient(
-                   ClientConstants.FrontApiName,
-                   client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
-               .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
-        _ = builder.Services
-                    .AddBlazoredSessionStorage();
-
-        _ = builder.Services
-          .AddScoped(sp => sp
-                    .GetRequiredService<IHttpClientFactory>()
-                    .CreateClient(ClientConstants.FrontApiName));
 
         HexalithApplication.AddWebAppServices(builder.Services, builder.Configuration);
         return builder;

@@ -27,7 +27,6 @@ public static class ComponentsHelper
     {
         _ = services.ConfigureSettings<FluentUIThemeSettings>(configuration);
 
-        _ = services.AddHttpClient();
         _ = services.AddFluentUIComponents();
         return services;
     }
