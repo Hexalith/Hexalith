@@ -42,18 +42,18 @@ public abstract class KeyValueActorProjectionUpdateEventHandlerBase<TEvent, TSta
     public abstract Task ApplyAsync(TEvent baseEvent, Metadata metadata, CancellationToken cancellationToken);
 
     /// <summary>
-    /// Get projection as an asynchronous operation.
+    /// Gets the projection asynchronously.
     /// </summary>
-    /// <param name="aggregateKey"></param>
+    /// <param name="aggregateKey">The key of the aggregate.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-    /// <returns>A Task&lt;TState&gt; representing the asynchronous operation.</returns>
+    /// <returns>A Task representing the asynchronous operation, with a result of the projection state.</returns>
     protected virtual async Task<TState?> GetProjectionAsync(string aggregateKey, CancellationToken cancellationToken)
-            => await _factory.GetStateAsync(aggregateKey, cancellationToken).ConfigureAwait(false);
+        => await _factory.GetStateAsync(aggregateKey, cancellationToken).ConfigureAwait(false);
 
     /// <summary>
     /// Save projection as an asynchronous operation.
     /// </summary>
-    /// <param name="aggregatekey"></param>
+    /// <param name="aggregatekey">The key of the aggregate.</param>
     /// <param name="state">The state.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A Task representing the asynchronous operation.</returns>
