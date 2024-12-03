@@ -6,6 +6,7 @@
 namespace Hexalith.Infrastructure.DaprRuntime.Buses;
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 using Dapr.Client;
 
@@ -38,10 +39,16 @@ public class DaprCommandBus(
     ILogger<DaprCommandBus> logger) : DaprApplicationBus(
         client,
         dateTimeService,
-        string.IsNullOrWhiteSpace(settings?.Value.Name)
-                ? throw new ArgumentException($"The name of the command bus is not defined in settings ({CommandBusSettings.ConfigurationName()}.{nameof(CommandBusSettings.Name)}).", nameof(settings))
-                : settings.Value.Name,
+        GetName(settings?.Value.Name),
         ApplicationConstants.CommandBusSuffix,
         logger), ICommandBus
 {
+    private static string GetName([NotNull] string? name)
+    {
+        return string.IsNullOrWhiteSpace(name)
+                ? throw new ArgumentException(
+                    $"The name of the command bus is not defined in settings ({CommandBusSettings.ConfigurationName()}.{nameof(CommandBusSettings.Name)}).",
+                    nameof(name))
+                : name;
+    }
 }

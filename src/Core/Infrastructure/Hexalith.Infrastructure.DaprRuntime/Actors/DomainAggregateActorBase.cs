@@ -45,7 +45,6 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     private readonly TimeSpan _defaultTimerDueTime = TimeSpan.FromMilliseconds(1);
     private readonly IEventBus _eventBus;
     private readonly ActorHost _host;
-    private readonly JsonSerializerOptions _jsonOptions;
     private readonly TimeSpan _maxTimerDueTime = new(0, 1, 0);
     private readonly IRequestBus _requestBus;
     private readonly IResiliencyPolicyProvider _resiliencyPolicyProvider;
@@ -594,7 +593,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             metadata.Message.Name,
             metadata.AggregateGlobalId,
             correlationId,
-            ex.Error?.GetDetailMessage(CultureInfo.InvariantCulture) ?? "Unknown application error.",
+            ex.Error?.GetDetailMessage(CultureInfo.InvariantCulture) ?? $"Unknown application error on {command.GetType().Name}.",
             ex.Error?.GetTechnicalMessage(CultureInfo.InvariantCulture));
         return taskProcessor;
     }

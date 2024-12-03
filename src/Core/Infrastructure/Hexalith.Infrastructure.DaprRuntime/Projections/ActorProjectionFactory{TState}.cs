@@ -1,17 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Infrastructure.WebApis.Parties
-// Author           : Jérôme Piquot
-// Created          : 10-27-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 12-19-2023
-// ***********************************************************************
-// <copyright file="ActorProjectionFactory{TState}.cs" company="ITANEO">
+﻿// <copyright file="ActorProjectionFactory{TState}.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Infrastructure.DaprRuntime.Projections;
 
@@ -19,18 +9,15 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Dapr.Actors;
 using Dapr.Actors.Client;
 
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 
 /// <summary>
-/// Class ActorProjectionFactory.
-/// Implements the <see cref="Hexalith.Infrastructure.DaprRuntime.Projections.IActorProjectionFactory" />.
+/// Factory class for creating projection actors.
 /// </summary>
-/// <typeparam name="TState">The type of the t state.</typeparam>
-/// <seealso cref="Hexalith.Infrastructure.DaprRuntime.Projections.IActorProjectionFactory" />
+/// <typeparam name="TState">The type of the state.</typeparam>
 public class ActorProjectionFactory<TState> : IActorProjectionFactory<TState>
 {
     /// <summary>
@@ -38,7 +25,7 @@ public class ActorProjectionFactory<TState> : IActorProjectionFactory<TState>
     /// </summary>
     /// <param name="actorFactory">The actor factory.</param>
     /// <param name="applicationName">Name of the application.</param>
-    /// <exception cref="System.ArgumentNullException">null.</exception>
+    /// <exception cref="System.ArgumentNullException">Thrown when actorFactory is null.</exception>
     public ActorProjectionFactory(IActorProxyFactory actorFactory, string applicationName)
     {
         ArgumentNullException.ThrowIfNull(actorFactory);
