@@ -20,14 +20,11 @@ using Hexalith.Application.States;
 using Hexalith.Extensions.Helpers;
 using Hexalith.PolymorphicSerialization;
 
-using Microsoft.AspNetCore.Components.Authorization;
-
 /// <summary>
 /// Represents a service for sending commands asynchronously.
 /// </summary>
 public class ClientCommandService : ICommandService
 {
-    private readonly AuthenticationStateProvider _authenticationStateProvider;
     private readonly HttpClient _client;
     private readonly ISessionService _sessionService;
     private readonly TimeProvider _timeProvider;
@@ -36,19 +33,16 @@ public class ClientCommandService : ICommandService
     /// Initializes a new instance of the <see cref="ClientCommandService"/> class.
     /// </summary>
     /// <param name="client">The HTTP client.</param>
-    /// <param name="authenticationStateProvider">The authentication state provider.</param>
     /// <param name="sessionService">The user session service.</param>
     /// <param name="timeProvider">The time provider.</param>
     public ClientCommandService(
         [NotNull] HttpClient client,
-        [NotNull] AuthenticationStateProvider authenticationStateProvider,
         [NotNull] ISessionService sessionService,
         [NotNull] TimeProvider timeProvider)
     {
         ArgumentNullException.ThrowIfNull(timeProvider);
         ArgumentNullException.ThrowIfNull(client);
         _client = client;
-        _authenticationStateProvider = authenticationStateProvider;
         _sessionService = sessionService;
         _timeProvider = timeProvider;
     }
@@ -57,14 +51,9 @@ public class ClientCommandService : ICommandService
     public async Task SubmitCommandAsync(ClaimsPrincipal user, object command, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
+        ArgumentNullException.ThrowIfNull(user);
 
-        AuthenticationState authenticationState = await _authenticationStateProvider.GetAuthenticationStateAsync();
-        if (authenticationState.User?.Identity?.IsAuthenticated != true)
-        {
-            throw new InvalidOperationException("User is not authenticated.");
-        }
-
-        string? userId = authenticationState.User.Identity.Name;
+        string? userId = user.Identity?.Name;
         if (string.IsNullOrWhiteSpace(userId))
         {
             throw new InvalidOperationException("User is authenticated but user ID is not found.");
