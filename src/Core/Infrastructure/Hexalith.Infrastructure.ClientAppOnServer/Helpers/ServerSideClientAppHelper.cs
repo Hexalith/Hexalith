@@ -184,15 +184,15 @@ public static class ServerSideClientAppHelper
 
         RouteGroupBuilder api = endpoints.MapGroup("/api");
 
-        _ = api.MapGet($"{nameof(IUserPartitionService.GetDefaultPartitionAsync)}", async (
+        _ = api.MapGet($"/{nameof(IUserPartitionService.GetDefaultPartitionAsync)}", async (
             string userId,
             [FromServices] IUserPartitionService userPartitionService) => TypedResults.Ok(await userPartitionService.GetDefaultPartitionAsync(userId, default)));
 
-        _ = api.MapGet($"{nameof(IUserPartitionService.GetPartitionsAsync)}", async (
+        _ = api.MapGet($"/{nameof(IUserPartitionService.GetPartitionsAsync)}", async (
             string userId,
             [FromServices] IUserPartitionService userPartitionService) => TypedResults.Ok(await userPartitionService.GetPartitionsAsync(userId, default)));
 
-        _ = api.MapGet($"{nameof(IUserPartitionService.InPartitionAsync)}", async (
+        _ = api.MapGet($"/{nameof(IUserPartitionService.InPartitionAsync)}", async (
             string userId,
             string partitionId,
             [FromServices] IUserPartitionService userPartitionService) => TypedResults.Ok(await userPartitionService.InPartitionAsync(userId, partitionId, default)));
