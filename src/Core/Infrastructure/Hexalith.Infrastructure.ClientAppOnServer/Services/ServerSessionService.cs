@@ -34,7 +34,7 @@ public class ServerSessionService : ISessionService
     /// </summary>
     /// <param name="httpContextAccessor">The HTTP context accessor.</param>
     /// <param name="userPartitionService">The user partition service.</param>
-    /// <param name="partitionService"></param>
+    /// <param name="partitionService">The partition service.</param>
     /// <param name="timeProvider">The time provider.</param>
     public ServerSessionService(
         IHttpContextAccessor httpContextAccessor,

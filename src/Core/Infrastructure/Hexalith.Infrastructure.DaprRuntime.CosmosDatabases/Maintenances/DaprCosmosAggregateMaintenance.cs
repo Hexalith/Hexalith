@@ -8,6 +8,7 @@ namespace Hexalith.Infrastructure.DaprRuntime.CosmosDatabases.Maintenances;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -129,9 +130,6 @@ public class DaprCosmosAggregateMaintenance<TAggregate> :
         await actor.SendSnapshotEventAsync().ConfigureAwait(false);
     }
 
-    /// <inheritdoc/>
-    Task<IEnumerable<string>> IAggregateMaintenance<TAggregate>.GetAllActorIdsAsync(CancellationToken cancellationToken) => throw new NotImplementedException();
-
     /// <summary>
     /// Releases unmanaged and - optionally - managed resources.
     /// </summary>
@@ -150,17 +148,17 @@ public class DaprCosmosAggregateMaintenance<TAggregate> :
 
     /// <summary>
     /// Get actor id from the state store item id.
-    /// State id format:. <appId>||<actorType>||<actorId>||<stateName>
+    /// State id format:. appId||actorType||actorId||stateName.
     /// </summary>
-    /// <param name="stateId">State store item id</param>
-    /// <returns>Actor id</returns>
+    /// <param name="stateId">State store item id.</param>
+    /// <returns>Actor id.</returns>
     private static string GetActorId(string stateId) => stateId.Split("||").Skip(2).FirstOrDefault() ?? string.Empty;
 
     private static async IAsyncEnumerable<string> GetAllAggregateIdsAsync(
         CosmosDbProvider cosmos,
         string applicationId,
         string actorType,
-        CancellationToken cancellationToken)
+        [EnumeratorCancellation] CancellationToken cancellationToken)
     {
         QueryDefinition queryDefinition = new QueryDefinition($"Select c.id From c Where StartWith(c.id,@actorType) and EndsWith(c.id, @state)")
             .WithParameter("@actorType", $"{applicationId}||{actorType}||")
@@ -183,7 +181,7 @@ public class DaprCosmosAggregateMaintenance<TAggregate> :
         string applicationId,
         string actorType,
         string aggregateGlobalId,
-        CancellationToken cancellationToken)
+        [EnumeratorCancellation] CancellationToken cancellationToken)
     {
         QueryDefinition queryDefinition = new QueryDefinition($"Select c.id From c Where StartWith(c.id,@aggregateGlobalId)")
             .WithParameter("@aggregateGlobalId", $"{applicationId}||{actorType}||{aggregateGlobalId}||CommandStream");
