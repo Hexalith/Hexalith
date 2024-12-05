@@ -10,10 +10,8 @@ using System;
 using Hexalith.Domain.Aggregates;
 
 /// <summary>
-/// Class AggregateFactory.
-/// Implements the <see cref="Hexalith.Application.Aggregates.IAggregateFactory" />.
+/// Factory class for creating domain aggregates.
 /// </summary>
-/// <seealso cref="Hexalith.Application.Aggregates.IAggregateFactory" />
 public class DomainAggregateFactory : IDomainAggregateFactory
 {
     /// <summary>
@@ -25,7 +23,7 @@ public class DomainAggregateFactory : IDomainAggregateFactory
     /// Initializes a new instance of the <see cref="DomainAggregateFactory"/> class.
     /// </summary>
     /// <param name="aggregateProviders">The aggregate providers.</param>
-    /// <exception cref="System.ArgumentNullException">null.</exception>
+    /// <exception cref="System.ArgumentNullException">Thrown when aggregateProviders is null.</exception>
     public DomainAggregateFactory(IEnumerable<IDomainAggregateProvider> aggregateProviders)
     {
         ArgumentNullException.ThrowIfNull(aggregateProviders);
@@ -38,6 +36,12 @@ public class DomainAggregateFactory : IDomainAggregateFactory
     /// <inheritdoc/>
     public Type GetAggregateType(string aggregateName) => GetProvider(aggregateName).AggregateType;
 
+    /// <summary>
+    /// Gets the provider for the specified aggregate name.
+    /// </summary>
+    /// <param name="aggregateName">The name of the aggregate.</param>
+    /// <returns>The provider for the specified aggregate name.</returns>
+    /// <exception cref="InvalidOperationException">Thrown when the provider for the specified aggregate name is not found.</exception>
     private IDomainAggregateProvider GetProvider(string aggregateName)
     {
         return _aggregateProviders.TryGetValue(aggregateName, out IDomainAggregateProvider? value)

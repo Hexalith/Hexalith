@@ -8,18 +8,24 @@ namespace Hexalith.Infrastructure.WebApis.Helpers;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
+using Dapr.Actors.Client;
 using Dapr.Actors.Runtime;
 
 using FluentValidation;
 
+using Hexalith.Application.Aggregates;
 using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Modules.Applications;
+using Hexalith.Application.Organizations.Helpers;
 using Hexalith.Application.Projections;
 using Hexalith.Application.Tasks;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.AspireService.Defaults;
+using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
+using Hexalith.Infrastructure.DaprRuntime.Partitions.Helpers;
+using Hexalith.Infrastructure.DaprRuntime.Sessions.Helpers;
 
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -89,7 +95,19 @@ public static partial class HexalithWebApi
         builder.Services.TryAddSingleton<IResiliencyPolicyProvider, ResiliencyPolicyProvider>();
         builder.Services.TryAddScoped<IDomainCommandDispatcher, DependencyInjectionDomainCommandDispatcher>();
         builder.Services.TryAddScoped<IProjectionUpdateProcessor, DependencyInjectionProjectionUpdateProcessor>();
+        builder.Services.TryAddSingleton<IDomainAggregateFactory, DomainAggregateFactory>();
+        builder.Services
+            .TryAddSingleton<IDomainCommandProcessor>((s) => new DomainActorCommandProcessor(
+            ActorProxy.DefaultProxyFactory,
+            false,
+            s.GetRequiredService<ILogger<DomainActorCommandProcessor>>()));
         HexalithApplication.AddApiServerServices(builder.Services, builder.Configuration);
+
+        _ = builder.Services
+            .AddOrganizations(builder.Configuration)
+            .AddPartitions()
+            .AddSessions();
+
         return builder;
     }
 
