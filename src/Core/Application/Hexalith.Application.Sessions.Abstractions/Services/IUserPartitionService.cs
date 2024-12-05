@@ -19,7 +19,7 @@ public interface IUserPartitionService
     /// <param name="userName">The user name.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>The default partition identifier.</returns>
-    Task<string?> GetDefaultPartitionAsync(string userName, CancellationToken cancellationToken);
+    Task<string> GetDefaultPartitionAsync(string userName, CancellationToken cancellationToken);
 
     /// <summary>
     /// Gets the partitions for a user.
