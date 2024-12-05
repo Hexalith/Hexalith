@@ -38,9 +38,6 @@ using Hexalith.PolymorphicSerialization;
 
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -170,34 +167,6 @@ public static class ServerSideClientAppHelper
             });
         HexalithApplication.AddWebServerServices(builder.Services, builder.Configuration);
         return builder;
-    }
-
-    /// <summary>
-    /// Maps the user partition service endpoints.
-    /// </summary>
-    /// <param name="endpoints">The endpoint route builder.</param>
-    /// <returns>The endpoint convention builder.</returns>
-    /// <exception cref="ArgumentNullException">Thrown when the endpoints parameter is null.</exception>
-    public static IEndpointConventionBuilder MapUserPartitionServiceEndpoints(this IEndpointRouteBuilder endpoints)
-    {
-        ArgumentNullException.ThrowIfNull(endpoints);
-
-        RouteGroupBuilder api = endpoints.MapGroup("/api");
-
-        _ = api.MapGet($"/{nameof(IUserPartitionService.GetDefaultPartitionAsync)}", async (
-            string userId,
-            [FromServices] IUserPartitionService userPartitionService) => TypedResults.Ok(await userPartitionService.GetDefaultPartitionAsync(userId, default)));
-
-        _ = api.MapGet($"/{nameof(IUserPartitionService.GetPartitionsAsync)}", async (
-            string userId,
-            [FromServices] IUserPartitionService userPartitionService) => TypedResults.Ok(await userPartitionService.GetPartitionsAsync(userId, default)));
-
-        _ = api.MapGet($"/{nameof(IUserPartitionService.InPartitionAsync)}", async (
-            string userId,
-            string partitionId,
-            [FromServices] IUserPartitionService userPartitionService) => TypedResults.Ok(await userPartitionService.InPartitionAsync(userId, partitionId, default)));
-
-        return api;
     }
 
     /// <summary>
