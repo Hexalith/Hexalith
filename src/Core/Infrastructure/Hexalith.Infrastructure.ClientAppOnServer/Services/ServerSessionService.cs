@@ -27,7 +27,7 @@ public class ServerSessionService : ISessionService
     private readonly IUserPartitionService _userPartitionService;
     private string? _partitionId;
     private string? _sessionId;
-    private string? _userId;
+    private string? _userName;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ServerSessionService"/> class.
@@ -53,23 +53,23 @@ public class ServerSessionService : ISessionService
     }
 
     /// <inheritdoc/>
-    public async Task<SessionInformation> GetAsync(string userId, CancellationToken cancellationToken)
+    public async Task<SessionInformation> GetAsync(string userName, CancellationToken cancellationToken)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(userId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(userName);
         try
         {
             if (_httpContextAccessor.HttpContext?.Session is ISession session)
             {
                 await session.LoadAsync(cancellationToken);
                 string? sessionId = session.GetString(nameof(_sessionId));
-                string? user = session.GetString(nameof(_userId));
+                string? user = session.GetString(nameof(_userName));
                 string? partitionId = session.GetString(nameof(_partitionId));
-                if (!string.IsNullOrWhiteSpace(sessionId) && !string.IsNullOrWhiteSpace(partitionId) && user == userId)
+                if (!string.IsNullOrWhiteSpace(sessionId) && !string.IsNullOrWhiteSpace(partitionId) && user == userName)
                 {
                     _sessionId = sessionId;
-                    _userId = user;
+                    _userName = user;
                     _partitionId = partitionId;
-                    return new SessionInformation(_sessionId, _userId, _partitionId, _timeProvider.GetLocalNow());
+                    return new SessionInformation(_sessionId, _userName, _partitionId, _timeProvider.GetLocalNow());
                 }
             }
         }
@@ -79,16 +79,16 @@ public class ServerSessionService : ISessionService
             // Continue with in-memory values
         }
 
-        if (string.IsNullOrWhiteSpace(_sessionId) || _userId != userId)
+        if (string.IsNullOrWhiteSpace(_sessionId) || _userName != userName)
         {
             _sessionId = UniqueIdHelper.GenerateUniqueStringId();
-            _userId = userId;
+            _userName = userName;
             _partitionId = null;
         }
 
         if (string.IsNullOrWhiteSpace(_partitionId))
         {
-            _partitionId = await _userPartitionService.GetDefaultPartitionAsync(userId, cancellationToken);
+            _partitionId = await _userPartitionService.GetDefaultPartitionAsync(userName, cancellationToken);
         }
 
         if (string.IsNullOrWhiteSpace(_partitionId))
@@ -109,7 +109,7 @@ public class ServerSessionService : ISessionService
             if (_httpContextAccessor.HttpContext?.Session is ISession session)
             {
                 session.SetString(nameof(_sessionId), _sessionId);
-                session.SetString(nameof(_userId), _userId);
+                session.SetString(nameof(_userName), _userName);
                 session.SetString(nameof(_partitionId), _partitionId);
             }
         }
@@ -119,15 +119,15 @@ public class ServerSessionService : ISessionService
             // Continue with in-memory values
         }
 
-        return new SessionInformation(_sessionId, _userId, _partitionId, _timeProvider.GetLocalNow());
+        return new SessionInformation(_sessionId, _userName, _partitionId, _timeProvider.GetLocalNow());
     }
 
     /// <inheritdoc/>
-    public async Task SetCurrentPartitionAsync(string userId, string partitionId, CancellationToken cancellationToken)
+    public async Task SetCurrentPartitionAsync(string userName, string partitionId, CancellationToken cancellationToken)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(partitionId);
-        _ = await GetAsync(userId, cancellationToken);
-        if (await _userPartitionService.InPartitionAsync(userId, partitionId, cancellationToken))
+        _ = await GetAsync(userName, cancellationToken);
+        if (await _userPartitionService.InPartitionAsync(userName, partitionId, cancellationToken))
         {
             _partitionId = partitionId;
             _httpContextAccessor.HttpContext?.Session.SetString(nameof(_partitionId), _partitionId);

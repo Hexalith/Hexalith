@@ -16,25 +16,25 @@ public interface IUserPartitionService
     /// <summary>
     /// Gets the default partition for a user.
     /// </summary>
-    /// <param name="userId">The user identifier.</param>
+    /// <param name="userName">The user name.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>The default partition identifier.</returns>
-    Task<string?> GetDefaultPartitionAsync(string userId, CancellationToken cancellationToken);
+    Task<string?> GetDefaultPartitionAsync(string userName, CancellationToken cancellationToken);
 
     /// <summary>
     /// Gets the partitions for a user.
     /// </summary>
-    /// <param name="userId">The user identifier.</param>
+    /// <param name="userName">The user name.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A collection of partition identifiers.</returns>
-    Task<IEnumerable<string>> GetPartitionsAsync(string userId, CancellationToken cancellationToken);
+    Task<IEnumerable<string>> GetPartitionsAsync(string userName, CancellationToken cancellationToken);
 
     /// <summary>
     /// Determines whether the user is in a partition.
     /// </summary>
-    /// <param name="userId">The user identifier.</param>
+    /// <param name="userName">The user name.</param>
     /// <param name="partitionId">The partition identifier.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns><c>true</c> if the user is in a partition; otherwise, <c>false</c>.</returns>
-    Task<bool> InPartitionAsync(string userId, string partitionId, CancellationToken cancellationToken);
+    Task<bool> InPartitionAsync(string userName, string partitionId, CancellationToken cancellationToken);
 }

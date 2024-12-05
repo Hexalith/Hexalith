@@ -31,17 +31,6 @@ public class PartitionActor : Actor, IPartitionActor
         : base(host) => ArgumentNullException.ThrowIfNull(host);
 
     /// <inheritdoc/>
-    public async Task AddAsync(Partition partition)
-    {
-        IKeyHashActor collection = ActorProxy.DefaultProxyFactory.CreateActorProxy<IKeyHashActor>(
-            new ActorId("Ids"),
-            _collectionActorName);
-        _ = await collection.AddAsync(partition.Id);
-        _partition = partition;
-        await SaveAsync();
-    }
-
-    /// <inheritdoc/>
     public async Task DisableAsync()
     {
         Partition partition = _partition ??= await GetPartitionAsync();
@@ -64,6 +53,23 @@ public class PartitionActor : Actor, IPartitionActor
     }
 
     /// <inheritdoc/>
+    public async Task<bool> EnabledAsync()
+    {
+        if (_partition is null)
+        {
+            ConditionalValue<Partition> result = await StateManager.TryGetStateAsync<Partition>(_stateName);
+            if (!result.HasValue)
+            {
+                return false;
+            }
+
+            _partition = result.Value;
+        }
+
+        return !_partition.Disabled;
+    }
+
+    /// <inheritdoc/>
     public async Task<Partition> GetAsync()
         => _partition ??= await GetPartitionAsync();
 
@@ -76,6 +82,17 @@ public class PartitionActor : Actor, IPartitionActor
             _partition = partition with { Name = newName };
             await SaveAsync();
         }
+    }
+
+    /// <inheritdoc/>
+    public async Task SetAsync(Partition partition)
+    {
+        IKeyHashActor collection = ActorProxy.DefaultProxyFactory.CreateActorProxy<IKeyHashActor>(
+            new ActorId("Ids"),
+            _collectionActorName);
+        _ = await collection.AddAsync(partition.Id);
+        _partition = partition;
+        await SaveAsync();
     }
 
     private async Task<Partition> GetPartitionAsync()

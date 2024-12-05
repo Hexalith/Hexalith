@@ -103,41 +103,25 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     }
 
     private MessageStore<MessageState> CommandStore
-#if EXPERIMENTAL_FEATURES
-        => field
-#else
         => _commandStore
-#endif
         ??= new MessageStore<MessageState>(
             new ActorStateStoreProvider(StateManager),
             ActorConstants.CommandStoreName);
 
     private MessageStore<MessageState> EventSourceStore
-#if EXPERIMENTAL_FEATURES
-        => field
-#else
         => _eventStore
-#endif
         ??= new MessageStore<MessageState>(
             new ActorStateStoreProvider(StateManager),
             ActorConstants.EventSourcingName);
 
     private MessageStore<MessageState> MessageStore
-#if EXPERIMENTAL_FEATURES
-        => field
-#else
         => _messageStore
-#endif
         ??= new MessageStore<MessageState>(
             new ActorStateStoreProvider(StateManager),
             ActorConstants.MessageStoreName);
 
     private ResiliencyPolicy ResiliencyPolicy
-#if EXPERIMENTAL_FEATURES
-        => field
-#else
         => _resiliencyPolicy
-#endif
         ??= _resiliencyPolicyProvider.GetPolicy(Host.ActorTypeInfo.ActorTypeName);
 
     /// <summary>

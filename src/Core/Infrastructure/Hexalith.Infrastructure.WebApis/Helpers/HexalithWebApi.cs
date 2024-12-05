@@ -105,7 +105,7 @@ public static partial class HexalithWebApi
 
         _ = builder.Services
             .AddOrganizations(builder.Configuration)
-            .AddPartitions()
+            .AddPartitions(builder.Configuration)
             .AddSessions();
 
         return builder;

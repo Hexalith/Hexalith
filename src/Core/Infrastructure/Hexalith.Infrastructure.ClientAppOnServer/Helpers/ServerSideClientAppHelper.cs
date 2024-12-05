@@ -73,7 +73,7 @@ public static class ServerSideClientAppHelper
             .AddSingleton<IRouteManager, RouteManager>()
             .AddScoped<ICommandService, ServerCommandService>()
             .AddScoped<ISessionService, ServerSessionService>()
-            .AddPartitions()
+            .AddPartitions(configuration)
             .AddSessions();
         _ = services.AddValidatorsFromAssemblyContaining<CommandBusSettingsValidator>(ServiceLifetime.Singleton);
         services.TryAddSingleton<IResiliencyPolicyProvider, ResiliencyPolicyProvider>();

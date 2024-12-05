@@ -22,7 +22,7 @@ public class ClientSessionService : ISessionService
     private readonly IUserPartitionService _userPartitionService;
     private string? _partitionId;
     private string? _sessionId;
-    private string? _userId;
+    private string? _userName;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ClientSessionService"/> class.
@@ -38,22 +38,22 @@ public class ClientSessionService : ISessionService
     }
 
     /// <inheritdoc/>
-    public async Task<SessionInformation> GetAsync(string userId, CancellationToken cancellationToken)
+    public async Task<SessionInformation> GetAsync(string userName, CancellationToken cancellationToken)
     {
-        if (_sessionId is null || _userId != userId)
+        if (_sessionId is null || _userName != userName)
         {
             _sessionId = UniqueIdHelper.GenerateUniqueStringId();
-            _userId = userId;
+            _userName = userName;
             _partitionId = null;
         }
 
-        _partitionId ??= await _userPartitionService.GetDefaultPartitionAsync(userId, cancellationToken);
+        _partitionId ??= await _userPartitionService.GetDefaultPartitionAsync(userName, cancellationToken);
         return _partitionId is null
             ? throw new InvalidOperationException("No partition found for the user.")
-            : new SessionInformation(_sessionId, _userId, _partitionId, _timeProvider.GetLocalNow());
+            : new SessionInformation(_sessionId, _userName, _partitionId, _timeProvider.GetLocalNow());
     }
 
     /// <inheritdoc/>
-    public async Task SetCurrentPartitionAsync(string userId, string partitionId, CancellationToken cancellationToken)
-        => _partitionId = await _userPartitionService.InPartitionAsync(userId, partitionId, cancellationToken) ? partitionId : null;
+    public async Task SetCurrentPartitionAsync(string userName, string partitionId, CancellationToken cancellationToken)
+        => _partitionId = await _userPartitionService.InPartitionAsync(userName, partitionId, cancellationToken) ? partitionId : null;
 }

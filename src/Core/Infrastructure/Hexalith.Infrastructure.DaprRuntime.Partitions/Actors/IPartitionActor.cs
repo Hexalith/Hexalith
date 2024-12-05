@@ -29,13 +29,6 @@ public interface IPartitionActor : IActor
     internal static string ActorName => "Partition";
 
     /// <summary>
-    /// Adds a new partition with the specified name asynchronously.
-    /// </summary>
-    /// <param name="partition">The partition to add.</param>
-    /// <returns>A <see cref="Task"/> that represents the asynchronous operation.</returns>
-    Task AddAsync(Partition partition);
-
-    /// <summary>
     /// Disables the current partition asynchronously.
     /// A disabled partition remains in the system but is marked as inactive.
     /// </summary>
@@ -50,6 +43,12 @@ public interface IPartitionActor : IActor
     Task EnableAsync();
 
     /// <summary>
+    /// Determines whether the current partition is enabled asynchronously.
+    /// </summary>
+    /// <returns>true if the partition is enabled; otherwise, false.</returns>
+    Task<bool> EnabledAsync();
+
+    /// <summary>
     /// Retrieves the current partition's information asynchronously.
     /// </summary>
     /// <returns>A <see cref="Task{TResult}"/> that represents the asynchronous operation.
@@ -62,4 +61,11 @@ public interface IPartitionActor : IActor
     /// <param name="newName">The new name to assign to the partition. Must be unique within the system.</param>
     /// <returns>A <see cref="Task"/> that represents the asynchronous operation.</returns>
     Task RenameAsync(string newName);
+
+    /// <summary>
+    /// Adds a new partition with the specified name asynchronously.
+    /// </summary>
+    /// <param name="partition">The partition to add.</param>
+    /// <returns>A <see cref="Task"/> that represents the asynchronous operation.</returns>
+    Task SetAsync(Partition partition);
 }

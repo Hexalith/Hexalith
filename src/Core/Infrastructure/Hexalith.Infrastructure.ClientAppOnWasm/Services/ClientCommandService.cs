@@ -53,14 +53,14 @@ public class ClientCommandService : ICommandService
         ArgumentNullException.ThrowIfNull(command);
         ArgumentNullException.ThrowIfNull(user);
 
-        string? userId = user.Identity?.Name;
-        if (string.IsNullOrWhiteSpace(userId))
+        string? userName = user.Identity?.Name;
+        if (string.IsNullOrWhiteSpace(userName))
         {
             throw new InvalidOperationException("User is authenticated but user ID is not found.");
         }
 
         string messageId = UniqueIdHelper.GenerateUniqueStringId();
-        SessionInformation session = await _sessionService.GetAsync(userId, cancellationToken).ConfigureAwait(false)
+        SessionInformation session = await _sessionService.GetAsync(userName, cancellationToken).ConfigureAwait(false)
             ?? throw new InvalidOperationException("Session not found or expired.");
         Metadata metadata = new(
             new MessageMetadata(
@@ -71,7 +71,7 @@ public class ClientCommandService : ICommandService
             _timeProvider.GetLocalNow()),
             new ContextMetadata(
                 messageId,
-                userId,
+                userName,
                 session.PartitionId,
                 _timeProvider.GetLocalNow(),
                 null,

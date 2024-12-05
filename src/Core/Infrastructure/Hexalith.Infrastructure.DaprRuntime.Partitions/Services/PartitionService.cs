@@ -12,11 +12,15 @@ using System.Threading.Tasks;
 
 using Dapr.Actors.Client;
 
+using Hexalith.Application.Partitions.Configurations;
 using Hexalith.Application.Partitions.Models;
 using Hexalith.Application.Partitions.Services;
+using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Partitions.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Partitions.Helpers;
+
+using Microsoft.Extensions.Options;
 
 /// <summary>
 /// Service implementation for retrieving partition information using Dapr actors.
@@ -24,20 +28,38 @@ using Hexalith.Infrastructure.DaprRuntime.Partitions.Helpers;
 internal class PartitionService : IPartitionService
 {
     private readonly IActorProxyFactory _actorProxyFactory;
+    private readonly string _default;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="PartitionService"/> class.
     /// </summary>
     /// <param name="actorProxyFactory">The actor proxy factory.</param>
-    public PartitionService(IActorProxyFactory actorProxyFactory)
+    /// <param name="settings"></param>
+    public PartitionService(IActorProxyFactory actorProxyFactory, IOptions<PartitionSettings> settings)
     {
         ArgumentNullException.ThrowIfNull(actorProxyFactory);
+        ArgumentNullException.ThrowIfNull(settings);
+        SettingsException<PartitionSettings>.ThrowIfNullOrWhiteSpace(settings.Value.Default);
+        _default = settings.Value.Default;
         _actorProxyFactory = actorProxyFactory;
     }
 
     /// <inheritdoc/>
     public async Task AddAsync(Partition partition, CancellationToken cancellationToken)
-        => await GetPartitionActor(partition.Id).AddAsync(partition);
+        => await GetPartitionActor(partition.Id).SetAsync(partition);
+
+    /// <inheritdoc/>
+    public async Task<string> DefaultAsync(CancellationToken cancellationToken)
+    {
+        IPartitionActor partitionActor = GetPartitionActor(_default);
+        bool enabled = await partitionActor.EnabledAsync();
+        if (!enabled)
+        {
+            await partitionActor.SetAsync(new Partition(_default, _default, false));
+        }
+
+        return _default;
+    }
 
     /// <inheritdoc/>
     public async IAsyncEnumerable<Partition> GetAllAsync([EnumeratorCancellation] CancellationToken cancellationToken)
@@ -57,9 +79,9 @@ internal class PartitionService : IPartitionService
         => _actorProxyFactory.CreateActorProxy<IPartitionActor>(partitionId.ToActorId(), IPartitionActor.ActorName);
 
     private async IAsyncEnumerable<Partition> GetPartitionsAsync(
-        IEnumerable<string> ids,
-        [EnumeratorCancellation]
-        CancellationToken cancellationToken)
+            IEnumerable<string> ids,
+            [EnumeratorCancellation]
+            CancellationToken cancellationToken)
     {
         foreach (string id in ids)
         {

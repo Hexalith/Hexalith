@@ -11,12 +11,15 @@ using System.Diagnostics.CodeAnalysis;
 using Dapr.Actors.Client;
 using Dapr.Actors.Runtime;
 
+using Hexalith.Application.Partitions.Configurations;
 using Hexalith.Application.Partitions.Services;
+using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Partitions.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Partitions.Services;
 
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 /// <summary>
@@ -33,12 +36,16 @@ public static class PartitionActorsHelper
     /// Adds partition services to the specified IServiceCollection.
     /// </summary>
     /// <param name="services">The IServiceCollection to add services to.</param>
+    /// <param name="configuration">The configuration to use for the partition settings.</param>
     /// <returns>The updated IServiceCollection.</returns>
     /// <exception cref="ArgumentNullException">Thrown when services is null.</exception>
-    public static IServiceCollection AddPartitions(this IServiceCollection services)
+    public static IServiceCollection AddPartitions(this IServiceCollection services, IConfiguration configuration)
     {
         ArgumentNullException.ThrowIfNull(services);
-        _ = services.AddSingleton<IPartitionService, PartitionService>();
+        ArgumentNullException.ThrowIfNull(configuration);
+        _ = services
+            .ConfigureSettings<PartitionSettings>(configuration)
+            .AddSingleton<IPartitionService, PartitionService>();
         return services;
     }
 

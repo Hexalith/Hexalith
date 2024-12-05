@@ -25,7 +25,7 @@ public interface IPartitionService
     /// </summary>
     /// <param name="cancellationToken">A token to cancel the operation.</param>
     /// <returns>A task that represents the asynchronous operation. The task result contains the default partition.</returns>
-    Task<string> DefaultAsync(CancellationToken cancellationToken) => Task.FromResult("Default");
+    Task<string> DefaultAsync(CancellationToken cancellationToken);
 
     /// <summary>
     /// Gets all partitions asynchronously.

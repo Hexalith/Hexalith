@@ -32,23 +32,23 @@ public class UserPartitionServiceProxy : IUserPartitionService
     }
 
     /// <inheritdoc/>
-    public async Task<string?> GetDefaultPartitionAsync(string userId, CancellationToken cancellationToken)
+    public async Task<string?> GetDefaultPartitionAsync(string userName, CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(userId);
-        return await _httpClient.GetFromJsonAsync<string?>($"api/UserPartition/{userId}/default", cancellationToken);
+        ArgumentNullException.ThrowIfNull(userName);
+        return await _httpClient.GetFromJsonAsync<string?>($"api/UserPartition/{userName}/default", cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task<IEnumerable<string>> GetPartitionsAsync(string userId, CancellationToken cancellationToken)
+    public async Task<IEnumerable<string>> GetPartitionsAsync(string userName, CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(userId);
-        return await _httpClient.GetFromJsonAsync<IEnumerable<string>>($"api/UserPartition/{userId}/partitions", cancellationToken) ?? [];
+        ArgumentNullException.ThrowIfNull(userName);
+        return await _httpClient.GetFromJsonAsync<IEnumerable<string>>($"api/UserPartition/{userName}/partitions", cancellationToken) ?? [];
     }
 
     /// <inheritdoc/>
-    public async Task<bool> InPartitionAsync(string userId, string partitionId, CancellationToken cancellationToken)
+    public async Task<bool> InPartitionAsync(string userName, string partitionId, CancellationToken cancellationToken)
     {
-        ArgumentNullException.ThrowIfNull(userId);
-        return await _httpClient.GetFromJsonAsync<bool>($"api/UserPartition/{userId}/in-partition/{partitionId}", cancellationToken);
+        ArgumentNullException.ThrowIfNull(userName);
+        return await _httpClient.GetFromJsonAsync<bool>($"api/UserPartition/{userName}/in-partition/{partitionId}", cancellationToken);
     }
 }
