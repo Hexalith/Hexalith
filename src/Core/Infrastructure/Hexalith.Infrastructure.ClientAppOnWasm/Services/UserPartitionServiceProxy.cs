@@ -32,10 +32,13 @@ public class UserPartitionServiceProxy : IUserPartitionService
     }
 
     /// <inheritdoc/>
-    public async Task<string?> GetDefaultPartitionAsync(string userName, CancellationToken cancellationToken)
+    public async Task<string> GetDefaultPartitionAsync(string userName, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(userName);
-        return await _httpClient.GetFromJsonAsync<string?>($"api/UserPartition/{userName}/default", cancellationToken);
+        string? partition = await _httpClient.GetFromJsonAsync<string>($"api/UserPartition/{userName}/default", cancellationToken);
+        return string.IsNullOrWhiteSpace(partition)
+            ? throw new InvalidOperationException($"No default partition found for user {userName}")
+            : partition;
     }
 
     /// <inheritdoc/>

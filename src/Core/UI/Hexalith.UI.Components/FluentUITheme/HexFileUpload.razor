@@ -67,7 +67,7 @@ OnCompleted="@OnCompletedAsync" />
 		tags.Add("FileId", fileId);
 		tags.Add("ContentType", file.ContentType);
 		string fileName = $"{fileId}.{file.Name}";
-		await FileService.UploadAsync(fileName, file.Stream, tags, CancellationToken.None);
+		await FileService.UploadAsync("default", fileName, file.Stream, tags, CancellationToken.None);
 		_fileInformation.Add(new ViewModels.FileInformation(fileId, fileName, file.Name, file.ContentType));
 	}
 

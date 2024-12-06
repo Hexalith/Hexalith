@@ -28,7 +28,6 @@ using Microsoft.Extensions.Options;
 /// </remarks>
 public class AzureBlobStorageFileService : IFileService
 {
-    private readonly string? _containerName;
     private readonly IOptions<AzureBlobFileServiceSettings> _settings;
     private BlobServiceClient? _blobServiceClient;
 
@@ -37,7 +36,10 @@ public class AzureBlobStorageFileService : IFileService
     /// </summary>
     /// <param name="settings">The Azure Blob Storage settings.</param>
     public AzureBlobStorageFileService(IOptions<AzureBlobFileServiceSettings> settings)
-        => ArgumentNullException.ThrowIfNull(settings);
+    {
+        ArgumentNullException.ThrowIfNull(settings);
+        _settings = settings;
+    }
 
     /// <summary>
     /// Gets the BlobServiceClient instance, creating it if it doesn't exist.
@@ -48,6 +50,7 @@ public class AzureBlobStorageFileService : IFileService
     /// <summary>
     /// Downloads a file from Azure Blob Storage.
     /// </summary>
+    /// <param name="containerName">The name of the container where the file is stored.</param>
     /// <param name="fileId">The unique identifier of the file to download.</param>
     /// <param name="writeStream">The stream where the file content will be written.</param>
     /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
@@ -55,19 +58,12 @@ public class AzureBlobStorageFileService : IFileService
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="fileId"/> or <paramref name="writeStream"/> is null.</exception>
     /// <exception cref="ArgumentException">Thrown when <paramref name="fileId"/> is empty or consists only of white-space characters.</exception>
     /// <exception cref="Azure.RequestFailedException">Thrown when a failure occurs while interacting with Azure Storage or the blob is not found.</exception>
-    public async Task<IDictionary<string, string>> DownloadAsync(string fileId, Stream writeStream, CancellationToken cancellationToken)
+    public async Task<IDictionary<string, string>> DownloadAsync(string containerName, string fileId, Stream writeStream, CancellationToken cancellationToken)
     {
-        if (string.IsNullOrWhiteSpace(fileId))
-        {
-            throw new ArgumentException("File ID cannot be null or whitespace.", nameof(fileId));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(fileId);
+        ArgumentNullException.ThrowIfNull(writeStream);
 
-        if (writeStream == null)
-        {
-            throw new ArgumentNullException(nameof(writeStream));
-        }
-
-        BlobContainerClient containerClient = BlobServiceClient.GetBlobContainerClient(_containerName);
+        BlobContainerClient containerClient = BlobServiceClient.GetBlobContainerClient(containerName);
         BlobClient blobClient = containerClient.GetBlobClient(fileId);
 
         _ = await blobClient.DownloadToAsync(writeStream, cancellationToken);
@@ -79,6 +75,7 @@ public class AzureBlobStorageFileService : IFileService
     /// <summary>
     /// Uploads a file to Azure Blob Storage.
     /// </summary>
+    /// <param name="containerName">The name of the container where the file is stored.</param>
     /// <param name="fileId">The unique identifier for the file in blob storage.</param>
     /// <param name="readStream">The stream containing the file content to upload.</param>
     /// <param name="tags">Optional metadata tags to associate with the blob.</param>
@@ -87,19 +84,12 @@ public class AzureBlobStorageFileService : IFileService
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="fileId"/> or <paramref name="readStream"/> is null.</exception>
     /// <exception cref="ArgumentException">Thrown when <paramref name="fileId"/> is empty or consists only of white-space characters.</exception>
     /// <exception cref="Azure.RequestFailedException">Thrown when a failure occurs while interacting with Azure Storage.</exception>
-    public async Task UploadAsync(string fileId, Stream readStream, IDictionary<string, string> tags, CancellationToken cancellationToken)
+    public async Task UploadAsync(string containerName, string fileId, Stream readStream, IDictionary<string, string> tags, CancellationToken cancellationToken)
     {
-        if (string.IsNullOrWhiteSpace(fileId))
-        {
-            throw new ArgumentException("File ID cannot be null or whitespace.", nameof(fileId));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(fileId);
+        ArgumentNullException.ThrowIfNull(readStream);
 
-        if (readStream == null)
-        {
-            throw new ArgumentNullException(nameof(readStream));
-        }
-
-        BlobContainerClient containerClient = BlobServiceClient.GetBlobContainerClient(_containerName);
+        BlobContainerClient containerClient = BlobServiceClient.GetBlobContainerClient(containerName);
         _ = await containerClient.CreateIfNotExistsAsync(PublicAccessType.None, cancellationToken: cancellationToken);
 
         BlobClient blobClient = containerClient.GetBlobClient(fileId);

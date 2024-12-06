@@ -53,7 +53,7 @@ public class MessageState : IIdempotent
     /// <inheritdoc/>
     [JsonIgnore]
     [IgnoreDataMember]
-    public string IdempotencyId => Metadata.AggregateGlobalId;
+    public string IdempotencyId => Metadata.Message.Id;
 
     /// <summary>
     /// Gets or sets the message content.
