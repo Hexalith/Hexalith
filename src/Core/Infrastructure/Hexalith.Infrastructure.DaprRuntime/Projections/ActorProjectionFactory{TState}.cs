@@ -53,13 +53,6 @@ public class ActorProjectionFactory<TState> : IProjectionFactory<TState>
     /// <value>The name of the application.</value>
     protected string ApplicationName { get; }
 
-    /// <inheritdoc/>
-    public IKeyValueActor GetProjectionActor(string aggregateGlobalId)
-    {
-        ArgumentException.ThrowIfNullOrWhiteSpace(aggregateGlobalId);
-        return ActorFactory.CreateActorProxy<IKeyValueActor>(aggregateGlobalId.ToActorId(), ProjectionActorName);
-    }
-
     /// <summary>
     /// Get as an asynchronous operation.
     /// </summary>
@@ -76,11 +69,24 @@ public class ActorProjectionFactory<TState> : IProjectionFactory<TState>
     }
 
     /// <inheritdoc/>
+    public Task RemoveStateAsync(string aggregateId, CancellationToken cancellationToken)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(aggregateId);
+        return GetProjectionActor(aggregateId).RemoveAsync();
+    }
+
+    /// <inheritdoc/>
     public async Task SetStateAsync(string aggregateId, TState state, CancellationToken cancellationToken)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(aggregateId);
         await GetProjectionActor(aggregateId)
             .SetAsync(JsonSerializer.Serialize(state))
             .ConfigureAwait(false);
+    }
+
+    private IKeyValueActor GetProjectionActor(string aggregateGlobalId)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(aggregateGlobalId);
+        return ActorFactory.CreateActorProxy<IKeyValueActor>(aggregateGlobalId.ToActorId(), ProjectionActorName);
     }
 }
