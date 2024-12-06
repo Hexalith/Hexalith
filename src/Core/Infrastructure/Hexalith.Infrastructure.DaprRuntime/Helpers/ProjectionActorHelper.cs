@@ -10,6 +10,7 @@ using System;
 using Dapr.Actors.Client;
 using Dapr.Actors.Runtime;
 
+using Hexalith.Application.Projections;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Projections;
 
@@ -33,7 +34,7 @@ public static class ProjectionActorHelper
     {
         ArgumentNullException.ThrowIfNull(services);
         ArgumentException.ThrowIfNullOrWhiteSpace(applicationId);
-        services.TryAddScoped<IActorProjectionFactory<TState>>(s
+        services.TryAddScoped<IProjectionFactory<TState>>(s
             => new ActorProjectionFactory<TState>(s.GetRequiredService<IActorProxyFactory>(), applicationId));
         return services;
     }

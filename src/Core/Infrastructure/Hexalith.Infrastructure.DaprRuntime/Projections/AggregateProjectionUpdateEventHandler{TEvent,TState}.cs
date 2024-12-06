@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Hexalith.Application.Metadatas;
+using Hexalith.Application.Projections;
 using Hexalith.Domain.Aggregates;
 using Hexalith.Domain.Events;
 
@@ -24,8 +25,8 @@ using Hexalith.Domain.Events;
 /// </remarks>
 /// <param name="factory">state factory.</param>
 public class AggregateProjectionUpdateEventHandler<TEvent, TState>(
-    IActorProjectionFactory<TState> factory) :
-    KeyValueActorProjectionUpdateEventHandlerBase<TEvent, TState>(factory)
+    IProjectionFactory<TState> factory) :
+    KeyValueProjectionUpdateEventHandlerBase<TEvent, TState>(factory)
     where TEvent : class
     where TState : class, IDomainAggregate, new()
 {

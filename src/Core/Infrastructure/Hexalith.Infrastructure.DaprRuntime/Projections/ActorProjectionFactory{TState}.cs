@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 using Dapr.Actors.Client;
 
+using Hexalith.Application.Projections;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 
@@ -18,7 +19,7 @@ using Hexalith.Infrastructure.DaprRuntime.Helpers;
 /// Factory class for creating projection actors.
 /// </summary>
 /// <typeparam name="TState">The type of the state.</typeparam>
-public class ActorProjectionFactory<TState> : IActorProjectionFactory<TState>
+public class ActorProjectionFactory<TState> : IProjectionFactory<TState>
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="ActorProjectionFactory{TState}" /> class.

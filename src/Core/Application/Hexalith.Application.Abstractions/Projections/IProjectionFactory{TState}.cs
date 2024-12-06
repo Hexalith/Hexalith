@@ -1,25 +1,16 @@
-﻿// <copyright file="IActorProjectionFactory{TState}.cs" company="ITANEO">
+﻿// <copyright file="IProjectionFactory{TState}.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Infrastructure.DaprRuntime.Projections;
-
-using Hexalith.Infrastructure.DaprRuntime.Actors;
+namespace Hexalith.Application.Projections;
 
 /// <summary>
 /// Interface for creating actor projections.
 /// </summary>
 /// <typeparam name="TState">The type of the state.</typeparam>
-public interface IActorProjectionFactory<TState>
+public interface IProjectionFactory<TState>
 {
-    /// <summary>
-    /// Gets the projection actor.
-    /// </summary>
-    /// <param name="aggregateId">The aggregate identifier.</param>
-    /// <returns>IKeyValueActor.</returns>
-    IKeyValueActor GetProjectionActor(string aggregateId);
-
     /// <summary>
     /// Gets the state asynchronously.
     /// </summary>
@@ -27,6 +18,14 @@ public interface IActorProjectionFactory<TState>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;System.Nullable&lt;TState&gt;&gt;.</returns>
     Task<TState?> GetStateAsync(string aggregateId, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Removes the state asynchronously.
+    /// </summary>
+    /// <param name="aggregateId">The aggregate identifier.</param>
+    /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    /// <returns>A task that represents the asynchronous operation.</returns>
+    Task RemoveStateAsync(string aggregateId, CancellationToken cancellationToken);
 
     /// <summary>
     /// Sets the state asynchronously.

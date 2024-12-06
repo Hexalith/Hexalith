@@ -3,13 +3,12 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Infrastructure.DaprRuntime.Projections;
+namespace Hexalith.Application.Projections;
 
 using System.Threading;
 using System.Threading.Tasks;
 
 using Hexalith.Application.Metadatas;
-using Hexalith.Application.Projections;
 
 /// <summary>
 /// Class KeyValueActorProjectionUpdateEventHandlerBase.
@@ -18,21 +17,21 @@ using Hexalith.Application.Projections;
 /// <typeparam name="TEvent">The type of the t event.</typeparam>
 /// <typeparam name="TState">The type of the t state.</typeparam>
 /// <seealso cref="IProjectionUpdateHandler{TEvent}" />
-public abstract class KeyValueActorProjectionUpdateEventHandlerBase<TEvent, TState> : IProjectionUpdateHandler<TEvent>
+public abstract class KeyValueProjectionUpdateEventHandlerBase<TEvent, TState> : IProjectionUpdateHandler<TEvent>
     where TEvent : class
     where TState : class
 {
     /// <summary>
     /// The actor proxy factory.
     /// </summary>
-    private readonly IActorProjectionFactory<TState> _factory;
+    private readonly IProjectionFactory<TState> _factory;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="KeyValueActorProjectionUpdateEventHandlerBase{TEvent, TState}" /> class.
+    /// Initializes a new instance of the <see cref="KeyValueProjectionUpdateEventHandlerBase{TEvent, TState}" /> class.
     /// </summary>
     /// <param name="factory">The factory.</param>
-    /// <exception cref="System.ArgumentNullException">null.</exception>
-    protected KeyValueActorProjectionUpdateEventHandlerBase(IActorProjectionFactory<TState> factory)
+    /// <exception cref="ArgumentNullException">null.</exception>
+    protected KeyValueProjectionUpdateEventHandlerBase(IProjectionFactory<TState> factory)
     {
         ArgumentNullException.ThrowIfNull(factory);
         _factory = factory;
