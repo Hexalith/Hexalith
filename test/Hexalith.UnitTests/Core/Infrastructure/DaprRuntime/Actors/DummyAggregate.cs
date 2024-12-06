@@ -17,15 +17,15 @@ public record DummyAggregate(string Id, string Name) : IDomainAggregate
     {
     }
 
+    public string AggregateName => GetAggregateName();
+
+    public string AggregateId => GetAggregateId(Id);
+
     public bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);
 
     public static string GetAggregateId(string id) => id;
 
     public static string GetAggregateName() => "Dummy";
-
-    public string AggregateName => GetAggregateName();
-
-    public string AggregateId => GetAggregateId(Id);
 
     ApplyResult IDomainAggregate.Apply(object domainEvent)
         => domainEvent is DummyAggregateEvent1 dummyEvent
