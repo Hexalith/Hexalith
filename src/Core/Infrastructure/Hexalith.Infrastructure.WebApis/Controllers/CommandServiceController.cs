@@ -50,7 +50,12 @@ public partial class CommandServiceController : ControllerBase
             return BadRequest("Command is null");
         }
 
-        if (command.Message is null)
+        if (string.IsNullOrWhiteSpace(command.Message))
+        {
+            return BadRequest("Command message is empty");
+        }
+
+        if (command.MessageObject is null)
         {
             return BadRequest("Command message is null");
         }
@@ -61,7 +66,7 @@ public partial class CommandServiceController : ControllerBase
         }
 
         await _commandBus
-            .PublishAsync(command.Message, command.Metadata, CancellationToken.None)
+            .PublishAsync(command.MessageObject, command.Metadata, CancellationToken.None)
             .ConfigureAwait(false);
 
         LogCommandSubmittedDebugInformation(

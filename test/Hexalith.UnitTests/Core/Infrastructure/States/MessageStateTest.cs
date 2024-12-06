@@ -12,6 +12,7 @@ using FluentAssertions;
 
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.States;
+using Hexalith.Extensions.Helpers;
 using Hexalith.PolymorphicSerialization;
 using Hexalith.UnitTests.Core.Application.Commands;
 
@@ -19,26 +20,29 @@ public class MessageStateTest
 {
     private const string _json = $$"""
     {
-        "IdempotencyId":"20230125085001962",
-        "Message":{
-            "$type":"DummyCommand1",
-            "Value1":123456,
-            "BaseValue":"Test"
+      "Message": "{\r\n  \u0022$type\u0022: \u0022DummyCommand1\u0022,\r\n  \u0022Value1\u0022: 123456,\r\n  \u0022AggregateId\u0022: \u0022Test-123456\u0022,\r\n  \u0022BaseValue\u0022: \u0022Test\u0022,\r\n  \u0022AggregateName\u0022: \u0022Test\u0022\r\n}",
+      "Metadata": {
+        "AggregateGlobalId": "Part1-Test-Test-123456",
+        "Message": {
+          "Id": "23rZSlC-ukyRtjuSQfI6BQ",
+          "Name": "DummyCommand1",
+          "Version": 1,
+          "Aggregate": {
+            "Id": "Test-123456",
+            "Name": "Test"
+          },
+          "CreatedDate": "2024-12-06T07:28:45.4546543+00:00"
         },
-        "Metadata":{
-            "Context":{
-                "CorrelationId":"20230125085001962",
-                "UserId":"TestUser"
-            },
-            "Message":{
-                "Id":"20230125085001962",
-                "Name":"DummyCommand1",
-                "Version": 2,
-                "Aggregate":{"Id":"Test-123456","Name":"Test"},
-                "Date":"2023-01-25T08:50:01.9630826+00:00"
-            }
-        },
-        "ReceivedDate":"2023-01-25T08:50:01.9630825+00:00"
+        "Context": {
+          "CorrelationId": "COR1234566",
+          "UserId": "TestUser",
+          "PartitionId": "Part1",
+          "ReceivedDate": "2024-12-06T07:28:45.4572418+00:00",
+          "SequenceNumber": 100,
+          "SessionId": "session-56",
+          "Scopes": []
+        }
+      }
     }
     """;
 
@@ -49,17 +53,19 @@ public class MessageStateTest
     {
         MessageState state = JsonSerializer.Deserialize<MessageState>(_json, PolymorphicHelper.DefaultJsonSerializerOptions);
         _ = state.Should().NotBeNull();
-        _ = state.Message.Should().BeOfType<DummyCommand1>();
-        _ = state.Message.As<DummyCommand1>().Value1.Should().Be(123456);
-        _ = state.Message.As<DummyCommand1>().BaseValue.Should().Be("Test");
+        _ = state.Message.Should().NotBeNull();
+        _ = state.MessageObject.Should().NotBeNull();
+        _ = state.MessageObject.Should().BeOfType<DummyCommand1>();
+        _ = state.MessageObject.As<DummyCommand1>().Value1.Should().Be(123456);
+        _ = state.MessageObject.As<DummyCommand1>().BaseValue.Should().Be("Test");
         _ = state.Metadata.Should().NotBeNull();
         _ = state.Metadata!.Context.Should().NotBeNull();
-        _ = state.Metadata.Context!.CorrelationId.Should().Be("20230125085001962");
+        _ = state.Metadata.Context!.CorrelationId.Should().Be("COR1234566");
         _ = state.Metadata.Context.UserId.Should().Be("TestUser");
         _ = state.Metadata.Message.Should().NotBeNull();
-        _ = state.Metadata.Message.Id.Should().Be("20230125085001962");
+        _ = state.Metadata.Message.Id.Should().Be("23rZSlC-ukyRtjuSQfI6BQ");
         _ = state.Metadata.Message.Name.Should().Be("DummyCommand1");
-        _ = state.Metadata.Message.Version.Should().Be(2);
+        _ = state.Metadata.Message.Version.Should().Be(1);
     }
 
     [Fact]
@@ -82,10 +88,13 @@ public class MessageStateTest
                         [])));
         string json = JsonSerializer.Serialize(messageState, PolymorphicHelper.DefaultJsonSerializerOptions);
         _ = json.Should().NotBeEmpty();
-        _ = json.Should().Contain($"\"{PolymorphicHelper.Discriminator}\": \"{nameof(DummyCommand1)}\"");
-        _ = json.Should().Contain($"\"CorrelationId\": \"{messageState.Metadata.Context.CorrelationId}\"");
-        _ = json.Should().Contain("\"Value1\": 123456");
-        _ = json.Should().Contain("\"BaseValue\": \"Test\"");
-        _ = json.Should().Contain($"\"Id\": \"{messageState.Metadata.Message.Id}\"");
+        _ = json.Should().Contain(PolymorphicHelper.Discriminator);
+        _ = json.Should().Contain(nameof(DummyCommand1));
+        _ = json.Should().Contain(messageState.Metadata.Context.CorrelationId);
+        _ = json.Should().Contain(nameof(DummyCommand1.Value1));
+        _ = json.Should().Contain(command.Value1.ToInvariantString());
+        _ = json.Should().Contain(nameof(DummyCommand1.BaseValue));
+        _ = json.Should().Contain(command.BaseValue);
+        _ = json.Should().Contain(messageState.Metadata.Message.Id);
     }
 }

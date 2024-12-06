@@ -351,7 +351,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             .ConfigureAwait(false);
         if (eventState is not null)
         {
-            await _eventBus.PublishAsync(eventState.Message, eventState.Metadata, CancellationToken.None).ConfigureAwait(false);
+            await _eventBus.PublishAsync(eventState.MessageObject, eventState.Metadata, CancellationToken.None).ConfigureAwait(false);
         }
     }
 
@@ -371,7 +371,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         CancellationToken cancellationToken = CancellationToken.None;
         ArgumentNullException.ThrowIfNull(envelope);
 
-        object command = envelope.Message;
+        object command = envelope.MessageObject;
         Metadata metadata = envelope.Metadata;
         if (GetAggregateActorName(metadata.Message.Aggregate.Name) != Host.ActorTypeInfo.ActorTypeName)
         {
@@ -464,7 +464,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             {
                 MessageState ev = await EventSourceStore.GetAsync(i, cancellationToken).ConfigureAwait(false);
 
-                aggregate = aggregate.Apply(ev.Message).Aggregate;
+                aggregate = aggregate.Apply(ev.MessageObject).Aggregate;
             }
 
             _aggregate = aggregate;
@@ -496,7 +496,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         for (int i = 1; i <= state.EventSourceCount; i++)
         {
             MessageState ev = await EventSourceStore.GetAsync(i, cancellationToken).ConfigureAwait(false);
-            ApplyResult applyResult = aggregate.Apply(ev.Message);
+            ApplyResult applyResult = aggregate.Apply(ev.MessageObject);
             metadata = ev.Metadata;
             aggregate = applyResult.Aggregate;
         }
@@ -611,7 +611,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             .GetAsync(commandNumber, CancellationToken.None)
             .ConfigureAwait(false);
 
-        object command = commandState.Message ?? throw new InvalidOperationException("The specified command state is missing associated message.");
+        object command = commandState.MessageObject ?? throw new InvalidOperationException("The specified command state is missing associated message.");
         Metadata metadata = commandState.Metadata ?? throw new InvalidOperationException("The specified command state is missing associated metadata.");
 
         if (metadata.AggregateGlobalId != Id.ToUnescapeString())
@@ -721,7 +721,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         state.PublishFailed = false;
         try
         {
-            await _eventBus.PublishAsync(messageState.Message, messageState.Metadata, cancellationToken).ConfigureAwait(false);
+            await _eventBus.PublishAsync(messageState.MessageObject, messageState.Metadata, cancellationToken).ConfigureAwait(false);
             state.LastMessagePublished = sequence;
             return;
         }

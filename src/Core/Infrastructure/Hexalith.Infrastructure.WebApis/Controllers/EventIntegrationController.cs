@@ -80,10 +80,10 @@ public class EventIntegrationController : ReceiveMessageController
         try
         {
             await _projectionProcessor
-                .ApplyAsync(eventState.Message!, eventState.Metadata!, cancellationToken)
+                .ApplyAsync(eventState.MessageObject, eventState.Metadata!, cancellationToken)
                 .ConfigureAwait(false);
             await _eventProcessor
-                .SubmitAsync(eventState.Message!, eventState.Metadata!, cancellationToken)
+                .SubmitAsync(eventState.MessageObject, eventState.Metadata!, cancellationToken)
                 .ConfigureAwait(false);
             return Ok();
         }

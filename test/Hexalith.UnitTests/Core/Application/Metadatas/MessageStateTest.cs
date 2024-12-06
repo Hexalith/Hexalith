@@ -45,9 +45,9 @@ public class MessageStateTest
     }
 
     [Fact]
-    public void StateWithVersionSerializationAndDeserializationShouldReturnSameObject()
+    public void StateSerializationWithNameAndVersionAttributeShouldSucceed()
     {
-        MyDummyMessage2 message = new("ID21", "My 21 dummies", 21);
+        MyDummyMessage3 message = new("ID22", "My 22 dummies", 22);
         Metadata meta = new(
             new MessageMetadata(message, DateTimeOffset.UtcNow),
             new ContextMetadata(
@@ -61,9 +61,35 @@ public class MessageStateTest
         MessageState state = new(message, meta);
         string json = JsonSerializer.Serialize(state, PolymorphicHelper.DefaultJsonSerializerOptions);
         _ = json.Should().NotBeNullOrEmpty();
-        MessageState result = JsonSerializer.Deserialize<MessageState>(json, PolymorphicHelper.DefaultJsonSerializerOptions);
-        _ = result.Should().NotBeNull();
-        _ = result.Should().BeEquivalentTo(state);
+        _ = json.Should().Contain($"MyMessageV3");
+        _ = json.Should().Contain($"\"{nameof(meta.Message.Name)}\": \"MyMessage\"");
+        _ = json.Should().Contain($"\"{nameof(meta.Message.Version)}\": 3");
+        _ = json.Should().Contain($"\"{nameof(meta.Message.Id)}\": \"{meta.Message.Id}\"");
+        _ = json.Should().Contain(message.Value.ToInvariantString());
+    }
+
+    [Fact]
+    public void StateSerializationWithVersionAttributeShouldSucceed()
+    {
+        MyDummyMessage2 message = new("ID22", "My 22 dummies", 22);
+        Metadata meta = new(
+            new MessageMetadata(message, DateTimeOffset.UtcNow),
+            new ContextMetadata(
+                "COR-144662",
+                "USER123",
+                "PART1",
+                DateTimeOffset.UtcNow,
+                25686L,
+                "SESS-4566",
+                ["scope1", "scope9"]));
+        MessageState state = new(message, meta);
+        string json = JsonSerializer.Serialize(state, PolymorphicHelper.DefaultJsonSerializerOptions);
+        _ = json.Should().NotBeNullOrEmpty();
+        _ = json.Should().Contain($"MyDummyMessage2V2");
+        _ = json.Should().Contain($"\"{nameof(meta.Message.Version)}\": 2");
+        _ = json.Should().Contain($"\"{nameof(meta.Message.Id)}\": \"{meta.Message.Id}\"");
+        _ = json.Should().Contain(message.Name);
+        _ = json.Should().Contain(message.Value.ToInvariantString());
     }
 
     [Fact]
@@ -89,9 +115,9 @@ public class MessageStateTest
     }
 
     [Fact]
-    public void StateSerializationWithVersionAttributeShouldSucceed()
+    public void StateWithVersionSerializationAndDeserializationShouldReturnSameObject()
     {
-        MyDummyMessage2 message = new("ID22", "My 22 dummies", 22);
+        MyDummyMessage2 message = new("ID21", "My 21 dummies", 21);
         Metadata meta = new(
             new MessageMetadata(message, DateTimeOffset.UtcNow),
             new ContextMetadata(
@@ -105,32 +131,8 @@ public class MessageStateTest
         MessageState state = new(message, meta);
         string json = JsonSerializer.Serialize(state, PolymorphicHelper.DefaultJsonSerializerOptions);
         _ = json.Should().NotBeNullOrEmpty();
-        _ = json.Should().Contain($"\"{PolymorphicHelper.Discriminator}\": \"MyDummyMessage2V2\"");
-        _ = json.Should().Contain($"\"{nameof(meta.Message.Id)}\": \"{meta.Message.Id}\"");
-        _ = json.Should().Contain($"\"{nameof(message.Name)}\": \"{message.Name}");
-        _ = json.Should().Contain($"\"{nameof(message.Value)}\": {message.Value.ToInvariantString()}");
-    }
-
-    [Fact]
-    public void StateSerializationWithNameAndVersionAttributeShouldSucceed()
-    {
-        MyDummyMessage3 message = new("ID22", "My 22 dummies", 22);
-        Metadata meta = new(
-            new MessageMetadata(message, DateTimeOffset.UtcNow),
-            new ContextMetadata(
-                "COR-144662",
-                "USER123",
-                "PART1",
-                DateTimeOffset.UtcNow,
-                25686L,
-                "SESS-4566",
-                ["scope1", "scope9"]));
-        MessageState state = new(message, meta);
-        string json = JsonSerializer.Serialize(state, PolymorphicHelper.DefaultJsonSerializerOptions);
-        _ = json.Should().NotBeNullOrEmpty();
-        _ = json.Should().Contain($"\"{PolymorphicHelper.Discriminator}\": \"MyMessageV3\"");
-        _ = json.Should().Contain($"\"{nameof(meta.Message.Id)}\": \"{meta.Message.Id}\"");
-        _ = json.Should().Contain($"\"{nameof(message.Name)}\": \"{message.Name}");
-        _ = json.Should().Contain($"\"{nameof(message.Value)}\": {message.Value.ToInvariantString()}");
+        MessageState result = JsonSerializer.Deserialize<MessageState>(json, PolymorphicHelper.DefaultJsonSerializerOptions);
+        _ = result.Should().NotBeNull();
+        _ = result.Should().BeEquivalentTo(state);
     }
 }

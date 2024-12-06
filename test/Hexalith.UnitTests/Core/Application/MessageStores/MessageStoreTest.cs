@@ -203,9 +203,12 @@ public class MessageStoreTest
 
         MessageState @event = await eventStore.GetAsync(123L, CancellationToken.None);
         _ = @event.Metadata.Should().NotBeNull();
-        _ = @event.Message.Should().NotBeNull();
-        _ = @event.Message.Should().BeOfType<BaseTestEvent2>();
-        _ = @event.Message.Should().BeEquivalentTo(testEvent);
+        _ = @event.Metadata.Should().BeOfType<Metadata>();
+
+        _ = @event.Message.Should().NotBeNullOrWhiteSpace();
+        _ = @event.MessageObject.Should().NotBeNull();
+        _ = @event.MessageObject.Should().BeOfType<BaseTestEvent2>();
+        _ = @event.MessageObject.Should().BeEquivalentTo(testEvent);
     }
 
     [Fact]

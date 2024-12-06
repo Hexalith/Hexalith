@@ -177,7 +177,7 @@ public class ProjectionStateManager : IProjectionStateManager
         {
             long nextEvent = state.LastEventDone + 1;
             MessageState eventState = await commandStore.GetAsync(nextEvent, cancellationToken).ConfigureAwait(false);
-            events.Add(eventState.Message ?? throw new InvalidOperationException($"Event state {nextEvent} message is null."));
+            events.Add(eventState.MessageObject ?? throw new InvalidOperationException($"Event state {nextEvent} message is null."));
         }
 
         return events;
@@ -206,14 +206,14 @@ public class ProjectionStateManager : IProjectionStateManager
         {
             long nextEvent = state.LastEventDone + 1;
             MessageState command = await commandStore.GetAsync(nextEvent, cancellationToken).ConfigureAwait(false);
-            _ = command.Message ?? throw new InvalidOperationException($"Event {nextEvent} content is null.");
+            _ = command.MessageObject ?? throw new InvalidOperationException($"Event {nextEvent} content is null.");
             _ = command.Metadata ?? throw new InvalidOperationException($"Event {nextEvent} metadata is null.");
             ResilientProjectionEventProcessor processor = new(
                 resiliencyPolicy,
                 projection,
                 stateProvider);
 
-            DateTimeOffset? retry = await processor.ProcessAsync(nextEvent.ToInvariantString(), command.Message, command.Metadata, cancellationToken).ConfigureAwait(false);
+            DateTimeOffset? retry = await processor.ProcessAsync(nextEvent.ToInvariantString(), command.MessageObject, command.Metadata, cancellationToken).ConfigureAwait(false);
 
             state = new ProjectionState(
                     state.EventStreamVersion,

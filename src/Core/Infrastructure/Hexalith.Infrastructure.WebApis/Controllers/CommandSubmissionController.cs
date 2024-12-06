@@ -73,7 +73,7 @@ public class CommandSubmissionController : ReceiveMessageController
         try
         {
             await _commandProcessor
-                .SubmitAsync(commandState.Message!, commandState.Metadata!, cancellationToken)
+                .SubmitAsync(commandState.MessageObject, commandState.Metadata!, cancellationToken)
                 .ConfigureAwait(false);
             return Ok();
         }

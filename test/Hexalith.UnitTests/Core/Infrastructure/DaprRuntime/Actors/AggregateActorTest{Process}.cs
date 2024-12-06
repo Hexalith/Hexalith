@@ -412,7 +412,7 @@ public partial class AggregateActorTest
                         It.Is<MessageState>(s =>
                             s.Metadata.Message.Aggregate.Id == command8.AggregateId &&
                             s.Metadata.Message.Aggregate.Name == command8.AggregateName &&
-                            ((DummyAggregateEvent1)s.Message).Name == command8.Name &&
+                            ((DummyAggregateEvent1)s.MessageObject).Name == command8.Name &&
                             s.Metadata.Context.CorrelationId == metadata.Context.CorrelationId),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
@@ -423,7 +423,7 @@ public partial class AggregateActorTest
                         It.Is<MessageState>(s =>
                             s.Metadata.Message.Aggregate.Id == command9.AggregateId &&
                             s.Metadata.Message.Aggregate.Name == command9.AggregateName &&
-                            ((DummyAggregateEvent1)s.Message).Name == command9.Name &&
+                            ((DummyAggregateEvent1)s.MessageObject).Name == command9.Name &&
                             s.Metadata.Context.CorrelationId == metadata.Context.CorrelationId),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
@@ -434,7 +434,7 @@ public partial class AggregateActorTest
                         It.Is<MessageState>(s =>
                             s.Metadata.Message.Aggregate.Id == command10.AggregateId &&
                             s.Metadata.Message.Aggregate.Name == command10.AggregateName &&
-                            ((DummyAggregateEvent1)s.Message).Name == command10.Name &&
+                            ((DummyAggregateEvent1)s.MessageObject).Name == command10.Name &&
                             s.Metadata.Context.CorrelationId == metadata.Context.CorrelationId),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
@@ -511,7 +511,7 @@ public partial class AggregateActorTest
                         It.Is<MessageState>(s =>
                             s.Metadata.Message.Aggregate.Id == command8.AggregateId &&
                             s.Metadata.Message.Aggregate.Name == command8.AggregateName &&
-                            ((DummyAggregateEvent1)s.Message).Name == command8.Name &&
+                            ((DummyAggregateEvent1)s.MessageObject).Name == command8.Name &&
                             s.Metadata.Context.CorrelationId == metadata.Context.CorrelationId),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
@@ -522,7 +522,7 @@ public partial class AggregateActorTest
                         It.Is<MessageState>(s =>
                             s.Metadata.Message.Aggregate.Id == command9.AggregateId &&
                             s.Metadata.Message.Aggregate.Name == command9.AggregateName &&
-                            ((DummyAggregateEvent1)s.Message).Name == command9.Name &&
+                            ((DummyAggregateEvent1)s.MessageObject).Name == command9.Name &&
                             s.Metadata.Context.CorrelationId == metadata.Context.CorrelationId),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
@@ -533,7 +533,7 @@ public partial class AggregateActorTest
                         It.Is<MessageState>(s =>
                             s.Metadata.Message.Aggregate.Id == command10.AggregateId &&
                             s.Metadata.Message.Aggregate.Name == command10.AggregateName &&
-                            ((DummyAggregateEvent1)s.Message).Name == command10.Name &&
+                            ((DummyAggregateEvent1)s.MessageObject).Name == command10.Name &&
                             s.Metadata.Context.CorrelationId == metadata.Context.CorrelationId),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)

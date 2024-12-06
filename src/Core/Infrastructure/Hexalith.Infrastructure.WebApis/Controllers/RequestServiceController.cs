@@ -52,9 +52,14 @@ public partial class RequestServiceController : ControllerBase
             return BadRequest("Request is null");
         }
 
-        if (request.Message is null)
+        if (string.IsNullOrWhiteSpace(request.Message))
         {
-            return BadRequest("Request message is null");
+            return BadRequest("Request message is empty");
+        }
+
+        if (request.MessageObject is null)
+        {
+            return BadRequest("Request message is invalid : " + request.Message);
         }
 
         if (request.Metadata is null)
@@ -63,7 +68,7 @@ public partial class RequestServiceController : ControllerBase
         }
 
         await _requestBus
-            .PublishAsync(request.Message, request.Metadata, CancellationToken.None)
+            .PublishAsync(request.MessageObject, request.Metadata, CancellationToken.None)
             .ConfigureAwait(false);
         LogRequestSubmittedDebugInformation(
             _logger,

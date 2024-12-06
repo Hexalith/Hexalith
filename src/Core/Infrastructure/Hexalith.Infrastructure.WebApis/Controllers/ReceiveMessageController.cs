@@ -85,8 +85,10 @@ public abstract partial class ReceiveMessageController : ControllerBase
             ? BadRequest("Invalid data : Message state received is null.")
             : messageState.Metadata == null
             ? BadRequest($"Invalid data : Message metadata received is null. CorrelationId={messageState.IdempotencyId}.")
-            : messageState.Message == null
-            ? BadRequest($"Invalid data : Message received is null. MessageName={messageState.Metadata.Message.Name}; MessageId={messageState.Metadata.Message.Id}; CorrelationId={messageState.IdempotencyId}.")
+            : string.IsNullOrWhiteSpace(messageState.Message)
+            ? BadRequest($"Invalid data : Message received is empty. MessageName={messageState.Metadata.Message.Name}; MessageId={messageState.Metadata.Message.Id}; CorrelationId={messageState.IdempotencyId}.")
+            : messageState.MessageObject == null
+            ? BadRequest($"Invalid data : Message received is invalid. MessageName={messageState.Metadata.Message.Name}; MessageId={messageState.Metadata.Message.Id}; CorrelationId={messageState.IdempotencyId} : {messageState.Message}")
             : messageState.Metadata.Message.Aggregate.Name != aggregateType
             ? BadRequest($"Invalid data : The message aggregate is {messageState.Metadata.Message.Aggregate.Name}, but {aggregateType} was expected. MessageName={messageState.Metadata.Message.Name}; MessageId={messageState.Metadata.Message.Id}; CorrelationId={messageState.IdempotencyId}.")
             : messageState is not TMessageType
