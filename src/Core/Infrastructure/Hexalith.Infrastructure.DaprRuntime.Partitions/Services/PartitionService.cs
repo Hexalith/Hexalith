@@ -34,7 +34,7 @@ internal class PartitionService : IPartitionService
     /// Initializes a new instance of the <see cref="PartitionService"/> class.
     /// </summary>
     /// <param name="actorProxyFactory">The actor proxy factory.</param>
-    /// <param name="settings"></param>
+    /// <param name="settings">The partition settings.</param>
     public PartitionService(IActorProxyFactory actorProxyFactory, IOptions<PartitionSettings> settings)
     {
         ArgumentNullException.ThrowIfNull(actorProxyFactory);

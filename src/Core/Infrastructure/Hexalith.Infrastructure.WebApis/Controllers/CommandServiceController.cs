@@ -8,6 +8,7 @@ namespace Hexalith.Infrastructure.WebApis.Controllers;
 using Hexalith.Application.Commands;
 using Hexalith.Application.States;
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -18,22 +19,23 @@ using Microsoft.Extensions.Logging;
 /// This controller is responsible for publishing commands asynchronously.
 /// </remarks>
 [ApiController]
+[Authorize]
 [Route(ServicesRoutes.CommandService)]
 public partial class CommandServiceController : ControllerBase
 {
-    private readonly ICommandBus _commandBus;
+    private readonly IDomainCommandProcessor _commandProcessor;
     private readonly ILogger<CommandServiceController> _logger;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CommandServiceController"/> class.
     /// </summary>
-    /// <param name="commandBus">The command bus.</param>
+    /// <param name="commandProcessor">The command bus.</param>
     /// <param name="logger">The logger.</param>
-    public CommandServiceController(ICommandBus commandBus, ILogger<CommandServiceController> logger)
+    public CommandServiceController(IDomainCommandProcessor commandProcessor, ILogger<CommandServiceController> logger)
     {
-        ArgumentNullException.ThrowIfNull(commandBus);
+        ArgumentNullException.ThrowIfNull(commandProcessor);
         ArgumentNullException.ThrowIfNull(logger);
-        _commandBus = commandBus;
+        _commandProcessor = commandProcessor;
         _logger = logger;
     }
 
@@ -65,8 +67,7 @@ public partial class CommandServiceController : ControllerBase
             return BadRequest("Command metadata is null");
         }
 
-        await _commandBus
-            .PublishAsync(command.MessageObject, command.Metadata, CancellationToken.None)
+        await _commandProcessor.SubmitAsync(command.MessageObject, command.Metadata, CancellationToken.None)
             .ConfigureAwait(false);
 
         LogCommandSubmittedDebugInformation(

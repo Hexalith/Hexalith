@@ -97,6 +97,6 @@ public class ClientCommandService : ICommandService
             throw new ArgumentException($"The command should be of type {nameof(PolymorphicRecordBase)}");
         }
 
-        _ = await _client.PostAsJsonAsync("api/commands", new MessageState(recordBase, metadata), cancellationToken);
+        _ = await _client.PostAsJsonAsync("api/command/submit", new MessageState(recordBase, metadata), cancellationToken);
     }
 }
