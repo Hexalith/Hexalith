@@ -79,11 +79,4 @@ public static class ProjectionActorHelper
         ArgumentException.ThrowIfNullOrWhiteSpace(applicationId);
         actorRegistrationCollection.RegisterActor<KeyValueActor>(GetProjectionActorName<TState>(applicationId));
     }
-
-    public static void RegisterProjectionActor<TState>(this ActorRegistrationCollection actorRegistrationCollection, string actorName, string applicationId)
-    {
-        ArgumentNullException.ThrowIfNull(actorRegistrationCollection);
-        ArgumentException.ThrowIfNullOrWhiteSpace(applicationId);
-        actorRegistrationCollection.RegisterActor<KeyValueActor>(GetProjectionActorName<TState>(applicationId));
-    }
 }

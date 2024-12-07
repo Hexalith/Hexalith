@@ -16,6 +16,10 @@ public abstract partial record DummyBaseRequest(
     [property: DataMember]
     string BaseValue)
 {
+    public string AggregateName => "Test";
+
+    public virtual string AggregateId => BaseValue;
+
     public Metadata CreateMetadata()
     {
         return new Metadata(
@@ -29,8 +33,4 @@ public abstract partial record DummyBaseRequest(
                     "Test session",
                     ["TestScope"]));
     }
-
-    public string AggregateName => "Test";
-
-    public virtual string AggregateId => BaseValue;
 }

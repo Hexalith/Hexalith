@@ -12,6 +12,10 @@ using Hexalith.PolymorphicSerialization;
 [PolymorphicSerialization]
 public abstract partial record DummyBaseMessage(string BaseValue)
 {
+    public string AggregateName => "Test";
+
+    public virtual string AggregateId => BaseValue;
+
     public Metadata CreateMetadata()
     {
         return new Metadata(
@@ -25,8 +29,4 @@ public abstract partial record DummyBaseMessage(string BaseValue)
                     "Test session",
                     ["TestScope"]));
     }
-
-    public string AggregateName => "Test";
-
-    public virtual string AggregateId => BaseValue;
 }

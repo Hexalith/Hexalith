@@ -1,18 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.UnitTests
-// Author           : Jérôme Piquot
-// Created          : 09-12-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 10-16-2023
-// ***********************************************************************
-// <copyright file="ExampleTest.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="ExampleTest.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.UnitTests.Core.Common.Helpers;
 
@@ -134,11 +123,6 @@ public class ExampleTest
         public string Value { get; set; }
     }
 
-    /// <summary>
-    /// Class BasePropertyExample.
-    /// Implements the <see cref="Hexalith.UnitTests.Core.Common.Helpers.BaseProperty" />.
-    /// </summary>
-    /// <seealso cref="Hexalith.UnitTests.Core.Common.Helpers.BaseProperty" />
     private class BasePropertyExample : BaseProperty
     {
     }

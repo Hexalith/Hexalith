@@ -78,14 +78,14 @@ public partial class AggregateActorTest
 
         actorStateManager
             .Setup(s => s.TryGetStateAsync<long>(
-                        It.Is<string>(s => s == "CommandStreamId-" + metadata.AggregateGlobalId),
+                        It.Is<string>(s => s == "CommandStreamId-" + metadata.Message.Id),
                         It.IsAny<CancellationToken>()))
             .ReturnsAsync(default(Dapr.Actors.Runtime.ConditionalValue<long>))
             .Verifiable(Times.Once);
 
         actorStateManager
         .Setup(s => s.SetStateAsync<long>(
-                        It.Is<string>(s => s == "CommandStreamId-" + metadata.AggregateGlobalId),
+                        It.Is<string>(s => s == "CommandStreamId-" + metadata.Message.Id),
                         It.Is<long>(l => l == 3L),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)
@@ -250,7 +250,7 @@ public partial class AggregateActorTest
             .Verifiable();
         actorStateManager
             .Setup(s => s.SetStateAsync<long>(
-                        It.Is<string>(s => s.Contains(metadata.AggregateGlobalId)),
+                        It.Is<string>(s => s.Contains(metadata.Message.Id)),
                         It.Is<long>(l => l == 1),
                         It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask)

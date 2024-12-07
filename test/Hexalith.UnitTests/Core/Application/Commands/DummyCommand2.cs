@@ -16,7 +16,7 @@ public partial record DummyCommand2(
         [property: DataMember]
         int Value2) : DummyBaseCommand(BaseValue)
 {
-    public static DummyCommand2 Create() => new("Test123", 35453);
-
     public override string AggregateId => BaseValue + "-" + Value2.ToInvariantString();
+
+    public static DummyCommand2 Create() => new("Test123", 35453);
 }

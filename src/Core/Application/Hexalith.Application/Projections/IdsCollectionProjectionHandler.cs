@@ -22,7 +22,10 @@ public abstract partial class IdsCollectionProjectionHandler<TEvent>(
     : IProjectionUpdateHandler<TEvent>
     where TEvent : class
 {
-    private const int _pageSize = 1000;
+    /// <summary>
+    /// Gets or sets the page size for the ID collection.
+    /// </summary>
+    public int PageSize { get; set; } = 1000;
 
     /// <inheritdoc/>
     public async Task ApplyAsync(TEvent baseEvent, Metadata metadata, CancellationToken cancellationToken)
@@ -60,10 +63,10 @@ public abstract partial class IdsCollectionProjectionHandler<TEvent>(
 
             if (currentValue.NextPageId is not null)
             {
-                pageId = currentValue.NextPageId;
+                pageId = metadata.Message.Aggregate.Name + currentValue.NextPageId.Value.ToInvariantString();
             }
 
-            if (currentValue.Ids.Count() < _pageSize)
+            if (currentValue.Ids.Count() < PageSize)
             {
                 freeSpacePageId = pageId;
             }
@@ -79,12 +82,21 @@ public abstract partial class IdsCollectionProjectionHandler<TEvent>(
         if (freeSpacePageId is null)
         {
             // The collection is full. Create a new page.
-            string newPageId = UniqueIdHelper.GenerateUniqueStringId();
+            int newPageId = currentValue.NextPageId is null ? 1 : currentValue.NextPageId.Value + 1;
+
+            // Update the current page next page identifier to the new page.
             await factory
                 .SetStateAsync(
-                    pageId,
-                    currentValue with { NextPageId = newPageId, Ids = [metadata.AggregateGlobalId] },
-                    cancellationToken)
+                pageId,
+                currentValue with { NextPageId = newPageId },
+                cancellationToken)
+                .ConfigureAwait(false);
+            pageId = metadata.Message.Aggregate.Name + newPageId.ToInvariantString();
+            await factory
+                .SetStateAsync(
+                pageId,
+                new IdCollection(null, [metadata.AggregateGlobalId]),
+                cancellationToken)
                 .ConfigureAwait(false);
         }
         else

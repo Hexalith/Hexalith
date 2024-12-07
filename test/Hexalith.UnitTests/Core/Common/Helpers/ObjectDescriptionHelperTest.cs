@@ -1,18 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.UnitTests
-// Author           : Jérôme Piquot
-// Created          : 05-14-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 05-14-2023
-// ***********************************************************************
-// <copyright file="ObjectDescriptionHelperTest.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="ObjectDescriptionHelperTest.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.UnitTests.Core.Common.Helpers;
 

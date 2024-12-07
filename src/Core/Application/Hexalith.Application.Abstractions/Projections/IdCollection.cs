@@ -14,4 +14,4 @@ using System.Runtime.Serialization;
 /// <param name="NextPageId">The next page identifier.</param>
 /// <param name="Ids">The identifiers.</param>
 [DataContract]
-public record IdCollection([property: DataMember(Order = 1)] string? NextPageId, [property: DataMember(Order = 2)] IEnumerable<string> Ids);
+public record IdCollection([property: DataMember(Order = 1)] int? NextPageId, [property: DataMember(Order = 2)] IEnumerable<string> Ids);

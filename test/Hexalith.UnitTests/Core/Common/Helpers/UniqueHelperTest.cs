@@ -1,7 +1,6 @@
-// <copyright file="UniqueHelperTest.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+// <copyright file="UniqueHelperTest.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.UnitTests.Core.Common.Helpers;
@@ -15,7 +14,7 @@ public class UniqueHelperTest
     [Fact]
     public async Task GetAHundredConcurrentDateTimeIdStringWithoutAnyDuplicatesAsync()
     {
-        List<Task<string>> ids =[];
+        List<Task<string>> ids = [];
         for (int i = 0; i < 100; i++)
         {
             ids.Add(Task.Run(UniqueIdHelper.GenerateDateTimeId));
@@ -28,7 +27,7 @@ public class UniqueHelperTest
     [Fact]
     public void GetAHundredDateTimeIdStringWithoutAnyDuplicates()
     {
-        List<string> ids =[];
+        List<string> ids = [];
         for (int i = 0; i < 100; i++)
         {
             ids.Add(UniqueIdHelper.GenerateDateTimeId());
@@ -40,7 +39,7 @@ public class UniqueHelperTest
     [Fact]
     public void GetAThousandUniqueIdStringWithoutAnyDuplicates()
     {
-        List<string> ids =[];
+        List<string> ids = [];
         for (int i = 0; i < 1000; i++)
         {
             ids.Add(UniqueIdHelper.GenerateUniqueStringId());

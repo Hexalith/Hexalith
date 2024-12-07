@@ -1,27 +1,18 @@
-﻿// <copyright file="DimensionDefinition.cs" company="Jérôme Piquot">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="DimensionDefinition.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Domain.Dimensions.DimensionCollectionDefinitions.Entities;
 
-using System;
 using System.Runtime.Serialization;
 
-using Hexalith.Domain.Aggregates;
-
 /// <summary>
-/// Represents a role.
-/// Implements the <see cref="Aggregate" />
-/// Implements the <see cref="IDomainAggregate" />
-/// Implements the <see cref="IEquatable{Aggregate}" />
-/// Implements the <see cref="IEquatable{Role}" />.
+/// Represents a definition of a dimension.
 /// </summary>
-/// <seealso cref="Aggregate" />
-/// <seealso cref="IDomainAggregate" />
-/// <seealso cref="IEquatable{Aggregate}" />
-/// <seealso cref="IEquatable{Role}" />
+/// <param name="Name">The name of the dimension.</param>
+/// <param name="Description">An optional description of the dimension.</param>
+/// <param name="Values">The values of the dimension.</param>
 [DataContract]
 public record DimensionDefinition(
     [property: DataMember(Order = 1)] string Name,

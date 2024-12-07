@@ -1,18 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.UnitTests
-// Author           : Jérôme Piquot
-// Created          : 09-12-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 10-15-2023
-// ***********************************************************************
-// <copyright file="TaskProcessorTest.cs">
-//     Copyright (c) Jérôme Piquot. All rights reserved.
-//     Licensed under the MIT license.
-//     See LICENSE file in the project root for full license information.
+﻿// <copyright file="TaskProcessorTest.cs" company="ITANEO">
+// Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.UnitTests.Core.Application.Tasks;
 

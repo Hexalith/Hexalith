@@ -10,8 +10,6 @@ using Hexalith.PolymorphicSerialization;
 [PolymorphicSerialization]
 public partial record CommandDispatchDoEvent
 {
-
-
     public string DefaultAggregateId => "123";
 
     public string DefaultAggregateName => "Test";

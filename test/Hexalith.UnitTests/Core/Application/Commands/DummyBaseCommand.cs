@@ -16,6 +16,10 @@ public partial record DummyBaseCommand(
     [property: DataMember]
     string BaseValue)
 {
+    public string AggregateName => "Test";
+
+    public virtual string AggregateId => BaseValue;
+
     public Metadata CreateMetadata()
     {
         return new Metadata(
@@ -34,8 +38,4 @@ public partial record DummyBaseCommand(
                 "SESS222",
                 ["TestScope"]));
     }
-
-    public string AggregateName => "Test";
-
-    public virtual string AggregateId => BaseValue;
 }

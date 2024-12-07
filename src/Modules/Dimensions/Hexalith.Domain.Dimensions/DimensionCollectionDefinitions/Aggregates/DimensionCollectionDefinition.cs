@@ -16,12 +16,12 @@ using Hexalith.Domain.Dimensions.DimensionCollectionDefinitions.Events;
 using Hexalith.Domain.Events;
 
 /// <summary>
-/// Class DimensionDefinition.
-/// Implements the <see cref="Aggregate" />
-/// Implements the <see cref="IDomainAggregate" />.
+/// Represents a definition of a dimension collection.
 /// </summary>
-/// <seealso cref="Aggregate" />
-/// <seealso cref="IDomainAggregate" />
+/// <param name="Id">The unique identifier for the dimension collection definition.</param>
+/// <param name="Name">The name of the dimension collection definition.</param>
+/// <param name="Description">An optional description of the dimension collection definition.</param>
+/// <param name="Values">The values of the dimension collection definition.</param>
 [DataContract]
 public record DimensionCollectionDefinition(
     string Id,
@@ -29,8 +29,15 @@ public record DimensionCollectionDefinition(
     [property: DataMember(Order = 4)] string? Description,
     [property: DataMember(Order = 5)] IEnumerable<DimensionDefinition> Values) : IDomainAggregate
 {
-    /// <inheritdoc/>
-    public bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DimensionCollectionDefinition"/> class.
+    /// </summary>
+    /// <param name="added">The event that added the dimension collection definition.</param>
+    /// <exception cref="ArgumentNullException">Thrown when the added event is null.</exception>
+    public DimensionCollectionDefinition(DimensionCollectionDefinitionAdded added)
+        : this((added ?? throw new ArgumentNullException(nameof(added))).Id, added.Name, added.Description, [])
+    {
+    }
 
     /// <inheritdoc/>
     public string AggregateId => DimensionDomainHelper.BuildDimensionCollectionDefinitionAggregateId(Id);
@@ -39,10 +46,7 @@ public record DimensionCollectionDefinition(
     public string AggregateName => DimensionDomainHelper.DimensionCollectionDefinitionAggregateName;
 
     /// <inheritdoc/>
-    public DimensionCollectionDefinition(DimensionCollectionDefinitionAdded added)
-        : this((added ?? throw new ArgumentNullException(nameof(added))).Id, added.Name, added.Description, [])
-    {
-    }
+    public bool IsInitialized() => !string.IsNullOrWhiteSpace(Id);
 
     /// <inheritdoc/>
     public ApplyResult Apply([NotNull] object domainEvent)
@@ -69,7 +73,7 @@ public record DimensionCollectionDefinition(
         {
             return new ApplyResult(
                 this,
-                [new InvalidEventApplied(
+                [ new InvalidEventApplied(
                     AggregateName,
                     AggregateId,
                     domainEvent.GetType().FullName ?? "Unknown",
