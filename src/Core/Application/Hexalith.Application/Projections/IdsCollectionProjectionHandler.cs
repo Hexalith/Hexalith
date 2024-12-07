@@ -28,7 +28,7 @@ public abstract partial class IdsCollectionProjectionHandler<TEvent>(
     public int PageSize { get; set; } = 1000;
 
     /// <inheritdoc/>
-    public async Task ApplyAsync(TEvent baseEvent, Metadata metadata, CancellationToken cancellationToken)
+    public virtual async Task ApplyAsync(TEvent baseEvent, Metadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(baseEvent);
         ArgumentNullException.ThrowIfNull(metadata);
