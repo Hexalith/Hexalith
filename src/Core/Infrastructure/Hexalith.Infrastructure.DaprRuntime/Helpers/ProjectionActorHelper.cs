@@ -77,6 +77,12 @@ public static class ProjectionActorHelper
     {
         ArgumentNullException.ThrowIfNull(actorRegistrationCollection);
         ArgumentException.ThrowIfNullOrWhiteSpace(applicationId);
+        if (actorRegistrationCollection.Any(p =>
+            p.Type.ActorTypeName == GetProjectionActorName<TState>(applicationId)))
+        {
+            return;
+        }
+
         actorRegistrationCollection.RegisterActor<KeyValueActor>(GetProjectionActorName<TState>(applicationId));
     }
 }
