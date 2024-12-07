@@ -48,8 +48,22 @@ public static class ProjectionActorHelper
     /// <exception cref="ArgumentNullException">null.</exception>
     public static string GetProjectionActorName<TState>(string applicationName)
     {
-        ArgumentNullException.ThrowIfNull(applicationName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(applicationName);
         return applicationName + typeof(TState).Name + "Projection";
+    }
+
+    /// <summary>
+    /// Gets the name of the projection actor.
+    /// </summary>
+    /// <param name="projectionName">Name of the projection.</param>
+    /// <param name="applicationName">Name of the application.</param>
+    /// <returns>System.String.</returns>
+    /// <exception cref="ArgumentNullException">null.</exception>
+    public static string GetProjectionActorName(string projectionName, string applicationName)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(applicationName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(projectionName);
+        return applicationName + projectionName;
     }
 
     /// <summary>
@@ -60,6 +74,13 @@ public static class ProjectionActorHelper
     /// <param name="applicationId">Name of the application.</param>
     /// <exception cref="ArgumentNullException">null.</exception>
     public static void RegisterProjectionActor<TState>(this ActorRegistrationCollection actorRegistrationCollection, string applicationId)
+    {
+        ArgumentNullException.ThrowIfNull(actorRegistrationCollection);
+        ArgumentException.ThrowIfNullOrWhiteSpace(applicationId);
+        actorRegistrationCollection.RegisterActor<KeyValueActor>(GetProjectionActorName<TState>(applicationId));
+    }
+
+    public static void RegisterProjectionActor<TState>(this ActorRegistrationCollection actorRegistrationCollection, string actorName, string applicationId)
     {
         ArgumentNullException.ThrowIfNull(actorRegistrationCollection);
         ArgumentException.ThrowIfNullOrWhiteSpace(applicationId);

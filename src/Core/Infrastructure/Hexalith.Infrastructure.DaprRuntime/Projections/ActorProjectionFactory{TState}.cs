@@ -21,6 +21,8 @@ using Hexalith.Infrastructure.DaprRuntime.Helpers;
 /// <typeparam name="TState">The type of the state.</typeparam>
 public class ActorProjectionFactory<TState> : IProjectionFactory<TState>
 {
+    private string? _projectionName;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="ActorProjectionFactory{TState}" /> class.
     /// </summary>
@@ -36,10 +38,29 @@ public class ActorProjectionFactory<TState> : IProjectionFactory<TState>
     }
 
     /// <summary>
+    /// Initializes a new instance of the <see cref="ActorProjectionFactory{TState}" /> class.
+    /// </summary>
+    /// <param name="actorFactory">The actor factory.</param>
+    /// <param name="projectionName">Name of the projection.</param>
+    /// <param name="applicationName">Name of the application.</param>
+    /// <exception cref="System.ArgumentNullException">Thrown when actorFactory is null.</exception>
+    /// <exception cref="System.ArgumentException">Thrown when projectionName or applicationName is null or whitespace.</exception>
+    public ActorProjectionFactory(IActorProxyFactory actorFactory, string projectionName, string applicationName)
+    {
+        ArgumentNullException.ThrowIfNull(actorFactory);
+        ArgumentException.ThrowIfNullOrWhiteSpace(applicationName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(projectionName);
+
+        ActorFactory = actorFactory;
+        _projectionName = projectionName;
+        ApplicationName = applicationName;
+    }
+
+    /// <summary>
     /// Gets the name of the projection actor.
     /// </summary>
     /// <value>The name of the projection actor.</value>
-    public string ProjectionActorName => ProjectionActorHelper.GetProjectionActorName<TState>(ApplicationName);
+    public string ProjectionActorName => _projectionName ??= ProjectionActorHelper.GetProjectionActorName<TState>(ApplicationName);
 
     /// <summary>
     /// Gets the actor factory.
