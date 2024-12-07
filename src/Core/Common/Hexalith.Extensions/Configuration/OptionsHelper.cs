@@ -23,20 +23,22 @@ public static class OptionsHelper
     /// <param name="configuration">The configuration instance.</param>
     /// <returns>The configured service collection.</returns>
     public static IServiceCollection ConfigureSettings<T>(this IServiceCollection services, IConfiguration configuration)
-        where T : class, ISettings
+        where T : class, ISettings, new()
     {
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
 
-        IConfigurationSection? section = configuration.GetSection(T.ConfigurationName())
-                                         ?? throw new InvalidOperationException($"Could not load settings section '{T.ConfigurationName()}'");
+        string configurationName = T.ConfigurationName();
+        IConfigurationSection section = configuration.GetSection(configurationName)
+                                         ?? throw new InvalidOperationException($"Could not load settings section '{configurationName}'");
         _ = services
             .AddOptions<T>()
             .Bind(section)
-            .ValidateDataAnnotations();
+            .ValidateDataAnnotations()
+            .ValidateOnStart(); // Add this line to ensure validation on start
         services.TryAddSingleton<IValidateOptions<T>>((s) =>
             new FluentValidateOptions<T>(
-                T.ConfigurationName(),
+                configurationName,
                 s));
         return services;
     }

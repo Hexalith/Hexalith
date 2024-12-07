@@ -21,12 +21,18 @@ public static class SettingsHelper
     /// </summary>
     /// <typeparam name="TSettings">The type of the settings.</typeparam>
     /// <param name="configuration">The configuration.</param>
-    /// <returns>The settings object.</returns>
+    /// <returns>The settings instance.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the configuration is null.</exception>
+    /// <exception cref="InvalidOperationException">Thrown when the configuration section is not found.</exception>
     public static TSettings GetSettings<TSettings>([NotNull] this IConfiguration configuration)
-        where TSettings : ISettings, new()
+        where TSettings : class, ISettings, new()
     {
         ArgumentNullException.ThrowIfNull(configuration);
-        return configuration.GetSection(TSettings.ConfigurationName()).Get<TSettings>() ?? new TSettings();
+        TSettings settings = new();
+        string configurationName = TSettings.ConfigurationName();
+        IConfigurationSection section = configuration.GetSection(configurationName)
+            ?? throw new InvalidOperationException($"Configuration section '{configurationName}' not found.");
+        section.Bind(settings);
+        return settings;
     }
 }

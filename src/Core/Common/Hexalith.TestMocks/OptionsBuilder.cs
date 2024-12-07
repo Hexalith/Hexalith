@@ -73,11 +73,12 @@ public class OptionsBuilder<T> : IMockBuilder<IOptions<T>>
             .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
             .AddUserSecrets<TProgram>();
 
+        string configurationName = T.ConfigurationName();
         IConfigurationRoot configuration = builder.Build();
         _value = configuration
-            .GetSection(T.ConfigurationName())
+            .GetSection(configurationName)
             .Get<T>()
-            ?? throw new InvalidOperationException("Unable to get settings: " + T.ConfigurationName());
+            ?? throw new InvalidOperationException("Unable to get settings: " + configurationName);
         return this;
     }
 }
