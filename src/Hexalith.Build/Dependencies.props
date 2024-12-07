@@ -14,14 +14,14 @@
     <AzureResourceManagerLogicVersion>1.1.0</AzureResourceManagerLogicVersion>
     <AzureSecurityKeyVaultSecretsVersion>4.6.0</AzureSecurityKeyVaultSecretsVersion>
     <AzureStorageBlobsVersion>12.23.0</AzureStorageBlobsVersion>
-    <BlazorGeolocationVersion>9.0.0</BlazorGeolocationVersion>
+    <BlazorGeolocationVersion>9.0.1</BlazorGeolocationVersion>
     <BlazoredSessionStorageVersion>2.4.0</BlazoredSessionStorageVersion>
     <CoconaVersion>2.2.0</CoconaVersion>
     <CompareNETObjectsVersion>4.83.0</CompareNETObjectsVersion>
     <CoverletCollectorVersion>6.0.2</CoverletCollectorVersion>
     <DaprVersion>1.14.*</DaprVersion>
     <DocFxConsoleVersion>2.59.4</DocFxConsoleVersion>
-    <FluentAssertionsVersion>6.12.2</FluentAssertionsVersion>
+    <FluentAssertionsVersion>7.0.0</FluentAssertionsVersion>
     <FluentValidationVersion>11.11.0</FluentValidationVersion>
     <FluentValidationAspNetCoreVersion>11.3.0</FluentValidationAspNetCoreVersion>
     <GitHubActionsTestLoggerVersion>2.4.1</GitHubActionsTestLoggerVersion>
@@ -32,13 +32,13 @@
     <MailKitVersion>4.8.0</MailKitVersion>
     <MicrosoftAzureCosmosVersion>3.46.0</MicrosoftAzureCosmosVersion>
     <MicrosoftBotBuilderVersion>4.22.7</MicrosoftBotBuilderVersion>
-    <MicrosoftCodeAnalysisCSharpVersion>4.11.0</MicrosoftCodeAnalysisCSharpVersion>
+    <MicrosoftCodeAnalysisCSharpVersion>4.12.0</MicrosoftCodeAnalysisCSharpVersion>
     <MicrosoftCodeAnalysisAnalyzersVersion>3.11.0</MicrosoftCodeAnalysisAnalyzersVersion>
     <MicrosoftFluentUIComponentsVersion>4.10.4</MicrosoftFluentUIComponentsVersion>
     <MicrosoftIdentityClientVersion>4.66.2</MicrosoftIdentityClientVersion>
     <MicrosoftIdentityWebVersion>3.2.1</MicrosoftIdentityWebVersion>
     <MicrosoftNETTestSdkVersion>17.12.0</MicrosoftNETTestSdkVersion>
-    <MicrosoftSemanticKernelVersion>1.30.0</MicrosoftSemanticKernelVersion>
+    <MicrosoftSemanticKernelVersion>1.31.0</MicrosoftSemanticKernelVersion>
     <MicrosoftTeamsFxVersion>2.5.0</MicrosoftTeamsFxVersion>
     <MicrosoftTypescriptMSBuild>5.7.1</MicrosoftTypescriptMSBuild>
     <MicrosoftGraphVersion>5.12.*</MicrosoftGraphVersion>
@@ -64,7 +64,7 @@
     <SerilogSinksDebugVersion>3.0.*</SerilogSinksDebugVersion>
     <StyleCopAnalyzersVersion>1.2.0-beta.556</StyleCopAnalyzersVersion>
     <SwashbuckleAspNetCoreVersion>7.1.0</SwashbuckleAspNetCoreVersion>
-    <SystemIdentityModelTokensJwtVersion>8.2.1</SystemIdentityModelTokensJwtVersion>
+    <SystemIdentityModelTokensJwtVersion>8.3.0</SystemIdentityModelTokensJwtVersion>
     <XUnitRunnerVisualStudioVersion>2.8.2</XUnitRunnerVisualStudioVersion>
     <XUnitVersion>2.9.2</XUnitVersion>
   </PropertyGroup>
