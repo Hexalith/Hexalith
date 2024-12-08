@@ -33,7 +33,7 @@ public abstract partial class IdsCollectionProjectionHandler<TEvent>(
         ArgumentNullException.ThrowIfNull(baseEvent);
         ArgumentNullException.ThrowIfNull(metadata);
         IdCollection? currentValue = null;
-        string pageId = metadata.Message.Aggregate.Name;
+        string pageId = IdCollection.GetCollectionId(metadata.Context.PartitionId, metadata.Message.Aggregate.Name);
         string? freeSpacePageId = null;
         bool remove = IsRemoveEvent(baseEvent);
 
@@ -101,10 +101,11 @@ public abstract partial class IdsCollectionProjectionHandler<TEvent>(
         }
         else
         {
+            IdCollection newValue = currentValue with { Ids = [.. currentValue.Ids.Append(metadata.AggregateGlobalId).Distinct().OrderBy(p => p)] };
             await factory
             .SetStateAsync(
                 pageId,
-                currentValue with { Ids = currentValue.Ids.Append(metadata.AggregateGlobalId).Distinct().OrderBy(p => p) },
+                newValue,
                 cancellationToken)
             .ConfigureAwait(false);
         }

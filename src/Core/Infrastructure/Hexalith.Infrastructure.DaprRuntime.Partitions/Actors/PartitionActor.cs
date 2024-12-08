@@ -87,7 +87,7 @@ public class PartitionActor : Actor, IPartitionActor
     /// <inheritdoc/>
     public async Task SetAsync(Partition partition)
     {
-        IKeyHashActor collection = ActorProxy.DefaultProxyFactory.CreateActorProxy<IKeyHashActor>(
+        ISequentialStringListActor collection = ActorProxy.DefaultProxyFactory.CreateActorProxy<ISequentialStringListActor>(
             new ActorId("Ids"),
             _collectionActorName);
         _ = await collection.AddAsync(partition.Id);

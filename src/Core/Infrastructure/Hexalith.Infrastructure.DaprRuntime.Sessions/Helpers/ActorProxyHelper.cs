@@ -36,8 +36,8 @@ public static class ActorProxyHelper
     /// <remarks>
     /// This actor maintains a list of all user identity IDs in the system for efficient querying and management.
     /// </remarks>
-    public static IKeyHashActor AllUserIdentityIdsActor
-            => ActorProxy.Create<IKeyHashActor>(AllIdsCollectionName.ToActorId(), UserIdentityCollectionName);
+    public static ISequentialStringListActor AllUserIdentityIdsActor
+            => ActorProxy.Create<ISequentialStringListActor>(AllIdsCollectionName.ToActorId(), UserIdentityCollectionName);
 
     /// <summary>
     /// Gets the name of the actor.
