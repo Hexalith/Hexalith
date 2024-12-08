@@ -55,10 +55,10 @@ public static class PartitionActorsHelper
     /// <param name="actorProxyFactory">The actor proxy factory to use for creating the proxy.</param>
     /// <returns>A proxy for the actor that handles all partitions.</returns>
     /// <exception cref="ArgumentNullException">Thrown when actorProxyFactory is null.</exception>
-    public static ISequentialStringListActor CreateAllPartitionsProxy([NotNull] this IActorProxyFactory actorProxyFactory)
+    public static IKeyHashActor CreateAllPartitionsProxy([NotNull] this IActorProxyFactory actorProxyFactory)
     {
         ArgumentNullException.ThrowIfNull(actorProxyFactory);
-        return actorProxyFactory.CreateActorProxy<ISequentialStringListActor>(
+        return actorProxyFactory.CreateActorProxy<IKeyHashActor>(
             AllPartitionsCollectionId.ToActorId(),
             IPartitionActor.ActorCollectionName);
     }
