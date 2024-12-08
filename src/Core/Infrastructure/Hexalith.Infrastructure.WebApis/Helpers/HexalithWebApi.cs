@@ -20,12 +20,14 @@ using Hexalith.Application.Events;
 using Hexalith.Application.Modules.Applications;
 using Hexalith.Application.Organizations.Helpers;
 using Hexalith.Application.Projections;
+using Hexalith.Application.Services;
 using Hexalith.Application.Tasks;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.AspireService.Defaults;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Partitions.Helpers;
+using Hexalith.Infrastructure.DaprRuntime.Services;
 using Hexalith.Infrastructure.DaprRuntime.Sessions.Helpers;
 
 using Microsoft.AspNetCore.Authentication;
@@ -97,6 +99,7 @@ public static partial class HexalithWebApi
         builder.Services.TryAddScoped<IIntegrationEventProcessor, IntegrationEventProcessor>();
         builder.Services.TryAddScoped<IIntegrationEventDispatcher, DependencyInjectionEventDispatcher>();
         builder.Services.TryAddSingleton<IDomainAggregateFactory, DomainAggregateFactory>();
+        builder.Services.TryAddSingleton<IIdCollectionFactory, IdCollectionFactory>();
         builder.Services
             .TryAddSingleton<IDomainCommandProcessor>((s) => new DomainActorCommandProcessor(
             ActorProxy.DefaultProxyFactory,
