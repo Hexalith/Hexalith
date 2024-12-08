@@ -16,6 +16,7 @@ using FluentValidation;
 using Hexalith.Application.Aggregates;
 using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
+using Hexalith.Application.Events;
 using Hexalith.Application.Modules.Applications;
 using Hexalith.Application.Organizations.Helpers;
 using Hexalith.Application.Projections;
@@ -58,9 +59,7 @@ public static partial class HexalithWebApi
 
         WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-        // Serilog.ILogger startupLogger = builder.AddSerilogLogger();
-
-        // startupLogger.Information("Configuring {AppName} ...", applicationName);
+        Serilog.ILogger startupLogger = builder.AddSerilogLogger();
         _ = builder
             .AddServiceDefaults()
             .Services
@@ -95,6 +94,8 @@ public static partial class HexalithWebApi
         builder.Services.TryAddSingleton<IResiliencyPolicyProvider, ResiliencyPolicyProvider>();
         builder.Services.TryAddScoped<IDomainCommandDispatcher, DependencyInjectionDomainCommandDispatcher>();
         builder.Services.TryAddScoped<IProjectionUpdateProcessor, DependencyInjectionProjectionUpdateProcessor>();
+        builder.Services.TryAddScoped<IIntegrationEventProcessor, IntegrationEventProcessor>();
+        builder.Services.TryAddScoped<IIntegrationEventDispatcher, DependencyInjectionEventDispatcher>();
         builder.Services.TryAddSingleton<IDomainAggregateFactory, DomainAggregateFactory>();
         builder.Services
             .TryAddSingleton<IDomainCommandProcessor>((s) => new DomainActorCommandProcessor(

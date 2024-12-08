@@ -26,21 +26,6 @@ public partial class DaprApplicationBus(
     ILogger logger) : IMessageBus
 {
     /// <summary>
-    /// The Dapr client used for publishing events.
-    /// </summary>
-    private readonly DaprClient _daprClient = daprClient ?? throw new ArgumentNullException(nameof(daprClient));
-
-    /// <summary>
-    /// The time provider service.
-    /// </summary>
-    private readonly TimeProvider _dateTimeService = dateTimeService ?? throw new ArgumentNullException(nameof(dateTimeService));
-
-    /// <summary>
-    /// The logger used for logging operations and errors.
-    /// </summary>
-    private readonly ILogger _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-
-    /// <summary>
     /// The name of the message bus.
     /// </summary>
     private readonly string _name = !string.IsNullOrWhiteSpace(name) ? name : throw new ArgumentException("Name cannot be null or whitespace.", nameof(name));
@@ -57,7 +42,8 @@ public partial class DaprApplicationBus(
         EventId = 1,
         Level = LogLevel.Error,
         Message = "Error while publishing on {BusName}/{TopicName} ({BusType}) the message {MessageName} Id={MessageId} CorrelationId={CorrelationId}.\nError : {ErrorMessage}\nMetadata :\n{Metadata}\nData:\n{Data}")]
-    public partial void LogErrorWhileSendingMessage(
+    public static partial void LogErrorWhileSendingMessage(
+        ILogger logger,
         Exception ex,
         string messageName,
         string messageId,
@@ -75,8 +61,8 @@ public partial class DaprApplicationBus(
     [LoggerMessage(
         EventId = 2,
         Level = LogLevel.Information,
-        Message = "Sent message : Name={MessageName}; Id='{MessageId}'; Correlation='{CorrelationId}' on {TopicName} of the {BusName} bus.")]
-    public partial void LogMessageSent(string messageName, string messageId, string correlationId, string topicName, string busName);
+        Message = "Sent message : Name={MessageName}; AggregateGlobalId={AggregateGlobalId}; Id='{MessageId}'; Correlation='{CorrelationId}' on {TopicName} of the {BusName} bus.")]
+    public static partial void LogMessageSent(ILogger logger, string messageName, string messageId, string correlationId, string aggregateGlobalId, string topicName, string busName);
 
     /// <inheritdoc/>
     public async Task PublishAsync(object message, Metadata metadata, CancellationToken cancellationToken)
@@ -93,6 +79,7 @@ public partial class DaprApplicationBus(
         Dictionary<string, string> m = new(StringComparer.Ordinal)
         {
             { "ContentType", "application/json" },
+            { "Time", dateTimeService.GetLocalNow().ToString("O") },
             { "Label", metadata.Message.Name + ' ' + metadata.Message.Aggregate.Id },
             { "MessageName", metadata.Message.Name },
             { "MessageId", metadata.Message.Id },
@@ -106,7 +93,7 @@ public partial class DaprApplicationBus(
         try
         {
             // Publish the event using Dapr client
-            await _daprClient.PublishEventAsync(
+            await daprClient.PublishEventAsync(
                 _name,
                 topicName,
                 state,
@@ -115,9 +102,11 @@ public partial class DaprApplicationBus(
 
             // Log successful message sending
             LogMessageSent(
+                logger,
                 metadata.Message.Name,
                 metadata.Message.Id,
                 metadata.Context.CorrelationId,
+                metadata.AggregateGlobalId,
                 topicName,
                 _name);
         }
@@ -125,6 +114,7 @@ public partial class DaprApplicationBus(
         {
             // Log error details if message sending fails
             LogErrorWhileSendingMessage(
+                logger,
                 ex,
                 metadata.Message.Name,
                 metadata.Message.Id,
