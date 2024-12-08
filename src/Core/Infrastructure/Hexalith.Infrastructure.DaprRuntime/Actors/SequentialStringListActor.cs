@@ -39,23 +39,25 @@ public class SequentialStringListActor : Actor, ISequentialStringListActor
     /// <inheritdoc/>
     public async Task AddAsync(string value)
     {
-        (SequentialStringListPage? page, int? lastPageNumber) = await FindPageAsync(value);
+        (SequentialStringListPage? page, int? freeSpacePageNumber) = await FindPageAsync(value);
         if (page != null)
         {
             // Since value already exists, we do not need to add it.
             return;
         }
 
-        if (lastPageNumber is null)
+        if (freeSpacePageNumber is null)
         {
             throw new InvalidOperationException("Could not add value: Last page number is null");
         }
 
-        _state = await GetPageAsync(lastPageNumber.Value);
+        _state = await GetPageAsync(freeSpacePageNumber.Value);
 
         // If the state is null, we have reached the end of the list and need to create a new page.
-        _state ??= new SequentialStringListPage(lastPageNumber.Value, [value]);
-        await SaveStateAsync();
+        _state = _state is null
+            ? new SequentialStringListPage(freeSpacePageNumber.Value, [value])
+            : _state with { Data = [.. _state.Data, value] };
+        await SaveAsync();
     }
 
     /// <inheritdoc/>
@@ -77,7 +79,7 @@ public class SequentialStringListActor : Actor, ISequentialStringListActor
         }
 
         _state = page with { Data = [.. page.Data.Where(p => p != value)] };
-        await SaveStateAsync();
+        await SaveAsync();
     }
 
     private async Task<(SequentialStringListPage? Page, int? FreeSpacePageNumber)> FindPageAsync(string value)
@@ -127,7 +129,7 @@ public class SequentialStringListActor : Actor, ISequentialStringListActor
         return _state;
     }
 
-    private new async Task SaveStateAsync()
+    private async Task SaveAsync()
     {
         if (_state is null)
         {
