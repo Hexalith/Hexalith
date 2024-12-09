@@ -53,7 +53,7 @@
     <RadzenBlazorVersion>4.23.4</RadzenBlazorVersion>
     <SendGridExtensionsDependencyInjectionVersion>1.0.1</SendGridExtensionsDependencyInjectionVersion>
     <SendGridVersion>9.29.3</SendGridVersion>
-    <SerilogVersion>8.0.*</SerilogVersion>
+    <SerilogVersion>9.0.0</SerilogVersion>
     <SerilogEnrichersEnvironmentVersion>3.0.*</SerilogEnrichersEnvironmentVersion>
     <SerilogEnrichersProcessVersion>3.0.*</SerilogEnrichersProcessVersion>
     <SerilogEnrichersThreadVersion>4.0.0</SerilogEnrichersThreadVersion>

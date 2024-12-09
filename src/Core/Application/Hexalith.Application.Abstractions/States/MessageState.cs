@@ -77,6 +77,14 @@ public class MessageState : IIdempotent
     public Metadata Metadata { get; set; }
 
     /// <summary>
+    /// Serializes the given <see cref="PolymorphicRecordBase"/> object to a JSON string.
+    /// </summary>
+    /// <param name="message">The message object to serialize.</param>
+    /// <returns>The serialized JSON string.</returns>
+    private static string Serialize(PolymorphicRecordBase message) =>
+        JsonSerializer.Serialize(message, PolymorphicHelper.DefaultJsonSerializerOptions);
+
+    /// <summary>
     /// Deserializes the message content to a <see cref="PolymorphicRecordBase"/> object.
     /// </summary>
     /// <returns>The deserialized <see cref="PolymorphicRecordBase"/> object.</returns>
@@ -84,12 +92,4 @@ public class MessageState : IIdempotent
     private PolymorphicRecordBase Deserialize() =>
         JsonSerializer.Deserialize<PolymorphicRecordBase>(Message, PolymorphicHelper.DefaultJsonSerializerOptions)
          ?? throw new InvalidOperationException("Message deserialization failed :" + Message);
-
-    /// <summary>
-    /// Serializes the given <see cref="PolymorphicRecordBase"/> object to a JSON string.
-    /// </summary>
-    /// <param name="message">The message object to serialize.</param>
-    /// <returns>The serialized JSON string.</returns>
-    private string Serialize(PolymorphicRecordBase message) =>
-        JsonSerializer.Serialize(message, PolymorphicHelper.DefaultJsonSerializerOptions);
 }
