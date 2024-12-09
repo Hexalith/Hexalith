@@ -1,4 +1,5 @@
-﻿<FluentAutocomplete TOption="ViewModels.IdDescription"
+﻿@using System.Security.Claims
+<FluentAutocomplete TOption="ViewModels.IdDescription"
 					OnOptionsSearch="@OnSearchAsync"
 					SelectedOptionsChanged="OnSelectedOptionsChanged"
 					SelectedOptions="_selectedOptions"
@@ -35,19 +36,28 @@
 	[Parameter]
 	public int MaximumOptionsSearch { get; set; } = 100;
 
+	[CascadingParameter]
+	private Task<AuthenticationState>? AuthenticationStateTask { get; set; }
+
+	private ClaimsPrincipal? _user;
+	
 	protected async override Task OnParametersSetAsync()
 	{
-		if (!string.IsNullOrWhiteSpace(Id) && Service is not null)
+		if (AuthenticationStateTask is not null)
+		{
+			_user = (await AuthenticationStateTask).User;
+		}
+		if (!string.IsNullOrWhiteSpace(Id) && Service is not null && _user is not null)
 		{
 			try
 			{
-				var value = await Service.GetIdDescriptionAsync(Id, CancellationToken.None);
+				var value = await Service.GetIdDescriptionAsync(_user, Id, CancellationToken.None);
 				_selectedOptions = [value];
 			}
 			catch (Exception e)
 			{
 				_selectedOptions = null;
-				var values = (await Service.GetIdDescriptionsAsync(CancellationToken.None)).Select(p => p.Id).ToList();
+				var values = (await Service.GetIdDescriptionsAsync(_user, CancellationToken.None)).Select(p => p.Id).ToList();
 				throw new InvalidOperationException($"Error while getting the value for {Id} for {Label}. Available options : {string.Join(" ,", values)}", e);
 			}
 		}
@@ -60,9 +70,9 @@
 
 	private async Task OnSearchAsync(OptionsSearchEventArgs<ViewModels.IdDescription> e)
 	{
-		if (Service is not null)
+		if (Service is not null && _user is not null)
 		{
-			e.Items = await Service.SearchIdDescriptionsAsync(e.Text, 0, MaximumOptionsSearch, CancellationToken.None);
+			e.Items = await Service.SearchIdDescriptionsAsync(_user, e.Text, 0, MaximumOptionsSearch, CancellationToken.None);
 		}
 	}
 	private async Task OnSelectedOptionsChanged(IEnumerable<ViewModels.IdDescription>? options)

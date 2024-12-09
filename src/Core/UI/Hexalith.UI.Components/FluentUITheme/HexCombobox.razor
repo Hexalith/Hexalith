@@ -1,11 +1,12 @@
-﻿<FluentCombobox TOption="ViewModels.IdDescription"
-					SelectedOptionsChanged="OnSelectedOptionsChanged"
-					SelectedOptions="_selectedOptions"
-					Multiple="true"
-					Label="@Label"
-					Placeholder="@Placeholder"
-					Width="@Width"
-					OptionText="@(item => item.Description)" />
+﻿@using System.Security.Claims
+<FluentCombobox TOption="ViewModels.IdDescription"
+				SelectedOptionsChanged="OnSelectedOptionsChanged"
+				SelectedOptions="_selectedOptions"
+				Multiple="true"
+				Label="@Label"
+				Placeholder="@Placeholder"
+				Width="@Width"
+				OptionText="@(item => item.Description)" />
 
 @code
 {
@@ -29,11 +30,21 @@
 	[Parameter]
 	public string? Placeholder { get; set; }
 
-	protected async override Task OnParametersSetAsync()
+	[CascadingParameter]
+	private Task<AuthenticationState>? AuthenticationStateTask { get; set; }
+
+	private ClaimsPrincipal? _user;
+
+	protected override async Task OnInitializedAsync()
 	{
-		if (Id is not null && Service is not null)
+		if (AuthenticationStateTask is not null)
 		{
-			_selectedOptions = new[] { await Service.GetIdDescriptionAsync(Id, CancellationToken.None) };
+			_user = (await AuthenticationStateTask).User;
+		}
+
+		if (Id is not null && Service is not null && _user is not null)
+		{
+			_selectedOptions = new[] { await Service.GetIdDescriptionAsync(_user, Id, CancellationToken.None) };
 		}
 		else
 		{

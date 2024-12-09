@@ -8,6 +8,7 @@ namespace Hexalith.UI.Components.Services;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -33,7 +34,7 @@ public class MemoryIdDescriptionService : IIdDescriptionService
     public MemoryIdDescriptionService(IQueryable<IdDescription> query) => _query = query;
 
     /// <inheritdoc/>
-    public Task<IdDescription> GetIdDescriptionAsync(string id, CancellationToken cancellationToken)
+    public Task<IdDescription> GetIdDescriptionAsync(ClaimsPrincipal user, string id, CancellationToken cancellationToken)
     {
         if (string.IsNullOrWhiteSpace(id))
         {
@@ -47,7 +48,7 @@ public class MemoryIdDescriptionService : IIdDescriptionService
     }
 
     /// <inheritdoc/>
-    public Task<IEnumerable<IdDescription>> GetIdDescriptionsAsync(int skip, int count, CancellationToken cancellationToken)
+    public Task<IEnumerable<IdDescription>> GetIdDescriptionsAsync(ClaimsPrincipal user, int skip, int count, CancellationToken cancellationToken)
     {
         IQueryable<IdDescription> result = _query.OrderBy(p => p.Description);
         if (skip > 0)
@@ -64,7 +65,7 @@ public class MemoryIdDescriptionService : IIdDescriptionService
     }
 
     /// <inheritdoc/>
-    public Task<IEnumerable<IdDescription>> SearchIdDescriptionsAsync(string searchText, int skip, int count, CancellationToken cancellationToken)
+    public Task<IEnumerable<IdDescription>> SearchIdDescriptionsAsync(ClaimsPrincipal user, string searchText, int skip, int count, CancellationToken cancellationToken)
     {
         IQueryable<IdDescription> result = _query.OrderBy(p => p.Description);
         if (!string.IsNullOrWhiteSpace(searchText))

@@ -6,32 +6,34 @@
 namespace Hexalith.Infrastructure.WebApis.Proxies.Services.Messages;
 
 using System;
-using System.Net.Http.Json;
+using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 
 using Hexalith.Application.Requests;
-using Hexalith.Application.States;
+using Hexalith.Application.Sessions.Services;
+using Hexalith.PolymorphicSerialization;
 
 using Microsoft.Extensions.Logging;
 
 /// <summary>
-/// Represents a proxy for the request service.
+/// Proxy service for handling requests.
 /// </summary>
 /// <remarks>
 /// Initializes a new instance of the <see cref="RequestServiceProxy"/> class.
 /// </remarks>
+/// <param name="userPartitionService">The user partition service.</param>
 /// <param name="httpClient">The HTTP client.</param>
+/// <param name="timeProvider">The time provider.</param>
 /// <param name="logger">The logger.</param>
-public class RequestServiceProxy(HttpClient httpClient, ILogger<RequestServiceProxy> logger) : ServiceApiProxy(httpClient, logger), IRequestService
+public partial class RequestServiceProxy(
+    IUserPartitionService userPartitionService,
+    HttpClient httpClient,
+    TimeProvider timeProvider,
+    ILogger<RequestServiceProxy> logger) : ServiceApiProxy(userPartitionService, httpClient, timeProvider, logger), IRequestService
 {
     /// <inheritdoc/>
-    public async Task SubmitRequestAsync(MessageState request, CancellationToken cancellationToken)
-    {
-        ArgumentNullException.ThrowIfNull(request);
-        HttpResponseMessage response = await HttpClient
-            .PostAsJsonAsync("/Request/Submit", request, cancellationToken)
-            .ConfigureAwait(false);
-        _ = response.EnsureSuccessStatusCode();
-    }
+    public async Task<TRequest> SubmitAsync<TRequest>(ClaimsPrincipal user, TRequest request, CancellationToken cancellationToken)
+                where TRequest : PolymorphicRecordBase
+        => await PostAsync<TRequest, TRequest>("api/request/submit", user, request, cancellationToken);
 }
