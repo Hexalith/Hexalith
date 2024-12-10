@@ -38,4 +38,8 @@ public class IdCollectionService : IIdCollectionService
     /// <returns>A task that represents the asynchronous add operation.</returns>
     public async Task AddAsync(string aggregateGlobalId, CancellationToken cancellationToken)
         => await _listActor.AddAsync(aggregateGlobalId);
+
+    /// <inheritdoc/>
+    public async Task<IEnumerable<string>> GetAsync(int skip, int take, CancellationToken cancellationToken)
+        => await _listActor.ReadAsync(skip, take);
 }

@@ -65,8 +65,45 @@ public class SequentialStringListActor : Actor, ISequentialStringListActor
         => (await FindPageAsync(value)).Page is not null;
 
     /// <inheritdoc/>
-    public async Task<IEnumerable<string>?> ReadAsync(int pageNumber)
-        => (await GetPageAsync(pageNumber))?.Data;
+    public async Task<IEnumerable<string>?> ReadAsync(int skip, int take)
+    {
+        // If take is equal or under 0, return all items
+        _ = take < 0 ? 0 : take;
+
+        // If skip is equal or under 0, start from the beginning
+        _ = skip < 0 ? 0 : skip;
+
+        // Ignore the pages that are not needed
+        int page = 0;
+        List<string> result = [];
+        int count = 0;
+        while ((_state = await GetPageAsync(page++)) is not null)
+        {
+            int pageItemCount = _state.Data.Count();
+            if (skip > count + pageItemCount)
+            {
+                // Skip the page if the count is less than the skip count
+                continue;
+            }
+
+            IEnumerable<string> segment = _state.Data;
+            if (skip < count)
+            {
+                // Skip the items that are not needed in the page
+                segment = segment.Skip(skip - count);
+            }
+
+            if (take > 0 && result.Count + segment.Count() > take)
+            {
+                // If the result count is greater than the take count, take the remaining items
+                segment = segment.Take(take - result.Count);
+            }
+
+            result.AddRange(segment);
+        }
+
+        return result;
+    }
 
     /// <inheritdoc/>
     public async Task RemoveAsync(string value)

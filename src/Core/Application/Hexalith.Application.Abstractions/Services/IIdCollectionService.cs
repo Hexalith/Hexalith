@@ -28,7 +28,7 @@ public interface IIdCollectionService
     /// <param name="take">The number of IDs to take.</param>
     /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <returns>A task that represents the asynchronous operation.</returns>
-    Task GetAsync(int skip, int take, CancellationToken cancellationToken);
+    Task<IEnumerable<string>> GetAsync(int skip, int take, CancellationToken cancellationToken);
 
     /// <summary>
     /// Gets a collection of aggregate global IDs.

@@ -37,10 +37,11 @@ public interface ISequentialStringListActor : IActor
     /// <summary>
     /// Reads a page of string values from the list asynchronously.
     /// </summary>
-    /// <param name="pageNumber">The page number to read. Must be a non-negative integer.</param>
+    /// <param name="skip">The number of values to skip from the beginning of the list.</param>
+    /// <param name="take">The number of values to read from the list.</param>
     /// <returns>A task that represents the asynchronous operation. The task result contains
     /// an enumerable of string values for the specified page, or null if the page does not exist.</returns>
-    Task<IEnumerable<string>?> ReadAsync(int pageNumber);
+    Task<IEnumerable<string>> ReadAsync(int skip, int take);
 
     /// <summary>
     /// Removes a specific value from the list asynchronously. If the value doesn't exist,
