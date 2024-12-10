@@ -24,6 +24,7 @@ using Hexalith.Application.Modules.Modules;
 using Hexalith.Application.Modules.Routes;
 using Hexalith.Application.Organizations.Helpers;
 using Hexalith.Application.Projections;
+using Hexalith.Application.Requests;
 using Hexalith.Application.Sessions.Services;
 using Hexalith.Application.Tasks;
 using Hexalith.Infrastructure.AspireService.Defaults;
@@ -72,7 +73,9 @@ public static class ServerSideClientAppHelper
             .AddSingleton(TimeProvider.System)
             .AddSingleton<IRouteManager, RouteManager>()
             .AddScoped<ICommandService, ServerCommandService>()
+            .AddScoped<IRequestService, ServerRequestService>()
             .AddScoped<ISessionService, ServerSessionService>()
+            .AddScoped<IRequestProcessor, DependencyInjectionRequestProcessor>()
             .AddPartitions(configuration)
             .AddSessions();
         _ = services.AddValidatorsFromAssemblyContaining<CommandBusSettingsValidator>(ServiceLifetime.Singleton);

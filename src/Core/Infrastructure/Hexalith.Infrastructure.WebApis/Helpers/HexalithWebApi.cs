@@ -20,6 +20,7 @@ using Hexalith.Application.Events;
 using Hexalith.Application.Modules.Applications;
 using Hexalith.Application.Organizations.Helpers;
 using Hexalith.Application.Projections;
+using Hexalith.Application.Requests;
 using Hexalith.Application.Services;
 using Hexalith.Application.Tasks;
 using Hexalith.Extensions.Configuration;
@@ -95,6 +96,7 @@ public static partial class HexalithWebApi
         builder.Services.TryAddSingleton(TimeProvider.System);
         builder.Services.TryAddSingleton<IResiliencyPolicyProvider, ResiliencyPolicyProvider>();
         builder.Services.TryAddScoped<IDomainCommandDispatcher, DependencyInjectionDomainCommandDispatcher>();
+        builder.Services.TryAddScoped<IRequestProcessor, DependencyInjectionRequestProcessor>();
         builder.Services.TryAddScoped<IProjectionUpdateProcessor, DependencyInjectionProjectionUpdateProcessor>();
         builder.Services.TryAddScoped<IIntegrationEventProcessor, IntegrationEventProcessor>();
         builder.Services.TryAddScoped<IIntegrationEventDispatcher, DependencyInjectionEventDispatcher>();

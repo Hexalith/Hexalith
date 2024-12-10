@@ -13,6 +13,7 @@ using Hexalith.Application.Commands;
 using Hexalith.Application.Modules.Applications;
 using Hexalith.Application.Modules.Routes;
 using Hexalith.Application.Organizations.Helpers;
+using Hexalith.Application.Requests;
 using Hexalith.Application.Sessions.Services;
 using Hexalith.Infrastructure.ClientApp;
 using Hexalith.Infrastructure.ClientAppOnWasm.Services;
@@ -44,6 +45,7 @@ public static class WebAssemblyClientHelper
             .AddSingleton<IRouteManager, RouteManager>()
             .AddFluentUIComponents();
         _ = services.AddScoped<ICommandService, ClientCommandService>();
+        _ = services.AddScoped<IRequestService, ClientRequestService>();
 
         _ = services
             .AddScoped<IUserPartitionService, UserPartitionServiceProxy>()

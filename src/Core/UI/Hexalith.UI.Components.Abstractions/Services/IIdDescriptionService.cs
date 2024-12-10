@@ -60,8 +60,8 @@ public interface IIdDescriptionService
     /// <param name="user">The user.</param>
     /// <param name="searchText">The search text.</param>
     /// <param name="skip">The number of items to skip.</param>
-    /// <param name="count">The number of items to retrieve.</param>
+    /// <param name="take">The number of items to retrieve.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task that represents the asynchronous operation. The task result contains the collection of ID-description pairs.</returns>
-    Task<IEnumerable<IdDescription>> SearchIdDescriptionsAsync(ClaimsPrincipal user, string searchText, int skip, int count, CancellationToken cancellationToken);
+    Task<IEnumerable<IdDescription>> SearchIdDescriptionsAsync(ClaimsPrincipal user, string searchText, int skip, int take, CancellationToken cancellationToken);
 }
