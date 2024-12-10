@@ -20,9 +20,9 @@ public interface IRequestHandler<TRequest> : IRequestHandler
     /// <summary>
     /// Executes the specified request asynchronously.
     /// </summary>
-    /// <param name="baseRequest">The request to be processed.</param>
+    /// <param name="request">The request to be processed.</param>
     /// <param name="metadata">The metadata associated with the request.</param>
     /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <returns>A task that represents the asynchronous operation. The task result contains the processed request.</returns>
-    Task<TRequest> ExecuteAsync(TRequest baseRequest, Metadata metadata, CancellationToken cancellationToken);
+    Task<TRequest> ExecuteAsync(TRequest request, Metadata metadata, CancellationToken cancellationToken);
 }

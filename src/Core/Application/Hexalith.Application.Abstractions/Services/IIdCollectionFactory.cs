@@ -11,6 +11,13 @@ namespace Hexalith.Application.Services;
 public interface IIdCollectionFactory
 {
     /// <summary>
+    /// Gets the aggregate collection name.
+    /// </summary>
+    /// <param name="aggregateName">Name of the aggregate.</param>
+    /// <returns>The collection name for the aggregate.</returns>
+    static string GetAggregateCollectionName(string aggregateName) => $"{aggregateName}Ids";
+
+    /// <summary>
     /// Creates the ID collection service asynchronously.
     /// </summary>
     /// <param name="collectionName">Name of the collection.</param>
