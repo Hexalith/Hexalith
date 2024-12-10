@@ -71,7 +71,7 @@ public class SequentialStringListActor : Actor, ISequentialStringListActor
         else
         {
             // Append the new value to the existing page
-            List<string> newData = pageToUpdate.Data.ToList();
+            List<string> newData = [.. pageToUpdate.Data];
             newData.Add(value);
             newPage = pageToUpdate with { Data = newData };
         }
@@ -134,7 +134,7 @@ public class SequentialStringListActor : Actor, ISequentialStringListActor
             }
 
             // Take only the required remaining items from this page
-            List<string> pageSegment = segment.Take(remaining).ToList();
+            List<string> pageSegment = [.. segment.Take(remaining)];
             result.AddRange(pageSegment);
 
             // Update the count after taking items
@@ -161,7 +161,7 @@ public class SequentialStringListActor : Actor, ISequentialStringListActor
             return;
         }
 
-        List<string> newData = page.Data.Where(p => p != value).ToList();
+        List<string> newData = [.. page.Data.Where(p => p != value)];
         SequentialStringListPage newPage = page with { Data = newData };
 
         await SavePageAsync(newPage).ConfigureAwait(false);
@@ -224,7 +224,7 @@ public class SequentialStringListActor : Actor, ISequentialStringListActor
         }
 
         // Convert IEnumerable<string> to a List<string> for easier manipulation
-        List<string> dataList = result.Value as List<string> ?? result.Value.ToList();
+        List<string> dataList = result.Value as List<string> ?? [.. result.Value];
         _state = new SequentialStringListPage(pageNumber, dataList);
         return _state;
     }

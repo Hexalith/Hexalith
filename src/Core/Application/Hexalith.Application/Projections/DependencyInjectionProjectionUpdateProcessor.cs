@@ -64,9 +64,8 @@ public class DependencyInjectionProjectionUpdateProcessor : IProjectionUpdatePro
         Type eventType = @event.GetType();
         Type eventHandlerType = typeof(IProjectionUpdateHandler<>).MakeGenericType(eventType);
         Type eventHandlerTypeList = typeof(IEnumerable<>).MakeGenericType(eventHandlerType);
-        return (_serviceProvider
+        return [.. (_serviceProvider
             .GetService(eventHandlerTypeList) as IEnumerable ?? Array.Empty<IProjectionUpdateHandler>())
-            .Cast<IProjectionUpdateHandler>()
-            .ToList();
+            .Cast<IProjectionUpdateHandler>()];
     }
 }

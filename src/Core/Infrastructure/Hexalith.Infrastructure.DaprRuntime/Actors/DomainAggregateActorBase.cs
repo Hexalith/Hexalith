@@ -139,7 +139,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     /// <param name="commandId">The command identifier.</param>
     /// <param name="partitionKey">Key of the aggregate.</param>
     [LoggerMessage(
-                    EventId = 2,
+                    EventId = 6,
                     Level = LogLevel.Information,
                     Message = "Accepted command {CommandType} ({CommandId}) for aggregate key {PartitionKey}.")]
     public static partial void LogAcceptedCommandInformation(ILogger logger, string commandType, string commandId, string partitionKey);
@@ -657,9 +657,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
                     .ConfigureAwait(false);
 
             // Get aggregate events to persist in the event sourcing store
-            MessageState[] aggregateMessageStates = commandResult.SourceEvents
-                .Select(p => new MessageState((PolymorphicRecordBase)p, Metadata.CreateNew(p, metadata, _dateTimeService.GetUtcNow())))
-                .ToArray();
+            MessageState[] aggregateMessageStates = [.. commandResult.SourceEvents.Select(p => new MessageState((PolymorphicRecordBase)p, Metadata.CreateNew(p, metadata, _dateTimeService.GetUtcNow())))];
 
             // Persist events and messages
             state.EventSourceCount = await EventSourceStore
@@ -701,10 +699,9 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         if (commandResult is not null)
         {
             // Get integration messages to persist in the message store
-            MessageState[] messagesToSend = commandResult.SourceEvents
+            MessageState[] messagesToSend = [.. commandResult.SourceEvents
                 .Union(commandResult.IntegrationEvents)
-                .Select(p => new MessageState((PolymorphicRecordBase)p, Metadata.CreateNew(p, metadata, _dateTimeService.GetUtcNow())))
-                .ToArray();
+                .Select(p => new MessageState((PolymorphicRecordBase)p, Metadata.CreateNew(p, metadata, _dateTimeService.GetUtcNow())))];
 
             if (messagesToSend.Length > 0)
             {
