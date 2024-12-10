@@ -7,6 +7,9 @@ namespace Hexalith.Infrastructure.DaprRuntime.Actors;
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 using Dapr.Actors.Runtime;
 
@@ -14,24 +17,28 @@ using Hexalith.Extensions.Helpers;
 
 /// <summary>
 /// Represents an actor that manages a sequential list of strings.
+/// It uses a cached _state field to minimize database reads for repeated operations.
 /// </summary>
 public class SequentialStringListActor : Actor, ISequentialStringListActor
 {
     private const int _pageSize = 1024;
+
+    // Cached in-memory state of the currently loaded page. If most instances are a single page, this reduces overhead.
     private SequentialStringListPage? _state;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="SequentialStringListActor"/> class.
     /// </summary>
     /// <param name="host">The actor host.</param>
-    /// <param name="stateManager">The actor state manager.</param>
+    /// <param name="stateManager">The actor state manager (for testing or customization).</param>
     public SequentialStringListActor(ActorHost host, IActorStateManager? stateManager = null)
         : base(host)
     {
         ArgumentNullException.ThrowIfNull(host);
+
+        // If a custom state manager is provided (e.g., in unit tests), use it.
         if (stateManager is not null)
         {
-            // Set the state manager if it is not null. This is useful for testing.
             StateManager = stateManager;
         }
     }
@@ -39,67 +46,105 @@ public class SequentialStringListActor : Actor, ISequentialStringListActor
     /// <inheritdoc/>
     public async Task AddAsync(string value)
     {
-        (SequentialStringListPage? page, int? freeSpacePageNumber) = await FindPageAsync(value);
-        if (page != null)
+        (SequentialStringListPage? existingPage, int? freeSpacePageNumber) = await FindPageAsync(value).ConfigureAwait(false);
+
+        // If the value already exists, do nothing.
+        if (existingPage is not null)
         {
-            // Since value already exists, we do not need to add it.
             return;
         }
 
+        // If we can't determine where to place the new value, throw.
         if (freeSpacePageNumber is null)
         {
-            throw new InvalidOperationException("Could not add value: Last page number is null");
+            throw new InvalidOperationException("Could not add value: No valid page number found.");
         }
 
-        _state = await GetPageAsync(freeSpacePageNumber.Value);
+        SequentialStringListPage? pageToUpdate = await GetPageAsync(freeSpacePageNumber.Value).ConfigureAwait(false);
 
-        // If the state is null, we have reached the end of the list and need to create a new page.
-        _state = _state is null
-            ? new SequentialStringListPage(freeSpacePageNumber.Value, [value])
-            : _state with { Data = [.. _state.Data, value] };
-        await SaveAsync();
+        SequentialStringListPage newPage;
+        if (pageToUpdate is null)
+        {
+            // Create a new page if it doesn't exist
+            newPage = new SequentialStringListPage(freeSpacePageNumber.Value, [value]);
+        }
+        else
+        {
+            // Append the new value to the existing page
+            List<string> newData = pageToUpdate.Data.ToList();
+            newData.Add(value);
+            newPage = pageToUpdate with { Data = newData };
+        }
+
+        await SavePageAsync(newPage).ConfigureAwait(false);
     }
 
     /// <inheritdoc/>
     public async Task<bool> ExistsAsync(string value)
-        => (await FindPageAsync(value)).Page is not null;
+    {
+        (SequentialStringListPage? page, int? _) = await FindPageAsync(value).ConfigureAwait(false);
+        return page is not null;
+    }
 
     /// <inheritdoc/>
-    public async Task<IEnumerable<string>?> ReadAsync(int skip, int take)
+    public async Task<IEnumerable<string>> ReadAsync(int skip, int take)
     {
-        // If take is equal or under 0, return all items
-        _ = take < 0 ? 0 : take;
-
-        // If skip is equal or under 0, start from the beginning
-        _ = skip < 0 ? 0 : skip;
-
-        // Ignore the pages that are not needed
-        int page = 0;
-        List<string> result = [];
-        int count = 0;
-        while ((_state = await GetPageAsync(page++)) is not null)
+        // Normalize skip and take
+        if (skip < 0)
         {
-            int pageItemCount = _state.Data.Count();
-            if (skip > count + pageItemCount)
+            skip = 0;
+        }
+
+        // If take <= 0 means user wants all items
+        if (take <= 0)
+        {
+            take = int.MaxValue;
+        }
+
+        List<string> result = [];
+        int countSoFar = 0;
+        int pageIndex = 0;
+
+        SequentialStringListPage? currentPage;
+        while ((currentPage = await GetPageAsync(pageIndex++).ConfigureAwait(false)) is not null)
+        {
+            int pageItemCount = currentPage.Data.Count();
+
+            // If the entire page is before our skip window, skip it entirely
+            if (skip >= countSoFar + pageItemCount)
             {
-                // Skip the page if the count is less than the skip count
+                countSoFar += pageItemCount;
                 continue;
             }
 
-            IEnumerable<string> segment = _state.Data;
-            if (skip < count)
+            // Determine how many items to skip in the current page
+            int itemsToSkipInPage = Math.Max(0, skip - countSoFar);
+
+            // Skip the required items from this page
+            IEnumerable<string> segment = currentPage.Data.Skip(itemsToSkipInPage);
+
+            // Update the count after skipping
+            countSoFar += itemsToSkipInPage;
+
+            // Determine how many items we can still take
+            int remaining = take - result.Count;
+            if (remaining <= 0)
             {
-                // Skip the items that are not needed in the page
-                segment = segment.Skip(skip - count);
+                break;
             }
 
-            if (take > 0 && result.Count + segment.Count() > take)
-            {
-                // If the result count is greater than the take count, take the remaining items
-                segment = segment.Take(take - result.Count);
-            }
+            // Take only the required remaining items from this page
+            List<string> pageSegment = segment.Take(remaining).ToList();
+            result.AddRange(pageSegment);
 
-            result.AddRange(segment);
+            // Update the count after taking items
+            countSoFar += pageItemCount - itemsToSkipInPage;
+
+            // If we've reached the required number of items, stop
+            if (result.Count >= take)
+            {
+                break;
+            }
         }
 
         return result;
@@ -108,72 +153,90 @@ public class SequentialStringListActor : Actor, ISequentialStringListActor
     /// <inheritdoc/>
     public async Task RemoveAsync(string value)
     {
-        (SequentialStringListPage? page, int? _) = await FindPageAsync(value);
+        (SequentialStringListPage? page, int? _) = await FindPageAsync(value).ConfigureAwait(false);
+
         if (page is null)
         {
-            // Since value does not exist in the list, we do not need to remove it.
+            // Value does not exist, nothing to remove.
             return;
         }
 
-        _state = page with { Data = [.. page.Data.Where(p => p != value)] };
-        await SaveAsync();
+        List<string> newData = page.Data.Where(p => p != value).ToList();
+        SequentialStringListPage newPage = page with { Data = newData };
+
+        await SavePageAsync(newPage).ConfigureAwait(false);
     }
 
+    /// <summary>
+    /// Finds the page containing the specified value, or identifies where it can be inserted.
+    /// </summary>
     private async Task<(SequentialStringListPage? Page, int? FreeSpacePageNumber)> FindPageAsync(string value)
     {
         int pageId = 0;
         int? freeSpacePageNumber = null;
-        do
+
+        while (true)
         {
-            _state = await GetPageAsync(pageId);
-            if (_state is null)
+            SequentialStringListPage? currentPage = await GetPageAsync(pageId).ConfigureAwait(false);
+            if (currentPage is null)
             {
-                // If the page is null, we have reached the end of the list. If all pages are full, return the new page number.
+                // Reached the end of existing pages.
+                // If we didn't find a free space page earlier, we can add at this new page index.
                 return (null, freeSpacePageNumber ?? pageId);
             }
 
-            if (_state.Data.Contains(value))
+            // Check if current page has the value
+            if (currentPage.Data.Contains(value))
             {
-                // Since the value already exists, we do not need to return the free space page number as it will not be added.
-                return (_state, null);
+                return (currentPage, null);
             }
 
-            if (freeSpacePageNumber is null && _state.Data.Count() < _pageSize)
+            // If we haven't recorded a free space page yet and this page is not full
+            if (freeSpacePageNumber is null && currentPage.Data.Count() < _pageSize)
             {
-                // The first free space page number is the first page with less than the maximum number of elements.
                 freeSpacePageNumber = pageId;
             }
 
             pageId++;
         }
-        while (true);
     }
 
+    /// <summary>
+    /// Retrieves the specified page from state, using the cached _state if possible.
+    /// </summary>
     private async Task<SequentialStringListPage?> GetPageAsync(int pageNumber)
     {
-        if (_state is null || _state.PageNumber != pageNumber)
+        // Check if the requested page is already cached
+        if (_state is not null && _state.PageNumber == pageNumber)
         {
-            ConditionalValue<IEnumerable<string>> result = await StateManager
-                .TryGetStateAsync<IEnumerable<string>>(pageNumber.ToInvariantString(), CancellationToken.None);
-            if (!result.HasValue)
-            {
-                return null;
-            }
-
-            _state = new SequentialStringListPage(pageNumber, result.Value);
+            return _state;
         }
 
+        ConditionalValue<IEnumerable<string>> result = await StateManager
+            .TryGetStateAsync<IEnumerable<string>>(pageNumber.ToInvariantString(), CancellationToken.None)
+            .ConfigureAwait(false);
+
+        if (!result.HasValue)
+        {
+            // Page does not exist in state
+            _state = null;
+            return null;
+        }
+
+        // Convert IEnumerable<string> to a List<string> for easier manipulation
+        List<string> dataList = result.Value as List<string> ?? result.Value.ToList();
+        _state = new SequentialStringListPage(pageNumber, dataList);
         return _state;
     }
 
-    private async Task SaveAsync()
+    /// <summary>
+    /// Saves the page to the state manager and updates the cached state.
+    /// </summary>
+    private async Task SavePageAsync(SequentialStringListPage page)
     {
-        if (_state is null)
-        {
-            throw new InvalidOperationException("Could not save state: State is null");
-        }
-
-        await StateManager.SetStateAsync(_state.PageNumber.ToInvariantString(), _state.Data, CancellationToken.None);
-        await StateManager.SaveStateAsync();
+        _state = page;
+        await StateManager.SetStateAsync(page.PageNumber.ToInvariantString(), page.Data, CancellationToken.None)
+            .ConfigureAwait(false);
+        await StateManager.SaveStateAsync().ConfigureAwait(false);
     }
 }
