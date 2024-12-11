@@ -64,6 +64,10 @@ public class ServerRequestService : IRequestService
 
         Metadata metadata = Metadata.CreateNew(request, user.Identity.Name, session.PartitionId, _timeProvider.GetLocalNow());
 
-        return await _requestProcessor.ProcessAsync(request, metadata, cancellationToken).ConfigureAwait(false);
+        return await _requestProcessor
+            .ProcessAsync(request, metadata, cancellationToken)
+            .ConfigureAwait(false) as TRequest
+                ?? throw new InvalidOperationException(
+                    $"Request processor returned a null or invalid object while processing the '{metadata.Message.Name}' request.");
     }
 }

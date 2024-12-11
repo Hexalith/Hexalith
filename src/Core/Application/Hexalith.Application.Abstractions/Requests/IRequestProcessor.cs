@@ -17,11 +17,9 @@ public interface IRequestProcessor
     /// <summary>
     /// Processes the specified request asynchronously.
     /// </summary>
-    /// <typeparam name="TRequest">The type of the request.</typeparam>
     /// <param name="request">The request to process.</param>
     /// <param name="metadata">The metadata associated with the request.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task that represents the asynchronous operation. The task result contains the processed request.</returns>
-    Task<TRequest> ProcessAsync<TRequest>(TRequest request, Metadata metadata, CancellationToken cancellationToken)
-        where TRequest : class;
+    Task<object> ProcessAsync(object request, Metadata metadata, CancellationToken cancellationToken);
 }

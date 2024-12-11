@@ -68,9 +68,10 @@ public partial class RequestServiceController : ControllerBase
             return BadRequest("Request metadata is null");
         }
 
-        PolymorphicRecordBase result = await _requestProcessor
+        PolymorphicRecordBase result = (await _requestProcessor
             .ProcessAsync(request.MessageObject, request.Metadata, CancellationToken.None)
-            .ConfigureAwait(false);
+            .ConfigureAwait(false)) as PolymorphicRecordBase
+                ?? throw new InvalidOperationException("Request processor returned a null or invalid object.");
 
         LogRequestSubmittedDebugInformation(
             _logger,

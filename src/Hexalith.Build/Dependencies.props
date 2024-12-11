@@ -63,7 +63,7 @@
     <SerilogSinksBrowserVersion>8.0.0</SerilogSinksBrowserVersion>
     <SerilogSinksDebugVersion>3.0.*</SerilogSinksDebugVersion>
     <StyleCopAnalyzersVersion>1.2.0-beta.556</StyleCopAnalyzersVersion>
-    <SwashbuckleAspNetCoreVersion>7.1.0</SwashbuckleAspNetCoreVersion>
+    <SwashbuckleAspNetCoreVersion>7.2.0</SwashbuckleAspNetCoreVersion>
     <SystemIdentityModelTokensJwtVersion>8.3.0</SystemIdentityModelTokensJwtVersion>
     <XUnitRunnerVisualStudioVersion>2.8.2</XUnitRunnerVisualStudioVersion>
     <XUnitVersion>2.9.2</XUnitVersion>
