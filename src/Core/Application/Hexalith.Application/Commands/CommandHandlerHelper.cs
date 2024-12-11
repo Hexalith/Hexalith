@@ -26,7 +26,7 @@ public static class CommandHandlerHelper
     /// <param name="metadata">The metadata associated with the event.</param>
     /// <param name="timeProvider">The time provider to get the current time.</param>
     /// <returns>The result of executing the command.</returns>
-    public static ExecuteCommandResult CreateCommandResult(this ApplyResult result, object ev, object metadata, TimeProvider timeProvider)
+    public static ExecuteCommandResult CreateCommandResult(this ApplyResult result, PolymorphicRecordBase ev, Metadata metadata, TimeProvider timeProvider)
     {
         return result.Failed
                 ? new ExecuteCommandResult(
@@ -35,7 +35,7 @@ public static class CommandHandlerHelper
                     [
                         new DomainEventCancelled(
                             result.Reason ?? "Unknown reason",
-                            new MessageState((PolymorphicRecordBase)ev, Metadata.CreateNew(ev, (Metadata)metadata, timeProvider.GetLocalNow()))),
+                            new MessageState(ev, Metadata.CreateNew(ev, metadata, timeProvider.GetLocalNow()))),
                     ])
                 : new ExecuteCommandResult(result.Aggregate, [ev], result.Messages);
     }
