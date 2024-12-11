@@ -13,9 +13,11 @@ using System.Collections.Generic;
 /// <param name="Aggregate">The domain aggregate.</param>
 /// <param name="Messages">The collection of messages produced during the application of events.</param>
 /// <param name="Failed">A flag indicating whether the application of events failed.</param>
+/// <param name="Reason">The reason why the application of events failed.</param>
 public record ApplyResult(
     IDomainAggregate Aggregate,
     IEnumerable<object> Messages,
-    bool Failed)
+    bool Failed,
+    string? Reason = null)
 {
 }
