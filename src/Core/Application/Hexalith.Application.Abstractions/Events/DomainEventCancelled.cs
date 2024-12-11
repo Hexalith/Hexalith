@@ -16,6 +16,6 @@ using Hexalith.PolymorphicSerialization;
 /// <param name="Reason">The reason why the domain event was cancelled.</param>
 /// <param name="Event">The domain event that was cancelled.</param>
 [PolymorphicSerialization]
-public record DomainEventCancelled(
+public partial record DomainEventCancelled(
     [property: DataMember(Order = 1)] string Reason,
     [property: DataMember(Order = 2)] MessageState Event);

@@ -9,6 +9,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 using Hexalith.Application;
+using Hexalith.Application.Abstractions.Extensions;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Modules.Applications;
 using Hexalith.Application.Modules.Routes;
@@ -39,11 +40,12 @@ public static class WebAssemblyClientHelper
     /// <returns>The modified service collection.</returns>
     public static IServiceCollection AddHexalithWasmClientApp(this IServiceCollection services, IConfiguration configuration)
     {
+        HexalithApplicationAbstractions.RegisterPolymorphicMappers();
         _ = services
-            .AddOrganizations(configuration)
-            .AddSingleton(TimeProvider.System)
-            .AddSingleton<IRouteManager, RouteManager>()
-            .AddFluentUIComponents();
+             .AddOrganizations(configuration)
+             .AddSingleton(TimeProvider.System)
+             .AddSingleton<IRouteManager, RouteManager>()
+             .AddFluentUIComponents();
         _ = services.AddScoped<ICommandService, ClientCommandService>();
         _ = services.AddScoped<IRequestService, ClientRequestService>();
 

@@ -16,6 +16,7 @@ using Dapr.Actors.Runtime;
 
 using FluentValidation;
 
+using Hexalith.Application.Abstractions.Extensions;
 using Hexalith.Application.Aggregates;
 using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
@@ -68,6 +69,7 @@ public static class ServerSideClientAppHelper
         this IServiceCollection services,
         IConfiguration configuration)
     {
+        HexalithApplicationAbstractions.RegisterPolymorphicMappers();
         _ = services
             .AddFluentUIComponents()
             .AddOrganizations(configuration)

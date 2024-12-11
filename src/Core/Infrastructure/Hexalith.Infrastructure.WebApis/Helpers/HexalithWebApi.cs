@@ -13,6 +13,7 @@ using Dapr.Actors.Runtime;
 
 using FluentValidation;
 
+using Hexalith.Application.Abstractions.Extensions;
 using Hexalith.Application.Aggregates;
 using Hexalith.Application.Buses;
 using Hexalith.Application.Commands;
@@ -67,7 +68,7 @@ public static partial class HexalithWebApi
             .AddServiceDefaults()
             .Services
             .ConfigureSettings<Hexalith.Infrastructure.CosmosDb.Configurations.CosmosDbSettings>(builder.Configuration);
-
+        HexalithApplicationAbstractions.RegisterPolymorphicMappers();
         builder
             .Services
             .AddEndpointsApiExplorer()
