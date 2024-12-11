@@ -80,10 +80,10 @@ public static class EquatableHelper
             return false;
         }
 
-        object?[] aKeys = a.Keys.Cast<object?>().ToArray();
-        object?[] aValues = a.Values.Cast<object?>().ToArray();
-        object?[] bKeys = b.Keys.Cast<object?>().ToArray();
-        object?[] bValues = b.Values.Cast<object?>().ToArray();
+        object?[] aKeys = [.. a.Keys.Cast<object?>()];
+        object?[] aValues = [.. a.Values.Cast<object?>()];
+        object?[] bKeys = [.. b.Keys.Cast<object?>()];
+        object?[] bValues = [.. b.Values.Cast<object?>()];
 
         return AreSameEnumeration(aKeys, bKeys) && AreSameEnumeration(aValues, bValues);
     }
@@ -106,8 +106,8 @@ public static class EquatableHelper
             return false;
         }
 
-        object?[]? aArray = a.Cast<object?>().ToArray();
-        object?[]? bArray = b.Cast<object?>().ToArray();
+        object?[]? aArray = [.. a.Cast<object?>()];
+        object?[]? bArray = [.. b.Cast<object?>()];
         if (aArray is null)
         {
             return bArray is null;

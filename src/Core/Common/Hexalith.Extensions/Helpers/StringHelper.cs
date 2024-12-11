@@ -27,7 +27,7 @@ public static partial class StringHelper
         {
             if (args != null)
             {
-                object[] arguments = args.ToArray();
+                object[] arguments = [.. args];
                 if (arguments.Length > 0)
                 {
                     return string.Format(

@@ -67,7 +67,7 @@ public class OptionsBuilder<T> : IMockBuilder<IOptions<T>>
     /// <returns>The options builder.</returns>
     /// <exception cref="Exception">Unable to get settings.</exception>
     public OptionsBuilder<T> WithValueFromConfiguration<TProgram>()
-        where TProgram : class
+        where TProgram : class, new()
     {
         IConfigurationBuilder builder = new ConfigurationBuilder()
             .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)

@@ -81,8 +81,6 @@ public partial class DependencyInjectionEventDispatcher : IIntegrationEventDispa
         Type eventType = @event.GetType();
         Type eventHandlerType = typeof(IIntegrationEventHandler<>).MakeGenericType(eventType);
         Type eventHandlerTypeList = typeof(IEnumerable<>).MakeGenericType(eventHandlerType);
-        return (_serviceProvider.GetService(eventHandlerTypeList) as IEnumerable ?? Array.Empty<IIntegrationEventHandler>())
-            .Cast<IIntegrationEventHandler>()
-            .ToList();
+        return [.. (_serviceProvider.GetService(eventHandlerTypeList) as IEnumerable ?? Array.Empty<IIntegrationEventHandler>()).Cast<IIntegrationEventHandler>()];
     }
 }

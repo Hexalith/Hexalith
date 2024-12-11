@@ -25,6 +25,7 @@ using Hexalith.Application.Modules.Routes;
 using Hexalith.Application.Organizations.Helpers;
 using Hexalith.Application.Projections;
 using Hexalith.Application.Requests;
+using Hexalith.Application.Services;
 using Hexalith.Application.Sessions.Services;
 using Hexalith.Application.Tasks;
 using Hexalith.Infrastructure.AspireService.Defaults;
@@ -32,6 +33,7 @@ using Hexalith.Infrastructure.ClientAppOnServer.Services;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Partitions.Helpers;
+using Hexalith.Infrastructure.DaprRuntime.Services;
 using Hexalith.Infrastructure.DaprRuntime.Sessions.Helpers;
 using Hexalith.Infrastructure.Emails.SendGrid.Helpers;
 using Hexalith.Infrastructure.WebApis.Helpers;
@@ -83,6 +85,7 @@ public static class ServerSideClientAppHelper
         services.TryAddScoped<IDomainCommandDispatcher, DependencyInjectionDomainCommandDispatcher>();
         services.TryAddScoped<IProjectionUpdateProcessor, DependencyInjectionProjectionUpdateProcessor>();
         services.TryAddSingleton<IDomainAggregateFactory, DomainAggregateFactory>();
+        services.TryAddSingleton<IIdCollectionFactory, IdCollectionFactory>();
         services
             .TryAddSingleton<IDomainCommandProcessor>((s) => new DomainActorCommandProcessor(
             ActorProxy.DefaultProxyFactory,

@@ -75,11 +75,10 @@ public partial class IntegrationEventProcessor : IIntegrationEventProcessor
         ArgumentNullException.ThrowIfNull(metadata);
 
         // Apply the event and collect resulting commands
-        List<object> commands = (await _dispatcher
+        List<object> commands = [.. (await _dispatcher
                 .ApplyAsync(baseEvent, metadata, cancellationToken)
                 .ConfigureAwait(false))
-            .SelectMany(p => p)
-            .ToList();
+            .SelectMany(p => p)];
 
         if (commands.Count <= 0)
         {
