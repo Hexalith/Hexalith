@@ -139,7 +139,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     /// <param name="commandId">The command identifier.</param>
     /// <param name="partitionKey">Key of the aggregate.</param>
     [LoggerMessage(
-                    EventId = 6,
+                    EventId = 1,
                     Level = LogLevel.Information,
                     Message = "Accepted command {CommandType} ({CommandId}) for aggregate key {PartitionKey}.")]
     public static partial void LogAcceptedCommandInformation(ILogger logger, string commandType, string commandId, string partitionKey);
@@ -154,7 +154,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     /// <param name="correlationId">The correlation identifier.</param>
     /// <param name="aggregateId">The aggregate identifier.</param>
     [LoggerMessage(
-        EventId = 5,
+        EventId = 2,
         Level = LogLevel.Error,
         Message = "Message {Sequence} Id={MessageId} Type={MessageType} CorrelationId={CorrelationId} AggregateId={AggregateId} is invalid and cannot be published.")]
     public static partial void LogInvalidPublishMessageError(
@@ -200,7 +200,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     /// <param name="commandCount">The command count.</param>
     /// <param name="commandProcessed">The command processed.</param>
     [LoggerMessage(
-            EventId = 2,
+            EventId = 5,
             Level = LogLevel.Error,
             Message = "Actor {ActorType} ({ActorId}) failed processing {CommandProcessed}/{CommandCount} command in a timer or reminder callback. Resetting state.")]
     public static partial void LogProcessingCallbackError(ILogger logger, Exception ex, string actorId, string actorType, long commandCount, long commandProcessed);
@@ -214,7 +214,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     /// <param name="commandCount">The command count.</param>
     /// <param name="currentCommandProcessed">The current command processed.</param>
     [LoggerMessage(
-                EventId = 1,
+                EventId = 6,
                 Level = LogLevel.Information,
                 Message = "Actor {ActorType} ({ActorId}) is processing command {CurrentCommandProcessed} on a total of {CommandCount}")]
     public static partial void LogProcessingCommandsInformation(ILogger logger, string actorId, string actorType, long commandCount, long currentCommandProcessed);
@@ -231,7 +231,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     /// <param name="actorType">Type of the actor.</param>
     /// <param name="errorMessage">The error message.</param>
     [LoggerMessage(
-            EventId = 6,
+            EventId = 7,
             Level = LogLevel.Warning,
             Message = "Publish message {MessageSequence} (Id={MessageId}; CorrelationId={CorrelationId}) operation failed on actor {ActorType}/{ActorId}. Error : {ErrorMessage}")]
     public static partial void LogPublishError(

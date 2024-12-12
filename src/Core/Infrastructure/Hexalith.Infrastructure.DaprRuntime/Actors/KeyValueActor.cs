@@ -1,17 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : Hexalith.Infrastructure.DaprRuntime
-// Author           : Jérôme Piquot
-// Created          : 10-28-2023
-//
-// Last Modified By : Jérôme Piquot
-// Last Modified On : 10-28-2023
-// ***********************************************************************
-// <copyright file="KeyValueActor.cs" company="ITANEO">
+﻿// <copyright file="KeyValueActor.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Hexalith.Infrastructure.DaprRuntime.Actors;
 
