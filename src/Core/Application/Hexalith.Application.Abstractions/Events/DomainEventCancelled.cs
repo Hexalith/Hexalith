@@ -18,4 +18,15 @@ using Hexalith.PolymorphicSerialization;
 [PolymorphicSerialization]
 public partial record DomainEventCancelled(
     [property: DataMember(Order = 1)] string Reason,
-    [property: DataMember(Order = 2)] MessageState Event);
+    [property: DataMember(Order = 2)] MessageState Event)
+{
+    /// <summary>
+    /// Gets the aggregate identifier.
+    /// </summary>
+    public string AggregateId => Event.Metadata.Message.Aggregate.Id;
+
+    /// <summary>
+    /// Gets the aggregate name.
+    /// </summary>
+    public string AggregateName => Event.Metadata.Message.Aggregate.Name;
+}
