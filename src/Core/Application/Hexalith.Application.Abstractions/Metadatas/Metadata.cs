@@ -83,4 +83,14 @@ public record Metadata(
             msgMeta,
             new ContextMetadata(msgMeta.Id, userId, partitionId, dateTime, null, sessionId, []));
     }
+
+    /// <summary>
+    /// Converts the metadata to a log string.
+    /// </summary>
+    /// <returns>A string representation of the metadata for logging purposes.</returns>
+    public string ToLogString()
+    {
+        return $"MessageName={Message.Name}; AggregateGlobalId={AggregateGlobalId}; " +
+            $"MessageId={Message.Id}; CorrelationId={Context.CorrelationId}; UserId={Context.UserId}";
+    }
 }

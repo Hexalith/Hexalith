@@ -15,6 +15,11 @@ using Hexalith.Domain.Aggregates;
 /// <param name="Aggregate">The aggregate.</param>
 /// <param name="SourceEvents">The source events.</param>
 /// <param name="IntegrationEvents">The integration events.</param>
-public record ExecuteCommandResult(IDomainAggregate Aggregate, IEnumerable<object> SourceEvents, IEnumerable<object> IntegrationEvents)
+/// <param name="Failed">if set to <c>true</c> the command failed.</param>
+public record ExecuteCommandResult(
+    IDomainAggregate Aggregate,
+    IEnumerable<object> SourceEvents,
+    IEnumerable<object> IntegrationEvents,
+    bool Failed)
 {
 }
