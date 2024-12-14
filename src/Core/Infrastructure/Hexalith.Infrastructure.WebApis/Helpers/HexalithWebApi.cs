@@ -69,6 +69,7 @@ public static partial class HexalithWebApi
             .Services
             .ConfigureSettings<Hexalith.Infrastructure.CosmosDb.Configurations.CosmosDbSettings>(builder.Configuration);
         HexalithApplicationAbstractions.RegisterPolymorphicMappers();
+        builder.Services.AddDaprClient();
         builder
             .Services
             .AddEndpointsApiExplorer()
@@ -79,12 +80,12 @@ public static partial class HexalithWebApi
                     Title = applicationName,
                     Version = version,
                 }))
-        .AddDaprBuses(builder.Configuration)
-        .AddDaprStateStore(builder.Configuration)
-        .AddActors(options =>
+            .AddDaprBuses(builder.Configuration)
+            .AddDaprStateStore(builder.Configuration)
+            .AddActors(options =>
 
-            // Register actor types and configure actor settings
-            registerActors(options.Actors));
+                // Register actor types and configure actor settings
+                registerActors(options.Actors));
 
         _ = builder
             .Services

@@ -120,6 +120,8 @@ public static class ServerSideClientAppHelper
 
         _ = builder.Services.AddRazorPages();
         _ = builder.Services.AddServerSideBlazor();
+        builder.Services.AddDaprClient();
+
         builder.Services.AddActors(options =>
 
             // Register actor types and configure actor settings
