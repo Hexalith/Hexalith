@@ -29,7 +29,7 @@
     <GrpcVersion>2.67.0</GrpcVersion>
     <ISO3166Version>1.0.4</ISO3166Version>
     <HumanizerVersion>2.14.1</HumanizerVersion>
-    <MailKitVersion>4.8.0</MailKitVersion>
+    <MailKitVersion>4.9.0</MailKitVersion>
     <MicrosoftAzureCosmosVersion>3.46.0</MicrosoftAzureCosmosVersion>
     <MicrosoftBotBuilderVersion>4.22.7</MicrosoftBotBuilderVersion>
     <MicrosoftCodeAnalysisCSharpVersion>4.12.0</MicrosoftCodeAnalysisCSharpVersion>
@@ -38,7 +38,7 @@
     <MicrosoftIdentityClientVersion>4.66.2</MicrosoftIdentityClientVersion>
     <MicrosoftIdentityWebVersion>3.2.1</MicrosoftIdentityWebVersion>
     <MicrosoftNETTestSdkVersion>17.12.0</MicrosoftNETTestSdkVersion>
-    <MicrosoftSemanticKernelVersion>1.31.0</MicrosoftSemanticKernelVersion>
+    <MicrosoftSemanticKernelVersion>1.32.0</MicrosoftSemanticKernelVersion>
     <MicrosoftTeamsFxVersion>2.5.0</MicrosoftTeamsFxVersion>
     <MicrosoftTypescriptMSBuild>5.7.1</MicrosoftTypescriptMSBuild>
     <MicrosoftGraphVersion>5.12.*</MicrosoftGraphVersion>
