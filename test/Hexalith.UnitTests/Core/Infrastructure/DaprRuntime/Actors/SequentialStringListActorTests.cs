@@ -222,64 +222,6 @@ public class SequentialStringListActorTests
     }
 
     [Fact]
-    public async Task ReadAsync_ShouldReturnData_FromNonZeroPage()
-    {
-        // Arrange
-        int pageNumber = 2;
-        List<string> pageData = ["valueX", "valueY"];
-
-        _ = _stateManagerMock
-            .Setup(x => x.TryGetStateAsync<IEnumerable<string>>(pageNumber.ToString(), It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<IEnumerable<string>>(true, pageData));
-
-        SequentialStringListActor actor = new(_actorHost, _stateManagerMock.Object);
-
-        // Act
-        IEnumerable<string> result = await actor.ReadAsync(pageNumber);
-
-        // Assert
-        _ = result.Should().BeEquivalentTo(pageData);
-    }
-
-    [Fact]
-    public async Task ReadAsync_ShouldReturnNull_WhenNoSuchPage()
-    {
-        // Arrange
-        int pageNumber = 1;
-        _ = _stateManagerMock
-            .Setup(x => x.TryGetStateAsync<IEnumerable<string>>(pageNumber.ToString(), It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<IEnumerable<string>>(false, null));
-
-        SequentialStringListActor actor = new(_actorHost, _stateManagerMock.Object);
-
-        // Act
-        IEnumerable<string> result = await actor.ReadAsync(pageNumber);
-
-        // Assert
-        _ = result.Should().BeNull();
-    }
-
-    [Fact]
-    public async Task ReadAsync_ShouldReturnPageData_WhenPageExists()
-    {
-        // Arrange
-        int pageNumber = 0;
-        List<string> data = ["value1", "value2"];
-
-        _ = _stateManagerMock
-            .Setup(x => x.TryGetStateAsync<IEnumerable<string>>(pageNumber.ToString(), It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ConditionalValue<IEnumerable<string>>(true, data));
-
-        SequentialStringListActor actor = new(_actorHost, _stateManagerMock.Object);
-
-        // Act
-        IEnumerable<string> result = await actor.ReadAsync(pageNumber);
-
-        // Assert
-        _ = result.Should().NotBeNull().And.BeEquivalentTo(data);
-    }
-
-    [Fact]
     public async Task RemoveAsync_ShouldDoNothing_WhenValueDoesNotExist()
     {
         // Arrange

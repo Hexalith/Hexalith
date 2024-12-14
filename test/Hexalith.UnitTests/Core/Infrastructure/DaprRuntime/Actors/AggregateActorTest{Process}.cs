@@ -222,21 +222,21 @@ public partial class AggregateActorTest
             It.Is<Metadata>(c => c.Message.Aggregate.Id == metadata.Message.Aggregate.Id && c.Message.Name == metadata.Message.Name),
             It.Is<IDomainAggregate>(a => a.AggregateName == DummyAggregate.GetAggregateName()),
             It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ExecuteCommandResult(null, [new DummyAggregateEvent1(command8.Id, command8.Name)], []))
+            .ReturnsAsync(new ExecuteCommandResult(null, [new DummyAggregateEvent1(command8.Id, command8.Name)], [], false))
             .Verifiable(Times.Once);
         commandDispatcher.Setup(s => s.DoAsync(
             It.Is<object>(c => ((DummyAggregateCommand1)c).Name == command9.Name),
             It.Is<Metadata>(c => c.Message.Aggregate.Id == metadata.Message.Aggregate.Id && c.Message.Name == metadata.Message.Name),
             It.Is<IDomainAggregate>(a => a.AggregateName == DummyAggregate.GetAggregateName()),
             It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ExecuteCommandResult(null, [new DummyAggregateEvent1(command9.Id, command9.Name)], []))
+            .ReturnsAsync(new ExecuteCommandResult(null, [new DummyAggregateEvent1(command9.Id, command9.Name)], [], false))
             .Verifiable(Times.Once);
         commandDispatcher.Setup(s => s.DoAsync(
             It.Is<object>(c => ((DummyAggregateCommand1)c).Name == command10.Name),
             It.Is<Metadata>(c => c.Message.Aggregate.Id == metadata.Message.Aggregate.Id && c.Message.Name == metadata.Message.Name),
             It.Is<IDomainAggregate>(a => a.AggregateName == DummyAggregate.GetAggregateName()),
             It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ExecuteCommandResult(null, [new DummyAggregateEvent1(command10.Id, command10.Name)], []))
+            .ReturnsAsync(new ExecuteCommandResult(null, [new DummyAggregateEvent1(command10.Id, command10.Name)], [], false))
             .Verifiable(Times.Once);
 
         resiliencyPolicyProvider
@@ -632,7 +632,7 @@ public partial class AggregateActorTest
             It.Is<Metadata>(c => c.Message.Aggregate.Id == metadata.Message.Aggregate.Id && c.Message.Name == metadata.Message.Name),
             It.Is<IDomainAggregate>(a => a.AggregateName == DummyAggregate.GetAggregateName()),
             It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ExecuteCommandResult(null, [ev], []))
+            .ReturnsAsync(new ExecuteCommandResult(null, [ev], [], false))
             .Verifiable(Times.Once);
 
         resiliencyPolicyProvider

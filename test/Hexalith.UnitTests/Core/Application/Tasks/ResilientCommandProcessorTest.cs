@@ -28,7 +28,7 @@ public class ResilientCommandProcessorTest
         Mock<IDomainCommandDispatcher> dispatcher = new();
         _ = dispatcher
             .Setup(p => p.DoAsync(It.IsAny<object>(), It.IsAny<Metadata>(), null, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new ExecuteCommandResult(null, [new DummyEvent1("My test response", 123)], []));
+            .ReturnsAsync(new ExecuteCommandResult(null, [new DummyEvent1("My test response", 123)], [], false));
         MemoryStateProvider stateProvider = new();
         ResilientCommandProcessor processor = new(
             ResiliencyPolicy.None,
