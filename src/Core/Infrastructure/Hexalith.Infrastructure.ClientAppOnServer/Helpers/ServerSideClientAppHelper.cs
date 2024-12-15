@@ -9,8 +9,6 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 
-using Blazored.SessionStorage;
-
 using Dapr.Actors.Client;
 using Dapr.Actors.Runtime;
 
@@ -132,7 +130,6 @@ public static class ServerSideClientAppHelper
             .AddServiceDefaults()
             .Services
             .AddLocalization(options => options.ResourcesPath = "Resources")
-            .AddBlazoredSessionStorage()
             .AddProblemDetails()
             .AddHexalithServerSideClientApp(builder.Configuration)
             .AddEndpointsApiExplorer()

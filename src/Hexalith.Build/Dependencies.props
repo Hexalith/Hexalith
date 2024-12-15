@@ -14,8 +14,6 @@
     <AzureResourceManagerLogicVersion>1.1.0</AzureResourceManagerLogicVersion>
     <AzureSecurityKeyVaultSecretsVersion>4.6.0</AzureSecurityKeyVaultSecretsVersion>
     <AzureStorageBlobsVersion>12.23.0</AzureStorageBlobsVersion>
-    <BlazorGeolocationVersion>9.0.1</BlazorGeolocationVersion>
-    <BlazoredSessionStorageVersion>2.4.0</BlazoredSessionStorageVersion>
     <CoconaVersion>2.2.0</CoconaVersion>
     <CompareNETObjectsVersion>4.83.0</CompareNETObjectsVersion>
     <CoverletCollectorVersion>6.0.2</CoverletCollectorVersion>
