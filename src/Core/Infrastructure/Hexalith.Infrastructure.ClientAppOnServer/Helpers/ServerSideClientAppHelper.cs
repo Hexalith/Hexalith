@@ -69,6 +69,7 @@ public static class ServerSideClientAppHelper
     {
         HexalithApplicationAbstractions.RegisterPolymorphicMappers();
         _ = services
+            .AddHttpClient() // Add a default HttpClient before adding Fluent UI Components. See https://www.fluentui-blazor.net/CodeSetup.
             .AddFluentUIComponents()
             .AddOrganizations(configuration)
             .AddSendGridEmail(configuration)
