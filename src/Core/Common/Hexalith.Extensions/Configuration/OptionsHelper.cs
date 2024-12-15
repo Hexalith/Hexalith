@@ -29,17 +29,16 @@ public static class OptionsHelper
         ArgumentNullException.ThrowIfNull(configuration);
 
         string configurationName = T.ConfigurationName();
-        IConfigurationSection section = configuration.GetSection(configurationName)
-                                         ?? throw new InvalidOperationException($"Could not load settings section '{configurationName}'");
+
         _ = services
             .AddOptions<T>()
-            .Bind(section)
+            .BindConfiguration(configurationName) // Use BindConfiguration instead of Bind(section)
             .ValidateDataAnnotations()
-            .ValidateOnStart(); // Add this line to ensure validation on start
-        services.TryAddSingleton<IValidateOptions<T>>((s) =>
-            new FluentValidateOptions<T>(
-                configurationName,
-                s));
+            .ValidateOnStart();
+
+        services.TryAddSingleton<IValidateOptions<T>>(s =>
+            new FluentValidateOptions<T>(configurationName, s));
+
         return services;
     }
 }
