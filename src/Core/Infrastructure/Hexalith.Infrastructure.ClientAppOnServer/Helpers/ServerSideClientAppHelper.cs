@@ -262,6 +262,7 @@ public static class ServerSideClientAppHelper
         ArgumentNullException.ThrowIfNull(app);
 
         _ = app
+            .MapDefaultEndpoints()
             .UseSerilogRequestLogging()
             .UseCloudEvents();
 
@@ -305,6 +306,8 @@ public static class ServerSideClientAppHelper
                 _ = razor.AddAdditionalAssemblies(assemblies);
             }
         }
+
+        _ = app.MapActorsHandlers();
 
         app.UseHexalithModules();
 

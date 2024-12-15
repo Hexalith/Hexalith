@@ -136,6 +136,7 @@ public static partial class HexalithWebApi
     {
         ArgumentNullException.ThrowIfNull(app);
         _ = app
+            .MapDefaultEndpoints()
             .UseCors()
 
             // .UseSerilogRequestLogging()
