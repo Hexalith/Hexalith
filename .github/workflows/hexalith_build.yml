@@ -21,6 +21,7 @@ env:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    environment: Staging 
     name: Build, Test, Publish
     steps:
     - uses: actions/checkout@v4
