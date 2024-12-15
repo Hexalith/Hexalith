@@ -160,11 +160,6 @@ public static class ServerSideClientAppHelper
         // Show detailed errors on Circuit exceptions
         _ = builder.Services.AddServerSideBlazor().AddCircuitOptions(option => option.DetailedErrors = true);
 
-#pragma warning disable EXTEXP0018 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
-        _ = builder.Services
-            .AddDistributedMemoryCache()
-            .AddHybridCache();
-#pragma warning restore EXTEXP0018 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
         _ = builder.Services
             .AddSession(options =>
             {

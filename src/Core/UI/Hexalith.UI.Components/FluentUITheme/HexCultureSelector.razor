@@ -1,5 +1,4 @@
 ﻿@using System.Globalization
-@inject IJSRuntime JS
 @inject NavigationManager Navigation
 
 <FluentCombobox 
@@ -55,7 +54,7 @@
         selectedCulture = culture;
         if (CultureInfo.CurrentCulture != selectedCulture)
         {
-            await JS.InvokeVoidAsync(Application.ApplicationConstants.UserDefinedCulturePropertyName+".set", selectedCulture!.Name);
+            // await JS.InvokeVoidAsync(Application.ApplicationConstants.UserDefinedCulturePropertyName+".set", selectedCulture!.Name);
 
             StateHasChanged();
         }
