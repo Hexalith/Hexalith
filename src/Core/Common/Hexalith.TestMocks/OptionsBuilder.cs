@@ -75,10 +75,10 @@ public class OptionsBuilder<T> : IMockBuilder<IOptions<T>>
 
         string configurationName = T.ConfigurationName();
         IConfigurationRoot configuration = builder.Build();
-        _value = configuration
+        IConfigurationSection section = configuration
             .GetSection(configurationName)
-            .Get<T>()
-            ?? throw new InvalidOperationException("Unable to get settings: " + configurationName);
+            ?? throw new InvalidOperationException("Unable to get section: " + configurationName);
+        _value = section.Get<T>();
         return this;
     }
 }

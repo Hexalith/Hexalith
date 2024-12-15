@@ -28,11 +28,11 @@ public static class SettingsHelper
         where TSettings : class, ISettings, new()
     {
         ArgumentNullException.ThrowIfNull(configuration);
-        TSettings settings = new();
         string configurationName = TSettings.ConfigurationName();
         IConfigurationSection section = configuration.GetSection(configurationName)
             ?? throw new InvalidOperationException($"Configuration section '{configurationName}' not found.");
-        section.Bind(settings);
-        return settings;
+
+        TSettings? settings = section.Get<TSettings>();
+        return settings is null ? throw new InvalidOperationException($"Unable to bind settings for '{configurationName}'.") : settings;
     }
 }
