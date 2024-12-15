@@ -84,6 +84,7 @@ public class MessageStateTest
                 ["scope1", "scope9"]));
         MessageState state = new(message, meta);
         string json = JsonSerializer.Serialize(state, PolymorphicHelper.DefaultJsonSerializerOptions);
+        _ = state.Message.Should().Contain($"MyDummyMessage2V2");
         _ = json.Should().NotBeNullOrEmpty();
         _ = json.Should().Contain($"MyDummyMessage2V2");
         _ = json.Should().Contain($"\"{nameof(meta.Message.Version)}\": 2");

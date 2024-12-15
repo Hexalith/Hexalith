@@ -82,7 +82,7 @@ public class MessageState : IIdempotent
     /// <param name="message">The message object to serialize.</param>
     /// <returns>The serialized JSON string.</returns>
     private static string Serialize(PolymorphicRecordBase message) =>
-        JsonSerializer.Serialize(message, PolymorphicHelper.DefaultJsonSerializerOptions);
+        JsonSerializer.Serialize<PolymorphicRecordBase>(message, PolymorphicHelper.DefaultJsonSerializerOptions);
 
     /// <summary>
     /// Deserializes the message content to a <see cref="PolymorphicRecordBase"/> object.
