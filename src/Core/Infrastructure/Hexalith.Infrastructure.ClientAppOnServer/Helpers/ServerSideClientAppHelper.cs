@@ -35,6 +35,7 @@ using Hexalith.Infrastructure.DaprRuntime.Partitions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Services;
 using Hexalith.Infrastructure.DaprRuntime.Sessions.Helpers;
 using Hexalith.Infrastructure.Emails.SendGrid.Helpers;
+using Hexalith.Infrastructure.WebApis.Controllers;
 using Hexalith.Infrastructure.WebApis.Helpers;
 using Hexalith.PolymorphicSerialization;
 
@@ -143,6 +144,7 @@ public static class ServerSideClientAppHelper
             .ConfigureHttpJsonOptions(options => options.SerializerOptions.SetDefault())
             .AddHttpContextAccessor()
             .AddControllers()
+            .AddApplicationPart(typeof(RequestServiceController).Assembly)
             .AddDapr(dapr =>
             {
                 if (builder.Environment.IsDevelopment())
