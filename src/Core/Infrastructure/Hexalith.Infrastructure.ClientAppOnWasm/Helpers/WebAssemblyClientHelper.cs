@@ -5,8 +5,10 @@
 
 namespace Hexalith.Infrastructure.ClientAppOnWasm.Helpers;
 
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
+using Hexalith.Application;
 using Hexalith.Application.Abstractions.Extensions;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Modules.Applications;
@@ -21,6 +23,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.FluentUI.AspNetCore.Components;
+using Microsoft.JSInterop;
 
 using Serilog;
 
@@ -96,20 +99,20 @@ public static class WebAssemblyClientHelper
     /// </summary>
     /// <param name="host">The WebAssembly host.</param>
     /// <returns><see cref="Task"/> representing the asynchronous operation.</returns>
-    // public static async Task UseHexalithUserDefinedCultureAsync([NotNull] this WebAssemblyHost host)
-    // {
-    //    string defaultCulture = CultureInfo.CurrentCulture.Name;
+    public static async Task UseHexalithUserDefinedCultureAsync([NotNull] this WebAssemblyHost host)
+    {
+        string defaultCulture = CultureInfo.CurrentCulture.Name;
 
-    // IJSRuntime js = host.Services.GetRequiredService<IJSRuntime>();
-    //    string? result = await js.InvokeAsync<string>(ApplicationConstants.UserDefinedCulturePropertyName + ".getCulture").ConfigureAwait(false);
-    //    CultureInfo culture = CultureInfo.GetCultureInfo(result ?? defaultCulture);
+        IJSRuntime js = host.Services.GetRequiredService<IJSRuntime>();
+        string? result = await js.InvokeAsync<string>(ApplicationConstants.UserDefinedCulturePropertyName + ".getCulture").ConfigureAwait(false);
+        CultureInfo culture = CultureInfo.GetCultureInfo(result ?? defaultCulture);
 
-    // if (result == null)
-    //    {
-    //        await js.InvokeVoidAsync(ApplicationConstants.UserDefinedCulturePropertyName + ".setCulture", defaultCulture).ConfigureAwait(false);
-    //    }
+        if (result == null)
+        {
+            await js.InvokeVoidAsync(ApplicationConstants.UserDefinedCulturePropertyName + ".setCulture", defaultCulture).ConfigureAwait(false);
+        }
 
-    // CultureInfo.DefaultThreadCurrentCulture = culture;
-    //    CultureInfo.DefaultThreadCurrentUICulture = culture;
-    // }
+        CultureInfo.DefaultThreadCurrentCulture = culture;
+        CultureInfo.DefaultThreadCurrentUICulture = culture;
+    }
 }
