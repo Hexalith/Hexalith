@@ -29,10 +29,7 @@ public static class SettingsHelper
     {
         ArgumentNullException.ThrowIfNull(configuration);
         string configurationName = TSettings.ConfigurationName();
-        IConfigurationSection section = configuration.GetSection(configurationName)
-            ?? throw new InvalidOperationException($"Configuration section '{configurationName}' not found.");
-
-        TSettings? settings = section.Get<TSettings>();
-        return settings is null ? throw new InvalidOperationException($"Unable to bind settings for '{configurationName}'.") : settings;
+        IConfigurationSection section = configuration.GetSection(configurationName);
+        return !section.Exists() ? new TSettings() : section.Get<TSettings>() ?? new TSettings();
     }
 }

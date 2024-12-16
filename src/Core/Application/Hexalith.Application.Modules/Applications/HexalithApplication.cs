@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.Reflection;
 
 using Hexalith.Application.Modules.Modules;
+using Hexalith.Extensions.Helpers;
 using Hexalith.Extensions.Reflections;
 
 using Microsoft.AspNetCore.Authorization;
@@ -190,8 +191,16 @@ public abstract class HexalithApplication : IApplication
             }
             else
             {
-                _ = moduleMethod.Invoke(null, [services, configuration]);
-                Debug.WriteLine($"The services for module {module.Name} have been added.");
+                try
+                {
+                    _ = moduleMethod.Invoke(null, [services, configuration]);
+                    Debug.WriteLine($"The services for module {module.Name} have been added.");
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"An error occurred while adding services for module {module.Name}: {ex.FullMessage()}");
+                    throw new ApplicationModuleAddServicesException(module.Name, ex);
+                }
             }
         }
     }

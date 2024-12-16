@@ -17,7 +17,7 @@
   </PropertyGroup>
 
   <!-- Detect if the solution is opened in VS to limit the versions that are analyzed by Roslyn for performance reasons and set a local repository for packages -->
-  <PropertyGroup Condition="'$(BuildingInsideVisualStudio)' == 'true' or '$(BuildingByReSharper)' == 'true'">
+  <PropertyGroup Condition="'$(UseProjectReference)' == 'true'">
     <CommonTargetFrameworks>$(DefaultTargetFramework)</CommonTargetFrameworks>
   </PropertyGroup>
 
