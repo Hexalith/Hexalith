@@ -20,12 +20,15 @@ using Hexalith.Application.States;
 using Hexalith.Extensions.Helpers;
 using Hexalith.PolymorphicSerialization;
 
+using Microsoft.Extensions.Logging;
+
 /// <summary>
 /// Represents a service for sending requests asynchronously.
 /// </summary>
 public class ClientRequestService : IRequestService
 {
     private readonly HttpClient _client;
+    private readonly ILogger<ClientRequestService> _logger;
     private readonly ISessionService _sessionService;
     private readonly TimeProvider _timeProvider;
 
@@ -35,16 +38,21 @@ public class ClientRequestService : IRequestService
     /// <param name="client">The HTTP client.</param>
     /// <param name="sessionService">The user session service.</param>
     /// <param name="timeProvider">The time provider.</param>
+    /// <param name="logger">The logger.</param>
     public ClientRequestService(
         [NotNull] HttpClient client,
         [NotNull] ISessionService sessionService,
-        [NotNull] TimeProvider timeProvider)
+        [NotNull] TimeProvider timeProvider,
+        [NotNull] ILogger<ClientRequestService> logger)
     {
         ArgumentNullException.ThrowIfNull(timeProvider);
         ArgumentNullException.ThrowIfNull(client);
+        ArgumentNullException.ThrowIfNull(sessionService);
+        ArgumentNullException.ThrowIfNull(logger);
         _client = client;
         _sessionService = sessionService;
         _timeProvider = timeProvider;
+        _logger = logger;
     }
 
     /// <inheritdoc/>
@@ -90,6 +98,7 @@ public class ClientRequestService : IRequestService
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
     private async Task<TRequest> SubmitRequestAsync<TRequest>(TRequest request, Metadata metadata, CancellationToken cancellationToken)
+        where TRequest : PolymorphicRecordBase
     {
         ArgumentNullException.ThrowIfNull(request);
         ArgumentNullException.ThrowIfNull(metadata);
@@ -99,9 +108,21 @@ public class ClientRequestService : IRequestService
         }
 
         HttpResponseMessage response = await _client.PostAsJsonAsync("api/request/submit", new MessageState(recordBase, metadata), cancellationToken);
-        return (await response
+        if (!response.IsSuccessStatusCode)
+        {
+            throw new InvalidOperationException($"Request {metadata.Message.Name} failed on aggregate '{metadata.AggregateGlobalId}'. The response status code was {response.StatusCode}.");
+        }
+
+        MessageState? messageState = await response
             .Content
-            .ReadFromJsonAsync<TRequest>(cancellationToken: cancellationToken))
-                ?? throw new InvalidOperationException($"Request {metadata.Message.Name} failed on aggregate '{metadata.AggregateGlobalId}'. The response was null.");
+            .ReadFromJsonAsync<MessageState>(cancellationToken: cancellationToken);
+        if (messageState is null)
+        {
+            string value = await response.Content.ReadAsStringAsync(cancellationToken);
+            throw new InvalidOperationException($"Request {metadata.Message.Name} failed on aggregate '{metadata.AggregateGlobalId}'. Failed to deserialize response : " + value);
+        }
+
+        return messageState.MessageObject as TRequest
+            ?? throw new InvalidOperationException($"Request {metadata.Message.Name} failed on aggregate '{metadata.AggregateGlobalId}'. Expected response of type {typeof(TRequest).Name} but received {messageState.MessageObject.GetType().Name}.");
     }
 }

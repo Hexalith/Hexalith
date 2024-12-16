@@ -30,11 +30,11 @@ public class SimpleCommandHandler<TCommand>(
     protected Func<TCommand, PolymorphicRecordBase> ToEvent { get; } = toEvent;
 
     /// <inheritdoc/>
-    public override Task<ExecuteCommandResult> DoAsync(TCommand command, Metadata metadata, IDomainAggregate? aggregate, CancellationToken cancellationToken)
+    public override async Task<ExecuteCommandResult> DoAsync(TCommand command, Metadata metadata, IDomainAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
         PolymorphicRecordBase ev = ToEvent(command);
-        return Task.FromResult(
+        return await Task.FromResult(
             CheckAggregateIsValid<IDomainAggregate>(aggregate, metadata)
             .Apply(ev)
             .CreateCommandResult(ev, metadata, Time));

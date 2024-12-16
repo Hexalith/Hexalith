@@ -38,13 +38,13 @@ public class DependencyInjectionRequestProcessor : IRequestProcessor
     /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <returns>A task that represents the asynchronous operation. The task result contains the processed request.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the request or metadata is null.</exception>
-    public Task<object> ProcessAsync(object request, Metadata metadata, CancellationToken cancellationToken)
+    public async Task<object> ProcessAsync(object request, Metadata metadata, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(request);
         ArgumentNullException.ThrowIfNull(metadata);
         Type type = typeof(IRequestHandler<>).MakeGenericType(request.GetType());
         IRequestHandler handler = _services.GetRequiredService(type) as IRequestHandler
             ?? throw new InvalidOperationException($"No request handler found for request of type '{request.GetType().Name}'.");
-        return handler.ExecuteAsync(request, metadata, cancellationToken);
+        return await handler.ExecuteAsync(request, metadata, cancellationToken);
     }
 }

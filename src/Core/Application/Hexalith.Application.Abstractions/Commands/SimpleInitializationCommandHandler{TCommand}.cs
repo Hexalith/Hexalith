@@ -30,7 +30,7 @@ public class SimpleInitializationCommandHandler<TCommand>(
     public override Task<ExecuteCommandResult> DoAsync(TCommand command, Metadata metadata, IDomainAggregate? aggregate, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(command);
-        if (aggregate is null)
+        if (aggregate is null || string.IsNullOrWhiteSpace(aggregate.AggregateId))
         {
             PolymorphicRecordBase ev = ToEvent(command);
             aggregate = initializeAggregate(ev);
