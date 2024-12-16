@@ -1,12 +1,16 @@
-﻿@inject NavigationManager NavigationManager
+﻿@using Hexalith.Application.Modules.Applications
+@inject NavigationManager NavigationManager
+@inject Hexalith.DaprIdentityStore.Services.ILoginRedirectUrlService LoginRedirectUrlService
 @inject IApplication Application
 
 @code {
     protected override void OnInitialized()
     {
-        NavigationManager
-            .NavigateTo(
-                $"{Application.LoginPath}?returnUrl={Uri.EscapeDataString(NavigationManager.Uri)}", 
-                forceLoad: true);
+        var redirect = NavigationManager.Uri;
+        if (string.IsNullOrWhiteSpace(redirect))
+        {
+            redirect = Application.HomePath;
+        }
+        NavigationManager.NavigateTo(LoginRedirectUrlService.GetRedirect(redirect), forceLoad: true);
     }
 }

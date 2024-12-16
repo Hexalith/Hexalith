@@ -7,10 +7,9 @@
 @using System.Reflection
 @inject IOptions<FluentUIThemeSettings> ThemeSettings
 @inject IEnumerable<MenuItemInformation> MenuItems
-
-<FluentDesignSystemProvider AccentBaseColor="@ThemeSettings.Value.AccentBaseColor"
-							StrokeWidth="@ThemeSettings.Value.StrokeWidth"
-							FillColor="@ThemeSettings.Value.FillColor">
+<FluentDesignSystemProvider AccentBaseColor="@ThemeSettings?.Value.AccentBaseColor"
+							StrokeWidth="@ThemeSettings?.Value.StrokeWidth"
+							FillColor="@ThemeSettings?.Value.FillColor">
 
 	<FluentLayout Style="width:100%;">
 		<FluentHeader Style="height:60px;">

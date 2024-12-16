@@ -5,11 +5,14 @@
 
 namespace Hexalith.UI.Components.Helpers;
 
+using Hexalith.DaprIdentityStore.Client.Services;
+using Hexalith.DaprIdentityStore.Services;
 using Hexalith.Extensions.Configuration;
 using Hexalith.UI.Components.Configurations;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.FluentUI.AspNetCore.Components;
 
 /// <summary>
@@ -27,6 +30,7 @@ public static class ComponentsHelper
     {
         _ = services.ConfigureSettings<FluentUIThemeSettings>(configuration);
 
+        services.TryAddScoped<ILoginRedirectUrlService, LoginRedirectUrlService>();
         _ = services.AddFluentUIComponents();
         return services;
     }
