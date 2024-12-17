@@ -63,10 +63,12 @@ public static class ServerSideClientAppHelper
     /// </summary>
     /// <param name="services">The service collection.</param>
     /// <param name="configuration">The configuration.</param>
+    /// <param name="applicationName"></param>
     /// <returns>The updated service collection.</returns>
     public static IServiceCollection AddHexalithServerSideClientApp(
         this IServiceCollection services,
-        IConfiguration configuration)
+        IConfiguration configuration,
+        string applicationName)
     {
         HexalithApplicationAbstractions.RegisterPolymorphicMappers();
         _ = services
@@ -93,6 +95,7 @@ public static class ServerSideClientAppHelper
             ActorProxy.DefaultProxyFactory,
             false,
             s.GetRequiredService<ILogger<DomainActorCommandProcessor>>()));
+        _ = services.AddActorProjectionFactory<IdDescription>(applicationName);
         return services;
     }
 
@@ -133,7 +136,7 @@ public static class ServerSideClientAppHelper
             .Services
             .AddLocalization(options => options.ResourcesPath = "Resources")
             .AddProblemDetails()
-            .AddHexalithServerSideClientApp(builder.Configuration)
+            .AddHexalithServerSideClientApp(builder.Configuration, applicationName)
             .AddEndpointsApiExplorer()
             .AddSwaggerGen(c => c.SwaggerDoc("v1", new() { Title = applicationName, Version = version, }))
             .AddDaprBuses(builder.Configuration)

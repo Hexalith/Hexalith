@@ -109,6 +109,9 @@ public static partial class HexalithWebApi
             ActorProxy.DefaultProxyFactory,
             false,
             s.GetRequiredService<ILogger<DomainActorCommandProcessor>>()));
+
+        _ = builder.Services.AddActorProjectionFactory<IdDescription>(applicationName);
+
         HexalithApplication.AddApiServerServices(builder.Services, builder.Configuration);
 
         _ = builder.Services
