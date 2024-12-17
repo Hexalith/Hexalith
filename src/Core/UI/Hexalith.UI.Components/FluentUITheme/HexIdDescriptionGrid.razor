@@ -1,4 +1,4 @@
-﻿<FluentDataGrid TGridItem="ViewModels.IdDescription"
+﻿<FluentDataGrid TGridItem="IdDescription"
 	GenerateHeader="GenerateHeaderOption.Sticky"
 	Items="@Items"
 	OnRowClick="OnRowClick"
@@ -10,7 +10,7 @@
 @code
 {
 	[Parameter]
-	public IQueryable<ViewModels.IdDescription>? Items { get; set; }
+	public IQueryable<IdDescription>? Items { get; set; }
 
 	[Parameter]
 	public string? IdLabel { get; set; } = "Id";
@@ -18,7 +18,7 @@
 	[Parameter]
 	public string? DescriptionLabel { get; set; } = "Description";
 
-	private void OnRowClick(FluentDataGridRow<ViewModels.IdDescription> row)
+	private void OnRowClick(FluentDataGridRow<IdDescription> row)
 	{
 		if (row.Item is not null)
 		{

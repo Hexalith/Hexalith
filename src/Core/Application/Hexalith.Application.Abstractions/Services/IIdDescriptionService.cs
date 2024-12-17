@@ -3,13 +3,11 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.UI.Components.Services;
+namespace Hexalith.Application.Services;
 
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
-
-using Hexalith.UI.Components.ViewModels;
 
 /// <summary>
 /// Represents a service for retrieving identifier and description pairs.

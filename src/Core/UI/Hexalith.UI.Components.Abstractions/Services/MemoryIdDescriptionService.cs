@@ -12,10 +12,10 @@ using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Hexalith.UI.Components.ViewModels;
+using Hexalith.Application.Services;
 
 /// <summary>
-/// Represents a memory based implementation of the <see cref="Hexalith.UI.Components.Services.IIdDescriptionService" />.
+/// Represents a memory based implementation of the <see cref="Application.Services.IIdDescriptionService" />.
 /// </summary>
 public class MemoryIdDescriptionService : IIdDescriptionService
 {

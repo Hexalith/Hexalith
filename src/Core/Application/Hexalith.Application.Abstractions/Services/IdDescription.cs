@@ -3,8 +3,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.UI.Components.ViewModels;
-
+namespace Hexalith.Application.Services;
 /// <summary>
 /// Represents an identifier-description pair.
 /// </summary>
