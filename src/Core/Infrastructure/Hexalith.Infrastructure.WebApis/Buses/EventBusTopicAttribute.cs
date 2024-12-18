@@ -18,13 +18,13 @@ using Hexalith.Application;
 /// </summary>
 /// <seealso cref="TopicAttribute" />
 [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
-public abstract class EventBusTopicAttribute : BusTopicAttribute
+public class EventBusTopicAttribute : BusTopicAttribute
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="EventBusTopicAttribute" /> class.
     /// </summary>
     /// <param name="aggregateName">Name of the aggregate.</param>
-    protected EventBusTopicAttribute(string aggregateName)
+    public EventBusTopicAttribute(string aggregateName)
         : base(ApplicationConstants.EventBus, aggregateName + ApplicationConstants.EventBusSuffix)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(aggregateName);
