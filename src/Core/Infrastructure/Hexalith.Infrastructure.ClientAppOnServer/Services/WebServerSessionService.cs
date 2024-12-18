@@ -1,4 +1,4 @@
-﻿// <copyright file="ServerSessionService.cs" company="ITANEO">
+﻿// <copyright file="WebServerSessionService.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -19,7 +19,7 @@ using Microsoft.AspNetCore.Http;
 /// <summary>
 /// Service to manage server sessions.
 /// </summary>
-public class ServerSessionService : ISessionService
+public class WebServerSessionService : ISessionService
 {
     private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly IPartitionService _partitionService;
@@ -30,13 +30,13 @@ public class ServerSessionService : ISessionService
     private string? _userName;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ServerSessionService"/> class.
+    /// Initializes a new instance of the <see cref="WebServerSessionService"/> class.
     /// </summary>
     /// <param name="httpContextAccessor">The HTTP context accessor.</param>
     /// <param name="userPartitionService">The user partition service.</param>
     /// <param name="partitionService">The partition service.</param>
     /// <param name="timeProvider">The time provider.</param>
-    public ServerSessionService(
+    public WebServerSessionService(
         IHttpContextAccessor httpContextAccessor,
         IUserPartitionService userPartitionService,
         IPartitionService partitionService,

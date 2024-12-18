@@ -6,6 +6,7 @@
 namespace Hexalith.Application.Aggregates;
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 using Hexalith.Domain.Aggregates;
 
@@ -42,8 +43,9 @@ public class DomainAggregateFactory : IDomainAggregateFactory
     /// <param name="aggregateName">The name of the aggregate.</param>
     /// <returns>The provider for the specified aggregate name.</returns>
     /// <exception cref="InvalidOperationException">Thrown when the provider for the specified aggregate name is not found.</exception>
-    private IDomainAggregateProvider GetProvider(string aggregateName)
+    private IDomainAggregateProvider GetProvider([NotNull] string aggregateName)
     {
+        ArgumentException.ThrowIfNullOrWhiteSpace(aggregateName);
         return _aggregateProviders.TryGetValue(aggregateName, out IDomainAggregateProvider? value)
             ? value
             : throw new InvalidOperationException($"Provider for aggregate {aggregateName} not found in the service collection. Add the IDomainAggregateProvider singleton to the dependency injection.");

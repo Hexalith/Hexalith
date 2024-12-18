@@ -1,9 +1,9 @@
-﻿// <copyright file="ServerRequestService.cs" company="ITANEO">
+﻿// <copyright file="ApiServerRequestService.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.Infrastructure.ClientAppOnServer.Services;
+namespace Hexalith.Infrastructure.WebApis.Services;
 
 using System;
 using System.Diagnostics.CodeAnalysis;
@@ -20,19 +20,19 @@ using Hexalith.PolymorphicSerialization;
 /// <summary>
 /// Represents a service for sending requests asynchronously.
 /// </summary>
-public class ServerRequestService : IRequestService
+public class ApiServerRequestService : IRequestService
 {
     private readonly IRequestProcessor _requestProcessor;
     private readonly ISessionService _sessionService;
     private readonly TimeProvider _timeProvider;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ServerRequestService"/> class.
+    /// Initializes a new instance of the <see cref="ApiServerRequestService"/> class.
     /// </summary>
     /// <param name="requestProcessor">The request processor.</param>
     /// <param name="timeProvider">The time provider.</param>
     /// <param name="sessionService">The session service.</param>
-    public ServerRequestService(
+    public ApiServerRequestService(
         [NotNull] IRequestProcessor requestProcessor,
         [NotNull] TimeProvider timeProvider,
         [NotNull] ISessionService sessionService)

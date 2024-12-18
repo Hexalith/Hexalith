@@ -79,8 +79,8 @@ public static class ServerSideClientAppHelper
             .AddSingleton(TimeProvider.System)
             .AddSingleton<IRouteManager, RouteManager>()
             .AddScoped<ICommandService, ServerCommandService>()
-            .AddScoped<IRequestService, ServerRequestService>()
-            .AddScoped<ISessionService, ServerSessionService>()
+            .AddScoped<IRequestService, WebServerRequestService>()
+            .AddScoped<ISessionService, WebServerSessionService>()
             .AddScoped<IRequestProcessor, DependencyInjectionRequestProcessor>()
             .AddPartitions(configuration)
             .AddSessions();

@@ -23,6 +23,7 @@ using Hexalith.Application.Organizations.Helpers;
 using Hexalith.Application.Projections;
 using Hexalith.Application.Requests;
 using Hexalith.Application.Services;
+using Hexalith.Application.Sessions.Services;
 using Hexalith.Application.Tasks;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.AspireService.Defaults;
@@ -31,6 +32,7 @@ using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Partitions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Services;
 using Hexalith.Infrastructure.DaprRuntime.Sessions.Helpers;
+using Hexalith.Infrastructure.WebApis.Services;
 
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -102,6 +104,7 @@ public static partial class HexalithWebApi
         builder.Services.TryAddScoped<IProjectionUpdateProcessor, DependencyInjectionProjectionUpdateProcessor>();
         builder.Services.TryAddScoped<IIntegrationEventProcessor, IntegrationEventProcessor>();
         builder.Services.TryAddScoped<IIntegrationEventDispatcher, DependencyInjectionEventDispatcher>();
+        builder.Services.TryAddScoped<IRequestService, ApiServerRequestService>();
         builder.Services.TryAddSingleton<IDomainAggregateFactory, DomainAggregateFactory>();
         builder.Services.TryAddSingleton<IIdCollectionFactory, IdCollectionFactory>();
         builder.Services
@@ -117,6 +120,7 @@ public static partial class HexalithWebApi
         _ = builder.Services
             .AddOrganizations(builder.Configuration)
             .AddPartitions(builder.Configuration)
+            .AddScoped<ISessionService, ApiServerSessionService>()
             .AddSessions();
 
         return builder;
