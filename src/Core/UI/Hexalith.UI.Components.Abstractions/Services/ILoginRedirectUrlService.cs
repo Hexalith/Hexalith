@@ -3,7 +3,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.DaprIdentityStore.Services;
+namespace Hexalith.UI.Components.Services;
 
 /// <summary>
 /// Interface for a service that provides login redirect URLs.

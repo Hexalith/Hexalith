@@ -32,7 +32,7 @@
     <MicrosoftBotBuilderVersion>4.22.7</MicrosoftBotBuilderVersion>
     <MicrosoftCodeAnalysisCSharpVersion>4.12.0</MicrosoftCodeAnalysisCSharpVersion>
     <MicrosoftCodeAnalysisAnalyzersVersion>3.11.0</MicrosoftCodeAnalysisAnalyzersVersion>
-    <MicrosoftFluentUIComponentsVersion>4.10.4</MicrosoftFluentUIComponentsVersion>
+    <MicrosoftFluentUIComponentsVersion>4.11.0</MicrosoftFluentUIComponentsVersion>
     <MicrosoftIdentityClientVersion>4.66.2</MicrosoftIdentityClientVersion>
     <MicrosoftIdentityWebVersion>3.2.1</MicrosoftIdentityWebVersion>
     <MicrosoftNETTestSdkVersion>17.12.0</MicrosoftNETTestSdkVersion>
@@ -63,7 +63,7 @@
     <StyleCopAnalyzersVersion>1.2.0-beta.556</StyleCopAnalyzersVersion>
     <SwashbuckleAspNetCoreVersion>7.2.0</SwashbuckleAspNetCoreVersion>
     <SystemIdentityModelTokensJwtVersion>8.3.0</SystemIdentityModelTokensJwtVersion>
-    <XUnitRunnerVisualStudioVersion>2.8.2</XUnitRunnerVisualStudioVersion>
+    <XUnitRunnerVisualStudioVersion>3.0.0</XUnitRunnerVisualStudioVersion>
     <XUnitVersion>2.9.2</XUnitVersion>
   </PropertyGroup>
 </Project>

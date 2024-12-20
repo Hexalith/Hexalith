@@ -5,10 +5,9 @@
 
 namespace Hexalith.UI.Components.Helpers;
 
-using Hexalith.DaprIdentityStore.Client.Services;
-using Hexalith.DaprIdentityStore.Services;
 using Hexalith.Extensions.Configuration;
 using Hexalith.UI.Components.Configurations;
+using Hexalith.UI.Components.Services;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

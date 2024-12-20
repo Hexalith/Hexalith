@@ -17,50 +17,6 @@ using Microsoft.FluentUI.AspNetCore.Components;
 public static class IconHelper
 {
     /// <summary>
-    /// Converts an <see cref="IconInformation"/> to a Tab <see cref="Icon"/>.
-    /// </summary>
-    /// <param name="icon">The <see cref="IconInformation"/> to convert.</param>
-    /// <returns>The converted <see cref="Icon"/>.</returns>
-    public static Icon? ToFluentTabIcon(this IconInformation? icon)
-    {
-        return icon == null
-            ? null
-            : icon.Source switch
-            {
-                IconSource.Fluent => Icons.GetInstance(new IconInfo
-                {
-                    Name = icon.Name,
-                    Size = GetIconSize(icon.Size),
-                    Variant = GetIconStyle(icon.Style),
-                }),
-                IconSource.FontAwesome => FontAwesomeIcons.GetTabIcon(icon),
-                _ => throw new ArgumentOutOfRangeException(nameof(icon), icon.Source, $"Invalid icon source : {icon.Source}"),
-            };
-    }
-
-    /// <summary>
-    /// Converts an <see cref="IconInformation"/> to a Nav <see cref="Icon"/>.
-    /// </summary>
-    /// <param name="icon">The <see cref="IconInformation"/> to convert.</param>
-    /// <returns>The converted <see cref="Icon"/>.</returns>
-    public static Icon? ToFluentNavIcon(this IconInformation? icon)
-    {
-        return icon == null
-            ? null
-            : icon.Source switch
-            {
-                IconSource.Fluent => Icons.GetInstance(new IconInfo
-                {
-                    Name = icon.Name,
-                    Size = GetIconSize(icon.Size),
-                    Variant = GetIconStyle(icon.Style),
-                }),
-                IconSource.FontAwesome => FontAwesomeIcons.GetNavIcon(icon),
-                _ => throw new ArgumentOutOfRangeException(nameof(icon), icon.Source, $"Invalid icon source : {icon.Source}"),
-            };
-    }
-
-    /// <summary>
     /// Gets the <see cref="IconSize"/> based on the provided size.
     /// </summary>
     /// <param name="size">The size of the icon.</param>
@@ -78,6 +34,50 @@ public static class IconHelper
             : size < (int)IconSize.Size28
             ? IconSize.Size24
             : size < (int)IconSize.Size32 ? IconSize.Size28 : size < (int)IconSize.Size48 ? IconSize.Size32 : IconSize.Size48;
+    }
+
+    /// <summary>
+    /// Converts an <see cref="IconInformation"/> to a Nav <see cref="Icon"/>.
+    /// </summary>
+    /// <param name="icon">The <see cref="IconInformation"/> to convert.</param>
+    /// <returns>The converted <see cref="Icon"/>.</returns>
+    public static Icon? ToFluentNavIcon(this IconInformation? icon)
+    {
+        return icon == null
+            ? null
+            : icon.Source switch
+            {
+                IconSource.Fluent => new IconInfo
+                {
+                    Name = icon.Name,
+                    Size = GetIconSize(icon.Size),
+                    Variant = GetIconStyle(icon.Style),
+                }.GetInstance(),
+                IconSource.FontAwesome => FontAwesomeIcons.GetNavIcon(icon),
+                _ => throw new ArgumentOutOfRangeException(nameof(icon), icon.Source, $"Invalid icon source : {icon.Source}"),
+            };
+    }
+
+    /// <summary>
+    /// Converts an <see cref="IconInformation"/> to a Tab <see cref="Icon"/>.
+    /// </summary>
+    /// <param name="icon">The <see cref="IconInformation"/> to convert.</param>
+    /// <returns>The converted <see cref="Icon"/>.</returns>
+    public static Icon? ToFluentTabIcon(this IconInformation? icon)
+    {
+        return icon == null
+            ? null
+            : icon.Source switch
+            {
+                IconSource.Fluent => new IconInfo
+                {
+                    Name = icon.Name,
+                    Size = GetIconSize(icon.Size),
+                    Variant = GetIconStyle(icon.Style),
+                }.GetInstance(),
+                IconSource.FontAwesome => FontAwesomeIcons.GetTabIcon(icon),
+                _ => throw new ArgumentOutOfRangeException(nameof(icon), icon.Source, $"Invalid icon source : {icon.Source}"),
+            };
     }
 
     /// <summary>
