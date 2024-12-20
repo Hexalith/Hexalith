@@ -63,7 +63,7 @@ public static class ServerSideClientAppHelper
     /// </summary>
     /// <param name="services">The service collection.</param>
     /// <param name="configuration">The configuration.</param>
-    /// <param name="applicationName"></param>
+    /// <param name="applicationName">The name of the application.</param>
     /// <returns>The updated service collection.</returns>
     public static IServiceCollection AddHexalithServerSideClientApp(
         this IServiceCollection services,
