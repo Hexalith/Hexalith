@@ -66,7 +66,7 @@ public class WebServerRequestService : IRequestService
 
         return await _requestProcessor
             .ProcessAsync(request, metadata, cancellationToken)
-            .ConfigureAwait(false) as TRequest
+            .ConfigureAwait(false)
                 ?? throw new InvalidOperationException(
                     $"Request processor returned a null or invalid object while processing the '{metadata.Message.Name}' request.");
     }

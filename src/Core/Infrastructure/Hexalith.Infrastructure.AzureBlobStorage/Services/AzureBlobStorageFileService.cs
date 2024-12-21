@@ -101,6 +101,8 @@ public class AzureBlobStorageFileService : IFileService
         }
     }
 
+    public Task UploadAsync(string containerName, string fileId, object data, IDictionary<string, string> tags, CancellationToken cancellationToken) => throw new NotImplementedException();
+
     private BlobServiceClient CreateBlobServiceClient()
     {
         if (_blobServiceClient is not null)

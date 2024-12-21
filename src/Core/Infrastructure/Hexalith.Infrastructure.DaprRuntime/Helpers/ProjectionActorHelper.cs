@@ -43,14 +43,9 @@ public static class ProjectionActorHelper
     /// Gets the name of the projection actor.
     /// </summary>
     /// <typeparam name="TState">The type of the t state.</typeparam>
-    /// <param name="applicationName">Name of the application.</param>
     /// <returns>System.String.</returns>
     /// <exception cref="ArgumentNullException">null.</exception>
-    public static string GetProjectionActorName<TState>(string applicationName)
-    {
-        ArgumentException.ThrowIfNullOrWhiteSpace(applicationName);
-        return applicationName + typeof(TState).Name + "Projection";
-    }
+    public static string GetProjectionActorName<TState>() => typeof(TState).Name + "Projection";
 
     /// <summary>
     /// Gets the name of the projection actor.
@@ -71,18 +66,16 @@ public static class ProjectionActorHelper
     /// </summary>
     /// <typeparam name="TState">The type of the t state.</typeparam>
     /// <param name="actorRegistrationCollection">The actor registration collection.</param>
-    /// <param name="applicationId">Name of the application.</param>
     /// <exception cref="ArgumentNullException">null.</exception>
-    public static void RegisterProjectionActor<TState>(this ActorRegistrationCollection actorRegistrationCollection, string applicationId)
+    public static void RegisterProjectionActor<TState>(this ActorRegistrationCollection actorRegistrationCollection)
     {
         ArgumentNullException.ThrowIfNull(actorRegistrationCollection);
-        ArgumentException.ThrowIfNullOrWhiteSpace(applicationId);
         if (actorRegistrationCollection.Any(p =>
-            p.Type.ActorTypeName == GetProjectionActorName<TState>(applicationId)))
+            p.Type.ActorTypeName == GetProjectionActorName<TState>()))
         {
             return;
         }
 
-        actorRegistrationCollection.RegisterActor<KeyValueActor>(GetProjectionActorName<TState>(applicationId));
+        actorRegistrationCollection.RegisterActor<KeyValueActor>(GetProjectionActorName<TState>());
     }
 }

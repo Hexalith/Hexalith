@@ -60,7 +60,7 @@ public class ActorProjectionFactory<TState> : IProjectionFactory<TState>
     /// Gets the name of the projection actor.
     /// </summary>
     /// <value>The name of the projection actor.</value>
-    public string ProjectionActorName => _projectionName ??= ProjectionActorHelper.GetProjectionActorName<TState>(ApplicationName);
+    public string ProjectionActorName => _projectionName ??= ProjectionActorHelper.GetProjectionActorName<TState>();
 
     /// <summary>
     /// Gets the actor factory.

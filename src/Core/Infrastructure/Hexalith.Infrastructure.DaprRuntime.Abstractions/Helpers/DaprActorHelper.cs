@@ -6,6 +6,11 @@
 namespace Hexalith.Infrastructure.DaprRuntime.Helpers;
 
 using Dapr.Actors;
+using Dapr.Actors.Client;
+using Dapr.Actors.Runtime;
+
+using Hexalith.Application.Metadatas;
+using Hexalith.Infrastructure.DaprRuntime.Actors;
 
 /// <summary>
 /// Provides helper methods for working with Dapr Actors, specifically for converting between string identifiers and ActorId objects.
@@ -16,6 +21,8 @@ using Dapr.Actors;
 /// </remarks>
 public static class DaprActorHelper
 {
+    private const string _actorSuffix = "Aggregate";
+
     /// <summary>
     /// Converts a string identifier to an ActorId.
     /// </summary>
@@ -34,6 +41,61 @@ public static class DaprActorHelper
             .Replace(" ", "!1")
             .Replace("/", "!2");
         return new ActorId(Uri.EscapeDataString(id.Trim()));
+    }
+
+    /// <summary>
+    /// Gets the name of the aggregate actor.
+    /// </summary>
+    /// <param name="aggregateName">Name of the aggregate.</param>
+    /// <returns>string.</returns>
+    public static string ToAggregateActorName(this string aggregateName) => aggregateName + _actorSuffix;
+
+    /// <summary>
+    /// Converts an ActorTypeInformation to its aggregate name.
+    /// </summary>
+    /// <param name="typeName">The ActorTypeInformation to convert.</param>
+    /// <returns>The aggregate name as a string.</returns>
+    public static string ToAggregateName(this ActorTypeInformation typeName) => typeName.ActorTypeName.Split(nameof(_actorSuffix)).First();
+
+    /// <summary>
+    /// Creates a proxy for a domain aggregate actor.
+    /// </summary>
+    /// <param name="actorProxy">The actor proxy factory.</param>
+    /// <param name="aggregateName">The name of the aggregate.</param>
+    /// <param name="aggregateGlobalId">The identifier of the aggregate.</param>
+    /// <param name="timeout">The optional request timeout.</param>
+    /// <returns>An <see cref="IDomainAggregateActor"/> proxy.</returns>
+    /// <remarks>
+    /// This method creates a proxy for a domain aggregate actor using the specified actor proxy factory, aggregate name, and aggregate identifier.
+    /// It allows for an optional request timeout to be specified.
+    /// </remarks>
+    public static IDomainAggregateActor ToDomainAggregateActor(this IActorProxyFactory actorProxy, string aggregateName, string aggregateGlobalId, TimeSpan? timeout = null)
+    {
+        ArgumentNullException.ThrowIfNull(aggregateGlobalId);
+        return actorProxy.CreateActorProxy<IDomainAggregateActor>(
+            aggregateGlobalId.ToActorId(),
+            aggregateName.ToAggregateActorName(),
+            new ActorProxyOptions { RequestTimeout = timeout });
+    }
+
+    /// <summary>
+    /// Creates a proxy for a domain aggregate actor using metadata.
+    /// </summary>
+    /// <param name="actorProxy">The actor proxy factory.</param>
+    /// <param name="metadata">The metadata containing aggregate information.</param>
+    /// <param name="timeout">The optional request timeout.</param>
+    /// <returns>An <see cref="IDomainAggregateActor"/> proxy.</returns>
+    /// <remarks>
+    /// This method creates a proxy for a domain aggregate actor using the specified actor proxy factory and metadata.
+    /// It allows for an optional request timeout to be specified.
+    /// </remarks>
+    public static IDomainAggregateActor ToDomainAggregateActor(this IActorProxyFactory actorProxy, Metadata metadata, TimeSpan? timeout = null)
+    {
+        ArgumentNullException.ThrowIfNull(metadata);
+        ArgumentException.ThrowIfNullOrWhiteSpace(metadata.AggregateGlobalId);
+        ArgumentException.ThrowIfNullOrWhiteSpace(metadata.Message.Aggregate.Name);
+
+        return actorProxy.ToDomainAggregateActor(metadata.Message.Aggregate.Name, metadata.AggregateGlobalId, timeout);
     }
 
     /// <summary>

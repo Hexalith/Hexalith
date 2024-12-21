@@ -5,44 +5,45 @@
 
 namespace Hexalith.Extensions.Helpers;
 
+using System;
 using System.Globalization;
 
-/// <summary>
-/// Unique Id generators.
-/// </summary>
 public static class UniqueIdHelper
 {
-    private static readonly Lock _lock = new();
-    private static string? _previousDateTimeId;
+    private static readonly object _lock = new();
+    private static DateTime _lastUsedDateTime = DateTime.MinValue;
 
     /// <summary>
-    /// Generate a new unique id of 17 characters from the current date time (yyyyMMddHHmmssfff). Only one Id per millisecond can be generated.
+    /// Generates a new unique ID based on the current UTC date/time with the format "yyyyMMddHHmmssfff".
+    /// It ensures uniqueness by incrementing the time if multiple calls occur within the same millisecond.
     /// </summary>
-    /// <returns>Id string.</returns>
+    /// <returns>A unique 17-character ID string derived from the current date/time.</returns>
     public static string GenerateDateTimeId()
     {
         lock (_lock)
         {
-            string value = DateTime.UtcNow.ToString("yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
-            while (string.Equals(value, _previousDateTimeId, StringComparison.Ordinal))
+            DateTime now = DateTime.UtcNow;
+
+            // If now is not strictly greater than the last used timestamp, increment the last timestamp by one millisecond.
+            if (now <= _lastUsedDateTime)
             {
-                Thread.Sleep(1);
-                value = DateTime.UtcNow.ToString("yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
+                now = _lastUsedDateTime.AddMilliseconds(1);
             }
 
-            return _previousDateTimeId = value;
+            _lastUsedDateTime = now;
+            return now.ToString("yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
         }
     }
 
     /// <summary>
-    /// Generate a new unique id of 22 characters.
+    /// Generates a unique 22-character ID string derived from a GUID encoded in Base64 URL-safe format.
     /// </summary>
-    /// <returns>Id string.</returns>
+    /// <returns>A 22-character unique ID string.</returns>
     public static string GenerateUniqueStringId()
     {
         return Convert
-                .ToBase64String(Guid.NewGuid().ToByteArray())[..22]
-                .Replace("/", "_", StringComparison.InvariantCulture)
-                .Replace("+", "-", StringComparison.InvariantCulture);
+            .ToBase64String(Guid.NewGuid().ToByteArray())[..22]
+            .Replace("/", "_", StringComparison.InvariantCulture)
+            .Replace("+", "-", StringComparison.InvariantCulture);
     }
 }

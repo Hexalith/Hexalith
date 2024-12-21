@@ -76,12 +76,12 @@ public partial class DomainActorCommandProcessor : IDomainCommandProcessor
     /// <param name="logger">The logger instance to use.</param>
     /// <param name="commandName">The name of the command being sent.</param>
     /// <param name="aggregateGlobalId">The global identifier of the target aggregate.</param>
-    /// <param name="actorName">The name of the target actor.</param>
+    /// <param name="aggregateName">The name of the aggregate.</param>
     [LoggerMessage(
                 EventId = 2,
                 Level = LogLevel.Information,
-                Message = "Sending command {CommandName} to actor {ActorName} for aggregate {AggregateGlobalId}.")]
-    public static partial void LogSendingCommandToActor(ILogger logger, string commandName, string aggregateGlobalId, string actorName);
+                Message = "Sending command {CommandName} to actor for aggregate {AggregateName} with global Id {AggregateGlobalId}.")]
+    public static partial void LogSendingCommandToActor(ILogger logger, string commandName, string aggregateGlobalId, string aggregateName);
 
     /// <summary>
     /// Submits a command to be processed by the appropriate domain aggregate actor.
@@ -101,30 +101,29 @@ public partial class DomainActorCommandProcessor : IDomainCommandProcessor
     {
         ArgumentNullException.ThrowIfNull(command);
         ArgumentNullException.ThrowIfNull(metadata);
-        string actorName = DomainAggregateActorBase.GetAggregateActorName(metadata.Message.Aggregate.Name);
         try
         {
-            LogSendingCommandToActor(_logger, metadata.Message.Name, metadata.AggregateGlobalId, actorName);
-            Dapr.Actors.ActorId actorId = metadata.AggregateGlobalId.ToActorId();
+            LogSendingCommandToActor(_logger, metadata.Message.Name, metadata.AggregateGlobalId, metadata.Message.Aggregate.Name);
             if (_actorPolymorphicSerialization && command is PolymorphicRecordBase polymorphicCommand)
             {
-                IDomainAggregateActor actor = _actorProxy.CreateActorProxy<IDomainAggregateActor>(
-                    actorId,
-                    actorName,
-                    new ActorProxyOptions { JsonSerializerOptions = PolymorphicHelper.DefaultJsonSerializerOptions, UseJsonSerialization = true });
-                await actor.SubmitCommandAsStateAsync(new MessageState(polymorphicCommand, metadata)).ConfigureAwait(false);
+                await _actorProxy
+                    .ToDomainAggregateActor(metadata)
+                    .SubmitCommandAsStateAsync(new MessageState(polymorphicCommand, metadata))
+                    .ConfigureAwait(false);
             }
             else
             {
-                IDomainAggregateActor actor = _actorProxy.CreateActorProxy<IDomainAggregateActor>(actorId, actorName);
                 ActorMessageEnvelope envelope = ActorMessageEnvelope.Create(command, metadata);
                 string json = JsonSerializer.Serialize(envelope, PolymorphicHelper.DefaultJsonSerializerOptions);
-                await actor.SubmitCommandAsJsonAsync(json).ConfigureAwait(false);
+                await _actorProxy
+                    .ToDomainAggregateActor(metadata)
+                    .SubmitCommandAsJsonAsync(json)
+                    .ConfigureAwait(false);
             }
         }
         catch (Exception e)
         {
-            throw new InvalidOperationException($"Fail to call actor {actorName} method '{nameof(IDomainAggregateActor.SubmitCommandAsync)}'.", e);
+            throw new InvalidOperationException($"Fail to call actor for aggregate {metadata.AggregateGlobalId} method '{nameof(IDomainAggregateActor.SubmitCommandAsync)}'.", e);
         }
     }
 }

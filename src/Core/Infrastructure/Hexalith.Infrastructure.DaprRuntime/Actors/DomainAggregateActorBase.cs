@@ -37,7 +37,6 @@ using Microsoft.Extensions.Logging;
 /// </summary>
 public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDomainAggregateActor
 {
-    private const string _actorSuffix = "Aggregate";
     private readonly IDomainAggregateFactory _aggregateFactory;
     private readonly ICommandBus _commandBus;
     private readonly IDomainCommandDispatcher _commandDispatcher;
@@ -123,13 +122,6 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     private ResiliencyPolicy ResiliencyPolicy
         => _resiliencyPolicy
         ??= _resiliencyPolicyProvider.GetPolicy(Host.ActorTypeInfo.ActorTypeName);
-
-    /// <summary>
-    /// Gets the name of the aggregate actor.
-    /// </summary>
-    /// <param name="aggregateName">Name of the aggregate.</param>
-    /// <returns>string.</returns>
-    public static string GetAggregateActorName(string aggregateName) => aggregateName + _actorSuffix;
 
     /// <summary>
     /// Logs the accepted command information.
@@ -373,7 +365,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
 
         object command = envelope.MessageObject;
         Metadata metadata = envelope.Metadata;
-        if (GetAggregateActorName(metadata.Message.Aggregate.Name) != Host.ActorTypeInfo.ActorTypeName)
+        if (DaprActorHelper.ToAggregateActorName(metadata.Message.Aggregate.Name) != Host.ActorTypeInfo.ActorTypeName)
         {
             throw new InvalidOperationException($"Submitted command to {Host.ActorTypeInfo.ActorTypeName}/{Id} has an invalid aggregate name : {metadata.Message.Aggregate.Name}.");
         }
@@ -488,7 +480,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
 
     private async Task<MessageState?> GetSnapshotEventAsync(CancellationToken cancellationToken)
     {
-        string aggregateName = Host.ActorTypeInfo.ActorTypeName.Split(nameof(_actorSuffix)).First();
+        string aggregateName = Host.ActorTypeInfo.ToAggregateName();
         AggregateActorState state = await GetAggregateStateAsync(cancellationToken).ConfigureAwait(false);
 
         IDomainAggregate aggregate = _aggregateFactory.Create(aggregateName);
@@ -619,9 +611,9 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             throw new InvalidOperationException($"Command {metadata.Message.Name} aggregate key '{metadata.AggregateGlobalId}' is invalid: Expected : {Id.ToUnescapeString()}.");
         }
 
-        if (GetAggregateActorName(metadata.Message.Aggregate.Name) != Host.ActorTypeInfo.ActorTypeName)
+        if (DaprActorHelper.ToAggregateActorName(metadata.Message.Aggregate.Name) != Host.ActorTypeInfo.ActorTypeName)
         {
-            throw new InvalidOperationException($"Command {metadata.Message.Name} for '{metadata.AggregateGlobalId}' has an invalid aggregate actor name '{GetAggregateActorName(metadata.Message.Aggregate.Name)}'. Expected : {Host.ActorTypeInfo.ActorTypeName}.");
+            throw new InvalidOperationException($"Command {metadata.Message.Name} for '{metadata.AggregateGlobalId}' has an invalid aggregate actor name '{DaprActorHelper.ToAggregateActorName(metadata.Message.Aggregate.Name)}'. Expected : {Host.ActorTypeInfo.ActorTypeName}.");
         }
 
         IDomainAggregate aggregate = await GetAggregateAsync(
