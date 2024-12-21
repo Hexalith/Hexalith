@@ -22,15 +22,4 @@ public interface IRequestProcessor
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task that represents the asynchronous operation. The task result contains the processed request.</returns>
     Task<object> ProcessAsync(object request, Metadata metadata, CancellationToken cancellationToken);
-
-    /// <summary>
-    /// Processes the specified request asynchronously.
-    /// </summary>
-    /// <typeparam name="T">The type of the request.</typeparam>
-    /// <param name="request">The request to process.</param>
-    /// <param name="metadata">The metadata associated with the request.</param>
-    /// <param name="cancellationToken">The cancellation token.</param>
-    /// <returns>A task that represents the asynchronous operation. The task result contains the processed request.</returns>
-    async Task<T> ProcessAsync<T>(T request, Metadata metadata, CancellationToken cancellationToken)
-        => await ProcessAsync(request, metadata, cancellationToken);
 }
