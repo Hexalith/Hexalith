@@ -15,7 +15,7 @@ using System.Threading;
 public static class UniqueIdHelper
 {
     private static readonly Lock _lock = new();
-    private static DateTime _lastUsedDateTime = DateTime.MinValue;
+    private static DateTime _previous = DateTime.MinValue;
 
     /// <summary>
     /// Generates a new unique ID based on the current UTC date/time with the format "yyyyMMddHHmmssfff".
@@ -26,16 +26,15 @@ public static class UniqueIdHelper
     {
         lock (_lock)
         {
+            string current;
             DateTime now = DateTime.UtcNow;
-
-            // If now is not strictly greater than the last used timestamp, increment the last timestamp by one millisecond.
-            if (now <= _lastUsedDateTime)
+            DateTime currentDateTime = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second, now.Millisecond);
+            while (currentDateTime <= _previous)
             {
-                now = _lastUsedDateTime.AddMilliseconds(1);
+                currentDateTime = currentDateTime.AddMilliseconds(1);
             }
-
-            _lastUsedDateTime = now;
-            return now.ToString("yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
+            _previous = currentDateTime;
+            return currentDateTime.ToString("yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
         }
     }
 

@@ -1,4 +1,4 @@
-﻿// <copyright file="AggregateActorTest{submit}.cs" company="ITANEO">
+// <copyright file="AggregateActorTest{submit}.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -49,7 +49,7 @@ public partial class AggregateActorTest
         DummyTimerManager timerManager = new();
         Metadata metadata = CreateMetadata(command);
         ActorHost host = ActorHost.CreateForTest<DomainAggregateActor>(
-            DomainAggregateActorBase.GetAggregateActorName(command.AggregateName),
+            command.AggregateName.ToAggregateActorName(),
             new ActorTestOptions
             {
                 ActorId = metadata.AggregateGlobalId.ToActorId(),
@@ -142,7 +142,7 @@ public partial class AggregateActorTest
     public async Task SubmitCommandToActorWithIdMismatchShouldThrowException()
     {
         DummyAggregateCommand1 command = new("123456", "Hello");
-        ActorHost host = ActorHost.CreateForTest<DomainAggregateActor>(DomainAggregateActorBase.GetAggregateActorName(command.AggregateName), new ActorTestOptions
+        ActorHost host = ActorHost.CreateForTest<DomainAggregateActor>(command.AggregateName.ToAggregateActorName(), new ActorTestOptions
         {
             ActorId = new ActorId("2594223"),
         });
@@ -222,7 +222,7 @@ public partial class AggregateActorTest
         DummyTimerManager timerManager = new();
         Metadata metadata = CreateMetadata(command);
         ActorHost host = ActorHost.CreateForTest<DomainAggregateActor>(
-            DomainAggregateActorBase.GetAggregateActorName(command.AggregateName),
+            command.AggregateName.ToAggregateActorName(),
             new ActorTestOptions
             {
                 ActorId = metadata.AggregateGlobalId.ToActorId(),

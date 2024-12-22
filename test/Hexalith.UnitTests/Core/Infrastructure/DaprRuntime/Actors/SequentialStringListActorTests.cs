@@ -1,4 +1,4 @@
-﻿// <copyright file="SequentialStringListActorTests.cs" company="ITANEO">
+// <copyright file="SequentialStringListActorTests.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -104,7 +104,7 @@ public class SequentialStringListActorTests
     {
         // Arrange
         // Assume page 0 is full
-        List<string> fullPageData = Enumerable.Range(0, 1024).Select(i => $"value{i}").ToList();
+        List<string> fullPageData = [.. Enumerable.Range(0, 1024).Select(i => $"value{i}")];
 
         _ = _stateManagerMock
             .Setup(x => x.TryGetStateAsync<IEnumerable<string>>("0", It.IsAny<CancellationToken>()))

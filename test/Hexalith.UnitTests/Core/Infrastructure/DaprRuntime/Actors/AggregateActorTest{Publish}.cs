@@ -1,4 +1,4 @@
-﻿// <copyright file="AggregateActorTest{Publish}.cs" company="ITANEO">
+// <copyright file="AggregateActorTest{Publish}.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -19,6 +19,7 @@ using Hexalith.Application.States;
 using Hexalith.Application.Tasks;
 using Hexalith.Infrastructure.DaprRuntime;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
+using Hexalith.Infrastructure.DaprRuntime.Helpers;
 
 using Moq;
 
@@ -43,7 +44,7 @@ public partial class AggregateActorTest
         DummyTimerManager timerManager = new();
         ActorHost host = ActorHost.CreateForTest(
             typeof(DomainAggregateActor),
-            DomainAggregateActorBase.GetAggregateActorName(message.AggregateName),
+            message.AggregateName.ToAggregateActorName(),
             new ActorTestOptions
             {
                 ActorId = new ActorId(message.AggregateId),
@@ -126,7 +127,7 @@ public partial class AggregateActorTest
         DummyTimerManager timerManager = new();
         ActorHost host = ActorHost.CreateForTest(
             typeof(DomainAggregateActor),
-            DomainAggregateActorBase.GetAggregateActorName(message.AggregateName),
+            message.AggregateName.ToAggregateActorName(),
             new ActorTestOptions
             {
                 ActorId = new ActorId(message.AggregateId),
@@ -215,7 +216,7 @@ public partial class AggregateActorTest
         DummyTimerManager timerManager = new();
         ActorHost host = ActorHost.CreateForTest(
             typeof(DomainAggregateActor),
-            DomainAggregateActorBase.GetAggregateActorName(message.AggregateName),
+            message.AggregateName.ToAggregateActorName(),
             new ActorTestOptions
             {
                 ActorId = new ActorId(message.AggregateId),

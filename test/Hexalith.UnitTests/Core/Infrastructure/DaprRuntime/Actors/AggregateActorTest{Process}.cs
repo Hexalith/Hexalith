@@ -1,4 +1,4 @@
-﻿// <copyright file="AggregateActorTest{Process}.cs" company="ITANEO">
+// <copyright file="AggregateActorTest{Process}.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -59,7 +59,7 @@ public partial class AggregateActorTest
         DummyTimerManager timerManager = new();
         ActorHost host = ActorHost.CreateForTest(
             typeof(DomainAggregateActor),
-            DomainAggregateActorBase.GetAggregateActorName(command.AggregateName),
+            command.AggregateName.ToAggregateActorName(),
             new ActorTestOptions
             {
                 ActorId = actorId,
@@ -88,7 +88,7 @@ public partial class AggregateActorTest
             TimeSpan.FromDays(10),
             false);
         resiliencyPolicyProvider
-            .Setup(p => p.GetPolicy(It.Is<string>(s => s == DomainAggregateActorBase.GetAggregateActorName(DummyAggregate.GetAggregateName()))))
+            .Setup(p => p.GetPolicy(It.Is<string>(s => s == DummyAggregate.GetAggregateName().ToAggregateActorName())))
             .Returns(resiliencyPolicy)
             .Verifiable(Times.Once);
 
@@ -203,7 +203,7 @@ public partial class AggregateActorTest
         Metadata metadata = CreateMetadata(command8);
         ActorHost host = ActorHost.CreateForTest(
             typeof(DomainAggregateActor),
-            DomainAggregateActorBase.GetAggregateActorName(command8.AggregateName),
+            command8.AggregateName.ToAggregateActorName(),
             new ActorTestOptions
             {
                 ActorId = metadata.AggregateGlobalId.ToActorId(),
@@ -240,7 +240,7 @@ public partial class AggregateActorTest
             .Verifiable(Times.Once);
 
         resiliencyPolicyProvider
-            .Setup(p => p.GetPolicy(It.Is<string>(s => s == DomainAggregateActorBase.GetAggregateActorName(DummyAggregate.GetAggregateName()))))
+            .Setup(p => p.GetPolicy(It.Is<string>(s => s == DummyAggregate.GetAggregateName().ToAggregateActorName())))
             .Returns(ResiliencyPolicy.None)
             .Verifiable(Times.Once);
 
@@ -440,7 +440,7 @@ public partial class AggregateActorTest
             .Returns(Task.CompletedTask)
             .Verifiable(Times.Once);
         /*
-        quels sont les boitiers d'interphone qui permettent d'ouvrir à distance? Adaptables sur des interphones collectifs existants
+        quels sont les boitiers d'interphone qui permettent d'ouvrir � distance? Adaptables sur des interphones collectifs existants
         */
         actorStateManager
             .Setup(s => s.SetStateAsync<long>(
@@ -612,7 +612,7 @@ public partial class AggregateActorTest
         DummyTimerManager timerManager = new();
         ActorHost host = ActorHost.CreateForTest(
             typeof(DomainAggregateActor),
-            DomainAggregateActorBase.GetAggregateActorName(command.AggregateName),
+            command.AggregateName.ToAggregateActorName(),
             new ActorTestOptions
             {
                 ActorId = actorId,
@@ -636,7 +636,7 @@ public partial class AggregateActorTest
             .Verifiable(Times.Once);
 
         resiliencyPolicyProvider
-            .Setup(p => p.GetPolicy(It.Is<string>(s => s == DomainAggregateActorBase.GetAggregateActorName(DummyAggregate.GetAggregateName()))))
+            .Setup(p => p.GetPolicy(It.Is<string>(s => s == DummyAggregate.GetAggregateName().ToAggregateActorName())))
             .Returns(ResiliencyPolicy.None)
             .Verifiable(Times.Once);
 
