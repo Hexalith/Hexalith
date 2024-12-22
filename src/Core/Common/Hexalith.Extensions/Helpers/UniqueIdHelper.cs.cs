@@ -1,4 +1,4 @@
-﻿// <copyright file="UniqueIdHelper.cs.cs" company="ITANEO">
+// <copyright file="UniqueIdHelper.cs.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -7,10 +7,14 @@ namespace Hexalith.Extensions.Helpers;
 
 using System;
 using System.Globalization;
+using System.Threading;
 
+/// <summary>
+/// Provides helper methods for generating unique IDs.
+/// </summary>
 public static class UniqueIdHelper
 {
-    private static readonly object _lock = new();
+    private static readonly Lock _lock = new();
     private static DateTime _lastUsedDateTime = DateTime.MinValue;
 
     /// <summary>

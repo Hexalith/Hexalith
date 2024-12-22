@@ -1,4 +1,4 @@
-﻿// <copyright file="AzureBlobStorageFileService.cs" company="ITANEO">
+// <copyright file="AzureBlobStorageFileService.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -101,6 +101,14 @@ public class AzureBlobStorageFileService : IFileService
         }
     }
 
+    /// <summary>
+    /// Uploads a file to Azure Blob Storage.
+    /// </summary>
+    /// <param name="containerName">The name of the container where the file is stored.</param>
+    /// <param name="fileId">The unique identifier for the file in blob storage.</param>
+    /// <param name="data">The data to upload.</param>
+    /// <param name="tags">Optional metadata tags to associate with the blob.</param>
+    /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
     public Task UploadAsync(string containerName, string fileId, object data, IDictionary<string, string> tags, CancellationToken cancellationToken) => throw new NotImplementedException();
 
     private BlobServiceClient CreateBlobServiceClient()
