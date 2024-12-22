@@ -1,4 +1,4 @@
-﻿// <copyright file="ApplyResult.cs" company="ITANEO">
+// <copyright file="ApplyResult.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -44,4 +44,22 @@ public record ApplyResult(
                     aggregate.AggregateId,
                     domainEvent)],
                 true);
+
+    /// <summary>
+    /// Creates an ApplyResult indicating a successful application of events.
+    /// </summary>
+    /// <param name="aggregate">The domain aggregate.</param>
+    /// <param name="messages">The collection of messages produced during the application of events.</param>
+    /// <returns>An ApplyResult indicating success.</returns>
+    public static ApplyResult Success(IDomainAggregate aggregate, IEnumerable<object> messages)
+        => new(aggregate, messages, false);
+
+    /// <summary>
+    /// Creates an ApplyResult indicating an error during the application of events.
+    /// </summary>
+    /// <param name="aggregate">The domain aggregate.</param>
+    /// <param name="reason">The reason for the error.</param>
+    /// <returns>An ApplyResult indicating failure due to an error.</returns>
+    public static ApplyResult Error(IDomainAggregate aggregate, string reason)
+        => new(aggregate, [], true, reason);
 }
