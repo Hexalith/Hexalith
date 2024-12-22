@@ -1,4 +1,4 @@
-﻿// <copyright file="ProjectionActorHelper.cs" company="ITANEO">
+// <copyright file="ProjectionActorHelper.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -27,15 +27,13 @@ public static class ProjectionActorHelper
     /// </summary>
     /// <typeparam name="TState">The type of the t state.</typeparam>
     /// <param name="services">The services.</param>
-    /// <param name="applicationId">Name of the application.</param>
     /// <returns>IServiceCollection.</returns>
     /// <exception cref="ArgumentNullException">null.</exception>
-    public static IServiceCollection AddActorProjectionFactory<TState>(this IServiceCollection services, string applicationId)
+    public static IServiceCollection AddActorProjectionFactory<TState>(this IServiceCollection services)
     {
         ArgumentNullException.ThrowIfNull(services);
-        ArgumentException.ThrowIfNullOrWhiteSpace(applicationId);
         services.TryAddScoped<IProjectionFactory<TState>>(s
-            => new ActorProjectionFactory<TState>(s.GetRequiredService<IActorProxyFactory>(), applicationId));
+            => new ActorProjectionFactory<TState>(s.GetRequiredService<IActorProxyFactory>()));
         return services;
     }
 
