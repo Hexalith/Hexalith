@@ -64,7 +64,7 @@ public class WebServerRequestService : IRequestService
 
         Metadata metadata = Metadata.CreateNew(request, user.Identity.Name, session.PartitionId, _timeProvider.GetLocalNow());
 
-        return await _requestProcessor
+        return (TRequest)await _requestProcessor
             .ProcessAsync(request, metadata, cancellationToken)
             .ConfigureAwait(false)
                 ?? throw new InvalidOperationException(
