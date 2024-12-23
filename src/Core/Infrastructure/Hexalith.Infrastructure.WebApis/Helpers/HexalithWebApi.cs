@@ -25,6 +25,7 @@ using Hexalith.Application.Requests;
 using Hexalith.Application.Services;
 using Hexalith.Application.Sessions.Services;
 using Hexalith.Application.Tasks;
+using Hexalith.Domain.Events;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.AspireService.Defaults;
 using Hexalith.Infrastructure.DaprRuntime.Handlers;
@@ -105,6 +106,7 @@ public static partial class HexalithWebApi
         builder.Services.TryAddScoped<IIntegrationEventProcessor, IntegrationEventProcessor>();
         builder.Services.TryAddScoped<IIntegrationEventDispatcher, DependencyInjectionEventDispatcher>();
         builder.Services.TryAddScoped<IRequestService, ApiServerRequestService>();
+        builder.Services.TryAddScoped<IProjectionUpdateHandler<SnapshotEvent>, IdsCollectionProjectionHandler<SnapshotEvent>>();
         builder.Services.TryAddSingleton<IDomainAggregateFactory, DomainAggregateFactory>();
         builder.Services.TryAddSingleton<IIdCollectionFactory, IdCollectionFactory>();
         builder.Services
