@@ -236,7 +236,7 @@ public class MessageStoreTest
             list.Add(new MessageState(
                 (PolymorphicRecordBase)e,
                 new Metadata(
-                 new MessageMetadata(e, DateTimeOffset.Now),
+                 MessageMetadata.Create(e, DateTimeOffset.Now),
                  new ContextMetadata(
                      id,
                      "TestUser",

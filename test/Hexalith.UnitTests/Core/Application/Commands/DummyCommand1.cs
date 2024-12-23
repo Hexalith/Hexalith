@@ -26,7 +26,7 @@ public partial record DummyCommand1(
     public new Metadata CreateMetadata()
     {
         return new Metadata(
-            new MessageMetadata(this, DateTimeOffset.UtcNow),
+            MessageMetadata.Create(this, DateTimeOffset.UtcNow),
             new ContextMetadata(
                 "COR424202",
                 "TestUser1",

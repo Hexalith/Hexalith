@@ -303,7 +303,7 @@ public partial class AggregateActorTest
     /// <returns>Hexalith.Application.Metadatas.Metadata.</returns>
     private static Metadata CreateMetadata(object message)
         => new(
-            new MessageMetadata(message, DateTimeOffset.Now),
+            MessageMetadata.Create(message, DateTimeOffset.Now),
             new ContextMetadata(
                 UniqueIdHelper.GenerateUniqueStringId(),
                 "test-user",

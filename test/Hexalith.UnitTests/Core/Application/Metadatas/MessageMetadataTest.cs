@@ -27,24 +27,24 @@ public class MessageMetadataTest
     [Fact]
     public void MetadataShouldContainMessageNameAndVersion1()
     {
-        MessageMetadata meta = new(new MyDummyMessage("123", "Hello", 124), TimeProvider.System.GetLocalNow());
+        MessageMetadata meta = MessageMetadata.Create(new MyDummyMessage("123", "Hello", 124), TimeProvider.System.GetLocalNow());
         _ = meta.Name.Should().Be(nameof(MyDummyMessage));
         _ = meta.Version.Should().Be(1);
     }
 
     [Fact]
-    public void MetadataShouldContainMessageVersionInAttribute()
+    public void MetadataShouldContainMessageNameAndVersionInAttribute()
     {
-        MessageMetadata meta = new(new MyDummyMessage2("123", "Hello", 124), TimeProvider.System.GetLocalNow());
-        _ = meta.Name.Should().Be(nameof(MyDummyMessage2));
-        _ = meta.Version.Should().Be(2);
+        MessageMetadata meta = MessageMetadata.Create(new MyDummyMessage3("123", "Hello", 124), TimeProvider.System.GetLocalNow());
+        _ = meta.Name.Should().Be("MyMessage");
+        _ = meta.Version.Should().Be(3);
     }
 
     [Fact]
-    public void MetadataShouldContainMessageNameAndVersionInAttribute()
+    public void MetadataShouldContainMessageVersionInAttribute()
     {
-        MessageMetadata meta = new(new MyDummyMessage3("123", "Hello", 124), TimeProvider.System.GetLocalNow());
-        _ = meta.Name.Should().Be("MyMessage");
-        _ = meta.Version.Should().Be(3);
+        MessageMetadata meta = MessageMetadata.Create(new MyDummyMessage2("123", "Hello", 124), TimeProvider.System.GetLocalNow());
+        _ = meta.Name.Should().Be(nameof(MyDummyMessage2));
+        _ = meta.Version.Should().Be(2);
     }
 }

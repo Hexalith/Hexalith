@@ -27,7 +27,7 @@ public class MessageStateTest
     {
         MyDummyMessage message = new("ID21", "My 21 dummies", 21);
         Metadata meta = new(
-            new MessageMetadata(message, DateTimeOffset.UtcNow),
+            MessageMetadata.Create(message, DateTimeOffset.UtcNow),
             new ContextMetadata(
                 "COR-144662",
                 "USER123",
@@ -49,7 +49,7 @@ public class MessageStateTest
     {
         MyDummyMessage3 message = new("ID22", "My 22 dummies", 22);
         Metadata meta = new(
-            new MessageMetadata(message, DateTimeOffset.UtcNow),
+            MessageMetadata.Create(message, DateTimeOffset.UtcNow),
             new ContextMetadata(
                 "COR-144662",
                 "USER123",
@@ -73,7 +73,7 @@ public class MessageStateTest
     {
         MyDummyMessage2 message = new("ID22", "My 22 dummies", 22);
         Metadata meta = new(
-            new MessageMetadata(message, DateTimeOffset.UtcNow),
+            MessageMetadata.Create(message, DateTimeOffset.UtcNow),
             new ContextMetadata(
                 "COR-144662",
                 "USER123",
@@ -98,7 +98,7 @@ public class MessageStateTest
     {
         MyDummyMessage3 message = new("ID21", "My 21 dummies", 21);
         Metadata meta = new(
-            new MessageMetadata(message, DateTimeOffset.UtcNow),
+            MessageMetadata.Create(message, DateTimeOffset.UtcNow),
             new ContextMetadata(
                 "COR-144662",
                 "USER123",
@@ -120,7 +120,7 @@ public class MessageStateTest
     {
         MyDummyMessage2 message = new("ID21", "My 21 dummies", 21);
         Metadata meta = new(
-            new MessageMetadata(message, DateTimeOffset.UtcNow),
+            MessageMetadata.Create(message, DateTimeOffset.UtcNow),
             new ContextMetadata(
                 "COR-144662",
                 "USER123",

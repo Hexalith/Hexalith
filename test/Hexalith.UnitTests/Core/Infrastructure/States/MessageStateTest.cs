@@ -75,7 +75,7 @@ public class MessageStateTest
         MessageState messageState = new(
             command,
             new Metadata(
-                new MessageMetadata(
+                MessageMetadata.Create(
                     command,
                     DateTimeOffset.UtcNow),
                 new ContextMetadata(

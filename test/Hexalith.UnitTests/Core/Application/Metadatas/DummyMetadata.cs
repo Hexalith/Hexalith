@@ -16,7 +16,7 @@ public record DummyMetadata(MessageMetadata Message, ContextMetadata Context)
 {
     public DummyMetadata(object message)
         : this(
-            new MessageMetadata(message, DateTimeOffset.UtcNow),
+            MessageMetadata.Create(message, DateTimeOffset.UtcNow),
             new ContextMetadata(
                 UniqueIdHelper.GenerateUniqueStringId(),
                 "Test User",

@@ -23,7 +23,7 @@ public abstract partial record DummyBaseRequest(
     public Metadata CreateMetadata()
     {
         return new Metadata(
-                new MessageMetadata(this, DateTimeOffset.UtcNow),
+                MessageMetadata.Create(this, DateTimeOffset.UtcNow),
                 new ContextMetadata(
                     UniqueIdHelper.GenerateUniqueStringId(),
                     "Test user",
