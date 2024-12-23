@@ -64,12 +64,10 @@ public static class ServerSideClientAppHelper
     /// </summary>
     /// <param name="services">The service collection.</param>
     /// <param name="configuration">The configuration.</param>
-    /// <param name="applicationName">The name of the application.</param>
     /// <returns>The updated service collection.</returns>
     public static IServiceCollection AddHexalithServerSideClientApp(
         this IServiceCollection services,
-        IConfiguration configuration,
-        string applicationName)
+        IConfiguration configuration)
     {
         HexalithApplicationAbstractions.RegisterPolymorphicMappers();
         HexalithDomainAbstractions.RegisterPolymorphicMappers();
@@ -140,7 +138,7 @@ public static class ServerSideClientAppHelper
             .Services
             .AddLocalization(options => options.ResourcesPath = "Resources")
             .AddProblemDetails()
-            .AddHexalithServerSideClientApp(builder.Configuration, applicationName)
+            .AddHexalithServerSideClientApp(builder.Configuration)
             .AddEndpointsApiExplorer()
             .AddSwaggerGen(c => c.SwaggerDoc("v1", new() { Title = applicationName, Version = version, }))
             .AddDaprBuses(builder.Configuration)

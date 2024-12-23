@@ -3,7 +3,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Hexalith.UI.Modules;
+namespace Hexalith.UI.WebServer;
 
 using System.Collections.Generic;
 using System.Reflection;
@@ -60,7 +60,7 @@ public class HexalithUIComponentsWebServerModule : IWebServerApplicationModule
         _ = services
             .AddControllers()
             .AddApplicationPart(typeof(HexalithUIComponentsWebServerModule).Assembly)
-            .AddApplicationPart(typeof(Hexalith.UI.Components._Imports).Assembly);
+            .AddApplicationPart(typeof(Components._Imports).Assembly);
         services
            .AddFluentUITheme(configuration)
            .ConfigureSettings<FluentUIThemeSettings>(configuration)

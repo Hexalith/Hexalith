@@ -27,7 +27,7 @@ public class AggregateService : IAggregateService
     /// <summary>
     /// Initializes a new instance of the <see cref="AggregateService"/> class.
     /// </summary>
-    /// <param name="actorProxy"></param>
+    /// <param name="actorProxy">The actor proxy factory.</param>
     public AggregateService(IActorProxyFactory actorProxy)
     {
         ArgumentNullException.ThrowIfNull(actorProxy);
