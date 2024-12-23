@@ -137,7 +137,7 @@ public abstract partial class DomainCommandHandler<TCommand> : IDomainCommandHan
             : throw new ArgumentException($"Invalid command type. Expected: {typeof(TCommand).Name}. Command: {JsonSerializer.Serialize(command)}", nameof(command));
     }
 
-    [LoggerMessage(EventId = 5, Level = LogLevel.Error, Message = "Aggregate ID mismatch for command {CommandName} on aggregate {AggregateGlobalId}. Expected='{ExpectedAggregateId}'; Actual='{ActualId}'; MessageId='{MessageId}'; CorrelationId='{CorrelationId}'; UserId='{UserId}'.")]
+    [LoggerMessage(EventId = 5, Level = LogLevel.Error, Message = "Aggregate ID mismatch for command '{CommandName}' on aggregate '{AggregateGlobalId}'. Expected='{ExpectedAggregateId}'; Actual='{ActualId}'; MessageId='{MessageId}'; CorrelationId='{CorrelationId}'; UserId='{UserId}'.")]
     private partial void LogAggregateIdMismatchError(string actualId, string commandName, string aggregateGlobalId, string expectedAggregateId, string messageId, string correlationId, string userId);
 
     [LoggerMessage(EventId = 4, Level = LogLevel.Error, Message = "Aggregate name mismatch for command {CommandName} on aggregate {AggregateGlobalId}. Expected='{ExpectedAggregateName}'; Actual='{ActualName}'; MessageId='{MessageId}'; CorrelationId='{CorrelationId}'; UserId='{UserId}'.")]
