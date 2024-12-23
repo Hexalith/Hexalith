@@ -61,7 +61,7 @@ using Hexalith.PolymorphicSerialization;
 /// <param name="EventContent">The serialized JSON content of the invalid event. Uses System.Text.Json for serialization.</param>
 /// <param name="Reason">The reason why the event was considered invalid.</param>
 [PolymorphicSerialization] // Enables polymorphic serialization for handling different event types
-public record InvalidEventApplied(string AggregateName, string AggregateId, string EventType, string EventContent, string Reason)
+public partial record InvalidEventApplied(string AggregateName, string AggregateId, string EventType, string EventContent, string Reason)
 {
     /// <summary>
     /// Creates an InvalidEventApplied instance for an event that is not supported by the aggregate.

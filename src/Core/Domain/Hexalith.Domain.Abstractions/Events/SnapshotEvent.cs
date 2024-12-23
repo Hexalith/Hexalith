@@ -10,6 +10,7 @@ using System.Runtime.Serialization;
 using System.Text.Json;
 
 using Hexalith.Domain.Aggregates;
+using Hexalith.PolymorphicSerialization;
 
 /// <summary>
 /// Represents a snapshot event in the domain, capturing the state of an aggregate at a specific point in time.
@@ -17,8 +18,8 @@ using Hexalith.Domain.Aggregates;
 /// <param name="AggregateName">The name of the aggregate.</param>
 /// <param name="AggregateId">The unique identifier of the aggregate.</param>
 /// <param name="Snapshot">A JSON serialized representation of the aggregate's state.</param>
-[DataContract]
-public record SnapshotEvent(
+[PolymorphicSerialization]
+public partial record SnapshotEvent(
     [property: DataMember(Order = 1)] string AggregateName,
     [property: DataMember(Order = 2)] string AggregateId,
     [property: DataMember(Order = 3)] string Snapshot)
@@ -29,7 +30,7 @@ public record SnapshotEvent(
     /// <param name="aggregate">The aggregate to create a snapshot from.</param>
     /// <returns>A new SnapshotEvent containing the serialized state of the aggregate.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the aggregate is null.</exception>
-    public SnapshotEvent Create(IDomainAggregate aggregate)
+    public static SnapshotEvent Create(IDomainAggregate aggregate)
         => new(
             (aggregate ?? throw new ArgumentNullException(nameof(aggregate))).AggregateName,
             aggregate.AggregateId,

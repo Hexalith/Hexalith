@@ -498,7 +498,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             return null;
         }
 
-        AggregateSnapshotEvent e = new(aggregate);
+        SnapshotEvent e = SnapshotEvent.Create(aggregate);
         MessageMetadata messageMetadata = new(e, _dateTimeService.GetUtcNow());
         return new MessageState(
             e,

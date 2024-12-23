@@ -27,6 +27,7 @@ using Hexalith.Application.Requests;
 using Hexalith.Application.Services;
 using Hexalith.Application.Sessions.Services;
 using Hexalith.Application.Tasks;
+using Hexalith.Domain.Abstractions.Extensions;
 using Hexalith.Domain.Events;
 using Hexalith.Infrastructure.AspireService.Defaults;
 using Hexalith.Infrastructure.ClientAppOnServer.Services;
@@ -72,6 +73,8 @@ public static class ServerSideClientAppHelper
         string applicationName)
     {
         HexalithApplicationAbstractions.RegisterPolymorphicMappers();
+        HexalithDomainAbstractions.RegisterPolymorphicMappers();
+
         _ = services
             .AddHttpClient() // Add a default HttpClient before adding Fluent UI Components. See https://www.fluentui-blazor.net/CodeSetup.
             .AddFluentUIComponents()

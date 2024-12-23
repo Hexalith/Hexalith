@@ -16,6 +16,7 @@ using Hexalith.Application.Modules.Routes;
 using Hexalith.Application.Organizations.Helpers;
 using Hexalith.Application.Requests;
 using Hexalith.Application.Sessions.Services;
+using Hexalith.Domain.Abstractions.Extensions;
 using Hexalith.Infrastructure.ClientApp;
 using Hexalith.Infrastructure.ClientAppOnWasm.Services;
 
@@ -41,6 +42,7 @@ public static class WebAssemblyClientHelper
     public static IServiceCollection AddHexalithWasmClientApp(this IServiceCollection services, IConfiguration configuration)
     {
         HexalithApplicationAbstractions.RegisterPolymorphicMappers();
+        HexalithDomainAbstractions.RegisterPolymorphicMappers();
         _ = services
              .AddOrganizations(configuration)
              .AddSingleton(TimeProvider.System)

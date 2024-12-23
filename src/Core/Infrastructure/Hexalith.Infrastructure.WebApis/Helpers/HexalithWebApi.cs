@@ -25,6 +25,8 @@ using Hexalith.Application.Requests;
 using Hexalith.Application.Services;
 using Hexalith.Application.Sessions.Services;
 using Hexalith.Application.Tasks;
+using Hexalith.Domain.Abstractions.Extensions;
+
 using Hexalith.Domain.Events;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.AspireService.Defaults;
@@ -72,6 +74,7 @@ public static partial class HexalithWebApi
             .Services
             .ConfigureSettings<Hexalith.Infrastructure.CosmosDb.Configurations.CosmosDbSettings>(builder.Configuration);
         HexalithApplicationAbstractions.RegisterPolymorphicMappers();
+        HexalithDomainAbstractions.RegisterPolymorphicMappers();
         builder.Services.AddDaprClient();
         builder
             .Services
