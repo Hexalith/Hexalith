@@ -30,6 +30,7 @@ public static class ComponentsHelper
         _ = services.ConfigureSettings<FluentUIThemeSettings>(configuration);
 
         services.TryAddScoped<ILoginRedirectUrlService, LoginRedirectUrlService>();
+        _ = services.AddHttpClient();
         _ = services.AddFluentUIComponents();
         return services;
     }

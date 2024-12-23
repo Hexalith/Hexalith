@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Application\Hexalith.Application.Modules.Abstractions\Hexalith.Application.Modules.Abstractions.csproj" />
+      <ProjectReference Include="..\Hexalith.UI.Modules.Abstractions\Hexalith.UI.Modules.Abstractions.csproj" />
+    </ItemGroup>
+
+</Project>

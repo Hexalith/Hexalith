@@ -23,7 +23,6 @@ using Hexalith.Infrastructure.ClientAppOnWasm.Services;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.FluentUI.AspNetCore.Components;
 using Microsoft.JSInterop;
 
 using Serilog;
@@ -46,8 +45,7 @@ public static class WebAssemblyClientHelper
         _ = services
              .AddOrganizations(configuration)
              .AddSingleton(TimeProvider.System)
-             .AddSingleton<IRouteManager, RouteManager>()
-             .AddFluentUIComponents();
+             .AddSingleton<IRouteManager, RouteManager>();
         _ = services.AddScoped<ICommandService, ClientCommandService>();
         _ = services.AddScoped<IRequestService, ClientRequestService>();
 
@@ -83,7 +81,7 @@ public static class WebAssemblyClientHelper
             .AddAuthenticationStateDeserialization();
 
         _ = builder.Services
-               .AddHttpClient(
+            .AddHttpClient(
                    ClientConstants.FrontApiName,
                    client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress));
 

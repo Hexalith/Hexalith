@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+    <PropertyGroup>
+        <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Hexalith.UI.Components\Hexalith.UI.Components.csproj" />
+      <ProjectReference Include="..\Hexalith.UI.Modules.Abstractions\Hexalith.UI.Modules.Abstractions.csproj" />
+    </ItemGroup>
+
+</Project>

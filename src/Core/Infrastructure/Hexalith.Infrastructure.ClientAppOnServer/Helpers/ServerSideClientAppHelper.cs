@@ -1,4 +1,4 @@
-// <copyright file="ServerSideClientAppHelper.cs" company="ITANEO">
+﻿// <copyright file="ServerSideClientAppHelper.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -48,7 +48,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.FluentUI.AspNetCore.Components;
 
 using Serilog;
 
@@ -76,8 +75,6 @@ public static class ServerSideClientAppHelper
         HexalithDomainAbstractions.RegisterPolymorphicMappers();
 
         _ = services
-            .AddHttpClient() // Add a default HttpClient before adding Fluent UI Components. See https://www.fluentui-blazor.net/CodeSetup.
-            .AddFluentUIComponents()
             .AddOrganizations(configuration)
             .AddSendGridEmail(configuration)
             .AddSingleton(TimeProvider.System)
@@ -124,8 +121,10 @@ public static class ServerSideClientAppHelper
         Activity.DefaultIdFormat = ActivityIdFormat.W3C;
 
         WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
         Serilog.ILogger startupLogger = builder.AddSerilogLogger();
 
+        _ = builder.Services.AddHttpClient();
         _ = builder.Services.AddRazorPages();
         _ = builder.Services.AddServerSideBlazor();
         builder.Services.AddDaprClient();

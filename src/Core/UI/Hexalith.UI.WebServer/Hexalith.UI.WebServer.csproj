@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+    <PropertyGroup>
+        <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="$(AspNetCorePackagesVersion)" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Hexalith.UI.Components\Hexalith.UI.Components.csproj" />
+      <ProjectReference Include="..\Hexalith.UI.Modules.Abstractions\Hexalith.UI.Modules.Abstractions.csproj" />
+      <ProjectReference Include="..\Hexalith.UI.WebApp\Hexalith.UI.WebApp.csproj" />
+    </ItemGroup>
+
+</Project>
