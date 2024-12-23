@@ -158,8 +158,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.UI.Components.Abst
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.UI.Modules.Abstractions", "src\Core\UI\Hexalith.UI.Modules.Abstractions\Hexalith.UI.Modules.Abstractions.csproj", "{312FA85D-B6DD-47DC-8922-70423CA07606}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.UI.Modules", "src\Core\UI\Hexalith.UI.Modules\Hexalith.UI.Modules.csproj", "{E522AC55-10B3-490A-ABA8-6F10DDEA5611}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Infrastructure.ClientAppOnWasm", "src\Core\Infrastructure\Hexalith.Infrastructure.ClientAppOnWasm\Hexalith.Infrastructure.ClientAppOnWasm.csproj", "{C63A3CD1-A570-4991-BC60-EBA743F0A5E3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexalith.Application.Modules.Abstractions", "src\Core\Application\Hexalith.Application.Modules.Abstractions\Hexalith.Application.Modules.Abstractions.csproj", "{A72F764F-6519-4E50-8753-AC6C987EEDF5}"
@@ -181,6 +179,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.Infrastructure.DaprRuntime.Partitions", "src\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime.Partitions\Hexalith.Infrastructure.DaprRuntime.Partitions.csproj", "{FEBEAD37-34F0-4D80-9CDC-E568433DC5DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.Infrastructure.DaprRuntime.Sessions", "src\Core\Infrastructure\Hexalith.Infrastructure.DaprRuntime.Sessions\Hexalith.Infrastructure.DaprRuntime.Sessions.csproj", "{FE5F9784-F904-4766-960D-0D051491B5F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.UI.ApiServer", "src\Core\UI\Hexalith.UI.ApiServer\Hexalith.UI.ApiServer.csproj", "{34C0B2F2-A001-4178-ADF0-5EAF64720CED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.UI.WebApp", "src\Core\UI\Hexalith.UI.WebApp\Hexalith.UI.WebApp.csproj", "{0F06EA99-6312-4B2B-9225-123CDDCA1340}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.UI.WebServer", "src\Core\UI\Hexalith.UI.WebServer\Hexalith.UI.WebServer.csproj", "{8FCC1B58-8314-423E-B5FE-13AC6B1A3898}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -324,10 +328,6 @@ Global
 		{312FA85D-B6DD-47DC-8922-70423CA07606}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{312FA85D-B6DD-47DC-8922-70423CA07606}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{312FA85D-B6DD-47DC-8922-70423CA07606}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E522AC55-10B3-490A-ABA8-6F10DDEA5611}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E522AC55-10B3-490A-ABA8-6F10DDEA5611}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E522AC55-10B3-490A-ABA8-6F10DDEA5611}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E522AC55-10B3-490A-ABA8-6F10DDEA5611}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C63A3CD1-A570-4991-BC60-EBA743F0A5E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C63A3CD1-A570-4991-BC60-EBA743F0A5E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C63A3CD1-A570-4991-BC60-EBA743F0A5E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -368,6 +368,18 @@ Global
 		{FE5F9784-F904-4766-960D-0D051491B5F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE5F9784-F904-4766-960D-0D051491B5F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE5F9784-F904-4766-960D-0D051491B5F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34C0B2F2-A001-4178-ADF0-5EAF64720CED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34C0B2F2-A001-4178-ADF0-5EAF64720CED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34C0B2F2-A001-4178-ADF0-5EAF64720CED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34C0B2F2-A001-4178-ADF0-5EAF64720CED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F06EA99-6312-4B2B-9225-123CDDCA1340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F06EA99-6312-4B2B-9225-123CDDCA1340}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F06EA99-6312-4B2B-9225-123CDDCA1340}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F06EA99-6312-4B2B-9225-123CDDCA1340}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FCC1B58-8314-423E-B5FE-13AC6B1A3898}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FCC1B58-8314-423E-B5FE-13AC6B1A3898}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FCC1B58-8314-423E-B5FE-13AC6B1A3898}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FCC1B58-8314-423E-B5FE-13AC6B1A3898}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -417,7 +429,6 @@ Global
 		{7C6711A7-7373-4440-8620-C3BED57A68F4} = {3D11F14C-AF25-4D09-8182-568B18EB78FC}
 		{35189C33-0C22-41E1-992D-95EA42BBFE88} = {3D11F14C-AF25-4D09-8182-568B18EB78FC}
 		{312FA85D-B6DD-47DC-8922-70423CA07606} = {3D11F14C-AF25-4D09-8182-568B18EB78FC}
-		{E522AC55-10B3-490A-ABA8-6F10DDEA5611} = {3D11F14C-AF25-4D09-8182-568B18EB78FC}
 		{C63A3CD1-A570-4991-BC60-EBA743F0A5E3} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{A72F764F-6519-4E50-8753-AC6C987EEDF5} = {AA983AFF-9CBC-4F2A-98E3-3CACA5039C61}
 		{3E011D28-C5BF-4583-9000-38BB14080D2B} = {AA983AFF-9CBC-4F2A-98E3-3CACA5039C61}
@@ -429,6 +440,9 @@ Global
 		{21E7F7E3-35CB-4733-B54B-1A2097D6D922} = {AA983AFF-9CBC-4F2A-98E3-3CACA5039C61}
 		{FEBEAD37-34F0-4D80-9CDC-E568433DC5DD} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
 		{FE5F9784-F904-4766-960D-0D051491B5F3} = {FA933B2A-DC9F-44A0-94C7-C5D2D49C550B}
+		{34C0B2F2-A001-4178-ADF0-5EAF64720CED} = {3D11F14C-AF25-4D09-8182-568B18EB78FC}
+		{0F06EA99-6312-4B2B-9225-123CDDCA1340} = {3D11F14C-AF25-4D09-8182-568B18EB78FC}
+		{8FCC1B58-8314-423E-B5FE-13AC6B1A3898} = {3D11F14C-AF25-4D09-8182-568B18EB78FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09CBB595-8996-4C7F-9C48-4C58AD9293AC}
