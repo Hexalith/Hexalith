@@ -5,6 +5,8 @@
 
 namespace Hexalith.Application.Commands;
 
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Security.Claims;
 
 /// <summary>
@@ -20,4 +22,19 @@ public interface ICommandService
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
     Task SubmitCommandAsync(ClaimsPrincipal user, object command, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Submits multiple commands asynchronously.
+    /// </summary>
+    /// <param name="user">The user submitting the commands.</param>
+    /// <param name="commands">The commands to submit.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A task representing the asynchronous operation.</returns>
+    async Task SubmitCommandsAsync([NotNull] ClaimsPrincipal user, [NotNull] IEnumerable<object> commands, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(user);
+        ArgumentNullException.ThrowIfNull(commands);
+
+        await Task.WhenAll(commands.Select(command => SubmitCommandAsync(user, command, cancellationToken)));
+    }
 }
