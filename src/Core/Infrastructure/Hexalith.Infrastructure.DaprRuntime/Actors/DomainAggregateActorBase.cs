@@ -133,7 +133,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
     [LoggerMessage(
                     EventId = 1,
                     Level = LogLevel.Information,
-                    Message = "Accepted command {CommandType} ({CommandId}) for aggregate key {PartitionKey}.")]
+                    Message = "Accepted command '{CommandType}' ({CommandId}) for aggregate key {PartitionKey}.")]
     public static partial void LogAcceptedCommandInformation(ILogger logger, string commandType, string commandId, string partitionKey);
 
     /// <summary>
@@ -499,7 +499,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
         }
 
         SnapshotEvent e = SnapshotEvent.Create(aggregate);
-        MessageMetadata messageMetadata = new(e, _dateTimeService.GetUtcNow());
+        MessageMetadata messageMetadata = MessageMetadata.Create(e, _dateTimeService.GetUtcNow());
         return new MessageState(
             e,
             new Metadata(
@@ -603,12 +603,17 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             .GetAsync(commandNumber, CancellationToken.None)
             .ConfigureAwait(false);
 
-        object command = commandState.MessageObject ?? throw new InvalidOperationException("The specified command state is missing associated message.");
+        PolymorphicRecordBase command = commandState.MessageObject ?? throw new InvalidOperationException("The specified command state is missing associated message.");
         Metadata metadata = commandState.Metadata ?? throw new InvalidOperationException("The specified command state is missing associated metadata.");
 
         if (metadata.AggregateGlobalId != Id.ToUnescapeString())
         {
             throw new InvalidOperationException($"Command {metadata.Message.Name} aggregate key '{metadata.AggregateGlobalId}' is invalid: Expected : {Id.ToUnescapeString()}.");
+        }
+
+        if (string.IsNullOrWhiteSpace(metadata.Message.Aggregate.Id) || string.IsNullOrWhiteSpace(metadata.Message.Aggregate.Name))
+        {
+            throw new InvalidOperationException($"Command {metadata.Message.Name} aggregate Name='{metadata.Message.Aggregate.Name}' Id='{metadata.Message.Aggregate.Id}' is invalid.");
         }
 
         if (DaprActorHelper.ToAggregateActorName(metadata.Message.Aggregate.Name) != Host.ActorTypeInfo.ActorTypeName)

@@ -8,7 +8,6 @@ namespace Hexalith.Application.Metadatas;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-using Hexalith.Extensions;
 using Hexalith.Extensions.Helpers;
 using Hexalith.PolymorphicSerialization;
 
@@ -34,26 +33,25 @@ public record MessageMetadata(
     DateTimeOffset CreatedDate)
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="MessageMetadata"/> class.
-    /// This constructor is for serialization purposes only and should not be used directly.
+    /// Gets an empty instance of the <see cref="MessageMetadata"/> class.
     /// </summary>
-    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    public MessageMetadata()
-        : this(string.Empty, string.Empty, 0, new AggregateMetadata(), DateTimeOffset.MinValue)
-    {
-    }
+    public static MessageMetadata Empty => new(string.Empty, string.Empty, 0, AggregateMetadata.Empty, DateTimeOffset.MinValue);
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="MessageMetadata"/> class.
+    /// Creates a new instance of the <see cref="MessageMetadata"/> class for a specific message.
     /// </summary>
     /// <param name="message">The message object.</param>
     /// <param name="dateTimeOffset">The creation date of the message.</param>
-    public MessageMetadata(object message, DateTimeOffset dateTimeOffset)
-        : this(UniqueIdHelper.GenerateUniqueStringId(), string.Empty, 1, new AggregateMetadata(message), dateTimeOffset)
+    /// <returns>A new instance of <see cref="MessageMetadata"/>.</returns>
+    public static MessageMetadata Create(object message, DateTimeOffset dateTimeOffset)
     {
         (string name, string _, int version) = message.GetPolymorphicTypeDiscriminator();
-        Name = name;
-        Version = version;
+        return new MessageMetadata(
+            UniqueIdHelper.GenerateUniqueStringId(),
+            name,
+            version,
+            AggregateMetadata.Create(message),
+            dateTimeOffset);
     }
 
     /// <summary>
@@ -67,7 +65,9 @@ public record MessageMetadata(
     public static MessageMetadata Create<TCommand>(string aggregateName, string aggregateId, DateTimeOffset dateTimeOffset)
     {
         (string name, string _, int version) = typeof(TCommand).GetPolymorphicTypeDiscriminator();
-        return new MessageMetadata(
+        return string.IsNullOrWhiteSpace(name)
+            ? throw new InvalidOperationException($"The message must have a name")
+            : new MessageMetadata(
             UniqueIdHelper.GenerateUniqueStringId(),
             name,
             version,

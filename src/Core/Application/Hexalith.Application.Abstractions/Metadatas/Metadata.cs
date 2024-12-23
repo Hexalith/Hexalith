@@ -53,7 +53,7 @@ public record Metadata(
     {
         ArgumentNullException.ThrowIfNull(message);
         ArgumentNullException.ThrowIfNull(metadata);
-        return new Metadata(new MessageMetadata(message, dateTime), metadata.Context);
+        return new Metadata(MessageMetadata.Create(message, dateTime), metadata.Context);
     }
 
     /// <summary>
@@ -68,7 +68,7 @@ public record Metadata(
     public static Metadata CreateNew(object message, string userId, string partitionId, DateTimeOffset dateTime)
     {
         ArgumentNullException.ThrowIfNull(message);
-        MessageMetadata msgMeta = new(message, dateTime);
+        MessageMetadata msgMeta = MessageMetadata.Create(message, dateTime);
         return new Metadata(
             msgMeta,
             new ContextMetadata(msgMeta.Id, userId, partitionId, dateTime, null, null, []));
@@ -87,7 +87,7 @@ public record Metadata(
     public static Metadata CreateNew(object message, string userId, string partitionId, string sessionId, DateTimeOffset dateTime)
     {
         ArgumentNullException.ThrowIfNull(message);
-        MessageMetadata msgMeta = new(message, dateTime);
+        MessageMetadata msgMeta = MessageMetadata.Create(message, dateTime);
         return new Metadata(
             msgMeta,
             new ContextMetadata(msgMeta.Id, userId, partitionId, dateTime, null, sessionId, []));

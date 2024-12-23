@@ -67,7 +67,7 @@ public class ClientCommandService : ICommandService
             messageId,
             string.Empty,
             1,
-            new AggregateMetadata(command),
+            AggregateMetadata.Create(command),
             _timeProvider.GetLocalNow()),
             new ContextMetadata(
                 messageId,

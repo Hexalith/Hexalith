@@ -76,7 +76,7 @@ public class ClientRequestService : IRequestService
             messageId,
             string.Empty,
             1,
-            new AggregateMetadata(request),
+            AggregateMetadata.Create(request),
             _timeProvider.GetLocalNow()),
             new ContextMetadata(
                 messageId,

@@ -12,7 +12,6 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 
 using Hexalith.Domain.Aggregates;
-using Hexalith.Extensions;
 
 /// <summary>
 /// Represents the metadata of an aggregate.
@@ -28,26 +27,7 @@ public record AggregateMetadata(
     [property:JsonPropertyOrder(2)]
     string Name)
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="AggregateMetadata"/> class.
-    /// </summary>
-    [Obsolete(DefaultLabels.ForSerializationOnly, true)]
-    public AggregateMetadata()
-        : this(string.Empty, string.Empty)
-    {
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="AggregateMetadata"/> class.
-    /// </summary>
-    /// <param name="instance">The aggregate related object (Aggregates, Events, Commands). The object must have the AggregateId and AggragateName properties defined and valued.</param>
-    public AggregateMetadata(object instance)
-        : this(string.Empty, string.Empty)
-    {
-        AggregateMetadata meta = Create(instance);
-        Id = meta.Id;
-        Name = meta.Name;
-    }
+    public static AggregateMetadata Empty => new(string.Empty, string.Empty);
 
     /// <summary>
     /// Creates an instance of <see cref="AggregateMetadata"/> from the specified aggregate related object.
