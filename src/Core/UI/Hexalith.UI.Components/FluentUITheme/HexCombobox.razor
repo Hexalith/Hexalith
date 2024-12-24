@@ -1,5 +1,5 @@
 ﻿@using System.Security.Claims
-<FluentCombobox TOption="IdDescription"
+<FluentCombobox TOption="IIdDescription"
 				SelectedOptionsChanged="OnSelectedOptionsChanged"
 				SelectedOptions="_selectedOptions"
 				Multiple="true"
@@ -13,7 +13,7 @@
 	[Parameter, EditorRequired]
 	public IIdDescriptionService? Service { get; set; }
 
-	IEnumerable<IdDescription>? _selectedOptions;
+	IEnumerable<IIdDescription>? _selectedOptions;
 
 	[Parameter]
 	public string? Id { get; set; }
@@ -53,7 +53,7 @@
 		await base.OnParametersSetAsync();
 	}
 
-	private async Task OnSelectedOptionsChanged(IEnumerable<IdDescription>? options)
+	private async Task OnSelectedOptionsChanged(IEnumerable<IIdDescription>? options)
 	{
 		_selectedOptions = options;
 		Id = _selectedOptions?.FirstOrDefault()?.Id;

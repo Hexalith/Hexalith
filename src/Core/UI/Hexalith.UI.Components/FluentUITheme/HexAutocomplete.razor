@@ -1,5 +1,5 @@
 ﻿@using System.Security.Claims
-<FluentAutocomplete TOption="IdDescription"
+<FluentAutocomplete TOption="IIdDescription"
 					OnOptionsSearch="@OnSearchAsync"
 					SelectedOptionsChanged="OnSelectedOptionsChanged"
 					SelectedOptions="_selectedOptions"
@@ -16,7 +16,7 @@
 	[Parameter, EditorRequired]
 	public IIdDescriptionService? Service { get; set; }
 
-	IEnumerable<IdDescription>? _selectedOptions;
+	IEnumerable<IIdDescription>? _selectedOptions;
 
 	[Parameter]
 	public string? Id { get; set; }
@@ -68,14 +68,14 @@
 		await base.OnParametersSetAsync();
 	}
 
-	private async Task OnSearchAsync(OptionsSearchEventArgs<IdDescription> e)
+	private async Task OnSearchAsync(OptionsSearchEventArgs<IIdDescription> e)
 	{
 		if (Service is not null && _user is not null)
 		{
 			e.Items = await Service.SearchIdDescriptionsAsync(_user, e.Text, 0, MaximumOptionsSearch, CancellationToken.None);
 		}
 	}
-	private async Task OnSelectedOptionsChanged(IEnumerable<IdDescription>? options)
+	private async Task OnSelectedOptionsChanged(IEnumerable<IIdDescription>? options)
 	{
 		if (options is null || !options.Any())
 		{
