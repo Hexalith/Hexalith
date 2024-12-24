@@ -1,6 +1,5 @@
-﻿@using System.Security.Claims
-<FluentAutocomplete TOption="IIdDescription"
-					OnOptionsSearch="@OnSearchAsync"
+﻿<FluentAutocomplete TOption="IIdDescription"
+					OnOptionsSearch="OnOptionsSearch"
 					SelectedOptionsChanged="OnSelectedOptionsChanged"
 					SelectedOptions="_selectedOptions"
 					MaximumSelectedOptions="1"
@@ -13,9 +12,6 @@
 
 @code
 {
-	[Parameter, EditorRequired]
-	public IIdDescriptionService? Service { get; set; }
-
 	IEnumerable<IIdDescription>? _selectedOptions;
 
 	[Parameter]
@@ -36,45 +32,11 @@
 	[Parameter]
 	public int MaximumOptionsSearch { get; set; } = 100;
 
-	[CascadingParameter]
-	private Task<AuthenticationState>? AuthenticationStateTask { get; set; }
+	[Parameter]
+	public EventCallback<OptionsSearchEventArgs<IIdDescription>> OnOptionsSearch { get; set; }
 
-	private ClaimsPrincipal? _user;
-	
-	protected async override Task OnParametersSetAsync()
-	{
-		if (AuthenticationStateTask is not null)
-		{
-			_user = (await AuthenticationStateTask).User;
-		}
-		if (!string.IsNullOrWhiteSpace(Id) && Service is not null && _user is not null)
-		{
-			try
-			{
-				var value = await Service.GetIdDescriptionAsync(_user, Id, CancellationToken.None);
-				_selectedOptions = [value];
-			}
-			catch (Exception e)
-			{
-				_selectedOptions = null;
-				var values = (await Service.GetIdDescriptionsAsync(_user, CancellationToken.None)).Select(p => p.Id).ToList();
-				throw new InvalidOperationException($"Error while getting the value for {Id} for {Label}. Available options : {string.Join(" ,", values)}", e);
-			}
-		}
-		else
-		{
-			_selectedOptions = null;
-		}
-		await base.OnParametersSetAsync();
-	}
 
-	private async Task OnSearchAsync(OptionsSearchEventArgs<IIdDescription> e)
-	{
-		if (Service is not null && _user is not null)
-		{
-			e.Items = await Service.SearchIdDescriptionsAsync(_user, e.Text, 0, MaximumOptionsSearch, CancellationToken.None);
-		}
-	}
+
 	private async Task OnSelectedOptionsChanged(IEnumerable<IIdDescription>? options)
 	{
 		if (options is null || !options.Any())
