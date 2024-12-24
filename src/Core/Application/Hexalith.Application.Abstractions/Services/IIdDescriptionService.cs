@@ -21,7 +21,7 @@ public interface IIdDescriptionService
     /// <param name="id">The ID.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task that represents the asynchronous operation. The task result contains the ID-description pair.</returns>
-    Task<IdDescription> GetIdDescriptionAsync(ClaimsPrincipal user, string id, CancellationToken cancellationToken);
+    Task<IIdDescription> GetIdDescriptionAsync(ClaimsPrincipal user, string id, CancellationToken cancellationToken);
 
     /// <summary>
     /// Gets all ID-description pairs asynchronously.
@@ -29,7 +29,7 @@ public interface IIdDescriptionService
     /// <param name="user">The user.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task that represents the asynchronous operation. The task result contains the collection of ID-description pairs.</returns>
-    Task<IEnumerable<IdDescription>> GetIdDescriptionsAsync(ClaimsPrincipal user, CancellationToken cancellationToken)
+    Task<IEnumerable<IIdDescription>> GetIdDescriptionsAsync(ClaimsPrincipal user, CancellationToken cancellationToken)
         => GetIdDescriptionsAsync(user, 0, 0, cancellationToken);
 
     /// <summary>
@@ -40,7 +40,7 @@ public interface IIdDescriptionService
     /// <param name="take">The number of items to retrieve.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task that represents the asynchronous operation. The task result contains the collection of ID-description pairs.</returns>
-    Task<IEnumerable<IdDescription>> GetIdDescriptionsAsync(ClaimsPrincipal user, int skip, int take, CancellationToken cancellationToken);
+    Task<IEnumerable<IIdDescription>> GetIdDescriptionsAsync(ClaimsPrincipal user, int skip, int take, CancellationToken cancellationToken);
 
     /// <summary>
     /// Searches for ID-description pairs asynchronously based on the specified search text.
@@ -49,7 +49,7 @@ public interface IIdDescriptionService
     /// <param name="searchText">The search text.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task that represents the asynchronous operation. The task result contains the collection of ID-description pairs.</returns>
-    Task<IEnumerable<IdDescription>> SearchIdDescriptionsAsync(ClaimsPrincipal user, string searchText, CancellationToken cancellationToken)
+    Task<IEnumerable<IIdDescription>> SearchIdDescriptionsAsync(ClaimsPrincipal user, string searchText, CancellationToken cancellationToken)
         => SearchIdDescriptionsAsync(user, searchText, 0, 0, cancellationToken);
 
     /// <summary>
@@ -61,5 +61,5 @@ public interface IIdDescriptionService
     /// <param name="take">The number of items to retrieve.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task that represents the asynchronous operation. The task result contains the collection of ID-description pairs.</returns>
-    Task<IEnumerable<IdDescription>> SearchIdDescriptionsAsync(ClaimsPrincipal user, string searchText, int skip, int take, CancellationToken cancellationToken);
+    Task<IEnumerable<IIdDescription>> SearchIdDescriptionsAsync(ClaimsPrincipal user, string searchText, int skip, int take, CancellationToken cancellationToken);
 }

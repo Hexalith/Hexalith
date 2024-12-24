@@ -19,38 +19,38 @@ using Hexalith.Application.Services;
 /// </summary>
 public class MemoryIdDescriptionService : IIdDescriptionService
 {
-    private readonly IQueryable<IdDescription> _query;
+    private readonly IQueryable<IIdDescription> _query;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="MemoryIdDescriptionService"/> class.
     /// </summary>
     /// <param name="data">The data to be used for the service.</param>
-    public MemoryIdDescriptionService(IEnumerable<IdDescription> data) => _query = data.AsQueryable();
+    public MemoryIdDescriptionService(IEnumerable<IIdDescription> data) => _query = data.AsQueryable();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="MemoryIdDescriptionService"/> class.
     /// </summary>
     /// <param name="query">The query to be used for the service.</param>
-    public MemoryIdDescriptionService(IQueryable<IdDescription> query) => _query = query;
+    public MemoryIdDescriptionService(IQueryable<IIdDescription> query) => _query = query;
 
     /// <inheritdoc/>
-    public Task<IdDescription> GetIdDescriptionAsync(ClaimsPrincipal user, string id, CancellationToken cancellationToken)
+    public Task<IIdDescription> GetIdDescriptionAsync(ClaimsPrincipal user, string id, CancellationToken cancellationToken)
     {
         if (string.IsNullOrWhiteSpace(id))
         {
-            return Task.FromException<IdDescription>(new ArgumentNullException(nameof(id)));
+            return Task.FromException<IIdDescription>(new ArgumentNullException(nameof(id)));
         }
 
-        IdDescription? result = _query.SingleOrDefault(d => d.Id == id);
+        IIdDescription? result = _query.SingleOrDefault(d => d.Id == id);
         return result is null
-            ? Task.FromException<IdDescription>(new KeyNotFoundException($"Id '{id}' not found."))
+            ? Task.FromException<IIdDescription>(new KeyNotFoundException($"Id '{id}' not found."))
             : Task.FromResult(result);
     }
 
     /// <inheritdoc/>
-    public Task<IEnumerable<IdDescription>> GetIdDescriptionsAsync(ClaimsPrincipal user, int skip, int count, CancellationToken cancellationToken)
+    public Task<IEnumerable<IIdDescription>> GetIdDescriptionsAsync(ClaimsPrincipal user, int skip, int count, CancellationToken cancellationToken)
     {
-        IQueryable<IdDescription> result = _query.OrderBy(p => p.Description);
+        IQueryable<IIdDescription> result = _query.OrderBy(p => p.Description);
         if (skip > 0)
         {
             result = result.Skip(skip);
@@ -61,13 +61,13 @@ public class MemoryIdDescriptionService : IIdDescriptionService
             result = result.Take(count);
         }
 
-        return Task.FromResult<IEnumerable<IdDescription>>([.. result]);
+        return Task.FromResult<IEnumerable<IIdDescription>>([.. result]);
     }
 
     /// <inheritdoc/>
-    public Task<IEnumerable<IdDescription>> SearchIdDescriptionsAsync(ClaimsPrincipal user, string searchText, int skip, int count, CancellationToken cancellationToken)
+    public Task<IEnumerable<IIdDescription>> SearchIdDescriptionsAsync(ClaimsPrincipal user, string searchText, int skip, int count, CancellationToken cancellationToken)
     {
-        IQueryable<IdDescription> result = _query.OrderBy(p => p.Description);
+        IQueryable<IIdDescription> result = _query.OrderBy(p => p.Description);
         if (!string.IsNullOrWhiteSpace(searchText))
         {
             string[] tokens = searchText.Split(' ', StringSplitOptions.RemoveEmptyEntries);
@@ -91,6 +91,6 @@ public class MemoryIdDescriptionService : IIdDescriptionService
             result = result.Take(count);
         }
 
-        return Task.FromResult<IEnumerable<IdDescription>>(result);
+        return Task.FromResult<IEnumerable<IIdDescription>>(result);
     }
 }

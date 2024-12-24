@@ -4,6 +4,9 @@
 // </copyright>
 
 namespace Hexalith.Application.Services;
+
+using System.Runtime.Serialization;
+
 /// <summary>
 /// Represents an identifier-description pair.
 /// </summary>
@@ -11,7 +14,10 @@ namespace Hexalith.Application.Services;
 /// This record is used to store and retrieve information about an entity
 /// using its identifier and description.
 /// </remarks>
-public record IdDescription(string Id, string Description)
+[DataContract]
+public record IdDescription(
+    string Id,
+    string Description) : IIdDescription
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="IdDescription"/> class.

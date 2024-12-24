@@ -33,5 +33,5 @@ public interface IDomainAggregate
     /// Determines whether this instance is initialized.
     /// </summary>
     /// <returns><c>true</c> if this instance is initialized; otherwise, <c>false</c>.</returns>
-    bool IsInitialized();
+    bool IsInitialized() => !string.IsNullOrWhiteSpace(AggregateId);
 }
