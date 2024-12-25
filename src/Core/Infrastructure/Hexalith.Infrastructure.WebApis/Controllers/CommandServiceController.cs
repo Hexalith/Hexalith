@@ -6,9 +6,9 @@
 namespace Hexalith.Infrastructure.WebApis.Controllers;
 
 using Hexalith.Application.Commands;
+using Hexalith.Application.Modules.Applications;
 using Hexalith.Application.States;
 
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -19,22 +19,25 @@ using Microsoft.Extensions.Logging;
 /// This controller is responsible for publishing commands asynchronously.
 /// </remarks>
 [ApiController]
-[Authorize]
 [Route(ServicesRoutes.CommandService)]
 public partial class CommandServiceController : ControllerBase
 {
+    private readonly IApplication _application;
     private readonly IDomainCommandProcessor _commandProcessor;
     private readonly ILogger<CommandServiceController> _logger;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CommandServiceController"/> class.
     /// </summary>
+    /// <param name="application">The application.</param>
     /// <param name="commandProcessor">The command bus.</param>
     /// <param name="logger">The logger.</param>
-    public CommandServiceController(IDomainCommandProcessor commandProcessor, ILogger<CommandServiceController> logger)
+    public CommandServiceController(IApplication application, IDomainCommandProcessor commandProcessor, ILogger<CommandServiceController> logger)
     {
+        ArgumentNullException.ThrowIfNull(application);
         ArgumentNullException.ThrowIfNull(commandProcessor);
         ArgumentNullException.ThrowIfNull(logger);
+        _application = application;
         _commandProcessor = commandProcessor;
         _logger = logger;
     }
@@ -47,6 +50,11 @@ public partial class CommandServiceController : ControllerBase
     [HttpPost(ServicesRoutes.SubmitCommand)]
     public async Task<ActionResult> PublishCommandAsync(MessageState command)
     {
+        if (_application is not IApiServerApplication && HttpContext.User.Identity?.IsAuthenticated != true)
+        {
+            return Unauthorized("User is not authenticated");
+        }
+
         if (command is null)
         {
             return BadRequest("Command is null");

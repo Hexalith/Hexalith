@@ -128,9 +128,12 @@ public static class ServerSideClientAppHelper
         builder.Services.AddDaprClient();
 
         builder.Services.AddActors(options =>
+        {
+            options.ActorIdleTimeout = builder.Environment.IsDevelopment() ? TimeSpan.FromMinutes(3) : TimeSpan.FromMinutes(1);
 
             // Register actor types and configure actor settings
-            registerActors(options.Actors));
+            registerActors(options.Actors);
+        });
 
         startupLogger.Information("Configuring {AppName} ...", applicationName);
         _ = builder

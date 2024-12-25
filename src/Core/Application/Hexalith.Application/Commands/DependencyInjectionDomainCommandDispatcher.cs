@@ -64,7 +64,9 @@ public partial class DependencyInjectionDomainCommandDispatcher : IDomainCommand
         try
         {
             LogDispatchingCommandDebugInformation(metadata.Message.Name, metadata.AggregateGlobalId);
-            return await GetHandler(command).DoAsync(command, metadata, aggregate, cancellationToken).ConfigureAwait(false);
+            return await GetHandler(command)
+                .DoAsync(command, metadata, aggregate, cancellationToken)
+                .ConfigureAwait(false);
         }
         catch (ApplicationErrorException ex)
         {

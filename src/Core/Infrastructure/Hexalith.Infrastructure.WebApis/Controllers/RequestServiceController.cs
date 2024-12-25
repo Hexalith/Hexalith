@@ -5,6 +5,7 @@
 
 namespace Hexalith.Infrastructure.WebApis.Controllers;
 
+using Hexalith.Application.Modules.Applications;
 using Hexalith.Application.Requests;
 using Hexalith.Application.States;
 using Hexalith.PolymorphicSerialization;
@@ -24,18 +25,22 @@ using Microsoft.Extensions.Logging;
 [Route(ServicesRoutes.RequestService)]
 public partial class RequestServiceController : ControllerBase
 {
+    private readonly IApplication _application;
     private readonly ILogger<RequestServiceController> _logger;
     private readonly IRequestProcessor _requestProcessor;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="RequestServiceController"/> class.
     /// </summary>
+    /// <param name="application">The application.</param>
     /// <param name="requestProcessor">The request bus.</param>
     /// <param name="logger">The logger.</param>
-    public RequestServiceController(IRequestProcessor requestProcessor, ILogger<RequestServiceController> logger)
+    public RequestServiceController(IApplication application, IRequestProcessor requestProcessor, ILogger<RequestServiceController> logger)
     {
+        ArgumentNullException.ThrowIfNull(application);
         ArgumentNullException.ThrowIfNull(requestProcessor);
         ArgumentNullException.ThrowIfNull(logger);
+        _application = application;
         _requestProcessor = requestProcessor;
         _logger = logger;
     }
@@ -46,8 +51,13 @@ public partial class RequestServiceController : ControllerBase
     /// <param name="request">The request to publish.</param>
     /// <returns>A <see cref="Task{TResult}"/> representing the result of the asynchronous operation.</returns>
     [HttpPost(ServicesRoutes.SubmitRequest)]
-    public async Task<ActionResult<MessageState>> SubmmitRequestAsync(MessageState request)
+    public async Task<ActionResult<MessageState>> SubmitRequestAsync(MessageState request)
     {
+        if (_application is not IApiServerApplication && HttpContext.User.Identity?.IsAuthenticated != true)
+        {
+            return Unauthorized("User is not authenticated");
+        }
+
         if (request is null)
         {
             return BadRequest("Request is null");

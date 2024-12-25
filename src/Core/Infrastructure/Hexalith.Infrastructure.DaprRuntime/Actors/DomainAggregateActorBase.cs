@@ -464,7 +464,7 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
             throw new InvalidOperationException($"Command {metadata.Message.Name} for '{metadata.AggregateGlobalId}' has an invalid aggregate actor name '{DaprActorHelper.ToAggregateActorName(metadata.Message.Aggregate.Name)}'. Expected : {Host.ActorTypeInfo.ActorTypeName}.");
         }
 
-        IDomainAggregate aggregate = await GetAggregateAsync(
+        IDomainAggregate? aggregate = await GetAggregateAsync(
                 metadata.Message.Aggregate.Name,
                 CancellationToken.None)
             .ConfigureAwait(false);
@@ -496,14 +496,24 @@ public abstract partial class DomainAggregateActorBase : Actor, IRemindable, IDo
                     .DoAsync(command, metadata, aggregate, cancellationToken)
                     .ConfigureAwait(false);
 
+            // Check if the command has been executed successfully and update the aggregate to the new state
+            _aggregate = commandResult.Failed ? (aggregate = null) : (aggregate = commandResult.Aggregate);
+
             // Get aggregate events to persist in the event sourcing store
-            MessageState[] aggregateMessageStates = [.. commandResult.SourceEvents.Select(p => new MessageState((PolymorphicRecordBase)p, Metadata.CreateNew(p, metadata, _dateTimeService.GetUtcNow())))];
+            MessageState[] aggregateMessageStates = [..
+                commandResult
+                .SourceEvents
+                .Select(p => new MessageState(
+                    (PolymorphicRecordBase)p,
+                    Metadata.CreateNew(p, metadata, _dateTimeService.GetUtcNow())))];
 
             // Persist events and messages
             state.EventSourceCount = await EventSourceStore
                 .AddAsync(aggregateMessageStates, state.EventSourceCount, cancellationToken)
                 .ConfigureAwait(false);
+
             taskProcessor = taskProcessor.Complete();
+
             state.LastCommandProcessed = commandNumber;
             LogProcessedCommandInformation(
                 Logger,

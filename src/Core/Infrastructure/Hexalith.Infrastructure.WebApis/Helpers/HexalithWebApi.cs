@@ -1,4 +1,4 @@
-// <copyright file="HexalithWebApi.cs" company="ITANEO">
+﻿// <copyright file="HexalithWebApi.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -89,9 +89,12 @@ public static partial class HexalithWebApi
             .AddDaprBuses(builder.Configuration)
             .AddDaprStateStore(builder.Configuration)
             .AddActors(options =>
+                {
+                    options.ActorIdleTimeout = builder.Environment.IsDevelopment() ? TimeSpan.FromMinutes(3) : TimeSpan.FromMinutes(1);
 
-                // Register actor types and configure actor settings
-                registerActors(options.Actors));
+                    // Register actor types and configure actor settings
+                    registerActors(options.Actors);
+                });
 
         _ = builder
             .Services
