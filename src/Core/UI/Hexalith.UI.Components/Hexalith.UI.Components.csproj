@@ -27,4 +27,17 @@
 	<ItemGroup>
 		<SupportedPlatform Include="browser" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Compile Update="Resources\FluentUITheme.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>FluentUITheme.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Update="Resources\FluentUITheme.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>FluentUITheme.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup>
 </Project>

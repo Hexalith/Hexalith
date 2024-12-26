@@ -1,0 +1,84 @@
+﻿@using Hexalith.Application
+@using Labels = Hexalith.UI.Components.Resources.FluentUITheme
+<FluentToolbar Style="width:100%;">
+    <FluentButton Title="@AddButtonTitle"
+                  Appearance="Appearance.Stealth"
+                  IconStart="@(new Icons.Filled.Size20.Add())"
+                  OnClick="OnAdd"></FluentButton>
+    @ChildContent
+    <FluentButton Title="@ImportButtonTitle"
+                  Appearance="Appearance.Stealth"
+                  IconStart="@(new Icons.Filled.Size20.ArrowImport())"
+                  OnClick="OnImport"></FluentButton>
+    <FluentButton Title="@ExportButtonTitle"
+                  Appearance="Appearance.Stealth"
+                  IconStart="@(new Icons.Filled.Size20.ArrowExport())"
+                  OnClick="OnExport"></FluentButton>
+    <FluentButton Title="@RefreshButtonTitle"
+                  Appearance="Appearance.Stealth"
+                  IconStart="@(new Icons.Filled.Size20.ArrowSync())"
+                  OnClick="OnRefresh"></FluentButton>
+    <AuthorizeView Roles="@(ApplicationRoles.GlobalAdministrator)">
+        <Authorized>
+            <FluentButton Title="@QuickStartDataButtonTitle"
+                          Appearance="Appearance.Stealth"
+                          IconStart="@(new Icons.Filled.Size20.TextGrammarWand())"
+                          OnClick="OnQuickStartData"></FluentButton>
+            <FluentButton Title="@SynchronizeDatabaseButtonTitle"
+                          Appearance="Appearance.Stealth"
+                          IconStart="@(new Icons.Filled.Size20.SaveSync())"
+                          OnClick="OnSynchronizeDatabase"></FluentButton>
+        </Authorized>
+    </AuthorizeView>
+</FluentToolbar>
+
+@code {
+    [Parameter]
+    public string? AddButtonTitle { get; set; }
+
+    [Parameter]
+    public string? RefreshButtonTitle { get; set; }
+
+    [Parameter]
+    public string? ImportButtonTitle { get; set; }
+
+    [Parameter]
+    public string? ExportButtonTitle { get; set; }
+
+    [Parameter]
+    public string? QuickStartDataButtonTitle { get; set; }
+
+    [Parameter]
+    public string? SynchronizeDatabaseButtonTitle { get; set; }
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public EventCallback OnAdd { get; set; }
+
+    [Parameter]
+    public EventCallback OnRefresh { get; set; }
+
+    [Parameter]
+    public EventCallback OnImport { get; set; }
+
+    [Parameter]
+    public EventCallback OnExport { get; set; }
+
+    [Parameter]
+    public EventCallback OnQuickStartData { get; set; }
+
+    [Parameter]
+    public EventCallback OnSynchronizeDatabase { get; set; }
+
+    override protected void OnInitialized()
+    {
+        AddButtonTitle ??= Labels.AddButtonTitle;
+        RefreshButtonTitle ??= Labels.RefreshButtonTitle;
+        ImportButtonTitle ??= Labels.ImportButtonTitle;
+        ExportButtonTitle ??= Labels.ExportButtonTitle;
+        QuickStartDataButtonTitle ??= Labels.QuickStartDataButtonTitle;
+        SynchronizeDatabaseButtonTitle ??= Labels.SynchronizeDatabaseButtonTitle;
+    }
+} 

@@ -1,0 +1,113 @@
+﻿@inject NavigationManager NavigationManager
+@inject ICommandService CommandService
+@inject IToastService ToastService
+@using Hexalith.Application.Commands
+@using Hexalith.Extensions.Helpers
+@using Labels = Hexalith.UI.Components.Resources.FluentUITheme;
+@using System.Security.Claims
+<HexEntityIndexToolbar 
+    OnAdd="Add"
+    OnRefresh="RefreshAsync"
+    OnImport="ImportAsync"
+    OnExport="ExportAsync"
+    OnQuickStartData="ImportQuickStartDataAsync"
+    OnSynchronizeDatabase="SynchronizeDatabaseAsync" />
+
+<FluentStack Orientation="Orientation.Vertical">
+    <FluentLabel Typo="Typography.PageTitle">@Title</FluentLabel>
+        @ChildContent
+</FluentStack>
+
+
+@code {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public required string Title { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public required string IndexPagePath { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public EventCallback OnLoadData { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public EventCallback OnImportQuickStartDataAsync { get; set; }
+
+    [CascadingParameter]
+    public Task<AuthenticationState>? AuthenticationStateTask { get; set; }
+
+    private ClaimsPrincipal? _user;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (AuthenticationStateTask is not null)
+        {
+            var authState = await AuthenticationStateTask;
+            _user = authState.User;
+            await OnLoadData.InvokeAsync();
+        }
+    }
+    private async Task RefreshAsync()
+    {
+        if (_user is null)
+        {
+            return;
+        }
+        await OnLoadData.InvokeAsync();
+        StateHasChanged();
+    }
+    private async Task SynchronizeDatabaseAsync()
+    {
+        if (_user is null)
+        {
+            return;
+        }
+        await OnLoadData.InvokeAsync();
+        StateHasChanged();
+    }
+
+    private void Add()
+    {
+        NavigationManager.NavigateTo(IndexPagePath);
+    }
+    private async Task ImportAsync()
+    {
+        if (_user is null)
+        {
+            return;
+        }
+        await OnLoadData.InvokeAsync();
+        StateHasChanged();
+    }
+    private Task ExportAsync()
+    {
+        return Task.CompletedTask;
+    }
+    private async Task ImportQuickStartDataAsync()
+    {
+        if (_user is null)
+        {
+            return;
+        }
+        try
+        {
+            await OnImportQuickStartDataAsync.InvokeAsync();
+            // The quick start data has been imported successfully.
+            ToastService.ShowSuccess(Labels.ImportSuccess);
+        }
+        catch (Exception ex)
+        {
+            // An error occurred while importing the quick start data.
+            ToastService.ShowError(string.Format(Labels.ImportError, ex.FullMessage()));
+        }
+        await Task.Delay(1000);
+        await OnLoadData.InvokeAsync();
+        StateHasChanged();
+    }
+}

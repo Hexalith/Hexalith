@@ -1,0 +1,38 @@
+﻿@using Hexalith.Application
+@using Labels = Hexalith.UI.Components.Resources.FluentUITheme
+<FluentToolbar Style="width:100%;">
+    <FluentButton Title="@IndexButtonTitle"
+                  Appearance="Appearance.Stealth"
+                  IconStart="@(new Icons.Filled.Size20.List())"
+                  OnClick="OnIndex"></FluentButton>
+    @ChildContent
+    <FluentButton Title="@RefreshButtonTitle"
+                  Appearance="Appearance.Stealth"
+                  IconStart="@(new Icons.Filled.Size20.ArrowSync())"
+                  OnClick="OnRefresh"></FluentButton>
+</FluentToolbar>
+
+@code {
+    [Parameter]
+    public string? IndexButtonTitle { get; set; }
+
+    [Parameter]
+    public string? RefreshButtonTitle { get; set; }
+
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public EventCallback OnIndex { get; set; }
+
+    [Parameter]
+    public EventCallback OnRefresh { get; set; }
+
+
+    override protected void OnInitialized()
+    {
+        IndexButtonTitle ??= Labels.AddButtonTitle;
+        RefreshButtonTitle ??= Labels.RefreshButtonTitle;
+    }
+} 
