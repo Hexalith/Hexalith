@@ -79,6 +79,24 @@ namespace Hexalith.UI.Components.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An error occurred while exporting the data..
+        /// </summary>
+        internal static string ExportError {
+            get {
+                return ResourceManager.GetString("ExportError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The data has been imported successfully..
+        /// </summary>
+        internal static string ExportSuccess {
+            get {
+                return ResourceManager.GetString("ExportSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Import.
         /// </summary>
         internal static string ImportButtonTitle {
@@ -88,7 +106,7 @@ namespace Hexalith.UI.Components.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An error occurred while importing the quick start data..
+        ///   Looks up a localized string similar to An error occurred while importing the data..
         /// </summary>
         internal static string ImportError {
             get {
@@ -97,7 +115,25 @@ namespace Hexalith.UI.Components.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An error occurred while importing the quick start data..
+        /// </summary>
+        internal static string ImportQuickStartError {
+            get {
+                return ResourceManager.GetString("ImportQuickStartError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The quick start data has been imported successfully..
+        /// </summary>
+        internal static string ImportQuickStartSuccess {
+            get {
+                return ResourceManager.GetString("ImportQuickStartSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The data has been imported successfully..
         /// </summary>
         internal static string ImportSuccess {
             get {

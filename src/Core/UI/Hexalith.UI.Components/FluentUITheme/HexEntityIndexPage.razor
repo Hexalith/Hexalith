@@ -5,7 +5,7 @@
 @using Hexalith.Extensions.Helpers
 @using Labels = Hexalith.UI.Components.Resources.FluentUITheme;
 @using System.Security.Claims
-<HexEntityIndexToolbar 
+<HexEntityIndexToolbar ShowAdministratorTools="@ShowAdministratorTools"
     OnAdd="Add"
     OnRefresh="RefreshAsync"
     OnImport="ImportAsync"
@@ -21,6 +21,9 @@
 
 @code {
     [Parameter]
+    public bool ShowAdministratorTools { get; set; }
+
+    [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
     [Parameter]
@@ -29,7 +32,19 @@
 
     [Parameter]
     [EditorRequired]
-    public required string IndexPagePath { get; set; }
+    public required string AddPagePath { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public EventCallback OnImport { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public EventCallback OnExport { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public EventCallback OnDatabaseSynchronize { get; set; }
 
     [Parameter]
     [EditorRequired]
@@ -42,69 +57,65 @@
     [CascadingParameter]
     public Task<AuthenticationState>? AuthenticationStateTask { get; set; }
 
-    private ClaimsPrincipal? _user;
-
-    protected override async Task OnInitializedAsync()
-    {
-        if (AuthenticationStateTask is not null)
-        {
-            var authState = await AuthenticationStateTask;
-            _user = authState.User;
-            await OnLoadData.InvokeAsync();
-        }
-    }
     private async Task RefreshAsync()
     {
-        if (_user is null)
-        {
-            return;
-        }
         await OnLoadData.InvokeAsync();
         StateHasChanged();
     }
     private async Task SynchronizeDatabaseAsync()
     {
-        if (_user is null)
-        {
-            return;
-        }
+        await OnDatabaseSynchronize.InvokeAsync();
         await OnLoadData.InvokeAsync();
         StateHasChanged();
     }
 
     private void Add()
     {
-        NavigationManager.NavigateTo(IndexPagePath);
+        NavigationManager.NavigateTo(AddPagePath);
     }
     private async Task ImportAsync()
     {
-        if (_user is null)
-        {
-            return;
-        }
-        await OnLoadData.InvokeAsync();
-        StateHasChanged();
-    }
-    private Task ExportAsync()
-    {
-        return Task.CompletedTask;
-    }
-    private async Task ImportQuickStartDataAsync()
-    {
-        if (_user is null)
-        {
-            return;
-        }
         try
         {
-            await OnImportQuickStartDataAsync.InvokeAsync();
-            // The quick start data has been imported successfully.
+            await OnImport.InvokeAsync();
+            // The data has been imported successfully.
             ToastService.ShowSuccess(Labels.ImportSuccess);
         }
         catch (Exception ex)
         {
-            // An error occurred while importing the quick start data.
+            // An error occurred while importing the data.
             ToastService.ShowError(string.Format(Labels.ImportError, ex.FullMessage()));
+        }
+        await Task.Delay(1000);
+        await OnLoadData.InvokeAsync();
+        StateHasChanged();
+    }
+    private async Task ExportAsync()
+    {
+        try
+        {
+            await OnExport.InvokeAsync();
+            // The data has been exported successfully.
+            ToastService.ShowSuccess(Labels.ExportSuccess);
+        }
+        catch (Exception ex)
+        {
+            // An error occurred while exporting the data.
+            ToastService.ShowError(string.Format(Labels.ExportError, ex.FullMessage()));
+        }
+    }
+    private async Task ImportQuickStartDataAsync()
+    {
+        try
+        {
+            await OnImportQuickStartDataAsync.InvokeAsync();
+            // The quick start data has been imported successfully.
+            ToastService.ShowSuccess(Labels.ImportQuickStartSuccess);
+        }
+        catch (Exception ex)
+        {
+            // An error occurred while importing the quick start data.
+            ToastService.ShowError(string.Format(Labels.ImportQuickStartError, ex.FullMessage()));
         }
         await Task.Delay(1000);
         await OnLoadData.InvokeAsync();

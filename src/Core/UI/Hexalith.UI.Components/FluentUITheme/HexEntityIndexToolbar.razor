@@ -18,23 +18,25 @@
                   Appearance="Appearance.Stealth"
                   IconStart="@(new Icons.Filled.Size20.ArrowSync())"
                   OnClick="OnRefresh"></FluentButton>
-    <AuthorizeView Roles="@(ApplicationRoles.GlobalAdministrator)">
-        <Authorized>
-            <FluentButton Title="@QuickStartDataButtonTitle"
-                          Appearance="Appearance.Stealth"
-                          IconStart="@(new Icons.Filled.Size20.TextGrammarWand())"
-                          OnClick="OnQuickStartData"></FluentButton>
-            <FluentButton Title="@SynchronizeDatabaseButtonTitle"
-                          Appearance="Appearance.Stealth"
-                          IconStart="@(new Icons.Filled.Size20.SaveSync())"
-                          OnClick="OnSynchronizeDatabase"></FluentButton>
-        </Authorized>
-    </AuthorizeView>
+    @if (ShowAdministratorTools)
+    {
+        <FluentButton Title="@QuickStartDataButtonTitle"
+                      Appearance="Appearance.Stealth"
+                      IconStart="@(new Icons.Filled.Size20.TextGrammarWand())"
+                      OnClick="OnQuickStartData"></FluentButton>
+        <FluentButton Title="@SynchronizeDatabaseButtonTitle"
+                      Appearance="Appearance.Stealth"
+                      IconStart="@(new Icons.Filled.Size20.SaveSync())"
+                      OnClick="OnSynchronizeDatabase"></FluentButton>
+    }
 </FluentToolbar>
 
 @code {
     [Parameter]
     public string? AddButtonTitle { get; set; }
+
+    [Parameter]
+    public bool ShowAdministratorTools { get; set; }
 
     [Parameter]
     public string? RefreshButtonTitle { get; set; }

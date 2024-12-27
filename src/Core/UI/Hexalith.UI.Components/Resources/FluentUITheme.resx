@@ -123,13 +123,25 @@
   <data name="ExportButtonTitle" xml:space="preserve">
     <value>Export</value>
   </data>
+  <data name="ExportError" xml:space="preserve">
+    <value>An error occurred while exporting the data.</value>
+  </data>
+  <data name="ExportSuccess" xml:space="preserve">
+    <value>The data has been imported successfully.</value>
+  </data>
   <data name="ImportButtonTitle" xml:space="preserve">
     <value>Import</value>
   </data>
   <data name="ImportError" xml:space="preserve">
+    <value>An error occurred while importing the data.</value>
+  </data>
+  <data name="ImportQuickStartError" xml:space="preserve">
     <value>An error occurred while importing the quick start data.</value>
   </data>
   <data name="ImportSuccess" xml:space="preserve">
+    <value>The data has been imported successfully.</value>
+  </data>
+  <data name="ImportQuickStartSuccess" xml:space="preserve">
     <value>The quick start data has been imported successfully.</value>
   </data>
   <data name="QuickStartDataButtonTitle" xml:space="preserve">

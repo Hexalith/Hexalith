@@ -127,9 +127,15 @@
     <value>Importer</value>
   </data>
   <data name="ImportError" xml:space="preserve">
+    <value>Une erreur est apparue lors de l'import des données : {0}</value>
+  </data>
+  <data name="ImportQuickStartError" xml:space="preserve">
     <value>Une erreur est apparue lors de l'import des données de base : {0}</value>
   </data>
   <data name="ImportSuccess" xml:space="preserve">
+    <value>Les données ont été importées avec succès.</value>
+  </data>
+  <data name="ImportQuickStartSuccess" xml:space="preserve">
     <value>Les données de base ont été importées avec success.</value>
   </data>
   <data name="QuickStartDataButtonTitle" xml:space="preserve">
@@ -140,5 +146,11 @@
   </data>
   <data name="SynchronizeDatabaseButtonTitle" xml:space="preserve">
     <value>Synchroniser les vues de la base de données</value>
+  </data>
+  <data name="ExportSuccess" xml:space="preserve">
+    <value>Les données ont été exportées avec succès.</value>
+  </data>
+  <data name="ExportError" xml:space="preserve">
+    <value>Une erreur est apparue lors de l'export des données : {0}</value>
   </data>
 </root>
