@@ -6,16 +6,16 @@
 @using Labels = Hexalith.UI.Components.Resources.FluentUITheme;
 @using System.Security.Claims
 <HexEntityIndexToolbar ShowAdministratorTools="@ShowAdministratorTools"
-    OnAdd="Add"
-    OnRefresh="RefreshAsync"
-    OnImport="ImportAsync"
-    OnExport="ExportAsync"
-    OnQuickStartData="ImportQuickStartDataAsync"
-    OnSynchronizeDatabase="SynchronizeDatabaseAsync" />
+OnAdd="Add"
+OnRefresh="RefreshAsync"
+OnImport="ImportAsync"
+OnExport="ExportAsync"
+OnQuickStartData="ImportQuickStartDataAsync"
+OnSynchronizeDatabase="SynchronizeDatabaseAsync" />
 
 <FluentStack Orientation="Orientation.Vertical">
     <FluentLabel Typo="Typography.PageTitle">@Title</FluentLabel>
-        @ChildContent
+    @ChildContent
 </FluentStack>
 
 
@@ -56,6 +56,12 @@
 
     [CascadingParameter]
     public Task<AuthenticationState>? AuthenticationStateTask { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await OnLoadData.InvokeAsync();
+        await base.OnInitializedAsync();
+    }
 
     private async Task RefreshAsync()
     {
