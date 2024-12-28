@@ -27,6 +27,8 @@ public abstract class EntityValidation<TEntity> : AbstractValidator<TEntity>
     /// <summary>
     /// Initializes a new instance of the <see cref="EntityValidation{TEntity}"/> class.
     /// </summary>
+    /// <param name="idMaxSize">The maximum size of the ID.</param>
+    /// <param name="descriptionMaxSize">The maximum size of the description.</param>
     public EntityValidation(int idMaxSize = 32, int descriptionMaxSize = 128)
     {
         if (idMaxSize > 0)

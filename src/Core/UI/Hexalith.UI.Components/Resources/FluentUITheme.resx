@@ -124,7 +124,7 @@
     <value>Export</value>
   </data>
   <data name="ExportError" xml:space="preserve">
-    <value>An error occurred while exporting the data.</value>
+    <value>An error occurred while exporting the data : {0}</value>
   </data>
   <data name="ExportSuccess" xml:space="preserve">
     <value>The data has been imported successfully.</value>
@@ -133,7 +133,7 @@
     <value>Import</value>
   </data>
   <data name="ImportError" xml:space="preserve">
-    <value>An error occurred while importing the quick start data.</value>
+    <value>An error occurred while importing the quick start data : {0}</value>
   </data>
   <data name="ImportSuccess" xml:space="preserve">
     <value>The quick start data has been imported successfully.</value>

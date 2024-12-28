@@ -124,7 +124,7 @@ namespace Hexalith.UI.Components.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An error occurred while exporting the data..
+        ///   Looks up a localized string similar to An error occurred while exporting the data : {0}.
         /// </summary>
         internal static string ExportError {
             get {
@@ -160,7 +160,7 @@ namespace Hexalith.UI.Components.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An error occurred while importing the quick start data..
+        ///   Looks up a localized string similar to An error occurred while importing the quick start data : {0}.
         /// </summary>
         internal static string ImportError {
             get {

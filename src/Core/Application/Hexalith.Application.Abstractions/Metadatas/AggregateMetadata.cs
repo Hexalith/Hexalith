@@ -27,6 +27,9 @@ public record AggregateMetadata(
     [property:JsonPropertyOrder(2)]
     string Name)
 {
+    /// <summary>
+    /// Gets an empty instance of <see cref="AggregateMetadata"/>.
+    /// </summary>
     public static AggregateMetadata Empty => new(string.Empty, string.Empty);
 
     /// <summary>
