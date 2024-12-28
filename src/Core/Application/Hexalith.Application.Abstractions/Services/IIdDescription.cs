@@ -13,16 +13,15 @@ public interface IIdDescription
     /// <summary>
     /// Gets the description of the object.
     /// </summary>
-    /// <value>
-    /// The description of the object.
-    /// </value>
     string Description { get; }
+
+    /// <summary>
+    /// Gets a value indicating whether the object is disabled.
+    /// </summary>
+    bool Disabled { get; }
 
     /// <summary>
     /// Gets the ID of the object.
     /// </summary>
-    /// <value>
-    /// The ID of the object.
-    /// </value>
     string Id { get; }
 }

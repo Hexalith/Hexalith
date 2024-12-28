@@ -17,13 +17,14 @@ using System.Runtime.Serialization;
 [DataContract]
 public record IdDescription(
     string Id,
-    string Description) : IIdDescription
+    string Description,
+    bool Disabled) : IIdDescription
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="IdDescription"/> class.
     /// </summary>
     public IdDescription()
-        : this(string.Empty, string.Empty)
+        : this(string.Empty, string.Empty, false)
     {
     }
 }

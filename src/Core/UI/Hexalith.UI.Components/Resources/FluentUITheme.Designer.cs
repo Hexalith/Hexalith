@@ -63,9 +63,54 @@ namespace Hexalith.UI.Components.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Add.
         /// </summary>
+        internal static string Add {
+            get {
+                return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
         internal static string AddButtonTitle {
             get {
                 return ResourceManager.GetString("AddButtonTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comments.
+        /// </summary>
+        internal static string Comments {
+            get {
+                return ResourceManager.GetString("Comments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        internal static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error while enabling/disabling {0} : {1}.
+        /// </summary>
+        internal static string DisableChangeError {
+            get {
+                return ResourceManager.GetString("DisableChangeError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disabled.
+        /// </summary>
+        internal static string Disabled {
+            get {
+                return ResourceManager.GetString("Disabled", resourceCulture);
             }
         }
         
@@ -97,6 +142,15 @@ namespace Hexalith.UI.Components.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Identifier.
+        /// </summary>
+        internal static string Id {
+            get {
+                return ResourceManager.GetString("Id", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Import.
         /// </summary>
         internal static string ImportButtonTitle {
@@ -106,7 +160,7 @@ namespace Hexalith.UI.Components.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An error occurred while importing the data..
+        ///   Looks up a localized string similar to An error occurred while importing the quick start data..
         /// </summary>
         internal static string ImportError {
             get {
@@ -115,25 +169,7 @@ namespace Hexalith.UI.Components.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An error occurred while importing the quick start data..
-        /// </summary>
-        internal static string ImportQuickStartError {
-            get {
-                return ResourceManager.GetString("ImportQuickStartError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The quick start data has been imported successfully..
-        /// </summary>
-        internal static string ImportQuickStartSuccess {
-            get {
-                return ResourceManager.GetString("ImportQuickStartSuccess", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The data has been imported successfully..
         /// </summary>
         internal static string ImportSuccess {
             get {
@@ -142,11 +178,11 @@ namespace Hexalith.UI.Components.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Insert base data.
+        ///   Looks up a localized string similar to Name.
         /// </summary>
-        internal static string QuickStartDataButtonTitle {
+        internal static string Name {
             get {
-                return ResourceManager.GetString("QuickStartDataButtonTitle", resourceCulture);
+                return ResourceManager.GetString("Name", resourceCulture);
             }
         }
         
@@ -156,6 +192,24 @@ namespace Hexalith.UI.Components.Resources {
         internal static string RefreshButtonTitle {
             get {
                 return ResourceManager.GetString("RefreshButtonTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove.
+        /// </summary>
+        internal static string Remove {
+            get {
+                return ResourceManager.GetString("Remove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        internal static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
             }
         }
         

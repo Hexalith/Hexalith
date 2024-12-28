@@ -1,0 +1,20 @@
+﻿@inherits FluentButton
+
+@code {
+    override protected void OnInitialized()
+    {
+        if (IconStart is null)
+            IconStart = new Icons.Regular.Size16.Save();
+        if (Style is null)
+            Style = "margin-left: 8px;";
+        if (Appearance is null)
+            Appearance = Microsoft.FluentUI.AspNetCore.Components.Appearance.Accent;
+        if (ChildContent is null)
+            ChildContent = new RenderFragment(builder =>
+            {
+                builder.AddContent(0, Labels.Save);
+            });
+        base.OnInitialized();
+    }
+
+}

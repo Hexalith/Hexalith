@@ -10,7 +10,6 @@ OnAdd="Add"
 OnRefresh="RefreshAsync"
 OnImport="ImportAsync"
 OnExport="ExportAsync"
-OnQuickStartData="ImportQuickStartDataAsync"
 OnSynchronizeDatabase="SynchronizeDatabaseAsync" />
 
 <FluentStack Orientation="Orientation.Vertical">
@@ -50,9 +49,6 @@ OnSynchronizeDatabase="SynchronizeDatabaseAsync" />
     [EditorRequired]
     public EventCallback OnLoadData { get; set; }
 
-    [Parameter]
-    [EditorRequired]
-    public EventCallback OnImportQuickStartDataAsync { get; set; }
 
     [CascadingParameter]
     public Task<AuthenticationState>? AuthenticationStateTask { get; set; }
@@ -109,22 +105,5 @@ OnSynchronizeDatabase="SynchronizeDatabaseAsync" />
             // An error occurred while exporting the data.
             ToastService.ShowError(string.Format(Labels.ExportError, ex.FullMessage()));
         }
-    }
-    private async Task ImportQuickStartDataAsync()
-    {
-        try
-        {
-            await OnImportQuickStartDataAsync.InvokeAsync();
-            // The quick start data has been imported successfully.
-            ToastService.ShowSuccess(Labels.ImportQuickStartSuccess);
-        }
-        catch (Exception ex)
-        {
-            // An error occurred while importing the quick start data.
-            ToastService.ShowError(string.Format(Labels.ImportQuickStartError, ex.FullMessage()));
-        }
-        await Task.Delay(1000);
-        await OnLoadData.InvokeAsync();
-        StateHasChanged();
     }
 }

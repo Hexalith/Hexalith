@@ -14,6 +14,7 @@ using Dapr.Actors.Client;
 using Hexalith.Application.Commands;
 using Hexalith.Application.Metadatas;
 using Hexalith.Application.States;
+using Hexalith.Extensions.Helpers;
 using Hexalith.Infrastructure.DaprRuntime.Actors;
 using Hexalith.Infrastructure.DaprRuntime.Helpers;
 using Hexalith.PolymorphicSerialization;
@@ -123,7 +124,7 @@ public partial class DomainActorCommandProcessor : IDomainCommandProcessor
         }
         catch (Exception e)
         {
-            throw new InvalidOperationException($"Fail to call actor for aggregate {metadata.AggregateGlobalId} method '{nameof(IDomainAggregateActor.SubmitCommandAsync)}'.", e);
+            throw new InvalidOperationException($"Fail to call actor for aggregate {metadata.AggregateGlobalId} method '{nameof(IDomainAggregateActor.SubmitCommandAsync)}' : " + e.FullMessage(), e);
         }
     }
 }

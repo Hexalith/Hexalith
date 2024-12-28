@@ -1,0 +1,15 @@
+﻿@inherits FluentTextField
+
+@code {
+
+    override protected void OnInitialized()
+    {
+        base.OnInitialized();
+        if (string.IsNullOrWhiteSpace(this.Label))
+            this.Label = Labels.Id;
+        if (string.IsNullOrWhiteSpace(this.Style))
+            this.Style = "width:100%;";
+        this.Required = true;
+    }
+}
+

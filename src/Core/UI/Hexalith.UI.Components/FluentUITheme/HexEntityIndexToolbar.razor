@@ -20,10 +20,6 @@
                   OnClick="OnRefresh"></FluentButton>
     @if (ShowAdministratorTools)
     {
-        <FluentButton Title="@QuickStartDataButtonTitle"
-                      Appearance="Appearance.Stealth"
-                      IconStart="@(new Icons.Filled.Size20.TextGrammarWand())"
-                      OnClick="OnQuickStartData"></FluentButton>
         <FluentButton Title="@SynchronizeDatabaseButtonTitle"
                       Appearance="Appearance.Stealth"
                       IconStart="@(new Icons.Filled.Size20.SaveSync())"
@@ -80,7 +76,6 @@
         RefreshButtonTitle ??= Labels.RefreshButtonTitle;
         ImportButtonTitle ??= Labels.ImportButtonTitle;
         ExportButtonTitle ??= Labels.ExportButtonTitle;
-        QuickStartDataButtonTitle ??= Labels.QuickStartDataButtonTitle;
         SynchronizeDatabaseButtonTitle ??= Labels.SynchronizeDatabaseButtonTitle;
     }
 } 

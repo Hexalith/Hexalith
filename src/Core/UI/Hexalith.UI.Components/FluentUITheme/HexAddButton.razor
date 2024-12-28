@@ -1,0 +1,11 @@
+﻿<FluentButton OnClick="OnClick"
+              IconStart="@(new Icons.Regular.Size16.Add())"
+              Style="margin-left: 8px;">
+    @Labels.Add
+</FluentButton>
+
+@code {
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClick { get; set; }
+
+}
