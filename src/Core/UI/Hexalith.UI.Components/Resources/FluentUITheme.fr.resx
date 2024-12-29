@@ -171,4 +171,16 @@
   <data name="Save" xml:space="preserve">
     <value>Enregistrer</value>
   </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Date de début</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>Date de fin</value>
+  </data>
+  <data name="StartTime" xml:space="preserve">
+    <value>Heure de début</value>
+  </data>
+  <data name="EndTime" xml:space="preserve">
+    <value>Heure de fin</value>
+  </data>
 </root>

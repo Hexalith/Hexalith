@@ -1,0 +1,46 @@
+﻿@inherits FluentDatePicker
+
+<FluentDatePicker AdditionalAttributes="AdditionalAttributes"
+                  Appearance="@Appearance"
+                  AriaLabel="@AriaLabel"
+                  Autofocus="@Autofocus"
+                  Class="@Class"
+                  Context="Context"
+                  Culture="@Culture"
+                  Data="@Data"
+                  DayFormat="@DayFormat"
+                  Disabled="@Disabled"
+                  DisabledSelectable="@DisabledSelectable"
+                  DisplayName="@DisplayName"
+                  DoubleClickToDate="@DoubleClickToDate"
+                  Embedded="@Embedded"
+                  Field="@Field"
+                  Id="@Id"
+                  Immediate="@Immediate"
+                  ImmediateDelay="@ImmediateDelay"
+                  Label="@(Label ?? Labels.StartDate)"
+                  Name="@Name"
+                  OnCalendarOpen="@OnCalendarOpen"
+                  OnDoubleClick="@OnDoubleClick"
+                  ParentReference="@ParentReference"
+                  PickerMonthChanged="@PickerMonthChanged"
+                  Placeholder="@Placeholder"
+                  PopupHorizontalPosition="@PopupHorizontalPosition"
+                  ReadOnly="@ReadOnly"
+                  Required="true"
+                  Style="@(Style ?? "width:100%;")"
+                  Value="@Value"
+                  ValueChanged="@ValueChanged"
+                  ValueExpression="@ValueExpression"
+                  CheckIfSelectedValueHasChanged="@CheckIfSelectedValueHasChanged"
+                  View="@View">
+    <LabelTemplate>
+        @LabelTemplate
+    </LabelTemplate>
+    <DaysTemplate>
+        @DaysTemplate
+    </DaysTemplate>
+</FluentDatePicker>
+@code {
+
+}
