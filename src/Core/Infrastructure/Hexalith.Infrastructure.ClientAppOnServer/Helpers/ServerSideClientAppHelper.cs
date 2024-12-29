@@ -144,6 +144,7 @@ public static class ServerSideClientAppHelper
             .AddHexalithServerSideClientApp(builder.Configuration)
             .AddEndpointsApiExplorer()
             .AddSwaggerGen(c => c.SwaggerDoc("v1", new() { Title = applicationName, Version = version, }))
+            .AddDaprAggregateServices()
             .AddDaprBuses(builder.Configuration)
             .AddDaprStateStore(builder.Configuration);
 

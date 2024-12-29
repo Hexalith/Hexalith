@@ -10,9 +10,11 @@ using Hexalith.Application.Commands;
 using Hexalith.Application.Events;
 
 using Hexalith.Application.Requests;
+using Hexalith.Application.Services;
 using Hexalith.Application.States;
 using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.DaprRuntime.Buses;
+using Hexalith.Infrastructure.DaprRuntime.Services;
 using Hexalith.Infrastructure.DaprRuntime.States;
 
 using Microsoft.Extensions.Configuration;
@@ -25,6 +27,12 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 /// </summary>
 public static class DaprServicesHelper
 {
+    public static IServiceCollection AddDaprAggregateServices(this IServiceCollection services)
+    {
+        _ = services.AddTransient<IAggregateService, AggregateService>();
+        return services;
+    }
+
     /// <summary>
     /// Adds all Dapr buses (Command, Event, and Request) to the service collection.
     /// </summary>

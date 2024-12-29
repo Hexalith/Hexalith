@@ -86,6 +86,7 @@ public static partial class HexalithWebApi
                     Title = applicationName,
                     Version = version,
                 }))
+            .AddDaprAggregateServices()
             .AddDaprBuses(builder.Configuration)
             .AddDaprStateStore(builder.Configuration)
             .AddActors(options =>
