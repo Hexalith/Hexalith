@@ -1,10 +1,14 @@
 ﻿@using Hexalith.Application
 @using Labels = Hexalith.UI.Components.Resources.FluentUITheme
+@inject NavigationManager NavigationManager
 <FluentToolbar Style="width:100%;">
+    @if (IndexPath is not null)
+    {
     <FluentButton Title="@IndexButtonTitle"
                   Appearance="Appearance.Stealth"
                   IconStart="@(new Icons.Filled.Size20.List())"
                   OnClick="OnIndex"></FluentButton>
+    }
     @ChildContent
     <FluentButton Title="@RefreshButtonTitle"
                   Appearance="Appearance.Stealth"
@@ -19,12 +23,11 @@
     [Parameter]
     public string? RefreshButtonTitle { get; set; }
 
-
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
     [Parameter]
-    public EventCallback OnIndex { get; set; }
+    public string? IndexPath { get; set; }
 
     [Parameter]
     public EventCallback OnRefresh { get; set; }
@@ -34,5 +37,13 @@
     {
         IndexButtonTitle ??= Labels.AddButtonTitle;
         RefreshButtonTitle ??= Labels.RefreshButtonTitle;
+    }
+
+    void OnIndex()
+    {
+        if (IndexPath is not null)
+        {
+            NavigationManager.NavigateTo(IndexPath, true);
+        }
     }
 } 

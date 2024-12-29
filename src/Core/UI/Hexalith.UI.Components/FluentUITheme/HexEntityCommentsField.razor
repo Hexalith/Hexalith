@@ -1,0 +1,43 @@
+﻿@inherits FluentTextArea
+
+<FluentTextArea AdditionalAttributes="AdditionalAttributes"
+                 Appearance="@Appearance"
+                 AriaLabel="@AriaLabel"
+                 Autofocus="@Autofocus"
+                 Class="@Class"
+                 Cols="@Cols"
+                 Data="@Data"
+                 DataList="@DataList"
+                 Disabled="@Disabled"
+                 DisplayName="@DisplayName"
+                 Embedded="@Embedded"
+                 Field="@Field"
+                 Form="@Form"
+                 Id="@Id"
+                 Immediate="@Immediate"
+                 ImmediateDelay="@ImmediateDelay"
+                 Label="@(Label ?? Labels.Comments)"
+                 Maxlength="@Maxlength"
+                 Minlength="@Minlength"
+                 Name="@Name"
+                 ParentReference="@ParentReference"
+                 Placeholder="@Placeholder"
+                 ReadOnly="@ReadOnly"
+                 Required="true"
+                 Resize="@Resize"
+                 Rows="@(Rows ?? 3)"
+                 Spellcheck="@Spellcheck"
+                 Style="@(Style ?? "width:100%;")"
+                 Value="@Value"
+                 ValueChanged="@ValueChanged"
+                 ValueExpression="@ValueExpression">
+    <LabelTemplate>
+        @LabelTemplate
+    </LabelTemplate>
+    <ChildContent>
+        @ChildContent
+    </ChildContent>
+</FluentTextArea>
+@code {
+
+}

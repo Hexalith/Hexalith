@@ -1,11 +1,43 @@
-﻿<FluentButton OnClick="OnClick"
-              IconStart="@(new Icons.Regular.Size16.Add())"
-              Style="margin-left: 8px;">
-    @Labels.Add
+﻿@inherits FluentButton
+<FluentButton Action="@Action"
+              AdditionalAttributes="AdditionalAttributes"
+              Appearance="@(Appearance ?? Microsoft.FluentUI.AspNetCore.Components.Appearance.Accent)"
+              Autofocus="@Autofocus"
+              BackgroundColor="@BackgroundColor"
+              Class="@Class"
+              Color="@Color"
+              CurrentValue="@CurrentValue"
+              Data="@Data"
+              Disabled="@Disabled"
+              Enctype="@Enctype"
+              FormId="@FormId"
+              IconEnd="@IconEnd"
+              IconStart="@(IconStart is null && IconEnd is null ? new Icons.Regular.Size16.Add() : IconStart)"
+              Id="@Id"
+              Loading="@Loading"
+              Method="@Method"
+              Name="@Name"
+              NoValidate="@NoValidate"
+              OnClick="@OnClick"
+              ParentReference="@ParentReference"
+              Required="true"
+              StopPropagation="@StopPropagation"
+              Style="@(Style ?? "margin-left: 8px;")"
+              Target="@Target"
+              Title="@Title"
+              Type="@Type"
+              Value="@Value">
+    <ChildContent>
+        @if (ChildContent is null)
+        {
+            @Labels.Add
+        }
+        else
+        {
+            @ChildContent
+        }
+    </ChildContent>
 </FluentButton>
 
 @code {
-    [Parameter]
-    public EventCallback<MouseEventArgs> OnClick { get; set; }
-
 }
