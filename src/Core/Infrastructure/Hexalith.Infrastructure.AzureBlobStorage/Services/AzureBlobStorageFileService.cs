@@ -109,6 +109,7 @@ public class AzureBlobStorageFileService : IFileService
     /// <param name="data">The data to upload.</param>
     /// <param name="tags">Optional metadata tags to associate with the blob.</param>
     /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+    /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
     public Task UploadAsync(string containerName, string fileId, object data, IDictionary<string, string> tags, CancellationToken cancellationToken) => throw new NotImplementedException();
 
     private BlobServiceClient CreateBlobServiceClient()

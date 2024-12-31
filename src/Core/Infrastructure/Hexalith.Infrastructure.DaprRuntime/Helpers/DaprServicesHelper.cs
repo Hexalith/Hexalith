@@ -27,6 +27,11 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 /// </summary>
 public static class DaprServicesHelper
 {
+    /// <summary>
+    /// Adds the Dapr Aggregate Services to the service collection.
+    /// </summary>
+    /// <param name="services">The <see cref="IServiceCollection"/> to add the Aggregate Services to.</param>
+    /// <returns>The <see cref="IServiceCollection"/> so that additional calls can be chained.</returns>
     public static IServiceCollection AddDaprAggregateServices(this IServiceCollection services)
     {
         _ = services.AddTransient<IAggregateService, AggregateService>();
