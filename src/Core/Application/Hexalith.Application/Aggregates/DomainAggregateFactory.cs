@@ -46,8 +46,7 @@ public class DomainAggregateFactory : IDomainAggregateFactory
     private IDomainAggregateProvider GetProvider([NotNull] string aggregateName)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(aggregateName);
-        bool provider = _aggregateProviders.TryGetValue(aggregateName, out IDomainAggregateProvider? value);
-        if (!provider)
+        if (!_aggregateProviders.TryGetValue(aggregateName, out IDomainAggregateProvider? value))
         {
             string existingProviders = string.Join(", ", _aggregateProviders.Keys);
             throw new InvalidOperationException($"Provider for aggregate {aggregateName} not found in the service collection. Add the IDomainAggregateProvider singleton to the dependency injection. Found providers : " + existingProviders);

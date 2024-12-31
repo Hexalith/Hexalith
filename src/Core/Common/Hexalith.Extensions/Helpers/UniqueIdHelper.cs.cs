@@ -26,13 +26,13 @@ public static class UniqueIdHelper
     {
         lock (_lock)
         {
-            string current;
             DateTime now = DateTime.UtcNow;
-            DateTime currentDateTime = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second, now.Millisecond);
+            DateTime currentDateTime = new(now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second, now.Millisecond);
             while (currentDateTime <= _previous)
             {
                 currentDateTime = currentDateTime.AddMilliseconds(1);
             }
+
             _previous = currentDateTime;
             return currentDateTime.ToString("yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
         }
