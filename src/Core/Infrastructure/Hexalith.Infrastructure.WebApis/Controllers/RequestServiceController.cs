@@ -1,12 +1,15 @@
-﻿// <copyright file="RequestServiceController.cs" company="ITANEO">
+﻿﻿﻿﻿// <copyright file="RequestServiceController.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
 namespace Hexalith.Infrastructure.WebApis.Controllers;
 
+using System.Threading;
+
 using Hexalith.Application.Modules.Applications;
 using Hexalith.Application.Requests;
+using Hexalith.Application.Services;
 using Hexalith.Application.States;
 using Hexalith.PolymorphicSerialization;
 
@@ -15,10 +18,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 /// <summary>
-/// Represents a controller for handling requests.
+/// Represents a controller for handling service requests and aggregate operations.
 /// </summary>
 /// <remarks>
-/// This controller is responsible for publishing requests asynchronously.
+/// This controller provides endpoints for:
+/// <list type="bullet">
+/// <item><description>Submitting and processing asynchronous requests</description></item>
+/// <item><description>Retrieving aggregate identifiers with pagination support</description></item>
+/// </list>
 /// </remarks>
 [ApiController]
 [Authorize]
@@ -43,6 +50,25 @@ public partial class RequestServiceController : ControllerBase
         _application = application;
         _requestProcessor = requestProcessor;
         _logger = logger;
+    }
+
+    /// <summary>
+    /// Gets a collection of aggregate identifiers asynchronously.
+    /// </summary>
+    /// <param name="collectionFactory">The factory for creating ID collection services.</param>
+    /// <param name="partitionId">The partition identifier to scope the aggregate IDs.</param>
+    /// <param name="aggregateName">The name of the aggregate type to retrieve IDs for.</param>
+    /// <param name="skip">The number of records to skip (for pagination).</param>
+    /// <param name="take">The maximum number of records to return (for pagination). Use 0 for all records.</param>
+    /// <returns>A <see cref="Task{TResult}"/> containing an <see cref="ActionResult{T}"/> of <see cref="IEnumerable{String}"/> representing the collection of aggregate identifiers.</returns>
+    [HttpPost("aggregate/ids")]
+    public async Task<ActionResult<IEnumerable<string>>> GetAggregateIdsRequestAsync([FromServices] IIdCollectionFactory collectionFactory, string partitionId, string aggregateName, int skip = 0, int take = 0)
+    {
+        IIdCollectionService service = collectionFactory.CreateService(IIdCollectionFactory.GetAggregateCollectionName(aggregateName), partitionId);
+        IEnumerable<string> ids = [.. await service
+                .GetAsync(skip, take, CancellationToken.None)
+                .ConfigureAwait(false)];
+        return Ok(ids);
     }
 
     /// <summary>
@@ -93,6 +119,14 @@ public partial class RequestServiceController : ControllerBase
         return Ok(new MessageState(result, request.Metadata));
     }
 
+    /// <summary>
+    /// Logs debug information when a request is successfully submitted.
+    /// </summary>
+    /// <param name="logger">The logger instance to use for logging.</param>
+    /// <param name="messageId">The unique identifier of the message.</param>
+    /// <param name="correlationId">The correlation identifier for tracking related operations.</param>
+    /// <param name="messageType">The type of the message being processed.</param>
+    /// <param name="partitionKey">The partition key of the aggregate.</param>
     [LoggerMessage(
       1,
       LogLevel.Debug,
