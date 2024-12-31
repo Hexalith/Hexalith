@@ -130,4 +130,62 @@ public class DaprActorHelperTest
         _ = result.Should().NotBeNull();
         _ = result.Should().Be(actorIdString);
     }
+
+    [Theory]
+    [InlineData("123#4", "123%234")]
+    [InlineData("123$4", "123%244")]
+    [InlineData("123&4", "123%264")]
+    [InlineData("123=4", "123%3D4")]
+    [InlineData("123?4", "123%3F4")]
+    public void ToActorId_ShouldEscapeAdditionalSpecialCharacters(string id, string escapedString)
+    {
+        // Act
+        ActorId result = id.ToActorId();
+
+        // Assert
+        result.Should().NotBeNull();
+        result.ToString().Should().Be(escapedString);
+    }
+
+    [Theory]
+    [InlineData("123!@#$%^&*()4", "123%21%40%23%24%25%5E%26%2A%28%294")]
+    [InlineData("Hello World!", "Hello%20World%21")]
+    [InlineData("user@example.com", "user%40example%2Ecom")]
+    public void ToActorId_ShouldHandleComplexStrings(string id, string escapedString)
+    {
+        // Act
+        ActorId result = id.ToActorId();
+
+        // Assert
+        result.Should().NotBeNull();
+        result.ToString().Should().Be(escapedString);
+    }
+
+    [Fact]
+    public void ToActorId_ShouldHandleMaximumLength()
+    {
+        // Arrange
+        string id = new string('a', 1024); // Testing with a long string
+
+        // Act
+        ActorId result = id.ToActorId();
+
+        // Assert
+        result.Should().NotBeNull();
+        result.ToString().Should().Be(id);
+    }
+
+    [Theory]
+    [InlineData(" leading")]
+    [InlineData("trailing ")]
+    [InlineData(" both ")]
+    public void ToActorId_ShouldHandleWhitespace(string id)
+    {
+        // Act
+        ActorId result = id.ToActorId();
+
+        // Assert
+        result.Should().NotBeNull();
+        result.ToString().Should().Be(id.Replace(" ", "%20"));
+    }
 }
