@@ -162,6 +162,20 @@ public static class ServerSideClientAppHelper
                 }
             });
 
+        _ = builder
+            .Services
+            .ConfigureHttpJsonOptions(options => options.SerializerOptions.SetDefault())
+            .AddHttpContextAccessor()
+            .AddControllers()
+            .AddApplicationPart(typeof(RequestServiceController).Assembly)
+            .AddDapr(dapr =>
+            {
+                if (builder.Environment.IsDevelopment())
+                {
+                    _ = dapr.UseTimeout(TimeSpan.FromMinutes(1));
+                }
+            });
+
         _ = builder.Services
             .AddRazorComponents()
             .AddInteractiveServerComponents()

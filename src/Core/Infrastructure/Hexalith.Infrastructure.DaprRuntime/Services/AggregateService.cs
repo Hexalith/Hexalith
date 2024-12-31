@@ -35,15 +35,16 @@ public class AggregateService : IAggregateService
     }
 
     /// <inheritdoc/>
-    public async Task<SnapshotEvent?> GetSnapshotAsync(string aggregateName, string partitionId, string id)
+    public async Task<SnapshotEvent?> GetSnapshotAsync(string aggregateName, string partitionId, string id, CancellationToken cancellationToken)
     {
         return await GetSnapshotAsync(
             aggregateName,
-            Metadata.CreateAggregateGlobalId(partitionId, aggregateName, id));
+            Metadata.CreateAggregateGlobalId(partitionId, aggregateName, id),
+            cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task<SnapshotEvent?> GetSnapshotAsync(string aggregateName, string globalId)
+    public async Task<SnapshotEvent?> GetSnapshotAsync(string aggregateName, string globalId, CancellationToken cancellationToken)
     {
         IDomainAggregateActor actor = _actorProxy.ToDomainAggregateActor(aggregateName, globalId);
         Application.States.MessageState? state = await actor.GetSnapshotEventAsync();

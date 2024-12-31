@@ -14,25 +14,25 @@ public interface IProjectionFactory<TState>
     /// <summary>
     /// Gets the state asynchronously.
     /// </summary>
-    /// <param name="aggregateId">The aggregate identifier.</param>
+    /// <param name="aggregateGlobalId">The aggregate identifier.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task&lt;System.Nullable&lt;TState&gt;&gt;.</returns>
-    Task<TState?> GetStateAsync(string aggregateId, CancellationToken cancellationToken);
+    Task<TState?> GetStateAsync(string aggregateGlobalId, CancellationToken cancellationToken);
 
     /// <summary>
     /// Removes the state asynchronously.
     /// </summary>
-    /// <param name="aggregateId">The aggregate identifier.</param>
+    /// <param name="aggregateGlobalId">The aggregate identifier.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>A task that represents the asynchronous operation.</returns>
-    Task RemoveStateAsync(string aggregateId, CancellationToken cancellationToken);
+    Task RemoveStateAsync(string aggregateGlobalId, CancellationToken cancellationToken);
 
     /// <summary>
     /// Sets the state asynchronously.
     /// </summary>
-    /// <param name="aggregateId">The aggregate identifier.</param>
+    /// <param name="aggregateGlobalId">The aggregate identifier.</param>
     /// <param name="state">The state.</param>
     /// <param name="cancellationToken">The cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
     /// <returns>Task.</returns>
-    Task SetStateAsync(string aggregateId, TState state, CancellationToken cancellationToken);
+    Task SetStateAsync(string aggregateGlobalId, TState state, CancellationToken cancellationToken);
 }

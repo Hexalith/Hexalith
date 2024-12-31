@@ -20,14 +20,16 @@ public interface IAggregateService
     /// <param name="aggregateName">Name of the aggregate.</param>
     /// <param name="partitionId">The partition identifier.</param>
     /// <param name="id">The identifier.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task that represents the asynchronous operation. The task result contains the snapshot event.</returns>
-    Task<SnapshotEvent?> GetSnapshotAsync(string aggregateName, string partitionId, string id);
+    Task<SnapshotEvent?> GetSnapshotAsync(string aggregateName, string partitionId, string id, CancellationToken cancellationToken);
 
     /// <summary>
     /// Gets the snapshot asynchronously.
     /// </summary>
     /// <param name="aggregateName">Name of the aggregate.</param>
     /// <param name="globalId">The global identifier.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task that represents the asynchronous operation. The task result contains the snapshot event.</returns>
-    Task<SnapshotEvent?> GetSnapshotAsync(string aggregateName, string globalId);
+    Task<SnapshotEvent?> GetSnapshotAsync(string aggregateName, string globalId, CancellationToken cancellationToken);
 }
