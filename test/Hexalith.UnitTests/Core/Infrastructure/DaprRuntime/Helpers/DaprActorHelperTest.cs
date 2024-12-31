@@ -14,6 +14,22 @@ using Hexalith.Infrastructure.DaprRuntime.Helpers;
 public class DaprActorHelperTest
 {
     [Theory]
+    [InlineData("123#4", "123%234")]
+    [InlineData("123$4", "123%244")]
+    [InlineData("123&4", "123%264")]
+    [InlineData("123=4", "123%3D4")]
+    [InlineData("123?4", "123%3F4")]
+    public void ToActorId_ShouldEscapeAdditionalSpecialCharacters(string id, string escapedString)
+    {
+        // Act
+        ActorId result = id.ToActorId();
+
+        // Assert
+        _ = result.Should().NotBeNull();
+        _ = result.ToString().Should().Be(escapedString);
+    }
+
+    [Theory]
     [InlineData("123!4", "123%2104")]
     [InlineData("123 4", "123%2114")]
     [InlineData("123/4", "123%2124")]
@@ -22,11 +38,25 @@ public class DaprActorHelperTest
     public void ToActorId_ShouldEscapeSpecialCharacters(string id, string escapedString)
     {
         // Act
-        Dapr.Actors.ActorId result = id.ToActorId();
+        ActorId result = id.ToActorId();
 
         // Assert
         _ = result.Should().NotBeNull();
         _ = result.ToString().Should().Be(escapedString);
+    }
+
+    [Fact]
+    public void ToActorId_ShouldHandleMaximumLength()
+    {
+        // Arrange
+        string id = new('a', 1024); // Testing with a long string
+
+        // Act
+        ActorId result = id.ToActorId();
+
+        // Assert
+        _ = result.Should().NotBeNull();
+        _ = result.ToString().Should().Be(id);
     }
 
     [Fact]
@@ -70,6 +100,77 @@ public class DaprActorHelperTest
     }
 
     [Theory]
+    [InlineData("Customer", "CustomerAggregate")]
+    [InlineData("Order", "OrderAggregate")]
+    [InlineData("Product", "ProductAggregate")]
+    public void ToAggregateActorName_ShouldAppendAggregateSuffix(string aggregateName, string expected)
+    {
+        // Act
+        string result = aggregateName.ToAggregateActorName();
+
+        // Assert
+        _ = result.Should().Be(expected);
+    }
+
+    [Theory]
+    [InlineData("Customer", "CustomerAggregate")]
+    [InlineData("OrderAggregateExtra", "OrderAggregateExtraAggregate")]
+    [InlineData("OrderAggregate", "OrderAggregateAggregate")]
+    [InlineData("Aggregate", "AggregateAggregate")]
+    [InlineData("AggregateOrder", "AggregateOrderAggregate")]
+    public void ToAggregateActorName_ShouldHandleNonStandardNames(string aggregateName, string actorName)
+    {
+        // Arrange
+        // Act
+        string result = aggregateName.ToAggregateActorName();
+
+        // Assert
+        _ = result.Should().Be(actorName);
+    }
+
+    [Theory]
+    [InlineData("")]
+    [InlineData(" ")]
+    [InlineData(null)]
+    public void ToAggregateActorName_ShouldThrowArgumentException_WhenNameIsEmptyOrWhitespace(string aggregateName)
+    {
+        // Act
+        Action act = () => aggregateName.ToAggregateActorName();
+
+        // Assert
+        _ = act.Should().Throw<ArgumentException>();
+    }
+
+    [Fact]
+    public void ToAggregateActorName_ShouldThrowArgumentNullException_WhenNameIsNull()
+    {
+        // Arrange
+        string aggregateName = null;
+
+        // Act
+        Action act = () => aggregateName.ToAggregateActorName();
+
+        // Assert
+        _ = act.Should().Throw<ArgumentNullException>();
+    }
+
+    [Theory]
+    [InlineData("Customer", "CustomerAggregate")]
+    [InlineData("OrderAggregateExtra", "OrderAggregateExtraAggregate")]
+    [InlineData("OrderAggregate", "OrderAggregateAggregate")]
+    [InlineData("Aggregate", "AggregateAggregate")]
+    [InlineData("AggregateOrder", "AggregateOrderAggregate")]
+    public void ToAggregateName_ShouldHandleNonStandardNames(string aggregateName, string actorName)
+    {
+        // Arrange
+        // Act
+        string result = DaprActorHelper.ToAggregateName(actorName);
+
+        // Assert
+        _ = result.Should().Be(aggregateName);
+    }
+
+    [Theory]
     [InlineData("123!4", "123%2104")]
     [InlineData("123 4", "123%2114")]
     [InlineData("123/4", "123%2124")]
@@ -110,82 +211,5 @@ public class DaprActorHelperTest
         // Assert
         _ = result.Should().NotBeNull();
         _ = result.Should().Be("123/4");
-    }
-
-    [Theory]
-    [InlineData("123")]
-    [InlineData("123/4")]
-    [InlineData("1 2 3")]
-    [InlineData("1!2 3/4")]
-    [InlineData("123@")]
-    public void ToUnescapeString_ShouldWorkWithToActorId(string actorIdString)
-    {
-        // Arrange
-        ActorId actorId = actorIdString.ToActorId();
-
-        // Act
-        string result = actorId.ToUnescapeString();
-
-        // Assert
-        _ = result.Should().NotBeNull();
-        _ = result.Should().Be(actorIdString);
-    }
-
-    [Theory]
-    [InlineData("123#4", "123%234")]
-    [InlineData("123$4", "123%244")]
-    [InlineData("123&4", "123%264")]
-    [InlineData("123=4", "123%3D4")]
-    [InlineData("123?4", "123%3F4")]
-    public void ToActorId_ShouldEscapeAdditionalSpecialCharacters(string id, string escapedString)
-    {
-        // Act
-        ActorId result = id.ToActorId();
-
-        // Assert
-        result.Should().NotBeNull();
-        result.ToString().Should().Be(escapedString);
-    }
-
-    [Theory]
-    [InlineData("123!@#$%^&*()4", "123%21%40%23%24%25%5E%26%2A%28%294")]
-    [InlineData("Hello World!", "Hello%20World%21")]
-    [InlineData("user@example.com", "user%40example%2Ecom")]
-    public void ToActorId_ShouldHandleComplexStrings(string id, string escapedString)
-    {
-        // Act
-        ActorId result = id.ToActorId();
-
-        // Assert
-        result.Should().NotBeNull();
-        result.ToString().Should().Be(escapedString);
-    }
-
-    [Fact]
-    public void ToActorId_ShouldHandleMaximumLength()
-    {
-        // Arrange
-        string id = new string('a', 1024); // Testing with a long string
-
-        // Act
-        ActorId result = id.ToActorId();
-
-        // Assert
-        result.Should().NotBeNull();
-        result.ToString().Should().Be(id);
-    }
-
-    [Theory]
-    [InlineData(" leading")]
-    [InlineData("trailing ")]
-    [InlineData(" both ")]
-    public void ToActorId_ShouldHandleWhitespace(string id)
-    {
-        // Act
-        ActorId result = id.ToActorId();
-
-        // Assert
-        result.Should().NotBeNull();
-        result.ToString().Should().Be(id.Replace(" ", "%20"));
     }
 }

@@ -48,14 +48,33 @@ public static class DaprActorHelper
     /// </summary>
     /// <param name="aggregateName">Name of the aggregate.</param>
     /// <returns>string.</returns>
-    public static string ToAggregateActorName(this string aggregateName) => aggregateName + _actorSuffix;
+    public static string ToAggregateActorName(this string aggregateName)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(aggregateName);
+        return aggregateName + _actorSuffix;
+    }
 
     /// <summary>
     /// Converts an ActorTypeInformation to its aggregate name.
     /// </summary>
     /// <param name="typeName">The ActorTypeInformation to convert.</param>
     /// <returns>The aggregate name as a string.</returns>
-    public static string ToAggregateName(this ActorTypeInformation typeName) => typeName.ActorTypeName.Split(nameof(_actorSuffix)).First();
+    public static string ToAggregateName(this ActorTypeInformation typeName)
+        => ToAggregateName(typeName.ActorTypeName);
+
+    /// <summary>
+    /// Converts an actor type name to its aggregate name.
+    /// </summary>
+    /// <param name="actorTypeName">The actor type name to convert.</param>
+    /// <returns>The aggregate name as a string.</returns>
+    /// <exception cref="ArgumentException">Thrown when the actor type name does not end with the expected suffix.</exception>
+    public static string ToAggregateName(string actorTypeName)
+    {
+        // Verify that the actor type name contains the aggregate suffix.
+        return actorTypeName.EndsWith(_actorSuffix)
+            ? actorTypeName[..^_actorSuffix.Length]
+            : throw new ArgumentException($"The actor type name '{actorTypeName}' does not end with the expected suffix '{_actorSuffix}'.");
+    }
 
     /// <summary>
     /// Creates a proxy for a domain aggregate actor.
