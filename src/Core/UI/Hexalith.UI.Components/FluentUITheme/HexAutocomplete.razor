@@ -1,52 +1,81 @@
-﻿<FluentAutocomplete TOption="IIdDescription"
-					OnOptionsSearch="OnOptionsSearch"
-					SelectedOptionsChanged="OnSelectedOptionsChanged"
-					SelectedOptions="_selectedOptions"
-					MaximumSelectedOptions="1"
-					MaximumOptionsSearch="MaximumOptionsSearch"
-					Multiple="true"
-					Label="@Label"
-					Placeholder="@Placeholder"
-					Width="@(Width ?? "100%")"
-					OptionText="@(item => item.Description)" />
+﻿@inherits FluentAutocomplete<Option<string>>
+
+<FluentAutocomplete TOption="Option<string>"
+                    AdditionalAttributes="AdditionalAttributes"
+                    Appearance="Appearance"
+                    AriaLabel="@AriaLabel"
+                    AutoComplete="@AutoComplete"
+                    Autofocus="@Autofocus"
+                    Class="@Class"
+                    Context="Context"
+                    Data="@Data"
+                    Disabled="Disabled"
+                    DisplayName="@DisplayName"
+                    Embedded="Embedded"
+                    Field="Field"
+                    Height="@Height"
+                    IconDismiss="IconDismiss"
+                    IconSearch="IconSearch"
+                    Id="@Id"
+                    Immediate="Immediate"
+                    ImmediateDelay="ImmediateDelay"
+                    Items="Items"
+                    ItemSize="ItemSize"
+                    KeepOpen="KeepOpen"
+                    Label="@Label"
+                    MaxAutoHeight="@MaxAutoHeight"
+                    MaximumOptionsSearch="MaximumOptionsSearch"
+                    MaximumSelectedOptions="1"
+                    Multiple="true"
+                    Name="@Name"
+                    OptionClass="@OptionClass"
+                    OptionDisabled="@(item => item.Disabled)"
+                    OptionSelected="@(item => item.Selected)"
+                    OptionStyle="@OptionStyle"
+                    OptionText="@(item => item.Text)"
+                    OptionValue="@(item => item.Value)"
+                    OnOptionsSearch="OnOptionsSearch"
+                    ParentReference="ParentReference"
+                    Placeholder="@Placeholder"
+                    ReadOnly="ReadOnly"
+                    Required="Required"
+                    SelectedOption="SelectedOption"
+                    SelectedOptionChanged="SelectedOptionChanged"
+                    SelectedOptions="SelectedOptions"
+                    SelectedOptionsChanged="SelectedOptionsChanged"
+                    SelectValueOnTab="SelectValueOnTab"
+                    ShowOverlayOnEmptyResults="ShowOverlayOnEmptyResults"
+                    Style="@Style"
+                    TitleScrollToNext="@TitleScrollToNext"
+                    TitleScrollToPrevious="@TitleScrollToPrevious"
+                    ValueExpression="ValueExpression"
+                    ValueText="ValueText"
+                    ValueTextChanged="ValueTextChanged"
+                    Virtualize="Virtualize"
+                    Width="@(Width ?? "100%")">
+    <MaximumSelectedOptionsMessage>
+        @MaximumSelectedOptionsMessage
+    </MaximumSelectedOptionsMessage>
+    <OptionTemplate>
+        @OptionTemplate
+    </OptionTemplate>
+    <SelectedOptionTemplate>
+        @SelectedOptionTemplate
+    </SelectedOptionTemplate>
+    <LabelTemplate>
+        @LabelTemplate
+    </LabelTemplate>
+    <HeaderContent>
+        @HeaderContent
+    </HeaderContent>
+    <ChildContent>
+        @ChildContent
+    </ChildContent>
+    <FooterContent>
+        @FooterContent
+    </FooterContent>
+</FluentAutocomplete>
 
 @code
 {
-	IEnumerable<IIdDescription>? _selectedOptions;
-
-	[Parameter]
-	public string? Id { get; set; }
-
-	[Parameter]
-	public EventCallback<string?> IdChanged { get; set; }
-
-	[Parameter]
-	public string? Width { get; set; }
-
-	[Parameter]
-	public string? Label { get; set; }
-
-	[Parameter]
-	public string? Placeholder { get; set; }
-
-	[Parameter]
-	public int MaximumOptionsSearch { get; set; } = 100;
-
-	[Parameter]
-	public EventCallback<OptionsSearchEventArgs<IIdDescription>> OnOptionsSearch { get; set; }
-
-
-
-	private async Task OnSelectedOptionsChanged(IEnumerable<IIdDescription>? options)
-	{
-		if (options is null || !options.Any())
-		{
-			_selectedOptions = null;
-			Id = null;
-			return;
-		}
-		_selectedOptions = options.Take(1);
-		Id = _selectedOptions.First().Id;
-		await IdChanged.InvokeAsync(Id);
-	}
 }
