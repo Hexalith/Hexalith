@@ -14,4 +14,11 @@ public interface ICollectionRequest
     /// Gets the results.
     /// </summary>
     IEnumerable<object>? Results { get; }
+
+    /// <summary>
+    /// Creates the results.
+    /// </summary>
+    /// <param name="results">The results to set.</param>
+    /// <returns>The collection request with the results set.</returns>
+    ICollectionRequest CreateResults(IEnumerable<object> results);
 }
