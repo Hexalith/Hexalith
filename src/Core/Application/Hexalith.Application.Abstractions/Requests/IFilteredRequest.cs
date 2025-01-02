@@ -14,4 +14,9 @@ public interface IFilteredRequest : ICollectionRequest
     /// Gets the filter string.
     /// </summary>
     string? Filter { get; }
+
+    /// <summary>
+    /// Gets the result for a list of identifiers.
+    /// </summary>
+    IEnumerable<string> Ids { get; }
 }
