@@ -55,37 +55,39 @@ public class GetFilteredCollectionHandler<TRequest, TViewModel> : RequestHandler
         IIdCollectionService service = _collectionFactory.CreateService(
             IIdCollectionFactory.GetAggregateCollectionName(metadata.Message.Aggregate.Name),
             metadata.Context.PartitionId);
+        List<TViewModel> finalResults;
+        if (request.Filter is null)
+        {
+            finalResults = await GetChunkAsync(request, service, cancellationToken).ConfigureAwait(false);
+        }
 
+        return (TRequest)request.CreateResults(finalResults);
+    }
+
+    private async Task<List<TViewModel>> GetChunkAsync(TRequest request, IIdCollectionService service, CancellationToken cancellationToken)
+    {
         List<TViewModel> queryResult = [];
         bool hasFilter = !string.IsNullOrWhiteSpace(request.Filter);
 
         // Calculate total items to fetch to ensure we have enough after filtering
-        int totalToFetch = hasFilter
-            ? Math.Max(request.Skip + request.Take, 100) // Fetch more if filtering
-            : request.Skip + request.Take;
+        int totalToFetch = request.Skip + (request.Take > 0 ? request.Take : int.MaxValue);
 
         int currentSkip = 0;
         int remainingToFetch = totalToFetch;
 
         while (remainingToFetch > 0)
         {
-            // Fetch items in chunks of 100 or less
-            int chunkSize = Math.Min(remainingToFetch, 100);
+            List<string> ids = [.. await service
+                .GetAsync(currentSkip, hasFilter ? 100 : totalToFetch, cancellationToken)
+                .ConfigureAwait(false)];
 
-            List<string> ids = (await service
-                .GetAsync(currentSkip, chunkSize, cancellationToken)
-                .ConfigureAwait(false))
-                .ToList();
-
-            if (ids.Count == 0)
+            if (ids.Count <= 0)
             {
                 break;
             }
 
             // Retrieve states (ViewModel) in parallel
-            List<Task<TViewModel?>> summaryTasks = ids
-                .Select(id => _projectionFactory.GetStateAsync(id, cancellationToken))
-                .ToList();
+            List<Task<TViewModel?>> summaryTasks = [.. ids.Select(id => _projectionFactory.GetStateAsync(id, cancellationToken))];
 
             TViewModel?[] results = await Task.WhenAll(summaryTasks).ConfigureAwait(false);
 
@@ -116,13 +118,22 @@ public class GetFilteredCollectionHandler<TRequest, TViewModel> : RequestHandler
             }
         }
 
-        // Apply final skip and take
-        List<TViewModel> finalResults = queryResult
-            .OrderBy(p => p.Id)
-            .Skip(request.Skip)
-            .Take(request.Take)
-            .ToList();
+        queryResult = (List<TViewModel>)queryResult
+            .OrderBy(p => p.Id);
+        if (request.Skip > 0)
+        {
+            queryResult = (List<TViewModel>)queryResult
+                .Skip(request.Skip);
+        }
 
-        return (TRequest)request.CreateResults(finalResults);
+        if (request.Take > 0)
+        {
+            queryResult = (List<TViewModel>)queryResult
+                .Take(request.Take);
+        }
+
+        // Apply final skip and take
+        List<TViewModel> finalResults = queryResult.ToList();
+        return finalResults;
     }
 }
