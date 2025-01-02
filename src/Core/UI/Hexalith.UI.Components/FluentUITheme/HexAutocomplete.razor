@@ -6,12 +6,15 @@
                     AriaLabel="@AriaLabel"
                     AutoComplete="@AutoComplete"
                     Autofocus="@Autofocus"
+                    ChildContent="@(ChildContent!)"
                     Class="@Class"
                     Data="@Data"
                     Disabled="@Disabled"
                     DisplayName="@DisplayName"
                     Embedded="@Embedded"
                     Field="@Field"
+                    FooterContent="@(FooterContent!)"
+                    HeaderContent="@(HeaderContent!)"
                     Height="@Height"
                     IconDismiss="@IconDismiss"
                     IconSearch="@IconSearch"
@@ -22,8 +25,10 @@
                     ItemSize="@ItemSize"
                     KeepOpen="@KeepOpen"
                     Label="@Label"
+                    LabelTemplate="@(LabelTemplate!)"
                     MaxAutoHeight="@MaxAutoHeight"
                     MaximumOptionsSearch="@MaximumOptionsSearch"
+                    MaximumSelectedOptionsMessage="@(MaximumSelectedOptionsMessage!)"
                     MaximumSelectedOptions="1"
                     Multiple="true"
                     Name="@Name"
@@ -31,6 +36,7 @@
                     OptionDisabled="@(item => item.Disabled)"
                     OptionSelected="@(item => item.Selected)"
                     OptionStyle="@OptionStyle"
+                    OptionTemplate="@(OptionTemplate!)"
                     OptionText="@(item => item.Text)"
                     OptionValue="@(item => item.Value)"
                     OnOptionsSearch="@OnOptionsSearch"
@@ -42,6 +48,7 @@
                     SelectedOptionChanged="@SelectedOptionChanged"
                     SelectedOptions="@SelectedOptions"
                     SelectedOptionsChanged="@SelectedOptionsChanged"
+                    SelectedOptionTemplate="@(SelectedOptionTemplate!)"
                     SelectValueOnTab="@SelectValueOnTab"
                     ShowOverlayOnEmptyResults="@ShowOverlayOnEmptyResults"
                     Style="@Style"
@@ -52,27 +59,6 @@
                     ValueTextChanged="@ValueTextChanged"
                     Virtualize="@Virtualize"
                     Width="@(Width ?? "100%")">
-    <MaximumSelectedOptionsMessage>
-        @MaximumSelectedOptionsMessage
-    </MaximumSelectedOptionsMessage>
-    <OptionTemplate>
-        @OptionTemplate
-    </OptionTemplate>
-    <SelectedOptionTemplate>
-        @SelectedOptionTemplate
-    </SelectedOptionTemplate>
-    <LabelTemplate>
-        @LabelTemplate
-    </LabelTemplate>
-    <HeaderContent>
-        @HeaderContent
-    </HeaderContent>
-    <ChildContent>
-        @ChildContent
-    </ChildContent>
-    <FooterContent>
-        @FooterContent
-    </FooterContent>
 </FluentAutocomplete>
 
 @code
