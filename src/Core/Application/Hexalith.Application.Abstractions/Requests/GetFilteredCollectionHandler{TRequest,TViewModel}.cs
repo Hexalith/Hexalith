@@ -16,7 +16,7 @@ using Hexalith.Application.Projections;
 using Hexalith.Application.Services;
 
 /// <summary>
-/// Handler for getting file type summaries.
+/// Handler for getting filtered collection with pagination support.
 /// </summary>
 /// <typeparam name="TRequest">The type of the request.</typeparam>
 /// <typeparam name="TViewModel">The type of the view model.</typeparam>
@@ -57,68 +57,72 @@ public class GetFilteredCollectionHandler<TRequest, TViewModel> : RequestHandler
             metadata.Context.PartitionId);
 
         List<TViewModel> queryResult = [];
-        int skip = 0;
-        bool filter = !string.IsNullOrWhiteSpace(request.Filter);
+        bool hasFilter = !string.IsNullOrWhiteSpace(request.Filter);
 
-        // Decide how many items to fetch in each loop
-        // If there's a filter, fetch up to 100 items at a time;
-        // otherwise, fetch the min between request.Take and 100
-        int take = filter ? 100 : Math.Min(request.Take, 100);
+        // Calculate total items to fetch to ensure we have enough after filtering
+        int totalToFetch = hasFilter
+            ? Math.Max(request.Skip + request.Take, 100) // Fetch more if filtering
+            : request.Skip + request.Take;
 
-        // While there are more ids to process
-        // Loop until no more IDs or we've reached the request.Take limit
-        while (true)
+        int currentSkip = 0;
+        int remainingToFetch = totalToFetch;
+
+        while (remainingToFetch > 0)
         {
-            // Retrieve next chunk of IDs
+            // Fetch items in chunks of 100 or less
+            int chunkSize = Math.Min(remainingToFetch, 100);
+
             List<string> ids = (await service
-                .GetAsync(skip, take, cancellationToken)
+                .GetAsync(currentSkip, chunkSize, cancellationToken)
                 .ConfigureAwait(false))
                 .ToList();
 
             if (ids.Count == 0)
             {
-                // No more IDs to process
                 break;
             }
 
-            // Update skip for next iteration
-            skip += take;
-
             // Retrieve states (ViewModel) in parallel
-            List<Task<TViewModel?>> summaryTasks = [];
-            foreach (string id in ids)
-            {
-                summaryTasks.Add(_projectionFactory.GetStateAsync(id, cancellationToken));
-            }
+            List<Task<TViewModel?>> summaryTasks = ids
+                .Select(id => _projectionFactory.GetStateAsync(id, cancellationToken))
+                .ToList();
 
             TViewModel?[] results = await Task.WhenAll(summaryTasks).ConfigureAwait(false);
 
-            // Filter out null items
+            // Filter and process results
             IEnumerable<TViewModel> chunk = results
                 .Where(p => p != null)
                 .Select(p => p!);
 
-            // Apply filter logic
-            if (filter)
+            // Apply filter if specified
+            if (hasFilter)
             {
                 chunk = chunk.Where(p =>
                     p.Description.Contains(request?.Filter!, StringComparison.OrdinalIgnoreCase) ||
                     p.Id.Contains(request?.Filter!, StringComparison.OrdinalIgnoreCase));
             }
 
-            // Merge the chunk into the main query results
-            queryResult = queryResult
-                .Union(chunk)
-                .Take(request.Take)
-                .ToList();
+            // Add to results
+            queryResult.AddRange(chunk);
 
-            // If we already have enough items to match request.Take, we stop
-            if (queryResult.Count >= request.Take)
+            // Update loop variables
+            currentSkip += chunkSize;
+            remainingToFetch -= chunkSize;
+
+            // If we have enough results after filtering, stop fetching
+            if (hasFilter && queryResult.Count >= (request.Skip + request.Take))
             {
                 break;
             }
         }
 
-        return (TRequest)request.CreateResults(queryResult.OrderBy(p => p.Id).ToList());
+        // Apply final skip and take
+        List<TViewModel> finalResults = queryResult
+            .OrderBy(p => p.Id)
+            .Skip(request.Skip)
+            .Take(request.Take)
+            .ToList();
+
+        return (TRequest)request.CreateResults(finalResults);
     }
 }
