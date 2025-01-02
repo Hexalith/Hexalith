@@ -29,7 +29,7 @@
                     MaxAutoHeight="@MaxAutoHeight"
                     MaximumOptionsSearch="@MaximumOptionsSearch"
                     MaximumSelectedOptionsMessage="@(MaximumSelectedOptionsMessage!)"
-                    MaximumSelectedOptions="1"
+                    MaximumSelectedOptions="@(MaximumSelectedOptions ?? 1)"
                     Multiple="true"
                     Name="@Name"
                     OptionClass="@OptionClass"
