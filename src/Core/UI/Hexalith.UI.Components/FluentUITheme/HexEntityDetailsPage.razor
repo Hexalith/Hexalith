@@ -11,11 +11,11 @@ IndexButtonTitle="IndexButtonTitle"
 RefreshButtonTitle="RefreshButtonTitle"
 OnRefresh="RefreshAsync"/>
 
-<FluentStack Orientation="Orientation.Vertical">
+<FluentStack Orientation="Orientation.Vertical" Width="100%" Style="padding:10px;padding-right:20px;">
     <FluentLabel Typo="Typography.PageTitle">@(CreateMode?AddTitle:string.Format(EditTitle, EntityId))</FluentLabel>
     @if (Data is not null)
     {
-        <FluentGrid>
+        <FluentGrid Style="width:100%;">
             <FluentGridItem xs="12" md="3">
                 <HexEntityIdField Disabled="@(!CreateMode)" @bind-Value="Data.Id"></HexEntityIdField>
             </FluentGridItem>
@@ -34,7 +34,9 @@ OnRefresh="RefreshAsync"/>
     </FluentGrid>
     }
     @ChildContent
-    <HexSaveButton Appearance="Appearance.Accent" OnClick="OnSave" />
+    <FluentSpacer/>
+    <HexSaveButton Appearance="Appearance.Accent" OnClick="OnSaveAsync" />
+    <FluentSpacer />
     <HexValidationSummary ValidationResult="ValidationResult"></HexValidationSummary>
 </FluentStack>
 
@@ -106,12 +108,12 @@ OnRefresh="RefreshAsync"/>
         {
             await OnSave.InvokeAsync();
             // The data has been successfully saved.
-            ToastService.ShowSuccess(string.Format(Labels.SaveSuccess, Data.Id));
+            ToastService.ShowSuccess(string.Format(Labels.SaveSuccess, Data?.Id));
         }
         catch (Exception ex)
         {
             // An error occurred while saving the data.
-            ToastService.ShowError(string.Format(Labels.SaveError, Data.Id, ex.FullMessage()));
+            ToastService.ShowError(string.Format(Labels.SaveError, Data?.Id, ex.FullMessage()));
         }
     }
 }
