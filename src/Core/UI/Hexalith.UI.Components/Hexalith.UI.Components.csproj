@@ -40,6 +40,11 @@
 	  </Compile>
 	</ItemGroup>
 	<ItemGroup>
+	  <Content Update="FluentUITheme\HexEntityDetailsPage.razor">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	  </Content>
+	</ItemGroup>
+	<ItemGroup>
 	  <EmbeddedResource Update="Resources\FluentUITheme.resx">
 	    <Generator>ResXFileCodeGenerator</Generator>
 	    <LastGenOutput>FluentUITheme.Designer.cs</LastGenOutput>

@@ -4,19 +4,26 @@
 <FluentToolbar Style="width:100%;">
     @if (IndexPath is not null)
     {
-    <FluentButton Title="@IndexButtonTitle"
+    <FluentButton Title="@(IndexButtonTitle?? Labels.AddButtonTitle)"
                   Appearance="Appearance.Stealth"
                   IconStart="@(new Icons.Filled.Size20.List())"
                   OnClick="OnIndex"></FluentButton>
     }
     @ChildContent
-    <FluentButton Title="@RefreshButtonTitle"
+    <FluentButton Title="@(RefreshButtonTitle ?? Labels.RefreshButtonTitle)"
                   Appearance="Appearance.Stealth"
                   IconStart="@(new Icons.Filled.Size20.ArrowSync())"
                   OnClick="OnRefresh"></FluentButton>
+    @if (ShowAdministratorTools)
+    {
+
+    }
 </FluentToolbar>
 
 @code {
+    [Parameter]
+    public bool ShowAdministratorTools { get; set; }
+
     [Parameter]
     public string? IndexButtonTitle { get; set; }
 
@@ -32,12 +39,6 @@
     [Parameter]
     public EventCallback OnRefresh { get; set; }
 
-
-    override protected void OnInitialized()
-    {
-        IndexButtonTitle ??= Labels.AddButtonTitle;
-        RefreshButtonTitle ??= Labels.RefreshButtonTitle;
-    }
 
     void OnIndex()
     {

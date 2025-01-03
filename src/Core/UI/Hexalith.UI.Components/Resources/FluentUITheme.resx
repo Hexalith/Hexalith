@@ -183,4 +183,10 @@
   <data name="EndTime" xml:space="preserve">
     <value>End time</value>
   </data>
+  <data name="SaveSuccess" xml:space="preserve">
+    <value>{0] saved successfully</value>
+  </data>
+  <data name="SaveError" xml:space="preserve">
+    <value>Could not save {0}. Error : {1}</value>
+  </data>
 </root>

@@ -183,4 +183,10 @@
   <data name="EndTime" xml:space="preserve">
     <value>Heure de fin</value>
   </data>
+  <data name="SaveSuccess" xml:space="preserve">
+    <value>L'enregistrement de {0} effectué</value>
+  </data>
+  <data name="SaveError" xml:space="preserve">
+    <value>{0} n'a pas pu être enregistré. Erreur : {1}</value>
+  </data>
 </root>

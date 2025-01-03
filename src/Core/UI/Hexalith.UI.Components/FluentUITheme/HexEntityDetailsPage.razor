@@ -1,0 +1,117 @@
+﻿@inject NavigationManager NavigationManager
+@inject ICommandService CommandService
+@inject IToastService ToastService
+@using FluentValidation.Results
+@using Hexalith.Application.Commands
+@using Hexalith.Extensions.Helpers
+@using Labels = Hexalith.UI.Components.Resources.FluentUITheme;
+@using System.Security.Claims
+<HexEntityDetailsToolbar IndexPath="@IndexPath"
+IndexButtonTitle="IndexButtonTitle"
+RefreshButtonTitle="RefreshButtonTitle"
+OnRefresh="RefreshAsync"/>
+
+<FluentStack Orientation="Orientation.Vertical">
+    <FluentLabel Typo="Typography.PageTitle">@(CreateMode?AddTitle:string.Format(EditTitle, EntityId))</FluentLabel>
+    @if (Data is not null)
+    {
+        <FluentGrid>
+            <FluentGridItem xs="12" md="3">
+                <HexEntityIdField Disabled="@(!CreateMode)" @bind-Value="Data.Id"></HexEntityIdField>
+            </FluentGridItem>
+            <FluentGridItem xs="12" md="@(CreateMode ? 9 : 6)">
+                <HexEntityNameField @bind-Value="Data.Name"></HexEntityNameField>
+            </FluentGridItem>
+            @if (!CreateMode)
+            {
+                <FluentGridItem xs="12" md="3">
+                    <HexEntityDisabledCheckbox @bind-Value="Data.Disabled" />
+                </FluentGridItem>
+            }
+            <FluentGridItem xs="12" md="12">
+            <HexEntityCommentsField @bind-Value="Data.Comments"></HexEntityCommentsField>
+        </FluentGridItem>
+    </FluentGrid>
+    }
+    @ChildContent
+    <HexSaveButton Appearance="Appearance.Accent" OnClick="OnSave" />
+    <HexValidationSummary ValidationResult="ValidationResult"></HexValidationSummary>
+</FluentStack>
+
+
+@code {
+    [Parameter]
+    public string? EntityId { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public IEntityViewModel? Data { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public ValidationResult? ValidationResult { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public required string AddTitle { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public required string EditTitle { get; set; }
+
+    [Parameter]
+    public bool ShowAdministratorTools { get; set; }
+
+    [Parameter]
+    public string? RefreshButtonTitle { get; set; }
+
+    [Parameter]
+    public string? IndexButtonTitle { get; set; }
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public required string IndexPath { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public EventCallback OnSave { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public EventCallback OnLoadData { get; set; }
+
+    private bool CreateMode => EntityId is null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await OnLoadData.InvokeAsync();
+        await base.OnInitializedAsync();
+    }
+
+    private async Task RefreshAsync()
+    {
+        await OnLoadData.InvokeAsync();
+        StateHasChanged();
+    }
+
+    private void Index()
+    {
+        NavigationManager.NavigateTo(IndexPath);
+    }
+    private async Task OnSaveAsync()
+    {
+        try
+        {
+            await OnSave.InvokeAsync();
+            // The data has been successfully saved.
+            ToastService.ShowSuccess(string.Format(Labels.SaveSuccess, Data.Id));
+        }
+        catch (Exception ex)
+        {
+            // An error occurred while saving the data.
+            ToastService.ShowError(string.Format(Labels.SaveError, Data.Id, ex.FullMessage()));
+        }
+    }
+}

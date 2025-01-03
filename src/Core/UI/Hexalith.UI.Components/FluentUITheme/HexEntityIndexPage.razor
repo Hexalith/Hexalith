@@ -49,10 +49,6 @@ OnSynchronizeDatabase="SynchronizeDatabaseAsync" />
     [EditorRequired]
     public EventCallback OnLoadData { get; set; }
 
-
-    [CascadingParameter]
-    public Task<AuthenticationState>? AuthenticationStateTask { get; set; }
-
     protected override async Task OnInitializedAsync()
     {
         await OnLoadData.InvokeAsync();
