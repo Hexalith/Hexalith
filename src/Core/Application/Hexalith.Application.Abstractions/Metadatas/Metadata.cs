@@ -47,7 +47,7 @@ public record Metadata(
     /// <param name="aggregateId">The identifier of the aggregate.</param>
     /// <returns>A string representing the global identifier for the aggregate.</returns>
     public string CreateAggregateGlobalId(string aggregateId)
-        => CreateAggregateGlobalId(Context.PartitionId, Message.Aggregate.Name, Message.Aggregate.Id);
+        => CreateAggregateGlobalId(Context.PartitionId, Message.Aggregate.Name, aggregateId);
 
     /// <summary>
     /// Creates a new instance of the <see cref="Metadata"/> class with updated message information.

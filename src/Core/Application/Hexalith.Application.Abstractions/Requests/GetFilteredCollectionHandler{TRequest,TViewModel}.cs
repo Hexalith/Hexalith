@@ -63,11 +63,8 @@ public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : Reques
 
         if (request.Ids.Any())
         {
-            IDictionary<string, TViewModel> r = await GetIdsProjectionsAsync(
-                request
-                .Ids
-                .Select(metadata.CreateAggregateGlobalId),
-                cancellationToken);
+            IEnumerable<string> globalIds = request.Ids.Select(metadata.CreateAggregateGlobalId);
+            IDictionary<string, TViewModel> r = await GetIdsProjectionsAsync(globalIds, cancellationToken);
             List<TViewModel> results = [.. r.Values];
 
             // If the request result does not contain all the requested ids, we need to log an error
