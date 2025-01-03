@@ -1,35 +1,32 @@
 ﻿@inherits FluentCheckbox
-
-<FluentCheckbox AdditionalAttributes="AdditionalAttributes"
-                AriaLabel="@AriaLabel"
-                Autofocus="@Autofocus"
-                Class="@Class"
-                Data="@Data"
-                Disabled="@Disabled"
-                DisplayName="@DisplayName"
-                Embedded="@Embedded"
-                Field="@Field"
-                Id="@Id"
-                Immediate="@Immediate"
-                ImmediateDelay="@ImmediateDelay"
-                Label="@(Label ?? Labels.Disabled)"
-                Name="@Name"
-                ParentReference="@ParentReference"
-                Placeholder="@Placeholder"
-                ReadOnly="@ReadOnly"
-                Required="@Required"
-                ShowIndeterminate="@ShowIndeterminate"
-                Style="@(Style ?? "width:100%;")"
-                Value="@Value"
-                ValueChanged="@ValueChanged"
-                ValueExpression="@ValueExpression">
-    <LabelTemplate>
-        @LabelTemplate
-    </LabelTemplate>
-    <ChildContent>
-        @ChildContent
-    </ChildContent>
-</FluentCheckbox>
+<FluentStack Orientation="Orientation.Vertical">
+    <FluentLabel>@(Label ?? Labels.Disabled)</FluentLabel>
+    <FluentCheckbox AdditionalAttributes="AdditionalAttributes"
+                    AriaLabel="@AriaLabel"
+                    Autofocus="@Autofocus"
+                    ChildContent="@(ChildContent!)"
+                    Class="@Class"
+                    Data="@Data"
+                    Disabled="@Disabled"
+                    DisplayName="@DisplayName"
+                    Embedded="@Embedded"
+                    Field="@Field"
+                    Id="@Id"
+                    Immediate="@Immediate"
+                    ImmediateDelay="@ImmediateDelay"
+                    LabelTemplate="@(LabelTemplate!)"
+                    Name="@Name"
+                    ParentReference="@ParentReference"
+                    Placeholder="@Placeholder"
+                    ReadOnly="@ReadOnly"
+                    Required="@Required"
+                    ShowIndeterminate="@ShowIndeterminate"
+                    Style="@(Style ?? "width:100%;")"
+                    Value="@Value"
+                    ValueChanged="@ValueChanged"
+                    ValueExpression="@ValueExpression">
+    </FluentCheckbox>
+</FluentStack>
 @code {
 
 }
