@@ -13,7 +13,7 @@ public interface IEntityViewModel
     /// <summary>
     /// Gets or sets the comments for the entity.
     /// </summary>
-    string Comments { get; set; }
+    string? Comments { get; set; }
 
     /// <summary>
     /// Gets or sets a value indicating whether the entity is disabled.
