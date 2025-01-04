@@ -4,6 +4,7 @@
 @using FluentValidation.Results
 @using Hexalith.Application.Commands
 @using Hexalith.Extensions.Helpers
+@using Hexalith.UI.Components.Pages
 @using Labels = Hexalith.UI.Components.Resources.FluentUITheme;
 @using System.Security.Claims
 <HexEntityDetailsToolbar IndexPath="@IndexPath"
@@ -29,9 +30,9 @@ OnRefresh="RefreshAsync"/>
                 </FluentGridItem>
             }
             <FluentGridItem xs="12" md="12">
-            <HexEntityCommentsField @bind-Value="Data.Comments"></HexEntityCommentsField>
-        </FluentGridItem>
-    </FluentGrid>
+                <HexEntityCommentsField @bind-Value="Data.Comments"></HexEntityCommentsField>
+            </FluentGridItem>
+        </FluentGrid>
     }
     @ChildContent
     <FluentSpacer/>
@@ -79,7 +80,7 @@ OnRefresh="RefreshAsync"/>
 
     [Parameter]
     [EditorRequired]
-    public EventCallback OnSave { get; set; }
+    public required Func<Task<SaveResult>> OnSave { get; set; }
 
     [Parameter]
     [EditorRequired]
@@ -107,14 +108,34 @@ OnRefresh="RefreshAsync"/>
     {
         try
         {
-            await OnSave.InvokeAsync();
-            // The data has been successfully saved.
-            ToastService.ShowSuccess(string.Format(Labels.SaveSuccess, Data?.Id));
+            var result = await OnSave();
+            switch (result.Result)
+            {
+                case ExecuteSaveResult.Success:
+                    ToastService.ShowSuccess(string.Format(Labels.SaveSuccess, Data?.Id));
+                    return;
+                case ExecuteSaveResult.ValidationFailed:
+                    ToastService.ShowWarning(Labels.ValidationFailed);
+                    break;
+                case ExecuteSaveResult.CustomError:
+                    ToastService.ShowError(string.Format(Labels.SaveError, Data?.Id, result.Message));
+                    break;
+                case ExecuteSaveResult.InternalError:
+                    ToastService.ShowError(Labels.InternalError);
+                    break;
+                case ExecuteSaveResult.NoChangesToApply:
+                    ToastService.ShowInfo(Labels.NoChangesToApply);
+                    break;
+                case ExecuteSaveResult.Unauthorized:
+                    ToastService.ShowError(Labels.SaveUnauthorized);
+                    break;
+            }
         }
         catch (Exception ex)
         {
             // An error occurred while saving the data.
             ToastService.ShowError(string.Format(Labels.SaveError, Data?.Id, ex.FullMessage()));
         }
+        StateHasChanged();
     }
 }

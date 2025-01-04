@@ -21,6 +21,11 @@ public interface IEntityViewModel
     bool Disabled { get; set; }
 
     /// <summary>
+    /// Gets a value indicating whether the entity has changes.
+    /// </summary>
+    bool HasChanges { get; }
+
+    /// <summary>
     /// Gets or sets the unique identifier for the entity.
     /// </summary>
     string Id { get; set; }

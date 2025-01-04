@@ -196,11 +196,29 @@ namespace Hexalith.UI.Components.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Internal software error. Contact your administrator..
+        /// </summary>
+        internal static string InternalError {
+            get {
+                return ResourceManager.GetString("InternalError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         internal static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No changes to apply.
+        /// </summary>
+        internal static string NoChangesToApply {
+            get {
+                return ResourceManager.GetString("NoChangesToApply", resourceCulture);
             }
         }
         
@@ -250,6 +268,15 @@ namespace Hexalith.UI.Components.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The user is not authorized to execute this operation.
+        /// </summary>
+        internal static string SaveUnauthorized {
+            get {
+                return ResourceManager.GetString("SaveUnauthorized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start date.
         /// </summary>
         internal static string StartDate {
@@ -273,6 +300,15 @@ namespace Hexalith.UI.Components.Resources {
         internal static string SynchronizeDatabaseButtonTitle {
             get {
                 return ResourceManager.GetString("SynchronizeDatabaseButtonTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data validation failed. Fix the issues before continuing..
+        /// </summary>
+        internal static string ValidationFailed {
+            get {
+                return ResourceManager.GetString("ValidationFailed", resourceCulture);
             }
         }
     }

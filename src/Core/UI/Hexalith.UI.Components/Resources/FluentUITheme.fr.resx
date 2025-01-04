@@ -189,4 +189,16 @@
   <data name="SaveError" xml:space="preserve">
     <value>{0} n'a pas pu être enregistré. Erreur : {1}</value>
   </data>
+  <data name="SaveUnauthorized" xml:space="preserve">
+    <value>L'utilisateur n'est pas autorisé à effectuer cette opération</value>
+  </data>
+  <data name="NoChangesToApply" xml:space="preserve">
+    <value>Il n'y a aucun changement à appliquer</value>
+  </data>
+  <data name="InternalError" xml:space="preserve">
+    <value>Erreur interne du logiciel. Contactez votre administrateur.</value>
+  </data>
+  <data name="ValidationFailed" xml:space="preserve">
+    <value>Echec de la validation des données. Corrigez les erreurs avant de continuer.</value>
+  </data>
 </root>

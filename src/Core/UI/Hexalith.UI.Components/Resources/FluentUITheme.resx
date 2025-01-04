@@ -189,4 +189,16 @@
   <data name="SaveError" xml:space="preserve">
     <value>Could not save {0}. Error : {1}</value>
   </data>
+  <data name="SaveUnauthorized" xml:space="preserve">
+    <value>The user is not authorized to execute this operation</value>
+  </data>
+  <data name="NoChangesToApply" xml:space="preserve">
+    <value>No changes to apply</value>
+  </data>
+  <data name="InternalError" xml:space="preserve">
+    <value>Internal software error. Contact your administrator.</value>
+  </data>
+  <data name="ValidationFailed" xml:space="preserve">
+    <value>Data validation failed. Fix the issues before continuing.</value>
+  </data>
 </root>
