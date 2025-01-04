@@ -18,14 +18,14 @@ OnRefresh="RefreshAsync"/>
     {
         <FluentGrid Style="width:100%;">
             <FluentGridItem xs="12" md="3">
-                <HexEntityIdField Disabled="@(!CreateMode)" @bind-Value="Data.Id"></HexEntityIdField>
+                <HexEntityIdField ReadOnly="@(!CreateMode)" @bind-Value="Data.Id"></HexEntityIdField>
             </FluentGridItem>
-            <FluentGridItem xs="12" md="@(CreateMode ? 9 : 6)">
+            <FluentGridItem xs="12" md="@(CreateMode ? 9 : 7)">
                 <HexEntityNameField @bind-Value="Data.Name"></HexEntityNameField>
             </FluentGridItem>
             @if (!CreateMode)
             {
-                <FluentGridItem xs="12" md="3">
+                <FluentGridItem xs="12" md="2">
                     <HexEntityDisabledCheckbox @bind-Value="Data.Disabled" />
                 </FluentGridItem>
             }
@@ -86,7 +86,7 @@ OnRefresh="RefreshAsync"/>
     [EditorRequired]
     public EventCallback OnLoadData { get; set; }
 
-    private bool CreateMode => EntityId is null;
+    private bool CreateMode => string.IsNullOrWhiteSpace(EntityId);
 
     protected override async Task OnInitializedAsync()
     {
