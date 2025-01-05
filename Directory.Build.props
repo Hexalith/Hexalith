@@ -1,55 +1,55 @@
-<Project>
-  <PropertyGroup>
-    <UseProjectReference Condition="'$(UseProjectReference)' == '' and '$(BuildingByReSharper)' == 'true'">true</UseProjectReference>
-    <UseProjectReference Condition="'$(UseProjectReference)' == '' and '$(BuildingInsideVisualStudio)' == 'true'">true</UseProjectReference>
-    <UseProjectReference Condition="'$(UseProjectReference)' == '' and ('$(TERM_PROGRAM)' == 'vscode' or '$(VSCODE_PID)' != '')">true</UseProjectReference>
-  </PropertyGroup>
-  <Import Project="src/Hexalith.Build/Project.Common.props" />
-  <PropertyGroup>
-    <Authors>Jérôme Piquot</Authors>
-    <Company>Jérôme Piquot</Company>
-    <Product>Hexalith</Product>
-    <PackageTags>Hexalith;Dapr</PackageTags>
-    <Description>Hexalith is a set of libraries to build a micro-service architecture.</Description>
-    <RepositoryUrl>https://github.com/Hexalith/Hexalith</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>portable</DebugType>
-    <EmbedAllSources>true</EmbedAllSources>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <LangVersion>latest</LangVersion>
-    <EnableNETAnalyzers>true</EnableNETAnalyzers>
-    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
-    <AnalysisLevel>preview-all</AnalysisLevel>
-    <NoWarn>$(NoWarn);S1309;MA0101;S1451;S4055;S113;SA1609;MA0104;S4018;SA1010;NU5104;S4040;CA1041;</NoWarn>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-  </PropertyGroup>
-  <ItemGroup>
-    <None Include="README.md" Pack="true" PackagePath="\" />
-    <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers"
-      Version="$(MicrosoftVisualStudioThreadingAnalyzersVersion)">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="StyleCop.Analyzers" Version="$(StyleCopAnalyzersVersion)">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
-  <PropertyGroup>
-    <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory).stylecop.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <ItemGroup>
-    <AdditionalFiles
-      Include="$([MSBuild]::GetPathOfFileAbove('.stylecop.json', '$(MSBuildThisFileDirectory)'))"
-      Link="Properties\.stylecop.json" />
-  </ItemGroup>
+﻿<Project>
+    <PropertyGroup>
+        <UseProjectReference Condition="'$(UseProjectReference)' == '' and '$(BuildingByReSharper)' == 'true'">true</UseProjectReference>
+        <UseProjectReference Condition="'$(UseProjectReference)' == '' and '$(BuildingInsideVisualStudio)' == 'true'">true</UseProjectReference>
+        <UseProjectReference Condition="'$(UseProjectReference)' == '' and ('$(TERM_PROGRAM)' == 'vscode' or '$(VSCODE_PID)' != '' or '$(VSCODE_CWD)' != '')">true</UseProjectReference>
+    </PropertyGroup>
+    <Import Project="src/Hexalith.Build/Project.Common.props" />
+    <PropertyGroup>
+        <Authors>Jérôme Piquot</Authors>
+        <Company>Jérôme Piquot</Company>
+        <Product>Hexalith</Product>
+        <PackageTags>Hexalith;Dapr</PackageTags>
+        <Description>Hexalith is a set of libraries to build a micro-service architecture.</Description>
+        <RepositoryUrl>https://github.com/Hexalith/Hexalith</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+    <PropertyGroup>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>portable</DebugType>
+        <EmbedAllSources>true</EmbedAllSources>
+    </PropertyGroup>
+    <PropertyGroup>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
+        <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+        <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+        <AnalysisLevel>preview-all</AnalysisLevel>
+        <NoWarn>$(NoWarn);S1309;MA0101;S1451;S4055;S113;SA1609;MA0104;S4018;SA1010;NU5104;S4040;CA1041;</NoWarn>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\" />
+        <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers"
+          Version="$(MicrosoftVisualStudioThreadingAnalyzersVersion)">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="StyleCop.Analyzers" Version="$(StyleCopAnalyzersVersion)">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+    <PropertyGroup>
+        <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory).stylecop.ruleset</CodeAnalysisRuleSet>
+    </PropertyGroup>
+    <ItemGroup>
+        <AdditionalFiles
+          Include="$([MSBuild]::GetPathOfFileAbove('.stylecop.json', '$(MSBuildThisFileDirectory)'))"
+          Link="Properties\.stylecop.json" />
+    </ItemGroup>
 </Project>
