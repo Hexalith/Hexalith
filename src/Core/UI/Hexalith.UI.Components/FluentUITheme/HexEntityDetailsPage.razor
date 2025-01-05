@@ -26,7 +26,7 @@ OnRefresh="RefreshAsync"/>
             @if (!CreateMode)
             {
                 <FluentGridItem xs="12" md="2">
-                    <HexEntityDisabledCheckbox ValueChanged="OnDisabledChanged" Value="Data.Disabled" />
+                    <HexEntityDisabledCheckbox ReadOnly="true" Value="Data.Disabled" />
                 </FluentGridItem>
             }
             <FluentGridItem xs="12" md="12">
@@ -97,14 +97,6 @@ OnRefresh="RefreshAsync"/>
     private async Task RefreshAsync()
     {
         await OnLoadData.InvokeAsync();
-        StateHasChanged();
-    }
-    private async Task OnDisabledChanged(bool value)
-    {
-        if (value is true)
-            await OnLoadData.InvokeAsync();
-        if (Data is not null)
-            Data.Disabled = value;
         StateHasChanged();
     }
 
