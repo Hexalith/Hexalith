@@ -21,16 +21,16 @@ OnRefresh="RefreshAsync"/>
                 <HexEntityIdField ReadOnly="@(!CreateMode)" @bind-Value="Data.Id"></HexEntityIdField>
             </FluentGridItem>
             <FluentGridItem xs="12" md="@(CreateMode ? 9 : 7)">
-                <HexEntityNameField @bind-Value="Data.Name"></HexEntityNameField>
+                <HexEntityNameField ReadOnly="@Data.Disabled" @bind-Value="Data.Name"></HexEntityNameField>
             </FluentGridItem>
             @if (!CreateMode)
             {
                 <FluentGridItem xs="12" md="2">
-                    <HexEntityDisabledCheckbox @bind-Value="Data.Disabled" />
+                    <HexEntityDisabledCheckbox ValueChanged="OnDisabledChanged" Value="Data.Disabled" />
                 </FluentGridItem>
             }
             <FluentGridItem xs="12" md="12">
-                <HexEntityCommentsField @bind-Value="Data.Comments"></HexEntityCommentsField>
+                <HexEntityCommentsField ReadOnly="@Data.Disabled" @bind-Value="Data.Comments"></HexEntityCommentsField>
             </FluentGridItem>
         </FluentGrid>
     }
@@ -97,6 +97,14 @@ OnRefresh="RefreshAsync"/>
     private async Task RefreshAsync()
     {
         await OnLoadData.InvokeAsync();
+        StateHasChanged();
+    }
+    private async Task OnDisabledChanged(bool value)
+    {
+        if (value is true)
+            await OnLoadData.InvokeAsync();
+        if (Data is not null)
+            Data.Disabled = value;
         StateHasChanged();
     }
 
