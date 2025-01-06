@@ -11,6 +11,7 @@ using global::SendGrid;
 using global::SendGrid.Helpers.Mail;
 
 using Hexalith.Application.Emails;
+using Hexalith.Extensions.Configuration;
 using Hexalith.Infrastructure.Emails.Abstractions.Configurations;
 using Hexalith.Infrastructure.Emails.Abstractions.Services;
 
@@ -36,7 +37,7 @@ public class SendGridEmailService : EmailServiceBase
     public SendGridEmailService(IOptions<EmailServerSettings> settings)
         : base(settings)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(settings.Value.ApplicationSecret);
+        SettingsException<EmailServerSettings>.ThrowIfNullOrWhiteSpace(settings.Value.ApplicationSecret);
         _apiKey = settings.Value.ApplicationSecret;
     }
 
