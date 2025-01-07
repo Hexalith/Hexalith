@@ -43,6 +43,7 @@ using Hexalith.PolymorphicSerialization;
 
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -281,6 +282,12 @@ public static class ServerSideClientAppHelper
     public static IApplicationBuilder UseHexalithWebApplication<TApp>([NotNull] this WebApplication app)
     {
         ArgumentNullException.ThrowIfNull(app);
+
+        // Needed when behind a reverse proxy like Azure Container Instances. It will forward the original host and protocol (https/http).
+        _ = app.UseForwardedHeaders(new ForwardedHeadersOptions
+        {
+            ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto,
+        });
 
         _ = app
             .MapDefaultEndpoints()
