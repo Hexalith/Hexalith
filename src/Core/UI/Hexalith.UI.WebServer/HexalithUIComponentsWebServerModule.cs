@@ -12,6 +12,7 @@ using Hexalith.Application.Modules.Modules;
 using Hexalith.Extensions.Configuration;
 using Hexalith.UI.Components.Configurations;
 using Hexalith.UI.Components.Helpers;
+using Hexalith.UI.WebApp;
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
@@ -45,7 +46,7 @@ public class HexalithUIComponentsWebServerModule : IWebServerApplicationModule
 
     /// <inheritdoc/>
     public IEnumerable<Assembly> PresentationAssemblies
-        => [GetType().Assembly];
+        => [GetType().Assembly, typeof(Components._Imports).Assembly, typeof(HexalithUIComponentsWebAppModule).Assembly];
 
     /// <inheritdoc/>
     public string Version => "1.0.0";

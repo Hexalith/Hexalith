@@ -45,7 +45,7 @@ public class HexalithUIComponentsWebAppModule : IWebAppApplicationModule
 
     /// <inheritdoc/>
     public IEnumerable<Assembly> PresentationAssemblies
-        => [GetType().Assembly];
+        => [GetType().Assembly, typeof(Components._Imports).Assembly];
 
     /// <inheritdoc/>
     public string Version => "1.0.0";
