@@ -328,7 +328,12 @@ public static class ServerSideClientAppHelper
             .AddInteractiveWebAssemblyRenderMode();
         if (HexalithApplication.WebServerApplication is not null)
         {
-            System.Reflection.Assembly[]? assemblies = HexalithApplication.WebServerApplication?.PresentationAssemblies.ToArray();
+            System.Reflection.Assembly[]? assemblies = HexalithApplication
+                .WebServerApplication?
+                .PresentationAssemblies
+                .Where(assembly => assembly != typeof(TApp).Assembly)
+                .Distinct()
+                .ToArray();
             if (assemblies != null)
             {
                 _ = razor.AddAdditionalAssemblies(assemblies);
@@ -339,7 +344,6 @@ public static class ServerSideClientAppHelper
 
         app.UseHexalithModules();
 
-        // _ = app.MapBlazorHub();
         return app;
     }
 }
