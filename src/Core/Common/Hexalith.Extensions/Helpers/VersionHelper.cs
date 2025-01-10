@@ -39,8 +39,8 @@ public static class VersionHelper
     public static string GetAssemblyVersion(this Assembly assembly)
     {
         ArgumentNullException.ThrowIfNull(assembly);
-        string? version = assembly.GetName()?.Version?.ToString();
-        return !string.IsNullOrWhiteSpace(version) ? version : FileProductVersion(assembly.Location) ?? "1.0.0-dev";
+        string? version = FileVersionInfo.GetVersionInfo(assembly.Location).ProductVersion;
+        return version?.Split('+')[0] ?? "0.0.1-dev";
     }
 
     /// <summary>
