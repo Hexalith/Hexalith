@@ -80,9 +80,6 @@ public abstract class HexalithApplication : IApplication
         => _webServerApplication ??= GetApplication<IWebServerApplication>();
 
     /// <inheritdoc/>
-    IApiServerApplication? IApplication.ApiServerApplication => ApiServerApplication;
-
-    /// <inheritdoc/>
     public abstract ApplicationType ApplicationType { get; }
 
     /// <inheritdoc/>
@@ -116,7 +113,10 @@ public abstract class HexalithApplication : IApplication
     public virtual string UserAccountPath => "/account/manage";
 
     /// <inheritdoc/>
-    public virtual string Version => "1.0";
+    public virtual string Version => GetType().GetAssemblyVersion();
+
+    /// <inheritdoc/>
+    IApiServerApplication? IApplication.ApiServerApplication => ApiServerApplication;
 
     /// <inheritdoc/>
     IWebAppApplication? IApplication.WebAppApplication => WebAppApplication;
