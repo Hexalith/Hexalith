@@ -36,7 +36,7 @@ jobs:
         dotnet workload install aspire
     - name: Build Version
       run: |
-        dotnet tool install --global minver-cli --version 6.0.0
+        dotnet tool install --global minver-cli --version 5.0.0
         version=$(minver -t v -v e -d preview)
         echo "MINVERVERSIONOVERRIDE=$version" >> $GITHUB_ENV
         echo "VERSION=$version" >> $GITHUB_ENV
@@ -47,7 +47,7 @@ jobs:
         dotnet clean
     - name: Build
       run: |
-        dotnet build --configuration Release -p:Version=${{ env.VERSION }}
+        dotnet build --configuration Release -p:Version=${{ env.VERSION }} -p:FileVersion=${{ env.VERSION }}
     - name: Publish release packages to Nuget
       if: startswith(github.ref, 'refs/tags/v') 
       run: |
