@@ -41,7 +41,6 @@
     <MicrosoftTypescriptMSBuild>5.7.1</MicrosoftTypescriptMSBuild>
     <MicrosoftGraphVersion>5.12.*</MicrosoftGraphVersion>
     <MicrosoftVisualStudioThreadingAnalyzersVersion>17.12.19</MicrosoftVisualStudioThreadingAnalyzersVersion>
-    <MinverVersion>5.0.0</MinverVersion>
     <MoqVersion>4.20.72</MoqVersion>
     <MoqContribHttpClientVersion>1.4.0</MoqContribHttpClientVersion>
     <NewtonsoftJsonVersion>13.0.3</NewtonsoftJsonVersion>
