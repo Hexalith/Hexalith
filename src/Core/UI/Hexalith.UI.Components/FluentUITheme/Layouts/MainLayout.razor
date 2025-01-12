@@ -22,7 +22,7 @@
             <HexProfileMenu @rendermode="InteractiveAuto" />
         </FluentHeader>
         <FluentStack Class="body-stack" Orientation="Orientation.Horizontal" Width="100%">
-            <FluentNavMenu Class="navmenu" Width="300">
+            <FluentNavMenu Class="navmenu" Width="400">
                 @{
                     foreach (MenuItemInformation menuItem in MenuItems.OrderByDescending(p => p.OrderWeigth))
                     {
@@ -50,10 +50,29 @@
                                                                     @bind-Expanded="Expanded[GetMenuItemId(subSubItem)]">
                                                         @foreach (var subSubSubItem in subSubItem.SubItems.OrderByDescending(p => p.OrderWeigth))
                                                         {
-                                                            <FluentNavLink Icon="@subSubSubItem.Icon.ToFluentNavIcon()" Href="@subSubSubItem.Path">@subSubSubItem.Name</FluentNavLink>
-                                                            if (subSubSubItem.DividerAfter)
+                                                            if (subSubSubItem.SubItems.Any())
                                                             {
-                                                                <FluentDivider />
+                                                                <FluentNavGroup Title="@subSubSubItem.Name"
+                                                                                Icon="@subSubSubItem.Icon.ToFluentNavIcon()"
+                                                                                IconColor="Color.Accent"
+                                                                                @bind-Expanded="Expanded[GetMenuItemId(subSubSubItem)]">
+                                                                    @foreach (var subSubSubSubItem in subSubSubItem.SubItems.OrderByDescending(p => p.OrderWeigth))
+                                                                    {
+                                                                        <FluentNavLink Icon="@subSubSubSubItem.Icon.ToFluentNavIcon()" Href="@subSubSubSubItem.Path">@subSubSubSubItem.Name</FluentNavLink>
+                                                                        if (subSubSubSubItem.DividerAfter)
+                                                                        {
+                                                                            <FluentDivider />
+                                                                        }
+                                                                    }
+                                                                </FluentNavGroup>
+                                                            }
+                                                            else
+                                                            {
+                                                                <FluentNavLink Icon="@subSubSubItem.Icon.ToFluentNavIcon()" Href="@subSubSubItem.Path">@subSubSubItem.Name</FluentNavLink>
+                                                                if (subSubSubItem.DividerAfter)
+                                                                {
+                                                                    <FluentDivider />
+                                                                }
                                                             }
                                                         }
                                                     </FluentNavGroup>
