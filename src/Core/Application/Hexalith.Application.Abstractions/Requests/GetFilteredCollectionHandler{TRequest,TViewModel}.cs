@@ -130,6 +130,13 @@ public partial class GetFilteredCollectionHandler<TRequest, TViewModel> : Reques
         return (TRequest)request.CreateResults(searchResults);
     }
 
+    /// <summary>
+    /// Logs an error message indicating missing results for aggregate identifiers in a request.
+    /// </summary>
+    /// <param name="messageName">The name of the message.</param>
+    /// <param name="messageId">The ID of the message.</param>
+    /// <param name="correlationId">The correlation ID of the context.</param>
+    /// <param name="aggregateIds">The aggregate identifiers that are missing results.</param>
     [LoggerMessage(EventId = 0, Level = LogLevel.Error, Message = "Missing results for aggregate identifiers in request {MessageName} : {AggregateIds}. MessageId={MessageId}; CorrelationId={CorrelationId}")]
     public partial void LogMissingResults(string messageName, string messageId, string correlationId, IEnumerable<string> aggregateIds);
 
