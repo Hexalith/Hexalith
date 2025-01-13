@@ -22,7 +22,7 @@
             <HexProfileMenu @rendermode="InteractiveAuto" />
         </FluentHeader>
         <FluentStack Class="body-stack" Orientation="Orientation.Horizontal" Width="100%">
-            <FluentNavMenu Class="navmenu" Width="400">
+            <FluentNavMenu Collapsible="true" CollapsedChildNavigation="true" Class="navmenu" Width="400" Style="height: calc(100dvh - 100px); overflow-y: auto;">
                 @{
                     foreach (MenuItemInformation menuItem in MenuItems.OrderByDescending(p => p.OrderWeigth))
                     {
