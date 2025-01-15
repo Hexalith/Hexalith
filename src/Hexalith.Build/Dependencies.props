@@ -4,7 +4,7 @@
     <AdaptiveCardsVersion>3.1.0</AdaptiveCardsVersion>
     <AdaptiveCardsTemplatingVersion>2.0.2</AdaptiveCardsTemplatingVersion>
     <AspireVersion>9.0.0</AspireVersion>
-    <AzureIdentityVersion>1.10.4</AzureIdentityVersion>
+    <AzureIdentityVersion>1.13.2</AzureIdentityVersion>
     <AzureBicepCoreVersion>0.26.54</AzureBicepCoreVersion>
     <AzureMonitorOpenTelemetryAspNetCoreVersion>1.1.0</AzureMonitorOpenTelemetryAspNetCoreVersion>
     <AzureResourceManagerVersion>1.10.2</AzureResourceManagerVersion>
@@ -16,10 +16,10 @@
     <AzureStorageBlobsVersion>12.23.0</AzureStorageBlobsVersion>
     <CoconaVersion>2.2.0</CoconaVersion>
     <CompareNETObjectsVersion>4.83.0</CompareNETObjectsVersion>
-    <CoverletCollectorVersion>6.0.2</CoverletCollectorVersion>
+    <CoverletCollectorVersion>6.0.3</CoverletCollectorVersion>
     <DaprVersion>1.14.*</DaprVersion>
     <DocFxConsoleVersion>2.59.4</DocFxConsoleVersion>
-    <FluentAssertionsVersion>7.0.0</FluentAssertionsVersion>
+    <FluentAssertionsVersion>8.0.0</FluentAssertionsVersion>
     <FluentValidationVersion>11.11.0</FluentValidationVersion>
     <FluentValidationAspNetCoreVersion>11.3.0</FluentValidationAspNetCoreVersion>
     <GitHubActionsTestLoggerVersion>2.4.1</GitHubActionsTestLoggerVersion>
@@ -28,11 +28,11 @@
     <ISO3166Version>1.0.4</ISO3166Version>
     <HumanizerVersion>2.14.1</HumanizerVersion>
     <MailKitVersion>4.9.0</MailKitVersion>
-    <MicrosoftAzureCosmosVersion>3.46.0</MicrosoftAzureCosmosVersion>
+    <MicrosoftAzureCosmosVersion>3.46.1</MicrosoftAzureCosmosVersion>
     <MicrosoftBotBuilderVersion>4.22.7</MicrosoftBotBuilderVersion>
     <MicrosoftCodeAnalysisCSharpVersion>4.12.0</MicrosoftCodeAnalysisCSharpVersion>
     <MicrosoftCodeAnalysisAnalyzersVersion>3.11.0</MicrosoftCodeAnalysisAnalyzersVersion>
-    <MicrosoftFluentUIComponentsVersion>4.11.0</MicrosoftFluentUIComponentsVersion>
+    <MicrosoftFluentUIComponentsVersion>4.11.3</MicrosoftFluentUIComponentsVersion>
     <MicrosoftIdentityClientVersion>4.66.2</MicrosoftIdentityClientVersion>
     <MicrosoftIdentityWebVersion>3.2.1</MicrosoftIdentityWebVersion>
     <MicrosoftNETTestSdkVersion>17.12.0</MicrosoftNETTestSdkVersion>
@@ -62,7 +62,7 @@
     <StyleCopAnalyzersVersion>1.2.0-beta.556</StyleCopAnalyzersVersion>
     <SwashbuckleAspNetCoreVersion>7.2.0</SwashbuckleAspNetCoreVersion>
     <SystemIdentityModelTokensJwtVersion>8.3.0</SystemIdentityModelTokensJwtVersion>
-    <XUnitRunnerVisualStudioVersion>3.0.0</XUnitRunnerVisualStudioVersion>
-    <XUnitVersion>2.9.2</XUnitVersion>
+    <XUnitRunnerVisualStudioVersion>3.0.1</XUnitRunnerVisualStudioVersion>
+    <XUnitVersion>2.9.3</XUnitVersion>
   </PropertyGroup>
 </Project>
