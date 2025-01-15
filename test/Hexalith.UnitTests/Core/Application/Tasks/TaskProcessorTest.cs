@@ -213,5 +213,5 @@ public class TaskProcessorTest
             .Complete();
     }
 
-    private EquivalencyAssertionOptions<TaskProcessor> ExcludeProperties(EquivalencyAssertionOptions<TaskProcessor> options) => options;
+    private EquivalencyOptions<TaskProcessor> ExcludeProperties(EquivalencyOptions<TaskProcessor> options) => options;
 }

@@ -33,10 +33,10 @@
     <MicrosoftCodeAnalysisCSharpVersion>4.12.0</MicrosoftCodeAnalysisCSharpVersion>
     <MicrosoftCodeAnalysisAnalyzersVersion>3.11.0</MicrosoftCodeAnalysisAnalyzersVersion>
     <MicrosoftFluentUIComponentsVersion>4.11.3</MicrosoftFluentUIComponentsVersion>
-    <MicrosoftIdentityClientVersion>4.66.2</MicrosoftIdentityClientVersion>
+    <MicrosoftIdentityClientVersion>4.67.2</MicrosoftIdentityClientVersion>
     <MicrosoftIdentityWebVersion>3.2.1</MicrosoftIdentityWebVersion>
     <MicrosoftNETTestSdkVersion>17.12.0</MicrosoftNETTestSdkVersion>
-    <MicrosoftSemanticKernelVersion>1.32.0</MicrosoftSemanticKernelVersion>
+    <MicrosoftSemanticKernelVersion>1.33.0</MicrosoftSemanticKernelVersion>
     <MicrosoftTeamsFxVersion>2.5.0</MicrosoftTeamsFxVersion>
     <MicrosoftTypescriptMSBuild>5.7.1</MicrosoftTypescriptMSBuild>
     <MicrosoftGraphVersion>5.12.*</MicrosoftGraphVersion>
