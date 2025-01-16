@@ -1,4 +1,5 @@
-﻿@inherits FluentComponentBase
+﻿@using Hexalith.Extensions.Helpers
+@inherits FluentComponentBase
 @typeparam TDrawingData
 <FluentCard AdditionalAttributes="@AdditionalAttributes"
             Class="@Class"
@@ -32,22 +33,29 @@
     {
         return builder =>
         {
-            if (string.IsNullOrWhiteSpace(Drawing))
+            try
             {
-                builder.AddContent(0, new MarkupString("<div></div>"));
-            }
-            else
-            {
-                if (DrawingData is null)
+                if (string.IsNullOrWhiteSpace(Drawing))
                 {
-                    builder.AddMarkupContent(0, Drawing);
+                    builder.AddContent(0, new MarkupString("<div></div>"));
                 }
                 else
                 {
-                    Scriban.Template template = Scriban.Template.Parse(Drawing);
-                    var svg = template.Render(DrawingData);
-                    builder.AddMarkupContent(0, svg);
+                    if (DrawingData is null)
+                    {
+                        builder.AddMarkupContent(0, Drawing);
+                    }
+                    else
+                    {
+                        Scriban.Template template = Scriban.Template.Parse(Drawing);
+                        var svg = template.Render(DrawingData);
+                        builder.AddMarkupContent(0, svg);
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                builder.AddContent(0, new MarkupString($"</br><div style=\"color: red;\">{e.FullMessage()}</div>"));
             }
         };
     }
