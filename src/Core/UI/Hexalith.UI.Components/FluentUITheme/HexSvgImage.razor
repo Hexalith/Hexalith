@@ -1,0 +1,54 @@
+﻿@inherits FluentComponentBase
+@typeparam TDrawingData
+<FluentCard AdditionalAttributes="@AdditionalAttributes"
+            Class="@Class"
+            Data="@Data"
+            Id="@Id"
+            AreaRestricted="@AreaRestricted"
+            Style="@Style"
+            Height="@Height"
+            Width="@(Width??"100%")"
+            MinimalStyle="@MinimalStyle">
+    @RenderDrawing()
+</FluentCard>
+@code
+{
+    [Parameter]
+    public bool AreaRestricted { get; set; }
+    [Parameter]
+    public string? Label { get; set; }
+    [Parameter]
+    public string? Drawing { get; set; }
+    [Parameter]
+    public TDrawingData? DrawingData { get; set; }
+    [Parameter]
+    public string? Height { get; set; }
+    [Parameter]
+    public string? Width { get; set; }
+    [Parameter]
+    public bool MinimalStyle { get; set; }
+
+    public RenderFragment RenderDrawing()
+    {
+        return builder =>
+        {
+            if (string.IsNullOrWhiteSpace(Drawing))
+            {
+                builder.AddContent(0, new MarkupString("<div></div>"));
+            }
+            else
+            {
+                if (DrawingData is null)
+                {
+                    builder.AddMarkupContent(0, Drawing);
+                }
+                else
+                {
+                    Scriban.Template template = Scriban.Template.Parse(Drawing);
+                    var svg = template.Render(DrawingData);
+                    builder.AddMarkupContent(0, svg);
+                }
+            }
+        };
+    }
+}

@@ -201,4 +201,7 @@
   <data name="ValidationFailed" xml:space="preserve">
     <value>Data validation failed. Fix the issues before continuing.</value>
   </data>
+  <data name="Drawing" xml:space="preserve">
+    <value>Drawing</value>
+  </data>
 </root>
