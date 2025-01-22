@@ -19,6 +19,8 @@
                   Immediate="@Immediate"
                   ImmediateDelay="@ImmediateDelay"
                   Label="@(Label ?? Labels.EndDate)"
+                  LabelTemplate="@(LabelTemplate!)"
+                  DaysTemplate="@(DaysTemplate!)"
                   Name="@Name"
                   OnCalendarOpen="@OnCalendarOpen"
                   OnDoubleClick="@OnDoubleClick"
@@ -34,12 +36,6 @@
                   ValueExpression="@ValueExpression"
                   CheckIfSelectedValueHasChanged="@CheckIfSelectedValueHasChanged"
                   View="@View">
-    <LabelTemplate>
-        @LabelTemplate
-    </LabelTemplate>
-    <DaysTemplate>
-        @DaysTemplate
-    </DaysTemplate>
 </FluentDatePicker>
 @code {
 

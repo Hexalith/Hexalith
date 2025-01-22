@@ -16,7 +16,9 @@
                  Immediate="@Immediate"
                  ImmediateDelay="@ImmediateDelay"
                  InputMode="@InputMode"
-                 Label="@(Label ?? Labels.Name)"
+                 Label="@(Label ?? Labels.Id)"
+                 LabelTemplate="@(LabelTemplate!)"
+                 ChildContent="@(ChildContent!)"
                  Maxlength="@Maxlength"
                  Minlength="@Minlength"
                  Name="@Name"
@@ -32,12 +34,6 @@
                  Value="@Value"
                  ValueChanged="@ValueChanged"
                  ValueExpression="@ValueExpression">
-    <LabelTemplate>
-        @LabelTemplate
-    </LabelTemplate>
-    <ChildContent>
-        @ChildContent
-    </ChildContent>
 </FluentTextField>
 @code {
 

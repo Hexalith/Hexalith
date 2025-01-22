@@ -14,6 +14,7 @@
                   Immediate="@Immediate"
                   ImmediateDelay="@ImmediateDelay"
                   Label="@(Label ?? Labels.StartTime)"
+                  LabelTemplate="@(LabelTemplate!)"
                   Name="@Name"
                   ParentReference="@ParentReference"
                   Placeholder="@Placeholder"
@@ -21,11 +22,8 @@
                   Required="true"
                   Style="@(Style ?? "width:100%;")"
                   Value="@Value"
-                  ValueChanged="@ValueChanged"                  
+                  ValueChanged="@ValueChanged"
                   ValueExpression="@ValueExpression">
-    <LabelTemplate>
-        @LabelTemplate
-    </LabelTemplate>
 </FluentTimePicker>
 @code {
 
