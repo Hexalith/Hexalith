@@ -21,19 +21,19 @@ OnRefresh="RefreshAsync"/>
     {
         <FluentGrid Style="width:100%;">
             <FluentGridItem xs="12" md="3">
-                <HexEntityIdField ReadOnly="@(!CreateMode)" @bind-Value="ViewModel.Id"></HexEntityIdField>
+                <HexIdField ReadOnly="@(!CreateMode)" @bind-Value="ViewModel.Id"></HexIdField>
             </FluentGridItem>
             <FluentGridItem xs="12" md="@(CreateMode ? 9 : 7)">
-                <HexEntityNameField ReadOnly="@ViewModel.Disabled" @bind-Value="ViewModel.Name"></HexEntityNameField>
+                <HexNameField ReadOnly="@ViewModel.Disabled" @bind-Value="ViewModel.Name"></HexNameField>
             </FluentGridItem>
             @if (!CreateMode)
             {
                 <FluentGridItem xs="12" md="2">
-                    <HexEntityDisabledCheckbox ReadOnly="true" Value="ViewModel.Disabled" />
+                    <HexDisabledCheckbox ReadOnly="true" Value="ViewModel.Disabled" />
                 </FluentGridItem>
             }
             <FluentGridItem xs="12" md="12">
-                <HexEntityCommentsField ReadOnly="@ViewModel.Disabled" @bind-Value="ViewModel.Comments"></HexEntityCommentsField>
+                <HexCommentsField ReadOnly="@ViewModel.Disabled" @bind-Value="ViewModel.Comments"></HexCommentsField>
             </FluentGridItem>
         </FluentGrid>
     }
