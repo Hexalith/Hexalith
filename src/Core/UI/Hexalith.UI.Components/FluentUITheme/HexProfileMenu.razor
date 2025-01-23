@@ -2,50 +2,56 @@
 @inject IApplication Application
 @inject NavigationManager NavigationManager
 <AuthorizeView>
-	<Authorized>
-		<FluentProfileMenu Status="PresenceStatus.Available"
-						   FullName="@name"
-						   Email="@email"
-						   OnFooterLinkClick="OnAccountClick"
-						   OnHeaderButtonClick="OnLogoutClickAsync" />
-	</Authorized>
-	<NotAuthorized>
-		<FluentButton OnClick="@OnLoginClick" IconStart="@(new Icons.Regular.Size16.PersonLock())">Login</FluentButton>
-	</NotAuthorized>
+    <Authorized>
+        <FluentProfileMenu Status="PresenceStatus.Available"
+                           FullName="@name"
+                           Email="@email"
+                           OnFooterLinkClick="OnAccountClick"
+                           OnHeaderButtonClick="OnLogoutClickAsync">
+            <HeaderTemplate>
+                <HexThemeSelector />
+                <br/>
+                <FluentLabel Typo="Typography.PaneHeader" >@Labels.Account</FluentLabel>
+            </HeaderTemplate>
+        </FluentProfileMenu>
+    </Authorized>
+    <NotAuthorized>
+        <FluentButton OnClick="@OnLoginClick" IconStart="@(new Icons.Regular.Size16.PersonLock())">Login</FluentButton>
+    </NotAuthorized>
 </AuthorizeView>
 
 
 @code {
 
-	[CascadingParameter]
-	public Task<AuthenticationState>? AuthenticationState { get; set; }
+    [CascadingParameter]
+    public Task<AuthenticationState>? AuthenticationState { get; set; }
 
-	string? name;
-	string? email;
-	protected override async Task OnInitializedAsync()
-	{
-		base.OnInitialized();
-		if (AuthenticationState is not null)
-		{
-			var authState = await AuthenticationState;
-			if (authState.User.Identity is not null)
-			{
-				name = authState.User.Identity.Name;
-				email = authState.User.FindFirst(ClaimTypes.Email)?.Value;
-				StateHasChanged();
-			}
-		}
-	}
-	private void OnAccountClick()
-	{
-		NavigationManager.NavigateTo($"{Application.UserAccountPath}", forceLoad: true);
-	}
-	private void OnLoginClick()
-	{
-		NavigationManager.NavigateTo($"{Application.LoginPath}?returnUrl={Uri.EscapeDataString(NavigationManager.Uri)}", forceLoad: true);
-	}
-	private void OnLogoutClickAsync()
-	{
-		NavigationManager.NavigateTo($"/logout", forceLoad: true);
-	}
+    string? name;
+    string? email;
+    protected override async Task OnInitializedAsync()
+    {
+        base.OnInitialized();
+        if (AuthenticationState is not null)
+        {
+            var authState = await AuthenticationState;
+            if (authState.User.Identity is not null)
+            {
+                name = authState.User.Identity.Name;
+                email = authState.User.FindFirst(ClaimTypes.Email)?.Value;
+                StateHasChanged();
+            }
+        }
+    }
+    private void OnAccountClick()
+    {
+        NavigationManager.NavigateTo($"{Application.UserAccountPath}", forceLoad: true);
+    }
+    private void OnLoginClick()
+    {
+        NavigationManager.NavigateTo($"{Application.LoginPath}?returnUrl={Uri.EscapeDataString(NavigationManager.Uri)}", forceLoad: true);
+    }
+    private void OnLogoutClickAsync()
+    {
+        NavigationManager.NavigateTo($"/logout", forceLoad: true);
+    }
 }

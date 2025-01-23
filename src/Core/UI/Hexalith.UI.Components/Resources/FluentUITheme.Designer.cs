@@ -61,6 +61,15 @@ namespace Hexalith.UI.Components.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account.
+        /// </summary>
+        internal static string Account {
+            get {
+                return ResourceManager.GetString("Account", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add.
         /// </summary>
         internal static string Add {
@@ -336,6 +345,15 @@ namespace Hexalith.UI.Components.Resources {
         internal static string SynchronizeDatabaseButtonTitle {
             get {
                 return ResourceManager.GetString("SynchronizeDatabaseButtonTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Theme.
+        /// </summary>
+        internal static string Theme {
+            get {
+                return ResourceManager.GetString("Theme", resourceCulture);
             }
         }
         

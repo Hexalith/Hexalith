@@ -5,10 +5,11 @@
 
 <FluentDesignTheme @bind-Mode="@Mode"
                    @bind-OfficeColor="@Color"
-                   StorageName="theme" />
+                   StorageName="@(nameof(FluentUITheme))" />
 
 <FluentStack Orientation="Orientation.Vertical">
-    <FluentSelect Label="Theme"
+    <FluentLabel Typo="Typography.PaneHeader">@Labels.Theme</FluentLabel>
+    <FluentSelect Label="Mode"
                   Items="@(Enum.GetValues<DesignThemeModes>())"
                   @bind-SelectedOption="@Mode" />
     <FluentSelect Label="Color"

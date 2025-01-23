@@ -11,28 +11,32 @@
 @using Labels = Hexalith.UI.Components.Resources.FluentUITheme;
 @using System.Security.Claims
 <HexEntityDetailsToolbar IndexPath="@IndexPath"
-IndexButtonTitle="IndexButtonTitle"
-RefreshButtonTitle="RefreshButtonTitle"
-OnRefresh="RefreshAsync"/>
+                         IndexButtonTitle="IndexButtonTitle"
+                         RefreshButtonTitle="RefreshButtonTitle"
+                         OnRefresh="RefreshAsync" />
 
 <FluentStack Orientation="Orientation.Vertical" Width="100%" Style="padding:10px;padding-right:20px;">
-    <FluentLabel Typo="Typography.PageTitle">@(CreateMode?AddTitle:string.Format(EditTitle, EntityId))</FluentLabel>
+    <FluentLabel Typo="Typography.PageTitle">@(CreateMode ? AddTitle : string.Format(EditTitle, EntityId))</FluentLabel>
     @if (ViewModel is not null)
     {
         <FluentGrid Style="width:100%;">
-            <FluentGridItem xs="12" md="3">
-                <HexIdField ReadOnly="@(!CreateMode)" @bind-Value="ViewModel.Id"></HexIdField>
+            <FluentGridItem md="6">
+                <FluentGrid Style="width:100%;">
+                    <FluentGridItem xs="12" md="@(CreateMode ? 9 : 7)">
+                        <HexIdField ReadOnly="@(!CreateMode)" @bind-Value="ViewModel.Id"></HexIdField>
+                    </FluentGridItem>
+                    @if (!CreateMode)
+                    {
+                        <FluentGridItem xs="12" md="2">
+                            <HexDisabledCheckbox ReadOnly="true" Value="ViewModel.Disabled" />
+                        </FluentGridItem>
+                    }
+                    <FluentGridItem xs="12" md="6">
+                        <HexNameField Required="true" ReadOnly="@ViewModel.Disabled" @bind-Value="ViewModel.Name"></HexNameField>
+                    </FluentGridItem>
+                </FluentGrid>
             </FluentGridItem>
-            <FluentGridItem xs="12" md="@(CreateMode ? 9 : 7)">
-                <HexNameField ReadOnly="@ViewModel.Disabled" @bind-Value="ViewModel.Name"></HexNameField>
-            </FluentGridItem>
-            @if (!CreateMode)
-            {
-                <FluentGridItem xs="12" md="2">
-                    <HexDisabledCheckbox ReadOnly="true" Value="ViewModel.Disabled" />
-                </FluentGridItem>
-            }
-            <FluentGridItem xs="12" md="12">
+            <FluentGridItem md="6">
                 <HexCommentsField ReadOnly="@ViewModel.Disabled" @bind-Value="ViewModel.Comments"></HexCommentsField>
             </FluentGridItem>
         </FluentGrid>
