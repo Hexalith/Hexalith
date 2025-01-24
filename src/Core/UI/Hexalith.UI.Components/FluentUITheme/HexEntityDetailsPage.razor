@@ -16,36 +16,57 @@
                          OnRefresh="RefreshAsync" />
 
 <FluentStack Orientation="Orientation.Vertical" Width="100%" Style="padding:10px;padding-right:20px;">
-    <FluentLabel Typo="Typography.PageTitle">@(CreateMode ? AddTitle : string.Format(EditTitle, EntityId))</FluentLabel>
+    <HexPageTitle>@(CreateMode ? AddTitle : string.Format(EditTitle, EntityId))</HexPageTitle>
     @if (ViewModel is not null)
     {
         <FluentGrid Style="width:100%;">
-            <FluentGridItem md="6">
-                <FluentGrid Style="width:100%;">
-                    <FluentGridItem xs="12" md="@(CreateMode ? 9 : 7)">
-                        <HexIdField ReadOnly="@(!CreateMode)" @bind-Value="ViewModel.Id"></HexIdField>
-                    </FluentGridItem>
-                    @if (!CreateMode)
-                    {
-                        <FluentGridItem xs="12" md="2">
-                            <HexDisabledCheckbox ReadOnly="true" Value="ViewModel.Disabled" />
-                        </FluentGridItem>
-                    }
-                    <FluentGridItem xs="12" md="6">
-                        <HexNameField Required="true" ReadOnly="@ViewModel.Disabled" @bind-Value="ViewModel.Name"></HexNameField>
-                    </FluentGridItem>
-                </FluentGrid>
+            <FluentGridItem md="12">
+                @if (FormContent is null)
+                {
+                    <FluentAccordion>
+                        <FluentAccordionItem Heading="@DescriptionHeading" @bind-Expanded="_descriptionExpanded">
+
+                            <FluentGrid Style="width:100%;">
+                                <FluentGridItem md="12">
+                                    <FluentGrid Style="width:100%;">
+                                        <FluentGridItem xs="12" md="@(CreateMode ? 5 : 3)">
+                                            <HexIdField ReadOnly="@(!CreateMode)" @bind-Value="ViewModel.Id"></HexIdField>
+                                        </FluentGridItem>
+                                        @if (!CreateMode)
+                                        {
+                                            <FluentGridItem xs="12" md="2">
+                                                <HexDisabledCheckbox ReadOnly="true" Value="ViewModel.Disabled" />
+                                            </FluentGridItem>
+                                        }
+                                        <FluentGridItem xs="12" md="7">
+                                            <HexNameField Required="true" ReadOnly="@ViewModel.Disabled" @bind-Value="ViewModel.Name"></HexNameField>
+                                        </FluentGridItem>
+                                    </FluentGrid>
+                                </FluentGridItem>
+                                <FluentGridItem md="12">
+                                    <HexCommentsField Rows="3" ReadOnly="@ViewModel.Disabled" @bind-Value="ViewModel.Comments"></HexCommentsField>
+                                </FluentGridItem>
+                            </FluentGrid>
+                        </FluentAccordionItem>
+                    </FluentAccordion>
+                }
+                else
+                {
+                    @FormContent
+                }
             </FluentGridItem>
-            <FluentGridItem md="6">
-                <HexCommentsField ReadOnly="@ViewModel.Disabled" @bind-Value="ViewModel.Comments"></HexCommentsField>
+            <FluentGridItem md="12">
+                <HexValidationSummary ValidationResult="ValidationResult"></HexValidationSummary>
+            </FluentGridItem>
+            <FluentGridItem md="12">
+                <HexSaveButton Appearance="Appearance.Accent" OnClick="OnSaveAsync" />
             </FluentGridItem>
         </FluentGrid>
     }
-    @ChildContent
-    <FluentSpacer />
-    <HexSaveButton Appearance="Appearance.Accent" OnClick="OnSaveAsync" />
-    <FluentSpacer />
-    <HexValidationSummary ValidationResult="ValidationResult"></HexValidationSummary>
+    else
+    {
+        <HexInProgress />
+    }
 </FluentStack>
 
 
@@ -74,6 +95,9 @@
     public required string EditTitle { get; set; }
 
     [Parameter]
+    public RenderFragment? FormContent { get; set; }
+
+    [Parameter]
     public bool ShowAdministratorTools { get; set; }
 
     [Parameter]
@@ -95,6 +119,10 @@
     [Parameter]
     [EditorRequired]
     public EventCallback OnLoadData { get; set; }
+
+    bool _descriptionExpanded = true;
+
+    string DescriptionHeading => (_descriptionExpanded) ? Labels.Description : Labels.Description + $" : {ViewModel?.Id}-{ViewModel?.Name}";
 
     private bool CreateMode => string.IsNullOrWhiteSpace(EntityId);
 
