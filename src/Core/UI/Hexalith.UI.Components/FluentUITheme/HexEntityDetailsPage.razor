@@ -13,8 +13,9 @@
 <HexEntityDetailsToolbar IndexPath="@IndexPath"
                          IndexButtonTitle="IndexButtonTitle"
                          RefreshButtonTitle="RefreshButtonTitle"
+                         OnSave="OnSaveAsync"
                          OnRefresh="RefreshAsync">
-                         @ToolbarContent
+    @ToolbarContent
 </HexEntityDetailsToolbar>
 
 
@@ -65,9 +66,6 @@
             <FluentGridItem md="12">
                 <HexValidationSummary ValidationResult="ValidationResult"></HexValidationSummary>
             </FluentGridItem>
-            <FluentGridItem md="12">
-                <HexSaveButton Appearance="Appearance.Accent" OnClick="OnSaveAsync" />
-            </FluentGridItem>
         </FluentGrid>
     }
     else
@@ -111,6 +109,9 @@
     public string? IndexButtonTitle { get; set; }
 
     [Parameter]
+    public string? SaveButtonTitle { get; set; }
+
+    [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
     [Parameter]
@@ -132,7 +133,7 @@
 
     bool _descriptionExpanded = true;
 
-    string DescriptionHeading => (_descriptionExpanded) ? Labels.Description : Labels.Description + $" : {ViewModel?.Id}-{ViewModel?.Name}";
+    string DescriptionHeading => (_descriptionExpanded) ? Labels.Description : Labels.Description + $" : {ViewModel?.Name}";
 
     private bool CreateMode => string.IsNullOrWhiteSpace(EntityId);
 

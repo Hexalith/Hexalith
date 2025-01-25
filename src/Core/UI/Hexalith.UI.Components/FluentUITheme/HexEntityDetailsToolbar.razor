@@ -10,6 +10,10 @@
                   OnClick="OnIndex"></FluentButton>
     }
     @ChildContent
+    <FluentButton Title="@(SaveButtonTitle?? Labels.SaveButtonTitle)"
+                  Appearance="Appearance.Stealth"
+                  IconStart="@(new Icons.Filled.Size20.Save())"
+                  OnClick="OnSave"></FluentButton>
     <FluentButton Title="@(RefreshButtonTitle ?? Labels.RefreshButtonTitle)"
                   Appearance="Appearance.Stealth"
                   IconStart="@(new Icons.Filled.Size20.ArrowSync())"
@@ -28,6 +32,9 @@
     public string? IndexButtonTitle { get; set; }
 
     [Parameter]
+    public string? SaveButtonTitle { get; set; }
+
+    [Parameter]
     public string? RefreshButtonTitle { get; set; }
 
     [Parameter]
@@ -38,6 +45,9 @@
 
     [Parameter]
     public EventCallback OnRefresh { get; set; }
+
+    [Parameter]
+    public EventCallback OnSave { get; set; }
 
 
     void OnIndex()

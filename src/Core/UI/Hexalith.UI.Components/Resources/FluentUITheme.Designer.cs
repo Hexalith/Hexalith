@@ -295,6 +295,15 @@ namespace Hexalith.UI.Components.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        internal static string SaveButtonTitle {
+            get {
+                return ResourceManager.GetString("SaveButtonTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not save {0}. Error : {1}.
         /// </summary>
         internal static string SaveError {

@@ -219,4 +219,7 @@
   <data name="Account" xml:space="preserve">
     <value>Compte</value>
   </data>
+  <data name="SaveButtonTitle" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
 </root>
