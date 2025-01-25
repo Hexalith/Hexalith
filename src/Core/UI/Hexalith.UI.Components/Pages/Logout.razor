@@ -5,22 +5,22 @@
 <h3>Logout</h3>
 
 <AuthorizeView>
-	<Authorized>
-		<FluentGrid>
-			<FluentGridItem xs="12" sm="6">
-				<p>Click on the button below to logout</p>
-				<form action="@Application.LogoutPath" method="post">
-					<AntiforgeryToken />
-					<input type="hidden" name="returnUrl" value="@Application.HomePath" />
-					<FluentButton Appearance="Appearance.Accent" Type="ButtonType.Submit">Logout</FluentButton>
-				</form>
-			</FluentGridItem>
-		</FluentGrid>
-	</Authorized>
-	<NotAuthorized>
-		<p>You are logout now</p>
-		<FluentNavLink  Href="@Application.LoginPath">Login</FluentNavLink>
-	</NotAuthorized>
+    <Authorized>
+        <FluentGrid>
+            <FluentGridItem xs="12" sm="6">
+                <p>Click on the button below to logout</p>
+                <form action="@Application.LogoutPath" method="post">
+                    <AntiforgeryToken />
+                    <input type="hidden" name="returnUrl" value="@Application.HomePath" />
+                    <FluentButton Appearance="Appearance.Accent" Type="ButtonType.Submit">Logout</FluentButton>
+                </form>
+            </FluentGridItem>
+        </FluentGrid>
+    </Authorized>
+    <NotAuthorized>
+        <p>You are logout now</p>
+        <FluentNavLink  Href="@Application.LoginPath">Login</FluentNavLink>
+    </NotAuthorized>
 </AuthorizeView>
 
 @code {

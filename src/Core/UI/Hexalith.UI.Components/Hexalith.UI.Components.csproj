@@ -1,61 +1,61 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
-	<PropertyGroup>
-		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
-	</PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+    </PropertyGroup>
 
-	<ItemGroup>
-	  <Compile Remove="wwwroot\FluentUITheme\Fontawesome\**" />
-	  <Content Remove="wwwroot\FluentUITheme\Fontawesome\**" />
-	  <EmbeddedResource Remove="wwwroot\FluentUITheme\Fontawesome\**" />
-	  <None Remove="wwwroot\FluentUITheme\Fontawesome\**" />
-	  <TypeScriptCompile Remove="wwwroot\FluentUITheme\Fontawesome\**" />
-	</ItemGroup>
+    <ItemGroup>
+      <Compile Remove="wwwroot\FluentUITheme\Fontawesome\**" />
+      <Content Remove="wwwroot\FluentUITheme\Fontawesome\**" />
+      <EmbeddedResource Remove="wwwroot\FluentUITheme\Fontawesome\**" />
+      <None Remove="wwwroot\FluentUITheme\Fontawesome\**" />
+      <TypeScriptCompile Remove="wwwroot\FluentUITheme\Fontawesome\**" />
+    </ItemGroup>
 
-	<ItemGroup>
-	  <ProjectReference Include="..\..\Application\Hexalith.Application.Sessions.Abstractions\Hexalith.Application.Sessions.Abstractions.csproj" />
-	  <ProjectReference Include="..\Hexalith.UI.Components.Abstractions\Hexalith.UI.Components.Abstractions.csproj" />
-	</ItemGroup>
-	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="$(AspNetCorePackagesVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Localization" Version="$(MicrosoftExtensionsPackagesVersion)" />
-		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="$(MicrosoftFluentUIComponentsVersion)" />
-		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="$(MicrosoftFluentUIComponentsVersion)" />
-		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.DataGrid.EntityFrameworkAdapter" Version="$(MicrosoftFluentUIComponentsVersion)" />
-	  <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
-	  <PackageReference Include="Scriban" Version="$(ScribanVersion)" />
-	</ItemGroup>
-	<ItemGroup>
-		<SupportedPlatform Include="browser" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Compile Update="Resources\FluentUITheme.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>FluentUITheme.resx</DependentUpon>
-	  </Compile>
-	  <Compile Update="Resources\Validations.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>Validations.resx</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-	<ItemGroup>
-	  <Content Update="FluentUITheme\HexEntityDetailsPage.razor">
-	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-	  </Content>
-	  <Content Update="FluentUITheme\HexSvgImage.razor">
-	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-	  </Content>
-	</ItemGroup>
-	<ItemGroup>
-	  <EmbeddedResource Update="Resources\FluentUITheme.resx">
-	    <Generator>ResXFileCodeGenerator</Generator>
-	    <LastGenOutput>FluentUITheme.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Resources\Validations.resx">
-	    <Generator>ResXFileCodeGenerator</Generator>
-	    <LastGenOutput>Validations.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
-	</ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\Application\Hexalith.Application.Sessions.Abstractions\Hexalith.Application.Sessions.Abstractions.csproj" />
+      <ProjectReference Include="..\Hexalith.UI.Components.Abstractions\Hexalith.UI.Components.Abstractions.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="$(AspNetCorePackagesVersion)" />
+        <PackageReference Include="Microsoft.Extensions.Localization" Version="$(MicrosoftExtensionsPackagesVersion)" />
+        <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="$(MicrosoftFluentUIComponentsVersion)" />
+        <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="$(MicrosoftFluentUIComponentsVersion)" />
+        <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.DataGrid.EntityFrameworkAdapter" Version="$(MicrosoftFluentUIComponentsVersion)" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
+      <PackageReference Include="Scriban" Version="$(ScribanVersion)" />
+    </ItemGroup>
+    <ItemGroup>
+        <SupportedPlatform Include="browser" />
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Update="Resources\FluentUITheme.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>FluentUITheme.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Validations.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Validations.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+    <ItemGroup>
+      <Content Update="FluentUITheme\HexEntityDetailsPage.razor">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      </Content>
+      <Content Update="FluentUITheme\HexSvgImage.razor">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      </Content>
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Update="Resources\FluentUITheme.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>FluentUITheme.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Validations.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Validations.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
 </Project>

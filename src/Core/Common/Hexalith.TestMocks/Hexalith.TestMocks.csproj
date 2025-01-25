@@ -1,21 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	<PropertyGroup>
-		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
-	</PropertyGroup>
-	<ItemGroup>
-		<PackageReference Include="FluentAssertions" Version="$(FluentAssertionsVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Configuration" Version="$(MicrosoftExtensionsPackagesVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="$(MicrosoftExtensionsPackagesVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="$(MicrosoftExtensionsPackagesVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Http" Version="$(MicrosoftExtensionsPackagesVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="$(MicrosoftExtensionsPackagesVersion)" />
-	  <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
-		<PackageReference Include="Moq" Version="$(MoqVersion)" />
-		<PackageReference Include="xunit" Version="$(XUnitVersion)" />
-	</ItemGroup>
-	<ItemGroup>
-		<ProjectReference Include="..\Hexalith.Extensions\Hexalith.Extensions.csproj" />
-	</ItemGroup>
+    <PropertyGroup>
+        <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="FluentAssertions" Version="$(FluentAssertionsVersion)" />
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="$(MicrosoftExtensionsPackagesVersion)" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="$(MicrosoftExtensionsPackagesVersion)" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="$(MicrosoftExtensionsPackagesVersion)" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="$(MicrosoftExtensionsPackagesVersion)" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
+        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="$(MicrosoftExtensionsPackagesVersion)" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
+        <PackageReference Include="Moq" Version="$(MoqVersion)" />
+        <PackageReference Include="xunit" Version="$(XUnitVersion)" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Hexalith.Extensions\Hexalith.Extensions.csproj" />
+    </ItemGroup>
 </Project>

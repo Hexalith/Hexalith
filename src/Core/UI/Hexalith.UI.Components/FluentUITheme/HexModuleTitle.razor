@@ -1,21 +1,21 @@
-@using System.ComponentModel
+﻿@using System.ComponentModel
 
 @inherits HexBase
 @inject IStringLocalizer<SharedResources> SharedLocalizer
 
 <FluentLabel Typo="@Typo">@_title</FluentLabel>
 @code {
-	[Parameter]
-	public Typography Typo { get; set; } = Typography.PaneHeader;
-	private string? _title;
+    [Parameter]
+    public Typography Typo { get; set; } = Typography.PaneHeader;
+    private string? _title;
 
 
-	protected override void OnParametersSet()
-	{
-		if (!string.IsNullOrEmpty(ModuleInformation?.Name))
-		{
-			_title = SharedLocalizer[ModuleInformation.Name];
-		}
-	}
+    protected override void OnParametersSet()
+    {
+        if (!string.IsNullOrEmpty(ModuleInformation?.Name))
+        {
+            _title = SharedLocalizer[ModuleInformation.Name];
+        }
+    }
 
 }

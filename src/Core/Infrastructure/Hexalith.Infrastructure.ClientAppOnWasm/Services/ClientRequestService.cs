@@ -25,7 +25,7 @@ using Microsoft.Extensions.Logging;
 /// <summary>
 /// Represents a service for sending requests asynchronously.
 /// </summary>
-public class ClientRequestService : IRequestService
+public partial class ClientRequestService : IRequestService
 {
     private readonly HttpClient _client;
     private readonly ILogger<ClientRequestService> _logger;
@@ -90,6 +90,9 @@ public class ClientRequestService : IRequestService
         return await SubmitRequestAsync(request, metadata, cancellationToken).ConfigureAwait(false);
     }
 
+    [LoggerMessage(EventId = 1, Level = LogLevel.Information, Message = "Request '{RequestName}' succeeded on aggregate '{AggregateId}' for user '{UserId}'.")]
+    private static partial void LogRequestSucceeded(ILogger<ClientRequestService> logger, string requestName, string aggregateId, string userId);
+
     /// <summary>
     /// Submits a request asynchronously with the provided metadata.
     /// </summary>
@@ -98,7 +101,7 @@ public class ClientRequestService : IRequestService
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
     private async Task<TRequest> SubmitRequestAsync<TRequest>(TRequest request, Metadata metadata, CancellationToken cancellationToken)
-        where TRequest : PolymorphicRecordBase
+    where TRequest : PolymorphicRecordBase
     {
         ArgumentNullException.ThrowIfNull(request);
         ArgumentNullException.ThrowIfNull(metadata);
@@ -122,7 +125,17 @@ public class ClientRequestService : IRequestService
             throw new InvalidOperationException($"Request {metadata.Message.Name} failed on aggregate '{metadata.AggregateGlobalId}'. Failed to deserialize response : " + value);
         }
 
-        return messageState.MessageObject as TRequest
-            ?? throw new InvalidOperationException($"Request {metadata.Message.Name} failed on aggregate '{metadata.AggregateGlobalId}'. Expected response of type {typeof(TRequest).Name} but received {messageState.MessageObject.GetType().Name}.");
+        if (messageState.MessageObject is not TRequest result)
+        {
+            throw new InvalidOperationException($"Request {metadata.Message.Name} failed on aggregate '{metadata.AggregateGlobalId}'. Expected response of type {typeof(TRequest).Name} but received {messageState.MessageObject.GetType().Name}.");
+        }
+
+        LogRequestSucceeded(
+            _logger,
+            metadata.Message.Name,
+            metadata.AggregateGlobalId,
+            metadata.Context.UserId);
+
+        return result;
     }
 }

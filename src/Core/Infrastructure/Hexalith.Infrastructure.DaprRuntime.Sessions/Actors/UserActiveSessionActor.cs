@@ -17,7 +17,6 @@ using Hexalith.Application.Sessions.Models;
 /// </summary>
 public class UserActiveSessionActor : Actor, IUserActiveSessionActor
 {
-    private const string _collectionActorName = nameof(Sessions);
     private const string _stateName = "State";
     private Dictionary<string, ActiveSession>? _sessions;
 

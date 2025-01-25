@@ -12,70 +12,70 @@ OnCompleted="@OnCompletedAsync" />
 
 <FluentProgress Min="0" Max="100" Value="@progressPercent" Visible="@(progressPercent > 0)" />
 <FluentLabel Alignment="HorizontalAlignment.Center">
-	@progressTitle
+    @progressTitle
 </FluentLabel>
 
 <FluentButton Appearance="Appearance.Accent" Id="UploadStream">
-	Upload files
+    Upload files
 </FluentButton>
 
 @if (Files.Any())
 {
-	<h4>File(s) uploaded:</h4>
-	<ul>
-		@foreach (var file in Files)
-		{
-			<li>
-				@file
-			</li>
-		}
-	</ul>
+    <h4>File(s) uploaded:</h4>
+    <ul>
+        @foreach (var file in Files)
+        {
+            <li>
+                @file
+            </li>
+        }
+    </ul>
 }
 
 @code
 {
-	[CascadingParameter]
-	private Task<AuthenticationState>? AuthenticationStateTask { get; set; }
+    [CascadingParameter]
+    private Task<AuthenticationState>? AuthenticationStateTask { get; set; }
 
-	[Parameter]
-	public EventCallback<IEnumerable<ViewModels.FileInformation>> OnUploadCompletedEvent { get; set; }
+    [Parameter]
+    public EventCallback<IEnumerable<ViewModels.FileInformation>> OnUploadCompletedEvent { get; set; }
 
-	[Parameter]
-	public IDictionary<string, string>? Tags { get; set; }
+    [Parameter]
+    public IDictionary<string, string>? Tags { get; set; }
 
-	public List<ViewModels.FileInformation> _fileInformation = [];
+    public List<ViewModels.FileInformation> _fileInformation = [];
 
-	FluentInputFile? fileByStream = default!;
+    FluentInputFile? fileByStream = default!;
 
-	int? progressPercent;
-	string? progressTitle;
+    int? progressPercent;
+    string? progressTitle;
 
-	List<string> Files = new();
+    List<string> Files = new();
 
-	async Task OnFileUploadedAsync(FluentInputFileEventArgs file)
-	{
-		if (file.Stream is null)
-		{
-			throw new InvalidOperationException("An error occurred while uploading the file. Stream is null. "+file.ErrorMessage);
-		};
-		progressPercent = file.ProgressPercent;
-		progressTitle = file.ProgressTitle;
+    async Task OnFileUploadedAsync(FluentInputFileEventArgs file)
+    {
+        if (file.Stream is null)
+        {
+            throw new InvalidOperationException("An error occurred while uploading the file. Stream is null. "+file.ErrorMessage);
+        };
+        progressPercent = file.ProgressPercent;
+        progressTitle = file.ProgressTitle;
 
-		string fileId = UniqueIdHelper.GenerateUniqueStringId();
-		Dictionary<string, string> tags = (Tags == null) ? [] : new(Tags);
-		tags.Add("OriginalFileName", file.Name);
-		tags.Add("FileId", fileId);
-		tags.Add("ContentType", file.ContentType);
-		string fileName = $"{fileId}.{file.Name}";
-		await FileService.UploadAsync("default", fileName, file.Stream, tags, CancellationToken.None);
-		_fileInformation.Add(new ViewModels.FileInformation(fileId, fileName, file.Name, file.ContentType));
-	}
+        string fileId = UniqueIdHelper.GenerateUniqueStringId();
+        Dictionary<string, string> tags = (Tags == null) ? [] : new(Tags);
+        tags.Add("OriginalFileName", file.Name);
+        tags.Add("FileId", fileId);
+        tags.Add("ContentType", file.ContentType);
+        string fileName = $"{fileId}.{file.Name}";
+        await FileService.UploadAsync("default", fileName, file.Stream, tags, CancellationToken.None);
+        _fileInformation.Add(new ViewModels.FileInformation(fileId, fileName, file.Name, file.ContentType));
+    }
 
-	async Task OnCompletedAsync(IEnumerable<FluentInputFileEventArgs> files)
-	{
-		progressPercent = fileByStream!.ProgressPercent;
-		progressTitle = fileByStream!.ProgressTitle;
+    async Task OnCompletedAsync(IEnumerable<FluentInputFileEventArgs> files)
+    {
+        progressPercent = fileByStream!.ProgressPercent;
+        progressTitle = fileByStream!.ProgressTitle;
 
-		await OnUploadCompletedEvent.InvokeAsync(_fileInformation);
-	}
+        await OnUploadCompletedEvent.InvokeAsync(_fileInformation);
+    }
 }

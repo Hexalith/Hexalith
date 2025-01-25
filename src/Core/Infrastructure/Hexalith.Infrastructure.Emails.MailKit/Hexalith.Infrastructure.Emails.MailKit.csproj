@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	<PropertyGroup>
-		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
-	</PropertyGroup>
-	<ItemGroup>
-	  <PackageReference Include="MailKit" Version="$(MailKitVersion)" />
-	</ItemGroup>
-	<ItemGroup>
-	  <ProjectReference Include="..\Hexalith.Infrastructure.Emails.Abstractions\Hexalith.Infrastructure.Emails.Abstractions.csproj" />
-	</ItemGroup>
+    <PropertyGroup>
+        <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="MailKit" Version="$(MailKitVersion)" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Hexalith.Infrastructure.Emails.Abstractions\Hexalith.Infrastructure.Emails.Abstractions.csproj" />
+    </ItemGroup>
 </Project>

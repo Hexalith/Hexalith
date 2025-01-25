@@ -1,99 +1,99 @@
 ﻿<FluentAutocomplete TOption="Option<bool?>"
-					OnOptionsSearch="@OnSearchAsync"
-					SelectedOptionsChanged="OnSelectedOptionsChanged"
-					SelectedOptions="_selectedOptions"
-					MaximumSelectedOptions="1"
-					MaximumOptionsSearch="10"
-					Multiple="true"
-					Label="@Label"
-					Placeholder="@Placeholder"
-					Width="@Width"
-					OptionValue="@(item => item.Value.ToString())" 
-					OptionText="@(item => item.Text)"
-					OptionDisabled="@(item => item.Disabled)" />
+                    OnOptionsSearch="@OnSearchAsync"
+                    SelectedOptionsChanged="OnSelectedOptionsChanged"
+                    SelectedOptions="_selectedOptions"
+                    MaximumSelectedOptions="1"
+                    MaximumOptionsSearch="10"
+                    Multiple="true"
+                    Label="@Label"
+                    Placeholder="@Placeholder"
+                    Width="@Width"
+                    OptionValue="@(item => item.Value.ToString())" 
+                    OptionText="@(item => item.Text)"
+                    OptionDisabled="@(item => item.Disabled)" />
 @code
 {
-	[Parameter]
-	public Services.IFalseTrueFieldValueDisabledService? Service { get; set; }
+    [Parameter]
+    public Services.IFalseTrueFieldValueDisabledService? Service { get; set; }
 
-	[Parameter]
-	public bool? Value { get; set; }
+    [Parameter]
+    public bool? Value { get; set; }
 
-	[Parameter, EditorRequired]
-	public string? FieldId { get; set; }
+    [Parameter, EditorRequired]
+    public string? FieldId { get; set; }
 
-	[Parameter]
-	public EventCallback<bool?> ValueChanged { get; set; }
+    [Parameter]
+    public EventCallback<bool?> ValueChanged { get; set; }
 
-	[Parameter]
-	public string? Label { get; set; }
+    [Parameter]
+    public string? Label { get; set; }
 
-	[Parameter]
-	public string? Width { get; set; }
+    [Parameter]
+    public string? Width { get; set; }
 
-	[Parameter]
-	public string? UndefinedOptionLabel { get; set; }
+    [Parameter]
+    public string? UndefinedOptionLabel { get; set; }
 
-	[Parameter, EditorRequired]
-	public string TrueOptionLabel { get; set; } = "Yes";
+    [Parameter, EditorRequired]
+    public string TrueOptionLabel { get; set; } = "Yes";
 
-	[Parameter, EditorRequired]
-	public string FalseOptionLabel { get; set; } = "No";
+    [Parameter, EditorRequired]
+    public string FalseOptionLabel { get; set; } = "No";
 
-	[Parameter]
-	public string? Placeholder { get; set; }
+    [Parameter]
+    public string? Placeholder { get; set; }
 
-	private string? _value => Value?.ToString();
+    private string? _value => Value?.ToString();
 
-	private IEnumerable<Option<bool?>>? _selectedOptions;
+    private IEnumerable<Option<bool?>>? _selectedOptions;
 
-	private async Task OnSearchAsync(OptionsSearchEventArgs<Option<bool?>?> e)
-	{
-		e.Items = await GetOptionsAsync();
-	}
-	protected override void OnParametersSet()
-	{
-		if (Value == false)
-		{
-			_selectedOptions = [new Option<bool?> { Value = false, Text = FalseOptionLabel }];
+    private async Task OnSearchAsync(OptionsSearchEventArgs<Option<bool?>?> e)
+    {
+        e.Items = await GetOptionsAsync();
+    }
+    protected override void OnParametersSet()
+    {
+        if (Value == false)
+        {
+            _selectedOptions = [new Option<bool?> { Value = false, Text = FalseOptionLabel }];
 
-		}
-		if (Value == true)
-		{
-			_selectedOptions = [new Option<bool?> { Value = true, Text = TrueOptionLabel }];
+        }
+        if (Value == true)
+        {
+            _selectedOptions = [new Option<bool?> { Value = true, Text = TrueOptionLabel }];
 
-		}
-		base.OnParametersSet();
-	}
-	private async Task<IEnumerable<Option<bool?>>> GetOptionsAsync()
-	{
-		bool falseDisabled = false;
-		bool trueDisabled = false;
-		if (Service is not null && !string.IsNullOrWhiteSpace(FieldId))
-		{
-			(falseDisabled, trueDisabled) = await Service.FalseTrueFieldDisabledValuesAsync(FieldId, CancellationToken.None);
-		}
-		return new[]
-		{
-				new Option<bool?> { Value = false, Text = FalseOptionLabel, Disabled = falseDisabled },
-				new Option<bool?> { Value = true, Text = TrueOptionLabel, Disabled = trueDisabled }
-		};
-	}
-	private async Task OnSelectedOptionsChanged(IEnumerable<Option<bool?>> options)
-	{
-		if (options is not null && options.Any())
-		{
-			_selectedOptions = options;
-		}
-		else
-		{
-			_selectedOptions = null;
-		}
-		var value = _selectedOptions?.FirstOrDefault()?.Value;
-		if (value != Value)
-		{
-			Value = value;
-			await ValueChanged.InvokeAsync(value);
-		}
-	}
+        }
+        base.OnParametersSet();
+    }
+    private async Task<IEnumerable<Option<bool?>>> GetOptionsAsync()
+    {
+        bool falseDisabled = false;
+        bool trueDisabled = false;
+        if (Service is not null && !string.IsNullOrWhiteSpace(FieldId))
+        {
+            (falseDisabled, trueDisabled) = await Service.FalseTrueFieldDisabledValuesAsync(FieldId, CancellationToken.None);
+        }
+        return new[]
+        {
+                new Option<bool?> { Value = false, Text = FalseOptionLabel, Disabled = falseDisabled },
+                new Option<bool?> { Value = true, Text = TrueOptionLabel, Disabled = trueDisabled }
+        };
+    }
+    private async Task OnSelectedOptionsChanged(IEnumerable<Option<bool?>> options)
+    {
+        if (options is not null && options.Any())
+        {
+            _selectedOptions = options;
+        }
+        else
+        {
+            _selectedOptions = null;
+        }
+        var value = _selectedOptions?.FirstOrDefault()?.Value;
+        if (value != Value)
+        {
+            Value = value;
+            await ValueChanged.InvokeAsync(value);
+        }
+    }
 }

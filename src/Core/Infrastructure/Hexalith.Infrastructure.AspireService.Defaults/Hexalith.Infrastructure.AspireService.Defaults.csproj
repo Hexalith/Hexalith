@@ -1,27 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
-		<IsAspireSharedProject>true</IsAspireSharedProject>
-	</PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+        <IsAspireSharedProject>true</IsAspireSharedProject>
+    </PropertyGroup>
 
-	<ItemGroup>
-		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
 
-		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="$(AspNetCorePackagesVersion)" />
-		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="$(AspNetCorePackagesVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Http.Resilience" Version="$(MicrosoftExtensionsPackagesVersion)" />
-		<PackageReference Include="Microsoft.Extensions.ServiceDiscovery" Version="$(MicrosoftExtensionsPackagesVersion)" />
-		<PackageReference Include="Swashbuckle.AspNetCore" Version="$(SwashbuckleAspNetCoreVersion)" />
-		<PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="$(OpenTelemetryVersion)" />
-		<PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="$(OpenTelemetryVersion)" />
-		<PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="$(OpenTelemetryVersion)" />
-		<PackageReference Include="OpenTelemetry.Instrumentation.GrpcNetClient" Version="$(OpenTelemetryBetaVersion)" />
-		<PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="$(OpenTelemetryVersion)" />
-		<PackageReference Include="Azure.Monitor.OpenTelemetry.AspNetCore" Version="$(OpenTelemetryVersion)" />
-		<PackageReference Include="OpenTelemetry.Instrumentation.Runtime" Version="$(OpenTelemetryVersion)" />
-		<PackageReference Include="Grpc.HealthCheck" Version="$(GrpcVersion)" />
-		<PackageReference Include="Grpc.Net.ClientFactory" Version="$(GrpcVersion)"/>
-	</ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="$(AspNetCorePackagesVersion)" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="$(AspNetCorePackagesVersion)" />
+        <PackageReference Include="Microsoft.Extensions.Http.Resilience" Version="$(MicrosoftExtensionsPackagesVersion)" />
+        <PackageReference Include="Microsoft.Extensions.ServiceDiscovery" Version="$(MicrosoftExtensionsPackagesVersion)" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="$(SwashbuckleAspNetCoreVersion)" />
+        <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="$(OpenTelemetryVersion)" />
+        <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="$(OpenTelemetryVersion)" />
+        <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="$(OpenTelemetryVersion)" />
+        <PackageReference Include="OpenTelemetry.Instrumentation.GrpcNetClient" Version="$(OpenTelemetryBetaVersion)" />
+        <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="$(OpenTelemetryVersion)" />
+        <PackageReference Include="Azure.Monitor.OpenTelemetry.AspNetCore" Version="$(OpenTelemetryVersion)" />
+        <PackageReference Include="OpenTelemetry.Instrumentation.Runtime" Version="$(OpenTelemetryVersion)" />
+        <PackageReference Include="Grpc.HealthCheck" Version="$(GrpcVersion)" />
+        <PackageReference Include="Grpc.Net.ClientFactory" Version="$(GrpcVersion)"/>
+    </ItemGroup>
 
 </Project>

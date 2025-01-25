@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
-	<PropertyGroup>
-		<TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
-		<RootNamespace>Hexalith.UI.Components</RootNamespace>
-	</PropertyGroup>
-	<ItemGroup>
-	  <ProjectReference Include="..\..\Application\Hexalith.Application.Modules.Abstractions\Hexalith.Application.Modules.Abstractions.csproj" />
-	</ItemGroup>
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+        <RootNamespace>Hexalith.UI.Components</RootNamespace>
+    </PropertyGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\Application\Hexalith.Application.Modules.Abstractions\Hexalith.Application.Modules.Abstractions.csproj" />
+    </ItemGroup>
 </Project>

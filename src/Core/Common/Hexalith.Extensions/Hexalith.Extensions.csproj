@@ -1,17 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	<PropertyGroup>
-		<TargetFrameworks>$(CommonTargetFrameworks)</TargetFrameworks>
-		<NoWarn>$(NoWarn);S6354;RS0016;</NoWarn>
-		<!--<EnableConfigurationBindingGenerator>false</EnableConfigurationBindingGenerator>-->
-		<!--EnableConfigurationBindingGenerator: https://github.com/dotnet/runtime/issues/89273-->
-	</PropertyGroup>
-	<ItemGroup>
-		<PackageReference Include="CompareNETObjects" Version="$(CompareNETObjectsVersion)" />
-		<PackageReference Include="FluentValidation" Version="$(FluentValidationVersion)" />
-		<PackageReference Include="Humanizer" Version="$(HumanizerVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="$(MicrosoftExtensionsPackagesVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="$(MicrosoftExtensionsPackagesVersion)" />
-	  <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
-	</ItemGroup>
+    <PropertyGroup>
+        <TargetFrameworks>$(CommonTargetFrameworks)</TargetFrameworks>
+        <NoWarn>$(NoWarn);S6354;RS0016;</NoWarn>
+        <!--<EnableConfigurationBindingGenerator>false</EnableConfigurationBindingGenerator>-->
+        <!--EnableConfigurationBindingGenerator: https://github.com/dotnet/runtime/issues/89273-->
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="CompareNETObjects" Version="$(CompareNETObjectsVersion)" />
+        <PackageReference Include="FluentValidation" Version="$(FluentValidationVersion)" />
+        <PackageReference Include="Humanizer" Version="$(HumanizerVersion)" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
+        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="$(MicrosoftExtensionsPackagesVersion)" />
+        <PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="$(MicrosoftExtensionsPackagesVersion)" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="$(MicrosoftExtensionsPackagesVersion)" />
+    </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-# Hexalith.Extensions.Configuration
+﻿# Hexalith.Extensions.Configuration
 
 ISettings is the interface for application settings. It defines the configuration section name.
 
@@ -15,10 +15,10 @@ Example:
 public class MySettings : ISettings
 {
   public string? FirstName { get; set; }
-	
+    
   public string? LastName { get; set; }
 
-  public static string ConfigurationName() => "Me";	
+  public static string ConfigurationName() => "Me";    
 }
 ```
 
@@ -28,7 +28,7 @@ appsettings.json:
 {
   "Me": {
     "FirstName": "John",
-	"LastName": "Doe"
+    "LastName": "Doe"
   }
 }
 ```

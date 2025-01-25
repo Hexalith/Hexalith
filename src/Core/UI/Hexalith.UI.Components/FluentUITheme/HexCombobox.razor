@@ -1,62 +1,62 @@
 ﻿@using System.Security.Claims
 <FluentCombobox TOption="IIdDescription"
-				SelectedOptionsChanged="OnSelectedOptionsChanged"
-				SelectedOptions="_selectedOptions"
-				Multiple="true"
-				Label="@Label"
-				Placeholder="@Placeholder"
-				Width="@Width"
-				OptionText="@(item => item.Description)" />
+                SelectedOptionsChanged="OnSelectedOptionsChanged"
+                SelectedOptions="_selectedOptions"
+                Multiple="true"
+                Label="@Label"
+                Placeholder="@Placeholder"
+                Width="@Width"
+                OptionText="@(item => item.Description)" />
 
 @code
 {
-	[Parameter, EditorRequired]
-	public IIdDescriptionService? Service { get; set; }
+    [Parameter, EditorRequired]
+    public IIdDescriptionService? Service { get; set; }
 
-	IEnumerable<IIdDescription>? _selectedOptions;
+    IEnumerable<IIdDescription>? _selectedOptions;
 
-	[Parameter]
-	public string? Id { get; set; }
+    [Parameter]
+    public string? Id { get; set; }
 
-	[Parameter]
-	public EventCallback<string?> IdChanged { get; set; }
+    [Parameter]
+    public EventCallback<string?> IdChanged { get; set; }
 
-	[Parameter]
-	public string? Width { get; set; }
+    [Parameter]
+    public string? Width { get; set; }
 
-	[Parameter]
-	public string? Label { get; set; }
+    [Parameter]
+    public string? Label { get; set; }
 
-	[Parameter]
-	public string? Placeholder { get; set; }
+    [Parameter]
+    public string? Placeholder { get; set; }
 
-	[CascadingParameter]
-	private Task<AuthenticationState>? AuthenticationStateTask { get; set; }
+    [CascadingParameter]
+    private Task<AuthenticationState>? AuthenticationStateTask { get; set; }
 
-	private ClaimsPrincipal? _user;
+    private ClaimsPrincipal? _user;
 
-	protected override async Task OnInitializedAsync()
-	{
-		if (AuthenticationStateTask is not null)
-		{
-			_user = (await AuthenticationStateTask).User;
-		}
+    protected override async Task OnInitializedAsync()
+    {
+        if (AuthenticationStateTask is not null)
+        {
+            _user = (await AuthenticationStateTask).User;
+        }
 
-		if (Id is not null && Service is not null && _user is not null)
-		{
-			_selectedOptions = new[] { await Service.GetIdDescriptionAsync(_user, Id, CancellationToken.None) };
-		}
-		else
-		{
-			_selectedOptions = null;
-		}
-		await base.OnParametersSetAsync();
-	}
+        if (Id is not null && Service is not null && _user is not null)
+        {
+            _selectedOptions = new[] { await Service.GetIdDescriptionAsync(_user, Id, CancellationToken.None) };
+        }
+        else
+        {
+            _selectedOptions = null;
+        }
+        await base.OnParametersSetAsync();
+    }
 
-	private async Task OnSelectedOptionsChanged(IEnumerable<IIdDescription>? options)
-	{
-		_selectedOptions = options;
-		Id = _selectedOptions?.FirstOrDefault()?.Id;
-		await IdChanged.InvokeAsync(Id);
-	}
+    private async Task OnSelectedOptionsChanged(IEnumerable<IIdDescription>? options)
+    {
+        _selectedOptions = options;
+        Id = _selectedOptions?.FirstOrDefault()?.Id;
+        await IdChanged.InvokeAsync(Id);
+    }
 }

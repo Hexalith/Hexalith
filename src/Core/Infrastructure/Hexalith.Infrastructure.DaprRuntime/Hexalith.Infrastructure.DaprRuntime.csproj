@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-	  <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
+      <TargetFramework>$(CommonTargetFrameworks)</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-	  <ProjectReference Include="..\..\Application\Hexalith.Application\Hexalith.Application.csproj" />
-	  <ProjectReference Include="..\Hexalith.Infrastructure.DaprRuntime.Abstractions\Hexalith.Infrastructure.DaprRuntime.Abstractions.csproj" />
+      <ProjectReference Include="..\..\Application\Hexalith.Application\Hexalith.Application.csproj" />
+      <ProjectReference Include="..\Hexalith.Infrastructure.DaprRuntime.Abstractions\Hexalith.Infrastructure.DaprRuntime.Abstractions.csproj" />
     <ProjectReference Include="..\Hexalith.Infrastructure.Serialization\Hexalith.Infrastructure.Serialization.csproj" />
   </ItemGroup>
 </Project>
