@@ -16,14 +16,14 @@ public interface IAggregateMaintenance<TAggregate>
     /// </summary>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public Task ClearAllCommandsAsync(CancellationToken cancellationToken);
+    Task ClearAllCommandsAsync(CancellationToken cancellationToken);
 
     /// <summary>
     /// Clears all states for the aggregate.
     /// </summary>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public Task ClearAllStatesAsync(CancellationToken cancellationToken);
+    Task ClearAllStatesAsync(CancellationToken cancellationToken);
 
     /// <summary>
     /// Clears the commands for the specified aggregate.
@@ -31,7 +31,7 @@ public interface IAggregateMaintenance<TAggregate>
     /// <param name="aggregateGlobalId">The ID of the aggregate.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public Task ClearCommandsAsync(string aggregateGlobalId, CancellationToken cancellationToken);
+    Task ClearCommandsAsync(string aggregateGlobalId, CancellationToken cancellationToken);
 
     /// <summary>
     /// Clears the state for the specified aggregate.
@@ -39,21 +39,21 @@ public interface IAggregateMaintenance<TAggregate>
     /// <param name="aggregateGlobalId">The ID of the aggregate.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public Task ClearStateAsync(string aggregateGlobalId, CancellationToken cancellationToken);
+    Task ClearStateAsync(string aggregateGlobalId, CancellationToken cancellationToken);
 
     /// <summary>
     /// Gets all actor IDs.
     /// </summary>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public Task<IEnumerable<string>> GetAllActorIdsAsync(CancellationToken cancellationToken);
+    Task<IEnumerable<string>> GetAllActorIdsAsync(CancellationToken cancellationToken);
 
     /// <summary>
     /// Sends all snapshots for the aggregate.
     /// </summary>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public Task SendAllSnapshotsAsync(CancellationToken cancellationToken);
+    Task SendAllSnapshotsAsync(CancellationToken cancellationToken);
 
     /// <summary>
     /// Sends a snapshot for the specified aggregate.
@@ -61,5 +61,5 @@ public interface IAggregateMaintenance<TAggregate>
     /// <param name="aggregateGlobalId">The ID of the aggregate.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public Task SendSnapshotAsync(string aggregateGlobalId, CancellationToken cancellationToken);
+    Task SendSnapshotAsync(string aggregateGlobalId, CancellationToken cancellationToken);
 }

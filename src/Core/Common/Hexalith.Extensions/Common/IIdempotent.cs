@@ -14,5 +14,5 @@ public interface IIdempotent
     /// Gets the idempotency identifier.
     /// </summary>
     /// <value>The idempotency identifier.</value>
-    public string IdempotencyId { get; }
+    string IdempotencyId { get; }
 }

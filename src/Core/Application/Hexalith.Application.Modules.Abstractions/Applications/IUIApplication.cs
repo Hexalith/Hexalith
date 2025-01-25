@@ -14,5 +14,5 @@ public interface IUIApplication : IApplication
     /// <summary>
     /// Gets the shared presentation assemblies associated with the application.
     /// </summary>
-    public IEnumerable<Assembly> PresentationAssemblies { get; }
+    IEnumerable<Assembly> PresentationAssemblies { get; }
 }

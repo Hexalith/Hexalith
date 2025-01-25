@@ -14,13 +14,13 @@ public interface IDataFragment
     /// Gets the data object.
     /// </summary>
     /// <value>The data.</value>
-    public object Data { get; }
+    object Data { get; }
 
     /// <summary>
     /// Gets the meta data object.
     /// </summary>
     /// <value>The metadata.</value>
-    public object Metadata { get; }
+    object Metadata { get; }
 }
 
 /// <summary>
@@ -34,11 +34,11 @@ public interface IDataFragment<out TData, out TMeta> : IDataFragment
     /// Gets the data object.
     /// </summary>
     /// <value>The data.</value>
-    public new TData Data { get; }
+    new TData Data { get; }
 
     /// <summary>
     /// Gets the meta data object.
     /// </summary>
     /// <value>The metadata.</value>
-    public new TMeta Metadata { get; }
+    new TMeta Metadata { get; }
 }

@@ -1,4 +1,4 @@
-// <copyright file="IApplication.cs" company="ITANEO">
+﻿// <copyright file="IApplication.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
@@ -18,17 +18,17 @@ public interface IApplication
     /// </summary>
     /// <returns>The application instance.</returns>
     /// <exception cref="InvalidOperationException">No application found.</exception>
-    public IApiServerApplication? ApiServerApplication { get; }
+    IApiServerApplication? ApiServerApplication { get; }
 
     /// <summary>
     /// Gets the application type.
     /// </summary>
-    public ApplicationType ApplicationType { get; }
+    ApplicationType ApplicationType { get; }
 
     /// <summary>
     /// Gets the description of the application.
     /// </summary>
-    public string Description { get; }
+    string Description { get; }
 
     /// <summary>
     /// Gets the home path of the application.
@@ -38,7 +38,7 @@ public interface IApplication
     /// <summary>
     /// Gets the unique identifier of the application.
     /// </summary>
-    public string Id { get; }
+    string Id { get; }
 
     /// <summary>
     /// Gets the login path of the application.
@@ -58,52 +58,52 @@ public interface IApplication
     /// <summary>
     /// Gets the name of the application.
     /// </summary>
-    public string Name { get; }
+    string Name { get; }
 
     /// <summary>
     /// Gets the session cookie name.
     /// </summary>
-    public string SessionCookieName { get; }
+    string SessionCookieName { get; }
 
     /// <summary>
     /// Gets the short name of the application.
     /// </summary>
-    public string ShortName { get; }
+    string ShortName { get; }
 
     /// <summary>
     /// Gets the user account path of the application.
     /// </summary>
-    public string UserAccountPath { get; }
+    string UserAccountPath { get; }
 
     /// <summary>
     /// Gets the version of the application.
     /// </summary>
-    public string Version { get; }
+    string Version { get; }
 
     /// <summary>
     /// Gets the client application.
     /// </summary>
     /// <returns>The application instance.</returns>
     /// <exception cref="InvalidOperationException">No application found.</exception>
-    public IWebAppApplication? WebAppApplication { get; }
+    IWebAppApplication? WebAppApplication { get; }
 
     /// <summary>
     /// Gets the server application.
     /// </summary>
     /// <returns>The application instance.</returns>
     /// <exception cref="InvalidOperationException">No application found.</exception>
-    public IWebServerApplication? WebServerApplication { get; }
+    IWebServerApplication? WebServerApplication { get; }
 
     /// <summary>
     /// Adds services to the application.
     /// </summary>
     /// <param name="services">The service collection.</param>
     /// <param name="configuration">The configuration properties.</param>
-    public void AddServices(IServiceCollection services, IConfiguration configuration);
+    void AddServices(IServiceCollection services, IConfiguration configuration);
 
     /// <summary>
     /// Configures the authorization options for the application.
     /// </summary>
     /// <returns>An action to configure <see cref="AuthorizationOptions"/>.</returns>
-    public Action<AuthorizationOptions> ConfigureAuthorization();
+    Action<AuthorizationOptions> ConfigureAuthorization();
 }

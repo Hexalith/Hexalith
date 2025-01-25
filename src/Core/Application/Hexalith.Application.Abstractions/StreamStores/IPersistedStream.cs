@@ -18,7 +18,7 @@ public interface IPersistedStream
     /// </summary>
     /// <param name="items">The items to add.</param>
     /// <returns>The new stream version.</returns>
-    public long AddItems(IEnumerable<IDataFragment> items);
+    long AddItems(IEnumerable<IDataFragment> items);
 
     /// <summary>
     /// Add new items to the stream and verify the version.
@@ -26,7 +26,7 @@ public interface IPersistedStream
     /// <param name="items">The items to add.</param>
     /// <param name="expectedVersion">The expected stream version.</param>
     /// <returns>The new stream version.</returns>
-    public long AddItems(IEnumerable<IDataFragment> items, long expectedVersion);
+    long AddItems(IEnumerable<IDataFragment> items, long expectedVersion);
 
     /// <summary>
     /// Gets a stream items slice.
